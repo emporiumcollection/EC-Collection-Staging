@@ -1,0 +1,20 @@
+version: 0.0
+os: linux
+files:
+   - source: .
+     destination: /var/www/emporium-voyage.com
+permissions:
+   - object: /var/www/emporium-voyage.com
+     pattern: "**"
+     owner: www-data
+     group: www-data
+     mode: 755
+     type:
+       - file
+hooks:
+   BeforeInstall:
+    - location: scripts/beforeinstall.sh
+      runas: root
+   AfterInstall:
+    - location: scripts/installcomposer.sh
+      runas: root
