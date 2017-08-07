@@ -2,9 +2,9 @@ version: 0.0
 os: linux
 files:
    - source: .
-     destination: /var/www/staging.emporium-voyage.com
+     destination: /var/www/vhosts/emporium-voyage.com/public_html
 permissions:
-   - object: /var/www/staging.emporium-voyage.com
+   - object: /var/www/vhosts/emporium-voyage.com/public_html
      pattern: "**"
      owner: www-data
      group: www-data
