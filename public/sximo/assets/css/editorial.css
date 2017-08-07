@@ -1,0 +1,411 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 7 Feb, 2017, 3:34:43 PM
+    Author     : sachin
+*/
+.show_more-page .close-btn-show_more.close-btn-align:hover {
+    color: #c7ab84;
+}
+.main-side {
+    float: left;
+    width: 83.5%;
+}
+#searchform-navbar .bh-search-input.typeahead.search-navbar.search-box.tt-hint {
+    display: none;
+}
+.editorial-hotel-detail-page .back-to-top{
+    right: 18.5%;
+}
+.right-menu-sidebar {
+    background-color: #d2d2c6;
+    float: right;
+    height: 100vh;
+    overflow: auto;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 16.5%;
+    z-index: 99;
+}
+.main-side .container {
+    width: 1049px;
+}
+.right-menus ul li a {
+    padding: 25px 0 25px 30px;
+}
+#hotel{
+/*    margin-top: 60px;*/
+}
+.side-nav-next-hotel-text {
+    color: #fff;
+    margin-top: 14px;
+}
+.next-hotel-side-sec-align {
+    margin-bottom: 70px;
+}
+.next-hotel-side-image img {
+    max-height: 160px;
+    min-height: 160px;
+}
+.arrows-commom {
+    float: left;
+    width: 50%;
+}
+.next-arrow{
+    float: right;
+    text-align: right;
+}
+.side-next-and-perivious-hotel-arrow .next-arrow {
+  float: left;
+  font-family: AcaslonPro-Regular;
+  font-size: 18px;
+  text-align: left;
+  width: 100%;
+}
+.side-next-and-perivious-hotel-arrow {
+    color: #fff;
+    float: left;
+    font-size: 12px;
+    margin-bottom: 13px;
+    width: 100%;
+}
+.side-nav-next-hotel-text {
+    color: #fff;
+    margin-top: 14px;
+    text-transform: uppercase;
+}
+.arrows-commom > a {
+  color: #000;
+  text-decoration: none;
+}
+.arrows-commom > a:hover, .arrows-commom > a:focus, .arrows-commom > a:active {
+  color: #000;
+}
+/*Overwrite CSS*/
+.editorial-custom-footer-style {
+    width: 83.5%;
+}
+.editorial-custom-footer-style .newsletter-style {
+    width: 68%;
+}
+.editorial-custom-footer-style .res-form-align {
+    width: 78%;
+}
+.slider-side-sec-alignment {
+    padding-top: 146px;
+}
+.image-slider-btns-bg {
+    margin-top: -31.5%;
+}
+.editorial-image-slider-previous-btn {
+    margin-left: 356px !important;
+}
+.spa-manager-image-align {
+    margin-left: 71px;
+}
+.bottom-sec-bg {
+    width: 808px !important;
+}
+.m_slider .arrows-container {
+    width: 100%;
+}
+.hotels-logo img {
+    background-color: #1e2023;
+}
+.side-nav-next-hotel-img {
+    background: #fff none repeat scroll 0 0;
+    float: left;
+    margin-bottom: 100px;
+    opacity: 0.85;
+    padding: 25px;
+    width: 100%;
+}
+.next-hotel-text {
+    background-color: #000;
+    color: #fff;
+    margin-top: -50px;
+    opacity: 0.85;
+    padding: 15px;
+    text-transform: uppercase;
+}
+.bootom-view-next-btn {
+    border-bottom: 1px solid;
+    color: #000;
+    float: right;
+    font-family: AcaslonPro-Regular;
+    font-size: 12px;
+    line-height: 10px;
+    margin-top: 10px;
+    text-align: right;
+}
+.new-hotel-image {
+    background-blend-mode: multiply;
+    background-color: #655e52;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    float: left;
+    min-height: 200px;
+    padding: 25px 16px;
+    position: relative;
+    width: 100%;
+}
+.new-hotels-image-tittle .new-hotel-name {
+    color: #fff;
+    font-family: AcaslonPro-Regular;
+    font-size: 11px;
+    font-weight: bold;
+    margin-top: 0;
+    text-align: center;
+    text-transform: uppercase;
+}
+.new-hotel-add p {
+    color: #fff;
+    font-size: 13px;
+    line-height: 16px;
+    margin-bottom: 0;
+    text-align: center;
+}
+.new-hotel-add {
+    display: table;
+    margin: 0 auto 30px;
+    width: 69%;
+}
+.new-hotel-view-more-btn {
+    display: table;
+    margin: 50px auto 0;
+}
+.new-hotel-view-more-btn a {
+    border: 1px solid #fff;
+    bottom: 33px;
+    color: #fff;
+    display: inline-block;
+    font-family: AcaslonPro-Regular;
+    font-size: 12px;
+    padding: 5px 10px;
+    text-decoration: none;
+}
+@media screen and (max-width:1024px) and (min-width: 768px) {
+    .main-side .container {
+        width: 650px;
+    }
+    .bottom-sec-bg {
+        width: 447px !important;
+    }
+    /*    .small-box-bg {
+            margin-left: -141px;
+            padding: 28px;
+        }*/
+}
+.hotel-name-text-align {
+    background-color: transparent;
+    color: transparent;
+    display: inline-block;
+    font-family: OpenSans-ExtraBold;
+    font-size: 200px;
+    overflow: hidden;
+    padding: 10px;
+    transform: scale(2, 2);
+}
+.hotel-name-first-letter {
+    -webkit-text-fill-color: transparent;
+    background-attachment: scroll;
+    background-clip: text;
+    -webkit-background-clip: text;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url("http://design-locations.biz/uploads/container_user_files/locations/miss-clara-by-nobis/property-images/Miss-Clara-by-Nobis-Stockholm-Sweden (4).jpg");
+    background-origin: padding-box;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.hotel-text-main-align{
+    /*    margin-top: 100px;*/
+    text-align: center;
+}
+
+.editorial-booking-dates-mobile{
+    display: none;
+}
+.sec-differentiate-line {
+  border-top: 4px solid #545454;
+}
+.restaurent-sec-align {
+  margin-bottom: 50px;
+}
+
+/*Hotels Sec*/
+.disply-left-right-align{
+    display: flex;
+}
+.disply-left-right-inner{
+    flex: 1;
+}
+.dl_hotel-sec-bg {
+    background: #222222 none repeat scroll 0 0;
+    border-top: 4px solid #545454;
+}
+.hotels-des-left-side {
+    background: #2d2d2f none repeat scroll 0 0;
+    color: #fff;
+    font-family: geomanist-regular;
+    padding: 139px 32px 36px 75px;
+}
+.hotels-detail-heading-text > p {
+    color: #969698;
+    font-family: Oswald-Light;
+    font-size: 10px;
+    letter-spacing: 3px;
+    line-height: 19px;
+    text-transform: uppercase;
+}
+.hotels-detail-description-text {
+    margin-top: 55px;
+}
+.hotels-detail-description-text > p {
+    font-size: 15px;
+    line-height: 30px;
+}
+.hotels-showcase-right-side {
+    background-blend-mode: multiply;
+    background-color: #2f2f2e;
+    background-image: url("../images/blakes-hotel-luxury-suite-R-5.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff;
+    font-family: Geomanist-Regular;
+    padding: 224px 49px 90px 30px;
+}
+.hotels-image-showcase-des-text > p {
+    font-size: 15px;
+    line-height: 30px;
+}
+.image-showcase-below-big-text {
+    color: #474749;
+    font-family: Raleway-ExtraLight;
+    font-size: 70px;
+    margin-left: -107px;
+    margin-top: 36px;
+    text-transform: uppercase;
+}
+.hotel-sec-block-two {
+    background-blend-mode: multiply;
+    background-color: #292b2e;
+    background-image: url("http://www.design-locations.biz/uploads/container_user_files/locations/hotel-greif/property-images/Hotel-Greiff- South-Tyrol, Italy-design-locations.com8.jpeg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-bottom: 75px;
+    padding-top: 290px;
+    border-top: 4px solid #545454;
+}
+.hotel-block-two-left-sec-align > h2 {
+  color: #dbd4d7;
+  font-family: ACaslonPro-Regular;
+  font-size: 40px;
+  font-weight: lighter;
+  margin-top: 0;
+  text-transform: uppercase;
+}
+.hotel-block-two-left-sec-align > p {
+  color: #dbd4d7;
+  line-height: 25px;
+}
+.hotel-block-two-right-sec-align > p {
+    color: #dbd4d7;
+    line-height: 25px;
+    margin-top: 100px;
+}
+.hotel-block-two-btn-right {
+    float: right;
+    margin-top: 65px;
+}
+.hotel-block-two-btn-right > a {
+    border: 1px solid #fff;
+    border-radius: 30px;
+    color: #fff;
+    font-size: 12px;
+    padding: 12px 37px;
+    text-transform: uppercase;
+    margin-left: 10px;
+}
+.hotel-block-two-left-sec-align {
+    padding-left: 50px;
+}
+.hotel-block-two-right-sec-align {
+    padding-right: 50px;
+}
+.spa-bootom-text-block-bottom p {
+    background-color: #d2d2c6;
+    font-family: Geomanist-Light;
+    font-size: 13px;
+    padding: 15px;
+}
+.spa-bootom-text-block-bottom {
+    margin-left: 56px;
+    margin-top: 23px;
+}
+@media screen and (max-width:1250px) and (min-width: 768px) {
+    .image-showcase-below-big-text {
+        font-size: 67px;
+        margin-left: -93px;
+    }
+}
+@media screen and (max-width:991px) and (min-width: 768px) {
+    .hotel-block-two-right-sec-align {
+        padding-left: 50px;
+        padding-right: 0;
+    }
+}
+@media screen and (max-width:767px) and (min-width: 320px) {
+    .hotel-block-two-btn-right > a {
+        padding: 12px 24px;
+    }
+    .hotel-detail-slider-price-and-show-more {
+        display: table;
+        margin: 0 auto;
+    }
+    .hotels-des-left-side {
+        padding: 139px 41px 41px;
+        max-height: 100%;
+        min-height: 100%;
+    }
+    .hotels-detail-heading-text > p {
+        max-height: 100%;
+        overflow-x: auto;
+    }   
+    .hotels-showcase-right-side {
+        padding: 139px 41px 41px;
+        max-height: 100%;
+        min-height: 100%;
+    }
+    .image-showcase-below-big-text {
+        font-size: 43px;
+        margin-left: 0;
+    }
+    .hotel-block-two-left-sec-align {
+        padding-left: 0;
+    }
+    .hotel-block-two-right-sec-align {
+        padding-right: 0;
+    }
+    .disply-left-right-align {
+        display: block;
+    }
+    .col-md-6.rmimgp {
+        height: auto;
+        padding: 0;
+    }
+    .col-md-6.rmimgp {
+        height: auto;
+        padding: 0;
+    }
+}
+@media screen and (max-width:360px) and (min-width: 320px) {
+    .image-showcase-below-big-text {
+        font-size: 37px;
+    }
+}

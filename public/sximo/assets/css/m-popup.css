@@ -1,0 +1,134 @@
+/**
+ * @author SE Manu Mahesh
+ * @date 07 Dec 2016
+ */
+
+.popup {
+    display: none;
+}
+body.fixed {
+    max-height: 100vh;
+    max-width: 100%;
+    overflow: hidden;
+}
+.popup {
+    background-color: rgba(0, 0, 0, 0.9);
+    height: 100%;
+    left: 0;
+    overflow: auto;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 99999;
+}
+/*.popup-inner {
+    background-color: #EBEBEB;
+    margin: 5% auto;
+    overflow: auto;
+    width: 95%;
+}*/
+.popup-inner {
+    background-color: #ebebeb;
+    margin: 0 auto;
+    max-width: 1500px;
+    overflow: auto;
+    width: 100%;
+}
+.popup-close-btn {
+    color: #7f7f7f;
+    display: block;
+    font-size: 40px;
+    margin-bottom: -92px;
+    margin-left: calc(99% - 30px);
+    margin-top: -11px;
+    position: relative;
+}
+.popup-close-btn:hover, .popup-close-btn:active, .popup-close-btn:focus {
+    color: #5e5e5e;
+    text-decoration: none;
+}
+.popup-content {
+    padding: 75px;
+    width: 100%;
+}
+.popup-content > ul {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * Video popup
+ */
+
+#video-popup iframe {
+    height: 90vh;
+    width: 100%;
+}
+#video-popup h5 {
+    margin-bottom: -32px;
+}
+#video-popup h4 {
+    margin: 32px 0;
+}
+
+.comments ul {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+.comments ul li {
+    margin-bottom: 20px;
+}
+.comments .heading {
+    margin: 10px 0 35px;
+}
+#video-popup .comments h5 {
+    font-size: 16px;
+    margin: 0;
+}
+.comments ul li small {
+    color: #a6a6a6;
+    display: block;
+    margin: 5px 0;
+}
+.comments ul li p {
+    color: #737373;
+    font-size: 13px;
+    margin: 15px 0;
+}
+.comments > div > ul ul {
+    margin-left: 65px;
+    margin-top: 30px;
+}
+ul.featured-vieos > li {
+    display: none;
+}
+ul.featured-vieos > li.active {
+    display: block;
+}
+.previous-round-btn {
+    display: inline-block;
+    margin-left: -60px;
+    margin-top: 267px;
+    position: absolute;
+    width: 45px;
+}
+.next-round-btn {
+    display: inline-block;
+    left: calc(100% + 10px);
+    position: relative;
+    top: 267px;
+    width: 45px;
+}
+#video-popup .video-title {
+    float: left;
+    margin-right: 25px;
+}
+#video-popup .comments-btns {
+    float: right;
+    margin: 25px 0;
+}
+#video-popup .comments-btns .previous-comment-btn {
+    margin-right: 25px;
+}

@@ -1,0 +1,32 @@
+/**
+ * @author SE Manu Mahesh
+ * @date 08 Dec 2016
+ */
+
+body.sticky-nav .header {
+    /*margin-top: -60px;*/
+    position: fixed;
+}
+.header {
+    background-color: transparent;
+    /*position: fixed;*/
+    left: 0;
+    width: 100%;
+    z-index: 9;
+}
+.header-navigation-container {
+    background-color: transparent;
+}
+body.sticky-nav .sticky-header-offset {
+    /*margin-bottom: 284px;*/
+    margin-bottom: 248px;
+}
+.sticky-header-offset {
+    /*margin-bottom: 344px;*/
+}
+.text-logo {
+    display: none;
+}
+body.sticky-nav .text-logo {
+    display: block;
+}

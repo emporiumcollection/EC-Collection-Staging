@@ -1,0 +1,50 @@
+/**
+ * @author SE Manu Mahesh
+ * @date 21 Dec 2016
+ */
+
+.m_slider > ul {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+.m_slider ul li {
+    display: none;
+    max-width: 100%;
+    overflow: hidden;
+}
+.m_slider ul li.active {
+    display: block;   
+}
+.m_slider ul li img {
+    width: 100%;
+}
+.m_slider ul li .text {
+    margin-left: 20%;
+    margin-top: -30%;
+    position: absolute;
+}
+.m_slider ul li .text .small-text {
+    font-size: 11px;
+    margin-bottom: 5px;
+}
+.m_slider ul li .text .bold-text {
+    color: #000;
+    font-size: 23px;
+    font-weight: bold;
+}
+.m_slider .arrows-container {
+    margin-top: -26%;
+    position: absolute;
+    width: 100%;
+}
+.m_slider .arrows-container .previous-arrow {
+    display: inline-block;
+    float: right;
+    margin-left: 100px;
+}
+.m_slider .arrows-container .next-arrow {
+    display: inline-block;
+    float: right;
+    /*margin-right: 100px;*/
+}
