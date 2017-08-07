@@ -1,3 +1,3 @@
 #!/bin/bash
 sudo umount -l s3fs
-sudo rm -rf /var/www/staging.emporium-voyage.com
+sudo rm -rf /var/www/vhosts/emporium-voyage.com
