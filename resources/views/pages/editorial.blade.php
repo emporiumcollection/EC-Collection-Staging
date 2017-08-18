@@ -1469,6 +1469,7 @@
                         imagesPro += '</div>';
                         imagesPro += '</div>';
                         $('.single-right-text-product').html(imagesPro);
+                        $('.show_more-page').css("width", "100%");
                     }
                 });
                 return false;
