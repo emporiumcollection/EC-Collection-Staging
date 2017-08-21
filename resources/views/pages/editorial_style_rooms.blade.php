@@ -183,18 +183,22 @@ foreach ($propertyDetail['typedata'] as $type) {
 
     });
 
-    $(".image-slider-previous-btn").click(function ( event ) {
+      $(".image-slider-previous-btn").click(function ( event ) {
         event.preventDefault();
         
         var index = $(this).parent().parent().find(".image-slider li.active").index();
+		$(this).parent().parent().find(".image-slider li.active").removeClass("active");
         if (index == 0) {
-            index = +$(this).parent().parent().find(".image-slider li:last-child").index() + 1;
+			var lindex = $(this).parent().parent().find(".image-slider li:last-child").index() +1;
+            $(this).parent().parent().find(".image-slider li:nth-child(1)").addClass("active");
+			$(this).parent().parent().find(".images-count").html( lindex + " / " + $(this).parent().parent().find(".image-slider li").length);
         }
-
-        $(this).parent().parent().find(".image-slider li.active").removeClass("active");
-        $(this).parent().parent().find(".image-slider li:nth-child(" + index + ")").addClass("active");
-        
-        $(this).parent().parent().find(".images-count").html( index + " / " + $(this).parent().parent().find(".image-slider li").length);
+		else
+		{
+			$(this).parent().parent().find(".image-slider li:eq("+index+")").addClass("active");
+			$(this).parent().parent().find(".images-count").html( index + " / " + $(this).parent().parent().find(".image-slider li").length);
+		}
+		
         
     });
     
@@ -207,9 +211,9 @@ foreach ($propertyDetail['typedata'] as $type) {
         }
 
         $(this).parent().parent().find(".image-slider li.active").removeClass("active");
-        $(this).parent().parent().find(".image-slider li:nth-child(" + (+index + 2) + ")").addClass("active");
+        $(this).parent().parent().find(".image-slider li:nth-child(" + (+index + 1) + ")").addClass("active");
         
-        $(this).parent().parent().find(".images-count").html( (+index + 2) + " / " + $(this).parent().parent().find(".image-slider li").length);
+        $(this).parent().parent().find(".images-count").html( (+index + 1) + " / " + $(this).parent().parent().find(".image-slider li").length);
         
     });
     
