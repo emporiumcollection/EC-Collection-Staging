@@ -60,36 +60,36 @@
 					autoplaySpeed: 3000
 				});
 			});
-                        $(document).ready(function (){
-                            var load_rooms = true;
-                            $( window ).scroll(function() {
-                                if($(window).scrollTop() > 650 && load_rooms == true) {
-                                    load_rooms = false;
-                                    $.ajax({
-                                        url: "<?php echo URL(); ?>/our-collection-pages/<?php echo $slug; ?>/style_rooms",
-                                        type: "GET",
-                                        success: function (data, textStatus, jqXHR) {
-                                            $("#style-rooms").html(data);
-                                            $.ajax({
-                                                url: "<?php echo URL(); ?>/our-collection-pages/<?php echo $slug; ?>/deisgnarchitecture",
-                                                type: "GET",
-                                                success: function (data, textStatus, jqXHR) {
-                                                    $("#deisgnarchitecture").html(data);
-                                                }
-                                            });
-                                            $.ajax({
-                                                url: "<?php echo URL(); ?>/our-collection-pages/<?php echo $slug; ?>/rooms",
-                                                type: "GET",
-                                                success: function (data, textStatus, jqXHR) {
-                                                    $("#rooms").html(data);
-                                                }
-                                            });
-                                        }
-                                    });
-                                }
-                            });
-                        });
-			</script>
+			$(document).ready(function (){
+				var load_rooms = true;
+				$( window ).scroll(function() {
+					if($(window).scrollTop() > 650 && load_rooms == true) {
+						load_rooms = false;
+						$.ajax({
+							url: "<?php echo URL(); ?>/our-collection-pages/<?php echo $slug; ?>/style_rooms",
+							type: "GET",
+							success: function (data, textStatus, jqXHR) {
+								$("#style-rooms").html(data);
+								$.ajax({
+									url: "<?php echo URL(); ?>/our-collection-pages/<?php echo $slug; ?>/deisgnarchitecture",
+									type: "GET",
+									success: function (data, textStatus, jqXHR) {
+										$("#deisgnarchitecture").html(data);
+									}
+								});
+								$.ajax({
+									url: "<?php echo URL(); ?>/our-collection-pages/<?php echo $slug; ?>/rooms",
+									type: "GET",
+									success: function (data, textStatus, jqXHR) {
+										$("#rooms").html(data);
+									}
+								});
+							}
+						});
+					}
+				});
+			});
+		</script>
 
         <!-- video js player -->
         <link href="{{ asset('sximo/videojsplayer/video-js.css')}}" rel="stylesheet">
@@ -100,9 +100,9 @@
             .detail-tile-inner img { max-width:100%; }
             .gallerysty { font-weight: bold;font-size: 15px;color: #000; }
             .hotel-name-first-letter { background-image: url({{URL::to('uploads/properties_subtab_imgs/'.$propertyDetail['data']->restaurant_image)}}); }
-            .editorial-book-now-page { background-image: url('{{( array_key_exists('propimage', $propertyDetail)) ? $propertyDetail['propimage'][0]->imgsrc.$propertyDetail['propimage'][0]->file_name : ''}}');  }
-            .hotels-showcase-right-side { background-image: url('{{( array_key_exists('propimage', $propertyDetail)) ? $propertyDetail['propimage'][0]->imgsrc.$propertyDetail['propimage'][0]->file_name : ''}}'); }
-            .hotel-sec-block-two { background-image: url('{{( array_key_exists('propimage', $propertyDetail)) ? $propertyDetail['propimage'][0]->imgsrc.$propertyDetail['propimage'][1]->file_name : ''}}'); }
+            .editorial-book-now-page { background-image: url('{{( array_key_exists('propimage', $propertyDetail)) ? $propertyDetail['propimage_thumbpath'].$propertyDetail['propimage'][0]->file_name : ''}}');  }
+            .hotels-showcase-right-side { background-image: url('{{( array_key_exists('propimage', $propertyDetail)) ? $propertyDetail['propimage_thumbpath'].$propertyDetail['propimage'][0]->file_name : ''}}'); }
+            .hotel-sec-block-two { background-image: url('{{( array_key_exists('propimage', $propertyDetail)) ? $propertyDetail['propimage_thumbpath'].$propertyDetail['propimage'][1]->file_name : ''}}'); }
 
             .hotels-detail-description-text > p { max-height:300px; }
             .hotel-block-two-right-sec-align > h2{
@@ -118,7 +118,7 @@
             .spa-sec-book-an-appoinment-btn { float: left !important; margin-left: 20px; }
             .spa-overlay-text span { padding-left:0px !important; }
             .restaurant-sec-main-bg-align {
-                background-image: url("{{( array_key_exists('propimage', $propertyDetail)) ? $propertyDetail['propimage'][0]->imgsrc.$propertyDetail['propimage'][0]->file_name : ''}}");
+                background-image: url("{{( array_key_exists('propimage', $propertyDetail)) ? $propertyDetail['propimage_thumbpath'].$propertyDetail['propimage'][0]->file_name : ''}}");
             }
             .next-prevoius-navigation.left-arrow-align {
                 display: none;
@@ -129,13 +129,13 @@
 			.editorial-hotel-detail-page .go-back-button {
 				top: 98px;
 			}
-                        .book-button{    padding: 10px 18px}
-                        body.fixed {
-                            max-height: 100vh;
-                            max-width: 100%;
-                            overflow: hidden;
-                            position: unset;
-                        }
+			.book-button{    padding: 10px 18px}
+			body.fixed {
+				max-height: 100vh;
+				max-width: 100%;
+				overflow: hidden;
+				position: unset;
+			}
         </style>
 		
     </head>
@@ -144,75 +144,51 @@
             <div class="container-fluid">
                 <header >
                 <a data-popup-id="login-forms-popup" href="#" class="video-popup-btn login_popup show-login-forms-btn"><i class="fa fa-lock " aria-hidden="true" ></i></a>
-                <!--<a href="{{url('customer/login')}}" class="login_popup"><i class="fa fa-lock " aria-hidden="true" ></i></a>-->
-				
-                    <div class="container-fluid logo-padding-left editorial-logo-align">
-                        <!--<div class="col-md-12-">
-                            <p><a class="logo-d" href="{{url()}}">D</a></p>
-                        </div>
-                        <div class="col-md-12-">
-                            <h2 class="menu-text-align">Editorial</h2>
-                        </div>
-
-                        <div class="col-md-12- menu">
-                            <a href="#"><img class="menu-button" src="{{ asset('sximo/assets/images/menu.png')}}" alt=""/></a>
-                            <ul style="display: none;">
-                                <li>
-                                    <a href="{{url()}}/home">Get Inspired</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="trigger-click-on-book-now">By Date</a>
-                                </li>
-                                <li>
-                                    <a href="#">Personalized Service</a>
-                                </li>
-                                <li>
-                                    <a href="#">About</a>
-                                </li>
-                            </ul>
-                        </div>-->
-                        <div class="col-md-12-">
-                            <div class="row">
-                                <a href="#" title="Add to Favorites" class="book-button" onclick="add_to_lightbox({{( array_key_exists('propimage', $propertyDetail)) ? $propertyDetail['propimage'][0]->id : ''}}, {{$propertyDetail['data']->id}});"><i class="fa fa-plus " aria-hidden="true" ></i> Add</a>
-								
-                            </div>
-                        </div>
-                         
-                        <div class="row go-back-button-container">
-                            <button class="go-back-button" onclick="goBack()">Go Back</button>
-                            <div class="previous-page-screen-short-container">
-                                <?php if(\Session::get('ai_previous_page')): ?>
-                                    <img src="{{URL()}}/sximo/previous_page_image/<?php echo \Session::get('ai_previous_page'); ?>">
-                                <?php endif; ?>
-                            </div>
-                        </div>
-                    </div>
-                <div class="hotel-next-previous-outer">
-                    <div class="previous-btn previous-next-pannel"> 
-                          <img class="img-responsive next-hotel-arrow" src="{{ asset('sximo/assets/images/editorial-left-arrow.png')}}" alt=""/>
-                        <a href="#">
-                            <div class="next-hotel-show-pannel">
-                                <img class="img-responsive" src="http://design-locations.biz/uploads/container_user_files/locations/miss-clara-by-nobis/property-images/Miss-Clara-by-Nobis-Stockholm-Sweden%20(10).jpg" alt="">
-                                <div class="next-hotel-tittle">
-                                    <h2>Miss Clara By Nobbis</h2>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="hotel-next-previous-outer">
-                    <div class="next-hotel-btn previous-next-pannel"> 
-                        <img class="img-responsive next-hotel-arrow" src="{{ asset('sximo/assets/images/editorial-right-arrow.png')}}" alt=""/>
-                        <a href="#">
-                            <div class="next-hotel-show-pannel">
-                                <img class="img-responsive" src="http://design-locations.biz/uploads/container_user_files/locations/miss-clara-by-nobis/property-images/Miss-Clara-by-Nobis-Stockholm-Sweden%20(5).jpg" alt="">
-                                <div class="next-hotel-tittle">
-                                    <h2>Miss Clara By Nobbis</h2>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+				<div class="logo-padding-left editorial-logo-align">
+					<div>
+						<a href="#" title="Add to Favorites" class="book-button" onclick="add_to_lightbox({{( array_key_exists('propimage', $propertyDetail)) ? $propertyDetail['propimage'][0]->id : ''}}, {{$propertyDetail['data']->id}});"><i class="fa fa-plus " aria-hidden="true" ></i> Add</a>
+					</div>
+					<div class="go-back-button-container">
+						<button class="go-back-button" onclick="goBack()">Go Back</button>
+						<div class="previous-page-screen-short-container">
+							<?php if(\Session::get('ai_previous_page')): ?>
+								<img src="{{URL()}}/sximo/previous_page_image/<?php echo \Session::get('ai_previous_page'); ?>">
+							<?php endif; ?>
+						</div>
+					</div>
+				</div>
+                @if(!empty($relatedproperties))
+					@if(array_key_exists('0',$relatedproperties))
+						<div class="hotel-next-previous-outer">
+							<div class="previous-btn previous-next-pannel"> 
+								  <img class="img-responsive next-hotel-arrow" src="{{ asset('sximo/assets/images/editorial-left-arrow.png')}}" alt=""/>
+								<a href="{{URL::to($relatedproperties[0]->property_slug)}}">
+									<div class="next-hotel-show-pannel">
+										<img class="img-responsive" src="{{ URL::to('uploads/property_imgs_thumbs/front_property_'.$relatedproperties[0]->folder_id.'_'.$relatedproperties[0]->file_name)}}" alt="">
+										<div class="next-hotel-tittle">
+											<h2>{{$relatedproperties[0]->property_name}}</h2>
+										</div>
+									</div>
+								</a>
+							</div>
+						</div>
+					@endif
+					@if(array_key_exists('1',$relatedproperties))
+						<div class="hotel-next-previous-outer">
+							<div class="next-hotel-btn previous-next-pannel"> 
+								<img class="img-responsive next-hotel-arrow" src="{{ asset('sximo/assets/images/editorial-right-arrow.png')}}" alt=""/>
+								<a href="{{URL::to($relatedproperties[1]->property_slug)}}">
+									<div class="next-hotel-show-pannel">
+										<img class="img-responsive" src="{{ URL::to('uploads/property_imgs_thumbs/front_property_'.$relatedproperties[1]->folder_id.'_'.$relatedproperties[1]->file_name)}}" alt="">
+										<div class="next-hotel-tittle">
+											<h2>{{$relatedproperties[1]->property_name}}</h2>
+										</div>
+									</div>
+								</a>
+							</div>
+						</div>
+					@endif
+				@endif
                 </header>
                 <div id="editorial-siden-nav-res" class="sidenav">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -269,29 +245,25 @@
                                     <a href="#social" data-hotel-option="social">SOCIAL</a>
                                 </li>
 				
-				@if(!empty($hotel_brochure))
-					<li>
-						<a href="javascript:window.open('{{URL::to('propertyflipbook?pdfname='.$hotel_brochure_pdfsrc.$hotel_brochure->file_name)}}', 'Flipbook', 'width=1300,height=800');" data-hotel-option="hotel_brochure"> Hotel Brochure </a>
-					</li>
-				@endif
-				@if(!empty($restaurant_menu))
-					<li>
-						<a href="javascript:window.open('{{URL::to('propertyflipbook?pdfname='.$restaurant_menu_pdfsrc.$restaurant_menu->file_name)}}', 'Flipbook', 'width=1300,height=800');" data-hotel-option="restaurant_menu"> Restaurant Menu </a>
-					</li>
-				@endif
-				@if(!empty($spa_brochure))
-					<li>
-						<a href="javascript:window.open('{{URL::to('propertyflipbook?pdfname='.$spa_brochure_pdfsrc.$spa_brochure->file_name)}}', 'Flipbook', 'width=1300,height=800');" data-hotel-option="spa_brochure"> Spa Brochure </a>
-					</li>
-				@endif
+								@if(!empty($hotel_brochure))
+									<li>
+										<a href="javascript:window.open('{{URL::to('propertyflipbook?pdfname='.$hotel_brochure_pdfsrc.$hotel_brochure->file_name)}}', 'Flipbook', 'width=1300,height=800');" data-hotel-option="hotel_brochure"> Hotel Brochure </a>
+									</li>
+								@endif
+								@if(!empty($restaurant_menu))
+									<li>
+										<a href="javascript:window.open('{{URL::to('propertyflipbook?pdfname='.$restaurant_menu_pdfsrc.$restaurant_menu->file_name)}}', 'Flipbook', 'width=1300,height=800');" data-hotel-option="restaurant_menu"> Restaurant Menu </a>
+									</li>
+								@endif
+								@if(!empty($spa_brochure))
+									<li>
+										<a href="javascript:window.open('{{URL::to('propertyflipbook?pdfname='.$spa_brochure_pdfsrc.$spa_brochure->file_name)}}', 'Flipbook', 'width=1300,height=800');" data-hotel-option="spa_brochure"> Spa Brochure </a>
+									</li>
+								@endif
 
                                 <li>
                                     <a href="#book-now" data-hotel-option="book_now">BOOK {{$propertyDetail['data']->property_name}} </a>
                                 </li>
-                                <!--<li>
-                                    <a href="#">PACKAGES</a>
-                                </li>
-                                -->
                             </ul>
                             <section class="regular slider">
 								<div class="slick-cstm-width">
@@ -299,14 +271,15 @@
 									<div class="side-nav-next-hotel-img">
 										<div class="side-next-and-perivious-hotel-arrow">
 											<div class="arrows-commom  next-arrow">
-												<a href="{{URL::to($relatedproperties[0]['rpdata']->property_slug)}}">
+												<a href="{{URL::to($relatedproperties[0]->property_slug)}}">
 													<span>New Hotels</span>
 												</a>
 											</div>
 										</div>
-										<div class="new-hotel-image" style="background-image: url('{{$relatedproperties[0]['image']->imgsrc.$relatedproperties[0]['image']->file_name}}')">
+										{{--*/ $relatimg = URL::to('uploads/property_imgs_thumbs/front_property_'.$relatedproperties[0]->folder_id.'_'.$relatedproperties[0]->file_name); /*--}}
+										<div class="new-hotel-image" style="background-image: url('{{$relatimg}}')">
 											<div class="new-hotels-image-tittle">
-												<h2 class="new-hotel-name">{{$relatedproperties[0]['rpdata']->property_name}}</h2>
+												<h2 class="new-hotel-name">{{$relatedproperties[0]->property_name}}</h2>
 												<div class=" new-hotel-add">
 													<p>New York City</p>
 													<p>United States</p>
@@ -314,13 +287,12 @@
 											</div>
 											<div class="clearfix"></div>
 											<div class="new-hotel-view-more-btn">
-												<a class="" href="{{URL::to($relatedproperties[0]['rpdata']->property_slug)}}">
+												<a class="" href="{{URL::to($relatedproperties[0]->property_slug)}}">
 													View Hotel
 												</a>
 											</div>
 										</div>
-										<!--<img class="img-responsive" src="{{$relatedproperties[0]['image']->imgsrc.$relatedproperties[0]['image']->file_name}}" alt="">-->
-										<a class="bootom-view-next-btn" href="{{URL::to($relatedproperties[0]['rpdata']->property_slug)}}">
+										<a class="bootom-view-next-btn" href="{{URL::to($relatedproperties[0]->property_slug)}}">
 											Visit All Hotels DOI
 										</a>
 									</div>
@@ -343,9 +315,6 @@
                 <div class="editorial-page-booking-bar">
                     <section class="book-form-top-bar">
                         <div>
-                            <!--<div class="to-booking-nav-show-hide-btn">
-                                <img src="{{ asset('sximo/assets/images/arrow_detail.png')}}" alt=""/>
-                            </div>-->
                             <form class="our-collection-top-booking-form" action="{{url().'/book-property/'.$propertyDetail['data']->property_slug}}" method="get">
                                 <div class="booking-form-bar-top">
                                     <div class="col-md-2 col-sm-2">
@@ -486,11 +455,11 @@
                         @if(!empty($propertyDetail['propimage']))
                         <ul>
                             @foreach($propertyDetail['propimage'] as $propimg)
-                            {{--*/ $thactualsize = getimagesize($propimg->imgsrccon.$propimg->file_name); /*--}}
+                            {{--*/ $thactualsize = getimagesize($propertyDetail['propimage_containerpath'].$propimg->file_name); /*--}}
                             @if($thactualsize[0]>$thactualsize[1])
                             <li class="{{($propertyDetail['propimage'][0]==$propimg) ? 'active' : ''}}">
                                 <div class="image editorial-image">
-                                    <img src="{{ $propimg->imgsrc.$propimg->file_name }}" alt=""/>
+                                    <img src="{{ $propertyDetail['propimage_thumbpath'].$propimg->file_name }}" alt=""/>
                                 </div>
 
                                 <div class="editorial-text">
@@ -901,23 +870,11 @@
 											<iframe width="100%" height="500px" src="https://www.youtube.com/embed/{{$vimeoid}}" frameborder="0" allowfullscreen></iframe>
 										@elseif($propertyDetail['data']->video_link_type=="vimeo")
 											{{--*/  $videolink = "https://player.vimeo.com/video/".$vimeoid; /*--}}
+											<iframe width="100%" height="500px" src="{{$videolink}}}" frameborder="0" allowfullscreen></iframe>
 										@endif
 										
 									@endif
-                                    
-                                   <!-- <div class="video-below-text-margin-align">
-                                        <div class="video-sec-small-text">
-                                            {{$propertyDetail['data']->video_title}}
-                                        </div>
-                                        <div class="video-sec-description-text">
-                                            {!! nl2br(e($propertyDetail['data']->video_desciription)) !!}
-                                        </div>
-                                        <div class="video-sec-bottom-text">
-                                            {{$propertyDetail['data']->video_sub_title}}
-                                        </div>
-                                    </div>-->
                                 </div>
-
                             </div>
                         </div>
                         @endif
@@ -925,7 +882,6 @@
 						
 						<!--Book Now page-->
                         <div class="editorial-book-now-page sec-differentiate-line " id="book-now">
-                            <!--<form id="frontend_booking" method="post">-->
                             <form class="detail-page-booking-form" action="{{url().'/book-property/'.$propertyDetail['data']->property_slug}}" method="get">
                                 <input type="hidden" name="property" id="property" value="{{$propertyDetail['data']->id}}" />
                                 <input type="hidden" name="roomType" id="roomType" value="" />
@@ -966,7 +922,6 @@
                                     <div class="clearfix"></div>
                                     <div class="editorial-submit-btn">
                                         <button type="submit">BOOK NOW</button>
-                                        <!--<a data-popup-id="booking-form-pop-up" class="booking-form-pop-up-btn" href="#" onclick="save_reserve_forms_data('frontend_booking');">BOOK NOW</a>-->
                                     </div>
                                     <div class="view-modify-cancel-booking">
                                         <a href="#">View, Modify or Cancel your Booking</a>
@@ -1074,27 +1029,24 @@
 										</li>
 
                                         @if(!empty($hotel_brochure))
-						<li>
-							<a href="javascript:window.open('{{URL::to('propertyflipbook?pdfname='.$hotel_brochure_pdfsrc.$hotel_brochure->file_name)}}', 'Flipbook', 'width=1300,height=800');" data-hotel-option="hotel_brochure"> Hotel Brochure </a>
-						</li>
-					@endif
-					@if(!empty($restaurant_menu))
-						<li>
-							<a href="javascript:window.open('{{URL::to('propertyflipbook?pdfname='.$restaurant_menu_pdfsrc.$restaurant_menu->file_name)}}', 'Flipbook', 'width=1300,height=800');" data-hotel-option="restaurant_menu"> Restaurant Menu </a>
-						</li>
-					@endif
-					@if(!empty($spa_brochure))
-						<li>
-							<a href="javascript:window.open('{{URL::to('propertyflipbook?pdfname='.$spa_brochure_pdfsrc.$spa_brochure->file_name)}}', 'Flipbook', 'width=1300,height=800');" data-hotel-option="spa_brochure"> Spa Brochure </a>
-						</li>
-					@endif
-								
-					<li>
+											<li>
+												<a href="javascript:window.open('{{URL::to('propertyflipbook?pdfname='.$hotel_brochure_pdfsrc.$hotel_brochure->file_name)}}', 'Flipbook', 'width=1300,height=800');" data-hotel-option="hotel_brochure"> Hotel Brochure </a>
+											</li>
+										@endif
+										@if(!empty($restaurant_menu))
+											<li>
+												<a href="javascript:window.open('{{URL::to('propertyflipbook?pdfname='.$restaurant_menu_pdfsrc.$restaurant_menu->file_name)}}', 'Flipbook', 'width=1300,height=800');" data-hotel-option="restaurant_menu"> Restaurant Menu </a>
+											</li>
+										@endif
+										@if(!empty($spa_brochure))
+											<li>
+												<a href="javascript:window.open('{{URL::to('propertyflipbook?pdfname='.$spa_brochure_pdfsrc.$spa_brochure->file_name)}}', 'Flipbook', 'width=1300,height=800');" data-hotel-option="spa_brochure"> Spa Brochure </a>
+											</li>
+										@endif
+													
+										<li>
                                             <a href="#book-now" data-hotel-option="book_now">BOOK {{$propertyDetail['data']->property_name}} </a>
                                         </li>
-                                        <!--<li>
-                                            <a href="#">PACKAGES</a>
-                                        </li>-->
                                     </ul>
                                 </div>
 								<section class="regular slider">
@@ -1103,14 +1055,15 @@
 											<div class="side-nav-next-hotel-img">
 												<div class="side-next-and-perivious-hotel-arrow">
 													<div class="arrows-commom  next-arrow">
-														<a href="{{URL::to($relatedproperties[0]['rpdata']->property_slug)}}">
+														<a href="{{URL::to($relatedproperties[0]->property_slug)}}">
 															<span>New Hotels</span>
 														</a>
 													</div>
 												</div>
-												<div class="new-hotel-image" style="background-image: url('{{$relatedproperties[0]['image']->imgsrc.$relatedproperties[0]['image']->file_name}}')">
+												{{--*/ $relatimg = URL::to('uploads/property_imgs_thumbs/front_property_'.$relatedproperties[0]->folder_id.'_'.$relatedproperties[0]->file_name); /*--}}
+												<div class="new-hotel-image" style="background-image: url('{{$relatimg}}')">
 													<div class="new-hotels-image-tittle">
-														<h2 class="new-hotel-name">{{$relatedproperties[0]['rpdata']->property_name}}</h2>
+														<h2 class="new-hotel-name">{{$relatedproperties[0]->property_name}}</h2>
 														<div class=" new-hotel-add">
 															<p>New York City</p>
 															<p>United States</p>
@@ -1118,13 +1071,13 @@
 													</div>
 													<div class="clearfix"></div>
 													<div class="new-hotel-view-more-btn">
-														<a class="" href="{{URL::to($relatedproperties[0]['rpdata']->property_slug)}}">
+														<a class="" href="{{URL::to($relatedproperties[0]->property_slug)}}">
 															View Hotel
 														</a>
 													</div>
 												</div>
-												<!--<img class="img-responsive" src="{{$relatedproperties[0]['image']->imgsrc.$relatedproperties[0]['image']->file_name}}" alt="">-->
-												<a class="bootom-view-next-btn" href="{{URL::to($relatedproperties[0]['rpdata']->property_slug)}}">
+												
+												<a class="bootom-view-next-btn" href="{{URL::to($relatedproperties[0]->property_slug)}}">
 													Visit All Hotels DOI
 												</a>
 											</div>
@@ -1321,50 +1274,30 @@
              </div>
          </div>
         <!--New Login Pop Up End Here-->
-        <!--Next hotel-->
-        <?php if(!empty($nextProps) && array_key_exists('image', $nextProps)): ?>
-<!--        <div class="next-prevoius-navigation right-arrow-align">
-            <a href="{{url()}}/{{$nextProps->property_slug}}">
-                <div class="display-arrow">
-                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
-                </div>
-                <div class="display-thumbnail">
-                    <div class="left-display-thumb-inner">
-                        <div class="left-thumb-image">
-                            <img src="{{$nextProps->image}}" alt=""/>
-                        </div>
-                        <div class="left-thumb-text">{{$nextProps->property_name}}</div>
-                    </div>
-                </div>
-            </a>
-        </div>-->
-        <?php endif; ?>
-		
-		
-			<div id="detail-page-gallery-popup" class="popup detail-page-room-pop-up-align">
-                <div class="popup-inner">
-                    <a href="javascript:void(0);" class="popup-close-btn">CLOSE</a>
-                    <div class="popup-content res-gallery-sec-padding">
-                        <div class="image-slider-container">
+		<div id="detail-page-gallery-popup" class="popup detail-page-room-pop-up-align">
+			<div class="popup-inner">
+				<a href="javascript:void(0);" class="popup-close-btn">CLOSE</a>
+				<div class="popup-content res-gallery-sec-padding">
+					<div class="image-slider-container">
 
-                            <div class="clearfix"></div>
-                            <ul class="image-slider post-page-sideshow galleryimg">
-                               
-                            </ul>
-                            <div class="images-count"></div>
-                            <div class="image-slider-btns">
-                                <a class="image-slider-previous-btn gallery-res-previous-btn" href="#">
-                                    <img src="{{asset('sximo/assets/images/left-round-arrow.png')}}" alt=""/>
-                                </a>
-                                <a class="image-slider-next-btn gallery-res-next-btn" href="#">
-                                    <img src="{{asset('sximo/assets/images/right-round-arrow.png')}}" alt=""/>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-            </div>
+						<div class="clearfix"></div>
+						<ul class="image-slider post-page-sideshow galleryimg">
+						   
+						</ul>
+						<div class="images-count"></div>
+						<div class="image-slider-btns">
+							<a class="image-slider-previous-btn gallery-res-previous-btn" href="#">
+								<img src="{{asset('sximo/assets/images/left-round-arrow.png')}}" alt=""/>
+							</a>
+							<a class="image-slider-next-btn gallery-res-next-btn" href="#">
+								<img src="{{asset('sximo/assets/images/right-round-arrow.png')}}" alt=""/>
+							</a>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
         
         <!--Gallery popup end-->
 		
@@ -1383,30 +1316,6 @@
                     }
                 });
             });
-
-           /* $(document).on('click', '.detail_view', function () {
-                $('#frontpage-layer-bj').fadeOut('slow');
-                $('#frontpage-detail-tile').html('');
-                $.ajax({
-                    url: "{{ URL::to('getpropertygallery')}}" + '/' + $(this).attr('rel') + '/' + $(this).attr('rel2'),
-                    type: "get",
-                    success: function (data) {
-                        var imagesPro = '';
-                        $(data.image).each(function (i, val) {
-                            imagesPro += '<li class="detail-tile col-sm-6 col-xs-12 col-md-6 col-lg-4" style="visibility:visible">';
-                            imagesPro += '<div class="detail-tile-inner">';
-                            imagesPro += '<img src="' + val.imgsrc + val.file_name + '"/>';
-                            imagesPro += '</div>';
-                            imagesPro += '</li>';
-                        });
-                        $('#frontpage-detail-tiles-detail').html(imagesPro);
-                    }
-                });
-                $('#frontpage-layer-bj-detail').fadeIn('slow');
-                $('html').addClass('hidescroll');
-                $('body').addClass('layerloaded');
-                return false;
-            });*/
 			
 			$(document).on('click', '.detail_view', function () {
 				$.ajax({
@@ -1445,9 +1354,7 @@
                     type: "get",
                     success: function (data) {
                         var rimg = data.roomimgs.imgsrc + data.roomimgs.file_name;
-//                      $('.rmimgp').html('<img class="img-responsive" src="' + rimg + '" alt="' + data.roomimgs.file_name + '" />');
                         $('.rmimgp').html('<div class="right-text-section"></div>');
-                        //console.log(rimg);
                         $('.show_more-page').css("background-image", "url('" + rimg + "')");
                         var imagesPro = '';
                         imagesPro += '<div class="text-section">';
@@ -1514,32 +1421,9 @@
                 }
             }
         </script>
-         <script>
-            /*********** New script ************/
-            jQuery(function ($) {
-                    $.fn.getRooms = function() {
-                         $.ajax({
-                            url: "{{ URL::to('getRooms/'.$propertyDetail['data']->property_slug)}}",
-                            type: "get",
-                            dataType: "json",
-                            success: function (data) {
-                                var html = '';
-                                console.log(data);
-                            }
-                        });
-                        return this;
-                   };
-
-                   $(document).on('click','[data-hotel-option="rooms_suites"]',function(){
-                    
-                        $(this).getRooms();
-                   }); 
-            });
-        </script>
         <script src="{{ asset('sximo/assets/js/TweenMax.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/script.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/imagesloaded.js')}}" type="text/javascript"></script>
-<!--                    <script src="{{ asset('sximo/assets/js/privacy-cookie.js')}}" type="text/javascript"></script>-->
         <div class="editorial-custom-footer-style">
             @include('layouts/elliot/ai_footer')
         </div>
@@ -1618,7 +1502,7 @@
         </script>
         <script>
             /*previous page screen short*/
-            var scaleBy = 1;
+            /*var scaleBy = 1;
             var w = 1600;
             var h = 700;
             var div = document.querySelector('body');
@@ -1641,65 +1525,65 @@
                         data: "ai_previous_page=" + encodeURIComponent(imageData)
                     });
                 }
-            });
+            });*/
             /*previous page screen short*/
             $('#editorial-book-now-inputs').dateRangePicker(
-                    {
-                        selectForward: (Boolean),
-                        stickyMonths: (Boolean),
-                        startDate: "<?php echo date("d-m-Y") ?>",
-                        format: ' DD.MM.YYYY',
-                        separator: ' to ',
-                        getValue: function ()
-                        {
-                            if ($('#date-range-editorial-destination').val() && $('#date-range-editorial-arrive').val())
-                                return $('#date-range-editorial-destination').val() + ' to ' + $('#date-range-editorial-arrive').val();
-                            else
-                                return '';
-                        },
-                        setValue: function (s, s1, s2)
-                        {
-                        
-                            $('#top-bar-booking-form-arrive').val(s1);
-                            $('#top-bar-booking-form-destination').val(s2);
-                            
-                            $('#date-range-editorial-arrive').val(s1);
-                            $('#date-range-editorial-destination').val(s2);
-                            
-                            $('#date-range-arrive').val(s1);
-                            $('#date-range-departure').val(s2);
-                        }
-                    }
+				{
+					selectForward: (Boolean),
+					stickyMonths: (Boolean),
+					startDate: "<?php echo date("d-m-Y") ?>",
+					format: ' DD.MM.YYYY',
+					separator: ' to ',
+					getValue: function ()
+					{
+						if ($('#date-range-editorial-destination').val() && $('#date-range-editorial-arrive').val())
+							return $('#date-range-editorial-destination').val() + ' to ' + $('#date-range-editorial-arrive').val();
+						else
+							return '';
+					},
+					setValue: function (s, s1, s2)
+					{
+					
+						$('#top-bar-booking-form-arrive').val(s1);
+						$('#top-bar-booking-form-destination').val(s2);
+						
+						$('#date-range-editorial-arrive').val(s1);
+						$('#date-range-editorial-destination').val(s2);
+						
+						$('#date-range-arrive').val(s1);
+						$('#date-range-departure').val(s2);
+					}
+				}
             ).bind('datepicker-first-date-selected', function (event, obj) {
                 $("#date-range-editorial-destination").val('');
             });
             $('#top-bar-booking-form').dateRangePicker(
-                    {
-                        selectForward: (Boolean),
-                        stickyMonths: (Boolean),
-                        startDate: "<?php echo date("d-m-Y") ?>",
-                        format: ' DD.MM.YYYY',
-                        autoClose: "true",
-                        separator: ' to ',
-                        getValue: function ()
-                        {
-                            if ($('#top-bar-booking-form-destination').val() && $('#top-bar-booking-form-arrive').val())
-                                return $('#top-bar-booking-form-destination').val() + ' to ' + $('#top-bar-booking-form-arrive').val();
-                            else
-                                return '';
-                        },
-                        setValue: function (s, s1, s2)
-                        {
-                            $('#top-bar-booking-form-arrive').val(s1);
-                            $('#top-bar-booking-form-destination').val(s2);
-                            
-                            $('#date-range-editorial-arrive').val(s1);
-                            $('#date-range-editorial-destination').val(s2);
-                            
-                            $('#date-range-arrive').val(s1);
-                            $('#date-range-departure').val(s2);
-                        }
-                    }
+				{
+					selectForward: (Boolean),
+					stickyMonths: (Boolean),
+					startDate: "<?php echo date("d-m-Y") ?>",
+					format: ' DD.MM.YYYY',
+					autoClose: "true",
+					separator: ' to ',
+					getValue: function ()
+					{
+						if ($('#top-bar-booking-form-destination').val() && $('#top-bar-booking-form-arrive').val())
+							return $('#top-bar-booking-form-destination').val() + ' to ' + $('#top-bar-booking-form-arrive').val();
+						else
+							return '';
+					},
+					setValue: function (s, s1, s2)
+					{
+						$('#top-bar-booking-form-arrive').val(s1);
+						$('#top-bar-booking-form-destination').val(s2);
+						
+						$('#date-range-editorial-arrive').val(s1);
+						$('#date-range-editorial-destination').val(s2);
+						
+						$('#date-range-arrive').val(s1);
+						$('#date-range-departure').val(s2);
+					}
+				}
             ).bind('datepicker-first-date-selected', function (event, obj) {
                 $("#top-bar-booking-form-destination").val('');
             });
