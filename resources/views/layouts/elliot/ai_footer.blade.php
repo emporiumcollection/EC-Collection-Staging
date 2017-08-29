@@ -115,7 +115,7 @@
             </div>
         </div>
 
-        @include('layouts/elliot/ai_video-popup')
+       
         @include('layouts/elliot/ai_featured-hotel-popup')
         @include('layouts/elliot/ai_gallery-popup')
         @include('layouts/elliot/ai_product-popup')
@@ -211,7 +211,7 @@
                 window.history.back();
             }
         </script>
-        <script type="text/javascript" src="{{ asset('sximo/assets/js/slideshow.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('sximo/assets/js/slideshow.min.js')}}"></script>
         
 		
 		<!-- instagram -->
@@ -219,12 +219,12 @@
 		<link rel="stylesheet" href="{{ asset('sximo/instajs/instashow/jquery.instashow.css')}}">
 		<script src="{{ asset('sximo/instajs/instashow/jquery.instashow.js')}}"></script>
 		<!-- social stream js  -->
-		<link rel="stylesheet" type="text/css" href="{{ asset('sximo/jquery_social_stream/inc/layout.css')}}" media="all" />
+		<!--<link rel="stylesheet" type="text/css" href="{{ asset('sximo/jquery_social_stream/inc/layout.css')}}" media="all" />
 		<link rel="stylesheet" type="text/css" href="{{ asset('sximo/jquery_social_stream/css/dcsns_wall.css')}}" media="all" />
 		<script type="text/javascript" src="{{ asset('sximo/jquery_social_stream/inc/js/jquery.plugins.js')}}"></script>
 		<script type="text/javascript" src="{{ asset('sximo/jquery_social_stream/inc/js/jquery.site.js')}}"></script>
 		<script type="text/javascript" src="{{ asset('sximo/jquery_social_stream/js/jquery.social.stream.wall.1.8.js')}}"></script>
-		<script type="text/javascript" src="{{ asset('sximo/jquery_social_stream/js/jquery.social.stream.1.6.1.min.js')}}"></script>
+		<script type="text/javascript" src="{{ asset('sximo/jquery_social_stream/js/jquery.social.stream.1.6.1.min.js')}}"></script>-->
 		<style>
 			#instaShowGallery_1 .instashow-gallery-media-cover {
 				background: rgba(0, 0, 0, 0.9) !important;
@@ -252,10 +252,10 @@
 			.form-control:focus {
 				border-color: #7a7a7a;
 			}
-		</style>
+		</style>-->
 		@if(!empty($propertyDetail))
 		<script type="text/javascript">
-			jQuery(document).ready(function($){
+			/*jQuery(document).ready(function($){
 				$('#social-stream').dcSocialStream({
 					feeds: {
 						twitter: {
@@ -302,7 +302,7 @@
 					},
 				});
 							 
-			});
+			});*/
 		</script>
 		@endif
     </body>
