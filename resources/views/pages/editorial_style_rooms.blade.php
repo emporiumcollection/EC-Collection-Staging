@@ -9,16 +9,16 @@
             <div style="height: 370.688px; opacity: 1; width: 100%;" class="principale1 prc">
                 @for($rimg1=0; $rimg1 < $divd2; $rimg1++)
 
-                <div style="height: 370.688px; width: 100%;" class="foto1 clio1" rel="clio" data-image="{{$propertyDetail['roomimgs'][$type->id][$rimg1]->imgsrc.$propertyDetail['roomimgs'][$type->id][$rimg1]->file_name}}">
+                <div style="height: 370.688px; width: 100%;" class="foto1 clio1" rel="clio" data-image="{{$propertyDetail['roomimgs'][$type->id]['imgsrc'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name}}">
                     <a data-popup-id="detail-page-rooms-popup-{{$type->id}}"  class="video-popup-btn" href="javascript:void(0);">
-                        <img style="height: 370.688px; width: 659px;" src="{{$propertyDetail['roomimgs'][$type->id][$rimg1]->imgsrc.$propertyDetail['roomimgs'][$type->id][$rimg1]->file_name}}" rel="1" alt="{{$propertyDetail['roomimgs'][$type->id][$rimg1]->file_name}}">
+                        <img style="height: 370.688px; width: 659px;" src="{{$propertyDetail['roomimgs'][$type->id]['imgsrc'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name}}" rel="1" alt="{{$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name}}">
                     </a>
                 </div>
                 @endfor
                 @for($rimg2=$rimg1; $rimg2 < $totimg; $rimg2++)
-                <div style="height: 370.688px;" class="foto2 clio2 " rel="clio" data-image="{{$propertyDetail['roomimgs'][$type->id][$rimg2]->imgsrc.$propertyDetail['roomimgs'][$type->id][$rimg2]->file_name}}">
+                <div style="height: 370.688px;" class="foto2 clio2 " rel="clio" data-image="{{$propertyDetail['roomimgs'][$type->id]['imgsrc'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg2]->file_name}}">
                     <a data-popup-id="detail-page-rooms-popup-{{$type->id}}"  class="video-popup-btn" href="javascript:void(0);">
-                        <img style="height: 370.688px;" src="{{$propertyDetail['roomimgs'][$type->id][$rimg2]->imgsrc.$propertyDetail['roomimgs'][$type->id][$rimg2]->file_name}}" rel="2" alt="{{$propertyDetail['roomimgs'][$type->id][$rimg2]->file_name}}">
+                        <img style="height: 370.688px;" src="{{$propertyDetail['roomimgs'][$type->id]['imgsrc'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg2]->file_name}}" rel="2" alt="{{$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg2]->file_name}}">
                     </a>
                 </div>
                 @endfor
@@ -60,16 +60,16 @@
             <div style="height: 370.688px; opacity: 1; width: 100%;" class="secondaria1 sec next">
                 @for($rimg1=0; $rimg1 < $divd2; $rimg1++)
 
-                <div style="height: 370.688px;" class="foto2 clio3" rel="clio" data-image="{{$propertyDetail['roomimgs'][$type->id][$rimg1]->imgsrc.$propertyDetail['roomimgs'][$type->id][$rimg1]->file_name}}">
+                <div style="height: 370.688px;" class="foto2 clio3" rel="clio" data-image="{{$propertyDetail['roomimgs'][$type->id]['imgsrc'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name}}">
                     <a data-popup-id="detail-page-rooms-popup-{{$type->id}}"  class="video-popup-btn" href="javascript:void(0);">
-                        <img style="height: 370.688px; width: 659px;" src="{{$propertyDetail['roomimgs'][$type->id][$rimg1]->imgsrc.$propertyDetail['roomimgs'][$type->id][$rimg1]->file_name}}" rel="3" alt="{{$propertyDetail['roomimgs'][$type->id][$rimg1]->file_name}}">
+                        <img style="height: 370.688px; width: 659px;" src="{{$propertyDetail['roomimgs'][$type->id]['imgsrc'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name}}" rel="3" alt="{{$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name}}">
                     </a>
                 </div>
                 @endfor
                 @for($rimg2=$rimg1; $rimg2 < $totimg; $rimg2++)
-                <div style="height: 370.688px; width: 100%;" class="foto1 clio4" rel="clio" data-image="{{$propertyDetail['roomimgs'][$type->id][$rimg2]->imgsrc.$propertyDetail['roomimgs'][$type->id][$rimg2]->file_name}}">
+                <div style="height: 370.688px; width: 100%;" class="foto1 clio4" rel="clio" data-image="{{$propertyDetail['roomimgs'][$type->id]['imgsrc'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg2]->file_name}}">
                     <a data-popup-id="detail-page-rooms-popup-{{$type->id}}"  class="video-popup-btn" href="javascript:void(0);">
-                        <img style="height: 370.688px;" src="{{$propertyDetail['roomimgs'][$type->id][$rimg2]->imgsrc.$propertyDetail['roomimgs'][$type->id][$rimg2]->file_name}}" rel="4" alt="{{$propertyDetail['roomimgs'][$type->id][$rimg1]->file_name}}">
+                        <img style="height: 370.688px;" src="{{$propertyDetail['roomimgs'][$type->id]['imgsrc'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg2]->file_name}}" rel="4" alt="{{$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name}}">
                     </a>
                 </div>
                 @endfor
@@ -113,9 +113,9 @@ foreach ($propertyDetail['typedata'] as $type) {
                     <ul class="image-slider post-page-sideshow">
                         <?php
                         $index = 0;
-                        if (!empty($propertyDetail['roomimgs'][$type->id])) {
-                            foreach ($propertyDetail['roomimgs'][$type->id] as $image) {
-                                echo '<li class="', ($index == 0) ? 'active' : '', ' "><img class="img-responsive" src="' . $image->imgsrc . $image->file_name . '" alt=""/></li>';
+                        if (!empty($propertyDetail['roomimgs'][$type->id]['imgs'])) {
+                            foreach ($propertyDetail['roomimgs'][$type->id]['imgs'] as $image) {
+                                echo '<li class="', ($index == 0) ? 'active' : '', ' "><img class="img-responsive" src="' . $propertyDetail['roomimgs'][$type->id]['imgsrc'] . $image->file_name . '" alt=""/></li>';
                                 $index++;
                             }
                         }
@@ -183,7 +183,7 @@ foreach ($propertyDetail['typedata'] as $type) {
 
     });
 
-      $(".image-slider-previous-btn").click(function ( event ) {
+    $(".image-slider-previous-btn").click(function ( event ) {
         event.preventDefault();
         
         var index = $(this).parent().parent().find(".image-slider li.active").index();
