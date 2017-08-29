@@ -20,7 +20,7 @@
 
     <li class="{{($propertyDetail['typedata'][$ftkey]==$type) ? 'active' : ''}}">
         <a href="#">
-            <img class="img-responsive" src="{{$propertyDetail['roomimgs'][$propertyDetail['typedata'][$key]->id][0]->imgsrc.$propertyDetail['roomimgs'][$propertyDetail['typedata'][$key]->id][0]->file_name}}" alt="{{$propertyDetail['roomimgs'][$propertyDetail['typedata'][$key]->id][0]->file_name}}" style="height:580px; width: 100%;">
+            <img class="img-responsive" src="{{$propertyDetail['roomimgs'][$propertyDetail['typedata'][$key]->id]['imgsrc'].$propertyDetail['roomimgs'][$propertyDetail['typedata'][$key]->id]['imgs'][0]->file_name}}" alt="{{$propertyDetail['roomimgs'][$propertyDetail['typedata'][$key]->id]['imgs'][0]->file_name}}" style="height:580px; width: 100%;">
         </a>
         <div class="col-md-12 col-sm-12">
             <div class="col-md-6 col-sm-6">
@@ -43,9 +43,9 @@
                             </div>
                             <div>
                                 @if(end($propertyDetail['typedata'])==$type)
-                                <img class="slider-next-image-btn img-responsive" src="{{$propertyDetail['roomimgs'][$ftky][0]->imgsrc.$propertyDetail['roomimgs'][$ftky][0]->file_name}}" alt=""/>
+                                <img class="slider-next-image-btn img-responsive" src="{{$propertyDetail['roomimgs'][$ftky]['imgsrc'].$propertyDetail['roomimgs'][$ftky]['imgs'][0]->file_name}}" alt=""/>
                                 @else
-                                <img class="slider-next-image-btn img-responsive" src="{{$propertyDetail['roomimgs'][$nxtkey][0]->imgsrc.$propertyDetail['roomimgs'][$nxtkey][0]->file_name}}" alt=""/>
+                                <img class="slider-next-image-btn img-responsive" src="{{$propertyDetail['roomimgs'][$nxtkey]['imgsrc'].$propertyDetail['roomimgs'][$nxtkey]['imgs'][0]->file_name}}" alt=""/>
                                 @endif
                                 <a href="#" style="margin-left:100px;" rel="{{$type->id}}" class="book-button open-show_more-page hotel-btn">Show More</a>
                             </div>
