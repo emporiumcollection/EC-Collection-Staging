@@ -108,7 +108,7 @@
 														</td>
 														<td>
 															<span class="preview">
-																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="">
+																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="#blueimp-gallery">
 																	@if($img->file_type=="application/pdf")
 																		<img src="{{URL::to('uploads/images/bigpage_white_acrobat.png')}}">
 																	@elseif($img->file_type=="application/vnd.openxmlformats-officedocument.word")
@@ -125,7 +125,7 @@
 														</td>
 														<td>
 															<p class="name">
-																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="">{{$img->file_name}}</a>
+																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="#blueimp-gallery">{{$img->file_name}}</a>
 															</p>
 														</td>
 														<td>
@@ -214,14 +214,14 @@
 														</td>
 														<td>
 															<span class="preview">
-																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="#data-gallery-slider" >
+																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="#data-gallery-resto" >
 																	<img src="{{URL::to('uploads/property_imgs_thumbs/'.$img->file_name)}}">
 																</a>
 															</span>
 														</td>
 														<td>
 															<p class="name">
-																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="">{{$img->file_name}}</a>
+																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="#data-gallery-resto">{{$img->file_name}}</a>
 															</p>
 														</td>
 														<td>
@@ -243,7 +243,7 @@
 								</form>
 								
 								<!-- The blueimp Gallery widget -->
-								<div id="data-gallery-slider" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even">
+								<div id="data-gallery-resto" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even">
 									<div class="slides"></div>
 									<h3 class="title"></h3>
 									<a class="prev">‹</a>
@@ -309,14 +309,14 @@
 														</td>
 														<td>
 															<span class="preview">
-																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="#data-gallery-slider" >
+																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="#data-gallery-spa" >
 																	<img src="{{URL::to('uploads/property_imgs_thumbs/'.$img->file_name)}}">
 																</a>
 															</span>
 														</td>
 														<td>
 															<p class="name">
-																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="">{{$img->file_name}}</a>
+																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="#data-gallery-spa">{{$img->file_name}}</a>
 															</p>
 														</td>
 														<td>
@@ -338,7 +338,7 @@
 								</form>
 								
 								<!-- The blueimp Gallery widget -->
-								<div id="data-gallery-slider" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even">
+								<div id="data-gallery-spa" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even">
 									<div class="slides"></div>
 									<h3 class="title"></h3>
 									<a class="prev">‹</a>
