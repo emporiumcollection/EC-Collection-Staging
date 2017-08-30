@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
 <link rel="stylesheet" href="{{ asset('sximo/file_upload/css/jquery.fileupload.css')}}">
 <link rel="stylesheet" href="{{ asset('sximo/file_upload/css/jquery.fileupload-ui.css')}}">
+
 <!-- CSS adjustments for browsers with JavaScript disabled -->
 <noscript><link rel="stylesheet" href="{{ asset('sximo/file_upload/css/jquery.fileupload-noscript.css')}}"></noscript>
 <noscript><link rel="stylesheet" href="{{ asset('sximo/file_upload/css/jquery.fileupload-ui-noscript.css')}}"></noscript>
@@ -203,7 +204,7 @@
 																	<a class="btn btn-success" @if(array_key_exists('imgs', $cat)) href="{{URL::to('folders/'.$cat['imgs'][0]->folder_id.'?show=thumb')}}" @else href="#" @endif>
 																		<span>Re-Order</span>
 																	</a>
-																	<button type="button" class="btn btn-danger" onclick="delete_selected_imgs('ff');" >
+																	<button type="button" class="btn btn-danger" onclick="delete_selected_imgs('ff{{$cat['data']->id}}');" >
 																		<i class="glyphicon glyphicon-trash"></i>
 																		<span>Delete</span>
 																	</button>
@@ -217,7 +218,7 @@
 																		<div class="progress-bar progress-bar-success" style="width:0%;"></div>
 																	</div>
 																	<!-- The extended global progress state -->
-																	<div class="progress-extended"> </div>
+																	<div class="progress-extended">Â </div>
 																</div>
 															</div>
 															<!-- The table listing the files available for upload/download -->
@@ -225,23 +226,23 @@
 																<tbody class="files">
 																	@if(array_key_exists('imgs', $cat))
 																		<tr>
-																			<td colspan="5"><input type="checkbox" value="1" id="check_all" class="check-all"> Select all</td>
+																			<td colspan="5"><input type="checkbox" value="1" id="check_all" rel="{{$cat['data']->id}}" class="check-all"> Select all</td>
 																		</tr>
 																		@foreach($cat['imgs'] as $img)
 																			<tr class="template-download fade in row{{$img->id}}">
 																				<td>
-																					<input type="checkbox" name="compont[]" id="compont" value="{{$img->id}}" class="no-border check-files ff">
+																					<input type="checkbox" name="compont[]" id="compont" value="{{$img->id}}" class="no-border check-files ff{{$cat['data']->id}}">
 																				</td>
 																				<td>
 																					<span class="preview">
-																						<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="#room-gallery{{$cat['data']->id}}">
+																						<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="#blueimp-gallery{{$cat['data']->id}}">
 																							<img src="{{URL::to('uploads/property_imgs_thumbs/'.$img->file_name)}}">
 																						</a>
 																					</span>
 																				</td>
 																				<td>
 																					<p class="name">
-																						<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="">{{$img->file_name}}</a>
+																						<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="#blueimp-gallery{{$cat['data']->id}}">{{$img->file_name}}</a>
 																					</p>
 																				</td>
 																				<td>
@@ -263,16 +264,17 @@
 														</form>
 														
 														<!-- The blueimp Gallery widget -->
-														<div id="room-gallery{{$cat['data']->id}}" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even">
+														<div id="blueimp-gallery{{$cat['data']->id}}" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even">
 															<div class="slides"></div>
 															<h3 class="title"></h3>
-															<a class="prev">?</a>
-															<a class="next">?</a>
-															<a class="close">×</a>
+															<a class="prev"><</a>
+															<a class="next">></a>
+															<a class="close">x</a>
 															<a class="play-pause"></a>
 															<ol class="indicator"></ol>
-														</div>	
+														</div>
 													</div>
+													
 													
 													<div class="tab-pane use-padding" id="rooms_amenity_cat{{$cat['data']->id}}">
 														<form id="add_amenities_room_setup{{$cat['data']->id}}" class="add_amenities_room_setup">
@@ -340,7 +342,7 @@
   <div class="modal-dialog" role="document">
 	<div class="modal-content">
 	  <div class="modal-header">
-		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">Ã—</span></button>
 		<h4 class="modal-title" id="myModalLabel">Copy Room</h4>
 	  </div>
 	  {!! Form::open(array('url'=>'copy_category_rooms', 'class'=>'columns' ,'id' =>'copy_category_rooms', 'method'=>'post', 'files'=>true )) !!}
@@ -436,7 +438,7 @@ $(document).ready(function () {
 					if(data.type=='update')
 					{
 						html +='<div class="alert alert-success fade in block-inner">';
-						html +='<button data-dismiss="alert" class="close" type="button">×</button>';
+						html +='<button data-dismiss="alert" class="close" type="button">Ã—</button>';
 						html +='<i class="icon-checkmark-circle"></i> Record Updated Successfully </div>';
 						$('.page-content-wrapper #formerrors').html(html);
 						window.scrollTo(0, 0);
@@ -489,7 +491,7 @@ $(document).ready(function () {
 						
 						var htmli = '';
 						htmli +='<div class="alert alert-success fade in block-inner">';
-						htmli +='<button data-dismiss="alert" class="close" type="button">×</button>';
+						htmli +='<button data-dismiss="alert" class="close" type="button">Ã—</button>';
 						htmli +='<i class="icon-checkmark-circle"></i> Record Inserted Successfully </div>';
 						$('.page-content-wrapper #formerrors').html(htmli);
 						window.scrollTo(0, 0);
@@ -522,7 +524,7 @@ $(document).ready(function () {
 					  if(data.status=='error')
 					  {
 							html +='<div class="alert alert-danger fade in block-inner">';
-							html +='<button data-dismiss="alert" class="close" type="button">×</button>';
+							html +='<button data-dismiss="alert" class="close" type="button">Ã—</button>';
 							html +='<i class="icon-checkmark-circle"></i> Record Not Found </div>';
 							$('.page-content-wrapper #formerrors').html(html);
 							window.scrollTo(0, 0);
@@ -530,7 +532,7 @@ $(document).ready(function () {
 					  else{
 							$('#add_property_room_setup'+catid+'-'+formid).remove();
 							html +='<div class="alert alert-success fade in block-inner">';
-							html +='<button data-dismiss="alert" class="close" type="button">×</button>';
+							html +='<button data-dismiss="alert" class="close" type="button">Ã—</button>';
 							html +='<i class="icon-checkmark-circle"></i> Record Deleted Successfully </div>';
 							$('.page-content-wrapper #formerrors').html(html);
 							window.scrollTo(0, 0);
@@ -555,14 +557,14 @@ $(document).ready(function () {
 				  if(data.status=='error')
 				  {
 						html +='<div class="alert alert-danger fade in block-inner">';
-						html +='<button data-dismiss="alert" class="close" type="button">×</button>';
+						html +='<button data-dismiss="alert" class="close" type="button">Ã—</button>';
 						html +='<i class="icon-checkmark-circle"></i> Record Not Found </div>';
 						$('.page-content-wrapper #formerrors').html(html);
 						window.scrollTo(0, 0);
 				  }
 				  else{
 						html +='<div class="alert alert-success fade in block-inner">';
-						html +='<button data-dismiss="alert" class="close" type="button">×</button>';
+						html +='<button data-dismiss="alert" class="close" type="button">Ã—</button>';
 						html +='<i class="icon-checkmark-circle"></i> Record Updated Successfully </div>';
 						$('.page-content-wrapper #formerrors').html(html);
 						window.scrollTo(0, 0);
@@ -704,7 +706,7 @@ $(document).ready(function () {
 					  if(data.status=='error')
 					  {
 							html +='<div class="alert alert-danger fade in block-inner">';
-							html +='<button data-dismiss="alert" class="close" type="button">×</button>';
+							html +='<button data-dismiss="alert" class="close" type="button">Ã—</button>';
 							html +='<i class="icon-checkmark-circle"></i> Record Not Found </div>';
 							$('.page-content-wrapper #formerrors').html(html);
 							window.scrollTo(0, 0);
@@ -712,7 +714,7 @@ $(document).ready(function () {
 					  else{
 							$('.prese tr.row'+imgID).remove();
 							html +='<div class="alert alert-success fade in block-inner">';
-							html +='<button data-dismiss="alert" class="close" type="button">×</button>';
+							html +='<button data-dismiss="alert" class="close" type="button">Ã—</button>';
 							html +='<i class="icon-checkmark-circle"></i> Record Deleted Successfully </div>';
 							$('.page-content-wrapper #formerrors').html(html);
 							window.scrollTo(0, 0);
@@ -725,11 +727,13 @@ $(document).ready(function () {
 	
 	$(function(){
 		$('input[type="checkbox"][id="check_all"]').on('ifChecked', function(){
-			$('input[type="checkbox"].ff').iCheck('check');
+			var reli = $(this).attr('rel');
+			$('input[type="checkbox"].ff'+reli).iCheck('check');
 		});
 		
 		$('input[type="checkbox"][id="check_all"]').on('ifUnchecked', function(){
-			$('input[type="checkbox"].ff').iCheck('uncheck');
+			var reli = $(this).attr('rel');
+			$('input[type="checkbox"].ff'+reli).iCheck('uncheck');
 		});
 	});
 	
@@ -757,7 +761,7 @@ $(document).ready(function () {
 				  if(data.status=='error')
 				  {
 						html +='<div class="alert alert-danger fade in block-inner">';
-						html +='<button data-dismiss="alert" class="close" type="button">×</button>';
+						html +='<button data-dismiss="alert" class="close" type="button">Ã—</button>';
 						html +='<i class="icon-checkmark-circle"></i> Record Not Found </div>';
 						$('.page-content-wrapper #formerrors').html(html);
 						window.scrollTo(0, 0);
@@ -767,7 +771,7 @@ $(document).ready(function () {
 							$('.prese tr.row'+obj).remove();
 						});
 						html +='<div class="alert alert-success fade in block-inner">';
-						html +='<button data-dismiss="alert" class="close" type="button">×</button>';
+						html +='<button data-dismiss="alert" class="close" type="button">Ã—</button>';
 						html +='<i class="icon-checkmark-circle"></i> Record Deleted Successfully </div>';
 						$('.page-content-wrapper #formerrors').html(html);
 						window.scrollTo(0, 0);
