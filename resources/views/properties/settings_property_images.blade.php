@@ -107,14 +107,14 @@
 														</td>
 														<td>
 															<span class="preview">
-																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="">
+																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="#blueimp-gallery">
 																	<img src="{{URL::to('uploads/property_imgs_thumbs/'.$img->file_name)}}">
 																</a>
 															</span>
 														</td>
 														<td>
 															<p class="name">
-																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="">{{$img->file_name}}</a>
+																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="#blueimp-gallery">{{$img->file_name}}</a>
 															</p>
 														</td>
 														<td>
@@ -210,7 +210,7 @@
 														</td>
 														<td>
 															<p class="name">
-																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="">{{$img->file_name}}</a>
+																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="#data-gallery-slider">{{$img->file_name}}</a>
 															</p>
 														</td>
 														<td>
