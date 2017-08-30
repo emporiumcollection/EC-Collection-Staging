@@ -46,10 +46,17 @@ class PropertiesController extends Controller {
         // Filter Search for query		
         $filter = (!is_null($request->input('search')) ? $this->buildSearch() : '');
 		$this->data['curntcat'] =  '';
-		if(!is_null($request->input('selcat')))
+		$this->data['curstatus'] =  '';
+		if(!is_null($request->input('selcat')) && $request->input('selcat')!='')
 		{
 			$filter .= ' AND FIND_IN_SET('.$request->input('selcat').', property_category_id)';
 			$this->data['curntcat'] = $request->input('selcat');
+		}
+		if(!is_null($request->input('selstatus')) && $request->input('selstatus')!='')
+		{
+			$pstatus = ($request->input('selstatus')=='active') ? 1 : 0;
+			$filter .= ' AND property_status = '.$pstatus;
+			$this->data['curstatus'] = $request->input('selstatus');
 		}
 
         $page = $request->input('page', 1);
@@ -918,7 +925,7 @@ class PropertiesController extends Controller {
     }
 
     function get_property_files($property_id, $filetype) {
-        $fileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $property_id)->where('tb_properties_images.type', $filetype)->get();
+        $fileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*',  \DB::raw("(CASE WHEN (tb_container_files.file_display_name = '') THEN tb_container_files.file_name ELSE tb_container_files.file_display_name END) as file_name"), 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $property_id)->where('tb_properties_images.type', $filetype)->get();
         $filen = array();
         if (!empty($fileArr)) {
             $f = 0;
@@ -1252,8 +1259,8 @@ class PropertiesController extends Controller {
                     // GET THE FILE EXTENSION
                     $extension = $file[0]->getClientOriginalExtension();
                     // RENAME THE UPLOAD WITH RANDOM NUMBER
-                    //$fileName = rand(11111111, 99999999) . '-' .rand(11111111, 99999999) . '.' . $extension;
-                    $fileName = $file[0]->getClientOriginalName();
+                    $fileName = rand(11111111111, 99999999999) . '-' .rand(11111111111, 99999999999) . '.' . $extension;
+                    $fileNamedis = $file[0]->getClientOriginalName();
                     $ftname = explode('.', $fileName);
                     $exha = false;
 
@@ -1366,6 +1373,7 @@ class PropertiesController extends Controller {
 
                     $data['folder_id'] = $propImgFoldId;
                     $data['file_name'] = $fileName;
+					$data['file_display_name'] = $fileNamedis;
                     $data['file_type'] = $file[0]->getClientMimeType();
                     $data['file_size'] = $file[0]->getClientSize();
                     $data['user_id'] = \Auth::user()->id;
@@ -1386,7 +1394,7 @@ class PropertiesController extends Controller {
                     $getupfile = \DB::table('tb_container_files')->where('id', $fileID)->first();
                     if (!empty($getupfile)) {
                         $getfilejson['files'][0]['id'] = $imgID;
-                        $getfilejson['files'][0]['name'] = $getupfile->file_name;
+                        $getfilejson['files'][0]['name'] = ($getupfile->file_display_name!='') ? $getupfile->file_display_name : $getupfile->file_name;
                         $getfilejson['files'][0]['size'] = $getupfile->file_size;
                         if ($getupfile->file_type == "application/pdf") {
                             $getfilejson['files'][0]['thumbnailUrl'] = \URL::to('uploads/images/bigpage_white_acrobat.png');

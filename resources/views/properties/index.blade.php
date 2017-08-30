@@ -51,7 +51,13 @@
 						<option value="{{$catlist->id}}" <?php echo ($curntcat == $catlist->id) ? " selected='selected' " : '' ; ?>>{{$catlist->category_name}}</option>
 					@endforeach
 				@endif
-			</select> 
+			</select>
+
+			<select name='selstatus' id='selstatus' style="height: 28px; margin-left: 5px;" onchange="filterstatus(this.value);" > 
+				<option value="">-Status-</option>
+				<option value="active" <?php echo ($curstatus == 'active') ? " selected='selected' " : '' ; ?>>Active</option>
+				<option value="inactive" <?php echo ($curstatus == 'inactive') ? " selected='selected' " : '' ; ?>>Inactive</option>
+			</select>			
 		</div> 		
 
 	
@@ -203,6 +209,19 @@ function change_option(row,filed_name,row_id,act)
 function fetchpropertycategory(catg)
 {
 	window.location.href = "{{URL::to('properties')}}?selcat="+catg;
+}
+
+function filterstatus(status)
+{
+	var catg = $('#property_category').val();
+	if(catg!='')
+	{
+		window.location.href = "{{URL::to('properties')}}?selcat="+catg+"&selstatus="+status;
+	}
+	else
+	{
+		window.location.href = "{{URL::to('properties')}}?selstatus="+status;
+	}
 }
 </script>		
 @stop
