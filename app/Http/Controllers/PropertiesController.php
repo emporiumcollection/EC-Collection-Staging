@@ -1190,9 +1190,9 @@ class PropertiesController extends Controller {
     }
 
     function property_images_uploads(Request $request) {
-        $checkProp = \DB::table('tb_properties')->where('id', $request->input('propId'))->first();
+        $checkProp = \DB::table('tb_properties')->select('property_name')->where('id', $request->input('propId'))->first();
         if (!empty($checkProp)) {
-            $checkDir = \DB::table('tb_container')->where('name', 'locations')->first();
+            $checkDir = \DB::table('tb_container')->select('id')->where('name', 'locations')->first();
             if (!empty($checkDir)) {
                 $foldVal = trim($checkProp->property_name);
                 if ($foldVal != "") {
@@ -1200,7 +1200,7 @@ class PropertiesController extends Controller {
                     $slug = \SiteHelpers::seoUrl(trim($foldName));
                     $dirPath = (new ContainerController)->getContainerUserPath($checkDir->id);
 
-                    $checkPropFold = \DB::table('tb_container')->where('name', $slug)->where('parent_id', $checkDir->id)->first();
+                    $checkPropFold = \DB::table('tb_container')->select('id')->where('name', $slug)->where('parent_id', $checkDir->id)->first();
                     if (!empty($checkPropFold)) {
                         $propFoldId = $checkPropFold->id;
                     } else {
@@ -1213,7 +1213,7 @@ class PropertiesController extends Controller {
                     $imgFold = $request->input('uploadType');
                     $PropImgfoldName = trim($imgFold);
                     $PropImgslug = \SiteHelpers::seoUrl(trim($PropImgfoldName));
-                    $checkPropImgFold = \DB::table('tb_container')->where('name', $PropImgslug)->where('parent_id', $propFoldId)->first();
+                    $checkPropImgFold = \DB::table('tb_container')->select('id')->where('name', $PropImgslug)->where('parent_id', $propFoldId)->first();
                     if (!empty($checkPropImgFold)) {
                         $newpropImgFoldId = $checkPropImgFold->id;
                     } else {
@@ -1225,12 +1225,12 @@ class PropertiesController extends Controller {
 
                     if ($imgFold == 'Rooms Images') {
                         $cat_id = $request->input('category_id');
-                        $getcat = \DB::table('tb_properties_category_types')->where('id', $cat_id)->where('status', 0)->first();
+                        $getcat = \DB::table('tb_properties_category_types')->select('category_name')->where('id', $cat_id)->where('status', 0)->first();
                         if (!empty($getcat)) {
                             $catFold = $getcat->category_name;
                             $CatfoldName = trim($catFold);
                             $Catslug = \SiteHelpers::seoUrl(trim($CatfoldName));
-                            $checkCatFold = \DB::table('tb_container')->where('name', $Catslug)->where('parent_id', $newpropImgFoldId)->first();
+                            $checkCatFold = \DB::table('tb_container')->select('id')->where('name', $Catslug)->where('parent_id', $newpropImgFoldId)->first();
                             if (!empty($checkCatFold)) {
                                 $CatFoldId = $checkCatFold->id;
                             } else {
@@ -1329,20 +1329,6 @@ class PropertiesController extends Controller {
                         }
                         $thumbfile = 'front_property_' . $propImgFoldId . '_' . $fileName;
                         $fpimg->save(public_path() . '/uploads/property_imgs_thumbs/' . $thumbfile);
-
-                        /* $fplimg = \Image::make($destinationPath.$fileName);
-                          $thactualsize = getimagesize($destinationPath.$fileName);
-                          if($thactualsize[0]>$thactualsize[1])
-                          {
-                          $fplimg->resize(567, 378);
-                          }
-                          else
-                          {
-                          $fplimg->resize(283, 378);
-                          }
-                          $thumbfilel = 'front_property_large_'. $propImgFoldId .'_'.$fileName;
-                          $fplimg->save(public_path(). '/uploads/property_imgs_thumbs/'.$thumbfilel); */
-
 
                         // Set main image if uploaded file is first in folder
                         $countfile = \DB::table('tb_container_files')->where('folder_id', $propImgFoldId)->where(function ($query) {
