@@ -108,14 +108,14 @@
 														</td>
 														<td>
 															<span class="preview">
-																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="">
+																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="#blueimp-gallery-sgi">
 																	<img src="{{URL::to('uploads/property_imgs_thumbs/'.$img->file_name)}}">
 																</a>
 															</span>
 														</td>
 														<td>
 															<p class="name">
-																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="">{{$img->file_name}}</a>
+																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="#blueimp-gallery-sgi">{{$img->file_name}}</a>
 															</p>
 														</td>
 														<td>
@@ -137,7 +137,7 @@
 								</form>
 								
 								<!-- The blueimp Gallery widget -->
-								<div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even">
+								<div id="blueimp-gallery-sgi" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even">
 									<div class="slides"></div>
 									<h3 class="title"></h3>
 									<a class="prev">‹</a>
@@ -204,14 +204,14 @@
 														</td>
 														<td>
 															<span class="preview">
-																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="#data-gallery-slider" >
+																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="#blueimp-gallery-rgi" >
 																	<img src="{{URL::to('uploads/property_imgs_thumbs/'.$img->file_name)}}">
 																</a>
 															</span>
 														</td>
 														<td>
 															<p class="name">
-																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="">{{$img->file_name}}</a>
+																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="#blueimp-gallery-rgi">{{$img->file_name}}</a>
 															</p>
 														</td>
 														<td>
@@ -233,7 +233,7 @@
 								</form>
 								
 								<!-- The blueimp Gallery widget -->
-								<div id="data-gallery-slider" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even">
+								<div id="blueimp-gallery-rgi" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even">
 									<div class="slides"></div>
 									<h3 class="title"></h3>
 									<a class="prev">‹</a>
@@ -300,14 +300,14 @@
 														</td>
 														<td>
 															<span class="preview">
-																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="#data-gallery-slider" >
+																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="#blueimp-gallery-bgi" >
 																	<img src="{{URL::to('uploads/property_imgs_thumbs/'.$img->file_name)}}">
 																</a>
 															</span>
 														</td>
 														<td>
 															<p class="name">
-																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="">{{$img->file_name}}</a>
+																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="#blueimp-gallery-bgi">{{$img->file_name}}</a>
 															</p>
 														</td>
 														<td>
@@ -329,7 +329,7 @@
 								</form>
 								
 								<!-- The blueimp Gallery widget -->
-								<div id="data-gallery-slider" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even">
+								<div id="blueimp-gallery-bgi" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even">
 									<div class="slides"></div>
 									<h3 class="title"></h3>
 									<a class="prev">‹</a>
