@@ -1,9 +1,9 @@
 @if($propertyDetail['data']->architecture_title!='' && $propertyDetail['data']->architecture_desciription!='')
 <div class="container">
     @if($propertyDetail['data']->architecture_image!='')
-    <img class="architecture-sec-top-img" src="{{\ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$propertyDetail['data']->architecture_image),70,1050,null)}}" alt=""/>
+    <img class="architecture-sec-top-img" src="{{\ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$propertyDetail['data']->architecture_image),85,1050,null)}}" alt=""/>
     @else
-    <img class="architecture-sec-top-img" src="{{\ImageCache::make(public_path('sximo/assets/images/Architecture-&-Design.png'),70,1050,null)}}" alt=""/>
+    <img class="architecture-sec-top-img" src="{{\ImageCache::make(public_path('sximo/assets/images/Architecture-&-Design.png'),85,1050,null)}}" alt=""/>
     @endif
 </div>
 <div class="col-md-12 ">

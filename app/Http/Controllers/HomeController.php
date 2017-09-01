@@ -4362,7 +4362,7 @@ class HomeController extends Controller {
             foreach ($fileArr as $file) {
                 $propertiesArr['image'][$pr] = $file;
                 $propertiesArr['image'][$pr]->imgsrc = (new ContainerController)->getThumbpath($file->folder_id);
-                $propertiesArr['image'][$pr]->imgsrc_cache = ImageCache::make(public_path(str_replace(url().'/', '', (new ContainerController)->getThumbpath($file->folder_id).$file->file_name)),60,1000,null);
+                $propertiesArr['image'][$pr]->imgsrc_cache = ImageCache::make(public_path(str_replace(url().'/', '', (new ContainerController)->getThumbpath($file->folder_id).$file->file_name)),85,1000,null);
                 $pr++;
             }
         }
@@ -4413,7 +4413,7 @@ class HomeController extends Controller {
             if (!empty($roomfileArr)) {
                 $propertiesArr['roomimgs'] = $roomfileArr;
                 $propertiesArr['roomimgs']->imgsrc = (new ContainerController)->getThumbpath($roomfileArr->folder_id);
-                $propertiesArr['roomimgs']->imgsrc_cache = ImageCache::make(public_path(str_replace(url().'/', '', (new ContainerController)->getThumbpath($roomfileArr->folder_id).$roomfileArr->file_name)),60,1000,null);
+                $propertiesArr['roomimgs']->imgsrc_cache = ImageCache::make(public_path(str_replace(url().'/', '', (new ContainerController)->getThumbpath($roomfileArr->folder_id).$roomfileArr->file_name)),85,1000,null);
                 
             }
 
