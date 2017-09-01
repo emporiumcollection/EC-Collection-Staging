@@ -31,7 +31,7 @@
 		 <link href="{{ asset('sximo/assets/css/slick.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/slick-theme.css')}}" rel="stylesheet" type="text/css"/>
         <!--JS Includes-->
-        <link href="http://design-locations.biz/sximo/assets/css/ai_yachts-custom.css" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('sximo/assets/css/ai_yachts-custom.css')}}" rel="stylesheet" type="text/css"/>
 
         <script src="{{ asset('sximo/assets/js/jquery-2.1.0.min.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/bootstrap.min.js')}}" type="text/javascript"></script>
@@ -100,9 +100,9 @@
             .detail-tile-inner img { max-width:100%; }
             .gallerysty { font-weight: bold;font-size: 15px;color: #000; }
             .hotel-name-first-letter { background-image: url({{URL::to('uploads/properties_subtab_imgs/'.$propertyDetail['data']->restaurant_image)}}); }
-            .editorial-book-now-page { background-image: url('{{( array_key_exists('propimage', $propertyDetail)) ? $propertyDetail['propimage_thumbpath'].$propertyDetail['propimage'][0]->file_name : ''}}');  }
-            .hotels-showcase-right-side { background-image: url('{{( array_key_exists('propimage', $propertyDetail)) ? $propertyDetail['propimage_thumbpath'].$propertyDetail['propimage'][0]->file_name : ''}}'); }
-            .hotel-sec-block-two { background-image: url('{{( array_key_exists('propimage', $propertyDetail)) ? $propertyDetail['propimage_thumbpath'].$propertyDetail['propimage'][1]->file_name : ''}}'); }
+            .editorial-book-now-page { background-image: url('{{( array_key_exists('propimage', $propertyDetail)) ? \ImageCache::make($propertyDetail['propimage_thumbpath_dir'].$propertyDetail['propimage'][0]->file_name,60,1000,null) : ''}}');  }
+            .hotels-showcase-right-side { background-image: url('{{( array_key_exists('propimage', $propertyDetail)) ? \ImageCache::make($propertyDetail['propimage_thumbpath_dir'].$propertyDetail['propimage'][0]->file_name,60,1000,null) : ''}}'); }
+            .hotel-sec-block-two { background-image: url('{{( array_key_exists('propimage', $propertyDetail)) ? \ImageCache::make($propertyDetail['propimage_thumbpath_dir'].$propertyDetail['propimage'][1]->file_name,60,1000,null) : ''}}'); }
 
             .hotels-detail-description-text > p { max-height:300px; }
             .hotel-block-two-right-sec-align > h2{
@@ -459,7 +459,7 @@
                             @if($thactualsize[0]>$thactualsize[1])
                             <li class="{{($propertyDetail['propimage'][0]==$propimg) ? 'active' : ''}}">
                                 <div class="image editorial-image">
-                                    <img src="{{ $propertyDetail['propimage_thumbpath'].$propimg->file_name }}" alt=""/>
+                                    <img src="{{ \ImageCache::make($propertyDetail['propimage_thumbpath_dir'].$propimg->file_name,70,1200,null) }}" alt=""/>
                                 </div>
 
                                 <div class="editorial-text">
@@ -602,7 +602,7 @@
                                         <div class="clearfix"></div>
                                         <div class="restaurant-des-pannel-image1">
                                             @if($propertyDetail['data']->restaurant_image!='')
-                                            <img class="img-responsive img-width" src="{{URL::to('uploads/properties_subtab_imgs/'.$propertyDetail['data']->restaurant_image)}}" alt=""/>  
+                                            <img class="img-responsive img-width" src="{{ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$propertyDetail['data']->restaurant_image),70,300,null)}}" alt=""/>  
                                             @endif
                                         </div>
                                         <div class="clearfix"></div>
@@ -619,10 +619,10 @@
                                                 <div class="row restaurant-image-height-align">
                                                     <div class="restaurant-des-pannel-image2 restaurant-image-height-align">
                                                         @if($propertyDetail['data']->restaurant_image2!='')
-                                                        <img class="img-responsive img-width" src="{{URL::to('uploads/properties_subtab_imgs/'.$propertyDetail['data']->restaurant_image2)}}" alt=""/>  
+                                                        <img class="img-responsive img-width" src="{{ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$propertyDetail['data']->restaurant_image2),70,500,null)}}" alt=""/>  
                                                         @else
                                                             @if($propertyDetail['data']->restaurant_image!='')
-                                                            <img class="img-responsive img-width" src="{{URL::to('uploads/properties_subtab_imgs/'.$propertyDetail['data']->restaurant_image)}}" alt=""/>  
+                                                            <img class="img-responsive img-width" src="{{ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$propertyDetail['data']->restaurant_image),70,500,null)}}" alt=""/>  
                                                             @endif
                                                         @endif
                                                     </div>
@@ -657,7 +657,7 @@
                                         <div class="clearfix"></div>
                                         <div class="restaurant-des-pannel-image1">
                                             @if($propertyDetail['data']->restaurant2_image!='')
-                                            <img class="img-responsive img-width" src="{{URL::to('uploads/properties_subtab_imgs/'.$propertyDetail['data']->restaurant2_image)}}" alt=""/>  
+                                            <img class="img-responsive img-width" src="{{ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$propertyDetail['data']->restaurant2_image),70,297,null)}}" alt=""/>  
                                             @endif  
                                         </div>
                                         <div class="clearfix"></div>
@@ -674,7 +674,7 @@
                                                 <div class="row restaurant-image-height-align">
                                                     <div class="restaurant-des-pannel-image2 restaurant-image-height-align">
                                                         @if($propertyDetail['data']->restaurant2_image2!='')
-                                                        <img class="img-responsive img-width" src="{{URL::to('uploads/properties_subtab_imgs/'.$propertyDetail['data']->restaurant2_image2)}}" alt=""/>  
+                                                        <img class="img-responsive img-width" src="{{ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$propertyDetail['data']->restaurant2_image2),70,500,null)}}" alt=""/>  
                                                         @endif 
                                                     </div>
                                                 </div>
@@ -701,7 +701,7 @@
                                         <div class="col-md-3 col-sm-3">
                                             <div class="row">
                                                 @if($propertyDetail['data']->bar_image!='')
-                                                <img class="img-responsive img-width" src="{{URL::to('uploads/properties_subtab_imgs/'.$propertyDetail['data']->bar_image)}}" alt=""/>  
+                                                <img class="img-responsive img-width" src="{{ ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$propertyDetail['data']->bar_image),70,255,null)}}" alt=""/>  
                                                 @endif
                                                 <div class="hotel-bar-name-pannel">
                                                     <h2 class="bar-name-text-style">{{$propertyDetail['data']->bar_title}}</h2>
@@ -722,7 +722,7 @@
                                                             <div class="row">
                                                                 <div class="bar-red-pannel-image">
                                                                     @if($propertyDetail['data']->bar_image2!='')
-                                                                    <img class="img-responsive img-width" src="{{URL::to('uploads/properties_subtab_imgs/'.$propertyDetail['data']->bar_image2)}}" alt=""/>  
+                                                                    <img class="img-responsive img-width" src="{{ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$propertyDetail['data']->bar_image2),70,255,null)}}" alt=""/>  
                                                                     @endif
                                                                 </div>
                                                             </div>
@@ -743,7 +743,7 @@
                                             <div class="row">
                                                 <div class="bar-image-rigth">
                                                     @if($propertyDetail['data']->bar_image3!='')
-                                                    <img class="img-responsive img-width" src="{{URL::to('uploads/properties_subtab_imgs/'.$propertyDetail['data']->bar_image3)}}" alt=""/>  
+                                                    <img class="img-responsive img-width" src="{{ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$propertyDetail['data']->bar_image3),70,255,null)}}" alt=""/>  
                                                     @endif
                                                 </div>
                                             </div>
@@ -778,9 +778,9 @@
 
                                         </div>
                                         @if($propertyDetail['data']->spa_image1!='')
-                                        <img class="img-responsive main-spa-img-align" src="{{URL::to('uploads/properties_subtab_imgs/'.$propertyDetail['data']->spa_image1)}}" alt=""/>
+                                        <img class="img-responsive main-spa-img-align" src="{{ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$propertyDetail['data']->spa_image1),70,1000,null)}}" alt=""/>
                                         @else
-                                        <img class="img-responsive main-spa-img-align" src="{{ asset('sximo/assets/images/SPA-&-WELLNESS.png')}}" alt=""/>
+                                        <img class="img-responsive main-spa-img-align" src="{{ ImageCache::make(public_path('sximo/assets/images/SPA-&-WELLNESS.png'),70,1000,null)}}" alt=""/>
                                         @endif
                                     </div>
                                     <div class="col-md-6 col-sm-6">
@@ -789,9 +789,9 @@
                                                 <p class="spa-sec-para-style spa-text-pannel1">{!!  nl2br(e($propertyDetail['data']->spa_desciription)) !!}</p>
 
                                                 @if($propertyDetail['data']->spa_image2!='')
-                                                <img class="img-responsive main-spa-img-align" src="{{URL::to('uploads/properties_subtab_imgs/'.$propertyDetail['data']->spa_image2)}}" alt=""/>
+                                                <img class="img-responsive main-spa-img-align" src="{{ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$propertyDetail['data']->spa_image2),70,500,null)}}" alt=""/>
                                                 @else
-                                                <img class="img-responsive main-spa-img-align img-responsive" src="{{ asset('sximo/assets/images/SPA-&-WELLNESS-2.png')}}" alt=""/>
+                                                <img class="img-responsive main-spa-img-align img-responsive" src="{{ImageCache::make(asset('sximo/assets/images/SPA-&-WELLNESS-2.png'),70,500,null)}}" alt=""/>
                                                 @endif
 
                                                 <div class="spa-left-des-pannel2">
@@ -814,17 +814,17 @@
                                         <div class="row">
                                             <div class="spa-description-pannel2">
                                                 @if($propertyDetail['data']->spa_image3!='')
-                                                <img class="img-responsive main-spa-img-align" src="{{URL::to('uploads/properties_subtab_imgs/'.$propertyDetail['data']->spa_image3)}}" alt=""/>
+                                                <img class="img-responsive main-spa-img-align" src="{{ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$propertyDetail['data']->spa_image3),70,500,null)}}" alt=""/>
                                                 @else
-                                                <img class="img-responsive main-spa-img-align" src="{{ asset('sximo/assets/images/Spa-Manager.png')}}" alt=""/>
+                                                <img class="img-responsive main-spa-img-align" src="{{ ImageCache::make(public_path('sximo/assets/images/Spa-Manager.png'),70,500,null)}}" alt=""/>
                                                 @endif
                                                 <div class="spa-products-tittles-align">
                                                     <div class="col-md-6 col-sm-6">
                                                         <div class="row">
                                                             @if($propertyDetail['data']->spa_image4!='')
-                                                            <img class="img-responsive main-spa-img-align" src="{{URL::to('uploads/properties_subtab_imgs/'.$propertyDetail['data']->spa_image4)}}" alt=""/>
+                                                            <img class="img-responsive main-spa-img-align" src="{{ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$propertyDetail['data']->spa_image4),70,250,null)}}" alt=""/>
                                                             @else
-                                                            <img class="img-responsive main-spa-img-align" src="{{ asset('sximo/assets/images/Spa-Manager.png')}}" alt=""/>
+                                                            <img class="img-responsive main-spa-img-align" src="{{ ImageCache::make(public_path('sximo/assets/images/Spa-Manager.png'),70,250,null)}}" alt=""/>
                                                             @endif
                                                         </div>
                                                     </div>
@@ -1330,7 +1330,7 @@
 							{
 								clsact = 'active';
 							}
-							imagesPro += '<li class="'+clsact+'"><img class="img-responsive" src="' + val.imgsrc + val.file_name + '" alt=""/></li>';
+							imagesPro += '<li class="'+clsact+'"><img class="img-responsive" src="' + val.imgsrc_cache + '" alt=""/></li>';
 							im++;
                         });
                         $('#detail-page-gallery-popup .galleryimg').html(imagesPro);
@@ -1353,7 +1353,7 @@
                     url: "{{ URL::to('getpropertytypedetail')}}" + '/' + $(this).attr('rel'),
                     type: "get",
                     success: function (data) {
-                        var rimg = data.roomimgs.imgsrc + data.roomimgs.file_name;
+                        var rimg = data.roomimgs.imgsrc_cache;
                         $('.rmimgp').html('<div class="right-text-section"></div>');
                         $('.show_more-page').css("background-image", "url('" + rimg + "')");
                         var imagesPro = '';
