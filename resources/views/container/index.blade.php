@@ -590,9 +590,6 @@
 					<div class="field-input">
 						<select name="copy_to" class="form-control" required="required">
 						<option value=""> --Select Folder-- </option>
-						@foreach($seloptions as $opt)
-						  <option value="<?php echo $opt["id"]; ?>"><?php echo $opt["name"]; ?></option>
-						@endforeach
 						</select>
 					</div>
 				</div>
@@ -626,9 +623,6 @@
 					<div class="field-input">
 						<select name="move_to" class="form-control" required="required">
 						<option value=""> --Select Folder-- </option>
-						@foreach($seloptions as $opt)
-						  <option value="<?php echo $opt["id"]; ?>"><?php echo $opt["name"]; ?></option>
-						@endforeach
 						</select>
 					</div>
 				</div>
@@ -1061,9 +1055,6 @@
 						<div class="field-input">
 							<select name="cover_fold" class="form-control">
 							<option value=""> --Select Folder-- </option>
-							@foreach($seloptions as $opt)
-							  <option value="<?php echo $opt["id"]; ?>"><?php echo $opt["name"]; ?></option>
-							@endforeach
 							</select>
 						</div>
 					</div>
