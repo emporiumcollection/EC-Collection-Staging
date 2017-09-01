@@ -1,24 +1,27 @@
 @if (array_key_exists('typedata', $propertyDetail))
+
 <section id="style-rooms" class="container-fluid">
     <div class="row gallery"></div>
     @foreach($propertyDetail['typedata'] as $type)
     @if (array_key_exists($type->id, $propertyDetail['roomimgs']))
-    {{--*/ $totimg = count($propertyDetail['roomimgs'][$type->id]); $divd2 = round($totimg/2); /*--}}
+    {{--*/ $totimg = count($propertyDetail['roomimgs'][$type->id]['imgs']); $divd2 = round($totimg/2); /*--}}
+  
     <div class="row gallery">
         <div class="col-md-6 col-sm-6">
             <div style="height: 370.688px; opacity: 1; width: 100%;" class="principale1 prc">
                 @for($rimg1=0; $rimg1 < $divd2; $rimg1++)
 
-                <div style="height: 370.688px; width: 100%;" class="foto1 clio1" rel="clio" data-image="{{$propertyDetail['roomimgs'][$type->id]['imgsrc'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name}}">
+                <div style="height: 370.688px; width: 100%;" class="foto1 clio1" rel="clio" data-image="{{\ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name,60,1000,null)}}">
                     <a data-popup-id="detail-page-rooms-popup-{{$type->id}}"  class="video-popup-btn" href="javascript:void(0);">
-                        <img style="height: 370.688px; width: 659px;" src="{{$propertyDetail['roomimgs'][$type->id]['imgsrc'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name}}" rel="1" alt="{{$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name}}">
+                        <img style="height: 370.688px; width: 659px;" src="{{\ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name,60,1000,null)}}" rel="1" alt="{{$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name}}">
                     </a>
                 </div>
                 @endfor
+
                 @for($rimg2=$rimg1; $rimg2 < $totimg; $rimg2++)
-                <div style="height: 370.688px;" class="foto2 clio2 " rel="clio" data-image="{{$propertyDetail['roomimgs'][$type->id]['imgsrc'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg2]->file_name}}">
+                <div style="height: 370.688px;" class="foto2 clio2 " rel="clio" data-image="{{\ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg2]->file_name,60,1000,null)}}">
                     <a data-popup-id="detail-page-rooms-popup-{{$type->id}}"  class="video-popup-btn" href="javascript:void(0);">
-                        <img style="height: 370.688px;" src="{{$propertyDetail['roomimgs'][$type->id]['imgsrc'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg2]->file_name}}" rel="2" alt="{{$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg2]->file_name}}">
+                        <img style="height: 370.688px;" src="{{\ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg2]->file_name,60,1000,null)}}" rel="2" alt="{{$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg2]->file_name}}">
                     </a>
                 </div>
                 @endfor
@@ -60,16 +63,16 @@
             <div style="height: 370.688px; opacity: 1; width: 100%;" class="secondaria1 sec next">
                 @for($rimg1=0; $rimg1 < $divd2; $rimg1++)
 
-                <div style="height: 370.688px;" class="foto2 clio3" rel="clio" data-image="{{$propertyDetail['roomimgs'][$type->id]['imgsrc'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name}}">
+                <div style="height: 370.688px;" class="foto2 clio3" rel="clio" data-image="{{\ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name,60,1000,null)}}">
                     <a data-popup-id="detail-page-rooms-popup-{{$type->id}}"  class="video-popup-btn" href="javascript:void(0);">
-                        <img style="height: 370.688px; width: 659px;" src="{{$propertyDetail['roomimgs'][$type->id]['imgsrc'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name}}" rel="3" alt="{{$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name}}">
+                        <img style="height: 370.688px; width: 659px;" src="{{\ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name,60,1000,null)}}" rel="3" alt="{{$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name}}">
                     </a>
                 </div>
                 @endfor
                 @for($rimg2=$rimg1; $rimg2 < $totimg; $rimg2++)
-                <div style="height: 370.688px; width: 100%;" class="foto1 clio4" rel="clio" data-image="{{$propertyDetail['roomimgs'][$type->id]['imgsrc'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg2]->file_name}}">
+                <div style="height: 370.688px; width: 100%;" class="foto1 clio4" rel="clio" data-image="{{\ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg2]->file_name,60,1000,null)}}">
                     <a data-popup-id="detail-page-rooms-popup-{{$type->id}}"  class="video-popup-btn" href="javascript:void(0);">
-                        <img style="height: 370.688px;" src="{{$propertyDetail['roomimgs'][$type->id]['imgsrc'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg2]->file_name}}" rel="4" alt="{{$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name}}">
+                        <img style="height: 370.688px;" src="{{\ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg2]->file_name,60,1000,null)}}" rel="4" alt="{{$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name}}">
                     </a>
                 </div>
                 @endfor
@@ -115,7 +118,8 @@ foreach ($propertyDetail['typedata'] as $type) {
                         $index = 0;
                         if (!empty($propertyDetail['roomimgs'][$type->id]['imgs'])) {
                             foreach ($propertyDetail['roomimgs'][$type->id]['imgs'] as $image) {
-                                echo '<li class="', ($index == 0) ? 'active' : '', ' "><img class="img-responsive" src="' . $propertyDetail['roomimgs'][$type->id]['imgsrc'] . $image->file_name . '" alt=""/></li>';
+				$imagePath = \ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'] . $image->file_name,70,800,null);
+                                echo '<li class="', ($index == 0) ? 'active' : '', ' "><img class="img-responsive" src="' . $imagePath . '" alt=""/></li>';
                                 $index++;
                             }
                         }
