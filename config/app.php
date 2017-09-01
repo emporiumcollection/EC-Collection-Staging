@@ -213,6 +213,7 @@ return [
 		'TagsFinder' => App\Helpers\TagsFinder::class,
 		 'CategoryMenu' => App\Helpers\CategoryMenu::class,
          'Debugbar' => Barryvdh\Debugbar\Facade::class,
+	 'ImageCache' => App\Helpers\ImageCache::class,
 
     ],
 
