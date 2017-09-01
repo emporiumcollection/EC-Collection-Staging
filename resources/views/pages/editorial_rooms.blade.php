@@ -20,7 +20,7 @@
 
     <li class="{{($propertyDetail['typedata'][$ftkey]==$type) ? 'active' : ''}}">
         <a href="#">
-            <img class="img-responsive" src="{{\ImageCache::make($propertyDetail['roomimgs'][$propertyDetail['typedata'][$key]->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$propertyDetail['typedata'][$key]->id]['imgs'][0]->file_name,85,1050,null)}}" alt="{{$propertyDetail['roomimgs'][$propertyDetail['typedata'][$key]->id]['imgs'][0]->file_name}}" style="height:580px; width: 100%;">
+            <img class="img-responsive" src="{{\ImageCache::make($propertyDetail['roomimgs'][$propertyDetail['typedata'][$key]->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$propertyDetail['typedata'][$key]->id]['imgs'][0]->file_name,100,1050,null)}}" alt="{{$propertyDetail['roomimgs'][$propertyDetail['typedata'][$key]->id]['imgs'][0]->file_name}}" style="height:580px; width: 100%;">
         </a>
         <div class="col-md-12 col-sm-12">
             <div class="col-md-6 col-sm-6">
@@ -43,9 +43,9 @@
                             </div>
                             <div>
                                 @if(end($propertyDetail['typedata'])==$type)
-                                <img class="slider-next-image-btn img-responsive" src="{{\ImageCache::make($propertyDetail['roomimgs'][$ftky]['imgsrc_dir'].$propertyDetail['roomimgs'][$ftky]['imgs'][0]->file_name,70,200,null)}}" alt=""/>
+                                <img class="slider-next-image-btn img-responsive" src="{{\ImageCache::make($propertyDetail['roomimgs'][$ftky]['imgsrc_dir'].$propertyDetail['roomimgs'][$ftky]['imgs'][0]->file_name,100,200,null)}}" alt=""/>
                                 @else
-                                <img class="slider-next-image-btn img-responsive" src="{{\ImageCache::make($propertyDetail['roomimgs'][$nxtkey]['imgsrc_dir'].$propertyDetail['roomimgs'][$nxtkey]['imgs'][0]->file_name,70,200,null)}}" alt=""/>
+                                <img class="slider-next-image-btn img-responsive" src="{{\ImageCache::make($propertyDetail['roomimgs'][$nxtkey]['imgsrc_dir'].$propertyDetail['roomimgs'][$nxtkey]['imgs'][0]->file_name,100,200,null)}}" alt=""/>
                                 @endif
                                 <a href="#" style="margin-left:100px;" rel="{{$type->id}}" class="book-button open-show_more-page hotel-btn">Show More</a>
                             </div>
