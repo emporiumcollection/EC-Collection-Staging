@@ -294,7 +294,7 @@ and open the template in the editor.
 .hotel-sec-block-two {
     background-blend-mode: multiply;
     background-color: #292b2e;
-    background-image: url("http://www.design-locations.biz/uploads/container_user_files/locations/hotel-greif/property-images/Hotel-Greiff- South-Tyrol, Italy-design-locations.com8.jpeg");
+    /*background-image: url("http://www.design-locations.biz/uploads/container_user_files/locations/hotel-greif/property-images/Hotel-Greiff- South-Tyrol, Italy-design-locations.com8.jpeg");*/
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;

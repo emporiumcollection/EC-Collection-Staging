@@ -89,7 +89,7 @@ and open the template in the editor.
     font-size: 80px;
 }
 .search-page {
-    background-image: url("../images/GoOurCollectionBackground.jpg");
+    background-image: url("../images/background-2.png");
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
@@ -190,7 +190,7 @@ and open the template in the editor.
 
 /*Experience Page CSS*/
 .experience-page {
-    background-image: url("../images/GoExperienceBackground.jpg");
+    background-image: url("../images/background-img.png");
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;

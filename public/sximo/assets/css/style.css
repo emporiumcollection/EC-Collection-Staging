@@ -384,7 +384,6 @@ section .col-md-1, section .col-md-10, section .col-md-11, section .col-md-12, s
 }
 #destination {
     float: left;
-    margin-top: 70px;
     width: 100%;
 }
 
@@ -691,7 +690,7 @@ nav.navbar.navbar-inverse {
     padding: 3px 15px;
 }
 .open-social-share {
-  display: inline;
+    display: inline;
 }
 .trigger-click-on-share {
     background-color: #1c1c1c;
@@ -1242,11 +1241,11 @@ nav.navbar.navbar-inverse {
     width: 32px;
 }
 .book-button {
-    background-color: #c7ab84;
+    background-color: #efe5bc;
     color: #000;
     display: inline-block;
     font-size: 10px;
-    padding: 15px 19px;
+    padding: 10px 18px;
     text-decoration: none;
 }
 .book-button:hover, .book-button:active, .book-button:focus {
@@ -1319,8 +1318,8 @@ nav.navbar.navbar-inverse {
     }
     .header-logo-align > a > img {
         height: auto;
-        margin: 106px auto 96px 57px;
-        width: 83%;
+        margin: 106px auto 96px 0;
+        width: 100%;
     }
     .sub-menues {
         margin-left: 0;
@@ -1361,9 +1360,14 @@ nav.navbar.navbar-inverse {
         border-bottom: 1px solid #000;
         width: 85%;
     }
+    .dates li input, .dates li select {
+        padding-left: 13px !important;
+    }
 
 }
-
+.bh-search-input.ai-md-search-input::-moz-placeholder {
+    color: #000 !important;
+}
 
 #destination .container-fluid {
     max-width: 1500px;
@@ -1517,9 +1521,6 @@ header .menu ul li a:hover, header .menu ul li a:active, header .menu ul li a:fo
     float: right;
     margin-left: 35%;
     margin-right: 9px;
-}
-.content-grid-shuffle .thumb-8 img {
-    margin-top: 50px;
 }
 .loadmore-btn.style-2 {
     margin-bottom: 150px;
@@ -1685,7 +1686,7 @@ header .menu ul li a:hover, header .menu ul li a:active, header .menu ul li a:fo
     position: absolute;
 }
 .product-grid-shuffle .thumb-4 {
-    margin-bottom: 35px;
+    margin-bottom: 15px;
 }
 .product-grid-shuffle .thumb-5 .product-name {
     display: none;
@@ -2722,7 +2723,6 @@ header .menu ul li a:hover, header .menu ul li a:active, header .menu ul li a:fo
     object-position: center center;
 }
 .editorial-logo-align {
-    padding-left: 15px;
     width: 65px;
 }
 /**  
@@ -4504,7 +4504,6 @@ div#fixed_wrapper {
 .login_popup .fa{
     color: #c7ab84;
     font-size: 24px;
-    margin: 20px;
 }   
 /*Personalized Service section*/
 .top-progress-bar {
@@ -5342,6 +5341,17 @@ div#fixed_wrapper {
         height: 574px;
         min-height: 574px;
     }
+    .uk-overlay-panel {
+        padding: 10px !important;
+    }
+    .bh-slideshow-overlay-title {
+        font-size: 18px !important;
+        margin: 8px 0 0 !important;
+    }
+    .bh-slideshow-overlay-content {
+        font-size: 14px !important;
+        line-height: 24px !important;
+    }
 }
 
 
@@ -5350,10 +5360,10 @@ div#fixed_wrapper {
  */
 
 .previous-page-screen-short-container {
-  display: none;
-  position: absolute;
-  width: 350px;
-  z-index: 99;
+    display: none;
+    position: absolute;
+    width: 350px;
+    z-index: 99;
 }
 .previous-page-screen-short-container img {
     width: 100%;
@@ -5400,6 +5410,7 @@ div#fixed_wrapper {
     font-family: AcaslonPro-Regular;
     font-size: 18px;
     font-style: italic;
+    margin: 0;
     padding: 0;
 }
 .next-hotel-show-pannel img {
@@ -5426,8 +5437,258 @@ div#fixed_wrapper {
     border-top: 2px solid #fff;
 }
 .next-hotel-arrow {
-  margin: 0 auto;
+    margin: 0 auto;
 }
 .click-share-btn {
-  display: none;
+    display: none;
+}
+.mobile-close-btn-date.close-btn-align {
+    top: 55px;
+}
+.hidelayorothers:after {
+    background: transparent !important; 
+}
+.hidelayorothers {
+    background: transparent !important;
+}
+.shop-overlay-outer {
+    position: relative;
+}
+.products-overlay-pannel-main {
+    overflow: hidden;
+    position: relative;
+}
+.products-overlay-pannel-main .overlay-text {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background: rgba(0, 0, 0, 0.82);
+}
+
+.products-overlay-pannel-main:hover .overlay-text {
+    opacity: 1;
+}
+.overlay-text-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+    padding: 0 10px;
+}
+.shop-overlay-tittle {
+    color: #fff;
+    font-family: serif;
+    font-size: 17px;
+    font-style: italic;
+    overflow-wrap: break-word;
+}
+.shop-overlay-price {
+    color: #fff;
+    font-size: 14px;
+    margin-top: 4px;
+    margin-bottom: 0;
+}
+.main-shop-product-name {
+    color: #000;
+    display: inline-block;
+    font-family: serif;
+    font-size: 17px;
+    font-style: italic;
+    height: auto;
+    margin-bottom: 0;
+    margin-top: 10px;
+    max-width: 181px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.main-shop-product-name:hover, .main-shop-product-name:focus, .main-shop-product-name:active{
+    color: #000;
+    text-decoration: none;
+
+}
+.shop-below-tittle {
+    float: left;
+    width: calc(100% - 50px);
+}
+.shop-right-icons {
+    float: left;
+    margin-top: 10px;
+    text-align: right;
+    width: 50px;
+}
+.shop-icons-list-align {
+    float: left;
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.shop-icons-list-align li {
+    float: right;
+    padding-left: 10px;
+}
+.shop-icons-list-align li:last-child {
+    padding-left: 0;
+}
+.shop-icons-list-align a {
+    color: #000;
+    font-size: 17px;
+}
+.shop-view-btn {
+    float: left;
+    width: 100%;
+}
+.quick-vew-btn {
+    color: #9b9b9b;
+    font-family: serif;
+    font-size: 14px;
+}
+.quick-vew-btn span {
+    margin-left: 5px;
+    vertical-align: middle;
+}
+.products-overlay-pannel-main:hover .overlay-text {
+    transform: scale(1.06);
+    transition: all 0.2s ease-out 0s;
+}
+.products-overlay-pannel-main:hover .shop-overlay-outer {
+    transform: scale(1.06);
+    transition: all 0.2s ease-out 0s;
+}
+.outer-overlay-hidden{
+    overflow: hidden;
+}
+.boxes-common .thumb-image {
+    object-fit: cover;
+    object-position: center center;
+}
+.box-align-thumb1 .thumb-image {
+    height: 170px;
+}
+.box-align-thumb3 .thumb-image {
+    height: 271px;
+}
+.box-align-thumb2 .thumb-image {
+    height: 372px;
+}
+.box-align-thumb4 .thumb-image {
+    height: 271px;
+}
+.box-align-thumb5 .thumb-image {
+    height: 276px;
+}
+.box-align-thumb6 .thumb-image {
+    height: 474px;
+}
+.box-align-thumb7 .thumb-image {
+    height: 200px;
+}
+.thumb-4.ads > img {
+    height: 200px;
+    object-fit: cover;
+    object-position: center center;
+}
+.advertie-tittle{
+    width: 100%;
+}
+.box-align-thumb8 .thumb-image {
+    height: 400px;
+}
+.af-search-input.bh-search-input.typeahead.tt-hint {
+    display: none;
+}
+.shop-page-sidebar-width{
+    width: 215px;
+    float: left;
+}
+.shop-page-width-align {
+    float: left;
+    padding-left: 15px;
+    position: relative;
+    width: calc(100% - 215px);
+}
+.shop-page-fixed-sidebar {
+    background-color: #d3d6d2;
+    bottom: 0;
+    overflow: auto;
+    position: fixed;
+    top: 0;
+}
+.shop-page-fixed-sidebar  .custom-heading {
+    padding: 25px 20px;
+}
+.shop-page-fixed-sidebar .design-locations-logo > a img {
+    margin-top: 0;
+}
+.shop-page-fixed-sidebar .bh-search-input {
+    padding: 0 !important;
+}
+.products-overlay-pannel-main {
+    padding-left: 0;
+}
+.thumb-4.ads {
+    padding-left: 0;
+}
+.quick-vew-btn:hover, .quick-vew-btn:focus, .quick-vew-btn:active {
+    color: #454340;
+    text-decoration: none;
+}
+@media screen and (min-width: 1800px){
+    .box-align-thumb1 .thumb-image {
+        height: 280px;
+    }
+    .box-align-thumb3 .thumb-image {
+        height: 400px;
+    }
+    .box-align-thumb2 .thumb-image {
+        height: 520px;
+    }
+    .box-align-thumb4 .thumb-image {
+        height: 400px;
+    }
+    .box-align-thumb5 .thumb-image {
+        height: 400px;
+    }
+    .box-align-thumb6 .thumb-image {
+        height: 600px;
+    }
+    .box-align-thumb7 .thumb-image {
+        height: 261px;
+    }
+    .box-align-thumb8 .thumb-image {
+        height: 600px;
+    }
+}
+.show-login-forms-btn {
+    display: inline-block;
+    padding: 5px 0;
+    text-align: center;
+    vertical-align: text-top;
+    width: 100%;
+}
+.content-grid-boxes-outer {
+    margin-top: 15px;
+}
+.featured-property-icon {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: auto;
+}
+.destination-inner-accordian-outer .panel-heading {
+  background-color: transparent;
+  border: medium none;
+  height: auto;
+  margin: 0;
+  padding: 0;
 }
