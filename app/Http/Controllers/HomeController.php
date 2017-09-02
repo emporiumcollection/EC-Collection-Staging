@@ -3629,7 +3629,7 @@ class HomeController extends Controller {
                 $boxcont[$bcontent->lightbox_id][$l]['lightbox'] = $bcontent;
                 $fetch_prop_img = \DB::table('tb_properties_images')->join('tb_properties','tb_properties_images.property_id','=','tb_properties.id')->select('property_name')->where('file_id', $bcontent->file_id)->first();
                 if (!empty($fetch_prop_img)) {
-					$boxcont[$bcontent->lightbox_id][$l]['property'] = $fetch_prop;
+					$boxcont[$bcontent->lightbox_id][$l]['property'] = $fetch_prop_img;
                 }
                 $l++;
             }
