@@ -303,7 +303,53 @@
 										</div>
 									</div>
                                 </div>
-
+								<div class="header-navigation-container col-md-12">
+									<div class="row">
+										<div class="col-md-0"></div>
+										<div class="col-md-3 col-sm-2 header-text-align">
+										</div>
+										<div class="col-md-7 col-sm-8">
+											<div class="header-navigation-menu">
+												<nav class="navbar navbar-inverse">
+													<div class="container-fluid">
+														<div class="navbar-header">
+															<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+																<span class="icon-bar"></span>
+																<span class="icon-bar"></span>
+																<span class="icon-bar"></span>
+															</button>
+														</div>
+														<div class="collapse navbar-collapse" id="myNavbar">
+														   <ul class="nav navbar-nav">
+																<?php
+																	$social_property = SiteHelpers::menus('social_property');
+																	if(!empty($social_property)) {
+																		foreach ($social_property as $gmenu) {
+																			?>
+																			<li class="<?php echo (isset($type) && $type == $gmenu['menu_name'])? 'active' : ''; ?>">
+																				<a href="<?php echo ($gmenu['menu_type'] =='external')? URL::to($gmenu['url']) : URL::to($gmenu['module']); ?>" >
+																				<?php
+																				if(CNF_MULTILANG ==1 && isset($gmenu['menu_lang']['title'][Session::get('lang')])) {
+																					echo $gmenu['menu_lang']['title'][Session::get('lang')];
+																				}
+																				else {
+																					echo $gmenu['menu_name'];
+																				}
+																				?>
+																				</a>
+																			</li>
+																			<?php
+																		}
+																	}
+																?>
+															</ul>
+														</div>
+													</div>
+												</nav>
+											</div>
+										</div>
+									</div>
+								</div>
                                 <div class="sticky-header-offset"></div>
 								
                                 <div class="col-md-12 col-sm-12 col-xs-12 yachts-main-bg">

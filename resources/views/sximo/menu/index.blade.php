@@ -23,6 +23,10 @@
 		<li @if($active == 'landing') class="active" @endif><a href="{{ URL::to('sximo/menu?pos=landing')}}"><i class="icon-paragraph-justify2"></i> {{ Lang::get('core.tab_landingmenu') }}</a></li>	
 		<li @if($active == 'grid') class="active" @endif><a href="{{ URL::to('sximo/menu?pos=grid')}}"><i class="icon-paragraph-justify2"></i> {{ Lang::get('core.tab_gridmenu') }}</a></li>
 		<li @if($active == 'yachts') class="active" @endif><a href="{{ URL::to('sximo/menu?pos=yachts')}}"><i class="icon-paragraph-justify2"></i> {{ Lang::get('core.tab_yatchgridmenu') }}</a></li>
+		<li @if($active == 'content') class="active" @endif><a href="{{ URL::to('sximo/menu?pos=content')}}"><i class="icon-paragraph-justify2"></i> {{ Lang::get('core.tab_content_menu') }}</a></li>
+		<li @if($active == 'product') class="active" @endif><a href="{{ URL::to('sximo/menu?pos=product')}}"><i class="icon-paragraph-justify2"></i> {{ Lang::get('core.tab_product_menu') }}</a></li>
+		<li @if($active == 'social_property') class="active" @endif><a href="{{ URL::to('sximo/menu?pos=social_property')}}"><i class="icon-paragraph-justify2"></i> {{ Lang::get('core.tab_social_property_menu') }}</a></li>
+		<li @if($active == 'social_destination') class="active" @endif><a href="{{ URL::to('sximo/menu?pos=social_destination')}}"><i class="icon-paragraph-justify2"></i> {{ Lang::get('core.tab_social_destination_menu') }}</a></li>
 	</ul>  	
 	
 	
@@ -203,6 +207,15 @@
 						@if($row['position']=='grid' ) checked="checked" @endif  /> {{ Lang::get('core.tab_gridmenu') }}
 						<input type="radio" name="position"  value="yachts"  required
 						@if($row['position']=='yachts' ) checked="checked" @endif  /> {{ Lang::get('core.tab_yatchgridmenu') }}
+						
+						<input type="radio" name="position"  value="content"  required
+						@if($row['position']=='content' ) checked="checked" @endif  /> {{ Lang::get('core.tab_content_menu') }}
+						<input type="radio" name="position"  value="product"  required
+						@if($row['position']=='product' ) checked="checked" @endif  /> {{ Lang::get('core.tab_product_menu') }}
+						<input type="radio" name="position"  value="social_property"  required
+						@if($row['position']=='social_property' ) checked="checked" @endif  /> {{ Lang::get('core.tab_social_property_menu') }}
+						<input type="radio" name="position"  value="social_destination"  required
+						@if($row['position']=='social_destination' ) checked="checked" @endif  /> {{ Lang::get('core.tab_social_destination_menu') }}
 						
 					 </div> 
 				  </div> 	 				

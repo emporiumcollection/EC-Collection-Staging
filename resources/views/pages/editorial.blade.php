@@ -630,10 +630,12 @@
                                             </div>
                                             <div class="col-md-3 col-sm-3">
                                                 <div class="row">
-                                                    <div class="restaurant-view-gallery-align">
-                                                        <span class="view-gallery-border-left"></span>
-                                                        <a href="javascript:void(0);" data-popup-id="detail-page-gallery-popup"  class="detail_view gallerysty bar-view-gallery video-popup-btn" rel="{{$propertyDetail['data']->id}}" rel2="Restrurants Gallery Images">View Gallery</a>
-                                                    </div>
+													@if($restaurant_gallery>0)
+														<div class="restaurant-view-gallery-align">
+															<span class="view-gallery-border-left"></span>
+															<a href="javascript:void(0);" data-popup-id="detail-page-gallery-popup"  class="detail_view gallerysty bar-view-gallery video-popup-btn" rel="{{$propertyDetail['data']->id}}" rel2="Restrurants Gallery Images">View Gallery</a>
+														</div>
+													@endif
                                                 </div>
                                             </div>
                                         </div>
@@ -681,10 +683,12 @@
                                             </div>
                                             <div class="col-md-3 col-sm-3">
                                                 <div class="row">
-                                                    <div class="restaurant-view-gallery-align">
-                                                        <span class="view-gallery-border-left"></span>
-                                                        <a href="javascript:void(0);" data-popup-id="detail-page-gallery-popup"  class="detail_view gallerysty bar-view-gallery video-popup-btn" rel="{{$propertyDetail['data']->id}}" rel2="Restrurants Gallery Images">View Gallery</a>
-                                                    </div>
+													@if($restaurant_gallery>0)
+														<div class="restaurant-view-gallery-align">
+															<span class="view-gallery-border-left"></span>
+															<a href="javascript:void(0);" data-popup-id="detail-page-gallery-popup"  class="detail_view gallerysty bar-view-gallery video-popup-btn" rel="{{$propertyDetail['data']->id}}" rel2="Restrurants Gallery Images">View Gallery</a>
+														</div>
+													@endif
                                                 </div>
                                             </div>
                                         </div>
@@ -729,10 +733,12 @@
                                                         </div>
                                                         <div class="col-md-6 col-sm-6">
                                                             <div class="row">
-                                                                <div class="view-gallery-pannel-align">
-                                                                    <span class="view-gallery-border-left"></span>
-                                                                    <a href="javascript:void(0);" data-popup-id="detail-page-gallery-popup"  class="detail_view gallerysty bar-view-gallery video-popup-btn" rel="{{$propertyDetail['data']->id}}" rel2="Bar Gallery Images">View Gallery</a>
-                                                                </div>
+																@if($bar_gallery>0)
+																	<div class="view-gallery-pannel-align">
+																		<span class="view-gallery-border-left"></span>
+																		<a href="javascript:void(0);" data-popup-id="detail-page-gallery-popup"  class="detail_view gallerysty bar-view-gallery video-popup-btn" rel="{{$propertyDetail['data']->id}}" rel2="Bar Gallery Images">View Gallery</a>
+																	</div>
+																@endif
                                                             </div>
                                                         </div>
                                                     </div>
@@ -834,10 +840,12 @@
                                                                 {{$propertyDetail['data']->spa_usp_text}}
                                                                 <p class="content-quote-author">- {{$propertyDetail['data']->spa_usp_person}}</p>
                                                             </blockquote>
-                                                            <div class="spa-sec-view-gallery">
-                                                                <span class="view-gallery-border-left"></span>
-                                                                <a href="javascript:void(0);" data-popup-id="detail-page-gallery-popup"  class="detail_view gallerysty bar-view-gallery video-popup-btn" rel="{{$propertyDetail['data']->id}}" rel2="Spa Gallery Images">View Gallery</a>
-                                                            </div>
+															@if($spa_gallery>0)
+																<div class="spa-sec-view-gallery">
+																	<span class="view-gallery-border-left"></span>
+																	<a href="javascript:void(0);" data-popup-id="detail-page-gallery-popup"  class="detail_view gallerysty bar-view-gallery video-popup-btn" rel="{{$propertyDetail['data']->id}}" rel2="Spa Gallery Images">View Gallery</a>
+																</div>
+															@endif
                                                             <div class="clearfix"></div>
                                                             <a href="#" class="spa-sec-book-an-appoinment-btn">Book Appointment</a>
                                                         </div>

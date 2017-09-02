@@ -55,7 +55,7 @@
 
 			<select name='selstatus' id='selstatus' style="height: 28px; margin-left: 5px;" onchange="filterstatus(this.value);" > 
 				<option value="">-Status-</option>
-				<option value="active" <?php echo ($curstatus == 'active') ? " selected='selected' " : '' ; ?>>Active</option>
+				<option value="active" <?php echo ($curstatus == 'active') ? " selected='selected' " : "selected='selected'" ; ?>>Active</option>
 				<option value="inactive" <?php echo ($curstatus == 'inactive') ? " selected='selected' " : '' ; ?>>Inactive</option>
 			</select>			
 		</div> 		

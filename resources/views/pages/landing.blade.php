@@ -5,37 +5,17 @@
         <meta charset="UTF-8">
         <title>Emporium-Voyage</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="{{ asset('sximo/assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('sximo/assets/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css"/>
-        <link rel="stylesheet" href="{{ asset('sximo/assets/css/daterangepicker.min.css')}}">
-        <link href="{{ asset('sximo/assets/css/jquery-ui.css')}}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('sximo/assets/css/style.css')}}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('sximo/assets/css/book-now-page-style.css')}}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('sximo/assets/css/m-popup.css')}}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('sximo/assets/css/landing-page-accordian-style.css')}}" rel="stylesheet" type="text/css"/>
-
-        <link href="{{ asset('sximo/assets/css/image-slider.css')}}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('sximo/assets/css/m_slider.css')}}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('sximo/assets/css/property.css')}}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('sximo/assets/css/landing-new.css')}}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('sximo/assets/css/filters_grid.css')}}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('sximo/assets/css/filter-bar.css')}}" rel="stylesheet" type="text/css"/>
-
-        <link href="{{ asset('sximo/assets/css/slick.css')}}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('sximo/assets/css/slick-theme.css')}}" rel="stylesheet" type="text/css"/>
-
-        <link href="{{ asset('sximo/assets/css/theme.css')}}" rel="stylesheet" type="text/css" media="all">
+        <link href="{{ asset('sximo/assets/css/landing-page-styles.css')}}" rel="stylesheet" type="text/css"/>
+        
         <script src="{{ asset('sximo/assets/js/jquery-2.1.0.min.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/bootstrap.min.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/jquery-ui.js')}}" type="text/javascript"></script>
-        <script type="text/javascript" src="{{ asset('sximo/assets/js/moment.min.js')}}"></script>
-        <script type="text/javascript" src="{{ asset('sximo/assets/js/jquery.daterangepicker.min.js')}}"></script>
+        <script src="{{ asset('sximo/assets/js/moment.min.js')}}" type="text/javascript" ></script>
+        <script src="{{ asset('sximo/assets/js/jquery.daterangepicker.min.js')}}" type="text/javascript" ></script>
         <script src="{{ asset('sximo/assets/js/html2canvas.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/book-now-page-style.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/m-popup.js')}}" type="text/javascript"></script>
-
         <script src="{{ asset('sximo/assets/js/image-slider.js')}}" type="text/javascript"></script>
-       
         <script src="{{ asset('sximo/assets/js/m_slider.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/open-search.js')}}" type="text/javascript"></script>
         <style>
@@ -49,11 +29,69 @@
             .bh-search-input.typeahead.search-navbar.search-navbar-destination-search-box.tt-hint {
                 display: none;
             }
+            .sidenavpost .bh-search-input{
+                padding-left: 0px !important;
+            }
+            .sidenavpost .tt-menu{
+                left: 0% !important;
+                color:#fff !important;
+            }
+            .sidenavpost a{
+                padding: 0 !important;
+                font-size: 14px !important;
+            }
+            .sidenavpost .closebtn{
+                font-size: 36px !important;
+            }
+            div.destinSearch .bh-search-input {
+                width: 80%;
+                border:2px solid #fff;
+                margin-left:100px;
+                margin-bottom:10px;
+            }
+            div.destinSearch .tt-menu {
+                width: 80%;
+                left:100px !important;
+            }
+            div.destinSearch .typeahead {
+                height: 50px;
+            }
+            div.destinSearchMob .bh-search-input {
+                border:2px solid #fff;
+                margin-bottom:10px;
+            }
+            div.destinSearchMob .typeahead {
+                height: 50px;
+            }
+            .destination-inner-accordian-outer .panel-heading {
+                background-color: transparent;
+                border: medium none;
+                height: auto;
+                margin: 0;
+                padding: 0;
+            }
+            .where-box-sub-menu .destination-inner-accordian-outer  a.active{
+                background-color: transparent !important;
+                color: #fff !important;
+                text-decoration: underline;
+            }
+            .where-box-sub-menu.inner-level-sub-menu a {
+                text-transform: inherit;
+            }
+            .where-box-sub-menu.inner-level-sub-menu  li {
+                padding: 2px 0 2px 20px;
+            }
+            .where-box-sub-menu.inner-level-sub-menu {
+                margin: 0 0 15px;
+            } 
+            .destination-inner-accordian-outer .panel-collapse {
+                float: left;
+                width: 100%;
+            }
         </style>
-
     </head>
     <body id="main">
-        <!--Desktop Version-->
+        <!--Desktop Version Start Here-->
         <div class="hidden-xs hidden-sm">
             <div class="wrapper">
                 <div class="container-fluid"> 
@@ -61,55 +99,12 @@
                         <header>    
                             <a data-popup-id="login-forms-popup" href="#" class="video-popup-btn login_popup show-login-forms-btn"><i class="fa fa-lock " aria-hidden="true" ></i></a>
                         </header>
-                        <!--<header >
-                            <div class="logo-arrow-align">
-                                <div class="container-fluid logo-arrow-main logo-padding-left editorial-logo-align ">
-                                    <div class="col-md-12-">
-                                        <p><a class="logo-d" href="{{url()}}">D</a></p>
-                                    </div>
-                                    <div class="col-md-12-">
-                                        <h2 class="menu-text-align">Home</h2>
-                                    </div>
-                                    <div class="col-md-12- menu">
-                                        <a href="#"><img class="menu-button" src="{{ asset('sximo/assets/images/menu.png')}}" alt=""/></a>
-                                        <ul style="display: none;">
-                                            <li>
-                                                <a href="#" class="book-button open-search-page">Search Our Collection</a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="book-button open-experience-page">Choose Your Experience</a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="book-button open-date-page">Search By Date</a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="book-button open-destination-page">Select Your Destination</a>
-                                            </li>
-<!--                                            <li>
-                                                <a href="#" class="book-button open-personalized-page">Personalized Service</a>
-                                            </li>-->
-                                           <!-- <li>
-                                                <a href="#" class="book-button open-about-page">About</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-12-">
-                                        <div class="row">
-                                            <a href="#" class="book-button open-book-now-page">BOOK</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </header>-->
                         <!--Main Page-->
                         @if(!empty($slider)) 
                         <div class="col-md-10 main-page-landing">
                             <div class="row">
                                 <section class="book-form-top-bar">
                                     <div>
-                                        <!--<div class="to-booking-nav-show-hide-btn">
-                                            <img src="{{ asset('sximo/assets/images/arrow.png')}}" alt=""/>
-                                        </div>-->
                                         <div class="booking-form-bar-top">
                                             <form autocomplete="off" method="get" id="searchform-navbar" class="searchform-navbar top-bar-search-form-align" action="{{URL::to('search')}}">
                                                 <div class="col-md-4">
@@ -191,8 +186,6 @@
                                             <div class="editorial-text">
                                                 <div class="editor-picks-small-text"><a href="{{$slider_row->slider_link}}">{{$slider_row->slider_title}}</a></div>
                                                 <div class="description-bold-text">{{$slider_row->slider_description}}</div>
-                                                <!--                                                <div class="banner-text-border-bottom"></div>
-                                                                                                <div><a href="{{$slider_row->slider_link}}" class="banner-border-bottom-text">Explore the hotel</a></div>-->
                                                 <!--end slide -->
                                             </div>
                                             </a>
@@ -208,7 +201,6 @@
                                         </a>
                                     </div>
                                 </div>
-
                                 <div class="landing-page-footer-section">
                                     @if(!empty($landing_menus))
                                     <ul class="landing-page-footer-menu-style">
@@ -241,16 +233,13 @@
                                         <li>
                                             <a href="#" class="book-button open-experience-page">Choose Your Experience</a>
                                         </li>
-                                        <!--<li>
-                                            <a href="http://design-locations.biz/home">Get Inspired</a>
-                                        </li>-->
                                         <li>
                                             <a href="#" class="book-button open-date-page">Search By Date</a>
                                         </li>
                                         <li>
                                             <a href="#" class="book-button open-destination-page">Select Your Destination</a>
                                         </li>
-<!--                                        <li>
+                                        <!--<li>
                                             <a href="#" class="book-button open-about-page">About</a>
                                         </li>
                                         <li>
@@ -290,18 +279,6 @@
                                         </div>
                                         @endforeach
                                         @endif
-                                        <!--<div class="slick-cstm-width">
-                                            <img src="http://placehold.it/350x300?text=2">
-                                        </div>
-                                        <div class="slick-cstm-width">
-                                            <img src="http://placehold.it/350x300?text=3">
-                                        </div>
-                                        <div class="slick-cstm-width">
-                                            <img src="http://placehold.it/350x300?text=4">
-                                        </div>
-                                        <div class="slick-cstm-width">
-                                            <img src="http://placehold.it/350x300?text=5">
-                                        </div>-->
                                     </section>
                                 </div>
                             </div>
@@ -310,8 +287,7 @@
                     <!--Sidebar End-->
                 </div>
             </div>
-
-            <!--Serach Page HTML-->
+            <!--Search Our Collection Page-->
             <div class="search-page" <?php if(isset($_GET['ref']) && $_GET['ref']=='oc'){ echo 'style="width:100%;"';}?>>
                 <div class="open-search-html">
                     <div><a class="close-btn close-btn-align" href="#">&times;</a></div>
@@ -339,24 +315,13 @@
                                     <input  class="bh-search-input typeahead search-navbar search-box" name="s" id="search-navbar" placeholder="Enter Your Hotel or Destination" type="text">
                                 </form>
                                 <!--Search form end-->
-                                <!--                                <form autocomplete="off" method="get" id="searchform-navbar--" class="searchform-navbar search-box" action="{{URL::to('search')}}">
-                                                                    <input  class="bh-search-input- typeahead- search-navbar-" name="s" id="search-navbar--" type="text" placeholder="Enter Your Hotel or Destination">
-                                                                    <div class="search-suggeations-main">
-                                                                        <ul>
-                                                                            <li><a href="#">Design Locations Suggestion 1</a></li>
-                                                                            <li><a href="#">Design Locations Suggestion 2</a></li>
-                                                                            <li><a href="#">Design Locations Suggestion 3</a></li>
-                                                                            <li><a href="#">Design Locations Suggestion 4</a></li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </form>-->
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--Serach Page HTML-->
-            <!--Experience Page Html-->
+            <!--Search Our Collection End Here-->
+            <!--Experience Page Start Here-->
             <div class="experience-page" <?php if(isset($_GET['ref']) && $_GET['ref']=='sye'){ echo 'style="width:100%;"';}?>>
                 <div class="open-experience-html des-holiday-sec-align">
                     <div><a class="close-btn-experience close-btn-align" href="#">&times;</a></div>
@@ -367,51 +332,51 @@
                     <div class="choose-experience-center-align">
                         <div class="width-100 holiday-type-image-align ">
                             <div class="width-20">
-                                <img class="img-responsive" src="{{ asset('sximo/assets/images/BeachHotels2.jpg')}}" alt=""/>
+                                <img class="img-responsive" src="{{ \ImageCache::make(public_path('sximo/assets/images/GoBeachHotels.jpg'),100,170,199)}}" alt=""/>
                                 <a href="{{URL::to('search?s=Beach Hotels&ref=sye&landing_page=1')}}"><h3 class="hover-tittles">Go Beach Hotels</h3></a>
                             </div>
                             <div class="width-20">
-                                <img class="img-responsive" src="{{ asset('sximo/assets/images/GoGreen2.jpg')}}" alt=""/>
+                                <img class="img-responsive" src="{{ \ImageCache::make(public_path('sximo/assets/images/GoGreenHotels.jpg'),100,170,199)}}" alt=""/>
                                 <a href="{{URL::to('search?s=Green Properties&ref=sye&landing_page=1')}}"><h3 class="hover-tittles">Go Green Hotels</h3></a>
                             </div>
                             <div class="width-20">
-                                <img class="img-responsive" src="{{ asset('sximo/assets/images/GoUrban2.jpg')}}" alt=""/>
+                                <img class="img-responsive" src="{{ \ImageCache::make(public_path('sximo/assets/images/GoUrbanHotels.jpg'),100,170,199)}}" alt=""/>
                                 <a href="{{URL::to('search?s=Go Urban Hotels&ref=sye&landing_page=1')}}"><h3 class="hover-tittles">Go Urban Hotels</h3></a>
                             </div>
                             <div class="width-20">
-                                <img class="img-responsive" src="{{ asset('sximo/assets/images/InfinityPools2.jpg')}}" alt=""/>
+                                <img class="img-responsive" src="{{ \ImageCache::make(public_path('sximo/assets/images/GoInfinityPoolHotels.jpg'),100,170,199)}}" alt=""/>
                                 <a href="{{URL::to('search?s=Infinity Pools&ref=sye&landing_page=1')}}"><h3 class="hover-tittles">Go Infinity Pools</h3></a>
                             </div>
                             <div class="width-20">
-                                <img class="img-responsive" src="{{ asset('sximo/assets/images/WellnessHotels3.png')}}" alt=""/>
+                                <img class="img-responsive" src="{{ \ImageCache::make(public_path('sximo/assets/images/GoSpaandWellnessHotels.png'),100,170,199)}}" alt=""/>
                                 <a href="{{URL::to('search?s=Spa & Wellness Hotels&ref=sye&landing_page=1')}}"><h3 class="hover-tittles">Go Spa & Wellness Hotels</h3></a>
                             </div>
                             <div class="width-20">
-                                <img class="img-responsive" src="{{ asset('sximo/assets/images/MountainAndSki2.jpg')}}" alt=""/>
+                                <img class="img-responsive" src="{{ \ImageCache::make(public_path('sximo/assets/images/GoMountainaandSkiResorts.jpg'),100,170,199)}}" alt=""/>
                                 <a href="{{URL::to('search?s=Mountain Ski Resorts&ref=sye&landing_page=1')}}"><h3 class="hover-tittles">Go Mountains and Skin Resorts</h3></a>
                             </div>
                             <div class="width-20">
-                                <img class="img-responsive" src="{{ asset('sximo/assets/images/YogaHotels3.jpg')}}" alt=""/>
+                                <img class="img-responsive" src="{{ \ImageCache::make(public_path('sximo/assets/images/GoYogaHotels.jpg'),100,170,199)}}" alt=""/>
                                 <a href="{{URL::to('search?s=Yoga Hotels&ref=sye&landing_page=1')}}"><h3 class="hover-tittles">Discover Yoga Hotels</h3></a>
                             </div>
                             <div class="width-20">
-                                <img class="img-responsive" src="{{ asset('sximo/assets/images/CulinaryDelights.jpg')}}" alt=""/>
+                                <img class="img-responsive" src="{{ \ImageCache::make(public_path('sximo/assets/images/GoCulnaryDelightHotels.jpg'),100,170,199)}}" alt=""/>
                                 <a href="{{URL::to('search?s=Culinary Delights&ref=sye&landing_page=1')}}"><h3 class="hover-tittles">Discover culinary Delight Hotels</h3></a>
                             </div>
                             <div class="width-20">
-                                <img class="img-responsive" src="{{ asset('sximo/assets/images/FamilyFriendly-1.jpg')}}" alt=""/>
+                                <img class="img-responsive" src="{{ \ImageCache::make(public_path('sximo/assets/images/GoFamilyFriendlyHotels.jpg'),100,170,199)}}" alt=""/>
                                 <a href="{{URL::to('search?s=Family Friendly&ref=sye&landing_page=1')}}"><h3 class="hover-tittles">Discover Family Friendly Hotels</h3></a>
                             </div>
                             <div class="width-20">
-                                <img class="img-responsive" src="{{ asset('sximo/assets/images/UnusualAdventures.jpg')}}" alt=""/>
+                                <img class="img-responsive" src="{{ \ImageCache::make(public_path('sximo/assets/images/GoUnusualAdventures.jpg'),100,170,199)}}" alt=""/>
                                 <a href="{{URL::to('search?s=Unusual Adventure Hotels&ref=sye&landing_page=1')}}"><h3 class="hover-tittles">Unusual Adventure Hotels</h3></a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--Experience Page Html-->
-            <!--Destination Page HTMl-->
+            <!--Experience Page End Here-->
+            <!--Destination Page Start Here-->
             <div class="destination-page" <?php if(isset($_GET['ref']) && $_GET['ref']=='syd'){ echo 'style="width:100%;"';}?>>
                 <div class="open-destination-html">
                     <div><a class="close-btn-destination close-btn-align" href="#">&times;</a></div>
@@ -443,7 +408,26 @@
                                     <ul class="where-box-sub-menu">
                                         @if (array_key_exists("child",$destination))
                                         @foreach($destination['child'] as $childDest)
-                                        <li><a href="{{URL::to('search?continent='.$destination['maincat']->category_name.'&region='.$childDest->category_name.'&s='.$childDest->category_name.'&ref=syd&destination_page=1')}}">{{$childDest->category_name}}</a></li>
+                                        <li><div class="panel-group destination-inner-accordian-outer" id="inner-level-accordian">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title">
+                                                        <a data-toggle="collapse" data-parent="#inner-level-accordian" href="#destination-child1">{{$childDest->category_name}}</a>
+                                                    </h4>
+                                                </div>
+                                                <div id="destination-child1" class="panel-collapse collapse">
+                                                    <ul class="where-box-sub-menu inner-level-sub-menu">
+                                                        <li><a href="#">Dummy Menu item</a></li>
+                                                        <li><a href="#">Dummy Menu item</a></li>
+                                                        <li><a href="#">Dummy Menu item</a></li>
+                                                        <li><a href="#">Dummy Menu item</a></li>
+                                                        <li><a href="#">Dummy Menu item</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div></li>
+                                        <!--The menu code is commented please uncomment this when you make it dynamic-->
+                                        <!--<li><a href="{{URL::to('search?continent='.$destination['maincat']->category_name.'&region='.$childDest->category_name.'&s='.$childDest->category_name.'&ref=syd&destination_page=1')}}">{{$childDest->category_name}}</a></li>-->
                                         @endforeach
                                         @endif
                                     </ul>
@@ -455,8 +439,8 @@
                     </div>
                 </div>
             </div>
-            <!--Destination Page HTMl End Here-->
-            <!--Personalized Page Html-->
+            <!--Destination Page  End Here-->
+            <!--Personalized Page Start Here-->
             <div class="personalized-page">
                 <div class="open-personalized-html">
                     <div><a class="close-btn-personalized close-btn-align" href="#">&times;</a></div>
@@ -472,18 +456,18 @@
                             </div>
                         </div>
                     </div>
-                    <!--                    <div class="panel-body des-about-panel-body-style">
-                                            <div class="col-md-12">
-                                                <img class="img-responsive-" src="{{ asset('sximo/assets/images/JUNIOR-SUITES.png')}}" alt="">
-                                                <div class="register-here-overlay">
-                                                    <a class="video-popup-btn" data-popup-id="register-popup" href="#">Register</a>
-                                                </div>
-                                            </div>
-                                        </div>-->
+                    <!--<div class="panel-body des-about-panel-body-style">
+                        <div class="col-md-12">
+                            <img class="img-responsive-" src="{{ asset('sximo/assets/images/JUNIOR-SUITES.png')}}" alt="">
+                            <div class="register-here-overlay">
+                                <a class="video-popup-btn" data-popup-id="register-popup" href="#">Register</a>
+                            </div>
+                        </div>
+                    </div>-->
                 </div>
             </div>
-            <!--Personalized Page Html End Here-->
-            <!--Date Page Start Here-->
+            <!--Personalized Page  End Here-->
+            <!--Search By Date Page Start Here-->
             <div class="book-now-page date-page" <?php if(isset($_GET['ref']) && $_GET['ref']=='sbd'){ echo 'style="width:100%;"';}?>>
                 <div class="book-now-page-content open-date-html">
                     <div><a class="close-btn-date close-btn-align" href="#">&times;</a></div>
@@ -559,31 +543,11 @@
                     <div class="clearfix"></div>
                 </div>
             </div>
-            <!--Date Page End Here-->
-            <!--about Page Html-->
+            <!--Search By Date Page End Here-->
+            <!--About Page Start Here-->
             <div class="about-page">
                 <div class="open-about-html">
                     <div><a class="close-btn-about close-btn-align" href="#">&times;</a></div>
-                    <!--                    <div class="panel-body des-about-panel-body-style">
-                                            <div class="col-md-6 about-us-sec">
-                                                <div class="row">
-                                                    <div class="about-res-image" style="background-image: url('{{ asset('sximo/assets/images/MountainAndSki2.jpg')}}')"></div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 about-us-side-text">
-                                                <div class="border-box">
-                                                    <h2>Design Locations</h2>
-                                                    <p>
-                                                        From the posh, sun-soaked beaches along the
-                                                        Indian Ocean to the epoch heights of the Himalayas,
-                                                        Design Location is your ideal, vogue vacation planner!
-                                                        With over 300 posh properties and elite spas huddled in its cocoon,
-                                                        Design Locations ensure the ultimate luxury experience. Our expertise lies in our utmost diligence to provide our beau monde customers with an exotic experience they will relish forever. If you are looking for glamour, grandeur and some sinful indulgence in the lap of luxury, you have come to the right place!
-                                                    </p>
-                                                    <a href="#" class="about-read-more-button">Read More</a>
-                                                </div>
-                                            </div>
-                                        </div>-->
                     <div id="" class="spa-sec-outer-align-">
                         <div class="">
                             <div class="ai-spa-sec-inner">
@@ -650,7 +614,7 @@
                     </div>
                 </div>
             </div>
-            <!--about Page Html End Here-->
+            <!--About Page End Here-->
         </div>
         <!--<Desktop Version End Here-->
         <div class="page-bg-image hidden-md hidden-lg"> 
@@ -725,100 +689,6 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <!--                                                        <div class="panel panel-default custom-post-panel">
-                                                                                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse2" class="heading-stying collapsed">
-                                                                                                                        <div class="panel-heading custom-heading">
-                                                                                                                            Filter 2
-                                                                                                                        </div>
-                                                                                                                    </a>
-                                                                                                                    <div id="collapse2" class="panel-collapse collapse">
-                                                                                                                        <div class="panel-body custom-panel-body">
-                                                                                                                            <div class="dl-filter">
-                                                                                                                                <form>
-                                                                                                                                    <div class="form-group post-filter-inputs">
-                                                                                                                                        <input  type="checkbox">
-                                                                                                                                        <label>Additional Derivers&nbsp;<i class="fa fa-user" aria-hidden="true"></i>&nbsp;individual with all cars</label>
-                                                                                                                                        <span class="info-icon-align"><i class="fa fa-info-circle" aria-hidden="true"></i></span>
-                                                                                                                                    </div>  
-                                                                                                                                    <div class="form-group post-filter-inputs">
-                                                                                                                                        <input   type="checkbox">
-                                                                                                                                        <label>GPS Packages&nbsp;<i class="fa fa-user" aria-hidden="true"></i>&nbsp;(?)</label>
-                                                                                                                                        <span class="info-icon-align"><i class="fa fa-info-circle" aria-hidden="true"></i></span>
-                                                                                                                                    </div>  
-                                                                                                                                </form>
-                                                                                                                            </div>
-                                                                                                                        </div>
-                                                                                                                    </div>
-                                                                                                                </div>-->
-                                                        <!--                                                        <div class="panel panel-default custom-post-panel">
-                                                                                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse3" class="heading-stying collapsed">
-                                                                                                                        <div class="panel-heading custom-heading">
-                                                                                                                            Filter 3
-                                                                                                                        </div>
-                                                                                                                    </a>
-                                                                                                                    <div id="collapse3" class="panel-collapse collapse">
-                                                                                                                        <div class="panel-body custom-panel-body">
-                                                                                                                            <div class="dl-filter">
-                                                                                                                                <form>
-                                                                                                                                    <div class="form-group  post-filter-inputs">
-                                                                                                                                        <input  type="checkbox">
-                                                                                                                                        <label>Air Conditioning&nbsp;<i class="fa fa-user" aria-hidden="true"></i>&nbsp;individual with all cars</label>
-                                                                                                                                    </div>  
-                                                                                                                                    <div class="form-group  post-filter-inputs">
-                                                                                                                                        <input  type="checkbox">
-                                                                                                                                        <label>Automatic&nbsp;<i class="fa fa-user" aria-hidden="true"></i>&nbsp;(4)</label>
-                                                                                                                                    </div>  
-                                                                                                                                    <div class="form-group  post-filter-inputs">
-                                                                                                                                        <input  type="checkbox">
-                                                                                                                                        <label>4 Wheel Derive&nbsp;<i class="fa fa-user" aria-hidden="true"></i>&nbsp;(?)</label>
-                                                                                                                                    </div>  
-                                                                                                                                    <div class="form-group  post-filter-inputs">
-                                                                                                                                        <input  type="checkbox">
-                                                                                                                                        <label>4+ Doors&nbsp;<i class="fa fa-user" aria-hidden="true"></i>&nbsp;individual with all cars</label>
-                                                                                                                                    </div>   
-                                                                                                                                </form>
-                                                                                                                            </div>
-                                                                                                                        </div>
-                                                                                                                    </div>
-                                                                                                                </div>-->
-                                                        <!--                                                        <div class="panel panel-default custom-post-panel">
-                                                                                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse4" class="heading-stying collapsed">
-                                                                                                                        <div class="panel-heading custom-heading">
-                                                                                                                            Filter 4
-                                                                                                                        </div>
-                                                                                                                    </a>
-                                                                                                                    <div id="collapse4" class="panel-collapse collapse">
-                                                                                                                        <div class="panel-body custom-panel-body">
-                                                                                                                            <div class="dl-filter">
-                                                                                                                                <form>
-                                                                                                                                    <div class="form-group post-filter-inputs">
-                                                                                                                                        <input  type="checkbox">
-                                                                                                                                        <label>Full Fuel&nbsp;<i class="fa fa-user" aria-hidden="true"></i>&nbsp;individual with all cars</label>
-                                                                                                                                    </div> 
-                                                                                                                                </form>
-                                                                                                                            </div>
-                                                                                                                        </div>
-                                                                                                                    </div>
-                                                                                                                </div>-->
-                                                        <!--                                                        <div class="panel panel-default custom-post-panel">
-                                                                                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse5" class="heading-stying collapsed">
-                                                                                                                        <div class="panel-heading custom-heading">
-                                                                                                                            Filter 5
-                                                                                                                        </div>
-                                                                                                                    </a>
-                                                                                                                    <div id="collapse5" class="panel-collapse collapse">
-                                                                                                                        <div class="panel-body custom-panel-body">
-                                                                                                                            <div class="dl-filter">
-                                                                                                                                <form>
-                                                                                                                                    <div class="form-group post-filter-inputs">
-                                                                                                                                        <input  type="checkbox">
-                                                                                                                                        <label>Cities Office&nbsp;<i class="fa fa-user" aria-hidden="true"></i>&nbsp;individual with all cars</label>
-                                                                                                                                    </div> 
-                                                                                                                                </form>
-                                                                                                                            </div>
-                                                                                                                        </div>
-                                                                                                                    </div>
-                                                                                                                </div>-->
                                                     </div> 
                                                     <div class="filter-footer">
                                                         <div><a href="#" >View All Locations On Map</a></div>
@@ -859,47 +729,10 @@
                                     </div>
                                 </div>
                             </div>
-                        </header>                 <header >
-                            <div class="container-fluid logo-padding-left editorial-logo-align ">
-                                <div class="col-md-12-">
-                                    <p><a class="logo-d" href="{{url()}}">D</a></p>
-                                </div>
-                                <div class="col-md-12-">
-                                    <h2 class="menu-text-align">Home</h2>
-                                </div>
-                                <div class="col-md-12- menu">
-                                    <a href="#"><img class="menu-button" src="{{ asset('sximo/assets/images/menu.png')}}" alt=""/></a>
-                                    <ul style="display: none;">
-                                        <li>
-                                            <a href="#" class="book-button open-search-page">Search Our Collection</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="book-button open-experience-page">Choose Your Experience</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="book-button open-date-page">Search By Date</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="book-button open-destination-page">Select Your Destination</a>
-                                        </li>
-<!--                                        <li>
-                                            <a href="#" class="book-button open-personalized-page">Personalized Service</a>
-                                        </li>-->
-<!--                                        <li>
-                                            <a href="#" class="book-button open-about-page">About</a>
-                                        </li>-->
-                                    </ul>
-                                </div>
-                                <div class="col-md-12-">
-                                    <div class="row">
-                                        <a href="#" class="book-button open-book-now-page">BOOK</a>
-                                    </div>
-                                </div>
-                            </div>
                         </header>
                         <div class="container"> 
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 header-logo-align">
-                                <a href="#"><img class="img-responsive height-165" onmouseenter="this.src='{{ asset('sximo/assets/images/luxury-logo-new.png')}}'" onmouseout="this.src = '{{ asset('sximo/assets/images/design-location-logo-new.png')}}'" src="{{ asset('sximo/assets/images/design-location-logo.png')}}" alt="design locations"/></a>
+                                <a href="#"><img class="img-responsive height-165" onmouseenter="this.src='{{ asset('sximo/assets/images/luxury-logo-new.png')}}'" onmouseout="this.src = '{{ asset('sximo/assets/images/design-location-logo.png')}}'" src="{{ asset('sximo/assets/images/design-location-logo.png')}}" alt="design locations"/></a>
                             </div>
                         </div>
                         <div class="container">
@@ -916,7 +749,7 @@
                                         <div class="panel-body">
                                             <form autocomplete="off" method="get" id="searchform-navbar" class="searchform-navbar" action="{{URL::to('search')}}">
                                             <input type="hidden" name="ref" value="oc_small">
-                                                <input  class="bh-search-input typeahead search-navbar main-search-box" name="s" id="search-navbar" placeholder="Enter Your Hotel or Destination" type="text">
+                                                <input  class="bh-search-input ai-md-search-input typeahead search-navbar main-search-box" name="s" id="search-navbar" placeholder="Enter Your Hotel or Destination" type="text">
                                             </form>
                                         </div>
                                     </div>
@@ -935,55 +768,55 @@
                                                 <div class="width-100 holiday-type-image-align ">
                                                     <div class="width-20">
                                                         <a href="{{URL::to('search?s=Beach Hotels&ref=sye_small')}}">
-                                                            <img src="{{ asset('sximo/assets/images/BeachHotels2.jpg')}}" alt=""/>
+                                                            <img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoBeachHotels.jpg'),100,170,199)}}" alt=""/>
                                                             <span class="link-txt hover-cation">Go Beach Hotels</span>
                                                         </a>
 
                                                     </div>
                                                     <div class="width-20">
-                                                        <a href="{{URL::to('search?s=Green Properties&ref=sye_small')}}"><img src="{{ asset('sximo/assets/images/GoGreen2.jpg')}}" alt=""/>
+                                                        <a href="{{URL::to('search?s=Green Properties&ref=sye_small')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoGreenHotels.jpg'),100,170,199)}}" alt=""/>
                                                             <span class="link-txt hover-cation">Go Green Hotels</span>
                                                         </a>
                                                     </div>
                                                     <div class="width-20">
-                                                        <a href="{{URL::to('search?s=Go Urban Hotels&ref=sye_small')}}"><img src="{{ asset('sximo/assets/images/GoUrban2.jpg')}}" alt=""/>
+                                                        <a href="{{URL::to('search?s=Go Urban Hotels&ref=sye_small')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoUrbanHotels.jpg'),100,170,199)}}" alt=""/>
                                                             <span class="link-txt hover-cation">Go Urban</span>
                                                         </a>
                                                     </div>
                                                     <div class="width-20">
-                                                        <a href="{{URL::to('search?s=Infinity Pools&ref=sye_small')}}"><img src="{{ asset('sximo/assets/images/InfinityPools2.jpg')}}" alt=""/>
+                                                        <a href="{{URL::to('search?s=Infinity Pools&ref=sye_small')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoInfinityPoolHotels.jpg'),100,170,199)}}" alt=""/>
                                                             <span class="link-txt hover-cation">Go Infinity Pools</span>
                                                         </a>
                                                     </div>
                                                     <div class="width-20">
-                                                        <a href="{{URL::to('search?s=Spa & Wellness Hotels&ref=sye_small')}}"><img src="{{ asset('sximo/assets/images/SpaAndWellnessHotels3.jpg')}}" alt=""/>
+                                                        <a href="{{URL::to('search?s=Spa & Wellness Hotels&ref=sye_small')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoSpaandWellnessHotels.jpg'),100,170,199)}}" alt=""/>
                                                             <span class="link-txt hover-cation">Go Spa & Wellness Hotels</span>
                                                         </a>
                                                     </div>
                                                 </div>
                                                 <div class="width-100 holiday-type-image-align ">
                                                     <div class="width-20">
-                                                        <a href="{{URL::to('search?s=Mountain Ski Resorts&ref=sye_small')}}"><img src="{{ asset('sximo/assets/images/MountainAndSki2.jpg')}}" alt=""/>
+                                                        <a href="{{URL::to('search?s=Mountain Ski Resorts&ref=sye_small')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoMountainaandSkiResorts.jpg'),100,170,199)}}" alt=""/>
                                                             <span class="link-txt hover-cation">Go Mountains and Skin Resorts</span>
                                                         </a>
                                                     </div>
                                                     <div class="width-20">
-                                                        <a href="{{URL::to('search?s=Yoga Hotels&ref=sye_small')}}"><img src="{{ asset('sximo/assets/images/YogaHotels3.jpg')}}" alt=""/>
+                                                        <a href="{{URL::to('search?s=Yoga Hotels&ref=sye_small')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoYogaHotels.jpg'),100,170,199)}}" alt=""/>
                                                             <span class="link-txt hover-cation">Discover Yoga Hotels</span>
                                                         </a>
                                                     </div>
                                                     <div class="width-20">
-                                                        <a href="{{URL::to('search?s=Culinary Delights&ref=sye_small')}}"><img src="{{ asset('sximo/assets/images/CulinaryDelights.jpg')}}" alt=""/>
+                                                        <a href="{{URL::to('search?s=Culinary Delights&ref=sye_small')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoCulnaryDelightHotels.jpg'),100,170,199)}}" alt=""/>
                                                             <span class="link-txt hover-cation">Discover culinary Delight Hotels</span>
                                                         </a>
                                                     </div>
                                                     <div class="width-20">
-                                                        <a href="{{URL::to('search?s=Family Friendly&ref=sye_small')}}"><img src="{{ asset('sximo/assets/images/FamilyFriendly-1.jpg')}}" alt=""/>
+                                                        <a href="{{URL::to('search?s=Family Friendly&ref=sye_small')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoFamilyFriendlyHotels.jpg'),100,170,199)}}" alt=""/>
                                                             <span class="link-txt hover-cation">Discover Family Friendly Hotels</span>
                                                         </a>
                                                     </div>
                                                     <div class="width-20">
-                                                        <a href="{{URL::to('search?s=Unusual Adventure Hotels&ref=sye_small')}}"><img src="{{ asset('sximo/assets/images/UnusualAdventures.jpg')}}" alt=""/>
+                                                        <a href="{{URL::to('search?s=Unusual Adventure Hotels&ref=sye_small')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoUnusualAdventures.jpg'),100,170,199)}}" alt=""/>
                                                             <span class="link-txt hover-cation">Unusual Adventure Hotels</span>
                                                         </a>
                                                     </div>
@@ -1062,7 +895,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="panel panel-default  sub-menues">
+                                <!--<div class="panel panel-default  sub-menues">
                                     <a class="collapsed" data-toggle="collapse" data-parent="#accordion-mobile" href="#collapse-mobile-4">
                                         <div class="panel-heading">
                                             <h4 class="panel-title menu-text accordion">
@@ -1097,7 +930,7 @@
                                         <div class="panel-body">
                                             <div class="col-md-6 about-us-sec">
                                                 <div class="row">
-                                                    <img  src="{{ asset('sximo/assets/images/MountainAndSki2.jpg')}}" alt=""/>
+                                                    <img  src="{{ asset('sximo/assets/images/GoMountainaandSkiResorts.jpg')}}" alt=""/>
                                                 </div>
                                             </div>
                                             <div class="col-md-6 about-us-side-text">
@@ -1115,7 +948,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div>-->
                             </div>
                             <!--Footer Section-->
                         </div>
@@ -1141,7 +974,7 @@
                 </div>
             </div>
         </div>
-        <!--Featured hotel popup start-->
+        <!--Register Pop Up Start Here-->
         <div id="register-popup" class="popup personlized-service-pop-up-outer">
             <div class="popup-inner personlized-service-pop-up">
                 <a href="#" class="popup-close-btn personlized-service-pop-up-close-btn">&times;</a>
@@ -1225,7 +1058,7 @@
                 </div>
             </div>
         </div>
-        <!--Featured hotel popup end-->
+        <!--Register Pop Up End Here-->
         <!--New Login Pop Up Start Here-->
         <div id="login-forms-popup" class="popup login-form-pop-main-align">
              <div class="popup-inner">
@@ -1400,26 +1233,19 @@
              </div>
          </div>
         <!--New Login Pop Up End Here-->
-        <!--HTML for book now page start here-->
-
-        <!--HTML for book now page end here-->
         <script src="{{ asset('sximo/assets/js/slick.js')}}" type="text/javascript"></script>
         <script type="text/javascript">
-                                    $(document).on('ready', function () {
-                                        $(".regular").slick({
-                                            dots: false,
-                                            infinite: true,
-                                            slidesToShow: 1,
-                                            slidesToScroll: 1,
-                                            prevArrow: false,
-                                            nextArrow: false,
-                                            autoplay: true,
-                                            autoplaySpeed: 3000
-                                        });
-                                    });
-        </script>
-        <script>
-            $(document).ready(function () {
+            $(document).on('ready', function () {
+                $(".regular").slick({
+                    dots: false,
+                    infinite: true,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    prevArrow: false,
+                    nextArrow: false,
+                    autoplay: true,
+                    autoplaySpeed: 3000
+                });
                 $(".to-booking-nav-show-hide-btn").click(function () {
                     $(".booking-form-bar-top").toggle(1000);
                 });
@@ -1431,7 +1257,7 @@
                     event.preventDefault();
                     $(".open-book-now-page").trigger("click");
                 });
-                //                Login form Scripts
+                /*Login form Scripts*/
                 $(".sign-up-show-form-btn").click(function () {
                     $(".create-account-form-show-hide").show();
                     $(".account-with-us-show-hide").hide();
@@ -1456,10 +1282,8 @@
                     $(".login-form-show-hide").hide();
                     $(".create-account-form-show-hide").hide();
                 });
-            });
-        </script>
-        <script>
-            $('#search-by-date').dateRangePicker(
+                /*Date Range Picker Start Here*/
+                $('#search-by-date').dateRangePicker(
                     {
                         selectForward: (Boolean),
                         stickyMonths: (Boolean),
@@ -1479,40 +1303,18 @@
                             $('#date-range-destination').val(s2);
                         }
                     }
-            ).bind('datepicker-first-date-selected', function (event, obj) {
-                $("#date-range-destination").val('');
-            });
-
-        </script>
-        <script>
-            /*previous page screen short*/
-            var scaleBy = 1;
-            var w = 1600;
-            var h = 700;
-            var div = document.querySelector('body');
-            var canvas = document.createElement('canvas');
-            canvas.width = w * scaleBy;
-            canvas.height = h * scaleBy;
-            canvas.style.width = w + 'px';
-            canvas.style.height = h + 'px';
-            var context = canvas.getContext('2d');
-            context.scale(scaleBy, scaleBy);
-
-            html2canvas(div, {
-                canvas:canvas,
-                onrendered: function (canvas) {
-                    theCanvas = canvas;
-                    var imageData = canvas.toDataURL();
-                    $.ajax({
-                        url: "{{URL::to('save_previous_page_image')}}",
-                        type: "POST",
-                        data: "ai_previous_page=" + encodeURIComponent(imageData)
-                    });
-                }
-            });
-            /*previous page screen short*/
-            $(function () {
-                $('#register-form-link').click(function (e) {
+                ).bind('datepicker-first-date-selected', function (event, obj) {
+                    $("#date-range-destination").val('');
+                });
+                /*Date Range Picker End Here*/
+                //Active Menu Start Here
+                $('ul li a').click(function () {
+                    $('li a').removeClass("active");
+                    $(this).addClass("active");
+                });
+                /*Active Menu Start Here*/
+                /*Register Tabs Start Here*/
+                 $('#register-form-link').click(function (e) {
                     $("#register-form").delay(100).fadeIn(100);
                     $("#login-form").fadeOut(100);
                     $("#forgot-password").fadeOut(100);
@@ -1539,16 +1341,61 @@
                     $(this).addClass('active');
                     e.preventDefault();
                 });
-
-            });
-            $(document).ready(function () {
-                $('ul li a').click(function () {
-                    $('li a').removeClass("active");
-                    $(this).addClass("active");
+                /*Register Tabs End Here*/
+                /*Top Bar Booking Start Here*/
+                $('#top-bar-search-booking-form').dateRangePicker(
+                    {
+                        selectForward: (Boolean),
+                        stickyMonths: (Boolean),
+                        startDate: "12-01-2017",
+                        format: 'DD.MM.YYYY',
+                        autoClose: "true",
+                        separator: ' to ',
+                        getValue: function ()
+                        {
+                            if ($('#top-bar-search-booking-form-destination').val() && $('#top-bar-search-booking-form-arrive').val())
+                                return $('#top-bar-saerch-booking-form-destination').val() + ' to ' + $('#top-bar-saerch-booking-form-arrive').val();
+                            else
+                                return '';
+                        },
+                        setValue: function (s, s1, s2)
+                        {
+                            $('#top-bar-search-booking-form-arrive').val(s1);
+                            $('#top-bar-search-booking-form-destination').val(s2);
+                        }
+                    }
+                ).bind('datepicker-first-date-selected', function (event, obj) {
+                    $("#top-bar-search-booking-form-destination").val('');
                 });
+                /*Top Bar Booking End Here*/
             });
-        </script>
-        <script>
+            /*Previous Page Screen Short*/
+            var scaleBy = 1;
+            var w = 1600;
+            var h = 700;
+            var div = document.querySelector('body');
+            var canvas = document.createElement('canvas');
+            canvas.width = w * scaleBy;
+            canvas.height = h * scaleBy;
+            canvas.style.width = w + 'px';
+            canvas.style.height = h + 'px';
+            var context = canvas.getContext('2d');
+            context.scale(scaleBy, scaleBy);
+
+            html2canvas(div, {
+                canvas:canvas,
+                onrendered: function (canvas) {
+                    theCanvas = canvas;
+                    var imageData = canvas.toDataURL();
+                    $.ajax({
+                        url: "{{URL::to('save_previous_page_image')}}",
+                        type: "POST",
+                        data: "ai_previous_page=" + encodeURIComponent(imageData)
+                    });
+                }
+            });
+            /*Previous Page Screen Short End Here*/
+            /*Toggle Side Nav Start Here*/
             function toogleNavpost() {
                 if (document.getElementById("mySidenavpost").style.width == "342px") {
                     return closeNavpost();
@@ -1570,27 +1417,6 @@
                 document.body.style.backgroundColor = "white";
                 document.body.style.transition = "all 0.5s ease 0s";
             }
-//            window.onload = function () {
-//                if ($(window).width() >= 768) {
-//                    document.getElementById("mySidenavpost").style.width = "100%";
-//                    document.getElementById("main").style.marginRight = "250px";
-//                }
-//                setTimeout(function () {
-//                    if ($(window).width() >= 768) {
-//                        document.getElementById("mySidenavpost").style.width = "0";
-//                        document.getElementById("main").style.marginRight = "0";
-//                        document.body.style.backgroundColor = "white";
-//                        document.body.style.transition = "all 0.5s ease 0s";
-//                    }
-//                }, 3000);
-//
-//            };
-
-            if ($(window).width() <= 767) {
-//                document.getElementById("mySidenavpost").style.width = "100%";
-//                document.getElementById("main").style.marginRight = "250px";
-            }
-
             $(document).on('click', function (event) {
                 if ($(window).width() <= 767) {
                     if ($(event.target).has('.filter-width').length) {
@@ -1599,6 +1425,7 @@
                     }
                 }
             });
+            /*Toggle Side Nav Start Here*/
             eval($('.dropdown').each(function () {
                 var $dropdown = $(this);
                 $(".members-list", $dropdown).click(function (e) {
@@ -1619,31 +1446,6 @@
                 var childerns = $(this).val();
                 $('#childern-val').html(childerns);
             }));
-            $('#top-bar-search-booking-form').dateRangePicker(
-                    {
-                        selectForward: (Boolean),
-                        stickyMonths: (Boolean),
-                        startDate: "12-01-2017",
-                        format: 'DD.MM.YYYY',
-                        autoClose: "true",
-                        separator: ' to ',
-                        getValue: function ()
-                        {
-                            if ($('#top-bar-search-booking-form-destination').val() && $('#top-bar-search-booking-form-arrive').val())
-                                return $('#top-bar-saerch-booking-form-destination').val() + ' to ' + $('#top-bar-saerch-booking-form-arrive').val();
-                            else
-                                return '';
-                        },
-                        setValue: function (s, s1, s2)
-                        {
-                            $('#top-bar-search-booking-form-arrive').val(s1);
-                            $('#top-bar-search-booking-form-destination').val(s2);
-                        }
-                    }
-            ).bind('datepicker-first-date-selected', function (event, obj) {
-                $("#top-bar-search-booking-form-destination").val('');
-            });
-
             $('.searchbox_landing').on('typeahead:selected', function (e, datum) {
                 var propname = $(this);
                 $.ajax({
@@ -1654,7 +1456,9 @@
                     success: function (data) {
                         if (data.status == 'error')
                         {
-
+							propname.parents('.searchform-navbar').submit();
+							return;
+							propname.parents('.searchform-navbar').submit();
                         } else
                         {
                             var obj = JSON.parse(data.property);
@@ -1664,52 +1468,6 @@
                 });
             });
         </script>
-        <style>
-            .sidenavpost .bh-search-input
-            {
-                padding-left: 0px !important;
-            }
-
-            .sidenavpost .tt-menu
-            {
-                left: 0% !important;
-                color:#fff !important;
-            }
-
-            .sidenavpost a
-            {
-                padding: 0 !important;
-                font-size: 14px !important;
-            }
-            .sidenavpost .closebtn
-            {
-                font-size: 36px !important;
-            }
-
-            div.destinSearch .bh-search-input {
-                width: 80%;
-                border:2px solid #fff;
-                margin-left:100px;
-                margin-bottom:10px;
-            }
-            div.destinSearch .tt-menu {
-                width: 80%;
-                left:100px !important;
-            }
-
-            div.destinSearch .typeahead {
-                height: 50px;
-            }
-
-            div.destinSearchMob .bh-search-input {
-                border:2px solid #fff;
-                margin-bottom:10px;
-            }
-
-            div.destinSearchMob .typeahead {
-                height: 50px;
-            }
-        </style>
         @include('layouts/elliot/ai_search-page')
         @include('layouts/elliot/ai_booking-page')
         @include('layouts/elliot/ai_newsletter')
