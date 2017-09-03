@@ -5223,7 +5223,7 @@ class ContainerController extends Controller {
 		$folderList = $this->fetchFolderTreeList($id,'',$request->input('show'));
 		$treeList = '';
 		foreach ($folderList as $r) {
-			echo $treeList .= $r;
+			echo $r;
 		} 
 		//$data = array();
 		//$data['treeList'] = $treeList;
