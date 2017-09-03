@@ -113,7 +113,6 @@
 
         $(".auto-slider ul.image-slider > li.active").removeClass("active");
         $(".auto-slider ul.image-slider > li:nth-child(" + (+index + 2) + ")").addClass("active");
-
         $(".auto-slider .images-count").html((+index + 2) + " / " + $(".auto-slider ul.image-slider > li").length);
 
     }, 40000);

@@ -200,6 +200,7 @@ foreach ($propertyDetail['typedata'] as $type) {
 		else
 		{
 			var rlindex = index - 1;
+			
 			$(this).parent().parent().find(".image-slider li:eq("+rlindex+")").addClass("active");
 			$(this).parent().parent().find(".images-count").html( index + " / " + $(this).parent().parent().find(".image-slider li").length);
 		}
