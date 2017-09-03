@@ -9,6 +9,8 @@
 <link rel="stylesheet" href="{{ asset('sximo/js/plugins/fancybox/helpers/jquery.fancybox-buttons.css?v=1.0.5') }}">
 <script src="{{ asset('sximo/js/plugins/fancybox/helpers/jquery.fancybox-buttons.js?v=1.0.5') }}"></script>
 <style>
+.size-bar-side{overflow: hidden;}
+div[data-load="left-side-tree"]{max-height: 600px;    overflow: auto;}
 .leng { display:none; }
 .btn_orange, .btn_orange:hover, .btn_orange:focus, .btn_orange:active, .btn_orange.active, .open .dropdown-toggle.btn_orange {  background-color: orange; border-color: orange; }
 .disnon { display:none; }
@@ -38,9 +40,10 @@
 				<div class="row">
 					<div class="col-sm-12">
 						<a href="{{ URL::to('container?show='.$showType) }}" class="files label"><span>Files</span></a>
-						<?php foreach ($tree as $r) {
+						<div data-load="left-side-tree"><p style="padding-top: 20px;">Loading...</p></div>
+						<?php /*foreach ($tree as $r) {
 							echo $r;
-						} ?>
+						} */?>
 					</div>
 				</div>
 				<div class="row">
@@ -2284,4 +2287,45 @@
 			 
 	</script>
 	<script src="{{ asset('sximo/js/dynamitable.jquery.min.js') }}"></script>
+	
+	<script>
+		function loadLeftSideTree(){
+			$.ajax({
+				url: '{{url("getFolderListAjax/")}}/{{(isset($fid) && $fid!="")?$fid:0}}?show={{(isset($_GET["show"]))?$_GET["show"]:""}}',
+				type: "get",
+				dataType: "html",
+				success: function(data){
+					$('[data-load="left-side-tree"]').hide();
+					$('[data-load="left-side-tree"]').fadeIn('slow');
+					$('[data-load="left-side-tree"]').html(data);
+				}
+			});
+		}
+		$(document).ready(function(){
+			loadLeftSideTree();
+			$(document).on('click','[data-action="expend-folder-tree"]',function(e){
+				e.preventDefault();
+				
+				$('a[data-action="expend-folder-tree"]').removeClass('selected');
+				$(this).addClass('selected');
+				$('a.selected[data-action="expend-folder-tree"]').next().after('<p class="loading">Loading...</p>');
+				$.ajax({
+					url: $(this).attr('href'),
+					type: "get",
+					dataType: "html",
+					success: function(data){
+						$(this).closest('p.loading').remove();
+						$('a.selected[data-action="expend-folder-tree"]').next('ul.folders').remove();
+						$('a.selected[data-action="expend-folder-tree"]').after(data);
+						$('a.selected[data-action="expend-folder-tree"]').next().fadeIn('slow');
+					}
+				});
+				
+
+			});
+
+
+
+		});
+	</script>
 @stop
