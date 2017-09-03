@@ -62,10 +62,14 @@
 			});
 			$(document).ready(function (){
 				var load_rooms = true;
-				$( window ).scroll(function() {
+				/*$( window ).scroll(function() {
 					if($(window).scrollTop() > 650 && load_rooms == true) {
 						load_rooms = false;
-						$.ajax({
+						
+					}
+				});*/
+				//Load Hotel Rooms on Page load
+				$.ajax({
 							url: "<?php echo URL(); ?>/our-collection-pages/<?php echo $slug; ?>/style_rooms",
 							type: "GET",
 							success: function (data, textStatus, jqXHR) {
@@ -86,8 +90,6 @@
 								});
 							}
 						});
-					}
-				});
 			});
 		</script>
 
