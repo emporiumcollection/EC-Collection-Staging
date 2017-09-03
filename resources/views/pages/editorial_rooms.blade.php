@@ -75,6 +75,7 @@
         event.preventDefault();
         
         var index = $(this).parent().parent().find(".image-slider li.active").index();
+		alert(index);
 		$(this).parent().parent().find(".image-slider li.active").removeClass("active");
         if (index == 0) {
 			var lindex = $(this).parent().parent().find(".image-slider li:last-child").index() +1;
