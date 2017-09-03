@@ -65,10 +65,12 @@
 				$( window ).scroll(function() {
 					if($(window).scrollTop() > 650 && load_rooms == true) {
 						load_rooms = false;
+						$("#style-rooms").html('<p id="style-rooms-loading" style="padding:50px; text-align:center;">Loading....</p>');
 						$.ajax({
 							url: "<?php echo URL(); ?>/our-collection-pages/<?php echo $slug; ?>/style_rooms",
 							type: "GET",
 							success: function (data, textStatus, jqXHR) {
+								$('#style-rooms-loading').remove();
 								$("#style-rooms").html(data);
 								$.ajax({
 									url: "<?php echo URL(); ?>/our-collection-pages/<?php echo $slug; ?>/deisgnarchitecture",
