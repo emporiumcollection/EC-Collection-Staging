@@ -84,6 +84,7 @@
         }
 		else
 		{
+			alert($(this).parent().parent().find(".image-slider li:eq("+index+")"));
 			$(this).parent().parent().find(".image-slider li:eq("+index+")").addClass("active");
 			$(this).parent().parent().find(".images-count").html( index + " / " + $(this).parent().parent().find(".image-slider li").length);
 		}
