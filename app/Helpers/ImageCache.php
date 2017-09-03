@@ -5,8 +5,8 @@ namespace App\Helpers;
 class ImageCache {
 
     static function make($path='',$quality=100, $width, $height) {
-
-        if($path!=''){
+        $path = str_replace(public_path('uploads'), url('uploads'), $path);
+        /*if($path!=''){
           
             if(strstr($path,'/uploads/')){
 		$getNewImagePath = str_replace(public_path('uploads'), public_path('uploads/image_cache'), $path);
@@ -37,7 +37,8 @@ class ImageCache {
             } else{
                 return $newImageUrl;
             } 
-        }
+        }*/
+        return $path;
     }
 
 }
