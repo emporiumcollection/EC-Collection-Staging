@@ -2308,13 +2308,13 @@ div[data-load="left-side-tree"]{max-height: 600px;    overflow: auto;}
 				
 				$('a[data-action="expend-folder-tree"]').removeClass('selected');
 				$(this).addClass('selected');
-				$('a.selected[data-action="expend-folder-tree"]').next().after('<p class="loading">Loading...</p>');
+				//$('a.selected[data-action="expend-folder-tree"]').next().after('<p class="loading">Loading...</p>');
 				$.ajax({
 					url: $(this).attr('href'),
 					type: "get",
 					dataType: "html",
 					success: function(data){
-						$(this).closest('p.loading').remove();
+						//$(this).closest('p.loading').remove();
 						$('a.selected[data-action="expend-folder-tree"]').next('ul.folders').remove();
 						$('a.selected[data-action="expend-folder-tree"]').after(data);
 						$('a.selected[data-action="expend-folder-tree"]').next().fadeIn('slow');
