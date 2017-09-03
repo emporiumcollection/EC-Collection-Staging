@@ -71,7 +71,7 @@
 </div>
 @endif
 <script>
-    $(".image-slider-previous-btn").click(function ( event ) {
+    $(".editorial-image-slider-previous-btn").click(function ( event ) {
         event.preventDefault();
         
         var index = $(this).parent().parent().find(".image-slider li.active").index();
@@ -90,7 +90,7 @@
         
     });
     
-    $(".image-slider-next-btn").click(function ( event ) {
+    $(".editorial-image-slider-next-btn").click(function ( event ) {
         event.preventDefault();
 
         var index = $(this).parent().parent().find(".image-slider li.active").index();
