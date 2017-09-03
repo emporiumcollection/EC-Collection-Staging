@@ -55,6 +55,7 @@ Route::group(['middleware' => 'auth'], function()
 	Route::post('addfolder', 'ContainerController@createfolder'); 
 	Route::post('addfile', 'ContainerController@uploadFile');
 	Route::get('folders/{id}', 'ContainerController@getIndex');
+	Route::get('getFolderListAjax/{id}', 'ContainerController@getFolderListAjax');
 	Route::post('deletefilefolder', 'ContainerController@deleteFilesFolders');
 	Route::post('copyfolderfile', 'ContainerController@copyFilesFolders');
 	Route::post('movefolderfile', 'ContainerController@moveFilesFolders');
