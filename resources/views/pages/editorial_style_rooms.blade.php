@@ -1,6 +1,6 @@
 @if (array_key_exists('typedata', $propertyDetail))
 
-<section id="style-rooms" class="container-fluid">
+
     <div class="row gallery"></div>
     @foreach($propertyDetail['typedata'] as $type)
     @if (array_key_exists($type->id, $propertyDetail['roomimgs']))
@@ -100,7 +100,7 @@
             </div>
         </div>
     </div>
-</section>
+
 @endif
 @if (array_key_exists('typedata', $propertyDetail))
 <?php
