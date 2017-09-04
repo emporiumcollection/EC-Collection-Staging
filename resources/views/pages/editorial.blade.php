@@ -1314,6 +1314,41 @@
         <!--Gallery popup end-->
 		
         <script>
+			$(".gallery-res-previous-btn").click(function ( event ) {
+				event.preventDefault();
+				
+				var index = $(this).parent().parent().find(".image-slider li.active").index();
+				$(this).parent().parent().find(".image-slider li.active").removeClass("active");
+				if (index == 0) {
+					var lindex = $(this).parent().parent().find(".image-slider li:last-child").index() +1;
+					$(this).parent().parent().find(".image-slider li:nth-child("+lindex+")").addClass("active");
+					$(this).parent().parent().find(".images-count").html( lindex + " / " + $(this).parent().parent().find(".image-slider li").length);
+				}
+				else
+				{
+					var rlindex = index - 1;
+					
+					$(this).parent().parent().find(".image-slider li:eq("+rlindex+")").addClass("active");
+					$(this).parent().parent().find(".images-count").html( index + " / " + $(this).parent().parent().find(".image-slider li").length);
+				}
+				
+				
+			});
+			
+			$(".gallery-res-next-btn").click(function ( event ) {
+				event.preventDefault();
+
+				var index = $(this).parent().parent().find(".image-slider li.active").index();
+				if (index == $(this).parent().parent().find(".image-slider li:last-child").index()) {
+					index = -1;
+				}
+
+				$(this).parent().parent().find(".image-slider li.active").removeClass("active");
+				$(this).parent().parent().find(".image-slider li:nth-child(" + (+index + 2) + ")").addClass("active");
+				
+				$(this).parent().parent().find(".images-count").html( (+index + 2) + " / " + $(this).parent().parent().find(".image-slider li").length);
+				
+			});
 			jQuery(function () {
                 jQuery('a').click(function () {
                     if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
