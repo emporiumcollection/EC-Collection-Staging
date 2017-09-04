@@ -69,17 +69,11 @@
 			<tr>
 				<th class="number"> No </th>
 				<th> <input type="checkbox" class="checkall" /></th>
-				
-				@foreach ($tableGrid as $t)
-					@if($t['view'] =='1')				
-						<?php $limited = isset($t['limited']) ? $t['limited'] :''; ?>
-						@if(SiteHelpers::filterColumn($limited ))
-						
-							<th>{{ $t['label'] }}</th>			
-						@endif 
-					@endif
-				@endforeach
-				<th>City Name</th>
+				<th>Property Name</th>
+				<th>Property City</th>
+				<th>Property Country</th>
+				<th>Email</th>
+				<th>Phone Number</th>
 				<th width="150" >{{ Lang::get('core.btn_action') }}</th>
 			  </tr>
         </thead>
@@ -89,23 +83,11 @@
                 <tr>
 					<td width="30"> {{ ++$i }} </td>
 					<td width="50"><input type="checkbox" class="ids" name="ids[]" value="{{ $row->id }}" />  </td>									
-				 @foreach ($tableGrid as $field)
-					 @if($field['view'] =='1')
-					 	<?php $limited = isset($field['limited']) ? $field['limited'] :''; ?>
-					 	@if(SiteHelpers::filterColumn($limited ))
-						 <td>		
-							{{--*/ $col = $field['field']; /*--}}
-						 	@if($field['attribute']['image']['active'] =='1')
-								{!! SiteHelpers::showUploadedFile($row->$col,$field['attribute']['image']['path']) !!}
-							@else	
-								{{--*/ $conn = (isset($field['conn']) ? $field['conn'] : array() ); /*--}}
-								{!! SiteHelpers::gridDisplay($row->$col,$field['field'],$conn) !!}	
-							@endif						 
-						 </td>
-						@endif	
-					 @endif					 
-				 @endforeach
-				  <td> {{$row->assign_detail_city}} </td>
+					<td> {{$row->property_name}} </td>
+					<td> {{$row->city}} </td>
+					<td> {{$row->country}} </td>
+					<td> {{$row->email}} </td>
+				    <td> {{$row->phone}} </td>
 				 <td>
 					 	@if($access['is_detail'] ==1)
 						<a href="{{ URL::to('properties/show/'.$row->id.'?return='.$return)}}" class="tips btn btn-xs btn-primary" title="{{ Lang::get('core.btn_view') }}"><i class="fa  fa-search "></i></a>
