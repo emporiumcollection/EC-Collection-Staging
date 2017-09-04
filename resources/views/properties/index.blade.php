@@ -71,7 +71,7 @@
 				<th> <input type="checkbox" class="checkall" /></th>
 				<th>Property Name</th>
 				<th>Property City</th>
-				<th>Property Country</th>
+				<th>Website</th>
 				<th>Email</th>
 				<th>Phone Number</th>
 				<th width="150" >{{ Lang::get('core.btn_action') }}</th>
@@ -85,7 +85,7 @@
 					<td width="50"><input type="checkbox" class="ids" name="ids[]" value="{{ $row->id }}" />  </td>									
 					<td> {{$row->property_name}} </td>
 					<td> {{$row->city}} </td>
-					<td> {{$row->country}} </td>
+					<td> {{$row->website}} </td>
 					<td> {{$row->email}} </td>
 				    <td> {{$row->phone}} </td>
 				 <td>
