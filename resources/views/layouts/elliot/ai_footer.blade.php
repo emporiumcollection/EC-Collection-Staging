@@ -252,7 +252,7 @@
 			.form-control:focus {
 				border-color: #7a7a7a;
 			}
-		</style>-->
+		</style>
 		@if(!empty($propertyDetail))
 		<script type="text/javascript">
 			/*jQuery(document).ready(function($){
@@ -305,5 +305,4 @@
 			});*/
 		</script>
 		@endif
-    </body>
-</html>
+

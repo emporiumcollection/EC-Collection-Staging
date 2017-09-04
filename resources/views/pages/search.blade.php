@@ -1553,3 +1553,5 @@ url: "{{ URL::to('filter_search_destionation')}}",
                         @include('layouts/elliot/ai_footer')
                     </div>
                     @include('layouts/elliot/ai_lightbox_popups')
+    </body>
+</html>

@@ -1683,3 +1683,5 @@ return fasle;
 
                     @include('layouts/elliot/ai_lightbox_popups')
 
+    </body>
+</html>

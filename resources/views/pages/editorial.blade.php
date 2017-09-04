@@ -1663,4 +1663,5 @@
             });
         </script>
 		@include('layouts/elliot/ai_lightbox_popups_detailpage')
-         
+             </body>
+</html>
