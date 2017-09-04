@@ -1353,7 +1353,7 @@
 					
 							var index = $(this).parent().parent().find(".image-slider li.active").index();
 							$(this).parent().parent().find(".image-slider li.active").removeClass("active");
-							if (index == 0) {
+							if (index+1 == 0) {
 								var lindex = $(this).parent().parent().find(".image-slider li:last-child").index() +1;
 								$(this).parent().parent().find(".image-slider li:nth-child("+lindex+")").addClass("active");
 								$(this).parent().parent().find(".images-count").html( lindex + " / " + $(this).parent().parent().find(".image-slider li").length);
@@ -1373,8 +1373,8 @@
 							event.preventDefault();
 
 							var index = $(this).parent().parent().find(".image-slider li.active").index();
-							if (index == $(this).parent().parent().find(".image-slider li:last-child").index()) {
-								index = -1;
+							if (index == $(this).parent().parent().find(".image-slider li:last-child").index() + 1) {
+								index = -2;
 							}
 
 							$(this).parent().parent().find(".image-slider li.active").removeClass("active");
