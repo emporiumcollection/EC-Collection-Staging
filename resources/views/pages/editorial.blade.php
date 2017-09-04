@@ -1328,7 +1328,7 @@
 				else
 				{
 					var rlindex = index + 1;
-					$(this).parent().parent().find(".galleryimg li:eq("+rlindex+")").addClass("active");
+					$(this).parent().parent().find(".galleryimg li:eq("+index+")").addClass("active");
 					$(this).parent().parent().find(".images-count").html( (rlindex +1) + " / " + $(this).parent().parent().find(".galleryimg li").length);
 				}
 				
@@ -1345,7 +1345,7 @@
 				}
 
 				$(this).parent().parent().find(".galleryimg li.active").removeClass("active");
-				$(this).parent().parent().find(".galleryimg li:nth-child(" +index + ")").addClass("active");
+				$(this).parent().parent().find(".galleryimg li:eq(" +index + ")").addClass("active");
 				
 				$(this).parent().parent().find(".images-count").html( (+index) + " / " + $(this).parent().parent().find(".galleryimg li").length);
 				
