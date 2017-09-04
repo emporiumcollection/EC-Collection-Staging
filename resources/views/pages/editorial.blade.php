@@ -1329,7 +1329,7 @@
 				{
 					var rlindex = index + 1;
 					$(this).parent().parent().find(".image-slider li:eq("+rlindex+")").addClass("active");
-					$(this).parent().parent().find(".images-count").html( rlindex + " / " + $(this).parent().parent().find(".image-slider li").length);
+					$(this).parent().parent().find(".images-count").html( (rlindex +1) + " / " + $(this).parent().parent().find(".image-slider li").length);
 				}
 				
 				
@@ -1344,7 +1344,7 @@
 				}
 
 				$(this).parent().parent().find(".image-slider li.active").removeClass("active");
-				$(this).parent().parent().find(".image-slider li:nth-child(" + (+index) + ")").addClass("active");
+				$(this).parent().parent().find(".image-slider li:nth-child(" +index + ")").addClass("active");
 				
 				$(this).parent().parent().find(".images-count").html( (+index) + " / " + $(this).parent().parent().find(".image-slider li").length);
 				
