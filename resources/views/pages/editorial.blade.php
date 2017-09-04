@@ -1314,46 +1314,6 @@
         <!--Gallery popup end-->
 		
         <script>
-			$(document).on('click', '.gallery-res-previous-btn', function ( event ) {
-				event.preventDefault();
-				
-				var index = $(this).parent().parent().find(".galleryimg li.active").index();
-				console.log('p'+index);
-				$(this).parent().parent().find(".galleryimg li.active").removeClass("active");
-				if (index == 0) {
-					var lindex = $(this).parent().parent().find(".galleryimg li:last-child").index() +1;
-					$(this).parent().parent().find(".galleryimg li:nth-child("+lindex+")").addClass("active");
-					$(this).parent().parent().find(".images-count").html( lindex + " / " + $(this).parent().parent().find(".galleryimg li").length);
-				}
-				else
-				{
-					var rlindex = index + 1;
-					$(this).parent().parent().find(".galleryimg li:eq("+index+")").addClass("active");
-					$(this).parent().parent().find(".images-count").html( (rlindex) + " / " + $(this).parent().parent().find(".galleryimg li").length);
-				}
-				
-				
-			});
-			
-			$(document).on('click', '.gallery-res-next-btn', function ( event ) {
-				event.preventDefault();
-
-				var index = $(this).parent().parent().find(".galleryimg li.active").index();
-				console.log(index);
-				if (index == $(this).parent().parent().find(".galleryimg li:last-child").index()) {
-					index = 1;
-				}
-				else
-				{
-					index = +1;
-				}
-				console.log(index);
-				$(this).parent().parent().find(".galleryimg li.active").removeClass("active");
-				$(this).parent().parent().find(".galleryimg li:nth-child(" +index + ")").addClass("active");
-				
-				$(this).parent().parent().find(".images-count").html( (+index) + " / " + $(this).parent().parent().find(".galleryimg li").length);
-				
-			});
 			jQuery(function () {
                 jQuery('a').click(function () {
                     if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
@@ -1387,6 +1347,42 @@
                         });
                         $('#detail-page-gallery-popup .galleryimg').html(imagesPro);
 						$('#detail-page-gallery-popup .images-count').html('1/'+im);
+						
+						$(document).on('click', '.gallery-res-previous-btn', function ( event ) {
+							event.preventDefault();
+					
+							var index = $(this).parent().parent().find(".image-slider li.active").index();
+							$(this).parent().parent().find(".image-slider li.active").removeClass("active");
+							if (index == 0) {
+								var lindex = $(this).parent().parent().find(".image-slider li:last-child").index() +1;
+								$(this).parent().parent().find(".image-slider li:nth-child("+lindex+")").addClass("active");
+								$(this).parent().parent().find(".images-count").html( lindex + " / " + $(this).parent().parent().find(".image-slider li").length);
+							}
+							else
+							{
+								var rlindex = index - 1;
+								
+								$(this).parent().parent().find(".image-slider li:eq("+rlindex+")").addClass("active");
+								$(this).parent().parent().find(".images-count").html( index + " / " + $(this).parent().parent().find(".image-slider li").length);
+							}
+							
+							
+						});
+						
+						$(document).on('click', '.gallery-res-next-btn', function ( event ) {
+							event.preventDefault();
+
+							var index = $(this).parent().parent().find(".image-slider li.active").index();
+							if (index == $(this).parent().parent().find(".image-slider li:last-child").index()) {
+								index = -1;
+							}
+
+							$(this).parent().parent().find(".image-slider li.active").removeClass("active");
+							$(this).parent().parent().find(".image-slider li:nth-child(" + (+index + 2) + ")").addClass("active");
+							
+							$(this).parent().parent().find(".images-count").html( (+index + 2) + " / " + $(this).parent().parent().find(".image-slider li").length);
+							
+						});
                     }
                 });
                 return false;
