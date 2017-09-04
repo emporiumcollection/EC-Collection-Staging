@@ -1318,7 +1318,6 @@
 				event.preventDefault();
 				
 				var index = $(this).parent().parent().find(".galleryimg li.active").index();
-				alert(index);
 				$(this).parent().parent().find(".galleryimg li.active").removeClass("active");
 				if (index == 0) {
 					var lindex = $(this).parent().parent().find(".galleryimg li:last-child").index() +1;
@@ -1329,7 +1328,7 @@
 				{
 					var rlindex = index + 1;
 					$(this).parent().parent().find(".galleryimg li:eq("+index+")").addClass("active");
-					$(this).parent().parent().find(".images-count").html( (rlindex +1) + " / " + $(this).parent().parent().find(".galleryimg li").length);
+					$(this).parent().parent().find(".images-count").html( (rlindex) + " / " + $(this).parent().parent().find(".galleryimg li").length);
 				}
 				
 				
@@ -1339,13 +1338,12 @@
 				event.preventDefault();
 
 				var index = $(this).parent().parent().find(".galleryimg li.active").index();
-				alert(index);
 				if (index == $(this).parent().parent().find(".galleryimg li:last-child").index()) {
 					index = 1;
 				}
 
 				$(this).parent().parent().find(".galleryimg li.active").removeClass("active");
-				$(this).parent().parent().find(".galleryimg li:eq(" +index + ")").addClass("active");
+				$(this).parent().parent().find(".galleryimg li:nth-child(" +index + ")").addClass("active");
 				
 				$(this).parent().parent().find(".images-count").html( (+index) + " / " + $(this).parent().parent().find(".galleryimg li").length);
 				
