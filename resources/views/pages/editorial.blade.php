@@ -1318,6 +1318,7 @@
 				event.preventDefault();
 				
 				var index = $(this).parent().parent().find(".galleryimg li.active").index();
+				console.log('p'+index);
 				$(this).parent().parent().find(".galleryimg li.active").removeClass("active");
 				if (index == 0) {
 					var lindex = $(this).parent().parent().find(".galleryimg li:last-child").index() +1;
@@ -1338,10 +1339,15 @@
 				event.preventDefault();
 
 				var index = $(this).parent().parent().find(".galleryimg li.active").index();
+				console.log(index);
 				if (index == $(this).parent().parent().find(".galleryimg li:last-child").index()) {
 					index = 1;
 				}
-
+				else
+				{
+					index = +1;
+				}
+				console.log(index);
 				$(this).parent().parent().find(".galleryimg li.active").removeClass("active");
 				$(this).parent().parent().find(".galleryimg li:nth-child(" +index + ")").addClass("active");
 				
