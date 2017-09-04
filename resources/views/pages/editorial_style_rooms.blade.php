@@ -128,10 +128,10 @@ foreach ($propertyDetail['typedata'] as $type) {
                     </ul>
                     <div class="images-count">1 / {{$index}}</div>
                     <div class="image-slider-btns">
-                        <a class="image-slider-previous-btn gallery-res-previous-btn" href="#">
+                        <a class="image-slider-previous-btn room-res-previous-btn" href="#">
                             <img src="{{asset('sximo/assets/images/left-round-arrow.png')}}" alt=""/>
                         </a>
-                        <a class="image-slider-next-btn gallery-res-next-btn" href="#">
+                        <a class="image-slider-next-btn room-res-next-btn" href="#">
                             <img src="{{asset('sximo/assets/images/right-round-arrow.png')}}" alt=""/>
                         </a>
                     </div>
@@ -187,7 +187,7 @@ foreach ($propertyDetail['typedata'] as $type) {
 
     });
 
-    $(".image-slider-previous-btn").click(function ( event ) {
+    $(".room-res-previous-btn").click(function ( event ) {
         event.preventDefault();
         
         var index = $(this).parent().parent().find(".image-slider li.active").index();
@@ -208,7 +208,7 @@ foreach ($propertyDetail['typedata'] as $type) {
         
     });
     
-    $(".image-slider-next-btn").click(function ( event ) {
+    $(".room-res-next-btn").click(function ( event ) {
         event.preventDefault();
 
         var index = $(this).parent().parent().find(".image-slider li.active").index();
