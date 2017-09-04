@@ -1321,7 +1321,8 @@
 				
 				$(this).parent().parent().find(".image-slider li.active").removeClass("active");
 				if (index == 0) {
-					var lindex = $(this).parent().parent().find(".image-slider li:last-child").index() +2;
+					var lindex = $(this).parent().parent().find(".image-slider li:last-child").index() +1;
+					alert(lindex);
 					$(this).parent().parent().find(".image-slider li:nth-child("+lindex+")").addClass("active");
 					$(this).parent().parent().find(".images-count").html( lindex + " / " + $(this).parent().parent().find(".image-slider li").length);
 				}
