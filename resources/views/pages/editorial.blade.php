@@ -1314,14 +1314,14 @@
         <!--Gallery popup end-->
 		
         <script>
-			$(".gallery-res-previous-btn").click(function ( event ) {
+			$(document).on('click', '.gallery-res-previous-btn', function ( event ) {
 				event.preventDefault();
 				
 				var index = $(this).parent().parent().find(".image-slider li.active").index();
 				
 				$(this).parent().parent().find(".image-slider li.active").removeClass("active");
 				if (index == 0) {
-					var lindex = $(this).parent().parent().find(".image-slider li:last-child").index() +1;
+					var lindex = $(this).parent().parent().find(".image-slider li:last-child").index() +3;
 					$(this).parent().parent().find(".image-slider li:nth-child("+lindex+")").addClass("active");
 					$(this).parent().parent().find(".images-count").html( lindex + " / " + $(this).parent().parent().find(".image-slider li").length);
 				}
@@ -1335,12 +1335,12 @@
 				
 			});
 			
-			$(".gallery-res-next-btn").click(function ( event ) {
+			$(document).on('click', '.gallery-res-next-btn', function ( event ) {
 				event.preventDefault();
 
 				var index = $(this).parent().parent().find(".image-slider li.active").index();
 				if (index == $(this).parent().parent().find(".image-slider li:last-child").index()) {
-					index = -1;
+					index = 1;
 				}
 
 				$(this).parent().parent().find(".image-slider li.active").removeClass("active");
