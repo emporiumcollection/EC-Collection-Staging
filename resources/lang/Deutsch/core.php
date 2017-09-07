@@ -294,6 +294,11 @@ return array(
  "menu_frontend_newsletterpage_firstname"			=> "Vorname",  
  "menu_frontend_newsletterpage_lastname"			=> "Name",  
  "menu_frontend_newsletterpage_submit_button"			=> "Subscribe",
+ "crmhotel_email_popup_heading"			=> "CRM Email",
+ "crmhotel_email_popup_subheading"			=> "CRM Email",
+ "crmhotel_email_popup_emailtab"			=> "Email",
+ "crmhotel_email_popup_emaillist"			=> "Email List",
+ "crmhotel_email_popup_send_btn"			=> "Send",
 "ads_delete_confirm_msg"			=> "Are you sure to delete this?", 
 "fr_youtube_api_key"=>'Youtube API Key'
  );

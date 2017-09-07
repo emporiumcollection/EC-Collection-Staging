@@ -101,6 +101,7 @@ class ConfigController extends Controller {
 		$lightbox_template1 = base_path()."/resources/views/user/emails/lightbox_template1.blade.php";
 		$lghtboxorderconfirm = base_path()."/resources/views/user/emails/lightbox_order_confirm.blade.php";
 		$enquiry = base_path()."/resources/views/user/emails/enquiry.blade.php";
+		$crmEmail = base_path()."/resources/views/user/emails/crm_email.blade.php";
 		
 		$this->data = array(
 			'groups'	=> Groups::all(),
@@ -115,6 +116,7 @@ class ConfigController extends Controller {
 			'lightbox_template1'	=> 	file_get_contents($lightbox_template1),
 			'lghtboxorderconfirm'	=> 	file_get_contents($lghtboxorderconfirm),
 			'enquiry'	=> 	file_get_contents($enquiry),
+			'crmEmail'	=> 	file_get_contents($crmEmail),
 			'active'		=> 'email',
 		);	
 		return view('sximo.config.email',$this->data);		
@@ -142,6 +144,7 @@ class ConfigController extends Controller {
 			$lightbox_template1 = base_path()."/resources/views/user/emails/lightbox_template1.blade.php";
 			$lghtboxorderconfirm = base_path()."/resources/views/user/emails/lightbox_order_confirm.blade.php";
 			$enquiry = base_path()."/resources/views/user/emails/enquiry.blade.php";
+			$crmEmail = base_path()."/resources/views/user/emails/crm_email.blade.php";
 			
 			$fp=fopen($regEmailFile,"w+"); 				
 			fwrite($fp,$_POST['regEmail']); 
@@ -178,6 +181,10 @@ class ConfigController extends Controller {
 			$lp=fopen($enquiry,"w+"); 				
 			fwrite($lp,$_POST['enquiry']); 
 			fclose($lp);
+			
+			$crm=fopen($crmEmail,"w+"); 				
+			fwrite($crm,$_POST['crmEmail']); 
+			fclose($crm);
 			
 			return Redirect::to('sximo/config/email')->with('messagetext', 'Email Has Been Updated')->with('msgstatus','success');	
 			

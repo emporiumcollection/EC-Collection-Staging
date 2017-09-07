@@ -56,6 +56,7 @@ Route::group(['middleware' => 'auth'], function()
 	Route::post('addfile', 'ContainerController@uploadFile');
 	Route::get('folders/{id}', 'ContainerController@getIndex');
 	Route::get('getFolderListAjax/{id}', 'ContainerController@getFolderListAjax');
+	Route::get('getFoldersAjax/{id}', 'ContainerController@getFoldersAjax');
 	Route::post('deletefilefolder', 'ContainerController@deleteFilesFolders');
 	Route::post('copyfolderfile', 'ContainerController@copyFilesFolders');
 	Route::post('movefolderfile', 'ContainerController@moveFilesFolders');
@@ -176,6 +177,10 @@ Route::group(['middleware' => 'auth'], function()
 	
 	Route::post('deleteUserAds', 'UserController@deleteUserAds');
 	Route::post('delete_selected_image', 'PropertiesController@delete_selectedproperty_image');
+	Route::post('fetch_property_info', 'CrmhotelController@fetch_property_info');
+	Route::post('fetch_company_info', 'CrmhotelController@fetch_company_info');
+	Route::post('emailCRM', 'CrmhotelController@emailCRM');
+	Route::get('pull_property_hotels', 'CrmhotelController@pull_property_hotels');
 });	
 
 Route::post('save_previous_page_image', 'HomeController@save_previous_page_image');
@@ -205,6 +210,22 @@ Route::get('product/{pname}', 'HomeController@MakeProductSeoUrls');
 Route::get('product/{parent}/{proname}', 'HomeController@MakeProductdetailSeoUrls');
 Route::get('material/{mname}', 'HomeController@MakeMaterialSeoUrls');
 
+//Shop URL(s)
+Route::get('product-grid-shuffle', 'HomeController@listShopProducts');
+Route::get('product-grid-shuffle/{cat}', 'HomeController@listShopProducts');
+Route::get('product-grid-shuffle/{cat}/{cat_title}', 'HomeController@listShopProducts');
+Route::get('products/{id}/{slug}', 'HomeController@viewShopProduct');
+Route::get('products/{id}', 'HomeController@viewShopProduct');
+
+Route::post('ajax-product-grid-shuffle', 'HomeController@ajax_listShopProducts');
+Route::post('get-product-by-title', 'HomeController@getProductByTitle');
+Route::post('products/{id}/{slug}', 'HomeController@viewShopProduct');
+
+//Content URL(s)
+Route::get('content-grid-shuffle', 'HomeController@contentGridShuffle');
+Route::post('ajax-content-grid-shuffle', 'HomeController@ajax_contentGridShuffle');
+Route::get('article/{id}', 'HomeController@viewArticleDetails');
+Route::post('get-article-by-title', 'HomeController@getArticleByTitle');
 
 // property search urls
 Route::get('getproperty/{id}', 'HomeController@getPropertyQuickView');
@@ -274,8 +295,3 @@ Route::filter('allowOrigin', function($route, $request, $response)
 });
 
 Route::resource('sximoapi', 'SximoapiController');
-
-
-
-
-
