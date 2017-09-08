@@ -36,4 +36,5 @@
                     Route::controller('seasons', 'SeasonsController');
                     Route::controller('reservations', 'ReservationsController');
                     Route::controller('bookings', 'BookingsController');
+					Route::controller('crmhotel', 'CrmhotelController');
                     ?>
