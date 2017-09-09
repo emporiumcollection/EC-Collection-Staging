@@ -228,7 +228,7 @@
 									<ul class="pagination">
 										<?php if($pagination['prev_page']>0){ ?>
 											
-											<li><a href="{{url('getFolderListAjax/'.$fid)}}?page={{$pagination['prev_page']}}&show={{$showType}}" rel="prev">«</a></li>
+											<li><a href="{{url('getFoldersAjax/'.$fid)}}?page={{$pagination['prev_page']}}&show={{$showType}}" rel="prev">«</a></li>
 										<?php }else{ ?>
 											<li><span>«</span></li>
 										<?php }?>
@@ -239,14 +239,14 @@
 											<?php if($pagination['current_page']==$i){ ?>
 												<li class="active"><span>{{$i}}</span></li>
 											<?php }else{ ?>
-												<li><a href="{{url('getFolderListAjax/'.$fid)}}?page={{$i}}&show={{$showType}}">{{$i}}</a></li>
+												<li><a href="{{url('getFoldersAjax/'.$fid)}}?page={{$i}}&show={{$showType}}">{{$i}}</a></li>
 											<?php }?>
 
 										<?php }?>	
 
 										<?php if($pagination['next_page']>0 && $pagination['total_page']>$pagination['next_page']){ ?>
 											
-											<li><a href="{{url('getFolderListAjax/'.$fid)}}?page={{$pagination['next_page']}}&show={{$showType}}" rel="next">»</a></li>
+											<li><a href="{{url('getFoldersAjax/'.$fid)}}?page={{$pagination['next_page']}}&show={{$showType}}" rel="next">»</a></li>
 										<?php }else{ ?>
 											<li><span>»</span></li>
 										<?php }?>
