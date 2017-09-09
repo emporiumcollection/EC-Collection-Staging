@@ -111,7 +111,7 @@ Route::group(['middleware' => 'auth'], function()
 	Route::post('update_container_sortnum', 'ContainerController@UpdateContainerSortnum');
 	Route::post('add_varients', 'ContainerController@AddVarientsfile');
 	Route::post('remove_exist_varients', 'ContainerController@RemoveExistVarients');
-	Route::get('containersearch', 'ContainerController@containerSearch');
+	Route::get('containersearch', 'ContainerController@containerSearchAjax');
 	Route::post('assignTagsFile', 'ContainerController@assignTagsFile');
 	Route::post('seletedfilesfrontendslider', 'ContainerController@seletedFrontendSlider');
 	Route::post('add_slider_variant_folder', 'ContainerController@create_slider_variant_folders');
