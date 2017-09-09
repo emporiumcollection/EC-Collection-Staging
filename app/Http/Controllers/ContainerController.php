@@ -4205,7 +4205,7 @@ class ContainerController extends Controller {
 	public function containerSearchAjax( Request $request)
 	{
 		
-		$record_per_page = 10;
+		$record_per_page = 50;
 		$page_number = 1;
 		if(isset($_GET['page'])){
 			$page_number = $_GET['page'];
@@ -4800,7 +4800,7 @@ class ContainerController extends Controller {
 
 	public function getFoldersAjax( $id = 0, $wnd = '' )
 	{
-		$record_per_page = 10;
+		$record_per_page = 50;
 		$page_number = 1;
 		if(isset($_GET['page'])){
 			$page_number = $_GET['page'];
