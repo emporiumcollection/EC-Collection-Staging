@@ -154,6 +154,7 @@ div[data-load="left-side-tree"]{max-height: 600px;    overflow: auto;}
 				</div>
 				<div class="row">
 					<div class="col-sm-12">
+						<div id="breadcrumb_line">
 						@if($fid>0)
 							<h2 class="folder">
 								<span id="folder_name">
@@ -178,7 +179,7 @@ div[data-load="left-side-tree"]{max-height: 600px;    overflow: auto;}
 								<em> &bull; {{$subfoldertotal}} folders</em>
 							</h2>
 						@endif
-						
+						</div>
 						@if($showType=="thumb")	
 							<div class="gallery-select-all">
 								<label style="float:left;">
@@ -217,7 +218,8 @@ div[data-load="left-side-tree"]{max-height: 600px;    overflow: auto;}
 								</div>
 							</div>
 							<div class="clear"></div>
-							@if(!empty($rowData))
+							<div id="folders_data_list"><p style="padding-top: 30px; text-align: center;">Loading...</p></div>
+							<?php /*@if(!empty($rowData))
 								<div id="container_sortable">	
 									@foreach($rowData as $row)
 										@if($row['ftype']=='folder')
@@ -305,7 +307,7 @@ div[data-load="left-side-tree"]{max-height: 600px;    overflow: auto;}
 										@endif
 									@endforeach
 								</div>
-							@endif
+							@endif*/ ?>
 						@elseif($showType=="list")
 							<div class="gallery-select-all">
 								<label style="float:left;">
@@ -343,7 +345,8 @@ div[data-load="left-side-tree"]{max-height: 600px;    overflow: auto;}
 									</form>
 								</div>
 							</div>
-							<table class="list js-dynamitable table table-bordered">
+							<div id="folders_data_list"><p style="padding-top: 30px; text-align: center;">Loading...</p></div>
+							<?php /*<table class="list js-dynamitable table table-bordered">
 								<thead>
 									<tr>
 										<th class="check" width="5%">
@@ -370,10 +373,10 @@ div[data-load="left-side-tree"]{max-height: 600px;    overflow: auto;}
 								</thead>
 								<tbody>
 									@if(!empty($rowData))
-									{{--*/ $al=1 /*--}}
-										@foreach($rowData as $row)
-										{{--*/ $alt = ($al%2==0)? 'alt' : ''; /*--}}
-											@if($row['ftype']=='folder')
+									{{--*/ //$al=1 /*--}}
+										//@foreach($rowData as $row)
+										//{{--*/ $alt = ($al%2==0)? 'alt' : ''; /*--}}
+											/*@if($row['ftype']=='folder')
 												<tr class="{{$alt}}">
 													<td class="check">
 														<label><input type="checkbox" name="compont[]" id="compont" value="folder-{{$row['id']}}" class="no-border check-files ff"></label>
@@ -432,11 +435,11 @@ div[data-load="left-side-tree"]{max-height: 600px;    overflow: auto;}
 													</td>
 												</tr>
 											@endif
-											{{--*/ $al++ /*--}}
+											{{--*$al++ /*--}}
 										@endforeach
 									@endif
 								</tbody>
-							</table>
+							</table> */?>
 						@endif
 					</div>
 				</div>
@@ -2289,6 +2292,7 @@ div[data-load="left-side-tree"]{max-height: 600px;    overflow: auto;}
 	<script src="{{ asset('sximo/js/dynamitable.jquery.min.js') }}"></script>
 	
 	<script>
+		//Load folders and folder tree by Ajax
 		function loadLeftSideTree(){
 			$.ajax({
 				url: '{{url("getFolderListAjax/")}}/{{(isset($fid) && $fid!="")?$fid:0}}?show={{(isset($_GET["show"]))?$_GET["show"]:""}}',
@@ -2300,12 +2304,29 @@ div[data-load="left-side-tree"]{max-height: 600px;    overflow: auto;}
 					$('[data-load="left-side-tree"]').html(data);
 				}
 			});
+
+
+			$.ajax({
+					url: '{{url("getFoldersAjax/")}}/0?show={{(isset($_GET["show"]))?$_GET["show"]:""}}',
+					type: "get",
+					dataType: "html",
+					success: function(data){
+						$('#folders_data_list').hide();
+						$('#folders_data_list').html(data);
+						$('#folders_data_list').fadeIn('slow');
+						$('#folders_data_list').find('input[type=checkbox]').iCheck('icheckbox_square-green');
+						$('#breadcrumb_line').html($('#folders_data_list').find('#get-breadcrumb').html());
+					}
+				});
 		}
 		$(document).ready(function(){
+			//Load folders and folder tree by Ajax
 			loadLeftSideTree();
+
+			//Load folders and folder tree on  extend tree 
 			$(document).on('click','[data-action="expend-folder-tree"]',function(e){
 				e.preventDefault();
-				
+				$('#folders_data_list').html('<p style="padding-top: 30px; text-align: center;">Loading...</p>');
 				$('a[data-action="expend-folder-tree"]').removeClass('selected');
 				$(this).addClass('selected');
 				//$('a.selected[data-action="expend-folder-tree"]').next().after('<p class="loading">Loading...</p>');
@@ -2320,11 +2341,107 @@ div[data-load="left-side-tree"]{max-height: 600px;    overflow: auto;}
 						$('a.selected[data-action="expend-folder-tree"]').next().fadeIn('slow');
 					}
 				});
+
+
+				$.ajax({
+					url: '{{url("getFoldersAjax/")}}/'+$(this).attr('rel')+'?show={{(isset($_GET["show"]))?$_GET["show"]:""}}',
+					type: "get",
+					dataType: "html",
+					success: function(data){
+						$('#folders_data_list').hide();
+						$('#folders_data_list').html(data);
+						$('#folders_data_list').fadeIn('slow');
+						$('#folders_data_list').find('input[type=checkbox]').iCheck({checkboxClass: 'icheckbox_square-green'});
+						$('#breadcrumb_line').html($('#folders_data_list').find('#get-breadcrumb').html());
+						
+					}
+				});
 				
 
 			});
 
+			//Load folders  on  search option 
 
+			 var $searchFrm = $('#search');
+
+		   	$(document).on('submit','#search',function(e) {
+		    	e.preventDefault();
+		    	$('#folders_data_list').html('<p style="padding-top: 30px; text-align: center;">Loading...</p>');
+		    	$.ajax({
+					url: '{{url("containersearch")}}',
+					type: "get",
+					data:$(this).serialize(),
+					dataType: "html",
+					success: function(data){
+						$('#folders_data_list').hide();
+						$('#folders_data_list').html(data);
+						$('#folders_data_list').fadeIn('slow');
+						$('#folders_data_list').find('input[type=checkbox]').iCheck({checkboxClass: 'icheckbox_square-green'});
+						$('#breadcrumb_line').html($('#folders_data_list').find('#get-breadcrumb').html());
+
+					}
+				});
+		    });
+
+		   	//Load folders by click on folder
+		   
+		    //Load folders and folder tree on  extend tree 
+			$(document).on('click','[data-action-open="folder"]',function(e){
+				e.preventDefault();
+				$('#folders_data_list').html('<p style="padding-top: 30px; text-align: center;">Loading...</p>');
+				/*$('a[data-action="expend-folder-tree"]').removeClass('selected');
+				$(this).addClass('selected');
+				//$('a.selected[data-action="expend-folder-tree"]').next().after('<p class="loading">Loading...</p>');
+				$.ajax({
+					url: $(this).attr('href'),
+					type: "get",
+					dataType: "html",
+					success: function(data){
+						
+						$('a.selected[data-action="expend-folder-tree"]').next('ul.folders').remove();
+						$('a.selected[data-action="expend-folder-tree"]').after(data);
+						$('a.selected[data-action="expend-folder-tree"]').next().fadeIn('slow');
+					}
+				});*/
+
+
+				$.ajax({
+					url: '{{url("getFoldersAjax/")}}/'+$(this).attr('rel_row')+'?show={{(isset($_GET["show"]))?$_GET["show"]:""}}',
+					type: "get",
+					dataType: "html",
+					success: function(data){
+						$('#folders_data_list').hide();
+						$('#folders_data_list').html(data);
+						$('#folders_data_list').fadeIn('slow');
+						$('#folders_data_list').find('input[type=checkbox]').iCheck({checkboxClass: 'icheckbox_square-green'});
+						$('#breadcrumb_line').html($('#folders_data_list').find('#get-breadcrumb').html());
+						
+					}
+				});
+				
+
+			});
+
+			//Load folders and folder tree on  extend tree 
+			$(document).on('click','ul.pagination li a',function(e){
+				e.preventDefault();
+				$('#folders_data_list').html('<p style="padding-top: 30px; text-align: center;">Loading...</p>');
+				$.ajax({
+					url: $(this).attr('href'),
+					type: "get",
+					dataType: "html",
+					success: function(data){
+						$('#folders_data_list').hide();
+						$('#folders_data_list').html(data);
+						$('#folders_data_list').fadeIn('slow');
+						$('#folders_data_list').find('input[type=checkbox]').iCheck({checkboxClass: 'icheckbox_square-green'});
+						$('#breadcrumb_line').html($('#folders_data_list').find('#get-breadcrumb').html());
+						
+					}
+				});
+				
+
+			});
 
 		});
 	</script>
