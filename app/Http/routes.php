@@ -56,7 +56,10 @@ Route::group(['middleware' => 'auth'], function()
 	Route::post('addfile', 'ContainerController@uploadFile');
 	Route::get('folders/{id}', 'ContainerController@getIndex');
 	Route::get('getFolderListAjax/{id}', 'ContainerController@getFolderListAjax');
+	Route::get('getFolderListAjaxonload/{id}', 'ContainerController@getFolderListAjaxonload');
 	Route::get('getFoldersAjax/{id}', 'ContainerController@getFoldersAjax');
+	Route::get('getFoldersAjax/{id}/{wnd}', 'ContainerController@getFoldersAjax');
+	Route::get('getUserList', 'ContainerController@getUserListAjax');
 	Route::post('deletefilefolder', 'ContainerController@deleteFilesFolders');
 	Route::post('copyfolderfile', 'ContainerController@copyFilesFolders');
 	Route::post('movefolderfile', 'ContainerController@moveFilesFolders');
@@ -181,6 +184,7 @@ Route::group(['middleware' => 'auth'], function()
 	Route::post('fetch_company_info', 'CrmhotelController@fetch_company_info');
 	Route::post('emailCRM', 'CrmhotelController@emailCRM');
 	Route::get('pull_property_hotels', 'CrmhotelController@pull_property_hotels');
+	Route::post('getfolderlistforselectoptions', 'ContainerController@fetchFolderTreeOptions');
 });	
 
 Route::post('save_previous_page_image', 'HomeController@save_previous_page_image');

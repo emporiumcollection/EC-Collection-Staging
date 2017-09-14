@@ -4869,11 +4869,6 @@ class ContainerController extends Controller {
 		}
 
 
-
-		
-
-		
-	
 		$ct=0; 
 		$this->data['rowData'] = '';
 		
@@ -5330,6 +5325,7 @@ class ContainerController extends Controller {
 		}
 		
 		$this->data['showType'] = $showType;
+		$this->data['parent_tags'] = (new TagmanagerController)->fetchTagTree();
 		$this->data['fid'] = $id;
 		$this->data['group'] = \Auth::user()->group_id;
 		
@@ -5352,7 +5348,17 @@ class ContainerController extends Controller {
 	}
 
 	public function getFolderListAjax(Request $request, $id = 0){
-		$folderList = $this->fetchFolderTreeList($id,'',$request->input('show'));
+		$folderList = $this->fetchFolderTreeList($id, '', '', $request->input('show'));
+		$treeList = '';
+		foreach ($folderList as $r) {
+			echo $r;
+		} 
+
+	}
+	
+	public function getFolderListAjaxonload(Request $request, $id = 0){
+		$partarr = array_reverse($this->fetchFolderParentListIds($id));
+		$folderList = $this->fetchFolderTreeListonload(0, $id, '', $request->input('show'), $partarr);
 		$treeList = '';
 		foreach ($folderList as $r) {
 			echo $r;
@@ -5360,5 +5366,63 @@ class ContainerController extends Controller {
 
 	}
 
+	function fetchFolderTreeListonload($parent = 0, $id, $user_tree_array = '', $showType='thumb', $partarrt = array()) {
+		
+		if (!is_array($user_tree_array))
+		$user_tree_array = array();
+	
+		$uid = \Auth::user()->id;
+		$filter = " AND parent_id='".$parent."'";
+		if(\Auth::user()->group_id==3)
+		{
+			$filter .= " AND (id in (select folder_id from tb_permissions where user_id='".$uid."' and no_permission='0') or global_permission='1')";
+		}
+		$params = array(
+			'params'	=> $filter,
+			'order'		=> 'asc'
+		);
+		// Get Query 
+		$results = $this->model->getRows( $params );
+		
+		  if ($results) {
+			 $user_tree_array[] = '<ul class="folders parent'.$parent.'" rel="pr_'.$parent.'" style="display:block;">';
+			 
+			if(!empty($results['rows']))
+			{
+				usort($results['rows'], function($a, $b) {
+					return $a->sort_num - $b->sort_num; 
+				});
+			}
+			
+			foreach($results['rows'] as $row) {
+				$totfiles = DB::table('tb_container_files')->select('id')->where('folder_id',$row->id)->count();
+				
+				$totfolders = DB::table('tb_container')->select('id')->where('parent_id',$row->id)->count();
+				$url = \URL::to('getFolderListAjax/'.$row->id.'?show='.$showType);
+				
+				$active_cls = '';
+				if($parent==$row->id){
+					$active_cls = 'class="active"';
+				}
+				$user_tree_array[] = '<li '.$active_cls.'><a href="'.$url.'" class="expand" title="" data-action="expend-folder-tree" rel="'.$row->id.'"><span>'. $row->display_name.'<span>('.$totfolders.', '.$totfiles.')</span></span></a></li>';
+				if(!empty($partarrt))
+				{
+					if($partarrt[0]==$row->id)
+					{
+						array_shift($partarrt);
+						$user_tree_array = $this->fetchFolderTreeListonload($row->id, $id, $user_tree_array, $showType,$partarrt);
+					}
+				}
+			}
+			$user_tree_array[] = "</ul>";
+		  }
+	  return $user_tree_array;
+	}
+	
+	public function getUserListAjax(){
+		$this->data['users'] = DB::table('tb_users')->select('last_name','first_name','id')->where('group_id',3)->where('active',1)->get();
+		return view('container.user_list_ajax',$this->data);
+	
+	}
 
 }
