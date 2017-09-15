@@ -1762,7 +1762,7 @@ class ContainerController extends Controller {
 		
 		$this->data['AttrArr'] = $AttrArr;
 		$this->data['TagArr'] = $TagArr;
-		
+		print_r($TagArr); die;
 		$sel_attributes = DB::table('tb_attributes')->where('attr_status',1);
 		if(\Auth::user()->group_id==2 || \Auth::user()->group_id==3)
 		{
