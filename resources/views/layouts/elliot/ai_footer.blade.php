@@ -1,3 +1,4 @@
+                   @if(!isset($ps_main_page_name))
                     <!--Sections-->
                     <section id ="instagran" class="sections-instagram">
                         <div class="full-width">
@@ -5,7 +6,7 @@
                         </div>
                     </section>
                     <!--Sections-->	
-					
+					@endif
 					<!-- social start-->
 					<section style="margin-top:20px;" id="social">
                         <div class="full-width">

@@ -11,7 +11,7 @@
 
         <link href="{{ asset('sximo/assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('sximo/assets/css/daterangepicker.min.css')}}" rel="stylesheet">
+        <!--link href="{{ asset('sximo/assets/css/daterangepicker.min.css')}}" rel="stylesheet"-->
         <link href="{{ asset('sximo/assets/css/test-res.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/jquery-ui.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/sticky-nav.css')}}" rel="stylesheet" type="text/css"/> 
@@ -32,7 +32,7 @@
         <script src="{{ asset('sximo/assets/js/bootstrap.min.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/sticky-nav.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/moment.min.js')}}" type="text/javascript"></script>
-        <script src="{{ asset('sximo/assets/js/jquery.daterangepicker.min.js')}}" type="text/javascript"></script>
+        <!--script src="{{ asset('sximo/assets/js/jquery.daterangepicker.min.js')}}" type="text/javascript"></script-->
         <script src="{{ asset('sximo/assets/js/html2canvas.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/book-now-page-style.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/m-popup.js')}}" type="text/javascript"></script>
@@ -346,16 +346,19 @@ return fasle;
                     min-height: 250px !important;
                 }
             }
-			
-			img.propovericons {
-				position: absolute;
-				top: 5px;
-				right: 10px;
-				z-index: 100;
-				max-height: 80px !important;
-				width: 80px !important;
-				min-height: 80px !important;
-			}
+
+            img.propovericons {
+                position: absolute;
+                top: 5px;
+                right: 10px;
+                z-index: 100;
+                max-height: 80px !important;
+                width: 80px !important;
+                min-height: 80px !important;
+            }
+            .node-btn.active {
+                border-bottom: 2px solid;
+            }
         </style>
     </head>
     <body id="main" class="<?php echo (isset($slug)) ? strtolower($slug) : '' ?>">
@@ -392,7 +395,7 @@ return fasle;
                                     <a href="#" class="book-button open-book-now-page">BOOK</a>
                                 </div>
                             </div>-->
-                            <div class="row go-back-button-container">
+                            <div class="go-back-button-container">
                                 @if(isset($_GET['ref']) && $_GET['ref']!='' )
                                 <button class="go-back-button" id="back_button_page">Go Back</button> 
 
@@ -525,20 +528,20 @@ return fasle;
                                 </div>
                                 @endif
                                 @endif
-								<div class="container">
-									<div class="row">
-										<div class="header-navigation-container col-md-12">
-											<div class="row">
-												<div class="col-md-0"></div>
-												<div class="col-md-3 col-sm-2 header-text-align">
-												</div>
-												<div class="col-md-7 col-sm-8">
-													@include('layouts/elliot/ai_navigation')
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="header-navigation-container col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-0"></div>
+                                                <div class="col-md-3 col-sm-2 header-text-align">
+                                                </div>
+                                                <div class="col-md-7 col-sm-8">
+                                                    @include('layouts/elliot/ai_navigation')
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col-md-12 col-sm-12 col-xs-12 yachts-main-bg">
                                     <div class="row">
                                         <div class="locator clear"></div>
@@ -601,11 +604,11 @@ return fasle;
                                                                         }
                                                                         if(array_key_exists('image', $props)) {
                                                                             ?>
-																			@if($props['data']->editor_choice_property=='1')
-																				<img alt="editor_choice_property" class="propovericons" src="{{URL::to('sximo/images/editors-choice.png')}}">
-																			@elseif($props['data']->feature_property=='1')
-																				<img alt="editor_choice_property" class="propovericons" src="{{URL::to('sximo/images/featured-property.png')}}">
-																			@endif
+                                                                            @if($props['data']->editor_choice_property=='1')
+                                                                                <img alt="editor_choice_property" class="propovericons" src="{{URL::to('sximo/images/editors-choice.png')}}">
+                                                                            @elseif($props['data']->feature_property=='1')
+                                                                                <img alt="editor_choice_property" class="propovericons" src="{{URL::to('sximo/images/featured-property.png')}}">
+                                                                            @endif
                                                                         <a title="<?php echo $props['image']->file_name; ?>" class="picture_link-" href="<?php echo URL::to($props['data']->property_slug); ?>">
                                                                                 <div class="overlay-text-frezeed">
                                                                                     <h2 class="yacts-tittle-text"><?php echo $props['data']->property_name; ?></h2>
@@ -1027,7 +1030,7 @@ return fasle;
                                                             @if(array_key_exists('childs',$mndest))
                                                             @foreach($mndest->childs as $cddest)
                                                             <div class="node" style="{{($continent==$mndest->category_name) ? 'display: block; padding-left: 10px; margin-top: 5px; text-transform: inherit;' : '' }}">
-                                                                <a class="node-btn" href="javascript:void(0)" onclick="filter_destination('{{$cddest->id}}', 'region');">{{$cddest->category_name}}</a>
+                                                                <a class="node-btn active" href="javascript:void(0)" onclick="filter_destination('{{$cddest->id}}', 'region');">{{$cddest->category_name}}</a>
                                                                 @if(array_key_exists('subchild',$cddest))
                                                                 @foreach($cddest->subchild as $sbdest)
                                                                 <div class="node" style="{{($region==$cddest->category_name) ? 'display: block; padding-left: 10px; margin-top: 5px; text-transform: inherit;' : '' }}">
@@ -1239,13 +1242,13 @@ return fasle;
                                 }
                                 }
                                 if (obj.hasOwnProperty("image")) {
-									if(obj.pdata.editor_choice_property=='1'){
-										var edtch = "{{URL::to('sximo/images/editors-choice.png')}}";
-										html += '<img alt="editor_choice_property" class="propovericons" src="'+edtch+'">';
-									}else if(obj.pdata.feature_property=='1'){
-										var featp = "{{URL::to('sximo/images/featured-property.png')}}";
-										html += '<img alt="editor_choice_property" class="propovericons" src="'+featp+'">';
-									}
+                                    if(obj.pdata.editor_choice_property=='1'){
+                                        var edtch = "{{URL::to('sximo/images/editors-choice.png')}}";
+                                        html += '<img alt="editor_choice_property" class="propovericons" src="'+edtch+'">';
+                                    }else if(obj.pdata.feature_property=='1'){
+                                        var featp = "{{URL::to('sximo/images/featured-property.png')}}";
+                                        html += '<img alt="editor_choice_property" class="propovericons" src="'+featp+'">';
+                                    }
                                 html += '<a title="' + obj.image.file_name + '" class="picture_link detail_view-" rel="' + obj.pdata.id + '" href="{{URL::to('')}}/' + obj.pdata.property_slug + '">';
                                 var pimg = "{{URL::to('uploads/property_imgs_thumbs/')}}/front_property_" + obj.image.folder_id + "_" + obj.image.file_name;
                                 html += '<div class="overlay-text-frezeed">';
@@ -1474,7 +1477,7 @@ return fasle;
                         });
                     </script>
                     <script>
-                        $(document).ready(function (){
+                        /*$(document).ready(function (){
                             if($('#two-inputs').length > 0) {
                                 $('#two-inputs').dateRangePicker({
                                     selectForward: (Boolean),
@@ -1496,7 +1499,7 @@ return fasle;
                                     $("#date-range-destination").val('');
                                 });
                             }
-                        });
+                        });*/
                     </script>
                     <script>
                         /* Toggle between adding and removing the "active" and "show" classes when the user clicks on one of the "Section" buttons. The "active" class is used to add a background color to the current button when its belonging panel is open. The "show" class is used to open the specific accordion panel */
@@ -1608,7 +1611,7 @@ return fasle;
                             });
 <?php endif; ?>
                         /*previous page screen short*/
-                        var scaleBy = 1;
+                       /* var scaleBy = 1;
                         var w = 1600;
                         var h = 700;
                         var div = document.querySelector('body');
@@ -1630,7 +1633,7 @@ return fasle;
                                         data: "ai_previous_page=" + encodeURIComponent(imageData)
                                 });
                                 }
-                        });
+                        });*/
                         /*previous page screen short*/
                         function filter_destination(destn, area)
                         {

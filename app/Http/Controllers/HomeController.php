@@ -4106,15 +4106,7 @@ class HomeController extends Controller {
 
     public function getPropertyByCategory(Request $request) {
 
-        $tags_Arr = \DB::table('tb_tags_manager')->where('tag_status', 1)->get();
-        $tagsArr = array();
-        if (!empty($tags_Arr)) {
-            foreach ($tags_Arr as $tags) {
-                $tagsArr[$tags->parent_tag_id][] = $tags;
-            }
-        }
-
-        $this->data['tagmenus'] = $tagsArr;
+        
         $this->data['slug'] = $request->slug;
 
         if (strtolower($request->slug) == 'yachts') {
@@ -4126,7 +4118,7 @@ class HomeController extends Controller {
         $perPage = 40;
         $currentPage = Input::get('page', 1) - 1;
 
-        $query = "SELECT * FROM tb_properties WHERE property_type='" . $request->slug . "' AND property_status = '1' ";
+        $query = "SELECT editor_choice_property,feature_property,id,property_name,property_slug,property_category_id FROM tb_properties WHERE property_type='" . $request->slug . "' AND property_status = '1' ";
 
         if (isset($request->type)) {
             $type = $request->type;
@@ -4161,18 +4153,18 @@ class HomeController extends Controller {
             foreach ($props as $prop) {
                 $propertiesArr[$pr]['data'] = $prop;
                 $propertiesArr[$pr]['data']->price = '';
-                $checkseasonPrice = \DB::table('tb_properties_category_rooms_price')->where('property_id', $prop->id)->orderBy('rack_rate', 'DESC')->first();
+                $checkseasonPrice = \DB::table('tb_properties_category_rooms_price')->select('rack_rate')->where('property_id', $prop->id)->orderBy('rack_rate', 'DESC')->first();
                 if (!empty($checkseasonPrice)) {
                     $propertiesArr[$pr]['data']->price = $checkseasonPrice->rack_rate;
                 }
 
                 $propertiesArr[$pr]['data']->category_name = '';
-                $cateObjtm = \DB::table('tb_categories')->where('id', $prop->property_category_id)->where('category_published', 1)->first();
+                $cateObjtm = \DB::table('tb_categories')->select('category_name')->where('id', $prop->property_category_id)->where('category_published', 1)->first();
                 if (!empty($cateObjtm)) {
                     $propertiesArr[$pr]['data']->category_name = $cateObjtm->category_name;
                 }
 
-                $fileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $prop->id)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
+                $fileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.file_id', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $prop->id)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
                 if (!empty($fileArr)) {
                     $propertiesArr[$pr]['image'] = $fileArr;
                     $propertiesArr[$pr]['image']->imgsrc = (new ContainerController)->getThumbpath($fileArr->folder_id);
@@ -4194,35 +4186,33 @@ class HomeController extends Controller {
         $this->data['propertiesArr'] = $pagination;
 
         $uid = isset(\Auth::user()->id) ? \Auth::user()->id : '';
-        $this->data['lightboxes'] = \DB::table('tb_lightbox')->where('user_id', $uid)->get();
+        $this->data['lightboxes'] = \DB::table('tb_lightbox')->select('box_name','id')->where('user_id', $uid)->get();
 
-        $boxcontent = \DB::table('tb_lightbox_content')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_lightbox_content.file_id')->select('tb_lightbox_content.*', 'tb_container_files.file_name', 'tb_container_files.folder_id', 'tb_container_files.file_display_name', 'tb_container_files.file_title')->where('tb_lightbox_content.user_id', $uid)->get();
+        $boxcontent = \DB::table('tb_lightbox_content')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_lightbox_content.file_id')->select('tb_lightbox_content.file_id', 'tb_lightbox_content.id', 'tb_lightbox_content.lightbox_id', 'tb_container_files.file_name', 'tb_container_files.folder_id', 'tb_container_files.file_display_name', 'tb_container_files.file_title')->where('tb_lightbox_content.user_id', $uid)->get();
 
         $boxcont = array();
         if (!empty($boxcontent)) {
             $l = 0;
             foreach ($boxcontent as $bcontent) {
                 $boxcont[$bcontent->lightbox_id][$l]['lightbox'] = $bcontent;
-                $fetch_prop_img = \DB::table('tb_properties_images')->where('file_id', $bcontent->file_id)->first();
+                $fetch_prop_img = \DB::table('tb_properties_images')->join('tb_properties','tb_properties_images.property_id','=','tb_properties.id')->select('property_name')->where('file_id', $bcontent->file_id)->first();
                 if (!empty($fetch_prop_img)) {
-                    $fetch_prop = \DB::table('tb_properties')->where('id', $fetch_prop_img->property_id)->first();
-                    if (!empty($fetch_prop)) {
-                        $boxcont[$bcontent->lightbox_id][$l]['property'] = $fetch_prop;
-                    }
+                    $boxcont[$bcontent->lightbox_id][$l]['property'] = $fetch_prop_img;
                 }
                 $l++;
             }
         }
+        
 
         $mainArrdestts = array();
-        $maindest = \DB::table('tb_categories')->where('parent_category_id', 0)->where('id', '!=', 8)->get();
+        $maindest = \DB::table('tb_categories')->select('id','category_name')->where('parent_category_id', 0)->where('id', '!=', 8)->get();
         if (!empty($maindest)) {
             $d = 0;
             foreach ($maindest as $mdest) {
 
                 $getcats = '';
                 $chldIds = array();
-                $childdest = \DB::table('tb_categories')->where('parent_category_id', $mdest->id)->get();
+                $childdest = \DB::table('tb_categories')->select('id','category_name')->where('parent_category_id', $mdest->id)->get();
                 if (!empty($childdest)) {
                     $chldIds = $this->fetchcategoryChildListIds($mdest->id);
                     array_unshift($chldIds, $mdest->id);
@@ -4246,7 +4236,7 @@ class HomeController extends Controller {
 
                             $getcats = '';
                             $chldIds = array();
-                            $subchilddest = DB::select(DB::raw("SELECT * FROM tb_categories WHERE parent_category_id = '{$cdest->id}' AND (SELECT COUNT(*) AS total_rows FROM tb_properties WHERE property_status = '1' AND (FIND_IN_SET(tb_categories.id, property_category_id))) > 0 "));
+                            $subchilddest = DB::select(DB::raw("SELECT id,category_name FROM tb_categories WHERE parent_category_id = '{$cdest->id}' AND (SELECT COUNT(*) AS total_rows FROM tb_properties WHERE property_status = '1' AND (FIND_IN_SET(tb_categories.id, property_category_id))) > 0 "));
                             if (!empty($subchilddest)) {
                                 $chldIds = $this->fetchcategoryChildListIds($cdest->id);
                                 array_unshift($chldIds, $cdest->id);
@@ -4277,28 +4267,28 @@ class HomeController extends Controller {
         }
 
         if (strtolower($request->slug) == 'yachts') {
-            $query = "SELECT * FROM tb_properties WHERE property_status = '1' GROUP BY yacht_build_year ORDER BY CAST(yacht_build_year AS UNSIGNED), yacht_build_year ASC ";
+            $query = "SELECT yacht_build_year FROM tb_properties WHERE property_status = '1' GROUP BY yacht_build_year ORDER BY CAST(yacht_build_year AS UNSIGNED), yacht_build_year ASC ";
             $this->data['yacht_build_years'] = DB::select(DB::raw($query));
 
-            $query = "SELECT * FROM tb_properties WHERE property_status = '1' GROUP BY yachts_guest ORDER BY CAST(yachts_guest AS UNSIGNED), yacht_build_year ASC ";
+            $query = "SELECT yachts_guest FROM tb_properties WHERE property_status = '1' GROUP BY yachts_guest ORDER BY CAST(yachts_guest AS UNSIGNED), yacht_build_year ASC ";
             $this->data['yachts_guests'] = DB::select(DB::raw($query));
 
-            $query = "SELECT * FROM tb_properties WHERE property_status = '1' GROUP BY yacht_length ORDER BY CAST(yacht_length AS UNSIGNED), yacht_length ASC ";
+            $query = "SELECT yacht_length FROM tb_properties WHERE property_status = '1' GROUP BY yacht_length ORDER BY CAST(yacht_length AS UNSIGNED), yacht_length ASC ";
             $this->data['yacht_lengths'] = DB::select(DB::raw($query));
 
-            $query = "SELECT * FROM tb_properties WHERE property_status = '1' GROUP BY yacht_builder ORDER BY yacht_builder ASC ";
+            $query = "SELECT yacht_builder FROM tb_properties WHERE property_status = '1' GROUP BY yacht_builder ORDER BY yacht_builder ASC ";
             $this->data['yacht_builders'] = DB::select(DB::raw($query));
 
-            $query = "SELECT * FROM tb_properties WHERE property_status = '1' GROUP BY yacht_beam ORDER BY CAST(yacht_beam AS UNSIGNED), yacht_beam ASC ";
+            $query = "SELECT yacht_beam FROM tb_properties WHERE property_status = '1' GROUP BY yacht_beam ORDER BY CAST(yacht_beam AS UNSIGNED), yacht_beam ASC ";
             $this->data['yacht_beams'] = DB::select(DB::raw($query));
 
-            $query = "SELECT * FROM tb_properties WHERE property_status = '1' GROUP BY yacht_draft ORDER BY CAST(yacht_draft AS UNSIGNED), yacht_draft ASC ";
+            $query = "SELECT yacht_draft FROM tb_properties WHERE property_status = '1' GROUP BY yacht_draft ORDER BY CAST(yacht_draft AS UNSIGNED), yacht_draft ASC ";
             $this->data['yacht_drafts'] = DB::select(DB::raw($query));
 
-            $query = "SELECT * FROM tb_properties WHERE property_status = '1' GROUP BY yacht_cabins ORDER BY CAST(yacht_cabins AS UNSIGNED), yacht_cabins ASC ";
+            $query = "SELECT yacht_cabins FROM tb_properties WHERE property_status = '1' GROUP BY yacht_cabins ORDER BY CAST(yacht_cabins AS UNSIGNED), yacht_cabins ASC ";
             $this->data['yacht_cabins'] = DB::select(DB::raw($query));
 
-            $query = "SELECT * FROM tb_properties WHERE property_status = '1' GROUP BY yacht_crew ORDER BY CAST(yacht_crew AS UNSIGNED) ASC ";
+            $query = "SELECT yacht_crew FROM tb_properties WHERE property_status = '1' GROUP BY yacht_crew ORDER BY CAST(yacht_crew AS UNSIGNED) ASC ";
             $this->data['yacht_crews'] = DB::select(DB::raw($query));
         }
 
@@ -4306,7 +4296,7 @@ class HomeController extends Controller {
         $this->data['continent'] = '';
         $this->data['region'] = '';
 
-        $this->data['categoryslider'] = \DB::table('tb_sliders')->where('slider_category', $request->slug)->get();
+        $this->data['categoryslider'] = \DB::table('tb_sliders')->select('slider_category','slider_title','slider_description','slider_img','slider_link')->where('slider_category', $request->slug)->get();
 
         $reultsgridAds = \DB::table('tb_advertisement')->where('adv_type', 'sidebar')->where('ads_cat_id', $request->slug)->where('adv_position', 'grid_results')->get();
         $resultads = array();
@@ -4326,6 +4316,7 @@ class HomeController extends Controller {
         $this->data['pagecate'] = $request->slug;
         $this->data['uid'] = $uid;
         $this->data['group_id'] = \Session::get('gid');
+        $this->data['ps_main_page_name'] = 'category';
         $this->data['pageTitle'] = $request->slug;
         $page = 'layouts.' . CNF_THEME . '.index';
         $this->data['pages'] = 'pages.filters-grid';
