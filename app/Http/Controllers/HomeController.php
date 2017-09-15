@@ -1298,7 +1298,7 @@ class HomeController extends Controller {
                         $props = array();
                         $perPage = 40;
                         $currentPage = Input::get('page', 1) - 1;
-                        $TagsObj = \DB::table('tb_tags_manager')->where('tag_title', Input::get('s', false))->where('tag_status', 1)->first();
+                        $TagsObj = \DB::table('tb_tags_manager')->select('id')->where('tag_title', Input::get('s', false))->where('tag_status', 1)->first();
                         $TagsConId = array();
                         $TagsFileConId = array();
                         $pr = 0;
@@ -1315,24 +1315,29 @@ class HomeController extends Controller {
 
                                                 if (!empty($ConObjs)) {
                                                     if ($arrive != '') {
-                                                        $propstemp = \DB::table('tb_properties')->join('tb_properties_category_rooms', 'tb_properties_category_rooms.property_id', '=', 'tb_properties.id')->select('tb_properties.*')->where('tb_properties_category_rooms.room_active_from', '<=', $arrive)->where('tb_properties.property_name', $ConObjs->display_name)->where('tb_properties.property_type', 'Hotel')->where('tb_properties.property_status', 1);
+                                                        $propstemp = \DB::table('tb_properties')->join('tb_properties_category_rooms', 'tb_properties_category_rooms.property_id', '=', 'tb_properties.id')->select('tb_properties.editor_choice_property',
+                                                            'tb_properties.feature_property',
+                                                            'tb_properties.id',
+                                                            'tb_properties.property_name',
+                                                            'tb_properties.property_slug',
+                                                            'tb_properties.property_category_id')->where('tb_properties_category_rooms.room_active_from', '<=', $arrive)->where('tb_properties.property_name', $ConObjs->display_name)->where('tb_properties.property_type', 'Hotel')->where('tb_properties.property_status', 1);
                                                         if ($destination != '') {
                                                             $propstemp->where('tb_properties_category_rooms.room_active_to', '>=', $destination);
                                                         }
                                                         $props = $propstemp->first();
                                                     } else {
-                                                        $props = \DB::table('tb_properties')->where('property_name', $ConObjs->display_name)->where('tb_properties.property_type', 'Hotel')->where('property_status', 1)->first();
+                                                        $props = \DB::table('tb_properties')->select('editor_choice_property','feature_property','id','property_name','property_slug','property_category_id')->where('property_name', $ConObjs->display_name)->where('tb_properties.property_type', 'Hotel')->where('property_status', 1)->first();
                                                     }
                                                     if (!empty($props)) {
                                                         $propertiesArr[$props->id]['data'] = $props;
                                                         $propertiesArr[$props->id]['data']->price = '';
-                                                        $checkseasonPrice = \DB::table('tb_properties_category_rooms_price')->where('property_id', $props->id)->orderBy('rack_rate', 'DESC')->first();
+                                                        $checkseasonPrice = \DB::table('tb_properties_category_rooms_price')->select('rack_rate')->where('property_id', $props->id)->orderBy('rack_rate', 'DESC')->first();
                                                         if (!empty($checkseasonPrice)) {
                                                             $propertiesArr[$props->id]['data']->price = $checkseasonPrice->rack_rate;
                                                         }
                                                         $fileArrT = \DB::table('tb_properties_images')->where('property_id', $props->id)->where('file_id', $TagsConObj->container_id)->where('tb_properties_images.type', 'Property Images')->first();
                                                         if (!empty($fileArrT)) {
-                                                            $fileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $props->id)->where('tb_properties_images.file_id', $fileArrT->file_id)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
+                                                            $fileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.file_id', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $props->id)->where('tb_properties_images.file_id', $fileArrT->file_id)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
 
                                                             if (!empty($fileArr)) {
                                                                 $propertiesArr[$props->id]['image'] = $fileArr;
@@ -1349,22 +1354,27 @@ class HomeController extends Controller {
 
                                         if (!empty($ConObjs)) {
                                             if ($arrive != '') {
-                                                $propstemp = \DB::table('tb_properties')->join('tb_properties_category_rooms', 'tb_properties_category_rooms.property_id', '=', 'tb_properties.id')->select('tb_properties.*')->where('tb_properties_category_rooms.room_active_from', '<=', $arrive)->where('tb_properties.property_name', $ConObjs->display_name)->where('tb_properties.property_type', 'Hotel')->where('tb_properties.property_status', 1);
+                                                $propstemp = \DB::table('tb_properties')->join('tb_properties_category_rooms', 'tb_properties_category_rooms.property_id', '=', 'tb_properties.id')->select('tb_properties.editor_choice_property',
+                                                            'tb_properties.feature_property',
+                                                            'tb_properties.id',
+                                                            'tb_properties.property_name',
+                                                            'tb_properties.property_slug',
+                                                            'tb_properties.property_category_id')->where('tb_properties_category_rooms.room_active_from', '<=', $arrive)->where('tb_properties.property_name', $ConObjs->display_name)->where('tb_properties.property_type', 'Hotel')->where('tb_properties.property_status', 1);
                                                 if ($destination != '') {
                                                     $propstemp->where('tb_properties_category_rooms.room_active_to', '>=', $destination);
                                                 }
                                                 $props = $propstemp->first();
                                             } else {
-                                                $props = \DB::table('tb_properties')->where('property_name', $ConObjs->display_name)->where('tb_properties.property_type', 'Hotel')->where('property_status', 1)->first();
+                                                $props = \DB::table('tb_properties')->select('editor_choice_property','feature_property','id','property_name','property_slug','property_category_id')->where('property_name', $ConObjs->display_name)->where('tb_properties.property_type', 'Hotel')->where('property_status', 1)->first();
                                             }
                                             if (!empty($props)) {
                                                 $propertiesArr[$props->id]['data'] = $props;
                                                 $propertiesArr[$props->id]['data']->price = '';
-                                                $checkseasonPrice = \DB::table('tb_properties_category_rooms_price')->where('property_id', $props->id)->orderBy('rack_rate', 'DESC')->first();
+                                                $checkseasonPrice = \DB::table('tb_properties_category_rooms_price')->select('rack_rate')->where('property_id', $props->id)->orderBy('rack_rate', 'DESC')->first();
                                                 if (!empty($checkseasonPrice)) {
                                                     $propertiesArr[$props->id]['data']->price = $checkseasonPrice->rack_rate;
                                                 }
-                                                $fileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $props->id)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
+                                                $fileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.file_id', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $props->id)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
 
                                                 if (!empty($fileArr)) {
                                                     $propertiesArr[$props->id]['image'] = $fileArr;
@@ -1379,14 +1389,19 @@ class HomeController extends Controller {
                         }
 
                         if ($arrive != '') {
-                            $seapropstemp = \DB::table('tb_properties')->join('tb_properties_category_rooms', 'tb_properties_category_rooms.property_id', '=', 'tb_properties.id')->select('tb_properties.*')->where('tb_properties_category_rooms.room_active_from', '<=', $arrive)->where('tb_properties.property_name', 'like', '%' . $keyword . '%')->where('tb_properties.property_status', 1)->where('tb_properties.property_type', 'Hotel');
+                            $seapropstemp = \DB::table('tb_properties')->join('tb_properties_category_rooms', 'tb_properties_category_rooms.property_id', '=', 'tb_properties.id')->select('tb_properties.editor_choice_property',
+                                                            'tb_properties.feature_property',
+                                                            'tb_properties.id',
+                                                            'tb_properties.property_name',
+                                                            'tb_properties.property_slug',
+                                                            'tb_properties.property_category_id')->where('tb_properties_category_rooms.room_active_from', '<=', $arrive)->where('tb_properties.property_name', 'like', '%' . $keyword . '%')->where('tb_properties.property_status', 1)->where('tb_properties.property_type', 'Hotel');
                             if ($destination != '') {
                                 $seapropstemp->where('tb_properties_category_rooms.room_active_to', '>=', $destination);
                             }
                             $seaprops = $seapropstemp->orderBy('tb_properties.editor_choice_property', 'desc')->orderBy('tb_properties.feature_property', 'desc')->get();
                         } else {
 //                            $seaprops = \DB::table('tb_properties')->where('property_name', 'like', '%' . $keyword . '%')->where('property_status', 1)->where('tb_properties.property_type', 'Hotel')->get();
-                            $query = "SELECT * FROM tb_properties WHERE property_name LIKE '%$keyword%' AND property_status = 1 AND tb_properties.property_type = 'Hotel' ";
+                            $query = "SELECT editor_choice_property,feature_property,id,property_name,property_slug,property_category_id FROM tb_properties WHERE property_name LIKE '%$keyword%' AND property_status = 1 AND tb_properties.property_type = 'Hotel' ";
                             $query .= "ORDER BY tb_properties.editor_choice_property desc, tb_properties.feature_property desc, (SELECT rack_rate FROM tb_properties_category_rooms_price WHERE tb_properties_category_rooms_price.property_id = tb_properties.id ORDER BY rack_rate DESC LIMIT 1) * 1 DESC ";
                             $seaprops = DB::select(DB::raw($query));
                         }
@@ -1399,7 +1414,7 @@ class HomeController extends Controller {
                                 if (!empty($checkseasonPrice)) {
                                     $propertiesArr[$sprop->id]['data']->price = $checkseasonPrice->rack_rate;
                                 }
-                                $sfileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $sprop->id)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
+                                $sfileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.file_id', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $sprop->id)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
 
                                 if (!empty($sfileArr)) {
                                     $propertiesArr[$sprop->id]['image'] = $sfileArr;
@@ -1438,9 +1453,14 @@ class HomeController extends Controller {
                                 if ($destination != '') {
                                     $getdestind = " AND tb_properties_category_rooms.room_active_to <= '$destination'";
                                 }
-                                $catprops = \DB::select(DB::raw("SELECT * FROM tb_properties JOIN tb_properties_category_rooms ON tb_properties_category_rooms.property_id = tb_properties.id WHERE tb_properties.property_status='1' AND tb_properties_category_rooms.room_active_from <= '$arrive' $getdestind  $getcats order by tb_properties.editor_choice_property desc, tb_properties.feature_property desc"));
+                                $catprops = \DB::select(DB::raw("SELECT tb_properties.editor_choice_property,
+                                                            tb_properties.feature_property,
+                                                            tb_properties.id,
+                                                            tb_properties.property_name,
+                                                            tb_properties.property_slug,
+                                                            tb_properties.property_category_id FROM tb_properties JOIN tb_properties_category_rooms ON tb_properties_category_rooms.property_id = tb_properties.id WHERE tb_properties.property_status='1' AND tb_properties_category_rooms.room_active_from <= '$arrive' $getdestind  $getcats order by tb_properties.editor_choice_property desc, tb_properties.feature_property desc"));
                             } else {
-                                $catprops = \DB::select(DB::raw("SELECT * FROM tb_properties WHERE property_status='1' $getcats order by editor_choice_property desc, feature_property desc"));
+                                $catprops = \DB::select(DB::raw("SELECT editor_choice_property,feature_property,id,property_name,property_slug,property_category_id FROM tb_properties WHERE property_status='1' $getcats order by editor_choice_property desc, feature_property desc"));
                             }
                             if (!empty($catprops)) {
                                 foreach ($catprops as $cprop) {
@@ -1450,7 +1470,7 @@ class HomeController extends Controller {
                                     if (!empty($checkseasonPrice)) {
                                         $propertiesArr[$cprop->id]['data']->price = $checkseasonPrice->rack_rate;
                                     }
-                                    $sfileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $cprop->id)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
+                                    $sfileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.file_id', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $cprop->id)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
 
                                     if (!empty($sfileArr)) {
                                         $propertiesArr[$cprop->id]['image'] = $sfileArr;
@@ -1472,20 +1492,18 @@ class HomeController extends Controller {
                         $this->data['propertiesArr'] = $pagination;
 
                         $uid = isset(\Auth::user()->id) ? \Auth::user()->id : '';
-                        $this->data['lightboxes'] = \DB::table('tb_lightbox')->where('user_id', $uid)->get();
+                        $this->data['lightboxes'] = \DB::table('tb_lightbox')->select('box_name','id')->where('user_id', $uid)->get();
 
-                        $boxcontent = \DB::table('tb_lightbox_content')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_lightbox_content.file_id')->select('tb_lightbox_content.*', 'tb_container_files.file_name', 'tb_container_files.folder_id', 'tb_container_files.file_display_name')->where('tb_lightbox_content.user_id', $uid)->get();
+                        $boxcontent = \DB::table('tb_lightbox_content')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_lightbox_content.file_id')->select('tb_lightbox_content.file_id', 'tb_lightbox_content.id', 'tb_lightbox_content.lightbox_id', 'tb_container_files.file_name', 'tb_container_files.folder_id', 'tb_container_files.file_display_name', 'tb_container_files.file_title')->where('tb_lightbox_content.user_id', $uid)->get();
+
                         $boxcont = array();
                         if (!empty($boxcontent)) {
                             $l = 0;
                             foreach ($boxcontent as $bcontent) {
                                 $boxcont[$bcontent->lightbox_id][$l]['lightbox'] = $bcontent;
-                                $fetch_prop_img = \DB::table('tb_properties_images')->where('file_id', $bcontent->file_id)->first();
+                                $fetch_prop_img = \DB::table('tb_properties_images')->join('tb_properties','tb_properties_images.property_id','=','tb_properties.id')->select('property_name')->where('file_id', $bcontent->file_id)->first();
                                 if (!empty($fetch_prop_img)) {
-                                    $fetch_prop = \DB::table('tb_properties')->where('id', $fetch_prop_img->property_id)->first();
-                                    if (!empty($fetch_prop)) {
-                                        $boxcont[$bcontent->lightbox_id][$l]['property'] = $fetch_prop;
-                                    }
+                                    $boxcont[$bcontent->lightbox_id][$l]['property'] = $fetch_prop_img;
                                 }
                                 $l++;
                             }
