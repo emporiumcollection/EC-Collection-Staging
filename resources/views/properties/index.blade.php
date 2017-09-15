@@ -82,9 +82,9 @@
                 <tr>
 					<td width="30"> {{ ++$i }} </td>
 					<td width="50"><input type="checkbox" class="ids" name="ids[]" value="{{ $row->id }}" />  </td>									
-					<td> {{$row->property_name}} </td>
-					<td> {{$row->city}} </td>
-					<td> {{$row->website}} </td>
+					<td> <a href="{{URL::to($row->property_slug)}}">{{$row->property_name}}</a> </td>
+					<td> <a href="{{URL::to('search?s='.$row->city)}}">{{$row->city}}</a> </td>
+					<td> <a href="{{(strpos($row->website, 'http') !== false) ? $row->website : 'http://'.$row->website }}">{{$row->website}}</a> </td>
 					<td> {{$row->email}} </td>
 				 <td>
 					 	@if($access['is_detail'] ==1)
@@ -99,6 +99,7 @@
 						@else
 							<a  href="#" class="tips btn btn-xs btn-danger" title="Click to enable " onclick="change_option(this,'property_status','{{$row->id}}',1);"><i class="fa fa-times "></i></a>
 						@endif
+						<a  href="{{ URL::to('properties_settings/'.$row->id.'/property_images') }}" class="tips btn btn-xs btn-success" title="Property Images"><i class="fa fa-cogs "></i></a>
 				</td>				 
                 </tr>
 				
