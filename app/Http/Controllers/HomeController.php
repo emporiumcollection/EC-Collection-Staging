@@ -4125,8 +4125,8 @@ class HomeController extends Controller {
     public function getPropertyByCategory(Request $request) {
 
         
-        echo $this->data['slug'] = $request->slug;
-        exit;
+        $this->data['slug'] = $request->slug;
+
         if (strtolower($request->slug) == 'yachts') {
             $type = 'Yachts for Charter';
         }
