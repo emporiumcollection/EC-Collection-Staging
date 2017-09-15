@@ -76,10 +76,36 @@
             </div>
         </div>
         <!--JS funcitons-->
+        <!--Social share start-->
+
+        <div style="position:relative;">
+            <div class="social-share">
+                <a class="trigger-click-on-share" href="#">SHARE</a>
+                <div class="open-social-share">
+                    <a class="social-share-btn" href="#">FOLLOW</a>
+                    <ul style="display: none;">
+                        <li>
+                            <a href="#">Twitter</a>
+                        </li>
+                        <li>
+                            <a href="#">Instagram</a>
+                        </li>
+                        <li>
+                            <a href="#">Facebook</a>
+                        </li>
+                        <li>
+                            <a href="#">Pintrest</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!--Social share end-->
         <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" >TOP</a>
         <script>
             $(document).ready(function () {
-                $(".social-share").click(function (event) {
+                $(".open-social-share").click(function (event) {
                     event.preventDefault();
                     $(this).find("ul").toggle();
                     $(this).toggleClass("open");
