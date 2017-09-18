@@ -756,6 +756,11 @@
                                             <input type="hidden" name="ref" value="oc_small">
                                                 <input  class="bh-search-input ai-md-search-input typeahead search-navbar main-search-box" name="s" id="search-navbar" placeholder="Enter Your Hotel or Destination" type="text">
                                             </form>
+											<div class="serach-page-menu">
+												<ul>
+													<li><a href="{{URL::to('luxurytravel/Hotel?ref=oc')}}">Hotels</a></li>
+												</ul>
+											</div>
                                         </div>
                                     </div>
                                 </div>
