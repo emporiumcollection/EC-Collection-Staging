@@ -638,6 +638,11 @@
                                                         <a href="index.html"> <img class="img-responsive" src="{{ asset('sximo/assets/images/design-location-logo.png')}}" alt=""></a>
 
                                                     </div>
+													<div class="serach-page-menu">
+														<ul>
+															<li><a href="{{URL::to('luxurytravel/Hotel?ref=oc')}}">Hotels</a></li>
+														</ul>
+													</div>
                                                     <div class="design-locations-logo">
                                                         <form autocomplete="off" method="get" id="searchform-navbar" class="searchform-navbar" action="{{URL::to('search')}}">
                                                             <input  class="bh-search-input typeahead search-navbar" name="s" id="search-navbar" placeholder="SEARCH" type="text">
