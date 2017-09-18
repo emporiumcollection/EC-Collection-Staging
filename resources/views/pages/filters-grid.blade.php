@@ -487,7 +487,7 @@ return fasle;
                                 @if($currentPage==0)
                                 @if(!empty($categoryslider))
                                 <!--<h2 class="current-page-heading" style="text-align:center;">Our Featured Members</h2>-->
-                                <div class="bh-slideshow-thumbnail-split" data-uk-slideshow="{animation: 'slice-up', autoplay: true}" style="margin-top:40px;">
+                                <div class="bh-slideshow-thumbnail-split hidden-xs hidden-sm" data-uk-slideshow="{animation: 'slice-up', autoplay: true}" style="margin-top:40px;">
                                     <ul style="height: 620px;" class="uk-slideshow uk-overlay-active">
                                         @foreach($categoryslider as $slides)
                                         <li style="height: 620px;" @if($categoryslider[0]==$slides) class="uk-active" @endif aria-hidden="true"><div style="background-image: url({{ URL::to('uploads/slider_images/'.$slides->slider_img)}});" class="uk-cover-background uk-position-cover"></div>
