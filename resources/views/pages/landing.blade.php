@@ -332,43 +332,43 @@
                     <div class="choose-experience-center-align">
                         <div class="width-100 holiday-type-image-align ">
                             <div class="width-20">
-                                <img class="img-responsive" src="{{ \ImageCache::make(public_path('sximo/assets/images/GoBeachHotels.jpg'),100,170,199)}}" alt=""/>
+                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoBeachHotels.jpg')}}" alt=""/>
                                 <a href="{{URL::to('search?s=Beach Hotels&ref=sye&landing_page=1')}}"><h3 class="hover-tittles">Go Beach Hotels</h3></a>
                             </div>
                             <div class="width-20">
-                                <img class="img-responsive" src="{{ \ImageCache::make(public_path('sximo/assets/images/GoGreenHotels.jpg'),100,170,199)}}" alt=""/>
+                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoGreenHotels.jpg')}}" alt=""/>
                                 <a href="{{URL::to('search?s=Green Properties&ref=sye&landing_page=1')}}"><h3 class="hover-tittles">Go Green Hotels</h3></a>
                             </div>
                             <div class="width-20">
-                                <img class="img-responsive" src="{{ \ImageCache::make(public_path('sximo/assets/images/GoUrbanHotels.jpg'),100,170,199)}}" alt=""/>
+                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoUrbanHotels.jpg')}}" alt=""/>
                                 <a href="{{URL::to('search?s=Go Urban Hotels&ref=sye&landing_page=1')}}"><h3 class="hover-tittles">Go Urban Hotels</h3></a>
                             </div>
                             <div class="width-20">
-                                <img class="img-responsive" src="{{ \ImageCache::make(public_path('sximo/assets/images/GoInfinityPoolHotels.jpg'),100,170,199)}}" alt=""/>
+                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoInfinityPoolHotels.jpg')}}" alt=""/>
                                 <a href="{{URL::to('search?s=Infinity Pools&ref=sye&landing_page=1')}}"><h3 class="hover-tittles">Go Infinity Pools</h3></a>
                             </div>
                             <div class="width-20">
-                                <img class="img-responsive" src="{{ \ImageCache::make(public_path('sximo/assets/images/GoSpaandWellnessHotels.png'),100,170,199)}}" alt=""/>
+                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoSpaandWellnessHotels.jpg')}}" alt=""/>
                                 <a href="{{URL::to('search?s=Spa & Wellness Hotels&ref=sye&landing_page=1')}}"><h3 class="hover-tittles">Go Spa & Wellness Hotels</h3></a>
                             </div>
                             <div class="width-20">
-                                <img class="img-responsive" src="{{ \ImageCache::make(public_path('sximo/assets/images/GoMountainaandSkiResorts.jpg'),100,170,199)}}" alt=""/>
+                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoMountainaandSkiResorts.jpg')}}" alt=""/>
                                 <a href="{{URL::to('search?s=Mountain Ski Resorts&ref=sye&landing_page=1')}}"><h3 class="hover-tittles">Go Mountains and Skin Resorts</h3></a>
                             </div>
                             <div class="width-20">
-                                <img class="img-responsive" src="{{ \ImageCache::make(public_path('sximo/assets/images/GoYogaHotels.jpg'),100,170,199)}}" alt=""/>
+                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoYogaHotels.jpg')}}" alt=""/>
                                 <a href="{{URL::to('search?s=Yoga Hotels&ref=sye&landing_page=1')}}"><h3 class="hover-tittles">Discover Yoga Hotels</h3></a>
                             </div>
                             <div class="width-20">
-                                <img class="img-responsive" src="{{ \ImageCache::make(public_path('sximo/assets/images/GoCulnaryDelightHotels.jpg'),100,170,199)}}" alt=""/>
+                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoCulnaryDelightHotels.jpg')}}" alt=""/>
                                 <a href="{{URL::to('search?s=Culinary Delights&ref=sye&landing_page=1')}}"><h3 class="hover-tittles">Discover culinary Delight Hotels</h3></a>
                             </div>
                             <div class="width-20">
-                                <img class="img-responsive" src="{{ \ImageCache::make(public_path('sximo/assets/images/GoFamilyFriendlyHotels.jpg'),100,170,199)}}" alt=""/>
+                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoFamilyFriendlyHotels.jpg')}}" alt=""/>
                                 <a href="{{URL::to('search?s=Family Friendly&ref=sye&landing_page=1')}}"><h3 class="hover-tittles">Discover Family Friendly Hotels</h3></a>
                             </div>
                             <div class="width-20">
-                                <img class="img-responsive" src="{{ \ImageCache::make(public_path('sximo/assets/images/GoUnusualAdventures.jpg'),100,170,199)}}" alt=""/>
+                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoUnusualAdventures.jpg')}}" alt=""/>
                                 <a href="{{URL::to('search?s=Unusual Adventure Hotels&ref=sye&landing_page=1')}}"><h3 class="hover-tittles">Unusual Adventure Hotels</h3></a>
                             </div>
                         </div>
