@@ -231,13 +231,13 @@
                                             <a href="#" class="book-button open-search-page">Search Our Collection</a>
                                         </li>
                                         <li>
-                                            <a href="#" class="book-button open-experience-page">Select Your Experience</a>
-                                        </li>
-                                        <li>
                                             <a href="#" class="book-button open-date-page">Search By Date</a>
                                         </li>
                                         <li>
                                             <a href="#" class="book-button open-destination-page">Select Your Destination</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="book-button open-experience-page">Select Your Experience</a>
                                         </li>
                                         <!--<li>
                                             <a href="#" class="book-button open-about-page">About</a>
