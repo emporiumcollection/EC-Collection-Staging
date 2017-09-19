@@ -35,6 +35,10 @@
 				</div>
             </div>
         </div>
-        @include('layouts/elliot/ai_footer_3')
-        @include('layouts/elliot/ai_footer_2')
+        <link href="{{ asset('sximo/assets/css/editorial.css')}}" rel="stylesheet" type="text/css"/>
+        <div class="editorial-custom-footer-style grid-page-footer-align">
+            @include('layouts/elliot/ai_footer')
+        </div>
+    </body>
+</html>
         
