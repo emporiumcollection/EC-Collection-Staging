@@ -231,7 +231,7 @@
                                             <a href="#" class="book-button open-search-page">Search Our Collection</a>
                                         </li>
                                         <li>
-                                            <a href="#" class="book-button open-experience-page">Choose Your Experience</a>
+                                            <a href="#" class="book-button open-experience-page">Select Your Experience</a>
                                         </li>
                                         <li>
                                             <a href="#" class="book-button open-date-page">Search By Date</a>
@@ -768,7 +768,7 @@
                                     <a class="collapsed" data-toggle="collapse" data-parent="#accordion-mobile" href="#collapse-mobile-2">
                                         <div class="panel-heading">
                                             <h4 class="panel-title menu-text accordion">
-                                                Choose Your Experience
+                                                Select Your Experience
                                             </h4>
                                         </div>
                                     </a>
