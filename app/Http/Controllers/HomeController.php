@@ -1480,6 +1480,26 @@ class HomeController extends Controller {
                                 }
                             }
                         }
+						
+						$cityquery = "SELECT editor_choice_property,feature_property,id,property_name,property_slug,property_category_id FROM tb_properties WHERE city LIKE '%$keyword%' AND property_status = 1 ORDER BY tb_properties.editor_choice_property desc, tb_properties.feature_property desc, (SELECT rack_rate FROM tb_properties_category_rooms_price WHERE tb_properties_category_rooms_price.property_id = tb_properties.id ORDER BY rack_rate DESC LIMIT 1) * 1 DESC ";
+                        $cityquery = DB::select(DB::raw($cityquery));
+                        if (!empty($cityquery)) {
+                            foreach ($cityquery as $ctprop) {
+                                $propertiesArr[$ctprop->id]['data'] = $ctprop;
+                                $propertiesArr[$ctprop->id]['data']->price = '';
+                                $checkseasonPrice = \DB::table('tb_properties_category_rooms_price')->where('property_id', $ctprop->id)->orderBy('rack_rate', 'DESC')->first();
+                                if (!empty($checkseasonPrice)) {
+                                    $propertiesArr[$ctprop->id]['data']->price = $checkseasonPrice->rack_rate;
+                                }
+                                $sfileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.file_id', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $ctprop->id)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
+
+                                if (!empty($sfileArr)) {
+                                    $propertiesArr[$ctprop->id]['image'] = $sfileArr;
+                                    $propertiesArr[$ctprop->id]['image']->imgsrc = (new ContainerController)->getThumbpath($sfileArr->folder_id);
+                                }
+                                $pr++;
+                            }
+                        }
 
 //                        usort($propertiesArr, function($a, $b) {
 //                            return trim($a['data']->property_name) > trim($b['data']->property_name);
