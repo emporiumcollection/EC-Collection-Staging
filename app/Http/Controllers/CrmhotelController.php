@@ -282,6 +282,7 @@ class CrmhotelController extends Controller {
 			});
 			
 			$data['crm_id'] = $crmId;
+			$data['user_id'] = \Auth::user()->id;
 			$data['property_id'] = $propertyId;
 			$data['email_address'] = $crmemail;
 			$data['cc_email_address'] = $ccemail;
