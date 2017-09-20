@@ -151,6 +151,7 @@ class HomeController extends Controller {
                                     $destts[$ctt]['maincat'] = $dest;
 
                                     if (!empty($subdest)) {
+										$sd=0;
                                         foreach ($subdest as $subdestt) {
 
                                             $getcats = '';
@@ -163,8 +164,31 @@ class HomeController extends Controller {
                                                             }, array_values($chldIds))) . ")";
                                             $preprops = DB::select(DB::raw("SELECT COUNT(*) AS total_rows FROM tb_properties WHERE property_status = '1' $getcats"));
                                             if (isset($preprops[0]->total_rows) && $preprops[0]->total_rows > 0) {
-                                                $destts[$ctt]['child'][] = $subdestt;
+                                                $destts[$ctt]['child'][$sd] = $subdestt;
+												
+												$subchilddest = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name')->where('parent_category_id', $subdestt->id)->get();
+												
+												$getcats = '';
+												$chldIds = array();
+												if (!empty($subchilddest)) {
+													$chldIds = $this->fetchcategoryChildListIds($subdestt->id);
+													array_unshift($chldIds, $subdestt->id);
+												} else {
+													$chldIds[] = $subdestt->id;
+												}
+
+												if (!empty($chldIds)) {
+													$getcats = " AND (" . implode(" || ", array_map(function($v) {
+																		return sprintf("FIND_IN_SET('%s', property_category_id)", $v);
+																	}, array_values($chldIds))) . ")";
+												}
+
+												$cpreprops = DB::select(DB::raw("SELECT COUNT(*) AS total_rows FROM tb_properties WHERE property_status = '1' $getcats"));
+												if (isset($cpreprops[0]->total_rows) && $cpreprops[0]->total_rows > 0) {
+													$destts[$ctt]['child'][$sd]->subchild = $subchilddest;
+												}
                                             }
+											$sd++;
                                         }
                                     }
                                     $ctt++;

@@ -412,18 +412,18 @@
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">
                                                     <h4 class="panel-title">
-                                                        <a data-toggle="collapse" data-parent="#inner-level-accordian" href="#destination-child1">{{$childDest->category_name}}</a>
+                                                        <a data-toggle="collapse" data-parent="#inner-level-accordian" href="#destination-child{{$childDest->id}}">{{$childDest->category_name}}</a>
                                                     </h4>
                                                 </div>
-                                                <div id="destination-child1" class="panel-collapse collapse">
-                                                    <ul class="where-box-sub-menu inner-level-sub-menu">
-                                                        <li><a href="#">Dummy Menu item</a></li>
-                                                        <li><a href="#">Dummy Menu item</a></li>
-                                                        <li><a href="#">Dummy Menu item</a></li>
-                                                        <li><a href="#">Dummy Menu item</a></li>
-                                                        <li><a href="#">Dummy Menu item</a></li>
-                                                    </ul>
-                                                </div>
+                                                @if (array_key_exists("subchild",$childDest))
+													<div id="destination-child{{$childDest->id}}" class="panel-collapse collapse">
+														<ul class="where-box-sub-menu inner-level-sub-menu">
+															@foreach($childDest->subchild as $subchildDest)
+																<li><a href="{{URL::to('search?continent='.$destination['maincat']->category_name.'&region='.$childDest->category_name.'&s='.$subchildDest->category_name.'&ref=syd_small')}}">{{$subchildDest->category_name}}</a></li>
+															@endforeach
+														</ul>
+													</div>
+												@endif
                                             </div>
                                         </div></li>
                                         <!--The menu code is commented please uncomment this when you make it dynamic-->
