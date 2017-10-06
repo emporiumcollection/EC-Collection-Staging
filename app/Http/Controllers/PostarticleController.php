@@ -136,6 +136,7 @@ class PostarticleController extends Controller {
 		$this->data['fields'] 		=  \SiteHelpers::fieldLang($this->info['config']['forms']);
 		
 		$this->data['id'] = $id;
+		$this->data['fetch_cat'] = \DB::table('tb_categories')->get();
 		return view('postarticle.form',$this->data);
 	}	
 
@@ -184,111 +185,111 @@ class PostarticleController extends Controller {
 			if(!is_null($request->file('featured_image')))
 			{
 				$featuredfile = $_FILES["featured_image"]['tmp_name'];
-				list($width, $height) = getimagesize($featuredfile);
+				/*list($width, $height) = getimagesize($featuredfile);
 
 				if($width > "1350" || $height > "715") {
 					return Redirect::to('postarticle/update/'.$id)->with('messagetext','bitte beachten die Bilder soll 1350 by 715 haben')->with('msgstatus','error')->withErrors($validator)->withInput();
-				}
+				}*/
 			}
 			
 			if(!is_null($request->file('image_pos_1')))
 			{
 				$featuredfile = $_FILES["image_pos_1"]['tmp_name'];
-				list($width, $height) = getimagesize($featuredfile);
+				/*list($width, $height) = getimagesize($featuredfile);
 
 				if($width > "1500" || $height > "1000") {
 					return Redirect::to('postarticle/update/'.$id)->with('messagetext','bitte beachten die Bilder soll 1500 by 100 haben')->with('msgstatus','error')->withErrors($validator)->withInput();
-				}
+				}*/
 			}
 			
 			if(!is_null($request->file('image_pos_2')))
 			{
 				$featuredfile = $_FILES["image_pos_2"]['tmp_name'];
-				list($width, $height) = getimagesize($featuredfile);
+				/*list($width, $height) = getimagesize($featuredfile);
 
 				if($width > "1500" || $height > "1000") {
 					return Redirect::to('postarticle/update/'.$id)->with('messagetext','bitte beachten die Bilder soll 1500 by 1000 haben')->with('msgstatus','error')->withErrors($validator)->withInput();
-				}
+				}*/
 			}
 			
 			if(!is_null($request->file('image_pos_3')))
 			{
 				$featuredfile = $_FILES["image_pos_3"]['tmp_name'];
-				list($width, $height) = getimagesize($featuredfile);
+				/*list($width, $height) = getimagesize($featuredfile);
 
 				if($width > "1500" || $height > "1000") {
 					return Redirect::to('postarticle/update/'.$id)->with('messagetext','bitte beachten die Bilder soll 1500 by 1000 haben')->with('msgstatus','error')->withErrors($validator)->withInput();
-				}
+				}*/
 			}
 			
 			if(!is_null($request->file('image_pos_4')))
 			{
 				$featuredfile = $_FILES["image_pos_4"]['tmp_name'];
-				list($width, $height) = getimagesize($featuredfile);
+				/*list($width, $height) = getimagesize($featuredfile);
 
 				if($width > "1500" || $height > "1000") {
 					return Redirect::to('postarticle/update/'.$id)->with('messagetext','bitte beachten die Bilder soll 1500 by 1000 haben')->with('msgstatus','error')->withErrors($validator)->withInput();
-				}
+				}*/
 			}
 			
 			if(!is_null($request->file('image_pos_5')))
 			{
 				$featuredfile = $_FILES["image_pos_5"]['tmp_name'];
-				list($width, $height) = getimagesize($featuredfile);
+				/*list($width, $height) = getimagesize($featuredfile);
 
 				if($width > "1500" || $height > "1000") {
 					return Redirect::to('postarticle/update/'.$id)->with('messagetext','bitte beachten die Bilder soll 1500 by 1000 haben')->with('msgstatus','error')->withErrors($validator)->withInput();
-				}
+				}*/
 			}
 			
 			if(!is_null($request->file('image_pos_6')))
 			{
 				$featuredfile = $_FILES["image_pos_6"]['tmp_name'];
-				list($width, $height) = getimagesize($featuredfile);
+				/*list($width, $height) = getimagesize($featuredfile);
 
 				if($width > "1500" || $height > "1000") {
 					return Redirect::to('postarticle/update/'.$id)->with('messagetext','bitte beachten die Bilder soll 1500 by 1000 haben')->with('msgstatus','error')->withErrors($validator)->withInput();
-				}
+				}*/
 			}
 			
 			if(!is_null($request->file('image_pos_7')))
 			{
 				$featuredfile = $_FILES["image_pos_7"]['tmp_name'];
-				list($width, $height) = getimagesize($featuredfile);
+				/*list($width, $height) = getimagesize($featuredfile);
 
 				if($width > "900" || $height > "570") {
 					return Redirect::to('postarticle/update/'.$id)->with('messagetext','bitte beachten die Bilder soll 900 by 570 haben')->with('msgstatus','error')->withErrors($validator)->withInput();
-				}
+				}*/
 			}
 			
 			if(!is_null($request->file('image_pos_8')))
 			{
 				$featuredfile = $_FILES["image_pos_8"]['tmp_name'];
-				list($width, $height) = getimagesize($featuredfile);
+				/*list($width, $height) = getimagesize($featuredfile);
 
 				if($width > "900" || $height > "570") {
 					return Redirect::to('postarticle/update/'.$id)->with('messagetext','bitte beachten die Bilder soll 900 by 570 haben')->with('msgstatus','error')->withErrors($validator)->withInput();
-				}
+				}*/
 			}
 			
 			if(!is_null($request->file('image_pos_10')))
 			{
 				$image_pos_10 = $_FILES["image_pos_10"]['tmp_name'];
-				list($width, $height) = getimagesize($image_pos_10);
+				/*list($width, $height) = getimagesize($image_pos_10);
 
 				if($width > "900" || $height > "570") {
 					return Redirect::to('postarticle/update/'.$id)->with('messagetext','bitte beachten die Bilder soll 900 by 570 haben')->with('msgstatus','error')->withErrors($validator)->withInput();
-				}
+				}*/
 			}
 			
 			if(!is_null($request->file('image_pos_11')))
 			{
 				$image_pos_11 = $_FILES["image_pos_11"]['tmp_name'];
-				list($width, $height) = getimagesize($image_pos_11);
+				/*list($width, $height) = getimagesize($image_pos_11);
 
 				if($width > "900" || $height > "570") {
 					return Redirect::to('postarticle/update/'.$id)->with('messagetext','bitte beachten die Bilder soll 900 by 570 haben')->with('msgstatus','error')->withErrors($validator)->withInput();
-				}
+				}*/
 			}
 			
 			$data = $this->validatePost('tb_postarticle');
@@ -555,6 +556,49 @@ class PostarticleController extends Controller {
 			$data['description_pos_6_eng'] = trim($request->input('description_pos_6_eng'));
 			$data['title_pos_7'] = trim($request->input('title_pos_7'));
 			$data['title_pos_7_eng'] = trim($request->input('title_pos_7_eng'));
+			$data['assign_destination'] = trim($request->input('assign_destination'));
+			
+			if(!is_null($request->input('featured_article')))
+			{
+				$data['featured_article'] = trim($request->input('featured_article'));
+			}
+			
+			if(!is_null($request->input('editor_choice')))
+			{
+				$data['editor_choice'] = trim($request->input('editor_choice'));
+			}
+			
+			if(!is_null($request->file('featured_slider_image')))
+			{
+				$featured_slider_image = $request->file('featured_slider_image');
+				$featured_slider_image_namet = $featured_slider_image->getClientOriginalName();
+				$featured_slider_image_ext = $featured_slider_image->getClientOriginalExtension(); //if you need extension of the file
+				$featured_slider_image_name = rand(11111111, 99999999).'-'.rand(11111111, 99999999).'.'.$featured_slider_image_ext;
+				$uploadSuccessposfsi = $featured_slider_image->move($destinationPath, $featured_slider_image_name);
+				if($uploadSuccessposfsi)
+				{
+					$data['featured_slider_image'] = $featured_slider_image_name;
+				}
+			}
+			
+			if ($request->input('video_type') != '') {
+                $data['video_type'] = $request->input('video_type');
+            }
+            if ($request->input('link_type') != '') {
+                $data['link_type'] = $request->input('link_type');
+            }
+            $data['video_link'] = $request->input('video_link');
+			
+			if (!is_null($request->file('video_upload'))) {
+                $video_vfile = $request->file('video_upload');
+                $video_vfilename = $video_vfile->getClientOriginalName();
+                $video_vextension = $video_vfile->getClientOriginalExtension(); //if you need extension of the file
+                $video_videofilename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $video_vextension;
+                $video_vuploadSuccess = $video_vfile->move($destinationPath, $video_videofilename);
+                if ($video_vuploadSuccess) {
+                    $data['video_upload'] = $video_videofilename;
+                }
+            }
 			
 			$id = $this->model->insertRow($data , $request->input('id'));
 			

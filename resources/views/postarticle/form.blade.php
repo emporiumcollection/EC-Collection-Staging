@@ -16,12 +16,12 @@
         })
         $(window).load(function () {
             /* only if you want use mcustom scrollbar */
-            $(".sf-step").mCustomScrollbar({
+            /*$(".sf-step").mCustomScrollbar({
                 theme: "dark-3",
                 scrollButtons: {
                     enable: true
                 }
-            });
+            });*/
         });
     </script>
   <div class="page-content row">
@@ -69,7 +69,24 @@
 						 <div class="col-md-2">
 							
 						 </div>
-					</div> 
+					</div>
+
+					<div class="form-group  " >
+						<label for="Destinations" class=" control-label col-md-2 text-left"> Destinations</label>
+						<div class="col-md-8">
+
+							<select name='assign_destination' id="assign_destination" rows='5' class='select2 ' > 
+								<option  value ="0">-- Select --</option> 
+								@foreach($fetch_cat as $val)
+
+								<option  value ="{{$val->id}}" {{(isset($row['assign_destination']) && ($val->id==$row['assign_destination'])) ? " selected='selected' " : '' }}>{{$val->category_name}}</option> 						
+								@endforeach						
+							</select> 
+						</div> 
+						<div class="col-md-2">
+
+						</div>
+					</div>
 
 					<div class="form-group  " >
 						<label for="Featured Image" class=" control-label col-md-2 text-left"> Featured Image <span class="asterix"> * </span></label>
@@ -100,16 +117,24 @@
 					<div class="form-group  " >
 						<label for="Description Position 1" class=" control-label col-md-2 text-left"> Description Position 1 <span class="asterix"> * </span></label>
 						<div class="col-md-8 ldutch">
-						  <textarea name='description_pos_1' rows='5' id='description_pos_1' class='form-control editor'  
-			 required  >{{ $row['description_pos_1'] }}</textarea> 
+							{!! Form::textarea('description_pos_1', $row['description_pos_1'], ['class' => 'form-control editor', 'id'=>'description_pos_1', 'required'=>'required']) !!}
 						</div>
 						<div class="col-md-8 leng">
-						 <textarea name='description_pos_1_eng' rows='5' id='description_pos_1_eng' class='form-control editor'  
-			   >{{ $row['description_pos_1_eng'] }}</textarea>
+						 	{!! Form::textarea('description_pos_1_eng', $row['description_pos_1_eng'], ['class' => 'form-control editor', 'id'=>'description_pos_1_eng']) !!}
 						 </div> 
 						 <div class="col-md-2">
 							
 						 </div>
+					</div>
+					
+					<div class="form-group  " >
+						<label for="Editor's Choice" class=" control-label col-md-2 text-left"> Editor's Choice </label>
+						<div class="col-md-8">
+							<input name="editor_choice" id="editor_choice" type="checkbox" class="form-control input-sm" value="1" {{($row['editor_choice'] == 1) ? " checked='checked' " : '' }}  /> 
+						</div> 
+						<div class="col-md-2">
+
+						</div>
 					</div>
 					
 					<div class="form-group  " >
@@ -122,13 +147,16 @@
 						</div>
 					</div>
 					
-					<div class="form-group  " >
-						<label for="Editor's Choice" class=" control-label col-md-2 text-left"> Editor's Choice </label>
+					<div class="form-group  featured_slider_img" style="display:none;">
+						<label for="featured slider Image" class=" control-label col-md-2 text-left"> Featured Slider Image </label>
 						<div class="col-md-8">
-							<input name="editor_choice" id="editor_choice" type="checkbox" class="form-control input-sm" value="1" {{($row['editor_choice'] == 1) ? " checked='checked' " : '' }}  /> 
+							<input  type='file' name='featured_slider_image' id='featured_slider_image' @if($row['featured_slider_image'] =='') class='required' @endif style='width:150px !important;'  />
+							<small>Please upload image 1380 x 650 size</small>
+							<div >
+								{!! SiteHelpers::showUploadedFile($row['featured_slider_image'],'/uploads/article_imgs/') !!}
+							</div>
 						</div> 
 						<div class="col-md-2">
-
 						</div>
 					</div>
 				</fieldset>
@@ -136,7 +164,7 @@
 					<legend>Upload Images</legend>
 					<div class="col-md-12">
 						<div class="form-group image" >
-							<label for="Image Position 1" class=" control-label col-md-2 text-left"> Image Position 1 </label>
+							<label for="Slider Image 1" class=" control-label col-md-2 text-left"> Slider Image 1 </label>
 							<div class="col-md-4">
 								<input  type='file' name='image_pos_1' id='image_pos_1' @if($row['image_pos_1'] =='') class='required' @endif style='width:150px !important;'  />
 								<small> ( Image size 1500 by 1000  ) </small>
@@ -154,7 +182,7 @@
 						</div>
 						
 						<div class="form-group image " >
-							<label for="Image Position 2" class=" control-label col-md-2 text-left"> Image Position 2 </label>
+							<label for="Slider Image 2" class=" control-label col-md-2 text-left"> Slider Image 2 </label>
 							<div class="col-md-4">
 								<input  type='file' name='image_pos_2' id='image_pos_2' @if($row['image_pos_2'] =='') class='required' @endif style='width:150px !important;'  />
 								<small> ( Image size 1500 by 1000  ) </small>
@@ -171,7 +199,7 @@
 							
 						</div> 					
 						<div class="form-group image " >
-							<label for="Image Position 3" class=" control-label col-md-2 text-left"> Image Position 3 </label>
+							<label for="Slider Image 3" class=" control-label col-md-2 text-left"> Slider Image 3 </label>
 							<div class="col-md-4">
 								<input  type='file' name='image_pos_3' id='image_pos_3' @if($row['image_pos_3'] =='') class='required' @endif style='width:150px !important;'  />
 								<small> ( Image size 1500 by 1000  ) </small>
@@ -189,7 +217,7 @@
 						</div> 
 						
 						<div class="form-group image " >
-							<label for="Image Position 4" class=" control-label col-md-2 text-left"> Image Position 4 </label>
+							<label for="Slider Image 4" class=" control-label col-md-2 text-left"> Slider Image 4 </label>
 							<div class="col-md-4">
 								<input  type='file' name='image_pos_4' id='image_pos_4' @if($row['image_pos_4'] =='') class='required' @endif style='width:150px !important;'  />
 								<small> ( Image size 1500 by 1000  ) </small>
@@ -206,7 +234,7 @@
 							 
 						</div> 					
 						<div class="form-group image " >
-							<label for="Image Position 5" class=" control-label col-md-2 text-left"> Image Position 5 </label>
+							<label for="Slider Image 5" class=" control-label col-md-2 text-left"> Slider Image 5 </label>
 							<div class="col-md-4">
 								<input  type='file' name='image_pos_5' id='image_pos_5' @if($row['image_pos_5'] =='') class='required' @endif style='width:150px !important;'  />
 								<small> ( Image size 1500 by 1000  ) </small>
@@ -224,7 +252,7 @@
 							
 						</div> 					
 						<div class="form-group image " >
-							<label for="Image Position 6" class=" control-label col-md-2 text-left"> Image Position 6 </label>
+							<label for="Slider Image 6" class=" control-label col-md-2 text-left"> Slider Image 6 </label>
 							<div class="col-md-4">
 								<input  type='file' name='image_pos_6' id='image_pos_6' @if($row['image_pos_6'] =='') class='required' @endif style='width:150px !important;'  />
 								<small> ( Image size 1500 by 1000  ) </small>
@@ -258,12 +286,10 @@
 					<div class="form-group image">
 						<label for="Description Detail 1" class=" control-label col-md-2 text-left"> Description Detail 1 <span class="asterix"> * </span></label>
 						<div class="col-md-8 ldutch">
-						  <textarea name='description_detail_1' rows='5' id='description_detail_1' class='form-control editor'  
-			  >{{ $row['description_detail_1'] }}</textarea> 
+							{!! Form::textarea('description_detail_1', $row['description_detail_1'], ['class' => 'form-control editor', 'id'=>'description_detail_1']) !!}
 						</div>
-						<div class="col-md-8 leng">
-						<textarea name='description_detail_1_eng' rows='5' id='description_detail_1_eng' class='form-control editor'  
-			   >{{ $row['description_detail_1_eng'] }}</textarea> 
+						<div class="col-md-8 leng"> 
+							{!! Form::textarea('description_detail_1_eng', $row['description_detail_1_eng'], ['class' => 'form-control editor', 'id'=>'description_detail_1_eng']) !!}
 						 </div> 
 						 <div class="col-md-2">
 							
@@ -272,10 +298,10 @@
 					<div class="form-group  image" >
 						<label for="Description Position 3" class=" control-label col-md-2 text-left"> Description Position 3 </label>
 						<div class="col-md-8 ldutch">
-						  <textarea name='description_pos_3' rows='5' id='description_pos_3' class='form-control editor' >{{ $row['description_pos_3'] }}</textarea> 
+							{!! Form::textarea('description_pos_3', $row['description_pos_3'], ['class' => 'form-control editor', 'id'=>'description_pos_3']) !!}
 						</div>
 						<div class="col-md-8 leng">
-						  <textarea name='description_pos_3_eng' rows='5' id='description_pos_3_eng' class='form-control editor' >{{ $row['description_pos_3_eng'] }}</textarea>
+							{!! Form::textarea('description_pos_3_eng', $row['description_pos_3_eng'], ['class' => 'form-control editor', 'id'=>'description_pos_3_eng']) !!}
 						 </div> 
 						 <div class="col-md-2">
 							
@@ -348,12 +374,10 @@
 					<div class="form-group image " >
 						<label for="Description Position 6" class=" control-label col-md-2 text-left"> Description Position 6 </label>
 						<div class="col-md-8 ldutch">
-						  <textarea name='description_pos_6' rows='5' id='description_pos_6' class='form-control editor'  
-			   >{{ $row['description_pos_6'] }}</textarea>
+							{!! Form::textarea('description_pos_6', $row['description_pos_6'], ['class' => 'form-control editor', 'id'=>'description_pos_6']) !!}
 						</div>
 						<div class="col-md-8 leng">
-							<textarea name='description_pos_6_eng' rows='5' id='description_pos_6_eng' class='form-control editor'  
-			   >{{ $row['description_pos_6_eng'] }}</textarea>
+							{!! Form::textarea('description_pos_6_eng', $row['description_pos_6_eng'], ['class' => 'form-control editor', 'id'=>'description_pos_6_eng']) !!}
 						 </div> 
 						 <div class="col-md-2">
 							
@@ -407,6 +431,54 @@
 						 </div>
 						 
 					</div> 
+					
+					<div class="form-group">
+						<label for="Video Type" class=" control-label col-md-2 text-left"> Video Type </label>
+						<div class="col-md-8"> 
+							<label class='radio radio-inline'>
+								<input type='radio' name='video_type' value ='upload' id='displayupload' @if($row['video_type'] == 'upload') checked="checked" @endif > Upload </label>
+							<label class='radio radio-inline'>
+								<input type='radio' name='video_type' value ='link' id='displaylink' @if($row['video_type'] == 'link') checked="checked" @endif > Link </label> 
+						</div> 
+
+					</div>
+
+					<div class="form-group videotypeupload" style="display:none;" >
+						<label for="Video" class=" control-label col-md-2 text-left"> Video </label>
+						<div class="col-md-8">
+							<input  type='file' name='video_upload' id='video_upload'  />
+							<div >
+								{!! SiteHelpers::showUploadedFile($row['video_upload'],'/uploads/article_imgs/') !!}
+
+							</div>					
+
+						</div> 
+						<div class="col-md-2">
+
+						</div>
+					</div>
+
+					<div class="videotypelink" style="display:none;" >
+						<div class="form-group">
+							<label for="Link Type" class=" control-label col-md-2 text-left"> Link Type </label>
+							<div class="col-md-8"> 
+								<label class='radio radio-inline'>
+									<input type='radio' name='link_type' value ='youtube' @if($row['link_type'] == 'youtube') checked="checked" @endif > Youtube </label>
+								<label class='radio radio-inline'>
+									<input type='radio' name='link_type' value ='vimeo' @if($row['link_type'] == 'vimeo') checked="checked" @endif > Vimeo </label> 
+							</div> 
+
+						</div>
+
+						<div class="form-group" >
+							<label for="Video Link" class=" control-label col-md-2 text-left"> Video Link </label>
+							<div class="col-md-8">
+								<input type='text' name='video_link' id='video_link' class="form-control" value="{{$row['video_link']}}" />
+							</div> 
+
+
+						</div>
+					</div>
 					
 					<div class="form-group  " >
 						<label for="Position Number" class=" control-label col-md-2 text-left"> Position Number </label>
@@ -505,6 +577,7 @@
 		$('input[type="radio"][id="displaylink"]').on('ifChecked', function(){
 			$(".videotypeupload").hide();
 			$(".videotypelink").show();
+			$('.sf-viewport').css('height','1768px');
 		});
 		
 		if($('input[type="radio"][id="displayupload"]').is(":checked"))
@@ -517,6 +590,20 @@
 		{
 			$(".videotypeupload").hide();
 			$(".videotypelink").show();
+			$('.sf-viewport').css('height','1768px');
+		}
+		
+		$('input[type="checkbox"][id="featured_article"]').on('ifChecked', function () {
+			$(".featured_slider_img").show();
+		});
+		
+		$('input[type="checkbox"][id="featured_article"]').on('ifUnchecked', function () {
+			$(".featured_slider_img").hide();
+		});
+		
+		if ($('input[type="checkbox"][id="featured_article"]').is(":checked"))
+		{
+			$(".featured_slider_img").show();
 		}
 		
 	});
