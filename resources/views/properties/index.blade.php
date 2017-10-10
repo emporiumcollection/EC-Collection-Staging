@@ -73,7 +73,7 @@
 				<th>Property City</th>
 				<th>Website</th>
 				<th>Email</th>
-				<th width="150" >{{ Lang::get('core.btn_action') }}</th>
+				<th width="180" >{{ Lang::get('core.btn_action') }}</th>
 			  </tr>
         </thead>
 
@@ -99,7 +99,8 @@
 						@else
 							<a  href="#" class="tips btn btn-xs btn-danger" title="Click to enable " onclick="change_option(this,'property_status','{{$row->id}}',1);"><i class="fa fa-times "></i></a>
 						@endif
-						<a  href="{{ URL::to('properties_settings/'.$row->id.'/property_images') }}" class="tips btn btn-xs btn-success" title="Property Images"><i class="fa fa-cogs "></i></a>
+						<a  href="{{ URL::to('properties_settings/'.$row->id.'/property_images') }}" class="tips btn btn-xs btn-success" title="Property Images"><i class="fa fa-file-image-o"></i></a>
+						<a  href="#" onclick="getseasonrates({{$row->id}});" class="tips btn btn-xs btn-success" title="Rates" data-toggle="modal" data-target="#psrModal"><i class="fa fa-usd"></i></a>
 				</td>				 
                 </tr>
 				
@@ -116,6 +117,35 @@
 </div>	
 	</div>	  
 </div>	
+
+<!-- Property Season Rates Modal -->
+<div class="modal fade" id="psrModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog" role="document">
+	<div class="modal-content">
+	  <div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<h4 class="modal-title" id="myModalLabel">Property Rates</h4>
+	  </div>
+	  <div class="modal-body">
+		<table>
+			<tr>
+				<th width="100">Type</th>
+				<th width="100">Season</th>
+				<th width="100">Base Rate</th>
+				<th width="130">Commission( in % )</th>
+				<th width="100">New Rate</th>
+			</tr>
+			<tbody id="ratecomm">
+			</tbody>
+		</table>
+	  </div>
+	  <div class="modal-footer">
+		<button type="button" class="btn btn-default" data-dismiss="modal" aria-label="Close">OK</button>
+	  </div>
+	  </form>
+	</div>
+  </div>
+</div>
 <script>
 $(document).ready(function(){
 
@@ -202,6 +232,52 @@ function filterstatus(status)
 	else
 	{
 		window.location.href = "{{URL::to('properties')}}?selstatus="+status;
+	}
+}
+
+function getseasonrates(proid)
+{
+	if(proid!='' && proid>0)
+	{
+		$.ajax({
+		  url: "{{ URL::to('getPropertyRates')}}",
+		  type: "post",
+		  data: 'propid='+proid,
+		  dataType: 'json',
+		  success: function(data){
+			if(data.status!='error')
+			{
+				var prorates = '';
+				var im=0;
+				$(data.cat_rooms_price.cat_rooms).each(function (i, val) {
+					prorates += '<tr>';
+					prorates += '<td>'+val.category_name+'</td>';
+					prorates += '<td>';
+					if(val.season_name==null)
+					{
+						prorates += 'Default';
+					}
+					else
+					{
+						prorates += val.season_name;
+					}	
+					prorates += '</td>';
+					prorates += '<td>'+val.rack_rate+'</td>';
+					prorates += '<td>'+data.cat_rooms_price.usercomm.commission+'</td>';
+					prorates += '<td>';
+					if(data.cat_rooms_price.usercomm.commission!=null)
+					{
+						var pert = (val.rack_rate*data.cat_rooms_price.usercomm.commission)/100;
+						var finalvl = val.rack_rate - pert;
+						prorates += finalvl;
+					}						
+					prorates += '</td>';
+					prorates += '</tr>';
+				});
+				$('#ratecomm').html(prorates);
+			}
+		  }
+		});
 	}
 }
 </script>		

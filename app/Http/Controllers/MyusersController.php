@@ -170,6 +170,141 @@ class MyusersController extends Controller {
 				}
 			}
 			
+			$data['commission'] = $request->input('commission');
+			$data['currency'] = $request->input('currency');
+			
+			$usercomm = \DB::table('tb_users')->select('username')->where('id', $id)->first();
+			$checkDir = \DB::table('tb_container')->select('id')->where('name', 'dl-contracts')->first();
+            if (!empty($checkDir)) {
+                $foldVal = trim($usercomm->username);
+                if ($foldVal != "") {
+                    $foldName = trim($foldVal);
+                    $slug = \SiteHelpers::seoUrl(trim($foldName));
+                    $dirPath = (new ContainerController)->getContainerUserPath($checkDir->id);
+
+                    $checkUsrFold = \DB::table('tb_container')->select('id')->where('name', $slug)->where('parent_id', $checkDir->id)->first();
+                    if (!empty($checkUsrFold)) {
+                        $usrFoldId = $checkUsrFold->id;
+                    } else {
+                        $newUsrFolder = $this->createNewFolder($foldName, $checkDir->id);
+                        if ($newUsrFolder !== false) {
+                            $usrFoldId = $newUsrFolder;
+                        }
+                    }
+
+                    // SET UPLOAD PATH
+                    $destinationPath = (new ContainerController)->getContainerUserPath($usrFoldId);
+                    $file = $request->file('contracts');
+                    // GET THE FILE EXTENSION
+                    $extension = $file->getClientOriginalExtension();
+                    // RENAME THE UPLOAD WITH RANDOM NUMBER
+                    $fileName = rand(11111111111, 99999999999) . '-' .rand(11111111111, 99999999999) . '.' . $extension;
+                    $fileNamedis = $file->getClientOriginalName();
+                    $ftname = explode('.', $fileName);
+                    $exha = false;
+
+                    for ($f = 1; $exha != true; $f++) {
+                        if (\File::exists($destinationPath . $fileName)) {
+                            $fileName = $ftname[0] . '(' . $f . ').' . $extension;
+                        } else {
+                            $fileName = $fileName;
+                            $exha = true;
+                        }
+                    }
+                    // MOVE THE UPLOADED FILES TO THE DESTINATION DIRECTORY
+                    $upload_success = $file->move($destinationPath, $fileName);
+					$data['contracts'] = $fileName;
+                    $ftype = $file->getClientMimeType();
+                    $exFtype = explode('/', $ftype);
+                    if ($exFtype[0] == "image") {
+                        // open an image file
+                        $thimg = \Image::make($destinationPath . $fileName);
+                        // now you are able to resize the instance
+                        $thimg->resize(128, 130);
+                        // finally we save the image as a new file
+                        $thumbfile = 'thumb_' . $usrFoldId . '_' . $fileName;
+                        $thimg->save(public_path() . '/uploads/thumbs/' . $thumbfile);
+
+                        // open an image file
+                        $mdimg = \Image::make($destinationPath . $fileName);
+                        // now you are able to resize the instance
+                        $thactualsize = getimagesize($destinationPath . $fileName);
+                        if ($thactualsize[0] > $thactualsize[1]) {
+                            $mdimg->resize(320, null, function ($constraint) {
+                                $constraint->aspectRatio();
+                            });
+                        } else {
+                            $mdimg->resize(null, 320, function ($constraint) {
+                                $constraint->aspectRatio();
+                            });
+                        }
+                        // finally we save the image as a new file
+                        $thumbfile = 'format_' . $usrFoldId . '_' . $fileName;
+                        $mdimg->save(public_path() . '/uploads/thumbs/' . $thumbfile);
+
+                        // open an image file
+                        $mdimg = \Image::make($destinationPath . $fileName);
+                        // now you are able to resize the instance
+                        $hfactualsize = getimagesize($destinationPath . $fileName);
+                        if ($hfactualsize[0] > $hfactualsize[1]) {
+                            $mdimg->resize(1000, null, function ($constraint) {
+                                $constraint->aspectRatio();
+                            });
+                        } else {
+                            $mdimg->resize(null, 1000, function ($constraint) {
+                                $constraint->aspectRatio();
+                            });
+                        }
+                        // finally we save the image as a new file
+                        $thumbfile = 'highflip_' . $usrFoldId . '_' . $fileName;
+                        $mdimg->save(public_path() . '/uploads/thumbs/' . $thumbfile);
+
+                        // Set main image if uploaded file is first in folder
+                        $countfile = \DB::table('tb_container_files')->where('folder_id', $usrFoldId)->where(function ($query) {
+                                    $query->where('file_type', 'image/jpeg')->orWhere('file_type', 'image/png')->orWhere('file_type', 'image/gif');
+                                })->count();
+                        if ($countfile == 0) {
+                            $copytofolder = public_path() . '/uploads/folder_cover_imgs/';
+                            // image for backend
+                            $bkimg = \Image::make($destinationPath . $fileName);
+                            $bkimg->resize(128, 130);
+                            $bkimgfile = 'thumb_' . $fileName;
+                            $bkimg->save($copytofolder . $bkimgfile);
+
+                            // open an image file
+                            $mdimg = \Image::make($destinationPath . $fileName);
+                            $thactualsize = getimagesize($destinationPath . $fileName);
+                            if ($thactualsize[0] > $thactualsize[1]) {
+                                $mdimg->resize(320, null, function ($constraint) {
+                                    $constraint->aspectRatio();
+                                });
+                            } else {
+                                $mdimg->resize(null, 320, function ($constraint) {
+                                    $constraint->aspectRatio();
+                                });
+                            }
+                            $thumbfile = 'format_' . $fileName;
+                            $mdimg->save($copytofolder . $thumbfile);
+
+                            $cmdata['temp_cover_img'] = $fileName;
+                            $cmdata['temp_cover_img_masonry'] = $fileName;
+                            $cmdata['updated'] = date('y-m-d');
+                            \DB::table('tb_container')->where('id', $usrFoldId)->update($cmdata);
+                        }
+                    }
+
+                    $mudata['folder_id'] = $usrFoldId;
+                    $mudata['file_name'] = $fileName;
+					$mudata['file_display_name'] = $fileNamedis;
+                    $mudata['file_type'] = $file->getClientMimeType();
+                    $mudata['file_size'] = $file->getClientSize();
+                    $mudata['user_id'] = \Auth::user()->id;
+                    $mudata['created'] = date('y-m-d h:i:s');
+                    $mudata['path'] = $destinationPath;
+                    $fileID = \DB::table('tb_container_files')->insertGetId($mudata);
+                }
+            }
+			
 			$id = $this->model->insertRow($data , $request->input('id'));
 			
 			if($request->input('id') =='')
@@ -227,6 +362,24 @@ class MyusersController extends Controller {
 		}
 
 	}
+	
+	function createNewFolder($Foldername, $ParentfolderId) {
+        if ($Foldername != '') {
+            $dirPath = (new ContainerController)->getContainerUserPath($ParentfolderId);
+            $slug = \SiteHelpers::seoUrl(trim($Foldername));
+            $result = \File::makeDirectory($dirPath . $slug, 0777, true);
+            $fdata['parent_id'] = $ParentfolderId;
+            $fdata['name'] = $slug;
+            $fdata['display_name'] = $Foldername;
+            $fdata['file_type'] = 'folder';
+            $fdata['user_id'] = \Auth::user()->id;
+            $fdata['created'] = date('y-m-d h:i:s');
+            $fID = \DB::table('tb_container')->insertGetId($fdata);
+            return $fID;
+        } else {
+            return false;
+        }
+    }
 
 	function importUsersCsv( Request $request)
 	{

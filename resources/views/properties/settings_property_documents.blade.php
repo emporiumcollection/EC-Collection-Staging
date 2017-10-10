@@ -50,6 +50,7 @@
 							<li class="active"><a href="#tab_hotel_brochure" data-toggle="tab">Hotel Brochure</a></li>
 							<li><a href="#tab_restaurant_menu" data-toggle="tab">Restaurant Menu</a></li>
 							<li><a href="#tab_spa_brochure" data-toggle="tab">Spa Brochure</a></li>
+							<li><a href="#tab_contracts" data-toggle="tab">Hotel Contracts</a></li>
 						</ul>
 						<div class="tab-content" style="margin-top: 20px;">
 							<div class="tab-pane use-padding active" id="tab_hotel_brochure">
@@ -74,7 +75,7 @@
 												<i class="glyphicon glyphicon-ban-circle"></i>
 												<span>Cancel upload</span>
 											</button>
-											<a class="btn btn-success" @if(!empty($imgs)) href="{{URL::to('folders/'.$imgs[0]->folder_id.'?show=thumb')}}" @else href="#" @endif>
+											<a class="btn btn-success" @if(!empty($imgs)) href="{{URL::to('folders/'.$hotel_broch[0]->folder_id.'?show=thumb')}}" @else href="#" @endif>
 												<span>Re-Order</span>
 											</a>
 											<button type="button" class="btn btn-danger" onclick="delete_selected_imgs('hb');" >
@@ -180,7 +181,7 @@
 												<i class="glyphicon glyphicon-ban-circle"></i>
 												<span>Cancel upload</span>
 											</button>
-											<a class="btn btn-success" @if(!empty($slider_imgs)) href="{{URL::to('folders/'.$slider_imgs[0]->folder_id.'?show=thumb')}}" @else href="#" @endif>
+											<a class="btn btn-success" @if(!empty($slider_imgs)) href="{{URL::to('folders/'.$restru_menu[0]->folder_id.'?show=thumb')}}" @else href="#" @endif>
 												<span>Re-Order</span>
 											</a>
 											<button type="button" class="btn btn-danger" onclick="delete_selected_imgs('rm');" >
@@ -275,7 +276,7 @@
 												<i class="glyphicon glyphicon-ban-circle"></i>
 												<span>Cancel upload</span>
 											</button>
-											<a class="btn btn-success" @if(!empty($slider_imgs)) href="{{URL::to('folders/'.$slider_imgs[0]->folder_id.'?show=thumb')}}" @else href="#" @endif>
+											<a class="btn btn-success" @if(!empty($slider_imgs)) href="{{URL::to('folders/'.$spa_broch[0]->folder_id.'?show=thumb')}}" @else href="#" @endif>
 												<span>Re-Order</span>
 											</a>
 											<button type="button" class="btn btn-danger" onclick="delete_selected_imgs('sb');" >
@@ -339,6 +340,101 @@
 								
 								<!-- The blueimp Gallery widget -->
 								<div id="data-gallery-spa" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even">
+									<div class="slides"></div>
+									<h3 class="title"></h3>
+									<a class="prev">‹</a>
+									<a class="next">›</a>
+									<a class="close">×</a>
+									<a class="play-pause"></a>
+									<ol class="indicator"></ol>
+								</div>
+							</div>
+							<div class="tab-pane use-padding" id="tab_contracts">
+								<!-- The file upload form used as target for the file upload widget -->
+								<form id="fileupload" class="fileupload" action="{{URL::to('property_images_uploads')}}" method="POST" enctype="multipart/form-data">
+									<input type="hidden" name="propId" value="{{$pid}}" />
+									<input type="hidden" name="uploadType" value="Hotel Contracts" />
+									<!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+									<div class="row fileupload-buttonbar">
+										<div class="col-lg-7">
+											<!-- The fileinput-button span is used to style the file input field as button -->
+											<span class="btn btn-success fileinput-button">
+												<i class="glyphicon glyphicon-plus"></i>
+												<span>Add files...</span>
+												<input type="file" name="files[]" multiple>
+											</span>
+											<button type="submit" class="btn btn-primary start">
+												<i class="glyphicon glyphicon-upload"></i>
+												<span>Start upload</span>
+											</button>
+											<button type="reset" class="btn btn-warning cancel">
+												<i class="glyphicon glyphicon-ban-circle"></i>
+												<span>Cancel upload</span>
+											</button>
+											<a class="btn btn-success" @if(!empty($slider_imgs)) href="{{URL::to('folders/'.$hotelcontacts[0]->folder_id.'?show=thumb')}}" @else href="#" @endif>
+												<span>Re-Order</span>
+											</a>
+											<button type="button" class="btn btn-danger" onclick="delete_selected_imgs('hc');" >
+												<i class="glyphicon glyphicon-trash"></i>
+												<span>Delete</span>
+											</button>
+											<!-- The global file processing state -->
+											<span class="fileupload-process"></span>
+										</div>
+										<!-- The global progress state -->
+										<div class="col-lg-5 fileupload-progress fade">
+											<!-- The global progress bar -->
+											<div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+												<div class="progress-bar progress-bar-success" style="width:0%;"></div>
+											</div>
+											<!-- The extended global progress state -->
+											<div class="progress-extended">&nbsp;</div>
+										</div>
+									</div>
+									<!-- The table listing the files available for upload/download -->
+									<table role="presentation" class="table table-striped prese">
+										<tbody class="files">
+											@if(!empty($hotelcontacts))
+												<tr>
+													<td colspan="5"><input type="checkbox" value="1" id="check_all_hc" class="check-all-hc"> Select all</td>
+												</tr>
+												@foreach($hotelcontacts as $img)
+													<tr class="template-download fade in row{{$img->id}}">
+														<td>
+															<input type="checkbox" name="compont[]" id="compont" value="{{$img->id}}" class="no-border check-files hc">
+														</td>
+														<td>
+															<span class="preview">
+																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="#data-gallery-contracts" >
+																	<img src="{{URL::to('uploads/property_imgs_thumbs/'.$img->file_name)}}">
+																</a>
+															</span>
+														</td>
+														<td>
+															<p class="name">
+																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="#data-gallery-contracts">{{$img->file_name}}</a>
+															</p>
+														</td>
+														<td>
+															<span class="size">
+																{{--*/ $sizeKb = ($img->file_size/1024); /*--}} {{ round($sizeKb,2,PHP_ROUND_HALF_UP) }} KB
+															</span>
+														</td>
+														<td>
+															<button type="button" class="btn btn-danger" onclick="delete_property_image({{$img->id}});" >
+																<i class="glyphicon glyphicon-trash"></i>
+																<span>Delete</span>
+															</button>
+														</td>
+													</tr>
+												@endforeach
+											@endif
+										</tbody>
+									</table>
+								</form>
+								
+								<!-- The blueimp Gallery widget -->
+								<div id="data-gallery-contracts" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even">
 									<div class="slides"></div>
 									<h3 class="title"></h3>
 									<a class="prev">‹</a>
@@ -521,6 +617,14 @@
 		
 		$('input[type="checkbox"][id="check_all_sb"]').on('ifUnchecked', function(){
 			$('input[type="checkbox"].sb').iCheck('uncheck');
+		});
+		
+		$('input[type="checkbox"][id="check_all_hc"]').on('ifChecked', function(){
+			$('input[type="checkbox"].hc').iCheck('check');
+		});
+		
+		$('input[type="checkbox"][id="check_all_hc"]').on('ifUnchecked', function(){
+			$('input[type="checkbox"].hc').iCheck('uncheck');
 		});
 	});
 	

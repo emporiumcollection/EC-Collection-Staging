@@ -884,6 +884,7 @@ class PropertiesController extends Controller {
             $this->data['hotel_broch'] = $this->get_property_files($property_id, 'Hotel Brochure');
 	    $this->data['restru_menu'] = $this->get_property_files($property_id, 'Restaurant Menu');
 	    $this->data['spa_broch'] = $this->get_property_files($property_id, 'Spa Brochure');
+		$this->data['hotelcontacts'] = $this->get_property_files($property_id, 'Hotel Contracts');
             return view('properties.settings_property_documents', $this->data);
         } elseif ($active == 'gallery_images') {
             $this->data['spaimgs'] = $this->get_property_files($property_id, 'Spa Gallery Images');

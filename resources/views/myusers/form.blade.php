@@ -153,6 +153,36 @@
 								/>  
 							 </div> 
 						</div>
+						
+						<div class="form-group  " >
+							<label for="commission ( in %)" class=" control-label col-md-4 text-left"> commission ( in %)</label>
+							<div class="col-md-8">
+							  {!! Form::text('commission', $row['commission'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
+							 </div> 
+							 
+						</div>
+						
+						<div class="form-group">
+							<label for="currency" class=" control-label col-md-4"> Currency </label>
+							<div class="col-md-8">
+								<select class="form-control" name="currency">
+									<option value="€" <?php if($row['currency']=='€') { echo 'selected="selected"'; } ?>>Euro (€)</option>
+									<option value="£" <?php if($row['currency']=='£') { echo 'selected="selected"'; } ?>>Pound (£)</option>
+									<option value="$" <?php if($row['currency']=='$') { echo 'selected="selected"'; } ?>>Dollar ($)</option>
+								</select>
+							 </div> 
+						  </div>
+						  
+						  <div class="form-group  " >
+							<label for="Contracts" class=" control-label col-md-4 text-left"> Contracts </label>
+							<div class="col-md-8">
+							  <input  type='file' name='contracts' id='contracts' style='width:150px !important;'  />
+								<div>
+									{!! SiteHelpers::showUploadedFile($row['contracts'],'/uploads/users/') !!}	
+								</div>
+							 </div> 
+							 
+						  </div> 
 				
 				</fieldset>
 			</div>

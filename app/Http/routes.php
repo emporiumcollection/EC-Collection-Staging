@@ -185,6 +185,7 @@ Route::group(['middleware' => 'auth'], function()
 	Route::post('emailCRM', 'CrmhotelController@emailCRM');
 	Route::get('pull_property_hotels', 'CrmhotelController@pull_property_hotels');
 	Route::post('getfolderlistforselectoptions', 'ContainerController@fetchFolderTreeOptions');
+	Route::post('getPropertyRates', 'PropertiesController@getPropertyRates');
 });	
 
 Route::post('save_previous_page_image', 'HomeController@save_previous_page_image');
