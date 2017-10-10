@@ -1726,5 +1726,25 @@ class PropertiesController extends Controller {
 		}
 		return json_encode($res);
     }
+	
+	function getPropertyRates(Request $request) {
+        $uid = \Auth::user()->id;
+        $propty = $request->input('propid');
+		if($propty!='' && $propty > 0)
+		{
+			$cats = array();
+			$cats['usercomm'] = \DB::table('tb_users')->select('commission')->where('id', $uid)->first();
+			$cat_rooms_price = \DB::table('tb_properties_category_rooms_price')->leftJoin('tb_properties_category_types','tb_properties_category_types.id','=','tb_properties_category_rooms_price.category_id')->leftJoin('tb_seasons','tb_seasons.id','=','tb_properties_category_rooms_price.season_id')->select('tb_seasons.season_name','tb_properties_category_rooms_price.rack_rate','tb_properties_category_types.category_name')->where('tb_properties_category_rooms_price.property_id', $propty)->get();
+			if (!empty($cat_rooms_price)) {
+				$cats['cat_rooms'] = $cat_rooms_price;
+			}
+			$res['status'] = 'success';
+			$res['cat_rooms_price'] = $cats;
+		}
+		else {
+			$res['status'] = 'error';
+		}
+		return json_encode($res);
+    }
 
 }
