@@ -283,7 +283,7 @@ button.b7, .button-b7 {
 	height: 35px;
 	
 }
-.cols.first{width:150px;}
+.cols.first{width:150px;height:auto;}
 .top_border_black{ border-top: 1px solid #555;}
 .left_border_black{border-left: 1px solid #555;}
 .right_border_black{border-right: 1px solid #555;}
