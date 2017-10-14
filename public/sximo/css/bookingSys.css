@@ -303,7 +303,7 @@ button.b7, .button-b7 {
 .status_black{float:right;cursor: pointer; border-right: 2px solid transparent; background: #000000; padding: 1px 0;margin-left:5px;text-align:right;}
 .status_green{float:right;cursor: pointer; border-right: 2px solid transparent; background: #36B322; padding: 1px 0;margin-left:5px; text-align:right;}
 .room_number, .room_title{float:left; }
-.room_name{float:right;}
+.room_name{float:right;display:none;}
 .room_number{font-weight:bold;}
 
 .today{color:red !important;}
