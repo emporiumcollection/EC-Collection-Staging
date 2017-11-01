@@ -1263,7 +1263,7 @@ class HomeController extends Controller {
     }
 
     function propertiesSearch(Request $request) {
-        return json_encode(array('test' => 'Here'));
+        
         if (CNF_FRONT == 'false' && $request->segment(1) == '') :
             return Redirect::to('dashboard');
         endif;
@@ -1355,6 +1355,7 @@ class HomeController extends Controller {
 
                                                 if (!empty($ConObjs)) {
                                                     if ($arrive != '') {
+                                                        return json_encode(array('in' => 'True part'));
                                                         $propstemp = \DB::table('tb_properties')->join('tb_properties_category_rooms', 'tb_properties_category_rooms.property_id', '=', 'tb_properties.id')->select('tb_properties.editor_choice_property',
                                                             'tb_properties.feature_property',
                                                             'tb_properties.id',
@@ -1366,6 +1367,7 @@ class HomeController extends Controller {
                                                         }
                                                         $props = $propstemp->first();
                                                     } else {
+                                                        return json_encode(array('in' => 'False part'));
                                                         $props = \DB::table('tb_properties')->select('editor_choice_property','feature_property','id','property_name','property_slug','property_category_id')->where('property_name', $ConObjs->display_name)->where('tb_properties.property_type', 'Hotel')->where('property_status', 1)->first();
                                                     }
                                                     if (!empty($props)) {
