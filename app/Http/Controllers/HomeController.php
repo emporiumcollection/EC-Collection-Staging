@@ -200,7 +200,7 @@ class HomeController extends Controller {
                                                                                                                             }
                                                                                                                         }
                                                                                                                     }
-                                                                                                                    $_temp[$t_key]['childs'] = $sub_temp;
+                                                                                                                    $_temp[$t_key]->childs = $sub_temp;
                                                                                                                 }
                                                                                                                 $temp = array_merge($temp, $_temp);
                                                                                                             }
