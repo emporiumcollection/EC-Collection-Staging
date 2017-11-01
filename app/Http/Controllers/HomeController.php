@@ -1263,6 +1263,7 @@ class HomeController extends Controller {
     }
 
     function propertiesSearch(Request $request) {
+        return json_encode(array('test' => 'Here'));
         if (CNF_FRONT == 'false' && $request->segment(1) == '') :
             return Redirect::to('dashboard');
         endif;
