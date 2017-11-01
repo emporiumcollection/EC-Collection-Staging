@@ -176,24 +176,27 @@ class HomeController extends Controller {
 												} else {
 													$chldIds[] = $subdestt->id;
 												}
-
+                                                                                                
+                                                                                                $temp = array();
 												if (!empty($chldIds)) {
-													$getcats = " AND (" . implode(" || ", array_map(function($v) {
+                                                                                                    foreach ($chldIds as $chldId) {
+                                                                                                        $cpreprops = DB::select(DB::raw("SELECT COUNT(*) AS total_rows FROM tb_properties WHERE property_status = '1' AND property_category_id = $chldId"));
+                                                                                                        if (isset($cpreprops[0]->total_rows) && $cpreprops[0]->total_rows > 0) {
+                                                                                                            $temp[] = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name')->where('id', $chldId)->get();;
+                                                                                                        }
+                                                                                                    }
+													/*$getcats = " AND (" . implode(" || ", array_map(function($v) {
 																		return sprintf("FIND_IN_SET('%s', property_category_id)", $v);
-																	}, array_values($chldIds))) . ")";
+																	}, array_values($chldIds))) . ")";*/
 												}
-                                                                                                
-                                                                                                /*************************************/
-                                                                                                
-                                                                                                /*$props = \DB::table('tb_properties')->select('editor_choice_property','feature_property','id','property_name','property_slug','property_category_id')->where('property_name', $ConObjs->display_name)->where('property_status', 1)->first();*/
-                                                                                                
-                                                                                                /***************************************/
-                                                                                                
-												$cpreprops = DB::select(DB::raw("SELECT COUNT(*) AS total_rows FROM tb_properties WHERE property_status = '1' $getcats"));
-												return "SELECT COUNT(*) AS total_rows FROM tb_properties WHERE property_status = '1' $getcats";
+                                                                                                if(!empty($temp)) {
+                                                                                                    $destts[$ctt]['child'][$sd]->subchild = $temp;
+                                                                                                }
+                                                                                                                                                                                                
+												/*$cpreprops = DB::select(DB::raw("SELECT COUNT(*) AS total_rows FROM tb_properties WHERE property_status = '1' $getcats"));
                                                                                                 if (isset($cpreprops[0]->total_rows) && $cpreprops[0]->total_rows > 0) {
 													$destts[$ctt]['child'][$sd]->subchild = $subchilddest;
-												}
+												}*/
                                             }
 											$sd++;
                                         }
