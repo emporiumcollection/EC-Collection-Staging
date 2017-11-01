@@ -1280,8 +1280,8 @@ class HomeController extends Controller {
             $content = \DB::table('tb_pages')->where('alias', '=', $page)->where('status', '=', 'enable')->get();
 
 //			if($keyword!='')
-            if (true) {return json_encode(array('test' => 'Here'));
-                if (count($content) >= 1) {
+            if (true) {
+                if (count($content) >= 1) {return json_encode(array('test' => 'Here 2'));
                     $row = $content[0];
                     $this->data['pageTitle'] = $row->title;
                     $this->data['pageNote'] = $row->note;
