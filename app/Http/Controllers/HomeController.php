@@ -1280,7 +1280,7 @@ class HomeController extends Controller {
             $content = \DB::table('tb_pages')->where('alias', '=', $page)->where('status', '=', 'enable')->get();
 
 //			if($keyword!='')
-            if (true) {
+            if (true) {return json_encode(array('test' => 'Here'));
                 if (count($content) >= 1) {
                     $row = $content[0];
                     $this->data['pageTitle'] = $row->title;
@@ -1404,9 +1404,7 @@ class HomeController extends Controller {
                                                     $propstemp->where('tb_properties_category_rooms.room_active_to', '>=', $destination);
                                                 }
                                                 $props = $propstemp->first();
-                                                return json_encode(array('in' => 'True part'));
                                             } else {
-                                                return json_encode(array('in' => 'Else part'));
                                                 $props = \DB::table('tb_properties')->select('editor_choice_property','feature_property','id','property_name','property_slug','property_category_id')->where('property_name', $ConObjs->display_name)->where('tb_properties.property_type', 'Hotel')->where('property_status', 1)->first();
                                             }
                                             if (!empty($props)) {
