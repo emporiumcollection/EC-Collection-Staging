@@ -184,6 +184,24 @@ class HomeController extends Controller {
                                                                                                         if (isset($cpreprops[0]->total_rows) && $cpreprops[0]->total_rows > 0) {
                                                                                                             $_temp = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name')->where('id', $chldId)->get();;
                                                                                                             if(!empty($_temp)) {
+                                                                                                                foreach ($_temp as $t_key => $tmp) {
+                                                                                                                    $_chldIds = array();
+                                                                                                                    $_chldIds = $this->fetchcategoryChildListIds($tmp->id);
+                                                                                                                    array_unshift($_chldIds, $tmp->id);
+                                                                                                                    $sub_temp = array();
+                                                                                                                    if (!empty($_chldIds)) {
+                                                                                                                        foreach ($_chldIds as $_chldId) {
+                                                                                                                            $cpreprops = DB::select(DB::raw("SELECT COUNT(*) AS total_rows FROM tb_properties WHERE property_status = '1' AND property_category_id = $_chldId"));
+                                                                                                                            if (isset($cpreprops[0]->total_rows) && $cpreprops[0]->total_rows > 0) {
+                                                                                                                                $_sub_temp = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name')->where('id', $_chldId)->get();;
+                                                                                                                                if(!empty($_sub_temp)) {
+                                                                                                                                    $sub_temp = array_merge($sub_temp, $_sub_temp);
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                    $_temp[$t_key]['childs'] = $sub_temp;
+                                                                                                                }
                                                                                                                 $temp = array_merge($temp, $_temp);
                                                                                                             }
                                                                                                         }
@@ -194,7 +212,7 @@ class HomeController extends Controller {
 												}
                                                                                                 if(!empty($temp)) {
                                                                                                     $destts[$ctt]['child'][$sd]->subchild = $temp;
-                                                                                                    /*return array('$subchilddest' => $subchilddest, '$temp' => $temp);*/
+                                                                                                    return array('$subchilddest' => $subchilddest, '$temp' => $temp);
                                                                                                 }
                                                                                                                                                                                                 
 												/*$cpreprops = DB::select(DB::raw("SELECT COUNT(*) AS total_rows FROM tb_properties WHERE property_status = '1' $getcats"));
