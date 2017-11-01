@@ -183,23 +183,15 @@ class HomeController extends Controller {
 																	}, array_values($chldIds))) . ")";
 												}
                                                                                                 
-                                                                                                /*if ($arrive != '') {
-                                                                                                    $propstemp = \DB::table('tb_properties')->join('tb_properties_category_rooms', 'tb_properties_category_rooms.property_id', '=', 'tb_properties.id')->select('tb_properties.editor_choice_property',
-                                                                                                        'tb_properties.feature_property',
-                                                                                                        'tb_properties.id',
-                                                                                                        'tb_properties.property_name',
-                                                                                                        'tb_properties.property_slug',
-                                                                                                        'tb_properties.property_category_id')->where('tb_properties_category_rooms.room_active_from', '<=', $arrive)->where('tb_properties.property_name', $ConObjs->display_name)->where('tb_properties.property_type', 'Hotel')->where('tb_properties.property_status', 1);
-                                                                                                    if ($destination != '') {
-                                                                                                        $propstemp->where('tb_properties_category_rooms.room_active_to', '>=', $destination);
-                                                                                                    }
-                                                                                                    $props = $propstemp->first();
-                                                                                                } else {
-                                                                                                    $props = \DB::table('tb_properties')->select('editor_choice_property','feature_property','id','property_name','property_slug','property_category_id')->where('property_name', $ConObjs->display_name)->where('tb_properties.property_type', 'Hotel')->where('property_status', 1)->first();
-                                                                                                }*/
+                                                                                                /*************************************/
+                                                                                                
+                                                                                                $props = \DB::table('tb_properties')->select('editor_choice_property','feature_property','id','property_name','property_slug','property_category_id')->where('property_name', $ConObjs->display_name)->where('property_status', 1)->first();
+                                                                                                
+                                                                                                /***************************************/
                                                                                                 
 												$cpreprops = DB::select(DB::raw("SELECT COUNT(*) AS total_rows FROM tb_properties WHERE property_status = '1' $getcats"));
-												if (isset($cpreprops[0]->total_rows) && $cpreprops[0]->total_rows > 0) {
+												return $cpreprops;
+                                                                                                if (isset($cpreprops[0]->total_rows) && $cpreprops[0]->total_rows > 0) {
 													$destts[$ctt]['child'][$sd]->subchild = $subchilddest;
 												}
                                             }
@@ -1281,7 +1273,7 @@ class HomeController extends Controller {
 
 //			if($keyword!='')
             if (true) {
-                if (count($content) >= 1) {return json_encode(array('test' => 'Here 2'));
+                if (count($content) >= 1) {
                     $row = $content[0];
                     $this->data['pageTitle'] = $row->title;
                     $this->data['pageNote'] = $row->note;
