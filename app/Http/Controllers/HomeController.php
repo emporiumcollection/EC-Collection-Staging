@@ -185,7 +185,7 @@ class HomeController extends Controller {
                                                                                                 
                                                                                                 /*************************************/
                                                                                                 
-                                                                                                $props = \DB::table('tb_properties')->select('editor_choice_property','feature_property','id','property_name','property_slug','property_category_id')->where('property_name', $ConObjs->display_name)->where('property_status', 1)->first();
+                                                                                                /*$props = \DB::table('tb_properties')->select('editor_choice_property','feature_property','id','property_name','property_slug','property_category_id')->where('property_name', $ConObjs->display_name)->where('property_status', 1)->first();*/
                                                                                                 
                                                                                                 /***************************************/
                                                                                                 
