@@ -182,7 +182,22 @@ class HomeController extends Controller {
 																		return sprintf("FIND_IN_SET('%s', property_category_id)", $v);
 																	}, array_values($chldIds))) . ")";
 												}
-
+                                                                                                
+                                                                                                /*if ($arrive != '') {
+                                                                                                    $propstemp = \DB::table('tb_properties')->join('tb_properties_category_rooms', 'tb_properties_category_rooms.property_id', '=', 'tb_properties.id')->select('tb_properties.editor_choice_property',
+                                                                                                        'tb_properties.feature_property',
+                                                                                                        'tb_properties.id',
+                                                                                                        'tb_properties.property_name',
+                                                                                                        'tb_properties.property_slug',
+                                                                                                        'tb_properties.property_category_id')->where('tb_properties_category_rooms.room_active_from', '<=', $arrive)->where('tb_properties.property_name', $ConObjs->display_name)->where('tb_properties.property_type', 'Hotel')->where('tb_properties.property_status', 1);
+                                                                                                    if ($destination != '') {
+                                                                                                        $propstemp->where('tb_properties_category_rooms.room_active_to', '>=', $destination);
+                                                                                                    }
+                                                                                                    $props = $propstemp->first();
+                                                                                                } else {
+                                                                                                    $props = \DB::table('tb_properties')->select('editor_choice_property','feature_property','id','property_name','property_slug','property_category_id')->where('property_name', $ConObjs->display_name)->where('tb_properties.property_type', 'Hotel')->where('property_status', 1)->first();
+                                                                                                }*/
+                                                                                                
 												$cpreprops = DB::select(DB::raw("SELECT COUNT(*) AS total_rows FROM tb_properties WHERE property_status = '1' $getcats"));
 												if (isset($cpreprops[0]->total_rows) && $cpreprops[0]->total_rows > 0) {
 													$destts[$ctt]['child'][$sd]->subchild = $subchilddest;
@@ -1339,6 +1354,7 @@ class HomeController extends Controller {
 
                                                 if (!empty($ConObjs)) {
                                                     if ($arrive != '') {
+                                                        return json_encode(array('if'));
                                                         $propstemp = \DB::table('tb_properties')->join('tb_properties_category_rooms', 'tb_properties_category_rooms.property_id', '=', 'tb_properties.id')->select('tb_properties.editor_choice_property',
                                                             'tb_properties.feature_property',
                                                             'tb_properties.id',
@@ -1350,6 +1366,7 @@ class HomeController extends Controller {
                                                         }
                                                         $props = $propstemp->first();
                                                     } else {
+                                                        return json_encode(array('else'));
                                                         $props = \DB::table('tb_properties')->select('editor_choice_property','feature_property','id','property_name','property_slug','property_category_id')->where('property_name', $ConObjs->display_name)->where('tb_properties.property_type', 'Hotel')->where('property_status', 1)->first();
                                                     }
                                                     if (!empty($props)) {
