@@ -1266,7 +1266,7 @@ class HomeController extends Controller {
         if (CNF_FRONT == 'false' && $request->segment(1) == '') :
             return Redirect::to('dashboard');
         endif;
-return json_encode(array('Here'));
+
         $keyword = trim($request->input('s'));
         $show = 'asc';
         /* if(!is_null($request->input('show')) && $request->input('show')!='')
@@ -1354,7 +1354,6 @@ return json_encode(array('Here'));
 
                                                 if (!empty($ConObjs)) {
                                                     if ($arrive != '') {
-                                                        return json_encode(array('if'));
                                                         $propstemp = \DB::table('tb_properties')->join('tb_properties_category_rooms', 'tb_properties_category_rooms.property_id', '=', 'tb_properties.id')->select('tb_properties.editor_choice_property',
                                                             'tb_properties.feature_property',
                                                             'tb_properties.id',
@@ -1366,7 +1365,6 @@ return json_encode(array('Here'));
                                                         }
                                                         $props = $propstemp->first();
                                                     } else {
-                                                        return json_encode(array('else'));
                                                         $props = \DB::table('tb_properties')->select('editor_choice_property','feature_property','id','property_name','property_slug','property_category_id')->where('property_name', $ConObjs->display_name)->where('tb_properties.property_type', 'Hotel')->where('property_status', 1)->first();
                                                     }
                                                     if (!empty($props)) {
