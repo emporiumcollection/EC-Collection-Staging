@@ -190,7 +190,7 @@ class HomeController extends Controller {
                                                                                                 /***************************************/
                                                                                                 
 												$cpreprops = DB::select(DB::raw("SELECT COUNT(*) AS total_rows FROM tb_properties WHERE property_status = '1' $getcats"));
-												return $cpreprops;
+												return "SELECT COUNT(*) AS total_rows FROM tb_properties WHERE property_status = '1' $getcats";
                                                                                                 if (isset($cpreprops[0]->total_rows) && $cpreprops[0]->total_rows > 0) {
 													$destts[$ctt]['child'][$sd]->subchild = $subchilddest;
 												}
