@@ -1266,7 +1266,7 @@ class HomeController extends Controller {
         if (CNF_FRONT == 'false' && $request->segment(1) == '') :
             return Redirect::to('dashboard');
         endif;
-
+return json_encode(array('Here'));
         $keyword = trim($request->input('s'));
         $show = 'asc';
         /* if(!is_null($request->input('show')) && $request->input('show')!='')
