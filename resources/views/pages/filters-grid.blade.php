@@ -1208,6 +1208,13 @@ return fasle;
                         dataType: "json",
                                 success: function (data) {
 
+                                if(data.category_name != '') {
+                                    $(".current-page-heading").html("Our Selection of Premium Selected Suites in " + data.category_name);
+                                }
+                                else {
+                                    $(".current-page-heading").html("Our Selection of Premium Selected Suites");
+                                }
+
                                 var html = chtml = '';
                                 if (data.status == 'error')
                                 {
