@@ -411,7 +411,7 @@
                                         <li><div class="panel-group destination-inner-accordian-outer" id="inner-level-accordian">
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">
-                                                    <h4 class="panel-title pull-left">
+                                                    <h4 class="margin-top-15 panel-title pull-left">
                                                         <a data-toggle="collapse" data-parent="#inner-level-accordian" href="#destination-child{{$childDest->id}}">{{$childDest->category_name}}</a>
                                                     </h4>
                                                 </div>
