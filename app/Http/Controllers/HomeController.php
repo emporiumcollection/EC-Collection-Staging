@@ -4530,6 +4530,7 @@ class HomeController extends Controller {
 
         $getcats = '';
         if (!is_null($request->dest)) {
+            $categoryObj = \DB::table('tb_categories')->where('id', $request->dest)->get();
             $cateObj = \DB::table('tb_categories')->where('parent_category_id', $request->dest)->where('category_published', 1)->get();
                         
             $chldIds = array();
@@ -4644,7 +4645,7 @@ class HomeController extends Controller {
             $rep['properties'] = json_encode($propertiesArr);
             $rep['cities'] = json_encode($CityArrdestts);
             if(isset($cateObj[0]->category_name)) {
-                $rep['category_name'] = $cateObj[0]->category_name;
+                $rep['category_name'] = $categoryObj[0]->category_name;
             }
             else {
                 $rep['category_name'] = '';
