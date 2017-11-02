@@ -4531,6 +4531,10 @@ class HomeController extends Controller {
         $getcats = '';
         if (!is_null($request->dest)) {
             $cateObj = \DB::table('tb_categories')->where('parent_category_id', $request->dest)->where('category_published', 1)->get();
+            
+            return $cateObj->category_name;
+//            $cateObj->category_name;
+            
             $chldIds = array();
             if (!empty($cateObj)) {
                 $chldIds = $this->fetchcategoryChildListIds($request->dest);
