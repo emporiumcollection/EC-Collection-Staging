@@ -35,6 +35,16 @@
         <script src="{{ asset('sximo/assets/js/testimoniales.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/m_slider.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/active-nav.js')}}" type="text/javascript"></script>
+		
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110391807-1"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'UA-110391807-1');
+		</script>
     </head>
     <body>
         <div class="wrapper">
