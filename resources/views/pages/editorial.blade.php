@@ -140,6 +140,10 @@
 				overflow: hidden;
 				position: unset;
 			}
+                        .image-slider-container ul li.active img {
+                            width: auto;
+                            height: auto;
+                        }
         </style>
 		
     </head>
