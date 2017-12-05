@@ -360,6 +360,16 @@ return fasle;
                 border-bottom: 2px solid;
             }
         </style>
+		
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110391807-1"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'UA-110391807-1');
+		</script>
     </head>
     <body id="main" class="<?php echo (isset($slug)) ? strtolower($slug) : '' ?>">
         <div class="wrapper">

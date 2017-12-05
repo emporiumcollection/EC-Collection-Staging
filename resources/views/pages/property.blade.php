@@ -30,6 +30,15 @@
         <script src="{{ asset('sximo/assets/js/book-now-page-style.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/sticky-nav.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/image-slider.js')}}" type="text/javascript"></script>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110391807-1"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'UA-110391807-1');
+		</script>
     </head>
     <body>
         <header >
