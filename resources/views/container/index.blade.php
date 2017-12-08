@@ -287,7 +287,7 @@ div[data-load="left-side-tree"]{max-height: 600px;    overflow: auto;}
 			</fieldset>
 		  </div>
 		  <div class="modal-footer">
-			<button type="button" class="btn btn-default" onclick="location.reload();">Save & Continue</button>
+			<button type="button" class="btn btn-default" onclick="containerdropreload();">Save & Continue</button>
 		  </div>
 		  </form>
 		</div>
@@ -440,7 +440,7 @@ div[data-load="left-side-tree"]{max-height: 600px;    overflow: auto;}
 						$('#breadcrumb_line').html($('#folders_data_list').find('#get-breadcrumb').html());
 						$('#showallmodals').html($('#folders_data_list').find('#allmodal').html());
 						$('#allmodal').html('');
-						if({{$fid}}>0) { $('[data-target="#Directorypermission"]').removeAttr('disabled');  $('.upbtn').removeAttr('disabled'); $('input[name="fold_id"]').val('{{$fid}}'); $('input[name="curnurl"]').val('{{URL::to("folders")}}/{{$fid}}?show={{$showType}}'); }
+						if({{$fid}}>0) { $('[data-target="#Directorypermission"]').removeAttr('disabled');  $('.upbtn').removeAttr('disabled'); $('input[name="fold_id"]').val('{{$fid}}'); localStorage.setItem('fold_id','{{$fid}}'); $('input[name="curnurl"]').val('{{URL::to("folders")}}/{{$fid}}?show={{$showType}}'); }
 						screenshotPreview();
 						screenshotPreviewimg();
 						screenshotPreviewimgclick();
@@ -457,12 +457,19 @@ div[data-load="left-side-tree"]{max-height: 600px;    overflow: auto;}
                 url: baseUrl,
                 params: {
                     _token: token,
-					fold_id:$("#uploadfile_fold_id").val()
+					fold_id: localStorage.getItem('fold_id')
                 },
 				paramName: "file", // The name that will be used to transfer the file
 				addRemoveLinks: true,
 				success: function(file, response){
 					
+				},
+				init: function() {
+					var thisDropzone = this;
+					this.on("processing", function(file) {
+						thisDropzone.options.params.fold_id = localStorage.getItem('fold_id');
+						thisDropzone.options.url = baseUrl;
+					});
 				}
              });
 			 
@@ -502,7 +509,7 @@ div[data-load="left-side-tree"]{max-height: 600px;    overflow: auto;}
 						$('#breadcrumb_line').html($('#folders_data_list').find('#get-breadcrumb').html());
 						$('#showallmodals').html($('#folders_data_list').find('#allmodal').html());
 						$('#allmodal').html('');
-						if(relfid>0) { $('[data-target="#Directorypermission"]').removeAttr('disabled');  $('.upbtn').removeAttr('disabled'); $('input[name="fold_id"]').val(relfid); $('input[name="curnurl"]').val('{{URL::to("folders")}}/' + relfid+'?show={{$showType}}'); }
+						if(relfid>0) { $('[data-target="#Directorypermission"]').removeAttr('disabled');  $('.upbtn').removeAttr('disabled'); $('input[name="fold_id"]').val(relfid); localStorage.setItem('fold_id',relfid); $('input[name="curnurl"]').val('{{URL::to("folders")}}/' + relfid+'?show={{$showType}}'); }
 						screenshotPreview();
 						screenshotPreviewimg();
 						screenshotPreviewimgclick();
@@ -575,7 +582,7 @@ div[data-load="left-side-tree"]{max-height: 600px;    overflow: auto;}
 						$('#breadcrumb_line').html($('#folders_data_list').find('#get-breadcrumb').html());
 						$('#showallmodals').html($('#folders_data_list').find('#allmodal').html());
 						$('#allmodal').html('');
-						if(relroid>0) { $('[data-target="#Directorypermission"]').removeAttr('disabled'); $('.upbtn').removeAttr('disabled'); $('input[name="fold_id"]').val(relroid); $('input[name="curnurl"]').val('{{URL::to("folders")}}/' + relroid+'?show={{$showType}}'); }
+						if(relroid>0) { $('[data-target="#Directorypermission"]').removeAttr('disabled'); $('.upbtn').removeAttr('disabled'); $('input[name="fold_id"]').val(relroid); localStorage.setItem('fold_id',relroid); $('input[name="curnurl"]').val('{{URL::to("folders")}}/' + relroid+'?show={{$showType}}'); }
 						screenshotPreview();
 						screenshotPreviewimg();
 						screenshotPreviewimgclick();

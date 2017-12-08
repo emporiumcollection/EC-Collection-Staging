@@ -66,7 +66,7 @@
 			</fieldset>
 		  </div>
 		  <div class="modal-footer">
-			<button type="button" class="btn btn-default" onclick="location.reload();">Save & Continue</button>
+			<button type="button" class="btn btn-default" onclick="containerdropreload();">Save & Continue</button>
 		  </div>
 		  </form>
 		</div>
@@ -99,7 +99,7 @@
 						$('#breadcrumb_line').html($('#folders_data_list').find('#get-breadcrumb').html());
 						$('#showallmodals').html($('#folders_data_list').find('#allmodal').html());
 						$('#allmodal').html('');
-						if({{$fid}}>0) { $('[data-target="#Directorypermission"]').removeAttr('disabled');  $('.upbtn').removeAttr('disabled'); $('input[name="fold_id"]').val('{{$fid}}'); $('input[name="curnurl"]').val('{{URL::to("folders")}}/{{$fid}}?show={{$showType}}'); }
+						if({{$fid}}>0) { $('[data-target="#Directorypermission"]').removeAttr('disabled');  $('.upbtn').removeAttr('disabled'); $('input[name="fold_id"]').val('{{$fid}}'); localStorage.setItem('fold_id','{{$fid}}'); $('input[name="curnurl"]').val('{{URL::to("folders")}}/{{$fid}}?show={{$showType}}'); }
 						screenshotPreview();
 						screenshotPreviewimg();
 						screenshotPreviewimgclick();
@@ -116,13 +116,20 @@
                 url: baseUrl,
                 params: {
                     _token: token,
-					fold_id:$("#uploadfile_fold_id").val(),
+					fold_id: localStorage.getItem('fold_id'),
 					administrator_id:$("#administrator_id").val()
                 },
 				paramName: "file", // The name that will be used to transfer the file
 				addRemoveLinks: true,
 				success: function(file, response){
 					
+				},
+				init: function() {
+					var thisDropzone = this;
+					this.on("processing", function(file) {
+						thisDropzone.options.params.fold_id = localStorage.getItem('fold_id');
+						thisDropzone.options.url = baseUrl;
+					});
 				}
              });
 			//Load folders and folder tree by Ajax
@@ -131,7 +138,7 @@
 			//Load folders and folder tree on  extend tree 
 			$(document).on('click','[data-action="expend-folder-tree"]',function(e){
 				e.preventDefault();
-				if($(this).attr('rel')>0) { $('.upbtn').removeAttr('disabled'); $('input[name="fold_id"]').val($(this).attr('rel')); $('input[name="curnurl"]').val('{{URL::to("folders")}}/' + $(this).attr('rel')+'?show={{$showType}}'); }
+				if($(this).attr('rel')>0) { $('.upbtn').removeAttr('disabled'); $('input[name="fold_id"]').val($(this).attr('rel')); localStorage.setItem('fold_id',$(this).attr('rel')); $('input[name="curnurl"]').val('{{URL::to("folders")}}/' + $(this).attr('rel')+'?show={{$showType}}'); }
 				$('#folders_data_list').html('<p style="padding-top: 30px; text-align: center;">Loading...</p>');
 				$('a[data-action="expend-folder-tree"]').removeClass('selected');
 				$(this).addClass('selected');
@@ -161,7 +168,7 @@
 						$('#breadcrumb_line').html($('#folders_data_list').find('#get-breadcrumb').html());
 						$('#showallmodals').html($('#folders_data_list').find('#allmodal').html());
 						$('#allmodal').html('');
-						if(relfid>0) { $('[data-target="#Directorypermission"]').removeAttr('disabled');  $('.upbtn').removeAttr('disabled'); $('input[name="fold_id"]').val(relfid); $('input[name="curnurl"]').val('{{URL::to("folders")}}/' + relfid+'?show={{$showType}}'); }
+						if(relfid>0) { $('[data-target="#Directorypermission"]').removeAttr('disabled');  $('.upbtn').removeAttr('disabled'); $('input[name="fold_id"]').val(relfid); localStorage.setItem('fold_id',relfid); $('input[name="curnurl"]').val('{{URL::to("folders")}}/' + relfid+'?show={{$showType}}'); }
 						screenshotPreview();
 						screenshotPreviewimg();
 						screenshotPreviewimgclick();
@@ -205,7 +212,7 @@
 		    //Load folders and folder tree on  extend tree 
 			$(document).on('click','[data-action-open="folder"]',function(e){
 				e.preventDefault();
-				if($(this).attr('rel_row')>0) { $('.upbtn').removeAttr('disabled'); $('input[name="fold_id"]').val($(this).attr('rel_row')); $('input[name="curnurl"]').val('{{URL::to("folders")}}/' + $(this).attr('rel_row')+'?show={{$showType}}'); }
+				if($(this).attr('rel_row')>0) { $('.upbtn').removeAttr('disabled'); $('input[name="fold_id"]').val($(this).attr('rel_row')); localStorage.setItem('fold_id',$(this).attr('rel_row')); $('input[name="curnurl"]').val('{{URL::to("folders")}}/' + $(this).attr('rel_row')+'?show={{$showType}}'); }
 				$('#folders_data_list').html('<p style="padding-top: 30px; text-align: center;">Loading...</p>');
 				$('a[data-action="expend-folder-tree"]').removeClass('selected');
 				$(this).addClass('selected');
@@ -234,7 +241,7 @@
 						$('#breadcrumb_line').html($('#folders_data_list').find('#get-breadcrumb').html());
 						$('#showallmodals').html($('#folders_data_list').find('#allmodal').html());
 						$('#allmodal').html('');
-						if(relroid>0) { $('[data-target="#Directorypermission"]').removeAttr('disabled'); $('.upbtn').removeAttr('disabled'); $('input[name="fold_id"]').val(relroid); $('input[name="curnurl"]').val('{{URL::to("folders")}}/' + relroid+'?show={{$showType}}'); }
+						if(relroid>0) { $('[data-target="#Directorypermission"]').removeAttr('disabled'); $('.upbtn').removeAttr('disabled'); $('input[name="fold_id"]').val(relroid); localStorage.setItem('fold_id',relroid); $('input[name="curnurl"]').val('{{URL::to("folders")}}/' + relroid+'?show={{$showType}}'); }
 						screenshotPreview();
 						screenshotPreviewimg();
 						screenshotPreviewimgclick();
