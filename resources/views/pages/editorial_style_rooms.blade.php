@@ -240,7 +240,7 @@ foreach ($propertyDetail['typedata'] as $type) {
                 </section>
                 
             </div>
-          </div>
+            </div>
           <div class="modal-body">
             .......text
           </div>
