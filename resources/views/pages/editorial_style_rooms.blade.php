@@ -42,10 +42,9 @@
             border-top: none;
         }
         
-        .slider {
+        .SlickVegasWidth {
             
             width: 17.667%;
-            float: none;
         }
     
 </style>
@@ -195,90 +194,71 @@ foreach ($propertyDetail['typedata'] as $type) {
     </div>
 
 <!--AIC harman: popup gallery Modal -->
-    <div class="modal fade vegasModelFade" id="myModal" role="dialog">
-      <div class="modal-dialog VegasModelDialog">
+    <div class="container">
+  <h2>Modal Example</h2>
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
 
-        <!-- Modal content-->
-        <div class="modal-content vegasModelContent">
-          <div class="modal-header vegasModelHeader">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            
-            </div>
-          <div class="modal-body">
-              <div class="col-md-2 slider">
-<!--                <section class="regular slider">
-                    <div class="slick-cstm-width">
-                            <div class="side-nav-next-hotel-img">
-                                    <div class="side-next-and-perivious-hotel-arrow">
-                                            <div class="arrows-commom  next-arrow">
-                                                    <a href="http://www.emporium-voyage.com/hotel-zoo-berlin-" tabindex="0">
-                                                        <span>New Hotels</span>
-                                                    </a>
-                                            </div>
-                                    </div>
-                                    <div class="new-hotel-image" style="background-image:url(http://www.emporium-voyage.com/uploads/property_imgs_thumbs/xfront_property_4505_Emporium-Voyage-Hotel-Zoo-Berlin00017.jpg.pagespeed.ic.nY-effTxow.jpg)">
-                                            <div class="new-hotels-image-tittle">
-                                                    <h2 class="new-hotel-name">Hotel Zoo Berlin</h2>
-                                                    <div class=" new-hotel-add">
-                                                            <p>New York City</p>
-                                                            <p>United States</p>
-                                                    </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                            <div class="new-hotel-view-more-btn">
-                                                   <a class="" href="http://www.emporium-voyage.com/hotel-zoo-berlin-" tabindex="0">
-                                                        View Hotel
-                                                    </a>
-                                            </div>
-                                    </div>
-                                    <a class="bootom-view-next-btn" href="http://www.emporium-voyage.com/hotel-zoo-berlin-" tabindex="0">
-                                        Visit All Hotels DOI
-                                    </a>
-                            </div>
-                    </div>
-                    @if(!empty($sidebardetailAds))
-                    @foreach($sidebardetailAds as $adsdetail)
-                    <div class="slick-cstm-width slick-slide slick-current slick-active" data-slick-index="1" aria-hidden="false" style="width: 206px;" tabindex="-1" role="option">
-                        <a href="http://http://www.bessd.com" tabindex="0"><img src="http://www.emporium-voyage.com/uploads/users/advertisement/x1.png.pagespeed.ic.wgBqk8EoPv.jpg" data-pagespeed-url-hash="3725838879" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"></a>
-                    </div>
-                    @endforeach
-                    @endif					
-                </section>-->
-                  <div>
-                    <img src="http://www.emporium-voyage.com/uploads/users/advertisement/x1.png.pagespeed.ic.wgBqk8EoPv.jpg">
-                  </div>
-                  <div>
-                     <img src="http://www.emporium-voyage.com/uploads/users/advertisement/x1.png.pagespeed.ic.wgBqk8EoPv.jpg">
-                  </div>
-
-             </div>
-            </div><!--
-          <div class="modal-footer vegasModelFooter">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>-->
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
         </div>
-
+        <div class="modal-body">
+          <div class="slider">
+  <div>
+    <img src="images/1.jpg" alt=""/>
+  </div>
+  <div>
+     <img src="images/1.jpg" alt=""/>
+  </div>
+  <div>
+     <img src="images/1.jpg" alt=""/>
+  </div>
+  <div>
+     <img src="images/1.jpg" alt=""/>
+  </div>
+  <div>
+     <img src="images/1.jpg" alt=""/>
+  </div>
+  <div>
+     <img src="images/1.jpg" alt=""/>
+  </div>
+</div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
       </div>
+      
     </div>
+  </div>
+  
+</div>
 <!-- model popup end -->
 
     <?php
 }
 ?>
 @endif
-        <script>
-       jQuery(document).ready(function ($) {
-            $(".slider").slick({
-                    dots: false,
-                    infinite: true,
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    prevArrow: false,
-                    nextArrow: false,
-                    autoplay: true,
-                    autoplaySpeed: 3000
-            });
+<script>
+jQuery(document).ready(function ($) {
+        $(".regular").slick({
+                dots: false,
+                infinite: true,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                prevArrow: false,
+                nextArrow: false,
+                autoplay: true,
+                autoplaySpeed: 3000
         });
+});
 </script>
 <script type="text/javascript">
     $(".video-popup-btn").on("click", function (event) {
