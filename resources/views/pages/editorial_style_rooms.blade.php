@@ -202,8 +202,8 @@ foreach ($propertyDetail['typedata'] as $type) {
                             <div class="side-nav-next-hotel-img">
                                     <div class="side-next-and-perivious-hotel-arrow">
                                             <div class="arrows-commom  next-arrow">
-                                                    <a href="#">
-                                                            <span>New Hotels</span>
+                                                    <a href="http://www.emporium-voyage.com/hotel-zoo-berlin-" tabindex="-1">
+                                                        <span>New Hotels</span>
                                                     </a>
                                             </div>
                                     </div>
@@ -217,13 +217,13 @@ foreach ($propertyDetail['typedata'] as $type) {
                                             </div>
                                             <div class="clearfix"></div>
                                             <div class="new-hotel-view-more-btn">
-                                                    <a class="" href="#">
-                                                            View Hotel
+                                                   <a class="" href="http://www.emporium-voyage.com/hotel-zoo-berlin-" tabindex="-1">
+                                                        View Hotel
                                                     </a>
                                             </div>
                                     </div>
-                                    <a class="bootom-view-next-btn" href="#">
-                                            Visit All Hotels DOI
+                                    <a class="bootom-view-next-btn" href="http://www.emporium-voyage.com/hotel-zoo-berlin-" tabindex="-1">
+                                        Visit All Hotels DOI
                                     </a>
                             </div>
                     </div>
