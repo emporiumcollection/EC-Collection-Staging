@@ -238,7 +238,7 @@ foreach ($propertyDetail['typedata'] as $type) {
 ?>
 @endif
 <script>
-$('.SlickVegasWidth').slick({
+$('.slider').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
     dots: false,
