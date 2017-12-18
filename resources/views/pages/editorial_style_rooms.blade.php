@@ -229,9 +229,9 @@ foreach ($propertyDetail['typedata'] as $type) {
                     </div>
                     @if(!empty($sidebardetailAds))
                     @foreach($sidebardetailAds as $adsdetail)
-                    <div class="slick-cstm-width">
-                        <a href="http://{{$adsdetail->adv_link}}"><img src="http://www.emporium-voyage.com/uploads/users/advertisement/x1.png.pagespeed.ic.wgBqk8EoPv.jpg"></a>
-                    </div>
+                    <div class="slick-cstm-width slick-slide slick-current slick-active" data-slick-index="1" aria-hidden="false" style="width: 206px;" tabindex="-1" role="option">
+                                            <a href="http://http://www.bessd.com" tabindex="0"><img src="http://www.emporium-voyage.com/uploads/users/advertisement/x1.png.pagespeed.ic.wgBqk8EoPv.jpg" data-pagespeed-url-hash="3725838879" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"></a>
+                                        </div>
                     @endforeach
                     @endif					
                 </section>
