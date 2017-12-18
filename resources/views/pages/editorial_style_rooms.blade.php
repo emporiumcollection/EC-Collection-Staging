@@ -8,7 +8,7 @@
     }
     
     .VegasModelDialog {
-        width: 100%;
+        width: 1155px;
         margin: 30px auto;
     }
     
