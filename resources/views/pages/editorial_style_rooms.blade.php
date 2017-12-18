@@ -4,7 +4,7 @@
 
     .image-slider-container ul li.active img {
 	width: 100%;
-	height: 900px;
+	height: 850px;
     }
     
 </style>
