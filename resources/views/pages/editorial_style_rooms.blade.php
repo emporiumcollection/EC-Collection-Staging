@@ -174,27 +174,27 @@ foreach ($propertyDetail['typedata'] as $type) {
         </div>
     </div>
 
-<!--AIC harman Modal -->
-                            <div class="modal fade vegasModelFade" id="myModal" role="dialog">
-                              <div class="modal-dialog">
+<!--AIC harman: popup gallery Modal -->
+    <div class="modal fade vegasModelFade" id="myModal" role="dialog">
+      <div class="modal-dialog VegasModelDialog">
 
-                                <!-- Modal content-->
-                                <div class="modal-content VegasModelDialog">
-                                  <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Modal Header</h4>
-                                  </div>
-                                  <div class="modal-body">
-                                    <p>Some text in the modal.</p>
-                                  </div>
-                                  <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                  </div>
-                                </div>
+        <!-- Modal content-->
+        <div class="modal-content VegasModelDialog">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Modal Header</h4>
+          </div>
+          <div class="modal-body">
+            <p>Some text in the modal.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
 
-                              </div>
-                            </div>
-                        <!-- model popup end -->
+      </div>
+    </div>
+<!-- model popup end -->
 
     <?php
 }
