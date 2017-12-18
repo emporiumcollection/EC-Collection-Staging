@@ -42,9 +42,10 @@
             border-top: none;
         }
         
-        .SlickVegasWidth {
+        .slider {
             
             width: 17.667%;
+            float: none;
         }
     
 </style>
