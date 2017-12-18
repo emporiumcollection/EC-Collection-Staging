@@ -205,59 +205,22 @@ foreach ($propertyDetail['typedata'] as $type) {
             </div>
           <div class="modal-body">
               <div class="col-md-2 SlickVegasWidth">
-                <section class="regular slider">
-                    <div class="slick-cstm-width">
-                            <div class="side-nav-next-hotel-img">
-                                    <div class="side-next-and-perivious-hotel-arrow">
-                                            <div class="arrows-commom  next-arrow">
-                                                    <a href="http://www.emporium-voyage.com/hotel-zoo-berlin-" tabindex="0">
-                                                        <span>New Hotels</span>
-                                                    </a>
-                                            </div>
-                                    </div>
-                                    <div class="new-hotel-image" style="background-image:url(http://www.emporium-voyage.com/uploads/property_imgs_thumbs/xfront_property_4505_Emporium-Voyage-Hotel-Zoo-Berlin00017.jpg.pagespeed.ic.nY-effTxow.jpg)">
-                                            <div class="new-hotels-image-tittle">
-                                                    <h2 class="new-hotel-name">Hotel Zoo Berlin</h2>
-                                                    <div class=" new-hotel-add">
-                                                            <p>New York City</p>
-                                                            <p>United States</p>
-                                                    </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                            <div class="new-hotel-view-more-btn">
-                                                   <a class="" href="http://www.emporium-voyage.com/hotel-zoo-berlin-" tabindex="0">
-                                                        View Hotel
-                                                    </a>
-                                            </div>
-                                    </div>
-                                    <div class="new-hotel-image" style="background-image:url(http://www.emporium-voyage.com/uploads/property_imgs_thumbs/xfront_property_4505_Emporium-Voyage-Hotel-Zoo-Berlin00017.jpg.pagespeed.ic.nY-effTxow.jpg)">
-                                            <div class="new-hotels-image-tittle">
-                                                    <h2 class="new-hotel-name">Hotel Zoo Berlin</h2>
-                                                    <div class=" new-hotel-add">
-                                                            <p>New York City</p>
-                                                            <p>United States</p>
-                                                    </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                            <div class="new-hotel-view-more-btn">
-                                                   <a class="" href="http://www.emporium-voyage.com/hotel-zoo-berlin-" tabindex="0">
-                                                        View Hotel
-                                                    </a>
-                                            </div>
-                                    </div>
-                                    <a class="bootom-view-next-btn" href="http://www.emporium-voyage.com/hotel-zoo-berlin-" tabindex="0">
-                                        Visit All Hotels DOI
-                                    </a>
-                            </div>
-                    </div>
-                    @if(!empty($sidebardetailAds))
-                    @foreach($sidebardetailAds as $adsdetail)
-                    <div class="slick-cstm-width slick-slide slick-current slick-active" data-slick-index="1" aria-hidden="false" style="width: 206px;" tabindex="-1" role="option">
-                        <a href="http://http://www.bessd.com" tabindex="0"><img src="http://www.emporium-voyage.com/uploads/users/advertisement/x1.png.pagespeed.ic.wgBqk8EoPv.jpg" data-pagespeed-url-hash="3725838879" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"></a>
-                    </div>
-                    @endforeach
-                    @endif					
-                </section>
+                <div class="slider">
+  <div>
+    <img src="../../../public/images/front_property_208_Blueberry (12).jpg" alt=""/>
+  </div>
+  <div>
+    <img src="../../../public/images/front_property_208_Blueberry (12).jpg" alt=""/>
+  </div>
+  <div>
+    <img src="../../../public/images/front_property_208_Blueberry (12).jpg" alt=""/>
+  </div>
+  <div>
+    <img src="../../../public/images/front_property_208_Blueberry (12).jpg" alt=""/>
+  </div>
+  <div>
+    <img src="../../../public/images/front_property_208_Blueberry (12).jpg" alt=""/>
+  </div
 
              </div>
             </div><!--
