@@ -68,28 +68,7 @@
                         <!-- AIC Harman popup-->
                         <!-- Trigger the modal with a button -->
                         <a href="#" class="vogasRoomButton" data-toggle="modal" data-target="#myModal">harman test</a>
-                        <!-- Modal -->
-                            <div class="modal fade vegasModelFade" id="myModal" role="dialog">
-                              <div class="modal-dialog">
 
-                                <!-- Modal content-->
-                                <div class="modal-content VegasModelDialog">
-                                  <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Modal Header</h4>
-                                  </div>
-                                  <div class="modal-body">
-                                    <p>Some text in the modal.</p>
-                                  </div>
-                                  <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                  </div>
-                                </div>
-
-                              </div>
-                            </div>
-                        <!-- model popup end -->
-                        
                         @if($type->price!='')
                         <div class="hotel-slider-price">
                             {{($currency->content!='') ? $currency->content : '$'}} {{$type->price}}
@@ -194,6 +173,29 @@ foreach ($propertyDetail['typedata'] as $type) {
             </div>
         </div>
     </div>
+
+<!--AIC harman Modal -->
+                            <div class="modal fade vegasModelFade" id="myModal" role="dialog">
+                              <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content VegasModelDialog">
+                                  <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Modal Header</h4>
+                                  </div>
+                                  <div class="modal-body">
+                                    <p>Some text in the modal.</p>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                  </div>
+                                </div>
+
+                              </div>
+                            </div>
+                        <!-- model popup end -->
+
     <?php
 }
 ?>
