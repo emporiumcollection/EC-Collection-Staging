@@ -12,6 +12,20 @@
         margin: 30px auto;
     }
     
+    .vegasModelFade {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1050;
+        display: none;
+        overflow: hidden;
+        -webkit-overflow-scrolling: touch;
+        outline: 0;
+        background-color: none;
+            }
+    
 </style>
 
     <div class="row gallery"></div>
@@ -49,10 +63,11 @@
                     </p>
                     <div class="hotel-detail-slider-price-and-show-more">
                         <a href="#" rel="{{$type->id}}" class="book-button open-show_more-page hotel-btn">Show More</a>
-                         <!-- Trigger the modal with a button -->
+                        <!-- AIC Harman popup-->
+                        <!-- Trigger the modal with a button -->
                         <a href="#" class="vogasRoomButton" data-toggle="modal" data-target="#myModal">harman test</a>
                         <!-- Modal -->
-                            <div class="modal fade" id="myModal" role="dialog">
+                            <div class="modal fade vegasModelFade" id="myModal" role="dialog">
                               <div class="modal-dialog">
 
                                 <!-- Modal content-->
