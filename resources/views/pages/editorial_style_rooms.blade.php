@@ -8,8 +8,8 @@
     }
     
     .VegasModelDialog {
-        width: 1155px !important;
-        margin: 30px auto;
+	width: 100%;
+	margin: 4px auto;
     }
     
     .vegasModelFade {
@@ -196,7 +196,9 @@ foreach ($propertyDetail['typedata'] as $type) {
         <div class="modal-content vegasModelContent">
           <div class="modal-header vegasModelHeader">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <div class="col-md-4">
+            
+            </div>
+          <div class="modal-body">
                 <section class="regular slider">
                     <div class="slick-cstm-width">
                             <div class="side-nav-next-hotel-img">
@@ -235,15 +237,11 @@ foreach ($propertyDetail['typedata'] as $type) {
                     @endforeach
                     @endif					
                 </section>
-                
-            </div>
-            </div>
-          <div class="modal-body">
-            .......text
-          </div>
+
+          </div><!--
           <div class="modal-footer vegasModelFooter">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
+          </div>-->
         </div>
 
       </div>
