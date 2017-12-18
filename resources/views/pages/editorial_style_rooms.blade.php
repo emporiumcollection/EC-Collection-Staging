@@ -199,6 +199,7 @@ foreach ($propertyDetail['typedata'] as $type) {
             
             </div>
           <div class="modal-body">
+              <div class="col-md-2">
                 <section class="regular slider">
                     <div class="slick-cstm-width">
                             <div class="side-nav-next-hotel-img">
@@ -238,7 +239,8 @@ foreach ($propertyDetail['typedata'] as $type) {
                     @endif					
                 </section>
 
-          </div><!--
+             </div>
+            </div><!--
           <div class="modal-footer vegasModelFooter">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>-->
