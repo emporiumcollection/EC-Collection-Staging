@@ -44,6 +44,30 @@
                     </p>
                     <div class="hotel-detail-slider-price-and-show-more">
                         <a href="#" rel="{{$type->id}}" class="book-button open-show_more-page hotel-btn">Show More</a>
+                         <!-- Trigger the modal with a button -->
+                        <a href="#" class="vogasRoomButton" data-toggle="modal" data-target="#myModal">harman test</a>
+                        <!-- Modal -->
+                            <div class="modal fade" id="myModal" role="dialog">
+                              <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Modal Header</h4>
+                                  </div>
+                                  <div class="modal-body">
+                                    <p>Some text in the modal.</p>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                  </div>
+                                </div>
+
+                              </div>
+                            </div>
+                        <!-- model popup end -->
+                        
                         @if($type->price!='')
                         <div class="hotel-slider-price">
                             {{($currency->content!='') ? $currency->content : '$'}} {{$type->price}}
