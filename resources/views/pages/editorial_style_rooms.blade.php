@@ -202,7 +202,7 @@ foreach ($propertyDetail['typedata'] as $type) {
                             <div class="side-nav-next-hotel-img">
                                     <div class="side-next-and-perivious-hotel-arrow">
                                             <div class="arrows-commom  next-arrow">
-                                                    <a href="http://www.emporium-voyage.com/hotel-zoo-berlin-" tabindex="-1">
+                                                    <a href="http://www.emporium-voyage.com/hotel-zoo-berlin-" tabindex="0">
                                                         <span>New Hotels</span>
                                                     </a>
                                             </div>
@@ -217,12 +217,12 @@ foreach ($propertyDetail['typedata'] as $type) {
                                             </div>
                                             <div class="clearfix"></div>
                                             <div class="new-hotel-view-more-btn">
-                                                   <a class="" href="http://www.emporium-voyage.com/hotel-zoo-berlin-" tabindex="-1">
+                                                   <a class="" href="http://www.emporium-voyage.com/hotel-zoo-berlin-" tabindex="0">
                                                         View Hotel
                                                     </a>
                                             </div>
                                     </div>
-                                    <a class="bootom-view-next-btn" href="http://www.emporium-voyage.com/hotel-zoo-berlin-" tabindex="-1">
+                                    <a class="bootom-view-next-btn" href="http://www.emporium-voyage.com/hotel-zoo-berlin-" tabindex="0">
                                         Visit All Hotels DOI
                                     </a>
                             </div>
