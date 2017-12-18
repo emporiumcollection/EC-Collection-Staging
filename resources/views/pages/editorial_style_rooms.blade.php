@@ -204,8 +204,8 @@ foreach ($propertyDetail['typedata'] as $type) {
             
             </div>
           <div class="modal-body">
-              <div class="col-md-2 SlickVegasWidth">
-                <section class="regular slider">
+              <div class="col-md-2 slider">
+<!--                <section class="regular slider">
                     <div class="slick-cstm-width">
                             <div class="side-nav-next-hotel-img">
                                     <div class="side-next-and-perivious-hotel-arrow">
@@ -242,7 +242,13 @@ foreach ($propertyDetail['typedata'] as $type) {
                     </div>
                     @endforeach
                     @endif					
-                </section>
+                </section>-->
+                  <div>
+                    <img src="http://www.emporium-voyage.com/uploads/users/advertisement/x1.png.pagespeed.ic.wgBqk8EoPv.jpg">
+                  </div>
+                  <div>
+                     <img src="http://www.emporium-voyage.com/uploads/users/advertisement/x1.png.pagespeed.ic.wgBqk8EoPv.jpg">
+                  </div>
 
              </div>
             </div><!--
@@ -259,18 +265,13 @@ foreach ($propertyDetail['typedata'] as $type) {
 }
 ?>
 @endif
-<script>
-jQuery(document).ready(function ($) {
-        $(".regular").slick({
-                dots: false,
-                infinite: true,
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                prevArrow: false,
-                nextArrow: false,
-                autoplay: true,
-                autoplaySpeed: 3000
-        });
+        <script>
+       $('.slider').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    dots: false,
+    infinite: true,
+    cssEase: 'linear'
 });
 </script>
 <script type="text/javascript">
