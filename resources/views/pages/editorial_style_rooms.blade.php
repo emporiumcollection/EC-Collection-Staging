@@ -24,7 +24,9 @@
         -webkit-overflow-scrolling: touch;
         outline: 0;
         background-color: none;
-            }
+        overflow-x: hidden;
+        overflow-y: hidden;
+        }
     
 </style>
 
