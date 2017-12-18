@@ -1,5 +1,13 @@
 @if (array_key_exists('typedata', $propertyDetail))
 
+<style>
+
+    .image-slider-container ul li.active img {
+	width: 100%;
+	height: 950px;
+    }
+    
+</style>
 
     <div class="row gallery"></div>
     @foreach($propertyDetail['typedata'] as $type)
