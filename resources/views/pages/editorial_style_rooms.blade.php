@@ -30,6 +30,8 @@
         
         .vegasModelContent {
             background: rgba(0, 0, 0, 0.92) none repeat scroll 0 0;
+            opacity: 0.5;
+            border-radius: 0px;
         }
     
 </style>
