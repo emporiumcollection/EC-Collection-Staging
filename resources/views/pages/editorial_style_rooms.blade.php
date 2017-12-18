@@ -196,7 +196,9 @@ foreach ($propertyDetail['typedata'] as $type) {
         <div class="modal-content vegasModelContent">
           <div class="modal-header vegasModelHeader">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">... Header</h4>
+            <div class="col-md-4">
+                <h4 class="modal-title">... Header</h4>
+            </div>
           </div>
           <div class="modal-body">
             .......text
