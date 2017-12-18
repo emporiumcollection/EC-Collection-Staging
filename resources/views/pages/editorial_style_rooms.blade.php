@@ -207,19 +207,19 @@ foreach ($propertyDetail['typedata'] as $type) {
               <div class="col-md-2 SlickVegasWidth">
                 <div class="slider">
   <div>
-    <img src="../../../public/images/front_property_208_Blueberry (12).jpg" alt=""/>
+    <img src="http://www.emporium-voyage.com/uploads/users/advertisement/x1.png.pagespeed.ic.wgBqk8EoPv.jpg" alt=""/>
   </div>
   <div>
-    <img src="../../../public/images/front_property_208_Blueberry (12).jpg" alt=""/>
+<img src="http://www.emporium-voyage.com/uploads/users/advertisement/x1.png.pagespeed.ic.wgBqk8EoPv.jpg" alt=""/>
   </div>
   <div>
-    <img src="../../../public/images/front_property_208_Blueberry (12).jpg" alt=""/>
+    <img src="http://www.emporium-voyage.com/uploads/users/advertisement/x1.png.pagespeed.ic.wgBqk8EoPv.jpg" alt=""/>
   </div>
   <div>
-    <img src="../../../public/images/front_property_208_Blueberry (12).jpg" alt=""/>
+<img src="http://www.emporium-voyage.com/uploads/users/advertisement/x1.png.pagespeed.ic.wgBqk8EoPv.jpg" alt=""/>
   </div>
   <div>
-    <img src="../../../public/images/front_property_208_Blueberry (12).jpg" alt=""/>
+   <img src="http://www.emporium-voyage.com/uploads/users/advertisement/x1.png.pagespeed.ic.wgBqk8EoPv.jpg" alt=""/>
   </div
 
              </div>
