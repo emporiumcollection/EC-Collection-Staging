@@ -47,9 +47,9 @@
             width: 17.667%;
         }
         
-        #frontpage-layer-bj-content, .popup-frontpage-layer-bj-content {
+        .vegasGallery1 {
             min-height: 500px;
-            padding: 0px 0px 0px 0px;
+            padding: 0px 0px 0px 0px !important;
         }
     
 </style>
@@ -250,7 +250,7 @@ foreach ($propertyDetail['typedata'] as $type) {
                 </section>
 
              </div>
-              <div id="frontpage-layer-bj-content">
+              <div id="frontpage-layer-bj-content vegasGallery1">
         <div class="frontpage-detail-content-top">
             <div class="frontpage-detail-content-top-link">
                 <div class="frontpage-detail-content-top-link">
