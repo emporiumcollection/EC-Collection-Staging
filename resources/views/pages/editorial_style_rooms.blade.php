@@ -199,19 +199,17 @@ foreach ($propertyDetail['typedata'] as $type) {
             <div class="col-md-4">
                 <section class="regular slider">
                     <div class="slick-cstm-width">
-                       @if(!empty($relatedproperties))
                             <div class="side-nav-next-hotel-img">
                                     <div class="side-next-and-perivious-hotel-arrow">
                                             <div class="arrows-commom  next-arrow">
-                                                    <a href="{{URL::to($relatedproperties[0]->property_slug)}}">
+                                                    <a href="#">
                                                             <span>New Hotels</span>
                                                     </a>
                                             </div>
                                     </div>
-                                    {{--*/ $relatimg = URL::to('uploads/property_imgs_thumbs/front_property_'.$relatedproperties[0]->folder_id.'_'.$relatedproperties[0]->file_name); /*--}}
-                                    <div class="new-hotel-image" style="background-image: url('{{$relatimg}}')">
+                                    <div class="new-hotel-image" style="background-image: url('../../../public/images/Almenkerk-SAPL.com2.jpg')">
                                             <div class="new-hotels-image-tittle">
-                                                    <h2 class="new-hotel-name">{{$relatedproperties[0]->property_name}}</h2>
+                                                    <h2 class="new-hotel-name">Hotel Zoo Berlin</h2>
                                                     <div class=" new-hotel-add">
                                                             <p>New York City</p>
                                                             <p>United States</p>
@@ -219,21 +217,20 @@ foreach ($propertyDetail['typedata'] as $type) {
                                             </div>
                                             <div class="clearfix"></div>
                                             <div class="new-hotel-view-more-btn">
-                                                    <a class="" href="{{URL::to($relatedproperties[0]->property_slug)}}">
+                                                    <a class="" href="#">
                                                             View Hotel
                                                     </a>
                                             </div>
                                     </div>
-                                    <a class="bootom-view-next-btn" href="{{URL::to($relatedproperties[0]->property_slug)}}">
+                                    <a class="bootom-view-next-btn" href="#">
                                             Visit All Hotels DOI
                                     </a>
                             </div>
-                            @endif
                     </div>
                     @if(!empty($sidebardetailAds))
                     @foreach($sidebardetailAds as $adsdetail)
                     <div class="slick-cstm-width">
-                            <a href="http://{{$adsdetail->adv_link}}"><img src="{{URL::to('uploads/users/advertisement/'.$adsdetail->adv_img)}}"></a>
+                            <a href="http://{{$adsdetail->adv_link}}"><img src="../../../public/images/Almenkerk-SAPL.com2.jpg" alt=""/></a>
                     </div>
                     @endforeach
                     @endif					
