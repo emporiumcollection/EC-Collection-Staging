@@ -41,6 +41,11 @@
         .vegasModelFooter {
             border-top: none;
         }
+        
+        .SlickVegasWidth {
+            
+            width: 17.667%;
+        }
     
 </style>
 
@@ -199,7 +204,7 @@ foreach ($propertyDetail['typedata'] as $type) {
             
             </div>
           <div class="modal-body">
-              <div class="col-md-2">
+              <div class="col-md-2 SlickVegasWidth">
                 <section class="regular slider">
                     <div class="slick-cstm-width">
                             <div class="side-nav-next-hotel-img">
