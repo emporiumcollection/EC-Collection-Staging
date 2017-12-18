@@ -197,44 +197,73 @@ foreach ($propertyDetail['typedata'] as $type) {
           <div class="modal-header vegasModelHeader">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <div class="col-md-4">
-                <section class="regular slider">
-                    <div class="slick-cstm-width">
-                            <div class="side-nav-next-hotel-img">
-                                    <div class="side-next-and-perivious-hotel-arrow">
-                                            <div class="arrows-commom  next-arrow">
-                                                    <a href="http://www.emporium-voyage.com/hotel-zoo-berlin-" tabindex="0">
-                                                        <span>New Hotels</span>
-                                                    </a>
-                                            </div>
-                                    </div>
-                                    <div class="new-hotel-image" style="background-image:url(http://www.emporium-voyage.com/uploads/property_imgs_thumbs/xfront_property_4505_Emporium-Voyage-Hotel-Zoo-Berlin00017.jpg.pagespeed.ic.nY-effTxow.jpg)">
-                                            <div class="new-hotels-image-tittle">
-                                                    <h2 class="new-hotel-name">Hotel Zoo Berlin</h2>
-                                                    <div class=" new-hotel-add">
-                                                            <p>New York City</p>
-                                                            <p>United States</p>
-                                                    </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                            <div class="new-hotel-view-more-btn">
-                                                   <a class="" href="http://www.emporium-voyage.com/hotel-zoo-berlin-" tabindex="0">
-                                                        View Hotel
-                                                    </a>
-                                            </div>
-                                    </div>
-                                    <a class="bootom-view-next-btn" href="http://www.emporium-voyage.com/hotel-zoo-berlin-" tabindex="0">
-                                        Visit All Hotels DOI
-                                    </a>
-                            </div>
-                    </div>
-                    @if(!empty($sidebardetailAds))
-                    @foreach($sidebardetailAds as $adsdetail)
-                    <div class="slick-cstm-width slick-slide slick-current slick-active" data-slick-index="1" aria-hidden="false" style="width: 206px;" tabindex="-1" role="option">
-                        <a href="http://http://www.bessd.com" tabindex="0"><img src="http://www.emporium-voyage.com/uploads/users/advertisement/x1.png.pagespeed.ic.wgBqk8EoPv.jpg" data-pagespeed-url-hash="3725838879" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"></a>
-                    </div>
-                    @endforeach
-                    @endif					
-                </section>
+                <section class="regular slider slick-initialized slick-slider">
+                                        <div aria-live="polite" class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 824px; transform: translate3d(-206px, 0px, 0px);" role="listbox"><div class="slick-cstm-width slick-slide slick-cloned" data-slick-index="-1" aria-hidden="true" style="width: 206px;" tabindex="-1">
+                                            <a href="http://http://www.bessd.com" tabindex="-1"><img src="http://www.emporium-voyage.com/uploads/users/advertisement/x1.png.pagespeed.ic.wgBqk8EoPv.jpg" data-pagespeed-url-hash="3725838879" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"></a>
+                                        </div><div class="slick-cstm-width slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" style="width: 206px;" tabindex="-1" role="option">
+                                           											<div class="side-nav-next-hotel-img">
+												<div class="side-next-and-perivious-hotel-arrow">
+													<div class="arrows-commom  next-arrow">
+														<a href="http://www.emporium-voyage.com/hotel-zoo-berlin-" tabindex="0">
+															<span>New Hotels</span>
+														</a>
+													</div>
+												</div>
+																								<div class="new-hotel-image" style="background-image:url(http://www.emporium-voyage.com/uploads/property_imgs_thumbs/xfront_property_4505_Emporium-Voyage-Hotel-Zoo-Berlin00017.jpg.pagespeed.ic.nY-effTxow.jpg)">
+													<div class="new-hotels-image-tittle">
+														<h2 class="new-hotel-name">Hotel Zoo Berlin </h2>
+														<div class=" new-hotel-add">
+															<p>New York City</p>
+															<p>United States</p>
+														</div>
+													</div>
+													<div class="clearfix"></div>
+													<div class="new-hotel-view-more-btn">
+														<a class="" href="http://www.emporium-voyage.com/hotel-zoo-berlin-" tabindex="0">
+															View Hotel
+														</a>
+													</div>
+												</div>
+												
+												<a class="bootom-view-next-btn" href="http://www.emporium-voyage.com/hotel-zoo-berlin-" tabindex="0">
+													Visit All Hotels DOI
+												</a>
+											</div>
+											                                        </div><div class="slick-cstm-width slick-slide" data-slick-index="1" aria-hidden="true" style="width: 206px;" tabindex="-1" role="option">
+                                            <a href="http://http://www.bessd.com" tabindex="-1"><img src="http://www.emporium-voyage.com/uploads/users/advertisement/x1.png.pagespeed.ic.wgBqk8EoPv.jpg" data-pagespeed-url-hash="3725838879" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"></a>
+                                        </div><div class="slick-cstm-width slick-slide slick-cloned" data-slick-index="2" aria-hidden="true" style="width: 206px;" tabindex="-1">
+                                           											<div class="side-nav-next-hotel-img">
+												<div class="side-next-and-perivious-hotel-arrow">
+													<div class="arrows-commom  next-arrow">
+														<a href="http://www.emporium-voyage.com/hotel-zoo-berlin-" tabindex="-1">
+															<span>New Hotels</span>
+														</a>
+													</div>
+												</div>
+																								<div class="new-hotel-image" style="background-image:url(http://www.emporium-voyage.com/uploads/property_imgs_thumbs/xfront_property_4505_Emporium-Voyage-Hotel-Zoo-Berlin00017.jpg.pagespeed.ic.nY-effTxow.jpg)">
+													<div class="new-hotels-image-tittle">
+														<h2 class="new-hotel-name">Hotel Zoo Berlin </h2>
+														<div class=" new-hotel-add">
+															<p>New York City</p>
+															<p>United States</p>
+														</div>
+													</div>
+													<div class="clearfix"></div>
+													<div class="new-hotel-view-more-btn">
+														<a class="" href="http://www.emporium-voyage.com/hotel-zoo-berlin-" tabindex="-1">
+															View Hotel
+														</a>
+													</div>
+												</div>
+												
+												<a class="bootom-view-next-btn" href="http://www.emporium-voyage.com/hotel-zoo-berlin-" tabindex="-1">
+													Visit All Hotels DOI
+												</a>
+											</div>
+											                                        </div></div></div>
+                                                                                                                        
+                                                                                                                        
+                                    </section>
                 
             </div>
             </div>
