@@ -230,6 +230,21 @@ foreach ($propertyDetail['typedata'] as $type) {
                                                     </a>
                                             </div>
                                     </div>
+                                    <div class="new-hotel-image" style="background-image:url(http://www.emporium-voyage.com/uploads/property_imgs_thumbs/xfront_property_4505_Emporium-Voyage-Hotel-Zoo-Berlin00017.jpg.pagespeed.ic.nY-effTxow.jpg)">
+                                            <div class="new-hotels-image-tittle">
+                                                    <h2 class="new-hotel-name">Hotel Zoo Berlin</h2>
+                                                    <div class=" new-hotel-add">
+                                                            <p>New York City</p>
+                                                            <p>United States</p>
+                                                    </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <div class="new-hotel-view-more-btn">
+                                                   <a class="" href="http://www.emporium-voyage.com/hotel-zoo-berlin-" tabindex="0">
+                                                        View Hotel
+                                                    </a>
+                                            </div>
+                                    </div>
                                     <a class="bootom-view-next-btn" href="http://www.emporium-voyage.com/hotel-zoo-berlin-" tabindex="0">
                                         Visit All Hotels DOI
                                     </a>
@@ -259,6 +274,15 @@ foreach ($propertyDetail['typedata'] as $type) {
 }
 ?>
 @endif
+<script>
+$('.SlickVegasWidth').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    dots: false,
+    infinite: true,
+    cssEase: 'linear'
+});
+</script>
 <script type="text/javascript">
     $(".video-popup-btn").on("click", function (event) {
         event.preventDefault();
