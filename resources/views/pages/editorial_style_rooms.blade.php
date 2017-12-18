@@ -7,6 +7,11 @@
 	height: 850px;
     }
     
+    .VegasModelDialog {
+        width: 100%;
+        margin: 30px auto;
+    }
+    
 </style>
 
     <div class="row gallery"></div>
@@ -51,7 +56,7 @@
                               <div class="modal-dialog">
 
                                 <!-- Modal content-->
-                                <div class="modal-content">
+                                <div class="modal-content VegasModelDialog">
                                   <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                                     <h4 class="modal-title">Modal Header</h4>
