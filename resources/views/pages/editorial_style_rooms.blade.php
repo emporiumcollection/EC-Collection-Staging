@@ -27,6 +27,10 @@
         overflow-x: hidden;
         overflow-y: hidden;
         }
+        
+        .vegasModelContent {
+            background: rgba(0, 0, 0, 0.92) none repeat scroll 0 0;
+        }
     
 </style>
 
@@ -179,7 +183,7 @@ foreach ($propertyDetail['typedata'] as $type) {
       <div class="modal-dialog VegasModelDialog">
 
         <!-- Modal content-->
-        <div class="modal-content">
+        <div class="modal-content vegasModelContent">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h4 class="modal-title">Modal Header</h4>
