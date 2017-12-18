@@ -266,13 +266,18 @@ foreach ($propertyDetail['typedata'] as $type) {
 ?>
 @endif
         <script>
-       $('.slider').slick({
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    dots: false,
-    infinite: true,
-    cssEase: 'linear'
-});
+       jQuery(document).ready(function ($) {
+            $(".slider").slick({
+                    dots: false,
+                    infinite: true,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    prevArrow: false,
+                    nextArrow: false,
+                    autoplay: true,
+                    autoplaySpeed: 3000
+            });
+        });
 </script>
 <script type="text/javascript">
     $(".video-popup-btn").on("click", function (event) {
