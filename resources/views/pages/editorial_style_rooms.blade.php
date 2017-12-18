@@ -33,6 +33,14 @@
             opacity: 0.5;
             border-radius: 0px;
         }
+        
+        .vegasModelHeader {
+            border-bottom: none;
+        }
+        
+        .vegasModelFooter {
+            border-top: none;
+        }
     
 </style>
 
@@ -186,14 +194,14 @@ foreach ($propertyDetail['typedata'] as $type) {
 
         <!-- Modal content-->
         <div class="modal-content vegasModelContent">
-          <div class="modal-header">
+          <div class="modal-header vegasModelHeader">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Modal Header</h4>
+            <h4 class="modal-title">... Header</h4>
           </div>
           <div class="modal-body">
-            <p>Some text in the modal.</p>
+            .......text
           </div>
-          <div class="modal-footer">
+          <div class="modal-footer vegasModelFooter">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
         </div>
