@@ -207,7 +207,7 @@ foreach ($propertyDetail['typedata'] as $type) {
                                                     </a>
                                             </div>
                                     </div>
-                                    <div class="new-hotel-image" style="background-image: url('../../../public/images/Almenkerk-SAPL.com2.jpg')">
+                                    <div class="new-hotel-image" style="background-image:url(http://www.emporium-voyage.com/uploads/property_imgs_thumbs/xfront_property_4505_Emporium-Voyage-Hotel-Zoo-Berlin00017.jpg.pagespeed.ic.nY-effTxow.jpg)">
                                             <div class="new-hotels-image-tittle">
                                                     <h2 class="new-hotel-name">Hotel Zoo Berlin</h2>
                                                     <div class=" new-hotel-add">
@@ -230,7 +230,7 @@ foreach ($propertyDetail['typedata'] as $type) {
                     @if(!empty($sidebardetailAds))
                     @foreach($sidebardetailAds as $adsdetail)
                     <div class="slick-cstm-width">
-                            <a href="http://{{$adsdetail->adv_link}}"><img src="../../../public/images/Almenkerk-SAPL.com2.jpg" alt=""/></a>
+                        <a href="http://{{$adsdetail->adv_link}}"><img src="http://www.emporium-voyage.com/uploads/users/advertisement/x1.png.pagespeed.ic.wgBqk8EoPv.jpg"></a>
                     </div>
                     @endforeach
                     @endif					
