@@ -247,18 +247,15 @@ foreach ($propertyDetail['typedata'] as $type) {
 ?>
 @endif
 <script>
-jQuery(document).ready(function ($) {
-        $(".regular").slick({
-                dots: false,
-                infinite: true,
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                prevArrow: false,
-                nextArrow: false,
-                autoplay: true,
-                autoplaySpeed: 3000
-        });
+<script>
+       $('.slider').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    dots: false,
+    infinite: true,
+    cssEase: 'linear'
 });
+</script>
 </script>
 <script type="text/javascript">
     $(".video-popup-btn").on("click", function (event) {
