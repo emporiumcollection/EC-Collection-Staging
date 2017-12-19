@@ -66,6 +66,10 @@
             opacity: 1;
             font-size: 50px;
         }
+        
+        .VegasPopLogo {
+            width: 20%;
+        }
     
 </style>
 
@@ -220,9 +224,8 @@ foreach ($propertyDetail['typedata'] as $type) {
         <!-- Modal content-->
         <div class="modal-content vegasModelContent">
           <div class="modal-header vegasModelHeader">
-            <a href="#" id="frontpage-layer-bj-header-logo"> <img alt="" src="http://southafricaphotolocations.com/sximo/images/SouthAfricaPhotoLocationsLogoSmall.png" class="img-responsive yachts-pop-up-logo"></a>
             <button type="button" class="close VegasCloseButton" data-dismiss="modal">&times;</button>
-            
+            <a href="#" id="frontpage-layer-bj-header-logo"> <img alt="" src="http://southafricaphotolocations.com/sximo/images/SouthAfricaPhotoLocationsLogoSmall.png" class="img-responsive yachts-pop-up-logo VegasPopLogo"></a>
             </div>
           <div class="modal-body">
               <div class="col-md-2 SlickVegasWidth">
