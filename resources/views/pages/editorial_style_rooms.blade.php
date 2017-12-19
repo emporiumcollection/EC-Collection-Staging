@@ -55,7 +55,7 @@
             width: 81.333%;
         }
         
-    .regular {
+    .Vegasregular {
     width: 100%;
     margin: 0 auto;
     float: left;
@@ -219,7 +219,7 @@ foreach ($propertyDetail['typedata'] as $type) {
             </div>
           <div class="modal-body">
               <div class="col-md-2 SlickVegasWidth">
-                <section class="regular slider">
+                <section class="Vegasregular slider">
                     <div class="slick-cstm-width">
                             <div class="side-nav-next-hotel-img">
                                     <div class="side-next-and-perivious-hotel-arrow">
@@ -302,7 +302,7 @@ foreach ($propertyDetail['typedata'] as $type) {
         <link href="../../../public/sximo/assets/css/slick.min.css" rel="stylesheet" type="text/css"/>
         <script src="../../../public/sximo/assets/js/slick.js" type="text/javascript"></script>
 <script>
-    $('.slider').slick({
+    $('.Vegasregular').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
     dots: false,
