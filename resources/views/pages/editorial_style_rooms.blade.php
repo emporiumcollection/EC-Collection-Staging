@@ -80,6 +80,10 @@
         .grid-item {
             height: auto;
         }
+        
+        .vogasThumbnail img {
+            width: 100%;
+        }
     
 </style>
 
@@ -301,33 +305,41 @@ foreach ($propertyDetail['typedata'] as $type) {
                       <li class="detail-tile col-sm-6 col-xs-12 col-md-6 col-lg-4" style="visibility:visible"><div class="detail-tile-inner"><img src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (20).jpg"></div></li>
                       <li class="detail-tile col-sm-6 col-xs-12 col-md-6 col-lg-4" style="visibility:visible"><div class="detail-tile-inner"><img src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (21).jpg"></div></li>
                   </ul>-->
-                <div class="grid">
-                    <div class="col-md-6 grid-item">
-                        <img class="img-responsive" src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (8).jpg">
+                <div class="row masonry-grid">
+                    <div class="col-md-6 col-lg-4 masonry-column">
+                      <div>
+                        <a href="http://placeholder.com" class="thumbnail vogasThumbnail"><img class="img-responsive" src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (12).jpg"></a>
+                      </div>
+                      <div>
+                      <a href="http://placeholder.com" class="thumbnail vogasThumbnail"><img class="img-responsive" src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (13).jpg"></a>
+                      </div>
+                      <div>
+                      <a href="http://placeholder.com" class="thumbnail vogasThumbnail"><img class="img-responsive" src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (14).jpg"></a>
+                      </div>
                     </div>
-                    <div class="col-md-6 grid-item">
-                        <img class="img-responsive" src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (9).jpg">
+                    <div class="col-md-6 col-lg-4 masonry-column">
+                      <div>
+                      <a href="http://placeholder.com" class="thumbnail vogasThumbnail"><img class="img-responsive" src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (11).jpg"></a></a>
+                      </div>
+                      <div>
+                      <a href="http://placeholder.com" class="thumbnail vogasThumbnail"><img class="img-responsive" src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (10).jpg"></a></a>
+                      </div>
+                      <div>
+                      <a href="http://placeholder.com" class="thumbnail vogasThumbnail"><img class="img-responsive" src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (9).jpg"></a></a>
+                      </div>
                     </div>
-                    <div class="col-md-6 grid-item">
-                        <img class="img-responsive" src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (10).jpg">
+                    <div class="col-md-6 col-lg-4 masonry-column">
+                      <div>
+                      <a href="http://placeholder.com" class="thumbnail vogasThumbnail"><img class="img-responsive" src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (8).jpg"></a></a>
+                      </div>
+                      <div>
+                      <a href="http://placeholder.com" class="thumbnail vogasThumbnail"><img class="img-responsive" src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (7).jpg"></a></a>
+                      </div>
+                      <div>
+                      <a href="http://placeholder.com" class="thumbnail vogasThumbnail"><img class="img-responsive" src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (6).jpg"></a></a>
+                      </div>
                     </div>
-                    <div class="col-md-6 grid-item">
-                        <img class="img-responsive" src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (11).jpg">
-                    </div>
-                    <div class="col-md-6 grid-item">
-                        <img class="img-responsive" src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (12).jpg">
-                    </div>
-                    <div class="col-md-6 grid-item">
-                        <img class="img-responsive" src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (13).jpg">
-                    </div>
-                    <div class="col-md-6 grid-item">
-                        <img class="img-responsive" src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (14).jpg">
-                    </div>
-                    <div class="col-md-6 grid-item">
-                        <img class="img-responsive" src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (15).jpg">
-                    </div>
-                    
-                </div>
+                  </div>
                 </div>
             </div><!--
           <div class="modal-footer vegasModelFooter">
