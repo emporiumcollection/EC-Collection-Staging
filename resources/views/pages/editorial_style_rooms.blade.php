@@ -46,7 +46,6 @@
         .SlickVegasWidth {
             
             width: 18.5%;
-            margin-top: 18px;
         }
         
         .vegasGallery1 {
