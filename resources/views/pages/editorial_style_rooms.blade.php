@@ -70,6 +70,11 @@
         .VegasPopLogo {
             width: 20%;
         }
+        
+        .detail-tile-inner {
+	padding: 20px;
+	padding-top: 0px;
+    }
     
 </style>
 
