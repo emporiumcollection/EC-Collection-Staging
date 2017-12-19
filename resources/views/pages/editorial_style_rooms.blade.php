@@ -281,7 +281,7 @@ foreach ($propertyDetail['typedata'] as $type) {
                             </div>
                         </div>
                     </div>
-                  <ul class="clearfix frontpage-detail-tiles" id="frontpage-detail-tiles-detail">
+<!--                  <ul class="clearfix frontpage-detail-tiles" id="frontpage-detail-tiles-detail">
                       <li class="detail-tile col-sm-6 col-xs-12 col-md-6 col-lg-4" style="visibility:visible"><div class="detail-tile-inner"><img src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (8).jpg"></div></li>
                       <li class="detail-tile col-sm-6 col-xs-12 col-md-6 col-lg-4" style="visibility:visible"><div class="detail-tile-inner"><img src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (9).jpg"></div></li>
                       <li class="detail-tile col-sm-6 col-xs-12 col-md-6 col-lg-4" style="visibility:visible"><div class="detail-tile-inner"><img src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (10).jpg"></div></li>
@@ -296,7 +296,34 @@ foreach ($propertyDetail['typedata'] as $type) {
                       <li class="detail-tile col-sm-6 col-xs-12 col-md-6 col-lg-4" style="visibility:visible"><div class="detail-tile-inner"><img src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (19).jpg"></div></li>
                       <li class="detail-tile col-sm-6 col-xs-12 col-md-6 col-lg-4" style="visibility:visible"><div class="detail-tile-inner"><img src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (20).jpg"></div></li>
                       <li class="detail-tile col-sm-6 col-xs-12 col-md-6 col-lg-4" style="visibility:visible"><div class="detail-tile-inner"><img src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (21).jpg"></div></li>
-                  </ul>
+                  </ul>-->
+                <div class="grid">
+                    <div class="grid-item">
+                        <img class="img-responsive" src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (8).jpg">
+                    </div>
+                    <div class="grid-item grid-item--width2 grid-item--height2"></div>
+                    <div class="grid-item grid-item--height3"></div>
+                    <div class="grid-item grid-item--height2"></div>
+                    <div class="grid-item grid-item--width3"></div>
+                    <div class="grid-item"></div>
+                    <div class="grid-item"></div>
+                    <div class="grid-item grid-item--height2"></div>
+                    <div class="grid-item grid-item--width2 grid-item--height3"></div>
+                    <div class="grid-item"></div>
+                    <div class="grid-item grid-item--height2"></div>
+                    <div class="grid-item"></div>
+                    <div class="grid-item grid-item--width2 grid-item--height2"></div>
+                    <div class="grid-item grid-item--width2"></div>
+                    <div class="grid-item"></div>
+                    <div class="grid-item grid-item--height2"></div>
+                    <div class="grid-item"></div>
+                    <div class="grid-item"></div>
+                    <div class="grid-item grid-item--height3"></div>
+                    <div class="grid-item grid-item--height2"></div>
+                    <div class="grid-item"></div>
+                    <div class="grid-item"></div>
+                    <div class="grid-item grid-item--height2"></div>
+                </div>
                 </div>
             </div><!--
           <div class="modal-footer vegasModelFooter">
