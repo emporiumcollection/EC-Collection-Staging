@@ -51,7 +51,7 @@
         .vegasGallery1 {
             min-height: 500px;
             padding: 0px 0px 0px 0px !important;
-            float: none;
+            float: left;
             width: 81.333%;
         }
         
