@@ -306,25 +306,25 @@ foreach ($propertyDetail['typedata'] as $type) {
                         <img class="img-responsive" src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (8).jpg">
                     </div>
                     <div class="col-md-6 grid-item">
-                        <img class="img-responsive" src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (8).jpg">
+                        <img class="img-responsive" src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (9).jpg">
                     </div>
                     <div class="col-md-6 grid-item">
-                        <img class="img-responsive" src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (8).jpg">
+                        <img class="img-responsive" src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (10).jpg">
                     </div>
                     <div class="col-md-6 grid-item">
-                        <img class="img-responsive" src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (8).jpg">
+                        <img class="img-responsive" src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (11).jpg">
                     </div>
                     <div class="col-md-6 grid-item">
-                        <img class="img-responsive" src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (8).jpg">
+                        <img class="img-responsive" src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (12).jpg">
                     </div>
                     <div class="col-md-6 grid-item">
-                        <img class="img-responsive" src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (8).jpg">
+                        <img class="img-responsive" src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (13).jpg">
                     </div>
                     <div class="col-md-6 grid-item">
-                        <img class="img-responsive" src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (8).jpg">
+                        <img class="img-responsive" src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (14).jpg">
                     </div>
                     <div class="col-md-6 grid-item">
-                        <img class="img-responsive" src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (8).jpg">
+                        <img class="img-responsive" src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (15).jpg">
                     </div>
                     
                 </div>
