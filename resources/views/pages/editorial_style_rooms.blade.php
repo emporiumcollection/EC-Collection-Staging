@@ -306,6 +306,8 @@ foreach ($propertyDetail['typedata'] as $type) {
     slidesToShow: 1,
     slidesToScroll: 1,
     dots: false,
+    prevArrow: false,
+    nextArrow: false,
     infinite: true,
     autoplay: true,
     cssEase: 'linear'
