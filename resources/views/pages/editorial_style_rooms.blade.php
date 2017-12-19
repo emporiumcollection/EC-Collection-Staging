@@ -248,13 +248,9 @@ foreach ($propertyDetail['typedata'] as $type) {
                                     </a>
                             </div>
                     </div>
-                    @if(!empty($sidebardetailAds))
-                    @foreach($sidebardetailAds as $adsdetail)
                     <div class="slick-cstm-width slick-slide slick-current slick-active" data-slick-index="1" aria-hidden="false" style="width: 206px;" tabindex="-1" role="option">
                         <a href="http://http://www.bessd.com" tabindex="0"><img src="http://www.emporium-voyage.com/uploads/users/advertisement/x1.png.pagespeed.ic.wgBqk8EoPv.jpg" data-pagespeed-url-hash="3725838879" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"></a>
-                    </div>
-                    @endforeach
-                    @endif					
+                    </div>					
                 </section>
 
             </div>
@@ -300,11 +296,12 @@ foreach ($propertyDetail['typedata'] as $type) {
 <script src="../../../public/sximo/assets/js/slick.min.js" type="text/javascript"></script>
 
         <script>
-       $('.regular').slick({
+       $('.slider').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
     dots: false,
     infinite: true,
+    autoplay: true,
     cssEase: 'linear'
 });
 </script>
