@@ -69,6 +69,8 @@
         
         .VegasPopLogo {
             width: 20%;
+            margin: 0 auto;
+            padding-top: 100px;
         }
         
         .VegasDetailInner {
