@@ -235,6 +235,9 @@ foreach ($propertyDetail['typedata'] as $type) {
                                                     </a>
                                             </div>
                                     </div>
+                                    <div>
+                                        <img src="http://www.emporium-voyage.com/uploads/users/advertisement/x1.png.pagespeed.ic.wgBqk8EoPv.jpg">
+                                     </div>
                                     <a class="bootom-view-next-btn" href="http://www.emporium-voyage.com/hotel-zoo-berlin-" tabindex="0">
                                         Visit All Hotels DOI
                                     </a>
@@ -249,15 +252,14 @@ foreach ($propertyDetail['typedata'] as $type) {
                     @endif					
                 </section>
 
-             </div>
-              <div id="frontpage-layer-bj-content vegasGallery1">
-        <div class="frontpage-detail-content-top">
-            <div class="frontpage-detail-content-top-link">
-                <div class="frontpage-detail-content-top-link">
-                    
-                </div>
             </div>
-        </div>
+                <div id="frontpage-layer-bj-content vegasGallery1">
+                    <div class="frontpage-detail-content-top">
+                        <div class="frontpage-detail-content-top-link">
+                            <div class="frontpage-detail-content-top-link"> 
+                            </div>
+                        </div>
+                    </div>
                   <ul class="clearfix frontpage-detail-tiles" id="frontpage-detail-tiles-detail">
                       <li class="detail-tile col-sm-6 col-xs-12 col-md-6 col-lg-4" style="visibility:visible"><div class="detail-tile-inner"><img src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (8).jpg"></div></li>
                       <li class="detail-tile col-sm-6 col-xs-12 col-md-6 col-lg-4" style="visibility:visible"><div class="detail-tile-inner"><img src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (9).jpg"></div></li>
@@ -274,8 +276,7 @@ foreach ($propertyDetail['typedata'] as $type) {
                       <li class="detail-tile col-sm-6 col-xs-12 col-md-6 col-lg-4" style="visibility:visible"><div class="detail-tile-inner"><img src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (20).jpg"></div></li>
                       <li class="detail-tile col-sm-6 col-xs-12 col-md-6 col-lg-4" style="visibility:visible"><div class="detail-tile-inner"><img src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (21).jpg"></div></li>
                   </ul>
-		
-    </div>
+                </div>
             </div><!--
           <div class="modal-footer vegasModelFooter">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
