@@ -255,7 +255,7 @@ foreach ($propertyDetail['typedata'] as $type) {
                 </section>
 
             </div>
-                <div id="frontpage-layer-bj-content vegasGallery1">
+              <div id="frontpage-layer-bj-content" class="col-md-10 vegasGallery1">
                     <div class="frontpage-detail-content-top">
                         <div class="frontpage-detail-content-top-link">
                             <div class="frontpage-detail-content-top-link"> 
