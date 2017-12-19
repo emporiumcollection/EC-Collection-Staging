@@ -86,7 +86,7 @@
         
         .vogasThumbnail {
             padding: 0px;
-            background-color: none;
+            background: none;
             border: none;
         }
     
