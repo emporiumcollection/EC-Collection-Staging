@@ -55,11 +55,17 @@
             width: 81.333%;
         }
         
-    .Vegasregular {
-    width: 100%;
-    margin: 0 auto;
-    float: left;
-    }
+        .Vegasregular {
+            width: 100%;
+            margin: 0 auto;
+            float: left;
+        }
+        
+        .VegasCloseButton {
+            color: white;
+            opacity: 1;
+            font-size: 50px;
+        }
     
 </style>
 
@@ -214,7 +220,8 @@ foreach ($propertyDetail['typedata'] as $type) {
         <!-- Modal content-->
         <div class="modal-content vegasModelContent">
           <div class="modal-header vegasModelHeader">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <a href="#" id="frontpage-layer-bj-header-logo"> <img alt="" src="http://southafricaphotolocations.com/sximo/images/SouthAfricaPhotoLocationsLogoSmall.png" class="img-responsive yachts-pop-up-logo"></a>
+            <button type="button" class="close VegasCloseButton" data-dismiss="modal">&times;</button>
             
             </div>
           <div class="modal-body">
