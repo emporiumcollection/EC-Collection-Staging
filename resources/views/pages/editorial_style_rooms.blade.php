@@ -84,6 +84,12 @@
         .vogasThumbnail img {
             width: 100%;
         }
+        
+        .vogasThumbnail {
+            padding: 0px;
+            background-color: none;
+            border: none;
+        }
     
 </style>
 
