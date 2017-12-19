@@ -73,9 +73,13 @@
         }
         
         .VegasDetailInner {
-	padding: 20px;
-	padding-top: 0px;
-    }
+            padding: 20px;
+            padding-top: 0px;
+        }
+        
+        .grid-item {
+            height: auto;
+        }
     
 </style>
 
@@ -298,31 +302,31 @@ foreach ($propertyDetail['typedata'] as $type) {
                       <li class="detail-tile col-sm-6 col-xs-12 col-md-6 col-lg-4" style="visibility:visible"><div class="detail-tile-inner"><img src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (21).jpg"></div></li>
                   </ul>-->
                 <div class="grid">
-                    <div class="grid-item">
+                    <div class="col-md-6 grid-item">
                         <img class="img-responsive" src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (8).jpg">
                     </div>
-                    <div class="grid-item grid-item--width2 grid-item--height2"></div>
-                    <div class="grid-item grid-item--height3"></div>
-                    <div class="grid-item grid-item--height2"></div>
-                    <div class="grid-item grid-item--width3"></div>
-                    <div class="grid-item"></div>
-                    <div class="grid-item"></div>
-                    <div class="grid-item grid-item--height2"></div>
-                    <div class="grid-item grid-item--width2 grid-item--height3"></div>
-                    <div class="grid-item"></div>
-                    <div class="grid-item grid-item--height2"></div>
-                    <div class="grid-item"></div>
-                    <div class="grid-item grid-item--width2 grid-item--height2"></div>
-                    <div class="grid-item grid-item--width2"></div>
-                    <div class="grid-item"></div>
-                    <div class="grid-item grid-item--height2"></div>
-                    <div class="grid-item"></div>
-                    <div class="grid-item"></div>
-                    <div class="grid-item grid-item--height3"></div>
-                    <div class="grid-item grid-item--height2"></div>
-                    <div class="grid-item"></div>
-                    <div class="grid-item"></div>
-                    <div class="grid-item grid-item--height2"></div>
+                    <div class="col-md-6 grid-item">
+                        <img class="img-responsive" src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (8).jpg">
+                    </div>
+                    <div class="col-md-6 grid-item">
+                        <img class="img-responsive" src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (8).jpg">
+                    </div>
+                    <div class="col-md-6 grid-item">
+                        <img class="img-responsive" src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (8).jpg">
+                    </div>
+                    <div class="col-md-6 grid-item">
+                        <img class="img-responsive" src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (8).jpg">
+                    </div>
+                    <div class="col-md-6 grid-item">
+                        <img class="img-responsive" src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (8).jpg">
+                    </div>
+                    <div class="col-md-6 grid-item">
+                        <img class="img-responsive" src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (8).jpg">
+                    </div>
+                    <div class="col-md-6 grid-item">
+                        <img class="img-responsive" src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (8).jpg">
+                    </div>
+                    
                 </div>
                 </div>
             </div><!--
@@ -344,6 +348,8 @@ foreach ($propertyDetail['typedata'] as $type) {
 <link href="../../../public/sximo/assets/css/slick-theme.min.css" rel="stylesheet" type="text/css"/>
         <link href="../../../public/sximo/assets/css/slick.min.css" rel="stylesheet" type="text/css"/>
         <script src="../../../public/sximo/assets/js/slick.js" type="text/javascript"></script>
+        
+        <!-- slick crousel -->
 <script>
     $('.Vegasregular').slick({
     slidesToShow: 1,
@@ -356,6 +362,18 @@ foreach ($propertyDetail['typedata'] as $type) {
     cssEase: 'linear'
 });
 </script>
+
+<!-- ,asonary layout -->
+<script>
+// external js: masonry.pkgd.js
+
+$('.grid').masonry({
+  itemSelector: '.grid-item',
+  columnWidth: 160
+});
+</script>
+
+
 <script type="text/javascript">
     $(".video-popup-btn").on("click", function (event) {
         event.preventDefault();
