@@ -71,6 +71,8 @@
             width: 20%;
             margin: 0 auto;
             padding-top: 100px;
+            text-align: center;
+            display: block;
         }
         
         .VegasDetailInner {
