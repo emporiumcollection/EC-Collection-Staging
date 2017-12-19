@@ -291,6 +291,8 @@ foreach ($propertyDetail['typedata'] as $type) {
 }
 ?>
 @endif
+    <link href="../../../public/sximo/assets/css/slick.css" rel="stylesheet" type="text/css"/>
+    <script src="../../../public/sximo/assets/js/slick.js" type="text/javascript"></script>
 <script>
 jQuery(document).ready(function ($) {
         $(".regular").slick({
