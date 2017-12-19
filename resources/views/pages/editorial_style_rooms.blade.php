@@ -292,11 +292,13 @@ foreach ($propertyDetail['typedata'] as $type) {
 }
 ?>
 @endif
-<link href="../../../public/sximo/assets/css/slick1.css" rel="stylesheet" type="text/css"/>
-<script src="../../../public/sximo/assets/js/slick.min.js" type="text/javascript"></script>
-
-        <script>
-       $('.slider').slick({
+<link href="../../../public/sximo/assets/css/slick.css" rel="stylesheet" type="text/css"/>
+<link href="../../../public/sximo/assets/css/slick-theme.css" rel="stylesheet" type="text/css"/>
+<link href="../../../public/sximo/assets/css/slick-theme.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../../../public/sximo/assets/css/slick.min.css" rel="stylesheet" type="text/css"/>
+        <script src="../../../public/sximo/assets/js/slick.js" type="text/javascript"></script>
+<script>
+    $('.slider').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
     dots: false,
