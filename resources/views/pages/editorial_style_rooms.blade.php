@@ -244,9 +244,9 @@ foreach ($propertyDetail['typedata'] as $type) {
                                                     </a>
                                             </div>
                                     </div>
-                                    <div>
+<!--                                    <div>
                                         <img src="http://www.emporium-voyage.com/uploads/users/advertisement/x1.png.pagespeed.ic.wgBqk8EoPv.jpg">
-                                     </div>
+                                     </div>-->
                                     <a class="bootom-view-next-btn" href="http://www.emporium-voyage.com/hotel-zoo-berlin-" tabindex="0">
                                         Visit All Hotels DOI
                                     </a>
