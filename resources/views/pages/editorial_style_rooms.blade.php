@@ -115,7 +115,7 @@
                 @for($rimg1=0; $rimg1 < $divd2; $rimg1++)
 
                 <div style="height: 370.688px; width: 100%;" class="foto1 clio1" rel="clio" data-image="{{\ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name,100,1000,null)}}">
-                    <a data-popup-id="detail-page-rooms-popup-{{$type->id}}"  class="video-popup-btn" href="javascript:void(0);">
+                    <a data-popup-id="detail-page-rooms-popup-{{$type->id}}"  class="roomimagdetail_view" href="javascript:void(0);">
                         <img style="height: 370.688px; width: 659px;" src="{{\ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name,100,1000,null)}}" rel="1" alt="{{$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name}}">
                     </a>
                 </div>
@@ -123,7 +123,7 @@
 
                 @for($rimg2=$rimg1; $rimg2 < $totimg; $rimg2++)
                 <div style="height: 370.688px;" class="foto2 clio2 " rel="clio" data-image="{{\ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg2]->file_name,100,1000,null)}}">
-                    <a data-popup-id="detail-page-rooms-popup-{{$type->id}}"  class="video-popup-btn" href="javascript:void(0);">
+                    <a data-popup-id="detail-page-rooms-popup-{{$type->id}}"  class="roomimagdetail_view" href="javascript:void(0);">
                         <img style="height: 370.688px;" src="{{\ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg2]->file_name,100,1000,null)}}" rel="2" alt="{{$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg2]->file_name}}">
                     </a>
                 </div>
@@ -172,14 +172,14 @@
                 @for($rimg1=0; $rimg1 < $divd2; $rimg1++)
 
                 <div style="height: 370.688px;" class="foto2 clio3" rel="clio" data-image="{{\ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name,100,1000,null)}}">
-                    <a data-popup-id="detail-page-rooms-popup-{{$type->id}}"  class="video-popup-btn" href="javascript:void(0);">
+                    <a data-popup-id="detail-page-rooms-popup-{{$type->id}}"  class="roomimagdetail_view" href="javascript:void(0);">
                         <img style="height: 370.688px; width: 659px;" src="{{\ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name,100,1000,null)}}" rel="3" alt="{{$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name}}">
                     </a>
                 </div>
                 @endfor
                 @for($rimg2=$rimg1; $rimg2 < $totimg; $rimg2++)
                 <div style="height: 370.688px; width: 100%;" class="foto1 clio4" rel="clio" data-image="{{\ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg2]->file_name,100,1000,null)}}">
-                    <a data-popup-id="detail-page-rooms-popup-{{$type->id}}"  class="video-popup-btn" href="javascript:void(0);">
+                    <a data-popup-id="detail-page-rooms-popup-{{$type->id}}"  class="roomimagdetail_view" href="javascript:void(0);">
                         <img style="height: 370.688px;" src="{{\ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg2]->file_name,100,1000,null)}}" rel="4" alt="{{$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name}}">
                     </a>
                 </div>
@@ -309,6 +309,38 @@
 
 
 <script type="text/javascript">
+
+	$(document).on('click', '.roomimagdetail_view', function () {
+		$.ajax({
+			url: "{{ URL::to('getpropertyroomimages')}}" + '/' + $(this).attr('rel'),
+			type: "get",
+			success: function (data) {
+				var imagesPro = '';
+				var im=0;
+				var di=1;
+				var lngimg = Math.round((data.image.length)/3);
+				imagesPro += '<div class="col-md-6 col-lg-4 masonry-column">';
+				$(data.image).each(function (i, val) {
+					var clsact = '';
+					imagesPro += '  <div>';
+					imagesPro += '	<a href="#" class="thumbnail vogasThumbnail"><img class="img-responsive" src="' + val.imgsrc_cache + '"></a>';
+					imagesPro += '  </div>';
+					if(di==lngimg)
+					{
+						di=0;
+						imagesPro += ' </div>';
+						imagesPro += '<div class="col-md-6 col-lg-4 masonry-column">';
+					}
+					im++;
+					di++;
+				});
+				imagesPro += ' </div>';
+				$('#myModal .vegasgalleryimg').html(imagesPro);
+				$('#myModal').modal('show');
+			}
+		});
+		return false;
+	});
 	//$(document).on('click', '.video-popup-btn', function () {
 		
     $(".video-popup-btn").on("click", function (event) {
@@ -317,6 +349,7 @@
         $("#" + popup_id).fadeIn("slow");
         $("body").addClass("fixed");
     });
+	
     $(".popup-close-btn").click(function (event) {
         event.preventDefault();
         $(this).parent().parent().fadeOut("slow");

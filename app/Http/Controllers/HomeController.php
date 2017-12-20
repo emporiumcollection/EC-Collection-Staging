@@ -5799,5 +5799,25 @@ class HomeController extends Controller {
             return json_encode($rep);
         }
     }
+	
+	public function getPropertyRoomimageGalleryView(Request $request) {
+        $propertiesArr = array();
+        
+		if ($request->id!='') {
+            $fileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.category_id', $request->id)->where('tb_properties_images.type', 'Rooms Images')->orderBy('tb_container_files.file_sort_num', 'asc')->get();
+            //print_r($fileArr);
+            $pr = 0;
+            foreach ($fileArr as $file) {
+                $propertiesArr['image'][$pr] = $file;
+                $propertiesArr['image'][$pr]->imgsrc = (new ContainerController)->getThumbpath($file->folder_id);
+                $propertiesArr['image'][$pr]->imgsrc_cache = ImageCache::make(public_path(str_replace(url().'/', '', (new ContainerController)->getThumbpath($file->folder_id).$file->file_name)),100,1000,null);
+                $pr++;
+            }
+        }
+
+
+        return response()->json($propertiesArr);
+        exit;
+    }
 
 }
