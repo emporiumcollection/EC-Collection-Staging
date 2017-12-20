@@ -352,9 +352,10 @@ $('.grid').masonry({
 
 
 <script type="text/javascript">
-	$(document).on('click', '.video-popup-btn', function () {
+	//$(document).on('click', '.video-popup-btn', function () {
 		
-    //$(".video-popup-btn").on("click", function (event) {
+    $(".video-popup-btn").on("click", function (event) {
+		alert();
         event.preventDefault();
         var popup_id = $(this).data("popup-id");
 		alert(popup_id);
