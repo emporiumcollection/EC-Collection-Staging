@@ -213,6 +213,7 @@
                         }*/
             #cityfilters .slick-slide {
                 height: auto;
+                    background: #1e2023;
             }
             .overlay-text {
                 background: rgba(0, 0, 0, 0.68) none repeat scroll 0 0;
