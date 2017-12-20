@@ -215,6 +215,7 @@
                 height: auto;
                     background: #1e2023;
             }
+            .row.go-back-button-container{margin-left: 0; margin-right: 0;}
             .overlay-text {
                 background: rgba(0, 0, 0, 0.68) none repeat scroll 0 0;
                 bottom: 0;
