@@ -93,6 +93,14 @@
             background: none;
             border: none;
         }
+		
+		.newbkbtn
+		{
+			float: left;
+			margin-left: 10px;
+			padding: 8px 10px;
+			font-size: 15px;
+		}
     
 </style>
 
@@ -131,7 +139,7 @@
                     </p>
                     <div class="hotel-detail-slider-price-and-show-more">
                         <a href="#" rel="{{$type->id}}" class="book-button open-show_more-page hotel-btn">More</a>
-						<a href="#" rel="{{$type->id}}" class="book-button open-show_more-page hotel-btn" onclick="choose_room_type('{{$type->id}}');">Book</a>
+						<a href="#" rel="{{$type->id}}" class="book-button hotel-btn newbkbtn" onclick="choose_room_type('{{$type->id}}');">Book</a>
                         <!-- AIC Harman popup-->
                         <!-- Trigger the modal with a button 
                         <a href="#" class="vogasRoomButton" data-toggle="modal" data-target="#myModal">harman test</a>-->
@@ -344,7 +352,8 @@ $('.grid').masonry({
 
 
 <script type="text/javascript">
-    $(".video-popup-btn").on("click", function (event) {
+	$(document).on('click', '.video-popup-btn', function () {
+    //$(".video-popup-btn").on("click", function (event) {
         event.preventDefault();
         var popup_id = $(this).data("popup-id");
         $("#" + popup_id).fadeIn("slow");
