@@ -1291,15 +1291,17 @@ class HomeController extends Controller {
         if ($keyword!='') {
             $CityArrdestts = array();  
             $categoryObj = \DB::table('tb_categories')->where('category_name', $keyword)->first();
-            $citydest = \DB::table('tb_categories')->where('parent_category_id', $categoryObj->id)->get();
-            if (!empty($citydest)) {
-                $d = 0;
-                foreach ($citydest as $cdest) {
-                    $cityprops = DB::select(DB::raw("SELECT id FROM tb_properties WHERE tb_properties.property_type = 'Hotel' AND FIND_IN_SET('$cdest->id',property_category_id) AND property_status = '1'"));
-                    if (!empty($cityprops)) {
-                        $CityArrdestts[$d] = $cdest;
-                        $CityArrdestts[$d]->totalproperty = count($cityprops);
-                        $d++;
+            if(!empty($categoryObj)){
+                $citydest = \DB::table('tb_categories')->where('parent_category_id', $categoryObj->id)->get();
+                if (!empty($citydest)) {
+                    $d = 0;
+                    foreach ($citydest as $cdest) {
+                        $cityprops = DB::select(DB::raw("SELECT id FROM tb_properties WHERE tb_properties.property_type = 'Hotel' AND FIND_IN_SET('$cdest->id',property_category_id) AND property_status = '1'"));
+                        if (!empty($cityprops)) {
+                            $CityArrdestts[$d] = $cdest;
+                            $CityArrdestts[$d]->totalproperty = count($cityprops);
+                            $d++;
+                        }
                     }
                 }
             }
