@@ -1349,7 +1349,6 @@
                     success: function (data) {
                         var imagesPro = '';
 						var im=0;
-						var totlimg = data.image.count();
 						imagesPro += '<div class="col-md-6 col-lg-4 masonry-column">';
 						$(data.image).each(function (i, val) {
 							var clsact = '';
@@ -1368,6 +1367,7 @@
                         });
 						imagesPro += ' </div>';
                         $('#myModal .vegasgalleryimg').html(imagesPro);
+						$('#myModal').modal('show');
 						//$('#detail-page-gallery-popup .images-count').html('1/'+im);
 						
 						$(document).on('click', '.gallery-res-previous-btn', function ( event ) {
