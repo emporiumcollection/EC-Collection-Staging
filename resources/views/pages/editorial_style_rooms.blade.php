@@ -115,7 +115,7 @@
                 @for($rimg1=0; $rimg1 < $divd2; $rimg1++)
 
                 <div style="height: 370.688px; width: 100%;" class="foto1 clio1" rel="clio" data-image="{{\ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name,100,1000,null)}}">
-                    <a data-popup-id="detail-page-rooms-popup-{{$type->id}}"  class="video-popup-btn" href="javascript:void(0);">
+                    <a data-popup-id="detail-page-rooms-popup-{{$type->id}}"  class="roomimagdetail_view" href="javascript:void(0);">
                         <img style="height: 370.688px; width: 659px;" src="{{\ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name,100,1000,null)}}" rel="1" alt="{{$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name}}">
                     </a>
                 </div>
@@ -123,7 +123,7 @@
 
                 @for($rimg2=$rimg1; $rimg2 < $totimg; $rimg2++)
                 <div style="height: 370.688px;" class="foto2 clio2 " rel="clio" data-image="{{\ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg2]->file_name,100,1000,null)}}">
-                    <a data-popup-id="detail-page-rooms-popup-{{$type->id}}"  class="video-popup-btn" href="javascript:void(0);">
+                    <a data-popup-id="detail-page-rooms-popup-{{$type->id}}"  class="roomimagdetail_view" href="javascript:void(0);">
                         <img style="height: 370.688px;" src="{{\ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg2]->file_name,100,1000,null)}}" rel="2" alt="{{$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg2]->file_name}}">
                     </a>
                 </div>
@@ -172,14 +172,14 @@
                 @for($rimg1=0; $rimg1 < $divd2; $rimg1++)
 
                 <div style="height: 370.688px;" class="foto2 clio3" rel="clio" data-image="{{\ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name,100,1000,null)}}">
-                    <a data-popup-id="detail-page-rooms-popup-{{$type->id}}"  class="video-popup-btn" href="javascript:void(0);">
+                    <a data-popup-id="detail-page-rooms-popup-{{$type->id}}"  class="roomimagdetail_view" href="javascript:void(0);">
                         <img style="height: 370.688px; width: 659px;" src="{{\ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name,100,1000,null)}}" rel="3" alt="{{$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name}}">
                     </a>
                 </div>
                 @endfor
                 @for($rimg2=$rimg1; $rimg2 < $totimg; $rimg2++)
                 <div style="height: 370.688px; width: 100%;" class="foto1 clio4" rel="clio" data-image="{{\ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg2]->file_name,100,1000,null)}}">
-                    <a data-popup-id="detail-page-rooms-popup-{{$type->id}}"  class="video-popup-btn" href="javascript:void(0);">
+                    <a data-popup-id="detail-page-rooms-popup-{{$type->id}}"  class="roomimagdetail_view" href="javascript:void(0);">
                         <img style="height: 370.688px;" src="{{\ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg2]->file_name,100,1000,null)}}" rel="4" alt="{{$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name}}">
                     </a>
                 </div>
@@ -210,44 +210,6 @@
     </div>
 
 @endif
-@if (array_key_exists('typedata', $propertyDetail))
-<?php
-foreach ($propertyDetail['typedata'] as $type) {
-    ?>
-    <div id="detail-page-rooms-popup-{{$type->id}}" class="popup detail-page-room-pop-up-align">
-        <div class="popup-inner">
-            <a href="#" class="popup-close-btn">CLOSE</a>
-            <div class="popup-content res-gallery-sec-padding">
-                <div class="image-slider-container">
-
-                    <div class="clearfix"></div>
-                    <ul class="image-slider post-page-sideshow">
-                        <?php
-                        $index = 0;
-                        if (!empty($propertyDetail['roomimgs'][$type->id]['imgs'])) {
-                            foreach ($propertyDetail['roomimgs'][$type->id]['imgs'] as $image) {
-				$imagePath = \ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'] . $image->file_name,100,800,null);
-                                echo '<li class="', ($index == 0) ? 'active' : '', ' "><img class="img-responsive" src="' . $imagePath . '" alt=""/></li>';
-                                $index++;
-                            }
-                        }
-                        ?>
-
-                    </ul>
-                    <div class="images-count">1 / {{$index}}</div>
-                    <div class="image-slider-btns">
-                        <a class="image-slider-previous-btn room-res-previous-btn" href="#">
-                            <img src="{{asset('sximo/assets/images/left-round-arrow.png')}}" alt=""/>
-                        </a>
-                        <a class="image-slider-next-btn room-res-next-btn" href="#">
-                            <img src="{{asset('sximo/assets/images/right-round-arrow.png')}}" alt=""/>
-                        </a>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-    </div>
 
 <!--AIC harman: popup gallery Modal -->
     <div class="modal fade vegasModelFade" id="myModal" role="dialog">
@@ -320,11 +282,6 @@ foreach ($propertyDetail['typedata'] as $type) {
       </div>
     </div>
 <!-- model popup end -->
-
-    <?php
-}
-?>
-@endif
         
         <!-- slick crousel -->
 <script>
@@ -352,6 +309,38 @@ foreach ($propertyDetail['typedata'] as $type) {
 
 
 <script type="text/javascript">
+
+	$(document).on('click', '.roomimagdetail_view', function () {
+		$.ajax({
+			url: "{{ URL::to('getpropertyroomimages')}}" + '/' + $(this).attr('rel'),
+			type: "get",
+			success: function (data) {
+				var imagesPro = '';
+				var im=0;
+				var di=1;
+				var lngimg = Math.round((data.image.length)/3);
+				imagesPro += '<div class="col-md-6 col-lg-4 masonry-column">';
+				$(data.image).each(function (i, val) {
+					var clsact = '';
+					imagesPro += '  <div>';
+					imagesPro += '	<a href="#" class="thumbnail vogasThumbnail"><img class="img-responsive" src="' + val.imgsrc_cache + '"></a>';
+					imagesPro += '  </div>';
+					if(di==lngimg)
+					{
+						di=0;
+						imagesPro += ' </div>';
+						imagesPro += '<div class="col-md-6 col-lg-4 masonry-column">';
+					}
+					im++;
+					di++;
+				});
+				imagesPro += ' </div>';
+				$('#myModal .vegasgalleryimg').html(imagesPro);
+				$('#myModal').modal('show');
+			}
+		});
+		return false;
+	});
 	//$(document).on('click', '.video-popup-btn', function () {
 		
     $(".video-popup-btn").on("click", function (event) {
@@ -360,6 +349,7 @@ foreach ($propertyDetail['typedata'] as $type) {
         $("#" + popup_id).fadeIn("slow");
         $("body").addClass("fixed");
     });
+	
     $(".popup-close-btn").click(function (event) {
         event.preventDefault();
         $(this).parent().parent().fadeOut("slow");
