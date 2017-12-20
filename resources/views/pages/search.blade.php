@@ -980,9 +980,9 @@ url: "{{ URL::to('filter_search_destionation')}}",
                 chtml += '<li class="active select-all">';
                 chtml += '<a href="javascript:void(0)" onclick="filter_destination(\'' + dest_area[0] + '\',\'city\');">';
                 chtml += '<div class="filter-bg">';
-                chtml += '<div class="right-text">(' + ttp + ')</div>';
+                chtml += '<div class="right-text"></div>';
                 chtml += '<div class="clearfix"></div>';
-                chtml += '<div class="top-filter-name">All Properties</div>';
+                chtml += '<div class="top-filter-name">All Properties(' + ttp + ')</div>';
                 chtml += '</div>';
                 chtml += '</a>';
                 chtml += '<div style="display: none;" class="city-filter-node-overlay">';
@@ -994,10 +994,11 @@ url: "{{ URL::to('filter_search_destionation')}}",
                     var cimg = "{{URL::to('uploads/category_imgs/')}}/" + cobj.category_image;
                     chtml += '<li>';
                     chtml += '<a href="javascript:void(0)" onclick="filter_destination(\'' + cobj.id + '\',\'city\');">';
-                    chtml += '<div class="filter-bg" style="background-image: url(\'' + cimg + '\');">';
-                    chtml += '<div class="right-text">(' + cobj.totalproperty + ')</div>';
+                    //chtml += '<div class="filter-bg" stysle="background-image: url(\'' + cimg + '\');">';
+                    chtml += '<div class="filter-bg" >';
+                    chtml += '<div class="right-text"></div>';
                     chtml += '<div class="clearfix"></div>';
-                    chtml += '<div class="top-filter-name">' + cobj.category_name + '</div>';
+                    chtml += '<div class="top-filter-name">' + cobj.category_name + '(' + cobj.totalproperty + ')</div>';
                     chtml += '</div>';
                     chtml += '</a>';
                     chtml += '<div style="display: none;" class="city-filter-node-overlay">';
