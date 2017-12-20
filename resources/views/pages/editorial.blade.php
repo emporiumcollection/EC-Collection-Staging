@@ -650,7 +650,7 @@
 													@if($restaurant_gallery>0)
 														<div class="restaurant-view-gallery-align">
 															<span class="view-gallery-border-left"></span>
-															<a href="javascript:void(0);" data-popup-id="detail-page-gallery-popup"  class="detail_view gallerysty bar-view-gallery video-popup-btn" rel="{{$propertyDetail['data']->id}}" rel2="Restrurants Gallery Images">View Gallery</a>
+															<a href="javascript:void(0);"   class="detail_view gallerysty bar-view-gallery video-popup-btn" rel="{{$propertyDetail['data']->id}}" rel2="Restrurants Gallery Images">View Gallery</a>
 														</div>
 													@endif
                                                 </div>
@@ -703,7 +703,7 @@
 													@if($restaurant_gallery>0)
 														<div class="restaurant-view-gallery-align">
 															<span class="view-gallery-border-left"></span>
-															<a href="javascript:void(0);" data-popup-id="detail-page-gallery-popup"  class="detail_view gallerysty bar-view-gallery video-popup-btn" rel="{{$propertyDetail['data']->id}}" rel2="Restrurants Gallery Images">View Gallery</a>
+															<a href="javascript:void(0);"   class="detail_view gallerysty bar-view-gallery video-popup-btn" rel="{{$propertyDetail['data']->id}}" rel2="Restrurants Gallery Images">View Gallery</a>
 														</div>
 													@endif
                                                 </div>
@@ -753,7 +753,7 @@
 																@if($bar_gallery>0)
 																	<div class="view-gallery-pannel-align">
 																		<span class="view-gallery-border-left"></span>
-																		<a href="javascript:void(0);" data-popup-id="detail-page-gallery-popup"  class="detail_view gallerysty bar-view-gallery video-popup-btn" rel="{{$propertyDetail['data']->id}}" rel2="Bar Gallery Images">View Gallery</a>
+																		<a href="javascript:void(0);"   class="detail_view gallerysty bar-view-gallery video-popup-btn" rel="{{$propertyDetail['data']->id}}" rel2="Bar Gallery Images">View Gallery</a>
 																	</div>
 																@endif
                                                             </div>
@@ -860,7 +860,7 @@
 															@if($spa_gallery>0)
 																<div class="spa-sec-view-gallery">
 																	<span class="view-gallery-border-left"></span>
-																	<a href="javascript:void(0);" data-popup-id="detail-page-gallery-popup"  class="detail_view gallerysty bar-view-gallery video-popup-btn" rel="{{$propertyDetail['data']->id}}" rel2="Spa Gallery Images">View Gallery</a>
+																	<a href="javascript:void(0);"   class="detail_view gallerysty bar-view-gallery video-popup-btn" rel="{{$propertyDetail['data']->id}}" rel2="Spa Gallery Images">View Gallery</a>
 																</div>
 															@endif
                                                             <div class="clearfix"></div>
@@ -1349,19 +1349,32 @@
                     success: function (data) {
                         var imagesPro = '';
 						var im=0;
+						var di=1;
+						var lngimg = Math.round((data.image.length)/3);
+						imagesPro += '<div class="col-md-6 col-lg-4 masonry-column">';
 						$(data.image).each(function (i, val) {
 							var clsact = '';
-							if(im==0)
+							
+							imagesPro += '  <div>';
+							imagesPro += '	<a href="#" class="thumbnail vogasThumbnail"><img class="img-responsive" src="' + val.imgsrc_cache + '"></a>';
+							imagesPro += '  </div>';
+							if(di==lngimg)
 							{
-								clsact = 'active';
+								di=0;
+								imagesPro += ' </div>';
+								imagesPro += '<div class="col-md-6 col-lg-4 masonry-column">';
 							}
-							imagesPro += '<li class="'+clsact+'"><img class="img-responsive" src="' + val.imgsrc_cache + '" alt=""/></li>';
+							
+							//imagesPro += '<li class="'+clsact+'"><img class="img-responsive" src="' + val.imgsrc_cache + '" alt=""/></li>';
 							im++;
+							di++;
                         });
-                        $('#detail-page-gallery-popup .galleryimg').html(imagesPro);
-						$('#detail-page-gallery-popup .images-count').html('1/'+im);
+						imagesPro += ' </div>';
+                        $('#myModal .vegasgalleryimg').html(imagesPro);
+						$('#myModal').modal('show');
+						//$('#detail-page-gallery-popup .images-count').html('1/'+im);
 						
-						$(document).on('click', '.gallery-res-previous-btn', function ( event ) {
+						/*$(document).on('click', '.gallery-res-previous-btn', function ( event ) {
 							event.preventDefault();
 					
 							var index = $(this).parent().parent().find(".image-slider li.active").index();
@@ -1395,7 +1408,7 @@
 							
 							$(this).parent().parent().find(".images-count").html( (+index + 1) + " / " + $(this).parent().parent().find(".image-slider li").length);
 							
-						});
+						});*/
                     }
                 });
                 return false;
