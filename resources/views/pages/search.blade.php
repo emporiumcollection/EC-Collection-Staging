@@ -1406,6 +1406,63 @@ url: "{{ URL::to('filter_search_destionation')}}",
                     <script src="{{ asset('sximo/assets/js/slick.js')}}" type="text/javascript"></script>
                     <script type="text/javascript">
 						$(document).on('ready', function () {
+
+
+                            $('.top-nav-cities-filter').slick({
+                                slide: 'li',
+                                dots: false,
+                                infinite: false,
+                                slidesToShow: 3,
+                                slidesToScroll: 1,
+                                cssEase: 'ease-out',
+                                variableWidth: false,
+                                autoplay:false,
+                                responsive: [
+                                    {
+                                        breakpoint: 1024,
+                                        settings: {
+                                            slidesToShow: 3,
+                                            slidesToScroll: 1,
+                                        }
+                                    },
+                                    {
+                                        breakpoint: 600,
+                                        settings: {
+                                            slidesToShow: 2,
+                                            slidesToScroll: 1
+                                        }
+                                    },
+                                    {
+                                        breakpoint: 480,
+                                        settings: {
+                                            slidesToShow: 1,
+                                            slidesToScroll: 1,
+                                            arrows:false,
+                                        }
+                                    }
+                                ]
+                            });
+                            $(document).on('click', '.top-slick-filtes li.select-all', function () {
+                                if ($(this).hasClass("active")) {
+                                    $('.top-slick-filtes li').addClass("active");
+                                    $(this).removeClass("active");
+                                } else {
+                                    $('.top-slick-filtes li').removeClass("active");
+                                    $(this).addClass("active");
+                                }
+                            });
+                            $(document).on('click', '.top-slick-filtes li', function () {
+                                if (!$(this).hasClass("select-all")) {
+                                    $(this).toggleClass("active");
+                                    $('.top-slick-filtes li.select-all').removeClass("active");
+                                }
+                            });
+                            $(document).on('click', '.clear-all-filters a', function (event) {
+                                event.preventDefault();
+                                $('.top-slick-filtes li').removeClass("active");
+                                $('.top-slick-filtes li.select-all').addClass("active");
+                            });    
+
 							$(".regular").slick({
 								dots: false,
 								infinite: true,
@@ -1614,60 +1671,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                     @include('layouts/elliot/ai_lightbox_popups')
 
                     <script>
-                                            $('.top-nav-cities-filter').slick({
-                                                slide: 'li',
-                                                dots: false,
-                                                infinite: false,
-                                                slidesToShow: 3,
-                                                slidesToScroll: 1,
-                                                cssEase: 'ease-out',
-                                                variableWidth: false,
-                                                autoplay:false,
-                                                responsive: [
-                                                    {
-                                                        breakpoint: 1024,
-                                                        settings: {
-                                                            slidesToShow: 3,
-                                                            slidesToScroll: 1,
-                                                        }
-                                                    },
-                                                    {
-                                                        breakpoint: 600,
-                                                        settings: {
-                                                            slidesToShow: 2,
-                                                            slidesToScroll: 1
-                                                        }
-                                                    },
-                                                    {
-                                                        breakpoint: 480,
-                                                        settings: {
-                                                            slidesToShow: 1,
-                                                            slidesToScroll: 1,
-                                                            arrows:false,
-                                                        }
-                                                    }
-                                                ]
-                                            });
-                                            $(document).on('click', '.top-slick-filtes li.select-all', function () {
-                                                if ($(this).hasClass("active")) {
-                                                    $('.top-slick-filtes li').addClass("active");
-                                                    $(this).removeClass("active");
-                                                } else {
-                                                    $('.top-slick-filtes li').removeClass("active");
-                                                    $(this).addClass("active");
-                                                }
-                                            });
-                                            $(document).on('click', '.top-slick-filtes li', function () {
-                                                if (!$(this).hasClass("select-all")) {
-                                                    $(this).toggleClass("active");
-                                                    $('.top-slick-filtes li.select-all').removeClass("active");
-                                                }
-                                            });
-                                            $(document).on('click', '.clear-all-filters a', function (event) {
-                                                event.preventDefault();
-                                                $('.top-slick-filtes li').removeClass("active");
-                                                $('.top-slick-filtes li.select-all').addClass("active");
-                                            });
+                                            
                                         </script> 
 
     </body>
