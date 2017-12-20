@@ -3770,7 +3770,7 @@ class HomeController extends Controller {
     public function getPropertyDetail_pages(Request $request) {
         $propertiesArr = array();
 		$crpropertiesArr = array();
-        $props = \DB::table('tb_properties')->select('id','property_name','architecture_image','architecture_title','architecture_desciription','default_seasons')->where('property_slug', $request->slug)->first();
+        $props = \DB::table('tb_properties')->select('id','property_name','architecture_image','architecture_title','architecture_desciription','default_seasons','property_category_id','property_type')->where('property_slug', $request->slug)->first();
 
         $this->data['slug'] = $request->slug;
         if (!empty($props)) {
