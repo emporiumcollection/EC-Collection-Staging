@@ -115,7 +115,7 @@
                 @for($rimg1=0; $rimg1 < $divd2; $rimg1++)
 
                 <div style="height: 370.688px; width: 100%;" class="foto1 clio1" rel="clio" data-image="{{\ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name,100,1000,null)}}">
-                    <a data-popup-id="detail-page-rooms-popup-{{$type->id}}"  class="video-popup-btn" href="javascript:void(0);">
+                    <a data-popup-id="detail-page-rooms-popup-{{$type->id}}"  class="video-popup-btn" href="javascript:void(0);" onclick="getanchrclcik('detail-page-rooms-popup-{{$type->id}}')">
                         <img style="height: 370.688px; width: 659px;" src="{{\ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name,100,1000,null)}}" rel="1" alt="{{$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name}}">
                     </a>
                 </div>
@@ -123,7 +123,7 @@
 
                 @for($rimg2=$rimg1; $rimg2 < $totimg; $rimg2++)
                 <div style="height: 370.688px;" class="foto2 clio2 " rel="clio" data-image="{{\ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg2]->file_name,100,1000,null)}}">
-                    <a data-popup-id="detail-page-rooms-popup-{{$type->id}}"  class="video-popup-btn" href="javascript:void(0);">
+                    <a data-popup-id="detail-page-rooms-popup-{{$type->id}}"  class="video-popup-btn" href="javascript:void(0);" onclick="getanchrclcik('detail-page-rooms-popup-{{$type->id}}')">
                         <img style="height: 370.688px;" src="{{\ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg2]->file_name,100,1000,null)}}" rel="2" alt="{{$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg2]->file_name}}">
                     </a>
                 </div>
@@ -172,14 +172,14 @@
                 @for($rimg1=0; $rimg1 < $divd2; $rimg1++)
 
                 <div style="height: 370.688px;" class="foto2 clio3" rel="clio" data-image="{{\ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name,100,1000,null)}}">
-                    <a data-popup-id="detail-page-rooms-popup-{{$type->id}}"  class="video-popup-btn" href="javascript:void(0);">
+                    <a data-popup-id="detail-page-rooms-popup-{{$type->id}}"  class="video-popup-btn" href="javascript:void(0);" onclick="getanchrclcik('detail-page-rooms-popup-{{$type->id}}')">
                         <img style="height: 370.688px; width: 659px;" src="{{\ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name,100,1000,null)}}" rel="3" alt="{{$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name}}">
                     </a>
                 </div>
                 @endfor
                 @for($rimg2=$rimg1; $rimg2 < $totimg; $rimg2++)
                 <div style="height: 370.688px; width: 100%;" class="foto1 clio4" rel="clio" data-image="{{\ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg2]->file_name,100,1000,null)}}">
-                    <a data-popup-id="detail-page-rooms-popup-{{$type->id}}"  class="video-popup-btn" href="javascript:void(0);">
+                    <a data-popup-id="detail-page-rooms-popup-{{$type->id}}"  class="video-popup-btn" href="javascript:void(0);" onclick="getanchrclcik('detail-page-rooms-popup-{{$type->id}}')">
                         <img style="height: 370.688px;" src="{{\ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg2]->file_name,100,1000,null)}}" rel="4" alt="{{$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name}}">
                     </a>
                 </div>
@@ -344,10 +344,10 @@ foreach ($propertyDetail['typedata'] as $type) {
 <script>
 // external js: masonry.pkgd.js
 
-$('.grid').masonry({
+/*$('.grid').masonry({
   itemSelector: '.grid-item',
   columnWidth: 160
-});
+});*/
 </script>
 
 
@@ -362,6 +362,13 @@ $('.grid').masonry({
         $("#" + popup_id).fadeIn("slow");
         $("body").addClass("fixed");
     });
+	
+	function getanchrclcik(dvid)
+	{
+        $("#" + dvid).fadeIn("slow");
+        $("body").addClass("fixed");
+	}
+	
     $(".popup-close-btn").click(function (event) {
         event.preventDefault();
         $(this).parent().parent().fadeOut("slow");
