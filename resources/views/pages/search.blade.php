@@ -548,7 +548,7 @@
                                                 <div>
                                                     <ul class="top-nav-cities-filter top-slick-filtes top-bar-filters-removed  slider">
                                                         <li class="active select-all">
-                                                            <a href="javascript:void(0)" onclick="filter_destination(\'' + dest_area[0] + '\',\'city\');">
+                                                            <a href="javascript:void(0)" onclick="filter_destination(0,'city');">
                                                                 <div class="filter-bg">
                                                                     <div class="right-text"></div>
                                                                     <div class="clearfix"></div>
@@ -561,13 +561,14 @@
                                                             </div>
                                                         </li>
 
-                                                   
+                                                        @if(!empty($cities))
+                                                        @foreach($cities as $citieVal)
                                                         <li>
-                                                            <a href="javascript:void(0)" onclick="filter_destination(cobj.id ,'city');">
+                                                            <a href="javascript:void(0)" onclick="filter_destination({{ $citieVal->id }} ,'city');">
                                                                 <div class="filter-bg" >
                                                                     <div class="right-text"></div>
                                                                     <div class="clearfix"></div>
-                                                                    <div class="top-filter-name">' + cobj.category_name + '(' + cobj.totalproperty + ')</div>
+                                                                    <div class="top-filter-name">{{ $citieVal->category_name.' '.$citieVal->totalproperty}}</div>
                                                                 </div>
                                                             </a>
                                                             <div style="display: none;" class="city-filter-node-overlay">
@@ -575,6 +576,7 @@
                                                                 <div class="city-filter-node-details">Testing testing testing testing testing testing testing</div>
                                                             </div>
                                                         </li>
+                                                        @endforeach
                                                     </ul>
                                                 </div>
                                             </div>
