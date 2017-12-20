@@ -359,7 +359,7 @@
                             </div>
                             <div class="width-20">
                                 <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoSpaandWellnessHotels.jpg')}}" alt=""/>
-                                <a href="{{URL::to('search?s=Spa & Wellness Hotels&ref=sye&landing_page=1')}}"><h3 class="hover-tittles">Go Spa & Wellness Hotels</h3></a>
+                                <a href="{{URL::to('search?s=Spa and Wellness Hotels&ref=sye&landing_page=1')}}"><h3 class="hover-tittles">Go Spa and Wellness Hotels</h3></a>
                             </div>
                             <div class="width-20">
                                 <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoMountainaandSkiResorts.jpg')}}" alt=""/>
@@ -704,7 +704,7 @@
                                                                                 <label><a href="{{URL::to('search?s=Infinity Pools')}}">Go Infinity Pools</a></label>
                                                                             </div>
                                                                             <div class="form-group post-filter-inputs">
-                                                                                <label><a href="{{URL::to('search?s=Spa & Wellness Hotels')}}">Go Spa & Wellness Hotels</a></label>
+                                                                                <label><a href="{{URL::to('search?s=Spa and Wellness Hotels')}}">Go Spa and Wellness Hotels</a></label>
                                                                             </div> 
                                                                             <div class="form-group post-filter-inputs">
                                                                                 <label><a href="{{URL::to('search?s=Mountain Ski Resorts')}}">Go Mountains and Skin Resorts</a></label>
@@ -831,8 +831,8 @@
                                                         </a>
                                                     </div>
                                                     <div class="width-20">
-                                                        <a href="{{URL::to('search?s=Spa & Wellness Hotels&ref=sye_small')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoSpaandWellnessHotels.jpg'),100,170,199)}}" alt=""/>
-                                                            <span class="link-txt hover-cation">Go Spa & Wellness Hotels</span>
+                                                        <a href="{{URL::to('search?s=Spa and Wellness Hotels&ref=sye_small')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoSpaandWellnessHotels.jpg'),100,170,199)}}" alt=""/>
+                                                            <span class="link-txt hover-cation">Go Spa and Wellness Hotels</span>
                                                         </a>
                                                     </div>
                                                 </div>

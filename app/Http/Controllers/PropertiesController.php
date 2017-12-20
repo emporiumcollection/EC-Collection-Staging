@@ -40,7 +40,7 @@ class PropertiesController extends Controller {
             return Redirect::to('dashboard')
                             ->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus', 'error');
 
-        $sort = (!is_null($request->input('sort')) ? $request->input('sort') : 'property_status');
+        $sort = (!is_null($request->input('sort')) ? $request->input('sort') : (!is_null($request->input('search')) ? 'id' : 'property_status'));
         $order = (!is_null($request->input('order')) ? $request->input('order') : 'desc');
         // End Filter sort and order for query 
         // Filter Search for query		
