@@ -1349,6 +1349,8 @@
                     success: function (data) {
                         var imagesPro = '';
 						var im=0;
+						var di=1;
+						alert(data.image.length);
 						imagesPro += '<div class="col-md-6 col-lg-4 masonry-column">';
 						$(data.image).each(function (i, val) {
 							var clsact = '';
@@ -1356,8 +1358,9 @@
 							imagesPro += '  <div>';
 							imagesPro += '	<a href="#" class="thumbnail vogasThumbnail"><img class="img-responsive" src="' + val.imgsrc_cache + '"></a>';
 							imagesPro += '  </div>';
-							if(im>0 && im%3==0)
+							if(di%3==0)
 							{
+								di++;
 								imagesPro += ' </div>';
 								imagesPro += '<div class="col-md-6 col-lg-4 masonry-column">';
 							}
