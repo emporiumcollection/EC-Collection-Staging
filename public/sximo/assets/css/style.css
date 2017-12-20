@@ -2323,7 +2323,7 @@ header .menu ul li a:hover, header .menu ul li a:active, header .menu ul li a:fo
 .architecture-sec-top-img {
     display: table;
     margin: 83px auto 0;
-    width: 100%;
+    /*width: 100%;*/
 }
 .bottom-sec-bg {
     background-color: rgb(217, 217, 212);
