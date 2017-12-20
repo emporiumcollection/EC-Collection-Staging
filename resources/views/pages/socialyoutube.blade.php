@@ -299,7 +299,7 @@
                     <div class="filter-page-main-align">
                         <div class="col-md-10 col-sm-9">
                             <div class="row">
-                                <div class="header container-fluid">
+                                <!--div class="header container-fluid">
 									<div class="col-md-12">
 										<div class="header-logo">
 											<a href="{{url()}}">
@@ -307,7 +307,7 @@
 											</a>
 										</div>
 									</div>
-                                </div>
+                                </div-->
 								<div class="header-navigation-container col-md-12">
 									<div class="row">
 										<div class="col-md-0"></div>
