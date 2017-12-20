@@ -1291,7 +1291,7 @@ class HomeController extends Controller {
         if ($keyword!='') {
             $CityArrdestts = array();  
             $categoryObj = \DB::table('tb_categories')->where('category_name', $keyword)->first();
-            dd($categoryObj);
+            dd($categoryObj->id);
             $citydest = \DB::table('tb_categories')->where('parent_category_id', $categoryObj->id)->get();
             if (!empty($citydest)) {
                 $d = 0;
