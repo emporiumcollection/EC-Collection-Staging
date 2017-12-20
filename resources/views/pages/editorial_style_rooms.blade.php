@@ -116,7 +116,7 @@
 
                 <div style="height: 370.688px; width: 100%;" class="foto1 clio1" rel="clio" data-image="{{\ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name,100,1000,null)}}">
                     <a data-popup-id="detail-page-rooms-popup-{{$type->id}}"  class="roomimagdetail_view" href="javascript:void(0);" rel="{{$type->id}}">
-                        <img style="height: 370.688px; width: 659px;" src="{{\ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name,100,1000,null)}}" rel="1" alt="{{$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name}}">
+                        <img style="height: 370.688px; width: 659px;" src="{{\ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name,100,1000,null)}}" rel="1" alt="{{$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name}}" title="View Gallery">
                     </a>
                 </div>
                 @endfor
@@ -124,7 +124,7 @@
                 @for($rimg2=$rimg1; $rimg2 < $totimg; $rimg2++)
                 <div style="height: 370.688px;" class="foto2 clio2 " rel="clio" data-image="{{\ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg2]->file_name,100,1000,null)}}">
                     <a data-popup-id="detail-page-rooms-popup-{{$type->id}}"  class="roomimagdetail_view" href="javascript:void(0);" rel="{{$type->id}}">
-                        <img style="height: 370.688px;" src="{{\ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg2]->file_name,100,1000,null)}}" rel="2" alt="{{$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg2]->file_name}}">
+                        <img style="height: 370.688px;" src="{{\ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg2]->file_name,100,1000,null)}}" rel="2" alt="{{$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg2]->file_name}}" title="View Gallery">
                     </a>
                 </div>
                 @endfor
@@ -173,14 +173,14 @@
 
                 <div style="height: 370.688px;" class="foto2 clio3" rel="clio" data-image="{{\ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name,100,1000,null)}}">
                     <a data-popup-id="detail-page-rooms-popup-{{$type->id}}"  class="roomimagdetail_view" href="javascript:void(0);" rel="{{$type->id}}">
-                        <img style="height: 370.688px; width: 659px;" src="{{\ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name,100,1000,null)}}" rel="3" alt="{{$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name}}">
+                        <img style="height: 370.688px; width: 659px;" src="{{\ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name,100,1000,null)}}" rel="3" alt="{{$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name}}" title="View Gallery">
                     </a>
                 </div>
                 @endfor
                 @for($rimg2=$rimg1; $rimg2 < $totimg; $rimg2++)
                 <div style="height: 370.688px; width: 100%;" class="foto1 clio4" rel="clio" data-image="{{\ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg2]->file_name,100,1000,null)}}">
                     <a data-popup-id="detail-page-rooms-popup-{{$type->id}}"  class="roomimagdetail_view" href="javascript:void(0);" rel="{{$type->id}}">
-                        <img style="height: 370.688px;" src="{{\ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg2]->file_name,100,1000,null)}}" rel="4" alt="{{$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name}}">
+                        <img style="height: 370.688px;" src="{{\ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg2]->file_name,100,1000,null)}}" rel="4" alt="{{$propertyDetail['roomimgs'][$type->id]['imgs'][$rimg1]->file_name}}" title="View Gallery">
                     </a>
                 </div>
                 @endfor
@@ -225,40 +225,45 @@
               <div class="col-md-2 SlickVegasWidth">
                 <section class="Vegasregular slider">
                     <div class="slick-cstm-width">
-                            <div class="side-nav-next-hotel-img">
-                                    <div class="side-next-and-perivious-hotel-arrow">
-                                            <div class="arrows-commom  next-arrow">
-                                                    <a href="http://www.emporium-voyage.com/hotel-zoo-berlin-" tabindex="0">
-                                                        <span>New Hotels</span>
-                                                    </a>
-                                            </div>
-                                    </div>
-                                    <div class="new-hotel-image" style="background-image:url(http://www.emporium-voyage.com/uploads/property_imgs_thumbs/xfront_property_4505_Emporium-Voyage-Hotel-Zoo-Berlin00017.jpg.pagespeed.ic.nY-effTxow.jpg)">
-                                            <div class="new-hotels-image-tittle">
-                                                    <h2 class="new-hotel-name">Hotel Zoo Berlin</h2>
-                                                    <div class=" new-hotel-add">
-                                                            <p>New York City</p>
-                                                            <p>United States</p>
-                                                    </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                            <div class="new-hotel-view-more-btn">
-                                                   <a class="" href="http://www.emporium-voyage.com/hotel-zoo-berlin-" tabindex="0">
-                                                        View Hotel
-                                                    </a>
-                                            </div>
-                                    </div>
-<!--                                    <div>
-                                        <img src="http://www.emporium-voyage.com/uploads/users/advertisement/x1.png.pagespeed.ic.wgBqk8EoPv.jpg">
-                                     </div>-->
-                                    <a class="bootom-view-next-btn" href="http://www.emporium-voyage.com/hotel-zoo-berlin-" tabindex="0">
-                                        Visit All Hotels DOI
-                                    </a>
-                            </div>
-                    </div>
-                    <div class="slick-cstm-width slick-slide slick-current slick-active" data-slick-index="1" aria-hidden="false" style="width: 206px;" tabindex="-1" role="option">
-                        <a href="http://http://www.bessd.com" tabindex="0"><img src="http://www.emporium-voyage.com/uploads/users/advertisement/x1.png.pagespeed.ic.wgBqk8EoPv.jpg" data-pagespeed-url-hash="3725838879" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"></a>
-                    </div>					
+					   @if(!empty($relatedproperties))
+						<div class="side-nav-next-hotel-img">
+							<div class="side-next-and-perivious-hotel-arrow">
+								<div class="arrows-commom  next-arrow">
+									<a href="{{URL::to($relatedproperties[0]->property_slug)}}">
+										<span>New Hotels</span>
+									</a>
+								</div>
+							</div>
+							{{--*/ $relatimg = URL::to('uploads/property_imgs_thumbs/front_property_'.$relatedproperties[0]->folder_id.'_'.$relatedproperties[0]->file_name); /*--}}
+							<div class="new-hotel-image" style="background-image: url('{{$relatimg}}')">
+								<div class="new-hotels-image-tittle">
+									<h2 class="new-hotel-name">{{$relatedproperties[0]->property_name}}</h2>
+									<div class=" new-hotel-add">
+										<p>New York City</p>
+										<p>United States</p>
+									</div>
+								</div>
+								<div class="clearfix"></div>
+								<div class="new-hotel-view-more-btn">
+									<a class="" href="{{URL::to($relatedproperties[0]->property_slug)}}">
+										View Hotel
+									</a>
+								</div>
+							</div>
+							
+							<a class="bootom-view-next-btn" href="{{URL::to($relatedproperties[0]->property_slug)}}">
+								Visit All Hotels DOI
+							</a>
+						</div>
+						@endif
+					</div>
+					@if(!empty($sidebardetailAds))
+					@foreach($sidebardetailAds as $adsdetail)
+					<div class="slick-cstm-width">
+						<a href="http://{{$adsdetail->adv_link}}"><img src="{{URL::to('uploads/users/advertisement/'.$adsdetail->adv_img)}}"></a>
+					</div>
+					@endforeach
+					@endif					
                 </section>
 
             </div>

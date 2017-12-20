@@ -561,7 +561,7 @@
                                                 </p>
                                             </div>
                                             <div class="hotel-block-two-btn-right">
-                                                <a href="#"  rel="" class="hotel-btn open-show_more-page">View More</a>
+                                                
                                             </div>
                                             <div class="clearfix"></div>
                                             <div class="image-showcase-below-big-text">
