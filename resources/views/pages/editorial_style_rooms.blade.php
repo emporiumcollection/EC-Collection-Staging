@@ -314,7 +314,7 @@ foreach ($propertyDetail['typedata'] as $type) {
                       <li class="detail-tile col-sm-6 col-xs-12 col-md-6 col-lg-4" style="visibility:visible"><div class="detail-tile-inner"><img src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (20).jpg"></div></li>
                       <li class="detail-tile col-sm-6 col-xs-12 col-md-6 col-lg-4" style="visibility:visible"><div class="detail-tile-inner"><img src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (21).jpg"></div></li>
                   </ul>-->
-                <div class="row masonry-grid">
+                <div class="row masonry-grid vegasgalleryimg">
                     <div class="col-md-6 col-lg-4 masonry-column">
                       <div>
                         <a href="http://placeholder.com" class="thumbnail vogasThumbnail"><img class="img-responsive" src="http://southafricaphotolocations.com/uploads/container_user_files/locations/asara/property-images/Asara (12).jpg"></a>

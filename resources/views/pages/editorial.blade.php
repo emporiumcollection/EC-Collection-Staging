@@ -1349,17 +1349,26 @@
                     success: function (data) {
                         var imagesPro = '';
 						var im=0;
+						var totlimg = data.image.count();
+						imagesPro += '<div class="col-md-6 col-lg-4 masonry-column">';
 						$(data.image).each(function (i, val) {
 							var clsact = '';
-							if(im==0)
+							
+							imagesPro += '  <div>';
+							imagesPro += '	<a href="#" class="thumbnail vogasThumbnail"><img class="img-responsive" src="' + val.imgsrc_cache + '"></a>';
+							imagesPro += '  </div>';
+							if(im>0 && im%3==0)
 							{
-								clsact = 'active';
+								imagesPro += ' </div>';
+								imagesPro += '<div class="col-md-6 col-lg-4 masonry-column">';
 							}
-							imagesPro += '<li class="'+clsact+'"><img class="img-responsive" src="' + val.imgsrc_cache + '" alt=""/></li>';
+							
+							//imagesPro += '<li class="'+clsact+'"><img class="img-responsive" src="' + val.imgsrc_cache + '" alt=""/></li>';
 							im++;
                         });
-                        $('#detail-page-gallery-popup .galleryimg').html(imagesPro);
-						$('#detail-page-gallery-popup .images-count').html('1/'+im);
+						imagesPro += ' </div>';
+                        $('#myModal .vegasgalleryimg').html(imagesPro);
+						//$('#detail-page-gallery-popup .images-count').html('1/'+im);
 						
 						$(document).on('click', '.gallery-res-previous-btn', function ( event ) {
 							event.preventDefault();
