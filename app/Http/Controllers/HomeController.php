@@ -3769,6 +3769,7 @@ class HomeController extends Controller {
 
     public function getPropertyDetail_pages(Request $request) {
         $propertiesArr = array();
+		$crpropertiesArr = array();
         $props = \DB::table('tb_properties')->select('id','property_name','architecture_image','architecture_title','architecture_desciription','default_seasons')->where('property_slug', $request->slug)->first();
 
         $this->data['slug'] = $request->slug;
@@ -3814,9 +3815,22 @@ class HomeController extends Controller {
             }
 
             $this->data['currency'] = \DB::table('tb_settings')->select('content')->where('key_value', 'default_currency')->first();
+			
+			if ($props->property_category_id != '') {
+                $catss = explode(',', $props->property_category_id);
+                if (!empty($catss)) {
+                    $getcats = " AND (" . implode(" || ", array_map(function($v) {
+                                        return sprintf("FIND_IN_SET('%s', tb_properties.property_category_id)", $v);
+                                    }, array_values($catss))) . ")";
+                }
+				$crpropertiesArr = DB::select(DB::raw("SELECT tb_properties.property_name, tb_properties.property_slug, tb_container_files.file_name, tb_container_files.folder_id FROM tb_properties JOIN tb_properties_images ON tb_properties_images.property_id = tb_properties.id JOIN tb_container_files ON tb_container_files.id = tb_properties_images.file_id WHERE tb_properties.property_type='" . $props->property_type . "' AND tb_properties.property_status = '1' AND tb_properties.id!='" . $props->id . "' AND tb_properties_images.type = 'Property Images'  $getcats GROUP BY  tb_properties.property_slug ORDER BY tb_properties.id desc, tb_container_files.file_sort_num asc LIMIT 2"));
+			}
         }
+		
+		$this->data['sidebardetailAds'] = \DB::table('tb_advertisement')->select('adv_link','adv_img')->where('adv_type', 'sidebar')->where('adv_position', 'detail')->get();
 
         $this->data['propertyDetail'] = $propertiesArr;
+		$this->data['relatedproperties'] = $crpropertiesArr;
         $this->data['pageTitle'] = 'Details';
         $page = 'layouts.' . CNF_THEME . '.index';
         $this->data['pages'] = 'pages.editorial_' . $request->page;
