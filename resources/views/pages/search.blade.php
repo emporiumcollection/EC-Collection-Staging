@@ -547,7 +547,7 @@
                                                 <div class="clear-all-filters"><a href="javascript:void(0)"><i class="fa fa-repeat" aria-hidden="true"></i>&nbsp;Clear Filters</a></div>
                                                 <div>
                                                     <ul class="top-nav-cities-filter top-slick-filtes top-bar-filters-removed regular slider slick-initialized slick-slider">
-                                                        <li class="active select-all">
+                                                        <li class="active select-all slick-slide slick-current slick-active">
                                                             <a href="javascript:void(0)" onclick="filter_destination(0,'city');">
                                                                 <div class="filter-bg">
                                                                     <div class="right-text"></div>
@@ -563,7 +563,7 @@
 
                                                        
                                                         @foreach($cities as $citieVal)
-                                                        <li>
+                                                        <li class="slick-slide slick-active">
                                                             <a href="javascript:void(0)" onclick="filter_destination({{ $citieVal->id }} ,'city');">
                                                                 <div class="filter-bg" >
                                                                     <div class="right-text"></div>
