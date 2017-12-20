@@ -588,6 +588,7 @@
                                                 slidesToScroll: 1,
                                                 cssEase: 'ease-out',
                                                 variableWidth: false,
+                                                autoplay:false,
                                                 responsive: [
                                                     {
                                                         breakpoint: 1024,
