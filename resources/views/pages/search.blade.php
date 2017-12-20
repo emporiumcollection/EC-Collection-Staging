@@ -540,7 +540,7 @@
                                     </div>
 
                                     <div id="cityfilters">
-                                        
+                                         @if(!empty($cities))
                                         <!-- Load City List -->
                                         <div class="row">
                                             <div class="col-md-12">
@@ -561,7 +561,7 @@
                                                             </div>
                                                         </li>
 
-                                                        @if(!empty($cities))
+                                                       
                                                         @foreach($cities as $citieVal)
                                                         <li>
                                                             <a href="javascript:void(0)" onclick="filter_destination({{ $citieVal->id }} ,'city');">
@@ -638,6 +638,7 @@
                                             });
                                         </script>             
                                         <!-- End City List -->
+                                        @endif
                                     </div>
 
                                     <div id="listproperties">
