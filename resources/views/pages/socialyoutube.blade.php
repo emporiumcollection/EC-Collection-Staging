@@ -206,6 +206,7 @@
             #cityfilters .slick-slide {
                 height: auto;
             }
+            .row.go-back-button-container{margin-left: 0; margin-right: 0;}
             .overlay-text {
                 background: rgba(0, 0, 0, 0.68) none repeat scroll 0 0;
                 bottom: 0;
