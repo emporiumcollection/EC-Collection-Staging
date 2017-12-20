@@ -491,7 +491,7 @@
                         <a href="#align-to-top" class="align-to-top-arrow"><img src="{{ asset('sximo/assets/images/scroll-down.png')}}" class="down-arrow-align animate-arrow" alt=""/> </a>
                             
                         <div class="editorial-arrows-container arrows-container">
-                        	{{dd($propertyDetail['data'])}}
+                        	<a class="assign_detail_city">{{$propertyDetail['data']->assign_detail_city}}</a>
                             <a class="editorial-previous-arrow next-arrow" href="#">
                                 <img class="banner-arrow-bg" src="{{ asset('sximo/assets/images/editorial-right-arrow.png')}}" alt=""/>
                             </a>
