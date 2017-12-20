@@ -546,7 +546,7 @@
                                             <div class="col-md-12">
                                                 <div class="clear-all-filters"><a href="javascript:void(0)"><i class="fa fa-repeat" aria-hidden="true"></i>&nbsp;Clear Filters</a></div>
                                                 <div>
-                                                    <ul class="top-nav-cities-filter top-slick-filtes top-bar-filters-removed regular slider">
+                                                    <ul class="top-nav-cities-filter top-slick-filtes top-bar-filters-removed  slider">
                                                         <li class="active select-all">
                                                             <a href="javascript:void(0)" onclick="filter_destination(\'' + dest_area[0] + '\',\'city\');">
                                                                 <div class="filter-bg">
