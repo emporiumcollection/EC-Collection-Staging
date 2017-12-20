@@ -694,6 +694,8 @@
                     <input class="ai-current-filter" value="" type="hidden" />
                     <script>
 $(document).ready(function(){
+    var it_scroll = false;
+    scrollDownloadData(it_scroll);
     $(document).on('click', '.top-bar-filters li.select-all', function (){
         if ($(this).hasClass("active")) {
             $('.top-bar-filters li').addClass("active");
