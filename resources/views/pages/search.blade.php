@@ -539,7 +539,103 @@
                                         </div>
                                     </div>
 
-                                    <div id="cityfilters"></div>
+                                    <div id="cityfilters">
+                                        
+                                        <!-- Load City List -->
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="clear-all-filters"><a href="javascript:void(0)"><i class="fa fa-repeat" aria-hidden="true"></i>&nbsp;Clear Filters</a></div>
+                                                <div>
+                                                    <ul class="top-nav-cities-filter top-slick-filtes top-bar-filters-removed regular slider">
+                                                        <li class="active select-all">
+                                                            <a href="javascript:void(0)" onclick="filter_destination(\'' + dest_area[0] + '\',\'city\');">
+                                                                <div class="filter-bg">
+                                                                    <div class="right-text"></div>
+                                                                    <div class="clearfix"></div>
+                                                                    <div class="top-filter-name">All Properties(' + ttp + ')</div>
+                                                                </div>
+                                                            </a>
+                                                            <div style="display: none;" class="city-filter-node-overlay">
+                                                                <a class="city-filter-node-heading">Heading</a>
+                                                                <div class="city-filter-node-details">Testing testing testing testing testing testing testing</div>
+                                                            </div>
+                                                        </li>
+
+                                                   
+                                                        <li>
+                                                            <a href="javascript:void(0)" onclick="filter_destination(cobj.id ,'city');">
+                                                                <div class="filter-bg" >
+                                                                    <div class="right-text"></div>
+                                                                    <div class="clearfix"></div>
+                                                                    <div class="top-filter-name">' + cobj.category_name + '(' + cobj.totalproperty + ')</div>
+                                                                </div>
+                                                            </a>
+                                                            <div style="display: none;" class="city-filter-node-overlay">
+                                                                <a class="city-filter-node-heading">Heading</a>
+                                                                <div class="city-filter-node-details">Testing testing testing testing testing testing testing</div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <script>
+                                            $('.top-nav-cities-filter').slick({
+                                                slide: 'li',
+                                                dots: false,
+                                                infinite: false,
+                                                slidesToShow: 3,
+                                                slidesToScroll: 1,
+                                                cssEase: 'ease-out',
+                                                variableWidth: false,
+                                                responsive: [
+                                                    {
+                                                        breakpoint: 1024,
+                                                        settings: {
+                                                            slidesToShow: 3,
+                                                            slidesToScroll: 1,
+                                                        }
+                                                    },
+                                                    {
+                                                        breakpoint: 600,
+                                                        settings: {
+                                                            slidesToShow: 2,
+                                                            slidesToScroll: 1
+                                                        }
+                                                    },
+                                                    {
+                                                        breakpoint: 480,
+                                                        settings: {
+                                                            slidesToShow: 1,
+                                                            slidesToScroll: 1,
+                                                            arrows:false,
+                                                        }
+                                                    }
+                                                ]
+                                            });
+                                            $(document).on('click', '.top-slick-filtes li.select-all', function () {
+                                                if ($(this).hasClass("active")) {
+                                                    $('.top-slick-filtes li').addClass("active");
+                                                    $(this).removeClass("active");
+                                                } else {
+                                                    $('.top-slick-filtes li').removeClass("active");
+                                                    $(this).addClass("active");
+                                                }
+                                            });
+                                            $(document).on('click', '.top-slick-filtes li', function () {
+                                                if (!$(this).hasClass("select-all")) {
+                                                    $(this).toggleClass("active");
+                                                    $('.top-slick-filtes li.select-all').removeClass("active");
+                                                }
+                                            });
+                                            $(document).on('click', '.clear-all-filters a', function (event) {
+                                                event.preventDefault();
+                                                $('.top-slick-filtes li').removeClass("active");
+                                                $('.top-slick-filtes li.select-all').addClass("active");
+                                            });
+                                        </script>             
+                                        <!-- End City List -->
+                                    </div>
 
                                     <div id="listproperties">
                                         <div class="row">
@@ -1567,6 +1663,6 @@ url: "{{ URL::to('filter_search_destionation')}}",
                         @include('layouts/elliot/ai_footer')
                     </div>
                     @include('layouts/elliot/ai_lightbox_popups')
-                    
+
     </body>
 </html>
