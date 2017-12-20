@@ -650,7 +650,7 @@
 													@if($restaurant_gallery>0)
 														<div class="restaurant-view-gallery-align">
 															<span class="view-gallery-border-left"></span>
-															<a href="javascript:void(0);"   class="detail_view gallerysty bar-view-gallery video-popup-btn" rel="{{$propertyDetail['data']->id}}" rel2="Restrurants Gallery Images">View Gallery</a>
+															<a href="javascript:void(0);"   class="detail_view gallerysty bar-view-gallery" rel="{{$propertyDetail['data']->id}}" rel2="Restrurants Gallery Images">View Gallery</a>
 														</div>
 													@endif
                                                 </div>
@@ -703,7 +703,7 @@
 													@if($restaurant_gallery>0)
 														<div class="restaurant-view-gallery-align">
 															<span class="view-gallery-border-left"></span>
-															<a href="javascript:void(0);"   class="detail_view gallerysty bar-view-gallery video-popup-btn" rel="{{$propertyDetail['data']->id}}" rel2="Restrurants Gallery Images">View Gallery</a>
+															<a href="javascript:void(0);"   class="detail_view gallerysty bar-view-gallery" rel="{{$propertyDetail['data']->id}}" rel2="Restrurants Gallery Images">View Gallery</a>
 														</div>
 													@endif
                                                 </div>
@@ -753,7 +753,7 @@
 																@if($bar_gallery>0)
 																	<div class="view-gallery-pannel-align">
 																		<span class="view-gallery-border-left"></span>
-																		<a href="javascript:void(0);"   class="detail_view gallerysty bar-view-gallery video-popup-btn" rel="{{$propertyDetail['data']->id}}" rel2="Bar Gallery Images">View Gallery</a>
+																		<a href="javascript:void(0);"   class="detail_view gallerysty bar-view-gallery " rel="{{$propertyDetail['data']->id}}" rel2="Bar Gallery Images">View Gallery</a>
 																	</div>
 																@endif
                                                             </div>
@@ -860,7 +860,7 @@
 															@if($spa_gallery>0)
 																<div class="spa-sec-view-gallery">
 																	<span class="view-gallery-border-left"></span>
-																	<a href="javascript:void(0);"   class="detail_view gallerysty bar-view-gallery video-popup-btn" rel="{{$propertyDetail['data']->id}}" rel2="Spa Gallery Images">View Gallery</a>
+																	<a href="javascript:void(0);"   class="detail_view gallerysty bar-view-gallery " rel="{{$propertyDetail['data']->id}}" rel2="Spa Gallery Images">View Gallery</a>
 																</div>
 															@endif
                                                             <div class="clearfix"></div>

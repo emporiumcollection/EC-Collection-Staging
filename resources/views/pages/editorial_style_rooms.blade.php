@@ -210,44 +210,6 @@
     </div>
 
 @endif
-@if (array_key_exists('typedata', $propertyDetail))
-<?php
-foreach ($propertyDetail['typedata'] as $type) {
-    ?>
-    <div id="detail-page-rooms-popup-{{$type->id}}" class="popup detail-page-room-pop-up-align">
-        <div class="popup-inner">
-            <a href="#" class="popup-close-btn">CLOSE</a>
-            <div class="popup-content res-gallery-sec-padding">
-                <div class="image-slider-container">
-
-                    <div class="clearfix"></div>
-                    <ul class="image-slider post-page-sideshow">
-                        <?php
-                        $index = 0;
-                        if (!empty($propertyDetail['roomimgs'][$type->id]['imgs'])) {
-                            foreach ($propertyDetail['roomimgs'][$type->id]['imgs'] as $image) {
-				$imagePath = \ImageCache::make($propertyDetail['roomimgs'][$type->id]['imgsrc_dir'] . $image->file_name,100,800,null);
-                                echo '<li class="', ($index == 0) ? 'active' : '', ' "><img class="img-responsive" src="' . $imagePath . '" alt=""/></li>';
-                                $index++;
-                            }
-                        }
-                        ?>
-
-                    </ul>
-                    <div class="images-count">1 / {{$index}}</div>
-                    <div class="image-slider-btns">
-                        <a class="image-slider-previous-btn room-res-previous-btn" href="#">
-                            <img src="{{asset('sximo/assets/images/left-round-arrow.png')}}" alt=""/>
-                        </a>
-                        <a class="image-slider-next-btn room-res-next-btn" href="#">
-                            <img src="{{asset('sximo/assets/images/right-round-arrow.png')}}" alt=""/>
-                        </a>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-    </div>
 
 <!--AIC harman: popup gallery Modal -->
     <div class="modal fade vegasModelFade" id="myModal" role="dialog">
@@ -320,11 +282,6 @@ foreach ($propertyDetail['typedata'] as $type) {
       </div>
     </div>
 <!-- model popup end -->
-
-    <?php
-}
-?>
-@endif
         
         <!-- slick crousel -->
 <script>
