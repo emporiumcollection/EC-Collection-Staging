@@ -3676,6 +3676,7 @@ class HomeController extends Controller {
     public function getPropertyDetail(Request $request) {
         $propertiesArr = array();
 		$crpropertiesArr = array();
+		$relatedgridpropertiesArr = array();
         $props = \DB::table('tb_properties')->where('property_slug', $request->slug)->first();
 
         $this->data['slug'] = $request->slug;
@@ -3729,6 +3730,35 @@ class HomeController extends Controller {
                 }
 				
                 $crpropertiesArr = DB::select(DB::raw("SELECT tb_properties.property_name, tb_properties.property_slug, tb_container_files.file_name, tb_container_files.folder_id FROM tb_properties JOIN tb_properties_images ON tb_properties_images.property_id = tb_properties.id JOIN tb_container_files ON tb_container_files.id = tb_properties_images.file_id WHERE tb_properties.property_type='" . $props->property_type . "' AND tb_properties.property_status = '1' AND tb_properties.id!='" . $props->id . "' AND tb_properties_images.type = 'Property Images'  $getcats GROUP BY  tb_properties.property_slug ORDER BY tb_properties.id desc, tb_container_files.file_sort_num asc LIMIT 2"));
+				
+				
+				$relatedgridquery = "SELECT editor_choice_property,feature_property,id,property_name,property_slug,property_category_id FROM tb_properties WHERE property_type='Hotel' AND property_status = '1' $getcats GROUP BY  property_slug ORDER BY editor_choice_property desc, feature_property desc, (SELECT rack_rate FROM tb_properties_category_rooms_price WHERE tb_properties_category_rooms_price.property_id = tb_properties.id ORDER BY rack_rate DESC LIMIT 1) * 1 DESC LIMIT 4";
+
+				$relatedgridprops = DB::select(DB::raw($relatedgridquery));
+				if (!empty($relatedgridprops)) {
+					$pr = 0;
+					foreach ($relatedgridprops as $rgprop) {
+						$relatedgridpropertiesArr[$pr]['data'] = $rgprop;
+						$relatedgridpropertiesArr[$pr]['data']->price = '';
+						$checkseasonPrice = \DB::table('tb_properties_category_rooms_price')->select('rack_rate')->where('property_id', $rgprop->id)->orderBy('rack_rate', 'DESC')->first();
+						if (!empty($checkseasonPrice)) {
+							$relatedgridpropertiesArr[$pr]['data']->price = $checkseasonPrice->rack_rate;
+						}
+
+						$relatedgridpropertiesArr[$pr]['data']->category_name = '';
+						$cateObjtm = \DB::table('tb_categories')->select('category_name')->where('id', $rgprop->property_category_id)->where('category_published', 1)->first();
+						if (!empty($cateObjtm)) {
+							$relatedgridpropertiesArr[$pr]['data']->category_name = $cateObjtm->category_name;
+						}
+
+						$fileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.file_id', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $rgprop->id)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
+						if (!empty($fileArr)) {
+							$relatedgridpropertiesArr[$pr]['image'] = $fileArr;
+							$relatedgridpropertiesArr[$pr]['image']->imgsrc = (new ContainerController)->getThumbpath($fileArr->folder_id);
+						}
+						$pr++;
+					}
+				}
             }
         }
 
@@ -3763,6 +3793,7 @@ class HomeController extends Controller {
         //print_r($propertiesArr); die;
         $this->data['propertyDetail'] = $propertiesArr;
         $this->data['relatedproperties'] = $crpropertiesArr;
+		$this->data['relatedgridpropertiesArr'] = $relatedgridpropertiesArr;
         $this->data['pageTitle'] = 'Details';
         $page = 'layouts.' . CNF_THEME . '.index';
         $this->data['pages'] = 'pages.editorial';
