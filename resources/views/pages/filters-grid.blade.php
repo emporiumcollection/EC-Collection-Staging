@@ -542,10 +542,7 @@ return fasle;
                                     <div class="row">
                                         <div class="header-navigation-container col-md-12">
                                             <div class="row">
-                                                <div class="col-md-0"></div>
-                                                <div class="col-md-3 col-sm-2 header-text-align">
-                                                </div>
-                                                <div class="col-md-7 col-sm-8">
+                                                <div class="col-md-12 col-sm-12">
                                                     @include('layouts/elliot/ai_navigation')
                                                 </div>
                                             </div>
@@ -1004,22 +1001,22 @@ return fasle;
                                                     <div class="dl-filter">
                                                         <form>
                                                             <div class="form-group post-filter-inputs">
-                                                                <label><a href="{{URL::to('search?s=Beach Hotels')}}">Go Beach Hotels</a></label>
+                                                                <label><a href="{{URL::to('search?s=Beach Hotels')}}">Luxury Beach Hotels</a></label>
                                                             </div> 
                                                             <div class="form-group post-filter-inputs active">
-                                                                <label><a href="{{URL::to('search?s=Green Properties')}}">Go Green Hotels</a></label>
+                                                                <label><a href="{{URL::to('search?s=Green Properties')}}">Luxury Green Hotels</a></label>
                                                             </div> 
                                                             <div class="form-group post-filter-inputs">
-                                                                <label><a href="{{URL::to('search?s=Go Urban Hotels')}}">Go Urban Hotels</a></label>
+                                                                <label><a href="{{URL::to('search?s=Go Urban Hotels')}}">Luxury Urban Hotels</a></label>
                                                             </div> 
                                                             <div class="form-group post-filter-inputs">
-                                                                <label><a href="{{URL::to('search?s=Infinity Pools')}}">Go Infinity Pools</a></label>
+                                                                <label><a href="{{URL::to('search?s=Infinity Pools')}}">Luxury Infinity Pools</a></label>
                                                             </div>
                                                             <div class="form-group post-filter-inputs">
-                                                                <label><a href="{{URL::to('search?s=Spa and Wellness Hotels')}}">Go Spa and Wellness Hotels</a></label>
+                                                                <label><a href="{{URL::to('search?s=Spa and Wellness Hotels')}}">Luxury Spa and Wellness Hotels</a></label>
                                                             </div> 
                                                             <div class="form-group post-filter-inputs">
-                                                                <label><a href="{{URL::to('search?s=Mountain Ski Resorts')}}">Go Mountains and Skin Resorts</a></label>
+                                                                <label><a href="{{URL::to('search?s=Mountain Ski Resorts')}}">Luxury Mountains and Skin Resorts</a></label>
                                                             </div> 
                                                             <div class="form-group post-filter-inputs">
                                                                 <label><a href="{{URL::to('search?s=Yoga Hotels')}}">Discover Yoga Hotels</a></label>

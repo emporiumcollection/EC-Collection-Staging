@@ -522,10 +522,7 @@
 									<div class="row">
 										<div class="header-navigation-container col-md-12">
 											<div class="row">
-												<div class="col-md-0"></div>
-												<div class="col-md-3 col-sm-2 header-text-align">
-												</div>
-												<div class="col-md-7 col-sm-8">
+												<div class="col-md-12 col-sm-12">
 													@include('layouts/elliot/ai_navigation')
 												</div>
 											</div>
@@ -1302,22 +1299,22 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                                     <div class="dl-filter">
                                                         <form>
                                                             <div class="form-group post-filter-inputs">
-                                                                <label><a onclick="experience_property_filter('Beach Hotels');" href="javascript:void(0);">Go Beach Hotels</a></label>
+                                                                <label><a onclick="experience_property_filter('Beach Hotels');" href="javascript:void(0);">Luxury Beach Hotels</a></label>
                                                             </div> 
                                                             <div class="form-group post-filter-inputs post-filter-inputs">
-                                                                <label><a onclick="experience_property_filter('Green Properties');" href="javascript:void(0);">Go Green Hotels</a></label>
+                                                                <label><a onclick="experience_property_filter('Green Properties');" href="javascript:void(0);">Luxury Green Hotels</a></label>
                                                             </div> 
                                                             <div class="form-group post-filter-inputs">
-                                                                <label><a onclick="experience_property_filter('Go Urban Hotels');" href="javascript:void(0);">Go Urban Hotels</a></label>
+                                                                <label><a onclick="experience_property_filter('Go Urban Hotels');" href="javascript:void(0);">Luxury Urban Hotels</a></label>
                                                             </div> 
                                                             <div class="form-group post-filter-inputs">
-                                                                <label><a onclick="experience_property_filter('Infinity Pools');" href="javascript:void(0);">Go Infinity Pools</a></label>
+                                                                <label><a onclick="experience_property_filter('Infinity Pools');" href="javascript:void(0);">Luxury Infinity Pools</a></label>
                                                             </div>
                                                             <div class="form-group post-filter-inputs">
-                                                                <label><a onclick="experience_property_filter('Spa and Wellness Hotels');" href="javascript:void(0);">Go Spa and Wellness Hotels</a></label>
+                                                                <label><a onclick="experience_property_filter('Spa and Wellness Hotels');" href="javascript:void(0);">Luxury Spa and Wellness Hotels</a></label>
                                                             </div> 
                                                             <div class="form-group post-filter-inputs">
-                                                                <label><a onclick="experience_property_filter('Mountain Ski Resorts');" href="javascript:void(0);">Go Mountains and Skin Resorts</a></label>
+                                                                <label><a onclick="experience_property_filter('Mountain Ski Resorts');" href="javascript:void(0);">Luxury Mountains and Skin Resorts</a></label>
                                                             </div> 
                                                             <div class="form-group post-filter-inputs">
                                                                 <label><a onclick="experience_property_filter('Yoga Hotels');" href="javascript:void(0);">Discover Yoga Hotels</a></label>
