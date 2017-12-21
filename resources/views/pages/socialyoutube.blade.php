@@ -274,7 +274,7 @@
             
             .voyagemenuTop {
                     color: #6e6e6e !important;
-                    padding: 0 15px 0 10px !important;
+                    padding: 0px 25px 15px 25px !important;
             }
             
             .vogasMenuUl {
@@ -282,8 +282,8 @@
             }
             
             .voyagemenuTop:hover {
-                border-bottom: 2px red solid !important;
-                padding: 10px 10px 10px 10px !important;
+                border-bottom: 3px #6E6E6E solid !important;
+                padding: 0px 25px 15px 25px !important;
             }
             
             /* model search */
@@ -357,14 +357,15 @@
         }
 
         .modelSearchi {
-	color: #9F9F9F;
-    }
+            color: #9f9f9f;
+            font-size: 16px;
+        }
 
         .popupa {
-	margin-top: 0px;
-	float: left;
-	margin-left: 4px;
-    }
+            margin-top: 16px !important;
+            float: left;
+            margin-left: 4px;
+        }
     
     /* Harman AIC css end */
             
