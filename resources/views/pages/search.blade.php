@@ -540,7 +540,7 @@
                                          
                                          @if(!empty($cities))
 
-                                         <div class="row" style="padding-bottom: 15px;">
+                                         <div class="row" style="padding-bottom: 8px;background: #f0f0f0;padding-top: 8px;margin-bottom: 15px;">
                                              <div class="col-md-6 col-xs-12 text-right">
                                                 Filter By Luxury Destination
                                              </div>
@@ -1034,7 +1034,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
             var ttp = p - 1;
             if (typeof $.parseJSON(data.cities) !== 'undefined' && $.parseJSON(data.cities).length > 0) {
 
-                chtml += '<div class="row" style="padding-bottom: 15px;">';
+                chtml += '<div class="row" style="padding-bottom: 8px;background: #f0f0f0;padding-top: 8px;margin-bottom: 15px;">';
                 chtml += '<div class="col-md-6 col-xs-12 text-right">Filter By Luxury Destination</div>';
                 chtml += '<div class="col-md-6 col-xs-12">';
                 chtml += '<select onchange="filter_destination(this.value ,\'city\')">';
