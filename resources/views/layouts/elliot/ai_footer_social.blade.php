@@ -39,37 +39,7 @@
 												</div>
 											</div>
 										</div>
-                                                                                <div class="col-md-3 col-sm-4 col-xs-12 footer-padding-0">
-											<div class="row-">
-												<div class="accordion res-design-footer">
-																											Company
-													</div>
-												<div class="panel">
-																									<ul class="footer-nav-menu footer-nav-menu-align">
-																													<li>
-																<a href="#">
-																																			Hotel Membership
-																																	</a>
-															</li>
-																													<li>
-																<a href="#">
-																																			Members Portal
-																																	</a>
-															</li>
-																													<li>
-																<a href="#">
-																																			Reservations/Cancelations
-																																	</a>
-															</li>
-																													<li>
-																<a href="#">
-																																			Our Mission
-																																	</a>
-															</li>
-																											</ul>
-																								</div>
-											</div>
-										</div>
+                                                                                
 									@endforeach
                             
                                 </div>
