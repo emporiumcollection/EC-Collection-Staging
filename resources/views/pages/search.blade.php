@@ -1043,7 +1043,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                 })
                 chtml += '</select>';
                 chtml += '</div>';
-                chtml += '</div>';
+                chtml += '</div>'; 
                 /*chtml += '<div class="row">';
                 chtml += '<div class="col-md-12">';
                 chtml += '<div class="clear-all-filters"><a href="javascript:void(0)"><i class="fa fa-repeat" aria-hidden="true"></i>&nbsp;Clear Filters</a></div>';
