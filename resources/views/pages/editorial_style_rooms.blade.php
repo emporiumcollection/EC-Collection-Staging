@@ -106,7 +106,7 @@
         
         .Sidenavimg {
             width: auto;
-            min-width: 100%;
+            max-width: 100%;
         }
     
 </style>
