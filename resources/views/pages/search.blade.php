@@ -813,13 +813,13 @@ $(window).scroll(function () {
             var element_position = $('#brgrid').offset().top + $('#brgrid').outerHeight() - window.innerHeight;
             var y_scroll_pos = $(window).scrollTop() + 100;
           //  if ((y_scroll_pos >= element_position)) {
-            if($(window).scrollTop() + $(window).height() >= $(document).height()) {
+            if(($(window).scrollTop() + 750) >= $(document).height()) {
 
     
                 var it_scroll = true;
                 //scrollDownloadData(it_scroll);
                 pageCounter++;
-                console.log('scrollTop : '+$(window).scrollTop() + 'window height : '+ $(window).height() + 'document height : '+ $(document).height());
+                console.log('scrollTop : '+($(window).scrollTop() + 750) + 'document height : '+ $(document).height());
             }
     });
 
