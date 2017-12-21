@@ -115,7 +115,7 @@
 														</td>
 														<td>
 															<p class="name">
-																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="#blueimp-gallery-sgi">{{$img->file_name}}</a>
+																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_display_name}}" download="{{$img->file_name}}" data-gallery="#blueimp-gallery-sgi">{{$img->file_display_name}}</a>
 															</p>
 														</td>
 														<td>
@@ -211,7 +211,7 @@
 														</td>
 														<td>
 															<p class="name">
-																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="#blueimp-gallery-rgi">{{$img->file_name}}</a>
+																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_display_name}}" download="{{$img->file_name}}" data-gallery="#blueimp-gallery-rgi">{{$img->file_display_name}}</a>
 															</p>
 														</td>
 														<td>
@@ -307,7 +307,7 @@
 														</td>
 														<td>
 															<p class="name">
-																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="#blueimp-gallery-bgi">{{$img->file_name}}</a>
+																<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_display_name}}" download="{{$img->file_name}}" data-gallery="#blueimp-gallery-bgi">{{$img->file_display_name}}</a>
 															</p>
 														</td>
 														<td>
@@ -352,6 +352,7 @@
 <script id="template-upload" type="text/x-tmpl">
 {% for (var i=0, file; file=o.files[i]; i++) { %}
     <tr class="template-upload fade">
+		<td></td>
         <td>
             <span class="preview"></span>
         </td>
@@ -384,6 +385,7 @@
 <script id="template-download" type="text/x-tmpl">
 {% for (var i=0, file; file=o.files[i]; i++) { %}
     <tr class="template-download fade row{%=file.id%}">
+		<td></td>
         <td>
             <span class="preview">
                 {% if (file.thumbnailUrl) { %}
