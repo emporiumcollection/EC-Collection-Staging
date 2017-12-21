@@ -281,6 +281,93 @@
                 margin: 20px 0px 0px 70px;
             }
             
+            /* model search */
+
+        #search {
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+
+            -webkit-transition: all 0.5s ease-in-out;
+            -moz-transition: all 0.5s ease-in-out;
+            -o-transition: all 0.5s ease-in-out;
+            -ms-transition: all 0.5s ease-in-out;
+            transition: all 0.5s ease-in-out;
+
+            -webkit-transform: translate(0px, -100%) scale(0, 0);
+            -moz-transform: translate(0px, -100%) scale(0, 0);
+            -o-transform: translate(0px, -100%) scale(0, 0);
+            -ms-transform: translate(0px, -100%) scale(0, 0);
+            transform: translate(0px, -100%) scale(0, 0);
+
+            opacity: 0;
+        }
+
+        #search.open {
+            -webkit-transform: translate(0px, 0px) scale(1, 1);
+            -moz-transform: translate(0px, 0px) scale(1, 1);
+            -o-transform: translate(0px, 0px) scale(1, 1);
+            -ms-transform: translate(0px, 0px) scale(1, 1);
+            transform: translate(0px, 0px) scale(1, 1); 
+            opacity: 1;
+            z-index: 9999;
+        }
+
+        #search input[type="text"] {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            color: rgb(255, 255, 255);
+            background: rgba(0, 0, 0, 0);
+            font-size: 60px;
+            font-weight: 300;
+            text-align: center;
+            border: 0px;
+            margin: 0px auto;
+            margin-top: -51px;
+            padding-left: 30px;
+            padding-right: 30px;
+            outline: none;
+        }
+        #search .btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: 61px;
+            margin-left: -45px;
+        }
+        #search .close {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            color: #fff;
+            background-color: black;
+            border-color: #357ebd;
+            opacity: 1;
+            padding: 10px 17px;
+            font-size: 27px;
+        }
+
+        .modelSearchi {
+	background: #F0F0F0;
+	padding: 23px 23px 23px 23px;
+	border-radius: 40px;
+	color: black;
+	margin-bottom: 10px;
+	border: 2px white solid;
+    }
+
+        .popupa {
+	margin-top: 0px;
+	float: left;
+	margin-left: 4px;
+    }
+    
+    /* Harman AIC css end */
+            
         </style>
 		
 		<!-- Global site tag (gtag.js) - Google Analytics -->
@@ -523,6 +610,28 @@
                         </div>
                     </div>
                     <div class="clearfix"></div>
+                    
+                     /*
+             * search popup
+             */
+             <script>
+            $(function () {
+                $('a[href="#search"]').on('click', function (event) {
+                    event.preventDefault();
+                    $('#search').addClass('open');
+                    $('#search > form > input[type="text"]').focus();
+                });
+
+                $('#search, #search button.close').on('click keyup', function (event) {
+                    if (event.target == this || event.target.className == 'close' || event.keyCode == 27) {
+                        $(this).removeClass('open');
+                    }
+                });
+
+            });
+        </script>
+                    
+                    
                     <script type="text/javascript">
                         $(document).on('ready', function () {
 							$(".regular").slick({
