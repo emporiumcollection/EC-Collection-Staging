@@ -552,7 +552,7 @@
                                                                 <div class="filter-bg">
                                                                     <div class="right-text"></div>
                                                                     <div class="clearfix"></div>
-                                                                    <div class="top-filter-name">All Properties(' + ttp + ')</div>
+                                                                    <div class="top-filter-name">All Properties(0)</div>
                                                                 </div>
                                                             </a>
                                                             <div style="display: none;" class="city-filter-node-overlay">
@@ -568,7 +568,7 @@
                                                                 <div class="filter-bg" >
                                                                     <div class="right-text"></div>
                                                                     <div class="clearfix"></div>
-                                                                    <div class="top-filter-name">{{ $citieVal->category_name.' '.$citieVal->totalproperty}}</div>
+                                                                    <div class="top-filter-name">{{ $citieVal->category_name.'('.$citieVal->totalproperty.')'}}</div>
                                                                 </div>
                                                             </a>
                                                             <div style="display: none;" class="city-filter-node-overlay">
@@ -1408,40 +1408,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
 						$(document).on('ready', function () {
 
 
-                            $('.top-nav-cities-filter').slick({
-                                slide: 'li',
-                                dots: false,
-                                infinite: false,
-                                slidesToShow: 3,
-                                slidesToScroll: 1,
-                                cssEase: 'ease-out',
-                                variableWidth: false,
-                                autoplay:false,
-                                responsive: [
-                                    {
-                                        breakpoint: 1024,
-                                        settings: {
-                                            slidesToShow: 3,
-                                            slidesToScroll: 1,
-                                        }
-                                    },
-                                    {
-                                        breakpoint: 600,
-                                        settings: {
-                                            slidesToShow: 2,
-                                            slidesToScroll: 1
-                                        }
-                                    },
-                                    {
-                                        breakpoint: 480,
-                                        settings: {
-                                            slidesToShow: 1,
-                                            slidesToScroll: 1,
-                                            arrows:false,
-                                        }
-                                    }
-                                ]
-                            });
+                            
                             $(document).on('click', '.top-slick-filtes li.select-all', function () {
                                 if ($(this).hasClass("active")) {
                                     $('.top-slick-filtes li').addClass("active");
