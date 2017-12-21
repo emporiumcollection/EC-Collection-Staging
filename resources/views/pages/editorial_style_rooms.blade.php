@@ -105,9 +105,9 @@
         }
         
         .Sidenavimg {
-            width: auto;
-            max-width: 100%;
-        }
+	width: auto;
+	min-width: 200px;
+    }
     
 </style>
 
