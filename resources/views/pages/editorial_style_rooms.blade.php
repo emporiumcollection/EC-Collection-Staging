@@ -299,11 +299,10 @@
     nextArrow: false,
     infinite: true,
     autoplay: true,
-    cssEase: 'linear'
 });
 </script>
 
-<!-- ,asonary layout -->
+<!-- asonary layout -->
 <script>
 // external js: masonry.pkgd.js
 
