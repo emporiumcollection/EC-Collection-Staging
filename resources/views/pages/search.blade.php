@@ -814,13 +814,13 @@ $(window).scroll(function () {
             var element_position = $('#brgrid').offset().top + $('#brgrid').outerHeight() - window.innerHeight;
             var y_scroll_pos = $(window).scrollTop() + 100;
           //  if ((y_scroll_pos >= element_position)) {
-            if(($(window).scrollTop() + 900) >= $(document).height()) {
+            if($(window).scrollTop() >= ($('#listproperties').innerHeight()  + $('#listproperties').offset().top)) {
 
                 $('#loaderProperty').show();
                 var it_scroll = true;
                 //scrollDownloadData(it_scroll);
                 pageCounter++;
-                console.log('scrollTop : '+$('#listproperties').offset().top + ' -- '+$('#listproperties').innerHeight() + 'document height : '+ $(document).height());
+                console.log('scrollTop : ' + $(window).scrollTop()+ 'document height : '+ ($('#listproperties').innerHeight()  + $('#listproperties').offset().top));
             }
     });
 
@@ -1737,6 +1737,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
   border-top: 4px solid #000;
   width: 30px;
   height: 30px;
+  margin: 0 auto;
   -webkit-animation: spin 2s linear infinite;
   animation: spin 2s linear infinite;
 }
