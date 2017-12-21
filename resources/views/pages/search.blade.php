@@ -1036,6 +1036,17 @@ url: "{{ URL::to('filter_search_destionation')}}",
             }
             var ttp = p - 1;
             if (typeof $.parseJSON(data.cities) !== 'undefined' && $.parseJSON(data.cities).length > 0) {
+
+                chtml += '<div class="row" style="padding-bottom: 15px;">';
+                chtml += '<div class="col-md-6 col-xs-12 text-right"></div>';
+                chtml += '<div class="col-md-6 col-xs-12">';
+                chtml += '<select onchange="filter_destination(this.value ,\'city\')">';
+                $.each($.parseJSON(data.cities), function(idx, cobj) {
+                    chtml += '<option value="' + cobj.id + '">' + cobj.category_name + '(' + cobj.totalproperty + ')</option>
+                })
+                chtml += '</select>';
+                chtml += '</div>';
+                chtml += '</div>';
                 /*chtml += '<div class="row">';
                 chtml += '<div class="col-md-12">';
                 chtml += '<div class="clear-all-filters"><a href="javascript:void(0)"><i class="fa fa-repeat" aria-hidden="true"></i>&nbsp;Clear Filters</a></div>';
