@@ -817,9 +817,9 @@ $(window).scroll(function () {
 
     
                 var it_scroll = true;
-                scrollDownloadData(it_scroll);
+                //scrollDownloadData(it_scroll);
                 pageCounter++;
-                console.log(pageCounter);
+                console.log('scrollTop : '+$(window).scrollTop() + 'window height : '+ $(window).height() + 'document height : '+ $(document).height());
             }
     });
 
