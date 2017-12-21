@@ -543,8 +543,8 @@
                                          
                                          @if(!empty($cities))
 
-                                         <div class="row">
-                                             <div class="col-md-6 col-xs-12">
+                                         <div class="row" style="padding-bottom: 15px;">
+                                             <div class="col-md-6 col-xs-12 text-right">
                                                 Filter By Luxury Destination
                                              </div>
                                              <div class="col-md-6 col-xs-12">
