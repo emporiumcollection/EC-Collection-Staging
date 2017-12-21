@@ -1,4 +1,23 @@
-                    <div class="container">
+<style>
+    
+    .vegasFooter {
+        width: 20%;
+        float: left;
+    }
+    
+    .vegasFooterSocial ul li a i {
+	font-size: 20px;
+	background: black;
+	border-radius: 120px;
+	padding: 18px 21px 18px 21px;
+	color: #fff;
+	margin-right: 7px;
+    }
+    
+</style>                    
+
+
+<div class="container">
                         <div class="col-md-12 pre-footer-sec-align">
                             <p>Follow @Emporium-Voyage</p>
                             <p>Premium Lifestyle Portfolio World Wide<br/>Carefully created to ensure the ultimate luxury</p>
@@ -12,7 +31,7 @@
                                 <div class="col-md-12 col-sm-5 col-xs-12  footer-padding-0">
                                     {{--*/ $footer_menus = SiteHelpers::menus('footer') /*--}}
 									@foreach ($footer_menus as $fmenu)
-										<div class="col-md-3 col-sm-4 col-xs-12 {{($fmenu!=$footer_menus[0]) ? 'footer-padding-0' : ''}}">
+										<div class="vegasFooter {{($fmenu!=$footer_menus[0]) ? 'footer-padding-0' : ''}}">
 											<div class="row-">
 												<div class="accordion res-design-footer">
 													@if(CNF_MULTILANG ==1 &&  isset($fmenu['menu_lang']['title'][Session::get('lang')]))
@@ -43,31 +62,43 @@
 									@endforeach
                                                                         <!-- AIC Harman: footer sections -->
                                                                         
-                                                                            <div class="col-md-3 col-sm-4 col-xs-12 footer-padding-0">
+                                                                            <div class="vegasFooter footer-padding-0">
 											<div class="row-">
 												<div class="accordion res-design-footer">
-																											Company
+																											Discover
 													</div>
 												<div class="panel">
 																									<ul class="footer-nav-menu footer-nav-menu-align">
 																													<li>
-																<a href="#">
-																																			Hotel Membership
+																<a href="http://www.emporium-voyage.com/social-stream?sp=gramercy-park-hotel-new-york-city-united-states">
+																																			Hotel Social Channels
 																																	</a>
 															</li>
 																													<li>
-																<a href="#">
-																																			Members Portal
+																<a href="http://www.emporium-voyage.com">
+																																			Destination Video Channels
+																																	</a>
+															</li>
+																											</ul>
+																								</div>
+											</div>
+										</div>
+                                                                        
+                                                                            <div class="vegasFooter footer-padding-0">
+											<div class="row-">
+												<div class="accordion res-design-footer">
+																											Discover
+													</div>
+												<div class="panel">
+																									<ul class="footer-nav-menu footer-nav-menu-align">
+																													<li>
+																<a href="http://www.emporium-voyage.com/social-stream?sp=gramercy-park-hotel-new-york-city-united-states">
+																																			Hotel Social Channels
 																																	</a>
 															</li>
 																													<li>
-																<a href="#">
-																																			Reservations/Cancelations
-																																	</a>
-															</li>
-																													<li>
-																<a href="#">
-																																			Our Mission
+																<a href="http://www.emporium-voyage.com">
+																																			Destination Video Channels
 																																	</a>
 															</li>
 																											</ul>
@@ -79,7 +110,7 @@
                                                                         
                                 </div>
 <!--                                <div class="col-md-1 col-sm-1 col-xs-12"></div>-->
-                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                <div class="col-md-4 col-sm-3 col-xs-12">
                                     <p class="footer-nav-menu-harding footer-res-margin-align">About EMPORIUM VOYAGE</p>
                                     <p class="footer-about-us-des">{{$about_text->content}}
                                     </p>
@@ -90,17 +121,17 @@
                                     <form action="http://just-emarketing.com/app/index.php/lists/fb5156qrasf4a/subscribe" method="post" accept-charset="utf-8" target="_blank">
 										<div class="">
 									
-										<input type="text" class="form-control newsletter-style" name="EMAIL" placeholder="Email Address" value="" required="">
+										<input type="text" class="form-control newsletter-style" name="EMAIL" placeholder="First Name" value="" required="">
 										</div>
 
 										<div class="">
 										
-										<input type="text" class="form-control newsletter-style" name="FNAME" placeholder="First Name" value="">
+										<input type="text" class="form-control newsletter-style" name="FNAME" placeholder="Last Name" value="">
 										</div>
 
 										<div class="">
 										
-										<input type="text" class="form-control newsletter-style" name="LNAME" placeholder="Last Name" value="">
+										<input type="text" class="form-control newsletter-style" name="LNAME" placeholder="Email" value="">
 										</div>
 
 										<div class="">
@@ -124,6 +155,17 @@
 
 								</form>
                                 </div>
+                                
+                                <!-- AIC Harman footer social icons add -->
+                                <div class="col-md-4 vegasFooterSocial">
+                                    <ul class="list-inline">
+                                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                    </ul>
+                                </div>
+                                
                             </div>
                             <div class="col-md-12 copy-right-sec">
                                 <p>{{$footer_text->content}}</p>

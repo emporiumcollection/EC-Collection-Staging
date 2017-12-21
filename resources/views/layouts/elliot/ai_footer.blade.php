@@ -22,7 +22,8 @@
                             <p>Premium Lifestyle Portfolio World Wide<br/>Carefully created to ensure the ultimate luxury</p>
                         </div>
                     </div>
-
+					
+					
                     <!--Footer-->
                     <div class="footer">
                         <div class="container">

@@ -1499,7 +1499,7 @@
         <script src="{{ asset('sximo/assets/js/script.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/imagesloaded.js')}}" type="text/javascript"></script>
         <div class="editorial-custom-footer-style">
-            @include('layouts/elliot/ai_footer')
+            @include('layouts/elliot/ai_footer_detailpage')
         </div>
 
         <div id="frontpage-layer-bj-detail" class="frontpage-layer-bj">
