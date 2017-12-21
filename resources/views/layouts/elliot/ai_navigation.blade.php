@@ -25,7 +25,7 @@
                                         if(!empty($grid_menus)) {
                                             foreach ($grid_menus as $gmenu) {
                                                 ?>
-                                                <li class="<?php echo (isset($type) && $type == $gmenu['menu_name'])? 'active' : ''; ?>">
+                                                <li class="<?php echo (isset($type) && $type == $gmenu['menu_name'])? '' : ''; ?>">
                                                     <a href="<?php echo ($gmenu['menu_type'] =='external')? URL::to($gmenu['url']) : URL::to($gmenu['module']); ?>" >
                                                     <?php
                                                     if(CNF_MULTILANG ==1 && isset($gmenu['menu_lang']['title'][Session::get('lang')])) {
@@ -46,7 +46,7 @@
                                         if(!empty($grid_menus)) {
                                             foreach ($grid_menus as $gmenu) {
                                                 ?>
-                                                <li class="active">
+                                                <li >
                                                     <a href="<?php echo ($gmenu['menu_type'] =='external')? URL::to($gmenu['url']) : URL::to($gmenu['module']); ?>" >
                                                     <?php
                                                     if(CNF_MULTILANG ==1 && isset($gmenu['menu_lang']['title'][Session::get('lang')])) {
