@@ -540,8 +540,23 @@
                                     </div>
 
                                     <div id="cityfilters">
+                                         
                                          @if(!empty($cities))
+
+                                         <div class="row">
+                                             <div class="col-md-6 col-xs-12">
+                                                Filter By Luxury Destination
+                                             </div>
+                                             <div class="col-md-6 col-xs-12">
+                                                <select onchange="filter_destination(this.value ,'city')">
+                                                    @foreach($cities as $citieVal)
+                                                    <option value="{{ $citieVal->id }}">{{ $citieVal->category_name.'('.$citieVal->totalproperty.')'}}</option>
+                                                    @endforeach
+                                                </select>
+                                             </div>
+                                         </div>
                                         <!-- Load City List -->
+                                        <?php /*
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="clear-all-filters"><a href="javascript:void(0)"><i class="fa fa-repeat" aria-hidden="true"></i>&nbsp;Clear Filters</a></div>
@@ -581,9 +596,10 @@
                                                 </div>
                                             </div>
                                         </div>
-                                                    
+                                                      */ ?>
                                         <!-- End City List -->
                                         @endif
+                                      
                                     </div>
 
                                     <div id="listproperties">
@@ -1408,7 +1424,40 @@ url: "{{ URL::to('filter_search_destionation')}}",
 						$(document).on('ready', function () {
 
 
-                            
+                            $('.top-nav-cities-filter').slick({
+                                slide: 'li',
+                                dots: false,
+                                infinite: false,
+                                slidesToShow: 3,
+                                slidesToScroll: 1,
+                                cssEase: 'ease-out',
+                                variableWidth: false,
+                                autoplay:false,
+                                responsive: [
+                                    {
+                                        breakpoint: 1024,
+                                        settings: {
+                                            slidesToShow: 3,
+                                            slidesToScroll: 1,
+                                        }
+                                    },
+                                    {
+                                        breakpoint: 600,
+                                        settings: {
+                                            slidesToShow: 2,
+                                            slidesToScroll: 1
+                                        }
+                                    },
+                                    {
+                                        breakpoint: 480,
+                                        settings: {
+                                            slidesToShow: 1,
+                                            slidesToScroll: 1,
+                                            arrows:false,
+                                        }
+                                    }
+                                ]
+                            });
                             $(document).on('click', '.top-slick-filtes li.select-all', function () {
                                 if ($(this).hasClass("active")) {
                                     $('.top-slick-filtes li').addClass("active");
