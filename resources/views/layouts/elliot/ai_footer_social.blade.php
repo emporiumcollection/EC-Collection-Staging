@@ -101,7 +101,7 @@
                                                                         
                                 </div>
 <!--                                <div class="col-md-1 col-sm-1 col-xs-12"></div>-->
-                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                <div class="col-md-4 col-sm-3 col-xs-12">
                                     <p class="footer-nav-menu-harding footer-res-margin-align">About EMPORIUM VOYAGE</p>
                                     <p class="footer-about-us-des">{{$about_text->content}}
                                     </p>
@@ -146,6 +146,17 @@
 
 								</form>
                                 </div>
+                                
+                                <!-- AIC Harman footer social icons add -->
+                                <div class="col-md-4 vegasFooterSocial">
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                    </ul>
+                                </div>
+                                
                             </div>
                             <div class="col-md-12 copy-right-sec">
                                 <p>{{$footer_text->content}}</p>
