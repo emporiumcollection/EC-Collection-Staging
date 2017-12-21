@@ -820,7 +820,7 @@ $(window).scroll(function () {
                 var it_scroll = true;
                 //scrollDownloadData(it_scroll);
                 pageCounter++;
-                console.log('scrollTop : '+($(window).scrollTop() + 750) + 'document height : '+ $(document).height());
+                console.log('scrollTop : '+$('#brgrid').offset().top + ' -- '+$('#brgrid').outerHeight() + document height : '+ $(document).height());
             }
     });
 
@@ -1732,7 +1732,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
   width: 30px;
   height: 30px;
  display: none;
-  border: 4px solid #f0f0f0;
+  border: 4px solid #dedada;
   border-radius: 50%;
   border-top: 4px solid #000;
   width: 30px;
