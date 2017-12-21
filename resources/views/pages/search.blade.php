@@ -820,7 +820,7 @@ $(window).scroll(function () {
                 var it_scroll = true;
                 //scrollDownloadData(it_scroll);
                 pageCounter++;
-                console.log('scrollTop : '+$('#brgrid').offset().top + ' -- '+$('#brgrid').outerHeight() + 'document height : '+ $(document).height());
+                console.log('scrollTop : '+$('#listproperties').offset().top + ' -- '+$('#listproperties').innerHeight() + 'document height : '+ $(document).height());
             }
     });
 
