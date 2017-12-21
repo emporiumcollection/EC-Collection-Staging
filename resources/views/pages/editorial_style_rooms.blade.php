@@ -60,6 +60,7 @@
             width: 100%;
             margin: 0 auto;
             float: left;
+            visibility: visible;
         }
         
         .VegasCloseButton {
@@ -297,7 +298,7 @@
     dots: false,
     prevArrow: false,
     nextArrow: false,
-    
+    infinite: true,
     autoplay: true,
 });
 </script>
