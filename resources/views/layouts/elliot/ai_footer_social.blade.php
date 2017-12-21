@@ -5,6 +5,15 @@
         float: left;
     }
     
+    .vegasFooterSocial ul li a i {
+        font-size: 20px;
+        background: red;
+        border-radius: 40px;
+        padding: 15px 18px 13px 18px;
+        color: white;
+        margin-right: 15px;
+    }
+    
 </style>                    
 
 
