@@ -274,16 +274,18 @@
             
             .voyagemenuTop {
                     color: #6e6e6e !important;
-                    padding: 0px 25px 15px 25px !important;
+                    border-bottom: 3px transparent solid !important;
+                    padding: 0px 35px 15px 35px !important;
             }
             
             .vogasMenuUl {
                 margin: 20px 0px 0px 70px;
+                height: 0px;
             }
             
             .voyagemenuTop:hover {
                 border-bottom: 3px #6E6E6E solid !important;
-                padding: 0px 25px 15px 25px !important;
+                padding: 0px 35px 15px 35px !important;
             }
             
             /* model search */
