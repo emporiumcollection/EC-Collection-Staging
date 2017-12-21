@@ -655,7 +655,7 @@
                                                                 <a title="{{$props['data']->property_name}}" class="picture_link-" href="{{URL::to($props['data']->property_slug)}}" rel="{{$props['data']->id}}">
                                                                     <div class="overlay-text-frezeed">
                                                                         <h2 class="yacts-tittle-text">{{ $props['data']->property_name}}</h2>
-                                                                        <p class="yacths-des-text yacths-des-text-align"><span>&euro;<?php echo $props['data']->price; ?> </span>|<span>37.7mm</span>|<span>10 Gusets</span></p>
+                                                                        <p class="yacths-des-text yacths-des-text-align"><span>&euro;<?php echo $props['data']->price; ?> </span>|<span>37.7mm</span>|<span>10 Guests</span></p>
                                                                     </div>
                                                                     <div class="overlay-text hotel-overlay-text">
                                                                         <h2 class="yacts-tittle-text">{{ $props['data']->property_name}}</h2>
@@ -663,7 +663,7 @@
                                                                     </div>
                                                                     <div class="overlay-text yacts-overlay-text">
                                                                         <h2 class="yacts-tittle-text">{{ $props['data']->property_name }}</h2>
-                                                                        <p class="yacths-des-text yacths-des-text-align"><span>&euro;{{ $props['data']->price}} </span>|<span>37.7mm</span>|<span>10 Gusets</span></p>
+                                                                        <p class="yacths-des-text yacths-des-text-align"><span>&euro;{{ $props['data']->price}} </span>|<span>37.7mm</span>|<span>10 Guests</span></p>
                                                                         <p class="yacths-des-text">2015H</p>
                                                                     </div>
                                                                     <img alt="{{ $props['image']->file_name }}" src="{{ URL::to('uploads/property_imgs_thumbs/front_property_'.$props['image']->folder_id.'_'.$props['image']->file_name)}}" class="img-responsive">
@@ -675,7 +675,7 @@
 
                                                             <div class="overlay-text-frezeed">
                                                                 <h2 class="yacts-tittle-text">{{ $props['data']->property_name}}</h2>
-                                                                <p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Gusets</span></p>
+                                                                <p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>
                                                             </div>
                                                             <div class="overlay-text hotel-overlay-text">
                                                                 <h2 class="yacts-tittle-text">{{ $props['data']->property_name }}</h2>
@@ -683,7 +683,7 @@
                                                             </div>
                                                             <div class="overlay-text yacts-overlay-text">
                                                                 <h2 class="yacts-tittle-text">{{ $props['data']->property_name }}</h2>
-                                                                <p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Gusets</span></p>
+                                                                <p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>
                                                                 <p class="yacths-des-text">2015H</p>
                                                             </div>
                                                             <!--<img class="img-responsive" src="{{URL::to('sximo/assets/images/img-1.jpg')}}" alt="">-->
@@ -963,7 +963,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
             html += '<a title="' + obj.pdata.property_name + '" class="picture_link " rel="' + obj.pdata.id + '" href="{{URL::to('')}}/' + obj.pdata.property_slug + '">';
             html += '<div class="overlay-text-frezeed">';
             html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
-            html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;' + obj.pdata.price + ' </span>|<span>37.7mm</span>|<span>10 Gusets</span></p>';
+            html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;' + obj.pdata.price + ' </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
             html += '</div>';
             html += '<div class="overlay-text hotel-overlay-text">';
             html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
@@ -971,7 +971,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
             html += '</div>';
             html += '<div class="overlay-text yacts-overlay-text">';
             html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
-            html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;' + obj.pdata.price + ' </span>|<span>37.7mm</span>|<span>10 Gusets</span></p>';
+            html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;' + obj.pdata.price + ' </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
             html += '<p class="yacths-des-text">2015H</p>';
             html += '</div>';
             html += '<img alt="' + obj.image.file_name + '" src="' + pimg + '" class="img-responsive">';
@@ -982,7 +982,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
             var pimg = "{{URL::to('sximo/assets/images/img-1.jpg')}}";
             html += '<div class="overlay-text-frezeed">';
             html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
-            html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Gusets</span></p>';
+            html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
             html += '</div>';
             html += '<div class="overlay-text hotel-overlay-text">';
             html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
@@ -990,7 +990,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
             html += '</div>';
             html += '<div class="overlay-text yacts-overlay-text">';
             html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
-            html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Gusets</span></p>';
+            html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
             html += '<p class="yacths-des-text">2015H</p>';
             html += '</div>';
             html += pimg;

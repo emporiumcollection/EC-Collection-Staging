@@ -636,7 +636,7 @@ return fasle;
                                                                         <a title="<?php echo $props['image']->file_name; ?>" class="picture_link-" href="<?php echo URL::to($props['data']->property_slug); ?>">
                                                                                 <div class="overlay-text-frezeed">
                                                                                     <h2 class="yacts-tittle-text"><?php echo $props['data']->property_name; ?></h2>
-                                                                                    <p class="yacths-des-text yacths-des-text-align"><span>&euro;<?php echo $props['data']->price; ?> </span>|<span>37.7mm</span>|<span>10 Gusets</span></p>
+                                                                                    <p class="yacths-des-text yacths-des-text-align"><span>&euro;<?php echo $props['data']->price; ?> </span>|<span>37.7mm</span>|<span>10 Guests</span></p>
                                                                                 </div>
                                                                                 <div class="overlay-text hotel-overlay-text">
                                                                                     <h2 class="yacts-tittle-text"><?php echo $props['data']->property_name; ?></h2>
@@ -644,7 +644,7 @@ return fasle;
                                                                                 </div>
                                                                                 <div class="overlay-text yacts-overlay-text">
                                                                                     <h2 class="yacts-tittle-text"><?php echo $props['data']->property_name; ?></h2>
-                                                                                    <p class="yacths-des-text yacths-des-text-align"><span>&euro;<?php echo $props['data']->price; ?> </span>|<span>37.7mm</span>|<span>10 Gusets</span></p>
+                                                                                    <p class="yacths-des-text yacths-des-text-align"><span>&euro;<?php echo $props['data']->price; ?> </span>|<span>37.7mm</span>|<span>10 Guests</span></p>
                                                                                     <p class="yacths-des-text">2015H</p>
                                                                                 </div>
                                                                             <img alt="<?php echo $props['image']->file_name; ?>" src="<?php echo URL::to('uploads/property_imgs_thumbs/front_property_'.$props['image']->folder_id.'_'.$props['image']->file_name); ?>" class="img-responsive">
@@ -655,7 +655,7 @@ return fasle;
                                                                             ?>
                                                                         <div class="overlay-text-frezeed">
                                                                                     <h2 class="yacts-tittle-text"><?php echo $props['data']->property_name; ?></h2>
-                                                                                    <p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Gusets</span></p>
+                                                                                    <p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>
                                                                                 </div>
                                                                                 <div class="overlay-text hotel-overlay-text">
                                                                                     <h2 class="yacts-tittle-text"><?php echo $props['data']->property_name; ?></h2>
@@ -663,7 +663,7 @@ return fasle;
                                                                                 </div>
                                                                                 <div class="overlay-text yacts-overlay-text">
                                                                                     <h2 class="yacts-tittle-text"><?php echo $props['data']->property_name; ?></h2>
-                                                                                    <p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Gusets</span></p>
+                                                                                    <p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>
                                                                                     <p class="yacths-des-text">2015H</p>
                                                                                 </div>
                                                                         <?php
@@ -1284,7 +1284,7 @@ return fasle;
                                 var pimg = "{{URL::to('uploads/property_imgs_thumbs/')}}/front_property_" + obj.image.folder_id + "_" + obj.image.file_name;
                                 html += '<div class="overlay-text-frezeed">';
                                 html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
-                                html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;' + obj.pdata.price + ' </span>|<span>37.7mm</span>|<span>10 Gusets</span></p>';
+                                html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;' + obj.pdata.price + ' </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
                                 html += '</div>';
                                 html += '<div class="overlay-text hotel-overlay-text">';
                                 html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
@@ -1292,7 +1292,7 @@ return fasle;
                                 html += '</div>';
                                 html += '<div class="overlay-text yacts-overlay-text">';
                                 html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
-                                html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;' + obj.pdata.price + ' </span>|<span>37.7mm</span>|<span>10 Gusets</span></p>';
+                                html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;' + obj.pdata.price + ' </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
                                 html += '<p class="yacths-des-text">2015H</p>';
                                 html += '</div>';
                                 html += '<img alt="' + obj.image.file_name + '" src="' + pimg + '" class="img-responsive">';
@@ -1301,7 +1301,7 @@ return fasle;
                                     var pimg = "{{URL::to('sximo/assets/images/img-1.jpg')}}";
                                     html += '<div class="overlay-text-frezeed">';
                                     html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
-                                    html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Gusets</span></p>';
+                                    html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
                                     html += '</div>';
                                     html += '<div class="overlay-text hotel-overlay-text">';
                                     html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
@@ -1309,7 +1309,7 @@ return fasle;
                                     html += '</div>';
                                     html += '<div class="overlay-text yacts-overlay-text">';
                                     html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
-                                    html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Gusets</span></p>';
+                                    html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
                                     html += '<p class="yacths-des-text">2015H</p>';
                                     html += '</div>';
                                     html += '<img class="img-responsive" src="' + pimg + '" alt="">';
