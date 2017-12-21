@@ -1036,7 +1036,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
             }
             var ttp = p - 1;
             if (typeof $.parseJSON(data.cities) !== 'undefined' && $.parseJSON(data.cities).length > 0) {
-                chtml += '<div class="row">';
+                /*chtml += '<div class="row">';
                 chtml += '<div class="col-md-12">';
                 chtml += '<div class="clear-all-filters"><a href="javascript:void(0)"><i class="fa fa-repeat" aria-hidden="true"></i>&nbsp;Clear Filters</a></div>';
                 chtml += '<div>';
@@ -1129,7 +1129,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                     chtml += '$(\'.top-slick-filtes li\').removeClass("active");';
                     chtml += '$(\'.top-slick-filtes li.select-all\').addClass("active");';
                 chtml += '});';
-                chtml += '<\/script>';
+                chtml += '<\/script>';*/
                 $('#cityfilters').html(chtml); 
             }
 
