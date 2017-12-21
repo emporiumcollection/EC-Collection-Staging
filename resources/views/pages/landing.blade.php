@@ -434,7 +434,7 @@
                                 </div>
 								
 								@if(!empty($landinggridpropertiesArr))
-									<div class="container" style="margin-top:20px;">
+									<div class="container" style="margin-top:20px; display:none;">
 										<div class="row">
 											<?php
 											if($landinggridpropertiesArr) {
