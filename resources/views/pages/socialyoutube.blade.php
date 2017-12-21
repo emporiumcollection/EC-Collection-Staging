@@ -356,7 +356,7 @@
 										</div>
 									</div>
 								</div>
-                                <div class="sticky-header-offset"></div>
+                                <div class="sticky-header-offset stick"></div>
 								
                                 <div class="col-md-12 col-sm-12 col-xs-12 yachts-main-bg">
                                     <div id="listproperties">
