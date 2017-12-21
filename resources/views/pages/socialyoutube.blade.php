@@ -272,8 +272,8 @@
             
             /* Harman AIC menu css */
             
-            .collpsemenuVoyage ul li a {
-                color: #787878;
+            .voyagemenuTop {
+                color: #6E6E6E !important;
             }
             
         </style>
@@ -333,14 +333,14 @@
                                                                                       </div>
 
                                                                                       <!-- Collect the nav links, forms, and other content for toggling -->
-                                                                                      <div class="collapse navbar-collapse" id="navbar-collapse-3 collpsemenuVoyage">
+                                                                                      <div class="collapse navbar-collapse collpsemenuVoyage" id="navbar-collapse-3">
                                                                                         <ul class="nav navbar-nav">
-                                                                                          <li><a href="#">UBERSICHT</a></li>
-                                                                                          <li><a href="#">VIDEOS</a></li>
-                                                                                          <li><a href="#">PLAYLISTS</a></li>
-                                                                                          <li><a href="#">KANALE</a></li>
-                                                                                          <li><a href="#">DISKUSSION</a></li>
-                                                                                          <li><a href="#">KANALINFO</a></li>
+                                                                                            <li><a class="voyagemenuTop" href="#">UBERSICHT</a></li>
+                                                                                          <li><a class="voyagemenuTop" href="#">VIDEOS</a></li>
+                                                                                          <li><a class="voyagemenuTop" href="#">PLAYLISTS</a></li>
+                                                                                          <li><a class="voyagemenuTop" href="#">KANALE</a></li>
+                                                                                          <li><a class="voyagemenuTop" href="#">DISKUSSION</a></li>
+                                                                                          <li><a class="voyagemenuTop" href="#">KANALINFO</a></li>
                                                                                         </ul>
                                                                                       </div><!-- /.navbar-collapse -->
                                                                                     </div><!-- /.container -->
