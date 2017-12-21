@@ -96,13 +96,17 @@
             border: none;
         }
 		
-		.newbkbtn
-		{
-			float: left;
-			margin-left: 10px;
-			padding: 8px 10px;
-			font-size: 15px;
-		}
+        .newbkbtn
+        {
+            float: left;
+            margin-left: 10px;
+            padding: 8px 10px;
+            font-size: 15px;
+        }
+        
+        .Sidenavimg {
+            width: auto;
+        }
     
 </style>
 
@@ -228,7 +232,7 @@
                 <section class="Vegasregular slider">
                     <div class="slick-cstm-width">
 					   @if(!empty($relatedproperties))
-						<div class="side-nav-next-hotel-img">
+						<div class="side-nav-next-hotel-img Sidenavimg">
 							<div class="side-next-and-perivious-hotel-arrow">
 								<div class="arrows-commom  next-arrow">
 									<a href="{{URL::to($relatedproperties[0]->property_slug)}}">
