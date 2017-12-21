@@ -41,7 +41,42 @@
 										</div>
                                                                                 
 									@endforeach
-                            
+                                                                        <!-- AIC Harman: footer sections -->
+                                                                        
+                                                                            <div class="col-md-3 col-sm-4 col-xs-12 footer-padding-0">
+											<div class="row-">
+												<div class="accordion res-design-footer">
+																											Company
+													</div>
+												<div class="panel">
+																									<ul class="footer-nav-menu footer-nav-menu-align">
+																													<li>
+																<a href="#">
+																																			Hotel Membership
+																																	</a>
+															</li>
+																													<li>
+																<a href="#">
+																																			Members Portal
+																																	</a>
+															</li>
+																													<li>
+																<a href="#">
+																																			Reservations/Cancelations
+																																	</a>
+															</li>
+																													<li>
+																<a href="#">
+																																			Our Mission
+																																	</a>
+															</li>
+																											</ul>
+																								</div>
+											</div>
+										</div>
+                                                                        
+                                                                        <!-- AIC Harman: footer sections end -->
+                                                                        
                                 </div>
 <!--                                <div class="col-md-1 col-sm-1 col-xs-12"></div>-->
                                 <div class="col-md-3 col-sm-3 col-xs-12">
