@@ -281,6 +281,11 @@
                 margin: 20px 0px 0px 70px;
             }
             
+            .voyagemenuTop:hover {
+                border-bottom: 2px red solid !important;
+                padding: 10px 10px 10px 10px !important;
+            }
+            
             /* model search */
 
         #search {
@@ -352,12 +357,7 @@
         }
 
         .modelSearchi {
-	background: #F0F0F0;
-	padding: 23px 23px 23px 23px;
-	border-radius: 40px;
-	color: black;
-	margin-bottom: 10px;
-	border: 2px white solid;
+	color: #9F9F9F;
     }
 
         .popupa {
