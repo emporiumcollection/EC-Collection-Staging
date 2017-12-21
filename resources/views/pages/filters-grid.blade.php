@@ -571,6 +571,7 @@ return fasle;
                                                 </select>
                                              </div>
                                          </div>
+                                         @endif
                                     </div>
                                     <h2 class="current-page-heading">Our Selection of <?php echo (isset($type)) ? $type : 'Premium Selected Suites'; ?></h2>
                                     
