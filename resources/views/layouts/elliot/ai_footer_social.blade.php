@@ -149,7 +149,7 @@
                                 
                                 <!-- AIC Harman footer social icons add -->
                                 <div class="col-md-4 vegasFooterSocial">
-                                    <ul>
+                                    <ul class="list-inline">
                                         <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
                                         <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
                                         <li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
