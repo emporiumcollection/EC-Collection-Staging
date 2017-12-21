@@ -1369,6 +1369,17 @@ return fasle;
                                 $('#cityfilters').html('');
                                 }
                                 if (typeof $.parseJSON(data.cities) !== 'undefined' && $.parseJSON(data.cities).length > 0) {
+
+                                    chtml += '<div class="row" style="padding-bottom: 15px;">';
+                                    chtml += '<div class="col-md-6 col-xs-12 text-right"></div>';
+                                    chtml += '<div class="col-md-6 col-xs-12">';
+                                    chtml += '<select onchange="filter_destination(this.value ,\'city\')">';
+                                    $.each($.parseJSON(data.cities), function(idx, cobj) {
+                                        chtml += '<option value="' + cobj.id + '">' + cobj.category_name + '(' + cobj.totalproperty + ')</option>
+                                    })
+                                    chtml += '</select>';
+                                    chtml += '</div>';
+                                    chtml += '</div>';
                                 /*var ttp = p - 1;
                                 chtml += '<div class="row">';
                                 chtml += '<div class="col-md-12">';
