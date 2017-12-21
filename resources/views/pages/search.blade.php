@@ -814,7 +814,7 @@ $(window).scroll(function () {
             var element_position = $('#brgrid').offset().top + $('#brgrid').outerHeight() - window.innerHeight;
             var y_scroll_pos = $(window).scrollTop() + 100;
           //  if ((y_scroll_pos >= element_position)) {
-            if($(window).scrollTop() >= ($('#listproperties').innerHeight()  + $('#listproperties').offset().top)) {
+            if(($(window).scrollTop()-400)) >= ($('#listproperties').innerHeight()  + $('#listproperties').offset().top)) {
 
                 $('#loaderProperty').show();
                 var it_scroll = true;
