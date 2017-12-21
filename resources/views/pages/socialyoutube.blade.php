@@ -368,6 +368,10 @@
             float: left;
             margin-left: 4px;
         }
+        
+        .popupa:hover {
+            border: none !important;
+        }
     
     /* Harman AIC css end */
             

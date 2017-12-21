@@ -516,7 +516,7 @@
                                             <div class="hotel-block-two-left-sec-align">
                                                 <h2>{{$propertyDetail['data']->detail_section1_title}}</h2>
                                                 <p>
-                                                    {{nl2br($propertyDetail['data']->detail_section1_description_box1)}}
+                                                    {!! nl2br($propertyDetail['data']->detail_section1_description_box1) !!}
                                                 </p>
                                             </div>
                                         </div>
@@ -524,7 +524,7 @@
                                             <div class="hotel-block-two-right-sec-align">
                                                 <h2>{{$propertyDetail['data']->detail_section1_title}}</h2>
                                                 <p>
-                                                    {{nl2br($propertyDetail['data']->detail_section1_description_box2)}}
+                                                    {!! nl2br($propertyDetail['data']->detail_section1_description_box2) !!}
                                                 </p>
                                                 <div class="hotel-block-two-btn-right">
                                                     <a href="#style-rooms"  rel="" class="hotel-btn">View Rooms</a>
@@ -544,18 +544,18 @@
                                     <div class="col-md-12 col-sm-12 disply-left-right-align">
                                         <div class="col-md-6 col-sm-6 disply-left-right-inner hotels-des-left-side">
                                             <div class="hotels-detail-heading-text">
-                                                <p>{{nl2br($propertyDetail['data']->detail_section2_title)}}</p>
+                                                <p>{!! nl2br($propertyDetail['data']->detail_section2_title) !!}</p>
                                             </div>
                                             <div class="hotels-detail-description-text">
                                                 <p class="hotel-description-text">
-                                                    {{nl2br($propertyDetail['data']->detail_section2_description_box1)}}
+                                                    {!! nl2br($propertyDetail['data']->detail_section2_description_box1)!!}
                                                 </p>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-sm-6 disply-left-right-inner hotels-showcase-right-side">
                                             <div class="hotels-image-showcase-des-text">
                                                 <p class="hotel-description-text">
-                                                    {{nl2br($propertyDetail['data']->detail_section2_description_box2)}}
+                                                    {!! nl2br($propertyDetail['data']->detail_section2_description_box2) !!}
                                                     <br>
 <!--                                                        <span class="pull-right">Situated in Norrmalm</span>-->
                                                 </p>

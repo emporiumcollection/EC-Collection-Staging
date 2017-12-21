@@ -308,6 +308,7 @@
                                 <div class="serach-page-menu">
                                     <ul>
                                         <li><a href="{{URL::to('luxurytravel/Hotel?ref=oc')}}">Hotels</a></li>
+										<li><a href="http://www.emporium-yachts.com/luxurytravel/Yachts">Yachts</a></li>
                                         <!--<li><a href="{{URL::to('luxurytravel/Villas')}}">Villas</a></li>-->
                                         <!--<li><a href="{{URL::to('luxurytravel/Safari Lodges')}}">Safari</a></li>-->
                                         <!--<li><a href="{{URL::to('luxurytravel/Spas')}}">Spa's</a></li>-->
@@ -343,27 +344,27 @@
                         <div class="width-100 holiday-type-image-align ">
                             <div class="width-20">
                                 <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoBeachHotels.jpg')}}" alt=""/>
-                                <a href="{{URL::to('search?s=Beach Hotels&ref=sye&landing_page=1')}}"><h3 class="hover-tittles">Go Beach Hotels</h3></a>
+                                <a href="{{URL::to('search?s=Beach Hotels&ref=sye&landing_page=1')}}"><h3 class="hover-tittles">Luxury Beach Hotels</h3></a>
                             </div>
                             <div class="width-20">
                                 <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoGreenHotels.jpg')}}" alt=""/>
-                                <a href="{{URL::to('search?s=Green Properties&ref=sye&landing_page=1')}}"><h3 class="hover-tittles">Go Green Hotels</h3></a>
+                                <a href="{{URL::to('search?s=Green Properties&ref=sye&landing_page=1')}}"><h3 class="hover-tittles">Luxury Green Hotels</h3></a>
                             </div>
                             <div class="width-20">
                                 <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoUrbanHotels.jpg')}}" alt=""/>
-                                <a href="{{URL::to('search?s=Go Urban Hotels&ref=sye&landing_page=1')}}"><h3 class="hover-tittles">Go Urban Hotels</h3></a>
+                                <a href="{{URL::to('search?s=Go Urban Hotels&ref=sye&landing_page=1')}}"><h3 class="hover-tittles">Luxury Urban Hotels</h3></a>
                             </div>
                             <div class="width-20">
                                 <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoInfinityPoolHotels.jpg')}}" alt=""/>
-                                <a href="{{URL::to('search?s=Infinity Pools&ref=sye&landing_page=1')}}"><h3 class="hover-tittles">Go Infinity Pools</h3></a>
+                                <a href="{{URL::to('search?s=Infinity Pools&ref=sye&landing_page=1')}}"><h3 class="hover-tittles">Luxury Infinity Pools</h3></a>
                             </div>
                             <div class="width-20">
                                 <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoSpaandWellnessHotels.jpg')}}" alt=""/>
-                                <a href="{{URL::to('search?s=Spa and Wellness Hotels&ref=sye&landing_page=1')}}"><h3 class="hover-tittles">Go Spa and Wellness Hotels</h3></a>
+                                <a href="{{URL::to('search?s=Spa and Wellness Hotels&ref=sye&landing_page=1')}}"><h3 class="hover-tittles">Luxury Spa and Wellness Hotels</h3></a>
                             </div>
                             <div class="width-20">
                                 <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoMountainaandSkiResorts.jpg')}}" alt=""/>
-                                <a href="{{URL::to('search?s=Mountain Ski Resorts&ref=sye&landing_page=1')}}"><h3 class="hover-tittles">Go Mountains and Skin Resorts</h3></a>
+                                <a href="{{URL::to('search?s=Mountain Ski Resorts&ref=sye&landing_page=1')}}"><h3 class="hover-tittles">Luxury Mountains and Skin Resorts</h3></a>
                             </div>
                             <div class="width-20">
                                 <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoYogaHotels.jpg')}}" alt=""/>
@@ -673,6 +674,7 @@
 													<div class="serach-page-menu">
 														<ul>
 															<li><a href="{{URL::to('luxurytravel/Hotel?ref=oc')}}">Hotels</a></li>
+															<li><a href="http://www.emporium-yachts.com/luxurytravel/Yachts">Yachts</a></li>
 														</ul>
 													</div>
                                                     <div class="design-locations-logo">
@@ -692,22 +694,22 @@
                                                                     <div class="dl-filter">
                                                                         <form>
                                                                             <div class="form-group post-filter-inputs">
-                                                                                <label><a href="{{URL::to('search?s=Beach Hotels')}}">Go Beach Hotels</a></label>
+                                                                                <label><a href="{{URL::to('search?s=Beach Hotels')}}">Luxury Beach Hotels</a></label>
                                                                             </div> 
                                                                             <div class="form-group post-filter-inputs">
-                                                                                <label><a href="{{URL::to('search?s=Green Properties')}}">Go Green Hotels</a></label>
+                                                                                <label><a href="{{URL::to('search?s=Green Properties')}}">Luxury Green Hotels</a></label>
                                                                             </div> 
                                                                             <div class="form-group post-filter-inputs">
-                                                                                <label><a href="{{URL::to('search?s=Go Urban Hotels')}}">Go Urban Hotels</a></label>
+                                                                                <label><a href="{{URL::to('search?s=Go Urban Hotels')}}">Luxury Urban Hotels</a></label>
                                                                             </div> 
                                                                             <div class="form-group post-filter-inputs">
-                                                                                <label><a href="{{URL::to('search?s=Infinity Pools')}}">Go Infinity Pools</a></label>
+                                                                                <label><a href="{{URL::to('search?s=Infinity Pools')}}">Luxury Infinity Pools</a></label>
                                                                             </div>
                                                                             <div class="form-group post-filter-inputs">
-                                                                                <label><a href="{{URL::to('search?s=Spa and Wellness Hotels')}}">Go Spa and Wellness Hotels</a></label>
+                                                                                <label><a href="{{URL::to('search?s=Spa and Wellness Hotels')}}">Luxury Spa and Wellness Hotels</a></label>
                                                                             </div> 
                                                                             <div class="form-group post-filter-inputs">
-                                                                                <label><a href="{{URL::to('search?s=Mountain Ski Resorts')}}">Go Mountains and Skin Resorts</a></label>
+                                                                                <label><a href="{{URL::to('search?s=Mountain Ski Resorts')}}">Luxury Mountains and Skin Resorts</a></label>
                                                                             </div> 
                                                                             <div class="form-group post-filter-inputs">
                                                                                 <label><a href="{{URL::to('search?s=Yoga Hotels')}}">Discover Yoga Hotels</a></label>
@@ -791,6 +793,7 @@
 											<div class="serach-page-menu">
 												<ul>
 													<li><a href="{{URL::to('luxurytravel/Hotel?ref=oc')}}">Hotels</a></li>
+													<li><a href="http://www.emporium-yachts.com/luxurytravel/Yachts">Yachts</a></li>
 												</ul>
 											</div>
                                         </div>
@@ -811,35 +814,35 @@
                                                     <div class="width-20">
                                                         <a href="{{URL::to('search?s=Beach Hotels&ref=sye_small')}}">
                                                             <img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoBeachHotels.jpg'),100,170,199)}}" alt=""/>
-                                                            <span class="link-txt hover-cation">Go Beach Hotels</span>
+                                                            <span class="link-txt hover-cation">Luxury Beach Hotels</span>
                                                         </a>
 
                                                     </div>
                                                     <div class="width-20">
                                                         <a href="{{URL::to('search?s=Green Properties&ref=sye_small')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoGreenHotels.jpg'),100,170,199)}}" alt=""/>
-                                                            <span class="link-txt hover-cation">Go Green Hotels</span>
+                                                            <span class="link-txt hover-cation">Luxury Green Hotels</span>
                                                         </a>
                                                     </div>
                                                     <div class="width-20">
                                                         <a href="{{URL::to('search?s=Go Urban Hotels&ref=sye_small')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoUrbanHotels.jpg'),100,170,199)}}" alt=""/>
-                                                            <span class="link-txt hover-cation">Go Urban</span>
+                                                            <span class="link-txt hover-cation">Luxury Urban</span>
                                                         </a>
                                                     </div>
                                                     <div class="width-20">
                                                         <a href="{{URL::to('search?s=Infinity Pools&ref=sye_small')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoInfinityPoolHotels.jpg'),100,170,199)}}" alt=""/>
-                                                            <span class="link-txt hover-cation">Go Infinity Pools</span>
+                                                            <span class="link-txt hover-cation">Luxury Infinity Pools</span>
                                                         </a>
                                                     </div>
                                                     <div class="width-20">
                                                         <a href="{{URL::to('search?s=Spa and Wellness Hotels&ref=sye_small')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoSpaandWellnessHotels.jpg'),100,170,199)}}" alt=""/>
-                                                            <span class="link-txt hover-cation">Go Spa and Wellness Hotels</span>
+                                                            <span class="link-txt hover-cation">Luxury Spa and Wellness Hotels</span>
                                                         </a>
                                                     </div>
                                                 </div>
                                                 <div class="width-100 holiday-type-image-align ">
                                                     <div class="width-20">
                                                         <a href="{{URL::to('search?s=Mountain Ski Resorts&ref=sye_small')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoMountainaandSkiResorts.jpg'),100,170,199)}}" alt=""/>
-                                                            <span class="link-txt hover-cation">Go Mountains and Skin Resorts</span>
+                                                            <span class="link-txt hover-cation">Luxury Mountains and Skin Resorts</span>
                                                         </a>
                                                     </div>
                                                     <div class="width-20">
