@@ -238,20 +238,20 @@
 							</div>
 							{{--*/ $relatimg = URL::to('uploads/property_imgs_thumbs/front_property_'.$relatedproperties[0]->folder_id.'_'.$relatedproperties[0]->file_name); /*--}}
 							<div class="new-hotel-image" style="background-image:url(http://www.emporium-voyage.com/uploads/property_imgs_thumbs/xfront_property_4505_Emporium-Voyage-Hotel-Zoo-Berlin00017.jpg.pagespeed.ic.nY-effTxow.jpg)">
-													<div class="new-hotels-image-tittle">
-														<h2 class="new-hotel-name">Hotel Zoo Berlin </h2>
-														<div class=" new-hotel-add">
-															<p>New York City</p>
-															<p>United States</p>
-														</div>
-													</div>
-													<div class="clearfix"></div>
-													<div class="new-hotel-view-more-btn">
-														<a class="" href="http://www.emporium-voyage.com/hotel-zoo-berlin-" tabindex="0">
-															View Hotel
-														</a>
-													</div>
-												</div>
+                                                            <div class="new-hotels-image-tittle">
+                                                                    <h2 class="new-hotel-name">Hotel Zoo Berlin </h2>
+                                                                    <div class=" new-hotel-add">
+                                                                            <p>New York City</p>
+                                                                            <p>United States</p>
+                                                                    </div>
+                                                            </div>
+                                                            <div class="clearfix"></div>
+                                                            <div class="new-hotel-view-more-btn">
+                                                                    <a class="" href="http://www.emporium-voyage.com/hotel-zoo-berlin-" tabindex="0">
+                                                                            View Hotel
+                                                                    </a>
+                                                            </div>
+                                                    </div>
 							
 							<a class="bootom-view-next-btn" href="{{URL::to($relatedproperties[0]->property_slug)}}">
 								Visit All Hotels DOI
@@ -262,7 +262,7 @@
 					@if(!empty($sidebardetailAds))
 					@foreach($sidebardetailAds as $adsdetail)
 					<div class="slick-cstm-width">
-						<a href="http://{{$adsdetail->adv_link}}"><img src="{{URL::to('uploads/users/advertisement/'.$adsdetail->adv_img)}}"></a>
+<!--						<a href="http://{{$adsdetail->adv_link}}"><img src="{{URL::to('uploads/users/advertisement/'.$adsdetail->adv_img)}}"></a>-->
 					</div>
 					@endforeach
 					@endif					
@@ -300,8 +300,6 @@
     nextArrow: false,
     infinite: true,
     autoplay: true,
-    autoplaySpeed: 5000,
-    speed: 1000,
 });
 </script>
 
