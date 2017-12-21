@@ -26,7 +26,7 @@
 					@if($propertyDetail['data']->assign_detail_city!='')
 						@if(!empty($relatedgridpropertiesArr))
 							<div class="container">
-								<h2 class="bar-name-text-style">View our selection of Luxury Hotels in {{$propertyDetail['data']->assign_detail_city}}</h2>
+								<h2 class="bar-name-text-style" style="color:#000;">View our selection of Luxury Hotels in {{$propertyDetail['data']->assign_detail_city}}</h2>
 								<div class="row">
 									<?php
 									if($relatedgridpropertiesArr) {
@@ -98,9 +98,6 @@
 																</h2>
 															</div>
 															<div class="entire_story MrgTop5 ai-view-hotels-tittle">
-																<a class="textButton arrowButton detail_view MrgTop5" rel="<?php echo $props['data']->id; ?>" href="#">
-																	Quick View 
-																</a>
 																<a class="textButton arrowButton MrgTop5" rel="<?php echo $props['data']->id; ?>" href="<?php echo URL::to($props['data']->property_slug); ?>">
 																	Detail View 
 																</a>
