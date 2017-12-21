@@ -435,7 +435,6 @@
 								
 								@if(!empty($landinggridpropertiesArr))
 									<div class="container" style="margin-top:20px;">
-										<h2 class="bar-name-text-style" style="color:#000;">View our selection of Luxury Hotels in {{$propertyDetail['data']->assign_detail_city}}</h2>
 										<div class="row">
 											<?php
 											if($landinggridpropertiesArr) {
