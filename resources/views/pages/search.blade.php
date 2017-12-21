@@ -1039,7 +1039,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                 chtml += '<div class="col-md-6 col-xs-12">';
                 chtml += '<select onchange="filter_destination(this.value ,\'city\')">';
                 $.each($.parseJSON(data.cities), function(idx, cobj) {
-                    chtml += '<option value="' + cobj.id + '">' + cobj.category_name + '(' + cobj.totalproperty + ')</option>
+                    chtml += '<option value="' + cobj.id + '">' + cobj.category_name + '(' + cobj.totalproperty + ')</option>';
                 })
                 chtml += '</select>';
                 chtml += '</div>';
