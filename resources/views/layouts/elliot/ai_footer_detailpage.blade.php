@@ -50,17 +50,13 @@
 															<a title="<?php echo $props['image']->file_name; ?>" class="picture_link-" href="<?php echo URL::to($props['data']->property_slug); ?>">
 																	<div class="overlay-text-frezeed">
 																		<h2 class="yacts-tittle-text"><?php echo $props['data']->property_name; ?></h2>
-																		<p class="yacths-des-text yacths-des-text-align"><span>&euro;<?php echo $props['data']->price; ?> </span>|<span>37.7mm</span>|<span>10 Gusets</span></p>
+																		<p class="yacths-des-text yacths-des-text-align"><span>&euro;<?php echo $props['data']->price; ?> </span>|<span>37.7mm</span>|<span>10 Guests</span></p>
 																	</div>
 																	<div class="overlay-text hotel-overlay-text">
 																		<h2 class="yacts-tittle-text"><?php echo $props['data']->property_name; ?></h2>
 																		<p class="yacths-des-text yacths-des-text-align"><span>From &euro;<?php echo $props['data']->price; ?> </span><?php echo (isset($props['data']->category_name))? '|<span>'.$props['data']->category_name.'</span>' : ''; ?></p>
 																	</div>
-																	<div class="overlay-text yacts-overlay-text">
-																		<h2 class="yacts-tittle-text"><?php echo $props['data']->property_name; ?></h2>
-																		<p class="yacths-des-text yacths-des-text-align"><span>&euro;<?php echo $props['data']->price; ?> </span>|<span>37.7mm</span>|<span>10 Gusets</span></p>
-																		<p class="yacths-des-text">2015H</p>
-																	</div>
+																	
 																<img alt="<?php echo $props['image']->file_name; ?>" src="<?php echo URL::to('uploads/property_imgs_thumbs/front_property_'.$props['image']->folder_id.'_'.$props['image']->file_name); ?>" class="img-responsive">
 																</a>
 																<?php
@@ -69,17 +65,13 @@
 																?>
 															<div class="overlay-text-frezeed">
 																		<h2 class="yacts-tittle-text"><?php echo $props['data']->property_name; ?></h2>
-																		<p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Gusets</span></p>
+																		<p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>
 																	</div>
 																	<div class="overlay-text hotel-overlay-text">
 																		<h2 class="yacts-tittle-text"><?php echo $props['data']->property_name; ?></h2>
 																		<p class="yacths-des-text yacths-des-text-align"><span>From &euro;<?php echo $props['data']->price; ?> </span>|<span>New York</span></p>
 																	</div>
-																	<div class="overlay-text yacts-overlay-text">
-																		<h2 class="yacts-tittle-text"><?php echo $props['data']->property_name; ?></h2>
-																		<p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Gusets</span></p>
-																		<p class="yacths-des-text">2015H</p>
-																	</div>
+																	
 															<?php
 																echo '<img class="img-responsive" src="', URL::to('sximo/assets/images/img-1.jpg'), '" alt="">';
 															}
