@@ -812,7 +812,9 @@ $(window).scroll(function () {
         var nxtpg = $('#nxtpg').val();
             var element_position = $('#brgrid').offset().top + $('#brgrid').outerHeight() - window.innerHeight;
             var y_scroll_pos = $(window).scrollTop() + 100;
-            if ((y_scroll_pos >= element_position)) {
+          //  if ((y_scroll_pos >= element_position)) {
+            if ($(window).scrollTop() == $(document).height() - $(window).height()){
+    
                 var it_scroll = true;
                 scrollDownloadData(it_scroll);
                 pageCounter++;
