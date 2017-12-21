@@ -736,6 +736,7 @@
                                             @endif
                                         </div>
                                     </div>
+                                    <div id="loaderProperty"></div>
                                     <div id="brgrid"></div>
                                     <input type="hidden" id="nxtpg" value="{{$newpage}}">
                                     <input type="hidden" id="ttlpg" value="{{$totpage}}">
@@ -813,9 +814,9 @@ $(window).scroll(function () {
             var element_position = $('#brgrid').offset().top + $('#brgrid').outerHeight() - window.innerHeight;
             var y_scroll_pos = $(window).scrollTop() + 100;
           //  if ((y_scroll_pos >= element_position)) {
-            if(($(window).scrollTop() + 750) >= $(document).height()) {
+            if(($(window).scrollTop() + 900) >= $(document).height()) {
 
-    
+                $('#loaderProperty').show();
                 var it_scroll = true;
                 //scrollDownloadData(it_scroll);
                 pageCounter++;
@@ -1724,13 +1725,13 @@ url: "{{ URL::to('filter_search_destionation')}}",
 
            <style>
 /* Center the loader */
-#loader {
+#loaderProperty {
   
 
   z-index: 1;
   width: 30px;
   height: 30px;
- 
+ display: none;
   border: 4px solid #f0f0f0;
   border-radius: 50%;
   border-top: 4px solid #000;
