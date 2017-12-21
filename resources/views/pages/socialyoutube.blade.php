@@ -359,7 +359,7 @@
                                 <div class="sticky-header-offset"></div>
 								
                                 <div class="col-md-12 col-sm-12 col-xs-12 yachts-main-bg">
-                                    <div test id="listproperties">
+                                    <div id="listproperties">
                                         <div class="row">
 											<div class="col-md-12 col-sm-12 col-xs-12">
 												@if($channel_url!='')
