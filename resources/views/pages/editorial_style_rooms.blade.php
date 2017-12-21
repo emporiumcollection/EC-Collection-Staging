@@ -237,13 +237,6 @@
 								</div>
 							</div>
 							{{--*/ $relatimg = URL::to('uploads/property_imgs_thumbs/front_property_'.$relatedproperties[0]->folder_id.'_'.$relatedproperties[0]->file_name); /*--}}
-                                                        @if(!empty($sidebardetailAds))
-					@foreach($sidebardetailAds as $adsdetail)
-					<div class="slick-cstm-width">
-						<a href="http://{{$adsdetail->adv_link}}"><img src="{{URL::to('uploads/users/advertisement/'.$adsdetail->adv_img)}}"></a>
-					</div>
-					@endforeach
-					@endif	
 							<div class="new-hotel-image" style="background-image:url(http://www.emporium-voyage.com/uploads/property_imgs_thumbs/xfront_property_4505_Emporium-Voyage-Hotel-Zoo-Berlin00017.jpg.pagespeed.ic.nY-effTxow.jpg)">
                                                             <div class="new-hotels-image-tittle">
                                                                     <h2 class="new-hotel-name">Hotel Zoo Berlin </h2>
@@ -266,7 +259,13 @@
 						</div>
 						@endif
 					</div>
-									
+					@if(!empty($sidebardetailAds))
+					@foreach($sidebardetailAds as $adsdetail)
+					<div class="slick-cstm-width">
+						<a href="http://{{$adsdetail->adv_link}}"><img src="{{URL::to('uploads/users/advertisement/'.$adsdetail->adv_img)}}"></a>
+					</div>
+					@endforeach
+					@endif					
                 </section>
 
             </div>
