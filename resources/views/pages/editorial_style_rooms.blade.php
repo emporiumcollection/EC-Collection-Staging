@@ -31,7 +31,7 @@
         .vegasModelContent {
             background: rgba(0, 0, 0, 0.92) none repeat scroll 0 0;
             opacity: 1;
-            height: 100%;
+            min-height: 63em;
             border-radius: 0px;
             float: left;
         }
