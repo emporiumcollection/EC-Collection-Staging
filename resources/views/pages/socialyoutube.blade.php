@@ -274,6 +274,7 @@
             
             .voyagemenuTop {
                     color: #6e6e6e !important;
+                    border-bottom: 3px transparent solid !important;
                     padding: 0px 25px 15px 25px !important;
             }
             
