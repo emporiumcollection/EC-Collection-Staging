@@ -112,17 +112,17 @@
                                     <form action="http://just-emarketing.com/app/index.php/lists/fb5156qrasf4a/subscribe" method="post" accept-charset="utf-8" target="_blank">
 										<div class="">
 									
-										<input type="text" class="form-control newsletter-style" name="EMAIL" placeholder="Email Address" value="" required="">
+										<input type="text" class="form-control newsletter-style" name="EMAIL" placeholder="First Name" value="" required="">
 										</div>
 
 										<div class="">
 										
-										<input type="text" class="form-control newsletter-style" name="FNAME" placeholder="First Name" value="">
+										<input type="text" class="form-control newsletter-style" name="FNAME" placeholder="Last Name" value="">
 										</div>
 
 										<div class="">
 										
-										<input type="text" class="form-control newsletter-style" name="LNAME" placeholder="Last Name" value="">
+										<input type="text" class="form-control newsletter-style" name="LNAME" placeholder="Email" value="">
 										</div>
 
 										<div class="">
