@@ -273,7 +273,12 @@
             /* Harman AIC menu css */
             
             .voyagemenuTop {
-                color: #6E6E6E !important;
+                    color: #6e6e6e !important;
+                    padding: 0 15px 0 10px !important;
+            }
+            
+            .vogasMenuUl {
+                margin: 20px 0px 0px 70px;
             }
             
         </style>
@@ -334,13 +339,25 @@
 
                                                                                       <!-- Collect the nav links, forms, and other content for toggling -->
                                                                                       <div class="collapse navbar-collapse collpsemenuVoyage" id="navbar-collapse-3">
-                                                                                        <ul class="nav navbar-nav">
+                                                                                        <ul class="nav navbar-nav vogasMenuUl">
                                                                                             <li><a class="voyagemenuTop" href="#">UBERSICHT</a></li>
                                                                                           <li><a class="voyagemenuTop" href="#">VIDEOS</a></li>
                                                                                           <li><a class="voyagemenuTop" href="#">PLAYLISTS</a></li>
                                                                                           <li><a class="voyagemenuTop" href="#">KANALE</a></li>
                                                                                           <li><a class="voyagemenuTop" href="#">DISKUSSION</a></li>
                                                                                           <li><a class="voyagemenuTop" href="#">KANALINFO</a></li>
+                                                                                          <li class="BlockLi">
+                                                                                            <a class="popupa" href="#search">
+                                                                                                <i class="fa fa-search modelSearchi" aria-hidden="true"></i>
+                                                                                            </a>
+                                                                                          </li>
+                                                                                          <div id="search">
+                                                                                            <button type="button" class="close"><i class="fa fa-times" aria-hidden="true"></i></button>
+                                                                                                <form>
+                                                                                                    <input type="text" value="" placeholder="Search Here" />
+                                                                                                    <!--                                <button type="submit" class="btn btn-primary popUpSubmit">Search</button>-->
+                                                                                                </form>
+                                                                                          </div>
                                                                                         </ul>
                                                                                       </div><!-- /.navbar-collapse -->
                                                                                     </div><!-- /.container -->
