@@ -556,8 +556,24 @@ return fasle;
                                     <div class="row">
                                         <div class="locator clear"></div>
                                     </div>
+                                    <div id="cityfilters">
+                                            @if(!empty($cities))
+
+                                         <div class="row" style="padding-bottom: 15px;">
+                                             <div class="col-md-6 col-xs-12 text-right">
+                                                Filter By Luxury Destination
+                                             </div>
+                                             <div class="col-md-6 col-xs-12">
+                                                <select onchange="filter_destination(this.value ,'city')">
+                                                    @foreach($cities as $citieVal)
+                                                    <option value="{{ $citieVal->id }}">{{ $citieVal->category_name.'('.$citieVal->totalproperty.')'}}</option>
+                                                    @endforeach
+                                                </select>
+                                             </div>
+                                         </div>
+                                    </div>
                                     <h2 class="current-page-heading">Our Selection of <?php echo (isset($type)) ? $type : 'Premium Selected Suites'; ?></h2>
-                                    <div id="cityfilters"></div>
+                                    
 
                                     <div id="listproperties">
                                         <div class="row">
@@ -1353,7 +1369,7 @@ return fasle;
                                 $('#cityfilters').html('');
                                 }
                                 if (typeof $.parseJSON(data.cities) !== 'undefined' && $.parseJSON(data.cities).length > 0) {
-                                var ttp = p - 1;
+                                /*var ttp = p - 1;
                                 chtml += '<div class="row">';
                                 chtml += '<div class="col-md-12">';
                                 chtml += '<div class="clear-all-filters"><a href="javascript:void(0)"><i class="fa fa-repeat" aria-hidden="true"></i>&nbsp;Clear Filters</a></div>';
@@ -1436,7 +1452,7 @@ return fasle;
                                 chtml += '$(\'.top-slick-filtes li\').removeClass("active");';
                                 chtml += '$(\'.top-slick-filtes li.select-all\').addClass("active");';
                                 chtml += '});';
-                                chtml += '<\/script>';
+                                chtml += '<\/script>';*/
                                 $('#cityfilters').html(chtml);
                                 }
                                 }
