@@ -12,7 +12,7 @@
                                 <div class="col-md-12 col-sm-5 col-xs-12  footer-padding-0">
                                     {{--*/ $footer_menus = SiteHelpers::menus('footer') /*--}}
 									@foreach ($footer_menus as $fmenu)
-										<div class="col-md-3 col-sm-4 col-xs-12 {{($fmenu!=$footer_menus[0]) ? 'footer-padding-0' : ''}}">
+										<div class="col-md-2 col-sm-4 col-xs-12 {{($fmenu!=$footer_menus[0]) ? 'footer-padding-0' : ''}}">
 											<div class="row-">
 												<div class="accordion res-design-footer">
 													@if(CNF_MULTILANG ==1 &&  isset($fmenu['menu_lang']['title'][Session::get('lang')]))
@@ -43,37 +43,69 @@
 									@endforeach
                                                                         <!-- AIC Harman: footer sections -->
                                                                         
-                                                                            <div class="col-md-3 col-sm-4 col-xs-12 footer-padding-0">
-											<div class="row-">
-												<div class="accordion res-design-footer">
-																											Company
-													</div>
-												<div class="panel">
-																									<ul class="footer-nav-menu footer-nav-menu-align">
-																													<li>
-																<a href="#">
-																																			Hotel Membership
-																																	</a>
-															</li>
-																													<li>
-																<a href="#">
-																																			Members Portal
-																																	</a>
-															</li>
-																													<li>
-																<a href="#">
-																																			Reservations/Cancelations
-																																	</a>
-															</li>
-																													<li>
-																<a href="#">
-																																			Our Mission
-																																	</a>
-															</li>
-																											</ul>
-																								</div>
-											</div>
-										</div>
+                                                                            <div class="col-md-2 col-sm-4 col-xs-12 footer-padding-0">
+                                                                                <div class="row-">
+                                                                                    <div class="accordion res-design-footer">
+                                                                                                                                                                                                            Company
+                                                                                    </div>
+                                                                                        <div class="panel">
+                                                                                                                                                                                                <ul class="footer-nav-menu footer-nav-menu-align">
+                                                                                                                                                                                                                                <li>
+                                                                                            <a href="#">
+                                                                                                                                                                                                                                                    Hotel Membership
+                                                                                                                                                                                                                                    </a>
+                                                                                    </li>
+                                                                                                                                                                                                    <li>
+                                                                                            <a href="#">
+                                                                                                                                                                                                                                                    Members Portal
+                                                                                                                                                                                                                                    </a>
+                                                                                    </li>
+                                                                                                                                                                                                    <li>
+                                                                                            <a href="#">
+                                                                                                                                                                                                                                                    Reservations/Cancelations
+                                                                                                                                                                                                                                    </a>
+                                                                                    </li>
+                                                                                                                                                                                                    <li>
+                                                                                            <a href="#">
+                                                                                                                                                                                                                                                    Our Mission
+                                                                                                                                                                                                                                    </a>
+                                                                                    </li>
+                                                                                                                                                                                    </ul>
+                                                                                                                                                                                        </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        
+                                                                            <div class="col-md-2 col-sm-4 col-xs-12 footer-padding-0">
+                                                                                <div class="row-">
+                                                                                    <div class="accordion res-design-footer">
+                                                                                                                                                                                                            Company
+                                                                                    </div>
+                                                                                        <div class="panel">
+                                                                                                                                                                                                <ul class="footer-nav-menu footer-nav-menu-align">
+                                                                                                                                                                                                                                <li>
+                                                                                            <a href="#">
+                                                                                                                                                                                                                                                    Hotel Membership
+                                                                                                                                                                                                                                    </a>
+                                                                                    </li>
+                                                                                                                                                                                                    <li>
+                                                                                            <a href="#">
+                                                                                                                                                                                                                                                    Members Portal
+                                                                                                                                                                                                                                    </a>
+                                                                                    </li>
+                                                                                                                                                                                                    <li>
+                                                                                            <a href="#">
+                                                                                                                                                                                                                                                    Reservations/Cancelations
+                                                                                                                                                                                                                                    </a>
+                                                                                    </li>
+                                                                                                                                                                                                    <li>
+                                                                                            <a href="#">
+                                                                                                                                                                                                                                                    Our Mission
+                                                                                                                                                                                                                                    </a>
+                                                                                    </li>
+                                                                                                                                                                                    </ul>
+                                                                                                                                                                                        </div>
+                                                                                </div>
+                                                                            </div>
                                                                         
                                                                         <!-- AIC Harman: footer sections end -->
                                                                         
