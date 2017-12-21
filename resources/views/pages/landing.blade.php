@@ -89,7 +89,228 @@
                 width: 100%;
             }
         </style>
-		
+		<style>
+            .sidenavpost .bh-search-input
+            {
+                padding-left: 0px !important;
+            }
+
+            .sidenavpost .tt-menu
+            {
+                left: 0% !important;
+                color:#fff !important;
+            }
+
+            .sidenavpost a
+            {
+                padding: 0 !important;
+                font-size: 14px !important;
+            }
+            .sidenavpost .closebtn
+            {
+                font-size: 36px !important;
+            }
+            .black-submit-btn {
+                background-color: transparent;
+                border: 1px solid #505050;
+                padding: 5px;
+                text-align: center;
+                width: 100%;
+            }
+
+            .slick-prev, .slick-next {
+                color: #fff;
+                height: auto;
+                padding: 0;
+                position: absolute;
+                width: 20px;
+            }
+            /*            .top-slick-filtes {
+                            width: 80%;
+                        }*/
+            .slick-prev::before, .slick-next::before {
+                color: #fff;
+                font-size: 26px;
+                font-weight: bold;
+                line-height: 1;
+                opacity: unset;
+            }
+            .top-nav-cities-filter .slick-prev, .slick-next {
+                background-color: #322e2e;
+                height: 100%;
+                width: 80px;
+            }
+            .top-nav-cities-filter .slick-prev, .slick-next:hover, .top-nav-cities-filter .slick-prev, .slick-next:focus, .top-nav-cities-filter .slick-prev, .slick-next:active {
+                background-color: #322e2e;
+            }
+            /*            .top-slick-filtes .slick-next {
+                            right: -85px;
+                        }
+                        .top-slick-filtes .slick-prev {
+                            left: -85px;
+                        }
+                        .top-slick-filtes .slick-prev.slick-arrow.slick-disabled, .top-slick-filtes .slick-next.slick-arrow.slick-disabled  {
+                            background-color: #aaa9a9;
+                        }*/
+            #cityfilters .slick-slide {
+                height: auto;
+            }
+            .overlay-text {
+                background: rgba(0, 0, 0, 0.68) none repeat scroll 0 0;
+                bottom: 0;
+                display: none;
+                padding: 30px 10px;
+                position: absolute;
+                text-align: center;
+                top: 0;
+                width: 100%;
+            }
+            .overlay-text .yacts-tittle-text, .overlay-text-frezeed .yacts-tittle-text{
+                font-family: serif;
+                border-bottom: 3px solid #f3bc3a;
+                color: #fff;
+                overflow-wrap: break-word;
+                font-size: 20px;
+                font-style: normal;
+                font-style: italic;
+            }
+            .yacths-des-text {
+                color: #fff;
+                font-size: 18px;
+                margin: 0;
+            }
+            .yacths-des-text-align {
+                margin-top: 4px;
+            }
+            .yacths-des-text span {
+                padding: 0px 5px;
+            }
+            .cat_product_medium1:hover .overlay-text {
+                display: block;
+            }
+            .cat_product_medium1:hover .overlay-text-frezeed {
+                display: none;
+            }
+            .overlay-text-frezeed {
+                background: rgba(0, 0, 0, 0.4) none repeat scroll 0 0;
+                bottom: 0;
+                left: 0;
+                padding-top: 88px;
+                position: absolute;
+                right: 0;
+                text-align: center;
+                top: 0;
+            }
+            .overlay-text-frezeed .yacts-tittle-text {
+                border: medium none;
+                font-size: 16px;
+            }
+            .overlay-text-frezeed .yacths-des-text.yacths-des-text-align {
+                font-size: 14px;
+                margin-top: 2px;
+            }
+            .cat_product_medium1:hover .ai-grid-page-node-pic-box {
+                transform: scale(1.06);
+                transition: all 0.2s ease-out 0s;
+            }
+            .cat_product_medium1 {
+                overflow: hidden;
+            }
+            .hotel .overlay-text-frezeed {
+                display: none;
+            }
+            .hotel .overlay-text .yacts-tittle-text, .overlay-text-frezeed .yacts-tittle-text {
+                border-bottom: medium none;
+                font-size: 17px;
+            }
+            .hotel .yacths-des-text {
+                font-size: 14px;
+            }
+            .hotel .grid-box-main .yacts-overlay-text{
+                display: none;
+            }
+            .yachts .grid-box-main .hotel-overlay-text{
+                display: none;
+            }
+            .hotel .overlay-text {
+                padding: 37px 10px 20px;
+            }
+            .cat_product_medium1 .pictureBox.gridPicture {
+                position: relative !important;
+            }
+            .cat_product_medium1 .ai-grid-page-node-pic-box {
+                position: relative !important;
+            }
+            .ai-grid-tiitles a {
+                color: #000 !important;
+                font-size: 18px;
+            }
+            .ai-view-hotels-tittle a {
+                background: transparent url("../../../uploads/images/arrow_right_black.png") no-repeat scroll right 5px;
+                clear: left;
+                float: left;
+                font-family: serif;
+                font-size: 14px;
+                padding: 0 7px 0 0;
+            }
+            .ai-view-hotels-tittle a {
+                color: #9b9b9b;
+            }
+            .ai-grid-tiitles h2 {
+                color: #000;
+                font-family: serif;
+                font-size: 17px;
+                font-style: italic;
+                height: auto;
+                margin-bottom: 0;
+                margin-top: 10px;
+            }
+            .ai-grid-tiitles h2:hover, .ai-grid-tiitles h2:focus, .ai-grid-tiitles h2:active {
+                color: #000;
+                font-family: serif;
+                font-size: 17px;
+                font-style: italic;
+                height: auto;
+                margin-bottom: 0;
+                margin-top: 10px;
+            }
+            .productData {
+                min-height: 250px;
+            }
+            .ai-grid-page-node-pic-box  img {
+                max-height: 165px !important;
+                min-height: 165px !important;
+                object-fit: cover;
+                object-position: 0 center;
+                vertical-align: middle;
+                width: 100%;
+            }
+            .ai-view-hotels-tittle a:hover, .ai-view-hotels-tittle a:focus, .ai-view-hotels-tittle a:active {
+                color: #000 !important;
+            }
+            .cat_product_medium1:hover  .textButton.arrowButton.MrgTop5.ai-filter-hotel-price-style{
+                display: none;
+            }
+            @media screen and (min-width: 1800px){
+                .ai-grid-page-node-pic-box  img {
+                    max-height: 250px !important;
+                    min-height: 250px !important;
+                }
+            }
+
+            img.propovericons {
+                position: absolute;
+                top: 5px;
+                right: 10px;
+                z-index: 100;
+                max-height: 80px !important;
+                width: 80px !important;
+                min-height: 80px !important;
+            }
+            .node-btn.active {
+                border-bottom: 2px solid;
+            }
+        </style>
 		<!-- Global site tag (gtag.js) - Google Analytics -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110391807-1"></script>
 		<script>
@@ -211,6 +432,98 @@
                                         </a>
                                     </div>
                                 </div>
+								
+								@if(!empty($landinggridpropertiesArr))
+									<div class="container" style="margin-top:20px;">
+										<h2 class="bar-name-text-style" style="color:#000;">View our selection of Luxury Hotels in {{$propertyDetail['data']->assign_detail_city}}</h2>
+										<div class="row">
+											<?php
+											if($landinggridpropertiesArr) {
+												$rw = 1;
+												$node_no = 1;
+												$ads_node = 0;
+												foreach($landinggridpropertiesArr as $props) { ?>
+													
+													<div class="productData col-xs-12 col-sm-6 col-md-3 col-lg-3 margin-bottom-10">
+														<div class="wrapperforliineedforlightboxremoval">
+															<div class="cat_product_medium1">
+																<div class="ai-grid-page-node-pic-box pictureBox gridPicture grid-box-main" >
+																	<?php
+																	if(array_key_exists('image', $props)) {
+																		?>
+																		@if($props['data']->editor_choice_property=='1')
+																			<img alt="editor_choice_property" class="propovericons" src="{{URL::to('sximo/images/editors-choice.png')}}">
+																		@elseif($props['data']->feature_property=='1')
+																			<img alt="editor_choice_property" class="propovericons" src="{{URL::to('sximo/images/featured-property.png')}}">
+																		@endif
+																	<a title="<?php echo $props['image']->file_name; ?>" class="picture_link-" href="<?php echo URL::to($props['data']->property_slug); ?>">
+																			<div class="overlay-text-frezeed">
+																				<h2 class="yacts-tittle-text"><?php echo $props['data']->property_name; ?></h2>
+																				<p class="yacths-des-text yacths-des-text-align"><span>&euro;<?php echo $props['data']->price; ?> </span>|<span>37.7mm</span>|<span>10 Guests</span></p>
+																			</div>
+																			<div class="overlay-text hotel-overlay-text">
+																				<h2 class="yacts-tittle-text"><?php echo $props['data']->property_name; ?></h2>
+																				<p class="yacths-des-text yacths-des-text-align"><span>From &euro;<?php echo $props['data']->price; ?> </span><?php echo (isset($props['data']->category_name))? '|<span>'.$props['data']->category_name.'</span>' : ''; ?></p>
+																			</div>
+																			
+																		<img alt="<?php echo $props['image']->file_name; ?>" src="<?php echo URL::to('uploads/property_imgs_thumbs/front_property_'.$props['image']->folder_id.'_'.$props['image']->file_name); ?>" class="img-responsive">
+																		</a>
+																		<?php
+																	}
+																	else {
+																		?>
+																	<div class="overlay-text-frezeed">
+																				<h2 class="yacts-tittle-text"><?php echo $props['data']->property_name; ?></h2>
+																				<p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>
+																			</div>
+																			<div class="overlay-text hotel-overlay-text">
+																				<h2 class="yacts-tittle-text"><?php echo $props['data']->property_name; ?></h2>
+																				<p class="yacths-des-text yacths-des-text-align"><span>From &euro;<?php echo $props['data']->price; ?> </span>|<span>New York</span></p>
+																			</div>
+																			
+																	<?php
+																		echo '<img class="img-responsive" src="', URL::to('sximo/assets/images/img-1.jpg'), '" alt="">';
+																	}
+																	?>
+																</div>
+																<div class="listDetails">
+																	<div class="photographBox ai-grid-tiitles">
+																		<h2>
+																			<a title="<?php echo $props['data']->property_name; ?>" class="photograph FltLft ai-filtreted-hotel-name" rel="<?php echo $props['data']->id; ?>" href="<?php echo URL::to($props['data']->property_slug); ?>">
+																				<?php echo $props['data']->property_name; ?>
+																			</a>
+																			<span class="FltRgt">
+																				<i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" <?php echo (array_key_exists('image', $props))? 'onclick="add_to_lightbox('.$props['image']->file_id.', '.$props['data']->id.');"' : ''; ?>></i>
+																				<a class="carticon" href="<?php echo URL::to($props['data']->property_slug); ?>"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>
+																			</span>
+																		</h2>
+																	</div>
+																	<div class="entire_story MrgTop5 ai-view-hotels-tittle">
+																		<a class="textButton arrowButton MrgTop5" rel="<?php echo $props['data']->id; ?>" href="<?php echo URL::to($props['data']->property_slug); ?>">
+																			Detail View 
+																		</a>
+
+																	</div>
+																	<div class="showOnHover">
+																		<div class="hover_request">
+																		</div>   
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<?php
+													if($rw%4==0) {
+														echo '</div><div class="row">';
+													}
+													$rw++;
+													$node_no++;
+												}
+											}
+											?>
+										</div>
+									</div>
+								@endif
                                 <div class="landing-page-footer-section">
                                     @if(!empty($landing_menus))
                                     <ul class="landing-page-footer-menu-style">
