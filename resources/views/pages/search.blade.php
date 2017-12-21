@@ -787,14 +787,14 @@ $(document).ready(function(){
             if ((y_scroll_pos >= element_position)) {
             var it_scroll = true;
             scrollDownloadData(it_scroll);
-            //console.log(y_scroll_pos + ' / ' +element_position);
+            console.log(y_scroll_pos + ' / ' +element_position +' ');
             }
             scrollTimer = setTimeout(function() {
             scrollTimer = null;
             lastScrollFireTime = new Date().getTime();
             var it_scroll = true;
             scrollDownloadData(it_scroll);
-            //console.log(y_scroll_pos + ' / ' +element_position);
+            console.log(y_scroll_pos + ' / ' +element_position+' settimeout');
             }, minScrollTime);
             }
         }
