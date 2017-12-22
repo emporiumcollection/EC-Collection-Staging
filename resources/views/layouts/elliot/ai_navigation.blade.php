@@ -1,6 +1,8 @@
 <style>
     .leftAlignCollpse {
-        padding-left: 0px !important;
+	padding: 14px 0px 14px 8px !important;
+	background: #f0f0f0;
+	margin-left: -17px;
     }
 </style>
 
