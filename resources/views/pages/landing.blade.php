@@ -826,14 +826,14 @@
                                                                                 <div id="destination-child{{$childDest->id}}-{{$subchildDest->id}}" class="panel-collapse collapse">
                                                                                     <ul class="where-box-sub-menu inner-level-sub-menu">
                                                                                         @foreach($childDest->childs as $_child)
-                                                                                            <li><a href="{{URL::to('search?continent='.$destination['maincat']->category_name.'&region='.$childDest->category_name.'&s='.$_child->category_name.'&ref=syd_small')}}">{{$_child->category_name}}</a></li>
+                                                                                            <li><a href="{{URL::to('luxury_destinations/'. str_replace('_',' ',$destination['maincat']->category_name).'/'. str_replace('_',' ',$childDest->category_name).'/'. str_replace('_',' ',$_child->category_name)))}}">{{$_child->category_name}}</a></li>
                                                                                         @endforeach
                                                                                     </ul>
                                                                                 </div>
                                                                         </div>
                                                                     </div>
                                                                     @else
-                                                                    <a href="{{URL::to('search?continent='.$destination['maincat']->category_name.'&region='.$childDest->category_name.'&s='.$subchildDest->category_name.'&ref=syd_small')}}">{{$subchildDest->category_name}}</a>
+                                                                    <a href="{{URL::to('luxury_destinations/'. str_replace('_',' ',$destination['maincat']->category_name).'/'. str_replace('_',' ',$childDest->category_name).'/'. str_replace('_',' ',$subchildDest->category_name)))}}">{{$subchildDest->category_name}}</a>
                                                                     @endif
                                                                 </li>
                                                             @endforeach
@@ -1175,7 +1175,7 @@
                                             </form>
 											<div class="serach-page-menu">
 												<ul>
-													<li><a href="{{URL::to('luxurytravel/Hotel?ref=oc')}}">Hotels</a></li>
+													<li><a href="{{URL::to('luxurytravel/Hotel')}}">Hotels</a></li>
 													<li><a href="http://www.emporium-yachts.com/luxurytravel/Yachts">Yachts</a></li>
 												</ul>
 											</div>
@@ -1308,7 +1308,7 @@
                                                                     @if (array_key_exists("child",$destination))
                                                                     <ul class="where-box-sub-menu">
                                                                         @foreach($destination['child'] as $childDest)
-                                                                        <li><a href="{{URL::to('search?continent='.$destination['maincat']->category_name.'&region='.$childDest->category_name.'&s='.$childDest->category_name.'&ref=syd_small')}}">{{$childDest->category_name}}</a></li>
+                                                                        <li><a href="{{URL::to('luxury_destinations/'. str_replace('_',' ',$destination['maincat']->category_name).'/'. str_replace('_',' ',$childDest->category_name).'/'. str_replace('_',' ',$childDest->category_name))}}">{{$childDest->category_name}}</a></li>
                                                                         @endforeach
                                                                     </ul>
                                                                     @endif

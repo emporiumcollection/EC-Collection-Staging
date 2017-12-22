@@ -241,6 +241,7 @@ Route::get('luxurytravel/{slug}', 'HomeController@getPropertyByCategory');
 Route::get('ourcollections/{id}', 'HomeController@getPropertyByCategoryQuickView');
 Route::get('search', 'HomeController@propertiesSearch');
 Route::get('luxury_experience/{cat}', 'HomeController@SearchLuxuryExperience');
+Route::get('luxury_destinations/{continent}/{region}/{cat}', 'HomeController@SearchLuxuryExperience');
 Route::get('getpropertygallery/{id}/{type}', 'HomeController@getPropertyGalleryQuickView');
 Route::get('getpropertyroomimages/{id}', 'HomeController@getPropertyRoomimageGalleryView');
 Route::get('getpropertytypedetail/{id}', 'HomeController@getPropertyTypeQuickView');
