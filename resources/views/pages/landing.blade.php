@@ -826,14 +826,14 @@
                                                                                 <div id="destination-child{{$childDest->id}}-{{$subchildDest->id}}" class="panel-collapse collapse">
                                                                                     <ul class="where-box-sub-menu inner-level-sub-menu">
                                                                                         @foreach($childDest->childs as $_child)
-                                                                                            <li><a href="{{URL::to('luxury_destinations/'. str_replace('_',' ',$destination['maincat']->category_name).'/'. str_replace('_',' ',$childDest->category_name).'/'. str_replace('_',' ',$_child->category_name)))}}">{{$_child->category_name}}</a></li>
+                                                                                            <li><a href="{{URL::to('luxury_destinations/'. str_replace('_',' ',$destination['maincat']->category_name).'/'. str_replace('_',' ',$childDest->category_name).'/'. str_replace('_',' ',$_child->category_name))}}">{{$_child->category_name}}</a></li>
                                                                                         @endforeach
                                                                                     </ul>
                                                                                 </div>
                                                                         </div>
                                                                     </div>
                                                                     @else
-                                                                    <a href="{{URL::to('luxury_destinations/'. str_replace('_',' ',$destination['maincat']->category_name).'/'. str_replace('_',' ',$childDest->category_name).'/'. str_replace('_',' ',$subchildDest->category_name)))}}">{{$subchildDest->category_name}}</a>
+                                                                    <a href="{{URL::to('luxury_destinations/'. str_replace('_',' ',$destination['maincat']->category_name).'/'. str_replace('_',' ',$childDest->category_name).'/'. str_replace('_',' ',$subchildDest->category_name))}}">{{$subchildDest->category_name}}</a>
                                                                     @endif
                                                                 </li>
                                                             @endforeach
