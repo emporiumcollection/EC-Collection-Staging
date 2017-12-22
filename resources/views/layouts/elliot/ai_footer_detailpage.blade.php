@@ -17,7 +17,7 @@
 						<!-- social end-->
 
                     <div class="container">
-                        <div class="col-md-12 pre-footer-sec-align stream">
+                        <div class="col-md-12 pre-footer-sec-align">
                             <p>Follow @Emporium-Voyage</p>
                             <p>Premium Lifestyle Portfolio World Wide<br/>Carefully created to ensure the ultimate luxury</p>
                         </div>
@@ -49,13 +49,15 @@
 																@endif
 															<a title="<?php echo $props['image']->file_name; ?>" class="picture_link-" href="<?php echo URL::to($props['data']->property_slug); ?>">
 																	<div class="overlay-text-frezeed">
-																		<h2 class="yacts-tittle-text"><?php echo $props['data']->property_name; ?></h2>
-																		<p class="yacths-des-text yacths-des-text-align"><span>&euro;<?php echo $props['data']->price; ?> </span>|<span>37.7mm</span>|<span>10 Guests</span></p>
+<!--																		<h2 class="yacts-tittle-text"><?php echo $props['data']->property_name; ?></h2>
+																		<p class="yacths-des-text yacths-des-text-align"><span>&euro;<?php echo $props['data']->price; ?> </span>|<span>37.7mm</span>|<span>10 Guests</span></p>-->
 																	</div>
 																	<div class="overlay-text hotel-overlay-text">
-																		<h2 class="yacts-tittle-text"><?php echo $props['data']->property_name; ?></h2>
-																		<p class="yacths-des-text yacths-des-text-align"><span>From &euro;<?php echo $props['data']->price; ?> </span><?php echo (isset($props['data']->category_name))? '|<span>'.$props['data']->category_name.'</span>' : ''; ?></p>
-																	</div>
+<!--																		<h2 class="yacts-tittle-text"><?php echo $props['data']->property_name; ?></h2>
+																		<p class="yacths-des-text yacths-des-text-align"><span>From &euro;<?php echo $props['data']->price; ?> </span><?php echo (isset($props['data']->category_name))? '|<span>'.$props['data']->category_name.'</span>' : ''; ?></p>-->
+                                                                                                                                            <h2>Kenoa-Exclusive Beach Spa & Resort</h2>
+                                                                                                                                            <p>From &euro1690</p>
+                                                                                                                                        </div>
 																	
 																<img alt="<?php echo $props['image']->file_name; ?>" src="<?php echo URL::to('uploads/property_imgs_thumbs/front_property_'.$props['image']->folder_id.'_'.$props['image']->file_name); ?>" class="img-responsive">
 																</a>
