@@ -310,6 +310,57 @@
             .node-btn.active {
                 border-bottom: 2px solid;
             }
+            
+            /* AIC Harman email sidebar css */
+            
+        .site-aside {
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100%;
+            overflow-x: visible;
+            z-index: 1028;
+    }
+        .contact-aside {
+            border-radius: 2px;
+            transition: .5s;
+            position: fixed;
+            top: 120px;
+            right: calc(100% - 43px);
+            width: 260px;
+            background: #272727;
+            color: #fff;
+            font-size: 15px;
+        }
+        .contact-aside ul {
+            padding: 7px 0;
+            list-style: none;
+        }
+        .contact-aside li {
+            padding: 9.33333px 0;
+            margin: 0 15px;
+        }
+        .contact-aside {
+            color: #fff;
+            font-size: 15px;
+        }
+        .contact-aside [class*="icon-"] {
+            display: inline-block;
+            width: 24px;
+            text-align: center;
+            margin-right: 4px;
+        }
+        .contact-aside li + li {
+            border-top: 1px solid #4A4A4A;
+        }
+        .contact-aside .icon-mail {
+            position: relative;
+            top: 2px;
+        }
+        .contact-aside.active {
+            right: calc(101% - 260px);
+        }
+            
         </style>
 		<!-- Global site tag (gtag.js) - Google Analytics -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110391807-1"></script>
@@ -403,6 +454,19 @@
                                                 </div>
                                             </form>
                                         </div>
+                                        <!-- AIC Harman email phone sidebar add start -->
+                                        
+                                            <aside class="site-aside">
+                                                <div class="contact-aside">
+                                                    <ul class="contact-aside-list">
+                                                      <li class="contact-list-item contact-phone"><i class="fa fa-phone" aria-hidden="true"></i> +49 251 4188-0</li>
+                                                      <li class="contact-list-item contact-email"><i class="fa fa-envelope" aria-hidden="true"></i> mail@factoryhotel.de</li>
+                                                    </ul>
+                                                </div>
+                                            </aside>
+                                        
+                                        <!-- AIC Harman email phone sidebar add end -->
+                                        
                                     </div>
                                 </section>
                                 <div class="clearfix"></div>
@@ -416,7 +480,7 @@
                                             </div>
                                             <div class="editorial-text">
                                                 <div class="editor-picks-small-text"><a href="{{$slider_row->slider_link}}">{{$slider_row->slider_title}}</a></div>
-                                                <div class="description-bold-text main">{{$slider_row->slider_description}}</div>
+                                                <div class="description-bold-text">{{$slider_row->slider_description}}</div>
                                                 <!--end slide -->
                                             </div>
                                             </a>
@@ -1591,6 +1655,14 @@
          </div>
         <!--New Login Pop Up End Here-->
         <script src="{{ asset('sximo/assets/js/slick.js')}}" type="text/javascript"></script>
+        
+           <script> 
+                $('.contact-aside').hover(
+                    function(){ $(this).addClass('active') },
+                    function(){ $(this).removeClass('active') }
+                )
+         </script>
+        
         <script type="text/javascript">
             $(document).on('ready', function () {
                 $(".regular").slick({
