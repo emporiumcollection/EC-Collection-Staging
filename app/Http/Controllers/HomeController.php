@@ -4757,7 +4757,7 @@ class HomeController extends Controller {
 
     public function getPropertyBySearchDestination(Request $request) {
         $props = array();
-        $perPage = 20;
+        $perPage = 2;
         $currentPage = Input::get('page', 1) - 1;
         $propertiesArr = array();
         $CityArrdestts = array();
