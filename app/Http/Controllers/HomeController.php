@@ -5034,6 +5034,8 @@ class HomeController extends Controller {
             return trim($a['pdata']->price) < trim($b['pdata']->price);
         });
 
+        return $propertiesArr;
+        
         //echo count($propertiesArr);
         $pagedData = array_slice($propertiesArr, $currentPage * $perPage, $perPage);
         $pagination = new Paginator($pagedData, count($propertiesArr), $perPage);
