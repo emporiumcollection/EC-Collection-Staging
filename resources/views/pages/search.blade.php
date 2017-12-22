@@ -1725,7 +1725,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                     <div class="editorial-custom-footer-style grid-page-footer-align">
                         @include('layouts/elliot/ai_footer')
                     </div>
-                    @include('layouts/elliot/ai_lightbox_popups')
+                    <?php //@include('layouts/elliot/ai_lightbox_popups') ?>
 
                     <script>
                                             
