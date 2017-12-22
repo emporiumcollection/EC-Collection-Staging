@@ -4764,9 +4764,6 @@ class HomeController extends Controller {
         $getcats = '';
         $keyword = Input::get('s');
 
-        print_r($request);
-        die;
-        
         $filter_min_price = Input::get('filter_min_price');
         $filter_max_price = Input::get('filter_max_price');
 
