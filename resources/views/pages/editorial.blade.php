@@ -257,9 +257,9 @@
                                 </li>
                                 @endif
 								
-								<li>
+								<!--<li>
                                     <a href="#social" data-hotel-option="social">SOCIAL</a>
-                                </li>
+                                </li>-->
 				
 								@if(!empty($hotel_brochure))
 									<li>
@@ -1049,9 +1049,9 @@
 										</li>
 										@endif
 										
-										<li>
+										<!--<li>
 											<a href="#social" data-hotel-option="social">SOCIAL</a>
-										</li>
+										</li>-->
 
                                         @if(!empty($hotel_brochure))
 											<li>
