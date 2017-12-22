@@ -56,6 +56,7 @@ $('.search-navbar').on('typeahead:selected', function (e, datum) {
 	var propname = $(this);
 //        propname.parents('.searchform-navbar').submit();
 //        return;
+var sname = propname.val();
 	$.ajax({
 	  url: "{{ URL::to('find_property_by_name')}}",
 	  type: "post",
@@ -63,10 +64,10 @@ $('.search-navbar').on('typeahead:selected', function (e, datum) {
 	  dataType: "json",
 	  success: function(data){
 		if(data.status=='error') {
-					window.location.href = "{{URL::to('luxury_hotels')}}/" + propname.val();
+					window.location.href = "{{URL::to('luxury_hotels')}}/" + sname.replace(' ', '_');
                     //propname.parents('.searchform-navbar').submit();
                     return;
-					window.location.href = "{{URL::to('luxury_hotels')}}/" + propname.val();
+					window.location.href = "{{URL::to('luxury_hotels')}}/" + sname.replace(' ', '_');
                     //propname.parents('.searchform-navbar').submit();
 		}
 		else {
