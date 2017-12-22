@@ -40,7 +40,7 @@
                     <h3 class="bh-slideshow-thumbnail-split-preview-title">
                         <a href="#">Design Location 1</a>
                     </h3>
-                    <div class="bh-slideshow-thumbnail-split-preview-content">Lorem
+                    <div class="bh-slideshow-thumbnail-split-preview-content harman">Lorem
                         ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra sapien
                         sed aliquam ullamcorper. Fusce magna dolor, aliquam nec quam vel, 
                         lacinia rhoncus odio. Nulla facilisi. Donec laoreet diam eget nisi 
