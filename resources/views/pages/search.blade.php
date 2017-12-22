@@ -816,7 +816,7 @@ $(window).scroll(function () {
           //  if ((y_scroll_pos >= element_position)) {
             var windowScrollTop =  0;
             if($(window).scrollTop()>400){
-                 windowScrollTop =  $(window).scrollTop() - 400;
+                 windowScrollTop =  $(window).scrollTop() - 100;
             }
             var documentHeight = $('#listproperties').innerHeight()  + $('#listproperties').offset().top;
              console.log('windowScrollTop  : ' + windowScrollTop+ 'document height : '+ documentHeight+' actual scroll top : '+$(window).scrollTop());
