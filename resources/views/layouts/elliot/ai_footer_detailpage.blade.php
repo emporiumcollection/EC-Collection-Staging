@@ -14,7 +14,7 @@
 	float: left;
 	background: #f0f0f0;
 	padding: ;
-	padding: 30px 0 30px 0;
+	padding: 30px 0 30px 30px;
     }
     
 </style>                  
