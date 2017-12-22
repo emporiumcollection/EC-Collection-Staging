@@ -240,7 +240,7 @@ Route::get('book-property/{slug}', 'HomeController@bookProperty');
 Route::get('luxurytravel/{slug}', 'HomeController@getPropertyByCategory');
 Route::get('ourcollections/{id}', 'HomeController@getPropertyByCategoryQuickView');
 Route::get('search', 'HomeController@propertiesSearch');
-Route::get('Luxury-Experience/{cat}', 'HomeController@SearchLuxuryExperience');
+Route::get('luxuryexperience/{cat}', 'HomeController@SearchLuxuryExperience');
 Route::get('getpropertygallery/{id}/{type}', 'HomeController@getPropertyGalleryQuickView');
 Route::get('getpropertyroomimages/{id}', 'HomeController@getPropertyRoomimageGalleryView');
 Route::get('getpropertytypedetail/{id}', 'HomeController@getPropertyTypeQuickView');
