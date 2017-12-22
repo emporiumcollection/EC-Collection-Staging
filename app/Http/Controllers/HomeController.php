@@ -4805,7 +4805,7 @@ class HomeController extends Controller {
                                 if (!empty($ConObjs)) {
                                     //$props = \DB::table('tb_properties')->where('property_name',$ConObjs->display_name)->where('property_status',1)->first();
 
-                                    $preprops = DB::select(DB::raw("SELECT id,property_name,property_slug FROM tb_properties WHERE tb_properties.property_type = 'Hotel' AND property_name='" . $ConObjs->display_name . "' AND property_status = '1' $getcats ORDER BY id asc LIMIT 1"));
+                                    $preprops = DB::select(DB::raw("SELECT id,property_name,property_slug FROM tb_properties WHERE tb_properties.property_type = 'Hotel' AND property_name='" . $ConObjs->display_name . "' AND property_status = '1' $getcats GROUP BY tb_properties.id ORDER BY id asc LIMIT 1"));
 
                                     if (!empty($preprops)) {
                                         foreach ($preprops as $props) {
