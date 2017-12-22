@@ -2,6 +2,10 @@
     .entire_story.MrgTop5.ai-view-hotels-tittle a.textButton.arrowButton {
 	margin: 10px 0px 0px 0px;
     }
+    
+    .overlay-text.hotel-overlay-text h2 {
+	border: 0px;
+    }
 </style>                  
 
 @if(!isset($ps_main_page_name))
@@ -62,7 +66,7 @@
 <!--																		<h2 class="yacts-tittle-text"><?php echo $props['data']->property_name; ?></h2>
 																		<p class="yacths-des-text yacths-des-text-align"><span>From &euro;<?php echo $props['data']->price; ?> </span><?php echo (isset($props['data']->category_name))? '|<span>'.$props['data']->category_name.'</span>' : ''; ?></p>-->
                                                                                                                                             <h2 class="yacts-tittle-text">Kenoa-Exclusive Beach Spa & Resort</h2>
-                                                                                                                                            <p class="yacths-des-text yacths-des-text-align">From &euro1690</p>
+                                                                                                                                            <p class="yacths-des-text yacths-des-text-align">From &euro;1690</p>
                                                                                                                                         </div>
 																	
 																<img alt="<?php echo $props['image']->file_name; ?>" src="<?php echo URL::to('uploads/property_imgs_thumbs/front_property_'.$props['image']->folder_id.'_'.$props['image']->file_name); ?>" class="img-responsive">
