@@ -1,3 +1,9 @@
+<style>
+    .leftAlignCollpse {
+        padding-left: 0px !important;
+    }
+</style>
+
 <div class="header-navigation-menu">
     <nav class="navbar navbar-inverse">
         
@@ -8,7 +14,7 @@
                     <span class="icon-bar"></span>
                 </button>
             </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
+            <div class="collapse navbar-collapse leftAlignCollpse" id="myNavbar">
                <!-- <ul class="nav navbar-nav">
                     <li class="active"><a  href="{{url('luxurytravel/Hotel')}}">HOTELS</a></li>
                     <!--<li><a  href="#">EXPERIENCE</a></li>
