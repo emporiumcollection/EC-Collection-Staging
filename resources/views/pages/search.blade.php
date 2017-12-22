@@ -751,6 +751,7 @@
                     <input class="ai-arrive-date-filter" value="<?php echo (isset($_REQUEST['arrive'])) ? date('d-m-Y', strtotime($_REQUEST['arrive'])) : date("d-m-Y"); ?>" type="hidden" />
                     <input class="ai-depart-date-filter" value="<?php echo (isset($_REQUEST['destination'])) ? date('d-m-Y', strtotime($_REQUEST['destination'])) : date("d-m-Y", strtotime("+ 1 day")); ?>" type="hidden" />
                     <input class="ai-current-filter" value="" type="hidden" />
+                    <input class="ai-scrollDownloadData-filter-running" value="0" type="hidden" />
                     <script>
 $(document).ready(function(){
     
@@ -827,6 +828,11 @@ $(window).scroll(function () {
 
 function scrollDownloadData(it_scroll)
 {
+    if($(".ai-scrollDownloadData-filter-running").val() == "1") {
+        return;
+    }
+    
+    $(".ai-scrollDownloadData-filter-running").val("1");
 var nxtpg = $('#nxtpg').val();
 var offSet = 12, isPreviousEventComplete = true, isDataAvailable = true;
 var sIndex = $('#listrecrds').val();
@@ -848,6 +854,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
         data: 's=' + $(".ai_search_keywords").val() + '&arrive=' + $(".ai-arrive-date-filter").val() + '&destination=' + $(".ai-depart-date-filter").val() + '&page=' + nxtpg + queryStrng + "&filter_min_price=" + $("#filter_min_price").val() + "&filter_max_price=" + $("#filter_max_price").val() + "&current_filter=" + $(".ai-current-filter").val(),
         dataType: "json",
         success: function(data){
+            $(".ai-scrollDownloadData-filter-running").val("0");
             $('#loaderProperty').hide();
         var html = chtml = '';
         if (data.status == 'error')
