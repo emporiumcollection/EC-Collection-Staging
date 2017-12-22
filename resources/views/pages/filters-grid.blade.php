@@ -465,7 +465,7 @@ return fasle;
                                                             <a href="#">Beach Must show Here. </a>
                                                         </h3>
                                                         <div class="bh-slideshow-thumbnail-split-preview-content">Beach Must show Here. </div>
-                                                        <a class="uk-margin-top uk-button uk-button-primary harman" href="#">Read more <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>
+                                                        <a class="uk-margin-top uk-button uk-button-primary" href="#">Read more <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>
                                                     </div>
                                                     <a href="" class="bh-slideshow-slidenav uk-slidenav uk-slidenav-previous" data-uk-slideshow-item="previous"></a>
                                                     <a href="" class="bh-slideshow-slidenav uk-slidenav uk-slidenav-next" data-uk-slideshow-item="next"></a>
