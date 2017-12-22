@@ -811,22 +811,17 @@ $(window).scroll(function () {
         var now = new Date().getTime();
         var totlpgs = $('#ttlpg').val();
         var nxtpg = $('#nxtpg').val();
-            var element_position = $('#brgrid').offset().top + $('#brgrid').outerHeight() - window.innerHeight;
-            var y_scroll_pos = $(window).scrollTop() + 100;
-          //  if ((y_scroll_pos >= element_position)) {
-            var windowScrollTop =  0;
-            if($(window).scrollTop()>400){
-                 windowScrollTop =  $(window).scrollTop() - 100;
-            }
-            var documentHeight = $('#listproperties').innerHeight()  + $('#listproperties').offset().top;
-             console.log('windowScrollTop  : ' + windowScrollTop+ 'document height : '+ documentHeight+' actual scroll top : '+$(window).scrollTop());
+        var windowScrollTop =  $(window).scrollTop() + $('#listproperties').offset().top;
+           
+            var documentHeight = $('#listproperties').innerHeight();
+             console.log('windowScrollTop  : ' + windowScrollTop+ 'document height : '+ documentHeight);
             if(windowScrollTop >= documentHeight) {
 
-                $('#loaderProperty').show();
+               // $('#loaderProperty').show();
                 var it_scroll = true;
                 //scrollDownloadData(it_scroll);
                 pageCounter++;
-                console.log('scrollTop : ' + windowScrollTop+ 'document height : '+ documentHeight);
+                console.log('Ok! windowScrollTop  : ' + windowScrollTop+ 'document height : '+ documentHeight);
             }
     });
 
