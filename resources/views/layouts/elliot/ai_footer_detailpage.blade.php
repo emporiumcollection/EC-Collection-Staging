@@ -17,7 +17,7 @@
 						<!-- social end-->
 
                     <div class="container">
-                        <div class="col-md-12 pre-footer-sec-align">
+                        <div class="col-md-12 pre-footer-sec-align stream">
                             <p>Follow @Emporium-Voyage</p>
                             <p>Premium Lifestyle Portfolio World Wide<br/>Carefully created to ensure the ultimate luxury</p>
                         </div>
