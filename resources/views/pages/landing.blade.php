@@ -360,7 +360,8 @@
         }
         .contact-aside.active {
             right: calc(101% - 260px);
-            background: #1E2023;
+            background: #1E2023 !important;
+            color: white !important;
         }
         
         .asideIclass {
