@@ -360,6 +360,11 @@
         }
         .contact-aside.active {
             right: calc(101% - 260px);
+            background: #1E2023;
+        }
+        
+        .asideIclass {
+            float: right;
         }
             
         </style>
@@ -460,8 +465,8 @@
                                             <aside class="site-aside">
                                                 <div class="contact-aside">
                                                     <ul class="contact-aside-list">
-                                                      <li class="contact-list-item contact-phone"><i class="fa fa-phone" aria-hidden="true"></i> +49 251 4188-0</li>
-                                                      <li class="contact-list-item contact-email"><i class="fa fa-envelope" aria-hidden="true"></i> mail@factoryhotel.de</li>
+                                                      <li class="contact-list-item contact-phone"><i class="fa fa-phone asideIclass" aria-hidden="true"></i> +49 251 4188-0</li>
+                                                      <li class="contact-list-item contact-email"><i class="fa fa-envelope asideIclass" aria-hidden="true"></i> mail@factoryhotel.de</li>
                                                     </ul>
                                                 </div>
                                             </aside>
