@@ -1753,25 +1753,6 @@ url: "{{ URL::to('filter_search_destionation')}}",
   100% { transform: rotate(360deg); }
 }
 
-/* Add animation to "page content" */
-.animate-bottom {
-  position: relative;
-  -webkit-animation-name: animatebottom;
-  -webkit-animation-duration: 1s;
-  animation-name: animatebottom;
-  animation-duration: 1s;
-  display: none;
-}
-
-@-webkit-keyframes animatebottom {
-  from { bottom:-100px; opacity:0; display: block; } 
-  to { bottom:0px; opacity:1 ; }
-}
-
-@keyframes animatebottom { 
-  from{ bottom:-100px; opacity:0 ;  display: block;} 
-  to{ bottom:0; opacity:1 }
-}
 
 
 </style>                             
