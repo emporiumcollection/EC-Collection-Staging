@@ -1405,7 +1405,7 @@ class HomeController extends Controller {
                         }
                         $propertiesArr = array();
                         $props = array();
-                        $perPage = 10;
+                        $perPage = 12;
                         $currentPage = Input::get('page', 1) - 1;
                         $TagsObj = \DB::table('tb_tags_manager')->select('id')->where('tag_title', Input::get('s', false))->where('tag_status', 1)->first();
                         $TagsConId = array();
@@ -4757,7 +4757,7 @@ class HomeController extends Controller {
 
     public function getPropertyBySearchDestination(Request $request) {
         $props = array();
-        $perPage = 10;
+        $perPage = 12;
         $currentPage = Input::get('page', 1) - 1;
         $propertiesArr = array();
         $CityArrdestts = array();
