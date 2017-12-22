@@ -359,9 +359,9 @@
             top: 2px;
         }
         .contact-aside.active {
-            right: calc(101% - 260px);
-            background: #1E2023 !important;
-            color: white !important;
+	right: calc(100% - 253px);
+	background: #1e2023 !important;
+	color: #fff !important;
         }
         
         .asideIclass {
