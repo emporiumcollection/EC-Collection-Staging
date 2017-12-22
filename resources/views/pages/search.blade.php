@@ -1180,10 +1180,10 @@ url: "{{ URL::to('filter_search_destionation')}}",
 
         sIndex = parseInt(sIndex) + offSet;
         $('#listrecrds').val(sIndex);
-        $('#nxtpg').val(parseInt(nxtpg) + 1);
         $('#ttlpg').val(data.ttlpages);
         isPreviousEventComplete = true;
         }
+        $('#nxtpg').val(parseInt(nxtpg) + 1);
         },
         error: function (error) {
 //        alert(error);
