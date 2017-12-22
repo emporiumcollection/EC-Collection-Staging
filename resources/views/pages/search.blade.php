@@ -64,7 +64,7 @@
          @if(isset($_GET['ref']))
         <script>
             jQuery(document).ready(function($) {
-                $("#back_button_page").tooltip({ content: '<img src="{{$thumbnail}}"/>' });
+               // $("#back_button_page").tooltip({ content: '<img src="{{$thumbnail}}"/>' });
                 $(document).on('click','#back_button_page',function(){
                     location.href = "{{url('/')}}?ref={{$_GET['ref']}}";
                     return fasle;
