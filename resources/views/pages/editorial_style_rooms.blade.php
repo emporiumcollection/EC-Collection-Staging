@@ -23,7 +23,9 @@
         overflow: hidden;
         -webkit-overflow-scrolling: touch;
         outline: 0;
-        background-color: none;
+        background-color: black;
+        opacity: 0.8;
+        height: 100%;
         overflow-x: hidden;
         overflow-y: hidden;
         }
