@@ -817,9 +817,9 @@ $(window).scroll(function () {
              console.log('windowScrollTop  : ' + windowScrollTop+ 'document height : '+ documentHeight);
             if(windowScrollTop >= documentHeight) {
 
-               // $('#loaderProperty').show();
+               $('#loaderProperty').show();
                 var it_scroll = true;
-                //scrollDownloadData(it_scroll);
+                scrollDownloadData(it_scroll);
                 pageCounter++;
                 console.log('Ok! windowScrollTop  : ' + windowScrollTop+ 'document height : '+ documentHeight);
             }
