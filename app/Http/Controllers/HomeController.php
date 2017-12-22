@@ -5923,7 +5923,7 @@ class HomeController extends Controller {
             return Redirect::to('dashboard');
         endif;
 
-        $keyword = trim($request->cat);
+        $keyword = str_replace('_',' ',trim($request->cat));
         $show = 'asc';
 
         if ($keyword!='') {

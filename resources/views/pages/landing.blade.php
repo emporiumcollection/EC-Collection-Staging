@@ -727,43 +727,43 @@
                         <div class="width-100 holiday-type-image-align ">
                             <div class="width-20">
                                 <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoBeachHotels.jpg')}}" alt=""/>
-                                <a href="{{URL::to('luxuryexperience/Beach Hotels?ref=sye&landing_page=1')}}"><h3 class="hover-tittles">Luxury Beach Hotels</h3></a>
+                                <a href="{{URL::to('luxury_experience/Beach_Hotels')}}"><h3 class="hover-tittles">Luxury Beach Hotels</h3></a>
                             </div>
                             <div class="width-20">
                                 <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoGreenHotels.jpg')}}" alt=""/>
-                                <a href="{{URL::to('luxuryexperience/Green Properties?ref=sye&landing_page=1')}}"><h3 class="hover-tittles">Luxury Green Hotels</h3></a>
+                                <a href="{{URL::to('luxury_experience/Green_Properties')}}"><h3 class="hover-tittles">Luxury Green Hotels</h3></a>
                             </div>
                             <div class="width-20">
                                 <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoUrbanHotels.jpg')}}" alt=""/>
-                                <a href="{{URL::to('luxuryexperience/Go Urban Hotels?ref=sye&landing_page=1')}}"><h3 class="hover-tittles">Luxury Urban Hotels</h3></a>
+                                <a href="{{URL::to('luxury_experience/Go_Urban_Hotels')}}"><h3 class="hover-tittles">Luxury Urban Hotels</h3></a>
                             </div>
                             <div class="width-20">
                                 <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoInfinityPoolHotels.jpg')}}" alt=""/>
-                                <a href="{{URL::to('luxuryexperience/Infinity Pools?ref=sye&landing_page=1')}}"><h3 class="hover-tittles">Luxury Infinity Pools</h3></a>
+                                <a href="{{URL::to('luxury_experience/Infinity_Pools')}}"><h3 class="hover-tittles">Luxury Infinity Pools</h3></a>
                             </div>
                             <div class="width-20">
                                 <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoSpaandWellnessHotels.jpg')}}" alt=""/>
-                                <a href="{{URL::to('luxuryexperience/Spa and Wellness Hotels?ref=sye&landing_page=1')}}"><h3 class="hover-tittles">Luxury Spa and Wellness Hotels</h3></a>
+                                <a href="{{URL::to('luxury_experience/Spa_and_Wellness_Hotels')}}"><h3 class="hover-tittles">Luxury Spa and Wellness Hotels</h3></a>
                             </div>
                             <div class="width-20">
                                 <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoMountainaandSkiResorts.jpg')}}" alt=""/>
-                                <a href="{{URL::to('luxuryexperience/Mountain Ski Resorts?ref=sye&landing_page=1')}}"><h3 class="hover-tittles">Luxury Mountains and Skin Resorts</h3></a>
+                                <a href="{{URL::to('luxury_experience/Mountain_Ski_Resorts')}}"><h3 class="hover-tittles">Luxury Mountains and Skin Resorts</h3></a>
                             </div>
                             <div class="width-20">
                                 <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoYogaHotels.jpg')}}" alt=""/>
-                                <a href="{{URL::to('luxuryexperience/Yoga Hotels?ref=sye&landing_page=1')}}"><h3 class="hover-tittles">Discover Yoga Hotels</h3></a>
+                                <a href="{{URL::to('luxury_experience/Yoga_Hotels')}}"><h3 class="hover-tittles">Discover Yoga Hotels</h3></a>
                             </div>
                             <div class="width-20">
                                 <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoCulnaryDelightHotels.jpg')}}" alt=""/>
-                                <a href="{{URL::to('luxuryexperience/Culinary Delights?ref=sye&landing_page=1')}}"><h3 class="hover-tittles">Discover culinary Delight Hotels</h3></a>
+                                <a href="{{URL::to('luxury_experience/Culinary_Delights')}}"><h3 class="hover-tittles">Discover culinary Delight Hotels</h3></a>
                             </div>
                             <div class="width-20">
                                 <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoFamilyFriendlyHotels.jpg')}}" alt=""/>
-                                <a href="{{URL::to('luxuryexperience/Family Friendly?ref=sye&landing_page=1')}}"><h3 class="hover-tittles">Discover Family Friendly Hotels</h3></a>
+                                <a href="{{URL::to('luxury_experience/Family_Friendly')}}"><h3 class="hover-tittles">Discover Family Friendly Hotels</h3></a>
                             </div>
                             <div class="width-20">
                                 <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoUnusualAdventures.jpg')}}" alt=""/>
-                                <a href="{{URL::to('luxuryexperience/Unusual Adventure Hotels?ref=sye&landing_page=1')}}"><h3 class="hover-tittles">Unusual Adventure Hotels</h3></a>
+                                <a href="{{URL::to('luxury_experience/Unusual_Adventure_Hotels')}}"><h3 class="hover-tittles">Unusual Adventure Hotels</h3></a>
                             </div>
                         </div>
                     </div>
@@ -1077,34 +1077,34 @@
                                                                     <div class="dl-filter">
                                                                         <form>
                                                                             <div class="form-group post-filter-inputs">
-                                                                                <label><a href="{{URL::to('luxuryexperience/Beach Hotels')}}">Luxury Beach Hotels</a></label>
+                                                                                <label><a href="{{URL::to('luxury_experience/Beach_Hotels')}}">Luxury Beach Hotels</a></label>
                                                                             </div> 
                                                                             <div class="form-group post-filter-inputs">
-                                                                                <label><a href="{{URL::to('luxuryexperience/Green Properties')}}">Luxury Green Hotels</a></label>
+                                                                                <label><a href="{{URL::to('luxury_experience/Green_Properties')}}">Luxury Green Hotels</a></label>
                                                                             </div> 
                                                                             <div class="form-group post-filter-inputs">
-                                                                                <label><a href="{{URL::to('luxuryexperience/Go Urban Hotels')}}">Luxury Urban Hotels</a></label>
+                                                                                <label><a href="{{URL::to('luxury_experience/Go_Urban_Hotels')}}">Luxury Urban Hotels</a></label>
                                                                             </div> 
                                                                             <div class="form-group post-filter-inputs">
-                                                                                <label><a href="{{URL::to('luxuryexperience/Infinity Pools')}}">Luxury Infinity Pools</a></label>
+                                                                                <label><a href="{{URL::to('luxury_experience/Infinity_Pools')}}">Luxury Infinity Pools</a></label>
                                                                             </div>
                                                                             <div class="form-group post-filter-inputs">
-                                                                                <label><a href="{{URL::to('luxuryexperience/Spa and Wellness Hotels')}}">Luxury Spa and Wellness Hotels</a></label>
+                                                                                <label><a href="{{URL::to('luxury_experience/Spa_and_Wellness_Hotels')}}">Luxury Spa and Wellness Hotels</a></label>
                                                                             </div> 
                                                                             <div class="form-group post-filter-inputs">
-                                                                                <label><a href="{{URL::to('luxuryexperience/Mountain Ski Resorts')}}">Luxury Mountains and Skin Resorts</a></label>
+                                                                                <label><a href="{{URL::to('luxury_experience/Mountain_Ski_Resorts')}}">Luxury Mountains and Skin Resorts</a></label>
                                                                             </div> 
                                                                             <div class="form-group post-filter-inputs">
-                                                                                <label><a href="{{URL::to('luxuryexperience/Yoga Hotels')}}">Discover Yoga Hotels</a></label>
+                                                                                <label><a href="{{URL::to('luxury_experience/Yoga_Hotels')}}">Discover Yoga Hotels</a></label>
                                                                             </div> 
                                                                             <div class="form-group post-filter-inputs">
-                                                                                <label><a href="{{URL::to('luxuryexperience/Culinary Delights')}}">Discover culinary Delight Hotels</a></label>
+                                                                                <label><a href="{{URL::to('luxury_experience/Culinary_Delights')}}">Discover culinary Delight Hotels</a></label>
                                                                             </div>
                                                                             <div class="form-group post-filter-inputs">
-                                                                                <label><a href="{{URL::to('luxuryexperience/Family Friendly')}}">Discover Family Friendly Hotels</a></label>
+                                                                                <label><a href="{{URL::to('luxury_experience/Family_Friendly')}}">Discover Family Friendly Hotels</a></label>
                                                                             </div> 
                                                                             <div class="form-group post-filter-inputs">
-                                                                                <label><a href="{{URL::to('luxuryexperience/Unusual Adventure Hotels')}}">Unusual Adventure Hotels</a></label>
+                                                                                <label><a href="{{URL::to('luxury_experience/Unusual_Adventure_Hotels')}}">Unusual Adventure Hotels</a></label>
                                                                             </div>
                                                                         </form>
                                                                     </div>
@@ -1195,56 +1195,56 @@
                                             <div class="panel landing-page-panel-background">
                                                 <div class="width-100 holiday-type-image-align ">
                                                     <div class="width-20">
-                                                        <a href="{{URL::to('luxuryexperience/Beach Hotels?ref=sye_small')}}">
+                                                        <a href="{{URL::to('luxury_experience/Beach_Hotels')}}">
                                                             <img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoBeachHotels.jpg'),100,170,199)}}" alt=""/>
                                                             <span class="link-txt hover-cation">Luxury Beach Hotels</span>
                                                         </a>
 
                                                     </div>
                                                     <div class="width-20">
-                                                        <a href="{{URL::to('luxuryexperience/Green Properties?ref=sye_small')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoGreenHotels.jpg'),100,170,199)}}" alt=""/>
+                                                        <a href="{{URL::to('luxury_experience/Green_Properties')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoGreenHotels.jpg'),100,170,199)}}" alt=""/>
                                                             <span class="link-txt hover-cation">Luxury Green Hotels</span>
                                                         </a>
                                                     </div>
                                                     <div class="width-20">
-                                                        <a href="{{URL::to('luxuryexperience/Go Urban Hotels?ref=sye_small')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoUrbanHotels.jpg'),100,170,199)}}" alt=""/>
+                                                        <a href="{{URL::to('luxury_experience/Go_Urban_Hotels')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoUrbanHotels.jpg'),100,170,199)}}" alt=""/>
                                                             <span class="link-txt hover-cation">Luxury Urban</span>
                                                         </a>
                                                     </div>
                                                     <div class="width-20">
-                                                        <a href="{{URL::to('luxuryexperience/Infinity Pools?ref=sye_small')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoInfinityPoolHotels.jpg'),100,170,199)}}" alt=""/>
+                                                        <a href="{{URL::to('luxury_experience/Infinity_Pools')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoInfinityPoolHotels.jpg'),100,170,199)}}" alt=""/>
                                                             <span class="link-txt hover-cation">Luxury Infinity Pools</span>
                                                         </a>
                                                     </div>
                                                     <div class="width-20">
-                                                        <a href="{{URL::to('luxuryexperience/Spa and Wellness Hotels?ref=sye_small')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoSpaandWellnessHotels.jpg'),100,170,199)}}" alt=""/>
+                                                        <a href="{{URL::to('luxury_experience/Spa_and_Wellness_Hotels')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoSpaandWellnessHotels.jpg'),100,170,199)}}" alt=""/>
                                                             <span class="link-txt hover-cation">Luxury Spa and Wellness Hotels</span>
                                                         </a>
                                                     </div>
                                                 </div>
                                                 <div class="width-100 holiday-type-image-align ">
                                                     <div class="width-20">
-                                                        <a href="{{URL::to('luxuryexperience/Mountain Ski Resorts?ref=sye_small')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoMountainaandSkiResorts.jpg'),100,170,199)}}" alt=""/>
+                                                        <a href="{{URL::to('luxury_experience/Mountain_Ski_Resorts')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoMountainaandSkiResorts.jpg'),100,170,199)}}" alt=""/>
                                                             <span class="link-txt hover-cation">Luxury Mountains and Skin Resorts</span>
                                                         </a>
                                                     </div>
                                                     <div class="width-20">
-                                                        <a href="{{URL::to('luxuryexperience/Yoga Hotels?ref=sye_small')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoYogaHotels.jpg'),100,170,199)}}" alt=""/>
+                                                        <a href="{{URL::to('luxury_experience/Yoga_Hotels')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoYogaHotels.jpg'),100,170,199)}}" alt=""/>
                                                             <span class="link-txt hover-cation">Discover Yoga Hotels</span>
                                                         </a>
                                                     </div>
                                                     <div class="width-20">
-                                                        <a href="{{URL::to('luxuryexperience/Culinary Delights?ref=sye_small')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoCulnaryDelightHotels.jpg'),100,170,199)}}" alt=""/>
+                                                        <a href="{{URL::to('luxury_experience/Culinary_Delights')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoCulnaryDelightHotels.jpg'),100,170,199)}}" alt=""/>
                                                             <span class="link-txt hover-cation">Discover culinary Delight Hotels</span>
                                                         </a>
                                                     </div>
                                                     <div class="width-20">
-                                                        <a href="{{URL::to('luxuryexperience/Family Friendly?ref=sye_small')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoFamilyFriendlyHotels.jpg'),100,170,199)}}" alt=""/>
+                                                        <a href="{{URL::to('luxury_experience/Family_Friendly')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoFamilyFriendlyHotels.jpg'),100,170,199)}}" alt=""/>
                                                             <span class="link-txt hover-cation">Discover Family Friendly Hotels</span>
                                                         </a>
                                                     </div>
                                                     <div class="width-20">
-                                                        <a href="{{URL::to('luxuryexperience/Unusual Adventure Hotels?ref=sye_small')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoUnusualAdventures.jpg'),100,170,199)}}" alt=""/>
+                                                        <a href="{{URL::to('luxury_experience/Unusual_Adventure_Hotels')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoUnusualAdventures.jpg'),100,170,199)}}" alt=""/>
                                                             <span class="link-txt hover-cation">Unusual Adventure Hotels</span>
                                                         </a>
                                                     </div>
