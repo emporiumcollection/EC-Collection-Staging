@@ -229,6 +229,7 @@
 																			<td colspan="5"><input type="checkbox" value="1" id="check_all" rel="{{$cat['data']->id}}" class="check-all"> Select all</td>
 																		</tr>
 																		@foreach($cat['imgs'] as $img)
+																			{{dd($img)}}
 																			<tr class="template-download fade in row{{$img->id}}">
 																				<td>
 																					<input type="checkbox" name="compont[]" id="compont" value="{{$img->id}}" class="no-border check-files ff{{$cat['data']->id}}">
