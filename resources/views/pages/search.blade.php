@@ -828,7 +828,7 @@ $(window).scroll(function () {
 function scrollDownloadData(it_scroll)
 {
 var nxtpg = $('#nxtpg').val();
-var offSet = 2, isPreviousEventComplete = true, isDataAvailable = true;
+var offSet = 40, isPreviousEventComplete = true, isDataAvailable = true;
 var sIndex = $('#listrecrds').val();
 var queryStrng = '';
 var destnarea = $('#selDestn').val();
