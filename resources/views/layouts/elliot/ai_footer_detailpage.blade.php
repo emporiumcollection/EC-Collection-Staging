@@ -6,6 +6,17 @@
     .overlay-text.hotel-overlay-text h2 {
 	border: 0px;
     }
+    
+    .pre-footer-sec-align {
+	font-family: geomanist-light;
+	font-size: 12px;
+	margin-top: 50px;
+	float: left;
+	background: #f0f0f0;
+	padding: ;
+	padding: 30px 0 30px 0;
+    }
+    
 </style>                  
 
 @if(!isset($ps_main_page_name))
@@ -27,7 +38,7 @@
 						<!-- social end-->
 
                     <div class="container">
-                        <div class="col-md-12 pre-footer-sec-align leftq">
+                        <div class="col-md-12 pre-footer-sec-align">
                             <p>Follow @Emporium-Voyage</p>
                             <p>Premium Lifestyle Portfolio World Wide<br/>Carefully created to ensure the ultimate luxury</p>
                         </div>
