@@ -63,9 +63,11 @@ $('.search-navbar').on('typeahead:selected', function (e, datum) {
 	  dataType: "json",
 	  success: function(data){
 		if(data.status=='error') {
-                    propname.parents('.searchform-navbar').submit();
+					window.location.href = "{{URL::to('luxury_hotels')}}/" + propname.val();
+                    //propname.parents('.searchform-navbar').submit();
                     return;
-                    propname.parents('.searchform-navbar').submit();
+					window.location.href = "{{URL::to('luxury_hotels')}}/" + propname.val();
+                    //propname.parents('.searchform-navbar').submit();
 		}
 		else {
                     var obj = JSON.parse(data.property);
