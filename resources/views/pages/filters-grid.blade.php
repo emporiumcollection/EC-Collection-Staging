@@ -1726,7 +1726,7 @@ return fasle;
                         @include('layouts/elliot/ai_footer')
                     </div>
 
-                    @include('layouts/elliot/ai_lightbox_popups')
+                   <?php // @include('layouts/elliot/ai_lightbox_popups') ?>
 
     </body>
 </html>
