@@ -349,6 +349,7 @@
             width: 24px;
             text-align: center;
             margin-right: 4px;
+            float: right;
         }
         .contact-aside li + li {
             border-top: 1px solid #4A4A4A;
