@@ -811,7 +811,7 @@ $(window).scroll(function () {
         var now = new Date().getTime();
         var totlpgs = $('#ttlpg').val();
         var nxtpg = $('#nxtpg').val();
-        var windowScrollTop =  $(window).scrollTop() + $('#listproperties').offset().top;
+        var windowScrollTop =  $(window).scrollTop() + ($('#listproperties').offset().top / 2);
            
             var documentHeight = $('#listproperties').innerHeight();
              console.log('windowScrollTop  : ' + windowScrollTop+ 'document height : '+ documentHeight);
