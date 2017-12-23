@@ -811,7 +811,7 @@ $(document).ready(function(){
 function scrollDataAjax(it_scroll,pageCounter)
 {
     if($(".ai-scrollDownloadData-filter-running").val() == "1") {
-        return;
+        //return;
     }
     
     $(".ai-scrollDownloadData-filter-running").val("1");
@@ -822,204 +822,191 @@ function scrollDataAjax(it_scroll,pageCounter)
     var destnarea = $('#selDestn').val();
     if (destnarea != '')
     {
-    var dest_area = destnarea.split("#:");
-    queryStrng = '&dest=' + dest_area[0] + '&area=' + dest_area[1];
+        var dest_area = destnarea.split("#:");
+        queryStrng = '&dest=' + dest_area[0] + '&area=' + dest_area[1];
     }
 
     if (isPreviousEventComplete && isDataAvailable) {
-    isPreviousEventComplete = false;
-    //$(".LoaderImage").css("display", "block");
+        isPreviousEventComplete = false;
+        //$(".LoaderImage").css("display", "block");
 
     $.ajax({
-    url: "{{ URL::to('filter_search_destionation')}}",
-            type: "get",
-            data: 's=' + $(".ai_search_keywords").val() + '&arrive=' + $(".ai-arrive-date-filter").val() + '&destination=' + $(".ai-depart-date-filter").val() + '&page=' + nxtpg + queryStrng + "&filter_min_price=" + $("#filter_min_price").val() + "&filter_max_price=" + $("#filter_max_price").val() + "&current_filter=" + $(".ai-current-filter").val(),
-            dataType: "json",
-            complete: function (jqXHR, textStatus ) {
-               // $('#nxtpg').val(parseInt(nxtpg) + 1);
-            },
-            success: function(data){
-                $(".ai-scrollDownloadData-filter-running").val("0");
-                $('#loaderProperty').hide();
-                    var html = chtml = '';
-                    if (data.status == 'error')
-                    {
-                    if (it_scroll == false)
-                    {
-                    $('#listproperties').html(data.errors);
+        url: "{{ URL::to('filter_search_destionation')}}",
+        type: "get",
+        data: 's=' + $(".ai_search_keywords").val() + '&arrive=' + $(".ai-arrive-date-filter").val() + '&destination=' + $(".ai-depart-date-filter").val() + '&page=' + nxtpg + queryStrng + "&filter_min_price=" + $("#filter_min_price").val() + "&filter_max_price=" + $("#filter_max_price").val() + "&current_filter=" + $(".ai-current-filter").val(),
+        dataType: "json",
+        complete: function (jqXHR, textStatus ) {
+            // $('#nxtpg').val(parseInt(nxtpg) + 1);
+        },
+        success: function(data){
+            $(".ai-scrollDownloadData-filter-running").val("0");
+            $('#loaderProperty').hide();
+                var html = chtml = '';
+                if (data.status == 'error'){
+                    if (it_scroll == false){
+                        $('#listproperties').html(data.errors);
+                    }else{
+                        $('#listproperties').append(data.errors);
                     }
-                    else
-                    {
-                    ('#listproperties').append(data.errors);
-                    }
-                    isDataAvailable = false;
-                    }
-                    else
-                    {
+                        isDataAvailable = false;
+                    }else{
                 
-                /*
-                 * Slider HTML
-                 */
+                        /*
+                         * Slider HTML
+                         */
                 
-                var sliderHTML = '';
+                        var sliderHTML = '';
                 
                 
-            html += '<div class="row animate-bottom">';
-            var p = 1;
-            var node_no = 1;
-            var total_rows = 0;
+                    html += '<div class="row animate-bottom">';
+                    var p = 1;
+                    var node_no = 1;
+                    var total_rows = 0;
 
-            $.each($.parseJSON(data.properties), function(idx, obj) {
-            if (node_no % 20 == 0) {
-            html += '<div class="productData col-xs-12 col-sm-6 col-md-3 col-lg-3 margin-bottom-10">';
-            html += 'Advertisement Here';
-            html += '</div>';
-            }
-            else {
-            html += '<div class="productData col-xs-12 col-sm-6 col-md-3 col-lg-3 margin-bottom-10">';
-            html += '<div class="wrapperforliineedforlightboxremoval">';
-            html += '<div class="cat_product_medium1">';
-            html += '<div class="ai-grid-page-node-pic-box pictureBox gridPicture grid-box-main">';
-            if (obj.pdata.price != '')
-            {
-                if($("#filter_min_price").val() != '' && $("#filter_max_price").val() != '') {
-                    html += '<a class="textButton arrowButton MrgTop5 ai-filter-hotel-price-style" rel="' + obj.pdata.id + '" href="' + detail_link + '"> From EUR ' + obj.pdata.price + ' / night </a>';
-                }
-            }
-            if (obj.hasOwnProperty("image")) {
-                if(obj.pdata.editor_choice_property=='1'){
-                    var edtch = "{{URL::to('sximo/images/editors-choice.png')}}";
-                    html += '<img alt="editor_choice_property" class="propovericons" src="'+edtch+'">';
-                }else if(obj.pdata.feature_property=='1'){
-                    var featp = "{{URL::to('sximo/images/featured-property.png')}}";
-                    html += '<img alt="editor_choice_property" class="propovericons" src="'+featp+'">';
-                }
-               var pimg = "{{URL::to('uploads/property_imgs_thumbs/')}}/front_property_" + obj.image.folder_id + "_" + obj.image.file_name;
-                html += '<a title="' + obj.pdata.property_name + '" class="picture_link " rel="' + obj.pdata.id + '" href="{{URL::to('')}}/' + obj.pdata.property_slug + '">';
-                html += '<div class="overlay-text-frezeed">';
-                html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
-                html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;' + obj.pdata.price + ' </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
-                html += '</div>';
-                html += '<div class="overlay-text hotel-overlay-text">';
-                html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
-                html += '<p class="yacths-des-text yacths-des-text-align"><span>From &euro;' + obj.pdata.price + ' </span><' + obj.pdata.category_name + '</span></p>';
-                html += '</div>';
-                html += '<div class="overlay-text yacts-overlay-text">';
-                html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
-                html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;' + obj.pdata.price + ' </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
-                html += '<p class="yacths-des-text">2015H</p>';
-                html += '</div>';
-                html += '<img alt="' + obj.image.file_name + '" src="' + pimg + '" class="img-responsive">';
-                html += '</a>';
+                    $.each($.parseJSON(data.properties), function(idx, obj) {
+                        if (node_no % 20 == 0) {
+                            html += '<div class="productData col-xs-12 col-sm-6 col-md-3 col-lg-3 margin-bottom-10">';
+                            html += 'Advertisement Here';
+                            html += '</div>';
+                        }else {
+                            html += '<div class="productData col-xs-12 col-sm-6 col-md-3 col-lg-3 margin-bottom-10">';
+                            html += '<div class="wrapperforliineedforlightboxremoval">';
+                            html += '<div class="cat_product_medium1">';
+                            html += '<div class="ai-grid-page-node-pic-box pictureBox gridPicture grid-box-main">';
+                            if (obj.pdata.price != ''){
+                                if($("#filter_min_price").val() != '' && $("#filter_max_price").val() != '') {
+                                    html += '<a class="textButton arrowButton MrgTop5 ai-filter-hotel-price-style" rel="' + obj.pdata.id + '" href="' + detail_link + '"> From EUR ' + obj.pdata.price + ' / night </a>';
+                                }
+                            }
+                            if (obj.hasOwnProperty("image")) {
+                                if(obj.pdata.editor_choice_property=='1'){
+                                    var edtch = "{{URL::to('sximo/images/editors-choice.png')}}";
+                                    html += '<img alt="editor_choice_property" class="propovericons" src="'+edtch+'">';
+                                }else if(obj.pdata.feature_property=='1'){
+                                    var featp = "{{URL::to('sximo/images/featured-property.png')}}";
+                                    html += '<img alt="editor_choice_property" class="propovericons" src="'+featp+'">';
+                                }
+                               var pimg = "{{URL::to('uploads/property_imgs_thumbs/')}}/front_property_" + obj.image.folder_id + "_" + obj.image.file_name;
+                                html += '<a title="' + obj.pdata.property_name + '" class="picture_link " rel="' + obj.pdata.id + '" href="{{URL::to('')}}/' + obj.pdata.property_slug + '">';
+                                html += '<div class="overlay-text-frezeed">';
+                                html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
+                                html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;' + obj.pdata.price + ' </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
+                                html += '</div>';
+                                html += '<div class="overlay-text hotel-overlay-text">';
+                                html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
+                                html += '<p class="yacths-des-text yacths-des-text-align"><span>From &euro;' + obj.pdata.price + ' </span><' + obj.pdata.category_name + '</span></p>';
+                                html += '</div>';
+                                html += '<div class="overlay-text yacts-overlay-text">';
+                                html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
+                                html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;' + obj.pdata.price + ' </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
+                                html += '<p class="yacths-des-text">2015H</p>';
+                                html += '</div>';
+                                html += '<img alt="' + obj.image.file_name + '" src="' + pimg + '" class="img-responsive">';
+                                html += '</a>';
 
-            } else{
-                
-                var pimg = "{{URL::to('sximo/assets/images/img-1.jpg')}}";
-                html += '<div class="overlay-text-frezeed">';
-                html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
-                html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
-                html += '</div>';
-                html += '<div class="overlay-text hotel-overlay-text">';
-                html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
-                html += '<p class="yacths-des-text yacths-des-text-align"><span>From &euro;' + obj.pdata.price + ' </span>|<span>New York</span></p>';
-                html += '</div>';
-                html += '<div class="overlay-text yacts-overlay-text">';
-                html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
-                html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
-                html += '<p class="yacths-des-text">2015H</p>';
-                html += '</div>';
-                html += pimg;
-            }
+                            } else{
+                                
+                                var pimg = "{{URL::to('sximo/assets/images/img-1.jpg')}}";
+                                html += '<div class="overlay-text-frezeed">';
+                                html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
+                                html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
+                                html += '</div>';
+                                html += '<div class="overlay-text hotel-overlay-text">';
+                                html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
+                                html += '<p class="yacths-des-text yacths-des-text-align"><span>From &euro;' + obj.pdata.price + ' </span>|<span>New York</span></p>';
+                                html += '</div>';
+                                html += '<div class="overlay-text yacts-overlay-text">';
+                                html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
+                                html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
+                                html += '<p class="yacths-des-text">2015H</p>';
+                                html += '</div>';
+                                html += pimg;
+                            }
 
-            html += '</div>';
-            html += '<div class="listDetails">';
-            html += '<div class="photographBox ai-grid-tiitles">';
-            html += '<h2>';
-            var detail_link = "{{URL::to('')}}/" + obj.pdata.property_slug;
-            html += '<a title="' + obj.pdata.property_name + '" class="FltLft ai-filtreted-hotel-name" rel="' + obj.pdata.id + '" href="' + detail_link + '">';
-            html += obj.pdata.property_name;
-            html += '</a>';
-            html += '<span class="FltRgt">';
-            if (obj.hasOwnProperty("image")) {
-            html += '<i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" onclick="add_to_lightbox(' + obj.image.file_id + ',' + obj.pdata.id + ');" ></i>';
-            }
-            else{
-            html += '<i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" ></i>';
-            }
-            html += '<a class="carticon" href="' + detail_link + '"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>';
-            html += '</span>';
-            html += '</h2>';
-            html += '</div>';
-            html += '<div class="entire_story MrgTop5 ai-view-hotels-tittle">';
-            html += '<a class="textButton arrowButton detail_view MrgTop5" rel="' + obj.pdata.id + '" href="#">Quick View</a>';
-            html += '<a class="textButton arrowButton MrgTop5" rel="' + obj.pdata.id + '" href="' + detail_link + '">Detail View </a>';
-            html += '</div>';
-            html += '<div class="showOnHover">';
-            html += '<div class="hover_request">';
-            html += '</div>';
-            html += '</div>';
-            html += '</div>';
-            html += '</div>';
-            html += '</div>';
-            html += '</div>';
-            if (p % 4 == 0)
-            {
-            html += '</div>';
-            html += '<div class="row">';
-            }
-            }
-            p++;
-            node_no++;
-            total_rows++;
-            });
-            if(total_rows>0){
-                $('.locator').parent().css('padding-top','0px');
-            }
-            $(".searchcount").html(total_rows + ' Hotel(s) Found for ' + $(".ai_search_keywords").val());
-            html += '</div>';
-            if (it_scroll == false)
-            {
-            $('#listproperties').html(html);
-            }
-            else{
-            $('#listproperties').append(html);
-            }
-            if (destnarea != '')
-            {
-                if (dest_area[1] == 'country' || dest_area[1] == 'region'){
-                $('#cityfilters').html('');
-                }
-                var ttp = p - 1;
-                if (typeof $.parseJSON(data.cities) !== 'undefined' && $.parseJSON(data.cities).length > 0) {
+                            html += '</div>';
+                            html += '<div class="listDetails">';
+                            html += '<div class="photographBox ai-grid-tiitles">';
+                            html += '<h2>';
+                            var detail_link = "{{URL::to('')}}/" + obj.pdata.property_slug;
+                            html += '<a title="' + obj.pdata.property_name + '" class="FltLft ai-filtreted-hotel-name" rel="' + obj.pdata.id + '" href="' + detail_link + '">';
+                            html += obj.pdata.property_name;
+                            html += '</a>';
+                            html += '<span class="FltRgt">';
+                            if (obj.hasOwnProperty("image")) {
+                                html += '<i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" onclick="add_to_lightbox(' + obj.image.file_id + ',' + obj.pdata.id + ');" ></i>';
+                            }else{
+                                html += '<i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" ></i>';
+                            }
+                                html += '<a class="carticon" href="' + detail_link + '"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>';
+                                html += '</span>';
+                                html += '</h2>';
+                                html += '</div>';
+                                html += '<div class="entire_story MrgTop5 ai-view-hotels-tittle">';
+                                html += '<a class="textButton arrowButton detail_view MrgTop5" rel="' + obj.pdata.id + '" href="#">Quick View</a>';
+                                html += '<a class="textButton arrowButton MrgTop5" rel="' + obj.pdata.id + '" href="' + detail_link + '">Detail View </a>';
+                                html += '</div>';
+                                html += '<div class="showOnHover">';
+                                html += '<div class="hover_request">';
+                                html += '</div>';
+                                html += '</div>';
+                                html += '</div>';
+                                html += '</div>';
+                                html += '</div>';
+                                html += '</div>';
+                                if (p % 4 == 0){
+                                    html += '</div>';
+                                    html += '<div class="row">';
+                                }
+                            }
+                            p++;
+                            node_no++;
+                            total_rows++;
+                        });
+                        if(total_rows>0){
+                            $('.locator').parent().css('padding-top','0px');
+                        }
+                        $(".searchcount").html(total_rows + ' Hotel(s) Found for ' + $(".ai_search_keywords").val());
+                        html += '</div>';
+                        if (it_scroll == false){
+                            $('#listproperties').html(html);
+                        }else{
+                            $('#listproperties').append(html);
+                        }
+                    if (destnarea != ''){
+                        if (dest_area[1] == 'country' || dest_area[1] == 'region'){
+                            $('#cityfilters').html('');
+                        }
+                        var ttp = p - 1;
+                        if (typeof $.parseJSON(data.cities) !== 'undefined' && $.parseJSON(data.cities).length > 0) {
 
-                    chtml += '<div class="row" style="padding-bottom: 8px;background: #f0f0f0;padding-top: 8px;margin-bottom: 15px;">';
-                    chtml += '<div class="col-md-6 col-xs-12 text-right">Filter By Luxury Destination</div>';
-                    chtml += '<div class="col-md-6 col-xs-12">';
-                    chtml += '<select onchange="filter_destination(this.value ,\'city\')">';
-                    $.each($.parseJSON(data.cities), function(idx, cobj) {
-                        chtml += '<option value="' + cobj.id + '">' + cobj.category_name + '(' + cobj.totalproperty + ')</option>';
-                    })
-                    chtml += '</select>';
-                    chtml += '</div>';
-                    chtml += '</div>'; 
-                    
-                    $('#cityfilters').html(chtml); 
-                }
+                            chtml += '<div class="row" style="padding-bottom: 8px;background: #f0f0f0;padding-top: 8px;margin-bottom: 15px;">';
+                            chtml += '<div class="col-md-6 col-xs-12 text-right">Filter By Luxury Destination</div>';
+                            chtml += '<div class="col-md-6 col-xs-12">';
+                            chtml += '<select onchange="filter_destination(this.value ,\'city\')">';
+                            $.each($.parseJSON(data.cities), function(idx, cobj) {
+                                chtml += '<option value="' + cobj.id + '">' + cobj.category_name + '(' + cobj.totalproperty + ')</option>';
+                            })
+                            chtml += '</select>';
+                            chtml += '</div>';
+                            chtml += '</div>'; 
+                            
+                            $('#cityfilters').html(chtml); 
+                        }
 
                 //var searchcountdispl = data.ttl + ' Hotel(s) Found for ' + data.searchdestname;
                 //$('.searchcount').html(searchcountdispl);
-            }
+                }
 
-            sIndex = parseInt(sIndex) + offSet;
-            $('#listrecrds').val(sIndex);
-            $('#ttlpg').val(data.ttlpages);
-            isPreviousEventComplete = true;
-            }
-            },
+                    sIndex = parseInt(sIndex) + offSet;
+                    $('#listrecrds').val(sIndex);
+                    $('#ttlpg').val(data.ttlpages);
+                    isPreviousEventComplete = true;
+                }
+                 },
             error: function (error) {
     //        alert(error);
             }
-    });
+        });
     }
 }
 
