@@ -4335,7 +4335,9 @@ class HomeController extends Controller {
         if (strtolower($request->slug) == 'yachts') {
             $query .= "ORDER BY yacht_for_charter * 1 DESC ";
         } else {
-            $query .= "ORDER BY editor_choice_property desc, feature_property desc, (SELECT rack_rate FROM tb_properties_category_rooms_price WHERE tb_properties_category_rooms_price.property_id = tb_properties.id ORDER BY rack_rate DESC LIMIT 1) * 1 DESC ";
+            $__currentPage = ($currentPage > 0)? $currentPage : 1;
+            $start = ($perPage * $__currentPage);
+            $query .= "ORDER BY editor_choice_property desc, feature_property desc, (SELECT rack_rate FROM tb_properties_category_rooms_price WHERE tb_properties_category_rooms_price.property_id = tb_properties.id ORDER BY rack_rate DESC LIMIT 1) * 1 DESC LIMIT $start, $perPage ";
         }
 
         $props = DB::select(DB::raw($query));
