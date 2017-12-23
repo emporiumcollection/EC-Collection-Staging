@@ -2,7 +2,7 @@
     .leftAlignCollpse {
         padding: 14px 0px 14px 8px !important;
         background: #f0f0f0;
-        margin-left: -17px;
+        margin-left: 0;
     }
     .navbar-inverse .navbar-nav > li > a {
         margin: 2px 15px 0;
@@ -23,6 +23,9 @@
         border-radius: 0;
         height: 25px;
         border: none;
+    }
+    .container {
+        width: 100%;
     }
 </style>
 
