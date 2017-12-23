@@ -4904,6 +4904,8 @@ class HomeController extends Controller {
         $__currentPage = ($__currentPage > 0)? $currentPage : 1;
         $start = ($perPage * $__currentPage);
         
+        echo "SELECT id,property_name,property_slug FROM tb_properties WHERE tb_properties.property_type = 'Hotel' AND property_name like '%$keyword%' AND property_status = '1' $getcats GROUP BY id ORDER BY id asc LIMIT $start, $perPage ";die;
+        
         $seaprops = DB::select(DB::raw("SELECT id,property_name,property_slug FROM tb_properties WHERE tb_properties.property_type = 'Hotel' AND property_name like '%$keyword%' AND property_status = '1' $getcats GROUP BY id ORDER BY id asc LIMIT $start, $perPage "));
         if (!empty($seaprops)) {
             foreach ($seaprops as $sprop) {
