@@ -540,7 +540,7 @@
                                          
                                          @if(!empty($cities))
 
-                                         <div class="row" style="padding-bottom: 8px;background: #f0f0f0;padding-top: 8px;margin-bottom: 15px;">
+                                         <div class="row" style="padding-bottom: 8px;background: #f0f0f0;padding-top: 8px;margin-bottom: 15px; margin-left: 0; margin-right: 0;">
                                              <div class="col-md-6 col-xs-12 text-right">
                                                 Filter By Luxury Destination
                                              </div>
