@@ -466,8 +466,8 @@
                                             <aside class="site-aside">
                                                 <div class="contact-aside">
                                                     <ul class="contact-aside-list">
-                                                      <li class="contact-list-item contact-phone"><i class="fa fa-phone asideIclass" aria-hidden="true"></i> +49 251 4188-0</li>
-                                                      <li class="contact-list-item contact-email"><i class="fa fa-envelope asideIclass" aria-hidden="true"></i> mail@factoryhotel.de</li>
+                                                      <li class="contact-list-item contact-phone"><i class="fa fa-phone asideIclass" aria-hidden="true"></i> +49 172 8937230</li>
+                                                      <li class="contact-list-item contact-email"><i class="fa fa-envelope asideIclass" aria-hidden="true"></i> bookings@emporium-voyage.com</li>
                                                     </ul>
                                                 </div>
                                             </aside>
