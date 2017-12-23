@@ -8,6 +8,14 @@
         margin: 2px 15px 0;
         padding: 5px 0;
     }
+    .navbar-nav.aicsm {
+        float: none;
+        text-align: center;
+    }
+    .navbar-nav.aicsm > li {
+        float: none;
+        display: inline;
+    }
 </style>
 
 <div class="header-navigation-menu">
@@ -30,7 +38,7 @@
 					<li><a  href="{{url('luxurytravel/Spas')}}">Spas</a></li>
                     <li><a  data-popup-id="search-page" class="video-popup-btn" href="#"><i class="fa fa-search"></i></a></li>
                 </ul>-->
-				<ul class="nav navbar-nav">
+				<ul class="nav navbar-nav aicsm">
                                     <?php
                                     if(isset($slug) && strtolower($slug) == 'yachts') {
                                         $grid_menus = SiteHelpers::menus('yacht_grid');
