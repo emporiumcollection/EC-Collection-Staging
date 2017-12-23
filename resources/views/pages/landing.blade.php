@@ -327,7 +327,7 @@
             position: fixed;
             top: 120px;
             right: calc(100% - 43px);
-            width: 260px;
+            width: 291px;
             background: #272727;
             color: #fff;
             font-size: 15px;
@@ -359,7 +359,7 @@
             top: 2px;
         }
         .contact-aside.active {
-	right: calc(100% - 253px);
+	right: calc(100% - 290px);
 	background: #1e2023 !important;
 	color: #fff !important;
         }
