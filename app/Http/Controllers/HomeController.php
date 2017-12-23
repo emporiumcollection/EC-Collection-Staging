@@ -4900,7 +4900,11 @@ class HomeController extends Controller {
         }
 
         //$seaprops = \DB::table('tb_properties')->where('property_name', 'like', '%'.$keyword.'%')->where('property_status',1)->get();
-        $seaprops = DB::select(DB::raw("SELECT id,property_name,property_slug FROM tb_properties WHERE tb_properties.property_type = 'Hotel' AND property_name like '%$keyword%' AND property_status = '1' $getcats GROUP BY id ORDER BY id asc"));
+        
+        $__currentPage = ($__currentPage > 0)? $currentPage : 1;
+        $start = ($perPage * $__currentPage);
+        
+        $seaprops = DB::select(DB::raw("SELECT id,property_name,property_slug FROM tb_properties WHERE tb_properties.property_type = 'Hotel' AND property_name like '%$keyword%' AND property_status = '1' $getcats GROUP BY id ORDER BY id asc LIMIT $start, $perPage "));
         if (!empty($seaprops)) {
             foreach ($seaprops as $sprop) {
 
