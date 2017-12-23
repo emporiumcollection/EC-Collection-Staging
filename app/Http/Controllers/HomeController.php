@@ -5040,7 +5040,8 @@ class HomeController extends Controller {
             return trim($a['pdata']->price) < trim($b['pdata']->price);
         });
         
-        $propertiesArr = array_map("unserialize", array_unique(array_map("serialize", $propertiesArr)));
+        echo $currentPage;die;
+        /*$propertiesArr = array_map("unserialize", array_unique(array_map("serialize", $propertiesArr)));*/
 
         //echo count($propertiesArr);
         $pagedData = array_slice($propertiesArr, $currentPage * $perPage, $perPage);
