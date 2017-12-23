@@ -16,6 +16,13 @@
         float: none;
         display: inline;
     }
+    select[onchange="filter_destination(this.value ,'city')"] {
+        border-color: #fff;
+        width: 200px;
+        font-size: 15px;
+        border-radius: 0;
+        background-color: #fff;
+    }
 </style>
 
 <div class="header-navigation-menu">
