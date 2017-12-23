@@ -1,8 +1,12 @@
 <style>
     .leftAlignCollpse {
-	padding: 14px 0px 14px 8px !important;
-	background: #f0f0f0;
-	margin-left: -17px;
+        padding: 14px 0px 14px 8px !important;
+        background: #f0f0f0;
+        margin-left: -17px;
+    }
+    .navbar-inverse .navbar-nav > li > a {
+        margin: 2px 15px 0;
+        padding: 5px 0;
     }
 </style>
 
