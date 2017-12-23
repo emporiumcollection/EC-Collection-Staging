@@ -234,6 +234,7 @@ Route::post('get-article-by-title', 'HomeController@getArticleByTitle');
 
 // property search urls
 Route::get('getproperty/{id}', 'HomeController@getPropertyQuickView');
+Route::get('filter_search_destionation', 'HomeController@getPropertyBySearchDestination');
 Route::get('{slug}', 'HomeController@getPropertyDetail');
 Route::get('our-collection-pages/{slug}/{page}', 'HomeController@getPropertyDetail_pages');
 Route::get('book-property/{slug}', 'HomeController@bookProperty');
@@ -247,7 +248,7 @@ Route::get('getpropertygallery/{id}/{type}', 'HomeController@getPropertyGalleryQ
 Route::get('getpropertyroomimages/{id}', 'HomeController@getPropertyRoomimageGalleryView');
 Route::get('getpropertytypedetail/{id}', 'HomeController@getPropertyTypeQuickView');
 Route::post('filter_category_destionation', 'HomeController@getPropertyByCategoryDestination');
-Route::get('filter_search_destionation', 'HomeController@getPropertyBySearchDestination');
+
 Route::post('find_property_by_name', 'HomeController@find_property_by_name');
 Route::get('getRooms/{slug}', 'PropertiesDetailController@getRoomsAjax');
 Route::group(['prefix' => 'api', 'after' => 'allowOrigin'], function() {
