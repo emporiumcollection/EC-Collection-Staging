@@ -540,7 +540,7 @@ return fasle;
                                 @endif
                                 <div class="container">
                                     <div class="row">
-                                        <div class="header-navigation-container col-md-12 sachin">
+                                        <div class="header-navigation-container col-md-12">
                                             <div class="row">
                                                 <div class="col-md-12 col-sm-12">
                                                     @include('layouts/elliot/ai_navigation')
