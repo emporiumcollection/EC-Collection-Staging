@@ -149,7 +149,7 @@
                                 <div class="col-md-5 col-sm-5 col-xs-12  footer-padding-0">
                                     {{--*/ $footer_menus = SiteHelpers::menus('footer') /*--}}
 									@foreach ($footer_menus as $fmenu)
-										<div class="col-md-4 col-sm-4 col-xs-12 {{($fmenu!=$footer_menus[0]) ? 'footer-padding-0' : ''}}">
+										<div class="col-md-4 col-sm-4 col-xs-12 {{($fmenu!=$footer_menus[0]) ? 'footer-padding-0' : ''}} padd0">
 											<div class="row-">
 												<div class="accordion res-design-footer">
 													@if(CNF_MULTILANG ==1 &&  isset($fmenu['menu_lang']['title'][Session::get('lang')]))
