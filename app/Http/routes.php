@@ -247,7 +247,7 @@ Route::get('getpropertygallery/{id}/{type}', 'HomeController@getPropertyGalleryQ
 Route::get('getpropertyroomimages/{id}', 'HomeController@getPropertyRoomimageGalleryView');
 Route::get('getpropertytypedetail/{id}', 'HomeController@getPropertyTypeQuickView');
 Route::post('filter_category_destionation', 'HomeController@getPropertyByCategoryDestination');
-Route::post('filter_search_destionation', 'HomeController@getPropertyBySearchDestination');
+Route::get('filter_search_destionation', 'HomeController@getPropertyBySearchDestination');
 Route::post('find_property_by_name', 'HomeController@find_property_by_name');
 Route::get('getRooms/{slug}', 'PropertiesDetailController@getRoomsAjax');
 Route::group(['prefix' => 'api', 'after' => 'allowOrigin'], function() {
