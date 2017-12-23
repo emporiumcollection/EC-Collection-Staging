@@ -1265,7 +1265,7 @@ return fasle;
                                 html += '<div class="productData col-xs-12 col-sm-6 col-md-3 col-lg-3 margin-bottom-10">';
                                 html += '<div class="wrapperforliineedforlightboxremoval">';
                                 html += '<div class="cat_product_medium1">';
-                                html += '<div class="ai-grid-page-node-pic-box pictureBox gridPicture grid-box-main">';
+                                html += '<div here class="ai-grid-page-node-pic-box pictureBox gridPicture grid-box-main">';
                                 if (obj.pdata.price != '')
                                 {
                                 if ($("#filter_min_price").val() != '' && $("#filter_max_price").val() != '') {
