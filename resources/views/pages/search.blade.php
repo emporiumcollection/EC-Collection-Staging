@@ -853,6 +853,9 @@ url: "{{ URL::to('filter_search_destionation')}}",
         type: "post",
         data: 's=' + $(".ai_search_keywords").val() + '&arrive=' + $(".ai-arrive-date-filter").val() + '&destination=' + $(".ai-depart-date-filter").val() + '&page=' + nxtpg + queryStrng + "&filter_min_price=" + $("#filter_min_price").val() + "&filter_max_price=" + $("#filter_max_price").val() + "&current_filter=" + $(".ai-current-filter").val(),
         dataType: "json",
+        complete: function (jqXHR, textStatus ) {
+            $('#nxtpg').val(parseInt(nxtpg) + 1);
+        },
         success: function(data){
             $(".ai-scrollDownloadData-filter-running").val("0");
             $('#loaderProperty').hide();
@@ -1183,7 +1186,6 @@ url: "{{ URL::to('filter_search_destionation')}}",
         $('#ttlpg').val(data.ttlpages);
         isPreviousEventComplete = true;
         }
-        $('#nxtpg').val(parseInt(nxtpg) + 1);
         },
         error: function (error) {
 //        alert(error);
