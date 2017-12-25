@@ -6023,6 +6023,7 @@ class HomeController extends Controller {
                         $propertiesArr = array();
                         $props = array();
                         $perPage = 40;
+                        $perPage = 12;
                         $currentPage = Input::get('page', 1) - 1;
                         $TagsObj = \DB::table('tb_tags_manager')->select('id')->where('tag_title', $keyword)->where('tag_status', 1)->first();
                         $TagsConId = array();
