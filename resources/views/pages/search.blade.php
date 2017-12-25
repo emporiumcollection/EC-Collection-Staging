@@ -839,9 +839,6 @@ function scrollDataAjax(it_scroll,pageCounter)
             // $('#nxtpg').val(parseInt(nxtpg) + 1);
         },
         success: function(data){
-            
-            return;
-            
             $(".ai-scrollDownloadData-filter-running").val("0");
             $('#loaderProperty').hide();
                 var html = chtml = '';
