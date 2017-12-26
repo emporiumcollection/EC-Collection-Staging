@@ -244,7 +244,7 @@
                             }
                             .hotel-sec-block-two {
                                 background-blend-mode: multiply;
-                                background: rgba(0,0,0,0.8);
+                                filter: brightness(.8);
                                 /* background-image: url("http://www.design-locations.biz/uploads/container_user_files/locations/hotel-greif/property-images/Hotel-Greiff-%20South-Tyrol,%20Italy-design-locations.com8.jpeg"); */
                                 background-position: center center;
                                 background-repeat: no-repeat;
