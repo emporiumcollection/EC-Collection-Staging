@@ -229,7 +229,7 @@
                             opacity: .2;
                            }
                            .editorial-hotel-detail-page .hotels-logo, .editorial-hotel-detail-page .right-menu-align li:nth-child(1), .editorial-hotel-detail-page .right-menus ul li a {
-                                background: rgba(37, 37, 37,);
+                                background: rgba(37, 37, 37, 1);
                                 border-bottom: 1px solid rgba(211, 214, 210, 0.2);
                                 padding: 15px 0 14px 28px;
                             }
@@ -244,7 +244,7 @@
                             }
                             .hotel-sec-block-two {
                                 background-blend-mode: multiply;
-                                filter: brightness(.8);
+                                filter: brightness(.9);
                                 /* background-image: url("http://www.design-locations.biz/uploads/container_user_files/locations/hotel-greif/property-images/Hotel-Greiff-%20South-Tyrol,%20Italy-design-locations.com8.jpeg"); */
                                 background-position: center center;
                                 background-repeat: no-repeat;
@@ -304,6 +304,9 @@
                                     transform: translateX(-50%);
                                     opacity: 1;
                                     filter: brightness(.8);
+                            }
+                            .hotels-detail-description-text {
+                                margin-top: 66px;
                             }
                         
         </style>
