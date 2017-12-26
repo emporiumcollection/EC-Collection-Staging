@@ -220,6 +220,14 @@
                            .editorial-hotel-detail-page img.banner-arrow-bg {
                             background-color: rgb(37, 37, 37 0.5);
                            }
+                           .overlaySlider {
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            z-index: 0;
+                            background-color: #000;
+                            opacity: .2;
+                           }
                         
         </style>
 		<!-- Global site tag (gtag.js) - Google Analytics -->
