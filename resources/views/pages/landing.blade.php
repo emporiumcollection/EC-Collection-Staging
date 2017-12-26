@@ -388,15 +388,17 @@
         .main-page-landing .experience-page .open-experience-html.des-holiday-sec-align {
             width: auto !important;
         }
-        .main-page-landing .destination-page .open-destination-html.des-holiday-sec-align {
+        .main-page-landing .destination-page .open-destination-html {
             width: auto !important;
         }
         .main-page-landing .destination-page {
             position: unset;
-            top: unset;
-            left: unset;
-            z-index: unset;
             width: auto;
+            left: unset;
+            top: unset;
+            height: auto;
+            min-height: unset;
+            max-height: unset;
         }
         </style>
 		<!-- Global site tag (gtag.js) - Google Analytics -->
