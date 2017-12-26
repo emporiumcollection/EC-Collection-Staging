@@ -389,9 +389,18 @@
             width: auto !important;
         }
         .main-page-landing .destination-page .open-destination-html {
-            width: auto !important;
+            width: 100% !important;
         }
         .main-page-landing .destination-page {
+            position: unset;
+            width: auto;
+            left: unset;
+            top: unset;
+            height: auto;
+            min-height: unset;
+            max-height: unset;
+        }
+        .main-page-landing .book-now-page {
             position: unset;
             width: auto;
             left: unset;
@@ -788,6 +797,85 @@
                                 </div>
                             </div>
                             <!--Destination Page  End Here-->
+                            <!--Search By Date Page Start Here-->
+                            <div class="row">
+                                <div class="book-now-page date-page" <?php if(isset($_GET['ref']) && $_GET['ref']=='sbd'){ echo 'style="width:100%;"';}?>>
+                                    <div class="book-now-page-content open-date-html">
+                                        <!--<div><a class="close-btn-date close-btn-align" href="#">&times;</a></div>-->
+                                        <div class="headings">
+                                            <h2>Emporium Voyage is your ideal, vogue vacation planner!</h2>
+                                            <p>With over 300 posh properties, elite spas and exquisite yachts huddled in its cocoon, Emporium Voyage ensure the ultimate luxury experience</p>
+                                        </div>
+                                        <form action="{{URL::to('search')}}" method="get">
+                                            <input name="s" value="" type="hidden">
+                                            <input name="ref" value="sbd" type="hidden">
+
+                                            <ul class="dates" id="search-by-date">
+                                                <li>
+                                                    <div class="heading">Arrive</div>
+                                                    <input id="date-range-arrive" size="20" name="arrive" value="{{ ($arrive_date!='') ? $arrive_date : date('d.m.Y') }}">
+                                                </li>
+                                                <li>
+                                                    <div class="heading">Departure</div>
+                                                    <input id="date-range-destination" size="20" name="destination" value="{{ ($destination_date!='') ? $destination_date : '' }}">
+                                                </li>
+                                            </ul>
+                                            <ul class="dates">
+                                                <li>
+                                                    <div class="heading">Adults</div>
+                                                    <select name="adult">
+                                                        <option {{ ($adults!='' && $adults==1) ? 'selected' : '' }}>1</option>
+                                                        <option {{ ($adults!='' && $adults==2) ? 'selected' : '' }}>2</option>
+                                                        <option {{ ($adults!='' && $adults==3) ? 'selected' : '' }}>3</option>
+                                                    </select>
+                                                </li>
+                                                <li>
+                                                    <div class="heading">Children</div>
+                                                    <select name="childs">
+                                                        <option {{ ($childs!='' && $childs==0) ? 'selected' : '' }}>0</option>
+                                                        <option {{ ($childs!='' && $childs==1) ? 'selected' : '' }}>1</option>
+                                                        <option {{ ($childs!='' && $childs==2) ? 'selected' : '' }}>2</option>
+                                                    </select>
+                                                </li>
+                                                <div class="clearfix"></div>
+                                            </ul>
+                                            <div class="clearfix"></div>
+                                            <div class="submit-btn editorial-submit-btn">
+                                                <button class="booking-form-pop-up-btn-" data-popup-id="booking-form-pop-up" type="submit">BOOK NOW</button>
+                                            </div>
+                                        </form>
+                                        <div class="view-modify-cancel-booking">
+                                            <a href="#">View, Modify or Cancel your Booking</a>
+                                        </div>
+                                        <ul class="booking-page-footer-section">
+                                            <li>
+                                                <a href="#" target="_blank">
+                                                    <span>Join the worlds leading luxury club</span>
+                                                    <h6 class="center">Enjoy exclusive members only benefits</h6>
+                                                </a>
+                                                <div class="white-border-bottom"></div>
+                                            </li>
+                                            <li>
+                                                <a href="#" target="_blank">
+                                                    <span>Spa Treatment</span>
+                                                    <h6 class="center">Book</h6>
+                                                </a>
+                                                <div class="white-border-bottom"></div>
+                                            </li>
+                                            <li>
+                                                <a href="#" target="_blank">
+                                                    <span>View or Modify Reserveration</span>
+                                                    <h6 class="center">Login to Support Center</h6>
+                                                </a>
+                                                <div class="white-border-bottom"></div>
+                                            </li>
+                                            <div class="clearfix"></div>
+                                        </ul>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Search By Date Page End Here-->
                         </div>
                         <!--Main Page End-->
                         <!--Sidebar-->
@@ -921,83 +1009,6 @@
                 </div>
             </div>
             <!--Personalized Page  End Here-->
-            <!--Search By Date Page Start Here-->
-            <div class="book-now-page date-page" <?php if(isset($_GET['ref']) && $_GET['ref']=='sbd'){ echo 'style="width:100%;"';}?>>
-                <div class="book-now-page-content open-date-html">
-                    <div><a class="close-btn-date close-btn-align" href="#">&times;</a></div>
-                    <div class="headings">
-                        <h2>Emporium Voyage is your ideal, vogue vacation planner!</h2>
-                        <p>With over 300 posh properties, elite spas and exquisite yachts huddled in its cocoon, Emporium Voyage ensure the ultimate luxury experience</p>
-                    </div>
-                    <form action="{{URL::to('search')}}" method="get">
-                        <input name="s" value="" type="hidden">
-                        <input name="ref" value="sbd" type="hidden">
-
-                        <ul class="dates" id="search-by-date">
-                            <li>
-                                <div class="heading">Arrive</div>
-                                <input id="date-range-arrive" size="20" name="arrive" value="{{ ($arrive_date!='') ? $arrive_date : date('d.m.Y') }}">
-                            </li>
-                            <li>
-                                <div class="heading">Departure</div>
-                                <input id="date-range-destination" size="20" name="destination" value="{{ ($destination_date!='') ? $destination_date : '' }}">
-                            </li>
-                        </ul>
-                        <ul class="dates">
-                            <li>
-                                <div class="heading">Adults</div>
-                                <select name="adult">
-                                    <option {{ ($adults!='' && $adults==1) ? 'selected' : '' }}>1</option>
-                                    <option {{ ($adults!='' && $adults==2) ? 'selected' : '' }}>2</option>
-                                    <option {{ ($adults!='' && $adults==3) ? 'selected' : '' }}>3</option>
-                                </select>
-                            </li>
-                            <li>
-                                <div class="heading">Children</div>
-                                <select name="childs">
-                                    <option {{ ($childs!='' && $childs==0) ? 'selected' : '' }}>0</option>
-                                    <option {{ ($childs!='' && $childs==1) ? 'selected' : '' }}>1</option>
-                                    <option {{ ($childs!='' && $childs==2) ? 'selected' : '' }}>2</option>
-                                </select>
-                            </li>
-                            <div class="clearfix"></div>
-                        </ul>
-                        <div class="clearfix"></div>
-                        <div class="submit-btn editorial-submit-btn">
-                            <button class="booking-form-pop-up-btn-" data-popup-id="booking-form-pop-up" type="submit">BOOK NOW</button>
-                        </div>
-                    </form>
-                    <div class="view-modify-cancel-booking">
-                        <a href="#">View, Modify or Cancel your Booking</a>
-                    </div>
-                    <ul class="booking-page-footer-section">
-                        <li>
-                            <a href="#" target="_blank">
-                                <span>Join the worlds leading luxury club</span>
-                                <h6 class="center">Enjoy exclusive members only benefits</h6>
-                            </a>
-                            <div class="white-border-bottom"></div>
-                        </li>
-                        <li>
-                            <a href="#" target="_blank">
-                                <span>Spa Treatment</span>
-                                <h6 class="center">Book</h6>
-                            </a>
-                            <div class="white-border-bottom"></div>
-                        </li>
-                        <li>
-                            <a href="#" target="_blank">
-                                <span>View or Modify Reserveration</span>
-                                <h6 class="center">Login to Support Center</h6>
-                            </a>
-                            <div class="white-border-bottom"></div>
-                        </li>
-                        <div class="clearfix"></div>
-                    </ul>
-                    <div class="clearfix"></div>
-                </div>
-            </div>
-            <!--Search By Date Page End Here-->
             <!--About Page Start Here-->
             <div class="about-page">
                 <div class="open-about-html">
