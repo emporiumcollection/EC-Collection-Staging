@@ -368,12 +368,14 @@
             float: right;
         }
         
-        .experience-page {
+        .main-page-landing .experience-page {
             position: unset;
             width: auto;
             left: unset;
             top: unset;
             height: auto;
+            min-height: unset;
+            max-height: unset;
         }
         
         </style>
