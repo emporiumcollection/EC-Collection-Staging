@@ -228,6 +228,83 @@
                             background-color: #000;
                             opacity: .2;
                            }
+                           .editorial-hotel-detail-page .hotels-logo, .editorial-hotel-detail-page .right-menu-align li:nth-child(1), .editorial-hotel-detail-page .right-menus ul li a {
+                                background: rgba(37, 37, 37,);
+                                border-bottom: 1px solid rgba(211, 214, 210, 0.2);
+                                padding: 15px 0 14px 28px;
+                            }
+                            .editorial-hotel-detail-page .right-menus ul li a:hover {
+                                background: #ada077;
+                                color: white;
+                                opacity: 0.8;
+                            }
+                            .editorial-hotel-detail-page img.banner-arrow-bg {
+                                background-color: rgb(37, 37, 37);
+                                opacity: 0.8;
+                            }
+                            .hotel-sec-block-two {
+                                background-blend-mode: multiply;
+                                background: rgba(0,0,0,0.8);
+                                /* background-image: url("http://www.design-locations.biz/uploads/container_user_files/locations/hotel-greif/property-images/Hotel-Greiff-%20South-Tyrol,%20Italy-design-locations.com8.jpeg"); */
+                                background-position: center center;
+                                background-repeat: no-repeat;
+                                background-size: cover;
+                                padding-bottom: 75px;
+                                padding-top: 290px;
+                                border-top: 4px solid #545454;
+                                /* opacity: 0.6; */
+                            }
+                            
+                            .hotels-des-left-side {
+                                background: rgba(0,0,0,0.8);
+                                color: #fff;
+                                font-family: geomanist-regular;
+                                padding: 139px 32px 36px 75px;
+                            }
+                            .editorial-hotel-detail-page button.go-back-button {
+                                background-color: \\;
+                                background: #8AE0C7;
+                                opacity: 1;
+                                color: black;
+                            }
+                            
+                            .editorial-page-booking-bar .top-booking-bar-btn, .editorial-hotel-detail-page .book-button, .editorial-hotel-detail-page .hotel-slider-price, .editorial-hotel-detail-page .spa-sec-book-an-appoinment-btn {
+                                background-color: #8AE0C7;
+                                color: black;
+                            }
+                            a:hover, a:focus, a:active {
+                                text-decoration: none;
+                                color: #8AE0C7;
+                            }
+                            .hotels-detail-heading-text > p {
+                                color: white;
+                                font-family: Oswald-Light;
+                                font-size: 14px;
+                                letter-spacing: 3px;
+                                line-height: 19px;
+                                text-transform: uppercase;
+                            }
+                            
+                            .editorial-hotel-detail-page #align-to-top .book-button.open-show_more-page.hotel-btn {
+                                background-color: #ABA07C;
+                                opacity: 1;
+                                color: white;
+                            }
+                            .editorial-page-booking-bar .top-booking-bar-btn, .editorial-hotel-detail-page .book-button, .editorial-hotel-detail-page .hotel-slider-price, .editorial-hotel-detail-page .spa-sec-book-an-appoinment-btn {
+                                    background-color: #ABA07C;
+                                    color: white;
+                            }
+                            .gallery.row .secondaria1 img {
+                                    width: auto;
+                                    position: absolute;
+                                    top: 0%;
+                                    left: 50%;
+                                    -ms-transform: translateX(-50%);
+                                    -webkit-transform: translateX(-50%);
+                                    transform: translateX(-50%);
+                                    opacity: 1;
+                                    filter: brightness(.8);
+                            }
                         
         </style>
 		<!-- Global site tag (gtag.js) - Google Analytics -->
