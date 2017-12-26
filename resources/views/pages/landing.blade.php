@@ -620,54 +620,56 @@
                         @endif
                         
                             <!--Experience Page Start Here-->
-                            <div class="experience-page" <?php if(isset($_GET['ref']) && $_GET['ref']=='sye'){ echo 'style="width:100%;"';}?>>
-                                <div class="open-experience-html des-holiday-sec-align">
-                                    <div><a class="close-btn-experience close-btn-align" href="#">&times;</a></div>
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 header-logo-center">
-                                        <a href="#"><img class="img-responsive" src="{{ asset('sximo/assets/images/Emporium-Voyage.png')}}"/></a>
-                                    </div>
-                                    <h2>Select Your Experience</h2>
-                                    <div class="choose-experience-center-align">
-                                        <div class="width-100 holiday-type-image-align ">
-                                            <div class="width-20">
-                                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoBeachHotels.jpg')}}" alt=""/>
-                                                <a href="{{URL::to('luxury_experience/Beach_Hotels')}}"><h3 class="hover-tittles">Luxury Beach Hotels</h3></a>
-                                            </div>
-                                            <div class="width-20">
-                                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoGreenHotels.jpg')}}" alt=""/>
-                                                <a href="{{URL::to('luxury_experience/Green_Properties')}}"><h3 class="hover-tittles">Luxury Green Hotels</h3></a>
-                                            </div>
-                                            <div class="width-20">
-                                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoUrbanHotels.jpg')}}" alt=""/>
-                                                <a href="{{URL::to('luxury_experience/Go_Urban_Hotels')}}"><h3 class="hover-tittles">Luxury Urban Hotels</h3></a>
-                                            </div>
-                                            <div class="width-20">
-                                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoInfinityPoolHotels.jpg')}}" alt=""/>
-                                                <a href="{{URL::to('luxury_experience/Infinity_Pools')}}"><h3 class="hover-tittles">Luxury Infinity Pools</h3></a>
-                                            </div>
-                                            <div class="width-20">
-                                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoSpaandWellnessHotels.jpg')}}" alt=""/>
-                                                <a href="{{URL::to('luxury_experience/Spa_and_Wellness_Hotels')}}"><h3 class="hover-tittles">Luxury Spa and Wellness Hotels</h3></a>
-                                            </div>
-                                            <div class="width-20">
-                                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoMountainaandSkiResorts.jpg')}}" alt=""/>
-                                                <a href="{{URL::to('luxury_experience/Mountain_Ski_Resorts')}}"><h3 class="hover-tittles">Luxury Mountains and Skin Resorts</h3></a>
-                                            </div>
-                                            <div class="width-20">
-                                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoYogaHotels.jpg')}}" alt=""/>
-                                                <a href="{{URL::to('luxury_experience/Yoga_Hotels')}}"><h3 class="hover-tittles">Discover Yoga Hotels</h3></a>
-                                            </div>
-                                            <div class="width-20">
-                                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoCulnaryDelightHotels.jpg')}}" alt=""/>
-                                                <a href="{{URL::to('luxury_experience/Culinary_Delights')}}"><h3 class="hover-tittles">Discover culinary Delight Hotels</h3></a>
-                                            </div>
-                                            <div class="width-20">
-                                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoFamilyFriendlyHotels.jpg')}}" alt=""/>
-                                                <a href="{{URL::to('luxury_experience/Family_Friendly')}}"><h3 class="hover-tittles">Discover Family Friendly Hotels</h3></a>
-                                            </div>
-                                            <div class="width-20">
-                                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoUnusualAdventures.jpg')}}" alt=""/>
-                                                <a href="{{URL::to('luxury_experience/Unusual_Adventure_Hotels')}}"><h3 class="hover-tittles">Unusual Adventure Hotels</h3></a>
+                            <div class="row">
+                                <div class="experience-page" <?php if(isset($_GET['ref']) && $_GET['ref']=='sye'){ echo 'style="width:100%;"';}?>>
+                                    <div class="open-experience-html des-holiday-sec-align">
+                                        <div><a class="close-btn-experience close-btn-align" href="#">&times;</a></div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 header-logo-center">
+                                            <a href="#"><img class="img-responsive" src="{{ asset('sximo/assets/images/Emporium-Voyage.png')}}"/></a>
+                                        </div>
+                                        <h2>Select Your Experience</h2>
+                                        <div class="choose-experience-center-align">
+                                            <div class="width-100 holiday-type-image-align ">
+                                                <div class="width-20">
+                                                    <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoBeachHotels.jpg')}}" alt=""/>
+                                                    <a href="{{URL::to('luxury_experience/Beach_Hotels')}}"><h3 class="hover-tittles">Luxury Beach Hotels</h3></a>
+                                                </div>
+                                                <div class="width-20">
+                                                    <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoGreenHotels.jpg')}}" alt=""/>
+                                                    <a href="{{URL::to('luxury_experience/Green_Properties')}}"><h3 class="hover-tittles">Luxury Green Hotels</h3></a>
+                                                </div>
+                                                <div class="width-20">
+                                                    <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoUrbanHotels.jpg')}}" alt=""/>
+                                                    <a href="{{URL::to('luxury_experience/Go_Urban_Hotels')}}"><h3 class="hover-tittles">Luxury Urban Hotels</h3></a>
+                                                </div>
+                                                <div class="width-20">
+                                                    <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoInfinityPoolHotels.jpg')}}" alt=""/>
+                                                    <a href="{{URL::to('luxury_experience/Infinity_Pools')}}"><h3 class="hover-tittles">Luxury Infinity Pools</h3></a>
+                                                </div>
+                                                <div class="width-20">
+                                                    <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoSpaandWellnessHotels.jpg')}}" alt=""/>
+                                                    <a href="{{URL::to('luxury_experience/Spa_and_Wellness_Hotels')}}"><h3 class="hover-tittles">Luxury Spa and Wellness Hotels</h3></a>
+                                                </div>
+                                                <div class="width-20">
+                                                    <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoMountainaandSkiResorts.jpg')}}" alt=""/>
+                                                    <a href="{{URL::to('luxury_experience/Mountain_Ski_Resorts')}}"><h3 class="hover-tittles">Luxury Mountains and Skin Resorts</h3></a>
+                                                </div>
+                                                <div class="width-20">
+                                                    <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoYogaHotels.jpg')}}" alt=""/>
+                                                    <a href="{{URL::to('luxury_experience/Yoga_Hotels')}}"><h3 class="hover-tittles">Discover Yoga Hotels</h3></a>
+                                                </div>
+                                                <div class="width-20">
+                                                    <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoCulnaryDelightHotels.jpg')}}" alt=""/>
+                                                    <a href="{{URL::to('luxury_experience/Culinary_Delights')}}"><h3 class="hover-tittles">Discover culinary Delight Hotels</h3></a>
+                                                </div>
+                                                <div class="width-20">
+                                                    <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoFamilyFriendlyHotels.jpg')}}" alt=""/>
+                                                    <a href="{{URL::to('luxury_experience/Family_Friendly')}}"><h3 class="hover-tittles">Discover Family Friendly Hotels</h3></a>
+                                                </div>
+                                                <div class="width-20">
+                                                    <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoUnusualAdventures.jpg')}}" alt=""/>
+                                                    <a href="{{URL::to('luxury_experience/Unusual_Adventure_Hotels')}}"><h3 class="hover-tittles">Unusual Adventure Hotels</h3></a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
