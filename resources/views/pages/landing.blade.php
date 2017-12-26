@@ -377,8 +377,8 @@
             min-height: unset;
             max-height: unset;
         }
-        .editorial_m_slider .editorial-arrows-container, .editorial_m_slider_landing .editorial-arrows-container {
-            bottom: auto;
+        .main-page-landing .m_slider .arrows-container {
+            bottom: unset;
         }
         .editorial_m_slider_landing ul li .editorial-text {
             bottom: auto;
