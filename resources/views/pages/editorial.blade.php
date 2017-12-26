@@ -125,7 +125,7 @@
                 font-family: ACaslonPro-Regular;
                 font-size: 40px;
                 font-weight: lighter;
-                margin-top: 0;
+                margin-top: -80px;
                 text-transform: uppercase;
                 opacity:0;
             }
