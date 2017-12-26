@@ -109,6 +109,17 @@
             .hotel-sec-block-two { background-image: url('{{( array_key_exists('propimage', $propertyDetail)) ? \ImageCache::make($propertyDetail['propimage_thumbpath_dir'].$propertyDetail['propimage'][1]->file_name,100,1000,null) : ''}}'); }
 
             .hotels-detail-description-text > p { max-height:300px; }
+            .hotels-detail-description-text > p {
+                font-size: 15px;
+                line-height: 30px;
+                font-family: Geomanist-Light;
+            }
+            .hotels-image-showcase-des-text > p {
+                font-size: 15px;
+                line-height: 30px;
+                margin-top: 40px;
+                font-family: Geomanist-Light;
+            }
             .hotel-block-two-right-sec-align > h2{
                 color: #dbd4d7;
                 font-family: ACaslonPro-Regular;
@@ -263,9 +274,9 @@
                             }
                             .editorial-hotel-detail-page button.go-back-button {
                                 background-color: \\;
-                                background: #8AE0C7;
+                                    background: #283D3E;
                                 opacity: 1;
-                                color: black;
+                                color: white;
                             }
                             
                             .editorial-page-booking-bar .top-booking-bar-btn, .editorial-hotel-detail-page .book-button, .editorial-hotel-detail-page .hotel-slider-price, .editorial-hotel-detail-page .spa-sec-book-an-appoinment-btn {
@@ -326,7 +337,200 @@
                                 line-height: 30px;
                                 font-size: 15px;
                             }
-                        
+                            .hotel-block-two-left-sec-align > p {
+                                color: white;
+                                line-height: 30px;
+                                font-size: 15px;
+                                font-family: Geomanist-Light;
+                                padding-right: 0px;
+                                font-size: 15px;
+                                line-height: 30px;
+                            }
+                            .hotel-block-two-right-sec-align > p {
+                                color: white;
+                                line-height: 30px;
+                                margin-top: 0px;
+                                font-size: 15px;
+                                font-family: Geomanist-Regular;
+                                opacity: 1;
+                                font-weight: 100;
+                                font-family: Geomanist-Light;
+                            }
+                            
+                            .restaurtant-bar-des-para-style {
+                                color: #333;
+                                font-size: 16px;
+                                font-family: Geomanist-Light;
+                                line-height: 20px;
+                                padding: 28px 30px 23px 23px;
+                                font-weight: 400;
+                            }
+                            
+                            .restaurant-sec-description-pannel2 .restaurtant-bar-des-para-style {
+                                background-color: #ada077;
+                                padding: 24px 60px 40px 15px;
+                                color: white;
+                                margin-top: 44px;
+                            }
+                            
+                            .overlay-text .yacts-tittle-text, .overlay-text-frezeed .yacts-tittle-text {
+                                font-family: serif;
+                                border-bottom: 3px solid #f3bc3a;
+                                color: #fff;
+                                overflow-wrap: break-word;
+                                font-size: 14px;
+                                font-style: normal;
+                                font-style: italic;
+                            }
+                            
+                            .yacths-des-text {
+                                color: #fff;
+                                font-size: 14px;
+                                margin: 0;
+                            }
+                            
+                            .editorial-hotel-detail-page .footer {
+                                background-color: #F7F7F4;
+                            }
+                            
+                            .editorial-custom-footer-style .newsletter-style {
+                                width: 45%;
+                                margin-top: 8px;
+                                color: white;
+                                float: left;
+                                background: #f7f7f4;
+                                margin-right: 15px;
+                                box-shadow: none;
+                                border-radius: 0;
+                                font-size: 11px;
+                            }
+                            
+                            .bar-name-text-style {
+                                color: #fff;
+                                font-size: 13px;
+                                letter-spacing: 5px;
+                                text-transform: uppercase;
+                            }
+                            
+                            .gallery .info1 p {
+                                font-size: 14px;
+                                font-weight: 600;
+                                font-family: Geomanist-Light;
+                                overflow: hidden;
+                                position: relative;
+                                top: -10px;
+                            }
+                            .ai_restaurant-name h2 {
+                                color: #ABA07C;
+                                font-size: 32px;
+                                font-family: ACaslonPro-Regular;
+                                margin: 0;
+                                text-transform: uppercase;
+                            }
+                            .small-box-bg {
+                                background-color: #283D3E;
+                                float: left;
+                                margin-bottom: 94px;
+                                margin-left: -141px;
+                                margin-top: -104px;
+                                opacity: 1.0;
+                                padding: 48px;
+                                width: 100%;
+                            }
+                            .bottom-sec-bg {
+                                background-color: rgb(228,220,212);
+                                /* margin-left: 17.5%; */
+                                margin-top: -6%;
+                                position: relative;
+                                width: 888px;
+                            }
+                            .expeience-small-text {
+                                color: #fff;
+                                font-family: 'Satisfy', cursive;
+                            }
+                            
+                            .restaurant-sec-description-pannel2 .restaurtant-bar-des-para-style {
+                                background-color: #ada077;
+                                padding: 15px 60px 15px 15px;
+                                color: white;
+                            }
+                            
+                            .restaurant-owner-sign {
+                                color: #ada077;
+                                font-family: 'Satisfy', cursive;
+                                font-size: 21px;
+                                margin-bottom: 20px;
+                                padding-left: 15px;
+                                text-transform: lowercase;
+                                line-height: 31px;
+                                text-align: left;
+                                opacity: 0.8;
+                            }
+                            
+                            .hotel-block-two-left-sec-align > h2 {
+                                color: #dbd4d7;
+                                font-family: ACaslonPro-Regular;
+                                font-size: 32px;
+                                font-weight: lighter;
+                                margin-top: 0;
+                                text-transform: uppercase;
+                                width: 100%;
+                                margin-left: 0px;
+                                letter-spacing: 0px;
+                            }
+                            
+                            .hotel-block-two-right-sec-align > p {
+                                color: white;
+                                line-height: 30px;
+                                margin-top: 0px;
+                                font-size: 15px;
+                                font-family: Geomanist-Regular;
+                                opacity: 1;
+                            }
+                            .hotel-block-two-right-sec-align > h2 {
+                                color: #dbd4d7;
+                                font-family: ACaslonPro-Regular;
+                                font-size: 40px;
+                                font-weight: lighter;
+                                margin-top: -34px;
+                                text-transform: uppercase;
+                                opacity: 0;
+                            }
+                            
+                            .hotels-detail-heading-text > p {
+                                color: white;
+                                font-size: 32px;
+                                font-family: ACaslonPro-Regular;
+                                letter-spacing: 3px;
+                                line-height: 35px;
+                                text-transform: uppercase;
+                            }
+                            
+                            .hotels-showcase-right-side {
+                                background-blend-mode: multiply;
+                                background-color: #2f2f2e;
+                                background-image: url(../images/blakes-hotel-luxury-suite-R-5.jpg);
+                                background-position: center center;
+                                background-repeat: no-repeat;
+                                background-size: cover;
+                                color: #fff;
+                                font-family: Geomanist-Regular;
+                                padding: 516px 49px 90px 30px;
+                            }
+                            
+                            .image-showcase-below-big-text {
+                                color: #474749;
+                                font-family: Raleway-ExtraLight;
+                                font-size: 70px;
+                                margin-left: -107px;
+                                margin-top: 36px;
+                                margin-top: 70px;
+                                text-transform: uppercase;
+                            }
+                            
+                            @import url('https://fonts.googleapis.com/css?family=Caveat');
+                            @import url('https://fonts.googleapis.com/css?family=Satisfy');
+
         </style>
 		<!-- Global site tag (gtag.js) - Google Analytics -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110391807-1"></script>
