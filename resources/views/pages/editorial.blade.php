@@ -144,6 +144,18 @@
                             width: auto;
                             height: auto;
                         }
+                        
+                        /* AIC Harman slider layer css add */
+                        
+                        .overlaySlider {
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            z-index: 2;
+                            background-color: #080d15;
+                            opacity: .7;
+                        }
+                        
         </style>
 		<!-- Global site tag (gtag.js) - Google Analytics -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110391807-1"></script>
@@ -475,6 +487,7 @@
                             @if($thactualsize[0]>$thactualsize[1])
                             <li class="{{($propertyDetail['propimage'][0]==$propimg) ? 'active' : ''}}">
                                 <div class="image editorial-image">
+                                    <div class="overlaySlider"></div>
                                     <img src="{{ \ImageCache::make($propertyDetail['propimage_thumbpath_dir'].$propimg->file_name,100,1200,null) }}" alt=""/>
                                 </div>
 
@@ -513,7 +526,7 @@
                                 <div class="row">
                                     <div class="disply-left-right-align">
                                         <div class="col-md-6 disply-left-right-inner">
-                                            <div class="hotel-block-two-left-sec-align last">
+                                            <div class="hotel-block-two-left-sec-align">
                                                 <h2>{{$propertyDetail['data']->detail_section1_title}}</h2>
                                                 <p>
                                                     {!! nl2br($propertyDetail['data']->detail_section1_description_box1) !!}
