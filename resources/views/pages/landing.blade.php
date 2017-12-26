@@ -400,6 +400,9 @@
             min-height: unset;
             max-height: unset;
         }
+        .main-page-landing .book-now-page .book-now-page-content {
+            width: 100% !important;
+        }
         .main-page-landing .book-now-page {
             position: unset;
             width: auto;
