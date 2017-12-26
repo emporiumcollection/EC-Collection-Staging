@@ -635,7 +635,7 @@
                             <div class="row">
                                 <div class="experience-page" <?php if(isset($_GET['ref']) && $_GET['ref']=='sye'){ echo 'style="width:100%;"';}?>>
                                     <div class="open-experience-html des-holiday-sec-align">
-                                        <div><a class="close-btn-experience close-btn-align" href="#">&times;</a></div>
+                                        <!--<div><a class="close-btn-experience close-btn-align" href="#">&times;</a></div>-->
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 header-logo-center">
                                             <a href="#"><img class="img-responsive" src="{{ asset('sximo/assets/images/Emporium-Voyage.png')}}"/></a>
                                         </div>
