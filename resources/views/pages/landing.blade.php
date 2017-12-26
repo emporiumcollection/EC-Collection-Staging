@@ -378,7 +378,9 @@
             max-height: unset;
         }
         .main-page-landing .m_slider .arrows-container {
-            bottom: unset;
+            top: calc(100vh - 63px);
+            float: left;
+            height: 63px;
         }
         .editorial_m_slider_landing ul li .editorial-text {
             bottom: auto;
