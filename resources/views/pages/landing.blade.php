@@ -688,6 +688,92 @@
                                 </div>
                             </div>
                             <!--Experience Page End Here-->
+                            <!--Destination Page Start Here-->
+                            <div class="destination-page" <?php if(isset($_GET['ref']) && $_GET['ref']=='syd'){ echo 'style="width:100%;"';}?>>
+                                <div class="open-destination-html">
+                                    <div><a class="close-btn-destination close-btn-align" href="#">&times;</a></div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 header-logo-center">
+                                        <a href="#"><img class="img-responsive" src="{{ asset('sximo/assets/images/Emporium-Voyage.png')}}"/></a>
+                                    </div>
+                                    <h2>Select Your Destination</h2>
+                                    <div class="destinSearch">
+                                        <!--Search form start-->
+                                        <form autocomplete="off" method="get" id="searchform-navbar" class="searchform-navbar" action="{{URL::to('search')}}">
+                                            <inpu type="hidden" name="ref" value="syd">
+                                            <input  class="bh-search-input typeahead search-navbar search-navbar-destination-search-box" name="s" id="search-navbar" placeholder="ENTER YOUR DESTINATION" type="text">
+                                        </form>
+                                        <!--Search form end-->
+                                    </div>
+                                    <div class="panel-group-" id="accordion1">
+                                        @if(!empty($ourdesitnation))
+                                        @foreach($ourdesitnation as $destination)
+                                        <div class="panel panel-default  destination-sub-menues">
+                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion1" href="#collapse-inner{{$destination['maincat']->id}}">
+                                                <div class="destination-panel-heading">
+                                                    <h4 class="panel-title menu-text accordion ">
+                                                        {{$destination['maincat']->category_name}}
+                                                    </h4>
+                                                </div>
+                                            </a>
+                                            <div id="collapse-inner{{$destination['maincat']->id}}" class="panel-collapse collapse ">
+                                                <div class="panel-body">
+                                                    <ul class="where-box-sub-menu">
+                                                        @if (array_key_exists("child",$destination))
+                                                        @foreach($destination['child'] as $childDest)
+                                                        <li><div class="panel-group destination-inner-accordian-outer" id="inner-level-accordian">
+                                                            <div class="panel panel-default">
+                                                                <div class="panel-heading">
+                                                                    <h4 class="margin-top-15 panel-title pull-left">
+                                                                        <a data-toggle="collapse" data-parent="#inner-level-accordian" href="#destination-child{{$childDest->id}}">{{$childDest->category_name}}</a>
+                                                                    </h4>
+                                                                </div>
+                                                                @if (array_key_exists("subchild",$childDest))
+                                                                    <div id="destination-child{{$childDest->id}}" class="panel-collapse collapse">
+                                                                        <ul class="where-box-sub-menu inner-level-sub-menu">
+                                                                            @foreach($childDest->subchild as $subchildDest)
+                                                                                <li>
+                                                                                    @if (array_key_exists("childs",$childDest))
+                                                                                    <div class="panel-group destination-inner-accordian-outer" id="inner-level-accordian">
+                                                                                        <div class="panel panel-default">
+                                                                                            <div class="panel-heading">
+                                                                                                <h4 class="panel-title">
+                                                                                                    <a data-toggle="collapse" data-parent="#inner-level-accordian" href="#destination-child{{$childDest->id}}-{{$subchildDest->id}}">{{$subchildDest->category_name}}</a>
+                                                                                                </h4>
+                                                                                            </div>
+
+                                                                                                <div id="destination-child{{$childDest->id}}-{{$subchildDest->id}}" class="panel-collapse collapse">
+                                                                                                    <ul class="where-box-sub-menu inner-level-sub-menu">
+                                                                                                        @foreach($childDest->childs as $_child)
+                                                                                                            <li><a href="{{URL::to('luxury_destinations/'. str_replace(' ','_',$destination['maincat']->category_name).'/'. str_replace(' ','_',$childDest->category_name).'/'. str_replace(' ','_',$_child->category_name))}}">{{$_child->category_name}}</a></li>
+                                                                                                        @endforeach
+                                                                                                    </ul>
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    @else
+                                                                                    <a href="{{URL::to('luxury_destinations/'. str_replace(' ','_',$destination['maincat']->category_name).'/'. str_replace(' ','_',$childDest->category_name).'/'. str_replace(' ','_',$subchildDest->category_name))}}">{{$subchildDest->category_name}}</a>
+                                                                                    @endif
+                                                                                </li>
+                                                                            @endforeach
+                                                                        </ul>
+                                                                    </div>
+                                                                @endif
+                                                            </div>
+                                                        </div></li>
+                                                        <!--The menu code is commented please uncomment this when you make it dynamic-->
+                                                        <!--<li><a href="{{URL::to('search?continent='.$destination['maincat']->category_name.'&region='.$childDest->category_name.'&s='.$childDest->category_name.'&ref=syd&destination_page=1')}}">{{$childDest->category_name}}</a></li>-->
+                                                        @endforeach
+                                                        @endif
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @endforeach
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Destination Page  End Here-->
                         </div>
                         <!--Main Page End-->
                         <!--Sidebar-->
@@ -794,92 +880,6 @@
             </div>
             <!--Search Our Collection End Here-->
             
-            <!--Destination Page Start Here-->
-            <div class="destination-page" <?php if(isset($_GET['ref']) && $_GET['ref']=='syd'){ echo 'style="width:100%;"';}?>>
-                <div class="open-destination-html">
-                    <div><a class="close-btn-destination close-btn-align" href="#">&times;</a></div>
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 header-logo-center">
-                        <a href="#"><img class="img-responsive" src="{{ asset('sximo/assets/images/Emporium-Voyage.png')}}"/></a>
-                    </div>
-                    <h2>Select Your Destination</h2>
-                    <div class="destinSearch">
-                        <!--Search form start-->
-                        <form autocomplete="off" method="get" id="searchform-navbar" class="searchform-navbar" action="{{URL::to('search')}}">
-                            <inpu type="hidden" name="ref" value="syd">
-                            <input  class="bh-search-input typeahead search-navbar search-navbar-destination-search-box" name="s" id="search-navbar" placeholder="ENTER YOUR DESTINATION" type="text">
-                        </form>
-                        <!--Search form end-->
-                    </div>
-                    <div class="panel-group-" id="accordion1">
-                        @if(!empty($ourdesitnation))
-                        @foreach($ourdesitnation as $destination)
-                        <div class="panel panel-default  destination-sub-menues">
-                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion1" href="#collapse-inner{{$destination['maincat']->id}}">
-                                <div class="destination-panel-heading">
-                                    <h4 class="panel-title menu-text accordion ">
-                                        {{$destination['maincat']->category_name}}
-                                    </h4>
-                                </div>
-                            </a>
-                            <div id="collapse-inner{{$destination['maincat']->id}}" class="panel-collapse collapse ">
-                                <div class="panel-body">
-                                    <ul class="where-box-sub-menu">
-                                        @if (array_key_exists("child",$destination))
-                                        @foreach($destination['child'] as $childDest)
-                                        <li><div class="panel-group destination-inner-accordian-outer" id="inner-level-accordian">
-                                            <div class="panel panel-default">
-                                                <div class="panel-heading">
-                                                    <h4 class="margin-top-15 panel-title pull-left">
-                                                        <a data-toggle="collapse" data-parent="#inner-level-accordian" href="#destination-child{{$childDest->id}}">{{$childDest->category_name}}</a>
-                                                    </h4>
-                                                </div>
-                                                @if (array_key_exists("subchild",$childDest))
-                                                    <div id="destination-child{{$childDest->id}}" class="panel-collapse collapse">
-                                                        <ul class="where-box-sub-menu inner-level-sub-menu">
-                                                            @foreach($childDest->subchild as $subchildDest)
-                                                                <li>
-                                                                    @if (array_key_exists("childs",$childDest))
-                                                                    <div class="panel-group destination-inner-accordian-outer" id="inner-level-accordian">
-                                                                        <div class="panel panel-default">
-                                                                            <div class="panel-heading">
-                                                                                <h4 class="panel-title">
-                                                                                    <a data-toggle="collapse" data-parent="#inner-level-accordian" href="#destination-child{{$childDest->id}}-{{$subchildDest->id}}">{{$subchildDest->category_name}}</a>
-                                                                                </h4>
-                                                                            </div>
-                                                                            
-                                                                                <div id="destination-child{{$childDest->id}}-{{$subchildDest->id}}" class="panel-collapse collapse">
-                                                                                    <ul class="where-box-sub-menu inner-level-sub-menu">
-                                                                                        @foreach($childDest->childs as $_child)
-                                                                                            <li><a href="{{URL::to('luxury_destinations/'. str_replace(' ','_',$destination['maincat']->category_name).'/'. str_replace(' ','_',$childDest->category_name).'/'. str_replace(' ','_',$_child->category_name))}}">{{$_child->category_name}}</a></li>
-                                                                                        @endforeach
-                                                                                    </ul>
-                                                                                </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    @else
-                                                                    <a href="{{URL::to('luxury_destinations/'. str_replace(' ','_',$destination['maincat']->category_name).'/'. str_replace(' ','_',$childDest->category_name).'/'. str_replace(' ','_',$subchildDest->category_name))}}">{{$subchildDest->category_name}}</a>
-                                                                    @endif
-                                                                </li>
-                                                            @endforeach
-                                                        </ul>
-                                                    </div>
-                                                @endif
-                                            </div>
-                                        </div></li>
-                                        <!--The menu code is commented please uncomment this when you make it dynamic-->
-                                        <!--<li><a href="{{URL::to('search?continent='.$destination['maincat']->category_name.'&region='.$childDest->category_name.'&s='.$childDest->category_name.'&ref=syd&destination_page=1')}}">{{$childDest->category_name}}</a></li>-->
-                                        @endforeach
-                                        @endif
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        @endforeach
-                        @endif
-                    </div>
-                </div>
-            </div>
-            <!--Destination Page  End Here-->
             <!--Personalized Page Start Here-->
             <div class="personalized-page">
                 <div class="open-personalized-html">
