@@ -384,7 +384,10 @@
         }
         .editorial_m_slider_landing ul li .editorial-text {
             bottom: auto;
-        }        
+        }
+        .main-page-landing .experience-page .open-experience-html.des-holiday-sec-align {
+            width: auto !important;
+        }
         </style>
 		<!-- Global site tag (gtag.js) - Google Analytics -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110391807-1"></script>
