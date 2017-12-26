@@ -140,7 +140,7 @@
 										
 									</form>
 									
-									<p class="footer-nav-menu-harding footer-res-margin-align" style="margin-top: 25px;">Unsubscribe Newsletter</p>
+<!--									<p class="footer-nav-menu-harding footer-res-margin-align" style="margin-top: 25px;">Unsubscribe Newsletter</p>
 									<form action="http://just-emarketing.com/app/index.php/lists/fb5156qrasf4a/unsubscribe" method="post" accept-charset="utf-8" target="_blank">
 
 									<div class="">
@@ -153,7 +153,7 @@
 									</div>
 									<div class="clearfix"> </div>
 
-								</form>
+								</form>-->
                                 </div>
                                 
                                 <!-- AIC Harman footer social icons add -->
