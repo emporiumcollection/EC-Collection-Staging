@@ -377,7 +377,12 @@
             min-height: unset;
             max-height: unset;
         }
-        
+        .editorial_m_slider .editorial-arrows-container, .editorial_m_slider_landing .editorial-arrows-container {
+            bottom: auto;
+        }
+        .editorial_m_slider_landing ul li .editorial-text {
+            bottom: auto;
+        }        
         </style>
 		<!-- Global site tag (gtag.js) - Google Analytics -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110391807-1"></script>
