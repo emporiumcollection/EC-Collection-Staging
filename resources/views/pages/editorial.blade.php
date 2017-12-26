@@ -308,6 +308,24 @@
                             .hotels-detail-description-text {
                                 margin-top: 66px;
                             }
+                            .hotels-image-showcase-des-text > p {
+                                font-size: 15px;
+                                line-height: 30px;
+                                margin-top: 30px;
+                            }
+                            .hotel-block-two-right-sec-align > p {
+                                color: white;
+                                line-height: 30px;
+                                margin-top: 100px;
+                                font-size: 15px;
+                                font-family: Geomanist-Regular;
+                                opacity: 1;
+                            }
+                            .hotel-block-two-left-sec-align > p {
+                                color: white;
+                                line-height: 30px;
+                                font-size: 15px;
+                            }
                         
         </style>
 		<!-- Global site tag (gtag.js) - Google Analytics -->
