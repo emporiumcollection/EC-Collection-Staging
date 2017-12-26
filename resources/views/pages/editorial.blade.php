@@ -156,6 +156,71 @@
                             opacity: .7;
                         }
                         
+                        /* AIC Harman image side reduce */
+                        
+                        .architecture-sec-top-img {
+                            display: table;
+                            margin: 83px auto 0;
+                            display: table;
+                            margin: 83px auto 0;
+                            margin-bottom: 0px;
+                            margin-left: auto;
+                            width: 0%;
+                            height: 450px;
+                            width: 75%;
+                            margin: 0 auto;
+                            margin-left: 224px;
+                            margin-bottom: 65px;
+                        }
+                        
+                        .editorial-page-booking-bar .booking-form-bar-top, .editorial-hotel-detail-page .editorial_m_slider ul li .editorial-text {
+                            background-color: rgb(37,37,37);
+                            opacity: .9;
+                        }
+                        
+                        .hotel-next-previous-outer {
+                            color: #fff;
+                            font-size: 18px;
+                            position: relative;
+                            text-align: center;
+                            width: 65px;
+                            background: rgb(37,37,37);
+                        }
+                        
+                        /* riaan */
+                        
+                        .ai-custom-deafault-style::-moz-placeholder {
+                            color: #000;
+                           }
+                           
+                        .editorial-hotel-detail-page .right-menus ul li a:hover {
+                            background: #ada077;
+                           }
+                           .hotel-next-previous-outer {
+                            background-color: ##252525;
+                            color: #fff;
+                            font-size: 18px;
+                            position: relative;
+                            text-align: center;
+                            width: 65px;
+                           }
+                           .editorial-hotel-detail-page .right-menus ul li a[data-hotel-option="book_now"] {
+                            background: #ada077;
+                            color: #ffff;
+                           }
+                           
+                           .editorial-page-booking-bar .top-booking-bar-btn, .editorial-hotel-detail-page .book-button, .editorial-hotel-detail-page .hotel-slider-price, .editorial-hotel-detail-page .spa-sec-book-an-appoinment-btn {
+                            background-color: #ada077;
+                            color: #fff;
+                           }
+                           .editorial-page-booking-bar .booking-form-bar-top, .editorial-hotel-detail-page .editorial_m_slider ul li .editorial-text {
+                            background-color: rgba(37, 37, 37, 0.9);
+                            opacity: .9;
+                           }
+                           .editorial-hotel-detail-page img.banner-arrow-bg {
+                            background-color: rgb(37, 37, 37 0.5);
+                           }
+                        
         </style>
 		<!-- Global site tag (gtag.js) - Google Analytics -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110391807-1"></script>
