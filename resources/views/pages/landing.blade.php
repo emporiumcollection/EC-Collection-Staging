@@ -520,6 +520,20 @@
             text-transform: uppercase;
         }
         
+        .headings > h2 {
+            font-size: 32px;
+            color: #ABA07C;
+            margin-bottom: 20px;
+            font-family: ACaslonPro-Regular;
+        }
+        
+        .editorial-submit-btn > button {
+            background-color: transparent;
+            border: none;
+            color: #fff;
+            font-family: Geomanist-light;
+        }
+        
         @import url('https://fonts.googleapis.com/css?family=Satisfy');
         
         </style>
