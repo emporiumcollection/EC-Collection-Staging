@@ -128,7 +128,7 @@
     </div>
 </div>
 
-@include('layouts/elliot/ai_footer')
+@include('layouts/elliot/ai_footer_social')
 
 <script>
 $(document).ready(function () {

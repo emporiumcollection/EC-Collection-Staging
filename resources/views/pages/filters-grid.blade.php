@@ -376,7 +376,7 @@ return fasle;
             <div class="container-fluid">
                 <div class="row">
                     <header>
-                        <div class="container-fluid editorial-logo-align">
+                        <div class="container-fluid logo-padding-left editorial-logo-align">
                             <!--<div class="col-md-12-">
                                 <p><a class="logo-d" href="{{url()}}">D</a></p>
                             </div>
