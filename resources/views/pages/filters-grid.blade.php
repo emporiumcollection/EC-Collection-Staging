@@ -679,7 +679,7 @@ return fasle;
                                                                                 </a>
                                                                                 <span class="FltRgt">
                                                                                     <!--<i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" <?php // echo (array_key_exists('image', $props))? 'onclick="add_to_lightbox('.$props['image']->file_id.', '.$props['data']->id.');"' : ''; ?>></i>-->
-                                                                                    <a class="carticon" href="javascript:void(0)" onclick="submitgridbookform('{{$props['data']->property_slug}}-{{$props['data']->id}}');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>
+                                                                                    <a class="carticon" href="javascript:void(0)" onclick="submitgridbookform('{{$props['data']->property_slug}}#*{{$props['data']->id}}');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>
                                                                                 </span>
                                                                             </h2>
                                                                         </div>
@@ -1143,7 +1143,7 @@ return fasle;
 						{
 							if(propdt!='')
 							{
-								var pros = propdt.split("-");
+								var pros = propdt.split("#*");
 								$('#bookformproperty').val(pros[1]);
 								$('#gridbookform').attr('action','{{url()}}/book-property/' +pros[0]);
 								$('#gridbookform').submit();
@@ -1349,7 +1349,7 @@ return fasle;
                                 } else {
                                 //html += '<i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" ></i>';
                                 }
-                                html += '<a class="carticon" href="javascript:void(0)" onclick="submitgridbookform(' + obj.pdata.property_slug + '-' + obj.pdata.id + ');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>';
+                                html += '<a class="carticon" href="javascript:void(0)" onclick="submitgridbookform(' + obj.pdata.property_slug + '#*' + obj.pdata.id + ');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>';
                                 html += '</span>';
                                 html += '</h2>';
                                 html += '</div>';
