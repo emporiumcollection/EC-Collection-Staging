@@ -78,9 +78,10 @@
 					 @if($field['view'] =='1')
 					 	<?php $limited = isset($field['limited']) ? $field['limited'] :''; ?>
 					 	@if(SiteHelpers::filterColumn($limited ))
-						 <td>					 
+						 <td>
+							@php($fld = $field['field'])
 						 	@if($field['attribute']['image']['active'] =='1')
-								@php($fld = $field['field'];)
+								
 								{!! SiteHelpers::showUploadedFile($row->$fld,$field['attribute']['image']['path']) !!}
 							@else	
 								{{--*/ $conn = (isset($field['conn']) ? $field['conn'] : array() ) /*--}}
