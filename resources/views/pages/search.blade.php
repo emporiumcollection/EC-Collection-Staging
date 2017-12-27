@@ -1019,8 +1019,6 @@ $(window).scroll(function () {
             var documentHeight = $('#listproperties').innerHeight();
              console.log('windowScrollTop  : ' + windowScrollTop+ 'document height : '+ documentHeight);
             if(windowScrollTop >= documentHeight) {
-
-               $('#loaderProperty').show();
                 var it_scroll = true;
                 scrollDataAjax(it_scroll, pageCounter);
                 pageCounter++;
@@ -1033,6 +1031,8 @@ function scrollDownloadData(it_scroll)
     if($(".ai-scrollDownloadData-filter-running").val() == "1") {
         return;
     }
+    
+    $('#loaderProperty').show();
     
     $(".ai-scrollDownloadData-filter-running").val("1");
 var nxtpg = $('#nxtpg').val();
