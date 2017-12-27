@@ -507,7 +507,7 @@
                                 float: none;
                                 width: 50%;
                                 text-transform: uppercase;
-                                height: 400px;
+                                height: auto;
                                 background: rgba(0,0,0,0.8);
                                 margin: 0;
                                 padding: 8% 0% 0% 7%;
