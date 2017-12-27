@@ -965,6 +965,12 @@
                                 </div>
                             </div>
                             <!--Search By Date Page End Here-->
+                            
+                            <!--Footer Start-->
+                            <div class="editorial-custom-footer-style grid-page-footer-align">
+                                @include('layouts/elliot/ai_footer_social')
+                            </div>
+                            <!--Footer End-->
                         </div>
                         <!--Main Page End-->
                         <!--Sidebar-->
