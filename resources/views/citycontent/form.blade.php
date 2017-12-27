@@ -1,7 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-
+<style>
+.leng { display:none; }
+.sf-viewport { margin-bottom:60px !important; }
+</style>
+<!-- Step Form Wizard plugin -->
+<link rel="stylesheet" href="{{ asset('sximo/css/frontend_templete/step-form-wizard/css/step-form-wizard-all.css')}}" type="text/css" media="screen, projection">
+<script src="{{ asset('sximo/js/frontend_templete/step-form-wizard/js/step-form-wizard.js')}}"></script>
+<script>
+        $(document).ready(function () {
+            $("#wizard_example").stepFormWizard({
+                theme: 'circle' // sea, sky, simple, circle, sun
+            });
+        })
+    </script>
   <div class="page-content row">
     <!-- Page header -->
     <div class="page-header">
@@ -24,7 +37,7 @@
 			@endforeach
 		</ul>
 <div class="sbox animated fadeInRight">
-	<div class="sbox-title"> <h4> <i class="fa fa-table"></i> </h4></div>
+	<div class="sbox-title"> <h4> <i class="fa fa-table"></i> <span style="float:right;"> <a href="#" onclick="change_lang('dutch');">Deutsch</a> || <a href="#" onclick="change_lang('eng');">English</a></span> </h4></div>
 	<div class="sbox-content"> 	
 
 		 {!! Form::open(array('url'=>'citycontent/save?return='.$return, 'class'=>'form-horizontal','files' => true , 'parsley-validate'=>'','novalidate'=>' ')) !!}
@@ -57,7 +70,10 @@
 									 <div class="col-md-2">
 									 	
 									 </div>
-								  </div> 					
+								  </div> 
+								</fieldset>  
+								  <fieldset>
+										<legend>Step 2</legend>				
 								  <div class="form-group  " >
 									<label for="Description" class=" control-label col-md-4 text-left"> Description </label>
 									<div class="col-md-6">
@@ -94,7 +110,11 @@
 									 <div class="col-md-2">
 									 	
 									 </div>
-								  </div> 					
+								  </div> 
+								 </fieldset>
+				<fieldset>
+					<legend>Upload Images</legend>	
+
 								  <div class="form-group  " >
 									<label for="Gallery Title" class=" control-label col-md-4 text-left"> Gallery Title </label>
 									<div class="col-md-6">
@@ -112,7 +132,10 @@
 									 <div class="col-md-2">
 									 	
 									 </div>
-								  </div> 					
+								  </div> 	
+							</fieldset>
+				<fieldset>
+					<legend>Step 4</legend>	  				
 								  <div class="form-group  " >
 									<label for="Experience" class=" control-label col-md-4 text-left"> Experience </label>
 									<div class="col-md-6">
@@ -157,7 +180,11 @@
 									 <div class="col-md-2">
 									 	
 									 </div>
-								  </div> 					
+								  </div> 
+
+								</fieldset>
+				<fieldset>
+					<legend>Step 4</legend>  					
 								  <div class="form-group  " >
 									<label for="Metakey" class=" control-label col-md-4 text-left"> Metakey </label>
 									<div class="col-md-6">
@@ -177,7 +204,8 @@
 									 <div class="col-md-2">
 									 	
 									 </div>
-								  </div> </fieldset>
+								  </div> 
+								</fieldset>
 			</div>
 			
 			
@@ -200,6 +228,28 @@
 	</div>
 </div>		 
 </div>	
+</div>	
+
+
+<!-- open container Modal -->
+<div class="modal fade" id="openContainer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		  <div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			  <h4 class="modal-title" id="myModalLabel">Select Image</h4>
+		  </div>
+		  <div class="modal-body">
+			 <iframe id="iframe_id_123" src="{{URL::to('containeriframe').'/0/iframe'}}" style="height: 430px;width: 553px;border: none;"></iframe>
+		  </div>
+		  <div class="modal-footer">
+			  <input type="hidden" name="boxid" id="boxid" value="">
+			  <button type="button" class="btn btn-primary" onclick="selectimg();">ok</button>
+			  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+		  </div>
+
+	  </div>
+  </div>
 </div>			 
    <script type="text/javascript">
 	$(document).ready(function() { 
@@ -220,5 +270,39 @@
 		});		
 		
 	});
-	</script>		 
+	function change_lang(lang)
+	{
+		if(lang=='dutch')
+		{
+			$('.ldutch').css('display', 'block');
+			$('.leng').css('display', 'none');
+		}
+		else if(lang=='eng')
+		{
+			$('.ldutch').css('display', 'none');
+			$('.leng').css('display', 'block');
+		}
+	}
+	
+	function sendmotId(boxid)
+	{
+		$('#boxid').val(boxid);
+	}
+	
+	function selectimg(obj)
+	{
+		var bid = $('#boxid').val();
+		var cat = $('#cat_id').val();
+		var sList='';
+		var sListid='';
+		var highrespath='';
+		sList = $(obj).attr('rel2');
+		imgname = $(obj).attr('rel');
+		imagepath = $(obj).attr('rel3');
+		$('#box'+bid).val(imagepath);
+		$('#boxspan'+bid).html(imgname);
+		$('#openContainer').modal('hide');
+	}
+	
+	</script>			 
 @stop
