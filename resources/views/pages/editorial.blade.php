@@ -493,7 +493,7 @@
                                 font-family: ACaslonPro-Regular;
                                 font-size: 40px;
                                 font-weight: lighter;
-                                margin-top: -80px;
+                                margin-top: -115px;
                                 text-transform: uppercase;
                                 opacity: 0;
                             }
@@ -541,6 +541,84 @@
                                 width: 100%;
                                 float: left;
                             }
+                            
+                            .gallery.row .principale1 img {
+                                width: 100%;
+                                position: absolute;
+                                top: 0%;
+                                background-color: black;
+                                opacity: 0.9;
+                            }
+                            
+                            .gallery.row .principale1 .foto1 {
+                                width: 0%;
+                                height: auto;
+                                position: absolute;
+                                top: 0vh;
+                                background: black;
+                                overflow: hidden;
+                            }
+                            
+                            .architecture-sec-top-img {
+                                display: table;
+                                margin: 83px auto 0;
+                                display: table;
+                                margin: 83px auto 0;
+                                margin-bottom: 0px;
+                                margin-left: auto;
+                                width: 0%;
+                                height: auto;
+                                width: 50%;
+                                margin: 0 auto;
+                                margin-left: 224px;
+                                margin-bottom: 65px;
+                            }
+                            
+                            .small-box-text {
+                                color: #fff;
+                                font-family: geomanist-light;
+                                font-size: 26px;
+                                margin-left: -5px;
+                                line-height: 30px;
+                            }
+                            
+                            .architecture-sec-heading > h1 {
+                                font-family: geomanist-light;
+                                font-size: 30px;
+                                font-weight: lighter;
+                                margin-top: 120px;
+                                right: 30%;
+                                left: 45px;
+                            }
+                            
+                            .expeience-small-text {
+                                color: #fff;
+                                font-family: ACaslonPro-Regular;
+                            }
+                            
+                            .slider-side-text-tittle {
+                                color: #fff;
+                                font-family: geomanist-light;
+                                font-size: 38px;
+                                line-height: 39px;
+                            }
+                            
+                            .arrow-margin-right {
+                                margin-right: 0px;
+                            }
+                            
+                            .editorial-image-slider-previous-btn {
+                                margin-left: 384px !important;
+                            }
+                            
+                            .editorial-hotel-detail-page #align-to-top .book-button.open-show_more-page.hotel-btn {
+                                background-color: #ABA07C;
+                                opacity: 1;
+                                color: white;
+                                font-family: Geomanist-light;
+                            }
+                            
+
                             
                             @import url('https://fonts.googleapis.com/css?family=Caveat');
                             @import url('https://fonts.googleapis.com/css?family=Satisfy');

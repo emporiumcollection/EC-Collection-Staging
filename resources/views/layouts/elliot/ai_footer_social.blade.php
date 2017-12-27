@@ -34,11 +34,11 @@
     }
     
     .VegasFooterMiddle p {
-        margin-left: 34px;
+        margin-left: 58px;
     }
     
     .VegasFooterMiddle form {
-        margin-left: 34px;
+        margin-left: 58 px;
     }
     
     .marginBottom20 {
