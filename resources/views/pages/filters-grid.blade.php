@@ -1349,7 +1349,7 @@ return fasle;
                                 } else {
                                 //html += '<i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" ></i>';
                                 }
-                                html += '<a class="carticon" href="javascript:void(0)" onclick="submitgridbookform('+obj.pdata.property_slug+'-'+obj.pdata.id');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>';
+                                html += '<a class="carticon" href="javascript:void(0)" onclick="submitgridbookform(' + obj.pdata.property_slug + '-' + obj.pdata.id + ');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>';
                                 html += '</span>';
                                 html += '</h2>';
                                 html += '</div>';
