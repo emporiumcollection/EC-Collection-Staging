@@ -79,7 +79,7 @@
 					 	<?php $limited = isset($field['limited']) ? $field['limited'] :''; ?>
 					 	@if(SiteHelpers::filterColumn($limited ))
 						 <td>
-							@php($fld = $field['field'])
+							<?php $fld = $field['field']; ?>
 						 	@if($field['attribute']['image']['active'] =='1')
 								
 								{!! SiteHelpers::showUploadedFile($row->$fld,$field['attribute']['image']['path']) !!}
