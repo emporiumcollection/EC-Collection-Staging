@@ -492,6 +492,34 @@
             font-family: ACaslonPro-Regular;
         }
         
+        /* detail page same input */
+        
+        .dates li input, .dates li select {
+            background-color: transparent;
+            background-image: url(../images/icon-dropdown.png);
+            background-position: center bottom;
+            background-repeat: no-repeat;
+            background-size: 15px auto;
+            border: medium none;
+            font-size: 19px;
+            margin-top: 25px;
+            padding-bottom: 50px;
+            width: 117px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            -webkit-transition: border-color 150ms ease;
+            align-items: center;
+            padding-left: 16px;
+        }
+        
+        .dates .editorail-heading {
+            font-family: Geomanist-Regular;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
         @import url('https://fonts.googleapis.com/css?family=Satisfy');
         
         </style>
@@ -1028,7 +1056,7 @@
                             <!--Search By Date Page End Here-->
                             
                             <!--Footer Start-->
-                            <div class="editorial-custom-footer-style grid-page-footer-align">
+                            <div class="editorial-custom-footer-style">
                                 @include('layouts/elliot/ai_footer_social')
                             </div>
                             <!--Footer End-->
