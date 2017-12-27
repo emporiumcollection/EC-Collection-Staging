@@ -369,6 +369,19 @@
         
         .asideIclass {
             float: right;
+            color: #c7ab84;
+        }
+        
+        .login_popup .fa {
+            color: #c7ab84;
+            font-size: 21px;
+            margin: 25px 0px 1px 68px;
+        }
+        
+        .navbar-nav.aicsm {
+            float: none;
+            text-align: left;
+            margin-left: 85px;
         }
         
         .main-page-landing .experience-page {
@@ -421,6 +434,66 @@
         .pre-footer-sec-align {
             display: none;
         }
+        
+        .open-experience-html.des-holiday-sec-align > h2 {
+            color: #fff;
+            float: left;
+            margin-bottom: 20px !important;
+            margin-top: 2px;
+            text-align: center;
+            width: 100%;
+            font-size: 28px;
+            font-family: ACaslonPro-Regular;
+        }
+        
+            .hover-tittles {
+            background: #000;
+            color: #fff;
+            display: none;
+            float: left;
+            font-size: 15px;
+            height: 162px;
+            margin-left: 15px;
+            margin-right: 17px;
+            margin-top: -176px;
+            opacity: .9;
+            padding: 62px 14px;
+            position: relative;
+            text-align: center;
+            width: 138px;
+            font-family: Geomanist-light;
+        }
+        
+        #search-navbar.search-navbar-destination-search-box {
+            background: #2a2d30 none repeat scroll 0 0 !important;
+            border: 2px solid #2a2d30;
+            display: table;
+            margin: 0 auto 10px;
+            width: 80%;
+            font-family: Geomanist-light !important;
+            color: red !important;
+        }
+        
+        .where-box-sub-menu a {
+            color: #fff;
+            font-size: 15px;
+            font-family: Geomanist-regular;
+        }
+        
+        .destination-sub-menues .menu-text {
+            color: #ABA07C !important;
+            font-family: Geomanist-light;
+        }
+        
+        .open-destination-html h2 {
+            text-align: center;
+            color: #fff;
+            font-size: 32px;
+            font-family: ACaslonPro-Regular;
+        }
+        
+        @import url('https://fonts.googleapis.com/css?family=Satisfy');
+        
         </style>
 		<!-- Global site tag (gtag.js) - Google Analytics -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110391807-1"></script>
@@ -734,9 +807,9 @@
                                 <div class="experience-page" <?php if(isset($_GET['ref']) && $_GET['ref']=='sye'){ echo 'style="width:100%;"';}?>>
                                     <div class="open-experience-html des-holiday-sec-align">
                                         <!--<div><a class="close-btn-experience close-btn-align" href="#">&times;</a></div>-->
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 header-logo-center">
+<!--                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 header-logo-center">
                                             <a href="#"><img class="img-responsive" src="{{ asset('sximo/assets/images/Emporium-Voyage.png')}}"/></a>
-                                        </div>
+                                        </div>-->
                                         <h2>Select Your Experience</h2>
                                         <div class="choose-experience-center-align">
                                             <div class="width-100 holiday-type-image-align ">
@@ -791,9 +864,9 @@
                                 <div class="destination-page" <?php if(isset($_GET['ref']) && $_GET['ref']=='syd'){ echo 'style="width:100%;"';}?>>
                                     <div class="open-destination-html">
                                         <!--<div><a class="close-btn-destination close-btn-align" href="#">&times;</a></div>-->
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 header-logo-center">
+<!--                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 header-logo-center">
                                             <a href="#"><img class="img-responsive" src="{{ asset('sximo/assets/images/Emporium-Voyage.png')}}"/></a>
-                                        </div>
+                                        </div>-->
                                         <h2>Select Your Destination</h2>
                                         <div class="destinSearch">
                                             <!--Search form start-->
