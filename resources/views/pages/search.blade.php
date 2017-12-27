@@ -1927,7 +1927,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                     </script>
                     <link href="{{ asset('sximo/assets/css/editorial.css')}}" rel="stylesheet" type="text/css"/>
                     <div class="editorial-custom-footer-style grid-page-footer-align">
-                        @include('layouts/elliot/ai_footer')
+                        @include('layouts/elliot/ai_footer_social')
                     </div>
                     <?php //@include('layouts/elliot/ai_lightbox_popups') ?>
 

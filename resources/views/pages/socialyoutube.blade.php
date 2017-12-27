@@ -392,7 +392,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <header>
-                        <div class="container-fluid logo-padding-left editorial-logo-align">
+                        <div class="container-fluid editorial-logo-align">
                              <div class="row">
                                 @if(isset($_GET['ref']) && $_GET['ref']!='' )
                                     <button class="go-back-button" id="back_button_page">Go Back</button> 
