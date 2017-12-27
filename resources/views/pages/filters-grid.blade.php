@@ -376,7 +376,7 @@ return fasle;
             <div class="container-fluid">
                 <div class="row">
                     <header>
-                        <div class="container-fluid logo-padding-left editorial-logo-align">
+                        <div class="container-fluid editorial-logo-align">
                             <!--<div class="col-md-12-">
                                 <p><a class="logo-d" href="{{url()}}">D</a></p>
                             </div>
@@ -1723,7 +1723,7 @@ return fasle;
                     </script>
                     <link href="{{ asset('sximo/assets/css/editorial.css')}}" rel="stylesheet" type="text/css"/>
                     <div class="editorial-custom-footer-style grid-page-footer-align">
-                        @include('layouts/elliot/ai_footer')    
+                        @include('layouts/elliot/ai_footer_social')    
                     </div>
 
                    <?php // @include('layouts/elliot/ai_lightbox_popups') ?>
