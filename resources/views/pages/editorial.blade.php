@@ -318,12 +318,12 @@
                                     filter: brightness(.8);
                             }
                             .hotels-detail-description-text {
-                                margin-top: 66px;
+                                margin-top: 30px;
                             }
                             .hotels-image-showcase-des-text > p {
                                 font-size: 15px;
                                 line-height: 30px;
-                                margin-top: 195px;
+                                margin-top: 227px;
                             }
                             .hotel-block-two-right-sec-align > p {
                                 color: white;
@@ -510,7 +510,7 @@
                                 height: 400px;
                                 background: rgba(0,0,0,0.8);
                                 margin: 0;
-                                padding: 8% 0% 0% 6%;
+                                padding: 8% 0% 0% 7%;
                             }
                             
                             .hotels-showcase-right-side {
