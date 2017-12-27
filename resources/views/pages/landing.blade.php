@@ -18,6 +18,7 @@
         <script src="{{ asset('sximo/assets/js/image-slider.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/m_slider.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/open-search.js')}}" type="text/javascript"></script>
+        <script type="text/javascript" src="<?php echo asset('sximo/assets/js/slideshow.js'); ?>"></script>
         <style>
             #search-navbar.search-navbar-destination-search-box {
                 background: #2a2d30 none repeat scroll 0 0 !important;
