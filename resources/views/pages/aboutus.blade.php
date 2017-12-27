@@ -1724,7 +1724,10 @@
             </div>
 
             <!--Footer-->
-            <div class="footer">
+            <div class="editorial-custom-footer-style">
+                @include('layouts/elliot/ai_footer_social')
+            </div>
+<!--            <div class="footer">
                 <div class="container">
                     <div class="col-md-12 col-sm-12 col-xs-12 footer-padding-0">
                         <div class="col-md-5 col-sm-5 col-xs-12  footer-padding-0">
@@ -1812,7 +1815,7 @@
                             </div>
 
                         </div>
-                        <!--                                <div class="col-md-1 col-sm-1 col-xs-12"></div>-->
+                                                        <div class="col-md-1 col-sm-1 col-xs-12"></div>
                         <div class="col-md-3 col-sm-3 col-xs-12">
                             <p class="footer-nav-menu-harding footer-res-margin-align">About Design Locations</p>
                             <p class="footer-about-us-des">From the posh, sun-soaked beaches along the Indian Ocean to the epoch heights of the Himalayas, Design Location is your ideal, vogue vacation planner!
@@ -1835,7 +1838,7 @@
                         <p>COPYRIGHT &copy; 2017 DESIGN_LOCATIONS&reg; / ALL RIGHTS RESERVED</p>
                     </div>
                 </div>
-            </div>
+            </div>-->
         </div>
     </div>
 </div>
