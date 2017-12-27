@@ -458,7 +458,7 @@
                             
                             .restaurant-owner-sign {
                                 color: #ada077;
-                                font-family: 'Satisfy', cursive;
+                                font-family: 'Zeyada', cursive;
                                 font-size: 21px;
                                 margin-bottom: 20px;
                                 padding-left: 15px;
@@ -545,6 +545,7 @@
                             
                             @import url('https://fonts.googleapis.com/css?family=Caveat');
                             @import url('https://fonts.googleapis.com/css?family=Satisfy');
+                            @import url('https://fonts.googleapis.com/css?family=Zeyada');
 
         </style>
 		<!-- Global site tag (gtag.js) - Google Analytics -->
