@@ -135,7 +135,7 @@
 								  
 								 </fieldset>
 				<fieldset>
-					<legend>Upload Images</legend>	
+					<legend>Step 3</legend>	
 
 								  <div class="form-group  " >
 									<label for="Gallery Title" class=" control-label col-md-4 text-left"> Gallery Title </label>
@@ -206,7 +206,7 @@
 
 								</fieldset>
 				<fieldset>
-					<legend>Step 4</legend>  					
+					<legend>Step 5</legend>  					
 								  
 								</fieldset>
 			</div>
@@ -217,7 +217,7 @@
 			<div style="clear:both"></div>	
 				
 					
-				  <div class="form-group">
+				  <!--div class="form-group">
 					<label class="col-sm-4 text-right">&nbsp;</label>
 					<div class="col-sm-8">	
 					<button type="submit" name="apply" class="btn btn-info btn-sm" ><i class="fa  fa-check-circle"></i> {{ Lang::get('core.sb_apply') }}</button>
@@ -225,7 +225,7 @@
 					<button type="button" onclick="location.href='{{ URL::to('citycontent?return='.$return) }}' " class="btn btn-success btn-sm "><i class="fa  fa-arrow-circle-left "></i>  {{ Lang::get('core.sb_cancel') }} </button>
 					</div>	  
 			
-				  </div> 
+				  </div--> 
 		 
 		 {!! Form::close() !!}
 	</div>
