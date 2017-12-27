@@ -604,7 +604,6 @@
                                             <div class="editorial-text">
                                                 <div class="editor-picks-small-text"><a href="{{$slider_row->slider_link}}">{{$slider_row->slider_title}}</a></div>
                                                 <div class="description-bold-text">{{$slider_row->slider_description}}</div>
-                                                <!--end slide -->
                                             </div>
                                             </a>
                                         </li>
