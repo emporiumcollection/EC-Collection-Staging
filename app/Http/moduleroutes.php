@@ -38,4 +38,5 @@
                     Route::controller('bookings', 'BookingsController');
 					Route::controller('crmhotel', 'CrmhotelController');
 					Route::controller('whybookwithus', 'WhybookwithusController');
+					
                     ?>
