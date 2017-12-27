@@ -14,6 +14,19 @@
 	margin-right: 7px;
     }
     
+    .footer {
+	background-color: #F7F7F4;
+	font-size: 11px;
+	margin-bottom: -15px;
+	margin-top: 50px;
+	padding-bottom: 15px;
+	padding-top: 65px;
+    }
+    
+    .noPadding {
+        padding: 0px !important;
+    }
+    
 </style>                    
 
 
@@ -27,7 +40,7 @@
                     <!--Footer-->
                     <div class="footer">
                         <div class="container">
-                            <div class="col-md-12 col-sm-12 col-xs-12 footer-padding-0">
+                            <div class="col-md-12 col-sm-12 col-xs-12 footer-padding-0 noPadding noPadding">
                                 <div class="col-md-12 col-sm-5 col-xs-12  footer-padding-0">
                                     {{--*/ $footer_menus = SiteHelpers::menus('footer') /*--}}
 									@foreach ($footer_menus as $fmenu)
