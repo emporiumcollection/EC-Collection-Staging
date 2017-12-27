@@ -372,6 +372,9 @@
 				width: 80px !important;
 				min-height: 80px !important;
 			}
+                        .ai_active_filter .node-btn {
+                            text-decoration: underline;
+                        }
         </style>
 		
 		<!-- Global site tag (gtag.js) - Google Analytics -->
@@ -1596,11 +1599,11 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                                                 @if(array_key_exists('subchild',$cddest))
                                                                 @foreach($cddest->subchild as $sbdest)
                                                                 <!--Third Level-->
-                                                                <div class="node" style="{{($region==$cddest->category_name) ? 'display: block; padding-left: 10px; margin-top: 5px; text-transform: inherit;' : '' }}">
+                                                                <div class="node" style="{{(str_replace('_',' ',$region)==$cddest->category_name) ? 'display: block; padding-left: 10px; margin-top: 5px; text-transform: inherit;' : '' }}">
                                                                     <a class="node-btn" href="javascript:void(0)" onclick="filter_destination('{{$sbdest->id}}', 'country');">{{$sbdest->category_name}}</a>
                                                                     @if(array_key_exists('subchild',$sbdest))
                                                                     @foreach($sbdest->subchild as $subchild)
-                                                                    <div class="node" style="{{($region==$sbdest->category_name) ? 'display: block; padding-left: 10px; margin-top: 5px; text-transform: inherit;' : '' }}">
+                                                                    <div class="node" style="{{(str_replace('_',' ',$cat)==$sbdest->category_name) ? 'display: block; padding-left: 10px; margin-top: 5px; text-transform: inherit;' : '' }}">
                                                                         <a class="node-btn" href="javascript:void(0)" onclick="filter_destination('{{$subchild->id}}', 'country');">{{$subchild->category_name}}</a>
                                                                     </div>
                                                                     @endforeach

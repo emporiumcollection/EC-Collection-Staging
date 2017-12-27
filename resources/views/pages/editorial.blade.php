@@ -269,8 +269,9 @@
                             .hotels-des-left-side {
                                 background: rgba(0,0,0,0.8);
                                 color: #fff;
+                                z-index: 0;
                                 font-family: geomanist-regular;
-                                padding: 139px 32px 36px 75px;
+                                padding: 20px 32px 264px 75px;
                             }
                             .editorial-hotel-detail-page button.go-back-button {
                                 background-color: \\;
@@ -317,12 +318,12 @@
                                     filter: brightness(.8);
                             }
                             .hotels-detail-description-text {
-                                margin-top: 66px;
+                                margin-top: 30px;
                             }
                             .hotels-image-showcase-des-text > p {
                                 font-size: 15px;
                                 line-height: 30px;
-                                margin-top: 40px;
+                                margin-top: 227px;
                             }
                             .hotel-block-two-right-sec-align > p {
                                 color: white;
@@ -457,7 +458,7 @@
                             
                             .restaurant-owner-sign {
                                 color: #ada077;
-                                font-family: 'Satisfy', cursive;
+                                font-family: 'Zeyada', cursive;
                                 font-size: 21px;
                                 margin-bottom: 20px;
                                 padding-left: 15px;
@@ -492,7 +493,7 @@
                                 font-family: ACaslonPro-Regular;
                                 font-size: 40px;
                                 font-weight: lighter;
-                                margin-top: -80px;
+                                margin-top: -115px;
                                 text-transform: uppercase;
                                 opacity: 0;
                             }
@@ -503,19 +504,25 @@
                                 font-family: ACaslonPro-Regular;
                                 letter-spacing: 3px;
                                 line-height: 35px;
+                                float: none;
+                                width: 50%;
                                 text-transform: uppercase;
+                                height: auto;
+                                background: rgba(0,0,0,0.8);
+                                margin: 0;
+                                padding: 8% 0% 0% 7%;
                             }
                             
                             .hotels-showcase-right-side {
                                 background-blend-mode: multiply;
                                 background-color: #2f2f2e;
-                                background-image: url(../images/blakes-hotel-luxury-suite-R-5.jpg);
                                 background-position: center center;
                                 background-repeat: no-repeat;
                                 background-size: cover;
                                 color: #fff;
                                 font-family: Geomanist-Regular;
-                                padding: 516px 49px 90px 30px;
+                                /* padding: 516px 49px 90px 30px; */
+                                margin-top: -400px;
                             }
                             
                             .image-showcase-below-big-text {
@@ -528,8 +535,94 @@
                                 text-transform: uppercase;
                             }
                             
+                            /* AIC Harman 27/12/2017 */
+                            
+                            .hotels-detail-heading-text {
+                                width: 100%;
+                                float: left;
+                            }
+                            
+                            .gallery.row .principale1 img {
+                                width: 100%;
+                                position: absolute;
+                                top: 0%;
+                                background-color: black;
+                                opacity: 0.9;
+                            }
+                            
+                            .gallery.row .principale1 .foto1 {
+                                width: 0%;
+                                height: auto;
+                                position: absolute;
+                                top: 0vh;
+                                background: black;
+                                overflow: hidden;
+                            }
+                            
+                            .architecture-sec-top-img {
+                                display: table;
+                                margin: 83px auto 0;
+                                display: table;
+                                margin: 83px auto 0;
+                                margin-bottom: 0px;
+                                margin-left: auto;
+                                width: 0%;
+                                height: auto;
+                                width: 50%;
+                                margin: 0 auto;
+                                margin-left: 224px;
+                                margin-bottom: 65px;
+                            }
+                            
+                            .small-box-text {
+                                color: #fff;
+                                font-family: geomanist-light;
+                                font-size: 26px;
+                                margin-left: -5px;
+                                line-height: 30px;
+                            }
+                            
+                            .architecture-sec-heading > h1 {
+                                font-family: geomanist-light;
+                                font-size: 30px;
+                                font-weight: lighter;
+                                margin-top: 120px;
+                                right: 30%;
+                                left: 45px;
+                            }
+                            
+                            .expeience-small-text {
+                                color: #fff;
+                                font-family: ACaslonPro-Regular;
+                            }
+                            
+                            .slider-side-text-tittle {
+                                color: #fff;
+                                font-family: geomanist-light;
+                                font-size: 38px;
+                                line-height: 39px;
+                            }
+                            
+                            .arrow-margin-right {
+                                margin-right: 0px;
+                            }
+                            
+                            .editorial-image-slider-previous-btn {
+                                margin-left: 384px !important;
+                            }
+                            
+                            .editorial-hotel-detail-page #align-to-top .book-button.open-show_more-page.hotel-btn {
+                                background-color: #ABA07C;
+                                opacity: 1;
+                                color: white;
+                                font-family: Geomanist-light;
+                            }
+                            
+
+                            
                             @import url('https://fonts.googleapis.com/css?family=Caveat');
                             @import url('https://fonts.googleapis.com/css?family=Satisfy');
+                            @import url('https://fonts.googleapis.com/css?family=Zeyada');
 
         </style>
 		<!-- Global site tag (gtag.js) - Google Analytics -->
@@ -930,10 +1023,10 @@
                                 <div class="row">
                                     <div class="clearfix"></div>
                                     <div class="col-md-12 col-sm-12 disply-left-right-align">
+                                        <div class="hotels-detail-heading-text">
+                                            <p>{!! nl2br($propertyDetail['data']->detail_section2_title) !!}</p>
+                                        </div>
                                         <div class="col-md-6 col-sm-6 disply-left-right-inner hotels-des-left-side">
-                                            <div class="hotels-detail-heading-text">
-                                                <p>{!! nl2br($propertyDetail['data']->detail_section2_title) !!}</p>
-                                            </div>
                                             <div class="hotels-detail-description-text">
                                                 <p class="hotel-description-text">
                                                     {!! nl2br($propertyDetail['data']->detail_section2_description_box1)!!}

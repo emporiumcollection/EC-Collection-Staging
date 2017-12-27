@@ -237,9 +237,9 @@ and open the template in the editor.
 }
 
 /*Hotels Sec*/
-.disply-left-right-align{
+/*.disply-left-right-align{
     display: flex;
-}
+}*/
 .disply-left-right-inner{
     flex: 1;
 }

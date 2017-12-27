@@ -172,4 +172,4 @@
         </div>
     </div>
 </section>
-@include('layouts/elliot/ai_footer')
+@include('layouts/elliot/ai_footer_social')

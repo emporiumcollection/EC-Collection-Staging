@@ -5,9 +5,26 @@
         <meta charset="UTF-8">
         <title>Emporium-Voyage</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link href="{{ asset('sximo/assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('sximo/assets/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('sximo/assets/css/daterangepicker.min.css')}}" rel="stylesheet">
+        <link href="{{ asset('sximo/assets/css/test-res.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('sximo/assets/css/jquery-ui.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('sximo/assets/css/sticky-nav.css')}}" rel="stylesheet" type="text/css"/> 
+        <link href="{{ asset('sximo/assets/css/style.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('sximo/assets/css/book-now-page-style.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('sximo/assets/css/m-popup.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('sximo/assets/css/image-slider.css')}}" rel="stylesheet" type="text/css"/>
+        
+        <link href="{{ asset('sximo/assets/css/slick.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('sximo/assets/css/slick-theme.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('sximo/assets/css/theme.css')}}" rel="stylesheet" type="text/css" media="all">
+        
         <link href="{{ asset('sximo/assets/css/landing-page-styles.css')}}" rel="stylesheet" type="text/css"/>
         
         <script src="{{ asset('sximo/assets/js/jquery-2.1.0.min.js')}}" type="text/javascript"></script>
+        <script type="text/javascript" src="{{ asset('sximo/assets/js/uikit.js')}}"></script>
         <script src="{{ asset('sximo/assets/js/bootstrap.min.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/jquery-ui.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/moment.min.js')}}" type="text/javascript" ></script>
@@ -413,6 +430,9 @@
             min-height: unset;
             max-height: unset;
         }
+        .right-menus.right-menu-sidebar {
+            z-index: 99;
+        }
         </style>
 		<!-- Global site tag (gtag.js) - Google Analytics -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110391807-1"></script>
@@ -526,7 +546,7 @@
 
                                 <div class="grid-page-category-slider-container">
                                     @if(!empty($categoryslider))
-                                    <div class="bh-slideshow-thumbnail-split hidden-xs hidden-sm" data-uk-slideshow="{animation: 'slice-up', autoplay: true}" style="margin-bottom:20px;margin-top:0px;">
+                                    <div class="bh-slideshow-thumbnail-split hidden-xs hidden-sm" data-uk-slideshow="{animation: 'slice-up', autoplay: true}">
                                         <ul style="" class="uk-slideshow uk-overlay-active">
                                             @foreach($categoryslider as $slides)
                                             <li class="ai-uk-animation" style="" @if($categoryslider[0]==$slides) class="uk-active" @endif aria-hidden="true">
@@ -577,7 +597,7 @@
                                     @endif
                                 </div>
                                 
-                                <div class="m_slider editorial_m_slider_landing ">
+                                <!--<div class="m_slider editorial_m_slider_landing ">
                                     <ul>
                                         @foreach($slider as $key => $slider_row)
                                         <li class="{{($key == 0)? 'active' : ''}}">
@@ -587,7 +607,6 @@
                                             <div class="editorial-text">
                                                 <div class="editor-picks-small-text"><a href="{{$slider_row->slider_link}}">{{$slider_row->slider_title}}</a></div>
                                                 <div class="description-bold-text">{{$slider_row->slider_description}}</div>
-                                                <!--end slide -->
                                             </div>
                                             </a>
                                         </li>
@@ -601,7 +620,7 @@
                                             <img  class="banner-arrow-bg" src="{{ asset('sximo/assets/images/editorial-left-arrow.png')}}" alt=""/>
                                         </a>
                                     </div>
-                                </div>
+                                </div>-->
 								
 								@if(!empty($landinggridpropertiesArr))
 									<div class="container" style="margin-top:20px; display:none;">
@@ -693,7 +712,7 @@
 										</div>
 									</div>
 								@endif
-                                <div class="landing-page-footer-section">
+                                <!--<div class="landing-page-footer-section">
                                     @if(!empty($landing_menus))
                                     <ul class="landing-page-footer-menu-style">
                                         @foreach ($landing_menus as $fmenu)
@@ -705,10 +724,22 @@
                                         @endforeach
                                     </ul>
                                     @endif
-                                </div>
+                                </div>-->
                                 <!--Slider end here-->
                             </div>
                         @endif
+                        
+                        <div class="container">
+                            <div class="row">
+                                <div class="header-navigation-container">
+                                    <div class="row">
+                                        <div class="">
+                                            @include('layouts/elliot/ai_navigation')
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         
                             <!--Experience Page Start Here-->
                             <div class="row">
@@ -934,6 +965,12 @@
                                 </div>
                             </div>
                             <!--Search By Date Page End Here-->
+                            
+                            <!--Footer Start-->
+                            <div class="editorial-custom-footer-style grid-page-footer-align">
+                                @include('layouts/elliot/ai_footer_social')
+                            </div>
+                            <!--Footer End-->
                         </div>
                         <!--Main Page End-->
                         <!--Sidebar-->

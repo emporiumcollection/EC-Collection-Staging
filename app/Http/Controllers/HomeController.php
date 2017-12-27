@@ -6377,6 +6377,7 @@ class HomeController extends Controller {
                         $this->data['ourmaindesitnation'] = $mainArrdestts;
                         $this->data['continent'] = $request->continent;
                         $this->data['region'] = $request->region;
+                        $this->data['cat'] = $request->cat;
                         $this->data['tagmenus'] = $tagsArr;
                         $this->data['pager'] = $this->injectPaginate();
                         $this->data['currentPage'] = $currentPage;
