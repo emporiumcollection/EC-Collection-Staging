@@ -9,7 +9,7 @@
 	font-size: 20px;
 	background: #000;
 	border-radius: 100%;
-	padding: 16px 19px 16px 19px;
+	padding: 15px 19px 15px 19px;
 	color: #fff;
 	margin-right: 7px;
     }
@@ -123,7 +123,7 @@
                                                                         
                                 </div>
 <!--                                <div class="col-md-1 col-sm-1 col-xs-12"></div>-->
-                                <div class="col-md-4 col-sm-3 col-xs-12">
+                                <div class="col-md-4 col-sm-3 col-xs-12 noPadding">
                                     <p class="footer-nav-menu-harding footer-res-margin-align">About EMPORIUM VOYAGE</p>
                                     <p class="footer-about-us-des">{{$about_text->content}}
                                     </p>
