@@ -516,7 +516,6 @@
                             .hotels-showcase-right-side {
                                 background-blend-mode: multiply;
                                 background-color: #2f2f2e;
-                                
                                 background-position: center center;
                                 background-repeat: no-repeat;
                                 background-size: cover;

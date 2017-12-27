@@ -28,16 +28,16 @@
     .noPadding {
         padding: 0px !important;
     }
-    
-    .VegasFooterMiddle {
-        margin-left:20px;
-    }
-    
+
     .vegasSocialUl {
         margin-left: 121px;
     }
     
-    .VegasFooterMiddle {
+    .VegasFooterMiddle p {
+        margin-left: 34px;
+    }
+    
+    .VegasFooterMiddle form {
         margin-left: 34px;
     }
     
