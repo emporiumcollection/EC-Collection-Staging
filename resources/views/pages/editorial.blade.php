@@ -322,7 +322,7 @@
                             .hotels-image-showcase-des-text > p {
                                 font-size: 15px;
                                 line-height: 30px;
-                                margin-top: 30px;
+                                margin-top: 40px;
                             }
                             .hotel-block-two-right-sec-align > p {
                                 color: white;
