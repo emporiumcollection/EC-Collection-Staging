@@ -91,53 +91,6 @@
 										</div>
                                                                                 
 									@endforeach
-                                                                        <!-- AIC Harman: footer sections -->
-                                                                        
-                                                                            <div class="vegasFooter footer-padding-0">
-											<div class="row-">
-												<div class="accordion res-design-footer">
-																											Discover
-													</div>
-												<div class="panel">
-																									<ul class="footer-nav-menu footer-nav-menu-align">
-																													<li>
-																<a href="http://www.emporium-voyage.com/social-stream?sp=gramercy-park-hotel-new-york-city-united-states">
-																																			Hotel Social Channels
-																																	</a>
-															</li>
-																													<li>
-																<a href="http://www.emporium-voyage.com">
-																																			Destination Video Channels
-																																	</a>
-															</li>
-																											</ul>
-																								</div>
-											</div>
-										</div>
-                                                                        
-                                                                            <div class="vegasFooter footer-padding-0">
-											<div class="row-">
-												<div class="accordion res-design-footer">
-																											Discover
-													</div>
-												<div class="panel">
-																									<ul class="footer-nav-menu footer-nav-menu-align">
-																													<li>
-																<a href="http://www.emporium-voyage.com/social-stream?sp=gramercy-park-hotel-new-york-city-united-states">
-																																			Hotel Social Channels
-																																	</a>
-															</li>
-																													<li>
-																<a href="http://www.emporium-voyage.com">
-																																			Destination Video Channels
-																																	</a>
-															</li>
-																											</ul>
-																								</div>
-											</div>
-										</div>
-                                                                        
-                                                                        <!-- AIC Harman: footer sections end -->
                                                                         
                                 </div>
 <!--                                <div class="col-md-1 col-sm-1 col-xs-12"></div>-->
