@@ -394,5 +394,5 @@
     });
 </script>
 
-@include('layouts/elliot/ai_footer')
+@include('layouts/elliot/ai_footer_social')
 @include('layouts/elliot/ai_lightbox_popups')
