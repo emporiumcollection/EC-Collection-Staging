@@ -430,6 +430,9 @@
             min-height: unset;
             max-height: unset;
         }
+        .right-menus.right-menu-sidebar {
+            z-index: 99;
+        }
         </style>
 		<!-- Global site tag (gtag.js) - Google Analytics -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110391807-1"></script>
@@ -543,7 +546,7 @@
 
                                 <div class="grid-page-category-slider-container">
                                     @if(!empty($categoryslider))
-                                    <div class="bh-slideshow-thumbnail-split hidden-xs hidden-sm" data-uk-slideshow="{animation: 'slice-up', autoplay: true}" style="margin-bottom:20px;margin-top:0px;">
+                                    <div class="bh-slideshow-thumbnail-split hidden-xs hidden-sm" data-uk-slideshow="{animation: 'slice-up', autoplay: true}">
                                         <ul style="" class="uk-slideshow uk-overlay-active">
                                             @foreach($categoryslider as $slides)
                                             <li class="ai-uk-animation" style="" @if($categoryslider[0]==$slides) class="uk-active" @endif aria-hidden="true">
@@ -728,9 +731,9 @@
                         
                         <div class="container">
                             <div class="row">
-                                <div class="header-navigation-container col-md-12">
+                                <div class="header-navigation-container">
                                     <div class="row">
-                                        <div class="col-md-12 col-sm-12">
+                                        <div class="">
                                             @include('layouts/elliot/ai_navigation')
                                         </div>
                                     </div>
