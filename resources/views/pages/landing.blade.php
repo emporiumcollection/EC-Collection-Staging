@@ -709,7 +709,7 @@
 										</div>
 									</div>
 								@endif
-                                <div class="landing-page-footer-section">
+                                <!--<div class="landing-page-footer-section">
                                     @if(!empty($landing_menus))
                                     <ul class="landing-page-footer-menu-style">
                                         @foreach ($landing_menus as $fmenu)
@@ -721,10 +721,22 @@
                                         @endforeach
                                     </ul>
                                     @endif
-                                </div>
+                                </div>-->
                                 <!--Slider end here-->
                             </div>
                         @endif
+                        
+                        <div class="container">
+                            <div class="row">
+                                <div class="header-navigation-container col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12">
+                                            @include('layouts/elliot/ai_navigation')
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         
                             <!--Experience Page Start Here-->
                             <div class="row">
