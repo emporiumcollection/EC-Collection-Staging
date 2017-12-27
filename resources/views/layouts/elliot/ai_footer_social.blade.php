@@ -6,12 +6,14 @@
     }
     
     .vegasFooterSocial ul li a i {
-	font-size: 20px;
+	font-size: 14px;
 	background: #000;
-	border-radius: 831px;
-	padding: 10px 14px 11px 14px;
+	/* border-radius: 831px; */
+	padding: 6px 12px 4px 7px;
 	color: #fff;
-	margin-right: 7px;
+	margin-right: 0px;
+	text-align: center;
+	width: 25px;
     }
     
     .footer {
@@ -25,6 +27,22 @@
     
     .noPadding {
         padding: 0px !important;
+    }
+    
+    .VegasFooterMiddle {
+        margin-left:20px;
+    }
+    
+    .vegasSocialUl {
+        margin-left: 121px;
+    }
+    
+    .VegasFooterMiddle {
+        margin-left: 34px;
+    }
+    
+    .marginBottom20 {
+        margin-bottom: 20px;
     }
     
 </style>                    
@@ -41,7 +59,7 @@
                     <div class="footer">
                         <div class="container">
                             <div class="col-md-12 col-sm-12 col-xs-12 footer-padding-0 noPadding noPadding">
-                                <div class="col-md-12 col-sm-5 col-xs-12  footer-padding-0">
+                                <div class="col-md-12 col-sm-5 col-xs-12  footer-padding-0 marginBottom20">
                                     {{--*/ $footer_menus = SiteHelpers::menus('footer') /*--}}
 									@foreach ($footer_menus as $fmenu)
 										<div class="vegasFooter {{($fmenu!=$footer_menus[0]) ? 'footer-padding-0' : ''}}">
@@ -123,12 +141,12 @@
                                                                         
                                 </div>
 <!--                                <div class="col-md-1 col-sm-1 col-xs-12"></div>-->
-                                <div class="col-md-4 col-sm-3 col-xs-12 noPadding">
+                                <div class="col-md-4 col-sm-3 col-xs-12">
                                     <p class="footer-nav-menu-harding footer-res-margin-align">About EMPORIUM VOYAGE</p>
                                     <p class="footer-about-us-des">{{$about_text->content}}
                                     </p>
                                 </div>
-                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                <div class="col-md-4 col-sm-4 col-xs-12 VegasFooterMiddle">
                                     <p class="footer-nav-menu-harding footer-res-margin-align">Newsletter</p>
                                     <p class="subscription-line">Subscribe and get 10% off on your next reservation</p>
                                     <form action="http://just-emarketing.com/app/index.php/lists/fb5156qrasf4a/subscribe" method="post" accept-charset="utf-8" target="_blank">
@@ -171,7 +189,7 @@
                                 
                                 <!-- AIC Harman footer social icons add -->
                                 <div class="col-md-4 vegasFooterSocial">
-                                    <ul class="list-inline">
+                                    <ul class="list-inline vegasSocialUl">
                                         <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
                                         <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
                                         <li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
