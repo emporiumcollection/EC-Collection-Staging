@@ -121,6 +121,7 @@ class HomeController extends Controller {
                         //include(public_path() . '/revolution_slider/embed.php');
 
                         $this->data['slider'] = \DB::table('tb_sliders')->select('slider_category', 'slider_title', 'slider_description', 'slider_img', 'slider_link', 'slider_video', 'slide_type')->where('slider_category', 'Landing')->get();
+                        $this->data['categoryslider'] = \DB::table('tb_sliders')->where('slider_category', 'Landing')->get();
 
                         $destts = array();
                         $maindest = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name')->where('parent_category_id', 0)->where('id', '!=', 8)->get();
