@@ -89,7 +89,7 @@ $(function () {
         <div class="booking-form-bg">
             <div class="container">
                 <div class="form-custom-width">
-                    <a href="#"><img src="{{ asset('sximo/assets/images/logo-design_1.png')}}" alt="" class="img-responsive new-book-form-hotel-logo"/></a>
+                    <a href="#"><img src="{{ asset('sximo/assets/images/logo-design_1.png')}}" alt="" class="img-responsive new-book-form-hotel-logo" style="width: 50%;" /></a>
                     <form id="frontend_booking" action="javascript:save_reserve_forms_data('frontend_booking');" >
                         <!--<form id="frontend_booking">-->
                         <div id="booking-form-accordion" class="panel-group booking-form-villa">
