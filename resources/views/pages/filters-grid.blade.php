@@ -678,8 +678,8 @@ return fasle;
                                                                                     <?php echo $props['data']->property_name; ?>
                                                                                 </a>
                                                                                 <span class="FltRgt">
-                                                                                    <i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" <?php echo (array_key_exists('image', $props))? 'onclick="add_to_lightbox('.$props['image']->file_id.', '.$props['data']->id.');"' : ''; ?>></i>
-                                                                                    <a class="carticon" href="<?php echo URL::to($props['data']->property_slug); ?>"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>
+                                                                                    <!--<i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" <?php // echo (array_key_exists('image', $props))? 'onclick="add_to_lightbox('.$props['image']->file_id.', '.$props['data']->id.');"' : ''; ?>></i>-->
+                                                                                    <a class="carticon" href="javascript:void(0)" onclick="submitgridbookform('{{$props['data']->property_slug}}-{{$props['data']->id}}');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>
                                                                                 </span>
                                                                             </h2>
                                                                         </div>
@@ -1116,6 +1116,15 @@ return fasle;
                         </div>
                     </div>
                     <div class="clearfix"></div>
+					
+					<form action="{{url()}}" method="get" id="gridbookform">
+						<input type="hidden" name="property" id="bookformproperty" value="" />
+                        <input type="hidden" name="roomType" id="roomType" value="" />
+                        <input name="arrive" value="{{ date('d.m.Y') }}" type="hidden" />
+						<input name="destination" value="" type="hidden" />
+                        <input name="booking_adults" value="1" type="hidden" />
+						<input name="booking_children" value="0" type="hidden" />
+					</form>
                     <script type="text/javascript">
                         $(document).on('ready', function () {
                         $(".regular").slick({
@@ -1129,6 +1138,17 @@ return fasle;
                                 autoplaySpeed: 3000
                         });
                         });
+						
+						function submitgridbookform(propdt)
+						{
+							if(propdt!='')
+							{
+								var pros = propdt.split("-");
+								$('#bookformproperty').val(pros[1]);
+								$('#gridbookform').attr('action','{{url()}}/book-property/' +pros[0]);
+								$('#gridbookform').submit();
+							}
+						}
                     </script>
                     <script>
                         $(document).ready(function () {
@@ -1325,11 +1345,11 @@ return fasle;
                                 html += '</a>';
                                 html += '<span class="FltRgt">';
                                 if (obj.hasOwnProperty("image")) {
-                                html += '<i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" onclick="add_to_lightbox(' + obj.image.file_id + ',' + obj.pdata.id + ');" ></i>';
+                                //html += '<i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" onclick="add_to_lightbox(' + obj.image.file_id + ',' + obj.pdata.id + ');" ></i>';
                                 } else {
-                                html += '<i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" ></i>';
+                                //html += '<i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" ></i>';
                                 }
-                                html += '<a class="carticon" href="' + detail_link + '"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>';
+                                html += '<a class="carticon" href="javascript:void(0)" onclick="submitgridbookform('+obj.pdata.property_slug+'-'+obj.pdata.id');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>';
                                 html += '</span>';
                                 html += '</h2>';
                                 html += '</div>';
