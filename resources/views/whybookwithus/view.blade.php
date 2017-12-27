@@ -30,18 +30,6 @@
 			<tbody>	
 		
 					<tr>
-						<td width='30%' class='label-view text-right'>Id</td>
-						<td>{{ $row->id }} </td>
-						
-					</tr>
-				
-					<tr>
-						<td width='30%' class='label-view text-right'>User Id</td>
-						<td>{{ $row->user_id }} </td>
-						
-					</tr>
-				
-					<tr>
 						<td width='30%' class='label-view text-right'>Title</td>
 						<td>{{ $row->title }} </td>
 						
@@ -56,24 +44,6 @@
 					<tr>
 						<td width='30%' class='label-view text-right'>Status</td>
 						<td>{{ $row->status }} </td>
-						
-					</tr>
-				
-					<tr>
-						<td width='30%' class='label-view text-right'>Created At</td>
-						<td>{{ $row->created_at }} </td>
-						
-					</tr>
-				
-					<tr>
-						<td width='30%' class='label-view text-right'>Updated At</td>
-						<td>{{ $row->updated_at }} </td>
-						
-					</tr>
-				
-					<tr>
-						<td width='30%' class='label-view text-right'>Deleted At</td>
-						<td>{{ $row->deleted_at }} </td>
 						
 					</tr>
 				

@@ -31,7 +31,7 @@
 <div class="col-md-12">
 						<fieldset><legend> Why book with us</legend>
 									
-								  <div class="form-group  " >
+								  <div class="form-group hidethis " style="display:none;">
 									<label for="Id" class=" control-label col-md-4 text-left"> Id </label>
 									<div class="col-md-6">
 									  {!! Form::text('id', $row['id'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
@@ -41,18 +41,9 @@
 									 </div>
 								  </div> 					
 								  <div class="form-group  " >
-									<label for="User Id" class=" control-label col-md-4 text-left"> User Id </label>
+									<label for="Title" class=" control-label col-md-4 text-left"> Title <span class="asterix"> * </span></label>
 									<div class="col-md-6">
-									  {!! Form::text('user_id', $row['user_id'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
-									 </div> 
-									 <div class="col-md-2">
-									 	
-									 </div>
-								  </div> 					
-								  <div class="form-group  " >
-									<label for="Title" class=" control-label col-md-4 text-left"> Title </label>
-									<div class="col-md-6">
-									  {!! Form::text('title', $row['title'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
+									  {!! Form::text('title', $row['title'],array('class'=>'form-control', 'placeholder'=>'', 'required'=>'true'  )) !!} 
 									 </div> 
 									 <div class="col-md-2">
 									 	
@@ -70,49 +61,11 @@
 								  <div class="form-group  " >
 									<label for="Status" class=" control-label col-md-4 text-left"> Status </label>
 									<div class="col-md-6">
-									  {!! Form::text('status', $row['status'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
-									 </div> 
-									 <div class="col-md-2">
-									 	
-									 </div>
-								  </div> 					
-								  <div class="form-group  " >
-									<label for="Created At" class=" control-label col-md-4 text-left"> Created At </label>
-									<div class="col-md-6">
 									  
-				<div class="input-group m-b" style="width:150px !important;">
-					{!! Form::text('created_at', $row['created_at'],array('class'=>'form-control datetime', 'style'=>'width:150px !important;')) !!}
-					<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-				</div>
-				 
-									 </div> 
-									 <div class="col-md-2">
-									 	
-									 </div>
-								  </div> 					
-								  <div class="form-group  " >
-									<label for="Updated At" class=" control-label col-md-4 text-left"> Updated At </label>
-									<div class="col-md-6">
-									  
-				<div class="input-group m-b" style="width:150px !important;">
-					{!! Form::text('updated_at', $row['updated_at'],array('class'=>'form-control datetime', 'style'=>'width:150px !important;')) !!}
-					<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-				</div>
-				 
-									 </div> 
-									 <div class="col-md-2">
-									 	
-									 </div>
-								  </div> 					
-								  <div class="form-group  " >
-									<label for="Deleted At" class=" control-label col-md-4 text-left"> Deleted At </label>
-									<div class="col-md-6">
-									  
-				<div class="input-group m-b" style="width:150px !important;">
-					{!! Form::text('deleted_at', $row['deleted_at'],array('class'=>'form-control datetime', 'style'=>'width:150px !important;')) !!}
-					<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-				</div>
-				 
+					<label class='radio radio-inline'>
+					<input type='radio' name='status' value ='0'  @if($row['status'] == '0') checked="checked" @endif > Active </label>
+					<label class='radio radio-inline'>
+					<input type='radio' name='status' value ='1'  @if($row['status'] == '1') checked="checked" @endif > Inactive </label> 
 									 </div> 
 									 <div class="col-md-2">
 									 	
