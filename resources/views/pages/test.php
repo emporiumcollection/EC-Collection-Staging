@@ -564,7 +564,7 @@
                         });
                     </script>
                     <div class="editorial-custom-footer-style">
-                        @include('layouts/elliot/ai_footer')
+                       @include('layouts/elliot/ai_footer_social')
                     </div>
                     </div>
                 </div>

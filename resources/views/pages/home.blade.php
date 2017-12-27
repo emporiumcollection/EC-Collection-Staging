@@ -849,4 +849,4 @@ window.onload = $(function(){
     },4000);
 });
 </script>
-@include('layouts/elliot/ai_footer') 
+@include('layouts/elliot/ai_footer_social') 

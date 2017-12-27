@@ -136,6 +136,7 @@ AOS.init({
     easing: 'ease-in-out-sine'
 });
         </script>
-        @include('layouts/elliot/ai_footer_3')
-        @include('layouts/elliot/ai_footer_2')
+        @include('layouts/elliot/ai_footer_social')
+        <!--@include('layouts/elliot/ai_footer_3')
+        @include('layouts/elliot/ai_footer_2')-->
         
