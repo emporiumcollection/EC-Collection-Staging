@@ -42,9 +42,9 @@
 
 		 {!! Form::open(array('url'=>'citycontent/save?return='.$return, 'class'=>'form-horizontal','files' => true , 'parsley-validate'=>'','novalidate'=>' ', 'id' => 'wizard_example')) !!}
 <div class="col-md-12">
-						<fieldset><legend> City Content Management</legend>
+						<fieldset><legend> Step 1</legend>
 									
-								  <div class="form-group  " >
+								  <div class="form-group  hidethis" >
 									<label for="Id" class=" control-label col-md-4 text-left"> Id </label>
 									<div class="col-md-6">
 									  {!! Form::text('id', $row['id'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
@@ -71,19 +71,26 @@
 									 	
 									 </div>
 								  </div> 
-								</fieldset>  
-								  <fieldset>
-										<legend>Step 2</legend>				
 								  <div class="form-group  " >
-									<label for="Description" class=" control-label col-md-4 text-left"> Description </label>
+									<label for="Metakey" class=" control-label col-md-4 text-left"> Meta keyword </label>
 									<div class="col-md-6">
-									  <textarea name='description' rows='5' id='editor' class='form-control editor '  
-						 >{{ $row['description'] }}</textarea> 
+									  <textarea name='metakey' rows='5' id='metakey' class='form-control '  
+				           >{{ $row['metakey'] }}</textarea> 
 									 </div> 
 									 <div class="col-md-2">
 									 	
 									 </div>
 								  </div> 					
+								  <div class="form-group  " >
+									<label for="Metadesc" class=" control-label col-md-4 text-left"> Meta Description </label>
+									<div class="col-md-6">
+									  <textarea name='metadesc' rows='5' id='metadesc' class='form-control '  
+				           >{{ $row['metadesc'] }}</textarea> 
+									 </div> 
+									 <div class="col-md-2">
+									 	
+									 </div>
+								  </div> 
 								  <div class="form-group  " >
 									<label for="Category" class=" control-label col-md-4 text-left"> Category </label>
 									<div class="col-md-6">
@@ -111,9 +118,24 @@
 									 	
 									 </div>
 								  </div> 
+								  <div class="form-group  " >
+									<label for="Description" class=" control-label col-md-4 text-left"> Description </label>
+									<div class="col-md-6">
+									  <textarea name='description' rows='5' id='editor' class='form-control editor '  
+						 >{{ $row['description'] }}</textarea> 
+									 </div> 
+									 <div class="col-md-2">
+									 	
+									 </div>
+								  </div> 
+								</fieldset>  
+								  <fieldset>
+										<legend>Step 2</legend>				
+								  					
+								  
 								 </fieldset>
 				<fieldset>
-					<legend>Upload Images</legend>	
+					<legend>Step 3</legend>	
 
 								  <div class="form-group  " >
 									<label for="Gallery Title" class=" control-label col-md-4 text-left"> Gallery Title </label>
@@ -184,27 +206,8 @@
 
 								</fieldset>
 				<fieldset>
-					<legend>Step 4</legend>  					
-								  <div class="form-group  " >
-									<label for="Metakey" class=" control-label col-md-4 text-left"> Metakey </label>
-									<div class="col-md-6">
-									  <textarea name='metakey' rows='5' id='metakey' class='form-control '  
-				           >{{ $row['metakey'] }}</textarea> 
-									 </div> 
-									 <div class="col-md-2">
-									 	
-									 </div>
-								  </div> 					
-								  <div class="form-group  " >
-									<label for="Metadesc" class=" control-label col-md-4 text-left"> Metadesc </label>
-									<div class="col-md-6">
-									  <textarea name='metadesc' rows='5' id='metadesc' class='form-control '  
-				           >{{ $row['metadesc'] }}</textarea> 
-									 </div> 
-									 <div class="col-md-2">
-									 	
-									 </div>
-								  </div> 
+					<legend>Step 5</legend>  					
+								  
 								</fieldset>
 			</div>
 			
@@ -214,7 +217,7 @@
 			<div style="clear:both"></div>	
 				
 					
-				  <div class="form-group">
+				  <!--div class="form-group">
 					<label class="col-sm-4 text-right">&nbsp;</label>
 					<div class="col-sm-8">	
 					<button type="submit" name="apply" class="btn btn-info btn-sm" ><i class="fa  fa-check-circle"></i> {{ Lang::get('core.sb_apply') }}</button>
@@ -222,7 +225,7 @@
 					<button type="button" onclick="location.href='{{ URL::to('citycontent?return='.$return) }}' " class="btn btn-success btn-sm "><i class="fa  fa-arrow-circle-left "></i>  {{ Lang::get('core.sb_cancel') }} </button>
 					</div>	  
 			
-				  </div> 
+				  </div--> 
 		 
 		 {!! Form::close() !!}
 	</div>
