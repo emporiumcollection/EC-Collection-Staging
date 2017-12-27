@@ -484,7 +484,7 @@
                                 line-height: 30px;
                                 margin-top: 0px;
                                 font-size: 15px;
-                                font-family: Geomanist-Regular;
+                                font-family: Geomanist-light;
                                 opacity: 1;
                             }
                             .hotel-block-two-right-sec-align > h2 {
