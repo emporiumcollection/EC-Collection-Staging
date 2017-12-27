@@ -40,7 +40,7 @@
 	<div class="sbox-title"> <h4> <i class="fa fa-table"></i> <span style="float:right;"> <a href="#" onclick="change_lang('dutch');">Deutsch</a> || <a href="#" onclick="change_lang('eng');">English</a></span> </h4></div>
 	<div class="sbox-content"> 	
 
-		 {!! Form::open(array('url'=>'citycontent/save?return='.$return, 'class'=>'form-horizontal','files' => true , 'parsley-validate'=>'','novalidate'=>' ')) !!}
+		 {!! Form::open(array('url'=>'citycontent/save?return='.$return, 'class'=>'form-horizontal','files' => true , 'parsley-validate'=>'','novalidate'=>' ', 'id' => 'wizard_example')) !!}
 <div class="col-md-12">
 						<fieldset><legend> City Content Management</legend>
 									
