@@ -577,7 +577,7 @@
                                     @endif
                                 </div>
                                 
-                                <div class="m_slider editorial_m_slider_landing ">
+                                <!--<div class="m_slider editorial_m_slider_landing ">
                                     <ul>
                                         @foreach($slider as $key => $slider_row)
                                         <li class="{{($key == 0)? 'active' : ''}}">
@@ -601,7 +601,7 @@
                                             <img  class="banner-arrow-bg" src="{{ asset('sximo/assets/images/editorial-left-arrow.png')}}" alt=""/>
                                         </a>
                                     </div>
-                                </div>
+                                </div>-->
 								
 								@if(!empty($landinggridpropertiesArr))
 									<div class="container" style="margin-top:20px; display:none;">
