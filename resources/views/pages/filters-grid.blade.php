@@ -371,7 +371,7 @@ return fasle;
 		  gtag('config', 'UA-110391807-1');
 		</script>
     </head>
-    <body id="main" class="<?php echo (isset($slug)) ? strtolower($slug) : '' ?>">
+    <body id="main" class="here <?php echo (isset($slug)) ? strtolower($slug) : '' ?>">
         <div class="wrapper">
             <div class="container-fluid">
                 <div class="row">
