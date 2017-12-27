@@ -522,6 +522,60 @@
                                 </section>
                                 <div class="clearfix"></div>
                                 <!--Slider start here-->
+
+                                <div class="grid-page-category-slider-container">
+                                    @if(!empty($categoryslider))
+                                    <div class="bh-slideshow-thumbnail-split hidden-xs hidden-sm" data-uk-slideshow="{animation: 'slice-up', autoplay: true}" style="margin-bottom:20px;margin-top:0px;">
+                                        <ul style="" class="uk-slideshow uk-overlay-active">
+                                            @foreach($categoryslider as $slides)
+                                            <li class="ai-uk-animation" style="" @if($categoryslider[0]==$slides) class="uk-active" @endif aria-hidden="true">
+                                                @if($slides->slide_type == 'Image')
+                                                <div style="background-image: url({{ URL::to('uploads/slider_images/'.$slides->slider_img)}});" class="uk-cover-background uk-position-cover"></div>
+                                                @else
+                                                <div class="uk-cover-background uk-position-cover"><iframe class="video-bg" src="https://www.youtube.com/embed/{{$slides->slider_video}}?playlist={{$slides->slider_video}}&iv_load_policy=3&enablejsapi=1&disablekb=1&autoplay=1&controls=0&showinfo=0&rel=0&loop=1&wmode=transparent" frameborder="0" allowfullscreen="allowfullscreen"></iframe></div>
+                                                @endif
+                                                <canvas style="width: 100%; height: 100%; opacity: 0;"></canvas>
+                                                <div class="bh-slideshow-overlay uk-overlay-panel uk-overlay-fade uk-flex uk-flex-middle uk-flex-center">
+                                                    <div>
+                                                        <ul class="bh-slideshow-overlay-meta uk-subnav uk-subnav-line">
+                                                            <li>
+                                                                <span><a href="#" rel="category tag">{{$slides->slider_category}}</a></span>
+                                                            </li>
+                                                        </ul>
+                                                        <h3 class="bh-slideshow-overlay-title">
+                                                            <a href="#">{{$slides->slider_title}}</a>
+                                                        </h3>
+                                                        <div class="bh-slideshow-overlay-content">{{$slides->slider_description}}</div>
+                                                        @if($slides->slider_link != '#')
+                                                        <a class="uk-margin-top uk-button uk-button-primary" href="http://{{$slides->slider_link}}" title="Do it yourself">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                                <div class="bh-slideshow-thumbnail-split-preview uk-overlay-panel uk-overlay-right uk-overlay-background uk-overlay-fade uk-width-2-5 uk-width-xxlarge-1-3 uk-flex uk-flex-middle uk-flex-center uk-visible-large">
+                                                    <div>
+                                                        <ul class="bh-slideshow-thumbnail-split-preview-meta uk-subnav uk-subnav-line">
+                                                            <li>
+                                                                <span><a href="#" rel="category tag">{{$slides->slider_category}}</a></span>
+                                                            </li>
+                                                        </ul>
+                                                        <h3 class="bh-slideshow-thumbnail-split-preview-title">
+                                                            <a href="#">{{$slides->slider_title}}</a>
+                                                        </h3>
+                                                        <div class="bh-slideshow-thumbnail-split-preview-content">{{$slides->slider_description}}</div>
+                                                        @if($slides->slider_link != '#')
+                                                        <a class="uk-margin-top uk-button uk-button-primary" href="http://{{$slides->slider_link}}">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>
+                                                        @endif
+                                                    </div>
+                                                    <a href="javascript:void(0);" class="bh-slideshow-slidenav uk-slidenav uk-slidenav-previous" data-uk-slideshow-item="previous"></a>
+                                                    <a href="javascript:void(0);" class="bh-slideshow-slidenav uk-slidenav uk-slidenav-next" data-uk-slideshow-item="next"></a>
+                                                </div>
+                                            </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                    @endif
+                                </div>
+                                
                                 <div class="m_slider editorial_m_slider_landing ">
                                     <ul>
                                         @foreach($slider as $key => $slider_row)
