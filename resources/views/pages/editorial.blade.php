@@ -548,9 +548,9 @@
                 <header >
                 <a data-popup-id="login-forms-popup" href="#" class="video-popup-btn login_popup show-login-forms-btn"><i class="fa fa-lock " aria-hidden="true" ></i></a>
 				<div class="logo-padding-left editorial-logo-align">
-					<div>
+					<!--<div>
 						<a href="#" title="Add to Favorites" class="book-button" onclick="add_to_lightbox({{( array_key_exists('propimage', $propertyDetail)) ? $propertyDetail['propimage'][0]->id : ''}}, {{$propertyDetail['data']->id}});"><i class="fa fa-plus " aria-hidden="true" ></i> Add</a>
-					</div>
+					</div>-->
 					<div class="go-back-button-container">
 						<button class="go-back-button" onclick="goBack()">Go Back</button>
 						<div class="previous-page-screen-short-container">
@@ -787,8 +787,8 @@
                                                 <div class="clearfix"></div>
                                                 <button class="top-booking-bar-btn" type="submit">Book</button>
                                                 <button class="top-booking-bar-btn click-share-btn">Share</button>
-												<button  type="button" class="top-booking-bar-btn link-to-show active" onclick="hide_show_lightbox('show');">Favorites</button>
-												<button type="button" class="top-booking-bar-btn link-to-hide" onclick="hide_show_lightbox('hide');" style="display:none;">Hide Favorites</button>
+												<!--<button  type="button" class="top-booking-bar-btn link-to-show active" onclick="hide_show_lightbox('show');">Favorites</button>
+												<button type="button" class="top-booking-bar-btn link-to-hide" onclick="hide_show_lightbox('hide');" style="display:none;">Hide Favorites</button>-->
                                             </div>
                                         </div>
                                     </div>
