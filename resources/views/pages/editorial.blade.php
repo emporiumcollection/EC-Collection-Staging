@@ -269,8 +269,9 @@
                             .hotels-des-left-side {
                                 background: rgba(0,0,0,0.8);
                                 color: #fff;
+                                z-index: 0;
                                 font-family: geomanist-regular;
-                                padding: 139px 32px 36px 75px;
+                                padding: 20px 32px 264px 75px;
                             }
                             .editorial-hotel-detail-page button.go-back-button {
                                 background-color: \\;
@@ -322,7 +323,7 @@
                             .hotels-image-showcase-des-text > p {
                                 font-size: 15px;
                                 line-height: 30px;
-                                margin-top: 40px;
+                                margin-top: 195px;
                             }
                             .hotel-block-two-right-sec-align > p {
                                 color: white;
@@ -503,7 +504,13 @@
                                 font-family: ACaslonPro-Regular;
                                 letter-spacing: 3px;
                                 line-height: 35px;
+                                float: none;
+                                width: 50%;
                                 text-transform: uppercase;
+                                height: 400px;
+                                background: rgba(0,0,0,0.8);
+                                margin: 0;
+                                padding: 8% 0% 0% 6%;
                             }
                             
                             .hotels-showcase-right-side {
@@ -515,7 +522,8 @@
                                 background-size: cover;
                                 color: #fff;
                                 font-family: Geomanist-Regular;
-                                padding: 516px 49px 90px 30px;
+                                /* padding: 516px 49px 90px 30px; */
+                                margin-top: -400px;
                             }
                             
                             .image-showcase-below-big-text {
@@ -526,6 +534,13 @@
                                 margin-top: 36px;
                                 margin-top: 70px;
                                 text-transform: uppercase;
+                            }
+                            
+                            /* AIC Harman 27/12/2017 */
+                            
+                            .hotels-detail-heading-text {
+                                width: 100%;
+                                float: left;
                             }
                             
                             @import url('https://fonts.googleapis.com/css?family=Caveat');
@@ -930,10 +945,10 @@
                                 <div class="row">
                                     <div class="clearfix"></div>
                                     <div class="col-md-12 col-sm-12 disply-left-right-align">
+                                        <div class="hotels-detail-heading-text">
+                                            <p>{!! nl2br($propertyDetail['data']->detail_section2_title) !!}</p>
+                                        </div>
                                         <div class="col-md-6 col-sm-6 disply-left-right-inner hotels-des-left-side">
-                                            <div class="hotels-detail-heading-text">
-                                                <p>{!! nl2br($propertyDetail['data']->detail_section2_title) !!}</p>
-                                            </div>
                                             <div class="hotels-detail-description-text">
                                                 <p class="hotel-description-text">
                                                     {!! nl2br($propertyDetail['data']->detail_section2_description_box1)!!}
