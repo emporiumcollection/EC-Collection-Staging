@@ -458,12 +458,13 @@
                             
                             .restaurant-owner-sign {
                                 color: #ada077;
-                                font-family: 'Zeyada', cursive;
                                 font-size: 21px;
+                                font-family: ACaslonPro-Regular;
                                 margin-bottom: 20px;
                                 padding-left: 15px;
                                 text-transform: lowercase;
                                 line-height: 31px;
+                                /* font-style: italic; */
                                 text-align: left;
                                 opacity: 0.8;
                             }
@@ -599,7 +600,7 @@
                             .slider-side-text-tittle {
                                 color: #fff;
                                 font-family: geomanist-light;
-                                font-size: 38px;
+                                font-size: 32px;
                                 line-height: 39px;
                             }
                             
@@ -618,6 +619,304 @@
                                 font-family: Geomanist-light;
                             }
                             
+                            .editorial-page-booking-bar .top-booking-bar-btn, .editorial-hotel-detail-page .book-button, .editorial-hotel-detail-page .hotel-slider-price, .editorial-hotel-detail-page .spa-sec-book-an-appoinment-btn {
+                                background-color: #ABA07C;
+                                color: white;
+                                font-family: Geomanist-light;
+                            }
+                            
+                            .image-slider-container .editorial-images-count {
+                                color: #fff !important;
+                                float: left !important;
+                                font-size: 33px !important;
+                                margin-left: 22% !important;
+                                margin-top: -145px !important;
+                                position: relative;
+                                width: 22% !important;
+                            }
+                            
+                            .restaurant-sec-description-pannel1 p {
+                                color: #fff;
+                                font-family: Raleway-Light;
+                                font-size: 22px;
+                                line-height: 32px;
+                                margin: 0;
+                            }
+                            
+                            .restaorant-des-orange-text {
+                                color: #EFE5BC;
+                                margin-top: 25px;
+                                font-family: ACaslonPro-Regular;
+                                float: left;
+                                font-style: italic;
+                            }
+                            
+                            .restaurant-view-gallery-align .bar-view-gallery {
+                                color: #fff;
+                                font-size: 15px;
+                                font-family: ACaslonPro-Regular;
+                                font-style: italic;
+                                text-decoration: none;
+                            }
+                            
+                            .bar-info-text-haeding {
+                                font-size: 18px;
+                                text-transform: uppercase;
+                                color: white;
+                                font-family: ACaslonPro-Regular;
+                                line-height: 26px;
+                            }
+                            
+                            .bar-intro-text-bg {
+                                background-color: #283D3E;
+                                float: left;
+                                padding-top: 60px;
+                                color: black;
+                                width: 100%;
+                            }
+                            
+                            .bar-name-text-style {
+                                color: #fff;
+                                font-size: 13px;
+                                letter-spacing: 11px;
+                                text-transform: uppercase;
+                                text-align: right;
+                                font-family: Geomanist-light;
+                            }
+                            
+                            .bar-des-text {
+                                color: #fff;
+                                font-size: 12px;
+                                line-height: 24px;
+                                margin: 0;
+                                font-family: Geomanist-light;
+                                text-transform: none;
+                            }
+                            
+                            .img-width {
+                                width: 100%;
+                                background: rgba(0,0,0,0.8);
+                                opacity: 0.8;
+                            }
+                            
+                            .bar-bottom-des-pannel p {
+                                color: #fff;
+                                font-family: Geomanist-Light;
+                                font-size: 14px;
+                                line-height: 25px;
+                            }
+                            
+                            .spa-owner-sign {
+                                color: #ABA07C;
+                                font-size: 14px;
+                                font-family: ACaslonPro-Regular;
+                                text-align: left;
+                            }
+                            
+                            .spa-overlay-text span {
+                                padding-left: 0px !important;
+                                margin-top: 15px;
+                                float: none;
+                                font-family: Geomanist-light;
+                                font-style: normal;
+                            }
+
+                            .spa-overlay-text span {
+                                color: white;
+                                font-size: 14px;
+                                font-style: italic;
+                                font-family: acaslonpro-regular;
+                                font-weight: lighter;
+                                margin-top: -10px !important;
+                                display: block;
+                            }
+                            
+                            .spa-overlay-text {
+                                position: absolute;
+                                top: 0px;
+                                width: 645px;
+                            }
+                            
+                            .spa-overlay-text blockquote {
+                                background: #ABA07C;
+                                border: medium none;
+                                width: 518px;
+                                font-family: ACaslonPro-Regular;
+                                color: white;
+                                font-size: 22px;
+                                line-height: 39px;
+                                /* font-family: Geomanist-light; */
+                                margin: 0;
+                                padding: 10px 10px 9px 15px;
+                                text-transform: uppercase;
+                                font-weight: bold;
+                                margin-top: 0px;
+                            }
+                            
+                            .spa-sec-para-style {
+                                color: #b3b7ba;
+                                font-size: 18px;
+                                font-family: Geomanist-light;
+                            }
+                            
+                            .spa-content-quote {
+                                border: medium none;
+                                color: #dee0e1;
+                                font-family: acaslonpro-regular;
+                                font-size: 18px;
+                                /* font-style: italic; */
+                                line-height: 25px;
+                                margin-bottom: 0;
+                                margin-top: 20px;
+                                padding-left: 15px;
+                                font-family: Geomanist-light;
+                            }
+                            
+                            .view-gallery-border-left {
+                                border-bottom: 2px solid #fff;
+                                float: left;
+                                padding-top: 26px;
+                                width: 45px;
+                            }
+                            
+                            .spa-sec-view-gallery .bar-view-gallery {
+                                color: #fff;
+                                font-family: acaslonpro-regular;
+                                font-size: 15px;
+                                font-style: italic;
+                                text-decoration: none;
+                                margin-top: 20px;
+                                float: left;
+                            }
+                            
+                            .content-quote-author {
+                                color: #ABA07C;
+                                font-size: 12px;
+                                margin-top: 20px;
+                                margin-bottom: 0px;
+                                font-family: ACaslonPro-Regular;
+                            }
+                            
+                            
+                            h4.spa-bold-text {
+                                font-size: 12px;
+                                text-transform: lowercase;
+                                font-family: Geomanist-light;
+                                margin-bottom: 10px;
+                            }
+                            
+                           .spa-sec-para-style {
+                                color: #ABA07C;
+                                font-size: 14px;
+                                font-family: Geomanist-light;
+                                text-transform: lowercase;
+                            }
+                            
+                            a.spa-sec-book-an-appoinment-btn {
+                                margin-top: 20px !important;
+                            }
+                            
+                            .video-section-bg {
+                                background: rgba(37, 37, 37, 1);
+                            }
+                            
+                            .editoral-book-page-headings > h2 {
+                                color: #fff;
+                                display: inline-block;
+                                font-family: geomanist-light;
+                                font-size: 36px !important;
+                                margin: 32px auto 0;
+                                text-align: center;
+                                text-transform: none;
+                            }
+                            
+                            .editoral-book-page-headings > p {
+                                color: #ABA07C;
+                                font-family: Geomanist-Regular;
+                                margin-top: 16px;
+                            }
+                            
+                            .dates li input, .dates li select {
+                                background-color: transparent;
+                                background-image: url(../images/icon-dropdown.png);
+                                background-position: center bottom;
+                                background-repeat: no-repeat;
+                                background-size: 15px auto;
+                                text-align: center;
+                                border: medium none;
+                                font-size: 14px;
+                                margin-top: 25px;
+                                padding-bottom: 50px;
+                                width: 117px;
+                                margin-left: 0px;
+                                -webkit-appearance: none;
+                                -moz-appearance: none;
+                                appearance: none;
+                                -webkit-transition: border-color 150ms ease;
+                                align-items: center;
+                                padding-left: 16px;
+                            }
+                            
+                            .dates .editorail-heading {
+                                font-family: Geomanist-light;
+                                font-size: 16px;
+                                font-weight: bold;
+                                text-align: center;
+                                margin-left: 18px;
+                                text-transform: uppercase;
+                            }
+                            .booking-page-footer-section h6 {
+                                color: #fff;
+                                font-weight: bold;
+                                font-family: Geomanist-light;
+                                margin-bottom: 32px;
+                                text-transform: uppercase;
+                            }
+                            .booking-page-footer-section .white-border-bottom {
+                                border-bottom: 2px solid #fff;
+                                margin: 0 auto;
+                                width: 35px;
+                            }
+                            
+                            .hotels-logo h3.title a, .hotels-logo h3.title a:hover {
+                                color: #fff;
+                                text-transform: uppercase;
+                                font-size: 14px;
+                            }
+                            
+                            .editorial-hotel-detail-page hr.star-light {
+                                padding: 0;
+                                border: none;
+                                border-top: solid 1px;
+                                text-align: center;
+                                text-transform: uppercase;
+                                max-width: 100px;
+                                margin: 4px auto 0;
+                                border-radius: 10px;
+                            }
+                            
+                            .booking-form-bar-top {
+                                background-color: rgba(0, 0, 0, 0.85);
+                                float: left;
+                                opacity: unset !important;
+                                padding-left: 100px !important;
+                                padding-right: 8px !important;
+                                padding-top: 9px !important;
+                                position: absolute;
+                                top: 0;
+                                width: 100% !important;
+                            }
+                            
+                            .booking-page-footer-section span {
+                                color: #ABA07C;
+                                display: block;
+                                font-size: 17px;
+                                margin-bottom: 0.3em;
+                            }
+
+                            
+                            
+
 
                             
                             @import url('https://fonts.googleapis.com/css?family=Caveat');
@@ -1220,7 +1519,7 @@
                                                         <p class="bar-info-text-style1">- {{$propertyDetail['data']->bar_usp_person}}</p>
                                                     </div>
                                                     <div class="red-pannel-text-align">
-                                                        <div class="col-md-6 col-sm-6">
+                                                        <div class="col-md-10 col-sm-6">
                                                             <div class="row">
                                                                 <div class="bar-red-pannel-image">
                                                                     @if($propertyDetail['data']->bar_image2!='')
