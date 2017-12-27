@@ -25,7 +25,6 @@
                     Route::controller('contactqueries', 'ContactqueriesController');
                     Route::controller('lightboxorders', 'LightboxordersController');
                     Route::controller('presse', 'PresseController');
-                    Route::controller('shopcategories', 'ShopcategoriesController');
                     Route::controller('shop', 'ShopController');
                     Route::controller('shoporders', 'ShopordersController');
                     Route::controller('properties', 'PropertiesController');
@@ -36,5 +35,9 @@
                     Route::controller('seasons', 'SeasonsController');
                     Route::controller('reservations', 'ReservationsController');
                     Route::controller('bookings', 'BookingsController');
-					Route::controller('crmhotel', 'CrmhotelController');
+                    Route::controller('shopproductcategories', 'ShopproductcategoriesController');
+                    Route::controller('shopproducts', 'ShopproductsController');
+                    Route::controller('crmhotel', 'CrmhotelController');
+                    Route::controller('citycontent', 'CitycontentController');
+                    Route::controller('whybookwithus', 'WhybookwithusController');
                     ?>
