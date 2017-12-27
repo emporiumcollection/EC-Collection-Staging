@@ -1283,7 +1283,7 @@
 											<iframe width="100%" height="500px" src="https://www.youtube.com/embed/{{$vimeoid}}" frameborder="0" allowfullscreen></iframe>
 										@elseif($propertyDetail['data']->video_link_type=="vimeo")
 											{{--*/  $videolink = "https://player.vimeo.com/video/".$vimeoid; /*--}}
-											<iframe width="100%" height="500px" src="{{$videolink}}}" frameborder="0" allowfullscreen></iframe>
+											<iframe width="100%" height="500px" src="{{$videolink}}" frameborder="0" allowfullscreen></iframe>
 										@endif
 										
 									@endif
