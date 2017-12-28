@@ -547,7 +547,7 @@
             font-family: Geomanist-light;
         }
         
-        /* sidebar left css */
+        /* sidebar css */
         
         body:not(.adminimal-theme) {
                 background-color: #ada077;
@@ -629,19 +629,19 @@
             #block-ledunfly-menu-link span {
                 background-color: #ffffff;
             }
-            ul.menu li.little a,
-            ul.menu li ul li.little a {
+            ul.menusk li.little a,
+            ul.menusk li ul li.little a {
                 color: #ABA07C;
             }
-            ul.menu li a,
-            ul.menu li ul li a {
+            ul.menusk li a,
+            ul.menusk li ul li a {
                 color: #ABA07C;
             }
-            ul.menu li a:hover,
-            ul.menu li a:active,
-            ul.menu li.little a:hover,
-            ul.menu li.little a:active,
-            ul.menu li a.active {
+            ul.menusk li a:hover,
+            ul.menusk li a:active,
+            ul.menusk li.little a:hover,
+            ul.menusk li.little a:active,
+            ul.menusk li a.active {
                 color: #aba07ccc;
             }
             #block-system-main-menu .block-menu-text {
@@ -653,7 +653,7 @@
                 background: none;
                 color: #232323;
             }
-            ul.menu ul:before {
+            ul.menusk ul:before {
                 background-color: #ABA07C;
             }
             #block-system-main-menu .block-inner {
@@ -910,7 +910,7 @@
                                     <div id="block-system-main-menu" class="block block-system block-menu no-title odd block-count-6 block-region-sidebar-first block-main-menu" role="navigation">
                                         <div class="block-inner clearfix">
                                             <div class="block-content content" class="block-content content">
-                                                <ul class="menu clearfix">
+                                                <ul class="menusk clearfix">
                                                     <li class="first expanded menu-depth-1 menu-item-989">
                                                         <a href="#">Sleep</a>
                                                         <ul class="menu clearfix">
