@@ -1196,7 +1196,7 @@ return fasle;
 								var imagesPro = '';
 								imagesPro += '<div class="detail-tile-inner ai-haeding-bg-style">';
 								imagesPro += '<h3 class="popup-property-title">' + data.data.property_name + '</h3>';
-								imagesPro += '<p class="popup-property-desc" style="text-align:left;">' + data.data.about_property + '</p>';
+								imagesPro += '<p class="popup-property-desc" style="text-align:left; margin: 0 30px; font-size:14px;">' + data.data.about_property + '</p>';
 								imagesPro += '</div>';
 								imagesPro += '<ul class="clearfix frontpage-detail-tiles" id="frontpage-detail-tiles-detail">';
 								$(data.image).each(function(i, val){
