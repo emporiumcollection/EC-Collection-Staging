@@ -1117,6 +1117,27 @@ return fasle;
                     </div>
                     <div class="clearfix"></div>
 					
+					<div id="frontpage-layer-bj-detail" class="frontpage-layer-bj">
+						<div id="frontpage-layer-bj-header-wrapper">
+							<div id="frontpage-layer-bj-header">
+								<a href="#" id="frontpage-layer-bj-header-logo"> <img alt="" src="{{ asset('sximo/assets/images/design-location-logo.png')}}" class="img-responsive yachts-pop-up-logo"></a>
+							</div>
+							<span id="frontpage-layer-bj-header-close" class="frontpage-layer-bj-header-close"></span>
+						</div>
+						<div id="frontpage-layer-bj-content">
+							<div class="frontpage-detail-content-top">
+								<div class="frontpage-detail-content-top-link">
+									<div class="frontpage-detail-content-top-link">
+
+									</div>
+								</div>
+							</div>
+							<ul class="clearfix frontpage-detail-tiles" id="frontpage-detail-tiles-detail">
+
+							</ul>
+
+						</div>	
+					</div>
 					<form action="{{url()}}" method="get" id="gridbookform">
 						<input type="hidden" name="property" id="bookformproperty" value="" />
                         <input type="hidden" name="roomType" id="roomType" value="" />
@@ -1150,6 +1171,200 @@ return fasle;
 							}
 						}
                     </script>
+					<script>
+						$(document).ready(function () {
+
+						$('#quick_pager_header').mouseover(function () {
+						$('.flyoutBox').show();
+						});
+						$('.flyoutBox').mouseover(function () {
+						$('.flyoutBox').show();
+						});
+						$('#quick_pager_header').mouseout(function () {
+						$('.flyoutBox').hide();
+						});
+						$('.flyoutBox').mouseout(function () {
+						$('.flyoutBox').hide();
+						});
+						$(document).on('click', '.detail_view', function(){
+						$('#frontpage-layer-bj').fadeOut('slow');
+						$('#frontpage-detail-tile').html('');
+						$.ajax({
+						url: "{{ URL::to('getproperty')}}" + '/' + $(this).attr('rel'),
+								type: "get",
+								success: function(data){
+								var imagesPro = '';
+								imagesPro += '<li class="detail-tile ai-pop-detail-form col-sm-6 col-xs-12 col-md-6 col-lg-4" style="visibility:visible;background:#000;">';
+								imagesPro += '<div class="detail-tile-inner ai-haeding-bg-style">';
+								imagesPro += '<h3 class="popup-property-title">' + data.data.property_name + '</h3>';
+								imagesPro += '<p class="popup-property-desc">' + data.data.about_property + '</p>';
+								imagesPro += '</div>';
+								imagesPro += '<div class="request_prop">';
+								imagesPro += '<h3 class="popup-property-title">Request Property</h3>';
+								imagesPro += '<div id="formerrors" class="formerrors"></div>';
+								imagesPro += '<form url="#"  id="enquiryform" class="form-horizontal" method="post">';
+								imagesPro += '<input type="hidden" name="property_id" value="' + data.data.id + '">';
+								imagesPro += '<input type="hidden" name="property_name" value="' + data.data.property_name + '">';
+								imagesPro += '<div class="col-md-12">';
+								imagesPro += '<fieldset>';
+								imagesPro += '<div class="row">';
+								imagesPro += '<div class="calender-main-bg">';
+								imagesPro += '<h2>Check Availability<br><span> & Reserve</span></h2>';
+								imagesPro += '<p>Find the best accomodation for your upcoming stay.<a> Why book with us?</a></p>';
+								imagesPro += '<div class="calender-input">';
+								imagesPro += '<div id="book-hotel1" class="datePicker- dateFrom-" >Check In<span class="calender-icon"><i class="fa fa-calendar" aria-hidden="true"></i></span></div>';
+								imagesPro += '</div>';
+								imagesPro += '<div class="calender-input">';
+								imagesPro += '<div id="book-hotel2" class="datePicker- dateFrom-" >Check Out<span class="calender-icon"><i class="fa fa-calendar" aria-hidden="true"></i></span></div>';
+								imagesPro += '</div>';
+								imagesPro += '<div class="dropdown">';
+								imagesPro += '<div class="members-list"><span id="adults-val">2</span> Adults, <span id="childern-val">0</span> Children<span class="right-down-arrow"><i class="fa fa-angle-down" aria-hidden="true"></i></span></div>';
+								imagesPro += '<ul class="members-drop-list">';
+								imagesPro += '<li>';
+								imagesPro += '<label>Adult</label>';
+								imagesPro += '<input id="adult-input-value" class="input-right" type="number" value="2"  min="1" max="5">';
+								imagesPro += '</li>';
+								imagesPro += '<li>';
+								imagesPro += '<label>Children</label>';
+								imagesPro += '<input id="childerns-input-value" class="input-right" type="number" value="0"  min="1" max="5">';
+								imagesPro += '</li>';
+								imagesPro += '</ul>';
+								imagesPro += '</div>';
+								imagesPro += '<button class="check-hotel-btn">Check Availability</button>';
+								imagesPro += '</div>';
+								imagesPro += '</div>';
+								imagesPro += '<div class="row MarBot10">';
+								imagesPro += '<div class="col-md-12">';
+								imagesPro += '<div class="row">';
+								imagesPro += '<input required="required" name="name" type="text" value="" placeholder="Your First Name & Last Name" required="required">';
+								imagesPro += '</div>';
+								imagesPro += '</div>';
+								imagesPro += '<div class="col-md-1">';
+								imagesPro += '<div class="row">';
+								imagesPro += '<span class="asterix"> * </span>';
+								imagesPro += '</div>';
+								imagesPro += '</div>';
+								imagesPro += '</div>';
+								imagesPro += '<div class="row MarBot10">';
+								imagesPro += '<div class="col-md-12">';
+								imagesPro += '<div class="row">';
+								imagesPro += '<input required="required" name="email" type="email" value="" placeholder="Your email address" required="required">';
+								imagesPro += '</div>';
+								imagesPro += '</div>';
+								imagesPro += '<div class="col-md-1">';
+								imagesPro += '<div class="row">';
+								imagesPro += '<span class="asterix"> * </span>';
+								imagesPro += '</div>';
+								imagesPro += '</div>';
+								imagesPro += '</div>';
+								imagesPro += '<div class="row MarBot10">';
+								imagesPro += '<div class="col-md-12">';
+								imagesPro += '<div class="row">';
+								imagesPro += '<input required="required" name="phone" type="text" value="" placeholder="Your phone number" required="required">';
+								imagesPro += '</div>';
+								imagesPro += '</div>';
+								imagesPro += '<div class="col-md-1">';
+								imagesPro += '<div class="row">';
+								imagesPro += '<span class="asterix"> * </span>';
+								imagesPro += '</div>';
+								imagesPro += '</div>';
+								imagesPro += '</div>';
+								imagesPro += '<div class="row MarBot10">';
+								imagesPro += '<div class="col-md-12">';
+								imagesPro += '<div class="row">';
+								imagesPro += '<textarea class="ai-textarea-width" name="notes" rows="5" cols="20" placeholder="Special Requests"></textarea>';
+								imagesPro += '</div>';
+								imagesPro += '</div>';
+								imagesPro += '</div>';
+								imagesPro += '<div class="row MarBot10">';
+								imagesPro += '<div class="col-sm-12">';
+								imagesPro += '<div class="row">';
+								imagesPro += '<button type="button" class="btn btn-default ai-yacht-form-submit-btn" onclick="submit_property_request();">Send</button>';
+								imagesPro += '</div>';
+								imagesPro += '</div>';
+								imagesPro += ' </div>';
+								imagesPro += '</fieldset>';
+								imagesPro += '</div>';
+								imagesPro += '</form>';
+								imagesPro += '</div>';
+								imagesPro += '</li>';
+								$(data.image).each(function(i, val){
+								//console.log(val);
+								imagesPro += '<li class="detail-tile col-sm-6 col-xs-12 col-md-6 col-lg-4" style="visibility:visible">';
+								imagesPro += '<div class="detail-tile-inner">';
+								imagesPro += '<img src="' + val.imgsrc + val.file_name + '"/>';
+								/*imagesPro+='<a href="#" id="LearnMoreBtn1" onclick="add_to_lightbox('+val.id+','+data.data.id+');">Add to lightbox</a>';*/
+								imagesPro += '</div>';
+								imagesPro += '</li>';
+								});
+								$('#frontpage-detail-tiles-detail').html(imagesPro);
+								
+									eval($('.dropdown').each(function () {
+										var $dropdown = $(this);
+										$(".members-list", $dropdown).click(function (e) {
+											e.preventDefault();
+											$div = $(".members-drop-list", $dropdown);
+											$div.toggle();
+											$(".members-drop-list").not($div).hide();
+											return false;
+										});
+									}));
+
+									eval($("#adult-input-value").change(function () {
+										var adults = $(this).val();
+										$('#adults-val').html(adults);
+									}));
+
+									eval($("#childerns-input-value").change(function () {
+										var childerns = $(this).val();
+										$('#childern-val').html(childerns);
+									}));
+									
+									eval($('#book-hotel1').dateRangePicker({
+										startDate: "2017-01-11",
+										separator: ' to ',
+										getValue: function () {
+										if ($('#book-hotel1').val() && $('#book-hotel2').val())
+											return $('#book-hotel1').val() + ' to ' + $('#book-hotel2').val();
+										else
+											return '';
+										},
+										setValue: function (s, s1, s2) {
+											$('#book-hotel1').val(s1);
+											$('#book-hotel2').val(s2);
+										}
+									}));
+									eval($('#book-hotel2').dateRangePicker({
+										startDate: "2017-01-11",
+										separator: ' to ',
+										getValue: function () {
+										if ($('#book-hotel1').val() && $('#book-hotel2').val())
+											return $('#book-hotel1').val() + ' to ' + $('#book-hotel2').val();
+										else
+											return '';
+										},
+										setValue: function (s, s1, s2) {
+											$('#book-hotel1').val(s1);
+											$('#book-hotel2').val(s2);
+										}
+									}));
+								
+								}
+						});
+						$('#frontpage-layer-bj-detail').fadeIn('slow');
+						$('#fixed_wrapper').hide();
+						$('html').addClass('hidescroll');
+						$('body').addClass('layerloaded');
+						return false;
+						});
+						$('.frontpage-layer-bj-header-close').click(function () {
+						$('.frontpage-layer-bj').fadeOut('slow');
+						$('#fixed_wrapper').show();
+						$('html').removeClass('hidescroll');
+						});
+						});
+					</script>
+					
                     <script>
                         $(document).ready(function () {
                         $(document).on('click', '.top-bar-filters li.select-all', function () {
@@ -1746,222 +1961,7 @@ return fasle;
                         @include('layouts/elliot/ai_footer_social')    
                     </div>
 					
-					<script>
-						$(document).ready(function () {
-
-						$('#quick_pager_header').mouseover(function () {
-						$('.flyoutBox').show();
-						});
-						$('.flyoutBox').mouseover(function () {
-						$('.flyoutBox').show();
-						});
-						$('#quick_pager_header').mouseout(function () {
-						$('.flyoutBox').hide();
-						});
-						$('.flyoutBox').mouseout(function () {
-						$('.flyoutBox').hide();
-						});
-						$(document).on('click', '.detail_view', function(){
-						$('#frontpage-layer-bj').fadeOut('slow');
-						$('#frontpage-detail-tile').html('');
-						$.ajax({
-						url: "{{ URL::to('getproperty')}}" + '/' + $(this).attr('rel'),
-								type: "get",
-								success: function(data){
-								var imagesPro = '';
-								imagesPro += '<li class="detail-tile ai-pop-detail-form col-sm-6 col-xs-12 col-md-6 col-lg-4" style="visibility:visible;background:#000;">';
-								imagesPro += '<div class="detail-tile-inner ai-haeding-bg-style">';
-								imagesPro += '<h3 class="popup-property-title">' + data.data.property_name + '</h3>';
-								imagesPro += '<p class="popup-property-desc">' + data.data.about_property + '</p>';
-								imagesPro += '</div>';
-								imagesPro += '<div class="request_prop">';
-								imagesPro += '<h3 class="popup-property-title">Request Property</h3>';
-								imagesPro += '<div id="formerrors" class="formerrors"></div>';
-								imagesPro += '<form url="#"  id="enquiryform" class="form-horizontal" method="post">';
-								imagesPro += '<input type="hidden" name="property_id" value="' + data.data.id + '">';
-								imagesPro += '<input type="hidden" name="property_name" value="' + data.data.property_name + '">';
-								imagesPro += '<div class="col-md-12">';
-								imagesPro += '<fieldset>';
-								imagesPro += '<div class="row">';
-								imagesPro += '<div class="calender-main-bg">';
-								imagesPro += '<h2>Check Availability<br><span> & Reserve</span></h2>';
-								imagesPro += '<p>Find the best accomodation for your upcoming stay.<a> Why book with us?</a></p>';
-								imagesPro += '<div class="calender-input">';
-								imagesPro += '<div id="book-hotel1" class="datePicker- dateFrom-" >Check In<span class="calender-icon"><i class="fa fa-calendar" aria-hidden="true"></i></span></div>';
-								imagesPro += '</div>';
-								imagesPro += '<div class="calender-input">';
-								imagesPro += '<div id="book-hotel2" class="datePicker- dateFrom-" >Check Out<span class="calender-icon"><i class="fa fa-calendar" aria-hidden="true"></i></span></div>';
-								imagesPro += '</div>';
-								imagesPro += '<div class="dropdown">';
-								imagesPro += '<div class="members-list"><span id="adults-val">2</span> Adults, <span id="childern-val">0</span> Children<span class="right-down-arrow"><i class="fa fa-angle-down" aria-hidden="true"></i></span></div>';
-								imagesPro += '<ul class="members-drop-list">';
-								imagesPro += '<li>';
-								imagesPro += '<label>Adult</label>';
-								imagesPro += '<input id="adult-input-value" class="input-right" type="number" value="2"  min="1" max="5">';
-								imagesPro += '</li>';
-								imagesPro += '<li>';
-								imagesPro += '<label>Children</label>';
-								imagesPro += '<input id="childerns-input-value" class="input-right" type="number" value="0"  min="1" max="5">';
-								imagesPro += '</li>';
-								imagesPro += '</ul>';
-								imagesPro += '</div>';
-								imagesPro += '<button class="check-hotel-btn">Check Availability</button>';
-								imagesPro += '</div>';
-								imagesPro += '</div>';
-								imagesPro += '<div class="row MarBot10">';
-								imagesPro += '<div class="col-md-12">';
-								imagesPro += '<div class="row">';
-								imagesPro += '<input required="required" name="name" type="text" value="" placeholder="Your First Name & Last Name" required="required">';
-								imagesPro += '</div>';
-								imagesPro += '</div>';
-								imagesPro += '<div class="col-md-1">';
-								imagesPro += '<div class="row">';
-								imagesPro += '<span class="asterix"> * </span>';
-								imagesPro += '</div>';
-								imagesPro += '</div>';
-								imagesPro += '</div>';
-								imagesPro += '<div class="row MarBot10">';
-								imagesPro += '<div class="col-md-12">';
-								imagesPro += '<div class="row">';
-								imagesPro += '<input required="required" name="email" type="email" value="" placeholder="Your email address" required="required">';
-								imagesPro += '</div>';
-								imagesPro += '</div>';
-								imagesPro += '<div class="col-md-1">';
-								imagesPro += '<div class="row">';
-								imagesPro += '<span class="asterix"> * </span>';
-								imagesPro += '</div>';
-								imagesPro += '</div>';
-								imagesPro += '</div>';
-								imagesPro += '<div class="row MarBot10">';
-								imagesPro += '<div class="col-md-12">';
-								imagesPro += '<div class="row">';
-								imagesPro += '<input required="required" name="phone" type="text" value="" placeholder="Your phone number" required="required">';
-								imagesPro += '</div>';
-								imagesPro += '</div>';
-								imagesPro += '<div class="col-md-1">';
-								imagesPro += '<div class="row">';
-								imagesPro += '<span class="asterix"> * </span>';
-								imagesPro += '</div>';
-								imagesPro += '</div>';
-								imagesPro += '</div>';
-								imagesPro += '<div class="row MarBot10">';
-								imagesPro += '<div class="col-md-12">';
-								imagesPro += '<div class="row">';
-								imagesPro += '<textarea class="ai-textarea-width" name="notes" rows="5" cols="20" placeholder="Special Requests"></textarea>';
-								imagesPro += '</div>';
-								imagesPro += '</div>';
-								imagesPro += '</div>';
-								imagesPro += '<div class="row MarBot10">';
-								imagesPro += '<div class="col-sm-12">';
-								imagesPro += '<div class="row">';
-								imagesPro += '<button type="button" class="btn btn-default ai-yacht-form-submit-btn" onclick="submit_property_request();">Send</button>';
-								imagesPro += '</div>';
-								imagesPro += '</div>';
-								imagesPro += ' </div>';
-								imagesPro += '</fieldset>';
-								imagesPro += '</div>';
-								imagesPro += '</form>';
-								imagesPro += '</div>';
-								imagesPro += '</li>';
-								$(data.image).each(function(i, val){
-								//console.log(val);
-								imagesPro += '<li class="detail-tile col-sm-6 col-xs-12 col-md-6 col-lg-4" style="visibility:visible">';
-								imagesPro += '<div class="detail-tile-inner">';
-								imagesPro += '<img src="' + val.imgsrc + val.file_name + '"/>';
-								/*imagesPro+='<a href="#" id="LearnMoreBtn1" onclick="add_to_lightbox('+val.id+','+data.data.id+');">Add to lightbox</a>';*/
-								imagesPro += '</div>';
-								imagesPro += '</li>';
-								});
-								$('#frontpage-detail-tiles-detail').html(imagesPro);
-								
-									eval($('.dropdown').each(function () {
-										var $dropdown = $(this);
-										$(".members-list", $dropdown).click(function (e) {
-											e.preventDefault();
-											$div = $(".members-drop-list", $dropdown);
-											$div.toggle();
-											$(".members-drop-list").not($div).hide();
-											return false;
-										});
-									}));
-
-									eval($("#adult-input-value").change(function () {
-										var adults = $(this).val();
-										$('#adults-val').html(adults);
-									}));
-
-									eval($("#childerns-input-value").change(function () {
-										var childerns = $(this).val();
-										$('#childern-val').html(childerns);
-									}));
-									
-									eval($('#book-hotel1').dateRangePicker({
-										startDate: "2017-01-11",
-										separator: ' to ',
-										getValue: function () {
-										if ($('#book-hotel1').val() && $('#book-hotel2').val())
-											return $('#book-hotel1').val() + ' to ' + $('#book-hotel2').val();
-										else
-											return '';
-										},
-										setValue: function (s, s1, s2) {
-											$('#book-hotel1').val(s1);
-											$('#book-hotel2').val(s2);
-										}
-									}));
-									eval($('#book-hotel2').dateRangePicker({
-										startDate: "2017-01-11",
-										separator: ' to ',
-										getValue: function () {
-										if ($('#book-hotel1').val() && $('#book-hotel2').val())
-											return $('#book-hotel1').val() + ' to ' + $('#book-hotel2').val();
-										else
-											return '';
-										},
-										setValue: function (s, s1, s2) {
-											$('#book-hotel1').val(s1);
-											$('#book-hotel2').val(s2);
-										}
-									}));
-								
-								}
-						});
-						$('#frontpage-layer-bj-detail').fadeIn('slow');
-						$('#fixed_wrapper').hide();
-						$('html').addClass('hidescroll');
-						$('body').addClass('layerloaded');
-						return false;
-						});
-						$('.frontpage-layer-bj-header-close').click(function () {
-						$('.frontpage-layer-bj').fadeOut('slow');
-						$('#fixed_wrapper').show();
-						$('html').removeClass('hidescroll');
-						});
-						});
-					</script>
-					<div id="frontpage-layer-bj-detail" class="frontpage-layer-bj">
-						<div id="frontpage-layer-bj-header-wrapper">
-							<div id="frontpage-layer-bj-header">
-								<a href="#" id="frontpage-layer-bj-header-logo"> <img alt="" src="{{ asset('sximo/assets/images/design-location-logo.png')}}" class="img-responsive yachts-pop-up-logo"></a>
-							</div>
-							<span id="frontpage-layer-bj-header-close" class="frontpage-layer-bj-header-close"></span>
-						</div>
-						<div id="frontpage-layer-bj-content">
-							<div class="frontpage-detail-content-top">
-								<div class="frontpage-detail-content-top-link">
-									<div class="frontpage-detail-content-top-link">
-
-									</div>
-								</div>
-							</div>
-							<ul class="clearfix frontpage-detail-tiles" id="frontpage-detail-tiles-detail">
-
-							</ul>
-
-						</div>	
-					</div>
-
-                   <?php // @include('layouts/elliot/ai_lightbox_popups') ?>
+					<?php // @include('layouts/elliot/ai_lightbox_popups') ?>
 
     </body>
 </html>
