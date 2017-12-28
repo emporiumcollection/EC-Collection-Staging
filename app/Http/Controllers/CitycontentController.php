@@ -142,7 +142,8 @@ class CitycontentController extends Controller {
 		$rules = $this->validateForm();
 		$validator = Validator::make($request->all(), $rules);	
 		if ($validator->passes()) {
-			$data = $this->validatePost('tb_citycontent');
+			//$data = $this->validatePost('tb_citycontent');
+			$data = array();
 			$data['title'] = implode(',',$request->input('title'));
 			$data['sub_title'] = $request->input('sub_title');
 			$data['alias'] = $request->input('title');
