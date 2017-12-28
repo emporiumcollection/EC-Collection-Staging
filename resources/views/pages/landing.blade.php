@@ -6,12 +6,12 @@
         <title>Emporium-Voyage</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <link href="../../../public/sximo/assets/css/homepage41e7.css" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('sximo/assets/css/homepage41e7.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/landing-page-styles.css')}}" rel="stylesheet" type="text/css"/>
-        <link href="../../../public/sximo/assets/css/menu41e7.css" rel="stylesheet" type="text/css"/>
-        <link href="../../../public/sximo/assets/css/responsive.custom41e7.css" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('sximo/assets/css/menu41e7.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('sximo/assets/css/responsive.custom41e7.css')}}" rel="stylesheet" type="text/css"/>
         
-        <link href="../../../public/sximo/assets/css/style-ai.css" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('sximo/assets/css/style-ai.css')}}" rel="stylesheet" type="text/css"/>
         
         <script src="{{ asset('sximo/assets/js/jquery-2.1.0.min.js')}}" type="text/javascript"></script>
         <script type="text/javascript" src="{{ asset('sximo/assets/js/uikit.js')}}"></script>
@@ -28,16 +28,16 @@
         <script type="text/javascript" src="<?php echo asset('sximo/assets/js/slideshow.js'); ?>"></script>
         
         <!-- AIC sidebar js -->
-        <script src="../../../public/sximo/assets/js/animation.gsap41e7.js" type="text/javascript"></script>
-        <script src="../../../public/sximo/assets/js/custm.js" type="text/javascript"></script>
-        <script src="../../../public/sximo/assets/js/details_loader41e7.js" type="text/javascript"></script>
-        <script src="../../../public/sximo/assets/js/details-slider41e7.js" type="text/javascript"></script>
+        <script src="{{ asset('sximo/assets/js/animation.gsap41e7.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('sximo/assets/js/custm.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('sximo/assets/js/details_loader41e7.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('sximo/assets/js/details-slider41e7.js')}}" type="text/javascript"></script>
         <!--<script src="../../../public/sximo/assets/js/jquery_1.js" type="text/javascript"></script>-->
-        <script src="../../../public/sximo/assets/js/jquery.once.js" type="text/javascript"></script>
-        <script src="../../../public/sximo/assets/js/menu41e7.js" type="text/javascript"></script>
-        <script src="../../../public/sximo/assets/js/queryloader2.min41e7.js" type="text/javascript"></script>
-        <script src="../../../public/sximo/assets/js/ScrollMagic41e7.js" type="text/javascript"></script>
-        <script src="../../../public/sximo/assets/js/TweenMax.min41e7.js" type="text/javascript"></script>
+        <script src="{{ asset('sximo/assets/js/jquery.once.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('sximo/assets/js/menu41e7.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('sximo/assets/js/queryloader2.min41e7.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('sximo/assets/js/ScrollMagic41e7.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('sximo/assets/js/TweenMax.min41e7.js')}}" type="text/javascript"></script>
         
         <style>
             #search-navbar.search-navbar-destination-search-box {
