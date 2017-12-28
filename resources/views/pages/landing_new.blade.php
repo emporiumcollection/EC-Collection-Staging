@@ -30,10 +30,8 @@
         
         <!-- AIC sidebar js -->
         <script src="{{ asset('sximo/assets/js/jquery_1.js')}}" type="text/javascript"></script>
-        <script src="{{ asset('sximo/assets/js/jquery.once.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/custm.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/TweenMax.min41e7.js')}}" type="text/javascript"></script>
-        <script src="{{ asset('sximo/assets/js/animation.gsap41e7.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/menu41e7.js')}}" type="text/javascript"></script>
         <style>
             #search-navbar.search-navbar-destination-search-box {
@@ -741,7 +739,7 @@
                 background: #232323;
                 color: #ffffff;
             }
-            <!--html {
+/*            html {
                 font-size: 100%;
                 -webkit-text-size-adjust: 100%;
                 line-height: 1.5;
@@ -755,7 +753,7 @@
                 -webkit-font-smoothing: antialiased;
                 font-smoothing: antialiased;
                 text-rendering: optimizeLegibility\9;
-            }-->
+            }*/
 
             figure {
                 margin: 0;
