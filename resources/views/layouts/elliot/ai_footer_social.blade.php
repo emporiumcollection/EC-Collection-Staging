@@ -38,7 +38,7 @@
     }
     
     .VegasFooterMiddle form {
-        margin-left: 58 px;
+        margin-left: 58px;
     }
     
     .marginBottom20 {
