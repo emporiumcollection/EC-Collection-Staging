@@ -316,17 +316,17 @@
 													<div class="container">
 														<div class="restaurant-sec-pannel-main-align">
 															<div class="ai_restaurant-name">
-																<h2>{{$propertiesArr[0]['data']->restaurant_title}}</h2>
+																<h2>{{$propertiesArr[0]->restaurant_title}}</h2>
 																<span class="restaurant-sec-hotel-name-below-small-text">Get Inspired</span>
 															</div>
 															<div class="restaurant-sec-description-pannel1">
-																<p>{{$propertiesArr[0]['data']->restaurant_usp_text}}</p>
-																<p class="restaurant-orange-creative-text-align"><span class="restaorant-des-orange-text">-{{$propertiesArr[0]['data']->restaurant_usp_person}}</span></p>
+																<p>{{$propertiesArr[0]->restaurant_usp_text}}</p>
+																<p class="restaurant-orange-creative-text-align"><span class="restaorant-des-orange-text">-{{$propertiesArr[0]->restaurant_usp_person}}</span></p>
 															</div>
 															<div class="clearfix"></div>
 															<div class="restaurant-des-pannel-image1">
-																@if($propertiesArr[0]['data']->restaurant_image!='')
-																<img class="img-responsive img-width" src="{{ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$propertiesArr[0]['data']->restaurant_image),100,300,null)}}" alt=""/>  
+																@if($propertiesArr[0]->restaurant_image!='')
+																<img class="img-responsive img-width" src="{{ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$propertiesArr[0]->restaurant_image),100,300,null)}}" alt=""/>  
 																@endif
 															</div>
 															<div class="clearfix"></div>
@@ -334,19 +334,19 @@
 																<div class="col-md-4 col-sm-4">
 																	<div class="row">
 																		<div class="restaurant-sec-description-pannel2">
-																			<p class="restaurtant-bar-des-para-style">{!! (strlen($propertiesArr[0]['data']->restaurant_desciription) > 350) ? nl2br(e(substr($propertiesArr[0]['data']->restaurant_desciription,0,350))).'...' : nl2br(e($propertiesArr[0]['data']->restaurant_desciription)) !!}</p>
-																			<div class="restaurant-owner-sign">{{$propertiesArr[0]['data']->restaurant_usp_person}}</div>
+																			<p class="restaurtant-bar-des-para-style">{!! (strlen($propertiesArr[0]->restaurant_desciription) > 350) ? nl2br(e(substr($propertiesArr[0]->restaurant_desciription,0,350))).'...' : nl2br(e($propertiesArr[0]->restaurant_desciription)) !!}</p>
+																			<div class="restaurant-owner-sign">{{$propertiesArr[0]->restaurant_usp_person}}</div>
 																		</div>
 																	</div>
 																</div>
 																<div class="col-md-5 col-sm-5">
 																	<div class="row restaurant-image-height-align">
 																		<div class="restaurant-des-pannel-image2 restaurant-image-height-align">
-																			@if($propertiesArr[0]['data']->restaurant_image2!='')
-																			<img class="img-responsive img-width" src="{{ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$propertiesArr[0]['data']->restaurant_image2),100,500,null)}}" alt=""/>  
+																			@if($propertiesArr[0]->restaurant_image2!='')
+																			<img class="img-responsive img-width" src="{{ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$propertiesArr[0]->restaurant_image2),100,500,null)}}" alt=""/>  
 																			@else
-																				@if($propertiesArr[0]['data']->restaurant_image!='')
-																				<img class="img-responsive img-width" src="{{ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$propertiesArr[0]['data']->restaurant_image),100,500,null)}}" alt=""/>  
+																				@if($propertiesArr[0]->restaurant_image!='')
+																				<img class="img-responsive img-width" src="{{ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$propertiesArr[0]->restaurant_image),100,500,null)}}" alt=""/>  
 																				@endif
 																			@endif
 																		</div>
@@ -357,7 +357,7 @@
 																		@if($restaurant_gallery>0)
 																			<div class="restaurant-view-gallery-align">
 																				<span class="view-gallery-border-left"></span>
-																				<a href="javascript:void(0);"   class="detail_view gallerysty bar-view-gallery" rel="{{$propertiesArr[0]['data']->id}}" rel2="Restrurants Gallery Images">View Gallery</a>
+																				<a href="javascript:void(0);"   class="detail_view gallerysty bar-view-gallery" rel="{{$propertiesArr[0]->id}}" rel2="Restrurants Gallery Images">View Gallery</a>
 																			</div>
 																		@endif
 																	</div>
@@ -404,7 +404,7 @@
 																@foreach($propertiesArr as $property)
 																	
 																	<div class="form-group post-filter-inputs">
-																		<label><a href="{{URL::to('')}}">{{$property['data']->property_name}}</a></label>
+																		<label><a href="{{URL::to('')}}">{{$property->property_name}}</a></label>
 																	</div>
 																	
 																@endforeach
