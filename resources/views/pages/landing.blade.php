@@ -913,7 +913,7 @@
                                                 <ul class="menusk clearfix">
                                                     <li class="first expanded menu-depth-1 menu-item-989">
                                                         <a href="#">Sleep</a>
-                                                        <ul class="menu clearfix">
+                                                        <ul class="menusk1 clearfix">
                                                             <li class="first leaf menu-depth-2 menu-item-990">
                                                                 <a href="#">Suite Présidentielle</a>
                                                             </li>
@@ -942,7 +942,7 @@
                                                     </li>
                                                     <li class="expanded menu-depth-1 menu-item-996">
                                                         <a href="#">Savour</a>
-                                                        <ul class="menu clearfix">
+                                                        <ul class="menusk1 clearfix">
                                                     <li class="first leaf menu-depth-2 menu-item-998">
                                                         <a href="#">Le Roof</a>
                                                     </li><li class="leaf menu-depth-2 menu-item-999">
@@ -955,7 +955,7 @@
                                                     </li>
                                                     <li class="expanded menu-depth-1 menu-item-1000">
                                                         <a href="#">Relax</a>
-                                                        <ul class="menu clearfix">
+                                                        <ul class="menusk1 clearfix">
                                                             <li class="first leaf menu-depth-2 menu-item-1001">
                                                                 <a href="#">Spa</a>
                                                             </li><li class="leaf menu-depth-2 menu-item-1002">
@@ -968,7 +968,7 @@
                                                     </li>
                                                     <li class="expanded menu-depth-1 menu-item-1004">
                                                         <a href="#">Discover</a>
-                                                        <ul class="menu clearfix">
+                                                        <ul class="menusk1 clearfix">
                                                             <li class="first leaf menu-depth-2 menu-item-1005">
                                                                 <a href="#">Cannes</a></li>
                                                             <li class="last leaf menu-depth-2 menu-item-1006">
@@ -981,7 +981,7 @@
                                                     </li>
                                                     <li class="expanded menu-depth-1 menu-item-1123">
                                                         <a href="#">Offres</a>
-                                                        <ul class="menu clearfix">
+                                                        <ul class="menusk1 clearfix">
                                                             <li class="first leaf menu-depth-2 menu-item-1014">
                                                                 <a href="#">Offres Sleep</a>
                                                             </li><li class="last leaf menu-depth-2 menu-item-1125">
