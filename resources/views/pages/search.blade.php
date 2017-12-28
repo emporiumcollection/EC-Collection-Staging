@@ -1666,6 +1666,27 @@ url: "{{ URL::to('filter_search_destionation')}}",
                         </div>
                     </div> 
                     <div class="clearfix"></div>
+					<div id="frontpage-layer-bj-detail" class="frontpage-layer-bj">
+						<div id="frontpage-layer-bj-header-wrapper">
+							<div id="frontpage-layer-bj-header">
+								<a href="#" id="frontpage-layer-bj-header-logo"> <img alt="" src="{{ asset('sximo/assets/images/design-location-logo.png')}}" class="img-responsive yachts-pop-up-logo"></a>
+							</div>
+							<span id="frontpage-layer-bj-header-close" class="frontpage-layer-bj-header-close"></span>
+						</div>
+						<div id="frontpage-layer-bj-content">
+							<div class="frontpage-detail-content-top">
+								<div class="frontpage-detail-content-top-link">
+									<div class="frontpage-detail-content-top-link">
+
+									</div>
+								</div>
+							</div>
+							<div id="placepopupcontent">
+							
+							</div>
+							
+						</div>	
+					</div>
                     <form action="{{url()}}" method="get" id="gridbookform">
 						<input type="hidden" name="property" id="bookformproperty" value="" />
                         <input type="hidden" name="roomType" id="roomType" value="" />
@@ -1757,6 +1778,185 @@ url: "{{ URL::to('filter_search_destionation')}}",
 							});
 						});
                     </script>
+					<script>
+						$(document).ready(function () {
+
+						$('#quick_pager_header').mouseover(function () {
+						$('.flyoutBox').show();
+						});
+						$('.flyoutBox').mouseover(function () {
+						$('.flyoutBox').show();
+						});
+						$('#quick_pager_header').mouseout(function () {
+						$('.flyoutBox').hide();
+						});
+						$('.flyoutBox').mouseout(function () {
+						$('.flyoutBox').hide();
+						});
+						$(document).on('click', '.detail_view', function(){
+						$('#frontpage-layer-bj').fadeOut('slow');
+						$('#frontpage-detail-tile').html('');
+						$.ajax({
+						url: "{{ URL::to('getproperty')}}" + '/' + $(this).attr('rel'),
+								type: "get",
+								success: function(data){
+								var imagesPro = '';
+								imagesPro += '<div class="detail-tile-inner ai-haeding-bg-style">';
+								imagesPro += '<h3 class="popup-property-title">' + data.data.property_name + '</h3>';
+								imagesPro += '<p class="popup-property-desc" style="text-align:left; margin: 0 30px; font-size:14px;">' + data.data.about_property + '</p>';
+								imagesPro += '</div>';
+								imagesPro += '<ul class="clearfix frontpage-detail-tiles" id="frontpage-detail-tiles-detail">';
+								$(data.image).each(function(i, val){
+								//console.log(val);
+								imagesPro += '<li class="detail-tile col-sm-6 col-xs-12 col-md-6 col-lg-4" style="visibility:visible">';
+								imagesPro += '<div class="detail-tile-inner">';
+								imagesPro += '<img src="' + val.imgsrc + val.file_name + '"/>';
+								/*imagesPro+='<a href="#" id="LearnMoreBtn1" onclick="add_to_lightbox('+val.id+','+data.data.id+');">Add to lightbox</a>';*/
+								imagesPro += '</div>';
+								imagesPro += '</li>';
+								});
+								imagesPro += '</ul>';
+								var formlink = "{{url()}}/book-property/" + data.data.property_slug + "}}";
+								imagesPro += '<div class="editorial-book-now-page sec-differentiate-line " id="book-now">';
+								imagesPro += '<form class="detail-page-booking-form" action="'+formlink+'" method="get">';
+								imagesPro += '<input type="hidden" name="property" id="property" value="' + data.data.id + '" />';
+								imagesPro += '<input type="hidden" name="roomType" id="roomType" value="" />';
+								imagesPro += '<div class="book-now-page-content-">';
+								imagesPro += '<div class="editoral-book-page-headings">';
+								imagesPro += '<h2>Emporium Voyage is your ideal, vogue vacation planner!</h2>';
+								imagesPro += '<p>With over 300 posh properties, elite spas and exquisite yachts huddled in its cocoon, Emporium Voyage ensure the ultimate luxury experience</p>';
+								imagesPro += '</div>';
+								imagesPro += '<ul class="dates" id="editorial-book-now-inputs">';
+								imagesPro += '<li>';
+								imagesPro += '<div class="editorail-heading">Arrive</div>';
+								imagesPro += '<input id="date-range-editorial-arrive" name="arrive" class="datePicker- dateFrom-" value="{{ date("d.m.Y") }}" type="text" />';
+								imagesPro += '</li>';
+								imagesPro += '<li>';
+								imagesPro += '<div class="heading">Departure</div>';
+								imagesPro += '<input id="date-range-editorial-destination" name="destination" class="datePicker- dateFrom-" value="" type="text" />';
+								imagesPro += '</li>';
+								imagesPro += '</ul>';
+								imagesPro += '<ul class="dates">';
+								imagesPro += '<li>';
+								imagesPro += '<div class="heading">Adults</div>';
+								imagesPro += '<select name="booking_adults">';
+								imagesPro += '<option>1</option>';
+								imagesPro += '<option>2</option>';
+								imagesPro += '<option>3</option>';
+								imagesPro += '</select>';
+								imagesPro += '</li>';
+								imagesPro += '<li>';
+								imagesPro += '<div class="heading">Children</div>';
+								imagesPro += '<select name="booking_children">';
+								imagesPro += '<option>0</option>';
+								imagesPro += '<option>1</option>';
+								imagesPro += '<option>2</option>';
+								imagesPro += '</select>';
+								imagesPro += '</li>';
+								imagesPro += '<div class="clearfix"></div>';
+								imagesPro += '</ul>';
+								imagesPro += '<div class="clearfix"></div>';
+								imagesPro += '<div class="editorial-submit-btn">';
+								imagesPro += '<button type="submit">BOOK NOW</button>';
+								imagesPro += '</div>';
+								imagesPro += '<div class="view-modify-cancel-booking">';
+								imagesPro += '<a href="#">View, Modify or Cancel your Booking</a>';
+								imagesPro += '</div>';
+								imagesPro += '<ul class="booking-page-footer-section editorial-book-align" >';
+								imagesPro += '<li>';
+								imagesPro += '<a href="#" target="_blank">';
+								imagesPro += '<span>Join the worlds leading luxury club</span>';
+								imagesPro += '<h6 class="center">Enjoy exclusive members only benefits</h6>';
+								imagesPro += '</a>';
+								imagesPro += '<div class="white-border-bottom"></div>';
+								imagesPro += '</li>';
+								imagesPro += '<li>';
+								imagesPro += '<a href="#" target="_blank">';
+								imagesPro += '<span>Spa Treatment</span>';
+								imagesPro += '<h6 class="center">Book</h6>';
+								imagesPro += '</a>';
+								imagesPro += '<div class="white-border-bottom"></div>';
+								imagesPro += '</li>';
+								imagesPro += '<li>';
+								imagesPro += '<a href="#" target="_blank">';
+								imagesPro += '<span>View or Modify Reserveration</span>';
+								imagesPro += '<h6 class="center">Login to Support Center</h6>';
+								imagesPro += '</a>';
+								imagesPro += '<div class="white-border-bottom"></div>';
+								imagesPro += '</li>';
+								imagesPro += '<div class="clearfix"></div>';
+								imagesPro += '</ul>';
+								imagesPro += '<div class="clearfix"></div>';
+								imagesPro += '</div>';
+								imagesPro += '</form>';
+								imagesPro += '</div>';
+								$('#placepopupcontent').html(imagesPro);
+								
+									eval($('.dropdown').each(function () {
+										var $dropdown = $(this);
+										$(".members-list", $dropdown).click(function (e) {
+											e.preventDefault();
+											$div = $(".members-drop-list", $dropdown);
+											$div.toggle();
+											$(".members-drop-list").not($div).hide();
+											return false;
+										});
+									}));
+
+									eval($("#adult-input-value").change(function () {
+										var adults = $(this).val();
+										$('#adults-val').html(adults);
+									}));
+
+									eval($("#childerns-input-value").change(function () {
+										var childerns = $(this).val();
+										$('#childern-val').html(childerns);
+									}));
+									
+									eval($('#book-hotel1').dateRangePicker({
+										startDate: "2017-01-11",
+										separator: ' to ',
+										getValue: function () {
+										if ($('#book-hotel1').val() && $('#book-hotel2').val())
+											return $('#book-hotel1').val() + ' to ' + $('#book-hotel2').val();
+										else
+											return '';
+										},
+										setValue: function (s, s1, s2) {
+											$('#book-hotel1').val(s1);
+											$('#book-hotel2').val(s2);
+										}
+									}));
+									eval($('#book-hotel2').dateRangePicker({
+										startDate: "2017-01-11",
+										separator: ' to ',
+										getValue: function () {
+										if ($('#book-hotel1').val() && $('#book-hotel2').val())
+											return $('#book-hotel1').val() + ' to ' + $('#book-hotel2').val();
+										else
+											return '';
+										},
+										setValue: function (s, s1, s2) {
+											$('#book-hotel1').val(s1);
+											$('#book-hotel2').val(s2);
+										}
+									}));
+								
+								}
+						});
+						$('#frontpage-layer-bj-detail').fadeIn('slow');
+						$('#fixed_wrapper').hide();
+						$('html').addClass('hidescroll');
+						$('body').addClass('layerloaded');
+						return false;
+						});
+						$('.frontpage-layer-bj-header-close').click(function () {
+						$('.frontpage-layer-bj').fadeOut('slow');
+						$('#fixed_wrapper').show();
+						$('html').removeClass('hidescroll');
+						});
+						});
+					</script>
                     <script>
                         $(document).ready(function () {
                         $(".social-share").click(function (event) {
