@@ -38,18 +38,11 @@
 				<div class="sbox-content"> 	
 
 		 			{!! Form::open(array('url'=>'citycontent/save?return='.$return, 'class'=>'form-horizontal','files' => true , 'parsley-validate'=>'','novalidate'=>' ', 'id' => 'wizard_example')) !!}
+						{!! Form::hidden('id', $row['id']) !!} 
 						<div class="col-md-12">
 							<fieldset>
 								<legend> Step 1</legend>
-								<div class="form-group  hidethis" >
-									<label for="Id" class=" control-label col-md-4 text-left"> Id </label>
-									<div class="col-md-6">
-										{!! Form::text('id', $row['id'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
-									</div> 
-									<div class="col-md-2">
-									 	
-									</div>
-								</div> 					
+													
 								<div class="form-group  " >
 									<label for="Title" class=" control-label col-md-4 text-left"> Title </label>
 									<div class="col-md-6">
