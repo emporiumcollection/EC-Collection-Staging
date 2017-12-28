@@ -598,7 +598,7 @@
                 background-color: #ffffff;
             }
             body:not(.adminimal-theme) .region-sidebar-first {
-                background-color: #252525;
+/*                background-color: #252525;*/
                 color: #ada077;
             }
             #unsupported {
@@ -901,11 +901,11 @@
                                             <div class="block-content content"><span></span><span></span><span></span></div>
                                         </div>
                                     </div>
-                                    <div id="block-ledunfly-menu-logo" class="block block-ledunfly no-title even block-count-5 block-region-sidebar-first block-menu-logo" ><div class="block-inner clearfix">  
+<!--                                    <div id="block-ledunfly-menu-logo" class="block block-ledunfly no-title even block-count-5 block-region-sidebar-first block-menu-logo" ><div class="block-inner clearfix">  
 
                                             <div class="block-content content"><a href="index.html" title="Five Seas Hotel"><div class="menu-logo"></div></a></div>
                                         </div>
-                                    </div>
+                                    </div>-->
                                     <div id="block-system-main-menu" class="block block-system block-menu no-title odd block-count-6 block-region-sidebar-first block-main-menu" role="navigation">
                                         <div class="block-inner clearfix">
                                             <div class="block-content content" class="block-content content">
