@@ -1,0 +1,636 @@
+/*
+ * responsive.custom.css is for custom media queries that are not set via the
+ * theme settings, such as cascading media queries.
+ *
+ * By default all the other responsive stylesheets used in Adaptivetheme use a
+ * "stacking method", however cascading media queries use a waterfall method so
+ * you can leverage the cascade and inheritance for all browsers that support
+ * media queries.
+ *
+ * @SEE http://zomigi.com/blog/essential-considerations-for-crafting-quality-media-queries/#mq-overlap-stack
+ *
+ * NOTE: this file loads by default, to disable go to your theme settings and
+ * look under the "CSS" settings tab.
+ */
+/*Screen unsupported on desktop version*/
+#unsupported {
+    position: fixed;
+    top: 0;
+    text-align: center;
+    z-index: 9999;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    
+	-webkit-transition: all 0.75s ease-in-out;
+	-moz-transition: all 0.75s ease-in-out;
+	-o-transition: all 0.75s ease-in-out;
+	transition: all 0.75s ease-in-out;
+}
+#unsupported-content {
+    position: absolute;
+    width: 100%;
+    max-width: 400px;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+#unsupported #mobile-logo {
+	height: 120px;
+	width: 75px;
+	display: block;
+	margin: 0 auto;
+	margin-bottom: 35px;
+}
+#unsupported #website-logo{
+	height: 115px;
+    width: 25px;
+    margin: 0 auto;
+	background-size: contain;
+}
+
+/* error message */
+div#messages {
+	margin-top: 100px;
+	margin-left: 90px;
+}
+div.error {
+	background-image: none;
+}	
+/* skin page confirmation */
+body.page-node-done {
+	background-color: white;
+}
+body.page-node-done #page {
+	background-color: #800a28;
+}
+
+body.page-node-done #main-content {
+	min-height: 550px;
+}
+body.page-node-done #main-content-header {
+	margin-top: 150px;
+	text-align: center;
+}
+body.page-node-done #content {
+	margin-top: 100px;
+	text-align: center;
+}
+/* hide "back to the form" */
+body.page-node-done #content > .block-main > .links {
+	display:none;
+}
+/*
+ * Really small screens and up
+ */
+@media only screen and (min-width: 220px) {
+	iframe{ border: none; outline: none; overflow-y: hidden;}
+	iframe[seamless] { display: block;}
+	#unsupported {
+		opacity:1;
+	}
+}
+
+/*
+ * Smalltouch sizes and up
+ */
+/* @media only screen and (min-width: 320px) {} */
+
+/*
+ * Smalltouch sizes and down
+ */
+@media only screen and (max-width: 480px) {
+  /* 
+   * Float Region Blocks - custom media query CSS example:
+   * 
+   * Float regions blocks is an Extension you can enable in the appearance
+   * settings for your theme. This feature allows you to automatically float
+   * blocks in regions, you can switch it on and off depending on your
+   * requirements. For design purposes you many want to remove the floats for
+   * devices where the entire theme is just one column - for example small
+   * mobile phones. The following CSS is inside the custom media query:
+   *
+   *   @media only screen and (max-width: 480px){}
+   *
+   * This will target devices with a maximum width of 480px - most small phones.
+   * In these smaller screen sizes we can remove the float and widths so all
+   * blocks stack instead of displaying horizonally. The selector used is an
+   * "attribute selector" which will match on any float block class. Use your
+   * inspector or Firebug to get the classes from the page output if you need
+   * more granular control over block alignment and stacking.
+   */
+  .region[class*="float-blocks"] .block {
+    float: none;
+    width: 100%;
+  }
+}
+
+/*
+ * Tablet sizes and up
+ */
+@media only screen and (min-width: 768px) {
+	#unsupported {
+		opacity:0;
+		z-index: -999;
+	}
+	/******************** CONTENT ********************/
+	#main-content, .block-inner{ margin-left: 0; margin-right: 0;}
+	#content{ position: relative;}
+	#block-system-main{ margin-bottom: 0;}
+	.node{ margin-bottom: 0;}
+	
+	/* zigzag generic */
+	div.underline {
+	    position: absolute;
+	    left: 50%;
+	    margin-left: -8px;
+	    width: 17px;
+	    height: 6px;
+	    background-repeat: repeat-x;
+	}
+	
+	/* line title generic */
+	div.underline-title{
+		width: 16px;
+	    height: 1px;
+	    display: block;
+	    position: absolute;
+	    left: 50%;
+	    margin-left: -8px;
+	    bottom: 0;
+	}
+	
+	/* line pixel generic */
+	div.underline-pixel{
+		width: 1px;
+	    height: 75px;
+	    margin: 0 auto;
+	}
+	
+	/* block-ledunfly-book-link */
+	#block-ledunfly-book-link{ 
+		position: fixed; 
+		top: 0; 
+		right: 0; 
+		min-width: calc(33.33% - 55px); 
+		text-align: center;
+		line-height: inherit;
+		height: 60px;
+		margin-bottom: 0;
+		display: inline-block;
+		padding: 0 20px 0 15px;
+    	z-index: 10;
+	}
+/* 	.lang-fr #block-ledunfly-book-link{ width: calc(41% - 55px); } */
+/* 	.lang-de #block-ledunfly-book-link{ width: calc(39% - 55px); } */
+	
+	#block-ledunfly-book-link .block-inner{ 
+		height: 60px;
+		width: 100%;
+	}
+	#block-ledunfly-book-link .block-inner .arrow{ 
+	    display: block;
+	    background-position: center;
+	    background-repeat: repeat-x;
+	    width: 60px;
+	    height: 60px;
+	    float: right;
+	}
+	#block-ledunfly-book-link:hover .block-inner .arrow{
+	    background-position-x: 60px;
+		-webkit-transition: all 0.6s;
+		-moz-transition: all 0.6s;
+		-o-transition: all 0.6s ease-in-out;
+		transition: all 0.6s;
+	}
+	@-webkit-keyframes arrowEffect {
+	  0% {
+	    background-position: 95% center;
+	  }
+	  50%{
+	  	 background-position: 120% center;
+	  }
+	  51%{
+	  	 background-position: 85% center;
+	  }
+	  100% {
+	     background-position: 95% center;
+	  }
+	}
+	@keyframes arrowEffect {
+	  0% {
+	    background-position: 95% center;
+	  }
+	  50%{
+	  	 background-position: 120% center;
+	  }
+	  51%{
+	  	 background-position: 85% center;
+	  }
+	  100% {
+	     background-position: 95% center;
+	  }
+	}
+	#block-ledunfly-book-link .block-inner p{ margin-bottom: 0;}
+	#block-ledunfly-book-link .block-inner div{ float: left;}
+	#block-ledunfly-book-link .block-inner div i {margin-right: 10px; float: left; line-height: 60px;}
+	#block-ledunfly-book-link .block-inner a div:nth-child(2){ width: calc(100% - 85px); text-align: left;}
+	#block-ledunfly-book-link span{ font-size: 11px;}
+	#block-ledunfly-book-link .block-inner a:first-child div { clear: both; margin-top: 10px;}
+	#block-ledunfly-book-link .block-inner a:nth-child(2) div{ clear: both; line-height: initial;}
+	
+	/* details_mailchimp_embed_form */
+	.block-details-mailchimp{
+		box-sizing: border-box;
+	}
+	.block-details-mailchimp h2{
+		margin: 0 auto;
+	    text-align: center;
+		line-height: 1em;
+		margin-bottom: 0;
+		max-width: 300px;
+		font-size: 34px;
+		margin-bottom: 60px;
+	}
+	
+	/* logo */
+	#block-ledunfly-menu-logo{
+		position:fixed;
+		width:60px;
+		height:60px;
+		top:65px;
+		left:0px;
+		margin-bottom:0px;
+	}
+	#block-ledunfly-menu-logo a{
+		display:block;
+		position: absolute;
+		width:100%;
+		height:100%;
+		background-color: inherit;	
+	}
+	.menu-logo{
+		width: 26px;
+	    height: 60px;
+    	background-size: contain;
+    	margin: 0 auto;
+	}
+	
+	/*Over effect on <a>*/
+	 .underline-rollover{
+	    position:relative;
+	    width:100%;
+	    height:1px;
+	    bottom:0px;
+	    opacity: 0.44;
+	 	-webkit-animation: underlineHoverBack .5s ease forwards;
+	    -moz-animation: underlineHoverBack .5s ease forwards;
+	    -ms-animation: underlineHoverBack .5s ease forwards;
+	    -o-animation: underlineHoverBack .5s ease forwards;
+	    animation: underlineHoverBack .5s ease forwards;
+	}
+	
+	a:hover{ text-decoration: none; }
+	a:hover .underline-rollover { 
+	  -webkit-animation: underlineHover .5s ease forwards;
+	  -moz-animation: underlineHover .5s ease forwards;
+	  -ms-animation: underlineHover .5s ease forwards;
+	  -o-animation: underlineHover .5s ease forwards;
+	  animation: underlineHover .5s ease forwards;
+	}
+	
+	@-webkit-keyframes underlineHover {
+	  0% {
+	    width:100%;
+	    left:0px;
+	  }
+	  50%{
+	  	 width:0%;
+	  	 left:100%;
+	  }
+	  51%{
+	  	 width:0%;
+	  	 left:0px;
+	  }
+	  100% {
+	    width:100%;
+	    left:0px;
+	  }
+	}
+	@keyframes underlineHover {
+	  0% {
+	    width:100%;
+	    left:0px;
+	  }
+	  50%{
+	  	 width:0%;
+	  	 left:100%;
+	  }
+	  51%{
+	  	 width:0%;
+	  	 left:0px;
+	  }
+	  100% {
+	    width:100%;
+	    left:0px;
+	  }
+	}
+	@keyframes underlineHoverBack {
+	  0% {
+	    width:100%;
+	    left:0px;
+	  }
+	  50%{
+	  	 width:0%;
+	  	 left:0%;
+	  }
+	  51%{
+	  	 width:0%;
+	  	 left:100%;
+	  }
+	  100% {
+	    width:100%;
+	    left:0px;
+	  }
+	}
+	@-webkit-keyframes underlineHoverBack {
+	  0% {
+	    width:100%;
+	    left:0px;
+	  }
+	  50%{
+	  	 width:0%;
+	  	 left:0%;
+	  }
+	  51%{
+	  	 width:0%;
+	  	 left:100%;
+	  }
+	  100% {
+	    width:100%;
+	    left:0px;
+	  }
+	}
+	
+	.field-name-field-newsletter div.underline-rollover,
+	.book-room div.underline-rollover {display: none;} /* TODO : weight effect to display */ 
+	
+	/*Page not found -- user login*/
+	.node-type-basic-page #block-system-main,
+	.not-logged-in.page-user  {
+		text-align: center;
+	}
+	.node-type-basic-page #block-system-main{
+	    margin: 60px auto;
+	    width: 75%;
+	    text-align: justify;
+	}
+	.node-type-basic-page #block-system-main p strong,
+	.node-type-basic-page #block-system-main p strong u,
+	.node-type-basic-page #block-system-main h1{
+		text-align: center;
+	}
+	.not-logged-in.page-user #footer{
+	    position: absolute;
+    	bottom: 0;
+	}
+	.not-logged-in.page-user #main-content{
+		width: 50%;
+		margin: 0 auto;
+		margin-top: 15%;
+		max-width: 400px;
+	}
+	.not-logged-in.page-user #main-content input{
+		width: calc(100% - 10px);
+		border: 0px;
+		padding: 5px;
+	}
+	.not-logged-in.page-user #main-content input#edit-submit{
+		border: 0px;
+		background: none;
+		padding: 15px;
+		border-bottom: 1px solid;
+		font-family: 'Avenir LT W01_85 Heavy_1475550', 'Arial';
+		border-radius: 0;
+		
+	}
+	.not-logged-in.page-user ul.primary li{
+		font-family: 'Avenir LT W01_85 Heavy_1475550', 'Arial';
+	}
+	.not-logged-in.page-user ul.primary li a{
+		border: 0px;
+	}
+	.not-logged-in.page-user ul.primary {
+	    border-bottom: 1px solid;
+	    padding: 5px 0;
+	}
+	.not-logged-in.page-user ul.primary {
+	}
+	
+	/******************** FOOTER ********************/
+	footer{ 
+		width: calc(100% - 60px); 
+		margin-left: 60px; 
+		height: 120px; 
+		border-top: 1px solid #e9e9e9;
+	}
+	footer .region-footer{ max-width: 1680px;}
+	footer .block{ 
+		float: left; 
+		border-right: 1px solid #e9e9e9; 
+		margin-bottom: 0; 
+		box-sizing: border-box; 
+		max-height:120px;
+	}
+	footer .block .block-inner{ max-height:120px;}
+	footer .block:last-child{ border-right: none;}
+	
+	/* block-details-social-links */
+	footer #block-details-social-links{ max-width: 620px; width: 20%;}
+	footer #block-details-social-links .block-content{ 
+		padding: 50px 14.51% 0 11.29%;
+		width: 100%;
+		box-sizing: border-box;
+		display: inline-block;
+		height: 120px;
+	}
+	footer #block-details-social-links .block-content div{ width: 33%; text-align: center; display: inline-block;}
+	footer #block-details-social-links .block-content a span{  display: none;}
+	
+	/* block-ledunfly-footer-text */
+	footer #block-ledunfly-footer-text{ max-width: 655px; width: 56%;}
+	footer #block-ledunfly-footer-text .block-content{ 
+		padding: 47px 5% 0;
+		width: 100%;
+		box-sizing: border-box;
+		display: inline-block;
+		height: 120px;
+		letter-spacing: 0.02em;
+	}
+	footer #block-ledunfly-footer-text .block-content p{ margin-bottom: 0; text-align: center;}
+	
+	/* block-ledunfly-footer-logo */
+	footer #block-ledunfly-footer-logo{ max-width: 325px; width: 24%;}
+	footer #block-ledunfly-footer-logo .block-content{
+		width: 100%;
+		box-sizing: border-box;
+		display: inline-block;
+		height: 120px;
+	}
+	footer #block-ledunfly-footer-logo .block-content div{ 
+		text-align: center; 
+		height: 60px; 
+		vertical-align: middle; 
+		line-height: 60px;
+	}
+	footer #block-ledunfly-footer-logo .block-content div:first-child{border-bottom: 1px solid #e9e9e9;}
+	footer #block-ledunfly-footer-logo .block-content div img{ vertical-align: middle; }
+	footer #block-ledunfly-footer-logo .block-content .hotel-logo img{ 
+		max-width: 100px; 
+		width: 100%;
+		height: auto;
+	} 
+	footer #block-ledunfly-footer-logo .block-content .leading-logo img{ 
+		max-width: 100px; 
+		width: 100%;
+		height: auto;
+	} 
+}
+
+/*
+ * Desktops/laptops and up
+ */
+@media only screen and (min-width: 1025px) {
+	/******************** CONTENT ********************/
+	/* block-ledunfly-book-link */
+	#block-ledunfly-book-link{ 
+		width: 250px; 
+		line-height: normal;
+		height: 80px;
+		padding: 0 40px 0 30px;
+		min-width: inherit;
+	}
+	.lang-fr #block-ledunfly-book-link{ width: 250px; }
+	.lang-de #block-ledunfly-book-link{ width: 250px; }
+	
+	#block-ledunfly-book-link .block-inner{ height: 80px; width: 260px; }
+	#block-ledunfly-book-link .block-inner div i {margin-right: 20px; line-height: 78px;}
+	#block-ledunfly-book-link .block-inner a:first-child div { clear: both; margin-top: 30px; }
+	#block-ledunfly-book-link .block-inner a:nth-child(2) div{ clear: both; }
+	
+	#block-ledunfly-book-link .block-inner a:nth-child(2) { clear: both; line-height: 20px;}
+	/*FR*/
+	.lang-fr #block-ledunfly-book-link .block-inner a div:nth-child(2){ width: 170px;}
+	
+	#block-ledunfly-book-link span{ font-size: 14px; clear: both;}
+	#block-ledunfly-book-link .block-inner a:nth-child(2) div span{font-size: 11px;}
+	#block-ledunfly-book-link .block-inner .arrow{ height: 80px;}
+	/*DE*/
+	.lang-de #block-ledunfly-book-link span{ font-size: 11px;}
+	
+	/*FR*/
+	.lang-fr #block-ledunfly-book-link .block-inner div i {margin-right: 10px;}
+	.lang-fr #block-ledunfly-book-link span{ font-size: 11px;}
+	/*RU*/
+	.lang-ru #block-ledunfly-book-link span{ font-size: 11px;}
+	/*IT*/
+	.lang-it #block-ledunfly-book-link span{ font-size: 10px;}
+	/*Logo*/
+	#block-ledunfly-menu-logo{ top:80px; width: 80px; height: 80px;}
+	.menu-logo{
+		width: 26px;
+	    height: 80px;
+	   	background-size: contain;
+	}
+	.block-details-mailchimp h2{
+		font-size: 42px;
+	}
+
+	/******************** FOOTER ********************/
+	footer{margin-left: 80px; width: calc(100% - 80px); }
+	
+	/* block-ledunfly-footer-text */
+	footer #block-ledunfly-footer-text{ width: 50%;}
+	
+	/* block-ledunfly-footer-logo */
+	footer #block-ledunfly-footer-logo{ width: 30%;}
+	footer #block-ledunfly-footer-logo .block-content div{ 
+		width: 50%;
+		box-sizing: border-box;
+		float: left;
+		text-align: center;
+		height: 120px;
+		line-height: 120px;
+	}
+	footer #block-ledunfly-footer-logo .block-content div:first-child{ 
+		border-bottom: none; 
+		border-right: 1px solid #e9e9e9;
+	}
+	footer #block-ledunfly-footer-logo .block-content .hotel-logo img{ 
+		max-width: 110px; 
+		width: 100%;
+		height: auto;
+	} 
+	footer #block-ledunfly-footer-logo .block-content .leading-logo img{ 
+		max-width: 120px; 
+		width: 100%;
+		height: auto;
+	} 
+}
+@media only screen and (min-width: 1265px) {
+	
+	/******************** FOOTER ********************/
+	
+	/* block-details-social-links */
+	footer #block-details-social-links{ width: 37%;}
+	footer #block-details-social-links .block-content{ padding: 50px 5% 0;} 
+	footer #block-details-social-links .block-content div{ min-width: 125px; text-align: left; }
+	footer #block-details-social-links .block-content a span{ 
+		display: inline-block;
+		position: relative; 
+		margin-left: 35px; 
+	}
+	footer #block-details-social-links .block-content a span:before{
+		width: 20px;
+		height: 1px;
+		content: '';
+		position: absolute;
+		top: calc(100% - 4px);
+		left: -25px;
+	}
+	
+	/* block-ledunfly-footer-text */
+	footer #block-ledunfly-footer-text{ width: 37%;}
+	footer #block-ledunfly-footer-text .block-content{ 
+		letter-spacing: 1px;
+	}
+	/* block-ledunfly-footer-logo */
+	footer #block-ledunfly-footer-logo{ width: 26%;}
+	
+}
+@media only screen and (min-width: 1480px) {
+	
+	/******************** FOOTER ********************/
+	
+	/* block-details-social-links */
+	footer #block-details-social-links .block-content{ padding: 50px 14.51% 0 11.29%;} 
+	
+	/* block-ledunfly-footer-logo */
+	footer #block-ledunfly-footer-logo{ width: 19.34%;}
+}
+
+@media only screen and (min-width: 1580px) {
+	
+	/******************** FOOTER ********************/
+	
+	/* block-ledunfly-footer-text */
+	footer #block-ledunfly-footer-text{ width: 38.98%;}
+	footer #block-ledunfly-footer-text .block-content{ padding: 47px 5.34% 0; letter-spacing: 1px;}
+	footer #block-ledunfly-footer-text .block-content p { text-align: left;}
+	footer #block-ledunfly-footer-text .block-content div {display: inline-block;}
+	footer #block-ledunfly-footer-text .block-content div p{ float: left;}
+	footer #block-ledunfly-footer-text .block-content div p:last-child:before{ content: '-'; padding: 0 3px;}
+}
