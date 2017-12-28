@@ -874,9 +874,6 @@
                 display: none;
             }
             
-            /* custom css sidebar */
-            
-        
         /* sidebar css end */
         
         @import url('https://fonts.googleapis.com/css?family=Satisfy');
