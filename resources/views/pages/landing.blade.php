@@ -550,8 +550,8 @@
         /* sidebar css */
         
         body:not(.adminimal-theme) {
-                background-color: #ada077;
-                color: #ffffff;
+                /*background-color: #ada077;*/
+                /*color: #ffffff;*/
             }
             .menu-logo {
                 background: url(sites/five/files/five_logo_gold.svg) no-repeat center center;
@@ -577,8 +577,8 @@
             body:not(.adminimal-theme) a.active,
             body:not(.adminimal-theme) ul.primary li a:hover,
             body:not(.adminimal-theme) ul.primary li a.active {
-                background-color: #ada077;
-                color: #232323;
+                /*background-color: #ada077;*/
+                /*color: #232323;*/
                 a.contextual-links-trigger {
                     background: transparent url(modules/contextual/images/gear-select.png) no-repeat 2px 0;
                 }
