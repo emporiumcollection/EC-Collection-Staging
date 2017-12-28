@@ -179,11 +179,28 @@
 										</div>
 									</div>
 								</div>
-
-							    <div class="form-group  " >
-									<label for="Youtube" class=" control-label col-md-4 text-left"> Youtube </label>
+								<div class="form-group  " >
+									<label for="youtube_video_title" class=" control-label col-md-4 text-left"> Video Title </label>
 									<div class="col-md-6">
-								  		{!! Form::text('youtube', $row['youtube'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
+									  {!! Form::text('youtube_video_title', $row['youtube_video_title'],array('class'=>'form-control', 'placeholder'=>'Title',   )) !!} 
+									 </div> 
+									<div class="col-md-2">
+									 	
+									</div>
+								</div>
+								<div class="form-group  " >
+									<label for="youtube_video_desc" class=" control-label col-md-4 text-left"> Video Description </label>
+									<div class="col-md-6">
+										<textarea name='youtube_video_desc' rows='5' id='youtube_video_desc' class='form-control'>{{ $row['youtube_video_desc'] }}</textarea> 
+									</div> 
+									<div class="col-md-2">
+									 	
+									</div>
+								</div> 
+							    <div class="form-group  " >
+									<label for="Youtube" class=" control-label col-md-4 text-left">  Video Link</label>
+									<div class="col-md-6">
+								  		{!! Form::text('youtube_video_link', $row['youtube_video_link'],array('class'=>'form-control', 'placeholder'=>'Youtube Video Link',   )) !!} 
 								 	</div> 
 								 	<div class="col-md-2">
 								 	
