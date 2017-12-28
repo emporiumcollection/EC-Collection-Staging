@@ -9,7 +9,7 @@
 .region-sidebar-first .region-inner{
 	height:100%;
 }
-#block-system-main-menuSeats {
+#block-system-main-menu {
     height: 100%;
     margin-left: 60px;
     margin-bottom: 0px;
@@ -22,7 +22,7 @@
     margin-left:-810px;
     position:relative;
 }
-ul.menuSeats {
+ul.menu {
     display: block;
     margin: 0 0 0 130px;
     position: absolute;
@@ -32,7 +32,7 @@ ul.menuSeats {
     transform: translateY(-50%);
     transform: translateY(-50%);
 }
-ul.menuSeats li {
+ul.menu li {
     position: relative;
 }
 ul li.expanded {
@@ -43,20 +43,20 @@ ul li.leaf {
     list-style-image: none;
     list-style-type: none;
 }
-ul.menuSeats li a {
+ul.menu li a {
     background-color:transparent;
     text-decoration:none;
     font-size:32px;
     line-height:48px;
     letter-spacing:0.025em;
 }
-ul.menuSeats li a:hover, ul.menuSeats li a:active, ul.menuSeats li.little a:hover, ul.menuSeats li.little a:active, ul.menuSeats li a.active {
+ul.menu li a:hover, ul.menu li a:active, ul.menu li.little a:hover, ul.menu li.little a:active, ul.menu li a.active {
     background-color:transparent;
 }
-ul.menuSeats li.little-first{
+ul.menu li.little-first{
 	margin-top:70px;
 }
-ul.menuSeats li.little a {
+ul.menu li.little a {
     background-color:transparent;
     text-decoration:none;
     font-family:'Avenir LT W01_65 Medium1475532', 'Arial';
@@ -65,7 +65,7 @@ ul.menuSeats li.little a {
     letter-spacing:0.05em;
     text-transform:uppercase;
 }
-ul.menuSubSeats ul {
+ul.menu ul {
 	display:none;
     margin-left: 280px;
     top: 13px;
@@ -77,11 +77,11 @@ ul.menuSubSeats ul {
     z-index:3;
 }
 /*Custom font size depending on languages */
-.lang-fr ul.menuSubSeats ul,
-.lang-it ul.menuSubSeats ul  {
+.lang-fr ul.menu ul,
+.lang-it ul.menu ul  {
 	width: calc(100% + 15px);
 }
-ul.menuSubSeats ul:before {
+ul.menu ul:before {
 	content: "";
     height: 1px;
     left: -25px;
@@ -90,7 +90,7 @@ ul.menuSubSeats ul:before {
     width: 25px;
     opacity: 0.7;
 }
-ul.menuSubSeats li ul li a {
+ul.menu li ul li a {
     background-color:transparent;
     text-decoration:none;
     font-family: 'Avenir LT W01_65 Medium1475532', 'Arial';
@@ -542,10 +542,10 @@ ul.menuSubSeats li ul li a {
  * Tablet portrait
  */
 @media (max-height: 768px) {
-	ul.menuSeats {
+	ul.menu {
 	    top: 35%;
 	}
-	ul.menuSeats li.little-first{
+	ul.menu li.little-first{
 		margin-top:15px;
 	}
 	.block-menu-text{
