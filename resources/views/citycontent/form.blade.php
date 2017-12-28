@@ -111,12 +111,10 @@
 								 
 								<div class="form-group  " >
 									<label for="Description" class=" control-label col-md-4 text-left"> Description </label>
-									<div class="col-md-6">
+									<div class="col-md-8">
 										<textarea name='description' rows='5' id='editor' class='form-control editor '>{{ $row['description'] }}</textarea> 
 									</div> 
-									<div class="col-md-2">
-									 	
-									</div>
+								
 								</div> 
 								<div class="form-group  " >
 										<label for="Status" class=" control-label col-md-4 text-left"> Status <span class="asterix"> * </span></label>
@@ -151,15 +149,7 @@
 									</div>
 							    </div> 
 
-							    <div class="form-group  " >
-									<label for="Gallery Title" class=" control-label col-md-4 text-left"> Gallery </label>
-									<div class="col-md-6">
-										
-									</div> 
-									<div class="col-md-2">
-								 	
-									</div>
-							    </div> 
+							    
 
 							    <div class="form-group image" >
 									<label for="Gallery" class=" control-label col-md-2 text-left"> Gallery </label>
