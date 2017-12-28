@@ -10,7 +10,8 @@
     }
     .navbar-nav.aicsm {
         float: none;
-        text-align: center;
+        text-align: left;
+        margin-left: 85px;
     }
     .navbar-nav.aicsm > li {
         float: none;

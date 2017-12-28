@@ -378,12 +378,6 @@
             margin: 25px 0px 1px 68px;
         }
         
-        .navbar-nav.aicsm {
-            float: none;
-            text-align: left;
-            margin-left: 85px;
-        }
-        
         .main-page-landing .experience-page {
             position: unset;
             width: auto;
