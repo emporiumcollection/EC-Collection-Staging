@@ -78,7 +78,7 @@
         <!--JS funcitons-->
         <!--Social share start-->
 
-        <div style="position:relative;">
+<!--        <div style="position:relative;">
             <div class="social-share">
                 <a class="trigger-click-on-share" href="#">SHARE</a>
                 <div class="open-social-share">
@@ -99,7 +99,7 @@
                     </ul>
                 </div>
             </div>
-        </div>
+        </div>-->
 
         <!--Social share end-->
         <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" >TOP</a>
