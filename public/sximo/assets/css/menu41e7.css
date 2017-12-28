@@ -22,7 +22,7 @@
     margin-left:-810px;
     position:relative;
 }
-ul.menu {
+ul.menusk {
     display: block;
     margin: 0 0 0 130px;
     position: absolute;
@@ -32,7 +32,7 @@ ul.menu {
     transform: translateY(-50%);
     transform: translateY(-50%);
 }
-ul.menu li {
+ul.menusk li {
     position: relative;
 }
 ul li.expanded {
@@ -43,20 +43,20 @@ ul li.leaf {
     list-style-image: none;
     list-style-type: none;
 }
-ul.menu li a {
+ul.menusk li a {
     background-color:transparent;
     text-decoration:none;
     font-size:32px;
     line-height:48px;
     letter-spacing:0.025em;
 }
-ul.menu li a:hover, ul.menu li a:active, ul.menu li.little a:hover, ul.menu li.little a:active, ul.menu li a.active {
+ul.menusk li a:hover, ul.menusk li a:active, ul.menusk li.little a:hover, ul.menusk li.little a:active, ul.menusk li a.active {
     background-color:transparent;
 }
-ul.menu li.little-first{
+ul.menusk li.little-first{
 	margin-top:70px;
 }
-ul.menu li.little a {
+ul.menusk li.little a {
     background-color:transparent;
     text-decoration:none;
     font-family:'Avenir LT W01_65 Medium1475532', 'Arial';
@@ -65,7 +65,7 @@ ul.menu li.little a {
     letter-spacing:0.05em;
     text-transform:uppercase;
 }
-ul.menu ul {
+ul.menusk ul.menusk1 {
 	display:none;
     margin-left: 280px;
     top: 13px;
@@ -77,11 +77,11 @@ ul.menu ul {
     z-index:3;
 }
 /*Custom font size depending on languages */
-.lang-fr ul.menu ul,
-.lang-it ul.menu ul  {
+.lang-fr ul.menusk ul.menusk1,
+.lang-it ul.menusk ul.menusk1  {
 	width: calc(100% + 15px);
 }
-ul.menu ul:before {
+ul.menusk ul.menusk1:before {
 	content: "";
     height: 1px;
     left: -25px;
@@ -90,7 +90,7 @@ ul.menu ul:before {
     width: 25px;
     opacity: 0.7;
 }
-ul.menu li ul li a {
+ul.menusk li ul.menusk1 li a {
     background-color:transparent;
     text-decoration:none;
     font-family: 'Avenir LT W01_65 Medium1475532', 'Arial';
@@ -542,10 +542,10 @@ ul.menu li ul li a {
  * Tablet portrait
  */
 @media (max-height: 768px) {
-	ul.menu {
+	ul.menusk {
 	    top: 35%;
 	}
-	ul.menu li.little-first{
+	ul.menusk li.little-first{
 		margin-top:15px;
 	}
 	.block-menu-text{

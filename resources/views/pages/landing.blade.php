@@ -550,8 +550,8 @@
         /* sidebar css */
         
         body:not(.adminimal-theme) {
-                background-color: #ada077;
-                color: #ffffff;
+                /*background-color: #ada077;*/
+                /*color: #ffffff;*/
             }
             .menu-logo {
                 background: url(sites/five/files/five_logo_gold.svg) no-repeat center center;
@@ -577,8 +577,8 @@
             body:not(.adminimal-theme) a.active,
             body:not(.adminimal-theme) ul.primary li a:hover,
             body:not(.adminimal-theme) ul.primary li a.active {
-                background-color: #ada077;
-                color: #232323;
+                /*background-color: #ada077;*/
+                /*color: #232323;*/
                 a.contextual-links-trigger {
                     background: transparent url(modules/contextual/images/gear-select.png) no-repeat 2px 0;
                 }
@@ -629,19 +629,19 @@
             #block-ledunfly-menu-link span {
                 background-color: #ffffff;
             }
-            ul.menu li.little a,
-            ul.menu li ul li.little a {
+            ul.menusk li.little a,
+            ul.menusk li ul li.little a {
                 color: #ABA07C;
             }
-            ul.menu li a,
-            ul.menu li ul li a {
+            ul.menusk li a,
+            ul.menusk li ul li a {
                 color: #ABA07C;
             }
-            ul.menu li a:hover,
-            ul.menu li a:active,
-            ul.menu li.little a:hover,
-            ul.menu li.little a:active,
-            ul.menu li a.active {
+            ul.menusk li a:hover,
+            ul.menusk li a:active,
+            ul.menusk li.little a:hover,
+            ul.menusk li.little a:active,
+            ul.menusk li a.active {
                 color: #aba07ccc;
             }
             #block-system-main-menu .block-menu-text {
@@ -653,7 +653,7 @@
                 background: none;
                 color: #232323;
             }
-            ul.menu ul:before {
+            ul.menusk ul.menusk1:before {
                 background-color: #ABA07C;
             }
             #block-system-main-menu .block-inner {
@@ -910,10 +910,10 @@
                                     <div id="block-system-main-menu" class="block block-system block-menu no-title odd block-count-6 block-region-sidebar-first block-main-menu" role="navigation">
                                         <div class="block-inner clearfix">
                                             <div class="block-content content" class="block-content content">
-                                                <ul class="menu clearfix">
+                                                <ul class="menusk clearfix">
                                                     <li class="first expanded menu-depth-1 menu-item-989">
                                                         <a href="#">Sleep</a>
-                                                        <ul class="menu clearfix">
+                                                        <ul class="menusk1 clearfix">
                                                             <li class="first leaf menu-depth-2 menu-item-990">
                                                                 <a href="#">Suite Présidentielle</a>
                                                             </li>
@@ -942,7 +942,7 @@
                                                     </li>
                                                     <li class="expanded menu-depth-1 menu-item-996">
                                                         <a href="#">Savour</a>
-                                                        <ul class="menu clearfix">
+                                                        <ul class="menusk1 clearfix">
                                                     <li class="first leaf menu-depth-2 menu-item-998">
                                                         <a href="#">Le Roof</a>
                                                     </li><li class="leaf menu-depth-2 menu-item-999">
@@ -955,7 +955,7 @@
                                                     </li>
                                                     <li class="expanded menu-depth-1 menu-item-1000">
                                                         <a href="#">Relax</a>
-                                                        <ul class="menu clearfix">
+                                                        <ul class="menusk1 clearfix">
                                                             <li class="first leaf menu-depth-2 menu-item-1001">
                                                                 <a href="#">Spa</a>
                                                             </li><li class="leaf menu-depth-2 menu-item-1002">
@@ -968,7 +968,7 @@
                                                     </li>
                                                     <li class="expanded menu-depth-1 menu-item-1004">
                                                         <a href="#">Discover</a>
-                                                        <ul class="menu clearfix">
+                                                        <ul class="menusk1 clearfix">
                                                             <li class="first leaf menu-depth-2 menu-item-1005">
                                                                 <a href="#">Cannes</a></li>
                                                             <li class="last leaf menu-depth-2 menu-item-1006">
@@ -981,7 +981,7 @@
                                                     </li>
                                                     <li class="expanded menu-depth-1 menu-item-1123">
                                                         <a href="#">Offres</a>
-                                                        <ul class="menu clearfix">
+                                                        <ul class="menusk1 clearfix">
                                                             <li class="first leaf menu-depth-2 menu-item-1014">
                                                                 <a href="#">Offres Sleep</a>
                                                             </li><li class="last leaf menu-depth-2 menu-item-1125">
