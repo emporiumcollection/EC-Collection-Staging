@@ -473,6 +473,429 @@ class HomeController extends Controller {
             return view($page, $this->data);
         endif;
     }
+    
+    public function landing(Request $request) {
+
+        if (CNF_FRONT == 'false' && $request->segment(1) == '') :
+            return Redirect::to('dashboard');
+        endif;
+		$pageSlug = '';
+        $page = $request->segment(1);
+        if ($page == '') {
+            $page = 'landing';
+            $pageSlug = 'landing';
+        }
+        if ($page != '') :
+            $content = \DB::table('tb_pages')->where('alias', '=', $page)->where('status', '=', 'enable')->get();
+            //print_r($content);
+            //return '';
+            if (count($content) >= 1) {
+                $row = $content[0];
+                $this->data['pageTitle'] = $row->title;
+                $this->data['pageNote'] = $row->note;
+                $this->data['pageMetakey'] = ($row->metakey != '' ? $row->metakey : CNF_METAKEY);
+                $this->data['pageMetadesc'] = ($row->metadesc != '' ? $row->metadesc : CNF_METADESC);
+
+                $this->data['breadcrumb'] = 'active';
+
+                if ($row->access != '') {
+                    $access = json_decode($row->access, true);
+                } else {
+                    $access = array();
+                }
+
+                // If guest not allowed 
+                if ($row->allow_guest != 1) {
+                    $group_id = \Session::get('gid');
+                    $isValid = (isset($access[$group_id]) && $access[$group_id] == 1 ? 1 : 0 );
+                    if ($isValid == 0) {
+                        return Redirect::to('')
+                                        ->with('message', \SiteHelpers::alert('error', \Lang::get('core.note_restric')));
+                    }
+                }
+                if ($row->template == 'backend') {
+                    $page = 'pages.' . $row->filename;
+                } else {
+                    $page = 'layouts.' . CNF_THEME . '.index';
+                }
+                //print_r($this->data);exit;
+
+                $filename = base_path() . "/resources/views/pages/" . $row->filename . ".blade.php";
+                if (file_exists($filename)) {
+                    $this->data['pages'] = 'pages.' . $row->filename;
+                    //	print_r($this->data);exit;
+                    // get plans
+                    /* $plan = \DB::table('tb_membership')->where('status', 1)->get();
+                      foreach ($plan as $memplan) {
+                      $mod = explode(',', $memplan->package_modules);
+                      $allowmodule = \DB::table('tb_module')->whereIn('module_id', $mod)->select('module_title', 'module_id')->get();
+                      $plans[$memplan->id] = $memplan;
+                      $plans[$memplan->id]->modules = $allowmodule;
+                      }
+                      if (!empty($plans)) {
+                      $this->data['plans'] = $plans;
+                      }
+                     */
+
+                    /*                     * *** Start Landing Page ** */
+                    if (isset($pageSlug) && $pageSlug == 'landing') {
+                        $this->data['landingads'] = \DB::table('tb_advertisement')->select('adv_img', 'adv_link')->where('adv_type', 'sidebar')->where('adv_position', 'landing')->get();
+
+                        //include(public_path() . '/revolution_slider/embed.php');
+
+                        $this->data['slider'] = \DB::table('tb_sliders')->select('slider_category', 'slider_title', 'slider_description', 'slider_img', 'slider_link', 'slider_video', 'slide_type')->where('slider_category', 'Landing')->get();
+                        $this->data['categoryslider'] = \DB::table('tb_sliders')->where('slider_category', 'Landing')->get();
+
+                        $destts = array();
+                        $maindest = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name')->where('parent_category_id', 0)->where('id', '!=', 8)->get();
+                        if (!empty($maindest)) {
+                            $ctt = 0;
+                            foreach ($maindest as $dest) {
+                                //if ($dest->id != 8) {
+
+                                $subdest = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name')->where('parent_category_id', $dest->id)->get();
+                                $getcats = '';
+                                $chldIds = array();
+                                if (!empty($subdest)) {
+                                    $chldIds = $this->fetchcategoryChildListIds($dest->id);
+                                    array_unshift($chldIds, $dest->id);
+                                } else {
+                                    $chldIds[] = $dest->id;
+                                }
+
+                                if (!empty($chldIds)) {
+                                    $getcats = " AND (" . implode(" || ", array_map(function($v) {
+                                                        return sprintf("FIND_IN_SET('%s', property_category_id)", $v);
+                                                    }, array_values($chldIds))) . ")";
+                                }
+
+                                $preprops = DB::select(DB::raw("SELECT COUNT(*) AS total_rows FROM tb_properties WHERE property_status = '1' $getcats"));
+
+                                if (isset($preprops[0]->total_rows) && $preprops[0]->total_rows > 0) {
+                                    $destts[$ctt]['maincat'] = $dest;
+
+                                    if (!empty($subdest)) {
+										$sd=0;
+                                        foreach ($subdest as $subdestt) {
+
+                                            $getcats = '';
+                                            $chldIds = array();
+                                            $chldIds[] = $subdestt->id;
+                                            $chldIds = $this->fetchcategoryChildListIds($subdestt->id);
+                                            array_unshift($chldIds, $subdestt->id);
+                                            $getcats = " AND (" . implode(" || ", array_map(function($v) {
+                                                                return sprintf("FIND_IN_SET('%s', property_category_id)", $v);
+                                                            }, array_values($chldIds))) . ")";
+                                            $preprops = DB::select(DB::raw("SELECT COUNT(*) AS total_rows FROM tb_properties WHERE property_status = '1' $getcats"));
+                                            if (isset($preprops[0]->total_rows) && $preprops[0]->total_rows > 0) {
+                                                $destts[$ctt]['child'][$sd] = $subdestt;
+												
+												$subchilddest = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name')->where('parent_category_id', $subdestt->id)->get();
+												
+												$getcats = '';
+												$chldIds = array();
+												if (!empty($subchilddest)) {
+													$chldIds = $this->fetchcategoryChildListIds($subdestt->id);
+													array_unshift($chldIds, $subdestt->id);
+												} else {
+													$chldIds[] = $subdestt->id;
+												}
+                                                                                                
+                                                                                                $temp = array();
+												if (!empty($chldIds)) {
+                                                                                                    foreach ($chldIds as $chldId) {
+                                                                                                        $cpreprops = DB::select(DB::raw("SELECT COUNT(*) AS total_rows FROM tb_properties WHERE property_status = '1' AND property_category_id = $chldId"));
+                                                                                                        if (isset($cpreprops[0]->total_rows) && $cpreprops[0]->total_rows > 0) {
+                                                                                                            $_temp = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name')->where('id', $chldId)->get();;
+                                                                                                            if(!empty($_temp)) {
+                                                                                                                foreach ($_temp as $t_key => $tmp) {
+                                                                                                                    $_chldIds = array();
+                                                                                                                    $_chldIds = $this->fetchcategoryChildListIds($tmp->id);
+                                                                                                                    array_unshift($_chldIds, $tmp->id);
+                                                                                                                    $sub_temp = array();
+                                                                                                                    if (!empty($_chldIds)) {
+                                                                                                                        foreach ($_chldIds as $_chldId) {
+                                                                                                                            $cpreprops = DB::select(DB::raw("SELECT COUNT(*) AS total_rows FROM tb_properties WHERE property_status = '1' AND property_category_id = $_chldId"));
+                                                                                                                            if (isset($cpreprops[0]->total_rows) && $cpreprops[0]->total_rows > 0) {
+                                                                                                                                $_sub_temp = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name')->where('id', $_chldId)->get();;
+                                                                                                                                if(!empty($_sub_temp)) {
+                                                                                                                                    $sub_temp = array_merge($sub_temp, $_sub_temp);
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                    $_temp[$t_key]->childs = $sub_temp;
+                                                                                                                }
+                                                                                                                $temp = array_merge($temp, $_temp);
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+													/*$getcats = " AND (" . implode(" || ", array_map(function($v) {
+																		return sprintf("FIND_IN_SET('%s', property_category_id)", $v);
+																	}, array_values($chldIds))) . ")";*/
+												}
+                                                                                                if(!empty($temp)) {
+                                                                                                    $destts[$ctt]['child'][$sd]->subchild = $temp;
+                                                                                                    /*return array('$subchilddest' => $subchilddest, '$temp' => $temp);*/
+                                                                                                }
+                                                                                                                                                                                                
+												/*$cpreprops = DB::select(DB::raw("SELECT COUNT(*) AS total_rows FROM tb_properties WHERE property_status = '1' $getcats"));
+                                                                                                if (isset($cpreprops[0]->total_rows) && $cpreprops[0]->total_rows > 0) {
+													$destts[$ctt]['child'][$sd]->subchild = $subchilddest;
+												}*/
+                                            }
+											$sd++;
+                                        }
+                                    }
+                                    $ctt++;
+                                }
+                                // }
+                            }
+                        }
+                        //print "<pre>";
+                        //print_r($destts);
+                        $this->data['ourdesitnation'] = $destts;
+                        $this->data['social_links'] = \DB::table('tb_social')->where('status', 1)->get();
+                        $this->data['landing_menus'] = array();
+						
+						$landinggridpropertiesArr = array();
+						$landinggridquery = "SELECT editor_choice_property,feature_property,id,property_name,property_slug,property_category_id FROM tb_properties WHERE property_type='Hotel' AND property_status = '1' AND feature_property = '1'  GROUP BY  property_slug ORDER BY editor_choice_property desc, feature_property desc, (SELECT rack_rate FROM tb_properties_category_rooms_price WHERE tb_properties_category_rooms_price.property_id = tb_properties.id ORDER BY rack_rate DESC LIMIT 1) * 1 DESC LIMIT 20";
+
+						$landinggridprops = DB::select(DB::raw($landinggridquery));
+						if (!empty($landinggridprops)) {
+							$pr = 0;
+							foreach ($landinggridprops as $ldprop) {
+								$landinggridpropertiesArr[$pr]['data'] = $ldprop;
+								$landinggridpropertiesArr[$pr]['data']->price = '';
+								$checkseasonPrice = \DB::table('tb_properties_category_rooms_price')->select('rack_rate')->where('property_id', $ldprop->id)->orderBy('rack_rate', 'DESC')->first();
+								if (!empty($checkseasonPrice)) {
+									$landinggridpropertiesArr[$pr]['data']->price = $checkseasonPrice->rack_rate;
+								}
+
+								$landinggridpropertiesArr[$pr]['data']->category_name = '';
+								$cateObjtm = \DB::table('tb_categories')->select('category_name')->where('id', $ldprop->property_category_id)->where('category_published', 1)->first();
+								if (!empty($cateObjtm)) {
+									$landinggridpropertiesArr[$pr]['data']->category_name = $cateObjtm->category_name;
+								}
+
+								$fileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.file_id', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $ldprop->id)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
+								if (!empty($fileArr)) {
+									$landinggridpropertiesArr[$pr]['image'] = $fileArr;
+									$landinggridpropertiesArr[$pr]['image']->imgsrc = (new ContainerController)->getThumbpath($fileArr->folder_id);
+								}
+								$pr++;
+							}
+						}
+						$this->data['landinggridpropertiesArr'] = $landinggridpropertiesArr;
+                    } else {
+
+
+                        $tags_Arr = \DB::table('tb_tags_manager')->where('tag_status', 1)->get();
+                        $tagsArr = array();
+                        if (!empty($tags_Arr)) {
+                            foreach ($tags_Arr as $tags) {
+                                $tagsArr[$tags->parent_tag_id][] = $tags;
+                            }
+                        }
+
+                        $this->data['tagmenus'] = $tagsArr;
+
+                        $propertiesArr = array();
+                        if (Input::get('s', false)) {
+                            $TagsObj = \DB::table('tb_tags_manager')->where('tag_title', Input::get('s', false))->first();
+                            //print_r($TagsObj);
+                            $TagsCon = \DB::table('tb_container_tags')->select('container_id')->where('container_type', 'folder')->where('tag_id', $TagsObj->id)->get();
+                            //print_r($TagsObj);
+                            foreach ($TagsCon as $TagsConObj) {
+                                $TagsConId[] = $TagsConObj->container_id;
+                            }
+                            if (isset($TagsConId)) {
+                                $container_id = implode(',', $TagsConId);
+
+                                $ConObjs = \DB::table('tb_container')->select('display_name')->where('id', [$container_id])->get();
+
+                                foreach ($ConObjs as $ConObj) {
+                                    $ConName[] = $ConObj->display_name;
+                                }
+                                $container_names = implode(',', $ConName);
+                                $props = \DB::table('tb_properties')->where('property_name', [$container_names])->where('property_status', 1)->get();
+                            }
+                        } else {
+                            $props = \DB::table('tb_properties')->where('property_status', 1)->get();
+                        }
+
+                        if (!empty($props)) {
+                            $pr = 0;
+                            foreach ($props as $prop) {
+                                $propertiesArr[$pr]['data'] = $prop;
+                                //$fileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $prop->id)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->toSql(); 
+                                $fileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $prop->id)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
+
+                                if (!empty($fileArr)) {
+                                    $propertiesArr[$pr]['image'] = $fileArr;
+                                    $propertiesArr[$pr]['image']->imgsrc = (new ContainerController)->getThumbpath($fileArr->folder_id);
+                                }
+                                $pr++;
+                            }
+                        }
+
+                        $this->data['propertiesArr'] = $propertiesArr;
+
+                        $socialpropertiesArr = array();
+                        $socialpropertiessingle = '';
+                        if (Input::get('sp', false)) {
+                            $scprops = \DB::table('tb_properties')->where('property_slug', Input::get('sp', false))->where('property_status', 1)->get();
+                            if (!empty($scprops)) {
+                                foreach ($scprops as $scpr) {
+                                    $socialpropertiessingle = $scpr->property_name;
+                                }
+                            }
+                        } else {
+                            $scprops = \DB::table('tb_properties')->where('property_status', 1)->get();
+                        }
+
+                        if (!empty($scprops)) {
+                            $socialpropertiesArr = $scprops;
+                        }
+
+                        $this->data['socialpropertiesArr'] = $socialpropertiesArr;
+                        $this->data['socialpropertiessingle'] = $socialpropertiessingle;
+
+                        $channel_url = '';
+                        if (Input::get('scy', false)) {
+                            $cateObjsc = \DB::table('tb_categories')->where('category_name', Input::get('scy', false))->where('category_published', 1)->first();
+                            if (!empty($cateObjsc)) {
+                                $channel_url = $cateObjsc->category_youtube_channel_url;
+                            }
+                        }
+
+                        $this->data['channel_url'] = $channel_url;
+
+                        $mainArrdestts = array();
+                        $maindest = \DB::table('tb_categories')->where('parent_category_id', 0)->where('id', '!=', 8)->get();
+                        if (!empty($maindest)) {
+                            $d = 0;
+                            foreach ($maindest as $mdest) {
+
+                                /*                                 * *********************************************** */
+
+                                $getcats = '';
+                                $chldIds = array();
+                                $childdest = \DB::table('tb_categories')->where('parent_category_id', $mdest->id)->get();
+                                if (!empty($childdest)) {
+                                    $chldIds = $this->fetchcategoryChildListIds($mdest->id);
+                                    array_unshift($chldIds, $mdest->id);
+                                } else {
+                                    $chldIds[] = $mdest->id;
+                                }
+
+                                $checkchanlchild = \DB::table('tb_categories')->where('category_youtube_channel_url', '!=', '')->whereIn('id', $chldIds)->get();
+
+                                if (!empty($checkchanlchild)) {
+                                    $mainArrdestts[$d] = $mdest;
+                                    if (!empty($childdest)) {
+                                        $c = 0;
+                                        foreach ($childdest as $cdest) {
+                                            $regchldIds = array();
+
+                                            $regchilddest = \DB::table('tb_categories')->where('parent_category_id', $cdest->id)->get();
+                                            if (!empty($regchilddest)) {
+                                                $regchldIds = $this->fetchcategoryChildListIds($cdest->id);
+                                                array_unshift($regchldIds, $cdest->id);
+                                            } else {
+                                                $regchldIds[] = $cdest->id;
+                                            }
+
+                                            $regcheckchanlchild = \DB::table('tb_categories')->where('category_youtube_channel_url', '!=', '')->whereIn('id', $regchldIds)->get();
+
+                                            if (!empty($regcheckchanlchild)) {
+                                                $mainArrdestts[$d]->childs[$c] = $cdest;
+                                                if (!empty($regchilddest)) {
+                                                    $cs = 0;
+                                                    foreach ($regchilddest as $cntrchild) {
+                                                        $cntrchldIds = array();
+
+                                                        $cntrchilddest = \DB::table('tb_categories')->where('parent_category_id', $cntrchild->id)->get();
+                                                        if (!empty($cntrchilddest)) {
+                                                            $cntrchldIds = $this->fetchcategoryChildListIds($cntrchild->id);
+                                                            array_unshift($cntrchldIds, $cntrchild->id);
+                                                        } else {
+                                                            $cntrchldIds[] = $cntrchild->id;
+                                                        }
+
+                                                        $cntrcheckchanlchild = \DB::table('tb_categories')->where('category_youtube_channel_url', '!=', '')->whereIn('id', $cntrchldIds)->get();
+
+                                                        if (!empty($cntrcheckchanlchild)) {
+                                                            $mainArrdestts[$d]->childs[$c]->subchild[$cs] = $cntrchild;
+                                                            $citydest = \DB::table('tb_categories')->where('parent_category_id', $cntrchild->id)->get();
+                                                            if (!empty($citydest)) {
+                                                                foreach ($citydest as $ctdest) {
+                                                                    if ($ctdest->category_youtube_channel_url != '') {
+                                                                        $mainArrdestts[$d]->childs[$c]->subchild[$cs]->citychild[] = $ctdest;
+                                                                    }
+                                                                }
+                                                            }
+                                                            $cs++;
+                                                        }
+                                                    }
+                                                }
+                                                $c++;
+                                            }
+                                        }
+                                        $c++;
+                                    }
+                                }
+                                $d++;
+                            }
+                        }
+                        $this->data['ourmaindesitnation'] = $mainArrdestts;
+                        $this->data['continent'] = Input::get('continent', false);
+                        $this->data['region'] = Input::get('region', false);
+                        $this->data['country'] = Input::get('country', false);
+
+                        $uid = isset(\Auth::user()->id) ? \Auth::user()->id : '';
+                        $this->data['lightboxes'] = \DB::table('tb_lightbox')->where('user_id', $uid)->get();
+
+                        $boxcontent = \DB::table('tb_lightbox_content')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_lightbox_content.file_id')->select('tb_lightbox_content.*', 'tb_container_files.file_name', 'tb_container_files.folder_id', 'tb_container_files.file_display_name')->where('tb_lightbox_content.user_id', $uid)->get();
+                        $boxcont = array();
+                        if (!empty($boxcontent)) {
+                            foreach ($boxcontent as $bcontent) {
+                                $boxcont[$bcontent->lightbox_id][] = $bcontent;
+                            }
+                        }
+                        $this->data['lightcontent'] = $boxcont;
+
+                        //for our collection on landing page
+                        $OurCollection = \DB::table('tb_categories')->where('category_alias', 'our-collection')->first();
+                        $OurCategory = array(); //\DB::table('tb_categories')->where('parent_category_id', $OurCollection->id)->where('category_featured', 1)->where('category_published', 1)->orderBy('category_order_num', 'asc')->get();
+
+                        $this->data['propertyCategory'] = $OurCategory;
+                    }
+                    return view($page, $this->data);
+                } else {
+                    return Redirect::to('')
+                                    ->with('message', \SiteHelpers::alert('error', \Lang::get('core.note_noexists')));
+                }
+            } else {
+                return Redirect::to('')
+                                ->with('message', \SiteHelpers::alert('error', \Lang::get('core.note_noexists')));
+            }
+
+
+        else :
+            $this->data['pageTitle'] = 'Home';
+            $this->data['pageNote'] = 'Welcome To Our Site';
+            $this->data['breadcrumb'] = 'inactive';
+            $this->data['pageMetakey'] = CNF_METAKEY;
+            $this->data['pageMetadesc'] = CNF_METADESC;
+
+            $this->data['ads_home'] = \DB::table('tb_advertisement')->where('adv_status', 1)->get();
+
+            $this->data['pages'] = 'pages.home';
+            $page = 'layouts.' . CNF_THEME . '.index';
+            return view($page, $this->data);
+        endif;
+    }
 
     private function set_parents_enables($arr = array()) {
         $return = array();

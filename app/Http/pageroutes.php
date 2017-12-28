@@ -7,6 +7,7 @@ Route::get('home', 'HomeController@index');
 Route::get('portpolio', 'HomeController@index');
 Route::get('plans', 'HomeController@index');
 Route::get('landing', 'HomeController@index');
+Route::get('new_landing_page', 'HomeController@landing');
 Route::get('products', 'HomeController@index');
 Route::get('news', 'HomeController@index');
 Route::get('newsdetail', 'HomeController@index');
