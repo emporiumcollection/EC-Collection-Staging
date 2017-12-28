@@ -653,7 +653,7 @@
                 background: none;
                 color: #232323;
             }
-            ul.menusk ul:before {
+            ul.menusk ul.menusk1:before {
                 background-color: #ABA07C;
             }
             #block-system-main-menu .block-inner {
