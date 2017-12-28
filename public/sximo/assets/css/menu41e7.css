@@ -561,9 +561,9 @@ ul.menusk li ul.menusk1 li a {
 	#block-system-main-menu { margin-left: 80px;}
 	#block-ledunfly-menu-link{ width: 80px; height: 80px;}
 	#block-ledunfly-menu-link span{left:28px;}
-	#block-ledunfly-menu-link span:nth-child(1) { top: 34px;}
-	#block-ledunfly-menu-link span:nth-child(2){ top: 40px;}
-	#block-ledunfly-menu-link span:nth-child(3) { top: 46px;}
+	#block-ledunfly-menu-link span:nth-child(1) { top: 28px;}
+	#block-ledunfly-menu-link span:nth-child(2){ top: 35px;}
+	#block-ledunfly-menu-link span:nth-child(3) { top: 41px;}
 	
 	#block-ledunfly-menu-link.close:hover span:nth-child(1) {
 	  -webkit-animation: menuToggleHover_wide .3s cubic-bezier(.19,.1,.91,.53) forwards;

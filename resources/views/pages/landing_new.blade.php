@@ -624,7 +624,7 @@
                 color: #ada077;
             }
             #block-ledunfly-menu-link {
-                background-color: #ada077;
+                background-color: transparent;
                 color: #ffffff;
             }
             #block-ledunfly-menu-link span {
