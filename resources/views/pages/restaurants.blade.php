@@ -292,6 +292,7 @@
                 text-transform: uppercase;
                 opacity:0;
             }
+			
             .hotel-block-two-right-sec-align > p { margin-top:0px; }
             .spa-sec-book-an-appoinment-btn { float: left !important; margin-left: 20px; }
             .spa-overlay-text span { padding-left:0px !important; }
