@@ -29,17 +29,12 @@
         <script type="text/javascript" src="<?php echo asset('sximo/assets/js/slideshow.js'); ?>"></script>
         
         <!-- AIC sidebar js -->
-        <!--<script src="{{ asset('sximo/assets/js/jquery_1.js')}}" type="text/javascript"></script>-->
+        <script src="{{ asset('sximo/assets/js/jquery_1.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/jquery.once.js')}}" type="text/javascript"></script>
-        <script src="{{ asset('sximo/assets/js/animation.gsap41e7.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/custm.js')}}" type="text/javascript"></script>
-        <!--<script src="{{ asset('sximo/assets/js/details_loader41e7.js')}}" type="text/javascript"></script>-->
-        <!--<script src="{{ asset('sximo/assets/js/details-slider41e7.js')}}" type="text/javascript"></script>-->
-        <script src="{{ asset('sximo/assets/js/menu41e7.js')}}" type="text/javascript"></script>
-        <!--<script src="{{ asset('sximo/assets/js/queryloader2.min41e7.js')}}" type="text/javascript"></script>-->
-        <!--<script src="{{ asset('sximo/assets/js/ScrollMagic41e7.js')}}" type="text/javascript"></script>-->
         <script src="{{ asset('sximo/assets/js/TweenMax.min41e7.js')}}" type="text/javascript"></script>
-        
+        <script src="{{ asset('sximo/assets/js/animation.gsap41e7.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('sximo/assets/js/menu41e7.js')}}" type="text/javascript"></script>
         <style>
             #search-navbar.search-navbar-destination-search-box {
                 background: #2a2d30 none repeat scroll 0 0 !important;
