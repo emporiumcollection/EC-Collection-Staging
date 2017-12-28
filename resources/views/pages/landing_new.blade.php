@@ -29,7 +29,7 @@
         <script type="text/javascript" src="<?php echo asset('sximo/assets/js/slideshow.js'); ?>"></script>
         
         <!-- AIC sidebar js -->
-        <script src="{{ asset('sximo/assets/js/jquery_1.js')}}" type="text/javascript"></script>
+        <!--<script src="{{ asset('sximo/assets/js/jquery_1.js')}}" type="text/javascript"></script>-->
         <script src="{{ asset('sximo/assets/js/jquery.once.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/animation.gsap41e7.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/custm.js')}}" type="text/javascript"></script>
