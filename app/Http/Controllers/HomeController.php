@@ -479,12 +479,8 @@ class HomeController extends Controller {
         if (CNF_FRONT == 'false' && $request->segment(1) == '') :
             return Redirect::to('dashboard');
         endif;
-		$pageSlug = '';
-        $page = $request->segment(1);
-        if ($page == '') {
-            $page = 'landing';
-            $pageSlug = 'landing';
-        }
+	$page = 'landing';
+        $pageSlug = 'landing';
         if ($page != '') :
             $content = \DB::table('tb_pages')->where('alias', '=', $page)->where('status', '=', 'enable')->get();
             //print_r($content);
