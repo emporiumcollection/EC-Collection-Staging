@@ -876,9 +876,6 @@
             
             /* custom css sidebar */
             
-            .block-content.content ul li {
-                background: brown;
-            }
         
         /* sidebar css end */
         
