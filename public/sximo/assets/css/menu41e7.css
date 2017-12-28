@@ -3,8 +3,8 @@
 	top:0px;
 	position:fixed;
 	margin-left: 0px;
-    height: 100%;
-    z-index:99;
+        height: auto;
+        z-index:99;
 }
 .region-sidebar-first .region-inner{
 	height:100%;

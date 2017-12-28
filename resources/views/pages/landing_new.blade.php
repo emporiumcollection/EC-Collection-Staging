@@ -353,6 +353,7 @@
             background: #272727;
             color: #fff;
             font-size: 15px;
+            z-index: 9999;
         }
         .contact-aside ul {
             padding: 7px 0;
