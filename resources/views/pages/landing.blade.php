@@ -5,8 +5,13 @@
         <meta charset="UTF-8">
         <title>Emporium-Voyage</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+        
+        <link href="../../../public/sximo/assets/css/homepage41e7.css" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/landing-page-styles.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="../../../public/sximo/assets/css/menu41e7.css" rel="stylesheet" type="text/css"/>
+        <link href="../../../public/sximo/assets/css/responsive.custom41e7.css" rel="stylesheet" type="text/css"/>
+        
+        <link href="../../../public/sximo/assets/css/style-ai.css" rel="stylesheet" type="text/css"/>
         
         <script src="{{ asset('sximo/assets/js/jquery-2.1.0.min.js')}}" type="text/javascript"></script>
         <script type="text/javascript" src="{{ asset('sximo/assets/js/uikit.js')}}"></script>
@@ -21,6 +26,19 @@
         <script src="{{ asset('sximo/assets/js/m_slider.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/open-search.js')}}" type="text/javascript"></script>
         <script type="text/javascript" src="<?php echo asset('sximo/assets/js/slideshow.js'); ?>"></script>
+        
+        <!-- AIC sidebar js -->
+        <script src="../../../public/sximo/assets/js/animation.gsap41e7.js" type="text/javascript"></script>
+        <script src="../../../public/sximo/assets/js/custm.js" type="text/javascript"></script>
+        <script src="../../../public/sximo/assets/js/details_loader41e7.js" type="text/javascript"></script>
+        <script src="../../../public/sximo/assets/js/details-slider41e7.js" type="text/javascript"></script>
+        <!--<script src="../../../public/sximo/assets/js/jquery_1.js" type="text/javascript"></script>-->
+        <script src="../../../public/sximo/assets/js/jquery.once.js" type="text/javascript"></script>
+        <script src="../../../public/sximo/assets/js/menu41e7.js" type="text/javascript"></script>
+        <script src="../../../public/sximo/assets/js/queryloader2.min41e7.js" type="text/javascript"></script>
+        <script src="../../../public/sximo/assets/js/ScrollMagic41e7.js" type="text/javascript"></script>
+        <script src="../../../public/sximo/assets/js/TweenMax.min41e7.js" type="text/javascript"></script>
+        
         <style>
             #search-navbar.search-navbar-destination-search-box {
                 background: #2a2d30 none repeat scroll 0 0 !important;
@@ -528,6 +546,334 @@
             font-family: Geomanist-light;
         }
         
+        /* sidebar css */
+        
+        body:not(.adminimal-theme) {
+                background-color: #ada077;
+                color: #ffffff;
+            }
+            .menu-logo {
+                background: url(sites/five/files/five_logo_gold.svg) no-repeat center center;
+            }
+            .mobile-detect-class .menu-logo {
+                background-image: url(http://fiveseashotel.com/sites/five/files/five_logo_white.svg);
+            }
+            #loader-logo-under {
+                background: url(http://fiveseashotel.com/sites/five/files/five_logo_gold.svg) no-repeat left center;
+            }
+            #loader-logo-up {
+                background: url(http://fiveseashotel.com/sites/five/files/five_logo_white.svg) no-repeat left center;
+            }
+            #website-logo {
+                background: url(http://fiveseashotel.com/sites/five/files/five_logo_white.svg) no-repeat center;
+            }
+            body:not(.adminimal-theme) a,
+            body:not(.adminimal-theme) ul.primary li a {
+                background-color: #ada077;
+                color: #ffffff;
+            }
+            body:not(.adminimal-theme) a:hover,
+            body:not(.adminimal-theme) a.active,
+            body:not(.adminimal-theme) ul.primary li a:hover,
+            body:not(.adminimal-theme) ul.primary li a.active {
+                background-color: #ada077;
+                color: #232323;
+                a.contextual-links-trigger {
+                    background: transparent url(modules/contextual/images/gear-select.png) no-repeat 2px 0;
+                }
+            }
+            body:not(.adminimal-theme) footer {
+                background-color: #ffffff;
+            }
+            body:not(.adminimal-theme) footer a,
+            body:not(.adminimal-theme) footer a:hover {
+                background-color: #ffffff;
+                color: #232323;
+            }
+            #block-ledunfly-footer-text .block-inner {
+                color: #ada077;
+            }
+            div.underline-title,
+            div.underline-rollover {
+                background-color: #ffffff;
+            }
+            body:not(.adminimal-theme) .region-sidebar-first {
+                background-color: #252525;
+                color: #ada077;
+            }
+            #unsupported {
+                background-color: #ada077;
+                color: #ffffff;
+            }
+            .block-menu-text {
+                color: #232323;
+            }
+            #block-ledunfly-book-link {
+                background-color: #ada077;
+                color: #ffffff;
+            }
+            #block-ledunfly-book-link:hover {
+                background-color: #232323;
+            }
+            #block-ledunfly-book-link a:hover {
+                color: #ffffff;
+            }
+            #block-ledunfly-book-link a:nth-child(2):hover {
+                color: #ada077;
+            }
+            #block-ledunfly-menu-link {
+                background-color: #ada077;
+                color: #ffffff;
+            }
+            #block-ledunfly-menu-link span {
+                background-color: #ffffff;
+            }
+            ul.menu li.little a,
+            ul.menu li ul li.little a {
+                color: #ABA07C;
+            }
+            ul.menu li a,
+            ul.menu li ul li a {
+                color: #ABA07C;
+            }
+            ul.menu li a:hover,
+            ul.menu li a:active,
+            ul.menu li.little a:hover,
+            ul.menu li.little a:active,
+            ul.menu li a.active {
+                color: #aba07ccc;
+            }
+            #block-system-main-menu .block-menu-text {
+                color: #ABA07C;
+            }
+            #block-system-main-menu .block-menu-text a,
+            #block-system-main-menu .block-menu-text a:hover,
+            #block-system-main-menu .block-menu-text a.active {
+                background: none;
+                color: #232323;
+            }
+            ul.menu ul:before {
+                background-color: #ABA07C;
+            }
+            #block-system-main-menu .block-inner {
+                background-color: #252525;
+            }
+            #block-locale-language,
+            #block-locale-language .block-title,
+            #block-locale-language li,
+            #block-locale-language li span,
+            #block-locale-language li a {
+                background-color: #252525;
+                color: #ada077;
+            }
+            #block-locale-language li:hover span,
+            #block-locale-language li:hover a {
+                background-color: #ada077;
+                color: #252525;
+            }
+            #block-locale-language li:hover,
+            {
+                background-color: #ada077;
+                border-top: 1px solid #ada077;
+                color: #252525;
+            }
+            #block-details-social-links,
+            #block-details-social-links a,
+            #block-details-social-links a:hover {
+                background-color: #ffffff;
+                color: #ada077;
+            }
+            #block-details-social-links .block-content a span:before {
+                background-color: #ada077;
+                opacity: 0.7;
+            }
+            #block-ledunfly-footer-text {
+                background-color: #ffffff;
+            }
+            .not-logged-in.page-user input#edit-submit {
+                color: #ccc5af;
+            }
+            #homepage-1391 {
+                background: url('sites/five/files/homepage/img_bg_footer_1.jpg') no-repeat bottom center #f2f1f5;
+            }
+            #homepage-1391 a {
+                background-color: #f2f1f5;
+            }
+            #homepage-1391 a:hover,
+            #homepage-1391 a.active {
+                background-color: #f2f1f5;
+            }
+            #homepage-1391 .header-inner-wrapper {
+                background: url('sites/five/files/homepage/five_header_1600x926_home_v2_0.jpg') no-repeat top center #f2f1f5;
+                background-size: cover;
+            }
+            #homepage-1391 .content-first .field-name-field-hp-text-1 {
+                background: #ada077;
+                color: #ffffff;
+            }
+            #homepage-1391 div.underline-title {
+                background: #ada077;
+                background: #ffffff;
+            }
+            #homepage-1391 div.underline-rollover {
+                background: #ffffff;
+            }
+            #homepage-1391 .content-first .field-name-field-hp-text-1 a {
+                background-color: #ada077;
+                color: #ffffff;
+            }
+            #homepage-1391 .content-first .field-name-field-hp-text-1 a:hover,
+            #homepage-1391 .content-first .field-name-field-hp-text-1 a.active {
+                background-color: #ada077;
+                color: #ffffff;
+            }
+            .scroll-down {
+                background-color: #ada077;
+                border-color: #ada077;
+            }
+            #homepage-1391 .infos .field-name-field-hp-text {
+                background-image: url("sites/five/files/bg-hp-bloc-bas_1.jpg");
+            }
+            #node-slider-1389 {
+                background: #232323;
+                color: #ffffff;
+            }
+            #node-slider-1389 a,
+            #node-slider-1389 a:hover,
+            #node-slider-1389 a.active {
+                background: #232323;
+                color: #ffffff;
+            }
+            <!--html {
+                font-size: 100%;
+                -webkit-text-size-adjust: 100%;
+                line-height: 1.5;
+                height: 100%;
+                overflow-y: scroll;
+            }
+			body {
+                min-height: 100%;
+                margin: 0;
+                padding: 0;
+                -webkit-font-smoothing: antialiased;
+                font-smoothing: antialiased;
+                text-rendering: optimizeLegibility\9;
+            }-->
+
+            figure {
+                margin: 0;
+            }
+
+            .block-inner,
+            .pane-inner,
+            .menu-wrapper,
+            .branding-elements,
+            .breadcrumb-wrapper,
+            .attribution,
+            .at-panel .rounded-corner,
+            .block-panels-mini > .block-title,
+            .rendered-by-ds .panel-display .region-inner,
+            div.messages {
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+
+            #content .panel-display,
+            #content .panel-flexible {
+                margin-left: -10px;
+                margin-right: -10px;
+            }
+
+            img {
+                height: auto;
+                -ms-interpolation-mode: bicubic;
+            }
+
+            img,
+            embed,
+            object,
+            video {
+                max-width: 100%;
+            }
+
+            .lt-ie9 img,
+            .lt-ie9 object,
+            .lt-ie9 embed,
+            .lt-ie9 video {
+                max-width: none;
+            }
+
+            #map img,
+            .gmap img,
+            .view-gmap img,
+            .openlayers-map img,
+            #getlocations_map_canvas img,
+            #locationmap_map img,
+            .geofieldMap img,
+            .views_horizontal_slider img,
+            .geolocation-map img,
+            .geolocation-views-map img {
+                max-width: none !important;
+            }
+
+            header[role=banner],
+            .content-inner,
+            .nav,
+            .region-sidebar-first,
+            .region-sidebar-second,
+            .region-secondary-content,
+            .region-tertiary-content,
+            .region-footer {
+                overflow: visible;
+                word-wrap: break-word;
+            }
+            .ir {
+                display: block !important;
+                text-indent: 100%;
+                white-space: nowrap;
+                overflow: hidden;
+                border: 0;
+                font: 0/0 a;
+                text-shadow: none;
+                color: transparent;
+                background-color: transparent;
+            }
+
+            /* More robust element-invisible and element-focuable classes */
+            .element-invisible {
+                border: 0;
+                clip: rect(1px 1px 1px 1px);
+                clip: rect(1px, 1px, 1px, 1px);
+                height: 1px;
+                overflow: hidden;
+                padding: 0;
+                position: absolute;
+                width: 1px;
+            }
+
+            .element-invisible.element-focusable:active,
+            .element-invisible.element-focusable:focus {
+                clip: auto;
+                height: auto;
+                overflow: visible;
+                position: static;
+                width: auto;
+            }
+
+            .offscreen {
+                position: absolute;
+                top: -99999em;
+                width: 1px;
+                height: 1px;
+                overflow: hidden;
+                outline: 0;
+            }
+            .element-hidden {
+                display: none;
+            }
+        
+        /* sidebar css end */
+        
         @import url('https://fonts.googleapis.com/css?family=Satisfy');
         
         </style>
@@ -547,7 +893,130 @@
             <div class="wrapper">
                 <div class="container-fluid"> 
                     <div class="row">
-                        <header>    
+                        <header>
+                            <!-- sidebar-->
+                            <div class="region region-sidebar-first sidebar">
+                                <div class="region-inner clearfix">
+                                    <div id="block-ledunfly-menu-link" class="block block-ledunfly no-title odd first block-count-4 block-region-sidebar-first block-menu-link" ><div class="block-inner clearfix">  
+                                            <div class="block-content content"><span></span><span></span><span></span></div>
+                                        </div>
+                                    </div>
+                                    <div id="block-ledunfly-menu-logo" class="block block-ledunfly no-title even block-count-5 block-region-sidebar-first block-menu-logo" ><div class="block-inner clearfix">  
+
+                                            <div class="block-content content"><a href="index.html" title="Five Seas Hotel"><div class="menu-logo"></div></a></div>
+                                        </div>
+                                    </div>
+                                    <div id="block-system-main-menu" class="block block-system block-menu no-title odd block-count-6 block-region-sidebar-first block-main-menu" role="navigation">
+                                        <div class="block-inner clearfix">
+                                            <div class="block-content content" class="block-content content">
+                                                <ul class="menu clearfix">
+                                                    <li class="first expanded menu-depth-1 menu-item-989">
+                                                        <a href="#">Sleep</a>
+                                                        <ul class="menu clearfix">
+                                                            <li class="first leaf menu-depth-2 menu-item-990">
+                                                                <a href="#">Suite Présidentielle</a>
+                                                            </li>
+                                                            <li class="leaf menu-depth-2 menu-item-991">
+                                                                <a href="#">Suite Terrasse</a>
+                                                            </li>
+                                                            <li class="leaf menu-depth-2 menu-item-992">
+                                                                <a href="#">Top Of Five</a>
+                                                            </li>
+                                                            <li class="leaf menu-depth-2 menu-item-993">
+                                                                <a href="#">Suites So Suite</a>
+                                                            </li>
+                                                            <li class="leaf menu-depth-2 menu-item-994">
+                                                                <a href="#">Junior Suites</a>
+                                                            </li>
+                                                            <li class="leaf menu-depth-2 menu-item-1051">
+                                                                <a href="#">Chambres Executive</a>
+                                                            </li>
+                                                            <li class="leaf menu-depth-2 menu-item-995">
+                                                                <a href="#">Chambres Deluxe</a>
+                                                            </li>
+                                                            <li class="last leaf menu-depth-2 menu-item-1007">
+                                                                <a href="#">Services</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="expanded menu-depth-1 menu-item-996">
+                                                        <a href="#">Savour</a>
+                                                        <ul class="menu clearfix">
+                                                    <li class="first leaf menu-depth-2 menu-item-998">
+                                                        <a href="#">Le Roof</a>
+                                                    </li><li class="leaf menu-depth-2 menu-item-999">
+                                                        <a href="#">Le Bar</a>
+                                                    </li>
+                                                    <li class="last leaf menu-depth-2 menu-item-1135">
+                                                        <a href="#">Le Brunch</a>
+                                                    </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="expanded menu-depth-1 menu-item-1000">
+                                                        <a href="#">Relax</a>
+                                                        <ul class="menu clearfix">
+                                                            <li class="first leaf menu-depth-2 menu-item-1001">
+                                                                <a href="#">Spa</a>
+                                                            </li><li class="leaf menu-depth-2 menu-item-1002">
+                                                                <a href="#">Terrasse piscine</a>
+                                                            </li>
+                                                            <li class="last leaf menu-depth-2 menu-item-1003">
+                                                                <a href="#">Plage privée</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="expanded menu-depth-1 menu-item-1004">
+                                                        <a href="#">Discover</a>
+                                                        <ul class="menu clearfix">
+                                                            <li class="first leaf menu-depth-2 menu-item-1005">
+                                                                <a href="#">Cannes</a></li>
+                                                            <li class="last leaf menu-depth-2 menu-item-1006">
+                                                                <a href="#">Activités</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="leaf menu-depth-1 menu-item-1013">
+                                                        <a href="#">News</a>
+                                                    </li>
+                                                    <li class="expanded menu-depth-1 menu-item-1123">
+                                                        <a href="#">Offres</a>
+                                                        <ul class="menu clearfix">
+                                                            <li class="first leaf menu-depth-2 menu-item-1014">
+                                                                <a href="#">Offres Sleep</a>
+                                                            </li><li class="last leaf menu-depth-2 menu-item-1125">
+                                                                <a href="#">Offres Relax</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="leaf menu-depth-1 menu-item-1015">
+                                                        <a href="#">Gift box</a>
+                                                    </li>
+                                                    <li class="leaf menu-depth-1 menu-item-1009">
+                                                        <a href="#">Events</a>
+                                                    </li><li class="leaf little little-first menu-depth-1 menu-item-1139">
+                                                        <a href="#" class="little little-first">Carrières</a>
+                                                    </li>
+                                                    <li class="leaf little menu-depth-1 menu-item-1010">
+                                                        <a href="#" class="little">Plan &amp; Accès</a>
+                                                    </li>
+                                                    <li class="leaf little menu-depth-1 menu-item-1092">
+                                                        <a href="#" class="little">Mentions légales</a>
+                                                    </li><li class="last leaf little menu-depth-1 menu-item-1111">
+                                                        <a href="#" class="little">Green Globe</a>
+                                                    </li
+                                                    ></ul>
+                                            </div>
+                                            <div class="block-menu-text">
+                                                <p>FIVE SEAS HOTEL CANNES - 1, RUE NOTRE DAME - 06400 CANNES</p>
+                                                <div><p>T : +33 4 63 36 05 05</p>
+                                                    <p>INFO@FIVESEASHOTEL.COM</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>     
+                            <!-- end sidebar -->
                             <a data-popup-id="login-forms-popup" href="#" class="video-popup-btn login_popup show-login-forms-btn"><i class="fa fa-lock " aria-hidden="true" ></i></a>
                         </header>
                         <!--Main Page-->
