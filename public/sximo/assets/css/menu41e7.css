@@ -62,7 +62,7 @@ ul.menusk li.little a {
     text-decoration:none;
     font-family:'Avenir LT W01_65 Medium1475532', 'Arial';
     font-size:12px;
-    line-height:24px;
+    line-height:0px;
     letter-spacing:0.05em;
     text-transform:uppercase;
 }
@@ -544,7 +544,7 @@ ul.menusk li ul.menusk1 li a {
  */
 @media (max-height: 768px) {
 	ul.menusk {
-	    top: 50%;
+	    top: 38%;
 	}
 	ul.menusk li.little-first{
 		margin-top:15px;
