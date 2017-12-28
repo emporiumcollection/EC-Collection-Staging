@@ -26,7 +26,7 @@ ul.menusk {
     display: block;
     margin: 0 0 0 130px;
     position: absolute;
-    top: 100% !important;
+    top: 100%;
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
@@ -48,7 +48,7 @@ ul.menusk li a {
     background-color:transparent;
     text-decoration:none;
     font-size:32px;
-    line-height:48px;
+    line-height:25px;
     letter-spacing:0.025em;
 }
 ul.menusk li a:hover, ul.menusk li a:active, ul.menusk li.little a:hover, ul.menusk li.little a:active, ul.menusk li a.active {
@@ -544,7 +544,7 @@ ul.menusk li ul.menusk1 li a {
  */
 @media (max-height: 768px) {
 	ul.menusk {
-	    top: 35%;
+	    top: 50%;
 	}
 	ul.menusk li.little-first{
 		margin-top:15px;

@@ -1008,12 +1008,12 @@
                                                     </li
                                                     ></ul>
                                             </div>
-                                            <div class="block-menu-text">
+<!--                                            <div class="block-menu-text">
                                                 <p>FIVE SEAS HOTEL CANNES - 1, RUE NOTRE DAME - 06400 CANNES</p>
                                                 <div><p>T : +33 4 63 36 05 05</p>
                                                     <p>INFO@FIVESEASHOTEL.COM</p>
                                                 </div>
-                                            </div>
+                                            </div>-->
                                         </div>
                                     </div>
                                 </div>
