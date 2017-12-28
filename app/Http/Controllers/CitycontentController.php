@@ -143,6 +143,23 @@ class CitycontentController extends Controller {
 		$validator = Validator::make($request->all(), $rules);	
 		if ($validator->passes()) {
 			$data = $this->validatePost('tb_citycontent');
+			$data['title'] = implode(',',$request->input('title'));
+			$data['sub_title'] = $request->input('sub_title');
+			$data['alias'] = $request->input('title');
+			$data['description'] = $request->input('description');
+			$data['category'] = $request->input('category');
+			$data['slider'] = $request->input('slider');
+			$data['gallery_title'] = $request->input('gallery_title');
+			$data['tourism_office_link'] = $request->input('tourism_office_link');
+			$data['designers'] = $request->input('designers');
+			$data['experience'] = $request->input('experience');
+			$data['instagram'] = $request->input('instagram');
+			$data['youtube_video_link'] = $request->input('youtube_video_link');
+			$data['youtube_video_title'] = $request->input('youtube_video_title');
+			$data['youtube_video_desc'] = $request->input('youtube_video_desc');
+			$data['metakey'] = $request->input('metakey');
+			$data['metadesc'] = $request->input('metadesc');
+			$data['status'] = $request->input('status');
 				
 			$id = $this->model->insertRow($data , $request->input('id'));
 			
