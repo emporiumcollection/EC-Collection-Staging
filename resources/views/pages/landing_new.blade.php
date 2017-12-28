@@ -2034,11 +2034,11 @@
                                                                             <div class="panel panel-default">
                                                                                 <div class="panel-heading">
                                                                                     <h4 class="margin-top-15 panel-title pull-left">
-                                                                                        <a data-toggle="collapse" data-parent="#inner-level-accordian" href="#destination-child{{$childDest->id}}">{{$childDest->category_name}}</a>
+                                                                                        <a data-toggle="collapse" data-parent="#inner-level-accordian" href="#mobile-inner-child{{$childDest->id}}">{{$childDest->category_name}}</a>
                                                                                     </h4>
                                                                                 </div>
                                                                                 @if (array_key_exists("subchild",$childDest))
-                                                                                    <div id="destination-child{{$childDest->id}}" class="panel-collapse collapse">
+                                                                                    <div id="mobile-inner-child{{$childDest->id}}" class="panel-collapse collapse">
                                                                                         <ul class="where-box-sub-menu inner-level-sub-menu">
                                                                                             @foreach($childDest->subchild as $subchildDest)
                                                                                                 <li>
@@ -2047,11 +2047,11 @@
                                                                                                         <div class="panel panel-default">
                                                                                                             <div class="panel-heading">
                                                                                                                 <h4 class="panel-title">
-                                                                                                                    <a data-toggle="collapse" data-parent="#inner-level-accordian" href="#destination-child{{$childDest->id}}-{{$subchildDest->id}}">{{$subchildDest->category_name}}</a>
+                                                                                                                    <a data-toggle="collapse" data-parent="#inner-level-accordian" href="#mobile-inner-child{{$childDest->id}}-{{$subchildDest->id}}">{{$subchildDest->category_name}}</a>
                                                                                                                 </h4>
                                                                                                             </div>
 
-                                                                                                                <div id="destination-child{{$childDest->id}}-{{$subchildDest->id}}" class="panel-collapse collapse">
+                                                                                                                <div id="mobile-inner-child{{$childDest->id}}-{{$subchildDest->id}}" class="panel-collapse collapse">
                                                                                                                     <ul class="where-box-sub-menu inner-level-sub-menu">
                                                                                                                         @foreach($childDest->childs as $_child)
                                                                                                                             <li><a href="{{URL::to('luxury_destinations/'. str_replace(' ','_',$destination['maincat']->category_name).'/'. str_replace(' ','_',$childDest->category_name).'/'. str_replace(' ','_',$_child->category_name))}}">{{$_child->category_name}}</a></li>
