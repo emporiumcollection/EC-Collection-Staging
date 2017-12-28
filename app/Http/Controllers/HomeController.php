@@ -268,6 +268,7 @@ class HomeController extends Controller {
 					if (isset($pageSlug) && $pageSlug == 'restaurants') {
 						$propertiesArr = array();
 						$props = \DB::table('tb_properties')->select('id','restaurant_title','restaurant_usp_text','restaurant_usp_person','restaurant_image','restaurant_desciription','restaurant_image2','property_name')->where('property_status', 1)->where('restaurant_title', '!=','')->get();
+						print_r($props);
 						if (!empty($props)) {
                             $propertiesArr = $props;
 							$this->data['restaurant_gallery'] = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_container_files.id')->where('tb_properties_images.property_id', $props[0]->id)->where('tb_properties_images.type', 'Restrurants Gallery Images')->orderBy('tb_container_files.file_sort_num', 'asc')->count();
