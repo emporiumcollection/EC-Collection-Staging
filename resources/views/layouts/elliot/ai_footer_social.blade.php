@@ -168,7 +168,7 @@
 
         <!--Social share start-->
 
-        <div class="social-share">
+<!--        <div class="social-share">
             <a class="social-share-btn" href="#">FOLLOW</a>
             <ul style="display: none;">
                 <li>
@@ -184,7 +184,7 @@
                     <a href="#">Pintrest</a>
                 </li>
             </ul>
-        </div>
+        </div>-->
 
         <!--Social share end-->
 

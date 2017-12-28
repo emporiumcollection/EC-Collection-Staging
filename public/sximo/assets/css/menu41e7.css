@@ -45,11 +45,13 @@ ul li.leaf {
     list-style-type: none;
 }
 ul.menusk li a {
-    background-color:transparent;
-    text-decoration:none;
-    font-size:32px;
-    line-height:25px;
-    letter-spacing:0.025em;
+	background-color: transparent;
+	text-decoration: none;
+	font-size: 14px;
+	line-height: 16px;
+	letter-spacing: 0.025em;
+	text-transform: uppercase;
+	font-family: Geomanist-Regular;
 }
 ul.menusk li a:hover, ul.menusk li a:active, ul.menusk li.little a:hover, ul.menusk li.little a:active, ul.menusk li a.active {
     background-color:transparent;
@@ -58,13 +60,13 @@ ul.menusk li.little-first{
 	margin-top:70px;
 }
 ul.menusk li.little a {
-    background-color:transparent;
-    text-decoration:none;
-    font-family:'Avenir LT W01_65 Medium1475532', 'Arial';
-    font-size:12px;
-    line-height:0px;
-    letter-spacing:0.05em;
-    text-transform:uppercase;
+	background-color: transparent;
+	text-decoration: none;
+	font-size: 12px;
+	line-height: 0px;
+	letter-spacing: 0.05em;
+	text-transform: lowercase;
+	font-family: Geomanist-light;
 }
 ul.menusk ul.menusk1 {
 	display:none;
@@ -76,6 +78,17 @@ ul.menusk ul.menusk1 {
     transform: translateY(0%);
     width: 100%;
     z-index:3;
+}
+ul.menusk {
+    display: block;
+    margin: 0 0 0 130px;
+        margin-left: 130px;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    transform: translateY(-50%);
 }
 /*Custom font size depending on languages */
 .lang-fr ul.menusk ul.menusk1,

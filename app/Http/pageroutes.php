@@ -63,4 +63,5 @@ Route::get('spa', 'HomeController@index');
 Route::get('propertyflipbook', 'HomeController@index');
 Route::get('social-stream', 'HomeController@index');
 Route::get('social-youtube', 'HomeController@index');
+Route::get('restaurants', 'HomeController@index');
 ?>

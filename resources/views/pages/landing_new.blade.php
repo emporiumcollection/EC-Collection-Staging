@@ -340,7 +340,7 @@
             border-radius: 2px;
             transition: .5s;
             position: fixed;
-            top: 120px;
+            top: 65px;
             right: calc(100% - 43px);
             width: 291px;
             background: #272727;
@@ -869,6 +869,69 @@
             
         /* sidebar css end */
         
+        /* 28-12-2017 */
+        
+        .hotels-logo img {
+	background: rgba(37, 37, 37, 0.9);
+	/* background-color: rgb(30, 32, 35); */
+        }
+        
+        .right-menus ul li a {
+	border-bottom: 1px solid #414246;
+	color: #fff;
+	display: block;
+	font-size: 14px;
+	padding: 30px 0 30px 30px;
+	text-transform: uppercase;
+	background: rgba(37, 37, 37, 1);
+        }
+        
+        .booking-form-bar-top {
+	float: left;
+	opacity: unset !important;
+	padding-left: 100px !important;
+	padding-right: 8px !important;
+	padding-top: 15px !important;
+	position: absolute;
+	top: 0;
+	width: 100% !important;
+	background: rgba(37, 37, 37, 0.9);
+        }
+        
+        .emporium-voyage-Menu {
+            color: #c7ab84;
+            margin-top: 23px;
+            margin-left: 21px;
+            opacity: 1;
+            box-shadow: none;
+        }
+        
+        .uk-margin-top.uk-button.uk-button-primary {
+	background: #c7ab84;
+	text-transform: lowercase;
+    }
+    
+        .bh-slideshow-thumbnail-split .bh-slideshow-slidenav.uk-slidenav-next {
+            left: 0;
+            background: #c7ab84;
+            color: white;
+        }
+        
+        .uk-slidenav {
+	display: inline-block;
+	box-sizing: border-box;
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+	color: #93908d;
+	font-size: .8rem;
+	text-align: center;
+	z-index: 1;
+	background: #c7ab84;
+	-webkit-transition: color .2s,background .2s;
+	transition: color .2s,background .2s;
+    }
+        
         @import url('https://fonts.googleapis.com/css?family=Satisfy');
         
         </style>
@@ -893,7 +956,7 @@
                             <div class="region region-sidebar-first sidebar">
                                 <div class="region-inner clearfix">
                                     <div id="block-ledunfly-menu-link" class="block block-ledunfly no-title odd first block-count-4 block-region-sidebar-first block-menu-link" ><div class="block-inner clearfix">  
-                                            <div class="block-content content"><span></span><span></span><span></span></div>
+                                            <div class="block-content content"><i class="fa fa-bars emporium-voyage-Menu" aria-hidden="true"></i></div>
                                         </div>
                                     </div>
 <!--                                    <div id="block-ledunfly-menu-logo" class="block block-ledunfly no-title even block-count-5 block-region-sidebar-first block-menu-logo" ><div class="block-inner clearfix">  
