@@ -39,20 +39,20 @@
 				
 				if(!isMobile.any()){
 					//menu btn mouse events
-					$('ul.menu li.menu-depth-1 > a').bind("mouseover", function(event) {
+					$('ul.menusk li.menu-depth-1 > a').bind("mouseover", function(event) {
 						clearTimeout(timeoutFunction);
 						closeSubmenu(); 
 						if($(this).parent().children('ul').length > 0 && $(this).parent().children('ul').css('display') == 'none'){showSubmenu($(this).parent().children('ul'), 0);}
 					});
-					$('ul.menu li.menu-depth-1 > a').bind("mouseout", function(event) {
+					$('ul.menusk li.menu-depth-1 > a').bind("mouseout", function(event) {
 						if(!isActiveSubmenu($(this).parent().children('ul')) ){
 							timeoutFunction = setTimeout(function(){closeSubmenu(); openActiveSubmenu(0)}, 2000);
 						}						
 					});
-					$('ul.menu li.menu-depth-2 > a').bind("mouseover", function(event) {
+					$('ul.menusk li.menu-depth-2 > a').bind("mouseover", function(event) {
 						clearTimeout(timeoutFunction);
 					});
-					$('ul.menu li.menu-depth-2 > a').bind("mouseout", function(event) {
+					$('ul.menusk li.menu-depth-2 > a').bind("mouseout", function(event) {
 						timeoutFunction = setTimeout(function(){closeSubmenu(); openActiveSubmenu(0)}, 2000);
 					});
 					
@@ -90,7 +90,7 @@
 					
 					//Animate menu item level 1
 					var countItemLevel1 = 1;
-					$( 'ul.menu li.menu-depth-1' ).each(function( index ) {
+					$( 'ul.menusk li.menu-depth-1' ).each(function( index ) {
 				    	TweenMax.fromTo( $(this), .8, {autoAlpha:0, marginLeft:-30, immediateRender:true}, {autoAlpha:1, marginLeft:0, ease:Expo.easeOut, delay:.5+(0.1*countItemLevel1)});
 			        	countItemLevel1++;
 			        });
@@ -120,14 +120,14 @@
 			
 			function openActiveSubmenu(delay){
 				//Active menu is level 1
-				$( 'ul.menu li a' ).each(function( index ) {
+				$( 'ul.menusk li a' ).each(function( index ) {
 			    	if($(this).hasClass('active')) {
 			    		showSubmenu($(this).parent().find('ul'), delay);
 			    		return;
 			    	}
 			    });
 		        //Active menu is level 2
-				$( 'ul.menu li ul li a' ).each(function( index ) {
+				$( 'ul.menusk li ul li a' ).each(function( index ) {
 			    	if($(this).hasClass('active')) {showSubmenu($(this).parent().parent(), delay);}
 		        });
 			}
@@ -149,7 +149,7 @@
 			}
 			function closeSubmenu(){
 				//Hide all submenu
-				$( 'ul.menu li' ).each(function( index ) {
+				$( 'ul.menusk li' ).each(function( index ) {
 			    	if($(this).children('ul').length > 0) $(this).children('ul').css({'display':'none'});
 		        });
 			}
