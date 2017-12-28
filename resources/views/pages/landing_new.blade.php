@@ -900,7 +900,37 @@
         
         .emporium-voyage-Menu {
             color: #c7ab84;
+            margin-top: 23px;
+            margin-left: 21px;
+            opacity: 1;
+            box-shadow: none;
         }
+        
+        .uk-margin-top.uk-button.uk-button-primary {
+	background: #c7ab84;
+	text-transform: lowercase;
+    }
+    
+        .bh-slideshow-thumbnail-split .bh-slideshow-slidenav.uk-slidenav-next {
+            left: 0;
+            background: #c7ab84;
+            color: white;
+        }
+        
+        .uk-slidenav {
+	display: inline-block;
+	box-sizing: border-box;
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+	color: #93908d;
+	font-size: .8rem;
+	text-align: center;
+	z-index: 1;
+	background: #c7ab84;
+	-webkit-transition: color .2s,background .2s;
+	transition: color .2s,background .2s;
+    }
         
         @import url('https://fonts.googleapis.com/css?family=Satisfy');
         
