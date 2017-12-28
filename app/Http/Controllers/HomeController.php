@@ -448,7 +448,7 @@ class HomeController extends Controller {
 
                         $this->data['propertyCategory'] = $OurCategory;
                     }
-                    return view($page, $this->data);
+                    return view('pages.landing_new', $this->data);
                 } else {
                     return Redirect::to('')
                                     ->with('message', \SiteHelpers::alert('error', \Lang::get('core.note_noexists')));

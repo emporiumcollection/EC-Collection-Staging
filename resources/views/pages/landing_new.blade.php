@@ -5,9 +5,17 @@
         <meta charset="UTF-8">
         <title>Emporium-Voyage</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
         <link href="{{ asset('sximo/assets/css/landing-page-styles.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('sximo/assets/css/menu41e7.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('sximo/assets/css/responsive.custom41e7.css')}}" rel="stylesheet" type="text/css"/>
+        
+        <link href="{{ asset('sximo/assets/css/style-ai.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('sximo/assets/css/homepage41e7.css')}}" rel="stylesheet" type="text/css"/>
         
         <script src="{{ asset('sximo/assets/js/jquery-2.1.0.min.js')}}" type="text/javascript"></script>
+        <script type="text/javascript" src="{{ asset('sximo/assets/js/uikit.js')}}"></script>
         <script src="{{ asset('sximo/assets/js/bootstrap.min.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/jquery-ui.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/moment.min.js')}}" type="text/javascript" ></script>
@@ -18,6 +26,20 @@
         <script src="{{ asset('sximo/assets/js/image-slider.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/m_slider.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/open-search.js')}}" type="text/javascript"></script>
+        <script type="text/javascript" src="<?php echo asset('sximo/assets/js/slideshow.js'); ?>"></script>
+        
+        <!-- AIC sidebar js -->
+        <script src="{{ asset('sximo/assets/js/jquery_1.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('sximo/assets/js/jquery.once.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('sximo/assets/js/animation.gsap41e7.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('sximo/assets/js/custm.js')}}" type="text/javascript"></script>
+        <!--<script src="{{ asset('sximo/assets/js/details_loader41e7.js')}}" type="text/javascript"></script>-->
+        <!--<script src="{{ asset('sximo/assets/js/details-slider41e7.js')}}" type="text/javascript"></script>-->
+        <script src="{{ asset('sximo/assets/js/menu41e7.js')}}" type="text/javascript"></script>
+        <!--<script src="{{ asset('sximo/assets/js/queryloader2.min41e7.js')}}" type="text/javascript"></script>-->
+        <!--<script src="{{ asset('sximo/assets/js/ScrollMagic41e7.js')}}" type="text/javascript"></script>-->
+        <script src="{{ asset('sximo/assets/js/TweenMax.min41e7.js')}}" type="text/javascript"></script>
+        
         <style>
             #search-navbar.search-navbar-destination-search-box {
                 background: #2a2d30 none repeat scroll 0 0 !important;
@@ -366,8 +388,501 @@
         
         .asideIclass {
             float: right;
+            color: #c7ab84;
         }
+        
+        .login_popup .fa {
+            color: #c7ab84;
+            font-size: 21px;
+            margin: 25px 0px 1px 68px;
+        }
+        
+        .main-page-landing .experience-page {
+            position: unset;
+            width: auto;
+            left: unset;
+            top: unset;
+            height: auto;
+            min-height: unset;
+            max-height: unset;
+        }
+        .main-page-landing .m_slider .arrows-container {
+            top: calc(100vh - 63px);
+            float: left;
+            height: 63px;
+        }
+        .editorial_m_slider_landing ul li .editorial-text {
+            bottom: auto;
+        }
+        .main-page-landing .experience-page .open-experience-html.des-holiday-sec-align {
+            width: auto !important;
+        }
+        .main-page-landing .destination-page .open-destination-html {
+            width: 100% !important;
+        }
+        .main-page-landing .destination-page {
+            position: unset;
+            width: auto;
+            left: unset;
+            top: unset;
+            height: auto;
+            min-height: unset;
+            max-height: unset;
+        }
+        .main-page-landing .book-now-page .book-now-page-content {
+            width: 100% !important;
+        }
+        .main-page-landing .book-now-page {
+            position: unset;
+            width: auto;
+            left: unset;
+            top: unset;
+            height: auto;
+            min-height: unset;
+            max-height: unset;
+        }
+        .right-menus.right-menu-sidebar {
+            z-index: 99;
+        }
+        .pre-footer-sec-align {
+            display: none;
+        }
+        
+        .open-experience-html.des-holiday-sec-align > h2 {
+            color: #fff;
+            float: left;
+            margin-bottom: 20px !important;
+            margin-top: 2px;
+            text-align: center;
+            width: 100%;
+            font-size: 28px;
+            font-family: ACaslonPro-Regular;
+        }
+        
+            .hover-tittles {
+            background: #000;
+            color: #fff;
+            display: none;
+            float: left;
+            font-size: 15px;
+            height: 162px;
+            margin-left: 15px;
+            margin-right: 17px;
+            margin-top: -176px;
+            opacity: .9;
+            padding: 62px 14px;
+            position: relative;
+            text-align: center;
+            width: 138px;
+            font-family: Geomanist-light;
+        }
+        
+        #search-navbar.search-navbar-destination-search-box {
+            background: #2a2d30 none repeat scroll 0 0 !important;
+            border: 2px solid #2a2d30;
+            display: table;
+            margin: 0 auto 10px;
+            width: 80%;
+            font-family: Geomanist-light !important;
+            color: red !important;
+        }
+        
+        .where-box-sub-menu a {
+            color: #fff;
+            font-size: 15px;
+            font-family: Geomanist-regular;
+        }
+        
+        .destination-sub-menues .menu-text {
+            color: #ABA07C !important;
+            font-family: Geomanist-light;
+        }
+        
+        .open-destination-html h2 {
+            text-align: center;
+            color: #fff;
+            font-size: 32px;
+            font-family: ACaslonPro-Regular;
+        }
+        
+        /* detail page same input */
+        
+        .dates li input, .dates li select {
+            background-color: transparent;
+            background-image: url(../images/icon-dropdown.png);
+            background-position: center bottom;
+            background-repeat: no-repeat;
+            background-size: 15px auto;
+            border: medium none;
+            font-size: 19px;
+            margin-top: 25px;
+            padding-bottom: 50px;
+            width: 117px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            -webkit-transition: border-color 150ms ease;
+            align-items: center;
+            padding-left: 16px;
+        }
+        
+        .dates .editorail-heading {
+            font-family: Geomanist-Regular;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        .headings > h2 {
+            font-size: 32px;
+            color: #ABA07C;
+            margin-bottom: 20px;
+            font-family: ACaslonPro-Regular;
+        }
+        
+        .editorial-submit-btn > button {
+            background-color: transparent;
+            border: none;
+            color: #fff;
+            font-family: Geomanist-light;
+        }
+        
+        /* sidebar css */
+        
+        body:not(.adminimal-theme) {
+                /*background-color: #ada077;*/
+                /*color: #ffffff;*/
+            }
+            .menu-logo {
+                background: url(sites/five/files/five_logo_gold.svg) no-repeat center center;
+            }
+            .mobile-detect-class .menu-logo {
+                background-image: url(http://fiveseashotel.com/sites/five/files/five_logo_white.svg);
+            }
+            #loader-logo-under {
+                background: url(http://fiveseashotel.com/sites/five/files/five_logo_gold.svg) no-repeat left center;
+            }
+            #loader-logo-up {
+                background: url(http://fiveseashotel.com/sites/five/files/five_logo_white.svg) no-repeat left center;
+            }
+            #website-logo {
+                background: url(http://fiveseashotel.com/sites/five/files/five_logo_white.svg) no-repeat center;
+            }
+            body:not(.adminimal-theme) a,
+            body:not(.adminimal-theme) ul.primary li a {
+                
+                color: #ffffff;
+            }
+            body:not(.adminimal-theme) a:hover,
+            body:not(.adminimal-theme) a.active,
+            body:not(.adminimal-theme) ul.primary li a:hover,
+            body:not(.adminimal-theme) ul.primary li a.active {
+                /*background-color: #ada077;*/
+                /*color: #232323;*/
+                a.contextual-links-trigger {
+                    background: transparent url(modules/contextual/images/gear-select.png) no-repeat 2px 0;
+                }
+            }
+            body:not(.adminimal-theme) footer {
+                background-color: #ffffff;
+            }
+            body:not(.adminimal-theme) footer a,
+            body:not(.adminimal-theme) footer a:hover {
+                background-color: #ffffff;
+                color: #232323;
+            }
+            #block-ledunfly-footer-text .block-inner {
+                color: #ada077;
+            }
+            div.underline-title,
+            div.underline-rollover {
+                background-color: #ffffff;
+            }
+            body:not(.adminimal-theme) .region-sidebar-first {
+/*                background-color: #252525;*/
+                color: #ada077;
+            }
+            #unsupported {
+                background-color: #ada077;
+                color: #ffffff;
+            }
+            .block-menu-text {
+                color: #232323;
+            }
+            #block-ledunfly-book-link {
+                background-color: #ada077;
+                color: #ffffff;
+            }
+            #block-ledunfly-book-link:hover {
+                background-color: #232323;
+            }
+            #block-ledunfly-book-link a:hover {
+                color: #ffffff;
+            }
+            #block-ledunfly-book-link a:nth-child(2):hover {
+                color: #ada077;
+            }
+            #block-ledunfly-menu-link {
+                background-color: #ada077;
+                color: #ffffff;
+            }
+            #block-ledunfly-menu-link span {
+                background-color: #ffffff;
+            }
+            ul.menusk li.little a,
+            ul.menusk li ul li.little a {
+                color: #ABA07C;
+            }
+            ul.menusk li a,
+            ul.menusk li ul li a {
+                color: #ABA07C;
+            }
+            ul.menusk li a:hover,
+            ul.menusk li a:active,
+            ul.menusk li.little a:hover,
+            ul.menusk li.little a:active,
+            ul.menusk li a.active {
+                color: #aba07ccc;
+            }
+            #block-system-main-menu .block-menu-text {
+                color: #ABA07C;
+            }
+            #block-system-main-menu .block-menu-text a,
+            #block-system-main-menu .block-menu-text a:hover,
+            #block-system-main-menu .block-menu-text a.active {
+                background: none;
+                color: #232323;
+            }
+            ul.menusk ul.menusk1:before {
+                background-color: #ABA07C;
+            }
+            #block-system-main-menu .block-inner {
+                background-color: #252525;
+            }
+            #block-locale-language,
+            #block-locale-language .block-title,
+            #block-locale-language li,
+            #block-locale-language li span,
+            #block-locale-language li a {
+                background-color: #252525;
+                color: #ada077;
+            }
+            #block-locale-language li:hover span,
+            #block-locale-language li:hover a {
+                background-color: #ada077;
+                color: #252525;
+            }
+            #block-locale-language li:hover,
+            {
+                background-color: #ada077;
+                border-top: 1px solid #ada077;
+                color: #252525;
+            }
+            #block-details-social-links,
+            #block-details-social-links a,
+            #block-details-social-links a:hover {
+                background-color: #ffffff;
+                color: #ada077;
+            }
+            #block-details-social-links .block-content a span:before {
+                background-color: #ada077;
+                opacity: 0.7;
+            }
+            #block-ledunfly-footer-text {
+                background-color: #ffffff;
+            }
+            .not-logged-in.page-user input#edit-submit {
+                color: #ccc5af;
+            }
+            #homepage-1391 {
+                background: url('sites/five/files/homepage/img_bg_footer_1.jpg') no-repeat bottom center #f2f1f5;
+            }
+            #homepage-1391 a {
+                background-color: #f2f1f5;
+            }
+            #homepage-1391 a:hover,
+            #homepage-1391 a.active {
+                background-color: #f2f1f5;
+            }
+            #homepage-1391 .header-inner-wrapper {
+                background: url('sites/five/files/homepage/five_header_1600x926_home_v2_0.jpg') no-repeat top center #f2f1f5;
+                background-size: cover;
+            }
+            #homepage-1391 .content-first .field-name-field-hp-text-1 {
+                background: #ada077;
+                color: #ffffff;
+            }
+            #homepage-1391 div.underline-title {
+                background: #ada077;
+                background: #ffffff;
+            }
+            #homepage-1391 div.underline-rollover {
+                background: #ffffff;
+            }
+            #homepage-1391 .content-first .field-name-field-hp-text-1 a {
+                background-color: #ada077;
+                color: #ffffff;
+            }
+            #homepage-1391 .content-first .field-name-field-hp-text-1 a:hover,
+            #homepage-1391 .content-first .field-name-field-hp-text-1 a.active {
+                background-color: #ada077;
+                color: #ffffff;
+            }
+            .scroll-down {
+                background-color: #ada077;
+                border-color: #ada077;
+            }
+            #homepage-1391 .infos .field-name-field-hp-text {
+                background-image: url("sites/five/files/bg-hp-bloc-bas_1.jpg");
+            }
+            #node-slider-1389 {
+                background: #232323;
+                color: #ffffff;
+            }
+            #node-slider-1389 a,
+            #node-slider-1389 a:hover,
+            #node-slider-1389 a.active {
+                background: #232323;
+                color: #ffffff;
+            }
+            <!--html {
+                font-size: 100%;
+                -webkit-text-size-adjust: 100%;
+                line-height: 1.5;
+                height: 100%;
+                overflow-y: scroll;
+            }
+			body {
+                min-height: 100%;
+                margin: 0;
+                padding: 0;
+                -webkit-font-smoothing: antialiased;
+                font-smoothing: antialiased;
+                text-rendering: optimizeLegibility\9;
+            }-->
+
+            figure {
+                margin: 0;
+            }
+
+            .block-inner,
+            .pane-inner,
+            .menu-wrapper,
+            .branding-elements,
+            .breadcrumb-wrapper,
+            .attribution,
+            .at-panel .rounded-corner,
+            .block-panels-mini > .block-title,
+            .rendered-by-ds .panel-display .region-inner,
+            div.messages {
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+
+            #content .panel-display,
+            #content .panel-flexible {
+                margin-left: -10px;
+                margin-right: -10px;
+            }
+
+            img {
+                height: auto;
+                -ms-interpolation-mode: bicubic;
+            }
+
+            img,
+            embed,
+            object,
+            video {
+                max-width: 100%;
+            }
+
+            .lt-ie9 img,
+            .lt-ie9 object,
+            .lt-ie9 embed,
+            .lt-ie9 video {
+                max-width: none;
+            }
+
+            #map img,
+            .gmap img,
+            .view-gmap img,
+            .openlayers-map img,
+            #getlocations_map_canvas img,
+            #locationmap_map img,
+            .geofieldMap img,
+            .views_horizontal_slider img,
+            .geolocation-map img,
+            .geolocation-views-map img {
+                max-width: none !important;
+            }
+
+            header[role=banner],
+            .content-inner,
+            .nav,
+            .region-sidebar-first,
+            .region-sidebar-second,
+            .region-secondary-content,
+            .region-tertiary-content,
+            .region-footer {
+                overflow: visible;
+                word-wrap: break-word;
+            }
+            .ir {
+                display: block !important;
+                text-indent: 100%;
+                white-space: nowrap;
+                overflow: hidden;
+                border: 0;
+                font: 0/0 a;
+                text-shadow: none;
+                color: transparent;
+                background-color: transparent;
+            }
+
+            /* More robust element-invisible and element-focuable classes */
+            .element-invisible {
+                border: 0;
+                clip: rect(1px 1px 1px 1px);
+                clip: rect(1px, 1px, 1px, 1px);
+                height: 1px;
+                overflow: hidden;
+                padding: 0;
+                position: absolute;
+                width: 1px;
+            }
+
+            .element-invisible.element-focusable:active,
+            .element-invisible.element-focusable:focus {
+                clip: auto;
+                height: auto;
+                overflow: visible;
+                position: static;
+                width: auto;
+            }
+
+            .offscreen {
+                position: absolute;
+                top: -99999em;
+                width: 1px;
+                height: 1px;
+                overflow: hidden;
+                outline: 0;
+            }
+            .element-hidden {
+                display: none;
+            }
             
+            /* custom css sidebar */
+            
+            .block-content.content ul li {
+                background: brown;
+            }
+        
+        /* sidebar css end */
+        
+        @import url('https://fonts.googleapis.com/css?family=Satisfy');
+        
         </style>
 		<!-- Global site tag (gtag.js) - Google Analytics -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110391807-1"></script>
@@ -385,12 +900,135 @@
             <div class="wrapper">
                 <div class="container-fluid"> 
                     <div class="row">
-                        <header>    
+                        <header>
+                            <!-- sidebar-->
+                            <div class="region region-sidebar-first sidebar">
+                                <div class="region-inner clearfix">
+                                    <div id="block-ledunfly-menu-link" class="block block-ledunfly no-title odd first block-count-4 block-region-sidebar-first block-menu-link" ><div class="block-inner clearfix">  
+                                            <div class="block-content content"><span></span><span></span><span></span></div>
+                                        </div>
+                                    </div>
+<!--                                    <div id="block-ledunfly-menu-logo" class="block block-ledunfly no-title even block-count-5 block-region-sidebar-first block-menu-logo" ><div class="block-inner clearfix">  
+
+                                            <div class="block-content content"><a href="index.html" title="Five Seas Hotel"><div class="menu-logo"></div></a></div>
+                                        </div>
+                                    </div>-->
+                                    <div id="block-system-main-menu" class="block block-system block-menu no-title odd block-count-6 block-region-sidebar-first block-main-menu" role="navigation">
+                                        <div class="block-inner clearfix">
+                                            <div class="block-content content" class="block-content content">
+                                                <ul class="menusk clearfix">
+                                                    <li class="first expanded menu-depth-1 menu-item-989">
+                                                        <a href="#">Sleep</a>
+                                                        <ul class="menusk1 clearfix">
+                                                            <li class="first leaf menu-depth-2 menu-item-990">
+                                                                <a href="#">Suite Présidentielle</a>
+                                                            </li>
+                                                            <li class="leaf menu-depth-2 menu-item-991">
+                                                                <a href="#">Suite Terrasse</a>
+                                                            </li>
+                                                            <li class="leaf menu-depth-2 menu-item-992">
+                                                                <a href="#">Top Of Five</a>
+                                                            </li>
+                                                            <li class="leaf menu-depth-2 menu-item-993">
+                                                                <a href="#">Suites So Suite</a>
+                                                            </li>
+                                                            <li class="leaf menu-depth-2 menu-item-994">
+                                                                <a href="#">Junior Suites</a>
+                                                            </li>
+                                                            <li class="leaf menu-depth-2 menu-item-1051">
+                                                                <a href="#">Chambres Executive</a>
+                                                            </li>
+                                                            <li class="leaf menu-depth-2 menu-item-995">
+                                                                <a href="#">Chambres Deluxe</a>
+                                                            </li>
+                                                            <li class="last leaf menu-depth-2 menu-item-1007">
+                                                                <a href="#">Services</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="expanded menu-depth-1 menu-item-996">
+                                                        <a href="#">Savour</a>
+                                                        <ul class="menusk1 clearfix">
+                                                    <li class="first leaf menu-depth-2 menu-item-998">
+                                                        <a href="#">Le Roof</a>
+                                                    </li><li class="leaf menu-depth-2 menu-item-999">
+                                                        <a href="#">Le Bar</a>
+                                                    </li>
+                                                    <li class="last leaf menu-depth-2 menu-item-1135">
+                                                        <a href="#">Le Brunch</a>
+                                                    </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="expanded menu-depth-1 menu-item-1000">
+                                                        <a href="#">Relax</a>
+                                                        <ul class="menusk1 clearfix">
+                                                            <li class="first leaf menu-depth-2 menu-item-1001">
+                                                                <a href="#">Spa</a>
+                                                            </li><li class="leaf menu-depth-2 menu-item-1002">
+                                                                <a href="#">Terrasse piscine</a>
+                                                            </li>
+                                                            <li class="last leaf menu-depth-2 menu-item-1003">
+                                                                <a href="#">Plage privée</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="expanded menu-depth-1 menu-item-1004">
+                                                        <a href="#">Discover</a>
+                                                        <ul class="menusk1 clearfix">
+                                                            <li class="first leaf menu-depth-2 menu-item-1005">
+                                                                <a href="#">Cannes</a></li>
+                                                            <li class="last leaf menu-depth-2 menu-item-1006">
+                                                                <a href="#">Activités</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="leaf menu-depth-1 menu-item-1013">
+                                                        <a href="#">News</a>
+                                                    </li>
+                                                    <li class="expanded menu-depth-1 menu-item-1123">
+                                                        <a href="#">Offres</a>
+                                                        <ul class="menusk1 clearfix">
+                                                            <li class="first leaf menu-depth-2 menu-item-1014">
+                                                                <a href="#">Offres Sleep</a>
+                                                            </li><li class="last leaf menu-depth-2 menu-item-1125">
+                                                                <a href="#">Offres Relax</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="leaf menu-depth-1 menu-item-1015">
+                                                        <a href="#">Gift box</a>
+                                                    </li>
+                                                    <li class="leaf menu-depth-1 menu-item-1009">
+                                                        <a href="#">Events</a>
+                                                    </li><li class="leaf little little-first menu-depth-1 menu-item-1139">
+                                                        <a href="#" class="little little-first">Carrières</a>
+                                                    </li>
+                                                    <li class="leaf little menu-depth-1 menu-item-1010">
+                                                        <a href="#" class="little">Plan &amp; Accès</a>
+                                                    </li>
+                                                    <li class="leaf little menu-depth-1 menu-item-1092">
+                                                        <a href="#" class="little">Mentions légales</a>
+                                                    </li><li class="last leaf little menu-depth-1 menu-item-1111">
+                                                        <a href="#" class="little">Green Globe</a>
+                                                    </li
+                                                    ></ul>
+                                            </div>
+                                            <div class="block-menu-text">
+                                                <p>FIVE SEAS HOTEL CANNES - 1, RUE NOTRE DAME - 06400 CANNES</p>
+                                                <div><p>T : +33 4 63 36 05 05</p>
+                                                    <p>INFO@FIVESEASHOTEL.COM</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>     
+                            <!-- end sidebar -->
                             <a data-popup-id="login-forms-popup" href="#" class="video-popup-btn login_popup show-login-forms-btn"><i class="fa fa-lock " aria-hidden="true" ></i></a>
                         </header>
                         <!--Main Page-->
-                        @if(!empty($slider)) 
                         <div class="col-md-10 main-page-landing">
+                        @if(!empty($slider)) 
                             <div class="row">
                                 <section class="book-form-top-bar">
                                     <div>
@@ -478,7 +1116,61 @@
                                 </section>
                                 <div class="clearfix"></div>
                                 <!--Slider start here-->
-                                <div class="m_slider editorial_m_slider_landing ">
+
+                                <div class="grid-page-category-slider-container">
+                                    @if(!empty($categoryslider))
+                                    <div class="bh-slideshow-thumbnail-split hidden-xs hidden-sm" data-uk-slideshow="{animation: 'slice-up', autoplay: true}">
+                                        <ul style="" class="uk-slideshow uk-overlay-active">
+                                            @foreach($categoryslider as $slides)
+                                            <li class="ai-uk-animation" style="" @if($categoryslider[0]==$slides) class="uk-active" @endif aria-hidden="true">
+                                                @if($slides->slide_type == 'Image')
+                                                <div style="background-image: url({{ URL::to('uploads/slider_images/'.$slides->slider_img)}});" class="uk-cover-background uk-position-cover"></div>
+                                                @else
+                                                <div class="uk-cover-background uk-position-cover"><iframe class="video-bg" src="https://www.youtube.com/embed/{{$slides->slider_video}}?playlist={{$slides->slider_video}}&iv_load_policy=3&enablejsapi=1&disablekb=1&autoplay=1&controls=0&showinfo=0&rel=0&loop=1&wmode=transparent" frameborder="0" allowfullscreen="allowfullscreen"></iframe></div>
+                                                @endif
+                                                <canvas style="width: 100%; height: 100%; opacity: 0;"></canvas>
+                                                <div class="bh-slideshow-overlay uk-overlay-panel uk-overlay-fade uk-flex uk-flex-middle uk-flex-center">
+                                                    <div>
+                                                        <ul class="bh-slideshow-overlay-meta uk-subnav uk-subnav-line">
+                                                            <li>
+                                                                <span><a href="#" rel="category tag">{{$slides->slider_category}}</a></span>
+                                                            </li>
+                                                        </ul>
+                                                        <h3 class="bh-slideshow-overlay-title">
+                                                            <a href="#">{{$slides->slider_title}}</a>
+                                                        </h3>
+                                                        <div class="bh-slideshow-overlay-content">{{$slides->slider_description}}</div>
+                                                        @if($slides->slider_link != '#')
+                                                        <a class="uk-margin-top uk-button uk-button-primary" href="http://{{$slides->slider_link}}" title="Do it yourself">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                                <div class="bh-slideshow-thumbnail-split-preview uk-overlay-panel uk-overlay-right uk-overlay-background uk-overlay-fade uk-width-2-5 uk-width-xxlarge-1-3 uk-flex uk-flex-middle uk-flex-center uk-visible-large">
+                                                    <div>
+                                                        <ul class="bh-slideshow-thumbnail-split-preview-meta uk-subnav uk-subnav-line">
+                                                            <li>
+                                                                <span><a href="#" rel="category tag">{{$slides->slider_category}}</a></span>
+                                                            </li>
+                                                        </ul>
+                                                        <h3 class="bh-slideshow-thumbnail-split-preview-title">
+                                                            <a href="#">{{$slides->slider_title}}</a>
+                                                        </h3>
+                                                        <div class="bh-slideshow-thumbnail-split-preview-content">{{$slides->slider_description}}</div>
+                                                        @if($slides->slider_link != '#')
+                                                        <a class="uk-margin-top uk-button uk-button-primary" href="http://{{$slides->slider_link}}">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>
+                                                        @endif
+                                                    </div>
+                                                    <a href="javascript:void(0);" class="bh-slideshow-slidenav uk-slidenav uk-slidenav-previous" data-uk-slideshow-item="previous"></a>
+                                                    <a href="javascript:void(0);" class="bh-slideshow-slidenav uk-slidenav uk-slidenav-next" data-uk-slideshow-item="next"></a>
+                                                </div>
+                                            </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                    @endif
+                                </div>
+                                
+                                <!--<div class="m_slider editorial_m_slider_landing ">
                                     <ul>
                                         @foreach($slider as $key => $slider_row)
                                         <li class="{{($key == 0)? 'active' : ''}}">
@@ -488,7 +1180,6 @@
                                             <div class="editorial-text">
                                                 <div class="editor-picks-small-text"><a href="{{$slider_row->slider_link}}">{{$slider_row->slider_title}}</a></div>
                                                 <div class="description-bold-text">{{$slider_row->slider_description}}</div>
-                                                <!--end slide -->
                                             </div>
                                             </a>
                                         </li>
@@ -502,7 +1193,7 @@
                                             <img  class="banner-arrow-bg" src="{{ asset('sximo/assets/images/editorial-left-arrow.png')}}" alt=""/>
                                         </a>
                                     </div>
-                                </div>
+                                </div>-->
 								
 								@if(!empty($landinggridpropertiesArr))
 									<div class="container" style="margin-top:20px; display:none;">
@@ -563,8 +1254,8 @@
 																				<?php echo $props['data']->property_name; ?>
 																			</a>
 																			<span class="FltRgt">
-																				<i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" <?php echo (array_key_exists('image', $props))? 'onclick="add_to_lightbox('.$props['image']->file_id.', '.$props['data']->id.');"' : ''; ?>></i>
-																				<a class="carticon" href="<?php echo URL::to($props['data']->property_slug); ?>"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>
+																				<!--<i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" <?php //echo (array_key_exists('image', $props))? 'onclick="add_to_lightbox('.$props['image']->file_id.', '.$props['data']->id.');"' : ''; ?>></i>
+																				<a class="carticon" href="<?php //echo URL::to($props['data']->property_slug); ?>"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>-->
 																			</span>
 																		</h2>
 																	</div>
@@ -594,7 +1285,7 @@
 										</div>
 									</div>
 								@endif
-                                <div class="landing-page-footer-section">
+                                <!--<div class="landing-page-footer-section">
                                     @if(!empty($landing_menus))
                                     <ul class="landing-page-footer-menu-style">
                                         @foreach ($landing_menus as $fmenu)
@@ -606,11 +1297,254 @@
                                         @endforeach
                                     </ul>
                                     @endif
-                                </div>
+                                </div>-->
                                 <!--Slider end here-->
                             </div>
-                        </div>
                         @endif
+                        
+                        <div class="container">
+                            <div class="row">
+                                <div class="header-navigation-container">
+                                    <div class="row">
+                                        <div class="">
+                                            @include('layouts/elliot/ai_navigation')
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                            <!--Experience Page Start Here-->
+                            <div class="row">
+                                <div class="experience-page" <?php if(isset($_GET['ref']) && $_GET['ref']=='sye'){ echo 'style="width:100%;"';}?>>
+                                    <div class="open-experience-html des-holiday-sec-align">
+                                        <!--<div><a class="close-btn-experience close-btn-align" href="#">&times;</a></div>-->
+<!--                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 header-logo-center">
+                                            <a href="#"><img class="img-responsive" src="{{ asset('sximo/assets/images/Emporium-Voyage.png')}}"/></a>
+                                        </div>-->
+                                        <h2>Select Your Experience</h2>
+                                        <div class="choose-experience-center-align">
+                                            <div class="width-100 holiday-type-image-align ">
+                                                <div class="width-20">
+                                                    <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoBeachHotels.jpg')}}" alt=""/>
+                                                    <a href="{{URL::to('luxury_experience/Beach_Hotels')}}"><h3 class="hover-tittles">Luxury Beach Hotels</h3></a>
+                                                </div>
+                                                <div class="width-20">
+                                                    <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoGreenHotels.jpg')}}" alt=""/>
+                                                    <a href="{{URL::to('luxury_experience/Green_Properties')}}"><h3 class="hover-tittles">Luxury Green Hotels</h3></a>
+                                                </div>
+                                                <div class="width-20">
+                                                    <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoUrbanHotels.jpg')}}" alt=""/>
+                                                    <a href="{{URL::to('luxury_experience/Go_Urban_Hotels')}}"><h3 class="hover-tittles">Luxury Urban Hotels</h3></a>
+                                                </div>
+                                                <div class="width-20">
+                                                    <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoInfinityPoolHotels.jpg')}}" alt=""/>
+                                                    <a href="{{URL::to('luxury_experience/Infinity_Pools')}}"><h3 class="hover-tittles">Luxury Infinity Pools</h3></a>
+                                                </div>
+                                                <div class="width-20">
+                                                    <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoSpaandWellnessHotels.jpg')}}" alt=""/>
+                                                    <a href="{{URL::to('luxury_experience/Spa_and_Wellness_Hotels')}}"><h3 class="hover-tittles">Luxury Spa and Wellness Hotels</h3></a>
+                                                </div>
+                                                <div class="width-20">
+                                                    <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoMountainaandSkiResorts.jpg')}}" alt=""/>
+                                                    <a href="{{URL::to('luxury_experience/Mountain_Ski_Resorts')}}"><h3 class="hover-tittles">Luxury Mountains and Skin Resorts</h3></a>
+                                                </div>
+                                                <div class="width-20">
+                                                    <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoYogaHotels.jpg')}}" alt=""/>
+                                                    <a href="{{URL::to('luxury_experience/Yoga_Hotels')}}"><h3 class="hover-tittles">Discover Yoga Hotels</h3></a>
+                                                </div>
+                                                <div class="width-20">
+                                                    <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoCulnaryDelightHotels.jpg')}}" alt=""/>
+                                                    <a href="{{URL::to('luxury_experience/Culinary_Delights')}}"><h3 class="hover-tittles">Discover culinary Delight Hotels</h3></a>
+                                                </div>
+                                                <div class="width-20">
+                                                    <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoFamilyFriendlyHotels.jpg')}}" alt=""/>
+                                                    <a href="{{URL::to('luxury_experience/Family_Friendly')}}"><h3 class="hover-tittles">Discover Family Friendly Hotels</h3></a>
+                                                </div>
+                                                <div class="width-20">
+                                                    <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoUnusualAdventures.jpg')}}" alt=""/>
+                                                    <a href="{{URL::to('luxury_experience/Unusual_Adventure_Hotels')}}"><h3 class="hover-tittles">Unusual Adventure Hotels</h3></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Experience Page End Here-->
+                            <!--Destination Page Start Here-->
+                            <div class="row">
+                                <div class="destination-page" <?php if(isset($_GET['ref']) && $_GET['ref']=='syd'){ echo 'style="width:100%;"';}?>>
+                                    <div class="open-destination-html">
+                                        <!--<div><a class="close-btn-destination close-btn-align" href="#">&times;</a></div>-->
+<!--                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 header-logo-center">
+                                            <a href="#"><img class="img-responsive" src="{{ asset('sximo/assets/images/Emporium-Voyage.png')}}"/></a>
+                                        </div>-->
+                                        <h2>Select Your Destination</h2>
+                                        <div class="destinSearch">
+                                            <!--Search form start-->
+                                            <form autocomplete="off" method="get" id="searchform-navbar" class="searchform-navbar" action="{{URL::to('search')}}">
+                                                <inpu type="hidden" name="ref" value="syd">
+                                                <input  class="bh-search-input typeahead search-navbar search-navbar-destination-search-box" name="s" id="search-navbar" placeholder="ENTER YOUR DESTINATION" type="text">
+                                            </form>
+                                            <!--Search form end-->
+                                        </div>
+                                        <div class="panel-group-" id="accordion1">
+                                            @if(!empty($ourdesitnation))
+                                            @foreach($ourdesitnation as $destination)
+                                            <div class="panel panel-default  destination-sub-menues">
+                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion1" href="#collapse-inner{{$destination['maincat']->id}}">
+                                                    <div class="destination-panel-heading">
+                                                        <h4 class="panel-title menu-text accordion ">
+                                                            {{$destination['maincat']->category_name}}
+                                                        </h4>
+                                                    </div>
+                                                </a>
+                                                <div id="collapse-inner{{$destination['maincat']->id}}" class="panel-collapse collapse ">
+                                                    <div class="panel-body">
+                                                        <ul class="where-box-sub-menu">
+                                                            @if (array_key_exists("child",$destination))
+                                                            @foreach($destination['child'] as $childDest)
+                                                            <li><div class="panel-group destination-inner-accordian-outer" id="inner-level-accordian">
+                                                                <div class="panel panel-default">
+                                                                    <div class="panel-heading">
+                                                                        <h4 class="margin-top-15 panel-title pull-left">
+                                                                            <a data-toggle="collapse" data-parent="#inner-level-accordian" href="#destination-child{{$childDest->id}}">{{$childDest->category_name}}</a>
+                                                                        </h4>
+                                                                    </div>
+                                                                    @if (array_key_exists("subchild",$childDest))
+                                                                        <div id="destination-child{{$childDest->id}}" class="panel-collapse collapse">
+                                                                            <ul class="where-box-sub-menu inner-level-sub-menu">
+                                                                                @foreach($childDest->subchild as $subchildDest)
+                                                                                    <li>
+                                                                                        @if (array_key_exists("childs",$childDest))
+                                                                                        <div class="panel-group destination-inner-accordian-outer" id="inner-level-accordian">
+                                                                                            <div class="panel panel-default">
+                                                                                                <div class="panel-heading">
+                                                                                                    <h4 class="panel-title">
+                                                                                                        <a data-toggle="collapse" data-parent="#inner-level-accordian" href="#destination-child{{$childDest->id}}-{{$subchildDest->id}}">{{$subchildDest->category_name}}</a>
+                                                                                                    </h4>
+                                                                                                </div>
+
+                                                                                                    <div id="destination-child{{$childDest->id}}-{{$subchildDest->id}}" class="panel-collapse collapse">
+                                                                                                        <ul class="where-box-sub-menu inner-level-sub-menu">
+                                                                                                            @foreach($childDest->childs as $_child)
+                                                                                                                <li><a href="{{URL::to('luxury_destinations/'. str_replace(' ','_',$destination['maincat']->category_name).'/'. str_replace(' ','_',$childDest->category_name).'/'. str_replace(' ','_',$_child->category_name))}}">{{$_child->category_name}}</a></li>
+                                                                                                            @endforeach
+                                                                                                        </ul>
+                                                                                                    </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        @else
+                                                                                        <a href="{{URL::to('luxury_destinations/'. str_replace(' ','_',$destination['maincat']->category_name).'/'. str_replace(' ','_',$childDest->category_name).'/'. str_replace(' ','_',$subchildDest->category_name))}}">{{$subchildDest->category_name}}</a>
+                                                                                        @endif
+                                                                                    </li>
+                                                                                @endforeach
+                                                                            </ul>
+                                                                        </div>
+                                                                    @endif
+                                                                </div>
+                                                            </div></li>
+                                                            <!--The menu code is commented please uncomment this when you make it dynamic-->
+                                                            <!--<li><a href="{{URL::to('search?continent='.$destination['maincat']->category_name.'&region='.$childDest->category_name.'&s='.$childDest->category_name.'&ref=syd&destination_page=1')}}">{{$childDest->category_name}}</a></li>-->
+                                                            @endforeach
+                                                            @endif
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @endforeach
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Destination Page  End Here-->
+                            <!--Search By Date Page Start Here-->
+                            <div class="row">
+                                <div class="book-now-page date-page" <?php if(isset($_GET['ref']) && $_GET['ref']=='sbd'){ echo 'style="width:100%;"';}?>>
+                                    <div class="book-now-page-content open-date-html">
+                                        <!--<div><a class="close-btn-date close-btn-align" href="#">&times;</a></div>-->
+                                        <div class="headings">
+                                            <h2>Emporium Voyage is your ideal, vogue vacation planner!</h2>
+                                            <p>With over 300 posh properties, elite spas and exquisite yachts huddled in its cocoon, Emporium Voyage ensure the ultimate luxury experience</p>
+                                        </div>
+                                        <form action="{{URL::to('search')}}" method="get">
+                                            <input name="s" value="" type="hidden">
+                                            <input name="ref" value="sbd" type="hidden">
+
+                                            <ul class="dates" id="search-by-date">
+                                                <li>
+                                                    <div class="heading">Arrive</div>
+                                                    <input id="date-range-arrive" size="20" name="arrive" value="{{ ($arrive_date!='') ? $arrive_date : date('d.m.Y') }}">
+                                                </li>
+                                                <li>
+                                                    <div class="heading">Departure</div>
+                                                    <input id="date-range-destination" size="20" name="destination" value="{{ ($destination_date!='') ? $destination_date : '' }}">
+                                                </li>
+                                            </ul>
+                                            <ul class="dates">
+                                                <li>
+                                                    <div class="heading">Adults</div>
+                                                    <select name="adult">
+                                                        <option {{ ($adults!='' && $adults==1) ? 'selected' : '' }}>1</option>
+                                                        <option {{ ($adults!='' && $adults==2) ? 'selected' : '' }}>2</option>
+                                                        <option {{ ($adults!='' && $adults==3) ? 'selected' : '' }}>3</option>
+                                                    </select>
+                                                </li>
+                                                <li>
+                                                    <div class="heading">Children</div>
+                                                    <select name="childs">
+                                                        <option {{ ($childs!='' && $childs==0) ? 'selected' : '' }}>0</option>
+                                                        <option {{ ($childs!='' && $childs==1) ? 'selected' : '' }}>1</option>
+                                                        <option {{ ($childs!='' && $childs==2) ? 'selected' : '' }}>2</option>
+                                                    </select>
+                                                </li>
+                                                <div class="clearfix"></div>
+                                            </ul>
+                                            <div class="clearfix"></div>
+                                            <div class="submit-btn editorial-submit-btn">
+                                                <button class="booking-form-pop-up-btn-" data-popup-id="booking-form-pop-up" type="submit">BOOK NOW</button>
+                                            </div>
+                                        </form>
+                                        <div class="view-modify-cancel-booking">
+                                            <a href="#">View, Modify or Cancel your Booking</a>
+                                        </div>
+                                        <ul class="booking-page-footer-section">
+                                            <li>
+                                                <a href="#" target="_blank">
+                                                    <span>Join the worlds leading luxury club</span>
+                                                    <h6 class="center">Enjoy exclusive members only benefits</h6>
+                                                </a>
+                                                <div class="white-border-bottom"></div>
+                                            </li>
+                                            <li>
+                                                <a href="#" target="_blank">
+                                                    <span>Spa Treatment</span>
+                                                    <h6 class="center">Book</h6>
+                                                </a>
+                                                <div class="white-border-bottom"></div>
+                                            </li>
+                                            <li>
+                                                <a href="#" target="_blank">
+                                                    <span>View or Modify Reserveration</span>
+                                                    <h6 class="center">Login to Support Center</h6>
+                                                </a>
+                                                <div class="white-border-bottom"></div>
+                                            </li>
+                                            <div class="clearfix"></div>
+                                        </ul>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Search By Date Page End Here-->
+                            
+                            <!--Footer Start-->
+                            <div class="editorial-custom-footer-style">
+                                @include('layouts/elliot/ai_footer_social')
+                            </div>
+                            <!--Footer End-->
+                        </div>
                         <!--Main Page End-->
                         <!--Sidebar-->
                         <div class="col-md-2">
@@ -715,147 +1649,7 @@
                 </div>
             </div>
             <!--Search Our Collection End Here-->
-            <!--Experience Page Start Here-->
-            <div class="experience-page" <?php if(isset($_GET['ref']) && $_GET['ref']=='sye'){ echo 'style="width:100%;"';}?>>
-                <div class="open-experience-html des-holiday-sec-align">
-                    <div><a class="close-btn-experience close-btn-align" href="#">&times;</a></div>
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 header-logo-center">
-                        <a href="#"><img class="img-responsive" src="{{ asset('sximo/assets/images/Emporium-Voyage.png')}}"/></a>
-                    </div>
-                    <h2>Select Your Experience</h2>
-                    <div class="choose-experience-center-align">
-                        <div class="width-100 holiday-type-image-align ">
-                            <div class="width-20">
-                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoBeachHotels.jpg')}}" alt=""/>
-                                <a href="{{URL::to('luxury_experience/Beach_Hotels')}}"><h3 class="hover-tittles">Luxury Beach Hotels</h3></a>
-                            </div>
-                            <div class="width-20">
-                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoGreenHotels.jpg')}}" alt=""/>
-                                <a href="{{URL::to('luxury_experience/Green_Properties')}}"><h3 class="hover-tittles">Luxury Green Hotels</h3></a>
-                            </div>
-                            <div class="width-20">
-                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoUrbanHotels.jpg')}}" alt=""/>
-                                <a href="{{URL::to('luxury_experience/Go_Urban_Hotels')}}"><h3 class="hover-tittles">Luxury Urban Hotels</h3></a>
-                            </div>
-                            <div class="width-20">
-                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoInfinityPoolHotels.jpg')}}" alt=""/>
-                                <a href="{{URL::to('luxury_experience/Infinity_Pools')}}"><h3 class="hover-tittles">Luxury Infinity Pools</h3></a>
-                            </div>
-                            <div class="width-20">
-                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoSpaandWellnessHotels.jpg')}}" alt=""/>
-                                <a href="{{URL::to('luxury_experience/Spa_and_Wellness_Hotels')}}"><h3 class="hover-tittles">Luxury Spa and Wellness Hotels</h3></a>
-                            </div>
-                            <div class="width-20">
-                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoMountainaandSkiResorts.jpg')}}" alt=""/>
-                                <a href="{{URL::to('luxury_experience/Mountain_Ski_Resorts')}}"><h3 class="hover-tittles">Luxury Mountains and Skin Resorts</h3></a>
-                            </div>
-                            <div class="width-20">
-                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoYogaHotels.jpg')}}" alt=""/>
-                                <a href="{{URL::to('luxury_experience/Yoga_Hotels')}}"><h3 class="hover-tittles">Discover Yoga Hotels</h3></a>
-                            </div>
-                            <div class="width-20">
-                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoCulnaryDelightHotels.jpg')}}" alt=""/>
-                                <a href="{{URL::to('luxury_experience/Culinary_Delights')}}"><h3 class="hover-tittles">Discover culinary Delight Hotels</h3></a>
-                            </div>
-                            <div class="width-20">
-                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoFamilyFriendlyHotels.jpg')}}" alt=""/>
-                                <a href="{{URL::to('luxury_experience/Family_Friendly')}}"><h3 class="hover-tittles">Discover Family Friendly Hotels</h3></a>
-                            </div>
-                            <div class="width-20">
-                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoUnusualAdventures.jpg')}}" alt=""/>
-                                <a href="{{URL::to('luxury_experience/Unusual_Adventure_Hotels')}}"><h3 class="hover-tittles">Unusual Adventure Hotels</h3></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--Experience Page End Here-->
-            <!--Destination Page Start Here-->
-            <div class="destination-page" <?php if(isset($_GET['ref']) && $_GET['ref']=='syd'){ echo 'style="width:100%;"';}?>>
-                <div class="open-destination-html">
-                    <div><a class="close-btn-destination close-btn-align" href="#">&times;</a></div>
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 header-logo-center">
-                        <a href="#"><img class="img-responsive" src="{{ asset('sximo/assets/images/Emporium-Voyage.png')}}"/></a>
-                    </div>
-                    <h2>Select Your Destination</h2>
-                    <div class="destinSearch">
-                        <!--Search form start-->
-                        <form autocomplete="off" method="get" id="searchform-navbar" class="searchform-navbar" action="{{URL::to('search')}}">
-                            <inpu type="hidden" name="ref" value="syd">
-                            <input  class="bh-search-input typeahead search-navbar search-navbar-destination-search-box" name="s" id="search-navbar" placeholder="ENTER YOUR DESTINATION" type="text">
-                        </form>
-                        <!--Search form end-->
-                    </div>
-                    <div class="panel-group-" id="accordion1">
-                        @if(!empty($ourdesitnation))
-                        @foreach($ourdesitnation as $destination)
-                        <div class="panel panel-default  destination-sub-menues">
-                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion1" href="#collapse-inner{{$destination['maincat']->id}}">
-                                <div class="destination-panel-heading">
-                                    <h4 class="panel-title menu-text accordion ">
-                                        {{$destination['maincat']->category_name}}
-                                    </h4>
-                                </div>
-                            </a>
-                            <div id="collapse-inner{{$destination['maincat']->id}}" class="panel-collapse collapse ">
-                                <div class="panel-body">
-                                    <ul class="where-box-sub-menu">
-                                        @if (array_key_exists("child",$destination))
-                                        @foreach($destination['child'] as $childDest)
-                                        <li><div class="panel-group destination-inner-accordian-outer" id="inner-level-accordian">
-                                            <div class="panel panel-default">
-                                                <div class="panel-heading">
-                                                    <h4 class="margin-top-15 panel-title pull-left">
-                                                        <a data-toggle="collapse" data-parent="#inner-level-accordian" href="#destination-child{{$childDest->id}}">{{$childDest->category_name}}</a>
-                                                    </h4>
-                                                </div>
-                                                @if (array_key_exists("subchild",$childDest))
-                                                    <div id="destination-child{{$childDest->id}}" class="panel-collapse collapse">
-                                                        <ul class="where-box-sub-menu inner-level-sub-menu">
-                                                            @foreach($childDest->subchild as $subchildDest)
-                                                                <li>
-                                                                    @if (array_key_exists("childs",$childDest))
-                                                                    <div class="panel-group destination-inner-accordian-outer" id="inner-level-accordian">
-                                                                        <div class="panel panel-default">
-                                                                            <div class="panel-heading">
-                                                                                <h4 class="panel-title">
-                                                                                    <a data-toggle="collapse" data-parent="#inner-level-accordian" href="#destination-child{{$childDest->id}}-{{$subchildDest->id}}">{{$subchildDest->category_name}}</a>
-                                                                                </h4>
-                                                                            </div>
-                                                                            
-                                                                                <div id="destination-child{{$childDest->id}}-{{$subchildDest->id}}" class="panel-collapse collapse">
-                                                                                    <ul class="where-box-sub-menu inner-level-sub-menu">
-                                                                                        @foreach($childDest->childs as $_child)
-                                                                                            <li><a href="{{URL::to('luxury_destinations/'. str_replace(' ','_',$destination['maincat']->category_name).'/'. str_replace(' ','_',$childDest->category_name).'/'. str_replace(' ','_',$_child->category_name))}}">{{$_child->category_name}}</a></li>
-                                                                                        @endforeach
-                                                                                    </ul>
-                                                                                </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    @else
-                                                                    <a href="{{URL::to('luxury_destinations/'. str_replace(' ','_',$destination['maincat']->category_name).'/'. str_replace(' ','_',$childDest->category_name).'/'. str_replace(' ','_',$subchildDest->category_name))}}">{{$subchildDest->category_name}}</a>
-                                                                    @endif
-                                                                </li>
-                                                            @endforeach
-                                                        </ul>
-                                                    </div>
-                                                @endif
-                                            </div>
-                                        </div></li>
-                                        <!--The menu code is commented please uncomment this when you make it dynamic-->
-                                        <!--<li><a href="{{URL::to('search?continent='.$destination['maincat']->category_name.'&region='.$childDest->category_name.'&s='.$childDest->category_name.'&ref=syd&destination_page=1')}}">{{$childDest->category_name}}</a></li>-->
-                                        @endforeach
-                                        @endif
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        @endforeach
-                        @endif
-                    </div>
-                </div>
-            </div>
-            <!--Destination Page  End Here-->
+            
             <!--Personalized Page Start Here-->
             <div class="personalized-page">
                 <div class="open-personalized-html">
@@ -883,83 +1677,6 @@
                 </div>
             </div>
             <!--Personalized Page  End Here-->
-            <!--Search By Date Page Start Here-->
-            <div class="book-now-page date-page" <?php if(isset($_GET['ref']) && $_GET['ref']=='sbd'){ echo 'style="width:100%;"';}?>>
-                <div class="book-now-page-content open-date-html">
-                    <div><a class="close-btn-date close-btn-align" href="#">&times;</a></div>
-                    <div class="headings">
-                        <h2>Emporium Voyage is your ideal, vogue vacation planner!</h2>
-                        <p>With over 300 posh properties, elite spas and exquisite yachts huddled in its cocoon, Emporium Voyage ensure the ultimate luxury experience</p>
-                    </div>
-                    <form action="{{URL::to('search')}}" method="get">
-                        <input name="s" value="" type="hidden">
-                        <input name="ref" value="sbd" type="hidden">
-
-                        <ul class="dates" id="search-by-date">
-                            <li>
-                                <div class="heading">Arrive</div>
-                                <input id="date-range-arrive" size="20" name="arrive" value="{{ ($arrive_date!='') ? $arrive_date : date('d.m.Y') }}">
-                            </li>
-                            <li>
-                                <div class="heading">Departure</div>
-                                <input id="date-range-destination" size="20" name="destination" value="{{ ($destination_date!='') ? $destination_date : '' }}">
-                            </li>
-                        </ul>
-                        <ul class="dates">
-                            <li>
-                                <div class="heading">Adults</div>
-                                <select name="adult">
-                                    <option {{ ($adults!='' && $adults==1) ? 'selected' : '' }}>1</option>
-                                    <option {{ ($adults!='' && $adults==2) ? 'selected' : '' }}>2</option>
-                                    <option {{ ($adults!='' && $adults==3) ? 'selected' : '' }}>3</option>
-                                </select>
-                            </li>
-                            <li>
-                                <div class="heading">Children</div>
-                                <select name="childs">
-                                    <option {{ ($childs!='' && $childs==0) ? 'selected' : '' }}>0</option>
-                                    <option {{ ($childs!='' && $childs==1) ? 'selected' : '' }}>1</option>
-                                    <option {{ ($childs!='' && $childs==2) ? 'selected' : '' }}>2</option>
-                                </select>
-                            </li>
-                            <div class="clearfix"></div>
-                        </ul>
-                        <div class="clearfix"></div>
-                        <div class="submit-btn editorial-submit-btn">
-                            <button class="booking-form-pop-up-btn-" data-popup-id="booking-form-pop-up" type="submit">BOOK NOW</button>
-                        </div>
-                    </form>
-                    <div class="view-modify-cancel-booking">
-                        <a href="#">View, Modify or Cancel your Booking</a>
-                    </div>
-                    <ul class="booking-page-footer-section">
-                        <li>
-                            <a href="#" target="_blank">
-                                <span>Join the worlds leading luxury club</span>
-                                <h6 class="center">Enjoy exclusive members only benefits</h6>
-                            </a>
-                            <div class="white-border-bottom"></div>
-                        </li>
-                        <li>
-                            <a href="#" target="_blank">
-                                <span>Spa Treatment</span>
-                                <h6 class="center">Book</h6>
-                            </a>
-                            <div class="white-border-bottom"></div>
-                        </li>
-                        <li>
-                            <a href="#" target="_blank">
-                                <span>View or Modify Reserveration</span>
-                                <h6 class="center">Login to Support Center</h6>
-                            </a>
-                            <div class="white-border-bottom"></div>
-                        </li>
-                        <div class="clearfix"></div>
-                    </ul>
-                    <div class="clearfix"></div>
-                </div>
-            </div>
-            <!--Search By Date Page End Here-->
             <!--About Page Start Here-->
             <div class="about-page">
                 <div class="open-about-html">
@@ -1196,55 +1913,64 @@
                                                 <div class="width-100 holiday-type-image-align ">
                                                     <div class="width-20">
                                                         <a href="{{URL::to('luxury_experience/Beach_Hotels')}}">
-                                                            <img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoBeachHotels.jpg'),100,170,199)}}" alt=""/>
+                                                            <img src="{{URL::to('sximo/assets/images/GoBeachHotels.jpg')}}" alt=""/>
                                                             <span class="link-txt hover-cation">Luxury Beach Hotels</span>
                                                         </a>
 
                                                     </div>
                                                     <div class="width-20">
-                                                        <a href="{{URL::to('luxury_experience/Green_Properties')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoGreenHotels.jpg'),100,170,199)}}" alt=""/>
+                                                        <a href="{{URL::to('luxury_experience/Green_Properties')}}">
+                                                            <img src="{{URL::to('sximo/assets/images/GoGreenHotels.jpg')}}" alt=""/>
                                                             <span class="link-txt hover-cation">Luxury Green Hotels</span>
                                                         </a>
                                                     </div>
                                                     <div class="width-20">
-                                                        <a href="{{URL::to('luxury_experience/Go_Urban_Hotels')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoUrbanHotels.jpg'),100,170,199)}}" alt=""/>
+                                                        <a href="{{URL::to('luxury_experience/Go_Urban_Hotels')}}">
+                                                            <img src="{{URL::to('sximo/assets/images/GoUrbanHotels.jpg')}}" alt=""/>
                                                             <span class="link-txt hover-cation">Luxury Urban</span>
                                                         </a>
                                                     </div>
                                                     <div class="width-20">
-                                                        <a href="{{URL::to('luxury_experience/Infinity_Pools')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoInfinityPoolHotels.jpg'),100,170,199)}}" alt=""/>
+                                                        <a href="{{URL::to('luxury_experience/Infinity_Pools')}}">
+                                                            <img src="{{URL::to('sximo/assets/images/GoInfinityPoolHotels.jpg')}}" alt=""/>
                                                             <span class="link-txt hover-cation">Luxury Infinity Pools</span>
                                                         </a>
                                                     </div>
                                                     <div class="width-20">
-                                                        <a href="{{URL::to('luxury_experience/Spa_and_Wellness_Hotels')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoSpaandWellnessHotels.jpg'),100,170,199)}}" alt=""/>
+                                                        <a href="{{URL::to('luxury_experience/Spa_and_Wellness_Hotels')}}">
+                                                            <img src="{{URL::to('sximo/assets/images/GoSpaandWellnessHotels.jpg')}}" alt=""/>
                                                             <span class="link-txt hover-cation">Luxury Spa and Wellness Hotels</span>
                                                         </a>
                                                     </div>
                                                 </div>
                                                 <div class="width-100 holiday-type-image-align ">
                                                     <div class="width-20">
-                                                        <a href="{{URL::to('luxury_experience/Mountain_Ski_Resorts')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoMountainaandSkiResorts.jpg'),100,170,199)}}" alt=""/>
+                                                        <a href="{{URL::to('luxury_experience/Mountain_Ski_Resorts')}}">
+                                                            <img src="{{URL::to('sximo/assets/images/GoMountainaandSkiResorts.jpg')}}" alt=""/>
                                                             <span class="link-txt hover-cation">Luxury Mountains and Skin Resorts</span>
                                                         </a>
                                                     </div>
                                                     <div class="width-20">
-                                                        <a href="{{URL::to('luxury_experience/Yoga_Hotels')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoYogaHotels.jpg'),100,170,199)}}" alt=""/>
+                                                        <a href="{{URL::to('luxury_experience/Yoga_Hotels')}}">
+                                                            <img src="{{URL::to('sximo/assets/images/GoYogaHotels.jpg')}}" alt=""/>
                                                             <span class="link-txt hover-cation">Discover Yoga Hotels</span>
                                                         </a>
                                                     </div>
                                                     <div class="width-20">
-                                                        <a href="{{URL::to('luxury_experience/Culinary_Delights')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoCulnaryDelightHotels.jpg'),100,170,199)}}" alt=""/>
+                                                        <a href="{{URL::to('luxury_experience/Culinary_Delights')}}">
+                                                            <img src="{{URL::to('sximo/assets/images/GoCulnaryDelightHotels.jpg')}}" alt=""/>
                                                             <span class="link-txt hover-cation">Discover culinary Delight Hotels</span>
                                                         </a>
                                                     </div>
                                                     <div class="width-20">
-                                                        <a href="{{URL::to('luxury_experience/Family_Friendly')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoFamilyFriendlyHotels.jpg'),100,170,199)}}" alt=""/>
+                                                        <a href="{{URL::to('luxury_experience/Family_Friendly')}}">
+                                                            <img src="{{URL::to('sximo/assets/images/GoFamilyFriendlyHotels.jpg')}}" alt=""/>
                                                             <span class="link-txt hover-cation">Discover Family Friendly Hotels</span>
                                                         </a>
                                                     </div>
                                                     <div class="width-20">
-                                                        <a href="{{URL::to('luxury_experience/Unusual_Adventure_Hotels')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoUnusualAdventures.jpg'),100,170,199)}}" alt=""/>
+                                                        <a href="{{URL::to('luxury_experience/Unusual_Adventure_Hotels')}}">
+                                                            <img src="{{URL::to('sximo/assets/images/GoUnusualAdventures.jpg')}}" alt=""/>
                                                             <span class="link-txt hover-cation">Unusual Adventure Hotels</span>
                                                         </a>
                                                     </div>
