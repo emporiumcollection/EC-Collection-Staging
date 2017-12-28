@@ -161,6 +161,25 @@
 									</div>
 							    </div> 
 
+							    <div class="form-group image" >
+									<label for="Gallery" class=" control-label col-md-2 text-left"> Gallery </label>
+									<div class="col-md-8">
+										<div class="col-md-12" id="gallery_city">
+												<div class="row" data-gallery="1">
+													<div class="col-md-4">
+														<input  type='file' name='gallery[]' data-gallery-file="1" style='width:150px !important;'  />
+														<small> ( Image size 1500 by 1000  ) </small>
+													</div> 
+													<div class="col-md-4">
+														<a class="btn btn-default" data-open-container="1">Choose from container</a>
+														<input type="hidden" name="container_gallery[]"  data-gallery-hidden="1">
+														<span data-gallery-image="1"></span>
+													</div> 
+												</div>	
+										</div>
+									</div>
+								</div>
+
 							    <div class="form-group  " >
 									<label for="Youtube" class=" control-label col-md-4 text-left"> Youtube </label>
 									<div class="col-md-6">
@@ -258,7 +277,7 @@
 			 <iframe id="iframe_id_123" src="{{URL::to('containeriframe').'/0/iframe'}}" style="height: 430px;width: 553px;border: none;"></iframe>
 		  </div>
 		  <div class="modal-footer">
-			  <input type="hidden" name="boxid" id="boxid" value="">
+			  <input type="hidden" name="boxid" id="boxid" >
 			  <button type="button" class="btn btn-primary" onclick="selectimg();">ok</button>
 			  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
 		  </div>
