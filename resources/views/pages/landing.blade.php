@@ -6,12 +6,13 @@
         <title>Emporium-Voyage</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <link href="{{ asset('sximo/assets/css/homepage41e7.css')}}" rel="stylesheet" type="text/css"/>
+        
         <link href="{{ asset('sximo/assets/css/landing-page-styles.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/menu41e7.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/responsive.custom41e7.css')}}" rel="stylesheet" type="text/css"/>
         
         <link href="{{ asset('sximo/assets/css/style-ai.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('sximo/assets/css/homepage41e7.css')}}" rel="stylesheet" type="text/css"/>
         
         <script src="{{ asset('sximo/assets/js/jquery-2.1.0.min.js')}}" type="text/javascript"></script>
         <script type="text/javascript" src="{{ asset('sximo/assets/js/uikit.js')}}"></script>
@@ -28,15 +29,15 @@
         <script type="text/javascript" src="<?php echo asset('sximo/assets/js/slideshow.js'); ?>"></script>
         
         <!-- AIC sidebar js -->
+        <script src="{{ asset('sximo/assets/js/jquery_1.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('sximo/assets/js/jquery.once.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/animation.gsap41e7.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/custm.js')}}" type="text/javascript"></script>
-        <script src="{{ asset('sximo/assets/js/details_loader41e7.js')}}" type="text/javascript"></script>
-        <script src="{{ asset('sximo/assets/js/details-slider41e7.js')}}" type="text/javascript"></script>
-        <!--<script src="../../../public/sximo/assets/js/jquery_1.js" type="text/javascript"></script>-->
-        <script src="{{ asset('sximo/assets/js/jquery.once.js')}}" type="text/javascript"></script>
+        <!--<script src="{{ asset('sximo/assets/js/details_loader41e7.js')}}" type="text/javascript"></script>-->
+        <!--<script src="{{ asset('sximo/assets/js/details-slider41e7.js')}}" type="text/javascript"></script>-->
         <script src="{{ asset('sximo/assets/js/menu41e7.js')}}" type="text/javascript"></script>
-        <script src="{{ asset('sximo/assets/js/queryloader2.min41e7.js')}}" type="text/javascript"></script>
-        <script src="{{ asset('sximo/assets/js/ScrollMagic41e7.js')}}" type="text/javascript"></script>
+        <!--<script src="{{ asset('sximo/assets/js/queryloader2.min41e7.js')}}" type="text/javascript"></script>-->
+        <!--<script src="{{ asset('sximo/assets/js/ScrollMagic41e7.js')}}" type="text/javascript"></script>-->
         <script src="{{ asset('sximo/assets/js/TweenMax.min41e7.js')}}" type="text/javascript"></script>
         
         <style>
@@ -1906,55 +1907,64 @@
                                                 <div class="width-100 holiday-type-image-align ">
                                                     <div class="width-20">
                                                         <a href="{{URL::to('luxury_experience/Beach_Hotels')}}">
-                                                            <img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoBeachHotels.jpg'),100,170,199)}}" alt=""/>
+                                                            <img src="{{URL::to('sximo/assets/images/GoBeachHotels.jpg')}}" alt=""/>
                                                             <span class="link-txt hover-cation">Luxury Beach Hotels</span>
                                                         </a>
 
                                                     </div>
                                                     <div class="width-20">
-                                                        <a href="{{URL::to('luxury_experience/Green_Properties')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoGreenHotels.jpg'),100,170,199)}}" alt=""/>
+                                                        <a href="{{URL::to('luxury_experience/Green_Properties')}}">
+                                                            <img src="{{URL::to('sximo/assets/images/GoGreenHotels.jpg')}}" alt=""/>
                                                             <span class="link-txt hover-cation">Luxury Green Hotels</span>
                                                         </a>
                                                     </div>
                                                     <div class="width-20">
-                                                        <a href="{{URL::to('luxury_experience/Go_Urban_Hotels')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoUrbanHotels.jpg'),100,170,199)}}" alt=""/>
+                                                        <a href="{{URL::to('luxury_experience/Go_Urban_Hotels')}}">
+                                                            <img src="{{URL::to('sximo/assets/images/GoUrbanHotels.jpg')}}" alt=""/>
                                                             <span class="link-txt hover-cation">Luxury Urban</span>
                                                         </a>
                                                     </div>
                                                     <div class="width-20">
-                                                        <a href="{{URL::to('luxury_experience/Infinity_Pools')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoInfinityPoolHotels.jpg'),100,170,199)}}" alt=""/>
+                                                        <a href="{{URL::to('luxury_experience/Infinity_Pools')}}">
+                                                            <img src="{{URL::to('sximo/assets/images/GoInfinityPoolHotels.jpg')}}" alt=""/>
                                                             <span class="link-txt hover-cation">Luxury Infinity Pools</span>
                                                         </a>
                                                     </div>
                                                     <div class="width-20">
-                                                        <a href="{{URL::to('luxury_experience/Spa_and_Wellness_Hotels')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoSpaandWellnessHotels.jpg'),100,170,199)}}" alt=""/>
+                                                        <a href="{{URL::to('luxury_experience/Spa_and_Wellness_Hotels')}}">
+                                                            <img src="{{URL::to('sximo/assets/images/GoSpaandWellnessHotels.jpg')}}" alt=""/>
                                                             <span class="link-txt hover-cation">Luxury Spa and Wellness Hotels</span>
                                                         </a>
                                                     </div>
                                                 </div>
                                                 <div class="width-100 holiday-type-image-align ">
                                                     <div class="width-20">
-                                                        <a href="{{URL::to('luxury_experience/Mountain_Ski_Resorts')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoMountainaandSkiResorts.jpg'),100,170,199)}}" alt=""/>
+                                                        <a href="{{URL::to('luxury_experience/Mountain_Ski_Resorts')}}">
+                                                            <img src="{{URL::to('sximo/assets/images/GoMountainaandSkiResorts.jpg')}}" alt=""/>
                                                             <span class="link-txt hover-cation">Luxury Mountains and Skin Resorts</span>
                                                         </a>
                                                     </div>
                                                     <div class="width-20">
-                                                        <a href="{{URL::to('luxury_experience/Yoga_Hotels')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoYogaHotels.jpg'),100,170,199)}}" alt=""/>
+                                                        <a href="{{URL::to('luxury_experience/Yoga_Hotels')}}">
+                                                            <img src="{{URL::to('sximo/assets/images/GoYogaHotels.jpg')}}" alt=""/>
                                                             <span class="link-txt hover-cation">Discover Yoga Hotels</span>
                                                         </a>
                                                     </div>
                                                     <div class="width-20">
-                                                        <a href="{{URL::to('luxury_experience/Culinary_Delights')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoCulnaryDelightHotels.jpg'),100,170,199)}}" alt=""/>
+                                                        <a href="{{URL::to('luxury_experience/Culinary_Delights')}}">
+                                                            <img src="{{URL::to('sximo/assets/images/GoCulnaryDelightHotels.jpg')}}" alt=""/>
                                                             <span class="link-txt hover-cation">Discover culinary Delight Hotels</span>
                                                         </a>
                                                     </div>
                                                     <div class="width-20">
-                                                        <a href="{{URL::to('luxury_experience/Family_Friendly')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoFamilyFriendlyHotels.jpg'),100,170,199)}}" alt=""/>
+                                                        <a href="{{URL::to('luxury_experience/Family_Friendly')}}">
+                                                            <img src="{{URL::to('sximo/assets/images/GoFamilyFriendlyHotels.jpg')}}" alt=""/>
                                                             <span class="link-txt hover-cation">Discover Family Friendly Hotels</span>
                                                         </a>
                                                     </div>
                                                     <div class="width-20">
-                                                        <a href="{{URL::to('luxury_experience/Unusual_Adventure_Hotels')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoUnusualAdventures.jpg'),100,170,199)}}" alt=""/>
+                                                        <a href="{{URL::to('luxury_experience/Unusual_Adventure_Hotels')}}">
+                                                            <img src="{{URL::to('sximo/assets/images/GoUnusualAdventures.jpg')}}" alt=""/>
                                                             <span class="link-txt hover-cation">Unusual Adventure Hotels</span>
                                                         </a>
                                                     </div>
