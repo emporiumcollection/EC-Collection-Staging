@@ -1132,10 +1132,10 @@ return fasle;
 									</div>
 								</div>
 							</div>
-							<ul class="clearfix frontpage-detail-tiles" id="frontpage-detail-tiles-detail">
-
-							</ul>
-
+							<div id="placepopupcontent">
+							
+							</div>
+							
 						</div>	
 					</div>
 					<form action="{{url()}}" method="get" id="gridbookform">
@@ -1194,11 +1194,21 @@ return fasle;
 								type: "get",
 								success: function(data){
 								var imagesPro = '';
-								imagesPro += '<li class="detail-tile ai-pop-detail-form col-sm-6 col-xs-12 col-md-6 col-lg-4" style="visibility:visible;background:#000;">';
 								imagesPro += '<div class="detail-tile-inner ai-haeding-bg-style">';
 								imagesPro += '<h3 class="popup-property-title">' + data.data.property_name + '</h3>';
 								imagesPro += '<p class="popup-property-desc">' + data.data.about_property + '</p>';
 								imagesPro += '</div>';
+								imagesPro += '<ul class="clearfix frontpage-detail-tiles" id="frontpage-detail-tiles-detail">';
+								$(data.image).each(function(i, val){
+								//console.log(val);
+								imagesPro += '<li class="detail-tile col-sm-6 col-xs-12 col-md-6 col-lg-4" style="visibility:visible">';
+								imagesPro += '<div class="detail-tile-inner">';
+								imagesPro += '<img src="' + val.imgsrc + val.file_name + '"/>';
+								/*imagesPro+='<a href="#" id="LearnMoreBtn1" onclick="add_to_lightbox('+val.id+','+data.data.id+');">Add to lightbox</a>';*/
+								imagesPro += '</div>';
+								imagesPro += '</li>';
+								});
+								imagesPro += '</ul>';
 								imagesPro += '<div class="request_prop">';
 								imagesPro += '<h3 class="popup-property-title">Request Property</h3>';
 								imagesPro += '<div id="formerrors" class="formerrors"></div>';
@@ -1287,17 +1297,7 @@ return fasle;
 								imagesPro += '</div>';
 								imagesPro += '</form>';
 								imagesPro += '</div>';
-								imagesPro += '</li>';
-								$(data.image).each(function(i, val){
-								//console.log(val);
-								imagesPro += '<li class="detail-tile col-sm-6 col-xs-12 col-md-6 col-lg-4" style="visibility:visible">';
-								imagesPro += '<div class="detail-tile-inner">';
-								imagesPro += '<img src="' + val.imgsrc + val.file_name + '"/>';
-								/*imagesPro+='<a href="#" id="LearnMoreBtn1" onclick="add_to_lightbox('+val.id+','+data.data.id+');">Add to lightbox</a>';*/
-								imagesPro += '</div>';
-								imagesPro += '</li>';
-								});
-								$('#frontpage-detail-tiles-detail').html(imagesPro);
+								$('#placepopupcontent').html(imagesPro);
 								
 									eval($('.dropdown').each(function () {
 										var $dropdown = $(this);

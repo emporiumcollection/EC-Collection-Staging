@@ -3,8 +3,8 @@
 	top:0px;
 	position:fixed;
 	margin-left: 0px;
-    height: 100%;
-    z-index:99;
+        height: 100%;
+        z-index:99;
 }
 .region-sidebar-first .region-inner{
 	height:100%;
@@ -26,11 +26,12 @@ ul.menusk {
     display: block;
     margin: 0 0 0 130px;
     position: absolute;
-    top: 50%;
+    top: 100%;
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
     transform: translateY(-50%);
+    width: auto;
 }
 ul.menusk li {
     position: relative;
@@ -47,7 +48,7 @@ ul.menusk li a {
     background-color:transparent;
     text-decoration:none;
     font-size:32px;
-    line-height:48px;
+    line-height:25px;
     letter-spacing:0.025em;
 }
 ul.menusk li a:hover, ul.menusk li a:active, ul.menusk li.little a:hover, ul.menusk li.little a:active, ul.menusk li a.active {
@@ -61,7 +62,7 @@ ul.menusk li.little a {
     text-decoration:none;
     font-family:'Avenir LT W01_65 Medium1475532', 'Arial';
     font-size:12px;
-    line-height:24px;
+    line-height:0px;
     letter-spacing:0.05em;
     text-transform:uppercase;
 }
@@ -543,7 +544,7 @@ ul.menusk li ul.menusk1 li a {
  */
 @media (max-height: 768px) {
 	ul.menusk {
-	    top: 35%;
+	    top: 38%;
 	}
 	ul.menusk li.little-first{
 		margin-top:15px;
@@ -560,9 +561,9 @@ ul.menusk li ul.menusk1 li a {
 	#block-system-main-menu { margin-left: 80px;}
 	#block-ledunfly-menu-link{ width: 80px; height: 80px;}
 	#block-ledunfly-menu-link span{left:28px;}
-	#block-ledunfly-menu-link span:nth-child(1) { top: 34px;}
-	#block-ledunfly-menu-link span:nth-child(2){ top: 40px;}
-	#block-ledunfly-menu-link span:nth-child(3) { top: 46px;}
+	#block-ledunfly-menu-link span:nth-child(1) { top: 28px;}
+	#block-ledunfly-menu-link span:nth-child(2){ top: 35px;}
+	#block-ledunfly-menu-link span:nth-child(3) { top: 41px;}
 	
 	#block-ledunfly-menu-link.close:hover span:nth-child(1) {
 	  -webkit-animation: menuToggleHover_wide .3s cubic-bezier(.19,.1,.91,.53) forwards;

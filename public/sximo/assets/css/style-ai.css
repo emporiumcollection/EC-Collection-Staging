@@ -3,3 +3,8 @@
     float: left;
     line-height: 26px;
 }
+
+/* custom css sidebar */
+            .block-content.content ul li {
+                background: transparent;
+            }
