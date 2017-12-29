@@ -325,12 +325,13 @@
             border-radius: 2px;
             transition: .5s;
             position: fixed;
-            top: 120px;
-            right: calc(100% - 43px);
+            top: 63px;
+            left: calc(100% - 43px);
             width: 291px;
             background: #272727;
             color: #fff;
             font-size: 15px;
+            right: 0;
         }
         .contact-aside ul {
             padding: 7px 0;
@@ -359,14 +360,50 @@
             top: 2px;
         }
         .contact-aside.active {
-	right: calc(100% - 290px);
-	background: #1e2023 !important;
-	color: #fff !important;
+            left: calc(100% - 290px);
+            background: #1e2023 !important;
+            color: #fff !important;
         }
         
         .asideIclass {
-            float: right;
+            float: left;
+            margin-top: 3px;
+            margin-right: 10px;
+            margin-left: 5px;
         }
+        
+        /* AIC 29-12-2017*/
+        
+        .main-page-landing {
+                float: right;
+        }
+        
+        .booking-form-bar-top {
+            background-color: rgba(0,0,0,.85);
+            float: left;
+            opacity: unset !important;
+            padding-left: 15px !important;
+            padding-right: 8px !important;
+            padding-top: 15px !important;
+            position: absolute;
+            top: 0;
+            width: 100% !important;
+        }
+        
+        .login_popup .fa {
+            color: #c7ab84;
+            font-size: 24px;
+            margin: 20px;
+        }
+        
+        header {
+            left: 95% !important;
+            left: 0;
+            position: fixed;
+            top: 0;
+            width: 60px;
+        }
+        
             
         </style>
 		<!-- Global site tag (gtag.js) - Google Analytics -->
@@ -396,7 +433,7 @@
                                     <div>
                                         <div class="booking-form-bar-top">
                                             <form autocomplete="off" method="get" id="searchform-navbar" class="searchform-navbar top-bar-search-form-align" action="{{URL::to('search')}}">
-                                                <div class="col-md-4">
+                                                <div class="col-md-3">
                                                     <div class="row">
                                                         <div class="form-group would-like-input top-bar-search padding-right-12">
                                                             <input  class="form-control ai-custom-deafault-style bh-search-input typeahead search-box searchbox_landing" name="s" id="search-navbar" placeholder="Enter Your Hotel or Destination" type="text" required="required">

@@ -537,18 +537,18 @@
 								$('#resto_uspperson_desc').html(hotelobj.restaurant_usp_person);
 								if(hotelobj.restaurant_image!='')
 								{
-									var himg = "{{ImageCache::make(public_path('uploads/properties_subtab_imgs/"+hotelobj.restaurant_image+"'),100,300,null)}}";
+									var himg = "{{ImageCache::make(public_path('uploads/properties_subtab_imgs/" + hotelobj.restaurant_image + "'),100,300,null)}}";
 									$('#resto_image').html('<img class="img-responsive img-width" src="'+himg+'" alt=""/>'); 
 								}
 								
 								if(hotelobj.restaurant_image2!='')
 								{
-									var himg2 = "{{ImageCache::make(public_path('uploads/properties_subtab_imgs/"+hotelobj.restaurant_image2+"'),100,500,null)}}";
+									var himg2 = "{{ImageCache::make(public_path('uploads/properties_subtab_imgs/" + hotelobj.restaurant_image2 + "'),100,500,null)}}";
 									$('#resto_image2').html('<img class="img-responsive img-width" src="'+himg2+'" alt=""/>'); 
 								}
 								else if(hotelobj.restaurant_image!='')
 								{
-									var himg = "{{ImageCache::make(public_path('uploads/properties_subtab_imgs/"+hotelobj.restaurant_image+"'),100,500,null)}}";
+									var himg = "{{ImageCache::make(public_path('uploads/properties_subtab_imgs/" + hotelobj.restaurant_image + "'),100,500,null)}}";
 									$('#resto_image2').html('<img class="img-responsive img-width" src="'+himg+'" alt=""/>'); 
 								}
 								
