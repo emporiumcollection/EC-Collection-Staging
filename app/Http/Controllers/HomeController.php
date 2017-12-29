@@ -5183,7 +5183,7 @@ class HomeController extends Controller {
 //                return trim($a['pdata']->price) < trim($b['pdata']->price);
 //            });
             
-            if (!is_null($request->dest) && $request->current_filter == 'destination') {
+            if (!is_null($request->dest)) {
                 $cateObjtm = \DB::table('tb_categories')->where('id', $request->dest)->where('category_published', 1)->first();
                 if (!empty($cateObjtm)) {
                     $rep['categoryslider'] = \DB::table('tb_sliders')->where('slider_category', $cateObjtm->category_name)->get();
