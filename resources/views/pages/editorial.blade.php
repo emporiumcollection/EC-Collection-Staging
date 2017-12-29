@@ -14,7 +14,7 @@
         <link href="{{ asset('sximo/assets/css/daterangepicker.min.css')}}" rel="stylesheet">
         <link href="{{ asset('sximo/assets/css/jquery-ui.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/style.css')}}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('sximo/assets/css/footer-accordian.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('sximo/assets/cs.gallery.row .principale1 imgs/footer-accordian.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/book-now-page-style.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/m-popup.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/image-slider.css')}}" rel="stylesheet" type="text/css"/>
@@ -523,7 +523,7 @@
                                 color: #fff;
                                 font-family: Geomanist-Regular;
                                 /* padding: 516px 49px 90px 30px; */
-                                margin-top: -400px;
+                                margin-top: -159px;
                             }
                             
                             .image-showcase-below-big-text {
@@ -544,7 +544,7 @@
                             }
                             
                             .gallery.row .principale1 img {
-                                width: 100%;
+                                width: 100% !important;
                                 position: absolute;
                                 top: 0%;
                                 background-color: black;
