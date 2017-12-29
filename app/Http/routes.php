@@ -186,6 +186,9 @@ Route::group(['middleware' => 'auth'], function()
 	Route::get('pull_property_hotels', 'CrmhotelController@pull_property_hotels');
 	Route::post('getfolderlistforselectoptions', 'ContainerController@fetchFolderTreeOptions');
 	Route::post('getPropertyRates', 'PropertiesController@getPropertyRates');
+
+	Route::post('gallery_images_uploads', 'CitycontentController@gallery_images_uploads');
+	Route::post('delete_gallery_image', 'CitycontentController@delete_gallery_image');
 });	
 
 Route::post('save_previous_page_image', 'HomeController@save_previous_page_image');
