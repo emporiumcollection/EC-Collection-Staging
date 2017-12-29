@@ -221,7 +221,7 @@ class CitycontentController extends Controller {
         if (!empty($checkProp)) {
             $checkDir = \DB::table('tb_container')->select('id')->where('name', 'Destinations')->first();
             if (!empty($checkDir)) {
-                $foldVal = trim($checkProp->property_name);
+                $foldVal = trim($checkProp->title);
                 if ($foldVal != "") {
                     $foldName = trim($foldVal);
                     $slug = \SiteHelpers::seoUrl(trim($foldName));
