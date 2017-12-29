@@ -771,7 +771,7 @@
 	color: #fff;
 	display: block;
 	font-size: 12px;
-	padding: 26px 0 25px 21px;
+	padding: 25px 0 25px 21px;
 	text-transform: uppercase;
 	background: rgb(37,37,37,0.9);
     }
