@@ -90,6 +90,42 @@
 											</div>
 										</div>
                                                                                 
+                                                                                <!-- AIC Harman -->
+                                                                                <div class="vegasFooter footer-padding-0">
+                                                                                    <div class="row-">
+                                                                                        <div class="accordion res-design-footer">
+                                                                                            Discover
+                                                                                        </div>
+                                                                                        <div class="panel">
+                                                                                            <ul class="footer-nav-menu footer-nav-menu-align">
+                                                                                                <li>
+                                                                                                    <a href="http://www.emporium-voyage.com/social-stream?sp=gramercy-park-hotel-new-york-city-united-states">                                                                                                                        </a>
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    <a href="http://www.emporium-voyage.com"></a>
+                                                                                                </li>
+                                                                                            </ul>
+                                                                                        </div>
+                                                                                    </div>
+										</div>
+                                                                                <div class="vegasFooter footer-padding-0">
+                                                                                    <div class="row-">
+                                                                                        <div class="accordion res-design-footer">
+                                                                                            Discover
+                                                                                        </div>
+                                                                                        <div class="panel">
+                                                                                            <ul class="footer-nav-menu footer-nav-menu-align">
+                                                                                                <li>
+                                                                                                    <a href="http://www.emporium-voyage.com/social-stream?sp=gramercy-park-hotel-new-york-city-united-states">                                                                                                                        </a>
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    <a href="http://www.emporium-voyage.com"></a>
+                                                                                                </li>
+                                                                                            </ul>
+                                                                                        </div>
+                                                                                    </div>
+										</div>
+                                                                                
 									@endforeach
                                                                         
                                 </div>
