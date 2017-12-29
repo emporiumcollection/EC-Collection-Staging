@@ -598,7 +598,7 @@ return fasle;
                                                 $node_no = 1;
                                                 $ads_node = 0;
                                                 foreach($propertiesArr as $props) { ?>
-												
+									
 													<li class="grid-item wow fadeInUp">
 														<a href="single-project-page-01.html">
 															<figure>
