@@ -7,6 +7,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="{{ asset('sximo/assets/css/landing-page-styles.css')}}" rel="stylesheet" type="text/css"/>
         
+        <link href="{{ asset('sximo/assets/css/menu41e7.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('sximo/assets/css/responsive.custom41e7.css')}}" rel="stylesheet" type="text/css"/>
+        
+        <link href="{{ asset('sximo/assets/css/style-ai.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('sximo/assets/css/homepage41e7.css')}}" rel="stylesheet" type="text/css"/>
+        
         <script src="{{ asset('sximo/assets/js/jquery-2.1.0.min.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/bootstrap.min.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/jquery-ui.js')}}" type="text/javascript"></script>
@@ -18,6 +24,13 @@
         <script src="{{ asset('sximo/assets/js/image-slider.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/m_slider.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/open-search.js')}}" type="text/javascript"></script>
+        
+        <!-- AIC sidebar js -->
+        <script src="{{ asset('sximo/assets/js/jquery_1.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('sximo/assets/js/custm.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('sximo/assets/js/TweenMax.min41e7.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('sximo/assets/js/menu41e7.js')}}" type="text/javascript"></script>
+        
         <style>
             #search-navbar.search-navbar-destination-search-box {
                 background: #2a2d30 none repeat scroll 0 0 !important;
@@ -371,6 +384,334 @@
             margin-right: 10px;
             margin-left: 5px;
         }
+        
+         /* sidebar css */
+        
+        body:not(.adminimal-theme) {
+                /*background-color: #ada077;*/
+                /*color: #ffffff;*/
+            }
+            .menu-logo {
+                background: url(sites/five/files/five_logo_gold.svg) no-repeat center center;
+            }
+            .mobile-detect-class .menu-logo {
+                background-image: url(http://fiveseashotel.com/sites/five/files/five_logo_white.svg);
+            }
+            #loader-logo-under {
+                background: url(http://fiveseashotel.com/sites/five/files/five_logo_gold.svg) no-repeat left center;
+            }
+            #loader-logo-up {
+                background: url(http://fiveseashotel.com/sites/five/files/five_logo_white.svg) no-repeat left center;
+            }
+            #website-logo {
+                background: url(http://fiveseashotel.com/sites/five/files/five_logo_white.svg) no-repeat center;
+            }
+            body:not(.adminimal-theme) a,
+            body:not(.adminimal-theme) ul.primary li a {
+                
+/*                color: #ffffff;*/
+            }
+            body:not(.adminimal-theme) a:hover,
+            body:not(.adminimal-theme) a.active,
+            body:not(.adminimal-theme) ul.primary li a:hover,
+            body:not(.adminimal-theme) ul.primary li a.active {
+                /*background-color: #ada077;*/
+                /*color: #232323;*/
+                a.contextual-links-trigger {
+                    background: transparent url(modules/contextual/images/gear-select.png) no-repeat 2px 0;
+                }
+            }
+            body:not(.adminimal-theme) footer {
+                background-color: #ffffff;
+            }
+            body:not(.adminimal-theme) footer a,
+            body:not(.adminimal-theme) footer a:hover {
+                background-color: #ffffff;
+                color: #232323;
+            }
+            #block-ledunfly-footer-text .block-inner {
+                color: #ada077;
+            }
+            div.underline-title,
+            div.underline-rollover {
+                background-color: #ffffff;
+            }
+            body:not(.adminimal-theme) .region-sidebar-first {
+/*                background-color: #252525;*/
+                color: #ada077;
+            }
+            #unsupported {
+                background-color: #ada077;
+                color: #ffffff;
+            }
+            .block-menu-text {
+                color: #232323;
+            }
+            #block-ledunfly-book-link {
+                background-color: #ada077;
+                color: #ffffff;
+            }
+            #block-ledunfly-book-link:hover {
+                background-color: #232323;
+            }
+            #block-ledunfly-book-link a:hover {
+                color: #ffffff;
+            }
+            #block-ledunfly-book-link a:nth-child(2):hover {
+                color: #ada077;
+            }
+            #block-ledunfly-menu-link {
+                background-color: transparent;
+                color: #ffffff;
+            }
+            #block-ledunfly-menu-link span {
+                background-color: #ffffff;
+            }
+            ul.menusk li.little a,
+            ul.menusk li ul li.little a {
+                color: #ABA07C;
+            }
+            ul.menusk li a,
+            ul.menusk li ul li a {
+                color: #ABA07C;
+            }
+            ul.menusk li a:hover,
+            ul.menusk li a:active,
+            ul.menusk li.little a:hover,
+            ul.menusk li.little a:active,
+            ul.menusk li a.active {
+                color: #aba07ccc;
+            }
+            #block-system-main-menu .block-menu-text {
+                color: #ABA07C;
+            }
+            #block-system-main-menu .block-menu-text a,
+            #block-system-main-menu .block-menu-text a:hover,
+            #block-system-main-menu .block-menu-text a.active {
+                background: none;
+                color: #232323;
+            }
+            ul.menusk ul.menusk1:before {
+                background-color: #ABA07C;
+            }
+            #block-system-main-menu .block-inner {
+                background-color: #252525;
+            }
+            #block-locale-language,
+            #block-locale-language .block-title,
+            #block-locale-language li,
+            #block-locale-language li span,
+            #block-locale-language li a {
+                background-color: #252525;
+                color: #ada077;
+            }
+            #block-locale-language li:hover span,
+            #block-locale-language li:hover a {
+                background-color: #ada077;
+                color: #252525;
+            }
+            #block-locale-language li:hover,
+            {
+                background-color: #ada077;
+                border-top: 1px solid #ada077;
+                color: #252525;
+            }
+            #block-details-social-links,
+            #block-details-social-links a,
+            #block-details-social-links a:hover {
+                background-color: #ffffff;
+                color: #ada077;
+            }
+            #block-details-social-links .block-content a span:before {
+                background-color: #ada077;
+                opacity: 0.7;
+            }
+            #block-ledunfly-footer-text {
+                background-color: #ffffff;
+            }
+            .not-logged-in.page-user input#edit-submit {
+                color: #ccc5af;
+            }
+            #homepage-1391 {
+                background: url('sites/five/files/homepage/img_bg_footer_1.jpg') no-repeat bottom center #f2f1f5;
+            }
+            #homepage-1391 a {
+                background-color: #f2f1f5;
+            }
+            #homepage-1391 a:hover,
+            #homepage-1391 a.active {
+                background-color: #f2f1f5;
+            }
+            #homepage-1391 .header-inner-wrapper {
+                background: url('sites/five/files/homepage/five_header_1600x926_home_v2_0.jpg') no-repeat top center #f2f1f5;
+                background-size: cover;
+            }
+            #homepage-1391 .content-first .field-name-field-hp-text-1 {
+                background: #ada077;
+                color: #ffffff;
+            }
+            #homepage-1391 div.underline-title {
+                background: #ada077;
+                background: #ffffff;
+            }
+            #homepage-1391 div.underline-rollover {
+                background: #ffffff;
+            }
+            #homepage-1391 .content-first .field-name-field-hp-text-1 a {
+                background-color: #ada077;
+                color: #ffffff;
+            }
+            #homepage-1391 .content-first .field-name-field-hp-text-1 a:hover,
+            #homepage-1391 .content-first .field-name-field-hp-text-1 a.active {
+                background-color: #ada077;
+                color: #ffffff;
+            }
+            .scroll-down {
+                background-color: #ada077;
+                border-color: #ada077;
+            }
+            #homepage-1391 .infos .field-name-field-hp-text {
+                background-image: url("sites/five/files/bg-hp-bloc-bas_1.jpg");
+            }
+            #node-slider-1389 {
+                background: #232323;
+                color: #ffffff;
+            }
+            #node-slider-1389 a,
+            #node-slider-1389 a:hover,
+            #node-slider-1389 a.active {
+                background: #232323;
+                color: #ffffff;
+            }
+/*            html {
+                font-size: 100%;
+                -webkit-text-size-adjust: 100%;
+                line-height: 1.5;
+                height: 100%;
+                overflow-y: scroll;
+            }
+			body {
+                min-height: 100%;
+                margin: 0;
+                padding: 0;
+                -webkit-font-smoothing: antialiased;
+                font-smoothing: antialiased;
+                text-rendering: optimizeLegibility\9;
+            }*/
+
+            figure {
+                margin: 0;
+            }
+
+            .block-inner,
+            .pane-inner,
+            .menu-wrapper,
+            .branding-elements,
+            .breadcrumb-wrapper,
+            .attribution,
+            .at-panel .rounded-corner,
+            .block-panels-mini > .block-title,
+            .rendered-by-ds .panel-display .region-inner,
+            div.messages {
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+
+            #content .panel-display,
+            #content .panel-flexible {
+                margin-left: -10px;
+                margin-right: -10px;
+            }
+
+            img {
+                height: auto;
+                -ms-interpolation-mode: bicubic;
+            }
+
+            img,
+            embed,
+            object,
+            video {
+                max-width: 100%;
+            }
+
+            .lt-ie9 img,
+            .lt-ie9 object,
+            .lt-ie9 embed,
+            .lt-ie9 video {
+                max-width: none;
+            }
+
+            #map img,
+            .gmap img,
+            .view-gmap img,
+            .openlayers-map img,
+            #getlocations_map_canvas img,
+            #locationmap_map img,
+            .geofieldMap img,
+            .views_horizontal_slider img,
+            .geolocation-map img,
+            .geolocation-views-map img {
+                max-width: none !important;
+            }
+
+            header[role=banner],
+            .content-inner,
+            .nav,
+            .region-sidebar-first,
+            .region-sidebar-second,
+            .region-secondary-content,
+            .region-tertiary-content,
+            .region-footer {
+                overflow: visible;
+                word-wrap: break-word;
+            }
+            .ir {
+                display: block !important;
+                text-indent: 100%;
+                white-space: nowrap;
+                overflow: hidden;
+                border: 0;
+                font: 0/0 a;
+                text-shadow: none;
+                color: transparent;
+                background-color: transparent;
+            }
+
+            /* More robust element-invisible and element-focuable classes */
+            .element-invisible {
+                border: 0;
+                clip: rect(1px 1px 1px 1px);
+                clip: rect(1px, 1px, 1px, 1px);
+                height: 1px;
+                overflow: hidden;
+                padding: 0;
+                position: absolute;
+                width: 1px;
+            }
+
+            .element-invisible.element-focusable:active,
+            .element-invisible.element-focusable:focus {
+                clip: auto;
+                height: auto;
+                overflow: visible;
+                position: static;
+                width: auto;
+            }
+
+            .offscreen {
+                position: absolute;
+                top: -99999em;
+                width: 1px;
+                height: 1px;
+                overflow: hidden;
+                outline: 0;
+            }
+            .element-hidden {
+                display: none;
+            }
+            
+        /* sidebar css end */
         
         /* AIC 29-12-2017*/
         
