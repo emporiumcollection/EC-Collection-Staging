@@ -451,7 +451,14 @@ class CitycontentController extends Controller {
             $res['status'] = 'error';
             return json_encode($res);
         }
-    }		
+    }	
+
+    public function getGallery( $id = null){
+    	$this->data['id'] = $id;
+		
+		return view('citycontent.gallery',$this->data);
+    }
+		
 
 
 }
