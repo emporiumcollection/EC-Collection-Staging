@@ -257,7 +257,7 @@ class CitycontentController extends Controller {
                     
 
                 
-                    $propImgFoldId = $newpropImgFoldId;
+                    $propImgFoldId = $propFoldId;
                    
                     // SET UPLOAD PATH
                     $destinationPath = (new ContainerController)->getContainerUserPath($propImgFoldId);
