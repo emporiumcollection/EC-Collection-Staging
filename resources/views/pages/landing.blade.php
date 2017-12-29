@@ -852,9 +852,10 @@
                                     <div id="block-system-main-menu" class="block block-system block-menu no-title odd block-count-6 block-region-sidebar-first block-main-menu" role="navigation">
                                         <div class="block-inner clearfix">
                                             <div class="block-content content" class="block-content content">
+                                                <!-- Start Popup Menu -->
                                                 <?php 
                                                     $popup      = SiteHelpers::menus( 'popup' ,'all'); 
-                                                    $popup2      = SiteHelpers::menus( 'popup_2' ,'all'); 
+                                                     
                                                 ?>
                                             <ul class="menusk clearfix">
                                                 @foreach ($popup as $keyMenu=>$menu)
@@ -881,7 +882,11 @@
                                                 </li>
                                             @endforeach
 
-
+                                             <!-- Start Popup 2 Menu -->   
+                                             <?php 
+                                                     
+                                                    $popup2      = SiteHelpers::menus( 'popup_2' ,'all'); 
+                                                ?> 
                                             @foreach ($popup2 as $key2Menu=>$menu)
                                                   <li class="leaf little {{($key2Menu==0)?'little-first':''}}  {{(count($menu['childs']) > 0)?'expanded':''}}  menu-depth-1 menu-item-{{$menu['menu_id']}}">
                                                     <a href="#">{{$menu['menu_name']}}</a>
@@ -906,7 +911,8 @@
                                                 </li>
                                             @endforeach
 
-                                        </ul>
+                                        </ul>   <!-- Comment Static menu -->
+                                                <!--
                                                 <ul class="menusk clearfix">
                                                     <li class="first expanded menu-depth-1 menu-item-989">
                                                         <a href="#">Sleep</a>
@@ -1003,7 +1009,7 @@
                                                     </li><li class="last leaf little menu-depth-1 menu-item-1111">
                                                         <a href="#" class="little">Green Globe</a>
                                                     </li
-                                                    ></ul>
+                                                    ></ul>-->
                                             </div>
 <!--                                            <div class="block-menu-text">
                                                 <p>FIVE SEAS HOTEL CANNES - 1, RUE NOTRE DAME - 06400 CANNES</p>
