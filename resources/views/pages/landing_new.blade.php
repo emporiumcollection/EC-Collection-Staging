@@ -326,7 +326,7 @@
                 border-bottom: 2px solid;
             }
             
-            /* AIC Harman email sidebar css */
+            /* AIC Harman email aside sidebar css */
             
         .site-aside {
             position: fixed;
@@ -351,11 +351,17 @@
         .contact-aside ul {
             padding: 7px 0;
             list-style: none;
+            margin-bottom: 0px;
         }
         .contact-aside li {
             padding: 9.33333px 0;
             margin: 0 15px;
         }
+        
+        .contact-aside li a {
+            color: #c7ab84;
+        }
+        
         .contact-aside {
             color: #fff;
             font-size: 15px;
