@@ -280,6 +280,8 @@ class HomeController extends Controller {
                         }
 
                         $this->data['propertiesArr'] = $propertiesArr;
+						
+						$this->data['sidebardetailAds'] = \DB::table('tb_advertisement')->select('adv_link','adv_img')->where('adv_type', 'sidebar')->where('adv_position', 'detail')->get();
 					}
 					else {
                         $tags_Arr = \DB::table('tb_tags_manager')->where('tag_status', 1)->get();

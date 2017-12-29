@@ -948,6 +948,12 @@
             font-size: 20px;
         }
         
+        /*AIC 29-12-2017 */
+        
+        .main-page-landing {
+            float: right;
+        }
+        
         @import url('https://fonts.googleapis.com/css?family=Satisfy');
         
         </style>

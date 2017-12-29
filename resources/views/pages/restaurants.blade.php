@@ -268,825 +268,6 @@
             }
         </style>
 		
-		<style>
-            .detail-tile-inner img { max-width:100%; }
-            .gallerysty { font-weight: bold;font-size: 15px;color: #000; }
-            .hotels-detail-description-text > p { max-height:300px; }
-            .hotels-detail-description-text > p {
-                font-size: 15px;
-                line-height: 30px;
-                font-family: Geomanist-Light;
-            }
-            .hotels-image-showcase-des-text > p {
-                font-size: 15px;
-                line-height: 30px;
-                margin-top: 40px;
-                font-family: Geomanist-Light;
-            }
-            .hotel-block-two-right-sec-align > h2{
-                color: #dbd4d7;
-                font-family: ACaslonPro-Regular;
-                font-size: 40px;
-                font-weight: lighter;
-                margin-top: -80px;
-                text-transform: uppercase;
-                opacity:0;
-            }
-			
-            .hotel-block-two-right-sec-align > p { margin-top:0px; }
-            .spa-sec-book-an-appoinment-btn { float: left !important; margin-left: 20px; }
-            .spa-overlay-text span { padding-left:0px !important; }
-            
-            .next-prevoius-navigation.left-arrow-align {
-                display: none;
-            }
-            .next-prevoius-navigation.right-arrow-align {
-                top: calc(35%);
-            }
-			.editorial-hotel-detail-page .go-back-button {
-				top: 98px;
-			}
-			.book-button{    padding: 10px 18px}
-			body.fixed {
-				max-height: 100vh;
-				max-width: 100%;
-				overflow: hidden;
-				position: unset;
-			}
-                        .image-slider-container ul li.active img {
-                            width: auto;
-                            height: auto;
-                        }
-                        
-                        /* AIC Harman slider layer css add */
-                        
-                        .overlaySlider {
-                            position: absolute;
-                            width: 100%;
-                            height: 100%;
-                            z-index: 0;
-                            background-color: #080d15;
-                            opacity: .7;
-                        }
-                        
-                        /* AIC Harman image side reduce */
-                        
-                        .architecture-sec-top-img {
-                            display: table;
-                            margin: 83px auto 0;
-                            display: table;
-                            margin: 83px auto 0;
-                            margin-bottom: 0px;
-                            margin-left: auto;
-                            width: 0%;
-                            height: 450px;
-                            width: 75%;
-                            margin: 0 auto;
-                            margin-left: 224px;
-                            margin-bottom: 65px;
-                        }
-                        
-                        .editorial-page-booking-bar .booking-form-bar-top, .editorial-hotel-detail-page .editorial_m_slider ul li .editorial-text {
-                            background-color: rgb(37,37,37);
-                            opacity: .9;
-                        }
-                        
-                        .hotel-next-previous-outer {
-                            color: #fff;
-                            font-size: 18px;
-                            position: relative;
-                            text-align: center;
-                            width: 65px;
-                            background: rgb(37,37,37);
-                        }
-                        
-                        /* riaan */
-                        
-                        .ai-custom-deafault-style::-moz-placeholder {
-                            color: #000;
-                           }
-                           
-                        .editorial-hotel-detail-page .right-menus ul li a:hover {
-                            background: #ada077;
-                           }
-                           .hotel-next-previous-outer {
-                            background-color: ##252525;
-                            color: #fff;
-                            font-size: 18px;
-                            position: relative;
-                            text-align: center;
-                            width: 65px;
-                           }
-                           .editorial-hotel-detail-page .right-menus ul li a[data-hotel-option="book_now"] {
-                            background: #ada077;
-                            color: #ffff;
-                           }
-                           
-                           .editorial-page-booking-bar .top-booking-bar-btn, .editorial-hotel-detail-page .book-button, .editorial-hotel-detail-page .hotel-slider-price, .editorial-hotel-detail-page .spa-sec-book-an-appoinment-btn {
-                            background-color: #ada077;
-                            color: #fff;
-                           }
-                           .editorial-page-booking-bar .booking-form-bar-top, .editorial-hotel-detail-page .editorial_m_slider ul li .editorial-text {
-                            background-color: rgba(37, 37, 37, 0.9);
-                            opacity: .9;
-                           }
-                           .editorial-hotel-detail-page img.banner-arrow-bg {
-                            background-color: rgb(37, 37, 37 0.5);
-                           }
-                           .overlaySlider {
-                            position: absolute;
-                            width: 100%;
-                            height: 100%;
-                            z-index: 0;
-                            background-color: #000;
-                            opacity: .2;
-                           }
-                           .editorial-hotel-detail-page .hotels-logo, .editorial-hotel-detail-page .right-menu-align li:nth-child(1), .editorial-hotel-detail-page .right-menus ul li a {
-                                background: rgba(37, 37, 37, 1);
-                                border-bottom: 1px solid rgba(211, 214, 210, 0.2);
-                                padding: 15px 0 14px 28px;
-                            }
-                            .editorial-hotel-detail-page .right-menus ul li a:hover {
-                                background: #ada077;
-                                color: white;
-                                opacity: 0.8;
-                            }
-                            .editorial-hotel-detail-page img.banner-arrow-bg {
-                                background-color: rgb(37, 37, 37);
-                                opacity: 0.8;
-                            }
-                            .hotel-sec-block-two {
-                                background-blend-mode: multiply;
-                                filter: brightness(.9);
-                                /* background-image: url("http://www.design-locations.biz/uploads/container_user_files/locations/hotel-greif/property-images/Hotel-Greiff-%20South-Tyrol,%20Italy-design-locations.com8.jpeg"); */
-                                background-position: center center;
-                                background-repeat: no-repeat;
-                                background-size: cover;
-                                padding-bottom: 75px;
-                                padding-top: 290px;
-                                border-top: 4px solid #545454;
-                                /* opacity: 0.6; */
-                            }
-                            
-                            .hotels-des-left-side {
-                                background: rgba(0,0,0,0.8);
-                                color: #fff;
-                                z-index: 0;
-                                font-family: geomanist-regular;
-                                padding: 20px 32px 264px 75px;
-                            }
-                            .editorial-hotel-detail-page button.go-back-button {
-                                background-color: \\;
-                                    background: #283D3E;
-                                opacity: 1;
-                                color: white;
-                            }
-                            
-                            .editorial-page-booking-bar .top-booking-bar-btn, .editorial-hotel-detail-page .book-button, .editorial-hotel-detail-page .hotel-slider-price, .editorial-hotel-detail-page .spa-sec-book-an-appoinment-btn {
-                                background-color: #8AE0C7;
-                                color: black;
-                            }
-                            a:hover, a:focus, a:active {
-                                text-decoration: none;
-                                color: #8AE0C7;
-                            }
-                            .hotels-detail-heading-text > p {
-                                color: white;
-                                font-family: Oswald-Light;
-                                font-size: 14px;
-                                letter-spacing: 3px;
-                                line-height: 19px;
-                                text-transform: uppercase;
-                            }
-                            
-                            .editorial-hotel-detail-page #align-to-top .book-button.open-show_more-page.hotel-btn {
-                                background-color: #ABA07C;
-                                opacity: 1;
-                                color: white;
-                            }
-                            .editorial-page-booking-bar .top-booking-bar-btn, .editorial-hotel-detail-page .book-button, .editorial-hotel-detail-page .hotel-slider-price, .editorial-hotel-detail-page .spa-sec-book-an-appoinment-btn {
-                                    background-color: #ABA07C;
-                                    color: white;
-                            }
-                            .gallery.row .secondaria1 img {
-                                    width: auto;
-                                    position: absolute;
-                                    top: 0%;
-                                    left: 50%;
-                                    -ms-transform: translateX(-50%);
-                                    -webkit-transform: translateX(-50%);
-                                    transform: translateX(-50%);
-                                    opacity: 1;
-                                    filter: brightness(.8);
-                            }
-                            .hotels-detail-description-text {
-                                margin-top: 30px;
-                            }
-                            .hotels-image-showcase-des-text > p {
-                                font-size: 15px;
-                                line-height: 30px;
-                                margin-top: 227px;
-                            }
-                            .hotel-block-two-right-sec-align > p {
-                                color: white;
-                                line-height: 30px;
-                                margin-top: 100px;
-                                font-size: 15px;
-                                font-family: Geomanist-Regular;
-                                opacity: 1;
-                            }
-                            .hotel-block-two-left-sec-align > p {
-                                color: white;
-                                line-height: 30px;
-                                font-size: 15px;
-                            }
-                            .hotel-block-two-left-sec-align > p {
-                                color: white;
-                                line-height: 30px;
-                                font-size: 15px;
-                                font-family: Geomanist-Light;
-                                padding-right: 0px;
-                                font-size: 15px;
-                                line-height: 30px;
-                            }
-                            .hotel-block-two-right-sec-align > p {
-                                color: white;
-                                line-height: 30px;
-                                margin-top: 0px;
-                                font-size: 15px;
-                                font-family: Geomanist-Regular;
-                                opacity: 1;
-                                font-weight: 100;
-                                font-family: Geomanist-Light;
-                            }
-                            
-                            .restaurtant-bar-des-para-style {
-                                color: #333;
-                                font-size: 16px;
-                                font-family: Geomanist-Light;
-                                line-height: 20px;
-                                padding: 28px 30px 23px 23px;
-                                font-weight: 400;
-                            }
-                            
-                            .restaurant-sec-description-pannel2 .restaurtant-bar-des-para-style {
-                                background-color: #ada077;
-                                padding: 24px 60px 40px 15px;
-                                color: white;
-                                margin-top: 44px;
-                            }
-                            
-                            .overlay-text .yacts-tittle-text, .overlay-text-frezeed .yacts-tittle-text {
-                                font-family: serif;
-                                border-bottom: 3px solid #f3bc3a;
-                                color: #fff;
-                                overflow-wrap: break-word;
-                                font-size: 14px;
-                                font-style: normal;
-                                font-style: italic;
-                            }
-                            
-                            .yacths-des-text {
-                                color: #fff;
-                                font-size: 14px;
-                                margin: 0;
-                            }
-                            
-                            .editorial-hotel-detail-page .footer {
-                                background-color: #F7F7F4;
-                            }
-                            
-                            .editorial-custom-footer-style .newsletter-style {
-                                width: 45%;
-                                margin-top: 8px;
-                                color: white;
-                                float: left;
-                                background: #f7f7f4;
-                                margin-right: 15px;
-                                box-shadow: none;
-                                border-radius: 0;
-                                font-size: 11px;
-                            }
-                            
-                            .bar-name-text-style {
-                                color: #fff;
-                                font-size: 13px;
-                                letter-spacing: 5px;
-                                text-transform: uppercase;
-                            }
-                            
-                            .gallery .info1 p {
-                                font-size: 14px;
-                                font-weight: 600;
-                                font-family: Geomanist-Light;
-                                overflow: hidden;
-                                position: relative;
-                                top: -10px;
-                            }
-                            .ai_restaurant-name h2 {
-                                color: #ABA07C;
-                                font-size: 32px;
-                                font-family: ACaslonPro-Regular;
-                                margin: 0;
-                                text-transform: uppercase;
-                            }
-                            .small-box-bg {
-                                background-color: #283D3E;
-                                float: left;
-                                margin-bottom: 94px;
-                                margin-left: -141px;
-                                margin-top: -104px;
-                                opacity: 1.0;
-                                padding: 48px;
-                                width: 100%;
-                            }
-                            .bottom-sec-bg {
-                                background-color: rgb(228,220,212);
-                                /* margin-left: 17.5%; */
-                                margin-top: -6%;
-                                position: relative;
-                                width: 888px;
-                            }
-                            .expeience-small-text {
-                                color: #fff;
-                                font-family: 'Satisfy', cursive;
-                            }
-                            
-                            .restaurant-sec-description-pannel2 .restaurtant-bar-des-para-style {
-                                background-color: #ada077;
-                                padding: 15px 60px 15px 15px;
-                                color: white;
-                            }
-                            
-                            .restaurant-owner-sign {
-                                color: #ada077;
-                                font-size: 21px;
-                                font-family: ACaslonPro-Regular;
-                                margin-bottom: 20px;
-                                padding-left: 15px;
-                                text-transform: lowercase;
-                                line-height: 31px;
-                                /* font-style: italic; */
-                                text-align: left;
-                                opacity: 0.8;
-                            }
-                            
-                            .hotel-block-two-left-sec-align > h2 {
-                                color: #dbd4d7;
-                                font-family: ACaslonPro-Regular;
-                                font-size: 32px;
-                                font-weight: lighter;
-                                margin-top: 0;
-                                text-transform: uppercase;
-                                width: 100%;
-                                margin-left: 0px;
-                                letter-spacing: 0px;
-                            }
-                            
-                            .hotel-block-two-right-sec-align > p {
-                                color: white;
-                                line-height: 30px;
-                                margin-top: 0px;
-                                font-size: 15px;
-                                font-family: Geomanist-light;
-                                opacity: 1;
-                            }
-                            .hotel-block-two-right-sec-align > h2 {
-                                color: #dbd4d7;
-                                font-family: ACaslonPro-Regular;
-                                font-size: 40px;
-                                font-weight: lighter;
-                                margin-top: -115px;
-                                text-transform: uppercase;
-                                opacity: 0;
-                            }
-                            
-                            .hotels-detail-heading-text > p {
-                                color: white;
-                                font-size: 32px;
-                                font-family: ACaslonPro-Regular;
-                                letter-spacing: 3px;
-                                line-height: 35px;
-                                float: none;
-                                width: 50%;
-                                text-transform: uppercase;
-                                height: auto;
-                                background: rgba(0,0,0,0.8);
-                                margin: 0;
-                                padding: 8% 0% 0% 7%;
-                            }
-                            
-                            .hotels-showcase-right-side {
-                                background-blend-mode: multiply;
-                                background-color: #2f2f2e;
-                                background-position: center center;
-                                background-repeat: no-repeat;
-                                background-size: cover;
-                                color: #fff;
-                                font-family: Geomanist-Regular;
-                                /* padding: 516px 49px 90px 30px; */
-                                margin-top: -400px;
-                            }
-                            
-                            .image-showcase-below-big-text {
-                                color: #474749;
-                                font-family: Raleway-ExtraLight;
-                                font-size: 70px;
-                                margin-left: -107px;
-                                margin-top: 36px;
-                                margin-top: 70px;
-                                text-transform: uppercase;
-                            }
-                            
-                            /* AIC Harman 27/12/2017 */
-                            
-                            .hotels-detail-heading-text {
-                                width: 100%;
-                                float: left;
-                            }
-                            
-                            .gallery.row .principale1 img {
-                                width: 100%;
-                                position: absolute;
-                                top: 0%;
-                                background-color: black;
-                                opacity: 0.9;
-                            }
-                            
-                            .gallery.row .principale1 .foto1 {
-                                width: 0%;
-                                height: auto;
-                                position: absolute;
-                                top: 0vh;
-                                background: black;
-                                overflow: hidden;
-                            }
-                            
-                            .architecture-sec-top-img {
-                                display: table;
-                                margin: 83px auto 0;
-                                display: table;
-                                margin: 83px auto 0;
-                                margin-bottom: 0px;
-                                margin-left: auto;
-                                width: 0%;
-                                height: auto;
-                                width: 50%;
-                                margin: 0 auto;
-                                margin-left: 224px;
-                                margin-bottom: 65px;
-                            }
-                            
-                            .small-box-text {
-                                color: #fff;
-                                font-family: geomanist-light;
-                                font-size: 26px;
-                                margin-left: -5px;
-                                line-height: 30px;
-                            }
-                            
-                            .architecture-sec-heading > h1 {
-                                font-family: geomanist-light;
-                                font-size: 30px;
-                                font-weight: lighter;
-                                margin-top: 120px;
-                                right: 30%;
-                                left: 45px;
-                            }
-                            
-                            .expeience-small-text {
-                                color: #fff;
-                                font-family: ACaslonPro-Regular;
-                            }
-                            
-                            .slider-side-text-tittle {
-                                color: #fff;
-                                font-family: geomanist-light;
-                                font-size: 32px;
-                                line-height: 39px;
-                            }
-                            
-                            .arrow-margin-right {
-                                margin-right: 0px;
-                            }
-                            
-                            .editorial-image-slider-previous-btn {
-                                margin-left: 384px !important;
-                            }
-                            
-                            .editorial-hotel-detail-page #align-to-top .book-button.open-show_more-page.hotel-btn {
-                                background-color: #ABA07C;
-                                opacity: 1;
-                                color: white;
-                                font-family: Geomanist-light;
-                            }
-                            
-                            .editorial-page-booking-bar .top-booking-bar-btn, .editorial-hotel-detail-page .book-button, .editorial-hotel-detail-page .hotel-slider-price, .editorial-hotel-detail-page .spa-sec-book-an-appoinment-btn {
-                                background-color: #ABA07C;
-                                color: white;
-                                font-family: Geomanist-light;
-                            }
-                            
-                            .image-slider-container .editorial-images-count {
-                                color: #fff !important;
-                                float: left !important;
-                                font-size: 33px !important;
-                                margin-left: 22% !important;
-                                margin-top: -145px !important;
-                                position: relative;
-                                width: 22% !important;
-                            }
-                            
-                            .restaurant-sec-description-pannel1 p {
-                                color: #fff;
-                                font-family: Raleway-Light;
-                                font-size: 22px;
-                                line-height: 32px;
-                                margin: 0;
-                            }
-                            
-                            .restaorant-des-orange-text {
-                                color: #EFE5BC;
-                                margin-top: 25px;
-                                font-family: ACaslonPro-Regular;
-                                float: left;
-                                font-style: italic;
-                            }
-                            
-                            .restaurant-view-gallery-align .bar-view-gallery {
-                                color: #fff;
-                                font-size: 15px;
-                                font-family: ACaslonPro-Regular;
-                                font-style: italic;
-                                text-decoration: none;
-                            }
-                            
-                            .bar-info-text-haeding {
-                                font-size: 18px;
-                                text-transform: uppercase;
-                                color: white;
-                                font-family: ACaslonPro-Regular;
-                                line-height: 26px;
-                            }
-                            
-                            .bar-intro-text-bg {
-                                background-color: #283D3E;
-                                float: left;
-                                padding-top: 60px;
-                                color: black;
-                                width: 100%;
-                            }
-                            
-                            .bar-name-text-style {
-                                color: #fff;
-                                font-size: 13px;
-                                letter-spacing: 11px;
-                                text-transform: uppercase;
-                                text-align: right;
-                                font-family: Geomanist-light;
-                            }
-                            
-                            .bar-des-text {
-                                color: #fff;
-                                font-size: 12px;
-                                line-height: 24px;
-                                margin: 0;
-                                font-family: Geomanist-light;
-                                text-transform: none;
-                            }
-                            
-                            .img-width {
-                                width: 100%;
-                                background: rgba(0,0,0,0.8);
-                                opacity: 0.8;
-                            }
-                            
-                            .bar-bottom-des-pannel p {
-                                color: #fff;
-                                font-family: Geomanist-Light;
-                                font-size: 14px;
-                                line-height: 25px;
-                            }
-                            
-                            .spa-owner-sign {
-                                color: #ABA07C;
-                                font-size: 14px;
-                                font-family: ACaslonPro-Regular;
-                                text-align: left;
-                            }
-                            
-                            .spa-overlay-text span {
-                                padding-left: 0px !important;
-                                margin-top: 15px;
-                                float: none;
-                                font-family: Geomanist-light;
-                                font-style: normal;
-                            }
-
-                            .spa-overlay-text span {
-                                color: white;
-                                font-size: 14px;
-                                font-style: italic;
-                                font-family: acaslonpro-regular;
-                                font-weight: lighter;
-                                margin-top: -10px !important;
-                                display: block;
-                            }
-                            
-                            .spa-overlay-text {
-                                position: absolute;
-                                top: 0px;
-                                width: 645px;
-                            }
-                            
-                            .spa-overlay-text blockquote {
-                                background: #ABA07C;
-                                border: medium none;
-                                width: 518px;
-                                font-family: ACaslonPro-Regular;
-                                color: white;
-                                font-size: 22px;
-                                line-height: 39px;
-                                /* font-family: Geomanist-light; */
-                                margin: 0;
-                                padding: 10px 10px 9px 15px;
-                                text-transform: uppercase;
-                                font-weight: bold;
-                                margin-top: 0px;
-                            }
-                            
-                            .spa-sec-para-style {
-                                color: #b3b7ba;
-                                font-size: 18px;
-                                font-family: Geomanist-light;
-                            }
-                            
-                            .spa-content-quote {
-                                border: medium none;
-                                color: #dee0e1;
-                                font-family: acaslonpro-regular;
-                                font-size: 18px;
-                                /* font-style: italic; */
-                                line-height: 25px;
-                                margin-bottom: 0;
-                                margin-top: 20px;
-                                padding-left: 15px;
-                                font-family: Geomanist-light;
-                            }
-                            
-                            .view-gallery-border-left {
-                                border-bottom: 2px solid #fff;
-                                float: left;
-                                padding-top: 26px;
-                                width: 45px;
-                            }
-                            
-                            .spa-sec-view-gallery .bar-view-gallery {
-                                color: #fff;
-                                font-family: acaslonpro-regular;
-                                font-size: 15px;
-                                font-style: italic;
-                                text-decoration: none;
-                                margin-top: 20px;
-                                float: left;
-                            }
-                            
-                            .content-quote-author {
-                                color: #ABA07C;
-                                font-size: 12px;
-                                margin-top: 20px;
-                                margin-bottom: 0px;
-                                font-family: ACaslonPro-Regular;
-                            }
-                            
-                            
-                            h4.spa-bold-text {
-                                font-size: 12px;
-                                text-transform: lowercase;
-                                font-family: Geomanist-light;
-                                margin-bottom: 10px;
-                            }
-                            
-                           .spa-sec-para-style {
-                                color: #ABA07C;
-                                font-size: 14px;
-                                font-family: Geomanist-light;
-                                text-transform: lowercase;
-                            }
-                            
-                            a.spa-sec-book-an-appoinment-btn {
-                                margin-top: 20px !important;
-                            }
-                            
-                            .video-section-bg {
-                                background: rgba(37, 37, 37, 1);
-                            }
-                            
-                            .editoral-book-page-headings > h2 {
-                                color: #fff;
-                                display: inline-block;
-                                font-family: geomanist-light;
-                                font-size: 36px !important;
-                                margin: 32px auto 0;
-                                text-align: center;
-                                text-transform: none;
-                            }
-                            
-                            .editoral-book-page-headings > p {
-                                color: #ABA07C;
-                                font-family: Geomanist-Regular;
-                                margin-top: 16px;
-                            }
-                            
-                            .dates li input, .dates li select {
-                                background-color: transparent;
-                                background-image: url(../images/icon-dropdown.png);
-                                background-position: center bottom;
-                                background-repeat: no-repeat;
-                                background-size: 15px auto;
-                                text-align: center;
-                                border: medium none;
-                                font-size: 14px;
-                                margin-top: 25px;
-                                padding-bottom: 50px;
-                                width: 117px;
-                                margin-left: 0px;
-                                -webkit-appearance: none;
-                                -moz-appearance: none;
-                                appearance: none;
-                                -webkit-transition: border-color 150ms ease;
-                                align-items: center;
-                                padding-left: 16px;
-                            }
-                            
-                            .dates .editorail-heading {
-                                font-family: Geomanist-light;
-                                font-size: 16px;
-                                font-weight: bold;
-                                text-align: center;
-                                margin-left: 18px;
-                                text-transform: uppercase;
-                            }
-                            .booking-page-footer-section h6 {
-                                color: #fff;
-                                font-weight: bold;
-                                font-family: Geomanist-light;
-                                margin-bottom: 32px;
-                                text-transform: uppercase;
-                            }
-                            .booking-page-footer-section .white-border-bottom {
-                                border-bottom: 2px solid #fff;
-                                margin: 0 auto;
-                                width: 35px;
-                            }
-                            
-                            .hotels-logo h3.title a, .hotels-logo h3.title a:hover {
-                                color: #fff;
-                                text-transform: uppercase;
-                                font-size: 14px;
-                            }
-                            
-                            .editorial-hotel-detail-page hr.star-light {
-                                padding: 0;
-                                border: none;
-                                border-top: solid 1px;
-                                text-align: center;
-                                text-transform: uppercase;
-                                max-width: 100px;
-                                margin: 4px auto 0;
-                                border-radius: 10px;
-                            }
-                            
-                            .booking-form-bar-top {
-                                background-color: rgba(0, 0, 0, 0.85);
-                                float: left;
-                                opacity: unset !important;
-                                padding-left: 100px !important;
-                                padding-right: 8px !important;
-                                padding-top: 9px !important;
-                                position: absolute;
-                                top: 0;
-                                width: 100% !important;
-                            }
-                            
-                            .booking-page-footer-section span {
-                                color: #ABA07C;
-                                display: block;
-                                font-size: 17px;
-                                margin-bottom: 0.3em;
-                            }
-
-                            
-                            
-
-
-                            
-                            @import url('https://fonts.googleapis.com/css?family=Caveat');
-                            @import url('https://fonts.googleapis.com/css?family=Satisfy');
-                            @import url('https://fonts.googleapis.com/css?family=Zeyada');
-
-        </style>
-		
 		<!-- Global site tag (gtag.js) - Google Analytics -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110391807-1"></script>
 		<script>
@@ -1116,16 +297,6 @@
                     <div class="filter-page-main-align">
                         <div class="col-md-10 col-sm-9">
                             <div class="row">
-                                <div class="header container-fluid">
-									<div class="col-md-12">
-										<div class="header-logo">
-											<a href="{{url()}}">
-												<img src="{{ asset('sximo/assets/images/logo-design_1.png')}}" class="img-responsive" alt="Emporium Voyage"/>
-											</a>
-										</div>
-									</div>
-                                </div>
-								
                                 <div class="col-md-12 col-sm-12 col-xs-12 yachts-main-bg">
                                     <div id="listproperties">
                                         <div class="row">
@@ -1135,15 +306,15 @@
 													<div class="container">
 														<div class="restaurant-sec-pannel-main-align">
 															<div class="ai_restaurant-name">
-																<h2>{{$propertiesArr[0]->restaurant_title}}</h2>
+																<h2 id="resto_title">{{$propertiesArr[0]->restaurant_title}}</h2>
 																<span class="restaurant-sec-hotel-name-below-small-text">Get Inspired</span>
 															</div>
 															<div class="restaurant-sec-description-pannel1">
-																<p>{{$propertiesArr[0]->restaurant_usp_text}}</p>
-																<p class="restaurant-orange-creative-text-align"><span class="restaorant-des-orange-text">-{{$propertiesArr[0]->restaurant_usp_person}}</span></p>
+																<p id="resto_usptext">{{$propertiesArr[0]->restaurant_usp_text}}</p>
+																<p class="restaurant-orange-creative-text-align"><span class="restaorant-des-orange-text" id="resto_uspperson">-{{$propertiesArr[0]->restaurant_usp_person}}</span></p>
 															</div>
 															<div class="clearfix"></div>
-															<div class="restaurant-des-pannel-image1">
+															<div class="restaurant-des-pannel-image1" id="resto_image">
 																@if($propertiesArr[0]->restaurant_image!='')
 																<img class="img-responsive img-width" src="{{ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$propertiesArr[0]->restaurant_image),100,300,null)}}" alt=""/>  
 																@endif
@@ -1153,14 +324,14 @@
 																<div class="col-md-4 col-sm-4">
 																	<div class="row">
 																		<div class="restaurant-sec-description-pannel2">
-																			<p class="restaurtant-bar-des-para-style">{!! (strlen($propertiesArr[0]->restaurant_desciription) > 350) ? nl2br(e(substr($propertiesArr[0]->restaurant_desciription,0,350))).'...' : nl2br(e($propertiesArr[0]->restaurant_desciription)) !!}</p>
-																			<div class="restaurant-owner-sign">{{$propertiesArr[0]->restaurant_usp_person}}</div>
+																			<p id="resto_desc" class="restaurtant-bar-des-para-style">{!! (strlen($propertiesArr[0]->restaurant_desciription) > 350) ? nl2br(e(substr($propertiesArr[0]->restaurant_desciription,0,350))).'...' : nl2br(e($propertiesArr[0]->restaurant_desciription)) !!}</p>
+																			<div id="resto_uspperson_desc" class="restaurant-owner-sign">{{$propertiesArr[0]->restaurant_usp_person}}</div>
 																		</div>
 																	</div>
 																</div>
 																<div class="col-md-5 col-sm-5">
 																	<div class="row restaurant-image-height-align">
-																		<div class="restaurant-des-pannel-image2 restaurant-image-height-align">
+																		<div id="resto_image2" class="restaurant-des-pannel-image2 restaurant-image-height-align">
 																			@if($propertiesArr[0]->restaurant_image2!='')
 																			<img class="img-responsive img-width" src="{{ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$propertiesArr[0]->restaurant_image2),100,500,null)}}" alt=""/>  
 																			@else
@@ -1172,7 +343,7 @@
 																	</div>
 																</div>
 																<div class="col-md-3 col-sm-3">
-																	<div class="row">
+																	<div id="resto_gallery" class="row">
 																		@if($restaurant_gallery>0)
 																			<div class="restaurant-view-gallery-align">
 																				<span class="view-gallery-border-left"></span>
@@ -1223,7 +394,7 @@
 																@foreach($propertiesArr as $property)
 																	
 																	<div class="form-group post-filter-inputs">
-																		<label><a href="{{URL::to('')}}">{{$property->property_name}}</a></label>
+																		<label><a class="hotelanchordata" href="javascript:void(0);" data-jsondata="{{json_encode($property)}}">{{$property->property_name}}</a></label>
 																	</div>
 																	
 																@endforeach
@@ -1274,6 +445,76 @@
                         </div>
                     </div>
                     <div class="clearfix"></div>
+					
+					<div class="modal fade vegasModelFade" id="myModal" role="dialog">
+					  <div class="modal-dialog VegasModelDialog">
+
+						<!-- Modal content-->
+						<div class="modal-content vegasModelContent">
+						  <div class="modal-header vegasModelHeader">
+							<button type="button" class="close VegasCloseButton" data-dismiss="modal">&times;</button>
+							<a href="#" id="frontpage-layer-bj-header-logo"> <img class="VegasPopLogo" alt="" src="data:image/png;base64,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" class="img-responsive" data-pagespeed-url-hash="2747997174" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"></a>
+							</div>
+						  <div class="modal-body">
+							  <div class="col-md-2 SlickVegasWidth">
+								<section class="Vegasregular slider">
+									<div class="slick-cstm-width">
+									   <div class="side-nav-next-hotel-img Sidenavimg">
+											<div class="side-next-and-perivious-hotel-arrow">
+												<div class="arrows-commom  next-arrow">
+													<a href="http://www.emporium-voyage.com/hotel-zoo-berlin-">
+														<span>New Hotels</span>
+													</a>
+												</div>
+											</div>
+											
+											<div class="new-hotel-image" style="background-image:url(http://www.emporium-voyage.com/uploads/property_imgs_thumbs/xfront_property_4505_Emporium-Voyage-Hotel-Zoo-Berlin00017.jpg.pagespeed.ic.nY-effTxow.jpg)">
+																			<div class="new-hotels-image-tittle">
+																					<h2 class="new-hotel-name">Hotel Zoo Berlin </h2>
+																					<div class=" new-hotel-add">
+																							<p>New York City</p>
+																							<p>United States</p>
+																					</div>
+																			</div>
+																			<div class="clearfix"></div>
+																			<div class="new-hotel-view-more-btn">
+																					<a class="" href="http://www.emporium-voyage.com/hotel-zoo-berlin-" tabindex="0">
+																							View Hotel
+																					</a>
+																			</div>
+																	</div>
+											
+											<a class="bootom-view-next-btn" href="http://www.emporium-voyage.com/hotel-zoo-berlin-">
+												Visit All Hotels DOI
+											</a>
+										</div>
+									</div>
+									@if(!empty($sidebardetailAds))
+									@foreach($sidebardetailAds as $adsdetail)
+									<div class="slick-cstm-width">
+										<a href="http://{{$adsdetail->adv_link}}"><img src="{{URL::to('uploads/users/advertisement/'.$adsdetail->adv_img)}}"></a>
+									</div>
+									@endforeach
+									@endif					
+								</section>
+
+							</div>
+							  <div id="frontpage-layer-bj-content" class="col-md-10 vegasGallery1">
+									<div class="frontpage-detail-content-top">
+										<div class="frontpage-detail-content-top-link">
+											<div class="frontpage-detail-content-top-link"> 
+											</div>
+										</div>
+									</div>
+								<div class="row masonry-grid vegasgalleryimg">
+									
+								  </div>
+								</div>
+							</div>
+						</div>
+
+					  </div>
+					</div>
                     <script type="text/javascript">
                         $(document).on('ready', function () {
 							$(".regular").slick({
@@ -1285,6 +526,49 @@
 								nextArrow: false,
 								autoplay: true,
 								autoplaySpeed: 3000
+							});
+							
+							$(document).on('click', '.hotelanchordata', function () {
+								alert();
+							});
+							
+							$(document).on('click', '.detail_view', function () {
+								$.ajax({
+									url: "{{ URL::to('getpropertygallery')}}" + '/' + $(this).attr('rel') + '/' + $(this).attr('rel2'),
+									type: "get",
+									success: function (data) {
+										var imagesPro = '';
+										var im=0;
+										var di=1;
+										var lngimg = Math.round((data.image.length)/3);
+										imagesPro += '<div class="col-md-6 col-lg-4 masonry-column">';
+										$(data.image).each(function (i, val) {
+											var clsact = '';
+											
+											imagesPro += '  <div>';
+											imagesPro += '	<a href="#" class="thumbnail vogasThumbnail"><img class="img-responsive" src="' + val.imgsrc_cache + '"></a>';
+											imagesPro += '  </div>';
+											if(di==lngimg)
+											{
+												di=0;
+												imagesPro += ' </div>';
+												imagesPro += '<div class="col-md-6 col-lg-4 masonry-column">';
+											}
+											
+											im++;
+											di++;
+										});
+										imagesPro += ' </div>';
+										$('#myModal .vegasgalleryimg').html(imagesPro);
+										$('#myModal').modal('show');
+									}
+								});
+								return false;
+							});
+
+							$(document).on('click', '.frontpage-layer-bj-header-close', function () {
+								$('.frontpage-layer-bj').fadeOut('slow');
+								$('html').removeClass('hidescroll');
 							});
 						});
                     </script>
