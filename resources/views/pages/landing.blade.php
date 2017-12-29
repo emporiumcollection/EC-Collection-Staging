@@ -713,10 +713,11 @@
             
             .emporium-voyage-Menu {
                 color: #c7ab84;
-                margin-top: 25px;
-                margin-left: 21px;
+                margin-top: 3px;
+                margin-left: 0px;
                 opacity: 1;
                 box-shadow: none;
+                font-size: 20px;
             }
             
              .close {
