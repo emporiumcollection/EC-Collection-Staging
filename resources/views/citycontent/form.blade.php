@@ -65,13 +65,18 @@
 									<label for="Category" class=" control-label col-md-4 text-left"> Category </label>
 									<div class="col-md-6">
 										<?php 
-											$category = explode(',',$row['category']);
-											$category_opt = array( 'test' => 'Test' , ); 
+											$category_opt = \DB::table('tb_categories')->get();
+											
 										?>
 										<select name='category' rows='5'   class='select2 '  > 
+			
 											<?php 
-												foreach($category_opt as $key=>$val){
-													echo "<option  value ='$key' ".($row['category'] == $key ? " selected='selected' " : '' ).">$val</option>"; 						
+												foreach($category_opt as $val){
+													if($val->id==$row['category']){
+														echo '<option  selected value ="'.$val->id.'">'.$val->category_name.'</option>';  
+													}else{
+														echo '<option  value ="'.$val->id.'">'.$val->category_name.'</option>';  
+													}						
 												}						
 											?>
 										</select> 
@@ -151,24 +156,7 @@
 
 							    
 
-							    <div class="form-group image" >
-									<label for="Gallery" class=" control-label col-md-2 text-left"> Gallery </label>
-									<div class="col-md-8">
-										<div class="col-md-12" id="gallery_city">
-												<div class="row" data-gallery="1">
-													<div class="col-md-4">
-														<input  type='file' name='gallery[]' data-gallery-file="1" style='width:150px !important;'  />
-														<small> ( Image size 1500 by 1000  ) </small>
-													</div> 
-													<div class="col-md-4">
-														<a class="btn btn-default" data-open-container="1">Choose from container</a>
-														<input type="hidden" name="container_gallery[]"  data-gallery-hidden="1">
-														<span data-gallery-image="1"></span>
-													</div> 
-												</div>	
-										</div>
-									</div>
-								</div>
+							    
 								<div class="form-group  " >
 									<label for="youtube_video_title" class=" control-label col-md-4 text-left"> Video Title </label>
 									<div class="col-md-6">
@@ -225,7 +213,23 @@
 									<div class="form-group  " >
 										<label for="Designers" class=" control-label col-md-4 text-left"> Designers </label>
 										<div class="col-md-6">
-									  		<select name='designers[]' multiple rows='5' id='designers' class='select2 '   ></select> 
+											<?php 
+											$designers_opt = \DB::table('tb_designers')->get();
+											$designers = explode(',',$row['designers']);
+											//$category_opt = array( 'test' => 'Test' , ); 
+										?>
+										<select name='designers' rows='5' id='designers' multiple   class='select2 '  > 
+											<?php 
+												foreach($designers_opt as $key=>$val){
+													if(in_array($val->id, $designers)){
+														echo '<option selected value ="'.$key.'">'.$val->designer_name.'</option>';
+													}else{
+														echo '<option  value ="'.$key.'">'.$val->designer_name.'</option>';
+													} 						
+												}						
+											?>
+										</select> 
+									  		
 									 	</div> 
 									 	<div class="col-md-2">
 									 	
