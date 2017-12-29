@@ -153,6 +153,7 @@ class CitycontentController extends Controller {
 			$data['gallery_title'] = $request->input('gallery_title');
 			$data['tourism_office_link'] = $request->input('tourism_office_link');
 			$designer = $request->input('designers');
+			dd($request->input());
 			if(!is_null($designer )){
 				$data['designers'] = implode(',',$request->input('designers'));
 			}
