@@ -267,6 +267,12 @@ class HomeController extends Controller {
 								$pr++;
 							}
 						}
+                                                
+                                                echo '<pre>';
+                                                print_r($landinggridpropertiesArr);
+                                                echo '</pre>';
+                                                die;
+                                                
 						$this->data['landinggridpropertiesArr'] = $landinggridpropertiesArr;
                     }
 					if (isset($pageSlug) && $pageSlug == 'restaurants') {
