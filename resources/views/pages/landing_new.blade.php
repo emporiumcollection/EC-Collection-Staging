@@ -1613,7 +1613,7 @@
                             <!--Footer End-->
                         </div>
                         <!--Main Page End-->
-                        <!--Sidebar-->
+                        <!--Sidebar--> <!-- AIC Change menu layout -->
                         <div class="col-md-2">
                             <div class="row">
                                 <div class="right-menus right-menu-sidebar">
