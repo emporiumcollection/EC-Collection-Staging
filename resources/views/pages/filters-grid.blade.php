@@ -405,7 +405,7 @@ return fasle;
                                     <a href="#" class="book-button open-book-now-page">BOOK</a>
                                 </div>
                             </div>-->
-                            <div class="go-back-button-container">
+<!--                            <div class="go-back-button-container">
                                 @if(isset($_GET['ref']) && $_GET['ref']!='' )
                                 <button class="go-back-button" id="back_button_page">Go Back</button> 
 
@@ -413,7 +413,57 @@ return fasle;
                                 <button class="go-back-button" onclick="goBack()">Go Back</button>
                                 @endif
                                 <div class="previous-page-screen-short-container"></div>
-                            </div>
+                            </div>-->
+                            <! AIC sidebar HK-->
+                            <header >
+                <a data-popup-id="login-forms-popup" href="#" class="video-popup-btn login_popup show-login-forms-btn"><i class="fa fa-lock " aria-hidden="true" ></i></a>
+				<div class="logo-padding-left editorial-logo-align">
+					<!--<div>
+						<a href="#" title="Add to Favorites" class="book-button" onclick="add_to_lightbox({{( array_key_exists('propimage', $propertyDetail)) ? $propertyDetail['propimage'][0]->id : ''}}, {{$propertyDetail['data']->id}});"><i class="fa fa-plus " aria-hidden="true" ></i> Add</a>
+					</div>-->
+					<div class="go-back-button-container">
+						<button class="go-back-button" onclick="goBack()">Go Back</button>
+						<div class="previous-page-screen-short-container">
+							<?php if(\Session::get('ai_previous_page')): ?>
+								<img src="{{URL()}}/sximo/previous_page_image/<?php echo \Session::get('ai_previous_page'); ?>">
+							<?php endif; ?>
+						</div>
+					</div>
+				</div>
+                @if(!empty($relatedproperties))
+					@if(array_key_exists('0',$relatedproperties))
+						<div class="hotel-next-previous-outer">
+							<div class="previous-btn previous-next-pannel"> 
+								  <img class="img-responsive next-hotel-arrow" src="{{ asset('sximo/assets/images/editorial-left-arrow.png')}}" alt=""/>
+								<a href="{{URL::to($relatedproperties[0]->property_slug)}}">
+									<div class="next-hotel-show-pannel">
+										<img class="img-responsive" src="{{ URL::to('uploads/property_imgs_thumbs/front_property_'.$relatedproperties[0]->folder_id.'_'.$relatedproperties[0]->file_name)}}" alt="">
+										<div class="next-hotel-tittle">
+											<h2>{{$relatedproperties[0]->property_name}}</h2>
+										</div>
+									</div>
+								</a>
+							</div>
+						</div>
+					@endif
+					@if(array_key_exists('1',$relatedproperties))
+						<div class="hotel-next-previous-outer">
+							<div class="next-hotel-btn previous-next-pannel"> 
+								<img class="img-responsive next-hotel-arrow" src="{{ asset('sximo/assets/images/editorial-right-arrow.png')}}" alt=""/>
+								<a href="{{URL::to($relatedproperties[1]->property_slug)}}">
+									<div class="next-hotel-show-pannel">
+										<img class="img-responsive" src="{{ URL::to('uploads/property_imgs_thumbs/front_property_'.$relatedproperties[1]->folder_id.'_'.$relatedproperties[1]->file_name)}}" alt="">
+										<div class="next-hotel-tittle">
+											<h2>{{$relatedproperties[1]->property_name}}</h2>
+										</div>
+									</div>
+								</a>
+							</div>
+						</div>
+					@endif
+				@endif
+                </header>
+                            <!-- end sidebar -->
                         </div>
                     </header>
                     <div class="filter-page-main-align">
@@ -487,7 +537,7 @@ return fasle;
                                                         <a class="uk-margin-top uk-button uk-button-primary" href="#">Read more <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>
                                                     </div>
                                                     <a href="" class="bh-slideshow-slidenav uk-slidenav uk-slidenav-previous" data-uk-slideshow-item="previous"></a>
-                                                    <a href="" class="bh-slideshow-slidenav uk-slidenav uk-slidenav-next one" data-uk-slideshow-item="next"></a>
+                                                    <a href="" class="bh-slideshow-slidenav uk-slidenav uk-slidenav-next" data-uk-slideshow-item="next"></a>
                                                 </div>
                                             </li>
                                         </ul>
