@@ -591,7 +591,7 @@ return fasle;
                                         <div class="row no-margin">
 											<div class="filter-content overflow-hidden margin-100px-top sm-margin-75px-top xs-margin-50px-top">
 												<ul class="portfolio-grid work-4col hover-option2 gutter-small">
-													
+													<li class="grid-sizer"></li>
                                             <?php
                                             if($propertiesArr) {
                                                 $rw = 1;
