@@ -1,5 +1,5 @@
 .region-sidebar-first {
-	left:0px;
+	left:46px;
 	top:0px;
 	position:fixed;
 	margin-left: 0px;
@@ -572,7 +572,7 @@ ul.menusk li ul.menusk1 li a {
  * Tablet wide sizes and up
  */
 @media only screen and (min-width: 1025px) {
-	#block-system-main-menu { margin-left: 80px;}
+	#block-system-main-menu { margin-left: 18px;}
 	#block-ledunfly-menu-link{ width: 62px; height: 53px;}
 	#block-ledunfly-menu-link span{left:28px;}
 	#block-ledunfly-menu-link span:nth-child(1) { top: 28px;}
