@@ -217,6 +217,8 @@
 						@if($row['position']=='social_property' ) checked="checked" @endif  /> {{ Lang::get('core.tab_social_property_menu') }}
 						<input type="radio" name="position"  value="social_destination"  required
 						@if($row['position']=='social_destination' ) checked="checked" @endif  /> {{ Lang::get('core.tab_social_destination_menu') }}
+						<input type="radio" name="position"  value="popup"  required
+						@if($row['position']=='popup' ) checked="checked" @endif  /> {{ Lang::get('core.tab_popup_menu') }}
 						
 					 </div> 
 				  </div> 	 				
