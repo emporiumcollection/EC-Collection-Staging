@@ -215,7 +215,24 @@ class CitycontentController extends Controller {
 
 	}	
 
-
+	function createNewFolder($Foldername, $ParentfolderId) {
+        if ($Foldername != '') {
+            $dirPath = (new ContainerController)->getContainerUserPath($ParentfolderId);
+            $slug = \SiteHelpers::seoUrl(trim($Foldername));
+            $result = \File::makeDirectory($dirPath . $slug, 0777, true);
+            $fdata['parent_id'] = $ParentfolderId;
+            $fdata['name'] = $slug;
+            $fdata['display_name'] = $Foldername;
+            $fdata['file_type'] = 'folder';
+            $fdata['user_id'] = \Auth::user()->id;
+            $fdata['created'] = date('y-m-d h:i:s');
+            $fID = \DB::table('tb_container')->insertGetId($fdata);
+            return $fID;
+        } else {
+            return false;
+        }
+    }
+	
 	function gallery_images_uploads(Request $request) {
         $checkProp = \DB::table('tb_city_content')->select('title')->where('id', $request->input('cityId'))->first();
         if (!empty($checkProp)) {
