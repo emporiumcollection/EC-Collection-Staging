@@ -770,8 +770,8 @@
 	border-bottom: 1px solid #414246;
 	color: #fff;
 	display: block;
-	font-size: 14px;
-	padding: 26px 0 25px 30px;
+	font-size: 12px;
+	padding: 26px 0 25px 21px;
 	text-transform: uppercase;
 	background: rgb(37,37,37,0.9);
     }
@@ -1030,14 +1030,14 @@
                                         </div>
                                         <!-- AIC Harman email phone sidebar add start -->
                                         
-                                            <aside class="site-aside">
+<!--                                            <aside class="site-aside">
                                                 <div class="contact-aside">
                                                     <ul class="contact-aside-list">
                                                         <li class="contact-list-item contact-phone"><a href="tel:+49 172 8937230"><i class="fa fa-phone asideIclass" aria-hidden="true"></i> +49 172 8937230</a></li>
                                                         <li class="contact-list-item contact-email"><a href="mailto:bookings@emporium-voyage.com"><i class="fa fa-envelope asideIclass" aria-hidden="true"></i> bookings@emporium-voyage.com</a></li>
                                                     </ul>
                                                 </div>
-                                            </aside>
+                                            </aside>-->
                                         
                                         <!-- AIC Harman email phone sidebar add end -->
                                         
