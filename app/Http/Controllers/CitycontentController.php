@@ -441,6 +441,8 @@ class CitycontentController extends Controller {
     	$this->data['id'] = $id;
 		$this->data['access']		= $this->access;
 		 $this->data['hotel_broch'] = $this->get_property_files($id);
+
+		 print_r($this->data['hotel_broch']);
 		return view('citycontent.gallery',$this->data);
     }
 
