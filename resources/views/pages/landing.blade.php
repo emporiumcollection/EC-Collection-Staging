@@ -711,6 +711,21 @@
                 display: none;
             }
             
+            .emporium-voyage-Menu {
+                color: #c7ab84;
+                margin-top: 25px;
+                margin-left: 21px;
+                opacity: 1;
+                box-shadow: none;
+            }
+            
+             .close {
+                font-size: 21px;
+                font-weight: 700;
+                opacity: 1;
+                text-shadow: none;
+            }
+            
         /* sidebar css end */
         
         /* AIC 29-12-2017*/
