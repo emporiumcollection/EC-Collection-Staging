@@ -843,6 +843,61 @@
                                     <div id="block-system-main-menu" class="block block-system block-menu no-title odd block-count-6 block-region-sidebar-first block-main-menu" role="navigation">
                                         <div class="block-inner clearfix">
                                             <div class="block-content content" class="block-content content">
+                                                <?php 
+                                                    $popup      = SiteHelpers::menus( 'popup' ,'all'); 
+                                                    $popup2      = SiteHelpers::menus( 'popup_2' ,'all'); 
+                                                ?>
+                                            <ul class="menusk clearfix">
+                                                @foreach ($popup as $keyMenu=>$menu)
+                                                  <li class="{{($keyMenu==0)?'first':''}} {{(count($menu['childs']) > 0)?'expanded':''}}  menu-depth-1 menu-item-{{$menu['menu_id']}}">
+                                                    <a href="#">{{$menu['menu_name']}}</a>
+                                                    @if(count($menu['childs']) > 0)
+                                                        <ul class="menusk1 clearfix">
+                                                            @foreach ($menu['childs'] as $keyMenu2=>$menu2)
+                                                             <li class="{{($keyMenu2==0)?'first':''}} {{(count($menu2['childs']) > 0)?'expanded':''}}  leaf menu-depth-2 menu-item-{{$menu['menu_id']}}">
+                                                                    <a href="#">{{$menu2['menu_name']}}</a>
+                                                                @if(count($menu2['childs']) > 0)
+                                                                <ul class="menusk1 clearfix">
+                                                                    @foreach($menu2['childs'] as $keyMenu3=>$menu3)
+                                                                        <li class="{{($keyMenu3==0)?'first':''}} leaf menu-depth-3 menu-item-{{$menu['menu_id']}}">
+                                                                            <a href="#">{{$menu3['menu_name']}}</a>
+                                                                        </li>   
+                                                                    @endforeach
+                                                                </ul>
+                                                                @endif
+                                                            </li>                           
+                                                            @endforeach
+                                                        </ul>
+                                                    @endif
+                                                </li>
+                                            @endforeach
+
+
+                                            @foreach ($popup2 as $key2Menu=>$menu)
+                                                  <li class="leaf little {{($key2Menu==0)?'little-first':''}}  {{(count($menu['childs']) > 0)?'expanded':''}}  menu-depth-1 menu-item-{{$menu['menu_id']}}">
+                                                    <a href="#">{{$menu['menu_name']}}</a>
+                                                    @if(count($menu['childs']) > 0)
+                                                        <ul class="menusk1 clearfix">
+                                                            @foreach ($menu['childs'] as $key2Menu2=>$menu2)
+                                                             <li class="leaf little {{($key2Menu2==0)?'little-first':''}} {{(count($menu2['childs']) > 0)?'expanded':''}}  leaf menu-depth-2 menu-item-{{$menu['menu_id']}}">
+                                                                    <a href="#">{{$menu2['menu_name']}}</a>
+                                                                @if(count($menu2['childs']) > 0)
+                                                                <ul class="menusk1 clearfix">
+                                                                    @foreach($menu2['childs'] as $key2Menu3=>$menu3)
+                                                                        <li class="leaf little {{($key2Menu3==0)?'little-first':''}} menu-depth-3 menu-item-{{$menu['menu_id']}}">
+                                                                            <a href="#">{{$menu3['menu_name']}}</a>
+                                                                        </li>   
+                                                                    @endforeach
+                                                                </ul>
+                                                                @endif
+                                                            </li>                           
+                                                            @endforeach
+                                                        </ul>
+                                                    @endif
+                                                </li>
+                                            @endforeach
+
+                                        </ul>
                                                 <ul class="menusk clearfix">
                                                     <li class="first expanded menu-depth-1 menu-item-989">
                                                         <a href="#">Sleep</a>
@@ -927,7 +982,8 @@
                                                     </li>
                                                     <li class="leaf menu-depth-1 menu-item-1009">
                                                         <a href="#">Events</a>
-                                                    </li><li class="leaf little little-first menu-depth-1 menu-item-1139">
+                                                    </li>
+                                                    <li class="leaf little little-first menu-depth-1 menu-item-1139">
                                                         <a href="#" class="little little-first">Carrières</a>
                                                     </li>
                                                     <li class="leaf little menu-depth-1 menu-item-1010">
