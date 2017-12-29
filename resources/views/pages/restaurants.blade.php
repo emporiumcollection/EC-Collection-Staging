@@ -539,7 +539,8 @@
 								$('#resto_title').html(hotelobj.restaurant_title);
 								$('#resto_usptext').html(hotelobj.restaurant_usp_text);
 								$('#resto_uspperson').html(hotelobj.restaurant_usp_person);
-								$('#resto_desc').html(hotelobj.restaurant_desciription);
+								var desc = hotelobj.restaurant_desciription;
+								$('#resto_desc').html(desc.substring(0, 350));
 								$('#resto_uspperson_desc').html(hotelobj.restaurant_usp_person);
 								if(hotelobj.restaurant_image!='')
 								{
