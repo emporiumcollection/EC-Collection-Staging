@@ -392,7 +392,13 @@
                                                         <form>
 															@if(!empty($propertiesArr))
 																@foreach($propertiesArr as $property)
+																	@if($property->restaurant_image!='')
+																		{{--*/ $property->restaurant_image = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant_image),100,300,null); $property->restaurant_image1 = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant_image),100,500,null) /*--}}
+																	@endif
 																	
+																	@if($property->restaurant_image2!='')
+																		{{--*/ $property->restaurant_image2 = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant_image2),100,500,null) /*--}}
+																	@endif
 																	<div class="form-group post-filter-inputs">
 																		<label><a class="hotelanchordata" href="javascript:void(0);" data-jsondata="{{json_encode($property)}}" data-gallerydata="{{$restaurant_gallery}}">{{$property->property_name}}</a></label>
 																	</div>
@@ -537,19 +543,16 @@
 								$('#resto_uspperson_desc').html(hotelobj.restaurant_usp_person);
 								if(hotelobj.restaurant_image!='')
 								{
-									var himg = "{{ImageCache::make(public_path('uploads/properties_subtab_imgs/" + hotelobj.restaurant_image + "'),100,300,null)}}";
-									$('#resto_image').html('<img class="img-responsive img-width" src="'+himg+'" alt=""/>'); 
+									$('#resto_image').html('<img class="img-responsive img-width" src="'+hotelobj.restaurant_image+'" alt=""/>'); 
 								}
 								
 								if(hotelobj.restaurant_image2!='')
 								{
-									var himg2 = "{{ImageCache::make(public_path('uploads/properties_subtab_imgs/" + hotelobj.restaurant_image2 + "'),100,500,null)}}";
-									$('#resto_image2').html('<img class="img-responsive img-width" src="'+himg2+'" alt=""/>'); 
+									$('#resto_image2').html('<img class="img-responsive img-width" src="'+hotelobj.restaurant_image2+'" alt=""/>'); 
 								}
 								else if(hotelobj.restaurant_image!='')
 								{
-									var himg = "{{ImageCache::make(public_path('uploads/properties_subtab_imgs/" + hotelobj.restaurant_image + "'),100,500,null)}}";
-									$('#resto_image2').html('<img class="img-responsive img-width" src="'+himg+'" alt=""/>'); 
+									$('#resto_image2').html('<img class="img-responsive img-width" src="'+hotelobj.restaurant_image1+'" alt=""/>'); 
 								}
 								
 								if($(this).data('gallerydata') > 0)
