@@ -36,8 +36,8 @@
 	<div class="sbox-content" style="background:#fff;"> 	
 
 		<!-- The file upload form used as target for the file upload widget -->
-								<form id="fileupload" class="fileupload" action="{{URL::to('property_images_uploads')}}" method="POST" enctype="multipart/form-data">
-									<input type="hidden" name="propId" value="{{$pid}}" />
+								<form id="fileupload" class="fileupload" action="{{URL::to('gallery_images_uploads')}}" method="POST" enctype="multipart/form-data">
+									<input type="hidden" name="cityId" value="{{$id}}" />
 									<input type="hidden" name="uploadType" value="Hotel Brochure" />
 									<!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
 									<div class="row fileupload-buttonbar">
