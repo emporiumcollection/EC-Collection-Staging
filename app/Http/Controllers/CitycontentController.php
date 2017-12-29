@@ -388,7 +388,7 @@ class CitycontentController extends Controller {
                     $data['path'] = $destinationPath;
                     $fileID = \DB::table('tb_container_files')->insertGetId($data);
 
-                    $imgdata['city_id'] = $request->input('propId');
+                    $imgdata['city_id'] = $request->input('cityId');
                     //$imgdata['type'] = $imgFold;
                     $imgdata['file_id'] = $fileID;
                    // $imgdata['user_id'] = \Auth::user()->id;
