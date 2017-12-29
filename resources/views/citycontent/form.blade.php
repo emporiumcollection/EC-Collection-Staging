@@ -215,7 +215,7 @@
 										<div class="col-md-6">
 											<?php 
 											$designers_opt = \DB::table('tb_designers')->get();
-											//$designers = explode(',',$row['designers']);
+											$designers = explode(',',$row['designers']);
 											//$category_opt = array( 'test' => 'Test' , ); 
 										?>
 										<select name='designers[]' rows='5' id='designers' multiple   class='select2 '  > 
