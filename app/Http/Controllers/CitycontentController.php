@@ -455,7 +455,7 @@ class CitycontentController extends Controller {
 
     public function getGallery( $id = null){
     	$this->data['id'] = $id;
-		
+		$this->data['access']		= $this->access;
 		return view('citycontent.gallery',$this->data);
     }
 		
