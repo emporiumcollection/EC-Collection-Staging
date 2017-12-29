@@ -350,6 +350,10 @@
 																				<a href="javascript:void(0);"   class="detail_view gallerysty bar-view-gallery" id="resto_gallery_id" rel="{{$propertiesArr[0]->id}}" rel2="Restrurants Gallery Images">View Gallery</a>
 																			</div>
 																		@endif
+																		<div class="restaurant-view-gallery-align">
+																				<span class="view-gallery-border-left"></span>
+																				<a id="hotellink" href="{{URL::to($propertiesArr[0]->property_slug)}}">Discover this Hotel</a>
+																			</div>
 																	</div>
 																</div>
 															</div>
@@ -542,6 +546,7 @@
 								var desc = hotelobj.restaurant_desciription;
 								$('#resto_desc').html(desc.substring(0, 350));
 								$('#resto_uspperson_desc').html(hotelobj.restaurant_usp_person);
+								$('#hotellink').attr('href','{{URL::to()}}/'+hotelobj.property_slug);
 								if(hotelobj.restaurant_image!='')
 								{
 									$('#resto_image').html('<img class="img-responsive img-width" src="'+hotelobj.restaurant_image+'" alt=""/>'); 
