@@ -117,7 +117,7 @@ ul.menusk li ul.menusk1 li a {
 /*Menu Toggle*/
 #block-ledunfly-menu-link{
 	position:fixed;
-	left:0px;
+	left:94%;
 	top:0px;
 	cursor:pointer;
 	width:60px;

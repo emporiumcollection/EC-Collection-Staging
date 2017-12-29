@@ -895,7 +895,7 @@
         .booking-form-bar-top {
 	float: left;
 	opacity: unset !important;
-	padding-left: 100px !important;
+	padding-left: 20px !important;
 	padding-right: 8px !important;
 	padding-top: 15px !important;
 	position: absolute;
@@ -1107,7 +1107,7 @@
                                     <div>
                                         <div class="booking-form-bar-top">
                                             <form autocomplete="off" method="get" id="searchform-navbar" class="searchform-navbar top-bar-search-form-align" action="{{URL::to('search')}}">
-                                                <div class="col-md-4">
+                                                <div class="col-md-3">
                                                     <div class="row">
                                                         <div class="form-group would-like-input top-bar-search padding-right-12">
                                                             <input  class="form-control ai-custom-deafault-style bh-search-input typeahead search-box searchbox_landing" name="s" id="search-navbar" placeholder="Enter Your Hotel or Destination" type="text" required="required">
