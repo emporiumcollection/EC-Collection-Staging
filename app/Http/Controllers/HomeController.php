@@ -5182,6 +5182,15 @@ class HomeController extends Controller {
 //            usort($propertiesArr, function($a, $b) {
 //                return trim($a['pdata']->price) < trim($b['pdata']->price);
 //            });
+            
+            if (!is_null($request->dest) && $request->current_filter == 'destination') {
+                $cateObjtm = \DB::table('tb_categories')->where('id', $request->dest)->where('category_published', 1)->first();
+                if (!empty($cateObjtm)) {
+                    $rep['categoryslider'] = \DB::table('tb_sliders')->where('slider_category', $cateObjtm->category_name)->get();
+                }
+            } else {
+                $rep['categoryslider'] = \DB::table('tb_sliders')->where('slider_category', Input::get('s', false))->get();
+            }
 
             $rep['status'] = 'success';
             $rep['properties'] = json_encode($propertiesArr);
