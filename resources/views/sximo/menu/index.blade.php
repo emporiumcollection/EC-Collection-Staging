@@ -27,6 +27,7 @@
 		<li @if($active == 'product') class="active" @endif><a href="{{ URL::to('sximo/menu?pos=product')}}"><i class="icon-paragraph-justify2"></i> {{ Lang::get('core.tab_product_menu') }}</a></li>
 		<li @if($active == 'social_property') class="active" @endif><a href="{{ URL::to('sximo/menu?pos=social_property')}}"><i class="icon-paragraph-justify2"></i> {{ Lang::get('core.tab_social_property_menu') }}</a></li>
 		<li @if($active == 'social_destination') class="active" @endif><a href="{{ URL::to('sximo/menu?pos=social_destination')}}"><i class="icon-paragraph-justify2"></i> {{ Lang::get('core.tab_social_destination_menu') }}</a></li>
+		<li @if($active == 'popup') class="active" @endif><a href="{{ URL::to('sximo/menu?pos=popup')}}"><i class="icon-paragraph-justify2"></i> {{ Lang::get('core.tab_popup_menu') }}</a></li>
 	</ul>  	
 	
 	
