@@ -214,19 +214,19 @@
 										<label for="Designers" class=" control-label col-md-4 text-left"> Designers </label>
 										<div class="col-md-6">
 											<?php 
-											$designers_opt = \DB::table('tb_designers')->get();
-											$designers = explode(',',$row['designers']);
+											//$designers_opt = \DB::table('tb_designers')->get();
+											//$designers = explode(',',$row['designers']);
 											//$category_opt = array( 'test' => 'Test' , ); 
 										?>
 										<select name='designers' rows='5' id='designers' multiple   class='select2 '  > 
 											<?php 
-												foreach($designers_opt as $key=>$val){
-													if(in_array($val->id, $designers)){
-														echo '<option selected value ="'.$key.'">'.$val->designer_name.'</option>';
+												/*foreach($designers_opt as $designer){
+													if(in_array($designer->id, $designers)){
+														echo '<option selected value ="'.$designer->id.'">'.$designer->designer_name.'</option>';
 													}else{
-														echo '<option  value ="'.$key.'">'.$val->designer_name.'</option>';
+														echo '<option  value ="'.$designer->id.'">'.$designer->designer_name.'</option>';
 													} 						
-												}						
+												}	*/					
 											?>
 										</select> 
 									  		
