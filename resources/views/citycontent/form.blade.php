@@ -218,7 +218,7 @@
 											//$designers = explode(',',$row['designers']);
 											//$category_opt = array( 'test' => 'Test' , ); 
 										?>
-										<select name='designers' rows='5' id='designers' multiple   class='select2 '  > 
+										<select name='designers[]' rows='5' id='designers' multiple   class='select2 '  > 
 											<?php 
 												/*foreach($designers_opt as $designer){
 													if(in_array($designer->id, $designers)){
