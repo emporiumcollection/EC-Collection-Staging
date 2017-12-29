@@ -390,7 +390,7 @@ class CitycontentController extends Controller {
                     $imgdata['city_id'] = $request->input('propId');
                     //$imgdata['type'] = $imgFold;
                     $imgdata['file_id'] = $fileID;
-                    $imgdata['user_id'] = \Auth::user()->id;
+                   // $imgdata['user_id'] = \Auth::user()->id;
                     $imgdata['created'] = date('y-m-d h:i:s');
                     $imgID = \DB::table('tb_city_content_gallery_images')->insertGetId($imgdata);
 
