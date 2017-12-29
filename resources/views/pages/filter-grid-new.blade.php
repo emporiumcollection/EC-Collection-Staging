@@ -13,6 +13,7 @@
 </style>
 <!--Main Page Start here-->
 @if($currentPage==0)
+<div class="grid-page-category-slider-container">
 @if(!empty($categoryslider))
 <div class="bh-slideshow-thumbnail-split" data-uk-slideshow="{animation: 'slice-up', autoplay: true}">
     <ul style="height: 650px;" class="uk-slideshow uk-overlay-active">
@@ -60,6 +61,7 @@
     </ul>
 </div>
 @endif
+</div>
 @endif
 
 
@@ -222,6 +224,72 @@
                         isDataAvailable = false;
                     } else
                     {
+                        
+                        /*
+                         * Slider HTML
+                         */
+
+                       var sliderHTML = '';
+
+                       if(data.categoryslider) {
+                           if(data.categoryslider.length > 0) {
+                               sliderHTML += '<div class="bh-slideshow-thumbnail-split" data-uk-slideshow="{animation: \'slice-up\', autoplay: true}" style="margin-bottom:20px;margin-top:00px;">';
+                               sliderHTML += '<ul style="" class="uk-slideshow uk-overlay-active">';
+                               var activeClass = 'uk-active';
+                               for(var si = 0; si < data.categoryslider.length; si++) {
+                                   if(si != 0) {
+                                       activeClass = '';
+                                   }
+                                   sliderHTML += '<li class="ai-uk-animation ' + activeClass + ' " aria-hidden="true">';
+                                       if(data.categoryslider[si].slide_type == 'Image') {
+                                           sliderHTML += '<div style="background-image: url({{ URL()}}/uploads/slider_images/' + data.categoryslider[si].slider_img + ');" class="uk-cover-background uk-position-cover"></div>';
+                                       }
+                                       else {
+                                           sliderHTML += '<div  class="uk-cover-background uk-position-cover"> <iframe class="video-bg"  src="https://www.youtube.com/embed/' + data.categoryslider[si].slider_video + '?playlist=' + data.categoryslider[si].slider_video + '&iv_load_policy=3&enablejsapi=1&disablekb=1&autoplay=1&controls=0&showinfo=0&rel=0&loop=1&wmode=transparent" frameborder="0" allowfullscreen="allowfullscreen"></iframe></div>';
+                                       }
+                                       sliderHTML += '<canvas style="width: 100%; height: 100%; opacity: 0;"></canvas>';
+                                       sliderHTML += '<div class="bh-slideshow-overlay uk-overlay-panel uk-overlay-fade uk-flex uk-flex-middle uk-flex-center">';
+                                           sliderHTML += '<div>';
+                                               sliderHTML += '<ul class="bh-slideshow-overlay-meta uk-subnav uk-subnav-line">';
+                                                   sliderHTML += '<li>';
+                                                       sliderHTML += '<span><a href="#" rel="category tag">' + data.categoryslider[si].slider_category + '</a></span>';
+                                                   sliderHTML += '</li>';
+                                               sliderHTML += '</ul>';
+                                               sliderHTML += '<h3 class="bh-slideshow-overlay-title">';
+                                                   sliderHTML += '<a href="#">' + data.categoryslider[si].slider_title + '</a>';
+                                               sliderHTML += '</h3>';
+                                               sliderHTML += '<div class="bh-slideshow-overlay-content">' + data.categoryslider[si].slider_description + '</div>';
+                                               if(data.categoryslider[si].slider_link != '#') {
+                                                   sliderHTML += '<a class="uk-margin-top uk-button uk-button-primary" href="http://' + data.categoryslider[si].slider_link + '" title="Do it yourself">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>';
+                                               }
+                                           sliderHTML += '</div>';
+                                       sliderHTML += '</div>';
+                                       sliderHTML += '<div class="bh-slideshow-thumbnail-split-preview uk-overlay-panel uk-overlay-right uk-overlay-background uk-overlay-fade uk-width-2-5 uk-width-xxlarge-1-3 uk-flex uk-flex-middle uk-flex-center uk-visible-large">';
+                                           sliderHTML += '<div>';
+                                               sliderHTML += '<ul class="bh-slideshow-thumbnail-split-preview-meta uk-subnav uk-subnav-line">';
+                                                   sliderHTML += '<li>';
+                                                       sliderHTML += '<span><a href="#" rel="category tag">' + data.categoryslider[si].slider_category + '</a></span>';
+                                                   sliderHTML += '</li>';
+                                               sliderHTML += '</ul>';
+                                               sliderHTML += '<h3 class="bh-slideshow-thumbnail-split-preview-title">';
+                                                   sliderHTML += '<a href="#">' + data.categoryslider[si].slider_title + '</a>';
+                                               sliderHTML += '</h3>';
+                                               sliderHTML += '<div class="bh-slideshow-thumbnail-split-preview-content">' + data.categoryslider[si].slider_description + '</div>';
+                                               if(data.categoryslider[si].slider_link != '#') {
+                                                   sliderHTML += '<a class="uk-margin-top uk-button uk-button-primary" href="http://' + data.categoryslider[si].slider_link + '">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>';
+                                               }
+                                           sliderHTML += '</div>';
+                                           sliderHTML += '<a href="javascript:void(0);" class="bh-slideshow-slidenav uk-slidenav uk-slidenav-previous" data-uk-slideshow-item="previous"></a>';
+                                           sliderHTML += '<a href="javascript:void(0);" class="bh-slideshow-slidenav uk-slidenav uk-slidenav-next" data-uk-slideshow-item="next"></a>';
+                                       sliderHTML += '</div>';
+                                   sliderHTML += '</li>';
+                               }
+                               sliderHTML += '</ul>';
+                               sliderHTML += '</div>';
+                               sliderHTML += '<script type="text/javascript" src="<?php echo asset('sximo/assets/js/slideshow.js'); ?>"><\/script>';
+                           }
+                       }
+                        $(".grid-page-category-slider-container").html( sliderHTML );
                         html += '<div class="row">';
                         var p = 1;
                         $.each($.parseJSON(data.properties), function (idx, obj) {
