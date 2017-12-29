@@ -762,8 +762,8 @@
         }
         
         .hotels-logo img {
-            padding: 14px 19px;
-        }
+	padding: 11px 19px 40px 20px;
+    }
         
         .right-menus ul li a {
 	background-color: #1E2023;
@@ -771,7 +771,7 @@
 	color: #fff;
 	display: block;
 	font-size: 12px;
-	padding: 26px 0 25px 21px;
+	padding: 25px 0 25px 21px;
 	text-transform: uppercase;
 	background: rgb(37,37,37,0.9);
     }
@@ -804,6 +804,15 @@
 	font-family: ACaslonPro-Regular;
 	font-size: 36px;
 	font-style: normal;
+    }
+    
+    .close-btn-align {
+	color: #fff;
+	font-size: 36px;
+	position: absolute;
+	right: 19px;
+	top: 30px;
+	z-index: 99;
     }
         
         

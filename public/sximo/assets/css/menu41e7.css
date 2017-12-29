@@ -574,7 +574,7 @@ ul.menusk li ul.menusk1 li a {
  */
 @media only screen and (min-width: 1025px) {
 	#block-system-main-menu { margin-right: 0px;}
-	#block-ledunfly-menu-link{ width: 62px; height: 53px;}
+	#block-ledunfly-menu-link{ width: 29px; height: 20px;}
 	#block-ledunfly-menu-link span{left:28px;}
 	#block-ledunfly-menu-link span:nth-child(1) { top: 28px;}
 	#block-ledunfly-menu-link span:nth-child(2){ top: 35px;}
