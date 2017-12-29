@@ -122,6 +122,7 @@ return array(
  "tab_product_menu"			=> "Product Page",
  "tab_social_property_menu"			=> "Social Property Page",
  "tab_social_destination_menu"			=> "Social Destination Page",
+  "tab_popup_menu"			=> "Popup Menu",
  "sb_reorder"			=> "Reorder Menu",  
  "fr_mtitle"			=> "Name / Title ",  
  "fr_mtype"			=> "Menu Type",  
