@@ -600,7 +600,7 @@ return fasle;
                                                 foreach($propertiesArr as $props) { ?>
 									
 													<li class="grid-item wow fadeInUp">
-														<a href="single-project-page-01.html">
+														<a href="{{URL::to($props['data']->property_slug)}}">
 															<figure>
 																<div class="portfolio-img bg-deep-pink">			@if(array_key_exists('image', $props))
 																		<img alt="<?php echo $props['image']->file_name; ?>" src="<?php echo URL::to('uploads/property_imgs_thumbs/front_property_'.$props['image']->folder_id.'_'.$props['image']->file_name); ?>">
@@ -627,7 +627,7 @@ return fasle;
 																	{{$props['data']->property_name}}
 																	</a>
 																	<span class="FltRgt">
-																		<a class="carticon" href="javascript:void(0)" onclick="submitgridbookform('{{$props['data']->property_slug}}#*{{$props['data']->id}}');"><img src="imgaes/Screenshot_2.png" alt=""/></a>
+																		<a class="carticon" href="javascript:void(0)" onclick="submitgridbookform('{{$props['data']->property_slug}}#*{{$props['data']->id}}');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>
 																	</span>
 																</h2>
 															</div>
