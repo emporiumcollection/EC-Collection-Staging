@@ -1,7 +1,7 @@
 .region-sidebar-first {
 	top:0px;
 	position:fixed;
-	margin-left: 0px;
+	margin-right: 42px;
         height: 100%;
         z-index:99;
         right: 0;
