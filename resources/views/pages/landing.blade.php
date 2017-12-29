@@ -805,6 +805,15 @@
 	font-size: 36px;
 	font-style: normal;
     }
+    
+    .close-btn-align {
+	color: #fff;
+	font-size: 36px;
+	position: absolute;
+	right: 19px;
+	top: 30px;
+	z-index: 99;
+    }
         
         
             
