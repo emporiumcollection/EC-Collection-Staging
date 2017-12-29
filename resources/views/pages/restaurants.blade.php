@@ -347,7 +347,7 @@
 																		@if($restaurant_gallery>0)
 																			<div class="restaurant-view-gallery-align">
 																				<span class="view-gallery-border-left"></span>
-																				<a href="javascript:void(0);"   class="detail_view gallerysty bar-view-gallery" rel="{{$propertiesArr[0]->id}}" rel2="Restrurants Gallery Images">View Gallery</a>
+																				<a href="javascript:void(0);"   class="detail_view gallerysty bar-view-gallery" id="resto_gallery_id" rel="{{$propertiesArr[0]->id}}" rel2="Restrurants Gallery Images">View Gallery</a>
 																			</div>
 																		@endif
 																	</div>
@@ -394,7 +394,7 @@
 																@foreach($propertiesArr as $property)
 																	
 																	<div class="form-group post-filter-inputs">
-																		<label><a class="hotelanchordata" href="javascript:void(0);" data-jsondata="{{json_encode($property)}}">{{$property->property_name}}</a></label>
+																		<label><a class="hotelanchordata" href="javascript:void(0);" data-jsondata="{{json_encode($property)}}" data-gallerydata="{{$restaurant_gallery}}">{{$property->property_name}}</a></label>
 																	</div>
 																	
 																@endforeach
@@ -530,7 +530,37 @@
 							
 							$(document).on('click', '.hotelanchordata', function () {
 								var hotelobj = $(this).data('jsondata');
-								alert(hotelobj.id);
+								$('#resto_title').html(hotelobj.restaurant_title);
+								$('#resto_usptext').html(hotelobj.restaurant_usp_text);
+								$('#resto_uspperson').html(hotelobj.restaurant_usp_person);
+								$('#resto_desc').html(hotelobj.restaurant_desciription);
+								$('#resto_uspperson_desc').html(hotelobj.restaurant_usp_person);
+								if(hotelobj.restaurant_image!='')
+								{
+									var himg = "{{ImageCache::make(public_path('uploads/properties_subtab_imgs/"+hotelobj.restaurant_image+"'),100,300,null)}}";
+									$('#resto_image').html('<img class="img-responsive img-width" src="'+himg+'" alt=""/>'); 
+								}
+								
+								if(hotelobj.restaurant_image2!='')
+								{
+									var himg2 = "{{ImageCache::make(public_path('uploads/properties_subtab_imgs/"+hotelobj.restaurant_image2+"'),100,500,null)}}";
+									$('#resto_image2').html('<img class="img-responsive img-width" src="'+himg2+'" alt=""/>'); 
+								}
+								else if(hotelobj.restaurant_image!='')
+								{
+									var himg = "{{ImageCache::make(public_path('uploads/properties_subtab_imgs/"+hotelobj.restaurant_image+"'),100,500,null)}}";
+									$('#resto_image2').html('<img class="img-responsive img-width" src="'+himg+'" alt=""/>'); 
+								}
+								
+								if($(this).data('gallerydata') > 0)
+								{
+									$('#resto_gallery_id').attr('rel',hotelobj.id);
+									$('#resto_gallery_id').show();
+								}
+								else
+								{
+									$('#resto_gallery_id').hide();
+								}
 							});
 							
 							$(document).on('click', '.detail_view', function () {
