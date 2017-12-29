@@ -325,12 +325,13 @@
             border-radius: 2px;
             transition: .5s;
             position: fixed;
-            top: 120px;
-            right: calc(100% - 43px);
+            top: 63px;
+            left: calc(100% - 43px);
             width: 291px;
             background: #272727;
             color: #fff;
             font-size: 15px;
+            right: 0;
         }
         .contact-aside ul {
             padding: 7px 0;
@@ -359,13 +360,16 @@
             top: 2px;
         }
         .contact-aside.active {
-	right: calc(100% - 290px);
-	background: #1e2023 !important;
-	color: #fff !important;
+            left: calc(100% - 290px);
+            background: #1e2023 !important;
+            color: #fff !important;
         }
         
         .asideIclass {
-            float: right;
+            float: left;
+            margin-top: 3px;
+            margin-right: 10px;
+            margin-left: 5px;
         }
         
         /* AIC 29-12-2017*/
@@ -384,6 +388,20 @@
             position: absolute;
             top: 0;
             width: 100% !important;
+        }
+        
+        .login_popup .fa {
+            color: #c7ab84;
+            font-size: 24px;
+            margin: 20px;
+        }
+        
+        header {
+            left: 95% !important;
+            left: 0;
+            position: fixed;
+            top: 0;
+            width: 60px;
         }
         
             
