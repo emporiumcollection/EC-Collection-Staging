@@ -787,6 +787,25 @@
 	width: 17%;
 	background: rgb(37,37,37,0.9);
     }
+    
+    .editorial_m_slider_landing ul li .editorial-text {
+	background: rgb(37,37,37,0.9);
+	bottom: 85px;
+	margin-left: 0;
+	margin-top: 0;
+	opacity: .71;
+	padding: 21px;
+	position: absolute;
+	right: 0;
+	width: 419px;
+    }
+    
+    .editorial_m_slider_landing .editor-picks-small-text {
+	color: #fff;
+	font-family: ACaslonPro-Regular;
+	font-size: 36px;
+	font-style: normal;
+    }
         
         
             
