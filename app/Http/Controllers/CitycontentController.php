@@ -217,9 +217,9 @@ class CitycontentController extends Controller {
 
 
 	function gallery_images_uploads(Request $request) {
-        $checkProp = \DB::table('tb_properties')->select('property_name')->where('id', $request->input('propId'))->first();
+        $checkProp = \DB::table('tb_city_content')->select('title')->where('id', $request->input('cityId'))->first();
         if (!empty($checkProp)) {
-            $checkDir = \DB::table('tb_container')->select('id')->where('name', 'locations')->first();
+            $checkDir = \DB::table('tb_container')->select('id')->where('name', 'Destinations')->first();
             if (!empty($checkDir)) {
                 $foldVal = trim($checkProp->property_name);
                 if ($foldVal != "") {
@@ -237,42 +237,11 @@ class CitycontentController extends Controller {
                         }
                     }
 
-                    $imgFold = $request->input('uploadType');
-                    $PropImgfoldName = trim($imgFold);
-                    $PropImgslug = \SiteHelpers::seoUrl(trim($PropImgfoldName));
-                    $checkPropImgFold = \DB::table('tb_container')->select('id')->where('name', $PropImgslug)->where('parent_id', $propFoldId)->first();
-                    if (!empty($checkPropImgFold)) {
-                        $newpropImgFoldId = $checkPropImgFold->id;
-                    } else {
-                        $newPropImgFolder = $this->createNewFolder($PropImgfoldName, $propFoldId);
-                        if ($newPropImgFolder !== false) {
-                            $newpropImgFoldId = $newPropImgFolder;
-                        }
-                    }
+                    
 
-                    if ($imgFold == 'Rooms Images') {
-                        $cat_id = $request->input('category_id');
-                        $getcat = \DB::table('tb_properties_category_types')->select('category_name')->where('id', $cat_id)->where('status', 0)->first();
-                        if (!empty($getcat)) {
-                            $catFold = $getcat->category_name;
-                            $CatfoldName = trim($catFold);
-                            $Catslug = \SiteHelpers::seoUrl(trim($CatfoldName));
-                            $checkCatFold = \DB::table('tb_container')->select('id')->where('name', $Catslug)->where('parent_id', $newpropImgFoldId)->first();
-                            if (!empty($checkCatFold)) {
-                                $CatFoldId = $checkCatFold->id;
-                            } else {
-                                $newCatFolder = $this->createNewFolder($CatfoldName, $newpropImgFoldId);
-                                if ($newCatFolder !== false) {
-                                    $CatFoldId = $newCatFolder;
-                                }
-                            }
-                            $propImgFoldId = $CatFoldId;
-                        } else {
-                            $propImgFoldId = $newpropImgFoldId;
-                        }
-                    } else {
-                        $propImgFoldId = $newpropImgFoldId;
-                    }
+                
+                    $propImgFoldId = $newpropImgFoldId;
+                   
                     // SET UPLOAD PATH
                     $destinationPath = (new ContainerController)->getContainerUserPath($propImgFoldId);
                     $file = $request->file('files');
@@ -345,7 +314,7 @@ class CitycontentController extends Controller {
                         $pthimg->resize(80, 80);
                         // finally we save the image as a new file
                         $pthumbfile = $fileName;
-                        $pthimg->save(public_path() . '/uploads/property_imgs_thumbs/' . $pthumbfile);
+                        $pthimg->save(public_path() . '/uploads/city_imgs_thumbs/' . $pthumbfile);
 
                         $fpimg = \Image::make($destinationPath . $fileName);
                         $thactualsize = getimagesize($destinationPath . $fileName);
@@ -355,7 +324,7 @@ class CitycontentController extends Controller {
                             $fpimg->resize(212, 283);
                         }
                         $thumbfile = 'front_property_' . $propImgFoldId . '_' . $fileName;
-                        $fpimg->save(public_path() . '/uploads/property_imgs_thumbs/' . $thumbfile);
+                        $fpimg->save(public_path() . '/uploads/city_imgs_thumbs/' . $thumbfile);
 
                         // Set main image if uploaded file is first in folder
                         $countfile = \DB::table('tb_container_files')->where('folder_id', $propImgFoldId)->where(function ($query) {
@@ -401,15 +370,12 @@ class CitycontentController extends Controller {
                     $data['path'] = $destinationPath;
                     $fileID = \DB::table('tb_container_files')->insertGetId($data);
 
-                    $imgdata['property_id'] = $request->input('propId');
+                    $imgdata['city_id'] = $request->input('propId');
                     $imgdata['type'] = $imgFold;
                     $imgdata['file_id'] = $fileID;
-                    if ($imgFold == 'Rooms Images') {
-                        $imgdata['category_id'] = $request->input('category_id');
-                    }
                     $imgdata['user_id'] = \Auth::user()->id;
                     $imgdata['created'] = date('y-m-d h:i:s');
-                    $imgID = \DB::table('tb_properties_images')->insertGetId($imgdata);
+                    $imgID = \DB::table('tb_city_content_gallery_images')->insertGetId($imgdata);
 
                     $getupfile = \DB::table('tb_container_files')->where('id', $fileID)->first();
                     if (!empty($getupfile)) {
@@ -423,7 +389,7 @@ class CitycontentController extends Controller {
                         } elseif ($getupfile->file_type == "application/vnd.openxmlformats-officedocument.spre") {
                             $getfilejson['files'][0]['thumbnailUrl'] = \URL::to('uploads/images/xls.png');
                         } else {
-                            $getfilejson['files'][0]['thumbnailUrl'] = \URL::to('uploads/property_imgs_thumbs/' . $getupfile->file_name);
+                            $getfilejson['files'][0]['thumbnailUrl'] = \URL::to('uploads/city_imgs_thumbs/' . $getupfile->file_name);
                         }
                         $getfilejson['files'][0]['type'] = $getupfile->file_type;
                         $getfilejson['files'][0]['url'] = (new ContainerController)->getThumbpath($getupfile->folder_id) . $getupfile->file_name;
@@ -439,11 +405,11 @@ class CitycontentController extends Controller {
     function delete_gallery_image(Request $request) {
         $uid = \Auth::user()->id;
         $img_id = $request->input('img_id');
-        $checkImg = \DB::table('tb_properties_images')->where('id', $img_id)->first();
+        $checkImg = \DB::table('tb_city_content_gallery_images')->where('id', $img_id)->first();
         if (!empty($checkImg)) {
             $deleteEfile = (new ContainerController)->delete_allextra_files($checkImg->file_id, 'file');
             $deleteFile = \DB::table('tb_container_files')->where('id', $checkImg->file_id)->delete();
-            $deleteImg = \DB::table('tb_properties_images')->where('id', $img_id)->delete();
+            $deleteImg = \DB::table('tb_city_content_gallery_images')->where('id', $img_id)->delete();
 
             $res['status'] = 'success';
             return json_encode($res);
