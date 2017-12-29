@@ -763,7 +763,6 @@
         
         .hotels-logo img {
             padding: 14px 19px;
-            background: rgb(37,37,37,0.9);
         }
         
         .right-menus ul li a {
