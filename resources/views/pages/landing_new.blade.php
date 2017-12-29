@@ -931,6 +931,11 @@
 	-webkit-transition: color .2s,background .2s;
 	transition: color .2s,background .2s;
     }
+    .close {
+	font-size: 21px;
+	font-weight: 700;
+	opacity: 1;
+    }
         
         @import url('https://fonts.googleapis.com/css?family=Satisfy');
         
