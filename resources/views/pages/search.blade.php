@@ -493,7 +493,7 @@
 														</h3>
 														<div class="bh-slideshow-overlay-content">{{$slides->slider_description}}</div>
 														@if($slides->slider_link != '#')
-                                                                                                                <a class="uk-margin-top uk-button uk-button-primary main" href="http://{{$slides->slider_link}}" title="Do it yourself">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>
+                                                                                                                <a class="uk-margin-top uk-button uk-button-primary" href="http://{{$slides->slider_link}}" title="Do it yourself">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>
                                                                                                                 @endif
 													</div>
 												</div>
