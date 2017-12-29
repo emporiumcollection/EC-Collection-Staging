@@ -591,7 +591,7 @@ return fasle;
                                         <div class="row no-margin">
 											<div class="filter-content overflow-hidden margin-100px-top sm-margin-75px-top xs-margin-50px-top">
 												<ul class="portfolio-grid work-4col hover-option2 gutter-small">
-													<li class="grid-sizer"></li>
+													
                                             <?php
                                             if($propertiesArr) {
                                                 $rw = 1;
@@ -599,7 +599,7 @@ return fasle;
                                                 $ads_node = 0;
                                                 foreach($propertiesArr as $props) { ?>
 												
-													<li class="grid-item wow fadeInUp">
+													<li class="grid-item wow fadeInUp" style="float:left;">
 														<a href="single-project-page-01.html">
 															<figure>
 																<div class="portfolio-img bg-deep-pink">			@if(array_key_exists('image', $props))
