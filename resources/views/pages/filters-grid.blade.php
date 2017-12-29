@@ -46,6 +46,20 @@
         <link href="{{ asset('sximo/assets/css/filter-bar.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/ai_yachts-custom.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/cities-filter.css')}}" rel="stylesheet" type="text/css"/>
+		
+		<link href="{{ asset('sximo/assets/newgrid/css/animate.css')}}" rel="stylesheet" type="text/css"/>
+		<link href="{{ asset('sximo/assets/newgrid/css/style1.css')}}" rel="stylesheet" type="text/css"/>
+		<link href="{{ asset('sximo/assets/newgrid/css/responsive.css')}}" rel="stylesheet" type="text/css"/>
+		<script src="{{ asset('sximo/assets/newgrid/js/skrollr.min.js')}}" type="text/javascript"></script>
+		<script src="{{ asset('sximo/assets/newgrid/js/smooth-scroll.js')}}" type="text/javascript"></script>
+		<script src="{{ asset('sximo/assets/newgrid/js/swiper.min.js')}}" type="text/javascript"></script>
+		<script src="{{ asset('sximo/assets/newgrid/js/jquery.magnific-popup.min.js')}}" type="text/javascript"></script>
+		<script src="{{ asset('sximo/assets/newgrid/js/isotope.pkgd.min.js')}}" type="text/javascript"></script>
+		<script src="{{ asset('sximo/assets/newgrid/js/imagesloaded.pkgd.min.js')}}" type="text/javascript"></script>
+		<script src="{{ asset('sximo/assets/newgrid/js/main.js')}}" type="text/javascript"></script>
+		<script src="{{ asset('sximo/assets/newgrid/js/wow.min.js')}}" type="text/javascript"></script>
+		<script src="{{ asset('sximo/assets/newgrid/js/jquery.fitvids.js')}}" type="text/javascript"></script>
+		<script src="{{ asset('sximo/assets/newgrid/js/skill.bars.jquery.js')}}" type="text/javascript"></script>
         
         @if(isset($_GET['ref']) && $_GET['ref']=='oc' )
         <?php $thumbnail = asset('sximo/assets/images/our_collection.png'); ?>
@@ -574,13 +588,61 @@ return fasle;
                                     
 
                                     <div id="listproperties">
-                                        <div class="row">
+                                        <div class="row no-margin">
+											<div class="filter-content overflow-hidden margin-100px-top sm-margin-75px-top xs-margin-50px-top">
+												<ul class="portfolio-grid work-4col hover-option2 gutter-small">
+													<li class="grid-sizer"></li>
                                             <?php
                                             if($propertiesArr) {
                                                 $rw = 1;
                                                 $node_no = 1;
                                                 $ads_node = 0;
-                                                foreach($propertiesArr as $props) {
+                                                foreach($propertiesArr as $props) { ?>
+												
+													<li class="grid-item wow fadeInUp">
+														<a href="single-project-page-01.html">
+															<figure>
+																<div class="portfolio-img bg-deep-pink">			@if(array_key_exists('image', $props))
+																		<img alt="<?php echo $props['image']->file_name; ?>" src="<?php echo URL::to('uploads/property_imgs_thumbs/front_property_'.$props['image']->folder_id.'_'.$props['image']->file_name); ?>">
+																	@else
+																		<img src="http://placehold.it/800x560" alt=""/>
+																	@endif
+																</div>
+																<figcaption>
+																	<div class="portfolio-hover-main text-left">
+																		<div class="portfolio-hover-box vertical-align-bottom">
+																			<div class="portfolio-hover-content position-relative last-paragraph-no-margin">
+																				<span class="font-weight-600 line-height-normal alt-font text-white text-uppercase margin-one-half-bottom display-block">{{$props['data']->property_name}}</span>
+																				<p class="text-white text-uppercase text-extra-small">From € {{$props['data']->price}} </p>
+																			</div>
+																		</div>
+																	</div>
+																</figcaption>
+															</figure>
+														</a>
+														<div class="listDetails">
+															<div class="photographBox ai-grid-tiitles">
+																<h2>
+																	<a title="{{$props['data']->property_name}}" class="photograph FltLft ai-filtreted-hotel-name" rel="2216" href="{{URL::to($props['data']->property_slug)}}">
+																	{{$props['data']->property_name}}
+																	</a>
+																	<span class="FltRgt">
+																		<a class="carticon" href="javascript:void(0)" onclick="submitgridbookform('{{$props['data']->property_slug}}#*{{$props['data']->id}}');"><img src="imgaes/Screenshot_2.png" alt=""/></a>
+																	</span>
+																</h2>
+															</div>
+															<div class="entire_story MrgTop5 ai-view-hotels-tittle">
+																<a class="textButton arrowButton detail_view MrgTop5" rel="<?php echo $props['data']->id; ?>" href="#">
+																	Quick View 
+																</a>
+															</div>
+															<div class="showOnHover">
+																<div class="hover_request">
+																</div>   
+															</div>
+														</div>
+													</li>
+													<?php /*
                                                     if($node_no%20==0) {
                                                         if(!empty($reultsgridAds)) {
                                                             if(array_key_exists($ads_node,$reultsgridAds)) {
@@ -625,7 +687,7 @@ return fasle;
                                                                             /* <a class="textButton arrowButton MrgTop5 ai-filter-hotel-price-style" rel="{{$props['data']->id}}" href="{{URL::to($props['data']->property_slug)}}">
                                                                           From EUR {{$props['data']->price}} / <?php echo (isset($slug) && strtolower($slug) == 'yachts')? 'week' : 'night' ?>
                                                                           </a> */
-                                                                        }
+                                                                        /*}
                                                                         if(array_key_exists('image', $props)) {
                                                                             ?>
                                                                             @if($props['data']->editor_choice_property=='1')
@@ -709,8 +771,10 @@ return fasle;
                                                     $node_no++;
                                                     $totpage = $propertiesArr->appends($pager)->lastPage();
                                                     $newpage = $currentPage + 2;
-                                                    $prevnewpage = $newpage - 2;
-                                                }
+                                                    $prevnewpage = $newpage - 2; */ ?>
+													
+													
+                                                <?php }
                                             }
                                             ?>
                                         </div>
