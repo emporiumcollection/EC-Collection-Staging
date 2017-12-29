@@ -146,7 +146,7 @@ class CitycontentController extends Controller {
 			$data = array();
 			$data['title'] = $request->input('title');
 			$data['sub_title'] = $request->input('sub_title');
-			$data['alias'] = $request->input('title');
+			$data['alias'] = str_slug($request->input('title'));
 			$data['description'] = $request->input('description');
 			$data['category'] = $request->input('category');
 			$data['slider'] = $request->input('slider');
