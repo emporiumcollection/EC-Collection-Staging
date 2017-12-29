@@ -462,7 +462,7 @@
 									   <div class="side-nav-next-hotel-img Sidenavimg">
 											<div class="side-next-and-perivious-hotel-arrow">
 												<div class="arrows-commom  next-arrow">
-													<a href="{{URL::to($relatedproperties[0]->property_slug)}}">
+													<a href="http://www.emporium-voyage.com/hotel-zoo-berlin-">
 														<span>New Hotels</span>
 													</a>
 												</div>
@@ -484,7 +484,7 @@
 																			</div>
 																	</div>
 											
-											<a class="bootom-view-next-btn" href="{{URL::to($relatedproperties[0]->property_slug)}}">
+											<a class="bootom-view-next-btn" href="http://www.emporium-voyage.com/hotel-zoo-berlin-">
 												Visit All Hotels DOI
 											</a>
 										</div>
