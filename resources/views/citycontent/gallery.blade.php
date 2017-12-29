@@ -99,7 +99,7 @@
 																		<img src="{{URL::to('uploads/images/xls.png')}}">
 																		
 																	@else
-																		<img src="{{URL::to('uploads/property_imgs_thumbs/'.$img->file_name)}}">
+																		<img src="{{URL::to('uploads/city_imgs_thumbs/'.$img->file_name)}}">
 																	@endif
 																	
 																</a>

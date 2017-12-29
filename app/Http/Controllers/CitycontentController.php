@@ -440,7 +440,22 @@ class CitycontentController extends Controller {
     public function getGallery( $id = null){
     	$this->data['id'] = $id;
 		$this->data['access']		= $this->access;
+		 $this->data['hotel_broch'] = $this->get_property_files($id);
 		return view('citycontent.gallery',$this->data);
+    }
+
+    function get_property_files($property_id) {
+        $fileArr = \DB::table('tb_city_content_gallery_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_city_content_gallery_images.file_id')->select('tb_city_content_gallery_images.*',  \DB::raw("(CASE WHEN (tb_container_files.file_display_name = '') THEN tb_container_files.file_name ELSE tb_container_files.file_display_name END) as file_display_name"), 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_city_content_gallery_images.city_id', $property_id)->get();
+        $filen = array();
+        if (!empty($fileArr)) {
+            $f = 0;
+            foreach ($fileArr as $file) {
+                $filen[$f] = $file;
+                $filen[$f]->imgsrc = (new ContainerController)->getThumbpath($file->folder_id);
+                $f++;
+            }
+        }
+        return $filen;
     }
 		
 
