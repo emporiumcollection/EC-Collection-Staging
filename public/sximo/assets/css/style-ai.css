@@ -13,3 +13,10 @@ ul.menusk1 {
     margin-top: -34px;
     float: left;
 }
+
+.m_slider.editorial_m_slider_landing {
+    margin-top: 64px;
+}
+
+.editorial_m_slider_landing ul li .editorial-text {
+    bottom: 76px;}

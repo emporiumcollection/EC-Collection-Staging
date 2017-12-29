@@ -116,13 +116,13 @@ ul.menusk li ul.menusk1 li a {
 }
 
 /*Menu Toggle*/
-#block-ledunfly-menu-link{
-	position:fixed;
-	left:94%;
-	top:0px;
-	cursor:pointer;
-	width:60px;
-	height:60px;
+#block-ledunfly-menu-link {
+	position: fixed;
+	left: 92%;
+	top: 19px;
+	cursor: pointer;
+	width: 60px;
+	height: 60px;
 	cursor: pointer;
 }
 #block-ledunfly-menu-link span{
