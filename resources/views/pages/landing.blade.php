@@ -495,7 +495,7 @@
                 background-color: #ABA07C;
             }
             #block-system-main-menu .block-inner {
-                background-color: #252525;
+                background: rgba(37, 37, 37, 0.9);
             }
             #block-locale-language,
             #block-locale-language .block-title,
@@ -736,15 +736,15 @@
         }
         
         .booking-form-bar-top {
-            background-color: rgba(0,0,0,.85);
-            float: left;
-            opacity: unset !important;
-            padding-left: 15px !important;
-            padding-right: 8px !important;
-            padding-top: 15px !important;
-            position: absolute;
-            top: 0;
-            width: 100% !important;
+	float: left;
+	opacity: unset !important;
+	padding-left: 15px !important;
+	padding-right: 8px !important;
+	padding-top: 15px !important;
+	position: absolute;
+	top: 0;
+	width: 100% !important;
+	background: rgba(37, 37, 37, 0.9);
         }
         
         .login_popup .fa {
