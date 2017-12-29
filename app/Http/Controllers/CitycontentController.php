@@ -232,7 +232,7 @@ class CitycontentController extends Controller {
             return false;
         }
     }
-	
+
 	function gallery_images_uploads(Request $request) {
         $checkProp = \DB::table('tb_city_content')->select('title')->where('id', $request->input('cityId'))->first();
         if (!empty($checkProp)) {
@@ -388,7 +388,7 @@ class CitycontentController extends Controller {
                     $fileID = \DB::table('tb_container_files')->insertGetId($data);
 
                     $imgdata['city_id'] = $request->input('propId');
-                    $imgdata['type'] = $imgFold;
+                    //$imgdata['type'] = $imgFold;
                     $imgdata['file_id'] = $fileID;
                     $imgdata['user_id'] = \Auth::user()->id;
                     $imgdata['created'] = date('y-m-d h:i:s');
