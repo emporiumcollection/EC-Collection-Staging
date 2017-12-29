@@ -1,7 +1,7 @@
 .region-sidebar-first {
 	top:0px;
 	position:fixed;
-	margin-right: 42px;
+	margin-right: 0px;
         height: 100%;
         z-index:99;
         right: 0;
@@ -118,7 +118,7 @@ ul.menusk li ul.menusk1 li a {
 /*Menu Toggle*/
 #block-ledunfly-menu-link {
 	position: fixed;
-	left: 92%;
+	left: 95%;
 	top: 19px;
 	cursor: pointer;
 	width: 60px;

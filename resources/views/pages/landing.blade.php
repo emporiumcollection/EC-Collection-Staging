@@ -754,12 +754,40 @@
         }
         
         header {
-            left: 95% !important;
+            left: 91% !important;
             left: 0;
             position: fixed;
             top: 0;
             width: 60px;
         }
+        
+        .hotels-logo img {
+            padding: 14px 19px;
+            background: rgb(37,37,37,0.9);
+        }
+        
+        .right-menus ul li a {
+	background-color: #1E2023;
+	border-bottom: 1px solid #414246;
+	color: #fff;
+	display: block;
+	font-size: 14px;
+	padding: 26px 0 25px 30px;
+	text-transform: uppercase;
+	background: rgb(37,37,37,0.9);
+    }
+    
+    .right-menu-sidebar {
+	float: right;
+	height: 100vh;
+	position: fixed;
+	right: 0;
+	top: 0;
+	left: 0;
+	width: 17%;
+	background: rgb(37,37,37,0.9);
+    }
+        
         
             
         </style>
