@@ -565,7 +565,7 @@
             body:not(.adminimal-theme) a,
             body:not(.adminimal-theme) ul.primary li a {
                 
-                color: #ffffff;
+/*                color: #ffffff;*/
             }
             body:not(.adminimal-theme) a:hover,
             body:not(.adminimal-theme) a.active,
@@ -900,7 +900,7 @@
         
         .emporium-voyage-Menu {
             color: #c7ab84;
-            margin-top: 23px;
+            margin-top: 25px;
             margin-left: 21px;
             opacity: 1;
             box-shadow: none;
@@ -931,11 +931,16 @@
 	-webkit-transition: color .2s,background .2s;
 	transition: color .2s,background .2s;
     }
-    .close {
-	font-size: 21px;
-	font-weight: 700;
-	opacity: 1;
-    }
+        .close {
+            font-size: 21px;
+            font-weight: 700;
+            opacity: 1;
+            text-shadow: none;
+        }
+        
+            #block-ledunfly-menu-link {
+            font-size: 20px;
+        }
         
         @import url('https://fonts.googleapis.com/css?family=Satisfy');
         
