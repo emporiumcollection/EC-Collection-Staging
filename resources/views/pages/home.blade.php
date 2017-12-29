@@ -24,7 +24,7 @@
                         <a href="#">Design Location 1</a>
                     </h3>
                     <div class="bh-slideshow-overlay-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra sapien sed…</div>
-                    <a class="uk-margin-top uk-button uk-button-primary" href="#" title="Do it yourself">Read more <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>
+                    <a class="uk-margin-top uk-button uk-button-primary main" href="#" title="Do it yourself">Read more <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>
                 </div>
             </div>
             <div class="bh-slideshow-thumbnail-split-preview uk-overlay-panel uk-overlay-right uk-overlay-background uk-overlay-fade uk-width-2-5 uk-width-xxlarge-1-3 uk-flex uk-flex-middle uk-flex-center uk-visible-large">
