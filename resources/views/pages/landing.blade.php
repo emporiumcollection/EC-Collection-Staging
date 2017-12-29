@@ -422,7 +422,134 @@
             <div class="wrapper">
                 <div class="container-fluid"> 
                     <div class="row">
-                        <header>    
+                        <header>
+                            
+                            <!-- start sidebar -->
+                            
+                            <div class="region region-sidebar-first sidebar">
+                                <div class="region-inner clearfix">
+                                    <div id="block-ledunfly-menu-link" class="block block-ledunfly no-title odd first block-count-4 block-region-sidebar-first block-menu-link" ><div class="block-inner clearfix">  
+                                            <div class="block-content content"><i class="fa fa-bars emporium-voyage-Menu" aria-hidden="true"></i></div>
+                                        </div>
+                                    </div>
+<!--                                    <div id="block-ledunfly-menu-logo" class="block block-ledunfly no-title even block-count-5 block-region-sidebar-first block-menu-logo" ><div class="block-inner clearfix">  
+
+                                            <div class="block-content content"><a href="index.html" title="Five Seas Hotel"><div class="menu-logo"></div></a></div>
+                                        </div>
+                                    </div>-->
+                                    <div id="block-system-main-menu" class="block block-system block-menu no-title odd block-count-6 block-region-sidebar-first block-main-menu" role="navigation">
+                                        <div class="block-inner clearfix">
+                                            <div class="block-content content" class="block-content content">
+                                                <ul class="menusk clearfix">
+                                                    <li class="first expanded menu-depth-1 menu-item-989">
+                                                        <a href="#">Sleep</a>
+                                                        <ul class="menusk1 clearfix">
+                                                            <li class="first leaf menu-depth-2 menu-item-990">
+                                                                <a href="#">Suite Présidentielle</a>
+                                                            </li>
+                                                            <li class="leaf menu-depth-2 menu-item-991">
+                                                                <a href="#">Suite Terrasse</a>
+                                                            </li>
+                                                            <li class="leaf menu-depth-2 menu-item-992">
+                                                                <a href="#">Top Of Five</a>
+                                                            </li>
+                                                            <li class="leaf menu-depth-2 menu-item-993">
+                                                                <a href="#">Suites So Suite</a>
+                                                            </li>
+                                                            <li class="leaf menu-depth-2 menu-item-994">
+                                                                <a href="#">Junior Suites</a>
+                                                            </li>
+                                                            <li class="leaf menu-depth-2 menu-item-1051">
+                                                                <a href="#">Chambres Executive</a>
+                                                            </li>
+                                                            <li class="leaf menu-depth-2 menu-item-995">
+                                                                <a href="#">Chambres Deluxe</a>
+                                                            </li>
+                                                            <li class="last leaf menu-depth-2 menu-item-1007">
+                                                                <a href="#">Services</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="expanded menu-depth-1 menu-item-996">
+                                                        <a href="#">Savour</a>
+                                                        <ul class="menusk1 clearfix">
+                                                    <li class="first leaf menu-depth-2 menu-item-998">
+                                                        <a href="#">Le Roof</a>
+                                                    </li><li class="leaf menu-depth-2 menu-item-999">
+                                                        <a href="#">Le Bar</a>
+                                                    </li>
+                                                    <li class="last leaf menu-depth-2 menu-item-1135">
+                                                        <a href="#">Le Brunch</a>
+                                                    </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="expanded menu-depth-1 menu-item-1000">
+                                                        <a href="#">Relax</a>
+                                                        <ul class="menusk1 clearfix">
+                                                            <li class="first leaf menu-depth-2 menu-item-1001">
+                                                                <a href="#">Spa</a>
+                                                            </li><li class="leaf menu-depth-2 menu-item-1002">
+                                                                <a href="#">Terrasse piscine</a>
+                                                            </li>
+                                                            <li class="last leaf menu-depth-2 menu-item-1003">
+                                                                <a href="#">Plage privée</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="expanded menu-depth-1 menu-item-1004">
+                                                        <a href="#">Discover</a>
+                                                        <ul class="menusk1 clearfix">
+                                                            <li class="first leaf menu-depth-2 menu-item-1005">
+                                                                <a href="#">Cannes</a></li>
+                                                            <li class="last leaf menu-depth-2 menu-item-1006">
+                                                                <a href="#">Activités</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="leaf menu-depth-1 menu-item-1013">
+                                                        <a href="#">News</a>
+                                                    </li>
+                                                    <li class="expanded menu-depth-1 menu-item-1123">
+                                                        <a href="#">Offres</a>
+                                                        <ul class="menusk1 clearfix">
+                                                            <li class="first leaf menu-depth-2 menu-item-1014">
+                                                                <a href="#">Offres Sleep</a>
+                                                            </li><li class="last leaf menu-depth-2 menu-item-1125">
+                                                                <a href="#">Offres Relax</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="leaf menu-depth-1 menu-item-1015">
+                                                        <a href="#">Gift box</a>
+                                                    </li>
+                                                    <li class="leaf menu-depth-1 menu-item-1009">
+                                                        <a href="#">Events</a>
+                                                    </li><li class="leaf little little-first menu-depth-1 menu-item-1139">
+                                                        <a href="#" class="little little-first">Carrières</a>
+                                                    </li>
+                                                    <li class="leaf little menu-depth-1 menu-item-1010">
+                                                        <a href="#" class="little">Plan &amp; Accès</a>
+                                                    </li>
+                                                    <li class="leaf little menu-depth-1 menu-item-1092">
+                                                        <a href="#" class="little">Mentions légales</a>
+                                                    </li><li class="last leaf little menu-depth-1 menu-item-1111">
+                                                        <a href="#" class="little">Green Globe</a>
+                                                    </li
+                                                    ></ul>
+                                            </div>
+<!--                                            <div class="block-menu-text">
+                                                <p>FIVE SEAS HOTEL CANNES - 1, RUE NOTRE DAME - 06400 CANNES</p>
+                                                <div><p>T : +33 4 63 36 05 05</p>
+                                                    <p>INFO@FIVESEASHOTEL.COM</p>
+                                                </div>
+                                            </div>-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>    
+                            
+                            <!-- end sidebar -->
+                            
                             <a data-popup-id="login-forms-popup" href="#" class="video-popup-btn login_popup show-login-forms-btn"><i class="fa fa-lock " aria-hidden="true" ></i></a>
                         </header>
                         <!--Main Page-->
