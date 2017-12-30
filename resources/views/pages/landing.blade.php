@@ -26,9 +26,9 @@
         <script src="{{ asset('sximo/assets/js/open-search.js')}}" type="text/javascript"></script>
         
         <!-- AIC sidebar js -->
-        <!--<script src="{{ asset('sximo/assets/js/jquery_1.js')}}" type="text/javascript"></script>-->
+        <script src="{{ asset('sximo/assets/js/jquery_1.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/custm.js')}}" type="text/javascript"></script>
-        <script src="{{ asset('sximo/assets/js/TweenMax.min41e7.js')}}" type="text/javascript"></script>
+        <!--<script src="{{ asset('sximo/assets/js/TweenMax.min41e7.js')}}" type="text/javascript"></script>-->
         <script src="{{ asset('sximo/assets/js/menu41e7.js')}}" type="text/javascript"></script>
         
         <style>
