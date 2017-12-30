@@ -481,6 +481,10 @@
 	box-shadow: none;
 	font-size: 20px;
     }
+    
+    #block-system-main-menu .block-inner {
+    background: rgba(37, 37, 37, 0.9);
+    }
         
          /* sidebar css */
         </style>
