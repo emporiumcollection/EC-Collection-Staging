@@ -4959,6 +4959,7 @@ class HomeController extends Controller {
         $this->data['ourmaindesitnation'] = $mainArrdestts;
         $this->data['continent'] = '';
         $this->data['region'] = '';
+		$this->data['cat'] = '';
 
         $this->data['categoryslider'] = \DB::table('tb_sliders')->select('slider_category','slider_title','slider_description','slider_img','slider_link','slide_type')->where('slider_category', $request->slug)->get();
 
