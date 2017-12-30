@@ -1051,7 +1051,7 @@ function scrollDataAjax(it_scroll,pageCounter)
     }
     
     $(".ai-scrollDownloadData-filter-running").val("1");
-    var nxtpg = $('#nxtpg').val();
+    var nxtpg = pageCounter;
     var offSet = 12, isPreviousEventComplete = true, isDataAvailable = true;
     var sIndex = $('#listrecrds').val();
     var queryStrng = '';
@@ -1260,10 +1260,13 @@ $(window).scroll(function () {
              console.log('windowScrollTop  : ' + windowScrollTop+ ' document height : '+ documentHeight);
             if(windowScrollTop >= documentHeight) {
                 var it_scroll = true;
-                 
+                 if(localStorage.page==2){
+                    pageCounter = 2;
+                 }
                 scrollDataAjax(it_scroll, pageCounter);
-                var nextPage = parseInt($('#nxtpg').val()) + 1 ;
-                    $('#nxtpg').val(nextPage);
+                localStorage.page = 3;
+                //var nextPage = parseInt($('#nxtpg').val()) + 1 ;
+                   // $('#nxtpg').val(nextPage);
                 pageCounter++;
                 console.log('Ok! Fired Ajax');
             }
@@ -1276,7 +1279,7 @@ $(window).scroll(function () {
     });
 
 function scrollDownloadData(it_scroll)
-{
+{  localStorage.page = 2;
     if($(".ai-scrollDownloadData-filter-running").val() == "1") {
         return;
     }
