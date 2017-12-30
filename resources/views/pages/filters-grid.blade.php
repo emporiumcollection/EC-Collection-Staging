@@ -441,6 +441,7 @@ return fasle;
             margin-top: 3px;
             margin-right: 13px;
             margin-left: 8px;
+            color: #c7ab84;
         }
         
          /* sidebar css */

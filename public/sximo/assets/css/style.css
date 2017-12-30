@@ -3715,7 +3715,7 @@ div.productData a {
 /*Cookie Bar End Here*/
 /*Booking form top bar*/
 .booking-form-bar-top {
-	background-color: rgb(37, 37, 37, 0.8);
+	background-color: rgba(37, 37, 37, 0.8);
 	float: left;
 	opacity: unset !important;
 	padding-left: 15px !important;
