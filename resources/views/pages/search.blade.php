@@ -435,7 +435,7 @@
                         </div>
                     </header>
                     <div class="filter-page-main-align">
-                        <div class="col-md-10 col-sm-9">
+                        <div class="col-md-10 col-sm-9 align">
                             <div class="row">
                                 <script src="{{ asset('sximo/assets/js/fliters.js')}}" type="text/javascript"></script>
                                 <script src="{{ asset('sximo/assets/js/moment.min.js')}}" type="text/javascript"></script>
