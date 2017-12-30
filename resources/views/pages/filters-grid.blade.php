@@ -393,17 +393,17 @@ return fasle;
             z-index: 1028;
     }
         .contact-aside {
-            border-radius: 2px;
-            transition: .5s;
-            position: fixed;
-            top: 63px;
-            left: calc(100% - 43px);
-            width: 291px;
-            background: #272727;
-            color: #fff;
-            font-size: 15px;
-            right: 0;
-        }
+	border-radius: 2px;
+	transition: .5s;
+	position: fixed;
+	top: 52%;
+	left: calc(100% - 43px);
+	width: 291px;
+	background: #272727;
+	color: #fff;
+	font-size: 15px;
+	right: 0;
+    }
         .contact-aside ul {
             padding: 7px 0;
             list-style: none;
@@ -445,6 +445,16 @@ return fasle;
         }
         
          /* sidebar css */
+         
+         /* header static */
+         
+         header {
+	left: 95%;
+	position: fixed;
+	top: 30px;
+	z-index: 9999;
+	right: 0;
+    }
             
             
         </style>
