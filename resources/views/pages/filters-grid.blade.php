@@ -12,6 +12,9 @@
         <link href="{{ asset('sximo/assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css"/>
         <!--link href="{{ asset('sximo/assets/css/daterangepicker.min.css')}}" rel="stylesheet"-->
+        
+        <link href="../../../public/sximo/assets/css/style.min.css" rel="stylesheet" type="text/css"/>
+        
         <link href="{{ asset('sximo/assets/css/test-res.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/jquery-ui.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/sticky-nav.css')}}" rel="stylesheet" type="text/css"/> 
