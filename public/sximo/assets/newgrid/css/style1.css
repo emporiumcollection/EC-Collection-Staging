@@ -672,7 +672,7 @@ textarea.input-bg {background-color: #f7f7f7; border-radius: 4px; border: 1px so
 .margin-75px-top {margin-top:75px}
 .margin-80px-top {margin-top:80px}
 .margin-90px-top {margin-top:90px}
-.margin-100px-top {margin-top:100px}
+.margin-100px-top {margin-top:0px}
 
 /* margin bottom */
 .margin-one-bottom {margin-bottom:1%}
