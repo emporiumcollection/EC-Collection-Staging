@@ -1015,7 +1015,7 @@ function scrollDataAjax(it_scroll,pageCounter)
 }
 
 
-var pageCounter = 2;
+var pageCounter = $('#nxtpg').val();
 var previousScroll = 0;
 $(window).scroll(function () {
 
