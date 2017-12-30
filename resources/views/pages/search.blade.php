@@ -375,6 +375,12 @@
                         .ai_active_filter .node-btn {
                             text-decoration: underline;
                         }
+                        
+                        /* AIC HK 30-12-2017*/
+                        .FloatFilter {
+                            float: right;
+                        }
+                        
         </style>
 		
 		<!-- Global site tag (gtag.js) - Google Analytics -->
@@ -435,7 +441,7 @@
                         </div>
                     </header>
                     <div class="filter-page-main-align">
-                        <div class="col-md-10 col-sm-9">
+                        <div class="col-md-10 col-sm-9 FloatFilter">
                             <div class="row">
                                 <!-- AIC top bar add -->
                                 <section class="book-form-top-bar">
