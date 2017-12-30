@@ -50,6 +50,21 @@
         <link href="{{ asset('sximo/assets/css/ai_yachts-custom.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/cities-filter.css')}}" rel="stylesheet" type="text/css"/>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		
+		<!-- new grid css and js -->
+		<link href="{{ asset('sximo/assets/newgrid/css/animate.css')}}" rel="stylesheet" type="text/css"/>
+		<link href="{{ asset('sximo/assets/newgrid/css/style1.css')}}" rel="stylesheet" type="text/css"/>
+		<link href="{{ asset('sximo/assets/newgrid/css/responsive.css')}}" rel="stylesheet" type="text/css"/>
+		<script src="{{ asset('sximo/assets/newgrid/js/skrollr.min.js')}}" type="text/javascript"></script>
+		<script src="{{ asset('sximo/assets/newgrid/js/smooth-scroll.js')}}" type="text/javascript"></script>
+		<script src="{{ asset('sximo/assets/newgrid/js/swiper.min.js')}}" type="text/javascript"></script>
+		<script src="{{ asset('sximo/assets/newgrid/js/jquery.magnific-popup.min.js')}}" type="text/javascript"></script>
+		<script src="{{ asset('sximo/assets/newgrid/js/isotope.pkgd.min.js')}}" type="text/javascript"></script>
+		<script src="{{ asset('sximo/assets/newgrid/js/imagesloaded.pkgd.min.js')}}" type="text/javascript"></script>
+		<script src="{{ asset('sximo/assets/newgrid/js/main.js')}}" type="text/javascript"></script>
+		<script src="{{ asset('sximo/assets/newgrid/js/wow.min.js')}}" type="text/javascript"></script>
+		<script src="{{ asset('sximo/assets/newgrid/js/jquery.fitvids.js')}}" type="text/javascript"></script>
+		<script src="{{ asset('sximo/assets/newgrid/js/skill.bars.jquery.js')}}" type="text/javascript"></script>
            @if(isset($_GET['ref']) && $_GET['ref']=='oc' )
             <?php $thumbnail = asset('sximo/assets/images/our_collection.png'); ?>
            @elseif(isset($_GET['ref']) && $_GET['ref']=='syd' )
@@ -603,8 +618,62 @@
                                     </div>
 
                                     <div id="listproperties">
-                                        <div class="row">
-                                            @if($propertiesArr)
+                                        <div class="row no-margin">
+											<div class="filter-content overflow-hidden margin-100px-top sm-margin-75px-top xs-margin-50px-top">
+												<ul class="portfolio-grid work-4col hover-option2 gutter-small">
+													<li class="grid-sizer"></li>
+													<?php
+													if($propertiesArr) {
+														$rw = 1;
+														$node_no = 1;
+														$ads_node = 0;
+														foreach($propertiesArr as $props) { ?>
+											
+															<li class="grid-item wow fadeInUp">
+																<a href="{{URL::to($props['data']->property_slug)}}">
+																	<figure>
+																		<div class="portfolio-img bg-deep-pink">			@if(array_key_exists('image', $props))
+																				<img alt="<?php echo $props['image']->file_name; ?>" src="<?php echo URL::to('uploads/property_imgs_thumbs/front_property_'.$props['image']->folder_id.'_'.$props['image']->file_name); ?>">
+																			@else
+																				<img src="http://placehold.it/800x560" alt=""/>
+																			@endif
+																		</div>
+																		<figcaption>
+																			<div class="portfolio-hover-main text-left">
+																				<div class="portfolio-hover-box vertical-align-bottom">
+																					<div class="portfolio-hover-content position-relative last-paragraph-no-margin">
+																						<span class="font-weight-600 line-height-normal alt-font text-white text-uppercase margin-one-half-bottom display-block">{{$props['data']->property_name}}</span>
+																						<p class="text-white text-uppercase text-extra-small">From € {{$props['data']->price}} </p>
+																					</div>
+																				</div>
+																			</div>
+																		</figcaption>
+																	</figure>
+																</a>
+																<div class="listDetails">
+																	<div class="photographBox ai-grid-tiitles">
+																		<h2>
+																			<a title="{{$props['data']->property_name}}" class="photograph FltLft ai-filtreted-hotel-name" rel="2216" href="{{URL::to($props['data']->property_slug)}}">
+																			{{$props['data']->property_name}}
+																			</a>
+																			<span class="FltRgt">
+																				<a class="carticon" href="javascript:void(0)" onclick="submitgridbookform('{{$props['data']->property_slug}}#*{{$props['data']->id}}');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>
+																			</span>
+																		</h2>
+																	</div>
+																	<div class="entire_story MrgTop5 ai-view-hotels-tittle">
+																		<a class="textButton arrowButton detail_view MrgTop5" rel="<?php echo $props['data']->id; ?>" href="#">
+																			Quick View 
+																		</a>
+																	</div>
+																	<div class="showOnHover">
+																		<div class="hover_request">
+																		</div>   
+																	</div>
+																</div>
+															</li>
+                                            <!--
+											@if($propertiesArr)
                                             {{--*/ $rw = 1 /*--}}
                                             {{--*/ $node_no = 1; $ads_node=0; /*--}}
                                             @foreach($propertiesArr as $props)
@@ -691,6 +760,7 @@
                                                                 <p class="yacths-des-text">2015H</p>
                                                             </div>
                                                             <!--<img class="img-responsive" src="{{URL::to('sximo/assets/images/img-1.jpg')}}" alt="">-->
+															<!--
                                                             @endif
                                                         </div>
                                                         <div class="listDetails">
@@ -702,7 +772,7 @@
                                                                     <span class="FltRgt">
                                                                         <!--<i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" @if(array_key_exists('image', $props)) onclick="add_to_lightbox({{$props['image']->file_id}}, {{$props['data']->id}});" @endif ></i>-->
 
-                                                                        <a class="carticon" href="javascript:void(0)" onclick="submitgridbookform('{{$props['data']->property_slug}}#*{{$props['data']->id}}');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>
+                                                                       <!-- <a class="carticon" href="javascript:void(0)" onclick="submitgridbookform('{{$props['data']->property_slug}}#*{{$props['data']->id}}');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>
                                                                     </span>
                                                                 </h2>
 
@@ -737,9 +807,14 @@
                                             {{--*/ $node_no++ /*--}}
                                             @endforeach
                                             {{--*/ $totpage = $propertiesArr->appends($pager)->lastPage(); $newpage = $currentPage + 2; $prevnewpage = $newpage - 2; /*--}}
-                                            @endif
+                                            @endif -->
+											
+                                        <?php }
+                                            }
+                                            ?>
                                         </div>
                                     </div>
+									</div>
                                     <div id="loaderProperty"></div>
                                     <div id="brgrid"></div>
                                     <input type="hidden" id="nxtpg" value="{{$newpage}}">
