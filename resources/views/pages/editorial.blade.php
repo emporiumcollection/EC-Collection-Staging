@@ -58,10 +58,10 @@
 		<script src="{{ asset('sximo/assets/newgrid/js/jquery.magnific-popup.min.js')}}" type="text/javascript"></script>
 		<script src="{{ asset('sximo/assets/newgrid/js/isotope.pkgd.min.js')}}" type="text/javascript"></script>
 		<script src="{{ asset('sximo/assets/newgrid/js/imagesloaded.pkgd.min.js')}}" type="text/javascript"></script>
-		<!--<script src="{{ asset('sximo/assets/newgrid/js/main.js')}}" type="text/javascript"></script>
+		<!--<script src="{{ asset('sximo/assets/newgrid/js/main.js')}}" type="text/javascript"></script>-->
 		<script src="{{ asset('sximo/assets/newgrid/js/wow.min.js')}}" type="text/javascript"></script>
 		<script src="{{ asset('sximo/assets/newgrid/js/jquery.fitvids.js')}}" type="text/javascript"></script>
-		<script src="{{ asset('sximo/assets/newgrid/js/skill.bars.jquery.js')}}" type="text/javascript"></script>-->
+		<script src="{{ asset('sximo/assets/newgrid/js/skill.bars.jquery.js')}}" type="text/javascript"></script>
         <script>
 			jQuery(document).ready(function ($) {
 				$(".regular").slick({
@@ -420,6 +420,10 @@
                                 border-radius: 0;
                                 font-size: 11px;
                             }
+							
+							.editorial-custom-footer-style {
+								float: left !important;
+							}
                             
                             .bar-name-text-style {
                                 color: #fff;
@@ -2298,7 +2302,7 @@
 				<!--Sections-->
 				<section id ="instagran" class="sections-instagram">
 					<div class="full-width">
-						<div data-is data-is-api="{{ URL::to('runInsta')}}" data-is-source="{{(!empty($propertyDetail) && $propertyDetail['data']->social_instagram!='')? $propertyDetail['data']->social_instagram : '@socialdesignlocations777' }}" data-is-rows="1" data-is-columns="7"></div>
+						<div data-is data-is-api="{{ URL::to('runInsta')}}" data-is-source="{{(!empty($propertyDetail) && $propertyDetail['data']->social_instagram!='')? $propertyDetail['data']->social_instagram : '@socialdesignlocations777' }}" data-is-rows="2" data-is-columns="6"></div>
 					</div>
 				</section>
 				<!--Sections-->	

@@ -473,6 +473,28 @@
             color: #c7ab84;
         }
         
+        .emporium-voyage-Menu {
+	color: #c7ab84;
+	margin-top: 3px;
+	margin-left: 0px;
+	opacity: 1;
+	box-shadow: none;
+	font-size: 20px;
+    }
+    
+    #block-system-main-menu .block-inner {
+    background: rgba(37, 37, 37, 0.9);
+    }
+    
+    .close {
+	font-size: 21px;
+	font-weight: 700;
+	line-height: 1;
+	color: #000;
+	text-shadow:0px;
+	opacity: 1;
+    }
+        
          /* sidebar css */
         </style>
 		
@@ -493,6 +515,195 @@
             <div class="container-fluid">
                 <div class="row">
                     <header>
+                        
+                         <!-- start sidebar -->
+                            
+                            <div class="region region-sidebar-first sidebar">
+                                <div class="region-inner clearfix">
+                                    <div id="block-ledunfly-menu-link" class="block block-ledunfly no-title odd first block-count-4 block-region-sidebar-first block-menu-link" ><div class="block-inner clearfix">  
+                                            <div class="block-content content"><i class="fa fa-bars emporium-voyage-Menu" aria-hidden="true"></i></div>
+                                        </div>
+                                    </div>
+<!--                                    <div id="block-ledunfly-menu-logo" class="block block-ledunfly no-title even block-count-5 block-region-sidebar-first block-menu-logo" ><div class="block-inner clearfix">  
+
+                                            <div class="block-content content"><a href="index.html" title="Five Seas Hotel"><div class="menu-logo"></div></a></div>
+                                        </div>
+                                    </div>-->
+                                    <div id="block-system-main-menu" class="block block-system block-menu no-title odd block-count-6 block-region-sidebar-first block-main-menu" role="navigation">
+                                        <div class="block-inner clearfix">
+                                            <div class="block-content content" class="block-content content">
+                                                <!-- Start Popup Menu -->
+                                                <?php 
+                                                    $popup      = SiteHelpers::menus( 'popup' ,'all'); 
+                                                     
+                                                ?>
+                                            <ul class="menusk clearfix">
+                                                @foreach ($popup as $keyMenu=>$menu)
+                                                  <li class="{{($keyMenu==0)?'first':''}} {{(count($menu['childs']) > 0)?'expanded':''}}  menu-depth-1 menu-item-{{$menu['menu_id']}}">
+                                                    <a href="<?php echo ($menu['menu_type'] =='external')? URL::to($menu['url']) : URL::to($menu['module']); ?>">{{$menu['menu_name']}}</a>
+                                                    @if(count($menu['childs']) > 0)
+                                                        <ul class="menusk1 clearfix">
+                                                            @foreach ($menu['childs'] as $keyMenu2=>$menu2)
+                                                             <li class="{{($keyMenu2==0)?'first':''}} {{(count($menu2['childs']) > 0)?'expanded':''}}  leaf menu-depth-2 menu-item-{{$menu['menu_id']}}">
+                                                                    <a href="<?php echo ($menu2['menu_type'] =='external')? URL::to($menu2['url']) : URL::to($menu2['module']); ?>">{{$menu2['menu_name']}}</a>
+                                                                @if(count($menu2['childs']) > 0)
+                                                                <ul class="menusk1 clearfix">
+                                                                    @foreach($menu2['childs'] as $keyMenu3=>$menu3)
+                                                                        <li class="{{($keyMenu3==0)?'first':''}} leaf menu-depth-3 menu-item-{{$menu['menu_id']}}">
+                                                                            <a href="<?php echo ($menu2['menu_type'] =='external')? URL::to($menu2['url']) : URL::to($menu2['module']); ?>">{{$menu3['menu_name']}}</a>
+                                                                        </li>   
+                                                                    @endforeach
+                                                                </ul>
+                                                                @endif
+                                                            </li>                           
+                                                            @endforeach
+                                                        </ul>
+                                                    @endif
+                                                </li>
+                                            @endforeach
+
+                                             <!-- Start Popup 2 Menu -->   
+                                             <?php 
+                                                     
+                                                    $popup2      = SiteHelpers::menus( 'popup_2' ,'all'); 
+                                                ?> 
+                                            @foreach ($popup2 as $key2Menu=>$menu)
+                                                  <li class="leaf little {{($key2Menu==0)?'little-first':''}}  {{(count($menu['childs']) > 0)?'expanded':''}}  menu-depth-1 menu-item-{{$menu['menu_id']}}">
+                                                    <a href="<?php echo ($menu['menu_type'] =='external')? URL::to($menu['url']) : URL::to($menu['module']); ?>">{{$menu['menu_name']}}</a>
+                                                    @if(count($menu['childs']) > 0)
+                                                        <ul class="menusk1 clearfix">
+                                                            @foreach ($menu['childs'] as $key2Menu2=>$menu2)
+                                                             <li class="leaf little {{($key2Menu2==0)?'little-first':''}} {{(count($menu2['childs']) > 0)?'expanded':''}}  leaf menu-depth-2 menu-item-{{$menu['menu_id']}}">
+                                                                    <a href="<?php echo ($menu2['menu_type'] =='external')? URL::to($menu2['url']) : URL::to($menu2['module']); ?>">{{$menu2['menu_name']}}</a>
+                                                                @if(count($menu2['childs']) > 0)
+                                                                <ul class="menusk1 clearfix">
+                                                                    @foreach($menu2['childs'] as $key2Menu3=>$menu3)
+                                                                        <li class="leaf little {{($key2Menu3==0)?'little-first':''}} menu-depth-3 menu-item-{{$menu['menu_id']}}">
+                                                                            <a href="<?php echo ($menu3['menu_type'] =='external')? URL::to($menu3['url']) : URL::to($menu3['module']); ?>">{{$menu3['menu_name']}}</a>
+                                                                        </li>   
+                                                                    @endforeach
+                                                                </ul>
+                                                                @endif
+                                                            </li>                           
+                                                            @endforeach
+                                                        </ul>
+                                                    @endif
+                                                </li>
+                                            @endforeach
+
+                                        </ul>   <!-- Comment Static menu -->
+                                                <!--
+                                                <ul class="menusk clearfix">
+                                                    <li class="first expanded menu-depth-1 menu-item-989">
+                                                        <a href="#">Sleep</a>
+                                                        <ul class="menusk1 clearfix">
+                                                            <li class="first leaf menu-depth-2 menu-item-990">
+                                                                <a href="#">Suite Présidentielle</a>
+                                                            </li>
+                                                            <li class="leaf menu-depth-2 menu-item-991">
+                                                                <a href="#">Suite Terrasse</a>
+                                                            </li>
+                                                            <li class="leaf menu-depth-2 menu-item-992">
+                                                                <a href="#">Top Of Five</a>
+                                                            </li>
+                                                            <li class="leaf menu-depth-2 menu-item-993">
+                                                                <a href="#">Suites So Suite</a>
+                                                            </li>
+                                                            <li class="leaf menu-depth-2 menu-item-994">
+                                                                <a href="#">Junior Suites</a>
+                                                            </li>
+                                                            <li class="leaf menu-depth-2 menu-item-1051">
+                                                                <a href="#">Chambres Executive</a>
+                                                            </li>
+                                                            <li class="leaf menu-depth-2 menu-item-995">
+                                                                <a href="#">Chambres Deluxe</a>
+                                                            </li>
+                                                            <li class="last leaf menu-depth-2 menu-item-1007">
+                                                                <a href="#">Services</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="expanded menu-depth-1 menu-item-996">
+                                                        <a href="#">Savour</a>
+                                                        <ul class="menusk1 clearfix">
+                                                    <li class="first leaf menu-depth-2 menu-item-998">
+                                                        <a href="#">Le Roof</a>
+                                                    </li><li class="leaf menu-depth-2 menu-item-999">
+                                                        <a href="#">Le Bar</a>
+                                                    </li>
+                                                    <li class="last leaf menu-depth-2 menu-item-1135">
+                                                        <a href="#">Le Brunch</a>
+                                                    </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="expanded menu-depth-1 menu-item-1000">
+                                                        <a href="#">Relax</a>
+                                                        <ul class="menusk1 clearfix">
+                                                            <li class="first leaf menu-depth-2 menu-item-1001">
+                                                                <a href="#">Spa</a>
+                                                            </li><li class="leaf menu-depth-2 menu-item-1002">
+                                                                <a href="#">Terrasse piscine</a>
+                                                            </li>
+                                                            <li class="last leaf menu-depth-2 menu-item-1003">
+                                                                <a href="#">Plage privée</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="expanded menu-depth-1 menu-item-1004">
+                                                        <a href="#">Discover</a>
+                                                        <ul class="menusk1 clearfix">
+                                                            <li class="first leaf menu-depth-2 menu-item-1005">
+                                                                <a href="#">Cannes</a></li>
+                                                            <li class="last leaf menu-depth-2 menu-item-1006">
+                                                                <a href="#">Activités</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="leaf menu-depth-1 menu-item-1013">
+                                                        <a href="#">News</a>
+                                                    </li>
+                                                    <li class="expanded menu-depth-1 menu-item-1123">
+                                                        <a href="#">Offres</a>
+                                                        <ul class="menusk1 clearfix">
+                                                            <li class="first leaf menu-depth-2 menu-item-1014">
+                                                                <a href="#">Offres Sleep</a>
+                                                            </li><li class="last leaf menu-depth-2 menu-item-1125">
+                                                                <a href="#">Offres Relax</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="leaf menu-depth-1 menu-item-1015">
+                                                        <a href="#">Gift box</a>
+                                                    </li>
+                                                    <li class="leaf menu-depth-1 menu-item-1009">
+                                                        <a href="#">Events</a>
+                                                    </li>
+                                                    <li class="leaf little little-first menu-depth-1 menu-item-1139">
+                                                        <a href="#" class="little little-first">Carrières</a>
+                                                    </li>
+                                                    <li class="leaf little menu-depth-1 menu-item-1010">
+                                                        <a href="#" class="little">Plan &amp; Accès</a>
+                                                    </li>
+                                                    <li class="leaf little menu-depth-1 menu-item-1092">
+                                                        <a href="#" class="little">Mentions légales</a>
+                                                    </li><li class="last leaf little menu-depth-1 menu-item-1111">
+                                                        <a href="#" class="little">Green Globe</a>
+                                                    </li
+                                                    ></ul>-->
+                                            </div>
+<!--                                            <div class="block-menu-text">
+                                                <p>FIVE SEAS HOTEL CANNES - 1, RUE NOTRE DAME - 06400 CANNES</p>
+                                                <div><p>T : +33 4 63 36 05 05</p>
+                                                    <p>INFO@FIVESEASHOTEL.COM</p>
+                                                </div>
+                                            </div>-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>    
+                            
+                            <!-- end sidebar -->
+                        
                         <div class="container-fluid logo-padding-left editorial-logo-align">
                            <!-- <div class="col-md-12-">
                                 <p><a class="logo-d" href="{{url()}}">D</a></p>
@@ -2545,12 +2756,12 @@ url: "{{ URL::to('filter_search_destionation')}}",
                     
                     </script> 
                     
-                    <script> 
-                        $('.contact-aside').hover(
-                            function(){ $(this).addClass('active') },
-                            function(){ $(this).removeClass('active') }
-                        )
-                </script>
+                     <script> 
+                $('.contact-aside').hover(
+                    function(){ $(this).addClass('active') },
+                    function(){ $(this).removeClass('active') }
+                )
+         </script>
 
 
            <style>
