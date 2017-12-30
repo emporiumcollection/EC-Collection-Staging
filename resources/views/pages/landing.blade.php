@@ -861,17 +861,17 @@
                                             <ul class="menusk clearfix">
                                                 @foreach ($popup as $keyMenu=>$menu)
                                                   <li class="{{($keyMenu==0)?'first':''}} {{(count($menu['childs']) > 0)?'expanded':''}}  menu-depth-1 menu-item-{{$menu['menu_id']}}">
-                                                    <a href="#">{{$menu['menu_name']}}</a>
+                                                    <a href="<?php echo ($menu['menu_type'] =='external')? URL::to($menu['url']) : URL::to($menu['module']); ?>">{{$menu['menu_name']}}</a>
                                                     @if(count($menu['childs']) > 0)
                                                         <ul class="menusk1 clearfix">
                                                             @foreach ($menu['childs'] as $keyMenu2=>$menu2)
                                                              <li class="{{($keyMenu2==0)?'first':''}} {{(count($menu2['childs']) > 0)?'expanded':''}}  leaf menu-depth-2 menu-item-{{$menu['menu_id']}}">
-                                                                    <a href="#">{{$menu2['menu_name']}}</a>
+                                                                    <a href="<?php echo ($menu2['menu_type'] =='external')? URL::to($menu2['url']) : URL::to($menu2['module']); ?>">{{$menu2['menu_name']}}</a>
                                                                 @if(count($menu2['childs']) > 0)
                                                                 <ul class="menusk1 clearfix">
                                                                     @foreach($menu2['childs'] as $keyMenu3=>$menu3)
                                                                         <li class="{{($keyMenu3==0)?'first':''}} leaf menu-depth-3 menu-item-{{$menu['menu_id']}}">
-                                                                            <a href="#">{{$menu3['menu_name']}}</a>
+                                                                            <a href="<?php echo ($menu2['menu_type'] =='external')? URL::to($menu2['url']) : URL::to($menu2['module']); ?>">{{$menu3['menu_name']}}</a>
                                                                         </li>   
                                                                     @endforeach
                                                                 </ul>
