@@ -1055,10 +1055,10 @@
 																	</div>
 																</div>
 															</li>
-                                            <!--
+                                          <?php /*
 											@if($propertiesArr)
-                                            {{--*/ $rw = 1 /*--}}
-                                            {{--*/ $node_no = 1; $ads_node=0; /*--}}
+                                            {{-- $rw = 1 --}}
+                                            {{-- $node_no = 1; $ads_node=0; --}}
                                             @foreach($propertiesArr as $props)
                                             @if($node_no%20==0)
 												@if(!empty($reultsgridAds))
@@ -1089,16 +1089,16 @@
 														</div>
 													@endif
 												@endif
-												 {{--*/ $ads_node++; /*--}}
+												 {{-- $ads_node++; --}}
                                             @else
                                             <div class="productData col-xs-12 col-sm-6 col-md-4 col-lg-3 margin-bottom-10">
                                                 <div class="wrapperforliineedforlightboxremoval">
                                                     <div class="cat_product_medium1">
                                                         <div class="ai-grid-page-node-pic-box pictureBox gridPicture grid-box-main">
                                                             @if($props['data']->price!='')
-                                                            <?php /*<a class="textButton arrowButton MrgTop5 ai-filter-hotel-price-style" rel="{{$props['data']->id}}" href="{{URL::to($props['data']->property_slug)}}">
-                                                                From EUR {{$props['data']->price}} / night 
-                                                            </a> */ ?>
+                                                            <?php //<a class="textButton arrowButton MrgTop5 ai-filter-hotel-price-style" rel="{{$props['data']->id}}" href="{{URL::to($props['data']->property_slug)}}">
+                                                                //From EUR {{$props['data']->price}} / night 
+                                                            //</a> 
                                                             @endif
                                                             @if(array_key_exists('image', $props))
 																@if($props['data']->editor_choice_property=='1')
@@ -1186,13 +1186,15 @@
                                             @endif
 
                                             @endif
-                                            {{--*/ $rw++ /*--}}
-                                            {{--*/ $node_no++ /*--}}
+                                            {{-- $rw++ --}}
+                                            {{-- $node_no++ --}}
                                             @endforeach
-                                            {{--*/ $totpage = $propertiesArr->appends($pager)->lastPage(); $newpage = $currentPage + 2; $prevnewpage = $newpage - 2; /*--}}
-                                            @endif -->
+                                            {{-- $totpage = $propertiesArr->appends($pager)->lastPage(); $newpage = $currentPage + 2; $prevnewpage = $newpage - 2; --}}
+                                            @endif 
+
+                                            */
 											
-                                        <?php }
+                                         }
                                             }
                                             ?>
                                         </div>
