@@ -1611,7 +1611,7 @@ $(document).ready(function () {
     /* ===================================
     counter number reset while scrolling
     ====================================== */
-    $('.timer').appear();
+    //$('.timer').appear();
     $(document.body).on('appear', '.timer', function (e) {
         // this code is executed for each appeared element
         if (!$(this).hasClass('appear')) {
