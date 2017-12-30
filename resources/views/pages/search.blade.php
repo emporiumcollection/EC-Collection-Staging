@@ -1488,7 +1488,6 @@ function scrollDataAjax(it_scroll,pageCounter)
                             $('#listproperties ul').html('<li class="grid-sizer"></li>'+html);
                         }else{
                             $('#listproperties ul').append(html);
-                            $('#listproperties ul').masonry( 'appended', html );
                         }
                     if (destnarea != ''){
                         if (dest_area[1] == 'country' || dest_area[1] == 'region'){
@@ -1530,7 +1529,7 @@ function scrollDataAjax(it_scroll,pageCounter)
                                     columnWidth: '.grid-sizer'
                                 }
                             });
-                            $portfolio_filter.isotope();
+                           $portfolio_filter.isotope().isotope('reloadItems');
                         }); 
 
                  },
@@ -1857,8 +1856,6 @@ url: "{{ URL::to('filter_search_destionation')}}",
                         }
                         else{
                         $('#listproperties ul').append(html);
-                        $('#listproperties ul').masonry( 'appended', html );
-
                         }
                         if (destnarea != '')
                         {
@@ -1984,7 +1981,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                         $('#ttlpg').val(data.ttlpages);
                         isPreviousEventComplete = true;
                         }
-                         /*var $portfolio_filter = $('.portfolio-grid');
+                         var $portfolio_filter = $('.portfolio-grid');
                         $portfolio_filter.imagesLoaded(function () {
                             $portfolio_filter.isotope({
                                 layoutMode: 'masonry',
@@ -1994,8 +1991,8 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                     columnWidth: '.grid-sizer'
                                 }
                             });
-                            $portfolio_filter.isotope();
-                        }); */
+                            $portfolio_filter.isotope().isotope('reloadItems');
+                        }); 
         },
         error: function (error) {
 //        alert(error);
