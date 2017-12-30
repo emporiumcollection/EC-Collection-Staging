@@ -26,10 +26,10 @@
         <script src="{{ asset('sximo/assets/js/open-search.js')}}" type="text/javascript"></script>
         
         <!-- AIC sidebar js -->
-        <script src="{{ asset('sximo/assets/js/jquery_1.js')}}" type="text/javascript"></script>
+<!--        <script src="{{ asset('sximo/assets/js/jquery_1.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/custm.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/TweenMax.min41e7.js')}}" type="text/javascript"></script>
-        <script src="{{ asset('sximo/assets/js/menu41e7.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('sximo/assets/js/menu41e7.js')}}" type="text/javascript"></script>-->
         
         <style>
             #search-navbar.search-navbar-destination-search-box {
@@ -773,7 +773,7 @@
 	font-size: 12px !important;
 	padding: 25px 0 25px 21px;
 	text-transform: uppercase;
-	background: rgb(37,37,37,0.9);
+	background: rgba(37,37,37,1.0);
     }
     
     .right-menu-sidebar {
