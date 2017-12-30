@@ -409,8 +409,8 @@ return fasle;
             list-style: none;
         }
         .contact-aside li {
-            padding: 9.33333px 0;
-            margin: 0 15px;
+	padding: 6.333px 0px 6px 5px;
+	margin: 0px 5px 1px 0px;
         }
         .contact-aside {
             color: #fff;
@@ -439,8 +439,8 @@ return fasle;
         .asideIclass {
             float: left;
             margin-top: 3px;
-            margin-right: 10px;
-            margin-left: 5px;
+            margin-right: 13px;
+            margin-left: 8px;
         }
         
          /* sidebar css */
