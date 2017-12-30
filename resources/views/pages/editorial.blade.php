@@ -2298,7 +2298,7 @@
 				<!--Sections-->
 				<section id ="instagran" class="sections-instagram">
 					<div class="full-width">
-						<div data-is data-is-api="{{ URL::to('runInsta')}}" data-is-source="{{(!empty($propertyDetail) && $propertyDetail['data']->social_instagram!='')? $propertyDetail['data']->social_instagram : '@socialdesignlocations777' }}" data-is-rows="1" data-is-columns="7"></div>
+						<div data-is data-is-api="{{ URL::to('runInsta')}}" data-is-source="{{(!empty($propertyDetail) && $propertyDetail['data']->social_instagram!='')? $propertyDetail['data']->social_instagram : '@socialdesignlocations777' }}" data-is-rows="2" data-is-columns="6"></div>
 					</div>
 				</section>
 				<!--Sections-->	
