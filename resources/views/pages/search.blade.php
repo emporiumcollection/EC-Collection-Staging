@@ -969,7 +969,7 @@ function scrollDataAjax(it_scroll,pageCounter)
                         if(total_rows>0){
                             $('.locator').parent().css('padding-top','0px');
                         }
-                        $(".searchcount").html(total_rows + ' Hotel(s) Found for ' + $(".ai_search_keywords").val());
+                        $(".searchcount").html(data.ttl + ' Hotel(s) Found for ' + $(".ai_search_keywords").val());
                         html += '</div>';
                         if (it_scroll == false){
                             $('#listproperties').html(html);
@@ -1259,7 +1259,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
         if(total_rows>0){
             $('.locator').parent().css('padding-top','0px');
         }
-        $(".searchcount").html(total_rows + ' Hotel(s) Found for ' + $(".ai_search_keywords").val());
+        $(".searchcount").html(data.ttl + ' Hotel(s) Found for ' + $(".ai_search_keywords").val());
         html += '</div>';
         if (it_scroll == false)
         {
@@ -1383,7 +1383,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                 $('#cityfilters').html(chtml); 
             }
 
-            var searchcountdispl = data.ttl + ' Hotel(s) Found for ' + data.searchdestname;
+            var searchcountdispl = data.ttl + ' Hotel(s) Found for ' + $(".ai_search_keywords").val();
             $('.searchcount').html(searchcountdispl);
         }
 
