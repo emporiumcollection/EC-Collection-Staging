@@ -2322,7 +2322,14 @@ url: "{{ URL::to('filter_search_destionation')}}",
 
                     <script>
                                             
-                                        </script> 
+                                        </script>
+                                        
+                    <script> 
+                            $('.contact-aside').hover(
+                                function(){ $(this).addClass('active') },
+                                function(){ $(this).removeClass('active') }
+                            )
+                     </script>
 
 
            <style>
