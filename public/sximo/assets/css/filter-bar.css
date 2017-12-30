@@ -22,17 +22,17 @@ and open the template in the editor.
     padding: 0 !important;
 }
 .design-locations-logo > a img {
-    margin-top: 31px;
+	margin-top: 0px;
 }
 .custom-heading {
-    background-color: #1e2023 !important;
-    border-radius: 0;
-    padding: 34px 30px;
-    opacity: unset;
+	border-radius: 0;
+	padding: 34px 30px;
+	opacity: unset;
+	background-color: rgb(37,37,37,0.9);
 }
 .heading-stying {
     color: #fff !important;
-    font-size: 14px !important;
+    font-size: 12px !important;
     letter-spacing: 1px;
     padding: 0 !important;
     text-transform: uppercase;
@@ -41,10 +41,10 @@ and open the template in the editor.
 .heading-stying:hover,.heading-stying:focus,.heading-stying:active{
     text-decoration: none;
 }
-.design-locations-logo{
-    background-color: #1e2023;
-    border-bottom: 1px solid;
-    padding: 32px;
+.design-locations-logo {
+	border-bottom: 1px solid;
+	padding: 11px 19px 40px 20px;
+	background-color: rgb(37,37,37,0.9);
 }
 .custom-post-panel {
     border-bottom: thin solid !important;
