@@ -520,10 +520,10 @@
                                         <div class="block-inner clearfix">
                                             <div class="block-content content" class="block-content content">
                                                 <!-- Start Popup Menu -->
-                                                <?php 
+                                                <?php /*
                                                     $popup      = SiteHelpers::menus( 'popup' ,'all'); 
                                                      
-                                                ?>
+                                                
                                             <ul class="menusk clearfix">
                                                 @foreach ($popup as $keyMenu=>$menu)
                                                   <li class="{{($keyMenu==0)?'first':''}} {{(count($menu['childs']) > 0)?'expanded':''}}  menu-depth-1 menu-item-{{$menu['menu_id']}}">
@@ -550,7 +550,7 @@
                                             @endforeach
 
                                              <!-- Start Popup 2 Menu -->   
-                                             <?php 
+                                          
                                                      
                                                     $popup2      = SiteHelpers::menus( 'popup_2' ,'all'); 
                                                 ?> 
@@ -677,6 +677,8 @@
                                                         <a href="#" class="little">Green Globe</a>
                                                     </li
                                                     ></ul>-->
+
+                                                    **/?>
                                             </div>
 <!--                                            <div class="block-menu-text">
                                                 <p>FIVE SEAS HOTEL CANNES - 1, RUE NOTRE DAME - 06400 CANNES</p>
@@ -1127,9 +1129,7 @@
                                             @endforeach
                                             {{--*/ $totpage = $propertiesArr->appends($pager)->lastPage(); $newpage = $currentPage + 2; $prevnewpage = $newpage - 2; /*--}}
                                             @endif 
-                                            <?php }
-                                            }
-                                            ?>
+                                            
                                     </div>
 									</div>
                                     <div id="loaderProperty"></div>
