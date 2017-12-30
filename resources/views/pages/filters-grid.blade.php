@@ -376,6 +376,12 @@ return fasle;
             .node-btn.active {
                 border-bottom: 2px solid;
             }
+            
+            /* AIC HK 30-12-2017*/
+            .FloatFilter {
+                float: right;
+            }
+            
         </style>
 		
 		<!-- Global site tag (gtag.js) - Google Analytics -->
@@ -434,7 +440,7 @@ return fasle;
                         </div>-->
                     </header>
                     <div class="filter-page-main-align">
-                        <div class="col-md-10 col-sm-9">
+                        <div class="col-md-10 col-sm-9 FloatFilter">
                             <div class="row">
                                 <!-- AIC Harman top bar adding -->
                                 <section class="book-form-top-bar">

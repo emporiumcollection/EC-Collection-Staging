@@ -3933,7 +3933,8 @@ div.productData a {
     top: 0;
     width: 17%;
     z-index: 99;
-    background: #fff;   
+    background: #fff;
+    left: 0;
 }
 .filter-grid-page-side-bar .filter-footer {
     height: auto;
