@@ -420,6 +420,10 @@
                                 border-radius: 0;
                                 font-size: 11px;
                             }
+							
+							.editorial-custom-footer-style {
+								float: left !important;
+							}
                             
                             .bar-name-text-style {
                                 color: #fff;
