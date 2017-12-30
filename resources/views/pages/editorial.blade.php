@@ -58,8 +58,8 @@
 		<script src="{{ asset('sximo/assets/newgrid/js/jquery.magnific-popup.min.js')}}" type="text/javascript"></script>
 		<script src="{{ asset('sximo/assets/newgrid/js/isotope.pkgd.min.js')}}" type="text/javascript"></script>
 		<script src="{{ asset('sximo/assets/newgrid/js/imagesloaded.pkgd.min.js')}}" type="text/javascript"></script>
-		<!--<script src="{{ asset('sximo/assets/newgrid/js/main.js')}}" type="text/javascript"></script>
-		<script src="{{ asset('sximo/assets/newgrid/js/wow.min.js')}}" type="text/javascript"></script>
+		<script src="{{ asset('sximo/assets/newgrid/js/main.js')}}" type="text/javascript"></script>
+		<!--<script src="{{ asset('sximo/assets/newgrid/js/wow.min.js')}}" type="text/javascript"></script>
 		<script src="{{ asset('sximo/assets/newgrid/js/jquery.fitvids.js')}}" type="text/javascript"></script>
 		<script src="{{ asset('sximo/assets/newgrid/js/skill.bars.jquery.js')}}" type="text/javascript"></script>-->
         <script>
