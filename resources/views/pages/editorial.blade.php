@@ -49,7 +49,7 @@
 		<script src="{{ asset('sximo/assets/js/slick.js')}}" type="text/javascript"></script>
 		
 		<!-- new grid css and js -->
-		<link href="{{ asset('sximo/assets/newgrid/css/animate.css')}}" rel="stylesheet" type="text/css"/>
+		<!--<link href="{{ asset('sximo/assets/newgrid/css/animate.css')}}" rel="stylesheet" type="text/css"/>
 		<link href="{{ asset('sximo/assets/newgrid/css/style1.css')}}" rel="stylesheet" type="text/css"/>
 		<link href="{{ asset('sximo/assets/newgrid/css/responsive.css')}}" rel="stylesheet" type="text/css"/>
 		<script src="{{ asset('sximo/assets/newgrid/js/skrollr.min.js')}}" type="text/javascript"></script>
@@ -61,7 +61,7 @@
 		<script src="{{ asset('sximo/assets/newgrid/js/main.js')}}" type="text/javascript"></script>
 		<script src="{{ asset('sximo/assets/newgrid/js/wow.min.js')}}" type="text/javascript"></script>
 		<script src="{{ asset('sximo/assets/newgrid/js/jquery.fitvids.js')}}" type="text/javascript"></script>
-		<script src="{{ asset('sximo/assets/newgrid/js/skill.bars.jquery.js')}}" type="text/javascript"></script>
+		<script src="{{ asset('sximo/assets/newgrid/js/skill.bars.jquery.js')}}" type="text/javascript"></script>-->
         <script>
 			jQuery(document).ready(function ($) {
 				$(".regular").slick({
@@ -2309,7 +2309,6 @@
 						<div class="container">
 							<h2 class="bar-name-text-style" style="color:#000;">View our selection of Luxury Hotels in {{$propertyDetail['data']->assign_detail_city}}</h2>
 							<div class="row no-margin">
-							
 											<div class="filter-content overflow-hidden margin-100px-top sm-margin-75px-top xs-margin-50px-top">
 												<ul class="portfolio-grid work-4col hover-option2 gutter-small">
 													<li class="grid-sizer"></li>
