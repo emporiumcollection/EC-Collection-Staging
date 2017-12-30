@@ -330,7 +330,7 @@ $(window).resize(function (event) {
     });
 
     setTimeout(function () {
-        SetResizeContent();
+       // SetResizeContent();
     }, 500);
 
     event.preventDefault();
@@ -2303,7 +2303,7 @@ $(document).ready(function () {
     /* ===================================
     End blog hover box
     ====================================== */
-    SetResizeContent();
+   // SetResizeContent();
 
     var $allNonRatinaImages = $("img:not([data-at2x])");
     $allNonRatinaImages.attr('data-no-retina', '');
