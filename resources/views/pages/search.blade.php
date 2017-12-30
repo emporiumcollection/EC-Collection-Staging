@@ -1000,7 +1000,7 @@ function scrollDataAjax(it_scroll,pageCounter)
                 //var searchcountdispl = data.ttl + ' Hotel(s) Found for ' + data.searchdestname;
                 //$('.searchcount').html(searchcountdispl);
                 }
-                    var nextPage = $('#nxtpg').val() + 1 ;
+                    var nextPage = parseInt($('#nxtpg').val()) + 1 ;
                     $('#nxtpg').val(nextPage);
                     sIndex = parseInt(sIndex) + offSet;
                     $('#listrecrds').val(sIndex);
