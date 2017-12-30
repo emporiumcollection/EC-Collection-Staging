@@ -1000,8 +1000,7 @@ function scrollDataAjax(it_scroll,pageCounter)
                 //var searchcountdispl = data.ttl + ' Hotel(s) Found for ' + data.searchdestname;
                 //$('.searchcount').html(searchcountdispl);
                 }
-                    var nextPage = parseInt($('#nxtpg').val()) + 1 ;
-                    $('#nxtpg').val(nextPage);
+                   
                     sIndex = parseInt(sIndex) + offSet;
                     $('#listrecrds').val(sIndex);
                     $('#ttlpg').val(data.ttlpages);
@@ -1016,7 +1015,7 @@ function scrollDataAjax(it_scroll,pageCounter)
 }
 
 
-var pageCounter = $('#nxtpg').val();
+var pageCounter = 1;
 var previousScroll = 0;
 $(window).scroll(function () {
 
@@ -1029,7 +1028,10 @@ $(window).scroll(function () {
              console.log('windowScrollTop  : ' + windowScrollTop+ ' document height : '+ documentHeight);
             if(windowScrollTop >= documentHeight) {
                 var it_scroll = true;
+                 
                 scrollDataAjax(it_scroll, pageCounter);
+                var nextPage = parseInt($('#nxtpg').val()) + 1 ;
+                    $('#nxtpg').val(nextPage);
                 pageCounter++;
                 console.log('Ok! Fired Ajax');
             }
