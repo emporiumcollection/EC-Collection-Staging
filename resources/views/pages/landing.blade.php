@@ -17,7 +17,7 @@
         <script src="{{ asset('sximo/assets/js/bootstrap.min.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/jquery-ui.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/moment.min.js')}}" type="text/javascript" ></script>
-        <script src="{{ asset('sximo/assets/js/jquery.daterangepicker.min.js')}}" type="text/javascript" ></script>
+        
         <script src="{{ asset('sximo/assets/js/html2canvas.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/book-now-page-style.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/m-popup.js')}}" type="text/javascript"></script>
@@ -30,6 +30,7 @@
         <script src="{{ asset('sximo/assets/js/custm.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/TweenMax.min41e7.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/menu41e7.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('sximo/assets/js/jquery.daterangepicker.min.js')}}" type="text/javascript" ></script>
         
         <style>
             #search-navbar.search-navbar-destination-search-box {
