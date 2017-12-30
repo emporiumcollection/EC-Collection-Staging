@@ -663,7 +663,7 @@
                                                                     <div class="overlay-text hotel-overlay-text">
                                                                         <h2 class="yacts-tittle-text">{{ $props['data']->property_name}}</h2>
                                                                         <p class="yacths-des-text yacths-des-text-align"><span>From &euro;{{ $props['data']->price}} </span>
-																		<span>		{{(isset($props['data']->category_name))? '|'.$props['data']->category_name : ''}}</span></p>
+																		<span>		{{(isset($props['data']->category_name))? '| '.$props['data']->category_name : ''}}</span></p>
                                                                     </div>
                                                                     <div class="overlay-text yacts-overlay-text">
                                                                         <h2 class="yacts-tittle-text">{{ $props['data']->property_name }}</h2>
