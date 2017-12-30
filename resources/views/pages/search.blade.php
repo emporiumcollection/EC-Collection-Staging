@@ -1021,13 +1021,7 @@ $(window).scroll(function () {
 
         var currentScroll = $(this).scrollTop();
        if (currentScroll > previousScroll){
-           console.log('down');
-       } else {
-          console.log('up');
-       }
-       previousScroll = currentScroll;
-
-        var windowScrollTop =  $(window).scrollTop() + ($('#listproperties').offset().top / 2);
+           var windowScrollTop =  $(this).scrollTop() + ($('#listproperties').offset().top / 2);
            
             var documentHeight = $('#listproperties').innerHeight();
 
@@ -1038,6 +1032,12 @@ $(window).scroll(function () {
                 pageCounter++;
                 console.log('Ok! Fired Ajax');
             }
+       } else {
+          console.log('scroll up');
+       }
+       previousScroll = currentScroll;
+
+        
     });
 
 function scrollDownloadData(it_scroll)
