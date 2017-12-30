@@ -3525,7 +3525,7 @@ div.productData a {
 }
 .header-navigation-menu #myNavbar {
     position: relative;
-    z-index: 99;
+    z-index: 9;
 }
 .header-logo > a {
     display: table;
