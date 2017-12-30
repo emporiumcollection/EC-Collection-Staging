@@ -810,9 +810,10 @@
 	color: #fff;
 	font-size: 36px;
 	position: absolute;
-	right: 19px;
-	top: 30px;
+	right: 115px;
+	top: 5px;
 	z-index: 99;
+	color: #c7ab84;
     }
         
         
