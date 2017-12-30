@@ -886,7 +886,7 @@
 	border-bottom: 1px solid #414246;
 	color: #fff;
 	display: block;
-	font-size: 14px;
+	font-size: 12px;
 	padding: 30px 0 30px 20px;
 	text-transform: uppercase;
 	background: rgba(37, 37, 37, 1);
