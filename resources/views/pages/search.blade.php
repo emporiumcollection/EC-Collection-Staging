@@ -507,10 +507,10 @@
                             
                             <div class="region region-sidebar-first sidebar">
                                 <div class="region-inner clearfix">
-                                    <div id="block-ledunfly-menu-link" class="block block-ledunfly no-title odd first block-count-4 block-region-sidebar-first block-menu-link" ><div class="block-inner clearfix">  
+                                    <!--div id="block-ledunfly-menu-link" class="block block-ledunfly no-title odd first block-count-4 block-region-sidebar-first block-menu-link" ><div class="block-inner clearfix">  
                                             <div class="block-content content"><i class="fa fa-bars emporium-voyage-Menu" aria-hidden="true"></i></div>
                                         </div>
-                                    </div>
+                                    </div-->
 <!--                                    <div id="block-ledunfly-menu-logo" class="block block-ledunfly no-title even block-count-5 block-region-sidebar-first block-menu-logo" ><div class="block-inner clearfix">  
 
                                             <div class="block-content content"><a href="index.html" title="Five Seas Hotel"><div class="menu-logo"></div></a></div>
@@ -1091,7 +1091,7 @@
                                                                         {{$props['data']->property_name}}
                                                                     </a>
                                                                     <span class="FltRgt">
-                                                                        <i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" @if(array_key_exists('image', $props)) onclick="add_to_lightbox({{$props['image']->file_id}}, {{$props['data']->id}});" @endif ></i>
+                                                                        <!--i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" @if(array_key_exists('image', $props)) onclick="add_to_lightbox({{$props['image']->file_id}}, {{$props['data']->id}});" @endif ></i-->
 
                                                                        <a class="carticon" href="javascript:void(0)" onclick="submitgridbookform('{{$props['data']->property_slug}}#*{{$props['data']->id}}');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>
                                                                     </span>
@@ -1449,18 +1449,7 @@ function scrollDataAjax(it_scroll,pageCounter)
                     $('#ttlpg').val(data.ttlpages);
                     isPreviousEventComplete = true;
                 }
-                     var $portfolio_filter = $('.portfolio-grid');
-                    $portfolio_filter.imagesLoaded(function () {
-                            $portfolio_filter.isotope({
-                                layoutMode: 'masonry',
-                                itemSelector: '.grid-item',
-                                percentPosition: true,
-                                masonry: {
-                                    columnWidth: '.grid-sizer'
-                                }
-                            });
-                           $portfolio_filter.isotope().isotope('reloadItems');
-                        }); 
+                      
 
                  },
             error: function (error) {
@@ -1911,18 +1900,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                         $('#ttlpg').val(data.ttlpages);
                         isPreviousEventComplete = true;
                         }
-                         var $portfolio_filter = $('.portfolio-grid');
-                        $portfolio_filter.imagesLoaded(function () {
-                            $portfolio_filter.isotope({
-                                layoutMode: 'masonry',
-                                itemSelector: '.grid-item',
-                                percentPosition: true,
-                                masonry: {
-                                    columnWidth: '.grid-sizer'
-                                }
-                            });
-                            $portfolio_filter.isotope().isotope('reloadItems');
-                        }); 
+                         
         },
         error: function (error) {
 //        alert(error);
