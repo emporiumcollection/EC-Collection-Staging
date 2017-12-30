@@ -825,7 +825,7 @@
 																<div class="listDetails">
 																	<div class="photographBox ai-grid-tiitles">
 																		<h2>
-																			<a title="{{$props['data']->property_name}}" class="photograph FltLft ai-filtreted-hotel-name" rel="2216" href="{{URL::to($props['data']->property_slug)}}">
+																			<a title="{{$props['data']->property_name}}" class="photograph FltLft ai-filtreted-hotel-name" rel="{{$props['data']->id}}" href="{{URL::to($props['data']->property_slug)}}">
 																			{{$props['data']->property_name}}
 																			</a>
 																			<span class="FltRgt">
@@ -1115,6 +1115,56 @@ function scrollDataAjax(it_scroll,pageCounter)
                     var total_rows = 0;
 
                     $.each($.parseJSON(data.properties), function(idx, obj) {
+
+                        html +='<li class="grid-item wow fadeInUp">';
+                        html +='<a href="{{URL::to()}}/'+obj.pdata.property_slug+'">';
+                        html +='<figure>';
+                        html +='<div class="portfolio-img bg-deep-pink">';           
+                        if (obj.hasOwnProperty("image")) {
+                             var pimg = "{{URL::to('uploads/property_imgs_thumbs/')}}/front_property_" + obj.image.folder_id + "_" + obj.image.file_name;
+                        html +='<img alt="'+obj.pdata.property_name+'" src="'+pimg+'">';
+                        }else{
+                             html +='<img src="http://placehold.it/800x560" alt=""/>';
+                        }
+                        html +='</div>';
+                        html +='<figcaption>';
+                        html +='<div class="portfolio-hover-main text-left">';
+                        html +='<div class="portfolio-hover-box vertical-align-bottom">';
+                        html +='<div class="portfolio-hover-content position-relative last-paragraph-no-margin">';
+                        html +='<span class="font-weight-600 line-height-normal alt-font text-white text-uppercase margin-one-half-bottom display-block">'+obj.pdata.property_name+'</span>';
+                        if (obj.pdata.price != ''){
+                            html +='<p class="text-white text-uppercase text-extra-small">From € '+obj.pdata.price+' </p>';
+                        }
+                        html +='</div>';
+                        html +='</div>';
+                        html +='</div>';
+                        html +='</figcaption>';
+                        html +='</figure>';
+                        html +='</a>';
+                        html +='<div class="listDetails">';
+                        html +='<div class="photographBox ai-grid-tiitles">';
+                        html +='<h2>';
+                        html +='<a title="'+obj.pdata.property_name+'" class="photograph FltLft ai-filtreted-hotel-name" rel="'+obj.pdata.id+'" href="{{URL::to()}}/'+obj.pdata.property_slug+'">';
+                        html +=obj.pdata.property_name;
+                        html +='</a>';
+                        html +='<span class="FltRgt">';
+                        html +='<a class="carticon" href="javascript:void(0)" onclick="submitgridbookform(\''+obj.pdata.property_slug+'#*'+obj.pdata.id+'\');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>';
+                        html +='</span>';
+                        html +='</h2>';
+                        html +='</div>';
+                        html +='<div class="entire_story MrgTop5 ai-view-hotels-tittle">';
+                        html +='<a class="textButton arrowButton detail_view MrgTop5" rel="'+obj.pdata.id+'" href="#">Quick View</a>';
+                        html +='</div>';
+                        html +='<div class="showOnHover">';
+                        html +='<div class="hover_request">';
+                        html +='</div>';   
+                        html +='</div>';
+                        html +='</div>';
+                        html +='</li>';
+                        
+
+
+                        /*
                         if (node_no % 20 == 0) {
                             html += '<div class="productData col-xs-12 col-sm-6 col-md-3 col-lg-3 margin-bottom-10">';
                             html += 'Advertisement Here';
@@ -1208,7 +1258,7 @@ function scrollDataAjax(it_scroll,pageCounter)
                                     html += '</div>';
                                     html += '<div class="row">';
                                 }
-                            }
+                            }*/
                             p++;
                             node_no++;
                             total_rows++;
@@ -1219,9 +1269,10 @@ function scrollDataAjax(it_scroll,pageCounter)
                         $(".searchcount").html(data.ttl + ' Hotel(s) Found for ' + $(".ai_search_keywords").val());
                         html += '</div>';
                         if (it_scroll == false){
-                            $('#listproperties').html(html);
+
+                            $('#listproperties ul').html('<li class="grid-sizer"></li>'+html);
                         }else{
-                            $('#listproperties').append(html);
+                            $('#listproperties ul').append(html);
                         }
                     if (destnarea != ''){
                         if (dest_area[1] == 'country' || dest_area[1] == 'region'){
@@ -1417,7 +1468,54 @@ url: "{{ URL::to('filter_search_destionation')}}",
         var total_rows = 0;
 
         $.each($.parseJSON(data.properties), function(idx, obj) {
-        if (node_no % 20 == 0) {
+
+            html +='<li class="grid-item wow fadeInUp">';
+                        html +='<a href="{{URL::to()}}/'+obj.pdata.property_slug+'">';
+                        html +='<figure>';
+                        html +='<div class="portfolio-img bg-deep-pink">';           
+                        if (obj.hasOwnProperty("image")) {
+                             var pimg = "{{URL::to('uploads/property_imgs_thumbs/')}}/front_property_" + obj.image.folder_id + "_" + obj.image.file_name;
+                        html +='<img alt="'+obj.pdata.property_name+'" src="'+pimg+'">';
+                        }else{
+                             html +='<img src="http://placehold.it/800x560" alt=""/>';
+                        }
+                        html +='</div>';
+                        html +='<figcaption>';
+                        html +='<div class="portfolio-hover-main text-left">';
+                        html +='<div class="portfolio-hover-box vertical-align-bottom">';
+                        html +='<div class="portfolio-hover-content position-relative last-paragraph-no-margin">';
+                        html +='<span class="font-weight-600 line-height-normal alt-font text-white text-uppercase margin-one-half-bottom display-block">'+obj.pdata.property_name+'</span>';
+                        if (obj.pdata.price != ''){
+                            html +='<p class="text-white text-uppercase text-extra-small">From € '+obj.pdata.price+' </p>';
+                        }
+                        html +='</div>';
+                        html +='</div>';
+                        html +='</div>';
+                        html +='</figcaption>';
+                        html +='</figure>';
+                        html +='</a>';
+                        html +='<div class="listDetails">';
+                        html +='<div class="photographBox ai-grid-tiitles">';
+                        html +='<h2>';
+                        html +='<a title="'+obj.pdata.property_name+'" class="photograph FltLft ai-filtreted-hotel-name" rel="'+obj.pdata.id+'" href="{{URL::to()}}/'+obj.pdata.property_slug+'">';
+                        html +=obj.pdata.property_name;
+                        html +='</a>';
+                        html +='<span class="FltRgt">';
+                        html +='<a class="carticon" href="javascript:void(0)" onclick="submitgridbookform(\''+obj.pdata.property_slug+'#*'+obj.pdata.id+'\');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>';
+                        html +='</span>';
+                        html +='</h2>';
+                        html +='</div>';
+                        html +='<div class="entire_story MrgTop5 ai-view-hotels-tittle">';
+                        html +='<a class="textButton arrowButton detail_view MrgTop5" rel="'+obj.pdata.id+'" href="#">Quick View</a>';
+                        html +='</div>';
+                        html +='<div class="showOnHover">';
+                        html +='<div class="hover_request">';
+                        html +='</div>';   
+                        html +='</div>';
+                        html +='</div>';
+                        html +='</li>';
+
+        /*if (node_no % 20 == 0) {
         html += '<div class="productData col-xs-12 col-sm-6 col-md-3 col-lg-3 margin-bottom-10">';
         html += 'Advertisement Here';
         html += '</div>';
@@ -1514,7 +1612,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
         html += '</div>';
         html += '<div class="row">';
         }
-        }
+        }*/
         p++;
         node_no++;
         total_rows++;
@@ -1526,10 +1624,10 @@ url: "{{ URL::to('filter_search_destionation')}}",
         html += '</div>';
         if (it_scroll == false)
         {
-        $('#listproperties').html(html);
+        $('#listproperties ul').html('<li class="grid-sizer"></li>'+html);
         }
         else{
-        $('#listproperties').append(html);
+        $('#listproperties ul').append(html);
         }
         if (destnarea != '')
         {
