@@ -937,7 +937,7 @@
     <body class="editorial-hotel-detail-page">
         <div class="wrapper">
             <div class="container-fluid">
-                <header >
+                <header>
                 <a data-popup-id="login-forms-popup" href="#" class="video-popup-btn login_popup show-login-forms-btn"><i class="fa fa-lock " aria-hidden="true" ></i></a>
 				<div class="logo-padding-left editorial-logo-align">
 					<!--<div>
