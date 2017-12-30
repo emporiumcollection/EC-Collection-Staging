@@ -47,6 +47,21 @@
         <script src="{{ asset('sximo/assets/js/editorial-slide-nav.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/jquery.dotdotdot.min.js')}}" type="text/javascript"></script>
 		<script src="{{ asset('sximo/assets/js/slick.js')}}" type="text/javascript"></script>
+		
+		<!-- new grid css and js -->
+		<link href="{{ asset('sximo/assets/newgrid/css/animate.css')}}" rel="stylesheet" type="text/css"/>
+		<link href="{{ asset('sximo/assets/newgrid/css/style1.css')}}" rel="stylesheet" type="text/css"/>
+		<link href="{{ asset('sximo/assets/newgrid/css/responsive.css')}}" rel="stylesheet" type="text/css"/>
+		<script src="{{ asset('sximo/assets/newgrid/js/skrollr.min.js')}}" type="text/javascript"></script>
+		<script src="{{ asset('sximo/assets/newgrid/js/smooth-scroll.js')}}" type="text/javascript"></script>
+		<script src="{{ asset('sximo/assets/newgrid/js/swiper.min.js')}}" type="text/javascript"></script>
+		<script src="{{ asset('sximo/assets/newgrid/js/jquery.magnific-popup.min.js')}}" type="text/javascript"></script>
+		<script src="{{ asset('sximo/assets/newgrid/js/isotope.pkgd.min.js')}}" type="text/javascript"></script>
+		<script src="{{ asset('sximo/assets/newgrid/js/imagesloaded.pkgd.min.js')}}" type="text/javascript"></script>
+		<script src="{{ asset('sximo/assets/newgrid/js/main.js')}}" type="text/javascript"></script>
+		<script src="{{ asset('sximo/assets/newgrid/js/wow.min.js')}}" type="text/javascript"></script>
+		<script src="{{ asset('sximo/assets/newgrid/js/jquery.fitvids.js')}}" type="text/javascript"></script>
+		<script src="{{ asset('sximo/assets/newgrid/js/skill.bars.jquery.js')}}" type="text/javascript"></script>
         <script>
 			jQuery(document).ready(function ($) {
 				$(".regular").slick({
@@ -2293,96 +2308,71 @@
 					@if(!empty($relatedgridpropertiesArr))
 						<div class="container">
 							<h2 class="bar-name-text-style" style="color:#000;">View our selection of Luxury Hotels in {{$propertyDetail['data']->assign_detail_city}}</h2>
-							<div class="row">
-								<?php
-								if($relatedgridpropertiesArr) {
-									$rw = 1;
-									$node_no = 1;
-									$ads_node = 0;
-									foreach($relatedgridpropertiesArr as $props) { ?>
-										
-										<div class="productData col-xs-12 col-sm-6 col-md-3 col-lg-3 margin-bottom-10">
-											<div class="wrapperforliineedforlightboxremoval">
-												<div class="cat_product_medium1">
-													<div class="ai-grid-page-node-pic-box pictureBox gridPicture grid-box-main" >
-														<?php
-														if(array_key_exists('image', $props)) {
-															?>
-															@if($props['data']->editor_choice_property=='1')
-																<img alt="editor_choice_property" class="propovericons" src="{{URL::to('sximo/images/editors-choice.png')}}">
-															@elseif($props['data']->feature_property=='1')
-																<img alt="editor_choice_property" class="propovericons" src="{{URL::to('sximo/images/featured-property.png')}}">
-															@endif
-														<a title="<?php echo $props['image']->file_name; ?>" class="picture_link-" href="<?php echo URL::to($props['data']->property_slug); ?>">
-																<div class="overlay-text-frezeed">
-<!--																		<h2 class="yacts-tittle-text"><?php echo $props['data']->property_name; ?></h2>
-																	<p class="yacths-des-text yacths-des-text-align"><span>&euro;<?php echo $props['data']->price; ?> </span>|<span>37.7mm</span>|<span>10 Guests</span></p>-->
+							<div class="row no-margin">
+											<div class="filter-content overflow-hidden margin-100px-top sm-margin-75px-top xs-margin-50px-top">
+												<ul class="portfolio-grid work-4col hover-option2 gutter-small">
+													<li class="grid-sizer"></li>
+													<?php
+													if($relatedgridpropertiesArr) {
+														$rw = 1;
+														$node_no = 1;
+														$ads_node = 0;
+														foreach($relatedgridpropertiesArr as $props) { ?>
+														
+														<li class="grid-item wow fadeInUp">
+														<a href="{{URL::to($props['data']->property_slug)}}">
+															<figure>
+																<div class="portfolio-img bg-deep-pink">			@if(array_key_exists('image', $props))
+																		<img alt="<?php echo $props['image']->file_name; ?>" src="<?php echo URL::to('uploads/property_imgs_thumbs/front_property_'.$props['image']->folder_id.'_'.$props['image']->file_name); ?>">
+																	@else
+																		<img src="http://placehold.it/800x560" alt=""/>
+																	@endif
 																</div>
-																<div class="overlay-text hotel-overlay-text">
-<!--																		<h2 class="yacts-tittle-text"><?php echo $props['data']->property_name; ?></h2>
-																	<p class="yacths-des-text yacths-des-text-align"><span>From &euro;<?php echo $props['data']->price; ?> </span><?php echo (isset($props['data']->category_name))? '|<span>'.$props['data']->category_name.'</span>' : ''; ?></p>-->
-																																		<h2 class="yacts-tittle-text">Kenoa-Exclusive Beach Spa & Resort</h2>
-																																		<p class="yacths-des-text yacths-des-text-align">From &euro;1690</p>
-																																	</div>
-																
-															<img alt="<?php echo $props['image']->file_name; ?>" src="<?php echo URL::to('uploads/property_imgs_thumbs/front_property_'.$props['image']->folder_id.'_'.$props['image']->file_name); ?>" class="img-responsive">
-															</a>
-															<?php
-														}
-														else {
-															?>
-														<div class="overlay-text-frezeed">
-																	<h2 class="yacts-tittle-text"><?php echo $props['data']->property_name; ?></h2>
-																	<p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>
-																</div>
-																<div class="overlay-text hotel-overlay-text">
-																	<h2 class="yacts-tittle-text"><?php echo $props['data']->property_name; ?></h2>
-																	<p class="yacths-des-text yacths-des-text-align"><span>From &euro;<?php echo $props['data']->price; ?> </span>|<span>New York</span></p>
-																</div>
-																
-														<?php
-															echo '<img class="img-responsive" src="', URL::to('sximo/assets/images/img-1.jpg'), '" alt="">';
-														}
-														?>
-													</div>
-													<div class="listDetails">
-														<div class="photographBox ai-grid-tiitles">
-															<h2>
-																<a title="<?php echo $props['data']->property_name; ?>" class="photograph FltLft ai-filtreted-hotel-name" rel="<?php echo $props['data']->id; ?>" href="<?php echo URL::to($props['data']->property_slug); ?>">
-																	<?php echo $props['data']->property_name; ?>
+																<figcaption>
+																	<div class="portfolio-hover-main text-left">
+																		<div class="portfolio-hover-box vertical-align-bottom">
+																			<div class="portfolio-hover-content position-relative last-paragraph-no-margin">
+																				<span class="font-weight-600 line-height-normal alt-font text-white text-uppercase margin-one-half-bottom display-block">{{$props['data']->property_name}}</span>
+																				<p class="text-white text-uppercase text-extra-small">From € {{$props['data']->price}} </p>
+																			</div>
+																		</div>
+																	</div>
+																</figcaption>
+															</figure>
+														</a>
+														<div class="listDetails">
+															<div class="photographBox ai-grid-tiitles">
+																<h2>
+																	<a title="{{$props['data']->property_name}}" class="photograph FltLft ai-filtreted-hotel-name" rel="2216" href="{{URL::to($props['data']->property_slug)}}">
+																	{{$props['data']->property_name}}
+																	</a>
+																	<span class="FltRgt">
+																		<a class="carticon" href="javascript:void(0)" onclick="submitgridbookform('{{$props['data']->property_slug}}#*{{$props['data']->id}}');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>
+																	</span>
+																</h2>
+															</div>
+															<div class="entire_story MrgTop5 ai-view-hotels-tittle">
+																<a class="textButton arrowButton detail_view MrgTop5" rel="<?php echo $props['data']->id; ?>" href="#">
+																	Quick View 
 																</a>
-																<span class="FltRgt">
-																	<!--<i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" <?php //echo (array_key_exists('image', $props))? 'onclick="add_to_lightbox('.$props['image']->file_id.', '.$props['data']->id.');"' : ''; ?>></i>
-																	<a class="carticon" href="<?php// echo URL::to($props['data']->property_slug); ?>"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>-->
-																</span>
-															</h2>
+															</div>
+															<div class="showOnHover">
+																<div class="hover_request">
+																</div>   
+															</div>
 														</div>
-														<div class="entire_story MrgTop5 ai-view-hotels-tittle">
-																														<a class="textButton arrowButton MrgTop5" rel="<?php echo $props['data']->id; ?>" href="<?php echo URL::to($props['data']->property_slug); ?>">
-																Quick View 
-																														</a>
-																														<a class="textButton arrowButton MrgTop5" rel="<?php echo $props['data']->id; ?>" href="<?php echo URL::to($props['data']->property_slug); ?>">
-																Detail View 
-															</a>
-
-														</div>
-														<div class="showOnHover">
-															<div class="hover_request">
-															</div>   
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
+													</li>
 										<?php
-										if($rw%4==0) {
+										/*if($rw%4==0) {
 											echo '</div><div class="row">';
 										}
 										$rw++;
-										$node_no++;
-									}
-								}
-								?>
+										$node_no++;*/
+											}
+										}
+										?>
+									</ul>
+								</div>
 							</div>
 						</div>
 					@endif
