@@ -66,20 +66,7 @@
         <link href="{{ asset('sximo/assets/css/cities-filter.css')}}" rel="stylesheet" type="text/css"/>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 		
-		<!-- new grid css and js -->
-		<link href="{{ asset('sximo/assets/newgrid/css/animate.css')}}" rel="stylesheet" type="text/css"/>
-		<link href="{{ asset('sximo/assets/newgrid/css/style1.css')}}" rel="stylesheet" type="text/css"/>
-		<link href="{{ asset('sximo/assets/newgrid/css/responsive.css')}}" rel="stylesheet" type="text/css"/>
-		<script src="{{ asset('sximo/assets/newgrid/js/skrollr.min.js')}}" type="text/javascript"></script>
-		<script src="{{ asset('sximo/assets/newgrid/js/smooth-scroll.js')}}" type="text/javascript"></script>
-		<script src="{{ asset('sximo/assets/newgrid/js/swiper.min.js')}}" type="text/javascript"></script>
-		<script src="{{ asset('sximo/assets/newgrid/js/jquery.magnific-popup.min.js')}}" type="text/javascript"></script>
-		<script src="{{ asset('sximo/assets/newgrid/js/isotope.pkgd.min.js')}}" type="text/javascript"></script>
-		<script src="{{ asset('sximo/assets/newgrid/js/imagesloaded.pkgd.min.js')}}" type="text/javascript"></script>
-		<script src="{{ asset('sximo/assets/newgrid/js/main.js')}}" type="text/javascript"></script>
-		<script src="{{ asset('sximo/assets/newgrid/js/wow.min.js')}}" type="text/javascript"></script>
-		<script src="{{ asset('sximo/assets/newgrid/js/jquery.fitvids.js')}}" type="text/javascript"></script>
-		<script src="{{ asset('sximo/assets/newgrid/js/skill.bars.jquery.js')}}" type="text/javascript"></script>
+		
            @if(isset($_GET['ref']) && $_GET['ref']=='oc' )
             <?php $thumbnail = asset('sximo/assets/images/our_collection.png'); ?>
            @elseif(isset($_GET['ref']) && $_GET['ref']=='syd' )
@@ -1001,71 +988,20 @@
                                     </div>
 
                                     <div id="listproperties">
-                                        <div class="row no-margin">
-											<div class="filter-content overflow-hidden margin-100px-top sm-margin-75px-top xs-margin-50px-top">
-												<ul class="portfolio-grid work-4col hover-option2 gutter-small">
-													<li class="grid-sizer"></li>
-													<?php
-													if($propertiesArr) {
-														$rw = 1;
-														$node_no = 1;
-														$ads_node = 0;
-														foreach($propertiesArr as $props) { ?>
+                                        <div class="row ">
 											
-															<li class="grid-item wow fadeInUp">
-																<a href="{{URL::to($props['data']->property_slug)}}">
-																	<figure>
-																		<div class="portfolio-img bg-deep-pink">			@if(array_key_exists('image', $props))
-																				<img alt="<?php echo $props['image']->file_name; ?>" src="<?php echo URL::to('uploads/property_imgs_thumbs/front_property_'.$props['image']->folder_id.'_'.$props['image']->file_name); ?>">
-																			@else
-																				<img src="http://placehold.it/800x560" alt=""/>
-																			@endif
-																		</div>
-																		<figcaption>
-																			<div class="portfolio-hover-main text-left">
-																				<div class="portfolio-hover-box vertical-align-bottom">
-																					<div class="portfolio-hover-content position-relative last-paragraph-no-margin">
-																						<span class="font-weight-600 line-height-normal alt-font text-white text-uppercase margin-one-half-bottom display-block">{{$props['data']->property_name}}</span>
-																						<p class="text-white text-uppercase text-extra-small">From € {{$props['data']->price}} </p>
-																					</div>
-																				</div>
-																			</div>
-																		</figcaption>
-																	</figure>
-																</a>
-																<div class="listDetails">
-																	<div class="photographBox ai-grid-tiitles">
-																		<h2>
-																			<a title="{{$props['data']->property_name}}" class="photograph FltLft ai-filtreted-hotel-name" rel="{{$props['data']->id}}" href="{{URL::to($props['data']->property_slug)}}">
-																			{{$props['data']->property_name}}
-																			</a>
-																			<span class="FltRgt">
-																				<a class="carticon" href="javascript:void(0)" onclick="submitgridbookform('{{$props['data']->property_slug}}#*{{$props['data']->id}}');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>
-																			</span>
-																		</h2>
-																	</div>
-																	<div class="entire_story MrgTop5 ai-view-hotels-tittle">
-																		<a class="textButton arrowButton detail_view MrgTop5" rel="<?php echo $props['data']->id; ?>" href="#">
-																			Quick View 
-																		</a>
-																	</div>
-																	<div class="showOnHover">
-																		<div class="hover_request">
-																		</div>   
-																	</div>
-																</div>
-															</li>
-                                          <?php /*
+													
+                                          
 											@if($propertiesArr)
-                                            {{-- $rw = 1 --}}
-                                            {{-- $node_no = 1; $ads_node=0; --}}
+                                            {{--*/ $rw = 1 /*--}}
+                                            {{--*/ $node_no = 1; $ads_node=0; /*--}}
                                             @foreach($propertiesArr as $props)
                                             @if($node_no%20==0)
-												@if(!empty($reultsgridAds))
-													@if(array_key_exists($ads_node,$reultsgridAds))
-														<div class="productData col-xs-12 col-sm-6 col-md-3 col-lg-3 margin-bottom-10">
-															<div class="wrapperforliineedforlightboxremoval">
-																<div class="cat_product_medium1">
+                                                @if(!empty($reultsgridAds))
+                                                    @if(array_key_exists($ads_node,$reultsgridAds))
+                                                        <div class="productData col-xs-12 col-sm-6 col-md-3 col-lg-3 margin-bottom-10">
+                                                            <div class="wrapperforliineedforlightboxremoval">
+                                                                <div class="cat_product_medium1">
                                                                             <div class="ai-grid-page-node-pic-box pictureBox gridPicture">
                                                                                 <a title="{{$reultsgridAds[$ads_node]->adv_title}}" class="picture_link-" href="{{$reultsgridAds[$ads_node]->adv_link}}">
                                                                                     <h2 style="position:absolute; color:#fff;padding-left: 20px;">Advertiser</h2>
@@ -1085,27 +1021,27 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-															</div>
-														</div>
-													@endif
-												@endif
-												 {{-- $ads_node++; --}}
+                                                            </div>
+                                                        </div>
+                                                    @endif
+                                                @endif
+                                                 {{--*/ $ads_node++; /*--}}
                                             @else
                                             <div class="productData col-xs-12 col-sm-6 col-md-4 col-lg-3 margin-bottom-10">
                                                 <div class="wrapperforliineedforlightboxremoval">
                                                     <div class="cat_product_medium1">
                                                         <div class="ai-grid-page-node-pic-box pictureBox gridPicture grid-box-main">
                                                             @if($props['data']->price!='')
-                                                            <?php //<a class="textButton arrowButton MrgTop5 ai-filter-hotel-price-style" rel="{{$props['data']->id}}" href="{{URL::to($props['data']->property_slug)}}">
-                                                                //From EUR {{$props['data']->price}} / night 
-                                                            //</a> 
+                                                            <?php /*<a class="textButton arrowButton MrgTop5 ai-filter-hotel-price-style" rel="{{$props['data']->id}}" href="{{URL::to($props['data']->property_slug)}}">
+                                                                From EUR {{$props['data']->price}} / night 
+                                                            </a> */ ?>
                                                             @endif
                                                             @if(array_key_exists('image', $props))
-																@if($props['data']->editor_choice_property=='1')
-																	<img alt="editor_choice_property" class="propovericons" src="{{URL::to('sximo/images/editors-choice.png')}}">
-																@elseif($props['data']->feature_property=='1')
-																	<img alt="editor_choice_property" class="propovericons" src="{{URL::to('sximo/images/featured-property.png')}}">
-																@endif
+                                                                @if($props['data']->editor_choice_property=='1')
+                                                                    <img alt="editor_choice_property" class="propovericons" src="{{URL::to('sximo/images/editors-choice.png')}}">
+                                                                @elseif($props['data']->feature_property=='1')
+                                                                    <img alt="editor_choice_property" class="propovericons" src="{{URL::to('sximo/images/featured-property.png')}}">
+                                                                @endif
                
                                                                 <a title="{{$props['data']->property_name}}" class="picture_link-" href="{{URL::to($props['data']->property_slug)}}" rel="{{$props['data']->id}}">
                                                                     <div class="overlay-text-frezeed">
@@ -1115,7 +1051,7 @@
                                                                     <div class="overlay-text hotel-overlay-text">
                                                                         <h2 class="yacts-tittle-text">{{ $props['data']->property_name}}</h2>
                                                                         <p class="yacths-des-text yacths-des-text-align"><span>From &euro;{{ $props['data']->price}} </span>
-																		<span>		{{(isset($props['data']->category_name))? '| '.$props['data']->category_name : ''}}</span></p>
+                                                                        <span>      {{(isset($props['data']->category_name))? '| '.$props['data']->category_name : ''}}</span></p>
                                                                     </div>
                                                                     <div class="overlay-text yacts-overlay-text">
                                                                         <h2 class="yacts-tittle-text">{{ $props['data']->property_name }}</h2>
@@ -1142,8 +1078,8 @@
                                                                 <p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>
                                                                 <p class="yacths-des-text">2015H</p>
                                                             </div>
-                                                            <!--<img class="img-responsive" src="{{URL::to('sximo/assets/images/img-1.jpg')}}" alt="">-->
-															<!--
+                                                        <img class="img-responsive" src="{{URL::to('sximo/assets/images/img-1.jpg')}}" alt="">-->
+                                                            
                                                             @endif
                                                         </div>
                                                         <div class="listDetails">
@@ -1153,9 +1089,9 @@
                                                                         {{$props['data']->property_name}}
                                                                     </a>
                                                                     <span class="FltRgt">
-                                                                        <!--<i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" @if(array_key_exists('image', $props)) onclick="add_to_lightbox({{$props['image']->file_id}}, {{$props['data']->id}});" @endif ></i>-->
+                                                                        <i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" @if(array_key_exists('image', $props)) onclick="add_to_lightbox({{$props['image']->file_id}}, {{$props['data']->id}});" @endif ></i>
 
-                                                                       <!-- <a class="carticon" href="javascript:void(0)" onclick="submitgridbookform('{{$props['data']->property_slug}}#*{{$props['data']->id}}');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>
+                                                                       <a class="carticon" href="javascript:void(0)" onclick="submitgridbookform('{{$props['data']->property_slug}}#*{{$props['data']->id}}');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>
                                                                     </span>
                                                                 </h2>
 
@@ -1186,20 +1122,14 @@
                                             @endif
 
                                             @endif
-                                            {{-- $rw++ --}}
-                                            {{-- $node_no++ --}}
+                                            {{--*/ $rw++ /*--}}
+                                            {{--*/ $node_no++ /*--}}
                                             @endforeach
-                                            {{-- $totpage = $propertiesArr->appends($pager)->lastPage(); $newpage = $currentPage + 2; $prevnewpage = $newpage - 2; --}}
+                                            {{--*/ $totpage = $propertiesArr->appends($pager)->lastPage(); $newpage = $currentPage + 2; $prevnewpage = $newpage - 2; /*--}}
                                             @endif 
-
-                                            */
-											
-                                             $totpage = $propertiesArr->appends($pager)->lastPage(); 
-                                             $newpage = $currentPage + 2; $prevnewpage = $newpage - 2;
-                                         }
+                                            <?php }
                                             }
                                             ?>
-                                        </div>
                                     </div>
 									</div>
                                     <div id="loaderProperty"></div>
@@ -1324,14 +1254,14 @@ function scrollDataAjax(it_scroll,pageCounter)
                         var sliderHTML = '';
                 
                 
-                 //   html += '<div class="row animate-bottom">';
+                   html += '<div class="row animate-bottom">';
                     var p = 1;
                     var node_no = 1;
                     var total_rows = 0;
 
                     $.each($.parseJSON(data.properties), function(idx, obj) {
 
-                        html +='<li class="grid-item wow fadeInUp">';
+                        /*html +='<li class="grid-item wow fadeInUp">';
                         html +='<a href="{{URL::to('/')}}/'+obj.pdata.property_slug+'">';
                         html +='<figure>';
                         html +='<div class="portfolio-img bg-deep-pink">';           
@@ -1376,10 +1306,10 @@ function scrollDataAjax(it_scroll,pageCounter)
                         html +='</div>';
                         html +='</div>';
                         html +='</li>';
+                        */
+
+
                         
-
-
-                        /*
                         if (node_no % 20 == 0) {
                             html += '<div class="productData col-xs-12 col-sm-6 col-md-3 col-lg-3 margin-bottom-10">';
                             html += 'Advertisement Here';
@@ -1473,7 +1403,7 @@ function scrollDataAjax(it_scroll,pageCounter)
                                     html += '</div>';
                                     html += '<div class="row">';
                                 }
-                            }*/
+                            }
                             p++;
                             node_no++;
                             total_rows++;
@@ -1482,12 +1412,12 @@ function scrollDataAjax(it_scroll,pageCounter)
                             $('.locator').parent().css('padding-top','0px');
                         }
                         $(".searchcount").html(data.ttl + ' Hotel(s) Found for ' + $(".ai_search_keywords").val());
-                       // html += '</div>';
+                        html += '</div>';
                         if (it_scroll == false){
 
-                            $('#listproperties ul').html('<li class="grid-sizer"></li>'+html);
+                            $('#listproperties').html(html);
                         }else{
-                            $('#listproperties ul').append(html);
+                            $('#listproperties').append(html);
                         }
                     if (destnarea != ''){
                         if (dest_area[1] == 'country' || dest_area[1] == 'region'){
@@ -1690,14 +1620,14 @@ url: "{{ URL::to('filter_search_destionation')}}",
                             $(".grid-page-category-slider-container").html( sliderHTML );
                             $('.uk-slideshow:first-child .ai-uk-animation .bh-slideshow-thumbnail-split-preview').delay(3000).fadeIn(5000);
                             $('.ai-uk-animation:first .bh-slideshow-thumbnail-split-preview').addClass('uk-animation-fade');
-                        //html += '<div class="row animate-bottom">';
+                        html += '<div class="row animate-bottom">';
                         var p = 1;
                         var node_no = 1;
                         var total_rows = 0;
 
                         $.each($.parseJSON(data.properties), function(idx, obj) {
 
-                            html +='<li class="grid-item wow fadeInUp">';
+                            /*html +='<li class="grid-item wow fadeInUp">';
                                         html +='<a href="{{URL::to('/')}}/'+obj.pdata.property_slug+'">';
                                         html +='<figure>';
                                         html +='<div class="portfolio-img bg-deep-pink">';           
@@ -1741,9 +1671,9 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                         html +='</div>';   
                                         html +='</div>';
                                         html +='</div>';
-                                        html +='</li>';
+                                        html +='</li>';*/
 
-                        /*if (node_no % 20 == 0) {
+                        if (node_no % 20 == 0) {
                         html += '<div class="productData col-xs-12 col-sm-6 col-md-3 col-lg-3 margin-bottom-10">';
                         html += 'Advertisement Here';
                         html += '</div>';
@@ -1840,7 +1770,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                         html += '</div>';
                         html += '<div class="row">';
                         }
-                        }*/
+                        }
                         p++;
                         node_no++;
                         total_rows++;
@@ -1849,13 +1779,13 @@ url: "{{ URL::to('filter_search_destionation')}}",
                             $('.locator').parent().css('padding-top','0px');
                         }
                         $(".searchcount").html(data.ttl + ' Hotel(s) Found for ' + $(".ai_search_keywords").val());
-                        //html += '</div>';
+                        html += '</div>';
                         if (it_scroll == false)
                         {
-                        $('#listproperties ul').html('<li class="grid-sizer"></li>'+html);
+                        $('#listproperties').html(html);
                         }
                         else{
-                        $('#listproperties ul').append(html);
+                        $('#listproperties').append(html);
                         }
                         if (destnarea != '')
                         {
