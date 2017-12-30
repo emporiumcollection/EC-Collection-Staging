@@ -1194,6 +1194,8 @@
 
                                             */
 											
+                                             $totpage = $propertiesArr->appends($pager)->lastPage(); 
+                                             $newpage = $currentPage + 2; $prevnewpage = $newpage - 2;
                                          }
                                             }
                                             ?>
