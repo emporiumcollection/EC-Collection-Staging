@@ -375,77 +375,7 @@
                         .ai_active_filter .node-btn {
                             text-decoration: underline;
                         }
-                        
-                        /* AIC HK 30-12-2017*/
-                        .FloatFilter {
-                            float: right;
-                        }
-                        
-                        /* AIC Harman email sidebar css */
-            
-                        .site-aside {
-                            position: fixed;
-                            top: 0;
-                            right: 0;
-                            height: 100%;
-                            overflow-x: visible;
-                            z-index: 1028;
-                    }
-                        .contact-aside {
-                            border-radius: 2px;
-                            transition: .5s;
-                            position: fixed;
-                            top: 63px;
-                            left: calc(100% - 43px);
-                            width: 291px;
-                            background: #272727;
-                            color: #fff;
-                            font-size: 15px;
-                            right: 0;
-                        }
-                        .contact-aside ul {
-                            padding: 7px 0;
-                            list-style: none;
-                        }
-                        .contact-aside li {
-                        padding: 6.333px 0px 6px 5px;
-                        margin: 0px 5px 1px 0px;
-                        }
-                        .contact-aside {
-                            color: #fff;
-                            font-size: 15px;
-                        }
-                        .contact-aside [class*="icon-"] {
-                            display: inline-block;
-                            width: 24px;
-                            text-align: center;
-                            margin-right: 4px;
-                            float: right;
-                        }
-                        .contact-aside li + li {
-                            border-top: 1px solid #4A4A4A;
-                        }
-                        .contact-aside .icon-mail {
-                            position: relative;
-                            top: 2px;
-                        }
-                        .contact-aside.active {
-                            left: calc(100% - 290px);
-                            background: #1e2023 !important;
-                            color: #fff !important;
-                        }
-
-                        .asideIclass {
-                            float: left;
-                            margin-top: 3px;
-                            margin-right: 13px;
-                            margin-left: 8px;
-                            color: #c7ab84;
-                        }
-
-                         /* sidebar css */
-
-                        </style>
+        </style>
 		
 		<!-- Global site tag (gtag.js) - Google Analytics -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110391807-1"></script>
@@ -505,95 +435,8 @@
                         </div>
                     </header>
                     <div class="filter-page-main-align">
-                        <div class="col-md-10 col-sm-9 FloatFilter">
+                        <div class="col-md-10 col-sm-9 align">
                             <div class="row">
-                                <!-- AIC top bar add -->
-                                <section class="book-form-top-bar">
-                                    <div>
-                                        <div class="booking-form-bar-top">
-                                            <form autocomplete="off" method="get" id="searchform-navbar" class="searchform-navbar top-bar-search-form-align" action="{{URL::to('search')}}">
-                                                <div class="col-md-3">
-                                                    <div class="row">
-                                                        <div class="form-group would-like-input top-bar-search padding-right-12">
-                                                            <input  class="form-control ai-custom-deafault-style bh-search-input typeahead search-box searchbox_landing" name="s" id="search-navbar" placeholder="Enter Your Hotel or Destination" type="text" required="required">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="row">
-                                                        <div id="top-bar-search-booking-form">
-                                                            <div class="col-md-6">
-                                                                <div class="row">
-                                                                    <div class="form-group padding-right-12">
-                                                                        <input id="top-bar-search-booking-form-arrive" class="form-control ai-custom-deafault-style" name="arrive" type="text" placeholder="Arriving">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <div class="row">
-                                                                    <div class="form-group padding-right-12">
-                                                                        <input id="top-bar-search-booking-form-destination" class="form-control ai-custom-deafault-style" name="destination" type="text" placeholder="Departing">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="row">
-                                                        <div class="form-group padding-right-12">
-                                                            <div class="dropdown top-search-members-list">
-                                                                <div class="top-search-members-inner-align">
-                                                                    <div class="members-list ai-custom-deafault-style">
-                                                                        <span id="adults-val">1</span>
-                                                                        Adults,
-                                                                        <span id="childern-val">0</span>
-                                                                        Children
-                                                                        <span class="right-down-arrow">
-                                                                            <i class="fa fa-angle-down" aria-hidden="true"></i>
-                                                                        </span>
-                                                                    </div>
-                                                                    <ul class="members-drop-list" style="display: none;">
-                                                                        <li>
-                                                                            <label>Adult</label>
-                                                                            <input id="adult-input-value" name="adult" class="input-right" value="2" min="1" max="5" type="number">
-                                                                        </li>
-                                                                        <li>
-                                                                            <label>Children</label>
-                                                                            <input id="childerns-input-value" name="childs" class="input-right" value="0" min="0" max="5" type="number">
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-1">
-                                                    <div class="row">
-                                                        <div class="form-group padding-right-12">
-                                                            <button class="top-booking-bar-btn" type="submit">Search</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <!-- AIC Harman email phone sidebar add start -->
-                                        
-                                        <aside class="site-aside">
-                                            <div class="contact-aside">
-                                                <ul class="contact-aside-list">
-                                                    <li class="contact-list-item contact-phone"><a href="tel:+49 172 8937230"><i class="fa fa-phone asideIclass" aria-hidden="true"></i> +49 172 8937230</a></li>
-                                                    <li class="contact-list-item contact-email"><a href="mailto:bookings@emporium-voyage.com"><i class="fa fa-envelope asideIclass" aria-hidden="true"></i> bookings@emporium-voyage.com</a></li>
-                                                </ul>
-                                            </div>
-                                        </aside>
-                                        
-                                        <!-- AIC Harman email phone sidebar add end-->
-                                        
-                                    </div>
-                                </section>
-                                
-                                <!-- top bar end -->
                                 <script src="{{ asset('sximo/assets/js/fliters.js')}}" type="text/javascript"></script>
                                 <script src="{{ asset('sximo/assets/js/moment.min.js')}}" type="text/javascript"></script>
                                 <script src="{{ asset('sximo/assets/js/combodate.js')}}" type="text/javascript"></script>
@@ -1157,7 +1000,8 @@ function scrollDataAjax(it_scroll,pageCounter)
                 //var searchcountdispl = data.ttl + ' Hotel(s) Found for ' + data.searchdestname;
                 //$('.searchcount').html(searchcountdispl);
                 }
-
+                    var nextPage = $('#nxtpg').val() + 1 ;
+                    $('#nxtpg').val(nextPage);
                     sIndex = parseInt(sIndex) + offSet;
                     $('#listrecrds').val(sIndex);
                     $('#ttlpg').val(data.ttlpages);
@@ -2322,14 +2166,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
 
                     <script>
                                             
-                                        </script>
-                                        
-                    <script> 
-                            $('.contact-aside').hover(
-                                function(){ $(this).addClass('active') },
-                                function(){ $(this).removeClass('active') }
-                            )
-                     </script>
+                                        </script> 
 
 
            <style>
