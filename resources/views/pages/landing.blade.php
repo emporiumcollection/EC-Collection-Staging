@@ -770,7 +770,7 @@
 	border-bottom: 1px solid #414246;
 	color: #fff;
 	display: block;
-	font-size: 14px !important;
+	font-size: 12px !important;
 	padding: 25px 0 25px 21px;
 	text-transform: uppercase;
 	background: rgb(37,37,37,0.9);
