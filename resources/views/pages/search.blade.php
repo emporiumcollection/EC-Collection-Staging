@@ -8,6 +8,15 @@
         <link rel="shortcut icon" href="{{ asset('favicon.ico')}}" type="image/x-icon">
 
         <!--Style Includes-->
+        
+        <!-- AIC css add -->
+        
+        <link href="{{ asset('sximo/assets/css/menu41e7.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('sximo/assets/css/responsive.custom41e7.css')}}" rel="stylesheet" type="text/css"/>
+        
+        <link href="{{ asset('sximo/assets/css/style-ai.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('sximo/assets/css/homepage41e7.css')}}" rel="stylesheet" type="text/css"/>
+        <!-- AIc css end-->
 
         <link href="{{ asset('sximo/assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css"/>
@@ -26,6 +35,12 @@
         <link href="{{ asset('sximo/assets/css/theme.css')}}" rel="stylesheet" type="text/css" media="all">
         <script type="text/javascript" src="{{ asset('sximo/assets/js/jquery2.js')}}"></script>
         <script type="text/javascript" src="{{ asset('sximo/assets/js/uikit.js')}}"></script>
+        
+        <!--AIC sidebar js -->
+        <script src="{{ asset('sximo/assets/js/jquery_1.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('sximo/assets/js/custm.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('sximo/assets/js/TweenMax.min41e7.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('sximo/assets/js/menu41e7.js')}}" type="text/javascript"></script>
 
         <!--JS Includes-->
 
@@ -2431,6 +2446,13 @@ url: "{{ URL::to('filter_search_destionation')}}",
                 /*Top Bar Booking End Here*/
                     
                     </script> 
+                    
+                    <script> 
+                        $('.contact-aside').hover(
+                            function(){ $(this).addClass('active') },
+                            function(){ $(this).removeClass('active') }
+                        )
+                </script>
 
 
            <style>
