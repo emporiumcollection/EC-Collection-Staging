@@ -1519,6 +1519,19 @@ function scrollDataAjax(it_scroll,pageCounter)
                     $('#ttlpg').val(data.ttlpages);
                     isPreviousEventComplete = true;
                 }
+
+                    $portfolio_filter.imagesLoaded(function () {
+                            $portfolio_filter.isotope({
+                                layoutMode: 'masonry',
+                                itemSelector: '.grid-item',
+                                percentPosition: true,
+                                masonry: {
+                                    columnWidth: '.grid-sizer'
+                                }
+                            });
+                            $portfolio_filter.isotope();
+                        }); 
+
                  },
             error: function (error) {
     //        alert(error);
@@ -1594,380 +1607,392 @@ url: "{{ URL::to('filter_search_destionation')}}",
         success: function(data){
             $(".ai-scrollDownloadData-filter-running").val("0");
             $('#loaderProperty').hide();
-        var html = chtml = '';
-        if (data.status == 'error')
-        {
-        if (it_scroll == false)
-        {
-        $('#listproperties').html(data.errors);
-        }
-        else
-        {
-        ('#listproperties').append(data.errors);
-        }
-        isDataAvailable = false;
-        }
-        else
-        {
-            
-            /*
-             * Slider HTML
-             */
-            
-            var sliderHTML = '';
-            
-            if(data.categoryslider) {
-                if(data.categoryslider.length > 0) {
-                    sliderHTML += '<div class="bh-slideshow-thumbnail-split" data-uk-slideshow="{animation: \'slice-up\', autoplay: true}" style="margin-bottom:20px;margin-top:00px;">';
-                    sliderHTML += '<ul style="" class="uk-slideshow uk-overlay-active">';
-                    var activeClass = 'uk-active';
-                    for(var si = 0; si < data.categoryslider.length; si++) {
-                        if(si != 0) {
-                            activeClass = '';
+                        var html = chtml = '';
+                        if (data.status == 'error')
+                        {
+                        if (it_scroll == false)
+                        {
+                        $('#listproperties').html(data.errors);
                         }
-                        sliderHTML += '<li class="ai-uk-animation ' + activeClass + ' " aria-hidden="true">';
-                            if(data.categoryslider[si].slide_type == 'Image') {
-                                sliderHTML += '<div style="background-image: url({{ URL()}}/uploads/slider_images/' + data.categoryslider[si].slider_img + ');" class="uk-cover-background uk-position-cover"></div>';
-                            }
-                            else {
-                                sliderHTML += '<div  class="uk-cover-background uk-position-cover"> <iframe class="video-bg"  src="https://www.youtube.com/embed/' + data.categoryslider[si].slider_video + '?playlist=' + data.categoryslider[si].slider_video + '&iv_load_policy=3&enablejsapi=1&disablekb=1&autoplay=1&controls=0&showinfo=0&rel=0&loop=1&wmode=transparent" frameborder="0" allowfullscreen="allowfullscreen"></iframe></div>';
-                            }
-                            sliderHTML += '<canvas style="width: 100%; height: 100%; opacity: 0;"></canvas>';
-                            sliderHTML += '<div class="bh-slideshow-overlay uk-overlay-panel uk-overlay-fade uk-flex uk-flex-middle uk-flex-center">';
-                                sliderHTML += '<div>';
-                                    sliderHTML += '<ul class="bh-slideshow-overlay-meta uk-subnav uk-subnav-line">';
-                                        sliderHTML += '<li>';
-                                            sliderHTML += '<span><a href="#" rel="category tag">' + data.categoryslider[si].slider_category + '</a></span>';
+                        else
+                        {
+                        ('#listproperties').append(data.errors);
+                        }
+                        isDataAvailable = false;
+                        }
+                        else
+                        {
+                            
+                            /*
+                             * Slider HTML
+                             */
+                            
+                            var sliderHTML = '';
+                            
+                            if(data.categoryslider) {
+                                if(data.categoryslider.length > 0) {
+                                    sliderHTML += '<div class="bh-slideshow-thumbnail-split" data-uk-slideshow="{animation: \'slice-up\', autoplay: true}" style="margin-bottom:20px;margin-top:00px;">';
+                                    sliderHTML += '<ul style="" class="uk-slideshow uk-overlay-active">';
+                                    var activeClass = 'uk-active';
+                                    for(var si = 0; si < data.categoryslider.length; si++) {
+                                        if(si != 0) {
+                                            activeClass = '';
+                                        }
+                                        sliderHTML += '<li class="ai-uk-animation ' + activeClass + ' " aria-hidden="true">';
+                                            if(data.categoryslider[si].slide_type == 'Image') {
+                                                sliderHTML += '<div style="background-image: url({{ URL()}}/uploads/slider_images/' + data.categoryslider[si].slider_img + ');" class="uk-cover-background uk-position-cover"></div>';
+                                            }
+                                            else {
+                                                sliderHTML += '<div  class="uk-cover-background uk-position-cover"> <iframe class="video-bg"  src="https://www.youtube.com/embed/' + data.categoryslider[si].slider_video + '?playlist=' + data.categoryslider[si].slider_video + '&iv_load_policy=3&enablejsapi=1&disablekb=1&autoplay=1&controls=0&showinfo=0&rel=0&loop=1&wmode=transparent" frameborder="0" allowfullscreen="allowfullscreen"></iframe></div>';
+                                            }
+                                            sliderHTML += '<canvas style="width: 100%; height: 100%; opacity: 0;"></canvas>';
+                                            sliderHTML += '<div class="bh-slideshow-overlay uk-overlay-panel uk-overlay-fade uk-flex uk-flex-middle uk-flex-center">';
+                                                sliderHTML += '<div>';
+                                                    sliderHTML += '<ul class="bh-slideshow-overlay-meta uk-subnav uk-subnav-line">';
+                                                        sliderHTML += '<li>';
+                                                            sliderHTML += '<span><a href="#" rel="category tag">' + data.categoryslider[si].slider_category + '</a></span>';
+                                                        sliderHTML += '</li>';
+                                                    sliderHTML += '</ul>';
+                                                    sliderHTML += '<h3 class="bh-slideshow-overlay-title">';
+                                                        sliderHTML += '<a href="#">' + data.categoryslider[si].slider_title + '</a>';
+                                                    sliderHTML += '</h3>';
+                                                    sliderHTML += '<div class="bh-slideshow-overlay-content">' + data.categoryslider[si].slider_description + '</div>';
+                                                    if(data.categoryslider[si].slider_link != '#') {
+                                                        sliderHTML += '<a class="uk-margin-top uk-button uk-button-primary" href="http://' + data.categoryslider[si].slider_link + '" title="Do it yourself">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>';
+                                                    }
+                                                sliderHTML += '</div>';
+                                            sliderHTML += '</div>';
+                                            sliderHTML += '<div class="bh-slideshow-thumbnail-split-preview uk-overlay-panel uk-overlay-right uk-overlay-background uk-overlay-fade uk-width-2-5 uk-width-xxlarge-1-3 uk-flex uk-flex-middle uk-flex-center uk-visible-large">';
+                                                sliderHTML += '<div>';
+                                                    sliderHTML += '<ul class="bh-slideshow-thumbnail-split-preview-meta uk-subnav uk-subnav-line">';
+                                                        sliderHTML += '<li>';
+                                                            sliderHTML += '<span><a href="#" rel="category tag">' + data.categoryslider[si].slider_category + '</a></span>';
+                                                        sliderHTML += '</li>';
+                                                    sliderHTML += '</ul>';
+                                                    sliderHTML += '<h3 class="bh-slideshow-thumbnail-split-preview-title">';
+                                                        sliderHTML += '<a href="#">' + data.categoryslider[si].slider_title + '</a>';
+                                                    sliderHTML += '</h3>';
+                                                    sliderHTML += '<div class="bh-slideshow-thumbnail-split-preview-content">' + data.categoryslider[si].slider_description + '</div>';
+                                                    if(data.categoryslider[si].slider_link != '#') {
+                                                        sliderHTML += '<a class="uk-margin-top uk-button uk-button-primary" href="http://' + data.categoryslider[si].slider_link + '">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>';
+                                                    }
+                                                sliderHTML += '</div>';
+                                                sliderHTML += '<a href="javascript:void(0);" class="bh-slideshow-slidenav uk-slidenav uk-slidenav-previous" data-uk-slideshow-item="previous"></a>';
+                                                sliderHTML += '<a href="javascript:void(0);" class="bh-slideshow-slidenav uk-slidenav uk-slidenav-next" data-uk-slideshow-item="next"></a>';
+                                            sliderHTML += '</div>';
                                         sliderHTML += '</li>';
-                                    sliderHTML += '</ul>';
-                                    sliderHTML += '<h3 class="bh-slideshow-overlay-title">';
-                                        sliderHTML += '<a href="#">' + data.categoryslider[si].slider_title + '</a>';
-                                    sliderHTML += '</h3>';
-                                    sliderHTML += '<div class="bh-slideshow-overlay-content">' + data.categoryslider[si].slider_description + '</div>';
-                                    if(data.categoryslider[si].slider_link != '#') {
-                                        sliderHTML += '<a class="uk-margin-top uk-button uk-button-primary" href="http://' + data.categoryslider[si].slider_link + '" title="Do it yourself">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>';
                                     }
-                                sliderHTML += '</div>';
-                            sliderHTML += '</div>';
-                            sliderHTML += '<div class="bh-slideshow-thumbnail-split-preview uk-overlay-panel uk-overlay-right uk-overlay-background uk-overlay-fade uk-width-2-5 uk-width-xxlarge-1-3 uk-flex uk-flex-middle uk-flex-center uk-visible-large">';
-                                sliderHTML += '<div>';
-                                    sliderHTML += '<ul class="bh-slideshow-thumbnail-split-preview-meta uk-subnav uk-subnav-line">';
-                                        sliderHTML += '<li>';
-                                            sliderHTML += '<span><a href="#" rel="category tag">' + data.categoryslider[si].slider_category + '</a></span>';
-                                        sliderHTML += '</li>';
                                     sliderHTML += '</ul>';
-                                    sliderHTML += '<h3 class="bh-slideshow-thumbnail-split-preview-title">';
-                                        sliderHTML += '<a href="#">' + data.categoryslider[si].slider_title + '</a>';
-                                    sliderHTML += '</h3>';
-                                    sliderHTML += '<div class="bh-slideshow-thumbnail-split-preview-content">' + data.categoryslider[si].slider_description + '</div>';
-                                    if(data.categoryslider[si].slider_link != '#') {
-                                        sliderHTML += '<a class="uk-margin-top uk-button uk-button-primary" href="http://' + data.categoryslider[si].slider_link + '">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>';
-                                    }
-                                sliderHTML += '</div>';
-                                sliderHTML += '<a href="javascript:void(0);" class="bh-slideshow-slidenav uk-slidenav uk-slidenav-previous" data-uk-slideshow-item="previous"></a>';
-                                sliderHTML += '<a href="javascript:void(0);" class="bh-slideshow-slidenav uk-slidenav uk-slidenav-next" data-uk-slideshow-item="next"></a>';
-                            sliderHTML += '</div>';
-                        sliderHTML += '</li>';
-                    }
-                    sliderHTML += '</ul>';
-                    sliderHTML += '</div>';
-                    sliderHTML += '<script type="text/javascript" src="<?php echo asset('sximo/assets/js/slideshow.js'); ?>"><\/script>';
-                }
-            }
-            $(".grid-page-category-slider-container").html( sliderHTML );
-            $('.uk-slideshow:first-child .ai-uk-animation .bh-slideshow-thumbnail-split-preview').delay(3000).fadeIn(5000);
-            $('.ai-uk-animation:first .bh-slideshow-thumbnail-split-preview').addClass('uk-animation-fade');
-        //html += '<div class="row animate-bottom">';
-        var p = 1;
-        var node_no = 1;
-        var total_rows = 0;
+                                    sliderHTML += '</div>';
+                                    sliderHTML += '<script type="text/javascript" src="<?php echo asset('sximo/assets/js/slideshow.js'); ?>"><\/script>';
+                                }
+                            }
+                            $(".grid-page-category-slider-container").html( sliderHTML );
+                            $('.uk-slideshow:first-child .ai-uk-animation .bh-slideshow-thumbnail-split-preview').delay(3000).fadeIn(5000);
+                            $('.ai-uk-animation:first .bh-slideshow-thumbnail-split-preview').addClass('uk-animation-fade');
+                        //html += '<div class="row animate-bottom">';
+                        var p = 1;
+                        var node_no = 1;
+                        var total_rows = 0;
 
-        $.each($.parseJSON(data.properties), function(idx, obj) {
+                        $.each($.parseJSON(data.properties), function(idx, obj) {
 
-            html +='<li class="grid-item wow fadeInUp">';
-                        html +='<a href="{{URL::to('/')}}/'+obj.pdata.property_slug+'">';
-                        html +='<figure>';
-                        html +='<div class="portfolio-img bg-deep-pink">';           
+                            html +='<li class="grid-item wow fadeInUp">';
+                                        html +='<a href="{{URL::to('/')}}/'+obj.pdata.property_slug+'">';
+                                        html +='<figure>';
+                                        html +='<div class="portfolio-img bg-deep-pink">';           
+                                        if (obj.hasOwnProperty("image")) {
+                                             var pimg = "{{URL::to('uploads/property_imgs_thumbs/')}}/front_property_" + obj.image.folder_id + "_" + obj.image.file_name;
+                                        html +='<img alt="'+obj.pdata.property_name+'" src="'+pimg+'">';
+                                        }else{
+                                             html +='<img src="http://placehold.it/800x560" alt=""/>';
+                                        }
+                                        html +='</div>';
+                                        html +='<figcaption>';
+                                        html +='<div class="portfolio-hover-main text-left">';
+                                        html +='<div class="portfolio-hover-box vertical-align-bottom">';
+                                        html +='<div class="portfolio-hover-content position-relative last-paragraph-no-margin">';
+                                        html +='<span class="font-weight-600 line-height-normal alt-font text-white text-uppercase margin-one-half-bottom display-block">'+obj.pdata.property_name+'</span>';
+                                        if (obj.pdata.price != ''){
+                                            html +='<p class="text-white text-uppercase text-extra-small">From € '+obj.pdata.price+' </p>';
+                                        }
+                                        html +='</div>';
+                                        html +='</div>';
+                                        html +='</div>';
+                                        html +='</figcaption>';
+                                        html +='</figure>';
+                                        html +='</a>';
+                                        html +='<div class="listDetails">';
+                                        html +='<div class="photographBox ai-grid-tiitles">';
+                                        html +='<h2>';
+                                        html +='<a title="'+obj.pdata.property_name+'" class="photograph FltLft ai-filtreted-hotel-name" rel="'+obj.pdata.id+'" href="{{URL::to('/')}}/'+obj.pdata.property_slug+'">';
+                                        html +=obj.pdata.property_name;
+                                        html +='</a>';
+                                        html +='<span class="FltRgt">';
+                                        html +='<a class="carticon" href="javascript:void(0)" onclick="submitgridbookform(\''+obj.pdata.property_slug+'#*'+obj.pdata.id+'\');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>';
+                                        html +='</span>';
+                                        html +='</h2>';
+                                        html +='</div>';
+                                        html +='<div class="entire_story MrgTop5 ai-view-hotels-tittle">';
+                                        html +='<a class="textButton arrowButton detail_view MrgTop5" rel="'+obj.pdata.id+'" href="#">Quick View</a>';
+                                        html +='</div>';
+                                        html +='<div class="showOnHover">';
+                                        html +='<div class="hover_request">';
+                                        html +='</div>';   
+                                        html +='</div>';
+                                        html +='</div>';
+                                        html +='</li>';
+
+                        /*if (node_no % 20 == 0) {
+                        html += '<div class="productData col-xs-12 col-sm-6 col-md-3 col-lg-3 margin-bottom-10">';
+                        html += 'Advertisement Here';
+                        html += '</div>';
+                        }
+                        else {
+                        html += '<div class="productData col-xs-12 col-sm-6 col-md-3 col-lg-3 margin-bottom-10">';
+                        html += '<div class="wrapperforliineedforlightboxremoval">';
+                        html += '<div class="cat_product_medium1">';
+                        html += '<div class="ai-grid-page-node-pic-box pictureBox gridPicture grid-box-main">';
+                        if (obj.pdata.price != '')
+                        {
+                            if($("#filter_min_price").val() != '' && $("#filter_max_price").val() != '') {
+                                html += '<a class="textButton arrowButton MrgTop5 ai-filter-hotel-price-style" rel="' + obj.pdata.id + '" href="' + detail_link + '"> From EUR ' + obj.pdata.price + ' / night </a>';
+                            }
+                        }
                         if (obj.hasOwnProperty("image")) {
-                             var pimg = "{{URL::to('uploads/property_imgs_thumbs/')}}/front_property_" + obj.image.folder_id + "_" + obj.image.file_name;
-                        html +='<img alt="'+obj.pdata.property_name+'" src="'+pimg+'">';
-                        }else{
-                             html +='<img src="http://placehold.it/800x560" alt=""/>';
+                			if(obj.pdata.editor_choice_property=='1'){
+                				var edtch = "{{URL::to('sximo/images/editors-choice.png')}}";
+                				html += '<img alt="editor_choice_property" class="propovericons" src="'+edtch+'">';
+                			}else if(obj.pdata.feature_property=='1'){
+                				var featp = "{{URL::to('sximo/images/featured-property.png')}}";
+                				html += '<img alt="editor_choice_property" class="propovericons" src="'+featp+'">';
+                			}
+                           var pimg = "{{URL::to('uploads/property_imgs_thumbs/')}}/front_property_" + obj.image.folder_id + "_" + obj.image.file_name;
+                            html += '<a title="' + obj.pdata.property_name + '" class="picture_link " rel="' + obj.pdata.id + '" href="{{URL::to('')}}/' + obj.pdata.property_slug + '">';
+                            html += '<div class="overlay-text-frezeed">';
+                            html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
+                            html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;' + obj.pdata.price + ' </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
+                            html += '</div>';
+                            html += '<div class="overlay-text hotel-overlay-text">';
+                            html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
+                            html += '<p class="yacths-des-text yacths-des-text-align"><span>From &euro;' + obj.pdata.price + ' </span><' + obj.pdata.category_name + '</span></p>';
+                            html += '</div>';
+                            html += '<div class="overlay-text yacts-overlay-text">';
+                            html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
+                            html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;' + obj.pdata.price + ' </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
+                            html += '<p class="yacths-des-text">2015H</p>';
+                            html += '</div>';
+                            html += '<img alt="' + obj.image.file_name + '" src="' + pimg + '" class="img-responsive">';
+                            html += '</a>';
+
+                        } else{
+                            
+                            var pimg = "{{URL::to('sximo/assets/images/img-1.jpg')}}";
+                            html += '<div class="overlay-text-frezeed">';
+                            html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
+                            html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
+                            html += '</div>';
+                            html += '<div class="overlay-text hotel-overlay-text">';
+                            html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
+                            html += '<p class="yacths-des-text yacths-des-text-align"><span>From &euro;' + obj.pdata.price + ' </span>|<span>New York</span></p>';
+                            html += '</div>';
+                            html += '<div class="overlay-text yacts-overlay-text">';
+                            html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
+                            html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
+                            html += '<p class="yacths-des-text">2015H</p>';
+                            html += '</div>';
+                            html += pimg;
                         }
-                        html +='</div>';
-                        html +='<figcaption>';
-                        html +='<div class="portfolio-hover-main text-left">';
-                        html +='<div class="portfolio-hover-box vertical-align-bottom">';
-                        html +='<div class="portfolio-hover-content position-relative last-paragraph-no-margin">';
-                        html +='<span class="font-weight-600 line-height-normal alt-font text-white text-uppercase margin-one-half-bottom display-block">'+obj.pdata.property_name+'</span>';
-                        if (obj.pdata.price != ''){
-                            html +='<p class="text-white text-uppercase text-extra-small">From € '+obj.pdata.price+' </p>';
+
+                        html += '</div>';
+                        html += '<div class="listDetails">';
+                        html += '<div class="photographBox ai-grid-tiitles">';
+                        html += '<h2>';
+                        var detail_link = "{{URL::to('')}}/" + obj.pdata.property_slug;
+                        html += '<a title="' + obj.pdata.property_name + '" class="FltLft ai-filtreted-hotel-name" rel="' + obj.pdata.id + '" href="' + detail_link + '">';
+                        html += obj.pdata.property_name;
+                        html += '</a>';
+                        html += '<span class="FltRgt">';
+                        if (obj.hasOwnProperty("image")) {
+                        html += '<i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" onclick="add_to_lightbox(' + obj.image.file_id + ',' + obj.pdata.id + ');" ></i>';
                         }
-                        html +='</div>';
-                        html +='</div>';
-                        html +='</div>';
-                        html +='</figcaption>';
-                        html +='</figure>';
-                        html +='</a>';
-                        html +='<div class="listDetails">';
-                        html +='<div class="photographBox ai-grid-tiitles">';
-                        html +='<h2>';
-                        html +='<a title="'+obj.pdata.property_name+'" class="photograph FltLft ai-filtreted-hotel-name" rel="'+obj.pdata.id+'" href="{{URL::to('/')}}/'+obj.pdata.property_slug+'">';
-                        html +=obj.pdata.property_name;
-                        html +='</a>';
-                        html +='<span class="FltRgt">';
-                        html +='<a class="carticon" href="javascript:void(0)" onclick="submitgridbookform(\''+obj.pdata.property_slug+'#*'+obj.pdata.id+'\');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>';
-                        html +='</span>';
-                        html +='</h2>';
-                        html +='</div>';
-                        html +='<div class="entire_story MrgTop5 ai-view-hotels-tittle">';
-                        html +='<a class="textButton arrowButton detail_view MrgTop5" rel="'+obj.pdata.id+'" href="#">Quick View</a>';
-                        html +='</div>';
-                        html +='<div class="showOnHover">';
-                        html +='<div class="hover_request">';
-                        html +='</div>';   
-                        html +='</div>';
-                        html +='</div>';
-                        html +='</li>';
+                        else{
+                        html += '<i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" ></i>';
+                        }
+                        html += '<a class="carticon" href="' + detail_link + '"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>';
+                        html += '</span>';
+                        html += '</h2>';
+                        html += '</div>';
+                        html += '<div class="entire_story MrgTop5 ai-view-hotels-tittle">';
+                        html += '<a class="textButton arrowButton detail_view MrgTop5" rel="' + obj.pdata.id + '" href="#">Quick View</a>';
+                        html += '<a class="textButton arrowButton MrgTop5" rel="' + obj.pdata.id + '" href="' + detail_link + '">Detail View </a>';
+                        html += '</div>';
+                        html += '<div class="showOnHover">';
+                        html += '<div class="hover_request">';
+                        html += '</div>';
+                        html += '</div>';
+                        html += '</div>';
+                        html += '</div>';
+                        html += '</div>';
+                        html += '</div>';
+                        if (p % 4 == 0)
+                        {
+                        html += '</div>';
+                        html += '<div class="row">';
+                        }
+                        }*/
+                        p++;
+                        node_no++;
+                        total_rows++;
+                        });
+                        if(total_rows>0){
+                            $('.locator').parent().css('padding-top','0px');
+                        }
+                        $(".searchcount").html(data.ttl + ' Hotel(s) Found for ' + $(".ai_search_keywords").val());
+                        //html += '</div>';
+                        if (it_scroll == false)
+                        {
+                        $('#listproperties ul').html('<li class="grid-sizer"></li>'+html);
+                        }
+                        else{
+                        $('#listproperties ul').append(html);
+                        }
+                        if (destnarea != '')
+                        {
+                            if (dest_area[1] == 'country' || dest_area[1] == 'region'){
+                            $('#cityfilters').html('');
+                            }
+                            var ttp = p - 1;
+                            if (typeof $.parseJSON(data.cities) !== 'undefined' && $.parseJSON(data.cities).length > 0) {
 
-        /*if (node_no % 20 == 0) {
-        html += '<div class="productData col-xs-12 col-sm-6 col-md-3 col-lg-3 margin-bottom-10">';
-        html += 'Advertisement Here';
-        html += '</div>';
-        }
-        else {
-        html += '<div class="productData col-xs-12 col-sm-6 col-md-3 col-lg-3 margin-bottom-10">';
-        html += '<div class="wrapperforliineedforlightboxremoval">';
-        html += '<div class="cat_product_medium1">';
-        html += '<div class="ai-grid-page-node-pic-box pictureBox gridPicture grid-box-main">';
-        if (obj.pdata.price != '')
-        {
-            if($("#filter_min_price").val() != '' && $("#filter_max_price").val() != '') {
-                html += '<a class="textButton arrowButton MrgTop5 ai-filter-hotel-price-style" rel="' + obj.pdata.id + '" href="' + detail_link + '"> From EUR ' + obj.pdata.price + ' / night </a>';
-            }
-        }
-        if (obj.hasOwnProperty("image")) {
-			if(obj.pdata.editor_choice_property=='1'){
-				var edtch = "{{URL::to('sximo/images/editors-choice.png')}}";
-				html += '<img alt="editor_choice_property" class="propovericons" src="'+edtch+'">';
-			}else if(obj.pdata.feature_property=='1'){
-				var featp = "{{URL::to('sximo/images/featured-property.png')}}";
-				html += '<img alt="editor_choice_property" class="propovericons" src="'+featp+'">';
-			}
-           var pimg = "{{URL::to('uploads/property_imgs_thumbs/')}}/front_property_" + obj.image.folder_id + "_" + obj.image.file_name;
-            html += '<a title="' + obj.pdata.property_name + '" class="picture_link " rel="' + obj.pdata.id + '" href="{{URL::to('')}}/' + obj.pdata.property_slug + '">';
-            html += '<div class="overlay-text-frezeed">';
-            html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
-            html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;' + obj.pdata.price + ' </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
-            html += '</div>';
-            html += '<div class="overlay-text hotel-overlay-text">';
-            html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
-            html += '<p class="yacths-des-text yacths-des-text-align"><span>From &euro;' + obj.pdata.price + ' </span><' + obj.pdata.category_name + '</span></p>';
-            html += '</div>';
-            html += '<div class="overlay-text yacts-overlay-text">';
-            html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
-            html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;' + obj.pdata.price + ' </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
-            html += '<p class="yacths-des-text">2015H</p>';
-            html += '</div>';
-            html += '<img alt="' + obj.image.file_name + '" src="' + pimg + '" class="img-responsive">';
-            html += '</a>';
+                                chtml += '<div class="row" style="padding-bottom: 8px;background: #f0f0f0;padding-top: 8px;margin-bottom: 15px;">';
+                                chtml += '<div class="col-md-6 col-xs-12 text-right">Filter By Luxury Destination</div>';
+                                chtml += '<div class="col-md-6 col-xs-12">';
+                                chtml += '<select onchange="filter_destination(this.value ,\'city\')">';
+                                $.each($.parseJSON(data.cities), function(idx, cobj) {
+                                    chtml += '<option value="' + cobj.id + '">' + cobj.category_name + '(' + cobj.totalproperty + ')</option>';
+                                })
+                                chtml += '</select>';
+                                chtml += '</div>';
+                                chtml += '</div>'; 
+                                /*chtml += '<div class="row">';
+                                chtml += '<div class="col-md-12">';
+                                chtml += '<div class="clear-all-filters"><a href="javascript:void(0)"><i class="fa fa-repeat" aria-hidden="true"></i>&nbsp;Clear Filters</a></div>';
+                                chtml += '<div>';
+                                chtml += '<ul class="top-nav-cities-filter top-slick-filtes top-bar-filters-removed regular slider">';
+                                chtml += '<li class="active select-all">';
+                                chtml += '<a href="javascript:void(0)" onclick="filter_destination(\'' + dest_area[0] + '\',\'city\');">';
+                                chtml += '<div class="filter-bg">';
+                                chtml += '<div class="right-text"></div>';
+                                chtml += '<div class="clearfix"></div>';
+                                chtml += '<div class="top-filter-name">All Properties(' + ttp + ')</div>';
+                                chtml += '</div>';
+                                chtml += '</a>';
+                                chtml += '<div style="display: none;" class="city-filter-node-overlay">';
+                                chtml += '<a class="city-filter-node-heading">Heading</a>';
+                                chtml += '<div class="city-filter-node-details">Testing testing testing testing testing testing testing</div>';
+                                chtml += '</div>';
+                                chtml += '</li>';
+                                $.each($.parseJSON(data.cities), function(idx, cobj) {
+                                    var cimg = "{{URL::to('uploads/category_imgs/')}}/" + cobj.category_image;
+                                    chtml += '<li>';
+                                    chtml += '<a href="javascript:void(0)" onclick="filter_destination(\'' + cobj.id + '\',\'city\');">';
+                                    //chtml += '<div class="filter-bg" stysle="background-image: url(\'' + cimg + '\');">';
+                                    chtml += '<div class="filter-bg" >';
+                                    chtml += '<div class="right-text"></div>';
+                                    chtml += '<div class="clearfix"></div>';
+                                    chtml += '<div class="top-filter-name">' + cobj.category_name + '(' + cobj.totalproperty + ')</div>';
+                                    chtml += '</div>';
+                                    chtml += '</a>';
+                                    chtml += '<div style="display: none;" class="city-filter-node-overlay">';
+                                    chtml += '<a class="city-filter-node-heading">Heading</a>';
+                                    chtml += '<div class="city-filter-node-details">Testing testing testing testing testing testing testing</div>';
+                                    chtml += '</div>';
+                                    chtml += '</li>';
+                                });
+                                chtml += '</ul>';
+                                chtml += '</div>';
+                                chtml += '</div>';
+                                chtml += '</div>';
+                                chtml += '<script>';
+                                chtml += '$(\'.top-nav-cities-filter\').slick({';
+                                    chtml += 'slide: \'li\',';
+                                    chtml += 'dots: false,';
+                                    chtml += 'infinite: false,';
+                                    chtml += 'slidesToShow: 3,';
+                                    chtml += 'slidesToScroll: 1,';
+                                    chtml += 'cssEase: \'ease-out\',';
+                                    chtml += 'variableWidth: false,';
+                                    chtml += 'responsive: [';
+                                        chtml += '{';
+                                            chtml += 'breakpoint: 1024,';
+                                            chtml += 'settings: {';
+                                                chtml += 'slidesToShow: 3,';
+                                                chtml += 'slidesToScroll: 1,';
+                                            chtml += '}';
+                                        chtml += '},';
+                                        chtml += '{';
+                                            chtml += 'breakpoint: 600,';
+                                            chtml += 'settings: {';
+                                                chtml += 'slidesToShow: 2,';
+                                                chtml += 'slidesToScroll: 1';
+                                            chtml += '}';
+                                        chtml += '},';
+                                        chtml += '{';
+                                            chtml += 'breakpoint: 480,';
+                                            chtml += 'settings: {';
+                                                chtml += 'slidesToShow: 1,';
+                                                chtml += 'slidesToScroll: 1,';
+                                                chtml += 'arrows:false,';
+                                            chtml += '}';
+                                        chtml += '}';
+                                    chtml += ']';
+                                chtml += '});';
+                                chtml += '$(document).on(\'click\', \'.top-slick-filtes li.select-all\', function () {';
+                                    chtml += 'if ($(this).hasClass("active")) {';
+                                        chtml += '$(\'.top-slick-filtes li\').addClass("active");';
+                                        chtml += '$(this).removeClass("active");';
+                                    chtml += '} else {';
+                                        chtml += '$(\'.top-slick-filtes li\').removeClass("active");';
+                                        chtml += '$(this).addClass("active");';
+                                    chtml += '}';
+                                chtml += '});';
+                                chtml += '$(document).on(\'click\', \'.top-slick-filtes li\', function () {';
+                                    chtml += 'if (!$(this).hasClass("select-all")) {';
+                                        chtml += '$(this).toggleClass("active");';
+                                        chtml += '$(\'.top-slick-filtes li.select-all\').removeClass("active");';
+                                    chtml += '}';
+                                chtml += '});';
+                                chtml += '$(document).on(\'click\', \'.clear-all-filters a\', function (event) {';
+                                    chtml += 'event.preventDefault();';
+                                    chtml += '$(\'.top-slick-filtes li\').removeClass("active");';
+                                    chtml += '$(\'.top-slick-filtes li.select-all\').addClass("active");';
+                                chtml += '});';
+                                chtml += '<\/script>';*/
+                                $('#cityfilters').html(chtml); 
+                            }
 
-        } else{
-            
-            var pimg = "{{URL::to('sximo/assets/images/img-1.jpg')}}";
-            html += '<div class="overlay-text-frezeed">';
-            html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
-            html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
-            html += '</div>';
-            html += '<div class="overlay-text hotel-overlay-text">';
-            html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
-            html += '<p class="yacths-des-text yacths-des-text-align"><span>From &euro;' + obj.pdata.price + ' </span>|<span>New York</span></p>';
-            html += '</div>';
-            html += '<div class="overlay-text yacts-overlay-text">';
-            html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
-            html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
-            html += '<p class="yacths-des-text">2015H</p>';
-            html += '</div>';
-            html += pimg;
-        }
+                            var searchcountdispl = data.ttl + ' Hotel(s) Found for ' + $(".ai_search_keywords").val();
+                            $('.searchcount').html(searchcountdispl);
+                        }
 
-        html += '</div>';
-        html += '<div class="listDetails">';
-        html += '<div class="photographBox ai-grid-tiitles">';
-        html += '<h2>';
-        var detail_link = "{{URL::to('')}}/" + obj.pdata.property_slug;
-        html += '<a title="' + obj.pdata.property_name + '" class="FltLft ai-filtreted-hotel-name" rel="' + obj.pdata.id + '" href="' + detail_link + '">';
-        html += obj.pdata.property_name;
-        html += '</a>';
-        html += '<span class="FltRgt">';
-        if (obj.hasOwnProperty("image")) {
-        html += '<i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" onclick="add_to_lightbox(' + obj.image.file_id + ',' + obj.pdata.id + ');" ></i>';
-        }
-        else{
-        html += '<i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" ></i>';
-        }
-        html += '<a class="carticon" href="' + detail_link + '"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>';
-        html += '</span>';
-        html += '</h2>';
-        html += '</div>';
-        html += '<div class="entire_story MrgTop5 ai-view-hotels-tittle">';
-        html += '<a class="textButton arrowButton detail_view MrgTop5" rel="' + obj.pdata.id + '" href="#">Quick View</a>';
-        html += '<a class="textButton arrowButton MrgTop5" rel="' + obj.pdata.id + '" href="' + detail_link + '">Detail View </a>';
-        html += '</div>';
-        html += '<div class="showOnHover">';
-        html += '<div class="hover_request">';
-        html += '</div>';
-        html += '</div>';
-        html += '</div>';
-        html += '</div>';
-        html += '</div>';
-        html += '</div>';
-        if (p % 4 == 0)
-        {
-        html += '</div>';
-        html += '<div class="row">';
-        }
-        }*/
-        p++;
-        node_no++;
-        total_rows++;
-        });
-        if(total_rows>0){
-            $('.locator').parent().css('padding-top','0px');
-        }
-        $(".searchcount").html(data.ttl + ' Hotel(s) Found for ' + $(".ai_search_keywords").val());
-        //html += '</div>';
-        if (it_scroll == false)
-        {
-        $('#listproperties ul').html('<li class="grid-sizer"></li>'+html);
-        }
-        else{
-        $('#listproperties ul').append(html);
-        }
-        if (destnarea != '')
-        {
-            if (dest_area[1] == 'country' || dest_area[1] == 'region'){
-            $('#cityfilters').html('');
-            }
-            var ttp = p - 1;
-            if (typeof $.parseJSON(data.cities) !== 'undefined' && $.parseJSON(data.cities).length > 0) {
+                        sIndex = parseInt(sIndex) + offSet;
+                        $('#listrecrds').val(sIndex);
+                        $('#ttlpg').val(data.ttlpages);
+                        isPreviousEventComplete = true;
+                        }
 
-                chtml += '<div class="row" style="padding-bottom: 8px;background: #f0f0f0;padding-top: 8px;margin-bottom: 15px;">';
-                chtml += '<div class="col-md-6 col-xs-12 text-right">Filter By Luxury Destination</div>';
-                chtml += '<div class="col-md-6 col-xs-12">';
-                chtml += '<select onchange="filter_destination(this.value ,\'city\')">';
-                $.each($.parseJSON(data.cities), function(idx, cobj) {
-                    chtml += '<option value="' + cobj.id + '">' + cobj.category_name + '(' + cobj.totalproperty + ')</option>';
-                })
-                chtml += '</select>';
-                chtml += '</div>';
-                chtml += '</div>'; 
-                /*chtml += '<div class="row">';
-                chtml += '<div class="col-md-12">';
-                chtml += '<div class="clear-all-filters"><a href="javascript:void(0)"><i class="fa fa-repeat" aria-hidden="true"></i>&nbsp;Clear Filters</a></div>';
-                chtml += '<div>';
-                chtml += '<ul class="top-nav-cities-filter top-slick-filtes top-bar-filters-removed regular slider">';
-                chtml += '<li class="active select-all">';
-                chtml += '<a href="javascript:void(0)" onclick="filter_destination(\'' + dest_area[0] + '\',\'city\');">';
-                chtml += '<div class="filter-bg">';
-                chtml += '<div class="right-text"></div>';
-                chtml += '<div class="clearfix"></div>';
-                chtml += '<div class="top-filter-name">All Properties(' + ttp + ')</div>';
-                chtml += '</div>';
-                chtml += '</a>';
-                chtml += '<div style="display: none;" class="city-filter-node-overlay">';
-                chtml += '<a class="city-filter-node-heading">Heading</a>';
-                chtml += '<div class="city-filter-node-details">Testing testing testing testing testing testing testing</div>';
-                chtml += '</div>';
-                chtml += '</li>';
-                $.each($.parseJSON(data.cities), function(idx, cobj) {
-                    var cimg = "{{URL::to('uploads/category_imgs/')}}/" + cobj.category_image;
-                    chtml += '<li>';
-                    chtml += '<a href="javascript:void(0)" onclick="filter_destination(\'' + cobj.id + '\',\'city\');">';
-                    //chtml += '<div class="filter-bg" stysle="background-image: url(\'' + cimg + '\');">';
-                    chtml += '<div class="filter-bg" >';
-                    chtml += '<div class="right-text"></div>';
-                    chtml += '<div class="clearfix"></div>';
-                    chtml += '<div class="top-filter-name">' + cobj.category_name + '(' + cobj.totalproperty + ')</div>';
-                    chtml += '</div>';
-                    chtml += '</a>';
-                    chtml += '<div style="display: none;" class="city-filter-node-overlay">';
-                    chtml += '<a class="city-filter-node-heading">Heading</a>';
-                    chtml += '<div class="city-filter-node-details">Testing testing testing testing testing testing testing</div>';
-                    chtml += '</div>';
-                    chtml += '</li>';
-                });
-                chtml += '</ul>';
-                chtml += '</div>';
-                chtml += '</div>';
-                chtml += '</div>';
-                chtml += '<script>';
-                chtml += '$(\'.top-nav-cities-filter\').slick({';
-                    chtml += 'slide: \'li\',';
-                    chtml += 'dots: false,';
-                    chtml += 'infinite: false,';
-                    chtml += 'slidesToShow: 3,';
-                    chtml += 'slidesToScroll: 1,';
-                    chtml += 'cssEase: \'ease-out\',';
-                    chtml += 'variableWidth: false,';
-                    chtml += 'responsive: [';
-                        chtml += '{';
-                            chtml += 'breakpoint: 1024,';
-                            chtml += 'settings: {';
-                                chtml += 'slidesToShow: 3,';
-                                chtml += 'slidesToScroll: 1,';
-                            chtml += '}';
-                        chtml += '},';
-                        chtml += '{';
-                            chtml += 'breakpoint: 600,';
-                            chtml += 'settings: {';
-                                chtml += 'slidesToShow: 2,';
-                                chtml += 'slidesToScroll: 1';
-                            chtml += '}';
-                        chtml += '},';
-                        chtml += '{';
-                            chtml += 'breakpoint: 480,';
-                            chtml += 'settings: {';
-                                chtml += 'slidesToShow: 1,';
-                                chtml += 'slidesToScroll: 1,';
-                                chtml += 'arrows:false,';
-                            chtml += '}';
-                        chtml += '}';
-                    chtml += ']';
-                chtml += '});';
-                chtml += '$(document).on(\'click\', \'.top-slick-filtes li.select-all\', function () {';
-                    chtml += 'if ($(this).hasClass("active")) {';
-                        chtml += '$(\'.top-slick-filtes li\').addClass("active");';
-                        chtml += '$(this).removeClass("active");';
-                    chtml += '} else {';
-                        chtml += '$(\'.top-slick-filtes li\').removeClass("active");';
-                        chtml += '$(this).addClass("active");';
-                    chtml += '}';
-                chtml += '});';
-                chtml += '$(document).on(\'click\', \'.top-slick-filtes li\', function () {';
-                    chtml += 'if (!$(this).hasClass("select-all")) {';
-                        chtml += '$(this).toggleClass("active");';
-                        chtml += '$(\'.top-slick-filtes li.select-all\').removeClass("active");';
-                    chtml += '}';
-                chtml += '});';
-                chtml += '$(document).on(\'click\', \'.clear-all-filters a\', function (event) {';
-                    chtml += 'event.preventDefault();';
-                    chtml += '$(\'.top-slick-filtes li\').removeClass("active");';
-                    chtml += '$(\'.top-slick-filtes li.select-all\').addClass("active");';
-                chtml += '});';
-                chtml += '<\/script>';*/
-                $('#cityfilters').html(chtml); 
-            }
-
-            var searchcountdispl = data.ttl + ' Hotel(s) Found for ' + $(".ai_search_keywords").val();
-            $('.searchcount').html(searchcountdispl);
-        }
-
-        sIndex = parseInt(sIndex) + offSet;
-        $('#listrecrds').val(sIndex);
-        $('#ttlpg').val(data.ttlpages);
-        isPreviousEventComplete = true;
-        }
+                        $portfolio_filter.imagesLoaded(function () {
+                            $portfolio_filter.isotope({
+                                layoutMode: 'masonry',
+                                itemSelector: '.grid-item',
+                                percentPosition: true,
+                                masonry: {
+                                    columnWidth: '.grid-sizer'
+                                }
+                            });
+                            $portfolio_filter.isotope();
+                        }); 
         },
         error: function (error) {
 //        alert(error);
