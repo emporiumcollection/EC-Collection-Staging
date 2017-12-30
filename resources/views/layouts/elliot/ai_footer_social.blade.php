@@ -253,13 +253,13 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.runtime.min.js"></script>
 		<link rel="stylesheet" href="{{ asset('sximo/instajs/instashow/jquery.instashow.css')}}">
 		<script src="{{ asset('sximo/instajs/instashow/jquery.instashow.js')}}"></script>
-		<!-- social stream js  -->
+		<!-- social stream js  
 		<link rel="stylesheet" type="text/css" href="{{ asset('sximo/jquery_social_stream/inc/layout.css')}}" media="all" />
 		<link rel="stylesheet" type="text/css" href="{{ asset('sximo/jquery_social_stream/css/dcsns_wall.css')}}" media="all" />
 		<script type="text/javascript" src="{{ asset('sximo/jquery_social_stream/inc/js/jquery.plugins.js')}}"></script>
 		<script type="text/javascript" src="{{ asset('sximo/jquery_social_stream/inc/js/jquery.site.js')}}"></script>
 		<script type="text/javascript" src="{{ asset('sximo/jquery_social_stream/js/jquery.social.stream.wall.1.8.js')}}"></script>
-		<script type="text/javascript" src="{{ asset('sximo/jquery_social_stream/js/jquery.social.stream.1.6.1.min.js')}}"></script>
+		<script type="text/javascript" src="{{ asset('sximo/jquery_social_stream/js/jquery.social.stream.1.6.1.min.js')}}"></script>-->
 		<style>
 			#instaShowGallery_1 .instashow-gallery-media-cover {
 				background: rgba(0, 0, 0, 0.9) !important;
@@ -291,7 +291,7 @@
 		@if(!empty($propertyDetail))
 		<script type="text/javascript">
 			jQuery(document).ready(function($){
-				$('#social-stream').dcSocialStream({
+				/*$('#social-stream').dcSocialStream({
 					feeds: {
 						twitter: {
 							id: "{{$propertyDetail['data']->social_twitter}}",
@@ -335,7 +335,7 @@
 						layout: 'modern',
 						colour: 'light'
 					},
-				});
+				});*/
 							 
 			});
 		</script>
