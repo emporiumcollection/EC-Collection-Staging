@@ -1519,7 +1519,7 @@ function scrollDataAjax(it_scroll,pageCounter)
                     $('#ttlpg').val(data.ttlpages);
                     isPreviousEventComplete = true;
                 }
-
+                     var $portfolio_filter = $('.portfolio-grid');
                     $portfolio_filter.imagesLoaded(function () {
                             $portfolio_filter.isotope({
                                 layoutMode: 'masonry',
@@ -1981,7 +1981,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                         $('#ttlpg').val(data.ttlpages);
                         isPreviousEventComplete = true;
                         }
-
+                         var $portfolio_filter = $('.portfolio-grid');
                         $portfolio_filter.imagesLoaded(function () {
                             $portfolio_filter.isotope({
                                 layoutMode: 'masonry',
