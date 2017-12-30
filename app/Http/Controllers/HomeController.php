@@ -4955,6 +4955,9 @@ class HomeController extends Controller {
         $this->data['group_id'] = \Session::get('gid');
         $this->data['ps_main_page_name'] = 'category';
         $this->data['pageTitle'] = $request->slug;
+		$this->data['keyword'] = $request->slug;
+        $this->data['ttlcount'] = count($propertiesArr);
+		$this->data['cities'] = array();
         $page = 'layouts.' . CNF_THEME . '.index';
         $this->data['pages'] = 'pages.search';
         return view($page, $this->data);
