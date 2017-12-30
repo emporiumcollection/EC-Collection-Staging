@@ -381,7 +381,71 @@
                             float: right;
                         }
                         
-        </style>
+                        /* AIC Harman email sidebar css */
+            
+                        .site-aside {
+                            position: fixed;
+                            top: 0;
+                            right: 0;
+                            height: 100%;
+                            overflow-x: visible;
+                            z-index: 1028;
+                    }
+                        .contact-aside {
+                            border-radius: 2px;
+                            transition: .5s;
+                            position: fixed;
+                            top: 63px;
+                            left: calc(100% - 43px);
+                            width: 291px;
+                            background: #272727;
+                            color: #fff;
+                            font-size: 15px;
+                            right: 0;
+                        }
+                        .contact-aside ul {
+                            padding: 7px 0;
+                            list-style: none;
+                        }
+                        .contact-aside li {
+                        padding: 6.333px 0px 6px 5px;
+                        margin: 0px 5px 1px 0px;
+                        }
+                        .contact-aside {
+                            color: #fff;
+                            font-size: 15px;
+                        }
+                        .contact-aside [class*="icon-"] {
+                            display: inline-block;
+                            width: 24px;
+                            text-align: center;
+                            margin-right: 4px;
+                            float: right;
+                        }
+                        .contact-aside li + li {
+                            border-top: 1px solid #4A4A4A;
+                        }
+                        .contact-aside .icon-mail {
+                            position: relative;
+                            top: 2px;
+                        }
+                        .contact-aside.active {
+                            left: calc(100% - 290px);
+                            background: #1e2023 !important;
+                            color: #fff !important;
+                        }
+
+                        .asideIclass {
+                            float: left;
+                            margin-top: 3px;
+                            margin-right: 13px;
+                            margin-left: 8px;
+                            color: #c7ab84;
+                        }
+
+                         /* sidebar css */
+
+                        </style>
 		
 		<!-- Global site tag (gtag.js) - Google Analytics -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110391807-1"></script>
