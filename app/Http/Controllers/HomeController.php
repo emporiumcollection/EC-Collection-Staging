@@ -4956,7 +4956,7 @@ class HomeController extends Controller {
         $this->data['ps_main_page_name'] = 'category';
         $this->data['pageTitle'] = $request->slug;
         $page = 'layouts.' . CNF_THEME . '.index';
-        $this->data['pages'] = 'pages.filters-grid';
+        $this->data['pages'] = 'pages.search';
         return view($page, $this->data);
     }
 
