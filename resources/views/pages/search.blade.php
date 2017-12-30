@@ -1247,7 +1247,7 @@ function scrollDataAjax(it_scroll,pageCounter)
 }
 
 
-var pageCounter = 1;
+var pageCounter = 2;
 var previousScroll = 0;
 $(window).scroll(function () {
 
