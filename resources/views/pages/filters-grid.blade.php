@@ -390,8 +390,8 @@ return fasle;
             <div class="container-fluid">
                 <div class="row">
                     <header>
-                        <div class="container-fluid editorial-logo-align">
-                            <!--<div class="col-md-12-">
+<!--                        <div class="container-fluid editorial-logo-align">
+                            <div class="col-md-12-">
                                 <p><a class="logo-d" href="{{url()}}">D</a></p>
                             </div>
                             <div class="col-md-12-">
@@ -418,7 +418,7 @@ return fasle;
                                 <div class="row">
                                     <a href="#" class="book-button open-book-now-page">BOOK</a>
                                 </div>
-                            </div>-->
+                            </div>
                             <div class="go-back-button-container">
                                 @if(isset($_GET['ref']) && $_GET['ref']!='' )
                                 <button class="go-back-button" id="back_button_page">Go Back</button> 
@@ -428,7 +428,7 @@ return fasle;
                                 @endif
                                 <div class="previous-page-screen-short-container"></div>
                             </div>
-                        </div>
+                        </div>-->
                     </header>
                     <div class="filter-page-main-align">
                         <div class="col-md-10 col-sm-9">
