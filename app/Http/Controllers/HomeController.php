@@ -4933,7 +4933,7 @@ class HomeController extends Controller {
         $this->data['continent'] = '';
         $this->data['region'] = '';
 
-        $this->data['categoryslider'] = \DB::table('tb_sliders')->select('slider_category','slider_title','slider_description','slider_img','slider_link')->where('slider_category', $request->slug)->get();
+        $this->data['categoryslider'] = \DB::table('tb_sliders')->select('slider_category','slider_title','slider_description','slider_img','slider_link','slide_type')->where('slider_category', $request->slug)->get();
 
         $reultsgridAds = \DB::table('tb_advertisement')->where('adv_type', 'sidebar')->where('ads_cat_id', $request->slug)->where('adv_position', 'grid_results')->get();
         $resultads = array();
