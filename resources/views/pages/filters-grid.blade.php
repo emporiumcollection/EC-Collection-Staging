@@ -2093,6 +2093,19 @@ return fasle;
                                 filter_property();
                         }
                     </script>
+                    <script>
+                    /*Toggle Side Nav Start Here*/
+                        eval($('.dropdown').each(function () {
+                            var $dropdown = $(this);
+                            $(".members-list", $dropdown).click(function (e) {
+                                e.preventDefault();
+                                $div = $(".members-drop-list", $dropdown);
+                                $div.toggle();
+                                $(".members-drop-list").not($div).hide();
+                                return false;
+                            });
+                        }));
+                    </script>
                     <link href="{{ asset('sximo/assets/css/editorial.css')}}" rel="stylesheet" type="text/css"/>
                     <div class="editorial-custom-footer-style grid-page-footer-align">
                         @include('layouts/elliot/ai_footer_social')    
