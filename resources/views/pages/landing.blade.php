@@ -13,7 +13,7 @@
         <link href="{{ asset('sximo/assets/css/style-ai.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/homepage41e7.css')}}" rel="stylesheet" type="text/css"/>
         
-        <script src="{{ asset('sximo/assets/js/jquery-2.1.0.min.js')}}" type="text/javascript"></script>
+        <!--<script src="{{ asset('sximo/assets/js/jquery-2.1.0.min.js')}}" type="text/javascript"></script>-->
         <script src="{{ asset('sximo/assets/js/bootstrap.min.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/jquery-ui.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/moment.min.js')}}" type="text/javascript" ></script>
@@ -26,7 +26,7 @@
         <script src="{{ asset('sximo/assets/js/open-search.js')}}" type="text/javascript"></script>
         
         <!--AIC sidebar js -->
-        <!--<script src="{{ asset('sximo/assets/js/jquery_1.js')}}" type="text/javascript"></script>-->
+        <script src="{{ asset('sximo/assets/js/jquery_1.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/custm.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/TweenMax.min41e7.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/menu41e7.js')}}" type="text/javascript"></script>
