@@ -485,6 +485,15 @@
     #block-system-main-menu .block-inner {
     background: rgba(37, 37, 37, 0.9);
     }
+    
+    .close {
+	font-size: 21px;
+	font-weight: 700;
+	line-height: 1;
+	color: #000;
+	text-shadow:0px;
+	opacity: 1;
+    }
         
          /* sidebar css */
         </style>
@@ -2649,12 +2658,12 @@ url: "{{ URL::to('filter_search_destionation')}}",
                     
                     </script> 
                     
-                    <script> 
-                        $('.contact-aside').hover(
-                            function(){ $(this).addClass('active') },
-                            function(){ $(this).removeClass('active') }
-                        )
-                </script>
+                     <script> 
+                $('.contact-aside').hover(
+                    function(){ $(this).addClass('active') },
+                    function(){ $(this).removeClass('active') }
+                )
+         </script>
 
 
            <style>
