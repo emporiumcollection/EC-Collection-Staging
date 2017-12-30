@@ -1328,7 +1328,7 @@ function scrollDataAjax(it_scroll,pageCounter)
                     $.each($.parseJSON(data.properties), function(idx, obj) {
 
                         html +='<li class="grid-item wow fadeInUp">';
-                        html +='<a href="{{URL::to()}}/'+obj.pdata.property_slug+'">';
+                        html +='<a href="{{URL::to('/')}}/'+obj.pdata.property_slug+'">';
                         html +='<figure>';
                         html +='<div class="portfolio-img bg-deep-pink">';           
                         if (obj.hasOwnProperty("image")) {
@@ -1355,7 +1355,7 @@ function scrollDataAjax(it_scroll,pageCounter)
                         html +='<div class="listDetails">';
                         html +='<div class="photographBox ai-grid-tiitles">';
                         html +='<h2>';
-                        html +='<a title="'+obj.pdata.property_name+'" class="photograph FltLft ai-filtreted-hotel-name" rel="'+obj.pdata.id+'" href="{{URL::to()}}/'+obj.pdata.property_slug+'">';
+                        html +='<a title="'+obj.pdata.property_name+'" class="photograph FltLft ai-filtreted-hotel-name" rel="'+obj.pdata.id+'" href="{{URL::to('/')}}/'+obj.pdata.property_slug+'">';
                         html +=obj.pdata.property_name;
                         html +='</a>';
                         html +='<span class="FltRgt">';
@@ -1681,7 +1681,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
         $.each($.parseJSON(data.properties), function(idx, obj) {
 
             html +='<li class="grid-item wow fadeInUp">';
-                        html +='<a href="{{URL::to()}}/'+obj.pdata.property_slug+'">';
+                        html +='<a href="{{URL::to('/')}}/'+obj.pdata.property_slug+'">';
                         html +='<figure>';
                         html +='<div class="portfolio-img bg-deep-pink">';           
                         if (obj.hasOwnProperty("image")) {
@@ -1708,7 +1708,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                         html +='<div class="listDetails">';
                         html +='<div class="photographBox ai-grid-tiitles">';
                         html +='<h2>';
-                        html +='<a title="'+obj.pdata.property_name+'" class="photograph FltLft ai-filtreted-hotel-name" rel="'+obj.pdata.id+'" href="{{URL::to()}}/'+obj.pdata.property_slug+'">';
+                        html +='<a title="'+obj.pdata.property_name+'" class="photograph FltLft ai-filtreted-hotel-name" rel="'+obj.pdata.id+'" href="{{URL::to('/')}}/'+obj.pdata.property_slug+'">';
                         html +=obj.pdata.property_name;
                         html +='</a>';
                         html +='<span class="FltRgt">';
