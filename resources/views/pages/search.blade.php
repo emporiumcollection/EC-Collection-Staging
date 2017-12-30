@@ -1016,17 +1016,27 @@ function scrollDataAjax(it_scroll,pageCounter)
 
 
 var pageCounter = 2;
+var previousScroll = 0;
 $(window).scroll(function () {
+
+        var currentScroll = $(this).scrollTop();
+       if (currentScroll > previousScroll){
+           console.log('down');
+       } else {
+          console.log('up');
+       }
+       previousScroll = currentScroll;
 
         var windowScrollTop =  $(window).scrollTop() + ($('#listproperties').offset().top / 2);
            
             var documentHeight = $('#listproperties').innerHeight();
-             console.log('windowScrollTop  : ' + windowScrollTop+ 'document height : '+ documentHeight);
+
+             console.log('windowScrollTop  : ' + windowScrollTop+ ' document height : '+ documentHeight);
             if(windowScrollTop >= documentHeight) {
                 var it_scroll = true;
                 scrollDataAjax(it_scroll, pageCounter);
                 pageCounter++;
-                console.log('Ok! windowScrollTop  : ' + windowScrollTop+ 'document height : '+ documentHeight);
+                console.log('Ok! Fired Ajax');
             }
     });
 
