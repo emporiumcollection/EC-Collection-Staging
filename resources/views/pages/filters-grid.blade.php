@@ -433,6 +433,93 @@ return fasle;
                     <div class="filter-page-main-align">
                         <div class="col-md-10 col-sm-9">
                             <div class="row">
+                                <!-- AIC Harman top bar adding -->
+                                <section class="book-form-top-bar">
+                                    <div>
+                                        <div class="booking-form-bar-top">
+                                            <form autocomplete="off" method="get" id="searchform-navbar" class="searchform-navbar top-bar-search-form-align" action="{{URL::to('search')}}">
+                                                <div class="col-md-3">
+                                                    <div class="row">
+                                                        <div class="form-group would-like-input top-bar-search padding-right-12">
+                                                            <input  class="form-control ai-custom-deafault-style bh-search-input typeahead search-box searchbox_landing" name="s" id="search-navbar" placeholder="Enter Your Hotel or Destination" type="text" required="required">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="row">
+                                                        <div id="top-bar-search-booking-form">
+                                                            <div class="col-md-6">
+                                                                <div class="row">
+                                                                    <div class="form-group padding-right-12">
+                                                                        <input id="top-bar-search-booking-form-arrive" class="form-control ai-custom-deafault-style" name="arrive" type="text" placeholder="Arriving">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="row">
+                                                                    <div class="form-group padding-right-12">
+                                                                        <input id="top-bar-search-booking-form-destination" class="form-control ai-custom-deafault-style" name="destination" type="text" placeholder="Departing">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="row">
+                                                        <div class="form-group padding-right-12">
+                                                            <div class="dropdown top-search-members-list">
+                                                                <div class="top-search-members-inner-align">
+                                                                    <div class="members-list ai-custom-deafault-style">
+                                                                        <span id="adults-val">1</span>
+                                                                        Adults,
+                                                                        <span id="childern-val">0</span>
+                                                                        Children
+                                                                        <span class="right-down-arrow">
+                                                                            <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <ul class="members-drop-list" style="display: none;">
+                                                                        <li>
+                                                                            <label>Adult</label>
+                                                                            <input id="adult-input-value" name="adult" class="input-right" value="2" min="1" max="5" type="number">
+                                                                        </li>
+                                                                        <li>
+                                                                            <label>Children</label>
+                                                                            <input id="childerns-input-value" name="childs" class="input-right" value="0" min="0" max="5" type="number">
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-1">
+                                                    <div class="row">
+                                                        <div class="form-group padding-right-12">
+                                                            <button class="top-booking-bar-btn" type="submit">Search</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <!-- AIC Harman email phone sidebar add start -->
+                                        
+<!--                                            <aside class="site-aside">
+                                                <div class="contact-aside">
+                                                    <ul class="contact-aside-list">
+                                                        <li class="contact-list-item contact-phone"><a href="tel:+49 172 8937230"><i class="fa fa-phone asideIclass" aria-hidden="true"></i> +49 172 8937230</a></li>
+                                                        <li class="contact-list-item contact-email"><a href="mailto:bookings@emporium-voyage.com"><i class="fa fa-envelope asideIclass" aria-hidden="true"></i> bookings@emporium-voyage.com</a></li>
+                                                    </ul>
+                                                </div>
+                                            </aside>-->
+                                        
+                                        <!-- AIC Harman email phone sidebar add end -->
+                                        
+                                    </div>
+                                </section>
+                                <!-- top bar end-->
+                                
                                 <script src="{{ asset('sximo/assets/js/fliters.js')}}" type="text/javascript"></script>
                                 <script src="{{ asset('sximo/assets/js/moment.min.js')}}" type="text/javascript"></script>
                                 <script src="{{ asset('sximo/assets/js/combodate.js')}}" type="text/javascript"></script>
