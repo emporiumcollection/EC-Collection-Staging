@@ -16,14 +16,6 @@
         <script src="{{ asset('sximo/assets/js/jquery-2.1.0.min.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/bootstrap.min.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/jquery-ui.js')}}" type="text/javascript"></script>
-        
-        <!-- AIC sidebar js -->
-        <script src="{{ asset('sximo/assets/js/jquery_1.js')}}" type="text/javascript"></script>
-        <script src="{{ asset('sximo/assets/js/custm.js')}}" type="text/javascript"></script>
-        <script src="{{ asset('sximo/assets/js/TweenMax.min41e7.js')}}" type="text/javascript"></script>
-        <script src="{{ asset('sximo/assets/js/menu41e7.js')}}" type="text/javascript"></script>
-        
-        
         <script src="{{ asset('sximo/assets/js/moment.min.js')}}" type="text/javascript" ></script>
         <script src="{{ asset('sximo/assets/js/jquery.daterangepicker.min.js')}}" type="text/javascript" ></script>
         <script src="{{ asset('sximo/assets/js/html2canvas.js')}}" type="text/javascript"></script>
@@ -33,7 +25,11 @@
         <script src="{{ asset('sximo/assets/js/m_slider.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/open-search.js')}}" type="text/javascript"></script>
         
-        
+<!--         AIC sidebar js 
+        <script src="{{ asset('sximo/assets/js/jquery_1.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('sximo/assets/js/custm.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('sximo/assets/js/TweenMax.min41e7.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('sximo/assets/js/menu41e7.js')}}" type="text/javascript"></script>-->
         
         <style>
             #search-navbar.search-navbar-destination-search-box {
@@ -2547,6 +2543,11 @@
                 });
             });
         </script>
+        <!-- AIC sidebar js -->
+        <script src="{{ asset('sximo/assets/js/jquery_1.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('sximo/assets/js/custm.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('sximo/assets/js/TweenMax.min41e7.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('sximo/assets/js/menu41e7.js')}}" type="text/javascript"></script>
         @include('layouts/elliot/ai_search-page')
         @include('layouts/elliot/ai_booking-page')
         @include('layouts/elliot/ai_newsletter')
