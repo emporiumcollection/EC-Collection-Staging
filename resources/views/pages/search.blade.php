@@ -1322,7 +1322,7 @@ function scrollDataAjax(it_scroll,pageCounter)
                         var sliderHTML = '';
                 
                 
-                    html += '<div class="row animate-bottom">';
+                 //   html += '<div class="row animate-bottom">';
                     var p = 1;
                     var node_no = 1;
                     var total_rows = 0;
@@ -1480,7 +1480,7 @@ function scrollDataAjax(it_scroll,pageCounter)
                             $('.locator').parent().css('padding-top','0px');
                         }
                         $(".searchcount").html(data.ttl + ' Hotel(s) Found for ' + $(".ai_search_keywords").val());
-                        html += '</div>';
+                       // html += '</div>';
                         if (it_scroll == false){
 
                             $('#listproperties ul').html('<li class="grid-sizer"></li>'+html);
@@ -1675,7 +1675,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
             $(".grid-page-category-slider-container").html( sliderHTML );
             $('.uk-slideshow:first-child .ai-uk-animation .bh-slideshow-thumbnail-split-preview').delay(3000).fadeIn(5000);
             $('.ai-uk-animation:first .bh-slideshow-thumbnail-split-preview').addClass('uk-animation-fade');
-        html += '<div class="row animate-bottom">';
+        //html += '<div class="row animate-bottom">';
         var p = 1;
         var node_no = 1;
         var total_rows = 0;
@@ -1834,7 +1834,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
             $('.locator').parent().css('padding-top','0px');
         }
         $(".searchcount").html(data.ttl + ' Hotel(s) Found for ' + $(".ai_search_keywords").val());
-        html += '</div>';
+        //html += '</div>';
         if (it_scroll == false)
         {
         $('#listproperties ul').html('<li class="grid-sizer"></li>'+html);
