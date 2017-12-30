@@ -393,17 +393,17 @@ return fasle;
             z-index: 1028;
     }
         .contact-aside {
-	border-radius: 2px;
-	transition: .5s;
-	position: fixed;
-	top: 52%;
-	left: calc(100% - 43px);
-	width: 291px;
-	background: #272727;
-	color: #fff;
-	font-size: 15px;
-	right: 0;
-    }
+            border-radius: 2px;
+            transition: .5s;
+            position: fixed;
+            top: 63px;
+            left: calc(100% - 43px);
+            width: 291px;
+            background: #272727;
+            color: #fff;
+            font-size: 15px;
+            right: 0;
+        }
         .contact-aside ul {
             padding: 7px 0;
             list-style: none;
@@ -445,16 +445,6 @@ return fasle;
         }
         
          /* sidebar css */
-         
-         /* header static */
-         
-         header {
-	left: 95%;
-	position: fixed;
-	top: 30px;
-	z-index: 9999;
-	right: 0;
-    }
             
             
         </style>
@@ -474,44 +464,45 @@ return fasle;
             <div class="container-fluid">
                 <div class="row">
                     <header>
-                <a data-popup-id="login-forms-popup" href="#" class="video-popup-btn login_popup show-login-forms-btn"><i class="fa fa-lock " aria-hidden="true"></i></a>
-				<div class="logo-padding-left editorial-logo-align">
-					<!--<div>
-						<a href="#" title="Add to Favorites" class="book-button" onclick="add_to_lightbox(55178, 2283);"><i class="fa fa-plus " aria-hidden="true" ></i> Add</a>
-					</div>-->
-					<div class="go-back-button-container">
-						<button class="go-back-button" onclick="goBack()">Go Back</button>
-						<div class="previous-page-screen-short-container">
-															<img src="http://www.emporium-voyage.com/sximo/previous_page_image/d93f024a6531961dae1e040da5d4fb3a.jpg">
-													</div>
-					</div>
-				</div>
-                											<div class="hotel-next-previous-outer">
-							<div class="previous-btn previous-next-pannel"> 
-								  <img class="img-responsive next-hotel-arrow" src="http://www.emporium-voyage.com/sximo/assets/images/editorial-left-arrow.png" alt="">
-								<a href="http://www.emporium-voyage.com/chetzeron">
-									<div class="next-hotel-show-pannel">
-										<img class="img-responsive" src="http://www.emporium-voyage.com/uploads/property_imgs_thumbs/front_property_4583_CHETZERON (2).jpg" alt="">
-										<div class="next-hotel-tittle">
-											<h2>Chetzeron</h2>
-										</div>
-									</div>
-								</a>
-							</div>
-						</div>
-																<div class="hotel-next-previous-outer">
-							<div class="next-hotel-btn previous-next-pannel"> 
-								<img class="img-responsive next-hotel-arrow" src="http://www.emporium-voyage.com/sximo/assets/images/editorial-right-arrow.png" alt="">
-								<a href="http://www.emporium-voyage.com/luxury-hotel-huus-gstaad">
-									<div class="next-hotel-show-pannel">
-										<img class="img-responsive" src="http://www.emporium-voyage.com/uploads/property_imgs_thumbs/front_property_4584_89305252416-54391265743.jpg" alt="">
-										<div class="next-hotel-tittle">
-											<h2>Huus Gstaad</h2>
-										</div>
-									</div>
-								</a>
-							</div>
-						</div>
+<!--                        <div class="container-fluid editorial-logo-align">
+                            <div class="col-md-12-">
+                                <p><a class="logo-d" href="{{url()}}">D</a></p>
+                            </div>
+                            <div class="col-md-12-">
+                                <h2 class="menu-text-align">Home</h2>
+                            </div>
+                            <div class="col-md-12- menu">
+                                <a href="#"><img class="menu-button" src="{{ asset('sximo/assets/images/menu.png')}}" alt=""/></a>
+                                <ul style="display: none;">
+                                    <li>
+                                        <a href="home.html">Get Inspired</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="trigger-click-on-book-now">By Date</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Personalized Service</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">About</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-12-">
+                                <div class="row">
+                                    <a href="#" class="book-button open-book-now-page">BOOK</a>
+                                </div>
+                            </div>
+                            <div class="go-back-button-container">
+                                @if(isset($_GET['ref']) && $_GET['ref']!='' )
+                                <button class="go-back-button" id="back_button_page">Go Back</button> 
+
+                                @else
+                                <button class="go-back-button" onclick="goBack()">Go Back</button>
+                                @endif
+                                <div class="previous-page-screen-short-container"></div>
+                            </div>
+                        </div>-->
                     </header>
                     <!--AIC header -->
                     
