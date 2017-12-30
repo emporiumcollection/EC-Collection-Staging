@@ -819,7 +819,7 @@ function scrollDataAjax(it_scroll,pageCounter)
     }
     
     $(".ai-scrollDownloadData-filter-running").val("1");
-    var nxtpg = pageCounter;
+    var nxtpg = $('#nxtpg').val();
     var offSet = 12, isPreviousEventComplete = true, isDataAvailable = true;
     var sIndex = $('#listrecrds').val();
     var queryStrng = '';
