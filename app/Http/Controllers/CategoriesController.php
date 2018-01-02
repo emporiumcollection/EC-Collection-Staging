@@ -94,6 +94,16 @@ class CategoriesController extends Controller {
 		
 		$this->data['parent_categories'] = $parent_cat;
 		// Render into template
+		
+		if($request->input('ctupdate') == 'yes')
+		{
+			foreach($results['rows'] as $catup)
+			{
+				$udata['category_custom_title'] = 'Luxury Destination '.$catup->category_name;
+				\DB::table('tb_categories')->where('id', $catup->id)->where('parent_category_id', '!=', 8)->update($udata);
+			}
+		}
+		
 		return view('categories.index',$this->data);
 	}	
 
