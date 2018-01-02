@@ -2281,9 +2281,16 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                                 <div class="panel-body custom-panel-body">
                                                     <div class="dl-filter">
                                                         <form>
-                                                            <div class="form-group post-filter-inputs">
-                                                                <label><a onclick="experience_property_filter('Beach Hotels');" href="javascript:void(0);">Luxury Beach Hotels</a></label>
-                                                            </div> 
+															@if(!empty($experiences))
+																@foreach($experiences as $experience)
+																	<div class="form-group post-filter-inputs">
+																		<label><a onclick="experience_property_filter('{{$experience->category_name}}');" href="javascript:void(0);">{{$experience->category_custom_title}}</a></label>
+																	</div>
+																@endforeach
+															@endif
+															<!--<div class="form-group post-filter-inputs">
+																<label><a onclick="experience_property_filter('Beach Hotels');" href="javascript:void(0);">Luxury Beach Hotels</a></label>
+															</div>
                                                             <div class="form-group post-filter-inputs post-filter-inputs">
                                                                 <label><a onclick="experience_property_filter('Green Properties');" href="javascript:void(0);">Luxury Green Hotels</a></label>
                                                             </div> 
@@ -2310,7 +2317,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                                             </div> 
                                                             <div class="form-group post-filter-inputs">
                                                                 <label><a onclick="experience_property_filter('Unusual Adventure Hotels');" href="javascript:void(0);">Unusual Adventure Hotels</a></label>
-                                                            </div>
+                                                            </div>-->
                                                         </form>
                                                     </div>
                                                 </div>
