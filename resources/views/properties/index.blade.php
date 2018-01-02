@@ -73,7 +73,7 @@
 				<th>Property City</th>
 				<th>Website</th>
 				<th>Email</th>
-				<th width="180" >{{ Lang::get('core.btn_action') }}</th>
+				<th width="210" >{{ Lang::get('core.btn_action') }}</th>
 			  </tr>
         </thead>
 
@@ -87,7 +87,7 @@
 					<td> <a target="_blank" href="{{(strpos($row->website, 'http') !== false) ? $row->website : 'http://'.$row->website }}">{{$row->website}}</a> </td>
 					<td> {{$row->email}} </td>
 				 <td>
-						@if($row->assign_detail_city!=0 && $row->assign_detail_city!='')
+						@if($row->assign_detail_city!=0)
 							<a href="#" class="tips btn btn-xs btn-primary" title="City Assigned"><i class="fa  fa-check "></i></a>
 						@else
 							<a href="#" class="tips btn btn-xs btn-danger" title="please assign city"><i class="fa  fa-times "></i></a>
