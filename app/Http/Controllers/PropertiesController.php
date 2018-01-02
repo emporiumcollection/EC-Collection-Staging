@@ -94,24 +94,6 @@ class PropertiesController extends Controller {
         $this->data['subgrid'] = (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array());
         // Render into template
 		$this->data['fetch_cat'] = \DB::table('tb_categories')->get();
-		
-		foreach ($results['rows'] as $row){
-			$propshort_name = 'Luxury Hotel '.$row->property_short_name;
-			$alias = \SiteHelpers::seoUrl($propshort_name);
-			$exha = false;
-			for ($f = 1; $exha != true; $f++) {
-				$check_alias = \DB::table('tb_properties')->where('property_slug', $alias)->where('id', '!=', $row->id)->count();
-				if ($check_alias > 0) {
-					$alias = $alias . '-' . $f;
-				} else {
-					$alias = $alias;
-					$exha = true;
-				}
-			}
-			$udata['property_short_name'] = $propshort_name;
-			$udata['property_slug'] = $alias;
-			\DB::table('tb_properties')->where('id', $row->id)->update($udata);
-		}
         return view('properties.index', $this->data);
     }
 
