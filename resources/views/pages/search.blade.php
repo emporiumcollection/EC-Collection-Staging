@@ -409,28 +409,27 @@
             z-index: 1028;
     }
         .contact-aside {
-            border-radius: 2px;
-            transition: .5s;
-            position: fixed;
-            top: 228px;
-            left: calc(100% - 38px);
-            width: 291px;
-            background: #272727;
-            color: #fff;
-            font-size: 15px;
-            right: 0;
+	border-radius: 2px;
+	transition: .5s;
+	position: fixed;
+	top: 228px;
+	left: calc(100% - 66px);
+	width: 340px;
+	background: #272727;
+	color: #fff;
+	font-size: 15px;
+	right: 0;
         }
         .contact-aside ul {
             padding: 7px 0;
             list-style: none;
         }
         .contact-aside li {
-	padding: 6.333px 0px 6px 5px;
-	margin: 0px 5px 1px 0px;
+	padding: 6px 0px 6px 18px;
+	margin: 0px 0px 1px 0px;
         }
-        .contact-aside {
-            color: #fff;
-            font-size: 15px;
+        .contact-aside li a {
+            margin-left: 14px;
         }
         .contact-aside [class*="icon-"] {
             display: inline-block;
@@ -463,7 +462,7 @@
         .emporium-voyage-Menu {
 	color: #c7ab84;
 	margin-top: 3px;
-	margin-left: 0px;
+	margin-left: 30px;
 	opacity: 1;
 	box-shadow: none;
 	font-size: 20px;
@@ -493,7 +492,7 @@
     
     .show-login-forms-btn {
 	display: inline-block;
-	padding: 5px 0;
+	padding: 5px 19px;
 	text-align: center;
 	vertical-align: text-top;
 	width: 0%;

@@ -121,13 +121,15 @@ body{
   width: 214px !important;
 }*/
 .go-back-button {
-    background-color: #d3d6d2;
-    border: 0 none;
-    border-radius: 0;
-    font-size: 13px;
-    height: 38px;
-    padding: 7px;
-    width: 65px;
+	background-color: #283D3E;
+	border: 0 none;
+	border-radius: 0;
+	font-size: 13px;
+	height: 38px;
+	padding: 7px;
+	width: 65px;
+	opacity: 1;
+	color: white;
 }
 .width-auto{
     width: auto;
