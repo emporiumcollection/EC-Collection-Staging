@@ -97,6 +97,7 @@ class CategoriesController extends Controller {
 		
 		if($request->input('ctupdate') == 'yes')
 		{
+			die;
 			foreach($results['rows'] as $catup)
 			{
 				$udata['category_custom_title'] = 'Luxury Destination '.$catup->category_name;
