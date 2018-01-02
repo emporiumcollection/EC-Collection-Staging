@@ -953,6 +953,13 @@
                             .spa-sec-view-gallery span {
                                 margin-top: 16px;
                             }
+                            
+                            header {
+                                right: 0;
+                                position: fixed;
+                                top: 0;
+                                z-index: 9999;
+                            }
 
                             
                             
