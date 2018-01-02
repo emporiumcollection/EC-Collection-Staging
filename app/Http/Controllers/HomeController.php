@@ -126,6 +126,8 @@ class HomeController extends Controller {
 
                         $this->data['slider'] = \DB::table('tb_sliders')->select('slider_category', 'slider_title', 'slider_description', 'slider_img', 'slider_link', 'slider_video', 'slide_type')->where('slider_category', 'Landing')->get();
                         $this->data['categoryslider'] = \DB::table('tb_sliders')->where('slider_category', 'Landing')->get();
+						
+						$this->data['experiences'] = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_custom_title')->where('parent_category_id', 8)->get();
 
                         $destts = array();
                         $maindest = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name')->where('parent_category_id', 0)->where('id', '!=', 8)->get();
