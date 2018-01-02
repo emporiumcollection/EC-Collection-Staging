@@ -16,7 +16,7 @@ class PropertiesController extends Controller {
     protected $layout = "layouts.main";
     protected $data = array();
     public $module = 'properties';
-    static $per_page = '500';
+    static $per_page = '100';
 
     public function __construct() {
 
