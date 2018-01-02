@@ -1445,7 +1445,7 @@
                             <!--Search By Date Page Start Here-->
                             
                             <div style="display: none;" class="editorial-book-now-page sec-differentiate-line " id="book-now">
-                                <form class="landing-page-booking-form" action="{{url().'/book-property/'.$propertyDetail['data']->property_slug}}" method="get">
+                                <form class="landing-page-booking-form" action="<?php echo (isset($landinggridpropertiesArr[0]))? url().'/book-property/'.$landinggridpropertiesArr[0]['data']->property_slug : 0 ?>" method="get">
                                     <input type="hidden" name="property" id="property" value="<?php echo (isset($landinggridpropertiesArr[0]))? $landinggridpropertiesArr[0]['data']->id : 0 ?>" />
                                     <input type="hidden" name="roomType" id="roomType" value="" />
                                     <div class="book-now-page-content-">
