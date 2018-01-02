@@ -2699,6 +2699,14 @@ url: "{{ URL::to('filter_search_destionation')}}",
                     function(){ $(this).removeClass('active') }
                 )
          </script>
+         
+         <!-- contact email aside -->
+                <script> 
+                    $('.contact-aside').hover(
+                        function(){ $(this).addClass('active') },
+                        function(){ $(this).removeClass('active') }
+                    )
+                </script>
 
 
            <style>
