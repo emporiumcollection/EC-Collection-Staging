@@ -36,6 +36,17 @@
         <script src="{{ asset('sximo/assets/js/custm.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/TweenMax.min41e7.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/menu41e7.js')}}" type="text/javascript"></script>
+        
+        <script>
+            $(document).ready(function() {
+                $(".experience-page .width-20").mouseover(function(){
+                    $(".experience-page").css('background-image', "url(" + $(this).find("img").attr("src") + ")");
+                }).mouseleave(function(){
+                    $(".experience-page").css('background-image', "url({{ asset('sximo/assets/images/GoExperienceBackground.jpg')}})");
+                });
+            });
+        </script>
+        
         <script src="{{ asset('sximo/landing_new/js/swiper.min.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/landing_new/js/main.js')}}" type="text/javascript"></script>
         <style>
@@ -2844,12 +2855,6 @@
         
         <script type="text/javascript">
             $(document).on('ready', function () {
-                
-                $(".experience-page .width-20").mouseover(function(){
-                    $(".experience-page").css('background-image', "url(" + $(this).find("img").attr("src") + ")");
-                }).mouseleave(function(){
-                    $(".experience-page").css('background-image', "url({{ asset('sximo/assets/images/GoExperienceBackground.jpg')}})");
-                });
                 
                 $(".regular").slick({
                     dots: false,
