@@ -484,12 +484,6 @@
     
     /* go back buttons */
     
-    header {
-	position: fixed;
-	top: 30px;
-	z-index: 9999;
-        right:0;
-    }
         
          /* sidebar css */
         </style>
