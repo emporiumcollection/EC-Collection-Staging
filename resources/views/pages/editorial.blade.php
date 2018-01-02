@@ -62,6 +62,7 @@
 		<script src="{{ asset('sximo/assets/newgrid/js/wow.min.js')}}" type="text/javascript"></script>
 		<script src="{{ asset('sximo/assets/newgrid/js/jquery.fitvids.js')}}" type="text/javascript"></script>
 		<script src="{{ asset('sximo/assets/newgrid/js/skill.bars.jquery.js')}}" type="text/javascript"></script>
+                <script src="{{ asset('sximo/assets/newgrid/js/main.js')}}" type="text/javascript"></script>
         <script>
 			jQuery(document).ready(function ($) {
 				$(".regular").slick({
@@ -944,7 +945,6 @@
 
         </style>
 		<!-- Global site tag (gtag.js) - Google Analytics -->
-                <script src="{{ asset('sximo/assets/newgrid/js/main.js')}}" type="text/javascript"></script>
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110391807-1"></script>
 		<script>
 		  window.dataLayer = window.dataLayer || [];
