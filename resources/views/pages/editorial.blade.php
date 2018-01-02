@@ -953,6 +953,13 @@
                             .spa-sec-view-gallery span {
                                 margin-top: 16px;
                             }
+                            
+                            .emporium-voyage-Menu {
+                                font-size: 20px;
+                                color: #ABA07C;
+                                top: 31px;
+                                position: absolute;
+                            }
 
                             
                             @import url('https://fonts.googleapis.com/css?family=Caveat');
