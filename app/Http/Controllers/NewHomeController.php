@@ -7046,8 +7046,8 @@ class NewHomeController extends Controller {
 
 
                 if(!empty($destts)){
-                     $ourdesitnationHTML  .= '';
-                    foreach($ourdesitnation as $destination){
+                     $ourdesitnationHTML  = '';
+                    foreach($destts as $destination){
                         $ourdesitnationHTML  .= '<div class="panel panel-default  destination-sub-menues">';
                         $ourdesitnationHTML  .= '<a class="collapsed" data-toggle="collapse" data-parent="#accordion1" href="#collapse-inner'.$destination['maincat']->id.'">';
                         $ourdesitnationHTML  .= '<div class="destination-panel-heading">';
@@ -7065,7 +7065,7 @@ class NewHomeController extends Controller {
                                             $ourdesitnationHTML  .= '<div class="panel panel-default">';
                                             $ourdesitnationHTML  .= '<div class="panel-heading">';
                                             $ourdesitnationHTML  .= '<h4 class="margin-top-15 panel-title pull-left">';
-                                            $ourdesitnationHTML  .= '<a data-toggle="collapse" data-parent="#inner-level-accordian" href="#destination-child.'$childDest->id.'">'.$childDest->category_name.'</a>';
+                                            $ourdesitnationHTML  .= '<a data-toggle="collapse" data-parent="#inner-level-accordian" href="#destination-child.'.$childDest->id.'">'.$childDest->category_name.'</a>';
                                             $ourdesitnationHTML  .= '</h4>';
                                             $ourdesitnationHTML  .= '</div>';
                                                 if (array_key_exists("subchild",$childDest)){
