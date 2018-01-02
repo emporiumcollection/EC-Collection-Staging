@@ -1443,6 +1443,81 @@
                             </div>
                             <!--Destination Page  End Here-->
                             <!--Search By Date Page Start Here-->
+                            
+                            <div style="display: none;" class="editorial-book-now-page sec-differentiate-line " id="book-now">
+                                <form class="landing-page-booking-form" action="{{url().'/book-property/'.$propertyDetail['data']->property_slug}}" method="get">
+                                    <input type="hidden" name="property" id="property" value="<?php echo (isset($landinggridpropertiesArr[0]))? $landinggridpropertiesArr[0]['data']->id : 0 ?>" />
+                                    <input type="hidden" name="roomType" id="roomType" value="" />
+                                    <div class="book-now-page-content-">
+                                        <div class="editoral-book-page-headings">
+                                            <h2>Emporium Voyage is your ideal, vogue vacation planner!</h2>
+                                            <p>With over 300 posh properties, elite spas and exquisite yachts huddled in its cocoon, Emporium Voyage ensure the ultimate luxury experience</p>
+                                        </div>
+                                        <ul class="dates" id="editorial-book-now-inputs">
+                                            <li>
+                                                <div class="editorail-heading">Arrive</div>
+                                                <input id="date-range-editorial-arrive" name="arrive" class="datePicker- dateFrom-" value="{{ ($arrive_date!='') ? $arrive_date : date('d.m.Y') }}" type="text" />
+                                            </li>
+                                            <li>
+                                                <div class="heading">Departure</div>
+                                                <input id="date-range-editorial-destination" name="destination" class="datePicker- dateFrom-" value="{{ ($destination_date!='') ? $destination_date : '' }}" type="text" />
+                                            </li>
+                                        </ul>
+                                        <ul class="dates">
+                                            <li>
+                                                <div class="heading">Adults</div>
+                                                <select name="booking_adults">
+                                                    <option {{ ($adults!='' && $adults==1) ? 'selected' : '' }}>1</option>
+                                                    <option {{ ($adults!='' && $adults==2) ? 'selected' : '' }}>2</option>
+                                                    <option {{ ($adults!='' && $adults==3) ? 'selected' : '' }}>3</option>
+                                                </select>
+                                            </li>
+                                            <li>
+                                                <div class="heading">Children</div>
+                                                <select name="booking_children">
+                                                    <option {{ ($childs!='' && $childs==0) ? 'selected' : '' }}>0</option>
+                                                    <option {{ ($childs!='' && $childs==1) ? 'selected' : '' }}>1</option>
+                                                    <option {{ ($childs!='' && $childs==2) ? 'selected' : '' }}>2</option>
+                                                </select>
+                                            </li>
+                                            <div class="clearfix"></div>
+                                        </ul>
+                                        <div class="clearfix"></div>
+                                        <div class="editorial-submit-btn">
+                                            <button type="submit">BOOK NOW</button>
+                                        </div>
+                                        <div class="view-modify-cancel-booking">
+                                            <a href="#">View, Modify or Cancel your Booking</a>
+                                        </div>
+                                        <ul class="booking-page-footer-section editorial-book-align" >
+                                            <li>
+                                                <a href="#" target="_blank">
+                                                    <span>Join the worlds leading luxury club</span>
+                                                    <h6 class="center">Enjoy exclusive members only benefits</h6>
+                                                </a>
+                                                <div class="white-border-bottom"></div>
+                                            </li>
+                                            <li>
+                                                <a href="#" target="_blank">
+                                                    <span>Spa Treatment</span>
+                                                    <h6 class="center">Book</h6>
+                                                </a>
+                                                <div class="white-border-bottom"></div>
+                                            </li>
+                                            <li>
+                                                <a href="#" target="_blank">
+                                                    <span>View or Modify Reserveration</span>
+                                                    <h6 class="center">Login to Support Center</h6>
+                                                </a>
+                                                <div class="white-border-bottom"></div>
+                                            </li>
+                                            <div class="clearfix"></div>
+                                        </ul>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </form>
+                            </div>
+                            
                             <div class="row">
                                 <div class="book-now-page date-page" <?php if(isset($_GET['ref']) && $_GET['ref']=='sbd'){ echo 'style="width:100%;"';}?>>
                                     <div class="book-now-page-content open-date-html">
@@ -1638,6 +1713,16 @@
                                             });
                                             return false;
                                         });
+                                        
+                                        function choose_room_type(type) {
+                                            $('#roomType').val('');
+                                            if (type != '' && type > 0)
+                                            {
+                                                $('#roomType').val(type);
+                                                $(".landing-page-booking-form").trigger("submit");
+                                            }
+                                        }
+                                        
                                         $(".editorial-image-slider-previous-btn").click(function ( event ) {
                                             event.preventDefault();
         
