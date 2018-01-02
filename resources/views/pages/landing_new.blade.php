@@ -1602,6 +1602,42 @@
                                     </div>
                                     @endif
                                     <script>
+                                        $(document).on('click', '.open-show_more-page', function () {
+                                            $('.show_more-page').css("background-image", "");
+                                            $('.single-right-text-product').html('');
+                                            $('.rmimgp').html('');
+                                            $.ajax({
+                                                url: "{{ URL::to('getpropertytypedetail')}}" + '/' + $(this).attr('rel'),
+                                                type: "get",
+                                                success: function (data) {
+                                                    var rimg = data.roomimgs.imgsrc_cache;
+                                                    $('.rmimgp').html('<div class="right-text-section"></div>');
+                                                    $('.show_more-page').css("background-image", "url('" + rimg + "')");
+                                                    var imagesPro = '';
+                                                    imagesPro += '<div class="text-section">';
+                                                    imagesPro += '<h2>' + data.typedata.category_name + '</h2>';
+                                                    imagesPro += '<p>' + data.amenities.amenities_eng.replace(/\n/g, "<br />") + '</p>';
+                                                    imagesPro += '<p>' + data.typedata.room_desc + '</p>';
+                                                    imagesPro += '</div>';
+                                                    imagesPro += '<div class="book-btn-sec">';
+                                                    if (data.typedata.price != '')
+                                                    {
+                                                        imagesPro += '<div class="hotel-book-price">';
+                                                        imagesPro += (data.currency.content != '') ? data.currency.content : '$';
+                                                        imagesPro += data.typedata.price;
+                                                        imagesPro += '</div">';
+                                                    }
+                                                    imagesPro += '</div>';
+                                                    imagesPro += '<div class="inner-pop-up-book-btn">';
+                                                    imagesPro += '<a href="#" onclick="choose_room_type(' + data.typedata.id + ');">Book</a>';
+                                                    imagesPro += '</div>';
+                                                    imagesPro += '</div>';
+                                                    $('.single-right-text-product').html(imagesPro);
+                                                    $('.show_more-page').css("width", "100%");
+                                                }
+                                            });
+                                            return false;
+                                        });
                                         $(".editorial-image-slider-previous-btn").click(function ( event ) {
                                             event.preventDefault();
         
@@ -1651,6 +1687,28 @@
                                 </div>
                             </div>
                             @endif
+
+                            <div class="hotel-property-section-bg">
+                                <div class="clearfix"></div>
+                                <!--Show More Slide-->
+                                <div class="show_more-page">
+                                    <div class="open-show_more-html">
+                                        <div><a class="close-btn-show_more close-btn-align" href="#">&times;</a></div>
+                                        <div class="container-">
+                                            <div class="row-">
+                                                <div class="clearfix"></div>
+                                                <div class="col-md-6 col-sm-6 rmimgp">
+
+                                                </div>
+                                                <div class="col-md-6 col-sm-6 single-right-text-product">
+
+                                                </div>
+                                            </div>	
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
                             <!--Property Slider End-->
                             
                             <!--Featured Properties Start-->
