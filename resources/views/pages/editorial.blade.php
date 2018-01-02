@@ -932,6 +932,16 @@
                                 font-size: 17px;
                                 margin-bottom: 0.3em;
                             }
+                            
+                            /* AIC 2-1-2018 color correction */
+                            
+                            .headings > h2 {
+                                font-size: 36px;
+                            }
+                            .headings > p {
+                                color: #c7ab84;
+                                font-size: 16px;
+                            }
 
                             
                             

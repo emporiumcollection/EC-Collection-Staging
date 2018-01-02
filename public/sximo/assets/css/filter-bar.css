@@ -28,7 +28,7 @@ and open the template in the editor.
 	border-radius: 0;
 	padding: 34px 30px;
 	opacity: unset;
-	background-color: rgba(37,37,37,0.9);
+	background-color: rgba(37, 37, 37, 1);
 }
 .heading-stying {
     color: #fff !important;
@@ -44,7 +44,7 @@ and open the template in the editor.
 .design-locations-logo {
 	border-bottom: 1px solid;
 	padding: 11px 19px 40px 20px;
-	background-color: rgba(37,37,37,0.9);
+	background-color: rgba(37, 37, 37, 1);
 }
 .custom-post-panel {
     border-bottom: thin solid !important;

@@ -3208,13 +3208,13 @@ div.panel.footer-nav-menu.show {
     margin-top: 13px !important;
     padding: 5px;
     width: auto !important;
-    background: #000;
+    background: rgba(37,37,37);
 }
 .date-picker-wrapper .month-wrapper table .day.toMonth.valid {
     color: #fff;
 }
 .date-picker-wrapper {
-    background-color: #000;
+    background-color: rgba(37,37,37);
     /* margin-top: -103px; */
     left: 20% !important;
     border: none;
