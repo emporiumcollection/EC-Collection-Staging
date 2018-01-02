@@ -132,7 +132,7 @@
             .hotels-image-showcase-des-text > p {
                 font-size: 15px;
                 line-height: 30px;
-                margin-top: 40px;
+                margin-top: 0px;
                 font-family: Geomanist-Light;
             }
             .hotel-block-two-right-sec-align > h2{
@@ -286,7 +286,9 @@
                                 color: #fff;
                                 z-index: 0;
                                 font-family: geomanist-regular;
-                                padding: 20px 32px 264px 75px;
+                                padding: 19px 32px 296px 75px;
+                                height: 650px;
+                                /* margin-top: auto; */
                             }
                             .editorial-hotel-detail-page button.go-back-button {
                                 background-color: \\;
@@ -333,12 +335,12 @@
                                     filter: brightness(.8);
                             }
                             .hotels-detail-description-text {
-                                margin-top: 30px;
+                                margin-top: 232px;
                             }
                             .hotels-image-showcase-des-text > p {
                                 font-size: 15px;
                                 line-height: 30px;
-                                margin-top: 227px;
+                                margin-top: 0px;
                             }
                             .hotel-block-two-right-sec-align > p {
                                 color: white;
@@ -519,30 +521,29 @@
                             }
                             
                             .hotels-detail-heading-text > p {
-                                color: white;
-                                font-size: 32px;
-                                font-family: ACaslonPro-Regular;
-                                letter-spacing: 3px;
-                                line-height: 35px;
-                                float: none;
-                                width: 50%;
-                                text-transform: uppercase;
-                                height: auto;
-                                background: rgba(0,0,0,0.8);
-                                margin: 0;
-                                padding: 8% 0% 0% 7%;
+                                    color: white;
+                                    font-size: 32px;
+                                    font-family: ACaslonPro-Regular;
+                                    letter-spacing: 3px;
+                                    line-height: 35px;
+                                    float: none;
+                                    width: 50%;
+                                    text-transform: uppercase;
+                                    height: auto;
+                                    margin: 0;
+                                    padding: 8% 0% 0% 7%;
                             }
                             
                             .hotels-showcase-right-side {
                                 background-blend-mode: multiply;
-                                background-color: #2f2f2e;
+/*                                background-color: #2f2f2e;*/
+                                background-image: url("../images/blakes-hotel-luxury-suite-R-5.jpg");
                                 background-position: center center;
                                 background-repeat: no-repeat;
                                 background-size: cover;
                                 color: #fff;
                                 font-family: Geomanist-Regular;
-                                /* padding: 516px 49px 90px 30px; */
-                                margin-top: -159px;
+                                padding: 224px 49px 90px 30px;
                             }
                             
                             .image-showcase-below-big-text {
@@ -553,6 +554,11 @@
                                 margin-top: 36px;
                                 margin-top: 70px;
                                 text-transform: uppercase;
+                            }
+                            
+                            .hotels-showcase-right-side {
+                                background-image: url('http://www.emporium-voyage.com/uploads/container_user_files/locations/giardino-ascona/property-images/85450092703-46496370683.jpg');
+                                height: 650px !important;
                             }
                             
                             /* AIC Harman 27/12/2017 */
