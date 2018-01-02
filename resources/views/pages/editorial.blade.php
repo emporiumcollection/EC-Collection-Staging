@@ -339,7 +339,7 @@
                             .hotels-image-showcase-des-text > p {
                                 font-size: 15px;
                                 line-height: 30px;
-                                margin-top: 0px;
+                                margin-top: 24px;
                             }
                             .hotel-block-two-right-sec-align > p {
                                 color: white;
@@ -549,7 +549,7 @@
                             .hotels-showcase-right-side {
                                 background-image: url('http://www.emporium-voyage.com/uploads/container_user_files/locations/phum-baitang/property-images/Phum Baitang (3).jpg');
                                 height: 760px;
-                                margin-top: 0;
+                                margin-top: -196px;
                             }
                             
                             .image-showcase-below-big-text {
