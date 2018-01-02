@@ -953,17 +953,6 @@
                             .spa-sec-view-gallery span {
                                 margin-top: 16px;
                             }
-                            
-                            header {
-                                right: 0 !important;
-                                position: fixed;
-                                top: 0;
-                                z-index: 9999;
-                            }
-
-                            
-                            
-
 
                             
                             @import url('https://fonts.googleapis.com/css?family=Caveat');
