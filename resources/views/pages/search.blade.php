@@ -535,7 +535,7 @@
 				</div>
                 											<div class="hotel-next-previous-outer">
 							<div class="previous-btn previous-next-pannel"> 
-								  <img class="img-responsive next-hotel-arrow" src="http://www.emporium-voyage.com/sximo/assets/images/editorial-left-arrow.png" alt="">
+								  <img class="img-responsive next-hotel-arrow" src="http://www.emporium-voyage.com/sximo/assets/images/editorial-left-arrow_1.png" alt="">
 								<a href="http://www.emporium-voyage.com/standart-hotel-moscow">
 									<div class="next-hotel-show-pannel">
 										<img class="img-responsive" src="http://www.emporium-voyage.com/uploads/property_imgs_thumbs/front_property_4565_15531396286-46934943356.jpg" alt="">
@@ -548,7 +548,7 @@
 						</div>
 																<div class="hotel-next-previous-outer">
 							<div class="next-hotel-btn previous-next-pannel"> 
-								<img class="img-responsive next-hotel-arrow" src="http://www.emporium-voyage.com/sximo/assets/images/editorial-right-arrow.png" alt="">
+								<img class="img-responsive next-hotel-arrow" src="http://www.emporium-voyage.com/sximo/assets/images/editorial-right-arrow_1.png" alt="">
 								<a href="http://www.emporium-voyage.com/the-mira-hong-kong">
 									<div class="next-hotel-show-pannel">
 										<img class="img-responsive" src="http://www.emporium-voyage.com/uploads/property_imgs_thumbs/front_property_4612_THE MIRA HONG KONG (2).jpg" alt="">
