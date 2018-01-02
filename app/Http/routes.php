@@ -14,7 +14,8 @@
 
 
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'NewHomeController@index');
+Route::get('/generate/destination', 'NewHomeController@destinationGenerate');
 Route::controller('home', 'HomeController');
 
 Route::controller('/user', 'UserController');
