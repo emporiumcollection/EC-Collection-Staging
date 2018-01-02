@@ -955,7 +955,7 @@
                             }
                             
                             header {
-                                right: 0;
+                                right: 0 !important;
                                 position: fixed;
                                 top: 0;
                                 z-index: 9999;
