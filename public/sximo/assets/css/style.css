@@ -3210,13 +3210,13 @@ div.panel.footer-nav-menu.show {
     margin-top: 13px !important;
     padding: 5px;
     width: auto !important;
-    background: rgba(37,37,37);
+    background: #252525;
 }
 .date-picker-wrapper .month-wrapper table .day.toMonth.valid {
     color: #fff;
 }
 .date-picker-wrapper {
-    background-color: rgba(37,37,37);
+    background-color: #252525;
     /* margin-top: -103px; */
     left: 20% !important;
     border: none;
