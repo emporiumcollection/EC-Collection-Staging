@@ -13,6 +13,9 @@
         
         <link href="{{ asset('sximo/assets/css/style-ai.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/homepage41e7.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('sximo/landing_new/css/swiper.min.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('sximo/landing_new/css/style.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('sximo/landing_new/css/responsive.css')}}" rel="stylesheet" type="text/css"/> 
         
         <script src="{{ asset('sximo/assets/js/jquery-2.1.0.min.js')}}" type="text/javascript"></script>
         <script type="text/javascript" src="{{ asset('sximo/assets/js/uikit.js')}}"></script>
@@ -33,6 +36,19 @@
         <script src="{{ asset('sximo/assets/js/custm.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/TweenMax.min41e7.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/menu41e7.js')}}" type="text/javascript"></script>
+        
+        <script>
+            $(document).ready(function() {
+                $(".experience-page .width-20").mouseover(function(){
+                    $(".experience-page").css('background-image', "url(" + $(this).find("img").attr("src") + ")");
+                }).mouseleave(function(){
+                    $(".experience-page").css('background-image', "url({{ asset('sximo/assets/images/GoExperienceBackground.jpg')}})");
+                });
+            });
+        </script>
+        
+        <script src="{{ asset('sximo/landing_new/js/swiper.min.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('sximo/landing_new/js/main.js')}}" type="text/javascript"></script>
         <style>
             #search-navbar.search-navbar-destination-search-box {
                 background: #2a2d30 none repeat scroll 0 0 !important;
@@ -2839,6 +2855,7 @@
         
         <script type="text/javascript">
             $(document).on('ready', function () {
+                
                 $(".regular").slick({
                     dots: false,
                     infinite: true,

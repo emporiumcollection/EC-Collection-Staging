@@ -132,7 +132,7 @@
             .hotels-image-showcase-des-text > p {
                 font-size: 15px;
                 line-height: 30px;
-                margin-top: 40px;
+                margin-top: 22px;
                 font-family: Geomanist-Light;
             }
             .hotel-block-two-right-sec-align > h2{
@@ -287,6 +287,7 @@
                                 z-index: 0;
                                 font-family: geomanist-regular;
                                 padding: 20px 32px 264px 75px;
+                                height: 564px;
                             }
                             .editorial-hotel-detail-page button.go-back-button {
                                 background-color: \\;
@@ -338,7 +339,7 @@
                             .hotels-image-showcase-des-text > p {
                                 font-size: 15px;
                                 line-height: 30px;
-                                margin-top: 227px;
+                                margin-top: 24px;
                             }
                             .hotel-block-two-right-sec-align > p {
                                 color: white;
@@ -422,7 +423,7 @@
                             }
 							
 							.editorial-custom-footer-style {
-								float: left !important;
+								float: right !important;
 							}
                             
                             .bar-name-text-style {
@@ -542,7 +543,13 @@
                                 color: #fff;
                                 font-family: Geomanist-Regular;
                                 /* padding: 516px 49px 90px 30px; */
-                                margin-top: -159px;
+                                margin-top: -196px;
+                            }
+                            
+                            .hotels-showcase-right-side {
+                                background-image: url('http://www.emporium-voyage.com/uploads/container_user_files/locations/phum-baitang/property-images/Phum Baitang (3).jpg');
+                                height: 760px;
+                                margin-top: -196px;
                             }
                             
                             .image-showcase-below-big-text {
@@ -794,7 +801,7 @@
                             .view-gallery-border-left {
                                 border-bottom: 2px solid #fff;
                                 float: left;
-                                padding-top: 26px;
+                                padding-top: 10px;
                                 width: 45px;
                             }
                             
@@ -918,7 +925,7 @@
                                 background-color: rgba(0, 0, 0, 0.85);
                                 float: left;
                                 opacity: unset !important;
-                                padding-left: 100px !important;
+                                padding-left: 15px !important;
                                 padding-right: 8px !important;
                                 padding-top: 9px !important;
                                 position: absolute;
@@ -942,10 +949,17 @@
                                 color: #c7ab84;
                                 font-size: 16px;
                             }
-
                             
+                            .spa-sec-view-gallery span {
+                                margin-top: 16px;
+                            }
                             
-
+                            .emporium-voyage-Menu {
+                                font-size: 20px;
+                                color: #ABA07C;
+                                top: 31px;
+                                position: absolute;
+                            }
 
                             
                             @import url('https://fonts.googleapis.com/css?family=Caveat');
@@ -967,7 +981,7 @@
         <div class="wrapper">
             <div class="container-fluid">
                 <header>
-                <a data-popup-id="login-forms-popup" href="#" class="video-popup-btn login_popup show-login-forms-btn"><i class="fa fa-lock " aria-hidden="true" ></i></a>
+                
 				<div class="logo-padding-left editorial-logo-align">
 					<!--<div>
 						<a href="#" title="Add to Favorites" class="book-button" onclick="add_to_lightbox({{( array_key_exists('propimage', $propertyDetail)) ? $propertyDetail['propimage'][0]->id : ''}}, {{$propertyDetail['data']->id}});"><i class="fa fa-plus " aria-hidden="true" ></i> Add</a>
@@ -1208,7 +1222,9 @@
                                                 <div class="clearfix"></div>
                                                 <button class="top-booking-bar-btn" type="submit">Book</button>
                                                 <button class="top-booking-bar-btn click-share-btn">Share</button>
-												<!--<button  type="button" class="top-booking-bar-btn link-to-show active" onclick="hide_show_lightbox('show');">Favorites</button>
+						<a data-popup-id="login-forms-popup" href="#" class="video-popup-btn login_popup show-login-forms-btn"><i class="fa fa-lock " aria-hidden="true" ></i></a>
+                                                <i class="fa fa-bars emporium-voyage-Menu" aria-hidden="true"></i>
+                                                <!--<button  type="button" class="top-booking-bar-btn link-to-show active" onclick="hide_show_lightbox('show');">Favorites</button>
 												<button type="button" class="top-booking-bar-btn link-to-hide" onclick="hide_show_lightbox('hide');" style="display:none;">Hide Favorites</button>-->
                                             </div>
                                         </div>

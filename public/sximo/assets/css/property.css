@@ -121,11 +121,13 @@
 
 
 header {
-    left: 0;
+    right: 0 !important;
     position: fixed;
-    top: 0;
+    top: 83px;
     width: 65px;
 }
+
+
 header ul {
     list-style: outside none none;
     margin: 0;

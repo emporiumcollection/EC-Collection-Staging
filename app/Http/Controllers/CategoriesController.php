@@ -93,7 +93,7 @@ class CategoriesController extends Controller {
 		}
 		
 		$this->data['parent_categories'] = $parent_cat;
-		// Render into template
+		// Render into template		
 		return view('categories.index',$this->data);
 	}	
 

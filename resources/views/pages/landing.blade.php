@@ -1365,7 +1365,15 @@
                     <h2>Select Your Experience</h2>
                     <div class="choose-experience-center-align">
                         <div class="width-100 holiday-type-image-align ">
-                            <div class="width-20">
+                            @if(!empty($experiences))
+								@foreach($experiences as $experience)
+									<div class="width-20">
+										<img class="img-responsive" src="{{URL::to('uploads/category_imgs/'.$experience->category_image)}}" alt=""/>
+										<a href="{{URL::to('luxury_experience/'. str_replace(' ','_',$experience->category_name))}}"><h3 class="hover-tittles">{{$experience->category_custom_title}}</h3></a>
+									</div>
+								@endforeach
+							@endif
+							<!--<div class="width-20">
                                 <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoBeachHotels.jpg')}}" alt=""/>
                                 <a href="{{URL::to('luxury_experience/Beach_Hotels')}}"><h3 class="hover-tittles">Luxury Beach Hotels</h3></a>
                             </div>
@@ -1404,7 +1412,7 @@
                             <div class="width-20">
                                 <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoUnusualAdventures.jpg')}}" alt=""/>
                                 <a href="{{URL::to('luxury_experience/Unusual_Adventure_Hotels')}}"><h3 class="hover-tittles">Unusual Adventure Hotels</h3></a>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                 </div>
@@ -1716,7 +1724,14 @@
                                                                 <div class="panel-body custom-panel-body">
                                                                     <div class="dl-filter">
                                                                         <form>
-                                                                            <div class="form-group post-filter-inputs">
+																			@if(!empty($experiences))
+																				@foreach($experiences as $experience)
+																					<div class="form-group post-filter-inputs">
+																						<label><a href="{{URL::to('luxury_experience/'. str_replace(' ','_',$experience->category_name))}}">{{$experience->category_custom_title}}</a></label>
+																					</div> 
+																				@endforeach
+																			@endif
+                                                                           <!-- <div class="form-group post-filter-inputs">
                                                                                 <label><a href="{{URL::to('luxury_experience/Beach_Hotels')}}">Luxury Beach Hotels</a></label>
                                                                             </div> 
                                                                             <div class="form-group post-filter-inputs">
@@ -1745,7 +1760,7 @@
                                                                             </div> 
                                                                             <div class="form-group post-filter-inputs">
                                                                                 <label><a href="{{URL::to('luxury_experience/Unusual_Adventure_Hotels')}}">Unusual Adventure Hotels</a></label>
-                                                                            </div>
+                                                                            </div>-->
                                                                         </form>
                                                                     </div>
                                                                 </div>
@@ -1834,7 +1849,17 @@
                                         <div class="panel-body">
                                             <div class="panel landing-page-panel-background">
                                                 <div class="width-100 holiday-type-image-align ">
-                                                    <div class="width-20">
+													@if(!empty($experiences))
+														@foreach($experiences as $experience)
+															<div class="width-20">
+																<a href="{{URL::to('luxury_experience/'. str_replace(' ','_',$experience->category_name))}}">
+																	<img src="{{ \ImageCache::make(public_path('uploads/category_imgs/'.$experience->category_image),100,170,199)}}" alt=""/>
+																	<span class="link-txt hover-cation">{{$experience->category_custom_title}}</span>
+																</a>
+															</div>
+														@endforeach
+													@endif
+                                                    <!--<div class="width-20">
                                                         <a href="{{URL::to('luxury_experience/Beach_Hotels')}}">
                                                             <img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoBeachHotels.jpg'),100,170,199)}}" alt=""/>
                                                             <span class="link-txt hover-cation">Luxury Beach Hotels</span>
@@ -1887,7 +1912,7 @@
                                                         <a href="{{URL::to('luxury_experience/Unusual_Adventure_Hotels')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoUnusualAdventures.jpg'),100,170,199)}}" alt=""/>
                                                             <span class="link-txt hover-cation">Unusual Adventure Hotels</span>
                                                         </a>
-                                                    </div>
+                                                    </div>-->
                                                 </div>
                                             </div>
                                         </div>

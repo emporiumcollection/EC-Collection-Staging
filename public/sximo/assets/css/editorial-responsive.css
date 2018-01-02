@@ -18,6 +18,7 @@ and open the template in the editor.
 .m_slider.editorial_m_slider {
     position: relative;
     width: 83.5%;
+    float: right;
 }
 .m_slider ul li {
     position: relative;
