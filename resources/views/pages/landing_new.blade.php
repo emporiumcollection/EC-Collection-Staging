@@ -1524,34 +1524,34 @@
                             
                             <!--Property Slider Start-->
                             <?php
-                            $propertyDetail = (isset($landinggridpropertiesArr[0]))? $landinggridpropertiesArr[0] : array();
+                            $landingGridproperty = (isset($landinggridpropertiesArr[0]))? $landinggridpropertiesArr[0] : array();
                             ?>
-                            @if (array_key_exists('typedata', $propertyDetail))
+                            @if (array_key_exists('typedata', $landingGridproperty))
                             <div class="container">
                                 <div class="image-slider-container image-slider-margin-align auto-slider" id="rooms">
-                                    @if (array_key_exists('typedata', $propertyDetail))
+                                    @if (array_key_exists('typedata', $landingGridproperty))
 
                                     <ul class="image-slider">
-                                        {{--*/ $k=1; $tottyp = count($propertyDetail['roomimgs']); /*--}}
-                                        @foreach($propertyDetail['typedata'] as $key=>$type)
-                                        @if (array_key_exists($type->id, $propertyDetail['roomimgs']))
-                                        {{--*/ $nextkey = false; $totimg = count($propertyDetail['roomimgs'][$type->id]['imgs']); /*--}}
+                                        {{--*/ $k=1; $tottyp = count($landingGridproperty['roomimgs']); /*--}}
+                                        @foreach($landingGridproperty['typedata'] as $key=>$type)
+                                        @if (array_key_exists($type->id, $landingGridproperty['roomimgs']))
+                                        {{--*/ $nextkey = false; $totimg = count($landingGridproperty['roomimgs'][$type->id]['imgs']); /*--}}
                                         @if($k==1) {{--*/ $ftky = $type->id; $ftkey = $key; /*--}} @endif
 
-                                        @if(end($propertyDetail['typedata'])!=$type)
-                                        {{--*/ $nxtkey = $propertyDetail['typedata'][$key+1]->id; /*--}}
+                                        @if(end($landingGridproperty['typedata'])!=$type)
+                                        {{--*/ $nxtkey = $landingGridproperty['typedata'][$key+1]->id; /*--}}
                                         @for($nk=2;$nextkey!=true;$nk++)
-                                        @if (array_key_exists($nxtkey, $propertyDetail['roomimgs']))
+                                        @if (array_key_exists($nxtkey, $landingGridproperty['roomimgs']))
                                         {{--*/ $nxtkey = $nxtkey; $nextkey=true; /*--}}
                                         @else
-                                        {{--*/ $nxtkey = $propertyDetail['typedata'][$key+$nk]->id; /*--}}
+                                        {{--*/ $nxtkey = $landingGridproperty['typedata'][$key+$nk]->id; /*--}}
                                         @endif
                                         @endfor
                                         @endif
 
-                                        <li class="{{($propertyDetail['typedata'][$ftkey]==$type) ? 'active' : ''}}">
+                                        <li class="{{($landingGridproperty['typedata'][$ftkey]==$type) ? 'active' : ''}}">
                                             <a href="#">
-                                                <img class="img-responsive" src="{{\ImageCache::make($propertyDetail['roomimgs'][$propertyDetail['typedata'][$key]->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$propertyDetail['typedata'][$key]->id]['imgs'][0]->file_name,100,1050,null)}}" alt="{{$propertyDetail['roomimgs'][$propertyDetail['typedata'][$key]->id]['imgs'][0]->file_name}}" style="height:580px; width: 100%;">
+                                                <img class="img-responsive" src="{{\ImageCache::make($landingGridproperty['roomimgs'][$landingGridproperty['typedata'][$key]->id]['imgsrc_dir'].$landingGridproperty['roomimgs'][$landingGridproperty['typedata'][$key]->id]['imgs'][0]->file_name,100,1050,null)}}" alt="{{$landingGridproperty['roomimgs'][$landingGridproperty['typedata'][$key]->id]['imgs'][0]->file_name}}" style="height:580px; width: 100%;">
                                             </a>
                                             <div class="col-md-12 col-sm-12">
                                                 <div class="col-md-6 col-sm-6">
@@ -1566,17 +1566,17 @@
                                                         <div class="row">
                                                             <div class="slider-sec-side-text-bg">
                                                                 <div class="slider-side-sec-alignment">
-                                                                    <div class="expeience-small-text">Experience {{$propertyDetail['data']->property_name}}</div>
+                                                                    <div class="expeience-small-text">Experience {{$landingGridproperty['data']->property_name}}</div>
                                                                     <div class="slider-side-text-tittle">{{$type->category_name}}</div>
                                                                     <div class="slider-side-description-text">
                                                                         {{(strlen($type->room_desc) > 300) ? substr($type->room_desc,0,300).'...':$type->room_desc}}
                                                                     </div>
                                                                 </div>
                                                                 <div>
-                                                                    @if(end($propertyDetail['typedata'])==$type)
-                                                                    <img class="slider-next-image-btn img-responsive" src="{{\ImageCache::make($propertyDetail['roomimgs'][$ftky]['imgsrc_dir'].$propertyDetail['roomimgs'][$ftky]['imgs'][0]->file_name,100,200,null)}}" alt=""/>
+                                                                    @if(end($landingGridproperty['typedata'])==$type)
+                                                                    <img class="slider-next-image-btn img-responsive" src="{{\ImageCache::make($landingGridproperty['roomimgs'][$ftky]['imgsrc_dir'].$landingGridproperty['roomimgs'][$ftky]['imgs'][0]->file_name,100,200,null)}}" alt=""/>
                                                                     @else
-                                                                    <img class="slider-next-image-btn img-responsive" src="{{\ImageCache::make($propertyDetail['roomimgs'][$nxtkey]['imgsrc_dir'].$propertyDetail['roomimgs'][$nxtkey]['imgs'][0]->file_name,100,200,null)}}" alt=""/>
+                                                                    <img class="slider-next-image-btn img-responsive" src="{{\ImageCache::make($landingGridproperty['roomimgs'][$nxtkey]['imgsrc_dir'].$landingGridproperty['roomimgs'][$nxtkey]['imgs'][0]->file_name,100,200,null)}}" alt=""/>
                                                                     @endif
                                                                     <a href="#" style="margin-left:100px;" rel="{{$type->id}}" class="book-button open-show_more-page hotel-btn">Show More</a>
                                                                 </div>
