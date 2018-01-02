@@ -242,6 +242,7 @@ Route::get('{slug}', 'HomeController@getPropertyDetail');
 Route::get('our-collection-pages/{slug}/{page}', 'HomeController@getPropertyDetail_pages');
 Route::get('book-property/{slug}', 'HomeController@bookProperty');
 Route::get('luxurytravel/{slug}', 'HomeController@getPropertyByCategory');
+Route::get('new-luxurytravel/{slug}', 'NewHomeController@getPropertyByCategory');
 Route::get('ourcollections/{id}', 'HomeController@getPropertyByCategoryQuickView');
 Route::get('search', 'HomeController@propertiesSearch');
 Route::get('luxury_experience/{cat}', 'HomeController@SearchLuxuryExperience');
