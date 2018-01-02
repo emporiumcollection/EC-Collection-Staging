@@ -1891,6 +1891,52 @@
                             </div>
                             <!--Featured Properties End-->
                             
+                            <!--About Me Section Start-->
+                            <section class="wow fadeIn no-padding">
+                                <div class="swiper-auto-height-container position-relative width-100">
+                                    <div class="swiper-wrapper overflow-hidden">
+                                        <!-- start slider item -->
+                                        <div class="swiper-slide padding-100px-all cover-background position-relative xs-padding-20px-all" style="background-image:url(http://placehold.it/1920x1100)">
+                                            <div class="position-relative width-40 md-width-60 sm-width-85 xs-width-100 display-inline-block slide-banner last-paragraph-no-margin">
+                                                <div class="padding-80px-all bg-black-opacity sm-padding-40px-all xs-padding-30px-all xs-text-center xs-width-100">
+                                                    <h5 class="alt-font text-white width-90 sm-width-100">A digital studio crafting beautiful experiences.</h5>
+                                                    <p class="width-90 sm-width-100">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                                                    <a href="services-classic.html" class="margin-35px-top sm-margin-15px-top btn btn-small btn-white">Explore services</a>
+                                                </div> 
+                                            </div>
+                                        </div>
+                                        <!-- end slider item -->
+                                        <!-- start slider item -->
+                                        <div class="swiper-slide padding-100px-all cover-background position-relative xs-padding-20px-all" style="background-image:url(http://placehold.it/1920x1697)">
+                                            <div class="position-relative width-40 md-width-60 sm-width-85 xs-width-100 display-inline-block slide-banner last-paragraph-no-margin"> 
+                                                <div class="padding-80px-all bg-black-opacity sm-padding-40px-all xs-padding-30px-all xs-text-center xs-width-100">
+                                                    <h5 class="alt-font text-white width-90 sm-width-100">We always stay on the cutting edge of digital</h5>
+                                                    <p class="width-90 sm-width-100">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                                                    <a href="services-classic.html" class="margin-35px-top sm-margin-15px-top btn btn-small btn-white">Explore services</a>
+                                                </div>  
+                                            </div>
+                                        </div>
+                                        <!-- end slider item -->
+                                        <!-- start slider item -->
+                                        <div class="swiper-slide padding-100px-all cover-background position-relative xs-padding-20px-all" style="background-image:url(http://placehold.it/1920x1526)">
+                                            <div class="position-relative width-40 md-width-60 sm-width-85 xs-width-100 display-inline-block slide-banner last-paragraph-no-margin">
+                                                <div class="padding-80px-all bg-black-opacity sm-padding-40px-all xs-padding-30px-all xs-text-center xs-width-100">
+                                                    <h5 class="alt-font text-white width-90 sm-width-100">We combine design, thinking and technical.</h5>
+                                                    <p class="width-90 sm-width-100">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                                                    <a href="services-classic.html" class="margin-35px-top sm-margin-15px-top btn btn-small btn-white">Explore services</a>
+                                                </div>     
+                                            </div>
+                                        </div>
+                                        <!-- end slider item -->
+                                    </div>
+                                    <div class="navigation-area">
+                                        <div class="swiper-button-next swiper-next-style4 bg-primary text-white"><i class="fa fa-arrow-up" aria-hidden="true"></i></div>
+                                        <div class="swiper-button-prev swiper-prev-style4"><i class="fa fa-arrow-down" aria-hidden="true"></i></div>
+                                    </div>
+                                </div>
+                            </section>
+                            <!--About Me Section End-->
+                            
                             <!--Footer Start-->
                             <div class="editorial-custom-footer-style">
                                 @include('layouts/elliot/ai_footer_social')
