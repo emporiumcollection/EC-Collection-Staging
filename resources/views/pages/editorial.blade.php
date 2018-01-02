@@ -62,6 +62,7 @@
 		<script src="{{ asset('sximo/assets/newgrid/js/wow.min.js')}}" type="text/javascript"></script>
 		<script src="{{ asset('sximo/assets/newgrid/js/jquery.fitvids.js')}}" type="text/javascript"></script>
 		<script src="{{ asset('sximo/assets/newgrid/js/skill.bars.jquery.js')}}" type="text/javascript"></script>
+                <script src="{{ asset('sximo/assets/newgrid/js/main.js')}}" type="text/javascript"></script>
         <script>
 			jQuery(document).ready(function ($) {
 				$(".regular").slick({
@@ -2571,7 +2572,6 @@
             });
         </script>
 		@include('layouts/elliot/ai_lightbox_popups_detailpage')
-        <script src="{{ asset('sximo/assets/newgrid/js/main.js')}}" type="text/javascript"></script>
 
              </body>
 </html>
