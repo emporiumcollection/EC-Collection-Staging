@@ -526,12 +526,12 @@
 					<!--<div>
 						<a href="#" title="Add to Favorites" class="book-button" onclick="add_to_lightbox(40281, 164);"><i class="fa fa-plus " aria-hidden="true" ></i> Add</a>
 					</div>-->
-					<div class="go-back-button-container">
+<!--					<div class="go-back-button-container">
 						<button class="go-back-button" onclick="goBack()">Go Back</button>
 						<div class="previous-page-screen-short-container">
 															<img src="http://www.emporium-voyage.com/sximo/previous_page_image/7b58aa5e612660d887cb8569a5685109.jpg">
 													</div>
-					</div>
+					</div>-->
 				</div>
                 											<div class="hotel-next-previous-outer">
 							<div class="previous-btn previous-next-pannel"> 
