@@ -702,7 +702,7 @@ class HomeController extends Controller {
                                                 
 
                         echo '<pre>';
-                        print_r($landinggridpropertiesArr);
+                        print_r($landinggridprops);
                         echo '</pre>';
                         die;
 						$this->data['landinggridpropertiesArr'] = $landinggridpropertiesArr;
