@@ -673,7 +673,6 @@ class HomeController extends Controller {
 
                         $landinggridpropertiesArr = array();
                         $landinggridquery = "SELECT editor_choice_property,feature_property,id,property_name,property_slug,property_category_id FROM tb_properties WHERE property_type='Hotel' AND property_status = '1' AND feature_property = '1'  GROUP BY  property_slug ORDER BY editor_choice_property desc, feature_property desc, (SELECT rack_rate FROM tb_properties_category_rooms_price WHERE tb_properties_category_rooms_price.property_id = tb_properties.id ORDER BY rack_rate DESC LIMIT 1) * 1 DESC LIMIT 20";
-                        $landinggridquery = "SELECT editor_choice_property,feature_property,id,property_name,property_slug,property_category_id FROM tb_properties WHERE property_type='Hotel' AND property_status = '1' AND feature_property = '1'  GROUP BY  property_slug ORDER BY editor_choice_property desc, feature_property desc LIMIT 20";
 
                         $landinggridprops = DB::select(DB::raw($landinggridquery));
                         if (!empty($landinggridprops)) {
@@ -702,11 +701,10 @@ class HomeController extends Controller {
                         }
                                                 
 
-                        echo '<pre>';
-                        print_r($landinggridprops);
+                        /*echo '<pre>';
                         print_r($landinggridpropertiesArr);
                         echo '</pre>';
-                        die;
+                        die;*/
 						$this->data['landinggridpropertiesArr'] = $landinggridpropertiesArr;
                     } else {
 
