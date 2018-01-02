@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+<script src="{{ asset('sximo/js/typeahead.bundle.js')}}"></script>
+<link href="{{ asset('sximo/assets/css/custom_ps.css')}}" rel="stylesheet" type="text/css"/>
+
 {{--*/ usort($tableGrid, "SiteHelpers::_sort") /*--}}
   <div class="page-content row">
     <!-- Page header -->
@@ -57,7 +60,11 @@
 				<option value="">-Status-</option>
 				<option value="active" <?php echo ($curstatus == 'active') ? " selected='selected' " : "selected='selected'" ; ?>>Active</option>
 				<option value="inactive" <?php echo ($curstatus == 'inactive') ? " selected='selected' " : '' ; ?>>Inactive</option>
-			</select>			
+			</select>
+
+			<form autocomplete="off" method="get" id="searchform-navbar" class="searchform-navbar" action="">
+				<input  class="bh-search-input typeahead search-navbar search-box" name="s" id="search-navbar" placeholder="Search" type="text">
+			</form>
 		</div> 		
 
 	
@@ -286,5 +293,47 @@ function getseasonrates(proid)
 		});
 	}
 }
+</script>
+
+<script>
+var substringMatcher = function(strs) {
+  return function findMatches(q, cb) {
+    var matches, substringRegex;
+
+    // an array that will be populated with substring matches
+    matches = [];
+
+    // regex used to determine if a string contains the substring `q`
+    substrRegex = new RegExp(q, 'i');
+
+    // iterate through the pool of strings and for any string that
+    // contains the substring `q`, add it to the `matches` array
+    $.each(strs, function(i, str) {
+      if (substrRegex.test(str)) {
+        matches.push(str);
+      }
+    });
+
+    cb(matches);
+  };
+};
+
+var states = [{!! TagsFinder::tags() !!}];
+
+$('.searchform-navbar .typeahead').typeahead({
+  hint: true,
+  highlight: true,
+  minLength: 1
+},
+{
+  name: 'states',
+  source: substringMatcher(states)
+});
+
+$('.search-navbar').on('typeahead:selected', function (e, datum) {
+	var propname = $(this);
+	var sname = propname.val();
+	window.location.href = "{{URL::to('properties')}}?search=property_name:equal:" + sname + "|";
+});
 </script>		
 @stop
