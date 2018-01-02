@@ -31,6 +31,7 @@
 		 <link href="{{ asset('sximo/assets/css/slick.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/slick-theme.css')}}" rel="stylesheet" type="text/css"/>
         <!--JS Includes-->
+        <script src="{{ asset('sximo/assets/newgrid/js/main.js')}}" type="text/javascript"></script>
         <link href="{{ asset('sximo/assets/css/ai_yachts-custom.css')}}" rel="stylesheet" type="text/css"/>
 
         <script src="{{ asset('sximo/assets/js/jquery-2.1.0.min.js')}}" type="text/javascript"></script>
@@ -2571,7 +2572,6 @@
             });
         </script>
 		@include('layouts/elliot/ai_lightbox_popups_detailpage')
-        <script src="{{ asset('sximo/assets/newgrid/js/main.js')}}" type="text/javascript"></script>
 
              </body>
 </html>

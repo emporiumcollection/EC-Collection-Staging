@@ -2111,7 +2111,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                                                     <a class="node-btn" href="javascript:void(0)" onclick="filter_destination('{{$sbdest->id}}', 'country');">{{$sbdest->category_name}}</a>
                                                                     @if(array_key_exists('subchild',$sbdest))
                                                                     @foreach($sbdest->subchild as $subchild)
-                                                                    <div class="node" style="{{(str_replace('_',' ',$cat)==$sbdest->category_name) ? 'display: block; padding-left: 10px; margin-top: 5px; text-transform: inherit;' : '' }}">
+                                                                    <div class="node" style="{{(isset($cat) && str_replace('_',' ',$cat)==$sbdest->category_name) ? 'display: block; padding-left: 10px; margin-top: 5px; text-transform: inherit;' : '' }}">
                                                                         <a class="node-btn" href="javascript:void(0)" onclick="filter_destination('{{$subchild->id}}', 'country');">{{$subchild->category_name}}</a>
                                                                     </div>
                                                                     @endforeach
