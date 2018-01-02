@@ -483,13 +483,21 @@
     }
     header {
 	position: fixed;
-	top: 30px;
+	top: 64px;
 	z-index: 9999;
 	right: 0;
 	left: 95.20%;
     }
     
     /* go back buttons */
+    
+    .show-login-forms-btn {
+	display: inline-block;
+	padding: 5px 0;
+	text-align: center;
+	vertical-align: text-top;
+	width: 0%;
+    }
     
         
          /* sidebar css */
