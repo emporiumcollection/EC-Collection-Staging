@@ -412,7 +412,7 @@
             border-radius: 2px;
             transition: .5s;
             position: fixed;
-            top: 63px;
+            top: 228px;
             left: calc(100% - 43px);
             width: 291px;
             background: #272727;
@@ -480,6 +480,15 @@
 	color: #000;
 	text-shadow:0px;
 	opacity: 1;
+    }
+    
+    /* go back buttons */
+    
+    header {
+	position: fixed;
+	top: 30px;
+	z-index: 9999;
+        right:0;
     }
         
          /* sidebar css */
