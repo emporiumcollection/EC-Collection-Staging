@@ -62,7 +62,6 @@
 		<script src="{{ asset('sximo/assets/newgrid/js/wow.min.js')}}" type="text/javascript"></script>
 		<script src="{{ asset('sximo/assets/newgrid/js/jquery.fitvids.js')}}" type="text/javascript"></script>
 		<script src="{{ asset('sximo/assets/newgrid/js/skill.bars.jquery.js')}}" type="text/javascript"></script>
-                <script src="{{ asset('sximo/assets/newgrid/js/main.js')}}" type="text/javascript"></script>
         <script>
 			jQuery(document).ready(function ($) {
 				$(".regular").slick({
@@ -2306,7 +2305,8 @@
 						<div data-is data-is-api="{{ URL::to('runInsta')}}" data-is-source="{{(!empty($propertyDetail) && $propertyDetail['data']->social_instagram!='')? $propertyDetail['data']->social_instagram : '@socialdesignlocations777' }}" data-is-rows="2" data-is-columns="6"></div>
 					</div>
 				</section>
-				<!--Sections-->	
+				<!--Sections-->
+                                <script src="{{ asset('sximo/assets/newgrid/js/main.js')}}" type="text/javascript"></script>
 				@endif
 				
 				@if($propertyDetail['data']->assign_detail_city!='')
