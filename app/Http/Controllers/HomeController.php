@@ -676,31 +676,44 @@ class HomeController extends Controller {
 
                         $landinggridprops = DB::select(DB::raw($landinggridquery));
                         if (!empty($landinggridprops)) {
-                                $pr = 0;
-                                foreach ($landinggridprops as $ldprop) {
-                                        $landinggridpropertiesArr[$pr]['data'] = $ldprop;
-                                        $landinggridpropertiesArr[$pr]['data']->price = '';
-                                        $checkseasonPrice = \DB::table('tb_properties_category_rooms_price')->select('rack_rate')->where('property_id', $ldprop->id)->orderBy('rack_rate', 'DESC')->first();
-                                        if (!empty($checkseasonPrice)) {
-                                                $landinggridpropertiesArr[$pr]['data']->price = $checkseasonPrice->rack_rate;
-                                        }
-
-                                        $landinggridpropertiesArr[$pr]['data']->category_name = '';
-                                        $cateObjtm = \DB::table('tb_categories')->select('category_name')->where('id', $ldprop->property_category_id)->where('category_published', 1)->first();
-                                        if (!empty($cateObjtm)) {
-                                                $landinggridpropertiesArr[$pr]['data']->category_name = $cateObjtm->category_name;
-                                        }
-
-                                        $fileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.file_id', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $ldprop->id)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
-                                        if (!empty($fileArr)) {
-                                                $landinggridpropertiesArr[$pr]['image'] = $fileArr;
-                                                $landinggridpropertiesArr[$pr]['image']->imgsrc = (new ContainerController)->getThumbpath($fileArr->folder_id);
-                                        }
-                                                                                
-                                        $pr++;
+                            $pr = 0;
+                            foreach ($landinggridprops as $ldprop) {
+                                $landinggridpropertiesArr[$pr]['data'] = $ldprop;
+                                $landinggridpropertiesArr[$pr]['data']->price = '';
+                                $checkseasonPrice = \DB::table('tb_properties_category_rooms_price')->select('rack_rate')->where('property_id', $ldprop->id)->orderBy('rack_rate', 'DESC')->first();
+                                if (!empty($checkseasonPrice)) {
+                                    $landinggridpropertiesArr[$pr]['data']->price = $checkseasonPrice->rack_rate;
                                 }
+
+                                $landinggridpropertiesArr[$pr]['data']->category_name = '';
+                                $cateObjtm = \DB::table('tb_categories')->select('category_name')->where('id', $ldprop->property_category_id)->where('category_published', 1)->first();
+                                if (!empty($cateObjtm)) {
+                                    $landinggridpropertiesArr[$pr]['data']->category_name = $cateObjtm->category_name;
+                                }
+
+                                $fileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.file_id', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $ldprop->id)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
+                                if (!empty($fileArr)) {
+                                    $landinggridpropertiesArr[$pr]['image'] = $fileArr;
+                                    $landinggridpropertiesArr[$pr]['image']->imgsrc = (new ContainerController)->getThumbpath($fileArr->folder_id);
+                                }
+
+                                $cat_types = \DB::table('tb_properties_category_types')->select('id','category_name','room_desc')->where('property_id', $ldprop->id)->where('status', 0)->where('show_on_booking', 1)->get();
+                                if (!empty($cat_types)) {
+                                    $c = 0;
+                                    foreach ($cat_types as $type) {
+                                        $roomfileArr = \DB::table('tb_properties_images')->select('id')->where('property_id', $ldprop->id)->where('category_id', $type->id)->where('type', 'Rooms Images')->count();
+                                        if ($roomfileArr>0) {
+                                            $landinggridpropertiesArr[$pr]['typedata'][$c] = $type;
+                                            $landinggridpropertiesArr[$pr]['roomimgs'][$type->id] = 'yes';
+                                            $c++;
+                                        }
+                                    }
+                                }
+                                
+                                $pr++;
+                            }
                         }
-                                                
+
 
                         /*echo '<pre>';
                         print_r($landinggridpropertiesArr);
