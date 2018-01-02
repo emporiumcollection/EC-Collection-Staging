@@ -696,6 +696,20 @@ class HomeController extends Controller {
                                                 $landinggridpropertiesArr[$pr]['image'] = $fileArr;
                                                 $landinggridpropertiesArr[$pr]['image']->imgsrc = (new ContainerController)->getThumbpath($fileArr->folder_id);
                                         }
+                                        
+                                        $cat_types = \DB::table('tb_properties_category_types')->select('id','category_name','room_desc')->where('property_id', $ldprop->id)->where('status', 0)->where('show_on_booking', 1)->get();
+                                        if (!empty($cat_types)) {
+                                            $c = 0;
+                                            foreach ($cat_types as $type) {
+                                                $roomfileArr = \DB::table('tb_properties_images')->select('id')->where('property_id', $ldprop->id)->where('category_id', $type->id)->where('type', 'Rooms Images')->count();
+                                                if ($roomfileArr>0) {
+                                                    $landinggridpropertiesArr['typedata'][$pr] = $type;
+                                                    $landinggridpropertiesArr['roomimgs'][$type->id] = 'yes';
+                                                                            $c++;
+                                                }
+                                            }
+                                        }
+                                        
                                         $pr++;
                                 }
                         }
