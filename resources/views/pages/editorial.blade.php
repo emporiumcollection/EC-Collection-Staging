@@ -944,6 +944,7 @@
 
         </style>
 		<!-- Global site tag (gtag.js) - Google Analytics -->
+                <script src="{{ asset('sximo/assets/newgrid/js/main.js')}}" type="text/javascript"></script>
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110391807-1"></script>
 		<script>
 		  window.dataLayer = window.dataLayer || [];
@@ -2571,7 +2572,6 @@
                 $(".booking-form-bar-top").toggle(1000);
             });
         </script>
-          <script src="{{ asset('sximo/assets/newgrid/js/main.js')}}" type="text/javascript"></script>
 		@include('layouts/elliot/ai_lightbox_popups_detailpage')
              </body>
 </html>
