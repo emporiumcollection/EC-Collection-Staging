@@ -483,9 +483,10 @@
     }
     header {
 	position: fixed;
-	top: 0;
+	top: 30px;
 	z-index: 9999;
 	right: 0;
+	left: 95.20%;
     }
     
     /* go back buttons */
@@ -513,7 +514,7 @@
                     <header>
                         
                         <!-- back and lock button -->
-                        <a data-popup-id="login-forms-popup" href="#" class="video-popup-btn login_popup show-login-forms-btn"><i class="fa fa-lock " aria-hidden="true"></i></a>
+                       
 				<div class="logo-padding-left editorial-logo-align">
 					<!--<div>
 						<a href="#" title="Add to Favorites" class="book-button" onclick="add_to_lightbox(40281, 164);"><i class="fa fa-plus " aria-hidden="true" ></i> Add</a>
@@ -1029,6 +1030,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                 <a data-popup-id="login-forms-popup" href="#" class="video-popup-btn login_popup show-login-forms-btn"><i class="fa fa-lock " aria-hidden="true"></i></a>
                                             </form>
                                         </div>
                                         <!-- AIC Harman email phone sidebar add start -->
