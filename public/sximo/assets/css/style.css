@@ -3195,7 +3195,7 @@ div.panel.footer-nav-menu.show {
 
 /*Date Picker CSS style*/
 .date-picker-wrapper .drp_top-bar .apply-btn {
-    background: #c7ab84 none repeat scroll 0 0 !important;
+    background: #ABA07C none repeat scroll 0 0 !important;
     border: 1px solid #000 !important;
     border-radius: 0;
     color: #fff !important;
@@ -3249,7 +3249,7 @@ div.panel.footer-nav-menu.show {
     background-color: #9D9D9C;
 }
 .date-picker-wrapper .month-wrapper table .day.real-today {
-    background-color: #c7ab84;
+    background-color: #ABA07C;
 }
 .date-picker-wrapper .month-wrapper table td, .date-picker-wrapper .month-wrapper table th {
     color: #fff;

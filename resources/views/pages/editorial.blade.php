@@ -132,7 +132,7 @@
             .hotels-image-showcase-des-text > p {
                 font-size: 15px;
                 line-height: 30px;
-                margin-top: 40px;
+                margin-top: 22px;
                 font-family: Geomanist-Light;
             }
             .hotel-block-two-right-sec-align > h2{
@@ -287,6 +287,7 @@
                                 z-index: 0;
                                 font-family: geomanist-regular;
                                 padding: 20px 32px 264px 75px;
+                                height: 564px;
                             }
                             .editorial-hotel-detail-page button.go-back-button {
                                 background-color: \\;
@@ -338,7 +339,7 @@
                             .hotels-image-showcase-des-text > p {
                                 font-size: 15px;
                                 line-height: 30px;
-                                margin-top: 227px;
+                                margin-top: 0px;
                             }
                             .hotel-block-two-right-sec-align > p {
                                 color: white;
@@ -542,7 +543,13 @@
                                 color: #fff;
                                 font-family: Geomanist-Regular;
                                 /* padding: 516px 49px 90px 30px; */
-                                margin-top: -159px;
+                                margin-top: -196px;
+                            }
+                            
+                            .hotels-showcase-right-side {
+                                background-image: url('http://www.emporium-voyage.com/uploads/container_user_files/locations/phum-baitang/property-images/Phum Baitang (3).jpg');
+                                height: 760px;
+                                margin-top: 0;
                             }
                             
                             .image-showcase-below-big-text {
