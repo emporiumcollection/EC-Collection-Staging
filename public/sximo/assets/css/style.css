@@ -5391,7 +5391,7 @@ div#fixed_wrapper {
     }
 }
 .hotel-next-previous-outer {
-    background-color: #1c313d;
+    background-color: rgb(37,37,37);
     color: #fff;
     font-size: 18px;
     position: relative;
