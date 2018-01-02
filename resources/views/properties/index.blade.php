@@ -62,9 +62,9 @@
 				<option value="inactive" <?php echo ($curstatus == 'inactive') ? " selected='selected' " : '' ; ?>>Inactive</option>
 			</select>
 
-			<form autocomplete="off" method="get" id="searchform-navbar" class="searchform-navbar" action="">
+			<div id="searchform-navbar" class="searchform-navbar" style="float:right;">
 				<input  class="bh-search-input typeahead search-navbar search-box" name="s" id="search-navbar" placeholder="Search" type="text">
-			</form>
+			</div>
 		</div> 		
 
 	
