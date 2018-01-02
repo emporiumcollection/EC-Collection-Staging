@@ -86,7 +86,7 @@
 					<td> <a target="_blank" href="{{URL::to('search?s='.$row->city)}}">{{$row->city}}</a> </td>
 					<td> <a target="_blank" href="{{(strpos($row->website, 'http') !== false) ? $row->website : 'http://'.$row->website }}">{{$row->website}}</a> </td>
 					<td> {{$row->email}} </td>
-				 <td>
+				 <td>	{{$row->assign_detail_city}}
 						@if($row->assign_detail_city!=0 && $row->assign_detail_city!='')
 							<a href="#" class="tips btn btn-xs btn-primary" title="City Assigned"><i class="fa  fa-check "></i></a>
 						@else
