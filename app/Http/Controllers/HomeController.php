@@ -672,7 +672,7 @@ class HomeController extends Controller {
                         $this->data['landing_menus'] = array();
 
                         $landinggridpropertiesArr = array();
-                        $landinggridquery = "SELECT editor_choice_property,feature_property,id,property_name,property_slug,property_category_id FROM tb_properties WHERE property_type='Hotel' AND property_status = '1' AND feature_property = '1'  GROUP BY  property_slug ORDER BY editor_choice_property desc, feature_property desc, (SELECT rack_rate FROM tb_properties_category_rooms_price WHERE tb_properties_category_rooms_price.property_id = tb_properties.id ORDER BY rack_rate DESC LIMIT 1) * 1 DESC LIMIT 20";
+                        $landinggridquery = "SELECT editor_choice_property,feature_property,id,property_name,property_slug,property_category_id, default_seasons FROM tb_properties WHERE property_type='Hotel' AND property_status = '1' AND feature_property = '1'  GROUP BY  property_slug ORDER BY editor_choice_property desc, feature_property desc, (SELECT rack_rate FROM tb_properties_category_rooms_price WHERE tb_properties_category_rooms_price.property_id = tb_properties.id ORDER BY rack_rate DESC LIMIT 1) * 1 DESC LIMIT 20";
 
                         $landinggridprops = DB::select(DB::raw($landinggridquery));
                         if (!empty($landinggridprops)) {
@@ -696,20 +696,7 @@ class HomeController extends Controller {
                                                 $landinggridpropertiesArr[$pr]['image'] = $fileArr;
                                                 $landinggridpropertiesArr[$pr]['image']->imgsrc = (new ContainerController)->getThumbpath($fileArr->folder_id);
                                         }
-                                        
-                                        /*$cat_types = \DB::table('tb_properties_category_types')->select('id','category_name','room_desc')->where('property_id', $ldprop->id)->where('status', 0)->where('show_on_booking', 1)->get();
-                                        if (!empty($cat_types)) {
-                                            $c = 0;
-                                            foreach ($cat_types as $type) {
-                                                $roomfileArr = \DB::table('tb_properties_images')->select('id')->where('property_id', $ldprop->id)->where('category_id', $type->id)->where('type', 'Rooms Images')->count();
-                                                if ($roomfileArr>0) {
-                                                    $landinggridpropertiesArr['typedata'][$pr] = $type;
-                                                    $landinggridpropertiesArr['roomimgs'][$type->id] = 'yes';
-                                                                            $c++;
-                                                }
-                                            }
-                                        }*/
-                                        
+                                                                                
                                         $pr++;
                                 }
                         }
