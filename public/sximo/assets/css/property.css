@@ -127,12 +127,6 @@ header {
     width: 65px;
 }
 
-header.sticky {
-    right: 0 !important;
-    position: fixed;
-    width: 65px;
-    /* left: 95%; */
-}
 
 header ul {
     list-style: outside none none;
