@@ -3184,7 +3184,7 @@ div.panel.footer-nav-menu.show {
 .hamburger-menu{
     font-size:30px;
     cursor:pointer;
-    float: right;
+    float: left;
     margin-top: 6px;
 }
 @media screen and (ma044x-height: 450px) {
@@ -3773,7 +3773,7 @@ div.productData a {
     z-index: 99;
 }
 .editorial-page-booking-bar .booking-form-bar-top {
-    left: 0;
+    right: 0;
     position: fixed;
     width: 83.5% !important;
     z-index: 99;
@@ -4377,6 +4377,7 @@ div#fixed_wrapper {
 .editorial-res-side-nav-logo.hamburger-menu {
     font-size: 21px;
     margin-top: 4px;
+    display: none;  
 }
 @media screen and (max-width: 767px) and (min-width: 320px) {
     .spa-overlay-text {
@@ -5391,15 +5392,15 @@ div#fixed_wrapper {
     }
 }
 .hotel-next-previous-outer {
-    background-color: rgb(37,37,37);
+    background-color: rgba(37,37,37);
     color: #fff;
     font-size: 18px;
     position: relative;
     text-align: center;
-    width: 65px;
+    /*width: 65px;*/
 }
 .next-hotel-show-pannel {
-    left: 64px;
+    right: 64px;
     position: absolute;
     top: 0;
     width: 250px;

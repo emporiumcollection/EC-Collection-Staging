@@ -423,7 +423,7 @@
                             }
 							
 							.editorial-custom-footer-style {
-								float: left !important;
+								float: right !important;
 							}
                             
                             .bar-name-text-style {
@@ -801,7 +801,7 @@
                             .view-gallery-border-left {
                                 border-bottom: 2px solid #fff;
                                 float: left;
-                                padding-top: 26px;
+                                padding-top: 10px;
                                 width: 45px;
                             }
                             
@@ -925,7 +925,7 @@
                                 background-color: rgba(0, 0, 0, 0.85);
                                 float: left;
                                 opacity: unset !important;
-                                padding-left: 100px !important;
+                                padding-left: 15px !important;
                                 padding-right: 8px !important;
                                 padding-top: 9px !important;
                                 position: absolute;
@@ -948,6 +948,10 @@
                             .headings > p {
                                 color: #c7ab84;
                                 font-size: 16px;
+                            }
+                            
+                            .spa-sec-view-gallery span {
+                                margin-top: 16px;
                             }
 
                             
