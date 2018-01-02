@@ -2844,6 +2844,13 @@
         
         <script type="text/javascript">
             $(document).on('ready', function () {
+                
+                $(".experience-page .width-20").mouseover(function(){
+                    $(".experience-page").css('background-image', "url(" + $(this).find("img").attr("src") + ")");
+                }).mouseleave(function(){
+                    $(".experience-page").css('background-image', "url({{ asset('sximo/assets/images/GoExperienceBackground.jpg')}})");
+                });
+                
                 $(".regular").slick({
                     dots: false,
                     infinite: true,
