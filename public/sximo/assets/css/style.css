@@ -99,6 +99,9 @@ and open the template in the editor.
 body{
     font-family: Geomanist-Regular;
 }
+.col-md-10.col-sm-9.FloatFilter {
+    float: right;
+}
 .slick-slide img {
     width: 100%;
 }
@@ -5685,9 +5688,6 @@ div#fixed_wrapper {
 	text-align: center;
 	vertical-align: text-top;
 	width: 35%;
-	margin-top: 0px;
-	top: 30px;
-	position: absolute;
 }
 .content-grid-boxes-outer {
     margin-top: 15px;
