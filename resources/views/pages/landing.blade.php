@@ -1286,11 +1286,15 @@
                                                     <h2>Why book with us?</h2>
                                                 </div>
                                                 <ul class="side-bar-book-with-us-list">
-                                                    <li>
-                                                        <h3>Handpicked Selection of Hotels.</h3>
-                                                        <p>Over 200 destination at the best rate</p>
-                                                    </li>
-                                                    <li>
+													@if(!empty($whybookwithus))
+														@foreach($whybookwithus as $withus)
+															<li>
+																<h3>{{$withus->title}}</h3>
+																<p>{{$withus->sub_title}}</p>
+															</li>
+														@endforeach
+													@endif
+                                                   <!-- <li>
                                                         <h3>Upgrade & Late Check-out</h3>
                                                         <p>At any hotel, upon Availability</p>
                                                     </li>
@@ -1301,7 +1305,7 @@
                                                     <li>
                                                         <h3>Free WiFi</h3>
                                                         <p>Guaranteed at all Hotels</p>
-                                                    </li>
+                                                    </li>-->
                                                 </ul>
                                             </div>
                                         </div>
