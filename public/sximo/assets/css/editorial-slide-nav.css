@@ -16,6 +16,11 @@ and open the template in the editor.
 	z-index: 99;
 	color: #c7ab84;
 }
+.open-show_more-html a {
+	right: 1%;
+	position: absolute;
+	top: 0;
+}
 /*Show More Slide CSS*/
 .show_more-page {
     background-blend-mode: multiply;
@@ -31,7 +36,7 @@ and open the template in the editor.
     position: fixed;
     top: 0;
     width: 0;
-    z-index: 999;
+    z-index: 9999;
 }
 body.show_more-page-opend {
     overflow: hidden;
@@ -77,10 +82,10 @@ body.show_more-page-opend {
     position: relative;
 }
 .hotel-book-price {
-    background: #f9e14f none repeat scroll 0 0;
-    color: #000;
+    background: #c7ab84;
+    color: #252525;
     font-size: 25px;
-    height: 79px;
+    height: 71px;
     margin-left: -174px;
     opacity: 1;
     overflow-wrap: break-word;
