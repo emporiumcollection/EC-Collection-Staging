@@ -1420,7 +1420,7 @@
                     <h2>Select Your Destination</h2>
                     <div class="destinSearch">
                         <!--Search form start-->
-                        <form autocomplete="off" method="get" id="searchform-navbar" class="searchform-navbar" action="{{URL::to('search')}}">
+                        <form autocomplete="off" method="get" id="searchform-navbar" class="destinationsearchform-navbar" action="{{URL::to('search')}}">
                             <inpu type="hidden" name="ref" value="syd">
                             <input  class="bh-search-input typeahead search-navbar search-navbar-destination-search-box" name="s" id="search-navbar" placeholder="ENTER YOUR DESTINATION" type="text">
                         </form>
