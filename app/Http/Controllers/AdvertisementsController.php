@@ -172,7 +172,8 @@ class AdvertisementsController extends Controller {
 					$filename_slider = $file->getClientOriginalName();
 					$extension_slider = $file->getClientOriginalExtension(); //if you need extension of the file
 					$newfilename_slider = rand(00000000,99999999).'-'.rand(00000000,99999999).'.'.$extension_slider;
-					$uploadSuccess_slider = File::copy($dirPath.$data['adv_img'], $destinationPath_slider.$newfilename_slider);				 
+					$uploadSuccess_slider = File::copy($dirPath.$data['adv_img'], $destinationPath_slider.$newfilename_slider);	
+					
 					if( $uploadSuccess_slider ) {
 						$slidData['slider_img'] = $newfilename_slider;
 					}
