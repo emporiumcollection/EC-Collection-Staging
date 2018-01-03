@@ -152,7 +152,7 @@ class AdvertisementsController extends Controller {
 			{
 				$data['updated'] = date('y-m-d h:i:s');
 			}
-			$data['adv_expire'] = Date('Y-m-d', strtotime("+".$request->input('ads_duration')." months"))
+			$data['adv_expire'] = Date('Y-m-d', strtotime("+".$request->input('ads_duration')." months"));
 			$id = $this->model->insertRow($data , $request->input('id'));
 			
 			if($request->input('adsType')=="slider")
