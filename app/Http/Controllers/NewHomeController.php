@@ -5319,7 +5319,7 @@ class NewHomeController extends Controller {
         $TagsFileConId = array();
         $pr = 0;
         if (!empty($TagsObj)) {
-            
+
             $TagsCon = \DB::table('tb_container_tags')->select('container_id', 'container_type')->where('tag_id', $TagsObj->id)->get();
             if (!empty($TagsCon)) {
                 foreach ($TagsCon as $TagsConObj) {
@@ -7299,6 +7299,39 @@ class NewHomeController extends Controller {
 
         
 
+    }
+
+    // For genrate json file for hotel images path
+    public function hotelGenerate(){
+          // $propertyFile = 'property/43.json'; 
+        //$contents = Storage::get($propertyFile);
+       // $proertyObj = json_decode($contents);
+        
+        $catprops = DB::select(DB::raw("SELECT id,property_name,property_slug FROM tb_properties WHERE tb_properties.property_type = 'Hotel' AND property_status = '1' "));
+        if (!empty($catprops)) {
+            foreach ($catprops as $keyMain=>$cprop) {
+
+                $sfileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $cprop->id)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->get();
+                
+                $propertiesArr = array();
+                if (!empty($sfileArr)) {
+
+                    foreach ( $sfileArr as $key => $value) {
+                        $propertiesArr[$key] = $value;
+                        $propertiesArr[$key]->imgsrc = (new ContainerController)->getThumbpath($value->folder_id);
+                       
+                    
+                    }
+                    $propertyFile = 'property/'.$cprop->id.'.json';
+                    Storage::put($propertyFile, json_encode($propertiesArr)); 
+                    $exists = Storage::disk('local')->has($propertyFile);
+                    if($exists){
+                        echo 'File '.($keyMain+1).' : '.$propertyFile.'<br>';
+                    }
+                }
+
+            }
+        }
     }
 
 }
