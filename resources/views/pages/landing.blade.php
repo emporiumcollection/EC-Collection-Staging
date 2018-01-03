@@ -1435,6 +1435,16 @@
                         <!--Search form end-->
                     </div>
                     <div class="panel-group-" id="accordion1">
+                       <?php 
+
+                       /* Note:
+                            Now the our destinations will render from storage/app/homeOurDestination.html. 
+                            That file will be genrate from cron job or backend panel.  
+                        */  
+                        ?>
+                        {!!Storage::get('homeOurDestination.html')!!}
+      
+                       <?php /*  
                         @if(!empty($ourdesitnation))
                         @foreach($ourdesitnation as $destination)
                         <div class="panel panel-default  destination-sub-menues">
@@ -1500,6 +1510,7 @@
                         </div>
                         @endforeach
                         @endif
+                        */?>
                     </div>
                 </div>
             </div>
@@ -1957,6 +1968,17 @@
                                                         </form>
                                                         <!--Search form end-->
                                                     </div>
+
+                                                    <?php 
+
+                                                       /* Note:
+                                                            Now the our destinations will render from storage/app/homeOurDestinationMobile.html. 
+                                                            That file will be genrate from cron job or backend panel.  
+                                                        */  
+                                                        ?>
+                                                        {!!Storage::get('homeOurDestinationMobile.html')!!}
+
+                                                    <?php /*
                                                     @if(!empty($ourdesitnation))
                                                     <div class="panel-group-" id="mobile-inner-accordian">
                                                         @foreach($ourdesitnation as $destination)
@@ -1982,7 +2004,7 @@
                                                         </div>
                                                         @endforeach
                                                     </div>
-                                                    @endif
+                                                    @endif */?> 
                                                 </div>
                                             </div>
                                         </div>
