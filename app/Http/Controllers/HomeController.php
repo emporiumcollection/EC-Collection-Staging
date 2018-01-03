@@ -134,7 +134,7 @@ class HomeController extends Controller {
                             Now the our destinations will render from storage/app/homeOurDestination.html. 
                             That file will be genrate from cron job or backend panel.  
                         */
-                        /*$destts = array();
+                        $destts = array();
                         $maindest = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name')->where('parent_category_id', 0)->where('id', '!=', 8)->get();
                         if (!empty($maindest)) {
                             $ctt = 0;
@@ -237,7 +237,7 @@ class HomeController extends Controller {
                         }
                         //print "<pre>";
                         //print_r($destts);
-                        $this->data['ourdesitnation'] = $destts;*/
+                        $this->data['ourdesitnation'] = $destts;
                         $this->data['social_links'] = \DB::table('tb_social')->where('status', 1)->get();
                         $this->data['landing_menus'] = array();
 						

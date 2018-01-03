@@ -1432,11 +1432,11 @@
                        /* Note:
                             Now the our destinations will render from storage/app/homeOurDestination.html. 
                             That file will be genrate from cron job or backend panel.  
-                        */  
-                        ?>
-                        {!!Storage::get('homeOurDestination.html')!!}
-      
-                       <?php /*  
+                       
+                        
+                        {!!Storage::get('homeOurDestination.html')!!}  */  
+      ?>
+                        
                         @if(!empty($ourdesitnation))
                         @foreach($ourdesitnation as $destination)
                         <div class="panel panel-default  destination-sub-menues">
@@ -1502,7 +1502,7 @@
                         </div>
                         @endforeach
                         @endif
-                        */?>
+                        
                     </div>
                 </div>
             </div>
@@ -1967,10 +1967,10 @@
                                                             Now the our destinations will render from storage/app/homeOurDestinationMobile.html. 
                                                             That file will be genrate from cron job or backend panel.  
                                                         */  
-                                                        ?>
-                                                        {!!Storage::get('homeOurDestinationMobile.html')!!}
+                                                        
+                                                        //{!!Storage::get('homeOurDestinationMobile.html')!!}
 
-                                                    <?php /*
+                                                    ?>
                                                     @if(!empty($ourdesitnation))
                                                     <div class="panel-group-" id="mobile-inner-accordian">
                                                         @foreach($ourdesitnation as $destination)
@@ -1996,7 +1996,7 @@
                                                         </div>
                                                         @endforeach
                                                     </div>
-                                                    @endif */?> 
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
