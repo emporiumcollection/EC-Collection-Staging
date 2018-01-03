@@ -64,7 +64,7 @@
         <link href="{{ asset('sximo/assets/css/filter-bar.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/ai_yachts-custom.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/cities-filter.css')}}" rel="stylesheet" type="text/css"/>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!--        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
 		
 		
            @if(isset($_GET['ref']) && $_GET['ref']=='oc' )
