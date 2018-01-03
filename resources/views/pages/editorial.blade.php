@@ -1223,7 +1223,7 @@
                                                 <button class="top-booking-bar-btn" type="submit">Book</button>
                                                 <button class="top-booking-bar-btn click-share-btn">Share</button>
 						<a data-popup-id="login-forms-popup" href="#" class="video-popup-btn login_popup show-login-forms-btn"><i class="fa fa-lock " aria-hidden="true" ></i></a>
-                                                <i class="fa fa-bars emporium-voyage-Menu" aria-hidden="true"></i>
+<!--                                                <i class="fa fa-bars emporium-voyage-Menu" aria-hidden="true"></i>-->
                                                 <!--<button  type="button" class="top-booking-bar-btn link-to-show active" onclick="hide_show_lightbox('show');">Favorites</button>
 												<button type="button" class="top-booking-bar-btn link-to-hide" onclick="hide_show_lightbox('hide');" style="display:none;">Hide Favorites</button>-->
                                             </div>

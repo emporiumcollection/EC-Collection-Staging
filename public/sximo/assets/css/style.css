@@ -127,9 +127,13 @@ body{
 	font-size: 13px;
 	height: 38px;
 	padding: 7px;
-	width: 65px;
+	width: 100%;
 	opacity: 1;
 	color: white;
+}
+.container-fluid.logo-padding-left.editorial-logo-align {
+    width: 100%;
+    padding-right: 0;
 }
 .width-auto{
     width: auto;
@@ -5369,6 +5373,7 @@ div#fixed_wrapper {
     position: absolute;
     width: 350px;
     z-index: 99;
+    right:0;
 }
 .previous-page-screen-short-container img {
     width: 100%;
