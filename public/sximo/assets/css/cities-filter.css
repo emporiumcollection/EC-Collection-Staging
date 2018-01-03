@@ -51,9 +51,9 @@
     font-family: acaslonpro-regular;
     font-size: 13px;
     margin: 0 auto;
-    text-align: center;
+    text-align: left;
     text-transform: uppercase;
-    width: 15%;
+    width: 100%;
 }
 .top-filter-name {
     font-family: geomanist-regular;
