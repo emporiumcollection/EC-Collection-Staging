@@ -5569,6 +5569,7 @@ class HomeController extends Controller {
         $pagedData = array_slice($propertiesArr, $currentPage * $perPage, $perPage);
         
         echo '<pre>';
+        print_r($propertiesArr);
         print_r($pagedData);
         echo '</pre>';
         die;
