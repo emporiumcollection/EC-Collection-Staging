@@ -7109,7 +7109,12 @@ class NewHomeController extends Controller {
                         $ourdesitnationHTML  .= '</div>';
                  }
                        
-                 Storage::put('homeOurDestination.html', $ourdesitnationHTML);    
+                 Storage::put('homeOurDestination.html', $ourdesitnationHTML); 
+                 $exists = Storage::disk('local')->has('homeOurDestination.html');
+                 if($exists){
+                    echo 'File Generated  : homeOurDestination.html'.'<br>';
+                 }
+                   
         //For Home Page Mobile 
         
 
@@ -7138,7 +7143,11 @@ class NewHomeController extends Controller {
 
             }
                 $ourdesitnationHTML  .= '</div>';
-            Storage::put('homeOurDestinationMobile.html', $ourdesitnationMobileHTML);    
+            Storage::put('homeOurDestinationMobile.html', $ourdesitnationMobileHTML);   
+            $exists = Storage::disk('local')->has('homeOurDestinationMobile.html');
+            if($exists){
+                echo 'File Generated  : homeOurDestinationMobile.html'.'<br>';
+            } 
         }
 
 
@@ -7271,8 +7280,12 @@ class NewHomeController extends Controller {
             $ourdesitnationLeftSideHTML  .= '</div>';
             $ourdesitnationLeftSideHTML  .= '</div>';
             $ourdesitnationLeftSideHTML  .= '</div>';
-            echo $ourdesitnationLeftSideHTML  .= '</div>';
-           // Storage::put('leftOurDestination.html', $ourdesitnationLeftSideHTML); 
+            //echo $ourdesitnationLeftSideHTML  .= '</div>';
+           Storage::put('leftOurDestination.html', $ourdesitnationLeftSideHTML); 
+           $exists = Storage::disk('local')->has('leftOurDestination.html');
+            if($exists){
+                echo 'File Generated  : leftOurDestination.html'.'<br>';
+            } 
         }
 
         
