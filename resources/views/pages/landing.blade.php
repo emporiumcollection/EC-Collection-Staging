@@ -1294,18 +1294,6 @@
 															</li>
 														@endforeach
 													@endif
-                                                   <!-- <li>
-                                                        <h3>Upgrade & Late Check-out</h3>
-                                                        <p>At any hotel, upon Availability</p>
-                                                    </li>
-                                                    <li>
-                                                        <h3>Upto 50% off at New Hotels</h3>
-                                                        <p>Exclusive community invitations</p>
-                                                    </li>
-                                                    <li>
-                                                        <h3>Free WiFi</h3>
-                                                        <p>Guaranteed at all Hotels</p>
-                                                    </li>-->
                                                 </ul>
                                             </div>
                                         </div>
