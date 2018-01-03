@@ -5286,11 +5286,18 @@ class NewHomeController extends Controller {
         $filter_min_price = Input::get('filter_min_price');
         $filter_max_price = Input::get('filter_max_price');
 
-        if (!is_null($request->dest)) {
+
+        if (isset($request->dest) && $request->dest!='') {
             $cateObjtm = \DB::table('tb_categories')->where('id', $request->dest)->where('category_published', 1)->first();
             if (!empty($cateObjtm)) {
                 $rep['searchdestname'] = $cateObjtm->category_name;
             }
+            //get category child IDS 
+            //$getChildCateIdsQry = "SELECT GROUP_CONCAT(Level SEPARATOR ',') as cateIDs FROM"; 
+            //$getChildCateIdsQry .= " (SELECT @Ids := (SELECT GROUP_CONCAT(`ID` SEPARATOR ',') FROM `tb_categories` WHERE FIND_IN_SET(`parent_category_id`, @Ids))"; 
+            //$getChildCateIdsQry .= " Level FROM `tb_categories` JOIN (SELECT @Ids := 48) temp1) temp2";
+            //$chldIds = DB::select($getChildCateIdsQry);
+             
             $cateObj = \DB::table('tb_categories')->where('parent_category_id', $request->dest)->where('category_published', 1)->get();
             $chldIds = array();
             if (!empty($cateObj)) {
@@ -5306,11 +5313,13 @@ class NewHomeController extends Controller {
                                 }, array_values($chldIds))) . ")";
             }
         }
+        
         $TagsObj = \DB::table('tb_tags_manager')->where('tag_title', Input::get('s', false))->where('tag_status', 1)->first();
         $TagsConId = array();
         $TagsFileConId = array();
         $pr = 0;
         if (!empty($TagsObj)) {
+            
             $TagsCon = \DB::table('tb_container_tags')->select('container_id', 'container_type')->where('tag_id', $TagsObj->id)->get();
             if (!empty($TagsCon)) {
                 foreach ($TagsCon as $TagsConObj) {
