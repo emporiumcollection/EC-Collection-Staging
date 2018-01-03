@@ -119,6 +119,9 @@
             .container {
                 width: 100%;
             }
+            .container-fluid {
+                overflow: hidden;
+            }
             .detail-tile-inner img { max-width:100%; }
             .gallerysty { font-weight: bold;font-size: 15px;color: #000; }
             .hotel-name-first-letter { background-image: url({{URL::to('uploads/properties_subtab_imgs/'.$propertyDetail['data']->restaurant_image)}}); }
