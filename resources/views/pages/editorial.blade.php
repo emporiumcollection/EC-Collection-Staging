@@ -122,6 +122,11 @@
             .container-fluid {
                 overflow: hidden;
             }
+            .cstmai-w{
+                max-width: 1500px;
+                margin: 0 auto;
+                float: none;
+            }
             .detail-tile-inner img { max-width:100%; }
             .gallerysty { font-weight: bold;font-size: 15px;color: #000; }
             .hotel-name-first-letter { background-image: url({{URL::to('uploads/properties_subtab_imgs/'.$propertyDetail['data']->restaurant_image)}}); }
@@ -419,6 +424,7 @@
                             .editorial-custom-footer-style .newsletter-style {
                                 width: 45%;
                                 margin-top: 8px;
+                                color: white;
                                 float: left;
                                 background: #f7f7f4;
                                 margin-right: 15px;
@@ -563,7 +569,7 @@
                                 font-size: 70px;
                                 margin-left: -107px;
                                 margin-top: 36px;
-                                margin-top: 70px;
+                                margin-top: 0px;
                                 text-transform: uppercase;
                             }
                             
@@ -709,9 +715,9 @@
                             .bar-name-text-style {
                                 color: #fff;
                                 font-size: 13px;
-                                letter-spacing: 11px;
+                                letter-spacing: 0px;
                                 text-transform: uppercase;
-                                text-align: right;
+                                text-align: center;
                                 font-family: Geomanist-light;
                             }
                             
@@ -755,7 +761,7 @@
                             .spa-overlay-text span {
                                 color: white;
                                 font-size: 14px;
-                                font-style: italic;
+                                font-style: normal;
                                 font-family: acaslonpro-regular;
                                 font-weight: lighter;
                                 margin-top: -10px !important;
@@ -1371,7 +1377,7 @@
                             <div class="">
                                 <div class="row">
                                     <div class="clearfix"></div>
-                                    <div class="col-md-12 col-sm-12 disply-left-right-align">
+                                    <div class="col-md-12 col-sm-12 disply-left-right-align cstmai-w">
                                         <div class="hotels-detail-heading-text">
                                             <p>{!! nl2br($propertyDetail['data']->detail_section2_title) !!}</p>
                                         </div>

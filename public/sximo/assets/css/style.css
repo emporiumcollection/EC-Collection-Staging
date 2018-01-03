@@ -99,6 +99,9 @@ and open the template in the editor.
 body{
     font-family: Geomanist-Regular;
 }
+.col-md-10.col-sm-9.FloatFilter {
+    float: right;
+}
 .slick-slide img {
     width: 100%;
 }
@@ -3722,7 +3725,7 @@ div.productData a {
 /*Cookie Bar End Here*/
 /*Booking form top bar*/
 .booking-form-bar-top {
-	background-color: rgba(37, 37, 37, 0.8);
+	background-color: rgba(37, 37, 37, 0.9);
 	float: left;
 	opacity: unset !important;
 	padding-left: 15px !important;
@@ -4049,7 +4052,7 @@ div#fixed_wrapper {
     color: #000f17;
     font-family: acaslonpro-regular;
     font-size: 27px;
-    font-style: italic;
+    font-style: normal;
     line-height: 39px;
     margin: 0;
     padding: 10px 10px 9px 15px;
@@ -4507,7 +4510,7 @@ div#fixed_wrapper {
 /*.nesletter-submit-btn{background-color:  #F1E4BD;}*/
 .nesletter-submit-btn{background-color:  transparent;}
 .filter-footer {
-    background-color: #d3d6d2!important;
+    background-color: #f0f0f0 !important;
 }
 .filter-footer a:hover{color:#1e2023!important;} 
 .login_popup .fa{
@@ -5680,11 +5683,11 @@ div#fixed_wrapper {
     }
 }
 .show-login-forms-btn {
-    display: inline-block;
-    padding: 0px 0;
-    text-align: center;
-    vertical-align: text-top;
-    width: 35%;
+	display: inline-block;
+	padding: 0px 0;
+	text-align: center;
+	vertical-align: text-top;
+	width: 35%;
 }
 .content-grid-boxes-outer {
     margin-top: 15px;

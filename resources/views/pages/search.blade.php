@@ -413,7 +413,7 @@
 	transition: .5s;
 	position: fixed;
 	top: 228px;
-	left: calc(100% - 50px);
+	left: calc(100% - 43px);
 	width: 340px;
 	background: #272727;
 	color: #fff;
@@ -421,11 +421,11 @@
 	right: 0;
         }
         .contact-aside ul {
-            padding: 7px 0;
+            padding: 7px 0px 0px 0px;;
             list-style: none;
         }
         .contact-aside li {
-	padding: 6px 0px 6px 18px;
+	padding: 6px 0px 6px 9px;
 	margin: 0px 0px 1px 0px;
         }
         .contact-aside li a {
@@ -1118,7 +1118,7 @@
 													</div>
 												</div>
 												<div class="bh-slideshow-thumbnail-split-preview uk-overlay-panel uk-overlay-right uk-overlay-background uk-overlay-fade uk-width-2-5 uk-width-xxlarge-1-3 uk-flex uk-flex-middle uk-flex-center uk-visible-large">
-													<div>
+                                                                                                    <div style="width: 80%;">
 														<ul class="bh-slideshow-thumbnail-split-preview-meta uk-subnav uk-subnav-line">
 															<li>
 																<span><a href="#" rel="category tag">{{$slides->slider_category}}</a></span>
@@ -1231,7 +1231,7 @@
                                             {{--*/ $rw = 1 /*--}}
                                             {{--*/ $node_no = 1; $ads_node=0; /*--}}
                                             @foreach($propertiesArr as $props)
-                                            @if($node_no%20==0)
+                                            @if($node_no%10==0)
                                                 @if(!empty($reultsgridAds))
                                                     @if(array_key_exists($ads_node,$reultsgridAds))
                                                         <div class="productData col-xs-12 col-sm-6 col-md-3 col-lg-3 margin-bottom-10">
@@ -1240,7 +1240,7 @@
                                                                             <div class="ai-grid-page-node-pic-box pictureBox gridPicture">
                                                                                 <a title="{{$reultsgridAds[$ads_node]->adv_title}}" class="picture_link-" href="{{$reultsgridAds[$ads_node]->adv_link}}">
                                                                                     <h2 style="position:absolute; color:#fff;padding-left: 20px;">Advertiser</h2>
-                                                                                    <img alt="{{$reultsgridAds[$ads_node]->adv_title}}" src="{{$reultsgridAds[$ads_node]->adv_title}}" src="{{URL::to('uploads/users/advertisement/'.$reultsgridAds[$ads_node]->adv_img)}}" class="img-responsive" style="border: 2px solid #D3D6D2;padding: 3px 1px 3px 0px;">
+                                                                                    <img alt="{{$reultsgridAds[$ads_node]->adv_title}}" src="{{URL::to('uploads/users/advertisement/'.$reultsgridAds[$ads_node]->adv_img)}}" class="img-responsive" style="border: 2px solid #D3D6D2;padding: 3px 1px 3px 0px;">
                                                                                 </a>
                                                                             </div>
                                                                             <div class="listDetails">
@@ -2143,6 +2143,26 @@ url: "{{ URL::to('filter_search_destionation')}}",
 }
                     </script>
                     <script>
+                        function clear_all_filters() {
+                            
+                            var $slider = $("#slider-range");
+                            $slider.slider( "option", "min", 0 );
+                            $slider.slider( "option", "max", 6000 );
+                            
+                            $(".ai_search_keywords").val('{{$keyword}}');
+                            $(".ai-arrive-date-filter").val('<?php echo date('d-m-Y'); ?>');
+                            $(".ai-depart-date-filter").val('<?php echo date('d-m-Y', strtotime('+ 1 day')); ?>');
+                            $("#filter_min_price").val('');
+                            $("#filter_max_price").val('');
+                            $(".ai-current-filter").val('');
+                            $('#selDestn').val('');
+                            $('#listrecrds').val(0);
+                            $('#nxtpg').val('2');
+                            $('#amount').val('1');
+                            var it_scroll = false;
+                            scrollDownloadData(it_scroll);
+                            $('#listrecrds').val(21);
+                        }
                         function filter_destination(destn, area) {
                             if (destn != '' && destn > 0) {
                                 $('#selDestn').val(destn + '#:' + area);
@@ -2200,6 +2220,28 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                 scrollDownloadData(it_scroll);
                                 $('#listrecrds').val(21);
                             });
+							
+							$('.searchbox_landing').on('typeahead:selected', function (e, datum) {
+								var propname = $(this);
+								$.ajax({
+									url: "{{ URL::to('find_property_by_name')}}",
+									type: "post",
+									data: 'pname=' + propname.val(),
+									dataType: "json",
+									success: function (data) {
+										if (data.status == 'error')
+										{
+											propname.parents('.searchform-navbar').submit();
+											return;
+											propname.parents('.searchform-navbar').submit();
+										} else
+										{
+											var obj = JSON.parse(data.property);
+											window.location.href = "{{URL::to('')}}/" + obj.property_slug;
+										}
+									}
+								});
+							});
                         });
                     </script>
                     <div class="col-md-2 col-sm-3">
@@ -2376,7 +2418,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                     </div> 
                                     <div class="filter-footer">
                                         <div><a href="#" >View All Locations On Map</a></div>
-                                        <div><a href="#"><i class="fa fa-repeat" aria-hidden="true"></i>&nbsp;Clear All</a></div>
+                                        <div class="clear-all-filters"><a onclick="javascript:clear_all_filters();" href="javascript:void(0);"><i class="fa fa-repeat" aria-hidden="true"></i>&nbsp;Clear All</a></div>
                                     </div>
                                     <section class="regular slider">
                                         <div class="slick-cstm-width">

@@ -52,6 +52,34 @@ $('.searchform-navbar .typeahead').typeahead({
   source: substringMatcher(states)
 });
 
+var substringDestination = function(strs) {
+  return function findDestination(q, cb) {
+    var dests, substringRegex;
+    dests = [];
+	substrRegex = new RegExp(q, 'i');
+
+    $.each(strs, function(i, str) {
+      if (substrRegex.test(str)) {
+        dests.push(str);
+      }
+    });
+
+    cb(dests);
+  };
+};
+
+var dests = [{!! TagsFinder::finddestinations() !!}];
+
+$('.destinationsearchform-navbar .typeahead').typeahead({
+  hint: true,
+  highlight: true,
+  minLength: 1
+},
+{
+  name: 'destinations',
+  source: substringDestination(dests)
+});
+
 $('.search-navbar').on('typeahead:selected', function (e, datum) {
 	var propname = $(this);
 //        propname.parents('.searchform-navbar').submit();

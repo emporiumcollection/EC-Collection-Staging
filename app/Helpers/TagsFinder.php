@@ -20,6 +20,15 @@ class TagsFinder {
         }
         return substr($tagStr, 0, -1);
     }
+	
+	static function finddestinations() {
+        $destStr = "";
+        $categories = \DB::table('tb_categories')->where('category_published', 1)->where('parent_category_id', '!=', 8)->where('id', '!=', 8)->get();
+        foreach ($categories as $cats) {
+            $destStr .= "'" . $cats->category_name . "',";
+        }
+        return substr($destStr, 0, -1);
+    }
 
     static function product_suggestions() {
         $tagStr = "";
