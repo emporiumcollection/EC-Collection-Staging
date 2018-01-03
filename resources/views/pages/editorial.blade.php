@@ -914,10 +914,10 @@
                                 padding: 0;
                                 border: none;
                                 border-top: solid 1px;
-                                text-align: center;
+                                text-align: left;
                                 text-transform: uppercase;
                                 max-width: 100px;
-                                margin: 4px auto 0;
+                                margin: 4px;
                                 border-radius: 10px;
                             }
                             
@@ -1223,7 +1223,7 @@
                                                 <button class="top-booking-bar-btn" type="submit">Book</button>
                                                 <button class="top-booking-bar-btn click-share-btn">Share</button>
 						<a data-popup-id="login-forms-popup" href="#" class="video-popup-btn login_popup show-login-forms-btn"><i class="fa fa-lock " aria-hidden="true" ></i></a>
-                                                <i class="fa fa-bars emporium-voyage-Menu" aria-hidden="true"></i>
+<!--                                                <i class="fa fa-bars emporium-voyage-Menu" aria-hidden="true"></i>-->
                                                 <!--<button  type="button" class="top-booking-bar-btn link-to-show active" onclick="hide_show_lightbox('show');">Favorites</button>
 												<button type="button" class="top-booking-bar-btn link-to-hide" onclick="hide_show_lightbox('hide');" style="display:none;">Hide Favorites</button>-->
                                             </div>
@@ -1316,7 +1316,7 @@
                         <a href="#align-to-top" class="align-to-top-arrow"><img src="{{ asset('sximo/assets/images/scroll-down.png')}}" class="down-arrow-align animate-arrow" alt=""/> </a>
                             
                         <div class="editorial-arrows-container arrows-container">
-                        	<a class="assign_detail_city">{{$propertyDetail['data']->assign_detail_city}}</a>
+<!--                        	<a class="assign_detail_city">{{$propertyDetail['data']->assign_detail_city}}</a>-->
                             <a class="editorial-previous-arrow next-arrow" href="#">
                                 <img class="banner-arrow-bg" src="{{ asset('sximo/assets/images/editorial-right-arrow.png')}}" alt=""/>
                             </a>

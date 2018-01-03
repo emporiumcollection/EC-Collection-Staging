@@ -14,9 +14,9 @@
 .hotels-logo h3.title{
     color: #fff;
     font-family: geomanist-light;
-    padding: 26px 15px;
+    padding: 9px 15px 26px 0px;
     font-size: 18px;
-    text-align: center;
+    text-align: left;
     line-height: 30px;
     margin: 0;
 }
@@ -220,10 +220,11 @@ header ul li.book-btn .menu-toggle-btn {
 .editorial-hotel-detail-page hr.star-light {
     padding: 0;
     border: none;
-    border-top: solid 3px;
-    text-align: center;
+    border-top: solid 1px;
+    text-align: left;
+    text-transform: uppercase;
     max-width: 100px;
-    margin: 4px auto 0;
+    margin: 4px;
     border-radius: 10px;
 }
 .align-to-top-arrow{

@@ -127,7 +127,7 @@ class HomeController extends Controller {
                         $this->data['slider'] = \DB::table('tb_sliders')->select('slider_category', 'slider_title', 'slider_description', 'slider_img', 'slider_link', 'slider_video', 'slide_type')->where('slider_category', 'Landing')->get();
                         $this->data['categoryslider'] = \DB::table('tb_sliders')->where('slider_category', 'Landing')->get();
 						
-						$this->data['experiences'] = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_custom_title')->where('parent_category_id', 8)->get();
+						$this->data['experiences'] = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_custom_title')->where('category_published', 1)->where('parent_category_id', 8)->get();
 
                         $destts = array();
                         $maindest = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name')->where('parent_category_id', 0)->where('id', '!=', 8)->get();
@@ -2217,7 +2217,7 @@ class HomeController extends Controller {
 
                         $this->data['categoryslider'] = \DB::table('tb_sliders')->where('slider_category', Input::get('s', false))->get();
 						
-						$this->data['experiences'] = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_custom_title')->where('parent_category_id', 8)->get();
+						$this->data['experiences'] = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_custom_title')->where('category_published', 1)->where('parent_category_id', 8)->get();
 
                         $adscateObj = \DB::table('tb_categories')->where('category_name', Input::get('s', false))->where('category_published', 1)->first();
                         $resultads = array();
@@ -5012,7 +5012,7 @@ class HomeController extends Controller {
 
         $this->data['sidebargridAds'] = \DB::table('tb_advertisement')->where('adv_type', 'sidebar')->where('ads_cat_id', $request->slug)->where('adv_position', 'grid_sidebar')->get();
 		
-		$this->data['experiences'] = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_custom_title')->where('parent_category_id', 8)->get();
+		$this->data['experiences'] = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_custom_title')->where('parent_category_id', 8)->where('category_published', 1)->get();
 
         $this->data['pager'] = $this->injectPaginate();
         $this->data['currentPage'] = $currentPage;
@@ -6879,7 +6879,7 @@ class HomeController extends Controller {
 
                         $this->data['categoryslider'] = \DB::table('tb_sliders')->where('slider_category', $keyword)->get();
 						
-						$this->data['experiences'] = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_custom_title')->where('parent_category_id', 8)->get();
+						$this->data['experiences'] = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_custom_title')->where('category_published', 1)->where('parent_category_id', 8)->get();
 
                         $adscateObj = \DB::table('tb_categories')->where('category_name', $keyword)->where('category_published', 1)->first();
                         $resultads = array();
