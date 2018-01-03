@@ -64,9 +64,9 @@
 									 </div>
 								  </div> 					
 								  <div class="form-group  " >
-									<label for="Advertisement Link" class=" control-label col-md-4 text-left"> Advertisement Link </label>
+									<label for="Advertisement Link" class=" control-label col-md-4 text-left"> Advertisement Link <span class="asterix"> * </span></label>
 									<div class="col-md-6">
-									  {!! Form::text('adv_link', $row['adv_link'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
+									  {!! Form::text('adv_link', $row['adv_link'],array('class'=>'form-control', 'placeholder'=>'', 'required'=>'required'   )) !!} 
 									 </div> 
 									 <div class="col-md-2">
 									 	
@@ -138,14 +138,26 @@
 								  <div class="form-group  " >
 									<label for="Advertisement Category" class=" control-label col-md-4 text-left"> Advertisement Category </label>
 									<div class="col-md-6">
-									  <select name='ads_cat_id' rows='5' id='ads_cat_id' class='select2 '   >
-										<option value="0">Hotel</option>
+									  <select name='ads_cat_id' rows='5' id='ads_cat_id' class='select2 '   ></select> 
+									 </div> 
+									 <div class="col-md-2">
+									 	
+									 </div>
+								  </div> 
+								  <div class="form-group  " >
+									<label for="Advertisement Duration" class=" control-label col-md-4 text-left"> Advertisement Duration ( in months ) </label>
+									<div class="col-md-6">
+									  <select name='ads_duration' class="form-control">
+										@for($d=1;$d<=12;$d++)
+											<option value="{{$d}}">{{$d}}</option>
+										@endfor
 									  </select> 
 									 </div> 
 									 <div class="col-md-2">
 									 	
 									 </div>
-								  </div> </fieldset>
+								  </div>
+					</fieldset>
 			</div>
 			
 			

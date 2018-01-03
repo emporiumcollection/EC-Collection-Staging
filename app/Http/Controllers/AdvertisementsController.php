@@ -140,6 +140,7 @@ class AdvertisementsController extends Controller {
 	{
 		
 		$rules = $this->validateForm();
+		$rules['adv_link'] = 'required';
 		$validator = Validator::make($request->all(), $rules);	
 		if ($validator->passes()) {
 			$data = $this->validatePost('tb_advertisements');
@@ -151,7 +152,28 @@ class AdvertisementsController extends Controller {
 			{
 				$data['updated'] = date('y-m-d h:i:s');
 			}
+			$data['adv_expire'] = Date('Y-m-d', strtotime("+".$request->input('ads_duration')." months"))
 			$id = $this->model->insertRow($data , $request->input('id'));
+			
+			if($request->input('adsType')=="slider")
+			{
+				$slidData['user_id'] = $request->input('adv_link');
+				$slidData['slider_link'] = $request->input('adv_link');
+				$slidData['slider_title'] = $request->input('adv_title');
+				$slidData['slider_description'] = $request->input('adv_desc');
+				$slidData['slider_category'] = ($request->input('ads_cat_id')!='') ? $request->input('ads_cat_id') : 'Hotel';
+				if($request->input('id') !='')
+				{
+					$slidData['updated'] = date('y-m-d h:i:s');
+					\DB::table('tb_sliders')->where('advert_id', $request->input('id'))->update($slidData);
+				}
+				else
+				{
+					$slidData['created'] = date('y-m-d h:i:s');
+					$slidData['advert_id'] = $id;
+					\DB::table('tb_sliders')->insertGetId($slidData);
+				}
+			}
 			
 			if(!is_null($request->input('apply')))
 			{
