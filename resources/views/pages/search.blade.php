@@ -2146,8 +2146,8 @@ url: "{{ URL::to('filter_search_destionation')}}",
                         function clear_all_filters() {
                             
                             var $slider = $("#slider-range");
-                            $slider.slider("values", 0, 0);
-                            $slider.slider("values", 1, 6000);
+                            $slider.slider( "option", "min", 0 );
+                            $slider.slider( "option", "max", 6000 );
                             
                             $(".ai_search_keywords").val('{{$keyword}}');
                             $(".ai-arrive-date-filter").val('');
@@ -2158,6 +2158,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                             $('#selDestn').val('');
                             $('#listrecrds').val(0);
                             $('#nxtpg').val('1');
+                            $('#amount').val('1');
                             var it_scroll = false;
                             scrollDownloadData(it_scroll);
                             $('#listrecrds').val(21);
