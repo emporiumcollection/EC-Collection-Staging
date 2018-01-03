@@ -159,11 +159,20 @@ class AdvertisementsController extends Controller {
 			
 			if($request->input('adv_type')=="slider")
 			{
-				$slidData['user_id'] = $request->input('adv_link');
+				$slidData['user_id'] = $request->input('user_id');
 				$slidData['slider_link'] = $request->input('adv_link');
 				$slidData['slider_title'] = $request->input('adv_title');
 				$slidData['slider_description'] = $request->input('adv_desc');
 				$slidData['slider_category'] = ($request->input('ads_cat_id')!='') ? $request->input('ads_cat_id') : 'Hotel';
+				$destinationPath_slider = './uploads/slider_images/';
+				$file = $request->file('adv_img');
+				$filename_slider = $file->getClientOriginalName();
+				$extension_slider = $file->getClientOriginalExtension(); //if you need extension of the file
+				$newfilename_slider = rand(00000000,99999999).'-'.rand(00000000,99999999).'.'.$extension_slider;
+				$uploadSuccess_slider = $request->file('adv_img')->move($destinationPath_slider, $newfilename_slider);				 
+				if( $uploadSuccess_slider ) {
+					$slidData['slider_img'] = $newfilename_slider;
+				}
 				if($request->input('id') !='')
 				{
 					$slidData['updated'] = date('y-m-d h:i:s');
