@@ -914,10 +914,10 @@
                                 padding: 0;
                                 border: none;
                                 border-top: solid 1px;
-                                text-align: center;
+                                text-align: left;
                                 text-transform: uppercase;
                                 max-width: 100px;
-                                margin: 4px auto 0;
+                                margin: 4px;
                                 border-radius: 10px;
                             }
                             
@@ -2123,6 +2123,11 @@
                  </div>
              </div>
          </div>
+                     </div>
+                     <div class="clearfix"></div>
+                 </div>
+             </div>
+         </div>
         <!--New Login Pop Up End Here-->
 		<div id="detail-page-gallery-popup" class="popup detail-page-room-pop-up-align">
 			<div class="popup-inner">
@@ -2438,7 +2443,7 @@
                         event.preventDefault();
                     }
                 });
-                //                Login form Scripts
+                 /*Login form Scripts*/
                 $(".sign-up-show-form-btn").click(function () {
                     $(".create-account-form-show-hide").show();
                     $(".account-with-us-show-hide").hide();
@@ -2463,7 +2468,6 @@
                     $(".login-form-show-hide").hide();
                     $(".create-account-form-show-hide").hide();
                 });
-            });
         </script>
         @include('layouts/elliot/ai_booking-form2')
         <!--Gallery popup start-->
