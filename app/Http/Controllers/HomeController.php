@@ -5316,7 +5316,7 @@ class HomeController extends Controller {
         $TagsConId = array();
         $TagsFileConId = array();
         $pr = 0;
-        if (!empty($TagsObj)) {
+        if (!empty($TagsObj)) {echo '1';
             $TagsCon = \DB::table('tb_container_tags')->select('container_id', 'container_type')->where('tag_id', $TagsObj->id)->get();
             if (!empty($TagsCon)) {
                 foreach ($TagsCon as $TagsConObj) {
@@ -5428,7 +5428,7 @@ class HomeController extends Controller {
         $start = ($perPage * $__currentPage);
                 
         $seaprops = DB::select(DB::raw("SELECT id,property_name,property_slug FROM tb_properties WHERE tb_properties.property_type = 'Hotel' AND property_name like '%$keyword%' AND property_status = '1' $getcats GROUP BY id ORDER BY id asc LIMIT $start, $perPage "));
-        if (!empty($seaprops)) {
+        if (!empty($seaprops)) { echo '2';
             foreach ($seaprops as $sprop) {
 
                 if ($filter_min_price != '' && $filter_max_price != '') {
@@ -5464,6 +5464,7 @@ class HomeController extends Controller {
         }
 
         if (!is_null($request->dest)) {
+            echo '3';
             $catprops = DB::select(DB::raw("SELECT id,property_name,property_slug FROM tb_properties WHERE tb_properties.property_type = 'Hotel' AND property_status = '1' $getcats ORDER BY id asc"));
             if (!empty($catprops)) {
                 foreach ($catprops as $cprop) {
@@ -5556,6 +5557,11 @@ class HomeController extends Controller {
             }
         }
 
+        echo '<pre>';
+        print_r($propertiesArr);
+        echo '</pre>';
+        die;
+        
         usort($propertiesArr, function($a, $b) {
             return trim($a['pdata']->property_name) > trim($b['pdata']->property_name);
         });
