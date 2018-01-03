@@ -5502,10 +5502,6 @@ class HomeController extends Controller {
         } else {
             //$catprops = \DB::select( DB::raw("SELECT * FROM tb_properties WHERE FIND_IN_SET('".$chld."',property_category_id) AND property_status='1' ") );
             $scateObj = \DB::table('tb_categories')->where('category_name', Input::get('s', false))->where('category_published', 1)->first();
-            echo '$scateObj:<pre>';
-            print_r($scateObj);
-            echo '</pre>';
-            die;
             $sgetcats = '';
             $schldIds = array();
             if (!empty($scateObj)) {
