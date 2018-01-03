@@ -2150,8 +2150,8 @@ url: "{{ URL::to('filter_search_destionation')}}",
                             $slider.slider( "option", "max", 6000 );
                             
                             $(".ai_search_keywords").val('{{$keyword}}');
-                            $(".ai-arrive-date-filter").val('');
-                            $(".ai-depart-date-filter").val('');
+                            $(".ai-arrive-date-filter").val('<?php echo date('d-m-Y'); ?>');
+                            $(".ai-depart-date-filter").val('<?php echo date('d-m-Y', strtotime('+ 1 day')); ?>');
                             $("#filter_min_price").val('');
                             $("#filter_max_price").val('');
                             $(".ai-current-filter").val('');

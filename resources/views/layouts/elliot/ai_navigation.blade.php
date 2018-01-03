@@ -11,7 +11,10 @@
     .navbar-nav.aicsm {
         float: none;
         text-align: left;
-        margin-left: 85px;
+        margin-left: 0;
+    }
+    .navbar-nav.aicsm > li:first-child a {
+        margin-left: 0;
     }
     .navbar-nav.aicsm > li {
         float: none;

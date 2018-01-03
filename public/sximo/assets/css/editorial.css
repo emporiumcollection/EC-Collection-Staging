@@ -18,7 +18,8 @@ and open the template in the editor.
     display: none;
 }
 .editorial-hotel-detail-page .back-to-top{
-    right: 18.5%;
+    right: 2.5%;
+    border: none;
 }
 .right-menu-sidebar {
     background-color: #d2d2c6;
