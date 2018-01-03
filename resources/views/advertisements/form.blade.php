@@ -149,7 +149,7 @@
 									<div class="col-md-6">
 									  <select name='ads_duration' class="form-control">
 										@for($d=1;$d<=12;$d++)
-											<option value="{{$d}}">{{$d}}</option>
+											<option value="{{$d}}" <?php echo ($row['ads_duration']==$d) ? 'selected="selected"' : '';?>>{{$d}}</option>
 										@endfor
 									  </select> 
 									 </div> 
