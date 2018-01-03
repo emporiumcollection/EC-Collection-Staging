@@ -1240,7 +1240,7 @@
                                                                             <div class="ai-grid-page-node-pic-box pictureBox gridPicture">
                                                                                 <a title="{{$reultsgridAds[$ads_node]->adv_title}}" class="picture_link-" href="{{$reultsgridAds[$ads_node]->adv_link}}">
                                                                                     <h2 style="position:absolute; color:#fff;padding-left: 20px;">Advertiser</h2>
-                                                                                    <img alt="{{$reultsgridAds[$ads_node]->adv_title}}" src="{{$reultsgridAds[$ads_node]->adv_title}}" src="{{URL::to('uploads/users/advertisement/'.$reultsgridAds[$ads_node]->adv_img)}}" class="img-responsive" style="border: 2px solid #D3D6D2;padding: 3px 1px 3px 0px;">
+                                                                                    <img alt="{{$reultsgridAds[$ads_node]->adv_title}}" src="{{URL::to('uploads/users/advertisement/'.$reultsgridAds[$ads_node]->adv_img)}}" class="img-responsive" style="border: 2px solid #D3D6D2;padding: 3px 1px 3px 0px;">
                                                                                 </a>
                                                                             </div>
                                                                             <div class="listDetails">
