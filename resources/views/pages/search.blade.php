@@ -1231,7 +1231,7 @@
                                             {{--*/ $rw = 1 /*--}}
                                             {{--*/ $node_no = 1; $ads_node=0; /*--}}
                                             @foreach($propertiesArr as $props)
-                                            @if($node_no%20==0)
+                                            @if($node_no%10==0)
                                                 @if(!empty($reultsgridAds))
                                                     @if(array_key_exists($ads_node,$reultsgridAds))
                                                         <div class="productData col-xs-12 col-sm-6 col-md-3 col-lg-3 margin-bottom-10">
