@@ -5502,6 +5502,10 @@ class HomeController extends Controller {
         } else {
             //$catprops = \DB::select( DB::raw("SELECT * FROM tb_properties WHERE FIND_IN_SET('".$chld."',property_category_id) AND property_status='1' ") );
             $scateObj = \DB::table('tb_categories')->where('category_name', Input::get('s', false))->where('category_published', 1)->first();
+            echo '$scateObj:<pre>';
+            print_r($scateObj);
+            echo '</pre>';
+            die;
             $sgetcats = '';
             $schldIds = array();
             if (!empty($scateObj)) {
@@ -5520,10 +5524,6 @@ class HomeController extends Controller {
                 }
 
                 $catprops = DB::select(DB::raw("SELECT id,property_name,property_slug FROM tb_properties WHERE tb_properties.property_type = 'Hotel' AND property_status = '1' $sgetcats ORDER BY id asc"));
-                echo '<pre>';
-                print_r($catprops);
-                echo '</pre>';
-                die;
                 if (!empty($catprops)) {
                     foreach ($catprops as $cprop) {
                         if ($filter_min_price != '' && $filter_max_price != '') {
