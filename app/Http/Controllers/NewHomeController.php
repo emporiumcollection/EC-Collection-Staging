@@ -5433,18 +5433,18 @@ class NewHomeController extends Controller {
         $seaprops = DB::select(DB::raw("SELECT id,property_name,property_slug FROM tb_properties WHERE tb_properties.property_type = 'Hotel' AND property_name like '%$keyword%' AND property_status = '1' $getcats GROUP BY id ORDER BY id asc LIMIT $start, $perPage "));
         if (!empty($seaprops)) {
             foreach ($seaprops as $sprop) {
-
+                $propertyFile = 'property/'.$sprop->id.'.json'; 
+                $contents = Storage::get($propertyFile);
+                $proertyObj = json_decode($contents);
+               
                 if ($filter_min_price != '' && $filter_max_price != '') {
                     $checkseasonPrice = \DB::table('tb_properties_category_rooms_price')->where('property_id', $sprop->id)->orderBy('rack_rate', 'DESC')->first();
                     if (!empty($checkseasonPrice) && $checkseasonPrice->rack_rate >= $filter_min_price && $checkseasonPrice->rack_rate <= $filter_max_price) {
 
                         $propertiesArr[$sprop->id]['pdata'] = $sprop;
                         $propertiesArr[$sprop->id]['pdata']->price = $checkseasonPrice->rack_rate;
-                        $sfileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $sprop->id)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
-
-                        if (!empty($sfileArr)) {
-                            $propertiesArr[$sprop->id]['image'] = $sfileArr;
-                            $propertiesArr[$sprop->id]['image']->imgsrc = (new ContainerController)->getThumbpath($sfileArr->folder_id);
+                        if(!empty($proertyObj[0])){
+                            $propertiesArr[$sprop->id]['image'] = $proertyObj[0];
                         }
                         $pr++;
                     }
@@ -5455,33 +5455,29 @@ class NewHomeController extends Controller {
                     if (!empty($checkseasonPrice)) {
                         $propertiesArr[$sprop->id]['pdata']->price = $checkseasonPrice->rack_rate;
                     }
-                    $sfileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $sprop->id)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
-
-                    if (!empty($sfileArr)) {
-                        $propertiesArr[$sprop->id]['image'] = $sfileArr;
-                        $propertiesArr[$sprop->id]['image']->imgsrc = (new ContainerController)->getThumbpath($sfileArr->folder_id);
+                    if(!empty($proertyObj[0])){
+                        $propertiesArr[$sprop->id]['image'] = $proertyObj[0];
                     }
                     $pr++;
                 }
             }
         }
 
-        if (!is_null($request->dest)) {
+        if (isset($request->dest) && $request->dest!='') {
             $catprops = DB::select(DB::raw("SELECT id,property_name,property_slug FROM tb_properties WHERE tb_properties.property_type = 'Hotel' AND property_status = '1' $getcats ORDER BY id asc"));
             if (!empty($catprops)) {
                 foreach ($catprops as $cprop) {
-
+                    $propertyFile = 'property/'.$cprop->id.'.json'; 
+                    $contents = Storage::get($propertyFile);
+                    $proertyObj = json_decode($contents);
                     if ($filter_min_price != '' && $filter_max_price != '') {
                         $checkseasonPrice = \DB::table('tb_properties_category_rooms_price')->where('property_id', $cprop->id)->orderBy('rack_rate', 'DESC')->first();
                         if (!empty($checkseasonPrice) && $checkseasonPrice->rack_rate >= $filter_min_price && $checkseasonPrice->rack_rate <= $filter_max_price) {
 
                             $propertiesArr[$cprop->id]['pdata'] = $cprop;
                             $propertiesArr[$cprop->id]['pdata']->price = $checkseasonPrice->rack_rate;
-                            $sfileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $cprop->id)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
-
-                            if (!empty($sfileArr)) {
-                                $propertiesArr[$cprop->id]['image'] = $sfileArr;
-                                $propertiesArr[$cprop->id]['image']->imgsrc = (new ContainerController)->getThumbpath($sfileArr->folder_id);
+                            if(!empty($proertyObj[0])){
+                                $propertiesArr[$cprop->id]['image'] = $proertyObj[0];
                             }
                             $pr++;
                         }
@@ -5492,11 +5488,8 @@ class NewHomeController extends Controller {
                         if (!empty($checkseasonPrice)) {
                             $propertiesArr[$cprop->id]['pdata']->price = $checkseasonPrice->rack_rate;
                         }
-                        $sfileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $cprop->id)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
-
-                        if (!empty($sfileArr)) {
-                            $propertiesArr[$cprop->id]['image'] = $sfileArr;
-                            $propertiesArr[$cprop->id]['image']->imgsrc = (new ContainerController)->getThumbpath($sfileArr->folder_id);
+                        if(!empty($proertyObj[0])){
+                            $propertiesArr[$cprop->id]['image'] = $proertyObj[0];
                         }
                         $pr++;
                     }
@@ -5525,18 +5518,18 @@ class NewHomeController extends Controller {
                 $catprops = DB::select(DB::raw("SELECT id,property_name,property_slug FROM tb_properties WHERE tb_properties.property_type = 'Hotel' AND property_status = '1' $sgetcats ORDER BY id asc"));
                 if (!empty($catprops)) {
                     foreach ($catprops as $cprop) {
+                        $propertyFile = 'property/'.$cprop->id.'.json'; 
+                        $contents = Storage::get($propertyFile);
+                        $proertyObj = json_decode($contents);
                         if ($filter_min_price != '' && $filter_max_price != '') {
                             $checkseasonPrice = \DB::table('tb_properties_category_rooms_price')->where('property_id', $cprop->id)->orderBy('rack_rate', 'DESC')->first();
                             if (!empty($checkseasonPrice) && $checkseasonPrice->rack_rate >= $filter_min_price && $checkseasonPrice->rack_rate <= $filter_max_price) {
 
                                 $propertiesArr[$cprop->id]['pdata'] = $cprop;
                                 $propertiesArr[$cprop->id]['pdata']->price = $checkseasonPrice->rack_rate;
-                                $sfileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $cprop->id)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
-
-                                if (!empty($sfileArr)) {
-                                    $propertiesArr[$cprop->id]['image'] = $sfileArr;
-                                    $propertiesArr[$cprop->id]['image']->imgsrc = (new ContainerController)->getThumbpath($sfileArr->folder_id);
-                                }
+                                if(!empty($proertyObj[0])){
+                                    $propertiesArr[$cprop->id]['image'] = $proertyObj[0];
+                                }    
                                 $pr++;
                             }
                         } else {
@@ -5546,12 +5539,9 @@ class NewHomeController extends Controller {
                             if (!empty($checkseasonPrice)) {
                                 $propertiesArr[$cprop->id]['pdata']->price = $checkseasonPrice->rack_rate;
                             }
-                            $sfileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $cprop->id)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
-
-                            if (!empty($sfileArr)) {
-                                $propertiesArr[$cprop->id]['image'] = $sfileArr;
-                                $propertiesArr[$cprop->id]['image']->imgsrc = (new ContainerController)->getThumbpath($sfileArr->folder_id);
-                            }
+                            if(!empty($proertyObj[0])){
+                                $propertiesArr[$cprop->id]['image'] = $proertyObj[0];
+                            }    
                             $pr++;
                         }
                     }
@@ -7322,12 +7312,13 @@ class NewHomeController extends Controller {
                        
                     
                     }
-                    $propertyFile = 'property/'.$cprop->id.'.json';
-                    Storage::put($propertyFile, json_encode($propertiesArr)); 
-                    $exists = Storage::disk('local')->has($propertyFile);
-                    if($exists){
-                        echo 'File '.($keyMain+1).' : '.$propertyFile.'<br>';
-                    }
+                    
+                }
+                $propertyFile = 'property/'.$cprop->id.'.json';
+                Storage::put($propertyFile, json_encode($propertiesArr)); 
+                $exists = Storage::disk('local')->has($propertyFile);
+                if($exists){
+                    echo 'File '.($keyMain+1).' : '.$propertyFile.'<br>';
                 }
 
             }
