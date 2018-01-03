@@ -421,7 +421,7 @@
 	right: 0;
         }
         .contact-aside ul {
-            padding: 7px 0;
+            padding: 7px 0px 0px 0px;;
             list-style: none;
         }
         .contact-aside li {
@@ -1118,7 +1118,7 @@
 													</div>
 												</div>
 												<div class="bh-slideshow-thumbnail-split-preview uk-overlay-panel uk-overlay-right uk-overlay-background uk-overlay-fade uk-width-2-5 uk-width-xxlarge-1-3 uk-flex uk-flex-middle uk-flex-center uk-visible-large">
-													<div>
+                                                                                                    <div style="width: 80%;">
 														<ul class="bh-slideshow-thumbnail-split-preview-meta uk-subnav uk-subnav-line">
 															<li>
 																<span><a href="#" rel="category tag">{{$slides->slider_category}}</a></span>
@@ -2396,7 +2396,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                     </div> 
                                     <div class="filter-footer">
                                         <div><a href="#" >View All Locations On Map</a></div>
-                                        <div><a onclick="javascript:clear_all_filters();" href="javascript:void(0);"><i class="fa fa-repeat" aria-hidden="true"></i>&nbsp;Clear All</a></div>
+                                        <div class="clear-all-filters"><a onclick="javascript:clear_all_filters();" href="javascript:void(0);"><i class="fa fa-repeat" aria-hidden="true"></i>&nbsp;Clear All</a></div>
                                     </div>
                                     <section class="regular slider">
                                         <div class="slick-cstm-width">
