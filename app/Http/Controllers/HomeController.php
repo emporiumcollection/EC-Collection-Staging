@@ -5567,6 +5567,12 @@ class HomeController extends Controller {
 
         //echo count($propertiesArr);
         $pagedData = array_slice($propertiesArr, $currentPage * $perPage, $perPage);
+        
+        echo '<pre>';
+        print_r($pagedData);
+        echo '</pre>';
+        die;
+        
         $pagination = new Paginator($pagedData, count($propertiesArr), $perPage);
 
         //print_r($pagination);
