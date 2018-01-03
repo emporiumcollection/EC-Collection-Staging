@@ -416,7 +416,6 @@
                             .editorial-custom-footer-style .newsletter-style {
                                 width: 45%;
                                 margin-top: 8px;
-                                color: white;
                                 float: left;
                                 background: #f7f7f4;
                                 margin-right: 15px;
