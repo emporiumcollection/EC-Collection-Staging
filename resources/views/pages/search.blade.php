@@ -2635,17 +2635,17 @@ url: "{{ URL::to('filter_search_destionation')}}",
 								imagesPro += '</div>';
 								$('#placepopupcontent').html(imagesPro);
 								
-                                                                                        /*Toggle Side Nav Start Here*/
-                            eval($('.dropdown').each(function () {
-                                var $dropdown = $(this);
-                                $(".members-list", $dropdown).click(function (e) {
-                                    e.preventDefault();
-                                    $div = $(".members-drop-list", $dropdown);
-                                    $div.toggle();
-                                    $(".members-drop-list").not($div).hide();
-                                    return false;
-                                });
-                            }));
+                                                                        /*Toggle Side Nav Start Here*/
+                                                                        eval($('.dropdown').each(function () {
+                                                                            var $dropdown = $(this);
+                                                                            $(".members-list", $dropdown).click(function (e) {
+                                                                                e.preventDefault();
+                                                                                $div = $(".members-drop-list", $dropdown);
+                                                                                $div.toggle();
+                                                                                $(".members-drop-list").not($div).hide();
+                                                                                return false;
+                                                                            });
+                                                                        }));
 
 									eval($("#adult-input-value").change(function () {
 										var adults = $(this).val();
