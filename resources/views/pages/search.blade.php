@@ -2941,7 +2941,13 @@ url: "{{ URL::to('filter_search_destionation')}}",
                         function(){ $(this).removeClass('active') }
                     )
                 </script>
-
+<script>
+$(document).ready(function(){
+    $(".members-list").click(function(){
+        $(".members-drop-list").toggle();
+    });
+});
+</script>
 
            <style>
 /* Center the loader */
