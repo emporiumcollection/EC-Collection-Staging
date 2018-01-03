@@ -2220,6 +2220,28 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                 scrollDownloadData(it_scroll);
                                 $('#listrecrds').val(21);
                             });
+							
+							$('.searchbox_landing').on('typeahead:selected', function (e, datum) {
+								var propname = $(this);
+								$.ajax({
+									url: "{{ URL::to('find_property_by_name')}}",
+									type: "post",
+									data: 'pname=' + propname.val(),
+									dataType: "json",
+									success: function (data) {
+										if (data.status == 'error')
+										{
+											propname.parents('.searchform-navbar').submit();
+											return;
+											propname.parents('.searchform-navbar').submit();
+										} else
+										{
+											var obj = JSON.parse(data.property);
+											window.location.href = "{{URL::to('')}}/" + obj.property_slug;
+										}
+									}
+								});
+							});
                         });
                     </script>
                     <div class="col-md-2 col-sm-3">
