@@ -569,7 +569,7 @@
                                 font-size: 70px;
                                 margin-left: -107px;
                                 margin-top: 36px;
-                                margin-top: 70px;
+                                margin-top: 0px;
                                 text-transform: uppercase;
                             }
                             
@@ -715,9 +715,9 @@
                             .bar-name-text-style {
                                 color: #fff;
                                 font-size: 13px;
-                                letter-spacing: 11px;
+                                letter-spacing: 0px;
                                 text-transform: uppercase;
-                                text-align: right;
+                                text-align: center;
                                 font-family: Geomanist-light;
                             }
                             

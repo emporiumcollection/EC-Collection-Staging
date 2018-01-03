@@ -2157,7 +2157,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                             $(".ai-current-filter").val('');
                             $('#selDestn').val('');
                             $('#listrecrds').val(0);
-                            $('#nxtpg').val('1');
+                            $('#nxtpg').val('2');
                             $('#amount').val('1');
                             var it_scroll = false;
                             scrollDownloadData(it_scroll);
