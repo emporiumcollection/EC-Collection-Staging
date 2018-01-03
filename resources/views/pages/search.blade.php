@@ -429,7 +429,7 @@
 	margin: 0px 0px 1px 0px;
         }
         .contact-aside li a {
-            margin-left: 14px;
+            margin-left: 0;
         }
         .contact-aside [class*="icon-"] {
             display: inline-block;
