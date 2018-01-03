@@ -40,4 +40,5 @@
                     Route::controller('crmhotel', 'CrmhotelController');
                     Route::controller('citycontent', 'CitycontentController');
                     Route::controller('whybookwithus', 'WhybookwithusController');
+					Route::controller('advertisements', 'AdvertisementsController');
                     ?>
