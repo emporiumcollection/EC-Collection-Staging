@@ -128,8 +128,13 @@ class HomeController extends Controller {
                         $this->data['categoryslider'] = \DB::table('tb_sliders')->where('slider_category', 'Landing')->get();
 						
 						$this->data['experiences'] = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_custom_title')->where('category_published', 1)->where('parent_category_id', 8)->get();
-
-                        $destts = array();
+						
+						$this->data['whybookwithus'] = \DB::table('tb_whybookwithus')->select('id', 'title', 'sub_title')->where('status', 0)->get();
+                        /* Note:
+                            Now the our destinations will render from storage/app/homeOurDestination.html. 
+                            That file will be genrate from cron job or backend panel.  
+                        */
+                        /*$destts = array();
                         $maindest = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name')->where('parent_category_id', 0)->where('id', '!=', 8)->get();
                         if (!empty($maindest)) {
                             $ctt = 0;
@@ -213,19 +218,14 @@ class HomeController extends Controller {
                                                                                                             }
                                                                                                         }
                                                                                                     }
-													/*$getcats = " AND (" . implode(" || ", array_map(function($v) {
-																		return sprintf("FIND_IN_SET('%s', property_category_id)", $v);
-																	}, array_values($chldIds))) . ")";*/
+													
 												}
                                                                                                 if(!empty($temp)) {
                                                                                                     $destts[$ctt]['child'][$sd]->subchild = $temp;
-                                                                                                    /*return array('$subchilddest' => $subchilddest, '$temp' => $temp);*/
+                                                                                                    
                                                                                                 }
                                                                                                                                                                                                 
-												/*$cpreprops = DB::select(DB::raw("SELECT COUNT(*) AS total_rows FROM tb_properties WHERE property_status = '1' $getcats"));
-                                                                                                if (isset($cpreprops[0]->total_rows) && $cpreprops[0]->total_rows > 0) {
-													$destts[$ctt]['child'][$sd]->subchild = $subchilddest;
-												}*/
+												
                                             }
 											$sd++;
                                         }
@@ -237,7 +237,7 @@ class HomeController extends Controller {
                         }
                         //print "<pre>";
                         //print_r($destts);
-                        $this->data['ourdesitnation'] = $destts;
+                        $this->data['ourdesitnation'] = $destts;*/
                         $this->data['social_links'] = \DB::table('tb_social')->where('status', 1)->get();
                         $this->data['landing_menus'] = array();
 						
@@ -366,14 +366,17 @@ class HomeController extends Controller {
                         }
 
                         $this->data['channel_url'] = $channel_url;
-
-                        $mainArrdestts = array();
+                        /* Note:
+                            Now the our destinations will render from storage/app/homeOurDestination.html. 
+                            That file will be genrate from cron job or backend panel.  
+                        */
+                       /* $mainArrdestts = array();
                         $maindest = \DB::table('tb_categories')->where('parent_category_id', 0)->where('id', '!=', 8)->get();
                         if (!empty($maindest)) {
                             $d = 0;
                             foreach ($maindest as $mdest) {
 
-                                /*                                 * *********************************************** */
+                                
 
                                 $getcats = '';
                                 $chldIds = array();
@@ -444,7 +447,7 @@ class HomeController extends Controller {
                                 $d++;
                             }
                         }
-                        $this->data['ourmaindesitnation'] = $mainArrdestts;
+                        $this->data['ourmaindesitnation'] = $mainArrdestts;*/
                         $this->data['continent'] = Input::get('continent', false);
                         $this->data['region'] = Input::get('region', false);
                         $this->data['country'] = Input::get('country', false);
@@ -2218,6 +2221,8 @@ class HomeController extends Controller {
                         $this->data['categoryslider'] = \DB::table('tb_sliders')->where('slider_category', Input::get('s', false))->get();
 						
 						$this->data['experiences'] = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_custom_title')->where('category_published', 1)->where('parent_category_id', 8)->get();
+						
+						$this->data['whybookwithus'] = \DB::table('tb_whybookwithus')->select('id', 'title', 'sub_title')->where('status', 0)->get();
 
                         $adscateObj = \DB::table('tb_categories')->where('category_name', Input::get('s', false))->where('category_published', 1)->first();
                         $resultads = array();
@@ -5013,6 +5018,8 @@ class HomeController extends Controller {
         $this->data['sidebargridAds'] = \DB::table('tb_advertisement')->where('adv_type', 'sidebar')->where('ads_cat_id', $request->slug)->where('adv_position', 'grid_sidebar')->get();
 		
 		$this->data['experiences'] = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_custom_title')->where('parent_category_id', 8)->where('category_published', 1)->get();
+		
+		$this->data['whybookwithus'] = \DB::table('tb_whybookwithus')->select('id', 'title', 'sub_title')->where('status', 0)->get();
 
         $this->data['pager'] = $this->injectPaginate();
         $this->data['currentPage'] = $currentPage;
@@ -6880,6 +6887,8 @@ class HomeController extends Controller {
                         $this->data['categoryslider'] = \DB::table('tb_sliders')->where('slider_category', $keyword)->get();
 						
 						$this->data['experiences'] = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_custom_title')->where('category_published', 1)->where('parent_category_id', 8)->get();
+						
+						$this->data['whybookwithus'] = \DB::table('tb_whybookwithus')->select('id', 'title', 'sub_title')->where('status', 0)->get();
 
                         $adscateObj = \DB::table('tb_categories')->where('category_name', $keyword)->where('category_published', 1)->first();
                         $resultads = array();
