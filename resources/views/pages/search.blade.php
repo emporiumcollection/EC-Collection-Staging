@@ -413,7 +413,7 @@
 	transition: .5s;
 	position: fixed;
 	top: 228px;
-	left: calc(100% - 50px);
+	left: calc(100% - 43px);
 	width: 340px;
 	background: #272727;
 	color: #fff;
@@ -425,7 +425,7 @@
             list-style: none;
         }
         .contact-aside li {
-	padding: 6px 0px 6px 18px;
+	padding: 6px 0px 6px 9px;
 	margin: 0px 0px 1px 0px;
         }
         .contact-aside li a {
