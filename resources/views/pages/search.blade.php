@@ -2144,7 +2144,12 @@ url: "{{ URL::to('filter_search_destionation')}}",
                     </script>
                     <script>
                         function clear_all_filters() {
-                            $(".ai_search_keywords").val('');
+                            
+                            var $slider = $("#slider-range");
+                            $slider.slider("values", 0, 0);
+                            $slider.slider("values", 1, 6000);
+                            
+                            $(".ai_search_keywords").val('{{$keyword}}');
                             $(".ai-arrive-date-filter").val('');
                             $(".ai-depart-date-filter").val('');
                             $("#filter_min_price").val('');
