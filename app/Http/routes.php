@@ -15,7 +15,8 @@
 
 
 Route::get('/', 'HomeController@index');
-Route::get('/generate/destination', 'NewHomeController@destinationGenerate');
+Route::get('generate/destination', 'NewHomeController@destinationGenerate');
+Route::get('generate/hotel', 'NewHomeController@hotelGenerate');
 Route::controller('home', 'HomeController');
 
 Route::controller('/user', 'UserController');
@@ -239,6 +240,7 @@ Route::post('get-article-by-title', 'HomeController@getArticleByTitle');
 // property search urls
 Route::get('getproperty/{id}', 'HomeController@getPropertyQuickView');
 Route::get('filter_search_destionation', 'HomeController@getPropertyBySearchDestination');
+Route::get('new_filter_search_destionation', 'NewHomeController@getPropertyBySearchDestination');
 Route::get('{slug}', 'HomeController@getPropertyDetail');
 Route::get('our-collection-pages/{slug}/{page}', 'HomeController@getPropertyDetail_pages');
 Route::get('book-property/{slug}', 'HomeController@bookProperty');
