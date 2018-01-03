@@ -166,7 +166,7 @@ class AdvertisementsController extends Controller {
 				$slidData['slider_category'] = ($request->input('ads_cat_id')!='') ? $request->input('ads_cat_id') : 'Hotel';
 				if(!is_null(Input::file('adv_img')))
 				{
-					$destinationPath_slider = './uploads/slider_images/';
+					$destinationPath_slider = public_path().'/uploads/slider_images/';
 					$file = $request->file('adv_img');
 					$filename_slider = $file->getClientOriginalName();
 					$extension_slider = $file->getClientOriginalExtension(); //if you need extension of the file
