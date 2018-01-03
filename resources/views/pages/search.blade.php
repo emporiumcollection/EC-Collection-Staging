@@ -2636,16 +2636,16 @@ url: "{{ URL::to('filter_search_destionation')}}",
 								$('#placepopupcontent').html(imagesPro);
 								
                                                                         /*Toggle Side Nav Start Here*/
-//                                                                        eval($('.dropdown').each(function () {
-//                                                                            var $dropdown = $(this);
-//                                                                            $(".members-list", $dropdown).click(function (e) {
-//                                                                                e.preventDefault();
-//                                                                                $div = $(".members-drop-list", $dropdown);
-//                                                                                $div.toggle();
-//                                                                                $(".members-drop-list").not($div).hide();
-//                                                                                return false;
-//                                                                            });
-//                                                                        }));
+                                                                        eval($('.dropdown').each(function () {
+                                                                            var $dropdown = $(this);
+                                                                            $(".members-list", $dropdown).click(function (e) {
+                                                                                e.preventDefault();
+                                                                                $div = $(".members-drop-list", $dropdown);
+                                                                                $div.toggle();
+                                                                                $(".members-drop-list").not($div).hide();
+                                                                                return false;
+                                                                            });
+                                                                        }));
 
 									eval($("#adult-input-value").change(function () {
 										var adults = $(this).val();
@@ -2944,15 +2944,15 @@ url: "{{ URL::to('filter_search_destionation')}}",
 <script>
 $(document).ready(function(){
     eval($('.dropdown').each(function () {
-        var $dropdown = $(this);
-        $(".members-list", $dropdown).click(function (e) {
-            e.preventDefault();
-            $div = $(".members-drop-list", $dropdown);
-            $div.toggle();
-            $(".members-drop-list").not($div).hide();
-            return false;
-        });
-        }));
+    var $dropdown = $(this);
+    $(".members-list", $dropdown).click(function (e) {
+        e.preventDefault();
+        $div = $(".members-drop-list", $dropdown);
+        $div.toggle();
+        $(".members-drop-list").not($div).hide();
+        return false;
+    });
+}));
 });
 </script>
 
