@@ -2143,6 +2143,20 @@ url: "{{ URL::to('filter_search_destionation')}}",
 }
                     </script>
                     <script>
+                        function clear_all_filters() {
+                            $(".ai_search_keywords").val('');
+                            $(".ai-arrive-date-filter").val('');
+                            $(".ai-depart-date-filter").val('');
+                            $("#filter_min_price").val('');
+                            $("#filter_max_price").val('');
+                            $(".ai-current-filter").val('');
+                            $('#selDestn').val('');
+                            $('#listrecrds').val(0);
+                            $('#nxtpg').val('1');
+                            var it_scroll = false;
+                            scrollDownloadData(it_scroll);
+                            $('#listrecrds').val(21);
+                        }
                         function filter_destination(destn, area) {
                             if (destn != '' && destn > 0) {
                                 $('#selDestn').val(destn + '#:' + area);
@@ -2376,7 +2390,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                     </div> 
                                     <div class="filter-footer">
                                         <div><a href="#" >View All Locations On Map</a></div>
-                                        <div><a href="#"><i class="fa fa-repeat" aria-hidden="true"></i>&nbsp;Clear All</a></div>
+                                        <div><a onclick="javascript:clear_all_filters();" href="javascript:void(0);"><i class="fa fa-repeat" aria-hidden="true"></i>&nbsp;Clear All</a></div>
                                     </div>
                                     <section class="regular slider">
                                         <div class="slick-cstm-width">
