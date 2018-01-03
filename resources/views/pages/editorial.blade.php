@@ -2123,11 +2123,6 @@
                  </div>
              </div>
          </div>
-                     </div>
-                     <div class="clearfix"></div>
-                 </div>
-             </div>
-         </div>
         <!--New Login Pop Up End Here-->
 		<div id="detail-page-gallery-popup" class="popup detail-page-room-pop-up-align">
 			<div class="popup-inner">
@@ -2443,31 +2438,32 @@
                         event.preventDefault();
                     }
                 });
-                 /*Login form Scripts*/
+                //                Login form Scripts
                 $(".sign-up-show-form-btn").click(function () {
                     $(".create-account-form-show-hide").show();
                     $(".account-with-us-show-hide").hide();
-                    $(".login-show-form-btn").hide();
+                    $(".login-form-show-hide").hide();
                     $(".forgot-pass-form-show-hide").hide();
                 });
                 $(".login-show-form-btn").click(function () {
-                    $(".login-show-form-btn").show();
+                    $(".login-form-show-hide").show();
                     $(".account-with-us-show-hide").hide();
                     $(".create-account-form-show-hide").hide();
                     $(".forgot-pass-form-show-hide").hide();
                 });
                 $(".forgot-pass-show-form-btn").click(function () {
                     $(".forgot-pass-form-show-hide").show();
-                    $(".login-show-form-btn").hide();
+                    $(".login-form-show-hide").hide();
                     $(".account-with-us-show-hide").hide();
                     $(".create-account-form-show-hide").hide();
                 });
                 $(".show-account-with-us").click(function () {
                     $(".account-with-us-show-hide").show();
                     $(".forgot-pass-form-show-hide").hide();
-                    $(".login-show-form-btn").hide();
+                    $(".login-form-show-hide").hide();
                     $(".create-account-form-show-hide").hide();
                 });
+            });
         </script>
         @include('layouts/elliot/ai_booking-form2')
         <!--Gallery popup start-->
