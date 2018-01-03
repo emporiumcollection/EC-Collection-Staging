@@ -2974,6 +2974,5 @@ url: "{{ URL::to('filter_search_destionation')}}",
 
 
 </style>                             
-@include('layouts/elliot/ai_search-page')
     </body>
 </html>
