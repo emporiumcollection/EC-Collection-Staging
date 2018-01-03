@@ -2848,15 +2848,15 @@ url: "{{ URL::to('filter_search_destionation')}}",
                         $('#filter-date-mobile').combodate();
                         });
                         $('#filter-date-mobile').combodate({
-                        minYear: 2016,
-                                maxYear: 2017,
+                        minYear: 2018,
+                                maxYear: 2019,
                         });
                         $(function () {
                         $('#filter-date-mobile-departure').combodate();
                         });
                         $('#filter-date-mobile-departure').combodate({
-                        minYear: 2016,
-                                maxYear: 2017,
+                        minYear: 2018,
+                                maxYear: 2019,
                         });
                         <?php if(\Session::get('ai_previous_page')): ?>
                         $(document).ready(function (){
