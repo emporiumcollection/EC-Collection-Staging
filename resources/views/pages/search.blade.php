@@ -1599,7 +1599,7 @@ function scrollDataAjax(it_scroll,pageCounter)
                                 html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
                                 html += '<p class="yacths-des-text">2015H</p>';
                                 html += '</div>';
-                                html += pimg;
+                                html += '<img alt="" src="' + pimg + '" class="img-responsive">';
                             }
 
                             html += '</div>';
