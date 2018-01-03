@@ -4794,6 +4794,7 @@ class HomeController extends Controller {
         $propertiesArr = array();
         $page = 1;
         $perPage = 40;
+        $perPage = 12;
         $currentPage = Input::get('page', 1) - 1;
 
         $query = "SELECT editor_choice_property,feature_property,id,property_name,property_slug,property_category_id FROM tb_properties WHERE property_type='" . $request->slug . "' AND property_status = '1' ";
