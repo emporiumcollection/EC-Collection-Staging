@@ -138,7 +138,9 @@
 								  <div class="form-group  " >
 									<label for="Advertisement Category" class=" control-label col-md-4 text-left"> Advertisement Category </label>
 									<div class="col-md-6">
-									  <select name='ads_cat_id' rows='5' id='ads_cat_id' class='select2 '   ></select> 
+									  <select name='ads_cat_id' rows='5' id='ads_cat_id' class='select2 '   >
+										<option value="0">Hotel</option>
+									  </select> 
 									 </div> 
 									 <div class="col-md-2">
 									 	

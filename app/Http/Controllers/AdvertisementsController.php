@@ -143,7 +143,14 @@ class AdvertisementsController extends Controller {
 		$validator = Validator::make($request->all(), $rules);	
 		if ($validator->passes()) {
 			$data = $this->validatePost('tb_advertisements');
-				
+			if($request->input('id') =='')
+			{
+				$data['created'] = date('y-m-d h:i:s');
+			}
+			else
+			{
+				$data['updated'] = date('y-m-d h:i:s');
+			}
 			$id = $this->model->insertRow($data , $request->input('id'));
 			
 			if(!is_null($request->input('apply')))
@@ -165,7 +172,7 @@ class AdvertisementsController extends Controller {
 			
 		} else {
 
-			return Redirect::to('advertisements/update/'.$id)->with('messagetext',\Lang::get('core.note_error'))->with('msgstatus','error')
+			return Redirect::to('advertisements/update/'.$request->input('id'))->with('messagetext',\Lang::get('core.note_error'))->with('msgstatus','error')
 			->withErrors($validator)->withInput();
 		}	
 	
