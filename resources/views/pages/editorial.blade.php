@@ -424,6 +424,7 @@
                             .editorial-custom-footer-style .newsletter-style {
                                 width: 45%;
                                 margin-top: 8px;
+                                color: white;
                                 float: left;
                                 background: #f7f7f4;
                                 margin-right: 15px;
@@ -760,7 +761,7 @@
                             .spa-overlay-text span {
                                 color: white;
                                 font-size: 14px;
-                                font-style: italic;
+                                font-style: normal;
                                 font-family: acaslonpro-regular;
                                 font-weight: lighter;
                                 margin-top: -10px !important;
