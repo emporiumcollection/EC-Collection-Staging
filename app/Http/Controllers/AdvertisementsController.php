@@ -4,7 +4,7 @@ use App\Http\Controllers\controller;
 use App\Models\Advertisements;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
-use Validator, Input, Redirect ; 
+use Validator, Input, Redirect , File; 
 
 
 class AdvertisementsController extends Controller {
@@ -166,13 +166,13 @@ class AdvertisementsController extends Controller {
 				$slidData['slider_category'] = ($request->input('ads_cat_id')!='') ? $request->input('ads_cat_id') : 'Hotel';
 				if(!is_null(Input::file('adv_img')))
 				{
-					print_r($request->file('adv_img')); die;
+					$dirPath = public_path().'/uploads/users/advertisement/';
 					$destinationPath_slider = public_path().'/uploads/slider_images/';
 					$file = $request->file('adv_img');
 					$filename_slider = $file->getClientOriginalName();
 					$extension_slider = $file->getClientOriginalExtension(); //if you need extension of the file
 					$newfilename_slider = rand(00000000,99999999).'-'.rand(00000000,99999999).'.'.$extension_slider;
-					$uploadSuccess_slider = $request->file('adv_img')->move($destinationPath_slider, $newfilename_slider);				 
+					$uploadSuccess_slider = File::move($dirPath.$data['adv_img'], $destinationPath_slider.$newfilename_slider);				 
 					if( $uploadSuccess_slider ) {
 						$slidData['slider_img'] = $newfilename_slider;
 					}
