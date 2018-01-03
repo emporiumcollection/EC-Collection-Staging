@@ -66,6 +66,7 @@ class HomeController extends Controller {
 		{
 			$pageSlug = $page;
 		}
+		echo $page; die;
         if ($page != '') :
             $content = \DB::table('tb_pages')->where('alias', '=', $page)->where('status', '=', 'enable')->get();
             //print_r($content);
