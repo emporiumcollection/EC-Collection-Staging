@@ -413,7 +413,7 @@
 	transition: .5s;
 	position: fixed;
 	top: 228px;
-	left: calc(100% - 66px);
+	left: calc(100% - 50px);
 	width: 340px;
 	background: #272727;
 	color: #fff;
