@@ -37,10 +37,10 @@
         <script type="text/javascript" src="{{ asset('sximo/assets/js/uikit.js')}}"></script>
         
         <!--AIC sidebar js -->
-        <script src="{{ asset('sximo/assets/js/jquery_1.js')}}" type="text/javascript"></script>
+<!--        <script src="{{ asset('sximo/assets/js/jquery_1.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/custm.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/TweenMax.min41e7.js')}}" type="text/javascript"></script>
-        <script src="{{ asset('sximo/assets/js/menu41e7.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('sximo/assets/js/menu41e7.js')}}" type="text/javascript"></script>-->
 
         <!--JS Includes-->
 
@@ -64,9 +64,9 @@
         <link href="{{ asset('sximo/assets/css/filter-bar.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/ai_yachts-custom.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/cities-filter.css')}}" rel="stylesheet" type="text/css"/>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-		
-		
+<!--        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
+        
+        
            @if(isset($_GET['ref']) && $_GET['ref']=='oc' )
             <?php $thumbnail = asset('sximo/assets/images/our_collection.png'); ?>
            @elseif(isset($_GET['ref']) && $_GET['ref']=='syd' )
@@ -379,16 +379,16 @@
                     min-height: 250px !important;
                 }
             }
-			
-			img.propovericons {
-				position: absolute;
-				top: 5px;
-				right: 10px;
-				z-index: 100;
-				max-height: 80px !important;
-				width: 80px !important;
-				min-height: 80px !important;
-			}
+            
+            img.propovericons {
+                position: absolute;
+                top: 5px;
+                right: 10px;
+                z-index: 100;
+                max-height: 80px !important;
+                width: 80px !important;
+                min-height: 80px !important;
+            }
                         .ai_active_filter .node-btn {
                             text-decoration: underline;
                         }
@@ -409,28 +409,27 @@
             z-index: 1028;
     }
         .contact-aside {
-            border-radius: 2px;
-            transition: .5s;
-            position: fixed;
-            top: 228px;
-            left: calc(100% - 38px);
-            width: 291px;
-            background: #272727;
-            color: #fff;
-            font-size: 15px;
-            right: 0;
+    border-radius: 2px;
+    transition: .5s;
+    position: fixed;
+    top: 228px;
+    left: calc(100% - 43px);
+    width: 340px;
+    background: #272727;
+    color: #fff;
+    font-size: 15px;
+    right: 0;
         }
         .contact-aside ul {
-            padding: 7px 0;
+            padding: 7px 0px 0px 0px;;
             list-style: none;
         }
         .contact-aside li {
-	padding: 6.333px 0px 6px 5px;
-	margin: 0px 5px 1px 0px;
+    padding: 6px 0px 6px 9px;
+    margin: 0px 0px 1px 0px;
         }
-        .contact-aside {
-            color: #fff;
-            font-size: 15px;
+        .contact-aside li a {
+            margin-left: 0;
         }
         .contact-aside [class*="icon-"] {
             display: inline-block;
@@ -461,12 +460,12 @@
         }
         
         .emporium-voyage-Menu {
-	color: #c7ab84;
-	margin-top: 3px;
-	margin-left: 0px;
-	opacity: 1;
-	box-shadow: none;
-	font-size: 20px;
+    color: #c7ab84;
+    margin-top: 3px;
+    margin-left: 30px;
+    opacity: 1;
+    box-shadow: none;
+    font-size: 20px;
     }
     
     #block-system-main-menu .block-inner {
@@ -474,44 +473,44 @@
     }
     
     .close {
-	font-size: 21px;
-	font-weight: 700;
-	line-height: 1;
-	color: #000;
-	text-shadow:0px;
-	opacity: 1;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow:0px;
+    opacity: 1;
     }
     header {
-	position: fixed;
-	top: 64px;
-	z-index: 9999;
-	right: 0;
-	left: 95.20%;
+    position: fixed;
+    top: 64px;
+    z-index: 9999;
+    right: 0;
+    left: 95.20%;
     }
     
     /* go back buttons */
     
     .show-login-forms-btn {
-	display: inline-block;
-	padding: 5px 0;
-	text-align: center;
-	vertical-align: text-top;
-	width: 0%;
+    display: inline-block;
+    padding: 5px 19px;
+    text-align: center;
+    vertical-align: text-top;
+    width: 0%;
     }
     
         
          /* sidebar css */
         </style>
-		
-		<!-- Global site tag (gtag.js) - Google Analytics -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110391807-1"></script>
-		<script>
-		  window.dataLayer = window.dataLayer || [];
-		  function gtag(){dataLayer.push(arguments);}
-		  gtag('js', new Date());
+        
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110391807-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
 
-		  gtag('config', 'UA-110391807-1');
-		</script>
+          gtag('config', 'UA-110391807-1');
+        </script>
     </head>
     <body id="main" class="hotel">
         
@@ -523,43 +522,43 @@
                         
                         <!-- back and lock button -->
                        
-				<div class="logo-padding-left editorial-logo-align">
-					<!--<div>
-						<a href="#" title="Add to Favorites" class="book-button" onclick="add_to_lightbox(40281, 164);"><i class="fa fa-plus " aria-hidden="true" ></i> Add</a>
-					</div>-->
-					<div class="go-back-button-container">
-						<button class="go-back-button" onclick="goBack()">Go Back</button>
-						<div class="previous-page-screen-short-container">
-															<img src="http://www.emporium-voyage.com/sximo/previous_page_image/7b58aa5e612660d887cb8569a5685109.jpg">
-													</div>
-					</div>
-				</div>
-                											<div class="hotel-next-previous-outer">
-							<div class="previous-btn previous-next-pannel"> 
-								  <img class="img-responsive next-hotel-arrow" src="http://www.emporium-voyage.com/sximo/assets/images/editorial-left-arrow.png" alt="">
-								<a href="http://www.emporium-voyage.com/standart-hotel-moscow">
-									<div class="next-hotel-show-pannel">
-										<img class="img-responsive" src="http://www.emporium-voyage.com/uploads/property_imgs_thumbs/front_property_4565_15531396286-46934943356.jpg" alt="">
-										<div class="next-hotel-tittle">
-											<h2>StandArt Hotel Moscow</h2>
-										</div>
-									</div>
-								</a>
-							</div>
-						</div>
-																<div class="hotel-next-previous-outer">
-							<div class="next-hotel-btn previous-next-pannel"> 
-								<img class="img-responsive next-hotel-arrow" src="http://www.emporium-voyage.com/sximo/assets/images/editorial-right-arrow.png" alt="">
-								<a href="http://www.emporium-voyage.com/the-mira-hong-kong">
-									<div class="next-hotel-show-pannel">
-										<img class="img-responsive" src="http://www.emporium-voyage.com/uploads/property_imgs_thumbs/front_property_4612_THE MIRA HONG KONG (2).jpg" alt="">
-										<div class="next-hotel-tittle">
-											<h2>The Mira Hong Kong</h2>
-										</div>
-									</div>
-								</a>
-							</div>
-						</div>  
+                <div class="logo-padding-left editorial-logo-align">
+                    <!--<div>
+                        <a href="#" title="Add to Favorites" class="book-button" onclick="add_to_lightbox(40281, 164);"><i class="fa fa-plus " aria-hidden="true" ></i> Add</a>
+                    </div>-->
+<!--                    <div class="go-back-button-container">
+                        <button class="go-back-button" onclick="goBack()">Go Back</button>
+                        <div class="previous-page-screen-short-container">
+                                                            <img src="http://www.emporium-voyage.com/sximo/previous_page_image/7b58aa5e612660d887cb8569a5685109.jpg">
+                                                    </div>
+                    </div>-->
+                </div>
+                                                            <div class="hotel-next-previous-outer">
+                            <div class="previous-btn previous-next-pannel"> 
+                                  <img class="img-responsive next-hotel-arrow" src="http://www.emporium-voyage.com/sximo/assets/images/editorial-left-arrow.png" alt="">
+                                <a href="http://www.emporium-voyage.com/standart-hotel-moscow">
+                                    <div class="next-hotel-show-pannel">
+                                        <img class="img-responsive" src="http://www.emporium-voyage.com/uploads/property_imgs_thumbs/front_property_4565_15531396286-46934943356.jpg" alt="">
+                                        <div class="next-hotel-tittle">
+                                            <h2>StandArt Hotel Moscow</h2>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                                                                <div class="hotel-next-previous-outer">
+                            <div class="next-hotel-btn previous-next-pannel"> 
+                                <img class="img-responsive next-hotel-arrow" src="http://www.emporium-voyage.com/sximo/assets/images/editorial-right-arrow.png" alt="">
+                                <a href="http://www.emporium-voyage.com/the-mira-hong-kong">
+                                    <div class="next-hotel-show-pannel">
+                                        <img class="img-responsive" src="http://www.emporium-voyage.com/uploads/property_imgs_thumbs/front_property_4612_THE MIRA HONG KONG (2).jpg" alt="">
+                                        <div class="next-hotel-tittle">
+                                            <h2>The Mira Hong Kong</h2>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>  
                         <!-- back and lock buttton end -->
                         
                          <!-- start sidebar -->
@@ -1063,14 +1062,14 @@
                                 <script src="{{ asset('sximo/assets/js/combodate.js')}}" type="text/javascript"></script>
                                 <?php /* <div class="header container-fluid">
                                     @if(empty($categoryslider))
-										<div class="col-md-12">
-											<div class="header-logo">
-												<a href="{{url()}}">
-													<img src="{{ asset('sximo/assets/images/logo-design_1.png')}}" class="img-responsive" alt="Design Locations"/>
-												</a>
-											</div>
-										</div>
-									@endif
+                                        <div class="col-md-12">
+                                            <div class="header-logo">
+                                                <a href="{{url()}}">
+                                                    <img src="{{ asset('sximo/assets/images/logo-design_1.png')}}" class="img-responsive" alt="Design Locations"/>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    @endif
                                     <div class="container">
                                         <div class="row">
                                             <div class="header-navigation-container col-md-12">
@@ -1089,70 +1088,70 @@
                                 */?>
 
                                 <div class="sticky-header-offset"></div> 
-								
+                                
                                 <div class="grid-page-category-slider-container">
-								@if(!empty($categoryslider))
-									<div class="bh-slideshow-thumbnail-split hidden-xs hidden-sm" data-uk-slideshow="{animation: 'slice-up', autoplay: true}" style="margin-bottom:20px;margin-top:0px;">
-										<ul style="" class="uk-slideshow uk-overlay-active">
-											@foreach($categoryslider as $slides)
-											<li class="ai-uk-animation" style="" @if($categoryslider[0]==$slides) class="uk-active" @endif aria-hidden="true">
+                                @if(!empty($categoryslider))
+                                    <div class="bh-slideshow-thumbnail-split hidden-xs hidden-sm" data-uk-slideshow="{animation: 'slice-up', autoplay: true}" style="margin-bottom:20px;margin-top:0px;">
+                                        <ul style="" class="uk-slideshow uk-overlay-active">
+                                            @foreach($categoryslider as $slides)
+                                            <li class="ai-uk-animation" style="" @if($categoryslider[0]==$slides) class="uk-active" @endif aria-hidden="true">
                                                                                             @if($slides->slide_type == 'Image')
                                                                                             <div style="background-image: url({{ URL::to('uploads/slider_images/'.$slides->slider_img)}});" class="uk-cover-background uk-position-cover"></div>
                                                                                             @else
                                                                                             <div class="uk-cover-background uk-position-cover"><iframe class="video-bg" src="https://www.youtube.com/embed/{{$slides->slider_video}}?playlist={{$slides->slider_video}}&iv_load_policy=3&enablejsapi=1&disablekb=1&autoplay=1&controls=0&showinfo=0&rel=0&loop=1&wmode=transparent" frameborder="0" allowfullscreen="allowfullscreen"></iframe></div>
                                                                                             @endif
-												<canvas style="width: 100%; height: 100%; opacity: 0;"></canvas>
-												<div class="bh-slideshow-overlay uk-overlay-panel uk-overlay-fade uk-flex uk-flex-middle uk-flex-center">
-													<div>
-														<ul class="bh-slideshow-overlay-meta uk-subnav uk-subnav-line">
-															<li>
-																<span><a href="#" rel="category tag">{{$slides->slider_category}}</a></span>
-															</li>
-														</ul>
-														<h3 class="bh-slideshow-overlay-title">
-															<a href="#">{{$slides->slider_title}}</a>
-														</h3>
-														<div class="bh-slideshow-overlay-content">{{$slides->slider_description}}</div>
-														@if($slides->slider_link != '#')
+                                                <canvas style="width: 100%; height: 100%; opacity: 0;"></canvas>
+                                                <div class="bh-slideshow-overlay uk-overlay-panel uk-overlay-fade uk-flex uk-flex-middle uk-flex-center">
+                                                    <div>
+                                                        <ul class="bh-slideshow-overlay-meta uk-subnav uk-subnav-line">
+                                                            <li>
+                                                                <span><a href="#" rel="category tag">{{$slides->slider_category}}</a></span>
+                                                            </li>
+                                                        </ul>
+                                                        <h3 class="bh-slideshow-overlay-title">
+                                                            <a href="#">{{$slides->slider_title}}</a>
+                                                        </h3>
+                                                        <div class="bh-slideshow-overlay-content">{{$slides->slider_description}}</div>
+                                                        @if($slides->slider_link != '#')
                                                                                                                 <a class="uk-margin-top uk-button uk-button-primary" href="http://{{$slides->slider_link}}" title="Do it yourself">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>
                                                                                                                 @endif
-													</div>
-												</div>
-												<div class="bh-slideshow-thumbnail-split-preview uk-overlay-panel uk-overlay-right uk-overlay-background uk-overlay-fade uk-width-2-5 uk-width-xxlarge-1-3 uk-flex uk-flex-middle uk-flex-center uk-visible-large">
-													<div>
-														<ul class="bh-slideshow-thumbnail-split-preview-meta uk-subnav uk-subnav-line">
-															<li>
-																<span><a href="#" rel="category tag">{{$slides->slider_category}}</a></span>
-															</li>
-														</ul>
-														<h3 class="bh-slideshow-thumbnail-split-preview-title">
-															<a href="#">{{$slides->slider_title}}</a>
-														</h3>
-														<div class="bh-slideshow-thumbnail-split-preview-content">{{$slides->slider_description}}</div>
+                                                    </div>
+                                                </div>
+                                                <div class="bh-slideshow-thumbnail-split-preview uk-overlay-panel uk-overlay-right uk-overlay-background uk-overlay-fade uk-width-2-5 uk-width-xxlarge-1-3 uk-flex uk-flex-middle uk-flex-center uk-visible-large">
+                                                                                                    <div style="width: 80%;">
+                                                        <ul class="bh-slideshow-thumbnail-split-preview-meta uk-subnav uk-subnav-line">
+                                                            <li>
+                                                                <span><a href="#" rel="category tag">{{$slides->slider_category}}</a></span>
+                                                            </li>
+                                                        </ul>
+                                                        <h3 class="bh-slideshow-thumbnail-split-preview-title">
+                                                            <a href="#">{{$slides->slider_title}}</a>
+                                                        </h3>
+                                                        <div class="bh-slideshow-thumbnail-split-preview-content">{{$slides->slider_description}}</div>
                                                                                                                 @if($slides->slider_link != '#')
-														<a class="uk-margin-top uk-button uk-button-primary" href="http://{{$slides->slider_link}}">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>
+                                                        <a class="uk-margin-top uk-button uk-button-primary" href="http://{{$slides->slider_link}}">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>
                                                                                                                 @endif
-													</div>
-													<a href="javascript:void(0);" class="bh-slideshow-slidenav uk-slidenav uk-slidenav-previous" data-uk-slideshow-item="previous"></a>
-													<a href="javascript:void(0);" class="bh-slideshow-slidenav uk-slidenav uk-slidenav-next" data-uk-slideshow-item="next"></a>
-												</div>
-											</li>
-											@endforeach
-										</ul>
-									</div>
+                                                    </div>
+                                                    <a href="javascript:void(0);" class="bh-slideshow-slidenav uk-slidenav uk-slidenav-previous" data-uk-slideshow-item="previous"></a>
+                                                    <a href="javascript:void(0);" class="bh-slideshow-slidenav uk-slidenav uk-slidenav-next" data-uk-slideshow-item="next"></a>
+                                                </div>
+                                            </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
                                 @endif
                                 </div>
-								<div class="container">
-									<div class="row">
-										<div class="header-navigation-container col-md-12">
-											<div class="row">
-												<div class="col-md-12 col-sm-12">
-													@include('layouts/elliot/ai_navigation')
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="header-navigation-container col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-12 col-sm-12">
+                                                    @include('layouts/elliot/ai_navigation')
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <!--Main Page Start here--><div class="col-md-12 col-sm-12 col-xs-12 ">
                                     <div class="row" style="{{ ($ttlcount==0)?'padding:100px 0 0;text-align: center;':'padding:10px 0 0;text-align: center;'}}">
                                         <div class="locator clear">
@@ -1225,14 +1224,14 @@
 
                                     <div id="listproperties">
                                         <div class="row ">
-											
-													
+                                            
+                                                    
                                           
-											@if($propertiesArr)
+                                            @if($propertiesArr)
                                             {{--*/ $rw = 1 /*--}}
                                             {{--*/ $node_no = 1; $ads_node=0; /*--}}
                                             @foreach($propertiesArr as $props)
-                                            @if($node_no%20==0)
+                                            @if($node_no%10==0)
                                                 @if(!empty($reultsgridAds))
                                                     @if(array_key_exists($ads_node,$reultsgridAds))
                                                         <div class="productData col-xs-12 col-sm-6 col-md-3 col-lg-3 margin-bottom-10">
@@ -1241,7 +1240,7 @@
                                                                             <div class="ai-grid-page-node-pic-box pictureBox gridPicture">
                                                                                 <a title="{{$reultsgridAds[$ads_node]->adv_title}}" class="picture_link-" href="{{$reultsgridAds[$ads_node]->adv_link}}">
                                                                                     <h2 style="position:absolute; color:#fff;padding-left: 20px;">Advertiser</h2>
-                                                                                    <img alt="{{$reultsgridAds[$ads_node]->adv_title}}" src="{{$reultsgridAds[$ads_node]->adv_title}}" src="{{URL::to('uploads/users/advertisement/'.$reultsgridAds[$ads_node]->adv_img)}}" class="img-responsive" style="border: 2px solid #D3D6D2;padding: 3px 1px 3px 0px;">
+                                                                                    <img alt="{{$reultsgridAds[$ads_node]->adv_title}}" src="{{URL::to('uploads/users/advertisement/'.$reultsgridAds[$ads_node]->adv_img)}}" class="img-responsive" style="border: 2px solid #D3D6D2;padding: 3px 1px 3px 0px;">
                                                                                 </a>
                                                                             </div>
                                                                             <div class="listDetails">
@@ -1365,7 +1364,7 @@
                                             @endif 
                                             
                                     </div>
-									</div>
+                                    </div>
                                     <div id="loaderProperty"></div>
                                     <div id="brgrid"></div>
                                     <input type="hidden" id="nxtpg" value="{{$newpage}}">
@@ -1461,9 +1460,9 @@ function scrollDataAjax(it_scroll,pageCounter)
         //$(".LoaderImage").css("display", "block");
 
     $.ajax({
-        url: "{{ URL::to('filter_search_destionation')}}",
+        url: "{{ URL::to('new_filter_search_destionation')}}",
         type: "get",
-        data: 's=' + $(".ai_search_keywords").val() + '&arrive=' + $(".ai-arrive-date-filter").val() + '&destination=' + $(".ai-depart-date-filter").val() + '&page=' + nxtpg + queryStrng + "&filter_min_price=" + $("#filter_min_price").val() + "&filter_max_price=" + $("#filter_max_price").val() + "&current_filter=" + $(".ai-current-filter").val(),
+        data: 'dest=&s=' + $(".ai_search_keywords").val() + '&arrive=' + $(".ai-arrive-date-filter").val() + '&destination=' + $(".ai-depart-date-filter").val() + '&page=' + nxtpg + queryStrng + "&filter_min_price=" + $("#filter_min_price").val() + "&filter_max_price=" + $("#filter_max_price").val() + "&current_filter=" + $(".ai-current-filter").val(),
         dataType: "json",
         complete: function (jqXHR, textStatus ) {
             // $('#nxtpg').val(parseInt(nxtpg) + 1);
@@ -1600,7 +1599,7 @@ function scrollDataAjax(it_scroll,pageCounter)
                                 html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
                                 html += '<p class="yacths-des-text">2015H</p>';
                                 html += '</div>';
-                                html += pimg;
+                                html += '<img alt="" src="' + pimg + '" class="img-responsive">';
                             }
 
                             html += '</div>';
@@ -1750,9 +1749,9 @@ isPreviousEventComplete = false;
 //$(".LoaderImage").css("display", "block");
 
 $.ajax({
-url: "{{ URL::to('filter_search_destionation')}}",
+url: "{{ URL::to('new_filter_search_destionation')}}",
         type: "get",
-        data: 's=' + $(".ai_search_keywords").val() + '&arrive=' + $(".ai-arrive-date-filter").val() + '&destination=' + $(".ai-depart-date-filter").val() + '&page=' + nxtpg + queryStrng + "&filter_min_price=" + $("#filter_min_price").val() + "&filter_max_price=" + $("#filter_max_price").val() + "&current_filter=" + $(".ai-current-filter").val(),
+        data: 'dest=&s=' + $(".ai_search_keywords").val() + '&arrive=' + $(".ai-arrive-date-filter").val() + '&destination=' + $(".ai-depart-date-filter").val() + '&page=' + nxtpg + queryStrng + "&filter_min_price=" + $("#filter_min_price").val() + "&filter_max_price=" + $("#filter_max_price").val() + "&current_filter=" + $(".ai-current-filter").val(),
         dataType: "json",
         complete: function (jqXHR, textStatus ) {
             $('#nxtpg').val(parseInt(nxtpg) + 1);
@@ -1913,13 +1912,13 @@ url: "{{ URL::to('filter_search_destionation')}}",
                             }
                         }
                         if (obj.hasOwnProperty("image")) {
-                			if(obj.pdata.editor_choice_property=='1'){
-                				var edtch = "{{URL::to('sximo/images/editors-choice.png')}}";
-                				html += '<img alt="editor_choice_property" class="propovericons" src="'+edtch+'">';
-                			}else if(obj.pdata.feature_property=='1'){
-                				var featp = "{{URL::to('sximo/images/featured-property.png')}}";
-                				html += '<img alt="editor_choice_property" class="propovericons" src="'+featp+'">';
-                			}
+                            if(obj.pdata.editor_choice_property=='1'){
+                                var edtch = "{{URL::to('sximo/images/editors-choice.png')}}";
+                                html += '<img alt="editor_choice_property" class="propovericons" src="'+edtch+'">';
+                            }else if(obj.pdata.feature_property=='1'){
+                                var featp = "{{URL::to('sximo/images/featured-property.png')}}";
+                                html += '<img alt="editor_choice_property" class="propovericons" src="'+featp+'">';
+                            }
                            var pimg = "{{URL::to('uploads/property_imgs_thumbs/')}}/front_property_" + obj.image.folder_id + "_" + obj.image.file_name;
                             html += '<a title="' + obj.pdata.property_name + '" class="picture_link " rel="' + obj.pdata.id + '" href="{{URL::to('')}}/' + obj.pdata.property_slug + '">';
                             html += '<div class="overlay-text-frezeed">';
@@ -2144,6 +2143,26 @@ url: "{{ URL::to('filter_search_destionation')}}",
 }
                     </script>
                     <script>
+                        function clear_all_filters() {
+                            
+                            var $slider = $("#slider-range");
+                            $slider.slider( "option", "min", 0 );
+                            $slider.slider( "option", "max", 6000 );
+                            
+                            $(".ai_search_keywords").val('{{$keyword}}');
+                            $(".ai-arrive-date-filter").val('<?php echo date('d-m-Y'); ?>');
+                            $(".ai-depart-date-filter").val('<?php echo date('d-m-Y', strtotime('+ 1 day')); ?>');
+                            $("#filter_min_price").val('');
+                            $("#filter_max_price").val('');
+                            $(".ai-current-filter").val('');
+                            $('#selDestn').val('');
+                            $('#listrecrds').val(0);
+                            $('#nxtpg').val('2');
+                            $('#amount').val('1');
+                            var it_scroll = false;
+                            scrollDownloadData(it_scroll);
+                            $('#listrecrds').val(21);
+                        }
                         function filter_destination(destn, area) {
                             if (destn != '' && destn > 0) {
                                 $('#selDestn').val(destn + '#:' + area);
@@ -2200,6 +2219,28 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                 var it_scroll = false;
                                 scrollDownloadData(it_scroll);
                                 $('#listrecrds').val(21);
+                            });
+                            
+                            $('.searchbox_landing').on('typeahead:selected', function (e, datum) {
+                                var propname = $(this);
+                                $.ajax({
+                                    url: "{{ URL::to('find_property_by_name')}}",
+                                    type: "post",
+                                    data: 'pname=' + propname.val(),
+                                    dataType: "json",
+                                    success: function (data) {
+                                        if (data.status == 'error')
+                                        {
+                                            propname.parents('.searchform-navbar').submit();
+                                            return;
+                                            propname.parents('.searchform-navbar').submit();
+                                        } else
+                                        {
+                                            var obj = JSON.parse(data.property);
+                                            window.location.href = "{{URL::to('')}}/" + obj.property_slug;
+                                        }
+                                    }
+                                });
                             });
                         });
                     </script>
@@ -2282,9 +2323,17 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                                 <div class="panel-body custom-panel-body">
                                                     <div class="dl-filter">
                                                         <form>
-                                                            <div class="form-group post-filter-inputs">
+                                                        
+                                                            @if(!empty($experiences))
+                                                                @foreach($experiences as $experience)
+                                                                    <div class="form-group post-filter-inputs">
+                                                                        <label><a onclick="experience_property_filter('{{$experience->category_name}}');" href="javascript:void(0);">{{$experience->category_custom_title}}</a></label>
+                                                                    </div>
+                                                                @endforeach
+                                                            @endif
+                                                            <!--<div class="form-group post-filter-inputs">
                                                                 <label><a onclick="experience_property_filter('Beach Hotels');" href="javascript:void(0);">Luxury Beach Hotels</a></label>
-                                                            </div> 
+                                                            </div>
                                                             <div class="form-group post-filter-inputs post-filter-inputs">
                                                                 <label><a onclick="experience_property_filter('Green Properties');" href="javascript:void(0);">Luxury Green Hotels</a></label>
                                                             </div> 
@@ -2311,7 +2360,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                                             </div> 
                                                             <div class="form-group post-filter-inputs">
                                                                 <label><a onclick="experience_property_filter('Unusual Adventure Hotels');" href="javascript:void(0);">Unusual Adventure Hotels</a></label>
-                                                            </div>
+                                                            </div>-->
                                                         </form>
                                                     </div>
                                                 </div>
@@ -2328,16 +2377,48 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                                     Destinations
                                                 </div>
                                             </a>
-                                            <?php echo $contents = Storage::get('destination.html');?>
-
-
+                                            <div id="maindestinations" class="panel-collapse collapse {{($continent!='') ? 'in' : '' }}">
+                                                <div class="panel-body custom-panel-body">
+                                                    <div class="dl-filter">
+                                                        <!--First Parent-->
+                                                        @foreach($ourmaindesitnation as $mndest)
+                                                        <div class="node post-filter-inputs">
+                                                            <a class="node-btn" href="javascript:void(0)" onclick="filter_destination('{{$mndest->id}}', 'continent');">{{$mndest->category_name}}</a>
+                                                            @if(array_key_exists('childs',$mndest) && !empty($mndest->childs))
+                                                            @foreach($mndest->childs as $cddest)
+                                                            <!--Second Level-->
+                                                            <div class="node" style="{{($continent==$mndest->category_name) ? 'display: block; padding-left: 10px; margin-top: 5px; text-transform: inherit;' : '' }}">
+                                                                <a class="node-btn" href="javascript:void(0)" onclick="filter_destination('{{$cddest->id}}', 'region');">{{$cddest->category_name}}</a>
+                                                                @if(array_key_exists('subchild',$cddest))
+                                                                @foreach($cddest->subchild as $sbdest)
+                                                                <!--Third Level-->
+                                                                <div class="node" style="{{(str_replace('_',' ',$region)==$cddest->category_name) ? 'display: block; padding-left: 10px; margin-top: 5px; text-transform: inherit;' : '' }}">
+                                                                    <a class="node-btn" href="javascript:void(0)" onclick="filter_destination('{{$sbdest->id}}', 'country');">{{$sbdest->category_name}}</a>
+                                                                    @if(array_key_exists('subchild',$sbdest))
+                                                                    @foreach($sbdest->subchild as $subchild)
+                                                                    <div class="node" style="{{(isset($cat) && str_replace('_',' ',$cat)==$sbdest->category_name) ? 'display: block; padding-left: 10px; margin-top: 5px; text-transform: inherit;' : '' }}">
+                                                                        <a class="node-btn" href="javascript:void(0)" onclick="filter_destination('{{$subchild->id}}', 'country');">{{$subchild->category_name}}</a>
+                                                                    </div>
+                                                                    @endforeach
+                                                                    @endif
+                                                                </div>
+                                                                @endforeach
+                                                                @endif
+                                                            </div>
+                                                            @endforeach
+                                                            @endif
+                                                        </div>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         @endif
                                         <?php endif; ?>
                                     </div> 
                                     <div class="filter-footer">
                                         <div><a href="#" >View All Locations On Map</a></div>
-                                        <div><a href="#"><i class="fa fa-repeat" aria-hidden="true"></i>&nbsp;Clear All</a></div>
+                                        <div class="clear-all-filters"><a onclick="javascript:clear_all_filters();" href="javascript:void(0);"><i class="fa fa-repeat" aria-hidden="true"></i>&nbsp;Clear All</a></div>
                                     </div>
                                     <section class="regular slider">
                                         <div class="slick-cstm-width">
@@ -2346,31 +2427,23 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                                     <h2>Why book with us?</h2>
                                                 </div>
                                                 <ul class="side-bar-book-with-us-list">
-                                                    <li>
-                                                        <h3>Handpicked Selection of Hotels.</h3>
-                                                        <p>Over 200 destination at the best rate</p>
-                                                    </li>
-                                                    <li>
-                                                        <h3>Upgrade & Late Check-out</h3>
-                                                        <p>At any hotel, upon Availability</p>
-                                                    </li>
-                                                    <li>
-                                                        <h3>Upto 50% off at New Hotels</h3>
-                                                        <p>Exclusive community invitations</p>
-                                                    </li>
-                                                    <li>
-                                                        <h3>Free WiFi</h3>
-                                                        <p>Guaranteed at all Hotels</p>
-                                                    </li>
+                                                    @if(!empty($whybookwithus))
+                                                        @foreach($whybookwithus as $withus)
+                                                            <li>
+                                                                <h3>{{$withus->title}}</h3>
+                                                                <p>{{$withus->sub_title}}</p>
+                                                            </li>
+                                                        @endforeach
+                                                    @endif
                                                 </ul>
                                             </div>
                                         </div>
                                         @if(!empty($sidebargridAds))
-											@foreach($sidebargridAds as $slides)
-												<div class="slick-cstm-width">
-													<a href="http://{{$slides->adv_link}}"><img src="{{URL::to('uploads/users/advertisement/'.$slides->adv_img)}}"></a>
-												</div>
-											@endforeach
+                                            @foreach($sidebargridAds as $slides)
+                                                <div class="slick-cstm-width">
+                                                    <a href="http://{{$slides->adv_link}}"><img src="{{URL::to('uploads/users/advertisement/'.$slides->adv_img)}}"></a>
+                                                </div>
+                                            @endforeach
                                         @endif
                                     </section>
                                 </div>
@@ -2378,49 +2451,49 @@ url: "{{ URL::to('filter_search_destionation')}}",
                         </div>
                     </div> 
                     <div class="clearfix"></div>
-					<div id="frontpage-layer-bj-detail" class="frontpage-layer-bj">
-						<div id="frontpage-layer-bj-header-wrapper">
-							<div id="frontpage-layer-bj-header">
-								<a href="#" id="frontpage-layer-bj-header-logo"> <img alt="" src="{{ asset('sximo/assets/images/design-location-logo.png')}}" class="img-responsive yachts-pop-up-logo"></a>
-							</div>
-							<span id="frontpage-layer-bj-header-close" class="frontpage-layer-bj-header-close"></span>
-						</div>
-						<div id="frontpage-layer-bj-content">
-							<div class="frontpage-detail-content-top">
-								<div class="frontpage-detail-content-top-link">
-									<div class="frontpage-detail-content-top-link">
+                    <div id="frontpage-layer-bj-detail" class="frontpage-layer-bj">
+                        <div id="frontpage-layer-bj-header-wrapper">
+                            <div id="frontpage-layer-bj-header">
+                                <a href="#" id="frontpage-layer-bj-header-logo"> <img alt="" src="{{ asset('sximo/assets/images/design-location-logo.png')}}" class="img-responsive yachts-pop-up-logo"></a>
+                            </div>
+                            <span id="frontpage-layer-bj-header-close" class="frontpage-layer-bj-header-close"></span>
+                        </div>
+                        <div id="frontpage-layer-bj-content">
+                            <div class="frontpage-detail-content-top">
+                                <div class="frontpage-detail-content-top-link">
+                                    <div class="frontpage-detail-content-top-link">
 
-									</div>
-								</div>
-							</div>
-							<div id="placepopupcontent">
-							
-							</div>
-							
-						</div>	
-					</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="placepopupcontent">
+                            
+                            </div>
+                            
+                        </div>  
+                    </div>
                     <form action="{{url()}}" method="get" id="gridbookform">
-						<input type="hidden" name="property" id="bookformproperty" value="" />
+                        <input type="hidden" name="property" id="bookformproperty" value="" />
                         <input type="hidden" name="roomType" id="roomType" value="" />
                         <input name="arrive" value="{{ date('d.m.Y') }}" type="hidden" />
-						<input name="destination" value="" type="hidden" />
+                        <input name="destination" value="" type="hidden" />
                         <input name="booking_adults" value="1" type="hidden" />
-						<input name="booking_children" value="0" type="hidden" />
-					</form>
+                        <input name="booking_children" value="0" type="hidden" />
+                    </form>
                     <script src="{{ asset('sximo/assets/js/slick.js')}}" type="text/javascript"></script>
                     <script type="text/javascript">
-					
-						function submitgridbookform(propdt)
-						{
-							if(propdt!='')
-							{
-								var pros = propdt.split("#*");
-								$('#bookformproperty').val(pros[1]);
-								$('#gridbookform').attr('action','{{url()}}/book-property/' +pros[0]);
-								$('#gridbookform').submit();
-							}
-						}
-						$(document).on('ready', function () {
+                    
+                        function submitgridbookform(propdt)
+                        {
+                            if(propdt!='')
+                            {
+                                var pros = propdt.split("#*");
+                                $('#bookformproperty').val(pros[1]);
+                                $('#gridbookform').attr('action','{{url()}}/book-property/' +pros[0]);
+                                $('#gridbookform').submit();
+                            }
+                        }
+                        $(document).on('ready', function () {
 
 
                             $('.top-nav-cities-filter').slick({
@@ -2478,197 +2551,198 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                 $('.top-slick-filtes li.select-all').addClass("active");
                             });    
 
-							$(".regular").slick({
-								dots: false,
-								infinite: true,
-								slidesToShow: 1,
-								slidesToScroll: 1,
-								prevArrow: false,
-								nextArrow: false,
-								autoplay: true,
-								autoplaySpeed: 3000
-							});
-						});
+                            $(".regular").slick({
+                                dots: false,
+                                infinite: true,
+                                slidesToShow: 1,
+                                slidesToScroll: 1,
+                                prevArrow: false,
+                                nextArrow: false,
+                                autoplay: true,
+                                autoplaySpeed: 3000
+                            });
+                        });
                     </script>
-					<script>
-						$(document).ready(function () {
+                    <script>
+                        $(document).ready(function () {
 
-						$('#quick_pager_header').mouseover(function () {
-						$('.flyoutBox').show();
-						});
-						$('.flyoutBox').mouseover(function () {
-						$('.flyoutBox').show();
-						});
-						$('#quick_pager_header').mouseout(function () {
-						$('.flyoutBox').hide();
-						});
-						$('.flyoutBox').mouseout(function () {
-						$('.flyoutBox').hide();
-						});
-						$(document).on('click', '.detail_view', function(){
-						$('#frontpage-layer-bj').fadeOut('slow');
-						$('#frontpage-detail-tile').html('');
-						$.ajax({
-						url: "{{ URL::to('getproperty')}}" + '/' + $(this).attr('rel'),
-								type: "get",
-								success: function(data){
-								var imagesPro = '';
-								imagesPro += '<div class="detail-tile-inner ai-haeding-bg-style">';
-								imagesPro += '<h3 class="popup-property-title">' + data.data.property_name + '</h3>';
-								imagesPro += '<p class="popup-property-desc" style="text-align:left; margin: 0 30px; font-size:14px;">' + data.data.about_property + '</p>';
-								imagesPro += '</div>';
-								imagesPro += '<ul class="clearfix frontpage-detail-tiles" id="frontpage-detail-tiles-detail">';
-								$(data.image).each(function(i, val){
-								//console.log(val);
-								imagesPro += '<li class="detail-tile col-sm-6 col-xs-12 col-md-6 col-lg-4" style="visibility:visible">';
-								imagesPro += '<div class="detail-tile-inner">';
-								imagesPro += '<img src="' + val.imgsrc + val.file_name + '"/>';
-								/*imagesPro+='<a href="#" id="LearnMoreBtn1" onclick="add_to_lightbox('+val.id+','+data.data.id+');">Add to lightbox</a>';*/
-								imagesPro += '</div>';
-								imagesPro += '</li>';
-								});
-								imagesPro += '</ul>';
-								var formlink = "{{url()}}/book-property/" + data.data.property_slug + "}}";
-								imagesPro += '<div class="editorial-book-now-page sec-differentiate-line " id="book-now">';
-								imagesPro += '<form class="detail-page-booking-form" action="'+formlink+'" method="get">';
-								imagesPro += '<input type="hidden" name="property" id="property" value="' + data.data.id + '" />';
-								imagesPro += '<input type="hidden" name="roomType" id="roomType" value="" />';
-								imagesPro += '<div class="book-now-page-content-">';
-								imagesPro += '<div class="editoral-book-page-headings">';
-								imagesPro += '<h2>Emporium Voyage is your ideal, vogue vacation planner!</h2>';
-								imagesPro += '<p>With over 300 posh properties, elite spas and exquisite yachts huddled in its cocoon, Emporium Voyage ensure the ultimate luxury experience</p>';
-								imagesPro += '</div>';
-								imagesPro += '<ul class="dates" id="editorial-book-now-inputs">';
-								imagesPro += '<li>';
-								imagesPro += '<div class="editorail-heading">Arrive</div>';
-								imagesPro += '<input id="date-range-editorial-arrive" name="arrive" class="datePicker- dateFrom-" value="{{ date("d.m.Y") }}" type="text" />';
-								imagesPro += '</li>';
-								imagesPro += '<li>';
-								imagesPro += '<div class="heading">Departure</div>';
-								imagesPro += '<input id="date-range-editorial-destination" name="destination" class="datePicker- dateFrom-" value="" type="text" />';
-								imagesPro += '</li>';
-								imagesPro += '</ul>';
-								imagesPro += '<ul class="dates">';
-								imagesPro += '<li>';
-								imagesPro += '<div class="heading">Adults</div>';
-								imagesPro += '<select name="booking_adults">';
-								imagesPro += '<option>1</option>';
-								imagesPro += '<option>2</option>';
-								imagesPro += '<option>3</option>';
-								imagesPro += '</select>';
-								imagesPro += '</li>';
-								imagesPro += '<li>';
-								imagesPro += '<div class="heading">Children</div>';
-								imagesPro += '<select name="booking_children">';
-								imagesPro += '<option>0</option>';
-								imagesPro += '<option>1</option>';
-								imagesPro += '<option>2</option>';
-								imagesPro += '</select>';
-								imagesPro += '</li>';
-								imagesPro += '<div class="clearfix"></div>';
-								imagesPro += '</ul>';
-								imagesPro += '<div class="clearfix"></div>';
-								imagesPro += '<div class="editorial-submit-btn">';
-								imagesPro += '<button type="submit">BOOK NOW</button>';
-								imagesPro += '</div>';
-								imagesPro += '<div class="view-modify-cancel-booking">';
-								imagesPro += '<a href="#">View, Modify or Cancel your Booking</a>';
-								imagesPro += '</div>';
-								imagesPro += '<ul class="booking-page-footer-section editorial-book-align" >';
-								imagesPro += '<li>';
-								imagesPro += '<a href="#" target="_blank">';
-								imagesPro += '<span>Join the worlds leading luxury club</span>';
-								imagesPro += '<h6 class="center">Enjoy exclusive members only benefits</h6>';
-								imagesPro += '</a>';
-								imagesPro += '<div class="white-border-bottom"></div>';
-								imagesPro += '</li>';
-								imagesPro += '<li>';
-								imagesPro += '<a href="#" target="_blank">';
-								imagesPro += '<span>Spa Treatment</span>';
-								imagesPro += '<h6 class="center">Book</h6>';
-								imagesPro += '</a>';
-								imagesPro += '<div class="white-border-bottom"></div>';
-								imagesPro += '</li>';
-								imagesPro += '<li>';
-								imagesPro += '<a href="#" target="_blank">';
-								imagesPro += '<span>View or Modify Reserveration</span>';
-								imagesPro += '<h6 class="center">Login to Support Center</h6>';
-								imagesPro += '</a>';
-								imagesPro += '<div class="white-border-bottom"></div>';
-								imagesPro += '</li>';
-								imagesPro += '<div class="clearfix"></div>';
-								imagesPro += '</ul>';
-								imagesPro += '<div class="clearfix"></div>';
-								imagesPro += '</div>';
-								imagesPro += '</form>';
-								imagesPro += '</div>';
-								$('#placepopupcontent').html(imagesPro);
-								
-									eval($('.dropdown').each(function () {
-										var $dropdown = $(this);
-										$(".members-list", $dropdown).click(function (e) {
-											e.preventDefault();
-											$div = $(".members-drop-list", $dropdown);
-											$div.toggle();
-											$(".members-drop-list").not($div).hide();
-											return false;
-										});
-									}));
+                        $('#quick_pager_header').mouseover(function () {
+                        $('.flyoutBox').show();
+                        });
+                        $('.flyoutBox').mouseover(function () {
+                        $('.flyoutBox').show();
+                        });
+                        $('#quick_pager_header').mouseout(function () {
+                        $('.flyoutBox').hide();
+                        });
+                        $('.flyoutBox').mouseout(function () {
+                        $('.flyoutBox').hide();
+                        });
+                        $(document).on('click', '.detail_view', function(){
+                        $('#frontpage-layer-bj').fadeOut('slow');
+                        $('#frontpage-detail-tile').html('');
+                        $.ajax({
+                        url: "{{ URL::to('getproperty')}}" + '/' + $(this).attr('rel'),
+                                type: "get",
+                                success: function(data){
+                                var imagesPro = '';
+                                imagesPro += '<div class="detail-tile-inner ai-haeding-bg-style">';
+                                imagesPro += '<h3 class="popup-property-title">' + data.data.property_name + '</h3>';
+                                imagesPro += '<p class="popup-property-desc" style="text-align:left; margin: 0 30px; font-size:14px;">' + data.data.about_property + '</p>';
+                                imagesPro += '</div>';
+                                imagesPro += '<ul class="clearfix frontpage-detail-tiles" id="frontpage-detail-tiles-detail">';
+                                $(data.image).each(function(i, val){
+                                //console.log(val);
+                                imagesPro += '<li class="detail-tile col-sm-6 col-xs-12 col-md-6 col-lg-4" style="visibility:visible">';
+                                imagesPro += '<div class="detail-tile-inner">';
+                                imagesPro += '<img src="' + val.imgsrc + val.file_name + '"/>';
+                                /*imagesPro+='<a href="#" id="LearnMoreBtn1" onclick="add_to_lightbox('+val.id+','+data.data.id+');">Add to lightbox</a>';*/
+                                imagesPro += '</div>';
+                                imagesPro += '</li>';
+                                });
+                                imagesPro += '</ul>';
+                                var formlink = "{{url()}}/book-property/" + data.data.property_slug + "}}";
+                                imagesPro += '<div class="editorial-book-now-page sec-differentiate-line " id="book-now">';
+                                imagesPro += '<form class="detail-page-booking-form" action="'+formlink+'" method="get">';
+                                imagesPro += '<input type="hidden" name="property" id="property" value="' + data.data.id + '" />';
+                                imagesPro += '<input type="hidden" name="roomType" id="roomType" value="" />';
+                                imagesPro += '<div class="book-now-page-content-">';
+                                imagesPro += '<div class="editoral-book-page-headings">';
+                                imagesPro += '<h2>Emporium Voyage is your ideal, vogue vacation planner!</h2>';
+                                imagesPro += '<p>With over 300 posh properties, elite spas and exquisite yachts huddled in its cocoon, Emporium Voyage ensure the ultimate luxury experience</p>';
+                                imagesPro += '</div>';
+                                imagesPro += '<ul class="dates" id="editorial-book-now-inputs">';
+                                imagesPro += '<li>';
+                                imagesPro += '<div class="editorail-heading">Arrive</div>';
+                                imagesPro += '<input id="date-range-editorial-arrive" name="arrive" class="datePicker- dateFrom-" value="{{ date("d.m.Y") }}" type="text" />';
+                                imagesPro += '</li>';
+                                imagesPro += '<li>';
+                                imagesPro += '<div class="heading">Departure</div>';
+                                imagesPro += '<input id="date-range-editorial-destination" name="destination" class="datePicker- dateFrom-" value="" type="text" />';
+                                imagesPro += '</li>';
+                                imagesPro += '</ul>';
+                                imagesPro += '<ul class="dates">';
+                                imagesPro += '<li>';
+                                imagesPro += '<div class="heading">Adults</div>';
+                                imagesPro += '<select name="booking_adults">';
+                                imagesPro += '<option>1</option>';
+                                imagesPro += '<option>2</option>';
+                                imagesPro += '<option>3</option>';
+                                imagesPro += '</select>';
+                                imagesPro += '</li>';
+                                imagesPro += '<li>';
+                                imagesPro += '<div class="heading">Children</div>';
+                                imagesPro += '<select name="booking_children">';
+                                imagesPro += '<option>0</option>';
+                                imagesPro += '<option>1</option>';
+                                imagesPro += '<option>2</option>';
+                                imagesPro += '</select>';
+                                imagesPro += '</li>';
+                                imagesPro += '<div class="clearfix"></div>';
+                                imagesPro += '</ul>';
+                                imagesPro += '<div class="clearfix"></div>';
+                                imagesPro += '<div class="editorial-submit-btn">';
+                                imagesPro += '<button type="submit">BOOK NOW</button>';
+                                imagesPro += '</div>';
+                                imagesPro += '<div class="view-modify-cancel-booking">';
+                                imagesPro += '<a href="#">View, Modify or Cancel your Booking</a>';
+                                imagesPro += '</div>';
+                                imagesPro += '<ul class="booking-page-footer-section editorial-book-align" >';
+                                imagesPro += '<li>';
+                                imagesPro += '<a href="#" target="_blank">';
+                                imagesPro += '<span>Join the worlds leading luxury club</span>';
+                                imagesPro += '<h6 class="center">Enjoy exclusive members only benefits</h6>';
+                                imagesPro += '</a>';
+                                imagesPro += '<div class="white-border-bottom"></div>';
+                                imagesPro += '</li>';
+                                imagesPro += '<li>';
+                                imagesPro += '<a href="#" target="_blank">';
+                                imagesPro += '<span>Spa Treatment</span>';
+                                imagesPro += '<h6 class="center">Book</h6>';
+                                imagesPro += '</a>';
+                                imagesPro += '<div class="white-border-bottom"></div>';
+                                imagesPro += '</li>';
+                                imagesPro += '<li>';
+                                imagesPro += '<a href="#" target="_blank">';
+                                imagesPro += '<span>View or Modify Reserveration</span>';
+                                imagesPro += '<h6 class="center">Login to Support Center</h6>';
+                                imagesPro += '</a>';
+                                imagesPro += '<div class="white-border-bottom"></div>';
+                                imagesPro += '</li>';
+                                imagesPro += '<div class="clearfix"></div>';
+                                imagesPro += '</ul>';
+                                imagesPro += '<div class="clearfix"></div>';
+                                imagesPro += '</div>';
+                                imagesPro += '</form>';
+                                imagesPro += '</div>';
+                                $('#placepopupcontent').html(imagesPro);
+                                
+                                                                        /*Toggle Side Nav Start Here*/
+                                                                        eval($('.dropdown').each(function () {
+                                                                            var $dropdown = $(this);
+                                                                            $(".members-list", $dropdown).click(function (e) {
+                                                                                e.preventDefault();
+                                                                                $div = $(".members-drop-list", $dropdown);
+                                                                                $div.toggle();
+                                                                                $(".members-drop-list").not($div).hide();
+                                                                                return false;
+                                                                            });
+                                                                        }));
 
-									eval($("#adult-input-value").change(function () {
-										var adults = $(this).val();
-										$('#adults-val').html(adults);
-									}));
+                                    eval($("#adult-input-value").change(function () {
+                                        var adults = $(this).val();
+                                        $('#adults-val').html(adults);
+                                    }));
 
-									eval($("#childerns-input-value").change(function () {
-										var childerns = $(this).val();
-										$('#childern-val').html(childerns);
-									}));
-									
-									eval($('#book-hotel1').dateRangePicker({
-										startDate: "2017-01-11",
-										separator: ' to ',
-										getValue: function () {
-										if ($('#book-hotel1').val() && $('#book-hotel2').val())
-											return $('#book-hotel1').val() + ' to ' + $('#book-hotel2').val();
-										else
-											return '';
-										},
-										setValue: function (s, s1, s2) {
-											$('#book-hotel1').val(s1);
-											$('#book-hotel2').val(s2);
-										}
-									}));
-									eval($('#book-hotel2').dateRangePicker({
-										startDate: "2017-01-11",
-										separator: ' to ',
-										getValue: function () {
-										if ($('#book-hotel1').val() && $('#book-hotel2').val())
-											return $('#book-hotel1').val() + ' to ' + $('#book-hotel2').val();
-										else
-											return '';
-										},
-										setValue: function (s, s1, s2) {
-											$('#book-hotel1').val(s1);
-											$('#book-hotel2').val(s2);
-										}
-									}));
-								
-								}
-						});
-						$('#frontpage-layer-bj-detail').fadeIn('slow');
-						$('#fixed_wrapper').hide();
-						$('html').addClass('hidescroll');
-						$('body').addClass('layerloaded');
-						return false;
-						});
-						$('.frontpage-layer-bj-header-close').click(function () {
-						$('.frontpage-layer-bj').fadeOut('slow');
-						$('#fixed_wrapper').show();
-						$('html').removeClass('hidescroll');
-						});
-						});
-					</script>
+                                    eval($("#childerns-input-value").change(function () {
+                                        var childerns = $(this).val();
+                                        $('#childern-val').html(childerns);
+                                    }));
+                                    
+                                    eval($('#book-hotel1').dateRangePicker({
+                                        startDate: "2017-01-11",
+                                        separator: ' to ',
+                                        getValue: function () {
+                                        if ($('#book-hotel1').val() && $('#book-hotel2').val())
+                                            return $('#book-hotel1').val() + ' to ' + $('#book-hotel2').val();
+                                        else
+                                            return '';
+                                        },
+                                        setValue: function (s, s1, s2) {
+                                            $('#book-hotel1').val(s1);
+                                            $('#book-hotel2').val(s2);
+                                        }
+                                    }));
+                                    eval($('#book-hotel2').dateRangePicker({
+                                        startDate: "2017-01-11",
+                                        separator: ' to ',
+                                        getValue: function () {
+                                        if ($('#book-hotel1').val() && $('#book-hotel2').val())
+                                            return $('#book-hotel1').val() + ' to ' + $('#book-hotel2').val();
+                                        else
+                                            return '';
+                                        },
+                                        setValue: function (s, s1, s2) {
+                                            $('#book-hotel1').val(s1);
+                                            $('#book-hotel2').val(s2);
+                                        }
+                                    }));
+                                
+                                }
+                        });
+                        $('#frontpage-layer-bj-detail').fadeIn('slow');
+                        $('#fixed_wrapper').hide();
+                        $('html').addClass('hidescroll');
+                        $('body').addClass('layerloaded');
+                        return false;
+                        });
+                        $('.frontpage-layer-bj-header-close').click(function () {
+                        $('.frontpage-layer-bj').fadeOut('slow');
+                        $('#fixed_wrapper').show();
+                        $('html').removeClass('hidescroll');
+                        });
+                        });
+                    </script>
                     <script>
                         $(document).ready(function () {
                         $(".social-share").click(function (event) {
@@ -2816,15 +2890,15 @@ url: "{{ URL::to('filter_search_destionation')}}",
                         $('#filter-date-mobile').combodate();
                         });
                         $('#filter-date-mobile').combodate({
-                        minYear: 2016,
-                                maxYear: 2017,
+                        minYear: 2018,
+                                maxYear: 2019,
                         });
                         $(function () {
                         $('#filter-date-mobile-departure').combodate();
                         });
                         $('#filter-date-mobile-departure').combodate({
-                        minYear: 2016,
-                                maxYear: 2017,
+                        minYear: 2018,
+                                maxYear: 2019,
                         });
                         <?php if(\Session::get('ai_previous_page')): ?>
                         $(document).ready(function (){
@@ -2909,7 +2983,20 @@ url: "{{ URL::to('filter_search_destionation')}}",
                         function(){ $(this).removeClass('active') }
                     )
                 </script>
-
+<script>
+$(document).ready(function(){
+    eval($('.dropdown').each(function () {
+    var $dropdown = $(this);
+    $(".members-list", $dropdown).click(function (e) {
+        e.preventDefault();
+        $div = $(".members-drop-list", $dropdown);
+        $div.toggle();
+        $(".members-drop-list").not($div).hide();
+        return false;
+    });
+}));
+});
+</script>
 
            <style>
 /* Center the loader */
@@ -2943,6 +3030,5 @@ url: "{{ URL::to('filter_search_destionation')}}",
 
 
 </style>                             
-
     </body>
 </html>

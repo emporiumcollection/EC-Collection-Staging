@@ -112,6 +112,8 @@ class AdvertisementsController extends Controller {
 		$this->data['fields'] 		=  \SiteHelpers::fieldLang($this->info['config']['forms']);
 		
 		$this->data['id'] = $id;
+		$this->data['membershipplans'] = \DB::table('tb_membership')->where('status', 1)->get();
+		
 		return view('advertisements.form',$this->data);
 	}	
 
@@ -155,6 +157,7 @@ class AdvertisementsController extends Controller {
 			$data['adv_expire'] = Date('Y-m-d', strtotime("+".$request->input('ads_duration')." months"));
 			$data['ads_cat_id'] = ($request->input('ads_cat_id')!='') ? $request->input('ads_cat_id') : 'Hotel';
 			$data['ads_duration'] = $request->input('ads_duration');
+			$data['ads_plan'] = $request->input('ads_plan');
 			$id = $this->model->insertRow($data , $request->input('id'));
 			
 			if($request->input('adv_type')=="slider")

@@ -1238,7 +1238,7 @@
                                                             <div class="wrapperforliineedforlightboxremoval">
                                                                 <div class="cat_product_medium1">
                                                                             <div class="ai-grid-page-node-pic-box pictureBox gridPicture">
-                                                                                <a title="{{$reultsgridAds[$ads_node]->adv_title}}" class="picture_link-" href="{{$reultsgridAds[$ads_node]->adv_link}}">
+                                                                                <a title="{{$reultsgridAds[$ads_node]->adv_title}}" class="picture_link-" href="{{ (strpos($reultsgridAds[$ads_node]->adv_link, 'http://') !== false) ? $reultsgridAds[$ads_node]->adv_link : 'http://'.$reultsgridAds[$ads_node]->adv_link }}">
                                                                                     <h2 style="position:absolute; color:#fff;padding-left: 20px;">Advertiser</h2>
                                                                                     <img alt="{{$reultsgridAds[$ads_node]->adv_title}}" src="{{URL::to('uploads/users/advertisement/'.$reultsgridAds[$ads_node]->adv_img)}}" class="img-responsive" style="border: 2px solid #D3D6D2;padding: 3px 1px 3px 0px;">
                                                                                 </a>
@@ -1246,7 +1246,7 @@
                                                                             <div class="listDetails">
                                                                                 <div class="photographBox">
                                                                                     <h2>
-                                                                                        <a title="{{$reultsgridAds[$ads_node]->adv_title}}" class="photograph FltLft ai-filtreted-hotel-name" href="{{$reultsgridAds[$ads_node]->adv_link}}">
+                                                                                        <a title="{{$reultsgridAds[$ads_node]->adv_title}}" class="photograph FltLft ai-filtreted-hotel-name" href="{{ (strpos($reultsgridAds[$ads_node]->adv_link, 'http://') !== false) ? $reultsgridAds[$ads_node]->adv_link : 'http://'.$reultsgridAds[$ads_node]->adv_link }}">
                                                                                             {{$reultsgridAds[$ads_node]->adv_title}}
                                                                                         </a> 
                                                                                     </h2>
@@ -2441,7 +2441,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                         @if(!empty($sidebargridAds))
 											@foreach($sidebargridAds as $slides)
 												<div class="slick-cstm-width">
-													<a href="http://{{$slides->adv_link}}"><img src="{{URL::to('uploads/users/advertisement/'.$slides->adv_img)}}"></a>
+													<a href="{{ (strpos($slides->adv_link, 'http://') !== false) ? $slides->adv_link : 'http://'.$slides->adv_link }}"><img src="{{URL::to('uploads/users/advertisement/'.$slides->adv_img)}}"></a>
 												</div>
 											@endforeach
                                         @endif
