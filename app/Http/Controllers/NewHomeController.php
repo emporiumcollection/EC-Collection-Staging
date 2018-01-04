@@ -5021,7 +5021,7 @@ class NewHomeController extends Controller {
         $this->data['ttlcount'] = count($propertiesArr);
         $this->data['cities'] = array();
         $page = 'layouts.' . CNF_THEME . '.index';
-        $this->data['pages'] = 'pages.search';
+        $this->data['pages'] = 'pages.new_search';
         return view($page, $this->data);
     }
 
