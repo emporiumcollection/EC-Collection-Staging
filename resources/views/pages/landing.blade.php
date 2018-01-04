@@ -1300,7 +1300,7 @@
                                         @if(!empty($landingads))
                                         @foreach($landingads as $lnads)
                                         <div class="slick-cstm-width">
-                                            <a href="http://{{$lnads->adv_link}}"><img src="{{URL::to('uploads/users/advertisement/'.$lnads->adv_img)}}"></a>
+                                            <a href="{{ (strpos($lnads->adv_link, 'http://') !== false) ? $lnads->adv_link : 'http://'.$lnads->adv_link }}"><img src="{{URL::to('uploads/users/advertisement/'.$lnads->adv_img)}}"></a>
                                         </div>
                                         @endforeach
                                         @endif
