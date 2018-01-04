@@ -147,12 +147,6 @@
                 margin-top: 22px;
                 font-family: Geomanist-Light;
             }
-            .hotels-image-showcase-des-text {
-                /* height: 392px; */
-                float: none;
-                top: 255px;
-                position: absolute;
-            }
             .hotel-block-two-right-sec-align > h2{
                 color: #dbd4d7;
                 font-family: ACaslonPro-Regular;
@@ -578,7 +572,7 @@
                                 font-family: Raleway-ExtraLight;
                                 font-size: 70px;
                                 margin-left: -107px;
-                                margin-top: 550px !important;
+                                margin-top: 36px;
                                 margin-top: 0px;
                                 text-transform: uppercase;
                             }
