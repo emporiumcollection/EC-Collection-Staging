@@ -109,7 +109,7 @@ body{
     height: auto;
 }
 .bh-search-input {
-    padding-left: 9px !important;
+    padding-left: 0px !important;
 }
 /*.serach-page-cstm-width {
   width: 100%;
@@ -2639,7 +2639,7 @@ header .menu ul li a:hover, header .menu ul li a:active, header .menu ul li a:fo
     width: 174px;
 }
 .image-slider-btns-bg {
-    background-color: #000;
+    background-color: #252525;
     color: #fff;
     float: right;
     margin-top: -28%;
