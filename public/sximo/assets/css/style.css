@@ -109,7 +109,7 @@ body{
     height: auto;
 }
 .bh-search-input {
-    padding-left: 9px !important;
+    padding-left: 0px !important;
 }
 /*.serach-page-cstm-width {
   width: 100%;
@@ -2639,7 +2639,7 @@ header .menu ul li a:hover, header .menu ul li a:active, header .menu ul li a:fo
     width: 174px;
 }
 .image-slider-btns-bg {
-    background-color: #000;
+    background-color: #252525;
     color: #fff;
     float: right;
     margin-top: -28%;
@@ -4125,15 +4125,19 @@ div#fixed_wrapper {
     margin-top: 10px;
 }
 .hotels-bar-sec-align {
-    background-blend-mode: multiply;
-    background-color: #292f35;
-    background-image: url("http://design-locations.biz/uploads/container_user_files/locations/miss-clara-by-nobis/property-images/Miss-Clara-by-Nobis-Stockholm-Sweden-design-locations.com.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-top: 4px solid #fff;
-    padding-bottom: 30px;
-    padding-top: 30px;
-    float: left;
+	background-blend-mode: multiply;
+	background-color: #292f35;
+	background-image: url("http://design-locations.biz/uploads/container_user_files/locations/miss-clara-by-nobis/property-images/Miss-Clara-by-Nobis-Stockholm-Sweden-design-locations.com.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	border-top: 4px solid #fff;
+	padding-bottom: 30px;
+	padding-top: 30px;
+	float: left;
+	max-width: 1600px;
+	margin: 0 auto;
+	float: none;
+	height: 730px;
 }
 .bar-intro-text-bg {
     background-color: #ff332e;
@@ -5710,10 +5714,14 @@ div#fixed_wrapper {
 /* AIC 4-1-208 */
 
 .vegasBarLeft {
-    padding-left: 50px;
+    padding-left: 50px !important;
 }
 
 .vegasRightBar {
-    width: 29.333%;
+    width: 33.333%
     padding: 0;
+}
+
+.noPadding {
+    padding: 0px !important;
 }

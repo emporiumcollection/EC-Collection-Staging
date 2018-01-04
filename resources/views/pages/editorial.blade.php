@@ -62,10 +62,7 @@
 		<script src="{{ asset('sximo/assets/newgrid/js/wow.min.js')}}" type="text/javascript"></script>
 		<script src="{{ asset('sximo/assets/newgrid/js/jquery.fitvids.js')}}" type="text/javascript"></script>
 		<script src="{{ asset('sximo/assets/newgrid/js/skill.bars.jquery.js')}}" type="text/javascript"></script>
-                
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.runtime.min.js"></script>
-		<link rel="stylesheet" href="{{ asset('sximo/instajs/instashow/jquery.instashow.css')}}">
-		<script src="{{ asset('sximo/instajs/instashow/jquery.instashow.js')}}"></script>
+
         <script>
 			jQuery(document).ready(function ($) {
 				$(".regular").slick({
@@ -1563,7 +1560,7 @@
                         <div id="hotel-bar-sec" class="hotels-bar-sec-align">
                             <div class="container-">
                                 <div class="bar-sec-inner-pannel">
-                                    <div class="col-md-12">
+                                    <div class="col-md-12 noPadding">
                                         <div class="col-md-8 vegasBarLeft">
                                         <div class="col-md-3 col-sm-3">
                                             <div class="row">
@@ -1610,7 +1607,7 @@
                                         </div>
                                         </div>
                                         <div class="col-md-4 col-sm-3 vegasRightBar">
-                                            <div class="row-">
+                                            <div class="row">
                                                 <div class="bar-image-rigth">
                                                     @if($propertyDetail['data']->bar_image3!='')
                                                     <img class="img-responsive img-width" src="{{ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$propertyDetail['data']->bar_image3),100,255,null)}}" alt=""/>  

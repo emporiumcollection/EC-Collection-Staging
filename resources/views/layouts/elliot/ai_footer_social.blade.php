@@ -250,9 +250,9 @@
         
 		
 		<!-- instagram -->
-<!--		<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.runtime.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.runtime.min.js"></script>
 		<link rel="stylesheet" href="{{ asset('sximo/instajs/instashow/jquery.instashow.css')}}">
-		<script src="{{ asset('sximo/instajs/instashow/jquery.instashow.js')}}"></script>-->
+		<script src="{{ asset('sximo/instajs/instashow/jquery.instashow.js')}}"></script>
                 
                 <!-- masonary grid js -->
                 <!--<script src="{{ asset('sximo/assets/newgrid/js/main.js')}}" type="text/javascript"></script>-->
