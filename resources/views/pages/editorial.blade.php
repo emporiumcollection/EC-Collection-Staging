@@ -1159,7 +1159,7 @@
 								@if(!empty($sidebardetailAds))
 								@foreach($sidebardetailAds as $adsdetail)
 								<div class="slick-cstm-width">
-									<a href="http://{{$adsdetail->adv_link}}"><img src="{{URL::to('uploads/users/advertisement/'.$adsdetail->adv_img)}}"></a>
+									<a href="{{ (strpos($adsdetail->adv_link, 'http://') !== false) ? $adsdetail->adv_link : 'http://'.$adsdetail->adv_link }}"><img src="{{URL::to('uploads/users/advertisement/'.$adsdetail->adv_img)}}"></a>
 								</div>
 								@endforeach
 								@endif
@@ -1561,9 +1561,10 @@
                         </div>
                         @if($propertyDetail['data']->bar_title!='' && $propertyDetail['data']->bar_desciription!='')
                         <div id="hotel-bar-sec" class="hotels-bar-sec-align">
-                            <div class="container">
+                            <div class="container-">
                                 <div class="bar-sec-inner-pannel">
-                                    <div>
+                                    <div class="col-md-12">
+                                        <div class="col-md-8 vegasBarLeft">
                                         <div class="col-md-3 col-sm-3">
                                             <div class="row">
                                                 @if($propertyDetail['data']->bar_image!='')
@@ -1576,7 +1577,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-sm-6">
+                                        <div class="col-md-9 col-sm-6">
                                             <div class="row">
                                                 <div class="bar-intro-text-bg">
                                                     <div class="bar- tiitles-main-align">
@@ -1595,20 +1596,21 @@
                                                         </div>
                                                         <div class="col-md-6 col-sm-6">
                                                             <div class="row">
-																@if($bar_gallery>0)
-																	<div class="view-gallery-pannel-align">
-																		<span class="view-gallery-border-left"></span>
-																		<a href="javascript:void(0);"   class="detail_view gallerysty bar-view-gallery " rel="{{$propertyDetail['data']->id}}" rel2="Bar Gallery Images">View Gallery</a>
-																	</div>
-																@endif
+                                                                @if($bar_gallery>0)
+                                                                        <div class="view-gallery-pannel-align">
+                                                                                <span class="view-gallery-border-left"></span>
+                                                                                <a href="javascript:void(0);"   class="detail_view gallerysty bar-view-gallery " rel="{{$propertyDetail['data']->id}}" rel2="Bar Gallery Images">View Gallery</a>
+                                                                        </div>
+                                                                @endif
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-3 col-sm-3">
-                                            <div class="row">
+                                        </div>
+                                        <div class="col-md-4 col-sm-3 vegasRightBar">
+                                            <div class="row-">
                                                 <div class="bar-image-rigth">
                                                     @if($propertyDetail['data']->bar_image3!='')
                                                     <img class="img-responsive img-width" src="{{ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$propertyDetail['data']->bar_image3),100,255,null)}}" alt=""/>  
@@ -1956,7 +1958,7 @@
                                         @if(!empty($sidebardetailAds))
                                         @foreach($sidebardetailAds as $adsdetail)
                                         <div class="slick-cstm-width">
-                                            <a href="http://{{$adsdetail->adv_link}}"><img src="{{URL::to('uploads/users/advertisement/'.$adsdetail->adv_img)}}"></a>
+                                            <a href="{{ (strpos($adsdetail->adv_link, 'http://') !== false) ? $adsdetail->adv_link : 'http://'.$adsdetail->adv_link }}"><img src="{{URL::to('uploads/users/advertisement/'.$adsdetail->adv_img)}}"></a>
                                         </div>
                                         @endforeach
                                         @endif
