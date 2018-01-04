@@ -1563,7 +1563,7 @@
                         <div id="hotel-bar-sec" class="hotels-bar-sec-align">
                             <div class="container-">
                                 <div class="bar-sec-inner-pannel">
-                                    <div class="col-md-12">
+                                    <div class="col-md-12 noPadding">
                                         <div class="col-md-8 vegasBarLeft">
                                         <div class="col-md-3 col-sm-3">
                                             <div class="row">

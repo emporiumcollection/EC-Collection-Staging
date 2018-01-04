@@ -5710,10 +5710,14 @@ div#fixed_wrapper {
 /* AIC 4-1-208 */
 
 .vegasBarLeft {
-    padding-left: 50px;
+    padding-left: 50px !important;
 }
 
 .vegasRightBar {
-    width: 29.333%;
+    width: 33.333%
     padding: 0;
+}
+
+.noPadding {
+    padding: 0px !important;
 }
