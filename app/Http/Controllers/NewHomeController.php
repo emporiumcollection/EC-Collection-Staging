@@ -7043,69 +7043,69 @@ class NewHomeController extends Controller {
 
 
 
-
+                $lineBreak = "\n";
                 if(!empty($destts)){
                      $ourdesitnationHTML  = '';
                     foreach($destts as $destination){
-                        $ourdesitnationHTML  .= '<div class="panel panel-default  destination-sub-menues">';
-                        $ourdesitnationHTML  .= '<a class="collapsed" data-toggle="collapse" data-parent="#accordion1" href="#collapse-inner'.$destination['maincat']->id.'">';
-                        $ourdesitnationHTML  .= '<div class="destination-panel-heading">';
-                        $ourdesitnationHTML  .= '<h4 class="panel-title menu-text accordion ">';
+                        $ourdesitnationHTML  .= '<div class="panel panel-default  destination-sub-menues">'.$lineBreak;
+                        $ourdesitnationHTML  .= '<a class="collapsed" data-toggle="collapse" data-parent="#accordion1" href="#collapse-inner'.$destination['maincat']->id.'">'.$lineBreak;
+                        $ourdesitnationHTML  .= '<div class="destination-panel-heading">'.$lineBreak;
+                        $ourdesitnationHTML  .= '<h4 class="panel-title menu-text accordion ">'.$lineBreak;
                         $ourdesitnationHTML  .= $destination['maincat']->category_name;
-                        $ourdesitnationHTML  .= '</h4>';
-                        $ourdesitnationHTML  .= '</div>';
-                        $ourdesitnationHTML  .= '</a>';
-                        $ourdesitnationHTML  .= '<div id="collapse-inner'.$destination['maincat']->id.'" class="panel-collapse collapse ">';
-                        $ourdesitnationHTML  .= '<div class="panel-body">';
-                        $ourdesitnationHTML  .= '<ul class="where-box-sub-menu">';
+                        $ourdesitnationHTML  .= '</h4>'.$lineBreak;
+                        $ourdesitnationHTML  .= '</div>'.$lineBreak;
+                        $ourdesitnationHTML  .= '</a>'.$lineBreak;
+                        $ourdesitnationHTML  .= '<div id="collapse-inner'.$destination['maincat']->id.'" class="panel-collapse collapse ">'.$lineBreak;
+                        $ourdesitnationHTML  .= '<div class="panel-body">'.$lineBreak;
+                        $ourdesitnationHTML  .= '<ul class="where-box-sub-menu">'.$lineBreak;
                                 if (array_key_exists("child",$destination)){
                                         foreach($destination['child'] as $childDest){
-                                            $ourdesitnationHTML  .= '<li><div class="panel-group destination-inner-accordian-outer" id="inner-level-accordian">';
-                                            $ourdesitnationHTML  .= '<div class="panel panel-default">';
-                                            $ourdesitnationHTML  .= '<div class="panel-heading">';
-                                            $ourdesitnationHTML  .= '<h4 class="margin-top-15 panel-title pull-left">';
-                                            $ourdesitnationHTML  .= '<a data-toggle="collapse" data-parent="#inner-level-accordian" href="#destination-child.'.$childDest->id.'">'.$childDest->category_name.'</a>';
+                                            $ourdesitnationHTML  .= '<li><div class="panel-group destination-inner-accordian-outer" id="inner-level-accordian">'.$lineBreak;
+                                            $ourdesitnationHTML  .= '<div class="panel panel-default">'.$lineBreak;
+                                            $ourdesitnationHTML  .= '<div class="panel-heading">'.$lineBreak;
+                                            $ourdesitnationHTML  .= '<h4 class="margin-top-15 panel-title pull-left">'.$lineBreak;
+                                            $ourdesitnationHTML  .= '<a data-toggle="collapse" data-parent="#inner-level-accordian" href="#destination-child.'.$childDest->id.'">'.$childDest->category_name.'</a>'.$lineBreak;
                                             $ourdesitnationHTML  .= '</h4>';
                                             $ourdesitnationHTML  .= '</div>';
                                                 if (array_key_exists("subchild",$childDest)){
-                                                        $ourdesitnationHTML  .= '<div id="destination-child{{$childDest->id}}" class="panel-collapse collapse">';
+                                                        $ourdesitnationHTML  .= '<div id="destination-child{{$childDest->id}}" class="panel-collapse collapse">'.$lineBreak;
                                                         $ourdesitnationHTML  .= '<ul class="where-box-sub-menu inner-level-sub-menu">';
                                                         foreach($childDest->subchild as $subchildDest){
                                                         $ourdesitnationHTML  .= '<li>';
                                                                     if (array_key_exists("childs",$childDest)){
-                                                                        $ourdesitnationHTML  .= '<div class="panel-group destination-inner-accordian-outer" id="inner-level-accordian">';
+                                                                        $ourdesitnationHTML  .= '<div class="panel-group destination-inner-accordian-outer" id="inner-level-accordian">'.$lineBreak;
                                                                         $ourdesitnationHTML  .= '<div class="panel panel-default">';
                                                                         $ourdesitnationHTML  .= '<div class="panel-heading">';
                                                                         $ourdesitnationHTML  .= '<h4 class="panel-title">';
-                                                                        $ourdesitnationHTML  .= '<a data-toggle="collapse" data-parent="#inner-level-accordian" href="#destination-child'.$childDest->id.'-'.$subchildDest->id.'">'.$subchildDest->category_name.'</a>';
-                                                                        $ourdesitnationHTML  .= '</h4>';
-                                                                        $ourdesitnationHTML  .= '</div>';
+                                                                        $ourdesitnationHTML  .= '<a data-toggle="collapse" data-parent="#inner-level-accordian" href="#destination-child'.$childDest->id.'-'.$subchildDest->id.'">'.$subchildDest->category_name.'</a>'.$lineBreak;
+                                                                        $ourdesitnationHTML  .= '</h4>'.$lineBreak;
+                                                                        $ourdesitnationHTML  .= '</div>'.$lineBreak;
                                                                                 
-                                                                        $ourdesitnationHTML  .= '<div id="destination-child'.$childDest->id.'-'.$subchildDest->id.'" class="panel-collapse collapse">';
-                                                                        $ourdesitnationHTML  .= '<ul class="where-box-sub-menu inner-level-sub-menu">';
+                                                                        $ourdesitnationHTML  .= '<div id="destination-child'.$childDest->id.'-'.$subchildDest->id.'" class="panel-collapse collapse">'.$lineBreak;
+                                                                        $ourdesitnationHTML  .= '<ul class="where-box-sub-menu inner-level-sub-menu">'.$lineBreak;
                                                                         foreach($childDest->childs as $_child){
-                                                                            $ourdesitnationHTML  .= '<li><a href="'.url('luxury_destinations/'. str_replace(' ','_',$destination['maincat']->category_name).'/'. str_replace(' ','_',$childDest->category_name).'/'. str_replace(' ','_',$_child->category_name)).'">'.$_child->category_name.'</a></li>';
+                                                                            $ourdesitnationHTML  .= '<li><a href="'.url('luxury_destinations/'. str_replace(' ','_',$destination['maincat']->category_name).'/'. str_replace(' ','_',$childDest->category_name).'/'. str_replace(' ','_',$_child->category_name)).'">'.$_child->category_name.'</a></li>'.$lineBreak;
                                                                         }
-                                                                        $ourdesitnationHTML  .= '</ul>';
-                                                                        $ourdesitnationHTML  .= '</div>';
-                                                                        $ourdesitnationHTML  .= '</div>';
-                                                                        $ourdesitnationHTML  .= '</div>';
+                                                                        $ourdesitnationHTML  .= '</ul>'.$lineBreak;
+                                                                        $ourdesitnationHTML  .= '</div>'.$lineBreak;
+                                                                        $ourdesitnationHTML  .= '</div>'.$lineBreak;
+                                                                        $ourdesitnationHTML  .= '</div>'.$lineBreak;
                                                                     }else{
-                                                                        $ourdesitnationHTML  .= '<a href="'.url('luxury_destinations/'. str_replace(' ','_',$destination['maincat']->category_name).'/'. str_replace(' ','_',$childDest->category_name).'/'. str_replace(' ','_',$subchildDest->category_name)).'">'.$subchildDest->category_name.'</a>';
+                                                                        $ourdesitnationHTML  .= '<a href="'.url('luxury_destinations/'. str_replace(' ','_',$destination['maincat']->category_name).'/'. str_replace(' ','_',$childDest->category_name).'/'. str_replace(' ','_',$subchildDest->category_name)).'">'.$subchildDest->category_name.'</a>'.$lineBreak;
                                                                     }
-                                                                $ourdesitnationHTML  .= '</li>';
+                                                                $ourdesitnationHTML  .= '</li>'.$lineBreak;
                                                             }
-                                                            $ourdesitnationHTML  .= '</ul>';
-                                                            $ourdesitnationHTML  .= '</div>';
+                                                            $ourdesitnationHTML  .= '</ul>'.$lineBreak;
+                                                            $ourdesitnationHTML  .= '</div>'.$lineBreak;
                                                 }
-                                            $ourdesitnationHTML  .= '</div>';
-                                            $ourdesitnationHTML  .= '</div></li>';
+                                            $ourdesitnationHTML  .= '</div>'.$lineBreak;
+                                            $ourdesitnationHTML  .= '</div></li>'.$lineBreak;
                                         }
                                     }
-                                    $ourdesitnationHTML  .= '</ul>';
-                                $ourdesitnationHTML  .= '</div>';
-                            $ourdesitnationHTML  .= '</div>';
-                        $ourdesitnationHTML  .= '</div>';
+                                    $ourdesitnationHTML  .= '</ul>'.$lineBreak;
+                                $ourdesitnationHTML  .= '</div>'.$lineBreak;
+                            $ourdesitnationHTML  .= '</div>'.$lineBreak;
+                        $ourdesitnationHTML  .= '</div>'.$lineBreak;
                  }
                        
                  Storage::put('homeOurDestination.html', $ourdesitnationHTML); 
@@ -7118,30 +7118,30 @@ class NewHomeController extends Controller {
         
 
         
-            $ourdesitnationMobileHTML  = '<div class="panel-group-" id="mobile-inner-accordian">';
+            $ourdesitnationMobileHTML  = '<div class="panel-group-" id="mobile-inner-accordian">'.$lineBreak;
             foreach($destts as $destination){
 
-                $ourdesitnationMobileHTML  .= '<div class="panel panel-default  destination-sub-menues">';
-                $ourdesitnationMobileHTML  .= '<a class="collapsed" data-toggle="collapse" data-parent="#mobile-inner-accordian" href="#mobile-inner'.$destination['maincat']->id.'">';
+                $ourdesitnationMobileHTML  .= '<div class="panel panel-default  destination-sub-menues">'.$lineBreak;
+                $ourdesitnationMobileHTML  .= '<a class="collapsed" data-toggle="collapse" data-parent="#mobile-inner-accordian" href="#mobile-inner'.$destination['maincat']->id.'">'.$lineBreak;
                 $ourdesitnationMobileHTML  .= '<div class="destination-panel-heading">';
-                $ourdesitnationMobileHTML  .= '<h4 class="panel-title menu-text accordion ">'.$destination['maincat']->category_name.'</h4>';
-                $ourdesitnationMobileHTML  .= '</div>';
-                $ourdesitnationMobileHTML  .= '</a>';
-                $ourdesitnationMobileHTML  .= '<div id="mobile-inner'.$destination['maincat']->id.'" class="panel-collapse collapse ">';
-                $ourdesitnationMobileHTML  .= '<div class="panel-body">';
+                $ourdesitnationMobileHTML  .= '<h4 class="panel-title menu-text accordion ">'.$destination['maincat']->category_name.'</h4>'.$lineBreak;
+                $ourdesitnationMobileHTML  .= '</div>'.$lineBreak;
+                $ourdesitnationMobileHTML  .= '</a>'.$lineBreak;
+                $ourdesitnationMobileHTML  .= '<div id="mobile-inner'.$destination['maincat']->id.'" class="panel-collapse collapse ">'.$lineBreak;
+                $ourdesitnationMobileHTML  .= '<div class="panel-body">'.$lineBreak;
                 if (array_key_exists("child",$destination)){
-                    $ourdesitnationMobileHTML  .= '<ul class="where-box-sub-menu">';
+                    $ourdesitnationMobileHTML  .= '<ul class="where-box-sub-menu">'.$lineBreak;
                         foreach($destination['child'] as $childDest){
-                            $ourdesitnationMobileHTML  .= '<li><a href="'.url('luxury_destinations/'. str_replace(' ','_',$destination['maincat']->category_name).'/'. str_replace(' ','_',$childDest->category_name).'/'. str_replace(' ','_',$childDest->category_name)).'">'.$childDest->category_name.'</a></li>';
+                            $ourdesitnationMobileHTML  .= '<li><a href="'.url('luxury_destinations/'. str_replace(' ','_',$destination['maincat']->category_name).'/'. str_replace(' ','_',$childDest->category_name).'/'. str_replace(' ','_',$childDest->category_name)).'">'.$childDest->category_name.'</a></li>'.$lineBreak;
                         }
-                    $ourdesitnationMobileHTML  .= '</ul>';
+                    $ourdesitnationMobileHTML  .= '</ul>'.$lineBreak;
                 }
-                $ourdesitnationMobileHTML  .= '</div>';
-                $ourdesitnationMobileHTML  .= '</div>';
-                $ourdesitnationMobileHTML  .= '</div>';
+                $ourdesitnationMobileHTML  .= '</div>'.$lineBreak;
+                $ourdesitnationMobileHTML  .= '</div>'.$lineBreak;
+                $ourdesitnationMobileHTML  .= '</div>'.$lineBreak;
 
             }
-                $ourdesitnationHTML  .= '</div>';
+                $ourdesitnationHTML  .= '</div>'.$lineBreak;
             Storage::put('homeOurDestinationMobile.html', $ourdesitnationMobileHTML);   
             $exists = Storage::disk('local')->has('homeOurDestinationMobile.html');
             if($exists){
@@ -7157,7 +7157,7 @@ class NewHomeController extends Controller {
             $d = 0;
             foreach ($maindest as $mdest) {
 
-                /*                                 * *********************************************** */
+               
 
                 $getcats = '';
                 $chldIds = array();
@@ -7240,45 +7240,46 @@ class NewHomeController extends Controller {
             }
         }
         if(!empty($mainArrdestts)){
-            $continent = Input::get('continent', false);
-            $ourdesitnationLeftSideHTML  = '<div class="panel panel-default custom-post-panel">';
-            $ourdesitnationLeftSideHTML  .= '<a data-toggle="collapse" data-parent="#accordion" href="#maindestinations" class="heading-stying '.($continent!='') ? '' : 'collapsed' .'">';
-            $ourdesitnationLeftSideHTML  .= '<div class="panel-heading custom-heading">Destinations</div></a>';
-            $ourdesitnationLeftSideHTML  .= '<div id="maindestinations" class="panel-collapse collapse ">';
-            $ourdesitnationLeftSideHTML  .= '<div class="panel-body custom-panel-body">';
-            $ourdesitnationLeftSideHTML  .= '<div class="dl-filter">';
-            $ourdesitnationLeftSideHTML  .= '<!--First Parent-->';
+            
+            $lineBreak = "\n";
+            $ourdesitnationLeftSideHTML  = '<div class="panel panel-default custom-post-panel">'.$lineBreak;
+            $ourdesitnationLeftSideHTML  .= '<a data-toggle="collapse" data-parent="#accordion" href="#maindestinations" class="heading-stying collapsed">'.$lineBreak;
+            $ourdesitnationLeftSideHTML  .= '<div class="panel-heading custom-heading">Destinations</div></a>'.$lineBreak;
+            $ourdesitnationLeftSideHTML  .= '<div id="maindestinations" class="panel-collapse collapse ">'.$lineBreak;
+            $ourdesitnationLeftSideHTML  .= '<div class="panel-body custom-panel-body">'.$lineBreak;
+            $ourdesitnationLeftSideHTML  .= '<div class="dl-filter">'.$lineBreak;
+            $ourdesitnationLeftSideHTML  .= '<!--First Parent-->'.$lineBreak;
             foreach($mainArrdestts as $mndest){
-                $ourdesitnationLeftSideHTML  .= '<div class="node post-filter-inputs">';
-                $ourdesitnationLeftSideHTML  .= '<a class="node-btn" href="javascript:void(0)" onclick="filter_destination(\''.$mndest->id.'\', \'continent\');">'.$mndest->category_name.'</a>';
+                $ourdesitnationLeftSideHTML  .= '<div class="node post-filter-inputs">'.$lineBreak;
+                $ourdesitnationLeftSideHTML  .= '<a class="node-btn" href="javascript:void(0)" onclick="filter_destination(\''.$mndest->id.'\', \'continent\');">'.$mndest->category_name.'</a>'.$lineBreak;
                 if(array_key_exists('childs',$mndest) && !empty($mndest->childs)){
                     foreach($mndest->childs as $cddest){
-                        $ourdesitnationLeftSideHTML  .= '<!--Second Level-->';
-                        $ourdesitnationLeftSideHTML  .= '<div class="node" >';
-                        $ourdesitnationLeftSideHTML  .= '<a class="node-btn" href="javascript:void(0)" onclick="filter_destination(\''.$cddest->id.'\', \'region\');">'.$cddest->category_name.'</a>';
+                        $ourdesitnationLeftSideHTML  .= '<!--Second Level-->'.$lineBreak;
+                        $ourdesitnationLeftSideHTML  .= '<div class="node" >'.$lineBreak;
+                        $ourdesitnationLeftSideHTML  .= '<a class="node-btn" href="javascript:void(0)" onclick="filter_destination(\''.$cddest->id.'\', \'region\');">'.$cddest->category_name.'</a>'.$lineBreak;
                         if(array_key_exists('subchild',$cddest)){
                             foreach($cddest->subchild as $sbdest){
-                                $ourdesitnationLeftSideHTML  .= '<!--Third Level-->';
-                                $ourdesitnationLeftSideHTML  .= '<div class="node" >';
-                                $ourdesitnationLeftSideHTML  .= '<a class="node-btn" href="javascript:void(0)" onclick="filter_destination(\''.$sbdest->id.'\', \'country\');">'.$sbdest->category_name.'</a>';
+                                $ourdesitnationLeftSideHTML  .= '<!--Third Level-->'.$lineBreak;
+                                $ourdesitnationLeftSideHTML  .= '<div class="node" >'.$lineBreak;
+                                $ourdesitnationLeftSideHTML  .= '<a class="node-btn" href="javascript:void(0)" onclick="filter_destination(\''.$sbdest->id.'\', \'country\');">'.$sbdest->category_name.'</a>'.$lineBreak;
                                 if(array_key_exists('subchild',$sbdest)){
                                     foreach($sbdest->subchild as $subchild){
-                                        $ourdesitnationLeftSideHTML  .= '<div class="node" >';
-                                        $ourdesitnationLeftSideHTML  .= '<a class="node-btn" href="javascript:void(0)" onclick="filter_destination(\''.$subchild->id.'\', \'country\');">'.$subchild->category_name.'</a>';
-                                        $ourdesitnationLeftSideHTML  .= '</div>';
+                                        $ourdesitnationLeftSideHTML  .= '<div class="node" >'.$lineBreak;
+                                        $ourdesitnationLeftSideHTML  .= '<a class="node-btn" href="javascript:void(0)" onclick="filter_destination(\''.$subchild->id.'\', \'country\');">'.$subchild->category_name.'</a>'.$lineBreak;
+                                        $ourdesitnationLeftSideHTML  .= '</div>'.$lineBreak;
                                     }
                                 }
-                                $ourdesitnationLeftSideHTML  .=  '</div>';
+                                $ourdesitnationLeftSideHTML  .=  '</div>'.$lineBreak;
                             }
                         }
-                        $ourdesitnationLeftSideHTML  .= '</div>';
+                        $ourdesitnationLeftSideHTML  .= '</div>'.$lineBreak;
                     }
                 }
-                $ourdesitnationLeftSideHTML  .= '</div>';
+                $ourdesitnationLeftSideHTML  .= '</div>'.$lineBreak;
             }
-            $ourdesitnationLeftSideHTML  .= '</div>';
-            $ourdesitnationLeftSideHTML  .= '</div>';
-            $ourdesitnationLeftSideHTML  .= '</div>';
+            $ourdesitnationLeftSideHTML  .= '</div>'.$lineBreak;
+            $ourdesitnationLeftSideHTML  .= '</div>'.$lineBreak;
+            $ourdesitnationLeftSideHTML  .= '</div>'.$lineBreak;
             //echo $ourdesitnationLeftSideHTML  .= '</div>';
            Storage::put('leftOurDestination.html', $ourdesitnationLeftSideHTML); 
            $exists = Storage::disk('local')->has('leftOurDestination.html');
