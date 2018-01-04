@@ -26,9 +26,9 @@ return [
     |
     */
 
-    'url' => 'http://34.252.152.62/',
+    url' => 'http://34.252.152.62/',
 
-    /*
+    /*'
     |--------------------------------------------------------------------------
     | Application Timezone
     |--------------------------------------------------------------------------
@@ -152,7 +152,7 @@ return [
 		Intervention\Image\ImageServiceProvider::class,
 		Maatwebsite\Excel\ExcelServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
-
+        Laravel\Cashier\CashierServiceProvider::class,  
 
     ],
 

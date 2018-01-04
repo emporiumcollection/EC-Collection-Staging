@@ -31,8 +31,9 @@ return [
 
 	'stripe' => [
 		'model'  => 'App\User',
-		'secret' => '',
+		'secret' => env('STRIPE_API_SECRET'),
 	],
+	
 
 	'google' => [
 	   	'client_id' => '',
