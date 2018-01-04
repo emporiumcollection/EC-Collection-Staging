@@ -1159,7 +1159,7 @@
 								@if(!empty($sidebardetailAds))
 								@foreach($sidebardetailAds as $adsdetail)
 								<div class="slick-cstm-width">
-									<a href="http://{{$adsdetail->adv_link}}"><img src="{{URL::to('uploads/users/advertisement/'.$adsdetail->adv_img)}}"></a>
+									<a href="{{ (strpos($adsdetail->adv_link, 'http://') !== false) ? $adsdetail->adv_link : 'http://'.$adsdetail->adv_link }}"><img src="{{URL::to('uploads/users/advertisement/'.$adsdetail->adv_img)}}"></a>
 								</div>
 								@endforeach
 								@endif
@@ -1956,7 +1956,7 @@
                                         @if(!empty($sidebardetailAds))
                                         @foreach($sidebardetailAds as $adsdetail)
                                         <div class="slick-cstm-width">
-                                            <a href="http://{{$adsdetail->adv_link}}"><img src="{{URL::to('uploads/users/advertisement/'.$adsdetail->adv_img)}}"></a>
+                                            <a href="{{ (strpos($adsdetail->adv_link, 'http://') !== false) ? $adsdetail->adv_link : 'http://'.$adsdetail->adv_link }}"><img src="{{URL::to('uploads/users/advertisement/'.$adsdetail->adv_img)}}"></a>
                                         </div>
                                         @endforeach
                                         @endif
