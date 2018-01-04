@@ -139,6 +139,7 @@
                 font-size: 15px;
                 line-height: 30px;
                 font-family: Geomanist-Light;
+                margin-top: 35px;
             }
             .hotels-image-showcase-des-text > p {
                 font-size: 15px;
@@ -345,12 +346,12 @@
                                     filter: brightness(.8);
                             }
                             .hotels-detail-description-text {
-                                margin-top: 30px;
+                                margin-top: 0px;
                             }
                             .hotels-image-showcase-des-text > p {
                                 font-size: 15px;
                                 line-height: 30px;
-                                margin-top: 60px;
+                                margin-top: 28px;
                             }
                             .hotel-block-two-right-sec-align > p {
                                 color: white;
