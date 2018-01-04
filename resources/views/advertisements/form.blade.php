@@ -157,6 +157,22 @@
 									 	
 									 </div>
 								  </div>
+								  
+								  <div class="form-group  " >
+									<label for="Advertisement Duration" class=" control-label col-md-4 text-left"> Membership Plans </label>
+									<div class="col-md-6">
+									  <select name='ads_plan' class="form-control">
+										@if(!empty($membershipplans))
+											@foreach($membershipplans as $plan)
+												<option value="{{$plan->id}}" <?php echo ($row['ads_plan']==$plan->id) ? 'selected="selected"' : '';?>>{{$plan->package_name}}</option>
+											@endforeach
+										@endif
+									  </select> 
+									 </div> 
+									 <div class="col-md-2">
+									 	
+									 </div>
+								  </div>
 					</fieldset>
 			</div>
 			
