@@ -559,7 +559,7 @@
                             
                             .hotels-showcase-right-side {
                                 background-image: url('http://www.emporium-voyage.com/uploads/container_user_files/locations/phum-baitang/property-images/Phum Baitang (3).jpg');
-                                height: 810px;
+                                height: 830px;
                                 margin-top: 0px;
                                 position: absolute;
                                 top: 0;
