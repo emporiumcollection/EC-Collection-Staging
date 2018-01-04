@@ -1610,7 +1610,7 @@
                                         </div>
                                         </div>
                                         <div class="col-md-4 col-sm-3 vegasRightBar">
-                                            <div class="row-">
+                                            <div class="row">
                                                 <div class="bar-image-rigth">
                                                     @if($propertyDetail['data']->bar_image3!='')
                                                     <img class="img-responsive img-width" src="{{ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$propertyDetail['data']->bar_image3),100,255,null)}}" alt=""/>  
