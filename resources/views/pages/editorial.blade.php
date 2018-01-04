@@ -1563,7 +1563,8 @@
                         <div id="hotel-bar-sec" class="hotels-bar-sec-align">
                             <div class="container">
                                 <div class="bar-sec-inner-pannel">
-                                    <div>
+                                    <div class="col-md-12">
+                                        <div class="col-md-9">
                                         <div class="col-md-3 col-sm-3">
                                             <div class="row">
                                                 @if($propertyDetail['data']->bar_image!='')
@@ -1595,17 +1596,18 @@
                                                         </div>
                                                         <div class="col-md-6 col-sm-6">
                                                             <div class="row">
-																@if($bar_gallery>0)
-																	<div class="view-gallery-pannel-align">
-																		<span class="view-gallery-border-left"></span>
-																		<a href="javascript:void(0);"   class="detail_view gallerysty bar-view-gallery " rel="{{$propertyDetail['data']->id}}" rel2="Bar Gallery Images">View Gallery</a>
-																	</div>
-																@endif
+                                                                @if($bar_gallery>0)
+                                                                        <div class="view-gallery-pannel-align">
+                                                                                <span class="view-gallery-border-left"></span>
+                                                                                <a href="javascript:void(0);"   class="detail_view gallerysty bar-view-gallery " rel="{{$propertyDetail['data']->id}}" rel2="Bar Gallery Images">View Gallery</a>
+                                                                        </div>
+                                                                @endif
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div>
                                         </div>
                                         <div class="col-md-3 col-sm-3">
                                             <div class="row">
