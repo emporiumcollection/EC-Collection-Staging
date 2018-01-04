@@ -336,7 +336,7 @@ class ProcessTest extends TestCase
 
         $called = false;
         $p->run(function ($type, $buffer) use (&$called) {
-            $called = 'foo' === $buffer;
+            $called = $buffer === 'foo';
         });
 
         $this->assertTrue($called, 'The callback should be executed with the output');
@@ -439,9 +439,6 @@ class ProcessTest extends TestCase
         $this->assertGreaterThan(0, $process->getExitCode());
     }
 
-    /**
-     * @group tty
-     */
     public function testTTYCommand()
     {
         if ('\\' === DIRECTORY_SEPARATOR) {
@@ -457,9 +454,6 @@ class ProcessTest extends TestCase
         $this->assertSame(Process::STATUS_TERMINATED, $process->getStatus());
     }
 
-    /**
-     * @group tty
-     */
     public function testTTYCommandExitCode()
     {
         if ('\\' === DIRECTORY_SEPARATOR) {
@@ -731,8 +725,8 @@ class ProcessTest extends TestCase
         // Ensure that both processed finished and the output is numeric
         $this->assertFalse($process1->isRunning());
         $this->assertFalse($process2->isRunning());
-        $this->assertInternalType('numeric', $process1->getOutput());
-        $this->assertInternalType('numeric', $process2->getOutput());
+        $this->assertTrue(is_numeric($process1->getOutput()));
+        $this->assertTrue(is_numeric($process2->getOutput()));
 
         // Ensure that restart returned a new process by check that the output is different
         $this->assertNotEquals($process1->getOutput(), $process2->getOutput());

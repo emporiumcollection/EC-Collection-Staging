@@ -23,17 +23,23 @@ class MoFileLoader extends ArrayLoader
     /**
      * Magic used for validating the format of a MO file as well as
      * detecting if the machine used to create that file was little endian.
+     *
+     * @var float
      */
     const MO_LITTLE_ENDIAN_MAGIC = 0x950412de;
 
     /**
      * Magic used for validating the format of a MO file as well as
      * detecting if the machine used to create that file was big endian.
+     *
+     * @var float
      */
     const MO_BIG_ENDIAN_MAGIC = 0xde120495;
 
     /**
      * The size of the header of a MO file in bytes.
+     *
+     * @var int Number of bytes
      */
     const MO_HEADER_SIZE = 28;
 
@@ -76,7 +82,7 @@ class MoFileLoader extends ArrayLoader
      *
      * @return array
      *
-     * @throws InvalidResourceException if stream content has an invalid format
+     * @throws InvalidResourceException If stream content has an invalid format.
      */
     private function parse($resource)
     {
@@ -90,9 +96,9 @@ class MoFileLoader extends ArrayLoader
         $magic = unpack('V1', fread($stream, 4));
         $magic = hexdec(substr(dechex(current($magic)), -8));
 
-        if (self::MO_LITTLE_ENDIAN_MAGIC == $magic) {
+        if ($magic == self::MO_LITTLE_ENDIAN_MAGIC) {
             $isBigEndian = false;
-        } elseif (self::MO_BIG_ENDIAN_MAGIC == $magic) {
+        } elseif ($magic == self::MO_BIG_ENDIAN_MAGIC) {
             $isBigEndian = true;
         } else {
             throw new InvalidResourceException('MO stream content has an invalid format.');
@@ -126,7 +132,7 @@ class MoFileLoader extends ArrayLoader
             fseek($stream, $offset);
             $singularId = fread($stream, $length);
 
-            if (false !== strpos($singularId, "\000")) {
+            if (strpos($singularId, "\000") !== false) {
                 list($singularId, $pluralId) = explode("\000", $singularId);
             }
 
@@ -141,7 +147,7 @@ class MoFileLoader extends ArrayLoader
             fseek($stream, $offset);
             $translated = fread($stream, $length);
 
-            if (false !== strpos($translated, "\000")) {
+            if (strpos($translated, "\000") !== false) {
                 $translated = explode("\000", $translated);
             }
 

@@ -132,10 +132,10 @@ if (!doc.addEventListener) {
 function toggle(a, recursive) {
     var s = a.nextSibling || {}, oldClass = s.className, arrow, newClass;
 
-    if (/\bsf-dump-compact\b/.test(oldClass)) {
+    if ('sf-dump-compact' == oldClass) {
         arrow = '▼';
         newClass = 'sf-dump-expanded';
-    } else if (/\bsf-dump-expanded\b/.test(oldClass)) {
+    } else if ('sf-dump-expanded' == oldClass) {
         arrow = '▶';
         newClass = 'sf-dump-compact';
     } else {
@@ -143,13 +143,13 @@ function toggle(a, recursive) {
     }
 
     a.lastChild.innerHTML = arrow;
-    s.className = s.className.replace(/\bsf-dump-(compact|expanded)\b/, newClass);
+    s.className = newClass;
 
     if (recursive) {
         try {
             a = s.querySelectorAll('.'+oldClass);
             for (s = 0; s < a.length; ++s) {
-                if (-1 == a[s].className.indexOf(newClass)) {
+                if (a[s].className !== newClass) {
                     a[s].className = newClass;
                     a[s].previousSibling.lastChild.innerHTML = arrow;
                 }
@@ -205,7 +205,7 @@ return function (root) {
                 if (f && t && f[0] !== t[0]) {
                     r.innerHTML = r.innerHTML.replace(new RegExp('^'+f[0].replace(rxEsc, '\\$1'), 'mg'), t[0]);
                 }
-                if (/\bsf-dump-compact\b/.test(r.className)) {
+                if ('sf-dump-compact' == r.className) {
                     toggle(s, isCtrlKey(e));
                 }
             }
@@ -255,10 +255,10 @@ return function (root) {
             a.title = (a.title ? a.title+'\n[' : '[')+keyHint+'+click] Expand all children';
             a.innerHTML += '<span>▼</span>';
             a.className += ' sf-dump-toggle';
-            if (!/\bsf-dump\b/.test(elt.parentNode.className)) {
+            if ('sf-dump' != elt.parentNode.className) {
                 toggle(a);
             }
-        } else if (/\bsf-dump-ref\b/.test(elt.className) && (a = elt.getAttribute('href'))) {
+        } else if ("sf-dump-ref" == elt.className && (a = elt.getAttribute('href'))) {
             a = a.substr(1);
             elt.className += ' '+a;
 

@@ -147,8 +147,6 @@ class Application extends BaseApplication
     {
         $config = $this->parseConfigurationFile($input);
 
-        $this->populateContainerParameters($container, $config);
-
         foreach ($config as $key => $val) {
             if ('extensions' === $key && is_array($val)) {
                 foreach ($val as $class) {
@@ -163,14 +161,7 @@ class Application extends BaseApplication
 
                     $extension->load($container);
                 }
-            }
-        }
-    }
-
-    private function populateContainerParameters(ServiceContainer $container, array $config)
-    {
-        foreach ($config as $key => $val) {
-            if ('extensions' !== $key) {
+            } else {
                 $container->setParam($key, $val);
             }
         }

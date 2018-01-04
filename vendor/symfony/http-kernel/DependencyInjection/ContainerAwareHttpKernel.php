@@ -33,6 +33,8 @@ class ContainerAwareHttpKernel extends HttpKernel
     protected $container;
 
     /**
+     * Constructor.
+     *
      * @param EventDispatcherInterface    $dispatcher         An EventDispatcherInterface instance
      * @param ContainerInterface          $container          A ContainerInterface instance
      * @param ControllerResolverInterface $controllerResolver A ControllerResolverInterface instance

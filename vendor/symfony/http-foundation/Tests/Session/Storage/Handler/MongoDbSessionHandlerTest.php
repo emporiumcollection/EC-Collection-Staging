@@ -291,7 +291,7 @@ class MongoDbSessionHandlerTest extends TestCase
 
         $that = $this;
 
-        $methodName = phpversion('mongodb') ? 'deleteMany' : 'remove';
+        $methodName = phpversion('mongodb') ? 'deleteOne' : 'remove';
 
         $collection->expects($this->once())
             ->method($methodName)

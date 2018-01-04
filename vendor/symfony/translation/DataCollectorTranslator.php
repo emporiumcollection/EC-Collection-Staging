@@ -25,6 +25,9 @@ class DataCollectorTranslator implements TranslatorInterface, TranslatorBagInter
      */
     private $translator;
 
+    /**
+     * @var array
+     */
     private $messages = array();
 
     /**
@@ -92,7 +95,7 @@ class DataCollectorTranslator implements TranslatorInterface, TranslatorBagInter
      */
     public function getFallbackLocales()
     {
-        if ($this->translator instanceof Translator || method_exists($this->translator, 'getFallbackLocales')) {
+        if ($this->translator instanceof Translator) {
             return $this->translator->getFallbackLocales();
         }
 

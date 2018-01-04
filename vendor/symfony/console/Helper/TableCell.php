@@ -16,7 +16,14 @@ namespace Symfony\Component\Console\Helper;
  */
 class TableCell
 {
+    /**
+     * @var string
+     */
     private $value;
+
+    /**
+     * @var array
+     */
     private $options = array(
         'rowspan' => 1,
         'colspan' => 1,

@@ -226,11 +226,6 @@ class OAuthTokenCredential extends PayPalResourceModel
     {
         $httpConfig = new PayPalHttpConfig(null, 'POST', $config);
 
-        // if proxy set via config, add it
-        if (!empty($config['http.Proxy'])) {
-            $httpConfig->setHttpProxy($config['http.Proxy']);
-        }
-
         $handlers = array(self::$AUTH_HANDLER);
 
         /** @var IPayPalHandler $handler */

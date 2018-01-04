@@ -1,8 +1,3 @@
-2.5.8 / 2017-07-29
-==================
-
-* [fixed] parameters after extensions ignored in config file (@borNfreee)
-
 2.5.7 / 2017-05-12
 ==================
 

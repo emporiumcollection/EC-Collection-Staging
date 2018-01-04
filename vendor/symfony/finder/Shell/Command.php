@@ -16,8 +16,19 @@ namespace Symfony\Component\Finder\Shell;
  */
 class Command
 {
+    /**
+     * @var Command|null
+     */
     private $parent;
+
+    /**
+     * @var array
+     */
     private $bits = array();
+
+    /**
+     * @var array
+     */
     private $labels = array();
 
     /**
@@ -25,6 +36,11 @@ class Command
      */
     private $errorHandler;
 
+    /**
+     * Constructor.
+     *
+     * @param Command|null $parent Parent command
+     */
     public function __construct(Command $parent = null)
     {
         $this->parent = $parent;
@@ -42,6 +58,8 @@ class Command
 
     /**
      * Creates a new Command instance.
+     *
+     * @param Command|null $parent Parent command
      *
      * @return self
      */
@@ -200,6 +218,8 @@ class Command
     }
 
     /**
+     * @param \Closure $errorHandler
+     *
      * @return $this
      */
     public function setErrorHandler(\Closure $errorHandler)

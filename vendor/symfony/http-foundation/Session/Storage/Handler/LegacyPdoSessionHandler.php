@@ -31,6 +31,9 @@ namespace Symfony\Component\HttpFoundation\Session\Storage\Handler;
  */
 class LegacyPdoSessionHandler implements \SessionHandlerInterface
 {
+    /**
+     * @var \PDO PDO instance
+     */
     private $pdo;
 
     /**
@@ -54,6 +57,8 @@ class LegacyPdoSessionHandler implements \SessionHandlerInterface
     private $timeCol;
 
     /**
+     * Constructor.
+     *
      * List of available options:
      *  * db_table: The name of the table [required]
      *  * db_id_col: The column where to store the session id [default: sess_id]

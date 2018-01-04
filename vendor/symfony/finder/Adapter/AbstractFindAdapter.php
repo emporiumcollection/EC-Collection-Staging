@@ -26,8 +26,14 @@ use Symfony\Component\Finder\Comparator\DateComparator;
  */
 abstract class AbstractFindAdapter extends AbstractAdapter
 {
+    /**
+     * @var Shell
+     */
     protected $shell;
 
+    /**
+     * Constructor.
+     */
     public function __construct()
     {
         $this->shell = new Shell();
