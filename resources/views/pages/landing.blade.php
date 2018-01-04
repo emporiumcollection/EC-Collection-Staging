@@ -33,7 +33,7 @@
         
         
         <style>
-            #search-navbar.search-navbar-destination-search-box {
+            #search-navbar-destination.search-navbar-destination-search-box {
                 background: #2a2d30 none repeat scroll 0 0 !important;
                 border: 2px solid #2a2d30;
                 display: table;
@@ -1039,7 +1039,7 @@
                                                 <div class="col-md-3">
                                                     <div class="row">
                                                         <div class="form-group would-like-input top-bar-search padding-right-12">
-                                                            <input  class="form-control ai-custom-deafault-style bh-search-input typeahead search-box searchbox_landing" name="s" id="search-navbar" placeholder="Enter Your Hotel or Destination" type="text" required="required">
+                                                            <input  class="form-control ai-custom-deafault-style bh-search-input typeahead search-box searchbox_landing" name="s" id="search-navbar-sliderform" placeholder="Enter Your Hotel or Destination" type="text" required="required">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1338,7 +1338,7 @@
                                 <!--Search form start-->
                                 <form autocomplete="off" method="get" id="searchform-navbar" class="searchform-navbar" action="{{URL::to('search')}}">
                                     <input type="hidden" name="ref" value="oc">
-                                    <input  class="bh-search-input typeahead search-navbar search-box" name="s" id="search-navbar" placeholder="Enter Your Hotel or Destination" type="text">
+                                    <input  class="bh-search-input typeahead search-navbar search-box" name="s" id="search-navbar-our-collection" placeholder="Enter Your Hotel or Destination" type="text">
                                 </form>
                                 <!--Search form end-->
                             </div>
@@ -1422,7 +1422,7 @@
                         <!--Search form start-->
                         <form autocomplete="off" method="get" id="searchform-navbar" class="destinationsearchform-navbar" action="{{URL::to('search')}}">
                             <inpu type="hidden" name="ref" value="syd">
-                            <input  class="bh-search-input typeahead search-navbar search-navbar-destination-search-box" name="s" id="search-navbar" placeholder="ENTER YOUR DESTINATION" type="text">
+                            <input  class="bh-search-input typeahead search-navbar search-navbar-destination-search-box" name="s" id="search-navbar-destination" placeholder="ENTER YOUR DESTINATION" type="text">
                         </form>
                         <!--Search form end-->
                     </div>
@@ -1713,7 +1713,7 @@
 													</div>
                                                     <div class="design-locations-logo">
                                                         <form autocomplete="off" method="get" id="searchform-navbar" class="searchform-navbar" action="{{URL::to('search')}}">
-                                                            <input  class="bh-search-input typeahead search-navbar" name="s" id="search-navbar" placeholder="SEARCH" type="text">
+                                                            <input  class="bh-search-input typeahead search-navbar" name="s" id="search-navbar-sidemenu" placeholder="SEARCH" type="text">
                                                         </form>
                                                     </div>
                                                     <div class="panel-group" id="accordion">
@@ -1829,7 +1829,7 @@
                                         <div class="panel-body">
                                             <form autocomplete="off" method="get" id="searchform-navbar" class="searchform-navbar" action="{{URL::to('search')}}">
                                             <input type="hidden" name="ref" value="oc_small">
-                                                <input  class="bh-search-input ai-md-search-input typeahead search-navbar main-search-box" name="s" id="search-navbar" placeholder="Enter Your Hotel or Destination" type="text">
+                                                <input  class="bh-search-input ai-md-search-input typeahead search-navbar main-search-box" name="s" id="search-navbar-our-collection-res" placeholder="Enter Your Hotel or Destination" type="text">
                                             </form>
 											<div class="serach-page-menu">
 												<ul>
@@ -1956,7 +1956,7 @@
                                                         <!--Search form start-->
                                                         <form autocomplete="off" method="get" id="searchform-navbar" class="destinationsearchform-navbar" action="{{URL::to('search')}}">
                                                             <input type="hidden" name="ref" value="syd_small">
-                                                            <input  class="bh-search-input typeahead search-navbar" name="s" id="search-navbar" placeholder="ENTER YOUR DESTINATION" type="text">
+                                                            <input  class="bh-search-input typeahead search-navbar" name="s" id="search-navbar-destination-res" placeholder="ENTER YOUR DESTINATION" type="text">
                                                         </form>
                                                         <!--Search form end-->
                                                     </div>

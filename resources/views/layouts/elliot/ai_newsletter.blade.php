@@ -5,7 +5,7 @@
         <div class="modal-content dl_newsletter-pop-content">
             <div class="modal-header dl_newsletter-pop-content">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <a href="{{url('')}}"> <img alt="" src="http://design-locations.biz/sximo/assets/images/design-location-logo.png" class="img-responsive dl_logo-on-newsletter"></a>
+                <a href="{{url('')}}"> <img alt="" src="{{ asset('sximo/assets/images/design-location-logo.png')}}" class="img-responsive dl_logo-on-newsletter"></a>
             </div>
             <div class="modal-body">
                 <div class="dl_newsletter-pop-body-content">
