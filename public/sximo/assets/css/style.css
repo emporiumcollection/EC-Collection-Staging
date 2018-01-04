@@ -4133,6 +4133,7 @@ div#fixed_wrapper {
     border-top: 4px solid #fff;
     padding-bottom: 30px;
     padding-top: 30px;
+    float: left;
 }
 .bar-intro-text-bg {
     background-color: #ff332e;
@@ -5704,4 +5705,15 @@ div#fixed_wrapper {
   height: auto;
   margin: 0;
   padding: 0;
+}
+
+/* AIC 4-1-208 */
+
+.vegasBarLeft {
+    padding-left: 50px;
+}
+
+.vegasRightBar {
+    width: 29.333%;
+    padding: 0;
 }
