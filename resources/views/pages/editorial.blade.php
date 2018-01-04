@@ -578,7 +578,7 @@
                                 font-family: Raleway-ExtraLight;
                                 font-size: 70px;
                                 margin-left: -107px;
-                                margin-top: 550px;
+                                margin-top: 550px !important;
                                 margin-top: 0px;
                                 text-transform: uppercase;
                             }
