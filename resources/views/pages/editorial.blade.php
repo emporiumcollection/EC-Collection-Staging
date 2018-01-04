@@ -378,6 +378,7 @@
                                 padding-right: 0px;
                                 font-size: 15px;
                                 line-height: 30px;
+                                margin-top: 33px;
                             }
                             .hotel-block-two-right-sec-align > p {
                                 color: white;
@@ -530,7 +531,7 @@
                                 font-family: ACaslonPro-Regular;
                                 font-size: 40px;
                                 font-weight: lighter;
-                                margin-top: -115px;
+                                margin-top: 0px;
                                 text-transform: uppercase;
                                 opacity: 0;
                             }
