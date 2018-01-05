@@ -14,7 +14,7 @@ $(document).ready(function () {
     });
     $(".popup-close-btn").click(function (event) {
         event.preventDefault();
-        $(this).parent().parent()animate({
+        $(this).parent().parent().animate({
             width: "0px"
         }, 800, function () {});
         $("body").removeClass("fixed");

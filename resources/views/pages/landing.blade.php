@@ -33,6 +33,10 @@
         
         
         <style>
+            #inner-level-accordian .panel-title {
+                float: left;
+                width: 100%;
+            }
             #search-navbar-destination.search-navbar-destination-search-box {
                 background: #2a2d30 none repeat scroll 0 0 !important;
                 border: 2px solid #2a2d30;
