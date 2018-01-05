@@ -1461,7 +1461,7 @@
                                 <div class="panel-body">
                                     <ul class="where-box-sub-menu">
                                         @if (array_key_exists("childs",$destination))
-                                        @foreach($destination['childs'] as $childDest)
+                                        @foreach($destination->childs as $childDest)
                                         <li><div class="panel-group destination-inner-accordian-outer" id="inner-level-accordian">
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">
