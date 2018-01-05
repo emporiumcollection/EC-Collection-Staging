@@ -2248,14 +2248,14 @@
                              <div class="login-sign-up-sidebar-outer-align">
                                  <div class="your-account-heading-align">
                                      <div class="ps-login-signup-form-top-bar">
-                                         <div class="col-md-6 col-sm-6">
+<!--                                         <div class="col-md-6 col-sm-6">
                                              <div class="row">
                                                  <div class="ps-forms-cross-icons">
                                                      <a class="show-account-with-us ps-forms-small-heading-link" href="javascript:void(0)">&times;</a>
                                                  </div>
                                              </div>
-                                         </div>
-                                         <div class="col-md-6 col-sm-6">
+                                         </div>-->
+                                         <div class="col-md-12 col-sm-6">
                                              <div class="row">
                                                  <div class="right-need-help-icon">
                                                      <a class="ps-forms-small-heading-link" href="#">Need Help?</a>
@@ -2263,6 +2263,15 @@
                                              </div>
                                          </div>
                                      </div>
+                                     <div class="ps-login-signup-form-top-bar">
+                                        <div class="col-md-6 col-sm-6">
+                                           <div class="row">
+                                               <div class="ps-forms-cross-icons">
+                                                   <a class="show-account-with-us ps-forms-small-heading-link" href="javascript:void(0)">&times;</a>
+                                               </div>
+                                           </div>
+                                       </div>
+                                    </div>
                                      <div class="clearfix"></div>
                                      <div class="ps-form-main-pannel">
                                          <div class="ps-form-heading-outer-align">
