@@ -1226,7 +1226,9 @@
                                     <div id="listproperties">
                                         <div class="row ">
                                             
-                                           @if($propertiesArr)
+                                                    
+                                          
+                                            @if($propertiesArr)
                                             {{--*/ $rw = 1 /*--}}
                                             {{--*/ $node_no = 1; $ads_node=0; /*--}}
                                             @foreach($propertiesArr as $props)
@@ -1261,95 +1263,95 @@
                                                 @endif
                                                  {{--*/ $ads_node++; /*--}}
                                             @else
-                                                    <div class="productData col-xs-12 col-sm-6 col-md-4 col-lg-3 margin-bottom-10">
-                                                        <div class="wrapperforliineedforlightboxremoval">
-                                                            <div class="cat_product_medium1">
-                                                                <div class="ai-grid-page-node-pic-box pictureBox gridPicture grid-box-main">
-                                                                    @if($props->price!='')
-                                                                    <?php /*<a class="textButton arrowButton MrgTop5 ai-filter-hotel-price-style" rel="{{$props->id}}" href="{{URL::to($props->property_slug)}}">
-                                                                        From EUR {{$props->price}} / night 
-                                                                    </a> */ ?>
-                                                                    @endif
-                                                                    @if(array_key_exists('image', $props))
-                                                                        @if($props->editor_choice_property=='1')
-                                                                            <img alt="editor_choice_property" class="propovericons" src="{{URL::to('sximo/images/editors-choice.png')}}">
-                                                                        @elseif($props->feature_property=='1')
-                                                                            <img alt="editor_choice_property" class="propovericons" src="{{URL::to('sximo/images/featured-property.png')}}">
-                                                                        @endif
-                       
-                                                                        <a title="{{$props->property_name}}" class="picture_link-" href="{{URL::to($props->property_slug)}}" rel="{{$props->id}}">
-                                                                            <div class="overlay-text-frezeed">
-                                                                                <h2 class="yacts-tittle-text">{{ $props->property_name}}</h2>
-                                                                                <p class="yacths-des-text yacths-des-text-align"><span>&euro;<?php echo $props->price; ?> </span>|<span>37.7mm</span>|<span>10 Guests</span></p>
-                                                                            </div>
-                                                                            <div class="overlay-text hotel-overlay-text">
-                                                                                <h2 class="yacts-tittle-text">{{ $props->property_name}}</h2>
-                                                                                <p class="yacths-des-text yacths-des-text-align"><span>From &euro;{{ $props->price}} </span>
-                                                                                <span>      {{(isset($props->category_name))? '| '.$props->category_name : ''}}</span></p>
-                                                                            </div>
-                                                                            <div class="overlay-text yacts-overlay-text">
-                                                                                <h2 class="yacts-tittle-text">{{ $props->property_name }}</h2>
-                                                                                <p class="yacths-des-text yacths-des-text-align"><span>&euro;{{ $props->price}} </span>|<span>37.7mm</span>|<span>10 Guests</span></p>
-                                                                                <p class="yacths-des-text">2015H</p>
-                                                                            </div>
-                                                                            <img alt="{{ $props['image']->file_name }}" src="{{ URL::to('uploads/property_imgs_thumbs/front_property_'.$props['image']->folder_id.'_'.$props['image']->file_name)}}" class="img-responsive">
-                                                                        </a>
-                                                                    @else
-                                                                    <a class="picture_link detail_view-" rel="{{$props->id}}" href="{{URL::to($props->property_slug)}}">
-                                                                        <img class="img-responsive" src="{{URL::to('sximo/assets/images/img-1.jpg')}}" alt="">
-                                                                    </a>
-
+                                            <div class="productData col-xs-12 col-sm-6 col-md-4 col-lg-3 margin-bottom-10">
+                                                <div class="wrapperforliineedforlightboxremoval">
+                                                    <div class="cat_product_medium1">
+                                                        <div class="ai-grid-page-node-pic-box pictureBox gridPicture grid-box-main">
+                                                            @if($props->price!='')
+                                                            <?php /*<a class="textButton arrowButton MrgTop5 ai-filter-hotel-price-style" rel="{{$props->id}}" href="{{URL::to($props->property_slug)}}">
+                                                                From EUR {{$props->price}} / night 
+                                                            </a> */ ?>
+                                                            @endif
+                                                            @if(array_key_exists('image', $props))
+                                                                @if($props->editor_choice_property=='1')
+                                                                    <img alt="editor_choice_property" class="propovericons" src="{{URL::to('sximo/images/editors-choice.png')}}">
+                                                                @elseif($props->feature_property=='1')
+                                                                    <img alt="editor_choice_property" class="propovericons" src="{{URL::to('sximo/images/featured-property.png')}}">
+                                                                @endif
+               
+                                                                <a title="{{$props->property_name}}" class="picture_link-" href="{{URL::to($props->property_slug)}}" rel="{{$props->id}}">
                                                                     <div class="overlay-text-frezeed">
                                                                         <h2 class="yacts-tittle-text">{{ $props->property_name}}</h2>
-                                                                        <p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>
+                                                                        <p class="yacths-des-text yacths-des-text-align"><span>&euro;<?php echo $props->price; ?> </span>|<span>37.7mm</span>|<span>10 Guests</span></p>
                                                                     </div>
                                                                     <div class="overlay-text hotel-overlay-text">
-                                                                        <h2 class="yacts-tittle-text">{{ $props->property_name }}</h2>
-                                                                        <p class="yacths-des-text yacths-des-text-align"><span>From &euro;{{ $props->price}} </span>|<span>New York</span></p>
+                                                                        <h2 class="yacts-tittle-text">{{ $props->property_name}}</h2>
+                                                                        <p class="yacths-des-text yacths-des-text-align"><span>From &euro;{{ $props->price}} </span>
+                                                                        <span>      {{(isset($props->category_name))? '| '.$props->category_name : ''}}</span></p>
                                                                     </div>
                                                                     <div class="overlay-text yacts-overlay-text">
                                                                         <h2 class="yacts-tittle-text">{{ $props->property_name }}</h2>
-                                                                        <p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>
+                                                                        <p class="yacths-des-text yacths-des-text-align"><span>&euro;{{ $props->price}} </span>|<span>37.7mm</span>|<span>10 Guests</span></p>
                                                                         <p class="yacths-des-text">2015H</p>
                                                                     </div>
-                                                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/img-1.jpg')}}" alt="">-->
-                                                                    
-                                                                    @endif
-                                                                </div>
-                                                                <div class="listDetails">
-                                                                    <div class="photographBox ai-grid-tiitles">
-                                                                        <h2>
-                                                                            <a title="{{$props->property_name}}" class="photograph FltLft ai-filtreted-hotel-name" rel="{{$props->id}}" href="{{URL::to($props->property_slug)}}">
-                                                                                {{$props->property_name}}
-                                                                            </a>
-                                                                            <span class="FltRgt">
-                                                                                <!--i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" @if(array_key_exists('image', $props)) onclick="add_to_lightbox({{$props['image']->file_id}}, {{$props->id}});" @endif ></i-->
-
-                                                                               <a class="carticon" href="javascript:void(0)" onclick="submitgridbookform('{{$props->property_slug}}#*{{$props->id}}');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>
-                                                                            </span>
-                                                                        </h2>
-
-                                                                    </div>
-
-                                                                    <div class="entire_story MrgTop5 ai-view-hotels-tittle">
-                                                                        <a class="textButton arrowButton detail_view MrgTop5" rel="{{$props->id}}" href="#">
-                                                                            Quick View 
-                                                                        </a>
-
-                                                                        <a class="textButton arrowButton MrgTop5" rel="{{$props->id}}" href="{{URL::to($props->property_slug)}}">
-                                                                            Detail View 
-                                                                        </a>
-                                                                    </div>
-
-                                                                    <div class="showOnHover">
-                                                                        <div class="hover_request">
-                                                                        </div>   
-                                                                    </div>
-                                                                </div>
+                                                                    <img alt="{{ $props['image']->file_name }}" src="{{ URL::to('uploads/property_imgs_thumbs/front_property_'.$props['image']->folder_id.'_'.$props['image']->file_name)}}" class="img-responsive">
+                                                                </a>
+                                                            @else
+                                                            <a class="picture_link detail_view-" rel="{{$props->id}}" href="{{URL::to($props->property_slug)}}">
                                                                 
+                                                           
+
+                                                            <div class="overlay-text-frezeed">
+                                                                <h2 class="yacts-tittle-text">{{ $props->property_name}}</h2>
+                                                                <p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>
+                                                            </div>
+                                                            <div class="overlay-text hotel-overlay-text">
+                                                                <h2 class="yacts-tittle-text">{{ $props->property_name }}</h2>
+                                                                <p class="yacths-des-text yacths-des-text-align"><span>From &euro;{{ $props->price}} </span>|<span>New York</span></p>
+                                                            </div>
+                                                            <div class="overlay-text yacts-overlay-text">
+                                                                <h2 class="yacts-tittle-text">{{ $props->property_name }}</h2>
+                                                                <p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>
+                                                                <p class="yacths-des-text">2015H</p>
+                                                            </div>
+                                                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/img-1.jpg')}}" alt="">
+                                                             </a>
+                                                            @endif
+                                                        </div>
+                                                        <div class="listDetails">
+                                                            <div class="photographBox ai-grid-tiitles">
+                                                                <h2>
+                                                                    <a title="{{$props->property_name}}" class="photograph FltLft ai-filtreted-hotel-name" rel="{{$props->id}}" href="{{URL::to($props->property_slug)}}">
+                                                                        {{$props->property_name}}
+                                                                    </a>
+                                                                    <span class="FltRgt">
+                                                                        <!--i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" @if(array_key_exists('image', $props)) onclick="add_to_lightbox({{$props['image']->file_id}}, {{$props->id}});" @endif ></i-->
+
+                                                                       <a class="carticon" href="javascript:void(0)" onclick="submitgridbookform('{{$props->property_slug}}#*{{$props->id}}');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>
+                                                                    </span>
+                                                                </h2>
+
+                                                            </div>
+
+                                                            <div class="entire_story MrgTop5 ai-view-hotels-tittle">
+                                                                <a class="textButton arrowButton detail_view MrgTop5" rel="{{$props->id}}" href="#">
+                                                                    Quick View 
+                                                                </a>
+
+                                                                <a class="textButton arrowButton MrgTop5" rel="{{$props->id}}" href="{{URL::to($props->property_slug)}}">
+                                                                    Detail View 
+                                                                </a>
+                                                            </div>
+
+                                                            <div class="showOnHover">
+                                                                <div class="hover_request">
+                                                                </div>   
                                                             </div>
                                                         </div>
+                                                        
                                                     </div>
+                                                </div>
+                                            </div>
                                             @if($rw%4==0)
                                         </div>
                                         <div class="row">
@@ -1361,16 +1363,21 @@
                                             /*--}}
                                             {{--*/ 
                                                 $node_no++ 
-                                            /*--}}
+                                                /*--}}
                                             @endforeach
-                                            
+                                            {{-- 
+                                                $totpage = $propertiesArr->appends($pager)->lastPage();
+                                                 $newpage = $currentPage + 2; 
+                                                 $prevnewpage = $newpage - 2; 
+                                            --}}
                                             @endif 
                                             
                                     </div>
                                     </div>
                                     <div id="loaderProperty"></div>
                                     <div id="brgrid"></div>
-                                   
+                                    <input type="hidden" id="nxtpg" value="">
+                                    <input type="hidden" id="ttlpg" value="">
                                 </div>
 
                             </div>
@@ -2378,8 +2385,9 @@ url: "{{ URL::to('new_filter_search_destionation')}}",
                                             * Now the our destinations will render from storage/app/leftOurDestination.html. 
                                             * That file will be genrate from cron job or backend panel.  
                                            */  
+                                          //Storage::get('leftOurDestination.html')!!}
                                           ?>
-                                          {!!Storage::get('leftOurDestination.html')!!}
+                                          
                                         
                                         <?php endif; ?>
                                     </div> 

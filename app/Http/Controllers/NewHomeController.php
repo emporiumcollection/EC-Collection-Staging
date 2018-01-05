@@ -4789,8 +4789,8 @@ class NewHomeController extends Controller {
 
         //$query = "SELECT editor_choice_property,feature_property,id,property_name,property_slug,property_category_id FROM tb_properties WHERE property_type='" . $request->slug . "' AND property_status = '1' ";
         $query = "SELECT editor_choice_property,feature_property,id,property_name,property_slug,property_category_id,"; 
-        $query .= "(SELECT rack_rate FROM tb_properties_category_rooms_price where tb_properties.id=tb_properties_category_rooms_price.property_id order by rack_rate DESC limit 0,1 ) as price ," ;
-        $query .= "(SELECT category_name FROM tb_categories where tb_properties.property_category_id=tb_categories.id limit 0,1 ) as category_name ";
+        $query .= " (SELECT rack_rate FROM tb_properties_category_rooms_price where tb_properties.id=tb_properties_category_rooms_price.property_id order by rack_rate DESC limit 0,1 ) as price ," ;
+        $query .= " (SELECT category_name FROM tb_categories where tb_properties.property_category_id=tb_categories.id limit 0,1 ) as category_name ";
        // $query .= "(SELECT tb_container_files.id FROM tb_properties_images  where tb_container_files.id=tb_properties_images.file_id and tb_properties_images.property_id=tb_properties.id and tb_properties_images.type='Property Images' Order By tb_container_files.file_sort_num ASC) as image";
         $query .= " FROM tb_properties  ";
         $whereClause = " WHERE property_type='" . $request->slug . "' AND property_status = '1' ";
@@ -4801,7 +4801,7 @@ class NewHomeController extends Controller {
 
         
 
-        $total_record = DB::select(DB::raw($query));
+       
         $OrderByQry = '';
         if (strtolower($request->slug) == 'yachts') {
             $OrderByQry .= " ORDER BY yacht_for_charter * 1 DESC ";
@@ -4817,23 +4817,7 @@ class NewHomeController extends Controller {
         $propertiesArr = DB::select($fianlQry);
         
        // print_r($propertiesArr);
-        $dataSetArr = '';
-        $lineBr = "\n";
-        foreach ($propertiesArr as $key=>$prop) {
-                $dataSetArr .="array[".$key."] = new Array();".$lineBr;
-                $dataSetArr .="array[".$key."]['id'] = '".$prop->id."';".$lineBr;
-                $dataSetArr .="array[".$key."]['property_name'] = '".$prop->property_name."';".$lineBr;
-                $dataSetArr .="array[".$key."]['property_slug'] = '".$prop->property_slug."';".$lineBr;
-                $dataSetArr .="array[".$key."]['category_name'] = '".$prop->category_name."';".$lineBr;
-                $dataSetArr .="array[".$key."]['property_category_id'] = '".$prop->property_category_id."';".$lineBr;
-                $dataSetArr .="array[".$key."]['feature_property'] = '".$prop->feature_property."';".$lineBr;
-                $dataSetArr .="array[".$key."]['price'] = '".$prop->price."';".$lineBr;
-                $dataSetArr .="array[".$key."]['editor_choice_property'] = '".$prop->editor_choice_property."';".$lineBr;
-               // $dataSetArr ='array['.$key.'][\'id\'] = 'Test \''.$lineBr;
-        }
-
-        echo $dataSetArr;
-        die;
+        
  //dd($total_record);
 
        // $props = DB::select(DB::raw($query));
