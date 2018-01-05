@@ -497,6 +497,9 @@
 	vertical-align: text-top;
 	width: 0%;
     }
+    .node-btn:active {
+	text-decoration: underline !important;
+    }
     
         
          /* sidebar css */
