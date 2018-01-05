@@ -1447,8 +1447,8 @@
                         {!!Storage::get('homeOurDestination.html')!!}  */  
       ?>
                         
-                        @if(!empty($ourdesitnation))
-                        @foreach($ourdesitnation as $destination)
+                        @if(!empty($ourmaindesitnation))
+                        @foreach($ourmaindesitnation as $destination)
                         <div class="panel panel-default  destination-sub-menues">
                             <a class="collapsed" data-toggle="collapse" data-parent="#accordion1" href="#collapse-inner{{$destination['maincat']->id}}">
                                 <div class="destination-panel-heading">
@@ -1460,8 +1460,8 @@
                             <div id="collapse-inner{{$destination['maincat']->id}}" class="panel-collapse collapse ">
                                 <div class="panel-body">
                                     <ul class="where-box-sub-menu">
-                                        @if (array_key_exists("child",$destination))
-                                        @foreach($destination['child'] as $childDest)
+                                        @if (array_key_exists("childs",$destination))
+                                        @foreach($destination['childs'] as $childDest)
                                         <li><div class="panel-group destination-inner-accordian-outer" id="inner-level-accordian">
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">
@@ -1474,7 +1474,7 @@
                                                         <ul class="where-box-sub-menu inner-level-sub-menu">
                                                             @foreach($childDest->subchild as $subchildDest)
                                                                 <li>
-                                                                    @if (array_key_exists("childs",$childDest))
+                                                                    @if (array_key_exists("subchild",$subchildDest))
                                                                     <div class="panel-group destination-inner-accordian-outer" id="inner-level-accordian">
                                                                         <div class="panel panel-default">
                                                                             <div class="panel-heading">
@@ -1485,7 +1485,7 @@
                                                                             
                                                                                 <div id="destination-child{{$childDest->id}}-{{$subchildDest->id}}" class="panel-collapse collapse">
                                                                                     <ul class="where-box-sub-menu inner-level-sub-menu">
-                                                                                        @foreach($childDest->childs as $_child)
+                                                                                        @foreach($subchildDest->subchild as $_child)
                                                                                             <li><a href="{{URL::to('luxury_destinations/'. str_replace(' ','_',$destination['maincat']->category_name).'/'. str_replace(' ','_',$childDest->category_name).'/'. str_replace(' ','_',$_child->category_name))}}">{{$_child->category_name}}</a></li>
                                                                                         @endforeach
                                                                                     </ul>
