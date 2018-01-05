@@ -7,16 +7,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="{{ asset('sximo/assets/css/landing-page-styles.css')}}" rel="stylesheet" type="text/css"/>
         
-        <link href="{{ asset('sximo/assets/css/menu41e7.css')}}" rel="stylesheet" type="text/css"/>
+<!--        <link href="{{ asset('sximo/assets/css/menu41e7.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/responsive.custom41e7.css')}}" rel="stylesheet" type="text/css"/>
         
         <link href="{{ asset('sximo/assets/css/style-ai.css')}}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('sximo/assets/css/homepage41e7.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('sximo/assets/css/homepage41e7.css')}}" rel="stylesheet" type="text/css"/>-->
         <!--AIC sidebar js -->
-        <script src="{{ asset('sximo/assets/js/jquery_1.js')}}" type="text/javascript"></script>
+<!--        <script src="{{ asset('sximo/assets/js/jquery_1.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/custm.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/TweenMax.min41e7.js')}}" type="text/javascript"></script>
-        <script src="{{ asset('sximo/assets/js/menu41e7.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('sximo/assets/js/menu41e7.js')}}" type="text/javascript"></script>-->
         
         <script src="{{ asset('sximo/assets/js/jquery-2.1.0.min.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/bootstrap.min.js')}}" type="text/javascript"></script>
@@ -850,21 +850,21 @@
                             
                             <!-- start sidebar -->
                             
-                            <div class="region region-sidebar-first sidebar">
+<!--                            <div class="region region-sidebar-first sidebar">
                                 <div class="region-inner clearfix">
                                     <div id="block-ledunfly-menu-link" class="block block-ledunfly no-title odd first block-count-4 block-region-sidebar-first block-menu-link" ><div class="block-inner clearfix">  
                                             <div class="block-content content"><i class="fa fa-bars emporium-voyage-Menu" aria-hidden="true"></i></div>
                                         </div>
                                     </div>
-<!--                                    <div id="block-ledunfly-menu-logo" class="block block-ledunfly no-title even block-count-5 block-region-sidebar-first block-menu-logo" ><div class="block-inner clearfix">  
+                                    <div id="block-ledunfly-menu-logo" class="block block-ledunfly no-title even block-count-5 block-region-sidebar-first block-menu-logo" ><div class="block-inner clearfix">  
 
                                             <div class="block-content content"><a href="index.html" title="Five Seas Hotel"><div class="menu-logo"></div></a></div>
                                         </div>
-                                    </div>-->
+                                    </div>
                                     <div id="block-system-main-menu" class="block block-system block-menu no-title odd block-count-6 block-region-sidebar-first block-main-menu" role="navigation">
                                         <div class="block-inner clearfix">
                                             <div class="block-content content" class="block-content content">
-                                                <!-- Start Popup Menu -->
+                                                 Start Popup Menu 
                                                 <?php 
                                                     $popup      = SiteHelpers::menus( 'popup' ,'all'); 
                                                      
@@ -894,7 +894,7 @@
                                                 </li>
                                             @endforeach
 
-                                             <!-- Start Popup 2 Menu -->   
+                                              Start Popup 2 Menu    
                                              <?php 
                                                      
                                                     $popup2      = SiteHelpers::menus( 'popup_2' ,'all'); 
@@ -923,8 +923,8 @@
                                                 </li>
                                             @endforeach
 
-                                        </ul>   <!-- Comment Static menu -->
-                                                <!--
+                                        </ul>    Comment Static menu 
+                                                
                                                 <ul class="menusk clearfix">
                                                     <li class="first expanded menu-depth-1 menu-item-989">
                                                         <a href="#">Sleep</a>
@@ -1021,18 +1021,18 @@
                                                     </li><li class="last leaf little menu-depth-1 menu-item-1111">
                                                         <a href="#" class="little">Green Globe</a>
                                                     </li
-                                                    ></ul>-->
+                                                    ></ul>
                                             </div>
-<!--                                            <div class="block-menu-text">
+                                            <div class="block-menu-text">
                                                 <p>FIVE SEAS HOTEL CANNES - 1, RUE NOTRE DAME - 06400 CANNES</p>
                                                 <div><p>T : +33 4 63 36 05 05</p>
                                                     <p>INFO@FIVESEASHOTEL.COM</p>
                                                 </div>
-                                            </div>-->
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>    
+                            </div>    -->
                             
                             <!-- end sidebar -->
                             
