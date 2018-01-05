@@ -816,6 +816,16 @@
 	z-index: 99;
 	color: #c7ab84;
     }
+    
+        .headings > h2 {
+        font-size: 36px;
+    }
+    .headings > p {
+        color: #ABA07C;
+        font-size: 16px;
+    }
+
+                            
         
         
             
