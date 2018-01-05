@@ -57,7 +57,7 @@
         <script src="{{ asset('sximo/assets/js/testimoniales.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/active-nav.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/html2canvas.js')}}" type="text/javascript"></script>
-       
+       <script src="{{ asset('lib/vscroll/jquery.jscroll.js')}}" type="text/javascript"></script>
 
         <!--Filters Grid Page-->
         <link href="{{ asset('sximo/assets/css/footer-accordian.css')}}" rel="stylesheet" type="text/css"/>
@@ -1376,14 +1376,42 @@
                                     </div>
                                     <div id="loaderProperty"></div>
                                     <div id="brgrid"></div>
-                                    <input type="hidden" id="nxtpg" value="">
-                                    <input type="hidden" id="ttlpg" value="">
+                                    <input type="hidden" id="nxtpg" value="{{--$newpage--}}">
+                                    <input type="hidden" id="ttlpg" value="{{--$totpage--}}">
                                 </div>
 
                             </div>
                             
                         </div>
-
+ <ul class="pagination">
+        
+                    <li class="disabled"><span>&laquo;</span></li>
+        
+        
+                    
+            
+            
+                                                                        <li class="active"><span>1</span></li>
+                                                                                <li><a href="https://demos.laraget.com/infinite-scrolling/comments?page=2">2</a></li>
+                                                                                <li><a href="https://demos.laraget.com/infinite-scrolling/comments?page=3">3</a></li>
+                                                                                <li><a href="https://demos.laraget.com/infinite-scrolling/comments?page=4">4</a></li>
+                                                                                <li><a href="https://demos.laraget.com/infinite-scrolling/comments?page=5">5</a></li>
+                                                                                <li><a href="https://demos.laraget.com/infinite-scrolling/comments?page=6">6</a></li>
+                                                                                <li><a href="https://demos.laraget.com/infinite-scrolling/comments?page=7">7</a></li>
+                                                                                <li><a href="https://demos.laraget.com/infinite-scrolling/comments?page=8">8</a></li>
+                                                                    
+                            <li class="disabled"><span>...</span></li>
+            
+            
+                                
+            
+            
+                                                                        <li><a href="https://demos.laraget.com/infinite-scrolling/comments?page=28">28</a></li>
+                                                                                <li><a href="https://demos.laraget.com/infinite-scrolling/comments?page=29">29</a></li>
+                                                        
+        
+                    <li><a href="https://demos.laraget.com/infinite-scrolling/comments?page=2" rel="next">&raquo;</a></li>
+            </ul>
                     </div>
                     <input class="ai_search_keywords" value="{{$keyword}}" type="hidden" />
                     <input class="ai-arrive-date-filter" value="<?php echo (isset($_REQUEST['arrive'])) ? date('d-m-Y', strtotime($_REQUEST['arrive'])) : date("d-m-Y"); ?>" type="hidden" />
@@ -1703,7 +1731,7 @@ function scrollDataAjax(it_scroll,pageCounter)
 
 
 var pageCounter = 2;
-var previousScroll = 0;
+var previousScroll = 0;/*
 $(window).scroll(function () {
 
         var currentScroll = $(this).scrollTop();
@@ -1732,7 +1760,7 @@ $(window).scroll(function () {
 
         
     });
-
+*/
 function scrollDownloadData(it_scroll)
 {  localStorage.page = 2;
     if($(".ai-scrollDownloadData-filter-running").val() == "1") {
@@ -2972,7 +3000,21 @@ $(document).ready(function(){
 }));
 });
 </script>
-
+<script type="text/javascript">
+    $('ul.pagination').hide();
+    $(function() {
+        $('#listproperties').jscroll({
+            autoTrigger: true,
+            loadingHtml: '<img class="center-block" src="/images/loading.gif" alt="Loading..." />',
+            padding: 0,
+            nextSelector: '.pagination li.active + li a',
+            contentSelector: 'div#listproperties',
+            callback: function() {
+                $('ul.pagination').remove();
+            }
+        });
+    });
+</script>
            <style>
 /* Center the loader */
 #loaderProperty {

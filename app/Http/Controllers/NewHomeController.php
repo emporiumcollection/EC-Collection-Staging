@@ -4776,6 +4776,15 @@ class NewHomeController extends Controller {
     public function getPropertyByCategory(Request $request) {
 
         
+        $propertiesArr = Db::table('tb_properties')->paginate(25);
+        
+        if ($request->ajax()) {
+            $view = view('pages.data',compact('propertiesArr'))->render();
+            return response()->json(['html'=>$view]);
+        }
+        
+        return view('pages.new_search',compact('propertiesArr'));
+
         $this->data['slug'] = $request->slug;
 
         if (strtolower($request->slug) == 'yachts') {
@@ -4784,7 +4793,7 @@ class NewHomeController extends Controller {
 
         $propertiesArr = array();
         $page = 1;
-        $perPage = 200;
+        $perPage = 20;
         $currentPage = Input::get('page', 1) - 1;
 
         //$query = "SELECT editor_choice_property,feature_property,id,property_name,property_slug,property_category_id FROM tb_properties WHERE property_type='" . $request->slug . "' AND property_status = '1' ";
@@ -4816,58 +4825,13 @@ class NewHomeController extends Controller {
         $total_record = DB::select($getTotalRecQry);
         $propertiesArr = DB::select($fianlQry);
         
-       // print_r($propertiesArr);
-        
- //dd($total_record);
-
-       // $props = DB::select(DB::raw($query));
-
-        /*if (!empty($props)) {
-            $pr = 0;
-            foreach ($props as $prop) {
-                $propertyFile = 'property/'.$prop->id.'.json'; 
-                $contents = Storage::get($propertyFile);
-                $proertyObj = json_decode($contents);
-                
-                $propertiesArr[$pr]['data'] = $prop;
-                $propertiesArr[$pr]['data']->price = '';
-                $checkseasonPrice = \DB::table('tb_properties_category_rooms_price')->select('rack_rate')->where('property_id', $prop->id)->orderBy('rack_rate', 'DESC')->first();
-                if (!empty($checkseasonPrice)) {
-                    $propertiesArr[$pr]['data']->price = $checkseasonPrice->rack_rate;
-                }
-
-                $propertiesArr[$pr]['data']->category_name = '';
-                $cateObjtm = \DB::table('tb_categories')->select('category_name')->where('id', $prop->property_category_id)->where('category_published', 1)->first();
-                if (!empty($cateObjtm)) {
-                    $propertiesArr[$pr]['data']->category_name = $cateObjtm->category_name;
-                }
-
-                if(!empty($proertyObj[0])){
-                    $propertiesArr[$pr]['image'] = $proertyObj[0];
-                }
-                $pr++;
-            }
-        }*/
-        
-       // print "<pre>";
-          //print_r($propertiesArr); die; 
-
-//        usort($propertiesArr, function($a, $b) {
-//            return trim($a['data']->property_name) > trim($b['data']->property_name);
-//        });
-        //print "<pre>";
-   // print_r($propertiesArr); die;
-        $pagedData = array_slice($propertiesArr, $currentPage * $perPage, $perPage);
-        $pagination = new Paginator($pagedData, count($propertiesArr), $perPage);
-        //$pagination->setPath(\URL::to('luxurytravel/' . $request->slug));
-
+       
         $this->data['propertiesArr'] = $propertiesArr;
 
         $uid = isset(\Auth::user()->id) ? \Auth::user()->id : '';
         $boxcont = '';
         
-
-        
+         
 
         
         $this->data['continent'] = '';
@@ -4889,7 +4853,7 @@ class NewHomeController extends Controller {
 
         $this->data['pager'] = $this->injectPaginate();
         $this->data['currentPage'] = $currentPage;
-        $this->data['pagination'] = $pagination;
+       // $this->data['pagination'] = $pagination;
         $this->data['lightcontent'] = $boxcont;
         $this->data['pagecate'] = $request->slug;
         $this->data['uid'] = $uid;
