@@ -1480,8 +1480,9 @@ function scrollDataAjax(it_scroll,pageCounter)
                     }
                         isDataAvailable = false;
                     }else{
-                alert("1483: " + data.searchdestname);
-                $(".ai_search_keywords").val(data.searchdestname);
+                        if(data.searchdestname != undefined) {
+                            $(".ai_search_keywords").val(data.searchdestname);
+                        }
                 
                         /*
                          * Slider HTML
@@ -1778,8 +1779,9 @@ url: "{{ URL::to('filter_search_destionation')}}",
                         }
                         else
                         {
-                            alert("1781: " + data.searchdestname);
-                            $(".ai_search_keywords").val(data.searchdestname);
+                            if(data.searchdestname != undefined) {
+                                $(".ai_search_keywords").val(data.searchdestname);
+                            }
                             
                             /*
                              * Slider HTML
