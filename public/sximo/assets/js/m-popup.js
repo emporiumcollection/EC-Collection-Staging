@@ -7,12 +7,16 @@ $(document).ready(function () {
     $(".video-popup-btn").on("click", function (event) {
         event.preventDefault();
         var popup_id = $(this).data("popup-id");
-        $("#" + popup_id).fadeIn("slow");
+        $("#" + popup_id).animate({
+            width: "100%"
+        }, 800, function () {});
         $("body").addClass("fixed");
     });
     $(".popup-close-btn").click(function (event) {
         event.preventDefault();
-        $(this).parent().parent().fadeOut("slow");
+        $(this).parent().parent()animate({
+            width: "0px"
+        }, 800, function () {});
         $("body").removeClass("fixed");
     });
 
