@@ -2417,7 +2417,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                         <?php endif; ?>
                                     </div> 
                                     <div class="filter-footer">
-                                        <div><a href="#" >View All Locations On Map</a></div>
+<!--                                        <div><a href="#" >View All Locations On Map</a></div>-->
                                         <div class="clear-all-filters"><a onclick="javascript:clear_all_filters();" href="javascript:void(0);"><i class="fa fa-repeat" aria-hidden="true"></i>&nbsp;Clear All</a></div>
                                     </div>
                                     <section class="regular slider">
