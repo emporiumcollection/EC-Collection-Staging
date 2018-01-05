@@ -456,7 +456,7 @@
             margin-top: 3px;
             margin-right: 13px;
             margin-left: 8px;
-            color: #c7ab84;
+            color: #ABA07C;
         }
         
         .emporium-voyage-Menu {
@@ -566,7 +566,7 @@
                             <div class="region region-sidebar-first sidebar">
                                 <div class="region-inner clearfix">
                                     <div id="block-ledunfly-menu-link" class="block block-ledunfly no-title odd first block-count-4 block-region-sidebar-first block-menu-link" ><div class="block-inner clearfix">  
-                                            <div class="block-content content"><i class="fa fa-bars emporium-voyage-Menu" aria-hidden="true"></i></div>
+<!--                                            <div class="block-content content"><i class="fa fa-bars emporium-voyage-Menu" aria-hidden="true"></i></div>-->
                                         </div>
                                     </div>
 <!--                                    <div id="block-ledunfly-menu-logo" class="block block-ledunfly no-title even block-count-5 block-region-sidebar-first block-menu-logo" ><div class="block-inner clearfix">  

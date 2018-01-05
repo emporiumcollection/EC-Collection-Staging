@@ -3762,7 +3762,7 @@ div.productData a {
     color: #fff; 
 }
 .top-booking-bar-btn {
-    background-color: #c7ab84;
+    background-color: #ABA07C;
     border: medium none;
     border-radius: 0;
     color: #fff;
@@ -4519,7 +4519,7 @@ div#fixed_wrapper {
 }
 .filter-footer a:hover{color:#1e2023!important;} 
 .login_popup .fa{
-    color: #c7ab84;
+    color: #ABA07C;
     font-size: 24px;
 }   
 /*Personalized Service section*/
