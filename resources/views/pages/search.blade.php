@@ -492,7 +492,7 @@
     
     .show-login-forms-btn {
 	display: inline-block;
-	padding: 5px 19px;
+	padding: 0px 19px;
 	text-align: center;
 	vertical-align: text-top;
 	width: 0%;
