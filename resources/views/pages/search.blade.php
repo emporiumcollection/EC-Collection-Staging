@@ -503,8 +503,9 @@
     .post-filter-inputs:hover, .post-filter-inputs:active, .post-filter-inputs:focus {
 	background-color: #393939;
 	border-left: 4px solid #a1a39c;
-	color: white aliceblue !important;
+	color: white !important;
 	transition: all 0.3s ease 0s;
+        text-decoration: underline;
     }
     
         

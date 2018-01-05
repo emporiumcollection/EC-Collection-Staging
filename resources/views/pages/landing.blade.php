@@ -1041,7 +1041,7 @@
                             <!-- end sidebar -->
                             
                             <a data-popup-id="login-forms-popup" href="#" class="video-popup-btn login_popup show-login-forms-btn"><i class="fa fa-lock " aria-hidden="true" ></i></a>
-                            <a data-popup-id="login-forms-popup" href="#" class="video-popup-btn login_popup show-login-forms-btn"><i class="fa fa-bars" aria-hidden="true"></i></a>
+                            <a data-popup-id="login-forms-popup" href="#" class="video-popup-btn"><i class="fa fa-bars" aria-hidden="true"></i></a>
                         </header>
                         <!--Main Page-->
                         @if(!empty($slider)) 
