@@ -4784,13 +4784,14 @@ class NewHomeController extends Controller {
 
         $propertiesArr = array();
         $page = 1;
-        $perPage = 40;
+        $perPage = 200;
         $currentPage = Input::get('page', 1) - 1;
 
         //$query = "SELECT editor_choice_property,feature_property,id,property_name,property_slug,property_category_id FROM tb_properties WHERE property_type='" . $request->slug . "' AND property_status = '1' ";
         $query = "SELECT editor_choice_property,feature_property,id,property_name,property_slug,property_category_id,"; 
         $query .= "(SELECT rack_rate FROM tb_properties_category_rooms_price where tb_properties.id=tb_properties_category_rooms_price.property_id order by rack_rate DESC limit 0,1 ) as price ," ;
         $query .= "(SELECT category_name FROM tb_categories where tb_properties.property_category_id=tb_categories.id limit 0,1 ) as category_name ";
+       // $query .= "(SELECT tb_container_files.id FROM tb_properties_images  where tb_container_files.id=tb_properties_images.file_id and tb_properties_images.property_id=tb_properties.id and tb_properties_images.type='Property Images' Order By tb_container_files.file_sort_num ASC) as image";
         $query .= " FROM tb_properties  ";
         $whereClause = " WHERE property_type='" . $request->slug . "' AND property_status = '1' ";
 
@@ -4798,21 +4799,7 @@ class NewHomeController extends Controller {
             $type = $request->type;
         }
 
-        if (strtolower($request->slug) == 'yachts') {
-            $this->data['type'] = $type;
-            $whereClause .= "AND yacht_category LIKE '%{$type}%' ";
-        }
-
-        if (isset($request->refine_search)) {
-            $whereClause .= "AND yacht_build_year LIKE '%{$request->yacht_build_year}%' ";
-            $whereClause .= "AND yachts_guest LIKE '%{$request->yachts_guest}%' ";
-            $whereClause .= "AND yacht_length LIKE '%{$request->yacht_length}%' ";
-            $whereClause .= "AND yacht_builder LIKE '%{$request->yacht_builder}%' ";
-            $whereClause .= "AND yacht_beam LIKE '%{$request->yacht_beam}%' ";
-            $whereClause .= "AND yacht_draft LIKE '%{$request->yacht_draft}%' ";
-            $whereClause .= "AND yacht_cabins LIKE '%{$request->yacht_cabins}%' ";
-            $whereClause .= "AND yacht_crew LIKE '%{$request->yacht_crew}%' ";
-        }
+        
 
         $total_record = DB::select(DB::raw($query));
         $OrderByQry = '';
@@ -4829,6 +4816,24 @@ class NewHomeController extends Controller {
         $total_record = DB::select($getTotalRecQry);
         $propertiesArr = DB::select($fianlQry);
         
+       // print_r($propertiesArr);
+        $dataSetArr = '';
+        $lineBr = "\n";
+        foreach ($propertiesArr as $key=>$prop) {
+                $dataSetArr .="array[".$key."] = new Array();".$lineBr;
+                $dataSetArr .="array[".$key."]['id'] = '".$prop->id."';".$lineBr;
+                $dataSetArr .="array[".$key."]['property_name'] = '".$prop->property_name."';".$lineBr;
+                $dataSetArr .="array[".$key."]['property_slug'] = '".$prop->property_slug."';".$lineBr;
+                $dataSetArr .="array[".$key."]['category_name'] = '".$prop->category_name."';".$lineBr;
+                $dataSetArr .="array[".$key."]['property_category_id'] = '".$prop->property_category_id."';".$lineBr;
+                $dataSetArr .="array[".$key."]['feature_property'] = '".$prop->feature_property."';".$lineBr;
+                $dataSetArr .="array[".$key."]['price'] = '".$prop->price."';".$lineBr;
+                $dataSetArr .="array[".$key."]['editor_choice_property'] = '".$prop->editor_choice_property."';".$lineBr;
+               // $dataSetArr ='array['.$key.'][\'id\'] = 'Test \''.$lineBr;
+        }
+
+        echo $dataSetArr;
+        die;
  //dd($total_record);
 
        // $props = DB::select(DB::raw($query));
@@ -4866,7 +4871,8 @@ class NewHomeController extends Controller {
 //        usort($propertiesArr, function($a, $b) {
 //            return trim($a['data']->property_name) > trim($b['data']->property_name);
 //        });
-
+        //print "<pre>";
+   // print_r($propertiesArr); die;
         $pagedData = array_slice($propertiesArr, $currentPage * $perPage, $perPage);
         $pagination = new Paginator($pagedData, count($propertiesArr), $perPage);
         //$pagination->setPath(\URL::to('luxurytravel/' . $request->slug));
@@ -4877,31 +4883,7 @@ class NewHomeController extends Controller {
         $boxcont = '';
         
 
-        if (strtolower($request->slug) == 'yachts') {
-            $query = "SELECT yacht_build_year FROM tb_properties WHERE property_status = '1' GROUP BY yacht_build_year ORDER BY CAST(yacht_build_year AS UNSIGNED), yacht_build_year ASC ";
-            $this->data['yacht_build_years'] = DB::select(DB::raw($query));
-
-            $query = "SELECT yachts_guest FROM tb_properties WHERE property_status = '1' GROUP BY yachts_guest ORDER BY CAST(yachts_guest AS UNSIGNED), yacht_build_year ASC ";
-            $this->data['yachts_guests'] = DB::select(DB::raw($query));
-
-            $query = "SELECT yacht_length FROM tb_properties WHERE property_status = '1' GROUP BY yacht_length ORDER BY CAST(yacht_length AS UNSIGNED), yacht_length ASC ";
-            $this->data['yacht_lengths'] = DB::select(DB::raw($query));
-
-            $query = "SELECT yacht_builder FROM tb_properties WHERE property_status = '1' GROUP BY yacht_builder ORDER BY yacht_builder ASC ";
-            $this->data['yacht_builders'] = DB::select(DB::raw($query));
-
-            $query = "SELECT yacht_beam FROM tb_properties WHERE property_status = '1' GROUP BY yacht_beam ORDER BY CAST(yacht_beam AS UNSIGNED), yacht_beam ASC ";
-            $this->data['yacht_beams'] = DB::select(DB::raw($query));
-
-            $query = "SELECT yacht_draft FROM tb_properties WHERE property_status = '1' GROUP BY yacht_draft ORDER BY CAST(yacht_draft AS UNSIGNED), yacht_draft ASC ";
-            $this->data['yacht_drafts'] = DB::select(DB::raw($query));
-
-            $query = "SELECT yacht_cabins FROM tb_properties WHERE property_status = '1' GROUP BY yacht_cabins ORDER BY CAST(yacht_cabins AS UNSIGNED), yacht_cabins ASC ";
-            $this->data['yacht_cabins'] = DB::select(DB::raw($query));
-
-            $query = "SELECT yacht_crew FROM tb_properties WHERE property_status = '1' GROUP BY yacht_crew ORDER BY CAST(yacht_crew AS UNSIGNED) ASC ";
-            $this->data['yacht_crews'] = DB::select(DB::raw($query));
-        }
+        
 
         
         $this->data['continent'] = '';
