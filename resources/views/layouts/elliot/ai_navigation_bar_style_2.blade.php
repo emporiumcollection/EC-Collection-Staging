@@ -32,7 +32,7 @@
                                                 </div>-->
                     <!--</div>
                     <div class="col-md-12 col-sm-12">
-                        @include('layouts/elliot/ai_navigation')
+                        
                     </div>-->
                     <div class="col-md-2 col-sm-2">
                         <div class="row res-margin-align">
