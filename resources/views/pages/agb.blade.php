@@ -100,9 +100,9 @@ All prices displayed on the Design-Locations websites are current, day prices, s
             </div>
         </div>
 		<style>
-			.navbar-nav.aicsm
+			.footer
 			{
-				text-align:center !important;
+				    background-color: #f0f0f0 !important;
 			}
 		</style>
         @include('layouts/elliot/ai_footer_social')

@@ -30,10 +30,10 @@
                                                     </div>
                                                     <span class="left-hamburger-menu"  onclick="openNav()"><img class="hamburger-menu-align" src="{{ asset('sximo/assets/images/Hamburger-Menu.png')}}" alt=""/></span>
                                                 </div>-->
-                    <!--</div>-->
+                    <!--</div>
                     <div class="col-md-12 col-sm-12">
                         @include('layouts/elliot/ai_navigation')
-                    </div>
+                    </div>-->
                     <div class="col-md-2 col-sm-2">
                         <div class="row res-margin-align">
                             <div id="mySidenavpost" class="sidenavpost">
