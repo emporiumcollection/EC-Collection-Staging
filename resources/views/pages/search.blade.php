@@ -1468,6 +1468,7 @@ function scrollDataAjax(it_scroll,pageCounter)
             // $('#nxtpg').val(parseInt(nxtpg) + 1);
         },
         success: function(data){
+            $(".ai_search_keywords").val(data.searchdestname);
             $(".ai-scrollDownloadData-filter-running").val("0");
             $('#loaderProperty').hide();
                 var html = chtml = '';
@@ -1673,8 +1674,8 @@ function scrollDataAjax(it_scroll,pageCounter)
                             $('#cityfilters').html(chtml); 
                         }
 
-                var searchcountdispl = data.ttl + ' Hotel(s) Found for ' + data.searchdestname;
-                $('.searchcount').html(searchcountdispl);
+//                var searchcountdispl = data.ttl + ' Hotel(s) Found for ' + data.searchdestname;
+//                $('.searchcount').html(searchcountdispl);
                 }
                    
                     sIndex = parseInt(sIndex) + offSet;
@@ -1757,6 +1758,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
             $('#nxtpg').val(parseInt(nxtpg) + 1);
         },
         success: function(data){
+            $(".ai_search_keywords").val(data.searchdestname);
             $(".ai-scrollDownloadData-filter-running").val("0");
             $('#loaderProperty').hide();
                         var html = chtml = '';
