@@ -2301,7 +2301,7 @@
                                      <div class="ps-login-signup-form-top-bar">
                                          <div class="col-md-6 col-sm-6">
                                              <div class="row">
-                                                 <div class="ps-forms-cross-icons">
+                                                 <div class="ps-forms-cross-icons1">
                                                      <a class="show-account-with-us  ps-forms-small-heading-link" href="javascript:void(0)">&times;</a>
                                                  </div>
                                              </div>
