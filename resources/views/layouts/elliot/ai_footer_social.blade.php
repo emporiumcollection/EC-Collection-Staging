@@ -256,7 +256,7 @@
                 
                 <!-- masonary grid js -->
 <!--                <script src="{{ asset('sximo/assets/newgrid/js/main.js')}}" type="text/javascript"></script>-->
-                <script src="{{ asset('sximo/assets/newgrid/js/main.js')}}" type="text/javascript"></script>
+                <script src="{{ asset('sximo/assets/newgrid/js/grid.js')}}" type="text/javascript"></script>
 		<!-- masonary grid js -->
                 
                 <!-- social stream js  
