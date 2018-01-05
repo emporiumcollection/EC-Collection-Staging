@@ -977,6 +977,13 @@
                                 top: 31px;
                                 position: absolute;
                             }
+                            .headings > h2 {
+                                font-size: 36px;
+                            }
+                            .headings > p {
+                                color: #ABA07C;
+                                font-size: 16px;
+                            }
 
                             
                             @import url('https://fonts.googleapis.com/css?family=Caveat');

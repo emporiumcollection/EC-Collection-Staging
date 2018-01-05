@@ -56,10 +56,10 @@ header {
     text-align: center;
 }
 .headings > h2 {
-    font-size: 36px;
+    font-size: 28px;
 }
 .headings > p {
-    color: #ABA07C;
+    color: #9d9d9d;
     font-size: 16px;
 }
 ul.dates {
