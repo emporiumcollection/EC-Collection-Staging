@@ -1,7 +1,7 @@
 <script src="{{ asset('sximo/assets/js/fliters.js')}}" type="text/javascript"></script>
 <script src="{{ asset('sximo/assets/js/moment.min.js')}}" type="text/javascript"></script>
 <script src="{{ asset('sximo/assets/js/combodate.js')}}" type="text/javascript"></script>
-<div class="header container-fluid">
+<div class="header container-fluid" style="display:none;">
     <div class="col-md-12">
         <div class="header-logo">
             <a href="{{url()}}">
