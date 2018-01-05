@@ -492,7 +492,7 @@
     
     .show-login-forms-btn {
 	display: inline-block;
-	padding: 0px 19px;
+	padding: 0px 0px;
 	text-align: center;
 	vertical-align: text-top;
 	width: 0%;
@@ -1673,8 +1673,8 @@ function scrollDataAjax(it_scroll,pageCounter)
                             $('#cityfilters').html(chtml); 
                         }
 
-                //var searchcountdispl = data.ttl + ' Hotel(s) Found for ' + data.searchdestname;
-                //$('.searchcount').html(searchcountdispl);
+                var searchcountdispl = data.ttl + ' Hotel(s) Found for ' + data.searchdestname;
+                $('.searchcount').html(searchcountdispl);
                 }
                    
                     sIndex = parseInt(sIndex) + offSet;
