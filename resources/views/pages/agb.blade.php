@@ -16,11 +16,6 @@
     <div class="row">
         <div class="section-padding">
             <div>
-                <div class="post-title">
-                    <h1><span>Design-Locations Terms and Conditions</span></h1>
-                </div>
-            </div>
-            <div>
 				<div class="row">
 					<div class="col-md-12">
 						<h1>TERMS AND CONDITIONS</h1>	
@@ -104,7 +99,12 @@ All prices displayed on the Design-Locations websites are current, day prices, s
 				</div>
             </div>
         </div>
+		<style>
+			.footer
+			{
+				    background-color: #f0f0f0 !important;
+			}
+		</style>
         @include('layouts/elliot/ai_footer_social')
-        <!--@include('layouts/elliot/ai_footer_3')
-        @include('layouts/elliot/ai_footer_2')-->)
+        
         

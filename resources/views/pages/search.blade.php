@@ -497,6 +497,16 @@
 	vertical-align: text-top;
 	width: 0%;
     }
+    .node-btn:active {
+	text-decoration: underline !important;
+    }
+    .post-filter-inputs:hover, .post-filter-inputs:active, .post-filter-inputs:focus {
+	background-color: #393939;
+	border-left: 4px solid #a1a39c;
+	color: white !important;
+	transition: all 0.3s ease 0s;
+        text-decoration: underline;
+    }
     
         
          /* sidebar css */
@@ -1480,8 +1490,9 @@ function scrollDataAjax(it_scroll,pageCounter)
                     }
                         isDataAvailable = false;
                     }else{
-                
-                $(".ai_search_keywords").val(data.searchdestname);
+                        if(data.searchdestname != undefined) {
+                            $(".ai_search_keywords").val(data.searchdestname);
+                        }
                 
                         /*
                          * Slider HTML
@@ -1778,7 +1789,9 @@ url: "{{ URL::to('filter_search_destionation')}}",
                         }
                         else
                         {
-                            $(".ai_search_keywords").val(data.searchdestname);
+                            if(data.searchdestname != undefined) {
+                                $(".ai_search_keywords").val(data.searchdestname);
+                            }
                             
                             /*
                              * Slider HTML
@@ -2388,21 +2401,21 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                                         <!--First Parent-->
                                                         @foreach($ourmaindesitnation as $mndest)
                                                         <div class="node post-filter-inputs">
-                                                            <a class="node-btn" href="javascript:void(0)" onclick="filter_destination('{{$mndest->id}}', 'continent');">{{$mndest->category_name}}</a>
+                                                            <a class="node-btn" href="javascript:void(0)" onclick="$('#maindestinations a.node-btn').removeClass('active');$(this).addClass('active');filter_destination('{{$mndest->id}}', 'continent');">{{$mndest->category_name}}</a>
                                                             @if(array_key_exists('childs',$mndest) && !empty($mndest->childs))
                                                             @foreach($mndest->childs as $cddest)
                                                             <!--Second Level-->
                                                             <div class="node" style="{{($continent==$mndest->category_name) ? 'display: block; padding-left: 10px; margin-top: 5px; text-transform: inherit;' : '' }}">
-                                                                <a class="node-btn" href="javascript:void(0)" onclick="filter_destination('{{$cddest->id}}', 'region');">{{$cddest->category_name}}</a>
+                                                                <a class="node-btn" href="javascript:void(0)" onclick="$('#maindestinations a.node-btn').removeClass('active');$(this).addClass('active');filter_destination('{{$cddest->id}}', 'region');">{{$cddest->category_name}}</a>
                                                                 @if(array_key_exists('subchild',$cddest))
                                                                 @foreach($cddest->subchild as $sbdest)
                                                                 <!--Third Level-->
                                                                 <div class="node" style="{{(str_replace('_',' ',$region)==$cddest->category_name) ? 'display: block; padding-left: 10px; margin-top: 5px; text-transform: inherit;' : '' }}">
-                                                                    <a class="node-btn" href="javascript:void(0)" onclick="filter_destination('{{$sbdest->id}}', 'country');">{{$sbdest->category_name}}</a>
+                                                                    <a class="node-btn" href="javascript:void(0)" onclick="$('#maindestinations a.node-btn').removeClass('active');$(this).addClass('active');filter_destination('{{$sbdest->id}}', 'country');">{{$sbdest->category_name}}</a>
                                                                     @if(array_key_exists('subchild',$sbdest))
                                                                     @foreach($sbdest->subchild as $subchild)
                                                                     <div class="node" style="{{(isset($cat) && str_replace('_',' ',$cat)==$sbdest->category_name) ? 'display: block; padding-left: 10px; margin-top: 5px; text-transform: inherit;' : '' }}">
-                                                                        <a class="node-btn" href="javascript:void(0)" onclick="filter_destination('{{$subchild->id}}', 'country');">{{$subchild->category_name}}</a>
+                                                                        <a class="node-btn" href="javascript:void(0)" onclick="$('#maindestinations a.node-btn').removeClass('active');$(this).addClass('active');filter_destination('{{$subchild->id}}', 'country');">{{$subchild->category_name}}</a>
                                                                     </div>
                                                                     @endforeach
                                                                     @endif

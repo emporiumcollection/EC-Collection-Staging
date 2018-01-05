@@ -54,7 +54,7 @@
                 <div class="row">
                     <header>
                         <div class="container-fluid logo-padding-left editorial-logo-align">
-                            <div class="col-md-12-">
+                            <!--<div class="col-md-12-">
                                 <p><a class="logo-d" href="{{url()}}">D</a></p>
                             </div>
                             <div class="col-md-12-">
@@ -81,7 +81,7 @@
                                 <div class="row">
                                     <a href="#" class="book-button open-book-now-page">BOOK</a>
                                 </div>
-                            </div>
+                            </div>-->
                             <div class="row">
                                 <button class="go-back-button" onclick="goBack()">Go Back</button>
                             </div>
