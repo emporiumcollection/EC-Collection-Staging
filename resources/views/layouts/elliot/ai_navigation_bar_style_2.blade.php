@@ -13,8 +13,8 @@
         <div class="row">
             <div class="header-navigation-container col-md-12">
                 <div class="row">
-                   <!-- <div class="col-md-0"></div>
-                    <div class="col-md-3 col-sm-2 header-text-align">
+                    <div class="col-md-1"></div>
+                    <!--<div class="col-md-3 col-sm-2 header-text-align">
                         <!-- <div class="hotel-select-breadcrumb">
                              <span>Dream Collection </span>
                              <p>Villa Orsula Dubrovnik</p>
@@ -31,10 +31,10 @@
                                                     <span class="left-hamburger-menu"  onclick="openNav()"><img class="hamburger-menu-align" src="{{ asset('sximo/assets/images/Hamburger-Menu.png')}}" alt=""/></span>
                                                 </div>-->
                     <!--</div>-->
-                    <div class="col-md-12 col-sm-12">
+                    <div class="col-md-11 col-sm-11">
                         @include('layouts/elliot/ai_navigation')
                     </div>
-                    <!--<div class="col-md-2 col-sm-2">
+                    <div class="col-md-2 col-sm-2">
                         <div class="row res-margin-align">
                             <div id="mySidenavpost" class="sidenavpost">
                                 <div class="filter-width">
@@ -174,14 +174,14 @@
 														
                                                         <!--New HTMl Start  Here-->
                                                        <!--Old HTMl Start  Here-->
-                                                        <!--<form>
+                                                        <form>
                                                             @foreach($ourmaindesitnation as $maindest)
                                                                 <div class="form-group post-filter-inputs">
                                                                     <label><input type="checkbox" name="continents[]" value="{{$maindest->category_name}}" {{((isset($selcontinent)) && ($selcontinent==$maindest->category_name)) ? 'checked="checked"' : '' }}> {{$maindest->category_name}}</label>
                                                                 </div>
                                                             @endforeach			
-                                                        </form>-->
-                                                       <!--Old HTML End  Here
+                                                        </form>
+                                                       Old HTML End  Here
                                                     </div>
                                                 </div>
                                             </div>
@@ -189,7 +189,7 @@
                                         @endif
 
                                         
-                                        <!--<div class="panel panel-default custom-post-panel">
+                                       <div class="panel panel-default custom-post-panel">
                                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse3" class="heading-stying collapsed">
                                                         <div class="panel-heading custom-heading">
                                                                 Filter 3
@@ -274,7 +274,7 @@
                 </div>
             </div>
         </div>
-    </div>-->
+    </div>
 </div>
 
 <div class="sticky-header-offset"></div>
