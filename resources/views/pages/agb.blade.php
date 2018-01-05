@@ -16,11 +16,6 @@
     <div class="row">
         <div class="section-padding">
             <div>
-                <div class="post-title">
-                    <h1><span>Design-Locations Terms and Conditions</span></h1>
-                </div>
-            </div>
-            <div>
 				<div class="row">
 					<div class="col-md-12">
 						<h1>TERMS AND CONDITIONS</h1>	

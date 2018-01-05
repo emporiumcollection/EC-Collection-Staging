@@ -13,8 +13,8 @@
         <div class="row">
             <div class="header-navigation-container col-md-12">
                 <div class="row">
-                    <div class="col-md-0"></div>
-                    <div class="col-md-3 col-sm-2 header-text-align">
+                    <div class="col-md-1"></div>
+                    <!--<div class="col-md-3 col-sm-2 header-text-align">
                         <!-- <div class="hotel-select-breadcrumb">
                              <span>Dream Collection </span>
                              <p>Villa Orsula Dubrovnik</p>
@@ -30,8 +30,8 @@
                                                     </div>
                                                     <span class="left-hamburger-menu"  onclick="openNav()"><img class="hamburger-menu-align" src="{{ asset('sximo/assets/images/Hamburger-Menu.png')}}" alt=""/></span>
                                                 </div>-->
-                    </div>
-                    <div class="col-md-7 col-sm-8">
+                    <!--</div>-->
+                    <div class="col-md-11 col-sm-11">
                         @include('layouts/elliot/ai_navigation')
                     </div>
                     <div class="col-md-2 col-sm-2">
@@ -151,7 +151,7 @@
                                                 <div class="panel-body custom-panel-body">
                                                     <div class="dl-filter">
                                                         <!--New HTMl Start  Here-->
-                                                        <!--First Parent-->
+                                                        <!--First Parent
 														@foreach($ourmaindesitnation as $mndest)
 															<div class="node post-filter-inputs">
 																<a class="node-btn" href="javascript:void(0)" onclick="filter_destination('{{$mndest->id}}','continent');">{{$mndest->category_name}}</a>
@@ -174,14 +174,14 @@
 														
                                                         <!--New HTMl Start  Here-->
                                                        <!--Old HTMl Start  Here-->
-                                                        <!--<form>
+                                                        <form>
                                                             @foreach($ourmaindesitnation as $maindest)
                                                                 <div class="form-group post-filter-inputs">
                                                                     <label><input type="checkbox" name="continents[]" value="{{$maindest->category_name}}" {{((isset($selcontinent)) && ($selcontinent==$maindest->category_name)) ? 'checked="checked"' : '' }}> {{$maindest->category_name}}</label>
                                                                 </div>
                                                             @endforeach			
-                                                        </form>-->
-                                                       <!--Old HTML End  Here-->
+                                                        </form>
+                                                       Old HTML End  Here
                                                     </div>
                                                 </div>
                                             </div>
@@ -189,7 +189,7 @@
                                         @endif
 
                                         
-                                        <!--<div class="panel panel-default custom-post-panel">
+                                       <div class="panel panel-default custom-post-panel">
                                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse3" class="heading-stying collapsed">
                                                         <div class="panel-heading custom-heading">
                                                                 Filter 3
@@ -257,7 +257,7 @@
                                                                 </div>
                                                         </div>
                                                 </div>
-                                        </div>-->
+                                        </div>
                                     </div> 
                                     <div class="filter-footer">
                                         <div><a href="#" >View All Locations On Map</a></div>
@@ -265,7 +265,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="post-drop-btn">
+                            <div class="post-drop-btn" style="display:none;">
                                 <span style="font-size:14px;cursor:pointer" onclick="toogleNavpost()"><img src="{{ asset('sximo/assets/images/arrow-botom.gif')}}" alt=""/>Filter Menu</span>
                             </div>
                         </div>
