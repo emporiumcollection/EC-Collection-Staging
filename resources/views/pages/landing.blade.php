@@ -2187,7 +2187,7 @@
                  <a href="#" class="popup-close-btn">&times;</a>
                  <div class="popup-content">
                      <div class="content-area">
-                         <a class="dl-pop-logo-align" href="#"><img class="img-responsive" src="{{ asset('sximo/assets/images/design-location-logo.png')}}"></a>
+<!--                         <a class="dl-pop-logo-align" href="#"><img class="img-responsive" src="{{ asset('sximo/assets/images/design-location-logo.png')}}"></a>-->
                      </div>
                      <!--Login Forms Start Here-->
                      <div class="landing-page-lock-login-btn-outer-align">
