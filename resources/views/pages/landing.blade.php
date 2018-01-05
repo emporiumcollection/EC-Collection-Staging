@@ -1460,8 +1460,8 @@
                             <div id="collapse-inner{{$destination['maincat']->id}}" class="panel-collapse collapse ">
                                 <div class="panel-body">
                                     <ul class="where-box-sub-menu">
-                                        @if (array_key_exists("child",$destination))
-                                        @foreach($destination['child'] as $childDest)
+                                        @if (array_key_exists("childs",$destination))
+                                        @foreach($destination['childs'] as $childDest)
                                         <li><div class="panel-group destination-inner-accordian-outer" id="inner-level-accordian">
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">
