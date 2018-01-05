@@ -309,6 +309,9 @@ class HomeController extends Controller {
                                                         $preprops = DB::select(DB::raw("SELECT COUNT(*) AS total_rows FROM tb_properties WHERE property_status = '1' $getcats"));
 
                                                         if (isset($preprops[0]->total_rows) && $preprops[0]->total_rows > 0) {
+                                                            usort($temp, function($a, $b) {
+                                                                return trim($a->category_name) > trim($b->category_name);
+                                                            });
                                                             $subchilddest[$key]->subchild = $temp;
                                                         }
                                                     }
