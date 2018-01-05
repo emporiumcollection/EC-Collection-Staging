@@ -254,9 +254,7 @@
 		<link rel="stylesheet" href="{{ asset('sximo/instajs/instashow/jquery.instashow.css')}}">
 		<script src="{{ asset('sximo/instajs/instashow/jquery.instashow.js')}}"></script>
                 
-                <!-- masonary grid js -->
-                <script src="{{ asset('sximo/assets/newgrid/js/main.js')}}" type="text/javascript"></script>
-		<!-- masonary grid js -->
+                
                 
                 <!-- social stream js  
 		<link rel="stylesheet" type="text/css" href="{{ asset('sximo/jquery_social_stream/inc/layout.css')}}" media="all" />
@@ -344,6 +342,9 @@
 							 
 			});
 		</script>
+                <!-- masonary grid js -->
+                <script src="{{ asset('sximo/assets/newgrid/js/main.js')}}" type="text/javascript"></script>
+		<!-- masonary grid js -->
 		@endif
     </body>
 </html>
