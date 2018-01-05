@@ -760,9 +760,16 @@ class HomeController extends Controller {
                             }
                         }
 
-                        //print "<pre>";
-                        //print_r($destts);
-                        $this->data['ourdesitnation'] = $mainArrdestts;
+                        echo '$destts: <pre>';
+                        print_r($destts);
+                        echo '</pre>';
+                        
+                        echo '$mainArrdestts: <pre>';
+                        print_r($mainArrdestts);
+                        echo '</pre>';
+                        
+                        $this->data['ourdesitnation'] = $destts;
+                        $this->data['ourmaindesitnation'] = $mainArrdestts;
                         $this->data['social_links'] = \DB::table('tb_social')->where('status', 1)->get();
                         $this->data['landing_menus'] = array();
 
