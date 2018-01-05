@@ -753,7 +753,7 @@
         }
         
         .login_popup .fa {
-            color: #c7ab84;
+            color: #ABA07C;
             font-size: 24px;
             margin: 14px;
         }
