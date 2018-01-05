@@ -4789,7 +4789,7 @@ class NewHomeController extends Controller {
 
         //$query = "SELECT editor_choice_property,feature_property,id,property_name,property_slug,property_category_id FROM tb_properties WHERE property_type='" . $request->slug . "' AND property_status = '1' ";
         $query = "SELECT editor_choice_property,feature_property,id,property_name,property_slug,property_category_id,"; 
-        $query .= "(SELECT rack_rate FROM tb_properties_category_rooms_price where tb_properties.id=tb_properties_category_rooms_price.property_id order by rack_rate DESC limit 0,1 ) as rack_rate ," ;
+        $query .= "(SELECT rack_rate FROM tb_properties_category_rooms_price where tb_properties.id=tb_properties_category_rooms_price.property_id order by rack_rate DESC limit 0,1 ) as price ," ;
         $query .= "(SELECT category_name FROM tb_categories where tb_properties.property_category_id=tb_categories.id limit 0,1 ) as category_name ";
         $query .= " FROM tb_properties  ";
         $whereClause = " WHERE property_type='" . $request->slug . "' AND property_status = '1' ";
@@ -4828,9 +4828,9 @@ class NewHomeController extends Controller {
         $getTotalRecQry = " Select count(*) as total_record FROM tb_properties  ".$whereClause;
         $total_record = DB::select($getTotalRecQry);
         $propertiesArr = DB::select($fianlQry);
-        print_r($total_record);
+        
  //dd($total_record);
-exit;
+
        // $props = DB::select(DB::raw($query));
 
         /*if (!empty($props)) {
@@ -4869,7 +4869,7 @@ exit;
 
         $pagedData = array_slice($propertiesArr, $currentPage * $perPage, $perPage);
         $pagination = new Paginator($pagedData, count($propertiesArr), $perPage);
-        $pagination->setPath(\URL::to('luxurytravel/' . $request->slug));
+        //$pagination->setPath(\URL::to('luxurytravel/' . $request->slug));
 
         $this->data['propertiesArr'] = $propertiesArr;
 
@@ -4935,6 +4935,7 @@ exit;
         $this->data['cities'] = array();
         $page = 'layouts.' . CNF_THEME . '.index';
         $this->data['pages'] = 'pages.new_search';
+        
         return view($page, $this->data);
     }
 
