@@ -13,7 +13,7 @@
         <div class="row">
             <div class="header-navigation-container col-md-12">
                 <div class="row">
-                    <div class="col-md-0"></div>
+                   <!-- <div class="col-md-0"></div>
                     <div class="col-md-3 col-sm-2 header-text-align">
                         <!-- <div class="hotel-select-breadcrumb">
                              <span>Dream Collection </span>
@@ -30,11 +30,11 @@
                                                     </div>
                                                     <span class="left-hamburger-menu"  onclick="openNav()"><img class="hamburger-menu-align" src="{{ asset('sximo/assets/images/Hamburger-Menu.png')}}" alt=""/></span>
                                                 </div>-->
-                    </div>
-                    <div class="col-md-7 col-sm-8">
+                    <!--</div>-->
+                    <div class="col-md-12 col-sm-12">
                         @include('layouts/elliot/ai_navigation')
                     </div>
-                    <div class="col-md-2 col-sm-2">
+                    <!--<div class="col-md-2 col-sm-2">
                         <div class="row res-margin-align">
                             <div id="mySidenavpost" class="sidenavpost">
                                 <div class="filter-width">
@@ -151,7 +151,7 @@
                                                 <div class="panel-body custom-panel-body">
                                                     <div class="dl-filter">
                                                         <!--New HTMl Start  Here-->
-                                                        <!--First Parent-->
+                                                        <!--First Parent
 														@foreach($ourmaindesitnation as $mndest)
 															<div class="node post-filter-inputs">
 																<a class="node-btn" href="javascript:void(0)" onclick="filter_destination('{{$mndest->id}}','continent');">{{$mndest->category_name}}</a>
@@ -181,7 +181,7 @@
                                                                 </div>
                                                             @endforeach			
                                                         </form>-->
-                                                       <!--Old HTML End  Here-->
+                                                       <!--Old HTML End  Here
                                                     </div>
                                                 </div>
                                             </div>
@@ -257,7 +257,7 @@
                                                                 </div>
                                                         </div>
                                                 </div>
-                                        </div>-->
+                                        </div>
                                     </div> 
                                     <div class="filter-footer">
                                         <div><a href="#" >View All Locations On Map</a></div>
@@ -265,7 +265,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="post-drop-btn">
+                            <div class="post-drop-btn" style="display:none;">
                                 <span style="font-size:14px;cursor:pointer" onclick="toogleNavpost()"><img src="{{ asset('sximo/assets/images/arrow-botom.gif')}}" alt=""/>Filter Menu</span>
                             </div>
                         </div>
@@ -274,7 +274,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 </div>
 
 <div class="sticky-header-offset"></div>
