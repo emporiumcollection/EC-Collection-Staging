@@ -966,7 +966,7 @@
                             
                     </header>
                     <div class="filter-page-main-align">
-                        <div class="col-md-10 col-sm-9 FloatFilter">
+                        <div class="col-md-10 col-sm-9 FloatFilter pull-right">
                             <div class="row">
                                 
                                 <!-- AIC Harman top bar adding -->
@@ -1468,7 +1468,7 @@ function scrollDataAjax(it_scroll,pageCounter)
             // $('#nxtpg').val(parseInt(nxtpg) + 1);
         },
         success: function(data){
-            $(".ai_search_keywords").val(data.searchdestname);
+            
             $(".ai-scrollDownloadData-filter-running").val("0");
             $('#loaderProperty').hide();
                 var html = chtml = '';
@@ -1480,6 +1480,8 @@ function scrollDataAjax(it_scroll,pageCounter)
                     }
                         isDataAvailable = false;
                     }else{
+                
+                $(".ai_search_keywords").val(data.searchdestname);
                 
                         /*
                          * Slider HTML
@@ -1758,7 +1760,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
             $('#nxtpg').val(parseInt(nxtpg) + 1);
         },
         success: function(data){
-            $(".ai_search_keywords").val(data.searchdestname);
+            
             $(".ai-scrollDownloadData-filter-running").val("0");
             $('#loaderProperty').hide();
                         var html = chtml = '';
@@ -1776,6 +1778,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                         }
                         else
                         {
+                            $(".ai_search_keywords").val(data.searchdestname);
                             
                             /*
                              * Slider HTML
