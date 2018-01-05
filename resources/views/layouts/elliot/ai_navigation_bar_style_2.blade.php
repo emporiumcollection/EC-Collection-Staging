@@ -13,8 +13,8 @@
         <div class="row">
             <div class="header-navigation-container col-md-12">
                 <div class="row">
-                    <div class="col-md-1"></div>
-                    <!--<div class="col-md-3 col-sm-2 header-text-align">
+                    <!--<div class="col-md-1"></div>
+                    <div class="col-md-3 col-sm-2 header-text-align">
                         <!-- <div class="hotel-select-breadcrumb">
                              <span>Dream Collection </span>
                              <p>Villa Orsula Dubrovnik</p>
@@ -31,7 +31,7 @@
                                                     <span class="left-hamburger-menu"  onclick="openNav()"><img class="hamburger-menu-align" src="{{ asset('sximo/assets/images/Hamburger-Menu.png')}}" alt=""/></span>
                                                 </div>-->
                     <!--</div>-->
-                    <div class="col-md-11 col-sm-11">
+                    <div class="col-md-12 col-sm-12">
                         @include('layouts/elliot/ai_navigation')
                     </div>
                     <div class="col-md-2 col-sm-2">
