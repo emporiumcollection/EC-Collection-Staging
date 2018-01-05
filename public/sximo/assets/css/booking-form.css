@@ -47,7 +47,7 @@ a:hover, a:focus, a:active{
     padding: 0;
 }
 .booking-form-villa .panel-default > .panel-heading {
-    background-color: #34302c;
+    background-color: #252525;
     border-radius: 0;
     color: #fff;
     opacity: 0.85;
@@ -156,7 +156,7 @@ a:hover, a:focus, a:active{
     width: 100%;
 }
 .booking-add-room {
-    background: #000 none repeat scroll 0 0;
+    background: #ABA07C none repeat scroll 0 0;
     color: #fff;
     float: left;
     margin-top: 39px;
@@ -166,7 +166,7 @@ a:hover, a:focus, a:active{
     width: 100%;
 }
 .validate-btn {
-    background: #000 none repeat scroll 0 0;
+    background: #ABA07C none repeat scroll 0 0;
     border: medium none;
     color: #fff;
     float: right;
