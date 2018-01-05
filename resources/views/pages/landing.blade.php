@@ -1450,14 +1450,14 @@
                         @if(!empty($ourmaindesitnation))
                         @foreach($ourmaindesitnation as $destination)
                         <div class="panel panel-default  destination-sub-menues">
-                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion1" href="#collapse-inner{{$destination['maincat']->id}}">
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion1" href="#collapse-inner{{$destination->id}}">
                                 <div class="destination-panel-heading">
                                     <h4 class="panel-title menu-text accordion ">
-                                        {{$destination['maincat']->category_name}}
+                                        {{$destination->category_name}}
                                     </h4>
                                 </div>
                             </a>
-                            <div id="collapse-inner{{$destination['maincat']->id}}" class="panel-collapse collapse ">
+                            <div id="collapse-inner{{$destination->id}}" class="panel-collapse collapse ">
                                 <div class="panel-body">
                                     <ul class="where-box-sub-menu">
                                         @if (array_key_exists("childs",$destination))
@@ -1486,14 +1486,14 @@
                                                                                 <div id="destination-child{{$childDest->id}}-{{$subchildDest->id}}" class="panel-collapse collapse">
                                                                                     <ul class="where-box-sub-menu inner-level-sub-menu">
                                                                                         @foreach($subchildDest->subchild as $_child)
-                                                                                            <li><a href="{{URL::to('luxury_destinations/'. str_replace(' ','_',$destination['maincat']->category_name).'/'. str_replace(' ','_',$childDest->category_name).'/'. str_replace(' ','_',$_child->category_name))}}">{{$_child->category_name}}</a></li>
+                                                                                            <li><a href="{{URL::to('luxury_destinations/'. str_replace(' ','_',$destination->category_name).'/'. str_replace(' ','_',$childDest->category_name).'/'. str_replace(' ','_',$_child->category_name))}}">{{$_child->category_name}}</a></li>
                                                                                         @endforeach
                                                                                     </ul>
                                                                                 </div>
                                                                         </div>
                                                                     </div>
                                                                     @else
-                                                                    <a href="{{URL::to('luxury_destinations/'. str_replace(' ','_',$destination['maincat']->category_name).'/'. str_replace(' ','_',$childDest->category_name).'/'. str_replace(' ','_',$subchildDest->category_name))}}">{{$subchildDest->category_name}}</a>
+                                                                    <a href="{{URL::to('luxury_destinations/'. str_replace(' ','_',$destination->category_name).'/'. str_replace(' ','_',$childDest->category_name).'/'. str_replace(' ','_',$subchildDest->category_name))}}">{{$subchildDest->category_name}}</a>
                                                                     @endif
                                                                 </li>
                                                             @endforeach
@@ -1503,7 +1503,7 @@
                                             </div>
                                         </div></li>
                                         <!--The menu code is commented please uncomment this when you make it dynamic-->
-                                        <!--<li><a href="{{URL::to('search?continent='.$destination['maincat']->category_name.'&region='.$childDest->category_name.'&s='.$childDest->category_name.'&ref=syd&destination_page=1')}}">{{$childDest->category_name}}</a></li>-->
+                                        <!--<li><a href="{{URL::to('search?continent='.$destination->category_name.'&region='.$childDest->category_name.'&s='.$childDest->category_name.'&ref=syd&destination_page=1')}}">{{$childDest->category_name}}</a></li>-->
                                         @endforeach
                                         @endif
                                     </ul>
