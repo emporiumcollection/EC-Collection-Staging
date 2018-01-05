@@ -1447,8 +1447,8 @@
                         {!!Storage::get('homeOurDestination.html')!!}  */  
       ?>
                         
-                        @if(!empty($ourmaindesitnation))
-                        @foreach($ourmaindesitnation as $destination)
+                        @if(!empty($ourdesitnation))
+                        @foreach($ourdesitnation as $destination)
                         <div class="panel panel-default  destination-sub-menues">
                             <a class="collapsed" data-toggle="collapse" data-parent="#accordion1" href="#collapse-inner{{$destination['maincat']->id}}">
                                 <div class="destination-panel-heading">
