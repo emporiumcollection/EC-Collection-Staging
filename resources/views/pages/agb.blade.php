@@ -105,6 +105,5 @@ All prices displayed on the Design-Locations websites are current, day prices, s
             </div>
         </div>
         @include('layouts/elliot/ai_footer_social')
-        <!--@include('layouts/elliot/ai_footer_3')
-        @include('layouts/elliot/ai_footer_2')-->)
+        
         
