@@ -52,7 +52,7 @@
 		<link href="{{ asset('sximo/assets/newgrid/css/animate.css')}}" rel="stylesheet" type="text/css"/>
 		<link href="{{ asset('sximo/assets/newgrid/css/style1.css')}}" rel="stylesheet" type="text/css"/>
 		<link href="{{ asset('sximo/assets/newgrid/css/responsive.css')}}" rel="stylesheet" type="text/css"/>
-                <!--<script src="{{ asset('sximo/assets/newgrid/js/main.js')}}" type="text/javascript"></script>-->
+                <script src="{{ asset('sximo/assets/newgrid/js/main.js')}}" type="text/javascript"></script>
 		<script src="{{ asset('sximo/assets/newgrid/js/skrollr.min.js')}}" type="text/javascript"></script>
 		<script src="{{ asset('sximo/assets/newgrid/js/smooth-scroll.js')}}" type="text/javascript"></script>
 		<script src="{{ asset('sximo/assets/newgrid/js/swiper.min.js')}}" type="text/javascript"></script>
@@ -977,15 +977,6 @@
                                 top: 31px;
                                 position: absolute;
                             }
-                            .headings > h2 {
-                                font-size: 36px;
-                            }
-                            .headings > p {
-                                color: #ABA07C;
-                                font-size: 16px;
-                            }
-
-                            
                             @import url('https://fonts.googleapis.com/css?family=Caveat');
                             @import url('https://fonts.googleapis.com/css?family=Satisfy');
                             @import url('https://fonts.googleapis.com/css?family=Zeyada');

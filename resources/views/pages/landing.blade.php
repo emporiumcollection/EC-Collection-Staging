@@ -817,7 +817,7 @@
 	color: #c7ab84;
     }
     
-        .headings > h2 {
+    .headings > h2 {
         font-size: 36px;
     }
     .headings > p {
