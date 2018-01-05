@@ -763,7 +763,7 @@
             left: 0;
             position: fixed;
             top: 0;
-            width: 60px;
+            width: 90px;
         }
         
         .hotels-logo img {
@@ -827,6 +827,31 @@
     .headings > p {
         color: #ABA07C;
         font-size: 16px;
+    }
+    
+    /* AIC 5-1-2018 */
+    
+    .show-login-forms-btn {
+	display: inline-block;
+	padding: 5px 0;
+	text-align: center;
+	vertical-align: text-top;
+	width: 73%;
+    }
+    
+    .hamburgMenu {
+        margin-top: 20px;
+    }
+    
+    .video-popup-btn.login_popup.show-login-forms-btn {
+	display: inline-block;
+	margin-top: 8px;
+	width: 59%;
+    }
+    
+    .hamburgMenu {
+        font-size: 24px;
+        color: #ABA07C;
     }
 
                             
@@ -1041,7 +1066,7 @@
                             <!-- end sidebar -->
                             
                             <a data-popup-id="login-forms-popup" href="#" class="video-popup-btn login_popup show-login-forms-btn"><i class="fa fa-lock " aria-hidden="true" ></i></a>
-                            <a data-popup-id="login-forms-popup" href="#" class="video-popup-btn"><i class="fa fa-bars" aria-hidden="true"></i></a>
+                            <a data-popup-id="login-forms-popup" href="#" class="video-popup-btn"><i class="fa fa-bars hamburgMenu" aria-hidden="true"></i></a>
                         </header>
                         <!--Main Page-->
                         @if(!empty($slider)) 
