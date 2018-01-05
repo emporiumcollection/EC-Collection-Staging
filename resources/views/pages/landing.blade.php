@@ -33,6 +33,10 @@
         
         
         <style>
+            #inner-level-accordian .panel-title {
+                float: left;
+                width: 100%;
+            }
             #search-navbar-destination.search-navbar-destination-search-box {
                 background: #2a2d30 none repeat scroll 0 0 !important;
                 border: 2px solid #2a2d30;
@@ -1447,21 +1451,21 @@
                         {!!Storage::get('homeOurDestination.html')!!}  */  
       ?>
                         
-                        @if(!empty($ourdesitnation))
-                        @foreach($ourdesitnation as $destination)
+                        @if(!empty($ourmaindesitnation))
+                        @foreach($ourmaindesitnation as $destination)
                         <div class="panel panel-default  destination-sub-menues">
-                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion1" href="#collapse-inner{{$destination['maincat']->id}}">
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion1" href="#collapse-inner{{$destination->id}}">
                                 <div class="destination-panel-heading">
                                     <h4 class="panel-title menu-text accordion ">
-                                        {{$destination['maincat']->category_name}}
+                                        {{$destination->category_name}}
                                     </h4>
                                 </div>
                             </a>
-                            <div id="collapse-inner{{$destination['maincat']->id}}" class="panel-collapse collapse ">
+                            <div id="collapse-inner{{$destination->id}}" class="panel-collapse collapse ">
                                 <div class="panel-body">
                                     <ul class="where-box-sub-menu">
-                                        @if (array_key_exists("child",$destination))
-                                        @foreach($destination['child'] as $childDest)
+                                        @if (array_key_exists("childs",$destination))
+                                        @foreach($destination->childs as $childDest)
                                         <li><div class="panel-group destination-inner-accordian-outer" id="inner-level-accordian">
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">
@@ -1474,7 +1478,7 @@
                                                         <ul class="where-box-sub-menu inner-level-sub-menu">
                                                             @foreach($childDest->subchild as $subchildDest)
                                                                 <li>
-                                                                    @if (array_key_exists("childs",$childDest))
+                                                                    @if (array_key_exists("subchild",$subchildDest) && !empty($subchildDest->subchild))
                                                                     <div class="panel-group destination-inner-accordian-outer" id="inner-level-accordian">
                                                                         <div class="panel panel-default">
                                                                             <div class="panel-heading">
@@ -1485,15 +1489,15 @@
                                                                             
                                                                                 <div id="destination-child{{$childDest->id}}-{{$subchildDest->id}}" class="panel-collapse collapse">
                                                                                     <ul class="where-box-sub-menu inner-level-sub-menu">
-                                                                                        @foreach($childDest->childs as $_child)
-                                                                                            <li><a href="{{URL::to('luxury_destinations/'. str_replace(' ','_',$destination['maincat']->category_name).'/'. str_replace(' ','_',$childDest->category_name).'/'. str_replace(' ','_',$_child->category_name))}}">{{$_child->category_name}}</a></li>
+                                                                                        @foreach($subchildDest->subchild as $_child)
+                                                                                            <li><a href="{{URL::to('luxury_destinations/'. str_replace(' ','_',$destination->category_name).'/'. str_replace(' ','_',$childDest->category_name).'/'. str_replace(' ','_',$_child->category_name))}}">{{$_child->category_name}}</a></li>
                                                                                         @endforeach
                                                                                     </ul>
                                                                                 </div>
                                                                         </div>
                                                                     </div>
                                                                     @else
-                                                                    <a href="{{URL::to('luxury_destinations/'. str_replace(' ','_',$destination['maincat']->category_name).'/'. str_replace(' ','_',$childDest->category_name).'/'. str_replace(' ','_',$subchildDest->category_name))}}">{{$subchildDest->category_name}}</a>
+                                                                    <a href="{{URL::to('luxury_destinations/'. str_replace(' ','_',$destination->category_name).'/'. str_replace(' ','_',$childDest->category_name).'/'. str_replace(' ','_',$subchildDest->category_name))}}">{{$subchildDest->category_name}}</a>
                                                                     @endif
                                                                 </li>
                                                             @endforeach
@@ -1503,7 +1507,7 @@
                                             </div>
                                         </div></li>
                                         <!--The menu code is commented please uncomment this when you make it dynamic-->
-                                        <!--<li><a href="{{URL::to('search?continent='.$destination['maincat']->category_name.'&region='.$childDest->category_name.'&s='.$childDest->category_name.'&ref=syd&destination_page=1')}}">{{$childDest->category_name}}</a></li>-->
+                                        <!--<li><a href="{{URL::to('search?continent='.$destination->category_name.'&region='.$childDest->category_name.'&s='.$childDest->category_name.'&ref=syd&destination_page=1')}}">{{$childDest->category_name}}</a></li>-->
                                         @endforeach
                                         @endif
                                     </ul>
@@ -2190,14 +2194,14 @@
                              <div class="login-sign-up-sidebar-outer-align">
                                  <div class="your-account-heading-align">
                                      <div class="ps-login-signup-form-top-bar">
-                                         <div class="col-md-6 col-sm-6">
+<!--                                         <div class="col-md-6 col-sm-6">
                                              <div class="row">
                                                  <div class="ps-forms-cross-icons">
                                                      <a class="show-account-with-us ps-forms-small-heading-link" href="javascript:void(0)">&times;</a>
                                                  </div>
                                              </div>
-                                         </div>
-                                         <div class="col-md-6 col-sm-6">
+                                         </div>-->
+                                         <div class="col-md-12 col-sm-6">
                                              <div class="row">
                                                  <div class="right-need-help-icon">
                                                      <a class="ps-forms-small-heading-link" href="#">Need Help?</a>
@@ -2205,6 +2209,15 @@
                                              </div>
                                          </div>
                                      </div>
+                                     <div class="ps-login-signup-form-top-bar1">
+                                        <div class="col-md-12 col-sm-6">
+                                           <div class="row">
+                                               <div class="ps-forms-cross-icons">
+                                                   <a class="show-account-with-us ps-forms-small-heading-link" href="javascript:void(0)">&times;</a>
+                                               </div>
+                                           </div>
+                                       </div>
+                                    </div>
                                      <div class="clearfix"></div>
                                      <div class="ps-form-main-pannel">
                                          <div class="ps-form-heading-outer-align">
@@ -2235,14 +2248,14 @@
                              <div class="login-sign-up-sidebar-outer-align">
                                  <div class="your-account-heading-align">
                                      <div class="ps-login-signup-form-top-bar">
-                                         <div class="col-md-6 col-sm-6">
+<!--                                         <div class="col-md-6 col-sm-6">
                                              <div class="row">
                                                  <div class="ps-forms-cross-icons">
                                                      <a class="show-account-with-us ps-forms-small-heading-link" href="javascript:void(0)">&times;</a>
                                                  </div>
                                              </div>
-                                         </div>
-                                         <div class="col-md-6 col-sm-6">
+                                         </div>-->
+                                         <div class="col-md-12 col-sm-6">
                                              <div class="row">
                                                  <div class="right-need-help-icon">
                                                      <a class="ps-forms-small-heading-link" href="#">Need Help?</a>
@@ -2250,6 +2263,15 @@
                                              </div>
                                          </div>
                                      </div>
+                                     <div class="ps-login-signup-form-top-bar1">
+                                        <div class="col-md-12 col-sm-6">
+                                           <div class="row">
+                                               <div class="ps-forms-cross-icons">
+                                                   <a class="show-account-with-us ps-forms-small-heading-link" href="javascript:void(0)">&times;</a>
+                                               </div>
+                                           </div>
+                                       </div>
+                                    </div>
                                      <div class="clearfix"></div>
                                      <div class="ps-form-main-pannel">
                                          <div class="ps-form-heading-outer-align">
@@ -2279,7 +2301,7 @@
                                      <div class="ps-login-signup-form-top-bar">
                                          <div class="col-md-6 col-sm-6">
                                              <div class="row">
-                                                 <div class="ps-forms-cross-icons">
+                                                 <div class="ps-forms-cross-icons1">
                                                      <a class="show-account-with-us  ps-forms-small-heading-link" href="javascript:void(0)">&times;</a>
                                                  </div>
                                              </div>

@@ -4,7 +4,7 @@
  */
 
 .popup {
-    display: none;
+/*    display: none;*/
 }
 body.fixed {
     max-height: 100vh;
@@ -18,8 +18,9 @@ body.fixed {
     overflow: auto;
     position: fixed;
     top: 0;
-    width: 100%;
+    width: 0px;
     z-index: 99999;
+    display: block !important;
 }
 /*.popup-inner {
     background-color: #EBEBEB;
