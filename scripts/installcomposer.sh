@@ -1,13 +1,10 @@
 #!/bin/bash
 mkdir /var/www/vhosts/emporium-voyage.com/public_html
-mkdir /var/www/vhosts/emporium-voyage.com/public_html/storage
-mkdir /var/www/vhosts/emporium-voyage.com/public_html/vendor
-cp -R /var/www/vhosts/emporium-voyage.com/storage/ /var/www/vhosts/emporium-voyage.com/public_html/storage
-cp -R /var/www/vhosts/emporium-voyage.com/vendor /var/www/vhosts/emporium-voyage.com/public_html/vendor
 cd /var/www/vhosts/emporium-voyage.com/public_html
 wget https://s3-eu-west-1.amazonaws.com/emporium-voyage-live/env/live/.env
 chmod 755 .env
 chown www-data:www-data .env
+composer install /var/www/vhosts/emporium-voyage.com/public_html
 composer update -d /var/www/vhosts/emporium-voyage.com/public_html
 chown -R www-data:www-data /var/www/vhosts/emporium-voyage.com
 sudo find /var/www/vhosts/emporium-voyage.com/public_html -type d -exec chmod 755 {} +
