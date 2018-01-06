@@ -1,0 +1,52 @@
+
+@import "compass/css3";
+
+*, *:before, *:after {box-sizing:  border-box !important;}
+
+
+.masonry-grid-main {
+    margin: 0 auto;
+    width: 100%;
+}
+.masonry-grid-main article {
+ -moz-column-width: 18em;
+ -webkit-column-width: 18em;
+ -moz-column-gap: 1em;
+ -webkit-column-gap: 1em; 
+  
+}
+.masonry-grid-title {
+    margin-top: 10px;
+    text-align: center;
+}
+.masonry-grid {
+ display: inline-block;
+ margin:  0.5em 0.25rem;
+ padding:  1rem;
+ width:  100%; 
+ background:  #fff;
+}
+.masonry-grid p {
+ margin:  1rem 0; 
+ font-size: 14px;
+}
+.masonry-grid img {
+    width: 100%;
+}
+.masonry-grid-title span {
+    color: #444444;
+    float: left;
+    font-size: 12px;
+    font-style: italic;
+    margin-bottom: 15px;
+    width: 100%;
+}
+.masonry-grid-title a {
+    color: #333333;
+    font-size: 24px;
+    text-decoration: none;
+}
+.masonry-grid-title p {
+    font-size: 14px;
+    margin: 10px 0 40px;
+}

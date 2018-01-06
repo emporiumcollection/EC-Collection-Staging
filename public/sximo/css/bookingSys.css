@@ -1,0 +1,309 @@
+.float-right {
+    float: right;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.margin-top-10 {
+    margin-top: 10px!important;
+}
+
+.optionbox {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    padding: 8px;
+    cursor: pointer;
+    background-color: #eee;
+    border-radius: 3px;
+    border: 1px solid #dadada;
+    line-height: 18px;
+    display: inline-block;
+	font-size:11px;
+}
+
+.b-btn
+{
+    padding: 2px 20px;
+    border-radius: 2px;
+    line-height: 28px;
+}
+
+label.error { color:red; }
+input.error { border-color:red; }
+
+.calendar .controls {
+    position: relative;
+    z-index: 999;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: -ms-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding: 5px;
+    background-color: #fafafa;
+    min-height: 60px;
+    border-bottom: 1px solid #f5f5f5;
+	box-sizing: border-box !important;
+}
+
+.calendar .controls section {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: -ms-flex;
+    display: flex;
+    -webkit-flex: 1 0 auto;
+    -moz-flex: 1 0 auto;
+    -ms-flex: 1 0 auto;
+    flex: 1 0 auto;
+    margin: 5px;
+}
+
+.calendar .controls button:not(.new-reservation), .calendar .controls input:not(.new-reservation), .calendar .controls select:not(.new-reservation) {
+    border: 1px solid #d5d5d5;
+    background-color: #e5e5e5;
+	float:left;
+}
+
+@media (max-width: 99999999px) and (min-width: 1025px)
+{
+	.calendar .controls button, .calendar .controls input, .calendar .controls select {
+		min-width: 40px;
+	}
+}
+
+.calendar .controls button, .calendar .controls input, .calendar .controls select {
+    display: block;
+    margin: 0;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 3px;
+    font-weight: normal;
+    font-size: 0.9em;
+    text-align: center;
+}
+
+.control-group > *:first-child:not(:last-child), .control-group > *:first-child:not(:last-child) * {
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+}
+
+.control-group > *:last-child:not(:first-child), .control-group > *:last-child:not(:first-child) * {
+    border-top-left-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+}
+
+.calendar .controls input.date {
+    width: 100px;
+}
+
+.control-group > *:not(:first-child):not(:last-child), .control-group > *:not(:first-child):not(:last-child) * {
+    border-radius: 0px !important;
+}
+
+.v1 .lightform input, .v1 .lightform input[type=password], .v1 input[type=text] {
+    font-size: 12px;
+    font-weight: 700;
+    border: 1px solid #777;
+    padding: 1px;
+    margin-bottom: 3px;
+}
+
+.calendar .controls select {
+    cursor: pointer;
+}
+
+button.b7.info, .button-b7.info {
+    background-color: #546fb3;
+    color: white;
+}
+
+.calendar .controls, .calendar .controls * {
+    box-sizing: border-box !important;
+}
+
+button.b7, .button-b7 {
+    background-color: #dadada;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    font-size: 12px;
+    padding: 0 20px;
+    line-height: 34px;
+    color: #1a1a1a;
+    outline: 0;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.calendar .controls section > * + * {
+    margin-left: 10px;
+}
+
+#cal-content {
+    margin-top: 0;
+    padding: 10px;
+}
+
+#cal-content .row {
+    width: calc(100% + 149px);
+    margin-left: -150px;
+    height: 19px;
+    z-index: 100;
+}
+
+#cal-content .r-header {
+    height: 19px;
+    width: 150px;
+}
+
+.v1 .r-header {
+    font-size: .8em;
+    padding-left: 5px;
+    padding-top: 1px;
+    color: #000;
+    overflow: hidden;
+}
+
+.v1 .cal-room-name {
+    padding-top: 2px;
+    white-space: nowrap;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.v1 .cal-room-number {
+    display: inline-block;
+    font-weight: 700;
+    min-width: 18px;
+    text-align: right;
+}
+
+.v1 .v-mid, .v1 .v-middle {
+    vertical-align: middle;
+}
+
+.v1 .ib {
+    display: inline-block;
+}
+
+#cal-content .column {
+    width: calc(3.8461538461538% - 1px);
+    z-index: 80;
+}
+
+.v1 .column {
+    height: 100%;
+    border-left: 1px solid #DDD;
+    text-align: center;
+}
+
+
+.v1 .column, .v1 .month-h, .v1 .row {
+    position: absolute;
+}
+
+.v1 .month-h {
+    color: #000;
+    height: 13px;
+    font-size: 10px;
+    overflow: hidden;
+    background: #fff;
+}
+
+#cal-content .column-h {
+    height: 19px;
+    width: calc(3.8461538461538% - 1px);
+    z-index: 120;
+}
+
+.v1 .column-h {
+    line-height: 18px;
+    font-size: 12px;
+    border-left: 1px solid #555;
+    background-color: #fff;
+    border-bottom: 1px solid #555;
+}
+
+.v1 .column.wkend {
+    background-color: #F2F2F2;
+}
+
+.v1 .caldate.wkend, .v1 .column-h.wkend {
+    background: #333;
+    color: #fff;
+    font-weight: 700;
+}
+
+.v1 .column-f, .v1 .column-h {
+    position: absolute;
+    text-align: center;
+    overflow: hidden;
+    color: #000;
+}
+
+
+.v1 .column-h, .v1 .row.first {
+    border-top: 1px solid #555;
+}
+
+.v1 * {
+    -webkit-print-color-adjust: exact;
+}
+
+.v1 * {
+    box-sizing: content-box;
+}
+
+.v1 .caldate.today, .v1 .column-h.today {
+    color: Red!important;
+}
+
+
+
+/* calendar */
+.clr{clear:both;}
+
+.row.first{    border-top: 1px solid #555;}
+.row.last{    border-bottom: 1px solid #555;}
+
+.cols{
+	width:36px;
+	padding:8px;
+	float:left;
+	text-align:center;
+	height: 35px;
+	
+}
+.cols.first{width:150px;height:auto;}
+.top_border_black{ border-top: 1px solid #555;}
+.left_border_black{border-left: 1px solid #555;}
+.right_border_black{border-right: 1px solid #555;}
+.bottom_border_black{border-bottom: 1px solid #555;}
+
+.top_border_gray{ border-top: 1px solid #DDD;}
+.left_border_gray{border-left: 1px solid #DDD;}
+.right_border_gray{border-right: 1px solid #DDD;}
+.bottom_border_gray{border-bottom: 1px solid #DDD;}
+.no_border{border:none;}
+.white_border_left{border-left: 1px solid #fff;}
+.weekend_days{background:#f2f2f2;}
+.weekend{background:#333333; color:#fff;font-weight:bold;}
+.empty_row{background:#f2f2f2; height:30px;}
+.separate_row{height:8px;}
+.status_red{float:right;cursor: pointer; border-right: 2px solid transparent; background: #FF0000; padding: 1px 0; margin-left:5px;text-align:right;}
+.status_black{float:right;cursor: pointer; border-right: 2px solid transparent; background: #000000; padding: 1px 0;margin-left:5px;text-align:right;}
+.status_green{float:right;cursor: pointer; border-right: 2px solid transparent; background: #36B322; padding: 1px 0;margin-left:5px; text-align:right;}
+.room_number, .room_title{float:left; }
+.room_name{float:right;display:none;}
+.room_number{font-weight:bold;}
+
+.today{color:red !important;}

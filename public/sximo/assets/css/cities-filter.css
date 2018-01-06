@@ -1,0 +1,91 @@
+.top-bar-filters {
+    display: table;
+    list-style: outside none none;
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+    width: auto;
+}
+.top-slick-filtes {
+    list-style: outside none none;
+    margin: 20px auto;
+    padding: 0 82px;
+    text-align: center;
+    width: auto;
+}
+.top-slick-filtes > li, .top-slick-filtes > li {
+    display: inline-block;
+    min-width: 115px;
+}
+.filter-bg {
+    background-blend-mode: multiply;
+    background-color: transparent;
+    background-image: url("http://design-locations.biz/uploads/property_imgs_thumbs/front_property_4476_The Surin Puket - Thailand-design-locations.com4.jpeg");
+    background-position: center center;
+    background-size: 102% auto;
+    border-right: 1px solid #fff;
+    color: #fff;
+    font-family: acaslonpro-regular;
+    padding: 57px 10px;
+    text-align: center;
+}
+.filter-bg:hover {
+    background-color: #2f2f2f;
+    background-size: 110% auto;
+    transform: scale(1.06);
+    transition: all 0.2s ease-out 0s;
+}
+.right-text {
+    float: right;
+    position: relative;
+    top: 30px;
+}
+/*.top-nav-cities-filter .slick-slide {
+  margin: 0 15px;
+  max-height: 165px;
+  max-width: 246px;
+  min-height: 165px;
+}*/
+.clear-all-filters {
+    display: table;
+    font-family: acaslonpro-regular;
+    font-size: 13px;
+    margin: 0 auto;
+    text-align: left;
+    text-transform: uppercase;
+    width: 100%;
+}
+.top-filter-name {
+    font-family: geomanist-regular;
+    font-size: 15px;
+    margin-top: 10px;
+    text-transform: uppercase;
+}
+.clear-all-filters > a {
+    color: #000;
+    font-weight: lighter;
+}
+.top-bar-filters .active .filter-bg, .top-slick-filtes .active .filter-bg {
+    background-color: #c7ab84;
+}
+.top-bar-filters a, .top-slick-filtes a {
+    text-decoration: none;
+}
+.filter-menu-booking .combodate select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    align-items: center;
+    margin-top: 0 !important;
+    text-align: center;
+    text-align-last: center;
+}
+.top-nav-cities-filter .slick-prev {
+  left: 0;
+}
+.top-nav-cities-filter  .slick-next {
+  right: 0;
+}
+.top-nav-cities-filter .slick-list li {
+  overflow: hidden;
+}

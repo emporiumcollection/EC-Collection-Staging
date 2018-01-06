@@ -1,0 +1,272 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 19 Jan, 2017, 4:35:30 PM
+    Author     : aicreatives
+*/
+
+/*Ham Burger Menu*/
+.hamburger-menu-left-align{
+    left: 0;
+}
+.col-md-3.col-sm-2.header-text-align {
+    margin-top: 24px;
+}
+.left-hamburger-menu {
+    cursor: pointer;
+    margin-top: 6px;
+}
+.hamburger-menu.filter-hamburger {
+    font-size: 17px;
+    font-weight: lighter;
+    margin-top: 23px;
+}
+.sticky-nav .col-md-3.col-sm-2.header-text-align {
+    margin-top: 23px;
+}
+.sticky-nav .hamburger-menu {
+    margin-top: 27px;
+}
+
+/*Ham Burger Menu End*/
+.padding-left-0 {
+    padding-left: 0;
+}
+.padding-right-0{
+    padding-right: 0;
+}
+.margin-bottom-10 {
+    margin-bottom: 10px;
+}
+.margin-top-15{
+    margin-top: 15px;
+}
+.image-hotels-tittle {
+    font-family: GuldScript_PersonalUseOnly;
+    font-size: 16px;
+    height: 20px;
+    margin-top: 3px;
+}
+.add-to-lightbox-text > a {
+    color: rgb(122, 122, 122);
+    font-family: geomanist-light-italic;
+    font-size: 11px;
+    font-weight: bold;
+    text-decoration: none;
+}
+.view-btn > a {
+    color: rgb(122, 122, 122);
+    font-family: geomanist-light-italic;
+    font-size: 11px;
+    font-weight: bold;
+    text-decoration: none;
+}
+.image-side-floating-icons {
+    float: right;
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+.image-side-floating-icons > li {
+    float: right;
+    margin-left: 12px;
+    margin-top: 11px;
+}
+.image-side-floating-icons a {
+    color: rgb(102, 102, 102);
+    font-size: 11px;
+}
+.big-image-side-floating-icons{
+    float: right;
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+.big-image-side-floating-icons > li {
+    float: right;
+    margin-left: 12px;
+    margin-top: 11px;
+}
+.big-image-side-floating-icons a {
+    color: rgb(102, 102, 102);
+    font-size: 11px;
+}
+/*Filter Side Bar*/
+.filter-header {
+    background-color: #007874;
+    color: #fff;
+    padding: 10px;
+}
+.filter-content {
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+.sub-header {
+    color: #007874;
+    font-size: 15px;
+    padding: 11px;
+}
+.filter-type-heading {
+    background-color: #b3d7d6;
+    color: #007874;
+    font-size: 14px;
+    padding: 10px;
+}
+.fa.fa-sort-desc {
+    float: right;
+}
+.phone-below-text {
+    font-size: 11px;
+}
+.filter-inputs {
+    background-color: #f0f6f8;
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    font-size: 12px;
+    margin-bottom: 0;
+    padding: 0 10px;
+}
+.filter-inputs label {
+    color: #666666;
+    display: inline-block;
+    font-size: 11px;
+    margin-left: 8px;
+    position: relative;
+    top: -3px;
+}
+.info-icon-align i {
+    color: #666666;
+    float: right;
+    margin-top: 10px;
+}
+.filter-footer {
+    background-color: #f0f6f8;
+    padding: 10px;
+}
+.filter-type-content > form {
+    margin-bottom: 0;
+}
+.filter-footer a {
+    color: #007874;
+    padding: 0;
+}
+.filter-footer a:hover,.filter-footer a:focus,.filter-footer a:active  {
+    color: #007874;
+}
+@media screen and (max-width:991px) and (min-width: 768px) {
+    .image-side-floating-icons > li {
+        margin-left: 10px
+    }
+    .image-side-floating-icons > li {
+        margin-left: 0px;
+        float:left;
+        margin-right: 10px;
+    }
+    .image-side-floating-icons {
+        float: left;
+    }
+}
+@media screen and (max-width:767px) and (min-width: 320px) {
+    .padding-left-0 {
+        padding-left: 15px;
+    }
+    .res-margin-bottom {
+        margin-bottom: 15px;
+    }
+    .margin-bottom-10{
+        margin-bottom: 0;
+    }
+    .res-margin-bottom .res-margin-sub-box {
+        margin-bottom: 15px;
+    }
+    .margin-top-15 {
+        margin-top: 0;
+    }
+    .col-md-3.col-sm-2.header-text-align {
+        display: none;
+    }
+    .row.res-margin-align {
+        display: block;
+    }
+    .hamburger-menu.filter-hamburger {
+        font-size: 17px;
+        font-weight: lighter;
+        margin-top: 4px;
+    }
+    .container-fluid > .navbar-collapse, .container-fluid > .navbar-header, .container > .navbar-collapse, .container > .navbar-header {
+        margin-right: -30px;
+    }
+}
+
+.top-bar-filters {
+    display: table;
+    list-style: outside none none;
+    margin: 0 auto 40px;
+    padding: 0;
+    text-align: center;
+    width: auto;
+}
+.top-bar-filters > li {
+    display: inline-block;
+    min-width: 115px;
+}
+.filter-bg {
+    background-blend-mode: multiply;
+    background-color: #151515;
+    background-image: url("http://design-locations.biz/uploads/property_imgs_thumbs/front_property_4476_The Surin Puket - Thailand-design-locations.com4.jpeg");
+    background-position: center center;
+    background-size: cover;
+    color: #fff;
+    margin-right: -3px;
+    opacity: 0.83;
+    padding: 10px;
+    text-align: center;
+    font-family: acaslonpro-regular;
+}
+.right-text {
+    float: right;
+}
+.clear-all-filters {
+    display: table;
+    font-family: acaslonpro-regular;
+    font-size: 13px;
+    margin: 0 auto;
+    text-align: center;
+    text-transform: uppercase;
+    width: 15%;
+}
+.top-filter-name {
+    font-family: acaslonpro-regular;
+    font-size: 11px;
+    font-weight: bold;
+    margin-top: 10px;
+    text-transform: uppercase;
+}
+.clear-all-filters > a {
+    color: #000;
+    font-weight: lighter;
+}
+.top-bar-filters .active .filter-bg {
+    background-color: #c7ab84;
+}
+.top-bar-filters a {
+    text-decoration: none;
+}
+.filter-menu-booking .combodate select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    align-items: center;
+    margin-top: 0 !important;
+    text-align: center;
+    text-align-last: center;
+}
+.filter-menu-booking .combodate {
+    margin-left: 8px;
+}
+.form-group.post-filter-inputs:hover > label {
+    color: #000;
+}

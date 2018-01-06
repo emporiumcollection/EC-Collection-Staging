@@ -1,0 +1,559 @@
+
+.node-type-homepage #page-wrapper {
+    overflow: hidden;
+}
+.node-homepage {
+    overflow: hidden;
+}
+.header h2 {
+    font-size: 44px;
+    line-height: 44px;
+}
+@media screen and ( min-width: 1400px ) {
+    .header h2 {
+        font-size: 60px;
+        line-height: 60px;
+    }
+}
+.header {
+    overflow: hidden;
+    position: relative;
+}
+.header-inner-wrapper {
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+    bottom: 0;
+}
+.header-inner {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    text-align: center;
+}
+
+.field-name-field-hp-title-header {
+    font-size: 32px;
+}
+.field-name-field-hp-title-header div.underline{ width: 49px; margin-left:-24px; margin-top: -30px;}
+.scroll-down {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+}
+.scroll-down .arrow {
+    display: block;
+    background-position: 0px 0px;
+    background-repeat: repeat-y;
+    margin: 15px;
+    width: 30px;
+    height: 30px;
+}
+.scroll-down:hover .arrow {
+    background-position-y: 30px;
+    -webkit-transition: all 0.6s; /* Safari */
+    transition: all 0.6s;
+}
+/*@media screen and ( max-height: 700px ){
+    .field-name-field-hp-title-header {
+        font-size: 32px;
+    }
+}*/
+
+/* Mise en place du content first. */
+.content-first .large {
+    font-size: 0;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+.content-first .small {
+    display: none;
+    font-size: 0;
+    margin: 0 auto;
+    position: relative;
+}
+@media screen and ( max-width: 1239px ) {
+    .content-first .small { display: block; }
+    .content-first .large { display: none; }
+}
+
+.content-first .large .left,
+.content-first .large .right {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+}
+.content-first .large .left {
+    width: 60%;
+    overflow: hidden;
+    margin-bottom: 5%;
+}
+.content-first .large .right {
+    width: 40%;
+    font-size: medium; /*ie*/
+    font-size: initial;
+}
+
+.content-first .field-name-field-hp-image-1,
+.content-first .field-name-field-hp-image-2,
+.content-first .field-name-field-hp-image-3,
+.content-first .field-name-field-hp-image-4,
+.content-first .small .field-name-field-hp-image-5,
+.content-first .field-name-field-hp-text-1{
+    display: inline-block;
+    vertical-align: top;
+    font-size: medium; /*ie*/
+    font-size: initial;
+}
+.content-first .field-name-field-hp-image-1 img,
+.content-first .field-name-field-hp-image-2 img,
+.content-first .field-name-field-hp-image-3 img,
+.content-first .field-name-field-hp-image-4 img,
+.content-first .field-name-field-hp-image-5 img { width: 100%; }
+.content-first .field-name-field-hp-image-1 {
+    width: 66.66%;
+    height: 0;
+    padding-bottom: 66.66%;
+}
+.content-first .field-name-field-hp-image-2 { width: 33.33%;
+    height: 0;
+    padding-bottom: 33.33%;
+}
+.content-first .large .field-name-field-hp-image-5 {
+    line-height: 0;
+}
+.content-first .small .field-name-field-hp-image-5,
+.content-first .field-name-field-hp-image-3 {
+    width: 33.33%;
+    position: absolute;
+    left: 66.66%;
+    /*margin-top: 33.33%;*/
+    bottom: 0;
+    height: 0;
+    /*padding-bottom: 66.66%;*/
+    padding-bottom: 66.55%;
+}
+.content-first .small .field-name-field-hp-image-3 {
+    left: 0px;
+    bottom: 0px;
+    padding-bottom: 33.33%;
+}
+.content-first .field-name-field-hp-image-4 {
+    width: 33.34%;
+    margin-left: 33.33%;
+    height: 0;
+    padding-bottom: 33.33%;
+}
+.content-first .field-name-field-hp-text-1 {
+    width: 33.34%;
+    position: absolute;
+    left: 33.33%;
+    height: 0;
+    padding-bottom: 33.33%;
+    /*margin-top: 33.33%;*/
+    top: 33.33%;
+    text-align: center;
+}
+.content-first .field-name-field-hp-text-1 .field-items {
+    position: absolute;
+    width: 100%;
+    max-width: 285px;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.content-first .field-name-field-hp-text-1 .field-item {
+    padding: 0 15%;
+}
+@media screen and ( max-width: 1280px ) {
+    .content-first .field-name-field-hp-text-1 .field-item { font-size: 0.9em; }
+}
+@media screen and ( max-width: 1100px ) {
+    .content-first .field-name-field-hp-text-1 .field-item { font-size: 0.8em; }
+}
+.content-first .field-name-field-hp-text-1 h2 {
+    line-height: 53px;
+    padding-top: 19px;
+    margin: 0 0 22px;
+    font-size: 30px;
+    position: relative;
+}
+.content-first .field-name-field-hp-text-1 p {
+    margin: 0 0 19px;
+    line-height: 18px;
+    letter-spacing: 0.03em;
+}
+.content-first .field-name-field-hp-text-1 a {
+    background: none !important;
+    display: inline-block;
+    font-style: italic;
+    line-height: 32px;
+    height: 32px;
+   position: relative;
+}
+.content-first .large .field-name-field-hp-text-2 .field-items {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    text-align: center;
+}
+.content-first .large .field-name-field-hp-text-2 {
+    position: absolute;
+    width: 100%;
+    height: 30%;
+    text-align: center;
+    bottom: 0px;
+    left: 0px;
+}
+.content-first .small .field-name-field-hp-text-2 {
+    z-index: 1;
+    font-size: initial;
+    position: absolute;
+    right: 0;
+    height: 0;
+    width: 33.33%;
+    padding-bottom: 23%;
+    bottom: 0px;
+}
+.content-first .small .field-name-field-hp-text-2 .field-items {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    text-align: center;
+}
+.content-first .large .field-name-field-hp-text-2 .field-item {
+    font-size: 24px;
+    line-height: 18px;
+    letter-spacing: 0.14em;
+}
+.content-first .small .field-name-field-hp-text-2 .field-item {
+    font-size: 16px;
+    line-height: 12px;
+    letter-spacing: 0.14em;
+}
+.content-first .field-name-field-hp-text-2 p{ margin: 0 0 4px; }
+.content-first .field-name-field-hp-text-2 p:nth-child(3) a {
+    background: none;
+    color: inherit;
+    border: none;
+}
+.content-first .field-name-field-hp-text-2 pre{
+    text-transform: uppercase;
+    opacity: 0.77;
+    letter-spacing: 0.14em;
+    padding-bottom: 3px;
+}
+.content-first .large .field-name-field-hp-text-2 pre{
+    font-size: 15px;
+    line-height: 15px;
+    padding-top: 2px;
+}
+.content-first .small .field-name-field-hp-text-2 pre{ font-size: 12px; }
+.content-first .large .field-name-field-hp-text-2 h2 {
+    font-size: 40px;
+    margin: 0 0 28px;
+    padding: 0 0 24px;
+    position: relative;
+    letter-spacing: 0.025em;
+}
+.content-first .small .field-name-field-hp-text-2 h2 {
+    font-size: 30px;
+    margin: 0 0 19px;
+    padding: 0 0 17px;
+    position: relative;
+    letter-spacing: 0.025em;
+}
+.content-first .field-name-field-hp-text-2 a {
+    background: none !important;
+    display: inline-block;
+    font-size: 14px;
+    font-style: italic;
+    letter-spacing: 0.14em;
+    line-height: 32px;
+    height: 32px;
+    /*border-bottom: 1px solid rgba(173, 160, 119, 0.44);*/
+}
+.content-first .field-name-field-hp-text-2 a:hover{ text-decoration: none; }
+
+/* Mise en place du style du content second. */
+.content-second {
+    max-width: 1600px;
+    margin: auto;
+    position: relative;
+    font-size: 0;
+}
+.content-second>* { font-size: medium; font-size: initial; }
+.content-second .field-name-field-hp-slider .node-details-slider {
+    width: 60%;
+    padding-left: 20%;
+}
+.content-second .field-name-field-hp-slider .slides .field-name-field-slide-image-text,
+.content-second .field-name-field-hp-slider .slides .field-name-field-slide-image-link {
+    display : none;
+}
+.content-second .field-name-field-hp-slider .text-container-wrapper{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 25%;
+    height: 100%;
+    font-size: 15px;
+    line-height: 18px;
+    letter-spacing: 0.03em;
+}
+.content-second .field-name-field-hp-slider .text-container-inner{
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    -webkit-filter: blur(0);
+    filter: blur(0);
+}
+.content-second .field-name-field-hp-slider .text-container{
+    padding: 0 14% 20px;
+    text-align: center;
+}
+.content-second .field-name-field-hp-slider .field-name-field-slide-image-text .field-item{
+    text-align: justify;
+    max-height: 145px;
+    overflow: hidden;
+    -webkit-backface-visibility: hidden;
+}
+.content-second .field-name-field-hp-slider .field-name-field-slide-image-text .field-item:first-child {
+    text-align: center;
+    font-size: 30px;
+    line-height: 36px;
+    margin: 0 0 24px;
+    padding: 0 0 16px;
+    position: relative;
+    letter-spacing: 0;
+    -webkit-backface-visibility: hidden;
+	-webkit-transform: translateZ(0);
+}
+
+.content-second .field-name-field-hp-text{
+	width: 320px;
+	height: 640px;
+}
+.content-second .field-name-field-hp-text .field-items{ position: relative; top: 46.8%;}
+.content-second .field-name-field-hp-text .field-item{ max-width: 220px; margin: 0 auto;}
+.content-second .field-name-field-hp-text .field-item:nth-child(1){ max-width: 150px; padding-bottom: 50px;}
+
+@media screen and ( max-width: 1400px ) {
+    .content-first .field-name-field-hp-text-1 .field-item { padding: 0 12%; }
+    .content-first .field-name-field-hp-text-1 h2 { font-size: 23px; line-height: 43px; margin-bottom: 16px; position: relative;}
+    .content-first .field-name-field-hp-text-1 p { font-size: 14px; margin-bottom: 11px; }
+    .content-second .field-name-field-hp-slider .text-container-wrapper {
+        font-size: 14px;
+    }
+    .content-second .field-name-field-hp-slider .field-name-field-slide-image-text .field-item:first-child {
+        font-size: 23px;
+        line-height: 28px;
+        margin: 0 0 14px;
+        padding: 0 0 5px;
+        position: relative;
+    }
+}
+.content-second .field-name-field-hp-slider .field-name-field-slide-image-link {
+    padding-top: 28px;
+    font-style: italic;
+    -webkit-backface-visibility: hidden;
+}
+.content-second .field-name-field-hp-slider .field-name-field-slide-image-link a{
+    display: inline-block;
+    line-height: 26px;
+    height: 26px;
+    /*border-bottom: 1px solid rgba(255, 255, 255, 0.44);*/
+}
+.content-second .field-name-field-hp-slider .field-name-field-slide-image-link a:hover{ text-decoration: none; }
+
+
+.content-second .field-name-field-hp-slider .node-details-slider .field-type-image {
+    font-size: 0;
+}
+.content-second .field-name-field-hp-slider .node-details-slider .slides-count,
+.content-second .field-name-field-hp-slider .node-details-slider .flex-direction-nav {
+    width: 140px;
+    margin-left: calc(12.5% - 70px);
+    position: absolute;
+    bottom: 16%;
+    left: 0;
+    display: block;
+    height: 24px;
+    z-index:1;
+}
+.content-second .field-name-field-hp-slider .node-details-slider .slides-count {
+    width: 60px;
+    margin-left: calc(12.5% - 30px);
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0.05em;
+    text-align: center;
+}
+.content-second .field-name-field-hp-slider .node-details-slider .flex-direction-nav  a.flex-prev,
+.content-second .field-name-field-hp-slider .node-details-slider .flex-direction-nav  a.flex-next {
+    background-image: url("images/slideshow-prev-homepage.png") !important;
+    background-position: center !important;
+    height: 24px;
+    margin: 0;
+    top: 0;
+    left: 0;
+    width: 40px;
+}
+.content-second .field-name-field-hp-slider .node-details-slider .flex-direction-nav  a.flex-next {
+    background-image: url("images/slideshow-next-homepage.png") !important;
+    left: inherit;
+    right: 0;
+}
+.content-second .field-name-field-hp-slider .node-details-slider .flex-direction-nav  a:before {
+    display: none;
+}
+
+.content-second .field-name-field-hp-book-room {
+    width: 30%;
+    padding-bottom: 30%;
+    height: 0;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 17.5%;
+}
+.content-second .field-name-field-hp-book-room .field-items {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.content-second .field-name-field-hp-book-room .field-item { height: 100%; }
+.content-second .field-name-field-hp-book-room iframe {
+    width: 100%;
+    height: 100%;
+}
+
+.content-second .infos {
+    display: inline-block;
+    width: 20%;
+    padding-left: 10%;
+}
+.content-second .infos .field-name-field-hp-text {
+    background-size: cover;
+    position: relative;
+    width: 100%;
+    padding-bottom: 200%;
+    height: 0;
+    background-position: center;
+}
+.content-second .infos .field-name-field-hp-text p{ margin-bottom: 0;}
+@media screen and ( max-width: 1400px ) {
+    .content-second .infos .field-name-field-hp-text { font-size: 0.8em; }
+}
+.content-second .infos .field-name-field-hp-text .field-items {
+    position: absolute;
+    top: 46.8%;
+    width: 100%;
+}
+.content-second .infos .field-type-image{ font-size: 0; }
+.content-second .infos .field-type-image img { width: 100%; }
+.content-second .field-name-field-newsletter {
+    display: inline-block;
+    vertical-align: top;
+    width: 40%;
+    position: relative;
+}
+.content-second .field-name-field-hp-text .field-item a {
+    background: none !important;
+    color: inherit;
+}
+.content-second .field-name-field-hp-text .field-item a:hover{ text-decoration: none; }
+@media screen and (max-width: 1520px){
+    .content-second .field-name-field-hp-text .field-item {
+        font-size: 11px;
+    }
+    .content-second .field-name-field-hp-text .field-item:nth-child(1) {
+        max-width: 130px;
+    }
+}
+@media screen and ( min-width: 1240px ) {
+	.node-homepage{ padding-bottom: 400px;}
+}
+@media screen and ( max-width: 1239px ) {
+    .content-second .field-name-field-hp-slider .node-details-slider {
+        width: 66.66%;
+        padding-left: 33.33%;
+    }
+    .content-second .field-name-field-hp-slider .node-details-slider .flex-direction-nav { margin-left: calc(16.66% - 70px); }
+    .content-second .field-name-field-hp-slider .node-details-slider .slides-count { margin-left: calc(16.66% - 30px); }
+    .content-second .field-name-field-hp-slider .text-container-wrapper {
+        width: 33.33%;
+    }
+    .content-second .field-name-field-hp-book-room {
+        position: relative;
+        float: right;
+        width: 66.66%;
+        padding-bottom: 50%;
+        margin: 0 !important;
+
+    overflow: hidden;/*FIXME*/
+    }
+    .content-second .infos {
+        width: 33.33%;
+        padding-left: 0;
+        margin-top: 16.67%;
+    }
+    .content-second .block-details-mailchimp {
+        margin: 0px;
+    }
+    .content-second .field-name-field-newsletter {
+        width: 66.66%;
+        position: absolute;
+        bottom: 0px;
+    }
+    .content-second .field-name-field-hp-slider .node-details-slider .field-type-image {
+        height: 0px;
+        padding-bottom: 100%;
+        position: relative;
+    }
+    .content-second .field-name-field-hp-slider .node-details-slider .field-type-image .field-items {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+    }
+    .content-second .field-name-field-hp-slider .node-details-slider .field-type-image .field-item {
+        height: 100%;
+        width: 100%;
+    }
+    .content-second .field-name-field-hp-slider .node-details-slider .field-type-image img{
+        height: 100%;
+        width: auto;
+        max-width: initial;
+    }
+    .content-second .field-name-field-hp-text .field-item:nth-child(1) { padding-bottom: 30px; }
+}
+@media screen and ( max-width: 1024px ) {
+    .content-second .field-name-field-hp-book-room { margin-top: 0% !important; }
+}
+    .content-second .infos {
+    	
+    }
+@media screen and (max-width: 920px) {
+    .content-second .field-name-field-hp-text .field-item {
+        font-size: 10px;
+    }
+    .content-second .field-name-field-hp-text .field-item:nth-child(1) {
+        max-width: 120px;
+    }
+}
