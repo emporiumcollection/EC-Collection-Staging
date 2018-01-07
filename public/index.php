@@ -57,5 +57,3 @@ $response = $kernel->handle(
 $response->send();
 
 $kernel->terminate($request, $response);
-
-echo "Just for Testing";
