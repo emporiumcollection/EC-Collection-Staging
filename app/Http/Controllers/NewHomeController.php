@@ -6951,7 +6951,7 @@ class NewHomeController extends Controller {
                             $ourdesitnationHTML  .= '</div>'.$lineBreak;
                         $ourdesitnationHTML  .= '</div>'.$lineBreak;
                  }
-                       
+                 $ourdesitnationHTML = 'test list';      
                  Storage::put('homeOurDestination.html', $ourdesitnationHTML); 
                  $exists = Storage::disk('local')->has('homeOurDestination.html');
                  if($exists){
