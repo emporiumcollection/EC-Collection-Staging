@@ -1,2 +1,16 @@
 .env
 nbproject
+/vendor
+.DS_store
+._.DS_store
+/node_modules
+.env
+/nbproject/
+/nbproject/private/
+.settings/
+.project
+.metadata
+.classpath
+.buildpath
+/public/storage
+/storage/*.key
