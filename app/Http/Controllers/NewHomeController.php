@@ -7128,7 +7128,7 @@ class NewHomeController extends Controller {
            Storage::put('leftOurDestination.html', $ourdesitnationLeftSideHTML); 
            $exists = Storage::disk('local')->has('leftOurDestination.html');
             if($exists){
-                echo 'File Generated  : leftOurDestination.html'.'<br>';
+                echo 'File Generated s : leftOurDestination.html'.'<br>';
             } 
         }
 
