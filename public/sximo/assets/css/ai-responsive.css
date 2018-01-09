@@ -4,4 +4,12 @@
 	display: none;
     }
     
+    .serach-page-menu {
+	text-align: center;
+    }
+    
+    #search-navbar-our-collection-res::placeholder {
+	color: #73706D !important;
+    }
+    
 }
