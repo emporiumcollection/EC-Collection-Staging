@@ -869,7 +869,7 @@
 		  gtag('config', 'UA-110391807-1');
 		</script>
     </head>
-    <body id="main"> <h1> Test Page </h1>
+    <body id="main">
         <!--Desktop Version Start Here-->
         <div class="hidden-xs hidden-sm">
             <div class="wrapper">
