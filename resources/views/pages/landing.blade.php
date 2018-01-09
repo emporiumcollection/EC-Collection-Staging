@@ -2217,7 +2217,7 @@
                      </div>
                      <!--Login Forms Start Here-->
                      <div class="landing-page-lock-login-btn-outer-align">
-                         <div class="login-form-show-hide">
+                         <div class="login-form-show-hide" style="display:block;">
                              <div class="login-sign-up-sidebar-outer-align">
                                  <div class="your-account-heading-align">
                                      <div class="ps-login-signup-form-top-bar">

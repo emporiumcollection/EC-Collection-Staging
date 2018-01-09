@@ -429,7 +429,7 @@ a.textButton.arrowButton {
     float: left;
     clear: left;
     font-size: 14px;
-	font-family: serif;
+    font-family: Geomanist-light;
 }
 
 #lightbox_basket_trigger a.link-to-show.active {
@@ -561,7 +561,7 @@ a.textButton.arrowButton {
 }
 
 .tt-menu {
-  background-color: #000;
+  background-color: #252525;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   display: block;
   left: 0 !important;
