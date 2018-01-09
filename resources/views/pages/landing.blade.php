@@ -1972,7 +1972,7 @@
                                     </a>
                                 </div>-->
                                 <div class="panel panel-default  sub-menues">
-                                    <a href="#" class="trigger-click-on-book-now collapsed">
+                                    <a href="#collapse-mobile-4" class="trigger-click-on-book-now collapsed" data-toggle="collapse" data-parent="#accordion-mobile">
                                         <div class="panel-heading">
                                             <h4 class="panel-title menu-text accordion">
                                                 Search By Date
