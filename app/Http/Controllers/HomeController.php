@@ -5662,7 +5662,7 @@ class HomeController extends Controller {
             }
         }
 
-        if (!is_null($request->dest)) {
+         if (isset($request->dest) && $request->dest!='') {
             $catprops = DB::select(DB::raw("SELECT id,property_name,property_slug FROM tb_properties WHERE tb_properties.property_type = 'Hotel' AND property_status = '1' $getcats ORDER BY id asc"));
             if (!empty($catprops)) {
                 foreach ($catprops as $cprop) {
@@ -5769,8 +5769,8 @@ class HomeController extends Controller {
         $pagination = new Paginator($pagedData, count($propertiesArr), $perPage);
 
         //print_r($pagination);
-
-        if (!is_null($request->area)) {
+         
+        if (isset($request->area) && $request->area!='') { 
             $citydest = \DB::table('tb_categories')->where('parent_category_id', $request->dest)->get();
             if (!empty($citydest)) {
                 $d = 0;
@@ -5792,8 +5792,8 @@ class HomeController extends Controller {
             }
             //print_r($tempproperties);
             $pager = $this->injectPaginate();
-
-            if (!is_null($request->dest) && $request->current_filter == 'destination') {
+            
+            if (isset($request->dest) && $request->dest!='' && $request->current_filter == 'destination') {
                 $cateObjtm = \DB::table('tb_categories')->where('id', $request->dest)->where('category_published', 1)->first();
                 if (!empty($cateObjtm)) {
                     $rep['categoryslider'] = \DB::table('tb_sliders')->where('slider_category', $cateObjtm->category_name)->get();

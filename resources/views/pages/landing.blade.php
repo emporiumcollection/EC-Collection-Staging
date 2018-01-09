@@ -6,7 +6,7 @@
         <title>Emporium-Voyage</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="{{ asset('sximo/assets/css/landing-page-styles.css')}}" rel="stylesheet" type="text/css"/>
-        
+        <link href="{{ asset('sximo/assets/css/ai-responsive.css')}}" rel="stylesheet" type="text/css"/>
 <!--        <link href="{{ asset('sximo/assets/css/menu41e7.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/responsive.custom41e7.css')}}" rel="stylesheet" type="text/css"/>
         
@@ -755,7 +755,8 @@
         .login_popup .fa {
             color: #ABA07C;
             font-size: 24px;
-            margin: 14px;
+            margin: 0px;
+            padding: 0px 0px 0px 0px;
         }
         
         header {
@@ -845,7 +846,7 @@
     
     .video-popup-btn.login_popup.show-login-forms-btn {
 	display: inline-block;
-	margin-top: -23px;
+	margin-top: -12px;
 	width: 59%;
     }
     
@@ -1860,7 +1861,7 @@
                                 <div class="panel panel-default  sub-menues">
                                     <a class="collapsed" data-toggle="collapse" data-parent="#accordion-mobile" href="#collapse-mobile-1">
                                         <div class="panel-heading">
-                                            <h4 class="panel-title menu-text accordion ">
+                                            <h4 class="panel-title menu-text accordion">
                                                 Search our collection
                                             </h4>
                                         </div>
@@ -2688,7 +2689,7 @@
                                  </div>
                              </div>
                          </div>
-                         <!--Login Forms End Here-->
+                         <!--Login Forms End Here-->    
                      </div>
                      <div class="clearfix"></div>
                  </div>

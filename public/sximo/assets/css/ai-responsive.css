@@ -1,0 +1,15 @@
+@media (min-width: 320px) and (max-width: 480px) {
+    
+    .landing-mobile-top-header {
+	display: none;
+    }
+    
+    .serach-page-menu {
+	text-align: center;
+    }
+    
+    #search-navbar-our-collection-res::placeholder {
+	color: #73706D !important;
+    }
+    
+}
