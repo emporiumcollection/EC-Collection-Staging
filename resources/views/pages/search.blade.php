@@ -1465,6 +1465,9 @@ function scrollDataAjax(it_scroll,pageCounter)
         var dest_area = destnarea.split("#:");
         queryStrng = '&dest=' + dest_area[0] + '&area=' + dest_area[1];
     }
+    else {
+        queryStrng = '&dest=&area=';
+    }
 
     if (isPreviousEventComplete && isDataAvailable) {
         isPreviousEventComplete = false;
@@ -1473,7 +1476,7 @@ function scrollDataAjax(it_scroll,pageCounter)
     $.ajax({
         url: "{{ URL::to('filter_search_destionation')}}",
         type: "get",
-        data: 'dest=&s=' + $(".ai_search_keywords").val() + '&arrive=' + $(".ai-arrive-date-filter").val() + '&destination=' + $(".ai-depart-date-filter").val() + '&page=' + nxtpg + queryStrng + "&filter_min_price=" + $("#filter_min_price").val() + "&filter_max_price=" + $("#filter_max_price").val() + "&current_filter=" + $(".ai-current-filter").val(),
+        data: 's=' + $(".ai_search_keywords").val() + '&arrive=' + $(".ai-arrive-date-filter").val() + '&destination=' + $(".ai-depart-date-filter").val() + '&page=' + nxtpg + queryStrng + "&filter_min_price=" + $("#filter_min_price").val() + "&filter_max_price=" + $("#filter_max_price").val() + "&current_filter=" + $(".ai-current-filter").val(),
         dataType: "json",
         complete: function (jqXHR, textStatus ) {
             // $('#nxtpg').val(parseInt(nxtpg) + 1);
@@ -1758,6 +1761,9 @@ if (destnarea != '')
 var dest_area = destnarea.split("#:");
 queryStrng = '&dest=' + dest_area[0] + '&area=' + dest_area[1];
 }
+else {
+    queryStrng = '&dest=&area=';
+}
 
 if (isPreviousEventComplete && isDataAvailable) {
 isPreviousEventComplete = false;
@@ -1766,7 +1772,7 @@ isPreviousEventComplete = false;
 $.ajax({
 url: "{{ URL::to('filter_search_destionation')}}",
         type: "get",
-        data: 'dest=&s=' + $(".ai_search_keywords").val() + '&arrive=' + $(".ai-arrive-date-filter").val() + '&destination=' + $(".ai-depart-date-filter").val() + '&page=' + nxtpg + queryStrng + "&filter_min_price=" + $("#filter_min_price").val() + "&filter_max_price=" + $("#filter_max_price").val() + "&current_filter=" + $(".ai-current-filter").val(),
+        data: 's=' + $(".ai_search_keywords").val() + '&arrive=' + $(".ai-arrive-date-filter").val() + '&destination=' + $(".ai-depart-date-filter").val() + '&page=' + nxtpg + queryStrng + "&filter_min_price=" + $("#filter_min_price").val() + "&filter_max_price=" + $("#filter_max_price").val() + "&current_filter=" + $(".ai-current-filter").val(),
         dataType: "json",
         complete: function (jqXHR, textStatus ) {
             $('#nxtpg').val(parseInt(nxtpg) + 1);
