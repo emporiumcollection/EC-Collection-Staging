@@ -501,9 +501,6 @@
 	vertical-align: text-top;
 	width: 0%;
     }
-    .node-btn:active {
-	text-decoration: underline !important;
-    }
     .post-filter-inputs:hover, .post-filter-inputs:active, .post-filter-inputs:focus {
 	background-color: #393939;
 	border-left: 4px solid #a1a39c;
