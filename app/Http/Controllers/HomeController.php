@@ -5620,8 +5620,19 @@ class HomeController extends Controller {
                 }
             }
         }
+        /****** New Query Ravinder *********/
 
-        //$seaprops = \DB::table('tb_properties')->where('property_name', 'like', '%'.$keyword.'%')->where('property_status',1)->get();
+       /* if ($filter_min_price != '' && $filter_max_price != '') {
+             
+            $getPriceQry =" , (SELECT pcrp.rack_rate FROM tb_properties_category_rooms_price pcrp, tb_properties pr  where pr.id=pcrp.property_id and pcrp.rack_rate between '".$filter_min_price."' and '".$filter_max_price."' order by pcrp.rack_rate DESC limit 0,1 ) as price ," ;
+            $filterPriceQry = " pr.id in(SELECT pr.id,pcrp.rack_rate FROM tb_properties_category_rooms_price pcrp, tb_properties pr  where pr.id=pcrp.property_id and pcrp.rack_rate between '".$filter_min_price."' and '".$filter_max_price."' group by pr.id order by pcrp.rack_rate DESC) ";
+        }
+
+        $query = "SELECT pr.id,pr.property_name,pr.property_slug"; 
+        $query .= $getPriceQry;
+        $query .= " (SELECT cat.category_name FROM tb_categories cat, tb_properties pr where pr.property_category_id=cat.id limit 0,1 ) as category_name ";
+        $query .= " FROM tb_properties pr  ";
+        $whereClause = " WHERE pr.property_type = 'Hotel' AND .prproperty_name like '%$keyword%' AND pr.property_status = '1' $getcats GROUP BY pr.id ORDER BY pr.id asc ";*/
         
         $__currentPage = ($currentPage > 0)? $currentPage : 1;
         $start = ($perPage * $__currentPage);
@@ -5769,7 +5780,7 @@ class HomeController extends Controller {
         $pagination = new Paginator($pagedData, count($propertiesArr), $perPage);
 
         //print_r($pagination);
-         
+
         if (isset($request->area) && $request->area!='') { 
             $citydest = \DB::table('tb_categories')->where('parent_category_id', $request->dest)->get();
             if (!empty($citydest)) {
@@ -5792,7 +5803,7 @@ class HomeController extends Controller {
             }
             //print_r($tempproperties);
             $pager = $this->injectPaginate();
-            
+
             if (isset($request->dest) && $request->dest!='' && $request->current_filter == 'destination') {
                 $cateObjtm = \DB::table('tb_categories')->where('id', $request->dest)->where('category_published', 1)->first();
                 if (!empty($cateObjtm)) {
