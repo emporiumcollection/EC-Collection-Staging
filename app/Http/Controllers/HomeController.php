@@ -5622,18 +5622,28 @@ class HomeController extends Controller {
         }
         /****** New Query Ravinder *********/
 
-       /* if ($filter_min_price != '' && $filter_max_price != '') {
+        if ($filter_min_price != '' && $filter_max_price != '') {
              
-            $getPriceQry =" , (SELECT pcrp.rack_rate FROM tb_properties_category_rooms_price pcrp, tb_properties pr  where pr.id=pcrp.property_id and pcrp.rack_rate between '".$filter_min_price."' and '".$filter_max_price."' order by pcrp.rack_rate DESC limit 0,1 ) as price ," ;
-            $filterPriceQry = " pr.id in(SELECT pr.id,pcrp.rack_rate FROM tb_properties_category_rooms_price pcrp, tb_properties pr  where pr.id=pcrp.property_id and pcrp.rack_rate between '".$filter_min_price."' and '".$filter_max_price."' group by pr.id order by pcrp.rack_rate DESC) ";
+            $getPriceQry =" , (SELECT pcrp.rack_rate FROM tb_properties_category_rooms_price pcrp, tb_properties pr  where pr.id=pcrp.property_id and pcrp.rack_rate between '".$filter_min_price."' and '".$filter_max_price."' order by pcrp.rack_rate DESC limit 0,1 ) as price , " ;
+            $filterPriceQry = " and pr.id in(SELECT pr.id FROM tb_properties_category_rooms_price pcrp, tb_properties pr  where pr.id=pcrp.property_id and pcrp.rack_rate between '".$filter_min_price."' and '".$filter_max_price."' group by pr.id order by pcrp.rack_rate DESC) ";
+        }else{
+             $getPriceQry =" , (SELECT pcrp.rack_rate FROM tb_properties_category_rooms_price pcrp, tb_properties pr  where pr.id=pcrp.property_id  order by pcrp.rack_rate DESC limit 0,1 ) as price ," ;
+             $filterPriceQry = "";
         }
 
         $query = "SELECT pr.id,pr.property_name,pr.property_slug"; 
         $query .= $getPriceQry;
         $query .= " (SELECT cat.category_name FROM tb_categories cat, tb_properties pr where pr.property_category_id=cat.id limit 0,1 ) as category_name ";
         $query .= " FROM tb_properties pr  ";
-        $whereClause = " WHERE pr.property_type = 'Hotel' AND .prproperty_name like '%$keyword%' AND pr.property_status = '1' $getcats GROUP BY pr.id ORDER BY pr.id asc ";*/
+        $whereClause = " WHERE pr.property_type = 'Hotel' AND .prproperty_name like '%$keyword%' AND pr.property_status = '1'".$filterPriceQry.$getcats." GROUP BY pr.id ORDER BY pr.id asc ";
         
+        echo $finalQry = $query.$whereClause ;
+        die;
+        $property = DB::select(DB::raw($finalQry));
+
+
+        // Comment code by Ravinder
+        /*
         $__currentPage = ($currentPage > 0)? $currentPage : 1;
         $start = ($perPage * $__currentPage);
                 
@@ -5672,7 +5682,7 @@ class HomeController extends Controller {
                 }
             }
         }
-
+        */
          if (isset($request->dest) && $request->dest!='') {
             $catprops = DB::select(DB::raw("SELECT id,property_name,property_slug FROM tb_properties WHERE tb_properties.property_type = 'Hotel' AND property_status = '1' $getcats ORDER BY id asc"));
             if (!empty($catprops)) {
