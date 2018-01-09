@@ -2043,7 +2043,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!--<div class="panel panel-default  sub-menues">
+                                <div class="panel panel-default  sub-menues">
                                     <a class="collapsed" data-toggle="collapse" data-parent="#accordion-mobile" href="#collapse-mobile-4">
                                         <div class="panel-heading">
                                             <h4 class="panel-title menu-text accordion">
@@ -2096,7 +2096,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>-->
+                                </div>
                             </div>
                             <!--Footer Section-->
                         </div>
