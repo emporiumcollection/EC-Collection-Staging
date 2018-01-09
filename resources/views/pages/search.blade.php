@@ -90,6 +90,10 @@
         </script>
         @endif
         <style>
+            /* Active filter */
+            #maindestinations .node-btn.active {
+                border-bottom: 1px solid #fff;
+            }
             .FltRgt { 
                 float:right; cursor:pointer; 
             }
