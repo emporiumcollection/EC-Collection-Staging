@@ -5491,7 +5491,7 @@ class HomeController extends Controller {
         $filter_min_price = Input::get('filter_min_price');
         $filter_max_price = Input::get('filter_max_price');
 
-        if (!is_null($request->dest)) {
+        if (isset($request->dest) && $request->dest!='') {
             $cateObjtm = \DB::table('tb_categories')->where('id', $request->dest)->where('category_published', 1)->first();
             if (!empty($cateObjtm)) {
                 $rep['searchdestname'] = $cateObjtm->category_name;
