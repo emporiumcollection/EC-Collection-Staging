@@ -1069,15 +1069,14 @@
                             <!-- end sidebar -->
                             
                             <a data-popup-id="login-forms-popup" href="#" class="video-popup-btn login_popup show-login-forms-btn"><i class="fa fa-lock " aria-hidden="true" ></i></a>
-                            
-                        </header>
-                        <a data-popup-id="ev-primary-navigation" href="#" class="video-popup-btn"><!--<i class="fa fa-bars hamburgMenu" aria-hidden="true"></i>-->
+                            <a data-popup-id="ev-primary-navigation" href="#" class="video-popup-btn"><!--<i class="fa fa-bars hamburgMenu" aria-hidden="true"></i>-->
                                 <div class="block-content content">
                                     <span></span>
                                     <span> </span>
                                     <span></span>
                                 </div>
                             </a>
+                        </header>
                         <!--Main Page-->
                         @if(!empty($slider)) 
                         <div class="col-md-10 main-page-landing">
