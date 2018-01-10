@@ -6696,7 +6696,7 @@ class HomeController extends Controller {
     }
 	
 	function SearchLuxuryExperience(Request $request) {
-        
+       
         if (CNF_FRONT == 'false' && $request->segment(1) == '') :
             return Redirect::to('dashboard');
         endif;
@@ -6735,7 +6735,7 @@ class HomeController extends Controller {
         if ($page != '') :
             $content = \DB::table('tb_pages')->where('alias', '=', $page)->where('status', '=', 'enable')->get();
 
-//			if($keyword!='')
+            //if($keyword!='')
             if (true) {
                 if (count($content) >= 1) {
                     $row = $content[0];
@@ -6794,8 +6794,10 @@ class HomeController extends Controller {
                         $props = array();
                         $perPage = 40;
                         $perPage = 12;
+
                         $currentPage = Input::get('page', 1) - 1;
                         $TagsObj = \DB::table('tb_tags_manager')->select('id')->where('tag_title', $keyword)->where('tag_status', 1)->first();
+                      
                         $TagsConId = array();
                         $TagsFileConId = array();
                         $pr = 0;
@@ -6897,7 +6899,7 @@ class HomeController extends Controller {
                             }
                             $seaprops = $seapropstemp->orderBy('tb_properties.editor_choice_property', 'desc')->orderBy('tb_properties.feature_property', 'desc')->get();
                         } else {
-//                            $seaprops = \DB::table('tb_properties')->where('property_name', 'like', '%' . $keyword . '%')->where('property_status', 1)->where('tb_properties.property_type', 'Hotel')->get();
+                            //$seaprops = \DB::table('tb_properties')->where('property_name', 'like', '%' . $keyword . '%')->where('property_status', 1)->where('tb_properties.property_type', 'Hotel')->get();
                             $query = "SELECT editor_choice_property,feature_property,id,property_name,property_slug,property_category_id FROM tb_properties WHERE property_name LIKE '%$keyword%' AND property_status = 1 AND tb_properties.property_type = 'Hotel' ";
                             $query .= "ORDER BY tb_properties.editor_choice_property desc, tb_properties.feature_property desc, (SELECT rack_rate FROM tb_properties_category_rooms_price WHERE tb_properties_category_rooms_price.property_id = tb_properties.id ORDER BY rack_rate DESC LIMIT 1) * 1 DESC ";
                             $seaprops = DB::select(DB::raw($query));
@@ -6998,9 +7000,9 @@ class HomeController extends Controller {
                             }
                         }
 
-//                        usort($propertiesArr, function($a, $b) {
-//                            return trim($a['data']->property_name) > trim($b['data']->property_name);
-//                        });
+                        //usort($propertiesArr, function($a, $b) {
+                            //return trim($a['data']->property_name) > trim($b['data']->property_name);
+                        //   });
                         //echo count($propertiesArr);
                         $pagedData = array_slice($propertiesArr, $currentPage * $perPage, $perPage);
                         $pagination = new Paginator($pagedData, count($propertiesArr), $perPage);
@@ -7034,14 +7036,19 @@ class HomeController extends Controller {
                                 $tagsArr[$tags->parent_tag_id][] = $tags;
                             }
                         }
-
+                        
                         $mainArrdestts = array();
+                         /* Note:
+                            Now the our destinations will render from storage/app/leftOurDestination.html. 
+                            That file will be genrate from cron job or backend panel.  
+                        */
+                        /*
                         $maindest = \DB::table('tb_categories')->where('parent_category_id', 0)->where('id', '!=', 8)->get();
                         if (!empty($maindest)) {
                             $d = 0;
                             foreach ($maindest as $mdest) {
 
-                                /*                                 * *********************************************** */
+                                
 
                                 $getcats = '';
                                 $chldIds = array();
@@ -7126,7 +7133,8 @@ class HomeController extends Controller {
                                 $d++;
                             }
                         }
-
+                        */
+                        die;
                         $this->data['categoryslider'] = \DB::table('tb_sliders')->where('slider_category', $keyword)->get();
 						
 						$this->data['experiences'] = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_custom_title')->where('category_published', 1)->where('parent_category_id', 8)->get();
