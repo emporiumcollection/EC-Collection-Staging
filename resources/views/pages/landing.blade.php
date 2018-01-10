@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="{{ asset('sximo/assets/css/landing-page-styles.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/ai-responsive.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('sximo/assets/css/ai-responsive.css')}}" rel="stylesheet" type="text/css"/>
 <!--        <link href="{{ asset('sximo/assets/css/menu41e7.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/responsive.custom41e7.css')}}" rel="stylesheet" type="text/css"/>
         
@@ -1068,7 +1069,13 @@
                             <!-- end sidebar -->
                             
                             <a data-popup-id="login-forms-popup" href="#" class="video-popup-btn login_popup show-login-forms-btn"><i class="fa fa-lock " aria-hidden="true" ></i></a>
-                            <a data-popup-id="login-forms-popup" href="#" class="video-popup-btn"><i class="fa fa-bars hamburgMenu" aria-hidden="true"></i></a>
+                            <a data-popup-id="ev-primary-navigation" href="#" class="video-popup-btn"><!--<i class="fa fa-bars hamburgMenu" aria-hidden="true"></i>-->
+                                <div class="block-content content">
+                                    <span></span>
+                                    <span> </span>
+                                    <span></span>
+                                </div>
+                            </a>
                         </header>
                         <!--Main Page-->
                         @if(!empty($slider)) 
@@ -2410,87 +2417,81 @@
          </div>
         <!--New Login Pop Up End Here-->
         
-        <!-- my popup -->
+        <!-- my popup hamburg menu -->
         <!--Register Pop Up Start Here-->
         <div id="register-popup" class="popup personlized-service-pop-up-outer">
             <div class="popup-inner personlized-service-pop-up">
                 <a href="#" class="popup-close-btn personlized-service-pop-up-close-btn">&times;</a>
                 <div class="popup-content personlized-service-content">
-                    <div class="popup-form-center">
-                        <div class="form-tittle">
-                            <h3>JohnnyShares - Sharing & Collaboration Platform</h3>
-                        </div> 
-                        <div class="form-content clearfix">
-                            <div class="form-logo">
-                                <img class="img-responsive" src="{{ asset('sximo/assets/images/logo-design_1.png')}}" alt="Design Locations">
-                            </div>
-                            <div>
-                                <ul class="navigation-tabs">
-                                    <li><a href="#" class="active" id="sign-in-form-link">Sign in</a></li>
-                                    <li><a href="#" id="forgot-password-link">Forgot Password</a></li>
-                                    <li><a href="#" id="register-form-link">Register</a></li>
-                                </ul>
-                            </div>
-                            <div class="input-fileds">
-                                <form  id="login-form" role="form" style="display: none;">
-                                    <div class="form-group">
-                                        <label>Email Address</label>
-                                        <input type="text" name="email_address" placeholder="Email Address" class="form-control">
-                                        <i class="fa fa-user input-fa" aria-hidden="true"></i>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Password</label>
-                                        <input placeholder="Password" type="Password" name="password"  class="form-control">
-                                        <i class="fa fa-lock input-fa" aria-hidden="true"></i>
-                                    </div>
-                                    <div class="form-group">
-                                        <label> Remember Me ? </label>
-                                        <input class="remember-me-checkbox" name="remember" value="1" type="checkbox">
-                                        <i class="fa fa-lock input-fa remember-me-fa" aria-hidden="true"></i>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Language</label>
-                                        <select class="form-control" name="language">
-                                            <option value="Deutsch"> Deutsch</option>
-                                            <option value="en"> English</option>
-                                        </select>
-                                    </div>
-                                    <button class="btn btn-info form-sign-in-btn btn-sm btn-block" type="submit">Sign In</button>
-                                </form>
-                                <form id="register-form" role="form" style="display: block;">
-                                    <div class="form-group">
-                                        <label>Name</label>
-                                        <input type="text" name="user_name" placeholder="Name" class="form-control">
-                                        <i class="fa fa-user input-fa" aria-hidden="true"></i>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Email Address</label>
-                                        <input type="text" name="email_address" placeholder="Email Address" class="form-control">
-                                        <i class="fa fa-user input-fa" aria-hidden="true"></i>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Password</label>
-                                        <input placeholder="Password" type="Password" name="password"  class="form-control">
-                                        <i class="fa fa-lock input-fa" aria-hidden="true"></i>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Confirm Password</label>
-                                        <input placeholder="Confirm Password" type="Password" name="password"  class="form-control">
-                                        <i class="fa fa-lock input-fa" aria-hidden="true"></i>
-                                    </div>
-                                    <button class="btn btn-info form-sign-in-btn btn-sm btn-block" type="submit">Sign Up</button>
-                                </form>
-                                <form id="forgot-password" role="form" style="display: none;">
-                                    <div class="form-group">
-                                        <label>Email Address</label>
-                                        <input type="text" name="email_address" placeholder="Email Address" class="form-control">
-                                        <i class="fa fa-user input-fa" aria-hidden="true"></i>
-                                    </div>
-                                    <button class="btn btn-info form-sign-in-btn btn-sm btn-block" type="submit">Recover Account</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- code here-->
+                    <div class="col-md-12">
+			<div id="ev-primary-navigation" class="popup personlized-service-pop-up-outer">
+				<div class="popup-inner personlized-service-pop-up">
+					<a href="#" class="popup-close-btn personlized-service-pop-up-close-btn">&times;</a>
+					<div class="popup-content personlized-service-content">
+						<div class="popup-form-center">
+							<ul class="EVMenu">
+								<li><a href="#">Sleep</a>
+									<ul class="sub-menu">
+										<li><a class="activeEV" href="#">Suite Présidentielle</a></li>
+										<li><a href="#">Suite Terrasse</a></li>
+										<li><a href="#">Top Of Five</a></li>
+										<li><a href="#">Suites So Suite</a></li>
+										<li><a href="#">Junior Suites</a></li>
+										<li><a href="#">Chambres</a></li>
+										<li><a href="#">Executive</a></li>
+										<li><a href="#">Chambres Deluxe</a></li>
+										<li><a href="#">Services</a></li>
+									</ul>
+								</li>
+								<li><a href="#">Savour</a>
+									<ul class="sub-menu">
+										<li><a class="activeEV" href="#">Le Roof</a></li>
+										<li><a href="#">Le Bar</a></li>
+										<li><a href="#">Le Brunch</a></li>
+									</ul>
+								</li>
+								<li><a href="#">Relax</a>
+									<ul class="sub-menu">
+										<li><a class="activeEV" href="#">Spa</a></li>
+										<li><a href="#">Terrasse piscine</a></li>
+										<li><a href="#">Plage privée</a></li>
+									</ul>
+								</li>
+								<li><a href="#">Discover</a>
+									<ul class="sub-menu">
+										<li><a class="activeEV" href="#">Cannes</a></li>
+										<li><a href="#">Activités</a></li>
+									</ul>
+								</li>
+								<li><a href="#">News</a>
+								</li>
+								<li><a href="#">Offres</a>
+									<ul class="sub-menu">
+										<li><a class="activeEV" href="#">Offres Sleep</a></li>
+										<li><a href="#">Offres Relax</a></li>
+									</ul>
+								</li>
+								<li><a href="#">Gift box</a>
+								</li>
+                                                                <li><a href="#">Events</a>
+								</li>
+                                                                <li class="smallEV"><a href="#">CarriÃ¨res</a>
+								</li>
+                                                                <li class="smallEV"><a href="#">Plan & AccÃ¨s</a>
+								</li>
+                                                                <li class="smallEV"><a href="#">Mentions lÃ©gales</a>
+								</li>
+                                                                <li class="smallEV"><a href="#">Green Globe</a>
+								</li>
+							</ul>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+			</div>
+		 </div>
+                    <!-- code here-->
                     <div class="clearfix"></div>
                 </div>
             </div>
