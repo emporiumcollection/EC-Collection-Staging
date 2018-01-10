@@ -156,7 +156,7 @@ ul.EVMenu li.smallEV {
 	width: 25px;
 	background: #ABA07C;
 	top: 17px;
-	left: 80;
+	left: 80px;
 	right: 0;
 	bottom: 0;
 }
@@ -270,7 +270,24 @@ span:hover {
 }
 
 .block-content.content {
-	width: 0;
-	float: left;
-	height: 0px;
+	width: 16px;
+	float: right;
+	height: 55px;
+}
+
+/* pop up css */
+
+.EVhamburgService {
+    padding: 19px;
+}
+
+.EVpopService {
+    width: 100%;
+    top: 0px;
+}
+
+.EVcenterPOP {
+    border: none;
+    display: table-footer-group;
+    margin: 0;
 }
