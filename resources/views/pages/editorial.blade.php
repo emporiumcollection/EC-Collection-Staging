@@ -2508,7 +2508,7 @@
                         <div class="form-content AlertFormContent clearfix">
                             <div class="form-logo">
                                 <h3>Please select the room you wish to Book</h3>
-                                <a href="#" class="pop-up-close-btn">OK</a>
+                                <a href="#" class="AlertCloseButton">OK</a>
                             </div>
                         </div>
                     </div>
@@ -2691,6 +2691,17 @@
                 $(".booking-form-bar-top").toggle(1000);
             });
         </script>
+             
+        <script>
+                $(document).ready(function () {
+                    $('.AlertCloseButton').click(function () {
+                        $("#AlertBookButton-Popup").animate({
+                            width: "0px"
+                        }, 800, function () {});
+                        $("body").removeClass("fixed");
+                    });
+                });
+            </script>
 		@include('layouts/elliot/ai_lightbox_popups_detailpage')
 
              </body>
