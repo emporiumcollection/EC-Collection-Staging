@@ -978,8 +978,34 @@
                                 position: absolute;
                             }
                             
+                            /* AIC 10-1-2018*/
+                            
+                            .form-logo h3 {
+                                font-size: 22px;
+                                color: white;
+                            }
+                            
+                            .form-logo a {
+                                background: #ABA07C;
+                                color: white;
+                                padding: 7px 25px 7px 25px;
+                                text-align: right;
+                                float: right;
+                                margin-top: 15px;
+                            }
+                            
+                            .AlertServiceClose {
+                                top: 0;
+                                width: 100%;
+                                color: #ABA07C;
+                            }
+                            
                             .alertContennt {
                                 padding: 0px;
+                            }
+                            
+                            .AlertFormContent {
+                                background: #252525;
                             }
                             
                             @import url('https://fonts.googleapis.com/css?family=Caveat');
@@ -2458,13 +2484,13 @@
         <!--Register Pop Up Start Here-->
         <div id="AlertBookButton-Popup" class="popup personlized-service-pop-up-outer">
             <div class="popup-inner personlized-service-pop-up">
-                <a href="#" class="popup-close-btn personlized-service-pop-up-close-btn">&times;</a>
+                <a href="#" class="popup-close-btn personlized-service-pop-up-close-btn AlertServiceClose">&times;</a>
                 <div class="popup-content personlized-service-content alertContennt">
                     <div class="popup-form-center">
 <!--                        <div class="form-tittle">
                             <h3>JohnnyShares - Sharing & Collaboration Platform</h3>
                         </div> -->
-                        <div class="form-content clearfix">
+                        <div class="form-content AlertFormContent clearfix">
                             <div class="form-logo">
                                 <h3>Please select the room you wish to Book</h3>
                                 <a href="#">OK</a>
