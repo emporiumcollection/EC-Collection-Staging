@@ -7250,7 +7250,6 @@ class HomeController extends Controller {
                         $this->data['group_id'] = \Session::get('gid');
                         $this->data['keyword'] = $keyword;
                         $this->data['ttlcount'] = count($propertiesArr);
-                        print_r($this->data);
                         return view($page, $this->data);
                     } else {
                         return Redirect::to('')
