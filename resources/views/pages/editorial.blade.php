@@ -2694,7 +2694,8 @@
              
         <script>
                 $(document).ready(function () {
-                    $('.AlertCloseButton').click(function () {
+                    $('.AlertCloseButton').click(function ( event ) {
+                        event.preventDefault();
                         $("#AlertBookButton-Popup").animate({
                             width: "0px"
                         }, 800, function () {});
