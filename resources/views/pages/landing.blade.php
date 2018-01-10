@@ -110,6 +110,26 @@
             }
         </style>
 		<style>
+             
+             /* hamburg menu pop up css */
+
+            .EVhamburgService {
+                padding: 19px;
+            }
+
+            .EVpopService {
+                width: 100%;
+                top: 0px;
+            }
+
+            .EVcenterPOP {
+                border: none;
+                display: table-footer-group;
+                margin: 0;
+            }
+            
+            /* hamburg menu pop up css */
+                    
             .sidenavpost .bh-search-input
             {
                 padding-left: 0px !important;
