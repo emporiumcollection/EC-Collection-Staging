@@ -5693,8 +5693,8 @@ div#fixed_wrapper {
 	display: inline-block;
 	padding: 0px 0;
 	text-align: center;
+        margin-top: 28px;
 /*	vertical-align: text-top;*/
-	width: 35%;
 }
 .content-grid-boxes-outer {
     margin-top: 15px;

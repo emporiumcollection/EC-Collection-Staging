@@ -49,6 +49,14 @@
 	
 	
 	 {!! Form::open(array('url'=>'pagesslider/delete/', 'class'=>'form-horizontal' ,'id' =>'SximoTable' )) !!}
+	 <select name='slider_page' id='slider_page' class="form-control" onchange="fetchslidercategory(this.value);" > 
+		<option value="">-Select-</option>
+		@if(!empty($allpages))
+			@foreach($allpages as $catlist)
+				<option value="{{$catlist->pageID}}" <?php echo ($curntcat == $catlist->pageID) ? " selected='selected' " : '' ; ?>>{{$catlist->title}}</option>
+			@endforeach
+		@endif
+	</select>
 	 <div class="table-responsive" style="min-height:300px;">
     <table class="table table-striped ">
         <thead>
@@ -116,12 +124,15 @@
 </div>	
 <script>
 $(document).ready(function(){
-
 	$('.do-quick-search').click(function(){
 		$('#SximoTable').attr('action','{{ URL::to("pagesslider/multisearch")}}');
 		$('#SximoTable').submit();
 	});
 	
 });	
+function fetchslidercategory(catg)
+{
+	window.location.href = "{{URL::to('pagesslider')}}?selpage="+catg;
+}
 </script>		
 @stop

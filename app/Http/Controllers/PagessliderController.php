@@ -1,19 +1,14 @@
 <?php namespace App\Http\Controllers;
-
 use App\Http\Controllers\controller;
 use App\Models\Pagesslider;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 use Validator, Input, Redirect ; 
-
-
 class PagessliderController extends Controller {
-
 	protected $layout = "layouts.main";
 	protected $data = array();	
 	public $module = 'pagesslider';
 	static $per_page	= '10';
-
 	public function __construct()
 	{
 		
@@ -32,20 +27,21 @@ class PagessliderController extends Controller {
 		);
 		
 	}
-
 	public function getIndex( Request $request )
 	{
-
 		if($this->access['is_view'] ==0) 
 			return Redirect::to('dashboard')
 				->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus','error');
-
 		$sort = (!is_null($request->input('sort')) ? $request->input('sort') : 'id'); 
 		$order = (!is_null($request->input('order')) ? $request->input('order') : 'asc');
 		// End Filter sort and order for query 
 		// Filter Search for query		
 		$filter = (!is_null($request->input('search')) ? $this->buildSearch() : '');
-
+		if(!is_null($request->input('selpage')))
+		{
+			$categ = ($request->input('selpage')!='') ? $request->input('selpage') : '';
+			$filter .= ' AND slider_category="'.$categ.'"';
+		}
 		
 		$page = $request->input('page', 1);
 		$params = array(
@@ -81,12 +77,24 @@ class PagessliderController extends Controller {
 		
 		// Master detail link if any 
 		$this->data['subgrid']	= (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array()); 
+		
+		$fetchcats = \DB::table('tb_pages')->get();
+		$showcat = array();
+		if(!empty($fetchcats))
+		{
+			foreach($fetchcats as $cats)
+			{
+				$fetchslides = \DB::table('tb_pages_sliders')->where('slider_page_id',$cats->pageID)->count();
+				if($fetchslides>0)
+				{
+					$showcat[] = $cats;
+				}
+			}
+		}
+		$this->data['allpages'] = $showcat;
 		// Render into template
 		return view('pagesslider.index',$this->data);
 	}	
-
-
-
 	function getUpdate(Request $request, $id = null)
 	{
 	
@@ -114,7 +122,6 @@ class PagessliderController extends Controller {
 		$this->data['id'] = $id;
 		return view('pagesslider.form',$this->data);
 	}	
-
 	public function getShow( $id = null)
 	{
 	
@@ -135,15 +142,22 @@ class PagessliderController extends Controller {
 		$this->data['access']		= $this->access;
 		return view('pagesslider.view',$this->data);	
 	}	
-
 	function postSave( Request $request)
 	{
-		
+		$id = $request->input('id');
 		$rules = $this->validateForm();
 		$validator = Validator::make($request->all(), $rules);	
 		if ($validator->passes()) {
 			$data = $this->validatePost('tb_pagesslider');
-				
+			$data['user_id'] = \Auth::user()->id;
+			if($request->input('id') =='')
+			{
+				$data['created'] = date('y-m-d h:i:s');
+			}
+			else
+			{
+				$data['updated'] = date('y-m-d h:i:s');
+			}	
 			$id = $this->model->insertRow($data , $request->input('id'));
 			
 			if(!is_null($request->input('apply')))
@@ -152,7 +166,6 @@ class PagessliderController extends Controller {
 			} else {
 				$return = 'pagesslider?return='.self::returnUrl();
 			}
-
 			// Insert logs into database
 			if($request->input('id') =='')
 			{
@@ -160,17 +173,14 @@ class PagessliderController extends Controller {
 			} else {
 				\SiteHelpers::auditTrail($request ,'Data with ID '.$id.' Has been Updated !');
 			}
-
 			return Redirect::to($return)->with('messagetext',\Lang::get('core.note_success'))->with('msgstatus','success');
 			
 		} else {
-
 			return Redirect::to('pagesslider/update/'.$id)->with('messagetext',\Lang::get('core.note_error'))->with('msgstatus','error')
 			->withErrors($validator)->withInput();
 		}	
 	
 	}	
-
 	public function postDelete( Request $request)
 	{
 		
@@ -191,8 +201,5 @@ class PagessliderController extends Controller {
 			return Redirect::to('pagesslider')
         		->with('messagetext','No Item Deleted')->with('msgstatus','error');				
 		}
-
 	}			
-
-
 }
