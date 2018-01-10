@@ -34,6 +34,26 @@
         
         
         <style>
+        
+                         /* hamburg menu pop up css */
+
+            .EVhamburgService {
+                padding: 19px;
+            }
+
+            .EVpopService {
+                width: 100%;
+                top: 0px;
+            }
+
+            .EVcenterPOP {
+                border: none;
+                display: table-footer-group;
+                margin: 0;
+            }
+            
+            /* hamburg menu pop up css */
+        
             #inner-level-accordian .panel-title {
                 float: left;
                 width: 100%;
@@ -111,24 +131,6 @@
         </style>
 		<style>
              
-             /* hamburg menu pop up css */
-
-            .EVhamburgService {
-                padding: 19px;
-            }
-
-            .EVpopService {
-                width: 100%;
-                top: 0px;
-            }
-
-            .EVcenterPOP {
-                border: none;
-                display: table-footer-group;
-                margin: 0;
-            }
-            
-            /* hamburg menu pop up css */
                     
             .sidenavpost .bh-search-input
             {
@@ -2152,10 +2154,10 @@
         </div>
         <!--Register Pop Up Start Here-->
         <div id="register-popup" class="popup personlized-service-pop-up-outer">
-            <div class="popup-inner personlized-service-pop-up EVpopService">
+            <div class="popup-inner personlized-service-pop-up">
                 <a href="#" class="popup-close-btn personlized-service-pop-up-close-btn">&times;</a>
-                <div class="popup-content personlized-service-content EVhamburgService">
-                    <div class="popup-form-center EVcenterPOP">
+                <div class="popup-content personlized-service-content">
+                    <div class="popup-form-center">
                         <div class="form-tittle">
                             <h3>JohnnyShares - Sharing & Collaboration Platform</h3>
                         </div> 
@@ -2440,16 +2442,16 @@
         <!-- my popup hamburg menu -->
         <!--Register Pop Up Start Here-->
         <div id="register-popup" class="popup personlized-service-pop-up-outer">
-            <div class="popup-inner personlized-service-pop-up">
+            <div class="popup-inner personlized-service-pop-up EVpopService">
                 <a href="#" class="popup-close-btn personlized-service-pop-up-close-btn">&times;</a>
-                <div class="popup-content personlized-service-content">
+                <div class="popup-content personlized-service-content EVhamburgService">
                     <!-- code here-->
                     <div class="col-md-12">
 			<div id="ev-primary-navigation" class="popup personlized-service-pop-up-outer">
 				<div class="popup-inner personlized-service-pop-up">
 					<a href="#" class="popup-close-btn personlized-service-pop-up-close-btn">&times;</a>
 					<div class="popup-content personlized-service-content">
-						<div class="popup-form-center">
+						<div class="popup-form-center EVcenterPOP">
 							<ul class="EVMenu">
 								<li><a href="#">Sleep</a>
 									<ul class="sub-menu">
