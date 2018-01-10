@@ -848,7 +848,7 @@
     
     .video-popup-btn.login_popup.show-login-forms-btn {
 	display: inline-block;
-	margin-top: -12px;
+	margin-top: 14px;
 	width: 59%;
     }
     

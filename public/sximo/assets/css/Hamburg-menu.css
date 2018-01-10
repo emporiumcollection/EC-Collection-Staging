@@ -232,20 +232,20 @@ span:hover {
 }
 
 .block-content.content span:nth-child(1) {
-	top: 10px;
-        left: 96%;
+	top: 26px;
+        left: 75%;
 }
 
 .block-content.content span:nth-child(2) {
-	top: 16px;
-        left: 96%;
+	top: 32px;
+        left: 75%;
 }
 .block-content.content span {
 	left: 28px;
 }
 .block-content.content span:nth-child(3) {
-	top: 22px;
-        left: 96%;
+	top: 38px;
+        left: 75%;
 }
 
 .block-content.content:hover span:nth-child(3) {
@@ -270,7 +270,7 @@ span:hover {
 }
 
 .block-content.content {
-	width: 100%;
+	width: 0;
 	float: left;
-	height: 30px;
+	height: 0px;
 }
