@@ -30,7 +30,7 @@
         <link href="{{ asset('sximo/assets/css/stick-nav-arrows.css')}}" rel="stylesheet" type="text/css"/>
 		 <link href="{{ asset('sximo/assets/css/slick.css')}}" rel="stylesheet" type="text/css"/>
                  <!-- AIC 10-1-2017-->
-                 <link href="{{'asset('sximo/assets/css/style.min.css')}}" rel="stylesheet" type="text/css"/> 
+                 <link href="{{ asset('sximo/assets/css/style.min.css')}}" rel="stylesheet" type="text/css"/> 
                  <!-- AIC 10-1-2017-->
         <link href="{{ asset('sximo/assets/css/slick-theme.css')}}" rel="stylesheet" type="text/css"/>
         <!--JS Includes-->
