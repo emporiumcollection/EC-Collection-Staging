@@ -2522,6 +2522,18 @@
         <!-- end my popup-->
         
         <script>
+                $(document).ready(function () {
+                    $('.AlertCloseButton').click(function ( event ) {
+                        event.preventDefault();
+                        $("#AlertBookButton-Popup").animate({
+                            width: "0px"
+                        }, 800, function () {});
+                        $("body").removeClass("fixed");
+                    });
+                });
+            </script>
+        
+        <script>
             $(document).ready(function () {
                 $(".our-collection-top-booking-form").submit(function (event) {
                     if($(this).find("select[name=roomType]").val() == 'null' || $(this).find("select[name=roomType]").val() == null) {
@@ -2691,17 +2703,7 @@
                 $(".booking-form-bar-top").toggle(1000);
             });
         </script>
-             
-        <script>
-                $(document).ready(function () {
-                    $('.AlertCloseButton').click(function () {
-                        $("#AlertBookButton-Popup").animate({
-                            width: "0px"
-                        }, 800, function () {});
-                        $("body").removeClass("fixed");
-                    });
-                });
-            </script>
+    
 		@include('layouts/elliot/ai_lightbox_popups_detailpage')
 
              </body>

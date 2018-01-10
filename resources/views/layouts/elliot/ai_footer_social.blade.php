@@ -7,7 +7,7 @@
     
     .vegasFooterSocial ul li a i {
 	font-size: 14px;
-	background: #000;
+	background: #ABA07C;
 	/* border-radius: 831px; */
 	padding: 6px 12px 4px 7px;
 	color: #fff;

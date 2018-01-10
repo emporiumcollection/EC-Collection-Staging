@@ -258,7 +258,7 @@ and open the template in the editor.
     color: #fff;
 }
 .post-filter-inputs:hover a {
-    color: #1E2023;
+    color: black;
 }
 .price-high-low-filter-text {
     display: inline-block;
