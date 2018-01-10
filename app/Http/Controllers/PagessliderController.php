@@ -45,7 +45,11 @@ class PagessliderController extends Controller {
 		// End Filter sort and order for query 
 		// Filter Search for query		
 		$filter = (!is_null($request->input('search')) ? $this->buildSearch() : '');
-
+		if(!is_null($request->input('selpage')))
+		{
+			$categ = ($request->input('selpage')!='') ? $request->input('selpage') : '';
+			$filter .= ' AND slider_category="'.$categ.'"';
+		}
 		
 		$page = $request->input('page', 1);
 		$params = array(
@@ -81,6 +85,21 @@ class PagessliderController extends Controller {
 		
 		// Master detail link if any 
 		$this->data['subgrid']	= (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array()); 
+		
+		$fetchcats = \DB::table('tb_pages')->get();
+		$showcat = array();
+		if(!empty($fetchcats))
+		{
+			foreach($fetchcats as $cats)
+			{
+				$fetchslides = \DB::table('tb_pages_sliders')->where('slider_page_id',$cats->pageID)->count();
+				if($fetchslides>0)
+				{
+					$showcat[] = $cats;
+				}
+			}
+		}
+		$this->data['allpages'] = $showcat;
 		// Render into template
 		return view('pagesslider.index',$this->data);
 	}	
@@ -138,12 +157,20 @@ class PagessliderController extends Controller {
 
 	function postSave( Request $request)
 	{
-		
+		$id = $request->input('id');
 		$rules = $this->validateForm();
 		$validator = Validator::make($request->all(), $rules);	
 		if ($validator->passes()) {
 			$data = $this->validatePost('tb_pagesslider');
-				
+			$data['user_id'] = \Auth::user()->id;
+			if($request->input('id') =='')
+			{
+				$data['created'] = date('y-m-d h:i:s');
+			}
+			else
+			{
+				$data['updated'] = date('y-m-d h:i:s');
+			}	
 			$id = $this->model->insertRow($data , $request->input('id'));
 			
 			if(!is_null($request->input('apply')))
