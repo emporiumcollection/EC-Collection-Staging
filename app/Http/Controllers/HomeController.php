@@ -6887,7 +6887,9 @@ class HomeController extends Controller {
                             }
                         }
 
+                        /*
                         if ($arrive != '') {
+                                
                             $seapropstemp = \DB::table('tb_properties')->join('tb_properties_category_rooms', 'tb_properties_category_rooms.property_id', '=', 'tb_properties.id')->select('tb_properties.editor_choice_property',
                                                             'tb_properties.feature_property',
                                                             'tb_properties.id',
@@ -6899,7 +6901,7 @@ class HomeController extends Controller {
                             }
                             $seaprops = $seapropstemp->orderBy('tb_properties.editor_choice_property', 'desc')->orderBy('tb_properties.feature_property', 'desc')->get();
                         } else {
-                            //$seaprops = \DB::table('tb_properties')->where('property_name', 'like', '%' . $keyword . '%')->where('property_status', 1)->where('tb_properties.property_type', 'Hotel')->get();
+                            
                             $query = "SELECT editor_choice_property,feature_property,id,property_name,property_slug,property_category_id FROM tb_properties WHERE property_name LIKE '%$keyword%' AND property_status = 1 AND tb_properties.property_type = 'Hotel' ";
                             $query .= "ORDER BY tb_properties.editor_choice_property desc, tb_properties.feature_property desc, (SELECT rack_rate FROM tb_properties_category_rooms_price WHERE tb_properties_category_rooms_price.property_id = tb_properties.id ORDER BY rack_rate DESC LIMIT 1) * 1 DESC ";
                             $seaprops = DB::select(DB::raw($query));
@@ -6981,6 +6983,7 @@ class HomeController extends Controller {
                         }
 						
 						$cityquery = "SELECT editor_choice_property,feature_property,id,property_name,property_slug,property_category_id FROM tb_properties WHERE city LIKE '%$keyword%' AND property_status = 1 ORDER BY tb_properties.editor_choice_property desc, tb_properties.feature_property desc, (SELECT rack_rate FROM tb_properties_category_rooms_price WHERE tb_properties_category_rooms_price.property_id = tb_properties.id ORDER BY rack_rate DESC LIMIT 1) * 1 DESC ";
+
                         $cityquery = DB::select(DB::raw($cityquery));
                         if (!empty($cityquery)) {
                             foreach ($cityquery as $ctprop) {
@@ -7000,18 +7003,92 @@ class HomeController extends Controller {
                             }
                         }
 
-                        //usort($propertiesArr, function($a, $b) {
-                            //return trim($a['data']->property_name) > trim($b['data']->property_name);
-                        //   });
+
+                        
                         //echo count($propertiesArr);
                         $pagedData = array_slice($propertiesArr, $currentPage * $perPage, $perPage);
                         $pagination = new Paginator($pagedData, count($propertiesArr), $perPage);
                         $pagination->setPath(\URL::to('search'));
                         //print_r($pagination);
+
+                        */ 
+                        /******* New Query by Ravinder ********/    
+                        $arriveQry = '';
+                        if ($arrive != '') {
+
+                                $arriveQry = "SELECT pr.id "; 
+                                $arriveQry .=" from tb_properties pr, tb_properties_category_rooms pctr ";
+                                $arriveQry .=" WHERE pctr.property_id=pr.id AND pctr.room_active_from <= ".$arrive;
+                                $arriveQry .=" AND  pr.property_name like '%". $keyword."%' ";
+                                $arriveQry .=" AND  pr.property_status=1 ";
+                                $arriveQry .=" AND  pr.property_type='Hotel' ";
+                                if ($destination != '') {
+                                    $arriveQry .=" AND  pctr.room_active_to >= ".$destination;
+                                }
+
+                            
+                        }
+                           
+                        $cateObj = \DB::table('tb_categories')->where('category_name', $keyword)->where('category_published', 1)->first();
+                        $chldIds = array();
+                        if (!empty($cateObj)) {
+                            $channel_url = $cateObj->category_youtube_channel_url;
+                            $this->data['channel_url'] = $channel_url;
+                            $cateObjtemp = \DB::table('tb_categories')->where('parent_category_id', $cateObj->id)->where('category_published', 1)->get();
+                            if (!empty($cateObjtemp)) {
+                                $chldIds = $this->fetchcategoryChildListIds($cateObj->id);
+                                array_unshift($chldIds, $cateObj->id);
+                            } else {
+                                $chldIds[] = $cateObj->id;
+                            }
+                            $getcats = '';
+                            if (!empty($chldIds)) {
+                                $getcats = " AND (" . implode(" || ", array_map(function($v) {
+                                                    return sprintf("FIND_IN_SET('%s', property_category_id)", $v);
+                                                }, array_values($chldIds))) . ")";
+                            }
+
+                            if ($arrive != '') {
+                                $getcats = '';
+                                if (!empty($chldIds)) {
+                                    $getcats = " AND (" . implode(" || ", array_map(function($v) {
+                                                        return sprintf("FIND_IN_SET('%s', tb_properties.property_category_id)", $v);
+                                                    }, array_values($chldIds))) . ")";
+                                }
+                                if ($destination != '') {
+                                    $getdestind = " AND tb_properties_category_rooms.room_active_to <= '$destination'";
+                                }
+                                $catprops = " OR pr.id in( SELECT pr.id FROM tb_properties pr, tb_properties_category_rooms pctr   WHERE tb_properties_category_rooms.property_id = tb_properties.id AND  tb_properties.property_status='1' AND tb_properties_category_rooms.room_active_from <= '".$arrive."' ".$getdestind."  ".$getcats." ) ";
+                            } else {
+                                $catprops = " OR pr.id in(SELECT id FROM tb_properties WHERE property_status='1' $getcats ) ";
+                            }
+
+                        }
+
+                        $perPage = 20;
+                        $page = 1;
+                        if(isset($request->page) && $request->page>0){
+                            $page = $request->page;
+                        }
+                        $pageStart = ($page -1) * $perPage;
+
+                        $query = "SELECT pr.editor_choice_property,pr.feature_property,pr.id,pr.property_name,pr.property_slug,pr.property_category_id ";
+                        $query .= ", (SELECT pcrp.rack_rate FROM tb_properties_category_rooms_price pcrp, tb_properties pr  where pr.id=pcrp.property_id  order by pcrp.rack_rate DESC limit 0,1 ) as price ," ;
+                        $query .= " FROM tb_properties pr ";
+                        $whereClause =" WHERE ((pr.property_name LIKE '%$keyword%'AND pr.property_type = 'Hotel') OR city LIKE '%$keyword%' ".$catprops." ) AND pr.property_status = 1  ";
+                        $orderBy = "ORDER BY pr.editor_choice_property desc, pr.feature_property desc, (SELECT rack_rate FROM tb_properties_category_rooms_price pcrp, tb_properties pr WHERE pcrp.property_id = tb_properties.id ORDER BY rack_rate DESC LIMIT 1) * 1 DESC ";
+                        $limit = " LIMIT ". $pageStart.",".$perPage; 
+                        echo $finalQry = $query.$whereClause.$orderBy.$limit ;
+                         $CountRecordQry = "Select count(*) as total_record from tb_properties pr ".$whereClause ;
+                        exit;
+                        $property = DB::select($finalQry);
+                        $getRec = DB::select($CountRecordQry);
+
                         $this->data['propertiesArr'] = $pagination;
 
                         $uid = isset(\Auth::user()->id) ? \Auth::user()->id : '';
-                        $this->data['lightboxes'] = \DB::table('tb_lightbox')->select('box_name','id')->where('user_id', $uid)->get();
+                        //Comment light Box 
+                        /*$this->data['lightboxes'] = \DB::table('tb_lightbox')->select('box_name','id')->where('user_id', $uid)->get();
 
                         $boxcontent = \DB::table('tb_lightbox_content')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_lightbox_content.file_id')->select('tb_lightbox_content.file_id', 'tb_lightbox_content.id', 'tb_lightbox_content.lightbox_id', 'tb_container_files.file_name', 'tb_container_files.folder_id', 'tb_container_files.file_display_name', 'tb_container_files.file_title')->where('tb_lightbox_content.user_id', $uid)->get();
 
@@ -7028,7 +7105,7 @@ class HomeController extends Controller {
                             }
                         }
                         $this->data['lightcontent'] = $boxcont;
-
+                        */
                         $tags_Arr = \DB::table('tb_tags_manager')->where('tag_status', 1)->get();
                         $tagsArr = array();
                         if (!empty($tags_Arr)) {
