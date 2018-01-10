@@ -7066,11 +7066,11 @@ class HomeController extends Controller {
                         }
 
                         $perPage = 20;
-                        $page = 1;
+                        $pageNumber = 1;
                         if(isset($request->page) && $request->page>0){
-                            $page = $request->page;
+                            $pageNumber = $request->page;
                         }
-                        $pageStart = ($page -1) * $perPage;
+                        $pageStart = ($pageNumber -1) * $perPage;
 
                         $query = "SELECT pr.editor_choice_property,pr.feature_property,pr.id,pr.property_name,pr.property_slug,pr.property_category_id ";
                         $query .= ", (SELECT pcrp.rack_rate FROM tb_properties_category_rooms_price pcrp  where pr.id=pcrp.property_id  order by pcrp.rack_rate DESC limit 0,1 ) as price " ;
