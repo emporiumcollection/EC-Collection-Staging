@@ -1370,15 +1370,15 @@
                                             {{--*/ $rw++ /*--}}
                                             {{--*/ $node_no++ /*--}}
                                             @endforeach
-                                            {{--*/ $totpage = $propertiesArr->appends($pager)->lastPage(); $newpage = $currentPage + 2; $prevnewpage = $newpage - 2; /*--}}
+                                            {{-- $totpage = $propertiesArr->appends($pager)->lastPage(); $newpage = $currentPage + 2; $prevnewpage = $newpage - 2; --}}
                                             @endif 
                                             
                                     </div>
 									</div>
                                     <div id="loaderProperty"></div>
                                     <div id="brgrid"></div>
-                                    <input type="hidden" id="nxtpg" value="{{$newpage}}">
-                                    <input type="hidden" id="ttlpg" value="{{$totpage}}">
+                                    <input type="hidden" id="nxtpg" value="{{--$newpage--}}">
+                                    <input type="hidden" id="ttlpg" value="{{--$totpage--}}">
                                 </div>
 
                             </div>
