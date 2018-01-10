@@ -42,4 +42,5 @@
                     Route::controller('whybookwithus', 'WhybookwithusController');
                     Route::controller('advertisements', 'AdvertisementsController');
                     Route::controller('advertisementspace', 'AdvertisementspaceController');
+                    Route::controller('pagesslider', 'PagessliderController');
                     ?>
