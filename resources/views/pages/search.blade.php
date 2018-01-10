@@ -1283,8 +1283,18 @@
                                                             @endif
                                                             <?php $images = CustomQuery::getPropertyImages($props->id);
 
-                                                            print_r($images);die; ?>
+                                                             ?>
                                                             @if(!empty($images) && count($images)>0)
+
+                                                                <?php 
+                                                                $propsImageFolderId = '';
+                                                                $propsImageFileName = '';
+                                                                if(isset($images[0])){
+                                                                    
+                                                                    $propsImageFolderId = $images[0]->folder_id;
+                                                                    $propsImageFileName = $images[0]->file_name;
+                                                                }
+                                                                ?>
                                                                 @if($props->editor_choice_property=='1')
                                                                     <img alt="editor_choice_property" class="propovericons" src="{{URL::to('sximo/images/editors-choice.png')}}">
                                                                 @elseif($props->feature_property=='1')
@@ -1306,7 +1316,7 @@
                                                                         <p class="yacths-des-text yacths-des-text-align"><span>&euro;{{ $props->price}} </span>|<span>37.7mm</span>|<span>10 Guests</span></p>
                                                                         <p class="yacths-des-text">2015H</p>
                                                                     </div>
-                                                                    <img alt="{{ $props['image']->file_name }}" src="{{ URL::to('uploads/property_imgs_thumbs/front_property_'.$props['image']->folder_id.'_'.$props['image']->file_name)}}" class="img-responsive">
+                                                                    <img alt="{{ $propsImageFileName }}" src="{{ URL::to('uploads/property_imgs_thumbs/front_property_'.$propsImageFolderId.'_'.$propsImageFileName)}}" class="img-responsive">
                                                                 </a>
                                                             @else
                                                             <a class="picture_link detail_view-" rel="{{$props->id}}" href="{{URL::to($props->property_slug)}}">
