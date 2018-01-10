@@ -1000,6 +1000,10 @@
                                 color: white;
                             }
                             
+                            .form-logo a:focus {
+                                color: white;
+                            }
+
                             .AlertServiceClose {
                                 top: 0;
                                 width: 100%;
@@ -1011,8 +1015,13 @@
                             }
                             
                             .AlertFormContent {
-                                background: #252525;
+                                background: rgba(37,37,37,0.9);
                             }
+                            
+                            .CenterAlertPop {
+                                border: none;
+                            }
+
                             
                             @import url('https://fonts.googleapis.com/css?family=Caveat');
                             @import url('https://fonts.googleapis.com/css?family=Satisfy');
@@ -2499,7 +2508,7 @@
                         <div class="form-content AlertFormContent clearfix">
                             <div class="form-logo">
                                 <h3>Please select the room you wish to Book</h3>
-                                <a href="#">OK</a>
+                                <a href="#" class="pop-up-close-btn">OK</a>
                             </div>
                         </div>
                     </div>
