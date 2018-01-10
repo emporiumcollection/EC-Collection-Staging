@@ -1281,7 +1281,10 @@
                                                                 From EUR {{$props->price}} / night 
                                                             </a> */ ?>
                                                             @endif
-                                                            @if(array_key_exists('image', $props))
+                                                            <?php $images = CustomQuery::getPropertyImages($props->id);
+
+                                                            print_r($images); ?>
+                                                            @if(!empty($images) && count($images)>0)
                                                                 @if($props->editor_choice_property=='1')
                                                                     <img alt="editor_choice_property" class="propovericons" src="{{URL::to('sximo/images/editors-choice.png')}}">
                                                                 @elseif($props->feature_property=='1')
@@ -1307,24 +1310,21 @@
                                                                 </a>
                                                             @else
                                                             <a class="picture_link detail_view-" rel="{{$props->id}}" href="{{URL::to($props->property_slug)}}">
-                                                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/img-1.jpg')}}" alt="">
+                                                                <div class="overlay-text-frezeed">
+                                                                    <h2 class="yacts-tittle-text">{{ $props->property_name}}</h2>
+                                                                    <p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>
+                                                                </div>
+                                                                <div class="overlay-text hotel-overlay-text">
+                                                                    <h2 class="yacts-tittle-text">{{ $props->property_name }}</h2>
+                                                                    <p class="yacths-des-text yacths-des-text-align"><span>From &euro;{{ $props->price}} </span>|<span>New York</span></p>
+                                                                </div>
+                                                                <div class="overlay-text yacts-overlay-text">
+                                                                    <h2 class="yacts-tittle-text">{{ $props->property_name }}</h2>
+                                                                    <p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>
+                                                                    <p class="yacths-des-text">2015H</p>
+                                                                </div>
+                                                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/img-1.jpg')}}" alt="">-->
                                                             </a>
-
-                                                            <div class="overlay-text-frezeed">
-                                                                <h2 class="yacts-tittle-text">{{ $props->property_name}}</h2>
-                                                                <p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>
-                                                            </div>
-                                                            <div class="overlay-text hotel-overlay-text">
-                                                                <h2 class="yacts-tittle-text">{{ $props->property_name }}</h2>
-                                                                <p class="yacths-des-text yacths-des-text-align"><span>From &euro;{{ $props->price}} </span>|<span>New York</span></p>
-                                                            </div>
-                                                            <div class="overlay-text yacts-overlay-text">
-                                                                <h2 class="yacts-tittle-text">{{ $props->property_name }}</h2>
-                                                                <p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>
-                                                                <p class="yacths-des-text">2015H</p>
-                                                            </div>
-                                                        <img class="img-responsive" src="{{URL::to('sximo/assets/images/img-1.jpg')}}" alt="">-->
-                                                            
                                                             @endif
                                                         </div>
                                                         <div class="listDetails">
