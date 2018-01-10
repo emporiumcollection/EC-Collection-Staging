@@ -253,7 +253,7 @@ span:hover {
         -moz-transform: translateY(15px) rotateZ(45deg);
         -ms-transform: translateY(15px) rotateZ(45deg);
         -o-transform: translateY(15px) rotateZ(45deg);
-        transform: translateY(2px) rotateZ(45deg);
+        transform: translateY(-6px) rotateZ(45deg);
 }
 
 .block-content.content:hover span:nth-child(2) {
@@ -266,7 +266,7 @@ span:hover {
         -moz-transform: translateY(-15px) rotateZ(-45deg);
         -ms-transform: translateY(-15px) rotateZ(-45deg);
         -o-transform: translateY(-15px) rotateZ(-45deg);
-        transform: translateY(13px) rotateZ(-44deg);       
+        transform: translateY(6px) rotateZ(-44deg);       
 }
 
 .block-content.content {
