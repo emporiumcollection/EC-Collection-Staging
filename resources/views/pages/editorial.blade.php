@@ -1276,7 +1276,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-2 col-sm-2">
+                                    <div class="col-md-1 col-sm-2">
                                         <div class="row">
                                             <div class="form-group padding-right-12">
                                                 <label class="align-with-label"></label>
@@ -1284,12 +1284,15 @@
                                                 <button class="top-booking-bar-btn" type="submit">Book</button>
 <!--                                                <a data-popup-id="AlertBookButton-Popup" href="#" class="video-popup-btn login_popup show-login-forms-btn top-booking-bar-btn" type="submit">BOOK</a>-->
                                                 <button class="top-booking-bar-btn click-share-btn">Share</button>
-						<a data-popup-id="login-forms-popup" href="#" class="video-popup-btn login_popup show-login-forms-btn"><i class="fa fa-lock " aria-hidden="true" ></i></a>
+						
 <!--                                                <i class="fa fa-bars emporium-voyage-Menu" aria-hidden="true"></i>-->
                                                 <!--<button  type="button" class="top-booking-bar-btn link-to-show active" onclick="hide_show_lightbox('show');">Favorites</button>
 												<button type="button" class="top-booking-bar-btn link-to-hide" onclick="hide_show_lightbox('hide');" style="display:none;">Hide Favorites</button>-->
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <a data-popup-id="login-forms-popup" href="#" class="video-popup-btn login_popup show-login-forms-btn"><i class="fa fa-lock " aria-hidden="true" ></i></a>
                                     </div>
                                     <div class="clearfix"></div>
                                     <!--Yacht Specifications-->
