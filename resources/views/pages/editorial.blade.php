@@ -977,6 +977,11 @@
                                 top: 31px;
                                 position: absolute;
                             }
+                            
+                            .alertContennt {
+                                padding: 0px;
+                            }
+                            
                             @import url('https://fonts.googleapis.com/css?family=Caveat');
                             @import url('https://fonts.googleapis.com/css?family=Satisfy');
                             @import url('https://fonts.googleapis.com/css?family=Zeyada');
@@ -2454,14 +2459,15 @@
         <div id="AlertBookButton-Popup" class="popup personlized-service-pop-up-outer">
             <div class="popup-inner personlized-service-pop-up">
                 <a href="#" class="popup-close-btn personlized-service-pop-up-close-btn">&times;</a>
-                <div class="popup-content personlized-service-content">
+                <div class="popup-content personlized-service-content alertContennt">
                     <div class="popup-form-center">
-                        <div class="form-tittle">
+<!--                        <div class="form-tittle">
                             <h3>JohnnyShares - Sharing & Collaboration Platform</h3>
-                        </div> 
+                        </div> -->
                         <div class="form-content clearfix">
                             <div class="form-logo">
-                                <img class="img-responsive" src="{{ asset('sximo/assets/images/logo-design_1.png')}}" alt="Design Locations">
+                                <h3>Please select the room you wish to Book</h3>
+                                <a href="#">OK</a>
                             </div>
                         </div>
                     </div>
