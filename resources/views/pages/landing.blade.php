@@ -97,7 +97,7 @@
                 text-transform: inherit;
             }
             .where-box-sub-menu.inner-level-sub-menu  li {
-                padding: 2px 0 2px 20px;
+                padding: 7px 0 2px 20px;
             }
             .where-box-sub-menu.inner-level-sub-menu {
                 margin: 0 0 15px;
