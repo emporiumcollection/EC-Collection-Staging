@@ -1283,7 +1283,7 @@
                                                             @endif
                                                             <?php $images = CustomQuery::getPropertyImages($props->id);
 
-                                                            print_r($images); ?>
+                                                            print_r($images);die; ?>
                                                             @if(!empty($images) && count($images)>0)
                                                                 @if($props->editor_choice_property=='1')
                                                                     <img alt="editor_choice_property" class="propovericons" src="{{URL::to('sximo/images/editors-choice.png')}}">
