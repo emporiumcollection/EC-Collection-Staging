@@ -5482,7 +5482,12 @@ class HomeController extends Controller {
     public function getPropertyBySearchDestination(Request $request) {
         $props = array();
         $perPage = 12;
-        $currentPage = Input::get('page', 1) - 1;
+        $currentPage = $request->page;
+        $page = 1;
+        if(isset($request->page) && $request->page>0){
+            $page = $request->page;
+        }
+        $pageStart = ($page -1) * $perPage;
         $propertiesArr = array();
         $CityArrdestts = array();
         $getcats = '';
@@ -5506,9 +5511,28 @@ class HomeController extends Controller {
             }
 
             if (!empty($chldIds)) {
-                $getcats = " AND (" . implode(" || ", array_map(function($v) {
+                $getcats = " OR (" . implode(" || ", array_map(function($v) {
                                     return sprintf("FIND_IN_SET('%s', property_category_id)", $v);
                                 }, array_values($chldIds))) . ")";
+            }
+        }else{
+             $scateObj = \DB::table('tb_categories')->where('category_name', Input::get('s', false))->where('category_published', 1)->first();
+            $getcats = '';
+            $schldIds = array();
+            if (!empty($scateObj)) {
+                $cateObjtemp = \DB::table('tb_categories')->where('parent_category_id', $scateObj->id)->where('category_published', 1)->get();
+                if (!empty($cateObjtemp)) {
+                    $schldIds = $this->fetchcategoryChildListIds($scateObj->id);
+                    array_unshift($schldIds, $scateObj->id);
+                } else {
+                    $schldIds[] = $scateObj->id;
+                }
+
+                if (!empty($schldIds)) {
+                    $getcats = " OR (" . implode(" || ", array_map(function($v) {
+                                        return sprintf("FIND_IN_SET('%s', property_category_id)", $v);
+                                    }, array_values($schldIds))) . ")";
+                }
             }
         }
         $TagsObj = \DB::table('tb_tags_manager')->where('tag_title', Input::get('s', false))->where('tag_status', 1)->first();
@@ -5620,33 +5644,60 @@ class HomeController extends Controller {
                 }
             }
         }
-        /****** New Query Ravinder *********/
+        /****** New Query By Ravinder *********/
 
-       /* if ($filter_min_price != '' && $filter_max_price != '') {
+        if ($filter_min_price != '' && $filter_max_price != '') {
              
-            $getPriceQry =" , (SELECT pcrp.rack_rate FROM tb_properties_category_rooms_price pcrp, tb_properties pr  where pr.id=pcrp.property_id and pcrp.rack_rate between '".$filter_min_price."' and '".$filter_max_price."' order by pcrp.rack_rate DESC limit 0,1 ) as price ," ;
-            $filterPriceQry = " pr.id in(SELECT pr.id,pcrp.rack_rate FROM tb_properties_category_rooms_price pcrp, tb_properties pr  where pr.id=pcrp.property_id and pcrp.rack_rate between '".$filter_min_price."' and '".$filter_max_price."' group by pr.id order by pcrp.rack_rate DESC) ";
+            $getPriceQry =" , (SELECT pcrp.rack_rate FROM tb_properties_category_rooms_price pcrp, tb_properties pr  where pr.id=pcrp.property_id and pcrp.rack_rate between '".$filter_min_price."' and '".$filter_max_price."' order by pcrp.rack_rate DESC limit 0,1 ) as price , " ;
+            $filterPriceQry = " and pr.id in(SELECT pr.id FROM tb_properties_category_rooms_price pcrp, tb_properties pr  where pr.id=pcrp.property_id and pcrp.rack_rate between '".$filter_min_price."' and '".$filter_max_price."' group by pr.id order by pcrp.rack_rate DESC) ";
+        }else{
+             $getPriceQry =" , (SELECT pcrp.rack_rate FROM tb_properties_category_rooms_price pcrp, tb_properties pr  where pr.id=pcrp.property_id  order by pcrp.rack_rate DESC limit 0,1 ) as price ," ;
+             $filterPriceQry = "";
         }
 
         $query = "SELECT pr.id,pr.property_name,pr.property_slug"; 
         $query .= $getPriceQry;
         $query .= " (SELECT cat.category_name FROM tb_categories cat, tb_properties pr where pr.property_category_id=cat.id limit 0,1 ) as category_name ";
         $query .= " FROM tb_properties pr  ";
-        $whereClause = " WHERE pr.property_type = 'Hotel' AND .prproperty_name like '%$keyword%' AND pr.property_status = '1' $getcats GROUP BY pr.id ORDER BY pr.id asc ";*/
+        $whereClause = " WHERE pr.property_type = 'Hotel' AND (pr.property_name like '%".$keyword."%'".$getcats.") AND pr.property_status = '1'".$filterPriceQry."  ORDER BY pr.id asc ";
+        $limit = " LIMIT ". $pageStart.",".$perPage; 
+        $finalQry = $query.$whereClause.$limit ;
+        $CountRecordQry = "Select count(*) as total_record from tb_properties pr ".$whereClause ;
         
-        $__currentPage = ($currentPage > 0)? $currentPage : 1;
-        $start = ($perPage * $__currentPage);
-                
-        $seaprops = DB::select(DB::raw("SELECT id,property_name,property_slug FROM tb_properties WHERE tb_properties.property_type = 'Hotel' AND property_name like '%$keyword%' AND property_status = '1' $getcats GROUP BY id ORDER BY id asc LIMIT $start, $perPage "));
-        if (!empty($seaprops)) {
-            foreach ($seaprops as $sprop) {
+        $property = DB::select($finalQry);
+        $getRec = DB::select($CountRecordQry);
+        
 
-                if ($filter_min_price != '' && $filter_max_price != '') {
-                    $checkseasonPrice = \DB::table('tb_properties_category_rooms_price')->where('property_id', $sprop->id)->orderBy('rack_rate', 'DESC')->first();
-                    if (!empty($checkseasonPrice) && $checkseasonPrice->rack_rate >= $filter_min_price && $checkseasonPrice->rack_rate <= $filter_max_price) {
+        // Comment code by Ravinder
+        /*
+            $__currentPage = ($currentPage > 0)? $currentPage : 1;
+            $start = ($perPage * $__currentPage);
+                    
+            $seaprops = DB::select(DB::raw("SELECT id,property_name,property_slug FROM tb_properties WHERE tb_properties.property_type = 'Hotel' AND property_name like '%$keyword%' AND property_status = '1' $getcats GROUP BY id ORDER BY id asc LIMIT $start, $perPage "));
+            if (!empty($seaprops)) {
+                foreach ($seaprops as $sprop) {
 
+                    if ($filter_min_price != '' && $filter_max_price != '') {
+                        $checkseasonPrice = \DB::table('tb_properties_category_rooms_price')->where('property_id', $sprop->id)->orderBy('rack_rate', 'DESC')->first();
+                        if (!empty($checkseasonPrice) && $checkseasonPrice->rack_rate >= $filter_min_price && $checkseasonPrice->rack_rate <= $filter_max_price) {
+
+                            $propertiesArr[$sprop->id]['pdata'] = $sprop;
+                            $propertiesArr[$sprop->id]['pdata']->price = $checkseasonPrice->rack_rate;
+                            $sfileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $sprop->id)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
+
+                            if (!empty($sfileArr)) {
+                                $propertiesArr[$sprop->id]['image'] = $sfileArr;
+                                $propertiesArr[$sprop->id]['image']->imgsrc = (new ContainerController)->getThumbpath($sfileArr->folder_id);
+                            }
+                            $pr++;
+                        }
+                    } else {
                         $propertiesArr[$sprop->id]['pdata'] = $sprop;
-                        $propertiesArr[$sprop->id]['pdata']->price = $checkseasonPrice->rack_rate;
+                        $propertiesArr[$sprop->id]['pdata']->price = '';
+                        $checkseasonPrice = \DB::table('tb_properties_category_rooms_price')->where('property_id', $sprop->id)->orderBy('rack_rate', 'DESC')->first();
+                        if (!empty($checkseasonPrice)) {
+                            $propertiesArr[$sprop->id]['pdata']->price = $checkseasonPrice->rack_rate;
+                        }
                         $sfileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $sprop->id)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
 
                         if (!empty($sfileArr)) {
@@ -5655,24 +5706,9 @@ class HomeController extends Controller {
                         }
                         $pr++;
                     }
-                } else {
-                    $propertiesArr[$sprop->id]['pdata'] = $sprop;
-                    $propertiesArr[$sprop->id]['pdata']->price = '';
-                    $checkseasonPrice = \DB::table('tb_properties_category_rooms_price')->where('property_id', $sprop->id)->orderBy('rack_rate', 'DESC')->first();
-                    if (!empty($checkseasonPrice)) {
-                        $propertiesArr[$sprop->id]['pdata']->price = $checkseasonPrice->rack_rate;
-                    }
-                    $sfileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $sprop->id)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
-
-                    if (!empty($sfileArr)) {
-                        $propertiesArr[$sprop->id]['image'] = $sfileArr;
-                        $propertiesArr[$sprop->id]['image']->imgsrc = (new ContainerController)->getThumbpath($sfileArr->folder_id);
-                    }
-                    $pr++;
                 }
             }
-        }
-
+        
          if (isset($request->dest) && $request->dest!='') {
             $catprops = DB::select(DB::raw("SELECT id,property_name,property_slug FROM tb_properties WHERE tb_properties.property_type = 'Hotel' AND property_status = '1' $getcats ORDER BY id asc"));
             if (!empty($catprops)) {
@@ -5710,7 +5746,6 @@ class HomeController extends Controller {
                 }
             }
         } else {
-            //$catprops = \DB::select( DB::raw("SELECT * FROM tb_properties WHERE FIND_IN_SET('".$chld."',property_category_id) AND property_status='1' ") );
             $scateObj = \DB::table('tb_categories')->where('category_name', Input::get('s', false))->where('category_published', 1)->first();
             $sgetcats = '';
             $schldIds = array();
@@ -5765,7 +5800,7 @@ class HomeController extends Controller {
                 }
             }
         }
-
+    
         usort($propertiesArr, function($a, $b) {
             return trim($a['pdata']->property_name) > trim($b['pdata']->property_name);
         });
@@ -5773,7 +5808,7 @@ class HomeController extends Controller {
             return trim($a['pdata']->price) < trim($b['pdata']->price);
         });
         
-        /*$propertiesArr = array_map("unserialize", array_unique(array_map("serialize", $propertiesArr)));*/
+        
 
         //echo count($propertiesArr);
         $pagedData = array_slice($propertiesArr, $currentPage * $perPage, $perPage);
@@ -5795,15 +5830,15 @@ class HomeController extends Controller {
                 }
             }
         }
-
-        if (!empty($pagination)) {
-            $tempproperties = array();
+    */
+        if (!empty($property)) {
+           /* $tempproperties = array();
             foreach ($pagination as $pag) {
                 $tempproperties[] = $pag;
             }
             //print_r($tempproperties);
             $pager = $this->injectPaginate();
-
+            */
             if (isset($request->dest) && $request->dest!='' && $request->current_filter == 'destination') {
                 $cateObjtm = \DB::table('tb_categories')->where('id', $request->dest)->where('category_published', 1)->first();
                 if (!empty($cateObjtm)) {
@@ -5814,10 +5849,12 @@ class HomeController extends Controller {
             }
 
             $rep['status'] = 'success';
-            $rep['properties'] = json_encode($tempproperties);
-            $rep['cities'] = json_encode($CityArrdestts);
-            $rep['ttlpages'] = $pagination->appends($pager)->lastPage();
-            $rep['ttl'] = count($propertiesArr);
+            $rep['properties'] = $property;
+           // $rep['cities'] = json_encode($CityArrdestts);
+            //$rep['ttlpages'] = $pagination->appends($pager)->lastPage();
+            $rep['total_record'] = $getRec[0]->total_record;
+            $rep['record_per_page'] =  $perPage;
+            $rep['total_pages'] = (isset($getRec[0]->total_record) && $getRec[0]->total_record>0)?(int)ceil($getRec[0]->total_record / $perPage):0;
             return json_encode($rep);
         } else {
             $rep['status'] = 'error';

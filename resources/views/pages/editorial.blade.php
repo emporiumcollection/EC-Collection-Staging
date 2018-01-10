@@ -977,6 +977,37 @@
                                 top: 31px;
                                 position: absolute;
                             }
+                            
+                            /* AIC 10-1-2018*/
+                            
+                            .form-logo h3 {
+                                font-size: 22px;
+                                color: white;
+                            }
+                            
+                            .form-logo a {
+                                background: #ABA07C;
+                                color: white;
+                                padding: 7px 25px 7px 25px;
+                                text-align: right;
+                                float: right;
+                                margin-top: 15px;
+                            }
+                            
+                            .AlertServiceClose {
+                                top: 0;
+                                width: 100%;
+                                color: #ABA07C;
+                            }
+                            
+                            .alertContennt {
+                                padding: 0px;
+                            }
+                            
+                            .AlertFormContent {
+                                background: #252525;
+                            }
+                            
                             @import url('https://fonts.googleapis.com/css?family=Caveat');
                             @import url('https://fonts.googleapis.com/css?family=Satisfy');
                             @import url('https://fonts.googleapis.com/css?family=Zeyada');
@@ -1235,7 +1266,8 @@
                                             <div class="form-group padding-right-12">
                                                 <label class="align-with-label"></label>
                                                 <div class="clearfix"></div>
-                                                <button class="top-booking-bar-btn" type="submit">Book</button>
+<!--                                                <button class="top-booking-bar-btn" type="submit">Book</button>-->
+                                                <a data-popup-id="AlertBookButton-Popup" href="#" class="video-popup-btn login_popup show-login-forms-btn top-booking-bar-btn" type="submit">BOOK</a>
                                                 <button class="top-booking-bar-btn click-share-btn">Share</button>
 						<a data-popup-id="login-forms-popup" href="#" class="video-popup-btn login_popup show-login-forms-btn"><i class="fa fa-lock " aria-hidden="true" ></i></a>
 <!--                                                <i class="fa fa-bars emporium-voyage-Menu" aria-hidden="true"></i>-->
@@ -2447,6 +2479,33 @@
                 </ul>
             </div>	
         </div>
+        
+        <!-- my popup -->
+        <!--Register Pop Up Start Here-->
+        <div id="AlertBookButton-Popup" class="popup personlized-service-pop-up-outer">
+            <div class="popup-inner personlized-service-pop-up">
+                <a href="#" class="popup-close-btn personlized-service-pop-up-close-btn AlertServiceClose">&times;</a>
+                <div class="popup-content personlized-service-content alertContennt">
+                    <div class="popup-form-center">
+<!--                        <div class="form-tittle">
+                            <h3>JohnnyShares - Sharing & Collaboration Platform</h3>
+                        </div> -->
+                        <div class="form-content AlertFormContent clearfix">
+                            <div class="form-logo">
+                                <h3>Please select the room you wish to Book</h3>
+                                <a href="#">OK</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        <!--Register Pop Up End Here-->
+        <!--New Login Pop Up Start Here-->
+        <!--New Login Pop Up End Here-->
+        <!-- end my popup-->
+        
         <script>
             $(document).ready(function () {
                 $(".our-collection-top-booking-form").submit(function (event) {

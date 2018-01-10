@@ -1102,7 +1102,7 @@
 								
                                 <div class="grid-page-category-slider-container">
 								@if(!empty($categoryslider))
-									<div class="bh-slideshow-thumbnail-split hidden-xs hidden-sm" data-uk-slideshow="{animation: 'slice-up', autoplay: true}" style="margin-bottom:20px;margin-top:0px;">
+									<div class="bh-slideshow-thumbnail-split hidden-xs hidden-sm" data-uk-slideshow="{animation: 'slice-up', autoplay: true}" style="margin-bottom:20px;margin-top:64px;">
 										<ul style="" class="uk-slideshow uk-overlay-active">
 											@foreach($categoryslider as $slides)
 											<li class="ai-uk-animation" style="" @if($categoryslider[0]==$slides) class="uk-active" @endif aria-hidden="true">

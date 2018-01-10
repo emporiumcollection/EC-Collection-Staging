@@ -2,6 +2,14 @@
  * @author SE Manu Mahesh
  * @date 08 Dec 2016
  */
+.top-booking-bar-btn {
+    background-color: #ABA07C;
+    border: none;
+    border-radius: 0;
+    color: #fff;
+    padding: 7px 9px;
+    font-family: Geomanist-light;
+}
 
 .hotels-logo {
     background: #1e2023 none repeat scroll 0 0;
