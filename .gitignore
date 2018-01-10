@@ -14,3 +14,4 @@ nbproject
 .buildpath
 /public/storage
 /storage/*.key
+.idea/
