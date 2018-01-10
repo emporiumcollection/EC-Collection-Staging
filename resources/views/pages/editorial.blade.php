@@ -983,6 +983,7 @@
                             .form-logo h3 {
                                 font-size: 22px;
                                 color: white;
+                                font-family: ACaslonPro-Regular;
                             }
                             
                             .form-logo a {
@@ -992,6 +993,7 @@
                                 text-align: right;
                                 float: right;
                                 margin-top: 15px;
+                                font-family: Geomanist-Light;
                             }
                             
                             .AlertServiceClose {
@@ -2483,10 +2485,10 @@
         <!-- my popup -->
         <!--Register Pop Up Start Here-->
         <div id="AlertBookButton-Popup" class="popup personlized-service-pop-up-outer">
-            <div class="popup-inner personlized-service-pop-up">
-                <a href="#" class="popup-close-btn personlized-service-pop-up-close-btn AlertServiceClose">&times;</a>
+            <div class="popup-inner personlized-service-pop-up AlertServiceClose">
+                <a href="#" class="popup-close-btn personlized-service-pop-up-close-btn">&times;</a>
                 <div class="popup-content personlized-service-content alertContennt">
-                    <div class="popup-form-center">
+                    <div class="popup-form-center CenterAlertPop">
 <!--                        <div class="form-tittle">
                             <h3>JohnnyShares - Sharing & Collaboration Platform</h3>
                         </div> -->
