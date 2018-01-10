@@ -982,7 +982,7 @@
                             
                             .form-logo h3 {
                                 font-size: 22px;
-                                color: white;
+                                color: #ABA07C;
                                 font-family: ACaslonPro-Regular;
                             }
                             
@@ -994,6 +994,10 @@
                                 float: right;
                                 margin-top: 15px;
                                 font-family: Geomanist-Light;
+                            }
+                            
+                            .form-logo a:hover {
+                                color: white;
                             }
                             
                             .AlertServiceClose {
@@ -1268,8 +1272,8 @@
                                             <div class="form-group padding-right-12">
                                                 <label class="align-with-label"></label>
                                                 <div class="clearfix"></div>
-<!--                                                <button class="top-booking-bar-btn" type="submit">Book</button>-->
-                                                <a data-popup-id="AlertBookButton-Popup" href="#" class="video-popup-btn login_popup show-login-forms-btn top-booking-bar-btn" type="submit">BOOK</a>
+                                                <button class="top-booking-bar-btn" type="submit">Book</button>
+<!--                                                <a data-popup-id="AlertBookButton-Popup" href="#" class="video-popup-btn login_popup show-login-forms-btn top-booking-bar-btn" type="submit">BOOK</a>-->
                                                 <button class="top-booking-bar-btn click-share-btn">Share</button>
 						<a data-popup-id="login-forms-popup" href="#" class="video-popup-btn login_popup show-login-forms-btn"><i class="fa fa-lock " aria-hidden="true" ></i></a>
 <!--                                                <i class="fa fa-bars emporium-voyage-Menu" aria-hidden="true"></i>-->
@@ -2512,7 +2516,11 @@
             $(document).ready(function () {
                 $(".our-collection-top-booking-form").submit(function (event) {
                     if($(this).find("select[name=roomType]").val() == 'null' || $(this).find("select[name=roomType]").val() == null) {
-                        alert("Please select the room you wish to Book.");
+                        /*alert("Please select the room you wish to Book.");*/
+                        $("#AlertBookButton-Popup").animate({
+                            width: "100%"
+                        }, 800, function () {});
+                        $("body").addClass("fixed");
                         event.preventDefault();
                     }
                 });
