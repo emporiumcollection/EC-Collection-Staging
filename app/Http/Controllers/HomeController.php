@@ -7084,7 +7084,10 @@ class HomeController extends Controller {
                         $property = DB::select($finalQry);
                         $getRec = DB::select($CountRecordQry);
 
-                        $this->data['propertiesArr'] = $pagination;
+                        $this->data['propertiesArr'] = $property;
+                        $this->data['total_record'] = $getRec[0]->total_record;
+                        $this->data['record_per_page'] =  $perPage;
+                        $this->data['total_pages'] = (isset($getRec[0]->total_record) && $getRec[0]->total_record>0)?(int)ceil($getRec[0]->total_record / $perPage):0;
 
                         $uid = isset(\Auth::user()->id) ? \Auth::user()->id : '';
                         //Comment light Box 
@@ -7247,6 +7250,7 @@ class HomeController extends Controller {
                         $this->data['group_id'] = \Session::get('gid');
                         $this->data['keyword'] = $keyword;
                         $this->data['ttlcount'] = count($propertiesArr);
+                        print_r($this->data);
                         return view($page, $this->data);
                     } else {
                         return Redirect::to('')
