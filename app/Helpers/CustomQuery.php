@@ -1,6 +1,6 @@
 <?php
 namespace App\Helpers;
-
+use Storage;
 class CustomQuery
 {
     //Return All images path of Property
