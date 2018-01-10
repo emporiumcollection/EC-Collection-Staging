@@ -1236,7 +1236,7 @@
                                                 <label class="align-with-label"></label>
                                                 <div class="clearfix"></div>
 <!--                                                <button class="top-booking-bar-btn" type="submit">Book</button>-->
-                                                <a data-popup-id="login-forms-popup" href="#" class="video-popup-btn login_popup show-login-forms-btn top-booking-bar-btn" type="submit">BOOK</a>
+                                                <a data-popup-id="AlertBookButton-Popup" href="#" class="video-popup-btn login_popup show-login-forms-btn top-booking-bar-btn" type="submit">BOOK</a>
                                                 <button class="top-booking-bar-btn click-share-btn">Share</button>
 						<a data-popup-id="login-forms-popup" href="#" class="video-popup-btn login_popup show-login-forms-btn"><i class="fa fa-lock " aria-hidden="true" ></i></a>
 <!--                                                <i class="fa fa-bars emporium-voyage-Menu" aria-hidden="true"></i>-->
@@ -2451,7 +2451,7 @@
         
         <!-- my popup -->
         <!--Register Pop Up Start Here-->
-        <div id="register-popup" class="popup personlized-service-pop-up-outer">
+        <div id="AlertBookButton-Popup" class="popup personlized-service-pop-up-outer">
             <div class="popup-inner personlized-service-pop-up">
                 <a href="#" class="popup-close-btn personlized-service-pop-up-close-btn">&times;</a>
                 <div class="popup-content personlized-service-content">
