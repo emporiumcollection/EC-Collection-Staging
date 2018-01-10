@@ -506,7 +506,6 @@
 	border-left: 4px solid #a1a39c;
 	color: white !important;
 	transition: all 0.3s ease 0s;
-        text-decoration: underline;
     }
     
         
