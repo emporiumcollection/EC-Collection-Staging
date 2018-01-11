@@ -32,7 +32,7 @@ body.fixed {
     background-color: #ebebeb;
     margin: 0 auto;
 /*    max-width: 1500px;*/
-    overflow: auto;
+    overflow: visible;
     width: 100%;
 }
 .popup-close-btn {

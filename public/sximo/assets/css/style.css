@@ -5157,7 +5157,10 @@ div#fixed_wrapper {
 }
 .right-need-help-icon {
     margin-top: 13px;
-    text-align: right;
+    text-align: left;
+}
+.ps-forms-cross-icons {
+	float: right;
 }
 .ps-big-form-heading {
     color: #fff;
@@ -5236,7 +5239,9 @@ div#fixed_wrapper {
     border: 2px solid #edf0f2;
 }
 .ps-forms-cross-icons .show-account-with-us.ps-forms-small-heading-link {
-    font-size: 27px;
+    font-size: 40px;
+    color: #ABA07C;
+    padding: 10px;
 }
 .ui-datepicker.ui-widget.ui-widget-content.ui-helper-clearfix.ui-corner-all {
     background-color: #1c313d;
@@ -5294,6 +5299,9 @@ div#fixed_wrapper {
     margin-left: 0;
     margin-top: -10px;
     padding: 15px;
+    float: right;
+    z-index: 999;
+    color: #ABA07C;
 }
 .content-area {
     text-align: center;
