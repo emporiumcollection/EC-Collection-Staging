@@ -125,15 +125,15 @@
             }
             
             .block-content.content span:nth-child(1) {
-                top: 32px;
+                top: 12px;
                 left: 57%;
             }
             .block-content.content span:nth-child(2) {
-                top: 39px;
+                top: 19px;
                 left: 57%;
             }
             .block-content.content span:nth-child(3) {
-                top: 46px;
+                top: 27px;
                 left: 57%;
             }
             
@@ -549,6 +549,7 @@
 	display: inline-block;
 	padding: 0px 0px;
 	text-align: center;
+        margin-top: 7px;
 	vertical-align: text-top;
 	width: 0%;
     }
@@ -1456,6 +1457,88 @@
                         </div>
 
                     </div>
+                    
+                    <!-- my popup hamburg menu -->
+        <!--Register Pop Up Start Here-->
+        <div id="register-popup" class="popup personlized-service-pop-up-outer">
+            <div class="popup-inner personlized-service-pop-up">
+                <a href="#" class="popup-close-btn personlized-service-pop-up-close-btn">&times;</a>
+                <div class="popup-content personlized-service-content EVhamburgService">
+                    <!-- code here-->
+                    <div class="col-md-12">
+			<div id="ev-primary-navigation" class="popup personlized-service-pop-up-outer">
+				<div class="popup-inner personlized-service-pop-up EVpopService">
+					<a href="#" class="popup-close-btn personlized-service-pop-up-close-btn">&times;</a>
+					<div class="popup-content personlized-service-content">
+						<div class="popup-form-center EVcenterPOP">
+							<ul class="EVMenu">
+								<li><a href="#">Sleep</a>
+									<ul class="sub-menu">
+										<li><a class="activeEV" href="#">Suite Présidentielle</a></li>
+										<li><a href="#">Suite Terrasse</a></li>
+										<li><a href="#">Top Of Five</a></li>
+										<li><a href="#">Suites So Suite</a></li>
+										<li><a href="#">Junior Suites</a></li>
+										<li><a href="#">Chambres</a></li>
+										<li><a href="#">Executive</a></li>
+										<li><a href="#">Chambres Deluxe</a></li>
+										<li><a href="#">Services</a></li>
+									</ul>
+								</li>
+								<li><a href="#">Savour</a>
+									<ul class="sub-menu">
+										<li><a class="activeEV" href="#">Le Roof</a></li>
+										<li><a href="#">Le Bar</a></li>
+										<li><a href="#">Le Brunch</a></li>
+									</ul>
+								</li>
+								<li><a href="#">Relax</a>
+									<ul class="sub-menu">
+										<li><a class="activeEV" href="#">Spa</a></li>
+										<li><a href="#">Terrasse piscine</a></li>
+										<li><a href="#">Plage privée</a></li>
+									</ul>
+								</li>
+								<li><a href="#">Discover</a>
+									<ul class="sub-menu">
+										<li><a class="activeEV" href="#">Cannes</a></li>
+										<li><a href="#">Activités</a></li>
+									</ul>
+								</li>
+								<li><a href="#">News</a>
+								</li>
+								<li><a href="#">Offres</a>
+									<ul class="sub-menu">
+										<li><a class="activeEV" href="#">Offres Sleep</a></li>
+										<li><a href="#">Offres Relax</a></li>
+									</ul>
+								</li>
+								<li><a href="#">Gift box</a>
+								</li>
+                                                                <li><a href="#">Events</a>
+								</li>
+                                                                <li class="smallEV"><a href="#">CarriÃ¨res</a>
+								</li>
+                                                                <li class="smallEV"><a href="#">Plan & AccÃ¨s</a>
+								</li>
+                                                                <li class="smallEV"><a href="#">Mentions lÃ©gales</a>
+								</li>
+                                                                <li class="smallEV"><a href="#">Green Globe</a>
+								</li>
+							</ul>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+			</div>
+		 </div>
+                    <!-- code here-->
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+                    
+                    
                     <input class="ai_search_keywords" value="{{$keyword}}" type="hidden" />
                     <input class="ai-arrive-date-filter" value="<?php echo (isset($_REQUEST['arrive'])) ? date('d-m-Y', strtotime($_REQUEST['arrive'])) : date("d-m-Y"); ?>" type="hidden" />
                     <input class="ai-depart-date-filter" value="<?php echo (isset($_REQUEST['destination'])) ? date('d-m-Y', strtotime($_REQUEST['destination'])) : date("d-m-Y", strtotime("+ 1 day")); ?>" type="hidden" />
