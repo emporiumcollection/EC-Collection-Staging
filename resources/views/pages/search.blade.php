@@ -2160,7 +2160,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                         var node_no = 1;
                         var total_rows = 0;
 
-                        $.each($.parseJSON(data.properties), function(idx, obj) {
+                        $.each(data.properties, function(idx, obj) {
 
                             /*html +='<li class="grid-item wow fadeInUp">';
                                         html +='<a href="{{URL::to('/')}}/'+obj.property_slug+'">';
