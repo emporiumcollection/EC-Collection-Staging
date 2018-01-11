@@ -139,36 +139,7 @@ class HomeController extends Controller {
                         $this->data['social_links'] = \DB::table('tb_social')->where('status', 1)->get();
                         $this->data['landing_menus'] = array();
 						
-                        $landinggridpropertiesArr = array();
-                        $landinggridquery = "SELECT editor_choice_property,feature_property,id,property_name,property_slug,property_category_id FROM tb_properties WHERE property_type='Hotel' AND property_status = '1' AND feature_property = '1'  GROUP BY  property_slug ORDER BY editor_choice_property desc, feature_property desc, (SELECT rack_rate FROM tb_properties_category_rooms_price WHERE tb_properties_category_rooms_price.property_id = tb_properties.id ORDER BY rack_rate DESC LIMIT 1) * 1 DESC LIMIT 20";
-
-                        $landinggridprops = DB::select(DB::raw($landinggridquery));
-                        if (!empty($landinggridprops)) {
-                                $pr = 0;
-                                foreach ($landinggridprops as $ldprop) {
-                                        $landinggridpropertiesArr[$pr]['data'] = $ldprop;
-                                        $landinggridpropertiesArr[$pr]['data']->price = '';
-                                        $checkseasonPrice = \DB::table('tb_properties_category_rooms_price')->select('rack_rate')->where('property_id', $ldprop->id)->orderBy('rack_rate', 'DESC')->first();
-                                        if (!empty($checkseasonPrice)) {
-                                                $landinggridpropertiesArr[$pr]['data']->price = $checkseasonPrice->rack_rate;
-                                        }
-
-                                        $landinggridpropertiesArr[$pr]['data']->category_name = '';
-                                        $cateObjtm = \DB::table('tb_categories')->select('category_name')->where('id', $ldprop->property_category_id)->where('category_published', 1)->first();
-                                        if (!empty($cateObjtm)) {
-                                                $landinggridpropertiesArr[$pr]['data']->category_name = $cateObjtm->category_name;
-                                        }
-
-                                        $fileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.file_id', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $ldprop->id)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
-                                        if (!empty($fileArr)) {
-                                                $landinggridpropertiesArr[$pr]['image'] = $fileArr;
-                                                $landinggridpropertiesArr[$pr]['image']->imgsrc = (new ContainerController)->getThumbpath($fileArr->folder_id);
-                                        }
-                                        $pr++;
-                                }
-                        }
-
-                        $this->data['landinggridpropertiesArr'] = $landinggridpropertiesArr;
+                        
                     }
 					if (isset($pageSlug) && $pageSlug == 'restaurants') {
 						$propertiesArr = array();
