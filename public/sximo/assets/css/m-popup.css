@@ -43,6 +43,7 @@ body.fixed {
     margin-left: calc(99% - 30px);
     margin-top: -11px;
     position: relative;
+    z-index: 999;
 }
 .popup-close-btn:hover, .popup-close-btn:active, .popup-close-btn:focus {
     color: #5e5e5e;
