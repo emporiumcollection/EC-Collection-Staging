@@ -7065,7 +7065,7 @@ class HomeController extends Controller {
 
                         }
 
-                        $perPage = 20;
+                        $perPage = 12;
                         $pageNumber = 1;
                         if(isset($request->page) && $request->page>0){
                             $pageNumber = $request->page;
