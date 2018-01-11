@@ -479,13 +479,14 @@
             list-style: none;
         }
         .contact-aside li {
-            padding: 6px 0px 6px 18px;
+            padding: 6px 0px 6px 25px;
             margin: 0px 0px 1px 0px;
         }
         .contact-aside li a {
-	margin-left: 11px;
+	margin-left: 0px;
 	font-size: 13px;
         }
+       
         .contact-aside [class*="icon-"] {
             display: inline-block;
             width: 24px;
@@ -509,7 +510,7 @@
         .asideIclass {
             float: left;
             margin-top: 3px;
-            margin-right: 13px;
+            margin-right: 25px;
             margin-left: 8px;
             color: #ABA07C;
         }
