@@ -4991,12 +4991,14 @@ class HomeController extends Controller {
         $query .= " (SELECT category_name FROM tb_categories ct where pr.property_category_id=ct.id limit 0,1 ) as category_name ";
         $query .= " FROM tb_properties  pr";
         $whereClause = " WHERE pr.property_type='" . $request->slug . "' AND pr.property_status = '1' ";
-        $orderBy =  "ORDER BY pr.editor_choice_property desc, pr.feature_property desc, (SELECT rack_rate FROM tb_properties_category_rooms_price pcrp WHERE pcrp.property_id = pr.id ORDER BY rack_rate DESC LIMIT 1) * 1 DESC LIMIT $pageStart, $perPage ";
+        $OrderByQry =  "ORDER BY pr.editor_choice_property desc, pr.feature_property desc, (SELECT rack_rate FROM tb_properties_category_rooms_price pcrp WHERE pcrp.property_id = pr.id ORDER BY rack_rate DESC LIMIT 1) * 1 DESC LIMIT $pageStart, $perPage ";
         $fianlQry = $query.' '.$whereClause.' '.$OrderByQry;
-        $getTotalRecQry = " Select count(*) as total_record FROM tb_properties pr  ".$whereClause;
-        $total_record = DB::select($getTotalRecQry);
+        $CountRecordQry = " Select count(*) as total_record FROM tb_properties pr  ".$whereClause;
+        $getRec = DB::select($CountRecordQry);
         $propertiesArr = DB::select($fianlQry);
-        print_r($propertiesArr); die;
+       // print_r($propertiesArr); die;
+                        
+
         $this->data['propertiesArr'] = $propertiesArr;
         $uid = isset(\Auth::user()->id) ? \Auth::user()->id : '';
         $this->data['ourmaindesitnation'] = '';
