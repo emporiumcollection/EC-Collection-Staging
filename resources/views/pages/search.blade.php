@@ -514,54 +514,57 @@
             margin-left: 8px;
             color: #ABA07C;
         }
-        
+        .contact-aside li a i {
+            margin-right: 25px;
+        }
+
         .emporium-voyage-Menu {
-	color: #c7ab84;
-	margin-top: 3px;
-	margin-left: 30px;
-	opacity: 1;
-	box-shadow: none;
-	font-size: 20px;
-    }
-    
-    #block-system-main-menu .block-inner {
-    background: rgba(37, 37, 37, 0.9);
-    }
-    
-    .close {
-	font-size: 21px;
-	font-weight: 700;
-	line-height: 1;
-	color: #000;
-	text-shadow:0px;
-	opacity: 1;
-    }
-    header {
-	position: fixed;
-	top: 67px;
-	z-index: 9999;
-	right: 0;
-/*	left: 95.20%;*/
-        width: 62px;
-    }
-    
-    /* go back buttons */
-    
-    .show-login-forms-btn {
-	display: inline-block;
-	padding: 0px 0px;
-	text-align: center;
-        margin-top: 7px;
-	vertical-align: text-top;
-	width: 0%;
-    }
-    .post-filter-inputs:hover, .post-filter-inputs:active, .post-filter-inputs:focus {
-	background-color: #DADAD5;
-	border-left: 4px solid #a1a39c;
-	color: white !important;
-	transition: all 0.3s ease 0s;
-    }
-    
+            color: #c7ab84;
+            margin-top: 3px;
+            margin-left: 30px;
+            opacity: 1;
+            box-shadow: none;
+            font-size: 20px;
+        }
+
+        #block-system-main-menu .block-inner {
+            background: rgba(37, 37, 37, 0.9);
+        }
+
+        .close {
+            font-size: 21px;
+            font-weight: 700;
+            line-height: 1;
+            color: #000;
+            text-shadow:0px;
+            opacity: 1;
+        }
+        header {
+            position: fixed;
+            top: 67px;
+            z-index: 9999;
+            right: 0;
+            /*	left: 95.20%;*/
+            width: 62px;
+        }
+
+        /* go back buttons */
+
+        .show-login-forms-btn {
+            display: inline-block;
+            padding: 0px 0px;
+            text-align: center;
+            margin-top: 7px;
+            vertical-align: text-top;
+            width: 0%;
+        }
+        .post-filter-inputs:hover, .post-filter-inputs:active, .post-filter-inputs:focus {
+            background-color: #DADAD5;
+            border-left: 4px solid #a1a39c;
+            color: white !important;
+            transition: all 0.3s ease 0s;
+        }
+
         
          /* sidebar css */
         </style>
@@ -1976,37 +1979,56 @@ function scrollDataAjax(it_scroll,pageCounter)
     }
 }
 
-
+/*
 var pageCounter = 2;
 var previousScroll = 0;
 $(window).scroll(function () {
 
-        var currentScroll = $(this).scrollTop();
-       if (currentScroll > previousScroll){
-           var windowScrollTop =  $(this).scrollTop() + ($('#listproperties').offset().top / 2);
-           
-            var documentHeight = $('#listproperties').innerHeight();
+    var currentScroll = $(this).scrollTop();
+    if (currentScroll > previousScroll){
+        var windowScrollTop =  $(this).scrollTop() + ($('#listproperties').offset().top / 2);
+        var documentHeight = $('#listproperties').innerHeight();
 
-             console.log('windowScrollTop  : ' + windowScrollTop+ ' document height : '+ documentHeight);
-            if(windowScrollTop >= documentHeight) {
-                var it_scroll = true;
-                 if(localStorage.page==2){
-                    pageCounter = 2;
-                 }
-                scrollDataAjax(it_scroll, pageCounter);
-                localStorage.page = 3;
-                //var nextPage = parseInt($('#nxtpg').val()) + 1 ;
-                   // $('#nxtpg').val(nextPage);
-                pageCounter++;
-                console.log('Ok! Fired Ajax');
-            }
-       } else {
-          console.log('scroll up');
-       }
-       previousScroll = currentScroll;
+        console.log('windowScrollTop  : ' + windowScrollTop+ ' document height : '+ documentHeight);
+        if(windowScrollTop >= documentHeight) {
+            var it_scroll = true;
+             if(localStorage.page==2){
+                pageCounter = 2;
+             }
+            scrollDataAjax(it_scroll, pageCounter);
+            localStorage.page = 3;
+            //var nextPage = parseInt($('#nxtpg').val()) + 1 ;
+               // $('#nxtpg').val(nextPage);
+            pageCounter++;
+            console.log('Ok! Fired Ajax');
+        }
+    } else {
+        console.log('scroll up');
+    }
+    previousScroll = currentScroll;
+});*/
 
-        
-    });
+/*
+ * Load Properties on scroll
+ */
+ 
+var pageCounter = 2;
+var totalPage = {{$total_pages}};
+
+$(window).scroll(function () {
+
+    if (pageCounter > totalPage){
+        return false;
+    }else{
+        var it_scroll = true;
+         scrollDataAjax(it_scroll, pageCounter);
+         console.log('Ajax Hit '  + pageCounter);
+    }
+
+    pageCounter++; 
+});
+ 
+ /******************************************/
 
 function scrollDownloadData(it_scroll)
 {  localStorage.page = 2;
