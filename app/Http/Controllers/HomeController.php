@@ -5292,7 +5292,7 @@ class HomeController extends Controller {
         $props = array();
         $perPage = 12;
         $currentPage = $request->page;
-        $pageNumber = 1;
+        $pageNumber = 2;
         if(isset($request->page) && $request->page>0){
             $pageNumber = $request->page;
         }
@@ -5473,15 +5473,14 @@ class HomeController extends Controller {
         $finalQry = $query.$whereClause.$limit ;
         $CountRecordQry = "Select count(*) as total_record from tb_properties pr ".$whereClause ;
         
-        $propertyObj = DB::select($finalQry);
+        $property = DB::select($finalQry);
         $getRec = DB::select($CountRecordQry);
-        $property = array();
-        foreach ($propertyObj as $key => $value) {
+        foreach ($property as $key => $value) {
             $imageObj = \CustomQuery::getPropertyImages($value->id);
             if(!empty($imageObj)){
-                $property[$key]['image']->folder_id;
-                $property[$key]['image']->file_name;
-                $property[$key]['image']->file_id;
+                $property[$key]->image->folder_id;
+                $property[$key]->image->file_name;
+                $property[$key]->image->file_id;
             }
         }
 
