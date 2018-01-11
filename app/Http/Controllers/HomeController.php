@@ -5478,9 +5478,9 @@ class HomeController extends Controller {
         foreach ($property as $key => $value) {
             $imageObj = \CustomQuery::getPropertyImages($value->id);
             if(!empty($imageObj)){
-                $property[$key]->image->folder_id;
-                $property[$key]->image->file_name;
-                $property[$key]->image->file_id;
+                $property[$key]->image->folder_id = $imageObj[0]->folder_id;
+                $property[$key]->image->file_name = $imageObj[0]->file_name;
+                $property[$key]->image->file_id = $imageObj[0]->file_id;
             }
         }
 
