@@ -423,7 +423,7 @@
                             .hotel-block-two-right-sec-align > p {
                                 color: white;
                                 line-height: 30px;
-                                margin-top: 0px;
+                                margin-top: 105px;
                                 font-size: 15px;
                                 font-family: Geomanist-Regular;
                                 opacity: 1;
@@ -569,7 +569,7 @@
                             .hotel-block-two-right-sec-align > h2 {
                                 color: #dbd4d7;
                                 font-family: ACaslonPro-Regular;
-                                font-size: 40px;
+                                font-size: 0px;
                                 font-weight: lighter;
                                 margin-top: 0px;
                                 text-transform: uppercase;
