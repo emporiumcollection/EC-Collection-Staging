@@ -1341,9 +1341,9 @@
 									</div>
 								</div>
                                 <!--Main Page Start here--><div class="col-md-12 col-sm-12 col-xs-12 ">
-                                    <div class="row" style="{{ ($ttlcount==0)?'padding:100px 0 0;text-align: center;':'padding:10px 0 0;text-align: center;'}}">
+                                    <div class="row" style="{{ ($total_record==0)?'padding:100px 0 0;text-align: center;':'padding:10px 0 0;text-align: center;'}}">
                                         <div class="locator clear">
-                                            <p class="searchcount"> {{$ttlcount}} Hotel(s) Found for {{$keyword}} </p>
+                                            <p class="searchcount"> {{$total_record}} Hotel(s) Found for {{$keyword}} </p>
                                         </div>
                                     </div>
 
