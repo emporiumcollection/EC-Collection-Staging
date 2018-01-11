@@ -2398,7 +2398,7 @@
                          </div>
                          <div class="clearfix"></div>
                          <div class="">
-                             <div class="login-sign-up-sidebar-outer-align account-with-us-show-hide">
+                             <div class="login-sign-up-sidebar-outer-align account-with-us-show-hide" style="display:none;">
                                  <div class="your-account-heading-align">
                                      <h2>Your Account With Us</h2>
                                  </div>
