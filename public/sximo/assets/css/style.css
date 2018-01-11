@@ -5412,7 +5412,7 @@ div#fixed_wrapper {
     font-size: 18px;
     position: relative;
     text-align: center;
-    /*width: 65px;*/
+    width: 65px;
 }
 .next-hotel-show-pannel {
     right: 64px;

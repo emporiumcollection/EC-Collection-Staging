@@ -413,11 +413,11 @@
             z-index: 1028;
     }
         .contact-aside {
-	border-radius: 2px;
+	border-radius: 0px;
 	transition: .5s;
 	position: fixed;
-	top: 228px;
-	left: calc(100% - 43px);
+	top: 206px;
+	left: calc(100% - 62px);
 	width: 340px;
 	background: #272727;
 	color: #fff;
@@ -429,11 +429,12 @@
             list-style: none;
         }
         .contact-aside li {
-	padding: 6px 0px 6px 9px;
-	margin: 0px 0px 1px 0px;
+            padding: 6px 0px 6px 18px;
+            margin: 0px 0px 1px 0px;
         }
         .contact-aside li a {
-            margin-left: 0;
+	margin-left: 11px;
+	font-size: 13px;
         }
         .contact-aside [class*="icon-"] {
             display: inline-block;
@@ -486,10 +487,11 @@
     }
     header {
 	position: fixed;
-	top: 64px;
+	top: 81px;
 	z-index: 9999;
 	right: 0;
-	left: 95.20%;
+/*	left: 95.20%;*/
+        width: 62px;
     }
     
     /* go back buttons */
