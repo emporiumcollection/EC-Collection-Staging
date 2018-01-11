@@ -1690,30 +1690,7 @@ $(document).ready(function(){
 
 
 
-    /*$(window).scroll(function () {
-        var minScrollTime = 4000;
-        var now = new Date().getTime();
-        var totlpgs = $('#ttlpg').val();
-        var nxtpg = $('#nxtpg').val();
-        if ( + nxtpg <= + totlpgs) {
-            if (!scrollTimer) {
-            var element_position = $('#brgrid').offset().top + $('#brgrid').outerHeight() - window.innerHeight;
-            var y_scroll_pos = $(window).scrollTop() + 100;
-            if ((y_scroll_pos >= element_position)) {
-            var it_scroll = true;
-            scrollDownloadData(it_scroll);
-            //console.log(y_scroll_pos + ' / ' +element_position);
-            }
-            scrollTimer = setTimeout(function() {
-            scrollTimer = null;
-            lastScrollFireTime = new Date().getTime();
-            var it_scroll = true;
-            scrollDownloadData(it_scroll);
-            //console.log(y_scroll_pos + ' / ' +element_position);
-            }, minScrollTime);
-            }
-        }
-    });*/
+
 });
 
 
@@ -1783,8 +1760,7 @@ function scrollDataAjax(it_scroll,pageCounter)
                     var total_rows = 0;
 
                     $.each(data.properties, function(idx, obj) {
-
-                        /*html +='<li class="grid-item wow fadeInUp">';
+                                             /*html +='<li class="grid-item wow fadeInUp">';
                         html +='<a href="{{URL::to('/')}}/'+obj.property_slug+'">';
                         html +='<figure>';
                         html +='<div class="portfolio-img bg-deep-pink">';           
