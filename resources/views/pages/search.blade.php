@@ -101,6 +101,7 @@
             .EVpopService {
                 width: 100%;
                 top: 0px;
+                background: transparent;
             }
 
             .EVcenterPOP {
