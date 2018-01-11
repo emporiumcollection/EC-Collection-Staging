@@ -31,6 +31,7 @@
 
         <link href="{{ asset('sximo/assets/css/slick.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/slick-theme.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('sximo/assets/css/Hamburg-menu.css')}}" rel="stylesheet" type="text/css"/>
 
         <link href="{{ asset('sximo/assets/css/theme.css')}}" rel="stylesheet" type="text/css" media="all">
         <script type="text/javascript" src="{{ asset('sximo/assets/js/jquery2.js')}}"></script>
@@ -90,6 +91,54 @@
         </script>
         @endif
         <style>
+            
+            /* hamburg menu pop up css */
+
+            .EVhamburgService {
+                padding: 19px;
+            }
+
+            .EVpopService {
+                width: 100%;
+                top: 0px;
+            }
+
+            .EVcenterPOP {
+                border: none;
+                display: table-footer-group;
+                margin: 0;
+            }
+            
+            .block-content.content {
+                width: 35px;
+                float: right;
+                height: 55px;
+            }
+            
+                        
+            .CustomTopbarwidth {
+                width: 5.333%;
+            }
+            
+            .detailfaLock {
+                margin-right: 50px;
+            }
+            
+            .block-content.content span:nth-child(1) {
+                top: 32px;
+                left: 57%;
+            }
+            .block-content.content span:nth-child(2) {
+                top: 39px;
+                left: 57%;
+            }
+            .block-content.content span:nth-child(3) {
+                top: 46px;
+                left: 57%;
+            }
+            
+            /* hamburg menu css */
+            
             /* Active filter */
             #maindestinations .node-btn.active {
                 border-bottom: 1px solid #fff;
@@ -416,7 +465,7 @@
 	border-radius: 0px;
 	transition: .5s;
 	position: fixed;
-	top: 206px;
+	top: 192px;
 	left: calc(100% - 62px);
 	width: 340px;
 	background: #272727;
@@ -487,7 +536,7 @@
     }
     header {
 	position: fixed;
-	top: 81px;
+	top: 67px;
 	z-index: 9999;
 	right: 0;
 /*	left: 95.20%;*/
@@ -1042,7 +1091,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-1">
+                                                <div class="col-md-1 CustomTopbarwidth">
                                                     <div class="row">
                                                         <div class="form-group padding-right-12">
                                                             <button class="top-booking-bar-btn" type="submit">Search</button>
@@ -1051,7 +1100,14 @@
                                                 </div>
                                                  <div class="col-md-1">
                                                     <a data-popup-id="login-forms-popup" href="#" class="video-popup-btn login_popup show-login-forms-btn"><i class="fa fa-lock detailfaLock" aria-hidden="true" ></i></a>
-                                                </div>
+                                                    <a data-popup-id="ev-primary-navigation" href="#" class="video-popup-btn"><!--<i class="fa fa-bars hamburgMenu" aria-hidden="true"></i>-->
+                                                        <div class="block-content content">
+                                                            <span></span>
+                                                            <span> </span>
+                                                            <span></span>
+                                                        </div>
+                                                    </a>
+                                                 </div>
                                             </form>
                                         </div>
                                         <!-- AIC Harman email phone sidebar add start -->
