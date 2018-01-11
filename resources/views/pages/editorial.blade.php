@@ -136,6 +136,12 @@
                 margin: 0;
             }
             
+            .block-content.content {
+                width: 35px;
+                float: right;
+                height: 55px;
+            }
+            
                         
             .CustomTopbarwidth {
                 width: 5.333%;
@@ -157,6 +163,7 @@
                 top: 46px;
                 left: 57%;
             }
+            
             
             
             /* hamburg menu pop up css */
