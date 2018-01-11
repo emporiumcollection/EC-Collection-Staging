@@ -1087,7 +1087,7 @@
                             border-radius: 0px;
                             transition: .5s;
                             position: fixed;
-                            top: 206px;
+                            top: 208px;
                             left: calc(100% - 62px);
                             width: 340px;
                             background: #272727;
@@ -1106,6 +1106,7 @@
                             .contact-aside li a {
                             margin-left: 11px;
                             font-size: 13px;
+                            color: #ABA07C;
                             }
                             .contact-aside [class*="icon-"] {
                                 display: inline-block;
