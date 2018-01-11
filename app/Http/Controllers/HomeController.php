@@ -4980,18 +4980,18 @@ class HomeController extends Controller {
         }
         $perPage = 12;
         $currentPage = $request->page;
-        $page = 1;
+        $pageNumber = 1;
         if(isset($request->page) && $request->page>0){
-            $page = $request->page;
+            $pageNumber = $request->page;
         }
-        $pageStart = ($page -1) * $perPage;
+        $pageStart = ($pageNumber -1) * $perPage;
 
         $query = "SELECT pr.editor_choice_property,pr.feature_property,pr.id,pr.property_name,pr.property_slug,pr.property_category_id,"; 
         $query .= " (SELECT rack_rate FROM tb_properties_category_rooms_price pcrp where pr.id=pcrp.property_id order by rack_rate DESC limit 0,1 ) as price ," ;
         $query .= " (SELECT category_name FROM tb_categories ct where pr.property_category_id=ct.id limit 0,1 ) as category_name ";
         $query .= " FROM tb_properties  pr";
         $whereClause = " WHERE pr.property_type='" . $request->slug . "' AND pr.property_status = '1' ";
-        $orderBy =  "ORDER BY pr.editor_choice_property desc, pr.feature_property desc, (SELECT rack_rate FROM tb_properties_category_rooms_price pcrp WHERE pcrp.property_id = pr.id ORDER BY rack_rate DESC LIMIT 1) * 1 DESC LIMIT $start, $perPage ";
+        $orderBy =  "ORDER BY pr.editor_choice_property desc, pr.feature_property desc, (SELECT rack_rate FROM tb_properties_category_rooms_price pcrp WHERE pcrp.property_id = pr.id ORDER BY rack_rate DESC LIMIT 1) * 1 DESC LIMIT $pageStart, $perPage ";
         $fianlQry = $query.' '.$whereClause.' '.$OrderByQry;
         $getTotalRecQry = " Select count(*) as total_record FROM tb_properties pr  ".$whereClause;
         $total_record = DB::select($getTotalRecQry);
