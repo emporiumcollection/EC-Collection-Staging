@@ -1779,15 +1779,15 @@ function scrollDataAjax(it_scroll,pageCounter)
                     var node_no = 1;
                     var total_rows = 0;
 
-                    $.each($.parseJSON(data.properties), function(idx, obj) {
+                    $.each(data.properties, function(idx, obj) {
 
                         /*html +='<li class="grid-item wow fadeInUp">';
-                        html +='<a href="{{URL::to('/')}}/'+obj.pdata.property_slug+'">';
+                        html +='<a href="{{URL::to('/')}}/'+obj.property_slug+'">';
                         html +='<figure>';
                         html +='<div class="portfolio-img bg-deep-pink">';           
                         if (obj.hasOwnProperty("image")) {
                              var pimg = "{{URL::to('uploads/property_imgs_thumbs/')}}/front_property_" + obj.image.folder_id + "_" + obj.image.file_name;
-                        html +='<img alt="'+obj.pdata.property_name+'" src="'+pimg+'">';
+                        html +='<img alt="'+obj.property_name+'" src="'+pimg+'">';
                         }else{
                              html +='<img src="http://placehold.it/800x560" alt=""/>';
                         }
@@ -1796,9 +1796,9 @@ function scrollDataAjax(it_scroll,pageCounter)
                         html +='<div class="portfolio-hover-main text-left">';
                         html +='<div class="portfolio-hover-box vertical-align-bottom">';
                         html +='<div class="portfolio-hover-content position-relative last-paragraph-no-margin">';
-                        html +='<span class="font-weight-600 line-height-normal alt-font text-white text-uppercase margin-one-half-bottom display-block">'+obj.pdata.property_name+'</span>';
-                        if (obj.pdata.price != ''){
-                            html +='<p class="text-white text-uppercase text-extra-small">From € '+obj.pdata.price+' </p>';
+                        html +='<span class="font-weight-600 line-height-normal alt-font text-white text-uppercase margin-one-half-bottom display-block">'+obj.property_name+'</span>';
+                        if (obj.price != ''){
+                            html +='<p class="text-white text-uppercase text-extra-small">From € '+obj.price+' </p>';
                         }
                         html +='</div>';
                         html +='</div>';
@@ -1809,16 +1809,16 @@ function scrollDataAjax(it_scroll,pageCounter)
                         html +='<div class="listDetails">';
                         html +='<div class="photographBox ai-grid-tiitles">';
                         html +='<h2>';
-                        html +='<a title="'+obj.pdata.property_name+'" class="photograph FltLft ai-filtreted-hotel-name" rel="'+obj.pdata.id+'" href="{{URL::to('/')}}/'+obj.pdata.property_slug+'">';
-                        html +=obj.pdata.property_name;
+                        html +='<a title="'+obj.property_name+'" class="photograph FltLft ai-filtreted-hotel-name" rel="'+obj.id+'" href="{{URL::to('/')}}/'+obj.property_slug+'">';
+                        html +=obj.property_name;
                         html +='</a>';
                         html +='<span class="FltRgt">';
-                        html +='<a class="carticon" href="javascript:void(0)" onclick="submitgridbookform(\''+obj.pdata.property_slug+'#*'+obj.pdata.id+'\');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>';
+                        html +='<a class="carticon" href="javascript:void(0)" onclick="submitgridbookform(\''+obj.property_slug+'#*'+obj.id+'\');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>';
                         html +='</span>';
                         html +='</h2>';
                         html +='</div>';
                         html +='<div class="entire_story MrgTop5 ai-view-hotels-tittle">';
-                        html +='<a class="textButton arrowButton detail_view MrgTop5" rel="'+obj.pdata.id+'" href="#">Quick View</a>';
+                        html +='<a class="textButton arrowButton detail_view MrgTop5" rel="'+obj.id+'" href="#">Quick View</a>';
                         html +='</div>';
                         html +='<div class="showOnHover">';
                         html +='<div class="hover_request">';
@@ -1839,32 +1839,32 @@ function scrollDataAjax(it_scroll,pageCounter)
                             html += '<div class="wrapperforliineedforlightboxremoval">';
                             html += '<div class="cat_product_medium1">';
                             html += '<div class="ai-grid-page-node-pic-box pictureBox gridPicture grid-box-main">';
-                            if (obj.pdata.price != ''){
+                            if (obj.price != ''){
                                 if($("#filter_min_price").val() != '' && $("#filter_max_price").val() != '') {
-                                    html += '<a class="textButton arrowButton MrgTop5 ai-filter-hotel-price-style" rel="' + obj.pdata.id + '" href="' + detail_link + '"> From EUR ' + obj.pdata.price + ' / night </a>';
+                                    html += '<a class="textButton arrowButton MrgTop5 ai-filter-hotel-price-style" rel="' + obj.id + '" href="' + detail_link + '"> From EUR ' + obj.price + ' / night </a>';
                                 }
                             }
                             if (obj.hasOwnProperty("image")) {
-                                if(obj.pdata.editor_choice_property=='1'){
+                                if(obj.editor_choice_property=='1'){
                                     var edtch = "{{URL::to('sximo/images/editors-choice.png')}}";
                                     html += '<img alt="editor_choice_property" class="propovericons" src="'+edtch+'">';
-                                }else if(obj.pdata.feature_property=='1'){
+                                }else if(obj.feature_property=='1'){
                                     var featp = "{{URL::to('sximo/images/featured-property.png')}}";
                                     html += '<img alt="editor_choice_property" class="propovericons" src="'+featp+'">';
                                 }
                                var pimg = "{{URL::to('uploads/property_imgs_thumbs/')}}/front_property_" + obj.image.folder_id + "_" + obj.image.file_name;
-                                html += '<a title="' + obj.pdata.property_name + '" class="picture_link " rel="' + obj.pdata.id + '" href="{{URL::to('')}}/' + obj.pdata.property_slug + '">';
+                                html += '<a title="' + obj.property_name + '" class="picture_link " rel="' + obj.id + '" href="{{URL::to('')}}/' + obj.property_slug + '">';
                                 html += '<div class="overlay-text-frezeed">';
-                                html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
-                                html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;' + obj.pdata.price + ' </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
+                                html += '<h2 class="yacts-tittle-text">' + obj.property_name + '</h2>';
+                                html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;' + obj.price + ' </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
                                 html += '</div>';
                                 html += '<div class="overlay-text hotel-overlay-text">';
-                                html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
-                                html += '<p class="yacths-des-text yacths-des-text-align"><span>From &euro;' + obj.pdata.price + ' </span><' + obj.pdata.category_name + '</span></p>';
+                                html += '<h2 class="yacts-tittle-text">' + obj.property_name + '</h2>';
+                                html += '<p class="yacths-des-text yacths-des-text-align"><span>From &euro;' + obj.price + ' </span><' + obj.category_name + '</span></p>';
                                 html += '</div>';
                                 html += '<div class="overlay-text yacts-overlay-text">';
-                                html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
-                                html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;' + obj.pdata.price + ' </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
+                                html += '<h2 class="yacts-tittle-text">' + obj.property_name + '</h2>';
+                                html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;' + obj.price + ' </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
                                 html += '<p class="yacths-des-text">2015H</p>';
                                 html += '</div>';
                                 html += '<img alt="' + obj.image.file_name + '" src="' + pimg + '" class="img-responsive">';
@@ -1874,15 +1874,15 @@ function scrollDataAjax(it_scroll,pageCounter)
                                 
                                 var pimg = "{{URL::to('sximo/assets/images/img-1.jpg')}}";
                                 html += '<div class="overlay-text-frezeed">';
-                                html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
+                                html += '<h2 class="yacts-tittle-text">' + obj.property_name + '</h2>';
                                 html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
                                 html += '</div>';
                                 html += '<div class="overlay-text hotel-overlay-text">';
-                                html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
-                                html += '<p class="yacths-des-text yacths-des-text-align"><span>From &euro;' + obj.pdata.price + ' </span>|<span>New York</span></p>';
+                                html += '<h2 class="yacts-tittle-text">' + obj.property_name + '</h2>';
+                                html += '<p class="yacths-des-text yacths-des-text-align"><span>From &euro;' + obj.price + ' </span>|<span>New York</span></p>';
                                 html += '</div>';
                                 html += '<div class="overlay-text yacts-overlay-text">';
-                                html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
+                                html += '<h2 class="yacts-tittle-text">' + obj.property_name + '</h2>';
                                 html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
                                 html += '<p class="yacths-des-text">2015H</p>';
                                 html += '</div>';
@@ -1893,23 +1893,23 @@ function scrollDataAjax(it_scroll,pageCounter)
                             html += '<div class="listDetails">';
                             html += '<div class="photographBox ai-grid-tiitles">';
                             html += '<h2>';
-                            var detail_link = "{{URL::to('')}}/" + obj.pdata.property_slug;
-                            html += '<a title="' + obj.pdata.property_name + '" class="FltLft ai-filtreted-hotel-name" rel="' + obj.pdata.id + '" href="' + detail_link + '">';
-                            html += obj.pdata.property_name;
+                            var detail_link = "{{URL::to('')}}/" + obj.property_slug;
+                            html += '<a title="' + obj.property_name + '" class="FltLft ai-filtreted-hotel-name" rel="' + obj.id + '" href="' + detail_link + '">';
+                            html += obj.property_name;
                             html += '</a>';
                             html += '<span class="FltRgt">';
                             if (obj.hasOwnProperty("image")) {
-                               // html += '<i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" onclick="add_to_lightbox(' + obj.image.file_id + ',' + obj.pdata.id + ');" ></i>';
+                               // html += '<i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" onclick="add_to_lightbox(' + obj.image.file_id + ',' + obj.id + ');" ></i>';
                             }else{
                                 //html += '<i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" ></i>';
                             }
-                                html += '<a class="carticon" href="javascript:void(0)" onclick="submitgridbookform(\'' + obj.pdata.property_slug + '#*' + obj.pdata.id + '\');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>';
+                                html += '<a class="carticon" href="javascript:void(0)" onclick="submitgridbookform(\'' + obj.property_slug + '#*' + obj.id + '\');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>';
                                 html += '</span>';
                                 html += '</h2>';
                                 html += '</div>';
                                 html += '<div class="entire_story MrgTop5 ai-view-hotels-tittle">';
-                                html += '<a class="textButton arrowButton detail_view MrgTop5" rel="' + obj.pdata.id + '" href="#">Quick View</a>';
-                                html += '<a class="textButton arrowButton MrgTop5" rel="' + obj.pdata.id + '" href="' + detail_link + '">Detail View </a>';
+                                html += '<a class="textButton arrowButton detail_view MrgTop5" rel="' + obj.id + '" href="#">Quick View</a>';
+                                html += '<a class="textButton arrowButton MrgTop5" rel="' + obj.id + '" href="' + detail_link + '">Detail View </a>';
                                 html += '</div>';
                                 html += '<div class="showOnHover">';
                                 html += '<div class="hover_request">';
@@ -2163,12 +2163,12 @@ url: "{{ URL::to('filter_search_destionation')}}",
                         $.each($.parseJSON(data.properties), function(idx, obj) {
 
                             /*html +='<li class="grid-item wow fadeInUp">';
-                                        html +='<a href="{{URL::to('/')}}/'+obj.pdata.property_slug+'">';
+                                        html +='<a href="{{URL::to('/')}}/'+obj.property_slug+'">';
                                         html +='<figure>';
                                         html +='<div class="portfolio-img bg-deep-pink">';           
                                         if (obj.hasOwnProperty("image")) {
                                              var pimg = "{{URL::to('uploads/property_imgs_thumbs/')}}/front_property_" + obj.image.folder_id + "_" + obj.image.file_name;
-                                        html +='<img alt="'+obj.pdata.property_name+'" src="'+pimg+'">';
+                                        html +='<img alt="'+obj.property_name+'" src="'+pimg+'">';
                                         }else{
                                              html +='<img src="http://placehold.it/800x560" alt=""/>';
                                         }
@@ -2177,9 +2177,9 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                         html +='<div class="portfolio-hover-main text-left">';
                                         html +='<div class="portfolio-hover-box vertical-align-bottom">';
                                         html +='<div class="portfolio-hover-content position-relative last-paragraph-no-margin">';
-                                        html +='<span class="font-weight-600 line-height-normal alt-font text-white text-uppercase margin-one-half-bottom display-block">'+obj.pdata.property_name+'</span>';
-                                        if (obj.pdata.price != ''){
-                                            html +='<p class="text-white text-uppercase text-extra-small">From € '+obj.pdata.price+' </p>';
+                                        html +='<span class="font-weight-600 line-height-normal alt-font text-white text-uppercase margin-one-half-bottom display-block">'+obj.property_name+'</span>';
+                                        if (obj.price != ''){
+                                            html +='<p class="text-white text-uppercase text-extra-small">From € '+obj.price+' </p>';
                                         }
                                         html +='</div>';
                                         html +='</div>';
@@ -2190,16 +2190,16 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                         html +='<div class="listDetails">';
                                         html +='<div class="photographBox ai-grid-tiitles">';
                                         html +='<h2>';
-                                        html +='<a title="'+obj.pdata.property_name+'" class="photograph FltLft ai-filtreted-hotel-name" rel="'+obj.pdata.id+'" href="{{URL::to('/')}}/'+obj.pdata.property_slug+'">';
-                                        html +=obj.pdata.property_name;
+                                        html +='<a title="'+obj.property_name+'" class="photograph FltLft ai-filtreted-hotel-name" rel="'+obj.id+'" href="{{URL::to('/')}}/'+obj.property_slug+'">';
+                                        html +=obj.property_name;
                                         html +='</a>';
                                         html +='<span class="FltRgt">';
-                                        html +='<a class="carticon" href="javascript:void(0)" onclick="submitgridbookform(\''+obj.pdata.property_slug+'#*'+obj.pdata.id+'\');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>';
+                                        html +='<a class="carticon" href="javascript:void(0)" onclick="submitgridbookform(\''+obj.property_slug+'#*'+obj.id+'\');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>';
                                         html +='</span>';
                                         html +='</h2>';
                                         html +='</div>';
                                         html +='<div class="entire_story MrgTop5 ai-view-hotels-tittle">';
-                                        html +='<a class="textButton arrowButton detail_view MrgTop5" rel="'+obj.pdata.id+'" href="#">Quick View</a>';
+                                        html +='<a class="textButton arrowButton detail_view MrgTop5" rel="'+obj.id+'" href="#">Quick View</a>';
                                         html +='</div>';
                                         html +='<div class="showOnHover">';
                                         html +='<div class="hover_request">';
@@ -2218,33 +2218,33 @@ url: "{{ URL::to('filter_search_destionation')}}",
                         html += '<div class="wrapperforliineedforlightboxremoval">';
                         html += '<div class="cat_product_medium1">';
                         html += '<div class="ai-grid-page-node-pic-box pictureBox gridPicture grid-box-main">';
-                        if (obj.pdata.price != '')
+                        if (obj.price != '')
                         {
                             if($("#filter_min_price").val() != '' && $("#filter_max_price").val() != '') {
-                                html += '<a class="textButton arrowButton MrgTop5 ai-filter-hotel-price-style" rel="' + obj.pdata.id + '" href="' + detail_link + '"> From EUR ' + obj.pdata.price + ' / night </a>';
+                                html += '<a class="textButton arrowButton MrgTop5 ai-filter-hotel-price-style" rel="' + obj.id + '" href="' + detail_link + '"> From EUR ' + obj.price + ' / night </a>';
                             }
                         }
                         if (obj.hasOwnProperty("image")) {
-                			if(obj.pdata.editor_choice_property=='1'){
+                			if(obj.editor_choice_property=='1'){
                 				var edtch = "{{URL::to('sximo/images/editors-choice.png')}}";
                 				html += '<img alt="editor_choice_property" class="propovericons" src="'+edtch+'">';
-                			}else if(obj.pdata.feature_property=='1'){
+                			}else if(obj.feature_property=='1'){
                 				var featp = "{{URL::to('sximo/images/featured-property.png')}}";
                 				html += '<img alt="editor_choice_property" class="propovericons" src="'+featp+'">';
                 			}
                            var pimg = "{{URL::to('uploads/property_imgs_thumbs/')}}/front_property_" + obj.image.folder_id + "_" + obj.image.file_name;
-                            html += '<a title="' + obj.pdata.property_name + '" class="picture_link " rel="' + obj.pdata.id + '" href="{{URL::to('')}}/' + obj.pdata.property_slug + '">';
+                            html += '<a title="' + obj.property_name + '" class="picture_link " rel="' + obj.id + '" href="{{URL::to('')}}/' + obj.property_slug + '">';
                             html += '<div class="overlay-text-frezeed">';
-                            html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
-                            html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;' + obj.pdata.price + ' </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
+                            html += '<h2 class="yacts-tittle-text">' + obj.property_name + '</h2>';
+                            html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;' + obj.price + ' </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
                             html += '</div>';
                             html += '<div class="overlay-text hotel-overlay-text">';
-                            html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
-                            html += '<p class="yacths-des-text yacths-des-text-align"><span>From &euro;' + obj.pdata.price + ' </span><' + obj.pdata.category_name + '</span></p>';
+                            html += '<h2 class="yacts-tittle-text">' + obj.property_name + '</h2>';
+                            html += '<p class="yacths-des-text yacths-des-text-align"><span>From &euro;' + obj.price + ' </span><' + obj.category_name + '</span></p>';
                             html += '</div>';
                             html += '<div class="overlay-text yacts-overlay-text">';
-                            html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
-                            html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;' + obj.pdata.price + ' </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
+                            html += '<h2 class="yacts-tittle-text">' + obj.property_name + '</h2>';
+                            html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;' + obj.price + ' </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
                             html += '<p class="yacths-des-text">2015H</p>';
                             html += '</div>';
                             html += '<img alt="' + obj.image.file_name + '" src="' + pimg + '" class="img-responsive">';
@@ -2254,15 +2254,15 @@ url: "{{ URL::to('filter_search_destionation')}}",
                             
                             var pimg = "{{URL::to('sximo/assets/images/img-1.jpg')}}";
                             html += '<div class="overlay-text-frezeed">';
-                            html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
+                            html += '<h2 class="yacts-tittle-text">' + obj.property_name + '</h2>';
                             html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
                             html += '</div>';
                             html += '<div class="overlay-text hotel-overlay-text">';
-                            html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
-                            html += '<p class="yacths-des-text yacths-des-text-align"><span>From &euro;' + obj.pdata.price + ' </span>|<span>New York</span></p>';
+                            html += '<h2 class="yacts-tittle-text">' + obj.property_name + '</h2>';
+                            html += '<p class="yacths-des-text yacths-des-text-align"><span>From &euro;' + obj.price + ' </span>|<span>New York</span></p>';
                             html += '</div>';
                             html += '<div class="overlay-text yacts-overlay-text">';
-                            html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
+                            html += '<h2 class="yacts-tittle-text">' + obj.property_name + '</h2>';
                             html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
                             html += '<p class="yacths-des-text">2015H</p>';
                             html += '</div>';
@@ -2273,13 +2273,13 @@ url: "{{ URL::to('filter_search_destionation')}}",
                         html += '<div class="listDetails">';
                         html += '<div class="photographBox ai-grid-tiitles">';
                         html += '<h2>';
-                        var detail_link = "{{URL::to('')}}/" + obj.pdata.property_slug;
-                        html += '<a title="' + obj.pdata.property_name + '" class="FltLft ai-filtreted-hotel-name" rel="' + obj.pdata.id + '" href="' + detail_link + '">';
-                        html += obj.pdata.property_name;
+                        var detail_link = "{{URL::to('')}}/" + obj.property_slug;
+                        html += '<a title="' + obj.property_name + '" class="FltLft ai-filtreted-hotel-name" rel="' + obj.id + '" href="' + detail_link + '">';
+                        html += obj.property_name;
                         html += '</a>';
                         html += '<span class="FltRgt">';
                         if (obj.hasOwnProperty("image")) {
-                        html += '<i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" onclick="add_to_lightbox(' + obj.image.file_id + ',' + obj.pdata.id + ');" ></i>';
+                        html += '<i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" onclick="add_to_lightbox(' + obj.image.file_id + ',' + obj.id + ');" ></i>';
                         }
                         else{
                         html += '<i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" ></i>';
@@ -2289,8 +2289,8 @@ url: "{{ URL::to('filter_search_destionation')}}",
                         html += '</h2>';
                         html += '</div>';
                         html += '<div class="entire_story MrgTop5 ai-view-hotels-tittle">';
-                        html += '<a class="textButton arrowButton detail_view MrgTop5" rel="' + obj.pdata.id + '" href="#">Quick View</a>';
-                        html += '<a class="textButton arrowButton MrgTop5" rel="' + obj.pdata.id + '" href="' + detail_link + '">Detail View </a>';
+                        html += '<a class="textButton arrowButton detail_view MrgTop5" rel="' + obj.id + '" href="#">Quick View</a>';
+                        html += '<a class="textButton arrowButton MrgTop5" rel="' + obj.id + '" href="' + detail_link + '">Detail View </a>';
                         html += '</div>';
                         html += '<div class="showOnHover">';
                         html += '<div class="hover_request">';
