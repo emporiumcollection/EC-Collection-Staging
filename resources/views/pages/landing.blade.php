@@ -1436,46 +1436,7 @@
 									</div>
 								@endforeach
 							@endif
-							<!--<div class="width-20">
-                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoBeachHotels.jpg')}}" alt=""/>
-                                <a href="{{URL::to('luxury_experience/Beach_Hotels')}}"><h3 class="hover-tittles">Luxury Beach Hotels</h3></a>
-                            </div>
-                            <div class="width-20">
-                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoGreenHotels.jpg')}}" alt=""/>
-                                <a href="{{URL::to('luxury_experience/Green_Properties')}}"><h3 class="hover-tittles">Luxury Green Hotels</h3></a>
-                            </div>
-                            <div class="width-20">
-                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoUrbanHotels.jpg')}}" alt=""/>
-                                <a href="{{URL::to('luxury_experience/Go_Urban_Hotels')}}"><h3 class="hover-tittles">Luxury Urban Hotels</h3></a>
-                            </div>
-                            <div class="width-20">
-                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoInfinityPoolHotels.jpg')}}" alt=""/>
-                                <a href="{{URL::to('luxury_experience/Infinity_Pools')}}"><h3 class="hover-tittles">Luxury Infinity Pools</h3></a>
-                            </div>
-                            <div class="width-20">
-                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoSpaandWellnessHotels.jpg')}}" alt=""/>
-                                <a href="{{URL::to('luxury_experience/Spa_and_Wellness_Hotels')}}"><h3 class="hover-tittles">Luxury Spa and Wellness Hotels</h3></a>
-                            </div>
-                            <div class="width-20">
-                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoMountainaandSkiResorts.jpg')}}" alt=""/>
-                                <a href="{{URL::to('luxury_experience/Mountain_Ski_Resorts')}}"><h3 class="hover-tittles">Luxury Mountains and Skin Resorts</h3></a>
-                            </div>
-                            <div class="width-20">
-                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoYogaHotels.jpg')}}" alt=""/>
-                                <a href="{{URL::to('luxury_experience/Yoga_Hotels')}}"><h3 class="hover-tittles">Discover Yoga Hotels</h3></a>
-                            </div>
-                            <div class="width-20">
-                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoCulnaryDelightHotels.jpg')}}" alt=""/>
-                                <a href="{{URL::to('luxury_experience/Culinary_Delights')}}"><h3 class="hover-tittles">Discover culinary Delight Hotels</h3></a>
-                            </div>
-                            <div class="width-20">
-                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoFamilyFriendlyHotels.jpg')}}" alt=""/>
-                                <a href="{{URL::to('luxury_experience/Family_Friendly')}}"><h3 class="hover-tittles">Discover Family Friendly Hotels</h3></a>
-                            </div>
-                            <div class="width-20">
-                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoUnusualAdventures.jpg')}}" alt=""/>
-                                <a href="{{URL::to('luxury_experience/Unusual_Adventure_Hotels')}}"><h3 class="hover-tittles">Unusual Adventure Hotels</h3></a>
-                            </div>-->
+							
                         </div>
                     </div>
                 </div>
@@ -1505,9 +1466,9 @@
                             That file will be genrate from cron job or backend panel.  
                        
                         
-                        {!!Storage::get('homeOurDestination.html')!!}  */  
+                          */  
       ?>
-                        
+                        {!!Storage::get('homeOurDestination.html')!!}
                         @if(!empty($ourmaindesitnation))
                         @foreach($ourmaindesitnation as $destination)
                         <div class="panel panel-default  destination-sub-menues">
@@ -2039,9 +2000,10 @@
                                                             That file will be genrate from cron job or backend panel.  
                                                         */  
                                                         
-                                                        //{!!Storage::get('homeOurDestinationMobile.html')!!}
+                                                        //
 
                                                     ?>
+                                                    {!!Storage::get('homeOurDestinationMobile.html')!!}
                                                     @if(!empty($ourdesitnation))
                                                     <div class="panel-group-" id="mobile-inner-accordian">
                                                         @foreach($ourdesitnation as $destination)
