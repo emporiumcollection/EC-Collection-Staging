@@ -1655,7 +1655,7 @@
         </div>
         <!--my popup hamburg menu End Here-->
                     
-                    
+                    <input class="ai_page_counter" value="2" type="hidden" />
                     <input class="ai_total_pages" value="{{$total_pages}}" type="hidden" />
                     <input class="ai_search_keywords" value="{{$keyword}}" type="hidden" />
                     <input class="ai-arrive-date-filter" value="<?php echo (isset($_REQUEST['arrive'])) ? date('d-m-Y', strtotime($_REQUEST['arrive'])) : date("d-m-Y"); ?>" type="hidden" />
@@ -2015,7 +2015,7 @@ $(window).scroll(function () {
  * Load Properties on scroll
  */
  
-var pageCounter = 2;
+var pageCounter = $(".ai_page_counter").val();
 var totalPage = $(".ai_total_pages").val();
 
 $(window).scroll(function () {
@@ -2091,6 +2091,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                 $(".ai_search_keywords").val(data.searchdestname);
                             }
                             
+                            $(".ai_page_counter").val("2");
                             $(".ai_total_pages").val(data.total_pages);
                             
                             /*
