@@ -2253,6 +2253,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                         } else{
                             
                             var pimg = "{{URL::to('sximo/assets/images/img-1.jpg')}}";
+                            html += '<a title="' + obj.property_name + '" class="picture_link " rel="' + obj.id + '" href="{{URL::to('')}}/' + obj.property_slug + '">';
                             html += '<div class="overlay-text-frezeed">';
                             html += '<h2 class="yacts-tittle-text">' + obj.property_name + '</h2>';
                             html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
@@ -2266,7 +2267,8 @@ url: "{{ URL::to('filter_search_destionation')}}",
                             html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
                             html += '<p class="yacths-des-text">2015H</p>';
                             html += '</div>';
-                            html += pimg;
+                            html += '<img alt="pimg" src="' + pimg + '" class="img-responsive">';
+                            html += '</a>';
                         }
 
                         html += '</div>';
