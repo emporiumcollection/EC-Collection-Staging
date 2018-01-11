@@ -1760,7 +1760,7 @@ function scrollDataAjax(it_scroll,pageCounter)
                     if (it_scroll == false){
                         $('#listproperties').html(data.errors);
                     }else{
-                        $('#listproperties').append(data.errors);
+                       //$('#listproperties').append(data.errors);
                     }
                         isDataAvailable = false;
                     }else{
@@ -2081,7 +2081,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                         }
                         else
                         {
-                        ('#listproperties').append(data.errors);
+                        //$('#listproperties').append(data.errors);
                         }
                         isDataAvailable = false;
                         }
