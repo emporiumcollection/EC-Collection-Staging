@@ -1931,7 +1931,7 @@ function scrollDataAjax(it_scroll,pageCounter)
                         if(total_rows>0){
                             $('.locator').parent().css('padding-top','0px');
                         }
-                        $(".searchcount").html(data.ttl + ' Hotel(s) Found for ' + $(".ai_search_keywords").val());
+                        $(".searchcount").html(data.total_record + ' Hotel(s) Found for ' + $(".ai_search_keywords").val());
                         html += '</div>';
                         if (it_scroll == false){
 
@@ -1960,13 +1960,13 @@ function scrollDataAjax(it_scroll,pageCounter)
                             $('#cityfilters').html(chtml); 
                         }
 
-//                var searchcountdispl = data.ttl + ' Hotel(s) Found for ' + data.searchdestname;
+//                var searchcountdispl = data.total_record + ' Hotel(s) Found for ' + data.searchdestname;
 //                $('.searchcount').html(searchcountdispl);
                 }
                    
                     sIndex = parseInt(sIndex) + offSet;
                     $('#listrecrds').val(sIndex);
-                    $('#ttlpg').val(data.ttlpages);
+                    $('#ttlpg').val(data.total_pages);
                     isPreviousEventComplete = true;
                 }
                       
