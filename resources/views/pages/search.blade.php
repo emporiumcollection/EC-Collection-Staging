@@ -1511,7 +1511,7 @@
                                                                     <p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>
                                                                     <p class="yacths-des-text">2015H</p>
                                                                 </div>
-                                                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/img-1.jpg')}}" alt="">-->
+                                                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/img-1.jpg')}}" alt="">
                                                             </a>
                                                             @endif
                                                         </div>
@@ -1558,7 +1558,7 @@
                                             {{--*/ $rw++ /*--}}
                                             {{--*/ $node_no++ /*--}}
                                             @endforeach
-                                            {{-- $totpage = $propertiesArr->appends($pager)->lastPage(); $newpage = $currentPage + 2; $prevnewpage = $newpage - 2; --}}
+                                           
                                             @endif 
                                             
                                     </div>
