@@ -2869,31 +2869,6 @@
                         event.preventDefault();
                     }
                 });
-                //                Login form Scripts
-                $(".sign-up-show-form-btn").click(function () {
-                    $(".create-account-form-show-hide").show();
-                    $(".account-with-us-show-hide").hide();
-                    $(".login-form-show-hide").hide();
-                    $(".forgot-pass-form-show-hide").hide();
-                });
-                $(".login-show-form-btn").click(function () {
-                    $(".login-form-show-hide").show();
-                    $(".account-with-us-show-hide").hide();
-                    $(".create-account-form-show-hide").hide();
-                    $(".forgot-pass-form-show-hide").hide();
-                });
-                $(".forgot-pass-show-form-btn").click(function () {
-                    $(".forgot-pass-form-show-hide").show();
-                    $(".login-form-show-hide").hide();
-                    $(".account-with-us-show-hide").hide();
-                    $(".create-account-form-show-hide").hide();
-                });
-                $(".show-account-with-us").click(function () {
-                    $(".account-with-us-show-hide").show();
-                    $(".forgot-pass-form-show-hide").hide();
-                    $(".login-form-show-hide").hide();
-                    $(".create-account-form-show-hide").hide();
-                });
             });
         </script>
         @include('layouts/elliot/ai_booking-form2')
