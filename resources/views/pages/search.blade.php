@@ -2313,7 +2313,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                         if(total_rows>0){
                             $('.locator').parent().css('padding-top','0px');
                         }
-                        $(".searchcount").html(data.ttl + ' Hotel(s) Found for ' + $(".ai_search_keywords").val());
+                        $(".searchcount").html(data.total_record + ' Hotel(s) Found for ' + $(".ai_search_keywords").val());
                         html += '</div>';
                         if (it_scroll == false)
                         {
@@ -2437,13 +2437,13 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                 $('#cityfilters').html(chtml); 
                             }
 
-                            var searchcountdispl = data.ttl + ' Hotel(s) Found for ' + $(".ai_search_keywords").val();
+                            var searchcountdispl = data.total_pages + ' Hotel(s) Found for ' + $(".ai_search_keywords").val();
                             $('.searchcount').html(searchcountdispl);
                         }
 
                         sIndex = parseInt(sIndex) + offSet;
                         $('#listrecrds').val(sIndex);
-                        $('#ttlpg').val(data.ttlpages);
+                        $('#ttlpg').val(data.total_record);
                         isPreviousEventComplete = true;
                         }
                          
