@@ -1072,6 +1072,68 @@
                             .CenterAlertPop {
                                 border: none;
                             }
+                            
+                            /* AIC Harman email sidebar css */
+            
+                            .site-aside {
+                                position: fixed;
+                                top: 0;
+                                right: 0;
+                                height: 100%;
+                                overflow-x: visible;
+                                z-index: 1028;
+                            }
+                            .contact-aside {
+                            border-radius: 0px;
+                            transition: .5s;
+                            position: fixed;
+                            top: 206px;
+                            left: calc(100% - 62px);
+                            width: 340px;
+                            background: #272727;
+                            color: #fff;
+                            font-size: 15px;
+                            right: 0;
+                            }
+                            .contact-aside ul {
+                                padding: 7px 0px 0px 0px;;
+                                list-style: none;
+                            }
+                            .contact-aside li {
+                                padding: 6px 0px 6px 18px;
+                                margin: 0px 0px 1px 0px;
+                            }
+                            .contact-aside li a {
+                            margin-left: 11px;
+                            font-size: 13px;
+                            }
+                            .contact-aside [class*="icon-"] {
+                                display: inline-block;
+                                width: 24px;
+                                text-align: center;
+                                margin-right: 4px;
+                                float: right;
+                            }
+                            .contact-aside li + li {
+                                border-top: 1px solid #4A4A4A;
+                            }
+                            .contact-aside .icon-mail {
+                                position: relative;
+                                top: 2px;
+                            }
+                            .contact-aside.active {
+                                left: calc(100% - 290px);
+                                background: #1e2023 !important;
+                                color: #fff !important;
+                            }
+
+                            .asideIclass {
+                                float: left;
+                                margin-top: 3px;
+                                margin-right: 13px;
+                                margin-left: 8px;
+                                color: #ABA07C;
+                            }
 
                             
                             @import url('https://fonts.googleapis.com/css?family=Caveat');
@@ -1140,6 +1202,20 @@
 					@endif
 				@endif
                 </header>
+                
+                <!-- AIC Harman email phone sidebar add start -->
+                                        
+                <aside class="site-aside">
+                    <div class="contact-aside">
+                        <ul class="contact-aside-list">
+                            <li class="contact-list-item contact-phone"><a href="tel:+1 934 451 1317"><i class="fa fa-phone asideIclass" aria-hidden="true"></i> +49 172 8937230</a></li>
+                            <li class="contact-list-item contact-email"><a href="mailto:riaan@emporium-voyage.com"><i class="fa fa-envelope asideIclass" aria-hidden="true"></i> bookings@emporium-voyage.com</a></li>
+                        </ul>
+                    </div>
+                </aside>
+
+                <!-- AIC Harman email phone sidebar add end-->
+                
                 <div id="editorial-siden-nav-res" class="sidenav">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                     <div class=" right-menus ">
@@ -2846,6 +2922,15 @@
                 $(".booking-form-bar-top").toggle(1000);
             });
         </script>
+        
+        <!-- contact email aside -->
+                <script> 
+                    $('.contact-aside').hover(
+                        function(){ $(this).addClass('active') },
+                        function(){ $(this).removeClass('active') }
+                    )
+                </script>
+        <!-- contact email aside -->
     
 		@include('layouts/elliot/ai_lightbox_popups_detailpage')
 
