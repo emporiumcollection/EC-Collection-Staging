@@ -155,7 +155,7 @@ class HomeController extends Controller {
 						$this->data['sidebardetailAds'] = \DB::table('tb_advertisement')->select('adv_link','adv_img')->where('adv_type', 'sidebar')->where('adv_position', 'detail')->get();
 					}
 					else {
-                        $tags_Arr = \DB::table('tb_tags_manager')->where('tag_status', 1)->get();
+                        /*$tags_Arr = \DB::table('tb_tags_manager')->where('tag_status', 1)->get();
                         $tagsArr = array();
                         if (!empty($tags_Arr)) {
                             foreach ($tags_Arr as $tags) {
@@ -164,30 +164,31 @@ class HomeController extends Controller {
                         }
 
                         $this->data['tagmenus'] = $tagsArr;
+                          if (isset($pageSlug) && $pageSlug == 'landing') {
+                                $propertiesArr = array();
+                                if (Input::get('s', false)) {
+                                    $TagsObj = \DB::table('tb_tags_manager')->where('tag_title', Input::get('s', false))->first();
+                                    //print_r($TagsObj);
+                                    $TagsCon = \DB::table('tb_container_tags')->select('container_id')->where('container_type', 'folder')->where('tag_id', $TagsObj->id)->get();
+                                    //print_r($TagsObj);
+                                    foreach ($TagsCon as $TagsConObj) {
+                                        $TagsConId[] = $TagsConObj->container_id;
+                                    }
+                                    if (isset($TagsConId)) {
+                                        $container_id = implode(',', $TagsConId);
 
-                        $propertiesArr = array();
-                        if (Input::get('s', false)) {
-                            $TagsObj = \DB::table('tb_tags_manager')->where('tag_title', Input::get('s', false))->first();
-                            //print_r($TagsObj);
-                            $TagsCon = \DB::table('tb_container_tags')->select('container_id')->where('container_type', 'folder')->where('tag_id', $TagsObj->id)->get();
-                            //print_r($TagsObj);
-                            foreach ($TagsCon as $TagsConObj) {
-                                $TagsConId[] = $TagsConObj->container_id;
-                            }
-                            if (isset($TagsConId)) {
-                                $container_id = implode(',', $TagsConId);
+                                        $ConObjs = \DB::table('tb_container')->select('display_name')->where('id', [$container_id])->get();
 
-                                $ConObjs = \DB::table('tb_container')->select('display_name')->where('id', [$container_id])->get();
-
-                                foreach ($ConObjs as $ConObj) {
-                                    $ConName[] = $ConObj->display_name;
+                                        foreach ($ConObjs as $ConObj) {
+                                            $ConName[] = $ConObj->display_name;
+                                        }
+                                        $container_names = implode(',', $ConName);
+                                        $props = \DB::table('tb_properties')->where('property_name', [$container_names])->where('property_status', 1)->get();
+                                    }
+                                } else {
+                                    $props = \DB::table('tb_properties')->where('property_status', 1)->get();
                                 }
-                                $container_names = implode(',', $ConName);
-                                $props = \DB::table('tb_properties')->where('property_name', [$container_names])->where('property_status', 1)->get();
                             }
-                        } else {
-                            $props = \DB::table('tb_properties')->where('property_status', 1)->get();
-                        }
 
                         if (!empty($props)) {
                             $pr = 0;
@@ -202,10 +203,10 @@ class HomeController extends Controller {
                                 }
                                 $pr++;
                             }
-                        }
+                        }*/
 
-                        $this->data['propertiesArr'] = $propertiesArr;
-
+                        //this->data['propertiesArr'] = $propertiesArr;
+                        
                         $socialpropertiesArr = array();
                         $socialpropertiessingle = '';
                         if (Input::get('sp', false)) {
