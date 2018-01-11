@@ -2795,6 +2795,7 @@
 				@endif
 				<!--Footer-->
             @include('layouts/elliot/ai_footer_social')
+            <script src="{{ asset('sximo/assets/newgrid/js/grid.js')}}" type="text/javascript"></script>
         </div>
 
         <div id="frontpage-layer-bj-detail" class="frontpage-layer-bj">

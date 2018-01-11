@@ -242,18 +242,18 @@ $(document).ready(function () {
     /*==============================================================
     portfolio filter
     ==============================================================*/
-//    var $portfolio_filter = $('.portfolio-grid');
-//    $portfolio_filter.imagesLoaded(function () {
-//        $portfolio_filter.isotope({
-//            layoutMode: 'masonry',
-//            itemSelector: '.grid-item',
-//            percentPosition: true,
-//            masonry: {
-//                columnWidth: '.grid-sizer'
-//            }
-//        });
-//        $portfolio_filter.isotope();
-//    });
+    var $portfolio_filter = $('.portfolio-grid');
+    $portfolio_filter.imagesLoaded(function () {
+        $portfolio_filter.isotope({
+            layoutMode: 'masonry',
+            itemSelector: '.grid-item',
+            percentPosition: true,
+            masonry: {
+                columnWidth: '.grid-sizer'
+            }
+        });
+        $portfolio_filter.isotope();
+    });
    
 
     /*==============================================================
