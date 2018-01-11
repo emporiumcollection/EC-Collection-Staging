@@ -3,11 +3,9 @@ Route::get('Imprint', 'HomeController@index');
 Route::get('about-us', 'HomeController@index');
 Route::get('contact-us', 'HomeController@index');
 Route::get('faq', 'HomeController@index');
-Route::get('home', 'HomeController@index');
 Route::get('portpolio', 'HomeController@index');
 Route::get('plans', 'HomeController@index');
 Route::get('landing', 'HomeController@index');
-Route::get('new_landing_page', 'HomeController@landing');
 Route::get('products', 'HomeController@index');
 Route::get('news', 'HomeController@index');
 Route::get('newsdetail', 'HomeController@index');
@@ -64,4 +62,5 @@ Route::get('propertyflipbook', 'HomeController@index');
 Route::get('social-stream', 'HomeController@index');
 Route::get('social-youtube', 'HomeController@index');
 Route::get('restaurants', 'HomeController@index');
+Route::get('membership_hotel', 'HomeController@index');
 ?>
