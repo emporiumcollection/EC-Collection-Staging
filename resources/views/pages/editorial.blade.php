@@ -368,14 +368,6 @@
                                 text-decoration: none;
                                 color: #8AE0C7;
                             }
-                            .hotels-detail-heading-text > p {
-                                color: white;
-                                font-family: Oswald-Light;
-                                font-size: 14px;
-                                letter-spacing: 3px;
-                                line-height: 19px;
-                                text-transform: uppercase;
-                            }
                             
                             .editorial-hotel-detail-page #align-to-top .book-button.open-show_more-page.hotel-btn {
                                 background-color: #ABA07C;
@@ -596,7 +588,7 @@
                                 height: auto;
                                 background: rgba(0,0,0,0.8);
                                 margin: 0;
-                                padding: 8% 0% 0% 7%;
+                                padding: 8% 0% 0% 5%;
                             }
                             
                             .hotels-showcase-right-side {

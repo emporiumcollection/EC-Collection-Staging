@@ -9,12 +9,12 @@ and open the template in the editor.
 */
 .close-btn-align {
 	color: #fff;
-	font-size: 36px;
+	font-size: 40px;
 	position: absolute;
-	right: 4%;
+	right: 1%;
 	top: 0px;
 	z-index: 99;
-	color: #c7ab84;
+	color: #ABA07C;
 }
 .open-show_more-html a {
 	right: 1%;
