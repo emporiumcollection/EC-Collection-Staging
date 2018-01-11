@@ -1656,6 +1656,7 @@
         </div>
                     
                     
+                    <input class="ai_total_pages" value="{{$total_pages}}" type="hidden" />
                     <input class="ai_search_keywords" value="{{$keyword}}" type="hidden" />
                     <input class="ai-arrive-date-filter" value="<?php echo (isset($_REQUEST['arrive'])) ? date('d-m-Y', strtotime($_REQUEST['arrive'])) : date("d-m-Y"); ?>" type="hidden" />
                     <input class="ai-depart-date-filter" value="<?php echo (isset($_REQUEST['destination'])) ? date('d-m-Y', strtotime($_REQUEST['destination'])) : date("d-m-Y", strtotime("+ 1 day")); ?>" type="hidden" />
@@ -1766,6 +1767,8 @@ function scrollDataAjax(it_scroll,pageCounter)
                         if(data.searchdestname != undefined) {
                             $(".ai_search_keywords").val(data.searchdestname);
                         }
+                
+                        $(".ai_total_pages").val(data.total_pages);
                 
                         /*
                          * Slider HTML
@@ -2013,7 +2016,7 @@ $(window).scroll(function () {
  */
  
 var pageCounter = 2;
-var totalPage = {{$total_pages}};
+var totalPage = $(".ai_total_pages").val();
 
 $(window).scroll(function () {
 
@@ -2087,6 +2090,8 @@ url: "{{ URL::to('filter_search_destionation')}}",
                             if(data.searchdestname != undefined) {
                                 $(".ai_search_keywords").val(data.searchdestname);
                             }
+                            
+                            $(".ai_total_pages").val(data.total_pages);
                             
                             /*
                              * Slider HTML
