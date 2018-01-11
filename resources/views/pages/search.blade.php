@@ -1049,7 +1049,9 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                 <a data-popup-id="login-forms-popup" href="#" class="video-popup-btn login_popup show-login-forms-btn"><i class="fa fa-lock " aria-hidden="true"></i></a>
+                                                 <div class="col-md-1">
+                                                    <a data-popup-id="login-forms-popup" href="#" class="video-popup-btn login_popup show-login-forms-btn"><i class="fa fa-lock detailfaLock" aria-hidden="true" ></i></a>
+                                                </div>
                                             </form>
                                         </div>
                                         <!-- AIC Harman email phone sidebar add start -->
