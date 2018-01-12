@@ -108,8 +108,12 @@ EVMenu ul li ul li a:hover {
 .EVMenu li:hover .sub-menu
 {
     position: absolute;   
-    margin-top: -27.5px;
-    left:120px;  
+    margin-top: -92.5px;
+    left:120px;
+}
+
+.EVMenu li:hover .sub-menu li a:hover {
+	color: white;
 }
 
 .sub-menu li a
