@@ -1852,6 +1852,13 @@ function scrollDataAjax(it_scroll,pageCounter)
                             } else{
                                 
                                 var pimg = "{{URL::to('sximo/assets/images/img-1.jpg')}}";
+                                
+                                $.getJSON( "{{Storage::storage_path('property')}}/" + obj.id + ".json", function( data ) {
+                                    $.each( data, function( key, img_obj ) {
+                                        pimg = "{{URL::to('uploads/property_imgs_thumbs/')}}/front_property_" + img_obj.folder_id + "_" + img_obj.file_name;
+                                    });
+                                });
+                                
                                 html += '<div class="overlay-text-frezeed">';
                                 html += '<h2 class="yacts-tittle-text">' + obj.property_name + '</h2>';
                                 html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
