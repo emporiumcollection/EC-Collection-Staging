@@ -1932,6 +1932,8 @@
                                                         </div>
                                                     </form>
                                             </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="panel panel-default  sub-menues">
                                     <a class="collapsed" data-toggle="collapse" data-parent="#accordion-mobile" href="#collapse-mobile-3">
@@ -2051,9 +2053,7 @@
                                         </div>
                                     </div>
                                 </div>-->
-                            </div>
                             <!--Footer Section-->
-                        </div>
                         <div class="panel-group" id="landing-footer-accordian">
                             @if(!empty($landing_menus))
                             <div class="panel panel-default">
