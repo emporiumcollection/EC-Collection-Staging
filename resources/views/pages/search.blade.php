@@ -1698,7 +1698,7 @@ $(document).ready(function(){
 function scrollDataAjax(it_scroll,pageCounter)
 {
     if($(".ai-scrollDownloadData-filter-running").val() == "1") {
-        //return;
+        return;
     }
     
     $(".ai-scrollDownloadData-filter-running").val("1");
@@ -1726,11 +1726,11 @@ function scrollDataAjax(it_scroll,pageCounter)
         data: 's=' + $(".ai_search_keywords").val() + '&arrive=' + $(".ai-arrive-date-filter").val() + '&destination=' + $(".ai-depart-date-filter").val() + '&page=' + nxtpg + queryStrng + "&filter_min_price=" + $("#filter_min_price").val() + "&filter_max_price=" + $("#filter_max_price").val() + "&current_filter=" + $(".ai-current-filter").val(),
         dataType: "json",
         complete: function (jqXHR, textStatus ) {
+            $(".ai-scrollDownloadData-filter-running").val("0");
             // $('#nxtpg').val(parseInt(nxtpg) + 1);
         },
         success: function(data){
             
-            $(".ai-scrollDownloadData-filter-running").val("0");
             $('#loaderProperty').hide();
                 var html = chtml = '';
                 if (data.status == 'error'){
@@ -1996,16 +1996,17 @@ var totalPage = $(".ai_total_pages").val();
 
 $(window).scroll(function () {
 
+    pageCounter = $(".ai_page_counter").val();
+    
     if (pageCounter > totalPage){
         return false;
     }else{
-        alert("Here");
         var it_scroll = true;
          scrollDataAjax(it_scroll, pageCounter);
          console.log('Ajax Hit '  + pageCounter);
     }
 
-    pageCounter++; 
+    $(".ai_page_counter").val( pageCounter++ );
 });
  
  /******************************************/
