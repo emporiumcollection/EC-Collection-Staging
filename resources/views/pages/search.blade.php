@@ -1997,6 +1997,7 @@ var totalPage = $(".ai_total_pages").val();
 $(window).scroll(function () {
 
     pageCounter = $(".ai_page_counter").val();
+    pageCounter = +pageCounter;
     
     if (pageCounter > totalPage){
         return false;
