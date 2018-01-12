@@ -5103,7 +5103,7 @@ class HomeController extends Controller {
         $pagination = new Paginator($pagedData, count($propertiesArr), $perPage);
 
         //print_r($pagination);
-
+    */
         if (isset($request->area) && $request->area!='') { 
             $citydest = \DB::table('tb_categories')->where('parent_category_id', $request->dest)->get();
             if (!empty($citydest)) {
@@ -5118,7 +5118,7 @@ class HomeController extends Controller {
                 }
             }
         }
-    */
+    
         if (!empty($property)) {
            /* $tempproperties = array();
             foreach ($pagination as $pag) {
@@ -5138,7 +5138,7 @@ class HomeController extends Controller {
 
             $rep['status'] = 'success';
             $rep['properties'] = $propertiesArr;
-           // $rep['cities'] = json_encode($CityArrdestts);
+            $rep['cities'] = json_encode($CityArrdestts);
             //$rep['ttlpages'] = $pagination->appends($pager)->lastPage();
             $rep['total_record'] = $getRec[0]->total_record;
             $rep['record_per_page'] =  $perPage;
