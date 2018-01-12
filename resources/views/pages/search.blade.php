@@ -1857,6 +1857,7 @@ function scrollDataAjax(it_scroll,pageCounter)
                                     $.each( data, function( key, img_obj ) {
                                         pimg = "{{URL::to('uploads/property_imgs_thumbs/')}}/front_property_" + img_obj.folder_id + "_" + img_obj.file_name;
                                         console.log("Property Image: " + pimg);
+                                        return false;
                                     });
                                 });
                                 
