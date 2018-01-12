@@ -1886,55 +1886,52 @@
                                 <div id="collapse-mobile-7" class="panel-collapse collapse">
                                     <div  class="panel-body">
                                         <div class="panel landing-page-panel-background">
-                                                <div class="padding-panel-div">
-                                                    <div class="clearfix"></div>
-                                                    <div class="destinSearchMob">
-                                                        <!--Search form start-->
-                                                        <form autocomplete="off" method="get" id="searchform-navbar" class="destinationsearchform-navbar" action="{{URL::to('search')}}">
-                                                            <input type="hidden" name="ref" value="syd_small">
-                                                            <input  class="bh-search-input typeahead search-navbar" name="s" id="search-navbar-destination-res" placeholder="ENTER YOUR DESTINATION" type="text">
-                                                        </form>
-                                                        <!--Search form end-->
-                                                    </div>
-
-                                                    <?php 
-
-                                                       /* Note:
-                                                            Now the our destinations will render from storage/app/homeOurDestinationMobile.html. 
-                                                            That file will be genrate from cron job or backend panel.  
-                                                        */  
-                                                        
-                                                        //
-
-                                                    ?>
-                                                    {!!Storage::get('homeOurDestinationMobile.html')!!}
-                                                    @if(!empty($ourdesitnation))
-                                                    <div class="panel-group-" id="mobile-inner-accordian">
-                                                        @foreach($ourdesitnation as $destination)
-                                                        <div class="panel panel-default  destination-sub-menues">
-                                                            <a class="collapsed" data-toggle="collapse" data-parent="#mobile-inner-accordian" href="#mobile-inner{{$destination['maincat']->id}}">
-                                                                <div class="destination-panel-heading">
-                                                                    <h4 class="panel-title menu-text accordion ">
-                                                                        {{$destination['maincat']->category_name}}
-                                                                    </h4>
-                                                                </div>
-                                                            </a>
-                                                            <div id="mobile-inner{{$destination['maincat']->id}}" class="panel-collapse collapse ">
-                                                                <div class="panel-body">
-                                                                    @if (array_key_exists("child",$destination))
-                                                                    <ul class="where-box-sub-menu">
-                                                                        @foreach($destination['child'] as $childDest)
-                                                                        <li><a href="{{URL::to('luxury_destinations/'. str_replace(' ','_',$destination['maincat']->category_name).'/'. str_replace(' ','_',$childDest->category_name).'/'. str_replace(' ','_',$childDest->category_name))}}">{{$childDest->category_name}}</a></li>
-                                                                        @endforeach
-                                                                    </ul>
-                                                                    @endif
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        @endforeach
-                                                    </div>
-                                                    @endif
+                                            <div class="padding-panel-div">
+                                                <div class="headings">
+                                                    <h2>Emporium Voyage is your ideal, vogue vacation planner!</h2>
+                                                    <p>With over 300 posh properties, elite spas and exquisite yachts huddled in its cocoon, Emporium Voyage ensure the ultimate luxury experience</p>
                                                 </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <div class="destinSearchMob">
+                                                <form action="http://www.emporium-voyage.com/search" method="get">
+                                                        <input name="s" value="" type="hidden">
+                                                        <input name="ref" value="sbd" type="hidden">
+
+                                                        <ul class="dates" id="search-by-date">
+                                                            <li>
+                                                                <div class="heading">Arrive</div>
+                                                                <input id="date-range-arrive" size="20" name="arrive" value="12.01.2018">
+                                                            </li>
+                                                            <li>
+                                                                <div class="heading">Departure</div>
+                                                                <input id="date-range-destination" size="20" name="destination" value="">
+                                                            </li>
+                                                        </ul>
+                                                        <ul class="dates">
+                                                            <li>
+                                                                <div class="heading">Adults</div>
+                                                                <select name="adult">
+                                                                    <option>1</option>
+                                                                    <option>2</option>
+                                                                    <option>3</option>
+                                                                </select>
+                                                            </li>
+                                                            <li>
+                                                                <div class="heading">Children</div>
+                                                                <select name="childs">
+                                                                    <option>0</option>
+                                                                    <option>1</option>
+                                                                    <option>2</option>
+                                                                </select>
+                                                            </li>
+                                                            <div class="clearfix"></div>
+                                                        </ul>
+                                                        <div class="clearfix"></div>
+                                                        <div class="submit-btn editorial-submit-btn">
+                                                            <button class="booking-form-pop-up-btn-" data-popup-id="booking-form-pop-up" type="submit">BOOK NOW</button>
+                                                        </div>
+                                                    </form>
                                             </div>
 <!--                                         code here 
                                             <div class="book-now-page date-page" style="width: 100%;">
@@ -2012,8 +2009,8 @@
                                                     <div class="clearfix"></div>
                                                 </div>
                                             </div>
-                                         code here end 
-                                    </div>-->
+                                         code here end -->
+                                    </div>
                                 </div>
                                 <!-- AIC responsive search collapse end -->
                                 <div class="panel panel-default  sub-menues">
