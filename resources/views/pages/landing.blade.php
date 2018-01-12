@@ -1896,15 +1896,30 @@
                                                 <form action="http://www.emporium-voyage.com/search" method="get">
                                                         <input name="s" value="" type="hidden">
                                                         <input name="ref" value="sbd" type="hidden">
-
+                                                        
+<!--                                                        <div class="form-group">
+                                                            <label for="sel1">Select list (select one):</label>
+                                                            <select class="form-control" id="sel1">
+                                                              <option>1</option>
+                                                              <option>2</option>
+                                                              <option>3</option>
+                                                              <option>4</option>
+                                                            </select>
+                                                        </div>-->
                                                         <ul class="dates" id="search-by-date">
                                                             <li>
                                                                 <div class="heading">Arrive</div>
-                                                                <input id="date-range-arrive" size="20" name="arrive" value="12.01.2018">
+                                                                    <input id="date-range-arrive" size="20" name="arrive" type="hidden" value="12.01.2018">
+                                                                    <select class="form-control" id="sel1">
+                                                                        <option>1</option>
+                                                                        <option>2</option>
+                                                                        <option>3</option>
+                                                                        <option>4</option>
+                                                                    </select>
                                                             </li>
                                                             <li>
                                                                 <div class="heading">Departure</div>
-                                                                <input id="date-range-destination" size="20" name="destination" value="">
+                                                                <input id="date-range-destination" size="20" type="hidden" name="destination" value="">
                                                             </li>
                                                         </ul>
                                                         <ul class="dates">
