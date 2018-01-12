@@ -1888,7 +1888,7 @@
                                         <!-- code here -->
                                             <div class="book-now-page date-page" style="width: 100%;">
                                                 <div class="book-now-page-content open-date-html" style="width: 1920px;">
-                                                    <div><a class="close-btn-date close-btn-align" href="#">×</a></div>
+<!--                                                    <div><a class="close-btn-date close-btn-align" href="#">×</a></div>-->
                                                     <div class="headings">
                                                         <h2>Emporium Voyage is your ideal, vogue vacation planner!</h2>
                                                         <p>With over 300 posh properties, elite spas and exquisite yachts huddled in its cocoon, Emporium Voyage ensure the ultimate luxury experience</p>
