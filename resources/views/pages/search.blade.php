@@ -2425,7 +2425,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                 $('#cityfilters').html(chtml); 
                             }
 
-                            var searchcountdispl = data.total_pages + ' Hotel(s) Found for ' + $(".ai_search_keywords").val();
+                            var searchcountdispl = data.total_record + ' Hotel(s) Found for ' + $(".ai_search_keywords").val();
                             $('.searchcount').html(searchcountdispl);
                         }
 
