@@ -270,6 +270,8 @@ Route::get('choose/{mid}', 'UserController@chosepay');
 Route::get('bankdetails/{uid}', 'UserController@showBankDetails');
 Route::post('bank_agree', 'UserController@bankAgree');
 Route::post('getUserprofile', 'UserController@getUserprofile');
+Route::get('stripedetails/{uid}', 'StripepaymentController@index');
+
 // Add this route for checkout or submit form to pass the item into paypal
 Route::post('payment', array(
 	'as' => 'payment',

@@ -19,7 +19,7 @@
 	</div>
 	<div class="sbox-content">
 	<div class="text-center  animated fadeInDown delayp1">
-		<img src="{{ asset('sximo/images/logo-sximo.png')}}" />
+		<img src="{{ asset('sximo/images/logo-sximo.png')}}" width="100%" />
 	</div>		
  {!! Form::open(array('url'=>'payment', 'class'=>'form-signup')) !!}
 	    	@if(Session::has('message'))
@@ -35,10 +35,16 @@
 		<h4>Thanks for register! please pay the amount to acivate your account.</h4>
 		<input type="hidden" name="umid" value="{{$umid}}" />
 	</div>
+
+
 	<div class="form-group has-feedback">
+		
 		<label>Choose payment method</label><br>
 		<input type="radio" name="method" value="paypal" /> Paypal<br>
+		<input type="radio" name="method" value="stripe" /> Stripe<br>
 		<input type="radio" name="method" value="bank" /> Bank account
+
+
 	</div>
     <div class="row form-actions">
         <div class="col-sm-12">

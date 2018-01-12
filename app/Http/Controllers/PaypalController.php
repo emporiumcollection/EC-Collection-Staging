@@ -104,6 +104,9 @@ class PaypalController extends Controller
 			elseif($method=='bank')
 			{
 				return Redirect::to('bankdetails/'.$umdata->user_id);
+			}elseif($method=='stripe')
+			{
+				return Redirect::to('stripedetails/'.$umdata->user_id);
 			}
 		}
 		else
