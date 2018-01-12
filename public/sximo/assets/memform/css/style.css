@@ -272,7 +272,6 @@ a.text-very-light-gray-hover:hover {color:#ededed}
 ====================================== */
 
 .center-col {float:none; margin-left:auto; margin-right:auto }
-section {padding: 130px 0; overflow: hidden;}
 section.big-section {padding:0px 0;}
 section.extra-big-section {padding:200px 0;}
 section.half-section {padding:80px 0;}
