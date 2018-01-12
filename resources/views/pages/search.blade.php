@@ -2080,7 +2080,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                             
                             var sliderHTML = '';
                             
-                            if(data.categoryslider) {
+                            if(data.hasOwnProperty("categoryslider")) {
                                 if(data.categoryslider.length > 0) {
                                     sliderHTML += '<div class="bh-slideshow-thumbnail-split" data-uk-slideshow="{animation: \'slice-up\', autoplay: true}" style="margin-bottom:20px;margin-top:00px;">';
                                     sliderHTML += '<ul style="" class="uk-slideshow uk-overlay-active">';
