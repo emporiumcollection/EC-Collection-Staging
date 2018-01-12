@@ -18,11 +18,14 @@
 	font-size: 14px;
 	color: white;
 	line-height: 25px;
+	text-align: center;
+	margin-top: 40px;
     }
     
     #accordion-mobile p {
 	font-size: 13px;
 	line-height: 17px;
+	text-align: center;
     }
     
     .editorial-submit-btn > button {
