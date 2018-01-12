@@ -1877,7 +1877,7 @@
                                     <a href="#" class="trigger-click-on-book-now collapsed">
                                         <div class="panel-heading">
                                             <h4 class="panel-title menu-text accordion">
-                                                Search By Date
+                                                Search By Date main
                                             </h4>
                                         </div>
                                     </a>
