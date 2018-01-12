@@ -1,0 +1,49 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jan 4, 2018, 6:26:07 PM
+    Author     : AI Creatives
+*/
+
+.medium-input {
+    height: 45px;
+}
+.btn-gold {
+    background-color: #c7ab84;
+    border-color: #c7ab84;
+    color: #fff;
+}
+.row.padding-row {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.skcstm {
+    display: inline-block;
+}
+.checkbox {
+    float: left;
+    width: auto;
+    margin-right: 10px !important;
+}
+.text-align-right {
+    text-align: right;
+}
+.row.fooetr-form {
+    margin-top: 15px;
+}
+
+@media only screen and (max-width: 991px) {
+    #contact-form .col-md-6.col-sm-12 {
+        padding: 0;
+    }
+    .btn-gold {
+        width: 100% !important;
+        margin-top: 12px;
+    }
+    .col-md-4.col-sm-12 {
+        padding: 0;
+    }
+}
