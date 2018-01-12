@@ -1856,6 +1856,8 @@ function scrollDataAjax(it_scroll,pageCounter)
                                 $.getJSON( "{{storage_path('property')}}/" + obj.id + ".json", function( data ) {
                                     $.each( data, function( key, img_obj ) {
                                         pimg = "{{URL::to('uploads/property_imgs_thumbs/')}}/front_property_" + img_obj.folder_id + "_" + img_obj.file_name;
+                                        console.log("Property Image: " + pimg);
+                                        return false;
                                     });
                                 });
                                 
