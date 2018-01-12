@@ -2312,6 +2312,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                         }
                         if (destnarea != '')
                         {
+                        /*
                             if (dest_area[1] == 'country' || dest_area[1] == 'region'){
                             $('#cityfilters').html('');
                             }
@@ -2424,7 +2425,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                 chtml += '<\/script>';*/
                                 $('#cityfilters').html(chtml); 
                             }
-
+*/
                             var searchcountdispl = data.total_pages + ' Hotel(s) Found for ' + $(".ai_search_keywords").val();
                             $('.searchcount').html(searchcountdispl);
                         }
