@@ -1623,10 +1623,10 @@
 								</li>
 								<li><a href="#">News</a>
 								</li>
-								<li><a href="#">Offres</a>
+								<li><a href="#">Offers</a>
 									<ul class="sub-menu">
-										<li><a class="activeEV" href="#">Offres Sleep</a></li>
-										<li><a href="#">Offres Relax</a></li>
+										<li><a class="activeEV" href="#">Offers Sleep</a></li>
+										<li><a href="#">Offers Relax</a></li>
 									</ul>
 								</li>
 								<li><a href="#">Gift box</a>
