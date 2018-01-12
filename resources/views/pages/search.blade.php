@@ -2211,13 +2211,13 @@ url: "{{ URL::to('filter_search_destionation')}}",
                             }
                         }
                         if (obj.hasOwnProperty("image")) {
-                			if(obj.editor_choice_property=='1'){
+                			/*if(obj.editor_choice_property=='1'){
                 				var edtch = "{{URL::to('sximo/images/editors-choice.png')}}";
                 				html += '<img alt="editor_choice_property" class="propovericons" src="'+edtch+'">';
                 			}else if(obj.feature_property=='1'){
                 				var featp = "{{URL::to('sximo/images/featured-property.png')}}";
                 				html += '<img alt="editor_choice_property" class="propovericons" src="'+featp+'">';
-                			}
+                			}*/
                            var pimg = "{{URL::to('uploads/property_imgs_thumbs/')}}/front_property_" + obj.image.folder_id + "_" + obj.image.file_name;
                             html += '<a title="' + obj.property_name + '" class="picture_link " rel="' + obj.id + '" href="{{URL::to('')}}/' + obj.property_slug + '">';
                             html += '<div class="overlay-text-frezeed">';
