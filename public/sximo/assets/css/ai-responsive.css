@@ -1,3 +1,54 @@
+@media (min-width: 768px) and (max-width: 992px) {
+
+    .landing-mobile-top-header {
+	display: none;
+    }
+    
+    .serach-page-menu {
+	text-align: center;
+    }
+    
+    #search-navbar-our-collection-res::placeholder {
+	color: #73706D !important;
+    }
+    
+    /* cooolpase */
+    
+    #accordion-mobile h2 {
+	font-size: 14px;
+	color: white;
+	line-height: 25px;
+    }
+    
+    #accordion-mobile p {
+	font-size: 13px;
+	line-height: 17px;
+    }
+    
+    .editorial-submit-btn > button {
+	display: block;
+	margin: 25px auto;
+    }
+    ul.dates > li {
+	border-right: 1px solid #545454;
+    }
+    .ariveSelect {
+	width: 100% !important;
+	background: white;
+	border-radius: 4px;
+	height: 25px;
+        padding: 0px !important;
+	color: white !important;
+        text-align: center;
+        margin-left: -7px;
+    }
+    .dates li select {
+	padding-bottom: 77px !important;
+	width: 45px;
+	height: 104px;
+    }
+}
+
 @media (min-width: 481px) and (max-width: 767px) {
  
     .landing-mobile-top-header {
