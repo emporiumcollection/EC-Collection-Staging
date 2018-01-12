@@ -60,7 +60,7 @@
                 margin-bottom: 10px;
             }
             #search-navbar-destination.search-navbar-destination-search-box {
-                background: #2a2d30 none repeat scroll 0 0 !important;
+                background: #252525 none repeat scroll 0 0 !important;
                 border: 2px solid #2a2d30;
                 display: table;
                 margin: 0 auto 10px;
