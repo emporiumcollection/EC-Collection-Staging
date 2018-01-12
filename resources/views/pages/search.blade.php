@@ -1999,6 +1999,7 @@ $(window).scroll(function () {
     if (pageCounter > totalPage){
         return false;
     }else{
+        alert("Here");
         var it_scroll = true;
          scrollDataAjax(it_scroll, pageCounter);
          console.log('Ajax Hit '  + pageCounter);
