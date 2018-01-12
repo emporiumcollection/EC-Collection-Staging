@@ -1104,7 +1104,7 @@
                                      </div>
                                  </div>
                                  <div class="ps-login-sign-up-image">
-                                     <img class="img-responsive" src="{{ asset('sximo/assets/images/Kootenay Aurora 1-X3.jpg')}}" alt=""/>
+                                     <img class="img-responsive" src="{{ asset('sximo/assets/images/matthew-kane-365718.jpg')}}" alt=""/>
                                  </div>
                              </div>
                          </div>
