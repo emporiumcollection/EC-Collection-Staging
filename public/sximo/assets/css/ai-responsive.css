@@ -12,6 +12,17 @@
 	color: #73706D !important;
     }
     
+    /* cooolpase */
     
+    #accordion-mobile h2 {
+	font-size: 14px;
+	color: white;
+	line-height: 25px;
+    }
+    
+    #accordion-mobile p {
+	font-size: 13px;
+	line-height: 17px;
+    }
     
 }
