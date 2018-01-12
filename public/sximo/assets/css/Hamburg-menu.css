@@ -44,7 +44,7 @@
 	display: inline-block;
 	float: left;
 	clear: both;
-	width: 502px;
+	width: 562px;
 }
 .EVMenu li:hover {
     color:#FFFFFF;
@@ -109,7 +109,7 @@ EVMenu ul li ul li a:hover {
 {
     position: absolute;   
     margin-top: -92.5px;
-    left:120px;
+    left:170px;
 }
 
 .EVMenu li:hover .sub-menu li a:hover {
