@@ -1931,6 +1931,33 @@
                                                             <button class="booking-form-pop-up-btn-" data-popup-id="booking-form-pop-up" type="submit">BOOK NOW</button>
                                                         </div>
                                                     </form>
+                                                    <div class="view-modify-cancel-booking">
+                                                        <a href="#">View, Modify or Cancel your Booking</a>
+                                                    </div>
+                                                    <ul class="booking-page-footer-section">
+                                                        <li>
+                                                            <a href="#" target="_blank">
+                                                                <span>Join the worlds leading luxury club</span>
+                                                                <h6 class="center">Enjoy exclusive members only benefits</h6>
+                                                            </a>
+                                                            <div class="white-border-bottom"></div>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" target="_blank">
+                                                                <span>Spa Treatment</span>
+                                                                <h6 class="center">Book</h6>
+                                                            </a>
+                                                            <div class="white-border-bottom"></div>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" target="_blank">
+                                                                <span>View or Modify Reserveration</span>
+                                                                <h6 class="center">Login to Support Center</h6>
+                                                            </a>
+                                                            <div class="white-border-bottom"></div>
+                                                        </li>
+                                                        <div class="clearfix"></div>
+                                                    </ul>
                                             </div>
                                         </div>
                                     </div>
