@@ -64,7 +64,7 @@ input:focus, textarea:focus{ border-color: #585858; outline: none; }
 input[type="button"]:focus{ outline: none; }
 select::-ms-expand{ display:none;}
 iframe { border: 0;}
-p {margin: 0 0 25px}
+p {margin: 0}
 b, strong { font-weight: 600;}
 .last-paragraph-no-margin p:last-of-type {margin-bottom:0; color: #fff; font-family: geomanist-light;}
 .alt-font strong {font-weight: 700 }
@@ -86,13 +86,13 @@ ul, ol, dl {list-style-position: outside; margin-bottom: 25px}
 .main-font {font-family: 'Roboto', sans-serif;}
 
 /* heading */
-h1, h2, h3, h4, h5, h6 {margin:0 0 25px; padding:0; letter-spacing: 0; font-weight: 400;}
+/*h1, h2, h3, h4, h5, h6 {margin:0 0 25px; padding:0; letter-spacing: 0; font-weight: 400;}
 h1 {font-size:70px; line-height: 70px;}
 h2 {font-size:55px; line-height:60px}
 h3 {font-size:48px; line-height:54px}
 h4 {font-size:40px; line-height:46px}
 h5 {font-size:32px; line-height:40px}
-h6 {font-size:22px; line-height:30px}
+h6 {font-size:22px; line-height:30px}*/
 
 /* text size */
 .text-extra-small {font-size:11px; line-height:14px}
