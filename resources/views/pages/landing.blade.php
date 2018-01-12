@@ -1881,6 +1881,57 @@
                                             </h4>
                                         </div>
                                     </a>
+                                    <!-- AIC responsive search collapse -->
+                                <div id="collapse-mobile-7" class="panel-collapse collapse">
+                                    <div  class="panel-body">
+                                        <div class="panel landing-page-panel-background">
+                                            <div class="padding-panel-div">
+                                                <div class="headings">
+                                                    <h2>Emporium Voyage is your ideal, vogue vacation planner!</h2>
+                                                    <p>With over 300 posh properties, elite spas and exquisite yachts huddled in its cocoon, Emporium Voyage ensure the ultimate luxury experience</p>
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <div class="destinSearchMob">
+                                                <form action="http://www.emporium-voyage.com/search" method="get">
+                                                        <input name="s" value="" type="hidden">
+                                                        <input name="ref" value="sbd" type="hidden">
+
+                                                        <ul class="dates" id="search-by-date">
+                                                            <li>
+                                                                <div class="heading">Arrive</div>
+                                                                <input id="date-range-arrive" size="20" name="arrive" value="12.01.2018">
+                                                            </li>
+                                                            <li>
+                                                                <div class="heading">Departure</div>
+                                                                <input id="date-range-destination" size="20" name="destination" value="">
+                                                            </li>
+                                                        </ul>
+                                                        <ul class="dates">
+                                                            <li>
+                                                                <div class="heading">Adults</div>
+                                                                <select name="adult">
+                                                                    <option>1</option>
+                                                                    <option>2</option>
+                                                                    <option>3</option>
+                                                                </select>
+                                                            </li>
+                                                            <li>
+                                                                <div class="heading">Children</div>
+                                                                <select name="childs">
+                                                                    <option>0</option>
+                                                                    <option>1</option>
+                                                                    <option>2</option>
+                                                                </select>
+                                                            </li>
+                                                            <div class="clearfix"></div>
+                                                        </ul>
+                                                        <div class="clearfix"></div>
+                                                        <div class="submit-btn editorial-submit-btn">
+                                                            <button class="booking-form-pop-up-btn-" data-popup-id="booking-form-pop-up" type="submit">BOOK NOW</button>
+                                                        </div>
+                                                    </form>
+                                            </div>
                                 </div>
                                 <div class="panel panel-default  sub-menues">
                                     <a class="collapsed" data-toggle="collapse" data-parent="#accordion-mobile" href="#collapse-mobile-3">
