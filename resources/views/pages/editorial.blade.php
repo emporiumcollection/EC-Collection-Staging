@@ -492,7 +492,7 @@
                             
                             .gallery .info1 p {
                                 font-size: 14px;
-                                font-weight: 600;
+                                font-weight: 100;
                                 font-family: Geomanist-Light;
                                 overflow: hidden;
                                 position: relative;
