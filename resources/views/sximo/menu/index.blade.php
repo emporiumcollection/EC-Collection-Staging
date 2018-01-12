@@ -29,6 +29,7 @@
 		<li @if($active == 'social_destination') class="active" @endif><a href="{{ URL::to('sximo/menu?pos=social_destination')}}"><i class="icon-paragraph-justify2"></i> {{ Lang::get('core.tab_social_destination_menu') }}</a></li>
 		<li @if($active == 'popup') class="active" @endif><a href="{{ URL::to('sximo/menu?pos=popup')}}"><i class="icon-paragraph-justify2"></i> {{ Lang::get('core.tab_popup_menu') }}</a></li>
 		<li @if($active == 'popup_2') class="active" @endif><a href="{{ URL::to('sximo/menu?pos=popup_2')}}"><i class="icon-paragraph-justify2"></i> {{ Lang::get('core.tab_popup2_menu') }}</a></li>
+		<li @if($active == 'business') class="active" @endif><a href="{{ URL::to('sximo/menu?pos=business')}}"><i class="icon-paragraph-justify2"></i> {{ Lang::get('core.tab_business_menu') }}</a></li>
 	</ul>  	
 	
 	
@@ -222,6 +223,8 @@
 						@if($row['position']=='popup' ) checked="checked" @endif  /> {{ Lang::get('core.tab_popup_menu') }}
 						<input type="radio" name="position"  value="popup_2"  required
 						@if($row['position']=='popup_2' ) checked="checked" @endif  /> {{ Lang::get('core.tab_popup2_menu') }}
+						<input type="radio" name="position"  value="business"  required
+						@if($row['position']=='business' ) checked="checked" @endif  /> {{ Lang::get('core.tab_business_menu') }}
 						
 					 </div> 
 				  </div> 	 				
