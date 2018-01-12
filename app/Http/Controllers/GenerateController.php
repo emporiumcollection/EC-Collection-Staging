@@ -382,7 +382,7 @@ class GenerateController  extends Controller {
             $ourdesitnationLeftSideHTML  .= '</div>'.$lineBreak;
             $ourdesitnationLeftSideHTML  .= '</div>'.$lineBreak;
             $ourdesitnationLeftSideHTML  .= '</div>'.$lineBreak;
-            //echo $ourdesitnationLeftSideHTML  .= '</div>';
+            $ourdesitnationLeftSideHTML  .= '</div>';
            Storage::put('leftOurDestination.html', $ourdesitnationLeftSideHTML); 
            $exists = Storage::disk('local')->has('leftOurDestination.html');
             if($exists){
