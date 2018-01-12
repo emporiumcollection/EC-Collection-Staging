@@ -1701,6 +1701,7 @@ function scrollDataAjax(it_scroll,pageCounter)
         return;
     }
     
+    $(".ai_page_counter").val( (+($(".ai_page_counter").val()) + 1).toString() );
     $(".ai-scrollDownloadData-filter-running").val("1");
     var nxtpg = pageCounter;
     var offSet = 12, isPreviousEventComplete = true, isDataAvailable = true;
@@ -2005,7 +2006,6 @@ $(window).scroll(function () {
     }else{
         var it_scroll = true;
         scrollDataAjax(it_scroll, pageCounter);
-        $(".ai_page_counter").val( (pageCounter + 1).toString() );
         console.log('Ajax Hit '  + pageCounter);
     }
 
