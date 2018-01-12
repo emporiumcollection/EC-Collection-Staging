@@ -2266,7 +2266,7 @@
                                      </div>
                                  </div>
                                  <div class="ps-login-sign-up-image">
-                                     <img class="img-responsive" src="{{ asset('sximo/assets/images/Step.jpg')}}" alt=""/>
+                                     <img class="img-responsive" src="{{ asset('sximo/assets/images/angel-fernandez-alonso-220762.jpg')}}" alt=""/>
                                  </div>
                              </div>
                          </div>
