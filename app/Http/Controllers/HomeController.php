@@ -4805,6 +4805,9 @@ class HomeController extends Controller {
                 }
             }
         }
+        /******* Comment Cdoe byRavinder ********/
+        //Note: No Body has information we are using tags for search 
+        /*
         $TagsObj = \DB::table('tb_tags_manager')->where('tag_title', Input::get('s', false))->where('tag_status', 1)->first();
         $TagsConId = array();
         $TagsFileConId = array();
@@ -4821,7 +4824,7 @@ class HomeController extends Controller {
                                 $ConObjs = \DB::table('tb_container')->select('display_name')->where('id', $getfoldd->parent_id)->first();
 
                                 if (!empty($ConObjs)) {
-                                    //$props = \DB::table('tb_properties')->where('property_name',$ConObjs->display_name)->where('property_status',1)->first();
+                                    
 
                                     $preprops = DB::select(DB::raw("SELECT id,property_name,property_slug FROM tb_properties WHERE tb_properties.property_type = 'Hotel' AND property_name='" . $ConObjs->display_name . "' AND property_status = '1' $getcats GROUP BY tb_properties.id ORDER BY id asc LIMIT 1"));
 
@@ -4872,7 +4875,7 @@ class HomeController extends Controller {
                         $ConObjs = \DB::table('tb_container')->select('display_name')->where('id', $TagsConObj->container_id)->first();
 
                         if (!empty($ConObjs)) {
-                            //$props = \DB::table('tb_properties')->where('property_name',$ConObjs->display_name)->where('property_status',1)->first();
+                            
                             $preprops = DB::select(DB::raw("SELECT id,property_name,property_slug FROM tb_properties WHERE tb_properties.property_type = 'Hotel' AND property_name='" . $ConObjs->display_name . "' AND property_status = '1' $getcats ORDER BY id asc  LIMIT 1"));
 
                             if (!empty($preprops)) {
@@ -4913,21 +4916,21 @@ class HomeController extends Controller {
                     }
                 }
             }
-        }
+        }*/
         /****** New Query By Ravinder *********/
 
         if ($filter_min_price != '' && $filter_max_price != '') {
              
-            $getPriceQry =" , (SELECT pcrp.rack_rate FROM tb_properties_category_rooms_price pcrp, tb_properties pr  where pr.id=pcrp.property_id and pcrp.rack_rate between '".$filter_min_price."' and '".$filter_max_price."' order by pcrp.rack_rate DESC limit 0,1 ) as price , " ;
-            $filterPriceQry = " and pr.id in(SELECT pr.id FROM tb_properties_category_rooms_price pcrp, tb_properties pr  where pr.id=pcrp.property_id and pcrp.rack_rate between '".$filter_min_price."' and '".$filter_max_price."' group by pr.id order by pcrp.rack_rate DESC) ";
+            $getPriceQry =" , (SELECT pcrp.rack_rate FROM tb_properties_category_rooms_price pcrp   where pr.id=pcrp.property_id and pcrp.rack_rate between '".$filter_min_price."' and '".$filter_max_price."' order by pcrp.rack_rate DESC limit 0,1 ) as price , " ;
+            $filterPriceQry = " and pr.id in(SELECT pr.id FROM tb_properties_category_rooms_price pcrp, tb_properties pr   where pr.id=pcrp.property_id and pcrp.rack_rate between '".$filter_min_price."' and '".$filter_max_price."' group by pr.id order by pcrp.rack_rate DESC) ";
         }else{
-             $getPriceQry =" , (SELECT pcrp.rack_rate FROM tb_properties_category_rooms_price pcrp, tb_properties pr  where pr.id=pcrp.property_id  order by pcrp.rack_rate DESC limit 0,1 ) as price ," ;
+             $getPriceQry =" , (SELECT pcrp.rack_rate FROM tb_properties_category_rooms_price pcrp  where pr.id=pcrp.property_id  order by pcrp.rack_rate DESC limit 0,1 ) as price ," ;
              $filterPriceQry = "";
         }
 
         $query = "SELECT pr.id,pr.property_name,pr.property_slug"; 
         $query .= $getPriceQry;
-        $query .= " (SELECT cat.category_name FROM tb_categories cat, tb_properties pr where pr.property_category_id=cat.id limit 0,1 ) as category_name ";
+        $query .= " (SELECT cat.category_name FROM tb_categories cat where pr.property_category_id=cat.id limit 0,1 ) as category_name ";
         $query .= " FROM tb_properties pr  ";
         $whereClause = " WHERE pr.property_type = 'Hotel' AND (pr.property_name like '%".$keyword."%'".$getcats.") AND pr.property_status = '1'".$filterPriceQry."  ORDER BY pr.id asc ";
         $limit = " LIMIT ". $pageStart.",".$perPage; 
@@ -4936,7 +4939,22 @@ class HomeController extends Controller {
         
         $property = DB::select($finalQry);
         $getRec = DB::select($CountRecordQry);
-    
+        $propertiesArr = array();
+
+        foreach ($property as $key=>$prObj) {
+
+            $propertiesArr[$key] = $prObj;
+            $images = \CustomQuery::getPropertyImages($prObj->id);
+            if(!empty($images) && count($images)>0){
+                if(isset($images[0])){
+                    
+                    $propertiesArr[$key]->image = $images[0];
+                }
+            }
+            
+        }
+
+        
 
         // Comment code by Ravinder
         /*
@@ -5119,7 +5137,7 @@ class HomeController extends Controller {
             }
 
             $rep['status'] = 'success';
-            $rep['properties'] = $property;
+            $rep['properties'] = $propertiesArr;
            // $rep['cities'] = json_encode($CityArrdestts);
             //$rep['ttlpages'] = $pagination->appends($pager)->lastPage();
             $rep['total_record'] = $getRec[0]->total_record;
