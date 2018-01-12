@@ -2003,11 +2003,11 @@ $(window).scroll(function () {
         return false;
     }else{
         var it_scroll = true;
-         scrollDataAjax(it_scroll, pageCounter);
-         console.log('Ajax Hit '  + pageCounter);
+        scrollDataAjax(it_scroll, pageCounter);
+        $(".ai_page_counter").val( (pageCounter + 1).toString() );
+        console.log('Ajax Hit '  + pageCounter);
     }
 
-    $(".ai_page_counter").val( pageCounter++ );
 });
  
  /******************************************/
