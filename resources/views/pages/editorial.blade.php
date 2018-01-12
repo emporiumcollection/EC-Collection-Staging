@@ -561,7 +561,7 @@
                             .hotel-block-two-right-sec-align > p {
                                 color: white;
                                 line-height: 30px;
-                                margin-top: 0px;
+                                margin-top: 105px;
                                 font-size: 15px;
                                 font-family: Geomanist-light;
                                 opacity: 1;
