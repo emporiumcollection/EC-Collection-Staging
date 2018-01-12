@@ -21,6 +21,7 @@ body.fixed {
     width: 0px;
     z-index: 99999;
     display: block !important;
+    background-image: url(../images/emporium-voyage-company-menu.jpg);
 }
 /*.popup-inner {
     background-color: #EBEBEB;
