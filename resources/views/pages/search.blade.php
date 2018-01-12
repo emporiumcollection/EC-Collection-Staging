@@ -2310,17 +2310,6 @@ url: "{{ URL::to('filter_search_destionation')}}",
                         else{
                         $('#listproperties').append(html);
                         }
-                        if (destnarea != '')
-                        {
-                            if (dest_area[1] == 'country' || dest_area[1] == 'region'){
-                            $('#cityfilters').html('');
-                            }
-                            var ttp = p - 1;
-                            
-
-                            var searchcountdispl = data.total_pages + ' Hotel(s) Found for ' + $(".ai_search_keywords").val();
-                            $('.searchcount').html(searchcountdispl);
-                        }
 
                         sIndex = parseInt(sIndex) + offSet;
                         $('#listrecrds').val(sIndex);
