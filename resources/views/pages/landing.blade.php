@@ -1885,10 +1885,61 @@
                                 <!-- AIC responsive search collapse -->
                                 <div id="collapse-mobile-7" class="panel-collapse collapse">
                                     <div  class="panel-body">
-                                        <!-- code here -->
+                                        <div class="panel landing-page-panel-background">
+                                                <div class="padding-panel-div">
+                                                    <div class="clearfix"></div>
+                                                    <div class="destinSearchMob">
+                                                        <!--Search form start-->
+                                                        <form autocomplete="off" method="get" id="searchform-navbar" class="destinationsearchform-navbar" action="{{URL::to('search')}}">
+                                                            <input type="hidden" name="ref" value="syd_small">
+                                                            <input  class="bh-search-input typeahead search-navbar" name="s" id="search-navbar-destination-res" placeholder="ENTER YOUR DESTINATION" type="text">
+                                                        </form>
+                                                        <!--Search form end-->
+                                                    </div>
+
+                                                    <?php 
+
+                                                       /* Note:
+                                                            Now the our destinations will render from storage/app/homeOurDestinationMobile.html. 
+                                                            That file will be genrate from cron job or backend panel.  
+                                                        */  
+                                                        
+                                                        //
+
+                                                    ?>
+                                                    {!!Storage::get('homeOurDestinationMobile.html')!!}
+                                                    @if(!empty($ourdesitnation))
+                                                    <div class="panel-group-" id="mobile-inner-accordian">
+                                                        @foreach($ourdesitnation as $destination)
+                                                        <div class="panel panel-default  destination-sub-menues">
+                                                            <a class="collapsed" data-toggle="collapse" data-parent="#mobile-inner-accordian" href="#mobile-inner{{$destination['maincat']->id}}">
+                                                                <div class="destination-panel-heading">
+                                                                    <h4 class="panel-title menu-text accordion ">
+                                                                        {{$destination['maincat']->category_name}}
+                                                                    </h4>
+                                                                </div>
+                                                            </a>
+                                                            <div id="mobile-inner{{$destination['maincat']->id}}" class="panel-collapse collapse ">
+                                                                <div class="panel-body">
+                                                                    @if (array_key_exists("child",$destination))
+                                                                    <ul class="where-box-sub-menu">
+                                                                        @foreach($destination['child'] as $childDest)
+                                                                        <li><a href="{{URL::to('luxury_destinations/'. str_replace(' ','_',$destination['maincat']->category_name).'/'. str_replace(' ','_',$childDest->category_name).'/'. str_replace(' ','_',$childDest->category_name))}}">{{$childDest->category_name}}</a></li>
+                                                                        @endforeach
+                                                                    </ul>
+                                                                    @endif
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        @endforeach
+                                                    </div>
+                                                    @endif
+                                                </div>
+                                            </div>
+<!--                                         code here 
                                             <div class="book-now-page date-page" style="width: 100%;">
                                                 <div class="book-now-page-content open-date-html" style="width: 1920px;">
-<!--                                                    <div><a class="close-btn-date close-btn-align" href="#">×</a></div>-->
+                                                    <div><a class="close-btn-date close-btn-align" href="#">×</a></div>
                                                     <div class="headings">
                                                         <h2>Emporium Voyage is your ideal, vogue vacation planner!</h2>
                                                         <p>With over 300 posh properties, elite spas and exquisite yachts huddled in its cocoon, Emporium Voyage ensure the ultimate luxury experience</p>
@@ -1961,8 +2012,8 @@
                                                     <div class="clearfix"></div>
                                                 </div>
                                             </div>
-                                        <!-- code here end -->
-                                    </div>
+                                         code here end 
+                                    </div>-->
                                 </div>
                                 <!-- AIC responsive search collapse end -->
                                 <div class="panel panel-default  sub-menues">
