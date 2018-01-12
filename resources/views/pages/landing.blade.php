@@ -1934,7 +1934,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div></div>
                                 <div class="panel panel-default  sub-menues">
                                     <a class="collapsed" data-toggle="collapse" data-parent="#accordion-mobile" href="#collapse-mobile-3">
                                         <div class="panel-heading">
