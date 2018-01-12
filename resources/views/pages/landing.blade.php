@@ -1874,7 +1874,7 @@
                                     </a>
                                 </div>-->
                                 <div class="panel panel-default  sub-menues">
-                                    <a href="#collapse-mobile-7" class="trigger-click-on-book-now collapsed">
+                                    <a href="#" class="trigger-click-on-book-now collapsed">
                                         <div class="panel-heading">
                                             <h4 class="panel-title menu-text accordion">
                                                 Search By Date
@@ -1882,137 +1882,6 @@
                                         </div>
                                     </a>
                                 </div>
-                                <!-- AIC responsive search collapse -->
-                                <div id="collapse-mobile-7" class="panel-collapse collapse">
-                                    <div  class="panel-body">
-                                        <div class="panel landing-page-panel-background">
-                                            <div class="padding-panel-div">
-                                                <div class="headings">
-                                                    <h2>Emporium Voyage is your ideal, vogue vacation planner!</h2>
-                                                    <p>With over 300 posh properties, elite spas and exquisite yachts huddled in its cocoon, Emporium Voyage ensure the ultimate luxury experience</p>
-                                                </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                            <div class="destinSearchMob">
-                                                <form action="http://www.emporium-voyage.com/search" method="get">
-                                                        <input name="s" value="" type="hidden">
-                                                        <input name="ref" value="sbd" type="hidden">
-
-                                                        <ul class="dates" id="search-by-date">
-                                                            <li>
-                                                                <div class="heading">Arrive</div>
-                                                                <input id="date-range-arrive" size="20" name="arrive" value="12.01.2018">
-                                                            </li>
-                                                            <li>
-                                                                <div class="heading">Departure</div>
-                                                                <input id="date-range-destination" size="20" name="destination" value="">
-                                                            </li>
-                                                        </ul>
-                                                        <ul class="dates">
-                                                            <li>
-                                                                <div class="heading">Adults</div>
-                                                                <select name="adult">
-                                                                    <option>1</option>
-                                                                    <option>2</option>
-                                                                    <option>3</option>
-                                                                </select>
-                                                            </li>
-                                                            <li>
-                                                                <div class="heading">Children</div>
-                                                                <select name="childs">
-                                                                    <option>0</option>
-                                                                    <option>1</option>
-                                                                    <option>2</option>
-                                                                </select>
-                                                            </li>
-                                                            <div class="clearfix"></div>
-                                                        </ul>
-                                                        <div class="clearfix"></div>
-                                                        <div class="submit-btn editorial-submit-btn">
-                                                            <button class="booking-form-pop-up-btn-" data-popup-id="booking-form-pop-up" type="submit">BOOK NOW</button>
-                                                        </div>
-                                                    </form>
-                                            </div>
-<!--                                         code here 
-                                            <div class="book-now-page date-page" style="width: 100%;">
-                                                <div class="book-now-page-content open-date-html" style="width: 1920px;">
-                                                    <div><a class="close-btn-date close-btn-align" href="#">×</a></div>
-                                                    <div class="headings">
-                                                        <h2>Emporium Voyage is your ideal, vogue vacation planner!</h2>
-                                                        <p>With over 300 posh properties, elite spas and exquisite yachts huddled in its cocoon, Emporium Voyage ensure the ultimate luxury experience</p>
-                                                    </div>
-                                                    <form action="http://www.emporium-voyage.com/search" method="get">
-                                                        <input name="s" value="" type="hidden">
-                                                        <input name="ref" value="sbd" type="hidden">
-
-                                                        <ul class="dates" id="search-by-date">
-                                                            <li>
-                                                                <div class="heading">Arrive</div>
-                                                                <input id="date-range-arrive" size="20" name="arrive" value="12.01.2018">
-                                                            </li>
-                                                            <li>
-                                                                <div class="heading">Departure</div>
-                                                                <input id="date-range-destination" size="20" name="destination" value="">
-                                                            </li>
-                                                        </ul>
-                                                        <ul class="dates">
-                                                            <li>
-                                                                <div class="heading">Adults</div>
-                                                                <select name="adult">
-                                                                    <option>1</option>
-                                                                    <option>2</option>
-                                                                    <option>3</option>
-                                                                </select>
-                                                            </li>
-                                                            <li>
-                                                                <div class="heading">Children</div>
-                                                                <select name="childs">
-                                                                    <option>0</option>
-                                                                    <option>1</option>
-                                                                    <option>2</option>
-                                                                </select>
-                                                            </li>
-                                                            <div class="clearfix"></div>
-                                                        </ul>
-                                                        <div class="clearfix"></div>
-                                                        <div class="submit-btn editorial-submit-btn">
-                                                            <button class="booking-form-pop-up-btn-" data-popup-id="booking-form-pop-up" type="submit">BOOK NOW</button>
-                                                        </div>
-                                                    </form>
-                                                    <div class="view-modify-cancel-booking">
-                                                        <a href="#">View, Modify or Cancel your Booking</a>
-                                                    </div>
-                                                    <ul class="booking-page-footer-section">
-                                                        <li>
-                                                            <a href="#" target="_blank">
-                                                                <span>Join the worlds leading luxury club</span>
-                                                                <h6 class="center">Enjoy exclusive members only benefits</h6>
-                                                            </a>
-                                                            <div class="white-border-bottom"></div>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" target="_blank">
-                                                                <span>Spa Treatment</span>
-                                                                <h6 class="center">Book</h6>
-                                                            </a>
-                                                            <div class="white-border-bottom"></div>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" target="_blank">
-                                                                <span>View or Modify Reserveration</span>
-                                                                <h6 class="center">Login to Support Center</h6>
-                                                            </a>
-                                                            <div class="white-border-bottom"></div>
-                                                        </li>
-                                                        <div class="clearfix"></div>
-                                                    </ul>
-                                                    <div class="clearfix"></div>
-                                                </div>
-                                            </div>
-                                         code here end -->
-                                    </div>
-                                </div>
-                                <!-- AIC responsive search collapse end -->
                                 <div class="panel panel-default  sub-menues">
                                     <a class="collapsed" data-toggle="collapse" data-parent="#accordion-mobile" href="#collapse-mobile-3">
                                         <div class="panel-heading">
