@@ -4928,7 +4928,7 @@ class HomeController extends Controller {
              $filterPriceQry = "";
         }
 
-        $query = "SELECT pr.id,pr.property_name,pr.property_slug"; 
+        $query = "SELECT pr.editor_choice_property, pr.feature_property,pr.id,pr.property_name,pr.property_slug"; 
         $query .= $getPriceQry;
         $query .= " (SELECT cat.category_name FROM tb_categories cat where pr.property_category_id=cat.id limit 0,1 ) as category_name ";
         $query .= " FROM tb_properties pr  ";
