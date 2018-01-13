@@ -1,10 +1,10 @@
 <?php 
-define('CNF_APPNAME','Emporium Yachts Membership Portal');
-define('CNF_APPDESC','Emporium Yachts Membership Portal');
-define('CNF_COMNAME','Emporium Yachts');
-define('CNF_EMAIL','info@emporium-yachts.com');
-define('CNF_METAKEY','Design-Locations Membership Portal');
-define('CNF_METADESC','Design-Locations Membership Portal');
+define('CNF_APPNAME','Emporium Voyage Membership Portal');
+define('CNF_APPDESC','Emporium Voyage Membership Portal');
+define('CNF_COMNAME','Emporium Voyage Membership Portal');
+define('CNF_EMAIL','reservations@emporium-voyage.com');
+define('CNF_METAKEY','Emporium Voyage Membership Portal');
+define('CNF_METADESC','Emporium Voyage Membership Portal');
 define('CNF_GROUP','3');
 define('CNF_ACTIVATION','confirmation');
 define('CNF_MULTILANG','1');
