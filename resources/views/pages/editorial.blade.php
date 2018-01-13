@@ -1526,7 +1526,7 @@
 
                         <!--Hotel Section Block Two-->
                         <div id="hotel" class="hotel-sec-block-two srwerw">
-                            <div class="container-">
+                            <div class="container">
                                 <div class="row">
                                     <div class="disply-left-right-align">
                                         <div class="col-md-6 disply-left-right-inner">
