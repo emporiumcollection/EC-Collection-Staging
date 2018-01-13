@@ -88,10 +88,10 @@
 					 	@if(SiteHelpers::filterColumn($limited ))
 						 <td>					 
 						 	@if($field['attribute']['image']['active'] ==1)
-								
+								{{ SiteHelpers::showUploadedFile($row->$field['field'],$field['attribute']['image']['path']) }}
 							@else	
 								{{--*/ $conn = (isset($field['conn']) ? $field['conn'] : array() ) /*--}}
-								{!! SiteHelpers::gridDisplay($row->$field['field'],$field['field'],$conn) !!}	
+								{{ SiteHelpers::gridDisplay($row->$field['field'],$field['field'],$conn) }}	
 							@endif						 
 						 </td>
 						@endif	
