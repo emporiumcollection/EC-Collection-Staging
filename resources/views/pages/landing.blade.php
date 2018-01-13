@@ -1610,6 +1610,13 @@
                                     <option {{ ($adults!='' && $adults==1) ? 'selected' : '' }}>1</option>
                                     <option {{ ($adults!='' && $adults==2) ? 'selected' : '' }}>2</option>
                                     <option {{ ($adults!='' && $adults==3) ? 'selected' : '' }}>3</option>
+                                    <option {{ ($adults!='' && $adults==4) ? 'selected' : '' }}>4</option>
+                                    <option {{ ($adults!='' && $adults==5) ? 'selected' : '' }}>5</option>
+                                    <option {{ ($adults!='' && $adults==6) ? 'selected' : '' }}>6</option>
+                                    <option {{ ($adults!='' && $adults==7) ? 'selected' : '' }}>7</option>
+                                    <option {{ ($adults!='' && $adults==8) ? 'selected' : '' }}>8</option>
+                                    <option {{ ($adults!='' && $adults==9) ? 'selected' : '' }}>9</option>
+                                    <option {{ ($adults!='' && $adults==10) ? 'selected' : '' }}>10</option>
                                 </select>
                             </li>
                             <li>
@@ -1618,6 +1625,14 @@
                                     <option {{ ($childs!='' && $childs==0) ? 'selected' : '' }}>0</option>
                                     <option {{ ($childs!='' && $childs==1) ? 'selected' : '' }}>1</option>
                                     <option {{ ($childs!='' && $childs==2) ? 'selected' : '' }}>2</option>
+                                    <option {{ ($childs!='' && $childs==3) ? 'selected' : '' }}>3</option>
+                                    <option {{ ($childs!='' && $childs==4) ? 'selected' : '' }}>4</option>
+                                    <option {{ ($childs!='' && $childs==5) ? 'selected' : '' }}>5</option>
+                                    <option {{ ($childs!='' && $childs==6) ? 'selected' : '' }}>6</option>
+                                    <option {{ ($childs!='' && $childs==7) ? 'selected' : '' }}>7</option>
+                                    <option {{ ($childs!='' && $childs==8) ? 'selected' : '' }}>8</option>
+                                    <option {{ ($childs!='' && $childs==9) ? 'selected' : '' }}>9</option>
+                                    <option {{ ($childs!='' && $childs==10) ? 'selected' : '' }}>10</option>
                                 </select>
                             </li>
                             <div class="clearfix"></div>
@@ -2020,7 +2035,7 @@
                                                                 </select>
                                                             </li>
                                                             <li>
-                                                                <div class="heading">Arrive</div>
+                                                                <div class="heading">Departure</div>
                                                                     <input id="date-range-arrive" size="20" name="arrive" type="hidden" value="12.01.2018">
                                                                     <select name="adult">
                                                                     <option>Day</option>
@@ -2036,6 +2051,13 @@
                                                                     <option>1</option>
                                                                     <option>2</option>
                                                                     <option>3</option>
+                                                                    <option>4</option>
+                                                                    <option>5</option>
+                                                                    <option>6</option>
+                                                                    <option>7</option>
+                                                                    <option>8</option>
+                                                                    <option>9</option>
+                                                                    <option>10</option>
                                                                 </select>
                                                             </li>
                                                             <li>
@@ -2044,6 +2066,14 @@
                                                                     <option>0</option>
                                                                     <option>1</option>
                                                                     <option>2</option>
+                                                                    <option>3</option>
+                                                                    <option>4</option>
+                                                                    <option>5</option>
+                                                                    <option>6</option>
+                                                                    <option>7</option>
+                                                                    <option>8</option>
+                                                                    <option>9</option>
+                                                                    <option>10</option>
                                                                 </select>
                                                             </li>
                                                             <div class="clearfix"></div>
