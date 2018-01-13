@@ -1481,9 +1481,9 @@
                             That file will be genrate from cron job or backend panel.  
                        
                         
-                        {!!Storage::get('homeOurDestination.html')!!}  */  
+                          */  
       ?>
-                        
+                        {!!Storage::get('homeOurDestination.html')!!}
                         @if(!empty($ourmaindesitnation))
                         @foreach($ourmaindesitnation as $destination)
                         <div class="panel panel-default  destination-sub-menues">
@@ -2143,8 +2143,9 @@
                                                             That file will be genrate from cron job or backend panel.  
                                                         */  
                                                         
-                                                        //{!!Storage::get('homeOurDestinationMobile.html')!!}
+                                                        //
                                                     ?>
+                                                    {!!Storage::get('homeOurDestinationMobile.html')!!}
                                                     @if(!empty($ourdesitnation))
                                                     <div class="panel-group-" id="mobile-inner-accordian">
                                                         @foreach($ourdesitnation as $destination)
