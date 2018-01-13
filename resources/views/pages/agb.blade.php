@@ -107,4 +107,3 @@ All prices displayed on the Emporium-Voyage websites are current, day prices, sh
 		</style>
         @include('layouts/elliot/ai_footer_social')
         
-        
