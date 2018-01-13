@@ -8,6 +8,7 @@ Route::get('newsdetail', 'HomeController@index');
 Route::get('project', 'HomeController@index');
 Route::get('projectdetail', 'HomeController@index');
 Route::get('productmasonry', 'HomeController@index');
+Route::get('membership_packages', 'HomeController@index');
 Route::get('downloads', 'HomeController@index');
 Route::get('productgallery', 'HomeController@index');
 Route::get('musterbestellung', 'HomeController@index');
