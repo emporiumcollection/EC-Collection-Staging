@@ -159,6 +159,8 @@ class HomeController extends Controller {
 						 $this->data['pageslider'] = \DB::table('tb_pages_sliders')->select( 'slider_title', 'slider_description', 'slider_img', 'slider_link', 'slider_video', 'slide_type')->where('slider_page_id', $row->pageID)->get();
 						 
 						 $this->data['landingads'] = \DB::table('tb_advertisement')->select('adv_img', 'adv_link')->where('adv_type', 'sidebar')->where('adv_position', 'landing')->get();
+						 
+						 $this->data['whybookwithus'] = \DB::table('tb_whybookwithus')->select('id', 'title', 'sub_title')->where('status', 0)->get();
 					}
 					else {
                         /*$tags_Arr = \DB::table('tb_tags_manager')->where('tag_status', 1)->get();
