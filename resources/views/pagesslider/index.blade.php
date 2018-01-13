@@ -82,21 +82,7 @@
                 <tr>
 					<td width="30"> {{ ++$i }} </td>
 					<td width="50"><input type="checkbox" class="ids" name="ids[]" value="{{ $row->id }}" />  </td>									
-				 @foreach ($tableGrid as $field)
-					 @if($field['view'] =='1')
-					 	<?php $limited = isset($field['limited']) ? $field['limited'] :''; ?>
-					 	@if(SiteHelpers::filterColumn($limited ))
-						 <td>					 
-						 	@if(isset($field['attribute']['image']['active']) && $field['attribute']['image']['active'] =='1')
-								{!! SiteHelpers::showUploadedFile($row->$field['field'],$field['attribute']['image']['path']) !!}
-							@else	
-								{{--*/ $conn = (isset($field['conn']) ? $field['conn'] : array() ) /*--}}
-								{!! SiteHelpers::gridDisplay($row->$field['field'],$field['field'],$conn) !!}	
-							@endif						 
-						 </td>
-						@endif	
-					 @endif					 
-				 @endforeach
+				 
 				 <td>
 					 	@if($access['is_detail'] ==1)
 						<a href="{{ URL::to('pagesslider/show/'.$row->id.'?return='.$return)}}" class="tips btn btn-xs btn-primary" title="{{ Lang::get('core.btn_view') }}"><i class="fa  fa-search "></i></a>
