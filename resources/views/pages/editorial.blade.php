@@ -637,6 +637,7 @@
                                 top: 0%;
                                 background-color: black;
                                 opacity: 0.9;
+                                object-fit: cover;
                             }
                             
                             .gallery.row .principale1 .foto1 {
