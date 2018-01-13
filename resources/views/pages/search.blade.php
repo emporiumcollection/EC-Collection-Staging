@@ -466,7 +466,7 @@
 	border-radius: 0px;
 	transition: .5s;
 	position: fixed;
-	top: 192px;
+	top: 105px;
 	left: calc(100% - 62px);
 	width: 340px;
 	background: #272727;
