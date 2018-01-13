@@ -141,7 +141,7 @@ class HomeController extends Controller {
 						
                         
                     }
-					if (isset($pageSlug) && $pageSlug == 'restaurants') {
+					elseif (isset($pageSlug) && $pageSlug == 'restaurants') {
 						$propertiesArr = array();
 						$props = \DB::table('tb_properties')->select('id','restaurant_title','restaurant_usp_text','restaurant_usp_person','restaurant_image','restaurant_desciription','restaurant_image2','property_name','property_slug')->where('property_status', 1)->where('restaurant_title', '!=','')->get();
 						//print_r($props); die;
@@ -153,6 +153,12 @@ class HomeController extends Controller {
                         $this->data['propertiesArr'] = $propertiesArr;
 						
 						$this->data['sidebardetailAds'] = \DB::table('tb_advertisement')->select('adv_link','adv_img')->where('adv_type', 'sidebar')->where('adv_position', 'detail')->get();
+					}
+					elseif (isset($pageSlug) && $pageSlug == 'membership_hotel') {
+						
+						 $this->data['pageslider'] = \DB::table('tb_pages_sliders')->select( 'slider_title', 'slider_description', 'slider_img', 'slider_link', 'slider_video', 'slide_type')->where('slider_page_id', $row->pageID)->get();
+						 
+						 $this->data['landingads'] = \DB::table('tb_advertisement')->select('adv_img', 'adv_link')->where('adv_type', 'sidebar')->where('adv_position', 'landing')->get();
 					}
 					else {
                         /*$tags_Arr = \DB::table('tb_tags_manager')->where('tag_status', 1)->get();

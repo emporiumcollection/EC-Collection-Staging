@@ -193,6 +193,7 @@ Route::group(['middleware' => 'auth'], function()
 	Route::post('delete_gallery_image', 'CitycontentController@delete_gallery_image');
 });	
 
+Route::post('frontend_hotelpost', 'HomeController@addHotelInfoFrontend');
 Route::post('save_previous_page_image', 'HomeController@save_previous_page_image');
 Route::post('_ajax_login', 'HomeController@ajax_login');
 Route::post('add_new_room_booking', 'HomeController@new_room_booking');

@@ -193,210 +193,102 @@
                             <img alt="" src="{{ asset('sximo/assets/images/design-location-logo.png')}}" class="img-responsive">
                         </div>
                         <div class="panel-group new-sidebar-sk" id="accordion">
-							<div class="panel panel-default custom-post-panel">
-                                <a href="#" class="heading-stying collapsed">
-                                    <div class="panel-heading custom-heading">
-                                        Contact
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="panel panel-default custom-post-panel">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#webpage2" class="heading-stying collapsed">
-                                    <div class="panel-heading custom-heading">
-                                        Membership
-                                    </div>
-                                </a>
-                                <div id="webpage2" class="panel-collapse  collapse">
-                                    <div class="panel-body custom-panel-body">
-                                        <div class="dl-filter">
-                                            <form>
-                                                <div class="form-group post-filter-inputs">
-                                                    <label><a href="javascript:void(0);">Beach Hotels</a></label>
-                                                </div>
-                                                <div class="form-group post-filter-inputs">
-                                                    <label><a href="javascript:void(0);">Green Luxury Hotels</a></label>
-                                                </div>
-                                                <div class="form-group post-filter-inputs">
-                                                    <label>
-                                                        <a href="javascript:void(0);">City Escapes Luxury Hotels</a>
-                                                    </label>
-                                                </div>
-                                                <div class="form-group post-filter-inputs">
-                                                    <label><a href="javascript:void(0);">Unusual Adventure Hotels</a></label>
-                                                </div>
-                                                <div class="form-group post-filter-inputs">
-                                                    <label><a href="javascript:void(0);">Family Friendly Luxury Hotels</a></label>
-                                                </div>
-                                            </form>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-							<div class="panel panel-default custom-post-panel">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#webpage3" class="heading-stying collapsed">
-                                    <div class="panel-heading custom-heading">
-                                        About US
-                                    </div>
-                                </a>
-                                <div id="webpage3" class="panel-collapse  collapse">
-                                    <div class="panel-body custom-panel-body">
-                                        <div class="dl-filter">
-                                            <form>
-                                                <div class="form-group post-filter-inputs">
-                                                    <label><a href="javascript:void(0);">Demo4</a></label>
-                                                </div>
-                                                <div class="form-group post-filter-inputs">
-                                                    <label><a href="javascript:void(0);">Demo5</a></label>
-                                                </div>
-                                                <div class="form-group post-filter-inputs">
-                                                    <label>
-                                                        <a href="javascript:void(0);">Demo6</a>
-                                                    </label>
-                                                </div>
-                                                <div class="form-group post-filter-inputs">
-                                                    <label><a href="javascript:void(0);">Demo7</a></label>
-                                                </div>
-                                                <div class="form-group post-filter-inputs">
-                                                    <label><a href="javascript:void(0);">Demo8</a></label>
-                                                </div>
-                                            </form>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-							<div class="panel panel-default custom-post-panel">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#webpage4" class="heading-stying collapsed">
-                                    <div class="panel-heading custom-heading">
-                                        Contact Us
-                                    </div>
-                                </a>
-                                <div id="webpage4" class="panel-collapse  collapse">
-                                    <div class="panel-body custom-panel-body">
-                                        <div class="dl-filter">
-                                            <form>
-                                                <div class="form-group post-filter-inputs">
-                                                    <label><a href="javascript:void(0);">Demo</a></label>
-                                                </div>
-                                                <div class="form-group post-filter-inputs">
-                                                    <label><a href="javascript:void(0);">Demo2</a></label>
-                                                </div>
-                                            </form>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+							{{--*/ $page_menus = SiteHelpers::menus('business') /*--}}
+							@if(!empty($page_menus))
+							@foreach ($page_menus as $pmenu)
+								<div class="panel panel-default custom-post-panel">
+									<a data-toggle="collapse" data-parent="#accordion" href="#webpage2" class="heading-stying collapsed">
+										<div class="panel-heading custom-heading">
+											@if(CNF_MULTILANG ==1 && isset($pmenu['menu_lang']['title'][Session::get('lang')]))
+												{{ $pmenu['menu_lang']['title'][Session::get('lang')] }}
+											@else
+												{{$pmenu['menu_name']}}
+											@endif
+										</div>
+									</a>
+									@if(count($pmenu['childs']) > 0)
+										<div id="webpage2" class="panel-collapse  collapse">
+											<div class="panel-body custom-panel-body">
+												<div class="dl-filter">
+													@foreach ($pmenu['childs'] as $pmenu2)
+														<div class="form-group post-filter-inputs">
+															<label>
+																<a @if($pmenu2['menu_type'] =='external') href="{{ URL::to($pmenu2['url'])}}" @else href="{{ URL::to($pmenu2['module'])}}" @endif>
+																	@if(CNF_MULTILANG ==1 && isset($pmenu2['menu_lang']['title'][Session::get('lang')]))
+																		{{ $pmenu2['menu_lang']['title'][Session::get('lang')] }}
+																	@else
+																		{{$pmenu2['menu_name']}}
+																	@endif
+																</a>
+															</label>
+														</div>
+													@endforeach
+												</div>
+											</div>
+										</div>
+									@endif
+								</div>
+							@endforeach
+							@endif
                         </div>
                         <section class="regular slider">
                             <div class="slick-cstm-width">
-                                <a href="http://www.bocadolobo.com/en/landing-page/de-market/" tabindex="-1"><img src="http://www.emporium-voyage.com/uploads/users/advertisement/1.png"></a>
-                            </div>
-                            <div class="slick-cstm-width">
-                                <div class="side-bar-why-book-with-us">
-                                    <div class="book-with-us-tittles">
-                                        <h2>Why book with us?</h2>
-                                    </div>
-                                    <ul class="side-bar-book-with-us-list">
-                                        <li>
-                                            <h3>Handpicked Selection of Hotels</h3>
-                                            <p>from selected luxury destinations worldwide</p>
-                                        </li>
-                                        <li>
-                                            <h3>Upgrade and Late Checkout</h3>
-                                            <p>At any Hotel upon Avilability</p>
-                                        </li>
-                                        <li>
-                                            <h3>Preferred Guest Discounts at New Hotels</h3>
-                                            <p>join our members club</p>
-                                        </li>
-                                        <li>
-                                            <h3>Free Wifi</h3>
-                                            <p>Guaranteed at all our Partner Hotels</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="slick-cstm-width">
-                                <a href="http://www.bocadolobo.com/en/landing-page/de-market/" tabindex="-1"><img src="http://www.emporium-voyage.com/uploads/users/advertisement/1.png"></a>
-                            </div>
-                            <div class="slick-cstm-width">
-                                <div class="side-bar-why-book-with-us">
-                                    <div class="book-with-us-tittles">
-                                        <h2>Why book with us?</h2>
-                                    </div>
-                                    <ul class="side-bar-book-with-us-list">
-                                        <li>
-                                            <h3>Handpicked Selection of Hotels</h3>
-                                            <p>from selected luxury destinations worldwide</p>
-                                        </li>
-                                        <li>
-                                            <h3>Upgrade and Late Checkout</h3>
-                                            <p>At any Hotel upon Avilability</p>
-                                        </li>
-                                        <li>
-                                            <h3>Preferred Guest Discounts at New Hotels</h3>
-                                            <p>join our members club</p>
-                                        </li>
-                                        <li>
-                                            <h3>Free Wifi</h3>
-                                            <p>Guaranteed at all our Partner Hotels</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+								<div class="side-bar-why-book-with-us">
+									<div class="book-with-us-tittles">
+										<h2>Why book with us?</h2>
+									</div>
+									<ul class="side-bar-book-with-us-list">
+										@if(!empty($whybookwithus))
+											@foreach($whybookwithus as $withus)
+												<li>
+													<h3>{{$withus->title}}</h3>
+													<p>{{$withus->sub_title}}</p>
+												</li>
+											@endforeach
+										@endif
+									</ul>
+								</div>
+							</div>
+							@if(!empty($landingads))
+							@foreach($landingads as $lnads)
+							<div class="slick-cstm-width">
+								<a href="{{ (strpos($lnads->adv_link, 'http://') !== false) ? $lnads->adv_link : 'http://'.$lnads->adv_link }}"><img src="{{URL::to('uploads/users/advertisement/'.$lnads->adv_img)}}"></a>
+							</div>
+							@endforeach
+							@endif
                         </section>
                     </div>
                 </div>
                 <div class="col-md-10 no-padding">
-                    <section class="wow fadeIn no-padding cstmaiclass">
-                        <div class="swiper-auto-height-container position-relative width-100">
-                            <div class="swiper-wrapper overflow-hidden">
-                                <!-- start slider item -->
-                                <div class="swiper-slide padding-100px-all cover-background position-relative xs-padding-20px-all" style="background-image:url(http://placehold.it/1920x1100)">
-                                    <div class="position-relative width-55 md-width-60 sm-width-85 xs-width-100 display-inline-block slide-banner last-paragraph-no-margin">
-                                        <div class="padding-80px-all bg-black-opacity sm-padding-40px-all xs-padding-30px-all xs-text-center xs-width-100">
-                                            <h3 class="alt-font text-white sm-width-100">A digital studio crafting beautiful experiences.</h3>
-                                            <p class="sm-width-100 lorem-para">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                                            <a href="services-classic.html" class="margin-35px-top sm-margin-15px-top btn btn-white">Explore services</a>
-                                        </div> 
-                                    </div>
-                                </div>
-                                <!-- end slider item -->
-                                <!-- start slider item -->
-                                <div class="swiper-slide padding-100px-all cover-background position-relative xs-padding-20px-all" style="background-image:url(http://placehold.it/1920x1697)">
-                                    <div class="position-relative width-55 md-width-60 sm-width-85 xs-width-100 display-inline-block slide-banner last-paragraph-no-margin"> 
-                                        <div class="padding-80px-all bg-black-opacity sm-padding-40px-all xs-padding-30px-all xs-text-center xs-width-100">
-                                            <h3 class="alt-font text-white sm-width-100">A digital studio crafting beautiful experiences.</h3>
-                                            <p class="sm-width-100 lorem-para">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                                            <a href="services-classic.html" class="margin-35px-top sm-margin-15px-top btn btn-white">Explore services</a>
-                                        </div>  
-                                    </div>
-                                </div>
-                                <!-- end slider item -->
-                                <!-- start slider item -->
-                                <div class="swiper-slide padding-100px-all cover-background position-relative xs-padding-20px-all" style="background-image:url(http://placehold.it/1920x1526)">
-                                    <div class="position-relative width-55 md-width-60 sm-width-85 xs-width-100 display-inline-block slide-banner last-paragraph-no-margin">
-                                        <div class="padding-80px-all bg-black-opacity sm-padding-40px-all xs-padding-30px-all xs-text-center xs-width-100">
-                                            <h3 class="alt-font text-white sm-width-100">A digital studio crafting beautiful experiences.</h3>
-                                            <p class="sm-width-100 lorem-para">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                                            <a href="services-classic.html" class="margin-35px-top sm-margin-15px-top btn btn-white">Explore services</a>
-                                        </div>     
-                                    </div>
-                                </div>
-                                <!-- end slider item -->
-                            </div>
+					@if(!empty($pageslider))
+						<section class="wow fadeIn no-padding cstmaiclass">
+							<div class="swiper-auto-height-container position-relative width-100">
+								<div class="swiper-wrapper overflow-hidden">
+									@foreach($pageslider as $key => $slider_row)
+										<!-- start slider item -->
+										<div class="swiper-slide padding-100px-all cover-background position-relative xs-padding-20px-all" style="background-image:url({{url()}}/uploads/slider_images/{{$slider_row->slider_img}})">
+											<div class="position-relative width-55 md-width-60 sm-width-85 xs-width-100 display-inline-block slide-banner last-paragraph-no-margin">
+												<div class="padding-80px-all bg-black-opacity sm-padding-40px-all xs-padding-30px-all xs-text-center xs-width-100">
+													<h3 class="alt-font text-white sm-width-100">{{$slider_row->slider_title}}</h3>
+													<p class="sm-width-100 lorem-para">{{$slider_row->slider_description}}</p>
+													<a href="{{$slider_row->slider_link}}" class="margin-35px-top sm-margin-15px-top btn btn-white">Explore services</a>
+												</div> 
+											</div>
+										</div>
+										<!-- end slider item -->
+									@endforeach
+								</div>
 
-                            <div class="navigation-area">
-                                <div class="swiper-button-next swiper-next-style4 bg-primary text-white"><i class="fa fa-arrow-up" aria-hidden="true"></i></div>
-                                <div class="swiper-button-prev swiper-prev-style4"><i class="fa fa-arrow-down" aria-hidden="true"></i></div>
-                            </div>
-                            <div class="scroll-button">
-                                <a href="#align-to-top" class="align-to-top-arrow"><img src="http://www.emporium-voyage.com/sximo/assets/images/scroll-down.png" class="down-arrow-align animate-arrow" alt=""> </a>
-                            </div>
-                        </div>
-                    </section>
+								<div class="navigation-area">
+									<div class="swiper-button-next swiper-next-style4 bg-primary text-white"><i class="fa fa-arrow-up" aria-hidden="true"></i></div>
+									<div class="swiper-button-prev swiper-prev-style4"><i class="fa fa-arrow-down" aria-hidden="true"></i></div>
+								</div>
+								<div class="scroll-button">
+									<a href="#align-to-top" class="align-to-top-arrow"><img src="http://www.emporium-voyage.com/sximo/assets/images/scroll-down.png" class="down-arrow-align animate-arrow" alt=""> </a>
+								</div>
+							</div>
+						</section>
+					@endif
                     <!-- end slider section -->
                     <!-- start contact form section -->
                     <section class="wow fadeIn big-section cstmaiclass" id="align-to-top">
@@ -405,7 +297,7 @@
                                 <div class="col-md-12 sm-clear-both wow fadeInLeft no-padding">
                                     <div class="padding-ten-half-all bg-light-gray md-padding-seven-all xs-padding-30px-all height-100">
                                         <!--<span class="text-extra-dark-gray alt-font text-large font-weight-600 margin-25px-bottom display-block">Application form</span>--> 
-                                        <form id="contact-form" action="javascript:void(0)" method="post">
+                                        <form id="contact-form" action="{{URL::to('frontend_hotelpost')}}" method="post">
                                             <div class="col-md-12 sm-clear-both">
                                                 <div id="success-contact-form" class="no-margin-lr"></div>
                                             </div>
@@ -413,11 +305,11 @@
                                                 <h5 class="ev-regural-heading text-uppercase margin-20px-bottom font-weight-700 sm-width-100 xs-width-100">Hotel Information</h5>
                                                 <div class="col-md-6 col-sm-12 no-padding-left">
                                                     <label>*Hotel Name</label>
-                                                    <input type="text" name="name" id="name" placeholder="Hotel Name*" class="bg-white medium-input">
+                                                    <input type="text" name="hotelinfo_name" id="name" placeholder="Hotel Name*" class="bg-white medium-input">
                                                 </div>
                                                 <div class="col-md-6 col-sm-12 no-padding-right">
                                                     <label>*Hotel Status</label>
-                                                    <select class="bg-white medium-input">
+                                                    <select name="hotelinfo_status" class="bg-white medium-input">
                                                         <option value="">Select Status</option>
                                                         <option value="">Open</option>
                                                         <option value="">Construction phase</option>
@@ -426,7 +318,7 @@
                                                 </div>
                                                 <div class="col-md-6 col-sm-12 no-padding-left">
                                                     <label>*Hotel Type</label>
-                                                    <select class="bg-white medium-input">
+                                                    <select name="hotelinfo_type" class="bg-white medium-input">
                                                         <option value="">Hotel Type</option>
                                                         <option value="">Alternative</option>
                                                         <option value="">Beach Resort</option>
@@ -437,7 +329,7 @@
                                                 </div>
                                                 <div class="col-md-6 col-sm-12 no-padding-right">
                                                     <label>*Hotel Building</label>
-                                                    <select class="bg-white medium-input">
+                                                    <select name="hotelinfo_building" class="bg-white medium-input">
                                                         <option value="">Hotel Building</option>
                                                         <option value="">New Construction</option>
                                                         <option value="">Existing Building</option>
@@ -446,55 +338,55 @@
                                                 </div> 
                                                 <div class="col-md-12 col-sm-12 no-padding">
                                                     <label>*Hotel Opening Date</label>
-                                                    <input type="date" name="Hotel Opening Date" placeholder="Hotel Opening Date*" class="bg-white medium-input">
+                                                    <input type="date" name="hotelinfo_opening_date" placeholder="Hotel Opening Date*" class="bg-white medium-input">
                                                 </div>
                                                 <div class="col-md-6 col-sm-12 no-padding-left">
                                                     <label>*Street & Number</label>
-                                                    <input type="text" name="Street & Number" placeholder="Street & Number*" class="bg-white medium-input">
+                                                    <input type="text" name="hotelinfo_address" placeholder="Street & Number*" class="bg-white medium-input">
                                                 </div>
                                                 <div class="col-md-6 col-sm-12 no-padding-right">
                                                     <label>*City</label>
-                                                    <input type="text" name="City" placeholder="City*" class="bg-white medium-input">
+                                                    <input type="text" name="hotelinfo_city" placeholder="City*" class="bg-white medium-input">
                                                 </div>
                                                 <div class="col-md-6 col-sm-12 no-padding-left">
                                                     <label>*Country</label>
-                                                    <input type="text" name="Country" placeholder="Country*" class="bg-white medium-input">
+                                                    <input type="text" name="hotelinfo_country" placeholder="Country*" class="bg-white medium-input">
                                                 </div>
                                                 <div class="col-md-6 col-sm-12 no-padding-right">
                                                     <label>*Postal Code</label>
-                                                    <input type="text" name="postal" placeholder="Postal Code*" class="bg-white medium-input">
+                                                    <input type="text" name="hotelinfo_postal" placeholder="Postal Code*" class="bg-white medium-input">
                                                 </div>
                                                 <div class="col-md-12 sm-clear-both no-padding">
                                                     <label>*Hotel Website</label>
-                                                    <input type="text" name="website" placeholder="Hotel Website*" class="bg-white medium-input">
+                                                    <input type="text" name="hotelinfo_website" placeholder="Hotel Website*" class="bg-white medium-input">
                                                 </div>
                                                 <div class="col-md-4 col-sm-12 no-padding-left">
                                                     <label>*Days open for business</label>
-                                                    <input type="text" name="Days open for business" placeholder="Days open for business*" class="bg-white medium-input">
+                                                    <input type="text" name="hotelinfo_daysopen" placeholder="Days open for business*" class="bg-white medium-input">
                                                 </div>
                                                 <div class="col-md-4 col-sm-12">
                                                     <label>Avg. Daily Rate</label>
-                                                    <input type="text" name="Avg. Daily Rate" placeholder="Avg. Daily Rate*" value="EUR" class="bg-white medium-input">
+                                                    <input type="text" name="hotelinfo_avg_daily_rate" placeholder="Avg. Daily Rate*" value="EUR" class="bg-white medium-input">
                                                 </div>
                                                 <div class="col-md-4 col-sm-12 no-padding-right">
                                                     <label>Avg. Occupancy</label>
-                                                    <input type="text" name="Avg. Occupancy" placeholder="Avg. Occupancy*" value="%" class="bg-white medium-input">
+                                                    <input type="text" name="hotelinfo_avg_occupancy" placeholder="Avg. Occupancy*" value="%" class="bg-white medium-input">
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <h5 class="ev-regural-heading text-uppercase margin-20px-bottom font-weight-700 sm-width-100 xs-width-100">Hotel Facilities</h5>
                                                 <div class="col-md-6 col-sm-12 no-padding-left">
                                                     <label>*Number of Rooms</label>
-                                                    <input type="text" name="Number of Rooms" placeholder="Number of Rooms*" class="bg-white medium-input">
+                                                    <input type="text" name="hotelfac_num_rooms" placeholder="Number of Rooms*" class="bg-white medium-input">
                                                 </div>
                                                 <div class="col-md-6 col-sm-12 no-padding-right">
                                                     <label>*Number of Suites</label>
-                                                    <input type="text" name="Number of Suites" placeholder="Number of Suites*" class="bg-white medium-input">
+                                                    <input type="text" name="hotelfac_num_suites" placeholder="Number of Suites*" class="bg-white medium-input">
                                                 </div>
                                                 <div class="row padding-row">
                                                     <div class="col-md-6 col-sm-12 no-padding-left">
                                                         <label>F & B Outlets</label>
-                                                        <select multiple="" class="bg-white medium-input">
+                                                        <select name="hotelfac_fb_outlets" multiple="" class="bg-white medium-input">
                                                             <option value="">-</option>
                                                             <option value="Restaurant">Restaurant</option>
                                                             <option value="Bar">Bar</option>
@@ -505,7 +397,7 @@
                                                     </div>
                                                     <div class="col-md-6 col-sm-12 no-padding-right">
                                                         <label>Guest Facilities</label>
-                                                        <select multiple="" class="bg-white medium-input">
+                                                        <select name="hotelfac_guest_fac" multiple="" class="bg-white medium-input">
                                                             <option value="">-</option>
                                                             <option value="">Gym</option>
                                                             <option value="">Indoor Pool</option>
@@ -517,11 +409,11 @@
                                                 </div>
                                                 <div class="col-md-6 col-sm-12 no-padding-left">
                                                     <label>Meeting Area</label>
-                                                    <input type="text" name="Number of Suites" placeholder="Meeting Area*" value="sqm" class="bg-white medium-input">
+                                                    <input type="text" name="hotelfac_meeting_area" placeholder="Meeting Area*" value="sqm" class="bg-white medium-input">
                                                 </div>
                                                 <div class="col-md-6 col-sm-12 no-padding-right">
                                                     <label>Meeting Facilities</label>
-                                                    <select class="bg-white medium-input">
+                                                    <select name="hotelfac_meeting_fac" class="bg-white medium-input">
                                                         <option>Please select</option>
                                                         <option>YES</option>
                                                         <option>NO</option>
@@ -529,58 +421,58 @@
                                                 </div>
                                                 <div class="col-md-12 sm-clear-both no-padding">
                                                     <label>Comments/Other Facilities</label>
-                                                    <textarea name="comment" id="comment" placeholder="Comments/Other Facilities" rows="5" class="bg-white medium-textarea"></textarea>
+                                                    <textarea name="hotelfac_comments" id="comment" placeholder="Comments/Other Facilities" rows="5" class="bg-white medium-textarea"></textarea>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <h5 class="ev-regural-heading text-uppercase margin-20px-bottom font-weight-700 sm-width-100 xs-width-100">Hotel Description</h5>
                                                 <div class="col-md-6 col-sm-12 no-padding-left">
                                                     <label>*Hotel Concept</label>
-                                                    <textarea name="Concept" id="comment" placeholder="*Hotel Concept" rows="5" class="bg-white medium-textarea"></textarea>
+                                                    <textarea name="hoteldesc_concept" id="comment" placeholder="*Hotel Concept" rows="5" class="bg-white medium-textarea"></textarea>
                                                 </div>
                                                 <div class="col-md-6 col-sm-12 no-padding-right">
                                                     <label>Architecture & Design</label>
-                                                    <textarea name="architecture" id="comment" placeholder="*Architecture & Design" rows="5" class="bg-white medium-textarea"></textarea>
+                                                    <textarea name="hoteldesc_architecture_design" id="comment" placeholder="*Architecture & Design" rows="5" class="bg-white medium-textarea"></textarea>
                                                 </div>
                                                 <div class="col-md-6 col-sm-12 no-padding-left">
                                                     <label>Architect Name</label>
-                                                    <input type="text" name="Architect Name" placeholder="Architect Name" class="bg-white medium-input">
+                                                    <input type="text" name="hoteldesc_architecture_name" placeholder="Architect Name" class="bg-white medium-input">
                                                 </div>
                                                 <div class="col-md-6 col-sm-12 no-padding-right">
                                                     <label>Architect Website</label>
-                                                    <input type="text" name="Architect Website" placeholder="Architect Website" class="bg-white medium-input">
+                                                    <input type="text" name="hoteldesc_architecture_website" placeholder="Architect Website" class="bg-white medium-input">
                                                 </div>
                                                 <div class="col-md-6 col-sm-12 no-padding-left">
                                                     <label>Interior Designer Name</label>
-                                                    <input type="text" name="Interior" placeholder="Interior Designer Name" class="bg-white medium-input">
+                                                    <input type="text" name="hoteldesc_interior_designer_name" placeholder="Interior Designer Name" class="bg-white medium-input">
                                                 </div>
                                                 <div class="col-md-6 col-sm-12 no-padding-right">
                                                     <label>Interior Designer Website</label>
-                                                    <input type="text" name="Designer Website" placeholder="Interior Designer Website" class="bg-white medium-input">
+                                                    <input type="text" name="hoteldesc_interior_designer_website" placeholder="Interior Designer Website" class="bg-white medium-input">
                                                 </div>
                                                 <div class="col-md-6 col-sm-12 no-padding-left">
                                                     <label>Local Integration</label>
-                                                    <textarea name="Integration" id="comment" placeholder="Local Integration" rows="5" class="bg-white medium-textarea"></textarea>
+                                                    <textarea name="hoteldesc_local_integration" id="comment" placeholder="Local Integration" rows="5" class="bg-white medium-textarea"></textarea>
                                                 </div>
                                                 <div class="col-md-6 col-sm-12 no-padding-right">
                                                     <label>Brand</label>
-                                                    <textarea name="Brand" id="comment" placeholder="Brand" rows="5" class="bg-white medium-textarea"></textarea>
+                                                    <textarea name="hoteldesc_brand" id="comment" placeholder="Brand" rows="5" class="bg-white medium-textarea"></textarea>
                                                 </div>
                                                 <div class="col-md-6 col-sm-12 no-padding-left">
                                                     <label>Brand Agency Name</label>
-                                                    <input type="text" name="Agency" placeholder="Brand Agency Name" class="bg-white medium-input">
+                                                    <input type="text" name="hoteldesc_brand_agency_name" placeholder="Brand Agency Name" class="bg-white medium-input">
                                                 </div>
                                                 <div class="col-md-6 col-sm-12 no-padding-right">
                                                     <label>Brand Agency Website</label>
-                                                    <input type="text" name="Agency Website" placeholder="Brand Agency Website" class=" bg-white medium-input">
+                                                    <input type="text" name="hoteldesc_brand_agency_website" placeholder="Brand Agency Website" class=" bg-white medium-input">
                                                 </div>
                                                 <div class="col-md-6 col-sm-12 no-padding-left">
                                                     <label>Brand Linkedin Profile</label>
-                                                    <input type="text" name="Agency" placeholder="Brand Linkedin Profile" class="bg-white medium-input">
+                                                    <input type="text" name="hoteldesc_brand_linkdin_profile" placeholder="Brand Linkedin Profile" class="bg-white medium-input">
                                                 </div>
                                                 <div class="col-md-6 col-sm-12 no-padding-right">
                                                     <label>Brand Instagram Profile</label>
-                                                    <input type="text" placeholder="Brand Instagram Profile" class=" bg-white medium-input">
+                                                    <input type="text" placeholder="Brand Instagram Profile" name="hoteldesc_brand_instagram_profile" class=" bg-white medium-input">
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -588,23 +480,23 @@
                                                 <h6 class="ev-regural-sub-heading text-uppercase margin-20px-bottom font-weight-600 sm-width-100 xs-width-100 border-bottom skcstm">Property Owning Entity:</h6>
                                                 <div class="col-md-12 sm-clear-both no-padding">
                                                     <label>*Entity Name</label>
-                                                    <input type="text" name="Entity" placeholder="Entity Name*" class="bg-white medium-input">
+                                                    <input type="text" name="hotel_contactinfo_name" placeholder="Entity Name*" class="bg-white medium-input">
                                                 </div>
                                                 <div class="col-md-6 col-sm-12 no-padding-left">
                                                     <label>*Street & Number</label>
-                                                    <input type="text" name="Street" placeholder="Street & Number*" class="bg-white medium-input">
+                                                    <input type="text" name="hotel_contactinfo_address" placeholder="Street & Number*" class="bg-white medium-input">
                                                 </div>
                                                 <div class="col-md-6 col-sm-12 no-padding-right">
                                                     <label>*City</label>
-                                                    <input type="text" name="City2" placeholder="City*" class="bg-white medium-input">
+                                                    <input type="text" name="hotel_contactinfo_city" placeholder="City*" class="bg-white medium-input">
                                                 </div>
                                                 <div class="col-md-6 col-sm-12 no-padding-left">
                                                     <label>*Country</label>
-                                                    <input type="text" name="Country2" placeholder="Country*" class="bg-white medium-input">
+                                                    <input type="text" name="hotel_contactinfo_country" placeholder="Country*" class="bg-white medium-input">
                                                 </div>
                                                 <div class="col-md-6 col-sm-12 no-padding-right">
                                                     <label>*Postal Code</label>
-                                                    <input type="text" name="PostalCode" placeholder="Postal Code*" class="bg-white medium-input">
+                                                    <input type="text" name="hotel_contactinfo_postal" placeholder="Postal Code*" class="bg-white medium-input">
                                                 </div>
                                                 <div class="clear"></div>
                                                 <div class="headingmimiform">
@@ -612,36 +504,36 @@
                                                 </div>
                                                 <div class="col-md-6 col-sm-12 no-padding-left">
                                                     <label>*First Name</label>
-                                                    <input type="text" name="firstname" placeholder="First Name*" class="bg-white medium-input">
+                                                    <input type="text" name="hotel_contactprsn_firstname" placeholder="First Name*" class="bg-white medium-input">
                                                 </div>
                                                 <div class="col-md-6 col-sm-12 no-padding-right">
                                                     <label>*Last Name</label>
-                                                    <input type="text" name="lastname" placeholder="Last Name*" class="bg-white medium-input">
+                                                    <input type="text" name="hotel_contactprsn_lastname" placeholder="Last Name*" class="bg-white medium-input">
                                                 </div>
                                                 <div class="col-md-6 col-sm-12 no-padding-left">
                                                     <label>*Company Name</label>
-                                                    <input type="text" name="copnyname" placeholder="Company Name*" class="bg-white medium-input">
+                                                    <input type="text" name="hotel_contactprsn_companyname" placeholder="Company Name*" class="bg-white medium-input">
                                                 </div>
                                                 <div class="col-md-6 col-sm-12 no-padding-right">
                                                     <label>*Job Title</label>
-                                                    <input type="text" name="jobtile" placeholder="Job Title*" class="bg-white medium-input">
+                                                    <input type="text" name="hotel_contactprsn_jobtitle" placeholder="Job Title*" class="bg-white medium-input">
                                                 </div>
                                                 <div class="col-md-12 sm-clear-both no-padding">
                                                     <label>*Email Address</label>
-                                                    <input type="email" name="email" placeholder="Email*" class="bg-white medium-input">
+                                                    <input type="email" name="hotel_contactprsn_email" placeholder="Email*" class="bg-white medium-input">
                                                 </div>
                                                 <div class="col-md-6 col-sm-12 no-padding-left">
                                                     <label>*Phone</label>
-                                                    <input type="text" name="phone" placeholder="Phone*" class="bg-white medium-input">
+                                                    <input type="text" name="hotel_contactprsn_phone" placeholder="Phone*" class="bg-white medium-input">
                                                 </div>
                                                 <div class="col-md-6 col-sm-12 no-padding-right">
                                                     <label>*Mobile</label>
-                                                    <input type="text" name="mobile" placeholder="Mobile*" class="bg-white medium-input">
+                                                    <input type="text" name="hotel_contactprsn_mobile" placeholder="Mobile*" class="bg-white medium-input">
                                                 </div>
                                             </div>
                                             <div class="row fooetr-form">
                                                 <div class="col-md-6 col-sm-12 no-padding-left">
-                                                    <span><input class="checkbox" type="checkbox" name="terms" value="terms">I agree with the <a href="#">Terms and Conditions</a></span>
+                                                    <span><input class="checkbox" type="checkbox" name="hotel_contactprsn_agree" value="1">I agree with the <a href="#">Terms and Conditions</a></span>
                                                 </div>
                                                 <div class="col-md-6 col-sm-12 no-padding-right text-align-right">
                                                     <button id="contact-us-button" type="submit" class="btn btn-white" style="width: 200px">Submit</button>
