@@ -1166,7 +1166,7 @@
 					@if(array_key_exists('0',$relatedproperties))
 						<div class="hotel-next-previous-outer">
 							<div class="previous-btn previous-next-pannel"> 
-                                                            <a href="{{URL::to($relatedproperties[0]->property_slug)}}"><img class="img-responsive next-hotel-arrow" src="{{ asset('sximo/assets/images/editorial-left-arrow.png')}}" alt=""/></a>
+								  <img class="img-responsive next-hotel-arrow" src="{{ asset('sximo/assets/images/editorial-left-arrow.png')}}" alt=""/>
 								<a href="{{URL::to($relatedproperties[0]->property_slug)}}">
 									<div class="next-hotel-show-pannel">
 										<img class="img-responsive" src="{{ URL::to('uploads/property_imgs_thumbs/front_property_'.$relatedproperties[0]->folder_id.'_'.$relatedproperties[0]->file_name)}}" alt="">
