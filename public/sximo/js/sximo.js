@@ -29,7 +29,7 @@ jQuery(document).ready(function($){
       button.appendTo("body");
       
       jQuery(window).scroll(function() {
-        if (jQuery(this).scrollTop() > offset) {
+        if (jQuery(this).scrollTop() > 100) {
             jQuery('.back-to-top').fadeIn(duration);
         } else {
             jQuery('.back-to-top').fadeOut(duration);
@@ -39,6 +39,7 @@ jQuery(document).ready(function($){
       jQuery('.back-to-top').click(function(event) {
           event.preventDefault();
           jQuery('html, body').animate({scrollTop: 0}, duration);
+          
           return false;
       });
 

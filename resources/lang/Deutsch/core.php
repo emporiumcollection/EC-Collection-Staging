@@ -124,6 +124,7 @@ return array(
  "tab_social_destination_menu"			=> "Social Destination Page",
  "tab_popup_menu"			=> "Popup Menu",
  "tab_popup2_menu"			=> "Popup 2 Menu",
+ "tab_business_menu"			=> "Business Menu",
  "sb_reorder"			=> "Menüreihenfolge Speichern",  
  "fr_mtitle"			=> "Name / Titel",  
  "fr_mtype"			=> "Menü Art",  

@@ -37,14 +37,14 @@
     margin: 20px 0 0 0;
 }
 .EVMenu li {
-    height: 20px;
-    margin: 0;
-    padding-bottom: 35px;
-    border: none;
-    display: inline-block;
-    float: left;
-    clear: both;
-    width: 210px;
+	height: 20px;
+	margin: 0;
+	padding-bottom: 62px;
+	border: none;
+	display: inline-block;
+	float: left;
+	clear: both;
+	width: 562px;
 }
 .EVMenu li:hover {
     color:#FFFFFF;
@@ -54,9 +54,14 @@
 	text-decoration: none;
 	color: white;
 	padding: 9px;
-	font-size: 23px;
+	font-size: 50px;
         font-family: ACaslonPro-Regular;
 }
+
+.EVMenu li a:hover {
+	color: #333333;
+}
+
 .EVMenu li.current {
     background-color:#F36F25;
 }
@@ -103,8 +108,12 @@ EVMenu ul li ul li a:hover {
 .EVMenu li:hover .sub-menu
 {
     position: absolute;   
-    margin-top: -27.5px;
-    left:120px;  
+    margin-top: -78.5px;
+    left:170px;
+}
+
+.EVMenu li:hover .sub-menu li a:hover {
+	color: white;
 }
 
 .sub-menu li a
@@ -115,23 +124,22 @@ EVMenu ul li ul li a:hover {
 }
 
 
-.sub-menu li
-{
-    position: relative;
-    display: block;
-    top: 0;
-    left: 100%;
-    width: 50%;
-    min-width: 0px;
-    white-space: nowrap;
-    z-index:1;
-    padding-bottom: 20px;
+.sub-menu li {
+	position: relative;
+	display: block;
+	top: 0;
+	left: 100%;
+	width: 50%;
+	min-width: 0px;
+	white-space: nowrap;
+	z-index: 1;
+	padding-bottom: 45px;
 }
 .sub-menu li a {
 	display: inline-block;
-	padding: 0 115px;
-	font-size: 14px;
-        font-family: Geomanist-Regular;
+	padding: 0 80px;
+	font-size: 30px;
+	font-family: PlayfairDisplay-Regular;
 }
 
 ul.EVMenu li.smallEV a {
@@ -152,14 +160,15 @@ ul.EVMenu li.smallEV {
 .activeEV::before {
 	position: absolute;
 	content: "";
-	height: 1px;
-	width: 25px;
-	background: #ABA07C;
-	top: 17px;
-	left: 80px;
+	height: 2px;
+	width: 37px;
+	background: white;
+	top: 37px;
+	left: 34px;
 	right: 0;
 	bottom: 0;
 }
+
 
 .bar1, .bar2, .bar3 {
     width: 35px;

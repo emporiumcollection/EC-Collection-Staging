@@ -21,6 +21,7 @@ body.fixed {
     width: 0px;
     z-index: 99999;
     display: block !important;
+    background-image: url(../images/emporium-voyage-company-menu.jpg);
 }
 /*.popup-inner {
     background-color: #EBEBEB;
@@ -31,8 +32,8 @@ body.fixed {
 .popup-inner {
     background-color: #ebebeb;
     margin: 0 auto;
-    max-width: 1500px;
-    overflow: auto;
+/*    max-width: 1500px;*/
+    overflow: visible;
     width: 100%;
 }
 .popup-close-btn {
@@ -43,9 +44,10 @@ body.fixed {
     margin-left: calc(99% - 30px);
     margin-top: -11px;
     position: relative;
+    z-index: 999;
 }
 .popup-close-btn:hover, .popup-close-btn:active, .popup-close-btn:focus {
-    color: #5e5e5e;
+    color: #ABA07C;
     text-decoration: none;
 }
 .popup-content {

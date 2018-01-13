@@ -9,12 +9,12 @@ and open the template in the editor.
 */
 .close-btn-align {
 	color: #fff;
-	font-size: 36px;
+	font-size: 40px;
 	position: absolute;
-	right: 4%;
+	right: 1%;
 	top: 0px;
 	z-index: 99;
-	color: #c7ab84;
+	color: #ABA07C;
 }
 .open-show_more-html a {
 	right: 1%;
@@ -82,7 +82,7 @@ body.show_more-page-opend {
     position: relative;
 }
 .hotel-book-price {
-    background: #c7ab84;
+    background: #ABA07C;
     color: #252525;
     font-size: 25px;
     height: 71px;

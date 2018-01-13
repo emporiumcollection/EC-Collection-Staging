@@ -31,6 +31,7 @@
 
         <link href="{{ asset('sximo/assets/css/slick.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/slick-theme.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('sximo/assets/css/Hamburg-menu.css')}}" rel="stylesheet" type="text/css"/>
 
         <link href="{{ asset('sximo/assets/css/theme.css')}}" rel="stylesheet" type="text/css" media="all">
         <script type="text/javascript" src="{{ asset('sximo/assets/js/jquery2.js')}}"></script>
@@ -90,6 +91,55 @@
         </script>
         @endif
         <style>
+            
+            /* hamburg menu pop up css */
+
+            .EVhamburgService {
+                padding: 19px;
+            }
+
+            .EVpopService {
+                width: 100%;
+                top: 0px;
+                background: transparent;
+            }
+
+            .EVcenterPOP {
+                border: none;
+                display: table-footer-group;
+                margin: 0;
+            }
+            
+            .block-content.content {
+                width: 35px;
+                float: right;
+                height: 55px;
+            }
+            
+                        
+            .CustomTopbarwidth {
+                width: 5.333%;
+            }
+            
+            .detailfaLock {
+                margin-right: 50px;
+            }
+            
+            .block-content.content span:nth-child(1) {
+                top: 12px;
+                left: 57%;
+            }
+            .block-content.content span:nth-child(2) {
+                top: 19px;
+                left: 57%;
+            }
+            .block-content.content span:nth-child(3) {
+                top: 27px;
+                left: 57%;
+            }
+            
+            /* hamburg menu css */
+            
             /* Active filter */
             #maindestinations .node-btn.active {
                 border-bottom: 1px solid #fff;
@@ -413,11 +463,11 @@
             z-index: 1028;
     }
         .contact-aside {
-	border-radius: 2px;
+	border-radius: 0px;
 	transition: .5s;
 	position: fixed;
-	top: 228px;
-	left: calc(100% - 43px);
+	top: 192px;
+	left: calc(100% - 62px);
 	width: 340px;
 	background: #272727;
 	color: #fff;
@@ -429,12 +479,14 @@
             list-style: none;
         }
         .contact-aside li {
-	padding: 6px 0px 6px 9px;
-	margin: 0px 0px 1px 0px;
+            padding: 6px 0px 6px 25px;
+            margin: 0px 0px 1px 0px;
         }
         .contact-aside li a {
-            margin-left: 0;
+	margin-left: 0px;
+	font-size: 13px;
         }
+       
         .contact-aside [class*="icon-"] {
             display: inline-block;
             width: 24px;
@@ -458,56 +510,61 @@
         .asideIclass {
             float: left;
             margin-top: 3px;
-            margin-right: 13px;
+            margin-right: 25px;
             margin-left: 8px;
             color: #ABA07C;
         }
-        
+        .contact-aside li a i {
+            margin-right: 25px;
+        }
+
         .emporium-voyage-Menu {
-	color: #c7ab84;
-	margin-top: 3px;
-	margin-left: 30px;
-	opacity: 1;
-	box-shadow: none;
-	font-size: 20px;
-    }
-    
-    #block-system-main-menu .block-inner {
-    background: rgba(37, 37, 37, 0.9);
-    }
-    
-    .close {
-	font-size: 21px;
-	font-weight: 700;
-	line-height: 1;
-	color: #000;
-	text-shadow:0px;
-	opacity: 1;
-    }
-    header {
-	position: fixed;
-	top: 64px;
-	z-index: 9999;
-	right: 0;
-	left: 95.20%;
-    }
-    
-    /* go back buttons */
-    
-    .show-login-forms-btn {
-	display: inline-block;
-	padding: 0px 0px;
-	text-align: center;
-	vertical-align: text-top;
-	width: 0%;
-    }
-    .post-filter-inputs:hover, .post-filter-inputs:active, .post-filter-inputs:focus {
-	background-color: #DADAD5;
-	border-left: 4px solid #a1a39c;
-	color: white !important;
-	transition: all 0.3s ease 0s;
-    }
-    
+            color: #c7ab84;
+            margin-top: 3px;
+            margin-left: 30px;
+            opacity: 1;
+            box-shadow: none;
+            font-size: 20px;
+        }
+
+        #block-system-main-menu .block-inner {
+            background: rgba(37, 37, 37, 0.9);
+        }
+
+        .close {
+            font-size: 21px;
+            font-weight: 700;
+            line-height: 1;
+            color: #000;
+            text-shadow:0px;
+            opacity: 1;
+        }
+        header {
+            position: fixed;
+            top: 67px;
+            z-index: 9999;
+            right: 0;
+            /*	left: 95.20%;*/
+            width: 62px;
+        }
+
+        /* go back buttons */
+
+        .show-login-forms-btn {
+            display: inline-block;
+            padding: 0px 0px;
+            text-align: center;
+            margin-top: 7px;
+            vertical-align: text-top;
+            width: 0%;
+        }
+        .post-filter-inputs:hover, .post-filter-inputs:active, .post-filter-inputs:focus {
+            background-color: #DADAD5;
+            border-left: 4px solid #a1a39c;
+            color: white !important;
+            transition: all 0.3s ease 0s;
+        }
+
         
          /* sidebar css */
         </style>
@@ -543,7 +600,7 @@
 													</div>
 					</div>-->
 				</div>
-                											<div class="hotel-next-previous-outer">
+<!--                											<div class="hotel-next-previous-outer">
 							<div class="previous-btn previous-next-pannel"> 
 								  <img class="img-responsive next-hotel-arrow" src="http://www.emporium-voyage.com/sximo/assets/images/editorial-left-arrow.png" alt="">
 								<a href="http://www.emporium-voyage.com/standart-hotel-moscow">
@@ -568,7 +625,7 @@
 									</div>
 								</a>
 							</div>
-						</div>  
+						</div>  -->
                         <!-- back and lock buttton end -->
                         
                          <!-- start sidebar -->
@@ -799,28 +856,113 @@
                             </div>
                         </div>
                             
-                            <!--New Login Pop Up Start Here-->
+        <!--Register Pop Up Start Here main-->
+        <div id="register-popup" class="popup personlized-service-pop-up-outer">
+            <div class="popup-inner personlized-service-pop-up">
+                <a href="#" class="popup-close-btn personlized-service-pop-up-close-btn">&times;</a>
+                <div class="popup-content personlized-service-content">
+                    <div class="popup-form-center">
+                        <div class="form-tittle">
+                            <h3>JohnnyShares - Sharing & Collaboration Platform</h3>
+                        </div> 
+                        <div class="form-content clearfix">
+                            <div class="form-logo">
+                                <img class="img-responsive" src="{{ asset('sximo/assets/images/logo-design_1.png')}}" alt="Design Locations">
+                            </div>
+                            <div>
+                                <ul class="navigation-tabs">
+                                    <li><a href="#" class="active" id="sign-in-form-link">Sign in</a></li>
+                                    <li><a href="#" id="forgot-password-link">Forgot Password</a></li>
+                                    <li><a href="#" id="register-form-link">Register</a></li>
+                                </ul>
+                            </div>
+                            <div class="input-fileds">
+                                <form  id="login-form" role="form" style="display: none;">
+                                    <div class="form-group">
+                                        <label>Email Address</label>
+                                        <input type="text" name="email_address" placeholder="Email Address" class="form-control">
+                                        <i class="fa fa-user input-fa" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Password</label>
+                                        <input placeholder="Password" type="Password" name="password"  class="form-control">
+                                        <i class="fa fa-lock input-fa" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="form-group">
+                                        <label> Remember Me ? </label>
+                                        <input class="remember-me-checkbox" name="remember" value="1" type="checkbox">
+                                        <i class="fa fa-lock input-fa remember-me-fa" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Language</label>
+                                        <select class="form-control" name="language">
+                                            <option value="Deutsch"> Deutsch</option>
+                                            <option value="en"> English</option>
+                                        </select>
+                                    </div>
+                                    <button class="btn btn-info form-sign-in-btn btn-sm btn-block" type="submit">Sign In</button>
+                                </form>
+                                <form id="register-form" role="form" style="display: block;">
+                                    <div class="form-group">
+                                        <label>Name</label>
+                                        <input type="text" name="user_name" placeholder="Name" class="form-control">
+                                        <i class="fa fa-user input-fa" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Email Address</label>
+                                        <input type="text" name="email_address" placeholder="Email Address" class="form-control">
+                                        <i class="fa fa-user input-fa" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Password</label>
+                                        <input placeholder="Password" type="Password" name="password"  class="form-control">
+                                        <i class="fa fa-lock input-fa" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Confirm Password</label>
+                                        <input placeholder="Confirm Password" type="Password" name="password"  class="form-control">
+                                        <i class="fa fa-lock input-fa" aria-hidden="true"></i>
+                                    </div>
+                                    <button class="btn btn-info form-sign-in-btn btn-sm btn-block" type="submit">Sign Up</button>
+                                </form>
+                                <form id="forgot-password" role="form" style="display: none;">
+                                    <div class="form-group">
+                                        <label>Email Address</label>
+                                        <input type="text" name="email_address" placeholder="Email Address" class="form-control">
+                                        <i class="fa fa-user input-fa" aria-hidden="true"></i>
+                                    </div>
+                                    <button class="btn btn-info form-sign-in-btn btn-sm btn-block" type="submit">Recover Account</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        <!--Register Pop Up End Here main-->
+        <!--New Login Pop Up Start Here main-->
         <div id="login-forms-popup" class="popup login-form-pop-main-align">
              <div class="popup-inner">
                  <a href="#" class="popup-close-btn">&times;</a>
                  <div class="popup-content">
                      <div class="content-area">
-                         <a class="dl-pop-logo-align" href="#"><img class="img-responsive" src="{{ asset('sximo/assets/images/design-location-logo.png')}}"></a>
+<!--                         <a class="dl-pop-logo-align" href="#"><img class="img-responsive" src="{{ asset('sximo/assets/images/design-location-logo.png')}}"></a>-->
                      </div>
                      <!--Login Forms Start Here-->
                      <div class="landing-page-lock-login-btn-outer-align">
-                         <div class="login-form-show-hide">
+                         <div class="login-form-show-hide" style="display:block;">
                              <div class="login-sign-up-sidebar-outer-align">
                                  <div class="your-account-heading-align">
                                      <div class="ps-login-signup-form-top-bar">
-                                         <div class="col-md-6 col-sm-6">
+<!--                                         <div class="col-md-6 col-sm-6">
                                              <div class="row">
                                                  <div class="ps-forms-cross-icons">
                                                      <a class="show-account-with-us ps-forms-small-heading-link" href="javascript:void(0)">&times;</a>
                                                  </div>
                                              </div>
-                                         </div>
-                                         <div class="col-md-6 col-sm-6">
+                                         </div>-->
+                                         <div class="col-md-12 col-sm-6">
                                              <div class="row">
                                                  <div class="right-need-help-icon">
                                                      <a class="ps-forms-small-heading-link" href="#">Need Help?</a>
@@ -828,6 +970,15 @@
                                              </div>
                                          </div>
                                      </div>
+                                     <div class="ps-login-signup-form-top-bar1">
+                                        <div class="col-md-12 col-sm-6">
+                                           <div class="row">
+                                               <div class="ps-forms-cross-icons">
+                                                   <a class="show-account-with-us ps-forms-small-heading-link" href="javascript:void(0)">&times;</a>
+                                               </div>
+                                           </div>
+                                       </div>
+                                    </div>
                                      <div class="clearfix"></div>
                                      <div class="ps-form-main-pannel">
                                          <div class="ps-form-heading-outer-align">
@@ -849,7 +1000,7 @@
                                      </div>
                                  </div>
                                  <div class="ps-login-sign-up-image">
-                                     <img class="img-responsive" src="{{ asset('sximo/assets/images/Step.jpg')}}" alt=""/>
+                                     <img class="img-responsive" src="{{ asset('sximo/assets/images/angel-fernandez-alonso-220762.jpg')}}" alt=""/>
                                  </div>
                              </div>
                          </div>
@@ -858,14 +1009,14 @@
                              <div class="login-sign-up-sidebar-outer-align">
                                  <div class="your-account-heading-align">
                                      <div class="ps-login-signup-form-top-bar">
-                                         <div class="col-md-6 col-sm-6">
+<!--                                         <div class="col-md-6 col-sm-6">
                                              <div class="row">
                                                  <div class="ps-forms-cross-icons">
                                                      <a class="show-account-with-us ps-forms-small-heading-link" href="javascript:void(0)">&times;</a>
                                                  </div>
                                              </div>
-                                         </div>
-                                         <div class="col-md-6 col-sm-6">
+                                         </div>-->
+                                         <div class="col-md-12 col-sm-6">
                                              <div class="row">
                                                  <div class="right-need-help-icon">
                                                      <a class="ps-forms-small-heading-link" href="#">Need Help?</a>
@@ -873,6 +1024,15 @@
                                              </div>
                                          </div>
                                      </div>
+                                     <div class="ps-login-signup-form-top-bar1">
+                                        <div class="col-md-12 col-sm-6">
+                                           <div class="row">
+                                               <div class="ps-forms-cross-icons">
+                                                   <a class="show-account-with-us ps-forms-small-heading-link" href="javascript:void(0)">&times;</a>
+                                               </div>
+                                           </div>
+                                       </div>
+                                    </div>
                                      <div class="clearfix"></div>
                                      <div class="ps-form-main-pannel">
                                          <div class="ps-form-heading-outer-align">
@@ -891,7 +1051,7 @@
                                      </div>
                                  </div>
                                  <div class="ps-login-sign-up-image">
-                                     <img class="img-responsive" src="{{ asset('sximo/assets/images/Step.jpg')}}" alt=""/>
+                                     <img class="img-responsive" src="{{ asset('sximo/assets/images/Kootenay Aurora 1-X3.jpg')}}" alt=""/>
                                  </div>
                              </div>
                          </div>
@@ -900,17 +1060,26 @@
                              <div class="login-sign-up-sidebar-outer-align">
                                  <div class="your-account-heading-align">
                                      <div class="ps-login-signup-form-top-bar">
-                                         <div class="col-md-6 col-sm-6">
+<!--                                         <div class="col-md-6 col-sm-6">
                                              <div class="row">
-                                                 <div class="ps-forms-cross-icons">
+                                                 <div class="ps-forms-cross-icons1">
                                                      <a class="show-account-with-us  ps-forms-small-heading-link" href="javascript:void(0)">&times;</a>
                                                  </div>
                                              </div>
-                                         </div>
-                                         <div class="col-md-6 col-sm-6">
+                                         </div>-->
+                                         <div class="col-md-12 col-sm-6">
                                              <div class="row">
                                                  <div class="right-need-help-icon">
                                                      <a class="ps-forms-small-heading-link" href="#">Need Help?</a>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </div>
+                                     <div class="ps-login-signup-form-top-bar1">
+                                        <div class="col-md-12 col-sm-6">
+                                             <div class="row">
+                                                 <div class="ps-forms-cross-icons">
+                                                     <a class="show-account-with-us  ps-forms-small-heading-link" href="javascript:void(0)">&times;</a>
                                                  </div>
                                              </div>
                                          </div>
@@ -935,13 +1104,13 @@
                                      </div>
                                  </div>
                                  <div class="ps-login-sign-up-image">
-                                     <img class="img-responsive" src="{{ asset('sximo/assets/images/Step.jpg')}}" alt=""/>
+                                     <img class="img-responsive" src="{{ asset('sximo/assets/images/matthew-kane-365718.jpg')}}" alt=""/>
                                  </div>
                              </div>
                          </div>
                          <div class="clearfix"></div>
                          <div class="">
-                             <div class="login-sign-up-sidebar-outer-align account-with-us-show-hide">
+                             <div class="login-sign-up-sidebar-outer-align account-with-us-show-hide" style="display:none;">
                                  <div class="your-account-heading-align">
                                      <h2>Your Account With Us</h2>
                                  </div>
@@ -972,7 +1141,7 @@
                  </div>
              </div>
          </div>
-        <!--New Login Pop Up End Here-->
+        <!--New Login Pop Up End Here main-->
                             
                     </header>
                     <div class="filter-page-main-align">
@@ -1040,14 +1209,23 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-1">
+                                                <div class="col-md-1 CustomTopbarwidth">
                                                     <div class="row">
                                                         <div class="form-group padding-right-12">
                                                             <button class="top-booking-bar-btn" type="submit">Search</button>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                 <a data-popup-id="login-forms-popup" href="#" class="video-popup-btn login_popup show-login-forms-btn"><i class="fa fa-lock " aria-hidden="true"></i></a>
+                                                 <div class="col-md-1">
+                                                    <a data-popup-id="login-forms-popup" href="#" class="video-popup-btn login_popup show-login-forms-btn"><i class="fa fa-lock detailfaLock" aria-hidden="true" ></i></a>
+                                                    <a data-popup-id="ev-primary-navigation" href="#" class="video-popup-btn"><!--<i class="fa fa-bars hamburgMenu" aria-hidden="true"></i>-->
+                                                        <div class="block-content content">
+                                                            <span></span>
+                                                            <span> </span>
+                                                            <span></span>
+                                                        </div>
+                                                    </a>
+                                                 </div>
                                             </form>
                                         </div>
                                         <!-- AIC Harman email phone sidebar add start -->
@@ -1055,8 +1233,8 @@
                                         <aside class="site-aside">
                                             <div class="contact-aside">
                                                 <ul class="contact-aside-list">
-                                                    <li class="contact-list-item contact-phone"><a href="tel:+49 172 8937230"><i class="fa fa-phone asideIclass" aria-hidden="true"></i> +49 172 8937230</a></li>
-                                                    <li class="contact-list-item contact-email"><a href="mailto:bookings@emporium-voyage.com"><i class="fa fa-envelope asideIclass" aria-hidden="true"></i> bookings@emporium-voyage.com</a></li>
+                                                    <li class="contact-list-item contact-phone"><a href="#"><i class="fa fa-phone asideIclass" aria-hidden="true"></i> +1 934 451 1317</a></li>
+                                                    <li class="contact-list-item contact-email"><a href="#"><i class="fa fa-envelope asideIclass" aria-hidden="true"></i> riaan@emporium-voyage.com</a></li>
                                                 </ul>
                                             </div>
                                         </aside>
@@ -1163,9 +1341,9 @@
 									</div>
 								</div>
                                 <!--Main Page Start here--><div class="col-md-12 col-sm-12 col-xs-12 ">
-                                    <div class="row" style="{{ ($ttlcount==0)?'padding:100px 0 0;text-align: center;':'padding:10px 0 0;text-align: center;'}}">
+                                    <div class="row" style="{{ ($total_record==0)?'padding:100px 0 0;text-align: center;':'padding:10px 0 0;text-align: center;'}}">
                                         <div class="locator clear">
-                                            <p class="searchcount"> {{$ttlcount}} Hotel(s) Found for {{$keyword}} </p>
+                                            <p class="searchcount"> {{$total_record}} Hotel(s) Found for {{$keyword}} </p>
                                         </div>
                                     </div>
 
@@ -1276,78 +1454,88 @@
                                                 <div class="wrapperforliineedforlightboxremoval">
                                                     <div class="cat_product_medium1">
                                                         <div class="ai-grid-page-node-pic-box pictureBox gridPicture grid-box-main">
-                                                            @if($props['data']->price!='')
-                                                            <?php /*<a class="textButton arrowButton MrgTop5 ai-filter-hotel-price-style" rel="{{$props['data']->id}}" href="{{URL::to($props['data']->property_slug)}}">
-                                                                From EUR {{$props['data']->price}} / night 
+                                                            @if($props->price!='')
+                                                            <?php /*<a class="textButton arrowButton MrgTop5 ai-filter-hotel-price-style" rel="{{$props->id}}" href="{{URL::to($props->property_slug)}}">
+                                                                From EUR {{$props->price}} / night 
                                                             </a> */ ?>
                                                             @endif
-                                                            @if(array_key_exists('image', $props))
-                                                                @if($props['data']->editor_choice_property=='1')
+                                                            <?php $images = CustomQuery::getPropertyImages($props->id);
+
+                                                             ?>
+                                                            @if(!empty($images) && count($images)>0)
+
+                                                                <?php 
+                                                                $propsImageFolderId = '';
+                                                                $propsImageFileName = '';
+                                                                if(isset($images[0])){
+                                                                    
+                                                                    $propsImageFolderId = $images[0]->folder_id;
+                                                                    $propsImageFileName = $images[0]->file_name;
+                                                                }
+                                                                ?>
+                                                                @if($props->editor_choice_property=='1')
                                                                     <img alt="editor_choice_property" class="propovericons" src="{{URL::to('sximo/images/editors-choice.png')}}">
-                                                                @elseif($props['data']->feature_property=='1')
+                                                                @elseif($props->feature_property=='1')
                                                                     <img alt="editor_choice_property" class="propovericons" src="{{URL::to('sximo/images/featured-property.png')}}">
                                                                 @endif
                
-                                                                <a title="{{$props['data']->property_name}}" class="picture_link-" href="{{URL::to($props['data']->property_slug)}}" rel="{{$props['data']->id}}">
+                                                                <a title="{{$props->property_name}}" class="picture_link-" href="{{URL::to($props->property_slug)}}" rel="{{$props->id}}">
                                                                     <div class="overlay-text-frezeed">
-                                                                        <h2 class="yacts-tittle-text">{{ $props['data']->property_name}}</h2>
-                                                                        <p class="yacths-des-text yacths-des-text-align"><span>&euro;<?php echo $props['data']->price; ?> </span>|<span>37.7mm</span>|<span>10 Guests</span></p>
+                                                                        <h2 class="yacts-tittle-text">{{ $props->property_name}}</h2>
+                                                                        <p class="yacths-des-text yacths-des-text-align"><span>&euro;<?php echo $props->price; ?> </span>|<span>37.7mm</span>|<span>10 Guests</span></p>
                                                                     </div>
                                                                     <div class="overlay-text hotel-overlay-text">
-                                                                        <h2 class="yacts-tittle-text">{{ $props['data']->property_name}}</h2>
-                                                                        <p class="yacths-des-text yacths-des-text-align"><span>From &euro;{{ $props['data']->price}} </span>
-                                                                        <span>      {{(isset($props['data']->category_name))? '| '.$props['data']->category_name : ''}}</span></p>
+                                                                        <h2 class="yacts-tittle-text">{{ $props->property_name}}</h2>
+                                                                        <p class="yacths-des-text yacths-des-text-align"><span>From &euro;{{ $props->price}} </span>
+                                                                        <span>      {{(isset($props->category_name))? '| '.$props->category_name : ''}}</span></p>
                                                                     </div>
                                                                     <div class="overlay-text yacts-overlay-text">
-                                                                        <h2 class="yacts-tittle-text">{{ $props['data']->property_name }}</h2>
-                                                                        <p class="yacths-des-text yacths-des-text-align"><span>&euro;{{ $props['data']->price}} </span>|<span>37.7mm</span>|<span>10 Guests</span></p>
+                                                                        <h2 class="yacts-tittle-text">{{ $props->property_name }}</h2>
+                                                                        <p class="yacths-des-text yacths-des-text-align"><span>&euro;{{ $props->price}} </span>|<span>37.7mm</span>|<span>10 Guests</span></p>
                                                                         <p class="yacths-des-text">2015H</p>
                                                                     </div>
-                                                                    <img alt="{{ $props['image']->file_name }}" src="{{ URL::to('uploads/property_imgs_thumbs/front_property_'.$props['image']->folder_id.'_'.$props['image']->file_name)}}" class="img-responsive">
+                                                                    <img alt="{{ $propsImageFileName }}" src="{{ URL::to('uploads/property_imgs_thumbs/front_property_'.$propsImageFolderId.'_'.$propsImageFileName)}}" class="img-responsive">
                                                                 </a>
                                                             @else
-                                                            <a class="picture_link detail_view-" rel="{{$props['data']->id}}" href="{{URL::to($props['data']->property_slug)}}">
+                                                            <a class="picture_link detail_view-" rel="{{$props->id}}" href="{{URL::to($props->property_slug)}}">
+                                                                <div class="overlay-text-frezeed">
+                                                                    <h2 class="yacts-tittle-text">{{ $props->property_name}}</h2>
+                                                                    <p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>
+                                                                </div>
+                                                                <div class="overlay-text hotel-overlay-text">
+                                                                    <h2 class="yacts-tittle-text">{{ $props->property_name }}</h2>
+                                                                    <p class="yacths-des-text yacths-des-text-align"><span>From &euro;{{ $props->price}} </span>|<span>New York</span></p>
+                                                                </div>
+                                                                <div class="overlay-text yacts-overlay-text">
+                                                                    <h2 class="yacts-tittle-text">{{ $props->property_name }}</h2>
+                                                                    <p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>
+                                                                    <p class="yacths-des-text">2015H</p>
+                                                                </div>
                                                                 <img class="img-responsive" src="{{URL::to('sximo/assets/images/img-1.jpg')}}" alt="">
                                                             </a>
-
-                                                            <div class="overlay-text-frezeed">
-                                                                <h2 class="yacts-tittle-text">{{ $props['data']->property_name}}</h2>
-                                                                <p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>
-                                                            </div>
-                                                            <div class="overlay-text hotel-overlay-text">
-                                                                <h2 class="yacts-tittle-text">{{ $props['data']->property_name }}</h2>
-                                                                <p class="yacths-des-text yacths-des-text-align"><span>From &euro;{{ $props['data']->price}} </span>|<span>New York</span></p>
-                                                            </div>
-                                                            <div class="overlay-text yacts-overlay-text">
-                                                                <h2 class="yacts-tittle-text">{{ $props['data']->property_name }}</h2>
-                                                                <p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>
-                                                                <p class="yacths-des-text">2015H</p>
-                                                            </div>
-                                                        <img class="img-responsive" src="{{URL::to('sximo/assets/images/img-1.jpg')}}" alt="">-->
-                                                            
                                                             @endif
                                                         </div>
                                                         <div class="listDetails">
                                                             <div class="photographBox ai-grid-tiitles">
                                                                 <h2>
-                                                                    <a title="{{$props['data']->property_name}}" class="photograph FltLft ai-filtreted-hotel-name" rel="{{$props['data']->id}}" href="{{URL::to($props['data']->property_slug)}}">
-                                                                        {{$props['data']->property_name}}
+                                                                    <a title="{{$props->property_name}}" class="photograph FltLft ai-filtreted-hotel-name" rel="{{$props->id}}" href="{{URL::to($props->property_slug)}}">
+                                                                        {{$props->property_name}}
                                                                     </a>
                                                                     <span class="FltRgt">
-                                                                        <!--i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" @if(array_key_exists('image', $props)) onclick="add_to_lightbox({{$props['image']->file_id}}, {{$props['data']->id}});" @endif ></i-->
+                                                                        <!--i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" @if(array_key_exists('image', $props)) onclick="add_to_lightbox({{$props['image']->file_id}}, {{$props->id}});" @endif ></i-->
 
-                                                                       <a class="carticon" href="javascript:void(0)" onclick="submitgridbookform('{{$props['data']->property_slug}}#*{{$props['data']->id}}');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>
+                                                                       <a class="carticon" href="javascript:void(0)" onclick="submitgridbookform('{{$props->property_slug}}#*{{$props->id}}');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>
                                                                     </span>
                                                                 </h2>
 
                                                             </div>
 
                                                             <div class="entire_story MrgTop5 ai-view-hotels-tittle">
-                                                                <a class="textButton arrowButton detail_view MrgTop5" rel="{{$props['data']->id}}" href="#">
+                                                                <a class="textButton arrowButton detail_view MrgTop5" rel="{{$props->id}}" href="#">
                                                                     Quick View 
                                                                 </a>
 
-                                                                <a class="textButton arrowButton MrgTop5" rel="{{$props['data']->id}}" href="{{URL::to($props['data']->property_slug)}}">
+                                                                <a class="textButton arrowButton MrgTop5" rel="{{$props->id}}" href="{{URL::to($props->property_slug)}}">
                                                                     Detail View 
                                                                 </a>
                                                             </div>
@@ -1370,15 +1558,15 @@
                                             {{--*/ $rw++ /*--}}
                                             {{--*/ $node_no++ /*--}}
                                             @endforeach
-                                            {{--*/ $totpage = $propertiesArr->appends($pager)->lastPage(); $newpage = $currentPage + 2; $prevnewpage = $newpage - 2; /*--}}
+                                           
                                             @endif 
                                             
                                     </div>
 									</div>
                                     <div id="loaderProperty"></div>
                                     <div id="brgrid"></div>
-                                    <input type="hidden" id="nxtpg" value="{{$newpage}}">
-                                    <input type="hidden" id="ttlpg" value="{{$totpage}}">
+                                    <input type="hidden" id="nxtpg" value="{{--$newpage--}}">
+                                    <input type="hidden" id="ttlpg" value="{{--$totpage--}}">
                                 </div>
 
                             </div>
@@ -1386,6 +1574,89 @@
                         </div>
 
                     </div>
+                    
+                    <!-- my popup hamburg menu -->
+        <div id="ev-primary-navigation" class="popup personlized-service-pop-up-outer">
+            <div class="popup-inner personlized-service-pop-up EVpopService">
+                <a href="#" class="popup-close-btn personlized-service-pop-up-close-btn">&times;</a>
+                <div class="popup-content personlized-service-content EVhamburgService">
+                    <!-- code here-->
+                    <div class="col-md-12">
+			<div id="" class="">
+				<div class="popup-inner personlized-service-pop-up EVpopService">
+					<!--<a href="#" class="popup-close-btn personlized-service-pop-up-close-btn">&times;</a>-->
+					<div class="popup-content personlized-service-content">
+						<div class="popup-form-center EVcenterPOP">
+							<ul class="EVMenu">
+								<li><a href="#">Sleep</a>
+									<ul class="sub-menu">
+										<li><a class="activeEV" href="#">Suite Présidentielle</a></li>
+										<li><a href="#">Suite Terrasse</a></li>
+										<li><a href="#">Top Of Five</a></li>
+										<li><a href="#">Suites So Suite</a></li>
+										<li><a href="#">Junior Suites</a></li>
+										<li><a href="#">Chambres</a></li>
+										<li><a href="#">Executive</a></li>
+										<li><a href="#">Chambres Deluxe</a></li>
+										<li><a href="#">Services</a></li>
+									</ul>
+								</li>
+								<li><a href="#">Savour</a>
+									<ul class="sub-menu">
+										<li><a class="activeEV" href="#">Le Roof</a></li>
+										<li><a href="#">Le Bar</a></li>
+										<li><a href="#">Le Brunch</a></li>
+									</ul>
+								</li>
+								<li><a href="#">Relax</a>
+									<ul class="sub-menu">
+										<li><a class="activeEV" href="#">Spa</a></li>
+										<li><a href="#">Terrasse piscine</a></li>
+										<li><a href="#">Plage privée</a></li>
+									</ul>
+								</li>
+								<li><a href="#">Discover</a>
+									<ul class="sub-menu">
+										<li><a class="activeEV" href="#">Cannes</a></li>
+										<li><a href="#">Activités</a></li>
+									</ul>
+								</li>
+								<li><a href="#">News</a>
+								</li>
+								<li><a href="#">Offers</a>
+									<ul class="sub-menu">
+										<li><a class="activeEV" href="#">Offers Sleep</a></li>
+										<li><a href="#">Offers Relax</a></li>
+									</ul>
+								</li>
+								<li><a href="#">Gift box</a>
+								</li>
+                                                                <li><a href="#">Events</a>
+								</li>
+                                                                <li class="smallEV"><a href="#">CarriÃ¨res</a>
+								</li>
+                                                                <li class="smallEV"><a href="#">Plan & AccÃ¨s</a>
+								</li>
+                                                                <li class="smallEV"><a href="#">Mentions lÃ©gales</a>
+								</li>
+                                                                <li class="smallEV"><a href="#">Green Globe</a>
+								</li>
+							</ul>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+			</div>
+		 </div>
+                    <!-- code here-->
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        <!--my popup hamburg menu End Here-->
+                    
+                    <input class="ai_page_counter" value="2" type="hidden" />
+                    <input class="ai_total_pages" value="{{$total_pages}}" type="hidden" />
                     <input class="ai_search_keywords" value="{{$keyword}}" type="hidden" />
                     <input class="ai-arrive-date-filter" value="<?php echo (isset($_REQUEST['arrive'])) ? date('d-m-Y', strtotime($_REQUEST['arrive'])) : date("d-m-Y"); ?>" type="hidden" />
                     <input class="ai-depart-date-filter" value="<?php echo (isset($_REQUEST['destination'])) ? date('d-m-Y', strtotime($_REQUEST['destination'])) : date("d-m-Y", strtotime("+ 1 day")); ?>" type="hidden" />
@@ -1419,30 +1690,7 @@ $(document).ready(function(){
 
 
 
-    /*$(window).scroll(function () {
-        var minScrollTime = 4000;
-        var now = new Date().getTime();
-        var totlpgs = $('#ttlpg').val();
-        var nxtpg = $('#nxtpg').val();
-        if ( + nxtpg <= + totlpgs) {
-            if (!scrollTimer) {
-            var element_position = $('#brgrid').offset().top + $('#brgrid').outerHeight() - window.innerHeight;
-            var y_scroll_pos = $(window).scrollTop() + 100;
-            if ((y_scroll_pos >= element_position)) {
-            var it_scroll = true;
-            scrollDownloadData(it_scroll);
-            //console.log(y_scroll_pos + ' / ' +element_position);
-            }
-            scrollTimer = setTimeout(function() {
-            scrollTimer = null;
-            lastScrollFireTime = new Date().getTime();
-            var it_scroll = true;
-            scrollDownloadData(it_scroll);
-            //console.log(y_scroll_pos + ' / ' +element_position);
-            }, minScrollTime);
-            }
-        }
-    });*/
+
 });
 
 
@@ -1450,9 +1698,11 @@ $(document).ready(function(){
 function scrollDataAjax(it_scroll,pageCounter)
 {
     if($(".ai-scrollDownloadData-filter-running").val() == "1") {
-        //return;
+        return;
     }
     
+    console.log('Ajax Hit '  + $(".ai_page_counter").val());
+    $(".ai_page_counter").val( (+($(".ai_page_counter").val()) + 1).toString() );
     $(".ai-scrollDownloadData-filter-running").val("1");
     var nxtpg = pageCounter;
     var offSet = 12, isPreviousEventComplete = true, isDataAvailable = true;
@@ -1478,24 +1728,26 @@ function scrollDataAjax(it_scroll,pageCounter)
         data: 's=' + $(".ai_search_keywords").val() + '&arrive=' + $(".ai-arrive-date-filter").val() + '&destination=' + $(".ai-depart-date-filter").val() + '&page=' + nxtpg + queryStrng + "&filter_min_price=" + $("#filter_min_price").val() + "&filter_max_price=" + $("#filter_max_price").val() + "&current_filter=" + $(".ai-current-filter").val(),
         dataType: "json",
         complete: function (jqXHR, textStatus ) {
+            $(".ai-scrollDownloadData-filter-running").val("0");
             // $('#nxtpg').val(parseInt(nxtpg) + 1);
         },
         success: function(data){
             
-            $(".ai-scrollDownloadData-filter-running").val("0");
             $('#loaderProperty').hide();
                 var html = chtml = '';
                 if (data.status == 'error'){
                     if (it_scroll == false){
                         $('#listproperties').html(data.errors);
                     }else{
-                        $('#listproperties').append(data.errors);
+                       //$('#listproperties').append(data.errors);
                     }
                         isDataAvailable = false;
                     }else{
                         if(data.searchdestname != undefined) {
                             $(".ai_search_keywords").val(data.searchdestname);
                         }
+                
+                        $(".ai_total_pages").val(data.total_pages);
                 
                         /*
                          * Slider HTML
@@ -1509,15 +1761,14 @@ function scrollDataAjax(it_scroll,pageCounter)
                     var node_no = 1;
                     var total_rows = 0;
 
-                    $.each($.parseJSON(data.properties), function(idx, obj) {
-
-                        /*html +='<li class="grid-item wow fadeInUp">';
-                        html +='<a href="{{URL::to('/')}}/'+obj.pdata.property_slug+'">';
+                    $.each(data.properties, function(idx, obj) {
+                                             /*html +='<li class="grid-item wow fadeInUp">';
+                        html +='<a href="{{URL::to('/')}}/'+obj.property_slug+'">';
                         html +='<figure>';
                         html +='<div class="portfolio-img bg-deep-pink">';           
                         if (obj.hasOwnProperty("image")) {
                              var pimg = "{{URL::to('uploads/property_imgs_thumbs/')}}/front_property_" + obj.image.folder_id + "_" + obj.image.file_name;
-                        html +='<img alt="'+obj.pdata.property_name+'" src="'+pimg+'">';
+                        html +='<img alt="'+obj.property_name+'" src="'+pimg+'">';
                         }else{
                              html +='<img src="http://placehold.it/800x560" alt=""/>';
                         }
@@ -1526,9 +1777,9 @@ function scrollDataAjax(it_scroll,pageCounter)
                         html +='<div class="portfolio-hover-main text-left">';
                         html +='<div class="portfolio-hover-box vertical-align-bottom">';
                         html +='<div class="portfolio-hover-content position-relative last-paragraph-no-margin">';
-                        html +='<span class="font-weight-600 line-height-normal alt-font text-white text-uppercase margin-one-half-bottom display-block">'+obj.pdata.property_name+'</span>';
-                        if (obj.pdata.price != ''){
-                            html +='<p class="text-white text-uppercase text-extra-small">From € '+obj.pdata.price+' </p>';
+                        html +='<span class="font-weight-600 line-height-normal alt-font text-white text-uppercase margin-one-half-bottom display-block">'+obj.property_name+'</span>';
+                        if (obj.price != ''){
+                            html +='<p class="text-white text-uppercase text-extra-small">From € '+obj.price+' </p>';
                         }
                         html +='</div>';
                         html +='</div>';
@@ -1539,16 +1790,16 @@ function scrollDataAjax(it_scroll,pageCounter)
                         html +='<div class="listDetails">';
                         html +='<div class="photographBox ai-grid-tiitles">';
                         html +='<h2>';
-                        html +='<a title="'+obj.pdata.property_name+'" class="photograph FltLft ai-filtreted-hotel-name" rel="'+obj.pdata.id+'" href="{{URL::to('/')}}/'+obj.pdata.property_slug+'">';
-                        html +=obj.pdata.property_name;
+                        html +='<a title="'+obj.property_name+'" class="photograph FltLft ai-filtreted-hotel-name" rel="'+obj.id+'" href="{{URL::to('/')}}/'+obj.property_slug+'">';
+                        html +=obj.property_name;
                         html +='</a>';
                         html +='<span class="FltRgt">';
-                        html +='<a class="carticon" href="javascript:void(0)" onclick="submitgridbookform(\''+obj.pdata.property_slug+'#*'+obj.pdata.id+'\');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>';
+                        html +='<a class="carticon" href="javascript:void(0)" onclick="submitgridbookform(\''+obj.property_slug+'#*'+obj.id+'\');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>';
                         html +='</span>';
                         html +='</h2>';
                         html +='</div>';
                         html +='<div class="entire_story MrgTop5 ai-view-hotels-tittle">';
-                        html +='<a class="textButton arrowButton detail_view MrgTop5" rel="'+obj.pdata.id+'" href="#">Quick View</a>';
+                        html +='<a class="textButton arrowButton detail_view MrgTop5" rel="'+obj.id+'" href="#">Quick View</a>';
                         html +='</div>';
                         html +='<div class="showOnHover">';
                         html +='<div class="hover_request">';
@@ -1569,32 +1820,32 @@ function scrollDataAjax(it_scroll,pageCounter)
                             html += '<div class="wrapperforliineedforlightboxremoval">';
                             html += '<div class="cat_product_medium1">';
                             html += '<div class="ai-grid-page-node-pic-box pictureBox gridPicture grid-box-main">';
-                            if (obj.pdata.price != ''){
+                            if (obj.price != ''){
                                 if($("#filter_min_price").val() != '' && $("#filter_max_price").val() != '') {
-                                    html += '<a class="textButton arrowButton MrgTop5 ai-filter-hotel-price-style" rel="' + obj.pdata.id + '" href="' + detail_link + '"> From EUR ' + obj.pdata.price + ' / night </a>';
+                                    html += '<a class="textButton arrowButton MrgTop5 ai-filter-hotel-price-style" rel="' + obj.id + '" href="' + detail_link + '"> From EUR ' + obj.price + ' / night </a>';
                                 }
                             }
                             if (obj.hasOwnProperty("image")) {
-                                if(obj.pdata.editor_choice_property=='1'){
+                                if(obj.editor_choice_property=='1'){
                                     var edtch = "{{URL::to('sximo/images/editors-choice.png')}}";
                                     html += '<img alt="editor_choice_property" class="propovericons" src="'+edtch+'">';
-                                }else if(obj.pdata.feature_property=='1'){
+                                }else if(obj.feature_property=='1'){
                                     var featp = "{{URL::to('sximo/images/featured-property.png')}}";
                                     html += '<img alt="editor_choice_property" class="propovericons" src="'+featp+'">';
                                 }
                                var pimg = "{{URL::to('uploads/property_imgs_thumbs/')}}/front_property_" + obj.image.folder_id + "_" + obj.image.file_name;
-                                html += '<a title="' + obj.pdata.property_name + '" class="picture_link " rel="' + obj.pdata.id + '" href="{{URL::to('')}}/' + obj.pdata.property_slug + '">';
+                                html += '<a title="' + obj.property_name + '" class="picture_link " rel="' + obj.id + '" href="{{URL::to('')}}/' + obj.property_slug + '">';
                                 html += '<div class="overlay-text-frezeed">';
-                                html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
-                                html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;' + obj.pdata.price + ' </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
+                                html += '<h2 class="yacts-tittle-text">' + obj.property_name + '</h2>';
+                                html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;' + obj.price + ' </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
                                 html += '</div>';
                                 html += '<div class="overlay-text hotel-overlay-text">';
-                                html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
-                                html += '<p class="yacths-des-text yacths-des-text-align"><span>From &euro;' + obj.pdata.price + ' </span><' + obj.pdata.category_name + '</span></p>';
+                                html += '<h2 class="yacts-tittle-text">' + obj.property_name + '</h2>';
+                                html += '<p class="yacths-des-text yacths-des-text-align"><span>From &euro;' + obj.price + ' </span><' + obj.category_name + '</span></p>';
                                 html += '</div>';
                                 html += '<div class="overlay-text yacts-overlay-text">';
-                                html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
-                                html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;' + obj.pdata.price + ' </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
+                                html += '<h2 class="yacts-tittle-text">' + obj.property_name + '</h2>';
+                                html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;' + obj.price + ' </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
                                 html += '<p class="yacths-des-text">2015H</p>';
                                 html += '</div>';
                                 html += '<img alt="' + obj.image.file_name + '" src="' + pimg + '" class="img-responsive">';
@@ -1603,16 +1854,17 @@ function scrollDataAjax(it_scroll,pageCounter)
                             } else{
                                 
                                 var pimg = "{{URL::to('sximo/assets/images/img-1.jpg')}}";
+                                
                                 html += '<div class="overlay-text-frezeed">';
-                                html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
+                                html += '<h2 class="yacts-tittle-text">' + obj.property_name + '</h2>';
                                 html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
                                 html += '</div>';
                                 html += '<div class="overlay-text hotel-overlay-text">';
-                                html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
-                                html += '<p class="yacths-des-text yacths-des-text-align"><span>From &euro;' + obj.pdata.price + ' </span>|<span>New York</span></p>';
+                                html += '<h2 class="yacts-tittle-text">' + obj.property_name + '</h2>';
+                                html += '<p class="yacths-des-text yacths-des-text-align"><span>From &euro;' + obj.price + ' </span>|<span>New York</span></p>';
                                 html += '</div>';
                                 html += '<div class="overlay-text yacts-overlay-text">';
-                                html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
+                                html += '<h2 class="yacts-tittle-text">' + obj.property_name + '</h2>';
                                 html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
                                 html += '<p class="yacths-des-text">2015H</p>';
                                 html += '</div>';
@@ -1623,23 +1875,23 @@ function scrollDataAjax(it_scroll,pageCounter)
                             html += '<div class="listDetails">';
                             html += '<div class="photographBox ai-grid-tiitles">';
                             html += '<h2>';
-                            var detail_link = "{{URL::to('')}}/" + obj.pdata.property_slug;
-                            html += '<a title="' + obj.pdata.property_name + '" class="FltLft ai-filtreted-hotel-name" rel="' + obj.pdata.id + '" href="' + detail_link + '">';
-                            html += obj.pdata.property_name;
+                            var detail_link = "{{URL::to('')}}/" + obj.property_slug;
+                            html += '<a title="' + obj.property_name + '" class="FltLft ai-filtreted-hotel-name" rel="' + obj.id + '" href="' + detail_link + '">';
+                            html += obj.property_name;
                             html += '</a>';
                             html += '<span class="FltRgt">';
                             if (obj.hasOwnProperty("image")) {
-                               // html += '<i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" onclick="add_to_lightbox(' + obj.image.file_id + ',' + obj.pdata.id + ');" ></i>';
+                               // html += '<i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" onclick="add_to_lightbox(' + obj.image.file_id + ',' + obj.id + ');" ></i>';
                             }else{
                                 //html += '<i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" ></i>';
                             }
-                                html += '<a class="carticon" href="javascript:void(0)" onclick="submitgridbookform(\'' + obj.pdata.property_slug + '#*' + obj.pdata.id + '\');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>';
+                                html += '<a class="carticon" href="javascript:void(0)" onclick="submitgridbookform(\'' + obj.property_slug + '#*' + obj.id + '\');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>';
                                 html += '</span>';
                                 html += '</h2>';
                                 html += '</div>';
                                 html += '<div class="entire_story MrgTop5 ai-view-hotels-tittle">';
-                                html += '<a class="textButton arrowButton detail_view MrgTop5" rel="' + obj.pdata.id + '" href="#">Quick View</a>';
-                                html += '<a class="textButton arrowButton MrgTop5" rel="' + obj.pdata.id + '" href="' + detail_link + '">Detail View </a>';
+                                html += '<a class="textButton arrowButton detail_view MrgTop5" rel="' + obj.id + '" href="#">Quick View</a>';
+                                html += '<a class="textButton arrowButton MrgTop5" rel="' + obj.id + '" href="' + detail_link + '">Detail View </a>';
                                 html += '</div>';
                                 html += '<div class="showOnHover">';
                                 html += '<div class="hover_request">';
@@ -1661,7 +1913,7 @@ function scrollDataAjax(it_scroll,pageCounter)
                         if(total_rows>0){
                             $('.locator').parent().css('padding-top','0px');
                         }
-                        $(".searchcount").html(data.ttl + ' Hotel(s) Found for ' + $(".ai_search_keywords").val());
+                        $(".searchcount").html(data.total_record + ' Hotel(s) Found for ' + $(".ai_search_keywords").val());
                         html += '</div>';
                         if (it_scroll == false){
 
@@ -1690,13 +1942,13 @@ function scrollDataAjax(it_scroll,pageCounter)
                             $('#cityfilters').html(chtml); 
                         }
 
-//                var searchcountdispl = data.ttl + ' Hotel(s) Found for ' + data.searchdestname;
+//                var searchcountdispl = data.total_record + ' Hotel(s) Found for ' + data.searchdestname;
 //                $('.searchcount').html(searchcountdispl);
                 }
                    
                     sIndex = parseInt(sIndex) + offSet;
                     $('#listrecrds').val(sIndex);
-                    $('#ttlpg').val(data.ttlpages);
+                    $('#ttlpg').val(data.total_pages);
                     isPreviousEventComplete = true;
                 }
                       
@@ -1709,37 +1961,57 @@ function scrollDataAjax(it_scroll,pageCounter)
     }
 }
 
-
+/*
 var pageCounter = 2;
 var previousScroll = 0;
 $(window).scroll(function () {
 
-        var currentScroll = $(this).scrollTop();
-       if (currentScroll > previousScroll){
-           var windowScrollTop =  $(this).scrollTop() + ($('#listproperties').offset().top / 2);
-           
-            var documentHeight = $('#listproperties').innerHeight();
+    var currentScroll = $(this).scrollTop();
+    if (currentScroll > previousScroll){
+        var windowScrollTop =  $(this).scrollTop() + ($('#listproperties').offset().top / 2);
+        var documentHeight = $('#listproperties').innerHeight();
 
-             console.log('windowScrollTop  : ' + windowScrollTop+ ' document height : '+ documentHeight);
-            if(windowScrollTop >= documentHeight) {
-                var it_scroll = true;
-                 if(localStorage.page==2){
-                    pageCounter = 2;
-                 }
-                scrollDataAjax(it_scroll, pageCounter);
-                localStorage.page = 3;
-                //var nextPage = parseInt($('#nxtpg').val()) + 1 ;
-                   // $('#nxtpg').val(nextPage);
-                pageCounter++;
-                console.log('Ok! Fired Ajax');
-            }
-       } else {
-          console.log('scroll up');
-       }
-       previousScroll = currentScroll;
+        console.log('windowScrollTop  : ' + windowScrollTop+ ' document height : '+ documentHeight);
+        if(windowScrollTop >= documentHeight) {
+            var it_scroll = true;
+             if(localStorage.page==2){
+                pageCounter = 2;
+             }
+            scrollDataAjax(it_scroll, pageCounter);
+            localStorage.page = 3;
+            //var nextPage = parseInt($('#nxtpg').val()) + 1 ;
+               // $('#nxtpg').val(nextPage);
+            pageCounter++;
+            console.log('Ok! Fired Ajax');
+        }
+    } else {
+        console.log('scroll up');
+    }
+    previousScroll = currentScroll;
+});*/
 
-        
-    });
+/*
+ * Load Properties on scroll
+ */
+ 
+var pageCounter = $(".ai_page_counter").val();
+var totalPage = $(".ai_total_pages").val();
+
+$(window).scroll(function () {
+
+    pageCounter = $(".ai_page_counter").val();
+    pageCounter = +pageCounter;
+    
+    if (pageCounter > totalPage){
+        return false;
+    }else{
+        var it_scroll = true;
+        scrollDataAjax(it_scroll, pageCounter);
+    }
+
+});
+ 
+ /******************************************/
 
 function scrollDownloadData(it_scroll)
 {  localStorage.page = 2;
@@ -1789,7 +2061,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                         }
                         else
                         {
-                        ('#listproperties').append(data.errors);
+                        //$('#listproperties').append(data.errors);
                         }
                         isDataAvailable = false;
                         }
@@ -1799,13 +2071,16 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                 $(".ai_search_keywords").val(data.searchdestname);
                             }
                             
+                            $(".ai_page_counter").val("2");
+                            $(".ai_total_pages").val(data.total_pages);
+                            
                             /*
                              * Slider HTML
                              */
                             
                             var sliderHTML = '';
                             
-                            if(data.categoryslider) {
+                            if(data.hasOwnProperty("categoryslider")) {
                                 if(data.categoryslider.length > 0) {
                                     sliderHTML += '<div class="bh-slideshow-thumbnail-split" data-uk-slideshow="{animation: \'slice-up\', autoplay: true}" style="margin-bottom:20px;margin-top:00px;">';
                                     sliderHTML += '<ul style="" class="uk-slideshow uk-overlay-active">';
@@ -1871,15 +2146,15 @@ url: "{{ URL::to('filter_search_destionation')}}",
                         var node_no = 1;
                         var total_rows = 0;
 
-                        $.each($.parseJSON(data.properties), function(idx, obj) {
+                        $.each(data.properties, function(idx, obj) {
 
                             /*html +='<li class="grid-item wow fadeInUp">';
-                                        html +='<a href="{{URL::to('/')}}/'+obj.pdata.property_slug+'">';
+                                        html +='<a href="{{URL::to('/')}}/'+obj.property_slug+'">';
                                         html +='<figure>';
                                         html +='<div class="portfolio-img bg-deep-pink">';           
                                         if (obj.hasOwnProperty("image")) {
                                              var pimg = "{{URL::to('uploads/property_imgs_thumbs/')}}/front_property_" + obj.image.folder_id + "_" + obj.image.file_name;
-                                        html +='<img alt="'+obj.pdata.property_name+'" src="'+pimg+'">';
+                                        html +='<img alt="'+obj.property_name+'" src="'+pimg+'">';
                                         }else{
                                              html +='<img src="http://placehold.it/800x560" alt=""/>';
                                         }
@@ -1888,9 +2163,9 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                         html +='<div class="portfolio-hover-main text-left">';
                                         html +='<div class="portfolio-hover-box vertical-align-bottom">';
                                         html +='<div class="portfolio-hover-content position-relative last-paragraph-no-margin">';
-                                        html +='<span class="font-weight-600 line-height-normal alt-font text-white text-uppercase margin-one-half-bottom display-block">'+obj.pdata.property_name+'</span>';
-                                        if (obj.pdata.price != ''){
-                                            html +='<p class="text-white text-uppercase text-extra-small">From € '+obj.pdata.price+' </p>';
+                                        html +='<span class="font-weight-600 line-height-normal alt-font text-white text-uppercase margin-one-half-bottom display-block">'+obj.property_name+'</span>';
+                                        if (obj.price != ''){
+                                            html +='<p class="text-white text-uppercase text-extra-small">From € '+obj.price+' </p>';
                                         }
                                         html +='</div>';
                                         html +='</div>';
@@ -1901,16 +2176,16 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                         html +='<div class="listDetails">';
                                         html +='<div class="photographBox ai-grid-tiitles">';
                                         html +='<h2>';
-                                        html +='<a title="'+obj.pdata.property_name+'" class="photograph FltLft ai-filtreted-hotel-name" rel="'+obj.pdata.id+'" href="{{URL::to('/')}}/'+obj.pdata.property_slug+'">';
-                                        html +=obj.pdata.property_name;
+                                        html +='<a title="'+obj.property_name+'" class="photograph FltLft ai-filtreted-hotel-name" rel="'+obj.id+'" href="{{URL::to('/')}}/'+obj.property_slug+'">';
+                                        html +=obj.property_name;
                                         html +='</a>';
                                         html +='<span class="FltRgt">';
-                                        html +='<a class="carticon" href="javascript:void(0)" onclick="submitgridbookform(\''+obj.pdata.property_slug+'#*'+obj.pdata.id+'\');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>';
+                                        html +='<a class="carticon" href="javascript:void(0)" onclick="submitgridbookform(\''+obj.property_slug+'#*'+obj.id+'\');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>';
                                         html +='</span>';
                                         html +='</h2>';
                                         html +='</div>';
                                         html +='<div class="entire_story MrgTop5 ai-view-hotels-tittle">';
-                                        html +='<a class="textButton arrowButton detail_view MrgTop5" rel="'+obj.pdata.id+'" href="#">Quick View</a>';
+                                        html +='<a class="textButton arrowButton detail_view MrgTop5" rel="'+obj.id+'" href="#">Quick View</a>';
                                         html +='</div>';
                                         html +='<div class="showOnHover">';
                                         html +='<div class="hover_request">';
@@ -1929,33 +2204,33 @@ url: "{{ URL::to('filter_search_destionation')}}",
                         html += '<div class="wrapperforliineedforlightboxremoval">';
                         html += '<div class="cat_product_medium1">';
                         html += '<div class="ai-grid-page-node-pic-box pictureBox gridPicture grid-box-main">';
-                        if (obj.pdata.price != '')
+                        if (obj.price != '')
                         {
                             if($("#filter_min_price").val() != '' && $("#filter_max_price").val() != '') {
-                                html += '<a class="textButton arrowButton MrgTop5 ai-filter-hotel-price-style" rel="' + obj.pdata.id + '" href="' + detail_link + '"> From EUR ' + obj.pdata.price + ' / night </a>';
+                                html += '<a class="textButton arrowButton MrgTop5 ai-filter-hotel-price-style" rel="' + obj.id + '" href="' + detail_link + '"> From EUR ' + obj.price + ' / night </a>';
                             }
                         }
                         if (obj.hasOwnProperty("image")) {
-                			if(obj.pdata.editor_choice_property=='1'){
+                			/*if(obj.editor_choice_property=='1'){
                 				var edtch = "{{URL::to('sximo/images/editors-choice.png')}}";
                 				html += '<img alt="editor_choice_property" class="propovericons" src="'+edtch+'">';
-                			}else if(obj.pdata.feature_property=='1'){
+                			}else if(obj.feature_property=='1'){
                 				var featp = "{{URL::to('sximo/images/featured-property.png')}}";
                 				html += '<img alt="editor_choice_property" class="propovericons" src="'+featp+'">';
-                			}
+                			}*/
                            var pimg = "{{URL::to('uploads/property_imgs_thumbs/')}}/front_property_" + obj.image.folder_id + "_" + obj.image.file_name;
-                            html += '<a title="' + obj.pdata.property_name + '" class="picture_link " rel="' + obj.pdata.id + '" href="{{URL::to('')}}/' + obj.pdata.property_slug + '">';
+                            html += '<a title="' + obj.property_name + '" class="picture_link " rel="' + obj.id + '" href="{{URL::to('')}}/' + obj.property_slug + '">';
                             html += '<div class="overlay-text-frezeed">';
-                            html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
-                            html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;' + obj.pdata.price + ' </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
+                            html += '<h2 class="yacts-tittle-text">' + obj.property_name + '</h2>';
+                            html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;' + obj.price + ' </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
                             html += '</div>';
                             html += '<div class="overlay-text hotel-overlay-text">';
-                            html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
-                            html += '<p class="yacths-des-text yacths-des-text-align"><span>From &euro;' + obj.pdata.price + ' </span><' + obj.pdata.category_name + '</span></p>';
+                            html += '<h2 class="yacts-tittle-text">' + obj.property_name + '</h2>';
+                            html += '<p class="yacths-des-text yacths-des-text-align"><span>From &euro;' + obj.price + ' </span><' + obj.category_name + '</span></p>';
                             html += '</div>';
                             html += '<div class="overlay-text yacts-overlay-text">';
-                            html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
-                            html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;' + obj.pdata.price + ' </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
+                            html += '<h2 class="yacts-tittle-text">' + obj.property_name + '</h2>';
+                            html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;' + obj.price + ' </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
                             html += '<p class="yacths-des-text">2015H</p>';
                             html += '</div>';
                             html += '<img alt="' + obj.image.file_name + '" src="' + pimg + '" class="img-responsive">';
@@ -1964,33 +2239,35 @@ url: "{{ URL::to('filter_search_destionation')}}",
                         } else{
                             
                             var pimg = "{{URL::to('sximo/assets/images/img-1.jpg')}}";
+                            html += '<a title="' + obj.property_name + '" class="picture_link " rel="' + obj.id + '" href="{{URL::to('')}}/' + obj.property_slug + '">';
                             html += '<div class="overlay-text-frezeed">';
-                            html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
+                            html += '<h2 class="yacts-tittle-text">' + obj.property_name + '</h2>';
                             html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
                             html += '</div>';
                             html += '<div class="overlay-text hotel-overlay-text">';
-                            html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
-                            html += '<p class="yacths-des-text yacths-des-text-align"><span>From &euro;' + obj.pdata.price + ' </span>|<span>New York</span></p>';
+                            html += '<h2 class="yacts-tittle-text">' + obj.property_name + '</h2>';
+                            html += '<p class="yacths-des-text yacths-des-text-align"><span>From &euro;' + obj.price + ' </span>|<span>New York</span></p>';
                             html += '</div>';
                             html += '<div class="overlay-text yacts-overlay-text">';
-                            html += '<h2 class="yacts-tittle-text">' + obj.pdata.property_name + '</h2>';
+                            html += '<h2 class="yacts-tittle-text">' + obj.property_name + '</h2>';
                             html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
                             html += '<p class="yacths-des-text">2015H</p>';
                             html += '</div>';
-                            html += pimg;
+                            html += '<img alt="pimg" src="' + pimg + '" class="img-responsive">';
+                            html += '</a>';
                         }
 
                         html += '</div>';
                         html += '<div class="listDetails">';
                         html += '<div class="photographBox ai-grid-tiitles">';
                         html += '<h2>';
-                        var detail_link = "{{URL::to('')}}/" + obj.pdata.property_slug;
-                        html += '<a title="' + obj.pdata.property_name + '" class="FltLft ai-filtreted-hotel-name" rel="' + obj.pdata.id + '" href="' + detail_link + '">';
-                        html += obj.pdata.property_name;
+                        var detail_link = "{{URL::to('')}}/" + obj.property_slug;
+                        html += '<a title="' + obj.property_name + '" class="FltLft ai-filtreted-hotel-name" rel="' + obj.id + '" href="' + detail_link + '">';
+                        html += obj.property_name;
                         html += '</a>';
                         html += '<span class="FltRgt">';
                         if (obj.hasOwnProperty("image")) {
-                        html += '<i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" onclick="add_to_lightbox(' + obj.image.file_id + ',' + obj.pdata.id + ');" ></i>';
+                        html += '<i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" onclick="add_to_lightbox(' + obj.image.file_id + ',' + obj.id + ');" ></i>';
                         }
                         else{
                         html += '<i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" ></i>';
@@ -2000,8 +2277,8 @@ url: "{{ URL::to('filter_search_destionation')}}",
                         html += '</h2>';
                         html += '</div>';
                         html += '<div class="entire_story MrgTop5 ai-view-hotels-tittle">';
-                        html += '<a class="textButton arrowButton detail_view MrgTop5" rel="' + obj.pdata.id + '" href="#">Quick View</a>';
-                        html += '<a class="textButton arrowButton MrgTop5" rel="' + obj.pdata.id + '" href="' + detail_link + '">Detail View </a>';
+                        html += '<a class="textButton arrowButton detail_view MrgTop5" rel="' + obj.id + '" href="#">Quick View</a>';
+                        html += '<a class="textButton arrowButton MrgTop5" rel="' + obj.id + '" href="' + detail_link + '">Detail View </a>';
                         html += '</div>';
                         html += '<div class="showOnHover">';
                         html += '<div class="hover_request">';
@@ -2024,7 +2301,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                         if(total_rows>0){
                             $('.locator').parent().css('padding-top','0px');
                         }
-                        $(".searchcount").html(data.ttl + ' Hotel(s) Found for ' + $(".ai_search_keywords").val());
+                        $(".searchcount").html(data.total_record + ' Hotel(s) Found for ' + $(".ai_search_keywords").val());
                         html += '</div>';
                         if (it_scroll == false)
                         {
@@ -2148,13 +2425,13 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                 $('#cityfilters').html(chtml); 
                             }
 
-                            var searchcountdispl = data.ttl + ' Hotel(s) Found for ' + $(".ai_search_keywords").val();
+                            var searchcountdispl = data.total_record + ' Hotel(s) Found for ' + $(".ai_search_keywords").val();
                             $('.searchcount').html(searchcountdispl);
                         }
 
                         sIndex = parseInt(sIndex) + offSet;
                         $('#listrecrds').val(sIndex);
-                        $('#ttlpg').val(data.ttlpages);
+                        $('#ttlpg').val(data.total_record);
                         isPreviousEventComplete = true;
                         }
                          
@@ -2394,50 +2671,17 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                         <input type="hidden" id="selDestn" value="">
                                         <input type="hidden" id="listrecrds" value="21">
                                         <?php if(!isset($_REQUEST['landing_page']) && !isset($_REQUEST['arrive'])): ?>
-                                        @if(!empty($ourmaindesitnation))
-                                        <div class="panel panel-default custom-post-panel">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#maindestinations" class="heading-stying {{($continent!='') ? '' : 'collapsed' }}">
-                                                <div class="panel-heading custom-heading">
-                                                    Destinations
-                                                </div>
-                                            </a>
-                                            <div id="maindestinations" class="panel-collapse collapse {{($continent!='') ? 'in' : '' }}">
-                                                <div class="panel-body custom-panel-body">
-                                                    <div class="dl-filter">
-                                                        <!--First Parent-->
-                                                        @foreach($ourmaindesitnation as $mndest)
-                                                        <div class="node post-filter-inputs">
-                                                            <a class="node-btn" href="javascript:void(0)" onclick="$('#maindestinations a.node-btn').removeClass('active');$(this).addClass('active');filter_destination('{{$mndest->id}}', 'continent');">{{$mndest->category_name}}</a>
-                                                            @if(array_key_exists('childs',$mndest) && !empty($mndest->childs))
-                                                            @foreach($mndest->childs as $cddest)
-                                                            <!--Second Level-->
-                                                            <div class="node" style="{{($continent==$mndest->category_name) ? 'display: block; padding-left: 10px; margin-top: 5px; text-transform: inherit;' : '' }}">
-                                                                <a class="node-btn" href="javascript:void(0)" onclick="$('#maindestinations a.node-btn').removeClass('active');$(this).addClass('active');filter_destination('{{$cddest->id}}', 'region');">{{$cddest->category_name}}</a>
-                                                                @if(array_key_exists('subchild',$cddest))
-                                                                @foreach($cddest->subchild as $sbdest)
-                                                                <!--Third Level-->
-                                                                <div class="node" style="{{(str_replace('_',' ',$region)==$cddest->category_name) ? 'display: block; padding-left: 10px; margin-top: 5px; text-transform: inherit;' : '' }}">
-                                                                    <a class="node-btn" href="javascript:void(0)" onclick="$('#maindestinations a.node-btn').removeClass('active');$(this).addClass('active');filter_destination('{{$sbdest->id}}', 'country');">{{$sbdest->category_name}}</a>
-                                                                    @if(array_key_exists('subchild',$sbdest))
-                                                                    @foreach($sbdest->subchild as $subchild)
-                                                                    <div class="node" style="{{(isset($cat) && str_replace('_',' ',$cat)==$sbdest->category_name) ? 'display: block; padding-left: 10px; margin-top: 5px; text-transform: inherit;' : '' }}">
-                                                                        <a class="node-btn" href="javascript:void(0)" onclick="$('#maindestinations a.node-btn').removeClass('active');$(this).addClass('active');filter_destination('{{$subchild->id}}', 'country');">{{$subchild->category_name}}</a>
-                                                                    </div>
-                                                                    @endforeach
-                                                                    @endif
-                                                                </div>
-                                                                @endforeach
-                                                                @endif
-                                                            </div>
-                                                            @endforeach
-                                                            @endif
-                                                        </div>
-                                                        @endforeach
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        @endif
+                                           <?php 
+
+                       /* Note:
+                            Now the our destinations will render from storage/app/homeOurDestination.html. 
+                            That file will be genrate from cron job or backend panel.  
+                       
+                        
+                          */  
+                        ?>
+                        
+                        {!!Storage::get('leftOurDestination.html')!!}
                                         <?php endif; ?>
                                     </div> 
                                     <div class="filter-footer">
@@ -2587,6 +2831,9 @@ url: "{{ URL::to('filter_search_destionation')}}",
 							});
 						});
                     </script>
+                    
+                        
+                    
 					<script>
 						$(document).ready(function () {
 

@@ -15,6 +15,9 @@ a:hover, a:focus, a:active{
     text-decoration: none;
     color: inherit;
 }
+.hotel-btn:hover {
+    color: #f5e7e7;
+}
 .booking-form-bg {
     background-attachment: fixed;
     background-image: url("../images/Miss-Clara-by-Nobis-Stockholm-Sweden (2).jpg");

@@ -212,6 +212,7 @@ return [
 		'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 		'TagsFinder' => App\Helpers\TagsFinder::class,
 		 'CategoryMenu' => App\Helpers\CategoryMenu::class,
+         'CustomQuery' => App\Helpers\CustomQuery::class,
          'Debugbar' => Barryvdh\Debugbar\Facade::class,
 	 'ImageCache' => App\Helpers\ImageCache::class,
 

@@ -136,10 +136,35 @@
                 margin: 0;
             }
             
+            .block-content.content {
+                width: 35px;
+                float: right;
+                height: 55px;
+            }
+            
                         
             .CustomTopbarwidth {
                 width: 5.333%;
             }
+            
+            .detailfaLock {
+                margin-right: 50px;
+            }
+            
+            .block-content.content span:nth-child(1) {
+                top: 32px;
+                left: 57%;
+            }
+            .block-content.content span:nth-child(2) {
+                top: 39px;
+                left: 57%;
+            }
+            .block-content.content span:nth-child(3) {
+                top: 46px;
+                left: 57%;
+            }
+            
+            
             
             /* hamburg menu pop up css */
             
@@ -177,7 +202,7 @@
             .hotel-block-two-right-sec-align > h2{
                 color: #dbd4d7;
                 font-family: ACaslonPro-Regular;
-                font-size: 40px;
+                font-size: 0px;
                 font-weight: lighter;
                 margin-top: -80px;
                 text-transform: uppercase;
@@ -262,7 +287,7 @@
                             background: #ada077;
                            }
                            .hotel-next-previous-outer {
-                            background-color: ##252525;
+                            background-color: #252525;
                             color: #fff;
                             font-size: 18px;
                             position: relative;
@@ -343,14 +368,6 @@
                                 text-decoration: none;
                                 color: #8AE0C7;
                             }
-                            .hotels-detail-heading-text > p {
-                                color: white;
-                                font-family: Oswald-Light;
-                                font-size: 14px;
-                                letter-spacing: 3px;
-                                line-height: 19px;
-                                text-transform: uppercase;
-                            }
                             
                             .editorial-hotel-detail-page #align-to-top .book-button.open-show_more-page.hotel-btn {
                                 background-color: #ABA07C;
@@ -383,7 +400,7 @@
                             .hotel-block-two-right-sec-align > p {
                                 color: white;
                                 line-height: 30px;
-                                margin-top: 100px;
+                                margin-top: 105px;
                                 font-size: 15px;
                                 font-family: Geomanist-Regular;
                                 opacity: 1;
@@ -406,7 +423,7 @@
                             .hotel-block-two-right-sec-align > p {
                                 color: white;
                                 line-height: 30px;
-                                margin-top: 0px;
+                                margin-top: 105px;
                                 font-size: 15px;
                                 font-family: Geomanist-Regular;
                                 opacity: 1;
@@ -453,7 +470,7 @@
                             .editorial-custom-footer-style .newsletter-style {
                                 width: 45%;
                                 margin-top: 8px;
-                                color: white;
+                                color: black;
                                 float: left;
                                 background: #f7f7f4;
                                 margin-right: 15px;
@@ -462,9 +479,9 @@
                                 font-size: 11px;
                             }
 							
-							.editorial-custom-footer-style {
-								float: right !important;
-							}
+                            .editorial-custom-footer-style {
+                                    float: right !important;
+                            }
                             
                             .bar-name-text-style {
                                 color: #fff;
@@ -475,7 +492,7 @@
                             
                             .gallery .info1 p {
                                 font-size: 14px;
-                                font-weight: 600;
+                                font-weight: 100;
                                 font-family: Geomanist-Light;
                                 overflow: hidden;
                                 position: relative;
@@ -544,7 +561,7 @@
                             .hotel-block-two-right-sec-align > p {
                                 color: white;
                                 line-height: 30px;
-                                margin-top: 0px;
+                                margin-top: 105px;
                                 font-size: 15px;
                                 font-family: Geomanist-light;
                                 opacity: 1;
@@ -552,7 +569,7 @@
                             .hotel-block-two-right-sec-align > h2 {
                                 color: #dbd4d7;
                                 font-family: ACaslonPro-Regular;
-                                font-size: 40px;
+                                font-size: 0px;
                                 font-weight: lighter;
                                 margin-top: 0px;
                                 text-transform: uppercase;
@@ -571,7 +588,7 @@
                                 height: auto;
                                 background: rgba(0,0,0,0.8);
                                 margin: 0;
-                                padding: 8% 0% 0% 7%;
+                                padding: 8% 0% 0% 5%;
                             }
                             
                             .hotels-showcase-right-side {
@@ -1047,6 +1064,69 @@
                             .CenterAlertPop {
                                 border: none;
                             }
+                            
+                            /* AIC Harman email sidebar css */
+            
+                            .site-aside {
+                                position: fixed;
+                                top: 0;
+                                right: 0;
+                                height: 100%;
+                                overflow-x: visible;
+                                z-index: 1028;
+                            }
+                            .contact-aside {
+                            border-radius: 0px;
+                            transition: .5s;
+                            position: fixed;
+                            top: 208px;
+                            left: calc(100% - 62px);
+                            width: 340px;
+                            background: #272727;
+                            color: #fff;
+                            font-size: 15px;
+                            right: 0;
+                            }
+                            .contact-aside ul {
+                                padding: 7px 0px 0px 0px;;
+                                list-style: none;
+                            }
+                            .contact-aside li {
+                                padding: 6px 0px 6px 18px;
+                                margin: 0px 0px 1px 0px;
+                            }
+                            .contact-aside li a {
+                            margin-left: 11px;
+                            font-size: 13px;
+                            color: #ABA07C;
+                            }
+                            .contact-aside [class*="icon-"] {
+                                display: inline-block;
+                                width: 24px;
+                                text-align: center;
+                                margin-right: 4px;
+                                float: right;
+                            }
+                            .contact-aside li + li {
+                                border-top: 1px solid #4A4A4A;
+                            }
+                            .contact-aside .icon-mail {
+                                position: relative;
+                                top: 2px;
+                            }
+                            .contact-aside.active {
+                                left: calc(100% - 290px);
+                                background: #1e2023 !important;
+                                color: #fff !important;
+                            }
+
+                            .asideIclass {
+                                float: left;
+                                margin-top: 3px;
+                                margin-right: 13px;
+                                margin-left: 8px;
+                                color: #ABA07C;
+                            }
 
                             
                             @import url('https://fonts.googleapis.com/css?family=Caveat');
@@ -1115,6 +1195,20 @@
 					@endif
 				@endif
                 </header>
+                
+                <!-- AIC Harman email phone sidebar add start -->
+                                        
+                <aside class="site-aside">
+                    <div class="contact-aside">
+                        <ul class="contact-aside-list">
+                            <li class="contact-list-item contact-phone"><a href="#"><i class="fa fa-phone asideIclass" aria-hidden="true"></i> +1 934 451 1317</a></li>
+                            <li class="contact-list-item contact-email"><a href="#"><i class="fa fa-envelope asideIclass" aria-hidden="true"></i> riaan@emporium-voyage.com</a></li>
+                        </ul>
+                    </div>
+                </aside>
+
+                <!-- AIC Harman email phone sidebar add end-->
+                
                 <div id="editorial-siden-nav-res" class="sidenav">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                     <div class=" right-menus ">
@@ -1318,7 +1412,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-1">
-                                        <a data-popup-id="login-forms-popup" href="#" class="video-popup-btn login_popup show-login-forms-btn"><i class="fa fa-lock " aria-hidden="true" ></i></a>
+                                        <a data-popup-id="login-forms-popup" href="#" class="video-popup-btn login_popup show-login-forms-btn"><i class="fa fa-lock detailfaLock" aria-hidden="true" ></i></a>
                                         <a data-popup-id="ev-primary-navigation" href="#" class="video-popup-btn"><!--<i class="fa fa-bars hamburgMenu" aria-hidden="true"></i>-->
                                             <div class="block-content content">
                                                 <span></span>
@@ -2050,28 +2144,113 @@
             @endif
         </div>
         <!--Featured hotel popup end-->
-	<!--New Login Pop Up Start Here-->
+	 <!--Register Pop Up Start Here main-->
+        <div id="register-popup" class="popup personlized-service-pop-up-outer">
+            <div class="popup-inner personlized-service-pop-up">
+                <a href="#" class="popup-close-btn personlized-service-pop-up-close-btn">&times;</a>
+                <div class="popup-content personlized-service-content">
+                    <div class="popup-form-center">
+                        <div class="form-tittle">
+                            <h3>JohnnyShares - Sharing & Collaboration Platform</h3>
+                        </div> 
+                        <div class="form-content clearfix">
+                            <div class="form-logo">
+                                <img class="img-responsive" src="{{ asset('sximo/assets/images/logo-design_1.png')}}" alt="Design Locations">
+                            </div>
+                            <div>
+                                <ul class="navigation-tabs">
+                                    <li><a href="#" class="active" id="sign-in-form-link">Sign in</a></li>
+                                    <li><a href="#" id="forgot-password-link">Forgot Password</a></li>
+                                    <li><a href="#" id="register-form-link">Register</a></li>
+                                </ul>
+                            </div>
+                            <div class="input-fileds">
+                                <form  id="login-form" role="form" style="display: none;">
+                                    <div class="form-group">
+                                        <label>Email Address</label>
+                                        <input type="text" name="email_address" placeholder="Email Address" class="form-control">
+                                        <i class="fa fa-user input-fa" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Password</label>
+                                        <input placeholder="Password" type="Password" name="password"  class="form-control">
+                                        <i class="fa fa-lock input-fa" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="form-group">
+                                        <label> Remember Me ? </label>
+                                        <input class="remember-me-checkbox" name="remember" value="1" type="checkbox">
+                                        <i class="fa fa-lock input-fa remember-me-fa" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Language</label>
+                                        <select class="form-control" name="language">
+                                            <option value="Deutsch"> Deutsch</option>
+                                            <option value="en"> English</option>
+                                        </select>
+                                    </div>
+                                    <button class="btn btn-info form-sign-in-btn btn-sm btn-block" type="submit">Sign In</button>
+                                </form>
+                                <form id="register-form" role="form" style="display: block;">
+                                    <div class="form-group">
+                                        <label>Name</label>
+                                        <input type="text" name="user_name" placeholder="Name" class="form-control">
+                                        <i class="fa fa-user input-fa" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Email Address</label>
+                                        <input type="text" name="email_address" placeholder="Email Address" class="form-control">
+                                        <i class="fa fa-user input-fa" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Password</label>
+                                        <input placeholder="Password" type="Password" name="password"  class="form-control">
+                                        <i class="fa fa-lock input-fa" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Confirm Password</label>
+                                        <input placeholder="Confirm Password" type="Password" name="password"  class="form-control">
+                                        <i class="fa fa-lock input-fa" aria-hidden="true"></i>
+                                    </div>
+                                    <button class="btn btn-info form-sign-in-btn btn-sm btn-block" type="submit">Sign Up</button>
+                                </form>
+                                <form id="forgot-password" role="form" style="display: none;">
+                                    <div class="form-group">
+                                        <label>Email Address</label>
+                                        <input type="text" name="email_address" placeholder="Email Address" class="form-control">
+                                        <i class="fa fa-user input-fa" aria-hidden="true"></i>
+                                    </div>
+                                    <button class="btn btn-info form-sign-in-btn btn-sm btn-block" type="submit">Recover Account</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        <!--Register Pop Up End Here main-->
+        <!--New Login Pop Up Start Here main-->
         <div id="login-forms-popup" class="popup login-form-pop-main-align">
              <div class="popup-inner">
                  <a href="#" class="popup-close-btn">&times;</a>
                  <div class="popup-content">
                      <div class="content-area">
-                         <a class="dl-pop-logo-align" href="#"><img class="img-responsive" src="{{ asset('sximo/assets/images/design-location-logo.png')}}"></a>
+<!--                         <a class="dl-pop-logo-align" href="#"><img class="img-responsive" src="{{ asset('sximo/assets/images/design-location-logo.png')}}"></a>-->
                      </div>
                      <!--Login Forms Start Here-->
                      <div class="landing-page-lock-login-btn-outer-align">
-                         <div class="login-form-show-hide">
+                         <div class="login-form-show-hide" style="display:block;">
                              <div class="login-sign-up-sidebar-outer-align">
                                  <div class="your-account-heading-align">
                                      <div class="ps-login-signup-form-top-bar">
-                                         <div class="col-md-6 col-sm-6">
+<!--                                         <div class="col-md-6 col-sm-6">
                                              <div class="row">
                                                  <div class="ps-forms-cross-icons">
                                                      <a class="show-account-with-us ps-forms-small-heading-link" href="javascript:void(0)">&times;</a>
                                                  </div>
                                              </div>
-                                         </div>
-                                         <div class="col-md-6 col-sm-6">
+                                         </div>-->
+                                         <div class="col-md-12 col-sm-6">
                                              <div class="row">
                                                  <div class="right-need-help-icon">
                                                      <a class="ps-forms-small-heading-link" href="#">Need Help?</a>
@@ -2079,6 +2258,15 @@
                                              </div>
                                          </div>
                                      </div>
+                                     <div class="ps-login-signup-form-top-bar1">
+                                        <div class="col-md-12 col-sm-6">
+                                           <div class="row">
+                                               <div class="ps-forms-cross-icons">
+                                                   <a class="show-account-with-us ps-forms-small-heading-link" href="javascript:void(0)">&times;</a>
+                                               </div>
+                                           </div>
+                                       </div>
+                                    </div>
                                      <div class="clearfix"></div>
                                      <div class="ps-form-main-pannel">
                                          <div class="ps-form-heading-outer-align">
@@ -2100,7 +2288,7 @@
                                      </div>
                                  </div>
                                  <div class="ps-login-sign-up-image">
-                                     <img class="img-responsive" src="{{ asset('sximo/assets/images/Step.jpg')}}" alt=""/>
+                                     <img class="img-responsive" src="{{ asset('sximo/assets/images/angel-fernandez-alonso-220762.jpg')}}" alt=""/>
                                  </div>
                              </div>
                          </div>
@@ -2109,14 +2297,14 @@
                              <div class="login-sign-up-sidebar-outer-align">
                                  <div class="your-account-heading-align">
                                      <div class="ps-login-signup-form-top-bar">
-                                         <div class="col-md-6 col-sm-6">
+<!--                                         <div class="col-md-6 col-sm-6">
                                              <div class="row">
                                                  <div class="ps-forms-cross-icons">
                                                      <a class="show-account-with-us ps-forms-small-heading-link" href="javascript:void(0)">&times;</a>
                                                  </div>
                                              </div>
-                                         </div>
-                                         <div class="col-md-6 col-sm-6">
+                                         </div>-->
+                                         <div class="col-md-12 col-sm-6">
                                              <div class="row">
                                                  <div class="right-need-help-icon">
                                                      <a class="ps-forms-small-heading-link" href="#">Need Help?</a>
@@ -2124,6 +2312,15 @@
                                              </div>
                                          </div>
                                      </div>
+                                     <div class="ps-login-signup-form-top-bar1">
+                                        <div class="col-md-12 col-sm-6">
+                                           <div class="row">
+                                               <div class="ps-forms-cross-icons">
+                                                   <a class="show-account-with-us ps-forms-small-heading-link" href="javascript:void(0)">&times;</a>
+                                               </div>
+                                           </div>
+                                       </div>
+                                    </div>
                                      <div class="clearfix"></div>
                                      <div class="ps-form-main-pannel">
                                          <div class="ps-form-heading-outer-align">
@@ -2142,7 +2339,7 @@
                                      </div>
                                  </div>
                                  <div class="ps-login-sign-up-image">
-                                     <img class="img-responsive" src="{{ asset('sximo/assets/images/Step.jpg')}}" alt=""/>
+                                     <img class="img-responsive" src="{{ asset('sximo/assets/images/Kootenay Aurora 1-X3.jpg')}}" alt=""/>
                                  </div>
                              </div>
                          </div>
@@ -2151,17 +2348,26 @@
                              <div class="login-sign-up-sidebar-outer-align">
                                  <div class="your-account-heading-align">
                                      <div class="ps-login-signup-form-top-bar">
-                                         <div class="col-md-6 col-sm-6">
+<!--                                         <div class="col-md-6 col-sm-6">
                                              <div class="row">
-                                                 <div class="ps-forms-cross-icons">
+                                                 <div class="ps-forms-cross-icons1">
                                                      <a class="show-account-with-us  ps-forms-small-heading-link" href="javascript:void(0)">&times;</a>
                                                  </div>
                                              </div>
-                                         </div>
-                                         <div class="col-md-6 col-sm-6">
+                                         </div>-->
+                                         <div class="col-md-12 col-sm-6">
                                              <div class="row">
                                                  <div class="right-need-help-icon">
                                                      <a class="ps-forms-small-heading-link" href="#">Need Help?</a>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </div>
+                                     <div class="ps-login-signup-form-top-bar1">
+                                        <div class="col-md-12 col-sm-6">
+                                             <div class="row">
+                                                 <div class="ps-forms-cross-icons">
+                                                     <a class="show-account-with-us  ps-forms-small-heading-link" href="javascript:void(0)">&times;</a>
                                                  </div>
                                              </div>
                                          </div>
@@ -2186,13 +2392,13 @@
                                      </div>
                                  </div>
                                  <div class="ps-login-sign-up-image">
-                                     <img class="img-responsive" src="{{ asset('sximo/assets/images/Step.jpg')}}" alt=""/>
+                                     <img class="img-responsive" src="{{ asset('sximo/assets/images/matthew-kane-365718.jpg')}}" alt=""/>
                                  </div>
                              </div>
                          </div>
                          <div class="clearfix"></div>
                          <div class="">
-                             <div class="login-sign-up-sidebar-outer-align account-with-us-show-hide">
+                             <div class="login-sign-up-sidebar-outer-align account-with-us-show-hide" style="display:none;">
                                  <div class="your-account-heading-align">
                                      <h2>Your Account With Us</h2>
                                  </div>
@@ -2223,7 +2429,7 @@
                  </div>
              </div>
          </div>
-        <!--New Login Pop Up End Here-->
+        <!--New Login Pop Up End Here main-->
 		<div id="detail-page-gallery-popup" class="popup detail-page-room-pop-up-align">
 			<div class="popup-inner">
 				<a href="javascript:void(0);" class="popup-close-btn">CLOSE</a>
@@ -2252,16 +2458,16 @@
         <!--Gallery popup end-->
         
          <!-- my popup hamburg menu -->
-        <!--Register Pop Up Start Here-->
-        <div id="register-popup" class="popup personlized-service-pop-up-outer">
-            <div class="popup-inner personlized-service-pop-up">
+        <!-- my popup hamburg menu -->
+        <div id="ev-primary-navigation" class="popup personlized-service-pop-up-outer">
+            <div class="popup-inner personlized-service-pop-up EVpopService">
                 <a href="#" class="popup-close-btn personlized-service-pop-up-close-btn">&times;</a>
                 <div class="popup-content personlized-service-content EVhamburgService">
                     <!-- code here-->
                     <div class="col-md-12">
-			<div id="ev-primary-navigation" class="popup personlized-service-pop-up-outer">
+			<div id="" class="">
 				<div class="popup-inner personlized-service-pop-up EVpopService">
-					<a href="#" class="popup-close-btn personlized-service-pop-up-close-btn">&times;</a>
+					<!--<a href="#" class="popup-close-btn personlized-service-pop-up-close-btn">&times;</a>-->
 					<div class="popup-content personlized-service-content">
 						<div class="popup-form-center EVcenterPOP">
 							<ul class="EVMenu">
@@ -2300,10 +2506,10 @@
 								</li>
 								<li><a href="#">News</a>
 								</li>
-								<li><a href="#">Offres</a>
+								<li><a href="#">Offers</a>
 									<ul class="sub-menu">
-										<li><a class="activeEV" href="#">Offres Sleep</a></li>
-										<li><a href="#">Offres Relax</a></li>
+										<li><a class="activeEV" href="#">Offers Sleep</a></li>
+										<li><a href="#">Offers Relax</a></li>
 									</ul>
 								</li>
 								<li><a href="#">Gift box</a>
@@ -2330,7 +2536,7 @@
                 </div>
             </div>
         </div>
-        <!--Register Pop Up End Here-->
+        <!--my popup hamburg menu End Here-->
         
 		
         <script>
@@ -2590,6 +2796,7 @@
 				@endif
 				<!--Footer-->
             @include('layouts/elliot/ai_footer_social')
+            <script src="{{ asset('sximo/assets/newgrid/js/grid.js')}}" type="text/javascript"></script>
         </div>
 
         <div id="frontpage-layer-bj-detail" class="frontpage-layer-bj">
@@ -2662,31 +2869,6 @@
                         $("body").addClass("fixed");
                         event.preventDefault();
                     }
-                });
-                //                Login form Scripts
-                $(".sign-up-show-form-btn").click(function () {
-                    $(".create-account-form-show-hide").show();
-                    $(".account-with-us-show-hide").hide();
-                    $(".login-form-show-hide").hide();
-                    $(".forgot-pass-form-show-hide").hide();
-                });
-                $(".login-show-form-btn").click(function () {
-                    $(".login-form-show-hide").show();
-                    $(".account-with-us-show-hide").hide();
-                    $(".create-account-form-show-hide").hide();
-                    $(".forgot-pass-form-show-hide").hide();
-                });
-                $(".forgot-pass-show-form-btn").click(function () {
-                    $(".forgot-pass-form-show-hide").show();
-                    $(".login-form-show-hide").hide();
-                    $(".account-with-us-show-hide").hide();
-                    $(".create-account-form-show-hide").hide();
-                });
-                $(".show-account-with-us").click(function () {
-                    $(".account-with-us-show-hide").show();
-                    $(".forgot-pass-form-show-hide").hide();
-                    $(".login-form-show-hide").hide();
-                    $(".create-account-form-show-hide").hide();
                 });
             });
         </script>
@@ -2821,6 +3003,15 @@
                 $(".booking-form-bar-top").toggle(1000);
             });
         </script>
+        
+        <!-- contact email aside -->
+                <script> 
+                    $('.contact-aside').hover(
+                        function(){ $(this).addClass('active') },
+                        function(){ $(this).removeClass('active') }
+                    )
+                </script>
+        <!-- contact email aside -->
     
 		@include('layouts/elliot/ai_lightbox_popups_detailpage')
 
