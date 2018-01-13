@@ -112,6 +112,9 @@
     
     .serach-page-menu {
 	text-align: center;
+        display: table-cell;
+        vertical-align: middle;
+        padding: 10px 10px 0px 10px;
     }
     
     #search-navbar-our-collection-res::placeholder {
