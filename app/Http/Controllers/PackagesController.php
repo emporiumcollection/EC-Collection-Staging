@@ -143,7 +143,12 @@ class PackagesController extends Controller {
 		$validator = Validator::make($request->all(), $rules);	
 		if ($validator->passes()) {
 			$data = $this->validatePost('tb_packages');
-				
+			$data['user_id'] = $uid;
+            if ($request->input('id') == '') {
+                $data['created_at'] = date('Y-m-d h:i:s');
+            } else {
+                $data['updated_at'] = date('Y-m-d h:i:s');
+            }
 			$id = $this->model->insertRow($data , $request->input('id'));
 			
 			if(!is_null($request->input('apply')))
