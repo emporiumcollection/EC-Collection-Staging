@@ -115,7 +115,9 @@
                 margin-left: 8px;
                 color: #ABA07C;
             }
-
+            .neww-footer .container {
+                width: auto;
+            }
         </style>
         <script type="text/javascript">
             $(document).on('ready', function () {
