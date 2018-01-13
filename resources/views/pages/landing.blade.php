@@ -1906,27 +1906,27 @@
                                                               <option>4</option>
                                                             </select>
                                                         </div>-->
-                                                        <ul class="dates" id="search-by-date">
+                                                        <ul class="dates">
                                                             <li>
                                                                 <div class="heading">Arrive</div>
                                                                     <input id="date-range-arrive" size="20" name="arrive" type="hidden" value="12.01.2018">
-                                                                    <select class="form-control ariveSelect" id="sel1">
-                                                                        <option>Day</option>
-                                                                        <option>Month</option>
-                                                                        <option>Year</option>
-                                                                    </select>
-                                                            </li>
-                                                            <li>
-                                                                <div class="heading">Departure</div>
-                                                                <input id="date-range-destination" size="20" type="hidden" name="destination" value="">
-                                                                <select class="form-control ariveSelect" id="sel1">
+                                                                    <select name="adult">
                                                                     <option>Day</option>
                                                                     <option>Month</option>
                                                                     <option>Year</option>
                                                                 </select>
                                                             </li>
-                                                        </ul>
-                                                        <ul class="dates">
+                                                            <li>
+                                                                <div class="heading">Arrive</div>
+                                                                    <input id="date-range-arrive" size="20" name="arrive" type="hidden" value="12.01.2018">
+                                                                    <select name="adult">
+                                                                    <option>Day</option>
+                                                                    <option>Month</option>
+                                                                    <option>Year</option>
+                                                                </select>
+                                                            </li>
+                                                       
+                                                        
                                                             <li>
                                                                 <div class="heading">Adults</div>
                                                                 <select name="adult">
