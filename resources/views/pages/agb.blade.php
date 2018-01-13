@@ -486,7 +486,9 @@ All prices displayed on the Design-Locations websites are current, day prices, s
 				    background-color: #f0f0f0 !important;
 			}
 		</style>
+                <div class="neww-footer">
         @include('layouts/elliot/ai_footer_social')
+                </div>
                 </div>
             </div>
         </div>
