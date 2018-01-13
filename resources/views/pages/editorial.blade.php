@@ -139,7 +139,9 @@
             .block-content.content {
                 width: 35px;
                 float: right;
-                height: 55px;
+                height: 20px;
+                margin-left: 49px;
+                margin-top: -22px;
             }
             
                         
@@ -148,7 +150,7 @@
             }
             
             .detailfaLock {
-                margin-right: 50px;
+                margin-right: 39px;
             }
             
             .block-content.content span:nth-child(1) {
