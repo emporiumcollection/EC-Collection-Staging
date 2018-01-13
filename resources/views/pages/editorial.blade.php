@@ -287,7 +287,7 @@
                             background: #ada077;
                            }
                            .hotel-next-previous-outer {
-                            background-color: ##252525;
+                            background-color: #252525;
                             color: #fff;
                             font-size: 18px;
                             position: relative;

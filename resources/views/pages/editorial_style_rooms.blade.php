@@ -66,7 +66,13 @@
         }
         
         .VegasCloseButton {
-            color: white;
+            color: #ABA07C;
+            opacity: 1;
+            font-size: 50px;
+        }
+        
+        .VegasCloseButton:hover {
+            color: #ABA07C;
             opacity: 1;
             font-size: 50px;
         }
