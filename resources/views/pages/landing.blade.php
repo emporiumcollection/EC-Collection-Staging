@@ -36,16 +36,13 @@
         <style>
         
                          /* hamburg menu pop up css */
-
             .EVhamburgService {
                 padding: 19px;
             }
-
             .EVpopService {
                 width: 100%;
                 top: 0px;
             }
-
             .EVcenterPOP {
                 border: none;
                 display: table-footer-group;
@@ -57,10 +54,10 @@
             #inner-level-accordian .panel-title {
                 float: left;
                 width: 100%;
-                margin-bottom: 10px;
+                margin-bottom: 15px;
             }
             #search-navbar-destination.search-navbar-destination-search-box {
-                background: #252525 none repeat scroll 0 0 !important;
+                background: #2a2d30 none repeat scroll 0 0 !important;
                 border: 2px solid #2a2d30;
                 display: table;
                 margin: 0 auto 10px;
@@ -129,20 +126,18 @@
                 width: 100%;
             }
         </style>
-		<style>
+        <style>
              
                     
             .sidenavpost .bh-search-input
             {
                 padding-left: 0px !important;
             }
-
             .sidenavpost .tt-menu
             {
                 left: 0% !important;
                 color:#fff !important;
             }
-
             .sidenavpost a
             {
                 padding: 0 !important;
@@ -159,7 +154,6 @@
                 text-align: center;
                 width: 100%;
             }
-
             .slick-prev, .slick-next {
                 color: #fff;
                 height: auto;
@@ -339,7 +333,6 @@
                     min-height: 250px !important;
                 }
             }
-
             img.propovericons {
                 position: absolute;
                 top: 5px;
@@ -619,7 +612,7 @@
                 height: 100%;
                 overflow-y: scroll;
             }
-			body {
+            body {
                 min-height: 100%;
                 margin: 0;
                 padding: 0;
@@ -627,11 +620,9 @@
                 font-smoothing: antialiased;
                 text-rendering: optimizeLegibility\9;
             }*/
-
             figure {
                 margin: 0;
             }
-
             .block-inner,
             .pane-inner,
             .menu-wrapper,
@@ -645,32 +636,27 @@
                 margin-left: 10px;
                 margin-right: 10px;
             }
-
             #content .panel-display,
             #content .panel-flexible {
                 margin-left: -10px;
                 margin-right: -10px;
             }
-
             img {
                 height: auto;
                 -ms-interpolation-mode: bicubic;
             }
-
             img,
             embed,
             object,
             video {
                 max-width: 100%;
             }
-
             .lt-ie9 img,
             .lt-ie9 object,
             .lt-ie9 embed,
             .lt-ie9 video {
                 max-width: none;
             }
-
             #map img,
             .gmap img,
             .view-gmap img,
@@ -683,7 +669,6 @@
             .geolocation-views-map img {
                 max-width: none !important;
             }
-
             header[role=banner],
             .content-inner,
             .nav,
@@ -706,7 +691,6 @@
                 color: transparent;
                 background-color: transparent;
             }
-
             /* More robust element-invisible and element-focuable classes */
             .element-invisible {
                 border: 0;
@@ -718,7 +702,6 @@
                 position: absolute;
                 width: 1px;
             }
-
             .element-invisible.element-focusable:active,
             .element-invisible.element-focusable:focus {
                 clip: auto;
@@ -727,7 +710,6 @@
                 position: static;
                 width: auto;
             }
-
             .offscreen {
                 position: absolute;
                 top: -99999em;
@@ -765,15 +747,15 @@
         }
         
         .booking-form-bar-top {
-	float: left;
-	opacity: unset !important;
-	padding-left: 15px !important;
-	padding-right: 8px !important;
-	padding-top: 15px !important;
-	position: absolute;
-	top: 0;
-	width: 100% !important;
-	background: rgba(37, 37, 37, 0.9);
+    float: left;
+    opacity: unset !important;
+    padding-left: 15px !important;
+    padding-right: 8px !important;
+    padding-top: 15px !important;
+    position: absolute;
+    top: 0;
+    width: 100% !important;
+    background: rgba(37, 37, 37, 0.9);
         }
         
         .login_popup .fa {
@@ -792,58 +774,58 @@
         }
         
         .hotels-logo img {
-	padding: 11px 19px 40px 20px;
+    padding: 11px 19px 40px 20px;
     }
         
         .right-menus ul li a {
-	background-color: #1E2023;
-	border-bottom: 1px solid #414246;
-	color: #fff;
-	display: block;
-	font-size: 12px !important;
-	padding: 25px 0 25px 21px;
-	text-transform: uppercase;
-	background: rgba(37,37,37,1.0);
+    background-color: #1E2023;
+    border-bottom: 1px solid #414246;
+    color: #fff;
+    display: block;
+    font-size: 12px !important;
+    padding: 25px 0 25px 21px;
+    text-transform: uppercase;
+    background: rgba(37,37,37,1.0);
     }
     
     .right-menu-sidebar {
-	float: right;
-	height: 100vh;
-	position: fixed;
-	right: 0;
-	top: 0;
-	left: 0;
-	width: 17%;
-	background: rgb(37,37,37,0.9);
+    float: right;
+    height: 100vh;
+    position: fixed;
+    right: 0;
+    top: 0;
+    left: 0;
+    width: 17%;
+    background: rgb(37,37,37,0.9);
     }
     
     .editorial_m_slider_landing ul li .editorial-text {
-	background: rgb(37,37,37,0.9);
-	bottom: 85px;
-	margin-left: 0;
-	margin-top: 0;
-	opacity: .71;
-	padding: 21px;
-	position: absolute;
-	right: 0;
-	width: 419px;
+    background: rgb(37,37,37,0.9);
+    bottom: 85px;
+    margin-left: 0;
+    margin-top: 0;
+    opacity: .71;
+    padding: 21px;
+    position: absolute;
+    right: 0;
+    width: 419px;
     }
     
     .editorial_m_slider_landing .editor-picks-small-text {
-	color: #fff;
-	font-family: ACaslonPro-Regular;
-	font-size: 36px;
-	font-style: normal;
+    color: #fff;
+    font-family: ACaslonPro-Regular;
+    font-size: 36px;
+    font-style: normal;
     }
     
     .close-btn-align {
-	color: #fff;
-	font-size: 36px;
-	position: absolute;
-	right: 115px;
-	top: 5px;
-	z-index: 99;
-	color: #c7ab84;
+    color: #fff;
+    font-size: 36px;
+    position: absolute;
+    right: 115px;
+    top: 5px;
+    z-index: 99;
+    color: #c7ab84;
     }
     
     .headings > h2 {
@@ -857,11 +839,11 @@
     /* AIC 5-1-2018 */
     
     .show-login-forms-btn {
-	display: inline-block;
-	padding: 5px 0;
-	text-align: center;
-	vertical-align: text-top;
-	width: 73%;
+    display: inline-block;
+    padding: 5px 0;
+    text-align: center;
+    vertical-align: text-top;
+    width: 73%;
     }
     
     .hamburgMenu {
@@ -869,30 +851,28 @@
     }
     
     .video-popup-btn.login_popup.show-login-forms-btn {
-	display: inline-block;
-	margin-top: 14px;
-	width: 59%;
+    display: inline-block;
+    margin-top: 14px;
+    width: 59%;
     }
     
     .hamburgMenu {
         font-size: 24px;
         color: #ABA07C;
     }
-
                             
         
         
             
         </style>
-		<!-- Global site tag (gtag.js) - Google Analytics -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110391807-1"></script>
-		<script>
-		  window.dataLayer = window.dataLayer || [];
-		  function gtag(){dataLayer.push(arguments);}
-		  gtag('js', new Date());
-
-		  gtag('config', 'UA-110391807-1');
-		</script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110391807-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'UA-110391807-1');
+        </script>
     </head>
     <body id="main">
         <!--Desktop Version Start Here-->
@@ -911,7 +891,6 @@
                                         </div>
                                     </div>
                                     <div id="block-ledunfly-menu-logo" class="block block-ledunfly no-title even block-count-5 block-region-sidebar-first block-menu-logo" ><div class="block-inner clearfix">  
-
                                             <div class="block-content content"><a href="index.html" title="Five Seas Hotel"><div class="menu-logo"></div></a></div>
                                         </div>
                                     </div>
@@ -947,7 +926,6 @@
                                                     @endif
                                                 </li>
                                             @endforeach
-
                                               Start Popup 2 Menu    
                                              <?php 
                                                      
@@ -976,7 +954,6 @@
                                                     @endif
                                                 </li>
                                             @endforeach
-
                                         </ul>    Comment Static menu 
                                                 
                                                 <ul class="menusk clearfix">
@@ -1214,8 +1191,97 @@
                                         </a>
                                     </div>
                                 </div>
-								
-								
+                                
+                                @if(!empty($landinggridpropertiesArr))
+                                    <div class="container" style="margin-top:20px; display:none;">
+                                        <div class="row">
+                                            <?php
+                                            if($landinggridpropertiesArr) {
+                                                $rw = 1;
+                                                $node_no = 1;
+                                                $ads_node = 0;
+                                                foreach($landinggridpropertiesArr as $props) { ?>
+                                                    
+                                                    <div class="productData col-xs-12 col-sm-6 col-md-3 col-lg-3 margin-bottom-10">
+                                                        <div class="wrapperforliineedforlightboxremoval">
+                                                            <div class="cat_product_medium1">
+                                                                <div class="ai-grid-page-node-pic-box pictureBox gridPicture grid-box-main" >
+                                                                    <?php
+                                                                    if(array_key_exists('image', $props)) {
+                                                                        ?>
+                                                                        @if($props['data']->editor_choice_property=='1')
+                                                                            <img alt="editor_choice_property" class="propovericons" src="{{URL::to('sximo/images/editors-choice.png')}}">
+                                                                        @elseif($props['data']->feature_property=='1')
+                                                                            <img alt="editor_choice_property" class="propovericons" src="{{URL::to('sximo/images/featured-property.png')}}">
+                                                                        @endif
+                                                                    <a title="<?php echo $props['image']->file_name; ?>" class="picture_link-" href="<?php echo URL::to($props['data']->property_slug); ?>">
+                                                                            <div class="overlay-text-frezeed">
+                                                                                <h2 class="yacts-tittle-text"><?php echo $props['data']->property_name; ?></h2>
+                                                                                <p class="yacths-des-text yacths-des-text-align"><span>&euro;<?php echo $props['data']->price; ?> </span>|<span>37.7mm</span>|<span>10 Guests</span></p>
+                                                                            </div>
+                                                                            <div class="overlay-text hotel-overlay-text">
+                                                                                <h2 class="yacts-tittle-text"><?php echo $props['data']->property_name; ?></h2>
+                                                                                <p class="yacths-des-text yacths-des-text-align"><span>From &euro;<?php echo $props['data']->price; ?> </span><?php echo (isset($props['data']->category_name))? '|<span>'.$props['data']->category_name.'</span>' : ''; ?></p>
+                                                                            </div>
+                                                                            
+                                                                        <img alt="<?php echo $props['image']->file_name; ?>" src="<?php echo URL::to('uploads/property_imgs_thumbs/front_property_'.$props['image']->folder_id.'_'.$props['image']->file_name); ?>" class="img-responsive">
+                                                                        </a>
+                                                                        <?php
+                                                                    }
+                                                                    else {
+                                                                        ?>
+                                                                    <div class="overlay-text-frezeed">
+                                                                                <h2 class="yacts-tittle-text"><?php echo $props['data']->property_name; ?></h2>
+                                                                                <p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>
+                                                                            </div>
+                                                                            <div class="overlay-text hotel-overlay-text">
+                                                                                <h2 class="yacts-tittle-text"><?php echo $props['data']->property_name; ?></h2>
+                                                                                <p class="yacths-des-text yacths-des-text-align"><span>From &euro;<?php echo $props['data']->price; ?> </span>|<span>New York</span></p>
+                                                                            </div>
+                                                                            
+                                                                    <?php
+                                                                        echo '<img class="img-responsive" src="', URL::to('sximo/assets/images/img-1.jpg'), '" alt="">';
+                                                                    }
+                                                                    ?>
+                                                                </div>
+                                                                <div class="listDetails">
+                                                                    <div class="photographBox ai-grid-tiitles">
+                                                                        <h2>
+                                                                            <a title="<?php echo $props['data']->property_name; ?>" class="photograph FltLft ai-filtreted-hotel-name" rel="<?php echo $props['data']->id; ?>" href="<?php echo URL::to($props['data']->property_slug); ?>">
+                                                                                <?php echo $props['data']->property_name; ?>
+                                                                            </a>
+                                                                            <span class="FltRgt">
+                                                                                <i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" <?php echo (array_key_exists('image', $props))? 'onclick="add_to_lightbox('.$props['image']->file_id.', '.$props['data']->id.');"' : ''; ?>></i>
+                                                                                <a class="carticon" href="<?php echo URL::to($props['data']->property_slug); ?>"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>
+                                                                            </span>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="entire_story MrgTop5 ai-view-hotels-tittle">
+                                                                        <a class="textButton arrowButton MrgTop5" rel="<?php echo $props['data']->id; ?>" href="<?php echo URL::to($props['data']->property_slug); ?>">
+                                                                            Detail View 
+                                                                        </a>
+
+                                                                    </div>
+                                                                    <div class="showOnHover">
+                                                                        <div class="hover_request">
+                                                                        </div>   
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <?php
+                                                    if($rw%4==0) {
+                                                        echo '</div><div class="row">';
+                                                    }
+                                                    $rw++;
+                                                    $node_no++;
+                                                }
+                                            }
+                                            ?>
+                                        </div>
+                                    </div>
+                                @endif
                                 <div class="landing-page-footer-section">
                                     @if(!empty($landing_menus))
                                     <ul class="landing-page-footer-menu-style">
@@ -1268,14 +1334,14 @@
                                                     <h2>Why book with us?</h2>
                                                 </div>
                                                 <ul class="side-bar-book-with-us-list">
-													@if(!empty($whybookwithus))
-														@foreach($whybookwithus as $withus)
-															<li>
-																<h3>{{$withus->title}}</h3>
-																<p>{{$withus->sub_title}}</p>
-															</li>
-														@endforeach
-													@endif
+                                                    @if(!empty($whybookwithus))
+                                                        @foreach($whybookwithus as $withus)
+                                                            <li>
+                                                                <h3>{{$withus->title}}</h3>
+                                                                <p>{{$withus->sub_title}}</p>
+                                                            </li>
+                                                        @endforeach
+                                                    @endif
                                                 </ul>
                                             </div>
                                         </div>
@@ -1305,7 +1371,7 @@
                                 <div class="serach-page-menu">
                                     <ul>
                                         <li><a href="{{URL::to('luxurytravel/Hotel?ref=oc')}}">Hotels</a></li>
-										<li><a href="http://www.emporium-yachts.com/luxurytravel/Yachts">Yachts</a></li>
+                                        <li><a href="http://www.emporium-yachts.com/luxurytravel/Yachts">Yachts</a></li>
                                         <!--<li><a href="{{URL::to('luxurytravel/Villas')}}">Villas</a></li>-->
                                         <!--<li><a href="{{URL::to('luxurytravel/Safari Lodges')}}">Safari</a></li>-->
                                         <!--<li><a href="{{URL::to('luxurytravel/Spas')}}">Spa's</a></li>-->
@@ -1340,14 +1406,53 @@
                     <div class="choose-experience-center-align">
                         <div class="width-100 holiday-type-image-align ">
                             @if(!empty($experiences))
-								@foreach($experiences as $experience)
-									<div class="width-20">
-										<img class="img-responsive" src="{{URL::to('uploads/category_imgs/'.$experience->category_image)}}" alt=""/>
-										<a href="{{URL::to('luxury_experience/'. str_replace(' ','_',$experience->category_name))}}"><h3 class="hover-tittles">{{$experience->category_custom_title}}</h3></a>
-									</div>
-								@endforeach
-							@endif
-							
+                                @foreach($experiences as $experience)
+                                    <div class="width-20">
+                                        <img class="img-responsive" src="{{URL::to('uploads/category_imgs/'.$experience->category_image)}}" alt=""/>
+                                        <a href="{{URL::to('luxury_experience/'. str_replace(' ','_',$experience->category_name))}}"><h3 class="hover-tittles">{{$experience->category_custom_title}}</h3></a>
+                                    </div>
+                                @endforeach
+                            @endif
+                            <!--<div class="width-20">
+                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoBeachHotels.jpg')}}" alt=""/>
+                                <a href="{{URL::to('luxury_experience/Beach_Hotels')}}"><h3 class="hover-tittles">Luxury Beach Hotels</h3></a>
+                            </div>
+                            <div class="width-20">
+                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoGreenHotels.jpg')}}" alt=""/>
+                                <a href="{{URL::to('luxury_experience/Green_Properties')}}"><h3 class="hover-tittles">Luxury Green Hotels</h3></a>
+                            </div>
+                            <div class="width-20">
+                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoUrbanHotels.jpg')}}" alt=""/>
+                                <a href="{{URL::to('luxury_experience/Go_Urban_Hotels')}}"><h3 class="hover-tittles">Luxury Urban Hotels</h3></a>
+                            </div>
+                            <div class="width-20">
+                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoInfinityPoolHotels.jpg')}}" alt=""/>
+                                <a href="{{URL::to('luxury_experience/Infinity_Pools')}}"><h3 class="hover-tittles">Luxury Infinity Pools</h3></a>
+                            </div>
+                            <div class="width-20">
+                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoSpaandWellnessHotels.jpg')}}" alt=""/>
+                                <a href="{{URL::to('luxury_experience/Spa_and_Wellness_Hotels')}}"><h3 class="hover-tittles">Luxury Spa and Wellness Hotels</h3></a>
+                            </div>
+                            <div class="width-20">
+                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoMountainaandSkiResorts.jpg')}}" alt=""/>
+                                <a href="{{URL::to('luxury_experience/Mountain_Ski_Resorts')}}"><h3 class="hover-tittles">Luxury Mountains and Skin Resorts</h3></a>
+                            </div>
+                            <div class="width-20">
+                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoYogaHotels.jpg')}}" alt=""/>
+                                <a href="{{URL::to('luxury_experience/Yoga_Hotels')}}"><h3 class="hover-tittles">Discover Yoga Hotels</h3></a>
+                            </div>
+                            <div class="width-20">
+                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoCulnaryDelightHotels.jpg')}}" alt=""/>
+                                <a href="{{URL::to('luxury_experience/Culinary_Delights')}}"><h3 class="hover-tittles">Discover culinary Delight Hotels</h3></a>
+                            </div>
+                            <div class="width-20">
+                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoFamilyFriendlyHotels.jpg')}}" alt=""/>
+                                <a href="{{URL::to('luxury_experience/Family_Friendly')}}"><h3 class="hover-tittles">Discover Family Friendly Hotels</h3></a>
+                            </div>
+                            <div class="width-20">
+                                <img class="img-responsive" src="{{URL::to('sximo/assets/images/GoUnusualAdventures.jpg')}}" alt=""/>
+                                <a href="{{URL::to('luxury_experience/Unusual_Adventure_Hotels')}}"><h3 class="hover-tittles">Unusual Adventure Hotels</h3></a>
+                            </div>-->
                         </div>
                     </div>
                 </div>
@@ -1371,15 +1476,14 @@
                     </div>
                     <div class="panel-group-" id="accordion1">
                        <?php 
-
                        /* Note:
                             Now the our destinations will render from storage/app/homeOurDestination.html. 
                             That file will be genrate from cron job or backend panel.  
                        
                         
-                          */  
+                        {!!Storage::get('homeOurDestination.html')!!}  */  
       ?>
-                        {!!Storage::get('homeOurDestination.html')!!}
+                        
                         @if(!empty($ourmaindesitnation))
                         @foreach($ourmaindesitnation as $destination)
                         <div class="panel panel-default  destination-sub-menues">
@@ -1648,12 +1752,12 @@
                                                         <a href="index.html"> <img class="img-responsive" src="{{ asset('sximo/assets/images/design-location-logo.png')}}" alt=""></a>
 
                                                     </div>
-													<div class="serach-page-menu">
-														<ul>
-															<li><a href="{{URL::to('luxurytravel/Hotel?ref=oc')}}">Hotels</a></li>
-															<li><a href="http://www.emporium-yachts.com/luxurytravel/Yachts">Yachts</a></li>
-														</ul>
-													</div>
+                                                    <div class="serach-page-menu">
+                                                        <ul>
+                                                            <li><a href="{{URL::to('luxurytravel/Hotel?ref=oc')}}">Hotels</a></li>
+                                                            <li><a href="http://www.emporium-yachts.com/luxurytravel/Yachts">Yachts</a></li>
+                                                        </ul>
+                                                    </div>
                                                     <div class="design-locations-logo">
                                                         <form autocomplete="off" method="get" id="searchform-navbar" class="searchform-navbar" action="{{URL::to('search')}}">
                                                             <input  class="bh-search-input typeahead search-navbar" name="s" id="search-navbar-sidemenu" placeholder="SEARCH" type="text">
@@ -1670,13 +1774,13 @@
                                                                 <div class="panel-body custom-panel-body">
                                                                     <div class="dl-filter">
                                                                         <form>
-																			@if(!empty($experiences))
-																				@foreach($experiences as $experience)
-																					<div class="form-group post-filter-inputs">
-																						<label><a href="{{URL::to('luxury_experience/'. str_replace(' ','_',$experience->category_name))}}">{{$experience->category_custom_title}}</a></label>
-																					</div> 
-																				@endforeach
-																			@endif
+                                                                            @if(!empty($experiences))
+                                                                                @foreach($experiences as $experience)
+                                                                                    <div class="form-group post-filter-inputs">
+                                                                                        <label><a href="{{URL::to('luxury_experience/'. str_replace(' ','_',$experience->category_name))}}">{{$experience->category_custom_title}}</a></label>
+                                                                                    </div> 
+                                                                                @endforeach
+                                                                            @endif
                                                                            <!-- <div class="form-group post-filter-inputs">
                                                                                 <label><a href="{{URL::to('luxury_experience/Beach_Hotels')}}">Luxury Beach Hotels</a></label>
                                                                             </div> 
@@ -1774,12 +1878,12 @@
                                             <input type="hidden" name="ref" value="oc_small">
                                                 <input  class="bh-search-input ai-md-search-input typeahead search-navbar main-search-box" name="s" id="search-navbar-our-collection-res" placeholder="Enter Your Hotel or Destination" type="text">
                                             </form>
-											<div class="serach-page-menu">
-												<ul>
-													<li><a href="{{URL::to('luxurytravel/Hotel')}}">Hotels</a></li>
-													<li><a href="http://www.emporium-yachts.com/luxurytravel/Yachts">Yachts</a></li>
-												</ul>
-											</div>
+                                            <div class="serach-page-menu">
+                                                <ul>
+                                                    <li><a href="{{URL::to('luxurytravel/Hotel')}}">Hotels</a></li>
+                                                    <li><a href="http://www.emporium-yachts.com/luxurytravel/Yachts">Yachts</a></li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -1795,22 +1899,21 @@
                                         <div class="panel-body">
                                             <div class="panel landing-page-panel-background">
                                                 <div class="width-100 holiday-type-image-align ">
-													@if(!empty($experiences))
-														@foreach($experiences as $experience)
-															<div class="width-20">
-																<a href="{{URL::to('luxury_experience/'. str_replace(' ','_',$experience->category_name))}}">
-																	<img src="{{ \ImageCache::make(public_path('uploads/category_imgs/'.$experience->category_image),100,170,199)}}" alt=""/>
-																	<span class="link-txt hover-cation">{{$experience->category_custom_title}}</span>
-																</a>
-															</div>
-														@endforeach
-													@endif
+                                                    @if(!empty($experiences))
+                                                        @foreach($experiences as $experience)
+                                                            <div class="width-20">
+                                                                <a href="{{URL::to('luxury_experience/'. str_replace(' ','_',$experience->category_name))}}">
+                                                                    <img src="{{ \ImageCache::make(public_path('uploads/category_imgs/'.$experience->category_image),100,170,199)}}" alt=""/>
+                                                                    <span class="link-txt hover-cation">{{$experience->category_custom_title}}</span>
+                                                                </a>
+                                                            </div>
+                                                        @endforeach
+                                                    @endif
                                                     <!--<div class="width-20">
                                                         <a href="{{URL::to('luxury_experience/Beach_Hotels')}}">
                                                             <img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoBeachHotels.jpg'),100,170,199)}}" alt=""/>
                                                             <span class="link-txt hover-cation">Luxury Beach Hotels</span>
                                                         </a>
-
                                                     </div>
                                                     <div class="width-20">
                                                         <a href="{{URL::to('luxury_experience/Green_Properties')}}"><img src="{{ \ImageCache::make(public_path('sximo/assets/images/GoGreenHotels.jpg'),100,170,199)}}" alt=""/>
@@ -1874,113 +1977,14 @@
                                     </a>
                                 </div>-->
                                 <div class="panel panel-default  sub-menues">
-                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion-mobile" href="#collapse-mobile-7">
+                                    <a href="#" class="trigger-click-on-book-now collapsed">
                                         <div class="panel-heading">
                                             <h4 class="panel-title menu-text accordion">
                                                 Search By Date
                                             </h4>
                                         </div>
                                     </a>
-                                    <!-- AIC responsive search collapse -->
-                                <div id="collapse-mobile-7" class="panel-collapse collapse">
-                                    <div  class="panel-body">
-                                        <div class="panel landing-page-panel-background">
-                                            <div class="padding-panel-div">
-                                                <div class="headings">
-                                                    <h2>Emporium Voyage is your ideal, vogue vacation planner!</h2>
-                                                    <p>With over 300 posh properties, elite spas and exquisite yachts huddled in its cocoon, Emporium Voyage ensure the ultimate luxury experience</p>
-                                                </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                            <div class="destinSearchMob">
-                                                <form action="http://www.emporium-voyage.com/search" method="get">
-                                                        <input name="s" value="" type="hidden">
-                                                        <input name="ref" value="sbd" type="hidden">
-                                                        
-<!--                                                        <div class="form-group">
-                                                            <label for="sel1">Select list (select one):</label>
-                                                            <select class="form-control" id="sel1">
-                                                              <option>1</option>
-                                                              <option>2</option>
-                                                              <option>3</option>
-                                                              <option>4</option>
-                                                            </select>
-                                                        </div>-->
-                                                        <ul class="dates">
-                                                            <li>
-                                                                <div class="heading">Arrive</div>
-                                                                    <input id="date-range-arrive" size="20" name="arrive" type="hidden" value="12.01.2018">
-                                                                    <select name="adult">
-                                                                    <option>Day</option>
-                                                                    <option>Month</option>
-                                                                    <option>Year</option>
-                                                                </select>
-                                                            </li>
-                                                            <li>
-                                                                <div class="heading">Arrive</div>
-                                                                    <input id="date-range-arrive" size="20" name="arrive" type="hidden" value="12.01.2018">
-                                                                    <select name="adult">
-                                                                    <option>Day</option>
-                                                                    <option>Month</option>
-                                                                    <option>Year</option>
-                                                                </select>
-                                                            </li>
-                                                       
-                                                        
-                                                            <li>
-                                                                <div class="heading">Adults</div>
-                                                                <select name="adult">
-                                                                    <option>1</option>
-                                                                    <option>2</option>
-                                                                    <option>3</option>
-                                                                </select>
-                                                            </li>
-                                                            <li>
-                                                                <div class="heading">Children</div>
-                                                                <select name="childs">
-                                                                    <option>0</option>
-                                                                    <option>1</option>
-                                                                    <option>2</option>
-                                                                </select>
-                                                            </li>
-                                                            <div class="clearfix"></div>
-                                                        </ul>
-                                                        <div class="clearfix"></div>
-                                                        <div class="submit-btn editorial-submit-btn">
-                                                            <button class="booking-form-pop-up-btn-" data-popup-id="booking-form-pop-up" type="submit">BOOK NOW</button>
-                                                        </div>
-                                                    </form>
-                                                    <div class="view-modify-cancel-booking">
-                                                        <a href="#">View, Modify or Cancel your Booking</a>
-                                                    </div>
-                                                    <ul class="booking-page-footer-section">
-                                                        <li>
-                                                            <a href="#" target="_blank">
-                                                                <span>Join the worlds leading luxury club</span>
-                                                                <h6 class="center">Enjoy exclusive members only benefits</h6>
-                                                            </a>
-                                                            <div class="white-border-bottom"></div>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" target="_blank">
-                                                                <span>Spa Treatment</span>
-                                                                <h6 class="center">Book</h6>
-                                                            </a>
-                                                            <div class="white-border-bottom"></div>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" target="_blank">
-                                                                <span>View or Modify Reserveration</span>
-                                                                <h6 class="center">Login to Support Center</h6>
-                                                            </a>
-                                                            <div class="white-border-bottom"></div>
-                                                        </li>
-                                                        <div class="clearfix"></div>
-                                                    </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div></div>
+                                </div>
                                 <div class="panel panel-default  sub-menues">
                                     <a class="collapsed" data-toggle="collapse" data-parent="#accordion-mobile" href="#collapse-mobile-3">
                                         <div class="panel-heading">
@@ -2004,16 +2008,13 @@
                                                     </div>
 
                                                     <?php 
-
                                                        /* Note:
                                                             Now the our destinations will render from storage/app/homeOurDestinationMobile.html. 
                                                             That file will be genrate from cron job or backend panel.  
                                                         */  
                                                         
-                                                        //
-
+                                                        //{!!Storage::get('homeOurDestinationMobile.html')!!}
                                                     ?>
-                                                    {!!Storage::get('homeOurDestinationMobile.html')!!}
                                                     @if(!empty($ourdesitnation))
                                                     <div class="panel-group-" id="mobile-inner-accordian">
                                                         @foreach($ourdesitnation as $destination)
@@ -2099,7 +2100,9 @@
                                         </div>
                                     </div>
                                 </div>-->
+                            </div>
                             <!--Footer Section-->
+                        </div>
                         <div class="panel-group" id="landing-footer-accordian">
                             @if(!empty($landing_menus))
                             <div class="panel panel-default">
@@ -2266,7 +2269,7 @@
                                      </div>
                                  </div>
                                  <div class="ps-login-sign-up-image">
-                                     <img class="img-responsive" src="{{ asset('sximo/assets/images/angel-fernandez-alonso-220762.jpg')}}" alt=""/>
+                                     <img class="img-responsive" src="{{ asset('sximo/assets/images/Step.jpg')}}" alt=""/>
                                  </div>
                              </div>
                          </div>
@@ -2317,7 +2320,7 @@
                                      </div>
                                  </div>
                                  <div class="ps-login-sign-up-image">
-                                     <img class="img-responsive" src="{{ asset('sximo/assets/images/Kootenay Aurora 1-X3.jpg')}}" alt=""/>
+                                     <img class="img-responsive" src="{{ asset('sximo/assets/images/Step.jpg')}}" alt=""/>
                                  </div>
                              </div>
                          </div>
@@ -2370,7 +2373,7 @@
                                      </div>
                                  </div>
                                  <div class="ps-login-sign-up-image">
-                                     <img class="img-responsive" src="{{ asset('sximo/assets/images/matthew-kane-365718.jpg')}}" alt=""/>
+                                     <img class="img-responsive" src="{{ asset('sximo/assets/images/Step.jpg')}}" alt=""/>
                                  </div>
                              </div>
                          </div>
@@ -2416,72 +2419,72 @@
                 <div class="popup-content personlized-service-content EVhamburgService">
                     <!-- code here-->
                     <div class="col-md-12">
-			<div id="" class="">
-				<div class="popup-inner personlized-service-pop-up EVpopService">
-					<!--<a href="#" class="popup-close-btn personlized-service-pop-up-close-btn">&times;</a>-->
-					<div class="popup-content personlized-service-content">
-						<div class="popup-form-center EVcenterPOP">
-							<ul class="EVMenu">
-								<li><a href="#">Sleep</a>
-									<ul class="sub-menu">
-										<li><a class="activeEV" href="#">Suite Présidentielle</a></li>
-										<li><a href="#">Suite Terrasse</a></li>
-										<li><a href="#">Top Of Five</a></li>
-										<li><a href="#">Suites So Suite</a></li>
-										<li><a href="#">Junior Suites</a></li>
-										<li><a href="#">Chambres</a></li>
-										<li><a href="#">Executive</a></li>
-										<li><a href="#">Chambres Deluxe</a></li>
-										<li><a href="#">Services</a></li>
-									</ul>
-								</li>
-								<li><a href="#">Savour</a>
-									<ul class="sub-menu">
-										<li><a class="activeEV" href="#">Le Roof</a></li>
-										<li><a href="#">Le Bar</a></li>
-										<li><a href="#">Le Brunch</a></li>
-									</ul>
-								</li>
-								<li><a href="#">Relax</a>
-									<ul class="sub-menu">
-										<li><a class="activeEV" href="#">Spa</a></li>
-										<li><a href="#">Terrasse piscine</a></li>
-										<li><a href="#">Plage privée</a></li>
-									</ul>
-								</li>
-								<li><a href="#">Discover</a>
-									<ul class="sub-menu">
-										<li><a class="activeEV" href="#">Cannes</a></li>
-										<li><a href="#">Activités</a></li>
-									</ul>
-								</li>
-								<li><a href="#">News</a>
-								</li>
-								<li><a href="#">Offers</a>
-									<ul class="sub-menu">
-										<li><a class="activeEV" href="#">Offers Sleep</a></li>
-										<li><a href="#">Offers Relax</a></li>
-									</ul>
-								</li>
-								<li><a href="#">Gift box</a>
-								</li>
+            <div id="" class="">
+                <div class="popup-inner personlized-service-pop-up EVpopService">
+                    <!--<a href="#" class="popup-close-btn personlized-service-pop-up-close-btn">&times;</a>-->
+                    <div class="popup-content personlized-service-content">
+                        <div class="popup-form-center EVcenterPOP">
+                            <ul class="EVMenu">
+                                <li><a href="#">Sleep</a>
+                                    <ul class="sub-menu">
+                                        <li><a class="activeEV" href="#">Suite Présidentielle</a></li>
+                                        <li><a href="#">Suite Terrasse</a></li>
+                                        <li><a href="#">Top Of Five</a></li>
+                                        <li><a href="#">Suites So Suite</a></li>
+                                        <li><a href="#">Junior Suites</a></li>
+                                        <li><a href="#">Chambres</a></li>
+                                        <li><a href="#">Executive</a></li>
+                                        <li><a href="#">Chambres Deluxe</a></li>
+                                        <li><a href="#">Services</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Savour</a>
+                                    <ul class="sub-menu">
+                                        <li><a class="activeEV" href="#">Le Roof</a></li>
+                                        <li><a href="#">Le Bar</a></li>
+                                        <li><a href="#">Le Brunch</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Relax</a>
+                                    <ul class="sub-menu">
+                                        <li><a class="activeEV" href="#">Spa</a></li>
+                                        <li><a href="#">Terrasse piscine</a></li>
+                                        <li><a href="#">Plage privée</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Discover</a>
+                                    <ul class="sub-menu">
+                                        <li><a class="activeEV" href="#">Cannes</a></li>
+                                        <li><a href="#">Activités</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">News</a>
+                                </li>
+                                <li><a href="#">Offres</a>
+                                    <ul class="sub-menu">
+                                        <li><a class="activeEV" href="#">Offres Sleep</a></li>
+                                        <li><a href="#">Offres Relax</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Gift box</a>
+                                </li>
                                                                 <li><a href="#">Events</a>
-								</li>
+                                </li>
                                                                 <li class="smallEV"><a href="#">CarriÃ¨res</a>
-								</li>
+                                </li>
                                                                 <li class="smallEV"><a href="#">Plan & AccÃ¨s</a>
-								</li>
+                                </li>
                                                                 <li class="smallEV"><a href="#">Mentions lÃ©gales</a>
-								</li>
+                                </li>
                                                                 <li class="smallEV"><a href="#">Green Globe</a>
-								</li>
-							</ul>
-						</div>
-						<div class="clearfix"></div>
-					</div>
-				</div>
-			</div>
-		 </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+         </div>
                     <!-- code here-->
                     <div class="clearfix"></div>
                 </div>
@@ -2847,7 +2850,6 @@
             canvas.style.height = h + 'px';
             var context = canvas.getContext('2d');
             context.scale(scaleBy, scaleBy);
-
             html2canvas(div, {
                 canvas:canvas,
                 onrendered: function (canvas) {
@@ -2902,12 +2904,10 @@
                     return false;
                 });
             }));
-
             eval($("#adult-input-value").change(function () {
                 var adults = $(this).val();
                 $('#adults-val').html(adults);
             }));
-
             eval($("#childerns-input-value").change(function () {
                 var childerns = $(this).val();
                 $('#childern-val').html(childerns);
@@ -2922,9 +2922,9 @@
                     success: function (data) {
                         if (data.status == 'error')
                         {
-							propname.parents('.searchform-navbar').submit();
-							return;
-							propname.parents('.searchform-navbar').submit();
+                            propname.parents('.searchform-navbar').submit();
+                            return;
+                            propname.parents('.searchform-navbar').submit();
                         } else
                         {
                             var obj = JSON.parse(data.property);
