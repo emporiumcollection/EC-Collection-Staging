@@ -212,9 +212,15 @@ header ul li.book-btn .menu-toggle-btn {
         opacity: 1;
 }  
 .editorial-page-booking-bar .ai-custom-deafault-style{
-    background-color: #d3d6d2;
-    color: #000;
-}   
+    background-color: #89837b;
+    color: white;
+}
+#top-bar-booking-form-arrive::placeholder {
+	color: white;
+}
+#top-bar-booking-form-destination::placeholder {
+	color: white;
+}
 .editorial-page-booking-bar input.ai-custom-deafault-style::-webkit-input-placeholder { 
   color: #000;
 }

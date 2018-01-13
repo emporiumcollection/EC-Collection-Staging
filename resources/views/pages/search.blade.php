@@ -600,7 +600,7 @@
 													</div>
 					</div>-->
 				</div>
-                											<div class="hotel-next-previous-outer">
+<!--                											<div class="hotel-next-previous-outer">
 							<div class="previous-btn previous-next-pannel"> 
 								  <img class="img-responsive next-hotel-arrow" src="http://www.emporium-voyage.com/sximo/assets/images/editorial-left-arrow.png" alt="">
 								<a href="http://www.emporium-voyage.com/standart-hotel-moscow">
@@ -625,7 +625,7 @@
 									</div>
 								</a>
 							</div>
-						</div>  
+						</div>  -->
                         <!-- back and lock buttton end -->
                         
                          <!-- start sidebar -->

@@ -69,12 +69,16 @@
             color: #ABA07C;
             opacity: 1;
             font-size: 50px;
+            box-shadow: none;
+            text-shadow: none;
         }
         
         .VegasCloseButton:hover {
             color: #ABA07C;
             opacity: 1;
             font-size: 50px;
+            box-shadow: none;
+            text-shadow: none;
         }
         
         .VegasPopLogo {
