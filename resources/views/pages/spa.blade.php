@@ -1155,10 +1155,10 @@
                                         <div class="row-">
                                             <div class="clearfix"></div>
                                             <div class="col-md-6 col-sm-6 rmimgp">
-
+                                                
                                             </div>
                                             <div class="col-md-6 col-sm-6 single-right-text-product">
-
+                                                
                                             </div>
                                         </div>	
                                     </div>
@@ -1636,7 +1636,7 @@
                         imagesPro += '<p>' + data.amenities.amenities_eng.replace(/\n/g, "<br />") + '</p>';
                         imagesPro += '<p>' + data.typedata.room_desc + '</p>';
                         imagesPro += '</div>';
-                        imagesPro += '<div class="book-btn-sec">';
+                        imagesPro += '<div class="book-btn-sec"><div class="book-btn-sec">';
                         if (data.typedata.price != '')
                         {
                             imagesPro += '<div class="hotel-book-price">';
@@ -1644,7 +1644,7 @@
                             imagesPro += data.typedata.price;
                             imagesPro += '</div">';
                         }
-                        imagesPro += '</div>';
+                        imagesPro += '</div></div>';
                         imagesPro += '<div class="inner-pop-up-book-btn">';
                         imagesPro += '<a href="#" onclick="choose_room_type(' + data.typedata.id + ');">Book</a>';
                         imagesPro += '</div>';
