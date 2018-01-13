@@ -292,10 +292,8 @@
                     <!-- end slider section -->
                     <!-- start contact form section -->
                     <section class="wow fadeIn big-section cstmaiclass" id="align-to-top">
-                        <div class="container-fluid">
-                            <div class="row equalize sm-equalize-auto">
-                                <div class="col-md-12 sm-clear-both wow fadeInLeft no-padding">
-                                    <div class="padding-ten-half-all bg-light-gray md-padding-seven-all xs-padding-30px-all height-100">
+                        
+                                <div class="col-md-12">
                                        
                                         <!-- ---------------------Start Content ------------ -->
                                         <h1>Impressum</h1>
@@ -307,9 +305,7 @@
 <p>powered by&nbsp;<a href="http://number7even.com" target="_blank">number7even</a></p>
                                         <!-- ---------------------End Content ------------ --> 
                     
-                                    </div>
-                                </div>
-                            </div>
+                                    
                         </div>
                     </section>
                 </div>
