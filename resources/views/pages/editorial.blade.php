@@ -2664,6 +2664,9 @@
                             imagesPro += data.typedata.price;
                             imagesPro += '</div">';
                         }
+                        imagesPro += '<div class="hotel-book-price">';
+                        imagesPro += 'BOOK NOW';
+                        imagesPro += '</div">';
                         imagesPro += '</div>';
                         imagesPro += '<div class="inner-pop-up-book-btn">';
                         imagesPro += '<a href="#" onclick="choose_room_type(' + data.typedata.id + ');">Book</a>';
