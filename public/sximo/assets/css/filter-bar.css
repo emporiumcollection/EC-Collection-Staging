@@ -17,6 +17,7 @@ and open the template in the editor.
 }
 .new-sidebar-sk .panel-heading.custom-heading {
     padding: 25px 20px;
+    background-color: rgba(37, 37, 37, 1) !important;
 }
 .col-md-3.col-sm-2.header-text-align {
     margin-top: 24px;
