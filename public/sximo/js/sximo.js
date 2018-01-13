@@ -24,7 +24,7 @@ jQuery(document).ready(function($){
 		})
       /*Return to top*/
       var offset = 220;
-      var duration = 800;
+      var duration = 500;
       var button = $('<a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>');
       button.appendTo("body");
       
@@ -38,7 +38,7 @@ jQuery(document).ready(function($){
     
       jQuery('.back-to-top').click(function(event) {
           event.preventDefault();
-          jQuery('html, body').animate({scrollTop: 0}, duration);
+          jQuery('html, body').animate({scrollTop: 100}, duration);
           
           return false;
       });
