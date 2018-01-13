@@ -545,6 +545,16 @@
                             </div>
                         </div>
                     </section>
+
+                    <style>
+                        .footer
+                        {
+                            background-color: #f0f0f0 !important;
+                        }
+                    </style>
+                    <div class="neww-footer">
+                        @include('layouts/elliot/ai_footer_social')
+                    </div>
                 </div>
             </div>
         </div>

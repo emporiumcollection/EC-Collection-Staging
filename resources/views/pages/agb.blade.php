@@ -2,7 +2,7 @@
 <html class="no-js" lang="en">
     <head>
         <!-- title -->
-        <title>Membership Page</title>
+        <title>Terms and Conditions</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1" />
@@ -191,216 +191,107 @@
             <!-- AIC Harman email phone sidebar add end-->
             <div class="row">
                 <div class="col-md-2">
-                    <div class="right-menus right-menu-sidebar">
+                     <div class="right-menus right-menu-sidebar">
                         <div class="hotels-logo">
                             <img alt="" src="{{ asset('sximo/assets/images/design-location-logo.png')}}" class="img-responsive">
                         </div>
                         <div class="panel-group new-sidebar-sk" id="accordion">
-                            <div class="panel panel-default custom-post-panel">
-                                <a href="#" class="heading-stying collapsed">
-                                    <div class="panel-heading custom-heading">
-                                        Contact
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="panel panel-default custom-post-panel">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#webpage2" class="heading-stying collapsed">
-                                    <div class="panel-heading custom-heading">
-                                        Membership
-                                    </div>
-                                </a>
-                                <div id="webpage2" class="panel-collapse  collapse">
-                                    <div class="panel-body custom-panel-body">
-                                        <div class="dl-filter">
-                                            <form>
-                                                <div class="form-group post-filter-inputs">
-                                                    <label><a href="javascript:void(0);">Beach Hotels</a></label>
-                                                </div>
-                                                <div class="form-group post-filter-inputs">
-                                                    <label><a href="javascript:void(0);">Green Luxury Hotels</a></label>
-                                                </div>
-                                                <div class="form-group post-filter-inputs">
-                                                    <label>
-                                                        <a href="javascript:void(0);">City Escapes Luxury Hotels</a>
-                                                    </label>
-                                                </div>
-                                                <div class="form-group post-filter-inputs">
-                                                    <label><a href="javascript:void(0);">Unusual Adventure Hotels</a></label>
-                                                </div>
-                                                <div class="form-group post-filter-inputs">
-                                                    <label><a href="javascript:void(0);">Family Friendly Luxury Hotels</a></label>
-                                                </div>
-                                            </form>
-
+                            {{--*/ $page_menus = SiteHelpers::menus('business') /*--}}
+                            @if(!empty($page_menus))
+                            @foreach ($page_menus as $pmenu)
+                                <div class="panel panel-default custom-post-panel">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#webpage2" class="heading-stying collapsed">
+                                        <div class="panel-heading custom-heading">
+                                            @if(CNF_MULTILANG ==1 && isset($pmenu['menu_lang']['title'][Session::get('lang')]))
+                                                {{ $pmenu['menu_lang']['title'][Session::get('lang')] }}
+                                            @else
+                                                {{$pmenu['menu_name']}}
+                                            @endif
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel panel-default custom-post-panel">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#webpage3" class="heading-stying collapsed">
-                                    <div class="panel-heading custom-heading">
-                                        About US
-                                    </div>
-                                </a>
-                                <div id="webpage3" class="panel-collapse  collapse">
-                                    <div class="panel-body custom-panel-body">
-                                        <div class="dl-filter">
-                                            <form>
-                                                <div class="form-group post-filter-inputs">
-                                                    <label><a href="javascript:void(0);">Demo4</a></label>
+                                    </a>
+                                    @if(count($pmenu['childs']) > 0)
+                                        <div id="webpage2" class="panel-collapse  collapse">
+                                            <div class="panel-body custom-panel-body">
+                                                <div class="dl-filter">
+                                                    @foreach ($pmenu['childs'] as $pmenu2)
+                                                        <div class="form-group post-filter-inputs">
+                                                            <label>
+                                                                <a @if($pmenu2['menu_type'] =='external') href="{{ URL::to($pmenu2['url'])}}" @else href="{{ URL::to($pmenu2['module'])}}" @endif>
+                                                                    @if(CNF_MULTILANG ==1 && isset($pmenu2['menu_lang']['title'][Session::get('lang')]))
+                                                                        {{ $pmenu2['menu_lang']['title'][Session::get('lang')] }}
+                                                                    @else
+                                                                        {{$pmenu2['menu_name']}}
+                                                                    @endif
+                                                                </a>
+                                                            </label>
+                                                        </div>
+                                                    @endforeach
                                                 </div>
-                                                <div class="form-group post-filter-inputs">
-                                                    <label><a href="javascript:void(0);">Demo5</a></label>
-                                                </div>
-                                                <div class="form-group post-filter-inputs">
-                                                    <label>
-                                                        <a href="javascript:void(0);">Demo6</a>
-                                                    </label>
-                                                </div>
-                                                <div class="form-group post-filter-inputs">
-                                                    <label><a href="javascript:void(0);">Demo7</a></label>
-                                                </div>
-                                                <div class="form-group post-filter-inputs">
-                                                    <label><a href="javascript:void(0);">Demo8</a></label>
-                                                </div>
-                                            </form>
-
+                                            </div>
                                         </div>
-                                    </div>
+                                    @endif
                                 </div>
-                            </div>
-                            <div class="panel panel-default custom-post-panel">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#webpage4" class="heading-stying collapsed">
-                                    <div class="panel-heading custom-heading">
-                                        Contact Us
-                                    </div>
-                                </a>
-                                <div id="webpage4" class="panel-collapse  collapse">
-                                    <div class="panel-body custom-panel-body">
-                                        <div class="dl-filter">
-                                            <form>
-                                                <div class="form-group post-filter-inputs">
-                                                    <label><a href="javascript:void(0);">Demo</a></label>
-                                                </div>
-                                                <div class="form-group post-filter-inputs">
-                                                    <label><a href="javascript:void(0);">Demo2</a></label>
-                                                </div>
-                                            </form>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
+                            @endif
                         </div>
                         <section class="regular slider">
                             <div class="slick-cstm-width">
-                                <a href="http://www.bocadolobo.com/en/landing-page/de-market/" tabindex="-1"><img src="http://www.emporium-voyage.com/uploads/users/advertisement/1.png"></a>
-                            </div>
-                            <div class="slick-cstm-width">
                                 <div class="side-bar-why-book-with-us">
                                     <div class="book-with-us-tittles">
                                         <h2>Why book with us?</h2>
                                     </div>
                                     <ul class="side-bar-book-with-us-list">
-                                        <li>
-                                            <h3>Handpicked Selection of Hotels</h3>
-                                            <p>from selected luxury destinations worldwide</p>
-                                        </li>
-                                        <li>
-                                            <h3>Upgrade and Late Checkout</h3>
-                                            <p>At any Hotel upon Avilability</p>
-                                        </li>
-                                        <li>
-                                            <h3>Preferred Guest Discounts at New Hotels</h3>
-                                            <p>join our members club</p>
-                                        </li>
-                                        <li>
-                                            <h3>Free Wifi</h3>
-                                            <p>Guaranteed at all our Partner Hotels</p>
-                                        </li>
+                                        @if(!empty($whybookwithus))
+                                            @foreach($whybookwithus as $withus)
+                                                <li>
+                                                    <h3>{{$withus->title}}</h3>
+                                                    <p>{{$withus->sub_title}}</p>
+                                                </li>
+                                            @endforeach
+                                        @endif
                                     </ul>
                                 </div>
                             </div>
+                            @if(!empty($landingads))
+                            @foreach($landingads as $lnads)
                             <div class="slick-cstm-width">
-                                <a href="http://www.bocadolobo.com/en/landing-page/de-market/" tabindex="-1"><img src="http://www.emporium-voyage.com/uploads/users/advertisement/1.png"></a>
+                                <a href="{{ (strpos($lnads->adv_link, 'http://') !== false) ? $lnads->adv_link : 'http://'.$lnads->adv_link }}"><img src="{{URL::to('uploads/users/advertisement/'.$lnads->adv_img)}}"></a>
                             </div>
-                            <div class="slick-cstm-width">
-                                <div class="side-bar-why-book-with-us">
-                                    <div class="book-with-us-tittles">
-                                        <h2>Why book with us?</h2>
-                                    </div>
-                                    <ul class="side-bar-book-with-us-list">
-                                        <li>
-                                            <h3>Handpicked Selection of Hotels</h3>
-                                            <p>from selected luxury destinations worldwide</p>
-                                        </li>
-                                        <li>
-                                            <h3>Upgrade and Late Checkout</h3>
-                                            <p>At any Hotel upon Avilability</p>
-                                        </li>
-                                        <li>
-                                            <h3>Preferred Guest Discounts at New Hotels</h3>
-                                            <p>join our members club</p>
-                                        </li>
-                                        <li>
-                                            <h3>Free Wifi</h3>
-                                            <p>Guaranteed at all our Partner Hotels</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                            @endforeach
+                            @endif
                         </section>
                     </div>
                 </div>
                 <div class="col-md-10 no-padding">
-                    <section class="wow fadeIn no-padding cstmaiclass">
-                        <div class="swiper-auto-height-container position-relative width-100">
-                            <div class="swiper-wrapper overflow-hidden">
-                                <!-- start slider item -->
-                                <div class="swiper-slide padding-100px-all cover-background position-relative xs-padding-20px-all" style="background-image:url(http://placehold.it/1920x1100)">
-                                    <div class="position-relative width-55 md-width-60 sm-width-85 xs-width-100 display-inline-block slide-banner last-paragraph-no-margin">
-                                        <div class="padding-80px-all bg-black-opacity sm-padding-40px-all xs-padding-30px-all xs-text-center xs-width-100">
-                                            <h3 class="alt-font text-white sm-width-100">A digital studio crafting beautiful experiences.</h3>
-                                            <p class="sm-width-100 lorem-para">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                                            <a href="services-classic.html" class="margin-35px-top sm-margin-15px-top btn btn-white">Explore services</a>
-                                        </div> 
-                                    </div>
+                     @if(!empty($pageslider))
+                        <section class="wow fadeIn no-padding cstmaiclass">
+                            <div class="swiper-auto-height-container position-relative width-100">
+                                <div class="swiper-wrapper overflow-hidden">
+                                    @foreach($pageslider as $key => $slider_row)
+                                        <!-- start slider item -->
+                                        <div class="swiper-slide padding-100px-all cover-background position-relative xs-padding-20px-all" style="background-image:url({{url()}}/uploads/slider_images/{{$slider_row->slider_img}})">
+                                            <div class="position-relative width-55 md-width-60 sm-width-85 xs-width-100 display-inline-block slide-banner last-paragraph-no-margin">
+                                                <div class="padding-80px-all bg-black-opacity sm-padding-40px-all xs-padding-30px-all xs-text-center xs-width-100">
+                                                    <h3 class="alt-font text-white sm-width-100">{{$slider_row->slider_title}}</h3>
+                                                    <p class="sm-width-100 lorem-para">{{$slider_row->slider_description}}</p>
+                                                    <a href="{{$slider_row->slider_link}}" class="margin-35px-top sm-margin-15px-top btn btn-white">Explore services</a>
+                                                </div> 
+                                            </div>
+                                        </div>
+                                        <!-- end slider item -->
+                                    @endforeach
                                 </div>
-                                <!-- end slider item -->
-                                <!-- start slider item -->
-                                <div class="swiper-slide padding-100px-all cover-background position-relative xs-padding-20px-all" style="background-image:url(http://placehold.it/1920x1697)">
-                                    <div class="position-relative width-55 md-width-60 sm-width-85 xs-width-100 display-inline-block slide-banner last-paragraph-no-margin"> 
-                                        <div class="padding-80px-all bg-black-opacity sm-padding-40px-all xs-padding-30px-all xs-text-center xs-width-100">
-                                            <h3 class="alt-font text-white sm-width-100">A digital studio crafting beautiful experiences.</h3>
-                                            <p class="sm-width-100 lorem-para">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                                            <a href="services-classic.html" class="margin-35px-top sm-margin-15px-top btn btn-white">Explore services</a>
-                                        </div>  
-                                    </div>
-                                </div>
-                                <!-- end slider item -->
-                                <!-- start slider item -->
-                                <div class="swiper-slide padding-100px-all cover-background position-relative xs-padding-20px-all" style="background-image:url(http://placehold.it/1920x1526)">
-                                    <div class="position-relative width-55 md-width-60 sm-width-85 xs-width-100 display-inline-block slide-banner last-paragraph-no-margin">
-                                        <div class="padding-80px-all bg-black-opacity sm-padding-40px-all xs-padding-30px-all xs-text-center xs-width-100">
-                                            <h3 class="alt-font text-white sm-width-100">A digital studio crafting beautiful experiences.</h3>
-                                            <p class="sm-width-100 lorem-para">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                                            <a href="services-classic.html" class="margin-35px-top sm-margin-15px-top btn btn-white">Explore services</a>
-                                        </div>     
-                                    </div>
-                                </div>
-                                <!-- end slider item -->
-                            </div>
 
-                            <div class="navigation-area">
-                                <div class="swiper-button-next swiper-next-style4 bg-primary text-white"><i class="fa fa-arrow-up" aria-hidden="true"></i></div>
-                                <div class="swiper-button-prev swiper-prev-style4"><i class="fa fa-arrow-down" aria-hidden="true"></i></div>
+                                <div class="navigation-area">
+                                    <div class="swiper-button-next swiper-next-style4 bg-primary text-white"><i class="fa fa-arrow-up" aria-hidden="true"></i></div>
+                                    <div class="swiper-button-prev swiper-prev-style4"><i class="fa fa-arrow-down" aria-hidden="true"></i></div>
+                                </div>
+                                <div class="scroll-button">
+                                    <a href="#align-to-top" class="align-to-top-arrow"><img src="http://www.emporium-voyage.com/sximo/assets/images/scroll-down.png" class="down-arrow-align animate-arrow" alt=""> </a>
+                                </div>
                             </div>
-                            <div class="scroll-button">
-                                <a href="#align-to-top" class="align-to-top-arrow"><img src="http://www.emporium-voyage.com/sximo/assets/images/scroll-down.png" class="down-arrow-align animate-arrow" alt=""> </a>
-                            </div>
-                        </div>
-                    </section>
-                    <!-- end slider section -->
+                        </section>
+                    @endif
                     <!-- start contact form section -->
                     <section class="wow fadeIn big-section cstmaiclass" id="align-to-top">
                         <div class="col-md-12">
