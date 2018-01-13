@@ -38,7 +38,7 @@ jQuery(document).ready(function($){
     
       jQuery('.back-to-top').click(function(event) {
           event.preventDefault();
-          jQuery('html, body').animate({scrollTop: 100}, duration);
+          jQuery('html, body').animate({scrollTop: 800}, duration);
           
           return false;
       });
