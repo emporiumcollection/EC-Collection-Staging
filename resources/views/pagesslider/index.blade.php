@@ -53,7 +53,7 @@
 		<option value="">-Select-</option>
 		@if(!empty($allpages))
 			@foreach($allpages as $catlist)
-				<option value="{{$catlist->pageID}}" <?php echo ($curntcat == $catlist->pageID) ? " selected='selected' " : '' ; ?>>{{$catlist->title}}</option>
+				<option value="{{$catlist->pageID}}" <?php echo (isset($curntcat) && $curntcat == $catlist->pageID) ? " selected='selected' " : '' ; ?>>{{$catlist->title}}</option>
 			@endforeach
 		@endif
 	</select>
