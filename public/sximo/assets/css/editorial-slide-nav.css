@@ -96,6 +96,21 @@ body.show_more-page-opend {
     width: 174px;
     z-index: 99;
 }
+.hotel-book-price1 {
+    background: #ABA07C;
+    color: #252525;
+    font-size: 25px;
+    height: 71px;
+    margin-left: -174px;
+    opacity: 1;
+    overflow-wrap: break-word;
+    padding: 27px 5px;
+    position: absolute;
+    text-align: center;
+    text-transform: uppercase;
+    width: 174px;
+    z-index: 99;
+}
 .text-section{
     overflow: auto;
     padding: 0 25px;
