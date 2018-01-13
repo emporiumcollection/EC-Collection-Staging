@@ -1129,6 +1129,7 @@
                                 margin-right: 13px;
                                 margin-left: 8px;
                                 color: #ABA07C;
+                                font-size: 16px;
                             }
 
                             
@@ -2664,9 +2665,6 @@
                             imagesPro += data.typedata.price;
                             imagesPro += '</div">';
                         }
-                        imagesPro += '<div class="hotel-book-price1">';
-                        imagesPro += 'BOOK NOW';
-                        imagesPro += '</div">';
                         imagesPro += '</div>';
                         imagesPro += '<div class="inner-pop-up-book-btn">';
                         imagesPro += '<a href="#" onclick="choose_room_type(' + data.typedata.id + ');">Book</a>';

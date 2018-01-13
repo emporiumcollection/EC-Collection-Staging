@@ -513,6 +513,7 @@
             margin-right: 25px;
             margin-left: 8px;
             color: #ABA07C;
+            font-size: 16px;
         }
         .contact-aside li a i {
             margin-right: 25px;
