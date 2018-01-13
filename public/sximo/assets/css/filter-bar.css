@@ -19,6 +19,12 @@ and open the template in the editor.
     padding: 25px 20px;
     background-color: rgba(37, 37, 37, 1) !important;
 }
+.new-sidebar-sk .dl-filter .post-filter-inputs a {
+    text-decoration: none;
+}
+.new-sidebar-sk .dl-filter .post-filter-inputs a:hover {
+    text-decoration: none;
+}
 .col-md-3.col-sm-2.header-text-align {
     margin-top: 24px;
 }
