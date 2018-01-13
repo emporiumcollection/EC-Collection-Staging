@@ -541,7 +541,7 @@
 														Destination Channels
 													</div>
 												</a>
-												<div id="maindestinations" class="panel-collapse gggsrdf collapse {{($continent!='') ? 'in' : '' }}">
+												<div id="maindestinations" class="panel-collapse collapse {{($continent!='') ? 'in' : '' }}">
 													<div class="panel-body custom-panel-body">
 														<div class="dl-filter">
 															<!--First Parent-->
