@@ -10,9 +10,11 @@
         <link href="{{ asset('sximo/assets/css/landing-page-styles.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/style.css')}}" rel="stylesheet" type="text/css"/>
 
+
         <link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/animate.css')}}" />
         <!-- bootstrap -->
         <link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/bootstrap.min.css')}}" />
+        <link href="{{ asset('sximo/assets/css/filter-bar.css')}}" rel="stylesheet" type="text/css"/>
         <!-- font-awesome icon -->
         <link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/font-awesome.min.css')}}" />
         <!-- swiper carousel -->
@@ -113,7 +115,7 @@
                 margin-left: 8px;
                 color: #ABA07C;
             }
-           
+
         </style>
         <script type="text/javascript">
             $(document).on('ready', function () {
@@ -190,26 +192,103 @@
                         <div class="hotels-logo">
                             <img alt="" src="{{ asset('sximo/assets/images/design-location-logo.png')}}" class="img-responsive">
                         </div>
-                        <ul>
-                            <li>
-                                <a href="#" class="book-button open-search-page">Search Our Collection</a>
-                            </li>
-                            <li>
-                                <a href="#" class="book-button open-date-page">Search By Date</a>
-                            </li>
-                            <li>
-                                <a href="#" class="book-button open-destination-page">Select Your Destination</a>
-                            </li>
-                            <li>
-                                <a href="#" class="book-button open-experience-page">Select Your Experience</a>
-                            </li>
-                            <!--<li>
-                                    <a href="#" class="book-button open-about-page">About</a>
-                            </li>
-                            <li>
-                                    <a href="#" class="book-button open-personalized-page">Personalized Service</a>
-                            </li>-->
-                        </ul>
+                        <div class="panel-group new-sidebar-sk" id="accordion">
+							<div class="panel panel-default custom-post-panel">
+                                <a href="#" class="heading-stying collapsed">
+                                    <div class="panel-heading custom-heading">
+                                        Contact
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="panel panel-default custom-post-panel">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#webpage2" class="heading-stying collapsed">
+                                    <div class="panel-heading custom-heading">
+                                        Membership
+                                    </div>
+                                </a>
+                                <div id="webpage2" class="panel-collapse  collapse">
+                                    <div class="panel-body custom-panel-body">
+                                        <div class="dl-filter">
+                                            <form>
+                                                <div class="form-group post-filter-inputs">
+                                                    <label><a href="javascript:void(0);">Beach Hotels</a></label>
+                                                </div>
+                                                <div class="form-group post-filter-inputs">
+                                                    <label><a href="javascript:void(0);">Green Luxury Hotels</a></label>
+                                                </div>
+                                                <div class="form-group post-filter-inputs">
+                                                    <label>
+                                                        <a href="javascript:void(0);">City Escapes Luxury Hotels</a>
+                                                    </label>
+                                                </div>
+                                                <div class="form-group post-filter-inputs">
+                                                    <label><a href="javascript:void(0);">Unusual Adventure Hotels</a></label>
+                                                </div>
+                                                <div class="form-group post-filter-inputs">
+                                                    <label><a href="javascript:void(0);">Family Friendly Luxury Hotels</a></label>
+                                                </div>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+							<div class="panel panel-default custom-post-panel">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#webpage3" class="heading-stying collapsed">
+                                    <div class="panel-heading custom-heading">
+                                        About US
+                                    </div>
+                                </a>
+                                <div id="webpage3" class="panel-collapse  collapse">
+                                    <div class="panel-body custom-panel-body">
+                                        <div class="dl-filter">
+                                            <form>
+                                                <div class="form-group post-filter-inputs">
+                                                    <label><a href="javascript:void(0);">Demo4</a></label>
+                                                </div>
+                                                <div class="form-group post-filter-inputs">
+                                                    <label><a href="javascript:void(0);">Demo5</a></label>
+                                                </div>
+                                                <div class="form-group post-filter-inputs">
+                                                    <label>
+                                                        <a href="javascript:void(0);">Demo6</a>
+                                                    </label>
+                                                </div>
+                                                <div class="form-group post-filter-inputs">
+                                                    <label><a href="javascript:void(0);">Demo7</a></label>
+                                                </div>
+                                                <div class="form-group post-filter-inputs">
+                                                    <label><a href="javascript:void(0);">Demo8</a></label>
+                                                </div>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+							<div class="panel panel-default custom-post-panel">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#webpage4" class="heading-stying collapsed">
+                                    <div class="panel-heading custom-heading">
+                                        Contact Us
+                                    </div>
+                                </a>
+                                <div id="webpage4" class="panel-collapse  collapse">
+                                    <div class="panel-body custom-panel-body">
+                                        <div class="dl-filter">
+                                            <form>
+                                                <div class="form-group post-filter-inputs">
+                                                    <label><a href="javascript:void(0);">Demo</a></label>
+                                                </div>
+                                                <div class="form-group post-filter-inputs">
+                                                    <label><a href="javascript:void(0);">Demo2</a></label>
+                                                </div>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <section class="regular slider">
                             <div class="slick-cstm-width">
                                 <a href="http://www.bocadolobo.com/en/landing-page/de-market/" tabindex="-1"><img src="http://www.emporium-voyage.com/uploads/users/advertisement/1.png"></a>
