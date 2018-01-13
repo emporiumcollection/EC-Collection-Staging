@@ -2584,7 +2584,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                         <div class="panel panel-default custom-post-panel">
                                             <a data-toggle="collapse" data-parent="#accordion" href="#book-your-destination" class="heading-stying collapsed">
                                                 <div class="panel-heading custom-heading">
-                                                    Book Your Destination
+                                                    Change My Dates
                                                 </div>
                                             </a>
                                             <div id="book-your-destination" class="panel-collapse collapse">
