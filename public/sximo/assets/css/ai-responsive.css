@@ -98,7 +98,7 @@
     }
     .dates li select {
 	padding-bottom: 77px !important;
-	width: 45px;
+	width: auto;
 	height: 104px;
     }
 }
@@ -150,7 +150,7 @@
     }
     .dates li select {
 	padding-bottom: 77px !important;
-	width: 45px;
+	width: auto;
 	height: 104px;
     }
     
