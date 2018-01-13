@@ -1160,7 +1160,7 @@
 					<div class="go-back-button-container">
 						<button class="go-back-button" onclick="goBack()">Go Back</button>
                                                 <div class="previous-page-screen-short-container">
-                                                    <a href="javascript:void();"  onclick="goBack()"/>
+                                                    <a href=""  onclick="goBack()"/>
 						
 							<?php if(\Session::get('ai_previous_page')): ?>
 								<img src="{{URL()}}/sximo/previous_page_image/<?php echo \Session::get('ai_previous_page'); ?>">
