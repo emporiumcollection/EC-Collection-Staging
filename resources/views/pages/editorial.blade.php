@@ -3011,6 +3011,16 @@
                         function(){ $(this).removeClass('active') }
                     )
                 </script>
+                
+                <script>
+                // scrolltop
+                    $('#back-to-top').click(function (){
+                    $("html,body").animate({
+                    scrollTop: 0
+                    }, 1000);
+                    return false;
+                    });
+                </script>
         <!-- contact email aside -->
     
 		@include('layouts/elliot/ai_lightbox_popups_detailpage')
