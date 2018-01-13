@@ -271,7 +271,309 @@
                     </div>
                 </div>
                 <div class="col-md-10 no-padding">
-                    
+                    <section class="wow fadeIn no-padding cstmaiclass">
+                        <div class="swiper-auto-height-container position-relative width-100">
+                            <div class="swiper-wrapper overflow-hidden">
+                                <!-- start slider item -->
+                                <div class="swiper-slide padding-100px-all cover-background position-relative xs-padding-20px-all" style="background-image:url(http://placehold.it/1920x1100)">
+                                    <div class="position-relative width-55 md-width-60 sm-width-85 xs-width-100 display-inline-block slide-banner last-paragraph-no-margin">
+                                        <div class="padding-80px-all bg-black-opacity sm-padding-40px-all xs-padding-30px-all xs-text-center xs-width-100">
+                                            <h3 class="alt-font text-white sm-width-100">A digital studio crafting beautiful experiences.</h3>
+                                            <p class="sm-width-100 lorem-para">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                                            <a href="services-classic.html" class="margin-35px-top sm-margin-15px-top btn btn-white">Explore services</a>
+                                        </div> 
+                                    </div>
+                                </div>
+                                <!-- end slider item -->
+                                <!-- start slider item -->
+                                <div class="swiper-slide padding-100px-all cover-background position-relative xs-padding-20px-all" style="background-image:url(http://placehold.it/1920x1697)">
+                                    <div class="position-relative width-55 md-width-60 sm-width-85 xs-width-100 display-inline-block slide-banner last-paragraph-no-margin"> 
+                                        <div class="padding-80px-all bg-black-opacity sm-padding-40px-all xs-padding-30px-all xs-text-center xs-width-100">
+                                            <h3 class="alt-font text-white sm-width-100">A digital studio crafting beautiful experiences.</h3>
+                                            <p class="sm-width-100 lorem-para">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                                            <a href="services-classic.html" class="margin-35px-top sm-margin-15px-top btn btn-white">Explore services</a>
+                                        </div>  
+                                    </div>
+                                </div>
+                                <!-- end slider item -->
+                                <!-- start slider item -->
+                                <div class="swiper-slide padding-100px-all cover-background position-relative xs-padding-20px-all" style="background-image:url(http://placehold.it/1920x1526)">
+                                    <div class="position-relative width-55 md-width-60 sm-width-85 xs-width-100 display-inline-block slide-banner last-paragraph-no-margin">
+                                        <div class="padding-80px-all bg-black-opacity sm-padding-40px-all xs-padding-30px-all xs-text-center xs-width-100">
+                                            <h3 class="alt-font text-white sm-width-100">A digital studio crafting beautiful experiences.</h3>
+                                            <p class="sm-width-100 lorem-para">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                                            <a href="services-classic.html" class="margin-35px-top sm-margin-15px-top btn btn-white">Explore services</a>
+                                        </div>     
+                                    </div>
+                                </div>
+                                <!-- end slider item -->
+                            </div>
+
+                            <div class="navigation-area">
+                                <div class="swiper-button-next swiper-next-style4 bg-primary text-white"><i class="fa fa-arrow-up" aria-hidden="true"></i></div>
+                                <div class="swiper-button-prev swiper-prev-style4"><i class="fa fa-arrow-down" aria-hidden="true"></i></div>
+                            </div>
+                            <div class="scroll-button">
+                                <a href="#align-to-top" class="align-to-top-arrow"><img src="http://www.emporium-voyage.com/sximo/assets/images/scroll-down.png" class="down-arrow-align animate-arrow" alt=""> </a>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- end slider section -->
+                    <!-- start contact form section -->
+                    <section class="wow fadeIn big-section cstmaiclass" id="align-to-top">
+                        <div class="container-fluid">
+                            <div class="row equalize sm-equalize-auto">
+                                <div class="col-md-12 sm-clear-both wow fadeInLeft no-padding">
+                                    <div class="padding-ten-half-all bg-light-gray md-padding-seven-all xs-padding-30px-all height-100">
+                                        <!--<span class="text-extra-dark-gray alt-font text-large font-weight-600 margin-25px-bottom display-block">Application form</span>--> 
+                                        <form id="contact-form" action="javascript:void(0)" method="post">
+                                            <div class="col-md-12 sm-clear-both">
+                                                <div id="success-contact-form" class="no-margin-lr"></div>
+                                            </div>
+                                            <div class="row">
+                                                <h5 class="ev-regural-heading text-uppercase margin-20px-bottom font-weight-700 sm-width-100 xs-width-100">Hotel Information</h5>
+                                                <div class="col-md-6 col-sm-12 no-padding-left">
+                                                    <label>*Hotel Name</label>
+                                                    <input type="text" name="name" id="name" placeholder="Hotel Name*" class="bg-white medium-input">
+                                                </div>
+                                                <div class="col-md-6 col-sm-12 no-padding-right">
+                                                    <label>*Hotel Status</label>
+                                                    <select class="bg-white medium-input">
+                                                        <option value="">Select Status</option>
+                                                        <option value="">Open</option>
+                                                        <option value="">Construction phase</option>
+                                                        <option value="">Planning phase</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6 col-sm-12 no-padding-left">
+                                                    <label>*Hotel Type</label>
+                                                    <select class="bg-white medium-input">
+                                                        <option value="">Hotel Type</option>
+                                                        <option value="">Alternative</option>
+                                                        <option value="">Beach Resort</option>
+                                                        <option value="">Resort</option>
+                                                        <option value="">City</option>
+                                                        <option value="">Mountain</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6 col-sm-12 no-padding-right">
+                                                    <label>*Hotel Building</label>
+                                                    <select class="bg-white medium-input">
+                                                        <option value="">Hotel Building</option>
+                                                        <option value="">New Construction</option>
+                                                        <option value="">Existing Building</option>
+                                                        <option value="">Conversion</option>
+                                                    </select>
+                                                </div> 
+                                                <div class="col-md-12 col-sm-12 no-padding">
+                                                    <label>*Hotel Opening Date</label>
+                                                    <input type="date" name="Hotel Opening Date" placeholder="Hotel Opening Date*" class="bg-white medium-input">
+                                                </div>
+                                                <div class="col-md-6 col-sm-12 no-padding-left">
+                                                    <label>*Street & Number</label>
+                                                    <input type="text" name="Street & Number" placeholder="Street & Number*" class="bg-white medium-input">
+                                                </div>
+                                                <div class="col-md-6 col-sm-12 no-padding-right">
+                                                    <label>*City</label>
+                                                    <input type="text" name="City" placeholder="City*" class="bg-white medium-input">
+                                                </div>
+                                                <div class="col-md-6 col-sm-12 no-padding-left">
+                                                    <label>*Country</label>
+                                                    <input type="text" name="Country" placeholder="Country*" class="bg-white medium-input">
+                                                </div>
+                                                <div class="col-md-6 col-sm-12 no-padding-right">
+                                                    <label>*Postal Code</label>
+                                                    <input type="text" name="postal" placeholder="Postal Code*" class="bg-white medium-input">
+                                                </div>
+                                                <div class="col-md-12 sm-clear-both no-padding">
+                                                    <label>*Hotel Website</label>
+                                                    <input type="text" name="website" placeholder="Hotel Website*" class="bg-white medium-input">
+                                                </div>
+                                                <div class="col-md-4 col-sm-12 no-padding-left">
+                                                    <label>*Days open for business</label>
+                                                    <input type="text" name="Days open for business" placeholder="Days open for business*" class="bg-white medium-input">
+                                                </div>
+                                                <div class="col-md-4 col-sm-12">
+                                                    <label>Avg. Daily Rate</label>
+                                                    <input type="text" name="Avg. Daily Rate" placeholder="Avg. Daily Rate*" value="EUR" class="bg-white medium-input">
+                                                </div>
+                                                <div class="col-md-4 col-sm-12 no-padding-right">
+                                                    <label>Avg. Occupancy</label>
+                                                    <input type="text" name="Avg. Occupancy" placeholder="Avg. Occupancy*" value="%" class="bg-white medium-input">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <h5 class="ev-regural-heading text-uppercase margin-20px-bottom font-weight-700 sm-width-100 xs-width-100">Hotel Facilities</h5>
+                                                <div class="col-md-6 col-sm-12 no-padding-left">
+                                                    <label>*Number of Rooms</label>
+                                                    <input type="text" name="Number of Rooms" placeholder="Number of Rooms*" class="bg-white medium-input">
+                                                </div>
+                                                <div class="col-md-6 col-sm-12 no-padding-right">
+                                                    <label>*Number of Suites</label>
+                                                    <input type="text" name="Number of Suites" placeholder="Number of Suites*" class="bg-white medium-input">
+                                                </div>
+                                                <div class="row padding-row">
+                                                    <div class="col-md-6 col-sm-12 no-padding-left">
+                                                        <label>F & B Outlets</label>
+                                                        <select multiple="" class="bg-white medium-input">
+                                                            <option value="">-</option>
+                                                            <option value="Restaurant">Restaurant</option>
+                                                            <option value="Bar">Bar</option>
+                                                            <option value="Beach Bar">Beach Bar</option>
+                                                            <option value="Club">Club</option>
+                                                            <option value="Lobby/Lounge">Lobby/Lounge</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12 no-padding-right">
+                                                        <label>Guest Facilities</label>
+                                                        <select multiple="" class="bg-white medium-input">
+                                                            <option value="">-</option>
+                                                            <option value="">Gym</option>
+                                                            <option value="">Indoor Pool</option>
+                                                            <option value="">Outdoor Pool</option>
+                                                            <option value="">Spa</option>
+                                                            <option value="">Business Center</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-sm-12 no-padding-left">
+                                                    <label>Meeting Area</label>
+                                                    <input type="text" name="Number of Suites" placeholder="Meeting Area*" value="sqm" class="bg-white medium-input">
+                                                </div>
+                                                <div class="col-md-6 col-sm-12 no-padding-right">
+                                                    <label>Meeting Facilities</label>
+                                                    <select class="bg-white medium-input">
+                                                        <option>Please select</option>
+                                                        <option>YES</option>
+                                                        <option>NO</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-12 sm-clear-both no-padding">
+                                                    <label>Comments/Other Facilities</label>
+                                                    <textarea name="comment" id="comment" placeholder="Comments/Other Facilities" rows="5" class="bg-white medium-textarea"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <h5 class="ev-regural-heading text-uppercase margin-20px-bottom font-weight-700 sm-width-100 xs-width-100">Hotel Description</h5>
+                                                <div class="col-md-6 col-sm-12 no-padding-left">
+                                                    <label>*Hotel Concept</label>
+                                                    <textarea name="Concept" id="comment" placeholder="*Hotel Concept" rows="5" class="bg-white medium-textarea"></textarea>
+                                                </div>
+                                                <div class="col-md-6 col-sm-12 no-padding-right">
+                                                    <label>Architecture & Design</label>
+                                                    <textarea name="architecture" id="comment" placeholder="*Architecture & Design" rows="5" class="bg-white medium-textarea"></textarea>
+                                                </div>
+                                                <div class="col-md-6 col-sm-12 no-padding-left">
+                                                    <label>Architect Name</label>
+                                                    <input type="text" name="Architect Name" placeholder="Architect Name" class="bg-white medium-input">
+                                                </div>
+                                                <div class="col-md-6 col-sm-12 no-padding-right">
+                                                    <label>Architect Website</label>
+                                                    <input type="text" name="Architect Website" placeholder="Architect Website" class="bg-white medium-input">
+                                                </div>
+                                                <div class="col-md-6 col-sm-12 no-padding-left">
+                                                    <label>Interior Designer Name</label>
+                                                    <input type="text" name="Interior" placeholder="Interior Designer Name" class="bg-white medium-input">
+                                                </div>
+                                                <div class="col-md-6 col-sm-12 no-padding-right">
+                                                    <label>Interior Designer Website</label>
+                                                    <input type="text" name="Designer Website" placeholder="Interior Designer Website" class="bg-white medium-input">
+                                                </div>
+                                                <div class="col-md-6 col-sm-12 no-padding-left">
+                                                    <label>Local Integration</label>
+                                                    <textarea name="Integration" id="comment" placeholder="Local Integration" rows="5" class="bg-white medium-textarea"></textarea>
+                                                </div>
+                                                <div class="col-md-6 col-sm-12 no-padding-right">
+                                                    <label>Brand</label>
+                                                    <textarea name="Brand" id="comment" placeholder="Brand" rows="5" class="bg-white medium-textarea"></textarea>
+                                                </div>
+                                                <div class="col-md-6 col-sm-12 no-padding-left">
+                                                    <label>Brand Agency Name</label>
+                                                    <input type="text" name="Agency" placeholder="Brand Agency Name" class="bg-white medium-input">
+                                                </div>
+                                                <div class="col-md-6 col-sm-12 no-padding-right">
+                                                    <label>Brand Agency Website</label>
+                                                    <input type="text" name="Agency Website" placeholder="Brand Agency Website" class=" bg-white medium-input">
+                                                </div>
+                                                <div class="col-md-6 col-sm-12 no-padding-left">
+                                                    <label>Brand Linkedin Profile</label>
+                                                    <input type="text" name="Agency" placeholder="Brand Linkedin Profile" class="bg-white medium-input">
+                                                </div>
+                                                <div class="col-md-6 col-sm-12 no-padding-right">
+                                                    <label>Brand Instagram Profile</label>
+                                                    <input type="text" placeholder="Brand Instagram Profile" class=" bg-white medium-input">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <h5 class="ev-regural-heading text-uppercase margin-20px-bottom font-weight-700 sm-width-100 xs-width-100">Contact Information</h5>
+                                                <h6 class="ev-regural-sub-heading text-uppercase margin-20px-bottom font-weight-600 sm-width-100 xs-width-100 border-bottom skcstm">Property Owning Entity:</h6>
+                                                <div class="col-md-12 sm-clear-both no-padding">
+                                                    <label>*Entity Name</label>
+                                                    <input type="text" name="Entity" placeholder="Entity Name*" class="bg-white medium-input">
+                                                </div>
+                                                <div class="col-md-6 col-sm-12 no-padding-left">
+                                                    <label>*Street & Number</label>
+                                                    <input type="text" name="Street" placeholder="Street & Number*" class="bg-white medium-input">
+                                                </div>
+                                                <div class="col-md-6 col-sm-12 no-padding-right">
+                                                    <label>*City</label>
+                                                    <input type="text" name="City2" placeholder="City*" class="bg-white medium-input">
+                                                </div>
+                                                <div class="col-md-6 col-sm-12 no-padding-left">
+                                                    <label>*Country</label>
+                                                    <input type="text" name="Country2" placeholder="Country*" class="bg-white medium-input">
+                                                </div>
+                                                <div class="col-md-6 col-sm-12 no-padding-right">
+                                                    <label>*Postal Code</label>
+                                                    <input type="text" name="PostalCode" placeholder="Postal Code*" class="bg-white medium-input">
+                                                </div>
+                                                <div class="clear"></div>
+                                                <div class="headingmimiform">
+                                                    <h6 class="ev-regural-sub-heading text-uppercase margin-20px-bottom font-weight-600 sm-width-100 xs-width-100 border-bottom skcstm">Contact Person:</h6>
+                                                </div>
+                                                <div class="col-md-6 col-sm-12 no-padding-left">
+                                                    <label>*First Name</label>
+                                                    <input type="text" name="firstname" placeholder="First Name*" class="bg-white medium-input">
+                                                </div>
+                                                <div class="col-md-6 col-sm-12 no-padding-right">
+                                                    <label>*Last Name</label>
+                                                    <input type="text" name="lastname" placeholder="Last Name*" class="bg-white medium-input">
+                                                </div>
+                                                <div class="col-md-6 col-sm-12 no-padding-left">
+                                                    <label>*Company Name</label>
+                                                    <input type="text" name="copnyname" placeholder="Company Name*" class="bg-white medium-input">
+                                                </div>
+                                                <div class="col-md-6 col-sm-12 no-padding-right">
+                                                    <label>*Job Title</label>
+                                                    <input type="text" name="jobtile" placeholder="Job Title*" class="bg-white medium-input">
+                                                </div>
+                                                <div class="col-md-12 sm-clear-both no-padding">
+                                                    <label>*Email Address</label>
+                                                    <input type="email" name="email" placeholder="Email*" class="bg-white medium-input">
+                                                </div>
+                                                <div class="col-md-6 col-sm-12 no-padding-left">
+                                                    <label>*Phone</label>
+                                                    <input type="text" name="phone" placeholder="Phone*" class="bg-white medium-input">
+                                                </div>
+                                                <div class="col-md-6 col-sm-12 no-padding-right">
+                                                    <label>*Mobile</label>
+                                                    <input type="text" name="mobile" placeholder="Mobile*" class="bg-white medium-input">
+                                                </div>
+                                            </div>
+                                            <div class="row fooetr-form">
+                                                <div class="col-md-6 col-sm-12 no-padding-left">
+                                                    <span><input class="checkbox" type="checkbox" name="terms" value="terms">I agree with the <a href="#">Terms and Conditions</a></span>
+                                                </div>
+                                                <div class="col-md-6 col-sm-12 no-padding-right text-align-right">
+                                                    <button id="contact-us-button" type="submit" class="btn btn-white" style="width: 200px">Submit</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                 </div>
             </div>
         </div>
