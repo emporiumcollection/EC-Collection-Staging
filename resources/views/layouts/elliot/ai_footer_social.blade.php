@@ -237,7 +237,7 @@
                 });
             });
         </script>
-<!--        <script>
+        <script>
             $(document).ready(function () {
                 $(window).scroll(function () {
                     if ($(this).scrollTop() > 100) {
@@ -255,29 +255,7 @@
                     $(".open-video-pop-up").trigger("click");
                 });
             });
-        </script>-->
-        <!-- AIC scroll to top -->
-        <script>
-            $(document).ready(function () {
-
-            $(window).scroll(function () {
-                if ($(this).scrollTop() > 100) {
-                    $('#back-to-top').fadeIn();
-                } else {
-                    $('#back-to-top').fadeOut();
-                }
-            });
-
-            $('#back-to-top').click(function () {
-                $("html, body").animate({
-                    scrollTop: 0
-                }, 600);
-                return false;
-            });
-
-        });
-    </script>
-<!-- AIC scroll to top -->
+        </script>
         <script>
             /* Toggle between adding and removing the "active" and "show" classes when the user clicks on one of the "Section" buttons. The "active" class is used to add a background color to the current button when its belonging panel is open. The "show" class is used to open the specific accordion panel */
             var acc = document.getElementsByClassName("accordion");
