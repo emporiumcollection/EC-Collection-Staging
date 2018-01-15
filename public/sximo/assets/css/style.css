@@ -4138,8 +4138,8 @@ div#fixed_wrapper {
 	float: left;
 	max-width: 1600px;
 	margin: 0 auto;
-	float: none;
-	height: 1210px;
+	float: left;
+	height: auto;
 }
 .bar-intro-text-bg {
     background-color: #ff332e;
