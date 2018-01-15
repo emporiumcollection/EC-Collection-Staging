@@ -14,12 +14,12 @@
 <div class="sbox">
 	<div class="sbox-title">
 			
-		<h3 >JohnnyShares - Sharing & Collaboration Platform</h3>
+		<h3 >Emporium Voyage Membership Portal</h3>
 				
 	</div>
 	<div class="sbox-content">
 	<div class="text-center  animated fadeInDown delayp1">
-		<img src="{{ asset('sximo/images/logo-sximo.png')}}" width="100%" />
+		<img src="{{ asset('sximo/assets/images/logo-design_1.png')}}" width="100%" />
 	</div>		
  {!! Form::open(array('url'=>'payment', 'class'=>'form-signup')) !!}
 	    	@if(Session::has('message'))
