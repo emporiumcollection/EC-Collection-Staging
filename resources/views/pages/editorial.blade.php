@@ -195,7 +195,7 @@
                 font-size: 15px;
                 line-height: 30px;
                 font-family: Geomanist-Light;
-                margin-top: 35px;
+/*                margin-top: 35px;*/
             }
             .hotels-image-showcase-des-text > p {
                 font-size: 15px;
@@ -393,7 +393,10 @@
                                     filter: brightness(.8);
                             }
                             .hotels-detail-description-text {
-                                margin-top: 0px;
+                                  float: left;
+                                width: 100%;
+                                max-height: 240px;
+                                overflow: auto;
                             }
                             .hotels-image-showcase-des-text > p {
                                 font-size: 15px;
