@@ -118,6 +118,7 @@
             .neww-footer .container {
                 width: auto;
             }
+			.formerrors { color:#ff0000;}
         </style>
         <script type="text/javascript">
             $(document).on('ready', function () {
@@ -671,7 +672,7 @@
 							});
 							html +='</ul>';
 							$('#formerrors').html(html);
-							window.scrollTo(0, 0);
+							window.scrollTo(0, 600);
                         } 
 						else
                         {
@@ -680,7 +681,7 @@
 							htmli +='<button data-dismiss="alert" class="close" type="button">×</button>';
 							htmli +='<i class="icon-checkmark-circle"></i> Record Inserted Successfully </div>';
 							$('#formerrors').html(htmli);
-							 window.scrollTo(0, 0); 
+							 window.scrollTo(0, 600); 
                         }
                     }
                 });
