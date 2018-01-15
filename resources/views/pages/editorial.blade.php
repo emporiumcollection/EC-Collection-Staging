@@ -358,8 +358,7 @@
                                 height: 587px;
                             }
                             .editorial-hotel-detail-page button.go-back-button {
-                                background-color: \\;
-                                    background: #283D3E;
+                                    background: #ABA07C;
                                 opacity: 1;
                                 color: white;
                             }
@@ -1177,7 +1176,7 @@
 						<div class="hotel-next-previous-outer">
 							<div class="previous-btn previous-next-pannel"> 
                                                             <a href="{{URL::to($relatedproperties[0]->property_slug)}}">
-								  <img class="img-responsive next-hotel-arrow" src="{{ asset('sximo/assets/images/editorial-left-arrow.png')}}" alt=""/>
+								  <img class="img-responsive next-hotel-arrow" src="{{ asset('sximo/assets/images/editorial-left-arrow_2.png')}}" alt=""/>
                                                             </a>
 								<a href="{{URL::to($relatedproperties[0]->property_slug)}}">
 									<div class="next-hotel-show-pannel">
@@ -1194,7 +1193,7 @@
 						<div class="hotel-next-previous-outer">
 							<div class="next-hotel-btn previous-next-pannel">
                                                             <a href="{{URL::to($relatedproperties[1]->property_slug)}}">
-								<img class="img-responsive next-hotel-arrow" src="{{ asset('sximo/assets/images/editorial-right-arrow.png')}}" alt=""/>
+								<img class="img-responsive next-hotel-arrow" src="{{ asset('sximo/assets/images/editorial-rignt-arrow_2.png')}}" alt=""/>
                                                             </a>
 								<a href="{{URL::to($relatedproperties[1]->property_slug)}}">
 									<div class="next-hotel-show-pannel">

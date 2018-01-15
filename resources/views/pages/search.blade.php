@@ -466,7 +466,7 @@
 	border-radius: 0px;
 	transition: .5s;
 	position: fixed;
-	top: 105px;
+	top: 108px;
 	left: calc(100% - 62px);
 	width: 340px;
 	background: #272727;
@@ -542,7 +542,7 @@
         }
         header {
             position: fixed;
-            top: 67px;
+            top: 70px;
             z-index: 9999;
             right: 0;
             /*	left: 95.20%;*/
@@ -560,7 +560,7 @@
             width: 0%;
         }
         .post-filter-inputs:hover, .post-filter-inputs:active, .post-filter-inputs:focus {
-            background-color: #DADAD5;
+            background-color: #000;
             border-left: 4px solid #a1a39c;
             color: white !important;
             transition: all 0.3s ease 0s;
