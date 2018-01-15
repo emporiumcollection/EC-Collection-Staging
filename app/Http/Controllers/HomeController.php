@@ -6346,13 +6346,32 @@ class HomeController extends Controller {
 	public function addHotelInfoFrontend(Request $request) {
 
         //$uid = \Auth::user()->id;
-		$rules['cat_name'] = 'required';
-        $rules['cat_short_name'] = 'required';
-        $rules['guests_base_price'] = 'required|numeric';
-        $rules['guests_total'] = 'required|numeric';
-        $rules['guests_adult'] = 'required|numeric';
-        $rules['guests_junior'] = 'required|numeric';
-        $rules['guests_babies'] = 'required|numeric';
+		$rules['hotelinfo_name'] = 'required';
+        $rules['hotelinfo_status'] = 'required';
+        $rules['hotelinfo_type'] = 'required';
+        $rules['hotelinfo_building'] = 'required';
+		$rules['hotelinfo_opening_date'] = 'required';
+		$rules['hotelinfo_address'] = 'required';
+		$rules['hotelinfo_city'] = 'required';
+		$rules['hotelinfo_country'] = 'required';
+		$rules['hotelinfo_postal'] = 'required';
+		$rules['hotelinfo_website'] = 'required';
+		$rules['hotelinfo_daysopen'] = 'required';
+		$rules['hotelfac_num_rooms'] = 'required';
+		$rules['hotelfac_num_suites'] = 'required';
+		$rules['hoteldesc_concept'] = 'required';
+		$rules['hotel_contactinfo_name'] = 'required';
+		$rules['hotel_contactinfo_address'] = 'required';
+		$rules['hotel_contactinfo_city'] = 'required';
+		$rules['hotel_contactinfo_country'] = 'required';
+		$rules['hotel_contactinfo_postal'] = 'required';
+		$rules['hotel_contactprsn_firstname'] = 'required';
+		$rules['hotel_contactprsn_lastname'] = 'required';
+		$rules['hotel_contactprsn_companyname'] = 'required';
+		$rules['hotel_contactprsn_jobtitle'] = 'required';
+		$rules['hotel_contactprsn_email'] = 'required';
+		$rules['hotel_contactprsn_phone'] = 'required';
+		$rules['hotel_contactprsn_mobile'] = 'required';
         $validator = Validator::make($request->all(), $rules);
         if ($validator->passes()) {
 			$data['property_name'] = $request->input('hotelinfo_name');

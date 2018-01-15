@@ -300,7 +300,7 @@
                                     <div class="padding-ten-half-all bg-light-gray md-padding-seven-all xs-padding-30px-all height-100">
                                         <!--<span class="text-extra-dark-gray alt-font text-large font-weight-600 margin-25px-bottom display-block">Application form</span>--> 
 										<div id="formerrors"></div>
-                                        <form id="hotelinfo-form" action="{{URL::to('frontend_hotelpost')}}" method="post">
+                                        <form id="contact-form" action="{{URL::to('frontend_hotelpost')}}" method="post">
                                             <div class="col-md-12 sm-clear-both">
                                                 <div id="success-contact-form" class="no-margin-lr"></div>
                                             </div>
@@ -659,11 +659,12 @@
 				$.ajax({
                     url: "{{ URL::to('frontend_hotelpost')}}",
                     type: "post",
-                    data: $('#hotelinfo-form').serializeArray(),
+                    data: $('#contact-form').serializeArray(),
                     dataType: "json",
                     success: function (data) {
                         if (data.status == 'error')
                         {
+							var html = '';
 							html +='<ul class="parsley-error-list">';
 							$.each(data.errors, function(idx, obj) {
 								html +='<li>'+obj+'</li>';
