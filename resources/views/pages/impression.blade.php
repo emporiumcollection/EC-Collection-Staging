@@ -200,7 +200,7 @@
                             @if(!empty($page_menus))
                             @foreach ($page_menus as $pmenu)
                                 <div class="panel panel-default custom-post-panel">
-                                    <a data-toggle="collapse" data-parent="#accordion" @if($pmenu['menu_type'] =='external') href="{{ URL::to($pmenu['url'])}}" @else href="{{ URL::to($pmenu['module'])}}" @endif class="heading-stying collapsed">
+                                    <a @if(count($pmenu['childs']) > 0) data-toggle="collapse" data-parent="#accordion" href="#webpage{{$pmenu['menu_id']}}" @else @if($pmenu['menu_type'] =='external') href="{{ URL::to($pmenu['url'])}}" @else href="{{ URL::to($pmenu['module'])}}" @endif @endif class="heading-stying collapsed">
                                         <div class="panel-heading custom-heading">
                                             @if(CNF_MULTILANG ==1 && isset($pmenu['menu_lang']['title'][Session::get('lang')]))
                                                 {{ $pmenu['menu_lang']['title'][Session::get('lang')] }}
