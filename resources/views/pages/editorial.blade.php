@@ -1132,24 +1132,6 @@
                                 color: #ABA07C;
                                 font-size: 16px;
                             }
-                            
-                            /* scrollbar */
-                            
-                            .scrollbar {
-                                width: 98%;
-                                height: 100%;
-                                background-color: transparent;
-                                margin-top: 40px;
-                                margin-left: 40px;
-                                overflow-y: scroll;
-                                float: left;
-                                border-radius: 10px;
-                            }
-                            
-                            #ex3::-webkit-scrollbar-thumb{
-                            background-color:#B03C3F;
-                            border-radius:10px;
-                            }
 
                             
                             @import url('https://fonts.googleapis.com/css?family=Caveat');
@@ -1594,11 +1576,11 @@
                                             <p>{!! nl2br($propertyDetail['data']->detail_section2_title) !!}</p>
                                         </div>
                                         <div class="col-md-6 col-sm-6 disply-left-right-inner hotels-des-left-side">
-                                            <div class="scrollbar" id="ex3">
-                                                <div class="hotels-detail-description-text">
-                                                        <p class="hotel-description-text">
-                                                            {!! nl2br($propertyDetail['data']->detail_section2_description_box1)!!}
-                                                        </p>
+                                            <div class="hotels-detail-description-text">
+                                                <div class="scrollbar" id="ex3">
+                                                    <p class="hotel-description-text">
+                                                        {!! nl2br($propertyDetail['data']->detail_section2_description_box1)!!}
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
