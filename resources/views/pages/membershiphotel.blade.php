@@ -118,7 +118,7 @@
             .neww-footer .container {
                 width: auto;
             }
-			.formerrors { color:#ff0000;}
+			#formerrors { color:#ff0000;}
         </style>
         <script type="text/javascript">
             $(document).on('ready', function () {
