@@ -589,9 +589,9 @@
                                 width: 100%;
                                 text-transform: uppercase;
                                 height: auto;
-                                background: rgba(0,0,0,0.8);
+/*                                background: rgba(0,0,0,0.8);*/
                                 margin: 0;
-                                padding: 8% 0% 0% 5%;
+                                padding: 8% 0% 13% 0%;
                             }
                             
                             .hotels-showcase-right-side {
@@ -630,6 +630,7 @@
                             .hotels-detail-heading-text {
                                 width: 100%;
                                 float: left;
+                                margin-top: 100px;
                             }
                             
                             .gallery.row .principale1 img {
