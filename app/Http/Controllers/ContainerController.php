@@ -5332,6 +5332,17 @@ class ContainerController extends Controller {
 		$this->data['fid'] = $id;
 		$this->data['group'] = \Auth::user()->group_id;
 		
+		$sel_attributes = DB::table('tb_attributes')->where('attr_status',1);
+		if(\Auth::user()->group_id==2 || \Auth::user()->group_id==3)
+		{
+			$sel_attributes->where('attr_permission',1);
+		}
+		$this->data['sel_attributes'] = $sel_attributes->get();
+		
+		$this->data['sel_tags'] = DB::table('tb_tags_manager')->where('tag_status',1)->get();
+		
+		$this->data['sel_designer'] = DB::table('tb_designers')->where('designer_status',1)->get();
+		
 		if(\Auth::user()->group_id==3 && $wnd!='iframe')
 		{
 			$this->data['userpermissions'] = DB::table('tb_permissions')->where('user_id',$uid)->where('folder_id',$id)->first();
