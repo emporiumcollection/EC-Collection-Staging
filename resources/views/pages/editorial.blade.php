@@ -393,8 +393,8 @@
                             .hotels-detail-description-text {
                                   float: left;
                                 width: 100%;
-                                max-height: 240px;
-                                overflow: auto;
+/*                                max-height: 240px;
+                                overflow: auto;*/
                             }
                             .hotels-image-showcase-des-text > p {
                                 font-size: 15px;
@@ -1163,13 +1163,6 @@
                                     min-height: 350px;
                             }
 
-                            #wrapper
-                            {
-                                    text-align: center;
-                                    width: 600px;
-                                    margin: auto;
-                            }
-
                            #style-4::-webkit-scrollbar-track
                            {
                                    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
@@ -1632,14 +1625,12 @@
                                             <div class="hotels-detail-heading-text">
                                                 <p>{!! nl2br($propertyDetail['data']->detail_section2_title) !!}</p>
                                             </div>
-                                            <div id="wrapper">
                                                 <div class="hotels-detail-description-text scrollbar" id="style-4">
                                                     <div class="force-overflow"></div>
                                                         <p class="hotel-description-text">
                                                             {!! nl2br($propertyDetail['data']->detail_section2_description_box1)!!}
                                                         </p>
                                                 </div>
-                                            </div>
                                         </div>
                                         <div class="col-md-6 col-sm-6 disply-left-right-inner hotels-showcase-right-side">
                                             <div class="hotels-detail-heading-text rightHotelInner">
