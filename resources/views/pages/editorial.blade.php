@@ -355,7 +355,7 @@
                                 z-index: 0;
                                 font-family: geomanist-regular;
                                 padding: 20px 32px 264px 75px;
-                                height: 587px;
+                                height: 100%;
                             }
                             .editorial-hotel-detail-page button.go-back-button {
                                     background: #ABA07C;
