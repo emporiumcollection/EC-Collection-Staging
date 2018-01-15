@@ -31,7 +31,7 @@
 		 <link href="{{ asset('sximo/assets/css/slick.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/slick-theme.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/Hamburg-menu.css')}}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('sximo/assets/css/jquery.mCustomScrollbar')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('sximo/assets/css/jquery.mCustomScrollbar.css')}}" rel="stylesheet" type="text/css"/>
         <!--JS Includes-->
         <link href="{{ asset('sximo/assets/css/ai_yachts-custom.css')}}" rel="stylesheet" type="text/css"/>
 
