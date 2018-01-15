@@ -2955,7 +2955,7 @@
         <script>
             (function ($) {
                 $(window).on("load", function () {
-                    $(".sidbarMenu ul.models-list").mCustomScrollbar();
+                    $("..hotels-des-left-side hotels-detail-description-text").mCustomScrollbar();
                 });
             })(jQuery);
             
