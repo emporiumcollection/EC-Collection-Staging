@@ -2953,11 +2953,30 @@
         
         <!-- custom scrollbar -->
         <script>
-                (function ($) {
-                    $(window).on("load", function () {
-                        $(".hotels-des-left-side hotels-detail-description-text").mCustomScrollbar();
-                    });
-                })(jQuery);
+            (function ($) {
+                $(window).on("load", function () {
+                    $(".sidbarMenu ul.models-list").mCustomScrollbar();
+                });
+            })(jQuery);
+            
+            /*
+             * search popup
+             */
+            
+            $(function () {
+                $('a[href="#search"]').on('click', function (event) {
+                    event.preventDefault();
+                    $('#search').addClass('open');
+                    $('#search > form > input[type="text"]').focus();
+                });
+
+                $('#search, #search button.close').on('click keyup', function (event) {
+                    if (event.target == this || event.target.className == 'close' || event.keyCode == 27) {
+                        $(this).removeClass('open');
+                    }
+                });
+
+            });
         </script>
             <!-- custom scrollbar end -->
     
