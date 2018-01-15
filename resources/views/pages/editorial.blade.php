@@ -1136,6 +1136,10 @@
                             .rightHotelInner {
                                 visibility: hidden;
                             }
+                            
+                            .InnerDetailHeight {
+                                height: 830px;
+                            }
 
                             
                             @import url('https://fonts.googleapis.com/css?family=Caveat');
@@ -1575,7 +1579,7 @@
                             <div class="">
                                 <div class="row">
                                     <div class="clearfix"></div>
-                                    <div class="col-md-12 col-sm-12 disply-left-right-align cstmai-w">
+                                    <div class="col-md-12 col-sm-12 InnerDetailHeight disply-left-right-align cstmai-w">
                                         
                                         <div class="col-md-6 col-sm-6 disply-left-right-inner hotels-des-left-side">
                                             <div class="hotels-detail-heading-text">
