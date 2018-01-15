@@ -24,7 +24,7 @@
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 1000;
+    z-index: 9999;
 }
 
 #frontpage-layer-bj-header-close, .popup-frontpage-layer-bj-header-close {
@@ -32,7 +32,7 @@
     cursor: hand;
     width: 37px;
     height: 37px;
-    top: 41px;
+    top: 0px;
     right: 40px;
     background: url('images/frontpage-close.png') transparent no-repeat center center;
     position: fixed;
