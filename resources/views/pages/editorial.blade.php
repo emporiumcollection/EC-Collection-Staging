@@ -1594,11 +1594,11 @@
                                             <p>{!! nl2br($propertyDetail['data']->detail_section2_title) !!}</p>
                                         </div>
                                         <div class="col-md-6 col-sm-6 disply-left-right-inner hotels-des-left-side">
-                                            <div class="hotels-detail-description-text">
-                                                <div class="scrollbar" id="ex3">
-                                                    <p class="hotel-description-text">
-                                                        {!! nl2br($propertyDetail['data']->detail_section2_description_box1)!!}
-                                                    </p>
+                                            <div class="scrollbar" id="ex3">
+                                                <div class="hotels-detail-description-text">
+                                                        <p class="hotel-description-text">
+                                                            {!! nl2br($propertyDetail['data']->detail_section2_description_box1)!!}
+                                                        </p>
                                                 </div>
                                             </div>
                                         </div>
