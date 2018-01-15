@@ -2956,7 +2956,7 @@
         <script>
                 (function ($) {
                     $(window).on("load", function () {
-                        $("..hotels-des-left-side hotels-detail-description-text").mCustomScrollbar();
+                        $(".hotels-des-left-side hotels-detail-description-text").mCustomScrollbar();
                     });
                 })(jQuery);
         </script>
