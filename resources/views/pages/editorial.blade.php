@@ -190,7 +190,7 @@
             .hotels-showcase-right-side { background-image: url('{{( array_key_exists('propimage', $propertyDetail)) ? \ImageCache::make($propertyDetail['propimage_thumbpath_dir'].$propertyDetail['propimage'][0]->file_name,100,1000,null) : ''}}'); }
             .hotel-sec-block-two { background-image: url('{{( array_key_exists('propimage', $propertyDetail)) ? \ImageCache::make($propertyDetail['propimage_thumbpath_dir'].$propertyDetail['propimage'][1]->file_name,100,1000,null) : ''}}'); }
 
-            .hotels-detail-description-text > p { max-height:300px; }
+            .hotels-detail-description-text > p { max-height:100%; }
             .hotels-detail-description-text > p {
                 font-size: 15px;
                 line-height: 30px;
@@ -1132,6 +1132,10 @@
                                 color: #ABA07C;
                                 font-size: 16px;
                             }
+                            
+                            .rightHotelInner {
+                                visibility: hidden;
+                            }
 
                             
                             @import url('https://fonts.googleapis.com/css?family=Caveat');
@@ -1572,10 +1576,11 @@
                                 <div class="row">
                                     <div class="clearfix"></div>
                                     <div class="col-md-12 col-sm-12 disply-left-right-align cstmai-w">
-                                        <div class="hotels-detail-heading-text">
-                                            <p>{!! nl2br($propertyDetail['data']->detail_section2_title) !!}</p>
-                                        </div>
+                                        
                                         <div class="col-md-6 col-sm-6 disply-left-right-inner hotels-des-left-side">
+                                            <div class="hotels-detail-heading-text">
+                                                <p>{!! nl2br($propertyDetail['data']->detail_section2_title) !!}</p>
+                                            </div>
                                             <div class="hotels-detail-description-text">
                                                     <p class="hotel-description-text">
                                                         {!! nl2br($propertyDetail['data']->detail_section2_description_box1)!!}
@@ -1583,6 +1588,9 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-sm-6 disply-left-right-inner hotels-showcase-right-side">
+                                            <div class="hotels-detail-heading-text rightHotelInner">
+                                                <p>{!! nl2br($propertyDetail['data']->detail_section2_title) !!}</p>
+                                            </div>
                                             <div class="hotels-image-showcase-des-text">
                                                 <p class="hotel-description-text">
                                                     {!! nl2br($propertyDetail['data']->detail_section2_description_box2) !!}
