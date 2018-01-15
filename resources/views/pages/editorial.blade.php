@@ -31,7 +31,6 @@
 		 <link href="{{ asset('sximo/assets/css/slick.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/slick-theme.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/Hamburg-menu.css')}}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('sximo/assets/css/jquery.mCustomScrollbar.css')}}" rel="stylesheet" type="text/css"/>
         <!--JS Includes-->
         <link href="{{ asset('sximo/assets/css/ai_yachts-custom.css')}}" rel="stylesheet" type="text/css"/>
 
@@ -49,7 +48,6 @@
         <script src="{{ asset('sximo/assets/js/editorial-slide-nav.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/jquery.dotdotdot.min.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/slick.js')}}" type="text/javascript"></script>
-        <script src="{{ asset('sximo/assets/js/jquery.mCustomScrollbar.concat.min.js')}}" type="text/javascript"></script>
 		
 		<!-- new grid css and js -->
 		<link href="{{ asset('sximo/assets/newgrid/css/animate.css')}}" rel="stylesheet" type="text/css"/>
