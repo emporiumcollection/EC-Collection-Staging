@@ -1142,46 +1142,7 @@
                             .InnerDetailHeight {
                                 height: 830px;
                             }
-                            
-                            /*
-                            *  STYLE 4
-                            */
-                            
-                            .scrollbar
-                            {
-                                    margin-left: 30px;
-                                    float: left;
-                                    height: 300px;
-                                    width: 65px;
-                                    background: #F5F5F5;
-                                    overflow-y: scroll;
-                                    margin-bottom: 25px;
-                            }
-
-                            .force-overflow
-                            {
-                                    min-height: 350px;
-                            }
-
-                           #style-4::-webkit-scrollbar-track
-                           {
-                                   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-                                   background-color: #F5F5F5;
-                           }
-
-                           #style-4::-webkit-scrollbar
-                           {
-                                   width: 10px;
-                                   background-color: #F5F5F5;
-                           }
-
-                           #style-4::-webkit-scrollbar-thumb
-                           {
-                                   background-color: #fff;
-                                   border: 2px solid #000;
-                           }
-
-                            
+              
                             @import url('https://fonts.googleapis.com/css?family=Caveat');
                             @import url('https://fonts.googleapis.com/css?family=Satisfy');
                             @import url('https://fonts.googleapis.com/css?family=Zeyada');
@@ -1625,12 +1586,11 @@
                                             <div class="hotels-detail-heading-text">
                                                 <p>{!! nl2br($propertyDetail['data']->detail_section2_title) !!}</p>
                                             </div>
-                                                <div class="hotels-detail-description-text scrollbar" id="style-4">
-                                                    <div class="force-overflow"></div>
-                                                        <p class="hotel-description-text">
-                                                            {!! nl2br($propertyDetail['data']->detail_section2_description_box1)!!}
-                                                        </p>
-                                                </div>
+                                            <div class="hotels-detail-description-text">
+                                                <p class="hotel-description-text">
+                                                    {!! nl2br($propertyDetail['data']->detail_section2_description_box1)!!}
+                                                </p>
+                                            </div>
                                         </div>
                                         <div class="col-md-6 col-sm-6 disply-left-right-inner hotels-showcase-right-side">
                                             <div class="hotels-detail-heading-text rightHotelInner">
