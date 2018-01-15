@@ -586,7 +586,7 @@
                                 letter-spacing: 3px;
                                 line-height: 35px;
                                 float: none;
-                                width: 50%;
+                                width: 100%;
                                 text-transform: uppercase;
                                 height: auto;
                                 background: rgba(0,0,0,0.8);
@@ -602,7 +602,7 @@
                                 background-size: cover;
                                 color: #fff;
                                 font-family: Geomanist-Regular;
-                                /* padding: 516px 49px 90px 30px; */
+                                 padding: 20px 32px 264px 75px;
                                 margin-top: 0px;
                             }
                             
