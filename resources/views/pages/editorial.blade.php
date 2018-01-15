@@ -1177,8 +1177,8 @@
 
                            #style-4::-webkit-scrollbar-thumb
                            {
-                                   background-color: #000000;
-                                   border: 2px solid #555555;
+                                   background-color: #fff;
+                                   border: 2px solid #000;
                            }
 
                             
