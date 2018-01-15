@@ -560,7 +560,7 @@
             width: 0%;
         }
         .post-filter-inputs:hover, .post-filter-inputs:active, .post-filter-inputs:focus {
-            background-color: #000;
+            background-color: #dadad5
             border-left: 4px solid #a1a39c;
             color: white !important;
             transition: all 0.3s ease 0s;
