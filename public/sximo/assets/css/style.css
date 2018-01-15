@@ -4139,7 +4139,7 @@ div#fixed_wrapper {
 	max-width: 1600px;
 	margin: 0 auto;
 	float: none;
-	height: 730px;
+	height: 1100px;
 }
 .bar-intro-text-bg {
     background-color: #ff332e;
@@ -4229,6 +4229,7 @@ div#fixed_wrapper {
 }
 .bar-bottom-des-pannel{
     width: 80%;
+    padding: 20px;
 }
 .spa-owner-sign {
     color: #00efe7;
