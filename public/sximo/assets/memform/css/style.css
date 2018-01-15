@@ -3361,8 +3361,9 @@ label {
 
 .ev-regural-sub-heading {
     color: #ABA07C;
-    line-height: 51.33px;
+    line-height: 35.33px;
     text-transform: capitalize;
     font-family: ACaslonPro-Regular;
     font-weight: 700;
+    font-size: 18px;
 }
