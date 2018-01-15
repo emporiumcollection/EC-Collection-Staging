@@ -265,7 +265,7 @@ and open the template in the editor.
     text-transform: uppercase;
 }
 .hotels-detail-description-text {
-    margin-top: 55px;
+/*    margin-top: 55px;*/
 }
 .hotels-detail-description-text > p {
     font-size: 15px;
