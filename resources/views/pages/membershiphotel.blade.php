@@ -299,7 +299,8 @@
                                 <div class="col-md-12 sm-clear-both wow fadeInLeft no-padding">
                                     <div class="padding-ten-half-all bg-light-gray md-padding-seven-all xs-padding-30px-all height-100">
                                         <!--<span class="text-extra-dark-gray alt-font text-large font-weight-600 margin-25px-bottom display-block">Application form</span>--> 
-                                        <form id="contact-form" action="{{URL::to('frontend_hotelpost')}}" method="post">
+										<div id="formerrors"></div>
+                                        <form id="hotelinfo-form" action="{{URL::to('frontend_hotelpost')}}" method="post">
                                             <div class="col-md-12 sm-clear-both">
                                                 <div id="success-contact-form" class="no-margin-lr"></div>
                                             </div>
@@ -538,7 +539,7 @@
                                                     <span><input class="checkbox" type="checkbox" name="hotel_contactprsn_agree" value="1">I agree with the <a href="#">Terms and Conditions</a></span>
                                                 </div>
                                                 <div class="col-md-6 col-sm-12 no-padding-right text-align-right">
-                                                    <button id="contact-us-button" type="submit" class="btn btn-white" style="width: 200px">Submit</button>
+                                                    <button id="contact-us-button" type="button" class="btn btn-white" onclick="submit_hotelinfo_form();" style="width: 200px">Submit</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -651,7 +652,38 @@
                     function () {
                         $(this).removeClass('active')
                     }
-            )
+            );
+			
+			function submit_hotelinfo_form()
+			{
+				$.ajax({
+                    url: "{{ URL::to('frontend_hotelpost')}}",
+                    type: "post",
+                    data: $('#hotelinfo-form').serializeArray(),
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.status == 'error')
+                        {
+							html +='<ul class="parsley-error-list">';
+							$.each(data.errors, function(idx, obj) {
+								html +='<li>'+obj+'</li>';
+							});
+							html +='</ul>';
+							$('#formerrors').html(html);
+							window.scrollTo(0, 0);
+                        } 
+						else
+                        {
+                            var htmli = '';
+							htmli +='<div class="alert alert-success fade in block-inner">';
+							htmli +='<button data-dismiss="alert" class="close" type="button">×</button>';
+							htmli +='<i class="icon-checkmark-circle"></i> Record Inserted Successfully </div>';
+							$('#formerrors').html(htmli);
+							 window.scrollTo(0, 0); 
+                        }
+                    }
+                });
+			}
         </script>
         <!-- contact email aside -->
     </body>
