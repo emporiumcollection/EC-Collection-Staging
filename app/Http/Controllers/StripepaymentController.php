@@ -2,13 +2,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use I1lluminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 use Validator, Input, Redirect, URL ;
 use Config, Session;
 use Stripe\Stripe;
 use Stripe\Charge;
-
+use Stripe\Plan;
 
 class StripepaymentController extends Controller
 {
@@ -31,6 +31,16 @@ class StripepaymentController extends Controller
     public function index(){
 
         echo "string";
+        $id=1004;
+
+        self::authorizeFromEnv();
+        
+        $response=\Stripe\Plan::all(array("limit" => 3));
+       dd($response);
+
+        $invoiceList=\Stripe\Invoice::all(array("limit" => 3));
+
+        dd($invoiceList);
     }
 
     protected function setUp()
