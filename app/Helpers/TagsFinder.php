@@ -10,19 +10,19 @@ class TagsFinder {
         $tagStr = "";
         $tags = \DB::table('tb_tags_manager')->where('tag_status', 1)->get();
         foreach ($tags as $tag) {
-			$TagsCon = \DB::table('tb_container_tags')->where('tag_id', $tag->id)->count();
+			/*$TagsCon = \DB::table('tb_container_tags')->where('tag_id', $tag->id)->count();
 			if($TagsCon>0)
-			{
+			{*/
 				$tagStr .= "'" . $tag->tag_title . "',";
-			}
+			//}
         }
         $proprty = \DB::table('tb_properties')->where('property_status', 1)->get();
         foreach ($proprty as $propt) {
             $tagStr .= "'" . $propt->property_name . "',";
-        }/*
+        }
         $categories = \DB::table('tb_categories')->where('category_published', 1)->get();
         foreach ($categories as $cats) {
-			$subdest = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name')->where('parent_category_id', $cats->id)->get();
+			/*$subdest = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name')->where('parent_category_id', $cats->id)->get();
 			$getcats = '';
 			$chldIds = array();
 			if (!empty($subdest)) {
@@ -40,10 +40,10 @@ class TagsFinder {
 
 			$preprops = DB::select(DB::raw("SELECT COUNT(*) AS total_rows FROM tb_properties WHERE property_status = '1' $getcats"));
 
-			if (isset($preprops[0]->total_rows) && $preprops[0]->total_rows > 0) {
+			if (isset($preprops[0]->total_rows) && $preprops[0]->total_rows > 0) {*/
 				$tagStr .= "'" . $cats->category_name . "',";
-			}
-        }*/
+			//}
+        }
         return substr($tagStr, 0, -1);
     }
 	
@@ -51,7 +51,7 @@ class TagsFinder {
         $destStr = "";
         $categories = \DB::table('tb_categories')->where('category_published', 1)->where('parent_category_id', '!=', 8)->where('id', '!=', 8)->get();
         foreach ($categories as $cats) {
-			$subdest = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name')->where('parent_category_id', $cats->id)->get();
+			/*$subdest = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name')->where('parent_category_id', $cats->id)->get();
 			$getcats = '';
 			$chldIds = array();
 			if (!empty($subdest)) {
@@ -69,9 +69,9 @@ class TagsFinder {
 
 			$preprops = DB::select(DB::raw("SELECT COUNT(*) AS total_rows FROM tb_properties WHERE property_status = '1' $getcats"));
 
-			if (isset($preprops[0]->total_rows) && $preprops[0]->total_rows > 0) {
+			if (isset($preprops[0]->total_rows) && $preprops[0]->total_rows > 0) {*/
 				$destStr .= "'" . $cats->category_name . "',";
-			}
+			//}
         }
         return substr($destStr, 0, -1);
     }
