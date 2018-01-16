@@ -467,7 +467,7 @@
 	border-radius: 0px;
 	transition: .5s;
 	position: fixed;
-	top: 108px;
+	top: 102px;
 	left: calc(100% - 62px);
 	width: 340px;
 	background: #272727;
@@ -543,7 +543,7 @@
         }
         header {
             position: fixed;
-            top: 70px;
+            top: 64px;
             z-index: 9999;
             right: 0;
             /*	left: 95.20%;*/
