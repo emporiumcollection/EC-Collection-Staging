@@ -1,4 +1,5 @@
 {{--*/ $landing_menus = SiteHelpers::menus('landing') /*--}}
+{{--*/ $top_menus = SiteHelpers::menus('top') /*--}}
 <!DOCTYPE html>
 <html>
     <head>
@@ -1186,14 +1187,21 @@
                             <div class="left-serach">
                                 <h2>Our Collection</h2>
                                 <div class="serach-page-menu">
-                                    <ul>
-                                        <li><a href="{{URL::to('luxurytravel/Hotel?ref=oc')}}">Hotels</a></li>
-                                        <li><a href="http://www.emporium-yachts.com/luxurytravel/Yachts">Yachts</a></li>
-                                        <!--<li><a href="{{URL::to('luxurytravel/Villas')}}">Villas</a></li>-->
-                                        <!--<li><a href="{{URL::to('luxurytravel/Safari Lodges')}}">Safari</a></li>-->
-                                        <!--<li><a href="{{URL::to('luxurytravel/Spas')}}">Spa's</a></li>-->
-                                        <!--<li><a href="{{URL::to('luxurytravel/Yachts?ref=oc')}}">Yachts</a></li>-->
-                                    </ul>
+									@if(!empty($top_menus))
+										<ul>
+											@foreach ($top_menus as $tmenu)
+												<li>
+													<a @if($tmenu['menu_type'] =='external') href="{{ URL::to($tmenu['url'])}}" @else href="{{ URL::to($tmenu['module'])}}" @endif>
+														@if(CNF_MULTILANG ==1 && isset($tmenu['menu_lang']['title'][Session::get('lang')]))
+															{{ $tmenu['menu_lang']['title'][Session::get('lang')] }}
+														@else
+															{{$tmenu['menu_name']}}
+														@endif
+													</a>
+												</li>
+											@endforeach
+										</ul>
+									@endif
                                 </div>
                             </div>
                         </div>
@@ -1521,10 +1529,21 @@
 
                                                     </div>
                                                     <div class="serach-page-menu">
-                                                        <ul>
-                                                            <li><a href="{{URL::to('luxurytravel/Hotel?ref=oc')}}">Hotels</a></li>
-                                                            <li><a href="http://www.emporium-yachts.com/luxurytravel/Yachts">Yachts</a></li>
-                                                        </ul>
+                                                        @if(!empty($top_menus))
+															<ul>
+																@foreach ($top_menus as $tmenu)
+																	<li>
+																		<a @if($tmenu['menu_type'] =='external') href="{{ URL::to($tmenu['url'])}}" @else href="{{ URL::to($tmenu['module'])}}" @endif>
+																			@if(CNF_MULTILANG ==1 && isset($tmenu['menu_lang']['title'][Session::get('lang')]))
+																				{{ $tmenu['menu_lang']['title'][Session::get('lang')] }}
+																			@else
+																				{{$tmenu['menu_name']}}
+																			@endif
+																		</a>
+																	</li>
+																@endforeach
+															</ul>
+														@endif
                                                     </div>
                                                     <div class="design-locations-logo">
                                                         <form autocomplete="off" method="get" id="searchform-navbar" class="searchform-navbar" action="{{URL::to('search')}}">
@@ -1647,10 +1666,21 @@
                                                 <input  class="bh-search-input ai-md-search-input typeahead search-navbar main-search-box" name="s" id="search-navbar-our-collection-res" placeholder="Enter Your Hotel or Destination" type="text">
                                             </form>
                                             <div class="serach-page-menu">
-                                                <ul>
-                                                    <li><a href="{{URL::to('luxurytravel/Hotel')}}">Hotels</a></li>
-                                                    <li><a href="http://www.emporium-yachts.com/luxurytravel/Yachts">Yachts</a></li>
-                                                </ul>
+                                                @if(!empty($top_menus))
+													<ul>
+														@foreach ($top_menus as $tmenu)
+															<li>
+																<a @if($tmenu['menu_type'] =='external') href="{{ URL::to($tmenu['url'])}}" @else href="{{ URL::to($tmenu['module'])}}" @endif>
+																	@if(CNF_MULTILANG ==1 && isset($tmenu['menu_lang']['title'][Session::get('lang')]))
+																		{{ $tmenu['menu_lang']['title'][Session::get('lang')] }}
+																	@else
+																		{{$tmenu['menu_name']}}
+																	@endif
+																</a>
+															</li>
+														@endforeach
+													</ul>
+												@endif
                                             </div>
                                         </div>
                                     </div>
