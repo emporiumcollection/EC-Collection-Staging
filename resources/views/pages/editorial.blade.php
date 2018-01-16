@@ -327,7 +327,7 @@
                             }
                             .editorial-hotel-detail-page .right-menus ul li a:hover {
                                 background: #ada077;
-                                color: white;
+                                color: black;
                                 opacity: 0.8;
                             }
                             .editorial-hotel-detail-page img.banner-arrow-bg {

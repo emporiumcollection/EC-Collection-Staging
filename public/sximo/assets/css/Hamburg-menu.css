@@ -93,7 +93,7 @@ EVMenu ul li ul li a:hover {
 .EVMenu li:hover .sub-menu
 {
     position: absolute;   
-    margin-top: -80.5px;
+    margin-top: -77.5px;
     left:170px;
 }
 
@@ -123,7 +123,7 @@ EVMenu ul li ul li a:hover {
 .sub-menu li a {
 	display: inline-block;
 	padding: 0 80px;
-	font-size: 30px;
+	font-size: 20px;
 	font-family: geomanist-regular;
 }
 
