@@ -775,10 +775,6 @@
                                 text-align: center;
                                 font-family: Geomanist-light;
                                 margin: 40px;
-                                float: left;
-                                width: 100%;
-                                background: #f0f0f0;
-                                padding: 20px 20px 20px 20px;
                             }
                             
                             .bar-des-text {
