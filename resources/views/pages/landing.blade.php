@@ -35,11 +35,7 @@
         
         
         <style>
-            .m_slider.editorial_m_slider_landing {
-                margin-top: 64px;
-            }
-        
-                         /* hamburg menu pop up css */
+            /* hamburg menu pop up css */
             .EVhamburgService {
                 padding: 19px;
             }

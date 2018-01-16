@@ -3132,7 +3132,7 @@ header .menu ul li a:hover, header .menu ul li a:active, header .menu ul li a:fo
     right: 20px;
 }
 .back-to-top:hover, .back-to-top:active, .back-to-top:focus {
-    background-color: #D2D2C6 !important;
+    background-color: #ABA07C !important;
 }
 .date-picker-wrapper { 
     z-index: 9999;
