@@ -4269,7 +4269,7 @@
         </div>
     </div>
 </div>
-<script>
+<script type="text/javascript">
     $(document).ready(function () {
         $(".cookie-bar-hide-btn").click(function () {
             $(".bootom-cookie-bar-outer").hide();
