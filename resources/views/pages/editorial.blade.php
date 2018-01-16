@@ -2055,7 +2055,7 @@
                             <div class="row">
                                 <div class="right-menu-align">
                                     <div class="hotels-logo">
-                                        <h3 class="title"><a href="{{url('/')}}">{{$propertyDetail['data']->property_name}}</a><hr class="star-light"></h3>
+                                        <h3 class="title"><a href="<!-- {{url('/')}}">{{$propertyDetail['data']->property_name}}--></a><hr class="star-light"></h3>-->
                                         
                                     </div>
                                     <ul>
