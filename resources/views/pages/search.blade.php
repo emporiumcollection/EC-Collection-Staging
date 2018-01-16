@@ -127,15 +127,15 @@
             
             .block-content.content span:nth-child(1) {
                 top: 12px;
-                left: 57%;
+                left: 78%;
             }
             .block-content.content span:nth-child(2) {
                 top: 19px;
-                left: 57%;
+                left: 78%;
             }
             .block-content.content span:nth-child(3) {
                 top: 27px;
-                left: 57%;
+                left: 78%;
             }
             
             /* hamburg menu css */
@@ -553,7 +553,7 @@
 
         .show-login-forms-btn {
             display: inline-block;
-            padding: 0px 0px;
+            padding: 0px 30px;
             text-align: center;
             margin-top: 7px;
             vertical-align: text-top;
