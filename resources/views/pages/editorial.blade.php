@@ -768,15 +768,17 @@
                             }
                             
                             .bar-name-text-style {
-                                color: #000;
-                                font-size: 13px;
-                                letter-spacing: 0px;
-                                text-transform: uppercase;
-                                text-align: center;
-                                font-family: Geomanist-light;
-                                margin: 40px;
-                                background: #f0f0f0;
-                                padding: 20px 20px;
+                                    color: #000;
+                                    font-size: 13px;
+                                    letter-spacing: 0px;
+                                    text-transform: uppercase;
+                                    text-align: center;
+                                    font-family: Geomanist-light;
+                                    margin: 40px;
+                                    background: #f0f0f0;
+                                    padding: 20px 20px;
+                                    float: left;
+                                    width: 96%;
                             }
                             
                             .bar-des-text {
@@ -1184,6 +1186,10 @@
                                 right: 0px;
                                 bottom: 121px;
                                 height: 0;
+                            }
+                            .filter-content.overflow-hidden.margin-100px-top.sm-margin-75px-top.xs-margin-50px-top {
+                                    width: 100%;
+                                    float: left;
                             }
               
                             @import url('https://fonts.googleapis.com/css?family=Caveat');
