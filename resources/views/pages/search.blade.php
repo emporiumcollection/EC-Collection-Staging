@@ -411,8 +411,8 @@
                 min-height: 250px;
             }
             .ai-grid-page-node-pic-box  img {
-                max-height: 165px !important;
-                min-height: 165px !important;
+                max-height: 200px !important;
+                min-height: 200px !important;
                 object-fit: cover;
                 object-position: 0 center;
                 vertical-align: middle;
@@ -1424,7 +1424,7 @@
                                             @if($node_no%10==0)
                                                 @if(!empty($reultsgridAds))
                                                     @if(array_key_exists($ads_node,$reultsgridAds))
-                                                        <div class="productData col-xs-12 col-sm-6 col-md-3 col-lg-3 margin-bottom-10">
+                                                        <div class="productData col-xs-12 col-sm-6 col-md-4 col-lg-4 margin-bottom-10">
                                                             <div class="wrapperforliineedforlightboxremoval">
                                                                 <div class="cat_product_medium1">
                                                                             <div class="ai-grid-page-node-pic-box pictureBox gridPicture">
@@ -1452,7 +1452,7 @@
                                                 @endif
                                                  {{--*/ $ads_node++; /*--}}
                                             @else
-                                            <div class="productData col-xs-12 col-sm-6 col-md-4 col-lg-3 margin-bottom-10">
+                                            <div class="productData col-xs-12 col-sm-6 col-md-4 col-lg-4 margin-bottom-10">
                                                 <div class="wrapperforliineedforlightboxremoval">
                                                     <div class="cat_product_medium1">
                                                         <div class="ai-grid-page-node-pic-box pictureBox gridPicture grid-box-main">
@@ -1736,11 +1736,11 @@ function scrollDataAjax(it_scroll,pageCounter)
 
                         
                         if (node_no % 20 == 0) {
-                            html += '<div class="productData col-xs-12 col-sm-6 col-md-3 col-lg-3 margin-bottom-10">';
+                            html += '<div class="productData col-xs-12 col-sm-6 col-md-4 col-lg-4 margin-bottom-10">';
                             html += 'Advertisement Here';
                             html += '</div>';
                         }else {
-                            html += '<div class="productData col-xs-12 col-sm-6 col-md-3 col-lg-3 margin-bottom-10">';
+                            html += '<div class="productData col-xs-12 col-sm-6 col-md-4 col-lg-4 margin-bottom-10">';
                             html += '<div class="wrapperforliineedforlightboxremoval">';
                             html += '<div class="cat_product_medium1">';
                             html += '<div class="ai-grid-page-node-pic-box pictureBox gridPicture grid-box-main">';
@@ -1772,7 +1772,7 @@ function scrollDataAjax(it_scroll,pageCounter)
                                 html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;' + obj.price + ' </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
                                 html += '<p class="yacths-des-text">2015H</p>';
                                 html += '</div>';
-                                html += '<img alt="' + obj.image.file_name + '" src="' + pimg + '" class="img-responsive">';
+                                html += '<img alt="' + obj.image.file_name + '" src="' + obj.image.imgsrc + obj.image.file_name + '" class="img-responsive">';
                                 html += '</a>';
 
                             } else{
@@ -2119,12 +2119,12 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                         html +='</li>';*/
 
                         if (node_no % 20 == 0) {
-                        html += '<div class="productData col-xs-12 col-sm-6 col-md-3 col-lg-3 margin-bottom-10">';
+                        html += '<div class="productData col-xs-12 col-sm-6 col-md-4 col-lg-4 margin-bottom-10">';
                         html += 'Advertisement Here';
                         html += '</div>';
                         }
                         else {
-                        html += '<div class="productData col-xs-12 col-sm-6 col-md-3 col-lg-3 margin-bottom-10">';
+                        html += '<div class="productData col-xs-12 col-sm-6 col-md-4 col-lg-4 margin-bottom-10">';
                         html += '<div class="wrapperforliineedforlightboxremoval">';
                         html += '<div class="cat_product_medium1">';
                         html += '<div class="ai-grid-page-node-pic-box pictureBox gridPicture grid-box-main">';
@@ -2157,7 +2157,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                             html += '<p class="yacths-des-text yacths-des-text-align"><span>&euro;' + obj.price + ' </span>|<span>37.7mm</span>|<span>10 Guests</span></p>';
                             html += '<p class="yacths-des-text">2015H</p>';
                             html += '</div>';
-                            html += '<img alt="' + obj.image.file_name + '" src="' + pimg + '" class="img-responsive">';
+                            html += '<img alt="' + obj.image.file_name + '" src="' + obj.image.imgsrc + obj.image.file_name + '" class="img-responsive">';
                             html += '</a>';
 
                         } else{
