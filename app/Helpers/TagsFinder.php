@@ -19,7 +19,7 @@ class TagsFinder {
         $proprty = \DB::table('tb_properties')->where('property_status', 1)->get();
         foreach ($proprty as $propt) {
             $tagStr .= "'" . $propt->property_name . "',";
-        }
+        }/*
         $categories = \DB::table('tb_categories')->where('category_published', 1)->get();
         foreach ($categories as $cats) {
 			$subdest = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name')->where('parent_category_id', $cats->id)->get();
@@ -43,7 +43,7 @@ class TagsFinder {
 			if (isset($preprops[0]->total_rows) && $preprops[0]->total_rows > 0) {
 				$tagStr .= "'" . $cats->category_name . "',";
 			}
-        }
+        }*/
         return substr($tagStr, 0, -1);
     }
 	
