@@ -99,6 +99,9 @@ and open the template in the editor.
 body{
     font-family: Geomanist-Regular;
 }
+.form-group.post-filter-inputs.active a {
+    color: #000;
+}
 .col-md-10.col-sm-9.FloatFilter {
     float: right;
 }
