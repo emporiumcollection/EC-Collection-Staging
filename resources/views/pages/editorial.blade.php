@@ -775,6 +775,8 @@
                                 text-align: center;
                                 font-family: Geomanist-light;
                                 margin: 40px;
+                                background: #f0f0f0;
+                                padding: 20px 20px;
                             }
                             
                             .bar-des-text {
@@ -2676,7 +2678,7 @@
 				@if($propertyDetail['data']->assign_detail_city!='')
 					@if(!empty($relatedgridpropertiesArr))
 						<div class="container-">
-							<h2 class="bar-name-text-style" style="color:#000;">View our selection of Luxury Hotels in {{$propertyDetail['data']->assign_detail_city}}</h2>
+							<h2 class="bar-name-text-style">View our selection of Luxury Hotels in {{$propertyDetail['data']->assign_detail_city}}</h2>
 							<div class="row no-margin">
 											<div class="filter-content overflow-hidden margin-100px-top sm-margin-75px-top xs-margin-50px-top">
 												<ul class="portfolio-grid work-4col hover-option2 gutter-small">
