@@ -130,7 +130,23 @@
 									 <div class="col-md-2">
 									 	
 									 </div>
-								  </div> </fieldset>
+								  </div> 
+					
+						<div class="form-group  " >
+									<label for="Status" class=" control-label col-md-2 text-left"> Status <span class="asterix"> * </span></label>
+									<div class="col-md-8">
+									  
+					<label class='radio radio-inline'>
+					<input type='radio' name='slider_status' value ='0' required @if($row['slider_status'] == '0') checked="checked" @endif > Inactive </label>
+					<label class='radio radio-inline'>
+					<input type='radio' name='slider_status' value ='1' required @if($row['slider_status'] == '1') checked="checked" @endif > Active </label> 
+									 </div> 
+									 <div class="col-md-2">
+									 	
+									 </div>
+								  </div>
+								  
+					</fieldset>
 			</div>
 			
 			
