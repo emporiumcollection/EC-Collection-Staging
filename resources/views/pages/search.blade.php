@@ -2552,7 +2552,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
 															@if(!empty($experiences))
 																@foreach($experiences as $experience)
                                                                                                                                 <div class="form-group post-filter-inputs <?php echo (str_replace('_', ' ', $cat) == $experience->category_name)? 'active' : ''; ?>">
-																		<label><a onclick="$('#collapse1 .post-filter-inputs').removeClass('active');$(this).addClass('active');experience_property_filter('{{$experience->category_name}}');" href="javascript:void(0);">{{$experience->category_custom_title}}</a></label>
+                                                                                                                                    <label><a onclick="$('#collapse1 .post-filter-inputs').removeClass('active');$(this).parents('.post-filter-inputs').addClass('active');experience_property_filter('{{$experience->category_name}}');" href="javascript:void(0);">{{$experience->category_custom_title}}</a></label>
 																	</div>
 																@endforeach
 															@endif
