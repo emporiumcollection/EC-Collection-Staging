@@ -1088,7 +1088,7 @@
                             border-radius: 0px;
                             transition: .5s;
                             position: fixed;
-                            top: 208px;
+                            top: 207px;
                             left: calc(100% - 62px);
                             width: 340px;
                             background: #272727;

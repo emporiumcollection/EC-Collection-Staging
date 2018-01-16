@@ -5213,7 +5213,7 @@ div#fixed_wrapper {
     width: 100%;
 }
 .ps-login-sign-submit-btn {
-    margin-top: 110px;
+    margin-top: 0px;
 }
 .form-white-samml-des-text {
     color: #fff;
@@ -5430,12 +5430,12 @@ div#fixed_wrapper {
     width: 250px;
 }
 .next-hotel-tittle {
-    background-color: #fff;
+    background-color: #252525;
     padding: 5px 8px;
     text-align: left;
 }
 .next-hotel-tittle h2 {
-    color: #000;
+    color: #fff;
     font-family: AcaslonPro-Regular;
     font-size: 18px;
     font-style: italic;
@@ -5463,7 +5463,7 @@ div#fixed_wrapper {
     padding: 15px 5px;
 }
 .next-hotel-btn {
-    border-top: 2px solid #fff;
+    border-top: 0px solid #fff;
 }
 .next-hotel-arrow {
     margin: 0 auto;
