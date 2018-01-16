@@ -565,7 +565,7 @@
                             .hotel-block-two-right-sec-align > p {
                                 color: white;
                                 line-height: 30px;
-                                margin-top: 105px;
+                                margin-top: 0px;
                                 font-size: 15px;
                                 font-family: Geomanist-light;
                                 opacity: 1;
@@ -1161,6 +1161,9 @@
                                 width: 174px;
                                 z-index: 99;
                                 float: left;
+                            }
+                            .m_slider.editorial_m_slider {
+                                margin-top: 81px;
                             }
               
                             @import url('https://fonts.googleapis.com/css?family=Caveat');
@@ -2074,7 +2077,7 @@
                             <div class="row">
                                 <div class="right-menu-align">
                                     <div class="hotels-logo">
-                                        <h3 class="title"><a href="<!-- {{url('/')}}">{{$propertyDetail['data']->property_name}}--></a><hr class="star-light"></h3>-->
+                                        <h3 class="title"><a href="https://www.emporium-voyage.com"> <img class="img-responsive" src="https://www.emporium-voyage.com/sximo/assets/images/design-location-logo.png" alt=""></a></h3>
                                         
                                     </div>
                                     <ul>
