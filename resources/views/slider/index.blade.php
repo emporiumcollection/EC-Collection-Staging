@@ -50,7 +50,7 @@
 	
 	 {!! Form::open(array('url'=>'slider/delete/', 'class'=>'form-horizontal' ,'id' =>'SximoTable' )) !!}
 		
-		<select name='slider_category' id='slider_category' class="form-control" onchange="fetchslidercategory(this.value);" > 
+		<select name='slider_category' id='slider_category' class="select2" onchange="fetchslidercategory(this.value);" > 
 			<option value="">-Select-</option>
 			@if(!empty($allcategories))
 				@foreach($allcategories as $catlist)
