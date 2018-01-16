@@ -1151,7 +1151,7 @@
                                 color: #252525;
                                 font-size: 25px;
                                 height: 71px;
-                                margin-left: 0px;
+                                margin: 0px 0px 10px 3px;
                                 opacity: 1;
                                 overflow-wrap: break-word;
                                 padding: 27px 5px;
@@ -1160,6 +1160,7 @@
                                 text-transform: uppercase;
                                 width: 174px;
                                 z-index: 99;
+                                float: left;
                             }
               
                             @import url('https://fonts.googleapis.com/css?family=Caveat');
@@ -2628,7 +2629,7 @@
                             imagesPro += data.typedata.price;
                             imagesPro += '</div">';
                         }
-                        imagesPro += '<div class="hotel-book-now">Book Now</div>';
+                        imagesPro += '<A href="#"><div class="hotel-book-now">Book Now</div></a>';
                         imagesPro += '</div>';
                         imagesPro += '<div class="inner-pop-up-book-btn">';
                         imagesPro += '<a href="#" onclick="choose_room_type(' + data.typedata.id + ');">Book</a>';
