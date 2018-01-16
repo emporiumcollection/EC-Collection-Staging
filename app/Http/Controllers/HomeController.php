@@ -4947,8 +4947,9 @@ class HomeController extends Controller {
         $query .= " (SELECT cat.category_name FROM tb_categories cat where pr.property_category_id=cat.id limit 0,1 ) as category_name ";
         $query .= " FROM tb_properties pr  ";
         $whereClause = " WHERE pr.property_type = 'Hotel' AND (pr.property_name like '%".$keyword."%'".$getcats.") AND pr.property_status = '1'".$filterPriceQry."  ORDER BY pr.id asc ";
-        $limit = " LIMIT ". $pageStart.",".$perPage; 
-        $finalQry = $query.$whereClause.$limit ;
+        $orderBy = "ORDER BY (SELECT rack_rate FROM tb_properties_category_rooms_price pcrp WHERE pcrp.property_id = pr.id ORDER BY rack_rate DESC LIMIT 1) * 1 DESC, pr.editor_choice_property desc, pr.feature_property desc ";
+        $limit = " LIMIT ". $pageStart.",".$perPage;
+        $finalQry = $query.$whereClause.$orderBy.$limit ;
         $CountRecordQry = "Select count(*) as total_record from tb_properties pr ".$whereClause ;
         
         $property = DB::select($finalQry);
