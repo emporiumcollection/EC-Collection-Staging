@@ -4942,16 +4942,16 @@ class HomeController extends Controller {
              $filterPriceQry = "";
         }
 
-        $query = "SELECT pr.editor_choice_property, pr.feature_property,pr.id,pr.property_name,pr.property_slug"; 
+        $query = "SELECT pr.editor_choice_property,pr.feature_property,pr.id,pr.property_name,pr.property_slug,pr.property_category_id ";
         $query .= $getPriceQry;
         $query .= " (SELECT cat.category_name FROM tb_categories cat where pr.property_category_id=cat.id limit 0,1 ) as category_name ";
         $query .= " FROM tb_properties pr  ";
-        $whereClause = " WHERE pr.property_type = 'Hotel' AND (pr.property_name like '%".$keyword."%'".$getcats.") AND pr.property_status = '1'".$filterPriceQry."  ORDER BY pr.id asc ";
-        $orderBy = "ORDER BY (SELECT rack_rate FROM tb_properties_category_rooms_price pcrp WHERE pcrp.property_id = pr.id ORDER BY rack_rate DESC LIMIT 1) * 1 DESC, pr.editor_choice_property desc, pr.feature_property desc ";
-        $limit = " LIMIT ". $pageStart.",".$perPage;
+        $whereClause = " WHERE pr.property_type = 'Hotel' AND (pr.property_name like '%".$keyword."%'".$getcats.") AND pr.property_status = '1'".$filterPriceQry;
+        $orderBy = " ORDER BY (SELECT rack_rate FROM tb_properties_category_rooms_price pcrp WHERE pcrp.property_id = pr.id ORDER BY rack_rate DESC LIMIT 1) * 1 DESC, pr.editor_choice_property desc, pr.feature_property desc ";
+        $limit = " LIMIT ". $pageStart.",".$perPage; 
         $finalQry = $query.$whereClause.$orderBy.$limit ;
         $CountRecordQry = "Select count(*) as total_record from tb_properties pr ".$whereClause ;
-        
+                
         $property = DB::select($finalQry);
         $getRec = DB::select($CountRecordQry);
         $propertiesArr = array();
