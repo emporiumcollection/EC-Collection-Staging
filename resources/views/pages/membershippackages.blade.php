@@ -299,7 +299,8 @@
                             <div class="row equalize sm-equalize-auto">
                                 <div class="col-md-12 sm-clear-both wow fadeInLeft no-padding">
                                     <div class="padding-ten-half-all bg-light-gray md-padding-seven-all xs-padding-30px-all height-100">
-                                        @if (!empty($packages))
+                                        <!--<span class="text-extra-dark-gray alt-font text-large font-weight-600 margin-25px-bottom display-block">Application form</span>--> 
+										@if (!empty($packages))
 											<ul class="image-slider">
 												{{--*/ $k=1; $tottyp = count($packages); /*--}}
 												@foreach($packages as $key=>$package)
@@ -351,6 +352,7 @@
 												</a>
 											</div>
 										@endif
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -461,54 +463,39 @@
                         $(this).removeClass('active')
                     }
             );
+			
+			function submit_hotelinfo_form()
+			{
+				$.ajax({
+                    url: "{{ URL::to('frontend_hotelpost')}}",
+                    type: "post",
+                    data: $('#contact-form').serializeArray(),
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.status == 'error')
+                        {
+							var html = '';
+							html +='<ul class="parsley-error-list">';
+							$.each(data.errors, function(idx, obj) {
+								html +='<li>'+obj+'</li>';
+							});
+							html +='</ul>';
+							$('#formerrors').html(html);
+							window.scrollTo(0, 600);
+                        } 
+						else
+                        {
+                            var htmli = '';
+							htmli +='<div class="alert alert-success fade in block-inner">';
+							htmli +='<button data-dismiss="alert" class="close" type="button">×</button>';
+							htmli +='<i class="icon-checkmark-circle"></i> Record Inserted Successfully </div>';
+							$('#formerrors').html(htmli);
+							 window.scrollTo(0, 600); 
+                        }
+                    }
+                });
+			}
         </script>
         <!-- contact email aside -->
-		<script>
-			$(".editorial-image-slider-previous-btn").click(function ( event ) {
-				event.preventDefault();
-				
-				var index = $(this).parent().parent().find(".image-slider li.active").index();
-				$(this).parent().parent().find(".image-slider li.active").removeClass("active");
-				if (index == 0) {
-					var lindex = $(this).parent().parent().find(".image-slider li:last-child").index() +1;
-					$(this).parent().parent().find(".image-slider li:nth-child("+lindex+")").addClass("active");
-					$(this).parent().parent().find(".images-count").html( lindex + " / " + $(this).parent().parent().find(".image-slider li").length);
-				}
-				else
-				{
-					var rlindex = index - 1;
-					$(this).parent().parent().find(".image-slider li:eq("+rlindex+")").addClass("active");
-					$(this).parent().parent().find(".images-count").html( index + " / " + $(this).parent().parent().find(".image-slider li").length);
-				}
-				
-				
-			});
-			
-			$(".editorial-image-slider-next-btn").click(function ( event ) {
-				event.preventDefault();
-
-				var index = $(this).parent().parent().find(".image-slider li.active").index();
-				if (index == $(this).parent().parent().find(".image-slider li:last-child").index()) {
-					index = -1;
-				}
-				$(this).parent().parent().find(".image-slider li.active").removeClass("active");
-				$(this).parent().parent().find(".image-slider li:nth-child(" + (+index + 2) + ")").addClass("active");
-				
-				$(this).parent().parent().find(".images-count").html( (+index + 2) + " / " + $(this).parent().parent().find(".image-slider li").length);
-				
-			});
-
-			setInterval(function () {
-				var index = $(".auto-slider ul.image-slider > li.active").index();
-				if (index == $(".auto-slider ul.image-slider > li:last-child").index()) {
-					index = -1;
-				}
-
-				$(".auto-slider ul.image-slider > li.active").removeClass("active");
-				$(".auto-slider ul.image-slider > li:nth-child(" + (+index + 2) + ")").addClass("active");
-				$(".auto-slider .images-count").html((+index + 2) + " / " + $(".auto-slider ul.image-slider > li").length);
-
-			}, 40000);
-		</script>
     </body>
 </html>
