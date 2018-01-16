@@ -301,26 +301,11 @@
                                     <div class="padding-ten-half-all bg-light-gray md-padding-seven-all xs-padding-30px-all height-100">
                                         @if (!empty($packages))
 											<ul class="image-slider">
-												{{--*/ $k=1; $tottyp = count($propertyDetail['roomimgs']); /*--}}
-												@foreach($propertyDetail['typedata'] as $key=>$type)
-												@if (array_key_exists($type->id, $propertyDetail['roomimgs']))
-												{{--*/ $nextkey = false; $totimg = count($propertyDetail['roomimgs'][$type->id]['imgs']); /*--}}
-												@if($k==1) {{--*/ $ftky = $type->id; $ftkey = $key; /*--}} @endif
-
-												@if(end($propertyDetail['typedata'])!=$type)
-												{{--*/ $nxtkey = $propertyDetail['typedata'][$key+1]->id; /*--}}
-												@for($nk=2;$nextkey!=true;$nk++)
-												@if (array_key_exists($nxtkey, $propertyDetail['roomimgs']))
-												{{--*/ $nxtkey = $nxtkey; $nextkey=true; /*--}}
-												@else
-												{{--*/ $nxtkey = $propertyDetail['typedata'][$key+$nk]->id; /*--}}
-												@endif
-												@endfor
-												@endif
-
-												<li class="{{($propertyDetail['typedata'][$ftkey]==$type) ? 'active' : ''}}">
+												{{--*/ $k=1; $tottyp = count($packages); /*--}}
+												@foreach($packages as $key=>$package)
+												<li class="{{($k==1) ? 'active' : ''}}">
 													<a href="#">
-														<img class="img-responsive" src="{{\ImageCache::make($propertyDetail['roomimgs'][$propertyDetail['typedata'][$key]->id]['imgsrc_dir'].$propertyDetail['roomimgs'][$propertyDetail['typedata'][$key]->id]['imgs'][0]->file_name,100,1050,null)}}" alt="{{$propertyDetail['roomimgs'][$propertyDetail['typedata'][$key]->id]['imgs'][0]->file_name}}" style="height:580px; width: 100%;">
+														<img class="img-responsive" src="{{URL::to('uploads/packages/'.$package->package_image)}}" alt="{{$package->package_image}}" style="height:580px; width: 100%;">
 													</a>
 													<div class="col-md-12 col-sm-12">
 														<div class="col-md-6 col-sm-6">
@@ -335,19 +320,20 @@
 																<div class="row">
 																	<div class="slider-sec-side-text-bg">
 																		<div class="slider-side-sec-alignment">
-																			<div class="expeience-small-text">Experience {{$propertyDetail['data']->property_name}}</div>
-																			<div class="slider-side-text-tittle">{{$type->category_name}}</div>
+																			<div class="expeience-small-text">Package</div>
+																			<div class="slider-side-text-tittle">{{$package->package_title}}</div>
 																			<div class="slider-side-description-text">
-																				{{(strlen($type->room_desc) > 300) ? substr($type->room_desc,0,300).'...':$type->room_desc}}
+																				{{(strlen($package->package_description) > 300) ? substr($package->package_description,0,300).'...':$package->package_description}}
 																			</div>
 																		</div>
 																		<div>
-																			@if(end($propertyDetail['typedata'])==$type)
+																		<!--	@if(end($propertyDetail['typedata'])==$type)
 																			<img class="slider-next-image-btn img-responsive" src="{{\ImageCache::make($propertyDetail['roomimgs'][$ftky]['imgsrc_dir'].$propertyDetail['roomimgs'][$ftky]['imgs'][0]->file_name,100,200,null)}}" alt=""/>
 																			@else
 																			<img class="slider-next-image-btn img-responsive" src="{{\ImageCache::make($propertyDetail['roomimgs'][$nxtkey]['imgsrc_dir'].$propertyDetail['roomimgs'][$nxtkey]['imgs'][0]->file_name,100,200,null)}}" alt=""/>
 																			@endif
-																			<a href="#" style="margin-left:100px;" rel="{{$type->id}}" class="book-button open-show_more-page hotel-btn">Show More</a>
+																			-->
+																			<a href="#" style="margin-left:100px;" rel="{{$package->id}}" class="book-button open-show_more-page hotel-btn">Show More</a>
 																		</div>
 																	</div>
 																</div>
@@ -356,7 +342,7 @@
 													</div>
 												</li>
 												{{--*/ $k++; /*--}}
-												@endif
+												
 												@endforeach
 											</ul>
 											<div class="clearfix"></div>
