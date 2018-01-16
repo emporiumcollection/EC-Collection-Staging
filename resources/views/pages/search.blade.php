@@ -2552,39 +2552,39 @@ url: "{{ URL::to('filter_search_destionation')}}",
 															@if(!empty($experiences))
 																@foreach($experiences as $experience)
                                                                                                                                 <div class="form-group post-filter-inputs <?php echo (str_replace('_', ' ', $cat) == $experience->category_name)? 'active' : ''; ?>">
-																		<label><a onclick="experience_property_filter('{{$experience->category_name}}');" href="javascript:void(0);">{{$experience->category_custom_title}}</a></label>
+																		<label><a onclick="$('#collapse1 .post-filter-inputs').removeClass('active');$(this).addClass('active');experience_property_filter('{{$experience->category_name}}');" href="javascript:void(0);">{{$experience->category_custom_title}}</a></label>
 																	</div>
 																@endforeach
 															@endif
 															<!--<div class="form-group post-filter-inputs">
-																<label><a onclick="experience_property_filter('Beach Hotels');" href="javascript:void(0);">Luxury Beach Hotels</a></label>
+																<label><a onclick="$('#collapse1 .post-filter-inputs').removeClass('active');$(this).addClass('active');experience_property_filter('Beach Hotels');" href="javascript:void(0);">Luxury Beach Hotels</a></label>
 															</div>
                                                             <div class="form-group post-filter-inputs post-filter-inputs">
-                                                                <label><a onclick="experience_property_filter('Green Properties');" href="javascript:void(0);">Luxury Green Hotels</a></label>
+                                                                <label><a onclick="$('#collapse1 .post-filter-inputs').removeClass('active');$(this).addClass('active');experience_property_filter('Green Properties');" href="javascript:void(0);">Luxury Green Hotels</a></label>
                                                             </div> 
                                                             <div class="form-group post-filter-inputs">
-                                                                <label><a onclick="experience_property_filter('Go Urban Hotels');" href="javascript:void(0);">Luxury Urban Hotels</a></label>
+                                                                <label><a onclick="$('#collapse1 .post-filter-inputs').removeClass('active');$(this).addClass('active');experience_property_filter('Go Urban Hotels');" href="javascript:void(0);">Luxury Urban Hotels</a></label>
                                                             </div> 
                                                             <div class="form-group post-filter-inputs">
-                                                                <label><a onclick="experience_property_filter('Infinity Pools');" href="javascript:void(0);">Luxury Infinity Pools</a></label>
+                                                                <label><a onclick="$('#collapse1 .post-filter-inputs').removeClass('active');$(this).addClass('active');experience_property_filter('Infinity Pools');" href="javascript:void(0);">Luxury Infinity Pools</a></label>
                                                             </div>
                                                             <div class="form-group post-filter-inputs">
-                                                                <label><a onclick="experience_property_filter('Spa and Wellness Hotels');" href="javascript:void(0);">Luxury Spa and Wellness Hotels</a></label>
+                                                                <label><a onclick="$('#collapse1 .post-filter-inputs').removeClass('active');$(this).addClass('active');experience_property_filter('Spa and Wellness Hotels');" href="javascript:void(0);">Luxury Spa and Wellness Hotels</a></label>
                                                             </div> 
                                                             <div class="form-group post-filter-inputs">
-                                                                <label><a onclick="experience_property_filter('Mountain Ski Resorts');" href="javascript:void(0);">Luxury Mountains and Skin Resorts</a></label>
+                                                                <label><a onclick="$('#collapse1 .post-filter-inputs').removeClass('active');$(this).addClass('active');experience_property_filter('Mountain Ski Resorts');" href="javascript:void(0);">Luxury Mountains and Skin Resorts</a></label>
                                                             </div> 
                                                             <div class="form-group post-filter-inputs">
-                                                                <label><a onclick="experience_property_filter('Yoga Hotels');" href="javascript:void(0);">Discover Yoga Hotels</a></label>
+                                                                <label><a onclick="$('#collapse1 .post-filter-inputs').removeClass('active');$(this).addClass('active');experience_property_filter('Yoga Hotels');" href="javascript:void(0);">Discover Yoga Hotels</a></label>
                                                             </div> 
                                                             <div class="form-group post-filter-inputs">
-                                                                <label><a onclick="experience_property_filter('Culinary Delights');" href="javascript:void(0);">Discover culinary Delight Hotels</a></label>
+                                                                <label><a onclick="$('#collapse1 .post-filter-inputs').removeClass('active');$(this).addClass('active');experience_property_filter('Culinary Delights');" href="javascript:void(0);">Discover culinary Delight Hotels</a></label>
                                                             </div>
                                                             <div class="form-group post-filter-inputs">
-                                                                <label><a onclick="experience_property_filter('Family Friendly');" href="javascript:void(0);">Discover Family Friendly Hotels</a></label>
+                                                                <label><a onclick="$('#collapse1 .post-filter-inputs').removeClass('active');$(this).addClass('active');experience_property_filter('Family Friendly');" href="javascript:void(0);">Discover Family Friendly Hotels</a></label>
                                                             </div> 
                                                             <div class="form-group post-filter-inputs">
-                                                                <label><a onclick="experience_property_filter('Unusual Adventure Hotels');" href="javascript:void(0);">Unusual Adventure Hotels</a></label>
+                                                                <label><a onclick="$('#collapse1 .post-filter-inputs').removeClass('active');$(this).addClass('active');experience_property_filter('Unusual Adventure Hotels');" href="javascript:void(0);">Unusual Adventure Hotels</a></label>
                                                             </div>-->
                                                         </form>
                                                     </div>
