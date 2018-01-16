@@ -2,6 +2,7 @@
 
 namespace App\Helpers;
 use App\Http\Controllers\HomeController;
+use DB;
 
 class TagsFinder {
 
