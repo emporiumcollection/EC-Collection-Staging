@@ -146,7 +146,7 @@
             
                         
             .CustomTopbarwidth {
-                width: 5.333%;
+                width: 8.333%;
             }
             
             .detailfaLock {
@@ -1426,7 +1426,7 @@
                                             <div class="form-group padding-right-12">
                                                 <label class="align-with-label"></label>
                                                 <div class="clearfix"></div>
-                                                <button class="top-booking-bar-btn" type="submit">Book</button>
+                                                <button class="top-booking-bar-btn" type="submit">Book your Stay</button>
 <!--                                                <a data-popup-id="AlertBookButton-Popup" href="#" class="video-popup-btn login_popup show-login-forms-btn top-booking-bar-btn" type="submit">BOOK</a>-->
                                                 <button class="top-booking-bar-btn click-share-btn">Share</button>
 						
