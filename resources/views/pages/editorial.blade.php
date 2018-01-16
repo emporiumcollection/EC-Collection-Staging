@@ -404,7 +404,7 @@
                             .hotel-block-two-right-sec-align > p {
                                 color: white;
                                 line-height: 30px;
-                                margin-top: 105px;
+                                margin-top: 0px;
                                 font-size: 15px;
                                 font-family: Geomanist-Regular;
                                 opacity: 1;
@@ -422,7 +422,7 @@
                                 padding-right: 0px;
                                 font-size: 15px;
                                 line-height: 30px;
-                                margin-top: 33px;
+                                margin-top: 0px;
                             }
                             .hotel-block-two-right-sec-align > p {
                                 color: white;
@@ -573,7 +573,7 @@
                             .hotel-block-two-right-sec-align > h2 {
                                 color: #dbd4d7;
                                 font-family: ACaslonPro-Regular;
-                                font-size: 0px;
+                                font-size: 32px;
                                 font-weight: lighter;
                                 margin-top: 0px;
                                 text-transform: uppercase;
@@ -1148,7 +1148,7 @@
                             
                             .hotel-book-now {
                                 background: #ABA07C;
-                                color: #252525;
+                                color: #fff;
                                 font-size: 25px;
                                 height: 71px;
                                 margin: 0px 0px 10px 3px;
