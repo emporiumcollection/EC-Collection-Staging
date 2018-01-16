@@ -2540,7 +2540,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                         <div class="panel panel-default custom-post-panel">
                                             <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" class="heading-stying collapsed">
                                                 <div class="panel-heading custom-heading">
-                                                    Experience
+                                                    Experience <?php echo $continent, ' - ', $region, ' - ', $cat; ?>
                                                 </div>
                                             </a>
                                             <div id="collapse1" class="panel-collapse <?php echo (isset($_REQUEST['s']) && in_array($_REQUEST['s'], array('Beach Hotels', 'Green Properties', 'Go Urban Hotels', 'Infinity Pools', 'Spa and Wellness Hotels', 'Mountain Ski Resorts', 'Yoga Hotels', 'Culinary Delights', 'Family Friendly', 'Unusual Adventure Hotels')))? 'in' : ''; ?> collapse">
