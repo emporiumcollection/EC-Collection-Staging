@@ -327,12 +327,7 @@
 																			</div>
 																		</div>
 																		<div>
-																		<!--	@if(end($propertyDetail['typedata'])==$type)
-																			<img class="slider-next-image-btn img-responsive" src="{{\ImageCache::make($propertyDetail['roomimgs'][$ftky]['imgsrc_dir'].$propertyDetail['roomimgs'][$ftky]['imgs'][0]->file_name,100,200,null)}}" alt=""/>
-																			@else
-																			<img class="slider-next-image-btn img-responsive" src="{{\ImageCache::make($propertyDetail['roomimgs'][$nxtkey]['imgsrc_dir'].$propertyDetail['roomimgs'][$nxtkey]['imgs'][0]->file_name,100,200,null)}}" alt=""/>
-																			@endif
-																			-->
+																		
 																			<a href="#" style="margin-left:100px;" rel="{{$package->id}}" class="book-button open-show_more-page hotel-btn">Show More</a>
 																		</div>
 																	</div>
