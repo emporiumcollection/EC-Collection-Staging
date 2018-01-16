@@ -35,6 +35,12 @@
         
         
         <style>
+            
+            .main-page-landing .image.editorial-image img {
+                height: 100vh;
+                object-fit: cover;
+                object-position: center 64px;
+            }
             /* hamburg menu pop up css */
             .EVhamburgService {
                 padding: 19px;
