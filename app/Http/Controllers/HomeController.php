@@ -6262,6 +6262,8 @@ class HomeController extends Controller {
                         $finalQry = $query.$whereClause.$orderBy.$limit ; 
                         $CountRecordQry = "Select count(*) as total_record from tb_properties pr ".$whereClause ;
                         
+                        echo $finalQry;die;
+                        
                         $property = DB::select($finalQry);
                         $getRec = DB::select($CountRecordQry);
 
