@@ -1551,7 +1551,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            @if($rw%4==0)
+                                            @if($rw%3==0)
                                         </div>
                                         <div class="row">
                                             @endif
@@ -1825,7 +1825,7 @@ function scrollDataAjax(it_scroll,pageCounter)
                                 html += '</div>';
                                 html += '</div>';
                                 html += '</div>';
-                                if (p % 4 == 0){
+                                if (p % 3 == 0){
                                     html += '</div>';
                                     html += '<div class="row">';
                                 }
@@ -2212,7 +2212,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                         html += '</div>';
                         html += '</div>';
                         html += '</div>';
-                        if (p % 4 == 0)
+                        if (p % 3 == 0)
                         {
                         html += '</div>';
                         html += '<div class="row">';
