@@ -768,7 +768,7 @@
                             }
                             
                             .bar-name-text-style {
-                                color: #fff;
+                                color: #000;
                                 font-size: 13px;
                                 letter-spacing: 0px;
                                 text-transform: uppercase;
@@ -2068,12 +2068,13 @@
                                         </li>
                                         @if (array_key_exists('typedata', $propertyDetail))
                                         <li>
-                                            <a href="#style-rooms" data-hotel-option="rooms_suites">{{ ($propertyDetail['data']->property_type=='Yachts') ? 'CABINS' : 'ROOMS & SUITES' }}</a>
+                                            <a href="#hotel">@if($propertyDetail['data']->property_type=='Yachts') YACHT INFO  @elseif($propertyDetail['data']->property_type=='Villas') VILLA INFO @else HOTEL INFO @endif</a>
                                         </li>
                                         @endif
+                                        
                                         @if (array_key_exists('typedata', $propertyDetail))
                                         <li>
-                                            <a href="#hotel">@if($propertyDetail['data']->property_type=='Yachts') YACHT INFO  @elseif($propertyDetail['data']->property_type=='Villas') VILLA INFO @else HOTEL INFO @endif</a>
+                                            <a href="#style-rooms" data-hotel-option="rooms_suites">{{ ($propertyDetail['data']->property_type=='Yachts') ? 'CABINS' : 'ROOMS & SUITES' }}</a>
                                         </li>
                                         @endif
 
