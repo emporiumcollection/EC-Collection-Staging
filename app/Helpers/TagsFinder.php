@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Helpers;
+use App\Http\Controllers\HomeController;
 
 class TagsFinder {
 
