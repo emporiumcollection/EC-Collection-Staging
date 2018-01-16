@@ -32,9 +32,9 @@
 						<fieldset><legend> Packages</legend>
 									
 								  <div class="form-group hidethis " style="display:none;">
-									<label for="Id" class=" control-label col-md-4 text-left"> Id <span class="asterix"> * </span></label>
+									<label for="Id" class=" control-label col-md-4 text-left"> Id </label>
 									<div class="col-md-6">
-									  {!! Form::text('id', $row['id'],array('class'=>'form-control', 'placeholder'=>'', 'required'=>'true'  )) !!} 
+									  {!! Form::text('id', $row['id'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
 									 </div> 
 									 <div class="col-md-2">
 									 	
