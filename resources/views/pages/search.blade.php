@@ -114,6 +114,7 @@
                 width: 35px;
                 float: right;
                 height: 55px;
+                margin-top: -42px;
             }
             
                         
@@ -127,15 +128,15 @@
             
             .block-content.content span:nth-child(1) {
                 top: 12px;
-                left: 78%;
+                left: 75%;
             }
             .block-content.content span:nth-child(2) {
                 top: 19px;
-                left: 78%;
+                left: 75%;
             }
             .block-content.content span:nth-child(3) {
                 top: 27px;
-                left: 78%;
+                left: 75%;
             }
             
             /* hamburg menu css */
@@ -2550,7 +2551,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
 														
 															@if(!empty($experiences))
 																@foreach($experiences as $experience)
-                                                                                                                                <div class="form-group post-filter-inputs <?php echo (str_replace($cat, '_', ' ') == $experience->category_name)? 'active' : ''; ?>">
+                                                                                                                                <div class="form-group post-filter-inputs <?php echo (str_replace('_', ' ', $cat) == $experience->category_name)? 'active' : ''; ?>">
 																		<label><a onclick="experience_property_filter('{{$experience->category_name}}');" href="javascript:void(0);">{{$experience->category_custom_title}}</a></label>
 																	</div>
 																@endforeach
