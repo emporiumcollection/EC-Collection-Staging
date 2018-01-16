@@ -191,6 +191,8 @@ Route::group(['middleware' => 'auth'], function()
 
 	Route::post('gallery_images_uploads', 'CitycontentController@gallery_images_uploads');
 	Route::post('delete_gallery_image', 'CitycontentController@delete_gallery_image');
+	
+	Route::post('enable_diable_sliderstatus', 'SliderController@enable_diable_sliderstatus');
 });	
 
 Route::post('frontend_hotelpost', 'HomeController@addHotelInfoFrontend');

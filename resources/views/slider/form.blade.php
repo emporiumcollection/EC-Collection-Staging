@@ -43,7 +43,7 @@
                                                     <div class="form-group  " >
                                                         <label for="Type" class=" control-label col-md-4 text-left"> Slider Category <span class="asterix"> * </span></label>
                                                         <div class="col-md-6">
-                                                            <select name='slider_category' id='slider_category' class="form-control" required > 
+                                                            <select name='slider_category' id='slider_category' class="form-control select2" required > 
                                                                 <option value="">-Select-</option>
                                                                 <option value="Landing" <?php echo ($row['slider_category'] == 'Landing' ? " selected='selected' " : '' ); ?>>Landing</option>
                                                                 <option value="Hotel" <?php echo ($row['slider_category'] == 'Hotel' ? " selected='selected' " : '' ); ?>>Hotels</option>
@@ -133,8 +133,8 @@
 								  </div> 
 					
 						<div class="form-group  " >
-									<label for="Status" class=" control-label col-md-2 text-left"> Status <span class="asterix"> * </span></label>
-									<div class="col-md-8">
+									<label for="Status" class=" control-label col-md-4 text-left"> Status <span class="asterix"> * </span></label>
+									<div class="col-md-6">
 									  
 					<label class='radio radio-inline'>
 					<input type='radio' name='slider_status' value ='0' required @if($row['slider_status'] == '0') checked="checked" @endif > Inactive </label>

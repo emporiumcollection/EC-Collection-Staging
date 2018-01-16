@@ -76,6 +76,7 @@
 							@endif
 						@endforeach
 						<th width="70">Ordering</th>
+						<th width="70">Status</th>
 						<th width="70" >{{ Lang::get('core.btn_action') }}</th>
 					  </tr>
 				</thead>
@@ -90,6 +91,13 @@
 						<td>{{ $row->slider_title }}</td>
 						<td>{!! $row->slider_description !!}</td>
 						<td>{{ $row->slider_link }}</td>
+						<td>
+							@if($row->slider_status==1)
+								<a  href="#" class="tips btn btn-xs btn-success" title="Click to Disable " onclick="change_option(this,'slider_status','{{$row->id}}',0);"><i class="fa fa-check "></i></a>
+							@else
+								<a  href="#" class="tips btn btn-xs btn-danger" title="Click to enable " onclick="change_option(this,'slider_status','{{$row->id}}',1);"><i class="fa fa-times "></i></a>
+							@endif
+						</td>
 						<td>
 							<a href="#" class="tips btn btn-xs btn-primary" title="Move Down" onclick="change_ordering('down','{{$row->id}}');"><i class="fa  fa-arrow-down"></i></a>
 							@if($rowData[0]!=$row)
@@ -133,6 +141,43 @@ $(document).ready(function(){
 function fetchslidercategory(catg)
 {
 	window.location.href = "{{URL::to('slider')}}?selcat="+catg;
+}
+
+function change_option(row,filed_name,row_id,act)
+{
+	if(row_id!='' && row_id>0)
+	{
+		$.ajax({
+		  url: "{{ URL::to('enable_diable_sliderstatus')}}",
+		  type: "post",
+		  data: 'filed_name='+filed_name+'&row_id='+row_id+'&action='+act,
+		  success: function(data){
+			if(data!='error')
+			{
+				if(act==1)
+				{
+					$(row).removeClass('btn-danger');
+					$(row).addClass('btn-success');
+					$(row).children( "i.fa" ).removeClass('fa-times');
+					$(row).children( "i.fa" ).addClass('fa-check');
+					$(row).attr("onclick","change_option(this,'"+filed_name+"','"+row_id+"',0)");
+					$(row).attr("title","Click to Disable");
+					$(row).attr("data-original-title","Click to Disable");
+				}
+				else if(act==0)
+				{	
+					$(row).removeClass('btn-success');
+					$(row).addClass('btn-danger');
+					$(row).children( "i.fa" ).removeClass('fa-check');
+					$(row).children( "i.fa" ).addClass('fa-times');
+					$(row).attr("onclick","change_option(this,'"+filed_name+"','"+row_id+"',1)");
+					$(row).attr("title","Click to Enable");
+					$(row).attr("data-original-title","Click to Enable");
+				}
+			}
+		  }
+		});
+	}
 }
 </script>		
 @stop

@@ -138,7 +138,7 @@ class PackagesController extends Controller {
 
 	function postSave( Request $request)
 	{
-		
+		$uid = \Auth::user()->id;
 		$rules = $this->validateForm();
 		$validator = Validator::make($request->all(), $rules);	
 		if ($validator->passes()) {

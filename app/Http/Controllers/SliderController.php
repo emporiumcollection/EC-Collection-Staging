@@ -261,5 +261,23 @@ class SliderController extends Controller {
 
 	}			
 
+	function enable_diable_sliderstatus() {
+        $uid = \Auth::user()->id;
+        $items = Input::get('row_id');
+        $filed_name = Input::get('filed_name');
+        $action = Input::get('action');
+        if ($items != '') {
+            $exist = \DB::table('tb_sliders')->where('id', $items)->count();
+            if ($exist > 0) {
+                \DB::table('tb_sliders')->where('id', $items)->update([$filed_name => $action]);
 
+                return "success";
+            } else {
+                return "error";
+            }
+        } else {
+            return "error";
+        }
+    }
+	
 }
