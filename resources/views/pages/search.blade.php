@@ -2504,7 +2504,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                                 </div>
                                             </div>
                                         </div>
-                                        <?php if(!isset($_REQUEST['landing_page']) && !isset($_REQUEST['destination_page'])): ?>
+                                        <?php // if(!isset($_REQUEST['landing_page']) && !isset($_REQUEST['destination_page'])): ?>
                                         <div class="panel panel-default custom-post-panel">
                                             <a data-toggle="collapse" data-parent="#accordion" href="#book-your-destination" class="heading-stying collapsed">
                                                 <div class="panel-heading custom-heading">
@@ -2536,8 +2536,8 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                                 </div>
                                             </div>
                                         </div>
-                                        <?php endif; ?>
-                                        <?php if(!isset($_REQUEST['destination_page']) && !isset($_REQUEST['arrive'])): ?>
+                                        <?php // endif; ?>
+                                        <?php // if(!isset($_REQUEST['destination_page']) && !isset($_REQUEST['arrive'])): ?>
                                         <div class="panel panel-default custom-post-panel">
                                             <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" class="heading-stying <?php echo ($continent == '')? '' : 'collapsed'; ?>">
                                                 <div class="panel-heading custom-heading">
@@ -2591,7 +2591,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                                 </div>
                                             </div>
                                         </div>
-                                        <?php endif; ?>
+                                        <?php // endif; ?>
                                         <?php if($continent == ''): ?>
                                         <script>
                                             $(document).ready(function() {
