@@ -117,7 +117,7 @@ and open the template in the editor.
     width: 100%;
 }
 .hotels-logo img {
-    background-color: #1e2023;
+    background-color: transparent;
 }
 .side-nav-next-hotel-img {
     background: #fff none repeat scroll 0 0;
