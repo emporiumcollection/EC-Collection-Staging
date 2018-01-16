@@ -2538,19 +2538,19 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                         <?php endif; ?>
                                         <?php if(!isset($_REQUEST['destination_page']) && !isset($_REQUEST['arrive'])): ?>
                                         <div class="panel panel-default custom-post-panel">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" class="heading-stying collapsed">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" class="heading-stying <?php echo ($continent == '')? '' : 'collapsed'; ?>">
                                                 <div class="panel-heading custom-heading">
-                                                    Experience <?php echo $continent, ' - ', $region, ' - ', $cat; ?>
+                                                    Experience
                                                 </div>
                                             </a>
-                                            <div id="collapse1" class="panel-collapse <?php echo (isset($_REQUEST['s']) && in_array($_REQUEST['s'], array('Beach Hotels', 'Green Properties', 'Go Urban Hotels', 'Infinity Pools', 'Spa and Wellness Hotels', 'Mountain Ski Resorts', 'Yoga Hotels', 'Culinary Delights', 'Family Friendly', 'Unusual Adventure Hotels')))? 'in' : ''; ?> collapse">
+                                            <div id="collapse1" class="panel-collapse <?php echo ($continent == '')? 'in' : ''; ?> <?php echo (isset($_REQUEST['s']) && in_array($_REQUEST['s'], array('Beach Hotels', 'Green Properties', 'Go Urban Hotels', 'Infinity Pools', 'Spa and Wellness Hotels', 'Mountain Ski Resorts', 'Yoga Hotels', 'Culinary Delights', 'Family Friendly', 'Unusual Adventure Hotels')))? 'in' : ''; ?> collapse">
                                                 <div class="panel-body custom-panel-body">
                                                     <div class="dl-filter">
                                                         <form>
 														
 															@if(!empty($experiences))
 																@foreach($experiences as $experience)
-																	<div class="form-group post-filter-inputs">
+                                                                                                                                <div class="form-group post-filter-inputs <?php echo (str_replace($cat, '_', ' ') == $experience->category_name)? 'active' : ''; ?>">
 																		<label><a onclick="experience_property_filter('{{$experience->category_name}}');" href="javascript:void(0);">{{$experience->category_custom_title}}</a></label>
 																	</div>
 																@endforeach
