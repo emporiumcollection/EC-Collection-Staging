@@ -1,18 +1,3 @@
-@font-face {
-    font-family: Geomanist-Regular;
-    src: url('../fonts/Geomanist-Regular.otf');
-}
-
-@font-face {
-    font-family: ACaslonPro-Regular;
-    src: url('../fonts/ACaslonPro-Regular.otf');
-}
-
-@font-face {
-    font-family: Geomanist-light;
-    src: url('../fonts/geomanist-light-webfont(2).woff');
-}
-
 .hamburgMenu{
 	color: #ABA07C;
 	font-size: 30px !important;
