@@ -217,9 +217,9 @@ class PagessliderController extends Controller {
         $filed_name = Input::get('filed_name');
         $action = Input::get('action');
         if ($items != '') {
-            $exist = \DB::table('tb_pagesslider')->where('id', $items)->count();
+            $exist = \DB::table('tb_pages_sliders')->where('id', $items)->count();
             if ($exist > 0) {
-                \DB::table('tb_pagesslider')->where('id', $items)->update([$filed_name => $action]);
+                \DB::table('tb_pages_sliders')->where('id', $items)->update([$filed_name => $action]);
 
                 return "success";
             } else {
