@@ -173,7 +173,7 @@
    <script type="text/javascript">
 	$(document).ready(function() { 
 		
-		 
+		 $('#slider_category').select2();
 
 		$('.removeCurrentFiles').on('click',function(){
 			var removeUrl = $(this).attr('href');
