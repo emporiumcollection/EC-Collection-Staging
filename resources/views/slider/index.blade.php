@@ -75,7 +75,6 @@
 								@endif 
 							@endif
 						@endforeach
-						<th width="70">Ordering</th>
 						<th width="70">Status</th>
 						<th width="70" >{{ Lang::get('core.btn_action') }}</th>
 					  </tr>
@@ -98,12 +97,7 @@
 								<a  href="#" class="tips btn btn-xs btn-danger" title="Click to enable " onclick="change_option(this,'slider_status','{{$row->id}}',1);"><i class="fa fa-times "></i></a>
 							@endif
 						</td>
-						<td>
-							<a href="#" class="tips btn btn-xs btn-primary" title="Move Down" onclick="change_ordering('down','{{$row->id}}');"><i class="fa  fa-arrow-down"></i></a>
-							@if($rowData[0]!=$row)
-								<a href="#" class="tips btn btn-xs btn-primary" title="Move Up" onclick="change_ordering('up','{{$row->id}}');"><i class="fa fa-arrow-up"></i></a>
-							@endif
-						</td>
+						
 					 <td>
 							@if($access['is_detail'] ==1)
 							<a href="{{ URL::to('slider/show/'.$row->id.'?return='.$return)}}" class="tips btn btn-xs btn-primary" title="{{ Lang::get('core.btn_view') }}"><i class="fa  fa-search "></i></a>
