@@ -2601,7 +2601,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                         <?php endif; ?>
                                         <input type="hidden" id="selDestn" value="">
                                         <input type="hidden" id="listrecrds" value="21">
-                                        <?php if(!isset($_REQUEST['landing_page']) && !isset($_REQUEST['arrive'])): ?>
+                                        <?php // if(!isset($_REQUEST['landing_page']) && !isset($_REQUEST['arrive'])): ?>
                                            <?php 
 
                        /* Note:
@@ -2613,7 +2613,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                         ?>
                         
                         {!!Storage::get('leftOurDestination.html')!!}
-                                        <?php endif; ?>
+                                        <?php // endif; ?>
                                     </div> 
                                     <div class="filter-footer">
 <!--                                        <div><a href="#" >View All Locations On Map</a></div>-->
