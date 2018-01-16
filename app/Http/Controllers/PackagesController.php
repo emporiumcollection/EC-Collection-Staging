@@ -170,7 +170,7 @@ class PackagesController extends Controller {
 			
 		} else {
 
-			return Redirect::to('packages/update/'.$id)->with('messagetext',\Lang::get('core.note_error'))->with('msgstatus','error')
+			return Redirect::to('packages/update/'.$request->input('id'))->with('messagetext',\Lang::get('core.note_error'))->with('msgstatus','error')
 			->withErrors($validator)->withInput();
 		}	
 	

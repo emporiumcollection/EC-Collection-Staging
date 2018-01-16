@@ -49,7 +49,7 @@
     text-transform: uppercase;
 }
 .right-menus ul li a:hover, .right-menus ul li a:active, .right-menus ul li a:focus {
-    background-color: #dadad5;
+    background-color: #dadad5 !important;
     border-left: 4px solid #a1a39c;
     color: #000;
     outline: medium none;

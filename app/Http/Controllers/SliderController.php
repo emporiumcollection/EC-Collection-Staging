@@ -203,7 +203,14 @@ class SliderController extends Controller {
 			}
 			
 			$data['slider_category'] = $request->input('slider_category');
-			
+			if(!is_null($request->input('slider_status')))
+			{
+				$data['slider_status'] = $request->input('slider_status');
+			}
+			else
+			{
+				$data['slider_status'] = 0;
+			}
 			$id = $this->model->insertRow($data , $request->input('id'));
 			
 			if(!is_null($request->input('apply')))
