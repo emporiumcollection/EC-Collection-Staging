@@ -1165,6 +1165,10 @@
                             .m_slider.editorial_m_slider {
                                 margin-top: 81px;
                             }
+                            
+                            .back-To-Top {
+                                width: 64px;
+                            }
               
                             @import url('https://fonts.googleapis.com/css?family=Caveat');
                             @import url('https://fonts.googleapis.com/css?family=Satisfy');
@@ -1251,6 +1255,9 @@
                         </ul>
                     </div>
                 </aside>
+                <div class="back-To-Top">
+                    <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" style="display: none;">TOP</a>
+                </div>
 
                 <!-- AIC Harman email phone sidebar add end-->
                 
