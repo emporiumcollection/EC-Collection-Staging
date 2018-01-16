@@ -1166,8 +1166,24 @@
                                 margin-top: 81px;
                             }
                             
+                            /* back to top */
+                            
+                            .editorial-hotel-detail-page .back-to-top {
+                                right: 0;
+                                /* border: none; */
+                                position: fixed;
+                                z-index: 9999;
+                                top: 294px;
+                                height: 40px;
+                                width: 62px;
+                            }
                             .back-To-Top {
-                                width: 64px;
+                                width: 69px;
+                                float: right;
+                                position: absolute;
+                                right: 0px;
+                                bottom: 121px;
+                                height: 0;
                             }
               
                             @import url('https://fonts.googleapis.com/css?family=Caveat');
