@@ -1552,6 +1552,8 @@ header .menu ul li a:hover, header .menu ul li a:active, header .menu ul li a:fo
     margin-top: -72%;
     position: relative;
     text-align: center;
+    width: 100%;
+    float: left;
 }
 .product-grid-shuffle .thumb-4:hover .product-name {
     display: block;
