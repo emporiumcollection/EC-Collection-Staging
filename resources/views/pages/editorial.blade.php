@@ -1145,6 +1145,22 @@
                             .InnerDetailHeight {
                                 height: 830px;
                             }
+                            
+                            .hotel-book-now {
+                                background: #ABA07C;
+                                color: #252525;
+                                font-size: 25px;
+                                height: 71px;
+                                margin-left: 0px;
+                                opacity: 1;
+                                overflow-wrap: break-word;
+                                padding: 27px 5px;
+                                position: absolute;
+                                text-align: center;
+                                text-transform: uppercase;
+                                width: 174px;
+                                z-index: 99;
+                            }
               
                             @import url('https://fonts.googleapis.com/css?family=Caveat');
                             @import url('https://fonts.googleapis.com/css?family=Satisfy');
@@ -1161,7 +1177,7 @@
 		  gtag('config', 'UA-110391807-1');
 		</script>
     </head>
-    <body class="editorial-hotel-detail-page">
+    <body class="editorial-hotel-detail-page" data-spy="scroll" data-target="#myScrollspy" data-offset="20">
         <div class="wrapper">
             <div class="container-fluid">
                 <header>
@@ -2612,6 +2628,7 @@
                             imagesPro += data.typedata.price;
                             imagesPro += '</div">';
                         }
+                        imagesPro += '<div class="hotel-book-now">Book Now</div>';
                         imagesPro += '</div>';
                         imagesPro += '<div class="inner-pop-up-book-btn">';
                         imagesPro += '<a href="#" onclick="choose_room_type(' + data.typedata.id + ');">Book</a>';
