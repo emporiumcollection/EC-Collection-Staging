@@ -158,6 +158,14 @@ class PagessliderController extends Controller {
 			{
 				$data['updated'] = date('y-m-d h:i:s');
 			}	
+			if(!is_null($request->input('slider_status')))
+			{
+				$data['slider_status'] = $request->input('slider_status');
+			}
+			else
+			{
+				$data['slider_status'] = 0;
+			}
 			$id = $this->model->insertRow($data , $request->input('id'));
 			
 			if(!is_null($request->input('apply')))
@@ -201,5 +209,24 @@ class PagessliderController extends Controller {
 			return Redirect::to('pagesslider')
         		->with('messagetext','No Item Deleted')->with('msgstatus','error');				
 		}
-	}			
+	}
+
+	function enable_diable_pagessliderstatus() {
+        $uid = \Auth::user()->id;
+        $items = Input::get('row_id');
+        $filed_name = Input::get('filed_name');
+        $action = Input::get('action');
+        if ($items != '') {
+            $exist = \DB::table('tb_pagesslider')->where('id', $items)->count();
+            if ($exist > 0) {
+                \DB::table('tb_pagesslider')->where('id', $items)->update([$filed_name => $action]);
+
+                return "success";
+            } else {
+                return "error";
+            }
+        } else {
+            return "error";
+        }
+    }
 }
