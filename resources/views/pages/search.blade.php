@@ -1496,7 +1496,7 @@
                                                                         <p class="yacths-des-text yacths-des-text-align"><span>&euro;{{ $props->price}} </span>|<span>37.7mm</span>|<span>10 Guests</span></p>
                                                                         <p class="yacths-des-text">2015H</p>
                                                                     </div>
-                                                                    <img alt="{{ $propsImageFileName }}" src="{{$props->imgsrc.$propsImageFileName}}" class="img-responsive">
+                                                                    <img alt="{{ $propsImageFileName }}" src="{{$images[0]->imgsrc.$propsImageFileName}}" class="img-responsive">
                                                                 </a>
                                                             @else
                                                             <a class="picture_link detail_view-" rel="{{$props->id}}" href="{{URL::to($props->property_slug)}}">
