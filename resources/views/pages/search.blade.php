@@ -411,8 +411,8 @@
                 min-height: 250px;
             }
             .ai-grid-page-node-pic-box  img {
-                max-height: 200px !important;
-                min-height: 200px !important;
+                max-height: 240px !important;
+                min-height: 240px !important;
                 object-fit: cover;
                 object-position: 0 center;
                 vertical-align: middle;
