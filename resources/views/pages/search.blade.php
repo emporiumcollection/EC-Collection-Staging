@@ -2592,6 +2592,13 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                             </div>
                                         </div>
                                         <?php endif; ?>
+                                        <?php if($continent == ''): ?>
+                                        <script>
+                                            $(document).ready(function() {
+                                                $(".filter-grid-page-side-bar").scrollTop($('#collapse1').position().top - 65);
+                                            });
+                                        </script>
+                                        <?php endif; ?>
                                         <input type="hidden" id="selDestn" value="">
                                         <input type="hidden" id="listrecrds" value="21">
                                         <?php if(!isset($_REQUEST['landing_page']) && !isset($_REQUEST['arrive'])): ?>
