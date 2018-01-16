@@ -43,7 +43,7 @@
                                                     <div class="form-group  " >
                                                         <label for="Type" class=" control-label col-md-4 text-left"> Slider Category <span class="asterix"> * </span></label>
                                                         <div class="col-md-6">
-                                                            <select name='slider_category' id='slider_category' class="form-control select2" required > 
+                                                            <select name='slider_category' id='slider_category' class=" select2" required > 
                                                                 <option value="">-Select-</option>
                                                                 <option value="Landing" <?php echo ($row['slider_category'] == 'Landing' ? " selected='selected' " : '' ); ?>>Landing</option>
                                                                 <option value="Hotel" <?php echo ($row['slider_category'] == 'Hotel' ? " selected='selected' " : '' ); ?>>Hotels</option>
@@ -172,8 +172,6 @@
 </div>			 
    <script type="text/javascript">
 	$(document).ready(function() { 
-		
-		 $('#slider_category').select2();
 
 		$('.removeCurrentFiles').on('click',function(){
 			var removeUrl = $(this).attr('href');
