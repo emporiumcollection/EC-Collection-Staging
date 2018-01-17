@@ -113,7 +113,7 @@
             .block-content.content {
                 width: 35px;
                 float: right;
-                height: 55px;
+                height: 40px;
                 margin-top: 0px;
             }
             
