@@ -2449,7 +2449,6 @@
                     prevArrow: false,
                     nextArrow: false,
                     autoplay: true,
-                    autoClose: true,
                     autoplaySpeed: 3000
                 });
                 $(".to-booking-nav-show-hide-btn").click(function () {
@@ -2471,6 +2470,7 @@
                         stickyMonths: (Boolean),
                         startDate: "12-01-2017",
                         format: ' DD.MM.YYYY',
+                        autoClose: true,
                         separator: ' to ',
                         getValue: function ()
                         {

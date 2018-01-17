@@ -85,7 +85,7 @@ $('.search-navbar').on('typeahead:selected', function (e, datum) {
 //        propname.parents('.searchform-navbar').submit();
 //        return;
 var sname = propname.val();
-	$.ajax({
+	$.ajax({    
 	  url: "{{ URL::to('find_property_by_name')}}",
 	  type: "post",
 	  data: 'pname='+propname.val(),

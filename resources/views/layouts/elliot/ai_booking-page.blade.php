@@ -150,6 +150,7 @@
             stickyMonths: (Boolean),
             startDate: "<?php echo date("d-m-Y") ?>",
             format: 'DD.MM.YYYY',
+            autoClose: true,
             separator: ' to ',
             getValue: function () {
                 if ($('#date-range-departure').val() && $('#date-range-arrive').val())
