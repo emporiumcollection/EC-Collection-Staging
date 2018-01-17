@@ -141,16 +141,17 @@
                                     <div class="ps-big-form-heading">Login With</div>
                                     <div class="ps-big-form-heading">Your Account</div>
                                 </div>
-                                <form class="ps-login-sign-form-pannel">
+                                <form class="ps-login-sign-form-pannel" action="{{URL::to('user/signin')}}" method="POST">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <div class="form-group ps-form-group-outer">
-                                        <input type="text" class="form-control ps-login-form-input" placeholder="Email Address">
+                                        <input class="form-control ps-login-form-input" name="email" type="text" placeholder="Email Address" required="email" />
                                     </div>
                                     <div class="input-group ps-form-group-outer">
-                                        <input class="form-control ps-login-form-input" placeholder="Password" type="password">
+                                        <input class="form-control ps-login-form-input" name="password" placeholder="Password" type="password" required="true" >
                                         <span class="input-group-addon login-forgot-pass-align"><a class="ps-forms-small-heading-link forgot-pass-show-form-btn" href="javascript:void(0)">Forgot?</a></span>
                                     </div>
                                     <div class="ps-login-sign-submit-btn">
-                                        <button type="submit">  Log In</button>
+                                        <button type="submit">Log In</button>
                                     </div>
                                 </form>
                             </div>
