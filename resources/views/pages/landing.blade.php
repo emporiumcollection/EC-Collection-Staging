@@ -1653,7 +1653,7 @@
                             </div>
                         </header>
                         <!-- responsive form -->
-                             <div id="login-forms-popup-Mobile" class="popup login-form-pop-main-align">
+                <div id="login-forms-popup-Mobile" class="popup login-form-pop-main-align">
              <div class="popup-inner">
                  <a href="#" class="popup-close-btn">&times;</a>
                  <div class="popup-content">
@@ -1852,8 +1852,7 @@
                  </div>
              </div>
          </div>
-        <!--New Login Pop Up End Here main-->
-        @include('layouts/elliot/hamburg_menu')
+        <!--New register Pop Up End Here main-->
        
         <!--New Login Pop Up Start Here-->
         <div id="login-forms-popup-Mobile" class="popup login-form-pop-main-align">
