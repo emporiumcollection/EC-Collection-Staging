@@ -23,6 +23,10 @@
         <!-- responsive css -->
         <link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/responsive.css')}}" />
         
+                
+        <!-- Custom style -->
+        <link href="{{ asset('sximo/assets/memform/css/custom-ai.css')}}" rel="stylesheet" type="text/css"/>
+        
         <!-- AIC -->
         <link href="{{ asset('sximo/assets/css/image-slider.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/editorial.css')}}" rel="stylesheet" type="text/css"/>
@@ -32,9 +36,9 @@
         <link href="{{ asset('sximo/assets/css/custom_ps.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/booking-form.css')}}" rel="stylesheet" type="text/css"/>
         <!-- AIC -->
+
         
-        <!-- Custom style -->
-        <link href="{{ asset('sximo/assets/memform/css/custom-ai.css')}}" rel="stylesheet" type="text/css"/>
+        
         <link href="{{ asset('sximo/assets/css/style.css')}}" rel="stylesheet" type="text/css"/>
         <!--[if IE]>
             <script src="js/html5shiv.js"></script>
