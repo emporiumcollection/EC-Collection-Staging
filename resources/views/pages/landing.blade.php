@@ -2449,6 +2449,7 @@
                     prevArrow: false,
                     nextArrow: false,
                     autoplay: true,
+                    autoClose: true,
                     autoplaySpeed: 3000
                 });
                 $(".to-booking-nav-show-hide-btn").click(function () {
