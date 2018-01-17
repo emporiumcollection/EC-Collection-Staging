@@ -258,7 +258,7 @@ Route::get('getpropertyroomimages/{id}', 'HomeController@getPropertyRoomimageGal
 Route::get('getpropertytypedetail/{id}', 'HomeController@getPropertyTypeQuickView');
 Route::post('filter_category_destionation', 'HomeController@getPropertyByCategoryDestination');
 
-Route::get('getpackagedetails/{id}', 'HomeController@getpackagedetails');
+
 
 Route::post('find_property_by_name', 'HomeController@find_property_by_name');
 Route::get('getRooms/{slug}', 'PropertiesDetailController@getRoomsAjax');
