@@ -1,3 +1,15 @@
+<style>
+    .forgot-pass-form-show-hide{
+        display:none;
+    }
+    .create-account-form-show-hide{
+        display:none;
+    }
+    .account-with-us-show-hide{
+        display:none;
+    }
+</style>
+
 <!--Login and Sign Up Pop-up HTML-->
 
 <!--Register Pop Up Start Here main-->
