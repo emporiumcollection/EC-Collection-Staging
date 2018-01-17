@@ -157,4 +157,13 @@
 	height: 104px;
     }
     
+    /* login popup */
+    
+    .landing-page-lock-login-btn-outer-align {
+	width: 100%;
+    }
+    .video-popup-btn.login_popup.show-login-forms-btn {
+	width: 0%;
+    }
+    
 }
