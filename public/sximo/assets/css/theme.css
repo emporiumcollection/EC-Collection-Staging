@@ -9532,7 +9532,7 @@ a.uk-thumbnail:focus {
     width: 100%;
 }
 .uk-slidenav-next:before {
-    background-image: url("../images/right-arrow.png");
+    background-image: url("../images/right-arrow-white.png");
     background-position: center center;
     background-repeat: no-repeat;
     content: "";

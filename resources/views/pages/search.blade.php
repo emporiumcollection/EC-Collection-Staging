@@ -111,11 +111,11 @@
             }
             
             .block-content.content {
-                width: 34px;
+                width: 23px;
                 float: right;
                 height: 30px;
                 margin-top: 0px;
-                margin-right: -5px;
+                margin-right: -14px;
             }
             
                         
