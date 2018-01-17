@@ -6469,7 +6469,7 @@ class HomeController extends Controller {
         
     }
 	
-	public function getpackagedetails(Request $request) {
+	public function getpackagedetails(Request $request,$id) {
         $packageArr = array();
         
 		if ($request->id!='') {
