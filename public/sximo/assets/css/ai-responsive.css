@@ -69,12 +69,15 @@
     
     .combodate select {
 	padding: 7px !important;
-	width: 66px !important;
+	width: 205px !important;
     }
     
     .combodate select:hover  {
 	padding: 7px !important;
-	width: 66px !important;
+	width: 205px !important;
+    }
+    .destinSearchMob {
+	margin-top: 30px;
     }
 }
 
@@ -136,12 +139,12 @@
     
     .combodate select {
 	padding: 7px !important;
-	width: 66px !important;
+	width: 115px !important;
     }
     
     .combodate select:hover  {
 	padding: 7px !important;
-	width: 66px !important;
+	width: 115px !important;
     }
 }
 
