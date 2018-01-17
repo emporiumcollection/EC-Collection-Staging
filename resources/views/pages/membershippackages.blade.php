@@ -326,7 +326,8 @@
                             <div class="row equalize sm-equalize-auto">
                                 <div class="col-md-12 sm-clear-both wow fadeInLeft no-padding">
                                     <div class="padding-ten-half-all bg-light-gray md-padding-seven-all xs-padding-30px-all height-100">
-                                        <!--<span class="text-extra-dark-gray alt-font text-large font-weight-600 margin-25px-bottom display-block">Application form</span>--> 
+                                        <!--<span class="text-extra-dark-gray alt-font text-large font-weight-600 margin-25px-bottom display-block">Application form</span>-->
+										<div class="image-slider-container image-slider-margin-align auto-slider" id="rooms">
 										@if (!empty($packages))
 											<ul class="image-slider">
 												{{--*/ $k=1; $tottyp = count($packages); /*--}}
@@ -379,12 +380,33 @@
 												</a>
 											</div>
 										@endif
-                                        
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </section>
+					
+					<div class="hotel-property-section-bg">
+                            <div class="clearfix"></div>
+                            <!--Show More Slide-->
+                            <div class="show_more-page">
+                                <div class="open-show_more-html">
+                                    <div><a class="close-btn-show_more close-btn-align" href="#">&times;</a></div>
+                                    <div class="container-">
+                                        <div class="row-">
+                                            <div class="clearfix"></div>
+                                            <div class="col-md-6 col-sm-6 rmimgp">
+
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 single-right-text-product">
+
+                                            </div>
+                                        </div>	
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                     <style>
                         .footer
@@ -492,37 +514,44 @@
                     }
             );
 			
-			function submit_hotelinfo_form()
-			{
-				$.ajax({
-                    url: "{{ URL::to('frontend_hotelpost')}}",
-                    type: "post",
-                    data: $('#contact-form').serializeArray(),
-                    dataType: "json",
+			$(document).on('click', '.open-show_more-page', function () {
+                $('.show_more-page').css("background-image", "");
+                $('.single-right-text-product').html('');
+                $('.rmimgp').html('');
+                $.ajax({
+                    url: "{{ URL::to('getpackagedetails')}}" + '/' + $(this).attr('rel'),
+                    type: "get",
                     success: function (data) {
-                        if (data.status == 'error')
+                        var rimg = "{{ URL::to('uploads/packages/')}}/" + data.pdata.package_image;
+                        $('.rmimgp').html('<div class="right-text-section"></div>');
+                        $('.show_more-page').css("background-image", "url('" + rimg + "')");
+                        var imagesPro = '';
+                        imagesPro += '<div class="text-section">';
+                        imagesPro += '<h2>' + data.pdata.package_title + '</h2>';
+                        imagesPro += '<p>' + data.pdata.package_description + '</p>';
+                        imagesPro += '</div>';
+                        imagesPro += '<div class="book-btn-sec">';
+                        if (data.pdata.package_price_type != 1)
                         {
-							var html = '';
-							html +='<ul class="parsley-error-list">';
-							$.each(data.errors, function(idx, obj) {
-								html +='<li>'+obj+'</li>';
-							});
-							html +='</ul>';
-							$('#formerrors').html(html);
-							window.scrollTo(0, 600);
-                        } 
-						else
-                        {
-                            var htmli = '';
-							htmli +='<div class="alert alert-success fade in block-inner">';
-							htmli +='<button data-dismiss="alert" class="close" type="button">×</button>';
-							htmli +='<i class="icon-checkmark-circle"></i> Record Inserted Successfully </div>';
-							$('#formerrors').html(htmli);
-							 window.scrollTo(0, 600); 
+                            imagesPro += '<div class="hotel-book-price">';
+                            imagesPro += (data.currency.content != '') ? data.currency.content : '$';
+                            imagesPro += data.pdata.package_price;
+                            imagesPro += '</div">';
                         }
+                        imagesPro += '<a href="#"><div class="hotel-book-now">Book Now</div></a>';
+                        imagesPro += '</div>';
+                        imagesPro += '<div class="inner-pop-up-book-btn">';
+                        imagesPro += '<a href="#">Book</a>';
+                        imagesPro += '</div>';
+                        imagesPro += '</div>';
+                        $('.single-right-text-product').html(imagesPro);
+                        $('.show_more-page').css("width", "100%");
                     }
                 });
-			}
+                return false;
+            });
+			
+			
         </script>
         <!-- contact email aside -->
     </body>

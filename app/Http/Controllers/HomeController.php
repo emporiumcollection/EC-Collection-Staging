@@ -6468,5 +6468,17 @@ class HomeController extends Controller {
         }
         
     }
+	
+	public function getpackagedetails(Request $request) {
+        $packageArr = array();
+        
+		if ($request->id!='') {
+            $packageArr['pdata'] = \DB::table('tb_packages')->where('id', $request->id)->first();
+			$packageArr['currency'] = \DB::table('tb_settings')->select('content')->where('key_value', 'default_currency')->first();
+        }
+
+        return response()->json($propertiesArr);
+        exit;
+    }
 
 }
