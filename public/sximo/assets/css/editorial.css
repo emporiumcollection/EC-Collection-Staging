@@ -7,6 +7,10 @@ and open the template in the editor.
     Created on : 7 Feb, 2017, 3:34:43 PM
     Author     : sachin
 */
+.new-hotel-view-more-btn a:hover {
+	color: white;
+}
+
 .show_more-page .close-btn-show_more.close-btn-align:hover {
     color: #ABA07C;
 }

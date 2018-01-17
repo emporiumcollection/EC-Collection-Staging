@@ -3375,7 +3375,7 @@ body.sticky-nav .header {
     float: right;
 }
 .members-drop-list {
-    background: #fff none repeat scroll 0 0;
+    background: #252525 none repeat scroll 0 0;
     border: 1px solid #545454;
     display: none;
     float: left;
@@ -3400,18 +3400,19 @@ body.sticky-nav .header {
     border-image: none;
     border-style: none none solid solid;
     border-width: medium medium 1px 1px;
-    color: #000;
+    color: #fff;
     float: right;
     height: 43px;
     text-align: center;
     width: 70px;
+    background: #252525;
 }
 .members-drop-list li {
     float: left;
     width: 100%;
 }
 .members-drop-list li label {
-    color: #000;
+    color: #fff;
     font-weight: lighter;
     margin-top: 8px;
     text-transform: uppercase;

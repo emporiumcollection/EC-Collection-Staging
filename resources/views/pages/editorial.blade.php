@@ -302,7 +302,7 @@
                             width: 65px;
                            }
                            .editorial-hotel-detail-page .right-menus ul li a[data-hotel-option="book_now"] {
-                            background: #ada077;
+                            background: #ABA07C;
                             color: #ffff;
                            }
                            

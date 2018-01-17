@@ -16,7 +16,7 @@ a:hover, a:focus, a:active{
     color: inherit;
 }
 .hotel-btn:hover {
-    color: #f5e7e7;
+    color: white;
 }
 .booking-form-bg {
     background-attachment: fixed;

@@ -8,7 +8,6 @@
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1" />
         <!-- animation -->
         <link href="{{ asset('sximo/assets/css/landing-page-styles.css')}}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('sximo/assets/css/style.css')}}" rel="stylesheet" type="text/css"/>
 
 
         <link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/animate.css')}}" />
@@ -36,6 +35,7 @@
         
         <!-- Custom style -->
         <link href="{{ asset('sximo/assets/memform/css/custom-ai.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('sximo/assets/css/style.css')}}" rel="stylesheet" type="text/css"/>
         <!--[if IE]>
             <script src="js/html5shiv.js"></script>
         <![endif]-->
