@@ -203,6 +203,8 @@
             }
             .hotels-image-showcase-des-text {
                 padding: 0px 68px 0px 0px;
+                overflow: auto;
+                max-height: 240px;
             }
             .hotel-block-two-right-sec-align > h2{
                 color: #dbd4d7;
@@ -397,8 +399,8 @@
                                 float: left;
                                 width: 100%;
                                 padding: 0px 0px 0px 189px;
-/*                                max-height: 240px;
-                                overflow: auto;*/
+                                max-height: 240px;
+                                overflow: auto;
                             }
                             .hotels-image-showcase-des-text > p {
                                 font-size: 15px;
