@@ -163,7 +163,7 @@
 	width: 100%;
     }
     .video-popup-btn.login_popup.show-login-forms-btn {
-	width: 0%;
+	width: 0% !important;
     }
     
 }
