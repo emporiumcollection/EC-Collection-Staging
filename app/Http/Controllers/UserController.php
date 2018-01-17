@@ -533,7 +533,6 @@ class UserController extends Controller {
                 if (\Session::get('newlang') == 'English') {
                     $etemp = 'auth.reminder_eng';
                 }
-                echo 'Here 1';
                 \Mail::send('user.emails.' . $etemp, $edata, function($message) use ($emlData) {
                     $message->from($emlData['frmemail'], CNF_APPNAME);
 
@@ -541,12 +540,11 @@ class UserController extends Controller {
 
                     $message->subject($emlData['subject']);
                 });
-                echo 'Here 2';
+
 
                 $affectedRows = User::where('email', '=', $user->email)
                         ->update(array('reminder' => $request->input('_token')));
-echo 'Here 3';
-die;
+
                 return Redirect::to('user/login')->with('message', \SiteHelpers::alert('success', 'Please check your email'));
             } else {
                 return Redirect::to('user/login')->with('message', \SiteHelpers::alert('error', 'Cant find email address'));
