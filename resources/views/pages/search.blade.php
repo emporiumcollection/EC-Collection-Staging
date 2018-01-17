@@ -113,8 +113,9 @@
             .block-content.content {
                 width: 35px;
                 float: right;
-                height: 40px;
+                height: 30px;
                 margin-top: 0px;
+                margin-right: -5px;
             }
             
                         
