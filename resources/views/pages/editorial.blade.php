@@ -1198,6 +1198,11 @@
                                     width: 100%;
                                     float: left;
                             }
+                            
+                             ul.nav-pills {
+                                top: 20px;
+                                position: fixed;
+                            }
               
                             @import url('https://fonts.googleapis.com/css?family=Caveat');
                             @import url('https://fonts.googleapis.com/css?family=Satisfy');
@@ -2109,14 +2114,14 @@
                             </div>
                         </div>
                         <!--Show More Slide End Here-->
-                        <div class="col-md-2 right-menus right-menu-sidebar">
+                        <div class="col-md-2 right-menus right-menu-sidebar" id="myScrollspy">
                             <div class="row">
                                 <div class="right-menu-align">
                                     <div class="hotels-logo">
                                         <h3 class="title"><a href="https://www.emporium-voyage.com"> <img class="img-responsive" src="https://www.emporium-voyage.com/sximo/assets/images/design-location-logo.png" alt=""></a></h3>
                                         
                                     </div>
-                                    <ul>
+                                    <ul class="nav nav-pills nav-stacked">
                                         <li>
                                             <form autocomplete="off" method="get" id="searchform-navbar" class="searchform-navbar" action="{{URL::to('search')}}">
                                                 <input  class="bh-search-input typeahead search-navbar search-box" name="s" id="search-navbar" placeholder="Search" type="text">
