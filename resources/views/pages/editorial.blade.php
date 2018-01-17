@@ -198,7 +198,7 @@
             .hotels-image-showcase-des-text > p {
                 font-size: 15px;
                 line-height: 30px;
-                margin-top: 22px;
+                margin-top: 0px;
                 font-family: Geomanist-Light;
             }
             .hotels-image-showcase-des-text {
@@ -403,7 +403,7 @@
                             .hotels-image-showcase-des-text > p {
                                 font-size: 15px;
                                 line-height: 30px;
-                                margin-top: 28px;
+                                margin-top: 0px;
                             }
                             .hotel-block-two-right-sec-align > p {
                                 color: white;
