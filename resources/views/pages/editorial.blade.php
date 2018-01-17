@@ -596,7 +596,7 @@
                                 height: auto;
 /*                                background: rgba(0,0,0,0.8);*/
                                 margin: 0;
-                                padding: 8% 0% 13% 0%;
+                                padding: 8% 0% 13% 29%;
                             }
                             
                             .hotels-showcase-right-side {
@@ -636,7 +636,6 @@
                                 width: 100%;
                                 float: left;
                                 margin-top: 100px;
-                                padding: 0px 0px 0px 188px;
                             }
                             
                             .gallery.row .principale1 img {
