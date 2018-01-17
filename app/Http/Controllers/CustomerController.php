@@ -39,19 +39,20 @@ class CustomerController extends Controller {
     public function postCreate(Request $request) {
 
         $rules = array(
-            'firstname' => 'required|alpha_num|min:2',
-            'lastname' => 'required|alpha_num|min:2',
+//            'firstname' => 'required|alpha_num|min:2',
+//            'lastname' => 'required|alpha_num|min:2',
             'email' => 'required|email|unique:tb_users',
-            'password' => 'required|confirmed',
-            'password_confirmation' => 'required',
+            'password' => 'required',
+//            'password' => 'required|confirmed',
+//            'password_confirmation' => 'required',
             //'membership_plan'=>'required',
-            'company_name' => 'required',
-            'company_address' => 'required',
-            'company_address2' => 'required',
-            'company_phone' => 'required',
+//            'company_name' => 'required',
+//            'company_address' => 'required',
+//            'company_address2' => 'required',
+//            'company_phone' => 'required',
             //'company_website'=>'required',
             //'company_tax_no'=>'required',
-            'accept_terms' => 'required'
+//            'accept_terms' => 'required'
         );
         if (CNF_RECAPTCHA == 'true')
             $rules['recaptcha_response_field'] = 'required|recaptcha';
@@ -62,8 +63,8 @@ class CustomerController extends Controller {
             $code = rand(10000, 10000000);
 
             $authen = new User;
-            $authen->first_name = $request->input('firstname');
-            $authen->last_name = $request->input('lastname');
+//            $authen->first_name = $request->input('firstname');
+//            $authen->last_name = $request->input('lastname');
             $authen->email = trim($request->input('email'));
             $authen->activation = $code;
             $authen->group_id = 3;
@@ -72,14 +73,14 @@ class CustomerController extends Controller {
             $authen->save();
 
             $ucdata['user_id'] = $authen->id;
-            $ucdata['company_name'] = Input::get('company_name');
-            $ucdata['company_address'] = Input::get('company_address');
-            $ucdata['company_address2'] = Input::get('company_address2');
+//            $ucdata['company_name'] = Input::get('company_name');
+//            $ucdata['company_address'] = Input::get('company_address');
+//            $ucdata['company_address2'] = Input::get('company_address2');
             //$ucdata['company_phone'] = Input::get('company_phone');
             //$ucdata['company_website'] = Input::get('company_website');
             //$ucdata['company_tax_number'] = Input::get('company_tax_no');
             if (Input::get('accept_terms')) {
-                $ucdata['accept_terms'] = Input::get('accept_terms');
+//                $ucdata['accept_terms'] = Input::get('accept_terms');
             }
 
             \DB::table('tb_user_company_details')->insert($ucdata);

@@ -248,12 +248,12 @@
                                     <div class="ps-big-form-heading">Create Your Account</div>
                                     <div class="ps-big-form-heading">Password</div>
                                 </div>
-                                <form class="ps-login-sign-form-pannel">
+                                <form class="ps-login-sign-form-pannel" action="{{ url('customer/create')}}" method="POST">
                                     <div class="form-group ps-form-group-outer">
-                                        <input type="text" class="form-control ps-login-form-input" placeholder="Email Address">
+                                        <input class="form-control ps-login-form-input" name="email" type="text" placeholder="Email Address">
                                     </div>
                                     <div class="form-group ps-form-group-outer">
-                                        <input type="password" class="form-control ps-login-form-input" placeholder="Password">
+                                        <input class="form-control ps-login-form-input" name="password" type="password" placeholder="Password">
                                     </div>
                                     <div class="ps-login-sign-submit-btn">
                                         <button type="submit">Submit</button>
