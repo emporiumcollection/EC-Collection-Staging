@@ -133,7 +133,19 @@
             .neww-footer .container {
                 width: auto;
             }
-			#formerrors { color:#ff0000;}
+            #formerrors { color:#ff0000;}
+            
+            /* AIC */
+            .image-slider-container .editorial-images-count {
+                color: #fff !important;
+                float: left !important;
+                font-size: 33px !important;
+                margin-left: 22% !important;
+                margin-top: -145px !important;
+                position: relative;
+                width: 22% !important;
+        }
+            
         </style>
         <script type="text/javascript">
             $(document).on('ready', function () {
@@ -401,6 +413,7 @@
         <!-- fit video  -->
         <script type="text/javascript" src="{{ asset('sximo/assets/memform/js/jquery.fitvids.js')}}"></script>
         <script type="text/javascript" src="{{ asset('sximo/assets/memform/js/main.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('sximo/assets/memform/js/bootstrap.min.js')}}"></script>
         <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/memform/js/slick.js')}}" type="text/javascript"></script>
         <script>
