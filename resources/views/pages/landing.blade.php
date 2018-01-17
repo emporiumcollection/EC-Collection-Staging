@@ -1856,7 +1856,7 @@
         @include('layouts/elliot/hamburg_menu')
        
         <!--New Login Pop Up Start Here-->
-        <div id="login-forms-popup" class="popup login-form-pop-main-align">
+        <div id="login-forms-popup-Mobile" class="popup login-form-pop-main-align">
              <div class="popup-inner">
                  <a href="#" class="popup-close-btn">&times;</a>
                  <div class="popup-content">
@@ -2055,7 +2055,7 @@
                  </div>
              </div>
          </div>   
-                        <!-- responsive form -->
+                        <!-- responsive form end -->
                         <div class="container"> 
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 header-logo-align">
                                 <a href="#"><img class="img-responsive height-165" onmouseenter="this.src='{{ asset('sximo/assets/images/luxury-logo-new.png')}}'" onmouseout="this.src = '{{ asset('sximo/assets/images/design-location-logo.png')}}'" src="{{ asset('sximo/assets/images/design-location-logo.png')}}" alt="design locations"/></a>
