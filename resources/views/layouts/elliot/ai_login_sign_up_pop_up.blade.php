@@ -141,7 +141,7 @@
                                     <div class="ps-big-form-heading">Login With</div>
                                     <div class="ps-big-form-heading">Your Account</div>
                                 </div>
-                                <form class="ps-login-sign-form-pannel" action="{{URL::to('user/signin')}}" method="POST">
+                                <form class="ps-login-sign-form-pannel" action="{{URL::to('customer/signin')}}" method="POST">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <div class="form-group ps-form-group-outer">
                                         <input class="form-control ps-login-form-input" name="email" type="text" placeholder="Email Address" required="email" />
@@ -197,7 +197,7 @@
                                     <div class="ps-big-form-heading">Password</div>
                                     <p class="form-white-samml-des-text">Enter your email and you will get Instructions to reset your password</p>
                                 </div>
-                                <form class="ps-login-sign-form-pannel" action="{{ url('user/request')}}" method="POST">
+                                <form class="ps-login-sign-form-pannel" action="{{ url('customer/request')}}" method="POST">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <div class="form-group ps-form-group-outer">
                                         <input class="form-control ps-login-form-input" name="credit_email" type="text" placeholder="Email Address" required>
