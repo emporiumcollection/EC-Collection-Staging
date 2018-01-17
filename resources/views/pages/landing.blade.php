@@ -2209,72 +2209,14 @@
                                             <div class="clearfix"></div>
                                             <div class="destinSearchMob">
                                                 <form action="http://www.emporium-voyage.com/search" method="get">
-                                                        <input name="s" value="" type="hidden">
-                                                        <input name="ref" value="sbd" type="hidden">
-                                                        
-<!--                                                        <div class="form-group">
-                                                            <label for="sel1">Select list (select one):</label>
-                                                            <select class="form-control" id="sel1">
-                                                              <option>1</option>
-                                                              <option>2</option>
-                                                              <option>3</option>
-                                                              <option>4</option>
-                                                            </select>
-                                                        </div>-->
-                                                        <ul class="dates">
-                                                            <li>
-                                                                <div class="heading">Arrive</div>
-                                                                    <input id="date-range-arrive" size="20" name="arrive" type="hidden" value="12.01.2018">
-                                                                    <select name="adult">
-                                                                    <option>Day</option>
-                                                                    <option>Month</option>
-                                                                    <option>Year</option>
-                                                                </select>
-                                                            </li>
-                                                            <li>
-                                                                <div class="heading">Departure</div>
-                                                                    <input id="date-range-arrive" size="20" name="arrive" type="hidden" value="12.01.2018">
-                                                                    <select name="adult">
-                                                                    <option>Day</option>
-                                                                    <option>Month</option>
-                                                                    <option>Year</option>
-                                                                </select>
-                                                            </li>
-                                                       
-                                                        
-                                                            <li>
-                                                                <div class="heading">Adults</div>
-                                                                <select name="adult">
-                                                                    <option>1</option>
-                                                                    <option>2</option>
-                                                                    <option>3</option>
-                                                                    <option>4</option>
-                                                                    <option>5</option>
-                                                                    <option>6</option>
-                                                                    <option>7</option>
-                                                                    <option>8</option>
-                                                                    <option>9</option>
-                                                                    <option>10</option>
-                                                                </select>
-                                                            </li>
-                                                            <li>
-                                                                <div class="heading">Children</div>
-                                                                <select name="childs">
-                                                                    <option>0</option>
-                                                                    <option>1</option>
-                                                                    <option>2</option>
-                                                                    <option>3</option>
-                                                                    <option>4</option>
-                                                                    <option>5</option>
-                                                                    <option>6</option>
-                                                                    <option>7</option>
-                                                                    <option>8</option>
-                                                                    <option>9</option>
-                                                                    <option>10</option>
-                                                                </select>
-                                                            </li>
-                                                            <div class="clearfix"></div>
-                                                        </ul>
+                                                        <div class="form-group post-filter-inputs">
+                                                            <label>Arrive</label>
+                                                            <input id="filter-date-mobile" class="ai-arrive-date" data-format="DD-MM-YYYY" data-template="DD MMM YYYY" name="arrive" value="01-01-1970" style="display: none;" type="text"><span class="combodate"><select class="day " style="width: auto;"><option value=""></option><option value="1">01</option><option value="2">02</option><option value="3">03</option><option value="4">04</option><option value="5">05</option><option value="6">06</option><option value="7">07</option><option value="8">08</option><option value="9">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option></select>&nbsp;<select class="month " style="width: auto;"><option value=""></option><option value="0">Jan</option><option value="1">Feb</option><option value="2">Mar</option><option value="3">Apr</option><option value="4">May</option><option value="5">Jun</option><option value="6">Jul</option><option value="7">Aug</option><option value="8">Sep</option><option value="9">Oct</option><option value="10">Nov</option><option value="11">Dec</option></select>&nbsp;<select class="year " style="width: auto;"><option value=""></option><option value="2019">2019</option><option value="2018">2018</option></select></span>
+                                                        </div>
+                                                        <div class="form-group post-filter-inputs">
+                                                            <label>Depart</label>
+                                                            <input id="filter-date-mobile-departure" class="ai-depart-date" data-format="DD-MM-YYYY" data-template="DD MMM YYYY" name="destination" value="01-01-1970" style="display: none;" type="text"><span class="combodate"><select class="day " style="width: auto;"><option value=""></option><option value="1">01</option><option value="2">02</option><option value="3">03</option><option value="4">04</option><option value="5">05</option><option value="6">06</option><option value="7">07</option><option value="8">08</option><option value="9">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option></select>&nbsp;<select class="month " style="width: auto;"><option value=""></option><option value="0">Jan</option><option value="1">Feb</option><option value="2">Mar</option><option value="3">Apr</option><option value="4">May</option><option value="5">Jun</option><option value="6">Jul</option><option value="7">Aug</option><option value="8">Sep</option><option value="9">Oct</option><option value="10">Nov</option><option value="11">Dec</option></select>&nbsp;<select class="year " style="width: auto;"><option value=""></option><option value="2019">2019</option><option value="2018">2018</option></select></span>
+                                                        </div>
                                                         <div class="clearfix"></div>
                                                         <div class="submit-btn editorial-submit-btn">
                                                             <button class="booking-form-pop-up-btn-" data-popup-id="booking-form-pop-up" type="submit">BOOK NOW</button>
