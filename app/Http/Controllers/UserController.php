@@ -509,11 +509,9 @@ class UserController extends Controller {
 
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->passes()) {
-echo 'Here 1';
+
             $user = User::where('email', '=', $request->input('credit_email'));
-            echo 'Here 2';
             if ($user->count() >= 1) {
-                echo 'Here 3';
                 $user = $user->get();
                 $user = $user[0];
                 /* $data = array('token'=>$request->input('_token'));	
@@ -535,6 +533,7 @@ echo 'Here 1';
                 if (\Session::get('newlang') == 'English') {
                     $etemp = 'auth.reminder_eng';
                 }
+                echo 'Here 1';
                 \Mail::send('user.emails.' . $etemp, $edata, function($message) use ($emlData) {
                     $message->from($emlData['frmemail'], CNF_APPNAME);
 
@@ -542,17 +541,16 @@ echo 'Here 1';
 
                     $message->subject($emlData['subject']);
                 });
-
+                echo 'Here 2';
 
                 $affectedRows = User::where('email', '=', $user->email)
                         ->update(array('reminder' => $request->input('_token')));
-
+echo 'Here 3';
+die;
                 return Redirect::to('user/login')->with('message', \SiteHelpers::alert('success', 'Please check your email'));
             } else {
-                echo 'Here 4';
                 return Redirect::to('user/login')->with('message', \SiteHelpers::alert('error', 'Cant find email address'));
             }
-            die;
         } else {
             return Redirect::to('user/login')->with('message', \SiteHelpers::alert('error', 'The following errors occurred')
                     )->withErrors($validator)->withInput();
