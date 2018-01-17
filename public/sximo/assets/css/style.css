@@ -4045,6 +4045,7 @@ div#fixed_wrapper {
 /*Detail Page Spa And Bar Sec*/
 .main-spa-sec-show-area{
     position: relative;
+    float: left;
 }
 .spa-overlay-text {
     position: absolute;
