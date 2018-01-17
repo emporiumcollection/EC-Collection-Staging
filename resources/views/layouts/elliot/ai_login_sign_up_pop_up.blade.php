@@ -197,9 +197,10 @@
                                     <div class="ps-big-form-heading">Password</div>
                                     <p class="form-white-samml-des-text">Enter your email and you will get Instructions to reset your password</p>
                                 </div>
-                                <form class="ps-login-sign-form-pannel">
+                                <form class="ps-login-sign-form-pannel" action="{{ url('user/request')}}" method="POST">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <div class="form-group ps-form-group-outer">
-                                        <input type="text" class="form-control ps-login-form-input" placeholder="Email Address">
+                                        <input class="form-control ps-login-form-input" name="credit_email" type="text" placeholder="Email Address" required>
                                     </div>
                                     <div class="ps-login-sign-submit-btn">
                                         <button type="submit">Submit</button>
