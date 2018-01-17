@@ -509,9 +509,11 @@ class UserController extends Controller {
 
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->passes()) {
-
+echo 'Here 1';
             $user = User::where('email', '=', $request->input('credit_email'));
+            echo 'Here 2';
             if ($user->count() >= 1) {
+                echo 'Here 3';
                 $user = $user->get();
                 $user = $user[0];
                 /* $data = array('token'=>$request->input('_token'));	
@@ -547,8 +549,10 @@ class UserController extends Controller {
 
                 return Redirect::to('user/login')->with('message', \SiteHelpers::alert('success', 'Please check your email'));
             } else {
+                echo 'Here 4';
                 return Redirect::to('user/login')->with('message', \SiteHelpers::alert('error', 'Cant find email address'));
             }
+            die;
         } else {
             return Redirect::to('user/login')->with('message', \SiteHelpers::alert('error', 'The following errors occurred')
                     )->withErrors($validator)->withInput();
