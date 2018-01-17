@@ -367,7 +367,7 @@
                 display: none;
             }
             .hotel .overlay-text {
-                padding: 37px 10px 20px;
+                padding: 100px 10px 20px;
             }
             .cat_product_medium1 .pictureBox.gridPicture {
                 position: relative !important;
