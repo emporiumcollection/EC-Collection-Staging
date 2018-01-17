@@ -65,6 +65,17 @@
     .landing-page-lock-login-btn-outer-align {
 	width: 100%;
     }
+    /* date select */
+    
+    .combodate select {
+	padding: 7px !important;
+	width: 66px !important;
+    }
+    
+    .combodate select:hover  {
+	padding: 7px !important;
+	width: 66px !important;
+    }
 }
 
 @media (min-width: 481px) and (max-width: 767px) {
@@ -120,6 +131,17 @@
     
     .landing-page-lock-login-btn-outer-align {
 	width: 100%;
+    }
+    /* date select */
+    
+    .combodate select {
+	padding: 7px !important;
+	width: 66px !important;
+    }
+    
+    .combodate select:hover  {
+	padding: 7px !important;
+	width: 66px !important;
     }
 }
 
