@@ -114,7 +114,7 @@
                 width: 35px;
                 float: right;
                 height: 55px;
-                margin-top: -42px;
+                margin-top: 0px;
             }
             
                         
