@@ -201,6 +201,9 @@
                 margin-top: 22px;
                 font-family: Geomanist-Light;
             }
+            .hotels-image-showcase-des-text {
+                padding: 0px 68px 0px 0px;
+            }
             .hotel-block-two-right-sec-align > h2{
                 color: #dbd4d7;
                 font-family: ACaslonPro-Regular;
@@ -391,8 +394,9 @@
                                     filter: brightness(.8);
                             }
                             .hotels-detail-description-text {
-                                  float: left;
+                                float: left;
                                 width: 100%;
+                                padding: 0px 0px 0px 189px;
 /*                                max-height: 240px;
                                 overflow: auto;*/
                             }
@@ -581,7 +585,7 @@
                             }
                             
                             .hotels-detail-heading-text > p {
-                                color: white;
+                                color: #dbd4d7;
                                 font-size: 32px;
                                 font-family: ACaslonPro-Regular;
                                 letter-spacing: 3px;
@@ -632,6 +636,7 @@
                                 width: 100%;
                                 float: left;
                                 margin-top: 100px;
+                                padding: 0px 0px 0px 188px;
                             }
                             
                             .gallery.row .principale1 img {
@@ -1142,6 +1147,7 @@
                             
                             .rightHotelInner {
                                 visibility: hidden;
+                                padding: 0px 0px 0px 0px;
                             }
                             
                             .InnerDetailHeight {
