@@ -866,6 +866,9 @@
         font-size: 24px;
         color: #ABA07C;
     }
+    .view-modify-cancel-booking a:hover {
+	color: white;
+    }
                             
         
         
