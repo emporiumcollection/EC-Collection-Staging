@@ -189,12 +189,12 @@
     /* date select */
     
     .combodate select {
-	padding: 9px !important;
+	padding: 7px !important;
 	width: 66px !important;
     }
     
     .combodate select:hover  {
-	padding: 9px !important;
+	padding: 7px !important;
 	width: 66px !important;
     }
     
