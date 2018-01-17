@@ -47,7 +47,7 @@ body.fixed {
     z-index: 999;
 }
 .popup-close-btn:hover, .popup-close-btn:active, .popup-close-btn:focus {
-    color: white;
+    color: #ABA07C;
     text-decoration: none;
 }
 .popup-content {
