@@ -186,4 +186,16 @@
 	width: 0% !important;
     }
     
+    /* date select */
+    
+    .combodate select {
+	padding: 9px !important;
+	width: 69px !important;
+    }
+    
+    .combodate select:hover  {
+	padding: 9px !important;
+	width: 69px !important;
+    }
+    
 }
