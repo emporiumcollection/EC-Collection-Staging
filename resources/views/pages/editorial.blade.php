@@ -1200,7 +1200,7 @@
                                     float: left;
                             }
                             /*
-                            *  STYLE 3
+                            *  scrollbar STYLE 3
                             */
 
                            #style-3::-webkit-scrollbar-track
@@ -1230,6 +1230,13 @@
                             .force-overflow
                             {
                                     min-height: 450px;
+                            }
+                            
+                            /* after scroll highlighted portions */
+                            
+                            .nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
+                                background: #DADAD5 !important;
+                                color: black;
                             }
               
                             @import url('https://fonts.googleapis.com/css?family=Caveat');
