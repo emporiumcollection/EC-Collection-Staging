@@ -377,8 +377,12 @@
 																			</div>
 																		</div>
 																		<div>
-																		
 																			<a href="#" style="margin-left:100px;" rel="{{$package->id}}" class="book-button open-show_more-page hotel-btn">Show More</a>
+																			@if (\Auth::check() == true)
+																				<a href="{{URL::to('choosepackage/'.$package->id)}}" style="margin-left:100px;" >Buy Now</a>
+																			@else
+																				<a href="{{URL::to('user/login')}}" style="margin-left:100px;" >Buy Now</a>
+																			@endif
 																		</div>
 																	</div>
 																</div>
