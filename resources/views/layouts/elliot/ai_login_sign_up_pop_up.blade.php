@@ -347,6 +347,10 @@
                 success: function (data, textStatus, jqXHR) {
                     if(data.status == 'success') {
                         $(".ai-login-form-success-msg").html( data.message );
+                        $(".login-form-show-hide").show();
+                        $(".account-with-us-show-hide").hide();
+                        $(".create-account-form-show-hide").hide();
+                        $(".forgot-pass-form-show-hide").hide();
                     }
                     else {
                         var message = data.message;
