@@ -678,6 +678,61 @@ class CustomerController extends Controller {
         }
     }
 
+    public function ajaxPostRequest(Request $request) {
+
+        $rules = array(
+            'credit_email' => 'required|email'
+        );
+
+        $validator = Validator::make(Input::all(), $rules);
+        if ($validator->passes()) {
+
+            $user = User::where('email', '=', $request->input('credit_email'));
+            if ($user->count() >= 1) {
+                $user = $user->get();
+                $user = $user[0];
+                /* $data = array('token'=>$request->input('_token'));	
+                  $to = $request->input('credit_email');
+                  $subject = "[ " .CNF_APPNAME." ] REQUEST PASSWORD RESET ";
+                  $message = view('customer.emails.auth.reminder', $data);
+                  $headers  = 'MIME-Version: 1.0' . "\r\n";
+                  $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+                  $headers .= 'From: '.CNF_APPNAME.' <'.CNF_EMAIL.'>' . "\r\n";
+                  mail($to, $subject, $message, $headers); */
+
+                $token = base64_encode(rand(10000, 10000000));
+                $edata = array();
+                $emlData['frmemail'] = 'info@design-locations.biz';
+                $edata['token'] = $token;
+                $emlData['email'] = $request->input('credit_email');
+                $emlData['subject'] = 'REQUEST PASSWORD RESET';
+                $etemp = 'auth.reminder';
+                if (\Session::get('newlang') == 'English') {
+                    $etemp = 'auth.reminder_eng';
+                }
+                \Mail::send('customer.emails.' . $etemp, $edata, function($message) use ($emlData) {
+                    $message->from($emlData['frmemail'], CNF_APPNAME);
+
+                    $message->to($emlData['email']);
+
+                    $message->subject($emlData['subject']);
+                });
+
+
+                $affectedRows = User::where('email', '=', $user->email)
+                        ->update(array('reminder' => $request->input('_token')));
+
+                $response = array('status' => 'success', 'message' => 'Please check your email', 'errors' => array());
+            } else {
+                $response = array('status' => 'error', 'message' => 'Cant find email address', 'errors' => array());
+            }
+        } else {
+            $response = array('status' => 'error', 'message' => 'The following  errors occurred', 'errors' => $validator->errors()->all());
+        }
+        
+        echo json_encode($response);
+    }
+
     public function getReset(Request $request, $token = '') {
         if (\Auth::check())
             return Redirect::to('dashboard');

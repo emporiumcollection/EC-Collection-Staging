@@ -199,7 +199,9 @@
                                     <div class="ps-big-form-heading">Password</div>
                                     <p class="form-white-samml-des-text">Enter your email and you will get Instructions to reset your password</p>
                                 </div>
-                                <form class="ps-login-sign-form-pannel" action="{{ url('customer/request')}}" method="POST">
+                                <div class="ai-forgot-password-form-success-msg"></div>
+                                <div class="ai-forgot-password-form-error-msg"></div>
+                                <form class="ai-forgot-password-form ps-login-sign-form-pannel" action="{{ url('customer/request')}}" method="POST">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <div class="form-group ps-form-group-outer">
                                         <input class="form-control ps-login-form-input" name="credit_email" type="text" placeholder="Email Address" required>
@@ -355,6 +357,31 @@
                             message += '<br>' + data.errors[i];
                         }
                         $(".ai-login-form-error-msg").html( message );
+                    }
+                }
+            });
+        });
+        
+        $(".ai-forgot-password-form").submit(function( event ) {
+            event.preventDefault();
+            
+            var formData = $(this).serialize();
+            
+            $.ajax({
+                url: "{{URL::to('customer_ajaxPostRequest')}}",
+                type: "POST",
+                dataType: "json",
+                data: formData,
+                success: function (data, textStatus, jqXHR) {
+                    if(data.status == 'success') {
+                        $(".ai-forgot-password-form-success-msg").html( message );
+                    }
+                    else {
+                        var message = data.message;
+                        for(var i = 0; i < data.errors.length; i++) {
+                            message += '<br>' + data.errors[i];
+                        }
+                        $(".ai-forgot-password-form-error-msg").html( message );
                     }
                 }
             });
