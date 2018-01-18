@@ -1218,6 +1218,21 @@
                            {
                                    background-color: #000000;
                            }
+                           .scrollbar
+                            {
+                                    margin-left: 30px;
+                                    float: left;
+                                    height: 300px;
+                                    width: 65px;
+                                    background: #F5F5F5;
+                                    overflow-y: scroll;
+                                    margin-bottom: 25px;
+                            }
+
+                            .force-overflow
+                            {
+                                    min-height: 450px;
+                            }
               
                             @import url('https://fonts.googleapis.com/css?family=Caveat');
                             @import url('https://fonts.googleapis.com/css?family=Satisfy');
