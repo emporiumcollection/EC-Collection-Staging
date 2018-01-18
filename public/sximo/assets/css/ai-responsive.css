@@ -30,6 +30,9 @@
     .main-side .book-button {
         padding: 8px 3px !important;
     }
+    .hotel-detail-slider-price-and-show-more .hotel-slider-price {
+        padding: 8px 3px;
+    }
 }
 @media (min-width: 768px) and (max-width: 992px) {
 
