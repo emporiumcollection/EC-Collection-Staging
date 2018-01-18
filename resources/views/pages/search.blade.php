@@ -129,15 +129,15 @@
             
             .block-content.content span:nth-child(1) {
                 top: 12px;
-                left: 75%;
+                left: 81%;
             }
             .block-content.content span:nth-child(2) {
                 top: 19px;
-                left: 75%;
+                left: 81%;
             }
             .block-content.content span:nth-child(3) {
                 top: 27px;
-                left: 75%;
+                left: 81%;
             }
             
             /* hamburg menu css */
