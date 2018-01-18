@@ -16,7 +16,11 @@
         width: 88%;
     }
     .hotel-slider-price {
-        margin-left: 1px !important;
+        margin-left: 0 !important;
+    }
+    .hotel-detail-slider-price-and-show-more .hotel-slider-price {
+        padding: 8px 7px;
+        margin-top: 8px;
     }
 }
 @media (min-width: 768px) and (max-width: 992px) {
