@@ -22,7 +22,7 @@ Route::controller('home', 'HomeController');
 Route::controller('/user', 'UserController');
 Route::controller('/customer', 'CustomerController'); 
 
-Route::post('/customer/ajaxPostCreate', 'CustomerController@ajaxPostCreate'); 
+Route::post('customer_ajaxPostCreate', 'CustomerController@ajaxPostCreate'); 
 
 include('pageroutes.php');
 include('moduleroutes.php');

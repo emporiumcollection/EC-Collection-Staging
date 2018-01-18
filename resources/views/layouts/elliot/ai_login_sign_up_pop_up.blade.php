@@ -335,7 +335,7 @@
             var formData = $(this).serialize();
             
             $.ajax({
-                url: "{{URL::to('customer/ajaxPostCreate')}}",
+                url: "{{URL::to('customer_ajaxPostCreate')}}",
                 type: "POST",
                 dataType: "json",
                 data: formData,
