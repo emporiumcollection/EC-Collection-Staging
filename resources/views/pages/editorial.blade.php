@@ -1227,13 +1227,13 @@
                             {
                                     float: left;
                                     height: 180px;
-                                    overflow-y: scroll;
+                                    overflow-y: auto;
                                     margin-bottom: 25px;
                             }
 
                             .force-overflow
                             {
-                                    min-height: 450px;
+                                    min-height: 0px;
                             }
                             
                             
