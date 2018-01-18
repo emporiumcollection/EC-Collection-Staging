@@ -1157,7 +1157,7 @@
                             }
                             
                             .InnerDetailHeight {
-                                height: 830px;
+                                height: 980px;
                             }
                             
                             .hotel-book-now {
@@ -1225,7 +1225,7 @@
                            }
                            .scrollbar {
                                 float: left;
-                                max-height: 340px;
+                                max-height: 300px;
                                 margin-bottom: 25px;
                                 overflow: auto;
                             }
