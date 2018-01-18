@@ -142,6 +142,7 @@
                                     <div class="ps-big-form-heading">Your Account</div>
                                 </div>
                                 <div class="ai-login-form-success-msg"></div>
+                                <div class="ai-login-form-error-msg"></div>
                                 <form class="ai-login-form ps-login-sign-form-pannel" action="{{URL::to('customer/signin')}}" method="POST">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <div class="form-group ps-form-group-outer">
