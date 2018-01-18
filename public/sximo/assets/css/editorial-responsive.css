@@ -65,7 +65,7 @@ and open the template in the editor.
         margin-top: 0;
     }
     .main-side .book-button {
-        padding: 8px 20px;
+        padding: 8px 8px;
     }
     .gallery .info1 p {
         max-height: 50px;
@@ -73,6 +73,10 @@ and open the template in the editor.
     }
     #hotel {
         width: 100%;
+    }
+    .hotel-slider-price {
+        padding: 8px 7px;
+        margin-top: 8px;
     }
 }
 @media screen and (max-width: 1024px) and (min-width: 768px) {
