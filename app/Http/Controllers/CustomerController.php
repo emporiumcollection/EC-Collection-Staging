@@ -702,7 +702,7 @@ class CustomerController extends Controller {
 
                 $token = base64_encode(rand(10000, 10000000));
                 $edata = array();
-                $emlData['frmemail'] = 'info@design-locations.biz';
+                $emlData['frmemail'] = 'info@emporium-voyage.com';
                 $edata['token'] = $token;
                 $emlData['email'] = $request->input('credit_email');
                 $emlData['subject'] = 'REQUEST PASSWORD RESET';
