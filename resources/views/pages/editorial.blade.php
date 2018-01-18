@@ -1663,7 +1663,7 @@
                                         <div class="col-md-6 disply-left-right-inner">
                                             <div class="hotel-block-two-left-sec-align">
                                                 <h2>{{$propertyDetail['data']->detail_section1_title}}</h2>
-                                                <p>
+                                                <p class="scrollbar" id="style-3">
                                                     {!! nl2br($propertyDetail['data']->detail_section1_description_box1) !!}
                                                 </p>
                                             </div>
@@ -1671,7 +1671,7 @@
                                         <div class="col-md-6 disply-left-right-inner">
                                             <div class="hotel-block-two-right-sec-align">
                                                 <h2>{{$propertyDetail['data']->detail_section1_title}}</h2>
-                                                <p>
+                                                <p class="scrollbar" id="style-3">
                                                     {!! nl2br($propertyDetail['data']->detail_section1_description_box2) !!}
                                                 </p>
                                                 <div class="hotel-block-two-btn-right">
