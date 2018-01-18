@@ -334,6 +334,9 @@
         $(".ai-sign-up-form").submit(function( event ) {
             event.preventDefault();
             
+            $(".ai-sign-up-form-error-msg").html( '' );
+            $(".ai-login-form-success-msg").html( '' );
+            
             var formData = $(this).serialize();
             
             $.ajax({
