@@ -165,7 +165,7 @@ class CustomerController extends Controller {
         }
         
         echo '<pre>';
-        print_r($validator);
+        print_r($errors->all());
         echo '</pre>';
         die;
         
