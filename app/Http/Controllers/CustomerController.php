@@ -159,7 +159,7 @@ class CustomerController extends Controller {
             
 //            return Redirect::to('customer/login')->with('message', \SiteHelpers::alert('success', 'Registered successfully.'));
         } else {
-            $response = array('message' => 'The following errors occurred', 'errors' => $validator);
+            $response = array('message' => 'The following errors occurred', 'errors' => $validator->all());
 //            return Redirect::to('customer/register/' . $request->input('membership_plan'))->with('message', \SiteHelpers::alert('error', 'The following errors occurred')
 //                    )->withErrors($validator)->withInput();
         }
