@@ -927,7 +927,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-1 CustomTopbarwidth">
+                                                <div class="col-md-1" style="width: 5.333%;">
                                                     <div class="row">
                                                         <div class="form-group padding-right-12">
                                                             <button class="top-booking-bar-btn" type="submit">Search</button>
