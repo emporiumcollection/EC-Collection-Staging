@@ -42,13 +42,12 @@
                 object-position: center 64px;
             }
             
-            .ai-login-form-error-msg {
+            .ai-forgot-password-form-error-msg {
                 color: #f80606;
                 font-size: 15px;
                 margin-top: 5px;
             }
-            .ai-forgot-password-form-error-msg {
-} {
+            .ai-login-form-error-msg {
                 color: #f80606;
                 font-size: 15px;
                 margin-top: 5px;
