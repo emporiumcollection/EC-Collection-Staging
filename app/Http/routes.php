@@ -262,7 +262,7 @@ Route::get('getpropertygallery/{id}/{type}', 'HomeController@getPropertyGalleryQ
 Route::get('getpropertyroomimages/{id}', 'HomeController@getPropertyRoomimageGalleryView');
 Route::get('getpropertytypedetail/{id}', 'HomeController@getPropertyTypeQuickView');
 Route::post('filter_category_destionation', 'HomeController@getPropertyByCategoryDestination');
-
+Route::get('choosepackage/{id}', 'HomeController@index');
 
 
 Route::post('find_property_by_name', 'HomeController@find_property_by_name');
