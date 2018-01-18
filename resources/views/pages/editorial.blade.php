@@ -1688,12 +1688,13 @@
                                             <div class="hotels-detail-heading-text rightHotelInner">
                                                 <p>{!! nl2br($propertyDetail['data']->detail_section2_title) !!}</p>
                                             </div>
-                                            <div class="hotels-image-showcase-des-text">
+                                            <div class="hotels-image-showcase-des-text scrollbar" id="style-3">
                                                 <p class="hotel-description-text">
                                                     {!! nl2br($propertyDetail['data']->detail_section2_description_box2) !!}
                                                     <br>
 <!--                                                        <span class="pull-right">Situated in Norrmalm</span>-->
                                                 </p>
+                                                <div class="force-overflow"></div>
                                             </div>
                                             <div class="hotel-block-two-btn-right">
                                                 
