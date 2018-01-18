@@ -114,6 +114,33 @@ body{
 .bh-search-input {
     padding-left: 0px !important;
 }
+.ai-forgot-password-form-error-msg {
+    color: #f80606;
+    font-size: 15px;
+    margin-top: 5px;
+}
+.ai-sign-up-form-error-msg {
+    color: #f80606;
+    font-size: 15px;
+    margin-top: 5px;
+}
+.ai-forgot-password-form-success-msg {
+    color: #0d870d;
+    font-size: 15px;
+}
+.ai-login-form-success-msg {
+    color: #0d870d;
+    font-size: 15px;
+}
+.ai-sign-up-form-success-msg {
+    color: #0d870d;
+    font-size: 15px;
+}
+.ai-login-form-error-msg {
+    color: #f80606;
+    font-size: 15px;
+    margin-top: 5px;
+}
 /*.serach-page-cstm-width {
   width: 100%;
   float: left;
