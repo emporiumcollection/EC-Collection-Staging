@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 use Validator, Input, Redirect ; 
 
+use  App\Http\Controller\StripepaymentController;
 
 class PackagesController extends Controller {
 
@@ -138,7 +139,7 @@ class PackagesController extends Controller {
 
 	function postSave( Request $request)
 	{
-		$uid = \Auth::user()->id;
+		
 		$rules = $this->validateForm();
 		$validator = Validator::make($request->all(), $rules);	
 		if ($validator->passes()) {
@@ -170,7 +171,7 @@ class PackagesController extends Controller {
 			
 		} else {
 
-			return Redirect::to('packages/update/'.$request->input('id'))->with('messagetext',\Lang::get('core.note_error'))->with('msgstatus','error')
+			return Redirect::to('packages/update/'.$id)->with('messagetext',\Lang::get('core.note_error'))->with('msgstatus','error')
 			->withErrors($validator)->withInput();
 		}	
 	
@@ -197,7 +198,39 @@ class PackagesController extends Controller {
         		->with('messagetext','No Item Deleted')->with('msgstatus','error');				
 		}
 
-	}			
+	}	
+
+
+
+	 /**
+     * Verify that a plan with a given ID exists, or create a new one if it does
+     * not.
+     */
+    protected static function retrieveOrCreatePlan( Request $request)
+    {
+        StripepaymentController::authorizeFromEnv();
+		$data['user_id'] = $uid;
+		if ($request->input('id') == '') {
+		    $data['created_at'] = date('Y-m-d h:i:s');
+		} else {
+		    $data['updated_at'] = date('Y-m-d h:i:s');
+		}
+		$id = $this->model->insertRow($data , $request->input('id'));
+
+        try {
+            $plan = \Plan::retrieve($id);
+        } catch (Error\InvalidRequest $exception) {
+            $plan = Plan::create(
+                array(
+                    'id' => $id,
+                    'amount' => 0,
+                    'currency' => 'usd',
+                    'interval' => 'month',
+                    'name' => 'Gold Test Plan',
+                )
+            );
+        }
+    }		
 
 
 }

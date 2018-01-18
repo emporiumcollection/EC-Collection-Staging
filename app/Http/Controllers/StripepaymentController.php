@@ -13,7 +13,7 @@ use Stripe\Plan;
 class StripepaymentController extends Controller
 {
 
-	const API_KEY = "sk_test_cVD7ahPzNrMym2CyKwrEXBPL";
+	const API_KEY = "sk_test_C0Mmp1B1ZzxMbnpq4EJLNoOg";
 
     private $mock;
 
@@ -31,8 +31,8 @@ class StripepaymentController extends Controller
     public function index(){
 
         echo "string";
-        $id=1004;
-
+        $id=1005;
+        $this->createPlan($id);
         self::authorizeFromEnv();
         
         $response=\Stripe\Plan::all(array("limit" => 3));
@@ -41,6 +41,27 @@ class StripepaymentController extends Controller
         $invoiceList=\Stripe\Invoice::all(array("limit" => 3));
 
         dd($invoiceList);
+    }
+
+    public function checkout(){
+
+        self::authorizeFromEnv();       
+        
+        $this->data['about_text'] = "";
+        $stripePackagesList = \Stripe\Plan::all();
+
+//dd($stripePackagesList);
+        $stripePackages[] = '';
+        foreach ($stripePackagesList->data as $TBkey => $TBValue) {
+            $stripePackages[$TBValue->id] = $TBValue->name."&nbsp;";
+        }
+        $this->data['stripePackagesData'] = $stripePackages;
+        
+        $page="checkout.choosepackage";
+        return view($page,$this->data);
+       
+
+        
     }
 
     protected function setUp()
@@ -79,8 +100,8 @@ class StripepaymentController extends Controller
         return Charge::create(
             $attributes = array(
                 'amount' => 2000,
-                'currency' => 'usd',
-                'description' => 'Charge for test@example.com',
+                'currency' => 'EUR',
+                'description' => 'Charge for EVTEST.com',
                 'card' => array(
                     'number' => '4242424242424242',
                     'exp_month' => 5,
@@ -174,6 +195,41 @@ class StripepaymentController extends Controller
 
         try {
             $plan = Plan::retrieve($id);
+        } catch (Error\InvalidRequest $exception) {
+            $plan = Plan::create(
+                array(
+                    'id' => $id,
+                    'amount' => 0,
+                    'currency' => 'usd',
+                    'interval' => 'month',
+                    'name' => 'Gold Test Plan',
+                )
+            );
+        }
+    }
+
+    /**
+     * Verify that a plan with a given ID exists, or create a new one if it does
+     * not.
+     */
+    protected static function createPlan($id)
+    {
+        self::authorizeFromEnv();
+
+        try {
+
+
+            $plan = Plan::create(
+                array(
+                    'id' => $id,
+                    'amount' => 0,
+                    'currency' => 'eur',
+                    'interval' => 'month',
+                    'name' => 'Gold Test Plan',
+                )
+            );
+
+
         } catch (Error\InvalidRequest $exception) {
             $plan = Plan::create(
                 array(

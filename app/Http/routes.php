@@ -262,7 +262,7 @@ Route::get('getpropertygallery/{id}/{type}', 'HomeController@getPropertyGalleryQ
 Route::get('getpropertyroomimages/{id}', 'HomeController@getPropertyRoomimageGalleryView');
 Route::get('getpropertytypedetail/{id}', 'HomeController@getPropertyTypeQuickView');
 Route::post('filter_category_destionation', 'HomeController@getPropertyByCategoryDestination');
-Route::get('choosepackage/{id}', 'HomeController@index');
+//Route::get('choosepackage/{id}', 'HomeController@index');
 
 
 Route::post('find_property_by_name', 'HomeController@find_property_by_name');
@@ -280,6 +280,10 @@ Route::get('bankdetails/{uid}', 'UserController@showBankDetails');
 Route::post('bank_agree', 'UserController@bankAgree');
 Route::post('getUserprofile', 'UserController@getUserprofile');
 Route::get('stripedetails/{uid}', 'StripepaymentController@index');
+
+
+Route::get('choosepackage/{packageid}', 'StripepaymentController@checkout');
+Route::post('order-post', 'StripepaymentController@checkoutPost');
 
 // Add this route for checkout or submit form to pass the item into paypal
 Route::post('payment', array(
