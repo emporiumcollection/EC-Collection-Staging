@@ -194,7 +194,9 @@
                 font-size: 15px;
                 line-height: 30px;
                 font-family: Geomanist-Light;
-/*                margin-top: 35px;*/
+                margin-top: 0;
+                padding-right: 0px;
+                color: white;
             }
             .hotels-image-showcase-des-text > p {
                 font-size: 15px;
@@ -592,15 +594,16 @@
                                 color: #dbd4d7;
                                 font-size: 32px;
                                 font-family: ACaslonPro-Regular;
-                                letter-spacing: 3px;
+                                letter-spacing: 0px;
                                 line-height: 35px;
                                 float: none;
                                 width: 100%;
+                                font-weight: lighter;
                                 text-transform: uppercase;
                                 height: auto;
-/*                                background: rgba(0,0,0,0.8);*/
-                                margin: 0;
-                                padding: 8% 0% 13% 29%;
+                                /* background: rgba(0,0,0,0.8); */
+                                margin-top: 0;
+                                padding: 8% 0% 0% 29%;
                             }
                             
                             .hotels-showcase-right-side {
@@ -639,7 +642,7 @@
                             .hotels-detail-heading-text {
                                 width: 100%;
                                 float: left;
-                                margin-top: 100px;
+                                margin-top: 290px;
                             }
                             
                             .gallery.row .principale1 img {
