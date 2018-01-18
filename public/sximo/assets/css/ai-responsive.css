@@ -8,17 +8,6 @@
 }
 @media (min-width: 768px) and (max-width: 1200px) {
     /* detail Page */
-    .hotel-detail-slider-price-and-show-more .book-button.open-show_more-page.hotel-btn {
-        float: none;
-        margin-bottom: 5px;
-    }
-    .editorial-hotel-detail-page #align-to-top .book-button.open-show_more-page.hotel-btn {
-        float: none;
-    }
-    a.book-button.hotel-btn.newbkbtn {
-        float: none;
-        margin: 5px 0;
-    }
     .cstmai-w .hotels-detail-description-text {
         width: 88%;
         padding: 0;
@@ -27,7 +16,7 @@
         width: 88%;
     }
     .hotel-slider-price {
-        margin-left: 1px;
+        margin-left: 1px !important;
     }
 }
 @media (min-width: 768px) and (max-width: 992px) {
