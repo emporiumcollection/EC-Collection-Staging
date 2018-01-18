@@ -468,6 +468,70 @@ class CustomerController extends Controller {
         }
     }
 
+    public function ajaxPostSignin(Request $request) {
+
+        $rules = array(
+            'email' => 'required|email',
+            'password' => 'required',
+        );
+        if (CNF_RECAPTCHA == 'true')
+            $rules['captcha'] = 'required|captcha';
+        $validator = Validator::make(Input::all(), $rules);
+        if ($validator->passes()) {
+
+            $remember = (!is_null($request->get('remember')) ? 'true' : 'false' );
+
+            if (\Auth::attempt(array('email' => $request->input('email'), 'password' => $request->input('password')), $remember)) {
+                if (\Auth::check()) {
+                    $row = User::find(\Auth::user()->id);
+
+                    if ($row->active == '0') {
+                        // inactive 
+                        \Auth::logout();
+                        $response = array('status' => 'error', 'message' => 'Your Account is not active', 'errors' => array());
+                    } else if ($row->active == '2') {
+                        // BLocked users
+                        \Auth::logout();
+                        $response = array('status' => 'error', 'message' => 'Your Account is BLocked', 'errors' => array());
+                    } else {
+                        \DB::table('tb_users')->where('id', '=', $row->id)->update(array('last_login' => date("Y-m-d H:i:s")));
+                        \Session::put('uid', $row->id);
+                        \Session::put('gid', $row->group_id);
+                        \Session::put('eid', $row->email);
+                        \Session::put('ll', $row->last_login);
+                        \Session::put('fid', $row->first_name . ' ' . $row->last_name);
+                        if (!is_null($request->input('language'))) {
+                            \Session::put('lang', $request->input('language'));
+                        } else {
+                            \Session::put('lang', 'Deutsch');
+                        }
+                        if (CNF_FRONT == 'false') :
+                            $response = array('status' => 'success', 'message' => 'Logged in successfully', 'errors' => array());
+                        else :
+                            $getusercompany = \DB::table('tb_user_company_details')->where('user_id', $row->id)->first();
+                            if (!empty($getusercompany)) {
+                                $response = array('status' => 'success', 'message' => 'Logged in successfully', 'errors' => array());
+                            } else {
+                                if($row->group_id == 4) {
+                                    $response = array('status' => 'success', 'message' => 'Please complete your profile and company details', 'errors' => array());
+                                }
+                                $response = array('status' => 'success', 'message' => 'Please complete your profile and company details', 'errors' => array());
+                            }
+
+                        endif;
+                    }
+                }
+            } else {
+                $response = array('status' => 'error', 'message' => 'Your username/password combination was incorrect', 'errors' => array());
+            }
+        } else {
+            $response = array('status' => 'error', 'message' => 'The following  errors occurred', 'errors' => $validator->errors()->all());
+        }
+        
+        echo json_encode($response);
+        
+    }
+
     public function getProfile() {
 
         if (!\Auth::check())

@@ -142,7 +142,7 @@
                                     <div class="ps-big-form-heading">Your Account</div>
                                 </div>
                                 <div class="ai-login-form-success-msg"></div>
-                                <form class="ps-login-sign-form-pannel" action="{{URL::to('customer/signin')}}" method="POST">
+                                <form class="ai-login-form ps-login-sign-form-pannel" action="{{URL::to('customer/signin')}}" method="POST">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <div class="form-group ps-form-group-outer">
                                         <input class="form-control ps-login-form-input" name="email" type="text" placeholder="Email Address" required="email" />
@@ -329,6 +329,34 @@
             $(".forgot-pass-form-show-hide").hide();
             $(".login-form-show-hide").hide();
             $(".create-account-form-show-hide").hide();
+        });
+        
+        $(".ai-login-form").submit(function( event ) {
+            event.preventDefault();
+            
+            $(".ai-sign-up-form-error-msg").html( '' );
+            $(".ai-login-form-success-msg").html( '' );
+            
+            var formData = $(this).serialize();
+            
+            $.ajax({
+                url: "{{URL::to('customer_ajaxPostSignin')}}",
+                type: "POST",
+                dataType: "json",
+                data: formData,
+                success: function (data, textStatus, jqXHR) {
+                    if(data.status == 'success') {
+                        window.location.href = "{{URL::to('dashboard')}}";
+                    }
+                    else {
+                        var message = data.message;
+                        for(var i = 0; i < data.errors.length; i++) {
+                            message += '<br>' + data.errors[i];
+                        }
+                        $(".ai-login-form-error-msg").html( message );
+                    }
+                }
+            });
         });
         
         $(".ai-sign-up-form").submit(function( event ) {
