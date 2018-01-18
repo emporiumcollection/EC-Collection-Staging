@@ -23,6 +23,14 @@
         margin-top: 8px;
     }
 }
+@media (min-width: 768px) and (max-width: 890px) {
+    #align-to-top .book-button.open-show_more-page.hotel-btn {
+        padding: 8px 3px !important;
+    }
+    .main-side .book-button {
+        padding: 8px 3px !important;
+    }
+}
 @media (min-width: 768px) and (max-width: 992px) {
 
     .landing-mobile-top-header {
