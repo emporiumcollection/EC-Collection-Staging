@@ -138,10 +138,10 @@
             }
             
             .block-content.content {
-                width: 35px;
+                width: 57px;
                 float: right;
                 height: 20px;
-                margin-left: 49px;
+                margin-left: 14px;
                 margin-top: -22px;
             }
             
@@ -156,15 +156,15 @@
             
             .block-content.content span:nth-child(1) {
                 top: 32px;
-                left: 57%;
+                left: 47%;
             }
             .block-content.content span:nth-child(2) {
-                top: 39px;
-                left: 57%;
+                top: 38px;
+                left: 47%;
             }
             .block-content.content span:nth-child(3) {
-                top: 46px;
-                left: 57%;
+                top: 44px;
+                left: 47%;
             }
             
             
