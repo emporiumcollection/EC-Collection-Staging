@@ -1232,11 +1232,18 @@
                                     min-height: 450px;
                             }
                             
+                            
                             /* after scroll highlighted portions */
                             
                             .nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
                                 background: #DADAD5 !important;
                                 color: black;
+                            }
+                            .right-menu-align .nav-pills li a {
+                                border-radius: 0px !important;
+                            }
+                            .right-menu-align .nav-pills li {
+                                margin-top: 0px;
                             }
               
                             @import url('https://fonts.googleapis.com/css?family=Caveat');
