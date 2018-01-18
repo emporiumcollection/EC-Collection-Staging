@@ -127,11 +127,11 @@
                 left: 62%;
             }
             .block-content.content span:nth-child(2) {
-                top: 19px;
+                top: 18px;
                 left: 62%;
             }
             .block-content.content span:nth-child(3) {
-                top: 27px;
+                top: 24px;
                 left: 62%;
             }
             
