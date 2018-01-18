@@ -1223,12 +1223,11 @@
                            {
                                    background-color: #000000;
                            }
-                           .scrollbar
-                            {
-                                    float: left;
-                                    height: 180px;
-                                    overflow-y: auto;
-                                    margin-bottom: 25px;
+                           .scrollbar {
+                                float: left;
+                                max-height: 340px;
+                                margin-bottom: 25px;
+                                overflow: auto;
                             }
 
                             .force-overflow
