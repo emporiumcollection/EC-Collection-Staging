@@ -374,7 +374,7 @@
                 data: formData,
                 success: function (data, textStatus, jqXHR) {
                     if(data.status == 'success') {
-                        $(".ai-forgot-password-form-success-msg").html( message );
+                        $(".ai-forgot-password-form-success-msg").html( data.message );
                     }
                     else {
                         var message = data.message;
