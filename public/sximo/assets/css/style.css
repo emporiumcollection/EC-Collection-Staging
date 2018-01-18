@@ -292,7 +292,7 @@ body{
 /*============New Styles============*/
 
 section img {
-    width: 100%;
+    width: auto;
 }
 section .col-md-1, section .col-md-10, section .col-md-11, section .col-md-12, section .col-md-2, section .col-md-3, section .col-md-4, section .col-md-5, section .col-md-6, section .col-md-7, section .col-md-8, section .col-md-9 {
     /*padding-bottom: 15px;*/
