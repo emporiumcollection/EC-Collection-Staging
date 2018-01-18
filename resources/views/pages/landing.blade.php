@@ -47,6 +47,23 @@
                 font-size: 15px;
                 margin-top: 5px;
             }
+            .ai-sign-up-form-error-msg {
+                color: #f80606;
+                font-size: 15px;
+                margin-top: 5px;
+            }
+            .ai-forgot-password-form-success-msg {
+                color: #0d870d;
+                font-size: 15px;
+            }
+            .ai-login-form-success-msg {
+                color: #0d870d;
+                font-size: 15px;
+            }
+            .ai-sign-up-form-success-msg {
+                color: #0d870d;
+                font-size: 15px;
+            }
             .ai-login-form-error-msg {
                 color: #f80606;
                 font-size: 15px;
