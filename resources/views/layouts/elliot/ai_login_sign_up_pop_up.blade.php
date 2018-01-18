@@ -141,6 +141,7 @@
                                     <div class="ps-big-form-heading">Login With</div>
                                     <div class="ps-big-form-heading">Your Account</div>
                                 </div>
+                                <div class="ai-login-form-success-msg"></div>
                                 <form class="ps-login-sign-form-pannel" action="{{URL::to('customer/signin')}}" method="POST">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <div class="form-group ps-form-group-outer">
@@ -248,6 +249,7 @@
                                     <div class="ps-big-form-heading">Create Your Account</div>
                                     <div class="ps-big-form-heading">Password</div>
                                 </div>
+                                <div class="ai-sign-up-form-error-msg"></div>
                                 <form class="ai-sign-up-form ps-login-sign-form-pannel" action="{{ url('customer/create')}}" method="POST">
                                     <div class="form-group ps-form-group-outer">
                                         <input class="form-control ps-login-form-input" name="email" type="text" placeholder="Email Address">
@@ -340,7 +342,16 @@
                 dataType: "json",
                 data: formData,
                 success: function (data, textStatus, jqXHR) {
-                    console.log(data);
+                    if(data.status == 'success') {
+                        $(".ai-login-form-success-msg").html( data.message );
+                    }
+                    else {
+                        var message = data.message;
+                        for(var i = 0; i < data.errors.length; i++) {
+                            message += '<br>' + data.errors[i];
+                        }
+                        $(".ai-sign-up-form-error-msg").html( message );
+                    }
                 }
             });
         });
