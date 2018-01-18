@@ -92,7 +92,7 @@ class CustomerController extends Controller {
 
             //return Redirect::to('choose/'.$umId);
 
-            return Redirect::to('customer/login')->with('message', \SiteHelpers::alert('success', 'Registered in successfully.'));
+            return Redirect::to('customer/login')->with('message', \SiteHelpers::alert('success', 'Registered successfully.'));
         } else {
             return Redirect::to('customer/register/' . $request->input('membership_plan'))->with('message', \SiteHelpers::alert('error', 'The following errors occurred')
                     )->withErrors($validator)->withInput();
