@@ -158,10 +158,10 @@ ul.EVMenu li.smallEV {
 	position: absolute;
 	background: white;
 	height: 2px;
-	width: 63px;
-	color: ;
+	width: 40px;
 	content: "";
 	top: 22px;
+	left: 35px;
 }
 
 
