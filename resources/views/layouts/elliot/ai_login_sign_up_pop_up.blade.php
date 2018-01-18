@@ -253,6 +253,7 @@
                                     <div class="ps-big-form-heading">Password</div>
                                 </div>
                                 <div class="ai-sign-up-form-error-msg"></div>
+                                <div class="ai-sign-up-form-success-msg"></div>
                                 <form class="ai-sign-up-form ps-login-sign-form-pannel" action="{{ url('customer/create')}}" method="POST">
                                     <div class="form-group ps-form-group-outer">
                                         <input class="form-control ps-login-form-input" name="email" type="text" placeholder="Email Address">
@@ -392,6 +393,7 @@
         $(".ai-sign-up-form").submit(function( event ) {
             event.preventDefault();
             
+            $(".ai-sign-up-form-success-msg").html( '' );
             $(".ai-sign-up-form-error-msg").html( '' );
             $(".ai-login-form-success-msg").html( '' );
             
@@ -404,11 +406,7 @@
                 data: formData,
                 success: function (data, textStatus, jqXHR) {
                     if(data.status == 'success') {
-                        $(".ai-login-form-success-msg").html( data.message );
-                        $(".login-form-show-hide").show();
-                        $(".account-with-us-show-hide").hide();
-                        $(".create-account-form-show-hide").hide();
-                        $(".forgot-pass-form-show-hide").hide();
+                        $(".ai-sign-up-form-success-msg").html( data.message );
                     }
                     else {
                         var message = data.message;
