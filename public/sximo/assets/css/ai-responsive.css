@@ -9,9 +9,7 @@
 
 @media (min-width: 768px) and (max-width: 992px) {
 
-    .landing-mobile-top-header {
-	display: none;
-    }
+    
     
     .serach-page-menu {
 	text-align: center;
