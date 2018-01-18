@@ -374,13 +374,15 @@
                 data: formData,
                 success: function (data, textStatus, jqXHR) {
                     if(data.status == 'success') {
-                        $(".ai-forgot-password-form-success-msg").html( message );
+                        $(".ai-forgot-password-form-success-msg").html( data.message );
+                        $(".ai-forgot-password-form-error-msg").html( '' );
                     }
                     else {
                         var message = data.message;
                         for(var i = 0; i < data.errors.length; i++) {
                             message += '<br>' + data.errors[i];
                         }
+                        $(".ai-forgot-password-form-success-msg").html( '' );
                         $(".ai-forgot-password-form-error-msg").html( message );
                     }
                 }
