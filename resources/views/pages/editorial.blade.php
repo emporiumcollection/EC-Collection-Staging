@@ -597,7 +597,7 @@
                                 letter-spacing: 0px;
                                 line-height: 35px;
                                 float: none;
-                                width: 100%;
+                                width: 98%;
                                 font-weight: lighter;
                                 text-transform: uppercase;
                                 height: auto;
@@ -642,7 +642,7 @@
                             .hotels-detail-heading-text {
                                 width: 100%;
                                 float: left;
-                                margin-top: 290px;
+                                margin-top: 203px;
                             }
                             
                             .gallery.row .principale1 img {
