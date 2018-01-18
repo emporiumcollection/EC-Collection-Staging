@@ -202,9 +202,10 @@
                 font-family: Geomanist-Light;
             }
             .hotels-image-showcase-des-text {
-                padding: 0px 68px 0px 0px;
-                overflow: auto;
-                max-height: 240px;
+                padding: 0px 39px 0px 0px;
+/*                overflow: auto;
+                max-height: 240px;*/
+                width: 73%;
             }
             .hotel-block-two-right-sec-align > h2{
                 color: #dbd4d7;
