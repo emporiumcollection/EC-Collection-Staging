@@ -19,6 +19,12 @@
         float: none;
         margin: 5px 0;
     }
+    .hotels-detail-description-text {
+        width: 88%;
+    }
+    .hotels-image-showcase-des-text {
+        width: 88%;
+    }
 }
 @media (min-width: 768px) and (max-width: 992px) {
 
