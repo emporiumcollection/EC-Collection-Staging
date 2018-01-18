@@ -111,33 +111,28 @@
             }
             
             .block-content.content {
-                width: 23px;
+                width: 35px;
                 float: right;
                 height: 30px;
                 margin-top: 0px;
-                margin-right: -14px;
+                margin-right: 0px;
             }
-            
-                        
-            .CustomTopbarwidth {
-                width: 5.333%;
-            }
-            
+          
             .detailfaLock {
                 margin-right: 50px;
             }
             
             .block-content.content span:nth-child(1) {
                 top: 12px;
-                left: 81%;
+                left: 62%;
             }
             .block-content.content span:nth-child(2) {
                 top: 19px;
-                left: 81%;
+                left: 62%;
             }
             .block-content.content span:nth-child(3) {
                 top: 27px;
-                left: 81%;
+                left: 62%;
             }
             
             /* hamburg menu css */
@@ -555,7 +550,7 @@
 
         .show-login-forms-btn {
             display: inline-block;
-            padding: 0px 30px;
+            padding: 0px 20px;
             text-align: center;
             margin-top: 7px;
             vertical-align: text-top;
