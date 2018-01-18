@@ -399,8 +399,8 @@
                                 float: left;
                                 width: 100%;
                                 padding: 0px 0px 0px 189px;
-                                max-height: 240px;
-                                overflow: auto;
+/*                                max-height: 240px;
+                                overflow: auto;*/
                             }
                             .hotels-image-showcase-des-text > p {
                                 font-size: 15px;
@@ -1198,6 +1198,26 @@
                                     width: 100%;
                                     float: left;
                             }
+                            /*
+                            *  STYLE 3
+                            */
+
+                           #style-3::-webkit-scrollbar-track
+                           {
+                                   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+                                   background-color: #F5F5F5;
+                           }
+
+                           #style-3::-webkit-scrollbar
+                           {
+                                   width: 6px;
+                                   background-color: #F5F5F5;
+                           }
+
+                           #style-3::-webkit-scrollbar-thumb
+                           {
+                                   background-color: #000000;
+                           }
               
                             @import url('https://fonts.googleapis.com/css?family=Caveat');
                             @import url('https://fonts.googleapis.com/css?family=Satisfy');
@@ -1645,7 +1665,8 @@
                                             <div class="hotels-detail-heading-text">
                                                 <p>{!! nl2br($propertyDetail['data']->detail_section2_title) !!}</p>
                                             </div>
-                                            <div class="hotels-detail-description-text">
+                                            <div class="hotels-detail-description-text scrollbar" id="style-3">
+                                                <div class="force-overflow"></div>
                                                 <p class="hotel-description-text">
                                                     {!! nl2br($propertyDetail['data']->detail_section2_description_box1)!!}
                                                 </p>
