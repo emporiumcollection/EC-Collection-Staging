@@ -99,6 +99,73 @@ class CustomerController extends Controller {
         }
     }
 
+    public function ajaxPostCreate(Request $request) {
+
+        $rules = array(
+//            'firstname' => 'required|alpha_num|min:2',
+//            'lastname' => 'required|alpha_num|min:2',
+            'email' => 'required|email|unique:tb_users',
+            'password' => 'required',
+//            'password' => 'required|confirmed',
+//            'password_confirmation' => 'required',
+            //'membership_plan'=>'required',
+//            'company_name' => 'required',
+//            'company_address' => 'required',
+//            'company_address2' => 'required',
+//            'company_phone' => 'required',
+            //'company_website'=>'required',
+            //'company_tax_no'=>'required',
+//            'accept_terms' => 'required'
+        );
+        if (CNF_RECAPTCHA == 'true')
+            $rules['recaptcha_response_field'] = 'required|recaptcha';
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->passes()) {
+            $code = rand(10000, 10000000);
+
+            $authen = new User;
+//            $authen->first_name = $request->input('firstname');
+//            $authen->last_name = $request->input('lastname');
+            $authen->email = trim($request->input('email'));
+            $authen->activation = $code;
+            $authen->group_id = 3;
+            $authen->password = \Hash::make($request->input('password'));
+            $authen->active = '0';
+            $authen->save();
+
+            $ucdata['user_id'] = $authen->id;
+//            $ucdata['company_name'] = Input::get('company_name');
+//            $ucdata['company_address'] = Input::get('company_address');
+//            $ucdata['company_address2'] = Input::get('company_address2');
+            //$ucdata['company_phone'] = Input::get('company_phone');
+            //$ucdata['company_website'] = Input::get('company_website');
+            //$ucdata['company_tax_number'] = Input::get('company_tax_no');
+            if (Input::get('accept_terms')) {
+//                $ucdata['accept_terms'] = Input::get('accept_terms');
+            }
+
+            \DB::table('tb_user_company_details')->insert($ucdata);
+
+            /* $umdata['user_id'] = $authen->id;
+              $umdata['membership_id'] = $request->input('membership_plan');
+              $umdata['created'] = date('Y-m-d h:i:s');
+              $umId = \DB::table('tb_users_membership')->insertGetId($umdata); */
+
+            //return Redirect::to('choose/'.$umId);
+
+            $response = array('message' => 'Registered successfully');
+            
+//            return Redirect::to('customer/login')->with('message', \SiteHelpers::alert('success', 'Registered successfully.'));
+        } else {
+            $response = array('message' => 'The following errors occurred', 'errors' => $validator);
+//            return Redirect::to('customer/register/' . $request->input('membership_plan'))->with('message', \SiteHelpers::alert('error', 'The following errors occurred')
+//                    )->withErrors($validator)->withInput();
+        }
+        echo json_encode($response);
+    }
+
     public function chosepay($mid) {
         $this->data['umid'] = $mid;
         return view('customer.choosepay', $this->data);

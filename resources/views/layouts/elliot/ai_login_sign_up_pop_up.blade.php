@@ -248,7 +248,7 @@
                                     <div class="ps-big-form-heading">Create Your Account</div>
                                     <div class="ps-big-form-heading">Password</div>
                                 </div>
-                                <form class="ps-login-sign-form-pannel" action="{{ url('customer/create')}}" method="POST">
+                                <form class="ai-sign-up-form ps-login-sign-form-pannel" action="{{ url('customer/create')}}" method="POST">
                                     <div class="form-group ps-form-group-outer">
                                         <input class="form-control ps-login-form-input" name="email" type="text" placeholder="Email Address">
                                     </div>
@@ -328,5 +328,22 @@
             $(".login-form-show-hide").hide();
             $(".create-account-form-show-hide").hide();
         });
+        
+        $(".ai-sign-up-form").submit(function( event ) {
+            event.preventDefault();
+            
+            var formData = $(this).serialize();
+            
+            $.ajax({
+                url: "{{URL::to('customer/ajaxPostCreate')}}",
+                type: "POST",
+                dataType: "json",
+                data: formData,
+                success: function (data, textStatus, jqXHR) {
+                    console.log(data);
+                }
+            });
+        });
+        
     });
 </script>
