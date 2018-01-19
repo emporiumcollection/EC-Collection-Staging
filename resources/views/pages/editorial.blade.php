@@ -2140,7 +2140,7 @@
                             </form>
                         </div>
                         <div class="clearfix"></div>
-                        <div class="hotel-property-section-bg">
+                        <div class="hotel-property-section-bg1">
                             <div class="clearfix"></div>
                             <!--Show More Slide-->
                             <div class="show_more-page">
