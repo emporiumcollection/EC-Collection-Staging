@@ -122,10 +122,8 @@ class PropertyController extends Controller {
 		$this->data['relatedgridpropertiesArr'] = $relatedgridpropertiesArr;
         $this->data['pageTitle'] = 'Details';
         $page = 'layouts.' . CNF_THEME . '.index';
-        $this->data['pages'] = 'pages.editorial'; exit;
+        $this->data['pages'] = 'pages.editorial_new';
         //dd($this->data);
-        
-        return $this->data;
         
         return view($page, $this->data);
     }
