@@ -498,7 +498,7 @@ class GenerateController  extends Controller {
         $start = 0;
         $limit = 50 ;
         if(isset( $request->page) && $request->page!=0){
-             $start = $request->page * $limit - $per_page;
+             $start = $request->page * $limit - $limit;
         }
 
         
