@@ -497,7 +497,7 @@
                                                             </div>
                                                             <div>
                                                                 <img class="slider-next-image-btn img-responsive" src="http://www.emporium-voyage.com/uploads/properties_subtab_imgs/69726129-32146277.jpg" alt="">
-                                                                <a href="#" style="margin-left:100px;" rel="1486" data-toggle="modal" data-target="#myModal" class="book-button open-show_more-page hotel-btn ClickButton">Show More</a>
+                                                                <a href="#" style="margin-left:100px;" rel="1486" class="book-button open-show_more-page hotel-btn ClickButton">Show More</a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -532,7 +532,7 @@
                                                             </div>
                                                             <div>
                                                                 <img class="slider-next-image-btn img-responsive" src="http://www.emporium-voyage.com/uploads/container_user_files/locations/hotel-de-tourrel/rooms-images/numero-quatre/hotel-de-tourrel_suite-4.jpg" alt="">
-                                                                <a href="#" style="margin-left:100px;" rel="1486" data-toggle="modal" data-target="#myModal" class="book-button open-show_more-page hotel-btn ClickButton">Show More</a>
+                                                                <a href="#" style="margin-left:100px;" class="book-button open-show_more-page hotel-btn ClickButton">Show More</a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -567,7 +567,7 @@
                                                             </div>
                                                             <div>
                                                                 <img class="slider-next-image-btn img-responsive" src="http://www.emporium-voyage.com/uploads/container_user_files/locations/hotel-de-tourrel/rooms-images/numero-un/hotel-de-tourrel_suite-4.jpg" alt="">
-                                                                <a href="#" style="margin-left:100px;" rel="1486" data-toggle="modal" data-target="#myModal" class="book-button open-show_more-page hotel-btn ClickButton">Show More</a>
+                                                                <a href="#" style="margin-left:100px;" rel="1486" class="book-button open-show_more-page hotel-btn ClickButton">Show More</a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -602,7 +602,7 @@
                                                             </div>
                                                             <div>
                                                                 <img class="slider-next-image-btn img-responsive" src="http://www.emporium-voyage.com/uploads/container_user_files/locations/hotel-de-tourrel/rooms-images/numero-trois/zimmer_3.jpeg" alt="">
-                                                                <a href="#" style="margin-left:100px;" rel="1486" data-toggle="modal" data-target="#myModal" class="book-button open-show_more-page hotel-btn ClickButton">Show More</a>
+                                                                <a href="#" style="margin-left:100px;" rel="1486" class="book-button open-show_more-page hotel-btn ClickButton">Show More</a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -637,7 +637,7 @@
                                                             </div>
                                                             <div>
                                                                 <img class="slider-next-image-btn img-responsive" src="http://www.emporium-voyage.com/uploads/container_user_files/locations/hotel-de-tourrel/rooms-images/numero-cinq/hotel-de-tourrel_suite-5_bath.jpg" alt="">
-                                                                <a href="#" style="margin-left:100px;" rel="1486" data-toggle="modal" data-target="#myModal" class="book-button open-show_more-page hotel-btn ClickButton">Show More</a>
+                                                                <a href="#" style="margin-left:100px;" rel="1486" class="book-button open-show_more-page hotel-btn ClickButton">Show More</a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -672,7 +672,7 @@
                                                             </div>
                                                             <div>
                                                                 <img class="slider-next-image-btn img-responsive" src="http://www.emporium-voyage.com/uploads/container_user_files/locations/hotel-de-tourrel/rooms-images/numro-sept/hotel-de-tourrel_suite-7.jpg" alt="">
-                                                                <a href="#" style="margin-left:100px;" rel="1486" data-toggle="modal" data-target="#myModal" class="book-button open-show_more-page hotel-btn ClickButton">Show More</a>
+                                                                <a href="#" style="margin-left:100px;" rel="1486" class="book-button open-show_more-page hotel-btn ClickButton">Show More</a>
                                                             </div>
                                                         </div>
                                                     </div>
