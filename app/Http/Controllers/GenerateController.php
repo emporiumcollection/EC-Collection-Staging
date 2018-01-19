@@ -516,6 +516,24 @@ class GenerateController  extends Controller {
                     foreach ( $sfileArr as $key => $value) {
                         $propertiesArr[$key] = $value;
                         $propertiesArr[$key]->imgsrc = (new ContainerController)->getThumbpath($value->folder_id);
+                        $propertiesArr[$key]->containerpath = (new ContainerController)->getContainerUserPath($value->folder_id);
+                        $hotel_brochure = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_container_files.file_name', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $value->id)->where('tb_properties_images.type', 'Hotel Brochure')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
+                        if (!empty($hotel_brochure)) {
+                            $propertiesArr[$key]['hotelbrochure'] = $hotel_brochure;
+                            $propertiesArr[$key]['hotelbrochure']['pdfsrc'] = (new ContainerController)->getThumbpath($hotel_brochure->folder_id);
+                        }
+
+                        $restaurant_menu = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_container_files.file_name', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $value->id)->where('tb_properties_images.type', 'Restaurant Menu')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
+                        if (!empty($restaurant_menu)) {
+                             $propertiesArr[$key]['restaurant_menu'] = $restaurant_menu;
+                             $propertiesArr[$key]['restaurant_menu']['pdfsrc'] = (new ContainerController)->getThumbpath($restaurant_menu->folder_id);
+                        }
+
+                        $spa_brochure = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select( 'tb_container_files.file_name', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $value->id)->where('tb_properties_images.type', 'Spa Brochure')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
+                        if (!empty($spa_brochure)) {
+                             $propertiesArr[$key]['spa_brochure'] = $spa_brochure;
+                             $propertiesArr['spa_brochure']['pdfsrc'] = (new ContainerController)->getThumbpath($spa_brochure->folder_id);
+                        }
                        
                     
                     }
