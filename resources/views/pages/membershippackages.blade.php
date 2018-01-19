@@ -833,7 +833,7 @@
                                                 }
                                             });
     </script>
-    
+     
     <script type="text/javascript">
         $(document).on('ready', function () {
             $(".regular").slick({
