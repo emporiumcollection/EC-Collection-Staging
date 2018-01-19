@@ -7,29 +7,20 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1" />
         <!-- animation -->
-        <link href="{{ asset('sximo/assets/css/landing-page-styles.css')}}" rel="stylesheet" type="text/css"/>
-
-
         <link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/animate.css')}}" />
         <!-- bootstrap -->
         <link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/bootstrap.min.css')}}" />
         <link href="{{ asset('sximo/assets/memform/css/m-popup')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/memform/css/m-popup.min.css')}}" rel="stylesheet" type="text/css"/>
-        
         <link href="{{ asset('sximo/assets/css/filter-bar.css')}}" rel="stylesheet" type="text/css"/>
         <!-- font-awesome icon -->
         <link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/font-awesome.min.css')}}" />
-        <!-- swiper carousel -->
-        <link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/swiper.min.css')}}">
         <!-- style -->
         <link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/style.css')}}" />
         <!-- responsive css -->
         <link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/responsive.css')}}" />
-        
-                
         <!-- Custom style -->
         <link href="{{ asset('sximo/assets/memform/css/custom-ai.css')}}" rel="stylesheet" type="text/css"/>
-        
         <!-- AIC -->
         <link href="{{ asset('sximo/assets/css/image-slider.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/editorial.css')}}" rel="stylesheet" type="text/css"/>
@@ -39,9 +30,6 @@
         <link href="{{ asset('sximo/assets/css/custom_ps.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/booking-form.css')}}" rel="stylesheet" type="text/css"/>
         <!-- AIC -->
-
-        
-        
         <link href="{{ asset('sximo/assets/css/style.css')}}" rel="stylesheet" type="text/css"/>
         <!--[if IE]>
             <script src="js/html5shiv.js"></script>
@@ -783,18 +771,13 @@ A refined creation in t...
         <script type="text/javascript" src="{{ asset('sximo/assets/memform/js/jquery.js')}}"></script>
         <script src="{{ asset('sximo/assets/js/bootstrap.min.js')}}" type="text/javascript"></script>
         <script type="text/javascript" src="{{ asset('sximo/assets/memform/js/smooth-scroll.js')}}"></script>
-        <!-- animation -->
-        <script type="text/javascript" src="{{ asset('sximo/assets/memform/js/wow.min.js')}}"></script>
         <!-- swiper carousel -->
         <script type="text/javascript" src="{{ asset('sximo/assets/memform/js/swiper.min.js')}}"></script>
-
-        <!-- images loaded -->
-        <script type="text/javascript" src="{{ asset('sximo/assets/memform/js/imagesloaded.pkgd.min.js')}}"></script>
         <!-- fit video  -->
         <script type="text/javascript" src="{{ asset('sximo/assets/memform/js/jquery.fitvids.js')}}"></script>
         <script type="text/javascript" src="{{ asset('sximo/assets/memform/js/main.js')}}"></script>
         <script type="text/javascript" src="{{ asset('sximo/assets/memform/js/bootstrap.min.js')}}"></script>
-        <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+        <script src="{{ asset('sximo/assets/js/jquery-2.2.0.min.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/memform/js/slick.js')}}" type="text/javascript"></script>
         <script>
                             $(document).ready(function () {
