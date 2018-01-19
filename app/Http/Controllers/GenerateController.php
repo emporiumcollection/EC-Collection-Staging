@@ -546,7 +546,7 @@ class GenerateController  extends Controller {
                     }
                     
                 }
-                $propertyFile = 'property/'.$cprop->id.'.json';
+                $propertyFile = 'property/'.$cprop->id.'.json'; 
                 Storage::put($propertyFile, json_encode($propertiesArr)); 
                 $exists = Storage::disk('local')->has($propertyFile);
                 if($exists){
