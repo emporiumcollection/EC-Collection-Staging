@@ -128,10 +128,7 @@ class PropertyController extends Controller {
         $this->data['pages'] = 'pages.editorial'; exit;
         //dd($this->data);
         
-        echo '<pre>';
-        print_r($this->data);
-        echo '</pre>';
-        die;
+        return $this->data;
         
         return view($page, $this->data);
     }
