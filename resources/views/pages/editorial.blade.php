@@ -729,13 +729,13 @@
                             }
                             
                             .image-slider-container .editorial-images-count {
-                                color: #fff !important;
-                                float: left !important;
-                                font-size: 33px !important;
-                                margin-left: 22% !important;
-                                margin-top: -145px !important;
+                                color: #fff;
+                                float: left;
+                                font-size: 33px;
+                                margin-left: 22%;
+                                margin-top: -145px;
                                 position: relative;
-                                width: 22% !important;
+                                width: 22%;
                             }
                             
                             .restaurant-sec-description-pannel1 p {

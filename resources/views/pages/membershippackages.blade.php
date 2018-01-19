@@ -61,6 +61,10 @@
                 text-transform: uppercase;
                 background: rgba(37,37,37,1.0);
             }
+            .image-slider li a img.img-responsive {
+                width: 100%;
+                object-fit: contain;
+            }
             header.haside {
                 right: 0 !important;
                 position: fixed;
@@ -448,7 +452,7 @@
 
                                     <li class="active">
                                         <a href="#">
-                                            <img class="img-responsive" src="http://www.emporium-voyage.com/uploads/properties_subtab_imgs/27646461-43002829.jpg" alt="hotel-de-tourrel_suite-7.jpg" style="height:580px; width: 100%;">
+                                            <img class="img-responsive" src="http://www.emporium-voyage.com/uploads/properties_subtab_imgs/27646461-43002829.jpg" alt="hotel-de-tourrel_suite-7.jpg">
                                         </a>
                                         <div class="col-md-12 col-sm-12">
                                             <div class="col-md-6 col-sm-6">
@@ -485,7 +489,7 @@
 
                                     <li class="">
                                         <a href="#">
-                                            <img class="img-responsive" src="http://www.emporium-voyage.com/uploads/container_user_files/locations/hotel-de-tourrel/rooms-images/numro-deux/hotel-de-tourrel_suite-2_1.jpg" alt="hotel-de-tourrel_suite-2_1.jpg" style="height:580px; width: 100%;">
+                                            <img class="img-responsive" src="http://www.emporium-voyage.com/uploads/container_user_files/locations/hotel-de-tourrel/rooms-images/numro-deux/hotel-de-tourrel_suite-2_1.jpg" alt="hotel-de-tourrel_suite-2_1.jpg">
                                         </a>
                                         <div class="col-md-12 col-sm-12">
                                             <div class="col-md-6 col-sm-6">
@@ -520,7 +524,7 @@
 
                                     <li class="">
                                         <a href="#">
-                                            <img class="img-responsive" src="http://www.emporium-voyage.com/uploads/container_user_files/locations/hotel-de-tourrel/rooms-images/numero-quatre/hotel-de-tourrel_suite-4.jpg" alt="hotel-de-tourrel_suite-4.jpg" style="height:580px; width: 100%;">
+                                            <img class="img-responsive" src="http://www.emporium-voyage.com/uploads/container_user_files/locations/hotel-de-tourrel/rooms-images/numero-quatre/hotel-de-tourrel_suite-4.jpg" alt="hotel-de-tourrel_suite-4.jpg">
                                         </a>
                                         <div class="col-md-12 col-sm-12">
                                             <div class="col-md-6 col-sm-6">
@@ -555,7 +559,7 @@
 
                                     <li class="">
                                         <a href="#">
-                                            <img class="img-responsive" src="http://www.emporium-voyage.com/uploads/container_user_files/locations/hotel-de-tourrel/rooms-images/numero-un/hotel-de-tourrel_suite-4.jpg" alt="hotel-de-tourrel_suite-4.jpg" style="height:580px; width: 100%;">
+                                            <img class="img-responsive" src="http://www.emporium-voyage.com/uploads/container_user_files/locations/hotel-de-tourrel/rooms-images/numero-un/hotel-de-tourrel_suite-4.jpg" alt="hotel-de-tourrel_suite-4.jpg">
                                         </a>
                                         <div class="col-md-12 col-sm-12">
                                             <div class="col-md-6 col-sm-6">
@@ -590,7 +594,7 @@
 
                                     <li class="">
                                         <a href="#">
-                                            <img class="img-responsive" src="http://www.emporium-voyage.com/uploads/container_user_files/locations/hotel-de-tourrel/rooms-images/numero-trois/zimmer_3.jpeg" alt="zimmer_3.jpeg" style="height:580px; width: 100%;">
+                                            <img class="img-responsive" src="http://www.emporium-voyage.com/uploads/container_user_files/locations/hotel-de-tourrel/rooms-images/numero-trois/zimmer_3.jpeg" alt="zimmer_3.jpeg">
                                         </a>
                                         <div class="col-md-12 col-sm-12">
                                             <div class="col-md-6 col-sm-6">
@@ -625,7 +629,7 @@
 
                                     <li class="">
                                         <a href="#">
-                                            <img class="img-responsive" src="http://www.emporium-voyage.com/uploads/container_user_files/locations/hotel-de-tourrel/rooms-images/numero-cinq/hotel-de-tourrel_suite-5_bath.jpg" alt="hotel-de-tourrel_suite-5_bath.jpg" style="height:580px; width: 100%;">
+                                            <img class="img-responsive" src="http://www.emporium-voyage.com/uploads/container_user_files/locations/hotel-de-tourrel/rooms-images/numero-cinq/hotel-de-tourrel_suite-5_bath.jpg" alt="hotel-de-tourrel_suite-5_bath.jpg">
                                         </a>
                                         <div class="col-md-12 col-sm-12">
                                             <div class="col-md-6 col-sm-6">
