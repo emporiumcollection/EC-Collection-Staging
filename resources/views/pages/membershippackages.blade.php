@@ -42,6 +42,12 @@
             header.haside {
                 z-index: 1;
             }
+            .book-now-page.mobile-show-hide {
+                display: none;
+            }
+            .book-now-page.desktop-show-hide {
+                display: none;
+            }
             .slider-sec-side-text-bg {
                 margin-top: -103%;
             }
