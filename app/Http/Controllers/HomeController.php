@@ -6357,7 +6357,6 @@ class HomeController extends Controller {
 		$rules['hotelfac_num_rooms'] = 'required';
 		$rules['hotelfac_num_suites'] = 'required';
 		$rules['hoteldesc_concept'] = 'required';
-		$rules['hotel_contactinfo_name'] = 'required';
 		$rules['hotel_contactinfo_address'] = 'required';
 		$rules['hotel_contactinfo_city'] = 'required';
 		$rules['hotel_contactinfo_country'] = 'required';
@@ -6366,11 +6365,41 @@ class HomeController extends Controller {
 		$rules['hotel_contactprsn_lastname'] = 'required';
 		$rules['hotel_contactprsn_companyname'] = 'required';
 		$rules['hotel_contactprsn_jobtitle'] = 'required';
-		$rules['hotel_contactprsn_email'] = 'required';
+		$rules['hotel_contactprsn_email'] = 'required|email|unique:tb_users';
 		$rules['hotel_contactprsn_phone'] = 'required';
 		$rules['hotel_contactprsn_mobile'] = 'required';
+		$rules['hotel_signup_type'] = 'required';
+		$rules['hotel_contactprsn_username'] = 'required';
+		$rules['hotel_contactprsn_password'] = 'required|confirmed';
+		$rules['hotel_contactprsn_password_confirmation'] = 'required';
         $validator = Validator::make($request->all(), $rules);
         if ($validator->passes()) {
+			
+			$code = rand(10000, 10000000);
+			$authen = new User;
+            $authen->first_name = $request->input('hotel_contactprsn_firstname');
+            $authen->last_name = $request->input('hotel_contactprsn_lastname');
+            $authen->email = trim($request->input('hotel_contactprsn_email'));
+			$authen->username = trim($request->input('hotel_contactprsn_username'));
+			$authen->landline_number = trim($request->input('hotel_contactprsn_phone'));
+			$authen->mobile_number = trim($request->input('hotel_contactprsn_mobile'));
+			$authen->address = trim($request->input('hotel_contactinfo_address'));
+			$authen->city = trim($request->input('hotel_contactinfo_city'));
+			$authen->zip_code = trim($request->input('hotel_contactinfo_postal'));
+			$authen->country = trim($request->input('hotel_contactinfo_country'));
+            $authen->activation = $code;
+			if($request->input('hotel_signup_type')=="advertiser")
+			{
+				$authen->group_id = 7;
+			}
+			else
+			{
+				$authen->group_id = 3;
+			}
+            $authen->password = \Hash::make($request->input('hotel_contactprsn_password'));
+            $authen->active = '0';
+            $authen->save();
+			
 			$data['property_name'] = $request->input('hotelinfo_name');
 			$data['property_short_name'] = $request->input('hotelinfo_name');
 			$alias = \SiteHelpers::seoUrl(Input::get('hotelinfo_name'));
@@ -6388,7 +6417,7 @@ class HomeController extends Controller {
 					$exha = true;
 				}
 			}
-			$data['user_id'] = 1;
+			$data['user_id'] = $authen->id;;
 			$data['property_slug'] = $alias;
 			$data['social_status'] = 1;
 			$data['property_type'] = 'Hotel';
