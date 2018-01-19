@@ -263,6 +263,21 @@
                 width: auto;
                 min-width: 200px;
             }
+            
+            /* AIC alider */
+            
+            .slider-sec-side-text-bg {
+                margin-top: -580px;
+            }
+            .image-slider-btns-bg {
+                background-color: #252525;
+                color: #fff;
+                float: right;
+                margin-top: -157px;
+                opacity: 0.85;
+                padding: 49px 11px;
+                width: 35%;
+            }
 
 
         </style>
