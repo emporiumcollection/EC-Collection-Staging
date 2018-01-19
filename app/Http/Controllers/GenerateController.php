@@ -506,7 +506,7 @@ class GenerateController  extends Controller {
         $start = 0;
         $limit = 50 ;
         if(isset( $request->page) && $request->page!=0){
-             $start = $request->page * $limit - $limit;
+             $start = $request->page * $limit - $per_page;
         }
 
         
@@ -539,7 +539,7 @@ class GenerateController  extends Controller {
                         $spa_brochure = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select( 'tb_container_files.file_name', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $value->id)->where('tb_properties_images.type', 'Spa Brochure')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
                         if (!empty($spa_brochure)) {
                              $propertiesArr[$key]['spa_brochure'] = $spa_brochure;
-                             $propertiesArr['spa_brochure']['pdfsrc'] = (new ContainerController)->getThumbpath($spa_brochure->folder_id);
+                             $propertiesArr[$key]['spa_brochure']['pdfsrc'] = (new ContainerController)->getThumbpath($spa_brochure->folder_id);
                         }
                        
                     
