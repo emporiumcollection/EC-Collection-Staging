@@ -39,10 +39,6 @@
                 margin-bottom: 0;
                 margin-top: 0;
             }
-            .cstmslide-w{
-                max-width: 1000px;
-                float: right;
-            }
             header.haside {
                 z-index: 1;
             }
@@ -53,7 +49,7 @@
                 display: none;
             }
             .slider-sec-side-text-bg {
-                margin-top: -118%;
+                margin-top: -103%;
             }
             .right-menus ul li a {
                 background-color: #1E2023;
