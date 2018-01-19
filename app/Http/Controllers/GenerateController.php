@@ -504,10 +504,13 @@ class GenerateController  extends Controller {
         //$contents = Storage::get($propertyFile);
        // $proertyObj = json_decode($contents);
         $start = 0;
-        if(isset( $request->st) && $request->st!=0){
-             $start = $request->st ;
-        }
         $limit = 50 ;
+        if(isset( $request->page) && $request->page!=0){
+             $start = $request->page * $limit - $limit;
+        }
+
+        
+        
         $catprops = DB::select(DB::raw("SELECT id,property_name,property_slug FROM tb_properties WHERE tb_properties.property_type = 'Hotel' AND property_status = '1' LIMIT   ".$start.'',".$limit));
         if (!empty($catprops)) {
             foreach ($catprops as $keyMain=>$cprop) {
