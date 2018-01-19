@@ -185,9 +185,9 @@
             .detail-tile-inner img { max-width:100%; }
             .gallerysty { font-weight: bold;font-size: 15px;color: #000; }
             .hotel-name-first-letter { background-image: url({{URL::to('uploads/properties_subtab_imgs/'.$propertyDetail['data']->restaurant_image)}}); }
-            .editorial-book-now-page { background-image: url('{{( array_key_exists('propimage', $propertyDetail)) ? \ImageCache::make($propertyDetail['propimage_thumbpath_dir'].$propertyDetail['propimage'][0]->file_name,100,1000,null) : ''}}');  }
-            .hotels-showcase-right-side { background-image: url('{{( array_key_exists('propimage', $propertyDetail)) ? \ImageCache::make($propertyDetail['propimage_thumbpath_dir'].$propertyDetail['propimage'][0]->file_name,100,1000,null) : ''}}'); }
-            .hotel-sec-block-two { background-image: url('{{( array_key_exists('propimage', $propertyDetail)) ? \ImageCache::make($propertyDetail['propimage_thumbpath_dir'].$propertyDetail['propimage'][1]->file_name,100,1000,null) : ''}}'); }
+            .editorial-book-now-page { background-image: url('{{( array_key_exists('propimage', $propertyDetail)) ? \ImageCache::make($propertyDetail['propimage'][0]->file_name,100,1000,null) : ''}}');  }
+            .hotels-showcase-right-side { background-image: url('{{( array_key_exists('propimage', $propertyDetail)) ? \ImageCache::make($propertyDetail['propimage'][0]->file_name,100,1000,null) : ''}}'); }
+            .hotel-sec-block-two { background-image: url('{{( array_key_exists('propimage', $propertyDetail)) ? \ImageCache::make($propertyDetail['propimage'][1]->file_name,100,1000,null) : ''}}'); }
 
             .hotels-detail-description-text > p { max-height:100%; }
             .hotels-detail-description-text > p {
@@ -1623,7 +1623,7 @@
                             <li class="{{($propertyDetail['propimage'][0]==$propimg) ? 'active' : ''}}">
                                 <div class="image editorial-image">
                                     <div class="overlaySlider"></div>
-                                    <img src="{{ \ImageCache::make($propertyDetail['propimage_thumbpath_dir'].$propimg->file_name,100,1200,null) }}" alt=""/>
+                                    <img src="{{ \ImageCache::make($propimg->file_name,100,1200,null) }}" alt=""/>
                                 </div>
 
                                 <div class="editorial-text">
