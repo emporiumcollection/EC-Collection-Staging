@@ -271,18 +271,18 @@
 	margin-left: 33%;
     }
     .gallery .info1 p {
-	overflow: visible;
+	overflow: visible !important;
 	line-height: 17px;
     }
     .small-box-bg {
-	margin-left: -74px;
+	margin-left: -74px !important;
     }
     .architecture-sec-top-img {
-	width: 56%;
-	margin-left: 116px;
+	width: 56% !important;
+	margin-left: 116px !important;
     }
     .architecture-sec-heading > h1 {
-	margin-top: 0;
+	margin-top: 0 !important;
     }
     .slider-next-image-btn {
 	margin-bottom: 20px;
@@ -291,54 +291,58 @@
 	float: left !important;
 	margin-left: 32px !important;
     }
-    .image-slider-container .editorial-images-count {
+    .editorial-images-count.images-count {
 	margin-left: 22% !important;
 	margin-top: -150px !important;
 	width: 24% !important;
     }
     .hotel-book-price {
-	margin-left: 0;
-	width: 160px;
+	margin-left: 0 !important;
+	width: 160px !important;
     }
     .hotel-book-now {
 	color: 000;
 	width: 160px;
     }
     .VegasPopLogo {
-	width: 100%;
+	width: 100% !important;
     }
     .SlickVegasWidth {
-	width: 100%;
-	float: left;
+	width: 100% !important;;
+	float: left !important;;
     }
     .spa-left-pannel-align {
 	float: left;
     }
     .bar-name-text-style {
-	width: 68%;
+	width: 68% !important;
     }
     .vegasFooter {
-	width: 100%;
+	width: 100% !important;
     }
     .VegasFooterMiddle p {
-        margin-left: 0px;
+        margin-left: 0px !important;
     }
     .VegasFooterMiddle form {
-	margin-left: 0px;
+	margin-left: 0px !important;
     }
     .editorial-custom-footer-style .newsletter-style {
-	width: 100%;
-	text-align: left;
+	width: 100% !important;
+	text-align: left !important;
     }
     .vegasFooterSocial {
-	float: left;
-	margin-top: 30px;
+	float: left !important;
+	margin-top: 30px !important;
     }
     .vegasSocialUl {
-	margin-left: 44px;
+	margin-left: 44px !important;
     }
     .vegasFooterSocial ul li {
-	margin-left: 14px;
+	margin-left: 14px !important;
+    }
+    .editorial-image-slider-btns.image-slider-btns a {
+	margin-left: 42px !important;
+	margin-top: 10px;
     }
     
 }

@@ -139,7 +139,7 @@ class PackagesController extends Controller {
 
 	function postSave( Request $request)
 	{
-		
+		$uid = \Auth::user()->id;
 		$rules = $this->validateForm();
 		$validator = Validator::make($request->all(), $rules);	
 		if ($validator->passes()) {
@@ -171,7 +171,7 @@ class PackagesController extends Controller {
 			
 		} else {
 
-			return Redirect::to('packages/update/'.$id)->with('messagetext',\Lang::get('core.note_error'))->with('msgstatus','error')
+			return Redirect::to('packages/update/'.$request->input('id'))->with('messagetext',\Lang::get('core.note_error'))->with('msgstatus','error')
 			->withErrors($validator)->withInput();
 		}	
 	

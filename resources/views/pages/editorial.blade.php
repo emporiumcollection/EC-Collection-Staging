@@ -1239,8 +1239,8 @@
                             /* after scroll highlighted portions */
                             
                             .nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
-                                background: #DADAD5 !important;
-                                color: black;
+                                background: #89837b !important;
+                                color: white;
                             }
                             .right-menu-align .nav-pills li a {
                                 border-radius: 0px !important;
@@ -1532,7 +1532,7 @@
                                             <div class="form-group padding-right-12">
                                                 <label class="align-with-label"></label>
                                                 <div class="clearfix"></div>
-                                                <button class="top-booking-bar-btn" type="submit">Book your Stay</button>
+                                                <button class="top-booking-bar-btn" type="submit">Book Now</button>
 <!--                                                <a data-popup-id="AlertBookButton-Popup" href="#" class="video-popup-btn login_popup show-login-forms-btn top-booking-bar-btn" type="submit">BOOK</a>-->
                                                 <button class="top-booking-bar-btn click-share-btn">Share</button>
 						

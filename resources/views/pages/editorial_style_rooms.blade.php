@@ -158,7 +158,7 @@
                     </p>
                     <div class="hotel-detail-slider-price-and-show-more">
                         <a href="#" rel="{{$type->id}}" class="book-button open-show_more-page hotel-btn">More</a>
-						<a href="#" rel="{{$type->id}}" class="book-button hotel-btn newbkbtn" onclick="choose_room_type('{{$type->id}}');">Book your Stay</a>
+						<a href="#" rel="{{$type->id}}" class="book-button hotel-btn newbkbtn" onclick="choose_room_type('{{$type->id}}');">Book Now</a>
                         <!-- AIC Harman popup-->
                         <!-- Trigger the modal with a button 
                         <a href="#" class="vogasRoomButton" data-toggle="modal" data-target="#myModal">harman test</a>-->

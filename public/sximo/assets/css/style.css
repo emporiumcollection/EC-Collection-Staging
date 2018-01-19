@@ -2691,13 +2691,13 @@ header .menu ul li a:hover, header .menu ul li a:active, header .menu ul li a:fo
     margin-left: 23px !important;
 }
 .image-slider-container .editorial-images-count {
-    color: #fff !important;
-    float: left !important;
-    font-size: 33px !important;
-    margin-left: 19% !important;
-    margin-top: -155px !important;
+    color: #fff;
+    float: left;
+    font-size: 33px;
+    margin-left: 19%;
+    margin-top: -155px;
     position: relative;
-    width: 22% !important;
+    width: 22%;
 }
 .arrow-margin-right {
     margin-right: 14px;
