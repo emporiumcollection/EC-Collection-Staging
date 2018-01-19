@@ -1,3 +1,11 @@
+<?php 
+    $getImagesPathObj = CustomQuery::getPropertyImages($propertyDetail->property_name);
+    $propertyImagesPath = $getImagesPathObj[0]['imgsrc'];
+    $containerPath = $getImagesPathObj[0]['containerpath'];
+    $hotelBrochureImagesPath = $getImagesPathObj[0]['hotelbrochure']['pdfsrc'];
+    $restaurantMenuImagesPath = $getImagesPathObj[0]['restaurant_menu']['pdfsrc'];
+    $spaBrochureImagesPath = $getImagesPathObj[0]['spa_brochure']['pdfsrc']; 
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -185,9 +193,9 @@
             .detail-tile-inner img { max-width:100%; }
             .gallerysty { font-weight: bold;font-size: 15px;color: #000; }
             .hotel-name-first-letter { background-image: url({{URL::to('uploads/properties_subtab_imgs/'.$propertyDetail['data']->restaurant_image)}}); }
-            .editorial-book-now-page { background-image: url('{{( array_key_exists('propimage', $propertyDetail)) ? \ImageCache::make($propertyDetail['propimage'][0]->file_name,100,1000,null) : ''}}');  }
-            .hotels-showcase-right-side { background-image: url('{{( array_key_exists('propimage', $propertyDetail)) ? \ImageCache::make($propertyDetail['propimage'][0]->file_name,100,1000,null) : ''}}'); }
-            .hotel-sec-block-two { background-image: url('{{( array_key_exists('propimage', $propertyDetail)) ? \ImageCache::make($propertyDetail['propimage'][1]->file_name,100,1000,null) : ''}}'); }
+            .editorial-book-now-page { background-image: url('{{( array_key_exists('propimage', $propertyDetail)) ? \ImageCache::make($propertyDetail['propimage_thumbpath_dir'].$propertyDetail['propimage'][0]->file_name,100,1000,null) : ''}}');  }
+            .hotels-showcase-right-side { background-image: url('{{( array_key_exists('propimage', $propertyDetail)) ? \ImageCache::make($propertyDetail['propimage_thumbpath_dir'].$propertyDetail['propimage'][0]->file_name,100,1000,null) : ''}}'); }
+            .hotel-sec-block-two { background-image: url('{{( array_key_exists('propimage', $propertyDetail)) ? \ImageCache::make($propertyDetail['propimage_thumbpath_dir'].$propertyDetail['propimage'][1]->file_name,100,1000,null) : ''}}'); }
 
             .hotels-detail-description-text > p { max-height:100%; }
             .hotels-detail-description-text > p {
@@ -223,7 +231,7 @@
             .spa-sec-book-an-appoinment-btn { float: left !important; margin-left: 20px; }
             .spa-overlay-text span { padding-left:0px !important; }
             .restaurant-sec-main-bg-align {
-                background-image: url("{{( array_key_exists('propimage', $propertyDetail)) ? $propertyDetail['propimage'][0]->file_name : ''}}");
+                background-image: url("{{( array_key_exists('propimage', $propertyDetail)) ? $propertyDetail['propimage_thumbpath'].$propertyDetail['propimage'][0]->file_name : ''}}");
             }
             .next-prevoius-navigation.left-arrow-align {
                 display: none;
@@ -1623,7 +1631,7 @@
                             <li class="{{($propertyDetail['propimage'][0]==$propimg) ? 'active' : ''}}">
                                 <div class="image editorial-image">
                                     <div class="overlaySlider"></div>
-                                    <img src="{{ \ImageCache::make($propimg->file_name,100,1200,null) }}" alt=""/>
+                                    <img src="{{ $propertyImagesPath.$propimg->file_name }}" alt=""/>
                                 </div>
 
                                 <div class="editorial-text">
