@@ -340,5 +340,9 @@
     .vegasFooterSocial ul li {
 	margin-left: 14px !important;
     }
+    .editorial-image-slider-btns.image-slider-btns a {
+	margin-left: 42px !important;
+	margin-top: 10px;
+    }
     
 }
