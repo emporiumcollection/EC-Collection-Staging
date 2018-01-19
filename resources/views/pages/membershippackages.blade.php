@@ -51,6 +51,9 @@
                 margin-bottom: 0;
                 margin-top: 0;
             }
+            .slider-sec-side-text-bg {
+                margin-top: -103%;
+            }
             .right-menus ul li a {
                 background-color: #1E2023;
                 border-bottom: 1px solid #414246;
