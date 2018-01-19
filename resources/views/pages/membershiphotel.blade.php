@@ -534,7 +534,7 @@
                                                     <label>*Email Address</label>
                                                     <input type="email" name="hotel_contactprsn_email" placeholder="Email*" class="bg-white medium-input">
                                                 </div>
-												<div class="col-md-12 no-padding-right">
+												<div class="col-md-6 no-padding-right">
                                                     <label>*Username</label>
                                                     <input type="email" name="hotel_contactprsn_username" placeholder="Username*" class="bg-white medium-input">
                                                 </div>
