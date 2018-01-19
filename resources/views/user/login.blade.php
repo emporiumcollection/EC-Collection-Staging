@@ -12,12 +12,12 @@
 <div class="sbox ">
 	<div class="sbox-title">
 			
-				<h3 >JohnnyShares - Sharing & Collaboration Platform </small></h3>
+				<h3 >Emporium Voyage </small></h3>
 				
 	</div>
 	<div class="sbox-content">
 	<div class="text-center  animated fadeInDown delayp1">
-		<img src="{{ asset('sximo/images/logo-sximo.png')}}" width="150" />
+		<img src="{{ asset('sximo/images/design-location-logo.png')}}" width="150" />
 	</div>	
  
 	    	@if(Session::has('message'))
