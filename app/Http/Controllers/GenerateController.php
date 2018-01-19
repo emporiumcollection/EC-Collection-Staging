@@ -499,12 +499,16 @@ class GenerateController  extends Controller {
     }
 
     // For genrate json file for hotel images path
-    public function hotelGenerate(){
+    public function hotelGenerate(Request $request){
           // $propertyFile = 'property/43.json'; 
         //$contents = Storage::get($propertyFile);
        // $proertyObj = json_decode($contents);
-        
-        $catprops = DB::select(DB::raw("SELECT id,property_name,property_slug FROM tb_properties WHERE tb_properties.property_type = 'Hotel' AND property_status = '1' "));
+        $start = 0;
+        if(isset( $request->st) && $request->st!=0){
+             $start = $request->st ;
+        }
+        $limit = 50 ;
+        $catprops = DB::select(DB::raw("SELECT id,property_name,property_slug FROM tb_properties WHERE tb_properties.property_type = 'Hotel' AND property_status = '1' LIMIT   ".$start.'',".$limit));
         if (!empty($catprops)) {
             foreach ($catprops as $keyMain=>$cprop) {
 
