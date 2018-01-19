@@ -1162,7 +1162,7 @@
                             
                             .hotel-book-now {
                                 background: #ABA07C;
-                                color: #fff;
+                                color: #000;
                                 font-size: 25px;
                                 height: 71px;
                                 margin: 0px 0px 10px 3px;
