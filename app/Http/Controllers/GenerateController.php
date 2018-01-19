@@ -1,19 +1,11 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-use Validator,
-    Input,
-    Redirect;
+use Validator,  Input,    Redirect, DB;
 use App\Http\Controllers\ContainerController;
-use Zipper;
-use DB;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 use App\Http\Controllers\Controller;
 use App\User;
-use Socialize, ImageCache, Storage;
-
 class GenerateController  extends Controller {
 
      function fetchcategoryChildListIds($id = 0, $child_category_array = '') {
@@ -511,7 +503,7 @@ class GenerateController  extends Controller {
 
         
         
-        $catprops = DB::select(DB::raw("SELECT id,property_name,property_slug FROM tb_properties WHERE tb_properties.property_type = 'Hotel' AND property_status = '1' LIMIT   ".$start.'',".$limit));
+        $catprops = DB::select(DB::raw("SELECT id,property_name,property_slug FROM tb_properties WHERE tb_properties.property_type = 'Hotel' AND property_status = '1' LIMIT   $start,$limit"));
         if (!empty($catprops)) {
             foreach ($catprops as $keyMain=>$cprop) {
 
