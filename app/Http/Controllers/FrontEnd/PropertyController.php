@@ -41,18 +41,19 @@ class PropertyController extends Controller {
     /* Method : getPropertyDetail
      *   Description : The Methos is using for property detai page (PDP)
     */
-    public function getPropertyDetail(Request $request) {
+    public function getPropertyDetail(Request $request) { 
         $propertiesArr = array();
 		$crpropertiesArr = array();
 		$relatedgridpropertiesArr = array();
         $props = \DB::table('tb_properties')->where('property_slug', $request->slug)->first();
+      //  print_r($props); die;
         $this->data['slug'] = $request->slug;
         if (!empty($props)) {
             $propertiesArr['data'] = $props;
             $propertiesArr['propimage'] = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_container_files.id', 'tb_container_files.file_name', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $props->id)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->get();
-            $propertiesArr['propimage_thumbpath'] = (new ContainerController)->getThumbpath($propertiesArr['propimage'][0]->folder_id);
-	        $propertiesArr['propimage_thumbpath_dir'] = public_path(str_replace(url().'/', '', (new ContainerController)->getThumbpath($propertiesArr['propimage'][0]->folder_id))); 
-            $propertiesArr['propimage_containerpath'] = (new ContainerController)->getContainerUserPath($propertiesArr['propimage'][0]->folder_id);
+          //  $propertiesArr['propimage_thumbpath'] = (new ContainerController)->getThumbpath($propertiesArr['propimage'][0]->folder_id);
+	       // $propertiesArr['propimage_thumbpath_dir'] = public_path(str_replace(url().'/', '', (new ContainerController)->getThumbpath($propertiesArr['propimage'][0]->folder_id))); 
+            //$propertiesArr['propimage_containerpath'] = (new ContainerController)->getContainerUserPath($propertiesArr['propimage'][0]->folder_id);
 			$cat_types = \DB::table('tb_properties_category_types')->select('id','category_name','room_desc')->where('property_id', $props->id)->where('status', 0)->where('show_on_booking', 1)->get();
             if (!empty($cat_types)) {
                 $c = 0;
@@ -65,7 +66,8 @@ class PropertyController extends Controller {
                     }
                 }
             }
-
+            
+            
             $hotel_brochure = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_container_files.file_name', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $props->id)->where('tb_properties_images.type', 'Hotel Brochure')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
             if (!empty($hotel_brochure)) {
                 $this->data['hotel_brochure'] = $hotel_brochure;
@@ -95,58 +97,20 @@ class PropertyController extends Controller {
                 }
 				
                 $crpropertiesArr = DB::select(DB::raw("SELECT tb_properties.property_name, tb_properties.property_slug, tb_container_files.file_name, tb_container_files.folder_id FROM tb_properties JOIN tb_properties_images ON tb_properties_images.property_id = tb_properties.id JOIN tb_container_files ON tb_container_files.id = tb_properties_images.file_id WHERE tb_properties.property_type='" . $props->property_type . "' AND tb_properties.property_status = '1' AND tb_properties.id!='" . $props->id . "' AND tb_properties_images.type = 'Property Images'  $getcats GROUP BY  tb_properties.property_slug ORDER BY tb_properties.id desc, tb_container_files.file_sort_num asc LIMIT 2"));
-				
-				
-				$relatedgridquery = "SELECT editor_choice_property,feature_property,id,property_name,property_slug,property_category_id FROM tb_properties WHERE property_type='Hotel' AND tb_properties.assign_detail_city = '".$props->assign_detail_city."' AND property_status = '1' ORDER BY (SELECT rack_rate FROM tb_properties_category_rooms_price WHERE tb_properties_category_rooms_price.property_id = tb_properties.id ORDER BY rack_rate DESC LIMIT 1) * 1 DESC, editor_choice_property desc, feature_property desc LIMIT 4";
-
-				$relatedgridprops = DB::select(DB::raw($relatedgridquery));
-				if (!empty($relatedgridprops)) {
-					$pr = 0;
-					foreach ($relatedgridprops as $rgprop) {
-						$relatedgridpropertiesArr[$pr]['data'] = $rgprop;
-						$relatedgridpropertiesArr[$pr]['data']->price = '';
-						$checkseasonPrice = \DB::table('tb_properties_category_rooms_price')->select('rack_rate')->where('property_id', $rgprop->id)->orderBy('rack_rate', 'DESC')->first();
-						if (!empty($checkseasonPrice)) {
-							$relatedgridpropertiesArr[$pr]['data']->price = $checkseasonPrice->rack_rate;
-						}
-
-						$relatedgridpropertiesArr[$pr]['data']->category_name = '';
-						$cateObjtm = \DB::table('tb_categories')->select('category_name')->where('id', $rgprop->property_category_id)->where('category_published', 1)->first();
-						if (!empty($cateObjtm)) {
-							$relatedgridpropertiesArr[$pr]['data']->category_name = $cateObjtm->category_name;
-						}
-
-						$fileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.file_id', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $rgprop->id)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
-						if (!empty($fileArr)) {
-							$relatedgridpropertiesArr[$pr]['image'] = $fileArr;
-							$relatedgridpropertiesArr[$pr]['image']->imgsrc = (new ContainerController)->getThumbpath($fileArr->folder_id);
-						}
-						$pr++;
-					}
-				}
+                $relatedgridquery = "SELECT pr.editor_choice_property,pr.feature_property,pr.id,pr.property_name,pr.property_slug,pr.property_category_id, ";
+                $relatedgridquery .= "(SELECT rack_rate FROM tb_properties_category_rooms_price pcrp where pr.id=pcrp.property_id order by rack_rate DESC limit 0,1 ) as price,";
+                $relatedgridquery .= "(SELECT category_name FROM tb_categories ct where pr.property_category_id=ct.id limit 0,1 ) as category_name ";  
+                $relatedgridquery .= "FROM tb_properties pr WHERE pr.property_type='Hotel' AND pr.assign_detail_city =  '".$props->assign_detail_city."' AND pr.property_status = '1' ORDER BY (SELECT rack_rate FROM tb_properties_category_rooms_price  WHERE tb_properties_category_rooms_price.property_id = pr.id ORDER BY rack_rate DESC LIMIT 1) * 1 DESC, pr.editor_choice_property desc, pr.feature_property desc LIMIT 4";
+                $relatedgridpropertiesArr = DB::select(DB::raw($relatedgridquery));
+               
             }
         }
 
         $this->data['sidebardetailAds'] = \DB::table('tb_advertisement')->select('adv_link','adv_img')->where('adv_type', 'sidebar')->where('adv_position', 'detail')->get();
 
         $uid = isset(\Auth::user()->id) ? \Auth::user()->id : '';
-        $this->data['lightboxes'] = \DB::table('tb_lightbox')->select('box_name','id')->where('user_id', $uid)->get();
-
-        $boxcontent = \DB::table('tb_lightbox_content')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_lightbox_content.file_id')->select('tb_lightbox_content.file_id', 'tb_lightbox_content.id', 'tb_lightbox_content.lightbox_id', 'tb_container_files.file_name', 'tb_container_files.folder_id', 'tb_container_files.file_display_name', 'tb_container_files.file_title')->where('tb_lightbox_content.user_id', $uid)->get();
-
-        $boxcont = array();
-        if (!empty($boxcontent)) {
-            $l = 0;
-            foreach ($boxcontent as $bcontent) {
-                $boxcont[$bcontent->lightbox_id][$l]['lightbox'] = $bcontent;
-                $fetch_prop_img = \DB::table('tb_properties_images')->join('tb_properties','tb_properties_images.property_id','=','tb_properties.id')->select('property_name')->where('file_id', $bcontent->file_id)->first();
-                if (!empty($fetch_prop_img)) {
-					$boxcont[$bcontent->lightbox_id][$l]['property'] = $fetch_prop_img;
-                }
-                $l++;
-            }
-        }
-        $this->data['lightcontent'] = $boxcont;
+        
+        $this->data['lightcontent'] = '';
 		
 		$this->data['restaurant_gallery'] = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_container_files.id')->where('tb_properties_images.property_id', $props->id)->where('tb_properties_images.type', 'Restrurants Gallery Images')->orderBy('tb_container_files.file_sort_num', 'asc')->count();
 		
@@ -161,7 +125,8 @@ class PropertyController extends Controller {
 		$this->data['relatedgridpropertiesArr'] = $relatedgridpropertiesArr;
         $this->data['pageTitle'] = 'Details';
         $page = 'layouts.' . CNF_THEME . '.index';
-        $this->data['pages'] = 'pages.editorial';
+        $this->data['pages'] = 'pages.editorial'; exit;
+        //dd($this->data);
         return view($page, $this->data);
     }
 
