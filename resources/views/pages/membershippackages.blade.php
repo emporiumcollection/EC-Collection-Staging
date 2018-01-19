@@ -10,8 +10,8 @@
         <link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/animate.css')}}" />
         <!-- bootstrap -->
         <link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/bootstrap.min.css')}}" />
-        <link href="{{ asset('sximo/assets/memform/css/m-popup')}}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('sximo/assets/memform/css/m-popup.min.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('sximo/assets/css/m-popup.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('sximo/assets/css/m-popup.min.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/filter-bar.css')}}" rel="stylesheet" type="text/css"/>
         <!-- font-awesome icon -->
         <link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/font-awesome.min.css')}}" />
