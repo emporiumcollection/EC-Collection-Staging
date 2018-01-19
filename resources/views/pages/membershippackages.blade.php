@@ -61,6 +61,10 @@
                 text-transform: uppercase;
                 background: rgba(37,37,37,1.0);
             }
+            .image-slider li a img.img-responsive {
+                width: 100%;
+                object-fit: contain;
+            }
             header.haside {
                 right: 0 !important;
                 position: fixed;
