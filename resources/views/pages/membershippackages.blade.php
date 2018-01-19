@@ -454,7 +454,7 @@
                                         <a href="#">
                                             <img class="img-responsive" src="http://www.emporium-voyage.com/uploads/properties_subtab_imgs/27646461-43002829.jpg" alt="hotel-de-tourrel_suite-7.jpg">
                                         </a>
-                                        <div class="col-md-12 col-sm-12">
+                                        <div class="col-md-12 col-sm-12 conatomer-text">
                                             <div class="col-md-6 col-sm-6">
                                                 <div class="row">
                                                     <div class="image-slider-btns-bg">
