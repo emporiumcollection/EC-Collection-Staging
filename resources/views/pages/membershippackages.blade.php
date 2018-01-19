@@ -290,6 +290,7 @@
 
 
         </style>
+        <script src="{{ asset('sximo/assets/js/jquery-2.2.0.min.js')}}" type="text/javascript"></script>
         <script type="text/javascript">
             $(document).on('ready', function () {
                 $(".regular").slick({
@@ -802,7 +803,7 @@
     <!-- end contact form section -->    
     <!-- javascript libraries -->
 <!--    <script type="text/javascript" src="{{ asset('sximo/assets/memform/js/jquery.js')}}"></script>-->
-    <script src="{{ asset('sximo/assets/js/jquery-2.2.0.min.js')}}" type="text/javascript"></script>
+    
     <script src="{{ asset('sximo/assets/js/bootstrap.min.js')}}" type="text/javascript"></script>
     <script type="text/javascript" src="{{ asset('sximo/assets/memform/js/smooth-scroll.js')}}"></script>
     <!-- swiper carousel -->
