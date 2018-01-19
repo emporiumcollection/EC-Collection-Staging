@@ -14,7 +14,7 @@
         <link href="{{ asset('sximo/assets/css/m-popup.min.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/filter-bar.css')}}" rel="stylesheet" type="text/css"/>
         <!-- font-awesome icon -->
-        <link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/font-awesome.min.css')}}" />
+        <link rel="stylesheet" href="{{ asset('sximo/assets/css/font-awesome.min.css')}}" />
         <!-- style -->
         <link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/style.css')}}" />
         <!-- responsive css -->
@@ -41,6 +41,9 @@
             }
             header.haside {
                 z-index: 1;
+            }
+            img.img-responsive.object-fit-size {
+                object-fit: cover;
             }
             .book-now-page.mobile-show-hide {
                 display: none;
