@@ -41,7 +41,7 @@ class PropertyController extends Controller {
     /* Method : getPropertyDetail
      *   Description : The Methos is using for property detai page (PDP)
     */
-    public function getPropertyDetail(Request $request) { 
+    public function getPropertyDetail(Request $request) {
         $propertiesArr = array();
 		$crpropertiesArr = array();
 		$relatedgridpropertiesArr = array();
@@ -127,6 +127,12 @@ class PropertyController extends Controller {
         $page = 'layouts.' . CNF_THEME . '.index';
         $this->data['pages'] = 'pages.editorial'; exit;
         //dd($this->data);
+        
+        echo '<pre>';
+        print_r($this->data);
+        echo '</pre>';
+        die;
+        
         return view($page, $this->data);
     }
 
