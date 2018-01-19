@@ -109,7 +109,10 @@
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
     <script>
         Stripe.setPublishableKey("<?php echo env('STRIPE_API_SECRET_KEY') ?>");
-        jQuery(function($) {
+
+        $(document).ready(function () {
+            alert();
+
             $('#payment-form').submit(function(event) {
                 var $form = $(this);
                 $form.parsley().subscribe('parsley:form:validate', function(formInstance) {
@@ -121,7 +124,9 @@
                 Stripe.card.createToken($form, stripeResponseHandler);
                 return false;
             });
-        });
+  //your code here
+});
+    
         function stripeResponseHandler(status, response) {
             var $form = $('#payment-form');
             if (response.error) {

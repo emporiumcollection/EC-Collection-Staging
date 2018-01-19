@@ -2,14 +2,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use I1lluminate\Http\Request;
+use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 use Validator, Input, Redirect, URL ;
 use Config, Session;
 use Stripe\Stripe;
 use Stripe\Charge;
 use Stripe\Plan;
-
+use App\User;
 class StripepaymentController extends Controller
 {
 
@@ -30,17 +30,14 @@ class StripepaymentController extends Controller
 
     public function index(){
 
-        echo "string";
-        $id=1005;
-        $this->createPlan($id);
         self::authorizeFromEnv();
         
         $response=\Stripe\Plan::all(array("limit" => 3));
-       dd($response);
+      
 
         $invoiceList=\Stripe\Invoice::all(array("limit" => 3));
 
-        dd($invoiceList);
+        dd($response);
     }
 
     public function checkout(){
@@ -49,15 +46,13 @@ class StripepaymentController extends Controller
         
         $this->data['about_text'] = "";
         $stripePackagesList = \Stripe\Plan::all();
-
-//dd($stripePackagesList);
-        $stripePackages[] = '';
+       
+         $stripePackages[] = '';
         foreach ($stripePackagesList->data as $TBkey => $TBValue) {
-            $stripePackages[$TBValue->id] = $TBValue->name."&nbsp;";
+            $stripePackages[$TBValue->id] = $TBValue->name."&nbsp;&euro;&nbsp;".($TBValue->amount/100);
         }
         $this->data['stripePackagesData'] = $stripePackages;
-        
-        $page="checkout.choosepackage";
+         $page="checkout.choosepackage";
         return view($page,$this->data);
        
 
@@ -299,4 +294,34 @@ class StripepaymentController extends Controller
         return $receiver;
     
 }
+
+
+public function checkoutPost(Request $request)
+    {
+            $user = User::find(1);
+           
+            $input = $request->all();
+    
+            self::authorizeFromEnv();
+         
+            try {
+               return Charge::create(
+                        $attributes = array(
+                            'amount' => 2000,
+                            'currency' => 'EUR',
+                            'description' => 'Charge for EVTEST.com',
+                            'card' => array(
+                                'number' => '4242424242424242',
+                                'exp_month' => 5,
+                                'exp_year' => date('Y') + 3,
+                            ),
+                        )
+                    );
+                return back()->with('success','Subscription is completed.');
+            } catch (Exception $e) {
+                return back()->with('success',$e->getMessage());
+            }
+            
+    }
+
 }
