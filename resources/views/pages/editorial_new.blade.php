@@ -1,10 +1,11 @@
 <?php 
-    $getImagesPathObj = CustomQuery::getPropertyImages($propertyDetail['data']->property_name);
-    
     echo '<pre>';
-    print_r($getImagesPathObj);
+    print_r($propertyDetail);
     echo '</pre>';
     die;
+    
+    $getImagesPathObj = CustomQuery::getPropertyImages($propertyDetail->property_name);
+    
     
     $propertyImagesPath = $getImagesPathObj[0]['imgsrc'];
     $containerPath = $getImagesPathObj[0]['containerpath'];
