@@ -15,3 +15,5 @@ nbproject
 /public/storage
 /storage/*.key
 .idea/
+*.sublime-workspace
+*.sublime-project
