@@ -47,6 +47,10 @@
             <script src="js/html5shiv.js"></script>
         <![endif]-->
         <style>
+            .image-slider-margin-align {
+                margin-bottom: 0;
+                margin-top: 0;
+            }
             .right-menus ul li a {
                 background-color: #1E2023;
                 border-bottom: 1px solid #414246;
