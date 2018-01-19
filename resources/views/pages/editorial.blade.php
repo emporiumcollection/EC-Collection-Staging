@@ -2143,7 +2143,7 @@
                         <div class="hotel-property-section-bg">
                             <div class="clearfix"></div>
                             <!--Show More Slide-->
-                            <div class="show_more-page1">
+                            <div class="show_more-page">
                                 <div class="open-show_more-html">
                                     <div><a class="close-btn-show_more close-btn-align" href="#">&times;</a></div>
                                     <div class="container-">
