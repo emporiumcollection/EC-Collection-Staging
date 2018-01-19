@@ -135,37 +135,6 @@
             }
             #formerrors { color:#ff0000;}
             
-            /* AIC */
-            .image-slider-container .editorial-images-count {
-                color: #fff !important;
-                float: left !important;
-                font-size: 33px !important;
-                margin-left: 21% !important;
-                margin-top: -167px !important;
-                position: relative;
-                width: 22% !important;
-            }
-        .slider-sec-side-text-bg {
-	height: 580px;
-	margin-top: -580px !important;
-        }
-        #align-to-top .slider-sec-side-text-bg .book-button.open-show_more-page.hotel-btn {
-	background: #fff none repeat scroll 0 0;
-	color: #000;
-	font-size: 15px;
-	margin-left: 0 !important;
-	margin-top: 36px;
-	max-height: 95px;
-	min-height: 95px;
-	opacity: 0.83;
-	padding: 34px 27px;
-	text-align: center;
-	text-transform: uppercase;
-	width: 174px;
-    }
-    .editorial-image-slider-previous-btn {
-	margin-left: 472px !important;
-    }
             
         </style>
         <script type="text/javascript">
