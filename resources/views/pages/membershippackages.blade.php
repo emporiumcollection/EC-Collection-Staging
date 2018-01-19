@@ -673,7 +673,7 @@
                                     </li>
                                 </ul>
                                 <div class="clearfix"></div>
-                                <div class=" editorial-images-count images-count">1 / 6</div>
+                                <div class=" editorial-images-count images-count"><span>1 / 6</span>
                                 <div class="editorial-image-slider-btns image-slider-btns">
                                     <a class="editorial-image-slider-previous-btn image-slider-previous-btn" href="#">
                                         <img class="arrow-margin-right" src="{{ asset('sximo/assets/images/editorial-left-arrow.png')}}" alt="">
@@ -682,6 +682,8 @@
                                         <img class="arrow-margin-right" src="{{ asset('sximo/assets/images/editorial-right-arrow.png')}}" alt="">
                                     </a>
                                 </div>
+                                </div>
+                                
                             </div>
                         </div>
                     </div>
