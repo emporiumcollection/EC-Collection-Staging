@@ -62,7 +62,10 @@
                 background: rgba(37,37,37,1.0);
             }
             .editorial-image-slider-previous-btn {
-                margin-left: 0!important;
+                margin-left: 35% !important;
+            }
+            .image-slider-container .editorial-image-slider-btns {
+                margin-top: -100px !important;
             }
             header.haside {
                 right: 0 !important;
