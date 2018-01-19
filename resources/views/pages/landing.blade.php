@@ -1873,7 +1873,7 @@
                                      </div>
                                  </div>
                                  <div class="sign-in-with-fb-tab">
-                                     <a class="ps-login-sign-up-common" href="javascript:void(0)">Sign In With LinkedIn</a>
+                                     <a class="ps-login-sign-up-common" href="{{URL::to('membership_hotel')}}">Become member for hotel</a>
                                  </div>
                              </div>
                          </div>
