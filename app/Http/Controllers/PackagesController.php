@@ -6,8 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 use Validator, Input, Redirect ; 
 
-use  App\Http\Controller\StripepaymentController;
-
+use Stripe\Stripe;
+use Stripe\Charge;
+use Stripe\Plan;
 class PackagesController extends Controller {
 
 	protected $layout = "layouts.main";
@@ -110,7 +111,7 @@ class PackagesController extends Controller {
 		} else {
 			$this->data['row'] = $this->model->getColumnTable('tb_packages'); 
 		}
-		$this->data['fields'] 		=  \SiteHelpers::fieldLang($this->info['config']['forms']);
+		$this->data['fields'] =  \SiteHelpers::fieldLang($this->info['config']['forms']);
 		
 		$this->data['id'] = $id;
 		return view('packages.form',$this->data);
@@ -140,7 +141,7 @@ class PackagesController extends Controller {
 	function postSave( Request $request)
 	{
 		$uid = \Auth::user()->id;
-		$rules = $this->validateForm();
+	 	$rules = $this->validateForm();
 		$validator = Validator::make($request->all(), $rules);	
 		if ($validator->passes()) {
 			$data = $this->validatePost('tb_packages');
@@ -159,9 +160,17 @@ class PackagesController extends Controller {
 				$return = 'packages?return='.self::returnUrl();
 			}
 
+
+
 			// Insert logs into database
 			if($request->input('id') =='')
 			{
+				$insertedID=$id;
+
+				   if($request->package_price_type==0){
+						$this->createPlan($request,$insertedID);
+					}
+
 				\SiteHelpers::auditTrail( $request , 'New Data with ID '.$id.' Has been Inserted !');
 			} else {
 				\SiteHelpers::auditTrail($request ,'Data with ID '.$id.' Has been Updated !');
@@ -206,31 +215,49 @@ class PackagesController extends Controller {
      * Verify that a plan with a given ID exists, or create a new one if it does
      * not.
      */
-    protected static function retrieveOrCreatePlan( Request $request)
+    protected static function createPlan( Request $request, $insertedID)
     {
-        StripepaymentController::authorizeFromEnv();
-		$data['user_id'] = $uid;
-		if ($request->input('id') == '') {
-		    $data['created_at'] = date('Y-m-d h:i:s');
-		} else {
-		    $data['updated_at'] = date('Y-m-d h:i:s');
+       //$stripeObj=New StripepaymentController();
+		//$stripeObj->authorizeFromEnv();
+		$intervalForPackage="";//day, week, month or year
+		$intervalForPackageValue="";
+		if($request->package_duration_type=="Months"){
+
+			$intervalForPackageValue='month';
 		}
-		$id = $this->model->insertRow($data , $request->input('id'));
+
+		if($request->package_duration_type=="Days"){
+
+			$intervalForPackageValue='day';
+		}
+		if($request->package_duration_type=="Year"){
+
+			$intervalForPackageValue='year';
+		}
 
         try {
-            $plan = \Plan::retrieve($id);
+
+			$apiKey = env('STRIPE_API_KEY');
+			Stripe::setApiKey($apiKey);
+	          $plan = Plan::create(
+	                array(
+	                    'id' => $insertedID,
+	                    'amount' =>$request->package_price,
+	                    'currency' => 'EUR',
+	                    'interval' => $intervalForPackageValue,
+	                    'interval_count' => $request->package_duration,
+	                    'name' => $request->package_title,
+	                    'metadata'=>$request->package_descriptionx,
+	                )
+	            );
         } catch (Error\InvalidRequest $exception) {
-            $plan = Plan::create(
-                array(
-                    'id' => $id,
-                    'amount' => 0,
-                    'currency' => 'usd',
-                    'interval' => 'month',
-                    'name' => 'Gold Test Plan',
-                )
-            );
+
+        	return Redirect::to('packages')
+        		->with('messagetext','No package created in Stripe')->with('msgstatus','error');	
+            
         }
     }		
 
 
 }
+

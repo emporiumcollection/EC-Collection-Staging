@@ -104,8 +104,7 @@
             successClass: 'has-success'
         };
     </script>
-    
-    <script src="http://parsleyjs.org/dist/parsley.js"></script>
+
     
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
     <script>
