@@ -138,6 +138,128 @@
             }
             #formerrors { color:#ff0000;}
             
+            /*AIC model */
+            
+             .book-button.open-show_more-page.hotel-btn {
+    background: #ABA07C none repeat scroll 0 0;
+    color: #fff;
+    font-size: 15px;
+    margin-left: 0 !important;
+    margin-top: 52px;
+    max-height: 95px;
+    min-height: 95px;
+    opacity: 0.83;
+    padding: 34px 27px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 174px;
+    }
+    
+     .VegasModelDialog {
+	width: 100%;
+	margin: 4px auto;
+    }
+    
+    .vegasModelFade {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1050;
+        display: none;
+        overflow: hidden;
+        -webkit-overflow-scrolling: touch;
+        outline: 0;
+        background-color: black;
+        opacity: 0.8;
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        }
+        
+        .vegasModelContent {
+            background: rgba(0, 0, 0, 0.92) none repeat scroll 0 0;
+            opacity: 1;
+            min-height: 63em;
+            border-radius: 0px;
+            float: left;
+        }
+        
+        .vegasModelHeader {
+            border-bottom: none;
+        }
+        
+        .vegasModelFooter {
+            border-top: none;
+        }
+        
+        .SlickVegasWidth {
+            
+            width: 18.5%;
+        }
+        
+        .vegasGallery1 {
+            min-height: 500px;
+            padding: 0px 0px 0px 0px !important;
+            float: left;
+            width: 81.333%;
+        }
+        
+        .Vegasregular {
+            width: 100%;
+            margin: 0 auto;
+            float: left;
+            visibility: visible;
+        }
+        
+        .VegasCloseButton {
+            color: #ABA07C;
+            opacity: 1;
+            font-size: 50px;
+            box-shadow: none;
+            text-shadow: none;
+        }
+        
+        .VegasCloseButton:hover {
+            color: #ABA07C;
+            opacity: 1;
+            font-size: 50px;
+            box-shadow: none;
+            text-shadow: none;
+        }
+        
+        .VegasPopLogo {
+            width: 20%;
+            margin: 0 auto;
+            padding-top: 100px;
+            text-align: center;
+            display: block;
+        }
+        
+        .VegasDetailInner {
+            padding: 20px;
+            padding-top: 0px;
+        }
+        
+        .grid-item {
+            height: auto;
+        }
+        
+        .vogasThumbnail img {
+            width: 100%;
+        }
+        
+        .vogasThumbnail {
+            padding: 0px;
+            background: none;
+            border: none;
+        }
+        .Sidenavimg {
+	width: auto;
+	min-width: 200px;
+    }
+            
             
         </style>
         <script type="text/javascript">
