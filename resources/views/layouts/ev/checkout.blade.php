@@ -425,6 +425,8 @@
         <script type="text/javascript" src="{{ asset('sximo/assets/memform/js/bootstrap.min.js')}}"></script>
         <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/memform/js/slick.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('sximo/assets/js/parsley.min.js')}}" type="text/javascript"></script>
+
         <script>
                             $(document).ready(function () {
                                 $("a").on('click', function (event) {
