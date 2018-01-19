@@ -1,5 +1,5 @@
 <?php 
-    $getImagesPathObj = CustomQuery::getPropertyImages($propertyDetail->property_name);
+    $getImagesPathObj = CustomQuery::getPropertyImages($propertyDetail['data']->property_name);
     $propertyImagesPath = $getImagesPathObj[0]['imgsrc'];
     $containerPath = $getImagesPathObj[0]['containerpath'];
     $hotelBrochureImagesPath = $getImagesPathObj[0]['hotelbrochure']['pdfsrc'];
