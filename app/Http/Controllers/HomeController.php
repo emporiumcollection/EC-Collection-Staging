@@ -13,7 +13,6 @@ use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 use App\Http\Controllers\Controller;
 use App\User;
 use Socialize, ImageCache;
-use App\User;
 
 class HomeController extends Controller {
 
