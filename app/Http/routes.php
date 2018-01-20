@@ -249,8 +249,9 @@ Route::post('get-article-by-title', 'HomeController@getArticleByTitle');
 // property search urls
 Route::get('getproperty/{id}', 'HomeController@getPropertyQuickView');
 Route::get('filter_search_destionation', 'HomeController@getPropertyBySearchDestination');
-Route::get('{slug}', 'HomeController@getPropertyDetail');
-Route::get('pdp/{slug}', 'Frontend\PropertyController@getPropertyDetail');
+//Route::get('{slug}', 'HomeController@getPropertyDetail');
+//Route::get('pdp/{slug}', 'Frontend\PropertyController@getPropertyDetail');
+Route::get('{slug}', 'Frontend\PropertyController@getPropertyDetail');
 Route::get('our-collection-pages/{slug}/{page}', 'HomeController@getPropertyDetail_pages');
 Route::get('book-property/{slug}', 'HomeController@bookProperty');
 Route::get('luxurytravel/{slug}', 'HomeController@getPropertyByCategory');
