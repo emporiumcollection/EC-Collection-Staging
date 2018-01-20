@@ -239,7 +239,7 @@
             .spa-sec-book-an-appoinment-btn { float: left !important; margin-left: 20px; }
             .spa-overlay-text span { padding-left:0px !important; }
             .restaurant-sec-main-bg-align {
-                background-image: url("{{( array_key_exists('propimage', $propertyDetail)) ? $propertyDetail['propimage_thumbpath'].$propertyDetail['propimage'][0]->file_name : ''}}");
+                background-image: url("{{( array_key_exists('propimage', $propertyDetail)) ? $propertyImagesPath.$propertyDetail['propimage'][0]->file_name : ''}}");
             }
             .next-prevoius-navigation.left-arrow-align {
                 display: none;
