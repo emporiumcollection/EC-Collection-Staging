@@ -7,7 +7,8 @@
     <div class="panel panel-default credit-card-box">
         <div class="panel-heading display-table" >
             <div class="row display-tr" >
-                <h3 class="panel-title display-td" >Payment Details </h3>
+                <!--<h3 class="panel-title display-td" >Payment Details </h3>-->
+                <h5 class="ev-regural-heading text-uppercase margin-20px-bottom font-weight-700 sm-width-100 xs-width-100">Payment Details</h5>
                 <div classs="display-td" >                            
                     
                 </div>
