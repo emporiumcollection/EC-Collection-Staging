@@ -2,6 +2,7 @@
     $getImagesPathObj = CustomQuery::getPropertyImages($propertyDetail['data']->id);
     
     echo '<pre>';
+    print_r($propertyDetail);
     print_r($getImagesPathObj);
     echo '</pre>';
     die;
