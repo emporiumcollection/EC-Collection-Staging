@@ -7,8 +7,8 @@
     
     $getImagesPathObj = CustomQuery::getPropertyImages($propertyDetail['data']->id);
     if(!empty($getImagesPathObj)) {
-        $propertyImagesPath = $getImagesPathObj[0]['imgsrc'];
-        $containerPath = $getImagesPathObj[0]['containerpath'];
+        $propertyImagesPath = $getImagesPathObj[0]->imgsrc;
+        $containerPath = $getImagesPathObj[0]->containerpath;
         /*$hotelBrochureImagesPath = $getImagesPathObj[0]['hotelbrochure']['pdfsrc'];
         $restaurantMenuImagesPath = $getImagesPathObj[0]['restaurant_menu']['pdfsrc'];
         $spaBrochureImagesPath = $getImagesPathObj[0]['spa_brochure']['pdfsrc'];*/
