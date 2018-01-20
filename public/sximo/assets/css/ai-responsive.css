@@ -367,5 +367,8 @@
 	padding: 0px 0px 0px 0px !important;
 	width: 100% !important;
     }
+    .m_slider.editorial_m_slider {
+	margin-top: 0px;
+    }
     
 }
