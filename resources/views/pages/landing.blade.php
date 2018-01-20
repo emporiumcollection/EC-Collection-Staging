@@ -1458,7 +1458,7 @@
                             <div class="white-border-bottom"></div>
                         </li>
                         <li>
-                            <a href="#" target="_blank">
+                            <a href="https://www.emporium-voyage.com/user/login" target="_blank">
                                 <span>View or Modify Reserveration</span>
                                 <h6 class="center">Login to Hotel PMS</h6>
                             </a>
