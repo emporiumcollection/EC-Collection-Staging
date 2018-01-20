@@ -12,8 +12,8 @@
                     
                 </div>
             </div>                    
-        <div class="panel-body">
-            <div class="col-md-12">
+        <div class="panel-body no-padding">
+            <div class="col-md-12 no-padding">
               {!! Form::open(['url' => 'order-post', 'data-parsley-validate', 'id' => 'payment-form']) !!}
                 @if ($message = Session::get('success'))
                 <div class="alert alert-success alert-block">
