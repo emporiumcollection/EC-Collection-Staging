@@ -348,23 +348,24 @@
     /* heading sections */
     
     .hotels-detail-description-text {
-	padding: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px !important;
     }
     .hotels-detail-heading-text > p {
-	padding: 8% 0% 0% 0%;
+	padding: 8% 0% 0% 0% !important;
     }
     .hotels-showcase-right-side {
-	position: relative;
+	position: relative !important;
     }
     .hotels-des-left-side {
-	padding: 20px 32px 0px 75px;
+	padding: 20px 32px 0px 75px !important;
     }
     .rightHotelInner {
 	height: 0;
+        margin-top: 0px !important;
     }
     .hotels-image-showcase-des-text {
-	padding: 0px 0px 0px 0px;
-	width: 100%;
+	padding: 0px 0px 0px 0px !important;
+	width: 100% !important;
     }
     
 }
