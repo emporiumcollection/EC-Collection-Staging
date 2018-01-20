@@ -4,6 +4,7 @@
     echo '<pre>';
     print_r($getImagesPathObj);
     echo '</pre>';
+    die;
     
     $propertyImagesPath = $getImagesPathObj[0]['imgsrc'];
     $containerPath = $getImagesPathObj[0]['containerpath'];
