@@ -2,7 +2,6 @@
 @section('content')
 
 
-<div class="row">
   <div class="col-md-6 col-md-offset-3">
     <div class="panel panel-default credit-card-box">
         <div class="panel-heading display-table" >
@@ -93,7 +92,6 @@
     </div>
     
   </div>
-</div>
     
     <!-- PARSLEY -->
     <script>
