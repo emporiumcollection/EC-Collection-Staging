@@ -345,4 +345,26 @@
 	margin-top: 10px;
     }
     
+    /* heading sections */
+    
+    .hotels-detail-description-text {
+	padding: 0px 0px 0px 0px;
+    }
+    .hotels-detail-heading-text > p {
+	padding: 8% 0% 0% 0%;
+    }
+    .hotels-showcase-right-side {
+	position: relative;
+    }
+    .hotels-des-left-side {
+	padding: 20px 32px 0px 75px;
+    }
+    .rightHotelInner {
+	height: 0;
+    }
+    .hotels-image-showcase-des-text {
+	padding: 0px 0px 0px 0px;
+	width: 100%;
+    }
+    
 }
