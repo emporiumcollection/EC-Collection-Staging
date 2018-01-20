@@ -78,7 +78,7 @@
                   </div>
                 </div>
                   <div class="form-group">
-                      {!! Form::submit('Place order!', ['class' => 'btn btn-lg btn-block btn-primary btn-order', 'id' => 'submitBtn', 'style' => 'margin-bottom: 10px;']) !!}
+                      {!! Form::submit('Place order!', ['class' => 'btn btn-lg btn-block btn-primary btn-order btn btn-white', 'id' => 'submitBtn', 'style' => 'margin-bottom: 10px;']) !!}
                   </div>
                   <div class="row">
                     <div class="col-md-12">
