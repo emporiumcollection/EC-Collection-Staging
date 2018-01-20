@@ -34,6 +34,20 @@
         <!--[if IE]>
             <script src="js/html5shiv.js"></script>
         <![endif]-->
+        <script src="{{ asset('sximo/assets/js/jquery-2.1.0.min.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('sximo/assets/js/bootstrap.min.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('sximo/assets/js/jquery-ui.js')}}" type="text/javascript"></script>
+        <script type="text/javascript" src="{{ asset('sximo/assets/js/moment.min.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('sximo/assets/js/jquery.daterangepicker.min.js')}}"></script>
+        <script src="{{ asset('sximo/assets/js/html2canvas.js')}}" type="text/javascript"></script>
+        <script src="{{asset('sximo/assets/js/m-popup.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('sximo/assets/js/book-now-page-style.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('sximo/assets/js/testimoniales.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('sximo/assets/js/image-slider.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('sximo/assets/js/m_slider.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('sximo/assets/js/editorial-slide-nav.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('sximo/assets/js/jquery.dotdotdot.min.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('sximo/assets/js/slick.js')}}" type="text/javascript"></script>
         <style>
             .image-slider-margin-align {
                 margin-bottom: 0;
@@ -801,17 +815,17 @@
     </div>
     <!-- end contact form section -->    
     <!-- javascript libraries -->
-    <script type="text/javascript" src="{{ asset('sximo/assets/memform/js/jquery.js')}}"></script>
+<!--    <script type="text/javascript" src="{{ asset('sximo/assets/memform/js/jquery.js')}}"></script>
     <script src="{{ asset('sximo/assets/js/bootstrap.min.js')}}" type="text/javascript"></script>
     <script type="text/javascript" src="{{ asset('sximo/assets/memform/js/smooth-scroll.js')}}"></script>
-    <!-- swiper carousel -->
+     swiper carousel 
     <script type="text/javascript" src="{{ asset('sximo/assets/memform/js/swiper.min.js')}}"></script>
-    <!-- fit video  -->
+     fit video  
     <script type="text/javascript" src="{{ asset('sximo/assets/memform/js/jquery.fitvids.js')}}"></script>
     <script type="text/javascript" src="{{ asset('sximo/assets/memform/js/main.js')}}"></script>
     <script type="text/javascript" src="{{ asset('sximo/assets/memform/js/bootstrap.min.js')}}"></script>
     <script src="{{ asset('sximo/assets/js/jquery-2.2.0.min.js')}}" type="text/javascript"></script>
-    <script src="{{ asset('sximo/assets/memform/js/slick.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('sximo/assets/memform/js/slick.js')}}" type="text/javascript"></script>-->
     <script>
                                     $(document).ready(function () {
                                         $("a").on('click', function (event) {
