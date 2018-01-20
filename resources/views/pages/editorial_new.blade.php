@@ -2514,7 +2514,7 @@
 															<figure>
 																<div class="portfolio-img bg-deep-pink">
                                                                                                                                         @if(array_key_exists('image', $props))
-																		<img alt="<?php echo $props['image']->file_name; ?>" src="<?php echo URL::to('uploads/property_imgs_thumbs/front_property_'.$props['image']->folder_id.'_'.$props['image']->file_name); ?>">
+																		<img alt="<?php echo $props->image->file_name; ?>" src="<?php echo URL::to('uploads/property_imgs_thumbs/front_property_'.$props->image->folder_id.'_'.$props->image->file_name); ?>">
 																	@else
 																		<img src="http://placehold.it/800x560" alt=""/>
 																	@endif
