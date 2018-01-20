@@ -78,6 +78,22 @@
                 text-transform: uppercase;
                 background: rgba(37,37,37,1.0);
             }
+            .hotel-book-now {
+                background: #ABA07C;
+                color: #000;
+                font-size: 25px;
+                height: 71px;
+                margin: 0px 0px 10px 3px;
+                opacity: 1;
+                overflow-wrap: break-word;
+                padding: 27px 5px;
+                position: absolute;
+                text-align: center;
+                text-transform: uppercase;
+                width: 174px;
+                z-index: 99;
+                float: left;
+            }
             .editorial-image-slider-previous-btn {
                 margin-left: 35% !important;
             }
