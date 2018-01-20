@@ -5,7 +5,7 @@
         border: none;
     }
 </style>
-
+ 
   <div class="col-md-12 sm-clear-both wow fadeInLeft no-padding">
     <div class="padding-ten-half-all bg-light-gray md-padding-seven-all xs-padding-30px-all height-100">
     <div class="panel panel-default credit-card-box">
