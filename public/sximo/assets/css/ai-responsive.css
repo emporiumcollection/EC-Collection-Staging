@@ -120,6 +120,66 @@
     .destinSearchMob {
 	margin-top: 30px;
     }
+    
+    /* hotel secton */
+    
+    .m_slider.editorial_m_slider {
+	margin-top: 0px !important;
+    }
+    .hotels-detail-heading-text > p {
+	padding: 8% 0% 0% 0% !important;
+    }
+    .editorial-hotel-detail-page #align-to-top .book-button.open-show_more-page.hotel-btn { 
+	width: 100%;
+        margin-bottom: 8px;
+    }
+    .editorial-page-booking-bar .top-booking-bar-btn, .editorial-hotel-detail-page .book-button, .editorial-hotel-detail-page .hotel-slider-price, .editorial-hotel-detail-page .spa-sec-book-an-appoinment-btn {
+	width: 100%;
+    }
+    .editorial-page-booking-bar .top-booking-bar-btn, .editorial-hotel-detail-page .book-button, .editorial-hotel-detail-page .hotel-slider-price, .editorial-hotel-detail-page .spa-sec-book-an-appoinment-btn {
+	width: 100%;
+    }
+    .arrow-slider {
+	margin-top: 10px;
+    }
+    .SlickVegasWidth {
+	width: 31%;
+	float: left;
+    }
+    .view-gallery-pannel-align .bar-view-gallery {
+	font-size: 13px;
+    }
+    .architecture-sec-heading {
+	margin-left: 0px !important;
+    }
+    .vegasFooter {
+	width: 100% !important;
+    }
+    .VegasFooterMiddle p {
+        margin-left: 0px !important;
+    }
+    .VegasFooterMiddle form {
+	margin-left: 0px !important;
+    }
+    .editorial-custom-footer-style .newsletter-style {
+	width: 100% !important;
+	text-align: left !important;
+    }
+    .vegasFooterSocial {
+	float: left !important;
+	margin-top: 30px !important;
+    }
+    .vegasSocialUl {
+	margin-left: 44px !important;
+    }
+    .vegasFooterSocial ul li {
+	margin-left: 14px !important;
+    }
+    .editorial-image-slider-btns.image-slider-btns a {
+	margin-left: 42px !important;
+	margin-top: 10px;
+    }
+    
 }
 
 @media (min-width: 481px) and (max-width: 767px) {
@@ -251,7 +311,7 @@
 	margin-top: 10px;
     }
     .image-showcase-below-big-text {
-	margin-left: 0px;
+	margin-left: 0px !important;
     }
     .gallery .info1 p {
 	overflow: visible !important;
@@ -263,7 +323,7 @@
     }
     .close-btn-show_more.close-btn-align {
 	position: absolute;
-	top: 29%;
+	top: 0%;
     }
 }
 
