@@ -918,8 +918,8 @@ $(document).on('ready', function () {
                     $(this).removeClass('active')
                 }
         );
-
-        $(document).on('click', '.open-show_more-page', function () {
+<!-- Please remove .open-show_more-page- hifen ->
+        $(document).on('click', '.open-show_more-page-', function () {
             $('.show_more-page').css("background-image", "");
             $('.single-right-text-product').html('');
             $('.rmimgp').html('');
