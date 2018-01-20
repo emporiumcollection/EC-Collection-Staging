@@ -1444,7 +1444,7 @@
                     </div>
                     <ul class="booking-page-footer-section">
                         <li>
-                            <a href="#" target="_blank">
+                            <a href="https://www.emporium-voyage.com/membership_hotel" target="_blank">
                                 <span>Join the worlds leading luxury club</span>
                                 <h6 class="center">Enjoy exclusive members only benefits</h6>
                             </a>
@@ -1460,7 +1460,7 @@
                         <li>
                             <a href="#" target="_blank">
                                 <span>View or Modify Reserveration</span>
-                                <h6 class="center">Login to Support Center</h6>
+                                <h6 class="center">Login to Hotel PMS</h6>
                             </a>
                             <div class="white-border-bottom"></div>
                         </li>
