@@ -5,7 +5,6 @@
   <div class="col-md-12 sm-clear-both wow fadeInLeft no-padding">
     <div class="padding-ten-half-all bg-light-gray md-padding-seven-all xs-padding-30px-all height-100">
     <div class="panel panel-default credit-card-box">
-        <div class="panel-heading display-table" >
             <div class="row display-tr" >
                 <!--<h3 class="panel-title display-td" >Payment Details </h3>-->
                 <h5 class="ev-regural-heading text-uppercase margin-20px-bottom font-weight-700 sm-width-100 xs-width-100">Payment Details</h5>
@@ -13,7 +12,6 @@
                     
                 </div>
             </div>                    
-        </div>
         <div class="panel-body">
             <div class="col-md-12">
               {!! Form::open(['url' => 'order-post', 'data-parsley-validate', 'id' => 'payment-form']) !!}
