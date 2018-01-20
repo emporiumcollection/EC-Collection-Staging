@@ -1,17 +1,18 @@
-<?php 
+<?php
+    $propertyImagesPath = '';
+    $containerPath = '';
+    $hotelBrochureImagesPath = '';
+    $restaurantMenuImagesPath = '';
+    $spaBrochureImagesPath = '';
+    
     $getImagesPathObj = CustomQuery::getPropertyImages($propertyDetail['data']->id);
-    
-    echo '<pre>';
-    print_r($propertyDetail);
-    print_r($getImagesPathObj);
-    echo '</pre>';
-    die;
-    
-    $propertyImagesPath = $getImagesPathObj[0]['imgsrc'];
-    $containerPath = $getImagesPathObj[0]['containerpath'];
-    $hotelBrochureImagesPath = $getImagesPathObj[0]['hotelbrochure']['pdfsrc'];
-    $restaurantMenuImagesPath = $getImagesPathObj[0]['restaurant_menu']['pdfsrc'];
-    $spaBrochureImagesPath = $getImagesPathObj[0]['spa_brochure']['pdfsrc']; 
+    if(!empty($getImagesPathObj)) {
+        $propertyImagesPath = $getImagesPathObj[0]['imgsrc'];
+        $containerPath = $getImagesPathObj[0]['containerpath'];
+        /*$hotelBrochureImagesPath = $getImagesPathObj[0]['hotelbrochure']['pdfsrc'];
+        $restaurantMenuImagesPath = $getImagesPathObj[0]['restaurant_menu']['pdfsrc'];
+        $spaBrochureImagesPath = $getImagesPathObj[0]['spa_brochure']['pdfsrc'];*/
+    }
 ?>
 <!DOCTYPE html>
 <html>
