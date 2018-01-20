@@ -2507,7 +2507,11 @@
 														$rw = 1;
 														$node_no = 1;
 														$ads_node = 0;
-														foreach($relatedgridpropertiesArr as $props) { ?>
+														foreach($relatedgridpropertiesArr as $props) {
+                                                                                                                    echo '<pre>';
+                                                                                                                    print_r($props);
+                                                                                                                    echo '</pre>';
+                                                                                                                    ?>
 														
 														<li class="grid-item wow fadeInUp">
 														<a href="{{URL::to($props->property_slug)}}">
