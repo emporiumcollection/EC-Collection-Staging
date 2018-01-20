@@ -316,7 +316,7 @@ $(document).on('ready', function () {
         autoplay: true,
         autoplaySpeed: 3000
     });
-});
+}); 
         </script>
     </head>
     <body>
