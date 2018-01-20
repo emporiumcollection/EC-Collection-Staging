@@ -286,9 +286,9 @@
                 width: auto;
                 min-width: 200px;
             }
-            
+
             /* AIC alider */
-            
+
             .slider-sec-side-text-bg {
                 margin-top: -580px;
             }
@@ -305,18 +305,18 @@
 
         </style>
         <script type="text/javascript">
-            $(document).on('ready', function () {
-                $(".regular").slick({
-                    dots: false,
-                    infinite: true,
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    prevArrow: false,
-                    nextArrow: false,
-                    autoplay: true,
-                    autoplaySpeed: 3000
-                });
-            });
+$(document).on('ready', function () {
+    $(".regular").slick({
+        dots: false,
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        prevArrow: false,
+        nextArrow: false,
+        autoplay: true,
+        autoplaySpeed: 3000
+    });
+});
         </script>
     </head>
     <body>
@@ -723,7 +723,23 @@
 
                                     </div>
                                     <div class="col-md-6 col-sm-6 single-right-text-product">
-
+                                        <div class="text-section"><h2>JUNIOR SUITE BEACHFRONT</h2>
+                                            <p>• 81sqm (872sqft)
+                                                <br>• Double bed
+                                                <br>• Beach view
+                                                <br>• Terrace
+                                                <br>• Complimentary WiFi
+                                                <br>• Air conditioning
+                                                <br>• Shower and bathtub</p>
+                                            <p>Covering 81 sq. metres, the 44 Junior Suites are among the most generously proportioned in Mauritius. Designed to blend modernity with practicality, they're housed in attractive villa buildings with four suites per villa. Like all guest accommodation at Shanti Maurice, the suites are equipped with plasma TVs, DVD players and broadband Internet access. The ground floor suites have direct access to the beach, as well as an outdoor rain shower, while the suites on the first floor have large balconies overlooking the Indian Ocean. As well as large bedrooms and bathrooms, each Junior Suite has a separate dressing room with an open closet and dressing table.</p>
+                                        </div>
+                                        <div class="book-btn-sec">
+                                            <div class="hotel-book-price">€385<a href="#"><div class="hotel-book-now">Book Now</div></a>
+                                            </div>
+                                            <div class="inner-pop-up-book-btn">
+                                                <a href="#" onclick="choose_room_type(1966);">Book</a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>	
                             </div>
@@ -827,57 +843,57 @@
     <script src="{{ asset('sximo/assets/js/jquery-2.2.0.min.js')}}" type="text/javascript"></script>
     <script src="{{ asset('sximo/assets/memform/js/slick.js')}}" type="text/javascript"></script>-->
     <script>
-                                    $(document).ready(function () {
-                                        $("a").on('click', function (event) {
-                                            if (this.hash !== "") {
-                                                event.preventDefault();
-                                                var hash = this.hash;
-                                                $('html, body').animate({
-                                                    scrollTop: $(hash).offset().top
-                                                }, 800, function () {
-                                                    window.location.hash = hash;
-                                                });
-                                            }
-                                        });
-                                    });
-                                    $('a[href*="#"]')
-                                            // Remove links that don't actually link to anything
-                                            .not('[href="#"]')
-                                            .not('[href="#0"]')
-                                            .click(function (event) {
-                                                // On-page links
-                                                if (
-                                                        location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
-                                                        &&
-                                                        location.hostname == this.hostname
-                                                        ) {
-                                                    // Figure out element to scroll to
-                                                    var target = $(this.hash);
-                                                    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-                                                    // Does a scroll target exist?
-                                                    if (target.length) {
-                                                        // Only prevent default if animation is actually gonna happen
-                                                        event.preventDefault();
-                                                        $('html, body').animate({
-                                                            scrollTop: target.offset().top
-                                                        }, 1000, function () {
-                                                            // Callback after animation
-                                                            // Must change focus!
-                                                            var $target = $(target);
-                                                            $target.focus();
-                                                            if ($target.is(":focus")) { // Checking if the target was focused
-                                                                return false;
-                                                            } else {
-                                                                $target.attr('tabindex', '-1'); // Adding tabindex for elements not focusable
-                                                                $target.focus(); // Set focus again
-                                                            }
-                                                            ;
-                                                        });
-                                                    }
-                                                }
-                                            });
+        $(document).ready(function () {
+            $("a").on('click', function (event) {
+                if (this.hash !== "") {
+                    event.preventDefault();
+                    var hash = this.hash;
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                    }, 800, function () {
+                        window.location.hash = hash;
+                    });
+                }
+            });
+        });
+        $('a[href*="#"]')
+                // Remove links that don't actually link to anything
+                .not('[href="#"]')
+                .not('[href="#0"]')
+                .click(function (event) {
+                    // On-page links
+                    if (
+                            location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
+                            &&
+                            location.hostname == this.hostname
+                            ) {
+                        // Figure out element to scroll to
+                        var target = $(this.hash);
+                        target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                        // Does a scroll target exist?
+                        if (target.length) {
+                            // Only prevent default if animation is actually gonna happen
+                            event.preventDefault();
+                            $('html, body').animate({
+                                scrollTop: target.offset().top
+                            }, 1000, function () {
+                                // Callback after animation
+                                // Must change focus!
+                                var $target = $(target);
+                                $target.focus();
+                                if ($target.is(":focus")) { // Checking if the target was focused
+                                    return false;
+                                } else {
+                                    $target.attr('tabindex', '-1'); // Adding tabindex for elements not focusable
+                                    $target.focus(); // Set focus again
+                                }
+                                ;
+                            });
+                        }
+                    }
+                });
     </script>
-     
+
     <script type="text/javascript">
         $(document).on('ready', function () {
             $(".regular").slick({
