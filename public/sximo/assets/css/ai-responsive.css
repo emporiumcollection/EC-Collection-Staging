@@ -180,7 +180,7 @@
 	margin-top: 10px;
     }
     .section {
-	padding: 50px 0;
+	padding: 50px 0 !important;
     }
     .top-booking-bar-btn {
 	padding: 1px 0px;
@@ -191,7 +191,22 @@
 	margin-left: 0px;
     }
     .newbkbtn {
-	margin-left: 0px;
+	margin-left: 0px !important;
+    }
+    .editorial-image-slider-btns.image-slider-btns a {
+	margin-top: 30px !important;
+	margin-left: 42px !important;
+    }
+    .editorial-hotel-detail-page #align-to-top .book-button.open-show_more-page.hotel-btn {
+	width: 50%;
+	margin-top: 21px;
+	padding: 38px 0px 6px 0 !important;
+    }
+    .image-slider-btns-bg {
+	padding: 48px 0px 47px 10px !important;
+    }
+    .image-slider-container .editorial-images-count {
+	margin-top: -147px !important;
     }
     
 }
