@@ -2512,7 +2512,8 @@
 														<li class="grid-item wow fadeInUp">
 														<a href="{{URL::to($props->property_slug)}}">
 															<figure>
-																<div class="portfolio-img bg-deep-pink">			@if(array_key_exists('file_name', $props))
+																<div class="portfolio-img bg-deep-pink">
+                                                                                                                                        @if(array_key_exists('file_name', (array)$props))
 																		<img alt="<?php echo $props->file_name; ?>" src="<?php echo URL::to('uploads/property_imgs_thumbs/front_property_'.$props->folder_id.'_'.$props->file_name); ?>">
 																	@else
 																		<img src="http://placehold.it/800x560" alt=""/>
@@ -2815,6 +2816,9 @@
         </script>
             <!-- custom scrollbar end -->
     
+		<?php
+//                @include('layouts/elliot/ai_lightbox_popups_detailpage')
+                ?>
 
              </body>
 </html>
