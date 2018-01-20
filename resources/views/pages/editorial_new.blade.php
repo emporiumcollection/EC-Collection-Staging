@@ -2507,18 +2507,14 @@
 														$rw = 1;
 														$node_no = 1;
 														$ads_node = 0;
-														foreach($relatedgridpropertiesArr as $props) {
-                                                                                                                    echo '<pre>';
-                                                                                                                    print_r($props);
-                                                                                                                    echo '</pre>';
-                                                                                                                    ?>
+														foreach($relatedgridpropertiesArr as $props) { ?>
 														
 														<li class="grid-item wow fadeInUp">
 														<a href="{{URL::to($props->property_slug)}}">
 															<figure>
 																<div class="portfolio-img bg-deep-pink">
-                                                                                                                                        @if(isset($props->file_name))
-																		<img alt="<?php echo $props->file_name; ?>" src="<?php echo URL::to('uploads/property_imgs_thumbs/front_property_'.$props->folder_id.'_'.$props->file_name); ?>">
+                                                                                                                                        @if(array_key_exists('image', $props))
+																		<img alt="<?php echo $props['image']->file_name; ?>" src="<?php echo URL::to('uploads/property_imgs_thumbs/front_property_'.$props['image']->folder_id.'_'.$props['image']->file_name); ?>">
 																	@else
 																		<img src="http://placehold.it/800x560" alt=""/>
 																	@endif
@@ -2542,12 +2538,12 @@
 																	{{$props->property_name}}
 																	</a>
 																	<span class="FltRgt">
-																		<a class="carticon" href="javascript:void(0)" onclick="submitgridbookform('{{$props->property_slug}}#*{{$propertyDetail['data']->id}}');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>
+																		<a class="carticon" href="javascript:void(0)" onclick="submitgridbookform('{{$props->property_slug}}#*{{$props->id}}');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>
 																	</span>
 																</h2>
 															</div>
 															<div class="entire_story MrgTop5 ai-view-hotels-tittle">
-																<a class="textButton arrowButton detail_view MrgTop5" rel="<?php echo $propertyDetail['data']->id; ?>" href="#">
+																<a class="textButton arrowButton detail_view MrgTop5" rel="<?php echo $props->id; ?>" href="#">
 																	Quick View 
 																</a>
 															</div>
