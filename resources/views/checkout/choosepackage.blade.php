@@ -2,7 +2,8 @@
 @section('content')
 
 
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-12 sm-clear-both wow fadeInLeft no-padding">
+    <div class="padding-ten-half-all bg-light-gray md-padding-seven-all xs-padding-30px-all height-100">
     <div class="panel panel-default credit-card-box">
         <div class="panel-heading display-table" >
             <div class="row display-tr" >
@@ -92,7 +93,7 @@
     </div>
     
   </div>
-    
+  </div>
     <!-- PARSLEY -->
     <script>
         window.ParsleyConfig = {
