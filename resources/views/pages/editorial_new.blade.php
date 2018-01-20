@@ -1634,7 +1634,7 @@
                         @if(!empty($propertyDetail['propimage']))
                         <ul>
                             @foreach($propertyDetail['propimage'] as $propimg)
-                            {{--*/ $thactualsize = getimagesize($propertyDetail['propimage_containerpath'].$propimg->file_name); /*--}}
+                            {{--*/ $thactualsize = getimagesize($containerPath.$propimg->file_name); /*--}}
                             @if($thactualsize[0]>$thactualsize[1])
                             <li class="{{($propertyDetail['propimage'][0]==$propimg) ? 'active' : ''}}">
                                 <div class="image editorial-image">
