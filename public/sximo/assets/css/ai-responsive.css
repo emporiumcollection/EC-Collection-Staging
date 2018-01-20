@@ -250,6 +250,17 @@
 	margin-left: 42px !important;
 	margin-top: 10px;
     }
+    .image-showcase-below-big-text {
+	margin-left: 0px;
+    }
+    .gallery .info1 p {
+	overflow: visible !important;
+	line-height: 20px;
+    }
+    .hotel-book-price {
+	margin-left: 0 !important;
+	width: 160px !important;
+    }
 }
 
 
@@ -432,6 +443,9 @@
     }
     .m_slider.editorial_m_slider {
 	margin-top: 0px !important;
+    }
+    .image-showcase-below-big-text {
+	margin-left: 0px;
     }
     
 }
