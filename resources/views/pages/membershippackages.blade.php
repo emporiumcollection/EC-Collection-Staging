@@ -750,10 +750,10 @@ $(document).on('ready', function () {
                                             <p>Covering 81 sq. metres, the 44 Junior Suites are among the most generously proportioned in Mauritius. Designed to blend modernity with practicality, they're housed in attractive villa buildings with four suites per villa. Like all guest accommodation at Shanti Maurice, the suites are equipped with plasma TVs, DVD players and broadband Internet access. The ground floor suites have direct access to the beach, as well as an outdoor rain shower, while the suites on the first floor have large balconies overlooking the Indian Ocean. As well as large bedrooms and bathrooms, each Junior Suite has a separate dressing room with an open closet and dressing table.</p>
                                         </div>
                                         <div class="book-btn-sec">
-                                            <div class="hotel-book-price">€385<a href="#"><div class="hotel-book-now">Book Now</div></a>
+                                            <div class="hotel-book-price">€385<a href="#"><div class="hotel-book-now">Show More</div></a>
                                             </div>
                                             <div class="inner-pop-up-book-btn">
-                                                <a href="#" onclick="choose_room_type(1966);">Book</a>
+                                                <a href="#" onclick="choose_room_type(1966);">Buy Now</a>
                                             </div>
                                         </div>
                                     </div>
