@@ -183,7 +183,76 @@
             }
             
         </style>
-        
+        <style>
+            #instaShowGallery_1 .instashow-gallery-media-cover {
+                background: rgba(0, 0, 0, 0.9) !important;
+            }
+            #instaShowPopup_1 .instashow-popup-media-info-author {
+                color: #000 !important;
+            }
+            #instaShowPopup_1 a.instashow-popup-media-info-original {
+                display: none;
+            }
+            #instaShowGallery_1 .instashow-gallery-control-arrow::before, #instaShowGallery_1 .instashow-gallery-control-arrow::after {
+                background: #000;
+            }
+
+            .editorial-custom-footer-style .newsletter-style {
+                width: 44%;
+                margin-top: 8px;
+                float: left;
+                margin-right: 15px;
+                box-shadow: none;
+                border-radius: 0;
+                font-size: 11px;
+            }
+
+            .form-control:focus {
+                border-color: #7a7a7a;
+            }
+
+            .vegasFooter {
+                width: 20%;
+                float: left;
+            }
+            .vegasFooterSocial ul li a i {
+                font-size: 14px;
+                background: #ABA07C;
+                /* border-radius: 831px; */
+                padding: 6px 12px 4px 7px;
+                color: #fff;
+                margin-right: 0px;
+                text-align: center;
+                width: 25px;
+            }
+
+            .footer {
+                background-color: #F7F7F4;
+                font-size: 11px;
+                margin-bottom: -15px;
+                margin-top: 50px;
+                padding-bottom: 15px;
+                padding-top: 65px;
+            }
+
+            .noPadding {
+                padding: 0px !important;
+            }
+            .vegasSocialUl {
+                margin-left: 121px;
+            }
+
+            .VegasFooterMiddle p {
+                margin-left: 58px;
+            }
+
+            .VegasFooterMiddle form {
+                margin-left: 58px;
+            }
+            .marginBottom20 {
+                margin-bottom: 20px;
+            }
+        </style>
     </head>
     <body>
         <!-- Start slider section -->
@@ -651,75 +720,6 @@
         }
     </script>
     
-    <style>
-        #instaShowGallery_1 .instashow-gallery-media-cover {
-            background: rgba(0, 0, 0, 0.9) !important;
-        }
-        #instaShowPopup_1 .instashow-popup-media-info-author {
-            color: #000 !important;
-        }
-        #instaShowPopup_1 a.instashow-popup-media-info-original {
-            display: none;
-        }
-        #instaShowGallery_1 .instashow-gallery-control-arrow::before, #instaShowGallery_1 .instashow-gallery-control-arrow::after {
-            background: #000;
-        }
-
-        .editorial-custom-footer-style .newsletter-style {
-            width: 44%;
-            margin-top: 8px;
-            float: left;
-            margin-right: 15px;
-            box-shadow: none;
-            border-radius: 0;
-            font-size: 11px;
-        }
-
-        .form-control:focus {
-            border-color: #7a7a7a;
-        }
-
-        .vegasFooter {
-            width: 20%;
-            float: left;
-        }
-        .vegasFooterSocial ul li a i {
-            font-size: 14px;
-            background: #ABA07C;
-            /* border-radius: 831px; */
-            padding: 6px 12px 4px 7px;
-            color: #fff;
-            margin-right: 0px;
-            text-align: center;
-            width: 25px;
-        }
-
-        .footer {
-            background-color: #F7F7F4;
-            font-size: 11px;
-            margin-bottom: -15px;
-            margin-top: 50px;
-            padding-bottom: 15px;
-            padding-top: 65px;
-        }
-
-        .noPadding {
-            padding: 0px !important;
-        }
-        .vegasSocialUl {
-            margin-left: 121px;
-        }
-
-        .VegasFooterMiddle p {
-            margin-left: 58px;
-        }
-
-        .VegasFooterMiddle form {
-            margin-left: 58px;
-        }
-        .marginBottom20 {
-            margin-bottom: 20px;
-        }
-    </style>
+    
     </body>
 </html>
