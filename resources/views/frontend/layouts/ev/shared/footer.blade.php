@@ -116,21 +116,6 @@ margin-bottom: 20px;
                     
                 </form>
                 
-                <!--                                    <p class="footer-nav-menu-harding footer-res-margin-align" style="margin-top: 25px;">Unsubscribe Newsletter</p>
-                <form action="http://just-emarketing.com/app/index.php/lists/fb5156qrasf4a/unsubscribe" method="post" accept-charset="utf-8" target="_blank">
-                    <div class="">
-                        
-                        <input type="text" class="form-control newsletter-style" name="EMAIL" placeholder="Email Address" value="" required="">
-                    </div>
-                    
-                    <div class="">
-                        <button type="submit" class="nesletter-submit-btn" style="width: 35%;">Unsubscribe</button>
-                    </div>
-                    <div class="clearfix"> </div>
-                </form>-->
-            </div>
-            
-            <!-- AIC Harman footer social icons add -->
             <div class="col-md-4 vegasFooterSocial">
                 <ul class="list-inline vegasSocialUl">
                     <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
@@ -153,32 +138,32 @@ margin-bottom: 20px;
 
 
 <script>
-$(document).ready(function () {
-$(".social-share").click(function (event) {
-event.preventDefault();
-$(this).find("ul").toggle();
-$(this).toggleClass("open");
-});
-});
+    $(document).ready(function () {
+        $(".social-share").click(function (event) {
+            event.preventDefault();
+            $(this).find("ul").toggle();
+            $(this).toggleClass("open");
+        });
+    });
 </script>
 <script>
-$(document).ready(function () {
-$(window).scroll(function () {
-if ($(this).scrollTop() > 200) {
-$('#back-to-top').fadeIn();
-} else {
-$('#back-to-top').fadeOut();
-}
-});
-$("#back-to-top").click(function (event) {
-event.preventDefault();
-$("html, body").animate({scrollTop: 0}, "slow");
-});
-$(".trigger-click-on-video-pop-up").click(function (event) {
-event.preventDefault();
-$(".open-video-pop-up").trigger("click");
-});
-});
+    $(document).ready(function () {
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 200) {
+                $('#back-to-top').fadeIn();
+            } else {
+                $('#back-to-top').fadeOut();
+            }
+        });
+        $("#back-to-top").click(function (event) {
+            event.preventDefault();
+            $("html, body").animate({scrollTop: 0}, "slow");
+        });
+        $(".trigger-click-on-video-pop-up").click(function (event) {
+            event.preventDefault();
+            $(".open-video-pop-up").trigger("click");
+        });
+    });
 </script>
 <script>
 /* Toggle between adding and removing the "active" and "show" classes when the user clicks on one of the "Section" buttons. The "active" class is used to add a background color to the current button when its belonging panel is open. The "show" class is used to open the specific accordion panel */

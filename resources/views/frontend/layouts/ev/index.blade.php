@@ -2,12 +2,14 @@
 <html class="no-js" lang="en">
     <head>
         <!-- title -->
-        <title>{{ isset($pageTitle)?$pageTitle:''}}</title>
+        <title> @yield('title')</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1" />
         <!-- animation -->
         <link href="{{ asset('sximo/assets/css/landing-page-styles.css')}}" rel="stylesheet" type="text/css"/>
+
+
         <link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/animate.css')}}" />
         <!-- bootstrap -->
         <link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/bootstrap.min.css')}}" />
@@ -20,6 +22,8 @@
         <link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/style.css')}}" />
         <!-- responsive css -->
         <link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/responsive.css')}}" />
+        
+                
         <!-- Custom style -->
         <link href="{{ asset('sximo/assets/memform/css/custom-ai.css')}}" rel="stylesheet" type="text/css"/>
         
@@ -32,6 +36,9 @@
         <link href="{{ asset('sximo/assets/css/custom_ps.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/booking-form.css')}}" rel="stylesheet" type="text/css"/>
         <!-- AIC -->
+
+        
+        
         <link href="{{ asset('sximo/assets/css/style.css')}}" rel="stylesheet" type="text/css"/>
         <!--[if IE]>
             <script src="js/html5shiv.js"></script>
@@ -159,25 +166,25 @@
                 width: 22% !important;
             }
         .slider-sec-side-text-bg {
-	height: 580px;
-	margin-top: -580px !important;
+    height: 580px;
+    margin-top: -580px !important;
         }
         #align-to-top .slider-sec-side-text-bg .book-button.open-show_more-page.hotel-btn {
-	background: #fff none repeat scroll 0 0;
-	color: #000;
-	font-size: 15px;
-	margin-left: 0 !important;
-	margin-top: 36px;
-	max-height: 95px;
-	min-height: 95px;
-	opacity: 0.83;
-	padding: 34px 27px;
-	text-align: center;
-	text-transform: uppercase;
-	width: 174px;
+    background: #fff none repeat scroll 0 0;
+    color: #000;
+    font-size: 15px;
+    margin-left: 0 !important;
+    margin-top: 36px;
+    max-height: 95px;
+    min-height: 95px;
+    opacity: 0.83;
+    padding: 34px 27px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 174px;
     }
     .editorial-image-slider-previous-btn {
-	margin-left: 472px !important;
+    margin-left: 472px !important;
     }
             
         </style>
@@ -257,102 +264,102 @@
                             <img alt="" src="{{ asset('sximo/assets/images/design-location-logo.png')}}" class="img-responsive">
                         </div>
                         <div class="panel-group new-sidebar-sk" id="accordion">
-							{{--*/ $page_menus = SiteHelpers::menus('business') /*--}}
-							@if(!empty($page_menus))
-							@foreach ($page_menus as $pmenu)
-								<div class="panel panel-default custom-post-panel">
-									<a @if(count($pmenu['childs']) > 0) data-toggle="collapse" data-parent="#accordion" href="#webpage{{$pmenu['menu_id']}}" @else @if($pmenu['menu_type'] =='external') href="{{ URL::to($pmenu['url'])}}" @else href="{{ URL::to($pmenu['module'])}}" @endif @endif class="heading-stying collapsed">
-										<div class="panel-heading custom-heading">
-											@if(CNF_MULTILANG ==1 && isset($pmenu['menu_lang']['title'][Session::get('lang')]))
-												{{ $pmenu['menu_lang']['title'][Session::get('lang')] }}
-											@else
-												{{$pmenu['menu_name']}}
-											@endif
-										</div>
-									</a>
-									@if(count($pmenu['childs']) > 0)
-										<div id="webpage{{$pmenu['menu_id']}}" class="panel-collapse  collapse">
-											<div class="panel-body custom-panel-body">
-												<div class="dl-filter">
-													@foreach ($pmenu['childs'] as $pmenu2)
-														<div class="form-group post-filter-inputs">
-															<label>
-																<a @if($pmenu2['menu_type'] =='external') href="{{ URL::to($pmenu2['url'])}}" @else href="{{ URL::to($pmenu2['module'])}}" @endif>
-																	@if(CNF_MULTILANG ==1 && isset($pmenu2['menu_lang']['title'][Session::get('lang')]))
-																		{{ $pmenu2['menu_lang']['title'][Session::get('lang')] }}
-																	@else
-																		{{$pmenu2['menu_name']}}
-																	@endif
-																</a>
-															</label>
-														</div>
-													@endforeach
-												</div>
-											</div>
-										</div>
-									@endif
-								</div>
-							@endforeach
-							@endif
+                            {{--*/ $page_menus = SiteHelpers::menus('business') /*--}}
+                            @if(!empty($page_menus))
+                            @foreach ($page_menus as $pmenu)
+                                <div class="panel panel-default custom-post-panel">
+                                    <a @if(count($pmenu['childs']) > 0) data-toggle="collapse" data-parent="#accordion" href="#webpage{{$pmenu['menu_id']}}" @else @if($pmenu['menu_type'] =='external') href="{{ URL::to($pmenu['url'])}}" @else href="{{ URL::to($pmenu['module'])}}" @endif @endif class="heading-stying collapsed">
+                                        <div class="panel-heading custom-heading">
+                                            @if(CNF_MULTILANG ==1 && isset($pmenu['menu_lang']['title'][Session::get('lang')]))
+                                                {{ $pmenu['menu_lang']['title'][Session::get('lang')] }}
+                                            @else
+                                                {{$pmenu['menu_name']}}
+                                            @endif
+                                        </div>
+                                    </a>
+                                    @if(count($pmenu['childs']) > 0)
+                                        <div id="webpage{{$pmenu['menu_id']}}" class="panel-collapse  collapse">
+                                            <div class="panel-body custom-panel-body">
+                                                <div class="dl-filter">
+                                                    @foreach ($pmenu['childs'] as $pmenu2)
+                                                        <div class="form-group post-filter-inputs">
+                                                            <label>
+                                                                <a @if($pmenu2['menu_type'] =='external') href="{{ URL::to($pmenu2['url'])}}" @else href="{{ URL::to($pmenu2['module'])}}" @endif>
+                                                                    @if(CNF_MULTILANG ==1 && isset($pmenu2['menu_lang']['title'][Session::get('lang')]))
+                                                                        {{ $pmenu2['menu_lang']['title'][Session::get('lang')] }}
+                                                                    @else
+                                                                        {{$pmenu2['menu_name']}}
+                                                                    @endif
+                                                                </a>
+                                                            </label>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endif
+                                </div>
+                            @endforeach
+                            @endif
                         </div>
                         <section class="regular slider">
                             <div class="slick-cstm-width">
-								<div class="side-bar-why-book-with-us">
-									<div class="book-with-us-tittles">
-										<h2>Why book with us?</h2>
-									</div>
-									<ul class="side-bar-book-with-us-list">
-										@if(!empty($whybookwithus))
-											@foreach($whybookwithus as $withus)
-												<li>
-													<h3>{{$withus->title}}</h3>
-													<p>{{$withus->sub_title}}</p>
-												</li>
-											@endforeach
-										@endif
-									</ul>
-								</div>
-							</div>
-							@if(!empty($landingads))
-							@foreach($landingads as $lnads)
-							<div class="slick-cstm-width">
-								<a href="{{ (strpos($lnads->adv_link, 'http://') !== false) ? $lnads->adv_link : 'http://'.$lnads->adv_link }}"><img src="{{URL::to('uploads/users/advertisement/'.$lnads->adv_img)}}"></a>
-							</div>
-							@endforeach
-							@endif
+                                <div class="side-bar-why-book-with-us">
+                                    <div class="book-with-us-tittles">
+                                        <h2>Why book with us?</h2>
+                                    </div>
+                                    <ul class="side-bar-book-with-us-list">
+                                        @if(!empty($whybookwithus))
+                                            @foreach($whybookwithus as $withus)
+                                                <li>
+                                                    <h3>{{$withus->title}}</h3>
+                                                    <p>{{$withus->sub_title}}</p>
+                                                </li>
+                                            @endforeach
+                                        @endif
+                                    </ul>
+                                </div>
+                            </div>
+                            @if(!empty($landingads))
+                            @foreach($landingads as $lnads)
+                            <div class="slick-cstm-width">
+                                <a href="{{ (strpos($lnads->adv_link, 'http://') !== false) ? $lnads->adv_link : 'http://'.$lnads->adv_link }}"><img src="{{URL::to('uploads/users/advertisement/'.$lnads->adv_img)}}"></a>
+                            </div>
+                            @endforeach
+                            @endif
                         </section>
                     </div>
                 </div>
                 <div class="col-md-10 no-padding">
-					@if(!empty($pageslider))
-						<section class="wow fadeIn no-padding cstmaiclass">
-							<div class="swiper-auto-height-container position-relative width-100">
-								<div class="swiper-wrapper overflow-hidden">
-									@foreach($pageslider as $key => $slider_row)
-										<!-- start slider item -->
-										<div class="swiper-slide padding-100px-all cover-background position-relative xs-padding-20px-all" style="background-image:url({{url()}}/uploads/slider_images/{{$slider_row->slider_img}})">
-											<div class="position-relative width-55 md-width-60 sm-width-85 xs-width-100 display-inline-block slide-banner last-paragraph-no-margin">
-												<div class="padding-80px-all bg-black-opacity sm-padding-40px-all xs-padding-30px-all xs-text-center xs-width-100">
-													<h3 class="alt-font text-white sm-width-100">{{$slider_row->slider_title}}</h3>
-													<p class="sm-width-100 lorem-para">{{$slider_row->slider_description}}</p>
-													<a href="{{$slider_row->slider_link}}" class="margin-35px-top sm-margin-15px-top btn btn-white">Explore services</a>
-												</div> 
-											</div>
-										</div>
-										<!-- end slider item -->
-									@endforeach
-								</div>
+                    @if(!empty($pageslider))
+                        <section class="wow fadeIn no-padding cstmaiclass">
+                            <div class="swiper-auto-height-container position-relative width-100">
+                                <div class="swiper-wrapper overflow-hidden">
+                                    @foreach($pageslider as $key => $slider_row)
+                                        <!-- start slider item -->
+                                        <div class="swiper-slide padding-100px-all cover-background position-relative xs-padding-20px-all" style="background-image:url({{url()}}/uploads/slider_images/{{$slider_row->slider_img}})">
+                                            <div class="position-relative width-55 md-width-60 sm-width-85 xs-width-100 display-inline-block slide-banner last-paragraph-no-margin">
+                                                <div class="padding-80px-all bg-black-opacity sm-padding-40px-all xs-padding-30px-all xs-text-center xs-width-100">
+                                                    <h3 class="alt-font text-white sm-width-100">{{$slider_row->slider_title}}</h3>
+                                                    <p class="sm-width-100 lorem-para">{{$slider_row->slider_description}}</p>
+                                                    <a href="{{$slider_row->slider_link}}" class="margin-35px-top sm-margin-15px-top btn btn-white">Explore services</a>
+                                                </div> 
+                                            </div>
+                                        </div>
+                                        <!-- end slider item -->
+                                    @endforeach
+                                </div>
 
-								<div class="navigation-area">
-									<div class="swiper-button-next swiper-next-style4 bg-primary text-white"><i class="fa fa-arrow-up" aria-hidden="true"></i></div>
-									<div class="swiper-button-prev swiper-prev-style4"><i class="fa fa-arrow-down" aria-hidden="true"></i></div>
-								</div>
-								<div class="scroll-button">
-									<a href="#align-to-top" class="align-to-top-arrow"><img src="http://www.emporium-voyage.com/sximo/assets/images/scroll-down.png" class="down-arrow-align animate-arrow" alt=""> </a>
-								</div>
-							</div>
-						</section>
-					@endif
+                                <div class="navigation-area">
+                                    <div class="swiper-button-next swiper-next-style4 bg-primary text-white"><i class="fa fa-arrow-up" aria-hidden="true"></i></div>
+                                    <div class="swiper-button-prev swiper-prev-style4"><i class="fa fa-arrow-down" aria-hidden="true"></i></div>
+                                </div>
+                                <div class="scroll-button">
+                                    <a href="#align-to-top" class="align-to-top-arrow"><img src="http://www.emporium-voyage.com/sximo/assets/images/scroll-down.png" class="down-arrow-align animate-arrow" alt=""> </a>
+                                </div>
+                            </div>
+                        </section>
+                    @endif
                     <!-- end slider section -->
                     <!-- start contact form section -->
                     <section class="wow fadeIn big-section cstmaiclass" id="align-to-top">
@@ -366,8 +373,8 @@
 
                        
                     </section>
-					
-					<div class="hotel-property-section-bg">
+                    
+                    <div class="hotel-property-section-bg">
                             <div class="clearfix"></div>
                             <!--Show More Slide-->
                             <div class="show_more-page">
@@ -382,7 +389,7 @@
                                             <div class="col-md-6 col-sm-6 single-right-text-product">
 
                                             </div>
-                                        </div>	
+                                        </div>  
                                     </div>
                                 </div>
                             </div>
@@ -395,7 +402,7 @@
                         }
                     </style>
                     <div class="neww-footer">
-                       
+                       @include('frontend.layouts.ev.shared.footer')
                     </div>
                 </div>
             </div>
@@ -495,8 +502,8 @@
                         $(this).removeClass('active')
                     }
             );
-			
-			$(document).on('click', '.open-show_more-page', function () {
+            
+            $(document).on('click', '.open-show_more-page', function () {
                 $('.show_more-page').css("background-image", "");
                 $('.single-right-text-product').html('');
                 $('.rmimgp').html('');
@@ -532,8 +539,8 @@
                 });
                 return false;
             });
-			
-			
+            
+            
         </script>
         <!-- contact email aside -->
     </body>
