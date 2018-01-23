@@ -309,6 +309,7 @@
                                /*background: #ABA07C;
                             color: #ffff;*/
                                background: rgba(37, 37, 37, 1);
+                               color:#fff;
                            }
                            
                            .editorial-page-booking-bar .top-booking-bar-btn, .editorial-hotel-detail-page .book-button, .editorial-hotel-detail-page .hotel-slider-price, .editorial-hotel-detail-page .spa-sec-book-an-appoinment-btn {
@@ -1241,7 +1242,7 @@
                             
                             .nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
                                 background: #DADAD5 !important;
-                                color: #000000;
+                                color: #000000 !important;
                             }
                             .right-menu-align .nav-pills li a {
                                 border-radius: 0px !important;
