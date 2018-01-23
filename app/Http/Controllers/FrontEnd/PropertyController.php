@@ -99,6 +99,16 @@ class PropertyController extends Controller {
                 $relatedgridquery .= "(SELECT category_name FROM tb_categories ct where pr.property_category_id=ct.id limit 0,1 ) as category_name ";  
                 $relatedgridquery .= "FROM tb_properties pr WHERE pr.property_type='Hotel' AND pr.assign_detail_city =  '".$props->assign_detail_city."' AND pr.property_status = '1' ORDER BY (SELECT rack_rate FROM tb_properties_category_rooms_price  WHERE tb_properties_category_rooms_price.property_id = pr.id ORDER BY rack_rate DESC LIMIT 1) * 1 DESC, pr.editor_choice_property desc, pr.feature_property desc LIMIT 4";
                 $relatedgridpropertiesArr = DB::select(DB::raw($relatedgridquery));
+                
+                if(!empty($relatedgridpropertiesArr)) {
+                    foreach ($relatedgridpropertiesArr as $key => $relatedgridproperty) {
+                        $fileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.file_id', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $relatedgridproperty->id)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
+                        if(!empty($fileArr)) {
+                            $fileArr->imgsrc = (new ContainerController)->getThumbpath($fileArr->folder_id);
+                            $relatedgridpropertiesArr[$key]->image = $fileArr;
+                        }
+                    }
+                }
                
             }
         }

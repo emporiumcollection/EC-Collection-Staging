@@ -120,6 +120,93 @@
     .destinSearchMob {
 	margin-top: 30px;
     }
+    
+    /* hotel secton */
+    
+    .m_slider.editorial_m_slider {
+	margin-top: 0px !important;
+    }
+    .hotels-detail-heading-text > p {
+	padding: 8% 0% 0% 0% !important;
+    }
+    .editorial-hotel-detail-page #align-to-top .book-button.open-show_more-page.hotel-btn { 
+	width: 100%;
+        margin-bottom: 8px;
+    }
+    .editorial-page-booking-bar .top-booking-bar-btn, .editorial-hotel-detail-page .book-button, .editorial-hotel-detail-page .hotel-slider-price, .editorial-hotel-detail-page .spa-sec-book-an-appoinment-btn {
+	width: 100%;
+    }
+    .editorial-page-booking-bar .top-booking-bar-btn, .editorial-hotel-detail-page .book-button, .editorial-hotel-detail-page .hotel-slider-price, .editorial-hotel-detail-page .spa-sec-book-an-appoinment-btn {
+	width: 100%;
+    }
+    .arrow-slider {
+	margin-top: 10px;
+    }
+    .SlickVegasWidth {
+	width: 31%;
+	float: left;
+    }
+    .view-gallery-pannel-align .bar-view-gallery {
+	font-size: 13px;
+    }
+    .architecture-sec-heading {
+	margin-left: 0px !important;
+    }
+    .vegasFooter {
+	width: 100% !important;
+    }
+    .VegasFooterMiddle p {
+        margin-left: 0px !important;
+    }
+    .VegasFooterMiddle form {
+	margin-left: 0px !important;
+    }
+    .editorial-custom-footer-style .newsletter-style {
+	width: 100% !important;
+	text-align: left !important;
+    }
+    .vegasFooterSocial {
+	float: left !important;
+	margin-top: 30px !important;
+    }
+    .vegasSocialUl {
+	margin-left: 44px !important;
+    }
+    .vegasFooterSocial ul li {
+	margin-left: 14px !important;
+    }
+    .editorial-image-slider-btns.image-slider-btns a {
+	margin-left: 42px !important;
+	margin-top: 10px;
+    }
+    .section {
+	padding: 50px 0 !important;
+    }
+    .top-booking-bar-btn {
+	padding: 1px 0px;
+	font-size: 12px;
+    }
+    .block-content.content {
+	width: 27px;
+	margin-left: 0px;
+    }
+    .newbkbtn {
+	margin-left: 0px !important;
+    }
+    .editorial-image-slider-btns.image-slider-btns a {
+	margin-top: 30px !important;
+	margin-left: 42px !important;
+    }
+    .editorial-hotel-detail-page #align-to-top .book-button.open-show_more-page.hotel-btn {
+	margin-top: 21px;
+    }
+    .image-slider-btns-bg {
+	padding: 48px 0px 47px 10px !important;
+    }
+    .image-slider-container .editorial-images-count {
+	margin-top: -147px !important;
+    }
+    
 }
 
 @media (min-width: 481px) and (max-width: 767px) {
@@ -186,6 +273,90 @@
     .combodate select:hover  {
 	padding: 7px !important;
 	width: 115px !important;
+    }
+    
+    /* detail page */
+    
+    
+    
+    /* heading sections */
+    
+    
+    .hotels-detail-description-text {
+	padding: 0px 0px 0px 0px !important;
+    }
+    .hotels-detail-heading-text > p {
+	padding: 8% 0% 0% 0% !important;
+    }
+    .hotels-showcase-right-side {
+	position: relative !important;
+    }
+    .hotels-des-left-side {
+	padding: 20px 32px 0px 75px !important;
+    }
+    .rightHotelInner {
+	height: 0;
+        margin-top: 0px !important;
+    }
+    .hotels-image-showcase-des-text {
+	padding: 0px 0px 0px 0px !important;
+	width: 100% !important;
+    }
+    
+    .m_slider.editorial_m_slider {
+	margin-top: 0px !important;
+    }
+    .VegasPopLogo {
+	width: 100% !important;
+    }
+    .SlickVegasWidth {
+	width: 100% !important;;
+	float: left !important;;
+    }
+    .vegasFooter {
+	width: 100% !important;
+    }
+    .VegasFooterMiddle p {
+        margin-left: 0px !important;
+    }
+    .VegasFooterMiddle form {
+	margin-left: 0px !important;
+    }
+    .editorial-custom-footer-style .newsletter-style {
+	width: 100% !important;
+	text-align: left !important;
+    }
+    .vegasFooterSocial {
+	float: left !important;
+	margin-top: 30px !important;
+    }
+    .vegasSocialUl {
+	margin-left: 44px !important;
+    }
+    .vegasFooterSocial ul li {
+	margin-left: 14px !important;
+    }
+    .editorial-image-slider-btns.image-slider-btns a {
+	margin-left: 370px !important;
+	margin-top: 10px;
+    }
+    .image-showcase-below-big-text {
+	margin-left: 0px !important;
+    }
+    .gallery .info1 p {
+	overflow: visible !important;
+	line-height: 20px;
+    }
+    .hotel-book-price {
+	margin-left: 0 !important;
+	width: 160px !important;
+    }
+    .close-btn-show_more.close-btn-align {
+	position: absolute;
+	top: 0%;
+    }
+    .image-slider-container .editorial-images-count {
+	margin-left: 350px !important;
     }
 }
 
@@ -343,6 +514,35 @@
     .editorial-image-slider-btns.image-slider-btns a {
 	margin-left: 42px !important;
 	margin-top: 10px;
+    }
+    
+    /* heading sections */
+    
+    .hotels-detail-description-text {
+	padding: 0px 0px 0px 0px !important;
+    }
+    .hotels-detail-heading-text > p {
+	padding: 8% 0% 0% 0% !important;
+    }
+    .hotels-showcase-right-side {
+	position: relative !important;
+    }
+    .hotels-des-left-side {
+	padding: 20px 32px 0px 75px !important;
+    }
+    .rightHotelInner {
+	height: 0;
+        margin-top: 0px !important;
+    }
+    .hotels-image-showcase-des-text {
+	padding: 0px 0px 0px 0px !important;
+	width: 100% !important;
+    }
+    .m_slider.editorial_m_slider {
+	margin-top: 0px !important;
+    }
+    .image-showcase-below-big-text {
+	margin-left: 0px;
     }
     
 }

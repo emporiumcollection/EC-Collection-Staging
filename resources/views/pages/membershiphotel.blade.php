@@ -482,7 +482,7 @@
                                             <div class="row">
                                                 <h5 class="ev-regural-heading text-uppercase margin-20px-bottom font-weight-700 sm-width-100 xs-width-100">Contact Information</h5>
                                                 <h6 class="ev-regural-sub-heading text-uppercase margin-20px-bottom font-weight-600 sm-width-100 xs-width-100 border-bottom skcstm">Property Owning Entity:</h6>
-												<div class="col-md-6 col-sm-12 no-padding-right">
+												<div class="col-md-12 col-sm-12 no-padding">
                                                     <label>Signup Type</label>
                                                     <select name="hotel_signup_type" id="hotel_signup_type" class="bg-white medium-input">
                                                         <option>Please select</option>
@@ -490,7 +490,7 @@
                                                         <option value="advertiser">Advertiser</option>
                                                     </select>
                                                 </div>
-                                                <div class="col-md-6 col-sm-12 no-padding entity">
+                                                <div class="col-md-12 col-sm-12 no-padding entity">
                                                     <label>*Entity Name</label>
                                                     <input type="text" name="hotel_contactinfo_name" placeholder="Entity Name*" class="bg-white medium-input">
                                                 </div>
@@ -530,7 +530,7 @@
                                                     <label>*Job Title</label>
                                                     <input type="text" name="hotel_contactprsn_jobtitle" placeholder="Job Title*" class="bg-white medium-input">
                                                 </div>
-                                                <div class="col-md-6 no-padding-right">
+                                                <div class="col-md-6 no-padding">
                                                     <label>*Email Address</label>
                                                     <input type="email" name="hotel_contactprsn_email" placeholder="Email*" class="bg-white medium-input">
                                                 </div>

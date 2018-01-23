@@ -1,20 +1,23 @@
 @extends('layouts.ev.checkout')
 @section('content')
-
-
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
+<style>
+    input#submitBtn {
+        border: none;
+    }
+</style>
+ 
+  <div class="col-md-12 sm-clear-both wow fadeInLeft no-padding">
+    <div class="padding-ten-half-all bg-light-gray md-padding-seven-all xs-padding-30px-all height-100">
     <div class="panel panel-default credit-card-box">
-        <div class="panel-heading display-table" >
             <div class="row display-tr" >
-                <h3 class="panel-title display-td" >Payment Details </h3>
+                <!--<h3 class="panel-title display-td" >Payment Details </h3>-->
+                <h5 class="ev-regural-heading text-uppercase margin-20px-bottom font-weight-700 sm-width-100 xs-width-100">Payment Details</h5>
                 <div classs="display-td" >                            
                     
                 </div>
             </div>                    
-        </div>
-        <div class="panel-body">
-            <div class="col-md-12">
+        <div class="panel-body no-padding">
+            <div class="col-md-12 no-padding">
               {!! Form::open(['url' => 'order-post', 'data-parsley-validate', 'id' => 'payment-form']) !!}
                 @if ($message = Session::get('success'))
                 <div class="alert alert-success alert-block">
@@ -79,7 +82,7 @@
                   </div>
                 </div>
                   <div class="form-group">
-                      {!! Form::submit('Place order!', ['class' => 'btn btn-lg btn-block btn-primary btn-order', 'id' => 'submitBtn', 'style' => 'margin-bottom: 10px;']) !!}
+                      {!! Form::submit('Place order!', ['class' => 'btn btn-lg btn-block btn-primary btn-order btn btn-white', 'id' => 'submitBtn', 'style' => 'margin-bottom: 10px;']) !!}
                   </div>
                   <div class="row">
                     <div class="col-md-12">
@@ -93,8 +96,7 @@
     </div>
     
   </div>
-</div>
-    
+  </div>
     <!-- PARSLEY -->
     <script>
         window.ParsleyConfig = {

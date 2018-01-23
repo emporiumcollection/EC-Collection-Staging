@@ -1,10 +1,18 @@
-<?php 
-    $getImagesPathObj = CustomQuery::getPropertyImages($propertyDetail->property_name);
-    $propertyImagesPath = $getImagesPathObj[0]['imgsrc'];
-    $containerPath = $getImagesPathObj[0]['containerpath'];
-    $hotelBrochureImagesPath = $getImagesPathObj[0]['hotelbrochure']['pdfsrc'];
-    $restaurantMenuImagesPath = $getImagesPathObj[0]['restaurant_menu']['pdfsrc'];
-    $spaBrochureImagesPath = $getImagesPathObj[0]['spa_brochure']['pdfsrc']; 
+<?php
+    $propertyImagesPath = '';
+    $containerPath = '';
+    $hotelBrochureImagesPath = '';
+    $restaurantMenuImagesPath = '';
+    $spaBrochureImagesPath = '';
+    
+    $getImagesPathObj = CustomQuery::getPropertyImages($propertyDetail['data']->id);
+    if(!empty($getImagesPathObj)) {
+        $propertyImagesPath = $getImagesPathObj[0]->imgsrc;
+        $containerPath = $getImagesPathObj[0]->containerpath;
+        /*$hotelBrochureImagesPath = $getImagesPathObj[0]['hotelbrochure']['pdfsrc'];
+        $restaurantMenuImagesPath = $getImagesPathObj[0]['restaurant_menu']['pdfsrc'];
+        $spaBrochureImagesPath = $getImagesPathObj[0]['spa_brochure']['pdfsrc'];*/
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -193,9 +201,9 @@
             .detail-tile-inner img { max-width:100%; }
             .gallerysty { font-weight: bold;font-size: 15px;color: #000; }
             .hotel-name-first-letter { background-image: url({{URL::to('uploads/properties_subtab_imgs/'.$propertyDetail['data']->restaurant_image)}}); }
-            .editorial-book-now-page { background-image: url('{{( array_key_exists('propimage', $propertyDetail)) ? \ImageCache::make($propertyDetail['propimage_thumbpath_dir'].$propertyDetail['propimage'][0]->file_name,100,1000,null) : ''}}');  }
-            .hotels-showcase-right-side { background-image: url('{{( array_key_exists('propimage', $propertyDetail)) ? \ImageCache::make($propertyDetail['propimage_thumbpath_dir'].$propertyDetail['propimage'][0]->file_name,100,1000,null) : ''}}'); }
-            .hotel-sec-block-two { background-image: url('{{( array_key_exists('propimage', $propertyDetail)) ? \ImageCache::make($propertyDetail['propimage_thumbpath_dir'].$propertyDetail['propimage'][1]->file_name,100,1000,null) : ''}}'); }
+            .editorial-book-now-page { background-image: url('{{( array_key_exists('propimage', $propertyDetail)) ? \ImageCache::make($propertyImagesPath.$propertyDetail['propimage'][0]->file_name,100,1000,null) : ''}}');  }
+            .hotels-showcase-right-side { background-image: url('{{( array_key_exists('propimage', $propertyDetail)) ? \ImageCache::make($propertyImagesPath.$propertyDetail['propimage'][0]->file_name,100,1000,null) : ''}}'); }
+            .hotel-sec-block-two { background-image: url('{{( array_key_exists('propimage', $propertyDetail)) ? \ImageCache::make($propertyImagesPath.$propertyDetail['propimage'][1]->file_name,100,1000,null) : ''}}'); }
 
             .hotels-detail-description-text > p { max-height:100%; }
             .hotels-detail-description-text > p {
@@ -231,7 +239,7 @@
             .spa-sec-book-an-appoinment-btn { float: left !important; margin-left: 20px; }
             .spa-overlay-text span { padding-left:0px !important; }
             .restaurant-sec-main-bg-align {
-                background-image: url("{{( array_key_exists('propimage', $propertyDetail)) ? $propertyDetail['propimage_thumbpath'].$propertyDetail['propimage'][0]->file_name : ''}}");
+                background-image: url("{{( array_key_exists('propimage', $propertyDetail)) ? $propertyImagesPath.$propertyDetail['propimage'][0]->file_name : ''}}");
             }
             .next-prevoius-navigation.left-arrow-align {
                 display: none;
@@ -1626,12 +1634,12 @@
                         @if(!empty($propertyDetail['propimage']))
                         <ul>
                             @foreach($propertyDetail['propimage'] as $propimg)
-                            {{--*/ $thactualsize = getimagesize($propertyDetail['propimage_containerpath'].$propimg->file_name); /*--}}
+                            {{--*/ $thactualsize = getimagesize($containerPath.$propimg->file_name); /*--}}
                             @if($thactualsize[0]>$thactualsize[1])
                             <li class="{{($propertyDetail['propimage'][0]==$propimg) ? 'active' : ''}}">
                                 <div class="image editorial-image">
                                     <div class="overlaySlider"></div>
-                                    <img src="{{ $propertyImagesPath.$propimg->file_name }}" alt=""/>
+                                    <img src="{{ \ImageCache::make($propertyImagesPath.$propimg->file_name,100,1200,null) }}" alt=""/>
                                 </div>
 
                                 <div class="editorial-text">
@@ -2502,10 +2510,11 @@
 														foreach($relatedgridpropertiesArr as $props) { ?>
 														
 														<li class="grid-item wow fadeInUp">
-														<a href="{{URL::to($props['data']->property_slug)}}">
+														<a href="{{URL::to($props->property_slug)}}">
 															<figure>
-																<div class="portfolio-img bg-deep-pink">			@if(array_key_exists('image', $props))
-																		<img alt="<?php echo $props['image']->file_name; ?>" src="<?php echo URL::to('uploads/property_imgs_thumbs/front_property_'.$props['image']->folder_id.'_'.$props['image']->file_name); ?>">
+																<div class="portfolio-img bg-deep-pink">
+                                                                                                                                        @if(array_key_exists('image', $props))
+																		<img alt="<?php echo $props->image->file_name; ?>" src="<?php echo URL::to('uploads/property_imgs_thumbs/front_property_'.$props->image->folder_id.'_'.$props->image->file_name); ?>">
 																	@else
 																		<img src="http://placehold.it/800x560" alt=""/>
 																	@endif
@@ -2514,8 +2523,8 @@
 																	<div class="portfolio-hover-main text-left">
 																		<div class="portfolio-hover-box vertical-align-bottom">
 																			<div class="portfolio-hover-content position-relative last-paragraph-no-margin">
-																				<span class="font-weight-600 line-height-normal alt-font text-white text-uppercase margin-one-half-bottom display-block">{{$props['data']->property_name}}</span>
-																				<p class="text-white text-uppercase text-extra-small">From € {{$props['data']->price}} </p>
+																				<span class="font-weight-600 line-height-normal alt-font text-white text-uppercase margin-one-half-bottom display-block">{{$props->property_name}}</span>
+																				<!--<p class="text-white text-uppercase text-extra-small">From € $props->price </p>-->
 																			</div>
 																		</div>
 																	</div>
@@ -2525,16 +2534,16 @@
 														<div class="listDetails">
 															<div class="photographBox ai-grid-tiitles">
 																<h2>
-																	<a title="{{$props['data']->property_name}}" class="photograph FltLft ai-filtreted-hotel-name" rel="2216" href="{{URL::to($props['data']->property_slug)}}">
-																	{{$props['data']->property_name}}
+																	<a title="{{$props->property_name}}" class="photograph FltLft ai-filtreted-hotel-name" rel="2216" href="{{URL::to($props->property_slug)}}">
+																	{{$props->property_name}}
 																	</a>
 																	<span class="FltRgt">
-																		<a class="carticon" href="javascript:void(0)" onclick="submitgridbookform('{{$props['data']->property_slug}}#*{{$props['data']->id}}');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>
+																		<a class="carticon" href="javascript:void(0)" onclick="submitgridbookform('{{$props->property_slug}}#*{{$props->id}}');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>
 																	</span>
 																</h2>
 															</div>
 															<div class="entire_story MrgTop5 ai-view-hotels-tittle">
-																<a class="textButton arrowButton detail_view MrgTop5" rel="<?php echo $props['data']->id; ?>" href="#">
+																<a class="textButton arrowButton detail_view MrgTop5" rel="<?php echo $props->id; ?>" href="#">
 																	Quick View 
 																</a>
 															</div>
@@ -2807,7 +2816,9 @@
         </script>
             <!-- custom scrollbar end -->
     
-		@include('layouts/elliot/ai_lightbox_popups_detailpage')
+		<?php
+//                @include('layouts/elliot/ai_lightbox_popups_detailpage')
+                ?>
 
              </body>
 </html>
