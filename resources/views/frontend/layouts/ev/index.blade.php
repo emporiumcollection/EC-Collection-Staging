@@ -212,7 +212,7 @@
                 <div class="hotel-next-previous-outer">
                     <div class="previous-btn previous-next-pannel"> 
                         <img class="img-responsive next-hotel-arrow" src="{{ asset('sximo/assets/images/editorial-left-arrow.png')}}" alt="">
-                        <a href="http://www.emporium-voyage.com/luxury-hotel-luxury-vander-urbani-resort">
+                        <a href="{{url('luxury-hotel-luxury-vander-urbani-resort')}}">
                             <div class="next-hotel-show-pannel">
                                 <img class="img-responsive" src="{{ asset('uploads/property_imgs_thumbs/front_property_4567_27731137764-82283525500.jpg')}}" alt="">
                                 <div class="next-hotel-tittle">
@@ -225,7 +225,7 @@
                 <div class="hotel-next-previous-outer">
                     <div class="next-hotel-btn previous-next-pannel"> 
                         <img class="img-responsive next-hotel-arrow" src="{{ asset('sximo/assets/images/editorial-right-arrow.png')}}" alt="">
-                        <a href="http://www.emporium-voyage.com/luxury-hotel-hotel-zoo-berlin-">
+                        <a href="{{url('luxury-hotel-hotel-zoo-berlin-')}}">
                             <div class="next-hotel-show-pannel">
                                 <img class="img-responsive" src="{{ asset('uploads/property_imgs_thumbs/front_property_4505_Emporium-Voyage-Hotel-Zoo-Berlin00017.jpg')}}" alt="">
                                 <div class="next-hotel-tittle">
