@@ -8,8 +8,6 @@
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1" />
         <!-- animation -->
         <link href="{{ asset('sximo/assets/css/landing-page-styles.css')}}" rel="stylesheet" type="text/css"/>
-
-
         <link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/animate.css')}}" />
         <!-- bootstrap -->
         <link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/bootstrap.min.css')}}" />
@@ -22,7 +20,6 @@
         <link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/style.css')}}" />
         <!-- responsive css -->
         <link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/responsive.css')}}" />
-        
                 
         <!-- Custom style -->
         <link href="{{ asset('sximo/assets/memform/css/custom-ai.css')}}" rel="stylesheet" type="text/css"/>
@@ -37,33 +34,31 @@
         <link href="{{ asset('sximo/assets/css/booking-form.css')}}" rel="stylesheet" type="text/css"/>
         <!-- AIC -->
 
-        
-        
         <link href="{{ asset('sximo/assets/css/style.css')}}" rel="stylesheet" type="text/css"/>
         <!--[if IE]>
             <script src="js/html5shiv.js"></script>
         <![endif]-->
         <style>
-                .alert.parsley {
-            margin-top: 5px;
-            margin-bottom: 0px;
-            padding: 10px 15px 10px 15px;
-        }
-        .check .alert {
-            margin-top: 20px;
-        }
-        .credit-card-box .panel-title {
-            display: inline;
-            font-weight: bold;
-        }
-        .credit-card-box .display-td {
-            display: table-cell;
-            vertical-align: middle;
-            width: 100%;
-        }
-        .credit-card-box .display-tr {
-            display: table-row;
-        }
+            .alert.parsley {
+                margin-top: 5px;
+                margin-bottom: 0px;
+                padding: 10px 15px 10px 15px;
+            }
+            .check .alert {
+                margin-top: 20px;
+            }
+            .credit-card-box .panel-title {
+                display: inline;
+                font-weight: bold;
+            }
+            .credit-card-box .display-td {
+                display: table-cell;
+                vertical-align: middle;
+                width: 100%;
+            }
+            .credit-card-box .display-tr {
+                display: table-row;
+            }
             .right-menus ul li a {
                 background-color: #1E2023;
                 border-bottom: 1px solid #414246;
@@ -165,27 +160,27 @@
                 position: relative;
                 width: 22% !important;
             }
-        .slider-sec-side-text-bg {
-    height: 580px;
-    margin-top: -580px !important;
-        }
-        #align-to-top .slider-sec-side-text-bg .book-button.open-show_more-page.hotel-btn {
-    background: #fff none repeat scroll 0 0;
-    color: #000;
-    font-size: 15px;
-    margin-left: 0 !important;
-    margin-top: 36px;
-    max-height: 95px;
-    min-height: 95px;
-    opacity: 0.83;
-    padding: 34px 27px;
-    text-align: center;
-    text-transform: uppercase;
-    width: 174px;
-    }
-    .editorial-image-slider-previous-btn {
-    margin-left: 472px !important;
-    }
+            .slider-sec-side-text-bg {
+                height: 580px;
+                margin-top: -580px !important;
+            }
+            #align-to-top .slider-sec-side-text-bg .book-button.open-show_more-page.hotel-btn {
+                background: #fff none repeat scroll 0 0;
+                color: #000;
+                font-size: 15px;
+                margin-left: 0 !important;
+                margin-top: 36px;
+                max-height: 95px;
+                min-height: 95px;
+                opacity: 0.83;
+                padding: 34px 27px;
+                text-align: center;
+                text-transform: uppercase;
+                width: 174px;
+            }
+            .editorial-image-slider-previous-btn {
+                margin-left: 472px !important;
+            }
             
         </style>
         <script type="text/javascript">
@@ -207,11 +202,7 @@
         <!-- Start slider section -->
         <div class="container-fluid">
             <header class="haside">
-
                 <div class="logo-padding-left editorial-logo-align">
-                    <!--<div>
-                            <a href="#" title="Add to Favorites" class="book-button" onclick="add_to_lightbox(41688, 58);"><i class="fa fa-plus " aria-hidden="true" ></i> Add</a>
-                    </div>-->
                     <div class="go-back-button-container">
                         <button class="go-back-button" onclick="goBack()">Go Back</button>
                         <div class="previous-page-screen-short-container">
@@ -220,10 +211,10 @@
                 </div>
                 <div class="hotel-next-previous-outer">
                     <div class="previous-btn previous-next-pannel"> 
-                        <img class="img-responsive next-hotel-arrow" src="http://www.emporium-voyage.com/sximo/assets/images/editorial-left-arrow.png" alt="">
+                        <img class="img-responsive next-hotel-arrow" src="{{ asset('sximo/assets/images/editorial-left-arrow.png')}}" alt="">
                         <a href="http://www.emporium-voyage.com/luxury-hotel-luxury-vander-urbani-resort">
                             <div class="next-hotel-show-pannel">
-                                <img class="img-responsive" src="http://www.emporium-voyage.com/uploads/property_imgs_thumbs/front_property_4567_27731137764-82283525500.jpg" alt="">
+                                <img class="img-responsive" src="{{ asset('uploads/property_imgs_thumbs/front_property_4567_27731137764-82283525500.jpg')}}" alt="">
                                 <div class="next-hotel-tittle">
                                     <h2>VANDER URBANI RESORT</h2>
                                 </div>
@@ -233,10 +224,10 @@
                 </div>
                 <div class="hotel-next-previous-outer">
                     <div class="next-hotel-btn previous-next-pannel"> 
-                        <img class="img-responsive next-hotel-arrow" src="http://www.emporium-voyage.com/sximo/assets/images/editorial-right-arrow.png" alt="">
+                        <img class="img-responsive next-hotel-arrow" src="{{ asset('sximo/assets/images/editorial-right-arrow.png')}}" alt="">
                         <a href="http://www.emporium-voyage.com/luxury-hotel-hotel-zoo-berlin-">
                             <div class="next-hotel-show-pannel">
-                                <img class="img-responsive" src="http://www.emporium-voyage.com/uploads/property_imgs_thumbs/front_property_4505_Emporium-Voyage-Hotel-Zoo-Berlin00017.jpg" alt="">
+                                <img class="img-responsive" src="{{ asset('uploads/property_imgs_thumbs/front_property_4505_Emporium-Voyage-Hotel-Zoo-Berlin00017.jpg')}}" alt="">
                                 <div class="next-hotel-tittle">
                                     <h2>Hotel Zoo Berlin </h2>
                                 </div>
@@ -266,40 +257,40 @@
                         <div class="panel-group new-sidebar-sk" id="accordion">
                             {{--*/ $page_menus = SiteHelpers::menus('business') /*--}}
                             @if(!empty($page_menus))
-                            @foreach ($page_menus as $pmenu)
-                                <div class="panel panel-default custom-post-panel">
-                                    <a @if(count($pmenu['childs']) > 0) data-toggle="collapse" data-parent="#accordion" href="#webpage{{$pmenu['menu_id']}}" @else @if($pmenu['menu_type'] =='external') href="{{ URL::to($pmenu['url'])}}" @else href="{{ URL::to($pmenu['module'])}}" @endif @endif class="heading-stying collapsed">
-                                        <div class="panel-heading custom-heading">
-                                            @if(CNF_MULTILANG ==1 && isset($pmenu['menu_lang']['title'][Session::get('lang')]))
-                                                {{ $pmenu['menu_lang']['title'][Session::get('lang')] }}
-                                            @else
-                                                {{$pmenu['menu_name']}}
-                                            @endif
-                                        </div>
-                                    </a>
-                                    @if(count($pmenu['childs']) > 0)
-                                        <div id="webpage{{$pmenu['menu_id']}}" class="panel-collapse  collapse">
-                                            <div class="panel-body custom-panel-body">
-                                                <div class="dl-filter">
-                                                    @foreach ($pmenu['childs'] as $pmenu2)
-                                                        <div class="form-group post-filter-inputs">
-                                                            <label>
-                                                                <a @if($pmenu2['menu_type'] =='external') href="{{ URL::to($pmenu2['url'])}}" @else href="{{ URL::to($pmenu2['module'])}}" @endif>
-                                                                    @if(CNF_MULTILANG ==1 && isset($pmenu2['menu_lang']['title'][Session::get('lang')]))
-                                                                        {{ $pmenu2['menu_lang']['title'][Session::get('lang')] }}
-                                                                    @else
-                                                                        {{$pmenu2['menu_name']}}
-                                                                    @endif
-                                                                </a>
-                                                            </label>
-                                                        </div>
-                                                    @endforeach
+                                @foreach ($page_menus as $pmenu)
+                                    <div class="panel panel-default custom-post-panel">
+                                        <a @if(count($pmenu['childs']) > 0) data-toggle="collapse" data-parent="#accordion" href="#webpage{{$pmenu['menu_id']}}" @else @if($pmenu['menu_type'] =='external') href="{{ URL::to($pmenu['url'])}}" @else href="{{ URL::to($pmenu['module'])}}" @endif @endif class="heading-stying collapsed">
+                                            <div class="panel-heading custom-heading">
+                                                @if(CNF_MULTILANG ==1 && isset($pmenu['menu_lang']['title'][Session::get('lang')]))
+                                                    {{ $pmenu['menu_lang']['title'][Session::get('lang')] }}
+                                                @else
+                                                    {{$pmenu['menu_name']}}
+                                                @endif
+                                            </div>
+                                        </a>
+                                        @if(count($pmenu['childs']) > 0)
+                                            <div id="webpage{{$pmenu['menu_id']}}" class="panel-collapse  collapse">
+                                                <div class="panel-body custom-panel-body">
+                                                    <div class="dl-filter">
+                                                        @foreach ($pmenu['childs'] as $pmenu2)
+                                                            <div class="form-group post-filter-inputs">
+                                                                <label>
+                                                                    <a @if($pmenu2['menu_type'] =='external') href="{{ URL::to($pmenu2['url'])}}" @else href="{{ URL::to($pmenu2['module'])}}" @endif>
+                                                                        @if(CNF_MULTILANG ==1 && isset($pmenu2['menu_lang']['title'][Session::get('lang')]))
+                                                                            {{ $pmenu2['menu_lang']['title'][Session::get('lang')] }}
+                                                                        @else
+                                                                            {{$pmenu2['menu_name']}}
+                                                                        @endif
+                                                                    </a>
+                                                                </label>
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    @endif
-                                </div>
-                            @endforeach
+                                        @endif
+                                    </div>
+                                @endforeach
                             @endif
                         </div>
                         <section class="regular slider">
@@ -321,11 +312,11 @@
                                 </div>
                             </div>
                             @if(!empty($landingads))
-                            @foreach($landingads as $lnads)
-                            <div class="slick-cstm-width">
-                                <a href="{{ (strpos($lnads->adv_link, 'http://') !== false) ? $lnads->adv_link : 'http://'.$lnads->adv_link }}"><img src="{{URL::to('uploads/users/advertisement/'.$lnads->adv_img)}}"></a>
-                            </div>
-                            @endforeach
+                                @foreach($landingads as $lnads)
+                                    <div class="slick-cstm-width">
+                                        <a href="{{ (strpos($lnads->adv_link, 'http://') !== false) ? $lnads->adv_link : 'http://'.$lnads->adv_link }}"><img src="{{URL::to('uploads/users/advertisement/'.$lnads->adv_img)}}"></a>
+                                    </div>
+                                @endforeach
                             @endif
                         </section>
                     </div>
@@ -355,7 +346,7 @@
                                     <div class="swiper-button-prev swiper-prev-style4"><i class="fa fa-arrow-down" aria-hidden="true"></i></div>
                                 </div>
                                 <div class="scroll-button">
-                                    <a href="#align-to-top" class="align-to-top-arrow"><img src="http://www.emporium-voyage.com/sximo/assets/images/scroll-down.png" class="down-arrow-align animate-arrow" alt=""> </a>
+                                    <a href="#align-to-top" class="align-to-top-arrow"><img src="{{ asset('sximo/assets/images/scroll-down.png')}}" class="down-arrow-align animate-arrow" alt=""> </a>
                                 </div>
                             </div>
                         </section>
@@ -365,35 +356,33 @@
                     <section class="wow fadeIn big-section cstmaiclass" id="align-to-top">
                         <div class="container-fluid">
                             <div class="row equalize sm-equalize-auto">
-                    <!-- BEGIN CONTENT -->
-                    @yield('content')
-                    <!-- END CONTENT -->
+                                <!-- BEGIN CONTENT -->
+                                @yield('content')
+                                <!-- END CONTENT -->
+                            </div>
                         </div>
-                        </div>
-
-                       
                     </section>
                     
                     <div class="hotel-property-section-bg">
-                            <div class="clearfix"></div>
-                            <!--Show More Slide-->
-                            <div class="show_more-page">
-                                <div class="open-show_more-html">
-                                    <div><a class="close-btn-show_more close-btn-align" href="#">&times;</a></div>
-                                    <div class="container-">
-                                        <div class="row-">
-                                            <div class="clearfix"></div>
-                                            <div class="col-md-6 col-sm-6 rmimgp">
+                        <div class="clearfix"></div>
+                        <!--Show More Slide-->
+                        <div class="show_more-page">
+                            <div class="open-show_more-html">
+                                <div><a class="close-btn-show_more close-btn-align" href="#">&times;</a></div>
+                                <div class="container-">
+                                    <div class="row-">
+                                        <div class="clearfix"></div>
+                                        <div class="col-md-6 col-sm-6 rmimgp">
 
-                                            </div>
-                                            <div class="col-md-6 col-sm-6 single-right-text-product">
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 single-right-text-product">
 
-                                            </div>
-                                        </div>  
-                                    </div>
+                                        </div>
+                                    </div>  
                                 </div>
                             </div>
                         </div>
+                    </div>
 
                     <style>
                         .footer
@@ -426,59 +415,57 @@
         <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/memform/js/slick.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/js/parsley.min.js')}}" type="text/javascript"></script>
-
         <script>
-                            $(document).ready(function () {
-                                $("a").on('click', function (event) {
-                                    if (this.hash !== "") {
-                                        event.preventDefault();
-                                        var hash = this.hash;
-                                        $('html, body').animate({
-                                            scrollTop: $(hash).offset().top
-                                        }, 800, function () {
-                                            window.location.hash = hash;
-                                        });
-                                    }
-                                });
-                            });
-                            $('a[href*="#"]')
-                                    // Remove links that don't actually link to anything
-                                    .not('[href="#"]')
-                                    .not('[href="#0"]')
-                                    .click(function (event) {
-                                        // On-page links
-                                        if (
-                                                location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
-                                                &&
-                                                location.hostname == this.hostname
-                                                ) {
-                                            // Figure out element to scroll to
-                                            var target = $(this.hash);
-                                            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-                                            // Does a scroll target exist?
-                                            if (target.length) {
-                                                // Only prevent default if animation is actually gonna happen
-                                                event.preventDefault();
-                                                $('html, body').animate({
-                                                    scrollTop: target.offset().top
-                                                }, 1000, function () {
-                                                    // Callback after animation
-                                                    // Must change focus!
-                                                    var $target = $(target);
-                                                    $target.focus();
-                                                    if ($target.is(":focus")) { // Checking if the target was focused
-                                                        return false;
-                                                    } else {
-                                                        $target.attr('tabindex', '-1'); // Adding tabindex for elements not focusable
-                                                        $target.focus(); // Set focus again
-                                                    }
-                                                    ;
-                                                });
-                                            }
-                                        }
-                                    });
-        </script>
-        <script type="text/javascript">
+            $(document).ready(function () {
+                $("a").on('click', function (event) {
+                    if (this.hash !== "") {
+                        event.preventDefault();
+                        var hash = this.hash;
+                        $('html, body').animate({
+                            scrollTop: $(hash).offset().top
+                        }, 800, function () {
+                            window.location.hash = hash;
+                        });
+                    }
+                });
+            });
+            $('a[href*="#"]')
+            // Remove links that don't actually link to anything
+            .not('[href="#"]')
+            .not('[href="#0"]')
+            .click(function (event) {
+                // On-page links
+                if (
+                        location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
+                        &&
+                        location.hostname == this.hostname
+                        ) {
+                    // Figure out element to scroll to
+                    var target = $(this.hash);
+                    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                    // Does a scroll target exist?
+                    if (target.length) {
+                        // Only prevent default if animation is actually gonna happen
+                        event.preventDefault();
+                        $('html, body').animate({
+                            scrollTop: target.offset().top
+                        }, 1000, function () {
+                            // Callback after animation
+                            // Must change focus!
+                            var $target = $(target);
+                            $target.focus();
+                            if ($target.is(":focus")) { // Checking if the target was focused
+                                return false;
+                            } else {
+                                $target.attr('tabindex', '-1'); // Adding tabindex for elements not focusable
+                                $target.focus(); // Set focus again
+                            }
+                            ;
+                        });
+                    }
+                }
+            });
+        
             $(document).on('ready', function () {
                 $(".regular").slick({
                     dots: false,
@@ -491,9 +478,8 @@
                     autoplaySpeed: 3000
                 });
             });
-        </script>
-        <!-- contact email aside -->
-        <script>
+            /* contact email aside */
+
             $('.contact-aside').hover(
                     function () {
                         $(this).addClass('active')
@@ -539,8 +525,6 @@
                 });
                 return false;
             });
-            
-            
         </script>
         <!-- contact email aside -->
     </body>
