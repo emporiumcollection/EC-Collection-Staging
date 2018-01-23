@@ -5,6 +5,7 @@ class CommonHelper
 {
     //Return All images path of Property
     static function getInfo(){
+
     	$data = array();
 		\Session::put('lang', 'en');
         $getlang = \Session::get('newlang');

@@ -10,8 +10,9 @@ class PersonalizedServiceController extends Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->data['pageTitle'] ='';
-}
+        $this->data['pageTitle'] = '';
+        $this->data['data'] = CommonHelper::getInfo();
+    }
     
     /* Method : Index
      *   Description : The Methos is using for personalized page
