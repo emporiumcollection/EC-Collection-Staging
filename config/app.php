@@ -215,6 +215,7 @@ return [
          'CustomQuery' => App\Helpers\CustomQuery::class,
          'Debugbar' => Barryvdh\Debugbar\Facade::class,
 	 'ImageCache' => App\Helpers\ImageCache::class,
+     'CommonHelper'=> App\Helpers\CommonHelper::class,
 
     ],
 

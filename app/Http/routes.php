@@ -15,8 +15,11 @@
 
 
 Route::get('/', 'HomeController@index');
+/********** Added By Ravinder *********/
 Route::get('generate/destination', 'GenerateController@destinationGenerate');
 Route::get('generate/hotel', 'GenerateController@hotelGenerate');
+Route::get('personalized-service', 'Frontend\PersonalizedServiceController@index');
+/*************** End *************/
 Route::controller('home', 'HomeController');
 
 Route::controller('/user', 'UserController');
