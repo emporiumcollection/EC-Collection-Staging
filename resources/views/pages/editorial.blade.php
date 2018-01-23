@@ -308,8 +308,7 @@
                            .editorial-hotel-detail-page .right-menus ul li a[data-hotel-option="book_now"] {
                                /*background: #ABA07C;
                             color: #ffff;*/
-                               background: #DADAD5 !important;
-                               color: #000000;
+                               background: rgba(37, 37, 37, 1);
                            }
                            
                            .editorial-page-booking-bar .top-booking-bar-btn, .editorial-hotel-detail-page .book-button, .editorial-hotel-detail-page .hotel-slider-price, .editorial-hotel-detail-page .spa-sec-book-an-appoinment-btn {
