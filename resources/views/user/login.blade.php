@@ -17,7 +17,7 @@
 	</div>
 	<div class="sbox-content">
 	<div class="text-center  animated fadeInDown delayp1">
-		<img src="{{ asset('sximo/images/design-location-logo.png')}}" width="150" />
+		<img src="{{ asset('sximo/assets/images/design-location-logo.png')}}" width="150"   style="background-color: #1E2023;" />
 	</div>	
  
 	    	@if(Session::has('message'))
