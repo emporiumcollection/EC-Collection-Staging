@@ -2310,7 +2310,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                             });
                                         </script>
                                         <?php endif; ?>
-                                        <?php if($continent == ''): ?>
+                                        <?php if($continent != ''): ?>
                                         <script>
                                             $(document).ready(function() {
                                                 $('#maindestinations').collapse('show');
