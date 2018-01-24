@@ -2334,7 +2334,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                                 $(".destination-node-l4-<?php echo $cat; ?>-btn").parent().parent().find("> .node").css({"padding-left": "10px", "margin-top": "5px", "text-transform": "inherit"});
                                                 $(".destination-node-l4-<?php echo $cat; ?>-btn").parent().parent().find("> .node > a").css({"text-transform": "none"});
                                                 $('#maindestinations a.node-btn').removeClass('active');
-                                                $(".destination-node-l2-<?php echo $region; ?>-btn").parent().find("> .node > a").addClass('active');
+                                                $(".destination-node-l4-<?php echo $cat; ?>-btn").parent().find("> .node > a").addClass('active');
                                                 <?php endif; ?>
                                                 
                                                 $(".filter-grid-page-side-bar").scrollTop($('#maindestinations').position().top - 65);
