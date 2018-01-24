@@ -2443,7 +2443,7 @@
                             imagesPro += data.typedata.price;
                             imagesPro += '</div">';
                         }
-                        imagesPro += '<A href="#"><div class="hotel-book-now">Book Now</div></a>';
+                        imagesPro += '<a onclick="choose_room_type(' + data.typedata.id + ');" href="javascript:void(0);"><div class="hotel-book-now">Book Now</div></a>';
                         imagesPro += '</div>';
                         imagesPro += '<div class="inner-pop-up-book-btn">';
                         imagesPro += '<a href="#" onclick="choose_room_type(' + data.typedata.id + ');">Book</a>';
