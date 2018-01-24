@@ -111,11 +111,11 @@
             }
             
             .block-content.content {
-                width: 35px;
+                width: 22px;
                 float: right;
                 height: 30px;
                 margin-top: 0px;
-                margin-right: 0px;
+                margin-right: -6px;
             }
           
             .detailfaLock {
@@ -557,14 +557,40 @@
             width: 0%;
         }
         .post-filter-inputs:hover, .post-filter-inputs:active, .post-filter-inputs:focus {
-            background-color: #dadad5;
+            background-color: #89837B;
             border-left: 4px solid #a1a39c;
-            color: black !important;
+            color: #fff !important;
             transition: all 0.3s ease 0s;
         }
 
-        
-         /* sidebar css */
+         /* sidebar css end */
+         
+          /*
+        *  scrollbar STYLE 3
+        */
+
+       #style-3::-webkit-scrollbar1-track
+       {
+               -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+               background-color: #000;
+       }
+
+       #style-3::-webkit-scrollbar1
+       {
+               width: 6px;
+               background-color: #F5F5F5;
+       }
+
+       #style-3::-webkit-scrollbar1-thumb
+       {
+               background-color: #fff;
+       }
+       .scrollbar1 {
+            max-height: 300px;
+            margin-bottom: 25px;
+            overflow: auto;
+        }
+         
         </style>
 		
 		<!-- Global site tag (gtag.js) - Google Analytics -->
@@ -910,11 +936,11 @@
                                                                     <ul class="members-drop-list" style="display: none;">
                                                                         <li>
                                                                             <label>Adult</label>
-                                                                            <input id="adult-input-value" name="adult" class="input-right" value="2" min="1" max="5" type="number">
+                                                                            <input id="adult-input-value" name="adult" class="input-right" value="2" min="1" max="10" type="number">
                                                                         </li>
                                                                         <li>
                                                                             <label>Children</label>
-                                                                            <input id="childerns-input-value" name="childs" class="input-right" value="0" min="0" max="5" type="number">
+                                                                            <input id="childerns-input-value" name="childs" class="input-right" value="0" min="0" max="10" type="number">
                                                                         </li>
                                                                     </ul>
                                                                 </div>
@@ -1028,7 +1054,7 @@
 														<h3 class="bh-slideshow-thumbnail-split-preview-title">
 															<a href="#">{{$slides->slider_title}}</a>
 														</h3>
-														<div class="bh-slideshow-thumbnail-split-preview-content">{{$slides->slider_description}}</div>
+														<div class="bh-slideshow-thumbnail-split-preview-content scrollbar1" id="style-3">{{$slides->slider_description}}</div>
                                                                                                                 @if($slides->slider_link != '#')
 														<a class="uk-margin-top uk-button uk-button-primary" href="http://{{$slides->slider_link}}">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>
                                                                                                                 @endif
@@ -2068,6 +2094,9 @@ url: "{{ URL::to('filter_search_destionation')}}",
                         $('#listrecrds').val(sIndex);
                         $('#ttlpg').val(data.total_record);
                         isPreviousEventComplete = true;
+                        
+                        $(window).scrollTop(0);
+                        
                         }
                          
         },
@@ -2250,12 +2279,12 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                         <?php // endif; ?>
                                         <?php // if(!isset($_REQUEST['destination_page']) && !isset($_REQUEST['arrive'])): ?>
                                         <div class="panel panel-default custom-post-panel">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" class="heading-stying <?php echo ($continent == '')? '' : 'collapsed'; ?>">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" class="heading-stying <?php echo ($segment_1!='search' && $continent == '')? '' : 'collapsed'; ?>">
                                                 <div class="panel-heading custom-heading">
                                                     Experience
                                                 </div>
                                             </a>
-                                            <div id="collapse1" class="panel-collapse <?php echo ($continent == '')? 'in' : ''; ?> <?php echo (isset($_REQUEST['s']) && in_array($_REQUEST['s'], array('Beach Hotels', 'Green Properties', 'Go Urban Hotels', 'Infinity Pools', 'Spa and Wellness Hotels', 'Mountain Ski Resorts', 'Yoga Hotels', 'Culinary Delights', 'Family Friendly', 'Unusual Adventure Hotels')))? 'in' : ''; ?> collapse">
+                                            <div id="collapse1" class="panel-collapse <?php echo ($segment_1!='search' && $continent == '')? 'in' : ''; ?> <?php echo (isset($_REQUEST['s']) && in_array($_REQUEST['s'], array('Beach Hotels', 'Green Properties', 'Go Urban Hotels', 'Infinity Pools', 'Spa and Wellness Hotels', 'Mountain Ski Resorts', 'Yoga Hotels', 'Culinary Delights', 'Family Friendly', 'Unusual Adventure Hotels')))? 'in' : ''; ?> collapse">
                                                 <div class="panel-body custom-panel-body">
                                                     <div class="dl-filter">
                                                         <form>
@@ -2303,18 +2332,42 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                             </div>
                                         </div>
                                         <?php // endif; ?>
-                                        <?php if($continent == ''): ?>
+                                        <?php if($segment_1!='search' && $continent == ''): ?>
                                         <script>
                                             $(document).ready(function() {
                                                 $(".filter-grid-page-side-bar").scrollTop($('#collapse1').position().top - 65);
                                             });
                                         </script>
                                         <?php endif; ?>
-                                        <?php if($continent != ''): ?>
+                                        <?php if($segment_1!='search' && $continent != ''): ?>
                                         <script>
                                             $(document).ready(function() {
                                                 $('#maindestinations').collapse('show');
-                                                $(".filter-grid-page-side-bar").scrollTop($('#maindestinations').position().top - 65);
+                                                $('#maindestinations').on('shown.bs.collapse', function() {
+                                                    $(".destination-nodes-container-<?php echo $continent; ?>").find("> .node").toggle();
+                                                    $(".destination-nodes-container-<?php echo $continent; ?>").find("> .node").css({"padding-left": "10px", "margin-top": "5px", "text-transform": "inherit"});
+                                                    $(".destination-nodes-container-<?php echo $continent; ?>").find("> .node > a").css({"text-transform": "none"});
+
+                                                    $('#maindestinations a.node-btn').removeClass('active');
+                                                    $(".destination-nodes-container-<?php echo $continent; ?>").find("> .node > a").addClass('active');
+
+                                                    <?php if($region != ''): ?>
+                                                    $(".destination-node-l2-<?php echo $region; ?>-btn").parent().find("> .node").toggle();
+                                                    $(".destination-node-l2-<?php echo $region; ?>-btn").parent().find("> .node").css({"padding-left": "10px", "margin-top": "5px", "text-transform": "inherit"});
+                                                    $(".destination-node-l2-<?php echo $region; ?>-btn").parent().find("> .node > a").css({"text-transform": "none"});
+                                                    $('#maindestinations a.node-btn').removeClass('active');
+                                                    $(".destination-node-l2-<?php echo $region; ?>-btn").parent().find("> .node > a").addClass('active');
+                                                    <?php endif; ?>
+                                                    <?php if($cat != ''): ?>
+                                                    $(".destination-node-l4-<?php echo $cat; ?>-btn").parent().parent().find("> .node").toggle();
+                                                    $(".destination-node-l4-<?php echo $cat; ?>-btn").parent().parent().find("> .node").css({"padding-left": "10px", "margin-top": "5px", "text-transform": "inherit"});
+                                                    $(".destination-node-l4-<?php echo $cat; ?>-btn").parent().parent().find("> .node > a").css({"text-transform": "none"});
+                                                    $('#maindestinations a.node-btn').removeClass('active');
+                                                    $(".destination-node-l4-<?php echo $cat; ?>-btn").addClass('active');
+                                                    <?php endif; ?>
+
+                                                    $(".filter-grid-page-side-bar").scrollTop($('#maindestinations').position().top - 65);
+                                                });
                                             });
                                         </script>
                                         <?php endif; ?>
@@ -2549,6 +2602,13 @@ url: "{{ URL::to('filter_search_destionation')}}",
 								imagesPro += '<option>1</option>';
 								imagesPro += '<option>2</option>';
 								imagesPro += '<option>3</option>';
+                                                                imagesPro += '<option>4</option>';
+                                                                imagesPro += '<option>5</option>';
+                                                                imagesPro += '<option>6</option>';
+                                                                imagesPro += '<option>7</option>';
+                                                                imagesPro += '<option>8</option>';
+                                                                imagesPro += '<option>9</option>';
+                                                                imagesPro += '<option>10</option>';
 								imagesPro += '</select>';
 								imagesPro += '</li>';
 								imagesPro += '<li>';
@@ -2557,6 +2617,14 @@ url: "{{ URL::to('filter_search_destionation')}}",
 								imagesPro += '<option>0</option>';
 								imagesPro += '<option>1</option>';
 								imagesPro += '<option>2</option>';
+                                                                imagesPro += '<option>3</option>';
+                                                                imagesPro += '<option>4</option>';
+                                                                imagesPro += '<option>5</option>';
+                                                                imagesPro += '<option>6</option>';
+                                                                imagesPro += '<option>7</option>';
+                                                                imagesPro += '<option>8</option>';
+                                                                imagesPro += '<option>9</option>';
+                                                                imagesPro += '<option>10</option>';
 								imagesPro += '</select>';
 								imagesPro += '</li>';
 								imagesPro += '<div class="clearfix"></div>';
@@ -2566,11 +2634,11 @@ url: "{{ URL::to('filter_search_destionation')}}",
 								imagesPro += '<button type="submit">BOOK NOW</button>';
 								imagesPro += '</div>';
 								imagesPro += '<div class="view-modify-cancel-booking">';
-								imagesPro += '<a href="#">View, Modify or Cancel your Booking</a>';
+								imagesPro += '<a href="{{URL::to("customer/login")}}">View, Modify or Cancel your Booking</a>';
 								imagesPro += '</div>';
 								imagesPro += '<ul class="booking-page-footer-section editorial-book-align" >';
 								imagesPro += '<li>';
-								imagesPro += '<a href="#" target="_blank">';
+								imagesPro += '<a href="{{URL::to("membership_hotel")}}" target="_blank">';
 								imagesPro += '<span>Join the worlds leading luxury club</span>';
 								imagesPro += '<h6 class="center">Enjoy exclusive members only benefits</h6>';
 								imagesPro += '</a>';
@@ -2586,7 +2654,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
 								imagesPro += '<li>';
 								imagesPro += '<a href="#" target="_blank">';
 								imagesPro += '<span>View or Modify Reserveration</span>';
-								imagesPro += '<h6 class="center">Login to Support Center</h6>';
+								imagesPro += '<h6 class="center">Login to HOTEL PMS</h6>';
 								imagesPro += '</a>';
 								imagesPro += '<div class="white-border-bottom"></div>';
 								imagesPro += '</li>';

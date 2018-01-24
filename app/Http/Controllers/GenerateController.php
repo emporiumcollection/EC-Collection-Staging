@@ -461,6 +461,9 @@ class GenerateController  extends Controller {
                                 $ourdesitnationLeftSideHTML  .= '<div class="node" >'.$lineBreak;
                                 $ourdesitnationLeftSideHTML  .= '<a class="node-btn destination-node-l3-'.str_replace(' ', '_', $sbdest->category_name).'-btn" href="javascript:void(0)" onclick="$(\'#maindestinations a.node-btn\').removeClass(\'active\');$(this).addClass(\'active\');filter_destination(\''.$sbdest->id.'\', \'country\');">'.$sbdest->category_name.'</a>'.$lineBreak;
                                 if(array_key_exists('subchild',$sbdest)){
+                                    usort($sbdest->subchild, function($a, $b) {
+                                        return trim($a->category_name) > trim($b->category_name);
+                                    });
                                     foreach($sbdest->subchild as $subchild){
                                         $ourdesitnationLeftSideHTML  .= '<div class="node" >'.$lineBreak;
                                         $ourdesitnationLeftSideHTML  .= '<a class="node-btn destination-node-l4-'.str_replace(' ', '_', $subchild->category_name).'-btn" href="javascript:void(0)" onclick="$(\'#maindestinations a.node-btn\').removeClass(\'active\');$(this).addClass(\'active\');filter_destination(\''.$subchild->id.'\', \'country\');">'.$subchild->category_name.'</a>'.$lineBreak;

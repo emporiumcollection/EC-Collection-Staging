@@ -634,8 +634,7 @@
                                 font-family: Raleway-ExtraLight;
                                 font-size: 70px;
                                 margin-left: -107px;
-                                margin-top: 36px;
-                                margin-top: 0px;
+                                margin-top: 130px;
                                 text-transform: uppercase;
                             }
                             
@@ -787,9 +786,7 @@
                                     text-transform: uppercase;
                                     text-align: center;
                                     font-family: Geomanist-light;
-                                    margin: 40px;
-                                    background: #f0f0f0;
-                                    padding: 20px 20px;
+                                    margin-bottom: 30px;
                                     float: left;
                                     width: 96%;
                             }
@@ -1164,7 +1161,7 @@
                             
                             .hotel-book-now {
                                 background: #ABA07C;
-                                color: #000;
+                                color: #fff;
                                 font-size: 25px;
                                 height: 71px;
                                 margin: 0px 0px 10px 3px;
@@ -1173,7 +1170,7 @@
                                 padding: 27px 5px;
                                 position: absolute;
                                 text-align: center;
-                                text-transform: uppercase;
+                                text-transform: none;
                                 width: 174px;
                                 z-index: 99;
                                 float: left;
@@ -1212,7 +1209,7 @@
                            #style-3::-webkit-scrollbar-track
                            {
                                    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-                                   background-color: #F5F5F5;
+                                   background-color: #000;
                            }
 
                            #style-3::-webkit-scrollbar
@@ -1223,7 +1220,7 @@
 
                            #style-3::-webkit-scrollbar-thumb
                            {
-                                   background-color: #000000;
+                                   background-color: #fff;
                            }
                            .scrollbar {
                                 float: left;
@@ -1236,19 +1233,43 @@
                             {
                                     min-height: 0px;
                             }
+                            #style-4::-webkit-scrollbar-track
+                           {
+                                   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+                                   background-color: #000;
+                           }
+
+                           #style-4::-webkit-scrollbar
+                           {
+                                   width: 6px;
+                                   background-color: #F5F5F5;
+                           }
+
+                           #style-4::-webkit-scrollbar-thumb
+                           {
+                                   background-color: #fff;
+                           }
                             
                             
                             /* after scroll highlighted portions */
                             
                             .nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
-                                background: #DADAD5 !important;
-                                color: #000000 !important;
+                                background: #89837b !important;
+                                color: #fff !important;
                             }
                             .right-menu-align .nav-pills li a {
                                 border-radius: 0px !important;
                             }
                             .right-menu-align .nav-pills li {
                                 margin-top: 0px;
+                            }
+                            
+                            /* 24-1-2017 */
+                            
+                            .EvMasonary {
+                                background: #f0f0f0;
+                                margin-top: 40px;
+                                padding: 20px 0px 40px 0px;
                             }
               
                             @import url('https://fonts.googleapis.com/css?family=Caveat');
@@ -1497,7 +1518,7 @@
                                                     <div class="row">
                                                         <div class="form-group padding-right-12">
                                                             <label class="align-with-label"></label>
-                                                            <input id="top-bar-booking-form-arrive" name="arrive" class="form-control ai-custom-deafault-style" type="text" placeholder="Arriving">
+                                                            <input id="top-bar-booking-form-arrive" name="arrive" class="form-control ai-custom-deafault-style" type="text" placeholder="Arrival">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1505,7 +1526,7 @@
                                                     <div class="row">
                                                         <div class="form-group padding-right-12">
                                                             <label class="align-with-label"></label>
-                                                            <input id="top-bar-booking-form-destination" name="destination" class="form-control ai-custom-deafault-style" type="text" placeholder="Departing">
+                                                            <input id="top-bar-booking-form-destination" name="destination" class="form-control ai-custom-deafault-style" type="text" placeholder="Departure">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1687,37 +1708,29 @@
                         </div>
                         <!--Hotel Section Block Two End Here-->
                         <!--Hotels Section-->
-                        <div id="dl_hotel_sec" class="dl_hotel-sec-bg">
-                            <div class="">
+                        <div id="dl_hotel_sec" class="hotel-sec-block-two srwerw">
+                            <div class="container">
                                 <div class="row">
                                     <div class="clearfix"></div>
-                                    <div class="col-md-12 col-sm-12 InnerDetailHeight disply-left-right-align cstmai-w">
+                                    <div class="disply-left-right-align">
                                         
-                                        <div class="col-md-6 col-sm-6 disply-left-right-inner hotels-des-left-side">
-                                            <div class="hotels-detail-heading-text">
-                                                <p>{!! nl2br($propertyDetail['data']->detail_section2_title) !!}</p>
-                                            </div>
-                                            <div class="hotels-detail-description-text scrollbar" id="style-3">
-                                                <p class="hotel-description-text">
+                                        <div class="col-md-6 disply-left-right-inner">
+                                            <div class="hotel-block-two-left-sec-align">
+                                                <h2>{!! nl2br($propertyDetail['data']->detail_section2_title) !!}</h2>
+                                                        <p class="scrollbar" id="style-4">
                                                     {!! nl2br($propertyDetail['data']->detail_section2_description_box1)!!}
                                                 </p>
                                                 <div class="force-overflow"></div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-sm-6 disply-left-right-inner hotels-showcase-right-side">
-                                            <div class="hotels-detail-heading-text rightHotelInner">
-                                                <p>{!! nl2br($propertyDetail['data']->detail_section2_title) !!}</p>
-                                            </div>
-                                            <div class="hotels-image-showcase-des-text scrollbar" id="style-3">
-                                                <p class="hotel-description-text">
+                                        <div class="col-md-6 disply-left-right-inner">
+                                             <div class="hotel-block-two-right-sec-align">
+                                                <h2>{!! nl2br($propertyDetail['data']->detail_section2_title) !!}</h2>
+                                                    <p class="hotel-description-text">
                                                     {!! nl2br($propertyDetail['data']->detail_section2_description_box2) !!}
                                                     <br>
 <!--                                                        <span class="pull-right">Situated in Norrmalm</span>-->
                                                 </p>
-                                                <div class="force-overflow"></div>
-                                            </div>
-                                            <div class="hotel-block-two-btn-right">
-                                                
                                             </div>
                                             <div class="clearfix"></div>
                                             <div class="image-showcase-below-big-text">
@@ -2079,7 +2092,7 @@
                                     </div>
                                     <ul class="dates" id="editorial-book-now-inputs">
                                         <li>
-                                            <div class="editorail-heading">Arrive</div>
+                                            <div class="editorail-heading">Arrival</div>
                                             <input id="date-range-editorial-arrive" name="arrive" class="datePicker- dateFrom-" value="{{ ($arrive_date!='') ? $arrive_date : date('d.m.Y') }}" type="text" />
                                         </li>
                                         <li>
@@ -2126,11 +2139,11 @@
                                         <button type="submit">BOOK NOW</button>
                                     </div>
                                     <div class="view-modify-cancel-booking">
-                                        <a href="#">View, Modify or Cancel your Booking</a>
+                                        <a href="https://www.emporium-voyage.com/customer/login">View, Modify or Cancel your Booking</a>
                                     </div>
                                     <ul class="booking-page-footer-section editorial-book-align" >
                                         <li>
-                                            <a href="#" target="_blank">
+                                            <a href="https://www.emporium-voyage.com/membership_hotel" target="_blank">
                                                 <span>Join the worlds leading luxury club</span>
                                                 <h6 class="center">Enjoy exclusive members only benefits</h6>
                                             </a>
@@ -2144,9 +2157,9 @@
                                             <div class="white-border-bottom"></div>
                                         </li>
                                         <li>
-                                            <a href="#" target="_blank">
+                                            <a href="https://www.emporium-voyage.com/user/login" target="_blank">
                                                 <span>View or Modify Reserveration</span>
-                                                <h6 class="center">Login to Support Center</h6>
+                                                <h6 class="center">Login to Hotel PMS</h6>
                                             </a>
                                             <div class="white-border-bottom"></div>
                                         </li>
@@ -2430,7 +2443,7 @@
                             imagesPro += data.typedata.price;
                             imagesPro += '</div">';
                         }
-                        imagesPro += '<A href="#"><div class="hotel-book-now">Book Now</div></a>';
+                        imagesPro += '<a onclick="choose_room_type(' + data.typedata.id + ');" href="javascript:void(0);"><div class="hotel-book-now">Book Now</div></a>';
                         imagesPro += '</div>';
                         imagesPro += '<div class="inner-pop-up-book-btn">';
                         imagesPro += '<a href="#" onclick="choose_room_type(' + data.typedata.id + ');">Book</a>';
@@ -2497,6 +2510,7 @@
 				
 				@if($propertyDetail['data']->assign_detail_city!='')
 					@if(!empty($relatedgridpropertiesArr))
+                                        <div class="EvMasonary">
 						<div class="container-">
 							<h2 class="bar-name-text-style">View our selection of Luxury Hotels in {{$propertyDetail['data']->assign_detail_city}}</h2>
 							<div class="row no-margin">
@@ -2566,6 +2580,7 @@
 								</div>
 							</div>
 						</div>
+                                            </div>
 					@endif
 				@endif
 				<!--Footer-->

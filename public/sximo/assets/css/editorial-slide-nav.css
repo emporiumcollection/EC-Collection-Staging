@@ -60,7 +60,7 @@ body.show_more-page-opend {
     line-height: 21px;
     min-height: 100vh;
     opacity: 0.50;
-    padding: 180px 0;
+    padding: 43px 0;
 }
 .inner-pop-up-book-btn {
     background-color: #fff;
@@ -83,7 +83,7 @@ body.show_more-page-opend {
 }
 .hotel-book-price {
     background: #ABA07C;
-    color: #252525;
+    color: #fff;
     font-size: 25px;
     height: 71px;
     margin-left: -174px;
@@ -113,7 +113,7 @@ body.show_more-page-opend {
 }
 .text-section{
     overflow: auto;
-    padding: 0 25px;
+    padding: 2px 25px;
 }
 .right-text-section{
     overflow: auto;
@@ -125,8 +125,8 @@ body.show_more-page-opend {
     overflow: auto;
 }
 .book-btn-sec {
-    height: 20vh;
-    margin-top: 25px;
+    height: 12vh;
+    margin-top: 20px;
     overflow: auto;
 }
 .text-section p {

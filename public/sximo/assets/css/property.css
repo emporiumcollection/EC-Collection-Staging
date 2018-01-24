@@ -49,12 +49,13 @@
     text-transform: uppercase;
 }
 .right-menus ul li a:hover, .right-menus ul li a:active, .right-menus ul li a:focus {
-    background-color: #dadad5 !important;
+    background-color: #89837B !important;
     border-left: 4px solid #a1a39c;
-    color: #000;
+    color: #fff;
     outline: medium none;
     text-decoration: none;
     transition: all 0.3s ease 0s;
+    opacity: 1 !important;
 }
 .right-menus .btns span {
     color: #9e9fa1;

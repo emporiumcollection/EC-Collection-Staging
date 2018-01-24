@@ -25,6 +25,13 @@
                         <option {{ ($adults!='' && $adults==1) ? 'selected' : '' }}>1</option>
                         <option {{ ($adults!='' && $adults==2) ? 'selected' : '' }}>2</option>
                         <option {{ ($adults!='' && $adults==3) ? 'selected' : '' }}>3</option>
+                        <option {{ ($adults!='' && $adults==4) ? 'selected' : '' }}>4</option>
+                        <option {{ ($adults!='' && $adults==5) ? 'selected' : '' }}>5</option>
+                        <option {{ ($adults!='' && $adults==6) ? 'selected' : '' }}>6</option>
+                        <option {{ ($adults!='' && $adults==7) ? 'selected' : '' }}>7</option>
+                        <option {{ ($adults!='' && $adults==8) ? 'selected' : '' }}>8</option>
+                        <option {{ ($adults!='' && $adults==9) ? 'selected' : '' }}>9</option>
+                        <option {{ ($adults!='' && $adults==10) ? 'selected' : '' }}>10</option>
                     </select>
                 </li>
                 <li>
@@ -33,6 +40,14 @@
                         <option {{ ($childs!='' && $childs==0) ? 'selected' : '' }}>0</option>
                         <option {{ ($childs!='' && $childs==1) ? 'selected' : '' }}>1</option>
                         <option {{ ($childs!='' && $childs==2) ? 'selected' : '' }}>2</option>
+                        <option {{ ($childs!='' && $childs==3) ? 'selected' : '' }}>3</option>
+                        <option {{ ($childs!='' && $childs==4) ? 'selected' : '' }}>4</option>
+                        <option {{ ($childs!='' && $childs==5) ? 'selected' : '' }}>5</option>
+                        <option {{ ($childs!='' && $childs==6) ? 'selected' : '' }}>6</option>
+                        <option {{ ($childs!='' && $childs==7) ? 'selected' : '' }}>7</option>
+                        <option {{ ($childs!='' && $childs==8) ? 'selected' : '' }}>8</option>
+                        <option {{ ($childs!='' && $childs==9) ? 'selected' : '' }}>9</option>
+                        <option {{ ($childs!='' && $childs==10) ? 'selected' : '' }}>10</option>
                     </select>
                 </li>
                 <div class="clearfix"></div>
@@ -167,14 +182,14 @@
         });
         $('#date-mobile').combodate({
             minYear: 2016,
-            maxYear: 2017,
+            maxYear: <?php echo date("Y") ?>,
         });
         $(function () {
             $('#date-mobile-departure').combodate();
         });
         $('#date-mobile-departure').combodate({
             minYear: 2016,
-            maxYear: 2017,
+            maxYear: <?php echo date("Y") ?>,
         });
         $('#date-mobile').combodate();
     });
