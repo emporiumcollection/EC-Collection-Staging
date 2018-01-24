@@ -2616,7 +2616,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
 								imagesPro += '<button type="submit">BOOK NOW</button>';
 								imagesPro += '</div>';
 								imagesPro += '<div class="view-modify-cancel-booking">';
-								imagesPro += '<a href="#">View, Modify or Cancel your Booking</a>';
+								imagesPro += '<a href="https://www.emporium-voyage.com/customer/login">View, Modify or Cancel your Booking</a>';
 								imagesPro += '</div>';
 								imagesPro += '<ul class="booking-page-footer-section editorial-book-align" >';
 								imagesPro += '<li>';
