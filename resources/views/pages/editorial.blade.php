@@ -634,8 +634,7 @@
                                 font-family: Raleway-ExtraLight;
                                 font-size: 70px;
                                 margin-left: -107px;
-                                margin-top: 36px;
-                                margin-top: 0px;
+                                margin-top: 130px;
                                 text-transform: uppercase;
                             }
                             
@@ -1210,7 +1209,7 @@
                            #style-3::-webkit-scrollbar-track
                            {
                                    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-                                   background-color: #F5F5F5;
+                                   background-color: #000;
                            }
 
                            #style-3::-webkit-scrollbar
@@ -1221,7 +1220,7 @@
 
                            #style-3::-webkit-scrollbar-thumb
                            {
-                                   background-color: #000000;
+                                   background-color: #fff;
                            }
                            .scrollbar {
                                 float: left;
@@ -1237,7 +1236,7 @@
                             #style-4::-webkit-scrollbar-track
                            {
                                    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-                                   background-color: #F5F5F5;
+                                   background-color: #000;
                            }
 
                            #style-4::-webkit-scrollbar
@@ -1248,7 +1247,7 @@
 
                            #style-4::-webkit-scrollbar-thumb
                            {
-                                   background-color: #000000;
+                                   background-color: #fff;
                            }
                             
                             
