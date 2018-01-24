@@ -586,7 +586,6 @@
                background-color: #fff;
        }
        .scrollbar1 {
-            float: left;
             max-height: 300px;
             margin-bottom: 25px;
             overflow: auto;
