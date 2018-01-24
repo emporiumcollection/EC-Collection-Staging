@@ -6301,6 +6301,7 @@ class HomeController extends Controller {
                         } else {
                             $this->data['sidebargridAds'] = '';
                         }
+                        $this->data['segment_1'] = $request->segment(1);
                         $this->data['continent'] = $request->continent;
                         $this->data['region'] = $request->region;
                         $this->data['cat'] = $request->cat;
