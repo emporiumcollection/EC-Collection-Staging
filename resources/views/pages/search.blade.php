@@ -2276,12 +2276,12 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                         <?php // endif; ?>
                                         <?php // if(!isset($_REQUEST['destination_page']) && !isset($_REQUEST['arrive'])): ?>
                                         <div class="panel panel-default custom-post-panel">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" class="heading-stying <?php echo ($continent == '')? '' : 'collapsed'; ?>">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" class="heading-stying <?php echo ($request->segment(1)!='search' && $continent == '')? '' : 'collapsed'; ?>">
                                                 <div class="panel-heading custom-heading">
                                                     Experience
                                                 </div>
                                             </a>
-                                            <div id="collapse1" class="panel-collapse <?php echo ($continent == '')? 'in' : ''; ?> <?php echo (isset($_REQUEST['s']) && in_array($_REQUEST['s'], array('Beach Hotels', 'Green Properties', 'Go Urban Hotels', 'Infinity Pools', 'Spa and Wellness Hotels', 'Mountain Ski Resorts', 'Yoga Hotels', 'Culinary Delights', 'Family Friendly', 'Unusual Adventure Hotels')))? 'in' : ''; ?> collapse">
+                                            <div id="collapse1" class="panel-collapse <?php echo ($request->segment(1)!='search' && $continent == '')? 'in' : ''; ?> <?php echo (isset($_REQUEST['s']) && in_array($_REQUEST['s'], array('Beach Hotels', 'Green Properties', 'Go Urban Hotels', 'Infinity Pools', 'Spa and Wellness Hotels', 'Mountain Ski Resorts', 'Yoga Hotels', 'Culinary Delights', 'Family Friendly', 'Unusual Adventure Hotels')))? 'in' : ''; ?> collapse">
                                                 <div class="panel-body custom-panel-body">
                                                     <div class="dl-filter">
                                                         <form>
@@ -2329,14 +2329,14 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                             </div>
                                         </div>
                                         <?php // endif; ?>
-                                        <?php if($continent == ''): ?>
+                                        <?php if($request->segment(1)!='search' && $continent == ''): ?>
                                         <script>
                                             $(document).ready(function() {
                                                 $(".filter-grid-page-side-bar").scrollTop($('#collapse1').position().top - 65);
                                             });
                                         </script>
                                         <?php endif; ?>
-                                        <?php if($continent != ''): ?>
+                                        <?php if($request->segment(1)!='search' && $continent != ''): ?>
                                         <script>
                                             $(document).ready(function() {
                                                 $('#maindestinations').collapse('show');
@@ -2631,11 +2631,11 @@ url: "{{ URL::to('filter_search_destionation')}}",
 								imagesPro += '<button type="submit">BOOK NOW</button>';
 								imagesPro += '</div>';
 								imagesPro += '<div class="view-modify-cancel-booking">';
-								imagesPro += '<a href="https://www.emporium-voyage.com/customer/login">View, Modify or Cancel your Booking</a>';
+								imagesPro += '<a href="{{URL::to("customer/login")}}">View, Modify or Cancel your Booking</a>';
 								imagesPro += '</div>';
 								imagesPro += '<ul class="booking-page-footer-section editorial-book-align" >';
 								imagesPro += '<li>';
-								imagesPro += '<a href="#" target="_blank">';
+								imagesPro += '<a href="{{URL::to("membership_hotel")}}" target="_blank">';
 								imagesPro += '<span>Join the worlds leading luxury club</span>';
 								imagesPro += '<h6 class="center">Enjoy exclusive members only benefits</h6>';
 								imagesPro += '</a>';
@@ -2651,7 +2651,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
 								imagesPro += '<li>';
 								imagesPro += '<a href="#" target="_blank">';
 								imagesPro += '<span>View or Modify Reserveration</span>';
-								imagesPro += '<h6 class="center">Login to Support Center</h6>';
+								imagesPro += '<h6 class="center">Login to HOTEL PMS</h6>';
 								imagesPro += '</a>';
 								imagesPro += '<div class="white-border-bottom"></div>';
 								imagesPro += '</li>';
