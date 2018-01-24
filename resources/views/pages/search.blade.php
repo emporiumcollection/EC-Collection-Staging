@@ -2310,6 +2310,14 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                             });
                                         </script>
                                         <?php endif; ?>
+                                        <?php if($continent == ''): ?>
+                                        <script>
+                                            $(document).ready(function() {
+                                                $('#maindestinations').collapse('show');
+                                                $(".filter-grid-page-side-bar").scrollTop($('#maindestinations').position().top - 65);
+                                            });
+                                        </script>
+                                        <?php endif; ?>
                                         <input type="hidden" id="selDestn" value="">
                                         <input type="hidden" id="listrecrds" value="21">
                                         <?php // if(!isset($_REQUEST['landing_page']) && !isset($_REQUEST['arrive'])): ?>
