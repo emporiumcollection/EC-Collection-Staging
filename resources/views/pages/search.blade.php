@@ -2094,6 +2094,9 @@ url: "{{ URL::to('filter_search_destionation')}}",
                         $('#listrecrds').val(sIndex);
                         $('#ttlpg').val(data.total_record);
                         isPreviousEventComplete = true;
+                        
+                        $(window).scrollTop(0);
+                        
                         }
                          
         },
