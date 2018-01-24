@@ -1158,15 +1158,7 @@
         });
 
       
-        $('#filter-date-mobile').combodate({
-            minYear: 2018,
-            maxYear: 2019,
-        });
-       
-        $('#filter-date-mobile-departure').combodate({
-            minYear: 2018,
-            maxYear: 2019,
-        });
+        
 
         <?php if(\Session::get('ai_previous_page')): ?>
             
