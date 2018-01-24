@@ -296,6 +296,26 @@
                     <!-- start contact form section -->
                     <section class="wow fadeIn big-section cstmaiclass" id="align-to-top">
                         <div class="container-fluid">
+                            <div class="stepwizard">
+                                <div class="stepwizard-row setup-panel">
+                                    <div class="stepwizard-step">
+                                        <a href="#step-1" type="button" class="btn btn-primary btn-circle">1</a>
+                                        <p>Step 1</p>
+                                    </div>
+                                    <div class="stepwizard-step">
+                                        <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
+                                        <p>Step 2</p>
+                                    </div>
+                                    <div class="stepwizard-step">
+                                        <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
+                                        <p>Step 3</p>
+                                    </div>
+                                    <div class="stepwizard-step">
+                                        <a href="#step-4" type="button" class="btn btn-default btn-circle" disabled="disabled">4</a>
+                                        <p>Step 4</p>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row equalize sm-equalize-auto">
                                 <div class="col-md-12 sm-clear-both wow fadeInLeft no-padding">
                                     <div class="padding-ten-half-all bg-light-gray md-padding-seven-all xs-padding-30px-all height-100">
@@ -721,6 +741,51 @@
                     }
                 });
 			}
+        </script>
+                <script>
+            $(document).ready(function () {
+  var navListItems = $('div.setup-panel div a'),
+          allWells = $('.setup-content'),
+          allNextBtn = $('.nextBtn');
+
+  allWells.hide();
+
+  navListItems.click(function (e) {
+      e.preventDefault();
+      var $target = $($(this).attr('href')),
+              $item = $(this);
+
+      if (!$item.hasClass('disabled')) {
+          navListItems.removeClass('btn-primary').addClass('btn-default');
+          $item.addClass('btn-primary');
+          allWells.hide();
+          $target.show();
+          $target.find('input:eq(0)').focus();
+      }
+  });
+
+  allNextBtn.click(function(){
+      var curStep = $(this).closest(".setup-content"),
+          curStepBtn = curStep.attr("id"),
+          nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
+          curInputs = curStep.find("input[type='text'],input[type='url']"),
+          isValid = true;
+
+      $(".form-group").removeClass("has-error");
+      for(var i=0; i<curInputs.length; i++){
+          if (!curInputs[i].validity.valid){
+              isValid = false;
+              $(curInputs[i]).closest(".form-group").addClass("has-error");
+          }
+      }
+
+      if (isValid)
+          nextStepWizard.removeAttr('disabled').trigger('click');
+  });
+
+  $('div.setup-panel div a.btn-primary').trigger('click');
+});
+            
         </script>
         <!-- contact email aside -->
     </body>
