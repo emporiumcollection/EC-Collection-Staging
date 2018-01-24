@@ -982,11 +982,11 @@
                                                                     <ul class="members-drop-list" style="display: none;">
                                                                         <li>
                                                                             <label>Adult</label>
-                                                                            <input id="adult-input-value" name="adult" class="input-right" value="2" min="1" max="5" type="number">
+                                                                            <input id="adult-input-value" name="adult" class="input-right" value="2" min="1" max="10" type="number">
                                                                         </li>
                                                                         <li>
                                                                             <label>Children</label>
-                                                                            <input id="childerns-input-value" name="childs" class="input-right" value="0" min="0" max="5" type="number">
+                                                                            <input id="childerns-input-value" name="childs" class="input-right" value="0" min="0" max="10" type="number">
                                                                         </li>
                                                                     </ul>
                                                                 </div>
