@@ -1161,7 +1161,7 @@
                             
                             .hotel-book-now {
                                 background: #ABA07C;
-                                color: #000;
+                                color: #fff;
                                 font-size: 25px;
                                 height: 71px;
                                 margin: 0px 0px 10px 3px;
