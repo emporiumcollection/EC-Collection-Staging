@@ -787,9 +787,7 @@
                                     text-transform: uppercase;
                                     text-align: center;
                                     font-family: Geomanist-light;
-                                    margin: 40px;
-                                    background: #f0f0f0;
-                                    padding: 20px 20px;
+                                    margin-bottom: 30px;
                                     float: left;
                                     width: 96%;
                             }
@@ -1256,7 +1254,7 @@
                             .EvMasonary {
                                 background: #f0f0f0;
                                 margin-top: 40px;
-                                padding: 0px 0px 40px 0px;
+                                padding: 20px 0px 40px 0px;
                             }
               
                             @import url('https://fonts.googleapis.com/css?family=Caveat');
@@ -1695,37 +1693,29 @@
                         </div>
                         <!--Hotel Section Block Two End Here-->
                         <!--Hotels Section-->
-                        <div id="dl_hotel_sec" class="dl_hotel-sec-bg">
-                            <div class="">
+                        <div id="dl_hotel_sec" class="hotel-sec-block-two srwerw">
+                            <div class="container">
                                 <div class="row">
                                     <div class="clearfix"></div>
-                                    <div class="col-md-12 col-sm-12 InnerDetailHeight disply-left-right-align cstmai-w">
+                                    <div class="disply-left-right-align">
                                         
-                                        <div class="col-md-6 col-sm-6 disply-left-right-inner hotels-des-left-side">
-                                            <div class="hotels-detail-heading-text">
-                                                <p>{!! nl2br($propertyDetail['data']->detail_section2_title) !!}</p>
+                                        <div class="col-md-6 disply-left-right-inner">
+                                            <div class="hotel-block-two-left-sec-align">
+                                                <h2>{!! nl2br($propertyDetail['data']->detail_section2_title) !!}</h2>
                                             </div>
-                                            <div class="hotels-detail-description-text scrollbar" id="style-3">
-                                                <p class="hotel-description-text">
+                                               <p class="scrollbar" id="style-4">
                                                     {!! nl2br($propertyDetail['data']->detail_section2_description_box1)!!}
                                                 </p>
                                                 <div class="force-overflow"></div>
-                                            </div>
                                         </div>
-                                        <div class="col-md-6 col-sm-6 disply-left-right-inner hotels-showcase-right-side">
-                                            <div class="hotels-detail-heading-text rightHotelInner">
-                                                <p>{!! nl2br($propertyDetail['data']->detail_section2_title) !!}</p>
-                                            </div>
-                                            <div class="hotels-image-showcase-des-text scrollbar" id="style-3">
-                                                <p class="hotel-description-text">
+                                        <div class="col-md-6 disply-left-right-inner">
+                                             <div class="hotel-block-two-right-sec-align">
+                                                <h2>{!! nl2br($propertyDetail['data']->detail_section2_title) !!}</h2>
+                                                    <p class="hotel-description-text">
                                                     {!! nl2br($propertyDetail['data']->detail_section2_description_box2) !!}
                                                     <br>
 <!--                                                        <span class="pull-right">Situated in Norrmalm</span>-->
                                                 </p>
-                                                <div class="force-overflow"></div>
-                                            </div>
-                                            <div class="hotel-block-two-btn-right">
-                                                
                                             </div>
                                             <div class="clearfix"></div>
                                             <div class="image-showcase-below-big-text">
