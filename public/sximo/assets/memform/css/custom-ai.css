@@ -261,7 +261,10 @@ a.plus {
     display: table;
     width: 100%;
     position: relative;
-    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.padding-ten-half-all.bg-light-gray.md-padding-seven-all.xs-padding-30px-all.height-100 {
+    padding-top: 6%;
 }
 .stepwizard-step button[disabled] {
     opacity: 1 !important;
