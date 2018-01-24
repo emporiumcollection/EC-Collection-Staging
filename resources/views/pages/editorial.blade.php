@@ -1497,7 +1497,7 @@
                                                     <div class="row">
                                                         <div class="form-group padding-right-12">
                                                             <label class="align-with-label"></label>
-                                                            <input id="top-bar-booking-form-arrive" name="arrive" class="form-control ai-custom-deafault-style" type="text" placeholder="Arriving">
+                                                            <input id="top-bar-booking-form-arrive" name="arrive" class="form-control ai-custom-deafault-style" type="text" placeholder="Arrival">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1505,7 +1505,7 @@
                                                     <div class="row">
                                                         <div class="form-group padding-right-12">
                                                             <label class="align-with-label"></label>
-                                                            <input id="top-bar-booking-form-destination" name="destination" class="form-control ai-custom-deafault-style" type="text" placeholder="Departing">
+                                                            <input id="top-bar-booking-form-destination" name="destination" class="form-control ai-custom-deafault-style" type="text" placeholder="Departure">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -2079,7 +2079,7 @@
                                     </div>
                                     <ul class="dates" id="editorial-book-now-inputs">
                                         <li>
-                                            <div class="editorail-heading">Arrive</div>
+                                            <div class="editorail-heading">Arrival</div>
                                             <input id="date-range-editorial-arrive" name="arrive" class="datePicker- dateFrom-" value="{{ ($arrive_date!='') ? $arrive_date : date('d.m.Y') }}" type="text" />
                                         </li>
                                         <li>

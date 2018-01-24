@@ -951,14 +951,14 @@
                                                             <div class="col-md-6">
                                                                 <div class="row">
                                                                     <div class="form-group padding-right-12">
-                                                                        <input id="top-bar-search-booking-form-arrive" class="form-control ai-custom-deafault-style" name="arrive" type="text" placeholder="Arriving">
+                                                                        <input id="top-bar-search-booking-form-arrive" class="form-control ai-custom-deafault-style" name="arrive" type="text" placeholder="Arrival">
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <div class="row">
                                                                     <div class="form-group padding-right-12">
-                                                                        <input id="top-bar-search-booking-form-destination" class="form-control ai-custom-deafault-style" name="destination" type="text" placeholder="Departing">
+                                                                        <input id="top-bar-search-booking-form-destination" class="form-control ai-custom-deafault-style" name="destination" type="text" placeholder="Departure">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1392,7 +1392,7 @@
 
                         <ul class="dates" id="search-by-date">
                             <li>
-                                <div class="heading">Arrive</div>
+                                <div class="heading">Arrival</div>
                                 <input id="date-range-arrive" size="20" name="arrive" value="{{ ($arrive_date!='') ? $arrive_date : date('d.m.Y') }}">
                             </li>
                             <li>
