@@ -1173,7 +1173,7 @@
                                 padding: 27px 5px;
                                 position: absolute;
                                 text-align: center;
-                                text-transform: uppercase;
+                                text-transform: none;
                                 width: 174px;
                                 z-index: 99;
                                 float: left;
@@ -1249,6 +1249,14 @@
                             }
                             .right-menu-align .nav-pills li {
                                 margin-top: 0px;
+                            }
+                            
+                            /* 24-1-2017 */
+                            
+                            .EvMasonary {
+                                background: #f0f0f0;
+                                margin-top: 40px;
+                                padding: 0px 0px 40px 0px;
                             }
               
                             @import url('https://fonts.googleapis.com/css?family=Caveat');
@@ -2497,6 +2505,7 @@
 				
 				@if($propertyDetail['data']->assign_detail_city!='')
 					@if(!empty($relatedgridpropertiesArr))
+                                        <div class="EvMasonary">
 						<div class="container-">
 							<h2 class="bar-name-text-style">View our selection of Luxury Hotels in {{$propertyDetail['data']->assign_detail_city}}</h2>
 							<div class="row no-margin">
@@ -2566,6 +2575,7 @@
 								</div>
 							</div>
 						</div>
+                                            </div>
 					@endif
 				@endif
 				<!--Footer-->
