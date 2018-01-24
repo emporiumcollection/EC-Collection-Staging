@@ -448,22 +448,22 @@ class GenerateController  extends Controller {
             $ourdesitnationLeftSideHTML  .= '<div class="dl-filter">'.$lineBreak;
             $ourdesitnationLeftSideHTML  .= '<!--First Parent-->'.$lineBreak;
             foreach($mainArrdestts as $mndest){
-                $ourdesitnationLeftSideHTML  .= '<div class="node post-filter-inputs">'.$lineBreak;
-                $ourdesitnationLeftSideHTML  .= '<a class="node-btn" href="javascript:void(0)" onclick="$(\'#maindestinations a.node-btn\').removeClass(\'active\');$(this).addClass(\'active\');filter_destination(\''.$mndest->id.'\', \'continent\');">'.$mndest->category_name.'</a>'.$lineBreak;
+                $ourdesitnationLeftSideHTML  .= '<div class="node post-filter-inputs destination-nodes-container-'.$mndest->id.'">'.$lineBreak;
+                $ourdesitnationLeftSideHTML  .= '<a class="node-btn destination-node-btn destination-node-'.$mndest->id.'-btn" href="javascript:void(0)" onclick="$(\'#maindestinations a.node-btn\').removeClass(\'active\');$(this).addClass(\'active\');filter_destination(\''.$mndest->id.'\', \'continent\');">'.$mndest->category_name.'</a>'.$lineBreak;
                 if(array_key_exists('childs',$mndest) && !empty($mndest->childs)){
                     foreach($mndest->childs as $cddest){
                         $ourdesitnationLeftSideHTML  .= '<!--Second Level-->'.$lineBreak;
                         $ourdesitnationLeftSideHTML  .= '<div class="node" >'.$lineBreak;
-                        $ourdesitnationLeftSideHTML  .= '<a class="node-btn" href="javascript:void(0)" onclick="$(\'#maindestinations a.node-btn\').removeClass(\'active\');$(this).addClass(\'active\');filter_destination(\''.$cddest->id.'\', \'region\');">'.$cddest->category_name.'</a>'.$lineBreak;
+                        $ourdesitnationLeftSideHTML  .= '<a class="node-btn destination-node-l2-'.$cddest->id.'-btn" href="javascript:void(0)" onclick="$(\'#maindestinations a.node-btn\').removeClass(\'active\');$(this).addClass(\'active\');filter_destination(\''.$cddest->id.'\', \'region\');">'.$cddest->category_name.'</a>'.$lineBreak;
                         if(array_key_exists('subchild',$cddest)){
                             foreach($cddest->subchild as $sbdest){
                                 $ourdesitnationLeftSideHTML  .= '<!--Third Level-->'.$lineBreak;
                                 $ourdesitnationLeftSideHTML  .= '<div class="node" >'.$lineBreak;
-                                $ourdesitnationLeftSideHTML  .= '<a class="node-btn" href="javascript:void(0)" onclick="$(\'#maindestinations a.node-btn\').removeClass(\'active\');$(this).addClass(\'active\');filter_destination(\''.$sbdest->id.'\', \'country\');">'.$sbdest->category_name.'</a>'.$lineBreak;
+                                $ourdesitnationLeftSideHTML  .= '<a class="node-btn destination-node-l3-'.$sbdest->id.'-btn" href="javascript:void(0)" onclick="$(\'#maindestinations a.node-btn\').removeClass(\'active\');$(this).addClass(\'active\');filter_destination(\''.$sbdest->id.'\', \'country\');">'.$sbdest->category_name.'</a>'.$lineBreak;
                                 if(array_key_exists('subchild',$sbdest)){
                                     foreach($sbdest->subchild as $subchild){
                                         $ourdesitnationLeftSideHTML  .= '<div class="node" >'.$lineBreak;
-                                        $ourdesitnationLeftSideHTML  .= '<a class="node-btn" href="javascript:void(0)" onclick="$(\'#maindestinations a.node-btn\').removeClass(\'active\');$(this).addClass(\'active\');filter_destination(\''.$subchild->id.'\', \'country\');">'.$subchild->category_name.'</a>'.$lineBreak;
+                                        $ourdesitnationLeftSideHTML  .= '<a class="node-btn destination-node-l4-'.$subchild->id.'-btn" href="javascript:void(0)" onclick="$(\'#maindestinations a.node-btn\').removeClass(\'active\');$(this).addClass(\'active\');filter_destination(\''.$subchild->id.'\', \'country\');">'.$subchild->category_name.'</a>'.$lineBreak;
                                         $ourdesitnationLeftSideHTML  .= '</div>'.$lineBreak;
                                     }
                                 }
