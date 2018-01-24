@@ -1440,7 +1440,7 @@
                         </div>
                     </form>
                     <div class="view-modify-cancel-booking">
-                        <a href="#">View, Modify or Cancel your Booking</a>
+                        <a href="https://www.emporium-voyage.com/customer/login">View, Modify or Cancel your Booking</a>
                     </div>
                     <ul class="booking-page-footer-section">
                         <li>
@@ -2502,7 +2502,7 @@
                     {
                         selectForward: (Boolean),
                         stickyMonths: (Boolean),
-                        startDate: "12-01-2017",
+                        startDate: "<?php echo date("d-m-Y") ?>",
                         format: 'DD.MM.YYYY',
                         autoClose: "true",
                         separator: ' to ',

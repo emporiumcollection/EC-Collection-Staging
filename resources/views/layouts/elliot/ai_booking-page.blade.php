@@ -182,14 +182,14 @@
         });
         $('#date-mobile').combodate({
             minYear: 2016,
-            maxYear: 2017,
+            maxYear: <?php echo date("Y") ?>,
         });
         $(function () {
             $('#date-mobile-departure').combodate();
         });
         $('#date-mobile-departure').combodate({
             minYear: 2016,
-            maxYear: 2017,
+            maxYear: <?php echo date("Y") ?>,
         });
         $('#date-mobile').combodate();
     });
