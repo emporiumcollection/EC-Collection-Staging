@@ -448,7 +448,7 @@ class GenerateController  extends Controller {
             $ourdesitnationLeftSideHTML  .= '<div class="dl-filter">'.$lineBreak;
             $ourdesitnationLeftSideHTML  .= '<!--First Parent-->'.$lineBreak;
             foreach($mainArrdestts as $mndest){
-                $ourdesitnationLeftSideHTML  .= '<div class="node post-filter-inputs destination-nodes-container-'.$mndest->id.'">'.$lineBreak;
+                $ourdesitnationLeftSideHTML  .= '<div class="node post-filter-inputs destination-nodes-container-'.str_replace(' ', '_', $mndest->category_name).'">'.$lineBreak;
                 $ourdesitnationLeftSideHTML  .= '<a class="node-btn destination-node-btn destination-node-'. str_replace(' ', '_', $mndest->category_name).'-btn" href="javascript:void(0)" onclick="$(\'#maindestinations a.node-btn\').removeClass(\'active\');$(this).addClass(\'active\');filter_destination(\''.$mndest->id.'\', \'continent\');">'.$mndest->category_name.'</a>'.$lineBreak;
                 if(array_key_exists('childs',$mndest) && !empty($mndest->childs)){
                     foreach($mndest->childs as $cddest){
