@@ -1702,11 +1702,11 @@
                                         <div class="col-md-6 disply-left-right-inner">
                                             <div class="hotel-block-two-left-sec-align">
                                                 <h2>{!! nl2br($propertyDetail['data']->detail_section2_title) !!}</h2>
-                                            </div>
-                                               <p class="scrollbar" id="style-4">
+                                                                                               <p class="scrollbar" id="style-4">
                                                     {!! nl2br($propertyDetail['data']->detail_section2_description_box1)!!}
                                                 </p>
                                                 <div class="force-overflow"></div>
+                                            </div>
                                         </div>
                                         <div class="col-md-6 disply-left-right-inner">
                                              <div class="hotel-block-two-right-sec-align">
