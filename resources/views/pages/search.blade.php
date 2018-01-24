@@ -563,8 +563,35 @@
             transition: all 0.3s ease 0s;
         }
 
-        
-         /* sidebar css */
+         /* sidebar css end */
+         
+          /*
+        *  scrollbar STYLE 3
+        */
+
+       #style-3::-webkit-scrollbar1-track
+       {
+               -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+               background-color: #000;
+       }
+
+       #style-3::-webkit-scrollbar1
+       {
+               width: 6px;
+               background-color: #F5F5F5;
+       }
+
+       #style-3::-webkit-scrollbar1-thumb
+       {
+               background-color: #fff;
+       }
+       .scrollbar1 {
+            float: left;
+            max-height: 300px;
+            margin-bottom: 25px;
+            overflow: auto;
+        }
+         
         </style>
 		
 		<!-- Global site tag (gtag.js) - Google Analytics -->
@@ -1028,7 +1055,7 @@
 														<h3 class="bh-slideshow-thumbnail-split-preview-title">
 															<a href="#">{{$slides->slider_title}}</a>
 														</h3>
-														<div class="bh-slideshow-thumbnail-split-preview-content">{{$slides->slider_description}}</div>
+														<div class="bh-slideshow-thumbnail-split-preview-content scrollbar1" id="style-3">{{$slides->slider_description}}</div>
                                                                                                                 @if($slides->slider_link != '#')
 														<a class="uk-margin-top uk-button uk-button-primary" href="http://{{$slides->slider_link}}">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>
                                                                                                                 @endif
