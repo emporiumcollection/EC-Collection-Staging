@@ -2505,7 +2505,6 @@
                         startDate: "12-01-2017",
                         format: 'DD.MM.YYYY',
                         autoClose: "true",
-                        closeButton: true;
                         separator: ' to ',
                         getValue: function ()
                         {
