@@ -1255,7 +1255,7 @@
                             
                             .nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
                                 background: #89837b !important;
-                                color: #000000 !important;
+                                color: #fff !important;
                             }
                             .right-menu-align .nav-pills li a {
                                 border-radius: 0px !important;

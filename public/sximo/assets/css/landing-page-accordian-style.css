@@ -363,7 +363,7 @@ div.panel {
 }
 .active{
     background-color: #89837b !important;
-    color: #000 !important;
+    color: #fff !important;
 }
 .input-fileds input {
     border: 1px solid #ddd;
