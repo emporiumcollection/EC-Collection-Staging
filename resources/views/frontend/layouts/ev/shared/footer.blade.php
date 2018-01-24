@@ -101,7 +101,7 @@
                 <div class="col-md-4 col-sm-4 col-xs-12 VegasFooterMiddle">
                     <p class="footer-nav-menu-harding footer-res-margin-align">Newsletter</p>
                     <p class="subscription-line">Subscribe and get 10% off on your next reservation</p>
-                    <form action="http://just-emarketing.com/app/index.php/lists/fb5156qrasf4a/subscribe" method="post" accept-charset="utf-8" target="_blank">
+                    <form action="https://just-emarketing.com/app/index.php/lists/fb5156qrasf4a/subscribe" method="post" accept-charset="utf-8" target="_blank">
                         <div class="">
                     
                         <input type="text" class="form-control newsletter-style" name="EMAIL" placeholder="First Name" value="" required="">
@@ -237,7 +237,7 @@
     });
     </script>
 
-    
+    @include('layouts/elliot/ai_newsletter')
     @include('layouts/elliot/ai_cookie-bar')
         
         
