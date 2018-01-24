@@ -33,7 +33,7 @@ class CommonHelper
         }
         $data['footer_text'] = \DB::table('tb_settings')->select('content')->where('key_value', 'footer_text')->first();
         $data['about_text'] = \DB::table('tb_settings')->select('content')->where('key_value', 'about_text')->first();
-    	
+    	$data['whybookwithus'] = \DB::table('tb_whybookwithus')->select('id', 'title', 'sub_title')->where('status', 0)->get();
     	return $data;
     }
 
