@@ -1254,7 +1254,7 @@
                             /* after scroll highlighted portions */
                             
                             .nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
-                                background: #DADAD5 !important;
+                                background: #89837b !important;
                                 color: #000000 !important;
                             }
                             .right-menu-align .nav-pills li a {

@@ -111,11 +111,11 @@
             }
             
             .block-content.content {
-                width: 35px;
+                width: 22px;
                 float: right;
                 height: 30px;
                 margin-top: 0px;
-                margin-right: 0px;
+                margin-right: -6px;
             }
           
             .detailfaLock {
