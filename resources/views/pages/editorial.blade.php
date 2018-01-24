@@ -1234,6 +1234,22 @@
                             {
                                     min-height: 0px;
                             }
+                            #style-4::-webkit-scrollbar-track
+                           {
+                                   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+                                   background-color: #F5F5F5;
+                           }
+
+                           #style-4::-webkit-scrollbar
+                           {
+                                   width: 6px;
+                                   background-color: #F5F5F5;
+                           }
+
+                           #style-4::-webkit-scrollbar-thumb
+                           {
+                                   background-color: #000000;
+                           }
                             
                             
                             /* after scroll highlighted portions */
@@ -1702,7 +1718,7 @@
                                         <div class="col-md-6 disply-left-right-inner">
                                             <div class="hotel-block-two-left-sec-align">
                                                 <h2>{!! nl2br($propertyDetail['data']->detail_section2_title) !!}</h2>
-                                                                                               <p class="scrollbar" id="style-4">
+                                                        <p class="scrollbar" id="style-4">
                                                     {!! nl2br($propertyDetail['data']->detail_section2_description_box1)!!}
                                                 </p>
                                                 <div class="force-overflow"></div>
