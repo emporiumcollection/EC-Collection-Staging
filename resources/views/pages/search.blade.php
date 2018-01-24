@@ -910,11 +910,11 @@
                                                                     <ul class="members-drop-list" style="display: none;">
                                                                         <li>
                                                                             <label>Adult</label>
-                                                                            <input id="adult-input-value" name="adult" class="input-right" value="2" min="1" max="5" type="number">
+                                                                            <input id="adult-input-value" name="adult" class="input-right" value="2" min="1" max="10" type="number">
                                                                         </li>
                                                                         <li>
                                                                             <label>Children</label>
-                                                                            <input id="childerns-input-value" name="childs" class="input-right" value="0" min="0" max="5" type="number">
+                                                                            <input id="childerns-input-value" name="childs" class="input-right" value="0" min="0" max="10" type="number">
                                                                         </li>
                                                                     </ul>
                                                                 </div>
@@ -2319,9 +2319,9 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                                 $(".destination-nodes-container-<?php echo $continent; ?>").find("> .node").css({"padding-left": "10px", "margin-top": "5px", "text-transform": "inherit"});
                                                 $(".destination-nodes-container-<?php echo $continent; ?>").find("> .node > a").css({"text-transform": "none"});
                                                 <?php if($region != ''): ?>
-                                                $(".destination-node-l2-<?php echo $continent; ?>-btn").parent().find("> .node").toggle();
-                                                $(".destination-node-l2-<?php echo $continent; ?>-btn").parent().find("> .node").css({"padding-left": "10px", "margin-top": "5px", "text-transform": "inherit"});
-                                                $(".destination-node-l2-<?php echo $continent; ?>-btn").parent().find("> .node > a").css({"text-transform": "none"});
+                                                $(".destination-node-l2-<?php echo $region; ?>-btn").parent().find("> .node").toggle();
+                                                $(".destination-node-l2-<?php echo $region; ?>-btn").parent().find("> .node").css({"padding-left": "10px", "margin-top": "5px", "text-transform": "inherit"});
+                                                $(".destination-node-l2-<?php echo $region; ?>-btn").parent().find("> .node > a").css({"text-transform": "none"});
                                                 <?php endif; ?>
                                                 <?php if($cat != ''): ?>
                                                 $(".destination-node-l3-<?php echo $cat; ?>-btn").parent().find("> .node").toggle();
