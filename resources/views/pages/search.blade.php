@@ -2313,7 +2313,8 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                         <?php if($continent != ''): ?>
                                         <script>
                                             $(document).ready(function() {
-                                                $('#maindestinations').collapse('show', function() {
+                                                $('#maindestinations').collapse('show');
+                                                $('#maindestinations').on('shown.bs.collapse', function() {
                                                     $(".destination-nodes-container-<?php echo $continent; ?>").find("> .node").toggle();
                                                     $(".destination-nodes-container-<?php echo $continent; ?>").find("> .node").css({"padding-left": "10px", "margin-top": "5px", "text-transform": "inherit"});
                                                     $(".destination-nodes-container-<?php echo $continent; ?>").find("> .node > a").css({"text-transform": "none"});
