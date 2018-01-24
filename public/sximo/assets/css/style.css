@@ -3155,7 +3155,7 @@ header .menu ul li a:hover, header .menu ul li a:active, header .menu ul li a:fo
     display: none;
     font-family: Geomanist-Regular;
     font-size: 14px;
-    opacity: 0.62;
+/*    opacity: 0.62;*/
     padding: 9px;
     position: fixed;
     right: 20px;
