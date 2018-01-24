@@ -755,7 +755,35 @@
                             </div>
                             <!--Main Page Start here-->
                             <div class="col-md-12 col-sm-12 col-xs-12 ">
-                                
+                                @if(!empty($pageslider))
+                                    <section class="wow fadeIn no-padding cstmaiclass">
+                                        <div class="swiper-auto-height-container position-relative width-100">
+                                            <div class="swiper-wrapper overflow-hidden">
+                                                @foreach($pageslider as $key => $slider_row)
+                                                    <!-- start slider item -->
+                                                    <div class="swiper-slide padding-100px-all cover-background position-relative xs-padding-20px-all" style="background-image:url({{url()}}/uploads/slider_images/{{$slider_row->slider_img}})">
+                                                        <div class="position-relative width-55 md-width-60 sm-width-85 xs-width-100 display-inline-block slide-banner last-paragraph-no-margin">
+                                                            <div class="padding-80px-all bg-black-opacity sm-padding-40px-all xs-padding-30px-all xs-text-center xs-width-100">
+                                                                <h3 class="alt-font text-white sm-width-100">{{$slider_row->slider_title}}</h3>
+                                                                <p class="sm-width-100 lorem-para">{{$slider_row->slider_description}}</p>
+                                                                <a href="{{$slider_row->slider_link}}" class="margin-35px-top sm-margin-15px-top btn btn-white">Explore services</a>
+                                                            </div> 
+                                                        </div>
+                                                    </div>
+                                                    <!-- end slider item -->
+                                                @endforeach
+                                            </div>
+
+                                            <div class="navigation-area">
+                                                <div class="swiper-button-next swiper-next-style4 bg-primary text-white"><i class="fa fa-arrow-up" aria-hidden="true"></i></div>
+                                                <div class="swiper-button-prev swiper-prev-style4"><i class="fa fa-arrow-down" aria-hidden="true"></i></div>
+                                            </div>
+                                            <div class="scroll-button">
+                                                <a href="#align-to-top" class="align-to-top-arrow"><img src="{{assets('sximo/assets/images/scroll-down.png')}}" class="down-arrow-align animate-arrow" alt=""> </a>
+                                            </div>
+                                        </div>
+                                    </section>
+                                @endif
                                 @yield('content')
                                 
                                 

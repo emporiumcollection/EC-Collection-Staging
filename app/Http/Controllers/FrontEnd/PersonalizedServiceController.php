@@ -12,6 +12,7 @@ class PersonalizedServiceController extends Controller {
         parent::__construct();
         $this->data['pageTitle'] = '';
         $this->data['data'] = CommonHelper::getInfo();
+        $this->data['pageslider'] = \DB::table('tb_pages_sliders')->select( 'slider_title', 'slider_description', 'slider_img', 'slider_link', 'slider_video', 'slide_type')->where('slider_page_id', 3)->get();
     }
     
     /* Method : Index
@@ -19,7 +20,6 @@ class PersonalizedServiceController extends Controller {
     */
     public function index(Request $request) {
        
-        $data = array('test');
         return view('frontend.personalized.personalized_service', $this->data);
     }
 
