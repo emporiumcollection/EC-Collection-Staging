@@ -2139,7 +2139,7 @@
                                         <button type="submit">BOOK NOW</button>
                                     </div>
                                     <div class="view-modify-cancel-booking">
-                                        <a href="#">View, Modify or Cancel your Booking</a>
+                                        <a href="https://www.emporium-voyage.com/customer/login">View, Modify or Cancel your Booking</a>
                                     </div>
                                     <ul class="booking-page-footer-section editorial-book-align" >
                                         <li>
