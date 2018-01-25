@@ -125,7 +125,7 @@
             }
 			#formerrors { color:#ff0000;}
         </style>
-        <script type="text/javascript">
+<!--        <script type="text/javascript">
             $(document).on('ready', function () {
                 $(".regular").slick({
                     dots: false,
@@ -138,7 +138,7 @@
                     autoplaySpeed: 3000
                 });
             });
-        </script>
+        </script>-->
     </head>
     <body>
         <!-- Start slider section -->
@@ -748,7 +748,7 @@
                 });
 			}
         </script>
-                <script>
+<!--                <script>
             $(document).ready(function () {
   var navListItems = $('div.setup-panel div a'),
           allWells = $('.setup-content'),
@@ -792,7 +792,7 @@
   $('div.setup-panel div a.btn-primary').trigger('click');
 });
             
-        </script>
+        </script>-->
         <!-- contact email aside -->
     </body>
 </html>

@@ -45,7 +45,6 @@ Table of contents
     Reset
 ====================================== */
 
-/* text size */
 .text-extra-small {font-size:14px; line-height:14px; text-align: center; font-weight: bold;}
 .text-small {font-size:12px; line-height:20px}
 .text-medium {font-size:16px; line-height:23px}
@@ -3713,8 +3712,8 @@ a.textButton.arrowButton {
     font-size: 14px;
     font-family: serif;
     color: #9B9B9B !important;
-    width: 100%;
-    margin-top: 5px;
+    width: auto;
+    margin-top: 7px;
 }
 
 /* animation */ 
