@@ -2585,6 +2585,7 @@
                     $div = $(".members-drop-list", $dropdown);
                     $div.toggle();
                     $(".members-drop-list").not($div).hide();
+                    $('.members-drop-list').focus();
                     return false;
                 });
                 
