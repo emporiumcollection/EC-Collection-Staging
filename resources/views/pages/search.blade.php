@@ -2279,12 +2279,12 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                         <?php // endif; ?>
                                         <?php // if(!isset($_REQUEST['destination_page']) && !isset($_REQUEST['arrive'])): ?>
                                         <div class="panel panel-default custom-post-panel">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" class="heading-stying <?php echo ($segment_1!='search' && $continent == '')? '' : 'collapsed'; ?>">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" class="heading-stying <?php echo ($segment_1=='luxury_experience' && $continent == '')? '' : 'collapsed'; ?>">
                                                 <div class="panel-heading custom-heading">
                                                     Experience
                                                 </div>
                                             </a>
-                                            <div id="collapse1" class="panel-collapse <?php echo ($segment_1!='search' && $continent == '')? 'in' : ''; ?> <?php echo (isset($_REQUEST['s']) && in_array($_REQUEST['s'], array('Beach Hotels', 'Green Properties', 'Go Urban Hotels', 'Infinity Pools', 'Spa and Wellness Hotels', 'Mountain Ski Resorts', 'Yoga Hotels', 'Culinary Delights', 'Family Friendly', 'Unusual Adventure Hotels')))? 'in' : ''; ?> collapse">
+                                            <div id="collapse1" class="panel-collapse <?php echo ($segment_1=='luxury_experience' && $continent == '')? 'in' : ''; ?> <?php echo (isset($_REQUEST['s']) && in_array($_REQUEST['s'], array('Beach Hotels', 'Green Properties', 'Go Urban Hotels', 'Infinity Pools', 'Spa and Wellness Hotels', 'Mountain Ski Resorts', 'Yoga Hotels', 'Culinary Delights', 'Family Friendly', 'Unusual Adventure Hotels')))? 'in' : ''; ?> collapse">
                                                 <div class="panel-body custom-panel-body">
                                                     <div class="dl-filter">
                                                         <form>
@@ -2332,14 +2332,14 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                             </div>
                                         </div>
                                         <?php // endif; ?>
-                                        <?php if($segment_1!='search' && $continent == ''): ?>
+                                        <?php if($segment_1=='luxury_destinations' && $continent == ''): ?>
                                         <script>
                                             $(document).ready(function() {
                                                 $(".filter-grid-page-side-bar").scrollTop($('#collapse1').position().top - 65);
                                             });
                                         </script>
                                         <?php endif; ?>
-                                        <?php if($segment_1!='search' && $continent != ''): ?>
+                                        <?php if($segment_1=='luxury_destinations' && $continent != ''): ?>
                                         <script>
                                             $(document).ready(function() {
                                                 $('#maindestinations').collapse('show');
@@ -2537,7 +2537,8 @@ url: "{{ URL::to('filter_search_destionation')}}",
                     
                         
                     
-					<script>
+					<script type="text/javascript">
+
 						$(document).ready(function () {
 
 						$('#quick_pager_header').mouseover(function () {
@@ -2665,6 +2666,31 @@ url: "{{ URL::to('filter_search_destionation')}}",
 								imagesPro += '</form>';
 								imagesPro += '</div>';
 								$('#placepopupcontent').html(imagesPro);
+                                                                
+                                                                eval($('#editorial-book-now-inputs').dateRangePicker(
+                                                                        {
+                                                                            selectForward: (Boolean),
+                                                                            stickyMonths: (Boolean),
+                                                                            startDate: "<?php echo date("d-m-Y") ?>",
+                                                                            format: 'DD.MM.YYYY',
+                                                                            autoClose: "true",
+                                                                            separator: ' to ',
+                                                                            getValue: function ()
+                                                                            {
+                                                                                if ($('#date-range-editorial-destination').val() && $('#date-range-editorial-arrive').val())
+                                                                                    return $('#date-range-editorial-destination').val() + ' to ' + $('#date-range-editorial-arrive').val();
+                                                                                else
+                                                                                    return '';
+                                                                            },
+                                                                            setValue: function (s, s1, s2)
+                                                                            {
+                                                                                $('#date-range-editorial-arrive').val(s1);
+                                                                                $('#date-range-editorial-destination').val(s2);
+                                                                            }
+                                                                        }
+                                                                    ).bind('datepicker-first-date-selected', function (event, obj) {
+                                                                        $("#date-range-editorial-destination").val('');
+                                                                    }));
 								
                                                                         /*Toggle Side Nav Start Here*/
                                                                         eval($('.dropdown').each(function () {
@@ -2957,37 +2983,6 @@ url: "{{ URL::to('filter_search_destionation')}}",
                 /*Top Bar Booking End Here*/
                     
                     </script> 
-                    
-                    <!-- AIC -->
-                    /*Date Range Picker Start Here*/
-                    <script>
-                        $(document).on('ready', function () {
-                        $('#editorial-book-now-inputs').dateRangePicker(
-                            {
-                                selectForward: (Boolean),
-                                stickyMonths: (Boolean),
-                                startDate: "12-01-2017",
-                                format: ' DD.MM.YYYY',
-                                autoClose: true,
-                                separator: ' to ',
-                                getValue: function ()
-                                {
-                                    if ($('#date-range-editorial-destination').val() && $('#date-range-editorial-arrive').val())
-                                        return $('#date-range-editorial-destination').val() + ' to ' + $('#date-range-editorial-arrive').val();
-                                    else
-                                        return '';
-                                },
-                                setValue: function (s, s1, s2)
-                                {
-                                    $('#date-range-editorial-arrive').val(s1);
-                                    $('#date-range-editorial-destination').val(s2);
-                                }
-                            }
-                        ).bind('datepicker-first-date-selected', function (event, obj) {
-                            $("#date-range-editorial-destination").val('');
-                        });
-                        /*Date Range Picker End Here*/
-                    </script>
                      <script> 
                 $('.contact-aside').hover(
                     function(){ $(this).addClass('active') },
