@@ -69,7 +69,7 @@
                 border-radius: 0px;
                 transition: .5s;
                 position: fixed;
-                top: 127px;
+                top: 124px;
                 left: calc(100% - 65px);
                 width: 340px;
                 background: #272727;
@@ -122,6 +122,7 @@
                 margin-right: 13px;
                 margin-left: 8px;
                 color: #ABA07C;
+                font-size: 16px;
             }
             .neww-footer .container {
                 width: auto;

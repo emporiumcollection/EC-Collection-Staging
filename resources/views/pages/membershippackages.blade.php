@@ -175,6 +175,7 @@
                 margin-right: 13px;
                 margin-left: 8px;
                 color: #ABA07C;
+                font-size: 16px;
             }
             .neww-footer .container {
                 width: auto;
