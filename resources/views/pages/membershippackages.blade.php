@@ -523,7 +523,7 @@ $(document).on('ready', function () {
                                                                 <div class="expeience-small-text">Hotel Marketing Packages</div>
                                                                 <div class="slider-side-text-tittle">{{$package->package_title}}</div>
                                                                 <div class="slider-side-description-text">
-                                                                    {{(strlen($package->package_description) > 300) ? substr($package->package_description,0,300).'...':$package->package_description}}
+                                                                    {!! (strlen($package->package_description) > 300) ? substr($package->package_description,0,300).'...':$package->package_description !!}
                                                                 </div>
                                                             </div>
                                                             <div>
@@ -780,7 +780,7 @@ $(document).on('ready', function () {
                     var imagesPro = '';
                     imagesPro += '<div class="text-section">';
                     imagesPro += '<h2>' + data.pdata.package_title + '</h2>';
-                    imagesPro += '<p>' + data.pdata.package_description + '</p>';
+                    imagesPro += '<p>' + data.pdata.package_description.replace(/\n/g,"<br>") + '</p>';
                     imagesPro += '</div>';
                     imagesPro += '<div class="book-btn-sec">';
                     if (data.pdata.package_price_type != 1)
