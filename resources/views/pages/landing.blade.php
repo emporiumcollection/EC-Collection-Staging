@@ -2441,7 +2441,7 @@
                     {
                         selectForward: (Boolean),
                         stickyMonths: (Boolean),
-                        startDate: "12-01-2017",
+                        startDate: "<?php echo date("d-m-Y") ?>",
                         format: ' DD.MM.YYYY',
                         autoClose: true,
                         separator: ' to ',
