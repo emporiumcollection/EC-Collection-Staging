@@ -2,14 +2,13 @@
 @section('title', 'Personalized Service')
 @section('css')
 <link href="{{ asset('sximo/assets/css/chosen.css')}}" rel="stylesheet" type="text/css"/>
+<link href="{{ asset('sximo/assets/css/personalized.css')}}" rel="stylesheet" type="text/css"/>
 @stop
 @section('content')
-        <div class="wrapper">
-            <div class="container-fluid">
+        <div >
+            <div >
                 <div class="row">
-                    <div class="header-logo-image">
-                        <img class="img-responsive" src="assets/images/logo-design_1_1.png" alt=""/>
-                    </div>
+                  
                     <div class="top-progress-bar">
                         <div class="progress-bar-inner"></div>
                     </div>
