@@ -5,10 +5,12 @@
 <link href="{{ asset('sximo/assets/css/personalized.css')}}" rel="stylesheet" type="text/css"/>
 @stop
 @section('content')
-        <div >
-            <div >
+        <div class="wrapper">
+            <div class="container-fluid">
                 <div class="row">
-                  
+                    <div class="header-logo-image">
+                        <img class="img-responsive" src="assets/images/logo-design_1_1.png" alt=""/>
+                    </div>
                     <div class="top-progress-bar">
                         <div class="progress-bar-inner"></div>
                     </div>
