@@ -6504,5 +6504,18 @@ class HomeController extends Controller {
         }
         
     }
+	
+	function getpackagedetails($pckid)
+	{
+		if($pckid!='')
+		{
+			$packageArr = \DB::table('tb_packages')->where('id',$pckid)->first();
+			if(!empty($packageArr))
+			{
+				return response()->json($packageArr);
+			}
+			exit;
+		}
+	}
 
 }

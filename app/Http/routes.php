@@ -217,6 +217,8 @@ Route::group(['middleware' => 'auth'], function()
 	
 	Route::post('enable_diable_sliderstatus', 'SliderController@enable_diable_sliderstatus');
 	Route::post('enable_diable_pagessliderstatus', 'PagessliderController@enable_diable_pagessliderstatus');
+	
+	Route::get('getpackagedetails/{pckid}', 'HomeController@getpackagedetails');
 });	
 
 Route::post('frontend_hotelpost', 'HomeController@addHotelInfoFrontend');
