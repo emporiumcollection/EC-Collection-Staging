@@ -2631,12 +2631,12 @@
                         if (!itemIsOpened) {
                             if (e.target == link) {
                                 itemIsOpened = true;
-                                item.show();
+                                $('.members-drop-list').show();
                             }
                         } else {
                             if (!isChild(e.target, item)) {
                                 itemIsOpened = false;
-                                item.hide();
+                                $('.members-drop-list').hide();
                             }
                         }
                     }
