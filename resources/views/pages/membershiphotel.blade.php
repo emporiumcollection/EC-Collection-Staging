@@ -125,7 +125,7 @@
             }
 			#formerrors { color:#ff0000;}
         </style>
-        <script type="text/javascript">
+<!--        <script type="text/javascript">
             $(document).on('ready', function () {
                 $(".regular").slick({
                     dots: false,
@@ -138,7 +138,7 @@
                     autoplaySpeed: 3000
                 });
             });
-        </script>
+        </script>-->
     </head>
     <body>
         <!-- Start slider section -->
