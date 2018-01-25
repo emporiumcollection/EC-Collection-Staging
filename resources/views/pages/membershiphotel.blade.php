@@ -107,7 +107,9 @@
                 background: #1e2023 !important;
                 color: #fff !important;
             }
-
+            .heading-stying {
+                font-size: 12px !important;
+            }
             .asideIclass {
                 float: left;
                 margin-top: 3px;
