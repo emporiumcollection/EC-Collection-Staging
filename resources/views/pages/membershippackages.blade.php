@@ -557,7 +557,7 @@ $(document).on('ready', function () {
                     </div>
                 </section>
 
-                <div class="hotel-property-section-bg">
+                <div class="hotel-property-section-bg" id="popupopn">
                     <div class="clearfix"></div>
                     <!--Show More Slide-->
                     <div class="show_more-page">
@@ -796,7 +796,7 @@ $(document).on('ready', function () {
                     imagesPro += '<a href="#">Book</a>';
                     imagesPro += '</div>';
                     imagesPro += '</div>';
-                    $('.single-right-text-product').html(imagesPro);
+                    $('#popupopn .single-right-text-product').html(imagesPro);
                     $('.show_more-page').css("width", "100%");
                 }
             });

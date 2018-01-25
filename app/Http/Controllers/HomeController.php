@@ -6510,6 +6510,7 @@ class HomeController extends Controller {
 		if($pckid!='')
 		{
 			$packageArr['pdata'] = \DB::table('tb_packages')->where('id',$pckid)->first();
+			$packageArr['currency'] = \DB::table('tb_settings')->select('content')->where('key_value', 'default_currency')->first();
 			if(!empty($packageArr))
 			{
 				return response()->json($packageArr);
