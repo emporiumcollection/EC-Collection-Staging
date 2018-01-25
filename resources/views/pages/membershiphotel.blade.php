@@ -748,7 +748,7 @@
                 });
 			}
         </script>
-                <script>
+<!--                <script>
             $(document).ready(function () {
   var navListItems = $('div.setup-panel div a'),
           allWells = $('.setup-content'),
@@ -792,7 +792,7 @@
   $('div.setup-panel div a.btn-primary').trigger('click');
 });
             
-        </script>
+        </script>-->
         <!-- contact email aside -->
     </body>
 </html>
