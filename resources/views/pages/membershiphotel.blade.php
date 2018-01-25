@@ -182,8 +182,8 @@
             <aside class="site-aside">
                 <div class="contact-aside">
                     <ul class="contact-aside-list">
-                        <li class="contact-list-item contact-phone"><a href="#"><i class="fa fa-phone asideIclass" aria-hidden="true"></i> +1 934 451 1317</a></li>
-                        <li class="contact-list-item contact-email"><a href="#"><i class="fa fa-envelope asideIclass" aria-hidden="true"></i> riaan@emporium-voyage.com</a></li>
+                        <li class="contact-list-item contact-phone"><a href="tel:+1 934 451 1317"><i class="fa fa-phone asideIclass" aria-hidden="true"></i> +1 934 451 1317</a></li>
+                        <li class="contact-list-item contact-email"><a href="mailto:riaan@emporium-voyage.com"><i class="fa fa-envelope asideIclass" aria-hidden="true"></i> riaan@emporium-voyage.com</a></li>
                     </ul>
                 </div>
             </aside>
