@@ -2622,16 +2622,23 @@ header .menu ul li a:hover, header .menu ul li a:active, header .menu ul li a:fo
     position: relative;
 }
 .expeience-small-text {
-    color: #fff;
-    font-family: GuldScript_PersonalUseOnly;
-    font-size: 25px;
-    margin-bottom: 12px;
+    color: #ada077;
+    font-size: 21px;
+    font-family: ACaslonPro-Regular;
+    margin-bottom: 20px;
+    padding-left: 15px;
+    text-transform: lowercase;
+    line-height: 31px;
+    /* font-style: italic; */
+    text-align: left;
+    opacity: 0.8;
 }
 .slider-side-text-tittle {
-    color: #fff;
-    font-family: geomanist-regular;
-    font-size: 38px;
+    color: #ABA07C;
+    font-family: ACaslonPro-Regular;
+    font-size: 36px;
     line-height: 39px;
+    font-weight: bold;
 }
 .slider-side-description-text {
     color: #fff;
