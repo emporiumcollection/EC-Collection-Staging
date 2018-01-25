@@ -128,7 +128,7 @@
                 border-radius: 0px;
                 transition: .5s;
                 position: fixed;
-                top: 127px;
+                top: 124px;
                 left: calc(100% - 65px);
                 width: 340px;
                 background: #272727;
@@ -382,8 +382,8 @@ $(document).on('ready', function () {
             <aside class="site-aside">
                 <div class="contact-aside">
                     <ul class="contact-aside-list">
-                        <li class="contact-list-item contact-phone"><a href="#"><i class="fa fa-phone asideIclass" aria-hidden="true"></i> +1 934 451 1317</a></li>
-                        <li class="contact-list-item contact-email"><a href="#"><i class="fa fa-envelope asideIclass" aria-hidden="true"></i> riaan@emporium-voyage.com</a></li>
+                        <li class="contact-list-item contact-phone"><a href="tel:+1 934 451 1317"><i class="fa fa-phone asideIclass" aria-hidden="true"></i> +1 934 451 1317</a></li>
+                        <li class="contact-list-item contact-email"><a href="mailto: reservation@emporium-voyage.com"><i class="fa fa-envelope asideIclass" aria-hidden="true"></i> riaan@emporium-voyage.com</a></li>
                     </ul>
                 </div>
             </aside>

@@ -972,8 +972,8 @@
                                         <aside class="site-aside">
                                             <div class="contact-aside">
                                                 <ul class="contact-aside-list">
-                                                    <li class="contact-list-item contact-phone"><a href="#"><i class="fa fa-phone asideIclass" aria-hidden="true"></i> +1 934 451 1317</a></li>
-                                                    <li class="contact-list-item contact-email"><a href="#"><i class="fa fa-envelope asideIclass" aria-hidden="true"></i> reservation@emporium-voyage.com</a></li>
+                                                    <li class="contact-list-item contact-phone"><a href="tel:+1 934 451 1317"><i class="fa fa-phone asideIclass" aria-hidden="true"></i> +1 934 451 1317</a></li>
+                                                    <li class="contact-list-item contact-email"><a href="mailto: reservation@emporium-voyage.com"><i class="fa fa-envelope asideIclass" aria-hidden="true"></i> reservation@emporium-voyage.com</a></li>
                                                 </ul>
                                             </div>
                                         </aside>
@@ -2376,9 +2376,9 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                             $(document).ready(function() {
                                                 $('#maindestinations').collapse('show');
                                                 $('#maindestinations').on('shown.bs.collapse', function() {
-                                                    $(".destination-node-<?php echo $cat; ?>-btn").parents(".node").parent().find(".node").show();
-                                                    $(".destination-node-<?php echo $cat; ?>-btn").parents(".node").parent().find(".node").css({"padding-left": "10px", "margin-top": "5px", "text-transform": "inherit"});
-                                                    $(".destination-node-<?php echo $cat; ?>-btn").parents(".node").parent().find(".node > a").css({"text-transform": "none"});
+                                                    $(".destination-node-<?php echo $cat; ?>-btn").parents(".node").parent().find("> .node").show();
+                                                    $(".destination-node-<?php echo $cat; ?>-btn").parents(".node").parent().find("> .node").css({"padding-left": "10px", "margin-top": "5px", "text-transform": "inherit"});
+                                                    $(".destination-node-<?php echo $cat; ?>-btn").parents(".node").parent().find("> .node > a").css({"text-transform": "none"});
                                                     $('#maindestinations a.node-btn').removeClass('active');
                                                     
                                                     $(".destination-node-<?php echo $cat; ?>-btn").addClass('active');
