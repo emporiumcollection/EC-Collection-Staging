@@ -11,6 +11,13 @@ and open the template in the editor.
 /*.collapsed .panel-heading.custom-heading {
     border: medium none;
 }*/
+
+.node.post-filter-inputs.destination-nodes-container-Indian_Ocean.node {
+	font-size: 14px;
+}
+.node-btn.destination-node-btn.destination-node-Indian_Ocean-btn {
+	font-size: 13px;
+}
 .left-hamburger-menu {
     cursor: pointer;
     margin-top: 6px;

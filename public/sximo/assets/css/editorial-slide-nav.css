@@ -7,6 +7,11 @@ and open the template in the editor.
     Created on : Feb 19, 2017, 2:34:09 PM
     Author     : mohit
 */
+#search-navbar::placeholder {
+	color: white;
+	opacity: 1;
+}
+
 .close-btn-align {
 	color: #fff;
 	font-size: 40px;
