@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\controller;
 use App\Models\Evcustomfields;
+use App\Models\ModelsModcustomfieldgroup;
+use App\Models\ModelsModcustomfieldvalue;
+use App\Models\ModelsModcustomfield;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 use Validator, Input, Redirect ; 
@@ -26,7 +29,9 @@ class EvcustomfieldsController extends Controller {
 			'pageTitle'	=> 	$this->info['title'],
 			'pageNote'	=>  $this->info['note'],
 			'pageModule'=> 'evcustomfields',
-			'return'	=> self::returnUrl()
+			'return'	=> self::returnUrl(),
+			'icon_class'=>'',
+			'color_class'=>''
 			
 		);
 		
@@ -35,61 +40,197 @@ class EvcustomfieldsController extends Controller {
 	public function getIndex( Request $request )
 	{
 
-		if($this->access['is_view'] ==0) 
-			return Redirect::to('dashboard')
-				->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus','error');
+		//if($this->access['is_view'] ==0) 
+			//return Redirect::to('dashboard')
+				//->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus','error');
 
 		
 		return view('evcustomfields.index',$this->data);
 	}	
 
+public function index(Request $request){ 
+        //For list-clients permission 
+        $this->data['access'] =  $this->models->validAccess(Auth::id());
+       // if(!isset($this->data['access']['list-clients']) && !isset($this->data['access']['all'])){return redirect('accessDenied');}
+        $this->data['module_list'] = ModBuilder::select('id_modbuilder','title_mob')->get();
+        $this->data['module_selected'] = $this->data['module_list'][0]->id_modbuilder;
+        return view('admin.customfields.index', $this->data);
+
+    }
+    public function edit($id){
+         //For list-clients permission 
+        $this->data['access'] =  $this->models->validAccess(Auth::id());
+       // if(!isset($this->data['access']['list-clients']) && !isset($this->data['access']['all'])){return redirect('accessDenied');}
+        $this->data['module_list'] = ModBuilder::select('id_modbuilder','title_mob')->get();
+        $this->data['module_selected'] = $id;
+        return view('admin.customfields.index', $this->data);
+    }
+    
+    //For create new group for custom fields
+    public function createGroupAjax(Request $request){ 
+        
+        $rules = array('group_name' => 'required','module_id' => 'required');
+        $messages = [
+            'group_name.required' => trans('customfields.admin_customfield_module_error_group'),
+            'module_id.required' => trans('customfields.admin_customfield_module_error_module_id')
+            ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        // Validate the input and return correct response
+        if ($validator->fails())
+        {
+            return response()->json(array(
+                'error'=>true,
+                'success' => false,
+                'error_messages' => $validator->getMessageBag()
+
+            )); // 400 being the HTTP code for an invalid request.
+        }
+
+        $group = new ModelsModcustomfieldgroup;
+        $group->title_mfg = $request->input('group_name');
+        $group->slug_mfg = str_slug($request->input('group_name'));
+        $group->idmod_mfg = $request->input('module_id');
+        $group->save();
+          
+        return response()->json(array('error'=>'true','success'=>'true','error_messages'=>''));
+
+    }
+
+     //For get groups for custom fields
+    public function getGroupsAjax(Request $request,$id){ 
+        $group = ModelsModcustomfieldgroup::select('id_modcustomfieldgroup','idmod_mfg','slug_mfg','title_mfg')->where('idmod_mfg','=',$id)->orderBy('orderby_mfg','asc')->get();
+        $this->data['group_list'] = $group;
+        return response()->json($this->data['group_list']);
+    }
+
+     //For get a custom  fields
+    public function getCustomFieldsAjax(Request $request){ 
+       
+            $group = ModelsModcustomfieldgroup::select('id_modcustomfieldgroup')->where('slug_mfg','=',$request->input('gp'))->first();
+          if(!empty($group)){
+            $field = ModelsModcustomfield::select('title_mcf','id_modcustomfield')->where('idmfg_mcf','=',$group->id_modcustomfieldgroup)->orderBy('orderby_mcf','asc')->get();
+          }else{
+            $field = array();
+          }
+        $this->data['field_list']=$field;
+        return response()->json($this->data['field_list']);
+    }
 
 
-	function getUpdate(Request $request, $id = null)
-	{
-	
-		if($id =='')
-		{
-			if($this->access['is_add'] ==0 )
-			return Redirect::to('dashboard')->with('messagetext',\Lang::get('core.note_restric'))->with('msgstatus','error');
-		}	
-		
-		if($id !='')
-		{
-			if($this->access['is_edit'] ==0 )
-			return Redirect::to('dashboard')->with('messagetext',\Lang::get('core.note_restric'))->with('msgstatus','error');
-		}				
-				
-		$this->data['access']		= $this->access;
-		return view('evcustomfields.form',$this->data);
-	}	
+    //For create new group for custom fields
+    public function createFieldAjax(Request $request){ 
+        $params = json_encode($request->input());
 
-	public function getShow( $id = null)
-	{
-	
-		if($this->access['is_detail'] ==0) 
-			return Redirect::to('dashboard')
-				->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus','error');
-					
-		
-		$this->data['access']		= $this->access;
-		return view('evcustomfields.view',$this->data);	
-	}	
+        $rules = array('group_slug' => 'required','module_id' => 'required','type' => 'required','title' => 'required');
+        $messages = [
+            'group_slug.required' => trans('customfields.admin_customfield_module_error_group'),
+            'module_id.required' => trans('customfields.admin_customfield_module_error_module_id'),
+            'type.required' => trans('customfields.admin_customfield_module_error_group'),
+            'title.required' => trans('customfields.admin_customfield_module_error_module_id')
+            ];
 
-	function postSave( Request $request)
-	{
-		
-	
-	}	
+        $validator = Validator::make($request->input(), $rules, $messages);
 
-	public function postDelete( Request $request)
-	{
-		
-		if($this->access['is_remove'] ==0) 
-			return Redirect::to('dashboard')
-				->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus','error');
-		
-	}			
+        // Validate the input and return correct response
+        if ($validator->fails())
+        {
+            return response()->json(array(
+                'error'=>true,
+                'success' => false,
+                'error_messages' => $validator->getMessageBag()
+
+            )); // 400 being the HTTP code for an invalid request.
+        }
+
+        $group =  ModelsModcustomfieldgroup::select('id_modcustomfieldgroup')->where('slug_mfg','=',$request->input('group_slug'))->first();
+        $field = new ModelsModcustomfield;
+        $field->title_mcf = $request->input('title');
+        $field->slug_mcf = str_slug($request->input('title'));
+        $field->idmfg_mcf = $group->id_modcustomfieldgroup;
+        $field->option_mcf = $params;
+        $field->save();
+          
+        return response()->json(array('error'=>'true','success'=>'true','error_messages'=>''));
+
+    }
+    //For remove group and group's custom fields
+    public function removeGroupAjax(Request $request){
+        $group =  ModelsModcustomfieldgroup::where('slug_mfg','=',$request->input('group'))->first();
+        ModelsModcustomfield::where('idmfg_mcf','=',$group->id_modcustomfieldgroup)->delete();
+        ModelsModcustomfieldgroup::destroy($group->id_modcustomfieldgroup);
+        return response()->json(array('error'=>'true','success'=>'true','error_messages'=>''));
+    }
+    //For remove custom fields
+    public function removeCustomFieldAjax($id){
+        ModelsModcustomfield::destroy($id);
+        return response()->json(array('error'=>'true','success'=>'true','error_messages'=>''));
+    }
+    //For edit custom field by ajax
+    public function editCustomFieldAjax($id){
+        $this->data['field'] = ModelsModcustomfield::find($id);
+        return response()->json($this->data['field']);
+    }
+
+    //For edit custom field by ajax
+    public function updateCustomFieldAjax(Request $request, $id){
+        $params = json_encode($request->input());
+
+        $rules = array('group_slug' => 'required','module_id' => 'required','type' => 'required','title' => 'required');
+        $messages = [
+            'group_slug.required' => trans('customfields.admin_customfield_module_error_group'),
+            'module_id.required' => trans('customfields.admin_customfield_module_error_module_id'),
+            'type.required' => trans('customfields.admin_customfield_module_error_group'),
+            'title.required' => trans('customfields.admin_customfield_module_error_module_id')
+            ];
+
+        $validator = Validator::make($request->input(), $rules, $messages);
+
+        // Validate the input and return correct response
+        if ($validator->fails())
+        {
+            return response()->json(array(
+                'error'=>true,
+                'success' => false,
+                'error_messages' => $validator->getMessageBag()
+
+            )); // 400 being the HTTP code for an invalid request.
+        }
+
+        $field = ModelsModcustomfield::find($id);
+        $field->title_mcf = $request->input('title');
+        $field->slug_mcf = str_slug($request->input('title'));
+        $field->option_mcf = $params;
+        $field->save();
+          
+        return response()->json(array('error'=>'true','success'=>'true','error_messages'=>''));
+    }
+    //For update Order of Custom Field
+    public function updateCustomFieldOrderAjax(Request $request){
+        $orderByIds = explode(',',$request->input('order_by'));
+        if(isset($orderByIds) && !empty($orderByIds)){
+            foreach ($orderByIds as $keyCF => $valueCF) {
+                $field = ModelsModcustomfield::find($valueCF);
+                $field->orderby_mcf = $keyCF;
+                $field->save();
+            }
+             return response()->json(array('error'=>'true','success'=>'true','error_messages'=>''));
+        }
+    }
+
+    //For update Order of Custom Field's Group
+    public function updateGroupOrderAjax(Request $request){
+        $orderByIds = explode(',',$request->input('order_by'));
+        if(isset($orderByIds) && !empty($orderByIds)){
+            foreach ($orderByIds as $keyCF => $valueCF) {
+                $group = ModelsModcustomfieldgroup::find($valueCF);
+                $group->orderby_mfg = $keyCF;
+                $group->save();
+            }
+             return response()->json(array('error'=>'true','success'=>'true','error_messages'=>''));
+        }
+    }			
 
 
 }
