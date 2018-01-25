@@ -51,7 +51,7 @@
 .right-menus ul li a:hover, .right-menus ul li a:active, .right-menus ul li a:focus {
     background-color: #89837B !important;
     border-left: 4px solid #a1a39c;
-    color: #fff;
+    color: #fff !important;
     outline: medium none;
     text-decoration: none;
     transition: all 0.3s ease 0s;
