@@ -19,6 +19,21 @@ Route::get('/', 'HomeController@index');
 Route::get('generate/destination', 'GenerateController@destinationGenerate');
 Route::get('generate/hotel', 'GenerateController@hotelGenerate');
 Route::get('personalized-service', 'Frontend\PersonalizedServiceController@index');
+	/*
+	* Custom Field Module  
+	* All Action urls 
+	*/
+	Route::get('evcustomfields', 'EvcustomfieldsController@index');
+	Route::post('evcustomfields/createGroup', 'EvcustomfieldsController@createGroupAjax');
+	Route::get('evcustomfields/getGroups/{id}', 'EvcustomfieldsController@getGroupsAjax');
+	Route::get('evcustomfields/getCustomFields', 'EvcustomfieldsController@getCustomFieldsAjax');
+	Route::post('evcustomfields/createField', 'EvcustomfieldsController@createFieldAjax');
+	Route::post('evcustomfields/removeCustomField/{id}', 'EvcustomfieldsController@removeCustomFieldAjax');
+	Route::post('evcustomfields/removeGroup', 'EvcustomfieldsController@removeGroupAjax');
+	Route::get('evcustomfields/editCustomField/{id}', 'EvcustomfieldsController@editCustomFieldAjax');
+	Route::post('evcustomfields/updateCustomField/{id}', 'EvcustomfieldsController@updateCustomFieldAjax');
+	Route::post('evcustomfields/updateCustomFieldOrders', 'EvcustomfieldsController@updateCustomFieldOrderAjax');
+	Route::post('evcustomfields/updateGroupOrders', 'EvcustomfieldsController@updateGroupOrderAjax');
 /*************** End *************/
 Route::controller('home', 'HomeController');
 
