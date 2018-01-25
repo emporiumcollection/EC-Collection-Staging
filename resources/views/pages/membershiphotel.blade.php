@@ -54,7 +54,12 @@
                 left:unset;
             }
             /* AIC Harman email sidebar css */
-
+            .post-filter-inputs:hover, .post-filter-inputs:active, .post-filter-inputs:focus {
+                background-color: #89837B;
+                border-left: 4px solid #a1a39c;
+                color: #fff !important;
+                transition: all 0.3s ease 0s;
+            }
             .site-aside {
                 position: fixed;
                 top: 0;
