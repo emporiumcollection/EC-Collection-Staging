@@ -2587,6 +2587,10 @@
                     $(".members-drop-list").not($div).hide();
                     return false;
                 });
+                
+                $('.members-drop-list').on('focusout', function () {
+                    $(this).hide();
+                });
             }));
             eval($("#adult-input-value").change(function () {
                 var adults = $(this).val();
