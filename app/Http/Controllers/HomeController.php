@@ -6000,6 +6000,8 @@ class HomeController extends Controller {
             return Redirect::to('dashboard');
         endif;
 
+        $this->data['segment_1'] = $request->segment(1);
+        
         $keyword = str_replace('_',' ',trim($request->cat));
         $show = 'asc';
         if($request->segment(1)=='search'){
@@ -6301,7 +6303,7 @@ class HomeController extends Controller {
                         } else {
                             $this->data['sidebargridAds'] = '';
                         }
-                        $this->data['segment_1'] = $request->segment(1);
+                        
                         $this->data['continent'] = $request->continent;
                         $this->data['region'] = $request->region;
                         $this->data['cat'] = $request->cat;
