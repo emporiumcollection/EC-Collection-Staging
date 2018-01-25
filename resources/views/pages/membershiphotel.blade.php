@@ -78,13 +78,14 @@
             .contact-aside ul {
                 padding: 7px 0px 0px 0px;
                 list-style: none;
+                margin-bottom: 10px;
             }
             .contact-aside li {
-                padding: 6px 0px 6px 18px;
+                padding: 6px 0px 6px 25px;
                 margin: 0px 0px 1px 0px;
             }
             .contact-aside li a {
-                margin-left: 11px;
+                margin-left: 10px;
                 font-size: 13px;
                 color: #ABA07C;
             }
