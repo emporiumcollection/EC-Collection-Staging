@@ -1273,7 +1273,7 @@
                                 padding: 20px 0px 40px 0px;
                             }
                             
-                            a.activeSelect {
+                            li a.activebook-now {
                                 background: #ABA07C !important;
                             }
               
@@ -2266,7 +2266,7 @@
 										@endif
 													
 										<li>
-                                                                                    <a class="activeSelect" href="#book-now" data-hotel-option="book_now">BOOK {{$propertyDetail['data']->property_name}} </a>
+                                                                                    <a class="activebook-now" href="#book-now" data-hotel-option="book_now">BOOK {{$propertyDetail['data']->property_name}} </a>
                                         </li>
                                     </ul>
                                 </div>
