@@ -2581,7 +2581,7 @@
                 }
             });
             /*Toggle Side Nav Start Here*/
-            eval($('.dropdown').each(function () {
+            /*eval($('.dropdown').each(function () {
                 var $dropdown = $(this);
                 $(".members-list", $dropdown).click(function (e) {
                     e.preventDefault();
@@ -2590,7 +2590,7 @@
                     $(".members-drop-list").not($div).hide();
                     return false;
                 });
-            }));
+            }));*/
             eval($("#adult-input-value").change(function () {
                 var adults = $(this).val();
                 $('#adults-val').html(adults);
