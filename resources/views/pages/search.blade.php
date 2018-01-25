@@ -2332,7 +2332,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                             </div>
                                         </div>
                                         <?php // endif; ?>
-                                        <?php if($segment_1=='luxury_destinations' && $continent == ''): ?>
+                                        <?php if($segment_1=='luxury_experience' && $continent == ''): ?>
                                         <script>
                                             $(document).ready(function() {
                                                 $(".filter-grid-page-side-bar").scrollTop($('#collapse1').position().top - 65);
