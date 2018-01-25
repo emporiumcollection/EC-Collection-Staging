@@ -138,11 +138,11 @@
             }
             
             .block-content.content {
-                width: 57px;
+                width: 33px;
                 float: right;
                 height: 20px;
-                margin-left: 14px;
-                margin-top: -22px;
+                margin-right: 12px;
+                margin-top: 34px;
             }
             
                         
@@ -151,20 +151,20 @@
             }
             
             .detailfaLock {
-                margin-right: 39px;
+                margin-right: 4px;
             }
             
             .block-content.content span:nth-child(1) {
                 top: 32px;
-                left: 47%;
+                left: 57%;
             }
             .block-content.content span:nth-child(2) {
                 top: 38px;
-                left: 47%;
+                left: 57%;
             }
             .block-content.content span:nth-child(3) {
                 top: 44px;
-                left: 47%;
+                left: 57%;
             }
             
             
