@@ -2622,54 +2622,37 @@
             });
             
             (function (document) {
-    var alterNav = function () {
-        var item = document.querySelector('.members-drop-list');
-        var link = document.querySelector('.members-list');
-        var theClass = 'display';
-        var itemIsOpened = false;
+                var alterNav = function () {
+                    var item = document.querySelector('.members-drop-list');
+                    var link = document.querySelector('.members-list');
+                    var itemIsOpened = false;
+                    window.onclick = function (e) {
+                        console.log(e);
+                        if (!itemIsOpened) {
+                            if (e.target == link) {
+                                itemIsOpened = true;
+                                item.show();
+                            }
+                        } else {
+                            if (!isChild(e.target, item)) {
+                                itemIsOpened = false;
+                                item.hide();
+                            }
+                        }
+                    }
+                };
 
-
-
-        window.onclick = function (e) {
-            console.log(e);
-            if (!itemIsOpened) {
-                if (e.target == link) {
-                    itemIsOpened = true;
-                    addClass(item, theClass);
+                var isChild = function (child, parent) {
+                    var current = child;
+                    while (current) {
+                        if (current === parent) return true;
+                        current = current.parentNode;
+                    }
+                    return false;
                 }
-            } else {
-                if (!isChild(e.target, item)) {
-                    itemIsOpened = false;
-                    removeClass(item, theClass);
-                }
-            }
-        }
-    };
 
-    var isChild = function (child, parent) {
-        var current = child;
-        while (current) {
-            if (current === parent) return true;
-            current = current.parentNode;
-        }
-        return false;
-    }
-    var addClass = function (element, className) {
-        if (!element) {
-            return;
-        }
-        element.className = element.className.replace(/\s+$/gi, '') + ' ' + className;
-    };
-
-    var removeClass = function (element, className) {
-        if (!element) {
-            return;
-        }
-        element.className = element.className.replace(className, '');
-    };
-
-    alterNav();
-})(document);
+                alterNav();
+            })(document);
             
         </script>
         
