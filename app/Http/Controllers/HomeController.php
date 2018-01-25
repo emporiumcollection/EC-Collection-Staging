@@ -6505,7 +6505,7 @@ class HomeController extends Controller {
         
     }
 	
-	function getpackagedetails($pckid)
+	function fetchpackagedetails($pckid)
 	{
 		if($pckid!='')
 		{

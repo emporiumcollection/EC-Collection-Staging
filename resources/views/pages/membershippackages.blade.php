@@ -771,7 +771,7 @@ $(document).on('ready', function () {
             $('.single-right-text-product').html('');
             $('.rmimgp').html('');
             $.ajax({
-                url: "{{ URL::to('getpackagedetails')}}" + '/' + $(this).attr('rel'),
+                url: "{{ URL::to('fetchpackagedetails')}}" + '/' + $(this).attr('rel'),
                 type: "get",
                 success: function (data) {
                     var rimg = "{{ URL::to('uploads/packages/')}}/" + data.pdata.package_image;
