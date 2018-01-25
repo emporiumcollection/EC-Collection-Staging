@@ -54,7 +54,9 @@
                 left:unset;
             }
             /* AIC Harman email sidebar css */
-
+            .new-sidebar-sk .panel-heading.custom-heading:hover {
+                background-color: #89837B !important;
+            }
             .site-aside {
                 position: fixed;
                 top: 0;
@@ -78,13 +80,14 @@
             .contact-aside ul {
                 padding: 7px 0px 0px 0px;
                 list-style: none;
+                margin-bottom: 10px;
             }
             .contact-aside li {
-                padding: 6px 0px 6px 18px;
+                padding: 6px 0px 6px 25px;
                 margin: 0px 0px 1px 0px;
             }
             .contact-aside li a {
-                margin-left: 11px;
+                margin-left: 10px;
                 font-size: 13px;
                 color: #ABA07C;
             }
@@ -107,7 +110,9 @@
                 background: #1e2023 !important;
                 color: #fff !important;
             }
-
+            .heading-stying {
+                font-size: 12px !important;
+            }
             .asideIclass {
                 float: left;
                 margin-top: 3px;
@@ -182,8 +187,8 @@
             <aside class="site-aside">
                 <div class="contact-aside">
                     <ul class="contact-aside-list">
-                        <li class="contact-list-item contact-phone"><a href="#"><i class="fa fa-phone asideIclass" aria-hidden="true"></i> +1 934 451 1317</a></li>
-                        <li class="contact-list-item contact-email"><a href="#"><i class="fa fa-envelope asideIclass" aria-hidden="true"></i> riaan@emporium-voyage.com</a></li>
+                        <li class="contact-list-item contact-phone"><a href="tel:+1 934 451 1317"><i class="fa fa-phone asideIclass" aria-hidden="true"></i> +1 934 451 1317</a></li>
+                        <li class="contact-list-item contact-email"><a href="mailto:riaan@emporium-voyage.com"><i class="fa fa-envelope asideIclass" aria-hidden="true"></i> riaan@emporium-voyage.com</a></li>
                     </ul>
                 </div>
             </aside>
