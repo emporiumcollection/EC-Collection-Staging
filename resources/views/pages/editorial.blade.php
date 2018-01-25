@@ -1274,11 +1274,11 @@
                             }
                             
                             li a.activebook-now {
-                                background: #ABA07C;
+                                background: #98920D !important;
                             }
                             
                             li a.activebook-now:hover {
-                                background: #000;
+                                background: #98920D !important;
                             }
               
                             @import url('https://fonts.googleapis.com/css?family=Caveat');
