@@ -557,7 +557,7 @@ $(document).on('ready', function () {
                     </div>
                 </section>
 
-                <div class="hotel-property-section-bg">
+                <div class="hotel-property-section-bg" id="popupopn">
                     <div class="clearfix"></div>
                     <!--Show More Slide-->
                     <div class="show_more-page">
@@ -771,7 +771,7 @@ $(document).on('ready', function () {
             $('.single-right-text-product').html('');
             $('.rmimgp').html('');
             $.ajax({
-                url: "{{ URL::to('getpackagedetails')}}" + '/' + $(this).attr('rel'),
+                url: "{{ URL::to('fetchpackagedetails')}}" + '/' + $(this).attr('rel'),
                 type: "get",
                 success: function (data) {
                     var rimg = "{{ URL::to('uploads/packages/')}}/" + data.pdata.package_image;
@@ -796,7 +796,7 @@ $(document).on('ready', function () {
                     imagesPro += '<a href="#">Book</a>';
                     imagesPro += '</div>';
                     imagesPro += '</div>';
-                    $('.single-right-text-product').html(imagesPro);
+                    $('#popupopn .single-right-text-product').html(imagesPro);
                     $('.show_more-page').css("width", "100%");
                 }
             });
@@ -815,7 +815,7 @@ $(document).on('ready', function () {
             var index = $(this).parent().parent().find(".image-slider li.active").index();
             $(this).parent().parent().find(".image-slider li.active").removeClass("active");
             if (index == 0) {
-                var lindex = $(this).parent().parent().find(".image-slider li:last-child").index();
+                var lindex = $(this).parent().parent().find(".image-slider li:last-child").index() + 1;
                 $(this).parent().parent().find(".image-slider li:nth-child(" + lindex + ")").addClass("active");
                 $(this).parent().parent().find(".images-count").html(lindex + " / " + $(this).parent().parent().find(".image-slider li").length);
             } else
