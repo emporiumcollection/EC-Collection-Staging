@@ -954,14 +954,14 @@
                                 font-size: 14px;
                                 margin-top: 25px;
                                 padding-bottom: 50px;
-                                width: 117px;
+                                width: auto;
                                 margin-left: 0px;
                                 -webkit-appearance: none;
                                 -moz-appearance: none;
                                 appearance: none;
                                 -webkit-transition: border-color 150ms ease;
                                 align-items: center;
-                                padding-left: 16px;
+                                padding-left: 0px;
                             }
                             
                             .dates .editorail-heading {
@@ -969,7 +969,7 @@
                                 font-size: 16px;
                                 font-weight: bold;
                                 text-align: center;
-                                margin-left: 18px;
+                                margin-left: 0px;
                                 text-transform: uppercase;
                             }
                             .booking-page-footer-section h6 {
@@ -2560,6 +2560,9 @@
 																<a class="textButton arrowButton detail_view MrgTop5" rel="<?php echo $props['data']->id; ?>" href="#">
 																	Quick View 
 																</a>
+                                                                                                                                <a class="textButton arrowButton MrgTop5" rel="{{$props['data']->id}}" href="{{URL::to($props['data']->property_slug)}}">
+                                                                                                                                    Detail View 
+                                                                                                                                </a>
 															</div>
 															<div class="showOnHover">
 																<div class="hover_request">

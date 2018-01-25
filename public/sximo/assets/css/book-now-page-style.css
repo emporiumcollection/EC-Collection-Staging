@@ -113,8 +113,8 @@ ul.dates > li {
     outline: none;
 }
 .dates li select option {
-    color: #000000;
-    background: #fff;
+    color: #fff;
+    background: #252525;
 }
 @media screen and (-webkit-min-device-pixel-ratio:0) { 
     .dates li select {
