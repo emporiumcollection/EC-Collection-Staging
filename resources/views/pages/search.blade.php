@@ -598,6 +598,9 @@
         .node > a {
             text-transform: none;
         }
+        .dl-filter > .node {
+            margin-top: 0;
+        }
         </style>
 		
 		<!-- Global site tag (gtag.js) - Google Analytics -->
