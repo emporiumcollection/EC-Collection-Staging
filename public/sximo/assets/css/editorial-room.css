@@ -460,7 +460,7 @@ button.hotel-btn {
 .gallery.row .secondaria2 img{width:auto;position:absolute;top:0%;left:50%;-ms-transform: translateX(-50%); -webkit-transform: translateX(-50%); transform: translateX(-50%);opacity:1;}
 
 .gallery .info1{overflow:hidden;width:80%;margin:0% 10%;position:absolute;z-index:2;top:50%;-ms-transform: translateY(-50%); -webkit-transform: translateY(-50%); transform: translateY(-50%);}
-.gallery .info1 h2{font-family: 'Raleway', sans-serif;margin:0px;height:4vw;overflow:hidden;position:relative;font-size:4vw;line-height:4vw;color:#fff;font-weight:600;}
+.gallery .info1 h2{margin:0px;height:4vw;overflow:hidden;position:relative;font-size:4vw;line-height:4vw;color:#fff;font-weight:600;}
 .gallery .info1 h2 span{position:absolute;top:4vw;font-family: Geomanist-regular;}
 .gallery .info1 p{font-size:14px;font-weight:300;overflow:hidden;position:relative;line-height:25px;}
 .gallery .info1 p span{position:absolute;top:14px;}

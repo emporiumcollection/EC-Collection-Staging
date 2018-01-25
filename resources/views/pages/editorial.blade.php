@@ -138,10 +138,10 @@
             }
             
             .block-content.content {
-                width: 33px;
+                width: 36px;
                 float: right;
                 height: 20px;
-                margin-right: 12px;
+                margin-right: 0px;
                 margin-top: 34px;
             }
             

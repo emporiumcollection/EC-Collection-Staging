@@ -237,7 +237,9 @@ and open the template in the editor.
     display: none;
 }
 .sec-differentiate-line {
-  border-top: 4px solid #545454;
+	border-top: 4px solid #545454;
+	float: left;
+	width: 100%;
 }
 .restaurent-sec-align {
   margin-bottom: 50px;

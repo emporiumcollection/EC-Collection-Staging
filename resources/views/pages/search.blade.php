@@ -111,28 +111,28 @@
             }
             
             .block-content.content {
-                width: 22px;
+                width: 31px;
                 float: right;
-                height: 30px;
+                height: 27px;
                 margin-top: 0px;
-                margin-right: -6px;
+                margin-right: -16px;
             }
           
             .detailfaLock {
-                margin-right: 50px;
+                margin-right: 4px;
             }
             
             .block-content.content span:nth-child(1) {
                 top: 12px;
-                left: 62%;
+                left: 75%;
             }
             .block-content.content span:nth-child(2) {
                 top: 18px;
-                left: 62%;
+                left: 75%;
             }
             .block-content.content span:nth-child(3) {
                 top: 24px;
-                left: 62%;
+                left: 75%;
             }
             
             /* hamburg menu css */
