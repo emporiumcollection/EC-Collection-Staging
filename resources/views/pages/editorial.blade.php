@@ -1189,6 +1189,7 @@
                                 top: 294px;
                                 height: 40px;
                                 width: 62px;
+                                font-family: Geomanist-Regular;
                             }
                             .back-To-Top {
                                 width: 69px;
@@ -1270,6 +1271,10 @@
                                 background: #f0f0f0;
                                 margin-top: 40px;
                                 padding: 20px 0px 40px 0px;
+                            }
+                            
+                            a.activeSelect {
+                                background: #ABA07C !important;
                             }
               
                             @import url('https://fonts.googleapis.com/css?family=Caveat');
@@ -2261,7 +2266,7 @@
 										@endif
 													
 										<li>
-                                            <a href="#book-now" data-hotel-option="book_now">BOOK {{$propertyDetail['data']->property_name}} </a>
+                                                                                    <a class="activeSelect" href="#book-now" data-hotel-option="book_now">BOOK {{$propertyDetail['data']->property_name}} </a>
                                         </li>
                                     </ul>
                                 </div>
