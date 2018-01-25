@@ -2256,12 +2256,12 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                         </div>
                                         <?php // if(!isset($_REQUEST['landing_page']) && !isset($_REQUEST['destination_page'])): ?>
                                         <div class="panel panel-default custom-post-panel">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#book-your-destination" class="heading-stying collapsed">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#book-your-destination" class="heading-stying <?php echo ($segment_1=='search' && isset($_REQUEST['arrive']))? '' : 'collapsed'; ?>">
                                                 <div class="panel-heading custom-heading">
                                                     Change My Dates
                                                 </div>
                                             </a>
-                                            <div id="book-your-destination" class="panel-collapse collapse">
+                                            <div id="book-your-destination" class="panel-collapse collapse <?php echo ($segment_1=='search' && isset($_REQUEST['arrive']))? 'in' : ''; ?>">
                                                 <div class="panel-body custom-panel-body">
                                                     <div class="dl-filter">
                                                         <div>
