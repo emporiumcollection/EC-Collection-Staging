@@ -2371,6 +2371,24 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                             });
                                         </script>
                                         <?php endif; ?>
+                                        <?php if($segment_1=='luxury_hotels' && $continent != ''): ?>
+                                        <script>
+                                            $(document).ready(function() {
+                                                $('#maindestinations').collapse('show');
+                                                $('#maindestinations').on('shown.bs.collapse', function() {
+                                                    <?php if($cat != ''): ?>
+                                                    $(".destination-node-<?php echo $cat; ?>-btn").parents(".node").toggle();
+                                                    $(".destination-node-<?php echo $cat; ?>-btn").parents(".node").css({"padding-left": "10px", "margin-top": "5px", "text-transform": "inherit"});
+                                                    $(".destination-node-<?php echo $cat; ?>-btn").parents(".node > a").css({"text-transform": "none"});
+                                                    $('#maindestinations a.node-btn').removeClass('active');
+                                                    
+                                                    $(".destination-node-<?php echo $cat; ?>-btn").addClass('active');
+                                                    <?php endif; ?>
+                                                    $(".filter-grid-page-side-bar").scrollTop($('#maindestinations').position().top - 65);
+                                                });
+                                            });
+                                        </script>
+                                        <?php endif; ?>
                                         <input type="hidden" id="selDestn" value="">
                                         <input type="hidden" id="listrecrds" value="21">
                                         <?php // if(!isset($_REQUEST['landing_page']) && !isset($_REQUEST['arrive'])): ?>
