@@ -498,230 +498,63 @@ $(document).on('ready', function () {
                 <section class="wow fadeIn big-section cstmaiclass" id="align-to-top">
                     <div class="container-fluid">
                         <div class="row equalize sm-equalize-auto">
-                            <div class="image-slider-container image-slider-margin-align auto-slider" id="rooms"><ul class="image-slider">
+                            <div class="image-slider-container image-slider-margin-align auto-slider" id="rooms">
+							@if (!empty($packages))
+								<ul class="image-slider">
+									{{--*/ $k=1; $tottyp = count($packages); /*--}}
+									@foreach($packages as $key=>$package)
+									<li class="{{($k==1) ? 'active' : ''}}">
+										<a href="#">
+											<img class="img-responsive" src="{{URL::to('uploads/packages/'.$package->package_image)}}" alt="{{$package->package_image}}" style="height:580px; width: 100%;">
+										</a>
+										<div class="col-md-12 col-sm-12">
+											<div class="col-md-6 col-sm-6">
+												<div class="row">
+													<div class="image-slider-btns-bg">
 
-
-                                    <li class="active">
-                                        <a href="#">
-                                            <img class="img-responsive object-fit-size" src="http://www.emporium-voyage.com/uploads/properties_subtab_imgs/27646461-43002829.jpg" alt="hotel-de-tourrel_suite-7.jpg" style="height:580px; width: 100%;">
-                                        </a>
-                                        <div class="col-md-12 col-sm-12">
-                                            <div class="col-md-6 col-sm-6">
-                                                <div class="row">
-                                                    <div class="image-slider-btns-bg">
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6 col-sm-6">
-                                                    <div class="row">
-                                                        <div class="slider-sec-side-text-bg">
-                                                            <div class="slider-side-sec-alignment">
-                                                                <div class="expeience-small-text">RESTAURANT</div>
-                                                                <div class="slider-side-text-tittle">GET INSPIRED</div>
-                                                                <div class="slider-side-description-text">
-                                                                    ‘When a 17th Century private Mansion meets the design of the 20th Century, the result is amazing. In the heart of the old village of Saint Remy de Provence, this exclusive address teases you with its wine cellar offering you many Grands Crus. The restaurant next door sounds like an invitation you can’t refuse.’
-
-                                                                    A refined creation in t...
-                                                                </div>
-                                                            </div>
-                                                            <div>
-                                                                <img class="slider-next-image-btn img-responsive" src="http://www.emporium-voyage.com/uploads/properties_subtab_imgs/69726129-32146277.jpg" alt="">
-                                                                <a href="#" style="margin-left:100px;" rel="1486" class="book-button open-show_more-page hotel-btn ClickButton">Show More</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-
-
-                                    <li class="">
-                                        <a href="#">
-                                            <img class="img-responsive object-fit-size" src="http://www.emporium-voyage.com/uploads/container_user_files/locations/hotel-de-tourrel/rooms-images/numro-deux/hotel-de-tourrel_suite-2_1.jpg" alt="hotel-de-tourrel_suite-2_1.jpg" style="height:580px; width: 100%;">
-                                        </a>
-                                        <div class="col-md-12 col-sm-12">
-                                            <div class="col-md-6 col-sm-6">
-                                                <div class="row">
-                                                    <div class="image-slider-btns-bg">
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6 col-sm-6">
-                                                    <div class="row">
-                                                        <div class="slider-sec-side-text-bg">
-                                                            <div class="slider-side-sec-alignment">
-                                                                <div class="expeience-small-text">Experience Hotel de Tourrel</div>
-                                                                <div class="slider-side-text-tittle">NUMÉRO DEUX</div>
-                                                                <div class="slider-side-description-text">
-                                                                    The mythical room of Hôtel de Tourrel. The room were Charles Gounod performed for the first time in the presence of writer Frederic Mistral his partition of the Opera Mireille in 1853. Sleeps 2.
-                                                                </div>
-                                                            </div>
-                                                            <div>
-                                                                <img class="slider-next-image-btn img-responsive" src="http://www.emporium-voyage.com/uploads/container_user_files/locations/hotel-de-tourrel/rooms-images/numero-quatre/hotel-de-tourrel_suite-4.jpg" alt="">
-                                                                <a href="#" style="margin-left:100px;" class="book-button open-show_more-page hotel-btn ClickButton">Show More</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-
-
-                                    <li class="">
-                                        <a href="#">
-                                            <img class="img-responsive object-fit-size" src="http://www.emporium-voyage.com/uploads/container_user_files/locations/hotel-de-tourrel/rooms-images/numero-quatre/hotel-de-tourrel_suite-4.jpg" alt="hotel-de-tourrel_suite-4.jpg" style="height:580px; width: 100%;">
-                                        </a>
-                                        <div class="col-md-12 col-sm-12">
-                                            <div class="col-md-6 col-sm-6">
-                                                <div class="row">
-                                                    <div class="image-slider-btns-bg">
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6 col-sm-6">
-                                                    <div class="row">
-                                                        <div class="slider-sec-side-text-bg">
-                                                            <div class="slider-side-sec-alignment">
-                                                                <div class="expeience-small-text">Experience Hotel de Tourrel</div>
-                                                                <div class="slider-side-text-tittle">NUMERO QUATRE</div>
-                                                                <div class="slider-side-description-text">
-                                                                    Suite Number Quatre features a stucco ceiling and a King size bed. Sleeps 2.
-                                                                </div>
-                                                            </div>
-                                                            <div>
-                                                                <img class="slider-next-image-btn img-responsive" src="http://www.emporium-voyage.com/uploads/container_user_files/locations/hotel-de-tourrel/rooms-images/numero-un/hotel-de-tourrel_suite-4.jpg" alt="">
-                                                                <a href="#" style="margin-left:100px;" rel="1486" class="book-button open-show_more-page hotel-btn ClickButton">Show More</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-
-
-                                    <li class="">
-                                        <a href="#">
-                                            <img class="img-responsive object-fit-size" src="http://www.emporium-voyage.com/uploads/container_user_files/locations/hotel-de-tourrel/rooms-images/numero-un/hotel-de-tourrel_suite-4.jpg" alt="hotel-de-tourrel_suite-4.jpg" style="height:580px; width: 100%;">
-                                        </a>
-                                        <div class="col-md-12 col-sm-12">
-                                            <div class="col-md-6 col-sm-6">
-                                                <div class="row">
-                                                    <div class="image-slider-btns-bg">
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6 col-sm-6">
-                                                    <div class="row">
-                                                        <div class="slider-sec-side-text-bg">
-                                                            <div class="slider-side-sec-alignment">
-                                                                <div class="expeience-small-text">Experience Hotel de Tourrel</div>
-                                                                <div class="slider-side-text-tittle">NUMERO UN</div>
-                                                                <div class="slider-side-description-text">
-                                                                    Suite Number Un features a 4-meter high French Ceiling and a King size bed. Sleeps 2.
-                                                                </div>
-                                                            </div>
-                                                            <div>
-                                                                <img class="slider-next-image-btn img-responsive" src="http://www.emporium-voyage.com/uploads/container_user_files/locations/hotel-de-tourrel/rooms-images/numero-trois/zimmer_3.jpeg" alt="">
-                                                                <a href="#" style="margin-left:100px;" rel="1486" class="book-button open-show_more-page hotel-btn ClickButton">Show More</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-
-
-                                    <li class="">
-                                        <a href="#">
-                                            <img class="img-responsive object-fit-size" src="http://www.emporium-voyage.com/uploads/container_user_files/locations/hotel-de-tourrel/rooms-images/numero-trois/zimmer_3.jpeg" alt="zimmer_3.jpeg" style="height:580px; width: 100%;">
-                                        </a>
-                                        <div class="col-md-12 col-sm-12">
-                                            <div class="col-md-6 col-sm-6">
-                                                <div class="row">
-                                                    <div class="image-slider-btns-bg">
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6 col-sm-6">
-                                                    <div class="row">
-                                                        <div class="slider-sec-side-text-bg">
-                                                            <div class="slider-side-sec-alignment">
-                                                                <div class="expeience-small-text">Experience Hotel de Tourrel</div>
-                                                                <!--                                <div class="slider-side-text-tittle">NUMERO TROIS</div>-->
-                                                                <div class="slider-side-description-text">
-                                                                    This room is in the contemporary part of the house, and features a Renaissance stone wall. Sleeps 3.
-                                                                </div>
-                                                            </div>
-                                                            <div>
-                                                                <img class="slider-next-image-btn img-responsive" src="http://www.emporium-voyage.com/uploads/container_user_files/locations/hotel-de-tourrel/rooms-images/numero-cinq/hotel-de-tourrel_suite-5_bath.jpg" alt="">
-                                                                <a href="#" style="margin-left:100px;" rel="1486" class="book-button open-show_more-page hotel-btn ClickButton">Show More</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-
-
-                                    <li class="">
-                                        <a href="#">
-                                            <img class="img-responsive object-fit-size" src="http://www.emporium-voyage.com/uploads/container_user_files/locations/hotel-de-tourrel/rooms-images/numero-cinq/hotel-de-tourrel_suite-5_bath.jpg" alt="hotel-de-tourrel_suite-5_bath.jpg" style="height:580px; width: 100%;">
-                                        </a>
-                                        <div class="col-md-12 col-sm-12">
-                                            <div class="col-md-6 col-sm-6">
-                                                <div class="row">
-                                                    <div class="image-slider-btns-bg">
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6 col-sm-6">
-                                                    <div class="row">
-                                                        <div class="slider-sec-side-text-bg">
-                                                            <div class="slider-side-sec-alignment">
-                                                                <div class="expeience-small-text">Experience Hotel de Tourrel</div>
-                                                                <div class="slider-side-text-tittle">NUMERO CINQ</div>
-                                                                <div class="slider-side-description-text">
-                                                                    This room has a nice view over the church and the village roofs. Sleeps 3.
-                                                                </div>
-                                                            </div>
-                                                            <div>
-                                                                <img class="slider-next-image-btn img-responsive" src="http://www.emporium-voyage.com/uploads/container_user_files/locations/hotel-de-tourrel/rooms-images/numro-sept/hotel-de-tourrel_suite-7.jpg" alt="">
-                                                                <a href="#" style="margin-left:100px;" rel="1486" class="book-button open-show_more-page hotel-btn ClickButton">Show More</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <div class="clearfix"></div>
-                                <div class=" editorial-images-count images-count">1 / 6</div>
-                                <div class="editorial-image-slider-btns image-slider-btns">
-                                    <a class="editorial-image-slider-previous-btn image-slider-previous-btn" href="#">
-                                        <img class="arrow-margin-right" src="{{ asset('sximo/assets/images/editorial-left-arrow.png')}}" alt="">
-                                    </a>
-                                    <a class="image-slider-next-btn editorial-image-slider-next-btn" href="#">
-                                        <img class="arrow-margin-right" src="{{ asset('sximo/assets/images/editorial-right-arrow.png')}}" alt="">
-                                    </a>
-                                </div>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-6 col-sm-6">
+													<div class="row">
+														<div class="slider-sec-side-text-bg">
+															<div class="slider-side-sec-alignment">
+																<div class="expeience-small-text">Package</div>
+																<div class="slider-side-text-tittle">{{$package->package_title}}</div>
+																<div class="slider-side-description-text">
+																	{{(strlen($package->package_description) > 300) ? substr($package->package_description,0,300).'...':$package->package_description}}
+																</div>
+															</div>
+															<div>
+																<a href="#" style="margin-left:100px;" rel="{{$package->id}}" class="book-button open-show_more-page hotel-btn">Show More</a>
+																@if (\Auth::check() == true)
+																	<a href="{{URL::to('choosepackage/'.$package->id)}}" style="margin-left:100px;" >Buy Now</a>
+																@else
+																	<a href="{{URL::to('user/login')}}" style="margin-left:100px;" >Buy Now</a>
+																@endif
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</li>
+									{{--*/ $k++; /*--}}
+									
+									@endforeach
+								</ul>
+								<div class="clearfix"></div>
+								<div class=" editorial-images-count images-count">1 / {{$tottyp}}</div>
+								<div class="editorial-image-slider-btns image-slider-btns">
+									<a class="editorial-image-slider-previous-btn image-slider-previous-btn" href="#">
+										<img class="arrow-margin-right" src="{{ asset('sximo/assets/images/editorial-left-arrow.png')}}" alt=""/>
+									</a>
+									<a class="image-slider-next-btn editorial-image-slider-next-btn" href="#">
+										<img src="{{ asset('sximo/assets/images/editorial-right-arrow.png')}}" alt=""/>
+									</a>
+								</div>
+							@endif
                             </div>
                         </div>
                     </div>
