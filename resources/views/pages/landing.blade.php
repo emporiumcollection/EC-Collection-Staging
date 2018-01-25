@@ -897,6 +897,9 @@
     .view-modify-cancel-booking a:hover {
 	color: white;
     }
+    .display {
+    display: block;
+    }
     
             
         </style>
@@ -2585,12 +2588,7 @@
                     $div = $(".members-drop-list", $dropdown);
                     $div.toggle();
                     $(".members-drop-list").not($div).hide();
-                    $('.members-drop-list').focus();
                     return false;
-                });
-                
-                $('.members-drop-list').on('focusout', function () {
-                    $(this).hide();
                 });
             }));
             eval($("#adult-input-value").change(function () {
@@ -2622,6 +2620,57 @@
                     }
                 });
             });
+            
+            (function (document) {
+    var alterNav = function () {
+        var item = document.querySelector('.members-drop-list');
+        var link = document.querySelector('.members-list');
+        var theClass = 'display';
+        var itemIsOpened = false;
+
+
+
+        window.onclick = function (e) {
+            console.log(e);
+            if (!itemIsOpened) {
+                if (e.target == link) {
+                    itemIsOpened = true;
+                    addClass(item, theClass);
+                }
+            } else {
+                if (!isChild(e.target, item)) {
+                    itemIsOpened = false;
+                    removeClass(item, theClass);
+                }
+            }
+        }
+    };
+
+    var isChild = function (child, parent) {
+        var current = child;
+        while (current) {
+            if (current === parent) return true;
+            current = current.parentNode;
+        }
+        return false;
+    }
+    var addClass = function (element, className) {
+        if (!element) {
+            return;
+        }
+        element.className = element.className.replace(/\s+$/gi, '') + ' ' + className;
+    };
+
+    var removeClass = function (element, className) {
+        if (!element) {
+            return;
+        }
+        element.className = element.className.replace(className, '');
+    };
+
+    alterNav();
+})(document);
+            
         </script>
         
         
