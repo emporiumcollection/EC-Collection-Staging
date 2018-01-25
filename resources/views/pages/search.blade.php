@@ -2958,6 +2958,36 @@ url: "{{ URL::to('filter_search_destionation')}}",
                     
                     </script> 
                     
+                    <!-- AIC -->
+                    /*Date Range Picker Start Here*/
+                    <script>
+                        $(document).on('ready', function () {
+                        $('#editorial-book-now-inputs').dateRangePicker(
+                            {
+                                selectForward: (Boolean),
+                                stickyMonths: (Boolean),
+                                startDate: "12-01-2017",
+                                format: ' DD.MM.YYYY',
+                                autoClose: true,
+                                separator: ' to ',
+                                getValue: function ()
+                                {
+                                    if ($('#date-range-editorial-destination').val() && $('#date-range-editorial-arrive').val())
+                                        return $('#date-range-editorial-destination').val() + ' to ' + $('#date-range-editorial-arrive').val();
+                                    else
+                                        return '';
+                                },
+                                setValue: function (s, s1, s2)
+                                {
+                                    $('#date-range-editorial-arrive').val(s1);
+                                    $('#date-range-editorial-destination').val(s2);
+                                }
+                            }
+                        ).bind('datepicker-first-date-selected', function (event, obj) {
+                            $("#date-range-editorial-destination").val('');
+                        });
+                        /*Date Range Picker End Here*/
+                    </script>
                      <script> 
                 $('.contact-aside').hover(
                     function(){ $(this).addClass('active') },
