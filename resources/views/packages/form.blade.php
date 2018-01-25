@@ -39,7 +39,20 @@
 									 <div class="col-md-2">
 									 	
 									 </div>
-								  </div> 					
+								  </div> 
+								  <div class="form-group  " >
+									<label for="Package Category" class=" control-label col-md-4 text-left"> Package Category <span class="asterix"> * </span></label>
+									<div class="col-md-6">
+										<select name="package_category" class="form-control">
+											<option value="hotel_listing" {{($row['package_category']=='hotel_listing') ? 'selected="selected"' : ''}}>Hotel Listing</option>
+											<option value="hotel_marketing" {{($row['package_category']=='hotel_marketing') ? 'selected="selected"' : ''}}>Hotel Marketing</option>
+										</select>
+									   
+									 </div> 
+									 <div class="col-md-2">
+									 	
+									 </div>
+								  </div>
 								  <div class="form-group  " >
 									<label for="Package Title" class=" control-label col-md-4 text-left"> Package Title <span class="asterix"> * </span></label>
 									<div class="col-md-6">
@@ -48,7 +61,16 @@
 									 <div class="col-md-2">
 									 	
 									 </div>
-								  </div> 					
+								  </div>
+								  <div class="form-group  " >
+									<label for="Package USP" class=" control-label col-md-4 text-left"> Package USP <span class="asterix"> * </span></label>
+									<div class="col-md-6">
+									  {!! Form::text('package_usp', $row['package_usp'],array('class'=>'form-control', 'placeholder'=>'', 'required'=>'true'  )) !!} 
+									 </div> 
+									 <div class="col-md-2">
+									 	
+									 </div>
+								  </div>
 								  <div class="form-group  " >
 									<label for="Package Description" class=" control-label col-md-4 text-left"> Package Description </label>
 									<div class="col-md-6">

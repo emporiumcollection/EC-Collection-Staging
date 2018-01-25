@@ -146,6 +146,8 @@ class PackagesController extends Controller {
 		if ($validator->passes()) {
 			$data = $this->validatePost('tb_packages');
 			$data['user_id'] = $uid;
+			$data['package_category'] = $request->input('package_category');
+			$data['package_usp'] = $request->input('package_usp');
             if ($request->input('id') == '') {
                 $data['created_at'] = date('Y-m-d h:i:s');
             } else {

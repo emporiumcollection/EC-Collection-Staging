@@ -523,7 +523,7 @@ $(document).on('ready', function () {
                                                                 <div class="expeience-small-text">Hotel Marketing Packages</div>
                                                                 <div class="slider-side-text-tittle">{{$package->package_title}}</div>
                                                                 <div class="slider-side-description-text">
-                                                                    {!! (strlen($package->package_description) > 250) ? substr(nl2br($package->package_description),0,250).'...':nl2br($package->package_description) !!}
+                                                                    {!! nl2br($package->package_usp) !!}
                                                                 </div>
                                                             </div>
                                                             <div>
