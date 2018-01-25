@@ -39,6 +39,9 @@
                 text-transform: uppercase;
                 background: rgba(37,37,37,1.0);
             }
+            .new-sidebar-sk .panel-heading.custom-heading:hover {
+                background-color: #89837B !important;
+            }
             header.haside {
                 right: 0 !important;
                 position: fixed;
