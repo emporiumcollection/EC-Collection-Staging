@@ -2376,9 +2376,9 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                             $(document).ready(function() {
                                                 $('#maindestinations').collapse('show');
                                                 $('#maindestinations').on('shown.bs.collapse', function() {
-                                                    $(".destination-node-<?php echo $cat; ?>-btn").parents(".node").toggle();
-                                                    $(".destination-node-<?php echo $cat; ?>-btn").parents(".node").css({"padding-left": "10px", "margin-top": "5px", "text-transform": "inherit"});
-                                                    $(".destination-node-<?php echo $cat; ?>-btn").parents(".node > a").css({"text-transform": "none"});
+                                                    $(".destination-node-<?php echo $cat; ?>-btn").parents(".node").parent().find(".node").show();
+                                                    $(".destination-node-<?php echo $cat; ?>-btn").parents(".node").parent().find(".node").css({"padding-left": "10px", "margin-top": "5px", "text-transform": "inherit"});
+                                                    $(".destination-node-<?php echo $cat; ?>-btn").parents(".node").parent().find(".node > a").css({"text-transform": "none"});
                                                     $('#maindestinations a.node-btn').removeClass('active');
                                                     
                                                     $(".destination-node-<?php echo $cat; ?>-btn").addClass('active');
