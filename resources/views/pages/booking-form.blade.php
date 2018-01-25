@@ -55,6 +55,9 @@
                 background: #252525;
                 color: #fff;
             }
+            .date-picker-wrapper.no-shortcuts.no-gap.two-months {
+                top: 585px !important;
+            }
         </style>
 		<!-- Global site tag (gtag.js) - Google Analytics -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110391807-1"></script>
