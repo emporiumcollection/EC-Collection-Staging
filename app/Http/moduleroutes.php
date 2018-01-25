@@ -44,4 +44,5 @@
                     Route::controller('advertisementspace', 'AdvertisementspaceController');
                     Route::controller('pagesslider', 'PagessliderController');
                     Route::controller('packages', 'PackagesController');
+                    Route::controller('evcustomfields', 'EvcustomfieldsController');
                     ?>
