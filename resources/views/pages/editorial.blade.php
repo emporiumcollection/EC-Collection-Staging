@@ -1274,7 +1274,7 @@
                             }
                             
                             li a.activebook-now {
-                                background: #98920D !important;
+                                background: #ABA00d !important;
                             }
                             
                             li a.activebook-now:hover {
