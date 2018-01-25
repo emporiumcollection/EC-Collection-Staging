@@ -3273,10 +3273,10 @@ div.panel.footer-nav-menu.show {
     margin: 0;
     padding: 0;
     text-align: center;
-    width: 30px;
+    width: 37px;
 }
 .date-picker-wrapper .month-wrapper table .day.toMonth.valid {
-    padding: 10px 13px;
+    padding: 10px 10px;
 }
 .date-picker-wrapper .first-date-selected, .date-picker-wrapper .last-date-selected {
     background-color: #ABA07C !important;

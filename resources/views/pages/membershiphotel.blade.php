@@ -54,7 +54,9 @@
                 left:unset;
             }
             /* AIC Harman email sidebar css */
-
+            .new-sidebar-sk .panel-heading.custom-heading:hover {
+                background-color: #89837B !important;
+            }
             .site-aside {
                 position: fixed;
                 top: 0;
