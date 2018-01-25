@@ -590,7 +590,14 @@
             margin-bottom: 25px;
             overflow: auto;
         }
-         
+        .node {
+            padding-left: 10px;
+            margin-top: 5px;
+            text-transform: inherit;
+        }
+        .node > a {
+            text-transform: none;
+        }
         </style>
 		
 		<!-- Global site tag (gtag.js) - Google Analytics -->
@@ -2344,26 +2351,19 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                             $(document).ready(function() {
                                                 $('#maindestinations').collapse('show');
                                                 $('#maindestinations').on('shown.bs.collapse', function() {
-                                                    $(".destination-nodes-container-<?php echo $continent; ?>").find("> .node").toggle();
-                                                    $(".destination-nodes-container-<?php echo $continent; ?>").find("> .node").css({"padding-left": "10px", "margin-top": "5px", "text-transform": "inherit"});
-                                                    $(".destination-nodes-container-<?php echo $continent; ?>").find("> .node > a").css({"text-transform": "none"});
-
-                                                    $('#maindestinations a.node-btn').removeClass('active');
-                                                    $(".destination-nodes-container-<?php echo $continent; ?>").find("> .node > a").addClass('active');
+                                                    $(".destination-node-<?php echo $continent; ?>-btn").parents(".node").parent().find("> .node").show();
+                                                    $('#maindestinations a.node-btn').removeClass('active');                                                    
+                                                    $(".destination-node-<?php echo $continent; ?>-btn").addClass('active');
 
                                                     <?php if($region != ''): ?>
-                                                    $(".destination-node-l2-<?php echo $region; ?>-btn").parent().find("> .node").toggle();
-                                                    $(".destination-node-l2-<?php echo $region; ?>-btn").parent().find("> .node").css({"padding-left": "10px", "margin-top": "5px", "text-transform": "inherit"});
-                                                    $(".destination-node-l2-<?php echo $region; ?>-btn").parent().find("> .node > a").css({"text-transform": "none"});
-                                                    $('#maindestinations a.node-btn').removeClass('active');
-                                                    $(".destination-node-l2-<?php echo $region; ?>-btn").parent().find("> .node > a").addClass('active');
+                                                    $(".destination-node-<?php echo $region; ?>-btn").parents(".node").parent().find("> .node").show();
+                                                    $('#maindestinations a.node-btn').removeClass('active');                                                    
+                                                    $(".destination-node-<?php echo $region; ?>-btn").addClass('active');
                                                     <?php endif; ?>
                                                     <?php if($cat != ''): ?>
-                                                    $(".destination-node-l4-<?php echo $cat; ?>-btn").parent().parent().find("> .node").toggle();
-                                                    $(".destination-node-l4-<?php echo $cat; ?>-btn").parent().parent().find("> .node").css({"padding-left": "10px", "margin-top": "5px", "text-transform": "inherit"});
-                                                    $(".destination-node-l4-<?php echo $cat; ?>-btn").parent().parent().find("> .node > a").css({"text-transform": "none"});
-                                                    $('#maindestinations a.node-btn').removeClass('active');
-                                                    $(".destination-node-l4-<?php echo $cat; ?>-btn").addClass('active');
+                                                    $(".destination-node-<?php echo $cat; ?>-btn").parents(".node").parent().find("> .node").show();
+                                                    $('#maindestinations a.node-btn').removeClass('active');                                                    
+                                                    $(".destination-node-<?php echo $cat; ?>-btn").addClass('active');
                                                     <?php endif; ?>
 
                                                     $(".filter-grid-page-side-bar").scrollTop($('#maindestinations').position().top - 65);
@@ -2377,11 +2377,9 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                                 $('#maindestinations').collapse('show');
                                                 $('#maindestinations').on('shown.bs.collapse', function() {
                                                     $(".destination-node-<?php echo $cat; ?>-btn").parents(".node").parent().find("> .node").show();
-                                                    $(".destination-node-<?php echo $cat; ?>-btn").parents(".node").parent().find("> .node").css({"padding-left": "10px", "margin-top": "5px", "text-transform": "inherit"});
-                                                    $(".destination-node-<?php echo $cat; ?>-btn").parents(".node").parent().find("> .node > a").css({"text-transform": "none"});
-                                                    $('#maindestinations a.node-btn').removeClass('active');
-                                                    
+                                                    $('#maindestinations a.node-btn').removeClass('active');                                                    
                                                     $(".destination-node-<?php echo $cat; ?>-btn").addClass('active');
+                                                    
                                                     $(".filter-grid-page-side-bar").scrollTop($('#maindestinations').position().top - 65);
                                                 });
                                             });
