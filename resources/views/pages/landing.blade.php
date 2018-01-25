@@ -900,6 +900,10 @@
     .display {
     display: block;
     }
+    .right-serach img {
+	margin-left: -7px;
+	padding: 0;
+    }
     
             
         </style>
