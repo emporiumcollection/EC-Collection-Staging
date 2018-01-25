@@ -6509,7 +6509,7 @@ class HomeController extends Controller {
 	{
 		if($pckid!='')
 		{
-			$packageArr = \DB::table('tb_packages')->where('id',$pckid)->first();
+			$packageArr['pdata'] = \DB::table('tb_packages')->where('id',$pckid)->first();
 			if(!empty($packageArr))
 			{
 				return response()->json($packageArr);
