@@ -4443,6 +4443,8 @@ class HomeController extends Controller {
 
     public function getPropertyByCategory(Request $request) {
         
+        $this->data['segment_1'] = $request->segment(1);
+        
         $this->data['slug'] = $request->slug;
         $propertiesArr = array();
         
