@@ -15,6 +15,15 @@ a:hover, a:focus, a:active{
     text-decoration: none;
     color: #fff;
 }
+
+/* AIC 26-1-2018 */
+
+            
+.booking-form-select-inputs-style option {
+    background: #D2D2C6;
+    color: #000;
+}
+
 .hotel-btn:hover {
     color: white;
 }
