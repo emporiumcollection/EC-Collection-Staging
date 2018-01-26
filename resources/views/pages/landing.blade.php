@@ -2659,14 +2659,6 @@
             })(document);
             
         </script>
-        
-        <script>
-            $(document).ready(function () {
-                $(".collapsed").click(function(event) {
-                  $(".panel-collapse").collapsed('hide');
-                });
-              });
-        </script>
 
         @include('layouts/elliot/ai_search-page')
         @include('layouts/elliot/ai_booking-page')
