@@ -12775,7 +12775,8 @@ body:not(.bh-isblog)[class*='bh-sidebar-'] .bh-wrapper .uk-container,
   background: #ffffff;
 }
 .bh-slideshow-thumbnail-split-preview > * {
-  z-index: 1;
+  z-index: 9;
+  position: relative;
 }
 .bh-slideshow-thumbnail-split-preview-title {
   margin: 5px 0 10px 0;
@@ -12940,6 +12941,7 @@ body:not(.bh-isblog)[class*='bh-sidebar-'] .bh-wrapper .uk-container,
 @media (min-width: 1220px) {
   .bh-slideshow-thumbnail-split .bh-slideshow-thumbnail-split-preview {
     padding: 70px;
+    z-index: 9;
   }
   .bh-slideshow-thumbnail-nav-item {
     height: 100px;
