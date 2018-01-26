@@ -2661,8 +2661,8 @@
         </script>
         
         <script>
-        $(".collapsed").click(function(){
-            $(".where-box-sub-menu").toggle();    
+        $(".blank").click(function(){
+            $(".white").toggle();    
         });
     </script>
 
