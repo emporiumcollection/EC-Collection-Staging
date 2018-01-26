@@ -44,7 +44,8 @@ public function index(Request $request){
         //For list-clients permission 
         //$this->data['access'] =  $this->models->validAccess(Auth::id());
        // if(!isset($this->data['access']['list-clients']) && !isset($this->data['access']['all'])){return redirect('accessDenied');}
-        $this->data['module_list'] = Module::select('module_id','module_title')->get();
+        $this->data['module_list'] = Module::select('module_id','module_title')
+        ->whereIn('module_name', array('users','groups','bookings','module','invoices','employee'))->get();
         $this->data['module_selected'] = $this->data['module_list'][0]->module_id;
         return view('evcustomfields.index', $this->data);
 
