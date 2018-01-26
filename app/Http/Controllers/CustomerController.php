@@ -442,6 +442,13 @@ class CustomerController extends Controller {
                         } else {
                             \Session::put('lang', 'Deutsch');
                         }
+
+                        //Temp fix for redireceting
+                        if($row->group_id == 4 || $row->group_id == 3) {
+                            return Redirect::to('customer/profile')
+                        }
+                        //Temp fix for redireceting
+
                         if (CNF_FRONT == 'false') :
                             return Redirect::to('dashboard');
                         else :
