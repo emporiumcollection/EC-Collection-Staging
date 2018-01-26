@@ -2659,6 +2659,11 @@
             })(document);
             
         </script>
+        <script>
+            $(document).on('click',function(){
+            $('.collapse').collapse('hide');
+            })
+        </script>
         
         
         @include('layouts/elliot/ai_search-page')
