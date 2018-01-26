@@ -2659,6 +2659,14 @@
             })(document);
             
         </script>
+        
+        <script>
+        $(document).ready(function () {
+            $("destination-sub-menues").find("h4").on("click", "a", function () {
+                $('#destination-child48').collapse('hide');
+            });
+        });
+        </script>
 
         @include('layouts/elliot/ai_search-page')
         @include('layouts/elliot/ai_booking-page')
