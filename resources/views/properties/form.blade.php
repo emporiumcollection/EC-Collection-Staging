@@ -1075,6 +1075,7 @@
                                 <ul class="nav nav-tabs">
                                     <li class="active"><a href="#restaurant1" data-toggle="tab">Restaurant 1</a></li>
                                     <li class=""><a href="#restaurant2" data-toggle="tab">Restaurant 2</a></li>
+									<li class=""><a href="#restaurant3" data-toggle="tab">Restaurant 3</a></li>
                                 </ul>
                                 <div class="tab-content">
                                     <div class="tab-pane m-t active" id="restaurant1">
@@ -1368,179 +1369,676 @@
                                             </div>
                                         </div>
                                     </div>
+									
+									<div class="tab-pane m-t" id="restaurant3">
+                                        <div class="form-group  " >
+                                            <label for="Title" class=" control-label col-md-4 text-left"> Title </label>
+                                            <div class="col-md-6">
+                                                {!! Form::text('restaurant3_title', $row['restaurant3_title'],array('class'=>'form-control', 'placeholder'=>''  )) !!} 
+                                            </div> 
+                                            <div class="col-md-2">
+
+                                            </div>
+                                        </div> 
+
+                                        <div class="form-group  " >
+                                            <label for="Description" class=" control-label col-md-4 text-left"> Description </label>
+                                            <div class="col-md-6">
+                                                <textarea name="restaurant3_desciription" class="form-control"> {{$row['restaurant3_desciription']}}</textarea> 
+                                            </div> 
+                                            <div class="col-md-2">
+
+                                            </div>
+                                        </div> 
+
+                                        <div class="form-group  " >
+                                            <label for="Image" class=" control-label col-md-4 text-left"> Image </label>
+                                            <div class="col-md-6">
+                                                <input  type='file' name='restaurant3_image' id='restaurant3_image'  />
+                                                <div >
+                                                    {!! SiteHelpers::showUploadedFile($row['restaurant3_image'],'/uploads/properties_subtab_imgs/') !!}
+
+                                                </div>					
+
+                                            </div> 
+                                            <div class="col-md-2">
+
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group  " >
+                                            <label for="Image 2" class=" control-label col-md-4 text-left"> Image 2 </label>
+                                            <div class="col-md-6">
+                                                <input  type='file' name='restaurant3_image2' id='restaurant3_image2'  />
+                                                <div >
+                                                    {!! SiteHelpers::showUploadedFile($row['restaurant3_image2'],'/uploads/properties_subtab_imgs/') !!}
+
+                                                </div>					
+
+                                            </div> 
+                                            <div class="col-md-2">
+
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="Video Type" class=" control-label col-md-4 text-left"> Video Type </label>
+                                            <div class="col-md-6"> 
+                                                <label class='radio radio-inline'>
+                                                    <input type='radio' name='restaurant3_video_type' value ='upload' id='restaurant3_displayupload' @if($row['restaurant3_video_type'] == 'upload') checked="checked" @endif > Upload </label>
+                                                <label class='radio radio-inline'>
+                                                    <input type='radio' name='restaurant3_video_type' value ='link' id='restaurant3_displaylink' @if($row['restaurant3_video_type'] == 'link') checked="checked" @endif > Link </label> 
+                                            </div> 
+
+                                        </div>
+
+                                        <div class="form-group restaurant3_videotypeupload" style="display:none;" >
+                                            <label for="Video" class=" control-label col-md-4 text-left"> Video </label>
+                                            <div class="col-md-6">
+                                                <input  type='file' name='restaurant3_video' id='restaurant3_video'  />
+                                                <div >
+                                                    {!! SiteHelpers::showUploadedFile($row['restaurant3_video'],'/uploads/properties_subtab_imgs/') !!}
+
+                                                </div>					
+
+                                            </div> 
+                                            <div class="col-md-2">
+
+                                            </div>
+                                        </div>
+
+                                        <div class="restaurant3_videotypelink" style="display:none;" >
+                                            <div class="form-group">
+                                                <label for="Link Type" class=" control-label col-md-4 text-left"> Link Type </label>
+                                                <div class="col-md-8"> 
+                                                    <label class='radio radio-inline'>
+                                                        <input type='radio' name='restaurant3_video_link_type' value ='youtube' @if($row['restaurant3_video_link_type'] == 'youtube') checked="checked" @endif > Youtube </label>
+                                                    <label class='radio radio-inline'>
+                                                        <input type='radio' name='restaurant3_video_link_type' value ='vimeo' @if($row['restaurant3_video_link_type'] == 'vimeo') checked="checked" @endif > Vimeo </label> 
+                                                </div> 
+
+                                            </div>
+
+                                            <div class="form-group" >
+                                                <label for="Video Link" class=" control-label col-md-4 text-left"> Video Link </label>
+                                                <div class="col-md-8">
+                                                    <input type='text' name='restaurant3_video_link' id='restaurant3_video_link' class="form-control" value="{{$row['restaurant3_video_link']}}" />
+                                                </div> 
+
+
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group  " >
+                                            <label for="Designer" class=" control-label col-md-4 text-left"> Designer </label>
+                                            <div class="col-md-6">
+                                                <select name='restaurant3_designer[]' rows='5' id='restaurant3_designer' class='select2 ' multiple="multiple"  >
+                                                    @if(!empty($designers))
+                                                    @foreach($designers as $designer)
+                                                    <option value="{{$designer->id}}" {{(isset($row['restaurant3_designer']) && in_array($designer->id,explode(',',$row['restaurant3_designer']))) ? " selected='selected' " : '' }}>{{$designer->designer_name}}</option>
+                                                    @endforeach
+                                                    @endif
+                                                </select> 
+                                            </div> 
+                                            <div class="col-md-2">
+                                                <a href="{{URL::to('designers/update')}}" target="_blank">Add Designer</a>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group  " >
+                                            <label for="URL" class=" control-label col-md-4 text-left"> URL </label>
+                                            <div class="col-md-6">
+                                                {!! Form::text('restaurant3_url', $row['restaurant3_url'],array('class'=>'form-control', 'placeholder'=>''  )) !!} 
+                                            </div> 
+                                            <div class="col-md-2">
+
+                                            </div>
+                                        </div> 
+
+                                        <div class="form-group  " >
+                                            <label for="restaurant_usp_text" class=" control-label col-md-4 text-left"> Restaurant USP text </label>
+                                            <div class="col-md-6">
+                                                {!! Form::text('restaurant3_usp_text', $row['restaurant3_usp_text'],array('class'=>'form-control', 'placeholder'=>''  )) !!} 
+                                            </div> 
+                                            <div class="col-md-2">
+
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group  " >
+                                            <label for="restaurant_usp_person" class=" control-label col-md-4 text-left"> Restaurant USP Person </label>
+                                            <div class="col-md-6">
+                                                {!! Form::text('restaurant3_usp_person', $row['restaurant3_usp_person'],array('class'=>'form-control', 'placeholder'=>''  )) !!} 
+                                            </div> 
+                                            <div class="col-md-2">
+
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
                             </div>
 
                             <div class="tab-pane m-t" id="bar">
-                                <div class="form-group  " >
-                                    <label for="Title" class=" control-label col-md-4 text-left"> Title </label>
-                                    <div class="col-md-6">
-                                        {!! Form::text('bar_title', $row['bar_title'],array('class'=>'form-control', 'placeholder'=>''  )) !!} 
-                                    </div> 
-                                    <div class="col-md-2">
+								<ul class="nav nav-tabs">
+                                    <li class="active"><a href="#bar1" data-toggle="tab">Bar 1</a></li>
+                                    <li class=""><a href="#bar2" data-toggle="tab">Bar 2</a></li>
+									<li class=""><a href="#bar3" data-toggle="tab">Bar 3</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane m-t active" id="bar1">
+										<div class="form-group  " >
+											<label for="Title" class=" control-label col-md-4 text-left"> Title </label>
+											<div class="col-md-6">
+												{!! Form::text('bar_title', $row['bar_title'],array('class'=>'form-control', 'placeholder'=>''  )) !!} 
+											</div> 
+											<div class="col-md-2">
 
-                                    </div>
-                                </div> 
+											</div>
+										</div> 
 
-                                <div class="form-group  " >
-                                    <label for="Sub Title" class=" control-label col-md-4 text-left"> Sub Title </label>
-                                    <div class="col-md-6">
-                                        {!! Form::text('bar_sub_title', $row['bar_sub_title'],array('class'=>'form-control', 'placeholder'=>''  )) !!} 
-                                    </div> 
-                                    <div class="col-md-2">
+										<div class="form-group  " >
+											<label for="Sub Title" class=" control-label col-md-4 text-left"> Sub Title </label>
+											<div class="col-md-6">
+												{!! Form::text('bar_sub_title', $row['bar_sub_title'],array('class'=>'form-control', 'placeholder'=>''  )) !!} 
+											</div> 
+											<div class="col-md-2">
 
-                                    </div>
-                                </div>
+											</div>
+										</div>
 
-                                <div class="form-group  " >
-                                    <label for="Description" class=" control-label col-md-4 text-left"> Description </label>
-                                    <div class="col-md-6">
-                                        <textarea name="bar_desciription" class="form-control"> {{$row['bar_desciription']}}</textarea> 
-                                    </div> 
-                                    <div class="col-md-2">
+										<div class="form-group  " >
+											<label for="Description" class=" control-label col-md-4 text-left"> Description </label>
+											<div class="col-md-6">
+												<textarea name="bar_desciription" class="form-control"> {{$row['bar_desciription']}}</textarea> 
+											</div> 
+											<div class="col-md-2">
 
-                                    </div>
-                                </div> 
+											</div>
+										</div> 
 
-                                <div class="form-group  " >
-                                    <label for="Image One" class=" control-label col-md-4 text-left"> Image One</label>
-                                    <div class="col-md-6">
-                                        <input  type='file' name='bar_image' id='bar_image'  />
-                                        <div >
-                                            {!! SiteHelpers::showUploadedFile($row['bar_image'],'/uploads/properties_subtab_imgs/') !!}
+										<div class="form-group  " >
+											<label for="Image One" class=" control-label col-md-4 text-left"> Image One</label>
+											<div class="col-md-6">
+												<input  type='file' name='bar_image' id='bar_image'  />
+												<div >
+													{!! SiteHelpers::showUploadedFile($row['bar_image'],'/uploads/properties_subtab_imgs/') !!}
 
-                                        </div>					
+												</div>					
 
-                                    </div> 
-                                    <div class="col-md-2">
+											</div> 
+											<div class="col-md-2">
 
-                                    </div>
-                                </div>
+											</div>
+										</div>
 
-                                <div class="form-group  " >
-                                    <label for="Image Two" class=" control-label col-md-4 text-left"> Image Two </label>
-                                    <div class="col-md-6">
-                                        <input  type='file' name='bar_image2' id='bar_image2'  />
-                                        <div >
-                                            {!! SiteHelpers::showUploadedFile($row['bar_image2'],'/uploads/properties_subtab_imgs/') !!}
+										<div class="form-group  " >
+											<label for="Image Two" class=" control-label col-md-4 text-left"> Image Two </label>
+											<div class="col-md-6">
+												<input  type='file' name='bar_image2' id='bar_image2'  />
+												<div >
+													{!! SiteHelpers::showUploadedFile($row['bar_image2'],'/uploads/properties_subtab_imgs/') !!}
 
-                                        </div>					
+												</div>					
 
-                                    </div> 
-                                    <div class="col-md-2">
+											</div> 
+											<div class="col-md-2">
 
-                                    </div>
-                                </div>
+											</div>
+										</div>
 
-                                <div class="form-group  " >
-                                    <label for="Image Three" class=" control-label col-md-4 text-left"> Image Three </label>
-                                    <div class="col-md-6">
-                                        <input  type='file' name='bar_image3' id='bar_image3'  />
-                                        <div >
-                                            {!! SiteHelpers::showUploadedFile($row['bar_image3'],'/uploads/properties_subtab_imgs/') !!}
+										<div class="form-group  " >
+											<label for="Image Three" class=" control-label col-md-4 text-left"> Image Three </label>
+											<div class="col-md-6">
+												<input  type='file' name='bar_image3' id='bar_image3'  />
+												<div >
+													{!! SiteHelpers::showUploadedFile($row['bar_image3'],'/uploads/properties_subtab_imgs/') !!}
 
-                                        </div>					
+												</div>					
 
-                                    </div> 
-                                    <div class="col-md-2">
+											</div> 
+											<div class="col-md-2">
 
-                                    </div>
-                                </div>
+											</div>
+										</div>
 
-                                <div class="form-group">
-                                    <label for="Video Type" class=" control-label col-md-4 text-left"> Video Type </label>
-                                    <div class="col-md-6"> 
-                                        <label class='radio radio-inline'>
-                                            <input type='radio' name='bar_video_type' value ='upload' id='bar_displayupload' @if($row['bar_video_type'] == 'upload') checked="checked" @endif > Upload </label>
-                                        <label class='radio radio-inline'>
-                                            <input type='radio' name='bar_video_type' value ='link' id='bar_displaylink' @if($row['bar_video_type'] == 'link') checked="checked" @endif > Link </label> 
-                                    </div> 
+										<div class="form-group">
+											<label for="Video Type" class=" control-label col-md-4 text-left"> Video Type </label>
+											<div class="col-md-6"> 
+												<label class='radio radio-inline'>
+													<input type='radio' name='bar_video_type' value ='upload' id='bar_displayupload' @if($row['bar_video_type'] == 'upload') checked="checked" @endif > Upload </label>
+												<label class='radio radio-inline'>
+													<input type='radio' name='bar_video_type' value ='link' id='bar_displaylink' @if($row['bar_video_type'] == 'link') checked="checked" @endif > Link </label> 
+											</div> 
 
-                                </div>
+										</div>
 
-                                <div class="form-group bar_videotypeupload" style="display:none;" >
-                                    <label for="Video" class=" control-label col-md-4 text-left"> Video </label>
-                                    <div class="col-md-6">
-                                        <input  type='file' name='bar_video' id='bar_video'  />
-                                        <div >
-                                            {!! SiteHelpers::showUploadedFile($row['bar_video'],'/uploads/properties_subtab_imgs/') !!}
+										<div class="form-group bar_videotypeupload" style="display:none;" >
+											<label for="Video" class=" control-label col-md-4 text-left"> Video </label>
+											<div class="col-md-6">
+												<input  type='file' name='bar_video' id='bar_video'  />
+												<div >
+													{!! SiteHelpers::showUploadedFile($row['bar_video'],'/uploads/properties_subtab_imgs/') !!}
 
-                                        </div>					
+												</div>					
 
-                                    </div> 
-                                    <div class="col-md-2">
+											</div> 
+											<div class="col-md-2">
 
-                                    </div>
-                                </div>
+											</div>
+										</div>
 
-                                <div class="bar_videotypelink" style="display:none;" >
-                                    <div class="form-group">
-                                        <label for="Link Type" class=" control-label col-md-4 text-left"> Link Type </label>
-                                        <div class="col-md-8"> 
-                                            <label class='radio radio-inline'>
-                                                <input type='radio' name='bar_video_link_type' value ='youtube' @if($row['bar_video_link_type'] == 'youtube') checked="checked" @endif > Youtube </label>
-                                            <label class='radio radio-inline'>
-                                                <input type='radio' name='bar_video_link_type' value ='vimeo' @if($row['bar_video_link_type'] == 'vimeo') checked="checked" @endif > Vimeo </label> 
-                                        </div> 
+										<div class="bar_videotypelink" style="display:none;" >
+											<div class="form-group">
+												<label for="Link Type" class=" control-label col-md-4 text-left"> Link Type </label>
+												<div class="col-md-8"> 
+													<label class='radio radio-inline'>
+														<input type='radio' name='bar_video_link_type' value ='youtube' @if($row['bar_video_link_type'] == 'youtube') checked="checked" @endif > Youtube </label>
+													<label class='radio radio-inline'>
+														<input type='radio' name='bar_video_link_type' value ='vimeo' @if($row['bar_video_link_type'] == 'vimeo') checked="checked" @endif > Vimeo </label> 
+												</div> 
 
-                                    </div>
+											</div>
 
-                                    <div class="form-group" >
-                                        <label for="Video Link" class=" control-label col-md-4 text-left"> Video Link </label>
-                                        <div class="col-md-8">
-                                            <input type='text' name='bar_video_link' id='bar_video_link' class="form-control" value="{{$row['bar_video_link']}}" />
-                                        </div> 
+											<div class="form-group" >
+												<label for="Video Link" class=" control-label col-md-4 text-left"> Video Link </label>
+												<div class="col-md-8">
+													<input type='text' name='bar_video_link' id='bar_video_link' class="form-control" value="{{$row['bar_video_link']}}" />
+												</div> 
 
 
-                                    </div>
-                                </div>
+											</div>
+										</div>
 
-                                <div class="form-group  " >
-                                    <label for="Designer" class=" control-label col-md-4 text-left"> Designer </label>
-                                    <div class="col-md-6">
-                                        <select name='bar_designer[]' rows='5' id='bar_designer' class='select2 ' multiple="multiple"  >
-                                            @if(!empty($designers))
-                                            @foreach($designers as $designer)
-                                            <option value="{{$designer->id}}" {{(isset($row['bar_designer']) && in_array($designer->id,explode(',',$row['bar_designer']))) ? " selected='selected' " : '' }}>{{$designer->designer_name}}</option>
-                                            @endforeach
-                                            @endif
-                                        </select> 
-                                    </div> 
-                                    <div class="col-md-2">
-                                        <a href="{{URL::to('designers/update')}}" target="_blank">Add Designer</a>
-                                    </div>
-                                </div>
+										<div class="form-group  " >
+											<label for="Designer" class=" control-label col-md-4 text-left"> Designer </label>
+											<div class="col-md-6">
+												<select name='bar_designer[]' rows='5' id='bar_designer' class='select2 ' multiple="multiple"  >
+													@if(!empty($designers))
+													@foreach($designers as $designer)
+													<option value="{{$designer->id}}" {{(isset($row['bar_designer']) && in_array($designer->id,explode(',',$row['bar_designer']))) ? " selected='selected' " : '' }}>{{$designer->designer_name}}</option>
+													@endforeach
+													@endif
+												</select> 
+											</div> 
+											<div class="col-md-2">
+												<a href="{{URL::to('designers/update')}}" target="_blank">Add Designer</a>
+											</div>
+										</div>
 
-                                <div class="form-group  " >
-                                    <label for="URL" class=" control-label col-md-4 text-left"> URL </label>
-                                    <div class="col-md-6">
-                                        {!! Form::text('bar_url', $row['bar_url'],array('class'=>'form-control', 'placeholder'=>''  )) !!} 
-                                    </div> 
-                                    <div class="col-md-2">
+										<div class="form-group  " >
+											<label for="URL" class=" control-label col-md-4 text-left"> URL </label>
+											<div class="col-md-6">
+												{!! Form::text('bar_url', $row['bar_url'],array('class'=>'form-control', 'placeholder'=>''  )) !!} 
+											</div> 
+											<div class="col-md-2">
 
-                                    </div>
-                                </div> 
+											</div>
+										</div> 
 
-                                <div class="form-group  " >
-                                    <label for="bar_usp_text" class=" control-label col-md-4 text-left"> Bar USP text </label>
-                                    <div class="col-md-6">
-                                        {!! Form::text('bar_usp_text', $row['bar_usp_text'],array('class'=>'form-control', 'placeholder'=>''  )) !!} 
-                                    </div> 
-                                    <div class="col-md-2">
+										<div class="form-group  " >
+											<label for="bar_usp_text" class=" control-label col-md-4 text-left"> Bar USP text </label>
+											<div class="col-md-6">
+												{!! Form::text('bar_usp_text', $row['bar_usp_text'],array('class'=>'form-control', 'placeholder'=>''  )) !!} 
+											</div> 
+											<div class="col-md-2">
 
-                                    </div>
-                                </div>
+											</div>
+										</div>
 
-                                <div class="form-group  " >
-                                    <label for="bar_usp_person" class=" control-label col-md-4 text-left"> Bar USP Person </label>
-                                    <div class="col-md-6">
-                                        {!! Form::text('bar_usp_person', $row['bar_usp_person'],array('class'=>'form-control', 'placeholder'=>''  )) !!} 
-                                    </div> 
-                                    <div class="col-md-2">
+										<div class="form-group  " >
+											<label for="bar_usp_person" class=" control-label col-md-4 text-left"> Bar USP Person </label>
+											<div class="col-md-6">
+												{!! Form::text('bar_usp_person', $row['bar_usp_person'],array('class'=>'form-control', 'placeholder'=>''  )) !!} 
+											</div> 
+											<div class="col-md-2">
 
-                                    </div>
-                                </div>
+											</div>
+										</div>
+									</div>
+									
+									<div class="tab-pane m-t" id="bar2">
+										<div class="form-group  " >
+											<label for="Title" class=" control-label col-md-4 text-left"> Title </label>
+											<div class="col-md-6">
+												{!! Form::text('bar2_title', $row['bar2_title'],array('class'=>'form-control', 'placeholder'=>''  )) !!} 
+											</div> 
+											<div class="col-md-2">
+
+											</div>
+										</div> 
+
+										<div class="form-group  " >
+											<label for="Sub Title" class=" control-label col-md-4 text-left"> Sub Title </label>
+											<div class="col-md-6">
+												{!! Form::text('bar2_sub_title', $row['bar2_sub_title'],array('class'=>'form-control', 'placeholder'=>''  )) !!} 
+											</div> 
+											<div class="col-md-2">
+
+											</div>
+										</div>
+
+										<div class="form-group  " >
+											<label for="Description" class=" control-label col-md-4 text-left"> Description </label>
+											<div class="col-md-6">
+												<textarea name="bar2_desciription" class="form-control"> {{$row['bar2_desciription']}}</textarea> 
+											</div> 
+											<div class="col-md-2">
+
+											</div>
+										</div> 
+
+										<div class="form-group  " >
+											<label for="Image One" class=" control-label col-md-4 text-left"> Image One</label>
+											<div class="col-md-6">
+												<input  type='file' name='bar2_image' id='bar2_image'  />
+												<div >
+													{!! SiteHelpers::showUploadedFile($row['bar2_image'],'/uploads/properties_subtab_imgs/') !!}
+
+												</div>					
+
+											</div> 
+											<div class="col-md-2">
+
+											</div>
+										</div>
+
+										<div class="form-group  " >
+											<label for="Image Two" class=" control-label col-md-4 text-left"> Image Two </label>
+											<div class="col-md-6">
+												<input  type='file' name='bar2_image2' id='bar2_image2'  />
+												<div >
+													{!! SiteHelpers::showUploadedFile($row['bar2_image2'],'/uploads/properties_subtab_imgs/') !!}
+
+												</div>					
+
+											</div> 
+											<div class="col-md-2">
+
+											</div>
+										</div>
+
+										<div class="form-group  " >
+											<label for="Image Three" class=" control-label col-md-4 text-left"> Image Three </label>
+											<div class="col-md-6">
+												<input  type='file' name='bar2_image3' id='bar2_image3'  />
+												<div >
+													{!! SiteHelpers::showUploadedFile($row['bar2_image3'],'/uploads/properties_subtab_imgs/') !!}
+
+												</div>					
+
+											</div> 
+											<div class="col-md-2">
+
+											</div>
+										</div>
+
+										<div class="form-group">
+											<label for="Video Type" class=" control-label col-md-4 text-left"> Video Type </label>
+											<div class="col-md-6"> 
+												<label class='radio radio-inline'>
+													<input type='radio' name='bar2_video_type' value ='upload' id='bar2_displayupload' @if($row['bar2_video_type'] == 'upload') checked="checked" @endif > Upload </label>
+												<label class='radio radio-inline'>
+													<input type='radio' name='bar2_video_type' value ='link' id='bar2_displaylink' @if($row['bar2_video_type'] == 'link') checked="checked" @endif > Link </label> 
+											</div> 
+
+										</div>
+
+										<div class="form-group bar2_videotypeupload" style="display:none;" >
+											<label for="Video" class=" control-label col-md-4 text-left"> Video </label>
+											<div class="col-md-6">
+												<input  type='file' name='bar2_video' id='bar2_video'  />
+												<div >
+													{!! SiteHelpers::showUploadedFile($row['bar2_video'],'/uploads/properties_subtab_imgs/') !!}
+
+												</div>					
+
+											</div> 
+											<div class="col-md-2">
+
+											</div>
+										</div>
+
+										<div class="bar2_videotypelink" style="display:none;" >
+											<div class="form-group">
+												<label for="Link Type" class=" control-label col-md-4 text-left"> Link Type </label>
+												<div class="col-md-8"> 
+													<label class='radio radio-inline'>
+														<input type='radio' name='bar2_video_link_type' value ='youtube' @if($row['bar2_video_link_type'] == 'youtube') checked="checked" @endif > Youtube </label>
+													<label class='radio radio-inline'>
+														<input type='radio' name='bar2_video_link_type' value ='vimeo' @if($row['bar2_video_link_type'] == 'vimeo') checked="checked" @endif > Vimeo </label> 
+												</div> 
+
+											</div>
+
+											<div class="form-group" >
+												<label for="Video Link" class=" control-label col-md-4 text-left"> Video Link </label>
+												<div class="col-md-8">
+													<input type='text' name='bar2_video_link' id='bar2_video_link' class="form-control" value="{{$row['bar2_video_link']}}" />
+												</div> 
+
+
+											</div>
+										</div>
+
+										<div class="form-group  " >
+											<label for="Designer" class=" control-label col-md-4 text-left"> Designer </label>
+											<div class="col-md-6">
+												<select name='bar2_designer[]' rows='5' id='bar2_designer' class='select2 ' multiple="multiple"  >
+													@if(!empty($designers))
+													@foreach($designers as $designer)
+													<option value="{{$designer->id}}" {{(isset($row['bar2_designer']) && in_array($designer->id,explode(',',$row['bar2_designer']))) ? " selected='selected' " : '' }}>{{$designer->designer_name}}</option>
+													@endforeach
+													@endif
+												</select> 
+											</div> 
+											<div class="col-md-2">
+												<a href="{{URL::to('designers/update')}}" target="_blank">Add Designer</a>
+											</div>
+										</div>
+
+										<div class="form-group  " >
+											<label for="URL" class=" control-label col-md-4 text-left"> URL </label>
+											<div class="col-md-6">
+												{!! Form::text('bar2_url', $row['bar2_url'],array('class'=>'form-control', 'placeholder'=>''  )) !!} 
+											</div> 
+											<div class="col-md-2">
+
+											</div>
+										</div> 
+
+										<div class="form-group  " >
+											<label for="bar2_usp_text" class=" control-label col-md-4 text-left"> Bar USP text </label>
+											<div class="col-md-6">
+												{!! Form::text('bar2_usp_text', $row['bar2_usp_text'],array('class'=>'form-control', 'placeholder'=>''  )) !!} 
+											</div> 
+											<div class="col-md-2">
+
+											</div>
+										</div>
+
+										<div class="form-group  " >
+											<label for="bar_usp_person" class=" control-label col-md-4 text-left"> Bar USP Person </label>
+											<div class="col-md-6">
+												{!! Form::text('bar2_usp_person', $row['bar2_usp_person'],array('class'=>'form-control', 'placeholder'=>''  )) !!} 
+											</div> 
+											<div class="col-md-2">
+
+											</div>
+										</div>
+									</div>
+									
+									<div class="tab-pane m-t" id="bar3">
+										<div class="form-group  " >
+											<label for="Title" class=" control-label col-md-4 text-left"> Title </label>
+											<div class="col-md-6">
+												{!! Form::text('bar3_title', $row['bar3_title'],array('class'=>'form-control', 'placeholder'=>''  )) !!} 
+											</div> 
+											<div class="col-md-2">
+
+											</div>
+										</div> 
+
+										<div class="form-group  " >
+											<label for="Sub Title" class=" control-label col-md-4 text-left"> Sub Title </label>
+											<div class="col-md-6">
+												{!! Form::text('bar3_sub_title', $row['bar3_sub_title'],array('class'=>'form-control', 'placeholder'=>''  )) !!} 
+											</div> 
+											<div class="col-md-2">
+
+											</div>
+										</div>
+
+										<div class="form-group  " >
+											<label for="Description" class=" control-label col-md-4 text-left"> Description </label>
+											<div class="col-md-6">
+												<textarea name="bar3_desciription" class="form-control"> {{$row['bar3_desciription']}}</textarea> 
+											</div> 
+											<div class="col-md-2">
+
+											</div>
+										</div> 
+
+										<div class="form-group  " >
+											<label for="Image One" class=" control-label col-md-4 text-left"> Image One</label>
+											<div class="col-md-6">
+												<input  type='file' name='bar3_image' id='bar3_image'  />
+												<div >
+													{!! SiteHelpers::showUploadedFile($row['bar3_image'],'/uploads/properties_subtab_imgs/') !!}
+
+												</div>					
+
+											</div> 
+											<div class="col-md-2">
+
+											</div>
+										</div>
+
+										<div class="form-group  " >
+											<label for="Image Two" class=" control-label col-md-4 text-left"> Image Two </label>
+											<div class="col-md-6">
+												<input  type='file' name='bar3_image2' id='bar3_image2'  />
+												<div >
+													{!! SiteHelpers::showUploadedFile($row['bar3_image2'],'/uploads/properties_subtab_imgs/') !!}
+
+												</div>					
+
+											</div> 
+											<div class="col-md-2">
+
+											</div>
+										</div>
+
+										<div class="form-group  " >
+											<label for="Image Three" class=" control-label col-md-4 text-left"> Image Three </label>
+											<div class="col-md-6">
+												<input  type='file' name='bar3_image3' id='bar3_image3'  />
+												<div >
+													{!! SiteHelpers::showUploadedFile($row['bar3_image3'],'/uploads/properties_subtab_imgs/') !!}
+
+												</div>					
+
+											</div> 
+											<div class="col-md-2">
+
+											</div>
+										</div>
+
+										<div class="form-group">
+											<label for="Video Type" class=" control-label col-md-4 text-left"> Video Type </label>
+											<div class="col-md-6"> 
+												<label class='radio radio-inline'>
+													<input type='radio' name='bar3_video_type' value ='upload' id='bar3_displayupload' @if($row['bar3_video_type'] == 'upload') checked="checked" @endif > Upload </label>
+												<label class='radio radio-inline'>
+													<input type='radio' name='bar3_video_type' value ='link' id='bar3_displaylink' @if($row['bar3_video_type'] == 'link') checked="checked" @endif > Link </label> 
+											</div> 
+
+										</div>
+
+										<div class="form-group bar3_videotypeupload" style="display:none;" >
+											<label for="Video" class=" control-label col-md-4 text-left"> Video </label>
+											<div class="col-md-6">
+												<input  type='file' name='bar3_video' id='bar3_video'  />
+												<div >
+													{!! SiteHelpers::showUploadedFile($row['bar3_video'],'/uploads/properties_subtab_imgs/') !!}
+
+												</div>					
+
+											</div> 
+											<div class="col-md-2">
+
+											</div>
+										</div>
+
+										<div class="bar3_videotypelink" style="display:none;" >
+											<div class="form-group">
+												<label for="Link Type" class=" control-label col-md-4 text-left"> Link Type </label>
+												<div class="col-md-8"> 
+													<label class='radio radio-inline'>
+														<input type='radio' name='bar3_video_link_type' value ='youtube' @if($row['bar3_video_link_type'] == 'youtube') checked="checked" @endif > Youtube </label>
+													<label class='radio radio-inline'>
+														<input type='radio' name='bar3_video_link_type' value ='vimeo' @if($row['bar3_video_link_type'] == 'vimeo') checked="checked" @endif > Vimeo </label> 
+												</div> 
+
+											</div>
+
+											<div class="form-group" >
+												<label for="Video Link" class=" control-label col-md-4 text-left"> Video Link </label>
+												<div class="col-md-8">
+													<input type='text' name='bar3_video_link' id='bar3_video_link' class="form-control" value="{{$row['bar3_video_link']}}" />
+												</div> 
+
+
+											</div>
+										</div>
+
+										<div class="form-group  " >
+											<label for="Designer" class=" control-label col-md-4 text-left"> Designer </label>
+											<div class="col-md-6">
+												<select name='bar3_designer[]' rows='5' id='bar3_designer' class='select2 ' multiple="multiple"  >
+													@if(!empty($designers))
+													@foreach($designers as $designer)
+													<option value="{{$designer->id}}" {{(isset($row['bar3_designer']) && in_array($designer->id,explode(',',$row['bar3_designer']))) ? " selected='selected' " : '' }}>{{$designer->designer_name}}</option>
+													@endforeach
+													@endif
+												</select> 
+											</div> 
+											<div class="col-md-2">
+												<a href="{{URL::to('designers/update')}}" target="_blank">Add Designer</a>
+											</div>
+										</div>
+
+										<div class="form-group  " >
+											<label for="URL" class=" control-label col-md-4 text-left"> URL </label>
+											<div class="col-md-6">
+												{!! Form::text('bar3_url', $row['bar3_url'],array('class'=>'form-control', 'placeholder'=>''  )) !!} 
+											</div> 
+											<div class="col-md-2">
+
+											</div>
+										</div> 
+
+										<div class="form-group  " >
+											<label for="bar3_usp_text" class=" control-label col-md-4 text-left"> Bar USP text </label>
+											<div class="col-md-6">
+												{!! Form::text('bar3_usp_text', $row['bar3_usp_text'],array('class'=>'form-control', 'placeholder'=>''  )) !!} 
+											</div> 
+											<div class="col-md-2">
+
+											</div>
+										</div>
+
+										<div class="form-group  " >
+											<label for="bar3_usp_person" class=" control-label col-md-4 text-left"> Bar USP Person </label>
+											<div class="col-md-6">
+												{!! Form::text('bar3_usp_person', $row['bar3_usp_person'],array('class'=>'form-control', 'placeholder'=>''  )) !!} 
+											</div> 
+											<div class="col-md-2">
+
+											</div>
+										</div>
+									</div>
+								</div>
                             </div>
 
                             <div class="tab-pane m-t" id="video">
