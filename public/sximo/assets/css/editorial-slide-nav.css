@@ -65,7 +65,7 @@ body.show_more-page-opend {
     line-height: 21px;
     min-height: 100vh;
     opacity: 0.50;
-    padding: 65px 0;
+    padding: 65px 0px 0px;
 }
 .inner-pop-up-book-btn {
     background-color: #fff;
