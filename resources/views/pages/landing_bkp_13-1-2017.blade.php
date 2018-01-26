@@ -1399,7 +1399,7 @@
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">
                                                     <h4 class="margin-top-15 panel-title pull-left">
-                                                        <a data-toggle="collapse" data-parent="#inner-level-accordian" href="#destination-child{{$childDest->id}}">{{$childDest->category_name}}</a>
+                                                        <a data-toggle="collapse" data-parent="#accordion1" href="#destination-child{{$childDest->id}}">{{$childDest->category_name}}</a>
                                                     </h4>
                                                 </div>
                                                 @if (array_key_exists("subchild",$childDest))
@@ -1412,7 +1412,7 @@
                                                                         <div class="panel panel-default">
                                                                             <div class="panel-heading">
                                                                                 <h4 class="panel-title">
-                                                                                    <a data-toggle="collapse" data-parent="#inner-level-accordian" href="#destination-child{{$childDest->id}}-{{$subchildDest->id}}">{{$subchildDest->category_name}}</a>
+                                                                                    <a data-toggle="collapse" data-parent="#accordion1" href="#destination-child{{$childDest->id}}-{{$subchildDest->id}}">{{$subchildDest->category_name}}</a>
                                                                                 </h4>
                                                                             </div>
                                                                             
