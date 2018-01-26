@@ -445,7 +445,7 @@ class CustomerController extends Controller {
 
                         //Temp fix for redireceting
                         if($row->group_id == 4 || $row->group_id == 3) {
-                            return Redirect::to('customer/profile')
+                            return Redirect::to('customer/profile');
                         }
                         //Temp fix for redireceting
 
