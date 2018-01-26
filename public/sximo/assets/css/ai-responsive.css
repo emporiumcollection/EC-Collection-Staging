@@ -5,12 +5,16 @@
         margin-top: 8px;
     }
 }
-@media (min-width: 993px) and (max-width: 1200px) {
+@media (min-width: 993px) and (max-width: 1199px) {
     
      /* login popup */
     
     .landing-page-lock-login-btn-outer-align {
 	width: 100%;
+    }
+    .top-booking-bar-btn {
+	padding: 7px 4px 7px 4px;
+	font-size: 13px;
     }
 }
 @media (min-width: 768px) and (max-width: 1200px) {
