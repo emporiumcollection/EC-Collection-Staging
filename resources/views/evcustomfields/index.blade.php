@@ -74,7 +74,7 @@
                                     <div class="form-group form-md-line-input form-md-floating-label has-info padding_left">
                                       <select class="form-control" id="module_name" name="module_name" data-module-list="list">
                                                              @foreach ($module_list as $module)
-                                                          <option value="{{$module->id_modbuilder}}" @if($module_selected==$module->id_modbuilder) selected @endif>{{ucfirst($module->title_mob)}}</option>
+                                                          <option value="{{$module->module_id}}" @if($module_selected==$module->module_id) selected @endif>{{ucfirst($module->module_title)}}</option>
                                                       @endforeach 
                                                    </select>
                                        {!! Form::label('modules', trans('ev_custom_fields.admin_customfield_module_list'))  !!}

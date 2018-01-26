@@ -5,6 +5,7 @@ use App\Models\Evcustomfields;
 use App\Models\ModelsModcustomfieldgroup;
 use App\Models\ModelsModcustomfieldvalue;
 use App\Models\ModelsModcustomfield;
+use App\Models\Sximo\Module;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 use Validator, Input, Redirect ; 
@@ -37,33 +38,24 @@ class EvcustomfieldsController extends Controller {
 		
 	}
 
-	public function getIndex( Request $request )
-	{
-
-		//if($this->access['is_view'] ==0) 
-			//return Redirect::to('dashboard')
-				//->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus','error');
-
-		
-		return view('evcustomfields.index',$this->data);
-	}	
+	
 
 public function index(Request $request){ 
         //For list-clients permission 
-        $this->data['access'] =  $this->models->validAccess(Auth::id());
+        //$this->data['access'] =  $this->models->validAccess(Auth::id());
        // if(!isset($this->data['access']['list-clients']) && !isset($this->data['access']['all'])){return redirect('accessDenied');}
-        $this->data['module_list'] = ModBuilder::select('id_modbuilder','title_mob')->get();
-        $this->data['module_selected'] = $this->data['module_list'][0]->id_modbuilder;
-        return view('admin.customfields.index', $this->data);
+        $this->data['module_list'] = Module::select('module_id','module_title')->get();
+        $this->data['module_selected'] = $this->data['module_list'][0]->module_id;
+        return view('evcustomfields.index', $this->data);
 
     }
     public function edit($id){
          //For list-clients permission 
         $this->data['access'] =  $this->models->validAccess(Auth::id());
        // if(!isset($this->data['access']['list-clients']) && !isset($this->data['access']['all'])){return redirect('accessDenied');}
-        $this->data['module_list'] = ModBuilder::select('id_modbuilder','title_mob')->get();
+        $this->data['module_list'] = Module::select('module_id','module_title')->get();
         $this->data['module_selected'] = $id;
-        return view('admin.customfields.index', $this->data);
+        return view('evcustomfields.index', $this->data);
     }
     
     //For create new group for custom fields
@@ -71,8 +63,8 @@ public function index(Request $request){
         
         $rules = array('group_name' => 'required','module_id' => 'required');
         $messages = [
-            'group_name.required' => trans('customfields.admin_customfield_module_error_group'),
-            'module_id.required' => trans('customfields.admin_customfield_module_error_module_id')
+            'group_name.required' => trans('ev_custom_fields.admin_customfield_module_error_group'),
+            'module_id.required' => trans('ev_custom_fields.admin_customfield_module_error_module_id')
             ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
@@ -125,10 +117,10 @@ public function index(Request $request){
 
         $rules = array('group_slug' => 'required','module_id' => 'required','type' => 'required','title' => 'required');
         $messages = [
-            'group_slug.required' => trans('customfields.admin_customfield_module_error_group'),
-            'module_id.required' => trans('customfields.admin_customfield_module_error_module_id'),
-            'type.required' => trans('customfields.admin_customfield_module_error_group'),
-            'title.required' => trans('customfields.admin_customfield_module_error_module_id')
+            'group_slug.required' => trans('ev_custom_fields.admin_customfield_module_error_group'),
+            'module_id.required' => trans('ev_custom_fields.admin_customfield_module_error_module_id'),
+            'type.required' => trans('ev_custom_fields.admin_customfield_module_error_group'),
+            'title.required' => trans('ev_custom_fields.admin_customfield_module_error_module_id')
             ];
 
         $validator = Validator::make($request->input(), $rules, $messages);
@@ -179,10 +171,10 @@ public function index(Request $request){
 
         $rules = array('group_slug' => 'required','module_id' => 'required','type' => 'required','title' => 'required');
         $messages = [
-            'group_slug.required' => trans('customfields.admin_customfield_module_error_group'),
-            'module_id.required' => trans('customfields.admin_customfield_module_error_module_id'),
-            'type.required' => trans('customfields.admin_customfield_module_error_group'),
-            'title.required' => trans('customfields.admin_customfield_module_error_module_id')
+            'group_slug.required' => trans('ev_custom_fields.admin_customfield_module_error_group'),
+            'module_id.required' => trans('ev_custom_fields.admin_customfield_module_error_module_id'),
+            'type.required' => trans('ev_custom_fields.admin_customfield_module_error_group'),
+            'title.required' => trans('ev_custom_fields.admin_customfield_module_error_module_id')
             ];
 
         $validator = Validator::make($request->input(), $rules, $messages);
