@@ -1273,7 +1273,7 @@
                                                                     <span class="FltRgt">
                                                                         <!--i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" @if(array_key_exists('image', $props)) onclick="add_to_lightbox({{$props['image']->file_id}}, {{$props->id}});" @endif ></i-->
 
-                                                                       <a class="carticon" href="javascript:void(0)" onclick="submitgridbookform('{{$props->property_slug}}#*{{$props->id}}');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>
+                                                                       <a class="carticon" href="https://www.emporium-voyage.com/book-property/luxury-hotel-11-howard?property=2245&roomType=1778&arrive=25.01.2018&destination=+26.01.2018&booking_adults=2&booking_children=0" onclick="submitgridbookform('{{$props->property_slug}}#*{{$props->id}}');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>
                                                                     </span>
                                                                 </h2>
 
