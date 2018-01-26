@@ -2661,9 +2661,11 @@
         </script>
         
         <script>
-        $(document).on('click',function(){
-	$('.collapse')#destination-child48('hide');
-        })
+            $(document).ready(function () {
+                $(".collapsed").click(function(event) {
+                  $(".panel-collapse").collapsed('hide');
+                });
+              });
         </script>
 
         @include('layouts/elliot/ai_search-page')
