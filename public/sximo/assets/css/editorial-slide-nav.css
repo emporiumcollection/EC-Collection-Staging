@@ -172,7 +172,7 @@ body.show_more-page-opend {
 .right-menu-align .bh-search-input.typeahead.search-navbar.search-box.tt-input {
     border: medium none;
     font-size: 14px;
-    padding: 5px;
+    padding: 0px;
     width: 175px;
     text-transform: uppercase;
 }
