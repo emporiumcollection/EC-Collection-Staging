@@ -635,6 +635,56 @@ class PropertiesController extends Controller {
                     $data['restaurant2_video'] = $restaurant2_videofilename;
                 }
             }
+			
+			//resturant 3
+
+            $data['restaurant3_title'] = $request->input('restaurant3_title');
+            $data['restaurant3_desciription'] = $request->input('restaurant3_desciription');
+            $data['restaurant3_url'] = $request->input('restaurant3_url');
+            $data['restaurant3_usp_text'] = $request->input('restaurant3_usp_text');
+            $data['restaurant3_usp_person'] = $request->input('restaurant3_usp_person');
+            if (!empty($request->input('restaurant3_designer'))) {
+                $data['restaurant3_designer'] = implode(',', $request->input('restaurant3_designer'));
+            }
+            if ($request->input('restaurant3_video_type') != '') {
+                $data['restaurant3_video_type'] = $request->input('restaurant3_video_type');
+            }
+            if ($request->input('restaurant3_video_link_type') != '') {
+                $data['restaurant3_video_link_type'] = $request->input('restaurant3_video_link_type');
+            }
+            $data['restaurant3_video_link'] = $request->input('restaurant3_video_link');
+            if (!is_null($request->file('restaurant3_image'))) {
+                $restaurant3_file = $request->file('restaurant3_image');
+                $restaurant3_filename = $restaurant3_file->getClientOriginalName();
+                $restaurant3_extension = $restaurant3_file->getClientOriginalExtension(); //if you need extension of the file
+                $restaurant3_filename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $restaurant3_extension;
+                $restaurant3_uploadSuccess = $restaurant3_file->move($destinationPath, $restaurant3_filename);
+                if ($restaurant3_uploadSuccess) {
+                    $data['restaurant3_image'] = $restaurant3_filename;
+                }
+            }
+
+            if (!is_null($request->file('restaurant3_image2'))) {
+                $restaurant3_file2 = $request->file('restaurant3_image2');
+                $restaurant3_filename2 = $restaurant3_file2->getClientOriginalName();
+                $restaurant3_extension2 = $restaurant3_file2->getClientOriginalExtension(); //if you need extension of the file
+                $restaurant3_filename2 = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $restaurant3_extension2;
+                $restaurant3_uploadSuccess2 = $restaurant3_file2->move($destinationPath, $restaurant3_filename2);
+                if ($restaurant3_uploadSuccess2) {
+                    $data['restaurant3_image2'] = $restaurant3_filename2;
+                }
+            }
+
+            if (!is_null($request->file('restaurant3_video'))) {
+                $restaurant3_vfile = $request->file('restaurant3_video');
+                $restaurant3_vfilename = $restaurant3_vfile->getClientOriginalName();
+                $restaurant3_vextension = $restaurant3_vfile->getClientOriginalExtension(); //if you need extension of the file
+                $restaurant3_videofilename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $restaurant3_vextension;
+                $restaurant3_vuploadSuccess = $restaurant3_vfile->move($destinationPath, $restaurant3_videofilename);
+                if ($restaurant3_vuploadSuccess) {
+                    $data['restaurant3_video'] = $restaurant3_videofilename;
+                }
+            }
 
             // bar
             $data['bar_title'] = $request->input('bar_title');
@@ -694,6 +744,128 @@ class PropertiesController extends Controller {
                 $bar_vuploadSuccess = $bar_vfile->move($destinationPath, $bar_videofilename);
                 if ($bar_vuploadSuccess) {
                     $data['bar_video'] = $bar_videofilename;
+                }
+            }
+			
+			// bar 2
+            $data['bar2_title'] = $request->input('bar2_title');
+            $data['bar2_sub_title'] = $request->input('bar2_sub_title');
+            $data['bar2_desciription'] = $request->input('bar2_desciription');
+            $data['bar2_url'] = $request->input('bar2_url');
+            $data['bar2_usp_text'] = $request->input('bar2_usp_text');
+            $data['bar2_usp_person'] = $request->input('bar2_usp_person');
+            if (!empty($request->input('bar2_designer'))) {
+                $data['bar2_designer'] = implode(',', $request->input('bar2_designer'));
+            }
+            if ($request->input('bar2_video_type') != '') {
+                $data['bar2_video_type'] = $request->input('bar2_video_type');
+            }
+            if ($request->input('bar2_video_link_type') != '') {
+                $data['bar2_video_link_type'] = $request->input('bar2_video_link_type');
+            }
+            $data['bar2_video_link'] = $request->input('bar2_video_link');
+            if (!is_null($request->file('bar2_image'))) {
+                $bar2_file = $request->file('bar2_image');
+                $bar2_filename = $bar2_file->getClientOriginalName();
+                $bar2_extension = $bar2_file->getClientOriginalExtension(); //if you need extension of the file
+                $bar2_filename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $bar2_extension;
+                $bar2_uploadSuccess = $bar2_file->move($destinationPath, $bar2_filename);
+                if ($bar2_uploadSuccess) {
+                    $data['bar2_image'] = $bar2_filename;
+                }
+            }
+
+            if (!is_null($request->file('bar2_image2'))) {
+                $bar2_file2 = $request->file('bar2_image2');
+                $bar2_filename2 = $bar2_file2->getClientOriginalName();
+                $bar2_extension2 = $bar2_file2->getClientOriginalExtension(); //if you need extension of the file
+                $bar2_filename2 = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $bar2_extension2;
+                $bar2_uploadSuccess2 = $bar2_file2->move($destinationPath, $bar2_filename2);
+                if ($bar2_uploadSuccess2) {
+                    $data['bar2_image2'] = $bar2_filename2;
+                }
+            }
+
+            if (!is_null($request->file('bar2_image3'))) {
+                $bar2_file3 = $request->file('bar2_image3');
+                $bar2_filename3 = $bar2_file3->getClientOriginalName();
+                $bar2_extension3 = $bar2_file3->getClientOriginalExtension(); //if you need extension of the file
+                $bar2_filename3 = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $bar2_extension3;
+                $bar2_uploadSuccess3 = $bar2_file3->move($destinationPath, $bar2_filename3);
+                if ($bar2_uploadSuccess3) {
+                    $data['bar2_image3'] = $bar2_filename3;
+                }
+            }
+
+            if (!is_null($request->file('bar2_video'))) {
+                $bar2_vfile = $request->file('bar2_video');
+                $bar2_vfilename = $bar2_vfile->getClientOriginalName();
+                $bar2_vextension = $bar2_vfile->getClientOriginalExtension(); //if you need extension of the file
+                $bar2_videofilename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $bar2_vextension;
+                $bar2_vuploadSuccess = $bar2_vfile->move($destinationPath, $bar2_videofilename);
+                if ($bar2_vuploadSuccess) {
+                    $data['bar2_video'] = $bar2_videofilename;
+                }
+            }
+			
+			// bar 3
+            $data['bar3_title'] = $request->input('bar3_title');
+            $data['bar3_sub_title'] = $request->input('bar3_sub_title');
+            $data['bar3_desciription'] = $request->input('bar3_desciription');
+            $data['bar3_url'] = $request->input('bar3_url');
+            $data['bar3_usp_text'] = $request->input('bar3_usp_text');
+            $data['bar3_usp_person'] = $request->input('bar3_usp_person');
+            if (!empty($request->input('bar3_designer'))) {
+                $data['bar3_designer'] = implode(',', $request->input('bar3_designer'));
+            }
+            if ($request->input('bar3_video_type') != '') {
+                $data['bar3_video_type'] = $request->input('bar3_video_type');
+            }
+            if ($request->input('bar3_video_link_type') != '') {
+                $data['bar3_video_link_type'] = $request->input('bar3_video_link_type');
+            }
+            $data['bar3_video_link'] = $request->input('bar3_video_link');
+            if (!is_null($request->file('bar3_image'))) {
+                $bar3_file = $request->file('bar3_image');
+                $bar3_filename = $bar3_file->getClientOriginalName();
+                $bar3_extension = $bar3_file->getClientOriginalExtension(); //if you need extension of the file
+                $bar3_filename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $bar3_extension;
+                $bar3_uploadSuccess = $bar3_file->move($destinationPath, $bar3_filename);
+                if ($bar3_uploadSuccess) {
+                    $data['bar3_image'] = $bar3_filename;
+                }
+            }
+
+            if (!is_null($request->file('bar3_image2'))) {
+                $bar3_file2 = $request->file('bar3_image2');
+                $bar3_filename2 = $bar3_file2->getClientOriginalName();
+                $bar3_extension2 = $bar3_file2->getClientOriginalExtension(); //if you need extension of the file
+                $bar3_filename2 = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $bar3_extension2;
+                $bar3_uploadSuccess2 = $bar3_file2->move($destinationPath, $bar3_filename2);
+                if ($bar3_uploadSuccess2) {
+                    $data['bar3_image2'] = $bar3_filename2;
+                }
+            }
+
+            if (!is_null($request->file('bar3_image3'))) {
+                $bar3_file3 = $request->file('bar3_image3');
+                $bar3_filename3 = $bar3_file3->getClientOriginalName();
+                $bar3_extension3 = $bar3_file3->getClientOriginalExtension(); //if you need extension of the file
+                $bar3_filename3 = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $bar3_extension3;
+                $bar3_uploadSuccess3 = $bar3_file3->move($destinationPath, $bar3_filename3);
+                if ($bar3_uploadSuccess3) {
+                    $data['bar3_image3'] = $bar3_filename3;
+                }
+            }
+
+            if (!is_null($request->file('bar3_video'))) {
+                $bar3_vfile = $request->file('bar3_video');
+                $bar3_vfilename = $bar3_vfile->getClientOriginalName();
+                $bar3_vextension = $bar3_vfile->getClientOriginalExtension(); //if you need extension of the file
+                $bar3_videofilename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $bar3_vextension;
+                $bar3_vuploadSuccess = $bar3_vfile->move($destinationPath, $bar3_videofilename);
+                if ($bar3_vuploadSuccess) {
+                    $data['bar3_video'] = $bar3_videofilename;
                 }
             }
 
