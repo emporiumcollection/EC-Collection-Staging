@@ -2040,7 +2040,7 @@
 																</div>
 															@endif
                                                             <div class="clearfix"></div>
-                                                            <a href="#" class="spa-sec-book-an-appoinment-btn">Book Appointment</a>
+                                                            <a href="#book-now" class="spa-sec-book-an-appoinment-btn">Book Appointment</a>
                                                         </div>
                                                     </div>
                                                 </div>
