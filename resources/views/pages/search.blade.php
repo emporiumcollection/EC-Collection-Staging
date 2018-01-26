@@ -2710,16 +2710,16 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                                                     }));
 								
                                                                         /*Toggle Side Nav Start Here*/
-                                                                        eval($('.dropdown').each(function () {
-                                                                            var $dropdown = $(this);
-                                                                            $(".members-list", $dropdown).click(function (e) {
-                                                                                e.preventDefault();
-                                                                                $div = $(".members-drop-list", $dropdown);
-                                                                                $div.toggle();
-                                                                                $(".members-drop-list").not($div).hide();
-                                                                                return false;
-                                                                            });
-                                                                        }));
+//                                                                        eval($('.dropdown').each(function () {
+//                                                                            var $dropdown = $(this);
+//                                                                            $(".members-list", $dropdown).click(function (e) {
+//                                                                                e.preventDefault();
+//                                                                                $div = $(".members-drop-list", $dropdown);
+//                                                                                $div.toggle();
+//                                                                                $(".members-drop-list").not($div).hide();
+//                                                                                return false;
+//                                                                            });
+//                                                                        }));
 
 									eval($("#adult-input-value").change(function () {
 										var adults = $(this).val();
@@ -3014,7 +3014,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                         function(){ $(this).removeClass('active') }
                     )
                 </script>
-<script>
+<!--<script>
 $(document).ready(function(){
     eval($('.dropdown').each(function () {
     var $dropdown = $(this);
@@ -3027,7 +3027,44 @@ $(document).ready(function(){
     });
 }));
 });
-</script>
+</script>-->
+                
+                <script>
+                
+                    (function (document) {
+                var alterNav = function () {
+                    var item = document.querySelector('.members-drop-list');
+                    var link = document.querySelector('.members-list');
+                    var itemIsOpened = false;
+                    window.onclick = function (e) {
+                        console.log(e);
+                        if (!itemIsOpened) {
+                            if (e.target == link) {
+                                itemIsOpened = true;
+                                $('.members-drop-list').show();
+                            }
+                        } else {
+                            if (!isChild(e.target, item)) {
+                                itemIsOpened = false;
+                                $('.members-drop-list').hide();
+                            }
+                        }
+                    }
+                };
+
+                var isChild = function (child, parent) {
+                    var current = child;
+                    while (current) {
+                        if (current === parent) return true;
+                        current = current.parentNode;
+                    }
+                    return false;
+                }
+
+                alterNav();
+            })(document);
+                
+                </script>
 
            <style>
 /* Center the loader */
