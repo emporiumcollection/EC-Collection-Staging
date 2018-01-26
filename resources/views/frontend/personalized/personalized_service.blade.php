@@ -9,7 +9,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="header-logo-image">
-                        <img class="img-responsive" src="assets/images/logo-design_1_1.png" alt=""/>
+                        <img class="img-responsive" src="assets/images/logo-design_1_1.Pampering" alt=""/>
                     </div>
                     <div class="top-progress-bar">
                         <div class="progress-bar-inner"></div>
@@ -116,7 +116,7 @@
                                             <div class="col-md-4 col-sm-6">
                                                 <div class="row">
                                                     <div class="form-group ps-fields-align">
-                                                        <label style="background-image: url('assets/images/Miss-Clara-by-Nobis-Stockholm-Sweden (2).jpg');" class="personalized-service-checkbox-label" for="location3"><span class="selected-chexkbox"><i class="fa fa-check" aria-hidden="true"></i></span>With the family</label>
+                                                        <label style="background-image: url('assets/images/Miss-Clara-by-Nobis-Stockholm-Sweden.jpg');" class="personalized-service-checkbox-label" for="location3"><span class="selected-chexkbox"><i class="fa fa-check" aria-hidden="true"></i></span>With the family</label>
                                                         <input class="personalized-service-checkbox-input" id="location3" type="checkbox">
                                                     </div>
                                                 </div>
@@ -132,7 +132,7 @@
                                             <div class="col-md-4 col-sm-6">
                                                 <div class="row">
                                                     <div class="form-group ps-fields-align">
-                                                        <label style="background-image: url('assets/images/Miss-Clara-by-Nobis-Stockholm-Sweden (2).jpg');" class="personalized-service-checkbox-label" for="location5"><span class="selected-chexkbox"><i class="fa fa-check" aria-hidden="true"></i></span>Pampering & Enjoyment</label>
+                                                        <label style="background-image: url('assets/images/Miss-Clara-by-Nobis-Stockholm-Sweden.jpg');" class="personalized-service-checkbox-label" for="location5"><span class="selected-chexkbox"><i class="fa fa-check" aria-hidden="true"></i></span>Pampering & Enjoyment</label>
                                                         <input class="personalized-service-checkbox-input" id="location5" type="checkbox">
                                                     </div>
                                                 </div>

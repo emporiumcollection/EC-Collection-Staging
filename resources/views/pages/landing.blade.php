@@ -807,10 +807,6 @@
             width: 90px;
         }
         
-        .hotels-logo img {
-    padding: 11px 19px 40px 20px;
-    }
-        
         .right-menus ul li a {
     background-color: #1E2023;
     border-bottom: 1px solid #414246;
