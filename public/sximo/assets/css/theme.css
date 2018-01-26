@@ -12775,7 +12775,7 @@ body:not(.bh-isblog)[class*='bh-sidebar-'] .bh-wrapper .uk-container,
   background: #ffffff;
 }
 .bh-slideshow-thumbnail-split-preview > * {
-  z-index: 9999;
+  z-index: 9;
   position: relative;
 }
 .bh-slideshow-thumbnail-split-preview-title {
