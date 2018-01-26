@@ -3265,7 +3265,7 @@ div.panel.footer-nav-menu.show {
     /* margin-top: -103px; */
     left: 20% !important;
     border: none;
-    top: 64px !important;
+/*    top: 64px !important;*/
 }
 .date-picker-wrapper .footer {
     display: none;
