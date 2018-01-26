@@ -1,4 +1,4 @@
-@media (min-width: 1200px) and (max-width: 1400px) {
+@media (min-width: 1201px) and (max-width: 1400px) {
     .hotel-detail-slider-price-and-show-more .hotel-slider-price {
         margin-left: 0;
         padding: 8px 7px;
@@ -10,16 +10,7 @@
     }
 }
 
-@media only screen  and (max-width : 1280px) {
-
-    .top-booking-bar-btn {
-	padding: 7px 4px 7px 4px;
-	font-size: 6px;
-    }
-    
-}
-
-@media (min-width: 993px) and (max-width: 1199px) {
+@media (min-width: 993px) and (max-width: 1200px) {
     
      /* login popup */
     
@@ -31,8 +22,8 @@
 	font-size: 13px;
     }
 }
-@media (min-width: 768px) and (max-width: 1200px) {
-    /* detail Page */
+/*@media (min-width: 768px) and (max-width: 1200px) {
+     detail Page 
     .cstmai-w .hotels-detail-description-text {
         width: 88%;
         padding: 0;
@@ -47,8 +38,8 @@
         padding: 8px 7px;
         margin-top: 8px;
     }
-}
-@media (min-width: 768px) and (max-width: 991px) {
+}*/
+@media (min-width: 768px) and (max-width: 992px) {
     #align-to-top .book-button.open-show_more-page.hotel-btn {
         padding: 8px 3px !important;
     }
