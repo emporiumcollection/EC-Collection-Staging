@@ -2661,7 +2661,7 @@
         </script>
         <script>
             $(document).on('click',function(){
-            $('.collapse').panel-collapse('hide');
+            $('.collapse').inner-level-sub-menu('hide');
             })
         </script>
         
