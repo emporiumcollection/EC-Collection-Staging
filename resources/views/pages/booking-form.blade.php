@@ -1514,6 +1514,7 @@ All prices displayed on the Design-Locations websites are current, day prices, s
                     stickyMonths: (Boolean),
                     startDate: "<?php echo date('Y-m-d'); ?>",
                     format: 'YYYY-MM-DD',
+                    autoClose: "true",
                     separator: ' to ',
                     getValue: function () {
                         if ($('#date-range-destination').val() && $('#date-range-arrive').val())
