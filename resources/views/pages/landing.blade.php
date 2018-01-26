@@ -2659,12 +2659,6 @@
             })(document);
             
         </script>
-        
-        <script>
-        $(".blank").click(function(){
-            $(".white").toggle();    
-        });
-    </script>
 
         @include('layouts/elliot/ai_search-page')
         @include('layouts/elliot/ai_booking-page')
