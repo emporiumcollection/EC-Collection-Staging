@@ -67,6 +67,9 @@
         transition: all 0.3s ease 0s;
         opacity: 1 !important;
 }
+.nav.nav-pills.nav-stacked li a.activebook-now {
+	background: #ABA00d;
+}
 
 .right-menus .btns span {
     color: #9e9fa1;

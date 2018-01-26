@@ -1273,14 +1273,6 @@
                                 padding: 20px 0px 40px 0px;
                             }
                             
-                            li a.activebook-now {
-                                background: #ABA00d !important;
-                            }
-                            
-                            li a.activebook-now:hover {
-                                background: #98920D !important;
-                            }
-              
                             @import url('https://fonts.googleapis.com/css?family=Caveat');
                             @import url('https://fonts.googleapis.com/css?family=Satisfy');
                             @import url('https://fonts.googleapis.com/css?family=Zeyada');
