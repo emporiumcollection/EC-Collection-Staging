@@ -34,6 +34,7 @@
         <link href="{{ asset('sximo/assets/css/Hamburg-menu.css')}}" rel="stylesheet" type="text/css"/>
 
         <link href="{{ asset('sximo/assets/css/theme.css')}}" rel="stylesheet" type="text/css" media="all">
+                <script src="{{ asset('sximo/assets/js/jquery-2.1.0.min.js')}}" type="text/javascript"></script>
         <script type="text/javascript" src="{{ asset('sximo/assets/js/jquery2.js')}}"></script>
         <script type="text/javascript" src="{{ asset('sximo/assets/js/uikit.js')}}"></script>
         
@@ -45,11 +46,11 @@
 
         <!--JS Includes-->
 
-        <script src="{{ asset('sximo/assets/js/jquery-2.1.0.min.js')}}" type="text/javascript"></script>
+
         <script src="{{ asset('sximo/assets/js/jquery-ui.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/bootstrap.min.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/sticky-nav.js')}}" type="text/javascript"></script>
-        <!--<script src="{{ asset('sximo/assets/js/moment.min.js')}}" type="text/javascript"></script>-->
+        <script src="{{ asset('sximo/assets/js/moment.min.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/jquery.daterangepicker.min.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/book-now-page-style.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/m-popup.js')}}" type="text/javascript"></script>
