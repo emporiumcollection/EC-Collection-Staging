@@ -2661,7 +2661,7 @@
         </script>
         <script>
             $(document).on('click',function(){
-            $('.collapse').collapse('hide');
+            $('.collapse').panel-collapse('hide');
             })
         </script>
         
