@@ -2661,12 +2661,10 @@
         </script>
         
         <script>
-            $(document).ready(function () {
-                $(".collapsed").click(function(event) {
-                  $(".panel-collapse").collapsed('hide');
-                });
-              });
-        </script>
+        $(".collapsed").click(function(){
+            $(".where-box-sub-menu").toggle();    
+        });
+    </script>
 
         @include('layouts/elliot/ai_search-page')
         @include('layouts/elliot/ai_booking-page')
