@@ -620,7 +620,7 @@ a.textButton.arrowButton {
   text-align: right;
 }
 .typeahead {
-    height: 35px;
+    height: 20px;
 }
 
 .twitter-typeahead { width:100% }
