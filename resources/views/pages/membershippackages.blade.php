@@ -788,9 +788,14 @@ $(document).on('ready', function () {
                         imagesPro += '<div class="hotel-book-price">';
                         imagesPro += (data.currency.content != '') ? data.currency.content : '$';
                         imagesPro += data.pdata.package_price;
-                        imagesPro += '</div">';
+                        imagesPro += '</div>';
+						imagesPro += '<a href="#"><div class="hotel-book-now">Book Now</div></a>';
                     }
-                    imagesPro += '<a href="#"><div class="hotel-book-now">Book Now</div></a>';
+                    else
+					{
+						imagesPro += '<div class="hotel-book-price">Price on request</div>';
+						imagesPro += '<a href="#"><div class="hotel-book-now">Get in touch</div></a>';
+					}
                     imagesPro += '</div>';
                     imagesPro += '<div class="inner-pop-up-book-btn">';
                     imagesPro += '<a href="#">Book</a>';
