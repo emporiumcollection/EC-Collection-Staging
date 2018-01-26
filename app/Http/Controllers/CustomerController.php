@@ -10,13 +10,16 @@ use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 use Validator,
     Input,
     Redirect;
-
+use DB, CommonHelper;
 class CustomerController extends Controller {
 
     protected $layout = "layouts.main";
 
     public function __construct() {
         parent::__construct();
+        $this->data['pageTitle'] = '';
+        $this->data['data'] = CommonHelper::getInfo();
+        $this->data['pageslider'] = \DB::table('tb_pages_sliders')->select( 'slider_title', 'slider_description', 'slider_img', 'slider_link', 'slider_video', 'slide_type')->where('slider_page_id', 35)->get();
     }
 
     public function getRegister($pid) {
@@ -544,7 +547,7 @@ class CustomerController extends Controller {
         $ads_expiry_days = \DB::table('tb_settings')->where('key_value', 'default_advertisement_expiry_days')->first();
         $ads_price = \DB::table('tb_settings')->where('key_value', 'default_advertisement_price')->first();
         $def_currency = \DB::table('tb_settings')->where('key_value', 'default_currency')->first();
-        $this->data = array(
+        $this->data2 = array(
             'pageTitle' => 'My Profile',
             'pageNote' => 'View Detail My Info',
             'info' => $info,
@@ -554,7 +557,7 @@ class CustomerController extends Controller {
             'def_currency' => $def_currency,
             'ads_info' => $ads_info,
         );
-        return view('customer.profile', $this->data);
+        return view('customer.profile', $this->data2,$this->data);
     }
 
     public function postSaveprofile(Request $request) {

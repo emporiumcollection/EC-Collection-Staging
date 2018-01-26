@@ -1,15 +1,35 @@
-@extends('layouts.customer_app')
 
+@extends('frontend.layouts.ev.customer')
 @section('content')
-<section> 
-    <div class="dashboard-page-top-bar-align">
-        <div class="dashboardd-page-heading">
-            <h2>Account</h2>
-        </div>
-    </div>
-</section>
 <section>
-    <div class="col-md-8 col-sm-8">
+
+    <div>
+
+  <!-- Nav tabs <i class="fa fa-bullhorn" aria-hidden="true"></i></div><span>Ads -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-user" aria-hidden="true"></i>Profile</a></li>
+        <li role="presentation"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-bullhorn" aria-hidden="true"></i>ADS</a></li>
+    <li role="presentation"><a href="#comingsoon" aria-controls="comingsoon" role="tab" data-toggle="tab"><i class="fa fa-star-o" aria-hidden="true"></i>FAVOURITE</a></li>
+    <li role="presentation"><a href="#comingsoon" aria-controls="comingsoon" role="tab" data-toggle="tab"><i class="fa fa-rocket" aria-hidden="true"></i>Service</a></li>
+    <li role="presentation"><a href="#comingsoon" aria-controls="comingsoon" role="tab" data-toggle="tab"> <i class="fa fa-calendar-check-o" aria-hidden="true"></i>Magazine</a></li>
+
+    <li  role="presentation" class="<?php echo (isset($active_menu) && $active_menu == 'bookings')? 'active' : ''; ?>">
+                                                        <a href="{{URL::to('bookings')}}">
+                                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>Bookings
+                                                        </a>
+                                                    </li>
+
+     <li role="presentation"><a href="#accountOptions" aria-controls="accountOptions" role="tab" data-toggle="tab"> <i class="fa fa-calendar-check-o" aria-hidden="true"></i>Account Settings</a></li>
+
+
+
+       <li role="presentation"><a href="{{ URL::to('')}}" aria-controls="settings" role="tab" data-toggle="tab"> <i class="fa fa-home" aria-hidden="true"></i>Frontend</a></li>
+        <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab"> <i class="fa fa-calendar-check-o" aria-hidden="true"></i>Technical Support</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+     <div role="tabpanel" class="tab-pane active" id="profile"> <div class="col-md-8 col-sm-8">
         <div class="row">
             <div class="das-form-outer-align">
                 <form class="form-horizontal my-profile-main-form-align">
@@ -50,35 +70,33 @@
                     </div>
                 </form>
             </div>
-        </div>
-    </div>
-    <div class="res-mob-menu-align">
-        <div class="col-md-4 col-sm-4 col-xs-12">
-            <div class="row">
-                <div class="dashboard-page-right-nav-align">
-                    <nav class="navbar navbar-inverse dashboard-left-main-nav-outer-align">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#dashboard-navigation">
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>                        
-                            </button>
-                        </div>
-                        <div class="collapse navbar-collapse dashboard-navigation-style right-menu-align" id="dashboard-navigation">
-                            <ul class="nav navbar-nav dashboard-menu-align">
-                                <li><a class="active" href="#">Account Information</a></li>
-                                <li><a href="#">Profile</a></li>
-                                <li><a href="#">Featured Items</a></li>
-                                <li><a href="#">Email</a></li>
-                                <li><a href="#">Invitions</a></li>
-                                <li><a href="#">Blocked User</a></li>
-                                <li><a href="#">Delete Account</a></li>
+        </div></div></div>
+    <div role="tabpanel" class="tab-pane " id="home">Coming Soon....</div>
+   
+    <div role="tabpanel" class="tab-pane" id="messages">Coming Soon...</div>
+ 
+    <div role="tabpanel" class="tab-pane" id="comingsoon">Coming Soon...</div>
+    <div role="tabpanel" class="tab-pane" id="accountOptions"> 
+         <div class="row">
+                <div >
+                    <ul class="list-group" >
+                                <li class="list-group-item"><a class="active" href="#">Account Information</a></li>
+                                <li class="list-group-item"><a href="#">Profile</a></li>
+                                <li class="list-group-item"><a href="#">Featured Items</a></li>
+                                <li class="list-group-item"><a href="#">Email</a></li>
+                                <li class="list-group-item"><a href="#">Invitions</a></li>
+                                <li class="list-group-item"><a href="#">Blocked User</a></li>
+                                <li class="list-group-item"><a href="#">Delete Account</a></li>
                             </ul>
-                        </div>
-                    </nav>
+               
                 </div>
             </div>
-        </div>
+
     </div>
+  </div>
+
+</div>
+   
+   
 </section>
 @endsection

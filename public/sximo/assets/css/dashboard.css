@@ -97,9 +97,7 @@ nav.navbar.navbar-inverse.dashboard-left-main-nav-outer-align {
 }
 .main-dashboard-header {
     background-color: #35383d;
-    position: fixed;
-    top: 0;
-    width: 100%;
+    width: 98%;
     z-index: 999;
 }
 nav.navbar.dash-top-header-style-align {
