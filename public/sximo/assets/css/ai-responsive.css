@@ -9,6 +9,16 @@
 	font-size: 13px;
     }
 }
+
+@media only screen  and (max-width : 1280px) {
+
+    .top-booking-bar-btn {
+	padding: 7px 4px 7px 4px;
+	font-size: 6px;
+    }
+    
+}
+
 @media (min-width: 993px) and (max-width: 1199px) {
     
      /* login popup */
