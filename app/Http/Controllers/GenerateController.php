@@ -251,7 +251,7 @@ class GenerateController  extends Controller {
                                                 </div>
                                                 <?php if (array_key_exists("subchild",$childDest)):?>
                                                     <div id="destination-child<?php echo $childDest->id;?>" class="panel-collapse collapse">
-                                                        <ul class="where-box-sub-menu inner-level-sub-menu">
+                                                        <ul class="where-box-sub-menu inner-level-sub-menu subClose">
                                                             <?php foreach($childDest->subchild as $subchildDest):?>
                                                                 <li>
                                                                     <?php if (array_key_exists("subchild",$subchildDest) && !empty($subchildDest->subchild)):?>
@@ -279,6 +279,12 @@ class GenerateController  extends Controller {
                                                             <?php endforeach;?>
                                                         </ul>
                                                     </div>
+                                                
+            <script>
+            $(document).on('click',function(){
+            $('.collapse').subClose('hide');
+            })
+        </script>
                                                 <?php endif;?>
                                             </div>
                                         </div></li>

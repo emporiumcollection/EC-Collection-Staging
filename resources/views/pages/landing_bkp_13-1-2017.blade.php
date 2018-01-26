@@ -1404,7 +1404,7 @@
                                                 </div>
                                                 @if (array_key_exists("subchild",$childDest))
                                                     <div id="destination-child{{$childDest->id}}" class="panel-collapse collapse">
-                                                        <ul class="where-box-sub-menu inner-level-sub-menu subClose">
+                                                        <ul class="where-box-sub-menu inner-level-sub-menu">
                                                             @foreach($childDest->subchild as $subchildDest)
                                                                 <li>
                                                                     @if (array_key_exists("subchild",$subchildDest) && !empty($subchildDest->subchild))
@@ -2934,13 +2934,6 @@
                 });
             });
         </script>
-        
-        <script>
-            $(document).on('click',function(){
-            $('.collapse').subClose('hide');
-            })
-        </script>
-        
         @include('layouts/elliot/ai_search-page')
         @include('layouts/elliot/ai_booking-page')
         @include('layouts/elliot/ai_newsletter')
