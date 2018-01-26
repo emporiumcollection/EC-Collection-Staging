@@ -32,7 +32,7 @@
 		@else
 		<link href="{{ asset('sximo/css/'.Session::get('themes').'.css')}}" rel="stylesheet">	
 		@endif
-
+		@yield('style')
 		<script type="text/javascript" src="{{ asset('sximo/js/plugins/jquery.min.js') }}"></script>
 		<script type="text/javascript" src="{{ asset('sximo/js/plugins/jquery.cookie.js') }}"></script>			
 		<script type="text/javascript" src="{{ asset('sximo/js/plugins/jquery-ui.min.js') }}"></script>				
@@ -60,7 +60,8 @@
 			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 		<![endif]-->		
 
-
+		@yield('script')
+		@yield('custom_js_script')
 	
   	</head>
   	<body class="sxim-init" >
