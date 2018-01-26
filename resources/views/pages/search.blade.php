@@ -1064,7 +1064,7 @@
 														<h3 class="bh-slideshow-thumbnail-split-preview-title">
 															<a href="#">{{$slides->slider_title}}</a>
 														</h3>
-														<div class="bh-slideshow-thumbnail-split-preview-content">{{$slides->slider_description}}</div>
+														<div class="bh-slideshow-thumbnail-split-preview-content scrollbar1" id="style-3">{{$slides->slider_description}}</div>
                                                                                                                 @if($slides->slider_link != '#')
 														<a class="uk-margin-top uk-button uk-button-primary" href="http://{{$slides->slider_link}}">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>
                                                                                                                 @endif
