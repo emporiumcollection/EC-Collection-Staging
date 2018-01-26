@@ -18,7 +18,7 @@
       <ul class="parsley-error-list">
           </ul>
       <div class="sbox animated fadeInRight">
-        <div class="sbox-title"> <h4> <i class="fa fa-table"></i> </h4></div>
+        <div class="sbox-title"> <h4> <i class="fa fa-table"></i> @lang('ev_custom_fields.admin_customfield_module_title')</h4></div>
         <div class="sbox-content"> 
 
                   <?php 
@@ -40,10 +40,7 @@
                       <div class="col-md-12 col-sm-12">
                         <div class="portlet light bordered">
                                   <div class="portlet-title">
-                                      <div class="caption font-dark">
-                                          <i class="{{--$icon_class['admin_menu_left_settings_ubersetzung_icon']--}}" aria-hidden="true"></i> 
-                                          <span class="caption-subject "> @lang('ev_custom_fields.admin_customfield_module_title')</span>
-                                      </div>
+                                      
                                       
                                   </div>
                                   <div class="portlet-body">
@@ -72,15 +69,15 @@
                                                     <div class="col-sm-6">
                                                         <div class="form-group">  
                                     <div class="form-group form-md-line-input form-md-floating-label has-info padding_left">
+                                       {!! Form::label('modules', trans('ev_custom_fields.admin_customfield_module_add_modules'))  !!}
                                       <select class="form-control" id="module_name" name="module_name" data-module-list="list">
                                                              @foreach ($module_list as $module)
                                                           <option value="{{$module->module_id}}" @if($module_selected==$module->module_id) selected @endif>{{ucfirst($module->module_title)}}</option>
                                                       @endforeach 
                                                    </select>
-                                       {!! Form::label('modules', trans('ev_custom_fields.admin_customfield_module_list'))  !!}
+                                      
                                       
                                     </div>
-                                     <span class="help-block">@lang('ev_custom_fields.admin_customfield_module_list_help_text')</span>
                                   </div>
                                 
                                 </div>
