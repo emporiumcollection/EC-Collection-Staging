@@ -2656,10 +2656,10 @@
             
         </script>
         <script>
-        jQuery(document).ready(function(){
-            jQuery(".where-box-sub-menu h4 a").click(function(){
-                jQuery("#inner-level-accordian").hide();
-//                jQuery("#circle3").toggle();
+        $(document).ready(function(){
+            $(".where-box-sub-menu h4 a").click(function(){
+                $("#inner-level-accordian").hide();
+                $(".destination-inner-accordian-outer").toggle();
             });
         });
         </script>
