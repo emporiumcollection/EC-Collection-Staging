@@ -26,7 +26,7 @@
             <a href="{{ url('crmlayouts/'.$crmlayout->template_id.'/edit/') }}" class="btn btn-sm btn-default btn-circle btn-editable"><i class="fa fa-pencil"></i> </a>
             @endif
             @if(isset($access['is_remove']) && $access['is_remove'] != 0)
-            <a href="{{ url('crmlayouts/delete/'.$crmlayout->template_id) }}" class="btn btn-sm btn-default btn-circle " data-action="remove" ><i class="fa fa-remove"></i> </a>
+            <a onclick="return confirm('Are you sure?');" href="{{ url('crmlayouts/delete/'.$crmlayout->template_id) }}" class="btn btn-sm btn-default btn-circle " data-action="remove" ><i class="fa fa-remove"></i> </a>
             @endif
         </td>
     </tr>

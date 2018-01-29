@@ -1,4 +1,4 @@
-@extends('admin.layouts.index')
+@extends('layouts.app')
 
 @section('content')
 <!-- BEGIN CONTENT -->
@@ -9,8 +9,7 @@
         <div class="page-head">
             <!-- BEGIN PAGE TITLE -->
             <div class="page-title">
-                <h1><i class="fa fa-cubes" aria-hidden="true"></i> @lang('crmlayout.admin_crmlayout_module_add')
-                </h1>
+                <h1><i class="fa fa-cubes" aria-hidden="true"></i> Template</h1>
             </div>
             <!-- END PAGE TITLE -->
         </div>
@@ -43,7 +42,7 @@
                     <div class="portlet-title">
                         <div class="caption">
                             <i class="fa fa-cubes" aria-hidden="true"></i> 
-                            <span class="caption-subject">@lang('crmlayout.admin_crmlayout_module_edit')</span>
+                            <span class="caption-subject">Edit Template</span>
                         </div>
                     </div>
                     <div class="portlet-body form" id="from-group-style">
@@ -73,7 +72,7 @@
 						
                         {!! Form::model($crmlayouts, ['route' => ['crmlayouts.update', $crmlayouts->template_id], 'method' => 'patch']) !!}
 
-							@include('admin.crmlayouts.fields')
+							@include('crmlayouts.fields')
 
 					   {!! Form::close() !!}
                     </div>
