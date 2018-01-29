@@ -75,8 +75,9 @@ and open the template in the editor.
         width: 100%;
     }
     .hotel-slider-price {
-        padding: 8px 3px;
+        padding: 8px 3px !important;
         margin-top: 0px;
+        margin-left: 0px !important;
     }
 }
 @media screen and (max-width: 1024px) and (min-width: 768px) {
@@ -94,6 +95,7 @@ and open the template in the editor.
     }
     .image-slider-container .editorial-images-count {
         margin-top: -150px !important;
+        width: 20% !important;
     }
     .image-slider-container .editorial-image-slider-btns {
         margin-top: -115px !important;

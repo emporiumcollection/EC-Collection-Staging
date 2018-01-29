@@ -25,10 +25,23 @@
 	margin-top: 0 !important;
     }
     .newbkbtn {
-	margin-left: 5px;
-	padding: 8px 5px;
+	margin-left: 5px !important;
+	padding: 8px 5px !important;
 	margin-right: 5px;
 	margin-bottom: 20px;
+    }
+    .view-gallery-pannel-align .bar-view-gallery {
+	font-size: 12px;
+    }
+    .SlickVegasWidth {
+	width: 24.5%;
+    }
+    .vegasGallery1 {
+	padding: 53px 0px 0px 0px !important;
+	width: 75.333%;
+    }
+    .VegasPopLogo {
+	width: 50%;
     }
 }
 /*@media (min-width: 768px) and (max-width: 1200px) {
