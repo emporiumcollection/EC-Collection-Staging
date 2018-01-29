@@ -32,9 +32,6 @@
                         <div class="portlet light bordered">
 
                             <div class="portlet-title">
-                                <div class="caption font-dark"><i class="fa fa-cubes" aria-hidden="true"></i> 
-                                    <span class="caption-subject "> @lang('crmlayout.admin_crmlayout_module_title')</span>
-                                </div>
                                 <div class="actions">
                                     @if(isset($access['create-crmlayout']) || isset($access['all']))
                                     <a id="sample_editable_1_new" class="btn  blue m-t-0" href="{{route('crmlayouts.create')}}"> @lang('crmlayout.admin_crmlayout_module_add_new_btn')

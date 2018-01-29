@@ -8,7 +8,7 @@
         </td>
         <th>Template</th>
         <th>Date Created</th>
-        <th> @lang('crmlayout.admin_crmlayout_module_list_col_action') </th>
+        <th>Action</th>
     </thead>
 <tbody>
     @foreach($crmlayouts as $crmlayout)
