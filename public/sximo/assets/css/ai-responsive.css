@@ -41,7 +41,7 @@
 }*/
 @media (min-width: 768px) and (max-width: 992px) {
     #align-to-top .book-button.open-show_more-page.hotel-btn {
-        padding: 8px 3px !important;
+/*        padding: 8px 3px !important;*/
     }
     .block-content.content span {
         right: 13px !important; 
@@ -164,9 +164,7 @@
 	padding: 8% 0% 0% 0% !important;
     }
     .editorial-hotel-detail-page #align-to-top .book-button.open-show_more-page.hotel-btn { 
-	width: 48%;
         margin-bottom: 8px;
-        padding: 35px 0px 0px 0px !important;
     }
     .editorial-page-booking-bar .top-booking-bar-btn, .editorial-hotel-detail-page .book-button, .editorial-hotel-detail-page .hotel-slider-price, .editorial-hotel-detail-page .spa-sec-book-an-appoinment-btn {
 	width: 100%;
