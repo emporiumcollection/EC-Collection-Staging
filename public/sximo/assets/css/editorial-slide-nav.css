@@ -23,7 +23,7 @@ and open the template in the editor.
 }
 .open-show_more-html a {
 	right: 1%;
-	position: absolute;
+	/*position: absolute;*/
 	top: 0;
 }
 /*Show More Slide CSS*/
