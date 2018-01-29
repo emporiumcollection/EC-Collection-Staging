@@ -249,14 +249,19 @@
                             <div class="clearfix"></div>
                             <div class="ps-form-main-pannel">
                                 <div class="ps-form-heading-outer-align">
-                                    <div class="ps-big-form-heading">Create Your Account</div>
-                                    <div class="ps-big-form-heading">Password</div>
+                                    <div class="ps-big-form-heading" style="font-size:20px !important; ">Create Your Account &nbsp;Password</div>
+                                    
                                 </div>
                                 <div class="ai-sign-up-form-error-msg"></div>
                                 <div class="ai-sign-up-form-success-msg"></div>
                                 <form class="ai-sign-up-form ps-login-sign-form-pannel" action="{{ url('customer/create')}}" method="POST">
                                     <div class="form-group ps-form-group-outer">
                                         <input class="form-control ps-login-form-input" name="email" type="text" placeholder="Email Address">
+                                    </div>
+
+
+                                    <div class="form-group ps-form-group-outer">
+                                        <input class="form-control ps-login-form-input required" name="mobileNumber" type="text" placeholder="Mobile Number">
                                     </div>
                                     <div class="form-group ps-form-group-outer">
                                         <input class="form-control ps-login-form-input" name="password" type="password" placeholder="Password">
