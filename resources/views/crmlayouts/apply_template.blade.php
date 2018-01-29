@@ -53,7 +53,7 @@
                     <div class="portlet-body form" id="from-group-style">
                         
                         <!--Apply Template Form Start-->
-                        <form action="{{URL::to('admin/crmlayouts/do_apply_template')}}" method="POST">
+                        <form action="{{URL::to('crmlayouts/do_apply_template')}}" method="POST">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                             <input type="hidden" name="template_id" value="<?php echo $template->template_id; ?>" />
                             <div class="form-group">  
@@ -121,9 +121,6 @@
             </div>
         </div>
         <!-- END PAGE BASE CONTENT -->
-        <!-- BEGIN FOOTER -->
-        @include('admin/includes/ne_footer')
-        <!-- END FOOTER -->
     </div>
     <!-- END CONTENT BODY -->
 </div>
@@ -136,5 +133,5 @@
 @endsection
 
 @section('custom_js_script')
-@include('admin/layouts/ai_crm_vc')
+@include('layouts/crm_layout/ai_crm_vc')
 @endsection
