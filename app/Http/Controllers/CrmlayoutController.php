@@ -23,7 +23,10 @@ use Auth,
 
 class CrmlayoutController extends Controller {
 
-    private $data = array();
+    protected $layout = "layouts.main";
+    protected $data = array();	
+    public $module = 'crmlayout';
+    static $per_page	= '10';
     
     public function __construct() {
 
