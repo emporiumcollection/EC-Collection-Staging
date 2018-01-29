@@ -1,5 +1,4 @@
-@extends('layouts.index')
-
+@extends('layouts.app')
 @section('content')
 
 <!-- BEGIN CONTENT -->
