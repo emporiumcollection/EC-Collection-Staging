@@ -712,9 +712,9 @@
                                 margin-right: 0px;
                             }
                             
-                            .editorial-image-slider-previous-btn {
+/*                            .editorial-image-slider-previous-btn {
                                 margin-left: 384px !important;
-                            }
+                            }*/
                             
                             .editorial-hotel-detail-page #align-to-top .book-button.open-show_more-page.hotel-btn {
                                 background-color: #ABA07C;

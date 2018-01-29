@@ -75,8 +75,8 @@ and open the template in the editor.
         width: 100%;
     }
     .hotel-slider-price {
-        padding: 8px 7px;
-        margin-top: 8px;
+        padding: 8px 3px;
+        margin-top: 0px;
     }
 }
 @media screen and (max-width: 1024px) and (min-width: 768px) {
@@ -93,17 +93,17 @@ and open the template in the editor.
         margin-top: -112px;
     }
     .image-slider-container .editorial-images-count {
-        margin-top: -165px !important;
+        margin-top: -150px !important;
     }
     .image-slider-container .editorial-image-slider-btns {
-        margin-top: -134px !important;
-        left: 30%;
+        margin-top: -115px !important;
+        left: 0%;
     }
     .editorial-image-slider-previous-btn {
         margin-left: 36% !important;
     }
     .image-slider-btns-bg {
-        padding: 30px 17px;
+        padding: 47px 17px;
     }
     .small-box-bg {
         margin-left: -68%;
