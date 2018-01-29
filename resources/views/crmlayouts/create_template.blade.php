@@ -10,7 +10,7 @@
         <div class="page-head">
             <!-- BEGIN PAGE TITLE -->
             <div class="page-title">
-                <h1><i class="fa fa-cubes" aria-hidden="true"></i> @lang('crmlayout.admin_crmlayout_module_add')
+                <h1><i class="fa fa-cubes" aria-hidden="true"></i> Template
                 </h1>
             </div>
             <!-- END PAGE TITLE -->
@@ -78,7 +78,7 @@
                         <!--VC End-->
 
                         <div class="form-actions noborder right">
-                            <a class="btn blue" href="{{URL::to('crmlayouts/apply_template')}}/{{$template->template_id}}">{{trans('crmlayout.admin_crmlayout_module_add_next_btn')}}</a>
+                            <a class="btn blue" href="{{URL::to('crmlayouts/apply_template')}}/{{$template->template_id}}">Next</a>
                             <a class="btn default" href="{{route('crmlayouts.index')}}">Cancel</a>
                         </div>
                     </div>

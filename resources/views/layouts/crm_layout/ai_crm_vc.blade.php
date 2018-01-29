@@ -717,7 +717,7 @@ $fieldArray['file'] = 'File';
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
-            <form action="{{URL::to('admin/crmlayouts/add_new_row')}}" method="POST">
+            <form action="{{URL::to('crmlayouts/add_new_row')}}" method="POST">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                 <input type="hidden" name="module_id" value="<?php echo $template->module_id; ?>" />
                 <input type="hidden" name="template_id" value="<?php echo $template->template_id; ?>" />
@@ -755,7 +755,7 @@ $fieldArray['file'] = 'File';
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
-            <form action="{{URL::to('admin/crmlayouts/add_new_column')}}" method="POST">
+            <form action="{{URL::to('crmlayouts/add_new_column')}}" method="POST">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                 <input type="hidden" name="module_id" value="<?php echo $template->module_id; ?>" />
                 <input type="hidden" name="template_id" value="<?php echo $template->template_id; ?>" />
