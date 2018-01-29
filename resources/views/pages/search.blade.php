@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
@@ -2722,14 +2723,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
 //                                                                            });
 //                                                                        }));
 
-									 eval($("#adult-input-value").change(function () {
-                                                                            var adults = $(this).val();
-                                                                            $('#adults-val').html(adults);
-                                                                        }));
-                                                                        eval($("#childerns-input-value").change(function () {
-                                                                            var childerns = $(this).val();
-                                                                            $('#childern-val').html(childerns);
-                                                                        }));
+									 
 									
 									eval($('#book-hotel1').dateRangePicker({
 										startDate: "2017-01-11",
@@ -2775,8 +2769,17 @@ url: "{{ URL::to('filter_search_destionation')}}",
 						});
 						});
 					</script>
+                                        <script type="text/javascript">
+                                            eval($("#adult-input-value").change(function () {
+                                            var adults = $(this).val();
+                                            $('#adults-val').html(adults);
+                                        }));
+                                        eval($("#childerns-input-value").change(function () {
+                                            var childerns = $(this).val();
+                                            $('#childern-val').html(childerns);
+                                        }));
+                                        </script>
                                     <script>
-                
                                             (function (document) {
                                         var alterNav = function () {
                                             var item = document.querySelector('.members-drop-list');
