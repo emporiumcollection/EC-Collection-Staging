@@ -59,7 +59,7 @@ class CrmlayoutController extends Controller {
         }
         
         $this->data['crmlayouts'] = Crmlayout::All();
-        return view('admin.crmlayouts.index', $this->data);
+        return view('crmlayouts.index', $this->data);
     }
 
     /**
@@ -75,7 +75,7 @@ class CrmlayoutController extends Controller {
         
         $this->data['title'][1] = array('title' => trans('crmlayout.admin_crmlayout_module_add'), 'url' => '');
         $this->data['modules'] = ModBuilder::All();
-        return view('admin.crmlayouts.create', $this->data);
+        return view('crmlayouts.create', $this->data);
     }
 
     /**
@@ -128,7 +128,7 @@ class CrmlayoutController extends Controller {
         $this->data['groups'] = ModelsAiCrmGroups::select('*')->where('idmod_mfg', '=', $template->module_id)->get();
         $this->data['rows'] = ModelsAiCrmRows::select('*')->where('module_id', '=', $template->module_id)->get();
         $this->data['modules'] = ModBuilder::All();
-        return view('admin.crmlayouts.create_template', $this->data);
+        return view('crmlayouts.create_template', $this->data);
     }
 
     /**
@@ -165,7 +165,7 @@ class CrmlayoutController extends Controller {
         $this->data['groups'] = ModelsAiCrmGroups::select('*')->where('idmod_mfg', '=', $template->module_id)->get();
         $this->data['rows'] = ModelsAiCrmRows::select('*')->where('module_id', '=', $template->module_id)->get();
         $this->data['modules'] = ModBuilder::All();
-        return view('admin.crmlayouts.apply_template', $this->data);
+        return view('crmlayouts.apply_template', $this->data);
     }
     
     /*
@@ -1154,7 +1154,7 @@ class CrmlayoutController extends Controller {
         $findr = Crmlayout::find($id);
         $this->data['crmlayouts'] = $findr;
         $this->data['modules'] = ModBuilder::All();
-        return view('admin.crmlayouts.edit', $this->data);
+        return view('crmlayouts.edit', $this->data);
     }
 
     /**
