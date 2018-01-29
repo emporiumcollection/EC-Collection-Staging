@@ -16,8 +16,6 @@ use App\Models\ModelsModcustomfieldgroup;
 use App\Models\ModelsModcustomfieldrows;
 use App\Models\ModelsModcustomfieldelements;
 use App\Models\ModelsModcustomfieldvalue;
-use Illuminate\Http\Request;
-use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 use Auth,
     Validator,
     Input,
