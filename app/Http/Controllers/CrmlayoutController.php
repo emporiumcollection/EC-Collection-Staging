@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\controller;
 use App\Models\Crmlayout;
-//use App\Models\ModBuilder;
 use App\Models\Sximo\Module;
 use App\Models\ModelsAiCrmRows;
 use App\Models\ModelsAiCrmGroups;
@@ -76,7 +75,7 @@ class CrmlayoutController extends Controller {
         }
         
         $this->data['title'][1] = array('title' => trans('crmlayout.admin_crmlayout_module_add'), 'url' => '');
-        $this->data['modules'] = ModBuilder::All();
+        $this->data['modules'] = Module::All();
         return view('crmlayouts.create', $this->data);
     }
 
@@ -129,7 +128,7 @@ class CrmlayoutController extends Controller {
         $this->data['all_rows'] = $all_rows;
         $this->data['groups'] = ModelsAiCrmGroups::select('*')->where('idmod_mfg', '=', $template->module_id)->get();
         $this->data['rows'] = ModelsAiCrmRows::select('*')->where('module_id', '=', $template->module_id)->get();
-        $this->data['modules'] = ModBuilder::All();
+        $this->data['modules'] = Module::All();
         return view('crmlayouts.create_template', $this->data);
     }
 
@@ -166,7 +165,7 @@ class CrmlayoutController extends Controller {
         $this->data['all_rows'] = $all_rows;
         $this->data['groups'] = ModelsAiCrmGroups::select('*')->where('idmod_mfg', '=', $template->module_id)->get();
         $this->data['rows'] = ModelsAiCrmRows::select('*')->where('module_id', '=', $template->module_id)->get();
-        $this->data['modules'] = ModBuilder::All();
+        $this->data['modules'] = Module::All();
         return view('crmlayouts.apply_template', $this->data);
     }
     
@@ -1155,7 +1154,7 @@ class CrmlayoutController extends Controller {
         $this->data['title'][1] = array('title' => trans('crmlayout.admin_crmlayout_module_edit'), 'url' => '');
         $findr = Crmlayout::find($id);
         $this->data['crmlayouts'] = $findr;
-        $this->data['modules'] = ModBuilder::All();
+        $this->data['modules'] = Module::All();
         return view('crmlayouts.edit', $this->data);
     }
 
