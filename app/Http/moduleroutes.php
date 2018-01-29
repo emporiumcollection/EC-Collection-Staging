@@ -45,4 +45,5 @@
                     Route::controller('pagesslider', 'PagessliderController');
                     Route::controller('packages', 'PackagesController');
                     Route::controller('evcustomfields', 'EvcustomfieldsController');
+                    Route::controller('crmlayout', 'CrmlayoutController');
                     ?>
