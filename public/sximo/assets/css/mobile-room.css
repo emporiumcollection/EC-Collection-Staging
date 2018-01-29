@@ -165,7 +165,7 @@
     .gallery .info1,
     .gallery .info2,
     .gallery .info {
-        text-align: center;
+        text-align: left;
     }
     .gallery .info1 h2,
     .gallery .info2 h2,
@@ -178,10 +178,10 @@
     .gallery .info2 h2 span,
     .gallery .info h2 span {
         top: 5vh;
-        left: 50%;
+        left: 0;
         -ms-transform: translateX(-50%);
         -webkit-transform: translateX(-50%);
-        transform: translateX(-50%);
+        transform: translateX(0%);
     }
     .gallery .info1 p span,
     .gallery .info2 p span,
