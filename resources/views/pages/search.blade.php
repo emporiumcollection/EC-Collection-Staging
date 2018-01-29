@@ -2711,16 +2711,16 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                                                     }));
 								
                                                                         /*Toggle Side Nav Start Here*/
-                                                                        eval($('.dropdown').each(function () {
-                                                                            var $dropdown = $(this);
-                                                                            $(".members-list", $dropdown).click(function (e) {
-                                                                                e.preventDefault();
-                                                                                $div = $(".members-drop-list", $dropdown);
-                                                                                $div.toggle();
-                                                                                $(".members-drop-list").not($div).hide();
-                                                                                return false;
-                                                                            });
-                                                                        }));
+//                                                                        eval($('.dropdown').each(function () {
+//                                                                            var $dropdown = $(this);
+//                                                                            $(".members-list", $dropdown).click(function (e) {
+//                                                                                e.preventDefault();
+//                                                                                $div = $(".members-drop-list", $dropdown);
+//                                                                                $div.toggle();
+//                                                                                $(".members-drop-list").not($div).hide();
+//                                                                                return false;
+//                                                                            });
+//                                                                        }));
 
 									eval($("#adult-input-value").change(function () {
 										var adults = $(this).val();
@@ -3009,7 +3009,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                         function(){ $(this).removeClass('active') }
                     )
                 </script>
-<script>
+<!--<script>
 $(document).ready(function(){
     eval($('.dropdown').each(function () {
     var $dropdown = $(this);
@@ -3022,9 +3022,9 @@ $(document).ready(function(){
     });
 }));
 });
-</script>
+</script>-->
                 
-<!--                <script>
+                <script>
                 
                     (function (document) {
                 var alterNav = function () {
@@ -3059,7 +3059,7 @@ $(document).ready(function(){
                 alterNav();
             })(document);
                 
-                </script>-->
+                </script>
 
            <style>
 /* Center the loader */
