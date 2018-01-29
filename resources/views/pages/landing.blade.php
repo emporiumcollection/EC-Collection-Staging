@@ -2655,7 +2655,14 @@
             })(document);
             
         </script>
-
+        <script>
+        jQuery(document).ready(function(){
+            jQuery(".where-box-sub-menu h4 a").click(function(){
+                jQuery("#inner-level-accordian").hide();
+//                jQuery("#circle3").toggle();
+            });
+        });
+        </script>
         @include('layouts/elliot/ai_search-page')
         @include('layouts/elliot/ai_booking-page')
         @include('layouts/elliot/ai_newsletter')
