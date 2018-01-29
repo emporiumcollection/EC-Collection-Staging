@@ -43,9 +43,11 @@ class CrmlayoutController extends Controller {
      */
     public function index(Request $request) {
         $this->data['access'] = $this->models->validAccess(Auth::id());
-        if (!isset($this->data['access']['list-crmlayout']) && !isset($this->data['access']['all'])) {
-            return redirect('accessDenied');
+        
+        if($this->access['is_view'] == 0) {
+            return Redirect::to('dashboard')->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus','error');
         }
+        
         $this->data['crmlayouts'] = Crmlayout::All();
         return view('admin.crmlayouts.index', $this->data);
     }
@@ -57,9 +59,11 @@ class CrmlayoutController extends Controller {
      */
     public function create() {
         $this->data['access'] = $this->models->validAccess(Auth::id());
-        if (!isset($this->data['access']['create-crmlayout']) && !isset($this->data['access']['all'])) {
-            return redirect('accessDenied');
+        
+        if($this->access['is_add'] == 0 ) {
+            return Redirect::to('dashboard')->with('messagetext',\Lang::get('core.note_restric'))->with('msgstatus','error');
         }
+        
         $this->data['title'][1] = array('title' => trans('crmlayout.admin_crmlayout_module_add'), 'url' => '');
         $this->data['modules'] = ModBuilder::All();
         return view('admin.crmlayouts.create', $this->data);
@@ -70,8 +74,8 @@ class CrmlayoutController extends Controller {
      */
     public function create_template($template_id) {
         $this->data['access'] = $this->models->validAccess(Auth::id());
-        if (!isset($this->data['access']['create-crmlayout']) && !isset($this->data['access']['all'])) {
-            return redirect('accessDenied');
+        if($this->access['is_add'] == 0 ) {
+            return Redirect::to('dashboard')->with('messagetext',\Lang::get('core.note_restric'))->with('msgstatus','error');
         }
         $this->data['title'][1] = array('title' => trans('crmlayout.admin_crmlayout_module_add'), 'url' => '');
         $template = Crmlayout::select('*')->where('template_id', '=', $template_id)->first();
@@ -124,8 +128,8 @@ class CrmlayoutController extends Controller {
      */
     public function apply_template($template_id) {
         $this->data['access'] = $this->models->validAccess(Auth::id());
-        if (!isset($this->data['access']['create-crmlayout']) && !isset($this->data['access']['all'])) {
-            return redirect('accessDenied');
+        if($this->access['is_add'] == 0 ) {
+            return Redirect::to('dashboard')->with('messagetext',\Lang::get('core.note_restric'))->with('msgstatus','error');
         }
         $this->data['title'][1] = array('title' => trans('crmlayout.admin_crmlayout_module_add'), 'url' => '');
         $template = Crmlayout::select('*')->where('template_id', '=', $template_id)->first();
@@ -1135,9 +1139,11 @@ class CrmlayoutController extends Controller {
      */
     public function edit($id) {
         $this->data['access'] = $this->models->validAccess(Auth::id());
-        if (!isset($this->data['access']['update-crmlayout']) && !isset($this->data['access']['all'])) {
-            return redirect('accessDenied');
+        
+        if($this->access['is_edit'] == 0 ) {
+            return Redirect::to('dashboard')->with('messagetext',\Lang::get('core.note_restric'))->with('msgstatus','error');
         }
+        
         $this->data['title'][1] = array('title' => trans('crmlayout.admin_crmlayout_module_edit'), 'url' => '');
         $findr = Crmlayout::find($id);
         $this->data['crmlayouts'] = $findr;
@@ -1191,9 +1197,12 @@ class CrmlayoutController extends Controller {
     public function destroy(Request $request, $id) {
 
         $this->data['access'] = $this->models->validAccess(Auth::id());
-        if (!isset($this->data['access']['delete-crmlayout']) && !isset($this->data['access']['all'])) {
-            return redirect('accessDenied');
+        
+        if($this->access['is_remove'] == 0) {
+            return Redirect::to('dashboard')
+				->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus','error');
         }
+        
         Crmlayout::destroy($id);
         $request->session()->flash('alert-success', trans('crmlayout.admin_crmlayout_module_delete_message'));
 
