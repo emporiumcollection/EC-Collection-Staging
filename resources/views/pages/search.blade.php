@@ -2722,14 +2722,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
 //                                                                            });
 //                                                                        }));
 
-									 eval($("#adult-input-value").change(function () {
-                                                                            var adults = $(this).val();
-                                                                            $('#adults-val').html(adults);
-                                                                        }));
-                                                                        eval($("#childerns-input-value").change(function () {
-                                                                            var childerns = $(this).val();
-                                                                            $('#childern-val').html(childerns);
-                                                                        }));
+									 
 									
 									eval($('#book-hotel1').dateRangePicker({
 										startDate: "2017-01-11",
@@ -2776,6 +2769,15 @@ url: "{{ URL::to('filter_search_destionation')}}",
 						});
 					</script>
                                     <script>
+                                        
+                                        eval($("#adult-input-value").change(function () {
+                                            var adults = $(this).val();
+                                            $('#adults-val').html(adults);
+                                        }));
+                                        eval($("#childerns-input-value").change(function () {
+                                            var childerns = $(this).val();
+                                            $('#childern-val').html(childerns);
+                                        }));
                 
                                             (function (document) {
                                         var alterNav = function () {
