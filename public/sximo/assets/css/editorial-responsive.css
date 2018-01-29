@@ -97,6 +97,7 @@ and open the template in the editor.
     }
     .image-slider-container .editorial-image-slider-btns {
         margin-top: -134px !important;
+        left: 30%;
     }
     .editorial-image-slider-previous-btn {
         margin-left: 36% !important;

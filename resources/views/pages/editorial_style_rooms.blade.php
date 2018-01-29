@@ -45,12 +45,7 @@
         .vegasModelFooter {
             border-top: none;
         }
-        
-        .SlickVegasWidth {
-            
-            width: 18.5%;
-        }
-        
+
         .vegasGallery1 {
             min-height: 500px;
             padding: 0px 0px 0px 0px !important;
