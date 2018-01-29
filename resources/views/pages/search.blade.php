@@ -2768,9 +2768,8 @@ url: "{{ URL::to('filter_search_destionation')}}",
 						});
 						});
 					</script>
-                                    <script>
-                                        
-                                        eval($("#adult-input-value").change(function () {
+                                        <script type="text/javascript">
+                                            eval($("#adult-input-value").change(function () {
                                             var adults = $(this).val();
                                             $('#adults-val').html(adults);
                                         }));
@@ -2778,7 +2777,8 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                             var childerns = $(this).val();
                                             $('#childern-val').html(childerns);
                                         }));
-                
+                                        </script>
+                                    <script>
                                             (function (document) {
                                         var alterNav = function () {
                                             var item = document.querySelector('.members-drop-list');
