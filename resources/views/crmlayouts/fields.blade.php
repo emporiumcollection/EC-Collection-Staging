@@ -30,6 +30,6 @@
 
 <!-- Submit Field -->
 <div class="form-actions noborder right">
-    {{ Form::submit(trans('crmlayout.admin_crmlayout_module_add_next_btn'), array('class' => 'btn blue ')) }}
+    <button type="submit" name="submit" class="btn btn-primary btn-sm" ><i class="fa  fa-save "></i> {{ Lang::get('core.sb_save') }}</button>
     <a class="btn default" href="{{route('crmlayouts.index')}}">Cancel</a>
 </div>
