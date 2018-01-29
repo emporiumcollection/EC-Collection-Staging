@@ -377,6 +377,12 @@
     .image-slider-container .editorial-images-count {
 	margin-left: 350px !important;
     }
+    .ai-spa-sec-inner {
+	float: left;
+    }
+    .dates li input, .dates li select {
+	margin-left: -11px; 
+    }
 }
 
 
