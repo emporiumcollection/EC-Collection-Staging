@@ -61,9 +61,6 @@
                         <!-- END EXAMPLE TABLE PORTLET-->
                     </div>
                 </div>
-
-
-                @include('footer')
             </div>
         </div>	
     </div>	  
