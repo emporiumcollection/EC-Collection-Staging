@@ -1273,7 +1273,8 @@
                                                                     <span class="FltRgt">
                                                                         <!--i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" @if(array_key_exists('image', $props)) onclick="add_to_lightbox({{$props['image']->file_id}}, {{$props->id}});" @endif ></i-->
 
-                                                                       <a class="carticon" href="javascript:void(0)" onclick="submitgridbookform('{{$props->property_slug}}#*{{$props->id}}');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>
+                                                                       <!--<a class="carticon" href="javascript:void(0)" onclick="submitgridbookform('{{$props->property_slug}}#*{{$props->id}}');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>-->
+                                                                       <a class="carticon" href="{{URL::to($props->property_slug)}}"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>
                                                                     </span>
                                                                 </h2>
 
