@@ -2655,14 +2655,6 @@
             })(document);
             
         </script>
-        <script>
-        $(document).ready(function(){
-            $(".where-box-sub-menu h4 a").click(function(){
-                $("#inner-level-accordian").hide();
-                $(".destination-inner-accordian-outer").toggle();
-            });
-        });
-        </script>
         @include('layouts/elliot/ai_search-page')
         @include('layouts/elliot/ai_booking-page')
         @include('layouts/elliot/ai_newsletter')
