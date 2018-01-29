@@ -68,6 +68,12 @@
             .slider-sec-side-text-bg {
                 margin-top: -103%;
             }
+            .hotels-logo {
+                background: #252525 none repeat scroll 0 0;
+            }
+            .right-menus ul li a {
+                border-bottom: 1px solid #414246;
+            }
             .heading-stying {
                 font-size: 12px !important;
             }
