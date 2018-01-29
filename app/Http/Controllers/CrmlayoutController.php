@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\controller;
 use App\Models\Crmlayout;
-use App\Models\ModBuilder;
+//use App\Models\ModBuilder;
+use App\Models\Sximo\Module;
 use App\Models\ModelsAiCrmRows;
 use App\Models\ModelsAiCrmGroups;
 use App\Models\ModelsAiCrmCustomfield;
@@ -19,7 +20,7 @@ use Auth,
     Validator,
     Input,
     Redirect;
-use App\Helpers\SettingOptions;
+//use App\Helpers\SettingOptions;
 
 class CrmlayoutController extends Controller {
 
@@ -30,8 +31,8 @@ class CrmlayoutController extends Controller {
         $this->data['title'][0] = array('title' => trans('crmlayout.admin_crmlayout_module_title'), 'url' => 'admin/crmlayout');
         $this->data['parent_page'] = 'settings';
         $this->data['current_page'] = $request->segment(2);
-        $this->data['icon_class'] = SettingOptions::Options('icon');
-        $this->data['color_class'] = SettingOptions::Options('colour');
+        $this->data['icon_class'] = '';//SettingOptions::Options('icon');
+        $this->data['color_class'] = '';//SettingOptions::Options('colour');
         $this->models = new Crmlayout;
     }
 
