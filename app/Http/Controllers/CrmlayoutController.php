@@ -24,15 +24,23 @@ use Auth,
 class CrmlayoutController extends Controller {
 
     private $data = array();
+    
+    public function __construct() {
 
-    public function __construct(Request $request) {
-        $this->data['leftNavBar'] = true;
-        $this->data['title'][0] = array('title' => trans('crmlayout.admin_crmlayout_module_title'), 'url' => 'admin/crmlayout');
-        $this->data['parent_page'] = 'settings';
-        $this->data['current_page'] = $request->segment(2);
-        $this->data['icon_class'] = '';//SettingOptions::Options('icon');
-        $this->data['color_class'] = '';//SettingOptions::Options('colour');
-        $this->models = new Crmlayout;
+            $this->beforeFilter('csrf', array('on'=>'post'));
+            $this->model = new Crmlayout();
+
+            $this->info = $this->model->makeInfo( $this->module);
+            $this->access = $this->model->validAccess($this->info['id']);
+
+            $this->data = array(
+                    'pageTitle'	=> 	$this->info['title'],
+                    'pageNote'	=>  $this->info['note'],
+                    'pageModule'=> 'crmlayout',
+                    'return'	=> self::returnUrl()
+
+            );
+
     }
 
     /**
@@ -42,12 +50,6 @@ class CrmlayoutController extends Controller {
      * @return Response
      */
     public function index(Request $request) {
-        $this->access = $this->models->validAccess(Auth::id());
-        
-        echo '<pre>';
-        print_r($this->access);
-        echo '</pre>';
-        die;
         
         if($this->access['is_view'] == 0) {
             return Redirect::to('dashboard')->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus','error');
@@ -63,7 +65,6 @@ class CrmlayoutController extends Controller {
      * @return Response
      */
     public function create() {
-        $this->access = $this->models->validAccess(Auth::id());
         
         if($this->access['is_add'] == 0 ) {
             return Redirect::to('dashboard')->with('messagetext',\Lang::get('core.note_restric'))->with('msgstatus','error');
@@ -78,7 +79,6 @@ class CrmlayoutController extends Controller {
      * Create Template
      */
     public function create_template($template_id) {
-        $this->access = $this->models->validAccess(Auth::id());
         if($this->access['is_add'] == 0 ) {
             return Redirect::to('dashboard')->with('messagetext',\Lang::get('core.note_restric'))->with('msgstatus','error');
         }
@@ -132,7 +132,6 @@ class CrmlayoutController extends Controller {
      * Apply Template
      */
     public function apply_template($template_id) {
-        $this->access = $this->models->validAccess(Auth::id());
         if($this->access['is_add'] == 0 ) {
             return Redirect::to('dashboard')->with('messagetext',\Lang::get('core.note_restric'))->with('msgstatus','error');
         }
@@ -1143,7 +1142,6 @@ class CrmlayoutController extends Controller {
      * @return Response
      */
     public function edit($id) {
-        $this->access = $this->models->validAccess(Auth::id());
         
         if($this->access['is_edit'] == 0 ) {
             return Redirect::to('dashboard')->with('messagetext',\Lang::get('core.note_restric'))->with('msgstatus','error');
@@ -1200,8 +1198,6 @@ class CrmlayoutController extends Controller {
      * @return Response
      */
     public function destroy(Request $request, $id) {
-
-        $this->access = $this->models->validAccess(Auth::id());
         
         if($this->access['is_remove'] == 0) {
             return Redirect::to('dashboard')
