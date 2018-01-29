@@ -43,7 +43,8 @@ class CrmlayoutController extends Controller {
                     'return'	=> self::returnUrl()
 
             );
-
+            $this->data['icon_class'] = '';
+            $this->data['color_class'] = '';
     }
 
     /**
