@@ -289,7 +289,7 @@ class CrmlayoutController extends Controller {
         }
         
         $request->session()->flash('alert-success', 'Template applied successfully.');
-        return redirect('admin/crmlayouts');
+        return redirect('crmlayouts');
     }
     
     function migrate_tab_elements($element) {
@@ -410,7 +410,7 @@ class CrmlayoutController extends Controller {
             }
             
         }
-        return redirect('admin/crmlayouts/create_template/'.$request->input('template_id'));
+        return redirect('crmlayouts/create_template/'.$request->input('template_id'));
     }
     
     /*
@@ -429,7 +429,7 @@ class CrmlayoutController extends Controller {
             $group->save();
         }
         
-        return redirect('admin/crmlayouts/create_template/'.$template_id);
+        return redirect('crmlayouts/create_template/'.$template_id);
     }
     
     /*
@@ -486,7 +486,7 @@ class CrmlayoutController extends Controller {
             $crm_element->save();
             
         }
-        return redirect('admin/crmlayouts/create_template/'.$request->input('template_id'));
+        return redirect('crmlayouts/create_template/'.$request->input('template_id'));
     }
 
     /*
@@ -535,7 +535,7 @@ class CrmlayoutController extends Controller {
             $field->save();
             
         }
-        return redirect('admin/crmlayouts/create_template/'.$request->input('template_id'));
+        return redirect('crmlayouts/create_template/'.$request->input('template_id'));
     }
     
     /*
@@ -545,7 +545,7 @@ class CrmlayoutController extends Controller {
     function delete_custom_field(Request $request, $id, $template_id) {
         ModelsAiCrmCustomfield::destroy($id);
         ModelsAiCrmElements::where('customfield_id', $id)->delete();
-        return redirect('admin/crmlayouts/create_template/'.$template_id);
+        return redirect('crmlayouts/create_template/'.$template_id);
     }
     
     /*
@@ -561,7 +561,7 @@ class CrmlayoutController extends Controller {
         
         ModelsAiCrmElements::destroy($id);
         
-        return redirect('admin/crmlayouts/create_template/'.$template_id);
+        return redirect('crmlayouts/create_template/'.$template_id);
     }
     
     /*
@@ -577,7 +577,7 @@ class CrmlayoutController extends Controller {
                 ModelsAiCrmGroups::where('crm_group_id', $group['crm_group_id'])->delete();
             }
         }
-        return redirect('admin/crmlayouts/create_template/'.$template_id);
+        return redirect('crmlayouts/create_template/'.$template_id);
     }
     
     /*
@@ -587,7 +587,7 @@ class CrmlayoutController extends Controller {
     function delete_group(Request $request, $id, $template_id) {
         ModelsAiCrmGroups::destroy($id);
         ModelsAiCrmCustomfield::where('idmfg_mcf', $id)->delete();
-        return redirect('admin/crmlayouts/create_template/'.$template_id);
+        return redirect('crmlayouts/create_template/'.$template_id);
     }
     
     /*
@@ -635,7 +635,7 @@ class CrmlayoutController extends Controller {
             }
         }
         
-        return redirect('admin/crmlayouts/create_template/'.$template_id);
+        return redirect('crmlayouts/create_template/'.$template_id);
     }
     
     /*
@@ -670,7 +670,7 @@ class CrmlayoutController extends Controller {
             }
         }
         
-        return redirect('admin/crmlayouts/create_template/'.$template_id);
+        return redirect('crmlayouts/create_template/'.$template_id);
     }
     
     /*
@@ -693,7 +693,7 @@ class CrmlayoutController extends Controller {
         $newelement->sort_order = 9999999;
         $newelement->save();
         
-        return redirect('admin/crmlayouts/create_template/'.$template_id);
+        return redirect('crmlayouts/create_template/'.$template_id);
     }
     
     /*
@@ -713,7 +713,7 @@ class CrmlayoutController extends Controller {
                 
         $newelement->save();
         
-        return redirect('admin/crmlayouts/create_template/'.$template_id);
+        return redirect('crmlayouts/create_template/'.$template_id);
     }
     
     /*
@@ -932,7 +932,7 @@ class CrmlayoutController extends Controller {
         $crm_element->element_options = $element_options;
         $crm_element->save();
         
-        return redirect('admin/crmlayouts/create_template/'.$template_id);
+        return redirect('crmlayouts/create_template/'.$template_id);
         
     }
     
@@ -975,7 +975,7 @@ class CrmlayoutController extends Controller {
                 }
             }
         }
-        return redirect('admin/crmlayouts/create_template/'.$row->template_id);
+        return redirect('crmlayouts/create_template/'.$row->template_id);
     }
     
     /*
@@ -1124,7 +1124,7 @@ class CrmlayoutController extends Controller {
         $findr->save();
         $request->session()->flash('alert-success', trans('crmlayout.admin_crmlayout_module_add_message'));
 
-        return redirect('admin/crmlayouts/create_template/'.$findr->template_id);
+        return redirect('crmlayouts/create_template/'.$findr->template_id);
     }
 
     /**
@@ -1191,7 +1191,7 @@ class CrmlayoutController extends Controller {
         $findr->save();
         $request->session()->flash('alert-success', trans('crmlayout.admin_crmlayout_module_update_message'));
 
-        return redirect('admin/crmlayouts/create_template/'.$findr->template_id);
+        return redirect('crmlayouts/create_template/'.$findr->template_id);
     }
 
     /**
