@@ -74,7 +74,7 @@ class CrmlayoutController extends Controller {
             return Redirect::to('dashboard')->with('messagetext',\Lang::get('core.note_restric'))->with('msgstatus','error');
         }
         
-        $this->data['title'][1] = array('title' => trans('crmlayout.admin_crmlayout_module_add'), 'url' => '');
+        $this->data['title'][1] = array('title' => 'New CRM Layout', 'url' => '');
         $this->data['modules'] = Module::All();
         return view('crmlayouts.create', $this->data);
     }
@@ -86,7 +86,7 @@ class CrmlayoutController extends Controller {
         if($this->access['is_add'] == 0 ) {
             return Redirect::to('dashboard')->with('messagetext',\Lang::get('core.note_restric'))->with('msgstatus','error');
         }
-        $this->data['title'][1] = array('title' => trans('crmlayout.admin_crmlayout_module_add'), 'url' => '');
+        $this->data['title'][1] = array('title' => 'New CRM Layout', 'url' => '');
         $template = Crmlayout::select('*')->where('template_id', '=', $template_id)->first();
         
         $all_rows = array();
@@ -139,7 +139,7 @@ class CrmlayoutController extends Controller {
         if($this->access['is_add'] == 0 ) {
             return Redirect::to('dashboard')->with('messagetext',\Lang::get('core.note_restric'))->with('msgstatus','error');
         }
-        $this->data['title'][1] = array('title' => trans('crmlayout.admin_crmlayout_module_add'), 'url' => '');
+        $this->data['title'][1] = array('title' => 'CRM Layout', 'url' => '');
         $template = Crmlayout::select('*')->where('template_id', '=', $template_id)->first();
         
         $all_rows = array();
@@ -1122,7 +1122,7 @@ class CrmlayoutController extends Controller {
             }
         }
         $findr->save();
-        $request->session()->flash('alert-success', trans('crmlayout.admin_crmlayout_module_add_message'));
+        $request->session()->flash('alert-success', 'New templated created successfully.');
 
         return redirect('crmlayouts/create_template/'.$findr->template_id);
     }
@@ -1189,7 +1189,7 @@ class CrmlayoutController extends Controller {
             }
         }
         $findr->save();
-        $request->session()->flash('alert-success', trans('crmlayout.admin_crmlayout_module_update_message'));
+        $request->session()->flash('alert-success', 'Template updated successfully.');
 
         return redirect('crmlayouts/create_template/'.$findr->template_id);
     }
@@ -1209,7 +1209,7 @@ class CrmlayoutController extends Controller {
         }
         
         Crmlayout::destroy($id);
-        $request->session()->flash('alert-success', trans('crmlayout.admin_crmlayout_module_delete_message'));
+        $request->session()->flash('alert-success', 'Template deleted successfully.');
 
         return redirect(route('crmlayouts.index'));
     }
