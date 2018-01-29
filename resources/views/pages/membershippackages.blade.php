@@ -74,6 +74,9 @@
             .right-menus ul li a {
                 border-bottom: 1px solid #414246;
             }
+            .new-sidebar-sk .panel-heading.custom-heading {
+                border-bottom: 1px solid #414246;
+            }
             .heading-stying {
                 font-size: 12px !important;
             }
