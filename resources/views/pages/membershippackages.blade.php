@@ -813,9 +813,9 @@
 						imagesPro += '<a href="#"><div class="hotel-book-now">Get in touch</div></a>';
 					}
                     imagesPro += '</div>';
-                    imagesPro += '<div class="inner-pop-up-book-btn">';
+                    /*imagesPro += '<div class="inner-pop-up-book-btn">';
                     imagesPro += '<a href="#">Book</a>';
-                    imagesPro += '</div>';
+                    imagesPro += '</div>';*/
                     imagesPro += '</div>';
                     $('#popupopn .single-right-text-product').html(imagesPro);
                     $('.show_more-page').css("width", "100%");
