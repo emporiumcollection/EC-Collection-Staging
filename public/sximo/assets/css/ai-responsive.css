@@ -47,11 +47,11 @@
 	width: 33% !important;
     }
     .editorial-custom-footer-style .newsletter-style {
-	width: 100%;
+	width: 100% !important;
     }
     .block-content.content {
-	width: 31px;
-	margin-right: -3px;
+	width: 31px !important;
+	margin-right: -3px !important;
     }
 }
 /*@media (min-width: 768px) and (max-width: 1200px) {
@@ -102,6 +102,9 @@
     }
     .VegasPopLogo {
 	width: 60% !important;
+    }
+    .block-content.content {
+	width: 25px;
     }
 }
 
