@@ -561,7 +561,11 @@
 	margin-top: 0px !important;
     }
     .image-showcase-below-big-text {
-	margin-left: 0px;
+	margin-left: 0px !important;
+	font-size: 55px !important;
+    }
+    .ai-spa-sec-inner {
+	float: left;
     }
     
 }
