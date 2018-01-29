@@ -44,6 +44,11 @@ class CrmlayoutController extends Controller {
     public function index(Request $request) {
         $this->access = $this->models->validAccess(Auth::id());
         
+        echo '<pre>';
+        print_r($this->access);
+        echo '</pre>';
+        die;
+        
         if($this->access['is_view'] == 0) {
             return Redirect::to('dashboard')->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus','error');
         }
