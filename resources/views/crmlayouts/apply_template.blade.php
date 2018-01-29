@@ -10,7 +10,7 @@
         <div class="page-head">
             <!-- BEGIN PAGE TITLE -->
             <div class="page-title">
-                <h1><i class="{{$icon_class['admin_menu_left_settings_crmlayout_icon']}}" aria-hidden="true"></i> @lang('crmlayout.admin_crmlayout_module_add')
+                <h1><i class="fa fa-cubes" aria-hidden="true"></i> @lang('crmlayout.admin_crmlayout_module_add')
                 </h1>
             </div>
             <!-- END PAGE TITLE -->
@@ -46,7 +46,7 @@
                 <div class="portlet light ">
                     <div class="portlet-title">
                         <div class="caption">
-                            <i class="{{$icon_class['admin_menu_left_settings_crmlayout_icon']}}" aria-hidden="true"></i> 
+                            <i class="fa fa-cubes" aria-hidden="true"></i> 
                             <span class="caption-subject">Template: <?php echo $template->template_name; ?></span>
                         </div>
                     </div>
