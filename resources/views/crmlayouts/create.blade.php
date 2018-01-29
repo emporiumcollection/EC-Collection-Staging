@@ -1,4 +1,4 @@
-@extends('admin.layouts.index')
+@extends('layouts.index')
 
 @section('content')
 
@@ -10,15 +10,12 @@
         <div class="page-head">
             <!-- BEGIN PAGE TITLE -->
             <div class="page-title">
-                <h1><i class="fa fa-cubes" aria-hidden="true"></i> @lang('crmlayout.admin_crmlayout_module_add')
+                <h1><i class="fa fa-cubes" aria-hidden="true"></i> New CRM Layout Template
                 </h1>
             </div>
             <!-- END PAGE TITLE -->
         </div>
         <!-- END PAGE HEAD-->
-        <!-- BEGIN PAGE BREADCRUMB -->
-        @include('admin/includes/ne_breadcrumb')
-        <!-- END PAGE BREADCRUMB -->
         <!-- BEGIN PAGE BASE CONTENT -->
         <div class="row" >
             <div class="col-md-12 col-sm-12">
@@ -47,7 +44,7 @@
                     <div class="portlet-title">
                         <div class="caption">
                             <i class="fa fa-cubes" aria-hidden="true"></i> 
-                            <span class="caption-subject">@lang('crmlayout.admin_crmlayout_module_add')</span>
+                            <span class="caption-subject">New CRM Layout Template</span>
                         </div>
                     </div>
                     <div class="portlet-body form" id="from-group-style">
@@ -85,19 +82,8 @@
             </div>
         </div>
         <!-- END PAGE BASE CONTENT -->
-        <!-- BEGIN FOOTER -->
-        @include('admin/includes/ne_footer')
-        <!-- END FOOTER -->
     </div>
     <!-- END CONTENT BODY -->
 </div>
 <!-- END CONTENT -->
 @stop
-
-@section('script')
-<script src="{{ asset('assets/global/plugins/jquery-validation/js/jquery.validate.min.js')}}" type="text/javascript"></script>
-<script src="{{ asset('assets/global/plugins/jquery-validation/js/additional-methods.min.js')}}" type="text/javascript"></script>
-@endsection
-
-@section('custom_js_script')
-@endsection
