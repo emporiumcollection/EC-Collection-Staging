@@ -73,7 +73,7 @@
                         </div>
                         {!! Form::open(['route' => 'crmlayouts.store']) !!}
 
-                        @include('admin.crmlayouts.fields')
+                        @include('crmlayouts.fields')
                         
                         {!! Form::close() !!}
                     </div>
