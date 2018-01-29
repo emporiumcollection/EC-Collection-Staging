@@ -605,7 +605,7 @@
 		 $('#hotel').hide();
 		 $('#advertiser').hide();
 		 var uservar = $(this).val();
-		 alert(uservar);
+		 
 		 $('#'+uservar).show();
 	 });
 </script>
