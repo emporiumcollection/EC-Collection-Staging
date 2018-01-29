@@ -840,11 +840,11 @@ $fieldArray['file'] = 'File';
                         <div class="md-radio-inline">
                             <div class="md-radio">
                                 {{ Form::radio('status', 'yes',true, ['class' => 'field','id'=>'status_active','data-custom-field'=>'status']) }}
-                                {!! Html::decode(Form::label('status_active','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_status_active'))) !!}
+                                {!! Form::label('status_active','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_status_active') !!}
                             </div>
                             <div class="md-radio">
                                 {{ Form::radio('status', 'no',  null, ['class' => 'field','id'=>'status_inactive','data-custom-field'=>'status']) }}
-                                {!! Html::decode(Form::label('status_inactive','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_status_inactive'))) !!}
+                                {!! Form::label('status_inactive','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_status_inactive') !!}
                             </div>
                         </div>
                     </div>
@@ -854,11 +854,11 @@ $fieldArray['file'] = 'File';
                         <div class="md-radio-inline">
                             <div class="md-radio">
                                 {{ Form::radio('list_view', 'yes',true, ['class' => 'field','id'=>'list_view_active','data-custom-field'=>'list_view']) }}
-                                {!! Html::decode(Form::label('list_view_active','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_list_view_active'))) !!}
+                                {!! Form::label('list_view_active','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_list_view_active') !!}
                             </div>
                             <div class="md-radio">
                                 {{ Form::radio('list_view', 'no',  null, ['class' => 'field','id'=>'list_view_inactive','data-custom-field'=>'list_view']) }}
-                                {!! Html::decode(Form::label('list_view_inactive','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_list_view_inactive'))) !!}
+                                {!! Form::label('list_view_inactive','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_list_view_inactive') !!}
                             </div>
                         </div>
                     </div>
@@ -868,11 +868,11 @@ $fieldArray['file'] = 'File';
                         <div class="md-radio-inline">
                             <div class="md-radio">
                                 {{ Form::radio('showinform', 'yes',true, ['class' => 'field','id'=>'showinform_active','data-custom-field'=>'show_in_form']) }}
-                                {!! Html::decode(Form::label('showinform_active','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_showinform_active'))) !!}
+                                {!! Form::label('showinform_active','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_showinform_active') !!}
                             </div>
                             <div class="md-radio">
                                 {{ Form::radio('showinform', 'no',  null, ['class' => 'field','id'=>'showinform_inactive','data-custom-field'=>'show_in_form']) }}
-                                {!! Html::decode(Form::label('showinform_inactive','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_showinform_inactive'))) !!}
+                                {!! Form::label('showinform_inactive','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_showinform_inactive') !!}
                             </div>
                         </div>
                     </div>
@@ -882,11 +882,11 @@ $fieldArray['file'] = 'File';
                         <div class="md-radio-inline">
                             <div class="md-radio">
                                 {{ Form::radio('searchable', 'yes',true, ['class' => 'field','id'=>'searchable_active','data-custom-field'=>'searchable']) }}
-                                {!! Html::decode(Form::label('searchable_active','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_searchable_active'))) !!}
+                                {!! Form::label('searchable_active','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_searchable_active') !!}
                             </div>
                             <div class="md-radio">
                                 {{ Form::radio('searchable', 'no',  null, ['class' => 'field','id'=>'searchable_inactive','data-custom-field'=>'searchable']) }}
-                                {!! Html::decode(Form::label('searchable_inactive','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_searchable_inactive'))) !!}
+                                {!! Form::label('searchable_inactive','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_searchable_inactive') !!}
                             </div>
                         </div>
                     </div>
@@ -896,11 +896,11 @@ $fieldArray['file'] = 'File';
                         <div class="md-radio-inline">
                             <div class="md-radio">
                                 {{ Form::radio('advance_searchable', 'yes',true, ['class' => 'field','id'=>'advance_searchable_active','data-custom-field'=>'advance_searchable']) }}
-                                {!! Html::decode(Form::label('advance_searchable_active','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_advance_searchable_active'))) !!}
+                                {!! Form::label('advance_searchable_active','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_advance_searchable_active') !!}
                             </div>
                             <div class="md-radio">
                                 {{ Form::radio('advance_searchable', 'no',  null, ['class' => 'field','id'=>'advance_searchable_inactive','data-custom-field'=>'advance_searchable']) }}
-                                {!! Html::decode(Form::label('advance_searchable_inactive','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_advance_searchable_inactive'))) !!}
+                                {!! Form::label('advance_searchable_inactive','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_advance_searchable_inactive') !!}
                             </div>
                         </div>
                     </div>
@@ -910,11 +910,11 @@ $fieldArray['file'] = 'File';
                         <div class="md-radio-inline">
                             <div class="md-radio">
                                 {{ Form::radio('filter_searchable', 'yes',true, ['class' => 'field','id'=>'filter_searchable_active','data-custom-field'=>'filter_searchable']) }}
-                                {!! Html::decode(Form::label('filter_searchable_active','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_filter_searchable_active'))) !!}
+                                {!! Form::label('filter_searchable_active','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_filter_searchable_active') !!}
                             </div>
                             <div class="md-radio">
                                 {{ Form::radio('filter_searchable', 'no',  null, ['class' => 'field','id'=>'filter_searchable_inactive','data-custom-field'=>'filter_searchable']) }}
-                                {!! Html::decode(Form::label('filter_searchable_inactive','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_filter_searchable_inactive'))) !!}
+                                {!! Form::label('filter_searchable_inactive','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_filter_searchable_inactive') !!}
                             </div>
                         </div>
                     </div>
@@ -924,11 +924,11 @@ $fieldArray['file'] = 'File';
                         <div class="md-radio-inline">
                             <div class="md-radio">
                                 {{ Form::radio('required_field', 'yes',true, ['class' => 'field','id'=>'required_field_active','data-custom-field'=>'required_field']) }}
-                                {!! Html::decode(Form::label('status_active','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_required_field_active'))) !!}
+                                {!! Form::label('status_active','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_required_field_active') !!}
                             </div>
                             <div class="md-radio">
                                 {{ Form::radio('required_field', 'no',  null, ['class' => 'field','id'=>'required_field_inactive','data-custom-field'=>'required_field']) }}
-                                {!! Html::decode(Form::label('status_inactive','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_required_field_inactive'))) !!}
+                                {!! Form::label('status_inactive','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_required_field_inactive') !!}
                             </div>
                         </div>
                     </div>
@@ -1007,11 +1007,11 @@ $fieldArray['file'] = 'File';
                         <div class="md-radio-inline">
                             <div class="md-radio">
                                 {{ Form::radio('status', 'yes',true, ['class' => 'field','id'=>'_status_active','data-custom-field'=>'status']) }}
-                                {!! Html::decode(Form::label('_status_active','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_status_active'))) !!}
+                                {!! Form::label('_status_active','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_status_active') !!}
                             </div>
                             <div class="md-radio">
                                 {{ Form::radio('status', 'no',  null, ['class' => 'field','id'=>'_status_inactive','data-custom-field'=>'status']) }}
-                                {!! Html::decode(Form::label('_status_inactive','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_status_inactive'))) !!}
+                                {!! Form::label('_status_inactive','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_status_inactive') !!}
                             </div>
                         </div>
                     </div>
@@ -1021,11 +1021,11 @@ $fieldArray['file'] = 'File';
                         <div class="md-radio-inline">
                             <div class="md-radio">
                                 {{ Form::radio('list_view', 'yes',true, ['class' => 'field','id'=>'_list_view_active','data-custom-field'=>'list_view']) }}
-                                {!! Html::decode(Form::label('_list_view_active','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_list_view_active'))) !!}
+                                {!! Form::label('_list_view_active','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_list_view_active') !!}
                             </div>
                             <div class="md-radio">
                                 {{ Form::radio('list_view', 'no',  null, ['class' => 'field','id'=>'_list_view_inactive','data-custom-field'=>'list_view']) }}
-                                {!! Html::decode(Form::label('_list_view_inactive','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_list_view_inactive'))) !!}
+                                {!! Form::label('_list_view_inactive','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_list_view_inactive') !!}
                             </div>
                         </div>
                     </div>
@@ -1035,11 +1035,11 @@ $fieldArray['file'] = 'File';
                         <div class="md-radio-inline">
                             <div class="md-radio">
                                 {{ Form::radio('showinform', 'yes',true, ['class' => 'field','id'=>'_showinform_active','data-custom-field'=>'show_in_form']) }}
-                                {!! Html::decode(Form::label('_showinform_active','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_showinform_active'))) !!}
+                                {!! Form::label('_showinform_active','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_showinform_active') !!}
                             </div>
                             <div class="md-radio">
                                 {{ Form::radio('showinform', 'no',  null, ['class' => 'field','id'=>'_showinform_inactive','data-custom-field'=>'show_in_form']) }}
-                                {!! Html::decode(Form::label('_showinform_inactive','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_showinform_inactive'))) !!}
+                                {!! Form::label('_showinform_inactive','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_showinform_inactive') !!}
                             </div>
                         </div>
                     </div>
@@ -1049,11 +1049,11 @@ $fieldArray['file'] = 'File';
                         <div class="md-radio-inline">
                             <div class="md-radio">
                                 {{ Form::radio('searchable', 'yes',true, ['class' => 'field','id'=>'_searchable_active','data-custom-field'=>'searchable']) }}
-                                {!! Html::decode(Form::label('_searchable_active','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_searchable_active'))) !!}
+                                {!! Form::label('_searchable_active','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_searchable_active') !!}
                             </div>
                             <div class="md-radio">
                                 {{ Form::radio('searchable', 'no',  null, ['class' => 'field','id'=>'_searchable_inactive','data-custom-field'=>'searchable']) }}
-                                {!! Html::decode(Form::label('_searchable_inactive','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_searchable_inactive'))) !!}
+                                {!! Form::label('_searchable_inactive','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_searchable_inactive') !!}
                             </div>
                         </div>
                     </div>
@@ -1063,11 +1063,11 @@ $fieldArray['file'] = 'File';
                         <div class="md-radio-inline">
                             <div class="md-radio">
                                 {{ Form::radio('advance_searchable', 'yes',true, ['class' => 'field','id'=>'_advance_searchable_active','data-custom-field'=>'advance_searchable']) }}
-                                {!! Html::decode(Form::label('_advance_searchable_active','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_advance_searchable_active'))) !!}
+                                {!! Form::label('_advance_searchable_active','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_advance_searchable_active') !!}
                             </div>
                             <div class="md-radio">
                                 {{ Form::radio('advance_searchable', 'no',  null, ['class' => 'field','id'=>'_advance_searchable_inactive','data-custom-field'=>'advance_searchable']) }}
-                                {!! Html::decode(Form::label('_advance_searchable_inactive','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_advance_searchable_inactive'))) !!}
+                                {!! Form::label('_advance_searchable_inactive','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_advance_searchable_inactive') !!}
                             </div>
                         </div>
                     </div>
@@ -1077,11 +1077,11 @@ $fieldArray['file'] = 'File';
                         <div class="md-radio-inline">
                             <div class="md-radio">
                                 {{ Form::radio('filter_searchable', 'yes',true, ['class' => 'field','id'=>'_filter_searchable_active','data-custom-field'=>'filter_searchable']) }}
-                                {!! Html::decode(Form::label('_filter_searchable_active','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_filter_searchable_active'))) !!}
+                                {!! Form::label('_filter_searchable_active','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_filter_searchable_active') !!}
                             </div>
                             <div class="md-radio">
                                 {{ Form::radio('filter_searchable', 'no',  null, ['class' => 'field','id'=>'_filter_searchable_inactive','data-custom-field'=>'filter_searchable']) }}
-                                {!! Html::decode(Form::label('_filter_searchable_inactive','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_filter_searchable_inactive'))) !!}
+                                {!! Form::label('_filter_searchable_inactive','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_filter_searchable_inactive') !!}
                             </div>
                         </div>
                     </div>
@@ -1091,11 +1091,11 @@ $fieldArray['file'] = 'File';
                         <div class="md-radio-inline">
                             <div class="md-radio">
                                 {{ Form::radio('required_field', 'yes',true, ['class' => 'field','id'=>'_required_field_active','data-custom-field'=>'required_field']) }}
-                                {!! Html::decode(Form::label('_required_field_active','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_required_field_active'))) !!}
+                                {!! Form::label('_required_field_active','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_required_field_active') !!}
                             </div>
                             <div class="md-radio">
                                 {{ Form::radio('required_field', 'no',  null, ['class' => 'field','id'=>'_required_field_inactive','data-custom-field'=>'required_field']) }}
-                                {!! Html::decode(Form::label('_required_field_inactive','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_required_field_inactive'))) !!}
+                                {!! Form::label('_required_field_inactive','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_required_field_inactive') !!}
                             </div>
                         </div>
                     </div>
