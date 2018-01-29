@@ -48,7 +48,7 @@
         left: unset !important; 
     }
     .main-side .book-button {
-        padding: 8px 3px !important;
+/*        padding: 8px 3px !important;*/
     }
     .hotel-detail-slider-price-and-show-more .hotel-slider-price {
         padding: 8px 3px;
@@ -66,7 +66,10 @@
     }
     .vegasGallery1 {
 	padding: 54px 0px 0px 0px !important;
-	width: 68.333%;
+	width: 68.333% !important;
+    }
+    .VegasPopLogo {
+	width: 60% !important;
     }
 }
 
@@ -185,7 +188,7 @@
 	margin-left: 0px !important;
     }
     .vegasFooter {
-	width: 100% !important;
+	width: 50% !important;
     }
     .VegasFooterMiddle p {
         margin-left: 0px !important;
@@ -243,7 +246,7 @@
 	text-align: center;
     }
     .dates li input, .dates li select {
-	width: 100%;
+	width: 100% !important;
     }
     
 }
