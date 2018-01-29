@@ -804,7 +804,7 @@
                         imagesPro += (data.currency.content != '') ? data.currency.content : '$';
                         imagesPro += data.pdata.package_price;
                         imagesPro += '</div>';
-						imagesPro += '<a href="#"><div class="hotel-book-now">Book Now</div></a>';
+						imagesPro += '<a href="#"><div class="hotel-book-now">Add to cart</div></a>';
                     }
                     else
 					{
