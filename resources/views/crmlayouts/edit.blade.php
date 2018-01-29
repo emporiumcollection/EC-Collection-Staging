@@ -15,9 +15,6 @@
             <!-- END PAGE TITLE -->
         </div>
         <!-- END PAGE HEAD-->
-        <!-- BEGIN PAGE BREADCRUMB -->
-            @include('admin/includes/ne_breadcrumb')
-        <!-- END PAGE BREADCRUMB -->
         <!-- BEGIN PAGE BASE CONTENT -->
         <div class="row" >
             <div class="col-md-12 col-sm-12">
@@ -85,9 +82,6 @@
             </div>
         </div>
         <!-- END PAGE BASE CONTENT -->
-        <!-- BEGIN FOOTER -->
-            @include('admin/includes/ne_footer')
-        <!-- END FOOTER -->
     </div>
     <!-- END CONTENT BODY -->
 </div>
@@ -99,4 +93,4 @@
 @endsection          
 @section('custom_js_script')
 
-@endsection            
+@endsection
