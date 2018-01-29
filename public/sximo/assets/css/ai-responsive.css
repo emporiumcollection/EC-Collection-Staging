@@ -103,9 +103,6 @@
     .VegasPopLogo {
 	width: 60% !important;
     }
-    .block-content.content {
-	width: 25px;
-    }
 }
 
 @media (min-width: 1025px) and (max-width: 1169px) {
@@ -255,7 +252,7 @@
 	font-size: 11px;
     }
     .block-content.content {
-	width: 27px;
+	width: 26px !important;
 	margin-left: 0px;
     }
     .newbkbtn {
