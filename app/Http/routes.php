@@ -350,6 +350,7 @@ Route::filter('allowOrigin', function($route, $request, $response)
 Route::resource('sximoapi', 'SximoapiController');
 
 
+Route::get('crmlayouts', 'CrmlayoutController@index');
 Route::resource('crmlayouts', 'CrmlayoutController');
 Route::get('crmlayouts/delete/{crmlayouts}', 'CrmlayoutController@destroy');
 Route::get('crmlayouts/create_template/{template_id}', 'CrmlayoutController@create_template');
