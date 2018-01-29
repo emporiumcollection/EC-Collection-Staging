@@ -13,6 +13,7 @@
         <link href="{{ asset('sximo/assets/css/m-popup.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/m-popup.min.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/filter-bar.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('sximo/assets/css/slick.min.css')}}" rel="stylesheet" type="text/css"/>
         <!-- font-awesome icon -->
         <link rel="stylesheet" href="{{ asset('sximo/assets/css/font-awesome.min.css')}}" />
         <!-- style -->
