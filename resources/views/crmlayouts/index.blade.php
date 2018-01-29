@@ -54,7 +54,7 @@
                                     @endif
                                     @endforeach
 
-                                    @include('admin.crmlayouts.table')
+                                    @include('crmlayouts.table')
                                 </div>
                             </div>
                         </div>
