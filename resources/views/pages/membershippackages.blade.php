@@ -322,18 +322,18 @@
 
         </style>
         <script type="text/javascript">
-$(document).on('ready', function () {
-    $(".regular").slick({
-        dots: false,
-        infinite: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        prevArrow: false,
-        nextArrow: false,
-        autoplay: true,
-        autoplaySpeed: 3000
-    });
-}); 
+            $(document).on('ready', function () {
+                $(".regular").slick({
+                    dots: false,
+                    infinite: true,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    prevArrow: false,
+                    nextArrow: false,
+                    autoplay: true,
+                    autoplaySpeed: 3000
+                });
+            }); 
         </script>
     </head>
     <body>
