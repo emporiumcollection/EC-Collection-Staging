@@ -42,7 +42,7 @@ class CrmlayoutController extends Controller {
      * @return Response
      */
     public function index(Request $request) {
-        $this->data['access'] = $this->models->validAccess(Auth::id());
+        $this->access = $this->models->validAccess(Auth::id());
         
         if($this->access['is_view'] == 0) {
             return Redirect::to('dashboard')->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus','error');
@@ -58,7 +58,7 @@ class CrmlayoutController extends Controller {
      * @return Response
      */
     public function create() {
-        $this->data['access'] = $this->models->validAccess(Auth::id());
+        $this->access = $this->models->validAccess(Auth::id());
         
         if($this->access['is_add'] == 0 ) {
             return Redirect::to('dashboard')->with('messagetext',\Lang::get('core.note_restric'))->with('msgstatus','error');
@@ -73,7 +73,7 @@ class CrmlayoutController extends Controller {
      * Create Template
      */
     public function create_template($template_id) {
-        $this->data['access'] = $this->models->validAccess(Auth::id());
+        $this->access = $this->models->validAccess(Auth::id());
         if($this->access['is_add'] == 0 ) {
             return Redirect::to('dashboard')->with('messagetext',\Lang::get('core.note_restric'))->with('msgstatus','error');
         }
@@ -127,7 +127,7 @@ class CrmlayoutController extends Controller {
      * Apply Template
      */
     public function apply_template($template_id) {
-        $this->data['access'] = $this->models->validAccess(Auth::id());
+        $this->access = $this->models->validAccess(Auth::id());
         if($this->access['is_add'] == 0 ) {
             return Redirect::to('dashboard')->with('messagetext',\Lang::get('core.note_restric'))->with('msgstatus','error');
         }
@@ -1138,7 +1138,7 @@ class CrmlayoutController extends Controller {
      * @return Response
      */
     public function edit($id) {
-        $this->data['access'] = $this->models->validAccess(Auth::id());
+        $this->access = $this->models->validAccess(Auth::id());
         
         if($this->access['is_edit'] == 0 ) {
             return Redirect::to('dashboard')->with('messagetext',\Lang::get('core.note_restric'))->with('msgstatus','error');
@@ -1196,7 +1196,7 @@ class CrmlayoutController extends Controller {
      */
     public function destroy(Request $request, $id) {
 
-        $this->data['access'] = $this->models->validAccess(Auth::id());
+        $this->access = $this->models->validAccess(Auth::id());
         
         if($this->access['is_remove'] == 0) {
             return Redirect::to('dashboard')
