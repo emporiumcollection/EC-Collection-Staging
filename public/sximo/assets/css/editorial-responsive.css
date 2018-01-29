@@ -75,7 +75,7 @@ and open the template in the editor.
         width: 100%;
     }
     .hotel-slider-price {
-        padding: 8px 3px !important;
+        padding: 8px 0px !important;
         margin-top: 0px;
         margin-left: 0px !important;
     }
