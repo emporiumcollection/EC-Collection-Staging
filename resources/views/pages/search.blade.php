@@ -2594,7 +2594,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
 								imagesPro += '</li>';
 								});
 								imagesPro += '</ul>';
-								var formlink = "{{url()}}/book-property/" + data.data.property_slug + "}}";
+								var formlink = "{{url()}}/book-property/" + data.data.property_slug;
 								imagesPro += '<div class="editorial-book-now-page sec-differentiate-line " id="book-now">';
 								imagesPro += '<form class="detail-page-booking-form" action="'+formlink+'" method="get">';
 								imagesPro += '<input type="hidden" name="property" id="property" value="' + data.data.id + '" />';
