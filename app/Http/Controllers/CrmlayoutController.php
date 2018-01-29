@@ -45,6 +45,7 @@ class CrmlayoutController extends Controller {
             );
             $this->data['icon_class'] = '';
             $this->data['color_class'] = '';
+            $this->data['access'] = $this->access;
     }
 
     /**
