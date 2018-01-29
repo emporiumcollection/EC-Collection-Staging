@@ -68,6 +68,12 @@
             .slider-sec-side-text-bg {
                 margin-top: -103%;
             }
+            .heading-stying {
+                font-size: 12px !important;
+            }
+            .new-sidebar-sk .panel-heading.custom-heading:hover {
+                background-color: #89837B !important;
+            }
             .right-menus ul li a {
                 background-color: #1E2023;
                 border-bottom: 1px solid #414246;
