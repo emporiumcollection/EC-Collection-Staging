@@ -34,7 +34,7 @@
                             <div class="portlet-title">
                                 <div class="actions">
                                     @if(isset($access['is_add']) && $access['is_add'] != 0)
-                                    <a id="sample_editable_1_new" class="btn  blue m-t-0" href="{{route('crmlayouts.create')}}"> @lang('crmlayout.admin_crmlayout_module_add_new_btn')
+                                    <a id="sample_editable_1_new" class="btn  blue m-t-0" href="{{route('crmlayouts.create')}}"> New
                                         <i class="fa fa-plus"></i>
                                     </a>
                                     @endif
