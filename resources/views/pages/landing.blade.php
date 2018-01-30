@@ -1543,7 +1543,7 @@
             </div>
             <!--About Page End Here-->
         </div>
-         <a data-popup-id="login-forms-popup" href="#" class="video-popup-btn login_popup show-login-forms-btn"><i class="fa fa-lock " aria-hidden="true" ></i></a>
+         
         <!--<Desktop Version End Here-->
         <div class="page-bg-image hidden-md hidden-lg"> 
             <div class="wrapper ">
@@ -1551,7 +1551,7 @@
                     <div class="row">
                         <header>
                             <!-- lock icon resonsive -->
-                            <a data-popup-id="login-forms-popup-Mobile" href="#" class="video-popup-btn login_popup show-login-forms-btn"><i class="fa fa-lock " aria-hidden="true" ></i></a>
+                            <a data-popup-id="login-forms-popup" href="#" class="video-popup-btn login_popup show-login-forms-btn"><i class="fa fa-lock " aria-hidden="true" ></i></a>
                             <!-- lock icon responsive -->
                             <div class="landing-mobile-top-header">
                                 <div class="col-md-2 col-xs-2 col-sm-2">
