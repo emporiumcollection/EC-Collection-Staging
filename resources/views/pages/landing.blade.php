@@ -1685,26 +1685,26 @@
                             </div>
                         </header>
                         <!-- responsive form -->
-                <div id="login-forms-popup-Mobile" class="popup login-form-pop-main-align">
+<!--                <div id="login-forms-popup-Mobile" class="popup login-form-pop-main-align">
              <div class="popup-inner">
                  <a href="#" class="popup-close-btn">&times;</a>
                  <div class="popup-content">
                      <div class="content-area">
-<!--                         <a class="dl-pop-logo-align" href="#"><img class="img-responsive" src="{{ asset('sximo/assets/images/design-location-logo.png')}}"></a>-->
+                         <a class="dl-pop-logo-align" href="#"><img class="img-responsive" src="{{ asset('sximo/assets/images/design-location-logo.png')}}"></a>
                      </div>
-                     <!--Login Forms Start Here-->
+                     Login Forms Start Here
                      <div class="landing-page-lock-login-btn-outer-align">
                          <div class="login-form-show-hide" style="display:block;">
                              <div class="login-sign-up-sidebar-outer-align">
                                  <div class="your-account-heading-align">
                                      <div class="ps-login-signup-form-top-bar">
-<!--                                         <div class="col-md-6 col-sm-6">
+                                         <div class="col-md-6 col-sm-6">
                                              <div class="row">
                                                  <div class="ps-forms-cross-icons">
                                                      <a class="show-account-with-us ps-forms-small-heading-link" href="javascript:void(0)">&times;</a>
                                                  </div>
                                              </div>
-                                         </div>-->
+                                         </div>
                                          <div class="col-md-12 col-sm-6">
                                              <div class="row">
                                                  <div class="right-need-help-icon">
@@ -1752,13 +1752,13 @@
                              <div class="login-sign-up-sidebar-outer-align">
                                  <div class="your-account-heading-align">
                                      <div class="ps-login-signup-form-top-bar">
-<!--                                         <div class="col-md-6 col-sm-6">
+                                         <div class="col-md-6 col-sm-6">
                                              <div class="row">
                                                  <div class="ps-forms-cross-icons">
                                                      <a class="show-account-with-us ps-forms-small-heading-link" href="javascript:void(0)">&times;</a>
                                                  </div>
                                              </div>
-                                         </div>-->
+                                         </div>
                                          <div class="col-md-12 col-sm-6">
                                              <div class="row">
                                                  <div class="right-need-help-icon">
@@ -1803,13 +1803,13 @@
                              <div class="login-sign-up-sidebar-outer-align">
                                  <div class="your-account-heading-align">
                                      <div class="ps-login-signup-form-top-bar">
-<!--                                         <div class="col-md-6 col-sm-6">
+                                         <div class="col-md-6 col-sm-6">
                                              <div class="row">
                                                  <div class="ps-forms-cross-icons1">
                                                      <a class="show-account-with-us  ps-forms-small-heading-link" href="javascript:void(0)">&times;</a>
                                                  </div>
                                              </div>
-                                         </div>-->
+                                         </div>
                                          <div class="col-md-12 col-sm-6">
                                              <div class="row">
                                                  <div class="right-need-help-icon">
@@ -1878,35 +1878,35 @@
                                  </div>
                              </div>
                          </div>
-                         <!--Login Forms End Here-->
+                         Login Forms End Here
                      </div>
                      <div class="clearfix"></div>
                  </div>
              </div>
-         </div>
+         </div>-->
         <!--New register Pop Up End Here main-->
        
         <!--New Login Pop Up Start Here-->
-        <div id="login-forms-popup-Mobile" class="popup login-form-pop-main-align">
+<!--        <div id="login-forms-popup-Mobile" class="popup login-form-pop-main-align">
              <div class="popup-inner">
                  <a href="#" class="popup-close-btn">&times;</a>
                  <div class="popup-content">
                      <div class="content-area">
                          <a class="dl-pop-logo-align" href="#"><img class="img-responsive" src="{{ asset('sximo/assets/images/design-location-logo.png')}}"></a>
                      </div>
-                     <!--Login Forms Start Here-->
+                     Login Forms Start Here
                      <div class="landing-page-lock-login-btn-outer-align">
                          <div class="login-form-show-hide">
                              <div class="login-sign-up-sidebar-outer-align">
                                  <div class="your-account-heading-align">
                                      <div class="ps-login-signup-form-top-bar">
-<!--                                         <div class="col-md-6 col-sm-6">
+                                         <div class="col-md-6 col-sm-6">
                                              <div class="row">
                                                  <div class="ps-forms-cross-icons">
                                                      <a class="show-account-with-us ps-forms-small-heading-link" href="javascript:void(0)">&times;</a>
                                                  </div>
                                              </div>
-                                         </div>-->
+                                         </div>
                                          <div class="col-md-12 col-sm-6">
                                              <div class="row">
                                                  <div class="right-need-help-icon">
@@ -1954,13 +1954,13 @@
                              <div class="login-sign-up-sidebar-outer-align">
                                  <div class="your-account-heading-align">
                                      <div class="ps-login-signup-form-top-bar">
-<!--                                         <div class="col-md-6 col-sm-6">
+                                         <div class="col-md-6 col-sm-6">
                                              <div class="row">
                                                  <div class="ps-forms-cross-icons">
                                                      <a class="show-account-with-us ps-forms-small-heading-link" href="javascript:void(0)">&times;</a>
                                                  </div>
                                              </div>
-                                         </div>-->
+                                         </div>
                                          <div class="col-md-12 col-sm-6">
                                              <div class="row">
                                                  <div class="right-need-help-icon">
@@ -2005,13 +2005,13 @@
                              <div class="login-sign-up-sidebar-outer-align">
                                  <div class="your-account-heading-align">
                                      <div class="ps-login-signup-form-top-bar">
-<!--                                         <div class="col-md-6 col-sm-6">
+                                         <div class="col-md-6 col-sm-6">
                                              <div class="row">
                                                  <div class="ps-forms-cross-icons1">
                                                      <a class="show-account-with-us  ps-forms-small-heading-link" href="javascript:void(0)">&times;</a>
                                                  </div>
                                              </div>
-                                         </div>-->
+                                         </div>
                                          <div class="col-md-12 col-sm-6">
                                              <div class="row">
                                                  <div class="right-need-help-icon">
@@ -2080,12 +2080,12 @@
                                  </div>
                              </div>
                          </div>
-                         <!--Login Forms End Here-->    
+                         Login Forms End Here    
                      </div>
                      <div class="clearfix"></div>
                  </div>
              </div>
-         </div>   
+         </div>   -->
                         <!-- responsive form end -->
                         <div class="container"> 
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 header-logo-align">

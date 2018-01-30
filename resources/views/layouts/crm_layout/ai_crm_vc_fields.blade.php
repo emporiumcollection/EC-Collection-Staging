@@ -27,33 +27,33 @@
                     <div class="left-icons">
                         <a title="Click & Drag" href=""><i aria-hidden="true" class="ai-row-sortable-handler fa fa-arrows-alt"></i></a>
                         <a title="Collapse Row" class="vc-toggle-row" href="#"><i class="fa fa-bars" aria-hidden="true"></i></a>
-                        <a title="Add Column" href="{{URL::to('admin/crmlayouts/add_new_column/')}}/{{$all_row['crm_row_id']}}/{{$template->template_id}}"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                        <a title="Add Column" href="{{URL::to('crmlayouts/add_new_column/')}}/{{$all_row['crm_row_id']}}/{{$template->template_id}}"><i class="fa fa-plus" aria-hidden="true"></i></a>
                         <div class="dropdown">
                             <span class="dropdown-toggle" type="button" data-toggle="dropdown"><i title="Tab Layout" class="fa fa-columns" aria-hidden="true"></i></span>
                             <ul class="dropdown-menu">
                                 <li>
                                     <a title="100" class="vc-change-row-layout <?php echo ($all_row['row_columns'] == '100') ? 'selected' : ''; ?>" data-value="100" data-row-id="<?php echo $all_row['crm_row_id']; ?>" href="#">
-                                        <img src="{{URL::to('/../img/ai-vc-clm-1.png')}}" >
+                                        <img src="{{ asset('sximo/crm_layout/ai-vc-clm-1.png')}}" >
                                     </a>
                                 </li>
                                 <li>
                                     <a title="50 + 50" class="vc-change-row-layout <?php echo ($all_row['row_columns'] == '50 + 50') ? 'selected' : ''; ?>" data-value="50 + 50" data-row-id="<?php echo $all_row['crm_row_id']; ?>" href="#">
-                                        <img src="{{URL::to('/../img/ai-vc-clm-2.png')}}" >
+                                        <img src="{{ asset('sximo/crm_layout/ai-vc-clm-2.png')}}" >
                                     </a>
                                 </li>
                                 <li>
                                     <a title="33.33 + 33.33 + 33.33" class="vc-change-row-layout <?php echo ($all_row['row_columns'] == '33.33 + 33.33 + 33.33') ? 'selected' : ''; ?>" data-value="33.33 + 33.33 + 33.33" data-row-id="<?php echo $all_row['crm_row_id']; ?>" href="#">
-                                        <img src="{{URL::to('/../img/ai-vc-clm-3.png')}}" >
+                                        <img src="{{ asset('sximo/crm_layout/ai-vc-clm-3.png')}}" >
                                     </a>
                                 </li>
                                 <li>
                                     <a title="25 + 25 + 25 + 25" class="vc-change-row-layout <?php echo ($all_row['row_columns'] == '25 + 25 + 25 + 25') ? 'selected' : ''; ?>" data-value="25 + 25 + 25 + 25" data-row-id="<?php echo $all_row['crm_row_id']; ?>" href="#">
-                                        <img src="{{URL::to('/../img/ai-vc-clm-4.png')}}" >
+                                        <img src="{{ asset('sximo/crm_layout/ai-vc-clm-4.png')}}" >
                                     </a>
                                 </li>
                                 <li>
                                     <a title="20 + 20 + 20 + 20 + 20" class="vc-change-row-layout <?php echo ($all_row['row_columns'] == '20 + 20 + 20 + 20 + 20') ? 'selected' : ''; ?>" data-value="20 + 20 + 20 + 20 + 20" data-row-id="<?php echo $all_row['crm_row_id']; ?>" href="#">
-                                        <img src="{{URL::to('/../img/ai-vc-clm-5.png')}}" >
+                                        <img src="{{ asset('sximo/crm_layout/ai-vc-clm-5.png')}}" >
                                     </a>
                                 </li>
                                 <li>
@@ -65,8 +65,8 @@
                     <div class="right-icons">
                     <!--<a href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                         <a href="#"><i class="fa fa-files-o" aria-hidden="true"></i></a>-->
-                        <a title="Duplicate Row" href="{{URL::to('admin/crmlayouts/duplicate_row/')}}/{{$all_row['crm_row_id']}}/{{$template->template_id}}"><i aria-hidden="true" class="fa fa-files-o"></i></a>
-                        <a title="Delete Row" onclick="return confirm('Are you sure?');" href="{{URL::to('admin/crmlayouts/delete_row/')}}/{{$all_row['crm_row_id']}}/{{$template->template_id}}"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                        <a title="Duplicate Row" href="{{URL::to('crmlayouts/duplicate_row/')}}/{{$all_row['crm_row_id']}}/{{$template->template_id}}"><i aria-hidden="true" class="fa fa-files-o"></i></a>
+                        <a title="Delete Row" onclick="return confirm('Are you sure?');" href="{{URL::to('crmlayouts/delete_row/')}}/{{$all_row['crm_row_id']}}/{{$template->template_id}}"><i class="fa fa-trash" aria-hidden="true"></i></a>
                     </div>
                 </div>
                 <div class="vc-row-body">
@@ -90,7 +90,7 @@
                                                 echo '<div class="ui-state-default draggable-element vc-element-node" data-id="'.$element['crm_element_id'].'" data-element-type="'.$element['type'].'" data-template-id="'.$template->template_id.'">';
                                                 
                                                 if($element['type'] == 'crm-fields') {
-                                                    CrmCustomFieldHelper::make($group['custom_fields'][$element['customfield_id']], array(), 'ui-state-default draggable-element fa', $template->template_id, URL::to('admin/crmlayouts'));
+                                                    CrmCustomFieldHelper::make($group['custom_fields'][$element['customfield_id']], array(), 'ui-state-default draggable-element fa', $template->template_id, URL::to('crmlayouts'));
                                                 }
                                                 else {
                                                     ?>
@@ -99,7 +99,7 @@
                                                             <i title="Click & Drag" class="fa fa-arrows-alt ai-sortable-handler" aria-hidden="true"></i>
                                                         </div>
                                                         <div class="vc-right-icons">
-                                                            <a title="Duplicate Field" href="<?php echo URL::to('admin/crmlayouts') . '/dupliate_crm_elements/'.$element['crm_element_id'].'/'.$template->template_id; ?>"><i aria-hidden="true" class="fa fa-files-o"></i></a>
+                                                            <a title="Duplicate Field" href="<?php echo URL::to('crmlayouts') . '/dupliate_crm_elements/'.$element['crm_element_id'].'/'.$template->template_id; ?>"><i aria-hidden="true" class="fa fa-files-o"></i></a>
                                                             <i title="Edit Field" aria-hidden="true" data-id="<?php echo $element['crm_element_id']; ?>" data-template-id="<?php echo $template->template_id; ?>" data-element-type="<?php echo $element['type']; ?>" class="edit-vc-element fa fa-pencil"></i>
                                                             <i title="Delete Field" aria-hidden="true" onclick="ai_remove_crm_element(<?php echo $element['crm_element_id']; ?>);" class="ai-field-delete-btn fa fa-trash"></i>
                                                         </div>
@@ -117,8 +117,8 @@
                                         <div class="vc-column-bottom">
                                             <a title="Add Element" class="vc-elements-pop-up-btn" data-row-id="{{$group['row_id']}}" data-group-id="{{$group['crm_group_id']}}" href="#"><i class="fa fa-plus" aria-hidden="true"></i></a>
                                             <!--<a title="Add Field" class="add-new-custom-field-btn" data-row-id="{{$group['row_id']}}" data-group-id="{{$group['crm_group_id']}}" href="#"><i class="fa fa-plus" aria-hidden="true"></i></a>-->
-                                            <a title="Delete Tab" onclick="return confirm('Are you sure?');" href="{{URL::to('admin/crmlayouts/delete_group/')}}/{{$group['crm_group_id']}}/{{$template->template_id}}"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                                            <a title="Duplicate Tab" href="{{URL::to('admin/crmlayouts/duplicate_group/')}}/{{$group['crm_group_id']}}/{{$template->template_id}}"><i aria-hidden="true" class="fa fa-files-o"></i></a>
+                                            <a title="Delete Tab" onclick="return confirm('Are you sure?');" href="{{URL::to('crmlayouts/delete_group/')}}/{{$group['crm_group_id']}}/{{$template->template_id}}"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                            <a title="Duplicate Tab" href="{{URL::to('crmlayouts/duplicate_group/')}}/{{$group['crm_group_id']}}/{{$template->template_id}}"><i aria-hidden="true" class="fa fa-files-o"></i></a>
                                         </div>
                                         <!--<div class="vc-column-bottom">{{$group['title_mfg']}}</div>-->
                                     </div>

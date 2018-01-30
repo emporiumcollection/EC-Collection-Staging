@@ -75,9 +75,20 @@ and open the template in the editor.
         width: 100%;
     }
     .hotel-slider-price {
-        padding: 8px 0px !important;
-        margin-top: 0px;
-        margin-left: 0px !important;
+	padding: 8px 4px !important;
+	margin-top: 0px;
+	margin-left: 0px !important;
+	font-size: 13px !important;
+    }
+    #align-to-top .book-button.open-show_more-page.hotel-btn {
+	padding: 8px 5px !important;
+        font-size: 13px !important;
+    }
+    .newbkbtn {
+	font-size: 13px !important;
+    }
+    .smallMediaBox {
+        width: 54%;
     }
 }
 @media screen and (max-width: 1024px) and (min-width: 768px) {
@@ -128,7 +139,7 @@ and open the template in the editor.
         width: 66% !important;
     }
     .architecture-sec-heading {
-        margin-left: -66px;
+        margin-left: 45px;
     }
     /*    .slider-side-description-text {
             max-height: 198px;
@@ -150,8 +161,17 @@ and open the template in the editor.
         overflow: auto;
     }
     .image-slider-container .editorial-images-count {
-        margin-left: 24% !important;
-        margin-top: -125px !important;
+/*        margin-left: 24% !important;
+        margin-top: -125px !important;*/
+    }
+    .view-gallery-border-left {
+	width: 32px;
+    }
+    .editorial-custom-footer-style .newsletter-style {
+	width: 100%;
+    }
+    .nesletter-submit-btn {
+	width: 50%;
     }
     .editorial-image-slider-previous-btn {
         margin-left: 317px !important;

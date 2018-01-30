@@ -296,7 +296,7 @@
             var no_columns = $(this).find("option:selected").data("columns");
             var row_id = $(this).data("row-id");
             $.ajax({
-                url: "{{URL::to('admin/crmlayouts/ajax_save_row_columns/')}}",
+                url: "{{URL::to('crmlayouts/ajax_save_row_columns/')}}",
                 type: "POST",
                 data: {_token: '{{ csrf_token() }}', columns: no_columns, id: row_id},
                 dataType: 'JSON',
@@ -310,7 +310,7 @@
             var value = $(this).data("value");
             var row_id = $(this).data("row-id");
             $.ajax({
-                url: "{{URL::to('admin/crmlayouts/ajax_save_row_columns/')}}",
+                url: "{{URL::to('crmlayouts/ajax_save_row_columns/')}}",
                 type: "POST",
                 data: {_token: '{{ csrf_token() }}', value: value, id: row_id},
                 dataType: 'JSON',
@@ -328,7 +328,7 @@
             var no_columns = $(this).data("columns");
             var group_id = $(this).data("group-id");
             $.ajax({
-                url: "{{URL::to('admin/crmlayouts/ajax_save_group_columns/')}}",
+                url: "{{URL::to('crmlayouts/ajax_save_group_columns/')}}",
                 type: "POST",
                 data: {_token: '{{ csrf_token() }}', columns: no_columns, id: group_id},
                 dataType: 'JSON',
@@ -380,7 +380,7 @@ $fieldArray['file'] = 'File';
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
-            <form action="{{URL::to('admin/crmlayouts/save_row_element/')}}" method="POST">
+            <form action="{{URL::to('crmlayouts/save_row_element/')}}" method="POST">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                 <input class="row_id" type="hidden" name="row_id" value="0" />
                 <input class="group_id" type="hidden" name="group_id" value="0" />
@@ -393,7 +393,7 @@ $fieldArray['file'] = 'File';
                         <div class="vc-element">
                             <a class="vc-element-btn" data-element="separator" href="javascript:void(0);">
                                 <div class="vc-element-left">
-                                    <img class="vc-element-icon" src="{{URL::to('/../img/ai-vc-icon-hr-space.png')}}" >
+                                    <img class="vc-element-icon" src="{{ asset('sximo/crm_layout/ai-vc-icon-hr-space.png')}}" >
                                 </div>
                                 <div class="vc-element-right">
                                     <div class="vc-element-title">Separator</div>
@@ -404,7 +404,7 @@ $fieldArray['file'] = 'File';
                         <div class="vc-element">
                             <a class="vc-element-btn" data-element="empty-space" href="javascript:void(0);">
                                 <div class="vc-element-left">
-                                    <img class="vc-element-icon" src="{{URL::to('/../img/ai-vc-icon-empty-space.png')}}" >
+                                    <img class="vc-element-icon" src="{{ asset('sximo/crm_layout/ai-vc-icon-empty-space.png')}}" >
                                 </div>
                                 <div class="vc-element-right">
                                     <div class="vc-element-title">Empty Space</div>
@@ -415,7 +415,7 @@ $fieldArray['file'] = 'File';
                         <div class="vc-element">
                             <a class="vc-element-btn" data-element="accordion" href="javascript:void(0);">
                                 <div class="vc-element-left">
-                                    <img class="vc-element-icon" src="{{URL::to('/../img/ai-vc-icon-accordion.png')}}" >
+                                    <img class="vc-element-icon" src="{{ asset('sximo/crm_layout/ai-vc-icon-accordion.png')}}" >
                                 </div>
                                 <div class="vc-element-right">
                                     <div class="vc-element-title">Accordion</div>
@@ -426,7 +426,7 @@ $fieldArray['file'] = 'File';
                         <div class="vc-element">
                             <a class="vc-element-btn" data-element="tabs" href="javascript:void(0);">
                                 <div class="vc-element-left">
-                                    <img class="vc-element-icon" src="{{URL::to('/../img/ai-vc-icon-tabs.png')}}" >
+                                    <img class="vc-element-icon" src="{{ asset('sximo/crm_layout/ai-vc-icon-tabs.png')}}" >
                                 </div>
                                 <div class="vc-element-right">
                                     <div class="vc-element-title">Tabs</div>
@@ -437,7 +437,7 @@ $fieldArray['file'] = 'File';
                         <div class="vc-element">
                             <a class="vc-element-btn" data-element="text-block" href="javascript:void(0);">
                                 <div class="vc-element-left">
-                                    <img class="vc-element-icon" src="{{URL::to('/../img/ai-vc-text-block.png')}}" >
+                                    <img class="vc-element-icon" src="{{ asset('sximo/crm_layout/ai-vc-text-block.png')}}" >
                                 </div>
                                 <div class="vc-element-right">
                                     <div class="vc-element-title">Text Block</div>
@@ -448,7 +448,7 @@ $fieldArray['file'] = 'File';
                         <div class="vc-element">
                             <a class="vc-element-custom-fields" href="javascript:void(0);">
                                 <div class="vc-element-left">
-                                    <img class="vc-element-icon" src="{{URL::to('/../img/ai-vc-crm-fields.png')}}" >
+                                    <img class="vc-element-icon" src="{{ asset('sximo/crm_layout/ai-vc-crm-fields.png')}}" >
                                 </div>
                                 <div class="vc-element-right">
                                     <div class="vc-element-title">CRM Fields</div>
@@ -470,7 +470,7 @@ $fieldArray['file'] = 'File';
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
-            <form action="{{URL::to('admin/crmlayouts/edit_row_element/')}}" method="POST">
+            <form action="{{URL::to('crmlayouts/edit_row_element/')}}" method="POST">
                 
                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                 <input class="id" type="hidden" name="id" value="0" />
@@ -551,7 +551,7 @@ $fieldArray['file'] = 'File';
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
-            <form action="{{URL::to('admin/crmlayouts/edit_row_element/')}}" method="POST">
+            <form action="{{URL::to('crmlayouts/edit_row_element/')}}" method="POST">
                 
                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                 <input class="id" type="hidden" name="id" value="0" />
@@ -584,7 +584,7 @@ $fieldArray['file'] = 'File';
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
-            <form action="{{URL::to('admin/crmlayouts/edit_row_element/')}}" method="POST">
+            <form action="{{URL::to('crmlayouts/edit_row_element/')}}" method="POST">
                 
                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                 <input class="id" type="hidden" name="id" value="0" />
@@ -618,7 +618,7 @@ $fieldArray['file'] = 'File';
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
-            <form action="{{URL::to('admin/crmlayouts/edit_row_element/')}}" method="POST">
+            <form action="{{URL::to('crmlayouts/edit_row_element/')}}" method="POST">
                 
                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                 <input class="id" type="hidden" name="id" value="0" />
@@ -652,7 +652,7 @@ $fieldArray['file'] = 'File';
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
-            <form action="{{URL::to('admin/crmlayouts/edit_row_element/')}}" method="POST">
+            <form action="{{URL::to('crmlayouts/edit_row_element/')}}" method="POST">
                 
                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                 <input class="id" type="hidden" name="id" value="0" />
@@ -685,7 +685,7 @@ $fieldArray['file'] = 'File';
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
-            <form action="{{URL::to('admin/crmlayouts/save_row_columns/')}}" method="POST">
+            <form action="{{URL::to('crmlayouts/save_row_columns/')}}" method="POST">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                 <input class="row_id" type="hidden" name="id" value="0" />
                 <div class="modal-header">
@@ -786,7 +786,7 @@ $fieldArray['file'] = 'File';
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
-            <form action="{{URL::to('admin/crmlayouts/add_custom_field')}}" method="POST">
+            <form action="{{URL::to('crmlayouts/add_custom_field')}}" method="POST">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                 <input type="hidden" name="module_id" value="<?php echo $template->module_id; ?>" />
                 <input type="hidden" name="template_id" value="<?php echo $template->template_id; ?>" />
@@ -947,7 +947,7 @@ $fieldArray['file'] = 'File';
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
-            <form action="{{URL::to('admin/crmlayouts/edit_custom_field')}}" method="POST">
+            <form action="{{URL::to('crmlayouts/edit_custom_field')}}" method="POST">
                 
                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                 <input type="hidden" name="module_id" value="<?php echo $template->module_id; ?>" />
@@ -1109,7 +1109,7 @@ $fieldArray['file'] = 'File';
     </div>
 </div>
 <!--Edit model end here-->
-<script src="{{URL::to('/../crm_layout/tinymce/js/tinymce/tinymce.min.js')}}" type="text/javascript"></script>
+<script src="{{ asset('sximo/crm_layout/tinymce/tinymce.min.js')}}" type="text/javascript"></script>
 <script>
     
     function vc_edit_element(This) {
@@ -1119,7 +1119,7 @@ $fieldArray['file'] = 'File';
         var template_id = $(This).data("template-id");
 
         $.ajax({
-            url: "{{URL::to('admin/crmlayouts/ajax_get_crm_element/')}}/" + element_id,
+            url: "{{URL::to('crmlayouts/ajax_get_crm_element/')}}/" + element_id,
             type: "POST",
             data: {_token: '{{ csrf_token() }}'},
             dataType: 'JSON',
@@ -1299,7 +1299,7 @@ $fieldArray['file'] = 'File';
     }
     function ai_remove_crm_element(id) {
         if (confirm("Are you sure?")) {
-            window.location.href = "{{URL::to('admin/crmlayouts/delete_crm_element/')}}/" + id + "/<?php echo $template->template_id; ?>";
+            window.location.href = "{{URL::to('crmlayouts/delete_crm_element/')}}/" + id + "/<?php echo $template->template_id; ?>";
         } else {
             return false;
         }
@@ -1307,7 +1307,7 @@ $fieldArray['file'] = 'File';
     
     function ai_remove_custom_filed(id) {
         if (confirm("Are you sure?")) {
-            window.location.href = "{{URL::to('admin/crmlayouts/delete_custom_field/')}}/" + id + "/<?php echo $template->template_id; ?>";
+            window.location.href = "{{URL::to('crmlayouts/delete_custom_field/')}}/" + id + "/<?php echo $template->template_id; ?>";
         } else {
             return false;
         }
@@ -1434,7 +1434,7 @@ $fieldArray['file'] = 'File';
             var element = $(this).data("element");
             
             $.ajax({
-                url: "{{URL::to('admin/crmlayouts/save_row_element/')}}",
+                url: "{{URL::to('crmlayouts/save_row_element/')}}",
                 type: "POST",
                 data: {_token: '{{ csrf_token() }}', row_id: row_id, group_id: group_id, element: element},
                 dataType: 'JSON',
@@ -1481,7 +1481,7 @@ $fieldArray['file'] = 'File';
             $("#edit-custom-field-pop-up").modal();
             var id = $(this).data("id");
             $.ajax({
-                url: "{{URL::to('admin/crmlayouts/ajax_get_custom_field/')}}/" + id,
+                url: "{{URL::to('crmlayouts/ajax_get_custom_field/')}}/" + id,
                 type: "POST",
                 data: {_token: '{{ csrf_token() }}'},
                 dataType: 'JSON',
@@ -1613,7 +1613,7 @@ $fieldArray['file'] = 'File';
                 var positions = '[' + order.join(',') + ']';
 
                 $.ajax({
-                    url: "{{URL::to('admin/crmlayouts/ajax_save_crm_elements_order/')}}",
+                    url: "{{URL::to('crmlayouts/ajax_save_crm_elements_order/')}}",
                     type: "POST",
                     data: {_token: '{{ csrf_token() }}', positions: positions},
                     dataType: 'JSON',
@@ -1636,7 +1636,7 @@ $fieldArray['file'] = 'File';
                 var positions = '{' + order.join(',') + '}';
 
                 $.ajax({
-                    url: "{{URL::to('admin/crmlayouts/ajax_save_rows_order/')}}",
+                    url: "{{URL::to('crmlayouts/ajax_save_rows_order/')}}",
                     type: "POST",
                     data: {_token: '{{ csrf_token() }}', positions: positions},
                     dataType: 'JSON',
