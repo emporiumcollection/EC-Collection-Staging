@@ -9,6 +9,7 @@
         <link href="{{ asset('sximo/assets/css/landing-page-styles.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/ai-responsive.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/Hamburg-menu.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('sximo/assets/css/intlTelInput.css')}}" rel="stylesheet" type="text/css"/>
 <!--        <link href="{{ asset('sximo/assets/css/menu41e7.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/responsive.custom41e7.css')}}" rel="stylesheet" type="text/css"/>
         
@@ -31,8 +32,8 @@
         <script src="{{ asset('sximo/assets/js/image-slider.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/m_slider.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/open-search.js')}}" type="text/javascript"></script>
-        
-        
+
+       
         
         <style>
             
@@ -48,7 +49,7 @@
                 margin-top: 5px;
             }
             .ai-sign-up-form-error-msg {
-                color: #f80606;
+                color: #ffec0cf2;
                 font-size: 15px;
                 margin-top: 5px;
             }

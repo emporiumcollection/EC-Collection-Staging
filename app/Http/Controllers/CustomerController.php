@@ -44,8 +44,10 @@ class CustomerController extends Controller {
         $rules = array(
 //            'firstname' => 'required|alpha_num|min:2',
 //            'lastname' => 'required|alpha_num|min:2',
-            'email' => 'required|email|unique:tb_users',
-            'password' => 'required',
+                'email' => 'required|email|unique:tb_users',
+                'password' => 'required',
+                'mobile_code' => 'required',                
+                'mobile_number' => 'required',
 //            'password' => 'required|confirmed',
 //            'password_confirmation' => 'required',
             //'membership_plan'=>'required',
@@ -442,13 +444,6 @@ class CustomerController extends Controller {
                         } else {
                             \Session::put('lang', 'Deutsch');
                         }
-
-                        //Temp fix for redireceting
-                        if($row->group_id == 4 || $row->group_id == 3) {
-                            return Redirect::to('customer/profile');
-                        }
-                        //Temp fix for redireceting
-
                         if (CNF_FRONT == 'false') :
                             return Redirect::to('dashboard');
                         else :

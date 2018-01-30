@@ -5258,7 +5258,7 @@ div#fixed_wrapper {
     text-transform: uppercase;
 }
 .ps-form-main-pannel {
-    padding: 50px 25px 15px;
+    padding: 20px 20px 15px;
 }
 .ps-form-heading-outer-align .ps-big-form-heading {
     line-height: 30px;
@@ -5279,10 +5279,10 @@ div#fixed_wrapper {
     color: #fff;
 }
 .ps-form-group-outer {
-    margin-bottom: 35px;
+    margin-bottom: 20px;
 }
 .ps-login-sign-form-pannel {
-    margin-top: 40px;
+    margin-top: 20px;
 }
 .login-forgot-pass-align {
     background-color: transparent;
