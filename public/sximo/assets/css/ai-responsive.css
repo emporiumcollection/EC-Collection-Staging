@@ -18,10 +18,13 @@
 	padding: 8px 2px 8px !important;
     }
     .image-slider-container .editorial-image-slider-btns {
-	margin-top: -11.5% !important;
+	margin-top: -10% !important;
     }
     .image-slider-container .editorial-images-count {
 	margin-top: -145px !important;
+    }
+    .view-gallery-pannel-align .bar-view-gallery {
+	font-size: 14px;
     }
     .small-box-text {
 	font-size: 16px !important;
