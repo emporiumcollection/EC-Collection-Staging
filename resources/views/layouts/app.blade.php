@@ -23,7 +23,9 @@
 		<link href="{{ asset('sximo/js/plugins/fancybox/jquery.fancybox.css') }}" rel="stylesheet">
 		<link href="{{ asset('sximo/js/plugins/markitup/skins/simple/style.css') }}" rel="stylesheet">
 		<link href="{{ asset('sximo/js/plugins/markitup/sets/default/style.css') }}" rel="stylesheet">
-			
+
+                <link href="{{ asset('sximo/crm_layout/jquery-minicolors/jquery.minicolors.css')}}" rel="stylesheet" type="text/css" />
+                
 		<link href="{{ asset('sximo/css/animate.css')}}" rel="stylesheet">		
 		<link href="{{ asset('sximo/css/icons.min.css')}}" rel="stylesheet">
 		<link href="{{ asset('sximo/js/plugins/toastr/toastr.css')}}" rel="stylesheet">
@@ -55,6 +57,8 @@
 		<script type="text/javascript" src="{{ asset('sximo/js/plugins/markitup/jquery.markitup.js') }}"></script>	
 		<script type="text/javascript" src="{{ asset('sximo/js/plugins/markitup/sets/default/set.js') }}"></script>	
 		
+                <script src="{{ asset('sximo/crm_layout/jquery-minicolors/jquery.minicolors.min.js')}}" type="text/javascript"></script>
+                
 		<!--[if lt IE 9]>
 			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
