@@ -1249,6 +1249,9 @@
                                 margin-top: 40px;
                                 padding: 20px 0px 40px 0px;
                             }
+                            .slick-cstm-width.slick-slide.slick-current.slick-active {
+                                    width: 315px !important;
+                                }
                             
                             @import url('https://fonts.googleapis.com/css?family=Caveat');
                             @import url('https://fonts.googleapis.com/css?family=Satisfy');
@@ -1341,7 +1344,7 @@
 
                 <!-- AIC Harman email phone sidebar add end-->
                 
-                <div id="editorial-siden-nav-res" class="sidenav here">
+                <div id="editorial-siden-nav-res" class="sidenav">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                     <div class=" right-menus ">
                         <div class="row-">
@@ -1416,7 +1419,7 @@
                                     <a href="#book-now" data-hotel-option="book_now">BOOK {{$propertyDetail['data']->property_name}} </a>
                                 </li>
                             </ul>
-                            <section class="regular slider ai-test">
+                            <section class="regular slider">
 								<div class="slick-cstm-width">
 								   @if(!empty($relatedproperties))
 									<div class="side-nav-next-hotel-img">
