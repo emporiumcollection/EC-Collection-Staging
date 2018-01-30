@@ -537,8 +537,8 @@ $fieldArray['file'] = 'File';
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn blue m-t-0">{{trans('customfields.admin_customfield_module_add_btn_submit')}}</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">{{trans('customfields.admin_customfield_module_btn_reset')}}</button>
+                    <button type="submit" class="btn blue m-t-0">Submit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 </div>
             </form>
         </div>
@@ -570,8 +570,8 @@ $fieldArray['file'] = 'File';
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn blue m-t-0">{{trans('customfields.admin_customfield_module_add_btn_submit')}}</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">{{trans('customfields.admin_customfield_module_btn_reset')}}</button>
+                    <button type="submit" class="btn blue m-t-0">Submit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 </div>
             </form>
         </div>
@@ -604,8 +604,8 @@ $fieldArray['file'] = 'File';
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn blue m-t-0">{{trans('customfields.admin_customfield_module_add_btn_submit')}}</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">{{trans('customfields.admin_customfield_module_btn_reset')}}</button>
+                    <button type="submit" class="btn blue m-t-0">Submit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 </div>
             </form>
         </div>
@@ -638,8 +638,8 @@ $fieldArray['file'] = 'File';
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn blue m-t-0">{{trans('customfields.admin_customfield_module_add_btn_submit')}}</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">{{trans('customfields.admin_customfield_module_btn_reset')}}</button>
+                    <button type="submit" class="btn blue m-t-0">Submit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 </div>
             </form>
         </div>
@@ -670,8 +670,8 @@ $fieldArray['file'] = 'File';
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn blue m-t-0">{{trans('customfields.admin_customfield_module_add_btn_submit')}}</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">{{trans('customfields.admin_customfield_module_btn_reset')}}</button>
+                    <button type="submit" class="btn blue m-t-0">Submit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 </div>
             </form>
         </div>
@@ -701,8 +701,8 @@ $fieldArray['file'] = 'File';
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button name="add_new_row" value="true" type="submit" class="btn blue m-t-0">{{trans('customfields.admin_customfield_module_add_btn_submit')}}</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">{{trans('customfields.admin_customfield_module_btn_reset')}}</button>
+                    <button name="add_new_row" value="true" type="submit" class="btn blue m-t-0">Submit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 </div>
             </form>
         </div>
@@ -739,8 +739,8 @@ $fieldArray['file'] = 'File';
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button name="add_new_row" value="true" type="submit" class="btn blue m-t-0">{{trans('customfields.admin_customfield_module_add_btn_submit')}}</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">{{trans('customfields.admin_customfield_module_btn_reset')}}</button>
+                    <button name="add_new_row" value="true" type="submit" class="btn blue m-t-0">Submit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 </div>
             </form>
         </div>
@@ -772,8 +772,8 @@ $fieldArray['file'] = 'File';
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button name="add_new_column" value="true" type="submit" class="btn blue m-t-0">{{trans('customfields.admin_customfield_module_add_btn_submit')}}</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">{{trans('customfields.admin_customfield_module_btn_reset')}}</button>
+                    <button name="add_new_column" value="true" type="submit" class="btn blue m-t-0">Submit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 </div>
             </form>
         </div>
@@ -934,8 +934,8 @@ $fieldArray['file'] = 'File';
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button name="add_new_custom_field" value="true" type="submit" class="btn blue m-t-0">{{trans('customfields.admin_customfield_module_add_btn_submit')}}</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">{{trans('customfields.admin_customfield_module_btn_reset')}}</button>
+                    <button name="add_new_custom_field" value="true" type="submit" class="btn blue m-t-0">Submit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 </div>
             </form>
         </div>
@@ -1101,8 +1101,8 @@ $fieldArray['file'] = 'File';
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button name="add_new_custom_field" value="true" type="submit" class="btn blue m-t-0">{{trans('customfields.admin_customfield_module_add_btn_submit')}}</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">{{trans('customfields.admin_customfield_module_btn_reset')}}</button>
+                    <button name="add_new_custom_field" value="true" type="submit" class="btn blue m-t-0">Submit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 </div>
             </form>
         </div>
