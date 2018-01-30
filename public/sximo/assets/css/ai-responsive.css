@@ -9,10 +9,10 @@
 	margin-top: 0px;
     }
     .newbkbtn {
-	padding: 8px 3px;
+	padding: 8px 3px !important;
     }
     #align-to-top .book-button.open-show_more-page.hotel-btn {
-	padding: 8px 3px;
+	padding: 8px 3px !important;
     }
     .small-box-text {
 	font-size: 16px;
