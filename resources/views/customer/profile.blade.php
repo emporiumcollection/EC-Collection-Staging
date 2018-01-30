@@ -326,6 +326,11 @@
 								<label>*Mobile</label>
 								<input type="text" name="hotel_contactprsn_mobile" placeholder="Mobile*" class="form-control dash-input-style">
 							</div>
+							<div class="form-group">        
+								<div class="col-sm-12">
+									<button type="submit" class="btn btn-default dash-btn-style">Save Profile</button>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div id="advertiser" style="display:none;">
@@ -565,6 +570,11 @@
 							<div class="col-md-6 col-sm-12 no-padding-right">
 								<label>*Mobile</label>
 								<input type="text" name="hotel_contactprsn_mobile" placeholder="Mobile*" class="form-control dash-input-style">
+							</div>
+							<div class="form-group">        
+								<div class="col-sm-12">
+									<button type="submit" class="btn btn-default dash-btn-style">Save Profile</button>
+								</div>
 							</div>
 						</div>
 					</div>
