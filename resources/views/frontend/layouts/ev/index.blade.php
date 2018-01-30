@@ -34,6 +34,7 @@
     <link href="{{ asset('sximo/assets/css/ai_yachts-custom.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('sximo/assets/css/cities-filter.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('sximo/assets/css/editorial.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('sximo/assets/css/intlTelInput.css')}}" rel="stylesheet" type="text/css"/>
     @yield('css')
     <style>
         

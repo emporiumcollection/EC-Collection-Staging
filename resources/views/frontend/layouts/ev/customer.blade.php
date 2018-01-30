@@ -36,6 +36,7 @@
     <link href="{{ asset('sximo/assets/css/editorial.css')}}" rel="stylesheet" type="text/css"/>
 
     <link href="{{ asset('sximo/assets/css/dashboard.css')}}" rel="stylesheet" type="text/css"/>
+     <link href="{{ asset('sximo/assets/css/intlTelInput.css')}}" rel="stylesheet" type="text/css"/>
     @yield('css')
     <style>
         
