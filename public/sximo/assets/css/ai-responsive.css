@@ -124,7 +124,7 @@
 	top: calc(100% - 0px);
     }
     .bar-name-text-style {
-	color: #fff;
+	color: #000 !important;
 	margin-top: 10px;
     }
     .vegasGallery1 {
@@ -228,12 +228,13 @@
     }
     .editorial-hotel-detail-page #align-to-top .book-button.open-show_more-page.hotel-btn { 
         margin-bottom: 8px;
+        text-align: center;
+        padding: 35px;
     }
     .editorial-page-booking-bar .top-booking-bar-btn, .editorial-hotel-detail-page .book-button, .editorial-hotel-detail-page .hotel-slider-price, .editorial-hotel-detail-page .spa-sec-book-an-appoinment-btn {
 	width: 100%;
-    }
-    .editorial-page-booking-bar .top-booking-bar-btn, .editorial-hotel-detail-page .book-button, .editorial-hotel-detail-page .hotel-slider-price, .editorial-hotel-detail-page .spa-sec-book-an-appoinment-btn {
-	width: 100%;
+        text-align: center;
+        margin-bottom: 8px;
     }
     .arrow-slider {
 	margin-top: 10px;
@@ -308,6 +309,18 @@
     }
     .dates li input, .dates li select {
 	width: 100% !important;
+    }
+    .editorial-res-side-nav-logo {
+	background: #252525 none repeat scroll 0 0;
+	padding: 0 8px;
+	right: 15px;
+    }
+    .architecture-sec-heading > h1 {
+	margin-top: 0px !important;
+    }
+    .image-slider-container .editorial-image-slider-btns {
+	margin-top: -140px !important;
+	left: 29%;
     }
     
 }

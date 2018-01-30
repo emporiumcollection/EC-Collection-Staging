@@ -2703,7 +2703,7 @@ header .menu ul li a:hover, header .menu ul li a:active, header .menu ul li a:fo
     max-height: 95px;
     min-height: 95px;
     opacity: 0.83;
-    padding: 34px 27px;
+    padding: 34px 27px !important;
     text-align: center;
     text-transform: uppercase;
     width: 174px;
