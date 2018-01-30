@@ -98,6 +98,9 @@
     .architecture-sec-heading > h1 {
 	margin-top: 0px !important;
     }
+    .slick-cstm-width.slick-slide.slick-current.slick-active {
+	width: auto !important;
+    }
 }
 /*@media (min-width: 768px) and (max-width: 1200px) {
      detail Page 
@@ -326,8 +329,11 @@
     }
     .editorial-res-side-nav-logo {
 	background: #252525 none repeat scroll 0 0;
-	padding: 0 8px;
-	right: 15px;
+        opacity: 1; 
+	padding: 0 5px;
+	right: 10px;
+        position: absolute;
+        top: 0px;
     }
     .architecture-sec-heading > h1 {
 	margin-top: 0px !important;
@@ -335,6 +341,9 @@
     .image-slider-container .editorial-image-slider-btns {
 	margin-top: -140px !important;
 	left: 29%;
+    }
+    .slick-cstm-width.slick-slide.slick-current.slick-active {
+	width: auto !important;
     }
     
 }
@@ -504,6 +513,9 @@
     }
     .dates li input, .dates li select {
 	margin-left: -11px !important; 
+    }
+    .slick-cstm-width.slick-slide.slick-current.slick-active {
+	width: auto !important;
     }
 }
 
@@ -703,6 +715,9 @@
     .hotel-slider-price {
 	padding: 8px 5px !important;
 	margin: 20px 0px !important;
+    }
+    .slick-cstm-width.slick-slide.slick-current.slick-active {
+	width: auto !important;
     }
     
 }
