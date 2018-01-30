@@ -624,8 +624,8 @@
                             </div>
                             <div class="modal-body">
                                 <div class="col-md-2 SlickVegasWidth">
-                                    <section class="Vegasregular slider slick-initialized slick-slider">
-                                        <div aria-live="polite" class="slick-list draggable"><div class="slick-track" style="width: 100%; transform: translate3d(0px, 0px, 0px); opacity: 1;" role="listbox"><div class="slick-cstm-width slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" style="width: 100%;" tabindex="-1" role="option">
+<!--                                    <section class="Vegasregular slider slick-initialized slick-slider">
+                                        <div aria-live="polite" class="slick-list draggable"><div class="slick-track" style="width: 0px; transform: translate3d(0px, 0px, 0px); opacity: 1;" role="listbox"><div class="slick-cstm-width slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" style="width: 0px;" tabindex="-1" role="option">
                                                     <div class="side-nav-next-hotel-img Sidenavimg">
                                                         <div class="side-next-and-perivious-hotel-arrow">
                                                             <div class="arrows-commom  next-arrow">
@@ -656,6 +656,49 @@
                                                     </div>
                                                 </div></div></div>
 
+                                    </section>-->
+                                    <section class="regular slider">
+                                        <div class="slick-cstm-width">
+                                           @if(!empty($relatedproperties))
+											<div class="side-nav-next-hotel-img">
+												<div class="side-next-and-perivious-hotel-arrow">
+													<div class="arrows-commom  next-arrow">
+														<a href="{{URL::to($relatedproperties[0]->property_slug)}}">
+															<span>New Hotels</span>
+														</a>
+													</div>
+												</div>
+												{{--*/ $relatimg = URL::to('uploads/property_imgs_thumbs/front_property_'.$relatedproperties[0]->folder_id.'_'.$relatedproperties[0]->file_name); /*--}}
+												<div class="new-hotel-image" style="background-image: url('{{$relatimg}}')">
+													<div class="new-hotels-image-tittle">
+														<h2 class="new-hotel-name">{{$relatedproperties[0]->property_name}}</h2>
+														<div class=" new-hotel-add">
+															<p>New York City</p>
+															<p>United States</p>
+														</div>
+													</div>
+													<div class="clearfix"></div>
+													<div class="new-hotel-view-more-btn">
+														<a class="" href="{{URL::to($relatedproperties[0]->property_slug)}}">
+															View Hotel
+														</a>
+													</div>
+												</div>
+												
+												<a class="bootom-view-next-btn" href="{{URL::to($relatedproperties[0]->property_slug)}}">
+													Visit All Hotels DOI
+												</a>
+											</div>
+											@endif
+                                        </div>
+                                        @if(!empty($sidebardetailAds))
+                                        @foreach($sidebardetailAds as $adsdetail)
+                                        <div class="slick-cstm-width">
+                                            <a href="{{ (strpos($adsdetail->adv_link, 'http://') !== false) ? $adsdetail->adv_link : 'http://'.$adsdetail->adv_link }}"><img src="{{URL::to('uploads/users/advertisement/'.$adsdetail->adv_img)}}"></a>
+                                        </div>
+                                        @endforeach
+                                        @endif
+                                        
                                     </section>
 
                                 </div>
