@@ -8,7 +8,7 @@
 </div>
 <div class="col-md-12 ">
     <div class=" bottom-sec-bg container">
-        <div class="col-md-4 col-sm-6">
+        <div class="col-md-4 col-sm-6 smallMediaBox">
             <div class="small-box-bg">
                 <div>
                     <p class="small-box-text">

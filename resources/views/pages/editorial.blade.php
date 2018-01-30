@@ -729,15 +729,7 @@
                                 font-family: Geomanist-light;
                             }
                             
-                            .image-slider-container .editorial-images-count {
-                                color: #fff;
-                                float: left;
-                                font-size: 33px;
-                                margin-left: 22%;
-                                margin-top: -145px;
-                                position: relative;
-                                width: 22%;
-                            }
+                            
                             
                             .restaurant-sec-description-pannel1 p {
                                 color: #fff;
@@ -779,17 +771,7 @@
                                 width: 100%;
                             }
                             
-                            .bar-name-text-style {
-                                    color: #000;
-                                    font-size: 13px;
-                                    letter-spacing: 0px;
-                                    text-transform: uppercase;
-                                    text-align: center;
-                                    font-family: Geomanist-light;
-                                    margin-bottom: 30px;
-                                    float: left;
-                                    width: 96%;
-                            }
+                            
                             
                             .bar-des-text {
                                 color: #fff;
@@ -879,12 +861,7 @@
                                 font-family: Geomanist-light;
                             }
                             
-                            .view-gallery-border-left {
-                                border-bottom: 2px solid #fff;
-                                float: left;
-                                padding-top: 10px;
-                                width: 45px;
-                            }
+                            
                             
                             .spa-sec-view-gallery .bar-view-gallery {
                                 color: #fff;

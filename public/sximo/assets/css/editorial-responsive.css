@@ -75,9 +75,20 @@ and open the template in the editor.
         width: 100%;
     }
     .hotel-slider-price {
-        padding: 8px 0px !important;
+        padding: 8px 5px !important;
         margin-top: 0px;
         margin-left: 0px !important;
+        font-size: 13px;
+    }
+    #align-to-top .book-button.open-show_more-page.hotel-btn {
+	padding: 8px 5px;
+        font-size: 13px;
+    }
+    .newbkbtn {
+	font-size: 13px;
+    }
+    .smallMediaBox {
+        width: 54%;
     }
 }
 @media screen and (max-width: 1024px) and (min-width: 768px) {
