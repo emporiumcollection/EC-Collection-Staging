@@ -4483,7 +4483,7 @@ div#fixed_wrapper {
 .editorial-res-side-nav-logo.hamburger-menu {
     font-size: 21px;
     margin-top: 4px;
-    display: none;  
+    display: block;  
 }
 @media screen and (max-width: 767px) and (min-width: 320px) {
     .spa-overlay-text {
@@ -4558,6 +4558,7 @@ div#fixed_wrapper {
     }
     .editorial-res-side-nav-logo.hamburger-menu {
         margin-top: 15px;
+        background: none;
     }
 }
 /*Detail Page Spa And Bar Sec End Here*/
