@@ -4,10 +4,10 @@
         <div class="form-group">  
             <div class="form-group form-md-line-input form-md-floating-label has-info">
                 {!! Form::text('template_name', null, array('class'=>'form-control','maxlength'=>'255','id'=>'template_name'))  !!}
-                {!! Form::label('template_name', trans('crmlayout.admin_crmlayout_module_add_template_name'))  !!}
+                {!! Form::label('template_name', 'Template Name')  !!}
                 <i class="fa fa-times-circle clearInput" aria-hidden="true"></i>
             </div>
-            <span class="help-block">@lang('crmlayout.admin_crmlayout_module_add_template_name_help_text') <span class="textused">0/255</span></span>
+            <span class="help-block"><span class="textused">0/255</span></span>
         </div>
         <div class="hidden form-group">  
             <div class="form-group form-md-line-input form-md-floating-label has-info">
@@ -31,5 +31,5 @@
 <!-- Submit Field -->
 <div class="form-actions noborder right">
     <button type="submit" name="submit" class="btn btn-primary btn-sm" ><i class="fa  fa-save "></i> {{ Lang::get('core.sb_save') }}</button>
-    <a class="btn default" href="{{route('crmlayouts.index')}}">Cancel</a>
+    <a class="btn btn-default" href="{{route('crmlayouts.index')}}">Cancel</a>
 </div>

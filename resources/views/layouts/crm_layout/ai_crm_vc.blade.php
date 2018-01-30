@@ -537,8 +537,8 @@ $fieldArray['file'] = 'File';
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn blue m-t-0">{{trans('customfields.admin_customfield_module_add_btn_submit')}}</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">{{trans('customfields.admin_customfield_module_btn_reset')}}</button>
+                    <button type="submit" class="btn btn-primary m-t-0">Submit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 </div>
             </form>
         </div>
@@ -570,8 +570,8 @@ $fieldArray['file'] = 'File';
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn blue m-t-0">{{trans('customfields.admin_customfield_module_add_btn_submit')}}</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">{{trans('customfields.admin_customfield_module_btn_reset')}}</button>
+                    <button type="submit" class="btn btn-primary m-t-0">Submit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 </div>
             </form>
         </div>
@@ -604,8 +604,8 @@ $fieldArray['file'] = 'File';
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn blue m-t-0">{{trans('customfields.admin_customfield_module_add_btn_submit')}}</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">{{trans('customfields.admin_customfield_module_btn_reset')}}</button>
+                    <button type="submit" class="btn btn-primary m-t-0">Submit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 </div>
             </form>
         </div>
@@ -638,8 +638,8 @@ $fieldArray['file'] = 'File';
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn blue m-t-0">{{trans('customfields.admin_customfield_module_add_btn_submit')}}</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">{{trans('customfields.admin_customfield_module_btn_reset')}}</button>
+                    <button type="submit" class="btn btn-primary m-t-0">Submit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 </div>
             </form>
         </div>
@@ -670,8 +670,8 @@ $fieldArray['file'] = 'File';
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn blue m-t-0">{{trans('customfields.admin_customfield_module_add_btn_submit')}}</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">{{trans('customfields.admin_customfield_module_btn_reset')}}</button>
+                    <button type="submit" class="btn btn-primary m-t-0">Submit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 </div>
             </form>
         </div>
@@ -701,8 +701,8 @@ $fieldArray['file'] = 'File';
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button name="add_new_row" value="true" type="submit" class="btn blue m-t-0">{{trans('customfields.admin_customfield_module_add_btn_submit')}}</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">{{trans('customfields.admin_customfield_module_btn_reset')}}</button>
+                    <button name="add_new_row" value="true" type="submit" class="btn btn-primary m-t-0">Submit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 </div>
             </form>
         </div>
@@ -739,8 +739,8 @@ $fieldArray['file'] = 'File';
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button name="add_new_row" value="true" type="submit" class="btn blue m-t-0">{{trans('customfields.admin_customfield_module_add_btn_submit')}}</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">{{trans('customfields.admin_customfield_module_btn_reset')}}</button>
+                    <button name="add_new_row" value="true" type="submit" class="btn btn-primary m-t-0">Submit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 </div>
             </form>
         </div>
@@ -772,8 +772,8 @@ $fieldArray['file'] = 'File';
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button name="add_new_column" value="true" type="submit" class="btn blue m-t-0">{{trans('customfields.admin_customfield_module_add_btn_submit')}}</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">{{trans('customfields.admin_customfield_module_btn_reset')}}</button>
+                    <button name="add_new_column" value="true" type="submit" class="btn btn-primary m-t-0">Submit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 </div>
             </form>
         </div>
@@ -810,9 +810,9 @@ $fieldArray['file'] = 'File';
                     <div class="form-group">
                         <div class="form-group form-md-line-input form-md-floating-label has-info" >
                             {!! Form::text('title_mcf', '', array('class'=>'form-control','maxlength'=>'255','id'=>'title_mcf','data-custom-field'=>'title'))  !!}
-                            {!! Form::label('title_mcf', trans('customfields.admin_customfield_module_add_custom_title'))  !!}
+                            {!! Form::label('title_mcf', 'Title')  !!}
                         </div>
-                        <span class="help-block">@lang('customfields.admin_customfield_module_add_custom_title_help_text') <span class="textused">0/255</span></span>
+                        <span class="help-block">Enter Custom Field Title <span class="textused">0/255</span></span>
                     </div>
                     <div class="custom-field-options-container" data-field-option="list" style="display: none;">
                         <table class="table m-b-0">
@@ -832,95 +832,95 @@ $fieldArray['file'] = 'File';
                             </tbody>
                         </table>
                         <div class="text-right">
-                            <button type="button" class="btn default blue btn-circle m-t-0" data-action="add-form-field-type"><i class="fa fa-plus"></i> New Option </button>
+                            <button type="button" class="btn default btn-primary btn-circle m-t-0" data-action="add-form-field-type"><i class="fa fa-plus"></i> New Option </button>
                         </div>
                     </div>
                     <div class="form-group form-md-radios">
-                        {!! Form::label('', trans('customfields.admin_customfield_module_add_status_title'))  !!}
+                        {!! Form::label('', 'Status')  !!}
                         <div class="md-radio-inline">
                             <div class="md-radio">
                                 {{ Form::radio('status', 'yes',true, ['class' => 'field','id'=>'status_active','data-custom-field'=>'status']) }}
-                                {!! Form::label('status_active','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_status_active')) !!}
+                                {!! Form::label('status_active','<span></span><span class="check"></span><span class="box"></span>Active') !!}
                             </div>
                             <div class="md-radio">
                                 {{ Form::radio('status', 'no',  null, ['class' => 'field','id'=>'status_inactive','data-custom-field'=>'status']) }}
-                                {!! Form::label('status_inactive','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_status_inactive')) !!}
+                                {!! Form::label('status_inactive','<span></span><span class="check"></span><span class="box"></span>Inactive') !!}
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group form-md-radios">
-                        {!! Form::label('', trans('customfields.admin_customfield_module_add_list_view_title'))  !!}
+                        {!! Form::label('', 'Show in List View')  !!}
                         <div class="md-radio-inline">
                             <div class="md-radio">
                                 {{ Form::radio('list_view', 'yes',true, ['class' => 'field','id'=>'list_view_active','data-custom-field'=>'list_view']) }}
-                                {!! Form::label('list_view_active','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_list_view_active')) !!}
+                                {!! Form::label('list_view_active','<span></span><span class="check"></span><span class="box"></span>Active') !!}
                             </div>
                             <div class="md-radio">
                                 {{ Form::radio('list_view', 'no',  null, ['class' => 'field','id'=>'list_view_inactive','data-custom-field'=>'list_view']) }}
-                                {!! Form::label('list_view_inactive','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_list_view_inactive')) !!}
+                                {!! Form::label('list_view_inactive','<span></span><span class="check"></span><span class="box"></span>Inactive') !!}
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group form-md-radios">
-                        {!! Form::label('', trans('customfields.admin_customfield_module_add_showinform_title'))  !!}
+                        {!! Form::label('', 'Show in Form')  !!}
                         <div class="md-radio-inline">
                             <div class="md-radio">
                                 {{ Form::radio('showinform', 'yes',true, ['class' => 'field','id'=>'showinform_active','data-custom-field'=>'show_in_form']) }}
-                                {!! Form::label('showinform_active','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_showinform_active')) !!}
+                                {!! Form::label('showinform_active','<span></span><span class="check"></span><span class="box"></span>Active') !!}
                             </div>
                             <div class="md-radio">
                                 {{ Form::radio('showinform', 'no',  null, ['class' => 'field','id'=>'showinform_inactive','data-custom-field'=>'show_in_form']) }}
-                                {!! Form::label('showinform_inactive','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_showinform_inactive')) !!}
+                                {!! Form::label('showinform_inactive','<span></span><span class="check"></span><span class="box"></span>Inactive') !!}
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group form-md-radios">
-                        {!! Form::label('', trans('customfields.admin_customfield_module_add_searchable_title'))  !!}
+                        {!! Form::label('', 'Simple Search')  !!}
                         <div class="md-radio-inline">
                             <div class="md-radio">
                                 {{ Form::radio('searchable', 'yes',true, ['class' => 'field','id'=>'searchable_active','data-custom-field'=>'searchable']) }}
-                                {!! Form::label('searchable_active','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_searchable_active')) !!}
+                                {!! Form::label('searchable_active','<span></span><span class="check"></span><span class="box"></span>Active') !!}
                             </div>
                             <div class="md-radio">
                                 {{ Form::radio('searchable', 'no',  null, ['class' => 'field','id'=>'searchable_inactive','data-custom-field'=>'searchable']) }}
-                                {!! Form::label('searchable_inactive','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_searchable_inactive')) !!}
+                                {!! Form::label('searchable_inactive','<span></span><span class="check"></span><span class="box"></span>Inactive') !!}
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group form-md-radios">
-                        {!! Form::label('', trans('customfields.admin_customfield_module_add_advance_searchable_title'))  !!}
+                        {!! Form::label('', 'Advanced Search')  !!}
                         <div class="md-radio-inline">
                             <div class="md-radio">
                                 {{ Form::radio('advance_searchable', 'yes',true, ['class' => 'field','id'=>'advance_searchable_active','data-custom-field'=>'advance_searchable']) }}
-                                {!! Form::label('advance_searchable_active','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_advance_searchable_active')) !!}
+                                {!! Form::label('advance_searchable_active','<span></span><span class="check"></span><span class="box"></span>Active') !!}
                             </div>
                             <div class="md-radio">
                                 {{ Form::radio('advance_searchable', 'no',  null, ['class' => 'field','id'=>'advance_searchable_inactive','data-custom-field'=>'advance_searchable']) }}
-                                {!! Form::label('advance_searchable_inactive','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_advance_searchable_inactive')) !!}
+                                {!! Form::label('advance_searchable_inactive','<span></span><span class="check"></span><span class="box"></span>Inactive') !!}
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group form-md-radios">
-                        {!! Form::label('', trans('customfields.admin_customfield_module_add_filter_searchable_title'))  !!}
+                        {!! Form::label('', 'Filter Search')  !!}
                         <div class="md-radio-inline">
                             <div class="md-radio">
                                 {{ Form::radio('filter_searchable', 'yes',true, ['class' => 'field','id'=>'filter_searchable_active','data-custom-field'=>'filter_searchable']) }}
-                                {!! Form::label('filter_searchable_active','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_filter_searchable_active')) !!}
+                                {!! Form::label('filter_searchable_active','<span></span><span class="check"></span><span class="box"></span>Active') !!}
                             </div>
                             <div class="md-radio">
                                 {{ Form::radio('filter_searchable', 'no',  null, ['class' => 'field','id'=>'filter_searchable_inactive','data-custom-field'=>'filter_searchable']) }}
-                                {!! Form::label('filter_searchable_inactive','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_filter_searchable_inactive')) !!}
+                                {!! Form::label('filter_searchable_inactive','<span></span><span class="check"></span><span class="box"></span>Inactive') !!}
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group form-md-radios">
-                        {!! Form::label('', trans('customfields.admin_customfield_module_add_required_field_title'))  !!}
+                        {!! Form::label('', 'Required Field')  !!}
                         <div class="md-radio-inline">
                             <div class="md-radio">
                                 {{ Form::radio('required_field', 'yes',true, ['class' => 'field','id'=>'required_field_active','data-custom-field'=>'required_field']) }}
@@ -934,8 +934,8 @@ $fieldArray['file'] = 'File';
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button name="add_new_custom_field" value="true" type="submit" class="btn blue m-t-0">{{trans('customfields.admin_customfield_module_add_btn_submit')}}</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">{{trans('customfields.admin_customfield_module_btn_reset')}}</button>
+                    <button name="add_new_custom_field" value="true" type="submit" class="btn btn-primary m-t-0">Submit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 </div>
             </form>
         </div>
@@ -997,7 +997,7 @@ $fieldArray['file'] = 'File';
                             </tbody>
                         </table>
                         <div class="text-right">
-                            <button type="button" class="btn default blue btn-circle m-t-0" data-action="add-form-field-type"><i class="fa fa-plus"></i> New Option </button>
+                            <button type="button" class="btn default btn-primary btn-circle m-t-0" data-action="add-form-field-type"><i class="fa fa-plus"></i> New Option </button>
                         </div>
                     </div>
 
@@ -1101,8 +1101,8 @@ $fieldArray['file'] = 'File';
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button name="add_new_custom_field" value="true" type="submit" class="btn blue m-t-0">{{trans('customfields.admin_customfield_module_add_btn_submit')}}</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">{{trans('customfields.admin_customfield_module_btn_reset')}}</button>
+                    <button name="add_new_custom_field" value="true" type="submit" class="btn btn-primary m-t-0">Submit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 </div>
             </form>
         </div>

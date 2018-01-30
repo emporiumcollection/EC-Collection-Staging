@@ -337,9 +337,9 @@
                                 padding: 15px 0 14px 28px;
                             }
                             .editorial-hotel-detail-page .right-menus ul li a:hover {
-                                background: #ada077;
-                                color: black;
-                                opacity: 0.8;
+                                background: #817B74;
+                                color: #fff;
+                                opacity: 1;
                             }
                             .editorial-hotel-detail-page img.banner-arrow-bg {
                                 background-color: rgb(37, 37, 37);
@@ -1249,6 +1249,9 @@
                                 margin-top: 40px;
                                 padding: 20px 0px 40px 0px;
                             }
+                            .slick-cstm-width.slick-slide.slick-current.slick-active {
+                                    width: 315px !important;
+                                }
                             
                             @import url('https://fonts.googleapis.com/css?family=Caveat');
                             @import url('https://fonts.googleapis.com/css?family=Satisfy');
@@ -1461,7 +1464,7 @@
                         </div>
                     </div>
                 </div>
-                <span class="hamburger-menu editorial-res-side-nav-logo"  onclick="openNav()"><img src="{{ asset('sximo/assets/images/Hamburger-Menu.png')}}" alt=""/></span>
+                <span class="hamburger-menu editorial-res-side-nav-logo"  onclick="openNav()"><img src="{{ asset('sximo/assets/images/Hamburger-Menu_1.png')}}" alt=""/></span>
                 <div class="clerafix"></div>
                 <div class="editorial-page-booking-bar">
                     <section class="book-form-top-bar">
@@ -2750,7 +2753,7 @@
         </script>
         <script>
             function openNav() {
-                document.getElementById("editorial-siden-nav-res").style.width = "250px";
+                document.getElementById("editorial-siden-nav-res").style.width = "100%";
             }
 
             function closeNav() {

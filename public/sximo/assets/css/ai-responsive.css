@@ -4,10 +4,37 @@
 
 @media (min-width: 1201px) and (max-width: 1400px) {
     .hotel-detail-slider-price-and-show-more .hotel-slider-price {
-        margin-left: 0;
-        padding: 8px 7px;
-        margin-top: 8px;
+	margin-left: 10px;
+	padding: 8px 7px;
+	margin-top: 0px;
     }
+    .newbkbtn {
+	padding: 8px 3px !important;
+    }
+    #align-to-top .book-button.open-show_more-page.hotel-btn {
+	padding: 0px 0px;
+    }
+    .hotel-detail-slider-price-and-show-more a {
+	padding: 8px 2px 8px !important;
+    }
+    .image-slider-container .editorial-image-slider-btns {
+	margin-top: -10% !important;
+    }
+    .image-slider-container .editorial-images-count {
+	margin-top: -145px !important;
+    }
+    .view-gallery-pannel-align .bar-view-gallery {
+	font-size: 14px;
+    }
+    .small-box-text {
+	font-size: 16px !important;
+    }
+    .editorial-custom-footer-style .newsletter-style {
+	width: 100%;
+    }
+    
+    
+    
     .top-booking-bar-btn {
 	padding: 9px 3px 9px 3px;
 	font-size: 11px;
@@ -350,6 +377,12 @@
 	padding: 7px !important;
 	width: 115px !important;
     }
+    .editorial-image-slider-previous-btn {
+	margin-left: 80% !important;
+    }
+    .editorial-image-slider-btns.image-slider-btns a {
+	margin-top: 75px;
+    }
     
     /* detail page */
     
@@ -418,6 +451,7 @@
     }
     .image-showcase-below-big-text {
 	margin-left: 0px !important;
+        font-size: 50px !important;
     }
     .gallery .info1 p {
 	overflow: visible !important;
@@ -432,7 +466,11 @@
 	top: 0%;
     }
     .image-slider-container .editorial-images-count {
-	margin-left: 350px !important;
+	margin-left: 380px !important;
+	margin-top: -136px;
+    }
+    .bar-name-text-style {
+	color: #000 !important;
     }
     .ai-spa-sec-inner {
 	float: left;
@@ -501,9 +539,6 @@
     .landing-page-lock-login-btn-outer-align {
 	width: 100%;
     }
-    .video-popup-btn.login_popup.show-login-forms-btn {
-	width: 0% !important;
-    }
     
     /* date select */
     
@@ -539,6 +574,7 @@
     }
     .slider-next-image-btn {
 	margin-bottom: 20px;
+	margin-top: 100px;
     }
     .editorial-image-slider-next-btn {
 	float: left !important;
@@ -568,7 +604,10 @@
 	float: left;
     }
     .bar-name-text-style {
-	width: 68% !important;
+	width: 100% !important;
+        color: #000 !important;
+        letter-spacing: 0px;
+        text-align: center;
     }
     .vegasFooter {
 	width: 100% !important;
@@ -625,10 +664,18 @@
     }
     .image-showcase-below-big-text {
 	margin-left: 0px !important;
-	font-size: 55px !important;
+	font-size: 36px !important;
     }
     .ai-spa-sec-inner {
 	float: left;
+    }
+    .hotel-detail-slider-price-and-show-more a {
+	padding: 8px 8px;
+	margin: 20px 5px 20px 0px;
+    }
+    .hotel-slider-price {
+	padding: 8px 5px !important;
+	margin: 20px 0px !important;
     }
     
 }

@@ -10,15 +10,12 @@
         <div class="page-head">
             <!-- BEGIN PAGE TITLE -->
             <div class="page-title">
-                <h1><i class="fa fa-cubes" aria-hidden="true"></i> @lang('crmlayout.admin_crmlayout_module_add')
+                <h1><i class="fa fa-cubes" aria-hidden="true"></i> Template
                 </h1>
             </div>
             <!-- END PAGE TITLE -->
         </div>
         <!-- END PAGE HEAD-->
-        <!-- BEGIN PAGE BREADCRUMB -->
-        @include('admin/includes/ne_breadcrumb')
-        <!-- END PAGE BREADCRUMB -->
         <!-- BEGIN PAGE BASE CONTENT -->
         <div class="row" >
             <div class="col-md-12 col-sm-12">
@@ -62,7 +59,7 @@
                                         <?php
                                         if(!empty($modules)) {
                                             foreach ($modules as $module) {
-                                                echo '<option ', (isset($crmlayouts->module_id) && $crmlayouts->module_id == $module->id_modbuilder)? 'selected' : '' ,' value="'.$module->id_modbuilder.'">'.$module->title_mob.'</option>';
+                                                echo '<option ', (isset($crmlayouts->module_id) && $crmlayouts->module_id == $module->module_id)? 'selected' : '' ,' value="'.$module->module_id.'">'.$module->module_title.'</option>';
                                             }
                                         }
                                         ?>
@@ -70,7 +67,6 @@
                                     <label for="module_id">Module</label>
                                     <i class="fa fa-times-circle clearInput" aria-hidden="true"></i>
                                 </div>
-                                <span class="help-block">@lang('crmlayout.admin_crmlayout_module_add_module_id_help_text') <span class="textused">0/255</span></span>
                             </div>
                             <div class="form-group form-md-radios">
                                 <div class="md-radio-inline">
@@ -85,8 +81,8 @@
                                 </div>
                             </div>
                             <div class="form-actions noborder right">
-                                <input class="btn blue " value="{{trans('crmlayout.admin_crmlayout_module_add_next_btn')}}" type="submit">
-                                <a class="btn default" href="{{route('crmlayouts.index')}}">Cancel</a>
+                                <input class="btn btn-primary" value="Submit" type="submit">
+                                <a class="btn btn-default" href="{{route('crmlayouts.index')}}">Cancel</a>
                             </div>
                         </form>
                         <!--Apply Template Form End-->
