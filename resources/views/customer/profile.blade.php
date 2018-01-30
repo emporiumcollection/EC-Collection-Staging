@@ -3,6 +3,31 @@
 @section('content')
 <style>
 #formerrors { color:#ffec0cf2;}
+.input-hidden {
+  position: absolute;
+  left: -9999px;
+}
+
+input[type=radio]:checked + label>img {
+  border: 1px solid #fff;
+  box-shadow: 0 0 3px 3px #090;
+}
+
+/* Stuff after this is only to make things more pretty */
+input[type=radio] + label>img {
+  border: 1px dashed #444;
+  width: 128px;
+  height: 128px;
+  transition: 500ms all;
+}
+
+input[type=radio]:checked + label>img {
+  transform: 
+    rotateZ(-10deg) 
+    rotateX(10deg);
+}
+
+
 </style>
 <section>
 
@@ -38,6 +63,35 @@
                 <form class="form-horizontal my-profile-main-form-align">
 					<div class="form-group profile-page-submit-radio-align">        
                         <div class="col-sm-12">
+
+
+    
+                        <div class="col-sm-12">
+							<input type="radio" name="usertype" value="guests" id="usertype" class="input-hidden usertype" />
+							<label for="usertypeGuest">
+							  <img 
+							    src="{{ asset('sximo/assets/images/guest-icon.png')}}"	 
+							    alt="I am Guest" />
+							</label>
+
+							<input type="radio" name="usertype" value="hotel" id="userTypeHotel" class="input-hidden usertype" />
+							<label for="userTypeHotel">
+							  <img 
+							    src="{{ asset('sximo/assets/images/hotel-icon.png')}}"	
+							    alt="I am Hotel" />
+							    
+							</label>
+
+							<input type="radio" name="usertype" value="advertiser" id="userTypeAdvertiser" class="input-hidden usertype" />
+							<label for="userTypeAdvertiser">
+							  <img src="{{ asset('sximo/assets/images/advertiser-icon.png')}}"					    
+							    alt="I am advertiser" />
+							</label>
+
+
+
+
+
                             <div class="radio">
                                 <label class="radio-label"><input type="radio" name="usertype" value="guests" class="usertype" checked="checked">Guests</label>
                             </div>
@@ -47,6 +101,10 @@
 							<div class="radio">
                                 <label class="radio-label"><input type="radio" name="usertype" value="advertiser" class="usertype">Advertiser</label>
                             </div>
+
+                            
+                        </div>
+
                         </div>
                     </div>
 					<div id="guests">
