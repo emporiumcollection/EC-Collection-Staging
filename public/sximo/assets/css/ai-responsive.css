@@ -594,7 +594,7 @@
     }
     .bar-name-text-style {
 	width: 100% !important;
-        color: #000;
+        color: #000 !important;
         letter-spacing: 0px;
         text-align: center;
     }
@@ -665,9 +665,6 @@
     .hotel-slider-price {
 	padding: 8px 5px !important;
 	margin: 20px 0px !important;
-    }
-    #align-to-top .book-button.open-show_more-page.hotel-btn {  
-	padding: 0px 0px !important;
     }
     
 }
