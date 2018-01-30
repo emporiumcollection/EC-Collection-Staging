@@ -75,17 +75,17 @@ and open the template in the editor.
         width: 100%;
     }
     .hotel-slider-price {
-        padding: 8px 5px !important;
-        margin-top: 0px;
-        margin-left: 0px !important;
-        font-size: 13px;
+	padding: 8px 4px !important;
+	margin-top: 0px;
+	margin-left: 0px !important;
+	font-size: 13px !important;
     }
     #align-to-top .book-button.open-show_more-page.hotel-btn {
-	padding: 8px 5px;
-        font-size: 13px;
+	padding: 8px 5px !important;
+        font-size: 13px !important;
     }
     .newbkbtn {
-	font-size: 13px;
+	font-size: 13px !important;
     }
     .smallMediaBox {
         width: 54%;
@@ -139,7 +139,7 @@ and open the template in the editor.
         width: 66% !important;
     }
     .architecture-sec-heading {
-        margin-left: -66px;
+        margin-left: 45px;
     }
     /*    .slider-side-description-text {
             max-height: 198px;
