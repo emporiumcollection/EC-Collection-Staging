@@ -1341,7 +1341,7 @@
 
                 <!-- AIC Harman email phone sidebar add end-->
                 
-                <div id="editorial-siden-nav-res" class="sidenav">
+                <div id="editorial-siden-nav-res" class="sidenav here">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                     <div class=" right-menus ">
                         <div class="row-">
@@ -1416,7 +1416,7 @@
                                     <a href="#book-now" data-hotel-option="book_now">BOOK {{$propertyDetail['data']->property_name}} </a>
                                 </li>
                             </ul>
-                            <section class="regular slider">
+                            <section class="regular slider ai-test">
 								<div class="slick-cstm-width">
 								   @if(!empty($relatedproperties))
 									<div class="side-nav-next-hotel-img">
@@ -1662,7 +1662,7 @@
                                 <div class="row">
                                     <div class="disply-left-right-align">
                                         <div class="col-md-6 disply-left-right-inner">
-                                            <div class="hotel-block-two-left-sec-align harman">
+                                            <div class="hotel-block-two-left-sec-align">
                                                 <h2>{{$propertyDetail['data']->detail_section1_title}}</h2>
                                                 <p class="scrollbar" id="style-3">
                                                     {!! nl2br($propertyDetail['data']->detail_section1_description_box1) !!}
