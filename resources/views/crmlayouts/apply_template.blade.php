@@ -16,9 +16,6 @@
             <!-- END PAGE TITLE -->
         </div>
         <!-- END PAGE HEAD-->
-        <!-- BEGIN PAGE BREADCRUMB -->
-        @include('admin/includes/ne_breadcrumb')
-        <!-- END PAGE BREADCRUMB -->
         <!-- BEGIN PAGE BASE CONTENT -->
         <div class="row" >
             <div class="col-md-12 col-sm-12">
