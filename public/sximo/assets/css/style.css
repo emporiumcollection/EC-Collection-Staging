@@ -1435,7 +1435,7 @@ nav.navbar.navbar-inverse {
         width: 85%;
     }
     .dates li input, .dates li select {
-        padding-left: 13px !important;
+        padding-left: 0px !important;
     }
 
 }
