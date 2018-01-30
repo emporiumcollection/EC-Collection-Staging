@@ -657,7 +657,7 @@
                                                 </div></div></div>
 
                                     </section>-->
-                                    <section class="regular slider">
+                                    <section class="regular slider Harman">
                                         <div class="slick-cstm-width">
                                            @if(!empty($relatedproperties))
 											<div class="side-nav-next-hotel-img">

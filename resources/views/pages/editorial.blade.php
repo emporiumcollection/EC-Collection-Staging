@@ -2750,7 +2750,7 @@
         </script>
         <script>
             function openNav() {
-                document.getElementById("editorial-siden-nav-res").style.width = "250px";
+                document.getElementById("editorial-siden-nav-res").style.width = "100%";
             }
 
             function closeNav() {
