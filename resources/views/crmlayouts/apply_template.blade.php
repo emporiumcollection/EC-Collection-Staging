@@ -59,7 +59,7 @@
                                         <?php
                                         if(!empty($modules)) {
                                             foreach ($modules as $module) {
-                                                echo '<option ', (isset($crmlayouts->module_id) && $crmlayouts->module_id == $module->id_modbuilder)? 'selected' : '' ,' value="'.$module->id_modbuilder.'">'.$module->title_mob.'</option>';
+                                                echo '<option ', (isset($crmlayouts->module_id) && $crmlayouts->module_id == $module->module_id)? 'selected' : '' ,' value="'.$module->module_id.'">'.$module->module_title.'</option>';
                                             }
                                         }
                                         ?>
