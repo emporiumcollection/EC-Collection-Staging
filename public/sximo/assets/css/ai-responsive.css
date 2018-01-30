@@ -21,6 +21,38 @@
 	padding: 7px 4px 7px 4px;
 	font-size: 13px;
     }
+    .m_slider.editorial_m_slider {
+	margin-top: 0 !important;
+    }
+    .newbkbtn {
+	margin-left: 5px !important;
+	padding: 8px 5px !important;
+	margin-right: 5px;
+	margin-bottom: 20px;
+    }
+    .view-gallery-pannel-align .bar-view-gallery {
+	font-size: 12px;
+    }
+    .SlickVegasWidth {
+	width: 24.5%;
+    }
+    .vegasGallery1 {
+	margin-top: 45px;
+	width: 75.333% !important;
+    }
+    .VegasPopLogo {
+	width: 50%;
+    }
+    .vegasFooter {
+	width: 33% !important;
+    }
+    .editorial-custom-footer-style .newsletter-style {
+	width: 100% !important;
+    }
+    .block-content.content {
+	width: 31px !important;
+	margin-right: -3px !important;
+    }
 }
 /*@media (min-width: 768px) and (max-width: 1200px) {
      detail Page 
@@ -41,20 +73,35 @@
 }*/
 @media (min-width: 768px) and (max-width: 992px) {
     #align-to-top .book-button.open-show_more-page.hotel-btn {
-        padding: 8px 3px !important;
+/*        padding: 8px 3px !important;*/
     }
     .block-content.content span {
         right: 13px !important; 
         left: unset !important; 
     }
     .main-side .book-button {
-        padding: 8px 3px !important;
+/*        padding: 8px 3px !important;*/
     }
     .hotel-detail-slider-price-and-show-more .hotel-slider-price {
         padding: 8px 3px;
+        margin-left: 0px;
     }
     .show-login-forms-btn {
         width: 21px;
+    }
+    .restaurant-view-gallery-align {
+	top: calc(100% - 0px);
+    }
+    .bar-name-text-style {
+	color: #fff;
+	margin-top: 10px;
+    }
+    .vegasGallery1 {
+	padding: 54px 0px 0px 0px !important;
+	width: 68.333% !important;
+    }
+    .VegasPopLogo {
+	width: 60% !important;
     }
 }
 
@@ -149,7 +196,6 @@
 	padding: 8% 0% 0% 0% !important;
     }
     .editorial-hotel-detail-page #align-to-top .book-button.open-show_more-page.hotel-btn { 
-	width: 100%;
         margin-bottom: 8px;
     }
     .editorial-page-booking-bar .top-booking-bar-btn, .editorial-hotel-detail-page .book-button, .editorial-hotel-detail-page .hotel-slider-price, .editorial-hotel-detail-page .spa-sec-book-an-appoinment-btn {
@@ -172,7 +218,7 @@
 	margin-left: 0px !important;
     }
     .vegasFooter {
-	width: 100% !important;
+	width: 50% !important;
     }
     .VegasFooterMiddle p {
         margin-left: 0px !important;
@@ -206,7 +252,7 @@
 	font-size: 11px;
     }
     .block-content.content {
-	width: 27px;
+	width: 26px !important;
 	margin-left: 0px;
     }
     .newbkbtn {
@@ -216,14 +262,21 @@
 	margin-top: 30px !important;
 	margin-left: 42px !important;
     }
-    .editorial-hotel-detail-page #align-to-top .book-button.open-show_more-page.hotel-btn {
-	margin-top: 21px;
-    }
     .image-slider-btns-bg {
 	padding: 48px 0px 47px 10px !important;
     }
     .image-slider-container .editorial-images-count {
 	margin-top: -147px !important;
+    }
+    section {
+	padding: 41px 0 !important;
+    }
+    .image-showcase-below-big-text {
+	margin-left: 0 !important;
+	text-align: center;
+    }
+    .dates li input, .dates li select {
+	width: 100% !important;
     }
     
 }
@@ -376,6 +429,12 @@
     }
     .image-slider-container .editorial-images-count {
 	margin-left: 350px !important;
+    }
+    .ai-spa-sec-inner {
+	float: left;
+    }
+    .dates li input, .dates li select {
+	margin-left: -11px !important; 
     }
 }
 
@@ -561,7 +620,11 @@
 	margin-top: 0px !important;
     }
     .image-showcase-below-big-text {
-	margin-left: 0px;
+	margin-left: 0px !important;
+	font-size: 55px !important;
+    }
+    .ai-spa-sec-inner {
+	float: left;
     }
     
 }

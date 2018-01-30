@@ -8,7 +8,7 @@
         </td>
         <th>Template</th>
         <th>Date Created</th>
-        <th> @lang('crmlayout.admin_crmlayout_module_list_col_action') </th>
+        <th>Action</th>
     </thead>
 <tbody>
     @foreach($crmlayouts as $crmlayout)
@@ -22,11 +22,11 @@
         <td>{!! $crmlayout->template_name !!}</td>
         <td><?php echo date('d M, Y', strtotime($crmlayout->created_at)); ?></td>
         <td>
-            @if(isset($access['update-crmlayout']) || isset($access['all']))
-            <a href="{{ url('admin/crmlayouts/'.$crmlayout->template_id.'/edit/') }}" class="btn btn-sm btn-default btn-circle btn-editable"><i class="fa fa-pencil"></i> </a>
+            @if(isset($access['is_edit']) && $access['is_edit'] != 0)
+            <a href="{{ url('crmlayouts/'.$crmlayout->template_id.'/edit/') }}" class="btn btn-sm btn-default btn-circle btn-editable"><i class="fa fa-pencil"></i> </a>
             @endif
-            @if(isset($access['delete-crmlayout']) || isset($access['all']))
-            <a href="{{ url('admin/crmlayouts/delete/'.$crmlayout->template_id) }}" class="btn btn-sm btn-default btn-circle " data-action="remove" ><i class="fa fa-remove"></i> </a>
+            @if(isset($access['is_remove']) && $access['is_remove'] != 0)
+            <a onclick="return confirm('Are you sure?');" href="{{ url('crmlayouts/delete/'.$crmlayout->template_id) }}" class="btn btn-sm btn-default btn-circle " data-action="remove" ><i class="fa fa-remove"></i> </a>
             @endif
         </td>
     </tr>

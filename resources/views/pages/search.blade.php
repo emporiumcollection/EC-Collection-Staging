@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
@@ -1273,7 +1274,8 @@
                                                                     <span class="FltRgt">
                                                                         <!--i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" @if(array_key_exists('image', $props)) onclick="add_to_lightbox({{$props['image']->file_id}}, {{$props->id}});" @endif ></i-->
 
-                                                                       <a class="carticon" href="javascript:void(0)" onclick="submitgridbookform('{{$props->property_slug}}#*{{$props->id}}');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>
+                                                                       <!--<a class="carticon" href="javascript:void(0)" onclick="submitgridbookform('{{$props->property_slug}}#*{{$props->id}}');"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>-->
+                                                                       <a class="carticon" href="{{URL::to($props->property_slug)}}"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>
                                                                     </span>
                                                                 </h2>
 
@@ -2593,7 +2595,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
 								imagesPro += '</li>';
 								});
 								imagesPro += '</ul>';
-								var formlink = "{{url()}}/book-property/" + data.data.property_slug + "}}";
+								var formlink = "{{url()}}/book-property/" + data.data.property_slug;
 								imagesPro += '<div class="editorial-book-now-page sec-differentiate-line " id="book-now">';
 								imagesPro += '<form class="detail-page-booking-form" action="'+formlink+'" method="get">';
 								imagesPro += '<input type="hidden" name="property" id="property" value="' + data.data.id + '" />';
@@ -2721,15 +2723,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
 //                                                                            });
 //                                                                        }));
 
-									eval($("#adult-input-value").change(function () {
-										var adults = $(this).val();
-										$('#adults-val').html(adults);
-									}));
-
-									eval($("#childerns-input-value").change(function () {
-										var childerns = $(this).val();
-										$('#childern-val').html(childerns);
-									}));
+									 
 									
 									eval($('#book-hotel1').dateRangePicker({
 										startDate: "2017-01-11",
@@ -2775,6 +2769,51 @@ url: "{{ URL::to('filter_search_destionation')}}",
 						});
 						});
 					</script>
+                                        <script type="text/javascript">
+                                            eval($("#adult-input-value").change(function () {
+                                            var adults = $(this).val();
+                                            $('#adults-val').html(adults);
+                                        }));
+                                        eval($("#childerns-input-value").change(function () {
+                                            var childerns = $(this).val();
+                                            $('#childern-val').html(childerns);
+                                        }));
+                                        </script>
+                                    <script>
+                                            (function (document) {
+                                        var alterNav = function () {
+                                            var item = document.querySelector('.members-drop-list');
+                                            var link = document.querySelector('.members-list');
+                                            var itemIsOpened = false;
+                                            window.onclick = function (e) {
+                                                console.log(e);
+                                                if (!itemIsOpened) {
+                                                    if (e.target == link) {
+                                                        itemIsOpened = true;
+                                                        $('.members-drop-list').show();
+                                                    }
+                                                } else {
+                                                    if (!isChild(e.target, item)) {
+                                                        itemIsOpened = false;
+                                                        $('.members-drop-list').hide();
+                                                    }
+                                                }
+                                            }
+                                        };
+
+                                        var isChild = function (child, parent) {
+                                            var current = child;
+                                            while (current) {
+                                                if (current === parent) return true;
+                                                current = current.parentNode;
+                                            }
+                                            return false;
+                                        }
+
+                                        alterNav();
+                                    })(document);
+                
+                                </script>
                     <script>
                         $(document).ready(function () {
                         $(".social-share").click(function (event) {
@@ -3023,42 +3062,7 @@ $(document).ready(function(){
 });
 </script>-->
                 
-                <script>
-                
-                    (function (document) {
-                var alterNav = function () {
-                    var item = document.querySelector('.members-drop-list');
-                    var link = document.querySelector('.members-list');
-                    var itemIsOpened = false;
-                    window.onclick = function (e) {
-                        console.log(e);
-                        if (!itemIsOpened) {
-                            if (e.target == link) {
-                                itemIsOpened = true;
-                                $('.members-drop-list').show();
-                            }
-                        } else {
-                            if (!isChild(e.target, item)) {
-                                itemIsOpened = false;
-                                $('.members-drop-list').hide();
-                            }
-                        }
-                    }
-                };
-
-                var isChild = function (child, parent) {
-                    var current = child;
-                    while (current) {
-                        if (current === parent) return true;
-                        current = current.parentNode;
-                    }
-                    return false;
-                }
-
-                alterNav();
-            })(document);
-                
-                </script>
+               
 
            <style>
 /* Center the loader */

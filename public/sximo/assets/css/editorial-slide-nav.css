@@ -23,7 +23,7 @@ and open the template in the editor.
 }
 .open-show_more-html a {
 	right: 1%;
-	position: absolute;
+	/*position: absolute;*/
 	top: 0;
 }
 /*Show More Slide CSS*/
@@ -195,7 +195,7 @@ body.show_more-page-opend {
         padding: 8px 5px;
     }
     #align-to-top .book-button.open-show_more-page.hotel-btn {
-        padding: 8px 7px;
+/*        padding: 8px 7px;*/
     }
     .hamburger-menu.editorial-res-side-nav-logo > img {
         height: 13px;

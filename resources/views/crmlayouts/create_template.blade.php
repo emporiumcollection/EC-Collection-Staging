@@ -1,4 +1,4 @@
-@extends('admin.layouts.index')
+@extends('layouts.app')
 
 @section('content')
 
@@ -10,15 +10,12 @@
         <div class="page-head">
             <!-- BEGIN PAGE TITLE -->
             <div class="page-title">
-                <h1><i class="{{$icon_class['admin_menu_left_settings_crmlayout_icon']}}" aria-hidden="true"></i> @lang('crmlayout.admin_crmlayout_module_add')
+                <h1><i class="fa fa-cubes" aria-hidden="true"></i> Template
                 </h1>
             </div>
             <!-- END PAGE TITLE -->
         </div>
         <!-- END PAGE HEAD-->
-        <!-- BEGIN PAGE BREADCRUMB -->
-        @include('admin/includes/ne_breadcrumb')
-        <!-- END PAGE BREADCRUMB -->
         <!-- BEGIN PAGE BASE CONTENT -->
         <div class="row" >
             <div class="col-md-12 col-sm-12">
@@ -46,7 +43,7 @@
                 <div class="portlet light ">
                     <div class="portlet-title">
                         <div class="caption">
-                            <i class="{{$icon_class['admin_menu_left_settings_crmlayout_icon']}}" aria-hidden="true"></i> 
+                            <i class="fa fa-cubes" aria-hidden="true"></i> 
                             <span class="caption-subject">Template: <?php echo $template->template_name; ?></span>
                         </div>
                     </div>
@@ -77,11 +74,11 @@
                         </div>
 
                         <!--VC Start-->
-                        @include('admin/layouts/ai_crm_vc_fields')
+                        @include('layouts/crm_layout/ai_crm_vc_fields')
                         <!--VC End-->
 
                         <div class="form-actions noborder right">
-                            <a class="btn blue" href="{{URL::to('admin/crmlayouts/apply_template')}}/{{$template->template_id}}">{{trans('crmlayout.admin_crmlayout_module_add_next_btn')}}</a>
+                            <a class="btn blue" href="{{URL::to('crmlayouts/apply_template')}}/{{$template->template_id}}">Next</a>
                             <a class="btn default" href="{{route('crmlayouts.index')}}">Cancel</a>
                         </div>
                     </div>
@@ -90,9 +87,6 @@
             </div>
         </div>
         <!-- END PAGE BASE CONTENT -->
-        <!-- BEGIN FOOTER -->
-        @include('admin/includes/ne_footer')
-        <!-- END FOOTER -->
     </div>
     <!-- END CONTENT BODY -->
 </div>
@@ -105,5 +99,5 @@
 @endsection
 
 @section('custom_js_script')
-@include('admin/layouts/ai_crm_vc')
+@include('layouts/crm_layout/ai_crm_vc')
 @endsection

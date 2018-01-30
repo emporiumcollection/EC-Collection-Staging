@@ -15,6 +15,45 @@
 
 
 Route::get('/', 'HomeController@index');
+
+/*
+ * AIC: CRM Layout Module
+ */
+
+//Route::get('crmlayouts', 'CrmlayoutController@index');
+Route::resource('crmlayouts', 'CrmlayoutController');
+Route::get('crmlayouts/delete/{crmlayouts}', 'CrmlayoutController@destroy');
+Route::get('crmlayouts/create_template/{template_id}', 'CrmlayoutController@create_template');
+Route::get('crmlayouts/apply_template/{template_id}', 'CrmlayoutController@apply_template');
+Route::get('crmlayouts/add_new_column/{row_id}/{template_id}', 'CrmlayoutController@add_new_column');
+
+Route::post('crmlayouts/add_custom_field', 'CrmlayoutController@add_custom_field');
+Route::post('crmlayouts/add_new_row', 'CrmlayoutController@add_new_row');
+Route::post('crmlayouts/add_new_column', 'CrmlayoutController@add_new_column');
+Route::post('crmlayouts/edit_custom_field', 'CrmlayoutController@edit_custom_field');
+Route::get('crmlayouts/delete_custom_field/{id}/{template_id}', 'CrmlayoutController@delete_custom_field');
+Route::get('crmlayouts/delete_crm_element/{id}/{template_id}', 'CrmlayoutController@delete_custom_field');
+Route::get('crmlayouts/delete_crm_element/{id}/{template_id}', 'CrmlayoutController@delete_crm_element');
+Route::get('crmlayouts/duplicate_row/{id}/{template_id}', 'CrmlayoutController@duplicate_row');
+Route::get('crmlayouts/duplicate_group/{id}/{template_id}', 'CrmlayoutController@duplicate_group');
+Route::get('crmlayouts/delete_row/{id}/{template_id}', 'CrmlayoutController@delete_row');
+Route::get('crmlayouts/delete_group/{id}/{template_id}', 'CrmlayoutController@delete_group');
+Route::get('crmlayouts/dupliate_custom_field/{id}/{template_id}', 'CrmlayoutController@dupliate_custom_field');
+Route::get('crmlayouts/dupliate_crm_elements/{id}/{template_id}', 'CrmlayoutController@dupliate_crm_elements');
+Route::post('crmlayouts/ajax_get_custom_field/{id}', 'CrmlayoutController@ajax_get_custom_field');
+Route::post('crmlayouts/ajax_get_crm_element/{id}', 'CrmlayoutController@ajax_get_crm_element');
+Route::post('crmlayouts/save_row_columns', 'CrmlayoutController@save_row_columns');
+Route::post('crmlayouts/save_row_element', 'CrmlayoutController@save_row_element');
+Route::post('crmlayouts/ajax_save_row_columns', 'CrmlayoutController@ajax_save_row_columns');
+Route::post('crmlayouts/ajax_save_group_columns', 'CrmlayoutController@ajax_save_group_columns');
+Route::post('crmlayouts/ajax_save_fields_order', 'CrmlayoutController@ajax_save_fields_order');
+Route::post('crmlayouts/ajax_save_crm_elements_order', 'CrmlayoutController@ajax_save_crm_elements_order');
+Route::post('crmlayouts/ajax_save_rows_order', 'CrmlayoutController@ajax_save_rows_order');
+Route::post('crmlayouts/do_apply_template', 'CrmlayoutController@do_apply_template');
+Route::post('crmlayouts/edit_row_element', 'CrmlayoutController@edit_row_element');
+
+/**********************************************/
+
 /********** Added By Ravinder *********/
 Route::get('generate/destination', 'GenerateController@destinationGenerate');
 Route::get('generate/hotel', 'GenerateController@hotelGenerate');
@@ -348,35 +387,3 @@ Route::filter('allowOrigin', function($route, $request, $response)
 });
 
 Route::resource('sximoapi', 'SximoapiController');
-
-
-Route::resource('crmlayouts', 'CrmlayoutController');
-Route::get('crmlayouts/delete/{crmlayouts}', 'CrmlayoutController@destroy');
-Route::get('crmlayouts/create_template/{template_id}', 'CrmlayoutController@create_template');
-Route::get('crmlayouts/apply_template/{template_id}', 'CrmlayoutController@apply_template');
-Route::get('crmlayouts/add_new_column/{row_id}/{template_id}', 'CrmlayoutController@add_new_column');
-
-Route::post('crmlayouts/add_custom_field', 'CrmlayoutController@add_custom_field');
-Route::post('crmlayouts/add_new_row', 'CrmlayoutController@add_new_row');
-Route::post('crmlayouts/add_new_column', 'CrmlayoutController@add_new_column');
-Route::post('crmlayouts/edit_custom_field', 'CrmlayoutController@edit_custom_field');
-Route::get('crmlayouts/delete_custom_field/{id}/{template_id}', 'CrmlayoutController@delete_custom_field');
-Route::get('crmlayouts/delete_crm_element/{id}/{template_id}', 'CrmlayoutController@delete_custom_field');
-Route::get('crmlayouts/delete_crm_element/{id}/{template_id}', 'CrmlayoutController@delete_crm_element');
-Route::get('crmlayouts/duplicate_row/{id}/{template_id}', 'CrmlayoutController@duplicate_row');
-Route::get('crmlayouts/duplicate_group/{id}/{template_id}', 'CrmlayoutController@duplicate_group');
-Route::get('crmlayouts/delete_row/{id}/{template_id}', 'CrmlayoutController@delete_row');
-Route::get('crmlayouts/delete_group/{id}/{template_id}', 'CrmlayoutController@delete_group');
-Route::get('crmlayouts/dupliate_custom_field/{id}/{template_id}', 'CrmlayoutController@dupliate_custom_field');
-Route::get('crmlayouts/dupliate_crm_elements/{id}/{template_id}', 'CrmlayoutController@dupliate_crm_elements');
-Route::post('crmlayouts/ajax_get_custom_field/{id}', 'CrmlayoutController@ajax_get_custom_field');
-Route::post('crmlayouts/ajax_get_crm_element/{id}', 'CrmlayoutController@ajax_get_crm_element');
-Route::post('crmlayouts/save_row_columns', 'CrmlayoutController@save_row_columns');
-Route::post('crmlayouts/save_row_element', 'CrmlayoutController@save_row_element');
-Route::post('crmlayouts/ajax_save_row_columns', 'CrmlayoutController@ajax_save_row_columns');
-Route::post('crmlayouts/ajax_save_group_columns', 'CrmlayoutController@ajax_save_group_columns');
-Route::post('crmlayouts/ajax_save_fields_order', 'CrmlayoutController@ajax_save_fields_order');
-Route::post('crmlayouts/ajax_save_crm_elements_order', 'CrmlayoutController@ajax_save_crm_elements_order');
-Route::post('crmlayouts/ajax_save_rows_order', 'CrmlayoutController@ajax_save_rows_order');
-Route::post('crmlayouts/do_apply_template', 'CrmlayoutController@do_apply_template');
-Route::post('crmlayouts/edit_row_element', 'CrmlayoutController@edit_row_element');

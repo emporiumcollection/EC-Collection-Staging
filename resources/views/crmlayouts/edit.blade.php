@@ -1,4 +1,4 @@
-@extends('admin.layouts.index')
+@extends('layouts.app')
 
 @section('content')
 <!-- BEGIN CONTENT -->
@@ -9,15 +9,11 @@
         <div class="page-head">
             <!-- BEGIN PAGE TITLE -->
             <div class="page-title">
-                <h1><i class="{{$icon_class['admin_menu_left_settings_crmlayout_icon']}}" aria-hidden="true"></i> @lang('crmlayout.admin_crmlayout_module_add')
-                </h1>
+                <h1><i class="fa fa-cubes" aria-hidden="true"></i> Template</h1>
             </div>
             <!-- END PAGE TITLE -->
         </div>
         <!-- END PAGE HEAD-->
-        <!-- BEGIN PAGE BREADCRUMB -->
-            @include('admin/includes/ne_breadcrumb')
-        <!-- END PAGE BREADCRUMB -->
         <!-- BEGIN PAGE BASE CONTENT -->
         <div class="row" >
             <div class="col-md-12 col-sm-12">
@@ -45,8 +41,8 @@
                 <div class="portlet light ">
                     <div class="portlet-title">
                         <div class="caption">
-                            <i class="{{$icon_class['admin_menu_left_settings_crmlayout_icon']}}" aria-hidden="true"></i> 
-                            <span class="caption-subject">@lang('crmlayout.admin_crmlayout_module_edit')</span>
+                            <i class="fa fa-cubes" aria-hidden="true"></i> 
+                            <span class="caption-subject">Edit Template</span>
                         </div>
                     </div>
                     <div class="portlet-body form" id="from-group-style">
@@ -76,7 +72,7 @@
 						
                         {!! Form::model($crmlayouts, ['route' => ['crmlayouts.update', $crmlayouts->template_id], 'method' => 'patch']) !!}
 
-							@include('admin.crmlayouts.fields')
+							@include('crmlayouts.fields')
 
 					   {!! Form::close() !!}
                     </div>
@@ -85,9 +81,6 @@
             </div>
         </div>
         <!-- END PAGE BASE CONTENT -->
-        <!-- BEGIN FOOTER -->
-            @include('admin/includes/ne_footer')
-        <!-- END FOOTER -->
     </div>
     <!-- END CONTENT BODY -->
 </div>
@@ -99,4 +92,4 @@
 @endsection          
 @section('custom_js_script')
 
-@endsection            
+@endsection

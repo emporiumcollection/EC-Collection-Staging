@@ -13,6 +13,7 @@
         <link href="{{ asset('sximo/assets/css/m-popup.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/m-popup.min.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/filter-bar.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('sximo/assets/css/slick.min.css')}}" rel="stylesheet" type="text/css"/>
         <!-- font-awesome icon -->
         <link rel="stylesheet" href="{{ asset('sximo/assets/css/font-awesome.min.css')}}" />
         <!-- style -->
@@ -67,6 +68,21 @@
             }
             .slider-sec-side-text-bg {
                 margin-top: -103%;
+            }
+            .hotels-logo {
+                background: #252525 none repeat scroll 0 0;
+            }
+            .right-menus ul li a {
+                border-bottom: 1px solid #414246;
+            }
+            .new-sidebar-sk .panel-heading.custom-heading {
+                border-bottom: 1px solid #414246;
+            }
+            .heading-stying {
+                font-size: 12px !important;
+            }
+            .new-sidebar-sk .panel-heading.custom-heading:hover {
+                background-color: #89837B !important;
             }
             .right-menus ul li a {
                 background-color: #1E2023;
@@ -321,20 +337,20 @@
 
 
         </style>
-        <script type="text/javascript">
-$(document).on('ready', function () {
-    $(".regular").slick({
-        dots: false,
-        infinite: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        prevArrow: false,
-        nextArrow: false,
-        autoplay: true,
-        autoplaySpeed: 3000
-    });
-}); 
-        </script>
+<!--        <script type="text/javascript">
+            $(document).on('ready', function () {
+                $(".regular").slick({
+                    dots: false,
+                    infinite: true,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    prevArrow: false,
+                    nextArrow: false,
+                    autoplay: true,
+                    autoplaySpeed: 3000
+                });
+            }); 
+        </script>-->
     </head>
     <body>
         <!-- Start slider section -->
@@ -789,7 +805,7 @@ $(document).on('ready', function () {
                         imagesPro += (data.currency.content != '') ? data.currency.content : '$';
                         imagesPro += data.pdata.package_price;
                         imagesPro += '</div>';
-						imagesPro += '<a href="#"><div class="hotel-book-now">Book Now</div></a>';
+						imagesPro += '<a href="#"><div class="hotel-book-now">Add to cart</div></a>';
                     }
                     else
 					{
@@ -797,9 +813,9 @@ $(document).on('ready', function () {
 						imagesPro += '<a href="#"><div class="hotel-book-now">Get in touch</div></a>';
 					}
                     imagesPro += '</div>';
-                    imagesPro += '<div class="inner-pop-up-book-btn">';
+                    /*imagesPro += '<div class="inner-pop-up-book-btn">';
                     imagesPro += '<a href="#">Book</a>';
-                    imagesPro += '</div>';
+                    imagesPro += '</div>';*/
                     imagesPro += '</div>';
                     $('#popupopn .single-right-text-product').html(imagesPro);
                     $('.show_more-page').css("width", "100%");

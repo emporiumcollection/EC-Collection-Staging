@@ -1,11 +1,10 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\controller;
 use App\Models\Crmlayout;
-use App\Models\ModBuilder;
+use App\Models\Sximo\Module;
 use App\Models\ModelsAiCrmRows;
 use App\Models\ModelsAiCrmGroups;
 use App\Models\ModelsAiCrmCustomfield;
@@ -19,20 +18,33 @@ use Auth,
     Validator,
     Input,
     Redirect;
-use App\Helpers\SettingOptions;
+//use App\Helpers\SettingOptions;
 
 class CrmlayoutController extends Controller {
 
-    private $data = array();
+    protected $layout = "layouts.main";
+    protected $data = array();	
+    public $module = 'crmlayout';
+    static $per_page	= '10';
+    
+    public function __construct() {
 
-    public function __construct(Request $request) {
-        $this->data['leftNavBar'] = true;
-        $this->data['title'][0] = array('title' => trans('crmlayout.admin_crmlayout_module_title'), 'url' => 'admin/crmlayout');
-        $this->data['parent_page'] = 'settings';
-        $this->data['current_page'] = $request->segment(2);
-        $this->data['icon_class'] = SettingOptions::Options('icon');
-        $this->data['color_class'] = SettingOptions::Options('colour');
-        $this->models = new Crmlayout;
+            $this->beforeFilter('csrf', array('on'=>'post'));
+            $this->model = new Crmlayout();
+
+            $this->info = $this->model->makeInfo( $this->module);
+            $this->access = $this->model->validAccess($this->info['id']);
+
+            $this->data = array(
+                    'pageTitle'	=> 	$this->info['title'],
+                    'pageNote'	=>  $this->info['note'],
+                    'pageModule'=> 'crmlayout',
+                    'return'	=> self::returnUrl()
+
+            );
+            $this->data['icon_class'] = '';
+            $this->data['color_class'] = '';
+            $this->data['access'] = $this->access;
     }
 
     /**
@@ -42,12 +54,13 @@ class CrmlayoutController extends Controller {
      * @return Response
      */
     public function index(Request $request) {
-        $this->data['access'] = $this->models->validAccess(Auth::id());
-        if (!isset($this->data['access']['list-crmlayout']) && !isset($this->data['access']['all'])) {
-            return redirect('accessDenied');
+        
+        if($this->access['is_view'] == 0) {
+            return Redirect::to('dashboard')->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus','error');
         }
+        
         $this->data['crmlayouts'] = Crmlayout::All();
-        return view('admin.crmlayouts.index', $this->data);
+        return view('crmlayouts.index', $this->data);
     }
 
     /**
@@ -56,24 +69,24 @@ class CrmlayoutController extends Controller {
      * @return Response
      */
     public function create() {
-        $this->data['access'] = $this->models->validAccess(Auth::id());
-        if (!isset($this->data['access']['create-crmlayout']) && !isset($this->data['access']['all'])) {
-            return redirect('accessDenied');
+        
+        if($this->access['is_add'] == 0 ) {
+            return Redirect::to('dashboard')->with('messagetext',\Lang::get('core.note_restric'))->with('msgstatus','error');
         }
-        $this->data['title'][1] = array('title' => trans('crmlayout.admin_crmlayout_module_add'), 'url' => '');
-        $this->data['modules'] = ModBuilder::All();
-        return view('admin.crmlayouts.create', $this->data);
+        
+        $this->data['title'][1] = array('title' => 'New CRM Layout', 'url' => '');
+        $this->data['modules'] = Module::All();
+        return view('crmlayouts.create', $this->data);
     }
 
     /**
      * Create Template
      */
     public function create_template($template_id) {
-        $this->data['access'] = $this->models->validAccess(Auth::id());
-        if (!isset($this->data['access']['create-crmlayout']) && !isset($this->data['access']['all'])) {
-            return redirect('accessDenied');
+        if($this->access['is_add'] == 0 ) {
+            return Redirect::to('dashboard')->with('messagetext',\Lang::get('core.note_restric'))->with('msgstatus','error');
         }
-        $this->data['title'][1] = array('title' => trans('crmlayout.admin_crmlayout_module_add'), 'url' => '');
+        $this->data['title'][1] = array('title' => 'New CRM Layout', 'url' => '');
         $template = Crmlayout::select('*')->where('template_id', '=', $template_id)->first();
         
         $all_rows = array();
@@ -91,7 +104,7 @@ class CrmlayoutController extends Controller {
                                 ->leftJoin('ai_crm_groups','ai_crm_groups.crm_group_id','=','ai_crm_elements.group_id')
                                 ->select('ai_crm_elements.*')->where('ai_crm_elements.parent_id','=','0')->where('ai_crm_elements.row_id','=',$all_row['crm_row_id'])->where('ai_crm_elements.group_id','=',$all_other_group['crm_group_id'])->orderBy('ai_crm_elements.sort_order','ASC')->get();
                         
-                        $custom_fields = ModBuilder::join('ai_crm_groups','ai_crm_groups.idmod_mfg','=','modbuilder_mob.id_modbuilder')
+                        $custom_fields = ModBuilder::join('ai_crm_groups','ai_crm_groups.idmod_mfg','=','tb_module.module_id')
                                                 ->join('ai_crm_customfield','ai_crm_customfield.idmfg_mcf','ai_crm_groups.crm_group_id')
                                                 ->join('ai_crm_rows','ai_crm_rows.crm_row_id','ai_crm_groups.row_id')
                                                 ->select('ai_crm_rows.*', 'ai_crm_groups.*', 'ai_crm_rows.columns AS row_columns', 'ai_crm_groups.title_mfg', 'crm_customfield_id','title_mcf','slug_mcf','idmfg_mcf','option_mcf')->where('ai_crm_groups.crm_group_id','=',$all_other_group['crm_group_id'])->orderBy('orderby_mcf','asc')->get();
@@ -115,19 +128,18 @@ class CrmlayoutController extends Controller {
         $this->data['all_rows'] = $all_rows;
         $this->data['groups'] = ModelsAiCrmGroups::select('*')->where('idmod_mfg', '=', $template->module_id)->get();
         $this->data['rows'] = ModelsAiCrmRows::select('*')->where('module_id', '=', $template->module_id)->get();
-        $this->data['modules'] = ModBuilder::All();
-        return view('admin.crmlayouts.create_template', $this->data);
+        $this->data['modules'] = Module::All();
+        return view('crmlayouts.create_template', $this->data);
     }
 
     /**
      * Apply Template
      */
     public function apply_template($template_id) {
-        $this->data['access'] = $this->models->validAccess(Auth::id());
-        if (!isset($this->data['access']['create-crmlayout']) && !isset($this->data['access']['all'])) {
-            return redirect('accessDenied');
+        if($this->access['is_add'] == 0 ) {
+            return Redirect::to('dashboard')->with('messagetext',\Lang::get('core.note_restric'))->with('msgstatus','error');
         }
-        $this->data['title'][1] = array('title' => trans('crmlayout.admin_crmlayout_module_add'), 'url' => '');
+        $this->data['title'][1] = array('title' => 'CRM Layout', 'url' => '');
         $template = Crmlayout::select('*')->where('template_id', '=', $template_id)->first();
         
         $all_rows = array();
@@ -139,7 +151,7 @@ class CrmlayoutController extends Controller {
                 $all_other_groups = ModelsAiCrmGroups::select('*')->where('row_id','=',$all_row['crm_row_id'])->get();
                 if(!empty($all_other_groups)) {
                     foreach ($all_other_groups as $key => $all_other_group) {
-                        $all_other_groups[$key]['all_custom_fields'] = ModBuilder::join('ai_crm_groups','ai_crm_groups.idmod_mfg','=','modbuilder_mob.id_modbuilder')
+                        $all_other_groups[$key]['all_custom_fields'] = ModBuilder::join('ai_crm_groups','ai_crm_groups.idmod_mfg','=','tb_module.module_id')
                                                 ->join('ai_crm_customfield','ai_crm_customfield.idmfg_mcf','ai_crm_groups.crm_group_id')
                                                 ->join('ai_crm_rows','ai_crm_rows.crm_row_id','ai_crm_groups.row_id')
                                                 ->select('ai_crm_groups.*', 'ai_crm_rows.*', 'ai_crm_groups.title_mfg', 'crm_customfield_id','title_mcf','slug_mcf','idmfg_mcf','option_mcf')->where('ai_crm_groups.crm_group_id','=',$all_other_group['crm_group_id'])->orderBy('orderby_mcf','asc')->get();
@@ -153,8 +165,8 @@ class CrmlayoutController extends Controller {
         $this->data['all_rows'] = $all_rows;
         $this->data['groups'] = ModelsAiCrmGroups::select('*')->where('idmod_mfg', '=', $template->module_id)->get();
         $this->data['rows'] = ModelsAiCrmRows::select('*')->where('module_id', '=', $template->module_id)->get();
-        $this->data['modules'] = ModBuilder::All();
-        return view('admin.crmlayouts.apply_template', $this->data);
+        $this->data['modules'] = Module::All();
+        return view('crmlayouts.apply_template', $this->data);
     }
     
     /*
@@ -277,7 +289,7 @@ class CrmlayoutController extends Controller {
         }
         
         $request->session()->flash('alert-success', 'Template applied successfully.');
-        return redirect('admin/crmlayouts');
+        return redirect('crmlayouts');
     }
     
     function migrate_tab_elements($element) {
@@ -398,7 +410,7 @@ class CrmlayoutController extends Controller {
             }
             
         }
-        return redirect('admin/crmlayouts/create_template/'.$request->input('template_id'));
+        return redirect('crmlayouts/create_template/'.$request->input('template_id'));
     }
     
     /*
@@ -417,7 +429,7 @@ class CrmlayoutController extends Controller {
             $group->save();
         }
         
-        return redirect('admin/crmlayouts/create_template/'.$template_id);
+        return redirect('crmlayouts/create_template/'.$template_id);
     }
     
     /*
@@ -474,7 +486,7 @@ class CrmlayoutController extends Controller {
             $crm_element->save();
             
         }
-        return redirect('admin/crmlayouts/create_template/'.$request->input('template_id'));
+        return redirect('crmlayouts/create_template/'.$request->input('template_id'));
     }
 
     /*
@@ -523,7 +535,7 @@ class CrmlayoutController extends Controller {
             $field->save();
             
         }
-        return redirect('admin/crmlayouts/create_template/'.$request->input('template_id'));
+        return redirect('crmlayouts/create_template/'.$request->input('template_id'));
     }
     
     /*
@@ -533,7 +545,7 @@ class CrmlayoutController extends Controller {
     function delete_custom_field(Request $request, $id, $template_id) {
         ModelsAiCrmCustomfield::destroy($id);
         ModelsAiCrmElements::where('customfield_id', $id)->delete();
-        return redirect('admin/crmlayouts/create_template/'.$template_id);
+        return redirect('crmlayouts/create_template/'.$template_id);
     }
     
     /*
@@ -549,7 +561,7 @@ class CrmlayoutController extends Controller {
         
         ModelsAiCrmElements::destroy($id);
         
-        return redirect('admin/crmlayouts/create_template/'.$template_id);
+        return redirect('crmlayouts/create_template/'.$template_id);
     }
     
     /*
@@ -565,7 +577,7 @@ class CrmlayoutController extends Controller {
                 ModelsAiCrmGroups::where('crm_group_id', $group['crm_group_id'])->delete();
             }
         }
-        return redirect('admin/crmlayouts/create_template/'.$template_id);
+        return redirect('crmlayouts/create_template/'.$template_id);
     }
     
     /*
@@ -575,7 +587,7 @@ class CrmlayoutController extends Controller {
     function delete_group(Request $request, $id, $template_id) {
         ModelsAiCrmGroups::destroy($id);
         ModelsAiCrmCustomfield::where('idmfg_mcf', $id)->delete();
-        return redirect('admin/crmlayouts/create_template/'.$template_id);
+        return redirect('crmlayouts/create_template/'.$template_id);
     }
     
     /*
@@ -623,7 +635,7 @@ class CrmlayoutController extends Controller {
             }
         }
         
-        return redirect('admin/crmlayouts/create_template/'.$template_id);
+        return redirect('crmlayouts/create_template/'.$template_id);
     }
     
     /*
@@ -658,7 +670,7 @@ class CrmlayoutController extends Controller {
             }
         }
         
-        return redirect('admin/crmlayouts/create_template/'.$template_id);
+        return redirect('crmlayouts/create_template/'.$template_id);
     }
     
     /*
@@ -681,7 +693,7 @@ class CrmlayoutController extends Controller {
         $newelement->sort_order = 9999999;
         $newelement->save();
         
-        return redirect('admin/crmlayouts/create_template/'.$template_id);
+        return redirect('crmlayouts/create_template/'.$template_id);
     }
     
     /*
@@ -701,7 +713,7 @@ class CrmlayoutController extends Controller {
                 
         $newelement->save();
         
-        return redirect('admin/crmlayouts/create_template/'.$template_id);
+        return redirect('crmlayouts/create_template/'.$template_id);
     }
     
     /*
@@ -920,7 +932,7 @@ class CrmlayoutController extends Controller {
         $crm_element->element_options = $element_options;
         $crm_element->save();
         
-        return redirect('admin/crmlayouts/create_template/'.$template_id);
+        return redirect('crmlayouts/create_template/'.$template_id);
         
     }
     
@@ -963,7 +975,7 @@ class CrmlayoutController extends Controller {
                 }
             }
         }
-        return redirect('admin/crmlayouts/create_template/'.$row->template_id);
+        return redirect('crmlayouts/create_template/'.$row->template_id);
     }
     
     /*
@@ -1110,9 +1122,9 @@ class CrmlayoutController extends Controller {
             }
         }
         $findr->save();
-        $request->session()->flash('alert-success', trans('crmlayout.admin_crmlayout_module_add_message'));
+        $request->session()->flash('alert-success', 'New templated created successfully.');
 
-        return redirect('admin/crmlayouts/create_template/'.$findr->template_id);
+        return redirect('crmlayouts/create_template/'.$findr->template_id);
     }
 
     /**
@@ -1134,15 +1146,16 @@ class CrmlayoutController extends Controller {
      * @return Response
      */
     public function edit($id) {
-        $this->data['access'] = $this->models->validAccess(Auth::id());
-        if (!isset($this->data['access']['update-crmlayout']) && !isset($this->data['access']['all'])) {
-            return redirect('accessDenied');
+        
+        if($this->access['is_edit'] == 0 ) {
+            return Redirect::to('dashboard')->with('messagetext',\Lang::get('core.note_restric'))->with('msgstatus','error');
         }
+        
         $this->data['title'][1] = array('title' => trans('crmlayout.admin_crmlayout_module_edit'), 'url' => '');
         $findr = Crmlayout::find($id);
         $this->data['crmlayouts'] = $findr;
-        $this->data['modules'] = ModBuilder::All();
-        return view('admin.crmlayouts.edit', $this->data);
+        $this->data['modules'] = Module::All();
+        return view('crmlayouts.edit', $this->data);
     }
 
     /**
@@ -1176,9 +1189,9 @@ class CrmlayoutController extends Controller {
             }
         }
         $findr->save();
-        $request->session()->flash('alert-success', trans('crmlayout.admin_crmlayout_module_update_message'));
+        $request->session()->flash('alert-success', 'Template updated successfully.');
 
-        return redirect('admin/crmlayouts/create_template/'.$findr->template_id);
+        return redirect('crmlayouts/create_template/'.$findr->template_id);
     }
 
     /**
@@ -1189,13 +1202,14 @@ class CrmlayoutController extends Controller {
      * @return Response
      */
     public function destroy(Request $request, $id) {
-
-        $this->data['access'] = $this->models->validAccess(Auth::id());
-        if (!isset($this->data['access']['delete-crmlayout']) && !isset($this->data['access']['all'])) {
-            return redirect('accessDenied');
+        
+        if($this->access['is_remove'] == 0) {
+            return Redirect::to('dashboard')
+				->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus','error');
         }
+        
         Crmlayout::destroy($id);
-        $request->session()->flash('alert-success', trans('crmlayout.admin_crmlayout_module_delete_message'));
+        $request->session()->flash('alert-success', 'Template deleted successfully.');
 
         return redirect(route('crmlayouts.index'));
     }

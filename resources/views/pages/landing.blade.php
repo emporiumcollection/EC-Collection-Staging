@@ -1336,7 +1336,7 @@
                         </form>
                         <!--Search form end-->
                     </div>
-                    <div class="panel-group-" id="accordion1">
+                    <div class="panel-group- sachin" id="accordion1">
                        <?php 
                        /* Note:
                             Now the our destinations will render from storage/app/homeOurDestination.html. 
@@ -2655,7 +2655,6 @@
             })(document);
             
         </script>
-
         @include('layouts/elliot/ai_search-page')
         @include('layouts/elliot/ai_booking-page')
         @include('layouts/elliot/ai_newsletter')

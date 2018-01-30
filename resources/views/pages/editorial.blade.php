@@ -712,9 +712,9 @@
                                 margin-right: 0px;
                             }
                             
-                            .editorial-image-slider-previous-btn {
+/*                            .editorial-image-slider-previous-btn {
                                 margin-left: 384px !important;
-                            }
+                            }*/
                             
                             .editorial-hotel-detail-page #align-to-top .book-button.open-show_more-page.hotel-btn {
                                 background-color: #ABA07C;
@@ -1890,7 +1890,7 @@
                                 <div class="bar-sec-inner-pannel">
                                     <div class="col-md-12 noPadding">
                                         <div class="col-md-8 vegasBarLeft">
-                                        <div class="col-md-3 col-sm-3">
+                                        <div class="col-md-3 col-sm-6">
                                             <div class="row">
                                                 @if($propertyDetail['data']->bar_image!='')
                                                 <img class="img-responsive img-width" src="{{ ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$propertyDetail['data']->bar_image),100,255,null)}}" alt=""/>  
@@ -1934,7 +1934,7 @@
                                             </div>
                                         </div>
                                         </div>
-                                        <div class="col-md-4 col-sm-3 vegasRightBar">
+                                        <div class="col-md-4 col-sm-12 vegasRightBar">
                                             <div class="row">
                                                 <div class="bar-image-rigth">
                                                     @if($propertyDetail['data']->bar_image3!='')

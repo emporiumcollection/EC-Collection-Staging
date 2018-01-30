@@ -99,6 +99,15 @@ and open the template in the editor.
 body{
     font-family: Geomanist-Regular;
 }
+/* AIC */
+
+.SlickVegasWidth {
+            
+    width: 18.5%;
+    }
+    
+/* AIC END */    
+
 .form-group.post-filter-inputs.active a {
     color: #000;
 }
