@@ -3258,7 +3258,7 @@ div.panel.footer-nav-menu.show {
 }
 
 .sidenav a {
-    color: #000;
+    color: #ABA07C;
     display: block;
     font-family: Geomanist-Regular;
     font-size: 13px;
@@ -3267,7 +3267,7 @@ div.panel.footer-nav-menu.show {
     transition: all 0.3s ease 0s;
 }
 .sidenav a:hover, .offcanvas a:focus{
-    color: #f1f1f1;
+    color: #ABA07C;
 }
 
 .sidenav .closebtn {

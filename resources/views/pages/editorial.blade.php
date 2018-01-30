@@ -337,9 +337,9 @@
                                 padding: 15px 0 14px 28px;
                             }
                             .editorial-hotel-detail-page .right-menus ul li a:hover {
-                                background: #ada077;
-                                color: black;
-                                opacity: 0.8;
+                                background: #817B74;
+                                color: #fff;
+                                opacity: 1;
                             }
                             .editorial-hotel-detail-page img.banner-arrow-bg {
                                 background-color: rgb(37, 37, 37);
@@ -1464,7 +1464,7 @@
                         </div>
                     </div>
                 </div>
-                <span class="hamburger-menu editorial-res-side-nav-logo"  onclick="openNav()"><img src="{{ asset('sximo/assets/images/Hamburger-Menu.png')}}" alt=""/></span>
+                <span class="hamburger-menu editorial-res-side-nav-logo"  onclick="openNav()"><img src="{{ asset('sximo/assets/images/Hamburger-Menu_1.png')}}" alt=""/></span>
                 <div class="clerafix"></div>
                 <div class="editorial-page-booking-bar">
                     <section class="book-form-top-bar">

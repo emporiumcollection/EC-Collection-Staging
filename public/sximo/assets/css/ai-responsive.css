@@ -377,6 +377,12 @@
 	padding: 7px !important;
 	width: 115px !important;
     }
+    .editorial-image-slider-previous-btn {
+	margin-left: 80% !important;
+    }
+    .editorial-image-slider-btns.image-slider-btns a {
+	margin-top: 75px;
+    }
     
     /* detail page */
     
@@ -445,6 +451,7 @@
     }
     .image-showcase-below-big-text {
 	margin-left: 0px !important;
+        font-size: 50px !important;
     }
     .gallery .info1 p {
 	overflow: visible !important;
@@ -459,7 +466,11 @@
 	top: 0%;
     }
     .image-slider-container .editorial-images-count {
-	margin-left: 350px !important;
+	margin-left: 380px !important;
+	margin-top: -136px;
+    }
+    .bar-name-text-style {
+	color: #000 !important;
     }
     .ai-spa-sec-inner {
 	float: left;
