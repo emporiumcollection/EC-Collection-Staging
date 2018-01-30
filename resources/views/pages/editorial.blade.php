@@ -1662,7 +1662,7 @@
                                 <div class="row">
                                     <div class="disply-left-right-align">
                                         <div class="col-md-6 disply-left-right-inner">
-                                            <div class="hotel-block-two-left-sec-align">
+                                            <div class="hotel-block-two-left-sec-align harman">
                                                 <h2>{{$propertyDetail['data']->detail_section1_title}}</h2>
                                                 <p class="scrollbar" id="style-3">
                                                     {!! nl2br($propertyDetail['data']->detail_section1_description_box1) !!}
