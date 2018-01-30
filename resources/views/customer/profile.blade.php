@@ -10,24 +10,24 @@
 
   <!-- Nav tabs <i class="fa fa-bullhorn" aria-hidden="true"></i></div><span>Ads -->
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-user" aria-hidden="true"></i>Profile</a></li>
-        <li role="presentation"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-bullhorn" aria-hidden="true"></i>ADS</a></li>
-    <li role="presentation"><a href="#comingsoon" aria-controls="comingsoon" role="tab" data-toggle="tab"><i class="fa fa-star-o" aria-hidden="true"></i>FAVOURITE</a></li>
-    <li role="presentation"><a href="#comingsoon" aria-controls="comingsoon" role="tab" data-toggle="tab"><i class="fa fa-rocket" aria-hidden="true"></i>Service</a></li>
-    <li role="presentation"><a href="#comingsoon" aria-controls="comingsoon" role="tab" data-toggle="tab"> <i class="fa fa-calendar-check-o" aria-hidden="true"></i>Magazine</a></li>
+    <li role="presentation" class="active"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+        <li role="presentation"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"></i>ADS</a></li>
+    <li role="presentation"><a href="#comingsoon" aria-controls="comingsoon" role="tab" data-toggle="tab">FAVOURITE</a></li>
+    <li role="presentation"><a href="#comingsoon" aria-controls="comingsoon" role="tab" data-toggle="tab">Service</a></li>
+    <li role="presentation"><a href="#comingsoon" aria-controls="comingsoon" role="tab" data-toggle="tab"> </i>Magazine</a></li>
 
     <li  role="presentation" class="<?php echo (isset($active_menu) && $active_menu == 'bookings')? 'active' : ''; ?>">
                                                         <a href="{{URL::to('bookings')}}">
-                                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>Bookings
+                                                            Bookings
                                                         </a>
                                                     </li>
 
-     <li role="presentation"><a href="#accountOptions" aria-controls="accountOptions" role="tab" data-toggle="tab"> <i class="fa fa-calendar-check-o" aria-hidden="true"></i>Account Settings</a></li>
+     <li role="presentation"><a href="#accountOptions" aria-controls="accountOptions" role="tab" data-toggle="tab">Account Settings</a></li>
 
 
 
-       <li role="presentation"><a href="{{ URL::to('')}}" aria-controls="settings" role="tab" data-toggle="tab"> <i class="fa fa-home" aria-hidden="true"></i>Frontend</a></li>
-        <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab"> <i class="fa fa-calendar-check-o" aria-hidden="true"></i>Technical Support</a></li>
+       <li role="presentation"><a href="{{ URL::to('')}}" aria-controls="settings" role="tab" data-toggle="tab">Frontend</a></li>
+        <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab"> Technical Support</a></li>
   </ul>
 
   <!-- Tab panes -->
