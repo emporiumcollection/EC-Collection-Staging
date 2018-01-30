@@ -99,9 +99,9 @@ class CrmlayoutController extends Controller {
                 if(!empty($all_other_groups)) {
                     foreach ($all_other_groups as $key => $all_other_group) {
                         $all_other_groups[$key]['elements'] = ModelsAiCrmElements::
-                                leftJoin('ai_crm_customfield','ai_crm_customfield.crm_customfield_id','ai_crm_elements.customfield_id')
-                                ->leftJoin('ai_crm_rows','ai_crm_rows.crm_row_id','ai_crm_elements.row_id')
-                                ->leftJoin('ai_crm_groups','ai_crm_groups.crm_group_id','ai_crm_elements.group_id')
+                                leftJoin('ai_crm_customfield','ai_crm_customfield.crm_customfield_id = ai_crm_elements.customfield_id')
+                                ->leftJoin('ai_crm_rows','ai_crm_rows.crm_row_id = ai_crm_elements.row_id')
+                                ->leftJoin('ai_crm_groups','ai_crm_groups.crm_group_id = ai_crm_elements.group_id')
                                 ->select('ai_crm_elements.*')->where('ai_crm_elements.parent_id','=','0')->where('ai_crm_elements.row_id','=',$all_row['crm_row_id'])->where('ai_crm_elements.group_id','=',$all_other_group['crm_group_id'])->orderBy('ai_crm_elements.sort_order','ASC')->get();
                         
                         $custom_fields = ModBuilder::join('ai_crm_groups','ai_crm_groups.idmod_mfg','tb_module.module_id')
