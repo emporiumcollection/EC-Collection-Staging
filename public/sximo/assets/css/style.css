@@ -2734,7 +2734,7 @@ header .menu ul li a:hover, header .menu ul li a:active, header .menu ul li a:fo
     color: #fff;
     float: left;
     font-size: 33px;
-    margin-left: 19%;
+    margin-left: 38%;
     margin-top: -155px;
     position: relative;
     width: 22%;
@@ -2835,7 +2835,7 @@ header .menu ul li a:hover, header .menu ul li a:active, header .menu ul li a:fo
         font-size: 26px;
     }
     .small-box-text {
-        font-size: 20px;
+        font-size: 15px !important;
     }
     .architecture-sec-heading {
         margin-left: -119px;

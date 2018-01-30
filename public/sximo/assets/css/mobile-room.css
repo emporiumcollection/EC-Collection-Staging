@@ -1,4 +1,19 @@
 @media only screen and (min-width: 0px) and (max-width: 1200px) {
+    
+    /* AIC */
+    
+    #align-to-top .book-button.open-show_more-page.hotel-btn {
+	font-size: 13px;
+	padding: 8px 5px;
+    }
+    .newbkbtn {
+	font-size: 13px;
+    }
+    .hotel-slider-price {
+	font-size: 13px;
+	padding: 8px 5px;
+    }
+    
     .contact {
         overflow: inherit !important;
     }
