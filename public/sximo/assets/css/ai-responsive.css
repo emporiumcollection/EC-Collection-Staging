@@ -4,10 +4,25 @@
 
 @media (min-width: 1201px) and (max-width: 1400px) {
     .hotel-detail-slider-price-and-show-more .hotel-slider-price {
-        margin-left: 0;
-        padding: 8px 7px;
-        margin-top: 8px;
+	margin-left: 10px;
+	padding: 8px 7px;
+	margin-top: 0px;
     }
+    .newbkbtn {
+	padding: 8px 3px;
+    }
+    #align-to-top .book-button.open-show_more-page.hotel-btn {
+	padding: 8px 3px;
+    }
+    .small-box-text {
+	font-size: 16px;
+    }
+    .editorial-custom-footer-style .newsletter-style {
+	width: 100%;
+    }
+    
+    
+    
     .top-booking-bar-btn {
 	padding: 9px 3px 9px 3px;
 	font-size: 11px;
@@ -500,9 +515,6 @@
     
     .landing-page-lock-login-btn-outer-align {
 	width: 100%;
-    }
-    .video-popup-btn.login_popup.show-login-forms-btn {
-	width: 0% !important;
     }
     
     /* date select */
