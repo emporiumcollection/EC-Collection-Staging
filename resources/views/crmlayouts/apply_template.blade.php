@@ -85,8 +85,8 @@
                                 </div>
                             </div>
                             <div class="form-actions noborder right">
-                                <input class="btn blue " value="{{trans('crmlayout.admin_crmlayout_module_add_next_btn')}}" type="submit">
-                                <a class="btn default" href="{{route('crmlayouts.index')}}">Cancel</a>
+                                <input class="btn btn-primary" value="{{trans('crmlayout.admin_crmlayout_module_add_next_btn')}}" type="submit">
+                                <a class="btn btn-default" href="{{route('crmlayouts.index')}}">Cancel</a>
                             </div>
                         </form>
                         <!--Apply Template Form End-->

@@ -78,8 +78,8 @@
                         <!--VC End-->
 
                         <div class="form-actions noborder right">
-                            <a class="btn blue" href="{{URL::to('crmlayouts/apply_template')}}/{{$template->template_id}}">Next</a>
-                            <a class="btn default" href="{{route('crmlayouts.index')}}">Cancel</a>
+                            <a class="btn btn-primary" href="{{URL::to('crmlayouts/apply_template')}}/{{$template->template_id}}">Next</a>
+                            <a class="btn btn-default" href="{{route('crmlayouts.index')}}">Cancel</a>
                         </div>
                     </div>
                 </div>

@@ -31,5 +31,5 @@
 <!-- Submit Field -->
 <div class="form-actions noborder right">
     <button type="submit" name="submit" class="btn btn-primary btn-sm" ><i class="fa  fa-save "></i> {{ Lang::get('core.sb_save') }}</button>
-    <a class="btn default" href="{{route('crmlayouts.index')}}">Cancel</a>
+    <a class="btn btn-default" href="{{route('crmlayouts.index')}}">Cancel</a>
 </div>
