@@ -12,7 +12,16 @@
 	padding: 8px 3px !important;
     }
     #align-to-top .book-button.open-show_more-page.hotel-btn {
-	padding: 0px 0px !important;
+	padding: 0px 0px;
+    }
+    .hotel-detail-slider-price-and-show-more a {
+	padding: 8px 2px 8px !important;
+    }
+    .image-slider-container .editorial-image-slider-btns {
+	margin-top: -11.5% !important;
+    }
+    .image-slider-container .editorial-images-count {
+	margin-top: -145px !important;
     }
     .small-box-text {
 	font-size: 16px !important;
