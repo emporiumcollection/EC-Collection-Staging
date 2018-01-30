@@ -152,8 +152,8 @@ class CrmlayoutController extends Controller {
                 if(!empty($all_other_groups)) {
                     foreach ($all_other_groups as $key => $all_other_group) {
                         $all_other_groups[$key]['all_custom_fields'] = Module::join('ai_crm_groups','ai_crm_groups.idmod_mfg','=','tb_module.module_id')
-                                                ->join('ai_crm_customfield','ai_crm_customfield.idmfg_mcf','ai_crm_groups.crm_group_id')
-                                                ->join('ai_crm_rows','ai_crm_rows.crm_row_id','ai_crm_groups.row_id')
+                                                ->join('ai_crm_customfield','ai_crm_customfield.idmfg_mcf','=','ai_crm_groups.crm_group_id')
+                                                ->join('ai_crm_rows','ai_crm_rows.crm_row_id','=','ai_crm_groups.row_id')
                                                 ->select('ai_crm_groups.*', 'ai_crm_rows.*', 'ai_crm_groups.title_mfg', 'crm_customfield_id','title_mcf','slug_mcf','idmfg_mcf','option_mcf')->where('ai_crm_groups.crm_group_id','=',$all_other_group['crm_group_id'])->orderBy('orderby_mcf','asc')->get();
                     }
                 }
