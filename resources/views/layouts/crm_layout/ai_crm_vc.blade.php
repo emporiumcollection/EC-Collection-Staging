@@ -1109,7 +1109,7 @@ $fieldArray['file'] = 'File';
     </div>
 </div>
 <!--Edit model end here-->
-<script src="{{URL::to('/../crm_layout/tinymce/js/tinymce/tinymce.min.js')}}" type="text/javascript"></script>
+<script src="{{ asset('sximo/crm_layout/tinymce/tinymce.min.js')}}" type="text/javascript"></script>
 <script>
     
     function vc_edit_element(This) {
