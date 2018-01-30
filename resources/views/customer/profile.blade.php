@@ -2,7 +2,7 @@
 @extends('frontend.layouts.ev.customer')
 @section('content')
 <style>
-#formerrors { color:#ff0000;}
+#formerrors { color:#ffec0cf2;}
 </style>
 <section>
 
