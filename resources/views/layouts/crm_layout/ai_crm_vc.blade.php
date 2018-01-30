@@ -393,7 +393,7 @@ $fieldArray['file'] = 'File';
                         <div class="vc-element">
                             <a class="vc-element-btn" data-element="separator" href="javascript:void(0);">
                                 <div class="vc-element-left">
-                                    <img class="vc-element-icon" src="{{URL::to('/../img/ai-vc-icon-hr-space.png')}}" >
+                                    <img class="vc-element-icon" src="{{ asset('sximo/crm_layout/ai-vc-icon-hr-space.png')}}" >
                                 </div>
                                 <div class="vc-element-right">
                                     <div class="vc-element-title">Separator</div>
@@ -404,7 +404,7 @@ $fieldArray['file'] = 'File';
                         <div class="vc-element">
                             <a class="vc-element-btn" data-element="empty-space" href="javascript:void(0);">
                                 <div class="vc-element-left">
-                                    <img class="vc-element-icon" src="{{URL::to('/../img/ai-vc-icon-empty-space.png')}}" >
+                                    <img class="vc-element-icon" src="{{ asset('sximo/crm_layout/ai-vc-icon-empty-space.png')}}" >
                                 </div>
                                 <div class="vc-element-right">
                                     <div class="vc-element-title">Empty Space</div>
@@ -415,7 +415,7 @@ $fieldArray['file'] = 'File';
                         <div class="vc-element">
                             <a class="vc-element-btn" data-element="accordion" href="javascript:void(0);">
                                 <div class="vc-element-left">
-                                    <img class="vc-element-icon" src="{{URL::to('/../img/ai-vc-icon-accordion.png')}}" >
+                                    <img class="vc-element-icon" src="{{ asset('sximo/crm_layout/ai-vc-icon-accordion.png')}}" >
                                 </div>
                                 <div class="vc-element-right">
                                     <div class="vc-element-title">Accordion</div>
@@ -426,7 +426,7 @@ $fieldArray['file'] = 'File';
                         <div class="vc-element">
                             <a class="vc-element-btn" data-element="tabs" href="javascript:void(0);">
                                 <div class="vc-element-left">
-                                    <img class="vc-element-icon" src="{{URL::to('/../img/ai-vc-icon-tabs.png')}}" >
+                                    <img class="vc-element-icon" src="{{ asset('sximo/crm_layout/ai-vc-icon-tabs.png')}}" >
                                 </div>
                                 <div class="vc-element-right">
                                     <div class="vc-element-title">Tabs</div>
@@ -437,7 +437,7 @@ $fieldArray['file'] = 'File';
                         <div class="vc-element">
                             <a class="vc-element-btn" data-element="text-block" href="javascript:void(0);">
                                 <div class="vc-element-left">
-                                    <img class="vc-element-icon" src="{{URL::to('/../img/ai-vc-text-block.png')}}" >
+                                    <img class="vc-element-icon" src="{{ asset('sximo/crm_layout/ai-vc-text-block.png')}}" >
                                 </div>
                                 <div class="vc-element-right">
                                     <div class="vc-element-title">Text Block</div>
@@ -448,7 +448,7 @@ $fieldArray['file'] = 'File';
                         <div class="vc-element">
                             <a class="vc-element-custom-fields" href="javascript:void(0);">
                                 <div class="vc-element-left">
-                                    <img class="vc-element-icon" src="{{URL::to('/../img/ai-vc-crm-fields.png')}}" >
+                                    <img class="vc-element-icon" src="{{ asset('sximo/crm_layout/ai-vc-crm-fields.png')}}" >
                                 </div>
                                 <div class="vc-element-right">
                                     <div class="vc-element-title">CRM Fields</div>

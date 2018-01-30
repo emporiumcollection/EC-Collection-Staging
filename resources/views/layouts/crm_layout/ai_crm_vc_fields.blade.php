@@ -33,27 +33,27 @@
                             <ul class="dropdown-menu">
                                 <li>
                                     <a title="100" class="vc-change-row-layout <?php echo ($all_row['row_columns'] == '100') ? 'selected' : ''; ?>" data-value="100" data-row-id="<?php echo $all_row['crm_row_id']; ?>" href="#">
-                                        <img src="{{URL::to('/../img/ai-vc-clm-1.png')}}" >
+                                        <img src="{{ asset('sximo/crm_layout/ai-vc-clm-1.png')}}" >
                                     </a>
                                 </li>
                                 <li>
                                     <a title="50 + 50" class="vc-change-row-layout <?php echo ($all_row['row_columns'] == '50 + 50') ? 'selected' : ''; ?>" data-value="50 + 50" data-row-id="<?php echo $all_row['crm_row_id']; ?>" href="#">
-                                        <img src="{{URL::to('/../img/ai-vc-clm-2.png')}}" >
+                                        <img src="{{ asset('sximo/crm_layout/ai-vc-clm-2.png')}}" >
                                     </a>
                                 </li>
                                 <li>
                                     <a title="33.33 + 33.33 + 33.33" class="vc-change-row-layout <?php echo ($all_row['row_columns'] == '33.33 + 33.33 + 33.33') ? 'selected' : ''; ?>" data-value="33.33 + 33.33 + 33.33" data-row-id="<?php echo $all_row['crm_row_id']; ?>" href="#">
-                                        <img src="{{URL::to('/../img/ai-vc-clm-3.png')}}" >
+                                        <img src="{{ asset('sximo/crm_layout/ai-vc-clm-3.png')}}" >
                                     </a>
                                 </li>
                                 <li>
                                     <a title="25 + 25 + 25 + 25" class="vc-change-row-layout <?php echo ($all_row['row_columns'] == '25 + 25 + 25 + 25') ? 'selected' : ''; ?>" data-value="25 + 25 + 25 + 25" data-row-id="<?php echo $all_row['crm_row_id']; ?>" href="#">
-                                        <img src="{{URL::to('/../img/ai-vc-clm-4.png')}}" >
+                                        <img src="{{ asset('sximo/crm_layout/ai-vc-clm-4.png')}}" >
                                     </a>
                                 </li>
                                 <li>
                                     <a title="20 + 20 + 20 + 20 + 20" class="vc-change-row-layout <?php echo ($all_row['row_columns'] == '20 + 20 + 20 + 20 + 20') ? 'selected' : ''; ?>" data-value="20 + 20 + 20 + 20 + 20" data-row-id="<?php echo $all_row['crm_row_id']; ?>" href="#">
-                                        <img src="{{URL::to('/../img/ai-vc-clm-5.png')}}" >
+                                        <img src="{{ asset('sximo/crm_layout/ai-vc-clm-5.png')}}" >
                                     </a>
                                 </li>
                                 <li>
