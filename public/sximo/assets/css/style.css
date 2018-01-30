@@ -2996,7 +2996,7 @@ header .menu ul li a:hover, header .menu ul li a:active, header .menu ul li a:fo
         padding: 23px;
     }
     .small-box-text {
-        font-size: 16px;
+        font-size: 16px !important;
         line-height: 22px;
     }
     .architecture-sec-heading {
