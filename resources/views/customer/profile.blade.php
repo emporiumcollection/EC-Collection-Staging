@@ -1,6 +1,9 @@
 
 @extends('frontend.layouts.ev.customer')
 @section('content')
+<style>
+#formerrors { color:#ff0000;}
+</style>
 <section>
 
     <div>
@@ -83,7 +86,11 @@
 							</div>
 						</div>
 					</div>
+					</form>
+					<div id="formerrors"></div>
 					<div id="hotel" style="display:none;">
+						<form id="hotel-form" action="{{URL::to('frontend_hotelpost')}}" method="post">
+						<input type="hidden" name="hotel_signup_type" value="company" />
 						<div class="row">
 							<h5 class="ev-regural-heading text-uppercase margin-20px-bottom font-weight-700 sm-width-100 xs-width-100">Hotel Information</h5>
 							<div class="col-md-6 col-sm-12 no-padding-left">
@@ -327,11 +334,14 @@
 								<input type="text" name="hotel_contactprsn_mobile" placeholder="Mobile*" class="form-control dash-input-style">
 							</div>
 							<div class="col-md-6 col-sm-12 no-padding-right" style="margin-top:10px;">
-								<button type="submit" class="btn btn-default dash-btn-style">Save Profile</button>
+								<button type="button" class="btn btn-default dash-btn-style" onclick="submit_hotelinfo_form('hotel-form');">Save Profile</button>
 							</div>
 						</div>
+						</form>
 					</div>
 					<div id="advertiser" style="display:none;">
+						<form id="advertiser-form" action="{{URL::to('frontend_hotelpost')}}" method="post">
+						<input type="hidden" name="hotel_signup_type" value="advertiser" />
 						<div class="row">
 							<h5 class="ev-regural-heading text-uppercase margin-20px-bottom font-weight-700 sm-width-100 xs-width-100">Hotel Information</h5>
 							<div class="col-md-6 col-sm-12 no-padding-left">
@@ -571,12 +581,13 @@
 							</div>
 							        
 							<div class="col-md-6 col-sm-12 no-padding-right" style="margin-top:10px;">
-								<button type="submit" class="btn btn-default dash-btn-style">Save Profile</button>
+								<button type="button" onclick="submit_hotelinfo_form('advertiser-form');" class="btn btn-default dash-btn-style">Save Profile</button>
 							</div>
 							
 						</div>
+						</form>
 					</div>
-                </form>
+                
             </div>
         </div></div></div>
     <div role="tabpanel" class="tab-pane " id="home">Coming Soon....</div>
@@ -616,5 +627,37 @@
 		 
 		 $('#'+uservar).show();
 	 });
+	 
+	 function submit_hotelinfo_form(formid)
+	{
+		$.ajax({
+			url: "{{ URL::to('frontend_hotelpost')}}",
+			type: "post",
+			data: $('#'+formid).serializeArray(),
+			dataType: "json",
+			success: function (data) {
+				if (data.status == 'error')
+				{
+					var html = '';
+					html +='<ul class="parsley-error-list">';
+					$.each(data.errors, function(idx, obj) {
+						html +='<li>'+obj+'</li>';
+					});
+					html +='</ul>';
+					$('#formerrors').html(html);
+					window.scrollTo(0, 600);
+				} 
+				else
+				{
+					var htmli = '';
+					htmli +='<div class="alert alert-success fade in block-inner">';
+					htmli +='<button data-dismiss="alert" class="close" type="button">×</button>';
+					htmli +='<i class="icon-checkmark-circle"></i> Record Inserted Successfully </div>';
+					$('#formerrors').html(htmli);
+					 window.scrollTo(0, 600); 
+				}
+			}
+		});
+	}
 </script>
 @endsection
