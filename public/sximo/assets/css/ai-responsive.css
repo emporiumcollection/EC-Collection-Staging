@@ -88,7 +88,9 @@
 	background: #252525 none repeat scroll 0 0;
         opacity: 1; 
 	padding: 0 5px;
-	right: 14px;
+	right: 10px;
+        position: absolute;
+        top: 0px;
     }
     .architecture-sec-heading {
 	margin-left: 25px;
