@@ -625,7 +625,7 @@
                             <div class="modal-body">
                                 <div class="col-md-2 SlickVegasWidth">
                                     <section class="Vegasregular slider slick-initialized slick-slider">
-                                        <div aria-live="polite" class="slick-list draggable"><div class="slick-track" style="width: 0px; transform: translate3d(0px, 0px, 0px); opacity: 1;" role="listbox"><div class="slick-cstm-width slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" style="width: 0px;" tabindex="-1" role="option">
+                                        <div aria-live="polite" class="slick-list draggable"><div class="slick-track" style="width: 100%; transform: translate3d(0px, 0px, 0px); opacity: 1;" role="listbox"><div class="slick-cstm-width slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" style="width: 0px;" tabindex="-1" role="option">
                                                     <div class="side-nav-next-hotel-img Sidenavimg">
                                                         <div class="side-next-and-perivious-hotel-arrow">
                                                             <div class="arrows-commom  next-arrow">
