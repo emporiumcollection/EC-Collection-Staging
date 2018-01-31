@@ -357,10 +357,6 @@
     input#search-navbar-our-collection-res::placeholder {
     color: #000 !important;
     }
-    .wrapper header {
-	left: 92% !important;
-	width: 4% !important;
-    }
     .block-content.content {
 	width: 25px !important;
 	float: right !important;
@@ -368,15 +364,15 @@
 	margin-right: -18px;
     }
     .block-content.content span:nth-child(1) {
-	top: 26px !important;
+	top: 31px !important;
 	left: 95% !important;
     }
     .block-content.content span:nth-child(2) {
-	top: 32px !important;
+	top: 37px !important;
 	left: 95% !important;
     }
     .block-content.content span:nth-child(3) {
-	top: 38px !important;
+	top: 43px !important;
 	left: 95% !important;
     }
     .EVMenu {
@@ -633,10 +629,6 @@
     }
     input#search-navbar-our-collection-res::placeholder {
     color: #000 !important;
-    }
-    .wrapper header {
-	left: 87% !important;
-	width: 7% !important;
     }
     .block-content.content {
 	width: 25px !important;
@@ -926,10 +918,6 @@
     }
     input#search-navbar-our-collection-res::placeholder {
     color: #000 !important;
-    }
-    .wrapper header {
-	left: 80.70% !important;
-	width: 8% !important;
     }
     .block-content.content {
 	width: 25px !important;
