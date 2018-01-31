@@ -1553,6 +1553,13 @@
                             <!-- lock icon resonsive -->
 <!--                            <a data-popup-id="login-forms-popup-Mobile" href="#" class="video-popup-btn login_popup show-login-forms-btn"><i class="fa fa-lock " aria-hidden="true" ></i></a>-->
                                 <a data-popup-id="login-forms-popup" href="#" class="video-popup-btn login_popup show-login-forms-btn"><i class="fa fa-lock " aria-hidden="true" ></i></a>
+                                <a data-popup-id="ev-primary-navigation" href="#" class="video-popup-btn"><!--<i class="fa fa-bars hamburgMenu" aria-hidden="true"></i>-->
+                                <div class="block-content content">
+                                    <span></span>
+                                    <span> </span>
+                                    <span></span>
+                                </div>
+                                </a>
                             <!-- lock icon responsive -->
                             <div class="landing-mobile-top-header">
                                 <div class="col-md-2 col-xs-2 col-sm-2">
