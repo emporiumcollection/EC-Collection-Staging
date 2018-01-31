@@ -99,6 +99,13 @@
     .architecture-sec-heading > h1 {
 	margin-top: 0px !important;
     }
+    input.bh-search-input.typeahead.search-navbar.tt-hint {
+       position: unset !important;
+       height: 0px;
+    }
+    input#search-navbar-our-collection-res::placeholder {
+    color: #000 !important;
+    }
 }
 /*@media (min-width: 768px) and (max-width: 1200px) {
      detail Page 
@@ -340,6 +347,16 @@
 	margin-top: -140px !important;
 	left: 29%;
     }
+    .editorial-hotel-detail-page .gallery .info1 h2 {
+    margin-bottom: 10px;
+    }
+    input.bh-search-input.typeahead.search-navbar.tt-hint {
+        position: unset !important;
+        height: 0px;
+    }
+    input#search-navbar-our-collection-res::placeholder {
+    color: #000 !important;
+    }
 
     
 }
@@ -351,7 +368,8 @@
     }
     
     .serach-page-menu {
-	text-align: center;
+    text-align: center;
+    padding: 25px 25px 0px;
     }
     
     #search-navbar-our-collection-res::placeholder {
@@ -478,8 +496,11 @@
 	margin-left: 14px !important;
     }
     .editorial-image-slider-btns.image-slider-btns a {
-	margin-left: 370px !important;
+	margin-left: 0px !important;
 	margin-top: 10px;
+    }
+    .image-slider-container .image-slider-btns {    
+    left: 58%;
     }
     .image-showcase-below-big-text {
 	margin-left: 0px !important;
@@ -502,7 +523,8 @@
 	margin-top: -136px;
     }
     .bar-name-text-style {
-	color: #000 !important;
+        color: #fff !important;
+        margin-top: 20px;
     }
     .ai-spa-sec-inner {
 	float: left;
@@ -522,6 +544,24 @@
     .sidenav .closebtn {
 	top: 14px;
     }
+    .hotel-book-now {
+	margin: 0px 0px 10px -3px;
+	width: 167px;
+	margin-top: 35px;
+    }
+    .single-right-text-product {
+	padding: 65px 0px 125px;
+    }
+    .editorial-hotel-detail-page .gallery .info1 h2 {
+    margin-bottom: 10px;
+    }
+    input.bh-search-input.typeahead.search-navbar.tt-hint {
+        position: unset !important;
+        height: 0px;
+    }
+    input#search-navbar-our-collection-res::placeholder {
+    color: #000 !important;
+    }
 }
 
 
@@ -539,7 +579,7 @@
 	text-align: center;
         display: table-cell;
         vertical-align: middle;
-        padding: 10px 10px 0px 10px;
+        padding: 30px 10px 0px 45px;
     }
     
     #search-navbar-our-collection-res::placeholder {
@@ -592,12 +632,12 @@
     
     .combodate select {
 	padding: 7px !important;
-	width: 66px !important;
+	width: 80px !important;
     }
     
     .combodate select:hover  {
 	padding: 7px !important;
-	width: 66px !important;
+	width: 80px !important;
     }
     
     /* detail page */
@@ -622,7 +662,10 @@
     }
     .slider-next-image-btn {
 	margin-bottom: 20px;
-	margin-top: 100px;
+	margin-top: 140px;
+    }
+    .EvMasonary h2 {
+	color: #000 !important;
     }
     .editorial-image-slider-next-btn {
 	float: left !important;
@@ -653,9 +696,10 @@
     }
     .bar-name-text-style {
 	width: 100% !important;
-        color: #000 !important;
-        letter-spacing: 0px;
-        text-align: center;
+	color: #fff !important;
+	letter-spacing: 0px;
+	text-align: center;
+	margin-top: 15px;
     }
     .vegasFooter {
 	width: 100% !important;
@@ -735,6 +779,41 @@
     }
     .sidenav .closebtn {
 	top: 14px;
+    }
+    input.bh-search-input.typeahead.search-navbar.tt-hint {
+    position: unset !important;
+    height: 0px;
+    }
+    input#search-navbar-our-collection-res::placeholder {
+    color: #000 !important;
+    }
+    header {
+	left: 81% !important;
+	width: 11%;
+    }
+    .block-content.content {
+	width: 25px;
+	float: right;
+	height: 55px;
+	margin-right: -18px;
+    }
+    .block-content.content span:nth-child(1) {
+	top: 26px;
+	left: 100%;
+    }
+    .block-content.content span:nth-child(2) {
+	top: 32px;
+	left: 100%;
+    }
+    .block-content.content span:nth-child(3) {
+	top: 38px;
+	left: 100%;
+    }
+    .EVMenu {
+	margin: 20px 0 0 -105px;
+    }
+    .EVMenu li {
+	width: 320px;
     }
     
 }

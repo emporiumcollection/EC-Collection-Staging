@@ -1,0 +1,64 @@
+.mt-element-step .row {
+    margin: 0;
+}
+.mt-element-step .step-thin .active {
+    background-color: #32c5d2 !important;
+}
+.mt-element-step .step-thin .mt-step-col {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.bg-grey {
+    background: #E5E5E5 !important;
+}
+.mt-element-step .step-thin .active .mt-step-number {
+    color: #32c5d2 !important;
+}
+.mt-element-step .step-thin .mt-step-number {
+    font-size: 26px;
+    border-radius: 50% !important;
+    float: left;
+    margin: auto;
+    padding: 3px 14px;
+}
+.font-grey {
+    color: #E5E5E5 !important;
+}
+.bg-white {
+    background: #fff !important;
+}
+.mt-element-step .step-thin .active .mt-step-content, .mt-element-step .step-thin .active .mt-step-title {
+    color: #fff !important;
+}
+.mt-element-step .step-thin .mt-step-title {
+    font-size: 24px;
+    font-weight: 100;
+    padding-left: 60px;
+    margin-top: -4px;
+}
+.font-grey-cascade {
+    color: #95A5A6 !important;
+}
+.uppercase {
+    text-transform: uppercase !important;
+}
+.mt-element-step .step-thin .active .mt-step-content, .mt-element-step .step-thin .active .mt-step-title {
+    color: #fff !important;
+}
+.mt-element-step .step-thin .mt-step-content {
+    padding-left: 60px;
+    margin-top: -5px;
+}
+.font-grey-cascade {
+    color: #95A5A6 !important;
+}
+.portlet {
+    margin-top: 0;
+    margin-bottom: 25px;
+    padding: 0;
+    border-radius: 4px;
+}
+.portlet.light {
+    padding: 12px 20px 15px;
+    background-color: #fff;
+}
