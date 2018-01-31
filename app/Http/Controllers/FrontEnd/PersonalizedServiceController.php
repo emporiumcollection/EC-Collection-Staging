@@ -22,6 +22,12 @@ class PersonalizedServiceController extends Controller {
        
         $destinations = \DB::table('tb_categories')->where('parent_category_id', 0)->where('id', '!=', 8)->get();
         
+        if(!empty($destinations)) {
+            foreach ($destinations as $key => $destination) {
+                $destinations[$key]['sub_destinations'] = \DB::table('tb_categories')->where('parent_category_id', $destination->id)->get();
+            }
+        }
+        
         echo '<pre>';
         print_r($destinations);
         echo '</pre>';
