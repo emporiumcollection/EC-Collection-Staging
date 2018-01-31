@@ -481,8 +481,11 @@
 	margin-left: 14px !important;
     }
     .editorial-image-slider-btns.image-slider-btns a {
-	margin-left: 370px !important;
+	margin-left: 0px !important;
 	margin-top: 10px;
+    }
+    .image-slider-container .image-slider-btns {    
+    left: 58%;
     }
     .image-showcase-below-big-text {
 	margin-left: 0px !important;
