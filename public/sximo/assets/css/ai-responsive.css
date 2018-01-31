@@ -628,6 +628,10 @@
     .EVMenu li a {
 	font-size: 27px !important;
     }
+    .editorial_m_slider ul li .editorial-text {
+	width: 320px;
+	padding: 54px 66px 41px 13px;
+    }
 }
 
 
@@ -885,6 +889,10 @@
     }
     .EVMenu li a {
 	font-size: 27px !important;
+    }
+    .editorial_m_slider ul li .editorial-text {
+	width: 320px;
+	padding: 54px 66px 41px 13px;
     }
     
 }
