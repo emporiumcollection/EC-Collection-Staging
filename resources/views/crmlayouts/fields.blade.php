@@ -3,9 +3,8 @@
         <!-- template_name Field -->
         <div class="form-group">  
             <div class="form-group form-md-line-input form-md-floating-label has-info">
-                {!! Form::text('template_name', null, array('class'=>'form-control','maxlength'=>'255','id'=>'template_name'))  !!}
                 {!! Form::label('template_name', 'Template Name')  !!}
-                <i class="fa fa-times-circle clearInput" aria-hidden="true"></i>
+                {!! Form::text('template_name', null, array('class'=>'form-control','maxlength'=>'255','id'=>'template_name'))  !!}
             </div>
         </div>
         <div class="hidden form-group">  

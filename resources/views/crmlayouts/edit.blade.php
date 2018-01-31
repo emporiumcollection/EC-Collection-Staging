@@ -39,12 +39,6 @@
                     </div>
                 </div>
                 <div class="portlet light ">
-                    <div class="portlet-title">
-                        <div class="caption">
-                            <i class="fa fa-cubes" aria-hidden="true"></i> 
-                            <span class="caption-subject">Edit Template</span>
-                        </div>
-                    </div>
                     <div class="portlet-body form" id="from-group-style">
                         @if (count($errors) > 0)
                             <div class="alert alert-danger">
