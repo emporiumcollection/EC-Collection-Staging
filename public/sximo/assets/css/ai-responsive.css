@@ -528,7 +528,7 @@
 @media (min-width: 320px) and (max-width: 480px) {
     
     .video-popup-btn.login_popup.show-login-forms-btn {
-	width: 30%;
+	width: 30% !important;
     }
     
     .landing-mobile-top-header {
