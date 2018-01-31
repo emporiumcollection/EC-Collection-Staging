@@ -20,29 +20,22 @@ class PersonalizedServiceController extends Controller {
     */
     public function index(Request $request) {
        
-        $destinations = \DB::table('tb_categories')->where('parent_category_id', 0)->where('id', '!=', 8)->get();
+        $temp = $this->get_destinations();
         
-        if(!empty($destinations)) {
-            foreach ($destinations as $key => $destination) {                
-                $temp = $this->get_sub_categories($destination->id);
-                $destinations[$key]->sub_destinations = $temp['sub_destinations'];
-            }
-        }
-        
-        $this->data['destinations'] = $destinations;
+        $this->data['destinations'] = $temp['sub_destinations'];
         
         return view('frontend.personalized.personalized_service', $this->data);
     }
     
     /*
-     * AIC: Get array of sub categories by passing category ID
+     * AIC: Get destinations list
      */
     
-    public function get_sub_categories($id) {
+    public function get_destinations() {
         
-        $chldIds = array();
+        $chldIds = array();        
         
-        $sub_destinations = \DB::table('tb_categories')->where('parent_category_id', $id)->get();
+        $sub_destinations = \DB::table('tb_categories')->where('parent_category_id', 0)->where('id', '!=', 8)->get();
         if(!empty($sub_destinations)) {
             foreach ($sub_destinations as $key => $sub_destination) {
                 $chldIds[] = $sub_destination->id;
