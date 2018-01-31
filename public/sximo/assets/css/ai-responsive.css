@@ -358,22 +358,22 @@
     color: #000 !important;
     }
     .block-content.content {
-	width: 60px !important;
+	width: 35px !important;
 	float: right !important;
 	height: 55px !important;
-	margin-right: -18px;
+	margin-right: -10px;
     }
     .block-content.content span:nth-child(1) {
 	top: 37px !important;
-	left: 95% !important;
+	left: 96% !important;
     }
     .block-content.content span:nth-child(2) {
 	top: 43px !important;
-	left: 95% !important;
+	left: 96% !important;
     }
     .block-content.content span:nth-child(3) {
 	top: 49px !important;
-	left: 95% !important;
+	left: 96% !important;
     }
     .EVMenu {
 	margin: 20px 0 0 -105px !important;
@@ -423,7 +423,7 @@
     .video-popup-btn.login_popup.show-login-forms-btn {
 	display: inline-block;
 	margin-top: 29px !important;
-	width: 4% !important;
+	width: 3% !important;
     }
 
     
