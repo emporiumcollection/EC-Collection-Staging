@@ -37,9 +37,6 @@
 
     <link href="{{ asset('sximo/assets/css/dashboard.css')}}" rel="stylesheet" type="text/css"/>
      <link href="{{ asset('sximo/assets/css/intlTelInput.css')}}" rel="stylesheet" type="text/css"/>
-
-     <!-- swiper carousel -->
-        <link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/swiper.min.css')}}">
     @yield('css')
     <style>
         
