@@ -36,13 +36,13 @@
                                                 <?php
                                                 if(!empty($destinations)) {
                                                     foreach ($destinations as $destination) {
-                                                        echo '<option value="'.$destination->id.'">'.$destination->category_name.'</option>';
+                                                        echo '<option value="'.$destination->id.'">'.$destination->category_name.'</option>'.PHP_EOL;
                                                         if(!empty($destinations->sub_destinations)) {
                                                             foreach ($destinations->sub_destinations as $destination) {
-                                                                echo '<option value="'.$destination->id.'">-->'.$destination->category_name.'</option>';
+                                                                echo '<option value="'.$destination->id.'">--&gt;'.$destination->category_name.'</option>'.PHP_EOL;
                                                                 if(!empty($destinations->sub_destinations)) {
                                                                     foreach ($destinations->sub_destinations as $destination) {
-                                                                        echo '<option value="'.$destination->id.'">-->-->'.$destination->category_name.'</option>';
+                                                                        echo '<option value="'.$destination->id.'">--&gt;--&gt;'.$destination->category_name.'</option>'.PHP_EOL;
                                                                     }
                                                                 }
                                                             }
