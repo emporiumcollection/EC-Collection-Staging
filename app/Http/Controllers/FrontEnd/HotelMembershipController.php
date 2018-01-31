@@ -13,6 +13,8 @@ class HotelMembershipController extends Controller {
         $this->data['pageTitle'] = '';
         $this->data['data'] = CommonHelper::getInfo();
         $this->data['pageslider'] = \DB::table('tb_pages_sliders')->select( 'slider_title', 'slider_description', 'slider_img', 'slider_link', 'slider_video', 'slide_type')->where('slider_page_id', 35)->get();
+
+        print_r($this->data['pageslider']);
     }
     
     /* Method : Index
@@ -20,21 +22,6 @@ class HotelMembershipController extends Controller {
     */
     public function membershipSignup(Request $request) {
 
-            if(mail('ramsinghsaini@gmail.com','Test ', 'Test Mail')){
-                echo "Sent";
-            }
-
-            Mail::raw('Text to e-mail', function ($message) {
-
-                $message->from('ramsinghsaini@gmail.com', 'EV');
-
-                 $message->to('ramsinghsaini@gmail.com');
-            //
-        
-       
-        });
-            exit;
-        
         return view('frontend.hotel_membership.hotel_membership_signup', $this->data);
     }
 
