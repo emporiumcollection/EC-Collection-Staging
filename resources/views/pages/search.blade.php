@@ -1326,6 +1326,9 @@
                         </div>
 
                     </div>
+                </div>
+            </div>
+        </div>
                     
                     @include('layouts/elliot/hamburg_menu')
                     
