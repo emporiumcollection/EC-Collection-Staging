@@ -1249,9 +1249,9 @@
                                 margin-top: 40px;
                                 padding: 20px 0px 40px 0px;
                             }
-                            .slick-cstm-width.slick-slide.slick-current.slick-active {
+/*                            .slick-cstm-width.slick-slide.slick-current.slick-active {
                                     width: auto !important;
-                                }
+                                }*/
                             
                             @import url('https://fonts.googleapis.com/css?family=Caveat');
                             @import url('https://fonts.googleapis.com/css?family=Satisfy');
