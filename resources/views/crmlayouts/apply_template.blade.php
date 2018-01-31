@@ -10,8 +10,7 @@
         <div class="page-head">
             <!-- BEGIN PAGE TITLE -->
             <div class="page-title">
-                <h1><i class="fa fa-cubes" aria-hidden="true"></i> Template
-                </h1>
+                <h1><i class="fa fa-cubes" aria-hidden="true"></i> Template: <?php echo $template->template_name; ?></h1>
             </div>
             <!-- END PAGE TITLE -->
         </div>
@@ -41,12 +40,6 @@
                     </div>
                 </div>
                 <div class="portlet light ">
-                    <div class="portlet-title">
-                        <div class="caption">
-                            <i class="fa fa-cubes" aria-hidden="true"></i> 
-                            <span class="caption-subject">Template: <?php echo $template->template_name; ?></span>
-                        </div>
-                    </div>
                     <div class="portlet-body form" id="from-group-style">
                         
                         <!--Apply Template Form Start-->
@@ -55,6 +48,7 @@
                             <input type="hidden" name="template_id" value="<?php echo $template->template_id; ?>" />
                             <div class="form-group">  
                                 <div class="form-group form-md-line-input form-md-floating-label has-info">
+                                    <label for="module_id">Module</label>
                                     <select id="module_id" name="module_id" class="form-control">
                                         <?php
                                         if(!empty($modules)) {
@@ -64,8 +58,6 @@
                                         }
                                         ?>
                                     </select>
-                                    <label for="module_id">Module</label>
-                                    <i class="fa fa-times-circle clearInput" aria-hidden="true"></i>
                                 </div>
                             </div>
                             <div class="form-group form-md-radios">
