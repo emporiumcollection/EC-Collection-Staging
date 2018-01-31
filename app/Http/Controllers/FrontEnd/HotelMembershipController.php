@@ -5,7 +5,7 @@ use App\Http\Controllers\ContainerController;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 use App\Http\Controllers\Controller;
 use App\User;
-use DB,Validator, Input, Redirect, CommonHelper;
+use DB,Validator, Input, Redirect, CommonHelper, Mail;
 class HotelMembershipController extends Controller {
 
     public function __construct() {
@@ -19,8 +19,17 @@ class HotelMembershipController extends Controller {
      *   Description : The Methos is using for personalized page
     */
     public function membershipSignup(Request $request) {
-       
+
+            Mail::raw('Text to e-mail', function ($message) {
+
+                $message->from('ramsinghsaini@gmail.com', 'EV');
+
+                 $message->to('ramsinghsaini@gmail.com');
+            //
         
+       
+        });
+            exit;
         
         return view('frontend.hotel_membership.hotel_membership_signup', $this->data);
     }
