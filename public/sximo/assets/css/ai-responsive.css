@@ -898,5 +898,17 @@
 	width: 320px;
 	padding: 54px 66px 41px 13px;
     }
+    .hotel-sec-block-two {
+	padding-top: 50px;
+    }
+    .hotel-block-two-right-sec-align > h2 {
+	font-size: 7px;
+    }
+    .slider-side-description-text {
+	font-size: 14px;
+    }
+    .bar-bottom-des-pannel p {
+	padding-right: 50px;
+    }
     
 }
