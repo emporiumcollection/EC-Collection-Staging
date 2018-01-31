@@ -782,7 +782,7 @@
                                                 <div class="swiper-button-prev swiper-prev-style4"><i class="fa fa-arrow-down" aria-hidden="true"></i></div>
                                             </div>
                                             <div class="scroll-button">
-                                                <a href="#align-to-top" class="align-to-top-arrow"><img src="{{assets('sximo/assets/images/scroll-down.png')}}" class="down-arrow-align animate-arrow" alt=""> </a>
+                                                <a href="#align-to-top" class="align-to-top-arrow"><img src="{{asset('sximo/assets/images/scroll-down.png')}}" class="down-arrow-align animate-arrow" alt=""> </a>
                                             </div>
                                         </div>
                                     </section>
