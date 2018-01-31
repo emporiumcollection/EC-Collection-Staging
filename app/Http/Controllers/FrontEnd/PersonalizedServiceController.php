@@ -20,6 +20,13 @@ class PersonalizedServiceController extends Controller {
     */
     public function index(Request $request) {
        
+        $destinations = \DB::table('tb_categories')->where('parent_category_id', 0)->where('id', '!=', 8)->get();
+        
+        echo '<pre>';
+        print_r($destinations);
+        echo '</pre>';
+        die;
+        
         return view('frontend.personalized.personalized_service', $this->data);
     }
 
