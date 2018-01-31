@@ -56,6 +56,16 @@
     .font-grey-cascade {
         color: #95A5A6 !important;
     }
+    .portlet {
+        margin-top: 0;
+        margin-bottom: 25px;
+        padding: 0;
+        border-radius: 4px;
+    }
+    .portlet.light {
+        padding: 12px 20px 15px;
+        background-color: #fff;
+    }
 </style>
 <!-- BEGIN CONTENT -->
 <div class="page-content-wrapper main-style-it-max">
