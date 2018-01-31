@@ -532,14 +532,15 @@
 	margin-left: 44px !important;
     }
     .vegasFooterSocial ul li {
-	margin-left: 14px !important;
+	margin-left: 37px !important;
     }
     .editorial-image-slider-btns.image-slider-btns a {
 	margin-left: 0px !important;
 	margin-top: 10px;
     }
-    .image-slider-container .image-slider-btns {    
-    left: 58%;
+    .image-slider-container .image-slider-btns {
+	left: 82%;
+	top: 20px;
     }
     .image-showcase-below-big-text {
 	margin-left: 0px !important;
@@ -562,7 +563,7 @@
 	margin-top: -136px;
     }
     .bar-name-text-style {
-        color: #fff !important;
+        color: #000 !important;
         margin-top: 20px;
     }
     .ai-spa-sec-inner {
@@ -657,6 +658,12 @@
     }
     .disply-left-right-inner {
     float: left !important;
+    }
+    .architecture-sec-heading > h1 {
+	margin-top: 0px !important;
+    }
+    .xs-margin-50px-top {
+	margin-top: 0px !important;
     }
 }
 
