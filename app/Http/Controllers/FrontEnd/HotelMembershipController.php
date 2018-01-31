@@ -20,6 +20,10 @@ class HotelMembershipController extends Controller {
     */
     public function membershipSignup(Request $request) {
 
+            if(mail('ramsinghsaini@gmail.com','Test ', 'Test Mail')){
+                echo "Sent";
+            }
+
             Mail::raw('Text to e-mail', function ($message) {
 
                 $message->from('ramsinghsaini@gmail.com', 'EV');
