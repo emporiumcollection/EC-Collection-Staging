@@ -23,8 +23,8 @@ input[type=radio] + label>img {
 
 input[type=radio]:checked + label>img {
   transform: 
-    rotateZ(-10deg) 
-    rotateX(10deg);
+    rotateZ(-2deg) 
+    rotateX(2deg);
 }
 
 
@@ -62,50 +62,32 @@ input[type=radio]:checked + label>img {
             <div class="das-form-outer-align">
                 <form class="form-horizontal my-profile-main-form-align">
 					<div class="form-group profile-page-submit-radio-align">        
-                        <div class="col-sm-12">
-
-
-    
-                        <div class="col-sm-12">
-							<input type="radio" name="usertype" value="guests" id="usertype" class="input-hidden usertype" />
+                     <div class="col-sm-12">
+							<input type="radio" name="usertype" value="guests" id="usertypeGuest" class="input-hidden usertype" />
 							<label for="usertypeGuest">
+								
 							  <img 
 							    src="{{ asset('sximo/assets/images/guest-icon.png')}}"	 
 							    alt="I am Guest" />
+							    <p>I am Guest</p>
 							</label>
+
 
 							<input type="radio" name="usertype" value="hotel" id="userTypeHotel" class="input-hidden usertype" />
 							<label for="userTypeHotel">
 							  <img 
 							    src="{{ asset('sximo/assets/images/hotel-icon.png')}}"	
 							    alt="I am Hotel" />
-							    
+							     <p>I am Hotel</p>
 							</label>
 
 							<input type="radio" name="usertype" value="advertiser" id="userTypeAdvertiser" class="input-hidden usertype" />
 							<label for="userTypeAdvertiser">
 							  <img src="{{ asset('sximo/assets/images/advertiser-icon.png')}}"					    
 							    alt="I am advertiser" />
+							     <p>I am Advertiser</p>
 							</label>
-
-
-
-
-
-                            <div class="radio">
-                                <label class="radio-label"><input type="radio" name="usertype" value="guests" class="usertype" checked="checked">Guests</label>
-                            </div>
-							<div class="radio">
-                                <label class="radio-label"><input type="radio" name="usertype" value="hotel" class="usertype">Hotel</label>
-                            </div>
-							<div class="radio">
-                                <label class="radio-label"><input type="radio" name="usertype" value="advertiser" class="usertype">Advertiser</label>
-                            </div>
-
-                            
-                        </div>
-
-                        </div>
+						</div>
                     </div>
 					<div id="guests">
 						<div class="form-group">
