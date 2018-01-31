@@ -39,10 +39,10 @@
                                                         echo '<option value="'.$destination->id.'">'.$destination->category_name.'</option>'.PHP_EOL;
                                                         if(!empty($destination->sub_destinations)) {
                                                             foreach ($destination->sub_destinations as $sub_destination) {
-                                                                echo '<option value="'.$sub_destination->id.'">--&gt;'.$sub_destination->category_name.'</option>'.PHP_EOL;
+                                                                echo '<option value="'.$sub_destination->id.'">'.$sub_destination->category_name.'</option>'.PHP_EOL;
                                                                 if(!empty($sub_destination->sub_destinations)) {
                                                                     foreach ($sub_destination->sub_destinations as $sub_dest) {
-                                                                        echo '<option value="'.$sub_dest->id.'">--&gt;--&gt;'.$sub_dest->category_name.'</option>'.PHP_EOL;
+                                                                        echo '<option value="'.$sub_dest->id.'">'.$sub_dest->category_name.'</option>'.PHP_EOL;
                                                                     }
                                                                 }
                                                             }
@@ -63,7 +63,7 @@
                                                 <?php
                                                 if(!empty($destinations)) {
                                                     foreach ($destinations as $destination) {
-                                                        echo '<li><a href="#'.$destination->id.'">'.$destination->category_name.'</a></li>">';
+                                                        echo '<li><a href="#'.$destination->id.'">'.$destination->category_name.'</a></li>';
                                                     }
                                                 }
                                                 ?>
