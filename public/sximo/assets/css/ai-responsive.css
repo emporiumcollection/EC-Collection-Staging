@@ -358,8 +358,8 @@
     color: #000 !important;
     }
     .wrapper header {
-	left: 81% !important;
-	width: 11% !important;
+	left: 92% !important;
+	width: 4% !important;
     }
     .block-content.content {
 	width: 25px !important;
@@ -387,6 +387,10 @@
     }
     .EVMenu li a {
 	font-size: 27px !important;
+    }
+    .editorial_m_slider ul li .editorial-text {
+	width: 320px;
+	padding: 54px 66px 41px 13px;
     }
 
     
