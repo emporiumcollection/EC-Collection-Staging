@@ -52,27 +52,13 @@ Route::post('crmlayouts/ajax_save_rows_order', 'CrmlayoutController@ajax_save_ro
 Route::post('crmlayouts/do_apply_template', 'CrmlayoutController@do_apply_template');
 Route::post('crmlayouts/edit_row_element', 'CrmlayoutController@edit_row_element');
 
-/**********************************************/
+
 
 /********** Added By Ravinder *********/
 Route::get('generate/destination', 'GenerateController@destinationGenerate');
 Route::get('generate/hotel', 'GenerateController@hotelGenerate');
 Route::get('personalized-service', 'Frontend\PersonalizedServiceController@index');
-	/*
-	* Custom Field Module  
-	* All Action urls 
-	*/
-	Route::get('evcustomfields', 'EvcustomfieldsController@index');
-	Route::post('evcustomfields/createGroup', 'EvcustomfieldsController@createGroupAjax');
-	Route::get('evcustomfields/getGroups/{id}', 'EvcustomfieldsController@getGroupsAjax');
-	Route::get('evcustomfields/getCustomFields', 'EvcustomfieldsController@getCustomFieldsAjax');
-	Route::post('evcustomfields/createField', 'EvcustomfieldsController@createFieldAjax');
-	Route::post('evcustomfields/removeCustomField/{id}', 'EvcustomfieldsController@removeCustomFieldAjax');
-	Route::post('evcustomfields/removeGroup', 'EvcustomfieldsController@removeGroupAjax');
-	Route::get('evcustomfields/editCustomField/{id}', 'EvcustomfieldsController@editCustomFieldAjax');
-	Route::post('evcustomfields/updateCustomField/{id}', 'EvcustomfieldsController@updateCustomFieldAjax');
-	Route::post('evcustomfields/updateCustomFieldOrders', 'EvcustomfieldsController@updateCustomFieldOrderAjax');
-	Route::post('evcustomfields/updateGroupOrders', 'EvcustomfieldsController@updateGroupOrderAjax');
+	
 /*************** End *************/
 Route::controller('home', 'HomeController');
 
@@ -258,6 +244,22 @@ Route::group(['middleware' => 'auth'], function()
 	Route::post('enable_diable_pagessliderstatus', 'PagessliderController@enable_diable_pagessliderstatus');
 	
 	Route::get('fetchpackagedetails/{pckid}', 'HomeController@fetchpackagedetails');
+
+	/*
+	* Custom Field Module  
+	* All Action urls 
+	*/
+	Route::get('evcustomfields', 'EvcustomfieldsController@index');
+	Route::post('evcustomfields/createGroup', 'EvcustomfieldsController@createGroupAjax');
+	Route::get('evcustomfields/getGroups/{id}', 'EvcustomfieldsController@getGroupsAjax');
+	Route::get('evcustomfields/getCustomFields', 'EvcustomfieldsController@getCustomFieldsAjax');
+	Route::post('evcustomfields/createField', 'EvcustomfieldsController@createFieldAjax');
+	Route::post('evcustomfields/removeCustomField/{id}', 'EvcustomfieldsController@removeCustomFieldAjax');
+	Route::post('evcustomfields/removeGroup', 'EvcustomfieldsController@removeGroupAjax');
+	Route::get('evcustomfields/editCustomField/{id}', 'EvcustomfieldsController@editCustomFieldAjax');
+	Route::post('evcustomfields/updateCustomField/{id}', 'EvcustomfieldsController@updateCustomFieldAjax');
+	Route::post('evcustomfields/updateCustomFieldOrders', 'EvcustomfieldsController@updateCustomFieldOrderAjax');
+	Route::post('evcustomfields/updateGroupOrders', 'EvcustomfieldsController@updateGroupOrderAjax');
 });	
 
 Route::post('frontend_hotelpost', 'HomeController@addHotelInfoFrontend');
