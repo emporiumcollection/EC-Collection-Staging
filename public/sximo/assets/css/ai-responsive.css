@@ -340,6 +340,9 @@
 	margin-top: -140px !important;
 	left: 29%;
     }
+    .editorial-hotel-detail-page .gallery .info1 h2 {
+    margin-bottom: 10px;
+    }
 
     
 }
@@ -502,7 +505,8 @@
 	margin-top: -136px;
     }
     .bar-name-text-style {
-	color: #000 !important;
+        color: #fff !important;
+        margin-top: 20px;
     }
     .ai-spa-sec-inner {
 	float: left;
@@ -529,6 +533,9 @@
     }
     .single-right-text-product {
 	padding: 65px 0px 125px;
+    }
+    .editorial-hotel-detail-page .gallery .info1 h2 {
+    margin-bottom: 10px;
     }
 }
 
