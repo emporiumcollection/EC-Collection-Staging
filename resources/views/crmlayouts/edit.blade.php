@@ -63,12 +63,6 @@
                               @endif
                             @endforeach
                         </div>
-                        <div class="alert alert-danger display-hide">
-                            <button class="close" data-close="alert"></button> @lang('custom.admin_form_validation_errors') 
-                        </div>
-                        <div class="alert alert-success display-hide">
-                            <button class="close" data-close="alert"></button> @lang('custom.admin_form_validation_success') 
-                        </div>
 						
                         {!! Form::model($crmlayouts, ['route' => ['crmlayouts.update', $crmlayouts->template_id], 'method' => 'patch']) !!}
 
