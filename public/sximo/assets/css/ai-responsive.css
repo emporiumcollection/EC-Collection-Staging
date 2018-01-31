@@ -912,13 +912,16 @@
 	padding-right: 50px;
     }
     .editorial-hotel-detail-page .back-to-top {
-	top: 292px !important;
+	top: 290px !important;
     }
     .typeahead {
     height: 9px !important;
     }
     .hotel-block-two-right-sec-align > h2 {
     font-size: 0px !important;
+    }
+    .disply-left-right-inner {
+    float: left !important;
     }
     
 }
