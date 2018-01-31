@@ -77,54 +77,24 @@
                                     <div class="experience-page-align">
                                         <h2 class="black-heading-big">What would you like experience</h2>
                                         <div class="selector-outer-align">
-                                            <div class="col-md-4 col-sm-6">
-                                                <div class="row">
-                                                    <div class="form-group ps-fields-align">
-                                                        <label class="personalized-service-checkbox-label" for="location1"><span class="selected-chexkbox"><i class="fa fa-check" aria-hidden="true"></i></span>Be Active</label>
-                                                        <input class="personalized-service-checkbox-input" id="location1" type="checkbox">
+                                            <?php
+                                            if(!empty($experiences)) {
+                                                foreach ($experiences as $experience) {
+                                                    ?>
+                                                    <div class="col-md-4 col-sm-6">
+                                                        <div class="row">
+                                                            <div class="form-group ps-fields-align">
+                                                                <label style="background-image: url('{{URL::to('uploads/category_imgs/'.$experience->category_image)}}');" class="personalized-service-checkbox-label" for="experience-{{$experience->id}}">
+                                                                    <span class="selected-chexkbox"><i class="fa fa-check" aria-hidden="true"></i></span>{{$experience->category_custom_title}}
+                                                                </label>
+                                                                <input class="personalized-service-checkbox-input" value="{{$experience->id}}" id="experience-{{$experience->id}}" type="checkbox">
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 col-sm-6">
-                                                <div class="row">
-                                                    <div class="form-group ps-fields-align">
-                                                        <label style="background-image: url('assets/images/5-3.jpg');" class="personalized-service-checkbox-label" for="location2"><span class="selected-chexkbox"><i class="fa fa-check" aria-hidden="true"></i></span>Relax and Refuel</label>
-                                                        <input class="personalized-service-checkbox-input" id="location2" type="checkbox">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 col-sm-6">
-                                                <div class="row">
-                                                    <div class="form-group ps-fields-align">
-                                                        <label style="background-image: url('assets/images/Miss-Clara-by-Nobis-Stockholm-Sweden.jpg');" class="personalized-service-checkbox-label" for="location3"><span class="selected-chexkbox"><i class="fa fa-check" aria-hidden="true"></i></span>With the family</label>
-                                                        <input class="personalized-service-checkbox-input" id="location3" type="checkbox">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 col-sm-6">
-                                                <div class="row">
-                                                    <div class="form-group ps-fields-align">
-                                                        <label class="personalized-service-checkbox-label" for="location4"><span class="selected-chexkbox"><i class="fa fa-check" aria-hidden="true"></i></span>Explore something new</label>
-                                                        <input class="personalized-service-checkbox-input" id="location4" type="checkbox">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 col-sm-6">
-                                                <div class="row">
-                                                    <div class="form-group ps-fields-align">
-                                                        <label style="background-image: url('assets/images/Miss-Clara-by-Nobis-Stockholm-Sweden.jpg');" class="personalized-service-checkbox-label" for="location5"><span class="selected-chexkbox"><i class="fa fa-check" aria-hidden="true"></i></span>Pampering & Enjoyment</label>
-                                                        <input class="personalized-service-checkbox-input" id="location5" type="checkbox">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 col-sm-6">
-                                                <div class="row">
-                                                    <div class="form-group ps-fields-align">
-                                                        <label style="background-image: url('assets/images/5-3.jpg');" class="personalized-service-checkbox-label" for="location6"><span class="selected-chexkbox"><i class="fa fa-check" aria-hidden="true"></i></span>Time Together</label>
-                                                        <input class="personalized-service-checkbox-input" id="location6" type="checkbox">
-                                                    </div>
-                                                </div>
-                                            </div>
+                                                    <?php
+                                                }
+                                            }
+                                            ?>
                                             <div class="clearfix"></div>
                                         </div>
                                     </div>
@@ -134,19 +104,19 @@
                                 </fieldset>
                                 <fieldset class="hide-form muti-form-align">
                                     <div class="experience-page-align">
-                                        <h2 class="black-heading-big">Your accomodation</h2>
+                                        <h2 class="black-heading-big">Your accommodation</h2>
                                         <div class="selector-outer-align">
                                             <?php
-                                            if(!empty($experiences)) {
-                                                foreach ($experiences as $experience) {
+                                            if(!empty($accommodations)) {
+                                                foreach ($accommodations as $accommodation) {
                                                     ?>
                                                     <div class="col-md-4 col-sm-6">
                                                         <div class="row">
                                                             <div class="form-group ps-fields-align">
-                                                                <label style="background-image: url('{{URL::to('uploads/category_imgs/'.$experience->category_image)}}');" class="personalized-service-checkbox-label" for="experience1">
-                                                                    <span class="selected-chexkbox"><i class="fa fa-check" aria-hidden="true"></i></span>{{$experience->category_custom_title}}
+                                                                <label style="background-image: url('{{URL::to('uploads/category_imgs/'.$accommodation->category_image)}}');" class="personalized-service-checkbox-label" for="accommodation-{{$accommodation->id}}">
+                                                                    <span class="selected-chexkbox"><i class="fa fa-check" aria-hidden="true"></i></span>{{$accommodation->category_custom_title}}
                                                                 </label>
-                                                                <input class="personalized-service-checkbox-input" id="experience1" type="checkbox">
+                                                                <input class="personalized-service-checkbox-input" value="{{$accommodation->id}}" id="accommodation-{{$accommodation->id}}" type="checkbox">
                                                             </div>
                                                         </div>
                                                     </div>
