@@ -32,7 +32,9 @@ class PersonalizedServiceController extends Controller {
      */
     
     public function get_destinations($id = 0) {
-                
+
+        $chldIds = array();
+        
         if($id == 0) {
             $sub_destinations = \DB::table('tb_categories')->where('parent_category_id', 0)->where('id', '!=', 8)->get();
         }
