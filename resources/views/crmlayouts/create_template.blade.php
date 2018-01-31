@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+<link href="{{ asset('sximo/crm_layout/css/style.css')}}" rel="stylesheet" type="text/css"/>
 <!-- BEGIN CONTENT -->
 <div class="page-content-wrapper main-style-it-max">
     <!-- BEGIN CONTENT BODY -->
