@@ -100,7 +100,7 @@
 	margin-top: 0px !important;
     }
     input.bh-search-input.typeahead.search-navbar.tt-hint {
-    height: 0;
+       position: unset !important;
     }
     input#search-navbar-our-collection-res::placeholder {
     color: #000 !important;
@@ -350,7 +350,7 @@
     margin-bottom: 10px;
     }
     input.bh-search-input.typeahead.search-navbar.tt-hint {
-    height: 0;
+        position: unset !important;
     }
     input#search-navbar-our-collection-res::placeholder {
     color: #000 !important;
@@ -553,7 +553,7 @@
     margin-bottom: 10px;
     }
     input.bh-search-input.typeahead.search-navbar.tt-hint {
-    height: 0;
+        position: unset !important;
     }
     input#search-navbar-our-collection-res::placeholder {
     color: #000 !important;
@@ -777,7 +777,7 @@
 	top: 14px;
     }
     input.bh-search-input.typeahead.search-navbar.tt-hint {
-    height: 0;
+    position: unset !important;
     }
     input#search-navbar-our-collection-res::placeholder {
     color: #000 !important;
