@@ -738,7 +738,7 @@
     }
     .slider-next-image-btn {
 	margin-bottom: 20px;
-	margin-top: 140px;
+	margin-top: 170px;
     }
     .EvMasonary h2 {
 	color: #000 !important;
@@ -832,7 +832,7 @@
     }
     .image-showcase-below-big-text {
 	margin-left: 0px !important;
-	font-size: 36px !important;
+	font-size: 30px !important;
     }
     .ai-spa-sec-inner {
 	float: left;
@@ -899,7 +899,8 @@
 	padding: 54px 66px 41px 13px;
     }
     .hotel-sec-block-two {
-	padding-top: 50px;
+	padding-top: 50px !important;
+        padding-right: 49px;
     }
     .hotel-block-two-right-sec-align > h2 {
 	font-size: 7px;
@@ -909,6 +910,9 @@
     }
     .bar-bottom-des-pannel p {
 	padding-right: 50px;
+    }
+    .editorial-hotel-detail-page .back-to-top {
+	top: 292px;
     }
     
 }
