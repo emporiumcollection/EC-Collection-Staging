@@ -665,6 +665,9 @@
     .xs-margin-50px-top {
 	margin-top: 0px !important;
     }
+    .hotel-bar-name-pannel h2 {
+	color: #fff !important;
+    }
 }
 
 
@@ -893,7 +896,7 @@
     color: #000 !important;
     }
     .wrapper header {
-	left: 84% !important;
+	left: 80.70% !important;
 	width: 8% !important;
     }
     .block-content.content {
