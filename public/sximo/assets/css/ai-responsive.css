@@ -364,15 +364,15 @@
 	margin-right: -18px;
     }
     .block-content.content span:nth-child(1) {
-	top: 31px !important;
-	left: 95% !important;
-    }
-    .block-content.content span:nth-child(2) {
 	top: 37px !important;
 	left: 95% !important;
     }
-    .block-content.content span:nth-child(3) {
+    .block-content.content span:nth-child(2) {
 	top: 43px !important;
+	left: 95% !important;
+    }
+    .block-content.content span:nth-child(3) {
+	top: 49px !important;
 	left: 95% !important;
     }
     .EVMenu {
@@ -422,8 +422,8 @@
     }
     .video-popup-btn.login_popup.show-login-forms-btn {
 	display: inline-block;
-	margin-top: 14px;
-	width: 15% !important;
+	margin-top: 29px !important;
+	width: 4% !important;
     }
 
     
