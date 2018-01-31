@@ -704,7 +704,12 @@
                                                 </div>
                                             </div>
                                              <div class="col-md-1">
-                                                <a data-popup-id="login-forms-popup" href="#" class="video-popup-btn login_popup show-login-forms-btn"><i class="fa fa-lock detailfaLock" aria-hidden="true" ></i></a>
+                                                @if(Auth::check())
+                                                <a href="{{url('user/logout')}}" class="video-popup-btn login_popup show-login-forms-btn"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                                                
+                                                @else
+                                                    <a data-popup-id="login-forms-popup" href="#" class="video-popup-btn login_popup show-login-forms-btn"><i class="fa fa-lock detailfaLock" aria-hidden="true" ></i></a>
+                                                @endif
                                                 <a data-popup-id="ev-primary-navigation" href="#" class="video-popup-btn"><!--<i class="fa fa-bars hamburgMenu" aria-hidden="true"></i>-->
                                                     <div class="block-content content">
                                                         <span></span>

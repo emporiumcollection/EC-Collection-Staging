@@ -18,11 +18,39 @@ class HotelMembershipController extends Controller {
     /* Method : Index
      *   Description : The Methos is using for personalized page
     */
-    public function index(Request $request) {
+    public function membershipSignup(Request $request) {
        
         
         
-        return view('frontend.hotel_membership.hotel_membership', $this->data);
+        return view('frontend.hotel_membership.hotel_membership_signup', $this->data);
+    }
+
+    public function hotelPackage(Request $request) {
+       
+        
+        
+        return view('frontend.hotel_membership.hotel_package', $this->data);
+    }
+
+    public function advertisementPackage(Request $request) {
+       
+        
+        
+        return view('frontend.hotel_membership.hotel_advertisement', $this->data);
+    }
+
+    public function hotelCart(Request $request) {
+       
+        
+        
+        return view('frontend.hotel_membership.hotel_cart', $this->data);
+    }
+
+    public function hotelCheckout(Request $request) {
+       
+        
+        
+        return view('frontend.hotel_membership.hotel_checkout', $this->data);
     }
     
     
