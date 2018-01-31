@@ -24,7 +24,7 @@ class PersonalizedServiceController extends Controller {
         
         if(!empty($destinations)) {
             foreach ($destinations as $key => $destination) {
-                $destinations[$key]->sub_destinations = \DB::table('tb_categories')->where('parent_category_id', $destination->id)->get();
+                $destinations[$key]->sub_destinations = $this->get_sub_categories($destination->id);
             }
         }
         
@@ -34,6 +34,20 @@ class PersonalizedServiceController extends Controller {
         die;
         
         return view('frontend.personalized.personalized_service', $this->data);
+    }
+    
+    /*
+     * AIC: Get array of sub categories by passing category ID
+     */
+    
+    public function get_sub_categories($id) {
+        $sub_destinations = \DB::table('tb_categories')->where('parent_category_id', $id)->get();
+        if(!empty($sub_destinations)) {
+            foreach ($sub_destinations as $key => $sub_destination) {
+                $sub_destinations[$key]->sub_destinations = $this->get_sub_categories($sub_destination->id);
+            }
+        }
+        return $sub_destinations;
     }
 
 
