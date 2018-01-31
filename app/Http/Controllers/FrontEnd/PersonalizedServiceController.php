@@ -23,8 +23,9 @@ class PersonalizedServiceController extends Controller {
         $destinations = \DB::table('tb_categories')->where('parent_category_id', 0)->where('id', '!=', 8)->get();
         
         if(!empty($destinations)) {
-            foreach ($destinations as $key => $destination) {
-                $destinations[$key]->sub_destinations = $this->get_sub_categories($destination->id);
+            foreach ($destinations as $key => $destination) {                
+                $temp = $this->get_sub_categories($destination->id);
+                $destinations[$key]->sub_destinations = $temp['sub_destinations'];
             }
         }
         
@@ -38,14 +39,31 @@ class PersonalizedServiceController extends Controller {
      */
     
     public function get_sub_categories($id) {
+        
+        $chldIds = array();
+        
         $sub_destinations = \DB::table('tb_categories')->where('parent_category_id', $id)->get();
         if(!empty($sub_destinations)) {
             foreach ($sub_destinations as $key => $sub_destination) {
-                $sub_destinations[$key]->sub_destinations = $this->get_sub_categories($sub_destination->id);
+                $chldIds[] = $sub_destination->id;
+                $temp = $this->get_sub_categories($sub_destination->id);
+                $sub_destinations[$key]->sub_destinations = $temp['sub_destinations'];
+                $chldIds = array_merge($chldIds, $temp['chldIds']);                
             }
         }
-        return $sub_destinations;
+        
+        $getcats = '';
+        if (!empty($chldIds)) {
+            $getcats = " AND (" . implode(" || ", array_map(function($v) {
+                                return sprintf("FIND_IN_SET('%s', property_category_id)", $v);
+                            }, array_values($chldIds))) . ")";
+            $preprops = DB::select(DB::raw("SELECT COUNT(*) AS total_rows FROM tb_properties WHERE property_status = '1' $getcats"));
+            if($preprops[0]->total_rows == 0) {
+                $sub_destinations = array();
+            }
+        }
+        
+        return array('sub_destinations' => $sub_destinations, 'chldIds' => $chldIds);
     }
-
 
 }

@@ -369,15 +369,15 @@
     }
     .block-content.content span:nth-child(1) {
 	top: 26px !important;
-	left: 100% !important;
+	left: 95% !important;
     }
     .block-content.content span:nth-child(2) {
 	top: 32px !important;
-	left: 100% !important;
+	left: 95% !important;
     }
     .block-content.content span:nth-child(3) {
 	top: 38px !important;
-	left: 100% !important;
+	left: 95% !important;
     }
     .EVMenu {
 	margin: 20px 0 0 -105px !important;
@@ -391,6 +391,38 @@
     .editorial_m_slider ul li .editorial-text {
 	width: 320px;
 	padding: 54px 66px 41px 13px;
+    }
+    .editorial_m_slider ul li .editorial-text {
+	width: 426px;
+	padding: 30px 60px 30px 10px;
+    }
+    .hotel-sec-block-two {
+	padding-top: 50px !important;
+        padding-right: 49px;
+    }
+    .hotel-block-two-right-sec-align > h2 {
+	font-size: 7px;
+    }
+    .slider-side-description-text {
+	font-size: 14px;
+    }
+    .bar-bottom-des-pannel p {
+	padding-right: 50px;
+    }
+    .editorial-hotel-detail-page .back-to-top {
+	top: 290px !important;
+    }
+    .typeahead {
+    height: 9px !important;
+    }
+    .hotel-block-two-right-sec-align > h2 {
+    font-size: 0px !important;
+    }
+    .disply-left-right-inner {
+    float: left !important;
+    }
+    .hotel-bar-name-pannel h2 {
+	color: #fff !important;
     }
 
     
