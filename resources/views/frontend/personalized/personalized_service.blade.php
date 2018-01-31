@@ -33,21 +33,23 @@
                                         </div>
                                         <div class="choosen-input-align">
                                             <select data-placeholder="Ex: Argentina, South Africa, Cape Town" class="chosen-select chosen-select-input-style" multiple tabindex="4">
-                                                <option value=""></option>
-                                                <option >United States</option>
-                                                <option>India</option>
-                                                <option>Romania</option>
-                                                <option>Pakistan</option>
-                                                <option>Bhutan</option>
-                                                <option>South Africa</option>
-                                                <option>Comoros</option>
-                                                <option>Nauru</option>
-                                                <option>Tuvalu</option>
-                                                <option>Vanuatu</option>
-                                                <option>Cook Island</option>
-                                                <option>Pitcairn Island</option>
-                                                <option>Tokelau</option>
-                                                <option>Guernsey</option>
+                                                <?php
+                                                if(!empty($destinations)) {
+                                                    foreach ($destinations as $destination) {
+                                                        echo '<option value="'.$destination->id.'">'.$destination->category_name.'</option>';
+                                                        if(!empty($destinations->sub_destinations)) {
+                                                            foreach ($destinations->sub_destinations as $destination) {
+                                                                echo '<option value="'.$destination->id.'">-->'.$destination->category_name.'</option>';
+                                                                if(!empty($destinations->sub_destinations)) {
+                                                                    foreach ($destinations->sub_destinations as $destination) {
+                                                                        echo '<option value="'.$destination->id.'">-->-->'.$destination->category_name.'</option>';
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                                ?>
                                             </select>
                                         </div>
                                         <div class="wrong-selection-pannel">
@@ -58,35 +60,13 @@
                                                 <p class="sub-des-heading suggestions-headin-tittle">The following alternatives could be interesting:</p>
                                             </div>
                                             <ul class="suggestions-pannel-list-align">
-                                                <li><a href="#">Bhutan</a></li>
-                                                <li><a href="#">Bolivien</a></li>
-                                                <li><a href="#">Botswana</a></li>
-                                                <li><a href="#">Brasilien</a></li>
-                                                <li><a href="#">Chile</a></li>
-                                                <li><a href="#">Ecuador</a></li>
-                                                <li><a href="#">Hongkong</a></li>
-                                                <li><a href="#">Kenia</a></li>
-                                                <li><a href="#">Kolumbien</a></li>
-                                                <li><a href="#">Malediven</a></li>
-                                                <li><a href="#">Mauritius</a></li>
-                                                <li><a href="#">Mexiko</a></li>
-                                                <li><a href="#">Mosambik</a></li>
-                                                <li><a href="#">Myanmar (Birma)</a></li>
-                                                <li><a href="#">Namibia</a></li>
-                                                <li><a href="#">Oman</a></li>
-                                                <li><a href="#">Panama</a></li>
-                                                <li><a href="#">Peru</a></li>
-                                                <li><a href="#">Sambia</a></li>
-                                                <li><a href="#">São Tomé und Príncipe</a></li>
-                                                <li><a href="#">Seychellen</a></li>
-                                                <li><a href="#">Simbabwe</a></li>
-                                                <li><a href="#">Singapur</a></li>
-                                                <li><a href="#">Sri Lanka</a></li>
-                                                <li><a href="#">Südafrika</a></li>
-                                                <li><a href="#">Turks- und Caicosinseln</a></li>
-                                                <li><a href="#">United States Virgin Islands</a></li>
-                                                <li><a href="#">Vereinigte Arabische Emirate</a></li>
-                                                <li><a href="#">Peru</a></li>
+                                                <?php
+                                                if(!empty($destinations)) {
+                                                    foreach ($destinations as $destination) {
+                                                        echo '<li><a href="#'.$destination->id.'">'.$destination->category_name.'</a></li>">';
+                                                    }
+                                                }
+                                                ?>
                                             </ul>
                                         </div>
                                     </div>

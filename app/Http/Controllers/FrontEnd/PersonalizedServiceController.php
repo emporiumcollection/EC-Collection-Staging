@@ -28,10 +28,7 @@ class PersonalizedServiceController extends Controller {
             }
         }
         
-        echo '<pre>';
-        print_r($destinations);
-        echo '</pre>';
-        die;
+        $this->data['destinations'] = $destinations;
         
         return view('frontend.personalized.personalized_service', $this->data);
     }
