@@ -57,8 +57,8 @@ class PersonalizedServiceController extends Controller {
             $getcats = " AND (" . implode(" || ", array_map(function($v) {
                                 return sprintf("FIND_IN_SET('%s', property_category_id)", $v);
                             }, array_values($chldIds))) . ")";
-            $preprops = \DB::table('tb_properties')->select('COUNT(*) AS total_rows')->where('property_status', '1')->first();
-            if($preprops->total_rows == 0) {
+            $preprops = \DB::table('tb_properties')->where('property_status', '1')->count();
+            if($preprops == 0) {
                 $sub_destinations = array();
             }
         }
