@@ -24,7 +24,7 @@ class PersonalizedServiceController extends Controller {
         
         if(!empty($destinations)) {
             foreach ($destinations as $key => $destination) {
-                $destinations[$key]['sub_destinations'] = \DB::table('tb_categories')->where('parent_category_id', $destination->id)->get();
+                $destinations[$key]->sub_destinations = \DB::table('tb_categories')->where('parent_category_id', $destination->id)->get();
             }
         }
         
