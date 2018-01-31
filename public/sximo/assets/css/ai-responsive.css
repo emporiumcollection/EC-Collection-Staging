@@ -358,7 +358,7 @@
     color: #000 !important;
     }
     .block-content.content {
-	width: 25px !important;
+	width: 60px !important;
 	float: right !important;
 	height: 55px !important;
 	margin-right: -18px;
@@ -419,6 +419,11 @@
     }
     .hotel-bar-name-pannel h2 {
 	color: #fff !important;
+    }
+    .video-popup-btn.login_popup.show-login-forms-btn {
+	display: inline-block;
+	margin-top: 14px;
+	width: 15%;
     }
 
     
