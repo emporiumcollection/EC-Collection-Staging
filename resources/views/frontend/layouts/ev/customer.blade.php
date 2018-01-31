@@ -486,7 +486,7 @@
 
         .show-login-forms-btn {
             display: inline-block;
-            padding: 0px 20px;
+            padding: 0px 10px;
             text-align: center;
             margin-top: 7px;
             vertical-align: text-top;
