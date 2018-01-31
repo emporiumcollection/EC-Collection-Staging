@@ -369,15 +369,15 @@
     }
     .block-content.content span:nth-child(1) {
 	top: 26px !important;
-	left: 100% !important;
+	left: 95% !important;
     }
     .block-content.content span:nth-child(2) {
 	top: 32px !important;
-	left: 100% !important;
+	left: 95% !important;
     }
     .block-content.content span:nth-child(3) {
 	top: 38px !important;
-	left: 100% !important;
+	left: 95% !important;
     }
     .EVMenu {
 	margin: 20px 0 0 -105px !important;
@@ -393,8 +393,8 @@
 	padding: 54px 66px 41px 13px;
     }
     .editorial_m_slider ul li .editorial-text {
-	width: 320px;
-	padding: 30px 70px 41px 13px;
+	width: 426px;
+	padding: 30px 60px 30px 10px;
     }
     .hotel-sec-block-two {
 	padding-top: 50px !important;
@@ -420,6 +420,9 @@
     }
     .disply-left-right-inner {
     float: left !important;
+    }
+    .hotel-bar-name-pannel h2 {
+	color: #fff !important;
     }
 
     
