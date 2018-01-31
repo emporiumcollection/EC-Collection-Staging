@@ -7,7 +7,6 @@
                 {!! Form::label('template_name', 'Template Name')  !!}
                 <i class="fa fa-times-circle clearInput" aria-hidden="true"></i>
             </div>
-            <span class="help-block"><span class="textused">0/255</span></span>
         </div>
         <div class="hidden form-group">  
             <div class="form-group form-md-line-input form-md-floating-label has-info">
@@ -15,7 +14,7 @@
                     <?php
                     if(!empty($modules)) {
                         foreach ($modules as $module) {
-                            echo '<option ', (isset($crmlayouts->module_id) && $crmlayouts->module_id == $module->id_modbuilder)? 'selected' : '' ,' value="'.$module->id_modbuilder.'">'.$module->title_mob.'</option>';
+                            echo '<option ', (isset($crmlayouts->module_id) && $crmlayouts->module_id == $module->module_id)? 'selected' : '' ,' value="'.$module->module_id.'">'.$module->module_title.'</option>';
                         }
                     }
                     ?>
@@ -23,7 +22,6 @@
                 {!! Form::label('module_id', trans('crmlayout.admin_crmlayout_module_add_module_id'))  !!}
                 <i class="fa fa-times-circle clearInput" aria-hidden="true"></i>
             </div>
-            <span class="help-block">@lang('crmlayout.admin_crmlayout_module_add_module_id_help_text') <span class="textused">0/255</span></span>
         </div>
     </div>
 </div>
