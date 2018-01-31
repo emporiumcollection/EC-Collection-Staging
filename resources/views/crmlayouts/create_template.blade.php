@@ -10,8 +10,7 @@
         <div class="page-head">
             <!-- BEGIN PAGE TITLE -->
             <div class="page-title">
-                <h1><i class="fa fa-cubes" aria-hidden="true"></i> Template
-                </h1>
+                <h1><i class="fa fa-cubes" aria-hidden="true"></i> Template: <?php echo $template->template_name; ?></h1>
             </div>
             <!-- END PAGE TITLE -->
         </div>
@@ -41,12 +40,6 @@
                     </div>
                 </div>
                 <div class="portlet light ">
-                    <div class="portlet-title">
-                        <div class="caption">
-                            <i class="fa fa-cubes" aria-hidden="true"></i> 
-                            <span class="caption-subject">Template: <?php echo $template->template_name; ?></span>
-                        </div>
-                    </div>
                     <div class="portlet-body form" id="from-group-style">
 
                         @if (count($errors) > 0)
