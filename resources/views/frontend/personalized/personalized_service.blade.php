@@ -24,7 +24,7 @@
                     </div>
              
                         <div class="col-md-8 col-sm-8">
-                            <form>
+                            <form action="" method="POST">
                                 <fieldset class="muti-form-align">
                                     <div class="centred-tab-align">
                                         <div>
@@ -32,7 +32,7 @@
                                             <p class="sub-des-heading">You can specify one or more destinations</p>
                                         </div>
                                         <div class="choosen-input-align">
-                                            <select name="destinations" data-placeholder="Ex: Argentina, South Africa, Cape Town" class="chosen-select chosen-select-input-style" multiple tabindex="4">
+                                            <select name="destinations[]" data-placeholder="Ex: Argentina, South Africa, Cape Town" class="chosen-select chosen-select-input-style" multiple tabindex="4">
                                                 <?php
                                                 if(!empty($destinations)) {
                                                     foreach ($destinations as $destination) {
