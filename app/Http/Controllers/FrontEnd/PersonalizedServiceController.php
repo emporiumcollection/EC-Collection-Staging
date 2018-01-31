@@ -57,27 +57,13 @@ class PersonalizedServiceController extends Controller {
             $getcats = " AND (" . implode(" || ", array_map(function($v) {
                                 return sprintf("FIND_IN_SET('%s', property_category_id)", $v);
                             }, array_values($chldIds))) . ")";
-            $preprops = DB::select(DB::raw("SELECT COUNT(*) AS total_rows FROM tb_properties WHERE property_status = '1' $getcats"))->first();
+            $preprops = \DB::table('tb_properties')->select('COUNT(*) AS total_rows')->where('property_status', '1')->first();
             if($preprops->total_rows == 0) {
                 $sub_destinations = array();
             }
         }
         
         return array('sub_destinations' => $sub_destinations, 'chldIds' => $chldIds);
-    }
-    
-    function fetchcategoryChildListIds($id = 0, $child_category_array = '') {
-
-        if (!is_array($child_category_array))
-            $child_category_array = array();
-        $results = \DB::table('tb_categories')->where('parent_category_id', $id)->get();
-        if ($results) {
-            foreach ($results as $row) {
-                $child_category_array[] = $row->id;
-                $child_category_array = $this->fetchcategoryChildListIds($row->id, $child_category_array);
-            }
-        }
-        return $child_category_array;
     }
 
 }
