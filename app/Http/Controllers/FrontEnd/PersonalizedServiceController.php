@@ -23,7 +23,8 @@ class PersonalizedServiceController extends Controller {
         $temp = $this->get_destinations();
         
         $this->data['destinations'] = $temp['sub_destinations'];
-        
+        $this->data['experiences'] = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_custom_title')->where('category_published', 1)->where('parent_category_id', 8)->get();
+                
         return view('frontend.personalized.personalized_service', $this->data);
     }
     
