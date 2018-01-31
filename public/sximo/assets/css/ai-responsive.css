@@ -914,5 +914,11 @@
     .editorial-hotel-detail-page .back-to-top {
 	top: 292px !important;
     }
+    .typeahead {
+    height: 9px;
+    }
+    .hotel-block-two-right-sec-align > h2 {
+    font-size: 0px;
+    }
     
 }
