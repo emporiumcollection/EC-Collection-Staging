@@ -31,15 +31,21 @@ class PersonalizedServiceController extends Controller {
      * AIC: Get destinations list
      */
     
-    public function get_destinations() {
+    public function get_destinations($id = 0) {
         
         $chldIds = array();        
         
-        $sub_destinations = \DB::table('tb_categories')->where('parent_category_id', 0)->where('id', '!=', 8)->get();
+        if($id == 0) {
+            $sub_destinations = \DB::table('tb_categories')->where('parent_category_id', 0)->where('id', '!=', 8)->get();
+        }
+        else {
+            $sub_destinations = \DB::table('tb_categories')->where('parent_category_id', $id)->get();
+        }
+        
         if(!empty($sub_destinations)) {
             foreach ($sub_destinations as $key => $sub_destination) {
                 $chldIds[] = $sub_destination->id;
-                $temp = $this->get_sub_categories($sub_destination->id);
+                $temp = $this->get_destinations($sub_destination->id);
                 $sub_destinations[$key]->sub_destinations = $temp['sub_destinations'];
                 $chldIds = array_merge($chldIds, $temp['chldIds']);                
             }
