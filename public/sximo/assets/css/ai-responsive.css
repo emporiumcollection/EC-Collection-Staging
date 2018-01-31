@@ -99,6 +99,12 @@
     .architecture-sec-heading > h1 {
 	margin-top: 0px !important;
     }
+    input.bh-search-input.typeahead.search-navbar.tt-hint {
+    height: 0;
+    }
+    input#search-navbar-our-collection-res::placeholder {
+    color: #000 !important;
+    }
 }
 /*@media (min-width: 768px) and (max-width: 1200px) {
      detail Page 
@@ -343,6 +349,12 @@
     .editorial-hotel-detail-page .gallery .info1 h2 {
     margin-bottom: 10px;
     }
+    input.bh-search-input.typeahead.search-navbar.tt-hint {
+    height: 0;
+    }
+    input#search-navbar-our-collection-res::placeholder {
+    color: #000 !important;
+    }
 
     
 }
@@ -539,6 +551,12 @@
     }
     .editorial-hotel-detail-page .gallery .info1 h2 {
     margin-bottom: 10px;
+    }
+    input.bh-search-input.typeahead.search-navbar.tt-hint {
+    height: 0;
+    }
+    input#search-navbar-our-collection-res::placeholder {
+    color: #000 !important;
     }
 }
 
@@ -757,6 +775,12 @@
     }
     .sidenav .closebtn {
 	top: 14px;
+    }
+    input.bh-search-input.typeahead.search-navbar.tt-hint {
+    height: 0;
+    }
+    input#search-navbar-our-collection-res::placeholder {
+    color: #000 !important;
     }
     
 }
