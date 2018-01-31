@@ -757,9 +757,9 @@
                                 </div>
                             </div>
                             <!--Main Page Start here-->
-                            <div class="col-md-12 col-sm-12 col-xs-12 ">
+                            <div class="col-md-12 col-sm-12 col-xs-12 no-padding">
                                 @if(!empty($pageslider))
-                                    <section class="wow fadeIn no-padding cstmaiclass">
+                                    <section class="wow fadeIn no-padding cstmaiclass littlepadding">
                                         <div class="swiper-auto-height-container position-relative width-100">
                                             <div class="swiper-wrapper overflow-hidden">
                                                 @foreach($pageslider as $key => $slider_row)
@@ -778,11 +778,11 @@
                                             </div>
 
                                             <div class="navigation-area">
-                                                <div class="swiper-button-next swiper-next-style4 bg-primary text-white"><i class="fa fa-arrow-up" aria-hidden="true"></i></div>
-                                                <div class="swiper-button-prev swiper-prev-style4"><i class="fa fa-arrow-down" aria-hidden="true"></i></div>
+                                                <div class="swiper-button-next swiper-next-style4 bg-primary text-white"><img src="http://www.emporium-voyage.com/sximo/assets/images/editorial-left-arrow.png"></div>
+                                                <div class="swiper-button-prev swiper-prev-style4"><img src="http://www.emporium-voyage.com/sximo/assets/images/editorial-right-arrow.png"></div>
                                             </div>
                                             <div class="scroll-button">
-                                                <a href="#align-to-top" class="align-to-top-arrow"><img src="{{asset('sximo/assets/images/scroll-down.png')}}" class="down-arrow-align animate-arrow" alt=""> </a>
+                                                <a href="#align-to-top" class="align-to-top-arrow"><img src="http://www.emporium-voyage.com/sximo/assets/images/scroll-down.png" class="down-arrow-align animate-arrow" alt=""> </a>
                                             </div>
                                         </div>
                                     </section>
