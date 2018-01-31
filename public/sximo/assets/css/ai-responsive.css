@@ -787,5 +787,33 @@
     input#search-navbar-our-collection-res::placeholder {
     color: #000 !important;
     }
+    header {
+	left: 81% !important;
+	width: 11%;
+    }
+    .block-content.content {
+	width: 25px;
+	float: right;
+	height: 55px;
+	margin-right: -18px;
+    }
+    .block-content.content span:nth-child(1) {
+	top: 26px;
+	left: 100%;
+    }
+    .block-content.content span:nth-child(2) {
+	top: 32px;
+	left: 100%;
+    }
+    .block-content.content span:nth-child(3) {
+	top: 38px;
+	left: 100%;
+    }
+    .EVMenu {
+	margin: 20px 0 0 -105px;
+    }
+    .EVMenu li {
+	width: 320px;
+    }
     
 }
