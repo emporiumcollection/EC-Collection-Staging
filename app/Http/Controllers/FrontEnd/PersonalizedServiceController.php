@@ -23,7 +23,8 @@ class PersonalizedServiceController extends Controller {
         $temp = $this->get_destinations();
         
         $this->data['destinations'] = $temp['sub_destinations'];
-        
+        $this->data['experiences'] = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_custom_title')->where('category_published', 1)->where('parent_category_id', 8)->get();
+                
         return view('frontend.personalized.personalized_service', $this->data);
     }
     
@@ -33,7 +34,7 @@ class PersonalizedServiceController extends Controller {
     
     public function get_destinations($id = 0) {
 
-        $chldIds = array();
+        $_chldIds = array();
         
         if($id == 0) {
             $sub_destinations = \DB::table('tb_categories')->where('parent_category_id', 0)->where('id', '!=', 8)->get();
@@ -51,6 +52,7 @@ class PersonalizedServiceController extends Controller {
                 $temp = $this->get_destinations($sub_destination->id);
                 $sub_destinations[$key]->sub_destinations = $temp['sub_destinations'];
                 $chldIds = array_merge($chldIds, $temp['chldIds']);
+                $_chldIds = array_merge($_chldIds, $chldIds);
                 
                 $getcats = '';
                 if (!empty($chldIds)) {
@@ -65,7 +67,7 @@ class PersonalizedServiceController extends Controller {
             }
         }
         
-        return array('sub_destinations' => $sub_destinations, 'chldIds' => $chldIds);
+        return array('sub_destinations' => $sub_destinations, 'chldIds' => $_chldIds);
     }
 
 }

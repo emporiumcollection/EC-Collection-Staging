@@ -24,7 +24,7 @@
                     </div>
              
                         <div class="col-md-8 col-sm-8">
-                            <form>
+                            <form action="" method="POST">
                                 <fieldset class="muti-form-align">
                                     <div class="centred-tab-align">
                                         <div>
@@ -32,7 +32,7 @@
                                             <p class="sub-des-heading">You can specify one or more destinations</p>
                                         </div>
                                         <div class="choosen-input-align">
-                                            <select data-placeholder="Ex: Argentina, South Africa, Cape Town" class="chosen-select chosen-select-input-style" multiple tabindex="4">
+                                            <select name="destinations[]" data-placeholder="Ex: Argentina, South Africa, Cape Town" class="chosen-select chosen-select-input-style" multiple tabindex="4">
                                                 <?php
                                                 if(!empty($destinations)) {
                                                     foreach ($destinations as $destination) {
@@ -136,86 +136,24 @@
                                     <div class="experience-page-align">
                                         <h2 class="black-heading-big">Your accomodation</h2>
                                         <div class="selector-outer-align">
-                                            <div class="col-md-4 col-sm-6">
-                                                <div class="row">
-                                                    <div class="form-group ps-fields-align">
-                                                        <label style="background-image: url('assets/images/1487942280-6276912.jpg');" class="personalized-service-checkbox-label" for="experience1"><span class="selected-chexkbox"><i class="fa fa-check" aria-hidden="true"></i></span>Go Beach Hotels</label>
-                                                        <input class="personalized-service-checkbox-input" id="experience1" type="checkbox">
+                                            <?php
+                                            if(!empty($experiences)) {
+                                                foreach ($experiences as $experience) {
+                                                    ?>
+                                                    <div class="col-md-4 col-sm-6">
+                                                        <div class="row">
+                                                            <div class="form-group ps-fields-align">
+                                                                <label style="background-image: url('{{URL::to('uploads/category_imgs/'.$experience->category_image)}}');" class="personalized-service-checkbox-label" for="experience1">
+                                                                    <span class="selected-chexkbox"><i class="fa fa-check" aria-hidden="true"></i></span>{{$experience->category_custom_title}}
+                                                                </label>
+                                                                <input class="personalized-service-checkbox-input" id="experience1" type="checkbox">
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 col-sm-6">
-                                                <div class="row">
-                                                    <div class="form-group ps-fields-align">
-                                                        <label style="background-image: url('assets/images/5-3.jpg');" class="personalized-service-checkbox-label" for="experience2"><span class="selected-chexkbox"><i class="fa fa-check" aria-hidden="true"></i></span>Go Green Hotels</label>
-                                                        <input class="personalized-service-checkbox-input" id="experience2" type="checkbox">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 col-sm-6">
-                                                <div class="row">
-                                                    <div class="form-group ps-fields-align">
-                                                        <label  style="background-image: url('assets/images/Architecture-&-Design.png');"  class="personalized-service-checkbox-label" for="experience3"><span class="selected-chexkbox"><i class="fa fa-check" aria-hidden="true"></i></span>Go Urban Hotels</label>
-                                                        <input class="personalized-service-checkbox-input" id="experience3" type="checkbox">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 col-sm-6">
-                                                <div class="row">
-                                                    <div class="form-group ps-fields-align">
-                                                        <label style="background-image: url('assets/images/Miss-Clara-by-Nobis-Stockholm-Sweden (2).jpg');" class="personalized-service-checkbox-label" for="experience4"><span class="selected-chexkbox"><i class="fa fa-check" aria-hidden="true"></i></span>Go Infinity Pools</label>
-                                                        <input class="personalized-service-checkbox-input" id="experience4" type="checkbox">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 col-sm-6">
-                                                <div class="row">
-                                                    <div class="form-group ps-fields-align">
-                                                        <label style="background-image: url('assets/images/1487942280-6276912.jpg');" class="personalized-service-checkbox-label" for="experience5"><span class="selected-chexkbox"><i class="fa fa-check" aria-hidden="true"></i></span>Go Spa & Wellness Hotels</label>
-                                                        <input class="personalized-service-checkbox-input" id="experience5" type="checkbox">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 col-sm-6">
-                                                <div class="row">
-                                                    <div class="form-group ps-fields-align">
-                                                        <label style="background-image: url('assets/images/Miss-Clara-by-Nobis-Stockholm-Sweden (2).jpg');" class="personalized-service-checkbox-label" for="experience6"><span class="selected-chexkbox"><i class="fa fa-check" aria-hidden="true"></i></span>Go Mountains and Skin Resorts</label>
-                                                        <input class="personalized-service-checkbox-input" id="experience6" type="checkbox">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 col-sm-6">
-                                                <div class="row">
-                                                    <div class="form-group ps-fields-align">
-                                                        <label style="background-image: url('assets/images/Architecture-&-Design.png');" class="personalized-service-checkbox-label" for="experience7"><span class="selected-chexkbox"><i class="fa fa-check" aria-hidden="true"></i></span>Discover Yoga Hotels</label>
-                                                        <input class="personalized-service-checkbox-input" id="experience7" type="checkbox">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 col-sm-6">
-                                                <div class="row">
-                                                    <div class="form-group ps-fields-align">
-                                                        <label class="personalized-service-checkbox-label" for="experience8"><span class="selected-chexkbox"><i class="fa fa-check" aria-hidden="true"></i></span>Discover culinary Delight Hotels</label>
-                                                        <input class="personalized-service-checkbox-input" id="experience8" type="checkbox">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 col-sm-6">
-                                                <div class="row">
-                                                    <div class="form-group ps-fields-align">
-                                                        <label style="background-image: url('assets/images/1487942280-6276912.jpg');" class="personalized-service-checkbox-label" for="experience9"><span class="selected-chexkbox"><i class="fa fa-check" aria-hidden="true"></i></span>Discover Family Friendly Hotels</label>
-                                                        <input class="personalized-service-checkbox-input" id="experience9" type="checkbox">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 col-sm-6">
-                                                <div class="row">
-                                                    <div class="form-group ps-fields-align">
-                                                        <label style="background-image: url('assets/images/5-3.jpg');" class="personalized-service-checkbox-label" for="experience10"><span class="selected-chexkbox"><i class="fa fa-check" aria-hidden="true"></i></span>Unusual Adventure Hotels</label>
-                                                        <input class="personalized-service-checkbox-input" id="experience10" type="checkbox">
-                                                    </div>
-                                                </div>
-                                            </div>
+                                                    <?php
+                                                }
+                                            }
+                                            ?>
                                             <div class="clearfix"></div>
                                         </div>
                                     </div>
