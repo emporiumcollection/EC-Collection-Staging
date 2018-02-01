@@ -24,7 +24,7 @@
                     </div>
              
                         <div class="col-md-8 col-sm-8">
-                            <form action="" method="POST">
+                            <form action="{{URL::to('personalized-service/save')}}" method="POST">
                                 <fieldset class="muti-form-align">
                                     <div class="centred-tab-align">
                                         <div>
@@ -138,7 +138,7 @@
                                             <p class="sub-des-heading">Tell us what you value - the more detailed the better.</p>
                                         </div>
                                         <div class="form-group textarea-left-align">
-                                            <textarea class="form-control ps-text-area-style" placeholder="Further comments or wishes? A concrete trip tour, a special occasion such as A honeymoon or your approximate travel budget."></textarea>
+                                            <textarea class="form-control ps-text-area-style" name="note" placeholder="Further comments or wishes? A concrete trip tour, a special occasion such as A honeymoon or your approximate travel budget."></textarea>
                                         </div> 
                                         <div class="help-hover-icon">
                                             <a class="custom-tooltip" href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Your callback date can be selected in last step"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
@@ -162,7 +162,7 @@
                                                 <div class="col-md-6 col-sm-6">
                                                     <div class="ps-handle-counter">
                                                         <button type="button" class="spinner-btns counter-minus btn btn-primary">-</button>
-                                                        <input class="spinner-input" type="text" value="50">
+                                                        <input class="spinner-input" name="adults" type="text" value="2">
                                                         <button type="button" class="spinner-btns counter-plus btn btn-primary">+</button>
                                                     </div>
                                                 </div>
@@ -175,7 +175,7 @@
                                                 <div class="col-md-6 col-sm-6">
                                                     <div class="ps-handle-counter">
                                                         <button type="button" class="spinner-btns counter-minus btn btn-primary">-</button>
-                                                        <input class="spinner-input" type="text" value="50">
+                                                        <input class="spinner-input" name="youth" type="text" value="0">
                                                         <button type="button" class="spinner-btns counter-plus btn btn-primary">+</button>
                                                     </div>
                                                 </div>
@@ -188,7 +188,7 @@
                                                 <div class="col-md-6 col-sm-6">
                                                     <div class="ps-handle-counter">
                                                         <button type="button" class="spinner-btns counter-minus btn btn-primary">-</button>
-                                                        <input class="spinner-input" type="text" value="50">
+                                                        <input class="spinner-input" name="children" type="text" value="0">
                                                         <button type="button" class="spinner-btns counter-plus btn btn-primary">+</button>
                                                     </div>
                                                 </div>
@@ -201,7 +201,7 @@
                                                 <div class="col-md-6 col-sm-6">
                                                     <div class="ps-handle-counter">
                                                         <button type="button" class="spinner-btns counter-minus btn btn-primary">-</button>
-                                                        <input class="spinner-input" type="text" value="50">
+                                                        <input class="spinner-input" name="toddlers" type="text" value="0">
                                                         <button type="button" class="spinner-btns counter-plus btn btn-primary">+</button>
                                                     </div>
                                                 </div>
@@ -220,18 +220,18 @@
                                         <div class="textarea-left-align">
                                             <div class="get-travel-details">
                                                 <div class="form-group">
-                                                    <input class="ps-input-style form-control get-earliest-arrival" type="text" placeholder="Earliest Arrival">
+                                                    <input class="ps-input-style form-control get-earliest-arrival" name="earliest_arrival" type="text" placeholder="Earliest Arrival">
                                                 </div>
                                                 <div class="form-group">
-                                                    <input class="ps-input-style form-control get-checkout-date" type="text" placeholder="Late Check Out">
+                                                    <input class="ps-input-style form-control get-checkout-date" name="late_check_out" type="text" placeholder="Late Check Out">
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <select class="form-control ps-input-style">
-                                                    <option>1-2 Weeks</option>
-                                                    <option>2-3 Weeks</option>
-                                                    <option>3-4 Weeks</option>
-                                                    <option>4-5 Weeks</option>
+                                                <select class="form-control ps-input-style" name="stay_time">
+                                                    <option value="1-2 Weeks">1-2 Weeks</option>
+                                                    <option value="2-3 Weeks">2-3 Weeks</option>
+                                                    <option value="3-4 Weeks">3-4 Weeks</option>
+                                                    <option value="4-5 Weeks">4-5 Weeks</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -250,19 +250,19 @@
                                             <p class="sub-des-heading margin-bottom-30">Please complete the following information.</p>
                                         </div>
                                         <div class="form-group text-left">
-                                            <input class="radio-btn" type="radio" name="optradio">
+                                            <input class="radio-btn" type="radio" name="salutation" value="Sir">
                                             <label class="radio-inline radio-btn-label">Sir</label>
-                                            <input class="radio-btn" type="radio" name="optradio">
+                                            <input class="radio-btn" type="radio" name="salutation" value="Mrs">
                                             <label class="radio-inline radio-btn-label">Mrs</label>
                                         </div>
                                         <div class="form-group">
-                                            <input class="ps-input-style form-control" type="text" placeholder="First Name">
+                                            <input class="ps-input-style form-control" type="text" name="first_name" placeholder="First Name">
                                         </div>
                                         <div class="form-group">
-                                            <input class="ps-input-style form-control" type="text" placeholder="Surname">
+                                            <input class="ps-input-style form-control" type="text" name="surname" placeholder="Surname">
                                         </div>
                                         <div class="form-group">
-                                            <input class="ps-input-style form-control" type="text" placeholder="Email">
+                                            <input class="ps-input-style form-control" type="text" name="email" placeholder="Email">
                                         </div>
                                     </div>
                                     <button type="submit" class="next action-button personalized-btn-deafult">Submit</button>
