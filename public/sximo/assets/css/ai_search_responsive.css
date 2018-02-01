@@ -125,5 +125,8 @@
     .header-navigation-container {
         display: none;
     }
+    .top-booking-bar-btn {
+	margin-top: 40px;
+    }
     
 }

@@ -58,6 +58,7 @@ Route::post('crmlayouts/edit_row_element', 'CrmlayoutController@edit_row_element
 Route::get('generate/destination', 'GenerateController@destinationGenerate');
 Route::get('generate/hotel', 'GenerateController@hotelGenerate');
 Route::get('personalized-service', 'Frontend\PersonalizedServiceController@index');
+Route::post('personalized-service/save', 'Frontend\PersonalizedServiceController@save');
 	
 /*************** End *************/
 Route::controller('home', 'HomeController');
