@@ -323,7 +323,7 @@
                             $('#formerrors').html(htmli);
                              window.scrollTo(0, 600); 
                              setTimeout(function(){
-                                  window.location.href= "{{URL::to('membership_packages')}}";
+                                  window.location.href= "{{URL::to('hotel/hotelpackage')}}";
                                 }, 3000);
                         }
                     }
