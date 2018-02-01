@@ -364,11 +364,12 @@
                         console.log('reached maximize' + e);
                     }
                 };
-                $('.ps-adults-handle-counter').handleCounter({maximize: 100});
-                $('.ps-adults-handle-counter').handleCounter({maximize: 100});
-                $('.ps-youth-handle-counter').handleCounter({maximize: 100});
-                $('.ps-children-handle-counter').handleCounter({maximize: 100});
-                $('.ps-toddlers-handle-counter').handleCounter({maximize: 100});
+                
+                $('.ps-adults-handle-counter').handleCounter({minimum:1, maximize: 100});
+                $('.ps-youth-handle-counter').handleCounter({minimum:0, maximize: 100});
+                $('.ps-children-handle-counter').handleCounter({minimum:0, maximize: 100});
+                $('.ps-toddlers-handle-counter').handleCounter({minimum:0, maximize: 100});
+                
                 //Progress Bar
                 var clicks = 1;
                 $('.progress-bar-btn-increment').on('click', function () {
