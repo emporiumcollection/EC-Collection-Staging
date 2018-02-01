@@ -27,6 +27,20 @@
     .uk-slideshow:first-child .ai-uk-animation .bh-slideshow-thumbnail-split-preview {
 	z-index: 99;
     }
+    /* menu setting */
+    
+    #block-ledunfly-menu-link {
+	left: 100%;
+    }
+    .responsivePad {
+        width: 7.333%;
+    }
+    .show-login-forms-btn {
+	padding: 0px 0px;
+    }
+    .block-content.content {
+	margin-right: -23px;
+    }
     
 }
 
@@ -78,6 +92,9 @@
 	text-align: center;
 	margin-bottom: 10px;
     }
+    .top-bar-search .twitter-typeahead {
+	margin-bottom: 10px;
+    }
     /* menu */
     
     .EVMenu {
@@ -93,8 +110,8 @@
     /* hamburg menu */
     
     .block-content.content {
-	width: 100%;
-	float: left;
+	width: 100% !important;
+	float: left !important;
     }
     
     /* left bar */
@@ -155,6 +172,9 @@
     }
     .top-search-members-inner-align {
 	z-index: 99;
+    }
+    .top-bar-search .twitter-typeahead {
+	margin-bottom: 10px;
     }
     
     /* menu */
@@ -217,6 +237,9 @@
     }
     .top-search-members-inner-align {
 	z-index: 99;
+    }
+    .top-bar-search .twitter-typeahead {
+	margin-bottom: 10px;
     }
     /* menu */
     
