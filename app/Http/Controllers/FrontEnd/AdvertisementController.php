@@ -20,7 +20,7 @@ class AdvertisementController extends Controller {
        
         
         $this->data['packages'] = \DB::table('tb_advertisement_space')->where('space_status', 1)->get();
-        return view('frontend.hotel_membership.advertisement_packages', $this->data);
+        return view('frontend.advertiser.advertisement_packages', $this->data);
     }
 	
 	public function fetchadvertisementpackagedetails($pckid)

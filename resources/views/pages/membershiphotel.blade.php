@@ -299,64 +299,21 @@
                                 </li>
 
                                                                 <li>
-                                    <a href="#hotel"> HOTEL </a>
+                                    <a href="#hotel"> HOTEL MEMBERSHIPS </a>
                                 </li>
                                 
                                                                 <li>
-                                    <a href="#deisgnarchitecture" data-hotel-option="deisgn_architecture">DESIGN &amp; ARCHITECTURE</a>
+                                    <a href="#deisgnarchitecture" data-hotel-option="deisgn_architecture">TERMS AND CONDITIONS</a>
                                 </li>
+              
                                 
                                                                 <li>
-                                    <a data-hotel-option="rooms_suites">ROOMS &amp; SUITES</a>
+                                    <a href="#spa_restaurant" data-hotel-option="restaurant_bar">IMPRINT</a>
                                 </li>
                                 
-                                                                <li>
-                                    <a href="#spa_restaurant" data-hotel-option="restaurant_bar">RESTAURANT &amp; BAR</a>
-                                </li>
-                                
-                                								
-																
-								<!--<li>
-                                    <a href="#social" data-hotel-option="social">SOCIAL</a>
-                                </li>-->
-				
-																								
-                                <li>
-                                    <a href="#book-now" data-hotel-option="book_now">BOOK The Dwell Hotel </a>
-                                </li>
                             </ul>
-                            <section class="regular slider slick-initialized slick-slider">
-								<div aria-live="polite" class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 0px; transform: translate3d(0px, 0px, 0px);" role="listbox"><div class="slick-cstm-width slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" style="width: 0px;" tabindex="-1" role="option">
-								   									<div class="side-nav-next-hotel-img">
-										<div class="side-next-and-perivious-hotel-arrow">
-											<div class="arrows-commom  next-arrow">
-												<a href="https://www.emporium-voyage.com/luxury-hotel-giardino-ascona" tabindex="0">
-													<span>New Hotels</span>
-												</a>
-											</div>
-										</div>
-																				<div class="new-hotel-image" style="background-image: url('https://www.emporium-voyage.com/uploads/property_imgs_thumbs/front_property_4582_86817290675-23866498097.jpg')">
-											<div class="new-hotels-image-tittle">
-												<h2 class="new-hotel-name">Giardino Ascona</h2>
-												<div class=" new-hotel-add">
-													<p>New York City</p>
-													<p>United States</p>
-												</div>
-											</div>
-											<div class="clearfix"></div>
-											<div class="new-hotel-view-more-btn">
-												<a class="" href="https://www.emporium-voyage.com/luxury-hotel-giardino-ascona" tabindex="0">
-													View Hotel
-												</a>
-											</div>
-										</div>
-										<a class="bootom-view-next-btn" href="https://www.emporium-voyage.com/luxury-hotel-giardino-ascona" tabindex="0">
-											Visit All Hotels DOI
-										</a>
-									</div>
-																	</div></div></div>
-																
-							</section>
+                            <!-- slick space -->
+                            <!-- slick space -->
                         </div>
                     </div>
                 </div>
@@ -365,7 +322,7 @@
                 
                 <!-- responsive menu add -->
                 
-                <div class="col-md-10 no-padding">
+                <div class="col-md-10 no-padding floatLeft">
 					@if(!empty($pageslider))
 						<section class="wow fadeIn no-padding cstmaiclass littlepadding">
 							<div class="swiper-auto-height-container position-relative width-100">
@@ -845,6 +802,16 @@
                     }
                 });
 			}
+        </script>
+        
+        <script>
+         function openNav() {
+                document.getElementById("editorial-siden-nav-res").style.width = "100%";
+            }
+
+            function closeNav() {
+                document.getElementById("editorial-siden-nav-res").style.width = "0";
+            }
         </script>
 <!--                <script>
             $(document).ready(function () {
