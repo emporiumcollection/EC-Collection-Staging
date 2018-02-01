@@ -122,6 +122,10 @@
     input#search-navbar-our-collection-res::placeholder {
     color: #000 !important;
     }
+    /* slick */
+    #editorial-siden-nav-res .slick-cstm-width.slick-slide.slick-current.slick-active {
+	width: 300px !important;
+    }
 }
 /*@media (min-width: 768px) and (max-width: 1200px) {
      detail Page 
@@ -441,6 +445,10 @@
 	margin-top: 29px !important;
 	width: 3% !important;
     }
+    /* slick */
+    #editorial-siden-nav-res .slick-cstm-width.slick-slide.slick-current.slick-active {
+	width: 300px !important;
+    }
 
     
 }
@@ -716,6 +724,11 @@
     }
     .hotel-bar-name-pannel h2 {
 	color: #fff !important;
+    }
+    /* slick */
+    #editorial-siden-nav-res .slick-cstm-width.slick-slide.slick-current.slick-active {
+	width: 300px !important;
+	width: 300px !important;
     }
 }
 
@@ -1000,6 +1013,11 @@
     }
     .disply-left-right-inner {
     float: left !important;
+    }
+    /* slick */
+    #editorial-siden-nav-res .slick-cstm-width.slick-slide.slick-current.slick-active {
+	width: 300px !important;
+	width: 300px !important;
     }
     
 }
