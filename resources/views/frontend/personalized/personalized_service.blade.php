@@ -87,7 +87,7 @@
                                                                 <label style="background-image: url('{{URL::to('uploads/category_imgs/'.$inspiration->category_image)}}');" class="personalized-service-checkbox-label" for="accommodation-{{$inspiration->id}}">
                                                                     <span class="selected-chexkbox"><i class="fa fa-check" aria-hidden="true"></i></span>{{$inspiration->category_custom_title}}
                                                                 </label>
-                                                                <input class="personalized-service-checkbox-input" value="{{$inspiration->id}}" id="accommodation-{{$inspiration->id}}" type="checkbox">
+                                                                <input id="accommodation-{{$inspiration->id}}" class="personalized-service-checkbox-input" name="inspirations[]" value="{{$inspiration->id}}" type="checkbox">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -116,7 +116,7 @@
                                                                 <label style="background-image: url('{{URL::to('uploads/category_imgs/'.$experience->category_image)}}');" class="personalized-service-checkbox-label" for="experience-{{$experience->id}}">
                                                                     <span class="selected-chexkbox"><i class="fa fa-check" aria-hidden="true"></i></span>{{$experience->category_custom_title}}
                                                                 </label>
-                                                                <input class="personalized-service-checkbox-input" value="{{$experience->id}}" id="experience-{{$experience->id}}" type="checkbox">
+                                                                <input id="experience-{{$experience->id}}" class="personalized-service-checkbox-input" name="experiences[]" value="{{$experience->id}}" type="checkbox">
                                                             </div>
                                                         </div>
                                                     </div>
