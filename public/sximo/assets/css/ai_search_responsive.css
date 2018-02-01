@@ -1,4 +1,17 @@
-
+@media (min-width: 1201px) and (max-width: 1400px) {
+ 
+    .vegasFooter {
+	width: 33%;
+	float: left;
+    }
+    .editorial-custom-footer-style .newsletter-style {
+	width: 100% !important;
+    }
+    .nesletter-submit-btn {
+	width: 40%;
+    }
+    
+}
 @media (min-width: 993px) and (max-width: 1200px) {
     
     .editorial-custom-footer-style .newsletter-style {
@@ -6,7 +19,7 @@
     }
     
     .vegasFooter {
-	width: 100% !important;
+	width: 33% !important;
     }
     
 }
