@@ -75,19 +75,19 @@
                                 </fieldset>
                                 <fieldset class="hide-form muti-form-align">
                                     <div class="experience-page-align">
-                                        <h2 class="black-heading-big">What would you like experience</h2>
+                                        <h2 class="black-heading-big">Inspirations</h2>
                                         <div class="selector-outer-align">
                                             <?php
-                                            if(!empty($experiences)) {
-                                                foreach ($experiences as $experience) {
+                                            if(!empty($inspirations)) {
+                                                foreach ($inspirations as $inspiration) {
                                                     ?>
                                                     <div class="col-md-4 col-sm-6">
                                                         <div class="row">
                                                             <div class="form-group ps-fields-align">
-                                                                <label style="background-image: url('{{URL::to('uploads/category_imgs/'.$experience->category_image)}}');" class="personalized-service-checkbox-label" for="experience-{{$experience->id}}">
-                                                                    <span class="selected-chexkbox"><i class="fa fa-check" aria-hidden="true"></i></span>{{$experience->category_custom_title}}
+                                                                <label style="background-image: url('{{URL::to('uploads/category_imgs/'.$inspiration->category_image)}}');" class="personalized-service-checkbox-label" for="accommodation-{{$inspiration->id}}">
+                                                                    <span class="selected-chexkbox"><i class="fa fa-check" aria-hidden="true"></i></span>{{$inspiration->category_custom_title}}
                                                                 </label>
-                                                                <input class="personalized-service-checkbox-input" value="{{$experience->id}}" id="experience-{{$experience->id}}" type="checkbox">
+                                                                <input class="personalized-service-checkbox-input" value="{{$inspiration->id}}" id="accommodation-{{$inspiration->id}}" type="checkbox">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -104,19 +104,19 @@
                                 </fieldset>
                                 <fieldset class="hide-form muti-form-align">
                                     <div class="experience-page-align">
-                                        <h2 class="black-heading-big">Your accommodation</h2>
+                                        <h2 class="black-heading-big">What would you like experience</h2>
                                         <div class="selector-outer-align">
                                             <?php
-                                            if(!empty($accommodations)) {
-                                                foreach ($accommodations as $accommodation) {
+                                            if(!empty($experiences)) {
+                                                foreach ($experiences as $experience) {
                                                     ?>
                                                     <div class="col-md-4 col-sm-6">
                                                         <div class="row">
                                                             <div class="form-group ps-fields-align">
-                                                                <label style="background-image: url('{{URL::to('uploads/category_imgs/'.$accommodation->category_image)}}');" class="personalized-service-checkbox-label" for="accommodation-{{$accommodation->id}}">
-                                                                    <span class="selected-chexkbox"><i class="fa fa-check" aria-hidden="true"></i></span>{{$accommodation->category_custom_title}}
+                                                                <label style="background-image: url('{{URL::to('uploads/category_imgs/'.$experience->category_image)}}');" class="personalized-service-checkbox-label" for="experience-{{$experience->id}}">
+                                                                    <span class="selected-chexkbox"><i class="fa fa-check" aria-hidden="true"></i></span>{{$experience->category_custom_title}}
                                                                 </label>
-                                                                <input class="personalized-service-checkbox-input" value="{{$accommodation->id}}" id="accommodation-{{$accommodation->id}}" type="checkbox">
+                                                                <input class="personalized-service-checkbox-input" value="{{$experience->id}}" id="experience-{{$experience->id}}" type="checkbox">
                                                             </div>
                                                         </div>
                                                     </div>
