@@ -994,7 +994,7 @@
                                         
                                     </div>
                                 </section>
-                                <section class="book-form-top-bar hidden-md hidden-lg visible-xs visible-sm">
+                                <section class="book-form-top-bar ResponsiveTopbar hidden-md hidden-lg visible-xs visible-sm">
                                     <div>
                                         <div class="booking-form-bar-top">
                                             <form autocomplete="off" method="get" id="searchform-navbar" class="searchform-navbar top-bar-search-form-align" action="{{URL::to('search')}}">

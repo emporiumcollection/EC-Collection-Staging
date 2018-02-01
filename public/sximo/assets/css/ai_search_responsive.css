@@ -116,5 +116,10 @@
     .vegasFooterSocial ul li {
 	margin-left: 14px !important;
     }
+    /* top bar */
+    
+    .ResponsiveTopbar {
+	display: none;
+    }
     
 }
