@@ -44,6 +44,10 @@
     .vegasFooterSocial ul li {
 	margin-left: 14px !important;
     }
+    /* left bar */
+    .right-menu-sidebar {
+        display: none;
+    }
     
 }
 
@@ -75,6 +79,10 @@
     }
     .vegasFooterSocial ul li {
 	margin-left: 37px !important;
+    }
+    /* left bar */
+    .right-menu-sidebar {
+        display: none;
     }
    
 }
