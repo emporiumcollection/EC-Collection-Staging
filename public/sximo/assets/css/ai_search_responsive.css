@@ -119,7 +119,8 @@
     /* top bar */
     
     .ResponsiveTopbar {
-	display: none !important;
+	display: none;
+        margin-top: 40px;
     }
     .header-navigation-container {
         display: none;
