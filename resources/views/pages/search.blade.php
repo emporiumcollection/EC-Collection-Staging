@@ -1165,16 +1165,22 @@
                                 @endif
                                 </div>
                                 <!-- top bar icon add -->
-                                <a href="#"><img class="img-responsive TopbarSearch hidden-md hidden-lg" src="{{asset('sximo/assets/images/hotel.png')}}" alt=""></a>
-                                <div class="col-md-1">
-                                <a data-popup-id="login-forms-popup" href="#" class="video-popup-btn login_popup show-login-forms-btn"><i class="fa fa-lock detailfaLock" aria-hidden="true" ></i></a>
-                                <a data-popup-id="ev-primary-navigation" href="#" class="video-popup-btn"><!--<i class="fa fa-bars hamburgMenu" aria-hidden="true"></i>-->
-                                    <div class="block-content content">
-                                        <span></span>
-                                        <span> </span>
-                                        <span></span>
-                                    </div>
-                                </a>
+                            <div class="col-md-1">
+                                <div class="col-md-4">
+                                    <a href="#"><img class="img-responsive TopbarSearch hidden-md hidden-lg" src="{{asset('sximo/assets/images/hotel.png')}}" alt=""></a>
+                                </div>
+                                <div class="col-md-4">
+                                    <a data-popup-id="login-forms-popup" href="#" class="video-popup-btn login_popup show-login-forms-btn"><i class="fa fa-lock detailfaLock" aria-hidden="true" ></i></a>
+                                </div>
+                                <div class="col-md-4">
+                                    <a data-popup-id="ev-primary-navigation" href="#" class="video-popup-btn"><!--<i class="fa fa-bars hamburgMenu" aria-hidden="true"></i>-->
+                                        <div class="block-content content">
+                                            <span></span>
+                                            <span> </span>
+                                            <span></span>
+                                        </div>
+                                    </a>
+                                </div>
                              </div>
                                 <!-- top bar add end -->
 								<div class="container">
