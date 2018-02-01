@@ -84,6 +84,7 @@
                                                     <div class="col-md-4 col-sm-6">
                                                         <div class="row">
                                                             <div class="form-group ps-fields-align">
+                                                                <label for=""></label>
                                                                 <label for="inspiration_{{$inspiration->id}}" style="background-image: url('{{URL::to('uploads/category_imgs/'.$inspiration->category_image)}}');" class="personalized-service-checkbox-label">
                                                                     <span class="selected-chexkbox"><i class="fa fa-check" aria-hidden="true"></i></span>{{$inspiration->category_custom_title}}
                                                                 </label>
@@ -347,9 +348,7 @@
                     return false;
                 })
                 $('.personalized-service-checkbox-label').click(function (e) {
-                    e.preventDefault();
-                    var $a = $(this);
-                    $a.toggleClass('active').siblings().removeClass('active');
+                    $(this).toggleClass('active').siblings().removeClass('active');
                 });
                 // Tooltip
                 $('[data-toggle="tooltip"]').tooltip();
