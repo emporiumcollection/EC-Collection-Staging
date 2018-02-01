@@ -1031,9 +1031,9 @@
                                                             <div class="dropdown top-search-members-list">
                                                                 <div class="top-search-members-inner-align">
                                                                     <div class="members-list-res ai-custom-deafault-style">
-                                                                        <span id="adults-val">1</span>
+                                                                        <span id="adults-val-res">1</span>
                                                                         Adults,
-                                                                        <span id="childern-val">0</span>
+                                                                        <span id="childern-val-res">0</span>
                                                                         Children
                                                                         <span class="right-down-arrow">
                                                                             <i class="fa fa-angle-down" aria-hidden="true"></i>
@@ -2934,7 +2934,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                             $('#childern-val-res').html(childerns);
                                         }));
                                         </script>
-                                <!-- responsive member dropdawn wnd -->
+                                <!-- responsive member dropdawn end -->
                                 
                     <script>
                         $(document).ready(function () {
