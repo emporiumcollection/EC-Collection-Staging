@@ -22,7 +22,7 @@
         <!-- style -->
         <link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/style.css')}}" />
         <!-- responsive css -->
-         <link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/responsive.css')}}" />
+         <link rel="stylesheet" href="{{ asset('sximo/assets/css/ai_membership_responsive.css')}}" />
         <link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/responsive.css')}}" />
         <!-- Custom style -->
         <link href="{{ asset('sximo/assets/memform/css/custom-ai.css')}}" rel="stylesheet" type="text/css"/>
@@ -277,7 +277,7 @@
                 
                 <!-- button -->
                 
-                <span class="hamburger-menu editorial-res-side-nav-logo hidden-md hidden-lg"  onclick="openNav()"><img src="{{ asset('sximo/assets/images/Hamburger-Menu_1.png')}}" alt=""/></span>
+                <span class="hamburger-menu editorial-res-side-nav-logo hidden-md hidden-lg visible-xs visible-sm"  onclick="openNav()"><img src="{{ asset('sximo/assets/images/Hamburger-Menu_1.png')}}" alt=""/></span>
                 
                 <!-- button -->
                 
