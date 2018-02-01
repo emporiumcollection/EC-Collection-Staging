@@ -406,6 +406,7 @@
                 success: function (data, textStatus, jqXHR) {
                     if(data.status == 'success') {
                         $(".ai-sign-up-form-success-msg").html( data.message );
+                         window.location.href = "{{URL::to('whoiam')}}";
                     }
                     else {
                         var message = data.message;

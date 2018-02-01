@@ -64,7 +64,8 @@ Route::post('personalized-service/save', 'Frontend\PersonalizedServiceController
 Route::controller('home', 'HomeController');
 
 Route::controller('/user', 'UserController');
-Route::controller('/customer', 'CustomerController'); 
+Route::controller('/customer', 'CustomerController');
+Route::get('/whoiam', 'CustomerController@whoIam');  
 
 Route::post('customer_ajaxPostCreate', 'CustomerController@ajaxPostCreate'); 
 Route::post('customer_ajaxPostSignin', 'CustomerController@ajaxPostSignin'); 

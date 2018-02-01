@@ -563,6 +563,8 @@ class CustomerController extends Controller {
     }
 
     public function postSaveprofile(Request $request) {
+
+           
         if (!\Auth::check())
             return Redirect::to('customer/login');
         $rules = array(
@@ -928,6 +930,81 @@ class CustomerController extends Controller {
             return $sen;
         } else {
             return "error";
+        }
+    }
+
+
+
+    public function whoIam() {
+
+       return view('customer.whoiam', $this->data);
+    }
+
+
+    public function postSavewhoiam(Request $request) {
+
+           
+        if (!\Auth::check())
+        return Redirect::to('customer/login');
+        $rules = array(
+            'first_name' => 'required|alpha_num|min:2',
+            'last_name' => 'required|alpha_num|min:2',
+        );
+
+
+
+       /* if ($request->input('userEmail') != \Session::get('eid')) {
+            $rules['email'] = 'required|email|unique:tb_users';
+        }*/
+
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->passes()) {
+
+            $user = User::find(\Session::get('uid')); 
+
+                 
+            $user->first_name = $request->input('first_name');
+            $user->last_name = $request->input('last_name');
+            $user->email = $request->input('email');
+            $user->mobile_number=$request->input('txtPhoneNumber');
+            if (isset($data['avatar']))
+                $user->avatar = $newfilename;
+
+
+
+
+            if($request->input('usertype')=="guests" && $request->input('personalize')=="on" ){
+
+
+                $user->group_id=3;
+                $user->save();
+                return Redirect::to('personalized-service')->with('messagetext', 'Profile has been saved!')->with('msgstatus', 'success'); 
+             }
+
+
+            if($request->input('usertype')=="hotel" ){
+                $user->group_id=4;
+                $user->save();
+                return Redirect::to('hotel/membership')->with('messagetext', 'Profile has been saved!')->with('msgstatus', 'success'); 
+             }
+
+              if($request->input('usertype')=="advertiser" ){
+                $user->group_id=5;
+                $user->save();
+                return Redirect::to('advertiser')->with('messagetext', 'Profile has been saved!')->with('msgstatus', 'success'); 
+             }
+
+
+           return Redirect::to('customer/profile')->with('messagetext', 'Profile has been saved!')->with('msgstatus', 'success');
+          
+
+
+            
+        } else {
+            return Redirect::to('whoiam')->with('messagetext', 'The following errors occurred')->with('msgstatus', 'error')
+                            ->withErrors($validator)->withInput();
         }
     }
 
