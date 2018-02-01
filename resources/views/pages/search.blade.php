@@ -1039,7 +1039,7 @@
                                                                             <i class="fa fa-angle-down" aria-hidden="true"></i>
                                                                         </span>
                                                                     </div>
-                                                                    <ul class="members-drop-list-res" style="display: none;">
+                                                                    <ul class="members-drop-list" style="display: none;">
                                                                         <li>
                                                                             <label>Adult</label>
                                                                             <input id="adult-input-value-res" name="adult" class="input-right" value="2" min="1" max="10" type="number">
