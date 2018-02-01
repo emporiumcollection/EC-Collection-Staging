@@ -1175,7 +1175,7 @@
                                 @endif
                                 </div>
                                 <!-- top bar icon add -->
-                                <img class="img-responsive" src="{{asset('sximo/assets/images/hotel.png')}}" alt="">
+                                <a href="#"><img class="img-responsive TopbarSearch" src="{{asset('sximo/assets/images/hotel.png')}}" alt=""></a>
                                 <!-- top bar add end -->
 								<div class="container">
 									<div class="row">
@@ -3147,6 +3147,13 @@ url: "{{ URL::to('filter_search_destionation')}}",
                         function(){ $(this).addClass('active') },
                         function(){ $(this).removeClass('active') }
                     )
+                </script>
+                
+                <!-- toggle responsive top bar-->
+                <script>
+                    $(".TopbarSearch").click(function(){
+                        $(".ResponsiveTopbar").toggle();    
+                    });
                 </script>
 <!--<script>
 $(document).ready(function(){
