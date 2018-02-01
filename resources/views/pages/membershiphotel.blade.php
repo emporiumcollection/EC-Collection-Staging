@@ -283,7 +283,7 @@
                 
                 <!-- content -->
                 
-                <div id="editorial-siden-nav-res" class="sidenav" style="width: 0px;">
+                <div id="editorial-siden-nav-res" class="sidenav hidden-md hidden-lg" style="width: 0px;">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
                     <div class=" right-menus ">
                         <div class="row-">
