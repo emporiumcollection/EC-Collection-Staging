@@ -124,5 +124,15 @@
     .floatLeft {
         float: left;
     }
+    .hotels-logo h3.title {
+	padding: 25px 200px 10px 10px;
+	text-align: left;
+    }
+    .search-box {
+	background: none;
+	height: 42px !important;
+	margin-top: 0px;
+	padding: 15px 0px 0px 29px !important;
+    }
     
 }
