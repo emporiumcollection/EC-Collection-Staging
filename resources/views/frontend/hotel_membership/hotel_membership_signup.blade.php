@@ -30,7 +30,7 @@
                             </div>
                                         <!--<span class="text-extra-dark-gray alt-font text-large font-weight-600 margin-25px-bottom display-block">Application form</span>--> 
 										<div id="formerrors"></div>
-                                        <form id="contact-form" action="{{URL::to('frontend_hotelpost')}}" method="post">
+                                        <form id="hotel-form" action="{{URL::to('frontend_hotelpost')}}" method="post">
                                             <div class="col-md-12 sm-clear-both">
                                                 <div id="success-contact-form" class="no-margin-lr"></div>
                                             </div>
@@ -38,35 +38,35 @@
                                                 <h5 class="ev-regural-heading text-uppercase margin-20px-bottom font-weight-700 sm-width-100 xs-width-100">Hotel Information</h5>
                                                 <div class="col-md-6 col-sm-12 no-padding-left">
                                                     <label>*Hotel Name</label>
-                                                    <input type="text" name="hotelinfo_name" id="name" placeholder="Hotel Name*" class="bg-white medium-input">
+                                                    <input type="text" name="hotelinfo_name" id="name" placeholder="Hotel Name*" class="bg-white medium-input" required="">
                                                 </div>
                                                 <div class="col-md-6 col-sm-12 no-padding-right">
                                                     <label>*Hotel Status</label>
-                                                    <select name="hotelinfo_status" class="bg-white medium-input">
+                                                    <select name="hotelinfo_status" class="bg-white medium-input" required="">
                                                         <option value="">Select Status</option>
-                                                        <option value="">Open</option>
-                                                        <option value="">Construction phase</option>
-                                                        <option value="">Planning phase</option>
+                                                        <option value="Open">Open</option>
+                                                        <option value="Construction phase">Construction phase</option>
+                                                        <option value="Planning phase">Planning phase</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-6 col-sm-12 no-padding-left">
                                                     <label>*Hotel Type</label>
                                                     <select name="hotelinfo_type" class="bg-white medium-input">
-                                                        <option value="">Hotel Type</option>
-                                                        <option value="">Alternative</option>
-                                                        <option value="">Beach Resort</option>
-                                                        <option value="">Resort</option>
-                                                        <option value="">City</option>
-                                                        <option value="">Mountain</option>
+                                                        <option value="Hotel Type">Hotel Type</option>
+                                                        <option value="Alternative">Alternative</option>
+                                                        <option value="Beach Resort">Beach Resort</option>
+                                                        <option value="Resort">Resort</option>
+                                                        <option value="City">City</option>
+                                                        <option value="Mountain">Mountain</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-6 col-sm-12 no-padding-right">
                                                     <label>*Hotel Building</label>
                                                     <select name="hotelinfo_building" class="bg-white medium-input">
-                                                        <option value="">Hotel Building</option>
-                                                        <option value="">New Construction</option>
-                                                        <option value="">Existing Building</option>
-                                                        <option value="">Conversion</option>
+                                                        <option value="Hotel Building">Hotel Building</option>
+                                                        <option value="New Construction">New Construction</option>
+                                                        <option value="Existing Building">Existing Building</option>
+                                                        <option value="Conversion">Conversion</option>
                                                     </select>
                                                 </div> 
                                                 <div class="col-md-12 col-sm-12 no-padding">
@@ -289,7 +289,7 @@
                                                     <span><input class="checkbox" type="checkbox" name="hotel_contactprsn_agree" value="1">I agree with the <a href="#">Terms and Conditions</a></span>
                                                 </div>
                                                 <div class="col-md-6 col-sm-12 no-padding-right text-align-right">
-                                                    <button id="contact-us-button" type="button" class="btn btn-white" onclick="submit_hotelinfo_form();" style="width: 200px">Submit</button>
+                                                    <input id="contact-us-button" type="submit" value="Submit" class="btn btn-white"  style="width: 200px" >
                                                 </div>
                                             </div>
                                         </form>
@@ -324,4 +324,26 @@
 
         <!-- images loaded -->
         <script type="text/javascript" src="{{ asset('sximo/assets/memform/js/imagesloaded.pkgd.min.js')}}"></script>
+         <script src="{{ asset('sximo/js/parsley.min.js')}}" type="text/javascript"></script>
+         <script>
+              window.ParsleyConfig = {
+                    errorsWrapper: '<div></div>',
+                    errorTemplate: '<div class="alert alert-danger parsley" role="alert"></div>',
+                    errorClass: 'has-error',
+                    successClass: 'has-success'
+                };
+
+
+            
+        $(function () {
+          $('#hotel-form').parsley().on('field:validated', function() {
+            var ok = $('.parsley-error').length === 0;
+            $('.bs-callout-info').toggleClass('hidden', !ok);
+            $('.bs-callout-warning').toggleClass('hidden', ok);
+          })
+          .on('form:submit', function() {
+            return false; // Don't submit form for this demo
+          });
+        });
+         </script>
 @endsection
