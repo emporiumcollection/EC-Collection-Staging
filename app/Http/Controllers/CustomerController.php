@@ -141,6 +141,8 @@ class CustomerController extends Controller {
             $authen->save();
 
             $ucdata['user_id'] = $authen->id;
+            \Session::set("uid",$authen->id);
+
 //            $ucdata['company_name'] = Input::get('company_name');
 //            $ucdata['company_address'] = Input::get('company_address');
 //            $ucdata['company_address2'] = Input::get('company_address2');
@@ -944,8 +946,7 @@ class CustomerController extends Controller {
     public function postSavewhoiam(Request $request) {
 
            
-        if (!\Auth::check())
-        return Redirect::to('customer/login');
+        
         $rules = array(
             'first_name' => 'required|alpha_num|min:2',
             'last_name' => 'required|alpha_num|min:2',
@@ -980,6 +981,7 @@ class CustomerController extends Controller {
 
                 $user->group_id=3;
                 $user->save();
+
                 return Redirect::to('personalized-service')->with('messagetext', 'Profile has been saved!')->with('msgstatus', 'success'); 
              }
 
