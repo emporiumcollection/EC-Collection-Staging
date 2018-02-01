@@ -126,59 +126,7 @@
             .neww-footer .container {
                 width: auto;
             }
-            .vegasFooter {
-        width: 33%;
-        float: left;
-    }
-    
-    .vegasFooterSocial ul li a i {
-	font-size: 14px;
-	background: #ABA07C;
-	/* border-radius: 831px; */
-	padding: 6px 12px 4px 7px;
-	color: #fff;
-	margin-right: 0px;
-	text-align: center;
-	width: 25px;
-    }
-    
-    .footer {
-	background-color: #F7F7F4;
-	font-size: 11px;
-	margin-bottom: -15px;
-	margin-top: 50px;
-	padding-bottom: 15px;
-	padding-top: 65px;
-    }
-    
-    .noPadding {
-        padding: 0px !important;
-    }
-
-    .vegasSocialUl {
-        margin-left: 121px;
-    }
-    
-    .VegasFooterMiddle p {
-        margin-left: 58px;
-    }
-    
-    .VegasFooterMiddle form {
-        margin-left: 58px;
-    }
-    
-    .marginBottom20 {
-        margin-bottom: 20px;
-    }
-            .newsletter-style {
-                    width: 44%;
-                    margin-top: 8px;
-                    float: left;
-                    margin-right: 15px;
-                    box-shadow: none;
-                    border-radius: 0;
-                    font-size: 11px;
-            }
+        
 
         </style>
         <script type="text/javascript">
