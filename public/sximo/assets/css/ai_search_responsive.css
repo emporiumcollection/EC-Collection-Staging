@@ -33,13 +33,13 @@
 	left: 100%;
     }
     .responsivePad {
-        width: 7.333%;
+        width: 7.333% !important;
     }
     .show-login-forms-btn {
-	padding: 0px 0px;
+	padding: 0px 0px !important;
     }
     .block-content.content {
-	margin-right: -23px;
+	margin-right: -23px !important;
     }
     
 }
