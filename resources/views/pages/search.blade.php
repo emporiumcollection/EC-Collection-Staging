@@ -1030,7 +1030,7 @@
                                                         <div class="form-group padding-right-12">
                                                             <div class="dropdown top-search-members-list">
                                                                 <div class="top-search-members-inner-align">
-                                                                    <div class="members-list ai-custom-deafault-style">
+                                                                    <div class="members-list-res ai-custom-deafault-style">
                                                                         <span id="adults-val">1</span>
                                                                         Adults,
                                                                         <span id="childern-val">0</span>
@@ -1039,14 +1039,14 @@
                                                                             <i class="fa fa-angle-down" aria-hidden="true"></i>
                                                                         </span>
                                                                     </div>
-                                                                    <ul class="members-drop-list" style="display: none;">
+                                                                    <ul class="members-drop-list-res" style="display: none;">
                                                                         <li>
                                                                             <label>Adult</label>
-                                                                            <input id="adult-input-value" name="adult" class="input-right" value="2" min="1" max="10" type="number">
+                                                                            <input id="adult-input-value-res" name="adult" class="input-right" value="2" min="1" max="10" type="number">
                                                                         </li>
                                                                         <li>
                                                                             <label>Children</label>
-                                                                            <input id="childerns-input-value" name="childs" class="input-right" value="0" min="0" max="10" type="number">
+                                                                            <input id="childerns-input-value-res" name="childs" class="input-right" value="0" min="0" max="10" type="number">
                                                                         </li>
                                                                     </ul>
                                                                 </div>
@@ -1061,16 +1061,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                 <div class="col-md-1">
-                                                    <a data-popup-id="login-forms-popup" href="#" class="video-popup-btn login_popup show-login-forms-btn"><i class="fa fa-lock detailfaLock" aria-hidden="true" ></i></a>
-                                                    <a data-popup-id="ev-primary-navigation" href="#" class="video-popup-btn"><!--<i class="fa fa-bars hamburgMenu" aria-hidden="true"></i>-->
-                                                        <div class="block-content content">
-                                                            <span></span>
-                                                            <span> </span>
-                                                            <span></span>
-                                                        </div>
-                                                    </a>
-                                                 </div>
                                             </form>
                                         </div>
                                         <!-- AIC Harman email phone sidebar add start -->
@@ -1176,6 +1166,16 @@
                                 </div>
                                 <!-- top bar icon add -->
                                 <a href="#"><img class="img-responsive TopbarSearch hidden-md hidden-lg" src="{{asset('sximo/assets/images/hotel.png')}}" alt=""></a>
+                                <div class="col-md-1">
+                                <a data-popup-id="login-forms-popup" href="#" class="video-popup-btn login_popup show-login-forms-btn"><i class="fa fa-lock detailfaLock" aria-hidden="true" ></i></a>
+                                <a data-popup-id="ev-primary-navigation" href="#" class="video-popup-btn"><!--<i class="fa fa-bars hamburgMenu" aria-hidden="true"></i>-->
+                                    <div class="block-content content">
+                                        <span></span>
+                                        <span> </span>
+                                        <span></span>
+                                    </div>
+                                </a>
+                             </div>
                                 <!-- top bar add end -->
 								<div class="container">
 									<div class="row">
@@ -2915,6 +2915,56 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                     })(document);
                 
                                 </script>
+                                
+                                
+                                <!-- responsive member dropdawn -->
+                                <script type="text/javascript">
+                                            eval($("#adult-input-value-res").change(function () {
+                                            var adults = $(this).val();
+                                            $('#adults-val-res').html(adults);
+                                        }));
+                                        eval($("#childerns-input-value-res").change(function () {
+                                            var childerns = $(this).val();
+                                            $('#childern-val-res').html(childerns);
+                                        }));
+                                        </script>
+                                    <script>
+                                            (function (document) {
+                                        var alterNav = function () {
+                                            var item = document.querySelector('.members-drop-list-res');
+                                            var link = document.querySelector('.members-list-res');
+                                            var itemIsOpened = false;
+                                            window.onclick = function (e) {
+                                                console.log(e);
+                                                if (!itemIsOpened) {
+                                                    if (e.target == link) {
+                                                        itemIsOpened = true;
+                                                        $('.members-drop-list-res').show();
+                                                    }
+                                                } else {
+                                                    if (!isChild(e.target, item)) {
+                                                        itemIsOpened = false;
+                                                        $('.members-drop-list-res').hide();
+                                                    }
+                                                }
+                                            }
+                                        };
+
+                                        var isChild = function (child, parent) {
+                                            var current = child;
+                                            while (current) {
+                                                if (current === parent) return true;
+                                                current = current.parentNode;
+                                            }
+                                            return false;
+                                        }
+
+                                        alterNav();
+                                    })(document);
+                
+                                </script>
+                                <!-- responsive member dropdawn wnd -->
+                                
                     <script>
                         $(document).ready(function () {
                         $(".social-share").click(function (event) {
