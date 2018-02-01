@@ -87,7 +87,7 @@
                                                                 <label style="background-image: url('{{URL::to('uploads/category_imgs/'.$inspiration->category_image)}}');" class="personalized-service-checkbox-label" for="accommodation-{{$inspiration->id}}">
                                                                     <span class="selected-chexkbox"><i class="fa fa-check" aria-hidden="true"></i></span>{{$inspiration->category_custom_title}}
                                                                 </label>
-                                                                <input class="personalized-service-checkbox-input" value="{{$inspiration->id}}" id="accommodation-{{$inspiration->id}}" type="checkbox">
+                                                                <input id="accommodation-{{$inspiration->id}}" class="personalized-service-checkbox-input" name="inspirations[]" value="{{$inspiration->id}}" type="checkbox">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -116,7 +116,7 @@
                                                                 <label style="background-image: url('{{URL::to('uploads/category_imgs/'.$experience->category_image)}}');" class="personalized-service-checkbox-label" for="experience-{{$experience->id}}">
                                                                     <span class="selected-chexkbox"><i class="fa fa-check" aria-hidden="true"></i></span>{{$experience->category_custom_title}}
                                                                 </label>
-                                                                <input class="personalized-service-checkbox-input" value="{{$experience->id}}" id="experience-{{$experience->id}}" type="checkbox">
+                                                                <input id="experience-{{$experience->id}}" class="personalized-service-checkbox-input" name="experiences[]" value="{{$experience->id}}" type="checkbox">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -160,7 +160,7 @@
                                                     <p class="smalldes-label">18* Years</p>
                                                 </div>
                                                 <div class="col-md-6 col-sm-6">
-                                                    <div class="ps-handle-counter">
+                                                    <div class="ps-adults-handle-counter ps-handle-counter">
                                                         <button type="button" class="spinner-btns counter-minus btn btn-primary">-</button>
                                                         <input class="spinner-input" name="adults" type="text" value="2">
                                                         <button type="button" class="spinner-btns counter-plus btn btn-primary">+</button>
@@ -173,7 +173,7 @@
                                                     <p class="smalldes-label">12-17 Years</p>
                                                 </div>
                                                 <div class="col-md-6 col-sm-6">
-                                                    <div class="ps-handle-counter">
+                                                    <div class="ps-youth-handle-counter ps-handle-counter">
                                                         <button type="button" class="spinner-btns counter-minus btn btn-primary">-</button>
                                                         <input class="spinner-input" name="youth" type="text" value="0">
                                                         <button type="button" class="spinner-btns counter-plus btn btn-primary">+</button>
@@ -186,7 +186,7 @@
                                                     <p class="smalldes-label">2-11 Years</p>
                                                 </div>
                                                 <div class="col-md-6 col-sm-6">
-                                                    <div class="ps-handle-counter">
+                                                    <div class="ps-children-handle-counter ps-handle-counter">
                                                         <button type="button" class="spinner-btns counter-minus btn btn-primary">-</button>
                                                         <input class="spinner-input" name="children" type="text" value="0">
                                                         <button type="button" class="spinner-btns counter-plus btn btn-primary">+</button>
@@ -199,7 +199,7 @@
                                                     <p class="smalldes-label">under 2 Years</p>
                                                 </div>
                                                 <div class="col-md-6 col-sm-6">
-                                                    <div class="ps-handle-counter">
+                                                    <div class="ps-toddlers-handle-counter ps-handle-counter">
                                                         <button type="button" class="spinner-btns counter-minus btn btn-primary">-</button>
                                                         <input class="spinner-input" name="toddlers" type="text" value="0">
                                                         <button type="button" class="spinner-btns counter-plus btn btn-primary">+</button>
@@ -364,7 +364,12 @@
                         console.log('reached maximize' + e);
                     }
                 };
-                $('.ps-handle-counter').handleCounter({maximize: 100});
+                
+                $('.ps-adults-handle-counter').handleCounter({minimum:1, maximize: 100});
+                $('.ps-youth-handle-counter').handleCounter({minimum:0, maximize: 100});
+                $('.ps-children-handle-counter').handleCounter({minimum:0, maximize: 100});
+                $('.ps-toddlers-handle-counter').handleCounter({minimum:0, maximize: 100});
+                
                 //Progress Bar
                 var clicks = 1;
                 $('.progress-bar-btn-increment').on('click', function () {
@@ -380,32 +385,26 @@
                     $('.progress-bar-inner').width(percent + '%');
                 });
                 //Date Range Picker
-                $('.get-travel-details').dateRangePicker(
-                        {
-
-                            selectForward: (Boolean),
-                            stickyMonths: (Boolean),
-                            startDate: "12-01-2017",
-                            format: ' DD.MM.YYYY',
-                            separator: ' to ',
-
-                            getValue: function ()
-                            {
-                                if ($('.get-earliest-arrival').val() && $('.get-checkout-date').val())
-                                    return $('.get-earliest-arrival').val() + ' to ' + $('.get-checkout-date').val();
-                                else
-                                    return '';
-                            },
-                            setValue: function (s, s1, s2)
-                            {
-                                $('.get-checkout-date').val(s1);
-                                $('.get-earliest-arrival').val(s2);
-                            }
+                $(".get-travel-details").dateRangePicker({
+                        selectForward: (Boolean),
+                        stickyMonths: (Boolean),
+                        startDate: "12-01-2017",
+                        format: ' DD.MM.YYYY',
+                        separator: ' to ',
+                        getValue: function () {
+                            if ($('.get-earliest-arrival').val() && $('.get-checkout-date').val())
+                                return $('.get-earliest-arrival').val() + ' to ' + $('.get-checkout-date').val();
+                            else
+                                return '';
+                        },
+                        setValue: function (s, s1, s2) {
+                            $('.get-earliest-arrival').val(s1);
+                            $('.get-checkout-date').val(s2);
                         }
+                    }
                 ).bind('datepicker-first-date-selected', function (event, obj) {
-                    $(".get-earliest-arrival").val('');
+                    $(".get-checkout-date").val('');
                 });
-                
             });
         </script>
 
