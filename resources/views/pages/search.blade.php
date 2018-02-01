@@ -1154,7 +1154,7 @@
                                                                                                                 @if($slides->slider_link != '#')
 														<a class="uk-margin-top uk-button uk-button-primary" href="http://{{$slides->slider_link}}">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>
 				@else
-														<a class="uk-margin-top uk-button uk-button-primary" href="{{(isset($_SERVER['HTTPS']) ? 'https' : 'http') . '://$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI]'}}">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>
+														<a class="uk-margin-top uk-button uk-button-primary" href="{{(isset($_SERVER['HTTPS']) ? 'https://' : 'http://') . $_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI]}}">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>
                                                                                                                 @endif
 													</div>
 													<a href="javascript:void(0);" class="bh-slideshow-slidenav uk-slidenav uk-slidenav-previous" data-uk-slideshow-item="previous"></a>
