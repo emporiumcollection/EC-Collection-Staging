@@ -53,6 +53,22 @@
     .vegasFooterSocial ul li {
 	margin-left: 14px !important;
     }
+    /* top bar */
+    
+    .ResponsiveTopbar {
+	display: none;
+        margin-top: 40px;
+    }
+    .header-navigation-container {
+        display: none;
+    }
+    .top-booking-bar-btn {
+	margin-top: 40px;
+    }
+    .text-right {
+	text-align: center;
+	margin-bottom: 10px;
+    }
     /* menu */
     
     .EVMenu {
