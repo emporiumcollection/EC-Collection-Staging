@@ -35,11 +35,11 @@ class Authenticate
     public function handle($request, Closure $next)
     {
         
-        if(isset($request->user()->group_id) && ($request->user()->group_id==3 || $request->user()->group_id==4) ){
+       /* if(isset($request->user()->group_id) && ($request->user()->group_id==3 || $request->user()->group_id==4) ){
 
             return redirect('customer/profile');
          }
-
+        */
 
         if ($this->auth->guest()) {
             if ($request->ajax()) {
