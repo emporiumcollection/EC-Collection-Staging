@@ -1007,18 +1007,18 @@
                                                 </div>
                                                 <div class="col-md-4">
                                                     <div class="row">
-                                                        <div id="top-bar-search-booking-form">
+                                                        <div id="top-bar-search-booking-form-res">
                                                             <div class="col-md-6">
                                                                 <div class="row">
                                                                     <div class="form-group padding-right-12">
-                                                                        <input id="top-bar-search-booking-form-arrive" class="form-control ai-custom-deafault-style" name="arrive" type="text" placeholder="Arriving">
+                                                                        <input id="top-bar-search-booking-form-arrive-res" class="form-control ai-custom-deafault-style" name="arrivel" type="text" placeholder="Arrival">
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <div class="row">
                                                                     <div class="form-group padding-right-12">
-                                                                        <input id="top-bar-search-booking-form-destination" class="form-control ai-custom-deafault-style" name="destination" type="text" placeholder="Departing">
+                                                                        <input id="top-bar-search-booking-form-destination-res" class="form-control ai-custom-deafault-style" name="destinationation" type="text" placeholder="Departure">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1175,7 +1175,7 @@
                                 @endif
                                 </div>
                                 <!-- top bar icon add -->
-                                <a href="#"><img class="img-responsive TopbarSearch" src="{{asset('sximo/assets/images/hotel.png')}}" alt=""></a>
+                                <a href="#"><img class="img-responsive TopbarSearch hidden-md hidden-lg" src="{{asset('sximo/assets/images/hotel.png')}}" alt=""></a>
                                 <!-- top bar add end -->
 								<div class="container">
 									<div class="row">
@@ -3140,6 +3140,36 @@ url: "{{ URL::to('filter_search_destionation')}}",
                 /*Top Bar Booking End Here*/
                     
                     </script> 
+                    
+                    
+                    <!-- responsive top bar -->
+                    <script>
+                    $('#top-bar-search-booking-form-res').dateRangePicker(
+                    {
+                        selectForward: (Boolean),
+                        stickyMonths: (Boolean),
+                        startDate: "12-01-2017",
+                        format: 'DD.MM.YYYY',
+                        autoClose: "true",
+                        separator: ' to ',
+                        getValue: function ()
+                        {
+                            if ($('#top-bar-search-booking-form-destination-res').val() && $('#top-bar-search-booking-form-arrive-res').val())
+                                return $('#top-bar-saerch-booking-form-destination-res').val() + ' to ' + $('#top-bar-saerch-booking-form-arrive-res').val();
+                            else
+                                return '';
+                        },
+                        setValue: function (s, s1, s2)
+                        {
+                            $('#top-bar-search-booking-form-arrive-res').val(s1);
+                            $('#top-bar-search-booking-form-destination-res').val(s2);
+                        }
+                    }
+                ).bind('datepicker-first-date-selected', function (event, obj) {
+                    $("#top-bar-search-booking-form-destination-res").val('');
+                });
+                </script>
+                    <!-- responsive top bar end -->
          
          <!-- contact email aside -->
                 <script> 
