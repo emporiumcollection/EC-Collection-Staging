@@ -3,6 +3,22 @@
 
 }
 
+/* media testing */
+
+@media (min-width: 412px) and (max-width: 732px) {
+ 
+    .image-slider-container .editorial-image-slider-btns {
+        margin-top: -190px !important;
+    }
+    .editorial-images-count.images-count {
+        margin-left: 19% !important;
+        margin-top: -215px !important;
+    }
+    
+}
+
+/* end media testing */
+
 @media (min-width: 1201px) and (max-width: 1400px) {
     .hotel-detail-slider-price-and-show-more .hotel-slider-price {
 	margin-left: 10px;
@@ -823,8 +839,9 @@
     }
     .hotel-book-now {
 	color: 000;
-	width: 160px;
-    } 
+	width: 160px !important;
+	margin-top: 32px !important;
+    }
     .VegasPopLogo {
 	width: 100% !important;
     }
