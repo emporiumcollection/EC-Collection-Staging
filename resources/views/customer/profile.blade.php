@@ -36,7 +36,7 @@ input[type=radio]:checked + label>img {
   <!-- Nav tabs <i class="fa fa-bullhorn" aria-hidden="true"></i></div><span>Ads -->
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-        <li role="presentation"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"></i>ADS</a></li>
+    <li role="presentation"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"></i>ADS</a></li>
     <li role="presentation"><a href="#comingsoon" aria-controls="comingsoon" role="tab" data-toggle="tab">FAVOURITE</a></li>
     <li role="presentation"><a href="#comingsoon" aria-controls="comingsoon" role="tab" data-toggle="tab">Service</a></li>
     <li role="presentation"><a href="#comingsoon" aria-controls="comingsoon" role="tab" data-toggle="tab"> </i>Magazine</a></li>
@@ -129,17 +129,17 @@ input[type=radio]:checked + label>img {
 					</form>
 					<div id="formerrors"></div>
 					<div id="hotel" style="display:none;">
-						<form id="hotel-form" action="{{URL::to('frontend_hotelpost')}}" method="post">
+						<form id="hotel-form" name="hotel-form" action="{{URL::to('frontend_hotelpost')}}" method="post">
 						<input type="hidden" name="hotel_signup_type" value="company" />
 						<div class="row">
 							<h5 class="ev-regural-heading text-uppercase margin-20px-bottom font-weight-700 sm-width-100 xs-width-100">Hotel Information</h5>
 							<div class="col-md-6 col-sm-12 no-padding-left">
 								<label>*Hotel Name</label>
-								<input type="text" name="hotelinfo_name" id="name" placeholder="Hotel Name*" class="form-control dash-input-style">
+								<input type="text" name="hotelinfo_name" data-parsley-trigger="change" required="" id="name" placeholder="Hotel Name*" class="form-control dash-input-style">
 							</div>
 							<div class="col-md-6 col-sm-12 no-padding-right">
 								<label>*Hotel Status</label>
-								<select name="hotelinfo_status" class="form-control dash-input-style">
+								<select name="hotelinfo_status" class="form-control dash-input-style" required="">
 									<option value="">Select Status</option>
 									<option value="">Open</option>
 									<option value="">Construction phase</option>
@@ -148,7 +148,7 @@ input[type=radio]:checked + label>img {
 							</div>
 							<div class="col-md-6 col-sm-12 no-padding-left">
 								<label>*Hotel Type</label>
-								<select name="hotelinfo_type" class="form-control dash-input-style">
+								<select name="hotelinfo_type" class="form-control dash-input-style" required="">
 									<option value="">Hotel Type</option>
 									<option value="">Alternative</option>
 									<option value="">Beach Resort</option>
@@ -159,7 +159,7 @@ input[type=radio]:checked + label>img {
 							</div>
 							<div class="col-md-6 col-sm-12 no-padding-right">
 								<label>*Hotel Building</label>
-								<select name="hotelinfo_building" class="form-control dash-input-style">
+								<select name="hotelinfo_building" class="form-control dash-input-style" required="">
 									<option value="">Hotel Building</option>
 									<option value="">New Construction</option>
 									<option value="">Existing Building</option>
@@ -168,15 +168,15 @@ input[type=radio]:checked + label>img {
 							</div> 
 							<div class="col-md-12 col-sm-12 no-padding">
 								<label>*Hotel Opening Date</label>
-								<input type="date" name="hotelinfo_opening_date" placeholder="Hotel Opening Date*" class="form-control dash-input-style">
+								<input type="date" name="hotelinfo_opening_date" required="" placeholder="Hotel Opening Date*" class="form-control dash-input-style">
 							</div>
 							<div class="col-md-6 col-sm-12 no-padding-left">
 								<label>*Street & Number</label>
-								<input type="text" name="hotelinfo_address" placeholder="Street & Number*" class="form-control dash-input-style">
+								<input type="text" name="hotelinfo_address" required="" placeholder="Street & Number*" class="form-control dash-input-style">
 							</div>
 							<div class="col-md-6 col-sm-12 no-padding-right">
 								<label>*City</label>
-								<input type="text" name="hotelinfo_city" placeholder="City*" class="form-control dash-input-style">
+								<input type="text" name="hotelinfo_city" placeholder="City*" required="" class="form-control dash-input-style">
 							</div>
 							<div class="col-md-6 col-sm-12 no-padding-left">
 								<label>*Country</label>
@@ -374,7 +374,7 @@ input[type=radio]:checked + label>img {
 								<input type="text" name="hotel_contactprsn_mobile" placeholder="Mobile*" class="form-control dash-input-style">
 							</div>
 							<div class="col-md-6 col-sm-12 no-padding-right" style="margin-top:10px;">
-								<button type="button" class="btn btn-default dash-btn-style" onclick="submit_hotelinfo_form('hotel-form');">Save Profile</button>
+								<input type="submit" class="btn btn-default dash-btn-style" oncldick="submit_hotelinfo_form('hotel-form');" value="Save Profile">
 							</div>
 						</div>
 						</form>
@@ -658,6 +658,29 @@ input[type=radio]:checked + label>img {
    
    
 </section>
+    <!-- PARSLEY -->
+    <script>
+        window.ParsleyConfig = {
+            errorsWrapper: '<div></div>',
+            errorTemplate: '<div class="alert alert-danger parsley" role="alert"></div>',
+            errorClass: 'has-error',
+            successClass: 'has-success'
+        };
+
+
+    
+$(function () {
+  $('#hotel-form').parsley().on('field:validated', function() {
+    var ok = $('.parsley-error').length === 0;
+    $('.bs-callout-info').toggleClass('hidden', !ok);
+    $('.bs-callout-warning').toggleClass('hidden', ok);
+  })
+  .on('form:submit', function() {
+    return false; // Don't submit form for this demo
+  });
+});
+</script>
+
 <script>
 	 $(document).on('click', '.usertype', function () {
 		 $('#guests').hide();
@@ -667,6 +690,11 @@ input[type=radio]:checked + label>img {
 		 
 		 $('#'+uservar).show();
 	 });
+
+
+
+
+
 	 
 	 function submit_hotelinfo_form(formid)
 	{
@@ -700,4 +728,28 @@ input[type=radio]:checked + label>img {
 		});
 	}
 </script>
+@endsection
+
+@section('css')
+
+<!-- swiper carousel -->
+<link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/swiper.min.css')}}">
+<!-- style -->
+<link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/style.css')}}" />
+<!-- responsive css -->
+<link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/responsive.css')}}" />
+<!-- Custom style -->
+<link href="{{ asset('sximo/assets/memform/css/custom-ai.css')}}" rel="stylesheet" type="text/css"/>
+@endsection
+
+@section('script')
+<script src="{{ asset('sximo/js/parsley.min.js')}}" type="text/javascript"></script>
+<script type="text/javascript" src="{{ asset('sximo/assets/memform/js/smooth-scroll.js')}}"></script>
+        <!-- animation -->
+        <script type="text/javascript" src="{{ asset('sximo/assets/memform/js/wow.min.js')}}"></script>
+        <!-- swiper carousel -->
+        <script type="text/javascript" src="{{ asset('sximo/assets/memform/js/swiper.min.js')}}"></script>
+
+        <!-- images loaded -->
+        <script type="text/javascript" src="{{ asset('sximo/assets/memform/js/imagesloaded.pkgd.min.js')}}"></script>
 @endsection

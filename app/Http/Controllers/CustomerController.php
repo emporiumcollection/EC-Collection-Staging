@@ -19,7 +19,7 @@ class CustomerController extends Controller {
         parent::__construct();
         $this->data['pageTitle'] = '';
         $this->data['data'] = CommonHelper::getInfo();
-        $this->data['pageslider'] = \DB::table('tb_pages_sliders')->select( 'slider_title', 'slider_description', 'slider_img', 'slider_link', 'slider_video', 'slide_type')->where('slider_page_id', 35)->get();
+        $this->data['pageslider'] = \DB::table('tb_pages_sliders')->select( 'slider_title', 'slider_description', 'slider_img', 'slider_link', 'slider_video', 'slide_type')->where('slider_page_id', 107)->get();
     }
 
     public function getRegister($pid) {

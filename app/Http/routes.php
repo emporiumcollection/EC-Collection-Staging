@@ -264,7 +264,7 @@ Route::group(['middleware' => 'auth'], function()
 
 	Route::get('hotel/membership', 'Frontend\HotelMembershipController@membershipSignup');
 	Route::get('hotel/hotelpackage', 'Frontend\HotelMembershipController@hotelPackage');
-	Route::get('hotel/advertisement-package', 'Frontend\HotelMembershipController@advertisementPackage');
+	Route::get('hotel/advertisement-package', 'Frontend\AdvertisementController@advertisementPackage');
 	Route::get('hotel/cart', 'Frontend\HotelMembershipController@hotelCart');
 	Route::get('hotel/checkout', 'Frontend\HotelMembershipController@hotelCheckout');
 

@@ -21,6 +21,26 @@
     .vegasFooter {
 	width: 33% !important;
     }
+    .filter-grid-page-side-bar .combodate select {
+	width: 34px !important;
+    }
+    .uk-slideshow:first-child .ai-uk-animation .bh-slideshow-thumbnail-split-preview {
+	z-index: 99;
+    }
+    /* menu setting */
+    
+    #block-ledunfly-menu-link {
+	left: 100%;
+    }
+    .responsivePad {
+        width: 7.333% !important;
+    }
+    .show-login-forms-btn {
+	padding: 0px 0px !important;
+    }
+    .block-content.content {
+	margin-right: -23px !important;
+    }
     
 }
 
@@ -28,7 +48,7 @@
 @media (min-width: 768px) and (max-width: 992px) {
     
     .editorial-custom-footer-style {
-	width: 83% !important;
+	width: 74% !important;
     }
     .vegasFooter {
 	width: 50% !important;
@@ -65,8 +85,14 @@
     .top-booking-bar-btn {
 	margin-top: 40px;
     }
+    .top-search-members-inner-align {
+	z-index: 99;
+    }
     .text-right {
 	text-align: center;
+	margin-bottom: 10px;
+    }
+    .top-bar-search .twitter-typeahead {
 	margin-bottom: 10px;
     }
     /* menu */
@@ -84,13 +110,16 @@
     /* hamburg menu */
     
     .block-content.content {
-	width: 100%;
-	float: left;
+	width: 100% !important;
+	float: left !important;
     }
     
     /* left bar */
     .filter-grid-page-side-bar {
-	width: 26.89%;
+	width: 26.10%;
+    }
+    .filter-grid-page-side-bar .combodate select {
+	width: 45px !important;
     }
   
 }
@@ -139,6 +168,12 @@
     }
     .text-right {
 	text-align: center;
+	margin-bottom: 10px;
+    }
+    .top-search-members-inner-align {
+	z-index: 99;
+    }
+    .top-bar-search .twitter-typeahead {
 	margin-bottom: 10px;
     }
     
@@ -198,6 +233,12 @@
     }
     .text-right {
 	text-align: center;
+	margin-bottom: 10px;
+    }
+    .top-search-members-inner-align {
+	z-index: 99;
+    }
+    .top-bar-search .twitter-typeahead {
 	margin-bottom: 10px;
     }
     /* menu */
