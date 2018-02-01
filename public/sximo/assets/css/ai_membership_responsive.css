@@ -1,0 +1,117 @@
+@media (min-width: 1201px) and (max-width: 1400px) {
+ 
+    
+}
+
+@media (min-width: 1201px) and (max-width: 1400px) {
+ 
+    .vegasFooter {
+	width: 33%;
+	float: left;
+    }
+}
+@media (min-width: 993px) and (max-width: 1200px) {
+    
+ 
+}
+
+
+@media (min-width: 768px) and (max-width: 992px) {
+    
+    .editorial-custom-footer-style {
+	width: 74% !important;
+    }
+    .vegasFooter {
+	width: 50% !important;
+    }
+    .VegasFooterMiddle p {
+        margin-left: 0px !important;
+    }
+    .VegasFooterMiddle form {
+	margin-left: 0px !important;
+    }
+    .editorial-custom-footer-style .newsletter-style {
+	width: 100% !important;
+	text-align: left !important;
+    }
+    .vegasFooterSocial {
+	float: left !important;
+	margin-top: 30px !important;
+    }
+    .vegasSocialUl {
+	margin-left: 44px !important;
+    }
+    .vegasFooterSocial ul li {
+	margin-left: 14px !important;
+    }
+    
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+    
+    
+    .editorial-custom-footer-style {
+	width: 100% !important;
+    }
+    .vegasFooter {
+	width: 100% !important;
+    }
+    .VegasFooterMiddle p {
+        margin-left: 0px !important;
+    }
+    .VegasFooterMiddle form {
+	margin-left: 0px !important;
+    }
+    .editorial-custom-footer-style .newsletter-style {
+	width: 100% !important;
+	text-align: left !important;
+    }
+    .vegasFooterSocial {
+	float: left !important;
+	margin-top: 30px !important;
+    }
+    .vegasSocialUl {
+	margin-left: 44px !important;
+    }
+    .vegasFooterSocial ul li {
+	margin-left: 37px !important;
+    }
+   
+}
+
+
+@media (min-width: 320px) and (max-width: 480px) {
+    
+    .editorial-custom-footer-style {
+	width: 100% !important;
+    }
+    .vegasFooter {
+	width: 100% !important;
+    }
+    .VegasFooterMiddle p {
+        margin-left: 0px !important;
+    }
+    .VegasFooterMiddle form {
+	margin-left: 0px !important;
+    }
+    .editorial-custom-footer-style .newsletter-style {
+	width: 100% !important;
+	text-align: left !important;
+    }
+    .vegasFooterSocial {
+	float: left !important;
+	margin-top: 30px !important;
+    }
+    .vegasSocialUl {
+	margin-left: 44px !important;
+    }
+    .vegasFooterSocial ul li {
+	margin-left: 14px !important;
+    }
+    
+    /* left bar */
+    .right-menu-sidebar {
+        display: none;
+    }
+    
+}

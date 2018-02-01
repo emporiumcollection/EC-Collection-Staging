@@ -22,7 +22,8 @@
         <!-- style -->
         <link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/style.css')}}" />
         <!-- responsive css -->
-        <link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/responsive.css')}}" />
+        <link rel="stylesheet" href="{{ asset('sximo/assets/css/ai_membership_responsive.css')}}" />
+         <link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/responsive.css')}}" />
         <!-- Custom style -->
         <link href="{{ asset('sximo/assets/memform/css/custom-ai.css')}}" rel="stylesheet" type="text/css"/>
         <!--[if IE]>
