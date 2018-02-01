@@ -445,11 +445,11 @@ class CustomerController extends Controller {
                             \Session::put('lang', 'Deutsch');
                         }
                         if (CNF_FRONT == 'false') :
-                            return Redirect::to('dashboard');
+                            return Redirect::to('customer/profile');
                         else :
                             $getusercompany = \DB::table('tb_user_company_details')->where('user_id', $row->id)->first();
                             if (!empty($getusercompany)) {
-                                return Redirect::to('dashboard');
+                                return Redirect::to('customer/profile');
                             } else {
                                 if($row->group_id == 4) {
                                     return Redirect::to('customer/profile')->with('messagetext', 'Please complete your profile and company details')->with('msgstatus', 'error');

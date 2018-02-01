@@ -349,7 +349,7 @@
                 data: formData,
                 success: function (data, textStatus, jqXHR) {
                     if(data.status == 'success') {
-                        window.location.href = "{{URL::to('dashboard')}}";
+                        window.location.href = "{{URL::to('customer/profile')}}";
                     }
                     else {
                         var message = data.message;
