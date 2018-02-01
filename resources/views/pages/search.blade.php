@@ -1165,14 +1165,14 @@
                                 @endif
                                 </div>
                                 <!-- top bar icon add -->
-                            <div class="col-md-1">
-                                <div class="col-md-4">
+                            <div class="col-md-12">
+                                <div class="col-md-4 col-xs-4">
                                     <a href="#"><img class="img-responsive TopbarSearch hidden-md hidden-lg" src="{{asset('sximo/assets/images/hotel.png')}}" alt=""></a>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 col-xs-4">
                                     <a data-popup-id="login-forms-popup" href="#" class="video-popup-btn login_popup show-login-forms-btn"><i class="fa fa-lock detailfaLock" aria-hidden="true" ></i></a>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 col-xs-4">
                                     <a data-popup-id="ev-primary-navigation" href="#" class="video-popup-btn"><!--<i class="fa fa-bars hamburgMenu" aria-hidden="true"></i>-->
                                         <div class="block-content content">
                                             <span></span>
@@ -2934,41 +2934,6 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                             $('#childern-val-res').html(childerns);
                                         }));
                                         </script>
-                                    <script>
-                                            (function (document) {
-                                        var alterNav = function () {
-                                            var item = document.querySelector('.members-drop-list-res');
-                                            var link = document.querySelector('.members-list-res');
-                                            var itemIsOpened = false;
-                                            window.onclick = function (e) {
-                                                console.log(e);
-                                                if (!itemIsOpened) {
-                                                    if (e.target == link) {
-                                                        itemIsOpened = true;
-                                                        $('.members-drop-list-res').show();
-                                                    }
-                                                } else {
-                                                    if (!isChild(e.target, item)) {
-                                                        itemIsOpened = false;
-                                                        $('.members-drop-list-res').hide();
-                                                    }
-                                                }
-                                            }
-                                        };
-
-                                        var isChild = function (child, parent) {
-                                            var current = child;
-                                            while (current) {
-                                                if (current === parent) return true;
-                                                current = current.parentNode;
-                                            }
-                                            return false;
-                                        }
-
-                                        alterNav();
-                                    })(document);
-                
-                                </script>
                                 <!-- responsive member dropdawn wnd -->
                                 
                     <script>
