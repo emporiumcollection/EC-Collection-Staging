@@ -160,9 +160,9 @@
                                                     <p class="smalldes-label">18* Years</p>
                                                 </div>
                                                 <div class="col-md-6 col-sm-6">
-                                                    <div class="ps-adults-handle-counter">
+                                                    <div class="ps-adults-handle-counter ps-handle-counter">
                                                         <button type="button" class="spinner-btns counter-minus btn btn-primary">-</button>
-                                                        <input class="spinner-input-" name="adults" type="text" value="2">
+                                                        <input class="spinner-input" name="adults" type="text" value="2">
                                                         <button type="button" class="spinner-btns counter-plus btn btn-primary">+</button>
                                                     </div>
                                                 </div>
@@ -173,7 +173,7 @@
                                                     <p class="smalldes-label">12-17 Years</p>
                                                 </div>
                                                 <div class="col-md-6 col-sm-6">
-                                                    <div class="ps-youth-handle-counter">
+                                                    <div class="ps-youth-handle-counter ps-handle-counter">
                                                         <button type="button" class="spinner-btns counter-minus btn btn-primary">-</button>
                                                         <input class="spinner-input" name="youth" type="text" value="0">
                                                         <button type="button" class="spinner-btns counter-plus btn btn-primary">+</button>
@@ -186,7 +186,7 @@
                                                     <p class="smalldes-label">2-11 Years</p>
                                                 </div>
                                                 <div class="col-md-6 col-sm-6">
-                                                    <div class="ps-children-handle-counter">
+                                                    <div class="ps-children-handle-counter ps-handle-counter">
                                                         <button type="button" class="spinner-btns counter-minus btn btn-primary">-</button>
                                                         <input class="spinner-input" name="children" type="text" value="0">
                                                         <button type="button" class="spinner-btns counter-plus btn btn-primary">+</button>
@@ -199,7 +199,7 @@
                                                     <p class="smalldes-label">under 2 Years</p>
                                                 </div>
                                                 <div class="col-md-6 col-sm-6">
-                                                    <div class="ps-toddlers-handle-counter">
+                                                    <div class="ps-toddlers-handle-counter ps-handle-counter">
                                                         <button type="button" class="spinner-btns counter-minus btn btn-primary">-</button>
                                                         <input class="spinner-input" name="toddlers" type="text" value="0">
                                                         <button type="button" class="spinner-btns counter-plus btn btn-primary">+</button>
