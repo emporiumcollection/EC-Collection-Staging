@@ -70,5 +70,17 @@ class PersonalizedServiceController extends Controller {
         
         return array('sub_destinations' => $sub_destinations, 'chldIds' => $_chldIds);
     }
+    
+    /*
+     * AIC: Save from data in DB
+     */
+    
+    public function save(Request $request) {
+       
+        echo '<pre>';
+        print_r($request->input());
+        echo '</pre>';
+        
+    }
 
 }

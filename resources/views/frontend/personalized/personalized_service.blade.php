@@ -24,7 +24,7 @@
                     </div>
              
                         <div class="col-md-8 col-sm-8">
-                            <form action="" method="POST">
+                            <form action="{{URL::to('personalized-service/save')}}" method="POST">
                                 <fieldset class="muti-form-align">
                                     <div class="centred-tab-align">
                                         <div>
@@ -87,7 +87,7 @@
                                                                 <label style="background-image: url('{{URL::to('uploads/category_imgs/'.$inspiration->category_image)}}');" class="personalized-service-checkbox-label" for="accommodation-{{$inspiration->id}}">
                                                                     <span class="selected-chexkbox"><i class="fa fa-check" aria-hidden="true"></i></span>{{$inspiration->category_custom_title}}
                                                                 </label>
-                                                                <input class="personalized-service-checkbox-input" value="{{$inspiration->id}}" id="accommodation-{{$inspiration->id}}" type="checkbox">
+                                                                <input id="accommodation-{{$inspiration->id}}" class="personalized-service-checkbox-input" name="inspirations[]" value="{{$inspiration->id}}" type="checkbox">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -116,7 +116,7 @@
                                                                 <label style="background-image: url('{{URL::to('uploads/category_imgs/'.$experience->category_image)}}');" class="personalized-service-checkbox-label" for="experience-{{$experience->id}}">
                                                                     <span class="selected-chexkbox"><i class="fa fa-check" aria-hidden="true"></i></span>{{$experience->category_custom_title}}
                                                                 </label>
-                                                                <input class="personalized-service-checkbox-input" value="{{$experience->id}}" id="experience-{{$experience->id}}" type="checkbox">
+                                                                <input id="experience-{{$experience->id}}" class="personalized-service-checkbox-input" name="experiences[]" value="{{$experience->id}}" type="checkbox">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -138,7 +138,7 @@
                                             <p class="sub-des-heading">Tell us what you value - the more detailed the better.</p>
                                         </div>
                                         <div class="form-group textarea-left-align">
-                                            <textarea class="form-control ps-text-area-style" placeholder="Further comments or wishes? A concrete trip tour, a special occasion such as A honeymoon or your approximate travel budget."></textarea>
+                                            <textarea class="form-control ps-text-area-style" name="note" placeholder="Further comments or wishes? A concrete trip tour, a special occasion such as A honeymoon or your approximate travel budget."></textarea>
                                         </div> 
                                         <div class="help-hover-icon">
                                             <a class="custom-tooltip" href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Your callback date can be selected in last step"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
@@ -160,9 +160,9 @@
                                                     <p class="smalldes-label">18* Years</p>
                                                 </div>
                                                 <div class="col-md-6 col-sm-6">
-                                                    <div class="ps-handle-counter">
+                                                    <div class="ps-adults-handle-counter ps-handle-counter">
                                                         <button type="button" class="spinner-btns counter-minus btn btn-primary">-</button>
-                                                        <input class="spinner-input" type="text" value="50">
+                                                        <input class="spinner-input" name="adults" type="text" value="2">
                                                         <button type="button" class="spinner-btns counter-plus btn btn-primary">+</button>
                                                     </div>
                                                 </div>
@@ -173,9 +173,9 @@
                                                     <p class="smalldes-label">12-17 Years</p>
                                                 </div>
                                                 <div class="col-md-6 col-sm-6">
-                                                    <div class="ps-handle-counter">
+                                                    <div class="ps-youth-handle-counter ps-handle-counter">
                                                         <button type="button" class="spinner-btns counter-minus btn btn-primary">-</button>
-                                                        <input class="spinner-input" type="text" value="50">
+                                                        <input class="spinner-input" name="youth" type="text" value="0">
                                                         <button type="button" class="spinner-btns counter-plus btn btn-primary">+</button>
                                                     </div>
                                                 </div>
@@ -186,9 +186,9 @@
                                                     <p class="smalldes-label">2-11 Years</p>
                                                 </div>
                                                 <div class="col-md-6 col-sm-6">
-                                                    <div class="ps-handle-counter">
+                                                    <div class="ps-children-handle-counter ps-handle-counter">
                                                         <button type="button" class="spinner-btns counter-minus btn btn-primary">-</button>
-                                                        <input class="spinner-input" type="text" value="50">
+                                                        <input class="spinner-input" name="children" type="text" value="0">
                                                         <button type="button" class="spinner-btns counter-plus btn btn-primary">+</button>
                                                     </div>
                                                 </div>
@@ -199,9 +199,9 @@
                                                     <p class="smalldes-label">under 2 Years</p>
                                                 </div>
                                                 <div class="col-md-6 col-sm-6">
-                                                    <div class="ps-handle-counter">
+                                                    <div class="ps-toddlers-handle-counter ps-handle-counter">
                                                         <button type="button" class="spinner-btns counter-minus btn btn-primary">-</button>
-                                                        <input class="spinner-input" type="text" value="50">
+                                                        <input class="spinner-input" name="toddlers" type="text" value="0">
                                                         <button type="button" class="spinner-btns counter-plus btn btn-primary">+</button>
                                                     </div>
                                                 </div>
@@ -220,18 +220,18 @@
                                         <div class="textarea-left-align">
                                             <div class="get-travel-details">
                                                 <div class="form-group">
-                                                    <input class="ps-input-style form-control get-earliest-arrival" type="text" placeholder="Earliest Arrival">
+                                                    <input class="ps-input-style form-control get-earliest-arrival" name="earliest_arrival" type="text" placeholder="Earliest Arrival">
                                                 </div>
                                                 <div class="form-group">
-                                                    <input class="ps-input-style form-control get-checkout-date" type="text" placeholder="Late Check Out">
+                                                    <input class="ps-input-style form-control get-checkout-date" name="late_check_out" type="text" placeholder="Late Check Out">
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <select class="form-control ps-input-style">
-                                                    <option>1-2 Weeks</option>
-                                                    <option>2-3 Weeks</option>
-                                                    <option>3-4 Weeks</option>
-                                                    <option>4-5 Weeks</option>
+                                                <select class="form-control ps-input-style" name="stay_time">
+                                                    <option value="1-2 Weeks">1-2 Weeks</option>
+                                                    <option value="2-3 Weeks">2-3 Weeks</option>
+                                                    <option value="3-4 Weeks">3-4 Weeks</option>
+                                                    <option value="4-5 Weeks">4-5 Weeks</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -250,19 +250,19 @@
                                             <p class="sub-des-heading margin-bottom-30">Please complete the following information.</p>
                                         </div>
                                         <div class="form-group text-left">
-                                            <input class="radio-btn" type="radio" name="optradio">
+                                            <input class="radio-btn" type="radio" name="salutation" value="Sir">
                                             <label class="radio-inline radio-btn-label">Sir</label>
-                                            <input class="radio-btn" type="radio" name="optradio">
+                                            <input class="radio-btn" type="radio" name="salutation" value="Mrs">
                                             <label class="radio-inline radio-btn-label">Mrs</label>
                                         </div>
                                         <div class="form-group">
-                                            <input class="ps-input-style form-control" type="text" placeholder="First Name">
+                                            <input class="ps-input-style form-control" type="text" name="first_name" placeholder="First Name">
                                         </div>
                                         <div class="form-group">
-                                            <input class="ps-input-style form-control" type="text" placeholder="Surname">
+                                            <input class="ps-input-style form-control" type="text" name="surname" placeholder="Surname">
                                         </div>
                                         <div class="form-group">
-                                            <input class="ps-input-style form-control" type="text" placeholder="Email">
+                                            <input class="ps-input-style form-control" type="text" name="email" placeholder="Email">
                                         </div>
                                     </div>
                                     <button type="submit" class="next action-button personalized-btn-deafult">Submit</button>
@@ -364,7 +364,12 @@
                         console.log('reached maximize' + e);
                     }
                 };
-                $('.ps-handle-counter').handleCounter({maximize: 100});
+                
+                $('.ps-adults-handle-counter').handleCounter({minimum:1, maximize: 100});
+                $('.ps-youth-handle-counter').handleCounter({minimum:0, maximize: 100});
+                $('.ps-children-handle-counter').handleCounter({minimum:0, maximize: 100});
+                $('.ps-toddlers-handle-counter').handleCounter({minimum:0, maximize: 100});
+                
                 //Progress Bar
                 var clicks = 1;
                 $('.progress-bar-btn-increment').on('click', function () {
@@ -380,32 +385,26 @@
                     $('.progress-bar-inner').width(percent + '%');
                 });
                 //Date Range Picker
-                $('.get-travel-details').dateRangePicker(
-                        {
-
-                            selectForward: (Boolean),
-                            stickyMonths: (Boolean),
-                            startDate: "12-01-2017",
-                            format: ' DD.MM.YYYY',
-                            separator: ' to ',
-
-                            getValue: function ()
-                            {
-                                if ($('.get-earliest-arrival').val() && $('.get-checkout-date').val())
-                                    return $('.get-earliest-arrival').val() + ' to ' + $('.get-checkout-date').val();
-                                else
-                                    return '';
-                            },
-                            setValue: function (s, s1, s2)
-                            {
-                                $('.get-checkout-date').val(s1);
-                                $('.get-earliest-arrival').val(s2);
-                            }
+                $(".get-travel-details").dateRangePicker({
+                        selectForward: (Boolean),
+                        stickyMonths: (Boolean),
+                        startDate: "12-01-2017",
+                        format: ' DD.MM.YYYY',
+                        separator: ' to ',
+                        getValue: function () {
+                            if ($('.get-earliest-arrival').val() && $('.get-checkout-date').val())
+                                return $('.get-earliest-arrival').val() + ' to ' + $('.get-checkout-date').val();
+                            else
+                                return '';
+                        },
+                        setValue: function (s, s1, s2) {
+                            $('.get-earliest-arrival').val(s1);
+                            $('.get-checkout-date').val(s2);
                         }
+                    }
                 ).bind('datepicker-first-date-selected', function (event, obj) {
-                    $(".get-earliest-arrival").val('');
+                    $(".get-checkout-date").val('');
                 });
-                
             });
         </script>
 
