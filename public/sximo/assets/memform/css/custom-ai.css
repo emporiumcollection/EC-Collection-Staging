@@ -7,6 +7,11 @@ and open the template in the editor.
     Created on : Jan 4, 2018, 6:26:07 PM
     Author     : AI Creatives
 */
+
+    .VegasFooterMiddle p {
+	margin-left: 58px;
+	margin-bottom: 10px;
+    }
     .vegasFooter {
         width: 33%;
         float: left;
@@ -31,6 +36,7 @@ and open the template in the editor.
 	padding-bottom: 15px;
 	padding-top: 65px;
     }
+    
     
     .noPadding {
         padding: 0px !important;
@@ -63,6 +69,8 @@ and open the template in the editor.
 	border-top: none;
 	border-left: none;
 	border-right: none;
+	border-bottom: 1px #7a7a7a solid;
+	margin-bottom: 0px;
     }
     .panel {
 	box-shadow: 0 0 0 0;

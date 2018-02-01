@@ -90,3 +90,78 @@
 	<!-- pop up -->
 </div>
 @endsection
+
+
+@section('script')
+	<script>
+        $(".editorial-image-slider-previous-btn").click(function (event) {
+            event.preventDefault();
+
+            var index = $(this).parent().parent().find(".image-slider li.active").index();
+            $(this).parent().parent().find(".image-slider li.active").removeClass("active");
+            if (index == 0) {
+                var lindex = $(this).parent().parent().find(".image-slider li:last-child").index() + 1;
+                $(this).parent().parent().find(".image-slider li:nth-child(" + lindex + ")").addClass("active");
+                $(this).parent().parent().find(".images-count").html(lindex + " / " + $(this).parent().parent().find(".image-slider li").length);
+            } else
+            {
+                var rlindex = index;
+                $(this).parent().parent().find(".image-slider li:eq(" + rlindex + ")").addClass("active");
+                $(this).parent().parent().find(".images-count").html(index + " / " + $(this).parent().parent().find(".image-slider li").length);
+            }
+
+
+        });
+
+        $(".editorial-image-slider-next-btn").click(function (event) {
+            event.preventDefault();
+
+            var index = $(this).parent().parent().find(".image-slider li.active").index();
+            if (index == $(this).parent().parent().find(".image-slider li:last-child").index()) {
+                index = -1;
+            }
+            $(this).parent().parent().find(".image-slider li.active").removeClass("active");
+            $(this).parent().parent().find(".image-slider li:nth-child(" + (+index + 1) + ")").addClass("active");
+
+            $(this).parent().parent().find(".images-count").html((+index + 1) + " / " + $(this).parent().parent().find(".image-slider li").length);
+
+        });
+
+        setInterval(function () {
+            var index = $(".auto-slider ul.image-slider > li.active").index();
+            if (index == $(".auto-slider ul.image-slider > li:last-child").index()) {
+                index = -1;
+            }
+
+            $(".auto-slider ul.image-slider > li.active").removeClass("active");
+            $(".auto-slider ul.image-slider > li:nth-child(" + (+index + 1) + ")").addClass("active");
+            $(".auto-slider .images-count").html((+index + 1) + " / " + $(".auto-slider ul.image-slider > li").length);
+
+        }, 40000);
+		
+		$(document).on('click', '.open-show_more-page', function () {
+            $('.single-right-text-product').html('');
+            $('.rmimgp').html('');
+            $.ajax({
+                url: "{{ URL::to('fetchadvertisementpackagedetails')}}" + '/' + $(this).attr('rel'),
+                type: "get",
+                success: function (data) {
+                    $('.rmimgp').html('<div class="right-text-section"></div>');
+                    var imagesPro = '';
+                    imagesPro += '<div class="text-section">';
+                    imagesPro += '<h2>' + data.pdata.space_title + '</h2>';
+                    
+                    imagesPro += '</div>';
+                    imagesPro += '<div class="book-btn-sec">';
+                    imagesPro += '<div class="hotel-book-price">Price on request</div>';
+					imagesPro += '<a href="#"><div class="hotel-book-now">Get in touch</div></a>';
+                    imagesPro += '</div>';
+                    imagesPro += '</div>';
+                    $('#popupopn .single-right-text-product').html(imagesPro);
+                    $('.show_more-page').css("width", "100%");
+                }
+            });
+            return false;
+        });
+    </script>
+@endsection

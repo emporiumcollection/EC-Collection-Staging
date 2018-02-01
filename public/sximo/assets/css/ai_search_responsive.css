@@ -1,5 +1,13 @@
 @media (min-width: 1201px) and (max-width: 1400px) {
  
+    #block-ledunfly-menu-link {
+	left: 100%;
+    }
+    
+}
+
+@media (min-width: 1201px) and (max-width: 1400px) {
+ 
     .vegasFooter {
 	width: 33%;
 	float: left;
