@@ -118,12 +118,12 @@
     }
     
     /* left bar */
-/*    .right-menu-sidebar {
+    .right-menu-sidebar {
         display: none;
     }
     .floatLeft {
         float: left;
-    }
+    }/*
     .hotels-logo h3.title {
 	padding: 25px 200px 10px 10px;
 	text-align: left;
