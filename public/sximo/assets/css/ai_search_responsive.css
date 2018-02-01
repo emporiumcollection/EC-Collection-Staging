@@ -1,6 +1,14 @@
 
 @media (min-width: 993px) and (max-width: 1200px) {
     
+    .editorial-custom-footer-style .newsletter-style {
+	width: 100% !important;
+    }
+    
+    .vegasFooter {
+	width: 100% !important;
+    }
+    
 }
 
 
