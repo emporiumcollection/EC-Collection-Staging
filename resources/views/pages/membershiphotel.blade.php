@@ -277,7 +277,7 @@
                 
                 <!-- button -->
                 
-                <span class="hamburger-menu editorial-res-side-nav-logo"  onclick="openNav()"><img src="{{ asset('sximo/assets/images/Hamburger-Menu_1.png')}}" alt=""/></span>
+                <span class="hamburger-menu editorial-res-side-nav-logo hidden-md hidden-lg"  onclick="openNav()"><img src="{{ asset('sximo/assets/images/Hamburger-Menu_1.png')}}" alt=""/></span>
                 
                 <!-- button -->
                 
