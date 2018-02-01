@@ -4,14 +4,10 @@
 	<!-- start contact form section -->
                     <section class="wow fadeIn big-section cstmaiclass" id="align-to-top">
                         <div class="container-fluid">
-                            <div class="row equalize sm-equalize-auto">
-                                
-                                <div class="col-md-12 sm-clear-both wow fadeInLeft no-padding">
-                                    <div class="padding-ten-half-all bg-light-gray md-padding-seven-all xs-padding-30px-all height-100">
-                                        <div class="stepwizard">
+                            <div class="stepwizard">
                                 <div class="stepwizard-row setup-panel">
                                     <div class="stepwizard-step">
-                                        <a type="button" class="btn btn-primary btn-circle cursor">1</a>
+                                        <a type="button" class="btn btn-primary btn-circle cursor" >1</a>
                                         <p>Step 1</p>
                                     </div>
                                     <div class="stepwizard-step">
@@ -28,6 +24,11 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row equalize sm-equalize-auto">
+                                
+                                <div class="col-md-12 sm-clear-both wow fadeInLeft no-padding">
+                                    <div class="padding-ten-half-all bg-light-gray md-padding-seven-all xs-padding-30px-all height-100">
+                                        
                                         <!--<span class="text-extra-dark-gray alt-font text-large font-weight-600 margin-25px-bottom display-block">Application form</span>--> 
 										<div id="formerrors"></div>
                                         <form id="hotel-form" action="{{URL::to('frontend_hotelpost')}}" method="post">
