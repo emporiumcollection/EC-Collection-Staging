@@ -310,6 +310,8 @@
 <link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/responsive.css')}}" />
 <!-- Custom style -->
 <link href="{{ asset('sximo/assets/memform/css/custom-ai.css')}}" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" href="{{ asset('sximo/css/hotel-membership/style.css')}}">
+
 @endsection
 
 @section('script')
