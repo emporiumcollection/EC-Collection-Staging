@@ -21,6 +21,12 @@
     .vegasFooter {
 	width: 33% !important;
     }
+    .filter-grid-page-side-bar .combodate select {
+	width: 34px !important;
+    }
+    .uk-slideshow:first-child .ai-uk-animation .bh-slideshow-thumbnail-split-preview {
+	z-index: 99;
+    }
     
 }
 
@@ -94,6 +100,9 @@
     /* left bar */
     .filter-grid-page-side-bar {
 	width: 26.10%;
+    }
+    .filter-grid-page-side-bar .combodate select {
+	width: 45px !important;
     }
   
 }
