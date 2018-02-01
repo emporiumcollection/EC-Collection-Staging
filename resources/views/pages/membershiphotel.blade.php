@@ -22,8 +22,8 @@
         <!-- style -->
         <link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/style.css')}}" />
         <!-- responsive css -->
-        <link rel="stylesheet" href="{{ asset('sximo/assets/css/ai_membership_responsive.css')}}" />
          <link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/responsive.css')}}" />
+        <link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/responsive.css')}}" />
         <!-- Custom style -->
         <link href="{{ asset('sximo/assets/memform/css/custom-ai.css')}}" rel="stylesheet" type="text/css"/>
         <!--[if IE]>
@@ -272,20 +272,6 @@
                         </section>
                     </div>
                 </div>
-                
-                <!-- responsive menu add -->
-                    <!-- button -->
-                    <span class="hamburger-menu editorial-res-side-nav-logo"  onclick="openNav()"><img src="{{ asset('sximo/assets/images/Hamburger-Menu_1.png')}}" alt=""/></span>
-                    <!-- button -->
-                    
-                    <!-- content -->
-                    
-                    
-                    
-                    <!-- content -->
-                    
-                <!-- responsiver menu add end -->
-                
                 <div class="col-md-10 no-padding">
 					@if(!empty($pageslider))
 						<section class="wow fadeIn no-padding cstmaiclass littlepadding">
@@ -767,15 +753,6 @@
                 });
 			}
         </script>
-        <script>
-            function openNav() {
-                   document.getElementById("editorial-siden-nav-res").style.width = "100%";
-               }
-
-               function closeNav() {
-                   document.getElementById("editorial-siden-nav-res").style.width = "0";
-               }
-            </script>
 <!--                <script>
             $(document).ready(function () {
   var navListItems = $('div.setup-panel div a'),
