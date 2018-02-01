@@ -5417,7 +5417,7 @@ div#fixed_wrapper {
         width: 450px;
     }
     .landing-page-lock-login-btn-outer-align {
-        width: 400px;
+        width: 100%;
     }
 }
 @media screen and (max-width: 767px) and (min-width: 320px) {
@@ -5454,7 +5454,7 @@ div#fixed_wrapper {
         float: none;
     }
     .landing-page-lock-login-btn-outer-align {
-        width: 80%;
+        width: 100%;
     }
     .landing-page-lock-login-btn-outer-align .ps-login-sign-up-image img {
         height: 574px;

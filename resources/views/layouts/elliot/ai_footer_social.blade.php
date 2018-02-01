@@ -1,7 +1,7 @@
 <style>
     
     .vegasFooter {
-        width: 20%;
+        width: 33%;
         float: left;
     }
     
