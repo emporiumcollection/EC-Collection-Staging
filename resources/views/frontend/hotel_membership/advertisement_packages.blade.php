@@ -5,6 +5,19 @@
 	<!-- start contact form section -->
 	<section class="wow fadeIn big-section cstmaiclass" id="align-to-top">
 		<div class="container-fluid">
+			<div class="stepwizard">
+				<div class="stepwizard-row setup-panel">
+					<div class="stepwizard-step">
+						<a type="button" class="btn btn-primary btn-circle cursor" disabled="disabled">1</a>
+						<p>Step 1</p>
+					</div>
+					<div class="stepwizard-step">
+						<a type="button" class="btn btn-default btn-circle cursor">2</a>
+						<p>Step 2</p>
+					</div>
+					
+				</div>
+			</div>
 			<div class="row equalize sm-equalize-auto">
 				<div class="image-slider-container image-slider-margin-align auto-slider" id="rooms">
 				@if (!empty($packages))
