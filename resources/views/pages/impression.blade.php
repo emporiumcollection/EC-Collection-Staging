@@ -126,6 +126,7 @@
             .neww-footer .container {
                 width: auto;
             }
+        
 
         </style>
         <script type="text/javascript">

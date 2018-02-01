@@ -53,6 +53,22 @@
     .vegasFooterSocial ul li {
 	margin-left: 14px !important;
     }
+    /* top bar */
+    
+    .ResponsiveTopbar {
+	display: none;
+        margin-top: 40px;
+    }
+    .header-navigation-container {
+        display: none;
+    }
+    .top-booking-bar-btn {
+	margin-top: 40px;
+    }
+    .text-right {
+	text-align: center;
+	margin-bottom: 10px;
+    }
     /* menu */
     
     .EVMenu {
@@ -63,6 +79,18 @@
     }
     .EVMenu li a {
 	font-size: 27px !important;
+    }
+    
+    /* hamburg menu */
+    
+    .block-content.content {
+	width: 100%;
+	float: left;
+    }
+    
+    /* left bar */
+    .filter-grid-page-side-bar {
+	width: 26.89%;
     }
   
 }
