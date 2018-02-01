@@ -305,10 +305,7 @@
                                                                 <li>
                                     <a href="#deisgnarchitecture" data-hotel-option="deisgn_architecture">TERMS AND CONDITIONS</a>
                                 </li>
-                                
-                                                                <li>
-                                    <a data-hotel-option="rooms_suites">ROOMS &amp; SUITES</a>
-                                </li>
+              
                                 
                                                                 <li>
                                     <a href="#spa_restaurant" data-hotel-option="restaurant_bar">IMPRINT</a>
