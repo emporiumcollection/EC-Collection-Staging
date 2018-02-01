@@ -76,10 +76,6 @@ class PersonalizedServiceController extends Controller {
      */
     
     public function save(Request $request) {
-       
-        echo '<pre>';
-        print_r($request->input());
-        echo '</pre>';
         
         $params = array('salutation' => $request->input('salutation'),
                         'first_name' => $request->input('first_name'),
@@ -95,11 +91,13 @@ class PersonalizedServiceController extends Controller {
                         'destinations' => implode(', ', $request->input('destinations')),
                         'inspirations' => implode(', ', $request->input('inspirations')),
                         'experiences' => implode(', ', $request->input('experiences')),
-                        'note' => $request->input('note')
+                        'note' => $request->input('note'),
+                        'created' => date("Y-m-d H:i:s"),
+                        'updated' => date("Y-m-d H:i:s")
                     );
         
         \DB::table('tb_personalized_services')->insert($params);
-        
+        return Redirect::to('personalized-service')->with(['info' => 'Your Info Saved Successfully.']);
     }
 
 }
