@@ -80,6 +80,18 @@
     .EVMenu li a {
 	font-size: 27px !important;
     }
+    
+    /* hamburg menu */
+    
+    .block-content.content {
+	width: 100%;
+	float: left;
+    }
+    
+    /* left bar */
+    .filter-grid-page-side-bar {
+	width: 26.89%;
+    }
   
 }
 
