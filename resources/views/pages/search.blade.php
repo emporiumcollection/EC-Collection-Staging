@@ -2890,17 +2890,19 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                             (function (document) {
                                         var alterNav = function () {
                                             var item = document.querySelector('.members-drop-list');
+                                            var responsiveItem = document.querySelector('.ResponsiveTopbar .members-drop-list');
                                             var link = document.querySelector('.members-list');
+                                            var responsiveLink = document.querySelector('.ResponsiveTopbar .members-list');
                                             var itemIsOpened = false;
                                             window.onclick = function (e) {
                                                 console.log(e);
                                                 if (!itemIsOpened) {
-                                                    if (e.target == link) {
+                                                    if (e.target == link || e.target == responsiveLink) {
                                                         itemIsOpened = true;
                                                         $('.members-drop-list').show();
                                                     }
                                                 } else {
-                                                    if (!isChild(e.target, item)) {
+                                                    if (!isChild(e.target, item) && !isChild(e.target, responsiveItem)) {
                                                         itemIsOpened = false;
                                                         $('.members-drop-list').hide();
                                                     }
