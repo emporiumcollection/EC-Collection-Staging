@@ -365,7 +365,7 @@
                 
                 <!-- responsive menu add -->
                 
-                <div class="col-md-10 no-padding">
+                <div class="col-md-10 no-padding floatLeft">
 					@if(!empty($pageslider))
 						<section class="wow fadeIn no-padding cstmaiclass littlepadding">
 							<div class="swiper-auto-height-container position-relative width-100">
@@ -845,6 +845,16 @@
                     }
                 });
 			}
+        </script>
+        
+        <script>
+         function openNav() {
+                document.getElementById("editorial-siden-nav-res").style.width = "100%";
+            }
+
+            function closeNav() {
+                document.getElementById("editorial-siden-nav-res").style.width = "0";
+            }
         </script>
 <!--                <script>
             $(document).ready(function () {

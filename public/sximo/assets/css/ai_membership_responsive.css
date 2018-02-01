@@ -121,5 +121,8 @@
     .right-menu-sidebar {
         display: none;
     }
+    .floatLeft {
+        float: left;
+    }
     
 }
