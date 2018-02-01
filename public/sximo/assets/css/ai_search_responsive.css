@@ -53,6 +53,17 @@
     .vegasFooterSocial ul li {
 	margin-left: 14px !important;
     }
+    /* menu */
+    
+    .EVMenu {
+	margin: 20px 0 0 -105px !important;
+    }
+    .EVMenu li {
+	width: 320px !important;
+    }
+    .EVMenu li a {
+	font-size: 27px !important;
+    }
   
 }
 
@@ -84,6 +95,17 @@
     }
     .vegasFooterSocial ul li {
 	margin-left: 37px !important;
+    }
+    /* menu */
+    
+    .EVMenu {
+	margin: 20px 0 0 -105px !important;
+    }
+    .EVMenu li {
+	width: 320px !important;
+    }
+    .EVMenu li a {
+	font-size: 27px !important;
     }
 }
 
@@ -127,6 +149,17 @@
     }
     .top-booking-bar-btn {
 	margin-top: 40px;
+    }
+    /* menu */
+    
+    .EVMenu {
+	margin: 20px 0 0 -105px !important;
+    }
+    .EVMenu li {
+	width: 320px !important;
+    }
+    .EVMenu li a {
+	font-size: 27px !important;
     }
     
 }

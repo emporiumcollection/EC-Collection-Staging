@@ -1030,7 +1030,7 @@
                                                         <div class="form-group padding-right-12">
                                                             <div class="dropdown top-search-members-list">
                                                                 <div class="top-search-members-inner-align">
-                                                                    <div class="members-list-res ai-custom-deafault-style">
+                                                                    <div class="members-list ai-custom-deafault-style">
                                                                         <span id="adults-val-res">1</span>
                                                                         Adults,
                                                                         <span id="childern-val-res">0</span>
