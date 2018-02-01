@@ -28,7 +28,7 @@
 @media (min-width: 768px) and (max-width: 992px) {
     
     .editorial-custom-footer-style {
-	width: 83% !important;
+	width: 74% !important;
     }
     .vegasFooter {
 	width: 50% !important;
@@ -65,6 +65,9 @@
     .top-booking-bar-btn {
 	margin-top: 40px;
     }
+    .top-search-members-inner-align {
+	z-index: 99;
+    }
     .text-right {
 	text-align: center;
 	margin-bottom: 10px;
@@ -90,7 +93,7 @@
     
     /* left bar */
     .filter-grid-page-side-bar {
-	width: 26.89%;
+	width: 26.10%;
     }
   
 }
@@ -140,6 +143,9 @@
     .text-right {
 	text-align: center;
 	margin-bottom: 10px;
+    }
+    .top-search-members-inner-align {
+	z-index: 99;
     }
     
     /* menu */
@@ -199,6 +205,9 @@
     .text-right {
 	text-align: center;
 	margin-bottom: 10px;
+    }
+    .top-search-members-inner-align {
+	z-index: 99;
     }
     /* menu */
     

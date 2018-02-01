@@ -2891,11 +2891,12 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                         var alterNav = function () {
                                             var item = document.querySelector('.members-drop-list');
                                             var link = document.querySelector('.members-list');
+                                            var responsiveLink = document.querySelector('.ResponsiveTopbar .members-list');
                                             var itemIsOpened = false;
                                             window.onclick = function (e) {
                                                 console.log(e);
                                                 if (!itemIsOpened) {
-                                                    if (e.target == link) {
+                                                    if (e.target == link || e.target == responsiveLink) {
                                                         itemIsOpened = true;
                                                         $('.members-drop-list').show();
                                                     }
