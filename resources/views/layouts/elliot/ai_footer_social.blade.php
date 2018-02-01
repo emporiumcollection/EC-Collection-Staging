@@ -155,9 +155,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
+                
 
         @include('layouts/elliot/ai_video-popup')
         @include('layouts/elliot/ai_featured-hotel-popup')
