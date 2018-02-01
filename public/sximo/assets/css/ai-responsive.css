@@ -3,6 +3,22 @@
 
 }
 
+/* media testing */
+
+@media (min-width: 412px) and (max-width: 732px) {
+ 
+    .image-slider-container .editorial-image-slider-btns {
+        margin-top: -190px !important;
+    }
+    .editorial-images-count.images-count {
+        margin-left: 19% !important;
+        margin-top: -215px !important;
+    }
+    
+}
+
+/* end media testing */
+
 @media (min-width: 1201px) and (max-width: 1400px) {
     .hotel-detail-slider-price-and-show-more .hotel-slider-price {
 	margin-left: 10px;
@@ -105,6 +121,10 @@
     }
     input#search-navbar-our-collection-res::placeholder {
     color: #000 !important;
+    }
+    /* slick */
+    #editorial-siden-nav-res .slick-cstm-width.slick-slide.slick-current.slick-active {
+	width: 300px !important;
     }
 }
 /*@media (min-width: 768px) and (max-width: 1200px) {
@@ -425,6 +445,10 @@
 	margin-top: 29px !important;
 	width: 3% !important;
     }
+    /* slick */
+    #editorial-siden-nav-res .slick-cstm-width.slick-slide.slick-current.slick-active {
+	width: 300px !important;
+    }
 
     
 }
@@ -701,6 +725,11 @@
     .hotel-bar-name-pannel h2 {
 	color: #fff !important;
     }
+    /* slick */
+    #editorial-siden-nav-res .slick-cstm-width.slick-slide.slick-current.slick-active {
+	width: 300px !important;
+	width: 300px !important;
+    }
 }
 
 
@@ -823,8 +852,9 @@
     }
     .hotel-book-now {
 	color: 000;
-	width: 160px;
-    } 
+	width: 160px !important;
+	margin-top: 32px !important;
+    }
     .VegasPopLogo {
 	width: 100% !important;
     }
@@ -983,6 +1013,11 @@
     }
     .disply-left-right-inner {
     float: left !important;
+    }
+    /* slick */
+    #editorial-siden-nav-res .slick-cstm-width.slick-slide.slick-current.slick-active {
+	width: 300px !important;
+	width: 300px !important;
     }
     
 }

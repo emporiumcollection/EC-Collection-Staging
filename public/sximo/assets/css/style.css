@@ -292,10 +292,11 @@ body{
     padding-left: 0;
 }
 .footer-nav-menu-harding {
-    color: #1e2023;
-    font-family: geomanist-regular;
-    font-size: 13px;
-    text-transform: uppercase;
+	color: #1e2023;
+	font-family: geomanist-regular;
+	font-size: 13px;
+	text-transform: uppercase;
+	margin-bottom: 10px;
 }
 .pre-footer-sec-align > p:nth-child(1) {
     font-family: Geomanist-Regular;
@@ -4005,7 +4006,7 @@ div.productData a {
 }
 @media screen and (max-width: 991px) and (min-width: 768px) {
     .booking-form-bar-top {
-        padding-left: 77px !important;
+        padding-left: 0px !important;
         padding-top: 33px !important;
     }
     .padding-right-12 {

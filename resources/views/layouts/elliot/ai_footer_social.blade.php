@@ -35,6 +35,7 @@
     
     .VegasFooterMiddle p {
         margin-left: 58px;
+        margin-bottom: 10px;
     }
     
     .VegasFooterMiddle form {

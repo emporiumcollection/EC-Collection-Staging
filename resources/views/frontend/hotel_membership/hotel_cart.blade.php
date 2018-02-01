@@ -1,5 +1,131 @@
 
 @extends('frontend.layouts.ev.customer')
 @section('content')
+<section class="wow fadeIn big-section cstmaiclass" id="align-to-top">
+    <div class="container">
+		<div class="stepwizard">
+            <div class="stepwizard-row setup-panel">
+                <div class="stepwizard-step">
+                    <a type="button" class="btn btn-primary btn-circle cursor" disabled="disabled">1</a>
+                    <p>Step 1</p>
+                </div>
+                <div class="stepwizard-step">
+                    <a type="button" class="btn btn-default btn-circle cursor" disabled="disabled">2</a>
+                    <p>Step 2</p>
+                </div>
+                <div class="stepwizard-step">
+                    <a  type="button" class="btn btn-default btn-circle cursor" disabled="disabled">3</a>
+                    <p>Step 3</p>
+                </div>
+                <div class="stepwizard-step">
+                    <a type="button" class="btn btn-default btn-circle cursor" >4</a>
+                    <p>Step 4</p>
+                </div>
+            </div>
+		</div>
 
+		<div class="row equalize sm-equalize-auto" id="step-1">
+            <div class="col-md-12 sm-clear-both wow fadeInLeft">
+                <div class="cartover-view-main margin-five-top">
+                    <h5 class="ev-regural-heading text-uppercase margin-20px-bottom font-weight-700 sm-width-100 xs-width-100">Your Packages</h5>
+                    <div class="small-border"></div>
+                    <div class="big-border">
+                    </div>
+                    <div class="tbale-form">
+                        <table class="table-width-custom">
+                            <thead>
+                                <tr>
+                                    <th class="col-md-4 no-padding">Product</th>
+                                    <th class="col-md-3 no-padding">Price</th>
+                                    <th class="col-md-4 no-padding">Quantity</th>
+                                    <th class="col-md-1 no-padding">Line Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="overview-td">
+                                        <img class="product-image-cart" src="images/1485373226-41307691.jpg" alt="" width="100"/>
+                                        <div class="product-title-and-remove-option">
+                                        <span class="product-title">Beach Hotels</span>
+                                        <a href="#">Remove</a>
+                                        </div>
+                                    </td>
+                                    <td class="overview-td">$26</td>
+                                    <td class="overview-td">
+                                        <form>
+                                        <a href="JavaScript:void(0);" class="plus">+</a>
+                                        <input class="csnter-input" type="text" value="0" />
+                                        <a href="JavaScript:void(0);" class="minus">-</a>
+                                        <button class="upate-bag" type="button">UPDATE BAG</button>
+                                        </form>
+                                    </td>
+                                    <td class="overview-td">$26</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row bottom-cart-view-page">
+                        <div class="col-md-8 leftsideoverview">
+                            <h6 class="ai-6-heading ev-regural-heading text-uppercase margin-20px-bottom font-weight-600 sm-width-100 xs-width-100">Coupon Code</h6>
+                            <p>Enter your valid coupon or<br/>
+                            promo code here to redeem<br/>
+                            your discount
+                            </p>
+                            <form class="copon-form">
+                                <input class="code-inout-block" type="text" placeholder="Enter Code">
+                                <input class="code-submit" type="submit" value="Apply Coupon">
+                            </form>
+                        </div>
+                        <div class="col-md-4 rightsidevartoverview">
+                            <div class="carttotal">
+                                <span class="label-total">Cart Subtotal</span>
+                                <span class="cart-subtotal-amout">$26.00</span>
+                                <span class="cart-discount-label">No coupon</span>
+                                <span class="cart-subtotal-amout">$0.00</span>
+                                <span class="order-total-label">Order Total</span>
+                                <span class="cart-subtotal-amout cart-total-amout">$26.00</span>
+                            </div>
+                            <div class="processed-to-checkout">
+                                 <button class="proccesstocheckout nextBtn" type="button">Proceed To Checkout</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@endsection
+@section('css')
+
+<!-- swiper carousel -->
+<link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/swiper.min.css')}}">
+<!-- style -->
+<link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/style.css')}}" />
+<!-- responsive css -->
+<link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/responsive.css')}}" />
+<!-- Custom style -->
+<link href="{{ asset('sximo/assets/memform/css/custom-ai.css')}}" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" href="{{ asset('sximo/css/hotel-membership/style.css')}}">
+<style>
+.has-error  {
+    border-color: #a94442;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+</style>
+@endsection
+
+@section('script')
+
+<script type="text/javascript" src="{{ asset('sximo/assets/memform/js/smooth-scroll.js')}}"></script>
+<!-- animation -->
+<script type="text/javascript" src="{{ asset('sximo/assets/memform/js/wow.min.js')}}"></script>
+<!-- swiper carousel -->
+<script type="text/javascript" src="{{ asset('sximo/assets/memform/js/swiper.min.js')}}"></script>
+
+<!-- images loaded -->
+<script type="text/javascript" src="{{ asset('sximo/assets/memform/js/imagesloaded.pkgd.min.js')}}"></script>
+<script src="{{ asset('sximo/js/parsley.min.js')}}" type="text/javascript"></script>
+         
 @endsection

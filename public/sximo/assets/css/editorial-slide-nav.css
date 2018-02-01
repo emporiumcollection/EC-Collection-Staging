@@ -72,6 +72,7 @@ body.show_more-page-opend {
     color: #000;
     float: left;
     text-transform: uppercase;
+    height : 71px;
 }
 .inner-pop-up-book-btn > a {
     color: #000;

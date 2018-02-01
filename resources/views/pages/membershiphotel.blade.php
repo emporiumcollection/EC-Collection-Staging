@@ -22,6 +22,7 @@
         <!-- style -->
         <link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/style.css')}}" />
         <!-- responsive css -->
+         <link rel="stylesheet" href="{{ asset('sximo/assets/css/ai_membership_responsive.css')}}" />
         <link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/responsive.css')}}" />
         <!-- Custom style -->
         <link href="{{ asset('sximo/assets/memform/css/custom-ai.css')}}" rel="stylesheet" type="text/css"/>
@@ -271,6 +272,99 @@
                         </section>
                     </div>
                 </div>
+                
+                <!-- responsive menu add -->
+                
+                <!-- button -->
+                
+                <span class="hamburger-menu editorial-res-side-nav-logo hidden-md hidden-lg visible-xs visible-sm"  onclick="openNav()"><img src="{{ asset('sximo/assets/images/Hamburger-Menu_1.png')}}" alt=""/></span>
+                
+                <!-- button -->
+                
+                <!-- content -->
+                
+                <div id="editorial-siden-nav-res" class="sidenav hidden-md hidden-lg" style="width: 0px;">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+                    <div class=" right-menus ">
+                        <div class="row-">
+                            <div class="hotels-logo">
+                                <h3 class="title"><a href="https://www.emporium-voyage.com">The Dwell Hotel</a><hr class="star-light"></h3>
+
+                            </div>
+                            <ul>
+                                <li>
+                                    <form autocomplete="off" method="get" id="searchform-navbar" class="searchform-navbar" action="https://www.emporium-voyage.com/search">
+                                        <span class="twitter-typeahead" style="position: relative; display: inline-block;"><input class="bh-search-input typeahead search-navbar search-box tt-hint" style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; opacity: 1; background: rgb(255, 255, 255) none repeat scroll 0% 0%;" readonly="" autocomplete="off" spellcheck="false" tabindex="-1" dir="ltr" type="text"><input class="bh-search-input typeahead search-navbar search-box tt-input" name="s" id="search-navbar" placeholder="Search" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: transparent;" type="text"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Geomanist-Regular; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: optimizelegibility; text-transform: uppercase;"></pre><div class="tt-menu" style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"><div class="tt-dataset tt-dataset-states"></div></div></span>
+                                    </form>
+                                </li>
+
+                                                                <li>
+                                    <a href="#hotel"> HOTEL </a>
+                                </li>
+                                
+                                                                <li>
+                                    <a href="#deisgnarchitecture" data-hotel-option="deisgn_architecture">DESIGN &amp; ARCHITECTURE</a>
+                                </li>
+                                
+                                                                <li>
+                                    <a data-hotel-option="rooms_suites">ROOMS &amp; SUITES</a>
+                                </li>
+                                
+                                                                <li>
+                                    <a href="#spa_restaurant" data-hotel-option="restaurant_bar">RESTAURANT &amp; BAR</a>
+                                </li>
+                                
+                                								
+																
+								<!--<li>
+                                    <a href="#social" data-hotel-option="social">SOCIAL</a>
+                                </li>-->
+				
+																								
+                                <li>
+                                    <a href="#book-now" data-hotel-option="book_now">BOOK The Dwell Hotel </a>
+                                </li>
+                            </ul>
+                            <section class="regular slider slick-initialized slick-slider">
+								<div aria-live="polite" class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 0px; transform: translate3d(0px, 0px, 0px);" role="listbox"><div class="slick-cstm-width slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" style="width: 0px;" tabindex="-1" role="option">
+								   									<div class="side-nav-next-hotel-img">
+										<div class="side-next-and-perivious-hotel-arrow">
+											<div class="arrows-commom  next-arrow">
+												<a href="https://www.emporium-voyage.com/luxury-hotel-giardino-ascona" tabindex="0">
+													<span>New Hotels</span>
+												</a>
+											</div>
+										</div>
+																				<div class="new-hotel-image" style="background-image: url('https://www.emporium-voyage.com/uploads/property_imgs_thumbs/front_property_4582_86817290675-23866498097.jpg')">
+											<div class="new-hotels-image-tittle">
+												<h2 class="new-hotel-name">Giardino Ascona</h2>
+												<div class=" new-hotel-add">
+													<p>New York City</p>
+													<p>United States</p>
+												</div>
+											</div>
+											<div class="clearfix"></div>
+											<div class="new-hotel-view-more-btn">
+												<a class="" href="https://www.emporium-voyage.com/luxury-hotel-giardino-ascona" tabindex="0">
+													View Hotel
+												</a>
+											</div>
+										</div>
+										<a class="bootom-view-next-btn" href="https://www.emporium-voyage.com/luxury-hotel-giardino-ascona" tabindex="0">
+											Visit All Hotels DOI
+										</a>
+									</div>
+																	</div></div></div>
+																
+							</section>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- content -->
+                
+                <!-- responsive menu add -->
+                
                 <div class="col-md-10 no-padding">
 					@if(!empty($pageslider))
 						<section class="wow fadeIn no-padding cstmaiclass littlepadding">

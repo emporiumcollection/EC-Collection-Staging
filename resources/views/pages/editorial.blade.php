@@ -1141,7 +1141,7 @@
                                 color: #fff;
                                 font-size: 25px;
                                 height: 71px;
-                                margin: 0px 0px 10px 3px;
+                                margin: -48px 0px 10px 169px;
                                 opacity: 1;
                                 overflow-wrap: break-word;
                                 padding: 27px 5px;

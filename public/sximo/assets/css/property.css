@@ -68,7 +68,10 @@
         opacity: 1 !important;
 }
 .nav.nav-pills.nav-stacked li a.activebook-now {
-	background: #ABA07C;
+	background: #ABA00d;
+}
+.CustomTopbarwidth .top-booking-bar-btn {
+	background: #ABA00d !important;
 }
 
 .right-menus .btns span {
