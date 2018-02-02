@@ -1051,7 +1051,7 @@
     }
     /* sidebar small */
     
-    header.haside {
+    header {
 	width: 50px !important;
     }
     .contact-aside {
