@@ -508,9 +508,9 @@
         }, 40000);
 		
         $(document).on('click', '.open-show_more-page', function () {
-            $('.show_more-page').css("background-image", "");
-            $('.single-right-text-product').html('');
-            $('.rmimgp').html('');
+//            $('.show_more-page').css("background-image", "");
+//            $('.single-right-text-product').html('');
+//            $('.rmimgp').html('');
 //            $.ajax({
 //                url: "{{ URL::to('fetchpackagedetails')}}" + '/' + $(this).attr('rel'),
 //                type: "get",
