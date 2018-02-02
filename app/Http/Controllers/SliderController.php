@@ -50,8 +50,10 @@ class SliderController extends Controller {
 		// End Filter sort and order for query 
 		// Filter Search for query		
 		$filter = (!is_null($request->input('search')) ? $this->buildSearch() : '');
-		$filter .= ' AND slider_category="'.$categ.'"';
-		
+		if(is_null($request->input('search')))
+		{
+			$filter .= ' AND slider_category="'.$categ.'"';
+		}
 		$page = $request->input('page', 1);
 		$params = array(
 			'page'		=> $page ,
