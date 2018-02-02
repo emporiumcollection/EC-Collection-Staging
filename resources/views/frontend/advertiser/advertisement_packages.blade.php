@@ -41,10 +41,10 @@
 										<div class="row">
 											<div class="slider-sec-side-text-bg">
 												<div class="slider-side-sec-alignment">
-													<div class="expeience-small-text harman">Advertisement Packages</div>
+													<div class="expeience-small-text">Advertisement Packages</div>
 													<div class="slider-side-text-tittle">{{$package->space_title}}</div>
 													<div class="slider-side-description-text">
-														
+                                                                                                            The Tiki Suite is one of the largest rooms in the hotel. It offers a large sitting area with a fireplace and bar, a king-size bed, locally roasted coffee and tea service, 42inch LG TV, and complimentary WiFi, premium bath amenities, rain shower and standalone bathtub.
 													</div>
 												</div>
 												<div>
