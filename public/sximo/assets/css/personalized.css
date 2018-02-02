@@ -75,7 +75,7 @@
     text-align: left;
 }
 .choosen-input-align .chosen-container .chosen-results li.highlighted {
-    background-color: #e59746;
+    background-color: #252525;
     background-image: none;
     color: #fff;
 }
@@ -87,9 +87,9 @@
 .choosen-input-align .chosen-container-multi .chosen-choices li.search-choice {
     background-color: transparent;
     background-image: none;
-    border: 1px solid #e59746;
+    border: 1px solid #252525;
     box-shadow: 0 0 0 0;
-    color: #e59746;
+    color: #000;
     font-family: Geomanist-Light;
     font-size: 16px;
     padding: 8px 15px 8px 25px;
@@ -109,21 +109,22 @@
     font-weight: bold;
 }
 .personalized-btn-deafult {
-    background-color: #1c313d;
-    border: medium none;
-    border-radius: 2px;
-    color: #fff;
-    display: inline-block;
-    font-size: 16px;
-    margin: 30px auto 15px;
-    padding: 8px 40px;
-    text-decoration: none;
-    text-transform: uppercase;
+	background-color: #ABA07C;
+	border: medium none;
+	border-radius: 0px;
+	color: #fff;
+	display: inline-block;
+	font-size: 16px;
+	margin: 10px auto 15px 10px;
+	padding: 8px 40px;
+	text-decoration: none;
+	text-transform: uppercase;
+	float: left;
 }
 .personalized-btn-deafult:hover, .personalized-btn-deafult:focus, .personalized-btn-deafult:active {
-    background-color: #d3d6d2;
-    color: #1c313d;
-    opacity: 0.85;
+    background-color: #ABA07C;
+    color: #fff;
+    opacity: 1;
     text-decoration: none;
 }
 .header-logo-image {
@@ -169,7 +170,7 @@
 .wrong-selection-pannel {
     position: relative;
     background: #fff;
-    border: 1px solid #ff332e;
+    border: 1px solid #252525;
 }
 .wrong-selection-pannel:after, .wrong-selection-pannel:before {
     bottom: 100%;
@@ -190,7 +191,7 @@
 }
 .wrong-selection-pannel:before {
     border-color: rgba(255, 51, 46, 0);
-    border-bottom-color: #ff332e;
+    border-bottom-color: #252525;
     border-width: 11px;
     margin-left: -11px;
 }
@@ -198,26 +199,26 @@
     display: none;
 }
 .personalized-service-checkbox-label {
-    background-blend-mode: multiply;
-    background-color: #8c8c8c;
-    background-image: url("../images/location.jpg");
-    background-position: center center;
-    background-size: cover;
-    border: 1px solid #fff;
-    color: #fff;
-    cursor: pointer;
-    font-family: Geomanist-Light;
-    font-size: 16px;
-    height: 165px;
-    letter-spacing: 4px;
-    margin: 0;
-    padding: 60px 10px 0;
-    text-align: center;
-    transition: all 0.5s ease-in-out 0s;
-    width: 100%;
+	background-blend-mode: multiply;
+	background-color: #8c8c8c;
+	background-image: url("../images/location.jpg");
+	background-position: center center;
+	background-size: cover;
+	border: 1px solid #fff;
+	color: #fff;
+	cursor: pointer;
+	font-family: Geomanist-Light;
+	font-size: 16px;
+	height: 199px;
+	letter-spacing: 4px;
+	margin: 0;
+	padding: 80px 10px 0;
+	text-align: center;
+	transition: all 0.5s ease-in-out 0s;
+	width: 100%;
 }
 .form-group.ps-fields-align {
-    margin: 0;
+	margin: 10px 10px 10px 10px;
 }
 .selected-chexkbox {
     display: none;
@@ -277,17 +278,21 @@
     border-top-color:#D9DCD8; 
 }
 .ps-basic-btn {
-    background: transparent none repeat scroll 0 0;
-    border: medium none;
-    color: #262626;
-    font-family: Geomanist-Light;
-    font-size: 15px;
-    text-align: center;
-    text-decoration: none;
-    text-transform: uppercase;
+	background: #ABA07C;
+	border: medium none;
+	color: #fff;
+	font-family: Geomanist-Light;
+	font-size: 15px;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	padding: 9px 45px 9px 45px;
+	font-weight: bold;
+	float: right;
+	margin: 10px 10px 15px 0px;
 }
 .ps-basic-btn:hover, .ps-basic-btn:focus, .ps-basic-btn:active  {
-    color: #262626;
+    color: #fff;
     text-decoration: none;
 }
 .back-btn-align {
@@ -344,7 +349,7 @@
     width: 70px;
 }
 .ps-handle-counter .spinner-btns {
-    background-color: #c4ccd3;
+    background-color: #ABA07C;
     border: medium none;
     border-radius: 0;
     font-family: ACaslonPro-Regular;
@@ -352,6 +357,12 @@
     height: 50px;
     padding: 10px 5px;
     width: 53px;
+}
+.spinner-btns.counter-minus.btn.btn-primary:hover {
+	background: #ABA07C;
+}
+.spinner-btns.counter-minus.btn.btn-primary:focus {
+	background: #ABA07C;
 }
 .peoples-travel-sec-outer-align {
     display: inline-block;
