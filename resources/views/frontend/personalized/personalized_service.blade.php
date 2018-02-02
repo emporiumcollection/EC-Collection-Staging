@@ -23,7 +23,7 @@
                         </ul>
                     </div>
              
-                        <div class="col-md-8 col-sm-8">
+                        <div class="col-md-12 col-sm-8">
                             <form action="{{URL::to('personalized-service/save')}}" method="POST">
                                 <fieldset class="muti-form-align">
                                     <div class="centred-tab-align">
@@ -81,7 +81,7 @@
                                             if(!empty($inspirations)) {
                                                 foreach ($inspirations as $inspiration) {
                                                     ?>
-                                                    <div class="col-md-4 col-sm-6">
+                                                    <div class="col-md-3 col-sm-6">
                                                         <div class="row">
                                                             <div class="form-group ps-fields-align">
                                                                 <label for=""></label>
@@ -111,7 +111,7 @@
                                             if(!empty($experiences)) {
                                                 foreach ($experiences as $experience) {
                                                     ?>
-                                                    <div class="col-md-4 col-sm-6">
+                                                    <div class="col-md-3 col-sm-6">
                                                         <div class="row">
                                                             <div class="form-group ps-fields-align">
                                                                 <label for="experience_{{$experience->id}}" style="background-image: url('{{URL::to('uploads/category_imgs/'.$experience->category_image)}}');" class="personalized-service-checkbox-label">

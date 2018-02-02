@@ -124,7 +124,7 @@
 .personalized-btn-deafult:hover, .personalized-btn-deafult:focus, .personalized-btn-deafult:active {
     background-color: #ABA07C;
     color: #fff;
-    opacity: 0.85;
+    opacity: 1;
     text-decoration: none;
 }
 .header-logo-image {
@@ -199,26 +199,26 @@
     display: none;
 }
 .personalized-service-checkbox-label {
-    background-blend-mode: multiply;
-    background-color: #8c8c8c;
-    background-image: url("../images/location.jpg");
-    background-position: center center;
-    background-size: cover;
-    border: 1px solid #fff;
-    color: #fff;
-    cursor: pointer;
-    font-family: Geomanist-Light;
-    font-size: 16px;
-    height: 165px;
-    letter-spacing: 4px;
-    margin: 0;
-    padding: 60px 10px 0;
-    text-align: center;
-    transition: all 0.5s ease-in-out 0s;
-    width: 100%;
+	background-blend-mode: multiply;
+	background-color: #8c8c8c;
+	background-image: url("../images/location.jpg");
+	background-position: center center;
+	background-size: cover;
+	border: 1px solid #fff;
+	color: #fff;
+	cursor: pointer;
+	font-family: Geomanist-Light;
+	font-size: 16px;
+	height: 199px;
+	letter-spacing: 4px;
+	margin: 0;
+	padding: 80px 10px 0;
+	text-align: center;
+	transition: all 0.5s ease-in-out 0s;
+	width: 100%;
 }
 .form-group.ps-fields-align {
-    margin: 0px 10px 0px 10px;
+	margin: 10px 10px 10px 10px;
 }
 .selected-chexkbox {
     display: none;
