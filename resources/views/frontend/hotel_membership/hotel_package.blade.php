@@ -102,21 +102,22 @@
     <div class="panel-heading" role="tab" id="heading{{ $k }}">
       <h4 class="panel-title">
         <a  role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ $k }}" {{($k==1) ? 'aria-expanded="true" ' : ' aria-expanded="false" class="collapsed"'}} aria-controls="collapse{{ $k }}">
-          {{$package->package_title}} {{ $k }}
+          {{$package->package_title}}  :: {{ $package->id }} :: Price: EUR:{{ $package->package_price }}
         </a>
       </h4>
     </div>
     <div id="collapse{{ $k }}" class="panel-collapse collapse {{($k==1) ? 'in ' : ''}}" role="tabpanel" aria-labelledby="heading{{ $k }}">
-      <div class="panel-body">
-        {{$package->id}}
-             <p>ID:: {{ $package->id }} :: Price:: EUR: {{ $package->package_price }}
-        <p>Package Details: {{$package->package_description}}</p></p>
-        
-         <p>Package Duration :: {{$package->package_duration}} {{$package->package_duration_type}} </p>
-         <div  style="height:200px; width: 200px;" >
-         <img class="img-responsive object-fit-size" src="{{URL::to('uploads/packages/'.$package->package_image)}}" alt="{{$package->package_image}}" >
+      <div class="panel-body">        
+            <div>
+                <div  style="width:20%" class="pull-left">
+                    <img class="img-responsive object-fit-size" src="{{URL::to('uploads/packages/'.$package->package_image)}}" alt="{{$package->package_image}}" >
 
-       </div>
+                </div>
+                <div class="pull-right" style="width:80%">
+                    <p>Package Duration :: {{$package->package_duration}} {{$package->package_duration_type}} </p>  
+                    <p>Package Details: {{$package->package_description}}</p></p>
+                </div>
+           </div>
       </div>
     </div>
 </div>
