@@ -46,4 +46,5 @@
                     Route::controller('packages', 'PackagesController');
                     Route::controller('evcustomfields', 'EvcustomfieldsController');
                     Route::controller('crmlayout', 'CrmlayoutController');
+                    Route::controller('personalizedservice', 'PersonalizedserviceController');
                     ?>
