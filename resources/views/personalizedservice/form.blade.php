@@ -4,18 +4,6 @@
 
   <div class="page-content row">
       
-      <?php
-      echo '<pre>';
-      print_r($inspirations);
-      echo '</pre>';
-      echo '<pre>';
-      print_r($experiences);
-      echo '</pre>';
-      echo '<pre>';
-      print_r($destinations);
-      echo '</pre>';
-      ?>
-      
     <!-- Page header -->
     <div class="page-header">
       <div class="page-title">
@@ -44,7 +32,7 @@
 <div class="col-md-12">
 						<fieldset><legend> Personalizedservice</legend>
 									
-								  <div class="form-group  " >
+								  <div class="hidden form-group  " >
 									<label for="Ps Id" class=" control-label col-md-4 text-left"> Ps Id </label>
 									<div class="col-md-6">
 									  {!! Form::text('ps_id', $row['ps_id'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
@@ -162,10 +150,10 @@
                                                                                     echo '<option ', (in_array($destination->id, explode(', ', $row['destinations'])))? 'selected' : '', ' value="'.$destination->id.'">'.$destination->category_name.'</option>'.PHP_EOL;
                                                                                     if(!empty($destination->sub_destinations)) {
                                                                                         foreach ($destination->sub_destinations as $sub_destination) {
-                                                                                            echo '<option value="'.$sub_destination->id.'">'.$sub_destination->category_name.'</option>'.PHP_EOL;
+                                                                                            echo '<option ', (in_array($sub_destination->id, explode(', ', $row['destinations'])))? 'selected' : '', ' value="'.$sub_destination->id.'">'.$sub_destination->category_name.'</option>'.PHP_EOL;
                                                                                             if(!empty($sub_destination->sub_destinations)) {
                                                                                                 foreach ($sub_destination->sub_destinations as $sub_dest) {
-                                                                                                    echo '<option value="'.$sub_dest->id.'">'.$sub_dest->category_name.'</option>'.PHP_EOL;
+                                                                                                    echo '<option ', (in_array($sub_dest->id, explode(', ', $row['destinations'])))? 'selected' : '', ' value="'.$sub_dest->id.'">'.$sub_dest->category_name.'</option>'.PHP_EOL;
                                                                                                 }
                                                                                             }
                                                                                         }
@@ -203,7 +191,7 @@
                                                                                 <?php
                                                                                 if(!empty($experiences)) {
                                                                                     foreach ($experiences as $experience) {
-                                                                                        echo '<option ', (in_array($experience->id, explode(', ', $row['inspirations'])))? 'selected' : '', ' value="'.$experience->id.'">'.$experience->category_name.'</option>';
+                                                                                        echo '<option ', (in_array($experience->id, explode(', ', $row['experiences'])))? 'selected' : '', ' value="'.$experience->id.'">'.$experience->category_name.'</option>';
                                                                                     }
                                                                                 }
                                                                                 ?>                                                                                
