@@ -83,11 +83,32 @@ input[type=radio]:checked + label>img {
 						</div>
 					</div>
 					</form>
-					<div id="formerrors"></div>
-            </div>
-        </div></div></div>
+				</div>
+        </div></div>
+	</div>
     <div role="tabpanel" class="tab-pane " id="propertymanagementlist">
-		
+		<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Position</th>
+					<th>Office</th>
+					<th>Age</th>
+					<th>Start date</th>
+					<th>Salary</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Tiger Nixon</td>
+					<td>System Architect</td>
+					<td>Edinburgh</td>
+					<td>61</td>
+					<td>2011/04/25</td>
+					<td>$320,800</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
    
     
@@ -111,6 +132,7 @@ input[type=radio]:checked + label>img {
 <link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/responsive.css')}}" />
 <!-- Custom style -->
 <link href="{{ asset('sximo/assets/memform/css/custom-ai.css')}}" rel="stylesheet" type="text/css"/>
+
 @endsection
 
 @section('script')
@@ -131,8 +153,6 @@ input[type=radio]:checked + label>img {
             errorClass: 'has-error',
             successClass: 'has-success'
         };
-
-
     
 $(function () {
   $('#hotel-form').parsley().on('field:validated', function() {

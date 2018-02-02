@@ -1,9 +1,26 @@
 
 @extends('frontend.layouts.ev.customer')
 @section('content')
+<style type="text/css">
+    
+.hotel-book-now {
+                background: #ABA07C;
+                color: #fff;
+                font-size: 25px;
+                height: 71px;
+                margin: 0px 0px 10px 3px;
+                opacity: 1;
+                overflow-wrap: break-word;
+                padding: 27px 5px;
+                position: absolute;
+                text-align: center;
+                text-transform: uppercase;
+                width: 174px;
+                z-index: 99;
+                float: left;
+            }
 
-
-
+</style>
 <section class="wow fadeIn big-section cstmaiclass" id="align-to-top">
                     <div class="container-fluid">
 
@@ -91,7 +108,7 @@
 
 
 <!--Accordan Code -->
-
+<div class="col-sm-12" >
 @if (!empty($packages))
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
   
@@ -112,10 +129,26 @@
                 <div  style="width:20%" class="pull-left">
                     <img class="img-responsive object-fit-size" src="{{URL::to('uploads/packages/'.$package->package_image)}}" alt="{{$package->package_image}}" >
 
+
+
+                 
+
                 </div>
                 <div class="pull-right" style="width:80%">
                     <p>Package Duration :: {{$package->package_duration}} {{$package->package_duration_type}} </p>  
-                    <p>Package Details: {{$package->package_description}}</p></p>
+                    <p>Package Details: {!! nl2br($package->package_description) !!}</p>
+
+                     <div class="book-btn-sec">
+               
+                    
+                        <div class="hotel-book-price">
+                          EUR {{ $package->package_price }}
+                        </div>
+                       <a href="#"><div class="hotel-book-now">Add to cart</div></a>
+                 
+                    
+                 
+                </div>
                 </div>
            </div>
       </div>
@@ -130,10 +163,9 @@
 
 </div>
 @endif
-
+</div>
 <!-- end accrodan code -->
-
-
+  
 @endsection
 
 
@@ -162,3 +194,60 @@
         <!-- images loaded -->
         <script type="text/javascript" src="{{ asset('sximo/assets/memform/js/imagesloaded.pkgd.min.js')}}"></script>
 @endsection
+ <!-- contact email aside -->
+    <script>
+        $('.contact-aside').hover(
+                function () {
+                    $(this).addClass('active')
+                },
+                function () {
+                    $(this).removeClass('active')
+                }
+        );
+<!-- Please remove .open-show_more-page- hifen -->
+        $(document).on('click', '.open-show_more-page', function () {
+            $('.show_more-page').css("background-image", "");
+            $('.single-right-text-product').html('');
+            $('.rmimgp').html('');
+            $.ajax({
+                url: "{{ URL::to('fetchpackagedetails')}}" + '/' + $(this).attr('rel'),
+                type: "get",
+                success: function (data) {
+                    var rimg = "{{ URL::to('uploads/packages/')}}/" + data.pdata.package_image;
+                    $('.rmimgp').html('<div class="right-text-section"></div>');
+                    $('.show_more-page').css("background-image", "url('" + rimg + "')");
+                    var imagesPro = '';
+                    imagesPro += '<div class="text-section">';
+                    imagesPro += '<h2>' + data.pdata.package_title + '</h2>';
+                    imagesPro += '<p>' + data.pdata.package_description.replace(/\n/g,"<br>") + '</p>';
+                    imagesPro += '</div>';
+                    imagesPro += '<div class="book-btn-sec">';
+                    if (data.pdata.package_price_type != 1)
+                    {
+                        imagesPro += '<div class="hotel-book-price">';
+                        imagesPro += (data.currency.content != '') ? data.currency.content : '$';
+                        imagesPro += data.pdata.package_price;
+                        imagesPro += '</div>';
+                        imagesPro += '<a href="#"><div class="hotel-book-now">Add to cart</div></a>';
+                    }
+                    else
+                    {
+                        imagesPro += '<div class="hotel-book-price">Price on request</div>';
+                        imagesPro += '<a href="#"><div class="hotel-book-now">Get in touch</div></a>';
+                    }
+                    imagesPro += '</div>';
+                    /*imagesPro += '<div class="inner-pop-up-book-btn">';
+                    imagesPro += '<a href="#">Book</a>';
+                    imagesPro += '</div>';*/
+                    imagesPro += '</div>';
+                    $('#popupopn .single-right-text-product').html(imagesPro);
+                    $('.show_more-page').css("width", "100%");
+                }
+            });
+            return false;
+        });
+
+
+    </script>
+
+
