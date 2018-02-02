@@ -79,28 +79,45 @@
 	</section>
 
 	<div class="hotel-property-section-bg" id="popupopn">
-		<div class="clearfix"></div>
-		<!--Show More Slide-->
-		<div class="show_more-page">
-			<div class="open-show_more-html">
-				<div><a class="close-btn-show_more close-btn-align" href="#">&times;</a></div>
-				<div class="container-">
-					<div class="row-">
-						<div class="clearfix"></div>
-						<div class="col-md-6 col-sm-6 rmimgp">
+                    <div class="clearfix"></div>
+                    <!--Show More Slide-->
+                    <div class="show_more-page">
+                        <div class="open-show_more-html">
+                            <div><a class="close-btn-show_more close-btn-align" href="#">&times;</a></div>
+                            <div class="container-">
+                                <div class="row-">
+                                    <div class="clearfix"></div>
+                                    <div class="col-md-6 col-sm-6 rmimgp">
 
-						</div>
-						<div class="col-md-6 col-sm-6 single-right-text-product">
-							
-						</div>
-					</div>	
-				</div>
-			</div>
-		</div>
-	</div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 single-right-text-product">
+                                        <div class="text-section"><h2>JUNIOR SUITE BEACHFRONT</h2>
+                                            <p>• 81sqm (872sqft)
+                                                <br>• Double bed
+                                                <br>• Beach view
+                                                <br>• Terrace
+                                                <br>• Complimentary WiFi
+                                                <br>• Air conditioning
+                                                <br>• Shower and bathtub</p>
+                                            <p>Covering 81 sq. metres, the 44 Junior Suites are among the most generously proportioned in Mauritius. Designed to blend modernity with practicality, they're housed in attractive villa buildings with four suites per villa. Like all guest accommodation at Shanti Maurice, the suites are equipped with plasma TVs, DVD players and broadband Internet access. The ground floor suites have direct access to the beach, as well as an outdoor rain shower, while the suites on the first floor have large balconies overlooking the Indian Ocean. As well as large bedrooms and bathrooms, each Junior Suite has a separate dressing room with an open closet and dressing table.</p>
+                                        </div>
+                                        <div class="book-btn-sec">
+                                            <div class="hotel-book-price">Show More<a href="#"><div class="hotel-book-now">Buy Now</div></a>
+                                            </div>
+                                            <div class="inner-pop-up-book-btn">
+                                                <a href="#" onclick="choose_room_type(1966);">Book</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>	
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 
 	<!-- pop up -->
+        
 </div>
 @endsection
 
@@ -160,21 +177,21 @@
 			background: rgba(37,37,37,1.0);
 		}
 		.hotel-book-now {
-			background: #ABA07C;
-			color: #000;
-			font-size: 25px;
-			height: 71px;
-			margin: 0px 0px 10px 3px;
-			opacity: 1;
-			overflow-wrap: break-word;
-			padding: 27px 5px;
-			position: absolute;
-			text-align: center;
-			text-transform: uppercase;
-			width: 174px;
-			z-index: 99;
-			float: left;
-		}
+                        background: #ABA07C;
+                        color: #fff;
+                        font-size: 25px;
+                        height: 71px;
+                        margin: -48px 0px 10px 169px;
+                        opacity: 1;
+                        overflow-wrap: break-word;
+                        padding: 27px 5px;
+                        position: absolute;
+                        text-align: center;
+                        text-transform: uppercase;
+                        width: 174px;
+                        z-index: 99;
+                        float: left;
+                }
 /*		.editorial-image-slider-previous-btn {
 			margin-left: 35% !important;
 		}*/
@@ -490,28 +507,45 @@
 
         }, 40000);
 		
-		$(document).on('click', '.open-show_more-page', function () {
-            $('.single-right-text-product').html('');
-            $('.rmimgp').html('');
-            $.ajax({
-                url: "{{ URL::to('fetchadvertisementpackagedetails')}}" + '/' + $(this).attr('rel'),
-                type: "get",
-                success: function (data) {
-                    $('.rmimgp').html('<div class="right-text-section"></div>');
-                    var imagesPro = '';
-                    imagesPro += '<div class="text-section">';
-                    imagesPro += '<h2>' + data.pdata.space_title + '</h2>';
-                    
-                    imagesPro += '</div>';
-                    imagesPro += '<div class="book-btn-sec">';
-                    imagesPro += '<div class="hotel-book-price">Price on request</div>';
-					imagesPro += '<a href="#"><div class="hotel-book-now">Get in touch</div></a>';
-                    imagesPro += '</div>';
-                    imagesPro += '</div>';
-                    $('#popupopn .single-right-text-product').html(imagesPro);
-                    $('.show_more-page').css("width", "100%");
-                }
-            });
+        $(document).on('click', '.open-show_more-page', function () {
+//            $('.show_more-page').css("background-image", "");
+//            $('.single-right-text-product').html('');
+//            $('.rmimgp').html('');
+//            $.ajax({
+//                url: "{{ URL::to('fetchpackagedetails')}}" + '/' + $(this).attr('rel'),
+//                type: "get",
+//                success: function (data) {
+//                    var rimg = "{{ URL::to('uploads/packages/')}}/" + data.pdata.package_image;
+//                    $('.rmimgp').html('<div class="right-text-section"></div>');
+//                    $('.show_more-page').css("background-image", "url('" + rimg + "')");
+//                    var imagesPro = '';
+//                    imagesPro += '<div class="text-section">';
+//                    imagesPro += '<h2>' + data.pdata.package_title + '</h2>';
+//                    imagesPro += '<p>' + data.pdata.package_description.replace(/\n/g,"<br>") + '</p>';
+//                    imagesPro += '</div>';
+//                    imagesPro += '<div class="book-btn-sec">';
+//                    if (data.pdata.package_price_type != 1)
+//                    {
+//                        imagesPro += '<div class="hotel-book-price">';
+//                        imagesPro += (data.currency.content != '') ? data.currency.content : '$';
+//                        imagesPro += data.pdata.package_price;
+//                        imagesPro += '</div>';
+//						imagesPro += '<a href="#"><div class="hotel-book-now">Add to cart</div></a>';
+//                    }
+//                    else
+//					{
+//						imagesPro += '<div class="hotel-book-price">Price on request</div>';
+//						imagesPro += '<a href="#"><div class="hotel-book-now">Get in touch</div></a>';
+//					}
+//                    imagesPro += '</div>';
+//                    /*imagesPro += '<div class="inner-pop-up-book-btn">';
+//                    imagesPro += '<a href="#">Book</a>';
+//                    imagesPro += '</div>';*/
+//                    imagesPro += '</div>';
+//                    $('#popupopn .single-right-text-product').html(imagesPro);
+//                    $('.show_more-page').css("width", "100%");
+//                }
+//            });
             return false;
         });
     </script>

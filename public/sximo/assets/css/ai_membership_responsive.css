@@ -117,13 +117,18 @@
 	margin-left: 14px !important;
     }
     
-    /* left bar */
-    .right-menu-sidebar {
+     .right-menu-sidebar {
         display: none;
     }
-    .floatLeft {
-        float: left;
-    }/*
+    
+    .ResSlider {
+        margin-top: 40px;
+    }
+    
+   .right-menus {
+	overflow: hidden;
+    }
+    
     .hotels-logo h3.title {
 	padding: 25px 200px 10px 10px;
 	text-align: left;
@@ -133,6 +138,6 @@
 	height: 42px !important;
 	margin-top: 0px;
 	padding: 15px 0px 0px 29px !important;
-    }*/
+    }
     
 }

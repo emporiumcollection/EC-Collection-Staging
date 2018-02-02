@@ -276,9 +276,9 @@
                 <!-- responsive menu add -->
                 
                 <!-- button -->
-                
-                <span class="hamburger-menu editorial-res-side-nav-logo hidden-md hidden-lg visible-xs visible-sm"  onclick="openNav()"><img src="{{ asset('sximo/assets/images/Hamburger-Menu_1.png')}}" alt=""/></span>
-                
+                <div class="col-md-12">
+                    <span class="hamburger-menu editorial-res-side-nav-logo hidden-md hidden-lg visible-xs visible-sm"  onclick="openNav()"><img src="{{ asset('sximo/assets/images/Hamburger-Menu_1.png')}}" alt=""/></span>
+                </div>
                 <!-- button -->
                 
                 <!-- content -->
@@ -322,7 +322,7 @@
                 
                 <!-- responsive menu add -->
                 
-                <div class="col-md-10 no-padding floatLeft">
+                <div class="col-md-10 no-padding ResSlider">
 					@if(!empty($pageslider))
 						<section class="wow fadeIn no-padding cstmaiclass littlepadding">
 							<div class="swiper-auto-height-container position-relative width-100">

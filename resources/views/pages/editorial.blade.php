@@ -1154,6 +1154,7 @@
                             }
                             .m_slider.editorial_m_slider {
                                 margin-top: 81px;
+                                height: calc(100vh - 81px);
                             }
                             
                             /* back to top */

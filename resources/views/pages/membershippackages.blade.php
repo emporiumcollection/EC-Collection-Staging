@@ -96,7 +96,7 @@
             }
             .hotel-book-now {
                 background: #ABA07C;
-                color: #000;
+                color: #fff;
                 font-size: 25px;
                 height: 71px;
                 margin: 0px 0px 10px 3px;
@@ -781,7 +781,7 @@
                     $(this).removeClass('active')
                 }
         );
-<!-- Please remove .open-show_more-page- hifen ->
+<!-- Please remove .open-show_more-page- hifen -->
         $(document).on('click', '.open-show_more-page', function () {
             $('.show_more-page').css("background-image", "");
             $('.single-right-text-product').html('');
