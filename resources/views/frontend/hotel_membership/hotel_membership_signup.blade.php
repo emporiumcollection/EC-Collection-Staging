@@ -120,7 +120,7 @@
                                                 <div class="row padding-row">
                                                     <div class="col-md-6 col-sm-12 no-padding-left">
                                                         <label>F & B Outlets</label>
-                                                        <select name="hotelfac_fb_outlets" multiple="" class="bg-white medium-input" >
+                                                        <select name="hotelfac_fb_outlets[]" multiple="" class="bg-white medium-input" >
                                                             <option value="">-</option>
                                                             <option value="Restaurant">Restaurant</option>
                                                             <option value="Bar">Bar</option>
@@ -131,7 +131,7 @@
                                                     </div>
                                                     <div class="col-md-6 col-sm-12 no-padding-right">
                                                         <label>Guest Facilities</label>
-                                                        <select name="hotelfac_guest_fac" multiple="" class="bg-white medium-input">
+                                                        <select name="hotelfac_guest_fac[]" multiple="" class="bg-white medium-input">
                                                             <option value="">-</option>
                                                             <option value="">Gym</option>
                                                             <option value="">Indoor Pool</option>
@@ -155,18 +155,18 @@
                                                 </div>
                                                 <div class="col-md-12 sm-clear-both no-padding">
                                                     <label>Comments/Other Facilities</label>
-                                                    <textarea name="hotelfac_comments" id="comment" placeholder="Comments/Other Facilities" rows="5" class="bg-white medium-textarea"></textarea>
+                                                    <textarea name="hotelfac_comments"  placeholder="Comments/Other Facilities" rows="5" class="bg-white medium-textarea"></textarea>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <h5 class="ev-regural-heading text-uppercase margin-20px-bottom font-weight-700 sm-width-100 xs-width-100">Hotel Description</h5>
                                                 <div class="col-md-6 col-sm-12 no-padding-left">
                                                     <label>*Hotel Concept</label>
-                                                    <textarea name="hoteldesc_concept" id="comment" placeholder="*Hotel Concept" rows="5" class="bg-white medium-textarea" required=""></textarea>
+                                                    <textarea name="hoteldesc_concept" placeholder="*Hotel Concept" rows="5" class="bg-white medium-textarea" required=""></textarea>
                                                 </div>
                                                 <div class="col-md-6 col-sm-12 no-padding-right">
                                                     <label>Architecture & Design</label>
-                                                    <textarea name="hoteldesc_architecture_design" id="comment" placeholder="*Architecture & Design" rows="5" class="bg-white medium-textarea"></textarea>
+                                                    <textarea name="hoteldesc_architecture_design"  placeholder="*Architecture & Design" rows="5" class="bg-white medium-textarea"></textarea>
                                                 </div>
                                                 <div class="col-md-6 col-sm-12 no-padding-left">
                                                     <label>Architect Name</label>
@@ -190,7 +190,7 @@
                                                 </div>
                                                 <div class="col-md-6 col-sm-12 no-padding-right">
                                                     <label>Brand</label>
-                                                    <textarea name="hoteldesc_brand" id="comment" placeholder="Brand" rows="5" class="bg-white medium-textarea"></textarea>
+                                                    <textarea name="hoteldesc_brand"  placeholder="Brand" rows="5" class="bg-white medium-textarea"></textarea>
                                                 </div>
                                                 <div class="col-md-6 col-sm-12 no-padding-left">
                                                     <label>Brand Agency Name</label>
@@ -301,7 +301,7 @@
                 $.ajax({
                     url: "{{ URL::to('hotel/membership')}}",
                     type: "post",
-                    data: $('#contact-form').serializeArray(),
+                    data: $('#hotel-form').serializeArray(),
                     dataType: "json",
                     success: function (data) {
                         if (data.status == 'error')
@@ -322,10 +322,7 @@
                             htmli +='<button data-dismiss="alert" class="close" type="button">×</button>';
                             htmli +='<i class="icon-checkmark-circle"></i> Record Inserted Successfully </div>';
                             $('#formerrors').html(htmli);
-                             window.scrollTo(0, 600); 
-                             setTimeout(function(){
-                                  window.location.href= "{{URL::to('hotel/hotelpackage')}}";
-                                }, 3000);
+                            window.location.href= "{{URL::to('hotel/package')}}";
                         }
                     }
                 });
