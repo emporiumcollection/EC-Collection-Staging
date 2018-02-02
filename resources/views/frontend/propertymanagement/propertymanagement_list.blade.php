@@ -98,16 +98,6 @@ input[type=radio]:checked + label>img {
 					<th>Salary</th>
 				</tr>
 			</thead>
-			<tfoot>
-				<tr>
-					<th>Name</th>
-					<th>Position</th>
-					<th>Office</th>
-					<th>Age</th>
-					<th>Start date</th>
-					<th>Salary</th>
-				</tr>
-			</tfoot>
 			<tbody>
 				<tr>
 					<td>Tiger Nixon</td>
@@ -142,7 +132,6 @@ input[type=radio]:checked + label>img {
 <link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/responsive.css')}}" />
 <!-- Custom style -->
 <link href="{{ asset('sximo/assets/memform/css/custom-ai.css')}}" rel="stylesheet" type="text/css"/>
-<link href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css"/>
 
 @endsection
 
@@ -164,10 +153,6 @@ input[type=radio]:checked + label>img {
             errorClass: 'has-error',
             successClass: 'has-success'
         };
-
-$(document).ready(function() {
-    $('#example').DataTable();
-} );
     
 $(function () {
   $('#hotel-form').parsley().on('field:validated', function() {
