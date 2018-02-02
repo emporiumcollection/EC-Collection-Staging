@@ -9,7 +9,7 @@ use DB,Validator, Input, Redirect, CommonHelper, Mail;
 class HotelMembershipController extends Controller {
 
     public function __construct() {
-        session()->put('hotel_cart.packages', []);
+        
        // $this->middleware('auth');
         parent::__construct();
         $this->data['pageTitle'] = '';
@@ -22,7 +22,7 @@ class HotelMembershipController extends Controller {
      *   Description : The Methos is using for personalized page
     */
     public function membershipSignup(Request $request) {
-        dd(session()->get('hotel_cart'));
+        dd($request->session()->get('hotel_cart'));
         return view('frontend.hotel_membership.hotel_membership_signup', $this->data);
     }
 
@@ -195,8 +195,7 @@ class HotelMembershipController extends Controller {
 
     public function addToCartAjax(Request $request){
         
-        session()->push('hotel_cart.packages', $request->input('cart'));
-         dd(session()->get('hotel_cart'));
+        $request->session()->push('hotel_cart.packages', $request->input('cart'));
 
     }
     
