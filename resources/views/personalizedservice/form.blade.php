@@ -143,7 +143,7 @@
 								  <div class="form-group  " >
 									<label for="Destinations" class=" control-label col-md-4 text-left"> Destinations </label>
 									<div class="col-md-6">
-                                                                        <select name="destinations[]" data-placeholder="Ex: Argentina, South Africa, Cape Town" class="chosen-select chosen-select-input-style" multiple tabindex="4">
+                                                                        <select name="destinations[]" class="chosen form-control" multiple>
                                                                             <?php
                                                                             if(!empty($destinations)) {
                                                                                 foreach ($destinations as $destination) {
@@ -211,7 +211,7 @@
 									 	
 									 </div>
 								  </div> 					
-								  <div class="form-group  " >
+								  <div class="form-group hidden " >
 									<label for="Created" class=" control-label col-md-4 text-left"> Created </label>
 									<div class="col-md-6">
 									  
@@ -225,7 +225,7 @@
 									 	
 									 </div>
 								  </div> 					
-								  <div class="form-group  " >
+								  <div class="form-group hidden " >
 									<label for="Updated" class=" control-label col-md-4 text-left"> Updated </label>
 									<div class="col-md-6">
 									  
