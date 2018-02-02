@@ -136,7 +136,7 @@
                 </div>
                 <div class="pull-right" style="width:80%">
                     <p>Package Duration :: {{$package->package_duration}} {{$package->package_duration_type}} </p>  
-                    <p>Package Details: {{nl2br($package->package_description)}}</p></p>
+                    <p>Package Details: {!! nl2br($package->package_description) !!}</p>
 
                      <div class="book-btn-sec">
                
