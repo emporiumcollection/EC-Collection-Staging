@@ -317,6 +317,63 @@
                         </div>
                     </div>
                 </div>
+                <section class="regular slider">
+                                        <div aria-live="polite" class="slick-list draggable"><div class="slick-track">
+											<div class="slick-cstm-width slick-slide slick-cloned">
+                                            <a href="http://www.bocadolobo.com/en/landing-page/de-market/"><img src="https://www.emporium-voyage.com/uploads/users/advertisement/1.png"></a>
+                                        </div><div class="slick-cstm-width slick-slide slick-current slick-active">
+                                            <div class="side-bar-why-book-with-us">
+                                                <div class="book-with-us-tittles">
+                                                    <h2>Why book with us?</h2>
+                                                </div>
+                                                <ul class="side-bar-book-with-us-list">
+                                                                                                                                                                        <li>
+                                                                <h3>Handpicked Selection of Hotels</h3>
+                                                                <p>from selected luxury destinations worldwide</p>
+                                                            </li>
+                                                                                                                    <li>
+                                                                <h3>Upgrade and Late Checkout</h3>
+                                                                <p>At any Hotel upon Avilability</p>
+                                                            </li>
+                                                                                                                    <li>
+                                                                <h3>Preferred Guest Discounts at New Hotels</h3>
+                                                                <p>join our members club</p>
+                                                            </li>
+                                                                                                                    <li>
+                                                                <h3>Free Wifi</h3>
+                                                                <p>Guaranteed at all our Partner Hotels</p>
+                                                            </li>
+                                                                                                                                                            </ul>
+                                            </div>
+                                        </div><div class="slick-cstm-width slick-slide">
+                                            <a href="http://www.bocadolobo.com/en/landing-page/de-market/"><img src="https://www.emporium-voyage.com/uploads/users/advertisement/1.png"></a>
+                                        </div><div class="slick-cstm-width slick-slide slick-cloned">
+                                            <div class="side-bar-why-book-with-us">
+                                                <div class="book-with-us-tittles">
+                                                    <h2>Why book with us?</h2>
+                                                </div>
+                                                <ul class="side-bar-book-with-us-list">
+                                                                                                                                                                        <li>
+                                                                <h3>Handpicked Selection of Hotels</h3>
+                                                                <p>from selected luxury destinations worldwide</p>
+                                                            </li>
+                                                                                                                    <li>
+                                                                <h3>Upgrade and Late Checkout</h3>
+                                                                <p>At any Hotel upon Avilability</p>
+                                                            </li>
+                                                                                                                    <li>
+                                                                <h3>Preferred Guest Discounts at New Hotels</h3>
+                                                                <p>join our members club</p>
+                                                            </li>
+                                                                                                                    <li>
+                                                                <h3>Free Wifi</h3>
+                                                                <p>Guaranteed at all our Partner Hotels</p>
+                                                            </li>
+                                                                                                                                                            </ul>
+                                            </div>
+                                        </div></div></div>
+                                                                                                                        
+                                                                                                                    </section>
                 
                 <!-- content -->
                 
