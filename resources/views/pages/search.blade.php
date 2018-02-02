@@ -1894,6 +1894,11 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                                     if(data.categoryslider[si].slider_link != '#') {
                                                         sliderHTML += '<a class="uk-margin-top uk-button uk-button-primary" href="http://' + data.categoryslider[si].slider_link + '" title="Do it yourself">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>';
                                                     }
+													else
+													{
+														var linkd = "{{URL::to('luxury_hotels')}}/"+ data.categoryslider[si].slider_category;
+														sliderHTML += '<a class="uk-margin-top uk-button uk-button-primary" href="'+linkd+'" title="Do it yourself">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>';
+													}
                                                 sliderHTML += '</div>';
                                             sliderHTML += '</div>';
                                             sliderHTML += '<div class="bh-slideshow-thumbnail-split-preview uk-overlay-panel uk-overlay-right uk-overlay-background uk-overlay-fade uk-width-2-5 uk-width-xxlarge-1-3 uk-flex uk-flex-middle uk-flex-center uk-visible-large">';
@@ -1910,6 +1915,11 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                                     if(data.categoryslider[si].slider_link != '#') {
                                                         sliderHTML += '<a class="uk-margin-top uk-button uk-button-primary" href="http://' + data.categoryslider[si].slider_link + '">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>';
                                                     }
+													else
+													{
+														var linkd = "{{URL::to('luxury_hotels')}}/"+ data.categoryslider[si].slider_category;
+														sliderHTML += '<a class="uk-margin-top uk-button uk-button-primary" href="'+linkd+'" title="Do it yourself">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>';
+													}
                                                 sliderHTML += '</div>';
                                                 sliderHTML += '<a href="javascript:void(0);" class="bh-slideshow-slidenav uk-slidenav uk-slidenav-previous" data-uk-slideshow-item="previous"></a>';
                                                 sliderHTML += '<a href="javascript:void(0);" class="bh-slideshow-slidenav uk-slidenav uk-slidenav-next" data-uk-slideshow-item="next"></a>';
