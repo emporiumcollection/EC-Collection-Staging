@@ -507,68 +507,23 @@
 
         }, 40000);
 		
-//		$(document).on('click', '.open-show_more-page', function () {
-//            $('.single-right-text-product').html('');
-//            $('.rmimgp').html('');
-//            $.ajax({
-//                url: "{{ URL::to('fetchadvertisementpackagedetails')}}" + '/' + $(this).attr('rel'),
-//                type: "get",
-//                success: function (data) {
-//                    $('.rmimgp').html('<div class="right-text-section"></div>');
-//                    var imagesPro = '';
-//                    imagesPro += '<div class="text-section">';
-//                    imagesPro += '<h2>' + data.pdata.space_title + '</h2>';
-//                    
-//                    imagesPro += '</div>';
-//                    imagesPro += '<div class="book-btn-sec">';
-//                    imagesPro += '<div class="hotel-book-price">Price on request</div>';
-//					imagesPro += '<a href="#"><div class="hotel-book-now">Get in touch</div></a>';
-//                    imagesPro += '</div>';
-//                    imagesPro += '</div>';
-//                    $('#popupopn .single-right-text-product').html(imagesPro);
-//                    $('.show_more-page').css("width", "100%");
-//                }
-//            });
-//            return false;
-//        });
-    </script>
-    <script>
-    
-    <!-- Please remove .open-show_more-page- hifen ->
-        $(document).on('click', '.open-show_more-page', function () {
-            $('.show_more-page').css("background-image", "");
+		$(document).on('click', '.open-show_more-page', function () {
             $('.single-right-text-product').html('');
             $('.rmimgp').html('');
             $.ajax({
-                url: "{{ URL::to('fetchpackagedetails')}}" + '/' + $(this).attr('rel'),
+                url: "{{ URL::to('fetchadvertisementpackagedetails')}}" + '/' + $(this).attr('rel'),
                 type: "get",
                 success: function (data) {
-                    var rimg = "{{ URL::to('uploads/packages/')}}/" + data.pdata.package_image;
                     $('.rmimgp').html('<div class="right-text-section"></div>');
-                    $('.show_more-page').css("background-image", "url('" + rimg + "')");
                     var imagesPro = '';
                     imagesPro += '<div class="text-section">';
-                    imagesPro += '<h2>' + data.pdata.package_title + '</h2>';
-                    imagesPro += '<p>' + data.pdata.package_description.replace(/\n/g,"<br>") + '</p>';
+                    imagesPro += '<h2>' + data.pdata.space_title + '</h2>';
+                    
                     imagesPro += '</div>';
                     imagesPro += '<div class="book-btn-sec">';
-                    if (data.pdata.package_price_type != 1)
-                    {
-                        imagesPro += '<div class="hotel-book-price">';
-                        imagesPro += (data.currency.content != '') ? data.currency.content : '$';
-                        imagesPro += data.pdata.package_price;
-                        imagesPro += '</div>';
-						imagesPro += '<a href="#"><div class="hotel-book-now">Add to cart</div></a>';
-                    }
-                    else
-					{
-						imagesPro += '<div class="hotel-book-price">Price on request</div>';
-						imagesPro += '<a href="#"><div class="hotel-book-now">Get in touch</div></a>';
-					}
+                    imagesPro += '<div class="hotel-book-price">Price on request</div>';
+					imagesPro += '<a href="#"><div class="hotel-book-now">Get in touch</div></a>';
                     imagesPro += '</div>';
-                    /*imagesPro += '<div class="inner-pop-up-book-btn">';
-                    imagesPro += '<a href="#">Book</a>';
-                    imagesPro += '</div>';*/
                     imagesPro += '</div>';
                     $('#popupopn .single-right-text-product').html(imagesPro);
                     $('.show_more-page').css("width", "100%");
@@ -576,5 +531,5 @@
             });
             return false;
         });
-                </script>
+    </script>
 @endsection
