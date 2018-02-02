@@ -11,7 +11,14 @@
 
 </style>
 
-
+@if(Session::has('messagetext'))	  
+		   {!! Session::get('message') !!}
+	@endif	
+	<ul>
+		@foreach($errors->all() as $error)
+			<li class="alert alert-danger parsley">{{ $error }}</li>
+		@endforeach
+	</ul>
 <div class="col-sm-12">
 
   <!-- Nav tabs <i class="fa fa-bullhorn" aria-hidden="true"></i></div><span>Ads -->
@@ -26,7 +33,7 @@
 
     
 
-       <li role="presentation"><a href="{{ URL::to('personalized-service')}}" aria-controls="settings" role="tab" data-toggle="tab">Personalized Services</a></li>
+       <li role="presentation"><a href="#personalizedOptions" aria-controls="personalizedOptions" role="tab" data-toggle="tab">Personalized Services</a></li>
 
        <li role="presentation"><a href="#comingsoon" aria-controls="comingsoon" role="tab" data-toggle="tab">Memberships</a></li>
 
@@ -41,9 +48,9 @@
      <div role="tabpanel" class="tab-pane active" id="profile"> <div class="col-md-8 col-sm-8">
         <div class="row">
             <div class="das-form-outer-align">
-                
+               
                 	<form class="form-horizontal my-profile-main-form-align" name="basicInfo" id="basicInfo" method="post" action=" {{URL::to('customer/savewhoiam')}}">
-				
+						<input type="hidden" name="usertype" value="guests" id="userTypeHotel" class="input-hidden usertype" required=""/>
 					<div id="guests">
 						<div class="form-group">
 							<label class="control-label col-sm-2">First Name</label>
@@ -58,9 +65,10 @@
 							</div>
 						</div>
 						<div class="form-group">
+
 							<label class="control-label col-sm-2">Phone</label>
 							<div class="col-sm-10">          
-								<input type="text" name="txtPhoneNumber" id="txtPhoneNumber" class="form-control dash-input-style" value="{{$info->mobilenumber}}"placeholder="+91-9876543210" required="">
+								<input type="text" name="txtPhoneNumber" id="txtPhoneNumber" class="form-control dash-input-style" value="{{$info->mobile_number}}"placeholder="+91-9876543210" required="">
 							</div>
 						</div>
 						<div class="form-group profile-page-submit-radio-align">        
@@ -93,17 +101,15 @@
     <div role="tabpanel" class="tab-pane" id="messages">Coming Soon...</div>
  
     <div role="tabpanel" class="tab-pane" id="comingsoon">Coming Soon...</div>
-    <div role="tabpanel" class="tab-pane" id="accountOptions"> 
+    <div role="tabpanel" class="tab-pane" id="personalizedOptions"> 
          <div class="row">
                 <div >
                     <ul class="list-group" >
-                                <li class="list-group-item"><a class="active" href="#">Account Information</a></li>
-                                <li class="list-group-item"><a href="#">Profile</a></li>
-                                <li class="list-group-item"><a href="#">Featured Items</a></li>
-                                <li class="list-group-item"><a href="#">Email</a></li>
-                                <li class="list-group-item"><a href="#">Invitions</a></li>
-                                <li class="list-group-item"><a href="#">Blocked User</a></li>
-                                <li class="list-group-item"><a href="#">Delete Account</a></li>
+                                <li class="list-group-item"><a class="active" href="#">Get Inspired</a></li>
+                                <li class="list-group-item"><a href="#">Edit My Personalized Services</a></li>
+                                <li class="list-group-item"><a href="{{ URL::to('personalized-service')}}">Create New Personalized Services</a></li>
+                                <li class="list-group-item"><a href="#">List Personalized Services</a></li>
+                                
                             </ul>
                
                 </div>
