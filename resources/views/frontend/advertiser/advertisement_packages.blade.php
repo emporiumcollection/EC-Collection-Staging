@@ -1,7 +1,7 @@
 @extends('frontend.layouts.ev.customer')
 @section('content')
 
-<div class="col-md-12 no-padding AdvertisePackage">
+<div class="col-md-12 no-padding">
 	<!-- start contact form section -->
 	<section class="wow fadeIn big-section cstmaiclass" id="align-to-top">
 		<div class="container-fluid">
@@ -425,11 +425,6 @@
                         max-width: 25%;
                         max-height: 101px;
                         height: 101px;
-                }
-                .AdvertisePackage {
-                    max-width: 1600px;
-                    float: none;
-                    margin: 0 auto;
                 }
                 
                 /* 110 % */
