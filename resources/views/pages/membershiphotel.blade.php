@@ -282,7 +282,7 @@
                 <!-- button -->
                 
                 <!-- content -->
-            <div class="col-md-12">    
+            <div class="col-md-12 hidden-md hidden-lg visible-xs visible-sm">    
                 <div id="editorial-siden-nav-res" class="sidenav hidden-md hidden-lg visible-xs visible-sm" style="width: 0px;">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
                     <div class=" right-menus ">
@@ -318,7 +318,7 @@
                     </div>
                 </div>
                 <!-- slick -->
-                <section class="regular slider hidden-md hidden-lg visible-sm visible-xs">
+                <section class="regular slider hidden-md hidden-lg visible-xs visible-sm">
                             <div class="slick-cstm-width">
 								<div class="side-bar-why-book-with-us">
 									<div class="book-with-us-tittles">
