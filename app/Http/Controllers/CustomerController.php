@@ -551,6 +551,8 @@ class CustomerController extends Controller {
         $ads_expiry_days = \DB::table('tb_settings')->where('key_value', 'default_advertisement_expiry_days')->first();
         $ads_price = \DB::table('tb_settings')->where('key_value', 'default_advertisement_price')->first();
         $def_currency = \DB::table('tb_settings')->where('key_value', 'default_currency')->first();
+        
+        $this->data['pageslider']=array();
         $this->data2 = array(
             'pageTitle' => 'My Profile',
             'pageNote' => 'View Detail My Info',
