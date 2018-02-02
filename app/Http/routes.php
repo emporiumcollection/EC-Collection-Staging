@@ -271,8 +271,8 @@ Route::group(['middleware' => 'auth'], function()
 
 Route::get('hotel/membership', 'Frontend\HotelMembershipController@membershipSignup');
 Route::post('hotel/membership', 'Frontend\HotelMembershipController@membershipSignupSave');
-Route::get('hotel/hotelpackage', 'Frontend\HotelMembershipController@hotelPackage');
-Route::get('hotel/advertiser', 'Frontend\HotelMembershipController@hotelPackage');
+Route::get('hotel/package', 'Frontend\HotelMembershipController@hotelPackage');
+Route::get('hotel/advertiser', 'Frontend\HotelMembershipController@advertisementPackage');
 Route::get('hotel/cart', 'Frontend\HotelMembershipController@hotelCart');
 Route::get('hotel/add_package_to_cart', 'Frontend\HotelMembershipController@addToCartAjax');
 Route::get('hotel/checkout', 'Frontend\HotelMembershipController@hotelCheckout');	
