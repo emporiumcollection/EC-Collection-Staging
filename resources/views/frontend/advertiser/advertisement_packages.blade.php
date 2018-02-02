@@ -1,7 +1,7 @@
 @extends('frontend.layouts.ev.customer')
 @section('content')
 
-<div class="col-md-10 no-padding">
+<div class="col-md-12 no-padding">
 	<!-- start contact form section -->
 	<section class="wow fadeIn big-section cstmaiclass" id="align-to-top">
 		<div class="container-fluid">
@@ -175,12 +175,27 @@
 			z-index: 99;
 			float: left;
 		}
-		.editorial-image-slider-previous-btn {
+/*		.editorial-image-slider-previous-btn {
 			margin-left: 35% !important;
-		}
-		.image-slider-container .editorial-image-slider-btns {
+		}*/
+                .editorial-image-slider-previous-btn {
+                        margin-left: 41% !important;
+                }
+/*		.image-slider-container .editorial-image-slider-btns {
 			margin-top: -100px !important;
-		}
+		}*/
+                .image-slider-container .editorial-image-slider-btns {
+                        margin-top: -195px !important;
+                }
+                .image-slider-container .editorial-images-count {
+                    color: #fff;
+                    float: left;
+                    font-size: 33px;
+                    margin-left: 42%;
+                    margin-top: -256px;
+                    position: relative;
+                    width: 22%;
+                }
 		header.haside {
 			right: 0 !important;
 			position: fixed;
@@ -390,7 +405,7 @@
 		.slider-sec-side-text-bg {
 			margin-top: -580px;
 		}
-		.image-slider-btns-bg {
+/*		.image-slider-btns-bg {
 			background-color: #252525;
 			color: #fff;
 			float: right;
@@ -398,7 +413,96 @@
 			opacity: 0.85;
 			padding: 49px 11px;
 			width: 35%;
-		}
+		}*/
+                .image-slider-btns-bg {
+                        background-color: #252525;
+                        color: #fff;
+                        float: right;
+                        margin-top: -269px;
+                        opacity: 0.85;
+                        padding: 0px 0px;
+                        /* width: 30%; */
+                        max-width: 25%;
+                        max-height: 101px;
+                        height: 101px;
+                }
+                
+                /* 110 % */
+                
+                @media (min-width: 1711px) and (max-width: 1799px) {
+                 
+                    .image-slider-btns-bg {
+                            margin-top: -251px;
+                            height: 98px;
+                    }
+                    .image-slider-container .editorial-image-slider-btns {
+                            margin-top: -185px !important;
+                    }
+                    .image-slider-container .editorial-images-count {
+                            margin-top: -243px;
+                    }
+                    
+                }
+                
+                /* 120 % */
+                
+                @media (min-width: 1500px) and (max-width: 1710px) {
+                    
+                    .image-slider-btns-bg {
+                        height: 98px;
+                    }
+                    
+                }
+                
+                /* 130 %*/
+                
+                @media only screen  and (max-width : 1800px) {
+                    
+                    .image-slider-btns-bg {
+                            margin-top: -248px;
+                            height: 94px;
+                    }
+                    .image-slider-container .editorial-images-count {
+                            margin-top: -240px;
+                    }
+                    .image-slider-container .editorial-image-slider-btns {
+                            margin-top: -187px !important;
+                    }
+                    
+                }
+                
+                /* 140 % */
+                
+                @media only screen  and (max-width : 1440px) {
+                    
+                    .image-slider-btns-bg {
+                        height: 98px;
+                        margin-top: -230px;
+                }
+                .image-slider-container .editorial-image-slider-btns {
+                        margin-top: -164px !important;
+                }
+                .image-slider-container .editorial-images-count {
+                        margin-top: -220px;
+                }
+                    
+                }
+                
+                /* 150 */
+                
+                @media only screen  and (max-width : 1280px) {
+                    
+                    .image-slider-btns-bg {
+                            max-width: 30%;
+                    }
+                    .image-slider-container .editorial-images-count {
+                            margin-left: 40%;
+                    }
+                    .image-slider-container .image-slider-btns {
+                            width: 95%;
+                    }
+                    
+                }
 
 
 	</style>

@@ -2656,6 +2656,7 @@ header .menu ul li a:hover, header .menu ul li a:active, header .menu ul li a:fo
     margin-top: -114%;
     opacity: 0.79;
     position: relative;
+    height: 580px;
 }
 .expeience-small-text {
     color: #ada077;
