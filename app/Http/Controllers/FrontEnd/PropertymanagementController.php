@@ -30,6 +30,11 @@ class PropertymanagementController extends Controller {
         return view('frontend.propertymanagement.propertymanagement_list', $this->data);
     }
 	
-	
+	public function propertyManagementDetail(Request $request, $propid) {
+       
+        $uid = isset(\Auth::user()->id) ? \Auth::user()->id : 1;
+        $this->data['property'] = \DB::table('tb_properties')->where('id', $propid)->first();
+        return view('frontend.propertymanagement.propertymanagement_list', $this->data);
+    }
 
 }
