@@ -1137,7 +1137,8 @@
 														<div class="bh-slideshow-overlay-content">{{$slides->slider_description}}</div>
 														@if($slides->slider_link != '#')
                                                                                                                 <a class="uk-margin-top uk-button uk-button-primary" href="http://{{$slides->slider_link}}" title="Do it yourself">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>
-                                                                                                                @endif
+                                              @else
+						<a class="uk-margin-top uk-button uk-button-primary" href="{{(isset($_SERVER['HTTPS']) ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']}}">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>                                                                  @endif
 													</div>
 												</div>
 												<div class="bh-slideshow-thumbnail-split-preview uk-overlay-panel uk-overlay-right uk-overlay-background uk-overlay-fade uk-width-2-5 uk-width-xxlarge-1-3 uk-flex uk-flex-middle uk-flex-center uk-visible-large">
