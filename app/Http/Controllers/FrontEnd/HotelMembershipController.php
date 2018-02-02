@@ -9,6 +9,7 @@ use DB,Validator, Input, Redirect, CommonHelper, Mail;
 class HotelMembershipController extends Controller {
 
     public function __construct() {
+        
        // $this->middleware('auth');
         parent::__construct();
         $this->data['pageTitle'] = '';
@@ -21,7 +22,7 @@ class HotelMembershipController extends Controller {
      *   Description : The Methos is using for personalized page
     */
     public function membershipSignup(Request $request) {
-        //session()->get('hotel_cart');
+        dd($request->session()->get('hotel_cart'));
         return view('frontend.hotel_membership.hotel_membership_signup', $this->data);
     }
 
@@ -175,36 +176,26 @@ class HotelMembershipController extends Controller {
     }
 
     public function hotelPackage(Request $request) {
-       
-        
-         $this->data['packages'] = \DB::table('tb_packages')->where('package_status', 1)->get();
+        $this->data['packages'] = \DB::table('tb_packages')->where('package_status', 1)->get();
         return view('frontend.hotel_membership.hotel_package', $this->data);
     }
 
     public function advertisementPackage(Request $request) {
-       
-        
-        
-        return view('frontend.hotel_membership.hotel_advertisement', $this->data);
+       return view('frontend.hotel_membership.hotel_advertisement', $this->data);
     }
 
     public function hotelCart(Request $request) {
        
-        
-        
         return view('frontend.hotel_membership.hotel_cart', $this->data);
     }
 
     public function hotelCheckout(Request $request) {
-       
-        
-        
-        return view('frontend.hotel_membership.hotel_checkout', $this->data);
+       return view('frontend.hotel_membership.hotel_checkout', $this->data);
     }
 
     public function addToCartAjax(Request $request){
-        //session()->put('hotel_cart.packages', []);
-        //session()->push('hotel_cart.packages', array('Test1','Test2','Test3'));
+        
+        $request->session()->push('hotel_cart.packages', $request->input('cart'));
 
     }
     
