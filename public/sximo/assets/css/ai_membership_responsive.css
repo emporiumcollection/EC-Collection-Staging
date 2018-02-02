@@ -78,16 +78,16 @@
     /* sidebar small */
     
     header.haside {
-	width: 50px;
+	width: 50px !important;
     }
     .contact-aside {
-	left: calc(100% - 50px);
+	left: calc(100% - 50px) !important;
     }
     .go-back-button {
-	text-align: left;
+	text-align: left !important;
     }
     .contact-aside li {
-	padding: 6px 0px 6px 14px;
+	padding: 6px 0px 6px 14px !important;
     }
     
 }
@@ -150,16 +150,16 @@
     /* sidebar small */
     
     header.haside {
-	width: 50px;
+	width: 50px !important;
     }
     .contact-aside {
-	left: calc(100% - 50px);
+	left: calc(100% - 50px) !important;
     }
     .go-back-button {
-	text-align: left;
+	text-align: left !important;
     }
     .contact-aside li {
-	padding: 6px 0px 6px 14px;
+	padding: 6px 0px 6px 14px !important;
     }
    
 }
@@ -222,16 +222,16 @@
     /* sidebar small */
     
     header.haside {
-	width: 50px;
+	width: 50px !important;
     }
     .contact-aside {
-	left: calc(100% - 50px);
+	left: calc(100% - 50px) !important;
     }
     .go-back-button {
 	text-align: left;
     }
     .contact-aside li {
-	padding: 6px 0px 6px 14px;
+	padding: 6px 0px 6px 14px !important;
     }
     
 }
