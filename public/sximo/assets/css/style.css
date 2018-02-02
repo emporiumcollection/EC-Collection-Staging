@@ -132,7 +132,7 @@ body{
         width: 45px;
     }
     .ResSlider {
-	float: right;
+	float: right !important;
     }
     
 /* AIC END */    
