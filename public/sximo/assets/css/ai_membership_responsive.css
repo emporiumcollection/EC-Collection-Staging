@@ -44,9 +44,30 @@
     .vegasFooterSocial ul li {
 	margin-left: 14px !important;
     }
-    /* left bar */
-    .right-menu-sidebar {
-        display: none;
+    .ResSlider {
+        margin-top: 40px;
+    }
+    
+   .right-menus {
+	overflow: hidden;
+        height: auto;
+    }
+    
+    .hotels-logo h3.title {
+	padding: 25px 200px 10px 10px;
+	text-align: left;
+    }
+    .search-box {
+	background: none !important;
+	height: 28px !important;
+	margin-top: 0px;
+	padding: 15px 0px 0px 29px !important;
+    }
+    .sidenav .closebtn {
+	top: 15px;
+    }
+    .editorial-res-side-nav-logo.hamburger-menu {
+	margin-top: 9px !important;
     }
     
 }
@@ -81,8 +102,30 @@
 	margin-left: 37px !important;
     }
     /* left bar */
-    .right-menu-sidebar {
-        display: none;
+    .ResSlider {
+        margin-top: 40px;
+    }
+    
+   .right-menus {
+	overflow: hidden;
+        height: auto;
+    }
+    
+    .hotels-logo h3.title {
+	padding: 25px 200px 10px 10px;
+	text-align: left;
+    }
+    .search-box {
+	background: none !important;
+	height: 28px !important;
+	margin-top: 0px;
+	padding: 15px 0px 0px 29px !important;
+    }
+    .sidenav .closebtn {
+	top: 15px;
+    }
+    .editorial-res-side-nav-logo.hamburger-menu {
+	margin-top: 9px !important;
     }
    
 }
