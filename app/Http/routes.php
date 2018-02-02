@@ -263,15 +263,18 @@ Route::group(['middleware' => 'auth'], function()
 	Route::post('evcustomfields/updateCustomFieldOrders', 'EvcustomfieldsController@updateCustomFieldOrderAjax');
 	Route::post('evcustomfields/updateGroupOrders', 'EvcustomfieldsController@updateGroupOrderAjax');
 
-	Route::get('hotel/membership', 'Frontend\HotelMembershipController@membershipSignup');
-	Route::get('hotel/hotelpackage', 'Frontend\HotelMembershipController@hotelPackage');
-	Route::get('advertiser/package', 'Frontend\AdvertisementController@advertisementPackage');
-	Route::get('hotel/cart', 'Frontend\HotelMembershipController@hotelCart');
-	Route::get('hotel/checkout', 'Frontend\HotelMembershipController@hotelCheckout');
 	
-	Route::get('fetchadvertisementpackagedetails/{pckid}', 'Frontend\AdvertisementController@fetchadvertisementpackagedetails');
 
 });	
+
+
+
+Route::get('hotel/membership', 'Frontend\HotelMembershipController@membershipSignup');
+Route::get('hotel/hotelpackage', 'Frontend\HotelMembershipController@hotelPackage');
+Route::get('advertiser/package', 'Frontend\AdvertisementController@advertisementPackage');
+Route::get('hotel/cart', 'Frontend\HotelMembershipController@hotelCart');
+Route::get('hotel/checkout', 'Frontend\HotelMembershipController@hotelCheckout');	
+Route::get('fetchadvertisementpackagedetails/{pckid}', 'Frontend\AdvertisementController@fetchadvertisementpackagedetails');
 
 Route::post('frontend_hotelpost', 'HomeController@addHotelInfoFrontend');
 Route::post('save_previous_page_image', 'HomeController@save_previous_page_image');
