@@ -126,7 +126,7 @@
     <div id="collapse{{ $k }}" class="panel-collapse collapse {{($k==1) ? 'in ' : ''}}" role="tabpanel" aria-labelledby="heading{{ $k }}">
       <div class="panel-body">        
             <div>
-                <div  style="width:20%" class="pull-left">
+                <div  style="width:20%; padding-right: 1%;" class="pull-left">
                     <img class="img-responsive object-fit-size" src="{{URL::to('uploads/packages/'.$package->package_image)}}" alt="{{$package->package_image}}" >
 
 
