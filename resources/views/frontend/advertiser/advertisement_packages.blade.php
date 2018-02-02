@@ -1,7 +1,7 @@
 @extends('frontend.layouts.ev.customer')
 @section('content')
 
-<div class="col-md-10 no-padding">
+<div class="col-md-12 no-padding AdvertisePackage">
 	<!-- start contact form section -->
 	<section class="wow fadeIn big-section cstmaiclass" id="align-to-top">
 		<div class="container-fluid">
@@ -175,12 +175,27 @@
 			z-index: 99;
 			float: left;
 		}
-		.editorial-image-slider-previous-btn {
+/*		.editorial-image-slider-previous-btn {
 			margin-left: 35% !important;
-		}
-		.image-slider-container .editorial-image-slider-btns {
+		}*/
+                .editorial-image-slider-previous-btn {
+                        margin-left: 41% !important;
+                }
+/*		.image-slider-container .editorial-image-slider-btns {
 			margin-top: -100px !important;
-		}
+		}*/
+                .image-slider-container .editorial-image-slider-btns {
+                        margin-top: -195px !important;
+                }
+                .image-slider-container .editorial-images-count {
+                    color: #fff;
+                    float: left;
+                    font-size: 33px;
+                    margin-left: 42%;
+                    margin-top: -256px;
+                    position: relative;
+                    width: 22%;
+                }
 		header.haside {
 			right: 0 !important;
 			position: fixed;
@@ -390,7 +405,7 @@
 		.slider-sec-side-text-bg {
 			margin-top: -580px;
 		}
-		.image-slider-btns-bg {
+/*		.image-slider-btns-bg {
 			background-color: #252525;
 			color: #fff;
 			float: right;
@@ -398,7 +413,32 @@
 			opacity: 0.85;
 			padding: 49px 11px;
 			width: 35%;
-		}
+		}*/
+                .image-slider-btns-bg {
+                        background-color: #252525;
+                        color: #fff;
+                        float: right;
+                        margin-top: -269px;
+                        opacity: 0.85;
+                        padding: 0px 0px;
+                        /* width: 30%; */
+                        max-width: 25%;
+                        max-height: 101px;
+                        height: 101px;
+                }
+                .AdvertisePackage {
+                    max-width: 1600px;
+                    float: none;
+                    margin: 0 auto;
+                }
+                
+                @media (min-width: 1711px) and (max-width: 1799px) {
+                 
+                    .image-slider-btns-bg {
+                            margin-top: -251px;
+                    }
+                    
+                }
 
 
 	</style>
