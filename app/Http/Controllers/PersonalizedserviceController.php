@@ -181,6 +181,10 @@ class PersonalizedserviceController extends Controller {
         if ($validator->passes()) {
             $data = $this->validatePost('tb_personalizedservice');
 
+            $data['destinations'] = implode(', ', $data['destinations']);
+            $data['inspirations'] = implode(', ', $data['inspirations']);
+            $data['experiences'] = implode(', ', $data['experiences']);
+            
             $id = $this->model->insertRow($data, $request->input('ps_id'));
 
             if (!is_null($request->input('apply'))) {
