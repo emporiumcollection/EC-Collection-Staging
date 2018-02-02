@@ -82,6 +82,12 @@ class PersonalizedserviceController extends Controller {
 		// Master detail link if any 
 		$this->data['subgrid']	= (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array()); 
 		// Render into template
+                
+                echo '<pre>';
+                print_r($this->data);
+                echo '</pre>';
+                die;
+                
 		return view('personalizedservice.index',$this->data);
 	}	
 
