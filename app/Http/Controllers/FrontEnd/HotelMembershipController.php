@@ -22,7 +22,7 @@ class HotelMembershipController extends Controller {
      *   Description : The Methos is using for personalized page
     */
     public function membershipSignup(Request $request) {
-        dd($request->session()->get('hotel_cart'));
+        
         return view('frontend.hotel_membership.hotel_membership_signup', $this->data);
     }
 
@@ -185,17 +185,40 @@ class HotelMembershipController extends Controller {
     }
 
     public function hotelCart(Request $request) {
-       
+        $hotelPkgID = array(0);
+        $advertPkgID = array(0);
+
+        if(!empty($request->session()->get('hotel_cart'))){
+
+            foreach ($request->session()->get('hotel_cart') as $cartkey => $cartValue) {
+                if($cartValue['package']['type']=='hotel'){
+                    $hotelPkgID[] = $cartValue['package']['id'];
+                }
+                if($cartValue['package']['type']=='advert'){
+                    $advertPkgID[] = $cartValue['package']['id'];
+                }
+            }
+        }
+
+        $htoelPkgQry  =  "Select tb_ad.id,tb_ad.space_title as package_title,'' as package_image,tb_ad.space_cpd_price as package_price  from tb_advertisement_space tb_ad where tb_ad.id in(".implode(',',$advertPkgID).")";
+        $UnionQry = " UNION "; 
+        $advertPkgQry = "Select tb_pkg.id,tb_pkg.package_title,tb_pkg.package_image,tb_pkg.package_price  from tb_packages tb_pkg where tb_pkg.id in(".implode(',',$hotelPkgID).")"; 
+        $mainPkgQry = $htoelPkgQry.$UnionQry.$advertPkgQry;
+        $dataPackage = \DB::select($mainPkgQry);
+
+        
+        $this->data['packages'] = $dataPackage;
         return view('frontend.hotel_membership.hotel_cart', $this->data);
     }
 
     public function hotelCheckout(Request $request) {
-       return view('frontend.hotel_membership.hotel_checkout', $this->data);
+       
+        return view('frontend.hotel_membership.hotel_checkout', $this->data);
     }
 
     public function addToCartAjax(Request $request){
         
-        $request->session()->push('hotel_cart.packages', $request->input('cart'));
+        $request->session()->push('hotel_cart', $request->input('cart'));
 
     }
     
