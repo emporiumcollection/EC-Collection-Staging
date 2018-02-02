@@ -3,6 +3,19 @@
 @section('content')
 
   <div class="page-content row">
+      
+      <?php
+      echo '<pre>';
+      print_r($inspirations);
+      echo '</pre>';
+      echo '<pre>';
+      print_r($experiences);
+      echo '</pre>';
+      echo '<pre>';
+      print_r($destinations);
+      echo '</pre>';
+      ?>
+      
     <!-- Page header -->
     <div class="page-header">
       <div class="page-title">
