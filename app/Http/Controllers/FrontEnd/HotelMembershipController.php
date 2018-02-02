@@ -21,13 +21,13 @@ class HotelMembershipController extends Controller {
      *   Description : The Methos is using for personalized page
     */
     public function membershipSignup(Request $request) {
-
+        //session()->get('hotel_cart');
         return view('frontend.hotel_membership.hotel_membership_signup', $this->data);
     }
 
     public function membershipSignupSave(Request $request) {
 
-        $uid = \Auth::user()->id;
+        $uid = \Session::get('uid');
         $rules['hotelinfo_name'] = 'required';
         $rules['hotelinfo_status'] = 'required';
         $rules['hotelinfo_type'] = 'required';
@@ -200,6 +200,12 @@ class HotelMembershipController extends Controller {
         
         
         return view('frontend.hotel_membership.hotel_checkout', $this->data);
+    }
+
+    public function addToCartAjax(Request $request){
+        //session()->put('hotel_cart.packages', []);
+        //session()->push('hotel_cart.packages', array('Test1','Test2','Test3'));
+
     }
     
     
