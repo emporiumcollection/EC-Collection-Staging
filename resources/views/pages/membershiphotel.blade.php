@@ -193,7 +193,7 @@
                 <div class="contact-aside">
                     <ul class="contact-aside-list">
                         <li class="contact-list-item contact-phone"><a href="tel:+1 934 451 1317"><i class="fa fa-phone asideIclass" aria-hidden="true"></i> +1 934 451 1317</a></li>
-                        <li class="contact-list-item contact-email"><a href="mailto:riaan@emporium-voyage.com"><i class="fa fa-envelope asideIclass" aria-hidden="true"></i> riaan@emporium-voyage.com</a></li>
+                        <li class="contact-list-item contact-email"><a href="mailto:reservation@emporium-voyage.com"><i class="fa fa-envelope asideIclass" aria-hidden="true"></i> riaan@emporium-voyage.com</a></li>
                     </ul>
                 </div>
             </aside>
@@ -201,7 +201,7 @@
             <!-- AIC Harman email phone sidebar add end-->
             <div class="row">
                 <div class="col-md-2">
-                    <div class="right-menus right-menu-sidebar">
+                    <div class="right-menus right-menu-sidebar hidden-xs hidden-sm">
                         <div class="hotels-logo">
                             <img alt="" src="{{ asset('sximo/assets/images/design-location-logo.png')}}" class="img-responsive">
                         </div>
@@ -283,7 +283,7 @@
                 
                 <!-- content -->
                 
-                <div id="editorial-siden-nav-res" class="sidenav hidden-md hidden-lg" style="width: 0px;">
+                <div id="editorial-siden-nav-res" class="sidenav hidden-md hidden-lg visible-xs visible-sm" style="width: 0px;">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
                     <div class=" right-menus ">
                         <div class="row-">
@@ -303,12 +303,12 @@
                                 </li>
                                 
                                                                 <li>
-                                    <a href="#deisgnarchitecture" data-hotel-option="deisgn_architecture">TERMS AND CONDITIONS</a>
+                                    <a href="https://www.emporium-voyage.com/Terms-and-Conditions" data-hotel-option="deisgn_architecture">TERMS AND CONDITIONS</a>
                                 </li>
               
                                 
                                                                 <li>
-                                    <a href="#spa_restaurant" data-hotel-option="restaurant_bar">IMPRINT</a>
+                                    <a href="https://www.emporium-voyage.com/Impressum" data-hotel-option="restaurant_bar">IMPRINT</a>
                                 </li>
                                 
                             </ul>
