@@ -6,7 +6,8 @@ use App\Http\Controllers\controller;
 use App\Models\Personalizedservice;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
-use Validator,
+use DB,
+    Validator,
     Input,
     Redirect;
 
