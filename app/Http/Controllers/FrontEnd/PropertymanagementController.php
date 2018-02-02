@@ -25,8 +25,8 @@ class PropertymanagementController extends Controller {
     
     public function propertyManagementList(Request $request) {
        
-        
-        $this->data['properties'] = \DB::table('tb_properties')->select('id','property_name','city','website','email')->where('user_id', \Auth::user()->id)->get();
+        $uid = isset(\Auth::user()->id) ? \Auth::user()->id : 1;
+        $this->data['properties'] = \DB::table('tb_properties')->select('id','property_name','city','website','email')->where('user_id', $uid)->get();
         return view('frontend.propertymanagement.propertymanagement_list', $this->data);
     }
 	

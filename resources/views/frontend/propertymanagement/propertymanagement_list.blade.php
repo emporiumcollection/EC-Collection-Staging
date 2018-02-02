@@ -148,24 +148,4 @@ input[type=radio]:checked + label>img {
 
 <!-- images loaded -->
 <script type="text/javascript" src="{{ asset('sximo/assets/memform/js/imagesloaded.pkgd.min.js')}}"></script>
-		
-<script>
-        window.ParsleyConfig = {
-            errorsWrapper: '<div></div>',
-            errorTemplate: '<div class="alert alert-danger parsley" role="alert"></div>',
-            errorClass: 'has-error',
-            successClass: 'has-success'
-        };
-    
-$(function () {
-  $('#hotel-form').parsley().on('field:validated', function() {
-    var ok = $('.parsley-error').length === 0;
-    $('.bs-callout-info').toggleClass('hidden', !ok);
-    $('.bs-callout-warning').toggleClass('hidden', ok);
-  })
-  .on('form:submit', function() {
-    return false; // Don't submit form for this demo
-  });
-});
-</script>
 @endsection

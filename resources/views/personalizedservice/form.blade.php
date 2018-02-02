@@ -3,6 +3,19 @@
 @section('content')
 
   <div class="page-content row">
+      
+      <?php
+      echo '<pre>';
+      print_r($inspirations);
+      echo '</pre>';
+      echo '<pre>';
+      print_r($experiences);
+      echo '</pre>';
+      echo '<pre>';
+      print_r($destinations);
+      echo '</pre>';
+      ?>
+      
     <!-- Page header -->
     <div class="page-header">
       <div class="page-title">
@@ -142,8 +155,25 @@
 								  <div class="form-group  " >
 									<label for="Destinations" class=" control-label col-md-4 text-left"> Destinations </label>
 									<div class="col-md-6">
-									  <textarea name='destinations' rows='5' id='destinations' class='form-control '  
-				           >{{ $row['destinations'] }}</textarea> 
+                                                                        <select name="destinations[]" data-placeholder="Ex: Argentina, South Africa, Cape Town" class="chosen-select chosen-select-input-style" multiple tabindex="4">
+                                                                            <?php
+                                                                            if(!empty($destinations)) {
+                                                                                foreach ($destinations as $destination) {
+                                                                                    echo '<option ', (in_array($destination->id, explode(', ', $row['destinations'])))? 'selected' : '', ' value="'.$destination->id.'">'.$destination->category_name.'</option>'.PHP_EOL;
+                                                                                    if(!empty($destination->sub_destinations)) {
+                                                                                        foreach ($destination->sub_destinations as $sub_destination) {
+                                                                                            echo '<option value="'.$sub_destination->id.'">'.$sub_destination->category_name.'</option>'.PHP_EOL;
+                                                                                            if(!empty($sub_destination->sub_destinations)) {
+                                                                                                foreach ($sub_destination->sub_destinations as $sub_dest) {
+                                                                                                    echo '<option value="'.$sub_dest->id.'">'.$sub_dest->category_name.'</option>'.PHP_EOL;
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                            ?>
+                                                                        </select>
 									 </div> 
 									 <div class="col-md-2">
 									 	
@@ -152,8 +182,15 @@
 								  <div class="form-group  " >
 									<label for="Inspirations" class=" control-label col-md-4 text-left"> Inspirations </label>
 									<div class="col-md-6">
-									  <textarea name='inspirations' rows='5' id='inspirations' class='form-control '  
-				           >{{ $row['inspirations'] }}</textarea> 
+                                                                            <select class="form-control" name="inspirations[]" multiple="">
+                                                                                <?php
+                                                                                if(!empty($inspirations)) {
+                                                                                    foreach ($inspirations as $inspiration) {
+                                                                                        echo '<option ', (in_array($inspiration->id, explode(', ', $row['inspirations'])))? 'selected' : '', ' value="'.$inspiration->id.'">'.$inspiration->category_name.'</option>';
+                                                                                    }
+                                                                                }
+                                                                                ?>                                                                                
+                                                                            </select>
 									 </div> 
 									 <div class="col-md-2">
 									 	
@@ -162,8 +199,15 @@
 								  <div class="form-group  " >
 									<label for="Experiences" class=" control-label col-md-4 text-left"> Experiences </label>
 									<div class="col-md-6">
-									  <textarea name='experiences' rows='5' id='experiences' class='form-control '  
-				           >{{ $row['experiences'] }}</textarea> 
+                                                                            <select class="form-control" name="experiences[]" multiple="">
+                                                                                <?php
+                                                                                if(!empty($experiences)) {
+                                                                                    foreach ($experiences as $experience) {
+                                                                                        echo '<option ', (in_array($experience->id, explode(', ', $row['inspirations'])))? 'selected' : '', ' value="'.$experience->id.'">'.$experience->category_name.'</option>';
+                                                                                    }
+                                                                                }
+                                                                                ?>                                                                                
+                                                                            </select>
 									 </div> 
 									 <div class="col-md-2">
 									 	
