@@ -69,7 +69,7 @@
                     </div>
                     <div class="row bottom-cart-view-page">
                         <div class="col-md-8 leftsideoverview">
-                            <h6 class="ai-6-heading ev-regural-heading text-uppercase margin-20px-bottom font-weight-600 sm-width-100 xs-width-100">Coupon Code</h6>
+                            <!--<h6 class="ai-6-heading ev-regural-heading text-uppercase margin-20px-bottom font-weight-600 sm-width-100 xs-width-100">Coupon Code</h6>
                             <p>Enter your valid coupon or<br/>
                             promo code here to redeem<br/>
                             your discount
@@ -77,7 +77,7 @@
                             <form class="copon-form">
                                 <input class="code-inout-block" type="text" placeholder="Enter Code">
                                 <input class="code-submit" type="submit" value="Apply Coupon">
-                            </form>
+                            </form>-->
                         </div>
                         <div class="col-md-4 rightsidevartoverview">
                             <div class="carttotal">
