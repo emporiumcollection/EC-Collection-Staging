@@ -1896,8 +1896,8 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                                     }
 													else
 													{
-														var linkd = "{{URL::to('luxury_hotels')}}/"+ data.categoryslider[si].slider_category;
-														sliderHTML += '<a class="uk-margin-top uk-button uk-button-primary" href="'+linkd+'" title="Do it yourself">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>';
+														var linkd = "";
+														sliderHTML += '<a class="uk-margin-top uk-button uk-button-primary" href="' +linkd + '" title="Do it yourself">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>';
 													}
                                                 sliderHTML += '</div>';
                                             sliderHTML += '</div>';
@@ -1917,8 +1917,8 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                                     }
 													else
 													{
-														var linkd = "{{URL::to('luxury_hotels')}}/"+ data.categoryslider[si].slider_category;
-														sliderHTML += '<a class="uk-margin-top uk-button uk-button-primary" href="'+linkd+'" title="Do it yourself">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>';
+														var linkd = "";
+														sliderHTML += '<a class="uk-margin-top uk-button uk-button-primary" href="' + linkd + '" title="Do it yourself">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>';
 													}
                                                 sliderHTML += '</div>';
                                                 sliderHTML += '<a href="javascript:void(0);" class="bh-slideshow-slidenav uk-slidenav uk-slidenav-previous" data-uk-slideshow-item="previous"></a>';
