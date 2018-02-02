@@ -27,30 +27,32 @@
 		<div class="row equalize sm-equalize-auto" id="step-1">
             <div class="col-md-12 sm-clear-both wow fadeInLeft">
                 <div class="cartover-view-main margin-five-top">
+                	@if(!empty($packages))
                     <h5 class="ev-regural-heading text-uppercase margin-20px-bottom font-weight-700 sm-width-100 xs-width-100">Your Packages</h5>
-                    <div class="small-border"></div>
-                    <div class="big-border">
+                    
+                    <div class="cart-big-border">
+                    <div class="cart-small-border"></div>
                     </div>
                     <div class="tbale-form">
                         <table class="table-width-custom">
                             <thead>
                                 <tr>
-                                    <th class="col-md-4 no-padding">Product</th>
+                                    <th class="col-md-4 no-padding">Package</th>
                                     <th class="col-md-3 no-padding">Price</th>
                                     <th class="col-md-4 no-padding">Quantity</th>
                                     <th class="col-md-1 no-padding">Line Total</th>
                                 </tr>
                             </thead>
                             <tbody>
+                            	@foreach($packages as $package)
                                 <tr>
                                     <td class="overview-td">
                                         <img class="product-image-cart" src="images/1485373226-41307691.jpg" alt="" width="100"/>
                                         <div class="product-title-and-remove-option">
-                                        <span class="product-title">Beach Hotels</span>
-                                        <a href="#">Remove</a>
+                                        	<span class="product-title">{{$package->package_title}}</span><a href="#">Remove</a>
                                         </div>
                                     </td>
-                                    <td class="overview-td">$26</td>
+                                    <td class="overview-td">&euro; {{$package->package_price}}</td>
                                     <td class="overview-td">
                                         <form>
                                         <a href="JavaScript:void(0);" class="plus">+</a>
@@ -59,8 +61,9 @@
                                         <button class="upate-bag" type="button">UPDATE BAG</button>
                                         </form>
                                     </td>
-                                    <td class="overview-td">$26</td>
+                                    <td class="overview-td">&euro; {{$package->package_price}}</td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -90,6 +93,15 @@
                             </div>
                         </div>
                     </div>
+					@else
+						<h5 class="ev-regural-heading text-uppercase margin-20px-bottom font-weight-700 sm-width-100 xs-width-100">Your cart is empty</h5>
+                    	
+	                    <div class="cart-big-border">
+                    	<div class="cart-small-border"></div>
+	                    <div class="processed-to-checkout">
+                    		<a class="customGoldBtn btn nextBtn" href="{{url('hotel/package')}}">Continue To Choose Packages </a>
+                    	</div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -112,6 +124,30 @@
     border-color: #a94442;
     -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+
+.cart-small-border {
+      height: 2px;
+    width: 200px;
+    background: #ABA07C;
+    margin-top: -2px;
+    z-index: 0;
+}
+.cart-big-border {
+  
+    width: 100%;
+    background: #eaeaea;
+    /* margin-top: -5px; */
+    height: 2px;
+    z-index: 9999;
+}
+.customGoldBtn {
+    background-color: #ABA07C;
+    border: none;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: Geomanist-Regular;
 }
 </style>
 @endsection
