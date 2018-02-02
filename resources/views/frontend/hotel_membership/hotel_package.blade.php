@@ -90,6 +90,42 @@
 
 
 
+<!--Accordan Code -->
+
+@if (!empty($packages))
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  
+
+{{--*/ $k=1; $tottyp = count($packages); /*--}}
+@foreach($packages as $key=>$package)
+<div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="heading{{ $k }}">
+      <h4 class="panel-title">
+        <a  role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ $k }}" {{($k==1) ? 'aria-expanded="true" ' : ' aria-expanded="false" class="collapsed"'}} aria-controls="collapse{{ $k }}">
+          {{$package->package_title}} {{ $k }}
+        </a>
+      </h4>
+    </div>
+    <div id="collapse{{ $k }}" class="panel-collapse collapse {{($k==1) ? 'in ' : ''}}" role="tabpanel" aria-labelledby="heading{{ $k }}">
+      <div class="panel-body">
+        {{$package->id}}
+        
+      </div>
+    </div>
+</div>
+
+
+    {{--*/ $k++; /*--}}
+                                                
+ @endforeach
+
+
+</div>
+@endif
+
+<!-- end accrodan code -->
+
+
 @endsection
 
 
