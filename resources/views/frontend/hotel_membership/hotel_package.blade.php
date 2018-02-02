@@ -113,8 +113,10 @@
         <p>Package Details: {{$package->package_description}}</p></p>
         
          <p>Package Duration :: {{$package->package_duration}} {{$package->package_duration_type}} </p>
-         <img class="img-responsive object-fit-size" src="{{URL::to('uploads/packages/'.$package->package_image)}}" alt="{{$package->package_image}}" style="height:200px; width: 100%;">
-       
+         <div  style="height:200px; width: 200px;" >
+         <img class="img-responsive object-fit-size" src="{{URL::to('uploads/packages/'.$package->package_image)}}" alt="{{$package->package_image}}" >
+
+       </div>
       </div>
     </div>
 </div>
