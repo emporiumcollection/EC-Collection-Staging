@@ -2,13 +2,6 @@
 
 @section('content')
 {{--*/ usort($tableGrid, "SiteHelpers::_sort") /*--}}
-
-<?php
-echo '<pre>';
-print_r($rowData);
-echo '</pre>';
-?>
-
   <div class="page-content row">
     <!-- Page header -->
     <div class="page-header">
@@ -62,21 +55,54 @@ echo '</pre>';
 			<tr>
 				<th class="number"> No </th>
 				<th> <input type="checkbox" class="checkall" /></th>
-				
-				@foreach ($tableGrid as $t)
-					@if($t['view'] =='1')				
-						<?php $limited = isset($t['limited']) ? $t['limited'] :''; ?>
-						@if(SiteHelpers::filterColumn($limited ))
-						
-							<th>{{ $t['label'] }}</th>			
-						@endif 
-					@endif
-				@endforeach
+				<th>Salutation</th>
+				<th>First Name</th>
+				<th>Surname</th>
+				<th>Email</th>
+				<th>Adults</th>
+				<th>Youth</th>
+				<th>Children</th>
+				<th>Toddlers</th>
+				<th>Earliest Arrival</th>
+				<th>Late Check Out</th>
+				<th>Stay Time</th>
+				<th>Note</th>
 				<th width="70" >{{ Lang::get('core.btn_action') }}</th>
 			  </tr>
         </thead>
 
-        
+        <tbody>
+            <?php
+            if(!empty($rowData)) {
+                foreach ($rowData as $row) {
+                    echo '<tr>
+                            <td>'.$row->salutation.'</td>
+                            <td>'.$row->first_name.'</td>
+                            <td>'.$row->surname.'</td>
+                            <td>'.$row->email.'</td>
+                            <td>'.$row->adults.'</td>
+                            <td>'.$row->youth.'</td>
+                            <td>'.$row->children.'</td>
+                            <td>'.$row->toddlers.'</td>
+                            <td>'.$row->earliest_arrival.'</td>
+                            <td>'.$row->late_check_out.'</td>
+                            <td>'.$row->stay_time.'</td>
+                            <td>'.$row->note.'</td>';
+                    ?>
+                            <td>
+                                @if($access['is_detail'] ==1)
+                                <a href="{{ URL::to('personalizedservice/show/'.$row->ps_id.'?return='.$return)}}" class="tips btn btn-xs btn-primary" title="{{ Lang::get('core.btn_view') }}"><i class="fa  fa-search "></i></a>
+                                @endif
+                                @if($access['is_edit'] ==1)
+                                <a  href="{{ URL::to('personalizedservice/update/'.$row->ps_id.'?return='.$return) }}" class="tips btn btn-xs btn-success" title="{{ Lang::get('core.btn_edit') }}"><i class="fa fa-edit "></i></a>
+                                @endif		
+                            </td>	
+                    <?php
+                    echo '</tr>';
+                }
+            }
+            ?>
+        </tbody>
       
     </table>
 	<input type="hidden" name="md" value="" />
