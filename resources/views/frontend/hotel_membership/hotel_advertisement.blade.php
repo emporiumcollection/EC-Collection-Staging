@@ -53,7 +53,7 @@
 
 
 <div class="container">
-
+	<h5 class="ev-regural-heading text-uppercase margin-20px-bottom font-weight-700 sm-width-100 xs-width-100">Advertisements Package</h5>
 	@if (!empty($packages))
 		<div class="table-responsive">
 			<table class="table">
