@@ -129,6 +129,24 @@
     .filter-grid-page-side-bar .combodate select {
 	width: 45px !important;
     }
+    /* sidebar small */
+    header {
+	width: 50px !important;
+    }
+    .go-back-button {
+	font-size: 9.80px !important;
+    }
+
+    .contact-aside {
+	left: calc(100% - 50px) !important;
+    }
+    .go-back-button {
+	text-align: left !important;
+        font-size: 9.80px !important;
+    }
+    .contact-aside li {
+	padding: 6px 0px 6px 14px !important;
+    }
   
 }
 
@@ -196,6 +214,24 @@
     .EVMenu li a {
 	font-size: 27px !important;
     }
+    /* sidebar small */
+    header {
+	width: 50px !important;
+    }
+    .go-back-button {
+	font-size: 9.80px !important;
+    }
+
+    .contact-aside {
+	left: calc(100% - 50px) !important;
+    }
+    .go-back-button {
+	text-align: left !important;
+        font-size: 9.80px !important;
+    }
+    .contact-aside li {
+	padding: 6px 0px 6px 14px !important;
+    }
 }
 
 
@@ -259,6 +295,24 @@
     }
     .EVMenu li a {
 	font-size: 27px !important;
+    }
+    /* sidebar small */
+    header {
+	width: 50px !important;
+    }
+    .go-back-button {
+	font-size: 9.80px !important;
+    }
+
+    .contact-aside {
+	left: calc(100% - 50px) !important;
+    }
+    .go-back-button {
+	text-align: left !important;
+        font-size: 9.80px !important;
+    }
+    .contact-aside li {
+	padding: 6px 0px 6px 14px !important;
     }
     
 }
