@@ -217,8 +217,11 @@ class HotelMembershipController extends Controller {
     }
 
     public function addToCartAjax(Request $request){
+
         
         $request->session()->push('hotel_cart', $request->input('cart'));
+
+        return ($request->session()->get('hotel_cart'));
 
     }
     
