@@ -37,33 +37,33 @@
                         <table class="table-width-custom">
                             <thead>
                                 <tr>
-                                    <th class="col-md-4 no-padding">Package</th>
+                                    <th class="col-md-4 no-padding" colspan="2">Package</th>
                                     <th class="col-md-3 no-padding">Price</th>
                                     <th class="col-md-4 no-padding">Quantity</th>
                                     <th class="col-md-1 no-padding">Line Total</th>
                                 </tr>
                             </thead>
                             <tbody>
+                            	{{--*/ $subTotal = 0; $orderTotal = 0; /*--}}
                             	@foreach($packages as $package)
+								{{--*/ $subTotal += $package->package_price; /*--}}
                                 <tr>
                                     <td class="overview-td">
-                                        <img class="product-image-cart" src="images/1485373226-41307691.jpg" alt="" width="100"/>
-                                        <div class="product-title-and-remove-option">
+                                        <img class="product-image-cart" src="{{asset('uploads/packages')}}/{{$package->package_image}}" alt="" width="100"/>
+                                        
+                                    </td>
+                                    <td>
+                                    		<div class="product-title-and-remove-option">
                                         	<span class="product-title">{{$package->package_title}}</span><a href="#">Remove</a>
                                         </div>
                                     </td>
-                                    <td class="overview-td">&euro; {{$package->package_price}}</td>
-                                    <td class="overview-td">
-                                        <form>
-                                        <a href="JavaScript:void(0);" class="plus">+</a>
-                                        <input class="csnter-input" type="text" value="0" />
-                                        <a href="JavaScript:void(0);" class="minus">-</a>
-                                        <button class="upate-bag" type="button">UPDATE BAG</button>
-                                        </form>
+                                    <td class="overview-td">{!! isset($currency->content)?$currency->content:'$' !!}  {{number_format($package->package_price,2)}}</td>
+                                    <td class="overview-td">1
                                     </td>
-                                    <td class="overview-td">&euro; {{$package->package_price}}</td>
+                                    <td class="overview-td">{!! isset($currency->content)?$currency->content:'$' !!}  {{number_format($package->package_price,2)}}</td>
                                 </tr>
                                 @endforeach
+                                {{--*/ $orderTotal = $subTotal; /*--}}
                             </tbody>
                         </table>
                     </div>
@@ -82,11 +82,11 @@
                         <div class="col-md-4 rightsidevartoverview">
                             <div class="carttotal">
                                 <span class="label-total">Cart Subtotal</span>
-                                <span class="cart-subtotal-amout">$26.00</span>
-                                <span class="cart-discount-label">No coupon</span>
-                                <span class="cart-subtotal-amout">$0.00</span>
+                                <span class="cart-subtotal-amout">{!! isset($currency->content)?$currency->content:'$' !!} {{number_format($subTotal,2)}}</span>
+                                <!--<span class="cart-discount-label">No coupon</span>
+                                <span class="cart-subtotal-amout">$0.00</span>-->
                                 <span class="order-total-label">Order Total</span>
-                                <span class="cart-subtotal-amout cart-total-amout">$26.00</span>
+                                <span class="cart-subtotal-amout cart-total-amout">{!! isset($currency->content)?$currency->content:'$' !!}  {{number_format($orderTotal,2)}}</span>
                             </div>
                             <div class="processed-to-checkout">
                                  <button class="proccesstocheckout nextBtn" type="button">Proceed To Checkout</button>
