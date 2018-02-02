@@ -276,13 +276,13 @@
                 <!-- responsive menu add -->
                 
                 <!-- button -->
-                <div class="col-md-12">
+                <div class="col-md-12 hidden-md hidden-lg">
                     <span class="hamburger-menu editorial-res-side-nav-logo hidden-md hidden-lg visible-xs visible-sm"  onclick="openNav()"><img src="{{ asset('sximo/assets/images/Hamburger-Menu_1.png')}}" alt=""/></span>
                 </div>
                 <!-- button -->
                 
                 <!-- content -->
-                
+            <div class="col-md-12 hidden-md hidden-lg visible-xs visible-sm">    
                 <div id="editorial-siden-nav-res" class="sidenav hidden-md hidden-lg visible-xs visible-sm" style="width: 0px;">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
                     <div class=" right-menus ">
@@ -316,7 +316,41 @@
                             <!-- slick space -->
                         </div>
                     </div>
+                    <section class="regular slider hidden-md hidden-lg visible-xs visible-sm">
+                            <div class="slick-cstm-width">
+								<div class="side-bar-why-book-with-us">
+									<div class="book-with-us-tittles">
+										<h2>Why book with us?</h2>
+									</div>
+									<ul class="side-bar-book-with-us-list">
+																																	<li>
+													<h3>Handpicked Selection of Hotels</h3>
+													<p>from selected luxury destinations worldwide</p>
+												</li>
+																							<li>
+													<h3>Upgrade and Late Checkout</h3>
+													<p>At any Hotel upon Avilability</p>
+												</li>
+																							<li>
+													<h3>Preferred Guest Discounts at New Hotels</h3>
+													<p>join our members club</p>
+												</li>
+																							<li>
+													<h3>Free Wifi</h3>
+													<p>Guaranteed at all our Partner Hotels</p>
+												</li>
+																														</ul>
+								</div>
+							</div>
+																					<div class="slick-cstm-width">
+								<a href="http://www.bocadolobo.com/en/landing-page/de-market/"><img src="https://www.emporium-voyage.com/uploads/users/advertisement/1.png"></a>
+							</div>
+														                        </section>
                 </div>
+                <!-- slick -->
+                
+                <!-- slick end -->
+            </div>
                 
                 <!-- content -->
                 
