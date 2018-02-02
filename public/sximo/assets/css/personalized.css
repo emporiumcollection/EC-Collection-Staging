@@ -87,9 +87,9 @@
 .choosen-input-align .chosen-container-multi .chosen-choices li.search-choice {
     background-color: transparent;
     background-image: none;
-    border: 1px solid #e59746;
+    border: 1px solid #252525;
     box-shadow: 0 0 0 0;
-    color: #e59746;
+    color: #000;
     font-family: Geomanist-Light;
     font-size: 16px;
     padding: 8px 15px 8px 25px;
@@ -109,20 +109,21 @@
     font-weight: bold;
 }
 .personalized-btn-deafult {
-    background-color: #1c313d;
-    border: medium none;
-    border-radius: 2px;
-    color: #fff;
-    display: inline-block;
-    font-size: 16px;
-    margin: 30px auto 15px;
-    padding: 8px 40px;
-    text-decoration: none;
-    text-transform: uppercase;
+	background-color: #ABA07C;
+	border: medium none;
+	border-radius: 0px;
+	color: #fff;
+	display: inline-block;
+	font-size: 16px;
+	margin: 10px auto 15px 10px;
+	padding: 8px 40px;
+	text-decoration: none;
+	text-transform: uppercase;
+	float: left;
 }
 .personalized-btn-deafult:hover, .personalized-btn-deafult:focus, .personalized-btn-deafult:active {
-    background-color: #d3d6d2;
-    color: #1c313d;
+    background-color: #ABA07C;
+    color: #fff;
     opacity: 0.85;
     text-decoration: none;
 }
@@ -169,7 +170,7 @@
 .wrong-selection-pannel {
     position: relative;
     background: #fff;
-    border: 1px solid #ff332e;
+    border: 1px solid #252525;
 }
 .wrong-selection-pannel:after, .wrong-selection-pannel:before {
     bottom: 100%;
@@ -190,7 +191,7 @@
 }
 .wrong-selection-pannel:before {
     border-color: rgba(255, 51, 46, 0);
-    border-bottom-color: #ff332e;
+    border-bottom-color: #252525;
     border-width: 11px;
     margin-left: -11px;
 }
@@ -217,7 +218,7 @@
     width: 100%;
 }
 .form-group.ps-fields-align {
-    margin: 0;
+    margin: 0px 10px 0px 10px;
 }
 .selected-chexkbox {
     display: none;
@@ -277,17 +278,21 @@
     border-top-color:#D9DCD8; 
 }
 .ps-basic-btn {
-    background: transparent none repeat scroll 0 0;
-    border: medium none;
-    color: #262626;
-    font-family: Geomanist-Light;
-    font-size: 15px;
-    text-align: center;
-    text-decoration: none;
-    text-transform: uppercase;
+	background: #ABA07C;
+	border: medium none;
+	color: #fff;
+	font-family: Geomanist-Light;
+	font-size: 15px;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	padding: 9px 45px 9px 45px;
+	font-weight: bold;
+	float: right;
+	margin: 10px 10px 15px 0px;
 }
 .ps-basic-btn:hover, .ps-basic-btn:focus, .ps-basic-btn:active  {
-    color: #262626;
+    color: #000;
     text-decoration: none;
 }
 .back-btn-align {
@@ -344,7 +349,7 @@
     width: 70px;
 }
 .ps-handle-counter .spinner-btns {
-    background-color: #c4ccd3;
+    background-color: #ABA07C;
     border: medium none;
     border-radius: 0;
     font-family: ACaslonPro-Regular;
@@ -352,6 +357,12 @@
     height: 50px;
     padding: 10px 5px;
     width: 53px;
+}
+.spinner-btns.counter-minus.btn.btn-primary:hover {
+	background: #ABA07C;
+}
+.spinner-btns.counter-minus.btn.btn-primary:focus {
+	background: #ABA07C;
 }
 .peoples-travel-sec-outer-align {
     display: inline-block;
