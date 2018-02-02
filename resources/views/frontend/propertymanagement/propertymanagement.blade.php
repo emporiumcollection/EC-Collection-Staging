@@ -35,7 +35,7 @@ input[type=radio]:checked + label>img {
   <!-- Nav tabs <i class="fa fa-bullhorn" aria-hidden="true"></i></div><span>Ads -->
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Account Settings</a></li>
-	<li role="presentation"><a href="{{URL::to('hotel/propertymanagement/list')}}" role="tab" data-toggle="tab">Property Management</a></li>
+	<li role="presentation"><a href="{{URL::to('hotel/propertymanagement/list')}}">Property Management</a></li>
   </ul>
 
   <!-- Tab panes -->
@@ -121,24 +121,4 @@ input[type=radio]:checked + label>img {
 
 <!-- images loaded -->
 <script type="text/javascript" src="{{ asset('sximo/assets/memform/js/imagesloaded.pkgd.min.js')}}"></script>
-		
-<script>
-        window.ParsleyConfig = {
-            errorsWrapper: '<div></div>',
-            errorTemplate: '<div class="alert alert-danger parsley" role="alert"></div>',
-            errorClass: 'has-error',
-            successClass: 'has-success'
-        };
-    
-$(function () {
-  $('#hotel-form').parsley().on('field:validated', function() {
-    var ok = $('.parsley-error').length === 0;
-    $('.bs-callout-info').toggleClass('hidden', !ok);
-    $('.bs-callout-warning').toggleClass('hidden', ok);
-  })
-  .on('form:submit', function() {
-    return false; // Don't submit form for this demo
-  });
-});
-</script>
 @endsection

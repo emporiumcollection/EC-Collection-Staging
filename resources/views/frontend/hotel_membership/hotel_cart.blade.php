@@ -88,8 +88,8 @@
                                 <span class="order-total-label">Order Total</span>
                                 <span class="cart-subtotal-amout cart-total-amout">{!! isset($currency->content)?$currency->content:'$' !!}  {{number_format($orderTotal,2)}}</span>
                             </div>
-                            <div class="processed-to-checkout">
-                                 <button class="proccesstocheckout nextBtn" type="button">Proceed To Checkout</button>
+                            <div class="processed-to-checkout ">
+                                <a class="customGoldBtn btn nextBtn pull-right" href="{{url('hotel/checkout')}}">Proceed To Checkout</a>
                             </div>
                         </div>
                     </div>

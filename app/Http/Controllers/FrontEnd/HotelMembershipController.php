@@ -188,15 +188,15 @@ class HotelMembershipController extends Controller {
     public function hotelCart(Request $request) {
         $hotelPkgID = array(0);
         $advertPkgID = array(0);
-
+       
         if(!empty($request->session()->get('hotel_cart'))){
 
             foreach ($request->session()->get('hotel_cart') as $cartkey => $cartValue) {
-                if($cartValue['package']['type']=='hotel'){
-                    $hotelPkgID[] = $cartValue['package']['id'];
+                if($cartValue[0]['package']['type']=='hotel'){
+                    $hotelPkgID[] = $cartValue[0]['package']['id'];
                 }
-                if($cartValue['package']['type']=='advert'){
-                    $advertPkgID[] = $cartValue['package']['id'];
+                if($cartValue[0]['package']['type']=='advert'){
+                    $advertPkgID[] = $cartValue[0]['package']['id'];
                 }
             }
         }
@@ -219,10 +219,9 @@ class HotelMembershipController extends Controller {
 
     public function addToCartAjax(Request $request){
 
-        
-        $request->session()->push('hotel_cart', $request->input('cart'));
+        $cartPkgType = $request->input('cart')['package']['id'].'_'.$request->input('cart')['package']['type'];    
+        $request->session()->push('hotel_cart.'.$cartPkgType,$request->input('cart'));
 
-        return ($request->session()->get('hotel_cart'));
 
     }
     
