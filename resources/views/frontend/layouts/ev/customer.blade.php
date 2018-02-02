@@ -8,10 +8,10 @@
     <link rel="shortcut icon" href="{{ asset('favicon.ico')}}" type="image/x-icon">
     <!--Style Includes-->
     <!-- AIC css add -->
-    <link href="{{ asset('sximo/assets/css/menu41e7.css')}}" rel="stylesheet" type="text/css"/>
+<!--    <link href="{{ asset('sximo/assets/css/menu41e7.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('sximo/assets/css/responsive.custom41e7.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('sximo/assets/css/style-ai.css')}}" rel="stylesheet" type="text/css"/>
-    <link href="{{ asset('sximo/assets/css/homepage41e7.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('sximo/assets/css/homepage41e7.css')}}" rel="stylesheet" type="text/css"/>-->
     <!-- AIc css end-->
     <link href="{{ asset('sximo/assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('sximo/assets/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css"/>
@@ -22,6 +22,7 @@
     <link href="{{ asset('sximo/assets/css/style.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('sximo/assets/css/book-now-page-style.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('sximo/assets/css/m-popup.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('sximo/assets/css/m-popup.min.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('sximo/assets/css/image-slider.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('sximo/assets/css/slick.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('sximo/assets/css/slick-theme.css')}}" rel="stylesheet" type="text/css"/>
@@ -506,8 +507,8 @@
    
     
     <script src="{{ asset('sximo/assets/js/jquery-2.1.0.min.js')}}" type="text/javascript"></script>
-    <script src="{{ asset('sximo/assets/js/jquery-ui.js')}}" type="text/javascript"></script>
     <script src="{{ asset('sximo/assets/js/bootstrap.min.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('sximo/assets/js/jquery-ui.js')}}" type="text/javascript"></script>
     <script src="{{ asset('sximo/assets/js/sticky-nav.js')}}" type="text/javascript"></script>
     <script src="{{ asset('sximo/assets/js/moment.min.js')}}" type="text/javascript"></script>
     <script src="{{ asset('sximo/assets/js/jquery.daterangepicker.min.js')}}" type="text/javascript"></script>

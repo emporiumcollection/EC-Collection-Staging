@@ -79,18 +79,18 @@
 	</section>
 
 	<div class="hotel-property-section-bg" id="popupopn">
-		<div class="clearfix"></div>
-		<!--Show More Slide-->
-		<div class="show_more-page">
-			<div class="open-show_more-html">
-				<div><a class="close-btn-show_more close-btn-align" href="#">&times;</a></div>
-				<div class="container-">
-					<div class="row-">
-						<div class="clearfix"></div>
-						<div class="col-md-6 col-sm-6 rmimgp">
+                    <div class="clearfix"></div>
+                    <!--Show More Slide-->
+                    <div class="show_more-page">
+                        <div class="open-show_more-html">
+                            <div><a class="close-btn-show_more close-btn-align" href="#">&times;</a></div>
+                            <div class="container-">
+                                <div class="row-">
+                                    <div class="clearfix"></div>
+                                    <div class="col-md-6 col-sm-6 rmimgp">
 
-						</div>
-						<div class="col-md-6 col-sm-6 single-right-text-product">
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 single-right-text-product">
                                         <div class="text-section"><h2>JUNIOR SUITE BEACHFRONT</h2>
                                             <p>• 81sqm (872sqft)
                                                 <br>• Double bed
@@ -109,11 +109,11 @@
                                             </div>
                                         </div>
                                     </div>
-					</div>	
-				</div>
-			</div>
-		</div>
-	</div>
+                                </div>	
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 
 	<!-- pop up -->
@@ -507,23 +507,40 @@
 
         }, 40000);
 		
-		$(document).on('click', '.open-show_more-page', function () {
+        $(document).on('click', '.open-show_more-page', function () {
+            $('.show_more-page').css("background-image", "");
             $('.single-right-text-product').html('');
             $('.rmimgp').html('');
             $.ajax({
-                url: "{{ URL::to('fetchadvertisementpackagedetails')}}" + '/' + $(this).attr('rel'),
+                url: "{{ URL::to('fetchpackagedetails')}}" + '/' + $(this).attr('rel'),
                 type: "get",
                 success: function (data) {
+                    var rimg = "{{ URL::to('uploads/packages/')}}/" + data.pdata.package_image;
                     $('.rmimgp').html('<div class="right-text-section"></div>');
+                    $('.show_more-page').css("background-image", "url('" + rimg + "')");
                     var imagesPro = '';
                     imagesPro += '<div class="text-section">';
-                    imagesPro += '<h2>' + data.pdata.space_title + '</h2>';
-                    
+                    imagesPro += '<h2>' + data.pdata.package_title + '</h2>';
+                    imagesPro += '<p>' + data.pdata.package_description.replace(/\n/g,"<br>") + '</p>';
                     imagesPro += '</div>';
                     imagesPro += '<div class="book-btn-sec">';
-                    imagesPro += '<div class="hotel-book-price">Price on request</div>';
-					imagesPro += '<a href="#"><div class="hotel-book-now">Get in touch</div></a>';
+                    if (data.pdata.package_price_type != 1)
+                    {
+                        imagesPro += '<div class="hotel-book-price">';
+                        imagesPro += (data.currency.content != '') ? data.currency.content : '$';
+                        imagesPro += data.pdata.package_price;
+                        imagesPro += '</div>';
+						imagesPro += '<a href="#"><div class="hotel-book-now">Add to cart</div></a>';
+                    }
+                    else
+					{
+						imagesPro += '<div class="hotel-book-price">Price on request</div>';
+						imagesPro += '<a href="#"><div class="hotel-book-now">Get in touch</div></a>';
+					}
                     imagesPro += '</div>';
+                    /*imagesPro += '<div class="inner-pop-up-book-btn">';
+                    imagesPro += '<a href="#">Book</a>';
+                    imagesPro += '</div>';*/
                     imagesPro += '</div>';
                     $('#popupopn .single-right-text-product').html(imagesPro);
                     $('.show_more-page').css("width", "100%");
