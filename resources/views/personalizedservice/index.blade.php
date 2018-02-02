@@ -75,7 +75,7 @@
 					<td width="30"> {{ ++$i }} </td>
 					<td width="50"><input type="checkbox" class="ids" name="ids[]" value="{{ $row->ps_id }}" />  </td>									
 				 @foreach ($tableGrid as $field)
-					 @if($field['view'] =='1')
+					 @if($field['view'] =='1') 
 					 	<?php $limited = isset($field['limited']) ? $field['limited'] :''; ?>
 					 	@if(SiteHelpers::filterColumn($limited ))
 						 <td>					 
