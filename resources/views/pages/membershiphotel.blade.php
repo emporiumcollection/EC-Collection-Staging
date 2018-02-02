@@ -201,7 +201,7 @@
             <!-- AIC Harman email phone sidebar add end-->
             <div class="row">
                 <div class="col-md-2">
-                    <div class="right-menus right-menu-sidebar">
+                    <div class="right-menus right-menu-sidebar hidden-xs hidden-sm">
                         <div class="hotels-logo">
                             <img alt="" src="{{ asset('sximo/assets/images/design-location-logo.png')}}" class="img-responsive">
                         </div>
