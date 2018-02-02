@@ -303,12 +303,12 @@
                                 </li>
                                 
                                                                 <li>
-                                    <a href="#deisgnarchitecture" data-hotel-option="deisgn_architecture">TERMS AND CONDITIONS</a>
+                                    <a href="https://www.emporium-voyage.com/Terms-and-Conditions" data-hotel-option="deisgn_architecture">TERMS AND CONDITIONS</a>
                                 </li>
               
                                 
                                                                 <li>
-                                    <a href="#spa_restaurant" data-hotel-option="restaurant_bar">IMPRINT</a>
+                                    <a href="https://www.emporium-voyage.com/Impressum" data-hotel-option="restaurant_bar">IMPRINT</a>
                                 </li>
                                 
                             </ul>

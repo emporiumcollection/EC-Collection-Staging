@@ -131,6 +131,9 @@ body{
         padding-top: 10px;
         width: 45px;
     }
+    .ResSlider {
+        float: right;
+    }
     
 /* AIC END */    
 
