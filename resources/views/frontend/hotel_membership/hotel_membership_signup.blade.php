@@ -299,7 +299,7 @@
           function submit_hotelinfo_form()
             {
                 $.ajax({
-                    url: "{{ URL::to('frontend_hotelpost')}}",
+                    url: "{{ URL::to('hotel/membership')}}",
                     type: "post",
                     data: $('#contact-form').serializeArray(),
                     dataType: "json",

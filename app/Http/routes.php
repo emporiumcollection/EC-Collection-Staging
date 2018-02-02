@@ -270,10 +270,13 @@ Route::group(['middleware' => 'auth'], function()
 
 
 Route::get('hotel/membership', 'Frontend\HotelMembershipController@membershipSignup');
+Route::post('hotel/membership', 'Frontend\HotelMembershipController@membershipSignupSave');
 Route::get('hotel/hotelpackage', 'Frontend\HotelMembershipController@hotelPackage');
-Route::get('advertiser/package', 'Frontend\AdvertisementController@advertisementPackage');
+Route::get('hotel/advertiser', 'Frontend\HotelMembershipController@hotelPackage');
 Route::get('hotel/cart', 'Frontend\HotelMembershipController@hotelCart');
 Route::get('hotel/checkout', 'Frontend\HotelMembershipController@hotelCheckout');	
+
+Route::get('advertiser/package', 'Frontend\AdvertisementController@advertisementPackage');
 Route::get('fetchadvertisementpackagedetails/{pckid}', 'Frontend\AdvertisementController@fetchadvertisementpackagedetails');
 
 Route::post('frontend_hotelpost', 'HomeController@addHotelInfoFrontend');
