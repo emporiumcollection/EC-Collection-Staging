@@ -282,6 +282,7 @@ Route::get('fetchadvertisementpackagedetails/{pckid}', 'Frontend\AdvertisementCo
 
 Route::get('hotel/propertymanagement', 'Frontend\PropertymanagementController@propertyManagementList');
 Route::get('hotel/propertymanagement/property-detail/{propid}', 'Frontend\PropertymanagementController@propertyManagementDetail');
+Route::post('hotel/propertymanagement/savepropertydetail', 'Frontend\PropertymanagementController@propertyManagementSaveDetail');
 
 Route::post('frontend_hotelpost', 'HomeController@addHotelInfoFrontend');
 Route::post('save_previous_page_image', 'HomeController@save_previous_page_image');
