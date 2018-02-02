@@ -280,7 +280,8 @@ Route::get('hotel/checkout', 'Frontend\HotelMembershipController@hotelCheckout')
 Route::get('advertiser/package', 'Frontend\AdvertisementController@advertisementPackage');
 Route::get('fetchadvertisementpackagedetails/{pckid}', 'Frontend\AdvertisementController@fetchadvertisementpackagedetails');
 
-Route::get('hotel/propertymanagement', 'Frontend\PropertymanagementController@propertyManagementList');
+Route::get('hotel/propertymanagement', 'Frontend\PropertymanagementController@propertyManagement');
+Route::get('hotel/propertymanagement/list', 'Frontend\PropertymanagementController@propertyManagementList');
 
 Route::post('frontend_hotelpost', 'HomeController@addHotelInfoFrontend');
 Route::post('save_previous_page_image', 'HomeController@save_previous_page_image');

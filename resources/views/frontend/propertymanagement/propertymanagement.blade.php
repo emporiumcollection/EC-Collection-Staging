@@ -35,7 +35,7 @@ input[type=radio]:checked + label>img {
   <!-- Nav tabs <i class="fa fa-bullhorn" aria-hidden="true"></i></div><span>Ads -->
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Account Settings</a></li>
-	<li role="presentation"><a href="#propertymanagementlist" aria-controls="propertymanagementlist" role="tab" data-toggle="tab">Property Management</a></li>
+	<li role="presentation"><a href="{{URL::to('hotel/propertymanagement/list')}}" role="tab" data-toggle="tab">Property Management</a></li>
   </ul>
 
   <!-- Tab panes -->
@@ -85,33 +85,6 @@ input[type=radio]:checked + label>img {
 					</form>
 				</div>
         </div></div>
-	</div>
-    <div role="tabpanel" class="tab-pane " id="propertymanagementlist">
-		<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
-			<thead>
-				<tr>
-					<th>Property Name</th>
-					<th>Property City</th>
-					<th>Website</th>
-					<th>Email</th>
-					<th>Funktion</th>
-				</tr>
-			</thead>
-			<tbody>
-			
-				@if(!empty($properties))
-					@foreach($properties as $prop)
-						<tr>
-							<td>{{$prop->property_name}}</td>
-							<td>{{$prop->city}}</td>
-							<td>{{$prop->website}}</td>
-							<td>{{$prop->email}}</td>
-							<td><a  href="{{ URL::to('properties/update/'.$prop->id.'?return='.$return) }}" class="tips btn btn-xs btn-success" title="{{ \Lang::get('core.btn_edit') }}"><i class="fa fa-edit "></i></a></td>
-						</tr>
-					@endforeach
-				@endif
-			</tbody>
-		</table>
 	</div>
    
     
