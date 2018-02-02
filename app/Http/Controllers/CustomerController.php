@@ -970,7 +970,6 @@ class CustomerController extends Controller {
                  
             $user->first_name = $request->input('first_name');
             $user->last_name = $request->input('last_name');
-            $user->email = $request->input('email');
             $user->mobile_number=$request->input('txtPhoneNumber');
             if (isset($data['avatar']))
                 $user->avatar = $newfilename;
