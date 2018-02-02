@@ -2,6 +2,13 @@
 
 @section('content')
 {{--*/ usort($tableGrid, "SiteHelpers::_sort") /*--}}
+
+<?php
+echo '<pre>';
+print_r($rowData);
+echo '</pre>';
+?>
+
   <div class="page-content row">
     <!-- Page header -->
     <div class="page-header">
@@ -69,41 +76,7 @@
 			  </tr>
         </thead>
 
-        <tbody>        						
-            @foreach ($rowData as $row)
-                <tr>
-					<td width="30"> {{ ++$i }} </td>
-					<td width="50"><input type="checkbox" class="ids" name="ids[]" value="{{ $row->ps_id }}" />  </td>									
-				 @foreach ($tableGrid as $field)
-					 @if($field['view'] =='1') 
-					 	<?php $limited = isset($field['limited']) ? $field['limited'] :''; ?>
-					 	@if(SiteHelpers::filterColumn($limited ))
-						 <td>					 
-						 	@if($field['attribute']['image']['active'] =='1')
-								{!! SiteHelpers::showUploadedFile($row->$field['field'],$field['attribute']['image']['path']) !!}
-							@else	
-								{{--*/ $conn = (isset($field['conn']) ? $field['conn'] : array() ) /*--}}
-								{!! SiteHelpers::gridDisplay($row->$field['field'],$field['field'],$conn) !!}	
-							@endif						 
-						 </td>
-						@endif	
-					 @endif					 
-				 @endforeach
-				 <td>
-					 	@if($access['is_detail'] ==1)
-						<a href="{{ URL::to('personalizedservice/show/'.$row->ps_id.'?return='.$return)}}" class="tips btn btn-xs btn-primary" title="{{ Lang::get('core.btn_view') }}"><i class="fa  fa-search "></i></a>
-						@endif
-						@if($access['is_edit'] ==1)
-						<a  href="{{ URL::to('personalizedservice/update/'.$row->ps_id.'?return='.$return) }}" class="tips btn btn-xs btn-success" title="{{ Lang::get('core.btn_edit') }}"><i class="fa fa-edit "></i></a>
-						@endif
-												
-					
-				</td>				 
-                </tr>
-				
-            @endforeach
-              
-        </tbody>
+        
       
     </table>
 	<input type="hidden" name="md" value="" />
