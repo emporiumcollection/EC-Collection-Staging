@@ -75,8 +75,12 @@
             <?php
             if(!empty($rowData)) {
                 foreach ($rowData as $row) {
-                    echo '<tr>
-                            <td>'.$row->salutation.'</td>
+                    echo '<tr>';
+                    ?>
+                    <td width="30"> {{ ++$i }} </td>
+                    <td width="50"><input type="checkbox" class="ids" name="ids[]" value="{{ $row->ps_id }}" />  </td>
+                    <?php
+                    echo '<td>'.$row->salutation.'</td>
                             <td>'.$row->first_name.'</td>
                             <td>'.$row->surname.'</td>
                             <td>'.$row->email.'</td>
