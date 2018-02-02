@@ -46,126 +46,57 @@
                                 </div>
                             </div>
                         <div class="row equalize sm-equalize-auto">
-                            <div class="image-slider-container image-slider-margin-align auto-slider" id="rooms">
-							@if (!empty($packages))
-								<ul class="image-slider">
-									{{--*/ $k=1; $tottyp = count($packages); /*--}}
-									@foreach($packages as $key=>$package)
-									<li class="{{($k==1) ? 'active' : ''}}">
-                                        <a href="#">
-                                            <img class="img-responsive object-fit-size" src="{{asset('uploads/properties_subtab_imgs/69726129-32146277.jpg')}}" style="height:580px; width: 100%;">
-                                        </a>
-                                        <div class="col-md-12 col-sm-12">
-                                            <div class="col-md-6 col-sm-6">
-                                                <div class="row">
-                                                    <div class="image-slider-btns-bg">
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6 col-sm-6">
-                                                    <div class="row">
-                                                        <div class="slider-sec-side-text-bg">
-                                                            <div class="slider-side-sec-alignment">
-                                                                <div class="expeience-small-text">Advertisement Packages</div>
-                                                                <div class="slider-side-text-tittle">{{$package->space_title}}</div>
-                                                                <div class="slider-side-description-text">
-                                                                    
-                                                                </div>
-                                                            </div>
-                                                            <div>
-                                                                <img class="slider-next-image-btn img-responsive" src="{{asset('uploads/properties_subtab_imgs/69726129-32146277.jpg')}}" alt="">
-                                                                <a href="#" style="margin-left:100px;" rel="{{$package->id}}" class="book-button open-show_more-page hotel-btn ClickButton">Show More</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-									{{--*/ $k++; /*--}}
-												
-									@endforeach
-
-                                </ul>
-                                <div class="clearfix"></div>
-                                <div class=" editorial-images-count images-count">1 / {{$tottyp}}</div>
-                                <div class="editorial-image-slider-btns image-slider-btns">
-                                    <a class="editorial-image-slider-previous-btn image-slider-previous-btn" href="#">
-                                        <img class="arrow-margin-right" src="{{ asset('sximo/assets/images/editorial-left-arrow.png')}}" alt="">
-                                    </a>
-                                    <a class="image-slider-next-btn editorial-image-slider-next-btn" href="#">
-                                        <img class="arrow-margin-right" src="{{ asset('sximo/assets/images/editorial-right-arrow.png')}}" alt="">
-                                    </a>
-                                </div>
-								@endif
-                            </div>
+                            
                         </div>
                     </div>
                 </section>
 
 
+<div class="container">
 
-<!--Accordan Code -->
-<div class="col-sm-12" >
-@if (!empty($packages))
-<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-  
+	@if (!empty($packages))
+		<div class="table-responsive">
+			<table class="table">
+				<thead>
+					<tr>
+						<td>Package</td>
+						<td>Type</td>
+						<td>Price</td>
+						<td>Quantity</td>
+						<td>Line Total</td>
+						<td></td>
+					</tr>
+				</thead>
+				<tbody>
+					
+					@foreach($packages as $key=>$package)
+						<tr>
+							<td>{{$package->space_title}}</td>
+							<td>
+								<select class="bg-white medium-input">
+									<option value="CPC">CPC Target Clicks</option>
+									<option value="CPM">CPM Target View</option>
+									<option value="CPD">CPD Target Days</option>
+								</select>
+							</td>
+							<td>{!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($package->space_cpd_price,2) }}</td>
+							<td><input type="number" value="1" min="1" class="bg-white medium-input"/></td>
+							<td>{!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($package->space_cpd_price,2) }}</td>
+							<td><a class="customGoldBtn btn nextBtn"> <i class="fa fa-shopping-cart" aria-hidden="true"></i> </a>  <a class="customGoldBtn btn nextBtn"> <i class="fa fa-trash" aria-hidden="true"></i> </a> </td>
+						</tr>
+		                                                
+		 			@endforeach	
+				</tbody>
+			
+				
+			</table>
+		</div>
+		@endif
+		<div class="col-sm-12 text-right">
+		    <a class="customGoldBtn btn nextBtn" href="{{url('hotel/cart')}}">Continue  </a>
+		</div>
 
-{{--*/ $k=1; $tottyp = count($packages); /*--}}
-@foreach($packages as $key=>$package)
-<div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="heading{{ $k }}">
-      <h4 class="panel-title">
-        <a  role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ $k }}" {{($k==1) ? 'aria-expanded="true" ' : ' aria-expanded="false" class="collapsed"'}} aria-controls="collapse{{ $k }}">
-          {{$package->space_title}}  :: {{ $package->id }} :: Price: {!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($package->space_cpd_price,2) }}
-        </a>
-      </h4>
-    </div>
-    <div id="collapse{{ $k }}" class="panel-collapse collapse {{($k==1) ? 'in ' : ''}}" role="tabpanel" aria-labelledby="heading{{ $k }}">
-      <div class="panel-body">        
-            <div>
-                <div  style="width:20%; padding-right: 1%;" class="pull-left">
-                    <img class="img-responsive object-fit-size" src="{{asset('uploads/properties_subtab_imgs/69726129-32146277.jpg')}}" >
-
-
-
-                 
-
-                </div>
-                <div class="pull-right" style="width:80%">
-                    <p>Package Duration ::  </p>  
-                    <p>Package Details: </p>
-
-                     <div class="book-btn-sec">
-               
-                    
-                        <div class="hotel-book-price">
-                          {!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($package->space_cpd_price,2) }}
-                        </div>
-                       <a href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->space_cpd_price }});"><div class="hotel-book-now">Add to cart</div></a>
-                 
-                    
-                 
-                </div>
-                </div>
-           </div>
-      </div>
-    </div>
-</div>
-
-
-    {{--*/ $k++; /*--}}
-                                                
- @endforeach
-
-
-</div>
-@endif
-</div>
-<!-- end accrodan code -->
-  
+  </div>
 @endsection
 
 
@@ -180,7 +111,38 @@
 <!-- Custom style -->
 <link href="{{ asset('sximo/assets/memform/css/custom-ai.css')}}" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" href="{{ asset('sximo/css/hotel-membership/style.css')}}">
+<style>
+.has-error  {
+    border-color: #a94442;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
 
+.cart-small-border {
+      height: 2px;
+    width: 200px;
+    background: #ABA07C;
+    margin-top: -2px;
+    z-index: 0;
+}
+.cart-big-border {
+  
+    width: 100%;
+    background: #eaeaea;
+    /* margin-top: -5px; */
+    height: 2px;
+    z-index: 9999;
+}
+.customGoldBtn {
+    background-color: #ABA07C;
+    border: none;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: Geomanist-Regular;
+}
+.customGoldBtn .btn i { margin-left: 0;}
+</style>
 @endsection
 
 @section('script')

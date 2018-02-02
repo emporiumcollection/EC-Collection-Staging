@@ -108,61 +108,61 @@
 
 
 <!--Accordan Code -->
-<div class="col-sm-12" >
+<div class="container">
 @if (!empty($packages))
-<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-  
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+          
 
-{{--*/ $k=1; $tottyp = count($packages); /*--}}
-@foreach($packages as $key=>$package)
-<div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="heading{{ $k }}">
-      <h4 class="panel-title">
-        <a  role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ $k }}" {{($k==1) ? 'aria-expanded="true" ' : ' aria-expanded="false" class="collapsed"'}} aria-controls="collapse{{ $k }}">
-          {{$package->package_title}}  :: {{ $package->id }} :: Price: EUR:{{ $package->package_price }}
-        </a>
-      </h4>
-    </div>
-    <div id="collapse{{ $k }}" class="panel-collapse collapse {{($k==1) ? 'in ' : ''}}" role="tabpanel" aria-labelledby="heading{{ $k }}">
-      <div class="panel-body">        
-            <div>
-                <div  style="width:20%; padding-right: 1%;" class="pull-left">
-                    <img class="img-responsive object-fit-size" src="{{URL::to('uploads/packages/'.$package->package_image)}}" alt="{{$package->package_image}}" >
+        {{--*/ $k=1; $tottyp = count($packages); /*--}}
+        @foreach($packages as $key=>$package)
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="heading{{ $k }}">
+              <h4 class="panel-title">
+                <a  role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ $k }}" {{($k==1) ? 'aria-expanded="true" ' : ' aria-expanded="false" class="collapsed"'}} aria-controls="collapse{{ $k }}">
+                  {{$package->package_title}}  :: {{ $package->id }} :: Price: {!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($package->package_price,2) }}
+                </a>
+              </h4>
+            </div>
+            <div id="collapse{{ $k }}" class="panel-collapse collapse {{($k==1) ? 'in ' : ''}}" role="tabpanel" aria-labelledby="heading{{ $k }}">
+              <div class="panel-body">        
+                    <div>
+                        <div  style="width:20%; padding-right: 1%;" class="pull-left">
+                            <img class="img-responsive object-fit-size" src="{{URL::to('uploads/packages/'.$package->package_image)}}" alt="{{$package->package_image}}" >
 
 
 
-                 
+                         
 
-                </div>
-                <div class="pull-right" style="width:80%">
-                    <p>Package Duration :: {{$package->package_duration}} {{$package->package_duration_type}} </p>  
-                    <p>Package Details: {!! nl2br($package->package_description) !!}</p>
-
-                     <div class="book-btn-sec">
-               
-                    
-                        <div class="hotel-book-price">
-                          EUR {{ $package->package_price }}
                         </div>
-                       <a href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->package_price }});"><div class="hotel-book-now">Add to cart</div></a>
-                 
-                    
-                 
-                </div>
-                </div>
-           </div>
-      </div>
-    </div>
-</div>
+                        <div class="pull-right" style="width:80%">
+                            <p>Package Duration :: {{$package->package_duration}} {{$package->package_duration_type}} </p>  
+                            <p>Package Details: {!! nl2br($package->package_description) !!}</p>
+
+                             <div class="book-btn-sec">
+                                    {!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($package->package_price,2) }} 
+                            
+                                
+                               <a href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->package_price }});" class="customGoldBtn btn nextBtn">Add to cart</a>
+                         
+                            
+                         
+                        </div>
+                        </div>
+                   </div>
+              </div>
+            </div>
+        </div>
 
 
-    {{--*/ $k++; /*--}}
-                                                
- @endforeach
+            {{--*/ $k++; /*--}}
+                                                        
+         @endforeach
 
-
-</div>
-@endif
+         <div class="col-sm-12 text-right">
+                                    <a class="customGoldBtn btn nextBtn" href="{{url('hotel/advertiser')}}">Continue  </a>
+                                </div>
+        </div>
+        @endif
 </div>
 <!-- end accrodan code -->
   
@@ -180,7 +180,38 @@
 <!-- Custom style -->
 <link href="{{ asset('sximo/assets/memform/css/custom-ai.css')}}" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" href="{{ asset('sximo/css/hotel-membership/style.css')}}">
+<style>
+.has-error  {
+    border-color: #a94442;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
 
+.cart-small-border {
+      height: 2px;
+    width: 200px;
+    background: #ABA07C;
+    margin-top: -2px;
+    z-index: 0;
+}
+.cart-big-border {
+  
+    width: 100%;
+    background: #eaeaea;
+    /* margin-top: -5px; */
+    height: 2px;
+    z-index: 9999;
+}
+.customGoldBtn {
+    background-color: #ABA07C;
+    border: none;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: Geomanist-Regular;
+}
+.customGoldBtn .btn i { margin-left: 0;}
+</style>
 @endsection
 
 @section('script')
