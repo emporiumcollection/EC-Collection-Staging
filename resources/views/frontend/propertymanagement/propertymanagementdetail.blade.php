@@ -34,8 +34,8 @@ input[type=radio]:checked + label>img {
 
   <!-- Nav tabs <i class="fa fa-bullhorn" aria-hidden="true"></i></div><span>Ads -->
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Account Settings</a></li>
-	<li role="presentation"><a href="{{URL::to('hotel/propertymanagement/list')}}">Property Management</a></li>
+    <li role="presentation" ><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Account Settings</a></li>
+	<li role="presentation" class="active"><a href="{{URL::to('hotel/propertymanagement/list')}}">Property Management</a></li>
   </ul>
 
   <!-- Tab panes -->
