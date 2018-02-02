@@ -75,7 +75,7 @@
     text-align: left;
 }
 .choosen-input-align .chosen-container .chosen-results li.highlighted {
-    background-color: #e59746;
+    background-color: #252525;
     background-image: none;
     color: #fff;
 }
@@ -292,7 +292,7 @@
 	margin: 10px 10px 15px 0px;
 }
 .ps-basic-btn:hover, .ps-basic-btn:focus, .ps-basic-btn:active  {
-    color: #000;
+    color: #fff;
     text-decoration: none;
 }
 .back-btn-align {
