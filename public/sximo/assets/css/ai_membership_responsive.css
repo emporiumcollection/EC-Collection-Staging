@@ -12,6 +12,12 @@
 }
 @media (min-width: 993px) and (max-width: 1200px) {
     
+    section {
+	padding: 0px 0 !important;
+    }
+    .panel.panel-default.custom-post-panel a {
+	font-size: 9px !important;
+    }
  
 }
 
@@ -64,7 +70,7 @@
 	padding: 15px 0px 0px 29px !important;
     }
     .sidenav .closebtn {
-	top: 15px;
+	top: 0px;
     }
     .editorial-res-side-nav-logo.hamburger-menu {
 	margin-top: 9px !important;
