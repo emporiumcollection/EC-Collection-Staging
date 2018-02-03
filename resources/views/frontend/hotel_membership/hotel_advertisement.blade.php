@@ -189,7 +189,7 @@ function changeprice(type)
 		$('#CPD').hide();
 		$('#CPM').hide();
 		$('#'+type).show();
-		$('#pacprice').val($('#' + type + ' .price').text());
+		$('#pacprice').val($.trim($('#' + type + ' .price').text()));
 	}
 }
 
