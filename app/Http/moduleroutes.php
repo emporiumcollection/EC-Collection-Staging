@@ -47,4 +47,5 @@
                     Route::controller('evcustomfields', 'EvcustomfieldsController');
                     Route::controller('crmlayout', 'CrmlayoutController');
                     Route::controller('personalizedservice', 'PersonalizedserviceController');
+                    Route::controller('autorunneradvertisementspace', 'AutorunneradvertisementspaceController');
                     ?>
