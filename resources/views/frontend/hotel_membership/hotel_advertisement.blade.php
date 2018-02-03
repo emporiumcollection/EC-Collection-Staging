@@ -19,6 +19,7 @@
                 z-index: 99;
                 float: left;
             }
+	.disnon { display:none; }
 
 </style>
 <section class="wow fadeIn big-section cstmaiclass" id="align-to-top">
@@ -73,22 +74,26 @@
 						<tr>
 							<td>{{$package->space_title}}</td>
 							<td>
-								<select class="bg-white medium-input">
-									<option value="CPC">CPC Target Clicks</option>
-									<option value="CPM">CPM Target View</option>
-									<option value="CPD">CPD Target Days</option>
+								<select class="bg-white medium-input" onchange="changeprice(this.value)">
+									<option value="CPC">CPC Target Clicks - {{$package->space_cpc_num_clicks}}</option>
+									<option value="CPM">CPM Target View - {{$package->space_cpm_num_view}}</option>
+									<option value="CPD">CPD Target Days - {{$package->space_cpm_num_days}}</option>
 								</select>
 							</td>
-							<td>{!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($package->space_cpd_price,2) }}</td>
+							<td>
+								<input type="hidden" name="pacprice" id="pacprice" value="{{ number_format($package->space_cpc_price,2) }}" />
+								<p id="CPC">{!! isset($currency->content)?$currency->content:'$' !!} <span class="price"> {{ number_format($package->space_cpc_price,2) }}</span></p>
+								<p id="CPM" class="disnon">{!! isset($currency->content)?$currency->content:'$' !!} <span class="price">{{ number_format($package->space_cpm_price,2) }}</span></p>
+								<p id="CPD" class="disnon">{!! isset($currency->content)?$currency->content:'$' !!}<span class="price"> {{ number_format($package->space_cpd_price,2) }}</span>
+								</p>
+							</td>
+							
 							<td><input type="number" value="1" min="1" class="bg-white medium-input"/></td>
-							<td>{!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($package->space_cpd_price,2) }}</td>
-							<td><a class="customGoldBtn btn nextBtn"> <i class="fa fa-shopping-cart" aria-hidden="true"></i> </a>  <a class="customGoldBtn btn nextBtn"> <i class="fa fa-trash" aria-hidden="true"></i> </a> </td>
-						</tr>
-		                                                
+							<td>{!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($package->space_cpc_price,2) }}</td>
+							<td><a class="customGoldBtn btn nextBtn" rel="{{$package->id}}"> <i class="fa fa-shopping-cart" aria-hidden="true"></i> </a>  <a class="customGoldBtn btn nextBtn"> <i class="fa fa-trash" aria-hidden="true"></i> </a> </td>
+						</tr>                             
 		 			@endforeach	
 				</tbody>
-			
-				
 			</table>
 		</div>
 		@endif
@@ -176,6 +181,17 @@ function addToCartHotel(packagePrice,PackageID){
 
 }
 
+function changeprice(type)
+{
+	if(type!='')
+	{
+		$('#CPC').hide();
+		$('#CPD').hide();
+		$('#CPM').hide();
+		$('#'+type).show();
+		$('#pacprice').val($('#' + type + ' .price').text());
+	}
+}
 
  </script>
 
