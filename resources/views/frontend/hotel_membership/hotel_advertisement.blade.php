@@ -89,7 +89,9 @@
 							</td>
 							
 							<td><input type="number" id="qtypac" value="1" min="1" class="bg-white medium-input"/></td>
-							<td id="fnlprc">{!! isset($currency->content)?$currency->content:'$' !!} <span class="fprice">{{ number_format($package->space_cpc_price,2) }}</span></td>
+							<td id="fnlprc">
+							<input type="hidden" name="finalpacprice" id="finalpacprice" value="{{ number_format($package->space_cpc_price,2) }}" />
+							{!! isset($currency->content)?$currency->content:'$' !!} <span class="fprice">{{ number_format($package->space_cpc_price,2) }}</span></td>
 							<td><a class="customGoldBtn btn nextBtn" rel="{{$package->id}}"> <i class="fa fa-shopping-cart" aria-hidden="true"></i> </a>  <a class="customGoldBtn btn nextBtn"> <i class="fa fa-trash" aria-hidden="true"></i> </a> </td>
 						</tr>                             
 		 			@endforeach	
@@ -192,10 +194,19 @@ function changeprice(type)
 		var prc = $.trim($('#' + type + ' .price').text());
 		$('#pacprice').val(prc);
 		var qty = $('#qtypac').val();
-		$('#fnlprc .fprice').html(prc * qty);
+		$('#fnlprc .fprice').html((prc * qty).toFixed(2));
+		$('#finalpacprice').val((prc * qty).toFixed(2));
 	}
 }
 
+$(document).ready(function () {
+	$(document).on('change', '#qtypac', function () {
+		var qty = $(this).val();
+		var prc = $.trim($('#pacprice').val());
+		$('#fnlprc .fprice').html((prc * qty).toFixed(2));
+		$('#finalpacprice').val((prc * qty).toFixed(2));
+	});
+});
  </script>
 
 
