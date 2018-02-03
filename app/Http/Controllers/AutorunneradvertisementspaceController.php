@@ -159,7 +159,7 @@ class AutorunneradvertisementspaceController extends Controller {
 				$baseprc = number_format(trim($request->input('base_price')), 2, '.', '');
 				$prcptg = (trim($request->input('price_percentage'))!='') ? number_format(trim($request->input('price_percentage')), 2, '.', '') : '';
 				$fnlprc = ($prcptg!='') ? $baseprc + ($baseprc * $prcptg / 100) : $baseprc; 
-				$cates = \DB::table('tb_categories')->select('id')->first();
+				$cates = \DB::table('tb_categories')->select('id')->take(2)->get();
 				if(!empty($cates))
 				{
 					foreach($cates as $cat)
