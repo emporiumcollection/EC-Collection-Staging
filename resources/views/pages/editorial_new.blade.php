@@ -1351,7 +1351,7 @@
                     </div>
                 </aside>
                 <div class="back-To-Top">
-                    <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top">TOP</a>
+                    <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top">Top</a>
                 </div>
 
                 <!-- AIC Harman email phone sidebar add end-->

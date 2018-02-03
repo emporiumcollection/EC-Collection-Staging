@@ -102,36 +102,36 @@ body{
 /* AIC */
 
 .SlickVegasWidth {
-            
+
     width: 18.5%;
-    }
-    .image-slider-container .editorial-images-count {
-        color: #fff;
-        float: left;
-        font-size: 33px;
-        margin-left: 38%;
-        margin-top: -145px;
-        position: relative;
-        width: 22%;
-    }
-    .bar-name-text-style {
-        color: #000;
-        font-size: 13px;
-        letter-spacing: 0px;
-        text-transform: uppercase;
-        text-align: center;
-        font-family: Geomanist-light;
-        margin-bottom: 30px;
-        float: left;
-        width: 96%;
-    }
-    .view-gallery-border-left {
-        border-bottom: 2px solid #fff;
-        float: left;
-        padding-top: 10px;
-        width: 45px;
-    }
-    
+}
+.image-slider-container .editorial-images-count {
+    color: #fff;
+    float: left;
+    font-size: 33px;
+    margin-left: 38%;
+    margin-top: -145px;
+    position: relative;
+    width: 22%;
+}
+.bar-name-text-style {
+    color: #000;
+    font-size: 13px;
+    letter-spacing: 0px;
+    text-transform: uppercase;
+    text-align: center;
+    font-family: Geomanist-light;
+    margin-bottom: 30px;
+    float: left;
+    width: 96%;
+}
+.view-gallery-border-left {
+    border-bottom: 2px solid #fff;
+    float: left;
+    padding-top: 10px;
+    width: 45px;
+}
+
 /* AIC END */    
 
 .form-group.post-filter-inputs.active a {
@@ -189,15 +189,15 @@ body{
   width: 214px !important;
 }*/
 .go-back-button {
-	background-color: #ABA07C;
-	border: 0 none;
-	border-radius: 0;
-	font-size: 13px;
-	height: 38px;
-	padding: 7px;
-	width: 100%;
-	opacity: 1;
-	color: white;
+    background-color: #ABA07C;
+    border: 0 none;
+    border-radius: 0;
+    font-size: 13px;
+    height: 38px;
+    padding: 7px;
+    width: 100%;
+    opacity: 1;
+    color: white;
 }
 .container-fluid.logo-padding-left.editorial-logo-align {
     width: 100%;
@@ -292,11 +292,11 @@ body{
     padding-left: 0;
 }
 .footer-nav-menu-harding {
-	color: #1e2023;
-	font-family: geomanist-regular;
-	font-size: 13px;
-	text-transform: uppercase;
-	margin-bottom: 10px;
+    color: #1e2023;
+    font-family: geomanist-regular;
+    font-size: 13px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
 }
 .pre-footer-sec-align > p:nth-child(1) {
     font-family: Geomanist-Regular;
@@ -2912,16 +2912,16 @@ header .menu ul li a:hover, header .menu ul li a:active, header .menu ul li a:fo
         margin-left: 277px !important;
     }
     .bar-name-text-style {
-	color: #fff;
+        color: #fff;
     }
     .view-gallery-border-left {
         width: 21px !important;
     }
     .dates li input, .dates li select {
-	width: 100% !important;
+        width: 100% !important;
     }
     .vegasFooterSocial ul li {
-	padding: 0px;
+        padding: 0px;
     }
 
 }
@@ -2947,7 +2947,7 @@ header .menu ul li a:hover, header .menu ul li a:active, header .menu ul li a:fo
         margin-top: -13.5% !important;
     }
     .image-slider-container .editorial-images-count {
-	margin-top: -145px !important;
+        margin-top: -145px !important;
     }
     .editorial-image-slider-previous-btn {
         margin-left: 367px !important;
@@ -3173,10 +3173,10 @@ header .menu ul li a:hover, header .menu ul li a:active, header .menu ul li a:fo
     text-align: center;
 }
 .editoral-book-page-headings > p {
-	color: #ABA07C;
-	font-family: Geomanist-Regular;
-	margin-top: 16px;
-	font-size: 16px;
+    color: #ABA07C;
+    font-family: Geomanist-Regular;
+    margin-top: 16px;
+    font-size: 16px;
 }
 .dates .editorail-heading {
     font-family: Geomanist-Regular;
@@ -3214,7 +3214,7 @@ header .menu ul li a:hover, header .menu ul li a:active, header .menu ul li a:fo
     display: none;
     font-family: Geomanist-Regular;
     font-size: 14px;
-/*    opacity: 0.62;*/
+    /*    opacity: 0.62;*/
     padding: 9px;
     position: fixed;
     right: 20px;
@@ -3318,7 +3318,7 @@ div.panel.footer-nav-menu.show {
     /* margin-top: -103px; */
     left: 20% !important;
     border: none;
-/*    top: 64px !important;*/
+    /*    top: 64px !important;*/
 }
 .date-picker-wrapper .footer {
     display: none;
@@ -3817,15 +3817,15 @@ div.productData a {
 /*Cookie Bar End Here*/
 /*Booking form top bar*/
 .booking-form-bar-top {
-	background-color: rgba(37, 37, 37, 0.9);
-	float: left;
-	opacity: unset !important;
-	padding-left: 15px !important;
-	padding-right: 8px !important;
-	padding-top: 15px !important;
-	position: absolute;
-	top: 0;
-	width: 100% !important;
+    background-color: rgba(37, 37, 37, 0.9);
+    float: left;
+    opacity: unset !important;
+    padding-left: 15px !important;
+    padding-right: 8px !important;
+    padding-top: 15px !important;
+    position: absolute;
+    top: 0;
+    width: 100% !important;
 }
 .booking-form-bar-top label {
     color: #fff;
@@ -4220,19 +4220,19 @@ div#fixed_wrapper {
     margin-top: 10px;
 }
 .hotels-bar-sec-align {
-	background-blend-mode: multiply;
-	background-color: #292f35;
-	background-image: url("../../../uploads/container_user_files/locations/miss-clara-by-nobis/property-images/Miss-Clara-by-Nobis-Stockholm-Sweden-design-locations.com.jpg");
-	background-repeat: no-repeat;
-	background-size: cover;
-	border-top: 4px solid #fff;
-	padding-bottom: 30px;
-	padding-top: 30px;
-	float: left;
-	max-width: 1600px;
-	margin: 0 auto;
-	float: left;
-	height: auto;
+    background-blend-mode: multiply;
+    background-color: #292f35;
+    background-image: url("../../../uploads/container_user_files/locations/miss-clara-by-nobis/property-images/Miss-Clara-by-Nobis-Stockholm-Sweden-design-locations.com.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-top: 4px solid #fff;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    float: left;
+    max-width: 1600px;
+    margin: 0 auto;
+    float: left;
+    height: auto;
 }
 .bar-intro-text-bg {
     background-color: #ff332e;
@@ -5254,7 +5254,7 @@ div#fixed_wrapper {
     text-align: left;
 }
 .ps-forms-cross-icons {
-	float: right;
+    float: right;
 }
 .ps-big-form-heading {
     color: #fff;
@@ -5792,11 +5792,11 @@ div#fixed_wrapper {
     }
 }
 .show-login-forms-btn {
-	display: inline-block;
-	/* padding: 0px 0; */
-	text-align: center;
-	margin-top: 28px;
-	/* vertical-align: text-top; */
+    display: inline-block;
+    /* padding: 0px 0; */
+    text-align: center;
+    margin-top: 28px;
+    /* vertical-align: text-top; */
 }
 .content-grid-boxes-outer {
     margin-top: 15px;
@@ -5808,11 +5808,11 @@ div#fixed_wrapper {
     width: auto;
 }
 .destination-inner-accordian-outer .panel-heading {
-  background-color: transparent;
-  border: medium none;
-  height: auto;
-  margin: 0;
-  padding: 0;
+    background-color: transparent;
+    border: medium none;
+    height: auto;
+    margin: 0;
+    padding: 0;
 }
 
 /* AIC 4-1-208 */
@@ -5822,10 +5822,14 @@ div#fixed_wrapper {
 }
 
 .vegasRightBar {
-    width: 33.333%
+    width: 33.333%;
     padding: 0;
 }
 
 .noPadding {
     padding: 0px !important;
+}
+
+#back-to-top {
+    text-transform: capitalize;
 }
