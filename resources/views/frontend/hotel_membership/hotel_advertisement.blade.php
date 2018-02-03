@@ -192,7 +192,7 @@ function changeprice(type)
 		var prc = $.trim($('#' + type + ' .price').text());
 		$('#pacprice').val(prc);
 		var qty = $('#qtypac').val();
-		$('#fnlprc .fprice').html(prc * qty);
+		$('#fnlprc .fprice').html($.number(prc * qty));
 	}
 }
 
