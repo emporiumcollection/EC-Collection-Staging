@@ -186,6 +186,11 @@ class PersonalizedserviceController extends Controller {
             $data['inspirations'] = implode(', ', $data['inspirations']);
             $data['experiences'] = implode(', ', $data['experiences']);
             
+            echo '<pre>';
+            print_r($data);
+            echo '</pre>';
+            die;
+            
             $id = $this->model->insertRow($data, $request->input('ps_id'));
 
             if (!is_null($request->input('apply'))) {
