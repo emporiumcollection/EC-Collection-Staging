@@ -198,7 +198,7 @@
  <script>
 
 
-function addToCartHotel(packagePrice,PackageID){
+function addToCartHotel(PackageID,PackagePrice){
     
 
         var packagePrice=packagePrice;
@@ -209,7 +209,7 @@ function addToCartHotel(packagePrice,PackageID){
             alert("Package added to cart successfully.");
         }
         };
-        xhttp.open("GET", "{{ URL::to('hotel/add_package_to_cart')}}?cart[package][id]="+PackageID+"&cart[package][price]="+packagePrice+"&cart[package][qty]=1&cart[package][type]=hotel", true);
+        xhttp.open("GET", "{{ URL::to('hotel/add_package_to_cart')}}?cart[package][id]="+PackageID+"&cart[package][price]="+PackagePrice+"&cart[package][qty]=1&cart[package][type]=hotel", true);
         xhttp.send();
 
 }
