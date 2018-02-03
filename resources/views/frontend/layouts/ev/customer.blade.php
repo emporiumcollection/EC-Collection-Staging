@@ -505,19 +505,7 @@
   
     </style>
    
-    
-<!--    <script src="{{ asset('sximo/assets/js/jquery-2.1.0.min.js')}}" type="text/javascript"></script>
-    <script src="{{ asset('sximo/assets/js/bootstrap.min.js')}}" type="text/javascript"></script>
-    <script src="{{ asset('sximo/assets/js/jquery-ui.js')}}" type="text/javascript"></script>
-    <script src="{{ asset('sximo/assets/js/sticky-nav.js')}}" type="text/javascript"></script>
-    <script src="{{ asset('sximo/assets/js/moment.min.js')}}" type="text/javascript"></script>
-    <script src="{{ asset('sximo/assets/js/jquery.daterangepicker.min.js')}}" type="text/javascript"></script>
-    <script src="{{ asset('sximo/assets/js/book-now-page-style.js')}}" type="text/javascript"></script>
-    <script src="{{ asset('sximo/assets/js/m-popup.js')}}" type="text/javascript"></script>
-    <script src="{{ asset('sximo/assets/js/image-slider.js')}}" type="text/javascript"></script>
-    <script src="{{ asset('sximo/assets/js/testimoniales.js')}}" type="text/javascript"></script>
-    <script src="{{ asset('sximo/assets/js/active-nav.js')}}" type="text/javascript"></script>
-    <script src="{{ asset('sximo/assets/js/html2canvas.js')}}" type="text/javascript"></script>-->
+
     <script src="{{ asset('sximo/assets/js/jquery-2.1.0.min.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/bootstrap.min.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/jquery-ui.js')}}" type="text/javascript"></script>
@@ -753,10 +741,7 @@
                             </section>
                             <!-- top bar end-->
                             
-                            <!--script src="{{ asset('sximo/assets/js/fliters.js')}}" type="text/javascript"></script>
-                            <script src="{{ asset('sximo/assets/js/moment.min.js')}}" type="text/javascript"></script>
-                            <script src="{{ asset('sximo/assets/js/combodate.js')}}" type="text/javascript"--></script>
-                            
+                           
 
                             <div class="sticky-header-offset"></div> 
                             
@@ -805,63 +790,8 @@
                                 @endif
 
                                 
-                                     <div> &nbsp;</div>
-                                      <!--   <div class="main-dashboard-header">
-                                            <nav class="navbar navbar-inverse dash-top-header-style-align">
-                                                <ul class="nav navbar-nav left-nav-align">
-                                                    <li class="">
-                                                        <a href="javascript:void(0);">
-                                                            <div class="header-icons-style"><i class="fa fa-bullhorn" aria-hidden="true"></i></div><span>Ads</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);">
-                                                            <div class="header-icons-style"><i class="fa fa-star-o" aria-hidden="true"></i></div><span>Favorites</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);">
-                                                            <div class="header-icons-style"><i class="fa fa-rocket" aria-hidden="true"></i></div><span>Service</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);">
-                                                            <div class="header-icons-style"><i class="fa fa-calendar-check-o" aria-hidden="true"></i></div><span>Magazine</span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="<?php echo (isset($active_menu) && $active_menu == 'bookings')? 'active' : ''; ?>">
-                                                        <a href="{{URL::to('bookings')}}">
-                                                            <div class="header-icons-style"><i class="fa fa-shopping-cart" aria-hidden="true"></i></div><span>Bookings</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                                <ul class="nav navbar-nav navbar-right nav-right-login-align">
-                                                    <li>
-                                                        <div class="user-image"><img class="img-responsive" src="{{ asset('sximo/assets/images/default.png')}}" alt=""/></div>
-                                                        <div class="user-drop-down">
-                                                            <div class="dropdown">
-                                                                <button class="btn user-btn basic-btn-nav-style btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{ Session::get('fid') }} <span class="caret"></span></button>
-                                                                <ul class="dropdown-menu">
-                                                                    <li><a href="{{ URL::to('customer/profile')}}">{{ Lang::get('core.m_profile') }}</a></li>
-                                                                    <li><a href="{{ URL::to('customer/logout')}}">{{ Lang::get('core.m_logout') }}</a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="dropdown">
-                                                            <button class="btn basic-btn-nav-style btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Help <span class="caret"></span></button>
-                                                            <ul class="dropdown-menu">
-                                                                <li><a href="javascript:void(0);">Technical Support</a></li>
-                                                                <li><a href="{{ URL::to('')}}">Frontend</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                    <li class="referal-btn"><a href="javascript:void(0);">Referal</a></li>
-                                                </ul>
-                                            </nav>
-                                        </div>
-                                    -->
+                             <div> &nbsp;</div>
+                                      
 
                                
                                 @yield('content')
