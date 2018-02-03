@@ -146,11 +146,11 @@ class AutorunneradvertisementspaceController extends Controller {
 			$data['user_id'] = \Auth::user()->id;
 			if($request->input('id') =='')
 			{
-				$data['created'] = date('y-m-d h:i:s');
+				$data['created_at'] = date('y-m-d h:i:s');
 			}
 			else
 			{
-				$data['updated'] = date('y-m-d h:i:s');
+				$data['updated_at'] = date('y-m-d h:i:s');
 			}
 			$id = $this->model->insertRow($data , $request->input('id'));
 			
