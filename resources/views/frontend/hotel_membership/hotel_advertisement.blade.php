@@ -199,13 +199,14 @@ function changeprice(type)
 	}
 }
 
-$(document).on('change', '#qtypac', function () {
-	var qty = $(this).val();
-	var prc = $.trim($('#pacprice').val());
-	$('#fnlprc .fprice').html((prc * qty).toFixed(2));
-	$('#finalpacprice').val((prc * qty).toFixed(2));
+$(document).ready(function () {
+	$(document).on('change', '#qtypac', function () {
+		var qty = $(this).val();
+		var prc = $.trim($('#pacprice').val());
+		$('#fnlprc .fprice').html((prc * qty).toFixed(2));
+		$('#finalpacprice').val((prc * qty).toFixed(2));
+	});
 });
-
  </script>
 
 
