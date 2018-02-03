@@ -110,6 +110,7 @@ class PersonalizedserviceController extends Controller {
         $this->data['destinations'] = $temp['sub_destinations'];
         $this->data['inspirations'] = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_custom_title')->where('category_published', 1)->where('parent_category_id', 627)->get();
         $this->data['experiences'] = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_custom_title')->where('category_published', 1)->where('parent_category_id', 8)->get();
+        $this->data['reservation_agents'] = \DB::table('tb_users')->select('id', 'first_name', 'last_name')->where('group_id', 4)->where('active', 1)->get();
 
         return view('personalizedservice.form', $this->data);
     }
