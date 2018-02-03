@@ -134,7 +134,7 @@
                          
 
                         </div>
-                        <div class="pull-right" style="width:80%">
+                        <div class="pull-right" style="width:70%">
                             <p>Package Duration :: {{$package->package_duration}} {{$package->package_duration_type}} </p>  
                             <p>Package Details: {!! nl2br($package->package_description) !!}</p>
 
@@ -142,12 +142,18 @@
                                     {!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($package->package_price,2) }} 
                             
                                 
-                               <a href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->package_price }});" class="customGoldBtn btn nextBtn">Add to cart</a>
+                     
                          
-                            
+                              <div class="pull-right" >
+                                <div>
+                                     <a href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->package_price }});" class="customGoldBtn btn nextBtn">Add to cart</a>
+                                 
+                                   </div>
+                            </div>
                          
                         </div>
                         </div>
+                       
                    </div>
               </div>
             </div>

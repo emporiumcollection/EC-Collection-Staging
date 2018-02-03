@@ -105,10 +105,10 @@
          <div class="row">
                 <div >
                     <ul class="list-group" >
-                                <li class="list-group-item"><a class="active" href="#">Get Inspired</a></li>
-                                <li class="list-group-item"><a href="#">Edit My Personalized Services</a></li>
-                                <li class="list-group-item"><a href="{{ URL::to('personalized-service')}}">Create New Personalized Services</a></li>
-                                <li class="list-group-item"><a href="#">List Personalized Services</a></li>
+                            <li class="list-group-item"><a class="active" href="#">Get Inspired</a></li>
+                            <li class="list-group-item"><a href="#">Edit My Personalized Services</a></li>
+                            <li class="list-group-item"><a href="{{ URL::to('personalized-service')}}">Create New Personalized Services</a></li>
+                            <li class="list-group-item"><a href="#">List Personalized Services</a></li>
                                 
                             </ul>
                
