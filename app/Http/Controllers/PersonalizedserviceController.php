@@ -185,11 +185,8 @@ class PersonalizedserviceController extends Controller {
             $data['destinations'] = implode(', ', $data['destinations']);
             $data['inspirations'] = implode(', ', $data['inspirations']);
             $data['experiences'] = implode(', ', $data['experiences']);
-            
-            echo '<pre>';
-            print_r($data);
-            echo '</pre>';
-            die;
+            $data['reservation_agent'] = $request->input('reservation_agent');
+            $data['status'] = $request->input('status');
             
             $id = $this->model->insertRow($data, $request->input('ps_id'));
 
