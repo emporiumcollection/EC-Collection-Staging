@@ -102,7 +102,7 @@
         </div>-->
 
         <!--Social share end-->
-        <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" >TOP</a>
+        <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" >Top</a>
         <script>
             $(document).ready(function () {
                 $(".open-social-share").click(function (event) {
