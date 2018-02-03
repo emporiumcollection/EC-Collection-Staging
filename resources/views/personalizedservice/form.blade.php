@@ -190,6 +190,7 @@
                             <label for="reservation_agent" class=" control-label col-md-4 text-left"> Reservation Agent </label>
                             <div class="col-md-6">
                                 <select class="form-control" name="reservation_agent">
+                                    <option value="0"></option>
                                     <?php
                                     if (!empty($reservation_agents)) {
                                         foreach ($reservation_agents as $reservation_agent) {

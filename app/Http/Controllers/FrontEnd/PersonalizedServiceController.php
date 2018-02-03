@@ -92,6 +92,8 @@ class PersonalizedServiceController extends Controller {
                         'inspirations' => implode(', ', $request->input('inspirations')),
                         'experiences' => implode(', ', $request->input('experiences')),
                         'note' => $request->input('note'),
+                        'reservation_agent' => '0',
+                        'status' => 'Pending',
                         'created' => date("Y-m-d H:i:s"),
                         'updated' => date("Y-m-d H:i:s")
                     );
