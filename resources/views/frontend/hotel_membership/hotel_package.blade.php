@@ -171,6 +171,31 @@
         @endif
 </div>
 <!-- end accrodan code -->
+
+
+<!-- contact email aside -->
+ <script>
+
+
+function addToCartHotel(PackageID,PackagePrice){
+    
+
+        var PackagePrice=PackagePrice;
+        var PackageID=PackageID;
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            alert("Package added to cart successfully.");
+        }
+        };
+        xhttp.open("GET", "{{ URL::to('hotel/add_package_to_cart')}}?cart[package][id]="+PackageID+"&cart[package][price]="+PackagePrice+"&cart[package][qty]=1&cart[package][type]=hotel", true);
+        xhttp.send();
+
+}
+
+
+ </script>
+
   
 @endsection
 
@@ -231,27 +256,5 @@
         <!-- images loaded -->
         <script type="text/javascript" src="{{ asset('sximo/assets/memform/js/imagesloaded.pkgd.min.js')}}"></script>
 @endsection
- <!-- contact email aside -->
- <script>
-
-
-function addToCartHotel(PackageID,PackagePrice){
-    
-
-        var packagePrice=packagePrice;
-        var PackageID=PackageID;
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            alert("Package added to cart successfully.");
-        }
-        };
-        xhttp.open("GET", "{{ URL::to('hotel/add_package_to_cart')}}?cart[package][id]="+PackageID+"&cart[package][price]="+PackagePrice+"&cart[package][qty]=1&cart[package][type]=hotel", true);
-        xhttp.send();
-
-}
-
-
- </script>
-
+ 
 

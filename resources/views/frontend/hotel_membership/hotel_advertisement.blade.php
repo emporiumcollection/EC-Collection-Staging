@@ -92,7 +92,7 @@
 							<td id="fnlprc">
 							<input type="hidden" name="finalpacprice" id="finalpacprice" value="{{ number_format($package->space_cpc_price,2) }}" />
 							{!! isset($currency->content)?$currency->content:'$' !!} <span class="fprice">{{ number_format($package->space_cpc_price,2) }}</span></td>
-							<td><a class="customGoldBtn btn nextBtn" rel="{{$package->id}}"> <i class="fa fa-shopping-cart" aria-hidden="true"></i> </a>  <a class="customGoldBtn btn nextBtn"> <i class="fa fa-trash" aria-hidden="true"></i> </a> </td>
+							<td><a class="customGoldBtn btn nextBtn" rel="{{$package->id}}" onclick="addToCartHotel({{$package->id}},{{ number_format($package->space_cpc_price,2) }})"> <i class="fa fa-shopping-cart" aria-hidden="true"></i> </a>  <a class="customGoldBtn btn nextBtn"> <i class="fa fa-trash" aria-hidden="true"></i> </a> </td>
 						</tr>                             
 		 			@endforeach	
 				</tbody>
@@ -104,6 +104,54 @@
 		</div>
 
   </div>
+
+
+   <!-- contact email aside -->
+ <script>
+
+
+function addToCartHotel(PackageID,PackagePrice){
+    
+alert(PackagePrice);
+        var PackagePrice=PackagePrice;
+        var PackageID=PackageID;
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            alert("Package added to cart successfully.");
+        }
+        };
+        xhttp.open("GET", "{{ URL::to('hotel/add_package_to_cart')}}?cart[package][id]="+PackageID+"&cart[package][price]="+PackagePrice+"&cart[package][qty]=1&cart[package][type]=advert", true);
+        xhttp.send();
+
+}
+
+function changeprice(type)
+{
+    if(type!='')
+    {
+        $('#CPC').hide();
+        $('#CPD').hide();
+        $('#CPM').hide();
+        $('#'+type).show();
+        var prc = $.trim($('#' + type + ' .price').text());
+        $('#pacprice').val(prc);
+        var qty = $('#qtypac').val();
+        $('#fnlprc .fprice').html((prc * qty).toFixed(2));
+        $('#finalpacprice').val((prc * qty).toFixed(2));
+    }
+}
+
+$(document).ready(function () {
+    $(document).on('change', '#qtypac', function () {
+        var qty = $(this).val();
+        var prc = $.trim($('#pacprice').val());
+        $('#fnlprc .fprice').html((prc * qty).toFixed(2));
+        $('#finalpacprice').val((prc * qty).toFixed(2));
+    });
+});
+ </script>
+
 @endsection
 
 
@@ -163,50 +211,5 @@
         <!-- images loaded -->
         <script type="text/javascript" src="{{ asset('sximo/assets/memform/js/imagesloaded.pkgd.min.js')}}"></script>
 @endsection
- <!-- contact email aside -->
- <script>
-
-
-function addToCartHotel(packagePrice,PackageID){
-    
-
-        var packagePrice=packagePrice;
-        var PackageID=PackageID;
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            alert("Package added to cart successfully.");
-        }
-        };
-        xhttp.open("GET", "{{ URL::to('hotel/add_package_to_cart')}}?cart[package][id]="+PackageID+"&cart[package][price]="+packagePrice+"&cart[package][qty]=1&cart[package][type]=hotel", true);
-        xhttp.send();
-
-}
-
-function changeprice(type)
-{
-	if(type!='')
-	{
-		$('#CPC').hide();
-		$('#CPD').hide();
-		$('#CPM').hide();
-		$('#'+type).show();
-		var prc = $.trim($('#' + type + ' .price').text());
-		$('#pacprice').val(prc);
-		var qty = $('#qtypac').val();
-		$('#fnlprc .fprice').html((prc * qty).toFixed(2));
-		$('#finalpacprice').val((prc * qty).toFixed(2));
-	}
-}
-
-$(document).ready(function () {
-	$(document).on('change', '#qtypac', function () {
-		var qty = $(this).val();
-		var prc = $.trim($('#pacprice').val());
-		$('#fnlprc .fprice').html((prc * qty).toFixed(2));
-		$('#finalpacprice').val((prc * qty).toFixed(2));
-	});
-});
- </script>
 
 
