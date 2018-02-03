@@ -35,7 +35,7 @@ input[type=radio]:checked + label>img {
   <!-- Nav tabs <i class="fa fa-bullhorn" aria-hidden="true"></i></div><span>Ads -->
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation"><a href="{{URL::to('hotel/propertymanagement')}}">Account Settings</a></li>
-	<li role="presentation"  class="active"><a href="{{URL::to('hotel/propertymanagement/list')}}" aria-controls="propertymanagementlist" role="tab" data-toggle="tab">Property Management</a></li>
+	<li role="presentation"  class="active"><a href="{{URL::to('hotel/propertymanagement')}}" aria-controls="propertymanagementlist" role="tab" data-toggle="tab">Property Management</a></li>
   </ul>
 
   <!-- Tab panes -->
@@ -60,7 +60,7 @@ input[type=radio]:checked + label>img {
 							<td>{{$prop->city}}</td>
 							<td>{{$prop->website}}</td>
 							<td>{{$prop->email}}</td>
-							<td><a  href="{{ URL::to('properties/update/'.$prop->id.'?return='.$return) }}" class="tips btn btn-xs btn-success" title="{{ \Lang::get('core.btn_edit') }}"><i class="fa fa-edit "></i></a></td>
+							<td><a  href="{{ URL::to('hotel/propertymanagement/property-detail/'.$prop->id.'?return='.$return) }}" class="tips btn btn-xs btn-success" title="{{ \Lang::get('core.btn_edit') }}"><i class="fa fa-edit "></i></a></td>
 						</tr>
 					@endforeach
 				@endif

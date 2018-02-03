@@ -88,8 +88,8 @@
                                 <span class="order-total-label">Order Total</span>
                                 <span class="cart-subtotal-amout cart-total-amout">{!! isset($currency->content)?$currency->content:'$' !!}  {{number_format($orderTotal,2)}}</span>
                             </div>
-                            <div class="processed-to-checkout ">
-                                <a class="customGoldBtn btn nextBtn pull-right" href="{{url('hotel/checkout')}}">Proceed To Checkout</a>
+                            <div class="col-sm-12 text-right">
+                                <a class="customGoldBtn btn nextBtn " href="{{url('hotel/checkout')}}">Proceed To Checkout</a>
                             </div>
                         </div>
                     </div>
@@ -98,7 +98,7 @@
                     	
 	                    <div class="cart-big-border">
                     	<div class="cart-small-border"></div>
-	                    <div class="processed-to-checkout">
+	                    <div class="col-sm-12 text-right">
                     		<a class="customGoldBtn btn nextBtn" href="{{url('hotel/package')}}">Continue To Choose Packages </a>
                     	</div>
                     @endif
@@ -149,6 +149,7 @@
     font-weight: bold;
     font-family: Geomanist-Regular;
 }
+.customGoldBtn .btn i { margin-left: 0;}
 </style>
 @endsection
 

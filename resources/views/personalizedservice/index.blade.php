@@ -94,7 +94,7 @@
                             <td>'.$row->note.'</td>';
                     ?>
                             <td>
-                                @if($access['is_detail'] ==1)
+                                @if($access['is_detail'] ==1 && 0)
                                 <a href="{{ URL::to('personalizedservice/show/'.$row->ps_id.'?return='.$return)}}" class="tips btn btn-xs btn-primary" title="{{ Lang::get('core.btn_view') }}"><i class="fa  fa-search "></i></a>
                                 @endif
                                 @if($access['is_edit'] ==1)

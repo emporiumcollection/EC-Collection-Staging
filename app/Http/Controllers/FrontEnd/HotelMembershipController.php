@@ -182,6 +182,8 @@ class HotelMembershipController extends Controller {
     }
 
     public function advertisementPackage(Request $request) {
+        $this->data['packages'] = \DB::table('tb_advertisement_space')->where('space_status', 1)->get();
+         
        return view('frontend.hotel_membership.hotel_advertisement', $this->data);
     }
 
