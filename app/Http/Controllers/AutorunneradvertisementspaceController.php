@@ -138,13 +138,78 @@ class AutorunneradvertisementspaceController extends Controller {
 
 	function postSave( Request $request)
 	{
-		
+		$id = $request->input('id');
 		$rules = $this->validateForm();
 		$validator = Validator::make($request->all(), $rules);	
 		if ($validator->passes()) {
 			$data = $this->validatePost('tb_autorunneradvertisementspace');
-				
+			$data['user_id'] = \Auth::user()->id;
+			if($request->input('id') =='')
+			{
+				$data['created'] = date('y-m-d h:i:s');
+			}
+			else
+			{
+				$data['updated'] = date('y-m-d h:i:s');
+			}
 			$id = $this->model->insertRow($data , $request->input('id'));
+			
+			if($id)
+			{
+				$baseprc = number_format(trim($request->input('base_price')), 2, '.', '');
+				$prcptg = (trim($request->input('price_percentage'))!='') ? number_format(trim($request->input('price_percentage')), 2, '.', '') : '';
+				$fnlprc = ($prcptg!='') ? $baseprc + ($baseprc * $prcptg / 100) : $baseprc; 
+				$cates = \DB::table('tb_categories')->select('id')->first();
+				if(!empty($cates))
+				{
+					foreach($cates as $cat)
+					{
+						$slug = \SiteHelpers::seoUrl(trim($request->input('name')));
+						$exha = false;
+						for($f=1;$exha!=true;$f++)
+						{
+							$chkspaceslug = \DB::table('tb_advertisement_space')->where('space_slug', $slug)->count();
+							if ($chkspaceslug>0)
+							{
+								$slug = $slug.'('.$f.')';
+							}
+							else
+							{
+								$slug = $slug;
+								$exha = true;
+							}
+						}
+						$spdata['user_id'] = \Auth::user()->id;
+						$spdata['space_name'] = trim($request->input('name'));
+						$spdata['space_slug'] = trim($slug);
+						$spdata['space_title'] = trim($request->input('name'));
+						$spdata['space_cpc_price'] = number_format($fnlprc, 2, '.', '');
+						$spdata['space_cpc_num_clicks'] = trim($request->input('target_click'));
+						$spdata['space_cpm_price'] = number_format($fnlprc, 2, '.', '');
+						$spdata['space_cpm_num_view'] = trim($request->input('target_view'));
+						$spdata['space_cpd_price'] = number_format($fnlprc, 2, '.', '');
+						$spdata['space_cpm_num_days'] = trim($request->input('target_days'));
+						$spdata['space_position'] = trim($request->input('position'));
+						$spdata['space_template'] = 'slider';
+						$spdata['space_max_ads'] = 1;
+						$spdata['space_specific_devices'] = implode(',',[1,2,3]);
+						$spdata['space_category'] = $cat->id;
+						$spdata['space_status'] = 1;
+						
+						$checkspace = \DB::table('tb_advertisement_space')->select('id')->where('space_position',trim($request->input('position')))->where('space_category',$cat->id)->first();
+						if(!empty($checkspace))
+						{
+							$spdata['updated_at'] = date('y-m-d h:i:s');
+							\DB::table('tb_advertisement_space')->where('id',$checkspace->id)->update($spdata);
+						}
+						else
+						{
+							$spdata['created_at'] = date('y-m-d h:i:s');
+							\DB::table('tb_advertisement_space')->insertGetId($spdata);
+						}
+					}
+				}
+			}
 			
 			if(!is_null($request->input('apply')))
 			{
