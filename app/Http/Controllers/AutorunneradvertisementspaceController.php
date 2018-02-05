@@ -164,14 +164,24 @@ class AutorunneradvertisementspaceController extends Controller {
 				{
 					foreach($cates as $cat)
 					{
+						$checkspace = \DB::table('tb_advertisement_space')->select('id')->where('space_position',trim($request->input('position')))->where('space_category',$cat->id)->first();
+						
 						$slug = \SiteHelpers::seoUrl(trim($request->input('name')));
+						$tslug = \SiteHelpers::seoUrl(trim($request->input('name')));
 						$exha = false;
 						for($f=1;$exha!=true;$f++)
 						{
-							$chkspaceslug = \DB::table('tb_advertisement_space')->where('space_slug', $slug)->count();
+							if(!empty($checkspace))
+							{
+								$chkspaceslug = \DB::table('tb_advertisement_space')->where('space_slug', $slug)->where('id', '!=', $checkspace->id)->count();
+							}
+							else
+							{
+								$chkspaceslug = \DB::table('tb_advertisement_space')->where('space_slug', $slug)->count();
+							}
 							if ($chkspaceslug>0)
 							{
-								$slug = $slug.'('.$f.')';
+								$slug = $tslug.'-'.$f;
 							}
 							else
 							{
@@ -196,7 +206,7 @@ class AutorunneradvertisementspaceController extends Controller {
 						$spdata['space_category'] = $cat->id;
 						$spdata['space_status'] = 1;
 						
-						$checkspace = \DB::table('tb_advertisement_space')->select('id')->where('space_position',trim($request->input('position')))->where('space_category',$cat->id)->first();
+						
 						if(!empty($checkspace))
 						{
 							$spdata['updated_at'] = date('y-m-d h:i:s');
