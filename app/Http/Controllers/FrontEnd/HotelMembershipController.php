@@ -270,10 +270,9 @@ class HotelMembershipController extends Controller {
      /*
      * For Get Advertisement Packages Price
     */
-    public function getAdvertPrice(Request $request){
-
-        $cartPkgType = $request->input('cart')['package']['id'].'_'.$request->input('cart')['package']['type'];    
-        $request->session()->push('hotel_cart.'.$cartPkgType,$request->input('cart'));
+    public function getAdvertPriceAjax(Request $request){
+        
+        $dataPrice = \DB::table('tb_categories')->select('category_name','id')->get();
 
 
     }

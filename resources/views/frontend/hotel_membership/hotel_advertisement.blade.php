@@ -93,7 +93,26 @@
 <script>
 
 
-function changeprice(type){
+function changePrice(type){
+
+    if($('#ads_category_id').val()!='' && $('#ads_position').val()!='' && $('#ads_pacakge_type').val()!=''){
+        $.ajax({
+                url: "{{ url('hotel/getAdvertPrice')}}",
+                type: "post",
+                data: {
+                    'category_id' : $('input[name="ads_category_id"]').val(),
+                    'ads_type': $('input[name="ads_pacakge_type"]').val(), 
+                    'ads_position': $('input[name="ads_position"]').val()
+                },
+                dataType: "json",
+                success: function (data) {
+                    $('[data-ads-price="list"] span').html();
+                    $('[data-ads-price="list"] span').html();
+                    $('[data-ads-price="list"] span').html();
+                    $('[data-ads-price="list"] span').html();
+                }
+            });
+    }
     if(type!='')
     {
         $('#CPC').hide();
@@ -111,10 +130,6 @@ function changeprice(type){
 $(document).ready(function () {
     
     $(document).on('change', '#ads_pacakge_type', function () {
-        /*var qty = $(this).val();
-        var prc = $.trim($('#pacprice').val());
-        $('#fnlprc .fprice').html((prc * qty).toFixed(2));
-        $('#finalpacprice').val((prc * qty).toFixed(2));*/
         if($(this).val()=='cpd'){
             $('[data-ads-days="box"]').show();
             $('input[name="ads_days"]').prop('disabled', false);
