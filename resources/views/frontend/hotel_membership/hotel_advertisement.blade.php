@@ -77,14 +77,14 @@
         <div class="col-md-6 col-sm-12 ">
             {!! Form::label('ads_package_price', 'Price')  !!}
 
-            <div data-ads-price="list" class=" cart-total-amout"> {!! isset($currency->content)?$currency->content:'$' !!} <span>0</span></div>
+            <div data-ads-price="list"> {!! isset($currency->content)?$currency->content:'$' !!} <span>0</span></div>
         </div>
     </div>
 
     <div class="row p-t-50">
-        <div class="col-sm-12 text-right">Total : {!! isset($currency->content)?$currency->content:'$' !!}</div>
+        <div class="col-sm-12 text-right ads-total-price p-b-50">Total : {!! isset($currency->content)?$currency->content:'$' !!} <span>0</span></div>
         <div class="col-sm-12 text-right">
-            <button class="customGoldBtn btn nextBtn cursor" data-ads-action="addToCartAdvert">Add To Cart & Continue  </button> <a class="customGoldBtn btn nextBtn" href="{{url('hotel/cart')}}">Continue  </a>
+            <button class="customGoldBtn btn nextBtn cursor" disabled="" data-ads-action="addToCartAdvert">Add To Cart & Continue  </button> <a class="customGoldBtn btn nextBtn" href="{{url('hotel/cart')}}">Continue  </a>
         </div>
     </div>
 </div>
@@ -219,6 +219,7 @@ $(document).ready(function () {
 .customGoldBtn .btn i { margin-left: 0;}
 .p-t-50{padding-top: 50px;}
 .p-b-50{padding-bottom: 50px;}
+.ads-total-price{ font-size: 20px; }
 </style>
 @endsection
 
