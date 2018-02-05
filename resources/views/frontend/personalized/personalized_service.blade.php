@@ -3,12 +3,13 @@
 @section('css')
 <link href="{{ asset('sximo/assets/css/chosen.css')}}" rel="stylesheet" type="text/css"/>
 <link href="{{ asset('sximo/assets/css/personalized.css')}}" rel="stylesheet" type="text/css"/>
+<link href="{{ asset('sximo/assets/memform/css/custom-ai.css')}}" rel="stylesheet" type="text/css"/>
 @stop
 @section('content')
         <div class="wrapper">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="header-logo-image">
+<!--                    <div class="header-logo-image">
                         <img class="img-responsive" src="assets/images/logo-design_1_1.Pampering" alt=""/>
                     </div>
                     <div class="top-progress-bar">
@@ -21,7 +22,29 @@
                             <li>Details</li>
                             <li>Contact Details</li>
                         </ul>
+                    </div>-->
+                    <!-- steps start -->
+                    <div class="stepwizard">
+                        <div class="stepwizard-row setup-panel">
+                            <div class="stepwizard-step">
+                                <a href="#step-1" type="button" class="btn btn-primary btn-circle">1</a>
+                                <p>Step 1</p>
+                            </div>
+                            <div class="stepwizard-step">
+                                <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
+                                <p>Step 2</p>
+                            </div>
+                            <div class="stepwizard-step">
+                                <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
+                                <p>Step 3</p>
+                            </div>
+                            <div class="stepwizard-step">
+                                <a href="#step-4" type="button" class="btn btn-default btn-circle" disabled="disabled">4</a>
+                                <p>Step 4</p>
+                            </div>
+                        </div>
                     </div>
+                    <!-- steps start -->
              
                         <div class="col-md-12 col-sm-8">
                             <form action="{{URL::to('personalized-service/save')}}" method="POST">
