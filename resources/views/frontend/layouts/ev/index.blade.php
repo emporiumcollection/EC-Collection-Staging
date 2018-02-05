@@ -533,7 +533,7 @@
 </head>
 <body id="main" class="hotel">
     <div class="wrapper">
-        <div class="container-fluid">
+        <div class="container-fluid responsiveFluid">
             <div class="row">
                 <header>
                     <!-- back and lock button -->
@@ -631,6 +631,18 @@
                             @endif
                             <div class="previous-page-screen-short-container"></div>
                         </div>
+                        <!-- AIC Harman email phone sidebar add start -->
+                                    
+                                    <aside class="site-aside">
+                                        <div class="contact-aside">
+                                            <ul class="contact-aside-list">
+                                                <li class="contact-list-item contact-phone"><a href="#"><i class="fa fa-phone asideIclass" aria-hidden="true"></i> +1 934 451 1317</a></li>
+                                                <li class="contact-list-item contact-email"><a href="#"><i class="fa fa-envelope asideIclass" aria-hidden="true"></i> reservations@emporium-voyage.com</a></li>
+                                            </ul>
+                                        </div>
+                                    </aside>
+                                    
+                                    <!-- AIC Harman email phone sidebar add end-->
                     </div>
                         
                     @include('layouts/elliot/ai_login_sign_up_pop_up')
@@ -719,18 +731,7 @@
                                              </div>
                                         </form>
                                     </div>
-                                    <!-- AIC Harman email phone sidebar add start -->
                                     
-                                    <aside class="site-aside">
-                                        <div class="contact-aside">
-                                            <ul class="contact-aside-list">
-                                                <li class="contact-list-item contact-phone"><a href="#"><i class="fa fa-phone asideIclass" aria-hidden="true"></i> +1 934 451 1317</a></li>
-                                                <li class="contact-list-item contact-email"><a href="#"><i class="fa fa-envelope asideIclass" aria-hidden="true"></i> reservations@emporium-voyage.com</a></li>
-                                            </ul>
-                                        </div>
-                                    </aside>
-                                    
-                                    <!-- AIC Harman email phone sidebar add end-->
                                     
                                 </div>
                             </section>
