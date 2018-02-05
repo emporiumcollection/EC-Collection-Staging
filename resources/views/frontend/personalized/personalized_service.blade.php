@@ -14,42 +14,41 @@
                     <div class="top-progress-bar">
                         <div class="progress-bar-inner"></div>
                     </div>
-                    <div class="top-nav-align">
+<!--                    <div class="top-nav-align">
                         <ul class="booking-navigation-menues">
                             <li class="active">Holiday Destination</li>
                             <li>Travel Style</li>
                             <li>Details</li>
                             <li>Contact Details</li>
                         </ul>
-                        <ul class="nav nav-pills">
-                            <li class="active"><a data-toggle="pill" href="#ps-holiday-destination">Holiday Destination</a></li>
-                            <li><a data-toggle="pill" href="#ps-travel-style">Travel Style</a></li>
-                            <li><a data-toggle="pill" href="#ps-details">Details</a></li>
-                            <li><a data-toggle="pill" href="#ps-contact-details">Contact Details</a></li>
-                        </ul>
-                    </div>
+                    </div>-->
+                    <!-- new tabs start -->
+                    
+                    <div class="stepwizard">
+                                <div class="stepwizard-row setup-panel">
+                                    <div class="stepwizard-step">
+                                        <a href="#step-1" type="button" class="btn btn-primary btn-circle">1</a>
+                                        <p>Step 1</p>
+                                    </div>
+                                    <div class="stepwizard-step">
+                                        <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
+                                        <p>Step 2</p>
+                                    </div>
+                                    <div class="stepwizard-step">
+                                        <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
+                                        <p>Step 3</p>
+                                    </div>
+                                    <div class="stepwizard-step">
+                                        <a href="#step-4" type="button" class="btn btn-default btn-circle" disabled="disabled">4</a>
+                                        <p>Step 4</p>
+                                    </div>
+                                </div>
+                            </div>
+                    
+                    <!-- new tabs end -->
              
                         <div class="col-md-12 col-sm-8">
                             <form action="{{URL::to('personalized-service/save')}}" method="POST">
-                                
-                                 <!-- Harman new bootstrap tabs start -->
-                                
-                                <div class="tab-content">
-                                    <div id="ps-holiday-destination" class="tab-pane fade in active">
-                                        Holiday Destination Content
-                                    </div>
-                                    <div id="ps-travel-style" class="tab-pane fade">
-                                        Travel Style content
-                                    </div>
-                                    <div id="ps-details" class="tab-pane fade">
-                                        Details content
-                                    </div>
-                                    <div id="ps-contact-details" class="tab-pane fade">
-                                        Contact Details content
-                                    </div>
-                                </div>
-                                
-                                <!-- Harman new bootstrap tabs end -->
                                 
                                 <fieldset class="muti-form-align">
                                     <div class="centred-tab-align">
