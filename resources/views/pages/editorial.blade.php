@@ -1623,7 +1623,7 @@
                         @if(!empty($propertyDetail['propimage']))
                         <ul>
                             @foreach($propertyDetail['propimage'] as $propimg)
-							{{--*/ $igm = ImageCreateFromJpeg($propertyDetail['propimage_containerpath'].$propimg->file_name); /*--}}
+							{{--*/ $igm = ImageCreateFromJpeg($propertyDetail['propimage_thumbpath'].$propimg->file_name); /*--}}
 							
 							{{--*/ $thactualsize = imagesx($igm); $thactualsizey = imagesy($igm); /*--}}
 							
