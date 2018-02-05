@@ -14,25 +14,19 @@
                     <div class="top-progress-bar">
                         <div class="progress-bar-inner"></div>
                     </div>
-                    <div class="stepwizard">
-                        <div class="top-nav-align">
-                            <div class="stepwizard-step">
-                                <div class="stepwizard-row setup-panel">
-                                    <ul class="booking-navigation-menues">
-                                        <li class="active">Holiday Destination</li>
-                                        <li>Travel Style</li>
-                                        <li>Details</li>
-                                        <li>Contact Details</li>
-                                    </ul>
-                                    <ul class="nav nav-pills">
-                                        <li class="active btn btn-primary btn-circle"><a data-toggle="pill" href="#ps-holiday-destination">Holiday Destination</a></li>
-                                        <li><a class="btn btn-primary btn-circle" data-toggle="pill" href="#ps-travel-style">Travel Style</a></li>
-                                        <li><a class="btn btn-primary btn-circle" data-toggle="pill" href="#ps-details">Details</a></li>
-                                        <li><a class="btn btn-primary btn-circle" data-toggle="pill" href="#ps-contact-details">Contact Details</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="top-nav-align">
+                        <ul class="booking-navigation-menues">
+                            <li class="active">Holiday Destination</li>
+                            <li>Travel Style</li>
+                            <li>Details</li>
+                            <li>Contact Details</li>
+                        </ul>
+                        <ul class="nav nav-pills">
+                            <li class="active"><a data-toggle="pill" href="#ps-holiday-destination">Holiday Destination</a></li>
+                            <li><a data-toggle="pill" href="#ps-travel-style">Travel Style</a></li>
+                            <li><a data-toggle="pill" href="#ps-details">Details</a></li>
+                            <li><a data-toggle="pill" href="#ps-contact-details">Contact Details</a></li>
+                        </ul>
                     </div>
              
                         <div class="col-md-12 col-sm-8">
