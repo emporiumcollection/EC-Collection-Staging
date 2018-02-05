@@ -32,7 +32,6 @@
                         <div class="col-md-12 col-sm-8">
                             <form action="{{URL::to('personalized-service/save')}}" method="POST">
                                 
-                                
                                 <!-- Harman new bootstrap tabs start -->
                                 
                                 <div class="tab-content">
@@ -51,7 +50,6 @@
                                 </div>
                                 
                                 <!-- Harman new bootstrap tabs end -->
-                                
                                 
                                 <fieldset class="muti-form-align">
                                     <div class="centred-tab-align">
