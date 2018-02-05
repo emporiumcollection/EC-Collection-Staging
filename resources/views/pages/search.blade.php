@@ -113,7 +113,7 @@
             }
             
             .block-content.content {
-                width: 31px;
+                width: 33px;
                 float: right;
                 height: 27px;
                 margin-top: 0px;
@@ -588,7 +588,7 @@
                background-color: #fff;
        }
        .scrollbar1 {
-            max-height: 195px;
+            max-height: 178px;
             margin-bottom: 25px;
             overflow: auto;
         }
