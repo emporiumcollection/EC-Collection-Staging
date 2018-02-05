@@ -94,7 +94,7 @@
                                         </div>
                                     </div>
                                     <div class="clearfix"></div>
-                                    <input type="button" name="next" class="next action-button personalized-btn-deafult progress-bar-btn-increment" value="Continue" />
+                                    <input type="button" name="next" class="next action-button personalized-btn-deafult progress-bar-btn-increment nextBtn" value="Continue" />
                                 </fieldset>
                                 <fieldset class="hide-form muti-form-align" id="step-2">
                                     <div class="experience-page-align">
@@ -122,7 +122,7 @@
                                             <div class="clearfix"></div>
                                         </div>
                                     </div>
-                                    <input type="button" name="next" class="next action-button personalized-btn-deafult" value="Continue" />
+                                    <input type="button" name="next" class="next action-button personalized-btn-deafult nextBtn" value="Continue" />
                                     <div></div>
                                     <input type="button" name="previous" class="previous action-button  ps-basic-btn progress-bar-btn-decrement" value="Previous" />
                                 </fieldset>
@@ -151,7 +151,7 @@
                                             <div class="clearfix"></div>
                                         </div>
                                     </div>
-                                    <input type="button" name="next" class="next action-button personalized-btn-deafult progress-bar-btn-increment" value="Continue" />
+                                    <input type="button" name="next" class="next action-button personalized-btn-deafult progress-bar-btn-increment nextBtn" value="Continue" />
                                     <div></div>
                                     <input type="button" name="previous" class="previous action-button  ps-basic-btn" value="Previous" />
                                 </fieldset>
@@ -168,7 +168,7 @@
                                             <a class="custom-tooltip" href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Your callback date can be selected in last step"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
                                         </div>
                                     </div>
-                                    <input type="button" name="next" class="next action-button personalized-btn-deafult" value="Continue" />
+                                    <input type="button" name="next" class="next action-button personalized-btn-deafult nextBtn" value="Continue" />
                                     <div></div>
                                     <input type="button" name="previous" class="previous action-button  ps-basic-btn progress-bar-btn-decrement" value="Previous" />
                                 </fieldset>
@@ -232,7 +232,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <input type="button" name="next" class="next action-button personalized-btn-deafult" value="Continue" />
+                                    <input type="button" name="next" class="next action-button personalized-btn-deafult nextBtn" value="Continue" />
                                     <div></div>
                                     <input type="button" name="previous" class="previous action-button  ps-basic-btn" value="Previous" />
                                 </fieldset>
