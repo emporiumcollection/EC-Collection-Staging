@@ -28,19 +28,19 @@
                     <div class="stepwizard">
                                 <div class="stepwizard-row setup-panel">
                                     <div class="stepwizard-step">
-                                        <a href="#step-1" type="button" class="btn btn-primary btn-circle">1</a>
+                                        <a href="#step-1" type="button" class="btn btn-primary btn-circle holiday-destination">1</a>
                                         <p>Holiday Destination</p>
                                     </div>
                                     <div class="stepwizard-step">
-                                        <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
+                                        <a href="#step-2" type="button" class="btn btn-default btn-circle travel-style" disabled="disabled">2</a>
                                         <p>Travel Style</p>
                                     </div>
                                     <div class="stepwizard-step">
-                                        <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
+                                        <a href="#step-3" type="button" class="btn btn-default btn-circle details" disabled="disabled">3</a>
                                         <p>Details</p>
                                     </div>
                                     <div class="stepwizard-step">
-                                        <a href="#step-4" type="button" class="btn btn-default btn-circle" disabled="disabled">4</a>
+                                        <a href="#step-4" type="button" class="btn btn-default btn-circle conatct-details" disabled="disabled">4</a>
                                         <p>Contact Details</p>
                                     </div>
                                 </div>
@@ -50,7 +50,6 @@
              
                         <div class="col-md-12 col-sm-8">
                             <form action="{{URL::to('personalized-service/save')}}" method="POST">
-                                
                                 <fieldset class="muti-form-align">
                                     <div class="centred-tab-align">
                                         <div>
@@ -97,7 +96,7 @@
                                         </div>
                                     </div>
                                     <div class="clearfix"></div>
-                                    <input type="button" name="next" class="next action-button personalized-btn-deafult progress-bar-btn-increment" value="Continue" />
+                                    <input type="button" name="next"  data-next-id="travel-style" class="next action-button personalized-btn-deafult progress-bar-btn-increment" value="Continue" />
                                 </fieldset>
                                 <fieldset class="hide-form muti-form-align">
                                     <div class="experience-page-align">
@@ -125,7 +124,7 @@
                                             <div class="clearfix"></div>
                                         </div>
                                     </div>
-                                    <input type="button" name="next" class="next action-button personalized-btn-deafult" value="Continue" />
+                                    <input type="button" name="next"  data-next-id="travel-style" class="next action-button personalized-btn-deafult" value="Continue" />
                                     <div></div>
                                     <input type="button" name="previous" class="previous action-button  ps-basic-btn progress-bar-btn-decrement" value="Previous" />
                                 </fieldset>
@@ -154,7 +153,7 @@
                                             <div class="clearfix"></div>
                                         </div>
                                     </div>
-                                    <input type="button" name="next" class="next action-button personalized-btn-deafult progress-bar-btn-increment" value="Continue" />
+                                    <input type="button" name="next"  data-next-id="details" class="next action-button personalized-btn-deafult progress-bar-btn-increment" value="Continue" />
                                     <div></div>
                                     <input type="button" name="previous" class="previous action-button  ps-basic-btn" value="Previous" />
                                 </fieldset>
@@ -171,7 +170,7 @@
                                             <a class="custom-tooltip" href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Your callback date can be selected in last step"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
                                         </div>
                                     </div>
-                                    <input type="button" name="next" class="next action-button personalized-btn-deafult" value="Continue" />
+                                    <input type="button" name="next"  data-next-id="details" class="next action-button personalized-btn-deafult" value="Continue" />
                                     <div></div>
                                     <input type="button" name="previous" class="previous action-button  ps-basic-btn progress-bar-btn-decrement" value="Previous" />
                                 </fieldset>
@@ -235,7 +234,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <input type="button" name="next" class="next action-button personalized-btn-deafult" value="Continue" />
+                                    <input type="button" name="next"  data-next-id="details" class="next action-button personalized-btn-deafult" value="Continue" />
                                     <div></div>
                                     <input type="button" name="previous" class="previous action-button  ps-basic-btn" value="Previous" />
                                 </fieldset>
@@ -266,9 +265,9 @@
                                             <a class="custom-tooltip" href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="" data-original-title="Of course, we will let you know if the chosen travel period coincides with local holidays, festivals, high season or an unfavorable season."><i class="fa fa-info-circle" aria-hidden="true"></i></a>
                                         </div>
                                     </div>
-                                    <input type="button" name="next" class="next action-button personalized-btn-deafult" value="Continue" />
+                                    <input type="button" name="next" data-next-id="conatct-details" class="next action-button personalized-btn-deafult" value="Continue" />
                                     <div></div>
-                                    <input type="button" name="previous" class="previous action-button  ps-basic-btn" value="Previous" />
+                                    <input type="button" name="previous" data-prev-id="details" class="previous action-button  ps-basic-btn" value="Previous" />
                                 </fieldset>
                                 <fieldset class="hide-form muti-form-align">
                                     <div class="centred-tab-align">
@@ -373,6 +372,7 @@
                 $(".submit").click(function () {
                     return false;
                 })
+                
                 $('.personalized-service-checkbox-label').click(function (e) {
                     $(this).toggleClass('active').siblings().removeClass('active');
                 });
@@ -430,6 +430,17 @@
                 ).bind('datepicker-first-date-selected', function (event, obj) {
                     $(".get-checkout-date").val('');
                 });
+                
+                $(".next").click(function(){
+                    $('.stepwizard-step').find('a').attr("disabled","disabled");
+                    var next_value = $(this).data('next-id');
+                    $('.'+next_value).removeAttr('disabled');
+                 });
+                $(".previous").click(function(){
+                    $('.stepwizard-step').find('a').attr("disabled","disabled");
+                    var next_value = $(this).data('next-id');
+                    $('.'+next_value).removeAttr('disabled');
+                 });
             });
         </script>
 
