@@ -135,7 +135,29 @@ class UserorderController extends Controller {
 		$this->data['access']		= $this->access;
 		
 		$orderdetail = $this->data['row'];
-		$this->data['order_item_detail'] = \DB::table('tb_order_items')->where('order_id', $id)->get();
+		$order_item_detail = array();
+		$order_item = \DB::table('tb_order_items')->where('order_id', $id)->get();
+		if(!empty($order_item))
+		{
+			$o=0;
+			foreach($order_item as $oitem)
+			{
+				$order_item_detail[$o] = $oitem;
+				$order_item_detail[$o]->pckname = '';
+				$order_item_detail[$o]->pckprice = 0;
+				if($oitem->package_type=='Hotel')
+				{
+					$pchkdet = \DB::table('tb_packages')->select('package_title','package_price')->where('id', $oitem->package_id)->first();
+					if(!empty($pchkdet))
+					{
+						$order_item_detail[$o]->pckname = $pchkdet->package_title;
+						$order_item_detail[$o]->pckprice = $pchkdet->package_price;
+					}
+				}
+				$o++;
+			}
+		}
+		$this->data['order_item_detail'] = $order_item_detail;
 		
 		$this->data['userDetail'] = \DB::table('tb_user_company_details')->where('user_id', $orderdetail->user_id)->first();
 		

@@ -75,10 +75,34 @@
 		@if(!empty($order_item_detail))
 			<div id="item-pnl">
 				<div class="row items-pnl-head">
-					<div class="col-sm-3 col">PACKAGES</div>
-					<div class="col-sm-1 col">QTY</div>
-					<div class="col-sm-1 col">PRICE</div>
-					<div class="col-sm-7 col">DATA</div>
+					<div class="col-sm-1 col">No.</div>
+					<div class="col-sm-4 col">PACKAGES</div>
+					<div class="col-sm-3 col">QTY</div>
+					<div class="col-sm-4 col">PRICE</div>
+				</div>
+				{{--*/ 
+						$qty = 1;
+						$qtyPr = 1;
+					   $Totprice = 0;
+					/*--}}
+				@foreach($order_item_detail as $detail)
+					<div class="row items-pnl-body" id="item-row">
+						<div class="fieldwrapper">
+							<div class="col-sm-1 col">{{$detail->id}}</div>
+							<div class="col-sm-4 col"><b>{{$detail->pckname}}</div>
+							<div class="col-sm-3 col" style="text-align:center;">{{$qty}}</div>
+							<div class="col-sm-4 col" style="text-align:center;">&euro;{{$detail->pckprice}}</div>
+						</div>
+					</div>
+					{{--*/ $qtyPr = $detail->pckprice * $detail->qty;
+						$Totprice = $Totprice + $qtyPr;
+					/*--}}
+				@endforeach
+				<div class="row items-pnl-body" id="item-row">
+					<div class="fieldwrapper">
+						<div class="col-sm-11 col" style="text-align:right;">Gesammtsumme</div>
+						<div class="col-sm-1 col" style="text-align:center;">&euro;{{$Totprice}}</div>
+					</div>
 				</div>
 			</div>
 		@endif
