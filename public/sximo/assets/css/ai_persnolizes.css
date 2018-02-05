@@ -99,16 +99,36 @@
 	overflow: hidden;
         height: auto;
     }
+    .right-menus ul li {
+	list-style: none;
+    }
+    .right-menus ul {
+	padding: 0px;
+    }
+    .right-menus ul li a {
+	background: #252525;
+	border-bottom: 1px #414246 solid;
+        color: #fff;
+    }
     
     .hotels-logo h3.title {
 	padding: 25px 200px 10px 10px;
 	text-align: left;
+        background: #252525;
+        margin-bottom: 0px;
     }
+    
     .search-box {
 	background: none !important;
 	height: 28px !important;
 	margin-top: 0px;
 	padding: 15px 0px 0px 29px !important;
+    }
+    /* step wizard */
+    
+    .stepwizard {
+	margin-bottom: 25px;
+	margin-top: 60px;
     }
     
 }
@@ -148,16 +168,30 @@
 	overflow: hidden;
         height: auto;
     }
+    .right-menus ul li {
+	list-style: none;
+    }
+    .right-menus ul {
+	padding: 0px;
+    }
+    .right-menus ul li a {
+	background: #252525;
+	border-bottom: 1px #414246 solid;
+        color: #fff;
+    }
     
     .hotels-logo h3.title {
 	padding: 25px 200px 10px 10px;
 	text-align: left;
+        background: #252525;
+        margin-bottom: 0px;
     }
+    
     .search-box {
 	background: none !important;
 	height: 28px !important;
 	margin-top: 0px;
-	padright-menusding: 15px 0px 0px 29px !important;
+	padding: 15px 0px 0px 29px !important;
     }
     .sidenav .closebtn {
 	top: 15px;
@@ -191,6 +225,14 @@
     .EVMenu li a {
 	font-size: 27px !important;
     }
+    
+    
+    /* step wizard */
+    
+    .stepwizard {
+	margin-bottom: 25px;
+	margin-top: 60px;
+    }
    
 }
 
@@ -222,25 +264,6 @@
     }
     .vegasFooterSocial ul li {
 	margin-left: 14px !important;
-    }
-    
-   .right-menus {
-	overflow: hidden;
-        height: auto;
-    }
-    
-    .hotels-logo h3.title {
-	padding: 25px 200px 10px 10px;
-	text-align: left;
-    }
-    .search-box {
-	background: none !important;
-	height: 28px !important;
-	margin-top: 0px;
-	padding: 15px 0px 0px 29px !important;
-    }
-    .sidenav .closebtn {
-	top: 15px;
     }
     .editorial-res-side-nav-logo.hamburger-menu {
 	margin-top: 9px !important;

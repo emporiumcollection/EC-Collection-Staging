@@ -533,7 +533,7 @@
 </head>
 <body id="main" class="hotel">
     <div class="wrapper">
-        <div class="container-fluid">
+        <div class="container-fluid responsiveFluid">
             <div class="row">
                 <header>
                     <!-- back and lock button -->
