@@ -26,7 +26,7 @@
                     <!-- steps start -->
                     <div class="wizard-inner">
                 <div class="connecting-line"></div>
-                <ul class="nav nav-tabs" role="tablist">
+                <ul class="nav nav-tabs1" role="tablist">
 
                     <li role="presentation" class="active">
                         <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">

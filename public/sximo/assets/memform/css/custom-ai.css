@@ -405,7 +405,7 @@ a.plus {
     background: #fff;
 }
 
-    .wizard .nav-tabs {
+    .wizard .nav-tabs1 {
         position: relative;
         margin: 40px auto;
         margin-bottom: 0;
@@ -428,7 +428,7 @@ a.plus {
     z-index: 1;
 }
 
-.wizard .nav-tabs > li.active > a, .wizard .nav-tabs > li.active > a:hover, .wizard .nav-tabs > li.active > a:focus {
+.wizard .nav-tabs1 > li.active > a, .wizard .nav-tabs1 > li.active > a:hover, .wizard .nav-tabs1 > li.active > a:focus {
     color: #555555;
     cursor: default;
     border: 0;
