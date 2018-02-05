@@ -9,4 +9,4 @@ var config = {
 for (var selector in config) {
   $(selector).chosen(config[selector]);
 }
-$(".chosen-select-default").chosen();
+$(".chosen-select-default").chosen({ width: '100%' });
