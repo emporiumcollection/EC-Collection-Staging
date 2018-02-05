@@ -1623,7 +1623,10 @@
                         @if(!empty($propertyDetail['propimage']))
                         <ul>
                             @foreach($propertyDetail['propimage'] as $propimg)
-                            {{--*/ $thactualsize = imagesx($propertyDetail['propimage_thumbpath_dir'].$propimg->file_name); $thactualsizey = imagesy($propertyDetail['propimage_thumbpath_dir'].$propimg->file_name); /*--}}
+							{{--*/ $igm = ImageCreateFromJpeg($propertyDetail['propimage_containerpath'].$propimg->file_name); /*--}}
+							
+							{{--*/ $thactualsize = imagesx($igm); $thactualsizey = imagesy($igm); /*--}}
+							
                             @if($thactualsize>$thactualsizey)
                             <li class="{{($propertyDetail['propimage'][0]==$propimg) ? 'active' : ''}}">
                                 <div class="image editorial-image">
