@@ -140,7 +140,7 @@ $(document).ready(function () {
 
 
 
-function addToCartAdvert(){
+    function addToCartAdvert(){
         $.ajax({
             url: "{{ url('hotel/add_package_to_cart')}}",
             type: "post",
@@ -162,7 +162,8 @@ function addToCartAdvert(){
             }
         });
     }
- </script>
+
+</script>
 @endsection
 
 
