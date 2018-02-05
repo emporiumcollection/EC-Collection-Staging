@@ -746,7 +746,7 @@
                             
                             <div class="container">
                                 <div class="row">
-                                    <div class="header-navigation-container col-md-12">
+                                    <div class="header-navigation-container col-md-12 hidden-xs hidden-sm">
                                         <div class="row">
                                             <div class="col-md-12 col-sm-12">
                                                 @include('layouts/elliot/ai_navigation')

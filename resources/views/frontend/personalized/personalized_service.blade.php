@@ -11,7 +11,7 @@
 
 <!-- buttons -->
     <div class="col-md-12">
-        <div class="col-md-12 hidden-md hidden-lg">
+        <div class="col-md-4 hidden-md hidden-lg col-xs-4">
             <span class="hamburger-menu editorial-res-side-nav-logo hidden-md hidden-lg visible-xs visible-sm" onclick="openNav()"><img src="https://www.emporium-voyage.com/sximo/assets/images/Hamburger-Menu_1.png" alt=""></span>
         </div>
         <div class="col-md-4 col-xs-4">
@@ -554,5 +554,20 @@
                     });
                 </script>
         <!-- toggle responsive top bar end-->
+        
+        
+        <!-- responsive left menu toggle -->
 
+        <script>
+         function openNav() {
+                document.getElementById("editorial-siden-nav-res").style.width = "100%";
+            }
+
+            function closeNav() {
+                document.getElementById("editorial-siden-nav-res").style.width = "0";
+            }
+        </script>
+        
+        <!-- responsive left menu toggle end -->
+            
 @stop
