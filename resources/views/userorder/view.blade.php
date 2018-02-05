@@ -94,7 +94,7 @@
 							<div class="col-sm-4 col" style="text-align:center;">&euro;{{$detail->pckprice}}</div>
 						</div>
 					</div>
-					{{--*/ $qtyPr = $detail->pckprice * $detail->qty;
+					{{--*/ $qtyPr = $detail->pckprice * $qty;
 						$Totprice = $Totprice + $qtyPr;
 					/*--}}
 				@endforeach
