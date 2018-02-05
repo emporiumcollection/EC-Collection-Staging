@@ -69,83 +69,36 @@
             {!! Form::label('ads_start_date', 'Start Date')  !!}
             <input type="date" name="ads_start_date" id="ads_start_date" class="bg-white medium-input"> 
         </div>
-        </div>
+    
         <div class="col-md-6 col-sm-12 ">
-            {!! Form::label('ads_pacake_price', 'Price')  !!}
+            {!! Form::label('ads_package_price', 'Price')  !!}
             <span data-ads-price="list"></span>
         </div>
         <div class="col-md-6 col-sm-12 ">
-            {!! Form::label('ads_position', 'Choose Days')  !!}
-            <input type="number" name="ads_days" value="1" class="bg-white medium-input"> 
+            {!! Form::label('ads_days', 'Choose Days')  !!}
+            <input type="number" name="ads_days" value="1"  disabled="" class="bg-white medium-input"> 
         </div>
     </div>
+
     <div class="row p-t-50">
         <div class="col-sm-12 text-right">
-            <a class="customGoldBtn btn nextBtn" href="{{url('hotel/cart')}}">Continue  </a>
+            <div class="carttotal">
+                <span class="label-total">Total</span>
+                <span class="cart-subtotal-amout">{!! isset($currency->content)?$currency->content:'$' !!} </span>
+            </div>
+            <button class="customGoldBtn btn nextBtn cursor" data-ads-action="addToCartAdvert">Add To Cart & Continue  </button> <a class="customGoldBtn btn nextBtn" href="{{url('hotel/cart')}}">Continue  </a>
         </div>
     </div>
 </div>
-<?php /*
-    <div class="table-responsive">
-		<table class="table">
-			<thead>
-				<tr>
-					<td>Package</td>
-					<td>Type</td>
-					<td>Price</td>
-					<td>Quantity</td>
-					<td>Line Total</td>
-					<td></td>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>{{$package->space_title}}</td>
-					<td>
-						
-					</td>
-					<td>
-						<input type="hidden" name="pacprice" id="pacprice" value="{{ number_format($package->space_cpc_price,2) }}" />
-						<p id="CPC">{!! isset($currency->content)?$currency->content:'$' !!} <span class="price"> {{ number_format($package->space_cpc_price,2) }}</span></p>
-						<p id="CPM" class="disnon">{!! isset($currency->content)?$currency->content:'$' !!} <span class="price">{{ number_format($package->space_cpm_price,2) }}</span></p>
-						<p id="CPD" class="disnon">{!! isset($currency->content)?$currency->content:'$' !!}<span class="price"> {{ number_format($package->space_cpd_price,2) }}</span>
-						</p>
-					</td>
-					
-					<td><input type="number" id="qtypac" value="1" min="1" class="bg-white medium-input"/></td>
-					<td id="fnlprc">
-					<input type="hidden" name="finalpacprice" id="finalpacprice" value="{{ number_format($package->space_cpc_price,2) }}" />
-					{!! isset($currency->content)?$currency->content:'$' !!} <span class="fprice">{{ number_format($package->space_cpc_price,2) }}</span></td>
-					<td><a class="customGoldBtn btn nextBtn" rel="{{$package->id}}" onclick="addToCartHotel({{$package->id}},{{ number_format($package->space_cpc_price,2) }})"> <i class="fa fa-shopping-cart" aria-hidden="true"></i> </a>  <a class="customGoldBtn btn nextBtn"> <i class="fa fa-trash" aria-hidden="true"></i> </a> </td>
-				</tr>                             
-	 			
-			</tbody>
-		</table>
-	</div>
-	
 
-  </div>
-
-*/?>
 
  <script>
 
 
-function addToCartHotel(PackageID,PackagePrice){
-    
-alert(PackagePrice);
-        var PackagePrice=PackagePrice;
-        var PackageID=PackageID;
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            alert("Package added to cart successfully.");
-        }
-        };
-        xhttp.open("GET", "{{ URL::to('hotel/add_package_to_cart')}}?cart[package][id]="+PackageID+"&cart[package][price]="+PackagePrice+"&cart[package][qty]=1&cart[package][type]=advert", true);
-        xhttp.send();
 
-}
+
+
+
 
 function changeprice(type)
 {
@@ -164,14 +117,51 @@ function changeprice(type)
 }
 
 $(document).ready(function () {
+    
     $(document).on('change', '#qtypac', function () {
         var qty = $(this).val();
         var prc = $.trim($('#pacprice').val());
         $('#fnlprc .fprice').html((prc * qty).toFixed(2));
         $('#finalpacprice').val((prc * qty).toFixed(2));
     }); 
+   
+
+    $(document).on('click','[data-ads-action="addToCartAdvert"]',function(){
+
+        addToCartAdvert();
+    });
+
+    
+    //For set Defualt Start Date 
     document.getElementById("ads_start_date").valueAsDate = new Date(<?php echo date("Y, n - 1, d, H, i, s"); ?>);
+
+
 });
+
+
+
+function addToCartAdvert(){
+        $.ajax({
+            url: "{{ url('hotel/add_package_to_cart')}}",
+            type: "post",
+            data: {
+                'cart[package][id]' : 100,
+                'cart[package][price]':, 
+                'cart[package][content][ads_category_id]': $('input[name="ads_category_id"]').val(),
+                'cart[package][content][ads_position]': $('input[name="ads_position"]').val(),
+                'cart[package][content][ads_pacakge_type]': $('input[name="ads_pacakge_type"]').val(),
+                'cart[package][content][ads_start_date]': $('input[name="ads_start_date"]').val(),
+                'cart[package][content][ads_package_price]': $('input[name="ads_package_price"]').val(),
+                'cart[package][content][ads_package_total_price]':$('input[name="ads_package_total_price"]').val(),
+                'cart[package][content][ads_days]': $('input[name="ads_days"]').val(),
+                'cart[package][type]':'advert'
+            },
+            dataType: "json",
+            success: function (data) {
+                
+            }
+        });
+    }
  </script>
 @endsection
 
