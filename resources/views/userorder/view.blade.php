@@ -1,6 +1,27 @@
 @extends('layouts.app')
 
 @section('content')
+<link href="{{ asset('sximo/css/custom_ps.css')}}" rel="stylesheet">
+<style>
+	.input-group-addon {
+		background-color: #eee;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+	}
+	
+	#item-pnl .input-group-addon
+	{
+		padding:6px 9px;
+	}
+	.btn {
+		 height: 22px !important;
+	}
+	
+	#item-pnl .items-pnl-body {
+		border-top: 1px solid #ccc;
+	}
+	
+</style>
 <div class="page-content row">
     <!-- Page header -->
     <div class="page-header">
@@ -75,10 +96,34 @@
 		@if(!empty($order_item_detail))
 			<div id="item-pnl">
 				<div class="row items-pnl-head">
-					<div class="col-sm-3 col">PACKAGES</div>
-					<div class="col-sm-1 col">QTY</div>
-					<div class="col-sm-1 col">PRICE</div>
-					<div class="col-sm-7 col">DATA</div>
+					<div class="col-sm-1 col">No.</div>
+					<div class="col-sm-4 col">PACKAGES</div>
+					<div class="col-sm-3 col" style="text-align:center;">QTY</div>
+					<div class="col-sm-4 col" style="text-align:center;">PRICE</div>
+				</div>
+				{{--*/ 
+						$qty = 1;
+						$qtyPr = 1;
+					   $Totprice = 0;
+					/*--}}
+				@foreach($order_item_detail as $detail)
+					<div class="row items-pnl-body" id="item-row">
+						<div class="fieldwrapper">
+							<div class="col-sm-1 col">{{$detail->id}}</div>
+							<div class="col-sm-4 col"><b>{{$detail->pckname}}</div>
+							<div class="col-sm-3 col" style="text-align:center;">{{$qty}}</div>
+							<div class="col-sm-4 col" style="text-align:center;">&euro;{{$detail->pckprice}}</div>
+						</div>
+					</div>
+					{{--*/ $qtyPr = $detail->pckprice * $qty;
+						$Totprice = $Totprice + $qtyPr;
+					/*--}}
+				@endforeach
+				<div class="row items-pnl-body" id="item-row">
+					<div class="fieldwrapper">
+						<div class="col-sm-11 col" style="text-align:right;">Gesammtsumme</div>
+						<div class="col-sm-1 col" style="text-align:center;">&euro;{{$Totprice}}</div>
+					</div>
 				</div>
 			</div>
 		@endif
