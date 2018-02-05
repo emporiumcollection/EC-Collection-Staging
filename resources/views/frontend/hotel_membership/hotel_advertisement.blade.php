@@ -72,20 +72,24 @@
         
         <div class="col-md-6 col-sm-12 " data-ads-days="box" style="display: none;">
             {!! Form::label('ads_days', 'Choose Days')  !!}
-            <input type="number" name="ads_days" value="1"  disabled="" class="bg-white medium-input"> 
+            <input type="number" name="ads_days" value="1"  disabled="" class="bg-white medium-input">
+             <input type="hidden" data-ads-days="per-unit"> 
         </div>
         <div class="col-md-6 col-sm-12 ">
             {!! Form::label('ads_package_price', 'Price')  !!}
-
+            <input type="hidden" data-ads-price="per-unit">
             <div data-ads-price="list"> {!! isset($currency->content)?$currency->content:'$' !!} <span>0</span></div>
         </div>
     </div>
 
     <div class="row p-t-50">
-        <div class="col-sm-12 text-right ads-total-price p-b-50">Total : {!! isset($currency->content)?$currency->content:'$' !!} <span>0</span></div>
+        <div class="col-sm-12 text-right ads-total-price p-b-50" data-ads-price="total-list">Total : {!! isset($currency->content)?$currency->content:'$' !!} <span>0</span></div>
         <div class="col-sm-12 text-right">
+            <input type="hidden" data-ads_package_total_price="list-unit">
             <button class="customGoldBtn btn nextBtn cursor" disabled="" data-ads-action="addToCartAdvert">Add To Cart & Continue  </button> <a class="customGoldBtn btn nextBtn" href="{{url('hotel/cart')}}">Continue  </a>
         </div>
+        
+       
     </div>
 </div>
 
@@ -93,38 +97,43 @@
 <script>
 
 
-function changePrice(type){
+function changePrice(){
 
     if($('#ads_category_id').val()!='' && $('#ads_position').val()!='' && $('#ads_pacakge_type').val()!=''){
         $.ajax({
                 url: "{{ url('hotel/getAdvertPrice')}}",
                 type: "post",
                 data: {
-                    'category_id' : $('input[name="ads_category_id"]').val(),
-                    'ads_type': $('input[name="ads_pacakge_type"]').val(), 
-                    'ads_position': $('input[name="ads_position"]').val()
+                    'category_id' : $('select[name="ads_category_id"]').val(),
+                    'ads_position': $('select[name="ads_position"]').val()
                 },
                 dataType: "json",
                 success: function (data) {
-                    $('[data-ads-price="list"] span').html();
-                    $('[data-ads-price="list"] span').html();
-                    $('[data-ads-price="list"] span').html();
-                    $('[data-ads-price="list"] span').html();
+                    $('input[name="ads_days"]').val(1);
+                    $('[data-ads-days="per-unit"]').val(1);
+                    var price = 0;
+                    $('[data-ads-days="per-unit"]').val(0);
+                    if($('#ads_pacakge_type').val()=='cpc'){
+                        price = data.space_cpc_price;
+                    }
+                    if($('#ads_pacakge_type').val()=='cpm'){
+                        price = data.space_cpm_price;
+                        $('input[name="ads_days"]').val(data.space_cpm_num_days);
+                        $('[data-ads-days="per-unit"]').val(data.space_cpm_num_days);
+                    }
+                    if($('#ads_pacakge_type').val()=='cpd'){
+                        price = data.space_cpd_price;
+                    }
+                    $('[data-ads-price="list"] span').html((price).toFixed(2));
+                    $('[data-ads-price="total-list"] span').html((price).toFixed(2));
+                    $('[data-ads-price="per-unit"]').val(price);
+
+                    $('[data-ads-action="addToCartAdvert"]').prop('disabled', false);
+                    
                 }
             });
     }
-    if(type!='')
-    {
-        $('#CPC').hide();
-        $('#CPD').hide();
-        $('#CPM').hide();
-        $('#'+type).show();
-        var prc = $.trim($('#' + type + ' .price').text());
-        $('#pacprice').val(prc);
-        var qty = $('#qtypac').val();
-        $('#fnlprc .fprice').html((prc * qty).toFixed(2));
-        $('#finalpacprice').val((prc * qty).toFixed(2));
-    }
+
 }
 
 $(document).ready(function () {
@@ -137,15 +146,18 @@ $(document).ready(function () {
             $('[data-ads-days="box"]').hide();
             $('input[name="ads_days"]').prop('disabled', true);
         }
+        changePrice();
     }); 
 
+     $(document).on('change', '#ads_category_id, #ads_position', function () {
+        changePrice();
+    });  
     $(document).on('change', 'input[name="ads_days"]', function () {
-        /*var qty = $(this).val();
-        var prc = $.trim($('#pacprice').val());
-        $('#fnlprc .fprice').html((prc * qty).toFixed(2));
-        $('#finalpacprice').val((prc * qty).toFixed(2));*/
-
-        alert($(this).val());
+        var days = $(this).val();
+        var prc = $.trim($('[data-ads-price="per-unit"]').val());
+        var perUnit = prc/$.trim($('[data-ads-days="per-unit"]').val());
+        $('#finalpacprice').val((perUnit * days).toFixed(2));
+        $('[data-ads-price="total-list"] span').html((perUnit * days).toFixed(2));
     }); 
    
 
@@ -164,24 +176,26 @@ $(document).ready(function () {
 
 
     function addToCartAdvert(){
+        $('[data-ads-action="addToCartAdvert"]').prop('disabled', ture);
         $.ajax({
             url: "{{ url('hotel/add_package_to_cart')}}",
             type: "post",
             data: {
-                'cart[package][id]' : 100,
+                'cart[package][id]' : 'advert',
                 'cart[package][price]':0, 
+                'cart[package][content][id]': $('input[name="ads_pkg_id"]').val(),
                 'cart[package][content][ads_category_id]': $('input[name="ads_category_id"]').val(),
                 'cart[package][content][ads_position]': $('input[name="ads_position"]').val(),
                 'cart[package][content][ads_pacakge_type]': $('input[name="ads_pacakge_type"]').val(),
                 'cart[package][content][ads_start_date]': $('input[name="ads_start_date"]').val(),
-                'cart[package][content][ads_package_price]': $('input[name="ads_package_price"]').val(),
-                'cart[package][content][ads_package_total_price]':$('input[name="ads_package_total_price"]').val(),
+                'cart[package][content][ads_package_price]': $('[data-ads-price="per-unit"]').val(),
+                'cart[package][content][ads_package_total_price]':$('[data-ads_package_total_price="list-unit"]').val(),
                 'cart[package][content][ads_days]': $('input[name="ads_days"]').val(),
                 'cart[package][type]':'advert'
             },
             dataType: "json",
             success: function (data) {
-                
+                location.href='{{url("hotel/cart")}}';
             }
         });
     }

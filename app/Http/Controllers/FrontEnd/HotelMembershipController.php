@@ -272,7 +272,8 @@ class HotelMembershipController extends Controller {
     */
     public function getAdvertPriceAjax(Request $request){
         
-        $dataPrice = \DB::table('tb_categories')->select('category_name','id')->get();
+        $dataPrice = \DB::table('tb_advertisement_space')->select('space_title','id','space_cpm_price','space_cpd_price','space_cpc_price','space_cpm_num_days')->where('space_category','=',$request->input('category_id'))->where('space_position','=',$request->input('ads_position'))->first();
+        return response()->json($dataPrice);
 
 
     }
