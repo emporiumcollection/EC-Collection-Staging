@@ -5,7 +5,7 @@
 <link href="{{ asset('sximo/assets/css/personalized.css')}}" rel="stylesheet" type="text/css"/>
 <link href="{{ asset('sximo/assets/memform/css/custom-ai.css')}}" rel="stylesheet" type="text/css"/>
 <!-- responsive css -->
-<link rel="stylesheet" href="{{ asset('sximo/assets/css/ai_persnolizes.css')}}" />
+<link rel="stylesheet" href="{{ asset('sximo/assets/css/ai_persnolizes_responsive.css')}}" />
 @stop
 @section('content')
 
