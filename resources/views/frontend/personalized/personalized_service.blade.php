@@ -12,9 +12,9 @@
                     <div class="header-logo-image">
                         <img class="img-responsive" src="assets/images/logo-design_1_1.Pampering" alt=""/>
                     </div>
-                    <div class="top-progress-bar">
+<!--                    <div class="top-progress-bar">
                         <div class="progress-bar-inner"></div>
-                    </div>
+                    </div>-->
 <!--                    <div class="top-nav-align">
                         <ul class="booking-navigation-menues">
                             <li class="active">Holiday Destination</li>
