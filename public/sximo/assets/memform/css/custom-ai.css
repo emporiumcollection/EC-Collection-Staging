@@ -379,9 +379,9 @@ a.plus {
     font-family: Geomanist-Regular;
 }
 .stepwizard-step a:hover, .stepwizard-step a:focus {
-    background-color: #1E1E1E;
-    color: #fff;
-    border-color: #1E1E1E;
+    background-color: #ABA07C;
+    color: #fff;    
+    border-color: #ABA07C;
 }
 .stepwizard-step .btn-default[disabled]:focus{
     color: #000;

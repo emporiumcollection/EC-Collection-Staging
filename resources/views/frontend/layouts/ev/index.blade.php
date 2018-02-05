@@ -797,7 +797,7 @@
 
                 </div>
                 @include('layouts/elliot/hamburg_menu')
-                <div class="col-md-2 col-sm-3">
+                <div class="col-md-2 col-sm-3 hidden-xs hidden-sm">
                     <div class="row">
                         <div class="filter-grid-page-side-bar">
                             <div class="filters-gird-page-side-bar-filter-align">
@@ -872,7 +872,9 @@
                             </div>
                         </div>
                     </div>
-                </div> 
+                </div>
+                
+                
 
                 <div class="clearfix"></div>
                 

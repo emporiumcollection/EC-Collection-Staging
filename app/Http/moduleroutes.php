@@ -48,4 +48,5 @@
                     Route::controller('crmlayout', 'CrmlayoutController');
                     Route::controller('personalizedservice', 'PersonalizedserviceController');
                     Route::controller('autorunneradvertisementspace', 'AutorunneradvertisementspaceController');
+                    Route::controller('userorder', 'UserorderController');
                     ?>

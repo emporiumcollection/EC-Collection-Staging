@@ -3,25 +3,72 @@
 @section('css')
 <link href="{{ asset('sximo/assets/css/chosen.css')}}" rel="stylesheet" type="text/css"/>
 <link href="{{ asset('sximo/assets/css/personalized.css')}}" rel="stylesheet" type="text/css"/>
+<link href="{{ asset('sximo/assets/memform/css/custom-ai.css')}}" rel="stylesheet" type="text/css"/>
+<!-- responsive css -->
+<link rel="stylesheet" href="{{ asset('sximo/assets/css/ai_persnolizes.css')}}" />
 @stop
 @section('content')
+
+<!-- top bar icon add -->
+                            <div class="col-md-12">
+                                <div class="col-md-4 col-xs-4">
+                                    <a href="#"><img class="img-responsive TopbarSearch hidden-md hidden-lg" src="{{asset('sximo/assets/images/hotel.png')}}" alt=""></a>
+                                </div>
+                                <div class="col-md-4 col-xs-4">
+                                    <a data-popup-id="login-forms-popup" href="#" class="video-popup-btn login_popup show-login-forms-btn hidden-md hidden-lg"><i class="fa fa-lock detailfaLock" aria-hidden="true" ></i></a>
+                                </div>
+                                <div class="col-md-4 col-xs-4">
+                                    <a data-popup-id="ev-primary-navigation" href="#" class="video-popup-btn hidden-md hidden-lg"><!--<i class="fa fa-bars hamburgMenu" aria-hidden="true"></i>-->
+                                        <div class="block-content content">
+                                            <span></span>
+                                            <span> </span>
+                                            <span></span>
+                                        </div>
+                                    </a>
+                                </div>
+                             </div>
+                                <!-- top bar add end -->
         <div class="wrapper">
             <div class="container-fluid">
                 <div class="row">
                     <div class="header-logo-image">
                         <img class="img-responsive" src="assets/images/logo-design_1_1.Pampering" alt=""/>
                     </div>
-                    <div class="top-progress-bar">
+<!--                    <div class="top-progress-bar">
                         <div class="progress-bar-inner"></div>
-                    </div>
-                    <div class="top-nav-align">
+                    </div>-->
+<!--                    <div class="top-nav-align">
                         <ul class="booking-navigation-menues">
                             <li class="active">Holiday Destination</li>
                             <li>Travel Style</li>
                             <li>Details</li>
                             <li>Contact Details</li>
                         </ul>
-                    </div>
+                    </div>-->
+                    <!-- new tabs start -->
+                    
+                    <div class="stepwizard">
+                                <div class="stepwizard-row setup-panel">
+                                    <div class="stepwizard-step">
+                                        <a href="#step-1" type="button" class="btn btn-primary btn-circle holiday-destination">1</a>
+                                        <p>Holiday Destination</p>
+                                    </div>
+                                    <div class="stepwizard-step">
+                                        <a href="#step-2" type="button" class="btn btn-default btn-circle travel-style" disabled="disabled">2</a>
+                                        <p>Travel Style</p>
+                                    </div>
+                                    <div class="stepwizard-step">
+                                        <a href="#step-3" type="button" class="btn btn-default btn-circle details" disabled="disabled">3</a>
+                                        <p>Details</p>
+                                    </div>
+                                    <div class="stepwizard-step">
+                                        <a href="#step-4" type="button" class="btn btn-default btn-circle conatct-details" disabled="disabled">4</a>
+                                        <p>Contact Details</p>
+                                    </div>
+                                </div>
+                            </div>
+                    
+                    <!-- new tabs end -->
              
                         <div class="col-md-12 col-sm-8">
                             <form action="{{URL::to('personalized-service/save')}}" method="POST">
@@ -32,7 +79,7 @@
                                             <p class="sub-des-heading">You can specify one or more destinations</p>
                                         </div>
                                         <div class="choosen-input-align">
-                                            <select name="destinations[]" data-placeholder="Ex: Argentina, South Africa, Cape Town" class="chosen-select chosen-select-input-style" multiple tabindex="4">
+                                            <select name="destinations[]" data-placeholder="Ex: Argentina, South Africa, Cape Town" class="chosen-select-default chosen-select-input-style" multiple tabindex="4">
                                                 <?php
                                                 if(!empty($destinations)) {
                                                     foreach ($destinations as $destination) {
@@ -71,7 +118,7 @@
                                         </div>
                                     </div>
                                     <div class="clearfix"></div>
-                                    <input type="button" name="next" class="next action-button personalized-btn-deafult progress-bar-btn-increment" value="Continue" />
+                                    <input type="button" name="next"  data-next-id="travel-style" class="next action-button personalized-btn-deafult progress-bar-btn-increment" value="Continue" />
                                 </fieldset>
                                 <fieldset class="hide-form muti-form-align">
                                     <div class="experience-page-align">
@@ -99,9 +146,9 @@
                                             <div class="clearfix"></div>
                                         </div>
                                     </div>
-                                    <input type="button" name="next" class="next action-button personalized-btn-deafult" value="Continue" />
+                                    <input type="button" name="next"  data-next-id="travel-style" class="next action-button personalized-btn-deafult" value="Continue" />
                                     <div></div>
-                                    <input type="button" name="previous" class="previous action-button  ps-basic-btn progress-bar-btn-decrement" value="Previous" />
+                                    <input type="button" name="previous" data-prev-id ="holiday-destination" holiday-destination class="previous action-button  ps-basic-btn progress-bar-btn-decrement" value="Previous" />
                                 </fieldset>
                                 <fieldset class="hide-form muti-form-align">
                                     <div class="experience-page-align">
@@ -128,9 +175,9 @@
                                             <div class="clearfix"></div>
                                         </div>
                                     </div>
-                                    <input type="button" name="next" class="next action-button personalized-btn-deafult progress-bar-btn-increment" value="Continue" />
+                                    <input type="button" name="next"  data-next-id="details" class="next action-button personalized-btn-deafult progress-bar-btn-increment" value="Continue" />
                                     <div></div>
-                                    <input type="button" name="previous" class="previous action-button  ps-basic-btn" value="Previous" />
+                                    <input type="button" name="previous" data-prev-id="travel-style"  class="previous action-button  ps-basic-btn" value="Previous" />
                                 </fieldset>
                                 <fieldset class="hide-form muti-form-align">
                                     <div class="centred-tab-align">
@@ -145,9 +192,9 @@
                                             <a class="custom-tooltip" href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Your callback date can be selected in last step"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
                                         </div>
                                     </div>
-                                    <input type="button" name="next" class="next action-button personalized-btn-deafult" value="Continue" />
+                                    <input type="button" name="next"  data-next-id="details" class="next action-button personalized-btn-deafult" value="Continue" />
                                     <div></div>
-                                    <input type="button" name="previous" class="previous action-button  ps-basic-btn progress-bar-btn-decrement" value="Previous" />
+                                    <input type="button" name="previous" data-prev-id="travel-style" class="previous action-button  ps-basic-btn progress-bar-btn-decrement" value="Previous" />
                                 </fieldset>
                                 <fieldset class="hide-form muti-form-align">
                                     <div class="centred-tab-align">
@@ -209,9 +256,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <input type="button" name="next" class="next action-button personalized-btn-deafult" value="Continue" />
+                                    <input type="button" name="next"  data-next-id="details" class="next action-button personalized-btn-deafult" value="Continue" />
                                     <div></div>
-                                    <input type="button" name="previous" class="previous action-button  ps-basic-btn" value="Previous" />
+                                    <input type="button" name="previous" data-prev-id="details" class="previous action-button  ps-basic-btn" value="Previous" />
                                 </fieldset>
                                 <fieldset class="hide-form muti-form-align">
                                     <div class="centred-tab-align">
@@ -240,9 +287,9 @@
                                             <a class="custom-tooltip" href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="" data-original-title="Of course, we will let you know if the chosen travel period coincides with local holidays, festivals, high season or an unfavorable season."><i class="fa fa-info-circle" aria-hidden="true"></i></a>
                                         </div>
                                     </div>
-                                    <input type="button" name="next" class="next action-button personalized-btn-deafult" value="Continue" />
+                                    <input type="button" name="next" data-next-id="conatct-details" class="next action-button personalized-btn-deafult" value="Continue" />
                                     <div></div>
-                                    <input type="button" name="previous" class="previous action-button  ps-basic-btn" value="Previous" />
+                                    <input type="button" name="previous" data-prev-id="details" class="previous action-button  ps-basic-btn" value="Previous" />
                                 </fieldset>
                                 <fieldset class="hide-form muti-form-align">
                                     <div class="centred-tab-align">
@@ -347,6 +394,7 @@
                 $(".submit").click(function () {
                     return false;
                 })
+                
                 $('.personalized-service-checkbox-label').click(function (e) {
                     $(this).toggleClass('active').siblings().removeClass('active');
                 });
@@ -404,8 +452,26 @@
                 ).bind('datepicker-first-date-selected', function (event, obj) {
                     $(".get-checkout-date").val('');
                 });
+                
+                $(".next").click(function(){
+                    $('.stepwizard-step').find('a').attr("disabled","disabled");
+                    var next_value = $(this).data('next-id');
+                    $('.'+next_value).removeAttr('disabled');
+                 });
+                $(".previous").click(function(){
+                    $('.stepwizard-step').find('a').attr("disabled","disabled");
+                    var pre_value = $(this).data('prev-id');
+                    $('.'+pre_value).removeAttr('disabled');
+                 });
             });
         </script>
-
+        
+        <!-- toggle responsive top bar-->
+                <script>
+                    $(".TopbarSearch").click(function(){
+                        $(".ResponsiveTopbar").toggle();    
+                    });
+                </script>
+        <!-- toggle responsive top bar end-->
 
 @stop

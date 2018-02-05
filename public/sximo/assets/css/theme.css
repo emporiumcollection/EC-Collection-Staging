@@ -6566,7 +6566,7 @@ a.uk-thumbnail:focus {
   /* 2 */
   padding: 30px;
   color: #fff;
-  font-size: 20px;
+  font-size: 15px;
   font-family: Geomanist-Light;
 }
 /*
@@ -12785,7 +12785,7 @@ body:not(.bh-isblog)[class*='bh-sidebar-'] .bh-wrapper .uk-container,
 }
 .bh-slideshow-thumbnail-split-preview-title > * {
   color: #ABA07C !important;
-  font-size: 36px;
+  font-size: 20px;
 }
 .bh-slideshow-thumbnail-nav-overlay-background {
   background: rgba(255, 255, 255, 0.3);
