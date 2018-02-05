@@ -293,10 +293,23 @@
 	overflow: hidden;
         height: auto;
     }
+    .right-menus ul li {
+	list-style: none;
+    }
+    .right-menus ul {
+	padding: 0px;
+    }
+    .right-menus ul li a {
+	background: #252525;
+	border-bottom: 1px #414246 solid;
+        color: #fff;
+    }
     
     .hotels-logo h3.title {
 	padding: 25px 200px 10px 10px;
 	text-align: left;
+        background: #252525;
+        margin-bottom: 0px;
     }
     .search-box {
 	background: none !important;
@@ -306,6 +319,12 @@
     }
     .sidenav .closebtn {
 	top: 15px;
+    }
+    /* step wizard */
+    
+    .stepwizard {
+	margin-bottom: 25px;
+	margin-top: 60px;
     }
     
 }
