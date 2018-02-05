@@ -106,11 +106,14 @@
         
         <!-- left menu responsive end -->
         
-        
+        <!-- booking for bar top -->
+            
+            
+        <!-- booking for bar top -->
         
         
         <div class="wrapper">
-            <div class="container-fluid">
+            <div class="container-fluid responsiveFluid">
                 <div class="row">
                     <div class="header-logo-image">
                         <img class="img-responsive" src="assets/images/logo-design_1_1.Pampering" alt=""/>

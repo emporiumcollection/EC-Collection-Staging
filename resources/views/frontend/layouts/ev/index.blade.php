@@ -640,9 +640,9 @@
                     <div class="col-md-10 col-sm-9 FloatFilter pull-right">
                         <div class="row">
                             <!-- AIC Harman top bar adding -->
-                            <section class="book-form-top-bar hidden-xs hidden-sm">
+                            <section class="book-form-top-bar hidden-md hidden-lg visible-xs visible-sm">
                                 <div>
-                                    <div class="booking-form-bar-top">
+                                    <div class="booking-form-bar-top ResponsiveTopbar">
                                         <form autocomplete="off" method="get" id="searchform-navbar" class="searchform-navbar top-bar-search-form-align" action="{{URL::to('search')}}">
                                             <div class="col-md-3">
                                                 <div class="row">
