@@ -466,7 +466,7 @@ span.round-tab:hover {
     border: 2px solid #333;
 }
 
-.wizard .nav-tabs > li {
+.wizard .nav-tabs1 > li {
     width: 25%;
 }
 
@@ -493,7 +493,7 @@ span.round-tab:hover {
     border-bottom-color: #5bc0de;
 }
 
-.wizard .nav-tabs > li a {
+.wizard .nav-tabs1 > li a {
     width: 70px;
     height: 70px;
     margin: 20px auto;
@@ -501,7 +501,7 @@ span.round-tab:hover {
     padding: 0;
 }
 
-    .wizard .nav-tabs > li a:hover {
+    .wizard .nav-tabs1 > li a:hover {
         background: transparent;
     }
 
@@ -645,7 +645,7 @@ span.round-tab:hover {
         line-height: 50px;
     }
 
-    .wizard .nav-tabs > li a {
+    .wizard .nav-tabs1 > li a {
         width: 50px;
         height: 50px;
         line-height: 50px;
