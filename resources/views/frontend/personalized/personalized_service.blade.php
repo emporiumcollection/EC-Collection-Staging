@@ -431,12 +431,12 @@
                     $(".get-checkout-date").val('');
                 });
                 
-                $(".next").click(funciton(){
+                $(".next").click(function(){
                     $('.stepwizard-step').find('a').attr("disabled","disabled");
                     var next_value = $(this).data('next-id');
                     $('.'+next_value).removeAttr('disabled');
                  });
-                $(".previous").click(funciton(){
+                $(".previous").click(function(){
                     $('.stepwizard-step').find('a').attr("disabled","disabled");
                     var next_value = $(this).data('next-id');
                     $('.'+next_value).removeAttr('disabled');
