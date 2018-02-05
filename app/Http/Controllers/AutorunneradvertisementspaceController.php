@@ -173,11 +173,11 @@ class AutorunneradvertisementspaceController extends Controller {
 						{
 							if(!empty($checkspace))
 							{
-								$chkspaceslug = \DB::table('tb_advertisement_space')->where('space_slug', $slug)->count();
+								$chkspaceslug = \DB::table('tb_advertisement_space')->where('space_slug', $slug)->where('id', '!=', $checkspace->id)->count();
 							}
 							else
 							{
-								$chkspaceslug = \DB::table('tb_advertisement_space')->where('space_slug', $slug)->where('id', '!=', $checkspace->id)->count();
+								$chkspaceslug = \DB::table('tb_advertisement_space')->where('space_slug', $slug)->count();
 							}
 							if ($chkspaceslug>0)
 							{
