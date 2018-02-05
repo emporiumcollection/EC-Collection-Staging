@@ -1,6 +1,27 @@
 @extends('layouts.app')
 
 @section('content')
+<link href="{{ asset('sximo/css/custom_ps.css')}}" rel="stylesheet">
+<style>
+	.input-group-addon {
+		background-color: #eee;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+	}
+	
+	#item-pnl .input-group-addon
+	{
+		padding:6px 9px;
+	}
+	.btn {
+		 height: 22px !important;
+	}
+	
+	#item-pnl .items-pnl-body {
+		border-top: 1px solid #ccc;
+	}
+	
+</style>
 <div class="page-content row">
     <!-- Page header -->
     <div class="page-header">
@@ -77,8 +98,8 @@
 				<div class="row items-pnl-head">
 					<div class="col-sm-1 col">No.</div>
 					<div class="col-sm-4 col">PACKAGES</div>
-					<div class="col-sm-3 col">QTY</div>
-					<div class="col-sm-4 col">PRICE</div>
+					<div class="col-sm-3 col" style="text-align:center;">QTY</div>
+					<div class="col-sm-4 col" style="text-align:center;">PRICE</div>
 				</div>
 				{{--*/ 
 						$qty = 1;

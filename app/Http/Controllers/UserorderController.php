@@ -143,7 +143,7 @@ class UserorderController extends Controller {
 			foreach($order_item as $oitem)
 			{
 				$order_item_detail[$o] = $oitem;
-				$order_item_detail[$o]->pckname = '';
+				$order_item_detail[$o]->pckname = 'Advertisement';
 				$order_item_detail[$o]->pckprice = 0;
 				if($oitem->package_type=='Hotel')
 				{
