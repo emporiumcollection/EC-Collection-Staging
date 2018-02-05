@@ -29,15 +29,7 @@
 		</div>
 	</div>
 	<div class="sbox-content"> 	
-	    <div class="toolbar-line ">
-			@if($access['is_add'] ==1)
-	   		<a href="{{ URL::to('userorder/update') }}" class="tips btn btn-sm btn-white"  title="{{ Lang::get('core.btn_create') }}">
-			<i class="fa fa-plus-circle "></i>&nbsp;{{ Lang::get('core.btn_create') }}</a>
-			@endif  
-			@if($access['is_remove'] ==1)
-			<a href="javascript://ajax"  onclick="SximoDelete();" class="tips btn btn-sm btn-white" title="{{ Lang::get('core.btn_remove') }}">
-			<i class="fa fa-minus-circle "></i>&nbsp;{{ Lang::get('core.btn_remove') }}</a>
-			@endif 
+	    <div class="toolbar-line "> 
 			<a href="{{ URL::to( 'userorder/search') }}" class="btn btn-sm btn-white" onclick="SximoModal(this.href,'Advance Search'); return false;" ><i class="fa fa-search"></i> Search</a>				
 			@if($access['is_excel'] ==1)
 			<a href="{{ URL::to('userorder/download?return='.$return) }}" class="tips btn btn-sm btn-white" title="{{ Lang::get('core.btn_download') }}">
@@ -78,12 +70,13 @@
 					 @if($field['view'] =='1')
 					 	<?php $limited = isset($field['limited']) ? $field['limited'] :''; ?>
 					 	@if(SiteHelpers::filterColumn($limited ))
-						 <td>					 
+						 <td>
+							<?php $fld = $field['field']; ?>
 						 	@if($field['attribute']['image']['active'] =='1')
-								{!! SiteHelpers::showUploadedFile($row->$field['field'],$field['attribute']['image']['path']) !!}
+								{!! SiteHelpers::showUploadedFile($row->$fld,$field['attribute']['image']['path']) !!}
 							@else	
 								{{--*/ $conn = (isset($field['conn']) ? $field['conn'] : array() ) /*--}}
-								{!! SiteHelpers::gridDisplay($row->$field['field'],$field['field'],$conn) !!}	
+								{!! SiteHelpers::gridDisplay($row->$fld,$field['field'],$conn) !!}	
 							@endif						 
 						 </td>
 						@endif	
@@ -93,11 +86,7 @@
 					 	@if($access['is_detail'] ==1)
 						<a href="{{ URL::to('userorder/show/'.$row->id.'?return='.$return)}}" class="tips btn btn-xs btn-primary" title="{{ Lang::get('core.btn_view') }}"><i class="fa  fa-search "></i></a>
 						@endif
-						@if($access['is_edit'] ==1)
-						<a  href="{{ URL::to('userorder/update/'.$row->id.'?return='.$return) }}" class="tips btn btn-xs btn-success" title="{{ Lang::get('core.btn_edit') }}"><i class="fa fa-edit "></i></a>
-						@endif
-												
-					
+						
 				</td>				 
                 </tr>
 				
