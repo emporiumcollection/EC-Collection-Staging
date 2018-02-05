@@ -21,10 +21,38 @@
                             <li>Details</li>
                             <li>Contact Details</li>
                         </ul>
+                        <ul class="nav nav-pills">
+                            <li class="active"><a data-toggle="pill" href="#ps-holiday-destination">Holiday Destination</a></li>
+                            <li><a data-toggle="pill" href="#ps-travel-style">Travel Style</a></li>
+                            <li><a data-toggle="pill" href="#ps-details">Details</a></li>
+                            <li><a data-toggle="pill" href="#ps-contact-details">Contact Details</a></li>
+                        </ul>
                     </div>
              
                         <div class="col-md-12 col-sm-8">
                             <form action="{{URL::to('personalized-service/save')}}" method="POST">
+                                
+                                
+                                <!-- Harman new bootstrap tabs start -->
+                                
+                                <div class="tab-content">
+                                    <div id="ps-holiday-destination" class="tab-pane fade in active">
+                                        Holiday Destination Content
+                                    </div>
+                                    <div id="ps-travel-style" class="tab-pane fade">
+                                        Travel Style content
+                                    </div>
+                                    <div id="ps-details" class="tab-pane fade">
+                                        Details content
+                                    </div>
+                                    <div id="ps-contact-details" class="tab-pane fade">
+                                        Contact Details content
+                                    </div>
+                                </div>
+                                
+                                <!-- Harman new bootstrap tabs end -->
+                                
+                                
                                 <fieldset class="muti-form-align">
                                     <div class="centred-tab-align">
                                         <div>
@@ -32,7 +60,7 @@
                                             <p class="sub-des-heading">You can specify one or more destinations</p>
                                         </div>
                                         <div class="choosen-input-align">
-                                            <select name="destinations[]" data-placeholder="Ex: Argentina, South Africa, Cape Town" class="chosen-select chosen-select-input-style" multiple tabindex="4">
+                                            <select name="destinations[]" data-placeholder="Ex: Argentina, South Africa, Cape Town" class="chosen-select-default chosen-select-input-style" multiple tabindex="4">
                                                 <?php
                                                 if(!empty($destinations)) {
                                                     foreach ($destinations as $destination) {
