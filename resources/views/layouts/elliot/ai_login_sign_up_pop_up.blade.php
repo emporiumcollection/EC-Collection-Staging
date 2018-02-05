@@ -8,6 +8,15 @@
     .account-with-us-show-hide{
         display:none;
     }
+#error-msg {
+  color: red;
+}
+#valid-msg {
+  color: #00C900;
+}
+input.error {
+  border: 1px solid #FF7C7C;
+}
 </style>
 
 <!--Login and Sign Up Pop-up HTML-->
@@ -255,7 +264,10 @@
 
 
                                     <div class="form-group ps-form-group-outer">
-                                        <input class="form-control ps-login-form-input required" name="txtmobileNumber" id="txtmobileNumber" type="text" placeholder="Mobile Number">
+                                        <input type="hidden" id="txtmobileDialcode" name="txtmobileDialcode">
+                                        <input class="form-control ps-login-form-input" name="txtmobileNumber" id="txtmobileNumber" type="tel" >
+                                        <span id="valid-msg" class="hide">✓ Valid</span>
+                                         <span id="error-msg" class="hide">Invalid number</span>
                                     </div>
                                     <div class="form-group ps-form-group-outer">
                                         <input class="form-control ps-login-form-input" name="password" type="password" placeholder="Password">
@@ -390,8 +402,20 @@
         });
         
         $(".ai-sign-up-form").submit(function( event ) {
+
+        
+            var countryData = $("#txtmobileNumber").intlTelInput("getSelectedCountryData");
+
+            var error = $("#txtmobileNumber").intlTelInput("getValidationError");
+            var isValid = $("#txtmobileNumber").intlTelInput("isValidNumber");
+
+            if(isValid){
+                $("#txtmobileDialcode").val(countryData.dialCode);
+            }else{
+                return false
+            }
             event.preventDefault();
-            
+            alert($("#txtmobileDialcode").val());
             $(".ai-sign-up-form-success-msg").html( '' );
             $(".ai-sign-up-form-error-msg").html( '' );
             $(".ai-login-form-success-msg").html( '' );
@@ -404,6 +428,8 @@
                 dataType: "json",
                 data: formData,
                 success: function (data, textStatus, jqXHR) {
+
+                   
                     if(data.status == 'success') {
                         $(".ai-sign-up-form-success-msg").html( data.message );
                          window.location.href = "{{URL::to('whoiam')}}";
@@ -428,6 +454,36 @@
 
  <script src="{{ asset('sximo/assets/js/intlTelInput.js')}}" type="text/javascript"></script>
  
-  <script>
-    $("#txtmobileNumber").intlTelInput();
-  </script>
+<script>
+
+
+var telInput = $("#txtmobileNumber"),
+errorMsg = $("#error-msg"),
+validMsg = $("#valid-msg");
+// initialise plugin
+telInput.intlTelInput({
+utilsScript: "{{ asset('sximo/assets/js/utils.js')}}"
+});
+
+var reset = function() {
+telInput.removeClass("error");
+errorMsg.addClass("hide");
+validMsg.addClass("hide");
+};
+
+// on blur: validate
+telInput.blur(function() {
+reset();
+if ($.trim(telInput.val())) {
+if (telInput.intlTelInput("isValidNumber")) {
+validMsg.removeClass("hide");
+} else {
+telInput.addClass("error");
+errorMsg.removeClass("hide");
+}
+}
+});
+
+// on keyup / change flag: reset
+telInput.on("keyup change", reset);
+ </script>

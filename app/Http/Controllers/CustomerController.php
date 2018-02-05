@@ -106,12 +106,16 @@ class CustomerController extends Controller {
 
     public function ajaxPostCreate(Request $request) {
 
+
+
         $rules = array(
 //            'firstname' => 'required|alpha_num|min:2',
 //            'lastname' => 'required|alpha_num|min:2',
             'email' => 'required|email|unique:tb_users',
             'password' => 'required',
-//            'password' => 'required|confirmed',
+            'txtmobileNumber' =>'required',
+
+//            'mobile_number' => mobile_number'required|confirmed',
 //            'password_confirmation' => 'required',
             //'membership_plan'=>'required',
 //            'company_name' => 'required',
@@ -136,6 +140,8 @@ class CustomerController extends Controller {
             $authen->email = trim($request->input('email'));
             $authen->activation = $code;
             $authen->group_id = 3;
+            $authen->mobile_number=trim($request->input('txtmobileNumber'));
+            $authen->mobile_code=trim($request->input('txtmobileDialcode'));
             $authen->password = \Hash::make($request->input('password'));
             $authen->active = '0';
             $authen->save();
@@ -941,6 +947,8 @@ class CustomerController extends Controller {
 
     public function whoIam() {
 
+       $user = User::find(\Session::get('uid'));
+       $this->data["guestUserData"]=$user;
        return view('customer.whoiam', $this->data);
     }
 

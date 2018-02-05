@@ -896,7 +896,7 @@
                             
                     </header>
                     <div class="filter-page-main-align">
-                        <div class="col-md-10 col-sm-9 FloatFilter pull-right">
+                        <div class="col-md-10 col-sm-9 FloatFilter pull-right hidden-xs hidden-sm">
                             <div class="row">
                                 
                                 <!-- AIC Harman top bar adding -->

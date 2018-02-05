@@ -640,9 +640,9 @@
                     <div class="col-md-10 col-sm-9 FloatFilter pull-right">
                         <div class="row">
                             <!-- AIC Harman top bar adding -->
-                            <section class="book-form-top-bar">
+                            <section class="book-form-top-bar hidden-md hidden-lg visible-xs visible-sm">
                                 <div>
-                                    <div class="booking-form-bar-top">
+                                    <div class="booking-form-bar-top ResponsiveTopbar">
                                         <form autocomplete="off" method="get" id="searchform-navbar" class="searchform-navbar top-bar-search-form-align" action="{{URL::to('search')}}">
                                             <div class="col-md-3">
                                                 <div class="row">
@@ -746,7 +746,7 @@
                             
                             <div class="container">
                                 <div class="row">
-                                    <div class="header-navigation-container col-md-12">
+                                    <div class="header-navigation-container col-md-12 hidden-xs hidden-sm">
                                         <div class="row">
                                             <div class="col-md-12 col-sm-12">
                                                 @include('layouts/elliot/ai_navigation')
@@ -797,7 +797,7 @@
 
                 </div>
                 @include('layouts/elliot/hamburg_menu')
-                <div class="col-md-2 col-sm-3">
+                <div class="col-md-2 col-sm-3 hidden-xs hidden-sm">
                     <div class="row">
                         <div class="filter-grid-page-side-bar">
                             <div class="filters-gird-page-side-bar-filter-align">
@@ -872,7 +872,9 @@
                             </div>
                         </div>
                     </div>
-                </div> 
+                </div>
+                
+                
 
                 <div class="clearfix"></div>
                 

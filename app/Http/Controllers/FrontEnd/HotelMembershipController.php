@@ -278,6 +278,14 @@ class HotelMembershipController extends Controller {
     }
     
     
+    public function getThanks(Request $request) {
 
+        $this->data['pageTitle'] = 'Thank you Page';
+        $this->data['data'] = CommonHelper::getInfo();
+        $this->data['pageslider'] = "";
+        $this->data['currency'] = \DB::table('tb_settings')->select('content')->where('key_value', 'default_currency')->first();
+           
+        return view('frontend.hotel_membership.thanks', $this->data);
+    }
 
 }

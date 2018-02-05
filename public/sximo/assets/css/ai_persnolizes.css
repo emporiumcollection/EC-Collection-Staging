@@ -59,21 +59,8 @@
         height: auto;
     }
     
-    .hotels-logo h3.title {
-	padding: 25px 200px 10px 10px;
-	text-align: left;
-    }
-    .search-box {
-	background: none !important;
-	height: 28px !important;
-	margin-top: 0px;
-	padding: 15px 0px 0px 29px !important;
-    }
     .sidenav .closebtn {
 	top: 0px;
-    }
-    .editorial-res-side-nav-logo.hamburger-menu {
-	margin-top: 9px !important;
     }
     /* sidebar small */
     
@@ -89,6 +76,39 @@
     }
     .contact-aside li {
 	padding: 6px 0px 6px 14px !important;
+    }
+    /* menu */
+    
+    .EVMenu {
+	margin: 20px 0 0 -105px !important;
+    }
+    .EVMenu li {
+	width: 320px !important;
+    }
+    .EVMenu li a {
+	font-size: 27px !important;
+    }
+    
+    /* left menu */
+    
+    .ResSlider {
+        margin-top: 40px;
+    }
+    
+   .right-menus {
+	overflow: hidden;
+        height: auto;
+    }
+    
+    .hotels-logo h3.title {
+	padding: 25px 200px 10px 10px;
+	text-align: left;
+    }
+    .search-box {
+	background: none !important;
+	height: 28px !important;
+	margin-top: 0px;
+	padding: 15px 0px 0px 29px !important;
     }
     
 }
@@ -123,9 +143,6 @@
 	margin-left: 37px !important;
     }
     /* left bar */
-    .ResSlider {
-        margin-top: 40px;
-    }
     
    .right-menus {
 	overflow: hidden;
@@ -163,6 +180,17 @@
     .contact-aside li {
 	padding: 6px 0px 6px 14px !important;
     }
+    /* menu */
+    
+    .EVMenu {
+	margin: 20px 0 0 -105px !important;
+    }
+    .EVMenu li {
+	width: 320px !important;
+    }
+    .EVMenu li a {
+	font-size: 27px !important;
+    }
    
 }
 
@@ -194,10 +222,6 @@
     }
     .vegasFooterSocial ul li {
 	margin-left: 14px !important;
-    }
-
-    .ResSlider {
-        margin-top: 40px;
     }
     
    .right-menus {
@@ -235,6 +259,53 @@
     }
     .contact-aside li {
 	padding: 6px 0px 6px 14px !important;
+    }
+    
+    .responsiveFluid {
+        padding: 0px !important;
+        margin: 0px !important;
+    }
+    .ResponsiveTopbar {
+	display: none;
+    }
+    .your-account-heading-align {
+        border: none;
+    }
+    .login-form-pop-main-align .popup-close-btn {
+	margin-top: -18px;
+	font-size: 30px;
+    }
+    /* menu */
+    
+    .EVMenu {
+	margin: 20px 0 0 -105px !important;
+    }
+    .EVMenu li {
+	width: 320px !important;
+    }
+    .EVMenu li a {
+	font-size: 27px !important;
+    }
+    
+    /* left menu */
+    
+    .right-menus {
+	overflow: hidden;
+        height: auto;
+    }
+    
+    .hotels-logo h3.title {
+	padding: 25px 200px 10px 10px;
+	text-align: left;
+    }
+    .search-box {
+	background: none !important;
+	height: 28px !important;
+	margin-top: 0px;
+	padding: 15px 0px 0px 29px !important;
+    }
+    .sidenav .closebtn {
+	top: 15px;
     }
     
 }
