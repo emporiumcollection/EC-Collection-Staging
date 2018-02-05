@@ -27,20 +27,28 @@
                     <div class="stepwizard">
                         <div class="stepwizard-row setup-panel">
                             <div class="stepwizard-step">
-                                <a href="#step-1" type="button" class="btn btn-primary btn-circle">1</a>
+                                <li class="active">
+                                    <a href="#step-1" type="button" class="btn btn-primary btn-circle">1</a>
+                                </li>
                                 <p>Step 1</p>
                             </div>
                             <div class="stepwizard-step">
-                                <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
-                                <p>Step 2</p>
+                                <li>
+                                    <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
+                                    <p>Step 2</p>
+                                </li>
                             </div>
                             <div class="stepwizard-step">
-                                <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
-                                <p>Step 3</p>
-                            </div>
+                                <li>
+                                    <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
+                                    <p>Step 3</p>
+                                </li>
+                            </div>  
                             <div class="stepwizard-step">
-                                <a href="#step-4" type="button" class="btn btn-default btn-circle" disabled="disabled">4</a>
-                                <p>Step 4</p>
+                                <li>
+                                    <a href="#step-4" type="button" class="btn btn-default btn-circle" disabled="disabled">4</a>
+                                    <p>Step 4</p>
+                                </li>
                             </div>
                         </div>
                     </div>
