@@ -1,0 +1,240 @@
+@media (min-width: 1201px) and (max-width: 1400px) {
+ 
+    
+}
+
+@media (min-width: 1201px) and (max-width: 1400px) {
+ 
+    .vegasFooter {
+	width: 33%;
+	float: left;
+    }
+}
+@media (min-width: 993px) and (max-width: 1200px) {
+    
+    section {
+	padding: 0px 0 !important;
+    }
+    .panel.panel-default.custom-post-panel a {
+	font-size: 9px !important;
+    }
+ 
+}
+
+
+@media (min-width: 768px) and (max-width: 992px) {
+    
+    .editorial-custom-footer-style {
+	width: 74% !important;
+    }
+    .vegasFooter {
+	width: 50% !important;
+    }
+    .VegasFooterMiddle p {
+        margin-left: 0px !important;
+    }
+    .VegasFooterMiddle form {
+	margin-left: 0px !important;
+    }
+    .editorial-custom-footer-style .newsletter-style {
+	width: 100% !important;
+	text-align: left !important;
+    }
+    .vegasFooterSocial {
+	float: left !important;
+	margin-top: 30px !important;
+    }
+    .vegasSocialUl {
+	margin-left: 44px !important;
+    }
+    .vegasFooterSocial ul li {
+	margin-left: 14px !important;
+    }
+    .ResSlider {
+        margin-top: 40px;
+    }
+    
+   .right-menus {
+	overflow: hidden;
+        height: auto;
+    }
+    
+    .hotels-logo h3.title {
+	padding: 25px 200px 10px 10px;
+	text-align: left;
+    }
+    .search-box {
+	background: none !important;
+	height: 28px !important;
+	margin-top: 0px;
+	padding: 15px 0px 0px 29px !important;
+    }
+    .sidenav .closebtn {
+	top: 0px;
+    }
+    .editorial-res-side-nav-logo.hamburger-menu {
+	margin-top: 9px !important;
+    }
+    /* sidebar small */
+    
+    header.haside {
+	width: 50px !important;
+    }
+    .contact-aside {
+	left: calc(100% - 50px) !important;
+    }
+    .go-back-button {
+	text-align: left !important;
+        font-size: 11px !important;
+    }
+    .contact-aside li {
+	padding: 6px 0px 6px 14px !important;
+    }
+    
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+    
+    
+    .editorial-custom-footer-style {
+	width: 100% !important;
+    }
+    .vegasFooter {
+	width: 100% !important;
+    }
+    .VegasFooterMiddle p {
+        margin-left: 0px !important;
+    }
+    .VegasFooterMiddle form {
+	margin-left: 0px !important;
+    }
+    .editorial-custom-footer-style .newsletter-style {
+	width: 100% !important;
+	text-align: left !important;
+    }
+    .vegasFooterSocial {
+	float: left !important;
+	margin-top: 30px !important;
+    }
+    .vegasSocialUl {
+	margin-left: 44px !important;
+    }
+    .vegasFooterSocial ul li {
+	margin-left: 37px !important;
+    }
+    /* left bar */
+    .ResSlider {
+        margin-top: 40px;
+    }
+    
+   .right-menus {
+	overflow: hidden;
+        height: auto;
+    }
+    
+    .hotels-logo h3.title {
+	padding: 25px 200px 10px 10px;
+	text-align: left;
+    }
+    .search-box {
+	background: none !important;
+	height: 28px !important;
+	margin-top: 0px;
+	padding: 15px 0px 0px 29px !important;
+    }
+    .sidenav .closebtn {
+	top: 15px;
+    }
+    .editorial-res-side-nav-logo.hamburger-menu {
+	margin-top: 9px !important;
+    }
+    /* sidebar small */
+    
+    header.haside {
+	width: 50px !important;
+    }
+    .contact-aside {
+	left: calc(100% - 50px) !important;
+    }
+    .go-back-button {
+	text-align: left !important;
+        font-size: 11px !important;
+    }
+    .contact-aside li {
+	padding: 6px 0px 6px 14px !important;
+    }
+   
+}
+
+
+@media (min-width: 320px) and (max-width: 480px) {
+    
+    .editorial-custom-footer-style {
+	width: 100% !important;
+    }
+    .vegasFooter {
+	width: 100% !important;
+    }
+    .VegasFooterMiddle p {
+        margin-left: 0px !important;
+    }
+    .VegasFooterMiddle form {
+	margin-left: 0px !important;
+    }
+    .editorial-custom-footer-style .newsletter-style {
+	width: 100% !important;
+	text-align: left !important;
+    }
+    .vegasFooterSocial {
+	float: left !important;
+	margin-top: 30px !important;
+    }
+    .vegasSocialUl {
+	margin-left: 44px !important;
+    }
+    .vegasFooterSocial ul li {
+	margin-left: 14px !important;
+    }
+
+    .ResSlider {
+        margin-top: 40px;
+    }
+    
+   .right-menus {
+	overflow: hidden;
+        height: auto;
+    }
+    
+    .hotels-logo h3.title {
+	padding: 25px 200px 10px 10px;
+	text-align: left;
+    }
+    .search-box {
+	background: none !important;
+	height: 28px !important;
+	margin-top: 0px;
+	padding: 15px 0px 0px 29px !important;
+    }
+    .sidenav .closebtn {
+	top: 15px;
+    }
+    .editorial-res-side-nav-logo.hamburger-menu {
+	margin-top: 9px !important;
+    }
+    /* sidebar small */
+    
+    header.haside {
+	width: 50px !important;
+    }
+    .contact-aside {
+	left: calc(100% - 50px) !important;
+    }
+    .go-back-button {
+	text-align: left !important;
+        font-size: 11px !important;
+    }
+    .contact-aside li {
+	padding: 6px 0px 6px 14px !important;
+    }
+    
+}
