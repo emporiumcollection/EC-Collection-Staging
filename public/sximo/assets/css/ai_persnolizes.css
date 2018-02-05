@@ -90,6 +90,9 @@
     }
     
     /* left menu */
+    .ResponsiveTopbar {
+	display: none;
+    }
     
     .ResSlider {
         margin-top: 40px;
@@ -109,6 +112,10 @@
 	background: #252525;
 	border-bottom: 1px #414246 solid;
         color: #fff;
+    }
+    .responsiveFluid {
+        padding: 0px !important;
+        margin: 0px !important;
     }
     
     .hotels-logo h3.title {
@@ -164,6 +171,10 @@
     }
     /* left bar */
     
+    .ResponsiveTopbar {
+	display: none;
+    }
+    
    .right-menus {
 	overflow: hidden;
         height: auto;
@@ -178,6 +189,10 @@
 	background: #252525;
 	border-bottom: 1px #414246 solid;
         color: #fff;
+    }
+    .responsiveFluid {
+        padding: 0px !important;
+        margin: 0px !important;
     }
     
     .hotels-logo h3.title {
