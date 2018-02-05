@@ -68,7 +68,7 @@
 									 </div>
 								  </div> 					
 								  <div class="form-group  " >
-									<label for="Target Click" class=" control-label col-md-4 text-left"> Target Click </label>
+									<label for="Target Click" class=" control-label col-md-4 text-left"> Target Click (CPC) </label>
 									<div class="col-md-6">
 									  {!! Form::text('target_click', $row['target_click'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
 									 </div> 
@@ -77,7 +77,7 @@
 									 </div>
 								  </div> 					
 								  <div class="form-group  " >
-									<label for="Target View" class=" control-label col-md-4 text-left"> Target View </label>
+									<label for="Target View" class=" control-label col-md-4 text-left"> Target View (CPM)</label>
 									<div class="col-md-6">
 									  {!! Form::text('target_view', $row['target_view'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
 									 </div> 
@@ -86,7 +86,7 @@
 									 </div>
 								  </div> 					
 								  <div class="form-group  " >
-									<label for="Target Days" class=" control-label col-md-4 text-left"> Target Days </label>
+									<label for="Target Days" class=" control-label col-md-4 text-left"> Target Days (CPD)</label>
 									<div class="col-md-6">
 									  {!! Form::text('target_days', $row['target_days'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
 									 </div> 
@@ -99,7 +99,7 @@
 									<div class="col-md-6">
 									  
 					<?php $position = explode(',',$row['position']);
-					$position_opt = array( 'landing' => 'Landing Page Sidebar' ,  'landing_slider' => 'landing Page Slider' ,  'grid_results' => 'Grid Page Results' ,  'grid_sidebar' => 'Grid Page Sidebar' ,  'grid_slider' => 'Grid Page Slider' ,  'grid_popup' => 'Grid Page Quick View Pop Up' ,  'detail_sidebar' => 'Detail Page Sidebar' ,  'detail_restaurant_popup' => 'Detail Page Restaurant Pop Up' ,  'detail_spa_popup' => 'Detail Page Spa Pop Up' ,  'detail_bar_popup' => 'Detail Page Bar Pop Up' , ); ?>
+					$position_opt = array('grid_results' => 'Grid Page Results' ,  'grid_sidebar' => 'Grid Page Sidebar' ,  'grid_slider' => 'Grid Page Slider' ,  'grid_popup' => 'Grid Page Quick View Pop Up' ,  'detail_sidebar' => 'Detail Page Sidebar' ,  'detail_restaurant_popup' => 'Detail Page Restaurant Pop Up' ,  'detail_spa_popup' => 'Detail Page Spa Pop Up' ,  'detail_bar_popup' => 'Detail Page Bar Pop Up' , ); ?>
 					<select name='position' rows='5' required  class='select2 '  > 
 						<?php 
 						foreach($position_opt as $key=>$val)
