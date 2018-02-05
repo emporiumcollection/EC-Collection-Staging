@@ -1623,7 +1623,9 @@
                         @if(!empty($propertyDetail['propimage']))
                         <ul>
                             @foreach($propertyDetail['propimage'] as $propimg)
-							<li class="{{($propertyDetail['propimage'][0]==$propimg) ? 'active' : ''}}">
+							{{--*/ $thactualsize = getimagesize($propertyDetail['propimage_containerpath'].$propimg->file_name); /*--}}
+                            @if($thactualsize[0]>$thactualsize[1])
+                            <li class="{{($propertyDetail['propimage'][0]==$propimg) ? 'active' : ''}}">
                                 <div class="image editorial-image">
                                     <div class="overlaySlider"></div>
                                     <img src="{{ \ImageCache::make($propertyDetail['propimage_thumbpath_dir'].$propimg->file_name,100,1200,null) }}" alt=""/>
@@ -1635,6 +1637,7 @@
                                     <!--end slide -->
                                 </div>
                             </li>
+                            @endif
                             @endforeach
                         </ul>
                         @endif
