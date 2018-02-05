@@ -43,10 +43,11 @@
     width: 100%;
 }
 .black-heading-big {
-    color: #262626;
-    font-family: ACaslonPro-Regular;
-    font-size: 28px;
-    text-align: center;
+	color: #ABA07C;
+	font-family: ACaslonPro-Regular;
+	font-size: 36px;
+	text-align: center;
+	font-weight: 700;
 }
 .sub-des-heading {
     color: #6b6b6b;
@@ -257,13 +258,13 @@
 }
 .textarea-left-align {
     float: left;
-    width: calc(100% - 50px);
+    width: 100%;
 }
 .help-hover-icon {
     float: left;
     font-size: 22px;
     text-align: right;
-    width: 50px;
+    width: 100%;
 }
 .help-hover-icon a {
     color: #6b6b6b;
