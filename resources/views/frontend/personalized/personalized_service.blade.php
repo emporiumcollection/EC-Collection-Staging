@@ -126,7 +126,7 @@
                                     </div>
                                     <input type="button" name="next"  data-next-id="travel-style" class="next action-button personalized-btn-deafult" value="Continue" />
                                     <div></div>
-                                    <input type="button" name="previous" class="previous action-button  ps-basic-btn progress-bar-btn-decrement" value="Previous" />
+                                    <input type="button" name="previous" data-prev-id ="holiday-destination" holiday-destination class="previous action-button  ps-basic-btn progress-bar-btn-decrement" value="Previous" />
                                 </fieldset>
                                 <fieldset class="hide-form muti-form-align">
                                     <div class="experience-page-align">
@@ -155,7 +155,7 @@
                                     </div>
                                     <input type="button" name="next"  data-next-id="details" class="next action-button personalized-btn-deafult progress-bar-btn-increment" value="Continue" />
                                     <div></div>
-                                    <input type="button" name="previous" class="previous action-button  ps-basic-btn" value="Previous" />
+                                    <input type="button" name="previous" data-prev-id="travel-style"  class="previous action-button  ps-basic-btn" value="Previous" />
                                 </fieldset>
                                 <fieldset class="hide-form muti-form-align">
                                     <div class="centred-tab-align">
@@ -172,7 +172,7 @@
                                     </div>
                                     <input type="button" name="next"  data-next-id="details" class="next action-button personalized-btn-deafult" value="Continue" />
                                     <div></div>
-                                    <input type="button" name="previous" class="previous action-button  ps-basic-btn progress-bar-btn-decrement" value="Previous" />
+                                    <input type="button" name="previous" data-prev-id="travel-style" class="previous action-button  ps-basic-btn progress-bar-btn-decrement" value="Previous" />
                                 </fieldset>
                                 <fieldset class="hide-form muti-form-align">
                                     <div class="centred-tab-align">
@@ -236,7 +236,7 @@
                                     </div>
                                     <input type="button" name="next"  data-next-id="details" class="next action-button personalized-btn-deafult" value="Continue" />
                                     <div></div>
-                                    <input type="button" name="previous" class="previous action-button  ps-basic-btn" value="Previous" />
+                                    <input type="button" name="previous" data-prev-id="details" class="previous action-button  ps-basic-btn" value="Previous" />
                                 </fieldset>
                                 <fieldset class="hide-form muti-form-align">
                                     <div class="centred-tab-align">
@@ -438,8 +438,8 @@
                  });
                 $(".previous").click(function(){
                     $('.stepwizard-step').find('a').attr("disabled","disabled");
-                    var next_value = $(this).data('next-id');
-                    $('.'+next_value).removeAttr('disabled');
+                    var pre_value = $(this).data('prev-id');
+                    $('.'+pre_value).removeAttr('disabled');
                  });
             });
         </script>
