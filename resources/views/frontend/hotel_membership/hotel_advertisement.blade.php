@@ -69,39 +69,31 @@
             {!! Form::label('ads_start_date', 'Start Date')  !!}
             <input type="date" name="ads_start_date" id="ads_start_date" class="bg-white medium-input"> 
         </div>
-    
-        <div class="col-md-6 col-sm-12 ">
-            {!! Form::label('ads_package_price', 'Price')  !!}
-            <span data-ads-price="list"></span>
-        </div>
-        <div class="col-md-6 col-sm-12 ">
+        
+        <div class="col-md-6 col-sm-12 " data-ads-days="box" style="display: none;">
             {!! Form::label('ads_days', 'Choose Days')  !!}
             <input type="number" name="ads_days" value="1"  disabled="" class="bg-white medium-input"> 
+        </div>
+        <div class="col-md-6 col-sm-12 ">
+            {!! Form::label('ads_package_price', 'Price')  !!}
+
+            <div data-ads-price="list" class=" cart-total-amout"> {!! isset($currency->content)?$currency->content:'$' !!} <span>0</span></div>
         </div>
     </div>
 
     <div class="row p-t-50">
+        <div class="col-sm-12 text-right">Total : {!! isset($currency->content)?$currency->content:'$' !!}</div>
         <div class="col-sm-12 text-right">
-            <div class="carttotal">
-                <span class="label-total">Total</span>
-                <span class="cart-subtotal-amout">{!! isset($currency->content)?$currency->content:'$' !!} </span>
-            </div>
             <button class="customGoldBtn btn nextBtn cursor" data-ads-action="addToCartAdvert">Add To Cart & Continue  </button> <a class="customGoldBtn btn nextBtn" href="{{url('hotel/cart')}}">Continue  </a>
         </div>
     </div>
 </div>
 
 
- <script>
+<script>
 
 
-
-
-
-
-
-function changeprice(type)
-{
+function changeprice(type){
     if(type!='')
     {
         $('#CPC').hide();
@@ -118,11 +110,27 @@ function changeprice(type)
 
 $(document).ready(function () {
     
-    $(document).on('change', '#qtypac', function () {
-        var qty = $(this).val();
+    $(document).on('change', '#ads_pacakge_type', function () {
+        /*var qty = $(this).val();
         var prc = $.trim($('#pacprice').val());
         $('#fnlprc .fprice').html((prc * qty).toFixed(2));
-        $('#finalpacprice').val((prc * qty).toFixed(2));
+        $('#finalpacprice').val((prc * qty).toFixed(2));*/
+        if($(this).val()=='cpd'){
+            $('[data-ads-days="box"]').show();
+            $('input[name="ads_days"]').prop('disabled', false);
+        }else{
+            $('[data-ads-days="box"]').hide();
+            $('input[name="ads_days"]').prop('disabled', true);
+        }
+    }); 
+
+    $(document).on('change', 'input[name="ads_days"]', function () {
+        /*var qty = $(this).val();
+        var prc = $.trim($('#pacprice').val());
+        $('#fnlprc .fprice').html((prc * qty).toFixed(2));
+        $('#finalpacprice').val((prc * qty).toFixed(2));*/
+
+        alert($(this).val());
     }); 
    
 
@@ -146,7 +154,7 @@ $(document).ready(function () {
             type: "post",
             data: {
                 'cart[package][id]' : 100,
-                'cart[package][price]':, 
+                'cart[package][price]':0, 
                 'cart[package][content][ads_category_id]': $('input[name="ads_category_id"]').val(),
                 'cart[package][content][ads_position]': $('input[name="ads_position"]').val(),
                 'cart[package][content][ads_pacakge_type]': $('input[name="ads_pacakge_type"]').val(),

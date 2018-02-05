@@ -192,10 +192,12 @@ class HotelMembershipController extends Controller {
     */
     public function advertisementPackage(Request $request) {
         $category_list = \DB::table('tb_categories')->select('category_name','id')->get();
+        $this->data['category_list'][] = ' - Category - ';
         foreach ($category_list as $key => $categoryObj) {
             $this->data['category_list'][$categoryObj->id] = $categoryObj->category_name;
         }
        $positionArr = array();
+       $positionArr[''] = '- Position -';
        $positionArr['landing_slider'] = 'Landing Page Sidebar';
        $positionArr['grid_results'] = 'Grid Page Results';
        $positionArr['grid_sidebar'] = 'Grid Page Slider';
@@ -207,6 +209,7 @@ class HotelMembershipController extends Controller {
        $this->data['ads_position_list'] = $positionArr; 
 
        $ads_pacakge_type = array();
+       $ads_pacakge_type[''] = ' - Type -';
        $ads_pacakge_type['cpc'] = 'CPC Target Clicks';
        $ads_pacakge_type['cpm'] = 'CPM Target View';
        $ads_pacakge_type['cpd'] = 'CPD Target Day';
@@ -257,6 +260,17 @@ class HotelMembershipController extends Controller {
      * For Saving Packages Into Cart
     */
     public function addToCartAjax(Request $request){
+
+        $cartPkgType = $request->input('cart')['package']['id'].'_'.$request->input('cart')['package']['type'];    
+        $request->session()->push('hotel_cart.'.$cartPkgType,$request->input('cart'));
+
+
+    }
+
+     /*
+     * For Get Advertisement Packages Price
+    */
+    public function getAdvertPrice(Request $request){
 
         $cartPkgType = $request->input('cart')['package']['id'].'_'.$request->input('cart')['package']['type'];    
         $request->session()->push('hotel_cart.'.$cartPkgType,$request->input('cart'));

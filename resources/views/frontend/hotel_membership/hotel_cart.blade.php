@@ -98,7 +98,7 @@
                     	
 	                    <div class="cart-big-border">
                     	<div class="cart-small-border"></div>
-	                    <div class="col-sm-12 text-right">
+	                    <div class="col-sm-12 text-right p-t-50">
                     		<a class="customGoldBtn btn nextBtn" href="{{url('hotel/package')}}">Continue To Choose Packages </a>
                     	</div>
                     @endif
@@ -150,6 +150,8 @@
     font-family: Geomanist-Regular;
 }
 .customGoldBtn .btn i { margin-left: 0;}
+.p-t-50{padding-top: 50px;}
+.p-b-50{padding-bottom: 50px;}
 </style>
 @endsection
 
