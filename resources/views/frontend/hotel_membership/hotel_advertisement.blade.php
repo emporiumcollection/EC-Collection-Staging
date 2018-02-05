@@ -23,90 +23,111 @@
 
 </style>
 <section class="wow fadeIn big-section cstmaiclass" id="align-to-top">
-                    <div class="container-fluid">
-
-
-                    	       <div class="stepwizard">
-                                <div class="stepwizard-row setup-panel">
-                                    <div class="stepwizard-step">
-                                        <a type="button" class="btn btn-primary btn-circle cursor" disabled="disabled">1</a>
-                                        <p>Step 1</p>
-                                    </div>
-                                    <div class="stepwizard-step">
-                                        <a type="button" class="btn btn-default btn-circle cursor" disabled="disabled">2</a>
-                                        <p>Step 2</p>
-                                    </div>
-                                    <div class="stepwizard-step">
-                                        <a  type="button" class="btn btn-default btn-circle cursor" >3</a>
-                                        <p>Step 3</p>
-                                    </div>
-                                    <div class="stepwizard-step">
-                                        <a type="button" class="btn btn-default btn-circle cursor" disabled="disabled">4</a>
-                                        <p>Step 4</p>
-                                    </div>
-                                </div>
-                            </div>
-                        <div class="row equalize sm-equalize-auto">
-                            
-                        </div>
-                    </div>
-                </section>
-
+    <div class="container-fluid">
+        <div class="stepwizard">
+            <div class="stepwizard-row setup-panel">
+                <div class="stepwizard-step">
+                    <a type="button" class="btn btn-primary btn-circle cursor" disabled="disabled">1</a>
+                    <p>Step 1</p>
+                </div>
+                <div class="stepwizard-step">
+                    <a type="button" class="btn btn-default btn-circle cursor" disabled="disabled">2</a>
+                    <p>Step 2</p>
+                </div>
+                <div class="stepwizard-step">
+                    <a  type="button" class="btn btn-default btn-circle cursor" >3</a>
+                    <p>Step 3</p>
+                </div>
+                <div class="stepwizard-step">
+                    <a type="button" class="btn btn-default btn-circle cursor" disabled="disabled">4</a>
+                    <p>Step 4</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <div class="container">
-	<h5 class="ev-regural-heading text-uppercase margin-20px-bottom font-weight-700 sm-width-100 xs-width-100">Advertisements Package</h5>
-	@if (!empty($packages))
-		<div class="table-responsive">
-			<table class="table">
-				<thead>
-					<tr>
-						<td>Package</td>
-						<td>Type</td>
-						<td>Price</td>
-						<td>Quantity</td>
-						<td>Line Total</td>
-						<td></td>
-					</tr>
-				</thead>
-				<tbody>
+    <h5 class="ev-regural-heading text-uppercase margin-20px-bottom font-weight-700 sm-width-100 xs-width-100">Advertisements Package</h5>
+    <div class="cart-big-border">
+        <div class="cart-small-border"></div>
+    </div>
+    <div class="row p-t-50">
+        <div class="col-md-6 col-sm-12 ">
+            {!! Form::label('ads_category_id', 'Choose Advertise Category')  !!}
+            {!! Form::select('ads_category_id', $category_list, null,['class' => 'bg-white medium-input'])  !!}
+        </div>
+        <div class="col-md-6 col-sm-12 ">
+            {!! Form::label('ads_position', 'Choose Ads Position')  !!}
+            {!! Form::select('ads_position', $ads_position_list, null,['class' => 'bg-white medium-input'])  !!}
+        </div>
+        <div class="col-md-6 col-sm-12 ">
+            {!! Form::label('ads_pacakge_type', 'Choose Package Type')  !!}
+            {!! Form::select('ads_pacakge_type', $ads_pacakge_type, null,['class' => 'bg-white medium-input'])  !!}
+        </div>
+        <div class="col-md-6 col-sm-12 ">
+            {!! Form::label('ads_start_date', 'Start Date')  !!}
+            <input type="date" name="ads_start_date" id="ads_start_date" class="bg-white medium-input"> 
+        </div>
+        </div>
+        <div class="col-md-6 col-sm-12 ">
+            {!! Form::label('ads_pacake_price', 'Price')  !!}
+            <span data-ads-price="list"></span>
+        </div>
+        <div class="col-md-6 col-sm-12 ">
+            {!! Form::label('ads_position', 'Choose Days')  !!}
+            <input type="number" name="ads_days" value="1" class="bg-white medium-input"> 
+        </div>
+    </div>
+    <div class="row p-t-50">
+        <div class="col-sm-12 text-right">
+            <a class="customGoldBtn btn nextBtn" href="{{url('hotel/cart')}}">Continue  </a>
+        </div>
+    </div>
+</div>
+<?php /*
+    <div class="table-responsive">
+		<table class="table">
+			<thead>
+				<tr>
+					<td>Package</td>
+					<td>Type</td>
+					<td>Price</td>
+					<td>Quantity</td>
+					<td>Line Total</td>
+					<td></td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>{{$package->space_title}}</td>
+					<td>
+						
+					</td>
+					<td>
+						<input type="hidden" name="pacprice" id="pacprice" value="{{ number_format($package->space_cpc_price,2) }}" />
+						<p id="CPC">{!! isset($currency->content)?$currency->content:'$' !!} <span class="price"> {{ number_format($package->space_cpc_price,2) }}</span></p>
+						<p id="CPM" class="disnon">{!! isset($currency->content)?$currency->content:'$' !!} <span class="price">{{ number_format($package->space_cpm_price,2) }}</span></p>
+						<p id="CPD" class="disnon">{!! isset($currency->content)?$currency->content:'$' !!}<span class="price"> {{ number_format($package->space_cpd_price,2) }}</span>
+						</p>
+					</td>
 					
-					@foreach($packages as $key=>$package)
-						<tr>
-							<td>{{$package->space_title}}</td>
-							<td>
-								<select class="bg-white medium-input" onchange="changeprice(this.value)">
-									<option value="CPC">CPC Target Clicks - {{$package->space_cpc_num_clicks}}</option>
-									<option value="CPM">CPM Target View - {{$package->space_cpm_num_view}}</option>
-									<option value="CPD">CPD Target Days - {{$package->space_cpm_num_days}}</option>
-								</select>
-							</td>
-							<td>
-								<input type="hidden" name="pacprice" id="pacprice" value="{{ number_format($package->space_cpc_price,2) }}" />
-								<p id="CPC">{!! isset($currency->content)?$currency->content:'$' !!} <span class="price"> {{ number_format($package->space_cpc_price,2) }}</span></p>
-								<p id="CPM" class="disnon">{!! isset($currency->content)?$currency->content:'$' !!} <span class="price">{{ number_format($package->space_cpm_price,2) }}</span></p>
-								<p id="CPD" class="disnon">{!! isset($currency->content)?$currency->content:'$' !!}<span class="price"> {{ number_format($package->space_cpd_price,2) }}</span>
-								</p>
-							</td>
-							
-							<td><input type="number" id="qtypac" value="1" min="1" class="bg-white medium-input"/></td>
-							<td id="fnlprc">
-							<input type="hidden" name="finalpacprice" id="finalpacprice" value="{{ number_format($package->space_cpc_price,2) }}" />
-							{!! isset($currency->content)?$currency->content:'$' !!} <span class="fprice">{{ number_format($package->space_cpc_price,2) }}</span></td>
-							<td><a class="customGoldBtn btn nextBtn" rel="{{$package->id}}" onclick="addToCartHotel({{$package->id}},{{ number_format($package->space_cpc_price,2) }})"> <i class="fa fa-shopping-cart" aria-hidden="true"></i> </a>  <a class="customGoldBtn btn nextBtn"> <i class="fa fa-trash" aria-hidden="true"></i> </a> </td>
-						</tr>                             
-		 			@endforeach	
-				</tbody>
-			</table>
-		</div>
-		@endif
-		<div class="col-sm-12 text-right">
-		    <a class="customGoldBtn btn nextBtn" href="{{url('hotel/cart')}}">Continue  </a>
-		</div>
+					<td><input type="number" id="qtypac" value="1" min="1" class="bg-white medium-input"/></td>
+					<td id="fnlprc">
+					<input type="hidden" name="finalpacprice" id="finalpacprice" value="{{ number_format($package->space_cpc_price,2) }}" />
+					{!! isset($currency->content)?$currency->content:'$' !!} <span class="fprice">{{ number_format($package->space_cpc_price,2) }}</span></td>
+					<td><a class="customGoldBtn btn nextBtn" rel="{{$package->id}}" onclick="addToCartHotel({{$package->id}},{{ number_format($package->space_cpc_price,2) }})"> <i class="fa fa-shopping-cart" aria-hidden="true"></i> </a>  <a class="customGoldBtn btn nextBtn"> <i class="fa fa-trash" aria-hidden="true"></i> </a> </td>
+				</tr>                             
+	 			
+			</tbody>
+		</table>
+	</div>
+	
 
   </div>
 
+*/?>
 
-   <!-- contact email aside -->
  <script>
 
 
@@ -148,10 +169,10 @@ $(document).ready(function () {
         var prc = $.trim($('#pacprice').val());
         $('#fnlprc .fprice').html((prc * qty).toFixed(2));
         $('#finalpacprice').val((prc * qty).toFixed(2));
-    });
+    }); 
+    document.getElementById("ads_start_date").valueAsDate = new Date(<?php echo date("Y, n - 1, d, H, i, s"); ?>);
 });
  </script>
-
 @endsection
 
 
@@ -197,6 +218,8 @@ $(document).ready(function () {
     font-family: Geomanist-Regular;
 }
 .customGoldBtn .btn i { margin-left: 0;}
+.p-t-50{padding-top: 50px;}
+.p-b-50{padding-bottom: 50px;}
 </style>
 @endsection
 
