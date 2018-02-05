@@ -6586,7 +6586,7 @@ a.uk-thumbnail:focus {
   color: inherit;
 }
 .uk-overlay-panel a:not([class]) {
-  color: inherit;
+  color: #fff;
   text-decoration: none;
 }
 .uk-overlay-panel a[class*='uk-icon-']:not(.uk-icon-button) {
@@ -12782,7 +12782,8 @@ body:not(.bh-isblog)[class*='bh-sidebar-'] .bh-wrapper .uk-container,
   margin: 5px 0 10px 0;
 }
 .bh-slideshow-thumbnail-split-preview-title > * {
-  color: #454340 !important;
+  color: #ABA07C !important;
+  font-size: 36px;
 }
 .bh-slideshow-thumbnail-nav-overlay-background {
   background: rgba(255, 255, 255, 0.3);

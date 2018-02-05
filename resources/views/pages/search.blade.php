@@ -588,7 +588,7 @@
                background-color: #fff;
        }
        .scrollbar1 {
-            max-height: 300px;
+            max-height: 195px;
             margin-bottom: 25px;
             overflow: auto;
         }
