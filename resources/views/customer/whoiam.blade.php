@@ -87,19 +87,19 @@ input[type=radio]:checked + label>img {
 						<div class="form-group">
 							<label class="control-label col-sm-2">First Name</label>
 							<div class="col-sm-10">
-								<input type="text" name="first_name" id="first_name" class="form-control dash-input-style" placeholder="John" required="">
+								<input type="text" name="first_name" id="first_name" class="form-control dash-input-style" placeholder="John" required="" value="{{$guestUserData->first_name}}">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-sm-2">Last Name</label>
 							<div class="col-sm-10">
-								<input type="text" name="last_name" id ="last_name" value="" class="form-control dash-input-style" placeholder="Doe" required="">
+								<input type="text" name="last_name" id ="last_name"  class="form-control dash-input-style" placeholder="Doe" value="{{ $guestUserData->last_name }}" required="">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-sm-2">Phone</label>
 							<div class="col-sm-10">          
-								<input type="text" name="txtPhoneNumber" id="txtPhoneNumber" class="form-control dash-input-style" placeholder="+91-9876543210" required="">
+								<input type="text" name="txtPhoneNumber" value="{{$guestUserData->mobile_number}}" id="txtPhoneNumber" class="form-control dash-input-style" placeholder="+91-9876543210" required="">
 							</div>
 						</div>
 						<div class="form-group profile-page-submit-radio-align">        
