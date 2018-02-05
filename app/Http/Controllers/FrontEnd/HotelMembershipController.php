@@ -19,14 +19,17 @@ class HotelMembershipController extends Controller {
         
     }
     
-    /* Method : Index
-     *   Description : The Methos is using for personalized page
+    /*
+     * For Hotel Membership Signup Page
     */
     public function membershipSignup(Request $request) {
         
         return view('frontend.hotel_membership.hotel_membership_signup', $this->data);
     }
 
+    /*
+     * For Saving Hotel Membership Signup into Database
+    */
     public function membershipSignupSave(Request $request) {
 
         $uid = \Session::get('uid');
@@ -176,17 +179,26 @@ class HotelMembershipController extends Controller {
         
     }
 
+    /*
+     * For Hotel Choose Package Page
+    */
     public function hotelPackage(Request $request) {
         $this->data['packages'] = \DB::table('tb_packages')->where('package_status', 1)->get();
         return view('frontend.hotel_membership.hotel_package', $this->data);
     }
 
+    /*
+     * For Advertise Choose Package Page
+    */
     public function advertisementPackage(Request $request) {
         $this->data['packages'] = \DB::table('tb_advertisement_space')->where('space_status', 1)->get();
          
        return view('frontend.hotel_membership.hotel_advertisement', $this->data);
     }
 
+    /*
+     * For Hotel Cart Page
+    */
     public function hotelCart(Request $request) {
         $hotelPkgID = array(0);
         $advertPkgID = array(0);
@@ -214,11 +226,17 @@ class HotelMembershipController extends Controller {
         return view('frontend.hotel_membership.hotel_cart', $this->data);
     }
 
+    /*
+     * For Checkout Page
+    */
     public function hotelCheckout(Request $request) {
        
         return view('frontend.hotel_membership.hotel_checkout', $this->data);
     }
 
+    /*
+     * For Saving Packages Into Cart
+    */
     public function addToCartAjax(Request $request){
 
         $cartPkgType = $request->input('cart')['package']['id'].'_'.$request->input('cart')['package']['type'];    
