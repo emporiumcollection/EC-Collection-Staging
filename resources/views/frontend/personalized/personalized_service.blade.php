@@ -24,47 +24,31 @@
                         </ul>
                     </div>-->
                     <!-- steps start -->
-                    <div class="wizard-inner">
-                <div class="connecting-line"></div>
-                <ul class="nav nav-tabs1" role="tablist">
-
-                    <li role="presentation" class="active">
-                        <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
-                            <span class="round-tab">
-                                <i class="glyphicon glyphicon-folder-open"></i>
-                            </span>
-                        </a>
-                    </li>
-
-                    <li role="presentation" class="disabled">
-                        <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2">
-                            <span class="round-tab">
-                                <i class="glyphicon glyphicon-pencil"></i>
-                            </span>
-                        </a>
-                    </li>
-                    <li role="presentation" class="disabled">
-                        <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Step 3">
-                            <span class="round-tab">
-                                <i class="glyphicon glyphicon-picture"></i>
-                            </span>
-                        </a>
-                    </li>
-
-                    <li role="presentation" class="disabled">
-                        <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Complete">
-                            <span class="round-tab">
-                                <i class="glyphicon glyphicon-ok"></i>
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-                    <!-- steps end -->
+                    <div class="stepwizard">
+                        <div class="stepwizard-row setup-panel">
+                            <div class="stepwizard-step">
+                                <a href="#step-1" type="button" class="btn btn-primary btn-circle">1</a>
+                                <p>Step 1</p>
+                            </div>
+                            <div class="stepwizard-step">
+                                <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
+                                <p>Step 2</p>
+                            </div>
+                            <div class="stepwizard-step">
+                                <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
+                                <p>Step 3</p>
+                            </div>
+                            <div class="stepwizard-step">
+                                <a href="#step-4" type="button" class="btn btn-default btn-circle" disabled="disabled">4</a>
+                                <p>Step 4</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- steps start -->
              
-                    <div class="col-md-12 col-sm-8">
+                        <div class="col-md-12 col-sm-8">
                             <form action="{{URL::to('personalized-service/save')}}" method="POST">
-                                <fieldset class="muti-form-align" id="step-1">
+                                <fieldset class="muti-form-align">
                                     <div class="centred-tab-align">
                                         <div>
                                             <h2 class="black-heading-big">Where do you want to travel?</h2>
@@ -110,9 +94,9 @@
                                         </div>
                                     </div>
                                     <div class="clearfix"></div>
-                                    <input type="button" name="next" class="next action-button personalized-btn-deafult progress-bar-btn-increment nextBtn" value="Continue" />
+                                    <input type="button" name="next" class="next action-button personalized-btn-deafult progress-bar-btn-increment" value="Continue" />
                                 </fieldset>
-                                <fieldset class="hide-form muti-form-align" id="step-2">
+                                <fieldset class="hide-form muti-form-align">
                                     <div class="experience-page-align">
                                         <h2 class="black-heading-big">Inspirations</h2>
                                         <div class="selector-outer-align">
@@ -138,7 +122,7 @@
                                             <div class="clearfix"></div>
                                         </div>
                                     </div>
-                                    <input type="button" name="next" class="next action-button personalized-btn-deafult nextBtn" value="Continue" />
+                                    <input type="button" name="next" class="next action-button personalized-btn-deafult" value="Continue" />
                                     <div></div>
                                     <input type="button" name="previous" class="previous action-button  ps-basic-btn progress-bar-btn-decrement" value="Previous" />
                                 </fieldset>
@@ -167,11 +151,11 @@
                                             <div class="clearfix"></div>
                                         </div>
                                     </div>
-                                    <input type="button" name="next" class="next action-button personalized-btn-deafult progress-bar-btn-increment nextBtn" value="Continue" />
+                                    <input type="button" name="next" class="next action-button personalized-btn-deafult progress-bar-btn-increment" value="Continue" />
                                     <div></div>
                                     <input type="button" name="previous" class="previous action-button  ps-basic-btn" value="Previous" />
                                 </fieldset>
-                                <fieldset class="hide-form muti-form-align" id="step-3">
+                                <fieldset class="hide-form muti-form-align">
                                     <div class="centred-tab-align">
                                         <div>
                                             <h2 class="black-heading-big">What is particularly important to you?</h2>
@@ -184,11 +168,11 @@
                                             <a class="custom-tooltip" href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Your callback date can be selected in last step"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
                                         </div>
                                     </div>
-                                    <input type="button" name="next" class="next action-button personalized-btn-deafult nextBtn" value="Continue" />
+                                    <input type="button" name="next" class="next action-button personalized-btn-deafult" value="Continue" />
                                     <div></div>
                                     <input type="button" name="previous" class="previous action-button  ps-basic-btn progress-bar-btn-decrement" value="Previous" />
                                 </fieldset>
-                                <fieldset class="hide-form muti-form-align" id="step-4">
+                                <fieldset class="hide-form muti-form-align">
                                     <div class="centred-tab-align">
                                         <div>
                                             <h2 class="black-heading-big">How many people travel?</h2>
@@ -248,7 +232,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <input type="button" name="next" class="next action-button personalized-btn-deafult nextBtn" value="Continue" />
+                                    <input type="button" name="next" class="next action-button personalized-btn-deafult" value="Continue" />
                                     <div></div>
                                     <input type="button" name="previous" class="previous action-button  ps-basic-btn" value="Previous" />
                                 </fieldset>
