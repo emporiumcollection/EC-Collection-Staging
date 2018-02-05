@@ -3,7 +3,6 @@
 @section('css')
 <link href="{{ asset('sximo/assets/css/chosen.css')}}" rel="stylesheet" type="text/css"/>
 <link href="{{ asset('sximo/assets/css/personalized.css')}}" rel="stylesheet" type="text/css"/>
-<link href="{{ asset('sximo/assets/memform/css/custom-ai.css')}}" rel="stylesheet" type="text/css"/>
 @stop
 @section('content')
         <div class="wrapper">
@@ -15,42 +14,17 @@
                     <div class="top-progress-bar">
                         <div class="progress-bar-inner"></div>
                     </div>
-<!--                    <div class="top-nav-align">
+                    <div class="top-nav-align">
                         <ul class="booking-navigation-menues">
                             <li class="active">Holiday Destination</li>
                             <li>Travel Style</li>
                             <li>Details</li>
                             <li>Contact Details</li>
                         </ul>
-                    </div>-->
-                    <!-- new tabs start -->
-                    
-                    <div class="stepwizard">
-                                <div class="stepwizard-row setup-panel">
-                                    <div class="stepwizard-step">
-                                        <a href="#step-1" type="button" class="btn btn-primary btn-circle">1</a>
-                                        <p>Holiday Destination</p>
-                                    </div>
-                                    <div class="stepwizard-step">
-                                        <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
-                                        <p>Travel Style</p>
-                                    </div>
-                                    <div class="stepwizard-step">
-                                        <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
-                                        <p>Details</p>
-                                    </div>
-                                    <div class="stepwizard-step">
-                                        <a href="#step-4" type="button" class="btn btn-default btn-circle" disabled="disabled">4</a>
-                                        <p>Contact Details</p>
-                                    </div>
-                                </div>
-                            </div>
-                    
-                    <!-- new tabs end -->
+                    </div>
              
                         <div class="col-md-12 col-sm-8">
                             <form action="{{URL::to('personalized-service/save')}}" method="POST">
-                                
                                 <fieldset class="muti-form-align">
                                     <div class="centred-tab-align">
                                         <div>
@@ -58,7 +32,7 @@
                                             <p class="sub-des-heading">You can specify one or more destinations</p>
                                         </div>
                                         <div class="choosen-input-align">
-                                            <select name="destinations[]" data-placeholder="Ex: Argentina, South Africa, Cape Town" class="chosen-select chosen-select-input-style" multiple tabindex="4">
+                                            <select name="destinations[]" data-placeholder="Ex: Argentina, South Africa, Cape Town" class="chosen-select-default chosen-select-input-style" multiple tabindex="4">
                                                 <?php
                                                 if(!empty($destinations)) {
                                                     foreach ($destinations as $destination) {
