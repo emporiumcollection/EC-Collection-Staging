@@ -276,7 +276,7 @@ Route::get('hotel/advertiser', 'Frontend\HotelMembershipController@advertisement
 Route::get('hotel/cart', 'Frontend\HotelMembershipController@hotelCart');
 Route::get('hotel/add_package_to_cart', 'Frontend\HotelMembershipController@addToCartAjax');
 Route::post('hotel/getAdvertPrice', 'Frontend\HotelMembershipController@getAdvertPriceAjax');
-Route::get('hotel/checkout', 'StripepaymentController@checkout');	
+Route::get('hotel/checkout', 'Frontend\HotelMembershipController@hotelCheckout');	
 Route::get('thanks', 'Frontend\HotelMembershipController@getThanks');	
 Route::get('advertiser/package', 'Frontend\AdvertisementController@advertisementPackage');
 Route::get('fetchadvertisementpackagedetails/{pckid}', 'Frontend\AdvertisementController@fetchadvertisementpackagedetails');

@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
-use Validator, Input, Redirect, URL ;
+use Validator, Input, Redirect, URL, DB, CommonHelper, Mail ;
 use Config, Session;
 use Stripe\Stripe;
 use Stripe\Charge;
 use Stripe\Plan;
 use App\User;
+
 class StripepaymentController extends Controller
 {
 
@@ -26,7 +27,17 @@ class StripepaymentController extends Controller
 
         Stripe::setApiKey($apiKey);
     }
-
+     public function __construct() {
+            
+           // $this->middleware('auth');
+            parent::__construct();
+            $this->data['pageTitle'] = '';
+            $this->data['data'] = CommonHelper::getInfo();
+            $this->data['pageslider'] = \DB::table('tb_pages_sliders')->select( 'slider_title', 'slider_description', 'slider_img', 'slider_link', 'slider_video', 'slide_type')->where('slider_page_id', 107)->get();
+            $this->data['currency'] = \DB::table('tb_settings')->select('content')->where('key_value', 'default_currency')->first();
+            
+        }
+    
 
     public function index(){
 
@@ -41,6 +52,10 @@ class StripepaymentController extends Controller
     }
 
     public function checkout(){
+
+
+
+        dd();
 
         self::authorizeFromEnv();       
         
@@ -303,25 +318,82 @@ public function checkoutPost(Request $request)
             $input = $request->all();
     
             self::authorizeFromEnv();
-         
-            try {
-               return Charge::create(
-                        $attributes = array(
-                            'amount' => 2000,
-                            'currency' => 'EUR',
-                            'description' => 'Charge for EVTEST.com',
-                            'card' => array(
-                                'number' => '4242424242424242',
-                                'exp_month' => 5,
-                                'exp_year' => date('Y') + 3,
-                            ),
-                        )
-                    );
-                return back()->with('success','Subscription is completed.');
+
+            \Stripe\Stripe::setApiKey("sk_test_C0Mmp1B1ZzxMbnpq4EJLNoOg");
+
+            // Token is created using Checkout or Elements!
+            // Get the payment token ID submitted by the form:
+            $token = $_POST['stripeToken'];
+
+           try {
+
+                        $orddta['status'] = 'Pending'; 
+                        $orddta['comments'] = $request->input('order_comments'); 
+                        $orddta['user_id'] = \Session::get('uid'); 
+                        $orddta['created'] = date('y-m-d h:i:s'); 
+                        $ord_id = \DB::table('tb_orders')->insertGetId($orddta);
+                        foreach ($request->session()->get('hotel_cart') as $cartkey => $cartValue) {
+                            $orditemdta['order_id'] = $ord_id; 
+                           
+                            if($cartValue['package']['type']=='hotel'){
+                                 $orditemdta['package_type'] = $cartValue['package']['type']; 
+                                 $orditemdta['package_id'] = $cartValue['package']['id'];
+                            }
+                            if($cartValue['package']['type']=='advert'){
+                                 $orditemdta['package_type'] = $cartValue['package']['type']; 
+                                 $orditemdta['package_id'] = $cartValue['package']['content']['id'];
+                                 $orditemdta['package_data'] = json_encode($cartValue['package']['content']);
+                            }
+                            
+                            $orditemdta['user_id'] = \Session::get('uid'); 
+                            $orditemdta['created'] = date('y-m-d h:i:s'); 
+                            \DB::table('tb_order_items')->insertGetId($orditemdta);
+                        }
+
+                // Charge the user's card:
+                   $charge = \Stripe\Charge::create(array(
+                      "amount" => $request->input("finalAmount"),
+                      "currency" => "EUR",
+                      "description" => "Package Charges",
+                      "source" => $token,
+                      "metadata" => array("order_id" => $ord_id),
+                    ));
+
+                    $jsnonString=$charge;
+                    $stringFromOb=str_replace("Stripe\Charge JSON: ", "", $jsnonString);
+                    $jarray=json_decode($stringFromOb);
+                    //print_r($catArray);
+                    //echo "<pre>";
+                   // print_r ($jarray->outcome->network_status);
+
+                    if($jarray->outcome->network_status=="approved_by_network"){
+
+                        $orddta['status'] = 'Success'; 
+                        $orddta['comments'] = $request->input('order_comments'); 
+                        $orddta['user_id'] = \Session::get('uid'); 
+                        $orddta['created'] = date('y-m-d h:i:s'); 
+                        \DB::table('tb_orders')->where('id',$ord_id)->update($orddta);
+
+
+                            $this->data['pageTitle'] = 'Thank you Page';
+                            $this->data['data'] = CommonHelper::getInfo();
+                            $this->data['pageslider'] = "";
+                            $this->data['currency'] = \DB::table('tb_settings')->select('content')->where('key_value', 'default_currency')->first();
+
+                            return view('frontend.hotel_membership.thanks', $this->data);
+                    }else{
+
+                        return back()->with('success','Subscription is completed.');
+                    }
+                  
+
+                
             } catch (Exception $e) {
                 return back()->with('success',$e->getMessage());
             }
             
     }
+
+
 
 }

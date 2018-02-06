@@ -257,7 +257,32 @@ class HotelMembershipController extends Controller {
      * For Checkout Page
     */
     public function hotelCheckout(Request $request) {
-       
+
+                $hotelPkgID = array(0);
+                $advertPkgID = array(0);
+
+                //print_r($request->session()->get('hotel_cart')); die;
+                if(!empty($request->session()->get('hotel_cart'))){
+
+                foreach ($request->session()->get('hotel_cart') as $cartkey => $cartValue) {
+                if($cartValue['package']['type']=='hotel'){
+                    $hotelPkgID[] = $cartValue['package']['id'];
+                }
+                if($cartValue['package']['type']=='advert'){
+                    $advertPkgID[] = $cartValue['package']['content']['id'];
+                }
+                }
+                }
+
+                $htoelPkgQry  =  "Select tb_ad.id,tb_ad.space_title as package_title,'' as package_image,tb_ad.space_cpd_price as package_price  from tb_advertisement_space tb_ad where tb_ad.id in(".implode(',',$advertPkgID).")";
+                $UnionQry = " UNION "; 
+                $advertPkgQry = "Select tb_pkg.id,tb_pkg.package_title,tb_pkg.package_image,tb_pkg.package_price  from tb_packages tb_pkg where tb_pkg.id in(".implode(',',$hotelPkgID).")"; 
+                $mainPkgQry = $htoelPkgQry.$UnionQry.$advertPkgQry;
+                $dataPackage = \DB::select($mainPkgQry);
+
+        
+        $this->data['packages'] = $dataPackage;
+        $this->data['pageslider']="";
         return view('frontend.hotel_membership.hotel_checkout', $this->data);
     }
 

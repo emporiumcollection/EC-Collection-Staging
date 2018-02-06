@@ -2,6 +2,7 @@
 @extends('frontend.layouts.ev.customer')
 @section('content')
 <section class="wow fadeIn big-section cstmaiclass" id="align-to-top">
+    <div class="col-md-12">
     <div class="container">
 		<div class="stepwizard">
             <div class="stepwizard-row setup-panel">
@@ -106,6 +107,9 @@
             </div>
         </div>
     </div>
+
+
+</div>
 </section>
 @endsection
 @section('css')
