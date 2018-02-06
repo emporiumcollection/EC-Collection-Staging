@@ -263,7 +263,7 @@ Route::group(['middleware' => 'auth'], function()
 	Route::post('evcustomfields/updateCustomFieldOrders', 'EvcustomfieldsController@updateCustomFieldOrderAjax');
 	Route::post('evcustomfields/updateGroupOrders', 'EvcustomfieldsController@updateGroupOrderAjax');
 
-	Route::get('userorder/downloadinvoicepdf/{ordid}', 'UserorderController@ordersdownloadinvoicepdf');
+	
 
 });	
 
