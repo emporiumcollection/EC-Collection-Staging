@@ -86,7 +86,7 @@
 					 	@if($access['is_detail'] ==1)
 						<a href="{{ URL::to('userorder/show/'.$row->id.'?return='.$return)}}" class="tips btn btn-xs btn-primary" title="{{ Lang::get('core.btn_view') }}"><i class="fa  fa-search "></i></a>
 						@endif
-						
+						<a href="{{ URL::to('userorder/downloadinvoicepdf/'.$row->id)}}" class="tips btn btn-xs btn-primary" title="invoice"><i class="fa  icon-file-pdf "></i></a>
 				</td>				 
                 </tr>
 				
