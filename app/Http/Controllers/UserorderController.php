@@ -296,7 +296,6 @@ class UserorderController extends Controller {
 						$adsdata .= 'position: '.$pacdata['ads_position'];
 						$adsdata .= ', Type: '.$pacdata['ads_pacakge_type'];
 						$adsdata .= ', Start Date: '.$pacdata['ads_start_date'];
-						$order_item_detail[$o]->pckcontent = $adsdata;
 						
 						$html .= '<tr><td>'.$nos.'</td><td><b>'.$title.'</b><br>'.$adsdata.'</td><td class="alnCenter">'.$qty.'</td><td class="alnCenter">'.$pacpric.'</td></tr>';
 					}
