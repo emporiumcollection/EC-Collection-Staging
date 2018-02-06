@@ -49,6 +49,13 @@
     .editorial-custom-footer-style .newsletter-style {
 	width: 100%;
     }
+    .block-content.content {
+	width: 35px !important;
+	float: right !important;
+	height: 20px !important;
+	margin-right: -5px !important;
+	margin-top: 34px !important;
+    }
     
     
     
@@ -103,8 +110,8 @@
 	width: 100% !important;
     }
     .block-content.content {
-	width: 31px !important;
-	margin-right: -3px !important;
+	width: 32px !important;
+	margin-right: -10px !important;
     }
     .editorial-res-side-nav-logo {
 	background: #252525 none repeat scroll 0 0;
@@ -130,6 +137,12 @@
     /* slick */
     #editorial-siden-nav-res .slick-cstm-width.slick-slide.slick-current.slick-active {
 	width: 300px !important;
+    }
+    .sidenav {
+        overflow: hidden;
+    }
+    .editorial-hotel-detail-page {
+	overflow: hidden;
     }
 }
 /*@media (min-width: 768px) and (max-width: 1200px) {
@@ -393,22 +406,23 @@
     color: #000 !important;
     }
     .block-content.content {
-	width: 25px !important;
+	width: 35px !important;
 	float: right !important;
-	height: 55px !important;
-	margin-right: -10px !important;
+	height: 25px !important;
+	margin-right: -14px !important;
+	margin-top: 30px !important;
     }
     .block-content.content span:nth-child(1) {
 	top: 37px !important;
-	left: 96% !important;
+	left: 96.95% !important;
     }
     .block-content.content span:nth-child(2) {
 	top: 43px !important;
-	left: 96% !important;
+	left: 96.95% !important;
     }
     .block-content.content span:nth-child(3) {
 	top: 49px !important;
-	left: 96% !important;
+	left: 96.95% !important;
     }
     .EVMenu {
 	margin: 20px 0 0 -105px !important;
@@ -441,7 +455,7 @@
 	top: 290px !important;
     }
     .typeahead {
-    height: 9px !important;
+    height: 35px !important;
     }
     .hotel-block-two-right-sec-align > h2 {
     font-size: 0px !important;
@@ -481,6 +495,12 @@
     }
     .contact-aside li {
 	padding: 6px 0px 6px 14px !important;
+    }
+    .sidenav {
+        overflow: hidden;
+    }
+    .editorial-hotel-detail-page {
+	overflow: hidden;
     }
 
     
@@ -747,7 +767,7 @@
 	padding-right: 50px;
     }
     .typeahead {
-    height: 9px !important;
+    height: 35px !important;
     }
     .hotel-block-two-right-sec-align > h2 {
     font-size: 0px !important;
@@ -789,6 +809,12 @@
     }
     .contact-aside li {
 	padding: 6px 0px 6px 14px !important;
+    }
+    .sidenav {
+        overflow: hidden;
+    }
+    .editorial-hotel-detail-page {
+	overflow: hidden;
     }
 }
 
@@ -1072,7 +1098,7 @@
 	top: 290px !important;
     }
     .typeahead {
-    height: 21px !important;
+    height: 35px !important;
     }
     .hotel-block-two-right-sec-align > h2 {
     font-size: 0px !important;
@@ -1102,6 +1128,12 @@
     }
     .editorial-hotel-detail-page .back-to-top {
 	width: 52px !important;
+    }
+    .sidenav {
+        overflow: hidden;
+    }
+    .editorial-hotel-detail-page {
+	overflow: hidden;
     }
     
 }

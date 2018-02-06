@@ -110,6 +110,8 @@
     }
     .right-menus ul li {
 	list-style: none;
+        padding: 0px !important;
+        border-bottom: 0px !important;
     }
     .right-menus ul {
 	padding: 0px;
@@ -140,6 +142,10 @@
     }
     .FloatFilter {
         float: none !important;
+    }
+    /* overflow */
+    .hotel {
+	overflow: hidden;
     }
     
     
@@ -186,6 +192,8 @@
     }
     .right-menus ul li {
 	list-style: none;
+        padding: 0px !important;
+        border-bottom: 0px !important;
     }
     .right-menus ul {
 	padding: 0px;
@@ -210,7 +218,7 @@
 	padding: 15px 0px 0px 29px !important;
     }
     .sidenav .closebtn {
-	top: 15px;
+	top: 0px;
     }
     .editorial-res-side-nav-logo.hamburger-menu {
 	margin-top: 9px !important;
@@ -253,6 +261,10 @@
     }
     .FloatFilter {
         float: none !important;
+    }
+    /* overflow */
+    .hotel {
+	overflow: hidden;
     }
    
 }
@@ -336,6 +348,8 @@
     }
     .right-menus ul li {
 	list-style: none;
+        padding: 0px !important;
+        border-bottom: 0px !important;
     }
     .right-menus ul {
 	padding: 0px;
@@ -359,7 +373,7 @@
 	padding: 15px 0px 0px 29px !important;
     }
     .sidenav .closebtn {
-	top: 15px;
+	top: 0px;
     }
     /* step wizard */
     
@@ -372,6 +386,9 @@
     }
     .chosen-container-multi .chosen-choices li.search-field input[type="text"] {
 	font-size: 90%;
+    }
+    .hotel {
+	overflow: hidden;
     }
     
 }
