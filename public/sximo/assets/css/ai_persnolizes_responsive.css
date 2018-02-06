@@ -68,7 +68,6 @@
 	width: 50px !important;
     }
     .contact-aside {
-	left: calc(100% - 50px) !important;
         margin: 0px 0px 0px 11px;
     }
     .go-back-button {
@@ -98,7 +97,7 @@
 	display: none;
     }
     .show-login-forms-btn {
-	width: 100%;
+	width: 100% !important;
     }
     
     .ResSlider {
@@ -228,7 +227,6 @@
 	width: 50px !important;
     }
     .contact-aside {
-	left: calc(100% - 50px) !important;
         margin: 0px 0px 0px 11px;
     }
     .go-back-button {
@@ -300,7 +298,6 @@
 	width: 50px !important;
     }
     .contact-aside {
-	left: calc(100% - 50px) !important;
         margin: 0px 0px 0px 11px;
     }
     .go-back-button {

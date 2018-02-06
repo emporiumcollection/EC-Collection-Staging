@@ -455,7 +455,6 @@
 	width: 50px !important;
     }
     .contact-aside {
-	left: calc(100% - 50px) !important;
         margin: 0px 0px 0px 11px;
     }
     .go-back-button {
@@ -752,7 +751,6 @@
 	width: 50px !important;
     }
     .contact-aside {
-	left: calc(100% - 50px) !important;
         margin: 0px 0px 0px 11px;
     }
     .go-back-button {
@@ -1057,7 +1055,6 @@
 	width: 50px !important;
     }
     .contact-aside {
-	left: calc(100% - 50px) !important;
         margin: 0px 0px 0px 11px;
     }
     .go-back-button {
