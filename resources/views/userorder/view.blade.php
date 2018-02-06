@@ -111,7 +111,7 @@
 					<div class="row items-pnl-body" id="item-row">
 						<div class="fieldwrapper">
 							<div class="col-sm-1 col">{{$nos}}</div>
-							<div class="col-sm-7 col"><b>{{$detail->pckname}} {{($detail->$pckcontent!='') ? '<br>'.$detail->$pckcontent : '' }}</div>
+							<div class="col-sm-7 col"><b>{{$detail->pckname}}</b> {{($detail->pckcontent!='') ? '<br>'.$detail->pckcontent : '' }}</div>
 							<div class="col-sm-2 col" style="text-align:center;">{{$qty}}</div>
 							<div class="col-sm-2 col" style="text-align:center;">&euro;{{$detail->pckprice}}</div>
 						</div>
