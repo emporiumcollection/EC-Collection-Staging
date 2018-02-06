@@ -415,7 +415,7 @@ input.error {
                 return false
             }
             event.preventDefault();
-            alert($("#txtmobileDialcode").val());
+            
             $(".ai-sign-up-form-success-msg").html( '' );
             $(".ai-sign-up-form-error-msg").html( '' );
             $(".ai-login-form-success-msg").html( '' );
