@@ -245,7 +245,7 @@ class UserorderController extends Controller {
 		if($ordid!="" && $ordid>0)
 		{
 			$order_item_detail = array();
-			$order_item = \DB::table('tb_order_items')->where('order_id', $id)->get();
+			$order_item = \DB::table('tb_order_items')->where('order_id', $ordid)->get();
 			if(!empty($order_item))
 			{
 				$currency = \DB::table('tb_settings')->where('key_value', 'default_currency')->first();
