@@ -49,6 +49,13 @@
     .editorial-custom-footer-style .newsletter-style {
 	width: 100%;
     }
+    .block-content.content {
+	width: 35px !important;
+	float: right !important;
+	height: 20px !important;
+	margin-right: -5px !important;
+	margin-top: 34px !important;
+    }
     
     
     
@@ -103,8 +110,8 @@
 	width: 100% !important;
     }
     .block-content.content {
-	width: 31px !important;
-	margin-right: -3px !important;
+	width: 24px !important;
+	margin-right: -10px !important;
     }
     .editorial-res-side-nav-logo {
 	background: #252525 none repeat scroll 0 0;
@@ -395,7 +402,7 @@
     .block-content.content {
 	width: 25px !important;
 	float: right !important;
-	height: 55px !important;
+	height: 25px !important;
 	margin-right: -10px !important;
     }
     .block-content.content span:nth-child(1) {
