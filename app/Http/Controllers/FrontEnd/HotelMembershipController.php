@@ -228,16 +228,16 @@ class HotelMembershipController extends Controller {
     public function hotelCart(Request $request) {
         $hotelPkgID = array(0);
         $advertPkgID = array(0);
-//$request->session()->forget('hotel_cart');
-       print_r($request->session()->get('hotel_cart')); die;
+
+       //print_r($request->session()->get('hotel_cart')); die;
         if(!empty($request->session()->get('hotel_cart'))){
 
             foreach ($request->session()->get('hotel_cart') as $cartkey => $cartValue) {
-                if($cartValue[0]['package']['type']=='hotel'){
-                    $hotelPkgID[] = $cartValue[0]['package']['id'];
+                if($cartValue['package']['type']=='hotel'){
+                    $hotelPkgID[] = $cartValue['package']['id'];
                 }
-                if($cartValue[0]['package']['type']=='advert'){
-                    $advertPkgID[] = $cartValue[0]['package']['id'];
+                if($cartValue['package']['type']=='advert'){
+                    $advertPkgID[] = $cartValue['package']['content']['id'];
                 }
             }
         }
