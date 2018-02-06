@@ -327,12 +327,16 @@ public function checkoutPost(Request $request)
 
            try {
 
+                        
                         $orddta['status'] = 'Pending'; 
                         $orddta['comments'] = $request->input('order_comments'); 
                         $orddta['user_id'] = \Session::get('uid'); 
                         $orddta['created'] = date('y-m-d h:i:s'); 
                         $ord_id = \DB::table('tb_orders')->insertGetId($orddta);
                         foreach ($request->session()->get('hotel_cart') as $cartkey => $cartValue) {
+
+
+
                             $orditemdta['order_id'] = $ord_id; 
                            
                             if($cartValue['package']['type']=='hotel'){
@@ -373,6 +377,26 @@ public function checkoutPost(Request $request)
                         $orddta['user_id'] = \Session::get('uid'); 
                         $orddta['created'] = date('y-m-d h:i:s'); 
                         \DB::table('tb_orders')->where('id',$ord_id)->update($orddta);
+                       
+                        $userinfom = User::find(\Session::get('uid'));
+
+                           $pathToFile['path'] = $this->generateInvoice($ord_id);
+                            //echo $pathToFile; die;
+                            $pathToFile['name'] = 'invoice-'.date('d-m-Y-h:i:s').'.pdf';
+                            $pathToFile['useremail'] = $userinfom->email;
+                            if($pathToFile)
+                            {
+                                $data = array();
+                                \Mail::send('user.emails.invoice', $data, function($message) use ($pathToFile)
+                                {
+                                    $message->from(CNF_EMAIL, CNF_APPNAME);
+
+                                    $message->to( $pathToFile['useremail']);
+
+                                    $message->attach($pathToFile['path'], ['as' => $pathToFile['name'], 'mime' => 'pdf']);
+                                    
+                                });
+                            }
 
 
                             $this->data['pageTitle'] = 'Thank you Page';
@@ -392,6 +416,91 @@ public function checkoutPost(Request $request)
                 return back()->with('success',$e->getMessage());
             }
             
+    }
+
+
+
+
+public function generateInvoice($ordid)
+    {
+        $downFileName = 'order-invoice-'.date('d-m-Y').'.pdf';
+        //$cid = $request->input('contentId');
+        if($ordid!="" && $ordid>0)
+        {
+            $order_item_detail = array();
+            $order_item = \DB::table('tb_order_items')->where('order_id', $ordid)->get();
+            if(!empty($order_item))
+            {
+                $currency = \DB::table('tb_settings')->where('key_value', 'default_currency')->first();
+                $html = '<style> .main { margin:0 25px; width:700px; font-family: arial, sans-serif; } .page-break { page-break-after: always; } .header,.footer {width: 100%; position:fixed;} .header { top: 20px; text-align:center;} .footer {bottom: 30px; font-size:10px;} .pagenum:after {content: counter(page);} .imgBox { text-align:center; width:400px; margin:50px auto 30px auto;} .nro { text-align:center; font-size:12px; } .header img { width:250px; height: 50px; } .Mrgtop80 {margin-top:80px;} .Mrgtop40 {margin-top:40px;} .Mrgtop20 {margin-top:10px;} .monimg img { width:125px; height:80px; }  .font13 { font-size:13px; } .font12 { font-size:12px; } .algRgt { text-align:right; } .algCnt { text-align:center; }</style>';
+                $i=1;
+                $html .= '<div class="main"><div class="header"><img src="'. \URL::to('sximo/assets/images/logo-design_1.png').'"></div><br><br><br><div class="footer">© Copyright: Emporium Voyage</div>';
+                
+                $userInfo = \DB::table('tb_users')->where('id', $order_item[0]->user_id)->first();
+                $companydet = \DB::table('tb_user_company_details')->where('user_id', $order_item[0]->user_id )->first();
+                $html .= '<div class="Mrgtop40 font13"><table><tr><td width="250"> Emporium-Daten : </td> <td width="20"></td> <td width="250"> User-Daten : </td> </tr> <tr><td valign="top"> Emporium voyage <br><br> Am Klosterpark 1 <br> 84427, Armstorf <br> Deutschland <br><br> Telefon: +49 (0)80 81 - 95 46 80 <br> Telefax: +49 (0)80 81 - 95 43 31 <br> E-Mail: info@emporium-voyage.com </td> <td></td>';
+                if(!empty($companydet))
+                {
+                    $html .= '<td> '.$companydet->company_name.'<br><br>'.$companydet->company_address .' . '.$companydet->company_address2 .' <br> '. $companydet->company_postal_code .', '.$companydet->company_city .' <br> '.$companydet->company_country.'<br><br>Telefon: '.$companydet->company_phone.'<br>E-Mail: '.$companydet->company_email.'</td>';
+                }
+                else{
+                    $html .= '<td></td>';
+                }
+                $html .='</tr> </table></div>';
+                $html .= '<div class="Mrgtop80 font13"><table><tr style="background:#eeeeee;"><th width="50">No.</th><th width="320" >PACKAGES </th><th width="50" class="algCnt">QTY </th><th width="80" class="algCnt">PRICE </th></tr>';
+                $qtyPr = 1;
+                $Totprice = 0;
+                $qty=1;
+                $nos = 1;
+                foreach($order_item as $oitem)
+                {
+                    if($oitem->package_type=='hotel')
+                    {
+                        $title = '';
+                        $pacpric = 0;
+                        $pchkdet = \DB::table('tb_packages')->select('package_title','package_price')->where('id', $oitem->package_id)->first();
+                        if(!empty($pchkdet))
+                        {
+                            $title = $pchkdet->package_title;
+                            $pacpric = $pchkdet->package_price;
+                        }
+                        $html .= '<tr><td>'.$nos.'</td><td><b>'.$title.'</b></td><td class="algCnt">'.$qty.'</td><td class="algCnt">'.$currency->content . $pacpric.'</td></tr>';
+                    }
+                    elseif($oitem->package_type=='advert')
+                    {
+                        $pacdata = json_decode($oitem->package_data, true);
+                        $pacpric = $pacdata['ads_package_total_price'];
+                        $adsdata = '';
+                        $catdet = \DB::table('tb_categories')->select('category_name')->where('id', $pacdata['ads_category_id'])->first();
+                        if(!empty($catdet))
+                        {
+                            $adsdata .= 'Category: '.$catdet->category_name.', ';
+                        }
+                        $adsdata .= 'position: '.$pacdata['ads_position'];
+                        $adsdata .= ', Type: '.$pacdata['ads_pacakge_type'];
+                        $adsdata .= ', Start Date: '.$pacdata['ads_start_date'];
+                        
+                        $html .= '<tr><td>'.$nos.'</td><td><b>Advertisement</b><br>'.$adsdata.'</td><td class="algCnt">'.$qty.'</td><td class="algCnt">'.$currency->content . $pacpric.'</td></tr>';
+                    }
+                    $nos++;
+                    $qtyPr = $pacpric * $qty;
+                    $Totprice = $Totprice + $qtyPr;
+                }
+                $html .= '<tr><td colspan="3" style="text-align:right;"><b>Gesammtsumme<b></td><td class="algCnt font13"><b>'.$currency->content .' '.number_format($Totprice, 2, '.', ',').'<b></td></tr>';
+                $html .= '</table></div>';
+                $savePdfpath = public_path() . '/uploads/invoice_pdfs/';
+                $pdf = \App::make('dompdf.wrapper');
+                $pdf->loadHTML($html);            
+                $pdf->save($savePdfpath . $downFileName);
+                return $savePdfpath . $downFileName;
+            }
+            else{
+                return 'error';
+            }
+        }
+        else{
+            return 'error';
+        }
     }
 
 
