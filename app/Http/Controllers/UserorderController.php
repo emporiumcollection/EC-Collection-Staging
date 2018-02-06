@@ -157,9 +157,7 @@ class UserorderController extends Controller {
 				}
 				elseif($oitem->package_type=='Advertisement')
 				{
-					echo $oitem->package_data;
 					$pacdata = json_decode($oitem->package_data, true);
-					print_r($pacdata); die;
 					$order_item_detail[$o]->pckprice = $pacdata['ads_package_total_price'];
 					$adsdata = '';
 					$catdet = \DB::table('tb_categories')->select('category_name')->where('id', $pacdata['ads_category_id'])->first();
