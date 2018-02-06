@@ -60,6 +60,10 @@
 
 @media (min-width: 993px) and (max-width: 1200px) {
     
+    .editorial_m_slider .editor-picks-small-text {
+	line-height: 40px;
+    }
+    
      /* login popup */
     
     .landing-page-lock-login-btn-outer-align {
@@ -71,6 +75,7 @@
     }
     .m_slider.editorial_m_slider {
 	margin-top: 0 !important;
+        height: 100% !important;
     }
     .newbkbtn {
 	margin-left: 5px !important;
@@ -145,6 +150,11 @@
     }
 }*/
 @media (min-width: 768px) and (max-width: 992px) {
+    
+    .editorial_m_slider .editor-picks-small-text {
+	line-height: 40px;
+    }
+    
     #align-to-top .book-button.open-show_more-page.hotel-btn {
 /*        padding: 8px 3px !important;*/
     }
@@ -188,6 +198,10 @@
 }
 
 @media (min-width: 768px) and (max-width: 992px) {
+    
+    .editorial_m_slider .editor-picks-small-text {
+	line-height: 40px;
+    }
 
     .landing-mobile-top-header {
 	display: none;
@@ -264,6 +278,7 @@
     
     .m_slider.editorial_m_slider {
 	margin-top: 0px !important;
+        height: 100% !important;
     }
     .hotels-detail-heading-text > p {
 	padding: 8% 0% 0% 0% !important;
@@ -405,12 +420,9 @@
 	font-size: 27px !important;
     }
     .editorial_m_slider ul li .editorial-text {
-	width: 320px;
-	padding: 54px 66px 41px 13px;
-    }
-    .editorial_m_slider ul li .editorial-text {
 	width: 426px;
 	padding: 30px 60px 30px 10px;
+        bottom: 64px;
     }
     .hotel-sec-block-two {
 	padding-top: 50px !important;
@@ -476,8 +488,8 @@
 
 @media (min-width: 481px) and (max-width: 767px) {
     
-    .m_slider.editorial_m_slider {
-	height: 100%;
+    .editorial_m_slider .editor-picks-small-text {
+	line-height: 40px;
     }
  
     .landing-mobile-top-header {
@@ -585,6 +597,7 @@
     
     .m_slider.editorial_m_slider {
 	margin-top: 0px !important;
+        height: 100% !important;
     }
     .VegasPopLogo {
 	width: 100% !important;
@@ -718,6 +731,7 @@
     .editorial_m_slider ul li .editorial-text {
     width: 406px;
     padding: 15px 68px 15px 13px;
+    bottom: 64px;
     }
      .hotel-sec-block-two {
 	padding-top: 50px !important;
@@ -780,6 +794,10 @@
 
 
 @media (min-width: 320px) and (max-width: 480px) {
+    
+    .editorial_m_slider .editor-picks-small-text {
+	line-height: 40px;
+    }
     
     .video-popup-btn.login_popup.show-login-forms-btn {
 	width: 30% !important;
@@ -970,6 +988,7 @@
     }
     .m_slider.editorial_m_slider {
 	margin-top: 0px !important;
+        height: 100% !important;
     }
     .image-showcase-below-big-text {
 	margin-left: 0px !important;
@@ -1034,6 +1053,7 @@
     .editorial_m_slider ul li .editorial-text {
 	width: 320px;
 	padding: 30px 70px 41px 13px;
+        bottom: 64px;
     }
     .hotel-sec-block-two {
 	padding-top: 50px !important;
