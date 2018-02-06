@@ -195,7 +195,7 @@ $(document).ready(function () {
             type: "get",
             data: {
                 'cart[package][id]' : 'advert',
-                'cart[package][price]':0, 
+                'cart[package][price]':$('[data-ads-price="per-unit"]').val(), 
                 'cart[package][content][id]': $('input[name="ads_pkg_id"]').val(),
                 'cart[package][content][ads_category_id]': $('input[name="ads_category_id"]').val(),
                 'cart[package][content][ads_position]': $('input[name="ads_position"]').val(),
