@@ -287,16 +287,16 @@
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
                     <div class=" right-menus ">
                         <div class="row-">
-                            <div class="hotels-logo">
+<!--                            <div class="hotels-logo">
                                 <h3 class="title"><a href="https://www.emporium-voyage.com">The Dwell Hotel</a><hr class="star-light"></h3>
 
-                            </div>
+                            </div>-->
                             <ul>
-                                <li>
+<!--                                <li>
                                     <form autocomplete="off" method="get" id="searchform-navbar" class="searchform-navbar" action="https://www.emporium-voyage.com/search">
                                         <span class="twitter-typeahead" style="position: relative; display: inline-block;"><input class="bh-search-input typeahead search-navbar search-box tt-hint" style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; opacity: 1; background: rgb(255, 255, 255) none repeat scroll 0% 0%;" readonly="" autocomplete="off" spellcheck="false" tabindex="-1" dir="ltr" type="text"><input class="bh-search-input typeahead search-navbar search-box tt-input" name="s" id="search-navbar" placeholder="Search" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: transparent;" type="text"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Geomanist-Regular; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: optimizelegibility; text-transform: uppercase;"></pre><div class="tt-menu" style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"><div class="tt-dataset tt-dataset-states"></div></div></span>
                                     </form>
-                                </li>
+                                </li>-->
 
                                                                 <li>
                                     <a href="#hotel"> HOTEL MEMBERSHIPS </a>
