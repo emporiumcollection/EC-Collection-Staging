@@ -228,7 +228,8 @@ class HotelMembershipController extends Controller {
     public function hotelCart(Request $request) {
         $hotelPkgID = array(0);
         $advertPkgID = array(0);
-       
+//$request->session()->forget('hotel_cart');
+       print_r($request->session()->get('hotel_cart')); die;
         if(!empty($request->session()->get('hotel_cart'))){
 
             foreach ($request->session()->get('hotel_cart') as $cartkey => $cartValue) {
@@ -265,8 +266,23 @@ class HotelMembershipController extends Controller {
     */
     public function addToCartAjax(Request $request){
 
-        $cartPkgType = $request->input('cart')['package']['id'].'_'.$request->input('cart')['package']['type'];    
-        $request->session()->push('hotel_cart.'.$cartPkgType,$request->input('cart'));
+        $cartPkgType = $request->input('cart')['package']['id'].'_'.$request->input('cart')['package']['type'];  
+        $cart = array();
+        $cartObj = $request->input('cart')['package'];
+        
+        $cartItems = $request->session()->get('hotel_cart');
+        $cart[$cartPkgType]['package']['id'] = $cartObj['id'];
+        $cart[$cartPkgType]['package']['price'] = $cartObj['price'];
+        $cart[$cartPkgType]['package']['qty'] = 1;
+        $cart[$cartPkgType]['package']['type'] = $cartObj['type'];
+        $cart[$cartPkgType]['package']['content'] = (!empty($cartObj['content']))?$cartObj['content']:'';
+        if(!empty($cartItems)){
+            $cartItems = array_merge($cartItems,$cart);
+        }else{
+            $cartItems = $cart;
+        }
+
+        $request->session()->put('hotel_cart', $cartItems);
 
         return response()->json(array('status'=>true,'error'=>false));
 
