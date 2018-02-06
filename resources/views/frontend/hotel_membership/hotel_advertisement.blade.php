@@ -54,6 +54,7 @@
     </div>
     <div class="row p-t-50">
         <div class="col-md-6 col-sm-12 ">
+            <input type="hidden" name="ads_pkg_id"> 
             {!! Form::label('ads_category_id', 'Choose Advertise Category')  !!}
             {!! Form::select('ads_category_id', $category_list, null,['class' => 'bg-white medium-input'])  !!}
         </div>
@@ -109,6 +110,7 @@ function changePrice(){
                 },
                 dataType: "json",
                 success: function (data) {
+                    $('input[name="ads_pkg_id"]').val(data.id);
                     $('input[name="ads_days"]').val(1);
                     $('[data-ads-days="per-unit"]').val(1);
                     var price = 0;
@@ -194,17 +196,17 @@ $(document).ready(function () {
             url: "{{ url('hotel/add_package_to_cart')}}",
             type: "get",
             data: {
-                'cart[package][id]' : 'advert',
-                'cart[package][price]':$('[data-ads-price="per-unit"]').val(), 
-                'cart[package][content][id]': $('input[name="ads_pkg_id"]').val(),
-                'cart[package][content][ads_category_id]': $('input[name="ads_category_id"]').val(),
-                'cart[package][content][ads_position]': $('input[name="ads_position"]').val(),
-                'cart[package][content][ads_pacakge_type]': $('input[name="ads_pacakge_type"]').val(),
-                'cart[package][content][ads_start_date]': $('input[name="ads_start_date"]').val(),
-                'cart[package][content][ads_package_price]': $('[data-ads-price="per-unit"]').val(),
-                'cart[package][content][ads_package_total_price]':$('[data-ads_package_total_price="list-unit"]').val(),
-                'cart[package][content][ads_days]': $('input[name="ads_days"]').val(),
-                'cart[package][type]':'advert'
+                'cart[0][package][id]' : 'advert',
+                'cart[0][package][price]':$('[data-ads-price="per-unit"]').val(), 
+                'cart[0][package][content][id]': $('input[name="ads_pkg_id"]').val(),
+                'cart[0][package][content][ads_category_id]': $('input[name="ads_category_id"]').val(),
+                'cart[0][package][content][ads_position]': $('input[name="ads_position"]').val(),
+                'cart[0][package][content][ads_pacakge_type]': $('input[name="ads_pacakge_type"]').val(),
+                'cart[0][package][content][ads_start_date]': $('input[name="ads_start_date"]').val(),
+                'cart[0][package][content][ads_package_price]': $('[data-ads-price="per-unit"]').val(),
+                'cart[0][package][content][ads_package_total_price]':$('[data-ads_package_total_price="list-unit"]').val(),
+                'cart[0][package][content][ads_days]': $('input[name="ads_days"]').val(),
+                'cart[0][package][type]':'advert'
             },
             dataType: "json",
             success: function (data) {
