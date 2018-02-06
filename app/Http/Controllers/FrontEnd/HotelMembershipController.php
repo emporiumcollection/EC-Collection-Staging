@@ -196,11 +196,15 @@ class HotelMembershipController extends Controller {
         foreach ($category_list as $key => $categoryObj) {
             $this->data['category_list'][$categoryObj->id] = $categoryObj->category_name;
         }
+        
+                    
        $positionArr = array();
        $positionArr[''] = '- Position -';
-       $positionArr['landing_slider'] = 'Landing Page Sidebar';
+       $positionArr['landing'] = 'Landing Page Sidebar';
+       $positionArr['landing_slider'] = 'Landing Page Slider';
        $positionArr['grid_results'] = 'Grid Page Results';
-       $positionArr['grid_sidebar'] = 'Grid Page Slider';
+       $positionArr['grid_slider'] = 'Grid Page Slider';
+       $positionArr['grid_sidebar'] = 'Grid Page Sidebar';
        $positionArr['grid_popup'] = 'Grid Page Quick View Pop Up';
        $positionArr['detail_sidebar'] = 'Detail Page Sidebar';
        $positionArr['detail_restaurant_popup'] = 'Detail Page Restaurant Pop Up';
@@ -264,6 +268,7 @@ class HotelMembershipController extends Controller {
         $cartPkgType = $request->input('cart')['package']['id'].'_'.$request->input('cart')['package']['type'];    
         $request->session()->push('hotel_cart.'.$cartPkgType,$request->input('cart'));
 
+        return response()->json(array('status'=>true,'error'=>false));
 
     }
 

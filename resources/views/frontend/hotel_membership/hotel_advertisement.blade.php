@@ -72,7 +72,7 @@
         
         <div class="col-md-6 col-sm-12 " data-ads-days="box" style="display: none;">
             {!! Form::label('ads_days', 'Choose Days')  !!}
-            <input type="number" name="ads_days" value="1"  disabled="" class="bg-white medium-input">
+            <input type="text" name="ads_days" value="1"   disabled="" class="bg-white medium-input">
              <input type="hidden" data-ads-days="per-unit"> 
         </div>
         <div class="col-md-6 col-sm-12 ">
@@ -112,16 +112,15 @@ function changePrice(){
                     $('input[name="ads_days"]').val(1);
                     $('[data-ads-days="per-unit"]').val(1);
                     var price = 0;
-                    $('[data-ads-days="per-unit"]').val(0);
-                    if($('#ads_pacakge_type').val()=='cpc'){
+                    if($('#ads_pacakge_type').val()=='cpc' && data.space_cpc_price>0){
                         price = data.space_cpc_price;
                     }
-                    if($('#ads_pacakge_type').val()=='cpm'){
+                    if($('#ads_pacakge_type').val()=='cpm' && data.space_cpm_price>0){
                         price = data.space_cpm_price;
                         $('input[name="ads_days"]').val(data.space_cpm_num_days);
                         $('[data-ads-days="per-unit"]').val(data.space_cpm_num_days);
                     }
-                    if($('#ads_pacakge_type').val()=='cpd'){
+                    if($('#ads_pacakge_type').val()=='cpd' && data.space_cpd_price>0){
                         price = data.space_cpd_price;
                     }
                     $('[data-ads-price="list"] span').html((price).toFixed(2));
@@ -152,12 +151,26 @@ $(document).ready(function () {
      $(document).on('change', '#ads_category_id, #ads_position', function () {
         changePrice();
     });  
-    $(document).on('change', 'input[name="ads_days"]', function () {
+
+    $(document).on('keyup', 'input[name="ads_days"]', function () {
+
+
         var days = $(this).val();
+        if(days<=0){
+            if($('[data-ads-days="per-unit"]').val()>0){
+                $(this).val($('[data-ads-days="per-unit"]').val());
+            }else{
+                 $(this).val(1);
+            }
+            return false
+        }
         var prc = $.trim($('[data-ads-price="per-unit"]').val());
         var perUnit = prc/$.trim($('[data-ads-days="per-unit"]').val());
-        $('#finalpacprice').val((perUnit * days).toFixed(2));
-        $('[data-ads-price="total-list"] span').html((perUnit * days).toFixed(2));
+        var totalPrice = (perUnit * days).toFixed(2);
+        $('[data-ads_package_total_price="list-unit"]').val(totalPrice);
+        $('[data-ads-price="total-list"] span').html(totalPrice);
+
+        console.log('days '+days + ' prc '+prc+' perUnit '+ perUnit +' totalPrice '+totalPrice);
     }); 
    
 
@@ -176,10 +189,10 @@ $(document).ready(function () {
 
 
     function addToCartAdvert(){
-        $('[data-ads-action="addToCartAdvert"]').prop('disabled', ture);
+        $('[data-ads-action="addToCartAdvert"]').prop('disabled', true);
         $.ajax({
             url: "{{ url('hotel/add_package_to_cart')}}",
-            type: "post",
+            type: "get",
             data: {
                 'cart[package][id]' : 'advert',
                 'cart[package][price]':0, 
