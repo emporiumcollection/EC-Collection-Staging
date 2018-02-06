@@ -25,7 +25,7 @@
 @media (min-width: 768px) and (max-width: 992px) {
     
     .editorial-custom-footer-style {
-	width: 74% !important;
+	width: 100% !important;
     }
     .vegasFooter {
 	width: 50% !important;
@@ -69,6 +69,7 @@
     }
     .contact-aside {
 	left: calc(100% - 50px) !important;
+        margin: 0px 0px 0px 11px;
     }
     .go-back-button {
 	text-align: left !important;
@@ -96,6 +97,9 @@
     .ResponsiveTopbar {
 	display: none;
     }
+    .show-login-forms-btn {
+	width: 100%;
+    }
     
     .ResSlider {
         margin-top: 40px;
@@ -117,7 +121,7 @@
         color: #fff;
     }
     .responsiveFluid {
-        padding: 0px !important;
+        padding-left: 0px !important;
         margin: 0px !important;
     }
     
@@ -140,6 +144,7 @@
 	margin-bottom: 25px;
 	margin-top: 60px;
     }
+    
     
 }
 
@@ -224,6 +229,7 @@
     }
     .contact-aside {
 	left: calc(100% - 50px) !important;
+        margin: 0px 0px 0px 11px;
     }
     .go-back-button {
 	text-align: left !important;
@@ -295,6 +301,7 @@
     }
     .contact-aside {
 	left: calc(100% - 50px) !important;
+        margin: 0px 0px 0px 11px;
     }
     .go-back-button {
 	text-align: left !important;

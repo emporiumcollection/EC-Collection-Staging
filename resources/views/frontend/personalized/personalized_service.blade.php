@@ -11,13 +11,13 @@
 
 <!-- buttons -->
     <div class="col-md-12">
-        <div class="col-md-4 hidden-md hidden-lg col-xs-4">
+        <div class="col-md-4 hidden-md hidden-lg col-xs-4 col-sm-4">
             <span class="hamburger-menu editorial-res-side-nav-logo hidden-md hidden-lg visible-xs visible-sm" onclick="openNav()"><img src="https://www.emporium-voyage.com/sximo/assets/images/Hamburger-Menu_1.png" alt=""></span>
         </div>
-        <div class="col-md-4 col-xs-4">
+        <div class="col-md-4 col-xs-4 col-sm-4">
             <a data-popup-id="login-forms-popup" href="#" class="video-popup-btn login_popup show-login-forms-btn hidden-md hidden-lg"><i class="fa fa-lock detailfaLock" aria-hidden="true" ></i></a>
         </div>
-        <div class="col-md-4 col-xs-4">
+        <div class="col-md-4 col-xs-4 col-sm-4">
             <a data-popup-id="ev-primary-navigation" href="#" class="video-popup-btn hidden-md hidden-lg"><!--<i class="fa fa-bars hamburgMenu" aria-hidden="true"></i>-->
                 <div class="block-content content">
                     <span></span>
@@ -154,7 +154,7 @@
                     
                     <!-- new tabs end -->
              
-                        <div class="col-md-12 col-sm-8">
+                        <div class="col-md-12 col-sm-12">
                             <form action="{{URL::to('personalized-service/save')}}" method="POST">
                                 <fieldset class="muti-form-align">
                                     <div class="centred-tab-align">
@@ -537,6 +537,7 @@
                     $(".get-checkout-date").val('');
                 });
                 
+                /* steps */
                 $(".next").click(function(){
                     $('.stepwizard-step').find('a').attr("disabled","disabled");
                     var next_value = $(this).data('next-id');
@@ -547,6 +548,7 @@
                     var pre_value = $(this).data('prev-id');
                     $('.'+pre_value).removeAttr('disabled');
                  });
+                 /* steps */
             });
         </script>
         
