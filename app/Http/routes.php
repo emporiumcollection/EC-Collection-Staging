@@ -246,6 +246,7 @@ Route::group(['middleware' => 'auth'], function()
 	Route::post('enable_diable_pagessliderstatus', 'PagessliderController@enable_diable_pagessliderstatus');
 	
 	Route::get('fetchpackagedetails/{pckid}', 'HomeController@fetchpackagedetails');
+	Route::get('userorder_downloadinvoicepdf/{ordid}', 'UserorderController@ordersdownloadinvoicepdf');
 
 	/*
 	* Custom Field Module  
