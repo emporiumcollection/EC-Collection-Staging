@@ -22,6 +22,7 @@
         <!-- style -->
         <link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/style.css')}}" />
         <!-- responsive css -->
+        <link rel="stylesheet" href="{{ asset('sximo/assets/css/ai_membership_responsive.css')}}" />
         <link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/responsive.css')}}" />
         <!-- Custom style -->
         <link href="{{ asset('sximo/assets/memform/css/custom-ai.css')}}" rel="stylesheet" type="text/css"/>
@@ -197,7 +198,7 @@
 
             <!-- AIC Harman email phone sidebar add end-->
             <div class="row">
-                <div class="col-md-2">
+                <div class="col-md-2 hidden-xs hidden-sm">
                      <div class="right-menus right-menu-sidebar">
                         <div class="hotels-logo">
                             <img alt="" src="{{ asset('sximo/assets/images/design-location-logo.png')}}" class="img-responsive">
