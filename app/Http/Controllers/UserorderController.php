@@ -146,7 +146,7 @@ class UserorderController extends Controller {
 				$order_item_detail[$o]->pckname = 'Advertisement';
 				$order_item_detail[$o]->pckprice = 0;
 				$order_item_detail[$o]->pckcontent = '';
-				if($oitem->package_type=='Hotel')
+				if($oitem->package_type=='hotel')
 				{
 					$pchkdet = \DB::table('tb_packages')->select('package_title','package_price')->where('id', $oitem->package_id)->first();
 					if(!empty($pchkdet))
@@ -155,7 +155,7 @@ class UserorderController extends Controller {
 						$order_item_detail[$o]->pckprice = $pchkdet->package_price;
 					}
 				}
-				elseif($oitem->package_type=='Advertisement')
+				elseif($oitem->package_type=='advert')
 				{
 					$pacdata = json_decode($oitem->package_data, true);
 					$order_item_detail[$o]->pckprice = $pacdata['ads_package_total_price'];
@@ -271,7 +271,7 @@ class UserorderController extends Controller {
 				$nos = 1;
 				foreach($order_item as $oitem)
 				{
-					if($oitem->package_type=='Hotel')
+					if($oitem->package_type=='hotel')
 					{
 						$title = '';
 						$pacpric = 0;
@@ -283,7 +283,7 @@ class UserorderController extends Controller {
 						}
 						$html .= '<tr><td>'.$nos.'</td><td><b>'.$title.'</b></td><td class="algCnt">'.$qty.'</td><td class="algCnt">'.$currency->content . $pacpric.'</td></tr>';
 					}
-					elseif($oitem->package_type=='Advertisement')
+					elseif($oitem->package_type=='advert')
 					{
 						$pacdata = json_decode($oitem->package_data, true);
 						$pacpric = $pacdata['ads_package_total_price'];
