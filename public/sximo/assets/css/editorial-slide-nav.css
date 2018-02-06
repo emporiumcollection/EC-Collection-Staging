@@ -26,6 +26,22 @@ and open the template in the editor.
 	/*position: absolute;*/
 	top: 0;
 }
+.hotel-book-now {
+    background: #ABA00D;
+    color: #fff;
+    font-size: 25px;
+    height: 71px;
+    margin: -48px 0px 10px 169px;
+    opacity: 1;
+    overflow-wrap: break-word;
+    padding: 27px 5px;
+    position: absolute;
+    text-align: center;
+    text-transform: none;
+    width: 174px;
+    z-index: 99;
+    float: left;
+}
 /*Show More Slide CSS*/
 .show_more-page {
     background-blend-mode: multiply;
