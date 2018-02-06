@@ -1,0 +1,59 @@
+@media (min-width: 1201px) and (max-width: 1400px) {
+
+
+}
+
+@media (min-width: 1201px) and (max-width: 1400px) {
+}
+
+@media (min-width: 993px) and (max-width: 1200px) {
+
+}
+
+
+@media (min-width: 768px) and (max-width: 992px) {
+
+    .form-custom-width {
+        padding: 10px 15px 0px 15px;
+        width: 100%;
+    }
+    .new-book-form-hotel-logo {
+        margin: 10px;
+        width: 100% !important;
+    }
+    .booking-form-all-fields ul li {
+        margin-bottom: 10px;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+
+    .form-custom-width {
+        padding: 10px 15px 0px 15px;
+        width: 100%;
+    }
+    .new-book-form-hotel-logo {
+        margin: 10px;
+        width: 100% !important;
+    }
+    .booking-form-all-fields ul li {
+        margin-bottom: 10px;
+    }
+
+}
+
+
+@media (min-width: 320px) and (max-width: 480px) {
+
+    .form-custom-width {
+        padding: 10px 15px 0px 15px;
+        width: 100%;
+    }
+    .new-book-form-hotel-logo {
+        margin: 10px;
+        width: 100% !important;
+    }
+    .booking-form-all-fields ul li {
+        margin-bottom: 10px;
+    }
+}

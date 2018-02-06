@@ -97,6 +97,10 @@
     .contact-aside li {
 	padding: 6px 0px 6px 14px !important;
     }
+    /* impression */
+    .ResponsiveInpressionMain {
+        margin-top: 40px;
+    }
     
 }
 
@@ -177,6 +181,10 @@
     .contact-aside li {
 	padding: 6px 0px 6px 14px !important;
     }
+    /* impression */
+    .ResponsiveInpressionMain {
+        margin-top: 40px;
+    }
    
 }
 
@@ -256,6 +264,10 @@
     }
     .contact-aside li {
 	padding: 6px 0px 6px 14px !important;
+    }
+    /* impression */
+    .ResponsiveInpressionMain {
+        margin-top: 40px;
     }
     
 }

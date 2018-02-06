@@ -1135,23 +1135,7 @@
                             .InnerDetailHeight {
                                 height: 980px;
                             }
-                            
-                            .hotel-book-now {
-                                background: #ABA07C;
-                                color: #fff;
-                                font-size: 25px;
-                                height: 71px;
-                                margin: -48px 0px 10px 169px;
-                                opacity: 1;
-                                overflow-wrap: break-word;
-                                padding: 27px 5px;
-                                position: absolute;
-                                text-align: center;
-                                text-transform: none;
-                                width: 174px;
-                                z-index: 99;
-                                float: left;
-                            }
+
                             .m_slider.editorial_m_slider {
                                 margin-top: 81px;
                                 height: calc(100vh - 81px);

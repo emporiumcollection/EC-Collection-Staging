@@ -13,7 +13,8 @@
         <link href="{{ asset('sximo/assets/css/m-popup.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/jasor-slider.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('sximo/assets/css/crousal-book-form.css')}}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('sximo/assets/css/booking-form.css')}}" rel="stylesheet" type="text/css"/> 
+        <link href="{{ asset('sximo/assets/css/booking-form.css')}}" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="{{ asset('sximo/assets/css/ai_bookingform_responsive.css')}}" />
 
         <script src="{{ asset('sximo/assets/js/jquery-2.1.0.min.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/bootstrap.min.js')}}" type="text/javascript"></script>
