@@ -145,6 +145,7 @@ class UserorderController extends Controller {
 				$order_item_detail[$o] = $oitem;
 				$order_item_detail[$o]->pckname = 'Advertisement';
 				$order_item_detail[$o]->pckprice = 0;
+				$order_item_detail[$o]->pckcontent = '';
 				if($oitem->package_type=='Hotel')
 				{
 					$pchkdet = \DB::table('tb_packages')->select('package_title','package_price')->where('id', $oitem->package_id)->first();
@@ -153,6 +154,21 @@ class UserorderController extends Controller {
 						$order_item_detail[$o]->pckname = $pchkdet->package_title;
 						$order_item_detail[$o]->pckprice = $pchkdet->package_price;
 					}
+				}
+				elseif($oitem->package_type=='Advertisement')
+				{
+					$pacdata = json_decode($oitem->package_data);
+					$order_item_detail[$o]->pckprice = $pacdata['ads_package_total_price'];
+					$adsdata = '';
+					$catdet = \DB::table('tb_categories')->select('category_name')->where('id', $pacdata['ads_category_id'])->first();
+					if(!empty($catdet))
+					{
+						$adsdata .= 'Category: '.$catdet->category_name.', ';
+					}
+					$adsdata .= 'position: '.$pacdata['ads_position'];
+					$adsdata .= ', Type: '.$pacdata['ads_pacakge_type'];
+					$adsdata .= ', Start Date: '.$pacdata['ads_start_date'];
+					$order_item_detail[$o]->pckcontent = $adsdata;
 				}
 				$o++;
 			}

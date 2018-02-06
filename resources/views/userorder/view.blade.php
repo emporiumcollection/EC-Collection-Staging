@@ -97,26 +97,28 @@
 			<div id="item-pnl">
 				<div class="row items-pnl-head">
 					<div class="col-sm-1 col">No.</div>
-					<div class="col-sm-4 col">PACKAGES</div>
-					<div class="col-sm-3 col" style="text-align:center;">QTY</div>
-					<div class="col-sm-4 col" style="text-align:center;">PRICE</div>
+					<div class="col-sm-7 col">PACKAGES</div>
+					<div class="col-sm-2 col" style="text-align:center;">QTY</div>
+					<div class="col-sm-2 col" style="text-align:center;">PRICE</div>
 				</div>
 				{{--*/ 
 						$qty = 1;
 						$qtyPr = 1;
 					   $Totprice = 0;
+					   $nos = 1;
 					/*--}}
 				@foreach($order_item_detail as $detail)
 					<div class="row items-pnl-body" id="item-row">
 						<div class="fieldwrapper">
-							<div class="col-sm-1 col">{{$detail->id}}</div>
-							<div class="col-sm-4 col"><b>{{$detail->pckname}}</div>
-							<div class="col-sm-3 col" style="text-align:center;">{{$qty}}</div>
-							<div class="col-sm-4 col" style="text-align:center;">&euro;{{$detail->pckprice}}</div>
+							<div class="col-sm-1 col">{{$nos}}</div>
+							<div class="col-sm-7 col"><b>{{$detail->pckname}} {{($detail->$pckcontent!='') ? '<br>'.$detail->$pckcontent : '' }}</div>
+							<div class="col-sm-2 col" style="text-align:center;">{{$qty}}</div>
+							<div class="col-sm-2 col" style="text-align:center;">&euro;{{$detail->pckprice}}</div>
 						</div>
 					</div>
 					{{--*/ $qtyPr = $detail->pckprice * $qty;
 						$Totprice = $Totprice + $qtyPr;
+						$nos++;
 					/*--}}
 				@endforeach
 				<div class="row items-pnl-body" id="item-row">
