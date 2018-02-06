@@ -143,6 +143,14 @@
     .FloatFilter {
         float: none !important;
     }
+    /* overflow */
+    
+    .sidenav {
+	overflow: hidden;
+    }
+    .hotel {
+	overflow: hidden;
+    }
     
     
 }
@@ -257,6 +265,14 @@
     }
     .FloatFilter {
         float: none !important;
+    }
+    /* overflow */
+    
+    .sidenav {
+	overflow: hidden;
+    }
+    .hotel {
+	overflow: hidden;
     }
    
 }
@@ -378,6 +394,12 @@
     }
     .chosen-container-multi .chosen-choices li.search-field input[type="text"] {
 	font-size: 90%;
+    }
+    .sidenav {
+	overflow: hidden;
+    }
+    .hotel {
+	overflow: hidden;
     }
     
 }
