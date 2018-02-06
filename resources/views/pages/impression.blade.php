@@ -357,7 +357,7 @@
                 
                 <!-- responsive menu add -->
                 
-                <div class="col-md-10 no-padding">
+                <div class="col-md-10 no-padding ResponsiveInpressionMain">
                    @if(!empty($pageslider))
                         <section class="wow fadeIn no-padding cstmaiclass">
                             <div class="swiper-auto-height-container position-relative width-100">
