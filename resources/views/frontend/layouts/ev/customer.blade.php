@@ -34,7 +34,6 @@
     <link href="{{ asset('sximo/assets/css/filter-bar.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('sximo/assets/css/ai_yachts-custom.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('sximo/assets/css/cities-filter.css')}}" rel="stylesheet" type="text/css"/>
-    <link href="{{ asset('sximo/assets/css/ai_search_responsive.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('sximo/assets/css/editorial-responsive.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('sximo/assets/css/editorial.css')}}" rel="stylesheet" type="text/css"/>
 
@@ -638,12 +637,12 @@
                         
                 </header>
                 <div class="filter-page-main-align">
-                    <div class="col-md-10 col-xs-12 col-sm-9 FloatFilter pull-right">
+                    <div class="col-md-10 col-sm-9 FloatFilter pull-right">
                         <div class="row">
                             <!-- AIC Harman top bar adding -->
                             <section class="book-form-top-bar">
                                 <div>
-                                    <div class="booking-form-bar-top hidden-xs hidden-sm">
+                                    <div class="booking-form-bar-top">
                                         <form autocomplete="off" method="get" id="searchform-navbar" class="searchform-navbar top-bar-search-form-align" action="{{URL::to('search')}}">
                                             <div class="col-md-3">
                                                 <div class="row">
