@@ -280,6 +280,10 @@ Route::post('hotel/getAdvertPrice', 'Frontend\HotelMembershipController@getAdver
 Route::get('hotel/checkout', 'Frontend\HotelMembershipController@hotelCheckout');	
 Route::get('thanks', 'Frontend\HotelMembershipController@getThanks');	
 Route::get('advertiser/package', 'Frontend\AdvertisementController@advertisementPackage');
+Route::get('advertiser/cart', 'Frontend\AdvertisementController@hotelCart');
+Route::get('advertiser/add_package_to_cart', 'Frontend\AdvertisementController@addToCartAjax');
+Route::post('advertiser/getAdvertPrice', 'Frontend\AdvertisementController@getAdvertPriceAjax');
+Route::get('advertiser/checkout', 'Frontend\AdvertisementController@hotelCheckout');
 Route::get('fetchadvertisementpackagedetails/{pckid}', 'Frontend\AdvertisementController@fetchadvertisementpackagedetails');
 
 Route::get('hotel/propertymanagement', 'Frontend\PropertymanagementController@propertyManagementList');

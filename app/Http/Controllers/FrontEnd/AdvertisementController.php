@@ -64,5 +64,104 @@ class AdvertisementController extends Controller {
 			exit;
 		}
 	}
+	
+	 /*
+     * For advertisement Cart Page
+    */
+    public function advertisementCart(Request $request) {
+        $advertPkgID = array(0);
+
+       //print_r($request->session()->get('hotel_cart')); die;
+        if(!empty($request->session()->get('hotel_cart'))){
+
+            foreach ($request->session()->get('hotel_cart') as $cartkey => $cartValue) {
+                if($cartValue['package']['type']=='advert'){
+                    $advertPkgID[] = $cartValue['package']['content']['id'];
+                }
+            }
+        }
+
+        $mainPkgQry  =  "Select tb_ad.id,tb_ad.space_title as package_title,'' as package_image,tb_ad.space_cpd_price as package_price  from tb_advertisement_space tb_ad where tb_ad.id in(".implode(',',$advertPkgID).")";
+        $dataPackage = \DB::select($mainPkgQry);
+
+        
+        $this->data['packages'] = $dataPackage;
+        return view('frontend.advertiser.advertiser_cart', $this->data);
+    }
+
+    /*
+     * For Checkout Page
+    */
+    public function advertiserCheckout(Request $request) {
+
+                $advertPkgID = array(0);
+
+                //print_r($request->session()->get('hotel_cart')); die;
+                if(!empty($request->session()->get('hotel_cart'))){
+
+					foreach ($request->session()->get('hotel_cart') as $cartkey => $cartValue) {
+						if($cartValue['package']['type']=='advert'){
+							$advertPkgID[] = $cartValue['package']['content']['id'];
+						}
+					}
+                }
+
+                $mainPkgQry  =  "Select tb_ad.id,tb_ad.space_title as package_title,'' as package_image,tb_ad.space_cpd_price as package_price  from tb_advertisement_space tb_ad where tb_ad.id in(".implode(',',$advertPkgID).")";
+                $dataPackage = \DB::select($mainPkgQry);
+
+        
+        $this->data['packages'] = $dataPackage;
+        $this->data['pageslider']="";
+        return view('frontend.advertiser.advertiser_checkout', $this->data);
+    }
+
+    /*
+     * For Saving Packages Into Cart
+    */
+    public function addToCartAjax(Request $request){
+
+        $cartPkgType = $request->input('cart')['package']['id'].'_'.$request->input('cart')['package']['type'];  
+        $cart = array();
+        $cartObj = $request->input('cart')['package'];
+        
+        $cartItems = $request->session()->get('hotel_cart');
+        $cart[$cartPkgType]['package']['id'] = $cartObj['id'];
+        $cart[$cartPkgType]['package']['price'] = $cartObj['price'];
+        $cart[$cartPkgType]['package']['qty'] = 1;
+        $cart[$cartPkgType]['package']['type'] = $cartObj['type'];
+        $cart[$cartPkgType]['package']['content'] = (!empty($cartObj['content']))?$cartObj['content']:'';
+        if(!empty($cartItems)){
+            $cartItems = array_merge($cartItems,$cart);
+        }else{
+            $cartItems = $cart;
+        }
+
+        $request->session()->put('hotel_cart', $cartItems);
+
+        return response()->json(array('status'=>true,'error'=>false));
+
+    }
+
+     /*
+     * For Get Advertisement Packages Price
+    */
+    public function getAdvertPriceAjax(Request $request){
+        
+        $dataPrice = \DB::table('tb_advertisement_space')->select('space_title','id','space_cpm_price','space_cpd_price','space_cpc_price','space_cpm_num_days')->where('space_category','=',$request->input('category_id'))->where('space_position','=',$request->input('ads_position'))->first();
+        return response()->json($dataPrice);
+
+
+    }
+    
+    
+    public function getThanks(Request $request) {
+
+        $this->data['pageTitle'] = 'Thank you Page';
+        $this->data['data'] = CommonHelper::getInfo();
+        $this->data['pageslider'] = "";
+        $this->data['currency'] = \DB::table('tb_settings')->select('content')->where('key_value', 'default_currency')->first();
+           
+        return view('frontend.advertiser.thanks', $this->data);
+    }
 
 }

@@ -79,7 +79,7 @@
         <div class="col-sm-12 text-right ads-total-price p-b-50" data-ads-price="total-list">Total : {!! isset($currency->content)?$currency->content:'$' !!} <span>0</span></div>
         <div class="col-sm-12 text-right">
             <input type="hidden" data-ads_package_total_price="list-unit">
-            <button class="customGoldBtn btn nextBtn cursor" disabled="" data-ads-action="addToCartAdvert">Add To Cart & Continue  </button> <a class="customGoldBtn btn nextBtn" href="{{url('hotel/cart')}}">Continue  </a>
+            <button class="customGoldBtn btn nextBtn cursor" disabled="" data-ads-action="addToCartAdvert">Add To Cart & Continue  </button> <a class="customGoldBtn btn nextBtn" href="{{url('advertiser/cart')}}">Continue  </a>
         </div>
         
        
@@ -94,7 +94,7 @@ function changePrice(){
 
     if($('#ads_category_id').val()!='' && $('#ads_position').val()!='' && $('#ads_pacakge_type').val()!=''){
         $.ajax({
-                url: "{{ url('hotel/getAdvertPrice')}}",
+                url: "{{ url('advertiser/getAdvertPrice')}}",
                 type: "post",
                 data: {
                     'category_id' : $('select[name="ads_category_id"]').val(),
@@ -185,7 +185,7 @@ $(document).ready(function () {
     function addToCartAdvert(){
         $('[data-ads-action="addToCartAdvert"]').prop('disabled', true);
         $.ajax({
-            url: "{{ url('hotel/add_package_to_cart')}}",
+            url: "{{ url('advertiser/add_package_to_cart')}}",
             type: "get",
             data: {
                 'cart[package][id]' : 'advert',
@@ -202,7 +202,7 @@ $(document).ready(function () {
             },
             dataType: "json",
             success: function (data) {
-                location.href='{{url("hotel/cart")}}';
+                location.href='{{url("advertiser/cart")}}';
             }
         });
     }
