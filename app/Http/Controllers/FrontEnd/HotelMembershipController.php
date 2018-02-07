@@ -335,4 +335,28 @@ class HotelMembershipController extends Controller {
         return view('frontend.hotel_membership.thanks', $this->data);
     }
 
+
+    public function getCartItemRemovedAjax(Request $request){
+
+
+        $cartPkgType = $request->input('cart')['package']['id'].'_'.$request->input('cart')['package']['type'];  
+        $cart = array();
+        $cartObj = $request->input('cart')['package'];
+        
+        $cartItems = $request->session()->get('hotel_cart');
+
+      
+        if($request->input('cart')['package']['type']=="hotel"){
+            unset($cartItems[$cartPkgType]);
+            $request->session()->put('hotel_cart', $cartItems);
+        }
+
+        if($request->input('cart')['package']['type']=="advert"){           
+            unset($cartItems["advert_advert"]);
+            $request->session()->put('hotel_cart', $cartItems);
+        }
+       return ("success");   
+
+    }
+
 }

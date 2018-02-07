@@ -55,7 +55,8 @@
                                     </td>
                                     <td>
                                     		<div class="product-title-and-remove-option">
-                                        	<span class="product-title">{{$package->package_title}}</span><a href="#">Remove</a>
+                                        	<span class="product-title">{{$package->package_title}}</span>
+                                            <a href="javascript:voic(0);" onclick="javascript:removeItemFromCart({{$package->id}},{{ $package->package_price }});">Remove</a>
                                         </div>
                                     </td>
                                     <td class="overview-td">{!! isset($currency->content)?$currency->content:'$' !!}  {{number_format($package->package_price,2)}}</td>
@@ -111,6 +112,31 @@
 
 </div>
 </section>
+
+
+ <script>
+
+
+function removeItemFromCart(PackageID,PackagePrice){
+    
+
+        var PackagePrice=PackagePrice;
+        var PackageID=PackageID;
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            
+            window.location="{{ URL::to('hotel/cart')}}";
+        }
+        };
+        xhttp.open("GET", "{{ URL::to('removecartitem')}}?cart[package][id]="+PackageID+"&cart[package][price]="+PackagePrice+"&cart[package][qty]=1&cart[package][type]=hotel", true);
+        xhttp.send();
+
+}
+
+
+ </script>
+
 @endsection
 @section('css')
 
