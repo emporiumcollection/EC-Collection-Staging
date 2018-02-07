@@ -6,6 +6,7 @@ use App\Models\Core\Groups;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 use Validator, Input, Redirect ; 
+use App\Helpers\CrmLayoutHelper;
 
 
 class UsersController extends Controller {
@@ -89,6 +90,8 @@ class UsersController extends Controller {
 
 	function getUpdate(Request $request, $id = null)
 	{
+            
+            $module_id = 1;
 	
 		if($id =='')
 		{
@@ -110,6 +113,14 @@ class UsersController extends Controller {
 			$this->data['row'] = $this->model->getColumnTable('tb_users'); 
 		}
 
+                /*
+                 * CRM Layout: Fetch page layout
+                 */
+
+                $this->data['all_rows'] = CrmLayoutHelper::fetchCrmLayout($module_id);
+
+                /********************************/
+                
 		$this->data['id'] = $id;
 		return view('core.users.form',$this->data);
 	}	
