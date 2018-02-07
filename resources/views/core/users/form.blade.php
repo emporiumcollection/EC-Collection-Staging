@@ -163,7 +163,7 @@
 		 </div>			
 			<!--VC Start-->
 
-                        @include('admin/layouts/ai_vc_fields')
+                        @include('layouts/crm_layout/ai_vc_fields')
 
                         <!--VC End-->
 			
@@ -193,5 +193,5 @@
 		 
 	});
 	</script>		 
-@include('admin/layouts/ai_vc')
+@include('layouts/crm_layout/ai_vc')
 @stop
