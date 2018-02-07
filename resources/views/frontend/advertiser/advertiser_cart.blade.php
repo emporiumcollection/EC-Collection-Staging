@@ -37,7 +37,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            	{{--*/ $subTotal = 0; $orderTotal = 0; /*--}}
+                            	{{--*/ $prc = 0; $orderTotal = 0; /*--}}
                             	@foreach($packages as $package)
 								
                                 <tr>
