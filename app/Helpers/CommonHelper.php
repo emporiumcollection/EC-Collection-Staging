@@ -42,7 +42,7 @@ class CommonHelper
 		{
 			$calcperunit = $actprice / $actdays;
 			$calcallunit = $calcperunit * $customdays;
-			return number_format($calcallunit,2);
+			return number_format($calcallunit,2,'.','');
 		}
 	}
 }

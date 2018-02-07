@@ -313,7 +313,9 @@ class StripepaymentController extends Controller
 
 public function checkoutPost(Request $request)
     {
-            $user = User::find(1);
+            
+        $userID=\Session::get('uid'); 
+            $user = User::find($userID);
            
             $input = $request->all();
     
@@ -356,7 +358,7 @@ public function checkoutPost(Request $request)
 
                 // Charge the user's card:
                    $charge = \Stripe\Charge::create(array(
-                      "amount" => $request->input("finalAmount"),
+                      "amount" =>((int)$request->input("finalAmount")*100),
                       "currency" => "EUR",
                       "description" => "Package Charges",
                       "source" => $token,

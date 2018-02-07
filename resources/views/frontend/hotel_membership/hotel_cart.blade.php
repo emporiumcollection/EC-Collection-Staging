@@ -39,8 +39,9 @@
                             <thead>
                                 <tr>
                                     <th class="col-md-4 no-padding" colspan="2">Package</th>
-                                    <th class="col-md-3 no-padding">Price</th>
                                     <th class="col-md-4 no-padding">Quantity</th>
+                                    <th class="col-md-3 no-padding">Price</th>
+                                    
                                     <th class="col-md-1 no-padding">Line Total</th>
                                 </tr>
                             </thead>
@@ -59,9 +60,9 @@
                                             <a href="javascript:voic(0);" onclick="javascript:removeItemFromCart({{$package->id}},{{ $package->package_price }});">Remove</a>
                                         </div>
                                     </td>
+                                    
+                                    <td class="overview-td">1</td>
                                     <td class="overview-td">{!! isset($currency->content)?$currency->content:'$' !!}  {{number_format($package->package_price,2)}}</td>
-                                    <td class="overview-td">1
-                                    </td>
                                     <td class="overview-td">{!! isset($currency->content)?$currency->content:'$' !!}  {{number_format($package->package_price,2)}}</td>
                                 </tr>
                                 @endforeach

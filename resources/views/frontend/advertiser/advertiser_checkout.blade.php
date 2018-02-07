@@ -35,20 +35,20 @@
                                     <td class="overview-td">
 										{!! isset($currency->content)?$currency->content:'$' !!}
 										@if(\session()->get('hotel_cart')['advert_advert']['package']['content']['ads_pacakge_type']=='cpc')
-											{{ number_format($package->space_cpc_price,2) . '/' . $package->space_cpc_num_clicks .' Click' }}
+											{{ number_format($package->space_cpc_price,2,'.','') . '/' . $package->space_cpc_num_clicks .' Click' }}
 										@elseif(\session()->get('hotel_cart')['advert_advert']['package']['content']['ads_pacakge_type']=='cpm')
-											{{ number_format($package->space_cpm_price,2) . '/' . $package->space_cpm_num_view .' Views' }}
+											{{ number_format($package->space_cpm_price,2,'.','') . '/' . $package->space_cpm_num_view .' Views' }}
 										@elseif(\session()->get('hotel_cart')['advert_advert']['package']['content']['ads_pacakge_type']=='cpd')
-											{{ number_format($package->space_cpd_price,2) . '/' . $package->space_cpm_num_days .' Days' }}
+											{{ number_format($package->space_cpd_price,2,'.','') . '/' . $package->space_cpm_num_days .' Days' }}
 										@endif
 									</td>
                                     <td class="overview-td">{{\session()->get('hotel_cart')['advert_advert']['package']['content']['ads_days']}}
                                     </td>
                                     <td class="overview-td">
 										@if(\session()->get('hotel_cart')['advert_advert']['package']['content']['ads_pacakge_type']=='cpc')
-											{{--*/ $prc = number_format($package->space_cpc_price,2) /*--}}
+											{{--*/ $prc = number_format($package->space_cpc_price,2,'.','') /*--}}
 										@elseif(\session()->get('hotel_cart')['advert_advert']['package']['content']['ads_pacakge_type']=='cpm')
-											{{--*/ $prc = number_format($package->space_cpm_price,2) /*--}}
+											{{--*/ $prc = number_format($package->space_cpm_price,2,'.','') /*--}}
 										@elseif(\session()->get('hotel_cart')['advert_advert']['package']['content']['ads_pacakge_type']=='cpd')
 											 {{--*/ $prc = CommonHelper::calc_price($package->space_cpd_price,$package->space_cpm_num_days,\session()->get('hotel_cart')['advert_advert']['package']['content']['ads_days']) /*--}} 
 										@endif
@@ -75,22 +75,22 @@
                         <div class="col-md-4 rightsidevartoverview pull-right">
                             <div class="carttotal">
                                 <span class="label-total">Cart Subtotal</span>
-                                <span class="cart-subtotal-amout">{!! isset($currency->content)?$currency->content:'$' !!} {{number_format($orderTotal,2)}}</span>
+                                <span class="cart-subtotal-amout">{!! isset($currency->content)?$currency->content:'$' !!} {{number_format($orderTotal,2,'.','')}}</span>
                                 <!--<span class="cart-discount-label">No coupon</span>
                                 <span class="cart-subtotal-amout">$0.00</span>-->
                                 <span class="order-total-label">Order Total</span>
-                                <span class="cart-subtotal-amout cart-total-amout">{!! isset($currency->content)?$currency->content:'$' !!}  {{number_format($orderTotal,2)}}</span>
+                                <span class="cart-subtotal-amout cart-total-amout">{!! isset($currency->content)?$currency->content:'$' !!}  {{number_format($orderTotal,2,'.','')}}</span>
                             </div>
                             <div class="col-sm-12 text-right">
 							   <form action="{{URL::to('order-post')}}" method="POST">
 
-								<input type="hidden" name="finalAmount" value="{{$orderTotal}}">
+								<input type="hidden" name="finalAmount" value="{{number_format($orderTotal,0,'.','')}}">
 
 								<textarea name="order_comments" id="order_comments"></textarea>
 							  <script
 							    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
 							    data-key="pk_test_4KFTrHSWQ3FVkkfBwoQutZSC"
-							    data-amount="{{$orderTotal}}"
+							    data-amount="{{((int)number_format($orderTotal,0,'.','')*100)}}"
 							    data-name="emporium-voyage.com"
 							    data-currency="EUR"
 							    data-description="Widget"
