@@ -15,8 +15,8 @@ class CrmLayoutHelper {
     static function getCrmElement($element_id) {
 
         $element = ModelsModcustomfieldelements::
-                        leftJoin('modcustomfield_mcf', 'modcustomfield_mcf.id_modcustomfield', 'modcustomfieldelements_mfg.customfield_id')
-                        ->leftJoin('modcustomfieldrows_mfg', 'modcustomfieldrows_mfg.id_modcustomfieldrow', 'modcustomfieldelements_mfg.row_id')
+                        leftJoin('modcustomfield_mcf', 'modcustomfield_mcf.id_modcustomfield', '=', 'modcustomfieldelements_mfg.customfield_id')
+                        ->leftJoin('modcustomfieldrows_mfg', 'modcustomfieldrows_mfg.id_modcustomfieldrow', '=', 'modcustomfieldelements_mfg.row_id')
                         ->leftJoin('modcustomfieldgroup_mfg', 'modcustomfieldgroup_mfg.id_modcustomfieldgroup', '=', 'modcustomfieldelements_mfg.group_id')
                         ->select('modcustomfieldelements_mfg.*')->where('modcustomfieldelements_mfg.id_modcustomfieldelement', '=', $element_id)->first();
 
@@ -152,8 +152,8 @@ class CrmLayoutHelper {
                 if (!empty($all_other_groups)) {
                     foreach ($all_other_groups as $key => $all_other_group) {
                         $all_other_groups[$key]['elements'] = ModelsModcustomfieldelements::
-                                        leftJoin('modcustomfield_mcf', 'modcustomfield_mcf.id_modcustomfield', 'modcustomfieldelements_mfg.customfield_id')
-                                        ->leftJoin('modcustomfieldrows_mfg', 'modcustomfieldrows_mfg.id_modcustomfieldrow', 'modcustomfieldelements_mfg.row_id')
+                                        leftJoin('modcustomfield_mcf', 'modcustomfield_mcf.id_modcustomfield', '=', 'modcustomfieldelements_mfg.customfield_id')
+                                        ->leftJoin('modcustomfieldrows_mfg', 'modcustomfieldrows_mfg.id_modcustomfieldrow', '=', 'modcustomfieldelements_mfg.row_id')
                                         ->leftJoin('modcustomfieldgroup_mfg', 'modcustomfieldgroup_mfg.id_modcustomfieldgroup', '=', 'modcustomfieldelements_mfg.group_id')
                                         ->select('modcustomfieldelements_mfg.*')->where('modcustomfieldelements_mfg.parent_id', '=', '0')->where('modcustomfieldelements_mfg.row_id', '=', $all_row['id_modcustomfieldrow'])->where('modcustomfieldelements_mfg.group_id', '=', $all_other_group['id_modcustomfieldgroup'])->orderBy('modcustomfieldelements_mfg.sort_order', 'ASC')->get();
                     }
