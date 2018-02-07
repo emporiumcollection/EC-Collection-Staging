@@ -22,7 +22,6 @@
             </div>
         </section>
         <!-- end page not found section -->
-
 </div>
 @endsection
 
