@@ -37,5 +37,12 @@ class CommonHelper
     	return $data;
     }
 
-    
+    static function calc_price($actprice,$actdays,$customdays){
+		if($actprice>0 && $actdays > 0 && $customdays > 0)
+		{
+			$calcperunit = $actprice / $actdays;
+			$calcallunit = $calcperunit * $customdays;
+			return number_format($calcallunit,2);
+		}
+	}
 }
