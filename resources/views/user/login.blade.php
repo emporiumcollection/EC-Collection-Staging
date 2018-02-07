@@ -3,10 +3,7 @@
 @section('content')
 
 <style>
-.middle-box
-{
-	width:450px;
-}
+
 </style>
 
 <div class="sbox ">

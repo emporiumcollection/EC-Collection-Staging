@@ -11,6 +11,7 @@
 		<link href="{{ asset('sximo/css/sximo.css')}}" rel="stylesheet">
 		<link href="{{ asset('sximo/css/animate.css')}}" rel="stylesheet">
 		<link href="{{ asset('sximo/css/icons.min.css')}}" rel="stylesheet">
+                <link href="{{ asset('sximo/assets/css/ai_login_responsive.css')}}" rel="stylesheet" type="text/css"/>
 		<link href="{{ asset('sximo/fonts/awesome/css/font-awesome.min.css')}}" rel="stylesheet">
 		 <script src="//use.edgefonts.net/source-sans-pro.js"></script>
 

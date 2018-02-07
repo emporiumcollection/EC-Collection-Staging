@@ -1,0 +1,50 @@
+@media (min-width: 1201px) and (max-width: 1400px) {
+
+
+}
+
+@media (min-width: 1201px) and (max-width: 1400px) {
+}
+
+@media (min-width: 993px) and (max-width: 1200px) {
+
+}
+
+
+@media (min-width: 768px) and (max-width: 992px) {
+    
+    .middle-box {
+	width: 385px;
+        left: 51%;
+    }
+    .sbox-title {
+	padding: 14px 20px 17px;
+    }
+
+   
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+    
+    .middle-box {
+	width: 385px;
+        left: 51%;
+    }
+    .sbox-title {
+	padding: 14px 20px 17px;
+    }
+
+   
+}
+
+
+@media (min-width: 320px) and (max-width: 480px) {
+
+   .middle-box {
+	width: 385px;
+        left: 51%;
+    }
+    .sbox-title {
+	padding: 14px 20px 17px;
+    }
+}
