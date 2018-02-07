@@ -68,7 +68,7 @@ class AdvertisementController extends Controller {
 	 /*
      * For advertisement Cart Page
     */
-    public function advertisementCart(Request $request) {
+    public function advertiserCart(Request $request) {
         $advertPkgID = array(0);
 
        //print_r($request->session()->get('hotel_cart')); die;
