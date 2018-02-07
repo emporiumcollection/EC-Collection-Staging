@@ -76,7 +76,7 @@ class AdvertisementController extends Controller {
 
             foreach ($request->session()->get('hotel_cart') as $cartkey => $cartValue) {
                 if($cartValue['package']['type']=='advert'){
-                    $advertPkgID[] = $cartValue['package']['content']['id'];
+                    $advertPkgID = $cartValue['package']['content']['id'];
                 }
             }
         }
@@ -101,7 +101,7 @@ class AdvertisementController extends Controller {
 
 					foreach ($request->session()->get('hotel_cart') as $cartkey => $cartValue) {
 						if($cartValue['package']['type']=='advert'){
-							$advertPkgID[] = $cartValue['package']['content']['id'];
+							$advertPkgID = $cartValue['package']['content']['id'];
 						}
 					}
                 }
