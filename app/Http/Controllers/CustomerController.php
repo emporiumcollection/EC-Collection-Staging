@@ -1004,7 +1004,7 @@ class CustomerController extends Controller {
               if($request->input('usertype')=="advertiser" ){
                 $user->group_id=5;
                 $user->save();
-                return Redirect::to('advertiser')->with('messagetext', 'Profile has been saved!')->with('msgstatus', 'success'); 
+                return Redirect::to('advertiser/package')->with('messagetext', 'Profile has been saved!')->with('msgstatus', 'success'); 
              }
 
 
