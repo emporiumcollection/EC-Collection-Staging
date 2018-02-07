@@ -442,6 +442,9 @@ class ConfigController extends Controller {
 		$this->data['bankDet'] = \DB::table('tb_settings')->where('key_value', 'bank_details')->first();
 		$this->data['regDet'] = \DB::table('tb_settings')->where('key_value', 'reg_detail')->first();
 		$this->data['contDet'] = \DB::table('tb_settings')->where('key_value', 'contact_detail')->first();
+		$this->data['invoice_phone_num'] = \DB::table('tb_settings')->where('key_value', 'invoice_phone_num')->first();
+		$this->data['invoice_email_id'] = \DB::table('tb_settings')->where('key_value', 'invoice_email_id')->first();
+		$this->data['invoice_address'] = \DB::table('tb_settings')->where('key_value', 'invoice_address')->first();
 		
 		return view('sximo.config.invoice',$this->data);	
 	}	
@@ -466,6 +469,10 @@ class ConfigController extends Controller {
 			\DB::table('tb_settings')->where('key_value', 'bank_details')->update(['content' => Input::get('bankDetail')]);
 			\DB::table('tb_settings')->where('key_value', 'reg_detail')->update(['content' => Input::get('regDetail')]);
 			\DB::table('tb_settings')->where('key_value', 'contact_detail')->update(['content' => Input::get('contactDetail')]);
+			
+			\DB::table('tb_settings')->where('key_value', 'invoice_phone_num')->update(['content' => Input::get('invoice_phone_num')]);
+			\DB::table('tb_settings')->where('key_value', 'invoice_email_id')->update(['content' => Input::get('invoice_email_id')]);
+			\DB::table('tb_settings')->where('key_value', 'invoice_address')->update(['content' => Input::get('invoice_address')]);
 			
 			return Redirect::to('sximo/config/invoice')->with('messagetext', 'Invoice settings Has Been Updated')->with('msgstatus','success');	
 			

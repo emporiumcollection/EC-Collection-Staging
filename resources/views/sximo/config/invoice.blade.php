@@ -100,6 +100,38 @@
 		  </div> 
 
 	</div> 
+	
+	<div class="col-sm-6">
+	
+		<fieldset > <legend> Invoice Header Settings </legend>
+		  <div class="form-group">
+			 		
+		  </div>  
+		
+		 <div class="form-group">
+		    <label for="ipt" class=" control-label col-md-4"> Invoice phone no. </label>
+			<div class="col-md-8">
+				<input name="invoice_phone_num" type="text" id="invoice_phone_num" class="form-control input-sm" required  value="{{$invoice_phone_num->content}}" />  
+			 </div> 
+		  </div> 
+		  
+		  
+		  <div class="form-group">
+			<label for="ipt" class=" control-label col-md-4"> Invoice Email id </label>
+			<div class="col-md-8">
+				<input name="invoice_email_id" type="text" id="invoice_email_id" class="form-control input-sm" value="{{ $invoice_email_id->content }}" />  
+			 </div> 
+		  </div>
+		  
+		   <div class="form-group">
+			<label for="ipt" class=" control-label col-md-4"> Invoice Address </label>
+			<div class="col-md-8">
+				<input name="invoice_address" type="text" id="invoice_address" class="form-control input-sm" value="{{ $invoice_address->content }}" />  
+			 </div> 
+		  </div>
+		  
+  	</fieldset>
+	</div> 
 
 
  	
