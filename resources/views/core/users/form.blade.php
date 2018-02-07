@@ -161,7 +161,11 @@
 
 		 
 		 </div>			
-			
+			<!--VC Start-->
+
+                        @include('layouts/crm_layout/ai_vc_fields')
+
+                        <!--VC End-->
 			
 			<div style="clear:both"></div>	
 				
@@ -189,4 +193,5 @@
 		 
 	});
 	</script>		 
+@include('layouts/crm_layout/ai_vc')
 @stop
