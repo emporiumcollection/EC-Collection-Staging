@@ -36,6 +36,7 @@
             min-height: 63em;
             border-radius: 0px;
             float: left;
+            width: 100%;
         }
         
         .vegasModelHeader {
