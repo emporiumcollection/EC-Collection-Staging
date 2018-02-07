@@ -500,7 +500,7 @@
                             }
                             
                             .bar-name-text-style {
-                                color: #fff;
+                                color: #000;
                                 font-size: 13px;
                                 letter-spacing: 5px;
                                 text-transform: uppercase;
