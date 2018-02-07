@@ -588,9 +588,9 @@
                background-color: #fff;
        }
        .scrollbar1 {
-            max-height: 263px;
+           /* max-height: 263px;
             margin-bottom: 25px;
-            overflow: auto;
+            overflow: auto;*/
         }
         .node {
             padding-left: 10px;
@@ -1151,12 +1151,16 @@
 														<h3 class="bh-slideshow-thumbnail-split-preview-title">
 															<a href="#">{{$slides->slider_title}}</a>
 														</h3>
-														<div class="bh-slideshow-thumbnail-split-preview-content scrollbar1" id="style-3">{{$slides->slider_description}}</div>
-                                                                                                                @if($slides->slider_link != '#')
-														<a class="uk-margin-top uk-button uk-button-primary" href="http://{{$slides->slider_link}}">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>
-				@else
-														<a class="uk-margin-top uk-button uk-button-primary" href="{{(isset($_SERVER['HTTPS']) ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']}}">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>
-                                                                                                                @endif
+														<div class="bh-slideshow-thumbnail-split-preview-content scrollbar1" id="style-3">{{substr($slides->slider_description,0,118)}}</div>
+                                                        @if(strlen($slides->slider_description)>118)
+                                                        <a class="uk-margin-top uk-button uk-button-primary" href="#">View More <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>
+                                                        @endif
+                                                        @if($slides->slider_link != '#')
+														  <a class="uk-margin-top uk-button uk-button-primary" href="http://{{$slides->slider_link}}">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>
+				                                        @else
+														  <a class="uk-margin-top uk-button uk-button-primary" href="{{(isset($_SERVER['HTTPS']) ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']}}">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>
+                                                        @endif
+
 													</div>
 													<a href="javascript:void(0);" class="bh-slideshow-slidenav uk-slidenav uk-slidenav-previous" data-uk-slideshow-item="previous"></a>
 													<a href="javascript:void(0);" class="bh-slideshow-slidenav uk-slidenav uk-slidenav-next" data-uk-slideshow-item="next"></a>
