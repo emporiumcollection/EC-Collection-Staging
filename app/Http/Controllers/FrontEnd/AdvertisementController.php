@@ -81,7 +81,7 @@ class AdvertisementController extends Controller {
             }
         }
 
-        $mainPkgQry  =  "Select tb_ad.id,tb_ad.space_title as package_title,'' as package_image,tb_ad.space_cpd_price as package_price  from tb_advertisement_space tb_ad where tb_ad.id in(".implode(',',$advertPkgID).")";
+        $mainPkgQry  =  "Select *  from tb_advertisement_space where id = '". $advertPkgID)."')";
         $dataPackage = \DB::select($mainPkgQry);
 
         
@@ -106,7 +106,7 @@ class AdvertisementController extends Controller {
 					}
                 }
 
-                $mainPkgQry  =  "Select tb_ad.id,tb_ad.space_title as package_title,'' as package_image,tb_ad.space_cpd_price as package_price  from tb_advertisement_space tb_ad where tb_ad.id in(".implode(',',$advertPkgID).")";
+                $mainPkgQry  =  "Select *  from tb_advertisement_space where id = '". $advertPkgID)."')";
                 $dataPackage = \DB::select($mainPkgQry);
 
         
