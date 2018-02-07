@@ -249,21 +249,47 @@ class UserorderController extends Controller {
 			if(!empty($order_item))
 			{
 				$currency = \DB::table('tb_settings')->where('key_value', 'default_currency')->first();
-				$html = '<style> .main { margin:0 25px; width:700px; font-family: arial, sans-serif; } .page-break { page-break-after: always; } .header,.footer {width: 100%; position:fixed;} .header { top: 20px; text-align:center;} .footer {bottom: 30px; font-size:10px;} .pagenum:after {content: counter(page);} .imgBox { text-align:center; width:400px; margin:50px auto 30px auto;} .nro { text-align:center; font-size:12px; } .header img { width:250px; height: 50px; } .Mrgtop80 {margin-top:80px;} .Mrgtop40 {margin-top:40px;} .Mrgtop20 {margin-top:10px;} .monimg img { width:125px; height:80px; }  .font13 { font-size:13px; } .font12 { font-size:12px; } .algRgt { text-align:right; } .algCnt { text-align:center; }</style>';
-				$i=1;
-				$html .= '<div class="main"><div class="header"><img src="'. \URL::to('sximo/assets/images/logo-design_1.png').'"></div><br><br><br><div class="footer">© Copyright: Emporium Voyage</div>';
+				$bankdetails = \DB::table('tb_settings')->where('key_value', 'bank_details')->first();
+				$regdetail = \DB::table('tb_settings')->where('key_value', 'reg_detail')->first();
+				$contactdetail = \DB::table('tb_settings')->where('key_value', 'contact_detail')->first();
+				$invoice_phone_num = \DB::table('tb_settings')->where('key_value', 'invoice_phone_num')->first();
+				$invoice_email_id = \DB::table('tb_settings')->where('key_value', 'invoice_email_id')->first();
+				$invoice_address = \DB::table('tb_settings')->where('key_value', 'invoice_address')->first();
+				$invoice_num = \DB::table('tb_settings')->where('key_value', 'default_invoice_num')->first();
 				
 				$userInfo = \DB::table('tb_users')->where('id', $order_item[0]->user_id)->first();
 				$companydet = \DB::table('tb_user_company_details')->where('user_id', $order_item[0]->user_id )->first();
-				$html .= '<div class="Mrgtop40 font13"><table><tr><td width="250"> Emporium-Daten : </td> <td width="20"></td> <td width="250"> User-Daten : </td> </tr> <tr><td valign="top"> Emporium voyage <br><br> Am Klosterpark 1 <br> 84427, Armstorf <br> Deutschland <br><br> Telefon: +49 (0)80 81 - 95 46 80 <br> Telefax: +49 (0)80 81 - 95 43 31 <br> E-Mail: info@emporium-voyage.com </td> <td></td>';
-				if(!empty($companydet))
+				
+				$html = '<style> .main { margin:0 25px; width:700px; font-family: arial, sans-serif; } .page-break { page-break-after: always; } .header,.footer {width: 100%; position:fixed;} .header { top: 20px; text-align:center;} .pagenum:after {content: counter(page);} .imgBox { text-align:center; width:400px; margin:50px auto 30px auto;} .nro { text-align:center; font-size:12px; } .header img { width:250px; height: 50px; } .Mrgtop80 {margin-top:80px;} .Mrgtop40 {margin-top:40px;} .Mrgtop20 {margin-top:10px;} .monimg img { width:125px; height:80px; }  .font13 { font-size:13px; } .font12 { font-size:12px; } .algRgt { text-align:right; } .algCnt { text-align:center; } .footer {bottom: 150px;}.pagenum:after {content: counter(page);}.title {text-align:center; width:700px; font-size:30px; font-weight:bold;} .clrgrey{ color:#3f3f3f;} .alnRight{text-align:right;} .alnCenter{text-align:center;} td{font-size:12px; padding:5px;} th{background-color:#999; color:#fff; text-align:left; padding:5px; font-size:14px;}.totl{background-color:#999; color:#fff; font-weight:bold;} h2{padding-bottom:0px; margin-bottom:0px;} .valin{ vertical-align:top;} .valinbt{ vertical-align:bottom; text-align:right;}</style>';
+				
+				$i=1;
+				$html .= '<div class="main"><div class="header"><img src="'. \URL::to('sximo/assets/images/logo-design_1.png').'"></div><br><br><br><div class="footer"><table><tr style="border-bottom:1px solid #000;"><td width="170"><h2>BANKVERBINDUNG</h2></td><td width="170"><h2>REGISTEREINTRAG</h2></td><td width="170"><h2>KONTAKT</h2></td></tr><tr><td class="valin">';
+				if(!empty($bankdetails))
 				{
-					$html .= '<td> '.$companydet->company_name.'<br><br>'.$companydet->company_address .' . '.$companydet->company_address2 .' <br> '. $companydet->company_postal_code .', '.$companydet->company_city .' <br> '.$companydet->company_country.'<br><br>Telefon: '.$companydet->company_phone.'<br>E-Mail: '.$companydet->company_email.'</td>';
+					$html .= nl2br($bankdetails->content);
 				}
-				else{
-					$html .= '<td></td>';
+				$html .= '</td><td class="valin">';
+				if(!empty($regdetail))
+				{
+					$html .= nl2br($regdetail->content);
 				}
-				$html .='</tr> </table></div>';
+				$html .= '</td><td class="valin">';
+				if(!empty($contactdetail))
+				{
+					$html .= nl2br($contactdetail->content);
+				}
+				$html .= '</td></tr></table></div>';
+				
+				$html .= '<table style="border-top:1px solid #000; margin-bottom:10px;"><tr><td width="260">';
+				$html .= 'tel: '.$invoice_phone_num->content . ' email: ' .$invoice_email_id->content;
+				$html .= '</td><td width="260" class="valinbt">';
+				$html .= $invoice_address->content;
+				$html .= '</td></tr></table>';
+				
+				$html .= '<div class="title">Rechnung</div>';
+				$html .= '<div><table><tr><td width="150">'. $companydet->company_address .' . '.$companydet->company_address2 .'</td><td width="300" class="alnRight"><span class="clrgrey">Datum: </span></td><td width="70" class="alnRight">'.date('Y.m.d').'</td></tr><tr><td width="150">'. $companydet->company_address .' . '.$companydet->company_city .'</td><td width="300" class="alnRight"><span class="clrgrey">Rechnungsnummer: </span></td><td width="70" class="alnRight">'. $invoice_num->content .'</td></tr><tr><td width="150">'. $companydet->company_postal_code .' . '.$companydet->company_country .'</td><td width="300" class="alnRight"><span class="clrgrey">Ansprechpartner: </span></td><td width="70" class="alnRight">'. $userInfo->first_name .' '. $userInfo->last_name .'<br>'. $userInfo->email .'</td></tr></table></div><br><br>';
+			
+				
 				$html .= '<div class="Mrgtop80 font13"><table><tr style="background:#eeeeee;"><th width="50">No.</th><th width="320" >PACKAGES </th><th width="50" class="algCnt">QTY </th><th width="80" class="algCnt">PRICE </th></tr>';
 				$qtyPr = 1;
 				$Totprice = 0;
