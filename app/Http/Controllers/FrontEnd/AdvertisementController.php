@@ -106,7 +106,7 @@ class AdvertisementController extends Controller {
 					}
                 }
 
-                $mainPkgQry  =  "Select *  from tb_advertisement_space where id = '". $advertPkgID)."')";
+                $mainPkgQry  =  "Select *  from tb_advertisement_space where id = '". $advertPkgID."'";
                 $dataPackage = \DB::select($mainPkgQry);
 
         
