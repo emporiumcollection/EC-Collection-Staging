@@ -76,7 +76,6 @@ class CrmCustomFieldHelper
                                     <?php }?>
                                     <i class="fa fa-times-circle clearInput" aria-hidden="true" style="display: none;"></i>
                                 </div>
-                                <span class="help-block">Kundennummer oder Freitext <span class="textused">0/255</span></span>
                             </div>
 			<?php
 		}
@@ -106,7 +105,6 @@ class CrmCustomFieldHelper
                                     <?php }?>
                                     <i class="fa fa-times-circle clearInput" aria-hidden="true" style="display: none;"></i>
                                 </div>
-                                <span class="help-block">Kundennummer oder Freitext <span class="textused">0/255</span></span>
                             </div>
 			<?php
 		}
@@ -133,7 +131,6 @@ class CrmCustomFieldHelper
                                     <?php }?>
                                     <i class="fa fa-times-circle clearInput" aria-hidden="true" style="display: none;"></i>
                                 </div>
-                                <span class="help-block">Kundennummer oder Freitext <span class="textused">0/255</span></span>
                             </div>
 			<?php
 		}
@@ -160,7 +157,6 @@ class CrmCustomFieldHelper
                                     <?php }?>
                                     <i class="fa fa-times-circle clearInput" aria-hidden="true" style="display: none;"></i>
                                 </div>
-                                <span class="help-block">Kundennummer oder Freitext <span class="textused">0/255</span></span>
                             </div>
 			<?php
 		}
@@ -211,7 +207,6 @@ class CrmCustomFieldHelper
                                             <?php }?>
                                     <i class="fa fa-times-circle clearInput" aria-hidden="true" style="display: none;"></i>
                                 </div>
-                                <span class="help-block">Kundennummer oder Freitext <span class="textused"></span></span>
                             </div>
 			<?php
 		}
@@ -332,7 +327,6 @@ class CrmCustomFieldHelper
                         
                         <i class="fa fa-times-circle clearInput" aria-hidden="true" style="display: none;"></i>
                     </div>
-                    <span class="help-block">Kundennummer oder Freitext <span class="textused">0/255</span></span>
                 </div>
             </div>
 			<?php
@@ -352,7 +346,6 @@ class CrmCustomFieldHelper
                         
                         <i class="fa fa-times-circle clearInput" aria-hidden="true" style="display: none;"></i>
                     </div>
-                    <span class="help-block">Kundennummer oder Freitext <span class="textused">0/255</span></span>
                 </div>
             </div>
 			<?php
@@ -372,7 +365,6 @@ class CrmCustomFieldHelper
                         
                         <i class="fa fa-times-circle clearInput" aria-hidden="true" style="display: none;"></i>
                     </div>
-                    <span class="help-block">Kundennummer oder Freitext <span class="textused">0/255</span></span>
                 </div>
             </div>
 			<?php
@@ -392,7 +384,6 @@ class CrmCustomFieldHelper
                         
                         <i class="fa fa-times-circle clearInput" aria-hidden="true" style="display: none;"></i>
                     </div>
-                    <span class="help-block">Kundennummer oder Freitext <span class="textused">0/255</span></span>
                 </div>
             </div>
 			<?php
