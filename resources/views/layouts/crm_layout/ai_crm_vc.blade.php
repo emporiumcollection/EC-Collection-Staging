@@ -804,7 +804,7 @@ $fieldArray['file'] = 'File';
                                 <option value="{{$fieldKey}}" >{{$fieldMatch}}</option>
                                 @endforeach
                             </select>
-                            {!! Form::label('table_mob', trans('module_builder.admin_modbuilder_module_exist_table'))  !!}
+                            {!! Form::label('table_mob', 'Field Type')  !!}
                         </div>
                     </div>
                     <div class="form-group">
@@ -924,11 +924,11 @@ $fieldArray['file'] = 'File';
                         <div class="md-radio-inline">
                             <div class="md-radio">
                                 <?php echo html_entity_decode(Form::radio('required_field', 'yes',true, ['class' => 'field','id'=>'required_field_active','data-custom-field'=>'required_field'])); ?>
-                                <?php echo html_entity_decode(Form::label('status_active','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_required_field_active'))); ?>
+                                <?php echo html_entity_decode(Form::label('status_active','<span></span><span class="check"></span><span class="box"></span>Active')); ?>
                             </div>
                             <div class="md-radio">
                                 <?php echo html_entity_decode(Form::radio('required_field', 'no',  null, ['class' => 'field','id'=>'required_field_inactive','data-custom-field'=>'required_field'])); ?>
-                                <?php echo html_entity_decode(Form::label('status_inactive','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_required_field_inactive'))); ?>
+                                <?php echo html_entity_decode(Form::label('status_inactive','<span></span><span class="check"></span><span class="box"></span>Inactive')); ?>
                             </div>
                         </div>
                     </div>
