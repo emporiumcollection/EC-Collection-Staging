@@ -28,6 +28,9 @@
 		<div class="row equalize sm-equalize-auto" id="step-1">
             <div class="col-md-12 sm-clear-both wow fadeInLeft">
                 <div class="cartover-view-main margin-five-top">
+
+                    
+
                 	@if(!empty($packages))
                     <h5 class="ev-regural-heading text-uppercase margin-20px-bottom font-weight-700 sm-width-100 xs-width-100">Your Packages</h5>
                     
@@ -100,11 +103,14 @@
 									</tr>
 									{{--*/ $subTotal += $prc; /*--}}
 								@endforeach
+
                                 {{--*/ $orderTotal = $subTotal; /*--}}
                             </tbody>
                         </table>
                     </div>
                     <div class="row bottom-cart-view-page">
+
+                        
                         <div class="col-md-8 leftsideoverview">
                             <!--<h6 class="ai-6-heading ev-regural-heading text-uppercase margin-20px-bottom font-weight-600 sm-width-100 xs-width-100">Coupon Code</h6>
                             <p>Enter your valid coupon or<br/>
@@ -117,13 +123,23 @@
                             </form>-->
                         </div>
                         <div class="col-md-4 rightsidevartoverview">
-                            <div class="carttotal">
-                                <span class="label-total">Cart Subtotal</span>
-                                <span class="cart-subtotal-amout">{!! isset($currency->content)?$currency->content:'$' !!} {{number_format($subTotal,2)}}</span>
-                                <!--<span class="cart-discount-label">No coupon</span>
-                                <span class="cart-subtotal-amout">$0.00</span>-->
+                             <div class="carttotal">
+                                <span class="label-total">Total (excl. VAT) </span>
+                                <span class="cart-subtotal-amout">{!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($orderTotal,2,'.','')-(($orderTotal*$data["vatsettings"]->content)/100)}}</span>
+
+
+                                
+                                   <span class="label-total">Vat {{ $data["vatsettings"]->content}}%</span>
+                                    <span class="cart-subtotal-amout">{!! isset($currency->content)?$currency->content:'$' !!} 
+
+                                    {{  ($orderTotal*$data["vatsettings"]->content)/100 }}</span>
+                               
                                 <span class="order-total-label">Order Total</span>
-                                <span class="cart-subtotal-amout cart-total-amout">{!! isset($currency->content)?$currency->content:'$' !!}  {{number_format($orderTotal,2)}}</span>
+                                <span class="cart-subtotal-amout cart-total-amout">{!! isset($currency->content)?$currency->content:'$' !!}  {{number_format($orderTotal,2,'.','')}}</span>
+                            
+
+                             
+                             
                             </div>
                             <div class="col-sm-12 text-right">
                                 <a class="customGoldBtn btn nextBtn " href="{{url('hotel/checkout')}}">Proceed To Checkout</a>

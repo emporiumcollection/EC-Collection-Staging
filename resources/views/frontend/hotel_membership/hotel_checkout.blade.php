@@ -16,9 +16,9 @@
                         <table class="table-width-custom">
                             <thead>
                                 <tr>
-                                    <th class="col-sm-1 no-padding" >Package</th>
-                                    <th class="col-sm-1 no-padding">Price</th>
+                                    <th class="col-sm-1 no-padding" >Package</th>                                    
                                     <th class="col-sm-1 no-padding">Quantity</th>
+                                    <th class="col-sm-1 no-padding">Price</th>
                                     <th class="col-sm-1 no-padding">Line Total</th>
                                 </tr>
                             </thead>
@@ -33,9 +33,10 @@
                                         	<span class="product-title">{{$package->package_title}}</span>
                                         </div>
                                     </td>
-                                    <td class="overview-td">{!! isset($currency->content)?$currency->content:'$' !!}  {{number_format($package->package_price,2)}}</td>
+                               
                                     <td class="overview-td">1
                                     </td>
+                                         <td class="overview-td">{!! isset($currency->content)?$currency->content:'$' !!}  {{number_format($package->package_price,2)}}</td>
                                     <td class="overview-td">{!! isset($currency->content)?$currency->content:'$' !!}  {{number_format($package->package_price,2)}}</td>
                                 </tr>
                                 @endforeach
@@ -89,12 +90,22 @@
                         </div> -->
                         <div class="col-md-4 rightsidevartoverview pull-right">
                             <div class="carttotal">
-                                <span class="label-total">Cart Subtotal</span>
-                                <span class="cart-subtotal-amout">{!! isset($currency->content)?$currency->content:'$' !!} {{number_format($subTotal,2)}}</span>
-                                <!--<span class="cart-discount-label">No coupon</span>
-                                <span class="cart-subtotal-amout">$0.00</span>-->
+                                <span class="label-total">Total (excl. VAT) </span>
+                                <span class="cart-subtotal-amout">{!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($orderTotal,2,'.','')-(($orderTotal*$data["vatsettings"]->content)/100)}}</span>
+
+
+                                
+                                   <span class="label-total">Vat {{ $data["vatsettings"]->content}}%</span>
+                                    <span class="cart-subtotal-amout">{!! isset($currency->content)?$currency->content:'$' !!} 
+
+                                    {{  ($orderTotal*$data["vatsettings"]->content)/100 }}</span>
+                               
                                 <span class="order-total-label">Order Total</span>
-                                <span class="cart-subtotal-amout cart-total-amout">{!! isset($currency->content)?$currency->content:'$' !!}  {{number_format($orderTotal,2)}}</span>
+                                <span class="cart-subtotal-amout cart-total-amout">{!! isset($currency->content)?$currency->content:'$' !!}  {{number_format($orderTotal,2,'.','')}}</span>
+                            
+
+                             
+                             
                             </div>
                             <div class="col-sm-12 text-right">
 							   <form action="{{URL::to('order-post')}}" method="POST">
