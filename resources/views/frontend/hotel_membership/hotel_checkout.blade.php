@@ -39,6 +39,38 @@
                                     <td class="overview-td">{!! isset($currency->content)?$currency->content:'$' !!}  {{number_format($package->package_price,2)}}</td>
                                 </tr>
                                 @endforeach
+								@foreach($adspackages as $package)
+								<tr>
+                                    <td>
+										<div class="product-title-and-remove-option">
+											<span class="product-title">{{$package->space_title}}</span>
+                                        </div>
+                                    </td>
+                                    <td class="overview-td">
+										{!! isset($currency->content)?$currency->content:'$' !!}
+										@if(\session()->get('hotel_cart')['advert_advert']['package']['content']['ads_pacakge_type']=='cpc')
+											{{ number_format($package->space_cpc_price,2,'.','') . '/' . $package->space_cpc_num_clicks .' Click' }}
+										@elseif(\session()->get('hotel_cart')['advert_advert']['package']['content']['ads_pacakge_type']=='cpm')
+											{{ number_format($package->space_cpm_price,2,'.','') . '/' . $package->space_cpm_num_view .' Views' }}
+										@elseif(\session()->get('hotel_cart')['advert_advert']['package']['content']['ads_pacakge_type']=='cpd')
+											{{ number_format($package->space_cpd_price,2,'.','') . '/' . $package->space_cpm_num_days .' Days' }}
+										@endif
+									</td>
+                                    <td class="overview-td">{{\session()->get('hotel_cart')['advert_advert']['package']['content']['ads_days']}}
+                                    </td>
+                                    <td class="overview-td">
+										@if(\session()->get('hotel_cart')['advert_advert']['package']['content']['ads_pacakge_type']=='cpc')
+											{{--*/ $prc = number_format($package->space_cpc_price,2,'.','') /*--}}
+										@elseif(\session()->get('hotel_cart')['advert_advert']['package']['content']['ads_pacakge_type']=='cpm')
+											{{--*/ $prc = number_format($package->space_cpm_price,2,'.','') /*--}}
+										@elseif(\session()->get('hotel_cart')['advert_advert']['package']['content']['ads_pacakge_type']=='cpd')
+											 {{--*/ $prc = CommonHelper::calc_price($package->space_cpd_price,$package->space_cpm_num_days,\session()->get('hotel_cart')['advert_advert']['package']['content']['ads_days']) /*--}} 
+										@endif
+										{!! isset($currency->content)?$currency->content:'$' !!} {{$prc}}
+									</td>
+                                </tr>
+								{{--*/ $subTotal += $prc; /*--}}
+                                @endforeach
                                 {{--*/ $orderTotal = $subTotal; /*--}}
                             </tbody>
                         </table>

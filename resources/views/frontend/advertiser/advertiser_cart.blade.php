@@ -44,7 +44,7 @@
                                     <td>
 										<div class="product-title-and-remove-option">
 											<span class="product-title">{{$package->space_title}}</span>
-											<a href="#">Remove</a>
+											<a href="javascript:voic(0);" onclick="javascript:removeItemFromCart({{$package->id}},0);"><i class="fa fa-trash"></i></a>
                                         </div>
                                     </td>
                                     <td class="overview-td">
@@ -178,4 +178,23 @@
 <script type="text/javascript" src="{{ asset('sximo/assets/memform/js/imagesloaded.pkgd.min.js')}}"></script>
 <script src="{{ asset('sximo/js/parsley.min.js')}}" type="text/javascript"></script>
          
+		 
+<script>
+	function removeItemFromCart(PackageID,PackagePrice){
+    
+
+        var PackagePrice=PackagePrice;
+        var PackageID=PackageID;
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            
+            window.location="{{ URL::to('advertiser/cart')}}";
+        }
+        };
+        xhttp.open("GET", "{{ URL::to('removecartitem')}}?cart[package][id]="+PackageID+"&cart[package][price]="+PackagePrice+"&cart[package][qty]=1&cart[package][type]=advert", true);
+        xhttp.send();
+
+	}
+ </script>
 @endsection

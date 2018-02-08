@@ -119,11 +119,12 @@ function changePrice(){
                     }
                     if($('#ads_pacakge_type').val()=='cpm' && data.space_cpm_price>0){
                         price = data.space_cpm_price;
-                        $('input[name="ads_days"]').val(data.space_cpm_num_days);
-                        $('[data-ads-days="per-unit"]').val(data.space_cpm_num_days);
+                        
                     }
                     if($('#ads_pacakge_type').val()=='cpd' && data.space_cpd_price>0){
                         price = data.space_cpd_price;
+						$('input[name="ads_days"]').val(data.space_cpm_num_days);
+                        $('[data-ads-days="per-unit"]').val(data.space_cpm_num_days);
                     }
                     $('[data-ads-price="list"] span').html((price).toFixed(2));
                     $('[data-ads-price="total-list"] span').html((price).toFixed(2));
