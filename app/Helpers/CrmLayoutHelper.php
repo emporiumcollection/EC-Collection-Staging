@@ -26,8 +26,8 @@ class CrmLayoutHelper {
     static function getCrmField($field_id) {
         
         $custom_field = Module::join('modcustomfieldgroup_mfg', 'modcustomfieldgroup_mfg.idmod_mfg', '=', 'tb_module.module_id')
-                        ->join('modcustomfield_mcf', 'modcustomfield_mcf.idmfg_mcf', 'modcustomfieldgroup_mfg.id_modcustomfieldgroup')
-                        ->join('modcustomfieldrows_mfg', 'modcustomfieldrows_mfg.id_modcustomfieldrow', 'modcustomfieldgroup_mfg.row_id')
+                        ->join('modcustomfield_mcf', 'modcustomfield_mcf.idmfg_mcf', '=', 'modcustomfieldgroup_mfg.id_modcustomfieldgroup')
+                        ->join('modcustomfieldrows_mfg', 'modcustomfieldrows_mfg.id_modcustomfieldrow', '=', 'modcustomfieldgroup_mfg.row_id')
                         ->select('modcustomfieldgroup_mfg.*', 'modcustomfieldrows_mfg.*', 'id_modcustomfield', 'title_mcf', 'slug_mcf', 'idmfg_mcf', 'option_mcf')->where('modcustomfield_mcf.id_modcustomfield', '=', $field_id)->first();
 
         return $custom_field;
