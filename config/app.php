@@ -217,6 +217,7 @@ return [
 	 'ImageCache' => App\Helpers\ImageCache::class,
      'CommonHelper'=> App\Helpers\CommonHelper::class,
         'CrmLayoutHelper' => App\Helpers\CrmLayoutHelper::class,
+        'CrmCustomFieldHelper' => App\Helpers\CrmCustomFieldHelper::class,
 
     ],
 
