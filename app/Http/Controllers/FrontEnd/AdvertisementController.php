@@ -69,7 +69,7 @@ class AdvertisementController extends Controller {
      * For advertisement Cart Page
     */
     public function advertiserCart(Request $request) {
-        $advertPkgID = array(0);
+        $advertPkgID = '';
 
        //print_r($request->session()->get('hotel_cart')); die;
         if(!empty($request->session()->get('hotel_cart'))){
@@ -94,7 +94,7 @@ class AdvertisementController extends Controller {
     */
     public function advertiserCheckout(Request $request) {
 
-                $advertPkgID = array(0);
+                $advertPkgID = '';
 
                 //print_r($request->session()->get('hotel_cart')); die;
                 if(!empty($request->session()->get('hotel_cart'))){
