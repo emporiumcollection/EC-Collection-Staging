@@ -124,13 +124,13 @@
 				<div class="row items-pnl-body" id="item-row">
 					<div class="fieldwrapper">
 						<div class="col-sm-11 col" style="text-align:right;">Summe</div>
-						<div class="col-sm-1 col" style="text-align:center;">{{$currency->content . ($Totprice -(($Totprice*$data["vatsettings"]->content)/100))}}</div>
+						<div class="col-sm-1 col" style="text-align:center;">{{$currency->content . ($Totprice -(($Totprice*$vatsettings->content)/100))}}</div>
 					</div>
 				</div>
 				<div class="row items-pnl-body" id="item-row">
 					<div class="fieldwrapper">
-						<div class="col-sm-11 col" style="text-align:right;">Mwst. {{ $data["vatsettings"]->content}}%</div>
-						<div class="col-sm-1 col" style="text-align:center;">{{$currency->content . (($Totprice*$data["vatsettings"]->content)/100)}}</div>
+						<div class="col-sm-11 col" style="text-align:right;">Mwst. {{ $vatsettings->content}}%</div>
+						<div class="col-sm-1 col" style="text-align:center;">{{$currency->content . (($Totprice*$vatsettings->content)/100)}}</div>
 					</div>
 				</div>
 				<div class="row items-pnl-body" id="item-row">

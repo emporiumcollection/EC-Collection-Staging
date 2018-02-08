@@ -22,7 +22,6 @@ class UserorderController extends Controller {
 		
 		$this->info = $this->model->makeInfo( $this->module);
 		$this->access = $this->model->validAccess($this->info['id']);
-		$this->data['data'] = CommonHelper::getInfo();
 	
 		$this->data = array(
 			'pageTitle'	=> 	$this->info['title'],
@@ -31,6 +30,8 @@ class UserorderController extends Controller {
 			'return'	=> self::returnUrl()
 			
 		);
+		
+		$this->data['vatsettings'] = \DB::table('tb_settings')->where('key_value', 'default_tax_amount')->first();
 		
 	}
 
@@ -365,8 +366,8 @@ class UserorderController extends Controller {
 					$qtyPr = $pacpric * $qty;
 					$Totprice = $Totprice + $qtyPr;
 				}
-				$html .= '<tr><td colspan="3" style="text-align:right;"><b>Summe<b></td><td class="algCnt font13"><b>'.$currency->content .' '.($Totprice -(($Totprice*$data["vatsettings"]->content)/100)).'<b></td></tr>';
-				$html .= '<tr><td colspan="3" style="text-align:right;"><b>Mwst. '. $data["vatsettings"]->content .'%<b></td><td class="algCnt font13"><b>'.$currency->content .' '.(($Totprice*$data["vatsettings"]->content)/100).'<b></td></tr>';
+				$html .= '<tr><td colspan="3" style="text-align:right;"><b>Summe<b></td><td class="algCnt font13"><b>'.$currency->content .' '.($Totprice -(($Totprice*$this->data['vatsettings']->content)/100)).'<b></td></tr>';
+				$html .= '<tr><td colspan="3" style="text-align:right;"><b>Mwst. '. $this->data['vatsettings']->content .'%<b></td><td class="algCnt font13"><b>'.$currency->content .' '.(($Totprice*$this->data['vatsettings']->content)/100).'<b></td></tr>';
 				$html .= '<tr><td colspan="3" style="text-align:right;"><b>Gesammtsumme<b></td><td class="algCnt font13"><b>'.$currency->content .' '.number_format($Totprice, 2, '.', ',').'<b></td></tr>';
 				$html .= '</table></div>';
 				
