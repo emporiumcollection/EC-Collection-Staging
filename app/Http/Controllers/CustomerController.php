@@ -1026,6 +1026,8 @@ class CustomerController extends Controller {
 
         if (!\Auth::check())
             return redirect('customer/login');
+		
+		$this->data['pageslider'] = '';
 
         $this->data['def_currency'] = \DB::table('tb_settings')->where('key_value', 'default_currency')->first();
         
@@ -1071,6 +1073,113 @@ class CustomerController extends Controller {
 		$this->data['order_item_detail'] = $order_item_detail;
 		
         return view('customer.orderview', $this->data);
+    }
+	
+	public function getDownloadinvoicepdf($ordid) {
+
+       $downFileName = 'order-invoice-'.date('d-m-Y').'.pdf';
+		//$cid = $request->input('contentId');
+		if($ordid!="" && $ordid>0)
+		{
+			$order_item_detail = array();
+			$order_item = \DB::table('tb_order_items')->where('order_id', $ordid)->get();
+			if(!empty($order_item))
+			{
+				$currency = \DB::table('tb_settings')->where('key_value', 'default_currency')->first();
+				$bankdetails = \DB::table('tb_settings')->where('key_value', 'bank_details')->first();
+				$regdetail = \DB::table('tb_settings')->where('key_value', 'reg_detail')->first();
+				$contactdetail = \DB::table('tb_settings')->where('key_value', 'contact_detail')->first();
+				$invoice_phone_num = \DB::table('tb_settings')->where('key_value', 'invoice_phone_num')->first();
+				$invoice_email_id = \DB::table('tb_settings')->where('key_value', 'invoice_email_id')->first();
+				$invoice_address = \DB::table('tb_settings')->where('key_value', 'invoice_address')->first();
+				$invoice_num = \DB::table('tb_settings')->where('key_value', 'default_invoice_num')->first();
+				
+				$userInfo = \DB::table('tb_users')->where('id', $order_item[0]->user_id)->first();
+				$companydet = \DB::table('tb_user_company_details')->where('user_id', $order_item[0]->user_id )->first();
+				
+				$html = '<style> .main { margin:0 25px; width:700px; font-family: arial, sans-serif; } .page-break { page-break-after: always; } .header,.footer {width: 100%; position:fixed;} .header { top: 20px; text-align:center;} .pagenum:after {content: counter(page);} .imgBox { text-align:center; width:400px; margin:50px auto 30px auto;} .nro { text-align:center; font-size:12px; } .header img { width:250px; height: 50px; } .Mrgtop80 {margin-top:80px;} .Mrgtop40 {margin-top:40px;} .Mrgtop20 {margin-top:10px;} .monimg img { width:125px; height:80px; }  .font13 { font-size:13px; } .font12 { font-size:12px; } .algRgt { text-align:right; } .algCnt { text-align:center; } .footer {bottom: 150px;}.pagenum:after {content: counter(page);}.title {text-align:center; width:700px; font-size:30px; font-weight:bold;} .clrgrey{ color:#3f3f3f;} .alnRight{text-align:right;} .alnCenter{text-align:center;} td{font-size:12px; padding:5px;} th{background-color:#999; color:#fff; text-align:left; padding:5px; font-size:14px;}.totl{background-color:#999; color:#fff; font-weight:bold;} h2{padding-bottom:0px; margin-bottom:0px;} .valin{ vertical-align:top;} .valinbt{ vertical-align:bottom; text-align:right;}</style>';
+				
+				$i=1;
+				$html .= '<div class="main"><div class="header"><img src="'. \URL::to('sximo/assets/images/logo-design_1.png').'"></div><br><br><br><div class="footer"><table><tr style="border-bottom:1px solid #000;"><td width="170"><h2>BANKVERBINDUNG</h2></td><td width="170"><h2>REGISTEREINTRAG</h2></td><td width="170"><h2>KONTAKT</h2></td></tr><tr><td class="valin">';
+				if(!empty($bankdetails))
+				{
+					$html .= nl2br($bankdetails->content);
+				}
+				$html .= '</td><td class="valin">';
+				if(!empty($regdetail))
+				{
+					$html .= nl2br($regdetail->content);
+				}
+				$html .= '</td><td class="valin">';
+				if(!empty($contactdetail))
+				{
+					$html .= nl2br($contactdetail->content);
+				}
+				$html .= '</td></tr></table></div>';
+				
+				$html .= '<table style="border-top:1px solid #000; margin-bottom:10px;"><tr><td width="260">';
+				$html .= 'tel: '.$invoice_phone_num->content . ' email: ' .$invoice_email_id->content;
+				$html .= '</td><td width="260" class="valinbt">';
+				$html .= $invoice_address->content;
+				$html .= '</td></tr></table>';
+				
+				$html .= '<div class="title">Rechnung</div>';
+				$html .= '<div><table><tr><td width="150">'. $companydet->company_address .' . '.$companydet->company_address2 .'</td><td width="300" class="alnRight"><span class="clrgrey">Datum: </span></td><td width="70" class="alnRight">'.date('Y.m.d').'</td></tr><tr><td width="150">'. $companydet->company_address .' . '.$companydet->company_city .'</td><td width="300" class="alnRight"><span class="clrgrey">Rechnungsnummer: </span></td><td width="70" class="alnRight">'. $invoice_num->content .'</td></tr><tr><td width="150">'. $companydet->company_postal_code .' . '.$companydet->company_country .'</td><td width="300" class="alnRight"><span class="clrgrey">Ansprechpartner: </span></td><td width="70" class="alnRight">'. $userInfo->first_name .' '. $userInfo->last_name .'<br>'. $userInfo->email .'</td></tr></table></div><br><br>';
+			
+				
+				$html .= '<div class="Mrgtop80 font13"><table><tr style="background:#eeeeee;"><th width="50">No.</th><th width="320" >PACKAGES </th><th width="50" class="algCnt">QTY </th><th width="80" class="algCnt">PRICE </th></tr>';
+				$qtyPr = 1;
+				$Totprice = 0;
+				$qty=1;
+				$nos = 1;
+				foreach($order_item as $oitem)
+				{
+					if($oitem->package_type=='hotel')
+					{
+						$title = '';
+						$pacpric = 0;
+						$pchkdet = \DB::table('tb_packages')->select('package_title','package_price')->where('id', $oitem->package_id)->first();
+						if(!empty($pchkdet))
+						{
+							$title = $pchkdet->package_title;
+							$pacpric = $pchkdet->package_price;
+						}
+						$html .= '<tr><td>'.$nos.'</td><td><b>'.$title.'</b></td><td class="algCnt">'.$qty.'</td><td class="algCnt">'.$currency->content . $pacpric.'</td></tr>';
+					}
+					elseif($oitem->package_type=='advert')
+					{
+						$pacdata = json_decode($oitem->package_data, true);
+						$pacpric = $pacdata['ads_package_total_price'];
+						$adsdata = '';
+						$catdet = \DB::table('tb_categories')->select('category_name')->where('id', $pacdata['ads_category_id'])->first();
+						if(!empty($catdet))
+						{
+							$adsdata .= 'Category: '.$catdet->category_name.', ';
+						}
+						$adsdata .= 'position: '.$pacdata['ads_position'];
+						$adsdata .= ', Type: '.$pacdata['ads_pacakge_type'];
+						$adsdata .= ', Start Date: '.$pacdata['ads_start_date'];
+						
+						$html .= '<tr><td>'.$nos.'</td><td><b>Advertisement</b><br>'.$adsdata.'</td><td class="algCnt">'.$qty.'</td><td class="algCnt">'.$currency->content . $pacpric.'</td></tr>';
+					}
+					$nos++;
+					$qtyPr = $pacpric * $qty;
+					$Totprice = $Totprice + $qtyPr;
+				}
+				$html .= '<tr><td colspan="3" style="text-align:right;"><b>Gesammtsumme<b></td><td class="algCnt font13"><b>'.$currency->content .' '.number_format($Totprice, 2, '.', ',').'<b></td></tr>';
+				$html .= '</table></div>';
+				
+				$pdf = \App::make('dompdf.wrapper');
+				$pdf->loadHTML($html);
+				return $pdf->download($downFileName);
+			}
+			else{
+				return 'error';
+			}
+		}
+		else{
+			return 'error';
+		} 
     }
 
 }

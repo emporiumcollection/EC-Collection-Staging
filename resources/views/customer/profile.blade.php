@@ -140,7 +140,7 @@
 							<td>{{$ord->created}}</td>
 							<td>
 								<a  href="{{ URL::to('customer/orderdetail/'.$ord->id) }}" class="tips btn btn-xs btn-success" title="View detail"><i class="fa  fa-search  "></i></a>
-								<a href="{{ URL::to('customer/downloadinvoicepdf/'.$ord->id)}}" class="tips btn btn-xs btn-primary" title="invoice"><i class="fa  icon-file-pdf "></i></a>
+								<a href="{{ URL::to('customer/downloadinvoicepdf/'.$ord->id)}}" class="tips btn btn-xs btn-primary" title="invoice"><i class="fa fa-download"></i></a>
 							</td>
 						</tr>
 					@endforeach
