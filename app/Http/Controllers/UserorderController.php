@@ -346,18 +346,18 @@ class UserorderController extends Controller {
 						if($pacdata['ads_pacakge_type']=='cpc')
 						{
 							$pacpric = $getspac->space_cpc_price;
-							$adsdata .= ', price: '.$packageArr['currency'].$getspac->space_cpc_price . '/'.$getspac->space_cpc_num_clicks .' Clicks';
+							$adsdata .= ', price: '.$currency->content .$getspac->space_cpc_price . '/'.$getspac->space_cpc_num_clicks .' Clicks';
 						}
 						elseif($pacdata['ads_pacakge_type']=='cpm')
 						{
 							$pacpric = $getspac->space_cpm_price;
-							$adsdata .= ', price: '.$packageArr['currency'].$getspac->space_cpm_price . '/'.$getspac->space_cpm_num_view .' Views';
+							$adsdata .= ', price: '.$currency->content .$getspac->space_cpm_price . '/'.$getspac->space_cpm_num_view .' Views';
 						}
 						elseif($pacdata['ads_pacakge_type']=='cpd')
 						{
 							$dsqty = $pacdata['ads_days'];
 							$pacpric = CommonHelper::calc_price($getspac->space_cpd_price,$getspac->space_cpm_num_days,$pacdata['ads_days']);
-							$adsdata .= ', price: '.$packageArr['currency'].$getspac->space_cpd_price . '/'.$getspac->space_cpm_num_days .' Days';
+							$adsdata .= ', price: '.$currency->content .$getspac->space_cpd_price . '/'.$getspac->space_cpm_num_days .' Days';
 						}
 						
 						$html .= '<tr><td>'.$nos.'</td><td><b>Advertisement</b><br>'.$adsdata.'</td><td class="algCnt">'.$dsqty.'</td><td class="algCnt">'.$currency->content . $pacpric.'</td></tr>';
