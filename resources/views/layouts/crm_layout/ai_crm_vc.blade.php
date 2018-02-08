@@ -840,7 +840,7 @@ $fieldArray['file'] = 'File';
                         <div class="md-radio-inline">
                             <div class="md-radio">
                                 {{ Form::radio('status', 'yes',true, ['class' => 'field','id'=>'status_active','data-custom-field'=>'status']) }}
-                                {!! Html::decode(Form::label('status_active','<span></span><span class="check"></span><span class="box"></span>Active')) !!}
+                                <?php echo html_entity_decode(Form::label('status_active','<span></span><span class="check"></span><span class="box"></span>Active')); ?>
                             </div>
                             <div class="md-radio">
                                 {{ Form::radio('status', 'no',  null, ['class' => 'field','id'=>'status_inactive','data-custom-field'=>'status']) }}
