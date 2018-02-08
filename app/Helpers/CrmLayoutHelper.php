@@ -3,7 +3,7 @@
 namespace App\Helpers;
 
 use App\Models\ModelsModcustomfield;
-use App\Models\ModBuilder;
+use App\Models\Sximo\Module;
 use App\Models\ModelsModcustomfieldgroup;
 use App\Models\ModelsModcustomfieldrows;
 use App\Models\ModelsModcustomfieldvalue;
@@ -24,10 +24,10 @@ class CrmLayoutHelper {
     }
 
     static function getCrmField($field_id) {
-
-        $custom_field = ModBuilder::join('modcustomfieldgroup_mfg', 'modcustomfieldgroup_mfg.idmod_mfg', '=', 'modbuilder_mob.id_modbuilder')
-                        ->join('modcustomfield_mcf', 'modcustomfield_mcf.idmfg_mcf', 'modcustomfieldgroup_mfg.id_modcustomfieldgroup')
-                        ->join('modcustomfieldrows_mfg', 'modcustomfieldrows_mfg.id_modcustomfieldrow', 'modcustomfieldgroup_mfg.row_id')
+        
+        $custom_field = Module::join('modcustomfieldgroup_mfg', 'modcustomfieldgroup_mfg.idmod_mfg', '=', 'tb_module.module_id')
+                        ->join('modcustomfield_mcf', 'modcustomfield_mcf.idmfg_mcf', '=', 'modcustomfieldgroup_mfg.id_modcustomfieldgroup')
+                        ->join('modcustomfieldrows_mfg', 'modcustomfieldrows_mfg.id_modcustomfieldrow', '=', 'modcustomfieldgroup_mfg.row_id')
                         ->select('modcustomfieldgroup_mfg.*', 'modcustomfieldrows_mfg.*', 'id_modcustomfield', 'title_mcf', 'slug_mcf', 'idmfg_mcf', 'option_mcf')->where('modcustomfield_mcf.id_modcustomfield', '=', $field_id)->first();
 
         return $custom_field;
@@ -183,6 +183,7 @@ class CrmLayoutHelper {
             <div data-id="<?php echo $data->id_modcustomfield; ?>" class="<?php echo $custom_classes; ?>">
                 <div class="vc-field-cotainer">
                     <div class="form-group form-md-line-input form-md-floating-label has-info">
+                        <label for="main_language_hbm"><?php echo $data->title_mcf; ?></label>
                         <select class="form-control" id="<?php echo $fieldName; ?>" name="customFields[<?php echo $fieldName; ?>][value]">
             <?php foreach ($fieldObj->options as $val) { ?>
                                 <option value="<?php echo $val->value; ?>||<?php echo $val->label; ?>" <?php
@@ -196,7 +197,6 @@ class CrmLayoutHelper {
                                     <?php if (isset($fieldValue[$fieldName]['id'])) { ?>
                             <input type="hidden" name="customFields[<?php echo $fieldName; ?>][id_field]" value="<?php echo $fieldValue[$fieldName]['id']; ?>"/>
             <?php } ?>
-                        <label for="main_language_hbm"><?php echo $data->title_mcf; ?></label>
                         <i class="fa fa-times-circle clearInput" aria-hidden="true"></i>
                     </div>
                     <span class="help-block">Sprache </span>
@@ -210,6 +210,7 @@ class CrmLayoutHelper {
             <div data-id="<?php echo $data->id_modcustomfield; ?>" class="<?php echo $custom_classes; ?>" >
                 <div class="vc-field-cotainer">  
                     <div class="form-group form-md-line-input form-md-floating-label help-info">
+                        <label for="kundennummer_clt"><?php echo $data->title_mcf; ?></label>
                         <input class="form-control"  id="<?php echo $fieldName; ?>" name="customFields[<?php echo $fieldName; ?>][value]" value="<?php if (isset($fieldValue[$fieldName]['value'])) {
                 echo $fieldValue[$fieldName]['value'];
             } ?>" type="text" maxlength="255">
@@ -217,10 +218,8 @@ class CrmLayoutHelper {
             <?php if (isset($fieldValue[$fieldName]['id'])) { ?>
                             <input type="hidden" name="customFields[<?php echo $fieldName; ?>][id_field]" value="<?php echo $fieldValue[$fieldName]['id']; ?>"/>
                         <?php } ?>
-                        <label for="kundennummer_clt"><?php echo $data->title_mcf; ?></label>
                         <i class="fa fa-times-circle clearInput" aria-hidden="true" style="display: none;"></i>
                     </div>
-                    <span class="help-block">Kundennummer oder Freitext <span class="textused">0/255</span></span>
                 </div>
             </div>
             <?php
@@ -232,6 +231,7 @@ class CrmLayoutHelper {
 
                 <div class="vc-field-cotainer">  
                     <div class="form-group form-md-line-input form-md-floating-label help-info">
+                        <label for="kundennummer_clt"><?php echo $data->title_mcf; ?></label>
                         <input class="form-control"  id="<?php echo $fieldName; ?>" name="customFields[<?php echo $fieldName; ?>][value]" value="<?php if (isset($fieldValue[$fieldName]['value'])) {
                 echo $fieldValue[$fieldName]['value'];
             } ?>" type="email" maxlength="255">
@@ -239,10 +239,8 @@ class CrmLayoutHelper {
             <?php if (isset($fieldValue[$fieldName]['id'])) { ?>
                             <input type="hidden" name="customFields[<?php echo $fieldName; ?>][id_field]" value="<?php echo $fieldValue[$fieldName]['id']; ?>"/>
                         <?php } ?>
-                        <label for="kundennummer_clt"><?php echo $data->title_mcf; ?></label>
                         <i class="fa fa-times-circle clearInput" aria-hidden="true" style="display: none;"></i>
                     </div>
-                    <span class="help-block">Kundennummer oder Freitext <span class="textused">0/255</span></span>
                 </div>
             </div>
             <?php
@@ -254,6 +252,7 @@ class CrmLayoutHelper {
                 
                 <div class="vc-field-cotainer">  
                     <div class="form-group form-md-line-input form-md-floating-label help-info">
+                        <label for="kundennummer_clt"><?php echo $data->title_mcf; ?></label>
                         <input class="form-control"  id="<?php echo $fieldName; ?>" name="customFields[<?php echo $fieldName; ?>][value]" value="<?php if (isset($fieldValue[$fieldName]['value'])) {
                 echo $fieldValue[$fieldName]['value'];
             } ?>" type="number" maxlength="255">
@@ -261,10 +260,8 @@ class CrmLayoutHelper {
             <?php if (isset($fieldValue[$fieldName]['id'])) { ?>
                             <input type="hidden" name="customFields[<?php echo $fieldName; ?>][id_field]" value="<?php echo $fieldValue[$fieldName]['id']; ?>"/>
                         <?php } ?>
-                        <label for="kundennummer_clt"><?php echo $data->title_mcf; ?></label>
                         <i class="fa fa-times-circle clearInput" aria-hidden="true" style="display: none;"></i>
                     </div>
-                    <span class="help-block">Kundennummer oder Freitext <span class="textused">0/255</span></span>
                 </div>
             </div>
             <?php
@@ -275,6 +272,7 @@ class CrmLayoutHelper {
             <div data-id="<?php echo $data->id_modcustomfield; ?>" class="<?php echo $custom_classes; ?>">
                 <div class="vc-field-cotainer">  
                     <div class="form-group form-md-line-input form-md-floating-label help-info">
+                        <label for="kundennummer_clt"><?php echo $data->title_mcf; ?></label>
                         <input class="form-control"  id="<?php echo $fieldName; ?>" name="customFields[<?php echo $fieldName; ?>][value]" value="<?php if (isset($fieldValue[$fieldName]['value'])) {
                 echo $fieldValue[$fieldName]['value'];
             } ?>" type="date" maxlength="255">
@@ -282,10 +280,8 @@ class CrmLayoutHelper {
             <?php if (isset($fieldValue[$fieldName]['id'])) { ?>
                             <input type="hidden" name="customFields[<?php echo $fieldName; ?>][id_field]" value="<?php echo $fieldValue[$fieldName]['id']; ?>"/>
                         <?php } ?>
-                        <label for="kundennummer_clt"><?php echo $data->title_mcf; ?></label>
                         <i class="fa fa-times-circle clearInput" aria-hidden="true" style="display: none;"></i>
                     </div>
-                    <span class="help-block">Kundennummer oder Freitext <span class="textused">0/255</span></span>
                 </div>
             </div>
             <?php
@@ -295,6 +291,7 @@ class CrmLayoutHelper {
             <div data-id="<?php echo $data->id_modcustomfield; ?>" class="<?php echo $custom_classes; ?>">
                 <div class="vc-field-cotainer">  
                     <div class="form-group form-md-line-input form-md-floating-label has-info padding_left">
+                        <label for="metakey_hbm"><?php echo $data->title_mcf; ?></label>
                         <textarea class="form-control" id="<?php echo $fieldName; ?>" name="customFields[<?php echo $fieldName; ?>][value]"><?php if (isset($fieldValue[$fieldName]['value'])) {
                 echo $fieldValue[$fieldName]['value'];
             } ?></textarea>
@@ -302,8 +299,6 @@ class CrmLayoutHelper {
                         <?php if (isset($fieldValue[$fieldName]['id'])) { ?>
                             <input type="hidden" name="customFields[<?php echo $fieldName; ?>][id_field]" value="<?php echo $fieldValue[$fieldName]['id']; ?>"/>
                         <?php } ?>
-                        <label for="metakey_hbm"><?php echo $data->title_mcf; ?></label>
-
                     </div>
                     <span class="help-block">Meta Key Eingeben<span class="textused"></span></span>
                 </div>
@@ -315,6 +310,7 @@ class CrmLayoutHelper {
             <div data-id="<?php echo $data->id_modcustomfield; ?>" class="<?php echo $custom_classes; ?>">
                 <div class="vc-field-cotainer">  
                     <div class="form-group form-md-line-input form-md-floating-label help-info">
+                        <label for="kundennummer_clt"><?php echo $data->title_mcf; ?></label>
                         <input class="form-control"  id="<?php echo $fieldName; ?>" name="customFields[<?php echo $fieldName; ?>][value]" type="file"> <?php if (isset($fieldValue[$fieldName]['value'])) {
                 echo $fieldValue[$fieldName]['value'];
             } ?>
@@ -322,10 +318,8 @@ class CrmLayoutHelper {
                         <?php if (isset($fieldValue[$fieldName]['id'])) { ?>
                             <input type="hidden" name="customFields[<?php echo $fieldName; ?>][id_field]" value="<?php echo $fieldValue[$fieldName]['id']; ?>"/>
             <?php } ?>
-                        <label for="kundennummer_clt"><?php echo $data->title_mcf; ?></label>
                         <i class="fa fa-times-circle clearInput" aria-hidden="true" style="display: none;"></i>
                     </div>
-                    <span class="help-block">Kundennummer oder Freitext <span class="textused"></span></span>
                 </div>
             </div>
             <?php
