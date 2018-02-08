@@ -112,8 +112,8 @@
 						<div class="fieldwrapper">
 							<div class="col-sm-1 col">{{$nos}}</div>
 							<div class="col-sm-7 col"><b>{{$detail->pckname}}</b> @if($detail->pckcontent!='') <br> {{$detail->pckcontent}} @endif</div>
-							<div class="col-sm-2 col" style="text-align:center;">{{$qty}}</div>
-							<div class="col-sm-2 col" style="text-align:center;">&euro;{{$detail->pckprice}}</div>
+							<div class="col-sm-2 col" style="text-align:center;">{{$detail->qty}}</div>
+							<div class="col-sm-2 col" style="text-align:center;">{{$currency->content . $detail->pckprice}}</div>
 						</div>
 					</div>
 					{{--*/ $qtyPr = $detail->pckprice * $qty;
@@ -124,7 +124,7 @@
 				<div class="row items-pnl-body" id="item-row">
 					<div class="fieldwrapper">
 						<div class="col-sm-11 col" style="text-align:right;">Gesammtsumme</div>
-						<div class="col-sm-1 col" style="text-align:center;">&euro;{{$Totprice}}</div>
+						<div class="col-sm-1 col" style="text-align:center;">{{$currency->content . $Totprice}}</div>
 					</div>
 				</div>
 			</div>
