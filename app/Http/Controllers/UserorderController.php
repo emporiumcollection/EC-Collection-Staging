@@ -136,7 +136,7 @@ class UserorderController extends Controller {
 		
 		$orderdetail = $this->data['row'];
 		$order_item_detail = array();
-		$packageArr['currency'] = \DB::table('tb_settings')->select('content')->where('key_value', 'default_currency')->first();
+		$this->data['currency'] = \DB::table('tb_settings')->select('content')->where('key_value', 'default_currency')->first();
 		$order_item = \DB::table('tb_order_items')->where('order_id', $id)->get();
 		if(!empty($order_item))
 		{
@@ -173,18 +173,18 @@ class UserorderController extends Controller {
 					if($pacdata['ads_pacakge_type']=='cpc')
 					{
 						$order_item_detail[$o]->pckprice = $getspac->space_cpc_price;
-						$adsdata .= ', price: '.$packageArr['currency']->content .$getspac->space_cpc_price . '/'.$getspac->space_cpc_num_clicks .' Clicks';
+						$adsdata .= ', price: '.$this->data['currency']->content .$getspac->space_cpc_price . '/'.$getspac->space_cpc_num_clicks .' Clicks';
 					}
 					elseif($pacdata['ads_pacakge_type']=='cpm')
 					{
 						$order_item_detail[$o]->pckprice = $getspac->space_cpm_price;
-						$adsdata .= ', price: '.$packageArr['currency']->content .$getspac->space_cpm_price . '/'.$getspac->space_cpm_num_view .' Views';
+						$adsdata .= ', price: '.$this->data['currency']->content .$getspac->space_cpm_price . '/'.$getspac->space_cpm_num_view .' Views';
 					}
 					elseif($pacdata['ads_pacakge_type']=='cpd')
 					{
 						$order_item_detail[$o]->qty = $pacdata['ads_days'];
 						$order_item_detail[$o]->pckprice = CommonHelper::calc_price($getspac->space_cpd_price,$getspac->space_cpm_num_days,$pacdata['ads_days']);
-						$adsdata .= ', price: '.$packageArr['currency']->content .$getspac->space_cpd_price . '/'.$getspac->space_cpm_num_days .' Days';
+						$adsdata .= ', price: '.$this->data['currency']->content .$getspac->space_cpd_price . '/'.$getspac->space_cpm_num_days .' Days';
 					}
 					$order_item_detail[$o]->pckcontent = $adsdata;
 				}
