@@ -22,6 +22,7 @@ class UserorderController extends Controller {
 		
 		$this->info = $this->model->makeInfo( $this->module);
 		$this->access = $this->model->validAccess($this->info['id']);
+		$this->data['data'] = CommonHelper::getInfo();
 	
 		$this->data = array(
 			'pageTitle'	=> 	$this->info['title'],
