@@ -24,20 +24,21 @@
   <!-- Nav tabs <i class="fa fa-bullhorn" aria-hidden="true"></i></div><span>Ads -->
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">My Account</a></li>
-    
-    <li  role="presentation" class="<?php echo (isset($active_menu) && $active_menu == 'bookings')? 'active' : ''; ?>">
-                                                        <a href="{{URL::to('bookings')}}">
-                                                            My Bookings
-                                                        </a>
-                                                    </li>
+    @if($info->group_id==7)
+		 <li role="presentation"><a href="#comingsoon" aria-controls="comingsoon" role="tab" data-toggle="tab">Advertising</a></li>
+	@else
+		<li  role="presentation" class="<?php echo (isset($active_menu) && $active_menu == 'bookings')? 'active' : ''; ?>">
+			<a href="{{URL::to('bookings')}}">
+				My Bookings
+			</a>
+		</li>
+		
+		<li role="presentation"><a href="#personalizedOptions" aria-controls="personalizedOptions" role="tab" data-toggle="tab">Personalized Services</a></li>
 
-    
-
-       <li role="presentation"><a href="#personalizedOptions" aria-controls="personalizedOptions" role="tab" data-toggle="tab">Personalized Services</a></li>
-
-       <li role="presentation"><a href="#comingsoon" aria-controls="comingsoon" role="tab" data-toggle="tab">Memberships</a></li>
-
-     <li role="presentation"><a href="#comingsoon" aria-controls="comingsoon" role="tab" data-toggle="tab">Accounting</a></li>
+		<li role="presentation"><a href="#comingsoon" aria-controls="comingsoon" role="tab" data-toggle="tab">Memberships</a></li>
+	@endif
+	
+    <li role="presentation"><a href="#accountingorders" aria-controls="accountingorders" role="tab" data-toggle="tab">Accounting</a></li>
 
 
 
@@ -116,6 +117,38 @@
             </div>
 
     </div>
+	
+	<div role="tabpanel" class="tab-pane" id="accountingorders">
+		<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+			<thead>
+				<tr>
+					<th>No.</th>
+					<th>Status</th>
+					<th>Comment</th>
+					<th>Created At</th>
+					<th>Funktion</th>
+				</tr>
+			</thead>
+			<tbody>
+			
+				@if(!empty($orders))
+					@foreach($orders as $ord)
+						<tr>
+							<td>{{$ord->id}}</td>
+							<td>{{$ord->status}}</td>
+							<td>{{$ord->comments}}</td>
+							<td>{{$ord->created}}</td>
+							<td>
+								<a  href="{{ URL::to('customer/orderdetail/'.$ord->id.'?return='.$return) }}" class="tips btn btn-xs btn-success" title="View detail"><i class="fa  fa-search  "></i></a>
+								<a href="{{ URL::to('customer/downloadinvoicepdf/'.$ord->id)}}" class="tips btn btn-xs btn-primary" title="invoice"><i class="fa  icon-file-pdf "></i></a>
+							</td>
+						</tr>
+					@endforeach
+				@endif
+			</tbody>
+		</table>
+	</div>
+	
   </div>
 
 </div>

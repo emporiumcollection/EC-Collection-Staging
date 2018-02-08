@@ -569,6 +569,9 @@ class CustomerController extends Controller {
             'def_currency' => $def_currency,
             'ads_info' => $ads_info,
         );
+		
+		$this->data['orders'] = \DB::table('tb_orders')->where('user_id', \Auth::user()->id)->get();
+		
         return view('customer.profile', $this->data2,$this->data);
     }
 
@@ -1017,6 +1020,57 @@ class CustomerController extends Controller {
             return Redirect::to('whoiam')->with('messagetext', 'The following errors occurred')->with('msgstatus', 'error')
                             ->withErrors($validator)->withInput();
         }
+    }
+	
+	public function getOrderdetail($ordid) {
+
+        if (!\Auth::check())
+            return redirect('customer/login');
+
+        $this->data['def_currency'] = \DB::table('tb_settings')->where('key_value', 'default_currency')->first();
+        
+        $this->data['order'] = \DB::table('tb_orders')->where('id', $ordid)->first();
+		$order_item_detail = array();
+		$order_item = \DB::table('tb_order_items')->where('order_id', $ordid)->get();
+		if(!empty($order_item))
+		{
+			$o=0;
+			foreach($order_item as $oitem)
+			{
+				$order_item_detail[$o] = $oitem;
+				$order_item_detail[$o]->pckname = 'Advertisement';
+				$order_item_detail[$o]->pckprice = 0;
+				$order_item_detail[$o]->pckcontent = '';
+				if($oitem->package_type=='hotel')
+				{
+					$pchkdet = \DB::table('tb_packages')->select('package_title','package_price')->where('id', $oitem->package_id)->first();
+					if(!empty($pchkdet))
+					{
+						$order_item_detail[$o]->pckname = $pchkdet->package_title;
+						$order_item_detail[$o]->pckprice = $pchkdet->package_price;
+					}
+				}
+				elseif($oitem->package_type=='advert')
+				{
+					$pacdata = json_decode($oitem->package_data, true);
+					$order_item_detail[$o]->pckprice = $pacdata['ads_package_total_price'];
+					$adsdata = '';
+					$catdet = \DB::table('tb_categories')->select('category_name')->where('id', $pacdata['ads_category_id'])->first();
+					if(!empty($catdet))
+					{
+						$adsdata .= 'Category: '.$catdet->category_name.', ';
+					}
+					$adsdata .= 'position: '.$pacdata['ads_position'];
+					$adsdata .= ', Type: '.$pacdata['ads_pacakge_type'];
+					$adsdata .= ', Start Date: '.$pacdata['ads_start_date'];
+					$order_item_detail[$o]->pckcontent = $adsdata;
+				}
+				$o++;
+			}
+		}
+		$this->data['order_item_detail'] = $order_item_detail;
+		
+        return view('customer.orderview', $this->data);
     }
 
 }
