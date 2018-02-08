@@ -69,7 +69,7 @@
 								@foreach($adspackages as $package)
 								
 									<tr>
-										<td>
+										<td colspan="2">
 											<div class="product-title-and-remove-option">
 												<span class="product-title">{{$package->space_title}}</span>
 												<a href="javascript:voic(0);" onclick="javascript:removeItemFromCart({{$package->id}},0);"><i class="fa fa-trash"></i></a>
