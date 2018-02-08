@@ -124,7 +124,7 @@
 				<div class="row items-pnl-body" id="item-row">
 					<div class="fieldwrapper">
 						<div class="col-sm-11 col" style="text-align:right;">Gesammtsumme</div>
-						<div class="col-sm-1 col" style="text-align:center;">&euro;{{$currency->content . $Totprice}}</div>
+						<div class="col-sm-1 col" style="text-align:center;">{{$currency->content . $Totprice}}</div>
 					</div>
 				</div>
 			</div>
