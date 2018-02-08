@@ -485,7 +485,7 @@ public function generateInvoice($ordid)
                         $html .= '<tr><td>'.$nos.'</td><td><b>Advertisement</b><br>'.$adsdata.'</td><td class="algCnt">'.$qty.'</td><td class="algCnt">'.$currency->content . $pacpric.'</td></tr>';
                     }
                     $nos++;
-                    $qtyPr = $pacpric * $qty;
+                    $qtyPr = ((int)$pacpric * $qty);
                     $Totprice = $Totprice + $qtyPr;
                 }
                 $html .= '<tr><td colspan="3" style="text-align:right;"><b>Gesammtsumme<b></td><td class="algCnt font13"><b>'.$currency->content .' '.number_format($Totprice, 2, '.', ',').'<b></td></tr>';
