@@ -80,6 +80,18 @@
 		@endforeach
 		<div class="row items-pnl-body" id="item-row">
 			<div class="fieldwrapper">
+				<div class="col-sm-11 col" style="text-align:right;">Summe</div>
+				<div class="col-sm-1 col" style="text-align:center;">{{$def_currency->content . ($Totprice -(($Totprice*$data["vatsettings"]->content)/100))}}</div>
+			</div>
+		</div>
+		<div class="row items-pnl-body" id="item-row">
+			<div class="fieldwrapper">
+				<div class="col-sm-11 col" style="text-align:right;">Mwst. {{ $data["vatsettings"]->content}}%</div>
+				<div class="col-sm-1 col" style="text-align:center;">{{$def_currency->content . (($Totprice*$data["vatsettings"]->content)/100)}}</div>
+			</div>
+		</div>
+		<div class="row items-pnl-body" id="item-row">
+			<div class="fieldwrapper">
 				<div class="col-sm-11 col" style="text-align:right;">Gesammtsumme</div>
 				<div class="col-sm-1 col" style="text-align:center;">{{$def_currency->content . $Totprice}}</div>
 			</div>
