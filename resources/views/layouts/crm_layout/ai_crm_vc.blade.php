@@ -839,12 +839,12 @@ $fieldArray['file'] = 'File';
                         {!! Form::label('', 'Status')  !!}
                         <div class="md-radio-inline">
                             <div class="md-radio">
-                                {{ Form::radio('status', 'yes',true, ['class' => 'field','id'=>'status_active','data-custom-field'=>'status']) }}
+                                <?php echo html_entity_decode(Form::radio('status', 'yes',true, ['class' => 'field','id'=>'status_active','data-custom-field'=>'status'])); ?>
                                 <?php echo html_entity_decode(Form::label('status_active','<span></span><span class="check"></span><span class="box"></span>Active')); ?>
                             </div>
                             <div class="md-radio">
-                                {{ Form::radio('status', 'no',  null, ['class' => 'field','id'=>'status_inactive','data-custom-field'=>'status']) }}
-                                {!! Form::label('status_inactive','<span></span><span class="check"></span><span class="box"></span>Inactive') !!}
+                                <?php echo html_entity_decode(Form::radio('status', 'no',  null, ['class' => 'field','id'=>'status_inactive','data-custom-field'=>'status'])); ?>
+                                <?php echo html_entity_decode(Form::label('status_inactive','<span></span><span class="check"></span><span class="box"></span>Inactive')); ?>
                             </div>
                         </div>
                     </div>
@@ -853,12 +853,12 @@ $fieldArray['file'] = 'File';
                         {!! Form::label('', 'Show in List View')  !!}
                         <div class="md-radio-inline">
                             <div class="md-radio">
-                                {{ Form::radio('list_view', 'yes',true, ['class' => 'field','id'=>'list_view_active','data-custom-field'=>'list_view']) }}
-                                {!! Form::label('list_view_active','<span></span><span class="check"></span><span class="box"></span>Active') !!}
+                                <?php echo html_entity_decode(Form::radio('list_view', 'yes',true, ['class' => 'field','id'=>'list_view_active','data-custom-field'=>'list_view'])); ?>
+                                <?php echo html_entity_decode(Form::label('list_view_active','<span></span><span class="check"></span><span class="box"></span>Active')); ?>
                             </div>
                             <div class="md-radio">
-                                {{ Form::radio('list_view', 'no',  null, ['class' => 'field','id'=>'list_view_inactive','data-custom-field'=>'list_view']) }}
-                                {!! Form::label('list_view_inactive','<span></span><span class="check"></span><span class="box"></span>Inactive') !!}
+                                <?php echo html_entity_decode(Form::radio('list_view', 'no',  null, ['class' => 'field','id'=>'list_view_inactive','data-custom-field'=>'list_view'])); ?>
+                                <?php echo html_entity_decode(Form::label('list_view_inactive','<span></span><span class="check"></span><span class="box"></span>Inactive')); ?>
                             </div>
                         </div>
                     </div>
@@ -867,12 +867,12 @@ $fieldArray['file'] = 'File';
                         {!! Form::label('', 'Show in Form')  !!}
                         <div class="md-radio-inline">
                             <div class="md-radio">
-                                {{ Form::radio('showinform', 'yes',true, ['class' => 'field','id'=>'showinform_active','data-custom-field'=>'show_in_form']) }}
-                                {!! Form::label('showinform_active','<span></span><span class="check"></span><span class="box"></span>Active') !!}
+                                <?php echo html_entity_decode(Form::radio('showinform', 'yes',true, ['class' => 'field','id'=>'showinform_active','data-custom-field'=>'show_in_form'])); ?>
+                                <?php echo html_entity_decode(Form::label('showinform_active','<span></span><span class="check"></span><span class="box"></span>Active')); ?>
                             </div>
                             <div class="md-radio">
-                                {{ Form::radio('showinform', 'no',  null, ['class' => 'field','id'=>'showinform_inactive','data-custom-field'=>'show_in_form']) }}
-                                {!! Form::label('showinform_inactive','<span></span><span class="check"></span><span class="box"></span>Inactive') !!}
+                                <?php echo html_entity_decode(Form::radio('showinform', 'no',  null, ['class' => 'field','id'=>'showinform_inactive','data-custom-field'=>'show_in_form'])); ?>
+                                <?php echo html_entity_decode(Form::label('showinform_inactive','<span></span><span class="check"></span><span class="box"></span>Inactive')); ?>
                             </div>
                         </div>
                     </div>
@@ -881,12 +881,12 @@ $fieldArray['file'] = 'File';
                         {!! Form::label('', 'Simple Search')  !!}
                         <div class="md-radio-inline">
                             <div class="md-radio">
-                                {{ Form::radio('searchable', 'yes',true, ['class' => 'field','id'=>'searchable_active','data-custom-field'=>'searchable']) }}
-                                {!! Form::label('searchable_active','<span></span><span class="check"></span><span class="box"></span>Active') !!}
+                                <?php echo html_entity_decode(Form::radio('searchable', 'yes',true, ['class' => 'field','id'=>'searchable_active','data-custom-field'=>'searchable'])); ?>
+                                <?php echo html_entity_decode(Form::label('searchable_active','<span></span><span class="check"></span><span class="box"></span>Active')); ?>
                             </div>
                             <div class="md-radio">
-                                {{ Form::radio('searchable', 'no',  null, ['class' => 'field','id'=>'searchable_inactive','data-custom-field'=>'searchable']) }}
-                                {!! Form::label('searchable_inactive','<span></span><span class="check"></span><span class="box"></span>Inactive') !!}
+                                <?php echo html_entity_decode(Form::radio('searchable', 'no',  null, ['class' => 'field','id'=>'searchable_inactive','data-custom-field'=>'searchable'])); ?>
+                                <?php echo html_entity_decode(Form::label('searchable_inactive','<span></span><span class="check"></span><span class="box"></span>Inactive')); ?>
                             </div>
                         </div>
                     </div>
@@ -895,12 +895,12 @@ $fieldArray['file'] = 'File';
                         {!! Form::label('', 'Advanced Search')  !!}
                         <div class="md-radio-inline">
                             <div class="md-radio">
-                                {{ Form::radio('advance_searchable', 'yes',true, ['class' => 'field','id'=>'advance_searchable_active','data-custom-field'=>'advance_searchable']) }}
-                                {!! Form::label('advance_searchable_active','<span></span><span class="check"></span><span class="box"></span>Active') !!}
+                                <?php echo html_entity_decode(Form::radio('advance_searchable', 'yes',true, ['class' => 'field','id'=>'advance_searchable_active','data-custom-field'=>'advance_searchable'])); ?>
+                                <?php echo html_entity_decode(Form::label('advance_searchable_active','<span></span><span class="check"></span><span class="box"></span>Active')); ?>
                             </div>
                             <div class="md-radio">
-                                {{ Form::radio('advance_searchable', 'no',  null, ['class' => 'field','id'=>'advance_searchable_inactive','data-custom-field'=>'advance_searchable']) }}
-                                {!! Form::label('advance_searchable_inactive','<span></span><span class="check"></span><span class="box"></span>Inactive') !!}
+                                <?php echo html_entity_decode(Form::radio('advance_searchable', 'no',  null, ['class' => 'field','id'=>'advance_searchable_inactive','data-custom-field'=>'advance_searchable'])); ?>
+                                <?php echo html_entity_decode(Form::label('advance_searchable_inactive','<span></span><span class="check"></span><span class="box"></span>Inactive')); ?>
                             </div>
                         </div>
                     </div>
@@ -909,12 +909,12 @@ $fieldArray['file'] = 'File';
                         {!! Form::label('', 'Filter Search')  !!}
                         <div class="md-radio-inline">
                             <div class="md-radio">
-                                {{ Form::radio('filter_searchable', 'yes',true, ['class' => 'field','id'=>'filter_searchable_active','data-custom-field'=>'filter_searchable']) }}
-                                {!! Form::label('filter_searchable_active','<span></span><span class="check"></span><span class="box"></span>Active') !!}
+                                <?php echo html_entity_decode(Form::radio('filter_searchable', 'yes',true, ['class' => 'field','id'=>'filter_searchable_active','data-custom-field'=>'filter_searchable'])); ?>
+                                <?php echo html_entity_decode(Form::label('filter_searchable_active','<span></span><span class="check"></span><span class="box"></span>Active')); ?>
                             </div>
                             <div class="md-radio">
-                                {{ Form::radio('filter_searchable', 'no',  null, ['class' => 'field','id'=>'filter_searchable_inactive','data-custom-field'=>'filter_searchable']) }}
-                                {!! Form::label('filter_searchable_inactive','<span></span><span class="check"></span><span class="box"></span>Inactive') !!}
+                                <?php echo html_entity_decode(Form::radio('filter_searchable', 'no',  null, ['class' => 'field','id'=>'filter_searchable_inactive','data-custom-field'=>'filter_searchable'])); ?>
+                                <?php echo html_entity_decode(Form::label('filter_searchable_inactive','<span></span><span class="check"></span><span class="box"></span>Inactive')); ?>
                             </div>
                         </div>
                     </div>
@@ -923,12 +923,12 @@ $fieldArray['file'] = 'File';
                         {!! Form::label('', 'Required Field')  !!}
                         <div class="md-radio-inline">
                             <div class="md-radio">
-                                {{ Form::radio('required_field', 'yes',true, ['class' => 'field','id'=>'required_field_active','data-custom-field'=>'required_field']) }}
-                                {!! Form::label('status_active','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_required_field_active')) !!}
+                                <?php echo html_entity_decode(Form::radio('required_field', 'yes',true, ['class' => 'field','id'=>'required_field_active','data-custom-field'=>'required_field'])); ?>
+                                <?php echo html_entity_decode(Form::label('status_active','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_required_field_active'))); ?>
                             </div>
                             <div class="md-radio">
-                                {{ Form::radio('required_field', 'no',  null, ['class' => 'field','id'=>'required_field_inactive','data-custom-field'=>'required_field']) }}
-                                {!! Form::label('status_inactive','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_required_field_inactive')) !!}
+                                <?php echo html_entity_decode(Form::radio('required_field', 'no',  null, ['class' => 'field','id'=>'required_field_inactive','data-custom-field'=>'required_field'])); ?>
+                                <?php echo html_entity_decode(Form::label('status_inactive','<span></span><span class="check"></span><span class="box"></span>'.trans('customfields.admin_customfield_module_add_required_field_inactive'))); ?>
                             </div>
                         </div>
                     </div>
