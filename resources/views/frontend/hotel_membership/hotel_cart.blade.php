@@ -57,7 +57,7 @@
                                     <td>
                                     		<div class="product-title-and-remove-option">
                                         	<span class="product-title">{{$package->package_title}}</span>
-                                            <a href="javascript:voic(0);" onclick="javascript:removeItemFromCart({{$package->id}},{{ $package->package_price }});">Remove</a>
+                                            <a href="javascript:voic(0);" onclick="javascript:removeItemFromCart({{$package->id}},{{ $package->package_price }});"><i class="fa fa-trash"></i></a>
                                         </div>
                                     </td>
                                     
