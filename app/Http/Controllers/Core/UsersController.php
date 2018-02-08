@@ -229,7 +229,7 @@ class UsersController extends Controller {
                                     }
                                     $modcustomfieldvalue = new ModelsModcustomfieldvalue;
                                     $modcustomfieldvalue->idmob_mfv = $mod_slug;
-                                    $modcustomfieldvalue->record_id_mfv = $client->id_client;
+                                    $modcustomfieldvalue->record_id_mfv = $request->input('id');
                                     $modcustomfieldvalue->option_type_mfv = $fieltype;
                                     $modcustomfieldvalue->option_name_mfv = $key;
                                     $modcustomfieldvalue->option_label_mfv = $fieldLabel;
