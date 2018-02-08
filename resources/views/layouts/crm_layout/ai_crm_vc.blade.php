@@ -962,20 +962,19 @@ $fieldArray['file'] = 'File';
 
                     <div class="form-group">
                         <div class="form-group form-md-line-input form-md-floating-label has-info">
+                            {!! Form::label('table_mob', 'Field Type')  !!}
                             <select data-placeholder="Select Type" data-custom-field="type"  class="custom-field-types form-control select2" name="type" >
                                 @foreach($fieldArray as $fieldKey=>$fieldMatch)
                                 <option value="{{$fieldKey}}" >{{$fieldMatch}}</option>
                                 @endforeach
                             </select>
-                            {!! Form::label('table_mob', 'Field Type')  !!}
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="form-group form-md-line-input form-md-floating-label has-info" >
-                            {!! Form::text('title_mcf', '', array('class'=>'form-control title_mcf','maxlength'=>'255','id'=>'_title_mcf','data-custom-field'=>'title'))  !!}
                             {!! Form::label('_title_mcf', 'Title')  !!}
+                            {!! Form::text('title_mcf', '', array('class'=>'form-control title_mcf','maxlength'=>'255','id'=>'_title_mcf','data-custom-field'=>'title'))  !!}
                         </div>
-                        <span class="help-block">@lang('customfields.admin_customfield_module_add_custom_title_help_text') <span class="textused">0/255</span></span>
                     </div>
 
                     <div class="custom-field-options-container" data-field-option="list" style="display: none;">
