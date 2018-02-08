@@ -200,7 +200,41 @@ class UsersController extends Controller {
 				$this->model->insertRow($updates , $id );
 			}	
 
-			if(!is_null($request->input('apply')))
+                        if (!is_null($request->input('customFields'))) {
+
+                            $mod_slug = $request->segment(2);
+                            $cstfields = $request->input('customFields');
+                            foreach ($request->input('customFields') as $key => $valu) {
+                                if (isset($valu['value']) && !empty($valu['value'])) {
+                                    $fieltype = $valu['type'];
+                                    if ($fieltype == 'checkbox') {
+                                        $fieldArrLabel = array();
+                                        $fieldArrValue = array();
+                                        foreach ($valu['value'] as $valueStr) {
+                                            $exlpodeStrFieldValue = explode('||', $valueStr);
+                                            $fieldArrValue[] = $exlpodeStrFieldValue[0];
+                                            $fieldArrLabel[] = $exlpodeStrFieldValue[1];
+                                        }
+                                        $fieldValue = implode(',', $fieldArrValue);
+                                        $fieldLabel = implode(',', $fieldArrLabel);
+                                    } else {
+                                        $exlpodeFieldValue = explode('||', $valu['value']);
+                                        $fieldValue = isset($exlpodeFieldValue[0]) ? $exlpodeFieldValue[0] : '';
+                                        $fieldLabel = isset($exlpodeFieldValue[1]) ? $exlpodeFieldValue[1] : '';
+                                    }
+                                    $modcustomfieldvalue = new ModelsModcustomfieldvalue;
+                                    $modcustomfieldvalue->idmob_mfv = $mod_slug;
+                                    $modcustomfieldvalue->record_id_mfv = $client->id_client;
+                                    $modcustomfieldvalue->option_type_mfv = $fieltype;
+                                    $modcustomfieldvalue->option_name_mfv = $key;
+                                    $modcustomfieldvalue->option_label_mfv = $fieldLabel;
+                                    $modcustomfieldvalue->option_value_mfv = $fieldValue;
+                                    $modcustomfieldvalue->save();
+                                }
+                            }
+                        }
+
+                        if(!is_null($request->input('apply')))
 			{
 				$return = 'core/users/update/'.$id.'?return='.self::returnUrl();
 			} else {
