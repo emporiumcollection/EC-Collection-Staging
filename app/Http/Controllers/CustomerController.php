@@ -1069,18 +1069,18 @@ class CustomerController extends Controller {
 					if($pacdata['ads_pacakge_type']=='cpc')
 					{
 						$order_item_detail[$o]->pckprice = $getspac->space_cpc_price;
-						$adsdata .= ', price: '.$this->data['currency']->content .$getspac->space_cpc_price . '/'.$getspac->space_cpc_num_clicks .' Clicks';
+						$adsdata .= ', price: '.$this->data['def_currency']->content .$getspac->space_cpc_price . '/'.$getspac->space_cpc_num_clicks .' Clicks';
 					}
 					elseif($pacdata['ads_pacakge_type']=='cpm')
 					{
 						$order_item_detail[$o]->pckprice = $getspac->space_cpm_price;
-						$adsdata .= ', price: '.$this->data['currency']->content .$getspac->space_cpm_price . '/'.$getspac->space_cpm_num_view .' Views';
+						$adsdata .= ', price: '.$this->data['def_currency']->content .$getspac->space_cpm_price . '/'.$getspac->space_cpm_num_view .' Views';
 					}
 					elseif($pacdata['ads_pacakge_type']=='cpd')
 					{
 						$order_item_detail[$o]->qty = $pacdata['ads_days'];
 						$order_item_detail[$o]->pckprice = CommonHelper::calc_price($getspac->space_cpd_price,$getspac->space_cpm_num_days,$pacdata['ads_days']);
-						$adsdata .= ', price: '.$this->data['currency']->content .$getspac->space_cpd_price . '/'.$getspac->space_cpm_num_days .' Days';
+						$adsdata .= ', price: '.$this->data['def_currency']->content .$getspac->space_cpd_price . '/'.$getspac->space_cpm_num_days .' Days';
 					}
 					$order_item_detail[$o]->pckcontent = $adsdata;
 				}
