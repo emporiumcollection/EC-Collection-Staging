@@ -968,7 +968,7 @@ $fieldArray['file'] = 'File';
                                 <option value="{{$fieldKey}}" >{{$fieldMatch}}</option>
                                 @endforeach
                             </select>
-                            {!! Form::label('table_mob', trans('module_builder.admin_modbuilder_module_exist_table'))  !!}
+                            {!! Form::label('table_mob', 'Field Type')  !!}
                         </div>
                     </div>
                     <div class="form-group">
