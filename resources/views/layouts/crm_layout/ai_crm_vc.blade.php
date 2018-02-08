@@ -800,7 +800,7 @@ $fieldArray['file'] = 'File';
                     <div class="form-group">
                         <div class="form-group form-md-line-input form-md-floating-label has-info">
                             {!! Form::label('table_mob', 'Field Type')  !!}
-                            <select class="custom-field-types form-control" name="type" >
+                            <select class="custom-field-types form-control select2" name="type" >
                                 @foreach($fieldArray as $fieldKey=>$fieldMatch)
                                 <option value="{{$fieldKey}}" >{{$fieldMatch}}</option>
                                 @endforeach
