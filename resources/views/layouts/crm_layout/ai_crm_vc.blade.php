@@ -799,20 +799,19 @@ $fieldArray['file'] = 'File';
                 <div class="modal-body">
                     <div class="form-group">
                         <div class="form-group form-md-line-input form-md-floating-label has-info">
+                            {!! Form::label('table_mob', 'Field Type')  !!}
                             <select data-placeholder="Select Type" data-custom-field="type"  class="custom-field-types form-control select2" name="type" >
                                 @foreach($fieldArray as $fieldKey=>$fieldMatch)
                                 <option value="{{$fieldKey}}" >{{$fieldMatch}}</option>
                                 @endforeach
                             </select>
-                            {!! Form::label('table_mob', 'Field Type')  !!}
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="form-group form-md-line-input form-md-floating-label has-info" >
-                            {!! Form::text('title_mcf', '', array('class'=>'form-control','maxlength'=>'255','id'=>'title_mcf','data-custom-field'=>'title'))  !!}
                             {!! Form::label('title_mcf', 'Title')  !!}
+                            {!! Form::text('title_mcf', '', array('class'=>'form-control','maxlength'=>'255','id'=>'title_mcf','data-custom-field'=>'title'))  !!}
                         </div>
-                        <span class="help-block">Enter Custom Field Title <span class="textused">0/255</span></span>
                     </div>
                     <div class="custom-field-options-container" data-field-option="list" style="display: none;">
                         <table class="table m-b-0">
