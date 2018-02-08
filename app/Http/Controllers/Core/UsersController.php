@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 use Validator, Input, Redirect ; 
 use App\Helpers\CrmLayoutHelper;
+use App\Models\ModelsModcustomfieldgroup;
+use App\Models\ModelsModcustomfieldrows;
+use App\Models\ModelsModcustomfieldvalue;
+use App\Models\ModelsModcustomfieldelements;
+use App\Models\ModelsModcustomfield;
 
 
 class UsersController extends Controller {
