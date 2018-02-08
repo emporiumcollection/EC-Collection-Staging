@@ -996,13 +996,13 @@ class CustomerController extends Controller {
 
 
             if($request->input('usertype')=="hotel" ){
-                $user->group_id=4;
+                $user->group_id=5;
                 $user->save();
                 return Redirect::to('hotel/membership')->with('messagetext', 'Profile has been saved!')->with('msgstatus', 'success'); 
              }
 
               if($request->input('usertype')=="advertiser" ){
-                $user->group_id=5;
+                $user->group_id=7;
                 $user->save();
                 return Redirect::to('advertiser/package')->with('messagetext', 'Profile has been saved!')->with('msgstatus', 'success'); 
              }
