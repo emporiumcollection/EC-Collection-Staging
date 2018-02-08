@@ -216,6 +216,7 @@ return [
          'Debugbar' => Barryvdh\Debugbar\Facade::class,
 	 'ImageCache' => App\Helpers\ImageCache::class,
      'CommonHelper'=> App\Helpers\CommonHelper::class,
+        'CrmLayoutHelper' => App\Helpers\CrmLayoutHelper::class,
 
     ],
 
