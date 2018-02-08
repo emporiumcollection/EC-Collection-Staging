@@ -1043,6 +1043,7 @@ class CustomerController extends Controller {
 				$order_item_detail[$o]->pckname = 'Advertisement';
 				$order_item_detail[$o]->pckprice = 0;
 				$order_item_detail[$o]->pckcontent = '';
+				$order_item_detail[$o]->qty = 1;
 				if($oitem->package_type=='hotel')
 				{
 					$pchkdet = \DB::table('tb_packages')->select('package_title','package_price')->where('id', $oitem->package_id)->first();
@@ -1055,7 +1056,7 @@ class CustomerController extends Controller {
 				elseif($oitem->package_type=='advert')
 				{
 					$pacdata = json_decode($oitem->package_data, true);
-					$order_item_detail[$o]->pckprice = $pacdata['ads_package_total_price'];
+					$getspac = \DB::table('tb_advertisement_space')->where('id', $pacdata['id'])->first();
 					$adsdata = '';
 					$catdet = \DB::table('tb_categories')->select('category_name')->where('id', $pacdata['ads_category_id'])->first();
 					if(!empty($catdet))
@@ -1065,6 +1066,22 @@ class CustomerController extends Controller {
 					$adsdata .= 'position: '.$pacdata['ads_position'];
 					$adsdata .= ', Type: '.$pacdata['ads_pacakge_type'];
 					$adsdata .= ', Start Date: '.$pacdata['ads_start_date'];
+					if($pacdata['ads_pacakge_type']=='cpc')
+					{
+						$order_item_detail[$o]->pckprice = $getspac->space_cpc_price;
+						$adsdata .= ', price: '.$this->data['currency']->content .$getspac->space_cpc_price . '/'.$getspac->space_cpc_num_clicks .' Clicks';
+					}
+					elseif($pacdata['ads_pacakge_type']=='cpm')
+					{
+						$order_item_detail[$o]->pckprice = $getspac->space_cpm_price;
+						$adsdata .= ', price: '.$this->data['currency']->content .$getspac->space_cpm_price . '/'.$getspac->space_cpm_num_view .' Views';
+					}
+					elseif($pacdata['ads_pacakge_type']=='cpd')
+					{
+						$order_item_detail[$o]->qty = $pacdata['ads_days'];
+						$order_item_detail[$o]->pckprice = CommonHelper::calc_price($getspac->space_cpd_price,$getspac->space_cpm_num_days,$pacdata['ads_days']);
+						$adsdata .= ', price: '.$this->data['currency']->content .$getspac->space_cpd_price . '/'.$getspac->space_cpm_num_days .' Days';
+					}
 					$order_item_detail[$o]->pckcontent = $adsdata;
 				}
 				$o++;
