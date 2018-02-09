@@ -358,9 +358,12 @@ class UserorderController extends Controller {
 					
 				<div class="main">
 				  <div class="header">
-						<center>
-						  <div><img src="'. \URL::to('sximo/assets/images/logo-design_1.png').'"></div>
-					   </center>
+					  <table width="100%">
+						 <tr>
+							<td class="title" align="center"><img src="'. \URL::to('sximo/assets/images/logo-design_1.png').'" width="250px;" height="50px;"></td>
+						 </tr>
+					 </table>
+						
 				  </div>
 					<div class="footer">
 							<table width="100%">
@@ -403,7 +406,7 @@ class UserorderController extends Controller {
 				
 				<table width="100%">
 				 <tr>
-					<th colspan="2" class="title" align="right">Invoice</th>
+					<td colspan="2" class="title" align="right">Invoice</td>
 				 </tr>
 						<tr>
 							<td width="60%" align="left">
