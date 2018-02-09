@@ -283,7 +283,7 @@ class UserorderController extends Controller {
 				$html = '<style> 
 						.main { margin:2px; width:99%; font-family: arial, sans-serif; } 
 						.page-break { page-break-after: always; } 
-						.header{ width: 100%; position:fixed; top: -50px; text-align:center;} 
+						.header{ width: 100%; position:fixed; top: -45px; text-align:center;} 
 						.footer {width: 100%; position:fixed;} 
 						.pagenum:after {content: counter(page);} 
 						.imgBox { text-align:center; width:400px; } 
@@ -371,9 +371,10 @@ class UserorderController extends Controller {
 				}
 				$html .= '</td></tr></table></div>';
 				
-				$html .= '<div style=" height:50px;clear:both;">&nbsp;</div><div><hr  style="border-top:1px solid #000;"></div>
-
+				$html .= '
 				<table width="100%">
+					<tr><td colspan="2">
+						<td><hr  style="border-top:1px solid #000; width:100%;"/></tr>
 					<tr>
 						<td width="50%">';
 							$html .= 'Tel: '.$invoice_phone_num->content . ' email: ' .$invoice_email_id->content;
