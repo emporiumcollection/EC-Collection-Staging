@@ -283,7 +283,7 @@ class UserorderController extends Controller {
 				$html = '<style> 
 						.main { margin:2px; width:100%; font-family: arial, sans-serif; } 
 						.page-break { page-break-after: always; } 
-						.header{ width: 100%; position:fixed; top: -45px; text-align:center;} 
+						.header{ width: 100%; position:fixed; top: 0px; text-align:center;} 
 						.footer {width: 100%; position:fixed;} 
 						.pagenum:after {content: counter(page);} 
 						.imgBox { text-align:center; width:400px; } 
@@ -332,12 +332,21 @@ class UserorderController extends Controller {
 					
 				<div class="main">
 				  <div class="header">
+
 					  <table width="100%">
+					  	 <tr>
+							<td  align="right"  height="35px;">&nbsp</td>
+						 </tr>
 						 <tr>
 							<td class="title" align="center">
 								<center><img src="'. \URL::to('sximo/assets/images/logo-design_1.png').'" width="250px;" height="50px;"></center>
 							</td>
 						 </tr>
+
+						<tr>
+							<td  align="right"  height="35px;">&nbsp</td>
+						 </tr>
+						
 					 </table>
 						
 				  </div>
@@ -393,6 +402,9 @@ class UserorderController extends Controller {
 				$html .= '<div class="Mrgtop20 font13">
 				
 				<table width="94%" border="0px">
+				 <tr>
+					<td colspan="2" align="right"  height="60px;">&nbsp</td>
+				 </tr>
 				 <tr>
 					<td colspan="2" class="title" align="right">Invoice</td>
 				 </tr>
