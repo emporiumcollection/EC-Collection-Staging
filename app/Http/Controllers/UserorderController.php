@@ -386,10 +386,10 @@ class UserorderController extends Controller {
 				
 				$html .= '
 				<div class="topDIV">
-				<table width="100%" border="0px">
+				<table width="100%">
 				 <tr>
 					<td colspan="2" align="right"  height="35px;">
-						&nbsp;
+						<hr  style="border-top:1px solid #000; width:100%"/>
 					</td>
 				 </tr>
 					<tr style="border-top:1px solid #000;">
