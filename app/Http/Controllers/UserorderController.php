@@ -386,7 +386,7 @@ class UserorderController extends Controller {
 				}
 				$html .= '</td></tr></table></div>';
 				
-				$html .= '<div style=" height:10px;clear:both;">&nbsp;</div><div><hr  style="border-top:1px solid #000;"></div>
+				$html .= '<div style=" height:100px;clear:both;">&nbsp;</div><div><hr  style="border-top:1px solid #000;"></div>
 
 				<table width="100%">
 					<tr>
