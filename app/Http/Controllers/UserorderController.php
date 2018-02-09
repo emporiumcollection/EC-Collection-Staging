@@ -392,31 +392,31 @@ class UserorderController extends Controller {
 				$html .= '';
 				$html .= '<div class="Mrgtop20 font13">
 				
-				<table width="100%" border="1px">
+				<table width="80%" border="1px">
 				 <tr>
 					<td colspan="2" class="title" align="right">Invoice</td>
 				 </tr>
 						<tr>
-							<td width="60%" align="left">
+							<td width="50%" align="left">
 									
 
-								<table width="100%">
+								<table >
 									<tr>									     
-										<td width="100%">'. $companydet->company_address .' . '.$companydet->company_address2 .'</td>
+										<td >'. $companydet->company_address .' . '.$companydet->company_address2 .'</td>
 							        </tr>
 									<tr>
-									   <td width="100%"> '.$companydet->company_city .'</td>										
+									   <td > '.$companydet->company_city .'</td>										
 									</tr>
 									<tr>
-									 <td width="100%">'. $companydet->company_postal_code.' . '.$companydet->company_country .'</td>
+									 <td >'. $companydet->company_postal_code.' . '.$companydet->company_country .'</td>
 									</tr>
 								</table>
 								 
 								 </td>
-								 <td width="40%" class="alnRight" align="right">
+								 <td width="50%" align="right">
 
 								 	
-										<table width="100%">
+										<table >
 											<tr>
 												
 												<td  align="right">Date:</td>
