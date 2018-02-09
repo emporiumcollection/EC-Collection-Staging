@@ -283,7 +283,7 @@ class UserorderController extends Controller {
 				$html = '<style> 
 						.main { margin:2px; width:100%; font-family: arial, sans-serif; } 
 						.page-break { page-break-after: always; } 
-						.topDIV{top: 450px; text-align:center;}
+						
 						.header{ width: 100%; position:fixed; top: -35px; text-align:center; height:200px;} 
 						.footer {width: 100%; position:fixed;} 
 						.pagenum:after {content: counter(page);} 
@@ -385,10 +385,10 @@ class UserorderController extends Controller {
 				$html .= '</td></tr></table></div>';
 				
 				$html .= '
-				<div class="topDIV">
+				<div>
 				<table width="100%">
 				 <tr>
-					<td colspan="2" align="right"  height="35px;">
+					<td colspan="2" align="right">
 						<hr  style="border-top:1px solid #000; width:100%"/>
 					</td>
 				 </tr>
