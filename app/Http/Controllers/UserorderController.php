@@ -390,7 +390,7 @@ class UserorderController extends Controller {
 				</table>';
 				
 				$html .= '';
-				$html .= '<div style="width:100%">
+				$html .= '<div style="width:95%; background-color:#c0c0c0;">
 				
 				<table width="100%">
 				 <tr>
