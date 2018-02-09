@@ -281,9 +281,9 @@ class UserorderController extends Controller {
 				$companydet = \DB::table('tb_user_company_details')->where('user_id', $order_item[0]->user_id )->first();
 				
 				$html = '<style> 
-						.main { margin:0 15px; width:98%; font-family: arial, sans-serif; } 
+						.main { margin:2px; width:95%; font-family: arial, sans-serif; } 
 						.page-break { page-break-after: always; } 
-						.header{ width: 100%; position:fixed; top: 0px; text-align:center;} 
+						.header{ width: 100%; position:fixed; top: 10px; text-align:center;} 
 						.footer {width: 100%; position:fixed;} 
 						.pagenum:after {content: counter(page);} 
 						.imgBox { text-align:center; width:400px; } 
@@ -358,10 +358,10 @@ class UserorderController extends Controller {
 					
 				<div class="main">
 				  <div class="header">
-						<center><img src="'. \URL::to('sximo/assets/images/logo-design_1.png').'"></center>
-
-						<div style="height:100px;clear:both;"><hr></div>
-					</div>
+						<center>
+						  <div><img src="'. \URL::to('sximo/assets/images/logo-design_1.png').'"></div>
+					   </center>
+				  </div>
 					<div class="footer">
 							<table width="100%">
 								<tr style="border-bottom:1px solid #000;">
@@ -425,17 +425,17 @@ class UserorderController extends Controller {
 										<table width="100%">
 											<tr>
 												
-												<td  align="right"class="alnRight" >Date:</td>
-												<td  class="alnRight">'.date('Y.m.d').'</td>
+												<td  align="right">Date:</td>
+												<td  class="alnRight" class="alnRight">'.date('Y.m.d').'</td>
 										    </tr>
 											<tr>
 												
-												<td  align="right" class="alnRight">Invoice Number:</td>
-												<td  align="right" class="alnRight">'. $invoice_num->content .'</td>
+												<td  align="right">Invoice Number:</td>
+												<td  align="right" class="alnRight" >'. $invoice_num->content .'</td>
 											</tr>
 											<tr>
 											
-											<td   class="alnRight" width="200px">Contact&nbsp;Person:</td>
+											<td   align="right" width="200px">Contact&nbsp;Person:</td>
 											<td  align="right" class="alnRight">'. $userInfo->first_name .' '. $userInfo->last_name .'<br>'. $userInfo->email .'</td>
 											</tr>
 										</table>
