@@ -281,9 +281,9 @@ class UserorderController extends Controller {
 				$companydet = \DB::table('tb_user_company_details')->where('user_id', $order_item[0]->user_id )->first();
 				
 				$html = '<style> 
-						.main { margin:0 25px; width:98%; font-family: arial, sans-serif; } 
+						.main { margin:0 15px; width:98%; font-family: arial, sans-serif; } 
 						.page-break { page-break-after: always; } 
-						.header{ width: 100%; position:fixed; top: 1px; text-align:center;} 
+						.header{ width: 100%; position:fixed; top: 0px; text-align:center;} 
 						.footer {width: 100%; position:fixed;} 
 						.pagenum:after {content: counter(page);} 
 						.imgBox { text-align:center; width:400px; } 
@@ -355,15 +355,13 @@ class UserorderController extends Controller {
 				$i=1;
 				$html .= '
 				<div class="page">
-						<div class="header">
+					<div class="header">
 						<center><img src="'. \URL::to('sximo/assets/images/logo-design_1.png').'"></center>
-					</div>
-				<div class="main ">
-					
 
-						<div style=" height:10px;clear:both;">&nbsp;</div>
-						
-						<div class="footer">
+						<div style="height:100px;clear:both;">&nbsp;</div>
+					</div>
+				<div class="main">
+					<div class="footer">
 							<table width="100%">
 								<tr style="border-bottom:1px solid #000;">
 									<td width="33%"><h2>Bank Details</h2></td>
@@ -399,7 +397,7 @@ class UserorderController extends Controller {
 				$html .= $invoice_address->content;
 				$html .= '</td></tr></table>';
 				
-				$html .= '<div style=" height:100px;clear:both;">&nbsp;</div><div class="title" style="float:right;">Invoice</div>';
+				$html .= '<div style=" height:10px;clear:both;">&nbsp;</div><div class="title" style="float:right;">Invoice</div>';
 				$html .= '<div style="width:100%">
 
 				<table width="100%">
@@ -432,11 +430,11 @@ class UserorderController extends Controller {
 											<tr>
 												
 												<td  align="right" class="alnRight">Invoice Number:</td>
-												<td  align="right" class="alnRight">&nbsp'. $invoice_num->content .'</td>
+												<td  align="right" class="alnRight">'. $invoice_num->content .'</td>
 											</tr>
 											<tr>
 											
-											<td   class="alnRight">Contact&nbsp;Person:&nbsp</td>
+											<td   class="alnRight" width="200px">Contact&nbsp;Person:</td>
 											<td  align="right" class="alnRight">'. $userInfo->first_name .' '. $userInfo->last_name .'<br>'. $userInfo->email .'</td>
 											</tr>
 										</table>
@@ -448,7 +446,7 @@ class UserorderController extends Controller {
 						 <br><br>';
 			
 				
-				$html .= '<div class="Mrgtop80 font13"><table width="100%"><tr style="background:#eeeeee;"><th width="10%">No.</th><th width="50%" >Item </th><th width="20%" class="algCnt">Quantity </th><th width="20%" class="algCnt">Price(Excl.VAT) </th></tr>';
+				$html .= '<div class="Mrgtop20 font13"><table width="100%"><tr style="background:#eeeeee;"><th width="10%">No.</th><th width="50%" >Item </th><th width="20%" class="algCnt">Quantity </th><th width="20%" class="algCnt">Price(Excl.VAT) </th></tr>';
 				$qtyPr = 1;
 				$Totprice = 0;
 				$qty=1;
