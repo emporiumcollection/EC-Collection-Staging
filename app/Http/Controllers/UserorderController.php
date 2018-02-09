@@ -280,10 +280,99 @@ class UserorderController extends Controller {
 				$userInfo = \DB::table('tb_users')->where('id', $order_item[0]->user_id)->first();
 				$companydet = \DB::table('tb_user_company_details')->where('user_id', $order_item[0]->user_id )->first();
 				
-				$html = '<style> .main { margin:0 25px; width:700px; font-family: arial, sans-serif; } .page-break { page-break-after: always; } .header,.footer {width: 100%; position:fixed;} .header { top: 20px; text-align:center;} .pagenum:after {content: counter(page);} .imgBox { text-align:center; width:400px; margin:50px auto 30px auto;} .nro { text-align:center; font-size:12px; } .header img { width:250px; height: 50px; } .Mrgtop80 {margin-top:80px;} .Mrgtop40 {margin-top:40px;} .Mrgtop20 {margin-top:10px;} .monimg img { width:125px; height:80px; }  .font13 { font-size:13px; } .font12 { font-size:12px; } .algRgt { text-align:right; } .algCnt { text-align:center; } .footer {bottom: 150px;}.pagenum:after {content: counter(page);}.title {text-align:center; width:700px; font-size:30px; font-weight:bold;} .clrgrey{ color:#3f3f3f;} .alnRight{text-align:right;} .alnCenter{text-align:center;} td{font-size:12px; padding:5px;} th{background-color:#999; color:#fff; text-align:left; padding:5px; font-size:14px;}.totl{background-color:#999; color:#fff; font-weight:bold;} h2{padding-bottom:0px; margin-bottom:0px;} .valin{ vertical-align:top;} .valinbt{ vertical-align:bottom; text-align:right;}</style>';
+				$html = '<style> 
+						.main { margin:0 25px; width:95%; font-family: arial, sans-serif; } 
+						.page-break { page-break-after: always; } 
+						.header{ width: 100%; position:fixed;} 
+						.footer {width: 100%; position:fixed;} 
+						.header { top: 30px; text-align:center; } 
+						.pagenum:after {content: counter(page);} 
+						.imgBox { text-align:center; width:400px; } 
+						.nro { text-align:center; font-size:12px; } 
+						.header img { width:250px; height: 50px; } 
+						.Mrgtop80 {margin-top:80px;} 
+						.Mrgtop40 {margin-top:40px;}
+						.Mrgtop20 {margin-top:10px;} 
+						.monimg img { width:125px; height:80px; }  
+						.font13 { font-size:13px; } 
+						.font12 { font-size:12px; } 
+						.algRgt { text-align:right; } 
+						.algCnt { text-align:center; } 
+						.footer {bottom: 150px;}
+						.pagenum:after {content: counter(page);}
+						.title {text-align:right; width:100%; font-size:30px; font-weight:bold;} 
+						.clrgrey{ color:#3f3f3f;} 
+						.alnRight{text-align:right;} 
+						.alnCenter{text-align:center;} 
+						td{font-size:12px; padding:5px;} 
+						th{background-color:#999; color:#fff; text-align:left; padding:5px; font-size:14px;}
+						.totl{background-color:#999; color:#fff; font-weight:bold;} 
+						h2{padding-bottom:0px; margin-bottom:0px;} 
+						.valin{ vertical-align:top;} 
+						.valinbt{ vertical-align:bottom; text-align:right;}
+
+						body {
+						  background: rgb(204,204,204); 
+						}
+						.page {
+						  background: white;
+						  display: block;
+						  margin: 0 auto;
+						  margin-bottom: 0.5cm;
+						  box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+						}
+						.page[size="A4"] {  
+						  width: 21cm;
+						  height: 29.7cm; 
+						}
+						.page[size="A4"][layout="portrait"] {
+						  width: 29.7cm;
+						  height: 21cm;  
+						}
+						.page[size="A3"] {
+						  width: 29.7cm;
+						  height: 42cm;
+						}
+						.page[size="A3"][layout="portrait"] {
+						  width: 42cm;
+						  height: 29.7cm;  
+						}
+						.page[size="A5"] {
+						  width: 14.8cm;
+						  height: 21cm;
+						}
+						.page[size="A5"][layout="portrait"] {
+						  width: 21cm;
+						  height: 14.8cm;  
+						}
+						@media print {
+						  body, page {
+						    margin: 0;
+						    box-shadow: 0;
+						  }
+						}
+
+				</style>';
 				
 				$i=1;
-				$html .= '<div class="main"><div class="header"><img src="'. \URL::to('sximo/assets/images/logo-design_1.png').'"></div><br><br><br><div class="footer"><table><tr style="border-bottom:1px solid #000;"><td width="170"><h2>BANKVERBINDUNG</h2></td><td width="170"><h2>REGISTEREINTRAG</h2></td><td width="170"><h2>KONTAKT</h2></td></tr><tr><td class="valin">';
+				$html .= '
+				<div class="page">
+
+				<div class="main ">
+					<div class="header">
+						<center><img src="'. \URL::to('sximo/assets/images/logo-design_1.png').'"></center>
+					</div>
+
+						<div style=" height:100px;clear:both;">&nbsp;</div>
+						
+						<div class="footer">
+							<table width="100%">
+								<tr style="border-bottom:1px solid #000;">
+									<td width="33%"><h2>BANKVERBINDUNG</h2></td>
+										<td width="33%"><h2>REGISTEREINTRAG</h2></td>
+										<td width="33%"><h2>KONTAKT</h2></td>
+								</tr>
+							   <tr><td class="valin">';
 				if(!empty($bankdetails))
 				{
 					$html .= nl2br($bankdetails->content);
@@ -300,17 +389,42 @@ class UserorderController extends Controller {
 				}
 				$html .= '</td></tr></table></div>';
 				
-				$html .= '<table style="border-top:1px solid #000; margin-bottom:10px;"><tr><td width="260">';
-				$html .= 'tel: '.$invoice_phone_num->content . ' email: ' .$invoice_email_id->content;
-				$html .= '</td><td width="260" class="valinbt">';
+				$html .= '<div><hr  style="border-top:1px solid #000;"></div>
+
+				<table width="100%">
+					<tr>
+						<td width="50%">';
+							$html .= 'Tel: '.$invoice_phone_num->content . ' email: ' .$invoice_email_id->content;
+				$html .= '</td>
+
+				<td width="50%" class="valinbt">';
 				$html .= $invoice_address->content;
 				$html .= '</td></tr></table>';
 				
-				$html .= '<div class="title">Rechnung</div>';
-				$html .= '<div><table><tr><td width="150">'. $companydet->company_address .' . '.$companydet->company_address2 .'</td><td width="300" class="alnRight"><span class="clrgrey">Datum: </span></td><td width="70" class="alnRight">'.date('Y.m.d').'</td></tr><tr><td width="150">'. $companydet->company_address .' . '.$companydet->company_city .'</td><td width="300" class="alnRight"><span class="clrgrey">Rechnungsnummer: </span></td><td width="70" class="alnRight">'. $invoice_num->content .'</td></tr><tr><td width="150">'. $companydet->company_postal_code .' . '.$companydet->company_country .'</td><td width="300" class="alnRight"><span class="clrgrey">Ansprechpartner: </span></td><td width="70" class="alnRight">'. $userInfo->first_name .' '. $userInfo->last_name .'<br>'. $userInfo->email .'</td></tr></table></div><br><br>';
+				$html .= '<div class="title" style="float:right;">Invoice</div>';
+				$html .= '<div>
+							<table width="100%">
+								<tr>
+									<td width="30%">'. $companydet->company_address .' . '.$companydet->company_address2 .'</td>
+									<td width="60%" class="alnRight"><span class="clrgrey">Date: </span></td>
+									<td width="10%" class="alnRight">'.date('Y.m.d').'</td>
+							    </tr>
+								<tr>
+									<td width="30%">'. $companydet->company_address .' . '.$companydet->company_city .'</td>
+									<td width="60%" class="alnRight"><span class="clrgrey">Invoice Number: </span></td>
+									<td width="10%" class="alnRight">'. $invoice_num->content .'</td>
+								</tr>
+								<tr>
+								<td width="30%">'. $companydet->company_postal_code .' . '.$companydet->company_country .'</td>
+								<td width="60%" class="alnRight"><span class="clrgrey">Contact Person: </span></td>
+								<td width="10%" class="alnRight">'. $userInfo->first_name .' '. $userInfo->last_name .'<br>'. $userInfo->email .'</td>
+								</tr>
+							</table>
+						 </div>
+						 <br><br>';
 			
 				
-				$html .= '<div class="Mrgtop80 font13"><table><tr style="background:#eeeeee;"><th width="50">No.</th><th width="320" >PACKAGES </th><th width="50" class="algCnt">QTY </th><th width="80" class="algCnt">PRICE </th></tr>';
+				$html .= '<div class="Mrgtop80 font13"><table width="100%"><tr style="background:#eeeeee;"><th width="10%">No.</th><th width="50%" >PACKAGES </th><th width="20%" class="algCnt">QTY </th><th width="20%" class="algCnt">PRICE </th></tr>';
 				$qtyPr = 1;
 				$Totprice = 0;
 				$qty=1;
@@ -369,8 +483,8 @@ class UserorderController extends Controller {
 				$html .= '<tr><td colspan="3" style="text-align:right;"><b>Summe<b></td><td class="algCnt font13"><b>'.$currency->content .' '.($Totprice -(($Totprice*$this->data['vatsettings']->content)/100)).'<b></td></tr>';
 				$html .= '<tr><td colspan="3" style="text-align:right;"><b>Mwst. '. $this->data['vatsettings']->content .'%<b></td><td class="algCnt font13"><b>'.$currency->content .' '.(($Totprice*$this->data['vatsettings']->content)/100).'<b></td></tr>';
 				$html .= '<tr><td colspan="3" style="text-align:right;"><b>Gesammtsumme<b></td><td class="algCnt font13"><b>'.$currency->content .' '.number_format($Totprice, 2, '.', ',').'<b></td></tr>';
-				$html .= '</table></div>';
-				
+				$html .= '</table></div></div>';
+			
 				$pdf = \App::make('dompdf.wrapper');
 				$pdf->loadHTML($html);
 				return $pdf->download($downFileName);
