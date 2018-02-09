@@ -311,8 +311,7 @@ class UserorderController extends Controller {
 						.valin{ vertical-align:top;} 
 						.valinbt{ vertical-align:bottom; text-align:right;}
 
-						.divLeft{float:left; width:50%;}
-						.divRight{float:right;width:50%;}
+					
 						
 						.page {
 						  background: white;
@@ -407,7 +406,7 @@ class UserorderController extends Controller {
 				<table width="100%">
 						<tr>
 							<td width="50%" align="left">
-									<div class="divLeft">
+									
 
 										<table width="100%">
 											<tr>
@@ -426,11 +425,11 @@ class UserorderController extends Controller {
 											
 											</tr>
 										</table>
-								 </div>
+								 
 								 </td>
 								 <td width="50%" class="alnRight" align="right">
 
-								 	<div class="divRight">
+								 	
 										<table width="100%">
 											<tr>
 												
@@ -448,7 +447,7 @@ class UserorderController extends Controller {
 											<td width="60%" class="alnRight">'. $userInfo->first_name .' '. $userInfo->last_name .'<br>'. $userInfo->email .'</td>
 											</tr>
 										</table>
-						   			 </div>
+						   			 
 						 			</td>
 						 		</tr>
 						 	</table>
