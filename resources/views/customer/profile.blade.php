@@ -129,6 +129,7 @@
 			<thead>
 				<tr>
 					<th>No.</th>
+					<th>Invoice No.</th>
 					<th>Status</th>
 					<th>Comment</th>
 					<th>Created At</th>
@@ -141,6 +142,7 @@
 					@foreach($orders as $ord)
 						<tr>
 							<td>{{$ord->id}}</td>
+							<td>{{$ord->invoice_num}}</td>
 							<td>{{$ord->status}}</td>
 							<td>{{$ord->comments}}</td>
 							<td>{{$ord->created}}</td>

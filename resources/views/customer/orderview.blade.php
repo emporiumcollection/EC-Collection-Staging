@@ -31,6 +31,12 @@
 			</tr>
 			
 			<tr>
+				<td width='80%' class='label-view text-right'>Invoice No.</td>
+				<td># {{ $order->invoice_num }} </td>
+				
+			</tr>
+			
+			<tr>
 				<td width='80%' class='label-view text-right'>Created</td>
 				<td>{{ $order->created }} </td>
 				
