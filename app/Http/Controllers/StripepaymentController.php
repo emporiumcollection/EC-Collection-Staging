@@ -439,70 +439,254 @@ public function generateInvoice($ordid)
             $order_item_detail = array();
             $order_item = \DB::table('tb_order_items')->where('order_id', $ordid)->get();
             if(!empty($order_item))
-            {
-                $currency = \DB::table('tb_settings')->where('key_value', 'default_currency')->first();
-                $html = '<style> .main { margin:0 25px; width:700px; font-family: arial, sans-serif; } .page-break { page-break-after: always; } .header,.footer {width: 100%; position:fixed;} .header { top: 20px; text-align:center;} .footer {bottom: 30px; font-size:10px;} .pagenum:after {content: counter(page);} .imgBox { text-align:center; width:400px; margin:50px auto 30px auto;} .nro { text-align:center; font-size:12px; } .header img { width:250px; height: 50px; } .Mrgtop80 {margin-top:80px;} .Mrgtop40 {margin-top:40px;} .Mrgtop20 {margin-top:10px;} .monimg img { width:125px; height:80px; }  .font13 { font-size:13px; } .font12 { font-size:12px; } .algRgt { text-align:right; } .algCnt { text-align:center; }</style>';
-                $i=1;
-                $html .= '<div class="main"><div class="header"><img src="'. \URL::to('sximo/assets/images/logo-design_1.png').'"></div><br><br><br><div class="footer">© Copyright: Emporium Voyage</div>';
-                
-                $userInfo = \DB::table('tb_users')->where('id', $order_item[0]->user_id)->first();
-                $companydet = \DB::table('tb_user_company_details')->where('user_id', $order_item[0]->user_id )->first();
-                $html .= '<div class="Mrgtop40 font13"><table><tr><td width="250"> Emporium-Daten : </td> <td width="20"></td> <td width="250"> User-Daten : </td> </tr> <tr><td valign="top"> Emporium voyage <br><br> Am Klosterpark 1 <br> 84427, Armstorf <br> Deutschland <br><br> Telefon: +49 (0)80 81 - 95 46 80 <br> Telefax: +49 (0)80 81 - 95 43 31 <br> E-Mail: info@emporium-voyage.com </td> <td></td>';
-                if(!empty($companydet))
-                {
-                    $html .= '<td> '.$companydet->company_name.'<br><br>'.$companydet->company_address .' . '.$companydet->company_address2 .' <br> '. $companydet->company_postal_code .', '.$companydet->company_city .' <br> '.$companydet->company_country.'<br><br>Telefon: '.$companydet->company_phone.'<br>E-Mail: '.$companydet->company_email.'</td>';
-                }
-                else{
-                    $html .= '<td></td>';
-                }
-                $html .='</tr> </table></div>';
-                $html .= '<div class="Mrgtop80 font13"><table><tr style="background:#eeeeee;"><th width="50">No.</th><th width="320" >PACKAGES </th><th width="50" class="algCnt">QTY </th><th width="80" class="algCnt">PRICE </th></tr>';
-                $qtyPr = 1;
-                $Totprice = 0;
-                $qty=1;
-                $nos = 1;
-                foreach($order_item as $oitem)
-                {
-                    if($oitem->package_type=='hotel')
-                    {
-                        $title = '';
-                        $pacpric = 0;
-                        $pchkdet = \DB::table('tb_packages')->select('package_title','package_price')->where('id', $oitem->package_id)->first();
-                        if(!empty($pchkdet))
-                        {
-                            $title = $pchkdet->package_title;
-                            $pacpric = $pchkdet->package_price;
-                        }
-                        $html .= '<tr><td>'.$nos.'</td><td><b>'.$title.'</b></td><td class="algCnt">'.$qty.'</td><td class="algCnt">'.$currency->content . $pacpric.'</td></tr>';
-                    }
-                    elseif($oitem->package_type=='advert')
-                    {
-                        $pacdata = json_decode($oitem->package_data, true);
-                        $pacpric = $pacdata['ads_package_total_price'];
-                        $adsdata = '';
-                        $catdet = \DB::table('tb_categories')->select('category_name')->where('id', $pacdata['ads_category_id'])->first();
-                        if(!empty($catdet))
-                        {
-                            $adsdata .= 'Category: '.$catdet->category_name.', ';
-                        }
-                        $adsdata .= 'position: '.$pacdata['ads_position'];
-                        $adsdata .= ', Type: '.$pacdata['ads_pacakge_type'];
-                        $adsdata .= ', Start Date: '.$pacdata['ads_start_date'];
-                        
-                        $html .= '<tr><td>'.$nos.'</td><td><b>Advertisement</b><br>'.$adsdata.'</td><td class="algCnt">'.$qty.'</td><td class="algCnt">'.$currency->content . $pacpric.'</td></tr>';
-                    }
-                    $nos++;
-                    $qtyPr = ((int)$pacpric * $qty);
-                    $Totprice = $Totprice + $qtyPr;
-                }
-                $html .= '<tr><td colspan="3" style="text-align:right;"><b>Gesammtsumme<b></td><td class="algCnt font13"><b>'.$currency->content .' '.number_format($Totprice, 2, '.', ',').'<b></td></tr>';
-                $html .= '</table></div>';
-                $savePdfpath = public_path() . '/uploads/invoice_pdfs/';
+			{
+				$currency = \DB::table('tb_settings')->where('key_value', 'default_currency')->first();
+				$bankdetails = \DB::table('tb_settings')->where('key_value', 'bank_details')->first();
+				$regdetail = \DB::table('tb_settings')->where('key_value', 'reg_detail')->first();
+				$contactdetail = \DB::table('tb_settings')->where('key_value', 'contact_detail')->first();
+				$invoice_phone_num = \DB::table('tb_settings')->where('key_value', 'invoice_phone_num')->first();
+				$invoice_email_id = \DB::table('tb_settings')->where('key_value', 'invoice_email_id')->first();
+				$invoice_address = \DB::table('tb_settings')->where('key_value', 'invoice_address')->first();
+				$invoice_num = \DB::table('tb_settings')->where('key_value', 'default_invoice_num')->first();
+				
+				$userInfo = \DB::table('tb_users')->where('id', $order_item[0]->user_id)->first();
+				$companydet = \DB::table('tb_user_company_details')->where('user_id', $order_item[0]->user_id )->first();
+				
+				$html = '<style> 
+						.main { margin:2px; width:100%; font-family: arial, sans-serif; } 
+						.page-break { page-break-after: always; } 
+						.header{ width: 100%; position:fixed; top: -45px; text-align:center;} 
+						.footer {width: 100%; position:fixed;} 
+						.pagenum:after {content: counter(page);} 
+						.imgBox { text-align:center; width:400px; } 
+						.nro { text-align:center; font-size:12px; } 
+						.header img { width:250px; height: 50px; } 
+						.Mrgtop80 {margin-top:80px;} 
+						.Mrgtop40 {margin-top:40px;}
+						.Mrgtop20 {margin-top:10px;} 
+						.monimg img { width:125px; height:80px; }  
+						.font13 { font-size:13px; } 
+						.font12 { font-size:12px; } 
+						.algRgt { text-align:right; } 
+						.algCnt { text-align:center; } 
+						.footer {bottom: 150px;}
+						.pagenum:after {content: counter(page);}
+						.title {text-align:right; width:100%; font-size:30px; font-weight:bold;} 
+						.clrgrey{ color:#3f3f3f;} 
+						.alnRight{text-align:right;} 
+						.alnCenter{text-align:center;} 
+						td{font-size:12px; padding:5px;} 
+						th{background-color:#999; color:#000000; text-align:left; padding:5px; font-size:14px;}
+						.totl{background-color:#999; color:#000000; font-weight:bold;} 
+						h2{padding-bottom:0px; margin-bottom:0px;} 
+						.valin{ vertical-align:top;} 
+						.valinbt{ vertical-align:bottom; text-align:right;}
+						.page {
+						  background: white;
+						  display: block;
+						  margin: 0 auto;
+						  margin-bottom: 0.5cm;
+						  
+						}
+						
+						@media print {
+						  body, page {
+						    margin: 0;
+						    box-shadow: 0;
+						  }
+						}
+
+				</style>';
+				
+				$i=1;
+				$html .= '
+			
+					
+				<div class="main">
+				  <div class="header">
+					  <table width="100%">
+						 <tr>
+							<td class="title" align="center">
+								<center><img src="'. \URL::to('sximo/assets/images/logo-design_1.png').'" width="250px;" height="50px;"></center>
+							</td>
+						 </tr>
+					 </table>
+						
+				  </div>
+					<div class="footer">
+
+							<table width="100%">
+							<tr>
+								<td colspan="3">
+										<hr  style="border-top:1px solid #000;"/>
+								 </td>
+							 </tr>
+								<tr style="border-bottom:1px solid #000;">
+									<td width="33%"><h2>Bank Details</h2></td>
+										<td width="33%"><h2>Company Details</h2></td>
+										<td width="33%"><h2>Contact Information</h2></td>
+								</tr>
+							   <tr><td class="valin">';
+				if(!empty($bankdetails))
+				{
+					$html .= nl2br($bankdetails->content);
+				}
+				$html .= '</td><td class="valin">';
+				if(!empty($regdetail))
+				{
+					$html .= nl2br($regdetail->content);
+				}
+				$html .= '</td><td class="valin">';
+				if(!empty($contactdetail))
+				{
+					$html .= nl2br($contactdetail->content);
+				}
+				$html .= '</td></tr></table></div>';
+				
+				$html .= '
+				<table width="100%">
+					<tr>
+						<td colspan="2" width="100%">
+							<hr  style="border-top:1px solid #000; width:100%;"/>
+						</td>
+					</tr>
+					<tr>
+						<td width="50%">';
+							$html .= 'Tel: '.$invoice_phone_num->content . ' email: ' .$invoice_email_id->content;
+				$html .= '</td>
+
+				<td width="50%" class="valinbt">';
+				$html .= $invoice_address->content;
+				$html .= '</td></tr>
+
+				</table>';
+				
+				$html .= '';
+				$html .= '<div class="Mrgtop20 font13">
+				
+				<table width="94%" border="0px">
+				 <tr>
+					<td colspan="2" class="title" align="right">Invoice</td>
+				 </tr>
+						<tr>
+							<td width="50%" align="left">
+									
+
+								<table >
+									<tr>									     
+										<td >'. $companydet->company_address .' . '.$companydet->company_address2 .'</td>
+							        </tr>
+									<tr>
+									   <td > '.$companydet->company_city .'</td>										
+									</tr>
+									<tr>
+									 <td >'. $companydet->company_postal_code.' . '.$companydet->company_country .'</td>
+									</tr>
+								</table>
+								 
+								 </td>
+								 <td width="50%" align="right">
+
+								 	
+										<table >
+											<tr>
+												
+												<td  align="right">Date:</td>
+												<td  align="right" width="10px">&nbsp;&nbsp;</td>
+												<td  class="alnRight" class="alnRight">'.date('Y.m.d').'</td>
+										    </tr>
+											<tr>
+												
+												<td  align="right">Invoice Number:</td>
+												<td  align="right" width="10px">&nbsp;&nbsp;</td>
+												<td  align="right" class="alnRight" >'. $invoice_num->content .'</td>
+											</tr>
+											<tr>
+											
+											<td   align="right" width="200px">Contact&nbsp;Person:</td>
+											<td  align="right" width="10px">&nbsp;&nbsp;</td>
+											<td  align="right" class="alnRight">'. $userInfo->first_name .' '. $userInfo->last_name .'<br>'. $userInfo->email .'</td>
+											</tr>
+										</table>
+						   			 
+						 			</td>
+						 		</tr>
+						 	</table>
+						 </div>
+						 <br><br>';
+			
+				
+				$html .= '<div class="Mrgtop20 font13"><table width="100%"><tr style="background:#eeeeee;"><th width="10%">No.</th><th width="50%" >Item </th><th width="20%" class="algCnt">Quantity </th><th width="20%" class="algCnt">Price(Excl.VAT) </th></tr>';
+				$qtyPr = 1;
+				$Totprice = 0;
+				$qty=1;
+				$nos = 1;
+				foreach($order_item as $oitem)
+				{
+					if($oitem->package_type=='hotel')
+					{
+						$title = '';
+						$pacpric = 0;
+						$pchkdet = \DB::table('tb_packages')->select('package_title','package_price')->where('id', $oitem->package_id)->first();
+						if(!empty($pchkdet))
+						{
+							$title = $pchkdet->package_title;
+							$pacpric = $pchkdet->package_price;
+						}
+						$html .= '<tr><td>'.$nos.'</td><td><b>'.$title.'</b></td><td class="algCnt">'.$qty.'</td><td class="algCnt">'.$currency->content . $pacpric.'</td></tr>';
+					}
+					elseif($oitem->package_type=='advert')
+					{
+						$dsqty = 1;
+						$pacdata = json_decode($oitem->package_data, true);
+						$getspac = \DB::table('tb_advertisement_space')->where('id', $pacdata['id'])->first();
+						$adsdata = '';
+						$catdet = \DB::table('tb_categories')->select('category_name')->where('id', $pacdata['ads_category_id'])->first();
+						if(!empty($catdet))
+						{
+							$adsdata .= 'Category: '.$catdet->category_name.', ';
+						}
+						$adsdata .= 'position: '.$pacdata['ads_position'];
+						$adsdata .= ', Type: '.$pacdata['ads_pacakge_type'];
+						$adsdata .= ', Start Date: '.$pacdata['ads_start_date'];
+						if($pacdata['ads_pacakge_type']=='cpc')
+						{
+							$pacpric = $getspac->space_cpc_price;
+							$adsdata .= ', price: '.$currency->content .$getspac->space_cpc_price . '/'.$getspac->space_cpc_num_clicks .' Clicks';
+						}
+						elseif($pacdata['ads_pacakge_type']=='cpm')
+						{
+							$pacpric = $getspac->space_cpm_price;
+							$adsdata .= ', price: '.$currency->content .$getspac->space_cpm_price . '/'.$getspac->space_cpm_num_view .' Views';
+						}
+						elseif($pacdata['ads_pacakge_type']=='cpd')
+						{
+							$dsqty = $pacdata['ads_days'];
+							$pacpric = CommonHelper::calc_price($getspac->space_cpd_price,$getspac->space_cpm_num_days,$pacdata['ads_days']);
+							$adsdata .= ', price: '.$currency->content .$getspac->space_cpd_price . '/'.$getspac->space_cpm_num_days .' Days';
+						}
+						
+						$html .= '<tr><td>'.$nos.'</td><td><b>Advertisement</b><br>'.$adsdata.'</td><td class="algCnt">'.$dsqty.'</td><td class="algCnt">'.$currency->content . $pacpric.'</td></tr>';
+					}
+					$nos++;
+					$qtyPr = $pacpric * $qty;
+					$Totprice = $Totprice + $qtyPr;
+				}
+				$html .= '<tr><td colspan="3" style="text-align:right;"><b>Total(Excl.VAT)<b></td><td class="algCnt font13"><b>'.$currency->content .' '.($Totprice -(($Totprice*$this->data['vatsettings']->content)/100)).'<b></td></tr>';
+				$html .= '<tr><td colspan="3" style="text-align:right;"><b>VAT(. '. $this->data['vatsettings']->content .'%)<b></td><td class="algCnt font13"><b>'.$currency->content .' '.(($Totprice*$this->data['vatsettings']->content)/100).'<b></td></tr>';
+
+				$html .= '<tr><td colspan="4"><hr  style="border-top:1px solid #000; width:100%"/></td>';
+
+				$html .= '<tr><td colspan="3" style="text-align:right;"><b>Total<b></td><td class="algCnt font13"><b>'.$currency->content .' '.number_format($Totprice, 2, '.', ',').'<b></td></tr>';
+				$html .= '<tr><td colspan="4"><hr  style="border-top:1px solid #000; width:100%"/></td>';
+				$html .= '</table></div>';
+			
+				$savePdfpath = public_path() . '/uploads/invoice_pdfs/';
                 $pdf = \App::make('dompdf.wrapper');
                 $pdf->loadHTML($html);            
                 $pdf->save($savePdfpath . $downFileName);
                 return $savePdfpath . $downFileName;
-            }
+			}
             else{
                 return 'error';
             }
