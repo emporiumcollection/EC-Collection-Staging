@@ -309,9 +309,6 @@ class UserorderController extends Controller {
 						h2{padding-bottom:0px; margin-bottom:0px;} 
 						.valin{ vertical-align:top;} 
 						.valinbt{ vertical-align:bottom; text-align:right;}
-
-					
-						
 						.page {
 						  background: white;
 						  display: block;
@@ -319,30 +316,7 @@ class UserorderController extends Controller {
 						  margin-bottom: 0.5cm;
 						  
 						}
-						.page[size="A4"] {  
-						  width: 21cm;
-						  height: 29.7cm; 
-						}
-						.page[size="A4"][layout="portrait"] {
-						  width: 29.7cm;
-						  height: 21cm;  
-						}
-						.page[size="A3"] {
-						  width: 29.7cm;
-						  height: 42cm;
-						}
-						.page[size="A3"][layout="portrait"] {
-						  width: 42cm;
-						  height: 29.7cm;  
-						}
-						.page[size="A5"] {
-						  width: 14.8cm;
-						  height: 21cm;
-						}
-						.page[size="A5"][layout="portrait"] {
-						  width: 21cm;
-						  height: 14.8cm;  
-						}
+						
 						@media print {
 						  body, page {
 						    margin: 0;
@@ -360,7 +334,9 @@ class UserorderController extends Controller {
 				  <div class="header">
 					  <table width="100%">
 						 <tr>
-							<td class="title" align="center"><img src="'. \URL::to('sximo/assets/images/logo-design_1.png').'" width="250px;" height="50px;"></td>
+							<td class="title" align="center">
+								<center><img src="'. \URL::to('sximo/assets/images/logo-design_1.png').'" width="250px;" height="50px;"></center>
+							</td>
 						 </tr>
 					 </table>
 						
