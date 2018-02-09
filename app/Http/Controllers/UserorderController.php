@@ -406,45 +406,45 @@ class UserorderController extends Controller {
 
 				<table width="100%">
 						<tr>
-							<td width="50%">
+							<td width="50%" align="left">
 									<div class="divLeft">
 
 										<table width="100%">
 											<tr>
-											     <td width="10%">Company Address:</td>
-												<td width="90%">'. $companydet->company_address .' . '.$companydet->company_address2 .'</td>
+											     
+												<td width="100%">'. $companydet->company_address .' . '.$companydet->company_address2 .'</td>
 									
 										    </tr>
 											<tr>
-											    <td width="10%">Company City:</td>
-												<td width="90%">'. $companydet->company_address .' . '.$companydet->company_city .'</td>
+											    
+												<td width="100%">'. $companydet->company_address .' . '.$companydet->company_city .'</td>
 												
 											</tr>
 											<tr>
-											<td width="10%">Company Postal Code:</td>
-											<td width="90%">'. $companydet->company_postal_code .' . '.$companydet->company_country .'</td>
+										
+											<td width="100%">'. $companydet->company_postal_code .' . '.$companydet->company_country .'</td>
 											
 											</tr>
 										</table>
 								 </div>
 								 </td>
-								 <td width="50%" class="alnRight">
+								 <td width="50%" class="alnRight" align="right">
 
 								 	<div class="divRight">
 										<table width="100%">
 											<tr>
 												
-												<td width="40%" ><span>Date: </span></td>
+												<td width="40%" ><span>Date:</span></td>
 												<td width="60%" >'.date('Y.m.d').'</td>
 										    </tr>
 											<tr>
 												
-												<td width="40%" class="alnRight"><span >Invoice Number: </span></td>
+												<td width="40%" class="alnRight"><span >Invoice&nbsp;Number: </span></td>
 												<td width="60%" class="alnRight">'. $invoice_num->content .'</td>
 											</tr>
 											<tr>
 											
-											<td width="40%" class="alnRight"><span>Contact Person: </span></td>
+											<td width="40%" class="alnRight"><span>Contact&nbsp;Person:</span></td>
 											<td width="60%" class="alnRight">'. $userInfo->first_name .' '. $userInfo->last_name .'<br>'. $userInfo->email .'</td>
 											</tr>
 										</table>
