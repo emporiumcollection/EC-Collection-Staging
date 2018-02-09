@@ -338,9 +338,9 @@ class UserorderController extends Controller {
 					 
 						 <tr>
 							<td class="title" align="center">
-							    <div style="clear:both;"> &nbsp;</div>
+							    
 								<center><img src="'. \URL::to('sximo/assets/images/logo-design_1.png').'" width="250px;" height="50px;"></center>
-								 <div style="clear:both;"> &nbsp;</div>
+								 
 							</td>
 						 </tr>
  							<tr>
