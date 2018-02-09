@@ -281,7 +281,7 @@ class UserorderController extends Controller {
 				$companydet = \DB::table('tb_user_company_details')->where('user_id', $order_item[0]->user_id )->first();
 				
 				$html = '<style> 
-						.main { margin:0 25px; width:98%; font-family: arial, sans-serif; } 
+						.main { margin:0 5px; width:98%; font-family: arial, sans-serif; } 
 						.page-break { page-break-after: always; } 
 						.header{ width: 100%; position:fixed; top: 1px; text-align:center;} 
 						.footer {width: 100%; position:fixed;} 
@@ -361,7 +361,7 @@ class UserorderController extends Controller {
 						<center><img src="'. \URL::to('sximo/assets/images/logo-design_1.png').'"></center>
 					</div>
 
-						<div style=" height:100px;clear:both;">&nbsp;</div>
+						<div style=" height:10px;clear:both;">&nbsp;</div>
 						
 						<div class="footer">
 							<table width="100%">
@@ -399,7 +399,7 @@ class UserorderController extends Controller {
 				$html .= $invoice_address->content;
 				$html .= '</td></tr></table>';
 				
-				$html .= '<div class="title" style="float:right;">Invoice</div>';
+				$html .= '<div style=" height:100px;clear:both;">&nbsp;</div><div class="title" style="float:right;">Invoice</div>';
 				$html .= '<div style="width:100%">
 
 				<table width="100%">
@@ -415,7 +415,7 @@ class UserorderController extends Controller {
 									   <td width="100%"> '.$companydet->company_city .'</td>										
 									</tr>
 									<tr>
-									 <td width="100%">'. $companydet->company_postal_code .' . '.$companydet->company_country .'</td>
+									 <td width="100%">'. $companydet->company_postal_code.' . '.$companydet->company_country .'</td>
 									</tr>
 								</table>
 								 
@@ -427,17 +427,17 @@ class UserorderController extends Controller {
 											<tr>
 												
 												<td width="1%" align="right"class="alnRight" >&nbsp;</td>
-												<td width="99%" class="alnRight" >Date:'.date('Y.m.d').'</td>
+												<td width="99%" class="alnRight">Date:&nbsp'.date('Y.m.d').'</td>
 										    </tr>
 											<tr>
 												
 												<td width="1%" align="right" class="alnRight">&nbsp;</td>
-												<td width="99%" align="right" class="alnRight">Invoice&nbsp;Number:'. $invoice_num->content .'</td>
+												<td width="99%" align="right" class="alnRight">Invoice&nbsp;Number:&nbsp'. $invoice_num->content .'</td>
 											</tr>
 											<tr>
 											
 											<td width="1%"  class="alnRight">&nbsp;</td>
-											<td width="99%" align="right" class="alnRight">Contact&nbsp;Person'. $userInfo->first_name .' '. $userInfo->last_name .'<br>'. $userInfo->email .'</td>
+											<td width="99%" align="right" class="alnRight">Contact&nbsp;Person:&nbsp'. $userInfo->first_name .' '. $userInfo->last_name .'<br>'. $userInfo->email .'</td>
 											</tr>
 										</table>
 						   			 
