@@ -388,7 +388,7 @@ class UserorderController extends Controller {
 				<table width="100%">
 				 <tr>
 					<td colspan="2" align="right"  height="35px;">
-						<div style="clear:both;"> &nbsp;</div>
+						
 					<hr style="border-top:1px solid #000; width:100%; "/></td>
 				 </tr>
 					<tr >
