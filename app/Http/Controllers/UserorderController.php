@@ -339,7 +339,7 @@ class UserorderController extends Controller {
 							<td class="title" align="center">
 							 <div style="clear:both;"> &nbsp</div>
 								<center><img src="'. \URL::to('sximo/assets/images/logo-design_1.png').'" width="250px;" height="50px;"></center>
-								 <div style="clear:both;"> &nbsp</div>
+								 <div style="clear:both;"> &nbsp;</div>
 							</td>
 						 </tr>
  							<tr>
@@ -352,7 +352,7 @@ class UserorderController extends Controller {
 					 </table>
 						
 				  </div>
-				  <div style="clear:both;"> &nbsp</div>
+				  <div style="clear:both;"> &nbsp;</div>
 					<div class="footer">
 
 							<table width="100%">
