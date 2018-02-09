@@ -392,7 +392,7 @@ class UserorderController extends Controller {
 				$html .= '';
 				$html .= '<div class="Mrgtop20 font13">
 				
-				<table width="93%" border="0px">
+				<table width="94%" border="0px">
 				 <tr>
 					<td colspan="2" class="title" align="right">Invoice</td>
 				 </tr>
