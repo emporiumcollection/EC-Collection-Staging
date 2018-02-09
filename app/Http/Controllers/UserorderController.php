@@ -403,7 +403,7 @@ class UserorderController extends Controller {
 				
 				<table width="100%">
 				 <tr>
-					<td colspan="2" class="title" align="right">Invoice/td>
+					<th colspan="2" class="title" align="right">Invoice</th>
 				 </tr>
 						<tr>
 							<td width="60%" align="left">
