@@ -281,9 +281,9 @@ class UserorderController extends Controller {
 				$companydet = \DB::table('tb_user_company_details')->where('user_id', $order_item[0]->user_id )->first();
 				
 				$html = '<style> 
-						.main { margin:2px; width:90%; font-family: arial, sans-serif; } 
+						.main { margin:2px; width:99%; font-family: arial, sans-serif; } 
 						.page-break { page-break-after: always; } 
-						.header{ width: 100%; position:fixed; top: 0px; text-align:center;} 
+						.header{ width: 100%; position:fixed; top: -10px; text-align:center;} 
 						.footer {width: 100%; position:fixed;} 
 						.pagenum:after {content: counter(page);} 
 						.imgBox { text-align:center; width:400px; } 
@@ -328,7 +328,7 @@ class UserorderController extends Controller {
 				
 				$i=1;
 				$html .= '
-				<div class="page">
+			
 					
 				<div class="main">
 				  <div class="header">
@@ -342,7 +342,13 @@ class UserorderController extends Controller {
 						
 				  </div>
 					<div class="footer">
+
 							<table width="100%">
+							<tr>
+								<td colspan="3">
+										<hr  style="border-top:1px solid #000;"/>
+								 </td>
+							 </tr>
 								<tr style="border-bottom:1px solid #000;">
 									<td width="33%"><h2>Bank Details</h2></td>
 										<td width="33%"><h2>Company Details</h2></td>
@@ -487,9 +493,14 @@ class UserorderController extends Controller {
 				}
 				$html .= '<tr><td colspan="3" style="text-align:right;"><b>Total(Excl.VAT)<b></td><td class="algCnt font13"><b>'.$currency->content .' '.($Totprice -(($Totprice*$this->data['vatsettings']->content)/100)).'<b></td></tr>';
 				$html .= '<tr><td colspan="3" style="text-align:right;"><b>VAT(. '. $this->data['vatsettings']->content .'%)<b></td><td class="algCnt font13"><b>'.$currency->content .' '.(($Totprice*$this->data['vatsettings']->content)/100).'<b></td></tr>';
+
+				$html .= '<tr><td colspan="4"><hr  style="border-top:1px solid #000; width:100%"/></td>';
+
 				$html .= '<tr><td colspan="3" style="text-align:right;"><b>Total<b></td><td class="algCnt font13"><b>'.$currency->content .' '.number_format($Totprice, 2, '.', ',').'<b></td></tr>';
-				$html .= '</table></div></div>';
-			
+				$html .= '<tr><td colspan="4"><hr  style="border-top:1px solid #000; width:100%"/></td>';
+				$html .= '</table></div>';
+			echo($html);
+			die();
 				$pdf = \App::make('dompdf.wrapper');
 				$pdf->loadHTML($html);
 				return $pdf->download($downFileName);
