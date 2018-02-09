@@ -405,40 +405,43 @@ class UserorderController extends Controller {
 				$html .= '<div style="width:100%">
 							<div class="divLeft">
 
-							<table width="100%">
-								<tr>
-									<td width="100%">'. $companydet->company_address .' . '.$companydet->company_address2 .'</td>
-						
-							    </tr>
-								<tr>
-									<td width="100%">'. $companydet->company_address .' . '.$companydet->company_city .'</td>
+								<table width="100%">
+									<tr>
+									     <td width="10%">Company Address:</td>
+										<td width="90%">'. $companydet->company_address .' . '.$companydet->company_address2 .'</td>
+							
+								    </tr>
+									<tr>
+									    <td width="10%">Company City:</td>
+										<td width="90%">'. $companydet->company_address .' . '.$companydet->company_city .'</td>
+										
+									</tr>
+									<tr>
+									<td width="10%">Company Postal Code:</td>
+									<td width="90%">'. $companydet->company_postal_code .' . '.$companydet->company_country .'</td>
 									
-								</tr>
-								<tr>
-								<td width="100%">'. $companydet->company_postal_code .' . '.$companydet->company_country .'</td>
-								
-								</tr>
-							</table>
+									</tr>
+								</table>
 						 </div>
 
-						 	<div class="divRight">>
-							<table width="100%">
-								<tr>
+						 	<div class="divRight">
+								<table width="100%">
+									<tr>
+										
+										<td width="40%" class="alnRight"><span>Date: </span></td>
+										<td width="60%" class="alnRight">'.date('Y.m.d').'</td>
+								    </tr>
+									<tr>
+										
+										<td width="40%" class="alnRight"><span >Invoice Number: </span></td>
+										<td width="60%" class="alnRight">'. $invoice_num->content .'</td>
+									</tr>
+									<tr>
 									
-									<td width="40%" class="alnRight"><span class="clrgrey">Date: </span></td>
-									<td width="60%" class="alnRight">'.date('Y.m.d').'</td>
-							    </tr>
-								<tr>
-									
-									<td width="40%" class="alnRight"><span class="clrgrey">Invoice Number: </span></td>
-									<td width="60%" class="alnRight">'. $invoice_num->content .'</td>
-								</tr>
-								<tr>
-								
-								<td width="40%" class="alnRight"><span class="clrgrey">Contact Person: </span></td>
-								<td width="60%" class="alnRight">'. $userInfo->first_name .' '. $userInfo->last_name .'<br>'. $userInfo->email .'</td>
-								</tr>
-							</table>
+									<td width="40%" class="alnRight"><span>Contact Person: </span></td>
+									<td width="60%" class="alnRight">'. $userInfo->first_name .' '. $userInfo->last_name .'<br>'. $userInfo->email .'</td>
+									</tr>
+								</table>
 						 </div>
 						 </div>
 						 <br><br>';
