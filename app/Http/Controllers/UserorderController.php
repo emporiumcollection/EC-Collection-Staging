@@ -281,11 +281,10 @@ class UserorderController extends Controller {
 				$companydet = \DB::table('tb_user_company_details')->where('user_id', $order_item[0]->user_id )->first();
 				
 				$html = '<style> 
-						.main { margin:0 25px; width:95%; font-family: arial, sans-serif; } 
+						.main { margin:0 25px; width:98%; font-family: arial, sans-serif; } 
 						.page-break { page-break-after: always; } 
-						.header{ width: 100%; position:fixed;} 
+						.header{ width: 100%; position:fixed; top: 1px; text-align:center;} 
 						.footer {width: 100%; position:fixed;} 
-						.header { top: 5px; text-align:center; } 
 						.pagenum:after {content: counter(page);} 
 						.imgBox { text-align:center; width:400px; } 
 						.nro { text-align:center; font-size:12px; } 
@@ -405,7 +404,7 @@ class UserorderController extends Controller {
 
 				<table width="100%">
 						<tr>
-							<td width="50%" align="left">
+							<td width="60%" align="left">
 									
 
 								<table width="100%">
@@ -421,24 +420,24 @@ class UserorderController extends Controller {
 								</table>
 								 
 								 </td>
-								 <td width="50%" class="alnRight" align="right">
+								 <td width="40%" class="alnRight" align="right">
 
 								 	
 										<table width="100%">
 											<tr>
 												
-												<td width="35%" align="right"class="alnRight" >Date:</td>
-												<td width="65%" class="alnRight" >'.date('Y.m.d').'</td>
+												<td width="1%" align="right"class="alnRight" >&nbsp;</td>
+												<td width="99%" class="alnRight" >Date:'.date('Y.m.d').'</td>
 										    </tr>
 											<tr>
 												
-												<td width="35%" align="right" class="alnRight">Invoice&nbsp;Number:</td>
-												<td width="65%" >'. $invoice_num->content .'</td>
+												<td width="1%" align="right" class="alnRight">&nbsp;</td>
+												<td width="99%" align="right" class="alnRight">Invoice&nbsp;Number:'. $invoice_num->content .'</td>
 											</tr>
 											<tr>
 											
-											<td width="35%" align="right" class="alnRight">Contact&nbsp;Person:</td>
-											<td width="65%">'. $userInfo->first_name .' '. $userInfo->last_name .'<br>'. $userInfo->email .'</td>
+											<td width="1%"  class="alnRight">&nbsp;</td>
+											<td width="99%" align="right" class="alnRight">Contact&nbsp;Person'. $userInfo->first_name .' '. $userInfo->last_name .'<br>'. $userInfo->email .'</td>
 											</tr>
 										</table>
 						   			 
