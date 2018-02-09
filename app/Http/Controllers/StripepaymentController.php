@@ -374,12 +374,18 @@ public function checkoutPost(Request $request)
                    // print_r ($jarray->outcome->network_status);
 
                     if($jarray->outcome->network_status=="approved_by_network"){
+						
+						$invoice_num = \DB::table('tb_settings')->where('key_value', 'default_invoice_num')->first();
+						$exp_num = $invoice_num->content;
 
                         $orddta['status'] = 'Success'; 
                         $orddta['comments'] = $request->input('order_comments'); 
                         $orddta['user_id'] = \Session::get('uid'); 
-                        $orddta['created'] = date('y-m-d h:i:s'); 
+                        $orddta['updated'] = date('y-m-d h:i:s'); 
+						$orddta['invoice_num'] = $exp_num; 
                         \DB::table('tb_orders')->where('id',$ord_id)->update($orddta);
+						
+						\DB::table('tb_settings')->where('key_value', 'default_invoice_num')->update(['content' => ++$exp_num]);
                        
                         $userinfom = User::find(\Session::get('uid'));
 

@@ -57,6 +57,7 @@
 						@endif 
 					@endif
 				@endforeach
+				<th>Invoice No.</th>
 				<th width="70" >{{ Lang::get('core.btn_action') }}</th>
 			  </tr>
         </thead>
@@ -82,6 +83,7 @@
 						@endif	
 					 @endif					 
 				 @endforeach
+				 <td>{{$row->invoice_num}}</td>
 				 <td>
 					 	@if($access['is_detail'] ==1)
 						<a href="{{ URL::to('userorder/show/'.$row->id.'?return='.$return)}}" class="tips btn btn-xs btn-primary" title="{{ Lang::get('core.btn_view') }}"><i class="fa  fa-search "></i></a>
