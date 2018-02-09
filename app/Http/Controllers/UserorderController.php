@@ -281,9 +281,9 @@ class UserorderController extends Controller {
 				$companydet = \DB::table('tb_user_company_details')->where('user_id', $order_item[0]->user_id )->first();
 				
 				$html = '<style> 
-						.main { margin:2px; width:100%; font-family: arial, sans-serif; } 
+						.main { margin:2px; width:90%; font-family: arial, sans-serif; } 
 						.page-break { page-break-after: always; } 
-						.header{ width: 100%; position:fixed; top: 10px; text-align:center;} 
+						.header{ width: 100%; position:fixed; top: 0px; text-align:center;} 
 						.footer {width: 100%; position:fixed;} 
 						.pagenum:after {content: counter(page);} 
 						.imgBox { text-align:center; width:400px; } 
@@ -386,7 +386,7 @@ class UserorderController extends Controller {
 				}
 				$html .= '</td></tr></table></div>';
 				
-				$html .= '<div style=" height:100px;clear:both;">&nbsp;</div><div><hr  style="border-top:1px solid #000;"></div>
+				$html .= '<div style=" height:50px;clear:both;">&nbsp;</div><div><hr  style="border-top:1px solid #000;"></div>
 
 				<table width="100%">
 					<tr>
