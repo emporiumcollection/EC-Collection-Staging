@@ -400,8 +400,9 @@ class UserorderController extends Controller {
 				$html .= '</td></tr></table>';
 				
 				$html .= '<div class="title" style="float:right;">Invoice</div>';
-				$html .= '<div>
-							<table width="100%">
+				$html .= '<div style="width:100%">
+							<div style="float:left; width:50%">
+							<table width="50%">
 								<tr>
 									<td width="30%">'. $companydet->company_address .' . '.$companydet->company_address2 .'</td>
 									<td width="60%" class="alnRight"><span class="clrgrey">Date: </span></td>
@@ -418,6 +419,27 @@ class UserorderController extends Controller {
 								<td width="10%" class="alnRight">'. $userInfo->first_name .' '. $userInfo->last_name .'<br>'. $userInfo->email .'</td>
 								</tr>
 							</table>
+						 </div>
+
+						 	<div style="float:right; width:50%">
+							<table width="50%">
+								<tr>
+									<td width="30%">'. $companydet->company_address .' . '.$companydet->company_address2 .'</td>
+									<td width="60%" class="alnRight"><span class="clrgrey">Date: </span></td>
+									<td width="10%" class="alnRight">'.date('Y.m.d').'</td>
+							    </tr>
+								<tr>
+									<td width="30%">'. $companydet->company_address .' . '.$companydet->company_city .'</td>
+									<td width="60%" class="alnRight"><span class="clrgrey">Invoice Number: </span></td>
+									<td width="10%" class="alnRight">'. $invoice_num->content .'</td>
+								</tr>
+								<tr>
+								<td width="30%">'. $companydet->company_postal_code .' . '.$companydet->company_country .'</td>
+								<td width="60%" class="alnRight"><span class="clrgrey">Contact Person: </span></td>
+								<td width="10%" class="alnRight">'. $userInfo->first_name .' '. $userInfo->last_name .'<br>'. $userInfo->email .'</td>
+								</tr>
+							</table>
+						 </div>
 						 </div>
 						 <br><br>';
 			
