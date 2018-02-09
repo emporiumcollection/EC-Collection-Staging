@@ -31,8 +31,6 @@ class UserorderController extends Controller {
 			
 		);
 		
-		$this->data['vatsettings'] = \DB::table('tb_settings')->where('key_value', 'default_tax_amount')->first();
-		
 	}
 
 	public function getIndex( Request $request )
@@ -346,18 +344,18 @@ class UserorderController extends Controller {
 						if($pacdata['ads_pacakge_type']=='cpc')
 						{
 							$pacpric = $getspac->space_cpc_price;
-							$adsdata .= ', price: '.$currency->content .$getspac->space_cpc_price . '/'.$getspac->space_cpc_num_clicks .' Clicks';
+							$adsdata .= ', price: '.$packageArr['currency'].$getspac->space_cpc_price . '/'.$getspac->space_cpc_num_clicks .' Clicks';
 						}
 						elseif($pacdata['ads_pacakge_type']=='cpm')
 						{
 							$pacpric = $getspac->space_cpm_price;
-							$adsdata .= ', price: '.$currency->content .$getspac->space_cpm_price . '/'.$getspac->space_cpm_num_view .' Views';
+							$adsdata .= ', price: '.$packageArr['currency'].$getspac->space_cpm_price . '/'.$getspac->space_cpm_num_view .' Views';
 						}
 						elseif($pacdata['ads_pacakge_type']=='cpd')
 						{
 							$dsqty = $pacdata['ads_days'];
 							$pacpric = CommonHelper::calc_price($getspac->space_cpd_price,$getspac->space_cpm_num_days,$pacdata['ads_days']);
-							$adsdata .= ', price: '.$currency->content .$getspac->space_cpd_price . '/'.$getspac->space_cpm_num_days .' Days';
+							$adsdata .= ', price: '.$packageArr['currency'].$getspac->space_cpd_price . '/'.$getspac->space_cpm_num_days .' Days';
 						}
 						
 						$html .= '<tr><td>'.$nos.'</td><td><b>Advertisement</b><br>'.$adsdata.'</td><td class="algCnt">'.$dsqty.'</td><td class="algCnt">'.$currency->content . $pacpric.'</td></tr>';
@@ -366,8 +364,6 @@ class UserorderController extends Controller {
 					$qtyPr = $pacpric * $qty;
 					$Totprice = $Totprice + $qtyPr;
 				}
-				$html .= '<tr><td colspan="3" style="text-align:right;"><b>Summe<b></td><td class="algCnt font13"><b>'.$currency->content .' '.($Totprice -(($Totprice*$this->data['vatsettings']->content)/100)).'<b></td></tr>';
-				$html .= '<tr><td colspan="3" style="text-align:right;"><b>Mwst. '. $this->data['vatsettings']->content .'%<b></td><td class="algCnt font13"><b>'.$currency->content .' '.(($Totprice*$this->data['vatsettings']->content)/100).'<b></td></tr>';
 				$html .= '<tr><td colspan="3" style="text-align:right;"><b>Gesammtsumme<b></td><td class="algCnt font13"><b>'.$currency->content .' '.number_format($Totprice, 2, '.', ',').'<b></td></tr>';
 				$html .= '</table></div>';
 				
