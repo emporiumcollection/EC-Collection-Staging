@@ -311,6 +311,8 @@ class UserorderController extends Controller {
 						.valin{ vertical-align:top;} 
 						.valinbt{ vertical-align:bottom; text-align:right;}
 
+						.divLeft{float:left; width:50%;}
+						.divRight{float:right;width:50%;}
 						
 						.page {
 						  background: white;
@@ -401,7 +403,7 @@ class UserorderController extends Controller {
 				
 				$html .= '<div class="title" style="float:right;">Invoice</div>';
 				$html .= '<div style="width:100%">
-							<div style="float:left; width:50%">
+							<div class="divLeft">
 
 							<table width="100%">
 								<tr>
@@ -419,20 +421,20 @@ class UserorderController extends Controller {
 							</table>
 						 </div>
 
-						 	<div style="float:right; width:50%">
+						 	<div class="divRight">>
 							<table width="100%">
 								<tr>
-									<td width="2%"></td>
+									
 									<td width="40%" class="alnRight"><span class="clrgrey">Date: </span></td>
 									<td width="60%" class="alnRight">'.date('Y.m.d').'</td>
 							    </tr>
 								<tr>
-									<td width="2%"></td>
+									
 									<td width="40%" class="alnRight"><span class="clrgrey">Invoice Number: </span></td>
 									<td width="60%" class="alnRight">'. $invoice_num->content .'</td>
 								</tr>
 								<tr>
-								<td width="2%"></td>
+								
 								<td width="40%" class="alnRight"><span class="clrgrey">Contact Person: </span></td>
 								<td width="60%" class="alnRight">'. $userInfo->first_name .' '. $userInfo->last_name .'<br>'. $userInfo->email .'</td>
 								</tr>
