@@ -283,7 +283,7 @@ class UserorderController extends Controller {
 				$html = '<style> 
 						.main { margin:2px; width:99%; font-family: arial, sans-serif; } 
 						.page-break { page-break-after: always; } 
-						.header{ width: 100%; position:fixed; top: -10px; text-align:center;} 
+						.header{ width: 100%; position:fixed; top: -50px; text-align:center;} 
 						.footer {width: 100%; position:fixed;} 
 						.pagenum:after {content: counter(page);} 
 						.imgBox { text-align:center; width:400px; } 
