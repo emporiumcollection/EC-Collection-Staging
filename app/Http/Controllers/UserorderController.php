@@ -285,7 +285,7 @@ class UserorderController extends Controller {
 						.page-break { page-break-after: always; } 
 						.header{ width: 100%; position:fixed;} 
 						.footer {width: 100%; position:fixed;} 
-						.header { top: 30px; text-align:center; } 
+						.header { top: 5px; text-align:center; } 
 						.pagenum:after {content: counter(page);} 
 						.imgBox { text-align:center; width:400px; } 
 						.nro { text-align:center; font-size:12px; } 
@@ -367,9 +367,9 @@ class UserorderController extends Controller {
 						<div class="footer">
 							<table width="100%">
 								<tr style="border-bottom:1px solid #000;">
-									<td width="33%"><h2>BANKVERBINDUNG</h2></td>
-										<td width="33%"><h2>REGISTEREINTRAG</h2></td>
-										<td width="33%"><h2>KONTAKT</h2></td>
+									<td width="33%"><h2>Bank Details</h2></td>
+										<td width="33%"><h2>Company Details</h2></td>
+										<td width="33%"><h2>Contact Information</h2></td>
 								</tr>
 							   <tr><td class="valin">';
 				if(!empty($bankdetails))
@@ -408,23 +408,17 @@ class UserorderController extends Controller {
 							<td width="50%" align="left">
 									
 
-										<table width="100%">
-											<tr>
-											     
-												<td width="100%">'. $companydet->company_address .' . '.$companydet->company_address2 .'</td>
-									
-										    </tr>
-											<tr>
-											    
-												<td width="100%"> '.$companydet->company_city .'</td>
-												
-											</tr>
-											<tr>
-										
-											<td width="100%">'. $companydet->company_postal_code .' . '.$companydet->company_country .'</td>
-											
-											</tr>
-										</table>
+								<table width="100%">
+									<tr>									     
+										<td width="100%">'. $companydet->company_address .' . '.$companydet->company_address2 .'</td>
+							        </tr>
+									<tr>
+									   <td width="100%"> '.$companydet->company_city .'</td>										
+									</tr>
+									<tr>
+									 <td width="100%">'. $companydet->company_postal_code .' . '.$companydet->company_country .'</td>
+									</tr>
+								</table>
 								 
 								 </td>
 								 <td width="50%" class="alnRight" align="right">
@@ -434,17 +428,17 @@ class UserorderController extends Controller {
 											<tr>
 												
 												<td width="35%" align="right"class="alnRight" >Date:</td>
-												<td width="65%" align="right" class="alnRight" >'.date('Y.m.d').'</td>
+												<td width="65%" class="alnRight" >'.date('Y.m.d').'</td>
 										    </tr>
 											<tr>
 												
 												<td width="35%" align="right" class="alnRight">Invoice&nbsp;Number:</td>
-												<td width="65%" class="alnRight">'. $invoice_num->content .'</td>
+												<td width="65%" >'. $invoice_num->content .'</td>
 											</tr>
 											<tr>
 											
 											<td width="35%" align="right" class="alnRight">Contact&nbsp;Person:</td>
-											<td width="65%" class="alnRight">'. $userInfo->first_name .' '. $userInfo->last_name .'<br>'. $userInfo->email .'</td>
+											<td width="65%">'. $userInfo->first_name .' '. $userInfo->last_name .'<br>'. $userInfo->email .'</td>
 											</tr>
 										</table>
 						   			 
@@ -455,7 +449,7 @@ class UserorderController extends Controller {
 						 <br><br>';
 			
 				
-				$html .= '<div class="Mrgtop80 font13"><table width="100%"><tr style="background:#eeeeee;"><th width="10%">No.</th><th width="50%" >PACKAGES </th><th width="20%" class="algCnt">QTY </th><th width="20%" class="algCnt">PRICE </th></tr>';
+				$html .= '<div class="Mrgtop80 font13"><table width="100%"><tr style="background:#eeeeee;"><th width="10%">No.</th><th width="50%" >Item </th><th width="20%" class="algCnt">Quantity </th><th width="20%" class="algCnt">Price(Excl.VAT) </th></tr>';
 				$qtyPr = 1;
 				$Totprice = 0;
 				$qty=1;
@@ -511,9 +505,9 @@ class UserorderController extends Controller {
 					$qtyPr = $pacpric * $qty;
 					$Totprice = $Totprice + $qtyPr;
 				}
-				$html .= '<tr><td colspan="3" style="text-align:right;"><b>Summe<b></td><td class="algCnt font13"><b>'.$currency->content .' '.($Totprice -(($Totprice*$this->data['vatsettings']->content)/100)).'<b></td></tr>';
-				$html .= '<tr><td colspan="3" style="text-align:right;"><b>Mwst. '. $this->data['vatsettings']->content .'%<b></td><td class="algCnt font13"><b>'.$currency->content .' '.(($Totprice*$this->data['vatsettings']->content)/100).'<b></td></tr>';
-				$html .= '<tr><td colspan="3" style="text-align:right;"><b>Gesammtsumme<b></td><td class="algCnt font13"><b>'.$currency->content .' '.number_format($Totprice, 2, '.', ',').'<b></td></tr>';
+				$html .= '<tr><td colspan="3" style="text-align:right;"><b>Total(Excl.VAT)<b></td><td class="algCnt font13"><b>'.$currency->content .' '.($Totprice -(($Totprice*$this->data['vatsettings']->content)/100)).'<b></td></tr>';
+				$html .= '<tr><td colspan="3" style="text-align:right;"><b>VAT(. '. $this->data['vatsettings']->content .'%)<b></td><td class="algCnt font13"><b>'.$currency->content .' '.(($Totprice*$this->data['vatsettings']->content)/100).'<b></td></tr>';
+				$html .= '<tr><td colspan="3" style="text-align:right;"><b>Total<b></td><td class="algCnt font13"><b>'.$currency->content .' '.number_format($Totprice, 2, '.', ',').'<b></td></tr>';
 				$html .= '</table></div></div>';
 			
 				$pdf = \App::make('dompdf.wrapper');
