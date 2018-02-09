@@ -433,18 +433,18 @@ class UserorderController extends Controller {
 										<table width="100%">
 											<tr>
 												
-												<td width="40%" ><span>Date:</span></td>
-												<td width="60%" >'.date('Y.m.d').'</td>
+												<td width="30%" class="alnRight" ><span>Date:</span></td>
+												<td width="70%"class="alnRight" >'.date('Y.m.d').'</td>
 										    </tr>
 											<tr>
 												
-												<td width="40%" class="alnRight"><span >Invoice&nbsp;Number: </span></td>
-												<td width="60%" class="alnRight">'. $invoice_num->content .'</td>
+												<td width="30%" class="alnRight"><span>Invoice&nbsp;Number: </span></td>
+												<td width="70%" class="alnRight">'. $invoice_num->content .'</td>
 											</tr>
 											<tr>
 											
-											<td width="40%" class="alnRight"><span>Contact&nbsp;Person:</span></td>
-											<td width="60%" class="alnRight">'. $userInfo->first_name .' '. $userInfo->last_name .'<br>'. $userInfo->email .'</td>
+											<td width="30%" class="alnRight"><span>Contact&nbsp;Person:</span></td>
+											<td width="70%" class="alnRight">'. $userInfo->first_name .' '. $userInfo->last_name .'<br>'. $userInfo->email .'</td>
 											</tr>
 										</table>
 						   			 
