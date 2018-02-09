@@ -403,46 +403,55 @@ class UserorderController extends Controller {
 				
 				$html .= '<div class="title" style="float:right;">Invoice</div>';
 				$html .= '<div style="width:100%">
-							<div class="divLeft">
 
-								<table width="100%">
-									<tr>
-									     <td width="10%">Company Address:</td>
-										<td width="90%">'. $companydet->company_address .' . '.$companydet->company_address2 .'</td>
-							
-								    </tr>
-									<tr>
-									    <td width="10%">Company City:</td>
-										<td width="90%">'. $companydet->company_address .' . '.$companydet->company_city .'</td>
-										
-									</tr>
-									<tr>
-									<td width="10%">Company Postal Code:</td>
-									<td width="90%">'. $companydet->company_postal_code .' . '.$companydet->company_country .'</td>
-									
-									</tr>
-								</table>
-						 </div>
+				<table width="100%">
+						<tr>
+							<td width="50%">
+									<div class="divLeft">
 
-						 	<div class="divRight">
-								<table width="100%">
-									<tr>
-										
-										<td width="40%" class="alnRight"><span>Date: </span></td>
-										<td width="60%" class="alnRight">'.date('Y.m.d').'</td>
-								    </tr>
-									<tr>
-										
-										<td width="40%" class="alnRight"><span >Invoice Number: </span></td>
-										<td width="60%" class="alnRight">'. $invoice_num->content .'</td>
-									</tr>
-									<tr>
+										<table width="100%">
+											<tr>
+											     <td width="10%">Company Address:</td>
+												<td width="90%">'. $companydet->company_address .' . '.$companydet->company_address2 .'</td>
 									
-									<td width="40%" class="alnRight"><span>Contact Person: </span></td>
-									<td width="60%" class="alnRight">'. $userInfo->first_name .' '. $userInfo->last_name .'<br>'. $userInfo->email .'</td>
-									</tr>
-								</table>
-						 </div>
+										    </tr>
+											<tr>
+											    <td width="10%">Company City:</td>
+												<td width="90%">'. $companydet->company_address .' . '.$companydet->company_city .'</td>
+												
+											</tr>
+											<tr>
+											<td width="10%">Company Postal Code:</td>
+											<td width="90%">'. $companydet->company_postal_code .' . '.$companydet->company_country .'</td>
+											
+											</tr>
+										</table>
+								 </div>
+								 </td>
+								 <td width="50%" class="alnRight">
+
+								 	<div class="divRight">
+										<table width="100%">
+											<tr>
+												
+												<td width="40%" ><span>Date: </span></td>
+												<td width="60%" >'.date('Y.m.d').'</td>
+										    </tr>
+											<tr>
+												
+												<td width="40%" class="alnRight"><span >Invoice Number: </span></td>
+												<td width="60%" class="alnRight">'. $invoice_num->content .'</td>
+											</tr>
+											<tr>
+											
+											<td width="40%" class="alnRight"><span>Contact Person: </span></td>
+											<td width="60%" class="alnRight">'. $userInfo->first_name .' '. $userInfo->last_name .'<br>'. $userInfo->email .'</td>
+											</tr>
+										</table>
+						   			 </div>
+						 			</td>
+						 		</tr>
+						 	</table>
 						 </div>
 						 <br><br>';
 			
