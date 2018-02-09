@@ -281,7 +281,7 @@ class UserorderController extends Controller {
 				$companydet = \DB::table('tb_user_company_details')->where('user_id', $order_item[0]->user_id )->first();
 				
 				$html = '<style> 
-						.main { margin:0 5px; width:98%; font-family: arial, sans-serif; } 
+						.main { margin:0 25px; width:98%; font-family: arial, sans-serif; } 
 						.page-break { page-break-after: always; } 
 						.header{ width: 100%; position:fixed; top: 1px; text-align:center;} 
 						.footer {width: 100%; position:fixed;} 
@@ -355,11 +355,11 @@ class UserorderController extends Controller {
 				$i=1;
 				$html .= '
 				<div class="page">
-
-				<div class="main ">
-					<div class="header">
+						<div class="header">
 						<center><img src="'. \URL::to('sximo/assets/images/logo-design_1.png').'"></center>
 					</div>
+				<div class="main ">
+					
 
 						<div style=" height:10px;clear:both;">&nbsp;</div>
 						
@@ -426,18 +426,18 @@ class UserorderController extends Controller {
 										<table width="100%">
 											<tr>
 												
-												<td width="1%" align="right"class="alnRight" >&nbsp;</td>
-												<td width="99%" class="alnRight">Date:&nbsp'.date('Y.m.d').'</td>
+												<td  align="right"class="alnRight" >Date:</td>
+												<td  class="alnRight">'.date('Y.m.d').'</td>
 										    </tr>
 											<tr>
 												
-												<td width="1%" align="right" class="alnRight">&nbsp;</td>
-												<td width="99%" align="right" class="alnRight">Invoice&nbsp;Number:&nbsp'. $invoice_num->content .'</td>
+												<td  align="right" class="alnRight">Invoice Number:</td>
+												<td  align="right" class="alnRight">&nbsp'. $invoice_num->content .'</td>
 											</tr>
 											<tr>
 											
-											<td width="1%"  class="alnRight">&nbsp;</td>
-											<td width="99%" align="right" class="alnRight">Contact&nbsp;Person:&nbsp'. $userInfo->first_name .' '. $userInfo->last_name .'<br>'. $userInfo->email .'</td>
+											<td   class="alnRight">Contact&nbsp;Person:&nbsp</td>
+											<td  align="right" class="alnRight">'. $userInfo->first_name .' '. $userInfo->last_name .'<br>'. $userInfo->email .'</td>
 											</tr>
 										</table>
 						   			 
