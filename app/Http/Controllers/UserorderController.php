@@ -355,12 +355,13 @@ class UserorderController extends Controller {
 				$i=1;
 				$html .= '
 				<div class="page">
-					<div class="header">
+					
+				<div class="main">
+				  <div class="header">
 						<center><img src="'. \URL::to('sximo/assets/images/logo-design_1.png').'"></center>
 
-						<div style="height:100px;clear:both;">&nbsp;</div>
+						<div style="height:100px;clear:both;"><hr></div>
 					</div>
-				<div class="main">
 					<div class="footer">
 							<table width="100%">
 								<tr style="border-bottom:1px solid #000;">
@@ -446,7 +447,7 @@ class UserorderController extends Controller {
 						 <br><br>';
 			
 				
-				$html .= '<div class="Mrgtop20 font13"><table width="100%"><tr style="background:#eeeeee;"><th width="10%">No.</th><th width="50%" >Item </th><th width="20%" class="algCnt">Quantity </th><th width="20%" class="algCnt">Price(Excl.VAT) </th></tr>';
+				$html .= '<div class="Mrgtop40 font13"><table width="100%"><tr style="background:#eeeeee;"><th width="10%">No.</th><th width="50%" >Item </th><th width="20%" class="algCnt">Quantity </th><th width="20%" class="algCnt">Price(Excl.VAT) </th></tr>';
 				$qtyPr = 1;
 				$Totprice = 0;
 				$qty=1;
