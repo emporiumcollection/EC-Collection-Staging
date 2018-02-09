@@ -317,6 +317,8 @@ class UserorderController extends Controller {
 						  display: block;
 						  margin: 0 auto;
 						  margin-bottom: 0.5cm;
+						  width: 21cm;
+						  height: 29.7cm; 
 						  
 						}
 						.page[size="A4"] {  
