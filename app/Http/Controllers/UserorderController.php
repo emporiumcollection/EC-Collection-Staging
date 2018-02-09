@@ -398,9 +398,9 @@ class UserorderController extends Controller {
 				$html .= $invoice_address->content;
 				$html .= '</td></tr></table>';
 				
-				$html .= '<div class="title" style="float:right;">Invoice</div>';
-				$html .= '<div style="width:100%">
-
+				$html .= '';
+				$html .= '<div style="width:90%">
+				<div class="title" style="float:right;">Invoice</div>
 				<table width="100%">
 						<tr>
 							<td width="60%" align="left">
