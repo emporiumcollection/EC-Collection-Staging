@@ -399,9 +399,12 @@ class UserorderController extends Controller {
 				$html .= '</td></tr></table>';
 				
 				$html .= '';
-				$html .= '<div style="width:90%">
-				<div class="title" style="float:right;">Invoice</div>
+				$html .= '<div style="width:100%">
+				
 				<table width="100%">
+				 <tr>
+					<td colspan="2" class="title" align="right">Invoice/td>
+				 </tr>
 						<tr>
 							<td width="60%" align="left">
 									
@@ -447,7 +450,7 @@ class UserorderController extends Controller {
 						 <br><br>';
 			
 				
-				$html .= '<div class="Mrgtop40 font13"><table width="100%"><tr style="background:#eeeeee;"><th width="10%">No.</th><th width="50%" >Item </th><th width="20%" class="algCnt">Quantity </th><th width="20%" class="algCnt">Price(Excl.VAT) </th></tr>';
+				$html .= '<div class="Mrgtop20 font13"><table width="100%"><tr style="background:#eeeeee;"><th width="10%">No.</th><th width="50%" >Item </th><th width="20%" class="algCnt">Quantity </th><th width="20%" class="algCnt">Price(Excl.VAT) </th></tr>';
 				$qtyPr = 1;
 				$Totprice = 0;
 				$qty=1;
