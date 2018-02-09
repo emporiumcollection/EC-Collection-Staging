@@ -386,7 +386,7 @@ class UserorderController extends Controller {
 				}
 				$html .= '</td></tr></table></div>';
 				
-				$html .= '<div><hr  style="border-top:1px solid #000;"></div>
+				$html .= '<div style=" height:10px;clear:both;">&nbsp;</div><div><hr  style="border-top:1px solid #000;"></div>
 
 				<table width="100%">
 					<tr>
@@ -398,7 +398,7 @@ class UserorderController extends Controller {
 				$html .= $invoice_address->content;
 				$html .= '</td></tr></table>';
 				
-				$html .= '<div style=" height:10px;clear:both;">&nbsp;</div><div class="title" style="float:right;">Invoice</div>';
+				$html .= '<div class="title" style="float:right;">Invoice</div>';
 				$html .= '<div style="width:100%">
 
 				<table width="100%">
