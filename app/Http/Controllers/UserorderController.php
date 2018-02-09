@@ -373,8 +373,11 @@ class UserorderController extends Controller {
 				
 				$html .= '
 				<table width="100%">
-					<tr><td colspan="2">
-						<td><hr  style="border-top:1px solid #000; width:100%;"/></tr>
+					<tr>
+						<td colspan="2" width="100%">
+							<hr  style="border-top:1px solid #000; width:100%;"/>
+						</td>
+					</tr>
 					<tr>
 						<td width="50%">';
 							$html .= 'Tel: '.$invoice_phone_num->content . ' email: ' .$invoice_email_id->content;
@@ -382,7 +385,9 @@ class UserorderController extends Controller {
 
 				<td width="50%" class="valinbt">';
 				$html .= $invoice_address->content;
-				$html .= '</td></tr></table>';
+				$html .= '</td></tr>
+
+				</table>';
 				
 				$html .= '';
 				$html .= '<div style="width:100%">
@@ -415,16 +420,19 @@ class UserorderController extends Controller {
 											<tr>
 												
 												<td  align="right">Date:</td>
+												<td  align="right" width="10px">&nbsp;&nbsp;</td>
 												<td  class="alnRight" class="alnRight">'.date('Y.m.d').'</td>
 										    </tr>
 											<tr>
 												
 												<td  align="right">Invoice Number:</td>
+												<td  align="right" width="10px">&nbsp;&nbsp;</td>
 												<td  align="right" class="alnRight" >'. $invoice_num->content .'</td>
 											</tr>
 											<tr>
 											
 											<td   align="right" width="200px">Contact&nbsp;Person:</td>
+											<td  align="right" width="10px">&nbsp;&nbsp;</td>
 											<td  align="right" class="alnRight">'. $userInfo->first_name .' '. $userInfo->last_name .'<br>'. $userInfo->email .'</td>
 											</tr>
 										</table>
