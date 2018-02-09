@@ -388,10 +388,10 @@ class UserorderController extends Controller {
 				<table width="100%">
 				 <tr>
 					<td colspan="2" align="right"  height="35px;">
-						
-					<hr style="border-top:1px solid #000; width:100%; "/></td>
+						&nbsp;
+					</td>
 				 </tr>
-					<tr >
+					<tr style="border-top:1px solid #000;">
 						<td width="50%">';
 							$html .= 'Tel: '.$invoice_phone_num->content . ' email: ' .$invoice_email_id->content;
 				$html .= '</td>
