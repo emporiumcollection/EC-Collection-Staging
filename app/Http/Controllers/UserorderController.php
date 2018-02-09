@@ -341,7 +341,7 @@ class UserorderController extends Controller {
 							</td>
 						 </tr>
  							<tr>
-							<td class="title" align="center">
+							<td class="title" align="center" height="35px;">
 								<center> &nbsp;</center>
 							</td>
 						 </tr>
