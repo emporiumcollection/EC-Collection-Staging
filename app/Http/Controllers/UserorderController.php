@@ -407,7 +407,7 @@ class UserorderController extends Controller {
 				$html .= '
 				<div class="Mrgtop20 font13">
 				
-				<table width="100%" border="1px">
+				<table width="98%" border="0px">
 				 <tr>
 					<td colspan="2" align="right"  height="60px;">&nbsp;</td>
 				 </tr>
