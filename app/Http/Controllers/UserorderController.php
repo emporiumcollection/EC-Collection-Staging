@@ -478,7 +478,7 @@ class UserorderController extends Controller {
 							$title = $pchkdet->package_title;
 							$pacpric = $pchkdet->package_price;
 						}
-						$html .= '<tr><td>'.$nos.'</td><td><b>'.$title.'</b></td><td class="algCnt">'.$qty.'</td><td class="algCnt">'.$currency->content . $pacpric.'</td></tr>';
+						$html .= '<tr><td>'.$nos.'</td><td><b>'.$title.'</b></td><td class="algCnt">'.$qty.'</td><td class="algRgt">'.$currency->content . $pacpric.'</td></tr>';
 					}
 					elseif($oitem->package_type=='advert')
 					{
