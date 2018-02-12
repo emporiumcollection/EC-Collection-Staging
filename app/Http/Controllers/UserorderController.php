@@ -529,7 +529,7 @@ class UserorderController extends Controller {
 					$Totprice = $Totprice + $qtyPr;
 				}
 				$html .= '<tr><td colspan="3" style="text-align:right;"><b>Total(Excl.VAT)<b></td><td class="algRgt font13"><b>'.$currency->content .' '.($Totprice -(($Totprice*$this->data['vatsettings']->content)/100)).'<b></td></tr>';
-				$html .= '<tr><td colspan="3" style="text-align:right;"><b>VAT(. '. $this->data['vatsettings']->content .'%)<b></td><td class="algRgt font13"><b>'.$currency->content .' '.(($Totprice*$this->data['vatsettings']->content)/100).'<b></td></tr>';
+				$html .= '<tr><td colspan="3" style="text-align:right;"><b>VAT('. $this->data['vatsettings']->content .'%)<b></td><td class="algRgt font13"><b>'.$currency->content .' '.(($Totprice*$this->data['vatsettings']->content)/100).'<b></td></tr>';
 
 				$html .= '<tr><td colspan="4"><hr  style="border-top:1px solid #000; width:100%"/></td>';
 

@@ -288,50 +288,262 @@ class CustomerController extends Controller {
         if ($invId != '' && $invId > 0) {
             $invInfo = \DB::table('tb_invoices')->where('id', $invId)->first();
 
-            $html = '<style>.page-break { page-break-after: always; } .header,.footer {width: 100%; position:fixed;}.header {top: 0px;}.footer {bottom: 150px;}.pagenum:after {content: counter(page);}.title {text-align:center; width:700px; font-size:30px; font-weight:bold;} .clrgrey{ color:#3f3f3f;} .alnRight{text-align:right;} .alnCenter{text-align:center;} td{font-size:12px; padding:5px;} th{background-color:#999; color:#fff; text-align:left; padding:5px; font-size:14px;}.totl{background-color:#999; color:#fff; font-weight:bold;} .main{ font-family:Lato, sans-serif;} h2{padding-bottom:0px; margin-bottom:0px;} .valin{ vertical-align:top;} .valinbt{ vertical-align:bottom; text-align:right;}</style>';
+           $html = '<style> 
+                        .main { margin:2px; width:100%; font-family: arial, sans-serif; } 
+                        .page-break { page-break-after: always; } 
+                        
+                        .header{ width: 100%; position:fixed; top: -35px; text-align:center; height:200px;} 
+                        .footer {width: 100%; position:fixed;} 
+                        .pagenum:after {content: counter(page);} 
+                        .imgBox { text-align:center; width:400px; } 
+                        .nro { text-align:center; font-size:12px; } 
+                        .header img { width:250px; height: 50px; } 
+                        .Mrgtop80 {margin-top:80px;} 
+                        .Mrgtop40 {margin-top:40px;}
+                        .Mrgtop20 {margin-top:10px;} 
+                        .monimg img { width:125px; height:80px; }  
+                        .font13 { font-size:13px; } 
+                        .font12 { font-size:12px; } 
+                        .algRgt { text-align:right; } 
+                        .algCnt { text-align:center; } 
+                        .footer {bottom: 150px;}
+                        .pagenum:after {content: counter(page);}
+                        .title {text-align:right; width:100%; font-size:30px; font-weight:bold;} 
+                        .clrgrey{ color:#3f3f3f;} 
+                        .alnRight{text-align:right;} 
+                        .alnCenter{text-align:center;} 
+                        td{font-size:12px; padding:1px;} 
+                        th{background-color:#999; color:#000000; text-align:left; padding:1px; font-size:14px;}
+                        .totl{background-color:#999; color:#000000; font-weight:bold;} 
+                        h2{padding-bottom:0px; margin-bottom:0px;} 
+                        .valin{ vertical-align:top;} 
+                        .valinbt{ vertical-align:bottom; text-align:right;}
+                        .page {
+                          background: white;
+                          display: block;
+                          margin: 0 auto;
+                          margin-bottom: 0.5cm;
+                          
+                        }
+                        
+                        @media print {
+                          body, page {
+                            margin: 0;
+                            box-shadow: 0;
+                          }
+                        }
 
-            $html .= '<div class="main"><div class="footer"><table><tr><td width="170"><h2>BANKVERBINDUNG</h2></td><td width="170"><h2>REGISTEREINTRAG</h2></td><td width="170"><h2>KONTAKT</h2></td></tr><tr><td class="valin">';
-            if (!empty($bankdetails)) {
-                $html .= nl2br($bankdetails->content);
-            }
-            $html .= '</td><td class="valin">';
-            if (!empty($regdetail)) {
-                $html .= nl2br($regdetail->content);
-            }
-            $html .= '</td><td class="valin">';
-            if (!empty($contactdetail)) {
-                $html .= nl2br($contactdetail->content);
-            }
-            $html .= '</td></tr></table></div>';
+                </style>';
+                
+                $i=1;
+                $html .= '
+            
+                    
+                <div class="main">
+                  <div class="header">
 
-            $html .= '<table style="border-bottom:1px solid #000; margin-bottom:10px;"><tr><td width="260">';
-            if (!empty($companydet) && $companydet->company_logo != '') {
-                $html .= '<img src="' . \URL::to('uploads/users/company/' . $companydet->company_logo) . '" />';
-            } else {
-                $html .= '<img src="' . \URL::to('sximo/images/logo-sximo.png') . '" style="background-color:#000;"/>';
-            }
-            $html .= '</td><td width="260" class="valinbt">';
-            if (!empty($companydet)) {
-                $html .= $companydet->company_address . ' . ' . $companydet->company_address2 . ' . ' . $companydet->company_city . ' . ' . $companydet->company_postal_code . ' . ' . $companydet->company_country;
-            }
-            $html .= '</td></tr></table>';
+                      <table width="100%">
+                     
+                         <tr>
+                            <td class="title" align="center">
+                                
+                                <center><img src="'. \URL::to('sximo/assets/images/logo-design_1.png').'" width="250px;" height="50px;"></center>
+                                 
+                            </td>
+                         </tr>
+                            <tr>
+                            <td class="title" align="center">
+                                <center> &nbsp;</center>
+                            </td>
+                         </tr>
+                    
+                        
+                     </table>
+                        
+                  </div>
+                  <div style="clear:both;"> &nbsp;</div>
+                    <div class="footer">
 
-            if (!empty($invInfo)) {
-                $html .= '<div class="title">' . $invInfo->invoice_title . '</div>';
-                $html .= '<div><table><tr><td width="450" class="alnRight"><span class="clrgrey">INVOICE ID: </span></td><td width="70" class="alnRight">' . $invInfo->invoice_number . '</td></tr><tr><td width="450" class="alnRight"><span class="clrgrey">BILLING DATE: </span></td><td width="70" class="alnRight">' . date("d.m.Y", strtotime($invInfo->billing_date)) . '</td></tr><tr><td width="450" class="alnRight"><span class="clrgrey">DUE DATE: </span></td><td width="70" class="alnRight">' . date("d.m.Y", strtotime($invInfo->due_date)) . '</td></tr></table></div><br><br>';
-
-                $html .= '<div><table><tr><th width="260">BILLING FROM</th><th width="260">BILLING TO</th></tr><tr><td><b>' . $invInfo->from_business_name . '</b></td><td><b>' . $invInfo->to_business_name . '</b></td></tr><tr><td>' . $invInfo->from_address . '</td><td>' . $invInfo->to_address . '</td></tr><tr><td>' . $invInfo->from_address2 . '</td><td>' . $invInfo->to_address2 . '</td></tr><tr><td>' . $invInfo->from_phone . '</td><td>' . $invInfo->to_phone . '</td></tr><tr><td>' . $invInfo->from_email . '</td><td>' . $invInfo->to_email . '</td></tr><tr><td>' . $invInfo->from_additional_info . '</td><td>' . $invInfo->to_additional_info . '</td></tr></table></div><br><br>';
-
-                $html .= '<div><table><tr><th width="180">PRODUCT</th><th width="65" class="alnCenter">QUANTITY </th><th width="55" class="alnCenter">PRICE </th><th width="50" class="alnCenter">TAX </th><th width="60" class="alnCenter">DISCOUNT </th><th width="75" class="alnCenter">TOTAL </th></tr>';
-
-                $products = \DB::table('tb_invoice_products')->where('invoice_id', $invId)->get();
-                foreach ($products as $product) {
-                    $html .= '<tr style="background:#f5f5f5;"><td><b>' . $product->product_title . '</b><br><br>' . $product->product_desc . '</td><td class="alnCenter">' . $product->product_qty . '</td><td class="alnCenter">' . $currency->content . ' ' . $product->product_price . '</td><td class="alnCenter">' . $product->product_tax . ' %</td><td class="alnCenter">' . $product->product_discount . ' %</td><td class="alnCenter">' . $currency->content . ' ' . $product->product_total . '</td></tr>';
+                            <table width="100%">
+                            <tr>
+                                <td colspan="3">
+                                        <hr  style="border-top:1px solid #000;"/>
+                                 </td>
+                             </tr>
+                                <tr style="border-bottom:1px solid #000;">
+                                    <td width="33%"><h2>Bank Details</h2></td>
+                                        <td width="33%"><h2>Company Details</h2></td>
+                                        <td width="33%"><h2>Contact Information</h2></td>
+                                </tr>
+                               <tr><td class="valin">';
+                if(!empty($bankdetails))
+                {
+                    $html .= nl2br($bankdetails->content);
                 }
-                $html .= '<tr style="background:#f5f5f5;"><td colspan="4">&nbsp;</td><td><b>Sub Total</b></td><td class="alnCenter">' . $currency->content . ' ' . $invInfo->invoice_sub_total . '</td></tr>';
-                $html .= '<tr class="totl"><td colspan="4">&nbsp;</td><td><b>Total</b></td><td class="alnCenter">' . $currency->content . ' ' . $invInfo->invoice_total_price . '</td></tr>';
+                $html .= '</td><td class="valin">';
+                if(!empty($regdetail))
+                {
+                    $html .= nl2br($regdetail->content);
+                }
+                $html .= '</td><td class="valin">';
+                if(!empty($contactdetail))
+                {
+                    $html .= nl2br($contactdetail->content);
+                }
+                $html .= '</td></tr></table></div>';
+                
+                $html .= '
+                <div>
+                <table width="100%">
+                 <tr>
+                    <td colspan="2" align="right">
+                        <hr  style="border-top:1px solid #000; width:100%"/>
+                    </td>
+                 </tr>
+                    <tr style="border-top:1px solid #000;">
+                        <td width="50%">';
+                            $html .= 'Tel: '.$invoice_phone_num->content . ' email: ' .$invoice_email_id->content;
+                $html .= '</td>
+
+                <td width="50%" class="valinbt">';
+                $html .= $invoice_address->content;
+                $html .= '</td></tr>
+
+                </table></div>';
+                
+                $html .= '';
+                $html .= '
+                <div class="Mrgtop20 font13">
+                
+                <table width="100%" border="0px">
+                 <tr>
+                    <td colspan="2" align="right"  height="60px;">&nbsp;</td>
+                 </tr>
+                 <tr>
+                    <td colspan="2" class="title" align="right">Invoice</td>
+                 </tr>
+                        <tr>
+                            <td width="48%" align="left">
+                                    
+
+                                <table width="100%" >
+                                    <tr>                                         
+                                        <td>
+
+
+                                        <p>'. $companydet->company_address .' . '.$companydet->company_address2 .'
+
+                                        <br/>'.$companydet->company_city .'<br/>
+
+                                        '. $companydet->company_postal_code.' . '.$companydet->company_country .'
+                                        </p>
+
+                                        </td>
+                                    </tr>
+                                    
+                                </table>
+                                 
+                                 </td>
+                                 <td width="48%" align="right">
+
+                                    
+                                        <table width="100%" >
+                                            <tr>
+                                                
+                                                <td  align="right">Date:</td>
+                                                <td  align="right" width="10px">&nbsp;&nbsp;</td>
+                                                <td  class="alnRight" class="alnRight">'.date('Y.m.d').'</td>
+                                            </tr>
+                                            <tr>
+                                                
+                                                <td  align="right">Invoice Number:</td>
+                                                <td  align="right" width="10px">&nbsp;&nbsp;</td>
+                                                <td  align="right" class="alnRight" >'. $invoice_num->content .'</td>
+                                            </tr>
+                                            <tr>
+                                            
+                                            <td   align="right" width="200px">Contact&nbsp;Person:</td>
+                                            <td  align="right" width="10px">&nbsp;&nbsp;</td>
+                                            <td  align="right" class="alnRight">'. $userInfo->first_name .' '. $userInfo->last_name .'<br>'. $userInfo->email .'</td>
+                                            </tr>
+                                        </table>
+                                     
+                                    </td>
+                                </tr>
+                            </table>
+                         </div>
+                         <div style="clear:both;"></div>
+                         ';
+            
+                
+                $html .= '<div style="clear:both;"></div><div class="Mrgtop20 font13"><table width="100%">
+                 <tr>
+                    <td colspan="4" align="right"  height="25px;">&nbsp;</td>
+                 </tr>
+                <tr style="background:#eeeeee;"><th width="10%">No.</th><th width="50%" >Item </th><th width="20%" class="algCnt">Quantity </th><th width="20%" class="algRgt">Price(Excl.VAT) </th></tr>';
+                $qtyPr = 1;
+                $Totprice = 0;
+                $qty=1;
+                $nos = 1;
+                foreach($order_item as $oitem)
+                {
+                    if($oitem->package_type=='hotel')
+                    {
+                        $title = '';
+                        $pacpric = 0;
+                        $pchkdet = \DB::table('tb_packages')->select('package_title','package_price')->where('id', $oitem->package_id)->first();
+                        if(!empty($pchkdet))
+                        {
+                            $title = $pchkdet->package_title;
+                            $pacpric = $pchkdet->package_price;
+                        }
+                        $html .= '<tr><td>'.$nos.'</td><td><b>'.$title.'</b></td><td class="algCnt">'.$qty.'</td><td class="algRgt">'.$currency->content . $pacpric.'</td></tr>';
+                    }
+                    elseif($oitem->package_type=='advert')
+                    {
+                        $dsqty = 1;
+                        $pacdata = json_decode($oitem->package_data, true);
+                        $getspac = \DB::table('tb_advertisement_space')->where('id', $pacdata['id'])->first();
+                        $adsdata = '';
+                        $catdet = \DB::table('tb_categories')->select('category_name')->where('id', $pacdata['ads_category_id'])->first();
+                        if(!empty($catdet))
+                        {
+                            $adsdata .= 'Category: '.$catdet->category_name.', ';
+                        }
+                        $adsdata .= 'position: '.$pacdata['ads_position'];
+                        $adsdata .= ', Type: '.$pacdata['ads_pacakge_type'];
+                        $adsdata .= ', Start Date: '.$pacdata['ads_start_date'];
+                        if($pacdata['ads_pacakge_type']=='cpc')
+                        {
+                            $pacpric = $getspac->space_cpc_price;
+                            $adsdata .= ', price: '.$currency->content .$getspac->space_cpc_price . '/'.$getspac->space_cpc_num_clicks .' Clicks';
+                        }
+                        elseif($pacdata['ads_pacakge_type']=='cpm')
+                        {
+                            $pacpric = $getspac->space_cpm_price;
+                            $adsdata .= ', price: '.$currency->content .$getspac->space_cpm_price . '/'.$getspac->space_cpm_num_view .' Views';
+                        }
+                        elseif($pacdata['ads_pacakge_type']=='cpd')
+                        {
+                            $dsqty = $pacdata['ads_days'];
+                            $pacpric = CommonHelper::calc_price($getspac->space_cpd_price,$getspac->space_cpm_num_days,$pacdata['ads_days']);
+                            $adsdata .= ', price: '.$currency->content .$getspac->space_cpd_price . '/'.$getspac->space_cpm_num_days .' Days';
+                        }
+                        
+                        $html .= '<tr><td>'.$nos.'</td><td><b>Advertisement</b><br>'.$adsdata.'</td><td class="algCnt">'.$dsqty.'</td><td class="algRgt">'.$currency->content . $pacpric.'</td></tr>';
+                    }
+                    $nos++;
+                    $qtyPr = $pacpric * $qty;
+                    $Totprice = $Totprice + $qtyPr;
+                }
+                $html .= '<tr><td colspan="3" style="text-align:right;"><b>Total(Excl.VAT)<b></td><td class="algRgt font13"><b>'.$currency->content .' '.($Totprice -(($Totprice*$this->data['vatsettings']->content)/100)).'<b></td></tr>';
+                $html .= '<tr><td colspan="3" style="text-align:right;"><b>VAT('. $this->data['vatsettings']->content .'%)<b></td><td class="algRgt font13"><b>'.$currency->content .' '.(($Totprice*$this->data['vatsettings']->content)/100).'<b></td></tr>';
+
+                $html .= '<tr><td colspan="4"><hr  style="border-top:1px solid #000; width:100%"/></td>';
+
+                $html .= '<tr><td colspan="3" class="algRgt font13"><b>Total<b></td><td class="algRgt font13"><b>'.$currency->content .' '.number_format($Totprice, 2, '.', ',').'<b></td></tr>';
+                $html .= '<tr><td colspan="4"><hr  style="border-top:1px solid #000; width:100%"/></td>';
                 $html .= '</table></div>';
-                $html .= '</div>';
             }
 
             $savePdfpath = public_path() . '/uploads/invoice_pdfs/';
