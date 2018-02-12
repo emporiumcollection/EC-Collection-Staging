@@ -99,10 +99,19 @@
                                     <span class="cart-subtotal-amout">{!! isset($currency->content)?$currency->content:'$' !!} 
 
                                     {{  ($orderTotal*$data["vatsettings"]->content)/100 }}</span>
+                         
+                                        <span class="order-total-label">
+                                            ------------------<br>
+                                            Order Total<br>
+                                            ------------------
+                                        </span>
+                                        <span class="cart-subtotal-amout cart-total-amout">
+                                         ----------------------<br>
+                                             {!! isset($currency->content)?$currency->content:'$' !!}  {{number_format($orderTotal,2,'.','')}}
+                                        <br>
+                                        ----------------------
+                                        </span>
                                
-                                <span class="order-total-label">Order Total</span>
-                                <span class="cart-subtotal-amout cart-total-amout">{!! isset($currency->content)?$currency->content:'$' !!}  {{number_format($orderTotal,2,'.','')}}</span>
-                            
 
                              
                              
@@ -116,11 +125,11 @@
 							  <script
 							    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
 							    data-key="pk_test_4KFTrHSWQ3FVkkfBwoQutZSC"
-							    data-amount="{{$orderTotal}}"
+							    data-amount="{{$orderTotal*100}}"
 							    data-name="emporium-voyage.com"
 							    data-currency="EUR"
-							    data-description="Widget"
-							    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+							    data-description="Emporium Voyage"
+							    data-image="{{ \URL::to('sximo/assets/images/Emporium-Voyage.png') }}" 
 							    data-locale="auto">
 							  </script>
 							</form>

@@ -46,6 +46,8 @@
                                 </div>
                             </div>
                         <div class="row equalize sm-equalize-auto">
+
+
                             <div class="image-slider-container image-slider-margin-align auto-slider" id="rooms">
 							@if (!empty($packages))
 								<ul class="image-slider">
@@ -137,21 +139,40 @@
                         <div class="pull-right" style="width:70%">
                             <p>Package Duration :: {{$package->package_duration}} {{$package->package_duration_type}} </p>  
                             <p>Package Details: {!! nl2br($package->package_description) !!}</p>
+            @if($package->package_price_type==0)
+                            <div class="book-btn-sec">
+                                {!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($package->package_price,2) }} 
+                             <div class="pull-right" >
+                            <div>
+                            <a href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->package_price }});" class="customGoldBtn btn nextBtn">Add to cart</a>
 
-                             <div class="book-btn-sec">
-                                    {!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($package->package_price,2) }} 
-                            
-                                
-                     
-                         
-                              <div class="pull-right" >
-                                <div>
-                                     <a href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->package_price }});" class="customGoldBtn btn nextBtn">Add to cart</a>
-                                 
-                                   </div>
                             </div>
-                         
-                        </div>
+                            </div>
+
+                            </div>
+
+               @elseif($package->package_price_type==1)
+               
+                        <div class="book-btn-sec">
+
+                              
+                               
+                             <div class="pull-left" >
+                                <div>
+                                    <a href="javascript:void(0);"  class="customGoldBtn btn nextBtn">Price On Request</a>
+
+                                </div>
+                            </div>
+                             <div class="pull-right" >
+                                <div>
+                                    <a href="{{ \URL::to('Impressum') }}"  class="customGoldBtn btn nextBtn">Contact for buying</a>
+
+                                </div>
+                            </div>
+
+                            </div>
+
+                      @endif      
                         </div>
                        
                    </div>

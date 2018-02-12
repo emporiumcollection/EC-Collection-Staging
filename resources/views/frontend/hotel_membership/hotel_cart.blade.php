@@ -134,8 +134,17 @@
 
                                     {{  ($orderTotal*$data["vatsettings"]->content)/100 }}</span>
                                
-                                <span class="order-total-label">Order Total</span>
-                                <span class="cart-subtotal-amout cart-total-amout">{!! isset($currency->content)?$currency->content:'$' !!}  {{number_format($orderTotal,2,'.','')}}</span>
+                                        <span class="order-total-label">
+                                            ------------------<br>
+                                            Order Total<br>
+                                            ------------------
+                                        </span>
+                                        <span class="cart-subtotal-amout cart-total-amout">
+                                         ----------------------<br>
+                                             {!! isset($currency->content)?$currency->content:'$' !!}  {{number_format($orderTotal,2,'.','')}}
+                                        <br>
+                                        ----------------------
+                                        </span>
                             
 
                              
