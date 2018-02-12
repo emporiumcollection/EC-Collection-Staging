@@ -112,7 +112,7 @@
 							    data-amount="{{((int)number_format($orderTotal,0,'.','')*100)}}"
 							    data-name="emporium-voyage.com"
 							    data-currency="EUR"
-							    data-description="Emporium Voyage"
+							    data-description="Luxury Travel Redefined"
 							    data-image="{{ \URL::to('sximo/assets/images/Emporium-Voyage.png') }}" 
 							    data-locale="auto">
 							  </script>
