@@ -522,7 +522,7 @@ class UserorderController extends Controller {
 
 				$html .= '<tr><td colspan="4"><hr  style="border-top:1px solid #000; width:100%"/></td>';
 
-				$html .= '<tr><td colspan="3" style="text-align:right;"><b>Total<b></td><td class="algCnt font13"><b>'.$currency->content .' '.number_format($Totprice, 2, '.', ',').'<b></td></tr>';
+				$html .= '<tr><td colspan="3" class="algRgt font13"><b>Total<b></td><td class="algRgt font13"><b>'.$currency->content .' '.number_format($Totprice, 2, '.', ',').'<b></td></tr>';
 				$html .= '<tr><td colspan="4"><hr  style="border-top:1px solid #000; width:100%"/></td>';
 				$html .= '</table></div>';
 			
