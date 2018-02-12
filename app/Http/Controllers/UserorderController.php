@@ -406,7 +406,7 @@ class UserorderController extends Controller {
 				$html .= '';
 				$html .= '<div class="Mrgtop20 font13">
 				
-				<table width="94%" border="0px">
+				<table width="95%" border="0px">
 				 <tr>
 					<td colspan="2" align="right"  height="60px;">&nbsp;</td>
 				 </tr>
@@ -478,7 +478,7 @@ class UserorderController extends Controller {
 							$title = $pchkdet->package_title;
 							$pacpric = $pchkdet->package_price;
 						}
-						$html .= '<tr><td>'.$nos.'</td><td><b>'.$title.'</b></td><td class="algCnt">'.$qty.'</td><td class="algCnt">'.$currency->content . $pacpric.'</td></tr>';
+						$html .= '<tr><td>'.$nos.'</td><td><b>'.$title.'</b></td><td class="algCnt">'.$qty.'</td><td class="algRgt">'.$currency->content . $pacpric.'</td></tr>';
 					}
 					elseif($oitem->package_type=='advert')
 					{
