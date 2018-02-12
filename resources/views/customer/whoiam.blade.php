@@ -8,23 +8,29 @@
   left: -9999px;
 }
 
-input[type=radio]:checked + label>img {
+.input[type=radio]:checked + label>img {
   border: 1px solid #fff;
   box-shadow: 0 0 3px 3px #090;
 }
 
 /* Stuff after this is only to make things more pretty */
-input[type=radio] + label>img {
+.input[type=radio] + label>img {
   border: 1px dashed #444;
   width: 128px;
   height: 128px;
   transition: 500ms all;
 }
+.input[type=radio] + label>img,p {
+  margin-left: 0px;
+  margin-right: 20px;
 
-input[type=radio]:checked + label>img {
+  transition: 500ms all;
+}
+
+.input[type=radio]:checked + label>img {
   transform: 
-    rotateZ(-2deg) 
-    rotateX(2deg);
+    rotateZ(-0deg) 
+    rotateX(0deg);
 }
 
 
@@ -46,7 +52,7 @@ input[type=radio]:checked + label>img {
 					<div class="form-group profile-page-submit-radio-align">   
    
                      <div class="col-sm-12">
-							<input type="radio" name="usertype" value="guests" id="usertypeGuest" class="input-hidden usertype" required="" />
+							<input type="radio" name="usertype" value="guests" id="usertypeGuest" class="input input-hidden usertype" required="" />
 							<label for="usertypeGuest">
 								
 							  <img 
@@ -56,7 +62,7 @@ input[type=radio]:checked + label>img {
 							</label>
 
 
-							<input type="radio" name="usertype" value="hotel" id="userTypeHotel" class="input-hidden usertype" required=""/>
+							<input type="radio" name="usertype" value="hotel" id="userTypeHotel" class="input input-hidden usertype" required=""/>
 							<label for="userTypeHotel">
 							  <img 
 							    src="{{ asset('sximo/assets/images/hotel-icon.png')}}"	
@@ -64,7 +70,7 @@ input[type=radio]:checked + label>img {
 							     <p>I am Hotel</p>
 							</label>
 
-							<input type="radio" name="usertype" value="advertiser" id="userTypeAdvertiser" required="" class="input-hidden usertype" />
+							<input type="radio" name="usertype" value="advertiser" id="userTypeAdvertiser" required="" class=" input input-hidden usertype" />
 							<label for="userTypeAdvertiser">
 							  <img src="{{ asset('sximo/assets/images/advertiser-icon.png')}}"					    
 							    alt="I am advertiser" />
@@ -102,15 +108,17 @@ input[type=radio]:checked + label>img {
 								<input type="text" name="txtPhoneNumber" value="{{$guestUserData->mobile_number}}" id="txtPhoneNumber" class="form-control dash-input-style" placeholder="+91-9876543210" required="">
 							</div>
 						</div>
-						<div class="form-group profile-page-submit-radio-align">        
-							<div class="col-sm-12">
+						<div class="form-group">        
+							<div class="col-sm-10">
+								<label class="control-label col-sm-2"><input type="checkbox" id="newsLetter" name="newsLetter"></label>
 								<div class="radio">
-									<label class="radio-label">Subscribe to our notifications and news to our latest hotels, spa's and offers <input type="checkbox" id="newsLetter" name="newsLetter"></label>
+									<label class="radio-label">Subscribe to our notifications and news to our latest hotels, spa's and offers </label>
 								</div>
 							</div>
-							<div class="col-sm-12" id="personalizeCheck">
+							<div class="col-sm-10" id="personalizeCheck">
+								<label class="control-label col-sm-2"><input type="checkbox"  id="personalize" name="personalize" checked="checked"></label>
 								<div class="radio">
-									<label class="radio-label">I require personalized service bookings in my account profile <input type="checkbox"  id="personalize" name="personalize" checked="checked"></label>
+									<label class="radio-label">I require personalized service bookings in my account profile</label>
 								</div>
 							</div>
 						</div>

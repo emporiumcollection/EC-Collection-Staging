@@ -78,18 +78,37 @@
 								<input type="text" name="txtPhoneNumber" id="txtPhoneNumber" class="form-control dash-input-style" value="{{$info->mobile_number}}"placeholder="+91-9876543210" required="">
 							</div>
 						</div>
-						<div class="form-group profile-page-submit-radio-align">        
-							<div class="col-sm-12">
-								<div class="radio">
-									<label class="radio-label">Subscribe to our notifications and news to our latest hotels, spa's and offers <input type="checkbox" id="newsLetter" name="newsLetter"></label>
-								</div>
-							</div>
-							<div class="col-sm-12" id="personalizeCheck">
-								<div class="radio">
-									<label class="radio-label">I require personalized service bookings in my account profile <input type="checkbox"  id="personalize" name="personalize" checked="checked"></label>
-								</div>
+
+
+						<div class="form-group">
+
+							<label class="control-label col-sm-2">Phone</label>
+							<div class="col-sm-10">          
+								<input type="text" name="txtPhoneNumber" id="txtPhoneNumber" class="form-control dash-input-style" value="{{$info->mobile_number}}"placeholder="+91-9876543210" required="">
 							</div>
 						</div>
+
+						<div class="form-group">
+
+							<label class="control-label col-sm-2"><input type="checkbox" id="newsLetter" name="newsLetter"></label>
+							<div class="col-sm-10">          
+								
+									<label class="radio-label">Subscribe to our notifications and news to our latest hotels, spa's and offers </label>
+								
+							</div>
+						</div>
+
+							<div class="form-group" id="personalizeCheck">
+
+							<label class="control-label col-sm-2"><input type="checkbox"  id="personalize" name="personalize" checked="checked"></label>
+							<div class="col-sm-10">          
+								
+									<label class="radio-label">I require personalized service bookings in my account profile </label>
+								
+							</div>
+						</div>
+
+					
 						<div class="form-group">        
 							<div class="col-sm-12">
 								<input type="submit" class="btn btn-default dash-btn-style" value="Save Profile">

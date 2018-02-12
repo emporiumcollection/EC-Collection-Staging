@@ -304,8 +304,8 @@ class UserorderController extends Controller {
 						.clrgrey{ color:#3f3f3f;} 
 						.alnRight{text-align:right;} 
 						.alnCenter{text-align:center;} 
-						td{font-size:12px; padding:5px;} 
-						th{background-color:#999; color:#000000; text-align:left; padding:5px; font-size:14px;}
+						td{font-size:12px; padding:1px;} 
+						th{background-color:#999; color:#000000; text-align:left; padding:1px; font-size:14px;}
 						.totl{background-color:#999; color:#000000; font-weight:bold;} 
 						h2{padding-bottom:0px; margin-bottom:0px;} 
 						.valin{ vertical-align:top;} 
@@ -420,14 +420,19 @@ class UserorderController extends Controller {
 
 								<table width="100%" >
 									<tr>									     
-										<td >'. $companydet->company_address .' . '.$companydet->company_address2 .'</td>
+										<td>
+
+
+										<p>'. $companydet->company_address .' . '.$companydet->company_address2 .'
+
+										<br/>'.$companydet->company_city .'<br/>
+
+										'. $companydet->company_postal_code.' . '.$companydet->company_country .'
+										</p>
+
+										</td>
 							        </tr>
-									<tr>
-									   <td > '.$companydet->company_city .'</td>										
-									</tr>
-									<tr>
-									 <td >'. $companydet->company_postal_code.' . '.$companydet->company_country .'</td>
-									</tr>
+									
 								</table>
 								 
 								 </td>
