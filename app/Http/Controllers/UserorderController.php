@@ -404,9 +404,10 @@ class UserorderController extends Controller {
 				</table></div>';
 				
 				$html .= '';
-				$html .= '<div class="Mrgtop20 font13">
+				$html .= '
+				<div class="Mrgtop20 font13">
 				
-				<table width="95%" border="0px">
+				<table width="100%" border="1px">
 				 <tr>
 					<td colspan="2" align="right"  height="60px;">&nbsp;</td>
 				 </tr>
@@ -417,7 +418,7 @@ class UserorderController extends Controller {
 							<td width="50%" align="left">
 									
 
-								<table >
+								<table width="100%" >
 									<tr>									     
 										<td >'. $companydet->company_address .' . '.$companydet->company_address2 .'</td>
 							        </tr>
@@ -433,7 +434,7 @@ class UserorderController extends Controller {
 								 <td width="50%" align="right">
 
 								 	
-										<table >
+										<table width="100%" >
 											<tr>
 												
 												<td  align="right">Date:</td>
@@ -458,10 +459,11 @@ class UserorderController extends Controller {
 						 		</tr>
 						 	</table>
 						 </div>
-						 <br><br>';
+						 <div style="clear:both;"></div>
+						 ';
 			
 				
-				$html .= '<div class="Mrgtop20 font13"><table width="100%"><tr style="background:#eeeeee;"><th width="10%">No.</th><th width="50%" >Item </th><th width="20%" class="algCnt">Quantity </th><th width="20%" class="algRgt">Price(Excl.VAT) </th></tr>';
+				$html .= '<div style="clear:both;"></div><div class="Mrgtop20 font13"><table width="100%"><tr style="background:#eeeeee;"><th width="10%">No.</th><th width="50%" >Item </th><th width="20%" class="algCnt">Quantity </th><th width="20%" class="algRgt">Price(Excl.VAT) </th></tr>';
 				$qtyPr = 1;
 				$Totprice = 0;
 				$qty=1;
