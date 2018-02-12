@@ -461,7 +461,7 @@ class UserorderController extends Controller {
 						 <br><br>';
 			
 				
-				$html .= '<div class="Mrgtop20 font13"><table width="100%"><tr style="background:#eeeeee;"><th width="10%">No.</th><th width="50%" >Item </th><th width="20%" class="algCnt">Quantity </th><th width="20%" class="algCnt">Price(Excl.VAT) </th></tr>';
+				$html .= '<div class="Mrgtop20 font13"><table width="100%"><tr style="background:#eeeeee;"><th width="10%">No.</th><th width="50%" >Item </th><th width="20%" class="algCnt">Quantity </th><th width="20%" class="algRgt">Price(Excl.VAT) </th></tr>';
 				$qtyPr = 1;
 				$Totprice = 0;
 				$qty=1;
@@ -511,14 +511,14 @@ class UserorderController extends Controller {
 							$adsdata .= ', price: '.$currency->content .$getspac->space_cpd_price . '/'.$getspac->space_cpm_num_days .' Days';
 						}
 						
-						$html .= '<tr><td>'.$nos.'</td><td><b>Advertisement</b><br>'.$adsdata.'</td><td class="algCnt">'.$dsqty.'</td><td class="algCnt">'.$currency->content . $pacpric.'</td></tr>';
+						$html .= '<tr><td>'.$nos.'</td><td><b>Advertisement</b><br>'.$adsdata.'</td><td class="algCnt">'.$dsqty.'</td><td class="algRgt">'.$currency->content . $pacpric.'</td></tr>';
 					}
 					$nos++;
 					$qtyPr = $pacpric * $qty;
 					$Totprice = $Totprice + $qtyPr;
 				}
-				$html .= '<tr><td colspan="3" style="text-align:right;"><b>Total(Excl.VAT)<b></td><td class="algCnt font13"><b>'.$currency->content .' '.($Totprice -(($Totprice*$this->data['vatsettings']->content)/100)).'<b></td></tr>';
-				$html .= '<tr><td colspan="3" style="text-align:right;"><b>VAT(. '. $this->data['vatsettings']->content .'%)<b></td><td class="algCnt font13"><b>'.$currency->content .' '.(($Totprice*$this->data['vatsettings']->content)/100).'<b></td></tr>';
+				$html .= '<tr><td colspan="3" style="text-align:right;"><b>Total(Excl.VAT)<b></td><td class="algRgt font13"><b>'.$currency->content .' '.($Totprice -(($Totprice*$this->data['vatsettings']->content)/100)).'<b></td></tr>';
+				$html .= '<tr><td colspan="3" style="text-align:right;"><b>VAT(. '. $this->data['vatsettings']->content .'%)<b></td><td class="algRgt font13"><b>'.$currency->content .' '.(($Totprice*$this->data['vatsettings']->content)/100).'<b></td></tr>';
 
 				$html .= '<tr><td colspan="4"><hr  style="border-top:1px solid #000; width:100%"/></td>';
 
