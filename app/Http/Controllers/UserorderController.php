@@ -415,7 +415,7 @@ class UserorderController extends Controller {
 					<td colspan="2" class="title" align="right">Invoice</td>
 				 </tr>
 						<tr>
-							<td width="50%" align="left">
+							<td width="48%" align="left">
 									
 
 								<table width="100%" >
@@ -431,7 +431,7 @@ class UserorderController extends Controller {
 								</table>
 								 
 								 </td>
-								 <td width="50%" align="right">
+								 <td width="48%" align="right">
 
 								 	
 										<table width="100%" >
