@@ -28,7 +28,7 @@ class StripepaymentController extends Controller
         Stripe::setApiKey($apiKey);
     }
 
-        public function __construct() {
+     public function __construct() {
             
         //$this->middleware('auth');
         parent::__construct();
@@ -700,14 +700,15 @@ public function generateInvoice($ordid)
                     $qtyPr = $pacpric * $qty;
                     $Totprice = $Totprice + $qtyPr;
                 }
-                $html .= '<tr><td colspan="3" style="text-align:right;"><b>Total(Excl.VAT)<b></td><td class="algRgt font13"><b>'.$currency->content .' '.($Totprice -(($Totprice*$this->data['vatsettings']->content)/100)).'<b></td></tr>';
-                $html .= '<tr><td colspan="3" style="text-align:right;"><b>VAT('. $this->data['vatsettings']->content .'%)<b></td><td class="algRgt font13"><b>'.$currency->content .' '.(($Totprice*$this->data['vatsettings']->content)/100).'<b></td></tr>';
+                $html .= '<tr><td colspan="3" style="text-align:right;"><b>Total(Excl.VAT)<b></td><td class="algRgt font13"><b>'.$currency->content .' '.($Totprice -(($Totprice*$this->data['data']['vatsettings']->content)/100)).'<b></td></tr>';
+                $html .= '<tr><td colspan="3" style="text-align:right;"><b>VAT('. $this->data['data']['vatsettings']->content .'%)<b></td><td class="algRgt font13"><b>'.$currency->content .' '.(($Totprice*$this->data['data']['vatsettings']->content)/100).'<b></td></tr>';
 
                 $html .= '<tr><td colspan="4"><hr  style="border-top:1px solid #000; width:100%"/></td>';
 
                 $html .= '<tr><td colspan="3" class="algRgt font13"><b>Total<b></td><td class="algRgt font13"><b>'.$currency->content .' '.number_format($Totprice, 2, '.', ',').'<b></td></tr>';
                 $html .= '<tr><td colspan="4"><hr  style="border-top:1px solid #000; width:100%"/></td>';
                 $html .= '</table></div>';
+            
 			
 				$savePdfpath = public_path() . '/uploads/invoice_pdfs/';
                 $pdf = \App::make('dompdf.wrapper');
