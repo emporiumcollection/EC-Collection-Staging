@@ -60,7 +60,7 @@ input[type=radio]:checked + label>img {
 							<td>{{$prop->city}}</td>
 							<td>{{$prop->website}}</td>
 							<td>{{$prop->email}}</td>
-							<td><a  href="{{ URL::to('hotel/propertymanagement/property-detail/'.$prop->id.'?return='.$return) }}" class="tips btn btn-xs btn-success" title="{{ \Lang::get('core.btn_edit') }}"><i class="fa fa-edit "></i></a></td>
+							<td><a  href="{{ URL::to('hotel/propertymanagement/property-detail/'.$prop->id.'?return=') }}" class="tips btn btn-xs btn-success" title="{{ \Lang::get('core.btn_edit') }}"><i class="fa fa-edit "></i></a></td>
 						</tr>
 					@endforeach
 				@endif
