@@ -399,7 +399,7 @@ public function checkoutPost(Request $request)
                                 \Mail::send('user.emails.invoice', $data, function($message) use ($pathToFile)
                                 {
                                     $message->from(CNF_EMAIL, CNF_APPNAME);
-
+                                    $message->subject("Your Order Invoice");
                                     $message->to( $pathToFile['useremail']);
 
                                     $message->attach($pathToFile['path'], ['as' => $pathToFile['name'], 'mime' => 'pdf']);
