@@ -3980,10 +3980,10 @@ div.productData a {
     margin-top: 5px;
 }
 .side-bar-book-with-us-list h3::before {
-    content: url("../images/tick.png");
+   /* content: url("../images/tick.png");
     margin-left: -29px;
     margin-right: 10px;
-    position: absolute;
+    position: absolute;*/
 }
 .to-booking-nav-show-hide-btn img {
     cursor: pointer;
