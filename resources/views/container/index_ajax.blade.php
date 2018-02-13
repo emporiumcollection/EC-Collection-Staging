@@ -277,7 +277,7 @@
 		  </div>
 		  {!! Form::open(array('url'=>'addfolder', 'class'=>'columns' ,'id' =>'folder_new', 'method'=>'post' )) !!}
 		  <input type="hidden" name="fold_id" value="{{$fid}}">
-		  <input type="hidden" name="curnurl" value="{{ Request::url().'?show='.$showType }}">
+		  <input type="hidden" name="curnurl" value="{{ URL::to('container').'?show='.$showType }}">
 		  <div class="modal-body">
 			<fieldset>
 				<div class="field">
