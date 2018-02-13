@@ -591,6 +591,8 @@
            /* max-height: 263px;
             margin-bottom: 25px;
             overflow: auto;*/
+			max-height: 317px;
+			overflow-y: scroll;
         }
         .node {
             padding-left: 10px;
