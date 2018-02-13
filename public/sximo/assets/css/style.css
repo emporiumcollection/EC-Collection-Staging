@@ -3956,6 +3956,7 @@ div.productData a {
 }
 .side-bar-book-with-us-list {
     padding-left: 30px !important;
+	list-style-type: none;
 }
 .book-with-us-tittles h2 {
     font-family: AcaslonPro-Regular;
