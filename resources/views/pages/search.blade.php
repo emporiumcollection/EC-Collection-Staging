@@ -1138,9 +1138,8 @@
 														</h3>
 														<div class="bh-slideshow-overlay-content scrollbar1">{{$slides->slider_description}}</div>
 														@if($slides->slider_link != '#')
-                                                                                                                <a class="uk-margin-top uk-button uk-button-primary" href="http://{{$slides->slider_link}}" title="Do it yourself">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>
-                                              @else
-						<a class="uk-margin-top uk-button uk-button-primary" href="{{(isset($_SERVER['HTTPS']) ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']}}">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>                                                                  @endif
+                                                                                                                <a class="uk-margin-top uk-button uk-button-primary" onclick="return !window.open(this.href, 'http://{{$slides->slider_link}}', 'width=900,height=500,left=100, top=100, scrollbars, resizable')" href="http://{{$slides->slider_link}}" title="Do it yourself">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>
+                                                                                                                @endif
 													</div>
 												</div>
 												<div class="bh-slideshow-thumbnail-split-preview uk-overlay-panel uk-overlay-right uk-overlay-background uk-overlay-fade uk-width-2-5 uk-width-xxlarge-1-3 uk-flex uk-flex-middle uk-flex-center uk-visible-large">
@@ -1158,11 +1157,8 @@
                                                         <!--<a class="uk-margin-top uk-button uk-button-primary" href="#">View More <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>-->
                                                         @endif
                                                         @if($slides->slider_link != '#')
-														  <a class="uk-margin-top uk-button uk-button-primary" href="http://{{$slides->slider_link}}">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>
-				                                        @else
-														  <a class="uk-margin-top uk-button uk-button-primary" href="{{(isset($_SERVER['HTTPS']) ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']}}">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>
-                                                        @endif
-
+														  <a class="uk-margin-top uk-button uk-button-primary" onclick="return !window.open(this.href, 'http://{{$slides->slider_link}}', 'width=900,height=500,left=100, top=100, scrollbars, resizable')" href="http://{{$slides->slider_link}}">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>
+				                                        @endif
 													</div>
 													<a href="javascript:void(0);" class="bh-slideshow-slidenav uk-slidenav uk-slidenav-previous" data-uk-slideshow-item="previous"></a>
 													<a href="javascript:void(0);" class="bh-slideshow-slidenav uk-slidenav uk-slidenav-next" data-uk-slideshow-item="next"></a>
@@ -1887,13 +1883,9 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                                     sliderHTML += '</h3>';
                                                     sliderHTML += '<div class="bh-slideshow-overlay-content scrollbar1">' + data.categoryslider[si].slider_description + '</div>';
                                                     if(data.categoryslider[si].slider_link != '#') {
-                                                        sliderHTML += '<a class="uk-margin-top uk-button uk-button-primary" href="http://' + data.categoryslider[si].slider_link + '" title="Do it yourself">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>';
+                                                        sliderHTML += '<a class="uk-margin-top uk-button uk-button-primary" onclick="return !window.open(this.href, \'http://' + data.categoryslider[si].slider_link + '\', \'width=900,height=500,left=100, top=100, scrollbars, resizable\')" href="http://' + data.categoryslider[si].slider_link + '" title="Do it yourself">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>';
                                                     }
-													else
-													{
-														var linkd = "{{URL::to('luxury_hotels')}}/"+ data.categoryslider[si].slider_category;
-														sliderHTML += '<a class="uk-margin-top uk-button uk-button-primary" href="' +linkd + '" title="Do it yourself">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>';
-													}
+													
                                                 sliderHTML += '</div>';
                                             sliderHTML += '</div>';
                                             sliderHTML += '<div class="bh-slideshow-thumbnail-split-preview uk-overlay-panel uk-overlay-right uk-overlay-background uk-overlay-fade uk-width-2-5 uk-width-xxlarge-1-3 uk-flex uk-flex-middle uk-flex-center uk-visible-large">';
@@ -1908,13 +1900,9 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                                     sliderHTML += '</h3>';
                                                     sliderHTML += '<div class="bh-slideshow-thumbnail-split-preview-content scrollbar1">' + data.categoryslider[si].slider_description + '</div>';
                                                     if(data.categoryslider[si].slider_link != '#') {
-                                                        sliderHTML += '<a class="uk-margin-top uk-button uk-button-primary" href="http://' + data.categoryslider[si].slider_link + '">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>';
+                                                        sliderHTML += '<a class="uk-margin-top uk-button uk-button-primary" onclick="return !window.open(this.href, \'http://' + data.categoryslider[si].slider_link + '\', \'width=900,height=500,left=100, top=100, scrollbars, resizable\')" href="http://' + data.categoryslider[si].slider_link + '">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>';
                                                     }
-													else
-													{
-														var linkd = "{{URL::to('luxury_hotels')}}/"+ data.categoryslider[si].slider_category;
-														sliderHTML += '<a class="uk-margin-top uk-button uk-button-primary" href="' + linkd + '" title="Do it yourself">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>';
-													}
+													
                                                 sliderHTML += '</div>';
                                                 sliderHTML += '<a href="javascript:void(0);" class="bh-slideshow-slidenav uk-slidenav uk-slidenav-previous" data-uk-slideshow-item="previous"></a>';
                                                 sliderHTML += '<a href="javascript:void(0);" class="bh-slideshow-slidenav uk-slidenav uk-slidenav-next" data-uk-slideshow-item="next"></a>';
