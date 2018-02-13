@@ -32,7 +32,7 @@
 		<li role="presentation"><a href="#comingsoon" aria-controls="comingsoon" role="tab" data-toggle="tab">Reservation management</a></li>
 		<li role="presentation"><a href="#comingsoon" aria-controls="comingsoon" role="tab" data-toggle="tab">Memberships</a></li>
 		<li role="presentation"><a href="#comingsoon" aria-controls="comingsoon" role="tab" data-toggle="tab">Advertising</a></li>
-	@else
+	@elseif($info->group_id==3)
 		<li  role="presentation" class="<?php echo (isset($active_menu) && $active_menu == 'bookings')? 'active' : ''; ?>">
 			<a href="{{URL::to('bookings')}}">
 				My Bookings
@@ -127,6 +127,16 @@
     <div role="tabpanel" class="tab-pane" id="messages">Coming Soon...</div>
  
     <div role="tabpanel" class="tab-pane" id="comingsoon">Coming Soon...</div>
+
+    <div role="tabpanel" class="tab-pane" id="userProfileDiv">
+
+    	<iframe src="{{ \URL::to('user/profile')}}" width="100%" height="100%"></iframe>
+
+
+    </div>
+
+
+
     <div role="tabpanel" class="tab-pane" id="personalizedOptions"> 
          <div class="row">
                 <div >
