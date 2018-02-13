@@ -1883,7 +1883,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                                     sliderHTML += '</h3>';
                                                     sliderHTML += '<div class="bh-slideshow-overlay-content scrollbar1">' + data.categoryslider[si].slider_description + '</div>';
                                                     if(data.categoryslider[si].slider_link != '#') {
-                                                        sliderHTML += '<a class="uk-margin-top uk-button uk-button-primary" onclick="return !window.open(this.href, \'http://' + data.categoryslider[si].slider_link + '\', \'width=900,height=500,left=100, top=100, scrollbars, resizable\')" href="http://' + data.categoryslider[si].slider_link + '" title="Do it yourself">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>';
+                                                        sliderHTML += '<a class="uk-margin-top uk-button uk-button-primary" onclick="return !window.open(this.href, \'' + data.categoryslider[si].slider_link + '\', \'width=900,height=500,left=100, top=100, scrollbars, resizable\')" href="' + data.categoryslider[si].slider_link + '" title="Do it yourself">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>';
                                                     }
 													
                                                 sliderHTML += '</div>';
@@ -1900,7 +1900,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                                     sliderHTML += '</h3>';
                                                     sliderHTML += '<div class="bh-slideshow-thumbnail-split-preview-content scrollbar1">' + data.categoryslider[si].slider_description + '</div>';
                                                     if(data.categoryslider[si].slider_link != '#') {
-                                                        sliderHTML += '<a class="uk-margin-top uk-button uk-button-primary" onclick="return !window.open(this.href, \'http://' + data.categoryslider[si].slider_link + '\', \'width=900,height=500,left=100, top=100, scrollbars, resizable\')" href="http://' + data.categoryslider[si].slider_link + '">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>';
+                                                        sliderHTML += '<a class="uk-margin-top uk-button uk-button-primary" onclick="return !window.open(this.href, \'' + data.categoryslider[si].slider_link + '\', \'width=900,height=500,left=100, top=100, scrollbars, resizable\')" href="' + data.categoryslider[si].slider_link + '">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>';
                                                     }
 													
                                                 sliderHTML += '</div>';
