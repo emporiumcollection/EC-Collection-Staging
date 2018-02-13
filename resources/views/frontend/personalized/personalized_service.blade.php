@@ -1,4 +1,4 @@
-@extends('frontend.layouts.ev.index')
+@extends('frontend.layouts.ev.personalised-service')
 @section('title', 'Personalized Service')
 @section('css')
 <link href="{{ asset('sximo/assets/css/chosen.css')}}" rel="stylesheet" type="text/css"/>
@@ -115,10 +115,10 @@
         <div class="wrapper">
             <div class="container-fluid responsiveFluid">
                 <div class="row">
-                    <div class="header-logo-image">
+   <!--                 <div class="header-logo-image">
                         <img class="img-responsive" src="assets/images/logo-design_1_1.Pampering" alt=""/>
                     </div>
-<!--                    <div class="top-progress-bar">
+                    <div class="top-progress-bar">
                         <div class="progress-bar-inner"></div>
                     </div>-->
 <!--                    <div class="top-nav-align">
