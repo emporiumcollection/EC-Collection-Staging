@@ -592,7 +592,7 @@
             margin-bottom: 25px;
             overflow: auto;*/
 			max-height: 317px;
-			overflow-y: scroll;
+			overflow-y: auto;
         }
         .node {
             padding-left: 10px;
@@ -1153,9 +1153,9 @@
 														<h3 class="bh-slideshow-thumbnail-split-preview-title">
 															<a href="#">{{$slides->slider_title}}</a>
 														</h3>
-														<div class="bh-slideshow-thumbnail-split-preview-content scrollbar1" id="style-3">{{substr($slides->slider_description,0,118)}}</div>
+														<div class="bh-slideshow-thumbnail-split-preview-content scrollbar1" id="style-3">{{ $slides->slider_description }}</div>
                                                         @if(strlen($slides->slider_description)>118)
-                                                        <a class="uk-margin-top uk-button uk-button-primary" href="#">View More <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>
+                                                        <!--<a class="uk-margin-top uk-button uk-button-primary" href="#">View More <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>-->
                                                         @endif
                                                         @if($slides->slider_link != '#')
 														  <a class="uk-margin-top uk-button uk-button-primary" href="http://{{$slides->slider_link}}">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>
