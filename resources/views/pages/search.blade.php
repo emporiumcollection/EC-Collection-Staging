@@ -1136,7 +1136,7 @@
 														<h3 class="bh-slideshow-overlay-title">
 															<a href="#">{{$slides->slider_title}}</a>
 														</h3>
-														<div class="bh-slideshow-overlay-content">{{$slides->slider_description}}</div>
+														<div class="bh-slideshow-overlay-content scrollbar1">{{$slides->slider_description}}</div>
 														@if($slides->slider_link != '#')
                                                                                                                 <a class="uk-margin-top uk-button uk-button-primary" href="http://{{$slides->slider_link}}" title="Do it yourself">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>
                                               @else
@@ -1896,7 +1896,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                                     sliderHTML += '<h3 class="bh-slideshow-overlay-title">';
                                                         sliderHTML += '<a href="#">' + data.categoryslider[si].slider_title + '</a>';
                                                     sliderHTML += '</h3>';
-                                                    sliderHTML += '<div class="bh-slideshow-overlay-content">' + data.categoryslider[si].slider_description + '</div>';
+                                                    sliderHTML += '<div class="bh-slideshow-overlay-content scrollbar1">' + data.categoryslider[si].slider_description + '</div>';
                                                     if(data.categoryslider[si].slider_link != '#') {
                                                         sliderHTML += '<a class="uk-margin-top uk-button uk-button-primary" href="http://' + data.categoryslider[si].slider_link + '" title="Do it yourself">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>';
                                                     }
@@ -1917,7 +1917,7 @@ url: "{{ URL::to('filter_search_destionation')}}",
                                                     sliderHTML += '<h3 class="bh-slideshow-thumbnail-split-preview-title">';
                                                         sliderHTML += '<a href="#">' + data.categoryslider[si].slider_title + '</a>';
                                                     sliderHTML += '</h3>';
-                                                    sliderHTML += '<div class="bh-slideshow-thumbnail-split-preview-content">' + data.categoryslider[si].slider_description + '</div>';
+                                                    sliderHTML += '<div class="bh-slideshow-thumbnail-split-preview-content scrollbar1">' + data.categoryslider[si].slider_description + '</div>';
                                                     if(data.categoryslider[si].slider_link != '#') {
                                                         sliderHTML += '<a class="uk-margin-top uk-button uk-button-primary" href="http://' + data.categoryslider[si].slider_link + '">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>';
                                                     }
