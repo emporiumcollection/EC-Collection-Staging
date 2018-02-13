@@ -1138,7 +1138,7 @@
 														</h3>
 														<div class="bh-slideshow-overlay-content scrollbar1">{{$slides->slider_description}}</div>
 														@if($slides->slider_link != '#')
-                                                                                                                <a class="uk-margin-top uk-button uk-button-primary" onclick="return !window.open(this.href, 'http://{{$slides->slider_link}}', 'width=900,height=500,left=100, top=100, scrollbars, resizable')" href="http://{{$slides->slider_link}}" title="Do it yourself">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>
+                                                                                                                <a class="uk-margin-top uk-button uk-button-primary" onclick="return !window.open(this.href, {{ ((strpos($slides->slider_link, 'http://') || strpos($slides->slider_link, 'https://')) !== false) ? $slides->slider_link : 'http://'.$slides->slider_link }}, 'width=900,height=500,left=100, top=100, scrollbars, resizable')" href="{{ ((strpos($slides->slider_link, 'http://') || strpos($slides->slider_link, 'https://')) !== false) ? $slides->slider_link : 'http://'.$slides->slider_link }}" title="Do it yourself">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>
                                                                                                                 @endif
 													</div>
 												</div>
@@ -1157,7 +1157,7 @@
                                                         <!--<a class="uk-margin-top uk-button uk-button-primary" href="#">View More <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>-->
                                                         @endif
                                                         @if($slides->slider_link != '#')
-														  <a class="uk-margin-top uk-button uk-button-primary" onclick="return !window.open(this.href, 'http://{{$slides->slider_link}}', 'width=900,height=500,left=100, top=100, scrollbars, resizable')" href="http://{{$slides->slider_link}}">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>
+														  <a class="uk-margin-top uk-button uk-button-primary" onclick="return !window.open(this.href, {{ ((strpos($slides->slider_link, 'http://') || strpos($slides->slider_link, 'https://')) !== false) ? $slides->slider_link : 'http://'.$slides->slider_link }}, 'width=900,height=500,left=100, top=100, scrollbars, resizable')" href="{{ ((strpos($slides->slider_link, 'http://') || strpos($slides->slider_link, 'https://')) !== false) ? $slides->slider_link : 'http://'.$slides->slider_link }}">Discover <i class="zmdi zmdi-long-arrow-right uk-margin-small-left"></i></a>
 				                                        @endif
 													</div>
 													<a href="javascript:void(0);" class="bh-slideshow-slidenav uk-slidenav uk-slidenav-previous" data-uk-slideshow-item="previous"></a>
