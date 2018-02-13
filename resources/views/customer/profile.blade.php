@@ -23,7 +23,7 @@
 
   <!-- Nav tabs <i class="fa fa-bullhorn" aria-hidden="true"></i></div><span>Ads -->
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">My Account</a></li>
+    <li role="presentation" class="active"><a href="#userProfileDiv" aria-controls="userProfileDiv" role="tab" data-toggle="tab">My Account</a></li>
     @if($info->group_id==7)
 		 <li role="presentation"><a href="#comingsoon" aria-controls="comingsoon" role="tab" data-toggle="tab">Advertising</a></li>
 	 
