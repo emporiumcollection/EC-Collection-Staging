@@ -157,12 +157,9 @@
 													<option value="crm_email">Template CRM</option>
 												</select>
 											</div>
-											<div class="form-group">
-												<textarea class="form-control editor" name="message_email_popup" id="message_email_popup"></textarea>
-											</div>
 											<div class="form-group " >
 												<div class="col-md-6">
-													<input  type='file' name='upload_email_popup' id='upload_email_popup' style='width:150px !important;'  />
+													<input class="form-control"  type='file' name='upload_email_popup' id='upload_email_popup' style='width:150px !important;'  />
 													
 												</div> 
 												<div class="col-md-6">
@@ -171,7 +168,11 @@
 													<span id="boxspan1"></span>
 												 </div> 
 												
-											</div> 
+											</div>
+											<div class="form-group">
+												<textarea class="form-control editor" name="message_email_popup" id="message_email_popup"></textarea>
+											</div>
+											 
 											<button type="button" class="add-task-btn email-send-btn" onclick="submitcrmemail();">{{ Lang::get('core.crmhotel_email_popup_send_btn') }}</button>
 										</form>
 									</div>
