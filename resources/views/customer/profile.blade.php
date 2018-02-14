@@ -69,45 +69,45 @@
 					<div id="guests">
 					<div class="form-group">
 						<label class=" control-label col-sm-2">Client Number</label>
-						<div class="col-sm-10">
+						<div class="col-sm-6">
 						<input name="clientID" type="text" id="clientID" disabled="disabled" class="form-control input-sm" required  value="{{$info->id}}" />  
 						 </div> 
 					  </div>  
 					<div class="form-group">
 						<label class=" control-label col-sm-2">Username </label>
-						<div class="col-sm-10">
+						<div class="col-sm-6">
 						<input name="username" type="text" id="username" disabled="disabled" class="form-control input-sm" required  value="{{$info->email}}" />  
 						 </div> 
 					  </div>  
 						<div class="form-group">
 							<label class="control-label col-sm-2">First Name</label>
-							<div class="col-sm-10">
+							<div class="col-sm-6">
 								<input type="text" name="first_name" id="first_name" value="{{$info->first_name}}"class="form-control dash-input-style" placeholder="John" required="">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-sm-2">Last Name</label>
-							<div class="col-sm-10">
+							<div class="col-sm-6">
 								<input type="text" name="last_name" id ="last_name" value="{{$info->last_name}}" class="form-control dash-input-style" placeholder="Doe" required="">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-sm-2">Email</label>
-							<div class="col-sm-10">
+							<div class="col-sm-6">
 								<input type="text" name="email" id ="email" value="{{$info->email}}" class="form-control dash-input-style" placeholder="example@example.com" required="" readonly="">
 							</div>
 						</div>
 						<div class="form-group">
 
 							<label class="control-label col-sm-2">Phone</label>
-							<div class="col-sm-10">          
+							<div class="col-sm-6">          
 								<input type="text" name="txtPhoneNumber" id="txtPhoneNumber" class="form-control dash-input-style" value="{{$info->mobile_number}}" placeholder="+91-9876543210" required="">
 							</div>
 						</div>
 
 					  <div class="form-group  " >
 							<label for="ipt" class=" control-label col-sm-2"> Avatar </label>
-							<div class="col-sm-10">
+							<div class="col-sm-6">
 							<div class="fileinput fileinput-new" data-provides="fileinput">
 							  <span class="btn btn-primary btn-file">
 							  	<span class="fileinput-new">Upload Avatar Image</span><span class="fileinput-exists">Change</span>
@@ -127,7 +127,7 @@
 						<div class="form-group">
 
 							<label class="control-label col-sm-2"><input type="checkbox" id="newsLetter" name="newsLetter"></label>
-							<div class="col-sm-10">          
+							<div class="col-sm-6">          
 								
 									<label class="radio-label">Subscribe to our notifications and news to our latest hotels, spa's and offers </label>
 								
@@ -137,7 +137,7 @@
 							<div class="form-group" id="personalizeCheck">
 
 							<label class="control-label col-sm-2"><input type="checkbox"  id="personalize" name="personalize" checked="checked"></label>
-							<div class="col-sm-10">          
+							<div class="col-sm-6">          
 								
 									<label class="radio-label">I require personalized service bookings in my account profile </label>
 								
