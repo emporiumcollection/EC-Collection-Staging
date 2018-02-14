@@ -653,5 +653,10 @@ div[data-load="left-side-tree"]{max-height: 600px;    overflow: auto;}
 			
 
 		});
+		
+		function containerdropreload()
+		{
+			window.location.href = $('input[name="curnurl"]').val();
+		}
 	</script>
 @stop
