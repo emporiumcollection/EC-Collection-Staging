@@ -239,6 +239,7 @@ class CrmlayoutController extends Controller {
                                 $element_options = $element->element_options;
                                 
                                 if($element->type == 'crm-fields') {
+                                    echo $element->customfield_id;die;
                                     $field = ModelsAiCrmCustomfield::select('*')->where('crm_customfield_id', '=', $element->customfield_id)->first();
                                     $option_mcf = json_decode($field->option_mcf);
 
