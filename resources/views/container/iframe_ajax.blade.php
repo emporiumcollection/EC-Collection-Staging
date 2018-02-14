@@ -36,7 +36,7 @@
 			$imgclass = end($expFile);
 			$ext = end($expFile);
 			$isImg = 0;
-			if($ext=="jpg" || $ext=="png" || $ext=="gif" || $ext=="bmp" || $ext=="jpeg" || $ext=="JPG" || $ext=="pdf") { 
+			//if($ext=="jpg" || $ext=="png" || $ext=="gif" || $ext=="bmp" || $ext=="jpeg" || $ext=="JPG" || $ext=="pdf") { 
 				$imgclass = "img"; $isImg=1;
 				$imgfancy[] = $row['imgsrc'].$row['name'];
 				$fname = ($row['file_display_name']!='')? $row['file_display_name']: $row['name'];
@@ -59,7 +59,7 @@
 				<label></label>
 			</div>
 		</div>
-		<?php } ?>
+		<?php //} ?>
 		@endif
 	@endforeach
 @endif
