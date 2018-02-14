@@ -11,14 +11,7 @@
 
 </style>
 
-@if(Session::has('messagetext'))	  
-		   {!! Session::get('message') !!}
-	@endif	
-	<ul>
-		@foreach($errors->all() as $error)
-			<li class="alert alert-danger parsley">{{ $error }}</li>
-		@endforeach
-	</ul>
+
 <div class="col-sm-12">
 
   <!-- Nav tabs <i class="fa fa-bullhorn" aria-hidden="true"></i></div><span>Ads -->
@@ -71,9 +64,21 @@
 <div class="row">
             <div class="das-form-outer-align">
                
-                	<form class="form-horizontal my-profile-main-form-align" name="basicInfo" id="basicInfo" method="post" action=" {{URL::to('customer/savewhoiam')}}">
+                	<form class="form-horizontal my-profile-main-form-align" name="basicInfo" id="basicInfo" method="post" action=" {{URL::to('customer/saveprofile')}}">
 						<input type="hidden" name="usertype" value="guests" id="userTypeHotel" class="input-hidden usertype" required=""/>
 					<div id="guests">
+					<div class="form-group">
+						<label class=" control-label col-sm-2">Client Number</label>
+						<div class="col-sm-10">
+						<input name="clientID" type="text" id="clientID" disabled="disabled" class="form-control input-sm" required  value="{{$info->id}}" />  
+						 </div> 
+					  </div>  
+					<div class="form-group">
+						<label class=" control-label col-sm-2">Username </label>
+						<div class="col-sm-10">
+						<input name="username" type="text" id="username" disabled="disabled" class="form-control input-sm" required  value="{{$info->email}}" />  
+						 </div> 
+					  </div>  
 						<div class="form-group">
 							<label class="control-label col-sm-2">First Name</label>
 							<div class="col-sm-10">
@@ -87,14 +92,36 @@
 							</div>
 						</div>
 						<div class="form-group">
+							<label class="control-label col-sm-2">Email</label>
+							<div class="col-sm-10">
+								<input type="text" name="email" id ="email" value="{{$info->email}}" class="form-control dash-input-style" placeholder="example@example.com" required="" readonly="">
+							</div>
+						</div>
+						<div class="form-group">
 
 							<label class="control-label col-sm-2">Phone</label>
 							<div class="col-sm-10">          
-								<input type="text" name="txtPhoneNumber" id="txtPhoneNumber" class="form-control dash-input-style" value="{{$info->mobile_number}}"placeholder="+91-9876543210" required="">
+								<input type="text" name="txtPhoneNumber" id="txtPhoneNumber" class="form-control dash-input-style" value="{{$info->mobile_number}}" placeholder="+91-9876543210" required="">
 							</div>
 						</div>
 
-
+					  <div class="form-group  " >
+							<label for="ipt" class=" control-label col-sm-2"> Avatar </label>
+							<div class="col-sm-10">
+							<div class="fileinput fileinput-new" data-provides="fileinput">
+							  <span class="btn btn-primary btn-file">
+							  	<span class="fileinput-new">Upload Avatar Image</span><span class="fileinput-exists">Change</span>
+									<input type="file" name="avatar">
+								</span>
+								<span class="fileinput-filename"></span>
+								<a href="#" class="close fileinput-exists" data-dismiss="fileinput" style="float: none">&times;</a>
+							</div>
+							<br />
+							 Image Dimension 80 x 80 px <br />
+							{!! SiteHelpers::showUploadedFile($info->avatar,'/uploads/users/',80,80) !!}
+							
+							 </div> 
+						  </div> 
 						
 
 						<div class="form-group">
@@ -138,51 +165,214 @@
 			
 <div class="row">
             <div class="das-form-outer-align">
-               
-                	<form class="form-horizontal my-profile-main-form-align" name="passwordInfo" id="passwordInfo" method="post" action=" {{URL::to('customer/savewhoiam')}}">
-						<input type="hidden" name="usertype" value="guests" id="userTypeHotel" class="input-hidden usertype" required=""/>
-					<div id="resetPassDiv">
-						<div class="form-group">
-							<label class="control-label col-sm-2">New Password</label>
-							<div class="col-sm-10">
-								<input type="password" name="newpassword" id="newpassword" value="" class="form-control dash-input-style" placeholder="New Password" required="">
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="control-label col-sm-2">Confirm Password</label>
-							<div class="col-sm-10">
-								<input type="password" name="confirmpassword" id ="confirmpassword" value="" class="form-control dash-input-style" placeholder="Confirm Password" required="">
-							</div>
-						</div>
-					
 
+		<div class="form-group has-feedback">
+			@if(Session::has('message'))
+				{!! Session::get('message') !!}
+			@endif
+			<ul class="parsley-error-list">
+				@foreach($errors->all() as $error)
+					<li>{{ $error }}</li>
+				@endforeach
+			</ul>			
+		</div>			
+			
 
-						
+            	{!! Form::open(array('url' => 'customer/savepassword', 'class'=>'form-vertical','name'=>'passwordInfo','id'=>'passwordInfo')) !!}
 
-					
+            	{!! Form::hidden('userID',$info->id) !!}
+	
+	    
+				
 
 					
-
-					
-						<div class="form-group">        
-							<div class="col-sm-12">
-								<input type="submit" class="btn btn-default dash-btn-style" value="Change Password">
-							</div>
-						</div>
-					</div>
-				</form>
-				<div id="formerrors"></div>
-					
-					
-                
-            </div>
+				
+		<div class="form-group has-feedback">
+			<label>New Password </label>
+			{!! Form::password('password',  array('class'=>'form-control required', 'placeholder'=>'New Password')) !!}
+			<i class="icon-lock form-control-feedback"></i>
+		</div>
+		
+		  <div class="form-group has-feedback">
+			<label>Re-type Password</label>
+		   {!! Form::password('password_confirmation', array('class'=>'form-control required', 'placeholder'=>'Confirm Password')) !!}
+			<i class="icon-lock form-control-feedback"></i>
+		</div>
+      <div class="form-group has-feedback">
+      		<label></label>
+			<div class="col-xs-6">
+			  <input type="submit" class="btn btn-primary pull-right" name="btnSubmit" value="Reset My Password">
+			</div>
+      </div>
+	  		
+	
+	 {!! Form::close() !!}
+    	<div id="formerrors"></div>
+		</div>
         </div>
 
 		</div>
 
 		<div role="tabpanel" class="tab-pane" id="companyDetails"> 
 
-
+			<div class="row">
+	            <div class="das-form-outer-align">
+	            	<!-- Comapny detail tab -->
+	  
+	  <div class="tab-pane m-t" id="company">
+		{!! Form::open(array('url'=>'user/savecompanydetails/', 'class'=>'form-horizontal ' ,'files' => true)) !!}  
+			<input name="compedit_id" type="hidden" id="compedit_id" value="<?php if(!empty($extra)) { echo $extra->id; } ?>" />
+		<div class="row">
+			<div class="col-md-6">
+			  <div class="form-group">
+				<label for="ipt" class=" control-label col-md-4"> Firmenname </label>
+				<div class="col-md-8">
+				<input name="company_name" type="text" id="company_name" class="form-control input-sm" required  value="<?php if(!empty($extra)) { echo $extra->company_name; } ?>" />  
+				 </div> 
+			  </div>
+			  <div class="form-group">
+				<label for="ipt" class=" control-label col-md-4"> Inhaber </label>
+				<div class="col-md-8">
+				<input name="company_owner" type="text" id="company_owner" class="form-control input-sm" required  value="<?php if(!empty($extra)) { echo $extra->company_owner; } ?>" />  
+				 </div> 
+			  </div>
+			  <div class="form-group">
+				<label for="ipt" class=" control-label col-md-4"> Ansprechpartner </label>
+				<div class="col-md-8">
+				<input name="contact_person" type="text" id="contact_person" class="form-control input-sm" required  value="<?php if(!empty($extra)) { echo $extra->contact_person; } ?>" />  
+				 </div> 
+			  </div>
+			  <div class="form-group">
+				<label for="ipt" class=" control-label col-md-4">E-Mail Adresse </label>
+				<div class="col-md-8">
+				<input name="company_email" type="email" id="company_email"  class="form-control input-sm" required value="<?php if(!empty($extra)) { echo $extra->company_email; } ?>" /> 
+				 </div> 
+			  </div> 
+			  <div class="form-group">
+				<label for="ipt" class="control-label col-md-4">Phone # </label>
+				<div class="col-md-8">
+				<input name="company_phone" type="text" id="company_phone"  class="form-control input-sm" required value="<?php if(!empty($extra)) { echo $extra->company_phone; } ?>" /> 
+				 </div> 
+			  </div>
+			  <div class="form-group">
+				<label for="ipt" class="control-label col-md-4">Website </label>
+				<div class="col-md-8">
+				<input name="company_website" type="text" id="company_website"  class="form-control input-sm" required value="<?php if(!empty($extra)) { echo $extra->company_website; } ?>" /> 
+				 </div> 
+			  </div>
+			  <div class="form-group">
+				<label for="ipt" class="control-label col-md-4">Tax # </label>
+				<div class="col-md-8">
+				<input name="company_tax_no" type="text" id="company_tax_no"  class="form-control input-sm" required value="<?php if(!empty($extra)) { echo $extra->company_tax_number; } ?>" /> 
+				 </div> 
+			  </div>
+			</div>
+			<div class="col-md-6">
+			 
+			  <div class="form-group">
+				<label for="ipt" class=" control-label col-md-4"> Adresse </label>
+				<div class="col-md-8">
+				<input name="company_address" type="text" id="comapny_address" class="form-control input-sm" value="<?php if(!empty($extra)) { echo $extra->company_address; } ?>" />  
+				 </div> 
+			  </div>
+			  <div class="form-group">
+				<label for="ipt" class=" control-label col-md-4"> Adresse </label>
+				<div class="col-md-8">
+				<input name="company_address2" type="text" id="company_address2" class="form-control input-sm" value="<?php if(!empty($extra)) { echo $extra->company_address2; } ?>" />  
+				 </div> 
+			  </div>
+			  <div class="form-group">
+				<label for="ipt" class=" control-label col-md-4"> ORT </label>
+				<div class="col-md-8">
+				<input name="company_city" type="text" id="comapny_city" class="form-control input-sm" value="<?php if(!empty($extra)) { echo $extra->company_city; } ?>" />  
+				 </div> 
+			  </div>
+			  <div class="form-group">
+				<label for="ipt" class=" control-label col-md-4"> PLZ </label>
+				<div class="col-md-8">
+				<input name="company_postal_code" type="text" id="company_postal_code" class="form-control input-sm" value="<?php if(!empty($extra)) { echo $extra->company_postal_code; } ?>" maxlength="6" />  
+				 </div> 
+			  </div>
+			  <div class="form-group">
+				<label for="ipt" class=" control-label col-md-4"> Land </label>
+				<div class="col-md-8">
+				<input name="company_country" type="text" id="comapny_country" class="form-control input-sm" value="<?php if(!empty($extra)) { echo $extra->company_country; } ?>" />  
+				 </div> 
+			  </div>
+		  
+			  <div class="form-group  " >
+				<label for="ipt" class=" control-label col-md-4 text-right"> Firmenlogo </label>
+				<div class="col-md-8">
+				<div class="fileinput fileinput-new" data-provides="fileinput">
+				  <span class="btn btn-primary btn-file">
+					<span class="fileinput-new">Hochladen</span><span class="fileinput-exists">Change</span>
+						<input type="file" name="company_logo">
+					</span>
+					<span class="fileinput-filename"></span>
+					<a href="#" class="close fileinput-exists" data-dismiss="fileinput" style="float: none">&times;</a>
+				</div>
+				<br />
+				 Image Dimension 155 x 30 px <br />
+				@if(!empty($extra))
+				{!! SiteHelpers::showUploadedFile($extra->company_logo,'/uploads/users/company/',155, 30, '') !!}
+				@endif
+				 </div> 
+			  </div>  
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-6">
+				<span class="minhead">Tax Info</span>
+				  
+				  <div class="form-group">
+					<label for="ipt" class=" control-label col-md-4"> Steuernummer </label>
+					<div class="col-md-8">
+					<input name="steuernummer" type="text" id="steuernummer" class="form-control input-sm" value="<?php if(!empty($extra)) { echo $extra->steuernummer; } ?>" />  
+					 </div> 
+				  </div>
+				  <div class="form-group">
+					<label for="ipt" class=" control-label col-md-4"> Umsatzsteuer ID </label>
+					<div class="col-md-8">
+					<input name="umsatzsteuer_id" type="text" id="umsatzsteuer_id" class="form-control input-sm" value="<?php if(!empty($extra)) { echo $extra->umsatzsteuer_id; } ?>" />  
+					 </div> 
+				  </div>
+				  <div class="form-group">
+					<label for="ipt" class=" control-label col-md-4"> Geschäftsführer </label>
+					<div class="col-md-8">
+						<input name="geschäftsführer" type="text" id="geschäftsführer" class="form-control input-sm" value="<?php if(!empty($extra)) { echo $extra->geschäftsführer; } ?>" />  
+					 </div> 
+				  </div>
+			</div>
+			<div class="col-md-6">
+				<h2>&nbsp;</h2>
+				  
+				  <div class="form-group">
+					<label for="ipt" class=" control-label col-md-4"> Handelsregister </label>
+					<div class="col-md-8">
+						<input name="handelsregister" type="text" id="handelsregister" class="form-control input-sm" value="<?php if(!empty($extra)) { echo $extra->handelsregister; } ?>" />  
+					 </div> 
+				  </div>
+				  <div class="form-group">
+					<label for="ipt" class=" control-label col-md-4"> Amtsgericht </label>
+					<div class="col-md-8">
+						<input name="amtsgericht" type="text" id="amtsgericht" class="form-control input-sm" value="<?php if(!empty($extra)) { echo $extra->amtsgericht; } ?>" maxlength="6" />  
+					 </div> 
+				  </div>
+			</div>
+		</div>
+		<br>
+		  <div class="form-group">
+			<label for="ipt" class=" control-label col-md-4">&nbsp;</label>
+			<div class="col-md-8">
+				<button class="btn btn-success" type="submit"> {{ Lang::get('core.sb_savechanges') }}</button>
+			 </div> 
+		  </div> 	
+		
+		{!! Form::close() !!}	
+	  </div>
+	            </div>
+        	</div>
 
 		</div>
 		</div>

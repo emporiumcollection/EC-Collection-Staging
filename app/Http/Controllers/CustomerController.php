@@ -621,7 +621,7 @@ class CustomerController extends Controller {
 
     public function postSavepassword(Request $request) {
         $rules = array(
-            'password' => 'required',
+            'password' => 'required|confirmed',
             'password_confirmation' => 'required'
         );
         $validator = Validator::make($request->all(), $rules);
@@ -666,7 +666,7 @@ class CustomerController extends Controller {
 
                 $token = base64_encode(rand(10000, 10000000));
                 $edata = array();
-                $emlData['frmemail'] = 'info@design-locations.biz';
+                $emlData['frmemail'] = CNF_EMAIL;//'info@design-locations.biz';
                 $edata['token'] = $token;
                 $emlData['email'] = $request->input('credit_email');
                 $emlData['subject'] = 'REQUEST PASSWORD RESET';
@@ -769,9 +769,15 @@ class CustomerController extends Controller {
             'password' => 'required|confirmed',
             'password_confirmation' => 'required'
         );
+        
         $validator = Validator::make($request->all(), $rules);
         if ($validator->passes()) {
-            $user = User::where('reminder', '=', $token);
+            if($request->input('userID')!=null && $request->input('userID')>0 ){
+                $user = User::where('id', '=', $request->input('userID'));
+            }else{
+                $user = User::where('reminder', '=', $token);
+            }
+            
             if ($user->count() >= 1) {
                 $data = $user->get();
                 $user = User::find($data[0]->id);
@@ -779,11 +785,21 @@ class CustomerController extends Controller {
                 $user->password = \Hash::make($request->input('password'));
                 $user->save();
             }
+            if($request->input('userID')!=null && $request->input('userID')>0 ){
+                return Redirect::to('customer/profile')->with('message', \SiteHelpers::alert('success', 'Password has been saved!'));
+            }else{
 
             return Redirect::to('customer/login')->with('message', \SiteHelpers::alert('success', 'Password has been saved!'));
+            }
         } else {
+
+            if( $request->input('userID')!=null && $request->input('userID')>0 ){
+return Redirect::to('customer/profile')->with('message', \SiteHelpers::alert('error', 'The following errors occurred')
+                                    )->withErrors($validator)->withInput();
+            }else{
             return Redirect::to('customer/reset/' . $token)->with('message', \SiteHelpers::alert('error', 'The following errors occurred')
                     )->withErrors($validator)->withInput();
+          }
         }
     }
 
