@@ -279,5 +279,10 @@
 			});
 
 		});
+		
+		function containerdropreload()
+		{
+			window.location.href = $('input[name="curnurl"]').val();
+		}
 	</script>
 @stop
