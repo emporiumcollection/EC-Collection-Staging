@@ -2,6 +2,9 @@
 
 @section('content')
 <link rel="stylesheet" type="text/css" href="{{ asset('sximo/css/m-popup.css')}}">
+<style>
+.modal-dialog { width:500px !important; }
+</style>
 {{--*/ usort($tableGrid, "SiteHelpers::_sort") /*--}}
   <div class="page-content row">
     <!-- Page header -->
