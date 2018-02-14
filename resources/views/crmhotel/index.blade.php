@@ -180,11 +180,11 @@
 												</select>
 											</div>
 											<div class="form-group " >
-												<div class="col-md-6">
-													<input class="form-control"  type='file' name='upload_email_popup' id='upload_email_popup' style='width:150px !important;'  />
+												<div class="">
+													<input class="form-control"  type='file' name='upload_email_popup' id='upload_email_popup'  />
 													
 												</div> 
-												<div class="col-md-6">
+												<div class="">
 													<a href="#" data-toggle="modal" data-target="#openContainer" onclick="sendmotId(1); openContainerDIV();">Choose from container</a>
 													<input type="hidden" name="container_image_pos_1" id="box1" value="">
 													<span id="boxspan1"></span>
