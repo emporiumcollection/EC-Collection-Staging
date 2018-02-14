@@ -311,10 +311,39 @@ class CrmhotelController extends Controller {
 			$subjectemail = trim($request->input('subject_email_popup'));
 			$templateemail = trim($request->input('template_email_popup'));
 			$emailArr['msg'] = $request->input('message_email_popup');
+			$destinationPath = public_path().'/uploads/varients_imgs/';
+			$actimgpath = '';
+			if(!is_null($request->file('upload_email_popup')))
+			{
+				$filepos7 = $request->file('upload_email_popup');
+				$filenamepos7 = $filepos7->getClientOriginalName();
+				$extensionpos7 = $filepos7->getClientOriginalExtension(); //if you need extension of the file
+				$filenamepos7 = rand(11111111, 99999999).'-'.rand(11111111, 99999999).'.'.$extensionpos7;
+				$uploadSuccesspos7 = $filepos7->move($destinationPath, $filenamepos7);
+				if($uploadSuccesspos7)
+				{
+					$actimgpath = $destinationPath.$filenamepos7;
+				}
+			}			
+			elseif(is_null($request->file('upload_email_popup')))
+			{
+				if($request->input('container_image_pos_1')!="")
+				{
+					$container_image_pos_7 = $request->input('container_image_pos_1');
+					$explode_imagepos7 = explode('/', $container_image_pos_7);
+					$filename_pos7 = rand(11111, 99999).'-'. end($explode_imagepos7);
+					$successfile7 = \File::copy($container_image_pos_7, $destinationPath.$filename_pos7);
+					if($successfile7)
+					{
+						$actimgpath = $destinationPath.$filename_pos7;
+					}
+				}
+			}
 			
 			$toouser['email'] = $crmemail;
 			$toouser['cc_email_popup'] = $ccemail;
 			$toouser['subject'] = $subjectemail;
+			$toouser['attchfle'] = $actimgpath;
 			$tempe = 'crm_email';
 			if($templateemail!='')
 			{
@@ -330,6 +359,11 @@ class CrmhotelController extends Controller {
 					$message->cc($toouser['cc_email_popup']);
 				}
 				$message->subject($toouser['subject']);
+				
+				if($toouser['attchfle']!='')
+				{
+					$message->attach($toouser['attchfle'], ['as' => $toouser['attchfle']]);
+				}
 			});
 			
 			$data['crm_id'] = $crmId;
@@ -340,6 +374,7 @@ class CrmhotelController extends Controller {
 			$data['email_subject'] = $subjectemail;
 			$data['email_template'] = $templateemail;
 			$data['email_message'] = $request->input('message_email_popup');
+			$data['email_attachfile'] = $actimgpath;
 			
 			$ins = \DB::table('tb_crm_emailcommunication')->insert($data);
 			
