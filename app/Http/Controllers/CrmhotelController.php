@@ -4,7 +4,13 @@ use App\Http\Controllers\controller;
 use App\Models\Crmhotel;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
-use Validator, Input, Redirect ; 
+use Validator, Input, Redirect ;  
+use App\Helpers\CrmLayoutHelper;
+use App\Models\ModelsModcustomfieldgroup;
+use App\Models\ModelsModcustomfieldrows;
+use App\Models\ModelsModcustomfieldvalue;
+use App\Models\ModelsModcustomfieldelements;
+use App\Models\ModelsModcustomfield;
 
 
 class CrmhotelController extends Controller {
@@ -147,6 +153,40 @@ class CrmhotelController extends Controller {
 				
 			$id = $this->model->insertRow($data , $request->input('id'));
 			
+                        if (!is_null($request->input('customFields'))) {
+
+                            $mod_slug = $request->segment(2);
+                            $cstfields = $request->input('customFields');
+                            foreach ($request->input('customFields') as $key => $valu) {
+                                if (isset($valu['value']) && !empty($valu['value'])) {
+                                    $fieltype = $valu['type'];
+                                    if ($fieltype == 'checkbox') {
+                                        $fieldArrLabel = array();
+                                        $fieldArrValue = array();
+                                        foreach ($valu['value'] as $valueStr) {
+                                            $exlpodeStrFieldValue = explode('||', $valueStr);
+                                            $fieldArrValue[] = $exlpodeStrFieldValue[0];
+                                            $fieldArrLabel[] = $exlpodeStrFieldValue[1];
+                                        }
+                                        $fieldValue = implode(',', $fieldArrValue);
+                                        $fieldLabel = implode(',', $fieldArrLabel);
+                                    } else {
+                                        $exlpodeFieldValue = explode('||', $valu['value']);
+                                        $fieldValue = isset($exlpodeFieldValue[0]) ? $exlpodeFieldValue[0] : '';
+                                        $fieldLabel = isset($exlpodeFieldValue[1]) ? $exlpodeFieldValue[1] : '';
+                                    }
+                                    $modcustomfieldvalue = new ModelsModcustomfieldvalue;
+                                    $modcustomfieldvalue->idmob_mfv = $mod_slug;
+                                    $modcustomfieldvalue->record_id_mfv = $id;
+                                    $modcustomfieldvalue->option_type_mfv = $fieltype;
+                                    $modcustomfieldvalue->option_name_mfv = $key;
+                                    $modcustomfieldvalue->option_label_mfv = $fieldLabel;
+                                    $modcustomfieldvalue->option_value_mfv = $fieldValue;
+                                    $modcustomfieldvalue->save();
+                                }
+                            }
+                        }
+                        
 			if(!is_null($request->input('apply')))
 			{
 				$return = 'crmhotel/update/'.$id.'?return='.self::returnUrl();
