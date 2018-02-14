@@ -166,7 +166,7 @@
 													
 												</div> 
 												<div class="col-md-6">
-													<a href="#" data-toggle="modal" data-target="#openContainer" onclick="sendmotId(1);">Choose from container</a>
+													<a href="#" data-toggle="modal" data-target="#openContainer" onclick="sendmotId(1); openContainerDIV();">Choose from container</a>
 													<input type="hidden" name="container_image_pos_1" id="box1" value="">
 													<span id="boxspan1"></span>
 												 </div> 
@@ -174,6 +174,29 @@
 											</div> 
 											<button type="button" class="add-task-btn email-send-btn" onclick="submitcrmemail();">{{ Lang::get('core.crmhotel_email_popup_send_btn') }}</button>
 										</form>
+
+
+
+										<!-- open container Modal -->
+										<div  id="openContainer" tabindex="-1"    style="display: none;" role="dialog" aria-labelledby="myModalLabel">
+										  <div class="modal-dialog" role="document">
+											  <div class="modal-content">
+												  <div class="modal-header">
+													  <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="javascript:closeContainerDIV();"><span aria-hidden="true">&times;</span></button>
+													  <h4 class="modal-title" id="myModalLabel">Select Image</h4>
+												  </div>
+												  <div class="modal-body">
+													 <iframe id="iframe_id_123" src="{{URL::to('containeriframe').'/0/iframe'}}" style="height: 430px;width: 553px;border: none;"></iframe>
+												  </div>
+												  <div class="modal-footer">
+													  <input type="hidden" name="boxid" id="boxid" value="">
+													  <button type="button" class="btn btn-primary" onclick="selectimg();">ok</button>
+													  <button type="button" class="btn btn-default" data-dismiss="modal" onclick="javascript:closeContainerDIV();">Cancel</button>
+												  </div>
+
+											  </div>
+										  </div>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -202,26 +225,6 @@
 
 <!--Email popup end-->
 
-<!-- open container Modal -->
-<div class="modal fade" id="openContainer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-	  <div class="modal-content">
-		  <div class="modal-header">
-			  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			  <h4 class="modal-title" id="myModalLabel">Select Image</h4>
-		  </div>
-		  <div class="modal-body">
-			 <iframe id="iframe_id_123" src="{{URL::to('containeriframe').'/0/iframe'}}" style="height: 430px;width: 553px;border: none;"></iframe>
-		  </div>
-		  <div class="modal-footer">
-			  <input type="hidden" name="boxid" id="boxid" value="">
-			  <button type="button" class="btn btn-primary" onclick="selectimg();">ok</button>
-			  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-		  </div>
-
-	  </div>
-  </div>
-</div>
 	
 <script>
 $(document).ready(function(){
@@ -241,6 +244,17 @@ $(document).ready(function(){
 function sendmotId(boxid)
 {
 	$('#boxid').val(boxid);
+}
+
+function openContainerDIV()
+{
+	$('#openContainer').show();
+	
+}
+function closeContainerDIV()
+{
+	$('#openContainer').hide();
+	
 }
 
 function selectimg(obj)
