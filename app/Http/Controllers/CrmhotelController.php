@@ -96,6 +96,8 @@ class CrmhotelController extends Controller {
 	function getUpdate(Request $request, $id = null)
 	{
 	
+            $module_id = 83;
+            
 		if($id =='')
 		{
 			if($this->access['is_add'] ==0 )
@@ -117,6 +119,15 @@ class CrmhotelController extends Controller {
 		}
 		$this->data['fields'] 		=  \SiteHelpers::fieldLang($this->info['config']['forms']);
 		
+                
+                /*
+                 * CRM Layout: Fetch page layout
+                 */
+
+                $this->data['all_rows'] = CrmLayoutHelper::fetchCrmLayout($module_id);
+
+                /********************************/
+                
 		$this->data['id'] = $id;
 		return view('crmhotel.form',$this->data);
 	}	
