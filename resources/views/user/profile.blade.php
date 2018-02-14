@@ -212,7 +212,7 @@
 				 </div> 
 			  </div>
 			  <div class="form-group">
-				<label for="ipt" class=" control-label col-md-4"> PLZ </label>
+				<label for="ipt" class=" control-label col-md-4"> Pin </label>
 				<div class="col-md-8">
 				<input name="company_postal_code" type="text" id="company_postal_code" class="form-control input-sm" value="<?php if(!empty($extra)) { echo $extra->company_postal_code; } ?>" maxlength="6" />  
 				 </div> 

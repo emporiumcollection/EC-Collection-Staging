@@ -55,16 +55,16 @@
 			    
 			  </ul>
 			</div>
-     	<div class="col-md-8 col-sm-8">
+ <div class="col-md-12 col-md-12">
         
 
 <div class="tab-content">
 		<div role="tabpanel" class="tab-pane active" id="personalDetails">
 			
-<div class="row">
+		<div class="row">
             <div class="das-form-outer-align">
                
-                	<form class="form-horizontal my-profile-main-form-align" name="basicInfo" id="basicInfo" method="post" action=" {{URL::to('customer/saveprofile')}}">
+                	<form class="form-horizontal my-profile-main-form-align" name="basicInfo" id="basicInfo" method="post" action=" {{URL::to('customer/saveprofile')}}" enctype="multipart/form-data">
 						<input type="hidden" name="usertype" value="guests" id="userTypeHotel" class="input-hidden usertype" required=""/>
 					<div id="guests">
 					<div class="form-group">
@@ -156,8 +156,7 @@
 					
 					
                 
-            </div>
-        </div>
+            </div> </div>
 
 		</div>
 
@@ -220,30 +219,30 @@
 	            	<!-- Comapny detail tab -->
 	  
 	  <div class="tab-pane m-t" id="company">
-		{!! Form::open(array('url'=>'user/savecompanydetails/', 'class'=>'form-horizontal ' ,'files' => true)) !!}  
+		{!! Form::open(array('url'=>'customer/savecompanydetails/', 'class'=>'form-horizontal ' ,'files' => true)) !!}  
 			<input name="compedit_id" type="hidden" id="compedit_id" value="<?php if(!empty($extra)) { echo $extra->id; } ?>" />
 		<div class="row">
 			<div class="col-md-6">
 			  <div class="form-group">
-				<label for="ipt" class=" control-label col-md-4"> Firmenname </label>
+				<label for="ipt" class=" control-label col-md-4"> Company Name</label>
 				<div class="col-md-8">
 				<input name="company_name" type="text" id="company_name" class="form-control input-sm" required  value="<?php if(!empty($extra)) { echo $extra->company_name; } ?>" />  
 				 </div> 
 			  </div>
 			  <div class="form-group">
-				<label for="ipt" class=" control-label col-md-4"> Inhaber </label>
+				<label for="ipt" class=" control-label col-md-4"> Company Owner </label>
 				<div class="col-md-8">
 				<input name="company_owner" type="text" id="company_owner" class="form-control input-sm" required  value="<?php if(!empty($extra)) { echo $extra->company_owner; } ?>" />  
 				 </div> 
 			  </div>
 			  <div class="form-group">
-				<label for="ipt" class=" control-label col-md-4"> Ansprechpartner </label>
+				<label for="ipt" class=" control-label col-md-4"> Contact Person </label>
 				<div class="col-md-8">
 				<input name="contact_person" type="text" id="contact_person" class="form-control input-sm" required  value="<?php if(!empty($extra)) { echo $extra->contact_person; } ?>" />  
 				 </div> 
 			  </div>
 			  <div class="form-group">
-				<label for="ipt" class=" control-label col-md-4">E-Mail Adresse </label>
+				<label for="ipt" class=" control-label col-md-4">Company E-Mail </label>
 				<div class="col-md-8">
 				<input name="company_email" type="email" id="company_email"  class="form-control input-sm" required value="<?php if(!empty($extra)) { echo $extra->company_email; } ?>" /> 
 				 </div> 
@@ -270,38 +269,38 @@
 			<div class="col-md-6">
 			 
 			  <div class="form-group">
-				<label for="ipt" class=" control-label col-md-4"> Adresse </label>
+				<label for="ipt" class=" control-label col-md-4"> Address </label>
 				<div class="col-md-8">
 				<input name="company_address" type="text" id="comapny_address" class="form-control input-sm" value="<?php if(!empty($extra)) { echo $extra->company_address; } ?>" />  
 				 </div> 
 			  </div>
 			  <div class="form-group">
-				<label for="ipt" class=" control-label col-md-4"> Adresse </label>
+				<label for="ipt" class=" control-label col-md-4"> Address2 </label>
 				<div class="col-md-8">
 				<input name="company_address2" type="text" id="company_address2" class="form-control input-sm" value="<?php if(!empty($extra)) { echo $extra->company_address2; } ?>" />  
 				 </div> 
 			  </div>
 			  <div class="form-group">
-				<label for="ipt" class=" control-label col-md-4"> ORT </label>
+				<label for="ipt" class=" control-label col-md-4"> City </label>
 				<div class="col-md-8">
 				<input name="company_city" type="text" id="comapny_city" class="form-control input-sm" value="<?php if(!empty($extra)) { echo $extra->company_city; } ?>" />  
 				 </div> 
 			  </div>
 			  <div class="form-group">
-				<label for="ipt" class=" control-label col-md-4"> PLZ </label>
+				<label for="ipt" class=" control-label col-md-4"> Pin Code </label>
 				<div class="col-md-8">
 				<input name="company_postal_code" type="text" id="company_postal_code" class="form-control input-sm" value="<?php if(!empty($extra)) { echo $extra->company_postal_code; } ?>" maxlength="6" />  
 				 </div> 
 			  </div>
 			  <div class="form-group">
-				<label for="ipt" class=" control-label col-md-4"> Land </label>
+				<label for="ipt" class=" control-label col-md-4"> Country </label>
 				<div class="col-md-8">
 				<input name="company_country" type="text" id="comapny_country" class="form-control input-sm" value="<?php if(!empty($extra)) { echo $extra->company_country; } ?>" />  
 				 </div> 
 			  </div>
 		  
 			  <div class="form-group  " >
-				<label for="ipt" class=" control-label col-md-4 text-right"> Firmenlogo </label>
+				<label for="ipt" class=" control-label col-md-4 text-right"> CompanyLogo</label>
 				<div class="col-md-8">
 				<div class="fileinput fileinput-new" data-provides="fileinput">
 				  <span class="btn btn-primary btn-file">
@@ -323,22 +322,22 @@
 		
 		<div class="row">
 			<div class="col-md-6">
-				<span class="minhead">Tax Info</span>
+				<span ><h1>Tax Info</h1></span>
 				  
 				  <div class="form-group">
-					<label for="ipt" class=" control-label col-md-4"> Steuernummer </label>
+					<label for="ipt" class=" control-label col-md-4"> Tax Number </label>
 					<div class="col-md-8">
 					<input name="steuernummer" type="text" id="steuernummer" class="form-control input-sm" value="<?php if(!empty($extra)) { echo $extra->steuernummer; } ?>" />  
 					 </div> 
 				  </div>
 				  <div class="form-group">
-					<label for="ipt" class=" control-label col-md-4"> Umsatzsteuer ID </label>
+					<label for="ipt" class=" control-label col-md-4"> VAT ID </label>
 					<div class="col-md-8">
 					<input name="umsatzsteuer_id" type="text" id="umsatzsteuer_id" class="form-control input-sm" value="<?php if(!empty($extra)) { echo $extra->umsatzsteuer_id; } ?>" />  
 					 </div> 
 				  </div>
 				  <div class="form-group">
-					<label for="ipt" class=" control-label col-md-4"> Geschäftsführer </label>
+					<label for="ipt" class=" control-label col-md-4"> Managing Director</label>
 					<div class="col-md-8">
 						<input name="geschäftsführer" type="text" id="geschäftsführer" class="form-control input-sm" value="<?php if(!empty($extra)) { echo $extra->geschäftsführer; } ?>" />  
 					 </div> 
@@ -348,13 +347,13 @@
 				<h2>&nbsp;</h2>
 				  
 				  <div class="form-group">
-					<label for="ipt" class=" control-label col-md-4"> Handelsregister </label>
+					<label for="ipt" class=" control-label col-md-4"> Commercial Register</label>
 					<div class="col-md-8">
 						<input name="handelsregister" type="text" id="handelsregister" class="form-control input-sm" value="<?php if(!empty($extra)) { echo $extra->handelsregister; } ?>" />  
 					 </div> 
 				  </div>
 				  <div class="form-group">
-					<label for="ipt" class=" control-label col-md-4"> Amtsgericht </label>
+					<label for="ipt" class=" control-label col-md-4">District Court </label>
 					<div class="col-md-8">
 						<input name="amtsgericht" type="text" id="amtsgericht" class="form-control input-sm" value="<?php if(!empty($extra)) { echo $extra->amtsgericht; } ?>" maxlength="6" />  
 					 </div> 
@@ -365,7 +364,7 @@
 		  <div class="form-group">
 			<label for="ipt" class=" control-label col-md-4">&nbsp;</label>
 			<div class="col-md-8">
-				<button class="btn btn-success" type="submit"> {{ Lang::get('core.sb_savechanges') }}</button>
+				<button class="btn btn-success" type="submit">Save Details </button>
 			 </div> 
 		  </div> 	
 		
