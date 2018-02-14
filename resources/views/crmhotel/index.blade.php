@@ -136,6 +136,28 @@
 									<div class="client-location-map">
 										<iframe id="crmmap_popup" src="https://www.google.com/maps?q=Randall Miller %26 Associates 300 E Broadway, Logansport, IN 46947&output=embed"></iframe>
 									</div>
+
+
+										<!-- open container Modal -->
+										<div  id="openContainer" tabindex="-1" style="display: none;" role="dialog" aria-labelledby="myModalLabel">
+										  <div class="modal-dialog" role="document">
+											  <div class="modal-content">
+												  <div class="modal-header">
+													  <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="javascript:closeContainerDIV();"><span aria-hidden="true">&times;</span></button>
+													  <h4 class="modal-title" id="myModalLabel">Select Image</h4>
+												  </div>
+												  <div class="modal-body">
+													 <iframe id="iframe_id_123" src="{{URL::to('containeriframe').'/0/iframe'}}" style="height: 400px;width: 400px;border: none;"></iframe>
+												  </div>
+												  <div class="modal-footer">
+													  <input type="hidden" name="boxid" id="boxid" value="">
+													  <button type="button" class="btn btn-primary" onclick="selectimg();">ok</button>
+													  <button type="button" class="btn btn-default" data-dismiss="modal" onclick="javascript:closeContainerDIV();">Cancel</button>
+												  </div>
+
+											  </div>
+										  </div>
+										</div>
 								</div>
 								<div class="col-md-6">
 									<div class="email-form-outer">
@@ -178,26 +200,7 @@
 
 
 
-										<!-- open container Modal -->
-										<div  id="openContainer" tabindex="-1"    style="display: none;" role="dialog" aria-labelledby="myModalLabel">
-										  <div class="modal-dialog" role="document">
-											  <div class="modal-content">
-												  <div class="modal-header">
-													  <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="javascript:closeContainerDIV();"><span aria-hidden="true">&times;</span></button>
-													  <h4 class="modal-title" id="myModalLabel">Select Image</h4>
-												  </div>
-												  <div class="modal-body">
-													 <iframe id="iframe_id_123" src="{{URL::to('containeriframe').'/0/iframe'}}" style="height: 430px;width: 553px;border: none;"></iframe>
-												  </div>
-												  <div class="modal-footer">
-													  <input type="hidden" name="boxid" id="boxid" value="">
-													  <button type="button" class="btn btn-primary" onclick="selectimg();">ok</button>
-													  <button type="button" class="btn btn-default" data-dismiss="modal" onclick="javascript:closeContainerDIV();">Cancel</button>
-												  </div>
-
-											  </div>
-										  </div>
-										</div>
+									
 									</div>
 								</div>
 							</div>
