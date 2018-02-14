@@ -313,6 +313,7 @@ class CrmhotelController extends Controller {
 			$emailArr['msg'] = $request->input('message_email_popup');
 			$destinationPath = public_path().'/uploads/varients_imgs/';
 			$actimgpath = '';
+			$actimgname = '';
 			if(!is_null($request->file('upload_email_popup')))
 			{
 				$filepos7 = $request->file('upload_email_popup');
@@ -323,6 +324,7 @@ class CrmhotelController extends Controller {
 				if($uploadSuccesspos7)
 				{
 					$actimgpath = $destinationPath.$filenamepos7;
+					$actimgname = $filenamepos7;
 				}
 			}			
 			elseif(is_null($request->file('upload_email_popup')))
@@ -336,6 +338,7 @@ class CrmhotelController extends Controller {
 					if($successfile7)
 					{
 						$actimgpath = $destinationPath.$filename_pos7;
+						$actimgname = $filename_pos7;
 					}
 				}
 			}
@@ -344,6 +347,7 @@ class CrmhotelController extends Controller {
 			$toouser['cc_email_popup'] = $ccemail;
 			$toouser['subject'] = $subjectemail;
 			$toouser['attchfle'] = $actimgpath;
+			$toouser['attchflename'] = $actimgname;
 			$tempe = 'crm_email';
 			if($templateemail!='')
 			{
@@ -362,7 +366,7 @@ class CrmhotelController extends Controller {
 				
 				if($toouser['attchfle']!='')
 				{
-					$message->attach($toouser['attchfle'], ['as' => $toouser['attchfle']]);
+					$message->attach($toouser['attchfle'], ['as' => $toouser['attchflename']]);
 				}
 			});
 			
