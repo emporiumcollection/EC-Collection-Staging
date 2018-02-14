@@ -263,6 +263,9 @@ function closeContainerDIV()
 
 function selectimg(obj)
 {
+	
+
+
 	var bid = $('#boxid').val();
 	var cat = $('#cat_id').val();
 	var sList='';
@@ -273,7 +276,8 @@ function selectimg(obj)
 	imagepath = $(obj).attr('rel3');
 	$('#box'+bid).val(imagepath);
 	$('#boxspan'+bid).html(imgname);
-	$('#openContainer').modal('hide');
+	$('#openContainer').hide();
+	
 }
 
 function sendemails_crmhotels(crmid)
