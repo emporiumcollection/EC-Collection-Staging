@@ -160,13 +160,12 @@
 											<div class="form-group">
 												<textarea class="form-control editor" name="message_email_popup" id="message_email_popup"></textarea>
 											</div>
-											<div class="form-group image " >
-												<label for="Upload" class=" control-label col-md-2 text-left"> Upload </label>
-												<div class="col-md-4">
+											<div class="form-group " >
+												<div class="col-md-6">
 													<input  type='file' name='upload_email_popup' id='upload_email_popup' style='width:150px !important;'  />
 													
 												</div> 
-												<div class="col-md-4">
+												<div class="col-md-6">
 													<a href="#" data-toggle="modal" data-target="#openContainer" onclick="sendmotId(1);">Choose from container</a>
 													<input type="hidden" name="container_image_pos_1" id="box1" value="">
 													<span id="boxspan1"></span>
