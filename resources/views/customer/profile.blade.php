@@ -23,7 +23,7 @@
 
   <!-- Nav tabs <i class="fa fa-bullhorn" aria-hidden="true"></i></div><span>Ads -->
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#userProfileDiv" aria-controls="userProfileDiv" role="tab" data-toggle="tab">My Account</a></li>
+    <li role="presentation" class="active"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">My Account</a></li>
     @if($info->group_id==7)
 		 <li role="presentation"><a href="#comingsoon" aria-controls="comingsoon" role="tab" data-toggle="tab">Advertising</a></li>
 	 
@@ -52,8 +52,23 @@
 
   <!-- Tab panes -->
   <div class="tab-content">
-     <div role="tabpanel" class="tab-pane active" id="profile"> <div class="col-md-8 col-sm-8">
-        <div class="row">
+     <div role="tabpanel" class="tab-pane active" id="profile"> 
+			<div class="col-md-8 col-sm-8">
+			     <ul class="nav nav-tabs" role="tablist">
+			    <li role="presentation" class="active"><a href="#personalDetails" aria-controls="personalDetails" role="tab" data-toggle="tab">Personal Information</a></li>
+			    <li role="presentation"><a href="#resetPassword" aria-controls="resetPassword" role="tab" data-toggle="tab">Change Password</a></li>
+			    <li role="presentation"><a href="#companyDetails" aria-controls="companyDetails" role="tab" data-toggle="tab">Company Details</a>
+			    </li>
+			    
+			  </ul>
+			</div>
+     	<div class="col-md-8 col-sm-8">
+        
+
+<div class="tab-content">
+		<div role="tabpanel" class="tab-pane active" id="personalDetails">
+			
+<div class="row">
             <div class="das-form-outer-align">
                
                 	<form class="form-horizontal my-profile-main-form-align" name="basicInfo" id="basicInfo" method="post" action=" {{URL::to('customer/savewhoiam')}}">
@@ -121,7 +136,67 @@
 					
                 
             </div>
-        </div></div></div>
+        </div>
+
+		</div>
+
+		<div role="tabpanel" class="tab-pane" id="resetPassword">
+			
+<div class="row">
+            <div class="das-form-outer-align">
+               
+                	<form class="form-horizontal my-profile-main-form-align" name="passwordInfo" id="passwordInfo" method="post" action=" {{URL::to('customer/savewhoiam')}}">
+						<input type="hidden" name="usertype" value="guests" id="userTypeHotel" class="input-hidden usertype" required=""/>
+					<div id="resetPassDiv">
+						<div class="form-group">
+							<label class="control-label col-sm-2">New Password</label>
+							<div class="col-sm-10">
+								<input type="password" name="newpassword" id="newpassword" value="" class="form-control dash-input-style" placeholder="New Password" required="">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2">Confirm Password</label>
+							<div class="col-sm-10">
+								<input type="password" name="confirmpassword" id ="confirmpassword" value="" class="form-control dash-input-style" placeholder="Confirm Password" required="">
+							</div>
+						</div>
+					
+
+
+						
+
+					
+
+					
+
+					
+						<div class="form-group">        
+							<div class="col-sm-12">
+								<input type="submit" class="btn btn-default dash-btn-style" value="Change Password">
+							</div>
+						</div>
+					</div>
+				</form>
+				<div id="formerrors"></div>
+					
+					
+                
+            </div>
+        </div>
+
+		</div>
+
+		<div role="tabpanel" class="tab-pane" id="companyDetails"> 
+
+
+
+		</div>
+		</div>
+</div>		
+
+
+
+    </div>
     <div role="tabpanel" class="tab-pane " id="home">Coming Soon....</div>
    
     <div role="tabpanel" class="tab-pane" id="messages">Coming Soon...</div>
@@ -134,6 +209,8 @@
 
 
     </div>
+
+   
 
 
 
@@ -210,6 +287,18 @@ $(function () {
   .on('form:submit', function() {
     return true; // Don't submit form for this demo
   });
+
+
+
+    $('#passwordInfo').parsley().on('field:validated', function() {
+    var ok = $('.parsley-error').length === 0;
+    $('.bs-callout-info').toggleClass('hidden', !ok);
+    $('.bs-callout-warning').toggleClass('hidden', ok);
+  })
+  .on('form:submit', function() {
+    return true; // Don't submit form for this demo
+  });
+
 });
 </script>
 
