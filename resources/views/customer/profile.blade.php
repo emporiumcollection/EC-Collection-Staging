@@ -95,13 +95,7 @@
 						</div>
 
 
-						<div class="form-group">
-
-							<label class="control-label col-sm-2">Phone</label>
-							<div class="col-sm-10">          
-								<input type="text" name="txtPhoneNumber" id="txtPhoneNumber" class="form-control dash-input-style" value="{{$info->mobile_number}}"placeholder="+91-9876543210" required="">
-							</div>
-						</div>
+						
 
 						<div class="form-group">
 
