@@ -200,7 +200,7 @@
       <div class="form-group has-feedback">
       		<label></label>
 			<div class="col-xs-6">
-			  <input type="submit" class="btn btn-white  pull-right" name="btnSubmit" value="Reset My Password">
+			  <input type="submit" class="btn btn-default dash-btn-style  pull-right" name="btnSubmit" value="Reset My Password">
 			</div>
       </div>
 	  		
@@ -305,7 +305,7 @@
 				<div class="fileinput fileinput-new" data-provides="fileinput">
 				  <span class="btn btn-primary btn-file">
 					<span class="fileinput-new">Hochladen</span><span class="fileinput-exists">Change</span>
-						<input type="file" name="company_logo">
+						<input type="file" name="company_logo" class="btn btn-default dash-btn-style">
 					</span>
 					<span class="fileinput-filename"></span>
 					<a href="#" class="close fileinput-exists" data-dismiss="fileinput" style="float: none">&times;</a>
@@ -364,7 +364,7 @@
 		  <div class="form-group">
 			<label for="ipt" class=" control-label col-md-4">&nbsp;</label>
 			<div class="col-md-8">
-				<button class="btn btn-white" type="submit">Save Details </button>
+				<button class="btn btn-default dash-btn-style" type="submit">Save Details </button>
 			 </div> 
 		  </div> 	
 		

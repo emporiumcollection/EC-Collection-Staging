@@ -20,7 +20,7 @@
 }
 .dashboard-navigation-style .dashboard-menu-align li a {
     margin: 0;
-    background-color: #1e2023;
+    background-color: #aba07c;
     border-bottom: 1px solid #414246;
     color: #fff;
     display: block;
@@ -71,7 +71,7 @@ nav.navbar.navbar-inverse.dashboard-left-main-nav-outer-align {
     margin-top: 30px;
 }
 .my-profile-main-form-align .radio-label {
-    color: #1e2023;
+    color: #aba07c;
     font-size: 13px;
     font-weight: bold;
 }
@@ -79,7 +79,7 @@ nav.navbar.navbar-inverse.dashboard-left-main-nav-outer-align {
     margin-top: 2px;
 }
 .dash-btn-style {
-    background-color: #1e2023;
+    background-color: #aba07c;
     border: medium none;
     border-radius: 0;
     color: #fff;
@@ -204,7 +204,7 @@ ul.nav li.referal-btn > a:hover, ul.nav li.referal-btn > a:active, ul.nav li.ref
     white-space: nowrap;
 }
 .dashboard-navigation-style .list-box {
-    background-color: #1e2023;
+    background-color: #aba07c;
     border-bottom: 1px solid #414246;
     color: #fff;
     display: block;
