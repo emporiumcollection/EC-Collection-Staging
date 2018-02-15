@@ -2227,7 +2227,6 @@
         
         <script type="text/javascript">
             $(document).on('ready', function () {
-				
 				var baseUrl = "{{ url::to('transferaddfile') }}";
 				var token = "{{ Session::getToken() }}";
 				Dropzone.autoDiscover = false;
