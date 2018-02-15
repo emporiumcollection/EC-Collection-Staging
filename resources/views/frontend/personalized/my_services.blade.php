@@ -150,13 +150,13 @@
                             if(!empty($services)) {
                                 foreach ($services as $service) {
                                     echo '<tr>
-                                            <td>'.$service['adults'].'</td>
-                                            <td>'.$service['youth'].'</td>
-                                            <td>'.$service['children'].'</td>
-                                            <td>'.$service['toddlers'].'</td>
-                                            <td>'.$service['earliest_arrival'].'</td>
-                                            <td>'.$service['late_check_out'].'</td>
-                                            <td>'.$service['stay_time'].'</td>
+                                            <td>'.$service->adults.'</td>
+                                            <td>'.$service->youth.'</td>
+                                            <td>'.$service->children.'</td>
+                                            <td>'.$service->toddlers.'</td>
+                                            <td>'.$service->earliest_arrival.'</td>
+                                            <td>'.$service->late_check_out.'</td>
+                                            <td>'.$service->stay_time.'</td>
                                             <td>
                                                 <a href="" class="tips btn btn-xs btn-primary" title="Edit"><i class="fa fa-pencil"></i></a>
                                                 <a href="" class="tips btn btn-xs btn-danger" title="Delete"><i class="fa fa-trash"></i></a>
