@@ -198,10 +198,9 @@
 			<i class="icon-lock form-control-feedback"></i>
 		</div>
       <div class="form-group has-feedback">
-      		<label></label>
-			<div class="col-xs-6">
+      
 			  <input type="submit" class="btn btn-default dash-btn-style  pull-left" name="btnSubmit" value="Reset My Password">
-			</div>
+			
       </div>
 	  		
 	
