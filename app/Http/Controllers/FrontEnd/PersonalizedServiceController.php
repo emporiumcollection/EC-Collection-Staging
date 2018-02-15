@@ -20,6 +20,10 @@ class PersonalizedServiceController extends Controller {
     */
     public function index(Request $request) {
        
+        if (!\Auth::check()):
+            return Redirect::to('customer/login');
+        endif;
+        
         $temp = $this->get_destinations();
         
         $this->data['destinations'] = $temp['sub_destinations'];
@@ -27,6 +31,60 @@ class PersonalizedServiceController extends Controller {
         $this->data['experiences'] = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_custom_title')->where('category_published', 1)->where('parent_category_id', 8)->get();
                 
         return view('frontend.personalized.personalized_service', $this->data);
+    }
+    
+    /*
+     * AIC: List customer's personalized service
+     */
+    
+    function list_my_services() {
+        
+        if (!\Auth::check()):
+            return Redirect::to('customer/login');
+        endif;
+        
+        $customer_id = \Auth::user()->id;
+        
+        $this->data['services'] = \DB::table('tb_personalized_services')->where('customer_id', $customer_id)->orderBy('ps_id', 'DESC')->get();
+        return view('frontend.personalized.my_services', $this->data);
+    }
+    
+    /*
+     * AIC: edit customer's personalized service
+     */
+    
+    function edit($ps_id) {
+        
+        if (!\Auth::check()):
+            return Redirect::to('customer/login');
+        endif;
+        
+        $customer_id = \Auth::user()->id;
+        
+        $temp = $this->get_destinations();
+        
+        $this->data['destinations'] = $temp['sub_destinations'];
+        $this->data['inspirations'] = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_custom_title')->where('category_published', 1)->where('parent_category_id', 627)->get();
+        $this->data['experiences'] = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_custom_title')->where('category_published', 1)->where('parent_category_id', 8)->get();
+        $this->data['row'] = \DB::table('tb_personalized_services')->where('ps_id', $ps_id)->where('customer_id', $customer_id)->first();
+        
+        return view('frontend.personalized.edit', $this->data);
+    }
+    
+    /*
+     * AIC: delete customer's personalized service
+     */
+    
+    function delete($ps_id) {
+        
+        if (!\Auth::check()):
+            return Redirect::to('customer/login');
+        endif;
+        
+        $customer_id = \Auth::user()->id;
+        
+        \DB::table('tb_personalized_services')->where('ps_id', $ps_id)->where('customer_id', $customer_id)->delete();
+        return Redirect::to('personalized-service/my-services');
     }
     
     /*
@@ -77,7 +135,14 @@ class PersonalizedServiceController extends Controller {
     
     public function save(Request $request) {
         
-        $params = array('salutation' => $request->input('salutation'),
+        if (!\Auth::check()):
+            return Redirect::to('customer/login');
+        endif;
+        
+        $customer_id = \Auth::user()->id;
+        
+        $params = array('customer_id' => $customer_id,
+                        'salutation' => $request->input('salutation'),
                         'first_name' => $request->input('first_name'),
                         'surname' => $request->input('surname'),
                         'email' => $request->input('email'),
@@ -100,6 +165,40 @@ class PersonalizedServiceController extends Controller {
         
         \DB::table('tb_personalized_services')->insert($params);
         return Redirect::to('personalized-service')->with(['info' => 'Your Info Saved Successfully.']);
+    }
+    
+    /*
+     * AIC: Update from data in DB
+     */
+    
+    public function update(Request $request) {
+        
+        if (!\Auth::check()):
+            return Redirect::to('customer/login');
+        endif;
+        
+        $ps_id = $request->input('ps_id');
+        
+        $params = array('salutation' => $request->input('salutation'),
+                        'first_name' => $request->input('first_name'),
+                        'surname' => $request->input('surname'),
+                        'email' => $request->input('email'),
+                        'adults' => $request->input('adults'),
+                        'youth' => $request->input('youth'),
+                        'children' => $request->input('children'),
+                        'toddlers' => $request->input('toddlers'),
+                        'earliest_arrival' => date("Y-m-d", strtotime($request->input('earliest_arrival'))),
+                        'late_check_out' => date("Y-m-d", strtotime($request->input('late_check_out'))),
+                        'stay_time' => $request->input('stay_time'),
+                        'destinations' => implode(', ', $request->input('destinations')),
+                        'inspirations' => implode(', ', $request->input('inspirations')),
+                        'experiences' => implode(', ', $request->input('experiences')),
+                        'note' => $request->input('note'),
+                        'updated' => date("Y-m-d H:i:s")
+                    );
+        
+        \DB::table('tb_personalized_services')->where('ps_id', $ps_id)->update($params);
+        return Redirect::to('personalized-service/edit/'.$ps_id)->with(['info' => 'Your Info Saved Successfully.']);
     }
 
 }
