@@ -111,7 +111,7 @@
 							<div class="fileinput fileinput-new" data-provides="fileinput">
 							  <span class="btn">
 							  	<span class="fileinput-exists"> Upload/Change </span>
-									<input type="file" name="avatar">
+									<input type="file" name="avatar" class="btn btn-default dash-btn-style">
 								</span>
 								<span class="fileinput-filename"></span>
 								
