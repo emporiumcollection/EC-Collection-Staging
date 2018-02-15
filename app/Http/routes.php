@@ -76,6 +76,7 @@ Route::get('generate/destination', 'GenerateController@destinationGenerate');
 Route::get('generate/hotel', 'GenerateController@hotelGenerate');
 Route::get('personalized-service', 'Frontend\PersonalizedServiceController@index');
 Route::post('personalized-service/save', 'Frontend\PersonalizedServiceController@save');
+Route::post('personalized-service/update', 'Frontend\PersonalizedServiceController@update');
 Route::get('personalized-service/my-services', 'Frontend\PersonalizedServiceController@list_my_services');
 Route::get('personalized-service/edit/{ps_id}', 'Frontend\PersonalizedServiceController@edit');
 Route::get('personalized-service/delete/{ps_id}', 'Frontend\PersonalizedServiceController@delete');

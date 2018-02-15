@@ -166,5 +166,37 @@ class PersonalizedServiceController extends Controller {
         \DB::table('tb_personalized_services')->insert($params);
         return Redirect::to('personalized-service')->with(['info' => 'Your Info Saved Successfully.']);
     }
+    
+    /*
+     * AIC: Update from data in DB
+     */
+    
+    public function update(Request $request) {
+        
+        if (!\Auth::check()):
+            return Redirect::to('customer/login');
+        endif;
+        
+        $params = array('salutation' => $request->input('salutation'),
+                        'first_name' => $request->input('first_name'),
+                        'surname' => $request->input('surname'),
+                        'email' => $request->input('email'),
+                        'adults' => $request->input('adults'),
+                        'youth' => $request->input('youth'),
+                        'children' => $request->input('children'),
+                        'toddlers' => $request->input('toddlers'),
+                        'earliest_arrival' => date("Y-m-d", strtotime($request->input('earliest_arrival'))),
+                        'late_check_out' => date("Y-m-d", strtotime($request->input('late_check_out'))),
+                        'stay_time' => $request->input('stay_time'),
+                        'destinations' => implode(', ', $request->input('destinations')),
+                        'inspirations' => implode(', ', $request->input('inspirations')),
+                        'experiences' => implode(', ', $request->input('experiences')),
+                        'note' => $request->input('note'),
+                        'updated' => date("Y-m-d H:i:s")
+                    );
+        
+        \DB::table('tb_personalized_services')->where('ps_id', $ps_id)->update($params);
+        return Redirect::to('personalized-service/edit/'.$ps_id)->with(['info' => 'Your Info Saved Successfully.']);
+    }
 
 }
