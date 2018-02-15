@@ -200,7 +200,7 @@
       <div class="form-group has-feedback">
       		<label></label>
 			<div class="col-xs-6">
-			  <input type="submit" class="btn btn-primary pull-right" name="btnSubmit" value="Reset My Password">
+			  <input type="submit" class="btn btn-white  pull-right" name="btnSubmit" value="Reset My Password">
 			</div>
       </div>
 	  		
@@ -322,7 +322,7 @@
 		
 		<div class="row">
 			<div class="col-md-6">
-				<span ><h1>Tax Info</h1></span>
+				<span >Tax Info</span>
 				  
 				  <div class="form-group">
 					<label for="ipt" class=" control-label col-md-4"> Tax Number </label>
@@ -364,7 +364,7 @@
 		  <div class="form-group">
 			<label for="ipt" class=" control-label col-md-4">&nbsp;</label>
 			<div class="col-md-8">
-				<button class="btn btn-success" type="submit">Save Details </button>
+				<button class="btn btn-white" type="submit">Save Details </button>
 			 </div> 
 		  </div> 	
 		
