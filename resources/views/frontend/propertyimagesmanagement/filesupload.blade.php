@@ -2190,21 +2190,7 @@
                             <!--Footer Section-->
                         </div>
                         <div class="panel-group" id="landing-footer-accordian hidden-md hidden-lg">
-                            @if(!empty($landing_menus))
-                            <div class="panel panel-default hidden-md hidden-lg">
-                                <a class="collapsed" data-toggle="collapse" data-parent="#landing-footer-accordian" @if($fmenu['menu_type'] =='external') href="{{ URL::to($fmenu['url'])}}" @else href="{{ URL::to($fmenu['module'])}}" @endif>
-                                   <div class="panel-heading">
-                                        <h4 class="panel-title menu-text accordion">
-                                            @if(CNF_MULTILANG ==1 && isset($fmenu['menu_lang']['title'][Session::get('lang')]))
-                                            {{ $fmenu['menu_lang']['title'][Session::get('lang')] }}
-                                            @else
-                                            {{$fmenu['menu_name']}}
-                                            @endif
-                                        </h4>
-                                    </div>
-                                </a>
-                            </div>
-                            @endif
+                            
                         </div>
                         <!--Next-->
                     </div>
