@@ -12,6 +12,32 @@ class PropertyimagesmanagementController extends Controller {
         parent::__construct();
         $this->data['pageTitle'] = '';
         $this->data['data'] = CommonHelper::getInfo();
+		\Session::put('lang', 'en');
+        $getlang = \Session::get('newlang');
+        $arrive_date = \Session::get('arrive_date');
+        $destination_date = \Session::get('destination_date');
+        $adults = \Session::get('adults');
+        $childs = \Session::get('childs');
+        $this->data['arrive_date'] = $this->data['destination_date'] = $this->data['childs'] = $this->data['adults'] = '';
+        if (!isset($getlang)) {
+            \Session::put('newlang', 'English');
+        } else {
+            \Session::put('lang', $getlang);
+        }
+        if (isset($arrive_date)) {
+            $this->data['arrive_date'] = $arrive_date;
+        }
+        if (isset($destination_date)) {
+            $this->data['destination_date'] = $destination_date;
+        }
+        if (isset($adults)) {
+            $this->data['adults'] = $adults;
+        }
+        if (isset($childs)) {
+            $this->data['childs'] = $childs;
+        }
+        $this->data['footer_text'] = \DB::table('tb_settings')->select('content')->where('key_value', 'footer_text')->first();
+        $this->data['about_text'] = \DB::table('tb_settings')->select('content')->where('key_value', 'about_text')->first();
 
     }
 	
