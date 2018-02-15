@@ -130,6 +130,7 @@
      
             <!--Page content start here-->
             <div class="col-md-12">
+                <h2 class="black-heading-big">My Personalized Service</h2>
                 <div class="table-responsive">
                     <table class="table table-responsive table-striped">
                         <thead>
@@ -164,7 +165,7 @@
                                 }
                             }
                             else {
-                                echo '<tr><td colspan="8">No results found</td></tr>';
+                                echo '<tr><td class="text-center" colspan="8">No results found</td></tr>';
                             }
                             ?>
                         </tbody>
