@@ -177,6 +177,8 @@ class PersonalizedServiceController extends Controller {
             return Redirect::to('customer/login');
         endif;
         
+        $ps_id = $request->input('ps_id');
+        
         $params = array('salutation' => $request->input('salutation'),
                         'first_name' => $request->input('first_name'),
                         'surname' => $request->input('surname'),
