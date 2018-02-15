@@ -288,6 +288,7 @@ Route::get('removecartitem', 'Frontend\HotelMembershipController@getCartItemRemo
 Route::get('advertiser/package', 'Frontend\AdvertisementController@advertisementPackage');
 
 Route::get('hotel/transferimages', 'Frontend\PropertyimagesmanagementController@propertyImageupload');
+Route::get('hotel/transferaddfile', 'Frontend\PropertyimagesmanagementController@transferaddfile');
 
 Route::get('advertiser/cart', 'Frontend\AdvertisementController@advertiserCart');
 Route::get('advertiser/add_package_to_cart', 'Frontend\AdvertisementController@addToCartAjax');

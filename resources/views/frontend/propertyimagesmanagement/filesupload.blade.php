@@ -953,6 +953,10 @@
 									<div class="form-group  " >
 										<div class="dropzone" id="dropzoneFileUpload"> </div>
 									</div>
+									
+									<div class="form-group  " >
+										<button class="form-control" >Send </button>
+									</div>
                                 </form> 
                             </div>
                         </div>
@@ -2220,19 +2224,15 @@
 					url: baseUrl,
 					params: {
 						_token: token,
-						fold_id: 0
+						fold_id: 6200,
+						emailaddress:$('#emailaddress').val(),
+						message:$('#message').val(),
+						propertyname:$('#propertyname').val(),
 					},
 					paramName: "file", // The name that will be used to transfer the file
 					addRemoveLinks: true,
 					success: function(file, response){
 						
-					},
-					init: function() {
-						var thisDropzone = this;
-						this.on("processing", function(file) {
-							thisDropzone.options.params.fold_id = 0;
-							thisDropzone.options.url = baseUrl;
-						});
 					}
 				 });
 			 

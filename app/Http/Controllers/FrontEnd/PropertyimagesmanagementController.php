@@ -62,148 +62,227 @@ class PropertyimagesmanagementController extends Controller {
         return view('frontend.propertyimagesmanagement.filesupload', $this->data);
     }
 	
+	function createNewFolder($Foldername, $ParentfolderId) {
+        if ($Foldername != '') {
+            $dirPath = (new ContainerController)->getContainerUserPath($ParentfolderId);
+            $slug = \SiteHelpers::seoUrl(trim($Foldername));
+            $result = \File::makeDirectory($dirPath . $slug, 0777, true);
+            $fdata['parent_id'] = $ParentfolderId;
+            $fdata['name'] = $slug;
+            $fdata['display_name'] = $Foldername;
+            $fdata['file_type'] = 'folder';
+            $fdata['user_id'] = 1;
+            $fdata['created'] = date('y-m-d h:i:s');
+            $fID = \DB::table('tb_container')->insertGetId($fdata);
+            return $fID;
+        } else {
+            return false;
+        }
+    }
     
-    public function propertyManagementList(Request $request) {
-       
-        $uid = isset(\Auth::user()->id) ? \Auth::user()->id : 1;
-        $this->data['properties'] = \DB::table('tb_properties')->select('id','property_name','city','website','email')->where('user_id', $uid)->get();
-        return view('frontend.propertymanagement.propertymanagement_list', $this->data);
-    }
-	
-	public function propertyManagementDetail(Request $request, $propid) {
-       
-        $uid = isset(\Auth::user()->id) ? \Auth::user()->id : 1;
-        $this->data['property'] = \DB::table('tb_properties')->where('id', $propid)->first();
-        return view('frontend.propertymanagement.propertymanagementdetail', $this->data);
-    }
-	
-	public function propertyManagementSaveDetail(Request $request) {
-
-        $uid = isset(\Auth::user()->id) ? \Auth::user()->id : 1;
-		$rules['hotelinfo_name'] = 'required';
-        $rules['hotelinfo_status'] = 'required';
-        $rules['hotelinfo_type'] = 'required';
-        $rules['hotelinfo_building'] = 'required';
-		$rules['hotelinfo_opening_date'] = 'required';
-		$rules['hotelinfo_address'] = 'required';
-		$rules['hotelinfo_city'] = 'required';
-		$rules['hotelinfo_country'] = 'required';
-		$rules['hotelinfo_postal'] = 'required';
-		$rules['hotelinfo_website'] = 'required';
-		$rules['hotelinfo_daysopen'] = 'required';
-		$rules['hotelfac_num_rooms'] = 'required';
-		$rules['hotelfac_num_suites'] = 'required';
-		$rules['hoteldesc_concept'] = 'required';
-		$rules['hotel_contactinfo_address'] = 'required';
-		$rules['hotel_contactinfo_city'] = 'required';
-		$rules['hotel_contactinfo_country'] = 'required';
-		$rules['hotel_contactinfo_postal'] = 'required';
-		$rules['hotel_contactprsn_firstname'] = 'required';
-		$rules['hotel_contactprsn_lastname'] = 'required';
-		$rules['hotel_contactprsn_companyname'] = 'required';
-		$rules['hotel_contactprsn_jobtitle'] = 'required';
-		$rules['hotel_contactprsn_email'] = 'required|email|unique:tb_users';
-		$rules['hotel_contactprsn_phone'] = 'required';
-		$rules['hotel_contactprsn_mobile'] = 'required';
+    public function transferaddfile(Request $request)
+	{
+		$fold_id = $request->input('fold_id');
+		$emailid = $request->input('emailaddress');
+		$message = $request->input('message');
+		$propertyname = $request->input('propertyname');
+		$tdate = date('y-m-d-h-i-s');
+		$curdate_propFolder = 0;
+		$rules['emailaddress'] = 'required';
+		$rules['propertyname'] = 'required';
         $validator = Validator::make($request->all(), $rules);
         if ($validator->passes()) {
-			
-			$data['property_name'] = $request->input('hotelinfo_name');
-			$data['property_short_name'] = $request->input('hotelinfo_name');
-			$alias = \SiteHelpers::seoUrl(Input::get('hotelinfo_name'));
-			$exha = false;
-			for ($f = 1; $exha != true; $f++) {
-				if ($request->input('id') == '') {
-					$check_alias = \DB::table('tb_properties')->where('property_slug', $alias)->count();
-				} else {
-					$check_alias = \DB::table('tb_properties')->where('property_slug', $alias)->where('id', '!=', $id)->count();
-				}
-				if ($check_alias > 0) {
-					$alias = $alias . '-' . $f;
-				} else {
-					$alias = $alias;
-					$exha = true;
-				}
+			$newpropFolder = $this->createNewFolder($propertyname, $fold_id);
+			if ($newpropFolder !== false) {
+				$curdate_propFolder = $this->createNewFolder($tdate, $newpropFolder);
 			}
-			$data['user_id'] = $uid;
-			$data['property_slug'] = $alias;
-			$data['social_status'] = 1;
-			$data['property_type'] = 'Hotel';
-			$data['booking_type'] = 'Rent';
-			$data['created'] = date('Y-m-d h:i:s');
-			$data['hotelinfo_status'] = $request->input('hotelinfo_status');
-			$data['hotelinfo_type'] = $request->input('hotelinfo_type');
-			$data['hotelinfo_building'] = $request->input('hotelinfo_building');
-			$data['hotelinfo_opening_date'] = $request->input('hotelinfo_opening_date');
-			$data['hotelinfo_address'] = $request->input('hotelinfo_address');
-			$data['city'] = $request->input('hotelinfo_city');
-			$data['country'] = $request->input('hotelinfo_country');
-			$data['hotelinfo_postal'] = $request->input('hotelinfo_postal');
-			$data['website'] = $request->input('hotelinfo_website');
-			$data['hotelinfo_daysopen'] = $request->input('hotelinfo_daysopen');
-			$data['hotelinfo_avg_daily_rate'] = $request->input('hotelinfo_avg_daily_rate');
-			$data['hotelinfo_avg_occupancy'] = $request->input('hotelinfo_avg_occupancy');
-			
-			$data['hotelfac_num_rooms'] = $request->input('hotelfac_num_rooms');
-			$data['hotelfac_num_suites'] = $request->input('hotelfac_num_suites');
-			if (!empty($request->input('hotelfac_fb_outlets'))) {
-				$data['hotelfac_fb_outlets'] = implode(',', $request->input('hotelfac_fb_outlets'));
-			} else {
-				$data['hotelfac_fb_outlets'] = '';
-			}
-			if (!empty($request->input('hotelfac_guest_fac'))) {
-				$data['hotelfac_guest_fac'] = implode(',', $request->input('hotelfac_guest_fac'));
-			} else {
-				$data['hotelfac_guest_fac'] = '';
-			}
-			$data['hotelfac_meeting_area'] = $request->input('hotelfac_meeting_area');
-			$data['hotelfac_meeting_fac'] = $request->input('hotelfac_meeting_fac');
-			$data['hotelfac_comments'] = $request->input('hotelfac_comments');
-			
-			$data['hoteldesc_concept'] = $request->input('hoteldesc_concept');
-			$data['architecture_desciription'] = $request->input('hoteldesc_architecture_design');
-			$data['architecture_title'] = $request->input('hoteldesc_architecture_name');
-			$data['architecture_design_desciription'] = $request->input('hoteldesc_architecture_design');
-			$data['architecture_design_title'] = $request->input('hoteldesc_architecture_name');
-			$data['architecture_design_url'] = $request->input('hoteldesc_architecture_website');
-			$data['architecture_designer_title'] = $request->input('hoteldesc_interior_designer_name');
-			$data['architecture_designer_url'] = $request->input('hoteldesc_interior_designer_website');
-			$data['hoteldesc_local_integration'] = $request->input('hoteldesc_local_integration');
-			$data['hoteldesc_brand'] = $request->input('hoteldesc_brand');
-			$data['hoteldesc_brand_agency_name'] = $request->input('hoteldesc_brand_agency_name');
-			$data['hoteldesc_brand_agency_website'] = $request->input('hoteldesc_brand_agency_website');
-			$data['hoteldesc_brand_linkdin_profile'] = $request->input('hoteldesc_brand_linkdin_profile');
-			$data['social_instagram'] = $request->input('hoteldesc_brand_instagram_profile');
-			
-			$data['hotel_contactinfo_name'] = $request->input('hotel_contactinfo_name');
-			$data['owner_address'] = $request->input('hotel_contactinfo_address');
-			$data['owner_city'] = $request->input('hotel_contactinfo_city');
-			$data['owner_country'] = $request->input('hotel_contactinfo_country');
-			$data['owner_postal_code'] = $request->input('hotel_contactinfo_postal');
-			
-			$data['owner_name'] = $request->input('hotel_contactprsn_firstname');
-			$data['owner_last_name'] = $request->input('hotel_contactprsn_lastname');
-			$data['hotel_contactprsn_companyname'] = $request->input('hotel_contactprsn_companyname');
-			$data['hotel_contactprsn_jobtitle'] = $request->input('hotel_contactprsn_jobtitle');
-			$data['owner_email_primary'] = $request->input('hotel_contactprsn_email');
-			$data['owner_phone_primary'] = $request->input('hotel_contactprsn_phone');
-			$data['owner_phone_emergency'] = $request->input('hotel_contactprsn_mobile');
-			if (!is_null($request->input('hotel_contactprsn_agree'))) {
-				$data['hotel_contactprsn_agree'] = $request->input('hotel_contactprsn_agree');
-			} else {
-				$data['hotel_contactprsn_agree'] = 0;
-			}
-			$propertyquery = \DB::table('tb_properties')->where('id',$request->input('propsid'))->update($data);
-			
-			$res['status'] = 'success';
-            return json_encode($res);
-        } else {
+			if($curdate_propFolder > 0) 
+			{
+				$dirPath = (new ContainerController)->getContainerUserPath($curdate_propFolder);
+				if( is_dir($dirPath) === true )
+				{
+					$file = $request->file('file');
+					$destinationPath = $dirPath;
+					$extension = $file->getClientOriginalExtension();
+					$fileName = $file->getClientOriginalName();
+					$ftname = explode('.',$fileName);
+					$exha = false;
+					for($f=1;$exha!=true;$f++)
+					{
+						if (File::exists($destinationPath.$fileName))
+						{
+							$fileName = $ftname[0].'('.$f.').'.$extension;
+						}
+						else
+						{
+							$fileName = $fileName;
+							$exha = true;
+						}
+					}
+					// MOVE THE UPLOADED FILES TO THE DESTINATION DIRECTORY
+					$upload_success = $file->move($destinationPath, $fileName);
+					$ftype = $request->file('file')->getClientMimeType();
+					$exFtype = explode('/',$ftype);
+					if($exFtype[0]=="image")
+					{
+						$thimg = \Image::make($destinationPath.$fileName);
+						$thimg->resize(128, 130);
+						$thumbfile = 'thumb_'. Input::get('fold_id') .'_'.$fileName;
+						$thimg->save(public_path(). '/uploads/thumbs/'.$thumbfile);
+						
+						$mdimg = \Image::make($destinationPath.$fileName);
+						$thactualsize = getimagesize($destinationPath.$fileName);
+						if($thactualsize[0]>$thactualsize[1])
+						{
+							$mdimg->resize(320, null, function ($constraint) {
+								$constraint->aspectRatio();
+							});
+						}
+						else
+						{
+							$mdimg->resize(null, 320, function ($constraint) {
+								$constraint->aspectRatio();
+							});
+						}
+						$thumbfile = 'format_'. Input::get('fold_id') .'_'.$fileName;
+						$mdimg->save(public_path(). '/uploads/thumbs/'.$thumbfile);
+						
+						$mdimg = \Image::make($destinationPath.$fileName);
+						$hfactualsize = getimagesize($destinationPath.$fileName);
+						if($hfactualsize[0]>$hfactualsize[1])
+						{
+							$mdimg->resize(1000, null, function ($constraint) {
+								$constraint->aspectRatio();
+							});
+						}
+						else
+						{
+							$mdimg->resize(null, 1000, function ($constraint) {
+								$constraint->aspectRatio();
+							});
+						}
+						$thumbfile = 'highflip_'. Input::get('fold_id') .'_'.$fileName;
+						$mdimg->save(public_path(). '/uploads/thumbs/'.$thumbfile);
+						
+						$countfile = DB::table('tb_container_files')->where('folder_id', $curdate_propFolder)->where(function ($query) { $query->where('file_type', 'image/jpeg')->orWhere('file_type', 'image/png')->orWhere('file_type', 'image/gif');})->count();
+						if($countfile==0)
+						{
+							$copytofolder = public_path().'/uploads/folder_cover_imgs/';
+							$bkimg = \Image::make($destinationPath.$fileName);
+							$bkimg->resize(128, 130);
+							$bkimgfile = 'thumb_'. $fileName;
+							$bkimg->save($copytofolder.$bkimgfile);
+							
+							$mdimg = \Image::make($destinationPath.$fileName);
+							$thactualsize = getimagesize($destinationPath.$fileName);
+							if($thactualsize[0]>$thactualsize[1])
+							{
+								$mdimg->resize(320, null, function ($constraint) {
+									$constraint->aspectRatio();
+								});
+							}
+							else
+							{
+								$mdimg->resize(null, 320, function ($constraint) {
+									$constraint->aspectRatio();
+								});
+							}
+							$thumbfile = 'format_'.$fileName;
+							$mdimg->save($copytofolder.$thumbfile);
+							
+							$cmdata['temp_cover_img'] = $fileName;
+							$cmdata['temp_cover_img_masonry'] = $fileName;
+							$cmdata['updated'] = date('y-m-d');
+							\DB::table('tb_container')->where('id', $curdate_propFolder)->update($cmdata);
+						}
+					}
+					
+					$data['folder_id'] = $curdate_propFolder;
+					$data['file_name'] = $fileName;
+					$data['file_type'] = $request->file('file')->getClientMimeType();
+					$data['file_size'] = $request->file('file')->getClientSize();
+					$data['user_id'] = \Auth::user()->id;
+					$data['created'] = date('y-m-d h:i:s');
+					$data['path'] = $destinationPath;
+					$fileID = \DB::table('tb_container_files')->insertGetId($data);
+					
+					if($extension=='tif' || $extension=='cad')
+					{
+						$newtfname = $destinationPath.$fileName;
+						$typArr = array('jpg','png');
+						foreach($typArr as $imgtype)
+						{
+							$fileName = $ftname[0].'.'.$imgtype;
+							$exha = false;
+							for($f=1;$exha!=true;$f++)
+							{
+								if (File::exists($destinationPath.$fileName))
+								{
+									$fileName = $ftname[0].'('.$f.').'.$imgtype;
+								}
+								else
+								{
+									$fileName = $fileName;
+									$exha = true;
+								}
+							}
+							\Image::make($newtfname)->encode($imgtype, 100)->save($destinationPath.$fileName);
+							
+							$data['folder_id'] = $curdate_propFolder;
+							$data['file_id'] = $fileID;
+							$data['file_name'] = $fileName;
+							if($imgtype=='jpg')
+							{
+								$data['file_type'] = 'image/jpeg';
+							}
+							else
+							{
+								$data['file_type'] = 'image/png';
+							}
+							
+							$data['file_size'] = $request->file('file')->getClientSize();
+							$data['user_id'] = \Auth::user()->id;
+							$data['created'] = date('y-m-d h:i:s');
+							$data['path'] = $destinationPath;
+							\DB::table('tb_container_tiff_files')->insert($data);
+						}
+					}
+					
+					$data['msg'] = $message;
+					$toouser['email'] = $emailid;
+					$toouser['subject'] = "Files are uploaded.";
+					\Mail::send('user.emails.frontend_upload', $data, function($message) use ($toouser) {
+						$message->from('info@emporium-voyage.com', CNF_APPNAME);
 
-            $res['status'] = 'error';
-            $res['errors'] = $validator->errors()->all();
-            return json_encode($res);
-        }
-        
-    }
+						$message->to($toouser['email']);
+
+						$message->subject($toouser['subject']);
+					});
+					
+					\Mail::send('user.emails.frontend_upload', $data, function($message) use ($toouser) {
+						$message->from($toouser['email']);
+
+						$message->to('info@emporium-voyage.com');
+
+						$message->subject($toouser['subject']);
+					});
+					
+					return "success";
+				}
+				else
+				{
+					return "error";
+				}
+			}
+			else
+			{
+				return "error";
+			}
+		}
+		else
+		{
+			return $validator->withInput();
+		}
+	}
 
 }
