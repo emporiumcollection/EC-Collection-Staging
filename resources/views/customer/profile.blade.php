@@ -110,7 +110,7 @@
 							<div class="col-sm-6">
 							<div class="fileinput fileinput-new" data-provides="fileinput">
 							  <span class="btn">
-							  	<span class="fileinput-new ">Upload Avatar Image</span><span class="fileinput-exists">Change</span>
+							  	<span class="fileinput-exists"> Upload/Change </span>
 									<input type="file" name="avatar">
 								</span>
 								<span class="fileinput-filename"></span>
@@ -361,7 +361,7 @@
 		</div>
 		<br>
 		  <div class="form-group">
-			<label for="ipt" class=" control-label col-md-4">&nbsp;</label>
+			<label for="ipt" class=" control-label col-sm-2">&nbsp;</label>
 			<div class="col-md-8 pull-left">
 				<button class="btn btn-default dash-btn-style pull-left" type="submit">Save Details </button>
 			 </div> 
