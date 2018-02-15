@@ -129,42 +129,47 @@
                                 </div>-->
      
             <!--Page content start here-->
-            <div class="table-responsive">
-                <table class="table table-responsive table-striped">
-                    <thead>
-                        <tr>
-                            <th>Adults</th>
-                            <th>Youth</th>
-                            <th>Children</th>
-                            <th>Toddlers</th>
-                            <th>Earliest Arrival</th>
-                            <th>Late Check Out</th>
-                            <th>Stay Time</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        if(!empty($services)) {
-                            foreach ($services as $service) {
-                                echo '<tr>
-                                        <td>'.$service['adults'].'</td>
-                                        <td>'.$service['youth'].'</td>
-                                        <td>'.$service['children'].'</td>
-                                        <td>'.$service['toddlers'].'</td>
-                                        <td>'.$service['earliest_arrival'].'</td>
-                                        <td>'.$service['late_check_out'].'</td>
-                                        <td>'.$service['stay_time'].'</td>
-                                        <td>
-                                            <a href="" class="tips btn btn-xs btn-primary" title="Edit"><i class="fa fa-pencil"></i></a>
-                                            <a href="" class="tips btn btn-xs btn-danger" title="Delete"><i class="fa fa-trash"></i></a>
-                                        </td>
-                                    </tr>';
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-responsive table-striped">
+                        <thead>
+                            <tr>
+                                <th>Adults</th>
+                                <th>Youth</th>
+                                <th>Children</th>
+                                <th>Toddlers</th>
+                                <th>Earliest Arrival</th>
+                                <th>Late Check Out</th>
+                                <th>Stay Time</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            if(!empty($services)) {
+                                foreach ($services as $service) {
+                                    echo '<tr>
+                                            <td>'.$service['adults'].'</td>
+                                            <td>'.$service['youth'].'</td>
+                                            <td>'.$service['children'].'</td>
+                                            <td>'.$service['toddlers'].'</td>
+                                            <td>'.$service['earliest_arrival'].'</td>
+                                            <td>'.$service['late_check_out'].'</td>
+                                            <td>'.$service['stay_time'].'</td>
+                                            <td>
+                                                <a href="" class="tips btn btn-xs btn-primary" title="Edit"><i class="fa fa-pencil"></i></a>
+                                                <a href="" class="tips btn btn-xs btn-danger" title="Delete"><i class="fa fa-trash"></i></a>
+                                            </td>
+                                        </tr>';
+                                }
                             }
-                        }
-                        ?>
-                    </tbody>
-                </table>
+                            else {
+                                echo '<tr><td colspan="8">No results found</td></tr>';
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <!--Page content end here-->
             
