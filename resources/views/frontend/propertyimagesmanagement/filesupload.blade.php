@@ -906,6 +906,10 @@
         </style>
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110391807-1"></script>
+		
+		<script src="{{ asset('sximo/js/dropzone.js') }}"></script>
+		<link rel="stylesheet" href="{{ asset('sximo/css/dropzone.css') }}">
+		
         <script>
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
@@ -933,228 +937,26 @@
                             </a>
                         </header>
                         <!--Main Page-->
-                        @if(!empty($slider)) 
+                        
                         <div class="col-md-10 main-page-landing">
                             <div class="row">
-                                <section class="book-form-top-bar">
-                                    <div>
-                                        <div class="booking-form-bar-top">
-                                            <form autocomplete="off" method="get" id="searchform-navbar" class="searchform-navbar top-bar-search-form-align" action="{{URL::to('search')}}">
-                                                <div class="col-md-3">
-                                                    <div class="row">
-                                                        <div class="form-group would-like-input top-bar-search padding-right-12">
-                                                            <input  class="form-control ai-custom-deafault-style bh-search-input typeahead search-box searchbox_landing" name="s" id="search-navbar-sliderform" placeholder="Enter Your Hotel or Destination" type="text" required="required">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="row">
-                                                        <div id="top-bar-search-booking-form">
-                                                            <div class="col-md-6">
-                                                                <div class="row">
-                                                                    <div class="form-group padding-right-12">
-                                                                        <input id="top-bar-search-booking-form-arrive" class="form-control ai-custom-deafault-style" name="arrive" type="text" placeholder="Arrival">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <div class="row">
-                                                                    <div class="form-group padding-right-12">
-                                                                        <input id="top-bar-search-booking-form-destination" class="form-control ai-custom-deafault-style" name="destination" type="text" placeholder="Departure">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="row">
-                                                        <div class="form-group padding-right-12">
-                                                            <div class="dropdown top-search-members-list">
-                                                                <div class="top-search-members-inner-align">
-                                                                    <div class="members-list ai-custom-deafault-style">
-                                                                        <span id="adults-val">1</span>
-                                                                        Adults,
-                                                                        <span id="childern-val">0</span>
-                                                                        Children
-                                                                        <span class="right-down-arrow">
-                                                                            <i class="fa fa-angle-down" aria-hidden="true"></i>
-                                                                        </span>
-                                                                    </div>
-                                                                    <ul class="members-drop-list" style="display: none;">
-                                                                        <li>
-                                                                            <label>Adult</label>
-                                                                            <input id="adult-input-value" name="adult" class="input-right" value="2" min="1" max="10" type="number">
-                                                                        </li>
-                                                                        <li>
-                                                                            <label>Children</label>
-                                                                            <input id="childerns-input-value" name="childs" class="input-right" value="0" min="0" max="10" type="number">
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-1">
-                                                    <div class="row">
-                                                        <div class="form-group padding-right-12">
-                                                            <button class="top-booking-bar-btn" type="submit">Search</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <!-- AIC Harman email phone sidebar add start -->
-                                        
-<!--                                            <aside class="site-aside">
-                                                <div class="contact-aside">
-                                                    <ul class="contact-aside-list">
-                                                        <li class="contact-list-item contact-phone"><a href="tel:+49 172 8937230"><i class="fa fa-phone asideIclass" aria-hidden="true"></i> +49 172 8937230</a></li>
-                                                        <li class="contact-list-item contact-email"><a href="mailto:bookings@emporium-voyage.com"><i class="fa fa-envelope asideIclass" aria-hidden="true"></i> bookings@emporium-voyage.com</a></li>
-                                                    </ul>
-                                                </div>
-                                            </aside>-->
-                                        
-                                        <!-- AIC Harman email phone sidebar add end -->
-                                        
-                                    </div>
-                                </section>
-                                <div class="clearfix"></div>
-                                <!--Slider start here-->
-                                <div class="m_slider editorial_m_slider_landing ">
-                                    <ul>
-                                        @foreach($slider as $key => $slider_row)
-                                        <li class="{{($key == 0)? 'active' : ''}}">
-                                            <div class="image editorial-image">
-                                                <a href="{{$slider_row->slider_link}}"> <img src="{{url()}}/uploads/slider_images/{{$slider_row->slider_img}}" alt=""/></a>
-                                            </div>
-                                            <div class="editorial-text">
-                                                <div class="editor-picks-small-text"><a href="{{$slider_row->slider_link}}">{{$slider_row->slider_title}}</a></div>
-                                                <div class="description-bold-text">{{$slider_row->slider_description}}</div>
-                                                <!--end slide -->
-                                            </div>
-                                            </a>
-                                        </li>
-                                        @endforeach
-                                    </ul>
-                                    <div class="editorial-arrows-container arrows-container">
-                                        <a class="editorial-previous-arrow previous-arrow" href="#">
-                                            <img class="banner-arrow-bg" src="{{ asset('sximo/assets/images/editorial-right-arrow.png')}}" alt=""/>
-                                        </a>
-                                        <a class="editorial-next-arrow next-arrow" href="#">
-                                            <img  class="banner-arrow-bg" src="{{ asset('sximo/assets/images/editorial-left-arrow.png')}}" alt=""/>
-                                        </a>
-                                    </div>
-                                </div>
-                                
-                                @if(!empty($landinggridpropertiesArr))
-                                    <div class="container" style="margin-top:20px; display:none;">
-                                        <div class="row">
-                                            <?php
-                                            if($landinggridpropertiesArr) {
-                                                $rw = 1;
-                                                $node_no = 1;
-                                                $ads_node = 0;
-                                                foreach($landinggridpropertiesArr as $props) { ?>
-                                                    
-                                                    <div class="productData col-xs-12 col-sm-6 col-md-3 col-lg-3 margin-bottom-10">
-                                                        <div class="wrapperforliineedforlightboxremoval">
-                                                            <div class="cat_product_medium1">
-                                                                <div class="ai-grid-page-node-pic-box pictureBox gridPicture grid-box-main" >
-                                                                    <?php
-                                                                    if(array_key_exists('image', $props)) {
-                                                                        ?>
-                                                                        @if($props['data']->editor_choice_property=='1')
-                                                                            <img alt="editor_choice_property" class="propovericons" src="{{URL::to('sximo/images/editors-choice.png')}}">
-                                                                        @elseif($props['data']->feature_property=='1')
-                                                                            <img alt="editor_choice_property" class="propovericons" src="{{URL::to('sximo/images/featured-property.png')}}">
-                                                                        @endif
-                                                                    <a title="<?php echo $props['image']->file_name; ?>" class="picture_link-" href="<?php echo URL::to($props['data']->property_slug); ?>">
-                                                                            <div class="overlay-text-frezeed">
-                                                                                <h2 class="yacts-tittle-text"><?php echo $props['data']->property_name; ?></h2>
-                                                                                <p class="yacths-des-text yacths-des-text-align"><span>&euro;<?php echo $props['data']->price; ?> </span>|<span>37.7mm</span>|<span>10 Guests</span></p>
-                                                                            </div>
-                                                                            <div class="overlay-text hotel-overlay-text">
-                                                                                <h2 class="yacts-tittle-text"><?php echo $props['data']->property_name; ?></h2>
-                                                                                <p class="yacths-des-text yacths-des-text-align"><span>From &euro;<?php echo $props['data']->price; ?> </span><?php echo (isset($props['data']->category_name))? '|<span>'.$props['data']->category_name.'</span>' : ''; ?></p>
-                                                                            </div>
-                                                                            
-                                                                        <img alt="<?php echo $props['image']->file_name; ?>" src="<?php echo URL::to('uploads/property_imgs_thumbs/front_property_'.$props['image']->folder_id.'_'.$props['image']->file_name); ?>" class="img-responsive">
-                                                                        </a>
-                                                                        <?php
-                                                                    }
-                                                                    else {
-                                                                        ?>
-                                                                    <div class="overlay-text-frezeed">
-                                                                                <h2 class="yacts-tittle-text"><?php echo $props['data']->property_name; ?></h2>
-                                                                                <p class="yacths-des-text yacths-des-text-align"><span>&euro;500 </span>|<span>37.7mm</span>|<span>10 Guests</span></p>
-                                                                            </div>
-                                                                            <div class="overlay-text hotel-overlay-text">
-                                                                                <h2 class="yacts-tittle-text"><?php echo $props['data']->property_name; ?></h2>
-                                                                                <p class="yacths-des-text yacths-des-text-align"><span>From &euro;<?php echo $props['data']->price; ?> </span>|<span>New York</span></p>
-                                                                            </div>
-                                                                            
-                                                                    <?php
-                                                                        echo '<img class="img-responsive" src="', URL::to('sximo/assets/images/img-1.jpg'), '" alt="">';
-                                                                    }
-                                                                    ?>
-                                                                </div>
-                                                                <div class="listDetails">
-                                                                    <div class="photographBox ai-grid-tiitles">
-                                                                        <h2>
-                                                                            <a title="<?php echo $props['data']->property_name; ?>" class="photograph FltLft ai-filtreted-hotel-name" rel="<?php echo $props['data']->id; ?>" href="<?php echo URL::to($props['data']->property_slug); ?>">
-                                                                                <?php echo $props['data']->property_name; ?>
-                                                                            </a>
-                                                                            <span class="FltRgt">
-                                                                                <i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" <?php echo (array_key_exists('image', $props))? 'onclick="add_to_lightbox('.$props['image']->file_id.', '.$props['data']->id.');"' : ''; ?>></i>
-                                                                                <a class="carticon" href="<?php echo URL::to($props['data']->property_slug); ?>"><i class="fa fa-shopping-cart colorGrey" aria-hidden="true" title="book this hotel"></i></a>
-                                                                            </span>
-                                                                        </h2>
-                                                                    </div>
-                                                                    <div class="entire_story MrgTop5 ai-view-hotels-tittle">
-                                                                        <a class="textButton arrowButton MrgTop5" rel="<?php echo $props['data']->id; ?>" href="<?php echo URL::to($props['data']->property_slug); ?>">
-                                                                            Detail View 
-                                                                        </a>
-
-                                                                    </div>
-                                                                    <div class="showOnHover">
-                                                                        <div class="hover_request">
-                                                                        </div>   
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <?php
-                                                    if($rw%4==0) {
-                                                        echo '</div><div class="row">';
-                                                    }
-                                                    $rw++;
-                                                    $node_no++;
-                                                }
-                                            }
-                                            ?>
-                                        </div>
-                                    </div>
-                                @endif
-                                <div class="landing-page-footer-section">
-                                    @if(!empty($landing_menus))
-                                    <ul class="landing-page-footer-menu-style">
-                                        @foreach ($landing_menus as $fmenu)
-                                        <li><a @if($fmenu['menu_type'] =='external') href="{{ URL::to($fmenu['url'])}}" @else href="{{ URL::to($fmenu['module'])}}" @endif>@if(CNF_MULTILANG ==1 && isset($fmenu['menu_lang']['title'][Session::get('lang')]))
-                                                {{ $fmenu['menu_lang']['title'][Session::get('lang')] }}
-                                                @else
-                                                {{$fmenu['menu_name']}}
-                                                @endif</a></li>
-                                        @endforeach
-                                    </ul>
-                                    @endif
-                                </div>
-                                <!--Slider end here-->
+                               <form method="post" id="filetransferform" action="{{URL::to('uploadtransferfile')}}">
+									<div class="form-group  " >
+										<input  class="form-control" name="propertyname" id="propertyname" placeholder="Enter Your Property name" type="text">
+									</div>
+									<div class="form-group  " >
+										<input  class="form-control" name="emailaddress" id="emailaddress" placeholder="Enter Your Email" type="email">
+									</div>
+									<div class="form-group  " >
+										<textarea class="form-control" name="message" id="message"></textarea>
+									</div>
+									<div class="form-group  " >
+										<div class="dropzone" id="dropzoneFileUpload"> </div>
+									</div>
+                                </form> 
                             </div>
                         </div>
-                        @endif
+                       
                         <!--Main Page End-->
                         <!--Sidebar-->
                         <div class="col-md-2">
@@ -2425,6 +2227,30 @@
         
         <script type="text/javascript">
             $(document).on('ready', function () {
+				
+				var baseUrl = "{{ url::to('transferaddfile') }}";
+				var token = "{{ Session::getToken() }}";
+				Dropzone.autoDiscover = false;
+				 var myDropzone = new Dropzone("div#dropzoneFileUpload", {
+					url: baseUrl,
+					params: {
+						_token: token,
+						fold_id: 0
+					},
+					paramName: "file", // The name that will be used to transfer the file
+					addRemoveLinks: true,
+					success: function(file, response){
+						
+					},
+					init: function() {
+						var thisDropzone = this;
+						this.on("processing", function(file) {
+							thisDropzone.options.params.fold_id = 0;
+							thisDropzone.options.url = baseUrl;
+						});
+					}
+				 });
+			 
                 $(".regular").slick({
                     dots: false,
                     infinite: true,
