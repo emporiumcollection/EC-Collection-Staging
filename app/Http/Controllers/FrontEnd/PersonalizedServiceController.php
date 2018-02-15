@@ -50,6 +50,38 @@ class PersonalizedServiceController extends Controller {
     }
     
     /*
+     * AIC: edit customer's personalized service
+     */
+    
+    function edit($ps_id) {
+        
+        if (!\Auth::check()):
+            return Redirect::to('customer/login');
+        endif;
+        
+        $customer_id = \Auth::user()->id;
+        
+        $this->data['row'] = \DB::table('tb_personalized_services')->where('ps_id', $ps_id)->where('customer_id', $customer_id)->first();
+        return view('frontend.personalized.edit', $this->data);
+    }
+    
+    /*
+     * AIC: delete customer's personalized service
+     */
+    
+    function delete($ps_id) {
+        
+        if (!\Auth::check()):
+            return Redirect::to('customer/login');
+        endif;
+        
+        $customer_id = \Auth::user()->id;
+        
+        \DB::table('tb_personalized_services')->where('ps_id', $ps_id)->where('customer_id', $customer_id)->delete();
+        return Redirect::to('personalized-service/my-services');
+    }
+    
+    /*
      * AIC: Get destinations list
      */
     

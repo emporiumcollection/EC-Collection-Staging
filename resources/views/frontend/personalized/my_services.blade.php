@@ -158,8 +158,8 @@
                                             <td>'.$service->late_check_out.'</td>
                                             <td>'.$service->stay_time.'</td>
                                             <td>
-                                                <a href="" class="tips btn btn-xs btn-primary" title="Edit"><i class="fa fa-pencil"></i></a>
-                                                <a href="" class="tips btn btn-xs btn-danger" title="Delete"><i class="fa fa-trash"></i></a>
+                                                <a href="'.URL::to('personalized-service/edit').'/'.$service->ps_id.'" class="tips btn btn-xs btn-primary" title="Edit"><i class="fa fa-pencil"></i></a>
+                                                <a href="'.URL::to('personalized-service/delete').'/'.$service->ps_id.'" class="tips btn btn-xs btn-danger" title="Delete" onclick="return confirm(\'Are you sure?\');"><i class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>';
                                 }
