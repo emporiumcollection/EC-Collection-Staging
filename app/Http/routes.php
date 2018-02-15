@@ -287,6 +287,8 @@ Route::get('thanks', 'Frontend\HotelMembershipController@getThanks');
 Route::get('removecartitem', 'Frontend\HotelMembershipController@getCartItemRemovedAjax');	
 Route::get('advertiser/package', 'Frontend\AdvertisementController@advertisementPackage');
 
+Route::get('hotel/transferimages', 'Frontend\PropertyimagesmanagementController@propertyImageupload');
+
 Route::get('advertiser/cart', 'Frontend\AdvertisementController@advertiserCart');
 Route::get('advertiser/add_package_to_cart', 'Frontend\AdvertisementController@addToCartAjax');
 Route::post('advertiser/getAdvertPrice', 'Frontend\AdvertisementController@getAdvertPriceAjax');
