@@ -218,10 +218,10 @@
                                                         <div class="row">
                                                             <div class="form-group ps-fields-align">
                                                                 <label for=""></label>
-                                                                <label for="inspiration_{{$inspiration->id}}" style="background-image: url('{{URL::to('uploads/category_imgs/'.$inspiration->category_image)}}');" class="personalized-service-checkbox-label">
+                                                                <label for="inspiration_{{$inspiration->id}}" style="background-image: url('{{URL::to('uploads/category_imgs/'.$inspiration->category_image)}}');" class="personalized-service-checkbox-label <?php echo (in_array($inspiration->id, $_inspirations))? 'active' : ''; ?>">
                                                                     <span class="selected-chexkbox"><i class="fa fa-check" aria-hidden="true"></i></span>{{$inspiration->category_name}}
                                                                 </label>
-                                                                <input id="inspiration_{{$inspiration->id}}" class="personalized-service-checkbox-input" name="inspirations[]" value="{{$inspiration->id}}" type="checkbox">
+                                                                <input id="inspiration_{{$inspiration->id}}" class="personalized-service-checkbox-input" <?php echo (in_array($inspiration->id, $_inspirations))? 'checked' : ''; ?> name="inspirations[]" value="{{$inspiration->id}}" type="checkbox">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -242,15 +242,16 @@
                                         <div class="selector-outer-align">
                                             <?php
                                             if(!empty($experiences)) {
+                                                $_experiences = explode(', ', $row->experiences);
                                                 foreach ($experiences as $experience) {
                                                     ?>
                                                     <div class="col-md-3 col-sm-6">
                                                         <div class="row">
                                                             <div class="form-group ps-fields-align">
-                                                                <label for="experience_{{$experience->id}}" style="background-image: url('{{URL::to('uploads/category_imgs/'.$experience->category_image)}}');" class="personalized-service-checkbox-label">
+                                                                <label for="experience_{{$experience->id}}" style="background-image: url('{{URL::to('uploads/category_imgs/'.$experience->category_image)}}');" class="personalized-service-checkbox-label <?php echo (in_array($experience->id, $_experiences))? 'active' : ''; ?>">
                                                                     <span class="selected-chexkbox"><i class="fa fa-check" aria-hidden="true"></i></span>{{$experience->category_name}}
                                                                 </label>
-                                                                <input id="experience_{{$experience->id}}" class="personalized-service-checkbox-input" name="experiences[]" value="{{$experience->id}}" type="checkbox">
+                                                                <input id="experience_{{$experience->id}}" class="personalized-service-checkbox-input" <?php echo (in_array($experience->id, $_experiences))? 'checked' : ''; ?> name="experiences[]" value="{{$experience->id}}" type="checkbox">
                                                             </div>
                                                         </div>
                                                     </div>
