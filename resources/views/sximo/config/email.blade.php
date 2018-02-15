@@ -94,6 +94,9 @@
 	  <li ><a href="#enquiry" data-toggle="tab"> Property Enquiry </a></li>
 	  <li ><a href="#bookingEmail" data-toggle="tab"> Booking Email </a></li>
 	  <li ><a href="#crmEmailtemplate" data-toggle="tab"> CRM Email Template </a></li>
+	  <li ><a href="#frontendUploadtemplate" data-toggle="tab"> Frontend upload Template </a></li>
+	  <li ><a href="#frontendDownloadtemplate" data-toggle="tab"> Frontend download Template </a></li>
+	  <li ><a href="#removalRemindertemplate" data-toggle="tab"> Removal Reminder Template </a></li>
 	</ul>
 
 	<div class="tab-content">
@@ -294,6 +297,72 @@
 						<div class="form-group">
 							<label for="ipt" class=" control-label ">{{ Lang::get('core.tab_email') }} </label>					
 							<textarea rows="20" name="crmEmail" class="form-control input-sm markItUp">{{ $crmEmail }}</textarea>					 
+						</div> 
+						
+						<div class="form-group">
+							Please use "&#123;&#33;&#33; $msg &#33;&#33;&#125;" shortcode for print massage in the template.
+						 </div>
+
+						<div class="form-group">
+							<button class="btn btn-primary" type="submit">{{ Lang::get('core.sb_savechanges') }}</button>
+						 </div> 
+					</div>	 
+			  </div>	
+			</div>
+		</div>
+		
+		<div class="tab-pane m-t" id="frontendUploadtemplate">
+			<div class="col-sm-6 animated fadeInRight">
+				<div class="sbox"> 
+					<div class="sbox-title">  Frontend Upload Email </div>
+					<div class="sbox-content"> 	
+						<div class="form-group">
+							<label for="ipt" class=" control-label ">{{ Lang::get('core.tab_email') }} </label>					
+							<textarea rows="20" name="frontendUpload" class="form-control input-sm markItUp">{{ $frontendUpload }}</textarea>					 
+						</div> 
+						
+						<div class="form-group">
+							Please use "&#123;&#33;&#33; $msg &#33;&#33;&#125;" shortcode for print massage in the template.
+						 </div>
+
+						<div class="form-group">
+							<button class="btn btn-primary" type="submit">{{ Lang::get('core.sb_savechanges') }}</button>
+						 </div> 
+					</div>	 
+			  </div>	
+			</div>
+		</div>
+		
+		<div class="tab-pane m-t" id="frontendDownloadtemplate">
+			<div class="col-sm-6 animated fadeInRight">
+				<div class="sbox"> 
+					<div class="sbox-title">  Frontend Download Email </div>
+					<div class="sbox-content"> 	
+						<div class="form-group">
+							<label for="ipt" class=" control-label ">{{ Lang::get('core.tab_email') }} </label>					
+							<textarea rows="20" name="frontendDownload" class="form-control input-sm markItUp">{{ $frontendDownload }}</textarea>					 
+						</div> 
+						
+						<div class="form-group">
+							Please use "&#123;&#33;&#33; $msg &#33;&#33;&#125;" shortcode for print massage in the template.
+						 </div>
+
+						<div class="form-group">
+							<button class="btn btn-primary" type="submit">{{ Lang::get('core.sb_savechanges') }}</button>
+						 </div> 
+					</div>	 
+			  </div>	
+			</div>
+		</div>
+		
+		<div class="tab-pane m-t" id="removalRemindertemplate">
+			<div class="col-sm-6 animated fadeInRight">
+				<div class="sbox"> 
+					<div class="sbox-title">  Removal Reminder Email </div>
+					<div class="sbox-content"> 	
+						<div class="form-group">
+							<label for="ipt" class=" control-label ">{{ Lang::get('core.tab_email') }} </label>					
+							<textarea rows="20" name="removalreminder" class="form-control input-sm markItUp">{{ $removalreminder }}</textarea>					 
 						</div> 
 						
 						<div class="form-group">

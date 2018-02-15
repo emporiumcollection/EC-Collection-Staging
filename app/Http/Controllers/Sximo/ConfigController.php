@@ -102,6 +102,9 @@ class ConfigController extends Controller {
 		$lghtboxorderconfirm = base_path()."/resources/views/user/emails/lightbox_order_confirm.blade.php";
 		$enquiry = base_path()."/resources/views/user/emails/enquiry.blade.php";
 		$crmEmail = base_path()."/resources/views/user/emails/crm_email.blade.php";
+		$frontendUpload = base_path()."/resources/views/user/emails/frontend_upload.blade.php";
+		$frontendDownload = base_path()."/resources/views/user/emails/frontend_download.blade.php";
+		$removalreminder = base_path()."/resources/views/user/emails/removal_reminder.blade.php";
 		
 		$this->data = array(
 			'groups'	=> Groups::all(),
@@ -117,6 +120,9 @@ class ConfigController extends Controller {
 			'lghtboxorderconfirm'	=> 	file_get_contents($lghtboxorderconfirm),
 			'enquiry'	=> 	file_get_contents($enquiry),
 			'crmEmail'	=> 	file_get_contents($crmEmail),
+			'frontendUpload'	=> 	file_get_contents($frontendUpload),
+			'frontendDownload'	=> 	file_get_contents($frontendDownload),
+			'removalreminder'	=> 	file_get_contents($removalreminder),
 			'active'		=> 'email',
 		);	
 		return view('sximo.config.email',$this->data);		
@@ -145,6 +151,9 @@ class ConfigController extends Controller {
 			$lghtboxorderconfirm = base_path()."/resources/views/user/emails/lightbox_order_confirm.blade.php";
 			$enquiry = base_path()."/resources/views/user/emails/enquiry.blade.php";
 			$crmEmail = base_path()."/resources/views/user/emails/crm_email.blade.php";
+			$frontendUpload = base_path()."/resources/views/user/emails/frontend_upload.blade.php";
+			$frontendDownload = base_path()."/resources/views/user/emails/frontend_download.blade.php";
+			$removalreminder = base_path()."/resources/views/user/emails/removal_reminder.blade.php";
 			
 			$fp=fopen($regEmailFile,"w+"); 				
 			fwrite($fp,$_POST['regEmail']); 
@@ -185,6 +194,18 @@ class ConfigController extends Controller {
 			$crm=fopen($crmEmail,"w+"); 				
 			fwrite($crm,$_POST['crmEmail']); 
 			fclose($crm);
+			
+			$fum=fopen($frontendUpload,"w+"); 				
+			fwrite($fum,$_POST['frontendUpload']); 
+			fclose($fum);
+			
+			$fdm=fopen($frontendDownload,"w+"); 				
+			fwrite($fdm,$_POST['frontendDownload']); 
+			fclose($fdm);
+			
+			$rrm=fopen($removalreminder,"w+"); 				
+			fwrite($rrm,$_POST['removalreminder']); 
+			fclose($rrm);
 			
 			return Redirect::to('sximo/config/email')->with('messagetext', 'Email Has Been Updated')->with('msgstatus','success');	
 			
