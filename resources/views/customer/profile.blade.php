@@ -109,12 +109,12 @@
 							<label for="ipt" class=" control-label col-sm-2"> Avatar </label>
 							<div class="col-sm-6">
 							<div class="fileinput fileinput-new" data-provides="fileinput">
-							  <span class="btn btn-primary btn-file">
-							  	<span class="fileinput-new">Upload Avatar Image</span><span class="fileinput-exists">Change</span>
+							  <span class="btn">
+							  	<span class="fileinput-new ">Upload Avatar Image</span><span class="fileinput-exists">Change</span>
 									<input type="file" name="avatar">
 								</span>
 								<span class="fileinput-filename"></span>
-								<a href="#" class="close fileinput-exists" data-dismiss="fileinput" style="float: none">&times;</a>
+								
 							</div>
 							<br />
 							 Image Dimension 80 x 80 px <br />
@@ -200,7 +200,7 @@
       <div class="form-group has-feedback">
       		<label></label>
 			<div class="col-xs-6">
-			  <input type="submit" class="btn btn-default dash-btn-style  pull-right" name="btnSubmit" value="Reset My Password">
+			  <input type="submit" class="btn btn-default dash-btn-style  pull-left" name="btnSubmit" value="Reset My Password">
 			</div>
       </div>
 	  		
@@ -303,12 +303,13 @@
 				<label for="ipt" class=" control-label col-md-4 text-right"> CompanyLogo</label>
 				<div class="col-md-8">
 				<div class="fileinput fileinput-new" data-provides="fileinput">
-				  <span class="btn btn-primary btn-file">
-					<span class="fileinput-new">Hochladen</span><span class="fileinput-exists">Change</span>
+				  <span class="btn">
+					<span class="fileinput-new">Logo</span>
+					<span class="fileinput-exists">Change</span>
 						<input type="file" name="company_logo" class="btn btn-default dash-btn-style">
 					</span>
 					<span class="fileinput-filename"></span>
-					<a href="#" class="close fileinput-exists" data-dismiss="fileinput" style="float: none">&times;</a>
+					
 				</div>
 				<br />
 				 Image Dimension 155 x 30 px <br />
@@ -322,9 +323,7 @@
 		
 		<div class="row">
 			<div class="col-md-6">
-				<span >Tax Info</span>
-				  
-				  <div class="form-group">
+				<div class="form-group">
 					<label for="ipt" class=" control-label col-md-4"> Tax Number </label>
 					<div class="col-md-8">
 					<input name="steuernummer" type="text" id="steuernummer" class="form-control input-sm" value="<?php if(!empty($extra)) { echo $extra->steuernummer; } ?>" />  
@@ -363,8 +362,8 @@
 		<br>
 		  <div class="form-group">
 			<label for="ipt" class=" control-label col-md-4">&nbsp;</label>
-			<div class="col-md-8">
-				<button class="btn btn-default dash-btn-style" type="submit">Save Details </button>
+			<div class="col-md-8 pull-left">
+				<button class="btn btn-default dash-btn-style pull-left" type="submit">Save Details </button>
 			 </div> 
 		  </div> 	
 		
