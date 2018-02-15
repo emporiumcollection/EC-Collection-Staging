@@ -166,14 +166,15 @@
                                             <select name="destinations[]" data-placeholder="Ex: Argentina, South Africa, Cape Town" class="chosen-select-default chosen-select-input-style" multiple tabindex="4">
                                                 <?php
                                                 if(!empty($destinations)) {
+                                                    $_destinations = explode(', ', $row->destinations);
                                                     foreach ($destinations as $destination) {
-                                                        echo '<option value="'.$destination->id.'">'.$destination->category_name.'</option>'.PHP_EOL;
+                                                        echo '<option ', (in_array($destination->id, $_destinations))? 'selected' : '', ' value="'.$destination->id.'">'.$destination->category_name.'</option>'.PHP_EOL;
                                                         if(!empty($destination->sub_destinations)) {
                                                             foreach ($destination->sub_destinations as $sub_destination) {
-                                                                echo '<option value="'.$sub_destination->id.'">'.$sub_destination->category_name.'</option>'.PHP_EOL;
+                                                                echo '<option ', (in_array($sub_destination->id, $_destinations))? 'selected' : '', ' value="'.$sub_destination->id.'">'.$sub_destination->category_name.'</option>'.PHP_EOL;
                                                                 if(!empty($sub_destination->sub_destinations)) {
                                                                     foreach ($sub_destination->sub_destinations as $sub_dest) {
-                                                                        echo '<option value="'.$sub_dest->id.'">'.$sub_dest->category_name.'</option>'.PHP_EOL;
+                                                                        echo '<option ', (in_array($sub_dest->id, $_destinations))? 'selected' : '', ' value="'.$sub_dest->id.'">'.$sub_dest->category_name.'</option>'.PHP_EOL;
                                                                     }
                                                                 }
                                                             }
@@ -210,6 +211,7 @@
                                         <div class="selector-outer-align">
                                             <?php
                                             if(!empty($inspirations)) {
+                                                $_inspirations = explode(', ', $row->inspirations);
                                                 foreach ($inspirations as $inspiration) {
                                                     ?>
                                                     <div class="col-md-3 col-sm-6">

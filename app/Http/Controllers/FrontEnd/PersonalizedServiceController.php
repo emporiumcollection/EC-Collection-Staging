@@ -61,7 +61,13 @@ class PersonalizedServiceController extends Controller {
         
         $customer_id = \Auth::user()->id;
         
+        $temp = $this->get_destinations();
+        
+        $this->data['destinations'] = $temp['sub_destinations'];
+        $this->data['inspirations'] = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_custom_title')->where('category_published', 1)->where('parent_category_id', 627)->get();
+        $this->data['experiences'] = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_custom_title')->where('category_published', 1)->where('parent_category_id', 8)->get();
         $this->data['row'] = \DB::table('tb_personalized_services')->where('ps_id', $ps_id)->where('customer_id', $customer_id)->first();
+        
         return view('frontend.personalized.edit', $this->data);
     }
     
