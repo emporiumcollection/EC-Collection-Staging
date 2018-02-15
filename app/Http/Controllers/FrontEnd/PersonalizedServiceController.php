@@ -45,7 +45,7 @@ class PersonalizedServiceController extends Controller {
         
         $customer_id = \Auth::user()->id;
         
-        $this->data['services'] = \DB::table('tb_personalized_services')->where('customer_id', $customer_id)->get();
+        $this->data['services'] = \DB::table('tb_personalized_services')->where('customer_id', $customer_id)->order_by('ps_id', 'DESC')->get();
         return view('frontend.personalized.my_services', $this->data);
     }
     
