@@ -111,7 +111,7 @@
 							<div class="fileinput fileinput-new" data-provides="fileinput">
 							  <span class="btn">
 							  	<span class="fileinput-exists"> Upload/Change </span>
-									<input type="file" name="avatar">
+									<input type="file" name="avatar" class="btn btn-default dash-btn-style">
 								</span>
 								<span class="fileinput-filename"></span>
 								
@@ -198,10 +198,9 @@
 			<i class="icon-lock form-control-feedback"></i>
 		</div>
       <div class="form-group has-feedback">
-      		<label></label>
-			<div class="col-xs-6">
+      
 			  <input type="submit" class="btn btn-default dash-btn-style  pull-left" name="btnSubmit" value="Reset My Password">
-			</div>
+			
       </div>
 	  		
 	
@@ -413,36 +412,40 @@
     </div>
 	
 	<div role="tabpanel" class="tab-pane" id="accountingorders">
-		<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
-			<thead>
-				<tr>
-					<th>No.</th>
-					<th>Invoice No.</th>
-					<th>Status</th>
-					<th>Comment</th>
-					<th>Created At</th>
-					<th>Funktion</th>
-				</tr>
-			</thead>
-			<tbody>
-			
-				@if(!empty($orders))
-					@foreach($orders as $ord)
-						<tr>
-							<td>{{$ord->id}}</td>
-							<td>{{$ord->invoice_num}}</td>
-							<td>{{$ord->status}}</td>
-							<td>{{$ord->comments}}</td>
-							<td>{{$ord->created}}</td>
-							<td>
-								<a  href="{{ URL::to('customer/orderdetail/'.$ord->id) }}" class="tips btn btn-xs btn-success" title="View detail"><i class="fa  fa-search  "></i></a>
-								<a href="{{ URL::to('customer/downloadinvoicepdf/'.$ord->id)}}" class="tips btn btn-xs btn-primary" title="invoice"><i class="fa fa-download"></i></a>
-							</td>
-						</tr>
-					@endforeach
-				@endif
-			</tbody>
-		</table>
+
+		  <div class="das-form-outer-align">
+			<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+				<thead>
+					<tr>
+						<th>No.</th>
+						<th>Invoice No.</th>
+						<th>Status</th>
+						<th>Comment</th>
+						<th>Created At</th>
+						<th>Function</th>
+					</tr>
+				</thead>
+				<tbody>
+				
+					@if(!empty($orders))
+						@foreach($orders as $ord)
+							<tr>
+								<td>{{$ord->id}}</td>
+								<td>{{$ord->invoice_num}}</td>
+								<td>{{$ord->status}}</td>
+								<td>{{$ord->comments}}</td>
+								<td>{{$ord->created}}</td>
+								<td>
+									<a  href="{{ URL::to('customer/orderdetail/'.$ord->id) }}" class="tips btn btn-xs btn-success" title="View detail"><i class="fa  fa-search  "></i></a>
+									<a href="{{ URL::to('customer/downloadinvoicepdf/'.$ord->id)}}" class="tips btn btn-xs btn-primary" title="invoice"><i class="fa fa-download"></i></a>
+								</td>
+							</tr>
+						@endforeach
+					@endif
+				</tbody>
+			</table>
+
+	</div>
 	</div>
 	
   </div>
