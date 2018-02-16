@@ -161,10 +161,9 @@ class PagesmanagementController extends Controller {
 		$rules = $this->validateForm();
 		$validator = Validator::make($request->all(), $rules);	
 		if ($validator->passes()) {
-			$data = $this->validatePost('tb_pagesmanagement');
-			print_r($data); die;
-			$alias = \SiteHelpers::seoUrl(Input::get('title'));
-			$actalias = \SiteHelpers::seoUrl(Input::get('title'));
+			//$data = $this->validatePost('tb_pagesmanagement');
+			$alias = \SiteHelpers::seoUrl($request->input('title'));
+			$actalias = \SiteHelpers::seoUrl($request->input('title'));
             $exha = false;
             for ($f = 1; $exha != true; $f++) {
                 if ($request->input('pageID') == '') {
@@ -181,6 +180,13 @@ class PagesmanagementController extends Controller {
             }
             $data['user_id'] = $uid;
             $data['alias'] = $alias;
+			$data['title'] = $request->input('title');
+			$data['content'] = $request->input('content');
+			$data['status'] = $request->input('status');
+			$data['allow_guest'] = $request->input('allow_guest');
+			$data['template'] = $request->input('template');
+			$data['metakey'] = $request->input('metakey');
+			$data['metadesc'] = $request->input('metadesc');
 			
 			$groups = Groups::all();
 			 $access = array();				
