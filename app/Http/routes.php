@@ -95,6 +95,7 @@ Route::post('customer_ajaxPostRequest', 'CustomerController@ajaxPostRequest');
 include('pageroutes.php');
 include('moduleroutes.php');
 include('custompageroutes.php');
+include('pagemanagementroutes.php');
 
 Route::get('/restric',function(){
 
