@@ -27,124 +27,137 @@
 	<div class="sbox-title"> <h4> <i class="fa fa-table"></i> </h4></div>
 	<div class="sbox-content"> 	
 
-		 {!! Form::open(array('url'=>'pagesmanagement/save?return='.$return, 'class'=>'form-horizontal','files' => true , 'parsley-validate'=>'','novalidate'=>' ')) !!}
-<div class="col-md-12">
-						<fieldset><legend> Pages Management</legend>
-									
-								  <div class="form-group hidethis " style="display:none;">
-									<label for="PageID" class=" control-label col-md-4 text-left"> PageID </label>
-									<div class="col-md-6">
-									  {!! Form::text('pageID', $row['pageID'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
-									 </div> 
-									 <div class="col-md-2">
-									 	
-									 </div>
-								  </div> 					
-								  <div class="form-group  " >
-									<label for="Title" class=" control-label col-md-4 text-left"> Title <span class="asterix"> * </span></label>
-									<div class="col-md-6">
-									  {!! Form::text('title', $row['title'],array('class'=>'form-control', 'placeholder'=>'', 'required'=>'true'  )) !!} 
-									 </div> 
-									 <div class="col-md-2">
-									 	
-									 </div>
-								  </div> 					
-								  <div class="form-group  " >
-									<label for="Content" class=" control-label col-md-4 text-left"> Content <span class="asterix"> * </span></label>
-									<div class="col-md-6">
-									  <textarea name='content' rows='5' id='editor' class='form-control editor '  
-						required >{{ $row['content'] }}</textarea> 
-									 </div> 
-									 <div class="col-md-2">
-									 	
-									 </div>
-								  </div> 					
-								  <div class="form-group  " >
-									<label for="Status" class=" control-label col-md-4 text-left"> Status </label>
-									<div class="col-md-6">
-									  
-					<label class='radio radio-inline'>
-					<input type='radio' name='status' value ='1'  @if($row['status'] == '1') checked="checked" @endif > Enable </label>
-					<label class='radio radio-inline'>
-					<input type='radio' name='status' value ='0'  @if($row['status'] == '0') checked="checked" @endif > disabled </label> 
-									 </div> 
-									 <div class="col-md-2">
-									 	
-									 </div>
-								  </div> 					
-								  <div class="form-group  " >
-									<label for="Access" class=" control-label col-md-4 text-left"> Access </label>
-									<div class="col-md-6">
-									  <textarea name='access' rows='5' id='access' class='form-control '  
-				           >{{ $row['access'] }}</textarea> 
-									 </div> 
-									 <div class="col-md-2">
-									 	
-									 </div>
-								  </div> 					
-								  <div class="form-group  " >
-									<label for="Allow Guest" class=" control-label col-md-4 text-left"> Allow Guest </label>
-									<div class="col-md-6">
-									  <?php $allow_guest = explode(",",$row['allow_guest']); ?>
-					 <label class='checked checkbox-inline'>   
-					<input type='checkbox' name='allow_guest[]' value ='1'   class='' 
-					@if(in_array('1',$allow_guest))checked @endif 
-					 />  Allow Guest ? </label>  
-									 </div> 
-									 <div class="col-md-2">
-									 	
-									 </div>
-								  </div> 					
-								  <div class="form-group  " >
-									<label for="Template" class=" control-label col-md-4 text-left"> Template </label>
-									<div class="col-md-6">
-									  
-					<label class='radio radio-inline'>
-					<input type='radio' name='template' value ='frontend'  @if($row['template'] == 'frontend') checked="checked" @endif > Frontend </label>
-					<label class='radio radio-inline'>
-					<input type='radio' name='template' value ='backend'  @if($row['template'] == 'backend') checked="checked" @endif > Backend </label> 
-									 </div> 
-									 <div class="col-md-2">
-									 	
-									 </div>
-								  </div> 					
-								  <div class="form-group  " >
-									<label for="Metakey" class=" control-label col-md-4 text-left"> Metakey </label>
-									<div class="col-md-6">
-									  <textarea name='metakey' rows='5' id='metakey' class='form-control '  
-				           >{{ $row['metakey'] }}</textarea> 
-									 </div> 
-									 <div class="col-md-2">
-									 	
-									 </div>
-								  </div> 					
-								  <div class="form-group  " >
-									<label for="Metadesc" class=" control-label col-md-4 text-left"> Metadesc </label>
-									<div class="col-md-6">
-									  <textarea name='metadesc' rows='5' id='metadesc' class='form-control '  
-				           >{{ $row['metadesc'] }}</textarea> 
-									 </div> 
-									 <div class="col-md-2">
-									 	
-									 </div>
-								  </div> </fieldset>
-			</div>
-			
-			
+		 {!! Form::open(array('url'=>'pagesmanagement/save?return='.$return, 'class'=>'form-vertical row','files' => true , 'parsley-validate'=>'','novalidate'=>' ')) !!}
+<div class="col-sm-8 ">
+				<div class="sbox">
+					<div class="sbox-title">Page Content </div>	
+					<div class="sbox-content">		
 
-		
-			<div style="clear:both"></div>	
-				
-					
-				  <div class="form-group">
-					<label class="col-sm-4 text-right">&nbsp;</label>
-					<div class="col-sm-8">	
-					<button type="submit" name="apply" class="btn btn-info btn-sm" ><i class="fa  fa-check-circle"></i> {{ Lang::get('core.sb_apply') }}</button>
-					<button type="submit" name="submit" class="btn btn-primary btn-sm" ><i class="fa  fa-save "></i> {{ Lang::get('core.sb_save') }}</button>
-					<button type="button" onclick="location.href='{{ URL::to('pagesmanagement?return='.$return) }}' " class="btn btn-success btn-sm "><i class="fa  fa-arrow-circle-left "></i>  {{ Lang::get('core.sb_cancel') }} </button>
-					</div>	  
+						<ul class="nav nav-tabs" >
+						  <li class="active"><a href="#info" data-toggle="tab"> Page Content </a></li>
+						  <li ><a href="#meta" data-toggle="tab"> Meta & Description </a></li>
+						</ul>	
+
+						<div class="tab-content">
+						  <div class="tab-pane active m-t" id="info">
+							  <div class="form-group  " >
+								
+								<div class="" style="background:#fff;">
+								  <textarea name='content' rows='35' id='content'    class='form-control markItUp'  
+									 >{{ htmlentities($row['content']) }}</textarea> 
+								 </div> 
+							  </div> 						  
+
+						  </div>
+
+						  <div class="tab-pane m-t" id="meta">
+
+					  		<div class="form-group  " >
+								<label class=""> Metakey </label>
+								<div class="" style="background:#fff;">
+								  <textarea name='metakey' rows='5' id='metakey' class='form-control markItUp'>{{ $row['metakey'] }}</textarea> 
+								 </div> 
+							  </div> 
+
+				  			<div class="form-group  " >
+								<label class=""> Meta Description </label>
+								<div class="" style="background:#fff;">
+								  <textarea name='metadesc' rows='10' id='metadesc' class='form-control markItUp'>{{ $row['metadesc'] }}</textarea> 
+								 </div> 
+							  </div> 							  						  
+
+						  </div>
+
+						</div>  
+						
+	
+					 </div>
+				</div>	
+		 	</div>	
 			
+			<div class="col-sm-4 ">
+			<div class="sbox">
+				<div class="sbox-title">Page Info </div>	
+				<div class="sbox-content">						
+				  <div class="form-group hidethis " style="display:none;">
+					<label for="ipt" class=""> PageID </label>
+					
+					  {!! Form::text('pageID', $row['pageID'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
+					
+				  </div> 					
+				  <div class="form-group  " >
+					<label for="ipt" > Title </label>
+					
+					  {!! Form::text('title', $row['title'],array('class'=>'form-control', 'placeholder'=>'', 'required'=>'true'  )) !!} 
+					
+				  </div> 					
+				 					
+				 
+				  <div class="form-group  " >
+				  <label for="ipt"> Who can view this page ? </label>
+					@foreach($groups as $group) 
+					<label class="checkbox">					
+					  <input  type='checkbox' name='group_id[{{ $group['id'] }}]'    value="{{ $group['id'] }}"
+					  @if($group['access'] ==1 or $group['id'] ==1)
+					  	checked
+					  @endif				 
+					   /> 
+					  {{ $group['name'] }}
+					</label>  
+					@endforeach	
+						  
 				  </div> 
+				  <div class="form-group  " >
+					<label> Show for Guest ? unlogged  </label>
+					<label class="checkbox"><input  type='checkbox' name='allow_guest' 
+ 						@if($row['allow_guest'] ==1 ) checked  @endif	
+					   value="1"	/> Allow Guest ?  </lable>
+				  </div>
+
+
+				  <div class="form-group  " >
+					<label> Status </label>
+					<label class="radio">					
+					  <input  type='radio' name='status'  value="1" required
+					  @if( $row['status'] =='enable')  	checked	  @endif				  
+					   /> 
+					  Enable
+					</label> 
+					<label class="radio">					
+					  <input  type='radio' name='status'  value="0" required
+					   @if( $row['status'] =='disabled')  	checked	  @endif				  
+					   /> 
+					  Disabled
+					</label> 					 
+				  </div> 
+
+				  <div class="form-group  " >
+					<label> Template </label>
+					<label class="radio">					
+					  <input  type='radio' name='template'  value="frontend" required
+					  @if( $row['template'] =='frontend')  	checked	  @endif				  
+					   /> 
+					  Frontend
+					</label> 
+					<label class="radio">					
+					  <input  type='radio' name='template'  value="backend" required
+					   @if( $row['template'] =='backend')  	checked	  @endif				  
+					   /> 
+					  Backend
+					</label> 					 
+				  </div> 				  
+				  
+			  <div class="form-group">
+				
+				<button type="submit" class="btn btn-primary ">  Submit </button>
+				 
+		
+			  </div> 
+			  </div>
+			  </div>				  				  
+				  		
+			</div>
+
 		 
 		 {!! Form::close() !!}
 	</div>

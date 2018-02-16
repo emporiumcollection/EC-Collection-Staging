@@ -111,6 +111,23 @@ class PagesmanagementController extends Controller {
 		}
 		$this->data['fields'] 		=  \SiteHelpers::fieldLang($this->info['config']['forms']);
 		
+		if($this->data['row']['access'] !='')
+		{
+			$access = json_decode($this->data['row']['access'],true)	;	
+		} else {
+			$access = array();
+		}
+		
+		$groups = Groups::all();
+		$group = array();
+		foreach($groups as $g) {
+			$group_id = $g['group_id'];			
+			$a = (isset($access[$group_id]) && $access[$group_id] ==1 ? 1 : 0);		
+			$group[] = array('id'=>$g->group_id ,'name'=>$g->name,'access'=> $a); 			
+		}		
+
+		$this->data['groups'] = $group;	
+		
 		$this->data['id'] = $id;
 		return view('pagesmanagement.form',$this->data);
 	}	
