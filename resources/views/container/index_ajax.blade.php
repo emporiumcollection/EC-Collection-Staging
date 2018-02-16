@@ -46,7 +46,11 @@
 												@if($row['assign_front']=='yes')
 													<img src="{{URL::to('uploads/images/activated.png')}}" style="cursor:pointer; margin-left:5px;" title="Click to Deactivate Frontend" onclick="frontend_grid(this,'folder','{{$row['id']}}',1);" />
 												@else
-													<img src="{{URL::to('uploads/images/not_activated.png')}}" style="cursor:pointer; margin-left:5px;" title="Click to Activate Frontend" onclick="frontend_grid(this,'folder','{{$row['id']}}',0);" />
+													@if($row['hotel_help_update']==1)
+														<img src="{{URL::to('uploads/images/activated.png')}}" style="cursor:pointer; margin-left:5px;" title="Click to Deactivate" onclick="hotelhelp_grid(this,'folder','{{$row['id']}}',0);" />
+													@else
+														<img src="{{URL::to('uploads/images/not_activated.png')}}" style="cursor:pointer; margin-left:5px;" title="Click to Activate Frontend" onclick="frontend_grid(this,'folder','{{$row['id']}}',0);" />
+													@endif
 												@endif
 											</div>
 											
@@ -1601,6 +1605,28 @@ $(function(){
 							$(img).attr("src","{{URL::to('uploads/images/not_activated.png')}}");
 							$(img).attr("onclick","frontend_grid(this,'"+cont_type+"','"+cont_id+"',0)");
 							$(img).attr("title","Click to Activate Frontend");
+						}
+					}
+				  }
+				});
+			}
+		}
+		
+		function hotelhelp_grid(img,cont_type,cont_id,act)
+		{
+			if(cont_id!='' && cont_id>0)
+			{
+				$.ajax({
+				  url: "{{ URL::to('deactivate_hotelhelp')}}",
+				  type: "post",
+				  data: 'cont_type='+cont_type+'&cont_id='+cont_id+'&action='+act,
+				  success: function(data){
+					if(data!='error')
+					{
+						if(act==0)
+						{
+							$(img).attr("src","{{URL::to('uploads/images/not_activated.png')}}");
+							$(img).attr("onclick","");
 						}
 					}
 				  }

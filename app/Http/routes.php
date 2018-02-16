@@ -181,6 +181,7 @@ Route::group(['middleware' => 'auth'], function()
 	Route::post('assignDesigner', 'ContainerController@assignDesignercontainer');
 	Route::post('unassign_seletedfilesfrontend', 'ContainerController@UnassignSeletedFilesFrontend');
 	Route::post('activate_deactivate_product_frontend', 'ContainerController@ActivateDeactivateProductFrontend');
+	Route::post('deactivate_hotelhelp', 'ContainerController@deactivateHotelhelp');
 	Route::post('addsubimage', 'ContainerController@addSubImageContainerFile');
 	Route::post('activate_deactivate_product_slider_images', 'ContainerController@ActivateDeactivateProductSliderImages');
 	Route::post('remove_subimage', 'ContainerController@RemoveSubimage');

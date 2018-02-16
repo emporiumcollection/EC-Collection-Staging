@@ -5438,5 +5438,30 @@ class ContainerController extends Controller {
 		return view('container.user_list_ajax',$this->data);
 	
 	}
+	
+	function deactivateHotelhelp(Request $request)
+	{
+		$uid = \Auth::user()->id;
+		$item = Input::get('cont_id');
+		$cont_type = Input::get('cont_type');
+		$action = Input::get('action');
+		if($item!='' && $item>0)
+		{
+			if($cont_type=='folder')
+			{
+				$slvr_exists = DB::table('tb_container')->where('id', $item)->count();
+				if($slvr_exists>0)
+				{
+					$humdata['hotel_help_update'] = 0;
+					$humdata['updated'] = date('y-m-d');
+					\DB::table('tb_container')->where('id', $item)->update($humdata);
+				}
+			}
+		}
+		else
+		{
+			echo 'error';
+		}
+	}
 
 }

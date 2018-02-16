@@ -82,96 +82,63 @@ class PropertyimagesmanagementController extends Controller {
     
     public function transferaddfile(Request $request)
 	{
-		$fold_id = $request->input('fold_id');
-		$emailid = $request->input('emailaddress');
-		$message = $request->input('message');
-		$propertyname = $request->input('propertyname');
-		$tdate = date('y-m-d-h-i-s');
-		$curdate_propFolder = 0;
-		$rules['emailaddress'] = 'required';
-		$rules['propertyname'] = 'required';
-        $validator = Validator::make($request->all(), $rules);
-        if ($validator->passes()) {
-			$newpropFolder = $this->createNewFolder($propertyname, $fold_id);
-			if ($newpropFolder !== false) {
-				$curdate_propFolder = $this->createNewFolder($tdate, $newpropFolder);
-			}
-			if($curdate_propFolder > 0) 
-			{
-				$dirPath = (new ContainerController)->getContainerUserPath($curdate_propFolder);
-				if( is_dir($dirPath) === true )
+		if (\Auth::check() == true) {
+			$fold_id = $request->input('fold_id');
+			$emailid = $request->input('emailaddress');
+			$message = $request->input('message');
+			$propertyname = trim($request->input('propertyname'));
+			$propertynameslug = \SiteHelpers::seoUrl(trim($propertyname));
+			$tdate = date('y-m-d-h-i-s');
+			$curdate_propFolder = 0;
+			$rules['emailaddress'] = 'required';
+			$rules['propertyname'] = 'required';
+			$validator = Validator::make($request->all(), $rules);
+			if ($validator->passes()) {
+				$checkfld = \DB::table('tb_container')->select('id')->where('name',$propertynameslug)->where('parent_id', $fold_id)->first();
+				if(!empty($checkfld))
 				{
-					$file = $request->file('file');
-					$destinationPath = $dirPath;
-					$extension = $file->getClientOriginalExtension();
-					$fileName = $file->getClientOriginalName();
-					$ftname = explode('.',$fileName);
-					$exha = false;
-					for($f=1;$exha!=true;$f++)
+					$newpropFolder = $checkfld->id;
+				}
+				else
+				{
+					$newpropFolder = $this->createNewFolder($propertyname, $fold_id);
+				}
+				if ($newpropFolder != '') {
+					$curdate_propFolder = $this->createNewFolder($tdate, $newpropFolder);
+				}
+				if($curdate_propFolder > 0) 
+				{
+					$dirPath = (new ContainerController)->getContainerUserPath($curdate_propFolder);
+					if( is_dir($dirPath) === true )
 					{
-						if (File::exists($destinationPath.$fileName))
+						$file = $request->file('file');
+						$destinationPath = $dirPath;
+						$extension = $file->getClientOriginalExtension();
+						$fileName = $file->getClientOriginalName();
+						$ftname = explode('.',$fileName);
+						$exha = false;
+						for($f=1;$exha!=true;$f++)
 						{
-							$fileName = $ftname[0].'('.$f.').'.$extension;
+							if (File::exists($destinationPath.$fileName))
+							{
+								$fileName = $ftname[0].'('.$f.').'.$extension;
+							}
+							else
+							{
+								$fileName = $fileName;
+								$exha = true;
+							}
 						}
-						else
+						// MOVE THE UPLOADED FILES TO THE DESTINATION DIRECTORY
+						$upload_success = $file->move($destinationPath, $fileName);
+						$ftype = $request->file('file')->getClientMimeType();
+						$exFtype = explode('/',$ftype);
+						if($exFtype[0]=="image")
 						{
-							$fileName = $fileName;
-							$exha = true;
-						}
-					}
-					// MOVE THE UPLOADED FILES TO THE DESTINATION DIRECTORY
-					$upload_success = $file->move($destinationPath, $fileName);
-					$ftype = $request->file('file')->getClientMimeType();
-					$exFtype = explode('/',$ftype);
-					if($exFtype[0]=="image")
-					{
-						$thimg = \Image::make($destinationPath.$fileName);
-						$thimg->resize(128, 130);
-						$thumbfile = 'thumb_'. Input::get('fold_id') .'_'.$fileName;
-						$thimg->save(public_path(). '/uploads/thumbs/'.$thumbfile);
-						
-						$mdimg = \Image::make($destinationPath.$fileName);
-						$thactualsize = getimagesize($destinationPath.$fileName);
-						if($thactualsize[0]>$thactualsize[1])
-						{
-							$mdimg->resize(320, null, function ($constraint) {
-								$constraint->aspectRatio();
-							});
-						}
-						else
-						{
-							$mdimg->resize(null, 320, function ($constraint) {
-								$constraint->aspectRatio();
-							});
-						}
-						$thumbfile = 'format_'. Input::get('fold_id') .'_'.$fileName;
-						$mdimg->save(public_path(). '/uploads/thumbs/'.$thumbfile);
-						
-						$mdimg = \Image::make($destinationPath.$fileName);
-						$hfactualsize = getimagesize($destinationPath.$fileName);
-						if($hfactualsize[0]>$hfactualsize[1])
-						{
-							$mdimg->resize(1000, null, function ($constraint) {
-								$constraint->aspectRatio();
-							});
-						}
-						else
-						{
-							$mdimg->resize(null, 1000, function ($constraint) {
-								$constraint->aspectRatio();
-							});
-						}
-						$thumbfile = 'highflip_'. Input::get('fold_id') .'_'.$fileName;
-						$mdimg->save(public_path(). '/uploads/thumbs/'.$thumbfile);
-						
-						$countfile = DB::table('tb_container_files')->where('folder_id', $curdate_propFolder)->where(function ($query) { $query->where('file_type', 'image/jpeg')->orWhere('file_type', 'image/png')->orWhere('file_type', 'image/gif');})->count();
-						if($countfile==0)
-						{
-							$copytofolder = public_path().'/uploads/folder_cover_imgs/';
-							$bkimg = \Image::make($destinationPath.$fileName);
-							$bkimg->resize(128, 130);
-							$bkimgfile = 'thumb_'. $fileName;
-							$bkimg->save($copytofolder.$bkimgfile);
+							$thimg = \Image::make($destinationPath.$fileName);
+							$thimg->resize(128, 130);
+							$thumbfile = 'thumb_'. Input::get('fold_id') .'_'.$fileName;
+							$thimg->save(public_path(). '/uploads/thumbs/'.$thumbfile);
 							
 							$mdimg = \Image::make($destinationPath.$fileName);
 							$thactualsize = getimagesize($destinationPath.$fileName);
@@ -187,87 +154,119 @@ class PropertyimagesmanagementController extends Controller {
 									$constraint->aspectRatio();
 								});
 							}
-							$thumbfile = 'format_'.$fileName;
-							$mdimg->save($copytofolder.$thumbfile);
+							$thumbfile = 'format_'. Input::get('fold_id') .'_'.$fileName;
+							$mdimg->save(public_path(). '/uploads/thumbs/'.$thumbfile);
 							
-							$cmdata['temp_cover_img'] = $fileName;
-							$cmdata['temp_cover_img_masonry'] = $fileName;
-							$cmdata['updated'] = date('y-m-d');
-							\DB::table('tb_container')->where('id', $curdate_propFolder)->update($cmdata);
-						}
-					}
-					
-					$data['folder_id'] = $curdate_propFolder;
-					$data['file_name'] = $fileName;
-					$data['file_type'] = $request->file('file')->getClientMimeType();
-					$data['file_size'] = $request->file('file')->getClientSize();
-					$data['user_id'] = \Auth::user()->id;
-					$data['created'] = date('y-m-d h:i:s');
-					$data['path'] = $destinationPath;
-					$fileID = \DB::table('tb_container_files')->insertGetId($data);
-					
-					if($extension=='tif' || $extension=='cad')
-					{
-						$newtfname = $destinationPath.$fileName;
-						$typArr = array('jpg','png');
-						foreach($typArr as $imgtype)
-						{
-							$fileName = $ftname[0].'.'.$imgtype;
-							$exha = false;
-							for($f=1;$exha!=true;$f++)
+							$mdimg = \Image::make($destinationPath.$fileName);
+							$hfactualsize = getimagesize($destinationPath.$fileName);
+							if($hfactualsize[0]>$hfactualsize[1])
 							{
-								if (File::exists($destinationPath.$fileName))
-								{
-									$fileName = $ftname[0].'('.$f.').'.$imgtype;
-								}
-								else
-								{
-									$fileName = $fileName;
-									$exha = true;
-								}
-							}
-							\Image::make($newtfname)->encode($imgtype, 100)->save($destinationPath.$fileName);
-							
-							$data['folder_id'] = $curdate_propFolder;
-							$data['file_id'] = $fileID;
-							$data['file_name'] = $fileName;
-							if($imgtype=='jpg')
-							{
-								$data['file_type'] = 'image/jpeg';
+								$mdimg->resize(1000, null, function ($constraint) {
+									$constraint->aspectRatio();
+								});
 							}
 							else
 							{
-								$data['file_type'] = 'image/png';
+								$mdimg->resize(null, 1000, function ($constraint) {
+									$constraint->aspectRatio();
+								});
 							}
+							$thumbfile = 'highflip_'. Input::get('fold_id') .'_'.$fileName;
+							$mdimg->save(public_path(). '/uploads/thumbs/'.$thumbfile);
 							
-							$data['file_size'] = $request->file('file')->getClientSize();
-							$data['user_id'] = \Auth::user()->id;
-							$data['created'] = date('y-m-d h:i:s');
-							$data['path'] = $destinationPath;
-							\DB::table('tb_container_tiff_files')->insert($data);
+							$countfile = DB::table('tb_container_files')->where('folder_id', $curdate_propFolder)->where(function ($query) { $query->where('file_type', 'image/jpeg')->orWhere('file_type', 'image/png')->orWhere('file_type', 'image/gif');})->count();
+							if($countfile==0)
+							{
+								$copytofolder = public_path().'/uploads/folder_cover_imgs/';
+								$bkimg = \Image::make($destinationPath.$fileName);
+								$bkimg->resize(128, 130);
+								$bkimgfile = 'thumb_'. $fileName;
+								$bkimg->save($copytofolder.$bkimgfile);
+								
+								$mdimg = \Image::make($destinationPath.$fileName);
+								$thactualsize = getimagesize($destinationPath.$fileName);
+								if($thactualsize[0]>$thactualsize[1])
+								{
+									$mdimg->resize(320, null, function ($constraint) {
+										$constraint->aspectRatio();
+									});
+								}
+								else
+								{
+									$mdimg->resize(null, 320, function ($constraint) {
+										$constraint->aspectRatio();
+									});
+								}
+								$thumbfile = 'format_'.$fileName;
+								$mdimg->save($copytofolder.$thumbfile);
+								
+								$cmdata['temp_cover_img'] = $fileName;
+								$cmdata['temp_cover_img_masonry'] = $fileName;
+								$cmdata['updated'] = date('y-m-d');
+								\DB::table('tb_container')->where('id', $curdate_propFolder)->update($cmdata);
+							}
 						}
+						
+						$data['folder_id'] = $curdate_propFolder;
+						$data['file_name'] = $fileName;
+						$data['file_type'] = $request->file('file')->getClientMimeType();
+						$data['file_size'] = $request->file('file')->getClientSize();
+						$data['user_id'] = \Auth::user()->id;
+						$data['created'] = date('y-m-d h:i:s');
+						$data['path'] = $destinationPath;
+						$fileID = \DB::table('tb_container_files')->insertGetId($data);
+						
+						
+						$htdata['folder_id'] = $curdate_propFolder;
+						$htdata['property_name'] = $propertyname;
+						$htdata['property_slug'] = $propertynameslug;
+						$htdata['email_id'] = $emailid;
+						$htdata['message'] = $message;
+						$htdata['user_id'] = \Auth::user()->id;
+						$htdata['created'] = date('y-m-d h:i:s');
+						$htfileID = \DB::table('tb_hotels_help')->insertGetId($htdata);
+						
+						$htfdata['folder_id'] = $curdate_propFolder;
+						$htfdata['hotel_help_id'] = $htfileID;
+						$htfdata['file_id'] = $fileID;
+						$htfdata['path'] = $destinationPath;
+						$htfdata['user_id'] = \Auth::user()->id;
+						$htfdata['created'] = date('y-m-d h:i:s');
+						$htffileID = \DB::table('tb_hotels_help_files')->insertGetId($htdata);
+						
+						$hudata['hotel_help_update'] = 1;
+						$hudata['updated'] = date('y-m-d');
+						\DB::table('tb_container')->where('id', $curdate_propFolder)->update($hudata);
+						
+						$humdata['hotel_help_update'] = 1;
+						$humdata['updated'] = date('y-m-d');
+						\DB::table('tb_container')->where('id', $newpropFolder)->update($humdata);
+						
+						$data['msg'] = $message;
+						$toouser['email'] = $emailid;
+						$toouser['subject'] = "Files are uploaded.";
+						\Mail::send('user.emails.frontend_upload', $data, function($message) use ($toouser) {
+							$message->from('info@emporium-voyage.com', CNF_APPNAME);
+
+							$message->to($toouser['email']);
+
+							$message->subject($toouser['subject']);
+						});
+						
+						\Mail::send('user.emails.frontend_upload', $data, function($message) use ($toouser) {
+							$message->from($toouser['email']);
+
+							$message->to('info@emporium-voyage.com');
+
+							$message->subject($toouser['subject']);
+						});
+						
+						return "success";
 					}
-					
-					$data['msg'] = $message;
-					$toouser['email'] = $emailid;
-					$toouser['subject'] = "Files are uploaded.";
-					\Mail::send('user.emails.frontend_upload', $data, function($message) use ($toouser) {
-						$message->from('info@emporium-voyage.com', CNF_APPNAME);
-
-						$message->to($toouser['email']);
-
-						$message->subject($toouser['subject']);
-					});
-					
-					\Mail::send('user.emails.frontend_upload', $data, function($message) use ($toouser) {
-						$message->from($toouser['email']);
-
-						$message->to('info@emporium-voyage.com');
-
-						$message->subject($toouser['subject']);
-					});
-					
-					return "success";
+					else
+					{
+						return "error";
+					}
 				}
 				else
 				{
@@ -276,12 +275,12 @@ class PropertyimagesmanagementController extends Controller {
 			}
 			else
 			{
-				return "error";
+				return $validator->withInput();
 			}
 		}
 		else
 		{
-			return $validator->withInput();
+			return Redirect::to('user/login');
 		}
 	}
 
