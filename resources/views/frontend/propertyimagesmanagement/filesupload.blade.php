@@ -2232,7 +2232,7 @@
 					paramName: "file", // The name that will be used to transfer the file
 					addRemoveLinks: true,
 					success: function(file, response){
-						
+						alert(response);
 					}
 				 });
 			 
