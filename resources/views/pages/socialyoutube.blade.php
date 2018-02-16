@@ -787,7 +787,7 @@
                                 document.getElementById("main").style.marginRight = "250px";
                             }*/
                         }
-                        function closeNavpost() {
+                        /*function closeNavpost() {
                         if (document.getElementById("mySidenavpost").lenght > 0) {
                         document.getElementById("mySidenavpost").style.width = "0";
                         }
@@ -829,7 +829,7 @@
                         document.getElementById("main").style.marginRight = "0";
                         }
                         }
-                        });
+                        });*/
                     </script>
                     <script>
                         $(".node-btn").click(function(){
