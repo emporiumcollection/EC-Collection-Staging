@@ -607,7 +607,7 @@
                                         @if(!empty($sidebargridAds))
 											@foreach($sidebargridAds as $slides)
 												<div class="slick-cstm-width">
-													<a href="http://{{$slides->adv_link}}"><img src="{{URL::to('uploads/users/advertisement/'.$slides->adv_img)}}"></a>
+													<a href="https://{{$slides->adv_link}}"><img src="{{URL::to('uploads/users/advertisement/'.$slides->adv_img)}}"></a>
 												</div>
 											@endforeach
                                         @endif
