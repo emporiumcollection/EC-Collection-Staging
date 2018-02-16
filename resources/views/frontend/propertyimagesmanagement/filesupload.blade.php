@@ -942,13 +942,13 @@
                             <div class="row">
                                <form method="post" id="filetransferform" action="{{URL::to('uploadtransferfile')}}">
 									<div class="form-group  " >
-										<input  class="form-control" name="propertyname" id="propertyname" placeholder="Enter Your Property name" value="" type="text">
+										<input  class="form-control" name="propertyname" id="propertyname" placeholder="Enter Your Property name" value="dsfsdf" type="text">
 									</div>
 									<div class="form-group  " >
-										<input  class="form-control" name="emailaddress" id="emailaddress" placeholder="Enter Your Email" value="" type="email">
+										<input  class="form-control" name="emailaddress" id="emailaddress" placeholder="Enter Your Email" value="dfsdf" type="email">
 									</div>
 									<div class="form-group  " >
-										<textarea class="form-control" name="message" id="message"></textarea>
+										<textarea class="form-control" name="message" id="message">dsfsdfds</textarea>
 									</div>
 									<div class="form-group  " >
 										<div class="dropzone" id="dropzoneFileUpload"> </div>
