@@ -942,13 +942,13 @@
                             <div class="row">
                                <form method="post" id="filetransferform" action="{{URL::to('uploadtransferfile')}}">
 									<div class="form-group  " >
-										<input  class="form-control" name="propertyname" id="propertyname" placeholder="Enter Your Property name" value="dsfsdf" type="text">
+										<input  class="form-control" name="propertyname" id="propertyname" placeholder="Enter Your Property name" value="" type="text">
 									</div>
 									<div class="form-group  " >
-										<input  class="form-control" name="emailaddress" id="emailaddress" placeholder="Enter Your Email" value="dfsdf" type="email">
+										<input  class="form-control" name="emailaddress" id="emailaddress" placeholder="Enter Your Email" value="" type="email">
 									</div>
 									<div class="form-group  " >
-										<textarea class="form-control" name="message" id="message">dsfsdfds</textarea>
+										<textarea class="form-control" name="message" id="message"></textarea>
 									</div>
 									<div class="form-group  " >
 										<div class="dropzone" id="dropzoneFileUpload"> </div>
@@ -2233,6 +2233,15 @@
 					addRemoveLinks: true,
 					success: function(file, response){
 						alert(response);
+					},
+					init: function() {
+						var thisDropzone = this;
+						this.on("processing", function(file) {
+							thisDropzone.options.params.fold_id = localStorage.getItem('fold_id');
+							thisDropzone.options.params.emailaddress = $('#emailaddress').val();
+							thisDropzone.options.params.message = $('#message').text();
+							thisDropzone.options.params.propertyname = $('#propertyname').val();
+						});
 					}
 				 });
 			 

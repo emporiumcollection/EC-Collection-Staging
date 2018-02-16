@@ -5,7 +5,7 @@ use App\Http\Controllers\ContainerController;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 use App\Http\Controllers\Controller;
 use App\User;
-use DB,Validator, Input, Redirect, CommonHelper, Mail;
+use DB,Validator, Input, Redirect, CommonHelper, File, Mail;
 class PropertyimagesmanagementController extends Controller {
 
     public function __construct() {
