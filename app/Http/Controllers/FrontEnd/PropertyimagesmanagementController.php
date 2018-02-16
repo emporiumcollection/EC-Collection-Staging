@@ -232,7 +232,7 @@ class PropertyimagesmanagementController extends Controller {
 						$htfdata['path'] = $destinationPath;
 						$htfdata['user_id'] = \Auth::user()->id;
 						$htfdata['created'] = date('y-m-d h:i:s');
-						$htffileID = \DB::table('tb_hotels_help_files')->insertGetId($htdata);
+						$htffileID = \DB::table('tb_hotels_help_files')->insertGetId($htfdata);
 						
 						$hudata['hotel_help_update'] = 1;
 						$hudata['updated'] = date('y-m-d');
