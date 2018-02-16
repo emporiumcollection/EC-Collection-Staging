@@ -14,7 +14,7 @@ class FrontendPagesController extends Controller {
         
     }
 	
-	 public function getIndex(Request $request) {
+	 public function index(Request $request) {
        
        
     }
