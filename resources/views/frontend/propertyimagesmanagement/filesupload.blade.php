@@ -942,10 +942,10 @@
                             <div class="row">
                                <form method="post" id="filetransferform" action="{{URL::to('uploadtransferfile')}}">
 									<div class="form-group  " >
-										<input  class="form-control" name="propertyname" id="propertyname" placeholder="Enter Your Property name" type="text">
+										<input  class="form-control" name="propertyname" id="propertyname" placeholder="Enter Your Property name" value="" type="text">
 									</div>
 									<div class="form-group  " >
-										<input  class="form-control" name="emailaddress" id="emailaddress" placeholder="Enter Your Email" type="email">
+										<input  class="form-control" name="emailaddress" id="emailaddress" placeholder="Enter Your Email" value="" type="email">
 									</div>
 									<div class="form-group  " >
 										<textarea class="form-control" name="message" id="message"></textarea>
@@ -2225,9 +2225,9 @@
 					params: {
 						_token: token,
 						fold_id: 6200,
-						emailaddress:$('#emailaddress').val(),
-						message:$('#message').val(),
-						propertyname:$('#propertyname').val(),
+						emailaddress: $('#emailaddress').val(),
+						message: $('#message').text(),
+						propertyname: $('#propertyname').val(),
 					},
 					paramName: "file", // The name that will be used to transfer the file
 					addRemoveLinks: true,
