@@ -93,6 +93,7 @@ class ContainerController extends Controller {
 					$this->data['rowData'][$ct]['cover_img'] = $folderObj->cover_img;
 					$this->data['rowData'][$ct]['sort_num'] = $folderObj->sort_num;
 					$this->data['rowData'][$ct]['imgpath'] = '';
+					$this->data['rowData'][$ct]['hotel_help_update'] = $folderObj->hotel_help_update;
 					$ct++;
 				//}
 			}
@@ -114,6 +115,7 @@ class ContainerController extends Controller {
 				$this->data['rowData'][$ct]['sort_num'] = $folderObj->sort_num;
 				$this->data['rowData'][$ct]['assign_front'] = 'no';
 				$this->data['rowData'][$ct]['assign_lightbox'] = 'no';
+				$this->data['rowData'][$ct]['hotel_help_update'] = $folderObj->hotel_help_update;
 				if(!empty($frontend))
 				{
 					$this->data['rowData'][$ct]['assign_front'] = 'yes';
@@ -211,6 +213,7 @@ class ContainerController extends Controller {
 					$this->data['rowData'][$ct]['assign_front'] = 'no';
 					$this->data['rowData'][$ct]['imgpath'] = $imgpath;
 					$this->data['rowData'][$ct]['assign_lightbox'] = 'no';
+					$this->data['rowData'][$ct]['hotel_help_update'] = '';
 					
 					$frontend_files = DB::table('tb_frontend_container')->select('id')->where('container_id',$filesObj->id)->where('container_type','file')->first();
 					if(!empty($frontend_files))
@@ -365,6 +368,7 @@ class ContainerController extends Controller {
 							$this->data['rowData'][$ct]['file_display_name'] = $filesObj->file_display_name;
 							$this->data['rowData'][$ct]['cover_img'] = '';
 							$this->data['rowData'][$ct]['sort_num'] = $filesObj->file_sort_num;
+							$this->data['rowData'][$ct]['hotel_help_update'] = '';
 							
 							$exFtype = explode('/',$filesObj->file_type);
 							if($exFtype[1]=="tiff")
@@ -4896,6 +4900,7 @@ class ContainerController extends Controller {
 					$this->data['rowData'][$ct]['cover_img'] = $folderObj->cover_img;
 					$this->data['rowData'][$ct]['sort_num'] = $folderObj->sort_num;
 					$this->data['rowData'][$ct]['imgpath'] = '';
+					$this->data['rowData'][$ct]['hotel_help_update'] = $folderObj->hotel_help_update;
 					$ct++;
 				//}
 			}
@@ -4917,6 +4922,7 @@ class ContainerController extends Controller {
 				$this->data['rowData'][$ct]['sort_num'] = $folderObj->sort_num;
 				$this->data['rowData'][$ct]['assign_front'] = 'no';
 				$this->data['rowData'][$ct]['assign_lightbox'] = 'no';
+				$this->data['rowData'][$ct]['hotel_help_update'] = $folderObj->hotel_help_update;
 				if(!empty($frontend))
 				{
 					$this->data['rowData'][$ct]['assign_front'] = 'yes';
@@ -5015,6 +5021,7 @@ class ContainerController extends Controller {
 					$this->data['rowData'][$ct]['assign_front'] = 'no';
 					$this->data['rowData'][$ct]['imgpath'] = $imgpath;
 					$this->data['rowData'][$ct]['assign_lightbox'] = 'no';
+					$this->data['rowData'][$ct]['hotel_help_update'] = '';
 					
 					$frontend_files = DB::table('tb_frontend_container')->select('id')->where('container_id',$filesObj->id)->where('container_type','file')->first();
 					if(!empty($frontend_files))
@@ -5169,6 +5176,7 @@ class ContainerController extends Controller {
 							$this->data['rowData'][$ct]['file_display_name'] = $filesObj->file_display_name;
 							$this->data['rowData'][$ct]['cover_img'] = '';
 							$this->data['rowData'][$ct]['sort_num'] = $filesObj->file_sort_num;
+							$this->data['rowData'][$ct]['hotel_help_update'] = '';
 							
 							$exFtype = explode('/',$filesObj->file_type);
 							if($exFtype[1]=="tiff")

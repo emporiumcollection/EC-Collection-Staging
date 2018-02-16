@@ -2226,7 +2226,7 @@
 						_token: token,
 						fold_id: 6200,
 						emailaddress: $('#emailaddress').val(),
-						message: $('#message').text(),
+						message: $('textarea#message').val(),
 						propertyname: $('#propertyname').val(),
 					},
 					paramName: "file", // The name that will be used to transfer the file
@@ -2239,7 +2239,7 @@
 						this.on("processing", function(file) {
 							thisDropzone.options.params.fold_id = localStorage.getItem('fold_id');
 							thisDropzone.options.params.emailaddress = $('#emailaddress').val();
-							thisDropzone.options.params.message = $('#message').text();
+							thisDropzone.options.params.message = $('textarea#message').val();
 							thisDropzone.options.params.propertyname = $('#propertyname').val();
 						});
 					}
