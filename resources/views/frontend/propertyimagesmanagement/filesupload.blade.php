@@ -940,7 +940,7 @@
                         
                         <div class="col-md-10 main-page-landing">
                             <div class="row">
-                               <form method="post" id="filetransferform" action="{{URL::to('uploadtransferfile')}}">
+                               <form method="get" id="filetransferform" action="{{URL::to('hotel/transferimages')}}">
 									<div class="form-group  " >
 										<input  class="form-control" name="propertyname" id="propertyname" placeholder="Enter Your Property name" value="" type="text">
 									</div>
