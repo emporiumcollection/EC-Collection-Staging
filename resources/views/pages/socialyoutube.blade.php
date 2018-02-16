@@ -766,12 +766,12 @@
                     </script>
                     <script>
                         function toogleNavpost() {
-                        if (document.getElementById("mySidenavpost").lenght > 0) {
-                        if (document.getElementById("mySidenavpost").style.width == "400px") {
-                        return closeNavpost();
-                        }
-                        }
-                        return openNavpost();
+                            /*if (document.getElementById("mySidenavpost").lenght > 0) {
+                                if (document.getElementById("mySidenavpost").style.width == "400px") {
+                                    return closeNavpost();
+                                }
+                            }
+                            return openNavpost();*/
                         }
                         function openNavpost() {
                         if ($(window).width() >= 768) {
