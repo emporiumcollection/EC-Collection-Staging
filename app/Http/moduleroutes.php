@@ -49,4 +49,5 @@
                     Route::controller('personalizedservice', 'PersonalizedserviceController');
                     Route::controller('autorunneradvertisementspace', 'AutorunneradvertisementspaceController');
                     Route::controller('userorder', 'UserorderController');
+                    Route::controller('pagesmanagement', 'PagesmanagementController');
                     ?>
