@@ -181,7 +181,11 @@ class PagesmanagementController extends Controller {
             }
             $data['user_id'] = $uid;
             $data['alias'] = $alias;
-
+			$data['access'] = '';
+			if(!is_null($request->input('group_id')))
+			{
+				$data['access'] = implode(',',$request->input('group_id'));
+			}
             if ($request->input('pageID') == '') {
                 $data['created'] = date('Y-m-d h:i:s');
             } else {
