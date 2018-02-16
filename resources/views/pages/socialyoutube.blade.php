@@ -607,7 +607,7 @@
                                         @if(!empty($sidebargridAds))
 											@foreach($sidebargridAds as $slides)
 												<div class="slick-cstm-width">
-													<a href="https://{{$slides->adv_link}}"><img src="{{URL::to('uploads/users/advertisement/'.$slides->adv_img)}}"></a>
+													<a href="http://{{$slides->adv_link}}"><img src="{{URL::to('uploads/users/advertisement/'.$slides->adv_img)}}"></a>
 												</div>
 											@endforeach
                                         @endif
@@ -766,28 +766,28 @@
                     </script>
                     <script>
                         function toogleNavpost() {
-                            /*if (document.getElementById("mySidenavpost").lenght > 0) {
-                                if (document.getElementById("mySidenavpost").style.width == "400px") {
-                                    return closeNavpost();
-                                }
-                            }
-                            return openNavpost();*/
+                        if (document.getElementById("mySidenavpost").lenght > 0) {
+                        if (document.getElementById("mySidenavpost").style.width == "400px") {
+                        return closeNavpost();
+                        }
+                        }
+                        return openNavpost();
                         }
                         function openNavpost() {
-                            /*if ($(window).width() >= 768) {
-                                if (document.getElementById("mySidenavpost").lenght > 0) {
-                                    document.getElementById("mySidenavpost").style.width = "400px";
-                                }
-                                document.getElementById("main").style.marginRight = "250px";
-                            }
-                            else{
-                                if (document.getElementById("mySidenavpost").lenght > 0) {
-                                    document.getElementById("mySidenavpost").style.width = "100%";
-                                }
-                                document.getElementById("main").style.marginRight = "250px";
-                            }*/
+                        if ($(window).width() >= 768) {
+                        if (document.getElementById("mySidenavpost").lenght > 0) {
+                        document.getElementById("mySidenavpost").style.width = "400px";
                         }
-                        /*function closeNavpost() {
+                        document.getElementById("main").style.marginRight = "250px";
+                        }
+                        else{
+                        if (document.getElementById("mySidenavpost").lenght > 0) {
+                        document.getElementById("mySidenavpost").style.width = "100%";
+                        }
+                        document.getElementById("main").style.marginRight = "250px";
+                        }
+                        }
+                        function closeNavpost() {
                         if (document.getElementById("mySidenavpost").lenght > 0) {
                         document.getElementById("mySidenavpost").style.width = "0";
                         }
@@ -829,7 +829,7 @@
                         document.getElementById("main").style.marginRight = "0";
                         }
                         }
-                        });*/
+                        });
                     </script>
                     <script>
                         $(".node-btn").click(function(){
