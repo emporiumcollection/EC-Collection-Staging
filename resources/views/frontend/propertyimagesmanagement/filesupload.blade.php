@@ -2217,7 +2217,7 @@
         
         <script type="text/javascript">
             $(document).on('ready', function () {
-				var baseUrl = "{{ url::to('transferaddfile') }}";
+				var baseUrl = "{{ url::to('hotel/transferaddfile') }}";
 				var token = "{{ Session::getToken() }}";
 				Dropzone.autoDiscover = false;
 				 var myDropzone = new Dropzone("div#dropzoneFileUpload", {
