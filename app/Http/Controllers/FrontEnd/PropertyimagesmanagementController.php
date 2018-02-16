@@ -275,7 +275,7 @@ class PropertyimagesmanagementController extends Controller {
 			}
 			else
 			{
-				return $validator->withInput();
+				return "error";
 			}
 		}
 		else
