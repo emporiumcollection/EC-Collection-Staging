@@ -162,7 +162,7 @@ class PagesmanagementController extends Controller {
 		$validator = Validator::make($request->all(), $rules);	
 		if ($validator->passes()) {
 			$data = $this->validatePost('tb_pagesmanagement');
-			
+			print_r($data); die;
 			$alias = \SiteHelpers::seoUrl(Input::get('title'));
 			$actalias = \SiteHelpers::seoUrl(Input::get('title'));
             $exha = false;
@@ -181,11 +181,14 @@ class PagesmanagementController extends Controller {
             }
             $data['user_id'] = $uid;
             $data['alias'] = $alias;
-			$data['access'] = '';
-			if(!is_null($request->input('group_id')))
-			{
-				$data['access'] = implode(',',$request->input('group_id'));
-			}
+			
+			$groups = Groups::all();
+			 $access = array();				
+			 foreach($groups as $group) {		 	
+				$access[$group->group_id]	= (isset($_POST['group_id'][$group->group_id]) ? '1' : '0');
+			 }
+		 						
+			$data['access'] = json_encode($access);
             if ($request->input('pageID') == '') {
                 $data['created'] = date('Y-m-d h:i:s');
             } else {
