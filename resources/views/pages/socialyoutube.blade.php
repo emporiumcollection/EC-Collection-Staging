@@ -774,18 +774,18 @@
                             return openNavpost();*/
                         }
                         function openNavpost() {
-                        if ($(window).width() >= 768) {
-                        if (document.getElementById("mySidenavpost").lenght > 0) {
-                        document.getElementById("mySidenavpost").style.width = "400px";
-                        }
-                        document.getElementById("main").style.marginRight = "250px";
-                        }
-                        else{
-                        if (document.getElementById("mySidenavpost").lenght > 0) {
-                        document.getElementById("mySidenavpost").style.width = "100%";
-                        }
-                        document.getElementById("main").style.marginRight = "250px";
-                        }
+                            /*if ($(window).width() >= 768) {
+                                if (document.getElementById("mySidenavpost").lenght > 0) {
+                                    document.getElementById("mySidenavpost").style.width = "400px";
+                                }
+                                document.getElementById("main").style.marginRight = "250px";
+                            }
+                            else{
+                                if (document.getElementById("mySidenavpost").lenght > 0) {
+                                    document.getElementById("mySidenavpost").style.width = "100%";
+                                }
+                                document.getElementById("main").style.marginRight = "250px";
+                            }*/
                         }
                         function closeNavpost() {
                         if (document.getElementById("mySidenavpost").lenght > 0) {
