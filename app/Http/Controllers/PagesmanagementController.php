@@ -156,11 +156,37 @@ class PagesmanagementController extends Controller {
 
 	function postSave( Request $request)
 	{
-		
+		$uid = \Auth::user()->id;
+        $id = $request->input('pageID');
 		$rules = $this->validateForm();
 		$validator = Validator::make($request->all(), $rules);	
 		if ($validator->passes()) {
 			$data = $this->validatePost('tb_pagesmanagement');
+			
+			$alias = \SiteHelpers::seoUrl(Input::get('title'));
+			$actalias = \SiteHelpers::seoUrl(Input::get('title'));
+            $exha = false;
+            for ($f = 1; $exha != true; $f++) {
+                if ($request->input('pageID') == '') {
+                    $check_alias = \DB::table('tb_pages_content')->where('alias', $alias)->count();
+                } else {
+                    $check_alias = \DB::table('tb_pages_content')->where('alias', $alias)->where('pageID', '!=', $id)->count();
+                }
+                if ($check_alias > 0) {
+                    $alias = $actalias . '-' . $f;
+                } else {
+                    $alias = $alias;
+                    $exha = true;
+                }
+            }
+            $data['user_id'] = $uid;
+            $data['alias'] = $alias;
+
+            if ($request->input('pageID') == '') {
+                $data['created'] = date('Y-m-d h:i:s');
+            } else {
+                $data['updated'] = date('Y-m-d h:i:s');
+            }
 				
 			$id = $this->model->insertRow($data , $request->input('pageID'));
 			
