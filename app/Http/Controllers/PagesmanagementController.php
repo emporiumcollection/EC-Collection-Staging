@@ -203,6 +203,8 @@ class PagesmanagementController extends Controller {
 				
 			$id = $this->model->insertRow($data , $request->input('pageID'));
 			
+			self::createRouters();
+			
 			if(!is_null($request->input('apply')))
 			{
 				$return = 'pagesmanagement/update/'.$id.'?return='.self::returnUrl();
@@ -238,6 +240,7 @@ class PagesmanagementController extends Controller {
 		if(count($request->input('ids')) >=1)
 		{
 			$this->model->destroy($request->input('ids'));
+			self::createRouters();
 			
 			\SiteHelpers::auditTrail( $request , "ID : ".implode(",",$request->input('ids'))."  , Has Been Removed Successfull");
 			// redirect
@@ -249,7 +252,26 @@ class PagesmanagementController extends Controller {
         		->with('messagetext','No Item Deleted')->with('msgstatus','error');				
 		}
 
-	}			
+	}	
+
+	function createRouters()
+	{
+		$rows = \DB::table('tb_pages_content')->get();
+		$val  =	"<?php \n"; 
+		foreach($rows as $row)
+		{
+			
+			$slug = $row->alias;
+			$val .= "Route::get('{$slug}', 'Frontend\FrontendPagesController@index');\n";		
+		}
+		$val .= 	"?>";
+		$filename = app_path().'/Http/pagemanagementroutes.php';
+		$fp=fopen($filename,"w+"); 
+		fwrite($fp,$val); 
+		fclose($fp);	
+		return true;
+		
+	}
 
 
 }
