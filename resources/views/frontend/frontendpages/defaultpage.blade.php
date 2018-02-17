@@ -25,6 +25,7 @@
 <!-- Custom style -->
 <link href="{{ asset('sximo/assets/memform/css/custom-ai.css')}}" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" href="{{ asset('sximo/css/hotel-membership/style.css')}}">
+<link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/animate.css')}}" />
 <style> 
 .padding-ten-half-all {
     padding: 9% !important;
@@ -61,5 +62,19 @@
 <!-- images loaded -->
 <script type="text/javascript" src="{{ asset('sximo/assets/memform/js/imagesloaded.pkgd.min.js')}}"></script>
  <script src="{{ asset('sximo/js/parsley.min.js')}}" type="text/javascript"></script>
-         
+<script>
+	$(document).ready(function () {
+		$("a").on('click', function (event) {
+			if (this.hash !== "") {
+				event.preventDefault();
+				var hash = this.hash;
+				$('html, body').animate({
+					scrollTop: $(hash).offset().top
+				}, 800, function () {
+					window.location.hash = hash;
+				});
+			}
+		});
+	});
+</script>
 @endsection
