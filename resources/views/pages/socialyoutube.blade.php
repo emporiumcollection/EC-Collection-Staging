@@ -534,6 +534,17 @@
                                         </form>
                                     </div>
                                     <div class="panel-group" id="accordion">
+                                        <?php 
+
+                                        /* Note:
+                                             Now the our destinations will render from storage/app/homeOurDestination.html. 
+                                             That file will be genrate from cron job or backend panel.  
+
+
+                                           */  
+                                        ?>
+
+                                        {!!Storage::get('leftOurDestination.html')!!}
                                         @if(!empty($ourmaindesitnation))
 											<div class="panel panel-default custom-post-panel">
 												<a data-toggle="collapse" data-parent="#accordion" href="#maindestinations" class="heading-stying {{($continent!='') ? '' : 'collapsed' }}">
