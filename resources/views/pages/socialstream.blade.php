@@ -689,26 +689,6 @@ jQuery(document).ready(function($){
 			twitter: {
 				id: '{{implode(",",$twitterArr)}}',
 				url:'{{ URL::to("sximo/jquery_social_stream/twitter.php")}}'
-			},
-			facebook: {
-				id: '{{implode(",",$facebookArr)}}',
-				out: 'intro,thumb,text,user,share',
-				url:'{{ URL::to("sximo/jquery_social_stream/facebook.php")}}'
-			},
-			google: {
-				id: '{{implode(",",$googleArr)}}'
-			},
-			vimeo: {
-				id: '{{implode(",",$vimeoArr)}}'
-			},
-			youtube: {
-				id: '{{implode(",",$youtubeArr)}}',
-				thumb: 'medium',
-				out: 'intro,thumb,title,user,share'
-			},
-			pinterest: {
-				id: '{{implode(",",$pinterestArr)}}',
-				url:'{{ URL::to("sximo/jquery_social_stream/rss.php")}}'
 			}
 		},
 		rotate: {
