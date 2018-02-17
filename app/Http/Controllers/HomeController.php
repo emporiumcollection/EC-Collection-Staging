@@ -161,104 +161,6 @@ class HomeController extends Controller {
 						
 						$this->data['sidebardetailAds'] = \DB::table('tb_advertisement')->select('adv_link','adv_img')->where('adv_type', 'sidebar')->where('adv_position', 'detail')->get();
 					}
-					elseif (isset($pageSlug) && $pageSlug == 'social-youtube') {
-						
-
-                                            /*******************************************************/
-
-                                            $mainArrdestts = array();
-                                            $maindest = \DB::table('tb_categories')->where('parent_category_id', 0)->where('id', '!=', 8)->get();
-                                            if (!empty($maindest)) {
-                                                $d = 0;
-                                                foreach ($maindest as $mdest) {
-
-                                                    $getcats = '';
-                                                    $chldIds = array();
-                                                    $childdest = \DB::table('tb_categories')->where('parent_category_id', $mdest->id)->get();
-                                                    if (!empty($childdest)) {
-                                                        $chldIds = $this->fetchcategoryChildListIds($mdest->id);
-                                                        array_unshift($chldIds, $mdest->id);
-                                                    } else {
-                                                        $chldIds[] = $mdest->id;
-                                                    }
-
-                                                    if (!empty($chldIds)) {
-                                                        $getcats = " AND (" . implode(" || ", array_map(function($v) {
-                                                                            return sprintf("FIND_IN_SET('%s', property_category_id)", $v);
-                                                                        }, array_values($chldIds))) . ")";
-                                                    }
-
-                                                    $preprops = DB::select(DB::raw("SELECT COUNT(*) AS total_rows FROM tb_properties WHERE property_status = '1' $getcats"));
-
-                                                    if (isset($preprops[0]->total_rows) && $preprops[0]->total_rows > 0) {
-                                                        $mainArrdestts[$d] = $mdest;
-                                                        if (!empty($childdest)) {
-                                                            $c = 0;
-                                                            foreach ($childdest as $cdest) {
-
-                                                                $getcats = '';
-                                                                $chldIds = array();
-                                                                $subchilddest = DB::select(DB::raw("SELECT * FROM tb_categories WHERE parent_category_id = '{$cdest->id}' AND (SELECT COUNT(*) AS total_rows FROM tb_properties WHERE property_status = '1' AND (FIND_IN_SET(tb_categories.id, property_category_id))) > 0 "));
-                                                                if (!empty($subchilddest)) {
-                                                                    $chldIds = $this->fetchcategoryChildListIds($cdest->id);
-                                                                    array_unshift($chldIds, $cdest->id);
-                                                                } else {
-                                                                    $chldIds[] = $cdest->id;
-                                                                }
-
-                                                                if (!empty($chldIds)) {
-                                                                    $getcats = " AND (" . implode(" || ", array_map(function($v) {
-                                                                                        return sprintf("FIND_IN_SET('%s', property_category_id)", $v);
-                                                                                    }, array_values($chldIds))) . ")";
-                                                                }
-
-                                                                $preprops = DB::select(DB::raw("SELECT COUNT(*) AS total_rows FROM tb_properties WHERE property_status = '1' $getcats"));
-
-                                                                if (isset($preprops[0]->total_rows) && $preprops[0]->total_rows > 0) {
-                                                                    $mainArrdestts[$d]->childs[$c] = $cdest;
-                                                                    if (!empty($subchilddest)) {
-
-                                                                        foreach ($subchilddest as $key => $_subchilddest) {
-                                                                            $getcats = '';
-                                                                            $chldIds = array();
-                                                                            $temp = DB::select(DB::raw("SELECT * FROM tb_categories WHERE parent_category_id = '{$_subchilddest->id}' AND (SELECT COUNT(*) AS total_rows FROM tb_properties WHERE property_status = '1' AND (FIND_IN_SET(tb_categories.id, property_category_id))) > 0 "));
-                                                                            if (!empty($temp)) {
-                                                                                $chldIds = $this->fetchcategoryChildListIds($_subchilddest->id);
-                                                                                array_unshift($chldIds, $_subchilddest->id);
-                                                                            } else {
-                                                                                $chldIds[] = $_subchilddest->id;
-                                                                            }
-
-                                                                            if (!empty($chldIds)) {
-                                                                                $getcats = " AND (" . implode(" || ", array_map(function($v) {
-                                                                                                    return sprintf("FIND_IN_SET('%s', property_category_id)", $v);
-                                                                                                }, array_values($chldIds))) . ")";
-                                                                            }
-                                                                            $preprops = DB::select(DB::raw("SELECT COUNT(*) AS total_rows FROM tb_properties WHERE property_status = '1' $getcats"));
-
-                                                                            if (isset($preprops[0]->total_rows) && $preprops[0]->total_rows > 0) {
-                                                                                usort($temp, function($a, $b) {
-                                                                                    return trim($a->category_name) > trim($b->category_name);
-                                                                                });
-                                                                                $subchilddest[$key]->subchild = $temp;
-                                                                            }
-                                                                        }
-
-                                                                        $mainArrdestts[$d]->childs[$c]->subchild = $subchilddest;
-                                                                    }
-                                                                    $c++;
-                                                                }
-                                                            }
-                                                            $c++;
-                                                        }
-                                                    }
-                                                    $d++;
-                                                }
-                                            }
-
-                                            $this->data['ourmaindesitnation'] = $mainArrdestts;
-                                            /*******************************************************/
-					}
 					elseif (isset($pageSlug) && $pageSlug == 'membership_packages') {
 						
 						 $this->data['packages'] = \DB::table('tb_packages')->where('package_status', 1)->get();
@@ -316,7 +218,103 @@ class HomeController extends Controller {
 
                         //this->data['propertiesArr'] = $propertiesArr;
 						
-						
+
+                        
+                        /*******************************************************/
+
+                        $mainArrdestts = array();
+                        $maindest = \DB::table('tb_categories')->where('parent_category_id', 0)->where('id', '!=', 8)->get();
+                        if (!empty($maindest)) {
+                            $d = 0;
+                            foreach ($maindest as $mdest) {
+
+                                $getcats = '';
+                                $chldIds = array();
+                                $childdest = \DB::table('tb_categories')->where('parent_category_id', $mdest->id)->get();
+                                if (!empty($childdest)) {
+                                    $chldIds = $this->fetchcategoryChildListIds($mdest->id);
+                                    array_unshift($chldIds, $mdest->id);
+                                } else {
+                                    $chldIds[] = $mdest->id;
+                                }
+
+                                if (!empty($chldIds)) {
+                                    $getcats = " AND (" . implode(" || ", array_map(function($v) {
+                                                        return sprintf("FIND_IN_SET('%s', property_category_id)", $v);
+                                                    }, array_values($chldIds))) . ")";
+                                }
+
+                                $preprops = DB::select(DB::raw("SELECT COUNT(*) AS total_rows FROM tb_properties WHERE property_status = '1' $getcats"));
+
+                                if (isset($preprops[0]->total_rows) && $preprops[0]->total_rows > 0) {
+                                    $mainArrdestts[$d] = $mdest;
+                                    if (!empty($childdest)) {
+                                        $c = 0;
+                                        foreach ($childdest as $cdest) {
+
+                                            $getcats = '';
+                                            $chldIds = array();
+                                            $subchilddest = DB::select(DB::raw("SELECT * FROM tb_categories WHERE parent_category_id = '{$cdest->id}' AND (SELECT COUNT(*) AS total_rows FROM tb_properties WHERE property_status = '1' AND (FIND_IN_SET(tb_categories.id, property_category_id))) > 0 "));
+                                            if (!empty($subchilddest)) {
+                                                $chldIds = $this->fetchcategoryChildListIds($cdest->id);
+                                                array_unshift($chldIds, $cdest->id);
+                                            } else {
+                                                $chldIds[] = $cdest->id;
+                                            }
+
+                                            if (!empty($chldIds)) {
+                                                $getcats = " AND (" . implode(" || ", array_map(function($v) {
+                                                                    return sprintf("FIND_IN_SET('%s', property_category_id)", $v);
+                                                                }, array_values($chldIds))) . ")";
+                                            }
+
+                                            $preprops = DB::select(DB::raw("SELECT COUNT(*) AS total_rows FROM tb_properties WHERE property_status = '1' $getcats"));
+
+                                            if (isset($preprops[0]->total_rows) && $preprops[0]->total_rows > 0) {
+                                                $mainArrdestts[$d]->childs[$c] = $cdest;
+                                                if (!empty($subchilddest)) {
+
+                                                    foreach ($subchilddest as $key => $_subchilddest) {
+                                                        $getcats = '';
+                                                        $chldIds = array();
+                                                        $temp = DB::select(DB::raw("SELECT * FROM tb_categories WHERE parent_category_id = '{$_subchilddest->id}' AND (SELECT COUNT(*) AS total_rows FROM tb_properties WHERE property_status = '1' AND (FIND_IN_SET(tb_categories.id, property_category_id))) > 0 "));
+                                                        if (!empty($temp)) {
+                                                            $chldIds = $this->fetchcategoryChildListIds($_subchilddest->id);
+                                                            array_unshift($chldIds, $_subchilddest->id);
+                                                        } else {
+                                                            $chldIds[] = $_subchilddest->id;
+                                                        }
+
+                                                        if (!empty($chldIds)) {
+                                                            $getcats = " AND (" . implode(" || ", array_map(function($v) {
+                                                                                return sprintf("FIND_IN_SET('%s', property_category_id)", $v);
+                                                                            }, array_values($chldIds))) . ")";
+                                                        }
+                                                        $preprops = DB::select(DB::raw("SELECT COUNT(*) AS total_rows FROM tb_properties WHERE property_status = '1' $getcats"));
+
+                                                        if (isset($preprops[0]->total_rows) && $preprops[0]->total_rows > 0) {
+                                                            usort($temp, function($a, $b) {
+                                                                return trim($a->category_name) > trim($b->category_name);
+                                                            });
+                                                            $subchilddest[$key]->subchild = $temp;
+                                                        }
+                                                    }
+
+                                                    $mainArrdestts[$d]->childs[$c]->subchild = $subchilddest;
+                                                }
+                                                $c++;
+                                            }
+                                        }
+                                        $c++;
+                                    }
+                                }
+                                $d++;
+                            }
+                        }
+
+                        $this->data['ourmaindesitnation'] = $mainArrdestts;
+                        /*******************************************************/
+                                            
                         
                         $socialpropertiesArr = array();
                         $socialpropertiessingle = '';
