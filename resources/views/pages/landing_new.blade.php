@@ -1188,7 +1188,7 @@
                                                                 <option value="EUR">Currency</option>
                                                                 @foreach($currencyList as $currencyCode => $currencyName)
 
-                                                                    <option value="{{ $currencyCode }}" title="{{ $currencyName }}">{{ $currencyCode }}
+                                                                    <option value="{{ $currencyCode }}" title="{{ $currencyName }}">{{ $currencyName }}
                                                                 </option>
 
                                                                 @endforeach
