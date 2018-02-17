@@ -149,8 +149,6 @@ class HomeController extends Controller {
                             $d = 0;
                             foreach ($maindest as $mdest) {
 
-                                /*                                 * *********************************************** */
-
                                 $getcats = '';
                                 $chldIds = array();
                                 $childdest = \DB::table('tb_categories')->where('parent_category_id', $mdest->id)->get();
