@@ -5,7 +5,7 @@
 		<div class="container-fluid">
 			<div class="row equalize sm-equalize-auto">
 				<div class="col-md-12 sm-clear-both wow fadeInLeft no-padding">
-					<div class="padding-ten-half-all bg-light-gray md-padding-seven-all xs-padding-30px-all height-100">
+					<div class="padding-ten-half-all bg-light-gray md-padding-seven-all xs-padding-30px-all contentstyle">
 						{!! nl2br($pagecontent) !!}
 					</div>
 				</div>
@@ -25,7 +25,29 @@
 <!-- Custom style -->
 <link href="{{ asset('sximo/assets/memform/css/custom-ai.css')}}" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" href="{{ asset('sximo/css/hotel-membership/style.css')}}">
+<style> 
+.padding-ten-half-all {
+    padding: 9% !important;
+}
 
+.contentstyle h5
+{
+	color: #ABA07C;
+    font-size: 36px;
+    line-height: 51.33px;
+    text-transform: capitalize;
+    font-family: ACaslonPro-Regular;
+    font-weight: 700;
+	margin-bottom: 20px;
+}
+
+.contentstyle p
+{
+	font-family: geomanist-light !important;
+	font-size: 14px;
+    line-height: normal;
+}
+</style>
 @endsection
 
 @section('script')
