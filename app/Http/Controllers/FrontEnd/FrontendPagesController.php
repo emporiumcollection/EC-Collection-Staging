@@ -11,7 +11,7 @@ class FrontendPagesController extends Controller {
     public function __construct() {
         parent::__construct();
         $this->data['pageTitle'] = '';
-        
+        $this->data['data'] = CommonHelper::getInfo();
     }
 	
 	 public function index(Request $request) {
