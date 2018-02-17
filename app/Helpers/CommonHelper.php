@@ -47,4 +47,33 @@ class CommonHelper
 			return number_format($calcallunit,2,'.','');
 		}
 	}
+
+
+
+      static function getCurrencyList(){
+
+                $curl = curl_init();
+                curl_setopt_array($curl, array(
+                CURLOPT_URL => "https://openexchangerates.org/api/currencies.json?app_id=635960bf627e404fa235281f10de6aa9",
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => "",
+                CURLOPT_TIMEOUT => 30000,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => "GET",
+                CURLOPT_HTTPHEADER => array(
+                    // Set Here Your Requesred Headers
+                    'Content-Type: application/json',
+                ),
+                ));
+                $response = curl_exec($curl);
+                $err = curl_error($curl);
+                curl_close($curl);
+
+                if ($err) {
+                    echo "cURL Error #:" . $err;
+                } else {
+                     return (json_decode($response));
+                }
+       
+    }
 }

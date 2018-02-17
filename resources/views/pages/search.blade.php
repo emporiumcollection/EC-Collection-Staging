@@ -933,7 +933,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3">
+                                           <div class="col-md-2">
                                                     <div class="row">
                                                         <div class="form-group padding-right-12">
                                                             <div class="dropdown top-search-members-list">
@@ -959,6 +959,24 @@
                                                                     </ul>
                                                                 </div>
                                                             </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-1">
+                                                    <div class="row">
+                                                        <div class="form-group padding-right-12">     
+                                                         <?php  $currencyList=(CommonHelper::getCurrencyList()); ?>
+                                                            <select name='currencyOption' class="form-control">
+                                                                <option value="EUR">Currency</option>
+                                                                @foreach($currencyList as $currencyCode => $currencyName)
+
+                                                                    <option value="{{ $currencyCode }}" title="{{ $currencyName }}">{{ $currencyCode }}
+                                                                </option>
+
+                                                                @endforeach
+
+                                                            </select>
                                                         </div>
                                                     </div>
                                                 </div>

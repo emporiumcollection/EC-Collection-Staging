@@ -671,35 +671,53 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-3">
-                                                <div class="row">
-                                                    <div class="form-group padding-right-12">
-                                                        <div class="dropdown top-search-members-list">
-                                                            <div class="top-search-members-inner-align">
-                                                                <div class="members-list ai-custom-deafault-style">
-                                                                    <span id="adults-val">1</span>
-                                                                    Adults,
-                                                                    <span id="childern-val">0</span>
-                                                                    Children
-                                                                    <span class="right-down-arrow">
-                                                                        <i class="fa fa-angle-down" aria-hidden="true"></i>
-                                                                    </span>
+                                            <div class="col-md-2">
+                                                    <div class="row">
+                                                        <div class="form-group padding-right-12">
+                                                            <div class="dropdown top-search-members-list">
+                                                                <div class="top-search-members-inner-align">
+                                                                    <div class="members-list ai-custom-deafault-style">
+                                                                        <span id="adults-val">1</span>
+                                                                        Adults,
+                                                                        <span id="childern-val">0</span>
+                                                                        Children
+                                                                        <span class="right-down-arrow">
+                                                                            <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <ul class="members-drop-list" style="display: none;">
+                                                                        <li>
+                                                                            <label>Adult</label>
+                                                                            <input id="adult-input-value" name="adult" class="input-right" value="2" min="1" max="10" type="number">
+                                                                        </li>
+                                                                        <li>
+                                                                            <label>Children</label>
+                                                                            <input id="childerns-input-value" name="childs" class="input-right" value="0" min="0" max="10" type="number">
+                                                                        </li>
+                                                                    </ul>
                                                                 </div>
-                                                                <ul class="members-drop-list" style="display: none;">
-                                                                    <li>
-                                                                        <label>Adult</label>
-                                                                        <input id="adult-input-value" name="adult" class="input-right" value="2" min="1" max="5" type="number">
-                                                                    </li>
-                                                                    <li>
-                                                                        <label>Children</label>
-                                                                        <input id="childerns-input-value" name="childs" class="input-right" value="0" min="0" max="5" type="number">
-                                                                    </li>
-                                                                </ul>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+
+                                                <div class="col-md-1">
+                                                    <div class="row">
+                                                        <div class="form-group padding-right-12">     
+                                                         <?php  $currencyList=(CommonHelper::getCurrencyList()); ?>
+                                                            <select name='currencyOption' class="form-control">
+                                                                <option value="EUR">Currency</option>
+                                                                @foreach($currencyList as $currencyCode => $currencyName)
+
+                                                                    <option value="{{ $currencyCode }}" title="{{ $currencyName }}">{{ $currencyCode }}
+                                                                </option>
+
+                                                                @endforeach
+
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             <div class="col-md-1" style="width: 5.333%;">
                                                 <div class="row">
                                                     <div class="form-group padding-right-12">

@@ -543,7 +543,7 @@ return fasle;
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-2">
                                                     <div class="row">
                                                         <div class="form-group padding-right-12">
                                                             <div class="dropdown top-search-members-list">
@@ -560,15 +560,33 @@ return fasle;
                                                                     <ul class="members-drop-list" style="display: none;">
                                                                         <li>
                                                                             <label>Adult</label>
-                                                                            <input id="adult-input-value" name="adult" class="input-right" value="2" min="1" max="5" type="number">
+                                                                            <input id="adult-input-value" name="adult" class="input-right" value="2" min="1" max="10" type="number">
                                                                         </li>
                                                                         <li>
                                                                             <label>Children</label>
-                                                                            <input id="childerns-input-value" name="childs" class="input-right" value="0" min="0" max="5" type="number">
+                                                                            <input id="childerns-input-value" name="childs" class="input-right" value="0" min="0" max="10" type="number">
                                                                         </li>
                                                                     </ul>
                                                                 </div>
                                                             </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-1">
+                                                    <div class="row">
+                                                        <div class="form-group padding-right-12">     
+                                                         <?php  $currencyList=(CommonHelper::getCurrencyList()); ?>
+                                                            <select name='currencyOption' class="form-control">
+                                                                <option value="EUR">Currency</option>
+                                                                @foreach($currencyList as $currencyCode => $currencyName)
+
+                                                                    <option value="{{ $currencyCode }}" title="{{ $currencyName }}">{{ $currencyCode }}
+                                                                </option>
+
+                                                                @endforeach
+
+                                                            </select>
                                                         </div>
                                                     </div>
                                                 </div>
