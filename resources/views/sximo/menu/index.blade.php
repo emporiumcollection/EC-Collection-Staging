@@ -188,7 +188,14 @@
 								@if($row['module']== $page->alias ) selected="selected" @endif
 								>Page : {{ $page->title}}</option>
 							@endforeach	
-							</optgroup>						
+							</optgroup>
+							<optgroup label="Front Page CMS ">
+							@foreach($frontpages as $frontpage)
+								<option value="{{ $frontpage->alias}}"
+								@if($row['module']== $frontpage->alias ) selected="selected" @endif
+								>Front page : {{ $frontpage->title}}</option>
+							@endforeach	
+							</optgroup>								
 					</select> 		
 					 </div> 
 				  </div> 										
