@@ -774,7 +774,7 @@
                             <div class="col-md-12 col-sm-12 col-xs-12 no-padding">
                                 @if(!empty($pageslider))
                                     <section class="wow fadeIn no-padding cstmaiclass littlepadding">
-                                        <div class="swiper-auto-height-container position-relative width-100" style="height:500px;">
+                                        <div class="swiper-auto-height-container position-relative width-100" style="height:75%;">
                                             <div class="swiper-wrapper overflow-hidden">
                                                 @foreach($pageslider as $key => $slider_row)
                                                     <!-- start slider item -->
