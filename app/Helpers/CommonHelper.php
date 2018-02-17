@@ -270,4 +270,49 @@ class CommonHelper
     }
 
 
+
+ static function convertPriceFromCurrency($fromCurrencyCode="EUR", $toCurrencyCode="USD", $amount=1){
+
+                $curl = curl_init();
+                curl_setopt_array($curl, array(
+                CURLOPT_URL => "http://api.fixer.io/latest?base=".$fromCurrencyCode,
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => "",
+                CURLOPT_TIMEOUT => 30000,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => "GET",
+                CURLOPT_HTTPHEADER => array(
+                    // Set Here Your Requesred Headers
+                    'Content-Type: application/json',
+                ),
+                ));
+                $response = curl_exec($curl);
+                $err = curl_error($curl);
+                curl_close($curl);
+
+                if ($err) {
+                    echo "cURL Error #:" . $err;
+                } else {
+                    $currencyPriceList=array();
+                    $currencyPrice=json_decode($response);
+
+            }
+
+
+
+
+            if($fromCurrencyCode!=""  && $toCurrencyCode !="" && $amount > 0)
+            {
+                
+
+
+                $calcperunit = $currencyPrice->rates->$toCurrencyCode;
+                $calFinalPrice = $calcperunit * $amount;
+
+
+                return number_format($calFinalPrice,2,'.','');
+            }
+    }
+
+
 }

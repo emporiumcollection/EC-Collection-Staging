@@ -1386,6 +1386,8 @@
                                                                 <h2>
                                                                     <a title="{{$props->property_name}}" class="photograph FltLft ai-filtreted-hotel-name" rel="{{$props->id}}" href="{{URL::to($props->property_slug)}}">
                                                                         {{$props->property_name}}
+                                                                        {{ \Session::get('currencyOption') }} 
+                                                                    <?php echo $props->price*$convertedOneUnitPrice; ?> 
                                                                     </a>
                                                                     <span class="FltRgt">
                                                                         <!--i class="fa fa-camera-retro colorGrey" aria-hidden="true" title="Add to Itinerary" @if(array_key_exists('image', $props)) onclick="add_to_lightbox({{$props['image']->file_id}}, {{$props->id}});" @endif ></i-->

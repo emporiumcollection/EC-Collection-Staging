@@ -13,6 +13,7 @@ use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 use App\Http\Controllers\Controller;
 use App\User;
 use Socialize, ImageCache;
+Use CommonHelper;
 
 class HomeController extends Controller {
 
@@ -6102,7 +6103,14 @@ class HomeController extends Controller {
         endif;
 
         $this->data['segment_1'] = $request->segment(1);
-        
+
+        $selCurrency=$request->input("currencyOption");
+        \Session::put('currencyOption', $selCurrency);
+
+
+        $priceCheck=CommonHelper::convertPriceFromCurrency($fromCurrencyCode="EUR",\Session::get('currencyOption'), $amount=1);
+
+        $this->data["convertedOneUnitPrice"]=$priceCheck;
         $keyword = str_replace('_',' ',trim($request->cat));
         $show = 'asc';
         if($request->segment(1)=='search'){
@@ -6149,6 +6157,7 @@ class HomeController extends Controller {
                     $this->data['pageMetadesc'] = ($row->metadesc != '' ? $row->metadesc : CNF_METADESC);
 
                     $this->data['breadcrumb'] = 'active';
+                     $this->data["currencyOption"]=$request->input("currencyOption");
 
                     if ($row->access != '') {
                         $access = json_decode($row->access, true);
