@@ -534,6 +534,11 @@
                                         </form>
                                     </div>
                                     <div class="panel-group" id="accordion">
+                                        <?php
+                                        echo '<pre>';
+                                        print_r($ourmaindesitnation);
+                                        echo '</pre>';
+                                        ?>
                                         @if(!empty($ourmaindesitnation))
 											<div class="panel panel-default custom-post-panel">
 												<a data-toggle="collapse" data-parent="#accordion" href="#maindestinations" class="heading-stying {{($continent!='') ? '' : 'collapsed' }}">
