@@ -40,14 +40,18 @@
 
 						<div class="tab-content">
 						  <div class="tab-pane active m-t" id="info">
+							<div class="form-group">
+								<?php echo "Please use '<h5>text</h5>' for Headings, '<label>text</label>' for Sub-headings and '<p>text</p>' for Paragraphs in the page."; ?>
+							 </div>
 							  <div class="form-group  " >
-								
 								<div class="" style="background:#fff;">
 								  <textarea name='content' rows='35' id='content'    class='form-control markItUp'  
 									 >{{ htmlentities($row['content']) }}</textarea> 
 								 </div> 
 							  </div> 						  
-
+							<div class="form-group">
+								<?php echo "Please use '<h5>text</h5>' for Headings, '<label>text</label>' for Sub-headings and '<p>text</p>' for Paragraphs in the page."; ?>
+							 </div>
 						  </div>
 
 						  <div class="tab-pane m-t" id="meta">

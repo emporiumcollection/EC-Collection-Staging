@@ -160,7 +160,7 @@
 	$(document).ready(function() { 
 		
 		
-		$("#slider_page_id").jCombo("{{ URL::to('pagesslider/comboselect?filter=tb_pages:pageID:title') }}",
+		$("#slider_page_id").jCombo("{{ URL::to('pagesslider/comboselect?filter=tb_pages_content:pageID:title') }}",
 		{  selected_value : '{{ $row["slider_page_id"] }}' });
 		 
 

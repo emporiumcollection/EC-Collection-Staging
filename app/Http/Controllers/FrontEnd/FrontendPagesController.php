@@ -48,7 +48,7 @@ class FrontendPagesController extends Controller {
 				
 				$this->data['pagecontent'] = $row->content;
 				
-				 $this->data['pageslider'] = \DB::table('tb_pages_sliders')->select( 'slider_title', 'slider_description', 'slider_img', 'slider_link', 'slider_video', 'slide_type')->where('slider_page_id', $row->pageID)->get();
+				 $this->data['pageslider'] = \DB::table('tb_pages_sliders')->select( 'slider_title', 'slider_description', 'slider_img', 'slider_link', 'slider_video', 'slide_type')->where('slider_page_id', $row->pageID)->where('slider_status',1)->get();
 				 
 				 $this->data['whybookwithus'] = \DB::table('tb_whybookwithus')->select('id', 'title', 'sub_title')->where('status', 0)->get();
 				 
