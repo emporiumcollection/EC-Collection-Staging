@@ -902,6 +902,10 @@
 	padding: 0;
     }
     
+	.form-errors
+	{
+		color:red;
+	}
             
         </style>
         <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -940,6 +944,7 @@
                         
                         <div class="col-md-10 main-page-landing">
                             <div class="row">
+								<div class="form-errors"> </div>
                                <form method="get" id="filetransferform" action="{{URL::to('hotel/transferimages')}}">
 									<div class="form-group  " >
 										<input  class="form-control" name="propertyname" id="propertyname" placeholder="Enter Your Property name" value="" type="text">
@@ -2232,7 +2237,15 @@
 					paramName: "file", // The name that will be used to transfer the file
 					addRemoveLinks: true,
 					success: function(file, response){
-						alert(response);
+						if(response=='error')
+						{
+							$('.form-errors').html('Something went wrong, please check the form and try again!');
+						}
+						else
+						{
+							$('.form-errors').html('Files added successfully!');
+						}
+						
 					},
 					init: function() {
 						var thisDropzone = this;
