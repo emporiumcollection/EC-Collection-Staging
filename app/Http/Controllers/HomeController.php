@@ -161,7 +161,7 @@ class HomeController extends Controller {
 						
 						$this->data['sidebardetailAds'] = \DB::table('tb_advertisement')->select('adv_link','adv_img')->where('adv_type', 'sidebar')->where('adv_position', 'detail')->get();
 					}
-					elseif (isset($pageSlug) && $pageSlug == 'social-youtub') {
+					elseif (isset($pageSlug) && $pageSlug == 'social-youtube') {
 						
 
                                             /*******************************************************/
