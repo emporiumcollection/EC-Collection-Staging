@@ -306,11 +306,18 @@ class CommonHelper
                 
 
 
+            if($fromCurrencyCode!="EUR"){
+
                 $calcperunit = $currencyPrice->rates->$toCurrencyCode;
                 $calFinalPrice = $calcperunit * $amount;
-
-
                 return number_format($calFinalPrice,2,'.','');
+            }else{
+
+                 return number_format($amount,2,'.','');
+            }
+
+
+               
             }
     }
 
