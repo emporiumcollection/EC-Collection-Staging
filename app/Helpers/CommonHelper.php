@@ -306,7 +306,7 @@ class CommonHelper
                 
 
 
-            if($fromCurrencyCode!="EUR"){
+            if($toCurrencyCode!="EUR"){
 
                 $calcperunit = $currencyPrice->rates->$toCurrencyCode;
                 $calFinalPrice = $calcperunit * $amount;
