@@ -6108,9 +6108,10 @@ class HomeController extends Controller {
         \Session::put('currencyOption', $selCurrency);
 
 
-        $priceCheck=CommonHelper::convertPriceFromCurrency($fromCurrencyCode="EUR",\Session::get('currencyOption'), $amount=1);
+        //$priceCheck=CommonHelper::convertPriceFromCurrency($fromCurrencyCode="EUR",\Session::get('currencyOption'), $amount=1);
 
-        $this->data["convertedOneUnitPrice"]=$priceCheck;
+        //$this->data["convertedOneUnitPrice"]=$priceCheck;
+        $this->data["convertedOneUnitPrice"]=0;;
         $keyword = str_replace('_',' ',trim($request->cat));
         $show = 'asc';
         if($request->segment(1)=='search'){
