@@ -720,7 +720,7 @@ jQuery(document).ready(function($){
 		wall: true,
 		center: true,
 		cache: false,
-		max: 'limit',
+		max: '5',
 		limit: 5,
 		iconPath: 'images/dcsns-dark/',
 		imagePath: 'images/dcsns-dark/',
