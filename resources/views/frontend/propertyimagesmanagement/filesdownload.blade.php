@@ -945,7 +945,7 @@
                         <div class="col-md-10 main-page-landing">
                             <div class="row">
 								@if($filepath!='')
-									<a href="{{ URL::to('uploads/varients_imgs/'.$filepath) }}" class="btn btn-primary" >Download </a>
+									<a href="{{ URL::to('uploads/varients_imgs/'.$filepath) }}" class="btn btn-primary" download="$filepath" target="_self" >Download </a>
 								@else
 									Wrong Link
 								@endif

@@ -348,7 +348,7 @@ class CrmhotelController extends Controller {
 			$toouser['subject'] = $subjectemail;
 			$toouser['attchfle'] = $actimgpath;
 			$emailArr['attchflename'] = $actimgname;
-			$ucode = rand(11111111, 99999999).'-'.rand(11111111, 99999999);
+			$ucode = rand(11111111, 99999999).rand(11111111, 99999999);
 			$emailArr['link'] = 'download-document/'.$ucode;
 			$tempe = 'crm_email';
 			if($templateemail!='')
