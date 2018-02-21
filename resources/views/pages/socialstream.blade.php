@@ -366,8 +366,8 @@
                                     <div id="listproperties">
                                         <div class="row">
 											<div class="col-md-12 col-sm-12 col-xs-12">
-												@if($socialpropertiessingle!='')
-													<p>You are viewing the social activity of : {{$socialpropertiessingle}}</p>
+												@if(!empty($socialpropertiesArr))
+													<p>You are viewing the social activity of : {{$socialpropertiesArr->property_name}}</p>
 												@endif
 												<div id="social-stream"></div>
 											</div>
@@ -405,9 +405,9 @@
                                                         <form>
 															@if(!empty($propertiesArr))
 																@foreach($propertiesArr as $property)
-																	@if($property['data']->social_twitter !='' || $property['data']->social_facebook !='' || $property['data']->social_google !='' || $property['data']->social_youtube !='' || $property['data']->social_pinterest !='' || $property['data']->social_vimeo !='')
+																	@if($property->social_twitter !='' || $property->social_facebook !='' || $property->social_google !='' || $property->social_youtube !='' || $property->social_pinterest !='' || $property->social_vimeo !='')
 																		<div class="form-group post-filter-inputs">
-																			<label><a href="{{URL::to('social-stream?sp='.$property['data']->property_slug)}}">{{$property['data']->property_name}}</a></label>
+																			<label><a href="{{URL::to('social-stream?sp='.$property->property_slug)}}">{{$property->property_name}}</a></label>
 																		</div>
 																	@endif
 																@endforeach
@@ -660,27 +660,25 @@
 
 {{--*/ $twitterArr = array(); $facebookArr = array(); $googleArr = array(); $youtubeArr = array(); $pinterestArr = array(); $vimeoArr = array(); /*--}}					
 @if(!empty($socialpropertiesArr))
-	@foreach($socialpropertiesArr as $scproperty)
-		@if($scproperty->social_twitter!='')
-			{{--*/ $twitterArr[] = $scproperty->social_twitter; /*--}}
-		@endif
-		@if($scproperty->social_facebook!='')
-			{{--*/ $facebookArr[] = $scproperty->social_facebook; /*--}}
-		@endif
-		@if($scproperty->social_google!='')
-			{{--*/ $googleArr[] = $scproperty->social_google; /*--}}
-		@endif
-		@if($scproperty->social_youtube!='')
-			{{--*/ $youtubeArr[] = $scproperty->social_youtube; /*--}}
-		@endif
-		@if($scproperty->social_pinterest!='')
-			{{--*/ $pinterestArr[] = $scproperty->social_pinterest; /*--}}
-		@endif
-		
-		@if($scproperty->social_vimeo!='')
-			{{--*/ $vimeoArr[] = $scproperty->social_vimeo; /*--}}
-		@endif
-	@endforeach
+	@if($socialpropertiesArr->social_twitter!='')
+		{{--*/ $twitterArr[] = $socialpropertiesArr->social_twitter; /*--}}
+	@endif
+	@if($socialpropertiesArr->social_facebook!='')
+		{{--*/ $facebookArr[] = $socialpropertiesArr->social_facebook; /*--}}
+	@endif
+	@if($socialpropertiesArr->social_google!='')
+		{{--*/ $googleArr[] = $socialpropertiesArr->social_google; /*--}}
+	@endif
+	@if($socialpropertiesArr->social_youtube!='')
+		{{--*/ $youtubeArr[] = $socialpropertiesArr->social_youtube; /*--}}
+	@endif
+	@if($socialpropertiesArr->social_pinterest!='')
+		{{--*/ $pinterestArr[] = $socialpropertiesArr->social_pinterest; /*--}}
+	@endif
+	
+	@if($socialpropertiesArr->social_vimeo!='')
+		{{--*/ $vimeoArr[] = $socialpropertiesArr->social_vimeo; /*--}}
+	@endif
 @endif		
 <script type="text/javascript">
 jQuery(document).ready(function($){

@@ -166,6 +166,25 @@ class HomeController extends Controller {
 						
 						 $this->data['packages'] = \DB::table('tb_packages')->where('package_status', 1)->get();
 					}
+					elseif (isset($pageSlug) && $pageSlug == 'social-stream') {
+						
+						$this->data['propertiesArr'] = array();
+                        $props = \DB::table('tb_properties')->select('property_name','social_twitter','social_facebook','social_google','social_youtube','social_pinterest','social_vimeo','property_slug')->where('property_status', 1)->get();
+						if(!empty($props))
+						{
+							$this->data['propertiesArr'] = $props;
+						}
+						
+                        if (Input::get('sp', false)) {
+                            $scprops = \DB::table('tb_properties')->select('property_name','social_twitter','social_facebook','social_google','social_youtube','social_pinterest','social_vimeo','property_slug')->where('property_slug', Input::get('sp', false))->where('property_status', 1)->first();
+                            if (!empty($scprops)) {
+                                $this->data['socialpropertiesArr'] = $scprops;
+                            }
+                        } else {
+                            $this->data['socialpropertiesArr'] = $props[0];
+                        }
+                        
+					}
 					else {
                         /*$tags_Arr = \DB::table('tb_tags_manager')->where('tag_status', 1)->get();
                         $tagsArr = array();
@@ -316,27 +335,6 @@ class HomeController extends Controller {
                         $this->data['ourmaindesitnation'] = $mainArrdestts;
                         /*******************************************************/
                                             
-                        
-                        $socialpropertiesArr = array();
-                        $socialpropertiessingle = '';
-                        if (Input::get('sp', false)) {
-                            $scprops = \DB::table('tb_properties')->where('property_slug', Input::get('sp', false))->where('property_status', 1)->get();
-                            if (!empty($scprops)) {
-                                foreach ($scprops as $scpr) {
-                                    $socialpropertiessingle = $scpr->property_name;
-                                }
-                            }
-                        } else {
-                            $scprops = \DB::table('tb_properties')->where('property_status', 1)->get();
-                        }
-
-                        if (!empty($scprops)) {
-                            $socialpropertiesArr = $scprops;
-                        }
-
-                        $this->data['socialpropertiesArr'] = $socialpropertiesArr;
-                        $this->data['socialpropertiessingle'] = $socialpropertiessingle;
-
                         $channel_url = '';
                         if (Input::get('scy', false)) {
                             $cateObjsc = \DB::table('tb_categories')->where('category_name', Input::get('scy', false))->where('category_published', 1)->first();
