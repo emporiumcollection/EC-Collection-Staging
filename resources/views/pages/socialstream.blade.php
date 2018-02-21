@@ -719,7 +719,7 @@ jQuery(document).ready(function($){
 		filter: true,
 		wall: true,
 		center: true,
-		cache: false,
+		cache: true,
 		max: '5',
 		limit: 5,
 		iconPath: 'images/dcsns-dark/',
