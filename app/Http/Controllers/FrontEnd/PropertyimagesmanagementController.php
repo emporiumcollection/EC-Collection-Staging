@@ -283,5 +283,35 @@ class PropertyimagesmanagementController extends Controller {
 			return Redirect::to('user/login');
 		}
 	}
+	
+	public function downloadFileCrm(Request $request, $code) {
+       
+        $this->data['landingads'] = \DB::table('tb_advertisement')->select('adv_img', 'adv_link')->where('adv_type', 'sidebar')->where('adv_position', 'landing')->get();
+
+		$this->data['slider'] = \DB::table('tb_sliders')->select('slider_category', 'slider_title', 'slider_description', 'slider_img', 'slider_link', 'slider_video', 'slide_type')->where('slider_category', 'Landing')->get();
+		$this->data['categoryslider'] = \DB::table('tb_sliders')->where('slider_category', 'Landing')->get();
+		
+		$this->data['experiences'] = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_custom_title')->where('category_published', 1)->where('parent_category_id', 8)->get();
+		
+		$this->data['whybookwithus'] = \DB::table('tb_whybookwithus')->select('id', 'title', 'sub_title')->where('status', 0)->get();
+		/* Note:
+			Now the our destinations will render from storage/app/homeOurDestination.html. 
+			That file will be genrate from cron job or backend panel.  
+		*/
+		$this->data['ourdesitnation'] = '';
+		$this->data['ourmaindesitnation'] = '';
+		$this->data['social_links'] = \DB::table('tb_social')->where('status', 1)->get();
+		$this->data['landing_menus'] = array();
+		$this->data['filepath'] = '';
+		if($code!='')
+		{
+			$checkfile = \DB::table('tb_crm_emailcommunication')->where('email_uniquescode', $code)->first();
+			if(!empty($checkfile))
+			{
+				$this->data['filepath'] = $checkfile->email_attachfile;
+			}
+		}
+        return view('frontend.propertyimagesmanagement.filesdownload', $this->data);
+    }
 
 }

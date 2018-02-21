@@ -291,6 +291,7 @@ Route::get('advertiser/package', 'Frontend\AdvertisementController@advertisement
 
 Route::get('hotel/transferimages', 'Frontend\PropertyimagesmanagementController@propertyImageupload');
 Route::post('hotel/transferaddfile', 'Frontend\PropertyimagesmanagementController@transferaddfile');
+Route::get('download-document/{code}', 'Frontend\PropertyimagesmanagementController@downloadFileCrm');
 
 Route::get('advertiser/cart', 'Frontend\AdvertisementController@advertiserCart');
 Route::get('advertiser/add_package_to_cart', 'Frontend\AdvertisementController@addToCartAjax');

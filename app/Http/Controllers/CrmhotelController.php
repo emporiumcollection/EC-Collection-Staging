@@ -347,7 +347,9 @@ class CrmhotelController extends Controller {
 			$toouser['cc_email_popup'] = $ccemail;
 			$toouser['subject'] = $subjectemail;
 			$toouser['attchfle'] = $actimgpath;
-			$toouser['attchflename'] = $actimgname;
+			$emailArr['attchflename'] = $actimgname;
+			$ucode = rand(11111111, 99999999).'-'.rand(11111111, 99999999);
+			$emailArr['link'] = 'download-document/'.$ucode;
 			$tempe = 'crm_email';
 			if($templateemail!='')
 			{
@@ -363,11 +365,6 @@ class CrmhotelController extends Controller {
 					$message->cc($toouser['cc_email_popup']);
 				}
 				$message->subject($toouser['subject']);
-				
-				if($toouser['attchfle']!='')
-				{
-					$message->attach($toouser['attchfle'], ['as' => $toouser['attchflename']]);
-				}
 			});
 			
 			$data['crm_id'] = $crmId;
@@ -378,8 +375,8 @@ class CrmhotelController extends Controller {
 			$data['email_subject'] = $subjectemail;
 			$data['email_template'] = $templateemail;
 			$data['email_message'] = $request->input('message_email_popup');
-			$data['email_attachfile'] = $actimgpath;
-			
+			$data['email_attachfile'] = $actimgname;
+			$data['email_uniquescode'] = $ucode;
 			$ins = \DB::table('tb_crm_emailcommunication')->insert($data);
 			
 			$ret['status'] = "success";
