@@ -342,6 +342,9 @@ class HomeController extends Controller {
                                 $channel_url = $cateObjsc->category_youtube_channel_url;
                             }
                         }
+						else{
+							$channel_url = $mainArrdestts[0]->category_youtube_channel_url;
+						}
 
                         $this->data['channel_url'] = $channel_url;
                       
