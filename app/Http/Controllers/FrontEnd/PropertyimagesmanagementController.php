@@ -224,6 +224,7 @@ class PropertyimagesmanagementController extends Controller {
 						$htdata['message'] = $message;
 						$htdata['user_id'] = \Auth::user()->id;
 						$htdata['created'] = date('y-m-d h:i:s');
+						$htdata['cdate'] = date('Y-m-d');
 						$htfileID = \DB::table('tb_hotels_help')->insertGetId($htdata);
 						
 						$htfdata['folder_id'] = $curdate_propFolder;
@@ -313,5 +314,33 @@ class PropertyimagesmanagementController extends Controller {
 		}
         return view('frontend.propertyimagesmanagement.filesdownload', $this->data);
     }
+	
+	function propertyimageReminder()
+	{
+		$cdate = date('Y-m-d', strtotime('-30 days'));
+		$checkhotelfile = \DB::table('tb_hotels_help')->select('property_name','folder_id')->where('cdate', '<', $cdate)->get();
+		$propArr = '';
+		if(!empty($checkhotelfile))
+		{
+			foreach($checkhotelfile as $hotelfile)
+			{
+				$link = URL::to('folders/'.$hotelfile->folder_id);
+				$propArr .= '<a href="'.$link.'" target="_blank">'.$hotelfile->property_name.'</a><br /><br />';
+			}
+			if($propArr!='')
+			{
+				$data['msg'] = $propArr;
+				$toouser['subject'] = "Property files removal reminder";
+				\Mail::send('user.emails.removal_reminder', $data, function($message) use ($toouser) {
+					$message->from('info@emporium-voyage.com', CNF_APPNAME);
+
+					$message->to('reservations@emporium-voyage.com');
+
+					$message->subject($toouser['subject']);
+				});
+				return "success";
+			}
+		}
+	}
 
 }
