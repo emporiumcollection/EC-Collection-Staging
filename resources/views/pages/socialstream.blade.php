@@ -710,7 +710,7 @@ jQuery(document).ready(function($){
 			}
 		},
 		rotate: {
-			delay: 1
+			delay: 0
 		},
 		twitterId: 'designchemical',
 		control: false,
