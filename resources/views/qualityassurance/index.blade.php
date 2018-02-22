@@ -77,7 +77,7 @@
                                 <td>{{ $row->date }}</td>
                                 <td>
                                     @if($access['is_detail'] ==1)
-                                    <a href="{{ URL::to('qualityassurance/show/'.$row->quality_assurance_id.'?return='.$return)}}" class="tips btn btn-xs btn-primary" title="{{ Lang::get('core.btn_view') }}"><i class="fa  fa-search "></i></a>
+                                    <!--<a href="{{ URL::to('qualityassurance/show/'.$row->quality_assurance_id.'?return='.$return)}}" class="tips btn btn-xs btn-primary" title="{{ Lang::get('core.btn_view') }}"><i class="fa  fa-search "></i></a>-->
                                     @endif
                                     @if($access['is_edit'] ==1)
                                     <a  href="{{ URL::to('qualityassurance/update/'.$row->quality_assurance_id.'?return='.$return) }}" class="tips btn btn-xs btn-success" title="{{ Lang::get('core.btn_edit') }}"><i class="fa fa-edit "></i></a>
