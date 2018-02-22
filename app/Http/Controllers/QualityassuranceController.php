@@ -102,6 +102,7 @@ class QualityassuranceController extends Controller {
             $this->data['row'] = $this->model->getColumnTable('tb_quality_assurance');
         }
         $this->data['fields'] = \SiteHelpers::fieldLang($this->info['config']['forms']);
+        $this->data['hotels'] = \DB::table('tb_properties')->select('id', 'property_name')->where('property_status', 1)->get();
 
         $this->data['id'] = $id;
         return view('qualityassurance.form', $this->data);
