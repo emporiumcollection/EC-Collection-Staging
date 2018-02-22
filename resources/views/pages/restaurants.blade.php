@@ -852,7 +852,7 @@
 	  };
 	};
 
-	var restro = [{!! substr($restroStr, 0, -1) !!}];
+	var restros = [{!! substr($restroStr, 0, -1) !!}];
 
 	$('.restrorantssearchform-navbar .typeahead').typeahead({
 	  hint: true,
@@ -861,6 +861,6 @@
 	},
 	{
 	  name: 'restrorants',
-	  source: substringRestrorants(restro)
+	  source: substringRestrorants(restros)
 	});
 </script>
