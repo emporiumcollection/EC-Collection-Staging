@@ -6647,5 +6647,27 @@ class HomeController extends Controller {
 		
         return view('pages.bars', $this->data);
     }
+	
+	public function spaspage(Request $request) {
+       
+        $this->data['pageTitle'] = 'Spas';
+		$this->data['pageMetakey'] = CNF_METAKEY;
+		$this->data['pageMetadesc'] = CNF_METADESC;
+
+		$this->data['whybookwithus'] = \DB::table('tb_whybookwithus')->select('id', 'title', 'sub_title')->where('status', 0)->get();
+
+		$propertiesArr = array();
+		$props = \DB::table('tb_properties')->select('id','spa_title','spa_desciription','spa_manager_text','spa_image1','spa_image2','spa_opening_hours','spa_phone_number','spa_url','spa_image3','spa_image4','spa_usp_text','spa_usp_person','property_name','property_slug',\DB::raw("(SELECT count(tb_properties_images.id) FROM tb_properties_images WHERE tb_properties_images.property_id = tb_properties.id AND tb_properties_images.type = 'Spa Gallery Images') as spa_gallery"))->where('property_status', 1)->where('spa_title', '!=','')->get();
+		//print_r($props); die;
+		if (!empty($props)) {
+			$propertiesArr = $props;
+		}
+
+		$this->data['propertiesArr'] = $propertiesArr;
+		
+		$this->data['sidebardetailAds'] = \DB::table('tb_advertisement')->select('adv_link','adv_img')->where('adv_type', 'sidebar')->where('adv_position', 'detail')->get();
+		
+        return view('pages.spas', $this->data);
+    }
 
 }
