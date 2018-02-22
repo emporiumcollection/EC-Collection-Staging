@@ -641,33 +641,7 @@
 								$('html').removeClass('hidescroll');
 							});
 							
-							var substringRestrorants = function(strs) {
-							  return function findRestrorants(q, cb) {
-								var restro, substringRegex;
-								restro = [];
-								substrRegex = new RegExp(q, 'i');
-
-								$.each(strs, function(i, str) {
-								  if (substrRegex.test(str)) {
-									restro.push(str);
-								  }
-								});
-
-								cb(restro);
-							  };
-							};
-
-							var restro = [{!! substr($restroStr, 0, -1) !!}];
-
-							$('.restrorantssearchform-navbar .typeahead').typeahead({
-							  hint: true,
-							  highlight: true,
-							  minLength: 1
-							},
-							{
-							  name: 'restrorants',
-							  source: substringRestrorants(restro)
-							});
+							
 							
 						});
                     </script>
@@ -861,3 +835,32 @@
                     <div class="editorial-custom-footer-style grid-page-footer-align">
                         @include('layouts/elliot/ai_footer_social')
                     </div>
+<script>
+	var substringRestrorants = function(strs) {
+	  return function findRestrorants(q, cb) {
+		var restro, substringRegex;
+		restro = [];
+		substrRegex = new RegExp(q, 'i');
+
+		$.each(strs, function(i, str) {
+		  if (substrRegex.test(str)) {
+			restro.push(str);
+		  }
+		});
+
+		cb(restro);
+	  };
+	};
+
+	var restro = [{!! substr($restroStr, 0, -1) !!}];
+
+	$('.restrorantssearchform-navbar .typeahead').typeahead({
+	  hint: true,
+	  highlight: true,
+	  minLength: 1
+	},
+	{
+	  name: 'restrorants',
+	  source: substringRestrorants(restro)
+	});
+</script>
