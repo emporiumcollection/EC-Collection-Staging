@@ -103,6 +103,8 @@ class QualityassuranceController extends Controller {
         }
         $this->data['fields'] = \SiteHelpers::fieldLang($this->info['config']['forms']);
         $this->data['hotels'] = \DB::table('tb_properties')->select('id', 'property_name')->where('property_status', 1)->get();
+        $this->data['hotel_managers'] = \DB::table('tb_users')->select("id", "CONCAT((first_name), (' '), (last_name)) AS hotel_manager_name")->where('group_id', 2)->where('active', 1)->get();
+        $this->data['quality_assurers'] = \DB::table('tb_users')->select("id", "CONCAT((first_name), (' '), (last_name)) AS quality_assurer_name")->where('group_id', 3)->where('active', 1)->get();
 
         $this->data['id'] = $id;
         return view('qualityassurance.form', $this->data);
