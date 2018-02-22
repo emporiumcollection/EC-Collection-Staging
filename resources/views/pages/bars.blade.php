@@ -302,58 +302,84 @@
                                         <div class="row">
 											<div class="col-md-12 col-sm-12 col-xs-12">
 												@if(!empty($propertiesArr))
-												<div id="restaurant-sec" class="restaurant-sec-main-bg-align">
-													<div class="container">
-														<div class="restaurant-sec-pannel-main-align">
-															<div class="ai_restaurant-name">
-																<h2 id="resto_title">{{$propertiesArr[0]->restaurant_title}}</h2>
-																<span class="restaurant-sec-hotel-name-below-small-text">Get Inspired</span>
-															</div>
-															<div class="restaurant-sec-description-pannel1">
-																<p id="resto_usptext">{{$propertiesArr[0]->restaurant_usp_text}}</p>
-																<p class="restaurant-orange-creative-text-align"><span class="restaorant-des-orange-text" id="resto_uspperson">-{{$propertiesArr[0]->restaurant_usp_person}}</span></p>
-															</div>
-															<div class="clearfix"></div>
-															<div class="restaurant-des-pannel-image1" id="resto_image">
-																@if($propertiesArr[0]->restaurant_image!='')
-																<img class="img-responsive img-width" src="{{ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$propertiesArr[0]->restaurant_image),100,300,null)}}" alt=""/>  
-																@endif
-															</div>
-															<div class="clearfix"></div>
-															<div  class="restaurant-sec-main-align">
-																<div class="col-md-4 col-sm-4">
-																	<div class="row">
-																		<div class="restaurant-sec-description-pannel2">
-																			<p id="resto_desc" class="restaurtant-bar-des-para-style">{!! (strlen($propertiesArr[0]->restaurant_desciription) > 350) ? nl2br(e(substr($propertiesArr[0]->restaurant_desciription,0,350))).'...' : nl2br(e($propertiesArr[0]->restaurant_desciription)) !!}</p>
-																			<div id="resto_uspperson_desc" class="restaurant-owner-sign">{{$propertiesArr[0]->restaurant_usp_person}}</div>
+												<div id="hotel-bar-sec" class="hotels-bar-sec-align">
+													<div class="container-">
+														<div class="bar-sec-inner-pannel">
+															<div class="col-md-12 noPadding">
+																<div class="col-md-8 vegasBarLeft">
+																<div class="col-md-3 col-sm-6">
+																	<div class="row" id="bars_image1">
+																		@if($propertiesArr[0]->bar_image!='')
+																		<img class="img-responsive img-width" src="{{ ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$propertiesArr[0]->bar_image),100,255,null)}}" alt=""/>  
+																		@endif
+																		<div class="hotel-bar-name-pannel">
+																			<h2 class="bar-name-text-style" id="bars_title">{{$propertiesArr[0]->bar_title}}</h2>
+																			<div class="bar-name-border-bottom"></div>
+																			<p class="bar-des-text" id="bars_subtitle">{{$propertiesArr[0]->bar_sub_title}}</p>
 																		</div>
 																	</div>
 																</div>
-																<div class="col-md-5 col-sm-5">
-																	<div class="row restaurant-image-height-align">
-																		<div id="resto_image2" class="restaurant-des-pannel-image2 restaurant-image-height-align">
-																			@if($propertiesArr[0]->restaurant_image2!='')
-																			<img class="img-responsive img-width" src="{{ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$propertiesArr[0]->restaurant_image2),100,500,null)}}" alt=""/>  
-																			@else
-																				@if($propertiesArr[0]->restaurant_image!='')
-																				<img class="img-responsive img-width" src="{{ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$propertiesArr[0]->restaurant_image),100,500,null)}}" alt=""/>  
-																				@endif
+																<div class="col-md-9 col-sm-6">
+																	<div class="row">
+																		<div class="bar-intro-text-bg">
+																			<div class="bar- tiitles-main-align">
+																				<h2 class="bar-info-text-haeding" id="bars_usptext">{{$propertiesArr[0]->bar_usp_text}}</h2>
+																				<p class="bar-info-text-style1" id="bars_uspperson">- {{$propertiesArr[0]->bar_usp_person}}</p>
+																			</div>
+																			<div class="red-pannel-text-align">
+																				<div class="col-md-10 col-sm-6">
+																					<div class="row">
+																						<div class="bar-red-pannel-image" id="bars_image2">
+																							@if($propertiesArr[0]->bar_image2!='')
+																							<img class="img-responsive img-width" src="{{ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$propertiesArr[0]->bar_image2),100,255,null)}}" alt=""/>  
+																							@endif
+																						</div>
+																					</div>
+																				</div>
+																				<div class="col-md-6 col-sm-6">
+																					<div class="row">
+																						@if($propertiesArr[0]->bar_gallery>0)
+																								<div class="view-gallery-pannel-align">
+																										<span class="view-gallery-border-left"></span>
+																										<a href="javascript:void(0);" id="bars_gallery_id"  class="detail_view gallerysty bar-view-gallery " rel="{{$propertiesArr[0]->id}}" rel2="Bar Gallery Images">View Gallery</a>
+																								</div>
+																						@endif
+																						<div class="restaurant-view-gallery-align">
+																				<span class="view-gallery-border-left"></span>
+																				<a id="hotellink" href="{{URL::to('').'/'.$propertiesArr[0]->property_slug}}">Discover this Hotel</a>
+																			</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																</div>
+																<div class="col-md-4 col-sm-12 vegasRightBar">
+																	<div class="row">
+																		<div id="bars_image3" class="bar-image-rigth">
+																			@if($propertiesArr[0]->bar_image3!='')
+																			<img class="img-responsive img-width" src="{{ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$propertiesArr[0]->bar_image3),100,255,null)}}" alt=""/>
+																			<div class="bar-bottom-des-pannel">
+																				<p>{!! nl2br(e($propertiesArr[0]->bar_desciription)) !!}</p>
+																				<div class="spa-owner-sign">{{$propertiesArr[0]->bar_usp_person}}</div>
+																			</div>
 																			@endif
 																		</div>
 																	</div>
 																</div>
-																<div class="col-md-3 col-sm-3">
-																	<div id="resto_gallery" class="row">
-																		@if($propertiesArr[0]->restaurant_gallery > 0)
-																			<div class="restaurant-view-gallery-align">
-																				<span class="view-gallery-border-left"></span>
-																				<a href="javascript:void(0);"   class="detail_view gallerysty bar-view-gallery" id="resto_gallery_id" rel="{{$propertiesArr[0]->id}}" rel2="Restrurants Gallery Images">View Gallery</a>
-																			</div>
-																		@endif
-																		<div class="restaurant-view-gallery-align">
-																				<span class="view-gallery-border-left"></span>
-																				<a id="hotellink" href="{{URL::to('').'/'.$propertiesArr[0]->property_slug}}">Discover this Hotel</a>
-																			</div>
+															</div>
+															<div>
+																<div class="col-md-6 col-sm-6">
+																	<div class="row">
+																	</div>
+																</div>
+																<div class="col-md-6 col-sm-6">
+																	<div class="row">
+						<!--                                                <div class="bar-bottom-des-pannel">
+																			<p>{!! nl2br(e($propertyDetail['data']->bar_desciription)) !!}</p>
+																			<div class="spa-owner-sign">{{$propertyDetail['data']->bar_usp_person}}</div>
+																		</div>-->
 																	</div>
 																</div>
 															</div>
@@ -377,15 +403,15 @@
 
                                     </div>
                                     <div class="design-locations-logo filters-page-serch-bar-align">
-                                        <form autocomplete="off" method="get" id="restrorantssearchform-navbar" class="restrorantssearchform-navbar ai-ajax-searchform-navbar" action="{{URL::to('search')}}">
-                                            <input  class="bh-search-input typeahead restrorantssearch-navbar ai-ajax-search-input" name="rs" id="restrorantssearch-navbar" placeholder="SEARCH" type="text">
+                                        <form autocomplete="off" method="get" id="barssearchform-navbar" class="barssearchform-navbar ai-ajax-searchform-navbar" action="{{URL::to('search')}}">
+                                            <input  class="bh-search-input typeahead barssearch-navbar ai-ajax-search-input" name="rs" id="barssearch-navbar" placeholder="SEARCH" type="text">
                                         </form>
                                     </div>
                                     <div class="panel-group" id="accordion">
                                         <div class="panel panel-default custom-post-panel">
                                             <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" class="heading-stying collapsed">
                                                 <div class="panel-heading custom-heading">
-                                                    Hotel Restaurants
+                                                    Hotel Bars
                                                 </div>
                                             </a>
                                             <div id="collapse1" class="panel-collapse collapse in">
@@ -393,48 +419,60 @@
                                                     <div class="dl-filter">
                                                         <form>
 															@if(!empty($propertiesArr))
-															{{--*/ $restroArr = (object) array(); $restroStr = ""; /*--}}
+															{{--*/ $barsArr = (object) array(); $barsStr = ""; /*--}}
 																@foreach($propertiesArr as $property)
-																	@if($property->restaurant_title!='')
+																	@if($property->bar_title!='')
 																		{{--*/ 
-																	$restroStr .= "'" . str_replace("'","",$property->restaurant_title) . "',";	$restroArr->restaurant_title = $property->restaurant_title; $restroArr->restaurant_desciription = $property->restaurant_desciription; $restroArr->restaurant_usp_text = $property->restaurant_usp_text; $restroArr->restaurant_usp_person = $property->restaurant_usp_person; $restroArr->id = $property->id; $restroArr->property_name = $property->property_name; $restroArr->property_slug = $property->property_slug; /*--}}
-																		@if($property->restaurant_image!='')
-																			{{--*/ $restroArr->restaurant_image = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant_image),100,300,null); $property->restaurant_image1 = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant_image),100,500,null) /*--}}
+																		$barsStr .= "'" . str_replace("'","",$property->bar_title) . "',";	$barsArr->bar_title = $property->bar_title; $barsArr->bar_desciription = $property->bar_desciription; $barsArr->bar_sub_title = $property->bar_sub_title; $barsArr->bar_usp_text = $property->bar_usp_text; $barsArr->bar_usp_person = $property->bar_usp_person; $barsArr->id = $property->id; $barsArr->property_name = $property->property_name; $barsArr->property_slug = $property->property_slug; /*--}}
+																		@if($property->bar_image!='')
+																			{{--*/ $barsArr->bar_image = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->bar_image),100,300,null);  /*--}}
 																		@endif
 																		
-																		@if($property->restaurant_image2!='')
-																			{{--*/ $restroArr->restaurant_image2 = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant_image2),100,500,null) /*--}}
+																		@if($property->bar_image2!='')
+																			{{--*/ $barsArr->bar_image2 = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->bar_image2),100,500,null) /*--}}
+																		@endif
+																		
+																		@if($property->bar_image3!='')
+																			{{--*/ $barsArr->bar_image3 = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->bar_image3),100,500,null) /*--}}
 																		@endif
 																		<div class="form-group post-filter-inputs">
-																			<label><a class="hotelanchordata" id="{{ str_replace('\'','',str_replace(' ','_',$property->restaurant_title)) }}" href="javascript:void(0);" data-jsondata="{{json_encode($restroArr)}}" data-gallerydata="{{$property->restaurant_gallery}}">{{$property->restaurant_title}}</a></label>
+																			<label><a class="hotelanchordata" id="{{ str_replace('\'','',str_replace(' ','_',$property->bar_title)) }}" href="javascript:void(0);" data-jsondata="{{json_encode($barsArr)}}" data-gallerydata="{{$property->bar_gallery}}">{{$property->bar_title}}</a></label>
 																		</div>
 																	@endif
-																	@if($property->restaurant2_title!='')
+																	@if($property->bar2_title!='')
 																		{{--*/ 
-																	$restroStr .= "'" . str_replace("'","",$property->restaurant2_title) . "',";	$restroArr->restaurant_title = $property->restaurant2_title; $restroArr->restaurant_desciription = $property->restaurant2_desciription; $restroArr->restaurant_usp_text = $property->restaurant2_usp_text; $restroArr->restaurant_usp_person = $property->restaurant2_usp_person; $restroArr->id = $property->id; $restroArr->property_name = $property->property_name; $restroArr->property_slug = $property->property_slug; /*--}}
-																		@if($property->restaurant2_image!='')
-																			{{--*/ $restroArr->restaurant2_image = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant2_image),100,300,null); $property->restaurant2_image1 = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant2_image),100,500,null) /*--}}
+																		$barsStr .= "'" . str_replace("'","",$property->bar2_title) . "',";	$barsArr->bar_title = $property->bar2_title; $barsArr->bar_desciription = $property->bar2_desciription; $barsArr->bar_sub_title = $property->bar2_sub_title; $barsArr->bar_usp_text = $property->bar2_usp_text; $barsArr->bar_usp_person = $property->bar2_usp_person; $barsArr->id = $property->id; $barsArr->property_name = $property->property_name; $barsArr->property_slug = $property->property_slug; /*--}}
+																		@if($property->bar2_image!='')
+																			{{--*/ $barsArr->bar_image = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->bar2_image),100,300,null);  /*--}}
 																		@endif
 																		
-																		@if($property->restaurant2_image2!='')
-																			{{--*/ $restroArr->restaurant2_image2 = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant2_image2),100,500,null) /*--}}
+																		@if($property->bar2_image2!='')
+																			{{--*/ $barsArr->bar_image2 = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->bar2_image2),100,500,null) /*--}}
+																		@endif
+																		
+																		@if($property->bar2_image3!='')
+																			{{--*/ $barsArr->bar_image3 = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->bar2_image3),100,500,null) /*--}}
 																		@endif
 																		<div class="form-group post-filter-inputs">
-																			<label><a class="hotelanchordata" id="{{ str_replace('\'','',str_replace(' ','_',$property->restaurant2_title)) }}" href="javascript:void(0);" data-jsondata="{{json_encode($restroArr)}}" data-gallerydata="{{$property->restaurant_gallery}}">{{$property->restaurant2_title}}</a></label>
+																			<label><a class="hotelanchordata" id="{{ str_replace('\'','',str_replace(' ','_',$property->bar2_title)) }}" href="javascript:void(0);" data-jsondata="{{json_encode($barsArr)}}" data-gallerydata="{{$property->bar_gallery}}">{{$property->bar2_title}}</a></label>
 																		</div>
 																	@endif
-																	@if($property->restaurant3_title!='')
+																	@if($property->bar3_title!='')
 																		{{--*/ 
-																$restroStr .= "'" . str_replace("'","",$property->restaurant3_title) . "',";	$restroArr->restaurant_title = $property->restaurant3_title; $restroArr->restaurant_desciription = $property->restaurant3_desciription; $restroArr->restaurant_usp_text = $property->restaurant3_usp_text; $restroArr->restaurant_usp_person = $property->restaurant3_usp_person; $restroArr->id = $property->id; $restroArr->property_name = $property->property_name; $restroArr->property_slug = $property->property_slug; /*--}}
-																		@if($property->restaurant3_image!='')
-																			{{--*/ $restroArr->restaurant3_image = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant3_image),100,300,null); $property->restaurant3_image1 = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant3_image),100,500,null) /*--}}
+																		$barsStr .= "'" . str_replace("'","",$property->bar3_title) . "',";	$barsArr->bar_title = $property->bar3_title; $barsArr->bar_desciription = $property->bar3_desciription; $barsArr->bar_sub_title = $property->bar3_sub_title; $barsArr->bar_usp_text = $property->bar3_usp_text; $barsArr->bar_usp_person = $property->bar3_usp_person; $barsArr->id = $property->id; $barsArr->property_name = $property->property_name; $barsArr->property_slug = $property->property_slug; /*--}}
+																		@if($property->bar3_image!='')
+																			{{--*/ $barsArr->bar_image = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->bar3_image),100,300,null);  /*--}}
 																		@endif
 																		
-																		@if($property->restaurant3_image2!='')
-																			{{--*/ $restroArr->restaurant2_image2 = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant3_image2),100,500,null) /*--}}
+																		@if($property->bar3_image2!='')
+																			{{--*/ $barsArr->bar_image2 = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->bar3_image2),100,500,null) /*--}}
+																		@endif
+																		
+																		@if($property->bar3_image3!='')
+																			{{--*/ $barsArr->bar_image3 = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->bar3_image3),100,500,null) /*--}}
 																		@endif
 																		<div class="form-group post-filter-inputs">
-																			<label><a class="hotelanchordata" id="{{ str_replace('\'','',str_replace(' ','_',$property->restaurant3_title)) }}" href="javascript:void(0);" data-jsondata="{{json_encode($restroArr)}}" data-gallerydata="{{$property->restaurant_gallery}}">{{$property->restaurant3_title}}</a></label>
+																			<label><a class="hotelanchordata" id="{{ str_replace('\'','',str_replace(' ','_',$property->bar3_title)) }}" href="javascript:void(0);" data-jsondata="{{json_encode($barsArr)}}" data-gallerydata="{{$property->bar_gallery}}">{{$property->bar3_title}}</a></label>
 																		</div>
 																	@endif
 																@endforeach
@@ -562,35 +600,39 @@
 							
 							$(document).on('click', '.hotelanchordata', function () {
 								var hotelobj = $(this).data('jsondata');
-								$('#resto_title').html(hotelobj.restaurant_title);
-								$('#resto_usptext').html(hotelobj.restaurant_usp_text);
-								$('#resto_uspperson').html(hotelobj.restaurant_usp_person);
-								var desc = hotelobj.restaurant_desciription;
-								$('#resto_desc').html(desc.substring(0, 350));
-								$('#resto_uspperson_desc').html(hotelobj.restaurant_usp_person);
+								$('#bars_title').html(hotelobj.bar_title);
+								$('#bars_subtitle').html(hotelobj.bar_sub_title);
+								$('#bars_usptext').html(hotelobj.bar_usp_text);
+								$('#bars_uspperson').html(hotelobj.bar_usp_person);
+								var desc = hotelobj.bar_desciription;
 								$('#hotellink').attr("href","{{URL::to('')}}/"+hotelobj.property_slug);
-								if(hotelobj.restaurant_image!='')
+								if(hotelobj.bar_image!='')
 								{
-									$('#resto_image').html('<img class="img-responsive img-width" src="'+hotelobj.restaurant_image+'" alt=""/>'); 
+									$('#bars_image1').html('<img class="img-responsive img-width" src="'+hotelobj.bar_image+'" alt=""/>'); 
 								}
 								
-								if(hotelobj.restaurant_image2!='')
+								if(hotelobj.bar_image2!='')
 								{
-									$('#resto_image2').html('<img class="img-responsive img-width" src="'+hotelobj.restaurant_image2+'" alt=""/>'); 
+									$('#bars_image2').html('<img class="img-responsive img-width" src="'+hotelobj.bar_image2+'" alt=""/>'); 
 								}
-								else if(hotelobj.restaurant_image!='')
+								if(hotelobj.bar_image3!='')
 								{
-									$('#resto_image2').html('<img class="img-responsive img-width" src="'+hotelobj.restaurant_image1+'" alt=""/>'); 
+									var html3 = '';
+									html3 += '<div class="bar-bottom-des-pannel">';
+                                    html3 += '<p>'+desc+'</p>';
+                                    html3 += '<div class="spa-owner-sign">'+hotelobj.bar_usp_person+'</div>';
+                                    html3 += '</div>';
+									$('#bars_image3').html('<img class="img-responsive img-width" src="'+hotelobj.bar_image3+'" alt=""/> ' + html3); 
 								}
 								
 								if($(this).data('gallerydata') > 0)
 								{
-									$('#resto_gallery_id').attr('rel',hotelobj.id);
-									$('#resto_gallery_id').show();
+									$('#bars_gallery_id').attr('rel',hotelobj.id);
+									$('#bars_gallery_id').show();
 								}
 								else
 								{
-									$('#resto_gallery_id').hide();
+									$('#bars_gallery_id').hide();
 								}
 							});
 							
@@ -633,39 +675,43 @@
 								$('html').removeClass('hidescroll');
 							});
 							
-							$('.restrorantssearch-navbar').on('typeahead:selected', function (e, datum) {
+							$('.barssearch-navbar').on('typeahead:selected', function (e, datum) {
 								var propname = $(this).val();
 								var rname = propname.replace(' ', '_');
 								var hotelobj = $('#'+rname).data('jsondata');
-								$('#resto_title').html(hotelobj.restaurant_title);
-								$('#resto_usptext').html(hotelobj.restaurant_usp_text);
-								$('#resto_uspperson').html(hotelobj.restaurant_usp_person);
-								var desc = hotelobj.restaurant_desciription;
-								$('#resto_desc').html(desc.substring(0, 350));
-								$('#resto_uspperson_desc').html(hotelobj.restaurant_usp_person);
+								$('#bars_title').html(hotelobj.bar_title);
+								$('#bars_subtitle').html(hotelobj.bar_sub_title);
+								$('#bars_usptext').html(hotelobj.bar_usp_text);
+								$('#bars_uspperson').html(hotelobj.bar_usp_person);
+								var desc = hotelobj.bar_desciription;
 								$('#hotellink').attr("href","{{URL::to('')}}/"+hotelobj.property_slug);
-								if(hotelobj.restaurant_image!='')
+								if(hotelobj.bar_image!='')
 								{
-									$('#resto_image').html('<img class="img-responsive img-width" src="'+hotelobj.restaurant_image+'" alt=""/>'); 
+									$('#bars_image1').html('<img class="img-responsive img-width" src="'+hotelobj.bar_image+'" alt=""/>'); 
 								}
 								
-								if(hotelobj.restaurant_image2!='')
+								if(hotelobj.bar_image2!='')
 								{
-									$('#resto_image2').html('<img class="img-responsive img-width" src="'+hotelobj.restaurant_image2+'" alt=""/>'); 
+									$('#bars_image2').html('<img class="img-responsive img-width" src="'+hotelobj.bar_image2+'" alt=""/>'); 
 								}
-								else if(hotelobj.restaurant_image!='')
+								if(hotelobj.bar_image3!='')
 								{
-									$('#resto_image2').html('<img class="img-responsive img-width" src="'+hotelobj.restaurant_image1+'" alt=""/>'); 
+									var html3 = '';
+									html3 += '<div class="bar-bottom-des-pannel">';
+                                    html3 += '<p>'+desc+'</p>';
+                                    html3 += '<div class="spa-owner-sign">'+hotelobj.bar_usp_person+'</div>';
+                                    html3 += '</div>';
+									$('#bars_image3').html('<img class="img-responsive img-width" src="'+hotelobj.bar_image3+'" alt=""/> ' + html3); 
 								}
 								
 								if($('#'+rname).data('gallerydata') > 0)
 								{
-									$('#resto_gallery_id').attr('rel',hotelobj.id);
-									$('#resto_gallery_id').show();
+									$('#bars_gallery_id').attr('rel',hotelobj.id);
+									$('#bars_gallery_id').show();
 								}
 								else
 								{
-									$('#resto_gallery_id').hide();
+									$('#bars_gallery_id').hide();
 								}
 							});
 						});
@@ -861,31 +907,31 @@
                         @include('layouts/elliot/ai_footer_social')
                     </div>
 <script>
-	var substringRestrorants = function(strs) {
+	var substringBars = function(strs) {
 	  return function findRestrorants(q, cb) {
-		var restro, substringRegex;
-		restro = [];
+		var bars, substringRegex;
+		bars = [];
 		substrRegex = new RegExp(q, 'i');
 
 		$.each(strs, function(i, str) {
 		  if (substrRegex.test(str)) {
-			restro.push(str);
+			bars.push(str);
 		  }
 		});
 
-		cb(restro);
+		cb(bars);
 	  };
 	};
 
-	var restros = [{!! substr($restroStr, 0, -1) !!}];
+	var bars = [{!! substr($barsStr, 0, -1) !!}];
 
-	$('.restrorantssearchform-navbar .typeahead').typeahead({
+	$('.barssearchform-navbar .typeahead').typeahead({
 	  hint: true,
 	  highlight: true,
 	  minLength: 1
 	},
 	{
-	  name: 'restrorants',
-	  source: substringRestrorants(restros)
+	  name: 'bars',
+	  source: substringBars(bars)
 	});
 </script>

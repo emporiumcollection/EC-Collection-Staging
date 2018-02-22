@@ -109,6 +109,7 @@ Route::get('propertyimport', 'PropertydataimportController@Propertyimport');
 Route::get('propertyimgfix', 'PropertydataimportController@Propertyimagefixes');
 
 Route::get('runInsta', 'instaApiController@runInsta');
+Route::get('bars', 'HomeController@barspage');
 
 Route::resource('sximoapi', 'SximoapiController'); 
 Route::group(['middleware' => 'auth'], function()

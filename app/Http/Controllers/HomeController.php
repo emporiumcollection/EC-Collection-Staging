@@ -6625,5 +6625,27 @@ class HomeController extends Controller {
 			exit;
 		}
 	}
+	
+	public function barspage(Request $request) {
+       
+        $this->data['pageTitle'] = 'Bars';
+		$this->data['pageMetakey'] = CNF_METAKEY;
+		$this->data['pageMetadesc'] = CNF_METADESC;
+
+		$this->data['whybookwithus'] = \DB::table('tb_whybookwithus')->select('id', 'title', 'sub_title')->where('status', 0)->get();
+
+		$propertiesArr = array();
+		$props = \DB::table('tb_properties')->select('id','bar_title','bar_desciription','bar_image','bar_sub_title','bar_usp_text','bar_usp_person','bar_image2','bar_image3','bar2_title','bar2_desciription','bar2_image','bar2_sub_title','bar2_usp_text','bar2_usp_person','bar2_image2','bar2_image3','bar3_title','bar3_desciription','bar3_image','bar3_sub_title','bar3_usp_text','bar3_usp_person','bar3_image2','bar3_image3','property_name','property_slug',\DB::raw("(SELECT count(tb_properties_images.id) FROM tb_properties_images WHERE tb_properties_images.property_id = tb_properties.id AND tb_properties_images.type = 'Bar Gallery Images') as bar_gallery"))->where('property_status', 1)->where('bar_title', '!=','')->get();
+		//print_r($props); die;
+		if (!empty($props)) {
+			$propertiesArr = $props;
+		}
+
+		$this->data['propertiesArr'] = $propertiesArr;
+		
+		$this->data['sidebardetailAds'] = \DB::table('tb_advertisement')->select('adv_link','adv_img')->where('adv_type', 'sidebar')->where('adv_position', 'detail')->get();
+		
+        return view('pages.bars', $this->data);
+    }
 
 }
