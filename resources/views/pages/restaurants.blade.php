@@ -852,7 +852,7 @@
 	  };
 	};
 
-	var restros = ['test','ayy'];
+	var restros = [{!! substr($restroStr, 0, -1) !!}];
 
 	$('.restrorantssearchform-navbar .typeahead').typeahead({
 	  hint: true,
