@@ -395,40 +395,45 @@
                                                     <div class="dl-filter">
                                                         <form>
 															@if(!empty($propertiesArr))
+															{{--*/ $restroArr = array(); /*--}}
 																@foreach($propertiesArr as $property)
-																	@if($property->restaurant_image!='')
-																		{{--*/ $property->restaurant_image = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant_image),100,300,null); $property->restaurant_image1 = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant_image),100,500,null) /*--}}
+																	@if($property->restaurant_title!='')
+																		{{--*/ $restroArr->restaurant_title = $property->restaurant_title; $restroArr->restaurant_desciription = $property->restaurant_desciription; $restroArr->restaurant_usp_text = $property->restaurant_usp_text; $restroArr->restaurant_usp_person = $property->restaurant_usp_person; $restroArr->id = $property->id; $restroArr->property_name = $property->property_name; $restroArr->property_slug = $property->property_slug; /*--}}
+																		@if($property->restaurant_image!='')
+																			{{--*/ $restroArr->restaurant_image = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant_image),100,300,null); $property->restaurant_image1 = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant_image),100,500,null) /*--}}
+																		@endif
+																		
+																		@if($property->restaurant_image2!='')
+																			{{--*/ $restroArr->restaurant_image2 = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant_image2),100,500,null) /*--}}
+																		@endif
+																		<div class="form-group post-filter-inputs">
+																			<label><a class="hotelanchordata" href="javascript:void(0);" data-jsondata="{{json_encode($restroArr)}}" data-gallerydata="{{$restaurant_gallery}}">{{$property->restaurant_title}}</a></label>
+																		</div>
 																	@endif
-																	
-																	@if($property->restaurant_image2!='')
-																		{{--*/ $property->restaurant_image2 = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant_image2),100,500,null) /*--}}
-																	@endif
-																	<div class="form-group post-filter-inputs">
-																		<label><a class="hotelanchordata" href="javascript:void(0);" data-jsondata="{{json_encode($property)}}" data-gallerydata="{{$restaurant_gallery}}">{{$property->restaurant_title}}</a></label>
-																	</div>
-																	
 																	@if($property->restaurant2_title!='')
+																		{{--*/ $restroArr->restaurant_title = $property->restaurant2_title; $restroArr->restaurant_desciription = $property->restaurant2_desciription; $restroArr->restaurant_usp_text = $property->restaurant2_usp_text; $restroArr->restaurant_usp_person = $property->restaurant2_usp_person; $restroArr->id = $property->id; $restroArr->property_name = $property->property_name; $restroArr->property_slug = $property->property_slug; /*--}}
 																		@if($property->restaurant2_image!='')
-																			{{--*/ $property->restaurant2_image = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant2_image),100,300,null); $property->restaurant2_image1 = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant2_image),100,500,null) /*--}}
+																			{{--*/ $restroArr->restaurant2_image = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant2_image),100,300,null); $property->restaurant2_image1 = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant2_image),100,500,null) /*--}}
 																		@endif
 																		
 																		@if($property->restaurant2_image2!='')
-																			{{--*/ $property->restaurant2_image2 = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant2_image2),100,500,null) /*--}}
+																			{{--*/ $restroArr->restaurant2_image2 = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant2_image2),100,500,null) /*--}}
 																		@endif
 																		<div class="form-group post-filter-inputs">
-																			<label><a class="hotelanchordata" href="javascript:void(0);" data-jsondata="{{json_encode($property)}}" data-gallerydata="{{$restaurant_gallery}}">{{$property->restaurant2_title}}</a></label>
+																			<label><a class="hotelanchordata" href="javascript:void(0);" data-jsondata="{{json_encode($restroArr)}}" data-gallerydata="{{$restaurant_gallery}}">{{$property->restaurant2_title}}</a></label>
 																		</div>
 																	@endif
 																	@if($property->restaurant3_title!='')
+																		{{--*/ $restroArr->restaurant_title = $property->restaurant3_title; $restroArr->restaurant_desciription = $property->restaurant3_desciription; $restroArr->restaurant_usp_text = $property->restaurant3_usp_text; $restroArr->restaurant_usp_person = $property->restaurant3_usp_person; $restroArr->id = $property->id; $restroArr->property_name = $property->property_name; $restroArr->property_slug = $property->property_slug; /*--}}
 																		@if($property->restaurant3_image!='')
-																			{{--*/ $property->restaurant3_image = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant3_image),100,300,null); $property->restaurant3_image1 = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant3_image),100,500,null) /*--}}
+																			{{--*/ $restroArr->restaurant3_image = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant3_image),100,300,null); $property->restaurant3_image1 = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant3_image),100,500,null) /*--}}
 																		@endif
 																		
 																		@if($property->restaurant3_image2!='')
-																			{{--*/ $property->restaurant2_image2 = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant3_image2),100,500,null) /*--}}
+																			{{--*/ $restroArr->restaurant2_image2 = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant3_image2),100,500,null) /*--}}
 																		@endif
 																		<div class="form-group post-filter-inputs">
-																			<label><a class="hotelanchordata" href="javascript:void(0);" data-jsondata="{{json_encode($property)}}" data-gallerydata="{{$restaurant_gallery}}">{{$property->restaurant3_title}}</a></label>
+																			<label><a class="hotelanchordata" href="javascript:void(0);" data-jsondata="{{json_encode($restroArr)}}" data-gallerydata="{{$restaurant_gallery}}">{{$property->restaurant3_title}}</a></label>
 																		</div>
 																	@endif
 																@endforeach
