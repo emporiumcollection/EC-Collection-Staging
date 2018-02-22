@@ -395,7 +395,7 @@
                                                     <div class="dl-filter">
                                                         <form>
 															@if(!empty($propertiesArr))
-															{{--*/ $restroArr = array(); /*--}}
+															{{--*/ $restroArr = (object) array(); /*--}}
 																@foreach($propertiesArr as $property)
 																	@if($property->restaurant_title!='')
 																		{{--*/ $restroArr->restaurant_title = $property->restaurant_title; $restroArr->restaurant_desciription = $property->restaurant_desciription; $restroArr->restaurant_usp_text = $property->restaurant_usp_text; $restroArr->restaurant_usp_person = $property->restaurant_usp_person; $restroArr->id = $property->id; $restroArr->property_name = $property->property_name; $restroArr->property_slug = $property->property_slug; /*--}}
