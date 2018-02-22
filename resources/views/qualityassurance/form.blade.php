@@ -24,6 +24,7 @@
             <div class="sbox-title"> <h4> <i class="fa fa-table"></i> </h4></div>
             <div class="sbox-content"> 	
                 {!! Form::open(array('url'=>'qualityassurance/save?return='.$return, 'class'=>'form-horizontal','files' => true , 'parsley-validate'=>'','novalidate'=>' ')) !!}
+                <input name="quality_assurance_id" value="{{$row['quality_assurance_id']}}" type="hidden">
                 <div class="col-md-12">
                     <div id="qa-accordion" class="panel-group">
                         <div class="panel panel-default">
@@ -33,18 +34,19 @@
                                 </h4>
                             </div>
                             <div id="qa-collapse1" class="panel-collapse collapse in">
-                                <div class="panel-body">
-                                    <div class="form-group  " >
-                                        <div class="col-md-6">
-                                            {!! Form::text('quality_assurance_id', $row['quality_assurance_id'],array('class'=>'form-control', 'placeholder'=>'',   )) !!}
-                                        </div> 
-                                        <div class="col-md-2">
-                                        </div>
-                                    </div> 					
+                                <div class="panel-body">					
                                     <div class="form-group  " >
                                         <label for="Property Id" class=" control-label col-md-4 text-left"> Property Id </label>
                                         <div class="col-md-6">
-                                            {!! Form::text('property_id', $row['property_id'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
+                                            <select class="form-control" name="property_id">
+                                                <?php
+                                                if(!empty($hotels)) {
+                                                    foreach ($hotels as $hotel) {
+                                                        echo '<option ', ($row['property_id'] == $hotel->id)? 'selected' : '', ' value="'.$hotel->id.'">'.$hotel->property_name.'</option>';
+                                                    }
+                                                }
+                                                ?>
+                                            </select>
                                         </div> 
                                         <div class="col-md-2">
                                         </div>
