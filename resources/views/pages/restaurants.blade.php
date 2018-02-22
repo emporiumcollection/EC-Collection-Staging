@@ -406,7 +406,7 @@
 																			{{--*/ $restroArr->restaurant_image2 = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant_image2),100,500,null) /*--}}
 																		@endif
 																		<div class="form-group post-filter-inputs">
-																			<label><a class="hotelanchordata" id="{{ str_replace('\'','',$property->restaurant_title) }}" href="javascript:void(0);" data-jsondata="{{json_encode($restroArr)}}" data-gallerydata="{{$property->restaurant_gallery}}">{{$property->restaurant_title}}</a></label>
+																			<label><a class="hotelanchordata" id="{{ str_replace('\'','',str_replace(' ','_',$property->restaurant_title)) }}" href="javascript:void(0);" data-jsondata="{{json_encode($restroArr)}}" data-gallerydata="{{$property->restaurant_gallery}}">{{$property->restaurant_title}}</a></label>
 																		</div>
 																	@endif
 																	@if($property->restaurant2_title!='')
@@ -420,7 +420,7 @@
 																			{{--*/ $restroArr->restaurant2_image2 = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant2_image2),100,500,null) /*--}}
 																		@endif
 																		<div class="form-group post-filter-inputs">
-																			<label><a class="hotelanchordata" id="{{ str_replace('\'','',$property->restaurant2_title) }}" href="javascript:void(0);" data-jsondata="{{json_encode($restroArr)}}" data-gallerydata="{{$property->restaurant_gallery}}">{{$property->restaurant2_title}}</a></label>
+																			<label><a class="hotelanchordata" id="{{ str_replace('\'','',str_replace(' ','_',$property->restaurant2_title)) }}" href="javascript:void(0);" data-jsondata="{{json_encode($restroArr)}}" data-gallerydata="{{$property->restaurant_gallery}}">{{$property->restaurant2_title}}</a></label>
 																		</div>
 																	@endif
 																	@if($property->restaurant3_title!='')
@@ -434,7 +434,7 @@
 																			{{--*/ $restroArr->restaurant2_image2 = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant3_image2),100,500,null) /*--}}
 																		@endif
 																		<div class="form-group post-filter-inputs">
-																			<label><a class="hotelanchordata" id="{{ str_replace('\'','',$property->restaurant3_title) }}" href="javascript:void(0);" data-jsondata="{{json_encode($restroArr)}}" data-gallerydata="{{$property->restaurant_gallery}}">{{$property->restaurant3_title}}</a></label>
+																			<label><a class="hotelanchordata" id="{{ str_replace('\'','',str_replace(' ','_',$property->restaurant3_title)) }}" href="javascript:void(0);" data-jsondata="{{json_encode($restroArr)}}" data-gallerydata="{{$property->restaurant_gallery}}">{{$property->restaurant3_title}}</a></label>
 																		</div>
 																	@endif
 																@endforeach
@@ -642,8 +642,8 @@
 							});
 							
 							$('.restrorantssearch-navbar').on('typeahead:selected', function (e, datum) {
-								var propname = $(this);
-								var rname = propname.val();
+								var propname = $(this).val();
+								var rname = propname.replace(' ', '_');
 								var hotelobj = $('#'+rname).data('jsondata');
 								$('#resto_title').html(hotelobj.restaurant_title);
 								$('#resto_usptext').html(hotelobj.restaurant_usp_text);
