@@ -151,7 +151,7 @@ class HomeController extends Controller {
                     }
 					elseif (isset($pageSlug) && $pageSlug == 'restaurants') {
 						$propertiesArr = array();
-						$props = \DB::table('tb_properties')->select('id','restaurant_title','restaurant_usp_text','restaurant_usp_person','restaurant_image','restaurant_desciription','restaurant_image2','property_name','property_slug')->where('property_status', 1)->where('restaurant_title', '!=','')->get();
+						$props = \DB::table('tb_properties')->select('id','restaurant_title','restaurant_usp_text','restaurant_usp_person','restaurant_image','restaurant_desciription','restaurant_image2','restaurant2_title','restaurant2_usp_text','restaurant2_usp_person','restaurant2_image','restaurant2_desciription','restaurant2_image2','restaurant3_title','restaurant3_usp_text','restaurant3_usp_person','restaurant3_image','restaurant3_desciription','restaurant3_image2','property_name','property_slug')->where('property_status', 1)->where('restaurant_title', '!=','')->get();
 						//print_r($props); die;
 						if (!empty($props)) {
                             $propertiesArr = $props;
