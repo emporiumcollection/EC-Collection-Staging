@@ -376,10 +376,7 @@
 																</div>
 																<div class="col-md-6 col-sm-6">
 																	<div class="row">
-						<!--                                                <div class="bar-bottom-des-pannel">
-																			<p>{!! nl2br(e($propertyDetail['data']->bar_desciription)) !!}</p>
-																			<div class="spa-owner-sign">{{$propertyDetail['data']->bar_usp_person}}</div>
-																		</div>-->
+						
 																	</div>
 																</div>
 															</div>
