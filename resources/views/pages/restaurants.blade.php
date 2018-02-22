@@ -397,7 +397,7 @@
 																@foreach($propertiesArr as $property)
 																	@if($property->restaurant_title!='')
 																		{{--*/ 
-																	$restroStr .= "'" . stripcslashes($property->restaurant_title) . "',";	$restroArr->restaurant_title = $property->restaurant_title; $restroArr->restaurant_desciription = $property->restaurant_desciription; $restroArr->restaurant_usp_text = $property->restaurant_usp_text; $restroArr->restaurant_usp_person = $property->restaurant_usp_person; $restroArr->id = $property->id; $restroArr->property_name = $property->property_name; $restroArr->property_slug = $property->property_slug; /*--}}
+																	$restroStr .= "'" . str_replace('/','',$property->restaurant_title) . "',";	$restroArr->restaurant_title = $property->restaurant_title; $restroArr->restaurant_desciription = $property->restaurant_desciription; $restroArr->restaurant_usp_text = $property->restaurant_usp_text; $restroArr->restaurant_usp_person = $property->restaurant_usp_person; $restroArr->id = $property->id; $restroArr->property_name = $property->property_name; $restroArr->property_slug = $property->property_slug; /*--}}
 																		@if($property->restaurant_image!='')
 																			{{--*/ $restroArr->restaurant_image = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant_image),100,300,null); $property->restaurant_image1 = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant_image),100,500,null) /*--}}
 																		@endif
@@ -411,7 +411,7 @@
 																	@endif
 																	@if($property->restaurant2_title!='')
 																		{{--*/ 
-																	$restroStr .= "'" . stripcslashes($property->restaurant2_title) . "',";	$restroArr->restaurant_title = $property->restaurant2_title; $restroArr->restaurant_desciription = $property->restaurant2_desciription; $restroArr->restaurant_usp_text = $property->restaurant2_usp_text; $restroArr->restaurant_usp_person = $property->restaurant2_usp_person; $restroArr->id = $property->id; $restroArr->property_name = $property->property_name; $restroArr->property_slug = $property->property_slug; /*--}}
+																	$restroStr .= "'" . str_replace('/','',$property->restaurant2_title) . "',";	$restroArr->restaurant_title = $property->restaurant2_title; $restroArr->restaurant_desciription = $property->restaurant2_desciription; $restroArr->restaurant_usp_text = $property->restaurant2_usp_text; $restroArr->restaurant_usp_person = $property->restaurant2_usp_person; $restroArr->id = $property->id; $restroArr->property_name = $property->property_name; $restroArr->property_slug = $property->property_slug; /*--}}
 																		@if($property->restaurant2_image!='')
 																			{{--*/ $restroArr->restaurant2_image = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant2_image),100,300,null); $property->restaurant2_image1 = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant2_image),100,500,null) /*--}}
 																		@endif
@@ -425,7 +425,7 @@
 																	@endif
 																	@if($property->restaurant3_title!='')
 																		{{--*/ 
-																$restroStr .= "'" . stripcslashes($property->restaurant3_title) . "',";	$restroArr->restaurant_title = $property->restaurant3_title; $restroArr->restaurant_desciription = $property->restaurant3_desciription; $restroArr->restaurant_usp_text = $property->restaurant3_usp_text; $restroArr->restaurant_usp_person = $property->restaurant3_usp_person; $restroArr->id = $property->id; $restroArr->property_name = $property->property_name; $restroArr->property_slug = $property->property_slug; /*--}}
+																$restroStr .= "'" . str_replace('/','',$property->restaurant3_title) . "',";	$restroArr->restaurant_title = $property->restaurant3_title; $restroArr->restaurant_desciription = $property->restaurant3_desciription; $restroArr->restaurant_usp_text = $property->restaurant3_usp_text; $restroArr->restaurant_usp_person = $property->restaurant3_usp_person; $restroArr->id = $property->id; $restroArr->property_name = $property->property_name; $restroArr->property_slug = $property->property_slug; /*--}}
 																		@if($property->restaurant3_image!='')
 																			{{--*/ $restroArr->restaurant3_image = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant3_image),100,300,null); $property->restaurant3_image1 = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant3_image),100,500,null) /*--}}
 																		@endif
