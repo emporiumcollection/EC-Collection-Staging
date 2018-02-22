@@ -852,7 +852,7 @@
 	  };
 	};
 
-	var restros = ['test','ayy', {!! substr($restroStr, 0, -1) !!}];
+	var restros = ['test','ayy'];
 
 	$('.restrorantssearchform-navbar .typeahead').typeahead({
 	  hint: true,
