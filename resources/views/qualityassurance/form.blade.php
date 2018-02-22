@@ -36,7 +36,7 @@
                             <div id="qa-collapse1" class="panel-collapse collapse in">
                                 <div class="panel-body">					
                                     <div class="form-group  " >
-                                        <label for="Property Id" class=" control-label col-md-4 text-left"> Property Id </label>
+                                        <label for="Property Id" class=" control-label col-md-4 text-left"> Hotel </label>
                                         <div class="col-md-6">
                                             <select class="form-control" name="property_id">
                                                 <?php
@@ -54,7 +54,15 @@
                                     <div class="form-group  " >
                                         <label for="Hotel Manager" class=" control-label col-md-4 text-left"> Hotel Manager </label>
                                         <div class="col-md-6">
-                                            {!! Form::text('hotel_manager', $row['hotel_manager'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
+                                            <select class="form-control" name="hotel_manager">
+                                                <?php
+                                                if(!empty($hotel_managers)) {
+                                                    foreach ($hotel_managers as $hotel_manager) {
+                                                        echo '<option ', ($row['hotel_manager'] == $hotel_manager->id)? 'selected' : '', ' value="'.$hotel_manager->id.'">'.$hotel_manager->quality_assurer_name.'</option>';
+                                                    }
+                                                }
+                                                ?>
+                                            </select>
                                         </div> 
                                         <div class="col-md-2">
                                         </div>
@@ -62,7 +70,15 @@
                                     <div class="form-group  " >
                                         <label for="Quality Assurer" class=" control-label col-md-4 text-left"> Quality Assurer </label>
                                         <div class="col-md-6">
-                                            {!! Form::text('quality_assurer', $row['quality_assurer'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
+                                            <select class="form-control" name="quality_assurer">
+                                                <?php
+                                                if(!empty($quality_assurers)) {
+                                                    foreach ($quality_assurers as $quality_assurer) {
+                                                        echo '<option ', ($row['quality_assurer'] == $quality_assurer->id)? 'selected' : '', ' value="'.$quality_assurer->id.'">'.$quality_assurer->quality_assurer_name.'</option>';
+                                                    }
+                                                }
+                                                ?>
+                                            </select>
                                         </div> 
                                         <div class="col-md-2">
 
