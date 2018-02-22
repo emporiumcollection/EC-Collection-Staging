@@ -377,7 +377,7 @@
 
                                     </div>
                                     <div class="design-locations-logo filters-page-serch-bar-align">
-                                        <form autocomplete="off" method="get" id="restrorantssearchform-navbar" class="restrorantssearchform-navbar ai-ajax-searchform-navbar" action="{{URL::to('search')}}">
+                                        <form autocomplete="off" method="get" id="searchform-navbar" class="searchform-navbar ai-ajax-searchform-navbar" action="{{URL::to('search')}}">
                                             <input  class="bh-search-input typeahead restrorantssearch-navbar ai-ajax-search-input" name="rs" id="restrorantssearch-navbar" placeholder="SEARCH" type="text">
                                         </form>
                                     </div>
