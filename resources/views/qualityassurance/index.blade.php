@@ -71,8 +71,8 @@
                                 <td width="50"><input type="checkbox" class="ids" name="ids[]" value="{{ $row->quality_assurance_id }}" />  </td>									
                                 <td>{{ $row->hotel_name }}</td>
                                 <td>{{ $row->hotel_city }}</td>
-                                <td>{{ $row->hotel_manager }}</td>
-                                <td>{{ $row->quality_assurer }}</td>
+                                <td>{{ $row->hotel_manager_name }}</td>
+                                <td>{{ $row->quality_assurer_name }}</td>
                                 <td>{{ $row->hotel_score }}</td>
                                 <td>{{ $row->date }}</td>
                                 <td>
