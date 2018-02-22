@@ -58,7 +58,7 @@
                                                 <?php
                                                 if(!empty($hotel_managers)) {
                                                     foreach ($hotel_managers as $hotel_manager) {
-                                                        echo '<option ', ($row['hotel_manager'] == $hotel_manager->id)? 'selected' : '', ' value="'.$hotel_manager->id.'">'.$hotel_manager->quality_assurer_name.'</option>';
+                                                        echo '<option ', ($row['hotel_manager'] == $hotel_manager->id)? 'selected' : '', ' value="'.$hotel_manager->id.'">'.$hotel_manager->first_name.' '.$hotel_manager->last_name.'</option>';
                                                     }
                                                 }
                                                 ?>
@@ -74,7 +74,7 @@
                                                 <?php
                                                 if(!empty($quality_assurers)) {
                                                     foreach ($quality_assurers as $quality_assurer) {
-                                                        echo '<option ', ($row['quality_assurer'] == $quality_assurer->id)? 'selected' : '', ' value="'.$quality_assurer->id.'">'.$quality_assurer->quality_assurer_name.'</option>';
+                                                        echo '<option ', ($row['quality_assurer'] == $quality_assurer->id)? 'selected' : '', ' value="'.$quality_assurer->id.'">'.$quality_assurer->first_name.' '.$quality_assurer->last_name.'</option>';
                                                     }
                                                 }
                                                 ?>
