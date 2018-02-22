@@ -578,20 +578,20 @@
 								$('#hotellink').attr("href","{{URL::to('')}}/"+hotelobj.property_slug);
 								if(hotelobj.spa_image1!='')
 								{
-									$('#bars_image1').html('<img class="img-responsive img-width" src="'+hotelobj.spa_image1+'" alt=""/>'); 
+									$('#spas_image1').html('<img class="img-responsive img-width" src="'+hotelobj.spa_image1+'" alt=""/>'); 
 								}
 								
 								if(hotelobj.spa_image2!='')
 								{
-									$('#bars_image2').html('<img class="img-responsive img-width" src="'+hotelobj.spa_image2+'" alt=""/>'); 
+									$('#spas_image2').html('<img class="img-responsive img-width" src="'+hotelobj.spa_image2+'" alt=""/>'); 
 								}
 								if(hotelobj.spa_image3!='')
 								{
-									$('#bars_image2').html('<img class="img-responsive img-width" src="'+hotelobj.spa_image3+'" alt=""/>'); 
+									$('#spas_image3').html('<img class="img-responsive img-width" src="'+hotelobj.spa_image3+'" alt=""/>'); 
 								}
 								if(hotelobj.spa_image4!='')
 								{
-									$('#bars_image2').html('<img class="img-responsive img-width" src="'+hotelobj.spa_image4+'" alt=""/>'); 
+									$('#spas_image4').html('<img class="img-responsive img-width" src="'+hotelobj.spa_image4+'" alt=""/>'); 
 								}
 								if(hotelobj.spa_opening_hours!='' && hotelobj.spa_phone_number!='')
 								{
