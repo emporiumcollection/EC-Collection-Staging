@@ -377,10 +377,8 @@
 
                                     </div>
                                     <div class="design-locations-logo filters-page-serch-bar-align">
-                                        <form autocomplete="off" method="get" id="searchform-navbar" class="searchform-navbar ai-ajax-searchform-navbar" action="{{URL::to('search')}}">
-                                            <input  class="bh-search-input typeahead search-navbar ai-ajax-search-input" name="s" id="search-navbar" placeholder="SEARCH" type="text">
-                                            <input class="yacht_keywords" type="hidden" />
-                                            <input class="hidden" type="submit" />
+                                        <form autocomplete="off" method="get" id="restrorantssearchform-navbar" class="restrorantssearchform-navbar ai-ajax-searchform-navbar" action="{{URL::to('search')}}">
+                                            <input  class="bh-search-input typeahead restrorantssearch-navbar ai-ajax-search-input" name="rs" id="restrorantssearch-navbar" placeholder="SEARCH" type="text">
                                         </form>
                                     </div>
                                     <div class="panel-group" id="accordion">
@@ -395,10 +393,11 @@
                                                     <div class="dl-filter">
                                                         <form>
 															@if(!empty($propertiesArr))
-															{{--*/ $restroArr = (object) array(); /*--}}
+															{{--*/ $restroArr = (object) array(); $restroStr = ""; /*--}}
 																@foreach($propertiesArr as $property)
 																	@if($property->restaurant_title!='')
-																		{{--*/ $restroArr->restaurant_title = $property->restaurant_title; $restroArr->restaurant_desciription = $property->restaurant_desciription; $restroArr->restaurant_usp_text = $property->restaurant_usp_text; $restroArr->restaurant_usp_person = $property->restaurant_usp_person; $restroArr->id = $property->id; $restroArr->property_name = $property->property_name; $restroArr->property_slug = $property->property_slug; /*--}}
+																		{{--*/ 
+																	$restroStr .= "'" . $property->restaurant_title . "',";	$restroArr->restaurant_title = $property->restaurant_title; $restroArr->restaurant_desciription = $property->restaurant_desciription; $restroArr->restaurant_usp_text = $property->restaurant_usp_text; $restroArr->restaurant_usp_person = $property->restaurant_usp_person; $restroArr->id = $property->id; $restroArr->property_name = $property->property_name; $restroArr->property_slug = $property->property_slug; /*--}}
 																		@if($property->restaurant_image!='')
 																			{{--*/ $restroArr->restaurant_image = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant_image),100,300,null); $property->restaurant_image1 = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant_image),100,500,null) /*--}}
 																		@endif
@@ -411,7 +410,8 @@
 																		</div>
 																	@endif
 																	@if($property->restaurant2_title!='')
-																		{{--*/ $restroArr->restaurant_title = $property->restaurant2_title; $restroArr->restaurant_desciription = $property->restaurant2_desciription; $restroArr->restaurant_usp_text = $property->restaurant2_usp_text; $restroArr->restaurant_usp_person = $property->restaurant2_usp_person; $restroArr->id = $property->id; $restroArr->property_name = $property->property_name; $restroArr->property_slug = $property->property_slug; /*--}}
+																		{{--*/ 
+																	$restroStr .= "'" . $property->restaurant2_title . "',";	$restroArr->restaurant_title = $property->restaurant2_title; $restroArr->restaurant_desciription = $property->restaurant2_desciription; $restroArr->restaurant_usp_text = $property->restaurant2_usp_text; $restroArr->restaurant_usp_person = $property->restaurant2_usp_person; $restroArr->id = $property->id; $restroArr->property_name = $property->property_name; $restroArr->property_slug = $property->property_slug; /*--}}
 																		@if($property->restaurant2_image!='')
 																			{{--*/ $restroArr->restaurant2_image = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant2_image),100,300,null); $property->restaurant2_image1 = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant2_image),100,500,null) /*--}}
 																		@endif
@@ -424,7 +424,8 @@
 																		</div>
 																	@endif
 																	@if($property->restaurant3_title!='')
-																		{{--*/ $restroArr->restaurant_title = $property->restaurant3_title; $restroArr->restaurant_desciription = $property->restaurant3_desciription; $restroArr->restaurant_usp_text = $property->restaurant3_usp_text; $restroArr->restaurant_usp_person = $property->restaurant3_usp_person; $restroArr->id = $property->id; $restroArr->property_name = $property->property_name; $restroArr->property_slug = $property->property_slug; /*--}}
+																		{{--*/ 
+																$restroStr .= "'" . $property->restaurant3_title . "',";	$restroArr->restaurant_title = $property->restaurant3_title; $restroArr->restaurant_desciription = $property->restaurant3_desciription; $restroArr->restaurant_usp_text = $property->restaurant3_usp_text; $restroArr->restaurant_usp_person = $property->restaurant3_usp_person; $restroArr->id = $property->id; $restroArr->property_name = $property->property_name; $restroArr->property_slug = $property->property_slug; /*--}}
 																		@if($property->restaurant3_image!='')
 																			{{--*/ $restroArr->restaurant3_image = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant3_image),100,300,null); $property->restaurant3_image1 = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant3_image),100,500,null) /*--}}
 																		@endif
@@ -639,6 +640,35 @@
 								$('.frontpage-layer-bj').fadeOut('slow');
 								$('html').removeClass('hidescroll');
 							});
+							
+							var substringRestrorants = function(strs) {
+							  return function findRestrorants(q, cb) {
+								var restro, substringRegex;
+								restro = [];
+								substrRegex = new RegExp(q, 'i');
+
+								$.each(strs, function(i, str) {
+								  if (substrRegex.test(str)) {
+									restro.push(str);
+								  }
+								});
+
+								cb(restro);
+							  };
+							};
+
+							var restro = [{!! substr($restroStr, 0, -1) !!}];
+
+							$('.restrorantssearchform-navbar .typeahead').typeahead({
+							  hint: true,
+							  highlight: true,
+							  minLength: 1
+							},
+							{
+							  name: 'restrorants',
+							  source: substringRestrorants(restro)
+							});
+							
 						});
                     </script>
                     <script>
