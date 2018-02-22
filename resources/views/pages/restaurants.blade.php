@@ -344,7 +344,7 @@
 																</div>
 																<div class="col-md-3 col-sm-3">
 																	<div id="resto_gallery" class="row">
-																		@if($restaurant_gallery>0)
+																		@if($propertiesArr[0]->restaurant_gallery > 0)
 																			<div class="restaurant-view-gallery-align">
 																				<span class="view-gallery-border-left"></span>
 																				<a href="javascript:void(0);"   class="detail_view gallerysty bar-view-gallery" id="resto_gallery_id" rel="{{$propertiesArr[0]->id}}" rel2="Restrurants Gallery Images">View Gallery</a>
@@ -407,7 +407,7 @@
 																			{{--*/ $restroArr->restaurant_image2 = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant_image2),100,500,null) /*--}}
 																		@endif
 																		<div class="form-group post-filter-inputs">
-																			<label><a class="hotelanchordata" href="javascript:void(0);" data-jsondata="{{json_encode($restroArr)}}" data-gallerydata="{{$restaurant_gallery}}">{{$property->restaurant_title}}</a></label>
+																			<label><a class="hotelanchordata" href="javascript:void(0);" data-jsondata="{{json_encode($restroArr)}}" data-gallerydata="{{$property->restaurant_gallery}}">{{$property->restaurant_title}}</a></label>
 																		</div>
 																	@endif
 																	@if($property->restaurant2_title!='')
@@ -420,7 +420,7 @@
 																			{{--*/ $restroArr->restaurant2_image2 = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant2_image2),100,500,null) /*--}}
 																		@endif
 																		<div class="form-group post-filter-inputs">
-																			<label><a class="hotelanchordata" href="javascript:void(0);" data-jsondata="{{json_encode($restroArr)}}" data-gallerydata="{{$restaurant_gallery}}">{{$property->restaurant2_title}}</a></label>
+																			<label><a class="hotelanchordata" href="javascript:void(0);" data-jsondata="{{json_encode($restroArr)}}" data-gallerydata="{{$property->restaurant_gallery}}">{{$property->restaurant2_title}}</a></label>
 																		</div>
 																	@endif
 																	@if($property->restaurant3_title!='')
@@ -433,7 +433,7 @@
 																			{{--*/ $restroArr->restaurant2_image2 = ImageCache::make(public_path('uploads/properties_subtab_imgs/'.$property->restaurant3_image2),100,500,null) /*--}}
 																		@endif
 																		<div class="form-group post-filter-inputs">
-																			<label><a class="hotelanchordata" href="javascript:void(0);" data-jsondata="{{json_encode($restroArr)}}" data-gallerydata="{{$restaurant_gallery}}">{{$property->restaurant3_title}}</a></label>
+																			<label><a class="hotelanchordata" href="javascript:void(0);" data-jsondata="{{json_encode($restroArr)}}" data-gallerydata="{{$property->restaurant_gallery}}">{{$property->restaurant3_title}}</a></label>
 																		</div>
 																	@endif
 																@endforeach
