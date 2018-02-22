@@ -50,6 +50,11 @@
 
                 {!! Form::open(array('url'=>'qualityassurance/delete/', 'class'=>'form-horizontal' ,'id' =>'SximoTable' )) !!}
                 <div class="table-responsive" style="min-height:300px;">
+                    <?php
+                    echo '<pre>';
+                    print_r($rowData);
+                    echo '</pre>';
+                    ?>
                     <table class="table table-striped ">
                         <thead>
                             <tr>
