@@ -40,6 +40,9 @@
                                         <div class="col-md-6">
                                             <select class="form-control" name="property_id">
                                                 <?php
+                                                echo '<pre>';
+                                                print_r($hotels);
+                                                echo '</pre>';
                                                 if(!empty($hotels)) {
                                                     foreach ($hotels as $hotel) {
                                                         echo '<option ', ($row['property_id'] == $hotel->id)? 'selected' : '', ' value="'.$hotel->id.'">'.$hotel->property_name.'</option>';
