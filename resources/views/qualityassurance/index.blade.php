@@ -50,11 +50,6 @@
 
                 {!! Form::open(array('url'=>'qualityassurance/delete/', 'class'=>'form-horizontal' ,'id' =>'SximoTable' )) !!}
                 <div class="table-responsive" style="min-height:300px;">
-                    <?php
-                    echo '<pre>';
-                    print_r($rowData);
-                    echo '</pre>';
-                    ?>
                     <table class="table table-striped ">
                         <thead>
                             <tr>
@@ -74,8 +69,8 @@
                             <tr>
                                 <td width="30"> {{ ++$i }} </td>
                                 <td width="50"><input type="checkbox" class="ids" name="ids[]" value="{{ $row->quality_assurance_id }}" />  </td>									
-                                <td>{{ $row->property_id }}</td>
-                                <td>{{ $row->property_id }}</td>
+                                <td>{{ $row->hotel_name }}</td>
+                                <td>{{ $row->hotel_city }}</td>
                                 <td>{{ $row->hotel_manager }}</td>
                                 <td>{{ $row->quality_assurer }}</td>
                                 <td>{{ $row->hotel_score }}</td>

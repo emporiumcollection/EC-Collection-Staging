@@ -15,7 +15,7 @@ class qualityassurance extends Sximo  {
 
 	public static function querySelect(  ){
 		
-		return "  SELECT tb_properties.*, tb_quality_assurance.* FROM tb_quality_assurance LEFT JOIN tb_properties ON tb_properties.id = tb_quality_assurance.property_id  ";
+		return "  SELECT tb_quality_assurance.*, tb_properties.property_name AS hotel_name, tb_properties.city AS hotel_city FROM tb_quality_assurance LEFT JOIN tb_properties ON tb_properties.id = tb_quality_assurance.property_id  ";
 	}	
 
 	public static function queryWhere(  ){
