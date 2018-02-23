@@ -112,16 +112,15 @@
                                 </h4>
                             </div>
                             <div id="qa-collapse2" class="panel-collapse collapse">
-                                <div class="panel-body">Custom Fields</div>
+                                <div class="panel-body">
+                                    <!--VC Start-->
+                                    @include('layouts/crm_layout/ai_vc_fields')
+                                    <!--VC End-->
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!--VC Start-->
-
-                @include('layouts/crm_layout/ai_vc_fields')
-
-                <!--VC End-->
                 <div style="clear:both"></div>
                 <div class="form-group">
                     <label class="col-sm-4 text-right">&nbsp;</label>
