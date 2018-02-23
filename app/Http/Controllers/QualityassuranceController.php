@@ -6,9 +6,13 @@ use App\Http\Controllers\controller;
 use App\Models\Qualityassurance;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
-use Validator,
-    Input,
-    Redirect;
+use Validator, Input, Redirect;
+use App\Helpers\CrmLayoutHelper;
+use App\Models\ModelsModcustomfieldgroup;
+use App\Models\ModelsModcustomfieldrows;
+use App\Models\ModelsModcustomfieldvalue;
+use App\Models\ModelsModcustomfieldelements;
+use App\Models\ModelsModcustomfield;
 
 class QualityassuranceController extends Controller {
 
@@ -85,6 +89,8 @@ class QualityassuranceController extends Controller {
 
     function getUpdate(Request $request, $id = null) {
 
+        $module_id = 96;
+        
         if ($id == '') {
             if ($this->access['is_add'] == 0)
                 return Redirect::to('dashboard')->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus', 'error');
@@ -105,6 +111,14 @@ class QualityassuranceController extends Controller {
         $this->data['hotels'] = \DB::table('tb_properties')->select('id', 'property_name')->where('property_status', 1)->get();
         $this->data['hotel_managers'] = \DB::table('tb_users')->select('id', 'first_name', 'last_name')->where('group_id', 9)->where('active', 1)->get();
         $this->data['quality_assurers'] = \DB::table('tb_users')->select('id', 'first_name', 'last_name')->where('group_id', 8)->where('active', 1)->get();
+
+        /*
+         * CRM Layout: Fetch page layout
+         */
+
+        $this->data['all_rows'] = CrmLayoutHelper::fetchCrmLayout($module_id);
+
+        /********************************/
 
         $this->data['id'] = $id;
         return view('qualityassurance.form', $this->data);
@@ -141,6 +155,39 @@ class QualityassuranceController extends Controller {
 
             $id = $this->model->insertRow($data, $request->input('quality_assurance_id'));
 
+            if (!is_null($request->input('customFields'))) {
+
+                $mod_slug = $request->segment(2);
+                $cstfields = $request->input('customFields');
+                foreach ($request->input('customFields') as $key => $valu) {
+                    if (isset($valu['value']) && !empty($valu['value'])) {
+                        $fieltype = $valu['type'];
+                        if ($fieltype == 'checkbox') {
+                            $fieldArrLabel = array();
+                            $fieldArrValue = array();
+                            foreach ($valu['value'] as $valueStr) {
+                                $exlpodeStrFieldValue = explode('||', $valueStr);
+                                $fieldArrValue[] = $exlpodeStrFieldValue[0];
+                                $fieldArrLabel[] = $exlpodeStrFieldValue[1];
+                            }
+                            $fieldValue = implode(',', $fieldArrValue);
+                            $fieldLabel = implode(',', $fieldArrLabel);
+                        } else {
+                            $exlpodeFieldValue = explode('||', $valu['value']);
+                            $fieldValue = isset($exlpodeFieldValue[0]) ? $exlpodeFieldValue[0] : '';
+                            $fieldLabel = isset($exlpodeFieldValue[1]) ? $exlpodeFieldValue[1] : '';
+                        }
+                        $modcustomfieldvalue = new ModelsModcustomfieldvalue;
+                        $modcustomfieldvalue->idmob_mfv = $mod_slug;
+                        $modcustomfieldvalue->record_id_mfv = $request->input('quality_assurance_id');
+                        $modcustomfieldvalue->option_type_mfv = $fieltype;
+                        $modcustomfieldvalue->option_name_mfv = $key;
+                        $modcustomfieldvalue->option_label_mfv = $fieldLabel;
+                        $modcustomfieldvalue->option_value_mfv = $fieldValue;
+                        $modcustomfieldvalue->save();
+                    }
+                }
+            }
             if (!is_null($request->input('apply'))) {
                 $return = 'qualityassurance/update/' . $id . '?return=' . self::returnUrl();
             } else {
