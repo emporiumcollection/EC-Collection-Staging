@@ -230,39 +230,80 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <div class="">
-                                                            <input name="category[]" value="bathroom" type="hidden" />
-                                                            <textarea class="form-control" name="standard[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="performance_classificatoon[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="meet[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="below[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="na[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="note[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                <?php
+                                                if(!empty($bathrooms)) {
+                                                    foreach ($bathrooms as $qa_row) {
+                                                        echo '<tr>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <input name="category[]" value="bathroom" type="hidden" />
+                                                                        <textarea class="form-control" name="standard[]">'.$qa_row->standard.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="performance_classificatoon[]">'.$qa_row->performance_classificatoon.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="meet[]">'.$qa_row->meet.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="below[]">'.$qa_row->below.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="na[]">'.$qa_row->na.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="note[]">'.$qa_row->note.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>';
+                                                    }
+                                                }
+                                                else {
+                                                    echo '<tr>
+                                                            <td>
+                                                                <div class="">
+                                                                    <input name="category[]" value="bathroom" type="hidden" />
+                                                                    <textarea class="form-control" name="standard[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="performance_classificatoon[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="meet[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="below[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="na[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="note[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                        </tr>';
+                                                }
+                                                ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -293,39 +334,80 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <div class="">
-                                                            <input name="category[]" value="exterior_grounds" type="hidden" />
-                                                            <textarea class="form-control" name="standard[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="performance_classificatoon[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="meet[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="below[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="na[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="note[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                <?php
+                                                if(!empty($exterior_grounds)) {
+                                                    foreach ($exterior_grounds as $qa_row) {
+                                                        echo '<tr>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <input name="category[]" value="exterior_grounds" type="hidden" />
+                                                                        <textarea class="form-control" name="standard[]">'.$qa_row->standard.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="performance_classificatoon[]">'.$qa_row->performance_classificatoon.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="meet[]">'.$qa_row->meet.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="below[]">'.$qa_row->below.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="na[]">'.$qa_row->na.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="note[]">'.$qa_row->note.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>';
+                                                    }
+                                                }
+                                                else {
+                                                    echo '<tr>
+                                                            <td>
+                                                                <div class="">
+                                                                    <input name="category[]" value="exterior_grounds" type="hidden" />
+                                                                    <textarea class="form-control" name="standard[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="performance_classificatoon[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="meet[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="below[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="na[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="note[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                        </tr>';
+                                                }
+                                                ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -356,39 +438,80 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <div class="">
-                                                            <input name="category[]" value="lobby" type="hidden" />
-                                                            <textarea class="form-control" name="standard[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="performance_classificatoon[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="meet[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="below[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="na[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="note[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                <?php
+                                                if(!empty($lobbys)) {
+                                                    foreach ($lobbys as $qa_row) {
+                                                        echo '<tr>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <input name="category[]" value="lobby" type="hidden" />
+                                                                        <textarea class="form-control" name="standard[]">'.$qa_row->standard.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="performance_classificatoon[]">'.$qa_row->performance_classificatoon.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="meet[]">'.$qa_row->meet.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="below[]">'.$qa_row->below.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="na[]">'.$qa_row->na.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="note[]">'.$qa_row->note.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>';
+                                                    }
+                                                }
+                                                else {
+                                                    echo '<tr>
+                                                            <td>
+                                                                <div class="">
+                                                                    <input name="category[]" value="lobby" type="hidden" />
+                                                                    <textarea class="form-control" name="standard[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="performance_classificatoon[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="meet[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="below[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="na[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="note[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                        </tr>';
+                                                }
+                                                ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -419,39 +542,80 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <div class="">
-                                                            <input name="category[]" value="restaurants_bars" type="hidden" />
-                                                            <textarea class="form-control" name="standard[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="performance_classificatoon[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="meet[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="below[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="na[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="note[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                <?php
+                                                if(!empty($restaurants_bars)) {
+                                                    foreach ($restaurants_bars as $qa_row) {
+                                                        echo '<tr>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <input name="category[]" value="restaurants_bars" type="hidden" />
+                                                                        <textarea class="form-control" name="standard[]">'.$qa_row->standard.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="performance_classificatoon[]">'.$qa_row->performance_classificatoon.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="meet[]">'.$qa_row->meet.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="below[]">'.$qa_row->below.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="na[]">'.$qa_row->na.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="note[]">'.$qa_row->note.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>';
+                                                    }
+                                                }
+                                                else {
+                                                    echo '<tr>
+                                                            <td>
+                                                                <div class="">
+                                                                    <input name="category[]" value="restaurants_bars" type="hidden" />
+                                                                    <textarea class="form-control" name="standard[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="performance_classificatoon[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="meet[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="below[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="na[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="note[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                        </tr>';
+                                                }
+                                                ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -482,39 +646,80 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <div class="">
-                                                            <input name="category[]" value="guest_room_corridors" type="hidden" />
-                                                            <textarea class="form-control" name="standard[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="performance_classificatoon[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="meet[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="below[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="na[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="note[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                <?php
+                                                if(!empty($guest_room_corridors)) {
+                                                    foreach ($guest_room_corridors as $qa_row) {
+                                                        echo '<tr>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <input name="category[]" value="guest_room_corridors" type="hidden" />
+                                                                        <textarea class="form-control" name="standard[]">'.$qa_row->standard.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="performance_classificatoon[]">'.$qa_row->performance_classificatoon.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="meet[]">'.$qa_row->meet.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="below[]">'.$qa_row->below.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="na[]">'.$qa_row->na.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="note[]">'.$qa_row->note.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>';
+                                                    }
+                                                }
+                                                else {
+                                                    echo '<tr>
+                                                            <td>
+                                                                <div class="">
+                                                                    <input name="category[]" value="guest_room_corridors" type="hidden" />
+                                                                    <textarea class="form-control" name="standard[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="performance_classificatoon[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="meet[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="below[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="na[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="note[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                        </tr>';
+                                                }
+                                                ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -545,39 +750,80 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <div class="">
-                                                            <input name="category[]" value="restrooms" type="hidden" />
-                                                            <textarea class="form-control" name="standard[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="performance_classificatoon[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="meet[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="below[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="na[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="note[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                <?php
+                                                if(!empty($restrooms)) {
+                                                    foreach ($restrooms as $qa_row) {
+                                                        echo '<tr>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <input name="category[]" value="restrooms" type="hidden" />
+                                                                        <textarea class="form-control" name="standard[]">'.$qa_row->standard.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="performance_classificatoon[]">'.$qa_row->performance_classificatoon.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="meet[]">'.$qa_row->meet.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="below[]">'.$qa_row->below.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="na[]">'.$qa_row->na.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="note[]">'.$qa_row->note.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>';
+                                                    }
+                                                }
+                                                else {
+                                                    echo '<tr>
+                                                            <td>
+                                                                <div class="">
+                                                                    <input name="category[]" value="restrooms" type="hidden" />
+                                                                    <textarea class="form-control" name="standard[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="performance_classificatoon[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="meet[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="below[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="na[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="note[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                        </tr>';
+                                                }
+                                                ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -608,39 +854,80 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <div class="">
-                                                            <input name="category[]" value="elevators" type="hidden" />
-                                                            <textarea class="form-control" name="standard[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="performance_classificatoon[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="meet[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="below[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="na[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="note[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                <?php
+                                                if(!empty($elevators)) {
+                                                    foreach ($elevators as $qa_row) {
+                                                        echo '<tr>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <input name="category[]" value="elevators" type="hidden" />
+                                                                        <textarea class="form-control" name="standard[]">'.$qa_row->standard.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="performance_classificatoon[]">'.$qa_row->performance_classificatoon.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="meet[]">'.$qa_row->meet.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="below[]">'.$qa_row->below.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="na[]">'.$qa_row->na.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="note[]">'.$qa_row->note.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>';
+                                                    }
+                                                }
+                                                else {
+                                                    echo '<tr>
+                                                            <td>
+                                                                <div class="">
+                                                                    <input name="category[]" value="elevators" type="hidden" />
+                                                                    <textarea class="form-control" name="standard[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="performance_classificatoon[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="meet[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="below[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="na[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="note[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                        </tr>';
+                                                }
+                                                ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -671,39 +958,80 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <div class="">
-                                                            <input name="category[]" value="he_employee_behavioural_standards" type="hidden" />
-                                                            <textarea class="form-control" name="standard[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="performance_classificatoon[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="meet[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="below[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="na[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="note[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                <?php
+                                                if(!empty($he_employee_behavioural_standards)) {
+                                                    foreach ($he_employee_behavioural_standards as $qa_row) {
+                                                        echo '<tr>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <input name="category[]" value="he_employee_behavioural_standards" type="hidden" />
+                                                                        <textarea class="form-control" name="standard[]">'.$qa_row->standard.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="performance_classificatoon[]">'.$qa_row->performance_classificatoon.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="meet[]">'.$qa_row->meet.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="below[]">'.$qa_row->below.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="na[]">'.$qa_row->na.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="note[]">'.$qa_row->note.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>';
+                                                    }
+                                                }
+                                                else {
+                                                    echo '<tr>
+                                                            <td>
+                                                                <div class="">
+                                                                    <input name="category[]" value="he_employee_behavioural_standards" type="hidden" />
+                                                                    <textarea class="form-control" name="standard[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="performance_classificatoon[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="meet[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="below[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="na[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="note[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                        </tr>';
+                                                }
+                                                ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -734,39 +1062,80 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <div class="">
-                                                            <input name="category[]" value="fitness_center" type="hidden" />
-                                                            <textarea class="form-control" name="standard[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="performance_classificatoon[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="meet[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="below[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="na[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="note[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                <?php
+                                                if(!empty($fitness_centers)) {
+                                                    foreach ($fitness_centers as $qa_row) {
+                                                        echo '<tr>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <input name="category[]" value="fitness_center" type="hidden" />
+                                                                        <textarea class="form-control" name="standard[]">'.$qa_row->standard.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="performance_classificatoon[]">'.$qa_row->performance_classificatoon.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="meet[]">'.$qa_row->meet.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="below[]">'.$qa_row->below.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="na[]">'.$qa_row->na.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="note[]">'.$qa_row->note.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>';
+                                                    }
+                                                }
+                                                else {
+                                                    echo '<tr>
+                                                            <td>
+                                                                <div class="">
+                                                                    <input name="category[]" value="fitness_center" type="hidden" />
+                                                                    <textarea class="form-control" name="standard[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="performance_classificatoon[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="meet[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="below[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="na[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="note[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                        </tr>';
+                                                }
+                                                ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -797,39 +1166,80 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <div class="">
-                                                            <input name="category[]" value="swimming_pool_beach" type="hidden" />
-                                                            <textarea class="form-control" name="standard[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="performance_classificatoon[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="meet[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="below[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="na[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="note[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                <?php
+                                                if(!empty($swimming_pool_beachs)) {
+                                                    foreach ($swimming_pool_beachs as $qa_row) {
+                                                        echo '<tr>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <input name="category[]" value="swimming_pool_beach" type="hidden" />
+                                                                        <textarea class="form-control" name="standard[]">'.$qa_row->standard.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="performance_classificatoon[]">'.$qa_row->performance_classificatoon.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="meet[]">'.$qa_row->meet.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="below[]">'.$qa_row->below.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="na[]">'.$qa_row->na.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="note[]">'.$qa_row->note.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>';
+                                                    }
+                                                }
+                                                else {
+                                                    echo '<tr>
+                                                            <td>
+                                                                <div class="">
+                                                                    <input name="category[]" value="swimming_pool_beach" type="hidden" />
+                                                                    <textarea class="form-control" name="standard[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="performance_classificatoon[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="meet[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="below[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="na[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="note[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                        </tr>';
+                                                }
+                                                ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -860,39 +1270,80 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <div class="">
-                                                            <input name="category[]" value="tennis_squash_courts" type="hidden" />
-                                                            <textarea class="form-control" name="standard[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="performance_classificatoon[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="meet[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="below[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="na[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="note[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                <?php
+                                                if(!empty($tennis_squash_courts)) {
+                                                    foreach ($tennis_squash_courts as $qa_row) {
+                                                        echo '<tr>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <input name="category[]" value="tennis_squash_courts" type="hidden" />
+                                                                        <textarea class="form-control" name="standard[]">'.$qa_row->standard.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="performance_classificatoon[]">'.$qa_row->performance_classificatoon.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="meet[]">'.$qa_row->meet.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="below[]">'.$qa_row->below.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="na[]">'.$qa_row->na.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="note[]">'.$qa_row->note.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>';
+                                                    }
+                                                }
+                                                else {
+                                                    echo '<tr>
+                                                            <td>
+                                                                <div class="">
+                                                                    <input name="category[]" value="tennis_squash_courts" type="hidden" />
+                                                                    <textarea class="form-control" name="standard[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="performance_classificatoon[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="meet[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="below[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="na[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="note[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                        </tr>';
+                                                }
+                                                ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -923,39 +1374,80 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <div class="">
-                                                            <input name="category[]" value="steam_room_sauna_jacuzzi" type="hidden" />
-                                                            <textarea class="form-control" name="standard[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="performance_classificatoon[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="meet[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="below[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="na[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="note[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                <?php
+                                                if(!empty($steam_room_sauna_jacuzzis)) {
+                                                    foreach ($steam_room_sauna_jacuzzis as $qa_row) {
+                                                        echo '<tr>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <input name="category[]" value="steam_room_sauna_jacuzzi" type="hidden" />
+                                                                        <textarea class="form-control" name="standard[]">'.$qa_row->standard.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="performance_classificatoon[]">'.$qa_row->performance_classificatoon.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="meet[]">'.$qa_row->meet.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="below[]">'.$qa_row->below.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="na[]">'.$qa_row->na.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="note[]">'.$qa_row->note.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>';
+                                                    }
+                                                }
+                                                else {
+                                                    echo '<tr>
+                                                            <td>
+                                                                <div class="">
+                                                                    <input name="category[]" value="steam_room_sauna_jacuzzi" type="hidden" />
+                                                                    <textarea class="form-control" name="standard[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="performance_classificatoon[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="meet[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="below[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="na[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="note[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                        </tr>';
+                                                }
+                                                ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -986,39 +1478,80 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <div class="">
-                                                            <input name="category[]" value="changing_rooms" type="hidden" />
-                                                            <textarea class="form-control" name="standard[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="performance_classificatoon[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="meet[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="below[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="na[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="note[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                <?php
+                                                if(!empty($changing_rooms)) {
+                                                    foreach ($changing_rooms as $qa_row) {
+                                                        echo '<tr>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <input name="category[]" value="changing_rooms" type="hidden" />
+                                                                        <textarea class="form-control" name="standard[]">'.$qa_row->standard.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="performance_classificatoon[]">'.$qa_row->performance_classificatoon.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="meet[]">'.$qa_row->meet.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="below[]">'.$qa_row->below.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="na[]">'.$qa_row->na.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="note[]">'.$qa_row->note.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>';
+                                                    }
+                                                }
+                                                else {
+                                                    echo '<tr>
+                                                            <td>
+                                                                <div class="">
+                                                                    <input name="category[]" value="changing_rooms" type="hidden" />
+                                                                    <textarea class="form-control" name="standard[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="performance_classificatoon[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="meet[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="below[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="na[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <textarea class="form-control" name="note[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                        </tr>';
+                                                }
+                                                ?>
                                             </tbody>
                                         </table>
                                     </div>
