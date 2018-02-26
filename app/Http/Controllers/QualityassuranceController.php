@@ -153,6 +153,11 @@ class QualityassuranceController extends Controller {
         if ($validator->passes()) {
             $data = $this->validatePost('tb_qualityassurance');
 
+            echo '<pre>';
+            print_r($data);
+            echo '</pre>';
+            die;
+            
             $id = $this->model->insertRow($data, $request->input('quality_assurance_id'));
 
             $categories = $request->input('category');
