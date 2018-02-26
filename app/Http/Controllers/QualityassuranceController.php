@@ -155,6 +155,29 @@ class QualityassuranceController extends Controller {
 
             $id = $this->model->insertRow($data, $request->input('quality_assurance_id'));
 
+            $categories = $request->input('category');
+            $standard = $request->input('standard');
+            $performance_classificatoon = $request->input('performance_classificatoon');
+            $meet = $request->input('meet');
+            $below = $request->input('below');
+            $na = $request->input('na');
+            $note = $request->input('note');
+            
+            if(!empty($categories)) {
+                foreach ($categories as $key => $category) {
+                    $params = array('qa_id' => $id,
+                                    'category' => $category,
+                                    'standard' => $standard[$key],
+                                    'performance_classificatoon' => $performance_classificatoon[$key],
+                                    'meet' => $meet[$key],
+                                    'below' => $below[$key],
+                                    'na' => $na[$key],
+                                    'note' => $note[$key]
+                                    );
+                    \DB::table('tb_contact_queries')->insertGetId($params);
+                }
+            }
+            
             if (!is_null($request->input('customFields'))) {
 
                 $mod_slug = $request->segment(2);
