@@ -128,62 +128,98 @@
                                             <tbody>
                                                 <tr>
                                                     <td>
-                                                        <textarea></textarea>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control"></textarea>
+                                                        </div>
                                                     </td>
                                                     <td>
-                                                        <textarea></textarea>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control"></textarea>
+                                                        </div>
                                                     </td>
                                                     <td>
-                                                        <textarea></textarea>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control"></textarea>
+                                                        </div>
                                                     </td>
                                                     <td>
-                                                        <textarea></textarea>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control"></textarea>
+                                                        </div>
                                                     </td>
                                                     <td>
-                                                        <textarea></textarea>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control"></textarea>
+                                                        </div>
                                                     </td>
                                                     <td>
-                                                        <textarea></textarea>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <textarea></textarea>
-                                                    </td>
-                                                    <td>
-                                                        <textarea></textarea>
-                                                    </td>
-                                                    <td>
-                                                        <textarea></textarea>
-                                                    </td>
-                                                    <td>
-                                                        <textarea></textarea>
-                                                    </td>
-                                                    <td>
-                                                        <textarea></textarea>
-                                                    </td>
-                                                    <td>
-                                                        <textarea></textarea>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control"></textarea>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <textarea></textarea>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control"></textarea>
+                                                        </div>
                                                     </td>
                                                     <td>
-                                                        <textarea></textarea>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control"></textarea>
+                                                        </div>
                                                     </td>
                                                     <td>
-                                                        <textarea></textarea>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control"></textarea>
+                                                        </div>
                                                     </td>
                                                     <td>
-                                                        <textarea></textarea>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control"></textarea>
+                                                        </div>
                                                     </td>
                                                     <td>
-                                                        <textarea></textarea>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control"></textarea>
+                                                        </div>
                                                     </td>
                                                     <td>
-                                                        <textarea></textarea>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control"></textarea>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control"></textarea>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                             </tbody>
