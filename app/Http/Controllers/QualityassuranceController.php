@@ -111,6 +111,21 @@ class QualityassuranceController extends Controller {
         $this->data['hotels'] = \DB::table('tb_properties')->select('id', 'property_name')->where('property_status', 1)->get();
         $this->data['hotel_managers'] = \DB::table('tb_users')->select('id', 'first_name', 'last_name')->where('group_id', 9)->where('active', 1)->get();
         $this->data['quality_assurers'] = \DB::table('tb_users')->select('id', 'first_name', 'last_name')->where('group_id', 8)->where('active', 1)->get();
+        
+        $this->data['bedrooms'] = \DB::table('tb_quality_assurance_options')->where('category', 'bedroom')->where('qa_id', $id)->get();
+        $this->data['bathrooms'] = \DB::table('tb_quality_assurance_options')->where('category', 'bathroom')->where('qa_id', $id)->get();
+        $this->data['exterior_grounds'] = \DB::table('tb_quality_assurance_options')->where('category', 'exterior_grounds')->where('qa_id', $id)->get();
+        $this->data['lobbys'] = \DB::table('tb_quality_assurance_options')->where('category', 'lobby')->where('qa_id', $id)->get();
+        $this->data['restaurants_bars'] = \DB::table('tb_quality_assurance_options')->where('category', 'restaurants_bars')->where('qa_id', $id)->get();
+        $this->data['guest_room_corridors'] = \DB::table('tb_quality_assurance_options')->where('category', 'guest_room_corridors')->where('qa_id', $id)->get();
+        $this->data['restrooms'] = \DB::table('tb_quality_assurance_options')->where('category', 'restrooms')->where('qa_id', $id)->get();
+        $this->data['elevators'] = \DB::table('tb_quality_assurance_options')->where('category', 'elevators')->where('qa_id', $id)->get();
+        $this->data['he_employee_behavioural_standards'] = \DB::table('tb_quality_assurance_options')->where('category', 'he_employee_behavioural_standards')->where('qa_id', $id)->get();
+        $this->data['fitness_centers'] = \DB::table('tb_quality_assurance_options')->where('category', 'fitness_center')->where('qa_id', $id)->get();
+        $this->data['swimming_pool_beachs'] = \DB::table('tb_quality_assurance_options')->where('category', 'swimming_pool_beach')->where('qa_id', $id)->get();
+        $this->data['tennis_squash_courts'] = \DB::table('tb_quality_assurance_options')->where('category', 'tennis_squash_courts')->where('qa_id', $id)->get();
+        $this->data['steam_room_sauna_jacuzzis'] = \DB::table('tb_quality_assurance_options')->where('category', 'steam_room_sauna_jacuzzi')->where('qa_id', $id)->get();
+        $this->data['changing_rooms'] = \DB::table('tb_quality_assurance_options')->where('category', 'changing_rooms')->where('qa_id', $id)->get();
 
         /*
          * CRM Layout: Fetch page layout
@@ -155,6 +170,10 @@ class QualityassuranceController extends Controller {
             
             $id = $this->model->insertRow($data, $request->input('quality_assurance_id'));
 
+            if($request->input('quality_assurance_id') == NULL) {
+                \DB::table('tb_quality_assurance_options')->where('qa_id', $request->input('quality_assurance_id'))->delete();
+            }
+            
             $categories = $request->input('category');
             $standard = $request->input('standard');
             $performance_classificatoon = $request->input('performance_classificatoon');
