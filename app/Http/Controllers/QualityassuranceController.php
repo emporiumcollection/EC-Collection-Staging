@@ -170,7 +170,7 @@ class QualityassuranceController extends Controller {
             
             $id = $this->model->insertRow($data, $request->input('quality_assurance_id'));
 
-            if($request->input('quality_assurance_id') == NULL) {
+            if (!is_null($request->input('quality_assurance_id'))) {
                 \DB::table('tb_quality_assurance_options')->where('qa_id', $request->input('quality_assurance_id'))->delete();
             }
             
