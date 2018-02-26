@@ -113,7 +113,82 @@
                             </div>
                             <div id="qa-collapse2" class="panel-collapse collapse">
                                 <div class="panel-body">
-                                    
+                                    <div class="table table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>STANDARD</th>
+                                                    <th>PERFORMANCE CLASSIFICATION</th>
+                                                    <th>MEET</th>
+                                                    <th>BELOW</th>
+                                                    <th>N/A</th>
+                                                    <th>NOTE</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <textarea></textarea>
+                                                    </td>
+                                                    <td>
+                                                        <textarea></textarea>
+                                                    </td>
+                                                    <td>
+                                                        <textarea></textarea>
+                                                    </td>
+                                                    <td>
+                                                        <textarea></textarea>
+                                                    </td>
+                                                    <td>
+                                                        <textarea></textarea>
+                                                    </td>
+                                                    <td>
+                                                        <textarea></textarea>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <textarea></textarea>
+                                                    </td>
+                                                    <td>
+                                                        <textarea></textarea>
+                                                    </td>
+                                                    <td>
+                                                        <textarea></textarea>
+                                                    </td>
+                                                    <td>
+                                                        <textarea></textarea>
+                                                    </td>
+                                                    <td>
+                                                        <textarea></textarea>
+                                                    </td>
+                                                    <td>
+                                                        <textarea></textarea>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <textarea></textarea>
+                                                    </td>
+                                                    <td>
+                                                        <textarea></textarea>
+                                                    </td>
+                                                    <td>
+                                                        <textarea></textarea>
+                                                    </td>
+                                                    <td>
+                                                        <textarea></textarea>
+                                                    </td>
+                                                    <td>
+                                                        <textarea></textarea>
+                                                    </td>
+                                                    <td>
+                                                        <textarea></textarea>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
