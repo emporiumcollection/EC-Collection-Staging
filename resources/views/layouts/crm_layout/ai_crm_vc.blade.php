@@ -1194,10 +1194,19 @@ $fieldArray['file'] = 'File';
 
                     if(element_type == 'crm-fields') {
                         
-                        $("#edit-custom-field-pop-up .customfield_id").val(row.crm_element_id);
-                        $("#edit-custom-field-pop-up .group_id").val(row.group_id);
-                        
-                        vc_edit_custom_field(This);
+                        if(row.customfield_id == 0) {
+                            $("#add-new-custom-field-pop-up .row_id").val(row.row_id);
+                            $("#add-new-custom-field-pop-up .group_id").val(row.group_id);
+                            $("#add-new-custom-field-pop-up .template_id").val(template_id);
+
+                            $("#add-new-custom-field-pop-up").modal();
+                        }
+                        else {
+                            $("#edit-custom-field-pop-up .customfield_id").val(row.customfield_id);
+                            $("#edit-custom-field-pop-up .group_id").val(row.group_id);
+
+                            vc_edit_custom_field(This);
+                        }
                     }
                     else if(element_type == 'separator') {
                         $("#edit-separator-pop-up .id").val(row.crm_element_id);
