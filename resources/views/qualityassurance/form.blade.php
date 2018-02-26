@@ -133,32 +133,32 @@
                                                                 <td>
                                                                     <div class="">
                                                                         <input name="category[]" value="bedroom" type="hidden" />
-                                                                        <textarea class="form-control" name="standard[]">'.$bedroom['standard'].'</textarea>
+                                                                        <textarea class="form-control" name="standard[]">'.$bedroom->standard.'</textarea>
                                                                     </div>
                                                                 </td>
                                                                 <td>
                                                                     <div class="">
-                                                                        <textarea class="form-control" name="performance_classificatoon[]">'.$bedroom[' performance_classificatoon'].'</textarea>
+                                                                        <textarea class="form-control" name="performance_classificatoon[]">'.$bedroom->performance_classificatoon.'</textarea>
                                                                     </div>
                                                                 </td>
                                                                 <td>
                                                                     <div class="">
-                                                                        <textarea class="form-control" name="meet[]">'.$bedroom['meet'].'</textarea>
+                                                                        <textarea class="form-control" name="meet[]">'.$bedroom->meet.'</textarea>
                                                                     </div>
                                                                 </td>
                                                                 <td>
                                                                     <div class="">
-                                                                        <textarea class="form-control" name="below[]">'.$bedroom['below'].'</textarea>
+                                                                        <textarea class="form-control" name="below[]">'.$bedroom->below.'</textarea>
                                                                     </div>
                                                                 </td>
                                                                 <td>
                                                                     <div class="">
-                                                                        <textarea class="form-control" name="na[]">'.$bedroom['na'].'</textarea>
+                                                                        <textarea class="form-control" name="na[]">'.$bedroom->na.'</textarea>
                                                                     </div>
                                                                 </td>
                                                                 <td>
                                                                     <div class="">
-                                                                        <textarea class="form-control" name="note[]">'.$bedroom['note'].'</textarea>
+                                                                        <textarea class="form-control" name="note[]">'.$bedroom->note.'</textarea>
                                                                     </div>
                                                                 </td>
                                                             </tr>';
