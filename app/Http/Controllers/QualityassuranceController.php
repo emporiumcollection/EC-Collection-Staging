@@ -152,11 +152,6 @@ class QualityassuranceController extends Controller {
         $validator = Validator::make($request->all(), $rules);
         if ($validator->passes()) {
             $data = $this->validatePost('tb_qualityassurance');
-
-            echo '<pre>';
-            print_r($data);
-            echo '</pre>';
-            die;
             
             $id = $this->model->insertRow($data, $request->input('quality_assurance_id'));
 
@@ -179,7 +174,7 @@ class QualityassuranceController extends Controller {
                                     'na' => $na[$key],
                                     'note' => $note[$key]
                                     );
-                    \DB::table('tb_contact_queries')->insertGetId($params);
+                    \DB::table('tb_quality_assurance_options')->insertGetId($params);
                 }
             }
             
