@@ -129,73 +129,7 @@
                                                 <tr>
                                                     <td>
                                                         <div class="">
-                                                            <input name="category[]" type="hidden" />
-                                                            <textarea class="form-control" name="standard[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="performance_classificatoon[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="meet[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="below[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="na[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="note[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="">
-                                                            <input name="category[]" type="hidden" />
-                                                            <textarea class="form-control" name="standard[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="performance_classificatoon[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="meet[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="below[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="na[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="">
-                                                            <textarea class="form-control" name="note[]"></textarea>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="">
-                                                            <input name="category[]" type="hidden" />
+                                                            <input name="category[]" value="bedroom" type="hidden" />
                                                             <textarea class="form-control" name="standard[]"></textarea>
                                                         </div>
                                                     </td>
@@ -228,6 +162,9 @@
                                             </tbody>
                                         </table>
                                     </div>
+                                    <div>
+                                        <a class="add-new-fields-row btn btn-primary btn-sm" data-category="bedroom" href="#">Add Row</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -239,7 +176,58 @@
                             </div>
                             <div id="qa-collapse3" class="panel-collapse collapse">
                                 <div class="panel-body">
-                                    
+                                    <div class="table table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr class="text-center">
+                                                    <th>STANDARD</th>
+                                                    <th>PERFORMANCE CLASSIFICATION</th>
+                                                    <th>MEET</th>
+                                                    <th>BELOW</th>
+                                                    <th>N/A</th>
+                                                    <th>NOTE</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="">
+                                                            <input name="category[]" value="bathroom" type="hidden" />
+                                                            <textarea class="form-control" name="standard[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="performance_classificatoon[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="meet[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="below[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="na[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="note[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div>
+                                        <a class="add-new-fields-row btn btn-primary btn-sm" data-category="bathroom" href="#">Add Row</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -251,7 +239,58 @@
                             </div>
                             <div id="qa-collapse4" class="panel-collapse collapse">
                                 <div class="panel-body">
-                                    
+                                    <div class="table table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr class="text-center">
+                                                    <th>STANDARD</th>
+                                                    <th>PERFORMANCE CLASSIFICATION</th>
+                                                    <th>MEET</th>
+                                                    <th>BELOW</th>
+                                                    <th>N/A</th>
+                                                    <th>NOTE</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="">
+                                                            <input name="category[]" value="exterior_grounds" type="hidden" />
+                                                            <textarea class="form-control" name="standard[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="performance_classificatoon[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="meet[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="below[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="na[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="note[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div>
+                                        <a class="add-new-fields-row btn btn-primary btn-sm" data-category="exterior_grounds" href="#">Add Row</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -263,7 +302,58 @@
                             </div>
                             <div id="qa-collapse5" class="panel-collapse collapse">
                                 <div class="panel-body">
-                                    
+                                    <div class="table table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr class="text-center">
+                                                    <th>STANDARD</th>
+                                                    <th>PERFORMANCE CLASSIFICATION</th>
+                                                    <th>MEET</th>
+                                                    <th>BELOW</th>
+                                                    <th>N/A</th>
+                                                    <th>NOTE</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="">
+                                                            <input name="category[]" value="lobby" type="hidden" />
+                                                            <textarea class="form-control" name="standard[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="performance_classificatoon[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="meet[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="below[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="na[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="note[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div>
+                                        <a class="add-new-fields-row btn btn-primary btn-sm" data-category="lobby" href="#">Add Row</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -275,7 +365,58 @@
                             </div>
                             <div id="qa-collapse6" class="panel-collapse collapse">
                                 <div class="panel-body">
-                                    
+                                    <div class="table table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr class="text-center">
+                                                    <th>STANDARD</th>
+                                                    <th>PERFORMANCE CLASSIFICATION</th>
+                                                    <th>MEET</th>
+                                                    <th>BELOW</th>
+                                                    <th>N/A</th>
+                                                    <th>NOTE</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="">
+                                                            <input name="category[]" value="restaurants_bars" type="hidden" />
+                                                            <textarea class="form-control" name="standard[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="performance_classificatoon[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="meet[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="below[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="na[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="note[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div>
+                                        <a class="add-new-fields-row btn btn-primary btn-sm" data-category="restaurants_bars" href="#">Add Row</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -287,7 +428,58 @@
                             </div>
                             <div id="qa-collapse7" class="panel-collapse collapse">
                                 <div class="panel-body">
-                                    
+                                    <div class="table table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr class="text-center">
+                                                    <th>STANDARD</th>
+                                                    <th>PERFORMANCE CLASSIFICATION</th>
+                                                    <th>MEET</th>
+                                                    <th>BELOW</th>
+                                                    <th>N/A</th>
+                                                    <th>NOTE</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="">
+                                                            <input name="category[]" value="guest_room_corridors" type="hidden" />
+                                                            <textarea class="form-control" name="standard[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="performance_classificatoon[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="meet[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="below[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="na[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="note[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div>
+                                        <a class="add-new-fields-row btn btn-primary btn-sm" data-category="guest_room_corridors" href="#">Add Row</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -299,7 +491,58 @@
                             </div>
                             <div id="qa-collapse8" class="panel-collapse collapse">
                                 <div class="panel-body">
-                                    
+                                    <div class="table table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr class="text-center">
+                                                    <th>STANDARD</th>
+                                                    <th>PERFORMANCE CLASSIFICATION</th>
+                                                    <th>MEET</th>
+                                                    <th>BELOW</th>
+                                                    <th>N/A</th>
+                                                    <th>NOTE</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="">
+                                                            <input name="category[]" value="restrooms" type="hidden" />
+                                                            <textarea class="form-control" name="standard[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="performance_classificatoon[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="meet[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="below[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="na[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="note[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div>
+                                        <a class="add-new-fields-row btn btn-primary btn-sm" data-category="restrooms" href="#">Add Row</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -311,7 +554,58 @@
                             </div>
                             <div id="qa-collapse9" class="panel-collapse collapse">
                                 <div class="panel-body">
-                                    
+                                    <div class="table table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr class="text-center">
+                                                    <th>STANDARD</th>
+                                                    <th>PERFORMANCE CLASSIFICATION</th>
+                                                    <th>MEET</th>
+                                                    <th>BELOW</th>
+                                                    <th>N/A</th>
+                                                    <th>NOTE</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="">
+                                                            <input name="category[]" value="elevators" type="hidden" />
+                                                            <textarea class="form-control" name="standard[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="performance_classificatoon[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="meet[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="below[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="na[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="note[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div>
+                                        <a class="add-new-fields-row btn btn-primary btn-sm" data-category="elevators" href="#">Add Row</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -323,7 +617,58 @@
                             </div>
                             <div id="qa-collapse10" class="panel-collapse collapse">
                                 <div class="panel-body">
-                                    
+                                    <div class="table table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr class="text-center">
+                                                    <th>STANDARD</th>
+                                                    <th>PERFORMANCE CLASSIFICATION</th>
+                                                    <th>MEET</th>
+                                                    <th>BELOW</th>
+                                                    <th>N/A</th>
+                                                    <th>NOTE</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="">
+                                                            <input name="category[]" value="he_employee_behavioural_standards" type="hidden" />
+                                                            <textarea class="form-control" name="standard[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="performance_classificatoon[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="meet[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="below[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="na[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="note[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div>
+                                        <a class="add-new-fields-row btn btn-primary btn-sm" data-category="he_employee_behavioural_standards" href="#">Add Row</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -335,7 +680,58 @@
                             </div>
                             <div id="qa-collapse11" class="panel-collapse collapse">
                                 <div class="panel-body">
-                                    
+                                    <div class="table table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr class="text-center">
+                                                    <th>STANDARD</th>
+                                                    <th>PERFORMANCE CLASSIFICATION</th>
+                                                    <th>MEET</th>
+                                                    <th>BELOW</th>
+                                                    <th>N/A</th>
+                                                    <th>NOTE</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="">
+                                                            <input name="category[]" value="fitness_center" type="hidden" />
+                                                            <textarea class="form-control" name="standard[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="performance_classificatoon[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="meet[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="below[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="na[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="note[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div>
+                                        <a class="add-new-fields-row btn btn-primary btn-sm" data-category="fitness_center" href="#">Add Row</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -347,7 +743,58 @@
                             </div>
                             <div id="qa-collapse12" class="panel-collapse collapse">
                                 <div class="panel-body">
-                                    
+                                    <div class="table table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr class="text-center">
+                                                    <th>STANDARD</th>
+                                                    <th>PERFORMANCE CLASSIFICATION</th>
+                                                    <th>MEET</th>
+                                                    <th>BELOW</th>
+                                                    <th>N/A</th>
+                                                    <th>NOTE</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="">
+                                                            <input name="category[]" value="swimming_pool_beach" type="hidden" />
+                                                            <textarea class="form-control" name="standard[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="performance_classificatoon[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="meet[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="below[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="na[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="note[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div>
+                                        <a class="add-new-fields-row btn btn-primary btn-sm" data-category="swimming_pool_beach" href="#">Add Row</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -359,7 +806,58 @@
                             </div>
                             <div id="qa-collapse13" class="panel-collapse collapse">
                                 <div class="panel-body">
-                                    
+                                    <div class="table table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr class="text-center">
+                                                    <th>STANDARD</th>
+                                                    <th>PERFORMANCE CLASSIFICATION</th>
+                                                    <th>MEET</th>
+                                                    <th>BELOW</th>
+                                                    <th>N/A</th>
+                                                    <th>NOTE</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="">
+                                                            <input name="category[]" value="tennis_squash_courts" type="hidden" />
+                                                            <textarea class="form-control" name="standard[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="performance_classificatoon[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="meet[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="below[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="na[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="note[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div>
+                                        <a class="add-new-fields-row btn btn-primary btn-sm" data-category="bedroom" href="#">Add Row</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -371,7 +869,58 @@
                             </div>
                             <div id="qa-collapse14" class="panel-collapse collapse">
                                 <div class="panel-body">
-                                    
+                                    <div class="table table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr class="text-center">
+                                                    <th>STANDARD</th>
+                                                    <th>PERFORMANCE CLASSIFICATION</th>
+                                                    <th>MEET</th>
+                                                    <th>BELOW</th>
+                                                    <th>N/A</th>
+                                                    <th>NOTE</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="">
+                                                            <input name="category[]" value="steam_room_sauna_jacuzzi" type="hidden" />
+                                                            <textarea class="form-control" name="standard[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="performance_classificatoon[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="meet[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="below[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="na[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="note[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div>
+                                        <a class="add-new-fields-row btn btn-primary btn-sm" data-category="steam_room_sauna_jacuzzi" href="#">Add Row</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -383,7 +932,58 @@
                             </div>
                             <div id="qa-collapse15" class="panel-collapse collapse">
                                 <div class="panel-body">
-                                    
+                                    <div class="table table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr class="text-center">
+                                                    <th>STANDARD</th>
+                                                    <th>PERFORMANCE CLASSIFICATION</th>
+                                                    <th>MEET</th>
+                                                    <th>BELOW</th>
+                                                    <th>N/A</th>
+                                                    <th>NOTE</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="">
+                                                            <input name="category[]" value="changing_rooms" type="hidden" />
+                                                            <textarea class="form-control" name="standard[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="performance_classificatoon[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="meet[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="below[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="na[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="note[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div>
+                                        <a class="add-new-fields-row btn btn-primary btn-sm" data-category="changing_rooms" href="#">Add Row</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
