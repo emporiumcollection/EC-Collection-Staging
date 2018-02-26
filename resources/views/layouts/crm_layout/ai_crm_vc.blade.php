@@ -1111,9 +1111,8 @@ $fieldArray['file'] = 'File';
 <script src="{{ asset('sximo/crm_layout/tinymce/tinymce.min.js')}}" type="text/javascript"></script>
 <script>
     
-    function vc_edit_custom_field(This) {
+    function vc_edit_custom_field(id) {
         $("#edit-custom-field-pop-up").modal();
-        var id = $(This).data("id");
         $.ajax({
             url: "{{URL::to('crmlayouts/ajax_get_custom_field/')}}/" + id,
             type: "POST",
@@ -1206,8 +1205,7 @@ $fieldArray['file'] = 'File';
                         else {
                             $("#edit-custom-field-pop-up .customfield_id").val(row.customfield_id);
                             $("#edit-custom-field-pop-up .group_id").val(row.group_id);
-
-                            vc_edit_custom_field(This);
+                            vc_edit_custom_field(row.customfield_id);
                         }
                     }
                     else if(element_type == 'separator') {
