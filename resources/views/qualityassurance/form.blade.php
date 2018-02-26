@@ -203,6 +203,11 @@
                                                                     <textarea class="form-control" name="note[]"></textarea>
                                                                 </div>
                                                             </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                </div>
+                                                            </td>
                                                         </tr>';
                                                 }
                                                 ?>
@@ -272,6 +277,11 @@
                                                                         <textarea class="form-control" name="note[]">'.$qa_row->note.'</textarea>
                                                                     </div>
                                                                 </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                    </div>
+                                                                </td>
                                                             </tr>';
                                                     }
                                                 }
@@ -306,6 +316,11 @@
                                                             <td>
                                                                 <div class="">
                                                                     <textarea class="form-control" name="note[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
                                                                 </div>
                                                             </td>
                                                         </tr>';
@@ -377,6 +392,11 @@
                                                                         <textarea class="form-control" name="note[]">'.$qa_row->note.'</textarea>
                                                                     </div>
                                                                 </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                    </div>
+                                                                </td>
                                                             </tr>';
                                                     }
                                                 }
@@ -411,6 +431,11 @@
                                                             <td>
                                                                 <div class="">
                                                                     <textarea class="form-control" name="note[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
                                                                 </div>
                                                             </td>
                                                         </tr>';
@@ -482,6 +507,11 @@
                                                                         <textarea class="form-control" name="note[]">'.$qa_row->note.'</textarea>
                                                                     </div>
                                                                 </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                    </div>
+                                                                </td>
                                                             </tr>';
                                                     }
                                                 }
@@ -516,6 +546,11 @@
                                                             <td>
                                                                 <div class="">
                                                                     <textarea class="form-control" name="note[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
                                                                 </div>
                                                             </td>
                                                         </tr>';
@@ -587,6 +622,11 @@
                                                                         <textarea class="form-control" name="note[]">'.$qa_row->note.'</textarea>
                                                                     </div>
                                                                 </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                    </div>
+                                                                </td>
                                                             </tr>';
                                                     }
                                                 }
@@ -621,6 +661,11 @@
                                                             <td>
                                                                 <div class="">
                                                                     <textarea class="form-control" name="note[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
                                                                 </div>
                                                             </td>
                                                         </tr>';
@@ -692,6 +737,11 @@
                                                                         <textarea class="form-control" name="note[]">'.$qa_row->note.'</textarea>
                                                                     </div>
                                                                 </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                    </div>
+                                                                </td>
                                                             </tr>';
                                                     }
                                                 }
@@ -726,6 +776,11 @@
                                                             <td>
                                                                 <div class="">
                                                                     <textarea class="form-control" name="note[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
                                                                 </div>
                                                             </td>
                                                         </tr>';
@@ -797,6 +852,11 @@
                                                                         <textarea class="form-control" name="note[]">'.$qa_row->note.'</textarea>
                                                                     </div>
                                                                 </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                    </div>
+                                                                </td>
                                                             </tr>';
                                                     }
                                                 }
@@ -831,6 +891,11 @@
                                                             <td>
                                                                 <div class="">
                                                                     <textarea class="form-control" name="note[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
                                                                 </div>
                                                             </td>
                                                         </tr>';
@@ -902,6 +967,11 @@
                                                                         <textarea class="form-control" name="note[]">'.$qa_row->note.'</textarea>
                                                                     </div>
                                                                 </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                    </div>
+                                                                </td>
                                                             </tr>';
                                                     }
                                                 }
@@ -936,6 +1006,11 @@
                                                             <td>
                                                                 <div class="">
                                                                     <textarea class="form-control" name="note[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
                                                                 </div>
                                                             </td>
                                                         </tr>';
@@ -1007,6 +1082,11 @@
                                                                         <textarea class="form-control" name="note[]">'.$qa_row->note.'</textarea>
                                                                     </div>
                                                                 </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                    </div>
+                                                                </td>
                                                             </tr>';
                                                     }
                                                 }
@@ -1041,6 +1121,11 @@
                                                             <td>
                                                                 <div class="">
                                                                     <textarea class="form-control" name="note[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
                                                                 </div>
                                                             </td>
                                                         </tr>';
@@ -1112,6 +1197,11 @@
                                                                         <textarea class="form-control" name="note[]">'.$qa_row->note.'</textarea>
                                                                     </div>
                                                                 </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                    </div>
+                                                                </td>
                                                             </tr>';
                                                     }
                                                 }
@@ -1146,6 +1236,11 @@
                                                             <td>
                                                                 <div class="">
                                                                     <textarea class="form-control" name="note[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
                                                                 </div>
                                                             </td>
                                                         </tr>';
@@ -1217,6 +1312,11 @@
                                                                         <textarea class="form-control" name="note[]">'.$qa_row->note.'</textarea>
                                                                     </div>
                                                                 </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                    </div>
+                                                                </td>
                                                             </tr>';
                                                     }
                                                 }
@@ -1251,6 +1351,11 @@
                                                             <td>
                                                                 <div class="">
                                                                     <textarea class="form-control" name="note[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
                                                                 </div>
                                                             </td>
                                                         </tr>';
@@ -1322,6 +1427,11 @@
                                                                         <textarea class="form-control" name="note[]">'.$qa_row->note.'</textarea>
                                                                     </div>
                                                                 </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                    </div>
+                                                                </td>
                                                             </tr>';
                                                     }
                                                 }
@@ -1356,6 +1466,11 @@
                                                             <td>
                                                                 <div class="">
                                                                     <textarea class="form-control" name="note[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
                                                                 </div>
                                                             </td>
                                                         </tr>';
@@ -1427,6 +1542,11 @@
                                                                         <textarea class="form-control" name="note[]">'.$qa_row->note.'</textarea>
                                                                     </div>
                                                                 </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                    </div>
+                                                                </td>
                                                             </tr>';
                                                     }
                                                 }
@@ -1461,6 +1581,11 @@
                                                             <td>
                                                                 <div class="">
                                                                     <textarea class="form-control" name="note[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
                                                                 </div>
                                                             </td>
                                                         </tr>';
@@ -1532,6 +1657,11 @@
                                                                         <textarea class="form-control" name="note[]">'.$qa_row->note.'</textarea>
                                                                     </div>
                                                                 </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                    </div>
+                                                                </td>
                                                             </tr>';
                                                     }
                                                 }
@@ -1566,6 +1696,11 @@
                                                             <td>
                                                                 <div class="">
                                                                     <textarea class="form-control" name="note[]"></textarea>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
                                                                 </div>
                                                             </td>
                                                         </tr>';
@@ -1657,6 +1792,7 @@
                         htmlRow += '<textarea class="form-control" name="note[]"></textarea>';
                     htmlRow += '</div>';
                 htmlRow += '</td>';
+                htmlRow += '<td><div class=""><a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a></div></td>';
             htmlRow += '</tr>';
             
             $(this).parents(".panel-body").find("tbody").append( htmlRow );
