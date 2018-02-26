@@ -1025,6 +1025,49 @@
             $(this).parent('div').empty();
             return false;
         });
+        
+        
+        $(".add-new-fields-row").click(function( event ) {
+            event.preventDefault();
+            
+            var category = $(this).data("category");
+            
+            var htmlRow = '<tr>';
+                htmlRow += '<td>';
+                    htmlRow += '<div class="">';
+                        htmlRow += '<input name="category[]" value="' + category + '" type="hidden" />';
+                        htmlRow += '<textarea class="form-control" name="standard[]"></textarea>';
+                    htmlRow += '</div>';
+                htmlRow += '</td>';
+                htmlRow += '<td>';
+                    htmlRow += '<div class="">';
+                        htmlRow += '<textarea class="form-control" name="performance_classificatoon[]"></textarea>';
+                    htmlRow += '</div>';
+                htmlRow += '</td>';
+                htmlRow += '<td>';
+                    htmlRow += '<div class="">';
+                        htmlRow += '<textarea class="form-control" name="meet[]"></textarea>';
+                    htmlRow += '</div>';
+                htmlRow += '</td>';
+                htmlRow += '<td>';
+                    htmlRow += '<div class="">';
+                        htmlRow += '<textarea class="form-control" name="below[]"></textarea>';
+                    htmlRow += '</div>';
+                htmlRow += '</td>';
+                htmlRow += '<td>';
+                    htmlRow += '<div class="">';
+                        htmlRow += '<textarea class="form-control" name="na[]"></textarea>';
+                    htmlRow += '</div>';
+                htmlRow += '</td>';
+                htmlRow += '<td>';
+                    htmlRow += '<div class="">';
+                        htmlRow += '<textarea class="form-control" name="note[]"></textarea>';
+                    htmlRow += '</div>';
+                htmlRow += '</td>';
+            htmlRow += '</tr>';
+            
+            $(this).parents(".panel-body").find("tbody").append( htmlRow );
+        });
     });
 </script>
 @include('layouts/crm_layout/ai_vc')
