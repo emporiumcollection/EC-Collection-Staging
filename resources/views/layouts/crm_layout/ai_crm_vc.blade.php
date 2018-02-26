@@ -1193,6 +1193,10 @@ $fieldArray['file'] = 'File';
                     var options = jQuery.parseJSON(data.data.element_options);
 
                     if(element_type == 'crm-fields') {
+                        
+                        $("#edit-custom-field-pop-up .customfield_id").val(row.crm_element_id);
+                        $("#edit-custom-field-pop-up .group_id").val(row.group_id);
+                        
                         vc_edit_custom_field(This);
                     }
                     else if(element_type == 'separator') {
