@@ -116,7 +116,7 @@
                                     <div class="table table-responsive">
                                         <table class="table table-striped">
                                             <thead>
-                                                <tr>
+                                                <tr class="text-center">
                                                     <th>STANDARD</th>
                                                     <th>PERFORMANCE CLASSIFICATION</th>
                                                     <th>MEET</th>
@@ -128,97 +128,100 @@
                                             <tbody>
                                                 <tr>
                                                     <td>
-                                                        <div class="form-group">
-                                                            <textarea class="form-control"></textarea>
+                                                        <div class="">
+                                                            <input name="category[]" type="hidden" />
+                                                            <textarea class="form-control" name="standard[]"></textarea>
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div class="form-group">
-                                                            <textarea class="form-control"></textarea>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="performance_classificatoon[]"></textarea>
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div class="form-group">
-                                                            <textarea class="form-control"></textarea>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="meet[]"></textarea>
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div class="form-group">
-                                                            <textarea class="form-control"></textarea>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="below[]"></textarea>
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div class="form-group">
-                                                            <textarea class="form-control"></textarea>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="na[]"></textarea>
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div class="form-group">
-                                                            <textarea class="form-control"></textarea>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="form-group">
-                                                            <textarea class="form-control"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group">
-                                                            <textarea class="form-control"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group">
-                                                            <textarea class="form-control"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group">
-                                                            <textarea class="form-control"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group">
-                                                            <textarea class="form-control"></textarea>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group">
-                                                            <textarea class="form-control"></textarea>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="note[]"></textarea>
                                                         </div>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <div class="form-group">
-                                                            <textarea class="form-control"></textarea>
+                                                        <div class="">
+                                                            <input name="category[]" type="hidden" />
+                                                            <textarea class="form-control" name="standard[]"></textarea>
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div class="form-group">
-                                                            <textarea class="form-control"></textarea>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="performance_classificatoon[]"></textarea>
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div class="form-group">
-                                                            <textarea class="form-control"></textarea>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="meet[]"></textarea>
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div class="form-group">
-                                                            <textarea class="form-control"></textarea>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="below[]"></textarea>
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div class="form-group">
-                                                            <textarea class="form-control"></textarea>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="na[]"></textarea>
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div class="form-group">
-                                                            <textarea class="form-control"></textarea>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="note[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="">
+                                                            <input name="category[]" type="hidden" />
+                                                            <textarea class="form-control" name="standard[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="performance_classificatoon[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="meet[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="below[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="na[]"></textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <textarea class="form-control" name="note[]"></textarea>
                                                         </div>
                                                     </td>
                                                 </tr>
