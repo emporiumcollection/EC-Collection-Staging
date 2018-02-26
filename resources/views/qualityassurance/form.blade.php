@@ -108,10 +108,178 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#qa-accordion" href="#qa-collapse2">Other Fields</a>
+                                    <a data-toggle="collapse" data-parent="#qa-accordion" href="#qa-collapse2">Bedroom</a>
                                 </h4>
                             </div>
                             <div id="qa-collapse2" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#qa-accordion" href="#qa-collapse3">Bathroom</a>
+                                </h4>
+                            </div>
+                            <div id="qa-collapse3" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#qa-accordion" href="#qa-collapse4">Exterior/Grounds</a>
+                                </h4>
+                            </div>
+                            <div id="qa-collapse4" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#qa-accordion" href="#qa-collapse5">Lobby</a>
+                                </h4>
+                            </div>
+                            <div id="qa-collapse5" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#qa-accordion" href="#qa-collapse6">Restaurants/Bars</a>
+                                </h4>
+                            </div>
+                            <div id="qa-collapse6" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#qa-accordion" href="#qa-collapse7">Guest Room Corridors</a>
+                                </h4>
+                            </div>
+                            <div id="qa-collapse7" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#qa-accordion" href="#qa-collapse8">Restrooms</a>
+                                </h4>
+                            </div>
+                            <div id="qa-collapse8" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#qa-accordion" href="#qa-collapse9">Elevators</a>
+                                </h4>
+                            </div>
+                            <div id="qa-collapse9" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#qa-accordion" href="#qa-collapse10">HE Employee - Behavioural Standards</a>
+                                </h4>
+                            </div>
+                            <div id="qa-collapse10" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#qa-accordion" href="#qa-collapse11">Fitness Center</a>
+                                </h4>
+                            </div>
+                            <div id="qa-collapse11" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#qa-accordion" href="#qa-collapse12">Swimming Pool/Beach</a>
+                                </h4>
+                            </div>
+                            <div id="qa-collapse12" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#qa-accordion" href="#qa-collapse13">Tennis/Squash Courts</a>
+                                </h4>
+                            </div>
+                            <div id="qa-collapse13" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#qa-accordion" href="#qa-collapse14">Steam Room/Sauna/Jacuzzi</a>
+                                </h4>
+                            </div>
+                            <div id="qa-collapse14" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#qa-accordion" href="#qa-collapse15">Changing Rooms</a>
+                                </h4>
+                            </div>
+                            <div id="qa-collapse15" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#qa-accordion" href="#qa-collapse16">Other Fields</a>
+                                </h4>
+                            </div>
+                            <div id="qa-collapse16" class="panel-collapse collapse">
                                 <div class="panel-body">
                                     <!--VC Start-->
                                     @include('layouts/crm_layout/ai_vc_fields')
