@@ -442,6 +442,7 @@ class CrmlayoutController extends Controller {
                         
             $row_id = $request->input('row_id');
             $group_id = $request->input('group_id');
+            $crm_element_id = $request->input('crm_element_id');
             $group = ModelsAiCrmGroups::select('*')->where('crm_group_id', '=', $group_id)->first();
                         
             $options = array();
@@ -477,13 +478,20 @@ class CrmlayoutController extends Controller {
             $field->option_mcf = $params;
             $field->save();
             
-            $crm_element = new ModelsAiCrmElements;
-            $crm_element->row_id = $row_id;
-            $crm_element->group_id = $group_id;
-            $crm_element->customfield_id = $field->crm_customfield_id;
-            $crm_element->type = 'crm-fields';
-            $crm_element->element_options = json_encode(array());
-            $crm_element->save();
+            if($crm_element_id != '') {
+                $crm_element = ModelsAiCrmElements::find($crm_element_id);
+                $crm_element->customfield_id = $field->crm_customfield_id;
+                $crm_element->save();
+            }
+            else {
+                $crm_element = new ModelsAiCrmElements;
+                $crm_element->row_id = $row_id;
+                $crm_element->group_id = $group_id;
+                $crm_element->customfield_id = $field->crm_customfield_id;
+                $crm_element->type = 'crm-fields';
+                $crm_element->element_options = json_encode(array());
+                $crm_element->save();
+            }
             
         }
         return redirect('crmlayouts/create_template/'.$request->input('template_id'));

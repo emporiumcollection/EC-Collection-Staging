@@ -792,6 +792,7 @@ $fieldArray['file'] = 'File';
                 <input type="hidden" name="template_id" value="<?php echo $template->template_id; ?>" />
                 <input class="row_id" type="hidden" name="row_id" value="0" />
                 <input class="group_id" type="hidden" name="group_id" value="0" />
+                <input class="crm_element_id" type="hidden" name="crm_element_id" value="0" />
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">Add New Custom Field</h4>
@@ -1195,6 +1196,7 @@ $fieldArray['file'] = 'File';
                     if(element_type == 'crm-fields') {
                         
                         if(row.customfield_id == 0) {
+                            $("#add-new-custom-field-pop-up .crm_element_id").val(row.crm_element_id);
                             $("#add-new-custom-field-pop-up .row_id").val(row.row_id);
                             $("#add-new-custom-field-pop-up .group_id").val(row.group_id);
                             $("#add-new-custom-field-pop-up .template_id").val(template_id);
