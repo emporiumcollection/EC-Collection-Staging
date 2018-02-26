@@ -123,6 +123,7 @@
                                                     <th>BELOW</th>
                                                     <th>N/A</th>
                                                     <th>NOTE</th>
+                                                    <th></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -159,6 +160,11 @@
                                                                 <td>
                                                                     <div class="">
                                                                         <textarea class="form-control" name="note[]">'.$bedroom->note.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
                                                                     </div>
                                                                 </td>
                                                             </tr>';
@@ -227,6 +233,7 @@
                                                     <th>BELOW</th>
                                                     <th>N/A</th>
                                                     <th>NOTE</th>
+                                                    <th></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -331,6 +338,7 @@
                                                     <th>BELOW</th>
                                                     <th>N/A</th>
                                                     <th>NOTE</th>
+                                                    <th></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -435,6 +443,7 @@
                                                     <th>BELOW</th>
                                                     <th>N/A</th>
                                                     <th>NOTE</th>
+                                                    <th></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -539,6 +548,7 @@
                                                     <th>BELOW</th>
                                                     <th>N/A</th>
                                                     <th>NOTE</th>
+                                                    <th></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -643,6 +653,7 @@
                                                     <th>BELOW</th>
                                                     <th>N/A</th>
                                                     <th>NOTE</th>
+                                                    <th></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -747,6 +758,7 @@
                                                     <th>BELOW</th>
                                                     <th>N/A</th>
                                                     <th>NOTE</th>
+                                                    <th></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -851,6 +863,7 @@
                                                     <th>BELOW</th>
                                                     <th>N/A</th>
                                                     <th>NOTE</th>
+                                                    <th></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -955,6 +968,7 @@
                                                     <th>BELOW</th>
                                                     <th>N/A</th>
                                                     <th>NOTE</th>
+                                                    <th></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -1059,6 +1073,7 @@
                                                     <th>BELOW</th>
                                                     <th>N/A</th>
                                                     <th>NOTE</th>
+                                                    <th></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -1163,6 +1178,7 @@
                                                     <th>BELOW</th>
                                                     <th>N/A</th>
                                                     <th>NOTE</th>
+                                                    <th></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -1267,6 +1283,7 @@
                                                     <th>BELOW</th>
                                                     <th>N/A</th>
                                                     <th>NOTE</th>
+                                                    <th></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -1371,6 +1388,7 @@
                                                     <th>BELOW</th>
                                                     <th>N/A</th>
                                                     <th>NOTE</th>
+                                                    <th></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -1475,6 +1493,7 @@
                                                     <th>BELOW</th>
                                                     <th>N/A</th>
                                                     <th>NOTE</th>
+                                                    <th></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
