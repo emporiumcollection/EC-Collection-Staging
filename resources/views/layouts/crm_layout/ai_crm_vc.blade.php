@@ -1110,6 +1110,71 @@ $fieldArray['file'] = 'File';
 <script src="{{ asset('sximo/crm_layout/tinymce/tinymce.min.js')}}" type="text/javascript"></script>
 <script>
     
+    function vc_edit_custom_field(This) {
+        $("#edit-custom-field-pop-up").modal();
+        var id = $(This).data("id");
+        $.ajax({
+            url: "{{URL::to('crmlayouts/ajax_get_custom_field/')}}/" + id,
+            type: "POST",
+            data: {_token: '{{ csrf_token() }}'},
+            dataType: 'JSON',
+            success: function (data, textStatus, jqXHR) {
+                if (data.error == '0') {
+
+                    var option_mcf = jQuery.parseJSON(data.data.option_mcf);
+
+                    $("#edit-custom-field-pop-up .group_id").val(data.data.idmfg_mcf);
+                    $("#edit-custom-field-pop-up .customfield_id").val(data.data.crm_customfield_id);
+                    $("#edit-custom-field-pop-up .row-name-select").val(data.data.group.row_id);
+                    $("#edit-custom-field-pop-up .group-name-select").val(data.data.group.slug_mfg);
+                    $("#edit-custom-field-pop-up .custom-field-types").val(option_mcf.type).click();
+                    $("#edit-custom-field-pop-up .title_mcf").val(data.data.title_mcf).click();
+
+                    if (option_mcf.status == 'yes') {
+                        $("label[for=_status_active]").click();
+                    } else {
+                        $("label[for=_status_inactive]").click();
+                    }
+
+                    if (option_mcf.list_view == 'yes') {
+                        $("label[for=_list_view_active]").click();
+                    } else {
+                        $("label[for=_list_view_inactive]").click();
+                    }
+
+                    if (option_mcf.show_in_form == 'yes') {
+                        $("label[for=_showinform_active]").click();
+                    } else {
+                        $("label[for=_showinform_inactive]").click();
+                    }
+
+                    if (option_mcf.searchable == 'yes') {
+                        $("label[for=_searchable_active]").click();
+                    } else {
+                        $("label[for=_searchable_inactive]").click();
+                    }
+
+                    if (option_mcf.advance_searchable == 'yes') {
+                        $("label[for=_advance_searchable_active]").click();
+                    } else {
+                        $("label[for=_advance_searchable_inactive]").click();
+                    }
+
+                    if (option_mcf.filter_searchable == 'yes') {
+                        $("label[for=_filter_searchable_active]").click();
+                    } else {
+                        $("label[for=_filter_searchable_inactive]").click();
+                    }
+
+                    if (option_mcf.required_field == 'yes') {
+                        $("label[for=_required_field_active]").click();
+                    } else {
+                        $("label[for=_required_field_inactive]").click();
+                    }
+                }
+            }
+        });
+    }
     function vc_edit_element(This) {
         
         var element_type = $(This).data("element-type");
@@ -1127,7 +1192,10 @@ $fieldArray['file'] = 'File';
                     var row = data.data;
                     var options = jQuery.parseJSON(data.data.element_options);
 
-                    if(element_type == 'separator') {
+                    if(element_type == 'crm-fields') {
+                        vc_edit_custom_field(This);
+                    }
+                    else if(element_type == 'separator') {
                         $("#edit-separator-pop-up .id").val(row.crm_element_id);
                         $("#edit-separator-pop-up .row_id").val(row.row_id);
                         $("#edit-separator-pop-up .group_id").val(row.group_id);
