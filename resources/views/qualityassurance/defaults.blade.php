@@ -1,3 +1,4 @@
+Default file content
 <?php
 $_bedrooms = array();
 $_bedrooms[] = array('standard' => 'Was the décor luxurious/current in appearance and well coordinated throughout the room?',
