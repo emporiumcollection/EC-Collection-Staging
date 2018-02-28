@@ -1,5 +1,5 @@
-Default file content
 <?php
+global $_bedrooms;
 $_bedrooms = array();
 $_bedrooms[] = array('standard' => 'Was the décor luxurious/current in appearance and well coordinated throughout the room?',
                     'performance_classificatoon' => 'PRODUCT',

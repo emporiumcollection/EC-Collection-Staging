@@ -2,6 +2,9 @@
 
 @section('content')
 @include('qualityassurance/defaults')
+<?php
+global $_bedrooms;
+?>
 <div class="page-content row">
     <!-- Page header -->
     <div class="page-header">
