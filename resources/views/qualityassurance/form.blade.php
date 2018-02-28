@@ -128,9 +128,6 @@
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                                                                echo '<pre>';
-                                                                                                print_r($_bedrooms);
-                                                                                                echo '</pre>';
                                                 if(!empty($bedrooms)) {
                                                     foreach ($bedrooms as $bedroom) {
                                                         echo '<tr>
