@@ -191,7 +191,7 @@ class QualityassuranceController extends Controller {
                                     'meet' => $meet[$key],
                                     'below' => $below[$key],
                                     'na' => $na[$key],
-                                    'note' => $note[$key]
+                                    'note' => isset($note[$key])? $note[$key] : ''
                                     );
                     \DB::table('tb_quality_assurance_options')->insertGetId($params);
                 }
