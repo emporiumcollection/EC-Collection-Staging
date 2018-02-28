@@ -1,5 +1,5 @@
 <?php
-global $_bedrooms;
+global $_bedrooms, $_bathrooms, $_exterior_grounds, $_lobbys, $_restaurants_bars, $_guest_room_corridors, $_restrooms, $_elevators, $_he_employee_behavioural_standards, $_fitness_centers, $_swimming_pool_beachs, $_tennis_squash_courts, $_steam_room_sauna_jacuzzis, $_changing_rooms;
 $_bedrooms = array();
 
 $_bedrooms[] = array('standard' => 'Was the décor luxurious/current in appearance and well coordinated throughout the room?',
