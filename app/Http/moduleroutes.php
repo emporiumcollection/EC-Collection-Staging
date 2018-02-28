@@ -51,4 +51,7 @@
                     Route::controller('userorder', 'UserorderController');
                     Route::controller('pagesmanagement', 'PagesmanagementController');
                     Route::controller('qualityassurance', 'QualityassuranceController');
+                    Route::controller('restaurant', 'RestaurantController');
+                    Route::controller('spa', 'SpaController');
+                    Route::controller('bar', 'BarController');
                     ?>
