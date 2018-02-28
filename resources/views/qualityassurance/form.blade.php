@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+@include('qualityassurance/defaults')
 <div class="page-content row">
     <!-- Page header -->
     <div class="page-header">
@@ -164,7 +164,49 @@
                                                                 </td>
                                                                 <td>
                                                                     <div class="">
-                                                                        <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                        <a class="btn btn-primary btn-sm" onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>';
+                                                    }
+                                                }
+                                                elseif(!empty($_bedrooms)) {
+                                                    foreach ($_bedrooms as $bedroom) {
+                                                        echo '<tr>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <input name="category[]" value="bedroom" type="hidden" />
+                                                                        <textarea class="form-control" name="standard[]">'.$bedroom['standard'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="performance_classificatoon[]">'.$bedroom['performance_classificatoon'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="meet[]">'.$bedroom['meet'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="below[]">'.$bedroom['below'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="na[]">'.$bedroom['na'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="note[]">'.$bedroom['note'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <a class="btn btn-primary btn-sm" onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
                                                                     </div>
                                                                 </td>
                                                             </tr>';
@@ -205,7 +247,7 @@
                                                             </td>
                                                             <td>
                                                                 <div class="">
-                                                                    <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                    <a class="btn btn-primary btn-sm" onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
                                                                 </div>
                                                             </td>
                                                         </tr>';
@@ -279,7 +321,7 @@
                                                                 </td>
                                                                 <td>
                                                                     <div class="">
-                                                                        <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                        <a class="btn btn-primary btn-sm" onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
                                                                     </div>
                                                                 </td>
                                                             </tr>';
@@ -320,7 +362,7 @@
                                                             </td>
                                                             <td>
                                                                 <div class="">
-                                                                    <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                    <a class="btn btn-primary btn-sm" onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
                                                                 </div>
                                                             </td>
                                                         </tr>';
@@ -394,7 +436,7 @@
                                                                 </td>
                                                                 <td>
                                                                     <div class="">
-                                                                        <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                        <a class="btn btn-primary btn-sm" onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
                                                                     </div>
                                                                 </td>
                                                             </tr>';
@@ -435,7 +477,7 @@
                                                             </td>
                                                             <td>
                                                                 <div class="">
-                                                                    <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                    <a class="btn btn-primary btn-sm" onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
                                                                 </div>
                                                             </td>
                                                         </tr>';
@@ -509,7 +551,7 @@
                                                                 </td>
                                                                 <td>
                                                                     <div class="">
-                                                                        <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                        <a class="btn btn-primary btn-sm" onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
                                                                     </div>
                                                                 </td>
                                                             </tr>';
@@ -550,7 +592,7 @@
                                                             </td>
                                                             <td>
                                                                 <div class="">
-                                                                    <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                    <a class="btn btn-primary btn-sm" onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
                                                                 </div>
                                                             </td>
                                                         </tr>';
@@ -624,7 +666,7 @@
                                                                 </td>
                                                                 <td>
                                                                     <div class="">
-                                                                        <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                        <a class="btn btn-primary btn-sm" onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
                                                                     </div>
                                                                 </td>
                                                             </tr>';
@@ -665,7 +707,7 @@
                                                             </td>
                                                             <td>
                                                                 <div class="">
-                                                                    <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                    <a class="btn btn-primary btn-sm" onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
                                                                 </div>
                                                             </td>
                                                         </tr>';
@@ -739,7 +781,7 @@
                                                                 </td>
                                                                 <td>
                                                                     <div class="">
-                                                                        <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                        <a class="btn btn-primary btn-sm" onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
                                                                     </div>
                                                                 </td>
                                                             </tr>';
@@ -780,7 +822,7 @@
                                                             </td>
                                                             <td>
                                                                 <div class="">
-                                                                    <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                    <a class="btn btn-primary btn-sm" onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
                                                                 </div>
                                                             </td>
                                                         </tr>';
@@ -854,7 +896,7 @@
                                                                 </td>
                                                                 <td>
                                                                     <div class="">
-                                                                        <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                        <a class="btn btn-primary btn-sm" onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
                                                                     </div>
                                                                 </td>
                                                             </tr>';
@@ -895,7 +937,7 @@
                                                             </td>
                                                             <td>
                                                                 <div class="">
-                                                                    <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                    <a class="btn btn-primary btn-sm" onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
                                                                 </div>
                                                             </td>
                                                         </tr>';
@@ -969,7 +1011,7 @@
                                                                 </td>
                                                                 <td>
                                                                     <div class="">
-                                                                        <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                        <a class="btn btn-primary btn-sm" onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
                                                                     </div>
                                                                 </td>
                                                             </tr>';
@@ -1010,7 +1052,7 @@
                                                             </td>
                                                             <td>
                                                                 <div class="">
-                                                                    <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                    <a class="btn btn-primary btn-sm" onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
                                                                 </div>
                                                             </td>
                                                         </tr>';
@@ -1084,7 +1126,7 @@
                                                                 </td>
                                                                 <td>
                                                                     <div class="">
-                                                                        <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                        <a class="btn btn-primary btn-sm" onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
                                                                     </div>
                                                                 </td>
                                                             </tr>';
@@ -1125,7 +1167,7 @@
                                                             </td>
                                                             <td>
                                                                 <div class="">
-                                                                    <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                    <a class="btn btn-primary btn-sm" onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
                                                                 </div>
                                                             </td>
                                                         </tr>';
@@ -1199,7 +1241,7 @@
                                                                 </td>
                                                                 <td>
                                                                     <div class="">
-                                                                        <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                        <a class="btn btn-primary btn-sm" onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
                                                                     </div>
                                                                 </td>
                                                             </tr>';
@@ -1240,7 +1282,7 @@
                                                             </td>
                                                             <td>
                                                                 <div class="">
-                                                                    <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                    <a class="btn btn-primary btn-sm" onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
                                                                 </div>
                                                             </td>
                                                         </tr>';
@@ -1314,7 +1356,7 @@
                                                                 </td>
                                                                 <td>
                                                                     <div class="">
-                                                                        <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                        <a class="btn btn-primary btn-sm" onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
                                                                     </div>
                                                                 </td>
                                                             </tr>';
@@ -1355,7 +1397,7 @@
                                                             </td>
                                                             <td>
                                                                 <div class="">
-                                                                    <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                    <a class="btn btn-primary btn-sm" onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
                                                                 </div>
                                                             </td>
                                                         </tr>';
@@ -1429,7 +1471,7 @@
                                                                 </td>
                                                                 <td>
                                                                     <div class="">
-                                                                        <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                        <a class="btn btn-primary btn-sm" onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
                                                                     </div>
                                                                 </td>
                                                             </tr>';
@@ -1470,7 +1512,7 @@
                                                             </td>
                                                             <td>
                                                                 <div class="">
-                                                                    <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                    <a class="btn btn-primary btn-sm" onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
                                                                 </div>
                                                             </td>
                                                         </tr>';
@@ -1544,7 +1586,7 @@
                                                                 </td>
                                                                 <td>
                                                                     <div class="">
-                                                                        <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                        <a class="btn btn-primary btn-sm" onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
                                                                     </div>
                                                                 </td>
                                                             </tr>';
@@ -1585,7 +1627,7 @@
                                                             </td>
                                                             <td>
                                                                 <div class="">
-                                                                    <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                    <a class="btn btn-primary btn-sm" onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
                                                                 </div>
                                                             </td>
                                                         </tr>';
@@ -1659,7 +1701,7 @@
                                                                 </td>
                                                                 <td>
                                                                     <div class="">
-                                                                        <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                        <a class="btn btn-primary btn-sm" onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
                                                                     </div>
                                                                 </td>
                                                             </tr>';
@@ -1700,7 +1742,7 @@
                                                             </td>
                                                             <td>
                                                                 <div class="">
-                                                                    <a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                    <a class="btn btn-primary btn-sm" onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
                                                                 </div>
                                                             </td>
                                                         </tr>';
@@ -1792,7 +1834,7 @@
                         htmlRow += '<textarea class="form-control" name="note[]"></textarea>';
                     htmlRow += '</div>';
                 htmlRow += '</td>';
-                htmlRow += '<td><div class=""><a onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a></div></td>';
+                htmlRow += '<td><div class=""><a class="btn btn-primary btn-sm" onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a></div></td>';
             htmlRow += '</tr>';
             
             $(this).parents(".panel-body").find("tbody").append( htmlRow );
