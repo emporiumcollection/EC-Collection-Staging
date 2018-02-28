@@ -3,7 +3,7 @@
 @section('content')
 @include('qualityassurance/defaults')
 <?php
-global $_bedrooms;
+global $_bedrooms, $_bathrooms, $_exterior_grounds, $_lobbys, $_restaurants_bars, $_guest_room_corridors, $_restrooms, $_elevators, $_he_employee_behavioural_standards, $_fitness_centers, $_swimming_pool_beachs, $_tennis_squash_courts, $_steam_room_sauna_jacuzzis, $_changing_rooms;
 ?>
 <div class="page-content row">
     <!-- Page header -->
@@ -330,6 +330,48 @@ global $_bedrooms;
                                                             </tr>';
                                                     }
                                                 }
+                                                elseif(!empty($_bathrooms)) {
+                                                    foreach ($_bathrooms as $qa_row) {
+                                                        echo '<tr>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <input name="category[]" value="bathroom" type="hidden" />
+                                                                        <textarea class="form-control" name="standard[]">'.$qa_row['standard'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="performance_classificatoon[]">'.$qa_row['performance_classificatoon'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="meet[]">'.$qa_row['meet'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="below[]">'.$qa_row['below'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="na[]">'.$qa_row['na'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="note[]">'.$qa_row['note'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <a class="btn btn-primary btn-sm" onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>';
+                                                    }
+                                                }
                                                 else {
                                                     echo '<tr>
                                                             <td>
@@ -435,6 +477,48 @@ global $_bedrooms;
                                                                 <td>
                                                                     <div class="">
                                                                         <textarea class="form-control" name="note[]">'.$qa_row->note.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <a class="btn btn-primary btn-sm" onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>';
+                                                    }
+                                                }
+                                                elseif(!empty($_exterior_grounds)) {
+                                                    foreach ($_exterior_grounds as $qa_row) {
+                                                        echo '<tr>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <input name="category[]" value="exterior_grounds" type="hidden" />
+                                                                        <textarea class="form-control" name="standard[]">'.$qa_row['standard'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="performance_classificatoon[]">'.$qa_row['performance_classificatoon'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="meet[]">'.$qa_row['meet'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="below[]">'.$qa_row['below'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="na[]">'.$qa_row['na'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="note[]">'.$qa_row['note'].'</textarea>
                                                                     </div>
                                                                 </td>
                                                                 <td>
@@ -560,6 +644,48 @@ global $_bedrooms;
                                                             </tr>';
                                                     }
                                                 }
+                                                elseif(!empty($_lobbys)) {
+                                                    foreach ($_lobbys as $qa_row) {
+                                                        echo '<tr>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <input name="category[]" value="lobby" type="hidden" />
+                                                                        <textarea class="form-control" name="standard[]">'.$qa_row['standard'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="performance_classificatoon[]">'.$qa_row['performance_classificatoon'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="meet[]">'.$qa_row['meet'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="below[]">'.$qa_row['below'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="na[]">'.$qa_row['na'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="note[]">'.$qa_row['note'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <a class="btn btn-primary btn-sm" onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>';
+                                                    }
+                                                }
                                                 else {
                                                     echo '<tr>
                                                             <td>
@@ -665,6 +791,48 @@ global $_bedrooms;
                                                                 <td>
                                                                     <div class="">
                                                                         <textarea class="form-control" name="note[]">'.$qa_row->note.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <a class="btn btn-primary btn-sm" onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>';
+                                                    }
+                                                }
+                                                elseif(!empty($_restaurants_bars)) {
+                                                    foreach ($_restaurants_bars as $qa_row) {
+                                                        echo '<tr>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <input name="category[]" value="restaurants_bars" type="hidden" />
+                                                                        <textarea class="form-control" name="standard[]">'.$qa_row['standard'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="performance_classificatoon[]">'.$qa_row['performance_classificatoon'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="meet[]">'.$qa_row['meet'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="below[]">'.$qa_row['below'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="na[]">'.$qa_row['na'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="note[]">'.$qa_row['note'].'</textarea>
                                                                     </div>
                                                                 </td>
                                                                 <td>
@@ -790,6 +958,48 @@ global $_bedrooms;
                                                             </tr>';
                                                     }
                                                 }
+                                                elseif(!empty($_guest_room_corridors)) {
+                                                    foreach ($_guest_room_corridors as $qa_row) {
+                                                        echo '<tr>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <input name="category[]" value="guest_room_corridors" type="hidden" />
+                                                                        <textarea class="form-control" name="standard[]">'.$qa_row['standard'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="performance_classificatoon[]">'.$qa_row['performance_classificatoon'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="meet[]">'.$qa_row['meet'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="below[]">'.$qa_row['below'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="na[]">'.$qa_row['na'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="note[]">'.$qa_row['note'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <a class="btn btn-primary btn-sm" onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>';
+                                                    }
+                                                }
                                                 else {
                                                     echo '<tr>
                                                             <td>
@@ -895,6 +1105,48 @@ global $_bedrooms;
                                                                 <td>
                                                                     <div class="">
                                                                         <textarea class="form-control" name="note[]">'.$qa_row->note.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <a class="btn btn-primary btn-sm" onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>';
+                                                    }
+                                                }
+                                                elseif(!empty($_restrooms)) {
+                                                    foreach ($_restrooms as $qa_row) {
+                                                        echo '<tr>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <input name="category[]" value="restrooms" type="hidden" />
+                                                                        <textarea class="form-control" name="standard[]">'.$qa_row['standard'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="performance_classificatoon[]">'.$qa_row['performance_classificatoon'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="meet[]">'.$qa_row['meet'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="below[]">'.$qa_row['below'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="na[]">'.$qa_row['na'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="note[]">'.$qa_row['note'].'</textarea>
                                                                     </div>
                                                                 </td>
                                                                 <td>
@@ -1020,6 +1272,48 @@ global $_bedrooms;
                                                             </tr>';
                                                     }
                                                 }
+                                                elseif(!empty($_elevators)) {
+                                                    foreach ($_elevators as $qa_row) {
+                                                        echo '<tr>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <input name="category[]" value="elevators" type="hidden" />
+                                                                        <textarea class="form-control" name="standard[]">'.$qa_row['standard'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="performance_classificatoon[]">'.$qa_row['performance_classificatoon'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="meet[]">'.$qa_row['meet'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="below[]">'.$qa_row['below'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="na[]">'.$qa_row['na'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="note[]">'.$qa_row['note'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <a class="btn btn-primary btn-sm" onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>';
+                                                    }
+                                                }
                                                 else {
                                                     echo '<tr>
                                                             <td>
@@ -1125,6 +1419,48 @@ global $_bedrooms;
                                                                 <td>
                                                                     <div class="">
                                                                         <textarea class="form-control" name="note[]">'.$qa_row->note.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <a class="btn btn-primary btn-sm" onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>';
+                                                    }
+                                                }
+                                                elseif(!empty($_he_employee_behavioural_standards)) {
+                                                    foreach ($_he_employee_behavioural_standards as $qa_row) {
+                                                        echo '<tr>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <input name="category[]" value="he_employee_behavioural_standards" type="hidden" />
+                                                                        <textarea class="form-control" name="standard[]">'.$qa_row['standard'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="performance_classificatoon[]">'.$qa_row['performance_classificatoon'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="meet[]">'.$qa_row['meet'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="below[]">'.$qa_row['below'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="na[]">'.$qa_row['na'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="note[]">'.$qa_row['note'].'</textarea>
                                                                     </div>
                                                                 </td>
                                                                 <td>
@@ -1250,6 +1586,48 @@ global $_bedrooms;
                                                             </tr>';
                                                     }
                                                 }
+                                                elseif(!empty($_fitness_centers)) {
+                                                    foreach ($_fitness_centers as $qa_row) {
+                                                        echo '<tr>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <input name="category[]" value="fitness_center" type="hidden" />
+                                                                        <textarea class="form-control" name="standard[]">'.$qa_row['standard'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="performance_classificatoon[]">'.$qa_row['performance_classificatoon'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="meet[]">'.$qa_row['meet'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="below[]">'.$qa_row['below'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="na[]">'.$qa_row['na'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="note[]">'.$qa_row['note'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <a class="btn btn-primary btn-sm" onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>';
+                                                    }
+                                                }
                                                 else {
                                                     echo '<tr>
                                                             <td>
@@ -1355,6 +1733,48 @@ global $_bedrooms;
                                                                 <td>
                                                                     <div class="">
                                                                         <textarea class="form-control" name="note[]">'.$qa_row->note.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <a class="btn btn-primary btn-sm" onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>';
+                                                    }
+                                                }
+                                                elseif(!empty($_swimming_pool_beachs)) {
+                                                    foreach ($_swimming_pool_beachs as $qa_row) {
+                                                        echo '<tr>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <input name="category[]" value="swimming_pool_beach" type="hidden" />
+                                                                        <textarea class="form-control" name="standard[]">'.$qa_row['standard'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="performance_classificatoon[]">'.$qa_row['performance_classificatoon'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="meet[]">'.$qa_row['meet'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="below[]">'.$qa_row['below'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="na[]">'.$qa_row['na'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="note[]">'.$qa_row['note'].'</textarea>
                                                                     </div>
                                                                 </td>
                                                                 <td>
@@ -1480,6 +1900,48 @@ global $_bedrooms;
                                                             </tr>';
                                                     }
                                                 }
+                                                elseif(!empty($_tennis_squash_courts)) {
+                                                    foreach ($_tennis_squash_courts as $qa_row) {
+                                                        echo '<tr>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <input name="category[]" value="swimming_pool_beach" type="hidden" />
+                                                                        <textarea class="form-control" name="standard[]">'.$qa_row['standard'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="performance_classificatoon[]">'.$qa_row['performance_classificatoon'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="meet[]">'.$qa_row['meet'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="below[]">'.$qa_row['below'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="na[]">'.$qa_row['na'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="note[]">'.$qa_row['note'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <a class="btn btn-primary btn-sm" onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>';
+                                                    }
+                                                }
                                                 else {
                                                     echo '<tr>
                                                             <td>
@@ -1595,6 +2057,48 @@ global $_bedrooms;
                                                             </tr>';
                                                     }
                                                 }
+                                                elseif(!empty($_steam_room_sauna_jacuzzis)) {
+                                                    foreach ($_steam_room_sauna_jacuzzis as $qa_row) {
+                                                        echo '<tr>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <input name="category[]" value="swimming_pool_beach" type="hidden" />
+                                                                        <textarea class="form-control" name="standard[]">'.$qa_row['standard'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="performance_classificatoon[]">'.$qa_row['performance_classificatoon'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="meet[]">'.$qa_row['meet'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="below[]">'.$qa_row['below'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="na[]">'.$qa_row['na'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="note[]">'.$qa_row['note'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <a class="btn btn-primary btn-sm" onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>';
+                                                    }
+                                                }
                                                 else {
                                                     echo '<tr>
                                                             <td>
@@ -1700,6 +2204,48 @@ global $_bedrooms;
                                                                 <td>
                                                                     <div class="">
                                                                         <textarea class="form-control" name="note[]">'.$qa_row->note.'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <a class="btn btn-primary btn-sm" onclick="$(this).parents(\'tr\').remove();" href="javascript:void(0);">Remove</a>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>';
+                                                    }
+                                                }
+                                                elseif(!empty($_changing_rooms)) {
+                                                    foreach ($_changing_rooms as $qa_row) {
+                                                        echo '<tr>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <input name="category[]" value="swimming_pool_beach" type="hidden" />
+                                                                        <textarea class="form-control" name="standard[]">'.$qa_row['standard'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="performance_classificatoon[]">'.$qa_row['performance_classificatoon'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="meet[]">'.$qa_row['meet'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="below[]">'.$qa_row['below'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="na[]">'.$qa_row['na'].'</textarea>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="">
+                                                                        <textarea class="form-control" name="note[]">'.$qa_row['note'].'</textarea>
                                                                     </div>
                                                                 </td>
                                                                 <td>
