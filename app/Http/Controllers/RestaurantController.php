@@ -112,6 +112,17 @@ class RestaurantController extends Controller {
 		$this->data['fields'] 		=  \SiteHelpers::fieldLang($this->info['config']['forms']);
 		
 		$this->data['id'] = $id;
+		$fetch_cat = \DB::table('tb_categories')->get();
+        $parent_cat = array();
+        if (!empty($fetch_cat)) {
+            foreach ($fetch_cat as $cat) {
+                $parent_cat[$cat->id] = $cat;
+            }
+        }
+
+        $this->data['categories'] = $parent_cat;
+
+        $this->data['designers'] = \DB::table('tb_designers')->where('designer_status', '1')->get();
 		return view('restaurant.form',$this->data);
 	}	
 
@@ -140,9 +151,27 @@ class RestaurantController extends Controller {
 	{
 		
 		$rules = $this->validateForm();
+		$rules['title'] = 'required|unique:tb_restaurants,title,'. $request->input('id');
+		if($request->input('id')==''){
+        	$data['alias'] = slug($request->input('title'));
+        	$rules['title'] = 'required|unique';
+    	}
 		$validator = Validator::make($request->all(), $rules);	
 		if ($validator->passes()) {
 			$data = $this->validatePost('tb_restaurant');
+
+			if (!empty($request->input('designer'))) {
+                $data['designer'] = implode(',', $request->input('designer'));
+            } else {
+                $data['designer'] = '';
+            }
+            if (!empty($request->input('category_id'))) {
+                $data['category_id'] = implode(',', $request->input('category_id'));
+            } else {
+                $data['category_id'] = '';
+            }
+            $data['menu'] = $request->input('menu');
+            
 				
 			$id = $this->model->insertRow($data , $request->input('id'));
 			
