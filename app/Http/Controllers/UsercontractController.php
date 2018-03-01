@@ -80,7 +80,7 @@ class UsercontractController extends Controller {
         // Master detail link if any 
         $this->data['subgrid'] = (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array());
         // Render into template
-        return view('contract.index', $this->data);
+        return view('contract.usercontract', $this->data);
     }
 
 }
