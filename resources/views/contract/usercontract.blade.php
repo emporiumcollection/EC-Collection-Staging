@@ -20,36 +20,28 @@
     <div class="page-content-wrapper m-t">	 	
 
         <div class="sbox animated fadeInRight">
-            <div class="sbox-title"> <h5> <i class="fa fa-table"></i> </h5>
-                <div class="sbox-tools" >
-                    <a href="{{ url($pageModule) }}" class="btn btn-xs btn-white tips" title="Clear Search" ><i class="fa fa-trash-o"></i> Clear Search </a>
-                    @if(Session::get('gid') ==1)
-                    <a href="{{ URL::to('sximo/module/config/'.$pageModule) }}" class="btn btn-xs btn-white tips" title=" {{ Lang::get('core.btn_config') }}" ><i class="fa fa-cog"></i></a>
-                    @endif 
-                </div>
-            </div>
             <div class="sbox-content">
-                <div class="table-responsive" style="min-height:300px;">
-                    <table class="table table-striped ">
-                        <thead>
-                            <tr>
-                                <th class="number"> No </th>
-                                <th>Title</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>        						
-                            @foreach ($rowData as $row)
-                            <tr>
-                                <td width="30"> {{ ++$i }} </td>
-                                <td>{{$row->title}}</td>			 
-                            </tr>
-
-                            @endforeach
-
-                        </tbody>
-
-                    </table>
+                <div class="panel-group" id="uc-accordion">
+                    <?php
+                    if(!empty($rowData)) {
+                        $sn = 1;
+                        foreach ($rowData as $row) {
+                            ?>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#uc-accordion" href="#uc-collapse-<?php echo $sn; ?>"><?php echo $row->title; ?></a>
+                                    </h4>
+                                </div>
+                                <div id="uc-collapse-<?php echo $sn; ?>" class="panel-collapse collapse in">
+                                    <div class="panel-body"><?php echo $row->description; ?></div>
+                                </div>
+                            </div>
+                            <?php
+                            $sn++;
+                        }
+                    }
+                    ?>
                 </div>
             </div>
         </div>	
