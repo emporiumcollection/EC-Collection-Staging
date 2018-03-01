@@ -152,15 +152,18 @@ class BarController extends Controller {
 	{
 		
 		$rules = $this->validateForm();
-		$rules['title'] = 'required|unique:tb_bar,title,'. $request->input('id');
+		$rules['title'] = 'required|unique:tb_bars,title,'. $request->input('id');
 		if($request->input('id')==''){
         	$data['alias'] = str_slug($request->input('title'));
-        	$rules['title'] = 'required|unique';
+        	$rules['title'] = 'required|unique:tb_bars';
     	}
 		$validator = Validator::make($request->all(), $rules);	
 		if ($validator->passes()) {
 			$data = $this->validatePost('tb_bar');
-
+			
+    		if($request->input('id')==''){
+    			$data['alias'] = str_slug($request->input('title'));
+    		}
 			if (!empty($request->input('designer'))) {
                 $data['designer'] = implode(',', $request->input('designer'));
             } else {
@@ -171,6 +174,7 @@ class BarController extends Controller {
             } else {
                 $data['category_id'] = '';
             }
+            $data['sub_title'] = $request->input('sub_title');
             $data['menu'] = $request->input('menu');
 				
 			$id = $this->model->insertRow($data , $request->input('id'));
@@ -224,11 +228,11 @@ class BarController extends Controller {
 	}	
 
 	public function getImages( $id = null)
-	{	$this->data['restaurant'] =  Restaurant::find($id);
-		$this->data['restaurant']['images'] =  \DB::table('tb_images_res_spa_bar')->where('type', 'bar')->where('parent_id', $id)->get();
+	{	$this->data['bar'] =  Bar::find($id);
+		$this->data['bar']['images'] =  \DB::table('tb_images_res_spa_bar')->where('type', 'bar')->where('parent_id', $id)->get();
 		$this->data['id'] = $id;	
 		$this->data['access']		= $this->access;
-		return view('restaurant.gallery_images',$this->data);	
+		return view('bar.gallery_images',$this->data);	
 	}	
 
 	public function postUploadimages( Request $request)

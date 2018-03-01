@@ -159,7 +159,10 @@ class RestaurantController extends Controller {
 		$validator = Validator::make($request->all(), $rules);	
 		if ($validator->passes()) {
 			$data = $this->validatePost('tb_restaurant');
-
+			
+    		if($request->input('id')==''){
+    			$data['alias'] = str_slug($request->input('title'));
+    		}
 			if (!empty($request->input('designer'))) {
                 $data['designer'] = implode(',', $request->input('designer'));
             } else {

@@ -8,7 +8,7 @@
 		</div>
 		<ul class="breadcrumb">
 			<li><a href="{{ URL::to('dashboard') }}">{{ Lang::get('core.home') }}</a></li>
-			<li><a href="{{ URL::to('restaurant?return='.$return) }}">{{ $pageTitle }}</a></li>
+			<li><a href="{{ URL::to('bar?return='.$return) }}">{{ $pageTitle }}</a></li>
 			<li class="active">{{ Lang::get('core.addedit') }} </li>
 		</ul>
 		
@@ -21,7 +21,7 @@
 			@endforeach
 		</ul>
 		<div class="sbox animated fadeInRight">
-			<div class="sbox-title"> <h4> <i class="fa fa-table"></i> {{($id)?'Edit':'Add'}} Bar<a href="{{url('restaurant')}}" class="tips btn btn-xs btn-default pull-right" title="" ><i class="fa fa-arrow-circle-left"></i>&nbsp;Zurück</a></h4></div>
+			<div class="sbox-title"> <h4> <i class="fa fa-table"></i> {{($id)?'Edit':'Add'}} Bar<a href="{{url('bar')}}" class="tips btn btn-xs btn-default pull-right" title="" ><i class="fa fa-arrow-circle-left"></i>&nbsp;Zurück</a></h4></div>
 			<div class="sbox-content">
 				{!! Form::open(array('url'=>'bar/save?return='.$return, 'class'=>'form-horizontal','files' => true , 'parsley-validate'=>'','novalidate'=>' ')) !!}
 				{!! Form::hidden('id', $row['id']) !!} 
@@ -210,7 +210,7 @@
 				<div class="col-sm-8">
 					<button type="submit" name="apply" class="btn btn-info btn-sm" ><i class="fa  fa-check-circle"></i> {{ Lang::get('core.sb_apply') }}</button>
 					<button type="submit" name="submit" class="btn btn-primary btn-sm" ><i class="fa  fa-save "></i> {{ Lang::get('core.sb_save') }}</button>
-					<button type="button" onclick="location.href='{{ URL::to('restaurant?return='.$return) }}' " class="btn btn-success btn-sm "><i class="fa  fa-arrow-circle-left "></i>  {{ Lang::get('core.sb_cancel') }} </button>
+					<button type="button" onclick="location.href='{{ URL::to('spa?return='.$return) }}' " class="btn btn-success btn-sm "><i class="fa  fa-arrow-circle-left "></i>  {{ Lang::get('core.sb_cancel') }} </button>
 				</div>
 				
 			</div>

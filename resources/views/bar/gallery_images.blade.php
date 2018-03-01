@@ -41,7 +41,7 @@
 			<!-- The file upload form used as target for the file upload widget -->
 			<form id="fileupload" class="fileupload" action="{{URL::to('bar/uploadimages')}}" method="POST" enctype="multipart/form-data">
 				<input type="hidden" name="parent_id" value="{{$id}}" />
-				<input type="hidden" name="uploadType" value="res" />
+				<input type="hidden" name="uploadType" value="bar" />
 				<!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
 				<div class="row fileupload-buttonbar">
 					<div class="col-lg-7">

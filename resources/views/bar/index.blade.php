@@ -80,16 +80,16 @@
 					 	@if(SiteHelpers::filterColumn($limited ))
 						 <td>					 
 						 	@if($field['attribute']['image']['active'] =='1')
-								{!! SiteHelpers::showUploadedFile($row->$field['field'],$field['attribute']['image']['path']) !!}
+								{!! SiteHelpers::showUploadedFile($row->{$field['field']},$field['attribute']['image']['path']) !!}
 							@else	
 								{{--*/ $conn = (isset($field['conn']) ? $field['conn'] : array() ) /*--}}
-								{!! SiteHelpers::gridDisplay($row->$field['field'],$field['field'],$conn) !!}	
+								{!! SiteHelpers::gridDisplay($row->{$field['field']},$field['field'],$conn) !!}	
 							@endif						 
 						 </td>
 						@endif	
 					 @endif					 
 				 @endforeach
-				 <td>
+				 <td width="150">
 					 	@if($access['is_detail'] ==1)
 						<a href="{{ URL::to('bar/show/'.$row->id.'?return='.$return)}}" class="tips btn btn-xs btn-primary" title="{{ Lang::get('core.btn_view') }}"><i class="fa  fa-search "></i></a>
 						@endif
