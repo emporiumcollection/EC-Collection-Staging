@@ -31,7 +31,7 @@
 <div class="col-md-12">
 						<fieldset><legend> Contract</legend>
 									
-								  <div class="form-group  " >
+								  <div class="form-group hidden " >
 									<label for="Contract Id" class=" control-label col-md-4 text-left"> Contract Id </label>
 									<div class="col-md-6">
 									  {!! Form::text('contract_id', $row['contract_id'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
