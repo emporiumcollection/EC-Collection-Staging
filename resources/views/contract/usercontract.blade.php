@@ -33,8 +33,8 @@
                                         <a data-toggle="collapse" data-parent="#uc-accordion" href="#uc-collapse-<?php echo $sn; ?>"><?php echo $row->title; ?></a>
                                     </h4>
                                 </div>
-                                <div id="uc-collapse-<?php echo $sn; ?>" class="panel-collapse collapse in">
-                                    <div class="panel-body"><?php echo $row->description; ?></div>
+                                <div id="uc-collapse-<?php echo $sn; ?>" class="panel-collapse collapse <?php echo ($sn == 1)? 'in' : ''; ?>">
+                                    <div class="panel-body"><?php echo nl2br($row->description); ?></div>
                                 </div>
                             </div>
                             <?php
