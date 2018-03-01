@@ -21,6 +21,9 @@ Route::get('/', 'HomeController@index');
  */
 Route::group(['middleware' => 'auth'], function()
 {
+    
+        Route::resource('usercontract', 'UsercontractController');
+    
 	//Route::get('crmlayouts', 'CrmlayoutController@index');
 	Route::resource('crmlayouts', 'CrmlayoutController');
 	Route::get('crmlayouts/delete/{crmlayouts}', 'CrmlayoutController@destroy');
@@ -434,4 +437,3 @@ Route::filter('allowOrigin', function($route, $request, $response)
 });
 
 Route::resource('sximoapi', 'SximoapiController');
-Route::get('usercontract', 'UsercontractController@index');
