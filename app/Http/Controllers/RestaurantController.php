@@ -225,7 +225,7 @@ class RestaurantController extends Controller {
 
 	public function getImages( $id = null)
 	{	$this->data['restaurant'] =  Restaurant::find($id);
-		$this->data['restaurant']['images'] =  \DB::table('tb_images_res_spa_bar')->where('parent_id', $id)->get();
+		$this->data['restaurant']['images'] =  \DB::table('tb_images_res_spa_bar')->where('type', 'res')->where('parent_id', $id)->get();
 		$this->data['id'] = $id;	
 		$this->data['access']		= $this->access;
 		return view('restaurant.gallery_images',$this->data);	

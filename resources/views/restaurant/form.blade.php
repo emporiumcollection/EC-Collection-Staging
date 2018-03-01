@@ -121,7 +121,7 @@
 							<select name='designer[]' rows='5' id='restaurant_designer' class='select2 ' multiple="multiple"  >
                                                     @if(!empty($designers))
                                                     @foreach($designers as $designer)
-                                                    <option value="{{$designer->id}}" {{(isset($row['restaurant_designer']) && in_array($designer->id,explode(',',$row['restaurant_designer']))) ? " selected='selected' " : '' }}>{{$designer->designer_name}}</option>
+                                                    <option value="{{$designer->id}}" {{(isset($row['designer']) && in_array($designer->id,explode(',',$row['designer']))) ? " selected='selected' " : '' }}>{{$designer->designer_name}}</option>
                                                     @endforeach
                                                     @endif
                                                 </select>
@@ -217,8 +217,7 @@
 	$(document).ready(function() {
 		
 		
-		$("#category_id").jCombo("{{ URL::to('restaurant/comboselect?filter=tb_categories::category_name') }}",
-		{  selected_value : '{{ $row["category_id"] }}' });
+		
 		
 		$('.removeCurrentFiles').on('click',function(){
 				var removeUrl = $(this).attr('href');
