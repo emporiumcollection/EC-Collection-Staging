@@ -21,12 +21,12 @@
 			@endforeach
 		</ul>
 		<div class="sbox animated fadeInRight">
-			<div class="sbox-title"> <h4> <i class="fa fa-table"></i> </h4></div>
+			<div class="sbox-title"> <h4> <i class="fa fa-table"></i> {{($id)?'Edit':'Add'}} Restaurant<a href="{{url('restaurant')}}" class="tips btn btn-xs btn-default pull-right" title="" ><i class="fa fa-arrow-circle-left"></i>&nbsp;Zurück</a></h4></div>
 			<div class="sbox-content">
 				{!! Form::open(array('url'=>'restaurant/save?return='.$return, 'class'=>'form-horizontal','files' => true , 'parsley-validate'=>'','novalidate'=>' ')) !!}
 				{!! Form::hidden('id', $row['id']) !!} 
 				<div class="col-md-12">
-					<fieldset><legend> restaurant</legend>
+					
 					
 					<div class="form-group  " >
 						<label for="Title" class=" control-label col-md-4 text-left"> Title <span class="asterix"> * </span></label>

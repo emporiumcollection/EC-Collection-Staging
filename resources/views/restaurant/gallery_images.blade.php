@@ -33,12 +33,15 @@
 		
 	<div class="sbox animated fadeInRight">
 			<div class="sbox-title">  {{$restaurant->title."'s Images"}}
-				<a href="{{url('restaurant')}}" class="tips btn btn-xs btn-primary pull-right" title="" >Back</a></div>
+				<a href="{{url('restaurant')}}" class="tips btn btn-xs btn-default pull-right" title="" ><i class="fa fa-arrow-circle-left"></i>&nbsp;Zurück</a>
+				<a href="{{url('restaurant/update/').'/'.$id}}" class="tips btn btn-xs btn-success pull-right" title="" ><i class="fa fa-edit"></i>&nbsp;Editieren</a>
+	
+			</div>
 			<div class="sbox-content">
 			<!-- The file upload form used as target for the file upload widget -->
 			<form id="fileupload" class="fileupload" action="{{URL::to('restaurant/uploadimages')}}" method="POST" enctype="multipart/form-data">
-				<input type="hidden" name="propId" value="{{$id}}" />
-				<input type="hidden" name="uploadType" value="Spa Gallery Images" />
+				<input type="hidden" name="parent_id" value="{{$id}}" />
+				<input type="hidden" name="uploadType" value="res" />
 				<!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
 				<div class="row fileupload-buttonbar">
 					<div class="col-lg-7">
@@ -56,9 +59,7 @@
 							<i class="glyphicon glyphicon-ban-circle"></i>
 							<span>Cancel upload</span>
 						</button>
-						<a class="btn btn-success" @if(!empty($spaimgs)) href="{{URL::to('folders/'.$spaimgs[0]->folder_id.'?show=thumb')}}" @else href="#" @endif>
-							<span>Re-Order</span>
-						</a>
+						
 						<button type="button" class="btn btn-danger" onclick="delete_selected_imgs('sgi');" >
 							<i class="glyphicon glyphicon-trash"></i>
 							<span>Delete</span>
@@ -79,34 +80,34 @@
 				<!-- The table listing the files available for upload/download -->
 				<table role="presentation" class="table table-striped prese">
 					<tbody class="files">
-						@if(!empty($spaimgs))
+						@if(!empty($restaurant['images']))
 							<tr>
 								<td colspan="5"><input type="checkbox" value="1" id="check_all_sgi" class="check-all-sgi"> Select all</td>
 							</tr>
-							@foreach($spaimgs as $img)
+							@foreach($restaurant['images'] as $img)
 								<tr class="template-download fade in row{{$img->id}}">
 									<td>
 										<input type="checkbox" name="compont[]" id="compont" value="{{$img->id}}" class="no-border check-files sgi">
 									</td>
 									<td>
 										<span class="preview">
-											<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_name}}" download="{{$img->file_name}}" data-gallery="#blueimp-gallery-sgi">
-												<img src="{{URL::to('uploads/property_imgs_thumbs/'.$img->file_name)}}">
+											<a href="{{url('uploads/restaurants/'.$img->name)}}" title="{{$img->name}}" download="{{url('uploads/restaurants/'.$img->name)}}" data-gallery="#blueimp-gallery-sgi">
+												<img src="{{url('uploads/restaurants/100x100_'.$img->name)}}">
 											</a>
 										</span>
 									</td>
 									<td>
 										<p class="name">
-											<a href="{{$img->imgsrc.$img->file_name}}" title="{{$img->file_display_name}}" download="{{$img->file_name}}" data-gallery="#blueimp-gallery-sgi">{{$img->file_display_name}}</a>
+											<a href="{{url('uploads/restaurants/'.$img->name)}}" title="{{$img->name}}" download="{{url('uploads/restaurants/'.$img->name)}}" data-gallery="#blueimp-gallery-sgi">{{$img->name}}</a>
 										</p>
 									</td>
 									<td>
 										<span class="size">
-											{{--*/ $sizeKb = ($img->file_size/1024); /*--}} {{ round($sizeKb,2,PHP_ROUND_HALF_UP) }} KB
+											{{--*/ $sizeKb = ($img->image_size/1024); /*--}} {{ round($sizeKb,2,PHP_ROUND_HALF_UP) }} KB
 										</span>
 									</td>
 									<td>
-										<button type="button" class="btn btn-danger" onclick="delete_property_image({{$img->id}});" >
+										<button type="button" class="btn btn-danger" onclick="delete_image({{$img->id}});" >
 											<i class="glyphicon glyphicon-trash"></i>
 											<span>Delete</span>
 										</button>
@@ -231,7 +232,7 @@
 <![endif]-->
 
 <script>
-	function delete_property_image(imgID)
+	function delete_image(imgID)
 	{
 		if(imgID!='' && imgID>0)
 		{
@@ -239,7 +240,7 @@
 			if(conf==true)
 			{
 				$.ajax({
-					url: "{{ URL::to('delete_property_image')}}",
+					url: "{{ url('restaurant/deleteimage')}}",
 					type: "post",
 					data: "img_id="+imgID,
 					dataType: "json",
@@ -308,7 +309,7 @@
 			});
 			
 			$.ajax({
-			  url: "{{ URL::to('delete_selected_image')}}",
+			  url: "{{ url('restaurant/deleteselectedimage')}}",
 			  type: "post",
 			  data: "items=" + sList,
 			  dataType: "json",

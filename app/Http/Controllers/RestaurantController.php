@@ -153,7 +153,7 @@ class RestaurantController extends Controller {
 		$rules = $this->validateForm();
 		$rules['title'] = 'required|unique:tb_restaurants,title,'. $request->input('id');
 		if($request->input('id')==''){
-        	$data['alias'] = slug($request->input('title'));
+        	$data['alias'] = str_slug($request->input('title'));
         	$rules['title'] = 'required|unique';
     	}
 		$validator = Validator::make($request->all(), $rules);	
@@ -208,7 +208,7 @@ class RestaurantController extends Controller {
 				->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus','error');
 		// delete multipe rows 
 		if(count($request->input('ids')) >=1)
-		{
+		{   \DB::table('tb_images_res_spa_bar')->whereIn('parent_id', $request->input('ids'))->delete();
 			$this->model->destroy($request->input('ids'));
 			
 			\SiteHelpers::auditTrail( $request , "ID : ".implode(",",$request->input('ids'))."  , Has Been Removed Successfull");
@@ -221,7 +221,97 @@ class RestaurantController extends Controller {
         		->with('messagetext','No Item Deleted')->with('msgstatus','error');				
 		}
 
-	}			
+	}	
+
+	public function getImages( $id = null)
+	{	$this->data['restaurant'] =  Restaurant::find($id);
+		$this->data['restaurant']['images'] =  \DB::table('tb_images_res_spa_bar')->where('parent_id', $id)->get();
+		$this->data['id'] = $id;	
+		$this->data['access']		= $this->access;
+		return view('restaurant.gallery_images',$this->data);	
+	}	
+
+	public function postUploadimages( Request $request)
+	{
+		$file = $request->file('files');
+		
+	    if($file) {
+
+	        $destinationPath = public_path() . '/uploads/restaurants/';
+	        $extension = $file[0]->getClientOriginalExtension();
+	        $imageName = rand(11111111111, 99999999999) . '-' .rand(11111111111, 99999999999) . '.' . $extension;
+	        $upload_success = $file[0]->move($destinationPath, $imageName);
+
+	        if ($upload_success) {
+
+	            // resizing an uploaded file
+	            \Image::make($destinationPath . $imageName)->resize(100, 100)->save($destinationPath . "100x100_" . $imageName);
+	            $imgdata = array();
+	            $imgdata['parent_id'] = $request->input('parent_id');;
+	            $imgdata['type'] = $request->input('uploadType');
+	            $imgdata['name'] = $imageName;
+	            $imgdata['status'] = 'Yes';
+	            $imgdata['sorting'] = 0;
+	            $imgdata['image_size'] = $file[0]->getClientSize();;
+	            $imgdata['image_type'] = $file[0]->getClientMimeType();;
+	            $imgdata['mark_main'] = 0;
+	            $imgID = \DB::table('tb_images_res_spa_bar')->insertGetId($imgdata);
+	            $getupfile = \DB::table('tb_images_res_spa_bar')->where('id', $imgID)->first();
+                if (!empty($getupfile)) {
+                    $getfilejson['files'][0]['id'] = $imgID;
+                    $getfilejson['files'][0]['name'] = $getupfile->name;
+                    $getfilejson['files'][0]['size'] = $getupfile->image_size;
+                    $getfilejson['files'][0]['thumbnailUrl'] = url('uploads/restaurants/100x100_'.$getupfile->name);
+                    $getfilejson['files'][0]['type'] = $getupfile->image_type;
+                    $getfilejson['files'][0]['url'] = url('uploads/restaurants/'.$getupfile->name);
+                }
+                $getfilejson['status']= 'success';
+	            return \Response::json($getfilejson, 200);
+	        } else {
+	        	$getfilejson['status']= 'error';
+	            return \Response::json($getfilejson, 400);
+	        }
+	    }
+	}	
+
+	function postDeleteimage(Request $request) {
+        $uid = \Auth::user()->id;
+        $img_id = $request->input('img_id');
+        
+        $checkImg = \DB::table('tb_images_res_spa_bar')->where('id', $img_id)->first();
+        if ($checkImg) {
+        	$filename = public_path() . '/uploads/restaurants/'.$checkImg->name;
+        	\File::delete($filename,'100x100_'.$filename);
+        	\DB::table('tb_images_res_spa_bar')->where('id', $img_id)->delete();
+            $res['status'] = 'success';
+            return \Response::json($res);
+        } else {
+            $res['status'] = 'error';
+            return \Response::json($res);
+        }
+    }
+
+    function postDeleteselectedimage(Request $request) {
+        $items = explode(',',$request->input('items'));
+		if(!empty($items))
+		{
+			foreach($items as $item) 
+			{
+				$checkImg = \DB::table('tb_images_res_spa_bar')->where('id', $item)->first();
+				if (!empty($checkImg)) {
+					$deleteImg = \DB::table('tb_images_res_spa_bar')->where('id', $item)->delete();
+					$filename = public_path() . '/uploads/restaurants/'.$checkImg->name;
+					\File::delete($filename,'100x100_'.$filename);
+				}
+			}
+			$res['status'] = 'success';
+			$res['imgs'] = $items;
+		}
+		else {
+			$res['status'] = 'error';
+		}
+		return \Response::json($res);
+    }
 
 
 }
