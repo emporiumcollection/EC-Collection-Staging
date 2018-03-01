@@ -35,7 +35,6 @@
                             <tr>
                                 <th class="number"> No </th>
                                 <th>Title</th>
-                                <th width="70" >{{ Lang::get('core.btn_action') }}</th>
                             </tr>
                         </thead>
 
@@ -43,17 +42,7 @@
                             @foreach ($rowData as $row)
                             <tr>
                                 <td width="30"> {{ ++$i }} </td>
-                                <td>{{$row->title}}</td>
-                                <td>
-                                    @if($access['is_detail'] ==1)
-                                    <a href="{{ URL::to('contract/show/'.$row->contract_id.'?return='.$return)}}" class="tips btn btn-xs btn-primary" title="{{ Lang::get('core.btn_view') }}"><i class="fa  fa-search "></i></a>
-                                    @endif
-                                    @if($access['is_edit'] ==1)
-                                    <a  href="{{ URL::to('contract/update/'.$row->contract_id.'?return='.$return) }}" class="tips btn btn-xs btn-success" title="{{ Lang::get('core.btn_edit') }}"><i class="fa fa-edit "></i></a>
-                                    @endif
-
-
-                                </td>				 
+                                <td>{{$row->title}}</td>			 
                             </tr>
 
                             @endforeach
@@ -62,7 +51,6 @@
 
                     </table>
                 </div>
-                @include('footer')
             </div>
         </div>	
     </div>	  
