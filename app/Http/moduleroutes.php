@@ -54,4 +54,5 @@
                     Route::controller('restaurant', 'RestaurantController');
                     Route::controller('spa', 'SpaController');
                     Route::controller('bar', 'BarController');
+                    Route::controller('contract', 'ContractController');
                     ?>
