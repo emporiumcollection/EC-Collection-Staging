@@ -434,3 +434,4 @@ Route::filter('allowOrigin', function($route, $request, $response)
 });
 
 Route::resource('sximoapi', 'SximoapiController');
+Route::get('contract/my_contract', 'ContractController@my_contract');
