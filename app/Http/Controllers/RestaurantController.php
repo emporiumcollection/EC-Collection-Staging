@@ -173,6 +173,9 @@ class RestaurantController extends Controller {
             } else {
                 $data['category_id'] = '';
             }
+            $data['reservation_email'] = $request->input('reservation_email');
+            $data['reservation_contact'] = $request->input('reservation_contact');
+            $data['website'] = $request->input('website');
             $data['menu'] = $request->input('menu');
             
 				

@@ -48,6 +48,33 @@
 						</div>
 					</div>
 					<div class="form-group  " >
+						<label for="Url" class=" control-label col-md-4 text-left"> Website </label>
+						<div class="col-md-6">
+							{!! Form::text('website', $row['website'],array('class'=>'form-control', 'placeholder'=>'http://example.com',   )) !!}
+						</div>
+						<div class="col-md-2">
+							
+						</div>
+					</div>
+					<div class="form-group  " >
+						<label for="Url" class=" control-label col-md-4 text-left"> Reservation Email </label>
+						<div class="col-md-6">
+							{!! Form::text('reservation_email', $row['reservation_email'],array('class'=>'form-control', 'placeholder'=>'',   )) !!}
+						</div>
+						<div class="col-md-2">
+							
+						</div>
+					</div>
+					<div class="form-group  " >
+						<label for="Url" class=" control-label col-md-4 text-left"> Reservation Contact </label>
+						<div class="col-md-6">
+							{!! Form::text('reservation_contact', $row['reservation_contact'],array('class'=>'form-control', 'placeholder'=>'',   )) !!}
+						</div>
+						<div class="col-md-2">
+							
+						</div>
+					</div>
+					<div class="form-group  " >
 						<label for="Category Id" class=" control-label col-md-4 text-left"> Category Id </label>
 						<div class="col-md-6">
 						<select name='category_id[]' id="category_id" rows='5'   class='select2 ' multiple="multiple"   > 
@@ -139,6 +166,7 @@
 							
 						</div>
 					</div>
+
 					<div class="form-group  " >
 						<label for="Desciription" class=" control-label col-md-4 text-left"> Menu <span class="asterix">  </span></label>
 						<div class="col-md-6">

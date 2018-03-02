@@ -185,6 +185,9 @@ class SpaController extends Controller {
             $data['opening_hrs'] = $request->input('opening_hrs');
             $data['phonenumber'] = $request->input('phonenumber');
             $data['meta_keyword'] = $request->input('meta_keyword');
+            $data['reservation_email'] = $request->input('reservation_email');
+            $data['reservation_contact'] = $request->input('reservation_contact');
+            $data['website'] = $request->input('website');
 
 			$id = $this->model->insertRow($data , $request->input('id'));
 			
