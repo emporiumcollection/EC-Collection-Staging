@@ -210,7 +210,7 @@ class SpaController extends Controller {
 			
 		} else {
 
-			return Redirect::to('spa/update/'.$id)->with('messagetext',\Lang::get('core.note_error'))->with('msgstatus','error')
+			return Redirect::to('spa/update/')->with('messagetext',\Lang::get('core.note_error'))->with('msgstatus','error')
 			->withErrors($validator)->withInput();
 		}	
 	
