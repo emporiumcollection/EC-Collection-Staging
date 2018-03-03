@@ -9,7 +9,7 @@ use App\Models\Bar;
 use App\Models\Spa;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
-use Validator, Input, Redirect,File;
+use Validator, Input, Redirect,File, DB;
 
 class ImportdataController extends Controller { 
 
@@ -174,9 +174,7 @@ class ImportdataController extends Controller {
 				$this->createNewFolder('slider',$folderID);
 				$this->createNewFolder('menu',$folderID);
 			}*/
-			$fdata = array();
-			$fdata['imported'] = 1;
-			\DB::table('tb_container')->insertRow($fdata,$val->id);
+			DB::table('tb_properties')->where('id', $val->id)->update(['imported' => 1]);
 
 		}
 		if($count>5){
