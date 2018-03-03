@@ -616,8 +616,10 @@
 	min-width: 200px;
     }
 	
-	#conatctform label { color:#ada077; font-size:12px; }
+	#conatctform label { color:#ada077; font-size:15px; font-family:serif; }
 	#conatctform input, #conatctform select, #conatctform textarea { background-color: #89837b; }
+	
+	.abttext { color:#ada077; padding:30px; font-size:15px; font-family:serif; }
     
 </style>
 
@@ -1039,6 +1041,7 @@
 					</div>
 				</div>
 				<div class="row">
+					<div class="col-md-12 abttext">{{$about_text->content}}</div>
 					<div class="clearfix" style="color: #fff;">
 						<div id="formerrorscontact" class="formerrors"></div>
 						<form method="POST" action="{{URL::to('save_query')}}" accept-charset="UTF-8" class="form-horizontal" id="conatctform" parsley-validate="" novalidate=" " enctype="multipart/form-data">
@@ -1174,8 +1177,8 @@
 						<div class="col-md-6 contactinfo">
 							<b>
 								emporium-voyage<br><br><br>
-								Telefone :<br><br>
-								Central reservations +1 934 451 1317<br><br><br>
+								Central reservations :<br><br>
+								+1 934 451 1317<br><br><br>
 								Email :<br><br>
 								<a href="mailto:sales@emporium-voyage.com">sales@emporium-voyage.com</a><br>
 								<a href="mailto:marketing@emporium-voyage.com">marketing@emporium-voyage.com</a><br>
