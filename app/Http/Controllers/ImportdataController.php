@@ -187,6 +187,7 @@ class ImportdataController extends Controller {
 				$this->createNewFolder('slider',$folderID);
 				$this->createNewFolder('menu',$folderID);
 				DB::table('tb_images_res_spa_bar')->insertGetId(['parent_id'=>$spaId,'folder_id'=>$folderID,'type'=>'spa']);
+				
 			}
 			DB::table('tb_properties')->where('id', $val->id)->update(['imported' => 1]);
 
