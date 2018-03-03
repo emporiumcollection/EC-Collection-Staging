@@ -617,7 +617,7 @@
     }
 	
 	#conatctform label { color:#ada077; font-size:12px; }
-	#conatctform input, #conatctform select { background-color: #89837b; }
+	#conatctform input, #conatctform select, #conatctform textarea { background-color: #89837b; }
     
 </style>
 
