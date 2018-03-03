@@ -2509,6 +2509,7 @@ class HomeController extends Controller {
 
     public function save_contact_queries( Request $request )
 	{
+		$rules['department'] = 'required';
 		$rules['first_name'] = 'required';
 		$rules['last_name'] = 'required';
 		$rules['postal_code'] = 'required';
@@ -2522,7 +2523,7 @@ class HomeController extends Controller {
 		$rules['message'] = 'required';
 		$validator = Validator::make($request->all(), $rules);	
 		if ($validator->passes()) {
-			
+			$data['department'] = $request->input('department');
 			$data['vorname'] = $request->input('first_name');
 			$data['nachname'] = $request->input('last_name');
 			$data['firma'] = $request->input('company');
@@ -2540,6 +2541,7 @@ class HomeController extends Controller {
 			$emlData['to'] 	 = 'info@emporium-voyage.com';
 			$emlData['frmemail'] = $request->input('email');
 			$emlData['subject'] = 'Contact from Southafricaphotolocation';
+			$emessage = '<p><b>Department : '.$request->input('department').'</b></p>';
 			$emessage = '<p><b>First name : '.$request->input('first_name').'</b></p>';
 			$emessage .= '<p><b>last name : '.$request->input('last_name').'</b></p>';
 			$emessage .= '<p><b>Company : '.$request->input('company').'</b></p>';

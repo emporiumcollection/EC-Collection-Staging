@@ -618,17 +618,6 @@
 	
 	#conatctform label { color:#ada077; font-size:12px; }
 	#conatctform input, #conatctform select { background-color: #89837b; }
-	
-	.vegasFooterSocial ul li a i {
-		font-size: 14px;
-		background: #ABA07C;
-		/* border-radius: 831px; */
-		padding: 6px 12px 4px 7px;
-		color: #fff;
-		margin-right: 0px;
-		text-align: center;
-		width: 25px;
-	}
     
 </style>
 
@@ -1057,7 +1046,7 @@
 							<div class="col-md-6">
 								<fieldset>		
 								  <div class="row MarBot10">
-									<label for="First Name" class="col-md-3"> Department <span class="asterix"> * </span></label>
+									<label for="department" class="col-md-3"> Department <span class="asterix"> * </span></label>
 									<div class="col-md-8">
 									  <select name="department">
 										<option value="Info">Info</option>
@@ -1196,7 +1185,7 @@
 								<a href="mailto:management@emporium-voyage.comm">management@emporium-voyage.com</a><br>
 								<a href="mailto:info@emporium-voyage.comm">info@emporium-voyage.com</a><br><br><br>
 								<div class="vegasFooterSocial">
-                                    <ul class="list-inline vegasSocialUl">
+                                    <ul class="list-inline vegasSocialUl" style="margin-left:0px;">
                                         <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
                                         <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
                                         <li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
