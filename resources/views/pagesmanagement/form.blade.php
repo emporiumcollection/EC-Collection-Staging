@@ -41,7 +41,7 @@
 						<div class="tab-content">
 						  <div class="tab-pane active m-t" id="info">
 							<div class="form-group">
-								<?php echo "Please use '<h5>text</h5>' for Headings, '<label>text</label>' for Sub-headings and '<p>text</p>' for Paragraphs in the page."; ?>
+								<?php echo "Please use &lt;h5&gt;text&lt;/h5&gt;' for Headings, &lt;label&gt;text&lt;/label&gt; for Sub-headings and &lt;p&gt;text&lt;/p&gt; for Paragraphs in the page."; ?>
 							 </div>
 							  <div class="form-group  " >
 								<div class="" style="background:#fff;">
@@ -50,7 +50,7 @@
 								 </div> 
 							  </div> 						  
 							<div class="form-group">
-								<?php echo "Please use '<h5>text</h5>' for Headings, '<label>text</label>' for Sub-headings and '<p>text</p>' for Paragraphs in the page."; ?>
+								<?php echo "Please use &lt;h5&gt;text&lt;/h5&gt;' for Headings, &lt;label&gt;text&lt;/label&gt; for Sub-headings and &lt;p&gt;text&lt;/p&gt; for Paragraphs in the page."; ?>
 							 </div>
 						  </div>
 
