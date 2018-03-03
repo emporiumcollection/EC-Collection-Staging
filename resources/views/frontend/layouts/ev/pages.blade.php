@@ -499,7 +499,124 @@
     
   
     </style>
-   
+   <style>
+
+    .image-slider-container ul li.active img {
+	width: 100%;
+	height: 850px;
+    }
+    
+    .VegasModelDialog {
+	width: 100%;
+	margin: 4px auto;
+    }
+    
+    .vegasModelFade {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1050;
+        display: none;
+        overflow: hidden;
+        -webkit-overflow-scrolling: touch;
+        outline: 0;
+        background-color: black;
+        opacity: 0.8;
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        }
+        
+        .vegasModelContent {
+            background: rgba(0, 0, 0, 0.92) none repeat scroll 0 0;
+            opacity: 1;
+            min-height: 63em;
+            border-radius: 0px;
+            float: left;
+            width: 100%;
+        }
+        
+        .vegasModelHeader {
+            border-bottom: none;
+        }
+        
+        .vegasModelFooter {
+            border-top: none;
+        }
+
+        .vegasGallery1 {
+            min-height: 500px;
+            padding: 0px 0px 0px 0px !important;
+            float: left;
+            width: 81.333%;
+        }
+        
+        .Vegasregular {
+            width: 100%;
+            margin: 0 auto;
+            float: left;
+            visibility: visible;
+        }
+        
+        .VegasCloseButton {
+            color: #ABA07C;
+            opacity: 1;
+            font-size: 50px;
+            box-shadow: none;
+            text-shadow: none;
+        }
+        
+        .VegasCloseButton:hover {
+            color: #ABA07C;
+            opacity: 1;
+            font-size: 50px;
+            box-shadow: none;
+            text-shadow: none;
+        }
+        
+        .VegasPopLogo {
+            width: 20%;
+            margin: 0 auto;
+            padding-top: 100px;
+            text-align: center;
+            display: block;
+        }
+        
+        .VegasDetailInner {
+            padding: 20px;
+            padding-top: 0px;
+        }
+        
+        .grid-item {
+            height: auto;
+        }
+        
+        .vogasThumbnail img {
+            width: 100%;
+        }
+        
+        .vogasThumbnail {
+            padding: 0px;
+            background: none;
+            border: none;
+        }
+		
+        .newbkbtn
+        {
+            float: left;
+            margin-left: 10px;
+            padding: 8px 10px;
+            font-size: 15px;
+        }
+        
+        .Sidenavimg {
+	width: auto;
+	min-width: 200px;
+    }
+    
+</style>
 
     <script src="{{ asset('sximo/assets/js/jquery-2.1.0.min.js')}}" type="text/javascript"></script>
         <script src="{{ asset('sximo/assets/js/bootstrap.min.js')}}" type="text/javascript"></script>
