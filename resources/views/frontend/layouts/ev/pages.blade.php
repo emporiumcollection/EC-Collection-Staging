@@ -978,6 +978,7 @@
 		
 		$(document).on('click', '.contactpopup_view', function () {
 			$('#myModal').modal('show');
+		});
     });
 </script>
 <script type="text/javascript">
