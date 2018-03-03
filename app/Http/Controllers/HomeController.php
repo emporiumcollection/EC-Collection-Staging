@@ -2507,39 +2507,69 @@ class HomeController extends Controller {
         endif;
     }
 
-    public function save_contact_queries(Request $request) {
-        $rules['vorname'] = 'required';
-        $rules['nachname'] = 'required';
-        $rules['postal_code'] = 'required';
-        $rules['ort'] = 'required';
-        $rules['email'] = 'required';
-        $validator = Validator::make($request->all(), $rules);
-        if ($validator->passes()) {
+    public function save_contact_queries( Request $request )
+	{
+		$rules['first_name'] = 'required';
+		$rules['last_name'] = 'required';
+		$rules['postal_code'] = 'required';
+		$rules['city'] = 'required';
+		$rules['email'] = 'required';
+		$rules['company'] = 'required';
+		$rules['address'] = 'required';
+		$rules['country'] = 'required';
+		$rules['phone'] = 'required';
+		$rules['fax'] = 'required';
+		$rules['message'] = 'required';
+		$validator = Validator::make($request->all(), $rules);	
+		if ($validator->passes()) {
+			
+			$data['vorname'] = $request->input('first_name');
+			$data['nachname'] = $request->input('last_name');
+			$data['firma'] = $request->input('company');
+			$data['address'] = $request->input('address');
+			$data['postal_code'] = $request->input('postal_code');
+			$data['ort'] = $request->input('city');
+			$data['land'] = $request->input('country');
+			$data['telefon'] = $request->input('phone');
+			$data['fax'] = $request->input('fax');
+			$data['email'] = $request->input('email');
+			$data['nachricht'] = $request->input('message');
+			$data['created'] = date('Y-m-d h:i:s');
+			\DB::table('tb_contact_queries')->insertGetId($data);
+			
+			$emlData['to'] 	 = 'marketing@emporium-voyage.com';
+			$emlData['frmemail'] = $request->input('email');
+			$emlData['subject'] = 'Contact from Southafricaphotolocation';
+			$emessage = '<p><b>First name : '.$request->input('first_name').'</b></p>';
+			$emessage .= '<p><b>last name : '.$request->input('last_name').'</b></p>';
+			$emessage .= '<p><b>Company : '.$request->input('company').'</b></p>';
+			$emessage .= '<p><b>Address : '.$request->input('address').'</b></p>';
+			$emessage .= '<p><b>PLZ : '.$request->input('postal_code').'</b></p>';
+			$emessage .= '<p><b>City : '.$request->input('city').'</b></p>';
+			$emessage .= '<p><b>Country : '.$request->input('country').'</b></p>';
+			$emessage .= '<p><b>Telefon : '.$request->input('phone').'</b></p>';
+			$emessage .= '<p><b>Fax : '.$request->input('fax').'</b></p>';
+			$emessage .= '<p><b>E-Mail : '.$request->input('email').'</b></p>';
+			$emessage .= '<p><b>Message : '.$request->input('message').'</b></p>';
+			$edata['emessage'] = $emessage;
+			
+			\Mail::send('user.emails.contact', $edata, function($message) use ($emlData)
+			{
+				$message->from($emlData['frmemail'], CNF_APPNAME);
 
-            $data['vorname'] = $request->input('vorname');
-            $data['nachname'] = $request->input('nachname');
-            $data['firma'] = $request->input('firma');
-            $data['address'] = $request->input('address');
-            $data['postal_code'] = $request->input('postal_code');
-            $data['ort'] = $request->input('ort');
-            $data['land'] = $request->input('land');
-            $data['telefon'] = $request->input('telefon');
-            $data['fax'] = $request->input('fax');
-            $data['email'] = $request->input('email');
-            $data['nachricht'] = $request->input('nachricht');
-            /* if(!empty($request->input('kontaktieren')))
-              {
-              $data['kontaktieren'] = implode(',',$request->input('kontaktieren'));
-              } */
-            $data['created'] = date('Y-m-d h:i:s');
-            \DB::table('tb_contact_queries')->insertGetId($data);
-
-            return Redirect::to('contact-us')->with('messagetext', \Lang::get('core.note_success'))->with('msgstatus', 'success');
-        } else {
-            return Redirect::to('contact-us')->with('messagetext', \Lang::get('core.note_error'))->with('msgstatus', 'error')
-                            ->withErrors($validator)->withInput();
-        }
-    }
+				$message->to( $emlData['to']);
+				
+				$message->subject($emlData['subject']);
+			});	
+			$rep['status'] = 'success';
+			return json_encode($rep);
+		}
+		else {
+			$rep['status'] = 'error';
+			$rep['errors'] = $validator->errors()->all();
+			return json_encode($rep);
+		}
+	}
 
     public function show_designer_detail($des_name, Request $request) {
 

@@ -1035,8 +1035,142 @@
 						</div>
 					</div>
 				</div>
-				<div class="row masonry-grid">
-				
+				<div class="row">
+					<div class="clearfix" style="color: #fff;">
+						<div id="formerrorscontact" class="formerrors"></div>
+						<form method="POST" action="{{URL::to('save_query')}}" accept-charset="UTF-8" class="form-horizontal" id="conatctform" parsley-validate="" novalidate=" " enctype="multipart/form-data">
+							<input name="_token" type="hidden" value="dsFK9dMhl3SUxvIPuUFndVqKmPTly1WmmlnzvuKz">
+							<div class="col-md-6">
+								<fieldset>			
+								  <div class="row MarBot10">
+									<label for="First Name" class="col-md-3"> First Name <span class="asterix"> * </span></label>
+									<div class="col-md-6">
+									  <input name="first_name" type="text" value="" required="required"> 
+									 </div> 
+									 <div class="col-md-3">
+										
+									 </div>
+								  </div> 					
+								  <div class="row MarBot10">
+									<label for="lastname" class="col-md-3"> Lastname <span class="asterix"> * </span></label>
+									<div class="col-md-6">
+									  <input required="required" name="last_name" type="text" value=""> 
+									 </div> 
+									 <div class="col-md-3">
+										
+									 </div>
+								  </div> 					
+								  <div class="row MarBot10">
+									<label for="company" class="col-md-3"> Company </label>
+									<div class="col-md-6">
+									  <input placeholder="" name="company" type="text" value=""> 
+									 </div> 
+									 <div class="col-md-3">
+										
+									 </div>
+								  </div> 					
+								  <div class="row MarBot10">
+									<label for="Straße" class="col-md-3"> Street </label>
+									<div class="col-md-6">
+									  <input placeholder="" name="address" type="text" value=""> 
+									 </div> 
+									 <div class="col-md-3">
+										
+									 </div>
+								  </div> 					
+								  <div class="row MarBot10">
+									<label for="PLZ" class="col-md-3"> Postal Code <span class="asterix"> * </span></label>
+									<div class="col-md-6">
+									  <input required="required" name="postal_code" type="text" value=""> 
+									 </div> 
+									 <div class="col-md-3">
+										
+									 </div>
+								  </div> 					
+								  <div class="row MarBot10">
+									<label for="Ort" class="col-md-3"> City <span class="asterix"> * </span></label>
+									<div class="col-md-6">
+									  <input required="required" name="city" type="text" value=""> 
+									 </div> 
+									 <div class="col-md-3">
+										
+									 </div>
+								  </div> 					
+								  <div class="row MarBot10">
+									<label for="Land" class="col-md-3"> Country </label>
+									<div class="col-md-6">
+									  <input placeholder="" name="country" type="text" value=""> 
+									 </div> 
+									 <div class="col-md-3">
+										
+									 </div>
+								  </div> 					
+								  <div class="row MarBot10">
+									<label for="Telefon" class="col-md-3"> Phone </label>
+									<div class="col-md-6">
+									  <input placeholder="" name="phone" type="text" value=""> 
+									 </div> 
+									 <div class="col-md-3">
+										
+									 </div>
+								  </div> 					
+								  <div class="row MarBot10">
+									<label for="Fax" class="col-md-3"> Fax </label>
+									<div class="col-md-6">
+									  <input placeholder="" name="fax" type="text" value=""> 
+									 </div> 
+									 <div class="col-md-3">
+										
+									 </div>
+								  </div> 					
+								  <div class="row MarBot10">
+									<label for="E-Mail" class="col-md-3"> E-Mail <span class="asterix"> * </span></label>
+									<div class="col-md-6">
+									  <input required="required" name="email" type="email" value=""> 
+									 </div> 
+									 <div class="col-md-3">
+										
+									 </div>
+								  </div> 					
+								  <div class="row MarBot10">
+									<label for="Nachricht" class="col-md-3"> Message </label>
+									<div class="col-md-6">
+									  <textarea name="message" rows="5" cols="20" id="nachricht"></textarea> 
+									 </div> 
+									 <div class="col-md-3">
+										
+									 </div>
+								  </div> 
+								  <div class="row MarBot10">
+									<label class="col-sm-3">&nbsp;</label>
+									<div class="col-sm-9">
+										<button class="btn btn-sm btn-default" type="button" onclick="submit_contact_request();">Send</button>
+									</div>
+								  </div> 
+								  
+							</fieldset>
+						</div>
+						
+						<div class="col-md-6 contactinfo">
+							<b>
+								Emporium Voyage<br><br><br>
+								Telefone :<br><br>
+								Riaan + 49 172 893 7230<br>
+								Astrid + 49 172 898 4996<br><br><br>
+								Email :<br><br>
+								<a href="mailto:sales@emporium-voyage.com">sales@emporium-voyage.com</a><br>
+								<a href="mailto:marketing@emporium-voyage.com">marketing@emporium-voyage.com</a><br>
+								<a href="mailto:reservations@emporium-voyage.com">reservations@emporium-voyage.com</a><br>
+								<a href="mailto:legal@emporium-voyage.comm">legal@emporium-voyage.com</a><br><br><br>
+								Office Germany :<br><br>
+								+49 89 31837437 <br>
+								Eisolzriederstrasse 12<br>
+								80999, Munich<br>
+								Germany
+							</b>
+						</div>	
+					</form>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -1109,6 +1243,36 @@
             $('#gridbookform').submit();
         }
     }
+	
+	function submit_contact_request()
+	{
+		$.ajax({
+			  url: "{{ URL::to('save_query')}}",
+			  type: "post",
+			  data: $('#conatctform').serialize(),
+			  dataType: "json",
+			  success: function(data){
+				var html = '';
+				if(data.status=='error')
+				{
+					html +='<ul class="parsley-error-list">';
+					$.each(data.errors, function(idx, obj) {
+						html +='<li>'+obj+'</li>';
+					});
+					html +='</ul>';
+					$('#formerrorscontact').html(html);
+				}
+				else{
+					var htmli = '';
+					htmli +='<div class="alert alert-success fade in block-inner">';
+					htmli +='<button data-dismiss="alert" class="close" type="button">×</button>';
+					htmli +='<i class="icon-checkmark-circle"></i> Contact Form Submitted Successfully </div>';
+					$('#formerrorscontact').html(htmli);
+					$('#conatctform')[0].reset();
+				}
+			  }
+		});
+	}
 
     $(document).on('ready', function () {
 
