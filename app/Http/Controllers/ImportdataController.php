@@ -20,7 +20,7 @@ class ImportdataController extends Controller {
 		$data = Properties::where('imported','=',0)->orderBy('id', 'asc')->paginate(1);
 		$count = 1; 
 		foreach($data as $val){
-			$data = array();
+			/*$data = array();
 
 			$restoArr = Restaurant::where('alias','=',str_slug($val->restaurant_title))->get();
 			if(empty($restoArr)){
@@ -173,11 +173,10 @@ class ImportdataController extends Controller {
 				$this->createNewFolder('gallery',$folderID);
 				$this->createNewFolder('slider',$folderID);
 				$this->createNewFolder('menu',$folderID);
-			}
-
-			$pro = Properties::find($val->id);
-			$pro->imported = 1;
-			$pro->save();
+			}*/
+			$fdata = array();
+			$fdata['imported'] = 1;
+			\DB::table('tb_container')->insertRow($fdata,$val->id);
 
 		}
 		if($count>5){
