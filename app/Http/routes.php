@@ -437,3 +437,5 @@ Route::filter('allowOrigin', function($route, $request, $response)
 });
 
 Route::resource('sximoapi', 'SximoapiController');
+
+Route::controller('restaurantfront/{id}', 'Frontend\RestaurantFrontController');
