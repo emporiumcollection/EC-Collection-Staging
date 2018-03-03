@@ -35,11 +35,11 @@
 {
 	color: #ABA07C;
     font-size: 24px;
-    line-height: 51.33px;
+    line-height: 30px;
     text-transform: capitalize;
     font-family: ACaslonPro-Regular;
     font-weight: 700;
-	margin-bottom: 20px;
+	margin-bottom: 0px;
 }
 
 .contentstyle p
