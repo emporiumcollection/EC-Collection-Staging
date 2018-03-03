@@ -34,7 +34,7 @@
 .contentstyle h5
 {
 	color: #ABA07C;
-    font-size: 36px;
+    font-size: 24px;
     line-height: 51.33px;
     text-transform: capitalize;
     font-family: ACaslonPro-Regular;
