@@ -2537,7 +2537,7 @@ class HomeController extends Controller {
 			$data['created'] = date('Y-m-d h:i:s');
 			\DB::table('tb_contact_queries')->insertGetId($data);
 			
-			$emlData['to'] 	 = 'marketing@emporium-voyage.com';
+			$emlData['to'] 	 = 'info@emporium-voyage.com';
 			$emlData['frmemail'] = $request->input('email');
 			$emlData['subject'] = 'Contact from Southafricaphotolocation';
 			$emessage = '<p><b>First name : '.$request->input('first_name').'</b></p>';

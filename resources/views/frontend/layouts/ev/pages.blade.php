@@ -615,6 +615,20 @@
 	width: auto;
 	min-width: 200px;
     }
+	
+	#conatctform label { color:#ada077; font-size:12px; }
+	#conatctform input, #conatctform select { background-color: #89837b; }
+	
+	.vegasFooterSocial ul li a i {
+		font-size: 14px;
+		background: #ABA07C;
+		/* border-radius: 831px; */
+		padding: 6px 12px 4px 7px;
+		color: #fff;
+		margin-right: 0px;
+		text-align: center;
+		width: 25px;
+	}
     
 </style>
 
@@ -1041,7 +1055,24 @@
 						<form method="POST" action="{{URL::to('save_query')}}" accept-charset="UTF-8" class="form-horizontal" id="conatctform" parsley-validate="" novalidate=" " enctype="multipart/form-data">
 							<input name="_token" type="hidden" value="dsFK9dMhl3SUxvIPuUFndVqKmPTly1WmmlnzvuKz">
 							<div class="col-md-6">
-								<fieldset>			
+								<fieldset>		
+								  <div class="row MarBot10">
+									<label for="First Name" class="col-md-3"> Department <span class="asterix"> * </span></label>
+									<div class="col-md-8">
+									  <select name="department">
+										<option value="Info">Info</option>
+										<option value="Sales">Sales</option>
+										<option value="Reservations/Cancelations">Reservations/Cancelations</option>
+										<option value="Marketing">Marketing</option>
+										<option value="Legal">Legal</option>
+										<option value="Accounting">Accounting </option>
+										<option value="Management">Management  </option>
+									  </select>
+									 </div> 
+									 <div class="col-md-1">
+										
+									 </div>
+								  </div> 
 								  <div class="row MarBot10">
 									<label for="First Name" class="col-md-3"> First Name <span class="asterix"> * </span></label>
 									<div class="col-md-8">
@@ -1153,20 +1184,25 @@
 						
 						<div class="col-md-6 contactinfo">
 							<b>
-								Emporium Voyage<br><br><br>
+								emporium-voyage<br><br><br>
 								Telefone :<br><br>
-								Riaan + 49 172 893 7230<br>
-								Astrid + 49 172 898 4996<br><br><br>
+								Central reservations +1 934 451 1317<br><br><br>
 								Email :<br><br>
 								<a href="mailto:sales@emporium-voyage.com">sales@emporium-voyage.com</a><br>
 								<a href="mailto:marketing@emporium-voyage.com">marketing@emporium-voyage.com</a><br>
 								<a href="mailto:reservations@emporium-voyage.com">reservations@emporium-voyage.com</a><br>
-								<a href="mailto:legal@emporium-voyage.comm">legal@emporium-voyage.com</a><br><br><br>
-								Office Germany :<br><br>
-								+49 89 31837437 <br>
-								Eisolzriederstrasse 12<br>
-								80999, Munich<br>
-								Germany
+								<a href="mailto:legal@emporium-voyage.comm">legal@emporium-voyage.com</a><br>
+								<a href="mailto:accounting@emporium-voyage.comm">accounting@emporium-voyage.com</a><br>
+								<a href="mailto:management@emporium-voyage.comm">management@emporium-voyage.com</a><br>
+								<a href="mailto:info@emporium-voyage.comm">info@emporium-voyage.com</a><br><br><br>
+								<div class="vegasFooterSocial">
+                                    <ul class="list-inline vegasSocialUl">
+                                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                    </ul>
+                                </div>
 							</b>
 						</div>	
 					</form>
@@ -1177,7 +1213,6 @@
 	</div>
   </div>
 </div>
-	
 <script src="{{ asset('sximo/assets/js/slick.js')}}" type="text/javascript"></script>
 <script>
     $(document).ready(function(){
