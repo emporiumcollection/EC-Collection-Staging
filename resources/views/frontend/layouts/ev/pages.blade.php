@@ -887,7 +887,7 @@
                                                             <div class="padding-50px-all bg-black-opacity sm-padding-40px-all xs-padding-30px-all xs-text-center xs-width-100">
                                                                 <h3 class="alt-font text-white sm-width-100">{{$slider_row->slider_title}}</h3>
                                                                 <p class="sm-width-100 lorem-para">{{$slider_row->slider_description}}</p>
-                                                                <a href="{{$slider_row->slider_link}}" class="margin-35px-top sm-margin-15px-top btn btn-white contactpopup_view">Explore services</a>
+                                                                <a href="#" class="margin-35px-top sm-margin-15px-top btn btn-white contactpopup_view">Explore services</a>
                                                             </div> 
                                                         </div>
                                                     </div>
