@@ -12,6 +12,7 @@ class FrontendPagesController extends Controller {
         parent::__construct();
         $this->data['pageTitle'] = '';
         $this->data['data'] = CommonHelper::getInfo();
+		$this->data['about_text'] = \DB::table('tb_settings')->select('content')->where('key_value', 'about_text')->first();
     }
 	
 	 public function index(Request $request) {
