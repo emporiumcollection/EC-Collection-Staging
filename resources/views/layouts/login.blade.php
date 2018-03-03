@@ -27,7 +27,7 @@
 		
 	
   	</head>
-<body class="gray-bg">
+<body class="gray-bg" style="background: url({{URL::to('sximo/assets/images/Login-Emporium-Voyage.jpg')}}) no-repeat; background-size: cover;">
     <div class="middle-box  ">
         <div>
 
