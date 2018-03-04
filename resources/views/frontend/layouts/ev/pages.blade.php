@@ -888,7 +888,7 @@
                                                 @foreach($pageslider as $key => $slider_row)
                                                     <!-- start slider item -->
                                                     <div class="swiper-slide padding-80px-all cover-background position-relative xs-padding-20px-all" style="background-image:url({{url()}}/uploads/slider_images/{{$slider_row->slider_img}})">
-                                                        <div class="position-relative width-55 md-width-60 sm-width-85 xs-width-100 display-inline-block slide-banner last-paragraph-no-margin">
+                                                        <div class="position-relative width-55 md-width-60 sm-width-85 xs-width-100 display-inline-block slide-banner last-paragraph-no-margin" style="margin-top: 50px;">
                                                             <div class="padding-50px-all bg-black-opacity sm-padding-40px-all xs-padding-30px-all xs-text-center xs-width-100">
                                                                 <h3 class="alt-font text-white sm-width-100">{{$slider_row->slider_title}}</h3>
                                                                 <p class="sm-width-100 lorem-para">{{$slider_row->slider_description}}</p>
