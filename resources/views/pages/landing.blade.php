@@ -1026,6 +1026,27 @@
 	#conatctform input, #conatctform select, #conatctform textarea { background-color: #89837b; }
 	
 	.abttext { color:#ada077; padding:30px; font-size:15px; font-family:serif; }
+	
+	input, textarea, select {
+		border: 1px solid #d1d1d1;
+		font-size: 14px;
+		padding: 8px 15px;
+		width: 100%;
+		margin: 0 0 20px 0;
+		max-width: 100%;
+		resize: none;
+	}
+	
+	.vegasFooterSocial ul li a i {
+		font-size: 14px;
+		background: #ABA07C;
+		/* border-radius: 831px; */
+		padding: 6px 12px 4px 7px;
+		color: #fff;
+		margin-right: 0px;
+		text-align: center;
+		width: 25px;
+	}
     
 </style>
         <!-- Global site tag (gtag.js) - Google Analytics -->
