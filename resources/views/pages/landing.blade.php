@@ -2602,6 +2602,37 @@
                 document.body.style.backgroundColor = "white";
                 document.body.style.transition = "all 0.5s ease 0s";
             }
+			
+			function submit_contact_request()
+			{
+				$.ajax({
+					  url: "{{ URL::to('save_query')}}",
+					  type: "post",
+					  data: $('#conatctform').serialize(),
+					  dataType: "json",
+					  success: function(data){
+						var html = '';
+						if(data.status=='error')
+						{
+							html +='<ul class="parsley-error-list">';
+							$.each(data.errors, function(idx, obj) {
+								html +='<li>'+obj+'</li>';
+							});
+							html +='</ul>';
+							$('#formerrorscontact').html(html);
+						}
+						else{
+							var htmli = '';
+							htmli +='<div class="alert alert-success fade in block-inner">';
+							htmli +='<button data-dismiss="alert" class="close" type="button">×</button>';
+							htmli +='<i class="icon-checkmark-circle"></i> Contact Form Submitted Successfully </div>';
+							$('#formerrorscontact').html(htmli);
+							$('#conatctform')[0].reset();
+						}
+					  }
+				});
+			}
+	
             $(document).on('click', function (event) {
                 if ($(window).width() <= 767) {
                     if ($(event.target).has('.filter-width').length) {
@@ -2610,6 +2641,10 @@
                     }
                 }
             });
+			
+			$(document).on('click', '.contactpopup_view', function () {
+				$('#mycontactpopModal').modal('show');
+			});
             /*Toggle Side Nav Start Here*/
             /*eval($('.dropdown').each(function () {
                 var $dropdown = $(this);
@@ -2689,5 +2724,188 @@
         @include('layouts/elliot/ai_booking-page')
         @include('layouts/elliot/ai_newsletter')
         @include('layouts/elliot/ai_cookie-bar')
+		
+		<div class="modal fade vegasModelFade" id="mycontactpopModal" role="dialog">
+		  <div class="modal-dialog VegasModelDialog">
+
+			<!-- Modal content-->
+			<div class="modal-content vegasModelContent">
+			  <div class="modal-header vegasModelHeader">
+				<button type="button" class="close VegasCloseButton" data-dismiss="modal">&times;</button>
+				<a href="#" id="frontpage-layer-bj-header-logo"> <img class="VegasPopLogo" alt="" src="data:image/png;base64,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" class="img-responsive" data-pagespeed-url-hash="2747997174" onload=""></a>
+				</div>
+			  <div class="modal-body">
+				  <div id="frontpage-layer-bj-content" class="col-md-12"  style="padding-top: 10px;">
+						<div class="frontpage-detail-content-top">
+							<div class="frontpage-detail-content-top-link">
+								<div class="frontpage-detail-content-top-link"> 
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12 abttext">{{$about_text->content}}</div>
+							<div class="clearfix" style="color: #fff;">
+								<div id="formerrorscontact" class="formerrors"></div>
+								<form method="POST" action="{{URL::to('save_query')}}" accept-charset="UTF-8" class="form-horizontal" id="conatctform" parsley-validate="" novalidate=" " enctype="multipart/form-data">
+									<input name="_token" type="hidden" value="dsFK9dMhl3SUxvIPuUFndVqKmPTly1WmmlnzvuKz">
+									<div class="col-md-6">
+										<fieldset>		
+										  <div class="row MarBot10">
+											<label for="department" class="col-md-3"> Department <span class="asterix"> * </span></label>
+											<div class="col-md-8">
+											  <select name="department">
+												<option value="Info">Info</option>
+												<option value="Sales">Sales</option>
+												<option value="Reservations/Cancelations">Reservations/Cancelations</option>
+												<option value="Marketing">Marketing</option>
+												<option value="Legal">Legal</option>
+												<option value="Accounting">Accounting </option>
+												<option value="Management">Management  </option>
+											  </select>
+											 </div> 
+											 <div class="col-md-1">
+												
+											 </div>
+										  </div> 
+										  <div class="row MarBot10">
+											<label for="First Name" class="col-md-3"> First Name <span class="asterix"> * </span></label>
+											<div class="col-md-8">
+											  <input name="first_name" type="text" value="" required="required"> 
+											 </div> 
+											 <div class="col-md-1">
+												
+											 </div>
+										  </div> 					
+										  <div class="row MarBot10">
+											<label for="lastname" class="col-md-3"> Lastname <span class="asterix"> * </span></label>
+											<div class="col-md-8">
+											  <input required="required" name="last_name" type="text" value=""> 
+											 </div> 
+											 <div class="col-md-1">
+												
+											 </div>
+										  </div> 					
+										  <div class="row MarBot10">
+											<label for="company" class="col-md-3"> Company </label>
+											<div class="col-md-8">
+											  <input placeholder="" name="company" type="text" value=""> 
+											 </div> 
+											 <div class="col-md-1">
+												
+											 </div>
+										  </div> 					
+										  <div class="row MarBot10">
+											<label for="Straße" class="col-md-3"> Street </label>
+											<div class="col-md-8">
+											  <input placeholder="" name="address" type="text" value=""> 
+											 </div> 
+											 <div class="col-md-1">
+												
+											 </div>
+										  </div> 					
+										  <div class="row MarBot10">
+											<label for="PLZ" class="col-md-3"> Postal Code <span class="asterix"> * </span></label>
+											<div class="col-md-8">
+											  <input required="required" name="postal_code" type="text" value=""> 
+											 </div> 
+											 <div class="col-md-1">
+												
+											 </div>
+										  </div> 					
+										  <div class="row MarBot10">
+											<label for="Ort" class="col-md-3"> City <span class="asterix"> * </span></label>
+											<div class="col-md-8">
+											  <input required="required" name="city" type="text" value=""> 
+											 </div> 
+											 <div class="col-md-1">
+												
+											 </div>
+										  </div> 					
+										  <div class="row MarBot10">
+											<label for="Land" class="col-md-3"> Country </label>
+											<div class="col-md-8">
+											  <input placeholder="" name="country" type="text" value=""> 
+											 </div> 
+											 <div class="col-md-1">
+												
+											 </div>
+										  </div> 					
+										  <div class="row MarBot10">
+											<label for="Telefon" class="col-md-3"> Phone </label>
+											<div class="col-md-8">
+											  <input placeholder="" name="phone" type="text" value=""> 
+											 </div> 
+											 <div class="col-md-1">
+												
+											 </div>
+										  </div> 					
+										  <div class="row MarBot10">
+											<label for="Fax" class="col-md-3"> Fax </label>
+											<div class="col-md-8">
+											  <input placeholder="" name="fax" type="text" value=""> 
+											 </div> 
+											 <div class="col-md-1">
+												
+											 </div>
+										  </div> 					
+										  <div class="row MarBot10">
+											<label for="E-Mail" class="col-md-3"> E-Mail <span class="asterix"> * </span></label>
+											<div class="col-md-8">
+											  <input required="required" name="email" type="email" value=""> 
+											 </div> 
+											 <div class="col-md-1">
+												
+											 </div>
+										  </div> 					
+										  <div class="row MarBot10">
+											<label for="Nachricht" class="col-md-3"> Message </label>
+											<div class="col-md-8">
+											  <textarea name="message" rows="5" cols="20" id="nachricht"></textarea> 
+											 </div> 
+											 <div class="col-md-1">
+												
+											 </div>
+										  </div> 
+										  <div class="row MarBot10">
+											<label class="col-sm-3">&nbsp;</label>
+											<div class="col-sm-9">
+												<button class="btn btn-sm btn-default" type="button" onclick="submit_contact_request();">Send</button>
+											</div>
+										  </div> 
+										  
+									</fieldset>
+								</div>
+								
+								<div class="col-md-6 contactinfo">
+									<b>
+										emporium-voyage<br><br><br>
+										Central reservations :<br><br>
+										+1 934 451 1317<br><br><br>
+										Email :<br><br>
+										<a href="mailto:sales@emporium-voyage.com">sales@emporium-voyage.com</a><br>
+										<a href="mailto:marketing@emporium-voyage.com">marketing@emporium-voyage.com</a><br>
+										<a href="mailto:reservations@emporium-voyage.com">reservations@emporium-voyage.com</a><br>
+										<a href="mailto:legal@emporium-voyage.comm">legal@emporium-voyage.com</a><br>
+										<a href="mailto:accounting@emporium-voyage.comm">accounting@emporium-voyage.com</a><br>
+										<a href="mailto:management@emporium-voyage.comm">management@emporium-voyage.com</a><br>
+										<a href="mailto:info@emporium-voyage.comm">info@emporium-voyage.com</a><br><br><br>
+										<div class="vegasFooterSocial">
+											<ul class="list-inline vegasSocialUl" style="margin-left:0px;">
+												<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+												<li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+												<li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+												<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+											</ul>
+										</div>
+									</b>
+								</div>	
+							</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		  </div>
+		</div>
     </body>
 </html>
