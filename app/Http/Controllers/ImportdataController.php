@@ -64,7 +64,7 @@ class ImportdataController extends Controller {
 					}
 				}
 			}
-			die;
+			
 			if(trim($val->restaurant2_title)!='')
 			{
 				$restoArr2 = DB::table('tb_restaurants')->where('alias','=',str_slug($val->restaurant2_title))->get();
@@ -142,11 +142,20 @@ class ImportdataController extends Controller {
 					$menuID = $this->createNewFolder('menu',$folderID);
 					DB::table('tb_images_res_spa_bar')->insertGetId(['parent_id'=>$barId,'folder_id'=>$folderID,'type'=>'bar']);
 					
-					$barimagArr = DB::table('tb_properties_images')->select('file_id')->where('property_id',$val->id)->where('type', 'Bar Gallery Images')->get();
+					$barimagArr = DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.file_id','tb_container_files.folder_id','tb_container_files.file_name')->where('tb_properties_images.property_id',$val->id)->where('tb_properties_images.type', 'Bar Gallery Images')->get();
 					if(!empty($barimagArr)){
-						foreach($barimagArr as $barimag)
+						$dirPath = (new ContainerController)->getContainerUserPath($barimagArr[0]->folder_id);
+						$movetofolder = (new ContainerController)->getContainerUserPath($galleryID);
+						if( is_dir($movetofolder) === true )
 						{
-							DB::table('tb_container_files')->where('id', $barimag->file_id)->update(['folder_id' => $galleryID]);
+							foreach($barimagArr as $barimag)
+							{
+								$successfile = File::move($dirPath.$barimag->file_name, $movetofolder.$barimag->file_name);
+								if($successfile)
+								{
+									DB::table('tb_container_files')->where('id', $barimag->file_id)->update(['folder_id' => $galleryID]);
+								}
+							}
 						}
 					}
 				}
@@ -206,7 +215,7 @@ class ImportdataController extends Controller {
 				}
 			}
 
-			if(trim($val->bar3_title)!='')
+			if(trim($val->spa_title)!='')
 			{
 				$spaArr = DB::table('tb_spas')->where('alias','=',str_slug($val->spa_title))->get();
 				if(empty($spaArr)){
@@ -233,14 +242,22 @@ class ImportdataController extends Controller {
 					$menuID = $this->createNewFolder('menu',$folderID);
 					DB::table('tb_images_res_spa_bar')->insertGetId(['parent_id'=>$spaId,'folder_id'=>$folderID,'type'=>'spa']);
 					
-					$spaimagArr = DB::table('tb_properties_images')->select('file_id')->where('property_id',$val->id)->where('type', 'Spa Gallery Images')->get();
+					$spaimagArr = DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.file_id','tb_container_files.folder_id','tb_container_files.file_name')->where('tb_properties_images.property_id',$val->id)->where('tb_properties_images.type', 'Spa Gallery Images')->get();
 					if(!empty($spaimagArr)){
-						foreach($spaimagArr as $spaimag)
+						$dirPath = (new ContainerController)->getContainerUserPath($spaimagArr[0]->folder_id);
+						$movetofolder = (new ContainerController)->getContainerUserPath($galleryID);
+						if( is_dir($movetofolder) === true )
 						{
-							DB::table('tb_container_files')->where('id', $spaimag->file_id)->update(['folder_id' => $galleryID]);
+							foreach($spaimagArr as $spaimag)
+							{
+								$successfile = File::move($dirPath.$spaimag->file_name, $movetofolder.$spaimag->file_name);
+								if($successfile)
+								{
+									DB::table('tb_container_files')->where('id', $spaimag->file_id)->update(['folder_id' => $galleryID]);
+								}
+							}
 						}
 					}
-					
 				}
 			}
 			DB::table('tb_properties')->where('id', $val->id)->update(['imported' => 1]);
