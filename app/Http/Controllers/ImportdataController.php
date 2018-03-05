@@ -19,7 +19,8 @@ class ImportdataController extends Controller {
 
 		$data = Properties::where('imported','=',0)->orderBy('id', 'asc')->paginate(1);
 		$count = 1; 
-		foreach($data as $val){
+		print_r($data);
+ die;		foreach($data as $val){
 			
 
 			$restoArr = Restaurant::where('alias','=',str_slug($val->restaurant_title))->get();
@@ -182,7 +183,7 @@ class ImportdataController extends Controller {
 				$data['phonenumber'] = $val->spa_phone_number;
 
 				$spaId = DB::table('tb_spas')->insertGetId($data);
-				$folderID = $this->createNewFolder(str_slug($val->spa_title),6232);
+				$folderID = $this->createNewFolder(str_slug($val->spa_title),6231);
 				$this->createNewFolder('gallery',$folderID);
 				$this->createNewFolder('slider',$folderID);
 				$this->createNewFolder('menu',$folderID);
