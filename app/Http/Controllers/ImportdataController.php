@@ -19,11 +19,11 @@ class ImportdataController extends Controller {
 
 		$data = Properties::where('imported','=',0)->orderBy('id', 'asc')->paginate(1);
 		$count = 1; 
-		print_r($data);
- die;		foreach($data as $val){
+		foreach($data as $val){
 			
 
 			$restoArr = Restaurant::where('alias','=',str_slug($val->restaurant_title))->get();
+			print_r($restoArr);die;	
 			if(empty($restoArr)){
 				$data = array();
 				$data['title'] = $val->restaurant_title;
