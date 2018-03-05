@@ -22,8 +22,8 @@ class ImportdataController extends Controller {
 		foreach($data as $val){
 			
 
-			$restoArr = Restaurant::where('alias','=',str_slug($val->restaurant_title))->get();
-				
+			$restoArr = DB::table('tb_restaurants')->where('alias','=',str_slug($val->restaurant_title))->get();
+			print_r($data);	
 			if(empty($restoArr)){
 				$data = array();
 				$data['title'] = $val->restaurant_title;
@@ -37,7 +37,7 @@ class ImportdataController extends Controller {
 				$data['url'] = $val->restaurant_url;
 				$data['usp_text'] = $val->restaurant_usp_text;
 				$data['usp_person'] = $val->restaurant_usp_person;
-				print_r($data);die;
+				
 				$restoId = DB::table('tb_restaurants')->insertGetId($data);
 				$folderID = $this->createNewFolder(str_slug($val->restaurant_title),6230);
 				$this->createNewFolder('gallery',$folderID);
@@ -45,7 +45,7 @@ class ImportdataController extends Controller {
 				$this->createNewFolder('menu',$folderID);
 				DB::table('tb_images_res_spa_bar')->insertGetId(['parent_id'=>$restoId,'folder_id'=>$folderID,'type'=>'res']);
 			}
-
+die;
 			$restoArr2 = Restaurant::where('alias','=',str_slug($val->restaurant2_title))->get();
 			if(empty($restoArr2)){
 				$data = array();
