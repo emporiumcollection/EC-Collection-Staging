@@ -23,7 +23,7 @@ class ImportdataController extends Controller {
 			
 
 			$restoArr = Restaurant::where('alias','=',str_slug($val->restaurant_title))->get();
-			print_r($restoArr);die;	
+				
 			if(empty($restoArr)){
 				$data = array();
 				$data['title'] = $val->restaurant_title;
@@ -37,7 +37,7 @@ class ImportdataController extends Controller {
 				$data['url'] = $val->restaurant_url;
 				$data['usp_text'] = $val->restaurant_usp_text;
 				$data['usp_person'] = $val->restaurant_usp_person;
-				
+				print_r($data);die;
 				$restoId = DB::table('tb_restaurants')->insertGetId($data);
 				$folderID = $this->createNewFolder(str_slug($val->restaurant_title),6230);
 				$this->createNewFolder('gallery',$folderID);
