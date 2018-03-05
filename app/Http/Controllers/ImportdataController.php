@@ -23,7 +23,6 @@ class ImportdataController extends Controller {
 			
 
 			$restoArr = DB::table('tb_restaurants')->where('alias','=',str_slug($val->restaurant_title))->get();
-			print_r($data);	
 			if(empty($restoArr)){
 				$data = array();
 				$data['title'] = $val->restaurant_title;
@@ -40,13 +39,21 @@ class ImportdataController extends Controller {
 				
 				$restoId = DB::table('tb_restaurants')->insertGetId($data);
 				$folderID = $this->createNewFolder(str_slug($val->restaurant_title),6230);
-				$this->createNewFolder('gallery',$folderID);
-				$this->createNewFolder('slider',$folderID);
-				$this->createNewFolder('menu',$folderID);
+				$galleryID = $this->createNewFolder('gallery',$folderID);
+				$sliderID = $this->createNewFolder('slider',$folderID);
+				$menuID = $this->createNewFolder('menu',$folderID);
 				DB::table('tb_images_res_spa_bar')->insertGetId(['parent_id'=>$restoId,'folder_id'=>$folderID,'type'=>'res']);
+				
+				$restoimagArr = DB::table('tb_properties_images')->select('file_id')->where('property_id',$val->id)->where('type', 'Restrurants Gallery Images')->get();
+				if(!empty($restoimagArr)){
+					foreach($restoimagArr as $restoimag)
+					{
+						DB::table('tb_container_files')->where('id', $restoimag->file_id)->update(['folder_id' => $galleryID]);
+					}
+				}
 			}
-die;
-			$restoArr2 = Restaurant::where('alias','=',str_slug($val->restaurant2_title))->get();
+
+			$restoArr2 = DB::table('tb_restaurants')->where('alias','=',str_slug($val->restaurant2_title))->get();
 			if(empty($restoArr2)){
 				$data = array();
 				$data['title'] = $val->restaurant2_title;
@@ -63,13 +70,13 @@ die;
 				
 				$restoId = DB::table('tb_restaurants')->insertGetId($data);
 				$folderID = $this->createNewFolder(str_slug($val->restaurant2_title),6230);
-				$this->createNewFolder('gallery',$folderID);
-				$this->createNewFolder('slider',$folderID);
-				$this->createNewFolder('menu',$folderID);
+				$galleryID = $this->createNewFolder('gallery',$folderID);
+				$sliderID = $this->createNewFolder('slider',$folderID);
+				$menuID = $this->createNewFolder('menu',$folderID);
 				DB::table('tb_images_res_spa_bar')->insertGetId(['parent_id'=>$restoId,'folder_id'=>$folderID,'type'=>'res']);
 			}
 
-			$restoArr3 = Restaurant::where('alias','=',str_slug($val->restaurant3_title))->get();
+			$restoArr3 = DB::table('tb_restaurants')->where('alias','=',str_slug($val->restaurant3_title))->get();
 			if(empty($restoArr3)){
 				$data = array();
 				$data['title'] = $val->restaurant3_title;
@@ -86,13 +93,13 @@ die;
 				
 				$restoId = DB::table('tb_restaurants')->insertGetId($data);
 				$folderID = $this->createNewFolder(str_slug($val->restaurant3_title),6230);
-				$this->createNewFolder('gallery',$folderID);
-				$this->createNewFolder('slider',$folderID);
-				$this->createNewFolder('menu',$folderID);
+				$galleryID = $this->createNewFolder('gallery',$folderID);
+				$sliderID = $this->createNewFolder('slider',$folderID);
+				$menuID = $this->createNewFolder('menu',$folderID);
 				DB::table('tb_images_res_spa_bar')->insertGetId(['parent_id'=>$restoId,'folder_id'=>$folderID,'type'=>'res']);
 			}
 
-			$barArr = Bar::where('alias','=',str_slug($val->bar_title))->get();
+			$barArr = DB::table('tb_bars')->where('alias','=',str_slug($val->bar_title))->get();
 			if(empty($barArr)){
 				$data = array();
 				$data['title'] = $val->bar_title;
@@ -110,13 +117,21 @@ die;
 				
 				$barId = DB::table('tb_bars')->insertGetId($data);
 				$folderID = $this->createNewFolder(str_slug($val->bar_title),6232);
-				$this->createNewFolder('gallery',$folderID);
-				$this->createNewFolder('slider',$folderID);
-				$this->createNewFolder('menu',$folderID);
+				$galleryID = $this->createNewFolder('gallery',$folderID);
+				$sliderID = $this->createNewFolder('slider',$folderID);
+				$menuID = $this->createNewFolder('menu',$folderID);
 				DB::table('tb_images_res_spa_bar')->insertGetId(['parent_id'=>$barId,'folder_id'=>$folderID,'type'=>'bar']);
+				
+				$barimagArr = DB::table('tb_properties_images')->select('file_id')->where('property_id',$val->id)->where('type', 'Bar Gallery Images')->get();
+				if(!empty($barimagArr)){
+					foreach($barimagArr as $barimag)
+					{
+						DB::table('tb_container_files')->where('id', $barimag->file_id)->update(['folder_id' => $galleryID]);
+					}
+				}
 			}
 
-			$barArr2 = Bar::where('alias','=',str_slug($val->bar2_title))->get();
+			$barArr2 = DB::table('tb_bars')->where('alias','=',str_slug($val->bar2_title))->get();
 			if(empty($barArr2)){
 				$data = array();
 				$data['title'] = $val->bar2_title;
@@ -134,13 +149,13 @@ die;
 
 				$barId = DB::table('tb_bars')->insertGetId($data);
 				$folderID = $this->createNewFolder(str_slug($val->bar2_title),6232);
-				$this->createNewFolder('gallery',$folderID);
-				$this->createNewFolder('slider',$folderID);
-				$this->createNewFolder('menu',$folderID);
+				$galleryID = $this->createNewFolder('gallery',$folderID);
+				$sliderID = $this->createNewFolder('slider',$folderID);
+				$menuID = $this->createNewFolder('menu',$folderID);
 				DB::table('tb_images_res_spa_bar')->insertGetId(['parent_id'=>$barId,'folder_id'=>$folderID,'type'=>'bar']);
 			}
 
-			$barArr3 = Bar::where('alias','=',str_slug($val->bar3_title))->get();
+			$barArr3 = DB::table('tb_bars')->where('alias','=',str_slug($val->bar3_title))->get();
 			if(empty($barArr3)){
 				$data = array();
 				$data['title'] = $val->bar3_title;
@@ -158,13 +173,13 @@ die;
 				
 				$barId = DB::table('tb_bars')->insertGetId($data);
 				$folderID = $this->createNewFolder(str_slug($val->bar3_title),6232);
-				$this->createNewFolder('gallery',$folderID);
-				$this->createNewFolder('slider',$folderID);
-				$this->createNewFolder('menu',$folderID);
+				$galleryID = $this->createNewFolder('gallery',$folderID);
+				$sliderID = $this->createNewFolder('slider',$folderID);
+				$menuID = $this->createNewFolder('menu',$folderID);
 				DB::table('tb_images_res_spa_bar')->insertGetId(['parent_id'=>$barId,'folder_id'=>$folderID,'type'=>'bar']);
 			}
 
-			$spaArr = Spa::where('alias','=',str_slug($val->spa_title))->get();
+			$spaArr = DB::table('tb_spas')->where('alias','=',str_slug($val->spa_title))->get();
 			if(empty($spaArr)){
 				$data = array();
 				$data['title'] = $val->spa_title;
@@ -184,10 +199,18 @@ die;
 
 				$spaId = DB::table('tb_spas')->insertGetId($data);
 				$folderID = $this->createNewFolder(str_slug($val->spa_title),6231);
-				$this->createNewFolder('gallery',$folderID);
-				$this->createNewFolder('slider',$folderID);
-				$this->createNewFolder('menu',$folderID);
+				$galleryID = $this->createNewFolder('gallery',$folderID);
+				$sliderID = $this->createNewFolder('slider',$folderID);
+				$menuID = $this->createNewFolder('menu',$folderID);
 				DB::table('tb_images_res_spa_bar')->insertGetId(['parent_id'=>$spaId,'folder_id'=>$folderID,'type'=>'spa']);
+				
+				$spaimagArr = DB::table('tb_properties_images')->select('file_id')->where('property_id',$val->id)->where('type', 'Spa Gallery Images')->get();
+				if(!empty($spaimagArr)){
+					foreach($spaimagArr as $spaimag)
+					{
+						DB::table('tb_container_files')->where('id', $spaimag->file_id)->update(['folder_id' => $galleryID]);
+					}
+				}
 				
 			}
 			DB::table('tb_properties')->where('id', $val->id)->update(['imported' => 1]);
