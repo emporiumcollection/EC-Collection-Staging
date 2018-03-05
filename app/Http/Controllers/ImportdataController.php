@@ -18,7 +18,7 @@ class ImportdataController extends Controller {
 
 	public function getAlldata(Request $request) {
 
-		$data = Properties::where('imported','=',0)->orderBy('id', 'asc')->paginate(1);
+		$data = Properties::where('imported','=',0)->orderBy('id', 'asc')->paginate(5);
 		$count = 1; 
 		foreach($data as $val){
 			
@@ -261,10 +261,10 @@ class ImportdataController extends Controller {
 				}
 			}
 			DB::table('tb_properties')->where('id', $val->id)->update(['imported' => 1]);
-
+			$count++;
 		}
 		if($count>5){
-			//header("refresh: 3;");
+			header("refresh: 3;");
 		}
 		echo "Import Restaurants: ".Restaurant::count().'<br>';
 		echo "Import Bars: ".Bar::count().'<br>';
