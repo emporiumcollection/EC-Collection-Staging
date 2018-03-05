@@ -54,10 +54,13 @@ class ImportdataController extends Controller {
 						{
 							foreach($restoimagArr as $restoimag)
 							{
-								$successfile = File::move($dirPath.$restoimag->file_name, $movetofolder.$restoimag->file_name);
-								if($successfile)
+								if(File::exists($dirPath.$restoimag->file_name))
 								{
-									DB::table('tb_container_files')->where('id', $restoimag->file_id)->update(['folder_id' => $galleryID]);
+									$successfile = File::move($dirPath.$restoimag->file_name, $movetofolder.$restoimag->file_name);
+									if($successfile)
+									{
+										DB::table('tb_container_files')->where('id', $restoimag->file_id)->update(['folder_id' => $galleryID]);
+									}
 								}
 							}
 						}
@@ -150,10 +153,13 @@ class ImportdataController extends Controller {
 						{
 							foreach($barimagArr as $barimag)
 							{
-								$successfile = File::move($dirPath.$barimag->file_name, $movetofolder.$barimag->file_name);
-								if($successfile)
+								if(File::exists($dirPath.$barimag->file_name))
 								{
-									DB::table('tb_container_files')->where('id', $barimag->file_id)->update(['folder_id' => $galleryID]);
+									$successfile = File::move($dirPath.$barimag->file_name, $movetofolder.$barimag->file_name);
+									if($successfile)
+									{
+										DB::table('tb_container_files')->where('id', $barimag->file_id)->update(['folder_id' => $galleryID]);
+									}
 								}
 							}
 						}
@@ -250,10 +256,13 @@ class ImportdataController extends Controller {
 						{
 							foreach($spaimagArr as $spaimag)
 							{
-								$successfile = File::move($dirPath.$spaimag->file_name, $movetofolder.$spaimag->file_name);
-								if($successfile)
+								if(File::exists($dirPath.$spaimag->file_name))
 								{
-									DB::table('tb_container_files')->where('id', $spaimag->file_id)->update(['folder_id' => $galleryID]);
+									$successfile = File::move($dirPath.$spaimag->file_name, $movetofolder.$spaimag->file_name);
+									if($successfile)
+									{
+										DB::table('tb_container_files')->where('id', $spaimag->file_id)->update(['folder_id' => $galleryID]);
+									}
 								}
 							}
 						}
