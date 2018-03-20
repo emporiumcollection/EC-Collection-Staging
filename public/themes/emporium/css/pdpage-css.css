@@ -1,0 +1,1054 @@
+.luxuryHotelSlider {
+  position: relative;
+}
+.luxuryHotelSlider .item {
+  position: relative;
+}
+.luxuryHotelSlider .item::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: #000;
+  opacity: 0.2;
+  content: "";
+}
+.luxuryHotelSlider .carousel-inner .item img {
+    height: calc(100vh - 82px);
+    object-fit: cover;
+    object-position: center 0px;
+    width: 100%;
+}
+.luxuryHotelSlider .carousel-control {
+  right: 0px;
+  width: 100px;
+  bottom: 0px;
+  top: auto;
+  left: auto;
+  height: 60px;
+  padding: 15px 0 0;
+  background: rgba(0,0,0,0.9);
+  opacity: .76;
+  text-align: center;
+  z-index: 9;
+}
+.luxuryHotelSlider .carousel-caption {
+  background-color: rgba(37, 37, 37, 0.9);
+  opacity: .9;
+  bottom: 85px;
+  padding: 21px;
+  position: absolute;
+  right: 0;
+  left: auto;
+  text-align: left;
+  width: 100%;
+  max-width: 408px;
+}
+.luxuryHotelSlider .carousel-caption p {
+  color: #fff;
+  font-family: 'geomanist_regularregular';
+  font-size: 20px;
+  font-weight: lighter;
+  line-height: 31px;
+  margin-top: 13px;
+}
+.luxuryHotelSlider .carousel-caption h1 {
+    color: #ABA07C;
+    font-family: ACaslonPro-Regular;
+    font-size: 36px;
+    font-style: normal;
+    margin: 0px;
+    line-height: 1.42857143;
+    font-weight: bold;
+}
+.luxuryHotelSlider .carousel-caption h1 a:hover {
+  color: #337ab7;
+}
+.luxuryHotelSlider .left.carousel-control {
+  right: 110px;
+}
+.luxuryHotelSlider .carousel-control img {
+  display: inline-block;
+}
+.scrollNextDivHotel {
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  text-decoration: none;
+  text-transform: uppercase;/*
+  transform: translateX(-50%) rotate(90deg);
+  -webkit-transform: translateX(-50%) rotate(90deg);
+  -moz-transform: translateX(-50%) rotate(90deg);
+  -ms-transform: translateX(-50%) rotate(90deg);*/
+  -webkit-animation-duration: 2.5s;
+  animation-duration: 2.5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+   -webkit-animation-name: bounce;
+  animation-name: bounce;
+  z-index: 1;
+}
+.scrollNextDivHotel a {
+  color: #fff !important;
+}
+@-webkit-keyframes bounce {
+  0%, 20%, 40%, 60%, 80%, 100% {-webkit-transform: translate(-50%, 0) rotate(-90deg);}
+  50% {-webkit-transform: translate(-50%, -20px) rotate(-90deg);}
+  70% {-webkit-transform: translate(-50%, -10px) rotate(-90deg);}
+  90% {-webkit-transform: translate(-50%, -5px) rotate(-90deg);}
+} 
+
+@keyframes bounce { 
+  0%, 20%, 40%, 60%, 80%, 100% {transform: translate(-50%, 0) rotate(-90deg);}
+  50% {transform: translate(-50%, -20px) rotate(-90deg);}
+  70% {transform: translate(-50%, -10px) rotate(-90deg);}
+  90% {transform: translate(-50%, -5px) rotate(-90deg);}
+} 
+
+/************/
+.HamYardHotelInner {
+    background-blend-mode: multiply;
+    filter: brightness(.9);
+    background-color: #292b2e;
+    background-image: url(../images/ham-yard-hotel-london-united-kingdom-15.jpg); 
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-bottom: 75px;
+    padding-top: 290px;
+    border-top: 4px solid #545454;
+}
+.HamYardHotelSection{background:#252525;}
+.HamYardHotelSection .container {
+    max-width: 1049px;
+}
+.HamYardHotelInner h2 {
+    color: #dbd4d7;
+    font-family: ACaslonPro-Regular;
+    font-size: 32px;
+    font-weight: lighter;
+    margin-top: 0;
+    text-transform: uppercase;
+    width: 100%;
+    margin-left: 0px;
+    letter-spacing: 0px;
+}
+.HamYardHotelInner p {
+    color: white;
+    padding-right: 0px;
+    font-size: 16px;
+    line-height: 30px;
+    font-family: 'geomanistlightwebfont';
+    margin-top: 0px;
+}
+.leftPaddingSec {
+  padding-left: 50px;
+}
+.rightPaddingSec {
+  padding-right: 50px;
+}
+.viewRooms {
+  border: 1px solid #fff;
+  border-radius: 0px;
+  color: #fff;
+  font-size: 12px;
+  padding: 12px 37px;
+  text-transform: uppercase;
+  margin-left: 10px;
+  float: right;
+  text-decoration: none;
+  margin-top: 65px;
+}
+.viewRooms:hover,
+.viewRooms:focus {
+  color: #fff;
+}
+.image-showcase-below-big-text {
+  color: #474749;
+  font-size: 70px;
+  margin-left: -107px;
+  margin-top: 130px;
+  font-family: 'geomanistlightwebfont';
+  text-transform: uppercase;
+}
+
+
+
+
+/************hotelSearchDateSection************/
+.hotelSearchDateSection {
+  width: 100%;
+  display: inline-block;
+}
+.hotelSearchDateSection .HamYardHotelInner {
+  background-image: url(../images/ham-yard-hotel-london-united-kingdom-16.jpg); 
+  padding: 120px 0 0;
+}
+.hotelSearchDateInnerContent {width: 100%;display: inline-block;}
+.hotelPopupHeadings {display: inline-block;width:100%;}
+.hotelPopupHeadings > h2 {
+  font-size: 36px;
+  color: #fff;
+  font-weight: 500;
+  font-family: 'geomanistlightwebfont';
+  line-height: 1.1;
+  text-transform: unset;
+}
+.hotelPopupHeadings > p {
+  color: #ABA07C;
+  font-family: 'geomanist_regularregular';
+  margin-top: 16px;
+}
+
+.hotelSearchDateInnerContent ul {
+  float: left;
+  width: 100%;
+  margin-top: 0px;
+}
+.hotelBorderList {
+  border-bottom: 1px solid #545454;
+  border-right: 1px solid #545454;
+  border-top: 1px solid #545454;
+}
+.hotelBorderList li {
+  border-right: 1px solid #545454;
+}
+.hotelBorderList li:last-child {
+  border-right: none;
+}
+.hotelSearchDateInnerContent ul li h3 {
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0px; 
+}
+.borderList li {
+  border-top: 1px solid #545454;
+  border-left: 1px solid #545454;
+}
+.hotelSearchDateInnerContent ul li {
+  color: #fff;
+  float: left;
+  padding: 35px;
+  text-align: center;
+  width: 25%;
+}
+.hotelSearchDateInnerContent ul li select,
+.hotelSearchDateInnerContent ul li input {
+  background-color: transparent;
+  /*background-image: url(../images/icon-dropdown.png);*/
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: 15px auto;
+  border: none;
+  font-size: 13px;
+  margin-top: 25px;
+  text-align: center;
+  padding-bottom: 50px;
+  width: 117px;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.hotelSearchDateInnerContent ul li select {
+  width: 45px;
+  margin-left: 10px;
+  padding-left: 16px;
+}
+.hotelSearchDateInnerContent ul li select option {
+  text-align-last: center;
+  background: #000;
+}
+.hotelBookNowButton {
+  display: inline-block;
+  width: 100%;
+  padding: 30px 0;
+  border-bottom: 1px solid #545454;
+  margin: 0 0 40px;  
+}
+.hotelBookNowButton .btn{
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  padding: 10px;
+  text-decoration: none;
+  font-weight: bold; 
+}
+.hotelBookNowButton .btn:focus,
+.hotelBookNowButton .btn:hover {
+  color: #fff;
+}
+.hotelCancelBooking {
+  display: inline-block;
+  width: 100%;
+}
+.hotelCancelBooking a {
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  padding: 10px;
+  margin: 20px 0 60px;  
+  text-decoration: underline;
+  font-weight: bold; 
+}
+.hotelCancelBooking a:hover {
+  text-decoration: none;
+}
+
+.hotelSearchDateInnerContent ul li span {
+  color: #ABA07C;
+  display: block;
+  font-size: 17px;
+  margin-bottom: .3em;
+}
+.hotelSearchDateInnerContent ul li h6 {
+  color: #fff;
+  font-weight: 700;
+  margin-bottom: 35px;
+  text-transform: uppercase;
+}
+.hotelSearchDateInnerContent ul.hotelBookingFooter {
+  margin-top: 125px;
+  margin-bottom: 61px;
+}
+.hotelSearchDateInnerContent ul.hotelBookingFooter li {
+  padding: 10px;
+  min-width: 33.33%;
+  position: relative;
+}
+.hotelSearchDateInnerContent ul.hotelBookingFooter li::before {
+  position: absolute;
+  content: "";
+  width: 35px;
+  height: 2px;
+  background: #fff;
+  left: 0;
+  bottom: 0px; 
+  right: 0;
+  margin: 0 auto;  
+}
+
+.hotelSearchDateInnerContent ul.hotelBookingFooter li:nth-child(2) {
+  float: right;
+}
+
+
+/*** Dlw ***/
+/* Design and Architecture section */
+#design-architecture{background-color: rgb(25, 25, 25); padding-bottom:100px;}
+#design-architecture .container{max-width:800px;}
+#design-architecture .design-image{max-width:510px; margin:0 auto; text-align:center;}
+#design-architecture .content-box h2{font-family: 'geomanistlightwebfont';color: #5a5a58; font-size:30px; margin-bottom:30px;}
+#design-architecture .content-box{background:rgb(228,220,212); padding:10% 20% 10% 25%;font-family: 'geomanistlightwebfont';color: #5a5a58; font-size: 14px; line-height: 21px; position:relative;}
+#design-architecture .content-box .quote-small-box{position:absolute;background-color: #283D3E; padding:48px; top:-17%; left:-110px; width:240px;}
+#design-architecture .content-box .quote-small-box p{color:#fff; font-size:26px; line-height:30px; padding-bottom:25px; position:relative;}
+#design-architecture .content-box .quote-small-box p:after{content:""; background:url(../images/comma.png) center no-repeat; position:absolute; right:0; bottom:0; width:19px; height:16px;}
+/** Selection of Luxury Hotels **/
+#luxury-hotel-selection{background:#252525; padding:20px 0 40px;}
+#luxury-hotel-selection .heading{letter-spacing:5px; font-size:13px; color:#ABA07C; text-transform:uppercase; text-align:center;font-family: 'geomanistlightwebfont'; margin:0 0 40px;}
+#luxury-hotel-selection .hotel-card .quicklinks li a i, #luxury-hotel-selection  .hotel-card .cartlink{color:#ABA07C;}
+#luxury-hotel-selection .hotel-card .title h3 a { color: #ABA07C;}
+#luxury-hotel-selection .hotel-card:hover figure{background:#373737}
+#luxury-hotel-selection .hotel-card figure img{transition: all 0.3s ease 0s; -webkit-transition: all 0.3s ease 0s; -moz-transition: all 0.3s ease 0s;-ms-transition: all 0.3s ease 0s;  -o-transition: all 0.3s ease 0s;}
+#luxury-hotel-selection .hotel-card:hover figure img{-webkit-filter: blur(5px); -moz-filter: blur(5px); -ms-filter: blur(5px); -o-filter: blur(5px); filter: blur(5px); opacity: 0.10; transform: scale(1.1, 1.1); -webkit-transform: scale(1.1, 1.1); -moz-transform: scale(1.1, 1.1); -ms-transform: scale(1.1, 1.1); -o-transform: scale(1.1, 1.1); }
+#luxury-hotel-selection .hotel-card .content-overlay{position:absolute; left:0; top:0; height:100%; width:100%; padding:135px 40px 40px; text-align:center; background:transparent; opacity:0; color:#fff;}
+#luxury-hotel-selection .hotel-card:hover .content-overlay{padding-top:85px;opacity:1;}
+#luxury-hotel-selection .hotel-card .content-overlay h5{font-family: 'EB Garamond', serif; font-size:18px; margin-bottom:20px;color:#ABA07C}
+#luxury-hotel-selection .hotel-card .content-overlay p{font-size:14px; color:#fff; margin-bottom:20px; font-weight:600;}
+#luxury-hotel-selection .hotel-card .pricelabel{position:absolute; right:0; bottom:0; background:#000; color: #fff; font-size:15px; padding:5px 10px; opacity:0.65}
+#luxury-hotel-selection .hotel-card:hover .pricelabel{opacity:0;-webkit-opacity:0;}
+#luxury-hotel-selection.search-result .hotel-card:hover .content-overlay{padding-top:125px;}
+
+
+
+/*********ROOM SUIT SLIDERS**********/
+.roomSuitSlider {
+  width: 100%;
+  overflow: hidden;
+  padding:10px 0;
+  background: #252525; 
+}
+.roomSuitSlider .noPadding {
+  padding: 0px;
+}
+.roomSuitSlider .terraceSuiteSlider {
+  margin: 0px;
+  height: 360px;
+  max-width: 100%;
+  overflow: hidden;
+}
+.roomSuitSlider .terraceSuiteSlider .carousel-inner {
+  position: relative;
+}
+.roomSuitSlider .terraceSuiteSlider .item img {
+  /*background-color: black;*/
+  opacity: 0.9;
+  object-fit: cover;
+  width: 100%;
+  height: 360px;
+  transition: all 0.5s ease 0s;
+  -webkit-transition: all 0.5s ease 0s;
+  -moz-transition: all 0.5s ease 0s;
+  -ms-transition: all 0.5s ease 0s;
+}
+.roomSuitSlider .terraceSuiteSlider .item:hover > img {
+  opacity: 0.2;
+}
+.roomSuitSlider .terraceSuiteSlider .item a {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: scale(0) translate(-50%, -50%);
+  -webkit-transform: scale(0) translate(-50%, -50%);
+  -moz-transform: scale(0) translate(-50%, -50%);
+  -ms-transform: scale(0) translate(-50%, -50%);
+  z-index: 1;
+  transition: all 0.5s ease 0s;
+  -webkit-transition: all 0.5s ease 0s;
+  -moz-transition: all 0.5s ease 0s;
+  -ms-transition: all 0.5s ease 0s;
+}
+.roomSuitSlider .terraceSuiteSlider .item:hover a {
+  transform: scale(1) translate(-50%, -50%);
+  -webkit-transform: scale(1) translate(-50%, -50%);
+  -moz-transform: scale(1) translate(-50%, -50%);
+  -ms-transform: scale(1) translate(-50%, -50%);
+}
+.roomSuitSlider .terraceSuiteSlider .item a img {
+  opacity: 1;
+  width: 30px !important;
+  height: 30px !important;
+}
+.roomSuitSlider .owl-theme .owl-controls {
+    height: 0px;
+    overflow: hidden;
+    padding: 0;
+    margin: 0px; 
+    opacity: 0;
+    z-index: -5;
+    position: relative;
+}
+.sliderContent {
+  height: 360px;
+  padding: 40px 30px 0;
+  background: #252525;
+}
+.sliderContent h3 {
+  font-size: 16px;
+  color: #ABA07C;
+  font-weight: 600;
+}
+.sliderContent p {
+  font-size: 14px;
+  color: #fff;
+  font-weight: 100;
+  line-height: 25px;
+}
+.sliderContent .btn {
+  font-size: 15px;
+  padding: 5px 10px;
+  background: #ABA07C;
+  border: 1px solid #ABA07C;
+  color: #fff;
+  border-radius: 0px;
+  margin: 0 2px;
+  transition: all 0.5s ease 0s;
+  -webkit-transition: all 0.5s ease 0s;
+  -moz-transition: all 0.5s ease 0s;
+  -ms-transition: all 0.5s ease 0s;
+}
+.sliderContent .btn:hover {
+  background: transparent;
+  border: 1px solid #ABA07C;
+  color: #ABA07C;
+}
+.sliderArrow {
+  display: block;
+  padding: 15px 0 0;
+}
+
+.sliderArrow a {
+    font-size: 19px;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+	display: inline-block;
+	 -webkit-transition: all 0.1s ease 0s;
+  -moz-transition: all 0.1s ease 0s;
+  -ms-transition: all 0.1s ease 0s;
+}
+
+.sliderArrow a:hover{background:#ABA07C; border-color:#ABA07C;}
+
+.sliderArrow .prevClick {
+  
+  margin-right: 5px;
+}
+
+/**************/
+.roomSuitSlider .terraceSuiteSlider2 {
+  margin: 0px;
+  max-width: 100%;
+}
+.roomSuitSlider .terraceSuiteSlider2 .item img {
+  background-color: black;
+  opacity: 0.9;
+  object-fit: cover;
+  width: 100%;
+  height: 280px;
+}
+
+.roomSuitSlider .carousel.slide > .left,
+.roomSuitSlider .carousel.slide > .right {
+  display: none;
+}
+
+
+
+/*************************/
+.HamYardHotelSlider {
+  margin: 50px 0; 
+}
+.HamYardHotelSlider .item {
+  width: 100%;
+  height: 580px;
+  background-position: : center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: all 0.01s ease 0s;
+  -webkit-transition: all 0.01s ease 0s;
+  -moz-transition: all 0.01s ease 0s;
+  -ms-transition: all 0.01s ease 0s;
+  position: relative;
+}
+
+.carousalCaption {
+  width: 50%;
+  float: right;
+  background: rgba(0,0,0,1);
+  opacity: 0.79;
+  color: #fff;
+  height: 100%;
+  padding: 120px 10% 0; 
+}
+.carousalCaption h3 {
+    color: #fff;
+    font-family: ACaslonPro-Regular;
+    font-size: 21px;
+    margin-top: 0;
+    width: 100%;
+    margin-bottom: 20px;
+    line-height: 30px;
+}
+.carousalCaption h2 {
+    color: #fff;
+    font-size: 32px;
+    line-height: 39px;
+}
+.carousalCaption p { 
+    color: #fff;
+    font-size: 12px;
+    line-height: 20px;
+    margin-top: 22px;
+}
+
+
+
+
+.HamYardHotelSliderOptions {
+    position: absolute;
+    bottom: 50px;
+    width: 450px;
+    height: 80px;
+    left: 50%;
+    transform: translateX(-150px);
+    -webkit-transform: translateX(-150px);
+    -moz-transform: translateX(-150px);
+    -ms-transform: translateX(-150px);
+}
+.terraceSuitindicator {
+  padding: 0px 0;
+  display: inline-block;
+  width: 100%;
+}
+.terraceSuitarrow {
+  width: 150px;
+  float: left;
+  height: 80px;
+  position: relative;
+  padding: 30px 40px 0;
+  background: rgba(37,37,35,0.85);
+}
+.terraceSuitarrow a {
+  background: transparent !important;
+  box-shadow: none;
+  float: left;
+  height: 20px;
+  position: static;
+  opacity: 1;
+}
+.terraceSuitarrow a + a {
+  float: right;
+}
+
+.terraceSuitCounter {
+  width: 100%;
+  float: left;
+  text-align: center;
+}
+
+
+/****/
+.terraceSuitindicator ol {
+    position: relative;
+    width: 150px;
+    height: 80px;
+    float: left;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    overflow: visible;
+    opacity: 1;
+    border: none;
+  counter-reset: itemCount;
+}
+
+.terraceSuitindicator ol li:first-child {
+  display: inline-block;
+  z-index: 5;
+}
+.terraceSuitindicator ol li {
+  opacity: 1;
+  z-index: 2;
+  border-radius: 0px !important;
+  border:none !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  margin: 0;
+  min-height: 100%;
+  text-indent: 0px;
+}
+.terraceSuitindicator ol li::before {
+    counter-increment: itemCount;
+    content: counter(itemCount) " / " " 7";
+    position: absolute;
+    left: -95px;
+    bottom: 30px;
+    color: #fff;
+    z-index: 999;
+    font-size: 30px;
+    opacity: 0;
+    font-family: 'geomanistlightwebfont';
+}
+.terraceSuitindicator ol li.active::before {
+  opacity: 1;
+}
+.terraceSuitindicator ol li.active + li {
+  display: inline-block;
+  z-index: 9;
+  opacity: 1;
+}
+.terraceSuitindicator ol li img {
+  width: 100%;
+  height: 100%;
+  float: left;
+  object-fit: cover;
+}
+
+.showMoreSec {
+  width: 150px;
+  float: left;
+  height: 80px;
+  background: rgba(171,160,124,0.8);  
+  padding: 20px 0;
+  text-align: center;
+}
+.showMoreSec .btn {
+  display: inline-block;
+  padding: 10px;
+  font-size: 15px;
+  color: #fff;
+  border: none;
+  border-radius: 0px;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent;
+}
+
+/***********/
+.galleryImgPopup {
+  background: #252525;
+}
+.galleryImgPopup .searchDateInnerContent {
+  width:100%;
+}
+.gallyPopupHeader {
+  display: inline-block;
+  width: 100%;
+  margin: 10px 0 20px; 
+}
+.gallyPopupHeader a {
+  display: inline-block;
+}
+.galleryPopupLeftSide {
+  width: 100%;
+  background: #fff;
+  padding: 25px;
+  display: inline-block;
+  opacity: 0.85;
+  margin-bottom: 30px;
+}
+.galleryPopupLeftSide h1 {
+  width: 100%;
+  margin: 0px; 
+  text-align: left;  
+}
+.galleryPopupLeftSide h1 a {
+  display: inline-block;
+  color: #000;
+  text-decoration: none; 
+  font-size: 18px;
+  font-family: ACaslonPro-Regular;
+}
+.popupHotelDetail {
+  background: #655e52;
+  padding: 25px 16px;
+}
+.popupHotelDetail h3 {
+  color: #fff;
+  font-family: AcaslonPro-Regular;
+  font-size: 11px;
+  font-weight: bold;
+  margin-top: 0;
+  text-transform: uppercase;
+}
+.popupHotelDetail p {
+  color: #fff;
+  font-size: 13px;
+  line-height: 16px;
+  margin-bottom: 0;
+}
+.popupHotelDetail a {
+  border: 1px solid #fff;
+  color: #fff;
+  display: inline-block;
+  font-family: AcaslonPro-Regular;
+  font-size: 12px;
+  padding: 8px 10px 3px;
+  margin-top: 60px;
+  text-decoration: none;
+  border-radius: 0px;
+}
+.popupHotelDetail a:focus,
+.popupHotelDetail a:hover {
+  border: 1px solid #fff;
+  color: #000;
+  background: #fff;
+}
+.bootomViewNextBtn {
+    border-bottom: 1px solid;
+    color: #000;
+    float: right;
+    font-family: AcaslonPro-Regular;
+    font-size: 12px;
+    line-height: 10px;
+    margin-top: 10px;
+    text-align: right;
+}
+.popupHetelImage {
+  width: 100%;
+  display: inline-block;
+  margin-bottom: 30px;
+}
+.popupHetelImage img {
+  width: 100%;
+  display: inline-block;
+  height: 300px;
+  object-fit: cover;
+  object-position: center;
+}
+
+
+/*show More Popup*/
+.showMorePopup {
+  background-color: #828281;
+  background-blend-mode:multiply;
+  background-image: url(../images/terrace-suit-ham-yard-hotel-3.jpg); 
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.showMorePopup .searchDateInnerContent {
+  width:100%;
+}
+.showMorePopup .noPadding {
+  padding: 0px !important 
+}
+.showMoreContent {
+  min-height: 100vh;
+  background-color: rgba(0,0,0,1);
+  padding: 65px 20px 0px; 
+  opacity: 0.5;
+}
+.showMoreContent h1 {
+  margin: 0px;
+  color: #ABA07C;
+  font-family: ACaslonPro-Regular; 
+  font-size: 30px;
+  text-transform: uppercase;
+}
+.showMoreContent ul {
+  margin: 0px;
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 15px;
+}
+.showMoreContent ul li {
+  margin: 0px;
+  display: inline-block;
+  width: 100%;
+  line-height: 28px;
+  font-size: 14px;
+  color: #fff;
+}
+.showMoreContent p {
+  margin: 0px;
+  display: inline-block;
+  width: 100%;
+  line-height: 28px;
+  font-size: 14px;
+  color: #fff;
+}
+.shoMoreButtonSection {
+  display: inline-block;
+}
+.shoMoreButtonSection h2 {
+  display: inline-block;
+  background: #ABA07C;
+  color: #fff;
+  font-size: 25px;
+  margin-left: -194px;
+  padding: 17px 5px;
+  text-align: center;
+  text-transform: uppercase;
+  width: 174px;
+}
+.shoMoreButtonSection a {
+  display: inline-block;
+  background: #ABA00D;
+  color: #fff;
+  font-size: 25px;
+  padding: 13px 5px;
+  text-align: center;
+  text-transform: uppercase;
+  width: 174px;
+  margin: 0 0 0 -3px; 
+}
+
+.header-search label{color:#fff;font-family: 'GeomanistLight', sans-serif;}
+#reservationForm.pdpreservation-form .input-group-icon{top:25px; height:auto !important;}
+#reservationForm.pdpreservation-form .btn{margin-top:25px; padding:7px 9px 8px;}
+.contactfixed{top:309px;}
+.backcontrol{top:386px;}
+.header-content{padding:10px 0 0 10px;}
+
+/*media query starts here*/
+
+
+
+@media screen and (max-width: 1400px) {
+  .HamYardHotelSection .container {
+      max-width: 700px;
+      width: 100%;
+  }
+  .leftPaddingSec {
+    padding-left: 0px;
+  }
+  .rightPaddingSec {
+    padding-right: 0px;
+  }
+}
+@media screen and (max-width: 1366px) {
+#design-architecture .content-box .quote-small-box{left:0; padding:25px;}	
+#luxury-hotel-selection .hotel-card:hover .content-overlay{padding-top:45px;}
+#luxury-hotel-selection.search-result .hotel-card:hover .content-overlay{padding-top:75px;}
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 1475px) {
+  .sliderContent {
+    padding: 10px 10px 0;
+  }
+  .sliderContent h3 {
+    font-size: 14px;
+    margin: 12px 0 2px;
+  }
+  .sliderContent p {
+    font-size: 12px;
+    line-height: 19px;
+}
+.sliderContent .btn {
+    font-size: 12px;
+    padding: 4px 10px;
+    margin: 2px;
+  }
+  .carousalCaption {
+    padding: 50px 6% 0;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+	#luxury-hotel-selection .hotel-card:hover .content-overlay{padding-top:125px;}	
+	#luxury-hotel-selection.search-result .hotel-card:hover .content-overlay{padding-top:125px;}
+	.contactfixed{top:245px !important;}
+	.backcontrol{top:324px !important;}
+}
+
+@media screen and (max-width: 991px) {
+  .image-showcase-below-big-text {
+    margin-left: 0px;
+    margin-top: 50px;
+    font-size: 50px;
+  } 
+  .hotelSearchDateInnerContent ul li span {
+    font-size: 15px;
+  } 
+  /**dlw**/
+  #design-architecture .content-box .quote-small-box{left:-25px; padding:25px;}
+  #luxury-hotel-selection.search-result .hotel-card:hover .content-overlay, #luxury-hotel-selection .hotel-card:hover .content-overlay{padding-top:75px;}
+
+} 
+@media screen and (max-width: 767px) { 
+  .hotelSearchDateInnerContent ul li {
+    width: 50%;
+    border-bottom: 1px solid #545454;
+  }
+  .hotelSearchDateInnerContent ul li:nth-child(4),
+  .hotelSearchDateInnerContent ul li:nth-child(3) {
+    border-bottom: none;
+  }
+  .HamYardHotelInner {
+    padding-top: 80px;
+  }
+  .hotelSearchDateInnerContent ul.hotelBookingFooter li:last-child {
+    width: 100%;
+  }
+   /* dlw */
+  #design-architecture .content-box{padding:10%;}
+  #design-architecture .content-box .quote-small-box{ top: -25%;
+    left: 0;
+    width: 200px;}
+    .sliderContent {
+      height: unset;
+      padding: 40px 30px;
+    }
+   .carousalCaption {
+    width: 100%;
+   }
+   .HamYardHotelInner h2 {
+    font-size: 28px;
+   }
+   .luxuryHotelSlideer .carousel-caption h1 {
+    font-size: 28px;
+   }
+   .luxuryHotelSlideer .carousel-caption p {
+    font-size: 16px;
+    line-height: 26px;
+  }
+  .HamYardHotelSliderOptions {
+    width: calc(100% - 20px);
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    bottom: 70px;
+  } 
+  .terraceSuitarrow {
+    width: 100px;
+    position: relative;
+    padding: 30px 35px 0 25px;
+    background: rgba(37,37,35,0.85);
+  } 
+  .terraceSuitindicator ol {
+    width: 100px;
+  }
+  .showMoreSec {
+    width: 120px;
+  }
+  .terraceSuitindicator ol li::before {
+    left: -75px;
+  }
+  .shoMoreButtonSection h2 {
+    margin-left: 0px;   
+    font-size: 22px;
+    padding: 10px 5px;
+    width: 110px;
+  }
+  .shoMoreButtonSection a {
+    font-size: 21px;
+    padding: 7px 5px;
+    width: 130px;
+  }
+  .showMoreContent ul li,
+  .showMoreContent p {
+    line-height: 20px;
+  }
+#luxury-hotel-selection.search-result .hotel-card:hover .content-overlay, #luxury-hotel-selection .hotel-card:hover .content-overlay{padding-top:100px;}
+}
+@media screen and (max-width: 480px) {
+  .hotelSearchDateInnerContent ul li {
+    width: 100%;
+  }
+  .hotelSearchDateInnerContent ul li:nth-child(3) {
+    border-bottom: 1px solid #545454;
+  }
+  .hotelSearchDateInnerContent ul li:nth-child(4) {
+    border-bottom: none;
+  }
+  .hotelPopupHeadings > h2 {
+    font-size: 22px;
+  }
+  .HamYardHotelInner p {
+    font-size: 15px;
+    line-height: 26px;
+  }
+  .HamYardHotelSlider .item {
+    height: 470px;
+  }
+  .carousalCaption h2 {
+    font-size: 27px;
+    line-height: 28px;
+  }
+  .carousalCaption {
+      padding: 40px 6% 0;
+  }
+  
+  .HamYardHotelSliderOptions {
+    width: 200px;
+  }
+  .showMoreSec {
+    width: 200px;
+    height: 60px;
+    padding: 10px 0;
+  }
+  .galleryImgPopup .col-sm-4.col-xs-6 {
+    min-width: 100%;
+  }
+  .popupHetelImage {
+    margin-bottom: 15px;
+  }
+}

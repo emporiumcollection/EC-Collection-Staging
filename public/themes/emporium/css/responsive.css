@@ -1,0 +1,250 @@
+
+@media (max-width:1366px){
+.sliderSection.restaurantSliderSec .carousel-caption{width:100%;}	
+	/* 02-03-2018 */
+	/* Restaurant Carousel CSS */
+	.hotelSliderSection .owl-carousel .owl-wrapper-outer{padding:50px 0;}
+	.hotelSliderSection .owl-carousel .sliderimage{width:94%; float:none; margin:0 auto}
+	.hotelSliderSection .owl-carousel .sliderimage img{width:100%;}
+.hotelSliderSection .owl-carousel .hotelSliderContentImage{width:100%; max-width:100%; right:auto; background:none; min-height:inherit; }
+.hotelSliderSection .owl-carousel .hotelSliderContentImage .hotelSliderContent{width:100%; position:static; min-height:inherit}
+.hotelSliderSection .owl-carousel .item{margin-right:0;}
+
+.footer-coloumn{padding-right:30px;}
+	/* Restaurant Carousel CSS end */
+}
+@media (max-width:1024px){
+.logo-wrapper{ padding: 15px 15px 0; max-width:220px; display:block;}
+.page-container{padding:74px 0 0 0;}
+.left-sidebar{left:-100%;}
+body.open{overflow:hidden;}
+.left-sidebar.open{left:0;}
+#header{background: rgba(37, 37, 37, 1); padding-bottom:10px;}
+.header-content{width:100%;}
+.header-search{display:none;}
+.login-control-head{position: absolute; top: -70px; width: 200px; right: 15px;}
+	#header .block-content.togglenav{float:right;}
+	.clearall{display:none;}
+	#header .block-content.content{display:block;}
+	#header .block-content.content.togglenav{display:block;}
+	.mobile-search{display:block !important; margin:5px 15px 0 0;}
+	.mobile-search a{color:#fff; font-size:16px;}
+	.mobile-search a:focus{outline:0;}
+	#mobile-search-modal .modal-dialog{max-width:90%; margin:70px auto 0;}
+	#mobile-search-modal .modal-dialog .form-control{border-radius:0; box-shadow:none;}
+	#mobile-search-modal .modal-dialog button.btn{background-color: #ABA07C; border: medium none;border-radius: 0; color: #fff; padding: 7px 9px;}
+	#mobile-search-modal .modal-dialog .close{border-radius:0; color:#fff; top:10px; right:10px; border:0; font-size:36px; box-shadow:none; text-shadow:none;}
+	.page-container.homePageContainer {
+		padding: 60px 0 0 0px;
+	}
+	.whiteoverlay{position:fixed; width:100%; height:100%; background:rgba(255, 255, 255, 0.7); left:0; top:0; z-index:999; display:none;}
+	.searchDateInnerContent ul li span {
+		font-size: 14px;
+	}
+	.searchDateInnerContent ul li h6 {
+		font-size: 11px;
+	}
+	.searchDateInnerContent ul.bookingFooter {
+		margin-top: 80px;
+	}
+	.popupHeadings > h2 {
+	    font-size: 26px;
+	}
+	.popupHeadings > p {
+	    max-width: 720px;
+	    margin: 0 auto;
+	}
+	.bookNowButton {
+		margin: 20px 0 40px;
+	}
+	
+	.mobilemenu{min-width:500px; left:-100%;z-index:99999;}
+	.mobilemenu-inner{width:460px; max-width:none}
+	.mobileaddbanner{display:block;}
+	.mobileaddbanner img{margin:0 auto;}
+	.mobilemenulist .navheadimage .headingoverlay{padding-top:90px;}
+	.mobilemenu .mobilenavclosebtn{display:block;}
+	.sliderSection.restaurantSliderSec .carousel-caption{width:100%;}
+.hotelSliderSection .owl-carousel .hotelSliderContentImage .hotelSliderContent{padding:30px;}
+.sidefixednav{top:74px;}
+.sidefixednav ul li.calander{display:none;}
+.contactfixed{top:163px;}
+.homerightmenu.contactfixed{top:120px;}
+.backcontrol{top:242px;}
+.navbar-nav.setting-nav{display:none;}
+}
+@media only screen and (max-width: 991px){
+	.hotelSliderSection .col-md-12 {
+		padding: 0px 15px;
+	}
+	.hotelSliderSection .owl-theme .owl-controls .owl-buttons [class*="owl-"] {
+		display: none;
+	}
+	.sliderSection.restaurantSliderSec .carousel-caption {  /*line no 71*/
+	    top: 0;
+	    left: 0;
+	    padding: 30px;
+	    width: 100%;
+	}
+	.scrollNextDiv {
+		left: 50%;
+		font-size: 12px;
+		bottom: 45px;
+	} 
+	.hotelSliderContent {
+		min-height: unset;
+		width: 100%;
+		margin-top: 0px;
+	}
+	.hotelSliderContentImage {
+		padding: 0px;
+	}
+	.hotelSliderContentImage > img {
+		display: none;
+	}
+	.hotelSliderContent {
+		position: static;
+	}
+	.emotionSection {
+		margin-top: 0px;
+	}
+	.videoSection {
+		margin-top: 0px;
+		padding: 0 15px;
+	}
+	.footer-coloumn{padding-right:0;}
+}
+
+@media (max-width:767px){
+	#header{min-height:90px;}
+	.header-content{width:100%; padding:0;}
+	.navbar-nav.setting-nav{float:right; margin:0 15px 0 0;}
+	.navbar-nav.setting-nav li{float:left;}
+	.navbar-nav.setting-nav>li>.dropdown-menu{float:right; position:absolute;}
+	.navbar-nav.setting-nav>li>.dropdown-menu li{float:left; width:100%;}
+	.login-control-head{top:-55px; right:0}
+	.logo-wrapper{max-width:150px;}
+	.logo-wrapper .block-content.togglenav{top:-35px;}
+	.left-sidebar{top:40px; width:250px;}
+	.left-sidebar .navbar-header{display:none;}
+	.left-sidebar .navbar-nav{margin:0;}
+	.sidebar-nav .navbar .navbar-collapse{border-color:#333;}
+	.page-container{padding-top:70px;}
+	.social-menu li{margin:0 15px 0 0;}
+	#menu ul li a{font-size:22px; line-height:26px;}
+	.sliderFooter ul li a{font-size:12px;}
+	#menu ul li a::before{height:3px;}
+	.sliderSection .carousel-caption h1 {font-size: 25px;line-height: 1.2;}
+	.sliderSection .carousel-caption p {font-size: 15px;line-height: 22px;}
+	.sliderSection .carousel-control {width: 60px;height: 76px; padding: 22px 0 0;}
+	.sliderSection .left.carousel-control {right: 70px;}
+	.sliderFooter {padding: 18px 10px;}
+	.sliderFooter ul{margin: 0px;}
+	.sliderFooter ul li {width: 100%;}
+	.loginFormDiv h3 {font-size: 16px;}
+	.loginFormDiv h2 {font-size: 22px;margin: 0px;}
+	.searchBoxDiv {padding: 0px;}
+	.searchLeftSec ul li a {font-size: 40px;}	
+	.searchLeftSec ul li {line-height: 45px;}
+	.searchRightSec {margin: 30px 0 0;}
+	.searchRightSec form {margin: 30px 0 0;}
+	
+	.searchDateInnerContent {
+	    padding: 60px 0 0;
+	}
+	.bookNowButton {
+	    margin: 20px 0 10px;
+	}
+	.searchDateInnerContent ul.bookingFooter {
+	    margin-top: 30px;
+	}
+	.searchDateInnerContent ul li {
+		min-width: 50%; 
+	}
+	.searchDateInnerContent ul.bookingFooter li {
+		min-width: 50%;	
+	}
+	.searchDateInnerContent ul.bookingFooter li:last-child {
+		min-width: 100%;
+	}
+	
+	.mobilemenu{min-width:inherit; width:320px;}
+	.mobilemenu-inner{max-width:280px;}
+	.mobilemenulist .navheadimage .headingoverlay{padding-top:55px;}
+	
+	.custom_modal .modal-content{
+		padding: 0;
+	}
+	.hotelSliderContent {
+		width: 100%;
+		padding: 10px;
+	}
+	.rightSideSlider .hotelSliderContentImage {
+		padding: 0px;
+	}
+	.videoSection iframe {
+		height: 350px;
+	}
+	.scrollNextDiv {
+		left: 50%;
+	}
+	.sliderSection.restaurantSliderSec .item img {
+		max-width: unset;
+		height: 500px;
+	}	
+	
+	.sliderSection.restaurantSliderSec .item {
+	    padding: 50px 20px 80px;
+	}
+	.scrollNextDiv {
+		font-size: 20px;
+		bottom: 25px; 
+	}
+	.scrollNextDiv a {
+		display: none;
+	}
+	.scrollNextDiv::after {
+		content: ">";
+		color: #fff;
+		font
+	}
+	.hotel-card{max-width:425px; margin:0 auto 30px;}
+
+	#back-to-top {
+		bottom: 10px;
+		right: 10px;
+	}
+
+}
+
+@media (max-width:480px){
+	#header{min-height:75px;}
+.logo-wrapper{max-width:220px;}
+.logo-wrapper img{max-width:100%;}
+.login-control-head{top:-47px;}
+	.searchDateInnerContent ul li {
+		min-width: 100%; 
+	}
+	.searchDateInnerContent ul.bookingFooter li {
+		min-width: 100%;	
+		margin-bottom: 20px;
+	}
+	.searchDateInnerContent ul li h6 {
+		margin-bottom: 15px;
+	}
+	.popupHeadings > h2 {
+	    font-size: 20px;
+	}
+	.popupHeadings > p {
+	    font-size: 14px;
+	}
+	.left-carousal{display:none;}
+	.greenrysection .content-circle{width:280px; height:280px; padding:15px;}
+	.greenrysection .content-circle:after{width:300px; height:300px;}
+	
+	.videoSection iframe {
+		height: 200px;
+		margin-bottom: 20px;
+	}
+
+}
