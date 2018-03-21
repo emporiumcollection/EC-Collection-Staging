@@ -105,20 +105,7 @@ class HomeController extends Controller {
                 $filename = base_path() . "/resources/views/pages/" . $row->filename . ".blade.php";
                 if (file_exists($filename)) {
                     $this->data['pages'] = 'pages.' . $row->filename;
-                    //	print_r($this->data);exit;
-                    // get plans
-                    /* $plan = \DB::table('tb_membership')->where('status', 1)->get();
-                      foreach ($plan as $memplan) {
-                      $mod = explode(',', $memplan->package_modules);
-                      $allowmodule = \DB::table('tb_module')->whereIn('module_id', $mod)->select('module_title', 'module_id')->get();
-                      $plans[$memplan->id] = $memplan;
-                      $plans[$memplan->id]->modules = $allowmodule;
-                      }
-                      if (!empty($plans)) {
-                      $this->data['plans'] = $plans;
-                      }
-                     */
-					 
+
 					 $this->data['pageslider'] = \DB::table('tb_pages_sliders')->select( 'slider_title', 'slider_description', 'slider_img', 'slider_link', 'slider_video', 'slide_type')->where('slider_page_id', $row->pageID)->get();
 						 
 					 $this->data['landingads'] = \DB::table('tb_advertisement')->select('adv_img', 'adv_link')->where('adv_type', 'sidebar')->where('adv_position', 'landing')->get();
@@ -185,61 +172,7 @@ class HomeController extends Controller {
                         
 					}
 					else {
-                        /*$tags_Arr = \DB::table('tb_tags_manager')->where('tag_status', 1)->get();
-                        $tagsArr = array();
-                        if (!empty($tags_Arr)) {
-                            foreach ($tags_Arr as $tags) {
-                                $tagsArr[$tags->parent_tag_id][] = $tags;
-                            }
-                        }
 
-                        $this->data['tagmenus'] = $tagsArr;
-                          if (isset($pageSlug) && $pageSlug == 'landing') {
-                                $propertiesArr = array();
-                                if (Input::get('s', false)) {
-                                    $TagsObj = \DB::table('tb_tags_manager')->where('tag_title', Input::get('s', false))->first();
-                                    //print_r($TagsObj);
-                                    $TagsCon = \DB::table('tb_container_tags')->select('container_id')->where('container_type', 'folder')->where('tag_id', $TagsObj->id)->get();
-                                    //print_r($TagsObj);
-                                    foreach ($TagsCon as $TagsConObj) {
-                                        $TagsConId[] = $TagsConObj->container_id;
-                                    }
-                                    if (isset($TagsConId)) {
-                                        $container_id = implode(',', $TagsConId);
-
-                                        $ConObjs = \DB::table('tb_container')->select('display_name')->where('id', [$container_id])->get();
-
-                                        foreach ($ConObjs as $ConObj) {
-                                            $ConName[] = $ConObj->display_name;
-                                        }
-                                        $container_names = implode(',', $ConName);
-                                        $props = \DB::table('tb_properties')->where('property_name', [$container_names])->where('property_status', 1)->get();
-                                    }
-                                } else {
-                                    $props = \DB::table('tb_properties')->where('property_status', 1)->get();
-                                }
-                            }
-
-                        if (!empty($props)) {
-                            $pr = 0;
-                            foreach ($props as $prop) {
-                                $propertiesArr[$pr]['data'] = $prop;
-                                //$fileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $prop->id)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->toSql(); 
-                                $fileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $prop->id)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
-
-                                if (!empty($fileArr)) {
-                                    $propertiesArr[$pr]['image'] = $fileArr;
-                                    $propertiesArr[$pr]['image']->imgsrc = (new ContainerController)->getThumbpath($fileArr->folder_id);
-                                }
-                                $pr++;
-                            }
-                        }*/
-
-                        //this->data['propertiesArr'] = $propertiesArr;
-						
-
-                        
-                        /*******************************************************/
 
                         $mainArrdestts = array();
                         $maindest = \DB::table('tb_categories')->where('parent_category_id', 0)->where('id', '!=', 8)->get();
@@ -360,7 +293,7 @@ class HomeController extends Controller {
 
                         $this->data['propertyCategory'] = $OurCategory;
                     }
-                    return view($page, $this->data);
+                    return view('frontend.themes.emporium.layouts.home', $this->data);
                 } else {
                     return Redirect::to('')
                                     ->with('message', \SiteHelpers::alert('error', \Lang::get('core.note_noexists')));
@@ -381,8 +314,8 @@ class HomeController extends Controller {
             $this->data['ads_home'] = \DB::table('tb_advertisement')->where('adv_status', 1)->get();
 
             $this->data['pages'] = 'pages.home';
-            $page = 'layouts.' . CNF_THEME . '.index';
-            return view($page, $this->data);
+
+            return view('frontend.themes.emporium.layouts.home', $this->data);
         endif;
     }
     
