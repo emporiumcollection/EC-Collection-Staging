@@ -47,5 +47,5 @@
 
 {{-- For footer --}}
 @section('footer')
-
+    @parent
 @endsection
