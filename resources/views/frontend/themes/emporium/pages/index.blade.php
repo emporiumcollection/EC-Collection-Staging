@@ -1,11 +1,11 @@
 @extends('frontend.themes.emporium.layouts.home')
-<!-- For Title -->
+{{--  For Title --}}
 @section('title', 'Home')
-<!-- For Meta Keywords -->
+{{-- For Meta Keywords --}}
 @section('meta_keywords', '')
-<!-- For Meta Description -->
+{{-- For Meta Description --}}
 @section('meta_description', '')
-<!-- For Page's Content Part -->
+{{-- For Page's Content Part --}}
 @section('content')
     <!-- slider starts here -->
          <section class="sliderSection">
@@ -50,23 +50,23 @@
       
 @endsection
 
-<!-- For Include style files -->
+{{-- For Include style files --}}
 @section('head')
     @parent
 	
 @endsection
 
-<!-- For custom style  -->
+{{-- For custom style  --}}
 @section('custom_css')
     @parent
 @endsection
 
-<!-- For Include javascript files -->
+{{-- For Include javascript files --}}
 @section('javascript')
     @parent
 @endsection
 
-<!-- For custom script -->
+{{-- For custom script -->
 @section('custom_js')
     @parent
 @endsection
