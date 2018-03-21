@@ -69,7 +69,7 @@
 
 		   @section('sidebar')
 			@parent
-
+			 @include('frontend.themes.emporium.layouts.sections.home_sidebar')
            @show
 		  <div class="page-container">
 
