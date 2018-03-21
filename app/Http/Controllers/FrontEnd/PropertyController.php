@@ -137,6 +137,45 @@ class PropertyController extends Controller {
         
         return view($page, $this->data);
     }
+	
+	
+	public function getPropertyGridListByCategory(Request $request)
+	{
+		$this->data['slug'] = $request->slug;
+		
+		$this->data['slider'] = \DB::table('tb_sliders')->select('slider_category','slider_title','slider_description','slider_img','slider_link','slide_type')->where('slider_category', $request->slug)->get();
+
+        $reultsgridAds = \DB::table('tb_advertisement')->where('adv_type', 'sidebar')->where('ads_cat_id', $request->slug)->where('adv_position', 'grid_results')->get();
+        $this->data['reultsgridAds'] = $reultsgridAds;
+
+        $this->data['sidebargridAds'] = \DB::table('tb_advertisement')->where('adv_type', 'sidebar')->where('ads_cat_id', $request->slug)->where('adv_position', 'grid_sidebar')->get();
+		
+        $propertiesArr = array();
+        
+        $perPage = 12;
+        $currentPage = $request->page;
+        $pageNumber = 1;
+        if(isset($request->page) && $request->page>0){
+            $pageNumber = $request->page;
+        }
+        $pageStart = ($pageNumber -1) * $perPage;
+
+        $query = "SELECT pr.editor_choice_property,pr.feature_property,pr.id,pr.property_name,pr.property_slug,pr.property_category_id,"; 
+        $query .= " (SELECT rack_rate FROM tb_properties_category_rooms_price pcrp where pr.id=pcrp.property_id order by rack_rate DESC limit 0,1 ) as price ," ;
+        $query .= " (SELECT category_name FROM tb_categories ct where pr.property_category_id=ct.id limit 0,1 ) as category_name ";
+        $query .= " FROM tb_properties  pr";
+        $whereClause = " WHERE pr.property_type='" . $request->slug . "' AND pr.property_status = '1' ";
+        $OrderByQry =  "ORDER BY (SELECT rack_rate FROM tb_properties_category_rooms_price pcrp WHERE pcrp.property_id = pr.id ORDER BY rack_rate DESC LIMIT 1) * 1 DESC, pr.editor_choice_property desc, pr.feature_property desc LIMIT $pageStart, $perPage ";
+        $fianlQry = $query.' '.$whereClause.' '.$OrderByQry;
+        $CountRecordQry = " Select count(*) as total_record FROM tb_properties pr  ".$whereClause;
+        $getRec = DB::select($CountRecordQry);
+        $propertiesArr = DB::select($fianlQry);
+       // print_r($propertiesArr); die;
+        $this->data['propertiesArr'] = $propertiesArr;
+        $this->data['total_record'] = $getRec[0]->total_record;
+		
+		return view('frontend.themes.emporium.properties.list', $this->data);
+	}
 
 
 }

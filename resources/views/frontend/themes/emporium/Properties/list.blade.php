@@ -9,302 +9,75 @@
 @section('content')
     <!-- Restaurant slider starts here -->
     <section id="search-result-slider" class="luxuryHotelSlider">
-        <div id="myCarousel" class="carousel" data-ride="carousel">
-            <!-- Indicators -->
+		 @if(!empty($slider))
+			<div id="myCarousel" class="carousel" data-ride="carousel">
+				<!-- Indicators -->
+				{{--  Wrapper for slides --}}
+				<div class="carousel-inner">
+					@foreach($slider as $key => $slider_row)
+						<div class="item {{($key == 0)? 'active' : ''}}" style="background-image:url({{url('uploads/slider_images/'.$slider_row->slider_img)}});">
+							<div class="carousel-caption">
+								<h6>{{$slug}}</h6>
+								<h2><a href="{{$slider_row->slider_link}}">{{$slider_row->slider_title}}</a></h2>
+								<p>{{$slider_row->slider_description}}</p>
+							</div>
+						</div>
+					@endforeach
+				</div>
 
-            {{--  Wrapper for slides --}}
-            <div class="carousel-inner">
-                <div class="item active" style="background-image:url(images/search-result-img01.jpg);">
-                    <div class="carousel-caption">
-                        <h6>HOTEL</h6>
-                        <h2>DISCOVER LUXURY HOTELS WITH EMPORIUM VOYAGE</h2>
-                        <p>From the posh, sun-soaked beaches along the Indian Ocean to the epoch heights of the Himalayas, Emporium-Voyageis your ideal, vogue vacation planner! With over 300 posh properties and elite spas huddled in its cocoon, Our Design Locations ensure the ultimate luxury experience. Our expertise lies in our utmost diligence to provide our beau monde customers with an exotic experience they will relish forever.</p>
-                    </div>
-                </div>
-                <div class="item" style="background-image:url(images/search-result-img02.jpg);">
-                    <div class="carousel-caption">
-                        <h6>HOTEL</h6>
-                        <h2>DISCOVER LUXURY HOTELS WITH EMPORIUM VOYAGE</h2>
-                        <p>From the posh, sun-soaked beaches along the Indian Ocean to the epoch heights of the Himalayas, Emporium-Voyageis your ideal, vogue vacation planner! With over 300 posh properties and elite spas huddled in its cocoon, Our Design Locations ensure the ultimate luxury experience. Our expertise lies in our utmost diligence to provide our beau monde customers with an exotic experience they will relish forever.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Left and right controls -->
-            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                <img src="images/editorial-left-arrow.png" alt="Icon"/>
-            </a>
-            <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                <img src="images/editorial-right-arrow.png" alt="Icon"/>
-            </a>
-        </div>
+				<!-- Left and right controls -->
+				<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+					<img src="images/editorial-left-arrow.png" alt="Icon"/>
+				</a>
+				<a class="right carousel-control" href="#myCarousel" data-slide="next">
+					<img src="images/editorial-right-arrow.png" alt="Icon"/>
+				</a>
+			</div>
+		@endif
     </section>
     {{-- Search Result --}}
     <section id="luxury-hotel-selection" class="search-result">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-12 text-center">
-                    <h2 class="heading">129 Hotel(s) Found for Hotel</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6 col-md-6 col-lg-4">
-                    <div class="hotel-card">
-                        <figure>
-                            <img src="images/hotel-img02.jpg" alt="Emporium"/>
-                            <a href="https://www.emporium-voyage.com/luxury-hotel-cocoa-island-by-como" class="content-overlay">
-                                <h5>The Soho Hotel</h5>
-                                <p>From € 4000 | London</p>
-                            </a>
-                            <div class="pricelabel">From EUR 4279 / night</div>
-                        </figure>
-                        <div class="title">
-                            <h3><a href="https://www.emporium-voyage.com/luxury-hotel-cocoa-island-by-como">The Soho Hotel</a></h3>
-                            <a href="https://www.emporium-voyage.com/luxury-hotel-cocoa-island-by-como" class="cartlink"><i class="fa fa-shopping-cart"></i></a>
-                        </div>
-                        <!--<ul class="quicklinks">
-                            <li><a href="javascript:void(0)">Quick View</a></li>
-                            <li><a href="javascript:void(0)">Details View</a></li>
-                        </ul>-->
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-6 col-lg-4">
-                    <div class="hotel-card">
-                        <figure>
-                            <img src="images/hotel-img03.jpg" alt="Emporium"/>
-                            <a href="https://www.emporium-voyage.com/luxury-hotel-cocoa-island-by-como" class="content-overlay">
-                                <h5>Haymarket Hotel</h5>
-                                <p>From € 2737 | Berlin</p>
-                            </a>
-                            <div class="pricelabel">From EUR 5200 / night</div>
-                        </figure>
-                        <div class="title">
-                            <h3><a href="https://www.emporium-voyage.com/luxury-hotel-cocoa-island-by-como">Haymarket Hotel</a></h3>
-                            <a href="https://www.emporium-voyage.com/luxury-hotel-cocoa-island-by-como" class="cartlink"><i class="fa fa-shopping-cart"></i></a>
-                        </div>
-                        <!--<ul class="quicklinks">
-                            <li><a href="javascript:void(0)">Quick View</a></li>
-                            <li><a href="javascript:void(0)">Details View</a></li>
-                        </ul>-->
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-6 col-lg-4">
-                    <div class="hotel-card">
-                        <figure>
-                            <img src="images/hotel-img04.jpg" alt="Emporium"/>
-                            <a href="https://www.emporium-voyage.com/luxury-hotel-cocoa-island-by-como" class="content-overlay">
-                                <h5>Covent Garden Hotel</h5>
-                                <p>From € 2590 | London</p>
-                            </a>
-                            <div class="pricelabel">From EUR 3547 / night</div>
-                        </figure>
-                        <div class="title">
-                            <h3><a href="https://www.emporium-voyage.com/luxury-hotel-cocoa-island-by-como">Covent Garden Hotel</a></h3>
-                            <a href="https://www.emporium-voyage.com/luxury-hotel-cocoa-island-by-como" class="cartlink"><i class="fa fa-shopping-cart"></i></a>
-                        </div>
-                        <!--<ul class="quicklinks">
-                            <li><a href="javascript:void(0)">Quick View</a></li>
-                            <li><a href="javascript:void(0)">Details View</a></li>
-                        </ul>-->
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-6 col-lg-4">
-                    <div class="hotel-card">
-                        <figure>
-                            <img src="images/hotel-img01.jpg" alt="Emporium"/>
-                            <a href="https://www.emporium-voyage.com/luxury-hotel-cocoa-island-by-como" class="content-overlay">
-                                <h5>Ham Yard Hotel</h5>
-                                <p>From € 4141 | Berlin</p>
-                            </a>
-                            <div class="pricelabel">From EUR 6984 / night</div>
-                        </figure>
-                        <div class="title">
-                            <h3><a href="https://www.emporium-voyage.com/luxury-hotel-cocoa-island-by-como">Ham Yard Hotel</a></h3>
-                            <a href="https://www.emporium-voyage.com/luxury-hotel-cocoa-island-by-como" class="cartlink"><i class="fa fa-shopping-cart"></i></a>
-                        </div>
-                        <!--<ul class="quicklinks">
-                            <li><a href="javascript:void(0)">Quick View</a></li>
-                            <li><a href="javascript:void(0)">Details View</a></li>
-                        </ul>-->
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-6 col-lg-4">
-                    <div class="hotel-card">
-                        <figure>
-                            <img src="images/hotel-img02.jpg" alt="Emporium"/>
-                            <a href="https://www.emporium-voyage.com/luxury-hotel-cocoa-island-by-como" class="content-overlay">
-                                <h5>The Soho Hotel</h5>
-                                <p>From € 4000 | London</p>
-                            </a>
-                            <div class="pricelabel">From EUR 8714 / night</div>
-                        </figure>
-                        <div class="title">
-                            <h3><a href="https://www.emporium-voyage.com/luxury-hotel-cocoa-island-by-como">The Soho Hotel</a></h3>
-                            <a href="https://www.emporium-voyage.com/luxury-hotel-cocoa-island-by-como" class="cartlink"><i class="fa fa-shopping-cart"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-6 col-lg-4">
-                    <div class="hotel-card">
-                        <figure>
-                            <img src="images/hotel-img03.jpg" alt="Emporium"/>
-                            <a href="https://www.emporium-voyage.com/luxury-hotel-cocoa-island-by-como" class="content-overlay">
-                                <h5>Haymarket Hotel</h5>
-                                <p>From € 2737 | New York</p>
-                            </a>
-                            <div class="pricelabel">From EUR 2547 / night</div>
-                        </figure>
-                        <div class="title">
-                            <h3><a href="https://www.emporium-voyage.com/luxury-hotel-cocoa-island-by-como">Haymarket Hotel</a></h3>
-                            <a href="https://www.emporium-voyage.com/luxury-hotel-cocoa-island-by-como" class="cartlink"><i class="fa fa-shopping-cart"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-6 col-lg-4">
-                    <div class="hotel-card">
-                        <figure>
-                            <img src="images/hotel-img04.jpg" alt="Emporium"/>
-                            <a href="https://www.emporium-voyage.com/luxury-hotel-cocoa-island-by-como" class="content-overlay">
-                                <h5>Covent Garden Hotel</h5>
-                                <p>From € 2590 | London</p>
-                            </a>
-                            <div class="pricelabel">From EUR 3651 / night</div>
-                        </figure>
-                        <div class="title">
-                            <h3><a href="https://www.emporium-voyage.com/luxury-hotel-cocoa-island-by-como">Covent Garden Hotel</a></h3>
-                            <a href="https://www.emporium-voyage.com/luxury-hotel-cocoa-island-by-como" class="cartlink"><i class="fa fa-shopping-cart"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-6 col-lg-4">
-                    <div class="hotel-card">
-                        <figure>
-                            <img src="images/hotel-img01.jpg" alt="Emporium"/>
-                            <a href="https://www.emporium-voyage.com/luxury-hotel-cocoa-island-by-como" class="content-overlay">
-                                <h5>Ham Yard Hotel</h5>
-                                <p>From € 4141 | Berlin</p>
-                            </a>
-                            <div class="pricelabel">From EUR 3682 / night</div>
-                        </figure>
-                        <div class="title">
-                            <h3><a href="https://www.emporium-voyage.com/luxury-hotel-cocoa-island-by-como">Ham Yard Hotel</a></h3>
-                            <a href="https://www.emporium-voyage.com/luxury-hotel-cocoa-island-by-como" class="cartlink"><i class="fa fa-shopping-cart"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-6 col-lg-4">
-                    <div class="hotel-card">
-                        <figure>
-                            <img src="images/hotel-img02.jpg" alt="Emporium"/>
-                            <a href="https://www.emporium-voyage.com/luxury-hotel-cocoa-island-by-como" class="content-overlay">
-                                <h5>The Soho Hotel</h5>
-                                <p>From € 4000 | London</p>
-                            </a>
-                            <div class="pricelabel">From EUR 2389 / night</div>
-                        </figure>
-                        <div class="title">
-                            <h3><a href="https://www.emporium-voyage.com/luxury-hotel-cocoa-island-by-como">The Soho Hotel</a></h3>
-                            <a href="https://www.emporium-voyage.com/luxury-hotel-cocoa-island-by-como" class="cartlink"><i class="fa fa-shopping-cart"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-6 col-lg-4">
-                    <div class="hotel-card">
-                        <figure>
-                            <img src="images/hotel-img03.jpg" alt="Emporium"/>
-                            <a href="https://www.emporium-voyage.com/luxury-hotel-cocoa-island-by-como" class="content-overlay">
-                                <h5>Haymarket Hotel</h5>
-                                <p>From € 2737 | London</p>
-                            </a>
-                            <div class="pricelabel">From EUR 3879 / night</div>
-                        </figure>
-                        <div class="title">
-                            <h3><a href="https://www.emporium-voyage.com/luxury-hotel-cocoa-island-by-como">Haymarket Hotel</a></h3>
-                            <a href="https://www.emporium-voyage.com/luxury-hotel-cocoa-island-by-como" class="cartlink"><i class="fa fa-shopping-cart"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-6 col-lg-4">
-                    <div class="hotel-card">
-                        <figure>
-                            <img src="images/hotel-img04.jpg" alt="Emporium"/>
-                            <a href="https://www.emporium-voyage.com/luxury-hotel-cocoa-island-by-como" class="content-overlay">
-                                <h5>Covent Garden Hotel</h5>
-                                <p>From € 2590 | London</p>
-                            </a>
-                            <div class="pricelabel">From EUR 3628 / night</div>
-                        </figure>
-                        <div class="title">
-                            <h3><a href="https://www.emporium-voyage.com/luxury-hotel-cocoa-island-by-como">Covent Garden Hotel</a></h3>
-                            <a href="https://www.emporium-voyage.com/luxury-hotel-cocoa-island-by-como" class="cartlink"><i class="fa fa-shopping-cart"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-6 col-lg-4">
-                    <div class="hotel-card">
-                        <figure>
-                            <img src="images/hotel-img01.jpg" alt="Emporium"/>
-                            <a href="https://www.emporium-voyage.com/luxury-hotel-cocoa-island-by-como" class="content-overlay">
-                                <h5>Ham Yard Hotel</h5>
-                                <p>From € 4141 | Berlin</p>
-                            </a>
-                            <div class="pricelabel">From EUR 3496 / night</div>
-                        </figure>
-                        <div class="title">
-                            <h3><a href="https://www.emporium-voyage.com/luxury-hotel-cocoa-island-by-como">Ham Yard Hotel</a></h3>
-                            <a href="https://www.emporium-voyage.com/luxury-hotel-cocoa-island-by-como" class="cartlink"><i class="fa fa-shopping-cart"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-6 col-lg-4">
-                    <div class="hotel-card">
-                        <figure>
-                            <img src="images/hotel-img02.jpg" alt="Emporium"/>
-                            <a href="https://www.emporium-voyage.com/luxury-hotel-cocoa-island-by-como" class="content-overlay">
-                                <h5>The Soho Hotel</h5>
-                                <p>From € 4000 | London</p>
-                            </a>
-                            <div class="pricelabel">From EUR 4537 / night</div>
-                        </figure>
-                        <div class="title">
-                            <h3><a href="https://www.emporium-voyage.com/luxury-hotel-cocoa-island-by-como">The Soho Hotel</a></h3>
-                            <a href="https://www.emporium-voyage.com/luxury-hotel-cocoa-island-by-como" class="cartlink"><i class="fa fa-shopping-cart"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-6 col-lg-4">
-                    <div class="hotel-card">
-                        <figure>
-                            <img src="images/hotel-img03.jpg" alt="Emporium"/>
-                            <a href="https://www.emporium-voyage.com/luxury-hotel-cocoa-island-by-como" class="content-overlay">
-                                <h5>Haymarket Hotel</h5>
-                                <p>From € 2737 | London</p>
-                            </a>
-                            <div class="pricelabel">From EUR 3287 / night</div>
-                        </figure>
-                        <div class="title">
-                            <h3><a href="https://www.emporium-voyage.com/luxury-hotel-cocoa-island-by-como">Haymarket Hotel</a></h3>
-                            <a href="https://www.emporium-voyage.com/luxury-hotel-cocoa-island-by-como" class="cartlink"><i class="fa fa-shopping-cart"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-6 col-lg-4">
-                    <div class="hotel-card">
-                        <figure>
-                            <img src="images/hotel-img04.jpg" alt="Emporium"/>
-                            <a href="https://www.emporium-voyage.com/luxury-hotel-cocoa-island-by-como" class="content-overlay">
-                                <h5>Covent Garden Hotel</h5>
-                                <p>From € 2590 | London</p>
-                            </a>
-                            <div class="pricelabel">From EUR 3695 / night</div>
-                        </figure>
-                        <div class="title">
-                            <h3><a href="https://www.emporium-voyage.com/luxury-hotel-cocoa-island-by-como">Covent Garden Hotel</a></h3>
-                            <a href="https://www.emporium-voyage.com/luxury-hotel-cocoa-island-by-como" class="cartlink"><i class="fa fa-shopping-cart"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+			@if($propertiesArr)
+				<div class="row">
+					<div class="col-sm-12 text-center">
+						<h2 class="heading">{{$total_record}} Hotel(s) Found for {{$slug}}</h2>
+					</div>
+				</div>
+				{{--*/ $rw = 1 /*--}}
+				<div class="row">
+					@foreach($propertiesArr as $props)
+						<div class="col-sm-6 col-md-6 col-lg-4">
+							<div class="hotel-card">
+								<figure>
+									{{--*/ $images = CustomQuery::getPropertyImages($props->id); /*--}}
+									@if(!empty($images) && count($images)>0)
+										{{--*/ $propsImageFileName = ''; /*--}}
+										@if(isset($images[0]))
+											<img alt="{{ $images[0]->file_name }}" src="{{$images[0]->imgsrc.$images[0]->file_name}}" />
+										@endif
+									@endif
+									
+									<a href="{{URL::to($props->property_slug)}}" class="content-overlay">
+										<h5>{{ $props->property_name}}</h5>
+										<p>From € {{$props->price}} {{(isset($props->category_name))? '| '.$props->category_name : ''}}</p>
+									</a>
+									<div class="pricelabel">From EUR {{$props->price}} / night</div>
+								</figure>
+								<div class="title">
+									<h3><a href="{{URL::to($props->property_slug)}}">{{ $props->property_name}}</a></h3>
+									<a href="{{URL::to($props->property_slug)}}" class="cartlink"><i class="fa fa-shopping-cart"></i></a>
+								</div>
+							</div>
+						</div>
+						@if($rw%3==0)
+							</div>
+							<div class="row">
+						@endif
+						{{--*/ $rw++ /*--}}
+					@endforeach	
+				</div>
+			@endif
         </div>
     </section>
     {{--  Search Result end --}}
