@@ -149,17 +149,29 @@ class RestaurantController extends Controller {
 
 	function postSave( Request $request)
 	{
-		
+		//print_r($request->all()); die;
 		$rules = $this->validateForm();
-		$rules['title'] = 'required|unique:tb_restaurants,title,'. $request->input('id');
 		if($request->input('id')==''){
         	$data['alias'] = str_slug($request->input('title'));
-        	$rules['title'] = 'required|unique';
+        	$rules['title'] = 'required|unique:tb_restaurants';
     	}
+		else
+		{
+			$rules['title'] = 'required|unique:tb_restaurants,title,'. $request->input('id');
+		}
 		$validator = Validator::make($request->all(), $rules);	
 		if ($validator->passes()) {
-			$data = $this->validatePost('tb_restaurant');
+			//$data = $this->validatePost('tb_restaurant');
 			
+			$data['title'] = $request->input('title');
+			$data['desciription'] = $request->input('desciription');
+			if (!is_null($request->input('video_type'))) {
+				$data['video_type'] = $request->input('video_type');
+			}
+			if (!is_null($request->input('video_link_type'))) {
+				$data['video_link_type'] = $request->input('video_link_type');
+			}
+			$data['video_link'] = $request->input('video_link');
     		if($request->input('id')==''){
     			$data['alias'] = str_slug($request->input('title'));
     		}
@@ -168,7 +180,7 @@ class RestaurantController extends Controller {
             } else {
                 $data['designer'] = '';
             }
-            if (!empty($request->input('category_id'))) {
+           if (!empty($request->input('category_id'))) {
                 $data['category_id'] = implode(',', $request->input('category_id'));
             } else {
                 $data['category_id'] = '';
@@ -177,7 +189,23 @@ class RestaurantController extends Controller {
             $data['reservation_contact'] = $request->input('reservation_contact');
             $data['website'] = $request->input('website');
             $data['menu'] = $request->input('menu');
-            
+			$data['url'] = $request->input('url');
+			$data['location'] = $request->input('location');
+			$data['usp_text'] = $request->input('usp_text');
+			$data['usp_person'] = $request->input('usp_person');
+            $data['meta_keyword'] = $request->input('meta_keyword');
+			$data['meta_description'] = $request->input('meta_description');
+			$destinationPath = public_path() . '/uploads/properties_subtab_imgs/';
+			if (!is_null($request->file('video'))) {
+                $room_suites_vfile = $request->file('video');
+                $room_suites_vfilename = $room_suites_vfile->getClientOriginalName();
+                $room_suites_vextension = $room_suites_vfile->getClientOriginalExtension(); //if you need extension of the file
+                $room_suites_videofilename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $room_suites_vextension;
+                $room_suites_vuploadSuccess = $room_suites_vfile->move($destinationPath, $room_suites_videofilename);
+                if ($room_suites_vuploadSuccess) {
+                    $data['video'] = $room_suites_videofilename;
+                }
+            }
 				
 			$id = $this->model->insertRow($data , $request->input('id'));
 			

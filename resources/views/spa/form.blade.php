@@ -167,6 +167,15 @@
 						</div>
 					</div>
 					<div class="form-group  " >
+						<label for="Spa location" class=" control-label col-md-4 text-left"> Spa Location </label>
+						<div class="col-md-6">
+							{!! Form::text('location', $row['location'],array('class'=>'form-control', 'placeholder'=>'',   )) !!}
+						</div>
+						<div class="col-md-2">
+							
+						</div>
+					</div>
+					<div class="form-group  " >
 						<label for="Desciription" class=" control-label col-md-4 text-left"> Menu <span class="asterix">  </span></label>
 						<div class="col-md-6">
 							<textarea name='menu' rows='5' id='menu' class='form-control '

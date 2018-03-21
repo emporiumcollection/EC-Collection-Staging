@@ -77,8 +77,7 @@
 					<div class="form-group  " >
 						<label for="Category Id" class=" control-label col-md-4 text-left"> Category Id </label>
 						<div class="col-md-6">
-						<select name='category_id[]' id="category_id" rows='5'   class='select2 ' multiple="multiple"   > 
-                                            <option  value ="0">-- Select Category --</option> 
+						<select name='category_id[]' id="category_id[]" rows='5'   class='select2 ' multiple="multiple"   > 
                                             @foreach($categories as $val)
 
                                             <option  value ="{{$val->id}}" {{(isset($row['category_id']) && in_array($val->id,explode(',',$row['category_id']))) ? " selected='selected' " : '' }}>{{$val->category_name}}</option> 						
@@ -192,6 +191,15 @@
 						<div class="col-md-6">
 							<textarea name='usp_person' rows='5' id='usp_person' class='form-control '
 							>{{ $row['usp_person'] }}</textarea>
+						</div>
+						<div class="col-md-2">
+							
+						</div>
+					</div>
+					<div class="form-group  " >
+						<label for="Restaurant location" class=" control-label col-md-4 text-left"> Restaurant Location </label>
+						<div class="col-md-6">
+							{!! Form::text('location', $row['location'],array('class'=>'form-control', 'placeholder'=>'',   )) !!}
 						</div>
 						<div class="col-md-2">
 							
