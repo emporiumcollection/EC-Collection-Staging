@@ -702,6 +702,10 @@
 				</div>
 			 </header>
 			  @yield('content')
+              @section('sidebar')
+                  @parent
+                 @include('frontend.themes.emporium.layouts.sections.footer')
+              @show
 		  </div>
 
 
