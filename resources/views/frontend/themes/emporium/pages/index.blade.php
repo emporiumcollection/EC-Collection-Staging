@@ -9,42 +9,46 @@
 @section('content')
     <!-- slider starts here -->
          <section class="sliderSection">
-            <div id="myCarousel" class="carousel" data-ride="carousel">
-               <!-- Indicators -->
-               <!--     <ol class="carousel-indicators">
-                  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                  <li data-target="#myCarousel" data-slide-to="1"></li>
-                  </ol> -->
-               <!-- Wrapper for slides -->
-               <div class="carousel-inner">
-                  <div class="item active">
-                     <a href="javascript:void(0);"><img src="{{ asset('themes/emporium/images/1500111312-92134786.jpg') }}" alt="Los Angeles"></a>
-                     <div class="carousel-caption">
-                        <h1>Experience Luxury</h1>
-                        <p>Experience Luxuy Hotels with Emporium Yachts</p>
-                     </div>
-                  </div>
-                  <div class="item">
-                     <a href="javascript:void(0);"><img src="{{ asset('themes/emporium/images/1487942280-6276912.jpg') }}" alt="Chicago"></a>
-                     <div class="carousel-caption">
-                        <h1>Experience Luxury Germany</h1>
-                        <p>From the posh, sun-soaked beaches along the Indian Ocean to the epoch heights of the Himalayas, Emporium-Voyage is your ideal, vogue vacation planner! With over 300 posh properties and elite spas huddled in its cococoon.</p>
-                     </div>
-                  </div>
-               </div>
-               <!-- Left and right controls -->
-               <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-               <img src="{{ asset('themes/emporium/images/editorial-left-arrow.png') }}" alt="Icon">
-               </a>
-               <a class="right carousel-control" href="#myCarousel" data-slide="next">
-               <img src="{{ asset('themes/emporium/images/editorial-right-arrow.png') }}" alt="Icon">
-               </a>
-            </div>
+            @if(!empty($slider))
+              <div id="myCarousel" class="carousel" data-ride="carousel">
+                 <!-- Wrapper for slides -->
+                 <div class="carousel-inner">
+                    @foreach($slider as $key => $slider_row)
+                      <div class="item {{($key == 0)? 'active' : ''}}">
+                         <a href="{{$slider_row->slider_link}}"><img src="{{url('uploads/slider_images/'.$slider_row->slider_img)}}" alt="{{$slider_row->slider_title}}"></a>
+                         <div class="carousel-caption">
+                            <h1><a href="{{$slider_row->slider_link}}">{{$slider_row->slider_title}}</a></h1>
+                            <p>{{$slider_row->slider_description}}</p>
+                         </div>
+                      </div>
+                    @endforeach
+                 </div>
+                 <!-- Left and right controls -->
+                 <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                 <img src="{{ asset('themes/emporium/images/editorial-left-arrow.png') }}" alt="Icon">
+                 </a>
+                 <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                 <img src="{{ asset('themes/emporium/images/editorial-right-arrow.png') }}" alt="Icon">
+                 </a>
+              </div>
+            @endif
             <div class="sliderFooter">
-               <ul>
-                  <li><a href="javascript:void(0);">Imprint</a></li>
-                  <li><a href="terms-and-conditions.html">Terms and Conditions</a></li>
-               </ul>
+                {{--*/ $landing_menus = SiteHelpers::menus('landing') /*--}}
+               @if(!empty($landing_menus))
+                 <ul>
+                  @foreach ($landing_menus as $fmenu)
+                    <li>
+                        <a @if($fmenu['menu_type'] =='external') href="{{ URL::to($fmenu['url'])}}" @else href="{{ URL::to($fmenu['module'])}}" @endif >
+                          @if(CNF_MULTILANG ==1 && isset($fmenu['menu_lang']['title'][Session::get('lang')]))
+                              {{ $fmenu['menu_lang']['title'][Session::get('lang')] }}
+                          @else
+                              {{$fmenu['menu_name']}}
+                          @endif
+                        </a>
+                    </li>
+                  @endforeach
+                 </ul>
+                @ENDIF
             </div>
          </section>
       
@@ -66,7 +70,12 @@
     @parent
 @endsection
 
-{{-- For custom script -->
+{{-- For custom script --}}
 @section('custom_js')
     @parent
+@endsection
+
+{{-- For footer --}}
+@section('footer')
+    
 @endsection
