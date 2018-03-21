@@ -313,6 +313,16 @@
 
 @endsection
 
+{{-- For Include Top Bar --}}
+@section('top_search_bar')
+    @parent
+@endsection
+
+{{-- For Include Side Bar --}}
+@section('sidebar')
+    @include('frontend.themes.emporium.layouts.sections.grid_sidebar')
+@endsection
+
 {{-- For Include style files --}}
 @section('head')
     @parent
@@ -336,5 +346,5 @@
 
 {{-- For footer --}}
 @section('footer')
-
+    @parent
 @endsection
