@@ -18,14 +18,14 @@
                <!-- Wrapper for slides -->
                <div class="carousel-inner">
                   <div class="item active">
-                     <a href="javascript:void(0);"><img src="images/1500111312-92134786.jpg" alt="Los Angeles"></a>
+                     <a href="javascript:void(0);"><img src="{{ asset('themes/emporium/images/1500111312-92134786.jpg') }}" alt="Los Angeles"></a>
                      <div class="carousel-caption">
                         <h1>Experience Luxury</h1>
                         <p>Experience Luxuy Hotels with Emporium Yachts</p>
                      </div>
                   </div>
                   <div class="item">
-                     <a href="javascript:void(0);"><img src="images/1487942280-6276912.jpg" alt="Chicago"></a>
+                     <a href="javascript:void(0);"><img src="{{ asset('themes/emporium/images/1487942280-6276912.jpg') }}" alt="Chicago"></a>
                      <div class="carousel-caption">
                         <h1>Experience Luxury Germany</h1>
                         <p>From the posh, sun-soaked beaches along the Indian Ocean to the epoch heights of the Himalayas, Emporium-Voyage is your ideal, vogue vacation planner! With over 300 posh properties and elite spas huddled in its cococoon.</p>
@@ -34,10 +34,10 @@
                </div>
                <!-- Left and right controls -->
                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-               <img src="images/editorial-left-arrow.png" alt="Icon">
+               <img src="{{ asset('themes/emporium/images/editorial-left-arrow.png') }}" alt="Icon">
                </a>
                <a class="right carousel-control" href="#myCarousel" data-slide="next">
-               <img src="images/editorial-right-arrow.png" alt="Icon">
+               <img src="{{ asset('themes/emporium/images/editorial-right-arrow.png') }}" alt="Icon">
                </a>
             </div>
             <div class="sliderFooter">

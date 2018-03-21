@@ -28,14 +28,14 @@
 		@parent
 		<link href="{{ asset('themes/emporium/css/daterangepicker.css') }}" rel="stylesheet">
 		<link href="{{ asset('themes/emporium/css/calendar.css') }}" rel="stylesheet">
-		@endsection
+		@show
 
 		<link href="{{ asset('themes/emporium/css/style.css') }}" rel="stylesheet">
 		<link href="{{ asset('themes/emporium/css/responsive.css') }}" rel="stylesheet">
 
 		@section('custom_css')
 		@parent
-		@endsection
+		@show
 	  
    </head>
    <body>
@@ -138,12 +138,12 @@
                      </div>
                   </div>
                   <div class="item">
-                     <a href="javascript:void(0)"><img src="images/left-side-banner.png"></a>
+                     <a href="javascript:void(0)"><img src="{{ asset('themes/emporium/images/left-side-banner.png') }}"></a>
                   </div>
                </div>
             </div>
          </div>
-		@endsection
+		@show
 	  </div>
       <div class="mobilemenu">
          <div class="block-content togglenav content active mobilenavclosebtn">
@@ -153,7 +153,7 @@
          </div>
          <div class="mobilemenu-inner">
             <div class="mobilemainnav openmobilemenu">
-               <div class="mobilenavheader"><a href="index.html"><img src="images/design-location-logo.png" alt="Emporium Voyage" class="img-responsive"/></a></div>
+               <div class="mobilenavheader"><a href="index.html"><img src="{{ asset('themes/emporium/images/design-location-logo.png')}}" alt="Emporium Voyage" class="img-responsive"/></a></div>
                <ul class="mobilemenulist">
                   <li>
                      <div class="mobile-leftsearch">
@@ -784,20 +784,20 @@
     @include('frontend.themes.emporium.layouts.sections.cookie')	
       <a href="#" id="back-to-top" title="Back to top">&uarr;</a>
       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-      <script src="js/jquery.min.js"></script>
-      <script src="js/bootstrap.min.js"></script>
-      <script src="js/owl.carousel.js"></script>
+      <script src="{{ asset('themes/emporium/js/jquery.min.js') }}"></script>
+      <script src="{{ asset('themes/emporium/js/bootstrap.min.js') }}"></script>
+      <script src="{{ asset('themes/emporium/js/owl.carousel.js') }}"></script>
       <!-- custom scrollbar plugin -->
-      <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+      <script src="{{ asset('themes/emporium/js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
       @section('javascript')
 		@parent
 	  <!-- Date Picker js -->
-      <script src="js/moment.min.js"></script>
+      <script src="{{ asset('themes/emporium/js/moment.min.js') }}"></script>
 	  
-      <script src="js/daterangepicker.js"></script>
-      <script src="js/single-date.js"></script>
-      <script src="js/custom.js"></script>
-	  @endsection
+      <script src="{{ asset('themes/emporium/js/daterangepicker.js') }}"></script>
+      <script src="{{ asset('themes/emporium/js/single-date.js') }}"></script>
+      <script src="{{ asset('themes/emporium/js/custom.js') }}"></script>
+	  @show
 	  @section('custom_js')
 		@parent	
       <script type="text/javascript">
@@ -841,6 +841,6 @@
                  return "";
              }
       </script>		
-	  @endsection
+	  @show
    </body>
 </html>
