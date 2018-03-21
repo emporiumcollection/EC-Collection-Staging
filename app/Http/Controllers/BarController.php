@@ -179,6 +179,7 @@ class BarController extends Controller {
             $data['reservation_email'] = $request->input('reservation_email');
             $data['reservation_contact'] = $request->input('reservation_contact');
             $data['website'] = $request->input('website');
+			$data['location'] = $request->input('location');
 				
 			$id = $this->model->insertRow($data , $request->input('id'));
 			
