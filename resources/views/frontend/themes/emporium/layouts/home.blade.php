@@ -696,9 +696,11 @@
 				</div>
 				<div class="header-content">
 				   <div class="col-lg-12 header-search">
-						  @include('frontend.themes.emporium.layouts.sections.top_search_bar')
-
-				   </div>
+                       @section('top_search_bar')
+                           @parent
+                           @include('frontend.themes.emporium.layouts.sections.top_search_bar')
+                       @show
+					</div>
 				</div>
 			 </header>
 			  @yield('content')
