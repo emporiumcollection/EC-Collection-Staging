@@ -88,7 +88,7 @@
 				</div>
 			 </header>
 			  @yield('content')
-              @section('sidebar')
+              @section('footer')
                   @parent
                  @include('frontend.themes.emporium.layouts.sections.footer')
               @show
