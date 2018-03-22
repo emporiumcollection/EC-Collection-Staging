@@ -50,12 +50,12 @@
 						<div class="col-sm-6 col-md-6 col-lg-4">
 							<div class="hotel-card">
 								<figure>
-									{{--*/ $images = CustomQuery::getPropertyImage($props->id); /*--}}
-									
-									@if(!empty($images) && count($images)>0)
-										{{--*/ $propsImageFileName = ''; /*--}}
-										@if(isset($images[0]))
-											<img alt="{{ $images[0]->file_name }}" src="{{$images[0]->imgsrc.$images[0]->file_name}}" />
+									{{--*/ $propertyImage = CustomQuery::getPropertyImage($props->id); /*--}}
+
+									@if(!empty($propertyImage) && count($propertyImage)>0)
+										
+										@if(isset($propertyImage))
+											<img alt="{{ $propertyImage->file_name }}" src="{{$propertyImage->img_src}}" />
 										@endif
 									@endif
 									
