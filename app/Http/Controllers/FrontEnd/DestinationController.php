@@ -12,7 +12,7 @@ class DestinationController extends Controller {
 	
 	 public function getDestinatinosAjax(Request $request) {
 		
-		$category_id = $request->Input('catID');
+		$category_id = $request->catID;
 		$res = array(); 
 		if($category_id!='')
 		{
@@ -61,6 +61,25 @@ class DestinationController extends Controller {
 		{
 			$res['status'] = 'error';
 			$res['errors'] = 'No Experiences found!';
+		}
+		response()->json($res);
+    }
+	
+	public function getMenusAjax(Request $request) {
+		$menu_id = $request->menuID;
+		$menu_pos = $request->menu_pos;
+		$res = array(); 
+		$fetchmenu = DB::table('tb_menu')->where('parent_id', $menu_id)->where('position', $menu_pos)->where('active', 1)->orderBy('ordering','asc')->get();
+		if(!empty($fetchmenu))
+		{
+			$res['status'] = 'success';
+			$res['menus'] = $fetchmenu;
+			
+		}
+		else
+		{
+			$res['status'] = 'error';
+			$res['errors'] = 'No Menus found!';
 		}
 		response()->json($res);
     }
