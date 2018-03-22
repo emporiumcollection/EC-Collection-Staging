@@ -39,34 +39,13 @@
 
 	   </head>
 	   <body>
-		  <div class="sidefixednav">
-			 <ul>
-				<!--<li class="hamburguricon">
-				   <div class="block-content togglenav content">
-					  <span></span>
-					  <span> </span>
-					  <span></span>
-					  </div>
-				   </li>-->
-				<li class="loginSignPopupButton">
-				   <a href="javascript:void(0)" class="clicktologin" style="display:none;"><i class="fa fa-lock"></i></a>
-				   <a href="javascript:void(0)" class="login-user"><i class="fa fa-user"></i></a>
-				   <ul class="user-setting">
-					  <li><a href="javascript:void(0)">Profile</a></li>
-					  <li><a href="javascript:void(0)">Change Possword</a></li>
-					  <li><a href="javascript:void(0)">Logout</a></li>
-				   </ul>
-				</li>
-				<li class="calander"><a href="javascript:void(0)"><i class="fa fa-calendar"></i></a></li>
-			 </ul>
-		  </div>
-		  <div class="homerightmenu contactfixed">
-			 <ul>
-				<li><a href="tel:+19344511317"><i class="fa fa-phone"></i> +1 934 451 1317</a></li>
-				<li><a href="mailto: reservations@emporium-voyage.com"><i class="fa fa-envelope"></i> reservations@emporium-voyage.com</a></li>
-			 </ul>
-		  </div>
-
+		  	{{--For Right Side Icons --}}
+			@section('right_side_iconbar')
+			@parent
+			@include('frontend.themes.emporium.layouts.sections.common_right_iconbar')
+			@show
+			
+			{{--For Left Sidebar --}}
 		   @section('sidebar')
 			@parent
 			 @include('frontend.themes.emporium.layouts.sections.home_sidebar')
@@ -80,6 +59,7 @@
 				</div>
 				<div class="header-content">
 				   <div class="col-lg-12 header-search">
+				   		{{--For Top Bar --}}
                        @section('top_search_bar')
                            @parent
                            @include('frontend.themes.emporium.layouts.sections.top_search_bar')
@@ -87,16 +67,25 @@
 					</div>
 				</div>
 			 </header>
+			 {{--For Page Content  --}}
+
 			  @yield('content')
+
+
+			  {{--For Footer  --}}
               @section('footer')
                   @parent
                  @include('frontend.themes.emporium.layouts.sections.footer')
               @show
+
 		  </div>
 
+		@if(!auth()->check()){	
+			@include('frontend.themes.emporium.layouts.sections.login')
+		@endif
 
-		@include('frontend.themes.emporium.layouts.sections.login')
 		@include('frontend.themes.emporium.layouts.sections.cookie')
+
 		  <a href="#" id="back-to-top" title="Back to top">&uarr;</a>
 		  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		  <script src="{{ asset('themes/emporium/js/jquery.min.js') }}"></script>
