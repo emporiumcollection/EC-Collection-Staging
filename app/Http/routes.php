@@ -363,7 +363,7 @@ Route::get('pdp/{slug}', 'Frontend\PropertyController@getPropertyDetail');
 Route::get('search', 'Frontend\PropertyController@getPropertyGridListByCategory');
 Route::get('our-collection-pages/{slug}/{page}', 'HomeController@getPropertyDetail_pages');
 Route::get('book-property/{slug}', 'HomeController@bookProperty');
-Route::get('luxurytravel/{slug}', 'HomeController@getPropertyByCategory');
+Route::get('luxurytravel/{slug}', 'Frontend\PropertyController@getPropertyGridListByCategory');
 Route::get('ourcollections/{id}', 'HomeController@getPropertyByCategoryQuickView');
 //Route::get('search', 'HomeController@SearchLuxuryExperience');
 Route::get('luxury_experience/{cat}', 'HomeController@SearchLuxuryExperience');
