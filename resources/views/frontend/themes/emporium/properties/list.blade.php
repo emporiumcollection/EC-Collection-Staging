@@ -27,10 +27,10 @@
 
 				<!-- Left and right controls -->
 				<a class="left carousel-control" href="#myCarousel" data-slide="prev">
-					<img src="{{ assets('images/editorial-left-arrow.png') }}" alt="Icon"/>
+					<img src="{{ asset('themes/emporium/images/editorial-left-arrow.png') }}" alt="Icon"/>
 				</a>
 				<a class="right carousel-control" href="#myCarousel" data-slide="next">
-					<img src="{{ assets('images/editorial-right-arrow.png') }}" alt="Icon"/>
+					<img src="{{ asset('themes/emporium/images/editorial-right-arrow.png') }}" alt="Icon"/>
 				</a>
 			</div>
 		@endif

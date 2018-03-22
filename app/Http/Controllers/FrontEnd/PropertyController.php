@@ -117,6 +117,8 @@ class PropertyController extends Controller {
 	public function getPropertyGridListByCategory(Request $request)
 	{
 		$this->data['slug'] = $request->slug;
+
+        $this->data['about_text'] = \DB::table('tb_settings')->select('content')->where('key_value', 'about_text')->first();
 		
 		$this->data['slider'] = \DB::table('tb_sliders')->select('slider_category','slider_title','slider_description','slider_img','slider_link','slide_type')->where('slider_category', $request->slug)->get();
 

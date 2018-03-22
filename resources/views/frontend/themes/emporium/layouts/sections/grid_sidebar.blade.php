@@ -7,7 +7,7 @@
     </div>
     <div class="mobilemenu-inner">
         <div class="mobilemainnav openmobilemenu">
-            <div class="mobilenavheader"><a href="index.html"><img src="{{ assets('images/logo.png') }}" alt="Emporium Voyage" class="img-responsive"/></a></div>
+            <div class="mobilenavheader"><a href="index.html"><img src="{{ asset('themes/emporium/images/logo.png') }}" alt="Emporium Voyage" class="img-responsive"/></a></div>
             <ul class="mobilemenulist">
                 <li>
                     <div class="mobile-leftsearch">
@@ -69,7 +69,7 @@
                         </div>
                     </div>
                     <div class="item">
-                        <a href="javascript:void(0)"><img src="images/left-side-banner.png"></a>
+                        <a href="javascript:void(0)"><img src="{{ asset('themes/emporium/images/left-side-banner.png') }}"></a>
                     </div>
                 </div>
             </div>
@@ -89,10 +89,10 @@
                     </div>
                 </li>
                 <li>
-                    <div class="navheadimage"><a href="javascript:void(0)"><img src="images/mountain-image.jpg" alt=""/><div class="headingoverlay">HOTELS</div></a></div>
+                    <div class="navheadimage"><a href="javascript:void(0)"><img src="{{ asset('themes/emporium/images/mountain-image.jpg') }}" alt=""/><div class="headingoverlay">HOTELS</div></a></div>
                 </li>
                 <li>
-                    <div class="navheadimage"><a href="javascript:void(0)"><img src="images/mountain-image.jpg" alt=""/><div class="headingoverlay">YACHTS</div></a></div>
+                    <div class="navheadimage"><a href="javascript:void(0)"><img src="{{ asset('themes/emporium/images/mountain-image.jpg') }}" alt=""/><div class="headingoverlay">YACHTS</div></a></div>
                 </li>
             </ul>
             <div class="left-carousal">
@@ -124,7 +124,7 @@
                         </div>
                     </div>
                     <div class="item">
-                        <a href="javascript:void(0)"><img src="images/left-side-banner.png"></a>
+                        <a href="javascript:void(0)"><img src="{{ asset('themes/emporium/images/left-side-banner.png') }}"></a>
                     </div>
                 </div>
             </div>
@@ -242,7 +242,7 @@
                         </div>
                     </div>
                     <div class="item">
-                        <a href="javascript:void(0)"><img src="images/left-side-banner.png"></a>
+                        <a href="javascript:void(0)"><img src="{{ asset('themes/emporium/images/left-side-banner.png')}}"></a>
                     </div>
                 </div>
             </div>
@@ -973,7 +973,7 @@
                         </div>
                     </div>
                     <div class="item">
-                        <a href="javascript:void(0)"><img src="images/left-side-banner.png"></a>
+                        <a href="javascript:void(0)"><img src="{{ asset('themes/emporium/images/left-side-banner.png') }}"></a>
                     </div>
                 </div>
             </div>
@@ -1030,7 +1030,7 @@
                         </div>
                     </div>
                     <div class="item">
-                        <a href="javascript:void(0)"><img src="images/left-side-banner.png"></a>
+                        <a href="javascript:void(0)"><img src="{{ asset('themes/emporium/images/left-side-banner.png') }}"></a>
                     </div>
                 </div>
             </div>
@@ -1048,7 +1048,7 @@
                     </div>
                 </li>
                 <li>
-                    <div class="navheadimage"><img src="images/mountain-image.jpg" alt=""/><div class="headingoverlay">AFRICA</div></div>
+                    <div class="navheadimage"><img src="{{ asset('themes/emporium/images/mountain-image.jpg') }}" alt=""/><div class="headingoverlay">AFRICA</div></div>
                 </li>
                 <li>
                     <ul class="mobilesublinks">
@@ -1087,7 +1087,7 @@
                         </div>
                     </div>
                     <div class="item">
-                        <a href="javascript:void(0)"><img src="images/left-side-banner.png"></a>
+                        <a href="javascript:void(0)"><img src="{{ asset('themes/emporium/images/left-side-banner.png') }}"></a>
                     </div>
                 </div>
             </div>
@@ -1105,7 +1105,7 @@
                     </div>
                 </li>
                 <li>
-                    <div class="navheadimage"><img src="images/mountain-image.jpg" alt=""/><div class="headingoverlay">SOUTHERN AFRICA</div></div>
+                    <div class="navheadimage"><img src="{{ asset('themes/emporium/images/mountain-image.jpg') }}" alt=""/><div class="headingoverlay">SOUTHERN AFRICA</div></div>
                 </li>
                 <li>
                     <ul class="mobilesublinks">
@@ -1142,7 +1142,7 @@
                         </div>
                     </div>
                     <div class="item">
-                        <a href="javascript:void(0)"><img src="images/left-side-banner.png"></a>
+                        <a href="javascript:void(0)"><img src="{{ asset('themes/emporium/images/left-side-banner.png') }}"></a>
                     </div>
                 </div>
             </div>
@@ -1160,19 +1160,19 @@
                     </div>
                 </li>
                 <li>
-                    <div class="navheadimage"><a href="javascript:void(0)"><img src="images/mountain-image.jpg" alt=""/><div class="headingoverlay">BEACH HOTELS</div></a></div>
+                    <div class="navheadimage"><a href="javascript:void(0)"><img src="{{ asset('themes/emporium/images/mountain-image.jpg') }}" alt=""/><div class="headingoverlay">BEACH HOTELS</div></a></div>
                 </li>
                 <li>
-                    <div class="navheadimage"><a href="javascript:void(0)"><img src="images/mountain-image.jpg" alt=""/><div class="headingoverlay">GREEN HOTELS</div></a></div>
+                    <div class="navheadimage"><a href="javascript:void(0)"><img src="{{ asset('themes/emporium/images/mountain-image.jpg') }}" alt=""/><div class="headingoverlay">GREEN HOTELS</div></a></div>
                 </li>
                 <li>
-                    <div class="navheadimage"><a href="javascript:void(0)"><img src="images/mountain-image.jpg" alt=""/><div class="headingoverlay">URAN HOTELS</div></a></div>
+                    <div class="navheadimage"><a href="javascript:void(0)"><img src="{{ asset('themes/emporium/images/mountain-image.jpg') }}" alt=""/><div class="headingoverlay">URAN HOTELS</div></a></div>
                 </li>
                 <li>
-                    <div class="navheadimage"><a href="javascript:void(0)"><img src="images/mountain-image.jpg" alt=""/><div class="headingoverlay">SPA HOTELS</div></a></div>
+                    <div class="navheadimage"><a href="javascript:void(0)"><img src="{{ asset('themes/emporium/images/mountain-image.jpg') }}" alt=""/><div class="headingoverlay">SPA HOTELS</div></a></div>
                 </li>
                 <li>
-                    <div class="navheadimage"><a href="javascript:void(0)"><img src="images/mountain-image.jpg" alt=""/><div class="headingoverlay">INFINITY POOL</div></a></div>
+                    <div class="navheadimage"><a href="javascript:void(0)"><img src="{{ asset('themes/emporium/images/mountain-image.jpg') }}" alt=""/><div class="headingoverlay">INFINITY POOL</div></a></div>
                 </li>
             </ul>
             <div class="left-carousal">
@@ -1204,7 +1204,7 @@
                         </div>
                     </div>
                     <div class="item">
-                        <a href="javascript:void(0)"><img src="images/left-side-banner.png"></a>
+                        <a href="javascript:void(0)"><img src="{{ asset('themes/emporium/images/left-side-banner.png') }}"></a>
                     </div>
                 </div>
             </div>
