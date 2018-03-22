@@ -6,7 +6,7 @@
     </div>
     <div class="mobilemenu-inner">
         <div class="mobilemainnav openmobilemenu">
-            <div class="mobilenavheader"><a href="index.html"><img src="{{ asset('themes/emporium/images/design-location-logo.png')}}" alt="Emporium Voyage" class="img-responsive"/></a></div>
+            <div class="mobilenavheader"><a href="index.html"><img src="{{ asset('themes/emporium/images/logo.png')}}" alt="Emporium Voyage" class="img-responsive"/></a></div>
             <ul class="mobilemenulist">
                 <li>
                     <div class="mobile-leftsearch">
