@@ -58,7 +58,7 @@
       @section('right_side_iconbar')
       
       @include('frontend.themes.emporium.layouts.sections.home_right_iconbar')
-      @show
+      @endsection
 
 {{-- For Include style files --}}
 @section('head')
