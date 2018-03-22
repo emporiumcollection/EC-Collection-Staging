@@ -81,13 +81,15 @@
 
 		  </div>
 
-		@if(!auth()->check()){	
+		@if(!auth()->check())
 			@include('frontend.themes.emporium.layouts.sections.login')
 		@endif
 
 		@include('frontend.themes.emporium.layouts.sections.cookie')
 
 		  <a href="#" id="back-to-top" title="Back to top">&uarr;</a>
+		  {{-- Site Base URL --}}
+		<script type="text/javascript">var BaseURL ='{{ url() }}'; </script>
 		  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		  <script src="{{ asset('themes/emporium/js/jquery.min.js') }}"></script>
 		  <script src="{{ asset('themes/emporium/js/bootstrap.min.js') }}"></script>
@@ -125,9 +127,12 @@
 
 				 function checkCookie() {
 					 var username = getCookie("cookie-bar");
+
 					 if (username == "") {
 						 setCookie('cookie-bar', '1', 1);
 						 $(".bootom-cookie-bar-outer").show();
+					 }else{
+						 $(".bootom-cookie-bar-outer").hide();
 					 }
 				 }
 				 function getCookie(cname) {

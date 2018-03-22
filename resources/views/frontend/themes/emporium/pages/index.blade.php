@@ -15,7 +15,7 @@
                  <div class="carousel-inner">
                     @foreach($slider as $key => $slider_row)
                       <div class="item {{($key == 0)? 'active' : ''}}">
-                         <a href="{{$slider_row->slider_link}}"><img src="{{url('uploads/slider_images/'.$slider_row->slider_img)}}" alt="{{$slider_row->slider_title}}"></a>
+                         <a ><img src="{{url('uploads/slider_images/'.$slider_row->slider_img)}}" alt="{{$slider_row->slider_title}}"></a>
                          <div class="carousel-caption">
                             <h1><a href="{{$slider_row->slider_link}}">{{$slider_row->slider_title}}</a></h1>
                             <p>{{$slider_row->slider_description}}</p>
@@ -58,12 +58,12 @@
       @section('right_side_iconbar')
       
       @include('frontend.themes.emporium.layouts.sections.home_right_iconbar')
-      @show
+      @endsection
 
 {{-- For Include style files --}}
 @section('head')
     @parent
-	
+
 @endsection
 
 {{-- For custom style  --}}
