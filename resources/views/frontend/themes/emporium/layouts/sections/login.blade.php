@@ -32,7 +32,7 @@
             </div>
             <div class="signInPopup lognSignPopoUp">
                <div class="popupTopSec"><span>NEED HELP?</span><a href="javascript:void(0);" class="mainPopupClose">×</a></div>
-               <a href="javascript:void(0);" class="loginPopupCloseButton">×</a>
+
                <img src="{{ asset('themes/emporium/images/matthew-kane-365718.jpg')}}" alt="Images">
                <div class="loginFormDiv">
                   <h3>CREATE YOUR ACCOUNT PASSWORD</h3>
@@ -52,7 +52,7 @@
             </div>
             <div class="forgetPassPopup lognSignPopoUp">
                <div class="popupTopSec"><span>NEED HELP?</span><a href="javascript:void(0);" class="mainPopupClose">×</a></div>
-               <a href="javascript:void(0);" class="loginPopupCloseButton">×</a>
+
                <img src="{{ asset('themes/emporium/images/Kootenay-Aurora-1-X3.jpg')}}" alt="Images">
                <div class="loginFormDiv">
                   <h3>FORGOT YOUR <br>PASSWORD</h3>
