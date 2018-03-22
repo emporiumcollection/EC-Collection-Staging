@@ -39,6 +39,13 @@ class CommonHelper
     	return $data;
     }
 
+    static function getAboutInfo(){
+
+        $data = array();
+        $data['about_text'] = \DB::table('tb_settings')->select('content')->where('key_value', 'about_text')->first();
+        return $data;
+    }
+
     static function calc_price($actprice,$actdays,$customdays){
 		if($actprice>0 && $actdays > 0 && $customdays > 0)
 		{

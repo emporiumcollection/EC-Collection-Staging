@@ -37,7 +37,8 @@
             <div class="col-sm-4">
                 <div class="footer-coloumn">
                     <h2>ABOUT EMPORIUM VOYAGE</h2>
-                    <p>{{$about_text->content}}</p>
+                    <p>{{--*/ $abouttext = CommonHelper::getAboutInfo(); /*--}}
+                        {{$abouttext['about_text']->content}}</p>
                 </div>
             </div>
             <div class="col-sm-4">
@@ -48,18 +49,18 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <input type="text" placeholder="First Name" name="FNAME" class="form-control"/>
+                                    <input type="text" placeholder="First Name" name="FNAME" class="form-control" required="required"/>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <input type="text" placeholder="Last Name" name="LNAME" class="form-control"/>
+                                    <input type="text" placeholder="Last Name" name="LNAME" class="form-control" required="required"/>
                                 </div>
 
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <input type="text" placeholder="Email" name="EMAIL" class="form-control"/>
+                                    <input type="text" placeholder="Email" name="EMAIL" class="form-control" required="required"/>
                                 </div>
                             </div>
                             <div class="col-sm-6">
