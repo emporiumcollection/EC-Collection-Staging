@@ -6,7 +6,7 @@ use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 use App\Http\Controllers\Controller;
 use App\User;
 use DB,Validator, Input, Redirect;
-class PropertyController extends Controller {
+class PropertyController extends Controller
 
     public function __construct() {
         parent::__construct();
