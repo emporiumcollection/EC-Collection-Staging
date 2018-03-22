@@ -106,7 +106,9 @@
 {{-- For Include style files --}}
 @section('head')
     @parent
-
+    <link href="{{ asset('themes/emporium/css/animate.css') }}" rel="stylesheet">
+	<link href="{{ asset('themes/emporium/css/pdpage-css.css') }}" rel="stylesheet">
+	<link href="{{ asset('themes/emporium/css/search-result.css') }}" rel="stylesheet">
 @endsection
 
 {{-- For custom style  --}}
