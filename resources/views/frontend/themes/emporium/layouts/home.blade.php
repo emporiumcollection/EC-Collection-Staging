@@ -101,9 +101,13 @@
 		  <!-- Date Picker js -->
 		  <script src="{{ asset('themes/emporium/js/moment.min.js') }}"></script>
 
-		  <script src="{{ asset('themes/emporium/js/daterangepicker.js') }}"></script>
-		  <script src="{{ asset('themes/emporium/js/single-date.js') }}"></script>
-		  <script src="{{ asset('themes/emporium/js/custom.js') }}"></script>
+		<script src="{{ asset('themes/emporium/js/daterangepicker.js') }}"></script>
+		<script src="{{ asset('themes/emporium/js/single-date.js') }}"></script>
+		<script src="{{ asset('themes/emporium/js/custom.js') }}"></script>
+		<script src="{{ asset('themes/emporium/js/custom/destination.js') }}"></script>
+		<script src="{{ asset('themes/emporium/js/custom/experience.js') }}"></script>
+		<script src="{{ asset('themes/emporium/js/custom/left_search.js') }}"></script>
+		<script src="{{ asset('themes/emporium/js/custom/common.js') }}"></script>
 		  @show
 		  @section('custom_js')
 			@parent

@@ -49,9 +49,9 @@
             </ul>
             <ul class="mobilemenulist" data-opton="home">
                 <li><a href="javascript:void(0)" class="searchourcollectonlink" data-action="select-collection">SEARCH OUR COLLECTION</a></li>
-                <li><a href="javascript:void(0)" id="searchbydate" data-action="search-by-date">SEARCH BY DATE</a></li>
-                <li><a href="javascript:void(0)" id="selectdestination" data-action="select-destination">SELECT YOUR DESTINATION</a></li>
-                <li><a href="javascript:void(0)" id="selectexperience" data-action="select-experience">SELECT YOUR EXPERIENCE</a></li>
+                <li><a href="javascript:void(0)" data-action="search-by-date">SEARCH BY DATE</a></li>
+                <li><a href="javascript:void(0)" data-action="select-destination">SELECT YOUR DESTINATION</a></li>
+                <li><a href="javascript:void(0)" data-action="select-experience">SELECT YOUR EXPERIENCE</a></li>
                 <!--li><a href="javascript:void(0)" >PERSONALIZED SERVICE</a></li-->
                 <li><a href="javascript:void(0)" data-action="company">COMPANY</a></li>
             </ul>
