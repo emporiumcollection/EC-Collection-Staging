@@ -127,9 +127,12 @@
 
 				 function checkCookie() {
 					 var username = getCookie("cookie-bar");
+
 					 if (username == "") {
 						 setCookie('cookie-bar', '1', 1);
 						 $(".bootom-cookie-bar-outer").show();
+					 }else{
+						 $(".bootom-cookie-bar-outer").hide();
 					 }
 				 }
 				 function getCookie(cname) {

@@ -580,36 +580,37 @@
                 <li><a href="terms-and-conditions.html">Terms and Conditions</a></li>
                 <li><a href="https://www.emporium-voyage.com/Impressum">Imprint</a></li>
             </ul>
-            <div class="left-carousal">
-                <div id="owl-carousel" class="owl-carousel">
-                    <div class="item">
-                        <div class="side-bar-why-book-with-us">
-                            <div class="book-with-us-tittles">
-                                <h2>Why book with us?</h2>
-                            </div>
-                            <ul class="side-bar-book-with-us-list">
-                                <li>
-                                    <h3>Handpicked Selection of Hotels</h3>
-                                    <p>from selected luxury destinations worldwide</p>
-                                </li>
-                                <li>
-                                    <h3>Upgrade and Late Checkout</h3>
-                                    <p>At any Hotel upon Avilability</p>
-                                </li>
-                                <li>
-                                    <h3>Preferred Guest Discounts at New Hotels</h3>
-                                    <p>join our members club</p>
-                                </li>
-                                <li>
-                                    <h3>Free Wifi</h3>
-                                    <p>Guaranteed at all our Partner Hotels</p>
-                                </li>
-                            </ul>
+
+        </div>
+        <div class="left-carousal">
+            <div id="owl-carousel" class="owl-carousel">
+                <div class="item">
+                    <div class="side-bar-why-book-with-us">
+                        <div class="book-with-us-tittles">
+                            <h2>Why book with us?</h2>
                         </div>
+                        <ul class="side-bar-book-with-us-list">
+                            <li>
+                                <h3>Handpicked Selection of Hotels</h3>
+                                <p>from selected luxury destinations worldwide</p>
+                            </li>
+                            <li>
+                                <h3>Upgrade and Late Checkout</h3>
+                                <p>At any Hotel upon Avilability</p>
+                            </li>
+                            <li>
+                                <h3>Preferred Guest Discounts at New Hotels</h3>
+                                <p>join our members club</p>
+                            </li>
+                            <li>
+                                <h3>Free Wifi</h3>
+                                <p>Guaranteed at all our Partner Hotels</p>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="item">
-                        <a href="javascript:void(0)"><img src="images/left-side-banner.png"></a>
-                    </div>
+                </div>
+                <div class="item">
+                    <a href="javascript:void(0)"><img src="images/left-side-banner.png"></a>
                 </div>
             </div>
         </div>
