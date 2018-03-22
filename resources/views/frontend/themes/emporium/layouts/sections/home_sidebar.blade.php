@@ -6,108 +6,59 @@
     </div>
     <div class="mobilemenu-inner">
         <div class="mobilemainnav openmobilemenu">
-            <div class="mobilenavheader"><a href="index.html"><img src="{{ asset('themes/emporium/images/logo.png')}}" alt="Emporium Voyage" class="img-responsive"/></a></div>
-            <ul class="mobilemenulist common-search-bar">
+            <div class="mobilenavheader " data-option="home"><a href="index.html"><img src="{{ asset('themes/emporium/images/logo.png')}}" alt="Emporium Voyage" class="img-responsive"/></a></div>
+            <div class="mobilenavheader hide" data-option="global">
+                <h3 data-option-title="gobal"></h3>
+                <a href="javascript:void(0)" class="homelinknav backtohomelink" data-option-action="back" data-id="0"><i class="fa fa-angle-left"></i> <span>HOME</span></a>
+            </div>
+            <ul class="mobilemenulist common-search-bar" data-option="search-bar">
                 <li>
                      <div class="mobile-leftsearch">
                         <input type="text" class="form-control" id="search"/>
                         <button type="button"><i class="fa fa-search"></i></button>
                     </div>
                     <div id="filtersearchpopup" style="display:none;">
-                <ul>
-                    <li>
-                        <a class="searchresultdata" href="javascript:void(0)" id="destinationsresult"><i class="iconsheet icon-destinations"></i> Destinations <span>(3)</span></a>
-                    </li>
-                    <li>
-                        <a class="searchresultdata" href="javascript:void(0)"><i class="iconsheet icon-collections"></i> Collections <span>(11)</span></a>
-                    </li>
-                    <li>
-                        <a class="searchresultdata" href="javascript:void(0)"><i class="iconsheet icon-restaurant"></i> Restaurant <span>(5)</span></a>
-                    </li>
-                    <li>
-                        <a class="searchresultdata" href="javascript:void(0)"><i class="iconsheet icon-bar"></i> Bar <span>(2)</span></a>
-                    </li>
-                    <li>
-                        <a class="searchresultdata" href="javascript:void(0)"><i class="iconsheet icon-spa"></i> Spa <span>(2)</span></a>
-                    </li>
-                </ul>
-            </div>
-                </li>
-            </ul>
-            <ul class="mobilemenulist">
-                <li>
-
-                </li>
-                <li><a href="javascript:void(0)" class="searchourcollectonlink">SEARCH OUR COLLECTION</a></li>
-                <li><a href="javascript:void(0)" id="searchbydate">SEARCH BY DATE</a></li>
-                <li><a href="javascript:void(0)" id="selectdestination">SELECT YOUR DESTINATION</a></li>
-                <li><a href="javascript:void(0)" id="selectexperience">SELECT YOUR EXPERIENCE</a></li>
-                <li><a href="javascript:void(0)">PERSONALIZED SERVICE</a></li>
-                <li><a href="javascript:void(0)" id="companynav">COMPANY</a></li>
-            </ul>
-            <div class="bottomlink">Already have an account? <a class="loginSecForMob" href="javascript:void(0)">Login</a><br/>or<br/>Don't have Emporium Voyage account <a class="registerSecForMob" href="javascript:void(0)">Register here</a></div>
-        </div>
-        <div class="destinationresultnav">
-            <div class="mobilenavheader">
-                <h3>DESTINATIONS</h3>
-                <a href="javascript:void(0)" class="homelinknav backtohomelink"><i class="fa fa-angle-left"></i> HOME</a>
-            </div>
-            <ul class="mobilemenulist">
-                <li>
-                    <div class="mobile-leftsearch">
-                        <input type="text" class="form-control"/>
-                        <button type="button"><i class="fa fa-search"></i></button>
+                        <ul>
+                            <li>
+                                <a class="searchresultdata" href="javascript:void(0)" id="destinationsresult"><i class="iconsheet icon-destinations"></i> Destinations <span>(3)</span></a>
+                            </li>
+                            <li>
+                                <a class="searchresultdata" href="javascript:void(0)"><i class="iconsheet icon-collections"></i> Collections <span>(11)</span></a>
+                            </li>
+                            <li>
+                                <a class="searchresultdata" href="javascript:void(0)"><i class="iconsheet icon-restaurant"></i> Restaurant <span>(5)</span></a>
+                            </li>
+                            <li>
+                                <a class="searchresultdata" href="javascript:void(0)"><i class="iconsheet icon-bar"></i> Bar <span>(2)</span></a>
+                            </li>
+                            <li>
+                                <a class="searchresultdata" href="javascript:void(0)"><i class="iconsheet icon-spa"></i> Spa <span>(2)</span></a>
+                            </li>
+                        </ul>
                     </div>
                 </li>
-                <li><a href="https://www.emporium-voyage.com/membership_hotel">Berlin</a></li>
-                <li><a href="javascript:void(0)">London</a></li>
-                <li><a href="javascript:void(0)">Maldives</a></li>
-            </ul>
-
-        </div>
-        <div class="searchourcollectonnav">
-            <div class="mobilenavheader">
-                <h3>SEARCH OUR COLLECTION</h3>
-                <a href="javascript:void(0)" class="homelinknav backtohomelink"><i class="fa fa-angle-left"></i> HOME</a>
-            </div>
-            <ul class="mobilemenulist">
-                <li>
-                    <div class="mobile-leftsearch">
-                        <input type="text" class="form-control"/>
-                        <button type="button"><i class="fa fa-search"></i></button>
-                    </div>
+                <li data-option="intro-text" class="hide">
+                    <p></p>
                 </li>
-                <li>
+                <li class="hide" data-option="selected-thumb">
                     <div class="navheadimage">
-                        <a href="javascript:void(0)">
-                            <img src="images/mountain-image.jpg" alt=""/>
-                            <div class="headingoverlay">HOTELS</div>
-                        </a>
-                    </div>
-                </li>
-                <li>
-                    <div class="navheadimage">
-                        <a href="javascript:void(0)">
-                            <img src="images/mountain-image.jpg" alt=""/>
-                            <div class="headingoverlay">YACHTS</div>
-                        </a>
+                        <img  data-option="selected-thumb-img" alt=""/>
+                        <div class="headingoverlay" data-option="selected-thumb-text"></div>
                     </div>
                 </li>
             </ul>
-
-        </div>
-        <div class="searchbydatenav">
-            <div class="mobilenavheader">
-                <h3>SEARCH BY DATE</h3>
-                <a href="javascript:void(0)" class="homelinknav backtohomelink"><i class="fa fa-angle-left"></i> HOME</a>
-            </div>
-            <ul class="mobilemenulist">
-                <li>
-                    <div class="mobile-leftsearch">
-                        <input type="text" class="form-control"/>
-                        <button type="button"><i class="fa fa-search"></i></button>
-                    </div>
-                </li>
+            <ul class="mobilemenulist" data-opton="home">
+                <li><a href="javascript:void(0)" class="searchourcollectonlink" data-action="select-collection">SEARCH OUR COLLECTION</a></li>
+                <li><a href="javascript:void(0)" id="searchbydate" data-action="search-by-date">SEARCH BY DATE</a></li>
+                <li><a href="javascript:void(0)" id="selectdestination" data-action="select-destination">SELECT YOUR DESTINATION</a></li>
+                <li><a href="javascript:void(0)" id="selectexperience" data-action="select-experience">SELECT YOUR EXPERIENCE</a></li>
+                <!--li><a href="javascript:void(0)" >PERSONALIZED SERVICE</a></li-->
+                <li><a href="javascript:void(0)" data-action="company">COMPANY</a></li>
+            </ul>
+            <ul class="mobilesublinks hide" data-option="selected-option-list">
+            </ul>
+            <div class="bottomlink" data-option="global">Already have an account? <a class="loginSecForMob" href="javascript:void(0)">Login</a><br/>or<br/>Don't have Emporium Voyage account <a class="registerSecForMob" href="javascript:void(0)">Register here</a></div>
+            <ul class="mobilemenulist hide" data-option="search-by-date">
                 <li>
                     <p>Emporium Voyage is your deal, vogue vacation planner!</p>
                 </li>
@@ -183,120 +134,7 @@
                     <div class="clearfix"></div>
                 </li>
             </ul>
-            <div class="bottomlink text-center">View, Modify or Cancel your Booking<br/> <a href="javascript:void(0)" class="loginSecForMob">Login</a></div>
-
-        </div>
-        <div class="selectdestinationnav">
-            <div class="mobilenavheader">
-                <h3>SEARCH YOUR DESTINATION</h3>
-                <a href="javascript:void(0)" class="homelinknav backtohomelink"><i class="fa fa-angle-left"></i> HOME</a>
-            </div>
-            <ul class="mobilemenulist">
-                <li>
-                    <div class="mobile-leftsearch">
-                        <input type="text" class="form-control"/>
-                        <button type="button"><i class="fa fa-search"></i></button>
-                    </div>
-                </li>
-                <li>
-                    <p>From the posh, sun-soaked beaches along the Indian Ocean to the epoch heights of the Himalayas, Emporium-Voyage is your ideal, vogue vacation planner!</p>
-                </li>
-                <li><a href="javascript:void(0)" id="selectafrica">AFRICA</a></li>
-                <li><a href="javascript:void(0)">ASIA</a></li>
-                <li><a href="javascript:void(0)">EUROP</a></li>
-                <li><a href="javascript:void(0)">CARRIBEAN ISLANDS</a></li>
-                <li><a href="javascript:void(0)">INDIAN OCEAN</a></li>
-                <li><a href="javascript:void(0)">OCEANIA</a></li>
-                <li><a href="javascript:void(0)">THE AMERICAS</a></li>
-            </ul>
-
-        </div>
-        <div class="selectafricanav">
-            <div class="mobilenavheader">
-                <h3>HOME</h3>
-                <a href="javascript:void(0)" class="homelinknav backtodestinationnav"><i class="fa fa-angle-left"></i> BACK TO DESTINATION</a>
-            </div>
-            <ul class="mobilemenulist">
-                <li>
-                    <div class="mobile-leftsearch">
-                        <input type="text" class="form-control"/>
-                        <button type="button"><i class="fa fa-search"></i></button>
-                    </div>
-                </li>
-                <li>
-                    <div class="navheadimage">
-                        <img src="images/mountain-image.jpg" alt=""/>
-                        <div class="headingoverlay">AFRICA</div>
-                    </div>
-                </li>
-                <li>
-                    <ul class="mobilesublinks">
-                        <li><a href="javascript:void(0)" id="selectafricanavchild">SOUTHERN AFRICA</a></li>
-                        <li><a href="javascript:void(0)">NORTHERN AFRICA</a></li>
-                        <li><a href="javascript:void(0)">EASTERN AFRICA</a></li>
-                    </ul>
-                </li>
-            </ul>
-
-        </div>
-        <div class="selectafricanavchild">
-            <div class="mobilenavheader">
-                <h3>HOME</h3>
-                <a href="javascript:void(0)" class="homelinknav backtoselectafricanav"><i class="fa fa-angle-left"></i> BACK TO DESTINATION</a>
-            </div>
-            <ul class="mobilemenulist">
-                <li>
-                    <div class="mobile-leftsearch">
-                        <input type="text" class="form-control"/>
-                        <button type="button"><i class="fa fa-search"></i></button>
-                    </div>
-                </li>
-                <li>
-                    <div class="navheadimage">
-                        <img src="images/mountain-image.jpg" alt=""/>
-                        <div class="headingoverlay">SOUTHERN AFRICA</div>
-                    </div>
-                </li>
-                <li>
-                    <ul class="mobilesublinks">
-                        <li><a href="javascript:void(0)">GAUTENG</a></li>
-                    </ul>
-                </li>
-            </ul>
-
-        </div>
-        <div class="selectexperiencenav">
-            <div class="mobilenavheader">
-                <h3>SELECT YOUR EXPERIENCE</h3>
-                <a href="javascript:void(0)" class="homelinknav backtohomelink"><i class="fa fa-angle-left"></i> HOME</a>
-            </div>
-            <ul class="mobilemenulist">
-                <li>
-                    <div class="mobile-leftsearch">
-                        <input type="text" class="form-control"/>
-                        <button type="button"><i class="fa fa-search"></i></button>
-                    </div>
-                </li>
-
-            </ul>
-
-        </div>
-        <div class="companynav">
-            <div class="mobilenavheader">
-                <h3>COMPANY</h3>
-                <a href="javascript:void(0)" class="homelinknav backtohomelink"><i class="fa fa-angle-left"></i> HOME</a>
-            </div>
-            <ul class="mobilemenulist">
-                <li>
-                    <div class="mobile-leftsearch">
-                        <input type="text" class="form-control"/>
-                        <button type="button"><i class="fa fa-search"></i></button>
-                    </div>
-                </li>
-                <li><a href="https://www.emporium-voyage.com/membership_hotel">Become a Member Hotel</a></li>
-                <li><a href="terms-and-conditions.html">Terms and Conditions</a></li>
-                <li><a href="https://www.emporium-voyage.com/Impressum">Imprint</a></li>
-            </ul>
+            <div class="bottomlink text-center hide" data-option="search-by-date">View, Modify or Cancel your Booking<br/> <a href="javascript:void(0)" class="loginSecForMob">Login</a></div>
 
         </div>
         <div class="left-carousal">

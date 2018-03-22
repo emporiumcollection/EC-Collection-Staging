@@ -1,2 +1,4 @@
 .hotel-card figure{ height:207px;}
-.common-search-bar li{ border-bottom: none;}
+
+.hide{ display: none;}
+.show{ display: block;}
