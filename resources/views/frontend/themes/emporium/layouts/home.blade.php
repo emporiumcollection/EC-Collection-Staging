@@ -35,6 +35,7 @@
 
 			@section('custom_css')
 			@parent
+			<link href="{{ asset('themes/emporium/css/custom.css') }}" rel="stylesheet">
 			@show
 
 	   </head>
