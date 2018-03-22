@@ -66,12 +66,17 @@ body.open{overflow:hidden;}
 	.mobilemenu .mobilenavclosebtn{display:block;}
 	.sliderSection.restaurantSliderSec .carousel-caption{width:100%;}
 .hotelSliderSection .owl-carousel .hotelSliderContentImage .hotelSliderContent{padding:30px;}
-.sidefixednav{top:74px;}
+.sidefixednav{top:85px;}
+.searchresultnav.contactfixed{top:174px;}
+.searchresultnav.backcontrol{top:253px;}
 .sidefixednav ul li.calander{display:none;}
 .contactfixed{top:163px;}
-.homerightmenu.contactfixed{top:120px;}
+.homerightmenu.contactfixed{top:174px;}
 .backcontrol{top:242px;}
 .navbar-nav.setting-nav{display:none;}
+.sidefixednav ul li.hamburguricon{display:block;}
+.restaurantrightnav.contactfixed{top:256px;}
+.restaurantrightnav.backcontrol{top:335px;}
 }
 @media only screen and (max-width: 991px){
 	.hotelSliderSection .col-md-12 {
@@ -113,6 +118,8 @@ body.open{overflow:hidden;}
 		padding: 0 15px;
 	}
 	.footer-coloumn{padding-right:0;}
+	.sidefixednav{top:85px;}
+	
 }
 
 @media (max-width:767px){
@@ -123,7 +130,6 @@ body.open{overflow:hidden;}
 	.navbar-nav.setting-nav>li>.dropdown-menu{float:right; position:absolute;}
 	.navbar-nav.setting-nav>li>.dropdown-menu li{float:left; width:100%;}
 	.login-control-head{top:-55px; right:0}
-	.logo-wrapper{max-width:150px;}
 	.logo-wrapper .block-content.togglenav{top:-35px;}
 	.left-sidebar{top:40px; width:250px;}
 	.left-sidebar .navbar-header{display:none;}
@@ -214,12 +220,14 @@ body.open{overflow:hidden;}
 		bottom: 10px;
 		right: 10px;
 	}
-
+.sidefixednav{top:90px;}
+.restaurantrightnav.contactfixed{top:261px;}
+.restaurantrightnav.backcontrol{top:340px;}
 }
 
 @media (max-width:480px){
 	#header{min-height:75px;}
-.logo-wrapper{max-width:220px;}
+.logo-wrapper{max-width:277px;}
 .logo-wrapper img{max-width:100%;}
 .login-control-head{top:-47px;}
 	.searchDateInnerContent ul li {
@@ -247,4 +255,7 @@ body.open{overflow:hidden;}
 		margin-bottom: 20px;
 	}
 
+.sidefixednav{top:85px;}
+.restaurantrightnav.contactfixed{top:256px;}
+.restaurantrightnav.backcontrol{top:334px;}
 }

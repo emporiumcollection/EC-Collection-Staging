@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=EB+Garamond:400,500,600,700');
 
 
-body{font-family: 'GeomanistLight', sans-serif;}
+body{font-family: 'GeomanistLight', sans-serif; background:#252525}
 *{outline:0;}
 ul, li{margin:0; padding:0; list-style:none;}
 a:hover, a:focus, a:active{text-decoration:none}
@@ -627,21 +627,27 @@ border-radius:0;
 .sidefixednav{position:fixed; right:0; top:83px; background:#252525; width:65px; z-index:9999;}
 .sidefixednav ul{margin:0; list-style:none;}
 .sidefixednav ul li{border:1px solid #414246; margin-top:-1px;}
-.sidefixednav ul li.hamburguricon{padding:5px 0 12px;} 
-.sidefixednav ul li.calander a{color:#ABA07C; font-size:24px;}
+.sidefixednav ul li.hamburguricon{padding:5px 0 12px; display:none;} 
+.sidefixednav ul li.calander a{color:#ABA07C; font-size:18px;}
 .sidefixednav ul li .block-content.content{display:block; margin:0 auto; float:none;}
 .sidefixednav ul li a{ padding:10px 5px; text-align:center; display:block;}
 .contactfixed{width:310px;position:fixed; right:-245px; top:227px; background:#272727;border:1px solid #4a4a4a; border-bottom:0; z-index:99999;-webkit-transition: all .5s ease;
     -o-transition: all .5s ease;
     transition: all .5s ease;}
+
 .contactfixed:hover{right:0}
-.homerightmenu.contactfixed{top:184px;}
+.restaurantrightnav.contactfixed{top:257px;}
+.restaurantrightnav.backcontrol{top:336px;}
+.pdprightnav.contactfixed{top:266px;}
+.homerightmenu.contactfixed{top:175px;}
+.searchresultnav.contactfixed{top:175px;}
 .contactfixed ul li{float:left; width:100%;}
 .contactfixed ul li a{color:#ABA07C; font-size:13px; padding:10px 10px 10px 27px; border-bottom:1px solid #4a4a4a; display:block;-webkit-transition: all .5s ease;
     -o-transition: all .5s ease;
     transition: all .5s ease;}
 .contactfixed ul li a:hover{color:#fff;}
 .contactfixed ul li a i{margin-right:20px; font-size:16px;}
+.searchresultnav.backcontrol{top:254px;}
 .backcontrol{position:fixed; right:0; top:306px; width:65px; z-index:99999;}
 .backcontrol ul li{border-left: 1px solid #ABA07C; border-bottom: 1px solid #414246;}
 .backcontrol ul li:last-child{border-bottom:0;}
@@ -1525,8 +1531,257 @@ button.searchButton.btn:hover {
 
 
 
+/************HamYardHotelSlider*************/
+.HamYardHotelSection {
+  background: #252525; 
+  height: 650px;
+}
+.HamYardHotelSlider {
+  margin: 50px 0; 
+}
+.HamYardHotelSlider .item {
+  width: 100%;
+  height: 580px;
+  background-position: : center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: all 0.01s ease 0s;
+  -webkit-transition: all 0.01s ease 0s;
+  -moz-transition: all 0.01s ease 0s;
+  -ms-transition: all 0.01s ease 0s;
+  position: relative;
+}
+
+.carousalCaption {
+  width: 50%;
+  float: right;
+  background: rgba(0,0,0,1);
+  opacity: 0.79;
+  color: #fff;
+  height: 100%;
+  padding: 120px 10% 0; 
+}
+.carousalCaption h3 {
+    color: #fff;
+    font-family: ACaslonPro-Regular;
+    font-size: 21px;
+    margin-top: 0;
+    width: 100%;
+    margin-bottom: 20px;
+    line-height: 30px;
+}
+.carousalCaption h2 {
+    color: #fff;
+    font-size: 32px;
+    line-height: 39px;
+}
+.carousalCaption p { 
+    color: #fff;
+    font-size: 12px;
+    line-height: 20px;
+    margin-top: 22px;
+}
 
 
 
+
+.HamYardHotelSliderOptions {
+    position: absolute;
+    bottom: 50px;
+    width: 450px;
+    height: 80px;
+    left: 50%;
+    transform: translateX(-150px);
+    -webkit-transform: translateX(-150px);
+    -moz-transform: translateX(-150px);
+    -ms-transform: translateX(-150px);
+}
+.terraceSuitindicator {
+  padding: 0px 0;
+  display: inline-block;
+  width: 100%;
+}
+.terraceSuitarrow {
+  width: 150px;
+  float: left;
+  height: 80px;
+  position: relative;
+  padding: 30px 40px 0;
+  background: rgba(37,37,35,0.85);
+}
+.terraceSuitarrow a {
+  background: transparent !important;
+  box-shadow: none;
+  float: left;
+  height: 20px;
+  position: static;
+  opacity: 1;
+}
+.terraceSuitarrow a + a {
+  float: right;
+}
+
+.terraceSuitCounter {
+  width: 100%;
+  float: left;
+  text-align: center;
+}
+
+
+/****/
+.terraceSuitindicator ol {
+    position: relative;
+    width: 150px;
+    height: 80px;
+    float: left;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    overflow: visible;
+    opacity: 1;
+    border: none;
+  counter-reset: itemCount;
+}
+
+.terraceSuitindicator ol li:first-child {
+  display: inline-block;
+  z-index: 5;
+}
+.terraceSuitindicator ol li {
+  opacity: 1;
+  z-index: 2;
+  border-radius: 0px !important;
+  border:none !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  margin: 0;
+  min-height: 100%;
+  text-indent: 0px;
+}
+.terraceSuitindicator ol li::before {
+    counter-increment: itemCount;
+    content: counter(itemCount) " / " " 7";
+    position: absolute;
+    left: -95px;
+    bottom: 30px;
+    color: #fff;
+    z-index: 999;
+    font-size: 30px;
+    opacity: 0;
+    font-family: 'geomanistlightwebfont';
+}
+.terraceSuitindicator ol li.active::before {
+  opacity: 1;
+}
+.terraceSuitindicator ol li.active + li {
+  display: inline-block;
+  z-index: 9;
+  opacity: 1;
+}
+.terraceSuitindicator ol li img {
+  width: 100%;
+  height: 100%;
+  float: left;
+  object-fit: cover;
+}
+
+.showMoreSec {
+  width: 150px;
+  float: left;
+  height: 80px;
+  background: rgba(171,160,124,0.8);  
+  padding: 20px 0;
+  text-align: center;
+}
+.showMoreSec .btn {
+  display: inline-block;
+  padding: 10px;
+  font-size: 15px;
+  color: #fff;
+  border: none;
+  border-radius: 0px;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent;
+}
+
+/*show More Popup*/
+.showMorePopup {
+  background-color: #828281;
+  background-blend-mode:multiply;
+  background-image: url(../images/terrace-suit-ham-yard-hotel-3.jpg); 
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.showMorePopup .searchDateInnerContent {
+  width:100%;
+}
+.showMorePopup .noPadding {
+  padding: 0px !important 
+}
+.showMoreContent {
+  min-height: 100vh;
+  background-color: rgba(0,0,0,1);
+  padding: 65px 20px 0px; 
+  opacity: 0.5;
+}
+.showMoreContent h1 {
+  margin: 0px;
+  color: #ABA07C;
+  font-family: ACaslonPro-Regular; 
+  font-size: 30px;
+  text-transform: uppercase;
+}
+.showMoreContent ul {
+  margin: 0px;
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 15px;
+}
+.showMoreContent ul li {
+  margin: 0px;
+  display: inline-block;
+  width: 100%;
+  line-height: 28px;
+  font-size: 14px;
+  color: #fff;
+}
+.showMoreContent p {
+  margin: 0px;
+  display: inline-block;
+  width: 100%;
+  line-height: 28px;
+  font-size: 14px;
+  color: #fff;
+}
+.shoMoreButtonSection {
+  display: inline-block;
+}
+.shoMoreButtonSection h2 {
+  display: inline-block;
+  background: #ABA07C;
+  color: #fff;
+  font-size: 25px;
+  margin-left: -194px;
+  padding: 17px 5px;
+  text-align: center;
+  text-transform: uppercase;
+  width: 174px;
+}
+.shoMoreButtonSection a {
+  display: inline-block;
+  background: #ABA00D;
+  color: #fff;
+  font-size: 25px;
+  padding: 13px 5px;
+  text-align: center;
+  text-transform: uppercase;
+  width: 174px;
+  margin: 0 0 0 -3px; 
+}
 
 

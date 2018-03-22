@@ -27,11 +27,13 @@
 }
 @media (max-width:767px){
 #search-result-slider .carousel-inner .item{height:auto;}
-#search-result-slider .carousel-caption{ padding:50px 30px; position:static; max-width:100%;}
+#search-result-slider .carousel-caption{ padding:50px 70px 50px 30px; position:static; max-width:100%;}
 #search-result-slider .left.carousel-control{right:80px;}	
 #search-result-slider .right.carousel-control{right:17px;}		
 #luxury-hotel-selection .hotel-card:hover .content-overlay{padding-top:95px;}
 }
-
+@media (max-width:480x){
+#search-result-slider .carousel-caption{ padding:50px 30px; }	
+}
 
 

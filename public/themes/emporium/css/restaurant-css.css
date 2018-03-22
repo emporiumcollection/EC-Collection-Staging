@@ -432,7 +432,7 @@ padding-right:15px;
 	}
 
 
-.greenrysection{background:url(../images/leaf-image.jpg) center center no-repeat; background-size:cover; padding:120px 15px;}
+.greenrysection{background:url(../images/leaf-image.jpg) center center no-repeat; background-size:cover; padding:150px 15px;}
 .greenrysection .content-circle{background:#fff; border-radius:100%; -webkit-border-radius:100%;-o-border-radius:100%; padding:70px 30px 0; text-align:center; position:relative; height:350px; width:350px; margin:0 auto }
 .greenrysection .content-circle:after{    content: "";
     border-radius: 100%;
@@ -562,12 +562,36 @@ padding-right:15px;
 	min-height: 50px;
 }
 
-.contactfixed{top:309px;}
-.backcontrol{top:388px;}
-@media only screen and (max-width: 1024px) {
-	.restaurantrightnav.contactfixed{top:242px;}
-	.restaurantrightnav.backcontrol{top:320px;}
+/***************/
+#seasonal-events {
+ position: relative;
 }
+#seasonal-events .modal {
+    position: absolute !important;
+    z-index: 5;
+}
+#contentCirsclePopup {
+ z-index: 5;
+}
+#contentCirsclePopup .modal-backdrop {
+ z-index: 2;
+ position: absolute;
+ display: none !important;
+}
+#contentCirsclePopup .modal-dialog {
+    max-width: 1400px;
+    height: calc(100% - 20px);
+    width: 100%;
+    margin: 10px auto;
+}
+#contentCirsclePopup.custom_modal .modal-content {
+ height: 100%;
+}
+
+.contentCirsclePopupBtn {
+ cursor: pointer;
+}
+
 @media only screen and (max-width: 767px) {
 	.formPreview label {
 		padding-left: 0px;
