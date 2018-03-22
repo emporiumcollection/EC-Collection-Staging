@@ -81,7 +81,7 @@
 
 		  </div>
 
-		@if(!auth()->check()){	
+		@if(!auth()->check())
 			@include('frontend.themes.emporium.layouts.sections.login')
 		@endif
 

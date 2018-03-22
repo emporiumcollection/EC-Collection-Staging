@@ -2,7 +2,7 @@
       <div class="popupMainDiv">
          <div class="rightSideSec">
             <div class="popupTopSec"><a href="javascript:void(0);" class="mainPopupClose">×</a></div>
-            <img src="images/Step.jpg" alt="Images">
+            <img src="{{ asset('themes/emporium/images/Step.jpg')}}" alt="Images">
             <div class="accountContent">
                <h2>Your Account With Us</h2>
             </div>
@@ -15,7 +15,7 @@
             </div>
             <div class="logInPopup lognSignPopoUp">
                <div class="popupTopSec"><span>NEED HELP?</span><a href="javascript:void(0);" class="mainPopupClose">×</a></div>
-               <img src="images/angel-fernandez-alonso-220762.jpg" alt="Images">
+               <img src="{{ asset('themes/emporium/images/angel-fernandez-alonso-220762.jpg')}}" alt="Images">
                <div class="loginFormDiv">
                   <h2>LOGIN WITH <br>YOUR ACCOUNT</h2>
                   <form>
@@ -33,7 +33,7 @@
             <div class="signInPopup lognSignPopoUp">
                <div class="popupTopSec"><span>NEED HELP?</span><a href="javascript:void(0);" class="mainPopupClose">×</a></div>
                <a href="javascript:void(0);" class="loginPopupCloseButton">×</a>
-               <img src="images/matthew-kane-365718.jpg" alt="Images">
+               <img src="{{ asset('themes/emporium/images/matthew-kane-365718.jpg')}}" alt="Images">
                <div class="loginFormDiv">
                   <h3>CREATE YOUR ACCOUNT PASSWORD</h3>
                   <form>
@@ -53,7 +53,7 @@
             <div class="forgetPassPopup lognSignPopoUp">
                <div class="popupTopSec"><span>NEED HELP?</span><a href="javascript:void(0);" class="mainPopupClose">×</a></div>
                <a href="javascript:void(0);" class="loginPopupCloseButton">×</a>
-               <img src="images/Kootenay Aurora 1-X3.jpg" alt="Images">
+               <img src="{{ asset('themes/emporium/images/Kootenay-Aurora-1-X3.jpg')}}" alt="Images">
                <div class="loginFormDiv">
                   <h3>FORGOT YOUR <br>PASSWORD</h3>
                   <form>
