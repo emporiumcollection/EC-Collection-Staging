@@ -55,6 +55,14 @@
                 <!--li><a href="javascript:void(0)" >PERSONALIZED SERVICE</a></li-->
                 <li><a href="javascript:void(0)" data-action="company">COMPANY</a></li>
             </ul>
+            <ul class="mobilemenulist hide" data-opton="search-our-collection">
+                <li>
+                    <div class="navheadimage"><a href="javascript:void(0)"><img src="{{ asset('themes/emporium/images/mountain-image.jpg') }}" alt=""/><div class="headingoverlay">HOTELS</div></a></div>
+                </li>
+                <li>
+                    <div class="navheadimage"><a href="javascript:void(0)"><img src="{{ asset('themes/emporium/images/mountain-image.jpg') }}" alt=""/><div class="headingoverlay">YACHTS</div></a></div>
+                </li>
+            </ul>
             <ul class="mobilesublinks hide" data-option="selected-option-list">
             </ul>
             <div class="bottomlink" data-option="global">Already have an account? <a class="loginSecForMob" href="javascript:void(0)">Login</a><br/>or<br/>Don't have Emporium Voyage account <a class="registerSecForMob" href="javascript:void(0)">Register here</a></div>
