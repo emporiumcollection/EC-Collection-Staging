@@ -47,7 +47,7 @@
                     </div>
                 </li>
             </ul>
-            <ul class="mobilemenulist" data-opton="home">
+            <ul class="mobilemenulist" data-option="home">
                 <li><a class="cursor" data-action="select-collection">SEARCH OUR COLLECTION</a></li>
                 <li><a class="cursor"data-action="search-by-date">SEARCH BY DATE</a></li>
                 <li><a class="cursor" data-action="select-destination" >SELECT YOUR DESTINATION</a></li>
@@ -55,7 +55,7 @@
                 <!--li><a href="javascript:void(0)" >PERSONALIZED SERVICE</a></li-->
                 <li><a class="cursor" data-action="company">COMPANY</a></li>
             </ul>
-            <ul class="mobilemenulist hide" data-opton="search-our-collection">
+            <ul class="mobilemenulist hide" data-option="search-our-collection">
                 <li>
                     <div class="navheadimage"><a href="javascript:void(0)"><img src="{{ asset('themes/emporium/images/mountain-image.jpg') }}" alt=""/><div class="headingoverlay">HOTELS</div></a></div>
                 </li>
