@@ -113,9 +113,10 @@ function getCookie(cname) {
  */
 
 function putDataOnLeft(data){
-    $('[data-option="global"] [data-option-title="global"]').html(data.main_title);
-    $('[data-option="global"] [data-option-action="back"] span').html(data.sub_title);
-    $('[data-option="global"] [data-option-action="back"]').attr('data-id',data.id);
+    $('[data-option="child-global"] [data-option-title="global"]').html(data.main_title);
+    $('[data-option="child-global"] [data-option-action="back"] span').html(data.sub_title);
+    $('[data-option="child-global"] [data-option-action="back"]').attr('data-id',data.id);
+    $('[data-option="child-global"] [data-option-action="back"]').attr('data-id',data.id);
 }
 /*
  * For open collection options
