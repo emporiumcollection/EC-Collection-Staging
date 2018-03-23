@@ -12,7 +12,7 @@ $(document).ready(function () {
     /*
      * For Select Collection of Left Sidebar
      */
-    $(document).on('click', '[data-action="select-collection"]', function () {
+    $(document).on('click', 'a[data-action="select-collection"]', function () {
         alert('asd');
         hideAllOption();
     });

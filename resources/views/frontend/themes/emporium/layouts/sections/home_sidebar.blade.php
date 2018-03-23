@@ -48,7 +48,7 @@
                 </li>
             </ul>
             <ul class="mobilemenulist" data-opton="home">
-                <li><a data-action="select-collection">SEARCH OUR COLLECTION</a></li>
+                <li><a class="cursor" data-action="select-collection">SEARCH OUR COLLECTION</a></li>
                 <li><a href="javascript:void(0)" data-action="search-by-date">SEARCH BY DATE</a></li>
                 <li><a href="javascript:void(0)" data-action="select-destination">SELECT YOUR DESTINATION</a></li>
                 <li><a href="javascript:void(0)" data-action="select-experience">SELECT YOUR EXPERIENCE</a></li>
