@@ -10,9 +10,7 @@ class FrontendPagesController extends Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->data['pageTitle'] = '';
-        $this->data['data'] = CommonHelper::getInfo();
-		$this->data['about_text'] = \DB::table('tb_settings')->select('content')->where('key_value', 'about_text')->first();
+        
     }
 	
 	 public function index(Request $request) {
@@ -55,7 +53,7 @@ class FrontendPagesController extends Controller {
 				 
 				 $this->data['sidebargridAds'] = \DB::table('tb_advertisement')->select('adv_img', 'adv_link')->where('adv_type', 'sidebar')->where('adv_position', 'landing')->get();
 				 
-				 return view('frontend.frontendpages.defaultpage', $this->data);
+				 return view('frontend.themes.emporium.pages.page', $this->data);
 			}
 			else 
 			{
