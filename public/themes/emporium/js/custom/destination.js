@@ -8,7 +8,6 @@ $(document).ready(function() {
         datObj.catID = 0;
         var params = $.extend({}, doAjax_params_default);
         params['url'] = BaseURL+'/destination/destinatinos-ajax';
-        params['method'] = "POST";
         params['data'] = datObj;
         params['successCallbackFunction'] = renderDestination;
         doAjax(params);

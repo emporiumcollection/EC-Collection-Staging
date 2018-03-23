@@ -13,38 +13,31 @@ class DestinationController extends Controller {
 	 public function getDestinatinosAjax(Request $request) {
 		
 		$category_id = $request->catID;
+
 		$res = array(); 
 		if($category_id!='')
 		{
 
-			$checkdestination = DB::table('tb_categories')->select('id')->where('category_published', 1)->where('id', $category_id)->count();
-			if($checkdestination > 0)
-			{
-				$fetchchilds = DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_custom_title')->where('category_published', 1)->where('parent_category_id', $category_id)->where('parent_category_id', '!=', 8)->get();
-				if(!empty($fetchchilds))
-				{
-					$res['status'] = 'success';
-					$res['dests'] = $fetchchilds;
-					
-				}
-				else
-				{
-					$res['status'] = 'error';
-					$res['errors'] = 'No child destination found!';
-				}
-			}
-			else
-			{
-				$res['status'] = 'error';
-				$res['errors'] = 'Destination not exist!';
-			}
+            $fetchchilds = DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_custom_title')->where('category_published', 1)->where('parent_category_id', $category_id)->where('parent_category_id', '!=', 8)->get();
+
+            if(!empty($fetchchilds))
+            {
+                $res['status'] = 'success';
+                $res['dests'] = $fetchchilds;
+
+            }
+            else
+            {
+                $res['status'] = 'error';
+                $res['errors'] = 'No child destination found!';
+            }
 		}
 		else
 		{
 			$res['status'] = 'error';
 			$res['errors'] = 'Please select destination first!';
 		}
-		response()->json($res);
+		return response()->json($res);
     }
 
     public function getExperiencesAjax(Request $request) {
@@ -62,7 +55,7 @@ class DestinationController extends Controller {
 			$res['status'] = 'error';
 			$res['errors'] = 'No Experiences found!';
 		}
-		response()->json($res);
+        return response()->json($res);
     }
 	
 	public function getMenusAjax(Request $request) {
@@ -81,7 +74,7 @@ class DestinationController extends Controller {
 			$res['status'] = 'error';
 			$res['errors'] = 'No Menus found!';
 		}
-		response()->json($res);
+        return response()->json($res);
     }
 
 }
