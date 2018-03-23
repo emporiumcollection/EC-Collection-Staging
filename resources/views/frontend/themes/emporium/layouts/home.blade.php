@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords" content="@yield('meta_keywords') ">
     <meta name="description" content="@yield('meta_description') ">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title> @yield('title') | {{ CNF_APPNAME }}</title>
@@ -93,11 +94,12 @@
 {{-- Site Base URL --}}
 <script type="text/javascript">var BaseURL = '{{ url() }}'; </script>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="{{ asset('themes/emporium/js/jquery.min.js') }}"></script>
+<script src="{{ asset('themes/emporium/js/jquery-3.2.1.min.js') }}"></script>
 <script src="{{ asset('themes/emporium/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('themes/emporium/js/owl.carousel.js') }}"></script>
 <!-- custom scrollbar plugin -->
 <script src="{{ asset('themes/emporium/js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+<script src="{{ asset('themes/emporium/js/custom/do_ajax.js') }}"></script>
 {{-- For including javascript files --}}
 @section('javascript')
     @parent

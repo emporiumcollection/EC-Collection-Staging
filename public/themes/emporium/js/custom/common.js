@@ -4,16 +4,26 @@ $(document).ready(function () {
      */
     checkCookie();
 
-    $(document).on('click','.cookie-bar-hide-btn',function () {
+    $(document).on('click', '.cookie-bar-hide-btn', function () {
         $('.bootom-cookie-bar-outer').hide();
+    });
+
+
+    $(document).on('click', '.open-cookie-bar-page', function () {
+        $(".cookie-bar-page").fadeIn();
+    });
+
+
+    $(document).on('click', '.close-btn-align', function () {
+        $(".cookie-bar-page").fadeOut();
     });
 
 
     /*
      * For Select Collection of Left Sidebar
      */
-    $(document).on('click', 'a[data-action="select-collection"]', function () {
-        alert('asd');
+    $(document).on('click', '[data-action="select-collection"]', function () {
+
         hideAllOption();
     });
 });
@@ -42,6 +52,7 @@ function setCookie(cname, cvalue, exdays) {
 }
 //Check Cookie
 function checkCookie() {
+
     var username = getCookie("cookie-bar");
 
     if (username == "") {

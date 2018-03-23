@@ -244,17 +244,17 @@
         })
 
     // Cookie Policy page popup js
-    $(".open-cookie-bar-page").click(function(){
+    /*$(".open-cookie-bar-page").click(function(){
         $(".cookie-bar-page").fadeIn();
     })
 
     $(".close-btn-align").click(function(){
         $(".cookie-bar-page").fadeOut();
-    })
+    })*/
     //Cookie bar hidden code
-    $(".cookie-bar-hide-btn").click(function () {
+   /* $(".cookie-bar-hide-btn").click(function () {
             $(".bootom-cookie-bar-outer").hide();
-        });
+        });*/
 
 
      /**** Filter search left nav ****/
@@ -445,7 +445,7 @@
 
 
     /*********Video Poster Play********/
-    var v = document.getElementById('videoPoster');
+    /*var v = document.getElementById('videoPoster');
     v.addEventListener(
         'play',
         function() {
@@ -476,5 +476,5 @@
       output.innerHTML = this.value;
     }
 
-
+     */
 
