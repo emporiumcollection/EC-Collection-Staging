@@ -23,9 +23,38 @@ $(document).ready(function () {
      * For Select Collection of Left Sidebar
      */
     $(document).on('click', '[data-action="select-collection"]', function () {
-
         hideAllOption();
+        var data = {};
+        data.main_title = 'Search Our Collection';
+        data.sub_title = 'Home';
+        data.id = 0;
+        putDataOnLeft(data);
+        openCollection();
+
     });
+
+    /*
+     * For Select By Date of Left Sidebar
+     */
+    $(document).on('click', '[data-option="search-by-date"]', function () {
+        hideAllOption();
+        var data = {};
+        data.main_title = 'Search By Date';
+        data.sub_title = 'Home';
+        data.id = 0;
+        putDataOnLeft(data);
+        openSearchByDate();
+
+    });
+
+    /*
+     * For Select By Date of Left Sidebar
+     */
+    $(document).on('click', '[data-option-action="back"][data-option-action-type="home"]', function () {
+        hideAllOption();
+        openAllHomeOption();
+    });
+
 });
 
 /*
@@ -34,7 +63,7 @@ $(document).ready(function () {
 function hideAllOption() {
     $('[data-option="home"]').addClass('hide');
     $('[data-option="global"]').addClass('hide');
-    $('[data-option="search-bar"]').addClass('hide');
+    $('[data-option="child-global"]').addClass('hide');
     $('[data-option="selected-option-list"]').addClass('hide');
     $('[data-option="search-by-date"]').addClass('hide');
     $('[data-option="search-our-collection"]').addClass('hide');
@@ -77,4 +106,36 @@ function getCookie(cname) {
         }
     }
     return "";
+}
+
+/*
+ * For put data dynamically
+ */
+
+function putDataOnLeft(data){
+    $('[data-option="global"] [data-option-title="global"]').html(data.main_title);
+    $('[data-option="global"] [data-option-action="back"] span').html(data.sub_title);
+    $('[data-option="global"] [data-option-action="back"]').attr('data-id',data.id);
+}
+/*
+ * For open collection options
+ */
+function openCollection(){
+    $('[data-option="global"]').removeClass('hide');
+    $('[data-option="child-global"]').removeClass('hide');
+    $('[data-option="search-our-collection"]').removeClass('hide');
+}
+/*
+ * For open search-by-date options
+ */
+function openSearchByDate(){
+    $('[data-option="child-global"]').removeClass('hide');
+    $('[data-option="search-by-date"]').removeClass('hide');
+}
+/*
+ * For open all home options
+ */
+function openAllHomeOption(){
+    $('[data-option="home"]').removeClass('hide');
+    $('[data-option="global"]').removeClass('hide');
 }

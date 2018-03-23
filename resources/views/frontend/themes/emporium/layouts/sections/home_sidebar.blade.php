@@ -7,9 +7,9 @@
     <div class="mobilemenu-inner">
         <div class="mobilemainnav openmobilemenu">
             <div class="mobilenavheader " data-option="home"><a href="index.html"><img src="{{ asset('themes/emporium/images/logo.png')}}" alt="Emporium Voyage" class="img-responsive"/></a></div>
-            <div class="mobilenavheader hide" data-option="global">
+            <div class="mobilenavheader hide" data-option="child-global">
                 <h3 data-option-title="gobal"></h3>
-                <a href="javascript:void(0)" class="homelinknav backtohomelink" data-option-action="back" data-id="0"><i class="fa fa-angle-left"></i> <span>HOME</span></a>
+                <a href="javascript:void(0)" class="homelinknav backtohomelink" data-option-action="back" data-option-action-type="home" data-id="0"><i class="fa fa-angle-left"></i> <span>HOME</span></a>
             </div>
             <ul class="mobilemenulist common-search-bar" data-option="search-bar">
                 <li>
