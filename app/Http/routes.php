@@ -83,7 +83,8 @@ Route::post('personalized-service/update', 'Frontend\PersonalizedServiceControll
 Route::get('personalized-service/my-services', 'Frontend\PersonalizedServiceController@list_my_services');
 Route::get('personalized-service/edit/{ps_id}', 'Frontend\PersonalizedServiceController@edit');
 Route::get('personalized-service/delete/{ps_id}', 'Frontend\PersonalizedServiceController@delete');
-Route::controller('/importdata','ImportdataController');	
+Route::controller('/importdata','ImportdataController');
+Route::controller('destination','Frontend\DestinationController');
 /*************** End *************/
 Route::controller('home', 'HomeController');
 
