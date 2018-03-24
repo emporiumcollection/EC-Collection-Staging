@@ -79,7 +79,7 @@ function renderExperience(dataObj) {
     putDataOnLeft(data)
     var experienceHtml = '';
     $(dataObj.dests).each(function (i, val) {
-        var imagePath = BaseURL+'/uploads/uploads/category_imgs/'+val.category_image;
+        var imagePath = BaseURL+'/uploads/category_imgs/'+val.category_image;
         if(val.category_image==''){
             imagePath = BaseURL+'/themes/emporium/images/mountain-image.jpg';
         }
