@@ -72,6 +72,7 @@
                     </div>
                 </div>
 				{{--*/ $sidebarads = CommonHelper::getSidebarAds('landing', '') /*--}}
+					{{dd($sidebarads); }}
 				@if(!empty($sidebarads['leftsidebarads']))
                     @foreach($sidebarads['leftsidebarads'] as $ads)
 						<div class="item">
