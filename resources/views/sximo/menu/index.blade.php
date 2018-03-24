@@ -204,37 +204,33 @@
 				  <div class="form-group  " >
 					<label for="ipt" class=" control-label col-md-4 text-right"> {{ Lang::get('core.fr_mposition') }}  </label>
 					<div class="col-md-8">
-						<input type="radio" name="position"  value="top" required 
-						@if($row['position']=='top' ) checked="checked" @endif /> {{ Lang::get('core.tab_topmenu') }} 
-						<input type="radio" name="position"  value="sidebar"  required
-						@if($row['position']=='sidebar' ) checked="checked" @endif  /> {{ Lang::get('core.tab_sidemenu') }} 
-						<input type="radio" name="position"  value="footer"  required
-						@if($row['position']=='footer' ) checked="checked" @endif  /> {{ Lang::get('core.tab_footermenu') }}
-						<input type="radio" name="position"  value="landing"  required
-						@if($row['position']=='landing' ) checked="checked" @endif  /> {{ Lang::get('core.tab_landingmenu') }}
-
-						<input type="radio" name="position"  value="grid"  required
-						@if($row['position']=='grid' ) checked="checked" @endif  /> {{ Lang::get('core.tab_gridmenu') }}
-						<input type="radio" name="position"  value="yachts"  required
-						@if($row['position']=='yachts' ) checked="checked" @endif  /> {{ Lang::get('core.tab_yatchgridmenu') }}
-						
-						<input type="radio" name="position"  value="content"  required
-						@if($row['position']=='content' ) checked="checked" @endif  /> {{ Lang::get('core.tab_content_menu') }}
-						<input type="radio" name="position"  value="product"  required
-						@if($row['position']=='product' ) checked="checked" @endif  /> {{ Lang::get('core.tab_product_menu') }}
-						<input type="radio" name="position"  value="social_property"  required
-						@if($row['position']=='social_property' ) checked="checked" @endif  /> {{ Lang::get('core.tab_social_property_menu') }}
-						<input type="radio" name="position"  value="social_destination"  required
-						@if($row['position']=='social_destination' ) checked="checked" @endif  /> {{ Lang::get('core.tab_social_destination_menu') }}
-						<input type="radio" name="position"  value="popup"  required
-						@if($row['position']=='popup' ) checked="checked" @endif  /> {{ Lang::get('core.tab_popup_menu') }}
-						<input type="radio" name="position"  value="popup_2"  required
-						@if($row['position']=='popup_2' ) checked="checked" @endif  /> {{ Lang::get('core.tab_popup2_menu') }}
-						<input type="radio" name="position"  value="business"  required
-						@if($row['position']=='business' ) checked="checked" @endif  /> {{ Lang::get('core.tab_business_menu') }}
-						
+						<select name='position' id='position'  style="width:100%" >
+							<option value="top" @if($row['position']=='top' ) selected="selected" @endif>{{ Lang::get('core.tab_topmenu') }} </option>
+							<option value="sidebar" @if($row['position']=='sidebar' ) selected="selected" @endif>{{ Lang::get('core.tab_sidemenu') }} </option>
+							<option value="footer" @if($row['position']=='footer' ) selected="selected" @endif>{{ Lang::get('core.tab_footermenu') }} </option>
+							<option value="landing" @if($row['position']=='landing' ) selected="selected" @endif>{{ Lang::get('core.tab_landingmenu') }} </option>
+							<option value="grid" @if($row['position']=='grid' ) selected="selected" @endif>{{ Lang::get('core.tab_gridmenu') }} </option>
+							<option value="yachts" @if($row['position']=='yachts' ) selected="selected" @endif>{{ Lang::get('core.tab_yatchgridmenu') }} </option>
+							<option value="content" @if($row['position']=='content' ) selected="selected" @endif>{{ Lang::get('core.tab_content_menu') }} </option>
+							<option value="product" @if($row['position']=='product' ) selected="selected" @endif>{{ Lang::get('core.tab_product_menu') }} </option>
+							<option value="social_property" @if($row['position']=='social_property' ) selected="selected" @endif>{{ Lang::get('core.tab_social_property_menu') }} </option>
+							<option value="social_destination" @if($row['position']=='social_destination' ) selected="selected" @endif>{{ Lang::get('core.tab_social_destination_menu') }} </option>
+							<option value="popup" @if($row['position']=='popup' ) selected="selected" @endif>{{ Lang::get('core.tab_popup_menu') }} </option>
+							<option value="popup_2" @if($row['position']=='popup_2' ) selected="selected" @endif>{{ Lang::get('core.tab_popup2_menu') }} </option>
+							<option value="business" @if($row['position']=='business' ) selected="selected" @endif>{{ Lang::get('core.tab_business_menu') }} </option>
+						</select>
 					 </div> 
-				  </div> 	 				
+				  </div>
+				  <div class="form-group " >
+					<label for="Image" class=" control-label col-md-4 text-left"> Image </label>
+					<div class="col-md-8">
+						<input  type='file' name='image' id='image' style='width:150px !important;'  />
+						<div>
+						{!! SiteHelpers::showUploadedFile($row['image'],'/uploads/menu_imgs/') !!}
+						
+						</div>
+					 </div>
+				</div>
 				  <div class="form-group  " >
 					<label for="ipt" class=" control-label col-md-4 text-right">{{ Lang::get('core.fr_miconclass') }}  </label>
 					<div class="col-md-8">
