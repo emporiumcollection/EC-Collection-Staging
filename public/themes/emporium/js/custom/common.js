@@ -36,7 +36,7 @@ $(document).ready(function () {
     /*
      * For Select By Date of Left Sidebar
      */
-    $(document).on('click', '[data-option="search-by-date"]', function () {
+    $(document).on('click', '[data-action="search-by-date"]', function () {
         hideAllOption();
         var data = {};
         data.main_title = 'Search By Date';
@@ -44,6 +44,7 @@ $(document).ready(function () {
         data.id = 0;
         putDataOnLeft(data);
         openSearchByDate();
+
 
     });
 
