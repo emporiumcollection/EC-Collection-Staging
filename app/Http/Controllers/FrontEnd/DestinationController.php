@@ -24,6 +24,7 @@ class DestinationController extends Controller {
             {
                 $res['status'] = 'success';
                 $res['dests'] = $fetchchilds;
+				$res['path'] = implode('/',array_reverse($this->fetchcategoryaliaspath($category_id)));
 
             }
             else
@@ -79,6 +80,21 @@ class DestinationController extends Controller {
 			$res['errors'] = 'No Menus found!';
 		}
         return response()->json($res);
+    }
+	
+	public function fetchcategoryaliaspath($id = 0, $child_category_array = '') {
+
+        if (!is_array($child_category_array))
+            $child_category_array = array();
+		
+        $results = \DB::table('tb_categories')->where('id', $id)->get();
+        if ($results) {
+            foreach ($results as $row) {
+                $child_category_array[] = $row->category_alias;
+                $child_category_array = $this->fetchcategoryaliaspath($row->parent_category_id, $child_category_array);
+            }
+        }
+        return $child_category_array;
     }
 
 }

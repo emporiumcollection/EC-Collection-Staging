@@ -180,16 +180,16 @@ class PropertyController extends Controller {
 			$this->data['sidebargridAds'] = \DB::table('tb_advertisement')->where('adv_type', 'sidebar')->where('ads_cat_id', $adscateObj->id)->where('adv_position', 'grid_sidebar')->get();
 		}
 		
-		$arrive = $destination = $adult = $childs = '';
+		$arrive = $departure = $adult = $childs = '';
 		if (!is_null($request->arrive) && $request->arrive != '') {
 			\Session::put('arrive_date', $request->arrive);
 			$this->data['arrive_date'] = $request->arrive;
 			$arrive = date("Y-m-d", strtotime(trim($request->arrive)));
 		}
-		if (!is_null($request->destination) && $request->destination != '') {
-			\Session::put('destination_date', $request->destination);
-			$this->data['destination_date'] = $request->destination;
-			$destination = date("Y-m-d", strtotime(trim($request->destination)));
+		if (!is_null($request->departure) && $request->departure != '') {
+			\Session::put('departure_date', $request->departure);
+			$this->data['departure_date'] = $request->departure;
+			$departure = date("Y-m-d", strtotime(trim($request->departure)));
 		}
 		if (!is_null($request->adult) && $request->adult != '') {
 			\Session::put('adults', $request->adult);
@@ -229,8 +229,8 @@ class PropertyController extends Controller {
 											'tb_properties.property_name',
 											'tb_properties.property_slug',
 											'tb_properties.property_category_id')->where('tb_properties_category_rooms.room_active_from', '<=', $arrive)->where('tb_properties.property_name', $ConObjs->display_name)->where('tb_properties.property_type', 'Hotel')->where('tb_properties.property_status', 1);
-										if ($destination != '') {
-											$propstemp->where('tb_properties_category_rooms.room_active_to', '>=', $destination);
+										if ($departure != '') {
+											$propstemp->where('tb_properties_category_rooms.room_active_to', '>=', $departure);
 										}
 										$props = $propstemp->first();
 									} else {
@@ -268,8 +268,8 @@ class PropertyController extends Controller {
 											'tb_properties.property_name',
 											'tb_properties.property_slug',
 											'tb_properties.property_category_id')->where('tb_properties_category_rooms.room_active_from', '<=', $arrive)->where('tb_properties.property_name', $ConObjs->display_name)->where('tb_properties.property_type', 'Hotel')->where('tb_properties.property_status', 1);
-								if ($destination != '') {
-									$propstemp->where('tb_properties_category_rooms.room_active_to', '>=', $destination);
+								if ($departure != '') {
+									$propstemp->where('tb_properties_category_rooms.room_active_to', '>=', $departure);
 								}
 								$props = $propstemp->first();
 							} else {
@@ -308,8 +308,8 @@ class PropertyController extends Controller {
 				$arriveQry .=" AND  pr.property_name like '%". $keyword."%' ";
 				$arriveQry .=" AND  pr.property_status=1 ";
 				$arriveQry .=" AND  pr.property_type='Hotel' ";
-				if ($destination != '') {
-					$arriveQry .=" AND  pctr.room_active_to >= ".$destination;
+				if ($departure != '') {
+					$arriveQry .=" AND  pctr.room_active_to >= ".$departure;
 				}
 
 			
@@ -342,8 +342,8 @@ class PropertyController extends Controller {
 										return sprintf("FIND_IN_SET('%s', pr.property_category_id)", $v);
 									}, array_values($chldIds))) . ")";
 				}
-				if ($destination != '') {
-					$getdestind = " AND pctr.room_active_to <= '$destination'";
+				if ($departure != '') {
+					$getdestind = " AND pctr.room_active_to <= '$departure'";
 				}
 				$catprops = " OR pr.id in( SELECT pr.id FROM tb_properties pr, tb_properties_category_rooms pctr   WHERE pctr.property_id = pr.id AND  pr.property_status='1' AND pctr.room_active_from <= '".$arrive."' ".$getdestind."  ".$getcats." ) ";
 			} else {

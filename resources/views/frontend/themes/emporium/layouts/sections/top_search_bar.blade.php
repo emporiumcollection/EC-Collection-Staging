@@ -15,7 +15,7 @@
 		  </div>
 		  <div class="col-sm-6">
 			 <div class="form-group">
-				<input name="destination" id="reservationdate1" class="form-control datefield reservationdate" type="text" placeholder="Destination" readonly required>
+				<input name="departure" id="reservationdate1" class="form-control datefield reservationdate" type="text" placeholder="Departure" readonly required>
 				<div class="input-group-icon"><i class="fa fa-calander"></i></div>
 			 </div>
 		  </div>
