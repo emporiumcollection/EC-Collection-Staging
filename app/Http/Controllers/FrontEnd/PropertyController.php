@@ -338,7 +338,7 @@ class PropertyController extends Controller {
 				$getcats = '';
 				if (!empty($chldIds)) {
 					$getcats = " AND (" . implode(" || ", array_map(function($v) {
-										return sprintf("FIND_IN_SET('%s', tb_properties.property_category_id)", $v);
+										return sprintf("FIND_IN_SET('%s', pr.property_category_id)", $v);
 									}, array_values($chldIds))) . ")";
 				}
 				if ($destination != '') {
