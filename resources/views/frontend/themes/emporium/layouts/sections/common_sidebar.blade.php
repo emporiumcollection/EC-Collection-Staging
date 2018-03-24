@@ -71,7 +71,7 @@
 						@endif
                     </div>
                 </div>
-				{{--*/ $sidebarads = CommonHelper::getSidebarAds('landing', 0) /*--}}
+				{{--*/ $sidebarads = CommonHelper::getSidebarAds('landing', '') /*--}}
 				@if(!empty($sidebarads['leftsidebarads']))
                     @foreach($sidebarads['leftsidebarads'] as $ads)
 						<div class="item">
