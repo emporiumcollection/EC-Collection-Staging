@@ -56,7 +56,7 @@ class CommonHelper
 	static function getSidebarAds($pos='landing', $cat_id = 0){
 
         $data = array();
-        $this->data['leftsidebarads'] = \DB::table('tb_advertisement')->select('adv_img', 'adv_link')->where('adv_type', 'sidebar')->where('adv_position', $pos)->where('ads_cat_id', $cat_id)->get();
+        $data['leftsidebarads'] = \DB::table('tb_advertisement')->select('adv_img', 'adv_link')->where('adv_type', 'sidebar')->where('adv_position', $pos)->where('ads_cat_id', $cat_id)->get();
         return $data;
     }
 
