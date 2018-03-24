@@ -342,9 +342,9 @@ class PropertyController extends Controller {
 									}, array_values($chldIds))) . ")";
 				}
 				if ($destination != '') {
-					$getdestind = " AND tb_properties_category_rooms.room_active_to <= '$destination'";
+					$getdestind = " AND pctr.room_active_to <= '$destination'";
 				}
-				$catprops = " OR pr.id in( SELECT pr.id FROM tb_properties pr, tb_properties_category_rooms pctr   WHERE pctr.property_id = pr.id AND  pr.property_status='1' AND tb_properties_category_rooms.room_active_from <= '".$arrive."' ".$getdestind."  ".$getcats." ) ";
+				$catprops = " OR pr.id in( SELECT pr.id FROM tb_properties pr, tb_properties_category_rooms pctr   WHERE pctr.property_id = pr.id AND  pr.property_status='1' AND pctr.room_active_from <= '".$arrive."' ".$getdestind."  ".$getcats." ) ";
 			} else {
 				$catprops = " OR pr.id in(SELECT id FROM tb_properties WHERE property_status='1' $getcats ) ";
 			}
