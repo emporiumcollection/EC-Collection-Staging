@@ -41,54 +41,54 @@
 									 </div>
 								  </div> 					
 								  <div class="form-group  " >
-									<label for="Presentation Page Id" class=" control-label col-md-4 text-left"> Presentation Page Id </label>
+									<label for="Presentation Page" class=" control-label col-md-4 text-left"> Presentation Page <span class="asterix"> * </span></label>
 									<div class="col-md-6">
-									  <select name='presentation_page_id' rows='5' id='presentation_page_id' class='select2 '   ></select> 
+									  <select name='presentation_page_id' rows='5' id='presentation_page_id' class='select2 ' required  ></select> 
 									 </div> 
 									 <div class="col-md-2">
 									 	
 									 </div>
 								  </div> 					
 								  <div class="form-group  " >
-									<label for="Slider Title" class=" control-label col-md-4 text-left"> Slider Title </label>
+									<label for="Slider Title" class=" control-label col-md-4 text-left"> Slider Title <span class="asterix"> * </span></label>
 									<div class="col-md-6">
-									  {!! Form::text('slider_title', $row['slider_title'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
+									  {!! Form::text('slider_title', $row['slider_title'],array('class'=>'form-control', 'placeholder'=>'', 'required'=>'true'  )) !!} 
 									 </div> 
 									 <div class="col-md-2">
 									 	
 									 </div>
 								  </div> 					
 								  <div class="form-group  " >
-									<label for="Slider Description" class=" control-label col-md-4 text-left"> Slider Description </label>
+									<label for="Slider Description" class=" control-label col-md-4 text-left"> Slider Description <span class="asterix"> * </span></label>
 									<div class="col-md-6">
 									  <textarea name='slider_description' rows='5' id='slider_description' class='form-control '  
-				           >{{ $row['slider_description'] }}</textarea> 
+				         required  >{{ $row['slider_description'] }}</textarea> 
 									 </div> 
 									 <div class="col-md-2">
 									 	
 									 </div>
 								  </div> 					
 								  <div class="form-group  " >
-									<label for="Slider Sub Title" class=" control-label col-md-4 text-left"> Slider Sub Title </label>
+									<label for="Slider Sub Title" class=" control-label col-md-4 text-left"> Slider Sub Title <span class="asterix"> * </span></label>
 									<div class="col-md-6">
-									  {!! Form::text('slider_sub_title', $row['slider_sub_title'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
+									  {!! Form::text('slider_sub_title', $row['slider_sub_title'],array('class'=>'form-control', 'placeholder'=>'', 'required'=>'true'  )) !!} 
 									 </div> 
 									 <div class="col-md-2">
 									 	
 									 </div>
 								  </div> 					
 								  <div class="form-group  " >
-									<label for="Slider Sub Description" class=" control-label col-md-4 text-left"> Slider Sub Description </label>
+									<label for="Slider Sub Description" class=" control-label col-md-4 text-left"> Slider Sub Description <span class="asterix"> * </span></label>
 									<div class="col-md-6">
 									  <textarea name='slider_sub_description' rows='5' id='slider_sub_description' class='form-control '  
-				           >{{ $row['slider_sub_description'] }}</textarea> 
+				         required  >{{ $row['slider_sub_description'] }}</textarea> 
 									 </div> 
 									 <div class="col-md-2">
 									 	
 									 </div>
 								  </div> 					
 								  <div class="form-group  " >
-									<label for="Slider Img" class=" control-label col-md-4 text-left"> Slider Img </label>
+									<label for="Slider Img" class=" control-label col-md-4 text-left"> Slider Img <span class="asterix"> * </span></label>
 									<div class="col-md-6">
 									  <input  type='file' name='slider_img' id='slider_img' @if($row['slider_img'] =='') class='required' @endif style='width:150px !important;'  />
 					 	<div >
@@ -112,43 +112,6 @@
 									 </div>
 								  </div> 					
 								  <div class="form-group  " >
-									<label for="User Id" class=" control-label col-md-4 text-left"> User Id </label>
-									<div class="col-md-6">
-									  {!! Form::text('user_id', $row['user_id'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
-									 </div> 
-									 <div class="col-md-2">
-									 	
-									 </div>
-								  </div> 					
-								  <div class="form-group  " >
-									<label for="Created" class=" control-label col-md-4 text-left"> Created </label>
-									<div class="col-md-6">
-									  
-				<div class="input-group m-b" style="width:150px !important;">
-					{!! Form::text('created', $row['created'],array('class'=>'form-control datetime', 'style'=>'width:150px !important;')) !!}
-					<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-				</div>
-				 
-									 </div> 
-									 <div class="col-md-2">
-									 	
-									 </div>
-								  </div> 					
-								  <div class="form-group  " >
-									<label for="Updated" class=" control-label col-md-4 text-left"> Updated </label>
-									<div class="col-md-6">
-									  
-				<div class="input-group m-b" style="width:150px !important;">
-					{!! Form::text('updated', $row['updated'],array('class'=>'form-control datetime', 'style'=>'width:150px !important;')) !!}
-					<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-				</div>
-				 
-									 </div> 
-									 <div class="col-md-2">
-									 	
-									 </div>
-								  </div> 					
-								  <div class="form-group  " >
 									<label for="Slider Video" class=" control-label col-md-4 text-left"> Slider Video </label>
 									<div class="col-md-6">
 									  <textarea name='slider_video' rows='5' id='slider_video' class='form-control '  
@@ -166,15 +129,6 @@
 					<input type='radio' name='slide_type' value ='Image'  @if($row['slide_type'] == 'Image') checked="checked" @endif > Image </label>
 					<label class='radio radio-inline'>
 					<input type='radio' name='slide_type' value ='Video'  @if($row['slide_type'] == 'Video') checked="checked" @endif > Video </label> 
-									 </div> 
-									 <div class="col-md-2">
-									 	
-									 </div>
-								  </div> 					
-								  <div class="form-group  " >
-									<label for="Advert Id" class=" control-label col-md-4 text-left"> Advert Id </label>
-									<div class="col-md-6">
-									  {!! Form::text('advert_id', $row['advert_id'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
 									 </div> 
 									 <div class="col-md-2">
 									 	
@@ -220,7 +174,7 @@
 	$(document).ready(function() { 
 		
 		
-		$("#presentation_page_id").jCombo("{{ URL::to('presentationslider/comboselect?filter=tb_presentation_pages::page_name|page_slug') }}",
+		$("#presentation_page_id").jCombo("{{ URL::to('presentationslider/comboselect?filter=tb_presentation_pages:id:page_name|page_slug') }}",
 		{  selected_value : '{{ $row["presentation_page_id"] }}' });
 		 
 
