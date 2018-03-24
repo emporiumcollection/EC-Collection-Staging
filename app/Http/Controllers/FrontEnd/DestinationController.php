@@ -24,7 +24,6 @@ class DestinationController extends Controller {
             {
                 $res['status'] = 'success';
                 $res['dests'] = $fetchchilds;
-				$res['path'] = implode('/',array_reverse($this->fetchcategoryaliaspath($category_id)));
 
             }
             else
@@ -35,6 +34,7 @@ class DestinationController extends Controller {
             if($category_id>0){
                 $currentCate = DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_alias')->where('category_published', 1)->where('id', $category_id)->first();
                 $res['current_category'] = $currentCate;
+				$res['path'] = implode('/',array_reverse($this->fetchcategoryaliaspath($category_id)));
             }
 		}
 		else
