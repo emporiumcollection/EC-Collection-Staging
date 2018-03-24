@@ -131,8 +131,8 @@
                                 <li>
                                     <label>DAY</label>
                                     <select class="calenderselectbox" name="departure-day">
-                                        @for($depDay=1;$depDay<=31;$$depDay++)
-                                            <option>{{$$depDay}}</option>
+                                        @for($depDay=1;$depDay<=31;$depDay++)
+                                            <option>{{$depDay}}</option>
                                         @endfor
                                     </select>
                                 </li>
