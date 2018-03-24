@@ -55,4 +55,6 @@
                     Route::controller('spa', 'SpaController');
                     Route::controller('bar', 'BarController');
                     Route::controller('contract', 'ContractController');
+                    Route::controller('presentation', 'PresentationController');
+                    Route::controller('presentationslider', 'PresentationsliderController');
                     ?>
