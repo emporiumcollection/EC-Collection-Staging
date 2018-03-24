@@ -7,7 +7,7 @@
     <div class="mobilemenu-inner">
     	<div class="mobilemainnav openmobilemenu">
 	    	<div class="mobilenavheader">
-            	<a href="index.html"><img src="images/design-location-logo.png" alt="Emporium Voyage" class="img-responsive"/></a>
+            	<a href="{{URL::to('')}}"><img src="{{ asset('themes/emporium/images/logo.png') }}" alt="Emporium Voyage" class="img-responsive"/></a>
             </div>
             <ul class="mobilemenulist">
             	<li>
@@ -58,29 +58,27 @@
                     	<div class="book-with-us-tittles">
                             <h2>Why book with us?</h2>
                         </div>
-                        <ul class="side-bar-book-with-us-list">
-						<li>
-                        	<h3>Handpicked Selection of Hotels</h3>
-                        	<p>from selected luxury destinations worldwide</p>
-                        </li>
-                        <li>
-                        	<h3>Upgrade and Late Checkout</h3>
-                        	<p>At any Hotel upon Avilability</p>
-                        </li>
-                        <li>
-                        	<h3>Preferred Guest Discounts at New Hotels</h3>
-                        	<p>join our members club</p>
-                        </li>
-                        <li>
-                        	<h3>Free Wifi</h3>
-                        	<p>Guaranteed at all our Partner Hotels</p>
-                        </li>
-                     </ul>
+						{{--*/ $uspmod = CommonHelper::getUspMod() /*--}}
+						@if(!empty($uspmod['whybookwithus']))
+							<ul class="side-bar-book-with-us-list">
+								@foreach ($uspmod['whybookwithus'] as $usps)
+									<li>
+										<h3>{{$usps->title}}</h3>
+										<p>{{$usps->sub_title}}</p>
+									</li>
+								@endforeach
+							</ul>
+						@endif
                     </div>
                 </div>
-                <div class="item">
-                	<a href="javascript:void(0)"><img src="images/left-side-banner.png"></a>
-                </div>
+				{{--*/ $sidebarads = CommonHelper::getSidebarAds('landing', 0) /*--}}
+				@if(!empty($sidebarads['leftsidebarads']))
+                    @foreach($sidebarads['leftsidebarads'] as $ads)
+						<div class="item">
+							<a href="{{ (strpos($ads->adv_link, 'http://') !== false) ? $ads->adv_link : 'http://'.$ads->adv_link }}"><img src="{{URL::to('uploads/users/advertisement/'.$ads->adv_img)}}"></a>
+						</div>
+					@endforeach
+				@endif
               </div>
             </div>
             

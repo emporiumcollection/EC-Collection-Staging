@@ -45,6 +45,20 @@ class CommonHelper
         $data['about_text'] = \DB::table('tb_settings')->select('content')->where('key_value', 'about_text')->first();
         return $data;
     }
+	
+	static function getUspMod(){
+
+        $data = array();
+        $data['whybookwithus'] = \DB::table('tb_whybookwithus')->select('id', 'title', 'sub_title')->where('status', 0)->get();
+        return $data;
+    }
+	
+	static function getSidebarAds($pos='landing', $cat_id = 0){
+
+        $data = array();
+        $data['leftsidebarads'] = \DB::table('tb_advertisement')->select('adv_img', 'adv_link')->where('adv_type', 'sidebar')->where('adv_position', $pos)->where('ads_cat_id', $cat_id)->get();
+        return $data;
+    }
 
     static function calc_price($actprice,$actdays,$customdays){
 		if($actprice>0 && $actdays > 0 && $customdays > 0)
