@@ -6,7 +6,7 @@
     </div>
     <div class="mobilemenu-inner">
         <div class="mobilemainnav openmobilemenu">
-            <div class="mobilenavheader " data-option="home"><a href="index.html"><img src="{{ asset('themes/emporium/images/logo.png')}}" alt="Emporium Voyage" class="img-responsive"/></a></div>
+            <div class="mobilenavheader " data-option="home"><a href="{{url('/')}}"><img src="{{ asset('themes/emporium/images/logo.png')}}" alt="Emporium Voyage" class="img-responsive"/></a></div>
             <div class="mobilenavheader hide" data-option="child-global">
                 <h3 data-option-title="global"></h3>
                 <a href="javascript:void(0)" class="homelinknav backtohomelink" data-option-action="back" data-option-action-type="home" data-id="0"><i class="fa fa-angle-left"></i> <span>HOME</span></a>
@@ -57,10 +57,10 @@
             </ul>
             <ul class="mobilemenulist hide" data-option="search-our-collection">
                 <li>
-                    <div class="navheadimage"><a href="javascript:void(0)"><img src="{{ asset('themes/emporium/images/mountain-image.jpg') }}" alt=""/><div class="headingoverlay">HOTELS</div></a></div>
+                    <div class="navheadimage"><a href="{{url('luxurytravel/Hotel')}}"><img src="{{ asset('themes/emporium/images/mountain-image.jpg') }}" alt=""/><div class="headingoverlay">HOTELS</div></a></div>
                 </li>
                 <li>
-                    <div class="navheadimage"><a href="javascript:void(0)"><img src="{{ asset('themes/emporium/images/mountain-image.jpg') }}" alt=""/><div class="headingoverlay">YACHTS</div></a></div>
+                    <div class="navheadimage"><a href="http://emporium-yachts.com/"><img src="{{ asset('themes/emporium/images/mountain-image.jpg') }}" alt=""/><div class="headingoverlay">YACHTS</div></a></div>
                 </li>
             </ul>
             <ul class="mobilesublinks hide" data-option="selected-option-list">
