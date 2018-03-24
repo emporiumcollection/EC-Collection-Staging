@@ -59,12 +59,12 @@
                             <h2>Why book with us?</h2>
                         </div>
 						{{--*/ $uspmod = CommonHelper::getUspMod() /*--}}
-						@if(!empty($uspmod))
+						@if(!empty($uspmod['whybookwithus']))
 							<ul class="side-bar-book-with-us-list">
-								@foreach ($uspmod as $usps)
+								@foreach ($uspmod['whybookwithus'] as $usps)
 									<li>
-										<h3>{{$usps['whybookwithus']->title}}</h3>
-										<p>{{$usps['whybookwithus']->sub_title}}</p>
+										<h3>{{$usps->title}}</h3>
+										<p>{{$usps->sub_title}}</p>
 									</li>
 								@endforeach
 							</ul>
@@ -72,8 +72,8 @@
                     </div>
                 </div>
 				{{--*/ $sidebarads = CommonHelper::getSidebarAds('landing', 0) /*--}}
-				@if(!empty($sidebarads))
-                    @foreach($sidebarads as $ads)
+				@if(!empty($sidebarads['leftsidebarads']))
+                    @foreach($sidebarads['leftsidebarads'] as $ads)
 						<div class="item">
 							<a href="{{ (strpos($ads->adv_link, 'http://') !== false) ? $ads->adv_link : 'http://'.$ads->adv_link }}"><img src="{{URL::to('uploads/users/advertisement/'.$ads->adv_img)}}"></a>
 						</div>
