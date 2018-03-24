@@ -77,7 +77,7 @@
                         </a></div>
                 </li>
             </ul>
-            <ul class="mobilesublinks hide" data-option="selected-option-list">
+            <ul class="mobilemenulist hide" data-option="selected-option-list">
             </ul>
             <div class="bottomlink" data-option="global">Already have an account? <a class="loginSecForMob"
                                                                                      href="javascript:void(0)">Login</a><br/>or<br/>Don't
