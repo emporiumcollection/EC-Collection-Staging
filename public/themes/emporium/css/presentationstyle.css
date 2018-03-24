@@ -1,0 +1,427 @@
+/* CSS Document */
+* {
+	margin: 0;
+	padding: 0;
+}
+ul, ol {
+	list-style: none;
+	margin: 0;
+}
+img {
+	max-width: 100%;
+}
+a:hover, a:focus, input, button {
+	outline: none;
+	border: none;
+	text-decoration: none;
+}
+p, h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	padding: 0;
+}
+a {
+	text-decoration: none;
+}
+a,div, ul, img, button {
+	transition: all 0.5s ease-out;
+	-moz-transition: all 0.5s ease-out;
+	-webkit-transition: all 0.5s ease-out;
+	-o-transition: all 0.5s ease-out;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-o-box-sizing: border-box;
+}
+body {
+	background: #252525;
+	overflow-y: hidden;
+	font-family: 'GeomanistLight';
+}
+
+/*******fonts*****/
+@font-face {
+    font-family: 'geomanist_regularregular';
+    src: url('../fonts/geomanist-regular_2-webfont.woff2') format('woff2'),
+         url('../fonts/geomanist-regular_2-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'geomanistlightwebfont';
+    src: url('../fonts/geomanistlightwebfont.eot');
+    src: url('../fonts/geomanistlightwebfont.eot') format('embedded-opentype'),
+         url('../fonts/geomanistlightwebfont.woff2') format('woff2'),
+         url('../fonts/geomanistlightwebfont.woff') format('woff'),
+         url('../fonts/geomanistlightwebfont.ttf') format('truetype'),
+         url('../fonts/geomanistlightwebfont.svg#geomanistlightwebfont') format('svg');
+}
+@font-face {
+    font-family: 'GeomanistLight';
+    src: url('../fonts/GeomanistLight.eot');
+    src: url('../fonts/GeomanistLight.eot') format('embedded-opentype'),
+         url('../fonts/GeomanistLight.woff2') format('woff2'),
+         url('../fonts/GeomanistLight.woff') format('woff'),
+         url('../fonts/GeomanistLight.ttf') format('truetype'),
+         url('../fonts/GeomanistLight.svg#GeomanistLight') format('svg');
+}
+@font-face {
+  font-family: 'ACaslonPro-Regular';
+  src: url('../fonts/ACaslonPro-Regular.eot') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'ACaslonPro-Regular';
+  src:  url('../fonts/ACaslonPro-Regular.otf')  format('opentype'), url('../fonts/ACaslonPro-Regular.ttf')  format('truetype'), url('../fonts/ACaslonPro-Regular.svg#ACaslonPro-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+/*****scroll to next section******/
+.scrollToNextrSection {
+	position: absolute;
+	bottom: 50px;
+	width: auto;
+	left: 50%;
+	transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	color: #fff !important;
+	font-size: 20px;
+	text-align: center;
+}
+.scrollToNextrSection span {
+	display: block;
+	line-height: 15px
+}
+
+/********Right Navigation*********/
+
+.rightNavLink {
+	position: fixed;
+	right: 20px;
+	top: 50%;
+	transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	width: 5px;
+	z-index: 9;
+}
+.rightNavLink ul {
+	width: 100%;
+	display: block;
+}
+.rightNavLink ul li {
+	width: 100%;
+	display: inline-block;
+}
+.rightNavLink ul li a {
+	width: 5px;
+	height: 5px;
+	border-radius: 50%;
+	display: inline-block;
+	background: black; 
+}
+.rightNavLink ul li a.active {
+	background: red; 
+}
+
+/***top logo div***/
+.logoTopSec {
+	position: fixed;
+	left: 50%;
+	transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	top: 15px;
+	display: none;
+	z-index: 9;
+}
+.logoTopSec img {
+    height: 80px;
+    padding: 10px;
+    width: auto;
+    max-width: unset;
+}
+
+/*****section common css*****/
+section {
+	height: 100vh;
+	width: 100%;
+	position: relative;
+	overflow: hidden;
+}
+/**** section background ****/
+#secondSection {
+
+}
+#thirdSection {
+
+}
+#fourthSection {
+
+}
+#fifthSection {
+
+}
+#sixthSection.headerSection {
+
+}
+/***** header section *****/
+
+.headerSection img{max-width:250px;}
+
+.headerSection h1 {
+	font-size: calc(1em + 1vw);
+	color: #fff;
+    font-family: 'geomanistlightwebfont';
+	margin: 0 0 20px;
+}
+.textCcenterDiv {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	font-size: 50px;
+	text-align: center;
+}
+
+/*****Images section*****/
+.imageSection {
+	display: block;
+	text-align: right;
+}
+.imageSection img {
+	float: right;
+	max-width: unset;
+	height: calc(100vh - 80px);
+	filter: brightness(0.5);
+	margin-top: 150px;
+}
+.contactSection {
+	display: block;
+	height: 100vh;
+}
+.contacSecInner {
+	position: relative;
+	padding: 155px 15% 0;
+	height:600px;
+}
+.contacSecInner h3 {
+    color: #ABA07C;
+    font-family: ACaslonPro-Regular;
+    font-size: 36px;
+    font-style: normal;
+    margin: 0px;
+    line-height: 35px;
+    font-weight: bold;
+}
+.contacSecInner h3 span {
+	display: block;
+}
+.contacSecInner p {
+	font-size: 16px;
+	color: rgba(255,255,255,0.5);
+	line-height: 1.6;
+	float: none;
+    font-family: 'GeomanistLight';
+	padding: 15px 0; 
+}
+.accordianSection {
+	display: block;
+	padding: 10px 0; 
+	border-top: 1px solid rgba(255,255,255,0.5); 
+	border-bottom: 1px solid rgba(255,255,255,0.5); 
+}
+.accordianSection button {
+	display: block;
+	background: transparent;
+	border-radius: 0px;
+	border: none;
+	padding: 5px 0 0;
+	text-align: left;
+	width: 100%;
+	color: #ABA07C;
+    font-size: 24px;
+    font-family: ACaslonPro-Regular;
+    font-weight: 700;
+}
+.iconSec {
+	font-size: 18px;
+	float: right;
+}
+.accordianContent {
+	display: none;
+	width: 100%;
+	transition:  unset;
+	-webkit-transition:  unset;
+	-moz-transition:  unset;
+	-ms-transition:  unset;
+}
+
+
+
+
+
+
+#cd-vertical-nav {
+  position: fixed;
+  right: 40px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  z-index: 9;
+  display: none;
+}
+ #cd-vertical-nav li {
+  text-align: right;
+}
+ #cd-vertical-nav a {
+  display: inline-block;
+  /* prevent weird movements on hover when you use a CSS3 transformation - webkit browsers */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+ #cd-vertical-nav a:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+ #cd-vertical-nav a span {
+  float: right;
+  display: inline-block;
+}
+/* #cd-vertical-nav a:hover span {
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+}*/
+ #cd-vertical-nav a.is-selected .cd-dot {
+  background-color: #ABA07C;
+}
+ #cd-vertical-nav .cd-dot {
+  position: relative;
+  top: 8px;
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  background-color: rgba(255,255,255,.5);
+  /*opacity: 0.7;*/
+}
+ #cd-vertical-nav .cd-label {
+  position: relative;
+  margin-right: 10px;
+  padding: .4em .5em;
+  color: white;
+  font-size: 14px;
+  font-size: 0.875rem;
+  -webkit-transition: -webkit-transform 0.2s, opacity 0.2s;
+  -moz-transition: -moz-transform 0.2s, opacity 0.2s;
+  transition: transform 0.2s, opacity 0.2s;
+  opacity: 0;
+  -webkit-transform-origin: 100% 50%;
+  -moz-transform-origin: 100% 50%;
+  -ms-transform-origin: 100% 50%;
+  -o-transform-origin: 100% 50%;
+  transform-origin: 100% 50%;
+}
+
+
+.contentScroller {
+	height: calc(100% - 20px);
+	width: 100%;
+	display: inline-block;
+	margin-top: 10px; 
+}
+
+.thankyousection h2{font-size:30px; color:#fff;}
+
+
+
+
+/*Media Queries starts here*/
+@media only screen and (max-width: 1024px) {
+	.imageSection {
+		height: 300px;
+		width: 100%;
+	}
+	.imageSection img {
+		height: calc(100% - 80px);
+		object-fit: cover;
+		object-position: center;
+		width: 100%;
+	}
+	.contacSecInner {
+	    padding: 100px 20px 0;
+	}
+	.contactSection {
+		height: calc(100vh - 300px);
+		/*overflow-y: scroll;*/
+	}
+	#cd-vertical-nav {
+		right: 15px;
+	}
+	#cd-vertical-nav .cd-dot {
+		width: 6px;
+		height: 6px;
+	}
+	section {
+		height: auto;
+	}
+	.headerSection {
+		min-height: 100vh; 
+	}
+	.textCcenterDiv {
+		position: absolute;
+		width: 100%;
+		padding: 0 15px;
+	}
+	section.cd-section .col-sm-6 {
+		min-width: 100%;
+	}
+	.contacSecInner {
+		height: 100%;
+	}
+
+}
+@media only screen and (max-width: 991px) {
+	.headerSection h1 {
+		font-size: 35px;
+	}
+	.scrollToNextrSection {
+		font-size: 12px;
+	}
+	.contacSecInner h3 {
+		font-size: 25px;
+	}
+	.contacSecInner p {
+	    font-size: 15px;
+	}
+	.accordianSection button {
+		font-size: 15px;
+	}
+}
+@media only screen and (max-width: 767px) {
+	.contactSection {
+		height: calc(100vh - 200px);
+		padding: 0 10px;
+		overflow: hidden; 
+	}
+	.imageSection {
+		height: 200px;
+	}
+	
+}
