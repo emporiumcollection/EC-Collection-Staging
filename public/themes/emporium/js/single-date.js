@@ -34,6 +34,44 @@ document.addEventListener("touchstart", function() {},false);
 	Style-1 - With Dropdown and Date Format: MM-DD-YYYY
 |--------------------------------------------------------------------------
 */
+	$('.reservationdate').daterangepicker({
+		locale: {
+			format: 'MM-DD-YYYY',
+			daysOfWeek: [
+				"SUN",
+				"MON",
+				"TUE",
+				"WED",
+				"THU",
+				"FRI",
+				"SAT"
+			],
+			monthNames: [
+				"January",
+				"February",
+				"March",
+				"April",
+				"May",
+				"June",
+				"July",
+				"August",
+				"September",
+				"October",
+				"November",
+				"December"
+			],
+			firstDay: 0
+		},
+		showDropdowns: true,
+		singleDatePicker: true,
+		startDate: todayDate
+	});
+	
+/*
+|--------------------------------------------------------------------------
+	Style-1 - With Dropdown and Date Format: MM-DD-YYYY
+|--------------------------------------------------------------------------
+*/
 	$('input[name="reservationdate"]').daterangepicker({
 		locale: {
 			format: 'MM-DD-YYYY',
