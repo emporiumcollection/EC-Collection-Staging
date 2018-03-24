@@ -18,7 +18,7 @@ class DestinationController extends Controller {
 		if($category_id!='')
 		{
 
-            $fetchchilds = DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_custom_title')->where('category_published', 1)->where('parent_category_id', $category_id)->where('parent_category_id', '!=', 8)->get();
+            $fetchchilds = DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_alias')->where('category_published', 1)->where('parent_category_id', $category_id)->where('parent_category_id', '!=', 8)->get();
 
             if(!empty($fetchchilds))
             {
@@ -32,7 +32,7 @@ class DestinationController extends Controller {
                 $res['errors'] = 'No child destination found!';
             }
             if($category_id>0){
-                $currentCate = DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_custom_title')->where('category_published', 1)->where('id', $category_id)->first();
+                $currentCate = DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_alias')->where('category_published', 1)->where('id', $category_id)->first();
                 $res['current_category'] = $currentCate;
             }
 		}
@@ -47,7 +47,7 @@ class DestinationController extends Controller {
     public function getExperiencesAjax(Request $request) {
 		
 		$res = array(); 
-		$fetchexperience = DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_custom_title')->where('category_published', 1)->where('parent_category_id', 8)->get();
+		$fetchexperience = DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_alias')->where('category_published', 1)->where('parent_category_id', 8)->get();
 		if(!empty($fetchexperience))
 		{
 			$res['status'] = 'success';

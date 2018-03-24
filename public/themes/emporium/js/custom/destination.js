@@ -50,7 +50,8 @@ function renderDestination(dataObj) {
     putDataOnLeft(data)
     var destinationHtml = '';
     $(dataObj.dests).each(function (i, val) {
-        destinationHtml += '<li><a class="cursor" data-action="select-destination" data-id="' + val.id + '">' + val.category_name + '</a><a></a></li>'
+        destinationHtml += '<li><a class="cursor" data-action="select-destination" data-id="' + val.id + '">' + val.category_name + '</a>';
+        destinationHtml += '<a href="'+BaseURL+'/luxury_destinations/'+val.category_alias+'"><i class="fa fa-external-link" aria-hidden="true"></i></a></li>';
     });
 
     $('[data-option="selected-option-list"]').html(destinationHtml);
@@ -84,7 +85,7 @@ function renderExperience(dataObj) {
             imagePath = BaseURL+'/themes/emporium/images/mountain-image.jpg';
         }
         experienceHtml += '<li><div class="navheadimage">';
-        experienceHtml += '<a href="javascript:void(0)">';
+        experienceHtml += '<a href="'+BaseURL+'/luxury_experience/'+val.category_alias+'">';
         experienceHtml += '<img src="'+imagePath+'" alt="" class="mCS_img_loaded">';
         experienceHtml += '<div class="headingoverlay">' + val.category_name + '</div>';
         experienceHtml += '</a></div></li>';

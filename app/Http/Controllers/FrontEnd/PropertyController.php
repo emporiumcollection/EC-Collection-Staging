@@ -152,13 +152,13 @@ class PropertyController extends Controller {
 		return view('frontend.themes.emporium.properties.list', $this->data);
 	}
 	
-	function PropertySearch(Request $request) {
-		
+	function propertySearch(Request $request) {
+
 		$selCurrency=$request->input("currencyOption");
         \Session::put('currencyOption', $selCurrency);
 		
 		$this->data["convertedOneUnitPrice"]=0;
-        $keyword = str_replace('_',' ',trim($request->cat));
+        $keyword = trim($request->cat);
         $show = 'asc';
         if($request->segment(1)=='search'){
            $keyword = $request->s;
@@ -168,7 +168,7 @@ class PropertyController extends Controller {
 		
 		$this->data['reultsgridAds'] = array();
 		$this->data['sidebargridAds'] = '';
-		$adscateObj = \DB::table('tb_categories')->where('category_name', $keyword)->where('category_published', 1)->first();
+		$adscateObj = \DB::table('tb_categories')->where('category_alias', $keyword)->where('category_published', 1)->first();
 		$resultads = array();
 		if (!empty($adscateObj)) {
 			$reultsgridAds = \DB::table('tb_advertisement')->where('adv_type', 'sidebar')->where('ads_cat_id', $adscateObj->id)->where('adv_position', 'grid_results')->get();
@@ -315,8 +315,9 @@ class PropertyController extends Controller {
 			
 		}
 		   
-		$cateObj = \DB::table('tb_categories')->where('category_name', $keyword)->where('category_published', 1)->first();
-		$chldIds = array();
+		$cateObj = \DB::table('tb_categories')->where('category_alias', $keyword)->where('category_published', 1)->first();
+
+        $chldIds = array();
 		if (!empty($cateObj)) {
 			$channel_url = $cateObj->category_youtube_channel_url;
 			$this->data['channel_url'] = $channel_url;
