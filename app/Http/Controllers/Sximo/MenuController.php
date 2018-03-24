@@ -45,6 +45,7 @@ class MenuController extends Controller {
 					'active'	=> '',
 					'allow_guest'	=> '',
 					'access_data'	=> '',
+					'image'	=> '',
 
 				); 
 			$this->data['menu_lang'] = array(); 
