@@ -31,6 +31,10 @@ class DestinationController extends Controller {
                 $res['status'] = 'error';
                 $res['errors'] = 'No child destination found!';
             }
+            if($category_id>0){
+                $currentCate = DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_custom_title')->where('category_published', 1)->where('id', $category_id)->first();
+                $res['current_category'] = $currentCate;
+            }
 		}
 		else
 		{
