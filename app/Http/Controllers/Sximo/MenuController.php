@@ -144,6 +144,19 @@ class MenuController extends Controller {
 			}
 			$data['access_data'] = json_encode($arr);		
 			$data['allow_guest'] = $request->input('allow_guest');
+			$destinationPath = public_path().'/uploads/menu_imgs/';
+			if(!is_null($request->file('image')))
+			{
+				$filepos7 = $request->file('image');
+				$filenamepos7 = $filepos7->getClientOriginalName();
+				$extensionpos7 = $filepos7->getClientOriginalExtension(); //if you need extension of the file
+				$filenamepos7 = rand(11111111, 99999999).'-'.rand(11111111, 99999999).'.'.$extensionpos7;
+				$uploadSuccesspos7 = $filepos7->move($destinationPath, $filenamepos7);
+				if($uploadSuccesspos7)
+				{
+					$data['image'] = $filenamepos7;
+				}
+			}
 			$this->model->insertRow($data , $request->input('menu_id'));
 			
 			return Redirect::to('sximo/menu?pos='.$pos)
