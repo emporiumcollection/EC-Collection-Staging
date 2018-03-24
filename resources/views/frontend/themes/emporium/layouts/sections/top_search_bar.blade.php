@@ -9,13 +9,13 @@
 	   <div class="row">
 		  <div class="col-sm-6">
 			 <div class="form-group">
-				<input name="arrive" id="reservationdate" class="form-control datefield" type="text" placeholder="Arrival" readonly required>
+				<input name="arrive" id="reservationdate" class="form-control datefield reservationdate" type="text" placeholder="Arrival" readonly required>
 				<div class="input-group-icon"><i class="fa fa-calander"></i></div>
 			 </div>
 		  </div>
 		  <div class="col-sm-6">
 			 <div class="form-group">
-				<input name="destination" id="reservationdate1" class="form-control datefield" type="text" placeholder="Arrival" readonly required>
+				<input name="destination" id="reservationdate1" class="form-control datefield reservationdate" type="text" placeholder="Destination" readonly required>
 				<div class="input-group-icon"><i class="fa fa-calander"></i></div>
 			 </div>
 		  </div>
