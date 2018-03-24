@@ -400,6 +400,22 @@ class PropertyController extends Controller {
 		return view('frontend.themes.emporium.properties.list', $this->data);
                     
     }
+	
+	function fetchcategoryChildListIds($id = 0, $child_category_array = '') {
+
+        if (!is_array($child_category_array))
+            $child_category_array = array();
+        //$uid = \Auth::user()->id;
+        // Get Query 
+        $results = \DB::table('tb_categories')->where('parent_category_id', $id)->get();
+        if ($results) {
+            foreach ($results as $row) {
+                $child_category_array[] = $row->id;
+                $child_category_array = $this->fetchcategoryChildListIds($row->id, $child_category_array);
+            }
+        }
+        return $child_category_array;
+    }
 
 
 }
