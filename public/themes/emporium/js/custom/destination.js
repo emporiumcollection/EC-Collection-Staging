@@ -3,7 +3,7 @@ $(document).ready(function () {
      * For Select Destination of Left Sidebar
      */
     $(document).on('click', '[data-action="select-destination"]', function () {
-        hideAllOption();
+       
         var datObj = {};
         datObj.catID = 0;
         if ($(this).attr('data-id') > 0) {
@@ -35,7 +35,10 @@ $(document).ready(function () {
  * For Get Response of Destination Ajax
  */
 function renderDestination(dataObj) {
-
+    if(dataObj.dests==undefined){
+        location.href = BaseURL+'/luxury_destinations/'+dataObj.path;
+        return false;
+    }
     var data = {};
     data.main_title = 'Select Your Destination';
     data.sub_title = 'Home';
@@ -46,8 +49,8 @@ function renderDestination(dataObj) {
         data.id = dataObj.current_category.id;
     }
 
-    console.log(data);
-    putDataOnLeft(data)
+     hideAllOption();
+    putDataOnLeft(data);
     var destinationHtml = '';
     $(dataObj.dests).each(function (i, val) {
         destinationHtml += '<li><a class="cursor" data-action="select-destination" data-id="' + val.id + '">' + val.category_name + '</a>';
@@ -58,6 +61,7 @@ function renderDestination(dataObj) {
     $('[data-option="global"]').removeClass('hide');
     $('[data-option="child-global"]').removeClass('hide');
     $('[data-option="selected-option-list"]').removeClass('hide');
+    
 }
 
 
@@ -76,8 +80,8 @@ function renderExperience(dataObj) {
         data.id = dataObj.current_category.id;
     }
 
-    console.log(data);
-    putDataOnLeft(data)
+    
+    putDataOnLeft(data);
     var experienceHtml = '';
     $(dataObj.dests).each(function (i, val) {
         var imagePath = BaseURL+'/uploads/category_imgs/'+val.category_image;
