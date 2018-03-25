@@ -56,6 +56,20 @@ $(document).ready(function () {
         openAllHomeOption();
     });
 
+    /*
+     * For Select By Date of Left Sidebar
+     */
+    $(document).on('change', '[data-action="choose-date"]', function () {
+        var arrival = $('select[data-option="arrival-day"]').val()+'-'+$('select[data-option="arrival-month"]').val()+'-'+$('select[data-option="arrival-year"]').val();
+        var departure = $('select[data-option="departure-day"]').val()+'-'+$('select[data-option="departure-month"]').val()+'-'+$('select[data-option="departure-year"]').val();
+        var arrive = '';
+        $('input[name="arrive"]').val(arrival);
+        $('input[name="departure"]').val(departure);
+    });
+
+    
+    
+
 });
 
 /*
