@@ -359,7 +359,7 @@ Route::post('get-article-by-title', 'HomeController@getArticleByTitle');
 // property search urls
 Route::get('getproperty/{id}', 'HomeController@getPropertyQuickView');
 Route::get('filter_search_destionation', 'HomeController@getPropertyBySearchDestination');
-Route::get('{slug}', 'HomeController@getPropertyDetail');
+Route::get('{slug}', 'Frontend\PropertyController@getPropertyDetail');
 Route::get('pdp/{slug}', 'Frontend\PropertyController@getPropertyDetail');
 Route::get('search', 'Frontend\PropertyController@propertySearch');
 Route::get('our-collection-pages/{slug}/{page}', 'HomeController@getPropertyDetail_pages');
