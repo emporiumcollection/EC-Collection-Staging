@@ -83,9 +83,12 @@ function renderDestination(dataObj) {
     
     
     $(dataObj.dests).each(function (i, val) {
-            
-             destinationHtml += '<li><a class="cursor" data-action="select-destination" data-id="' + val.id + '">' + val.category_name + '</a>';
-        destinationHtml += '<a href="'+BaseURL+'/luxury_destinations/'+val.category_alias+'" class="external-link"><i class="fa fa-external-link" aria-hidden="true"></i></a></li>';
+            var  linkMenu = BaseURL+'/luxury_destinations/'+val.category_alias;
+            if(dataObj.path!=undefined){
+                  linkMenu = BaseURL+'/luxury_destinations/'+dataObj.path+'/'+val.category_alias;
+            }
+             destinationHtml += '<li><a class="cursor menu_item" data-action="select-destination" data-id="' + val.id + '">' + val.category_name + '</a>';
+        destinationHtml += '<a href="'+linkMenu+'" class="external-link"><i class="fa fa-external-link" aria-hidden="true"></i></a></li>';
          
        
        });

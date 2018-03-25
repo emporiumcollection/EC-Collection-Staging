@@ -12,7 +12,16 @@
     user-select: none;
 }
 
-a.external-link{ float: right; }
+
 .show {
     display: block;
 }
+
+.mobilemenulist li {
+    clear: both;
+    display: inline-block;
+    width: 100%;
+}
+.mobilemenulist li a.menu_item{    float: left;
+    width: 80%;}
+a.external-link{ float: right;width:20%;}
