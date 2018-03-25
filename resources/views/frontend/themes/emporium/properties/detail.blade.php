@@ -434,7 +434,7 @@
 		</section>
 	</section>
 
-
+	@endif
 
 @endsection
 
