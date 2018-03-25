@@ -25,203 +25,85 @@
 
       <nav id="cd-vertical-nav">
     <ul>
-      @if($presentatiomode==true)  
+      
+      {{--*/ $countersection = 2 /*--}}
+      @foreach($presentationslider as $pslider)
+
+        <li>
+            <a href="#slidepresentation-{{ $countersection }}" data-number="{{ $countersection }}" @if($presentatiomode==0 && $countersection==2) class="is-selected" @endif >
+              <span class="cd-dot"></span>
+            </a>
+          </li>
+
+      {{--*/ $countersection++ /*--}}
+
+      @endforeach
+
+
+      @if($presentatiomode==1)  
       <li>
-        <a href="#firstSection" data-number="1" @if($presentatiomode==true) class="is-selected" @endif>
+        <a href="#thanksSection" data-number="1" @if($presentatiomode==1)  @endif>
           <span class="cd-dot"></span>
         </a>
       </li>
       
       @endif
-      <li>
-        <a href="#secondSection" data-number="2" @if($presentatiomode==false) class="is-selected" @endif >
-          <span class="cd-dot"></span>
-        </a>
-      </li>
-      <li>
-        <a href="#thirdSection" data-number="3" class="">
-          <span class="cd-dot"></span>
-        </a>
-      </li>
-      <li>
-        <a href="#fourthSection" data-number="4" class="">
-          <span class="cd-dot"></span>
-        </a>
-      </li>
-      <li>
-        <a href="#fifthSection" data-number="5" class="">
-          <span class="cd-dot"></span>
-        </a>
-      </li>
-      <li>
-        <a href="#sixthSection" data-number="6" class="">
-          <span class="cd-dot"></span>
-        </a>
-      </li>
+      
     </ul>
   </nav>
 
 
-@if($presentatiomode==true) 
-<div class="logoTopSec">
-  <img src="{{ asset('images/logo.png') }}" alt="Image">
-</div>
+
+@if($presentatiomode==1) 
+    <div class="logoTopSec">
+      <img src="{{ asset('images/logo.png') }}" alt="Image">
+    </div>
     <section class="headerSection">
        <div class="textCcenterDiv">
         <h2><img src="{{ asset('images/logo.png') }}" alt="Image"></h2>
       </div>
-      <a href="#firstSection" class="scrollToNextrSection scrollToSection"><span><img src="{{ asset('images/down-arrow.png') }}"></span></a>
+      <a href="#slidepresentation-2" class="scrollToNextrSection scrollToSection"><span><img src="{{ asset('images/down-arrow.png') }}"></span></a>
     </section>
     @endif
-    <section id="firstSection" class="cd-section">
-      <div class="container-fluid">
-       <div class="row">
-         <div class="col-md-6 col-sm-6">
-             
-           <div class="imageSection">
-             <img src="{{ asset('images/image-3.jpg') }}" alt="Image">
+
+     {{--*/ $countersectionsub = 2 /*--}}
+      @foreach($presentationslider as $pslider)
+
+      <section id="slidepresentation-{{ $countersectionsub }}" class="cd-section">
+        <div class="container-fluid">
+         <div class="row">
+           <div class="col-md-6 col-sm-6">
+               
+             <div class="imageSection">
+               @if($pslider->slide_type=="Image" && $pslider->slider_img!="")
+               <img src=" {{url()}}/uploads/presentation/{{$pslider->slider_img}}" alt="Image">
+               @endif
+             </div>
            </div>
-         </div>
-         <div class="col-md-6 col-sm-6">
-           <div class="contactSection">
-              <div class="contacSecInner">
-                <h3>Lorem Ipsum <span>dummy text</span></h3>
-              <div class="contentScroller mCustomScrollbar" data-mcs-theme="minimal-dark">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                <div class="accordianSection">
-                  <button class="accordianHeading">Lorem Ipsum is dummy text<span class="iconSec">+</span></button>
-                  <div class="accordianContent">
-                    <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages</p>
+           <div class="col-md-6 col-sm-6">
+             <div class="contactSection">
+                <div class="contacSecInner">
+                  <h3>{{ $pslider->slider_title}}</h3>
+                <div class="contentScroller mCustomScrollbar" data-mcs-theme="minimal-dark">
+                  <p>{{ $pslider->slider_description}}</p>
+                  <div class="accordianSection">
+                    <button class="accordianHeading">{{$pslider->slider_sub_title}}<span class="iconSec">+</span></button>
+                    <div class="accordianContent">
+                      <p>{{$pslider->slider_sub_description}}</p>
+                    </div>
+                  </div>
                   </div>
                 </div>
-                </div>
-              </div>
+             </div>
            </div>
-         </div>
-         </div>
-      </div>
-    </section>
-    <section id="secondSection" class="cd-section">
-      <div class="container-fluid">
-       <div class="row">
-         <div class="col-md-6 col-sm-6">
-             
-           <div class="imageSection">
-             <img src="{{ asset('images/image-3.jpg') }}" alt="Image">
            </div>
-         </div>
-         <div class="col-md-6 col-sm-6">
-           <div class="contactSection">
-              <div class="contacSecInner">
-                <h3>Lorem Ipsum <span>dummy text</span></h3>
-              <div class="contentScroller mCustomScrollbar" data-mcs-theme="minimal-dark">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                <div class="accordianSection">
-                  <button class="accordianHeading">Lorem Ipsum is dummy text<span class="iconSec">+</span></button>
-                  <div class="accordianContent">
-                    <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages</p>
-                    <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages</p>
-                    <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages</p>
-                    <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages</p>
-                    <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages</p>
-                    <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages</p>
-                    <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages</p>
-                  </div>
-                </div>
-                </div>
-              </div>
-           </div>
-         </div>
-         </div>
-      </div>
-    </section>
-    <section id="thirdSection" class="cd-section">
-      <div class="container-fluid">
-       <div class="row">
-         <div class="col-md-6 col-sm-6">
-             
-           <div class="imageSection">
-             <img src="{{ asset('images/image-3.jpg') }}" alt="Image">
-           </div>
-         </div>
-         <div class="col-md-6 col-sm-6">
-           <div class="contactSection">
-              <div class="contacSecInner">
-                <h3>Lorem Ipsum <span>dummy text</span></h3>
-              <div class="contentScroller mCustomScrollbar" data-mcs-theme="minimal-dark">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                <div class="accordianSection">
-                  <button class="accordianHeading">Lorem Ipsum is dummy text<span class="iconSec">+</span></button>
-                  <div class="accordianContent">
-                    <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages</p>
-                  </div>
-                </div>
-                </div>
-              </div>
-           </div>
-         </div>
-         </div>
-      </div>
-    </section>
-    
-    <section id="fourthSection" class="cd-section">
-      <div class="container-fluid">
-       <div class="row">
-         <div class="col-md-6 col-sm-6">
-             
-           <div class="imageSection">
-             <img src="{{ asset('images/image-3.jpg') }}" alt="Image">
-           </div>
-         </div>
-         <div class="col-md-6 col-sm-6">
-           <div class="contactSection">
-              <div class="contacSecInner">
-                <h3>Lorem Ipsum <span>dummy text</span></h3>
-              <div class="contentScroller mCustomScrollbar" data-mcs-theme="minimal-dark">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                <div class="accordianSection">
-                  <button class="accordianHeading">Lorem Ipsum is dummy text<span class="iconSec">+</span></button>
-                  <div class="accordianContent">
-                    <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages</p>
-                  </div>
-                </div>
-                </div>
-              </div>
-           </div>
-         </div>
-         </div>
-      </div>
-    </section>
-    <section id="fifthSection" class="cd-section">
-      <div class="container-fluid">
-       <div class="row">
-         <div class="col-md-6 col-sm-6">
-             
-           <div class="imageSection">
-             <img src="{{ asset('images/image-3.jpg') }}" alt="Image">
-           </div>
-         </div>
-         <div class="col-md-6 col-sm-6">
-           <div class="contactSection">
-              <div class="contacSecInner">
-                <h3>Lorem Ipsum <span>dummy text</span></h3>
-              <div class="contentScroller mCustomScrollbar" data-mcs-theme="minimal-dark">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                <div class="accordianSection">
-                  <button class="accordianHeading">Lorem Ipsum is dummy text<span class="iconSec">+</span></button>
-                  <div class="accordianContent">
-                    <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages</p>
-                  </div>
-                </div>
-                </div>
-              </div>
-           </div>
-         </div>
-         </div>
-      </div>
-    </section>
-    @if($presentatiomode==true) 
-    <section id="sixthSection" class="cd-section headerSection thankyousection">
+        </div>
+      </section>
+
+     {{--*/ $countersectionsub++ /*--}}
+     @endforeach
+    @if($presentatiomode==1) 
+    <section id="thanksSection" class="cd-section headerSection thankyousection">
        <div class="textCcenterDiv">
         <h2>THANK YOU.</h2>
       </div>
