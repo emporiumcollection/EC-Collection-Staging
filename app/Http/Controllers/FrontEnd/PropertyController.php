@@ -419,8 +419,6 @@ class PropertyController extends Controller {
 
         }
 
-        $this->data['sidebardetailAds'] = \DB::table('tb_advertisement')->select('adv_link','adv_img')->where('adv_type', 'sidebar')->where('adv_position', 'detail')->get();
-print_r($propertiesArr); die;
         $this->data['propertyDetail'] = $propertiesArr;
         $this->data['relatedproperties'] = $crpropertiesArr;
 		$this->data['relatedgridpropertiesArr'] = $relatedgridpropertiesArr;
