@@ -75,7 +75,9 @@
            <div class="col-md-6 col-sm-6">
                
              <div class="imageSection">
-               <img src="{{ asset('images/image-3.jpg') }}" alt="Image">
+               @if($pslider->slide_type=="Image" && $pslider->slider_img!="")
+               <img src=" {{url()}}/uploads/presentation/{{$pslider->slider_img}}" alt="Image">
+               @endif
              </div>
            </div>
            <div class="col-md-6 col-sm-6">
