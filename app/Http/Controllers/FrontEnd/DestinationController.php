@@ -24,7 +24,6 @@ class DestinationController extends Controller {
             {
                 $res['status'] = 'success';
                 $res['dests'] = $fetchchilds;
-
             }
             else
             {
