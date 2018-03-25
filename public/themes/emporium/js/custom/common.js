@@ -117,7 +117,7 @@ function putDataOnLeft(data){
     $('[data-option="child-global"] [data-option-title="global"]').html(data.main_title);
     $('[data-option="child-global"] [data-option-action="back"] span').html(data.sub_title);
     $('[data-option="child-global"] [data-option-action="back"]').attr('data-id',data.id);
-    $('[data-option="child-global"] [data-option-action="back"]').attr('data-id',data.id);
+    $('[data-option="child-global"] [data-option-action="back"]').attr('data-option-action-type',data.type);
 }
 /*
  * For open collection options

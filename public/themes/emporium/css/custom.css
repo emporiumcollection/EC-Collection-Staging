@@ -12,10 +12,16 @@
     user-select: none;
 }
 
-.hide {
-    display: none;
-}
 
 .show {
     display: block;
 }
+
+.mobilemenulist li {
+    clear: both;
+    display: inline-block;
+    width: 100%;
+}
+.mobilemenulist li a.menu_item{    float: left;
+    width: 80%;}
+a.external-link{ float: right;width:20%; text-align: center;}

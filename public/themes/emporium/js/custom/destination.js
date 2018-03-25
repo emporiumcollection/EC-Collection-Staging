@@ -18,6 +18,22 @@ $(document).ready(function () {
     });
 
     /*
+     * For Back to Destination of Left Sidebar
+     */
+    $(document).on('click', '[data-option-action="back"][data-option-action-type="destination"]', function () {
+      
+        var datObj = {};
+        datObj.catID = $(this).attr('data-id');
+       
+        var params = $.extend({}, doAjax_params_default);
+        params['url'] = BaseURL + '/destination/destinatinos-ajax';
+        params['data'] = datObj;
+        params['successCallbackFunction'] = renderDestination;
+        doAjax(params);
+       
+    });
+
+    /*
      * For Select Experience of Left Sidebar
      */
     $(document).on('click', '[data-action="select-experience"]', function () {
@@ -43,25 +59,48 @@ function renderDestination(dataObj) {
     data.main_title = 'Select Your Destination';
     data.sub_title = 'Home';
     data.id = 0;
+    data.type = 'home';
+    var destinationHtml = '';
     if (dataObj.current_category != undefined) {
         data.main_title = 'Home';
-        data.sub_title = dataObj.current_category.category_name;
-        data.id = dataObj.current_category.id;
+        data.sub_title = 'Back To Destination';
+        data.id = dataObj.current_category.parent_category_id;
+        data.type = 'destination';
+        var imagePath = BaseURL+'/uploads/category_imgs/'+dataObj.current_category.category_image;
+        if(dataObj.current_category.category_image==''){
+            imagePath = BaseURL+'/themes/emporium/images/mountain-image.jpg';
+        }
+        destinationHtml += '<li>';
+        destinationHtml += '<div class="navheadimage">';
+        destinationHtml += '<img src="'+imagePath+'" alt="" class="mCS_img_loaded">';
+        destinationHtml += '<div class="headingoverlay">' + dataObj.current_category.category_name + '</div></div>';
+        destinationHtml += '</li>';
+        destinationHtml += '<li><ul class="mobilesublinks">';
     }
 
      hideAllOption();
     putDataOnLeft(data);
-    var destinationHtml = '';
+    
+    
     $(dataObj.dests).each(function (i, val) {
-        destinationHtml += '<li><a class="cursor" data-action="select-destination" data-id="' + val.id + '">' + val.category_name + '</a>';
-        destinationHtml += '<a href="'+BaseURL+'/luxury_destinations/'+val.category_alias+'"><i class="fa fa-external-link" aria-hidden="true"></i></a></li>';
-    });
+            var  linkMenu = BaseURL+'/luxury_destinations/'+val.category_alias;
+            if(dataObj.path!=undefined){
+                  linkMenu = BaseURL+'/luxury_destinations/'+dataObj.path+'/'+val.category_alias;
+            }
+             destinationHtml += '<li><a class="cursor menu_item" data-action="select-destination" data-id="' + val.id + '">' + val.category_name + '</a>';
+        destinationHtml += '<a href="'+linkMenu+'" class="external-link"><i class="fa fa-external-link" aria-hidden="true"></i></a></li>';
+         
+       
+       });
+    if (dataObj.current_category != undefined) {
+        destinationHtml += '</ul></li>';
+    }
 
     $('[data-option="selected-option-list"]').html(destinationHtml);
     $('[data-option="global"]').removeClass('hide');
     $('[data-option="child-global"]').removeClass('hide');
     $('[data-option="selected-option-list"]').removeClass('hide');
-    
+
 }
 
 
@@ -100,3 +139,4 @@ function renderExperience(dataObj) {
     $('[data-option="child-global"]').removeClass('hide');
     $('[data-option="selected-option-list"]').removeClass('hide');
 }
+
