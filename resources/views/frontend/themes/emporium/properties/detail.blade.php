@@ -296,7 +296,7 @@
 	<setion id="bookHotel" class="hotelSearchDateSection">
 		<div class="HamYardHotelInner">
 			<div class="hotelSearchDateInnerContent text-center">
-			<div class="container-fluid">
+				<div class="container-fluid">
 			  <div class="row">
 				<div class="col-xs-12">
 				  <div class="hotelPopupHeadings">
@@ -375,6 +375,7 @@
 			</div>
 			</form>
 		  </div>
+			</div>
 		</div>
 	</setion>
 
