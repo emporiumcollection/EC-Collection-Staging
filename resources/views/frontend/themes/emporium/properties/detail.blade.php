@@ -448,7 +448,7 @@
 {{-- For Include style files --}}
 @section('head')
     @parent
-
+	<link href="{{ asset('themes/emporium/css/pdpage-css.css') }}" rel="stylesheet">
 @endsection
 
 
