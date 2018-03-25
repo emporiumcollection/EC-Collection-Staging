@@ -34,27 +34,27 @@
       
       @endif
       <li>
-        <a href="#secondSection" data-number="2" @if($presentatiomode==false) class="is-selected" @endif >
+        <a href="#slidepresentation-1" data-number="2" @if($presentatiomode==false) class="is-selected" @endif >
           <span class="cd-dot"></span>
         </a>
       </li>
       <li>
-        <a href="#thirdSection" data-number="3" class="">
+        <a href="#slidepresentation-2" data-number="3" class="">
           <span class="cd-dot"></span>
         </a>
       </li>
       <li>
-        <a href="#fourthSection" data-number="4" class="">
+        <a href="#slidepresentation-3" data-number="4" class="">
           <span class="cd-dot"></span>
         </a>
       </li>
       <li>
-        <a href="#fifthSection" data-number="5" class="">
+        <a href="#slidepresentation-4" data-number="5" class="">
           <span class="cd-dot"></span>
         </a>
       </li>
       <li>
-        <a href="#sixthSection" data-number="6" class="">
+        <a href="#slidepresentation-5" data-number="6" class="">
           <span class="cd-dot"></span>
         </a>
       </li>
@@ -101,7 +101,7 @@
          </div>
       </div>
     </section>
-    <section id="secondSection" class="cd-section">
+    <section id="slidepresentation-1" class="cd-section">
       <div class="container-fluid">
        <div class="row">
          <div class="col-md-6 col-sm-6">
@@ -135,7 +135,7 @@
          </div>
       </div>
     </section>
-    <section id="thirdSection" class="cd-section">
+    <section id="slidepresentation-2" class="cd-section">
       <div class="container-fluid">
        <div class="row">
          <div class="col-md-6 col-sm-6">
@@ -164,7 +164,7 @@
       </div>
     </section>
     
-    <section id="fourthSection" class="cd-section">
+    <section id="slidepresentation-3" class="cd-section">
       <div class="container-fluid">
        <div class="row">
          <div class="col-md-6 col-sm-6">
@@ -192,7 +192,7 @@
          </div>
       </div>
     </section>
-    <section id="fifthSection" class="cd-section">
+    <section id="slidepresentation-4" class="cd-section">
       <div class="container-fluid">
        <div class="row">
          <div class="col-md-6 col-sm-6">
