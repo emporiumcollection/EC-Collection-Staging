@@ -12,10 +12,7 @@
     user-select: none;
 }
 
-.hide {
-    display: none;
-}
-
+a.external-link{ float: right; }
 .show {
     display: block;
 }
