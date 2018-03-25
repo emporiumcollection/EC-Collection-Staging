@@ -417,7 +417,7 @@ class PropertyController extends Controller {
 					
                     $filen = array();
                     if (!empty($roomfileArr)) {
-						$propertiesArr['roomimgs'][$type->id]['imgs'] = $roomfileArr;
+						//$propertiesArr['roomimgs'][$type->id]['imgs'] = $roomfileArr;
 						$propertiesArr['roomimgs'][$type->id]['imgsrc'] = (new ContainerController)->getThumbpath($roomfileArr[0]->folder_id);
 						$propertiesArr['roomimgs'][$type->id]['imgsrc_dir'] = public_path(str_replace(url().'/', '', (new ContainerController)->getThumbpath($roomfileArr[0]->folder_id)));
                         $propertiesArr['typedata'][$c] = $type;
@@ -450,7 +450,7 @@ class PropertyController extends Controller {
         }
 
         $this->data['sidebardetailAds'] = \DB::table('tb_advertisement')->select('adv_link','adv_img')->where('adv_type', 'sidebar')->where('adv_position', 'detail')->get();
-
+print_r($propertiesArr); die;
         $this->data['propertyDetail'] = $propertiesArr;
         $this->data['relatedproperties'] = $crpropertiesArr;
 		$this->data['relatedgridpropertiesArr'] = $relatedgridpropertiesArr;
