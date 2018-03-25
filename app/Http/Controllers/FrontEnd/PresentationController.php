@@ -35,9 +35,9 @@ class PresentationController extends Controller {
                                     ->with('message', \SiteHelpers::alert('error', \Lang::get('core.note_noexists')));
 		}
 			
-		$this->data['presentatiomode']= true;//$this->data['presentationPageDetails'][0]->presentation_mode;
+		$this->data['presentatiomode']=(int)$this->data['presentationPageDetails'][0]->presentation_mode;
 
-		$this->data['presentationslider'] = \DB::table('tb_presentation_sliders')->select( 'slider_title', 'slider_description','slider_sub_title','slider_sub_description','slider_img', 'slider_link', 'slider_video', 'slide_type')->where('presentation_page_id', $this->data['presentationPageDetails'][0]->id)->get();
+		$this->data['presentationslider'] = \DB::table('tb_presentation_sliders')->select( 'id','slider_title', 'slider_description','slider_sub_title','slider_sub_description','slider_img', 'slider_link', 'slider_video', 'slide_type')->where('presentation_page_id', $this->data['presentationPageDetails'][0]->id)->get();
 //dd(	$this->data['presentationslider']);
 		 return view('frontend.presentation.presentation_detail', $this->data);
 	}	
