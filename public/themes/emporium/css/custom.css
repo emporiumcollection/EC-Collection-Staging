@@ -24,4 +24,4 @@
 }
 .mobilemenulist li a.menu_item{    float: left;
     width: 80%;}
-a.external-link{ float: right;width:20%;}
+a.external-link{ float: right;width:20%; text-align: center;}
