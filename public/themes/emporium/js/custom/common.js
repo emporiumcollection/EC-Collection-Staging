@@ -67,7 +67,20 @@ $(document).ready(function () {
         $('input[name="departure"]').val(departure);
     });
 
-    
+    /*
+     * For Select By Filter of Left Sidebar
+     */
+    $(document).on('click', '[data-action="select-filter"]', function () {
+        hideAllOption();
+        var data = {};
+        data.main_title = 'Search By Filter';
+        data.sub_title = 'Home';
+        data.id = 0;
+        putDataOnLeft(data);
+        openSearchByFilter();
+
+
+    });
     
 
 });
@@ -154,4 +167,11 @@ function openSearchByDate(){
 function openAllHomeOption(){
     $('[data-option="home"]').removeClass('hide');
     $('[data-option="global"]').removeClass('hide');
+}
+/*
+ * For open search-by-date options
+ */
+function openSearchByFilter(){
+    $('[data-option="child-global"]').removeClass('hide');
+    $('[data-option="select-filter"]').removeClass('hide');
 }
