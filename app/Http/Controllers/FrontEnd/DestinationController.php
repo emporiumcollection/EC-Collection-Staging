@@ -78,6 +78,10 @@ class DestinationController extends Controller {
 			$res['status'] = 'error';
 			$res['errors'] = 'No Menus found!';
 		}
+        if($request->menuID>0){
+            $currentMenu = DB::table('tb_menu')->where('id', $menu_id)->where('position', $menu_pos)->where('active', 1)->orderBy('ordering','asc')->first();;
+            $res['current_menu'] = $currentMenu;
+        }
         return response()->json($res);
     }
 	

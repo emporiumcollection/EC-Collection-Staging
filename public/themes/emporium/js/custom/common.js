@@ -36,14 +36,17 @@ $(document).ready(function () {
     /*
     * For Company of Left Sidebar
     */
-    $(document).on('click', '[data-action="select-collection"]', function () {
-        hideAllOption();
-        var data = {};
-        data.main_title = 'Search Our Collection';
-        data.sub_title = 'Home';
-        data.id = 0;
-        putDataOnLeft(data);
-        openCollection();
+    $(document).on('click', '[data-action="select-menu"]', function () {
+        var datObj = {};
+        datObj.catID = $(this).attr('data-id');
+
+        var params = $.extend({}, doAjax_params_default);
+        params['url'] = BaseURL + '/destination/menu-ajax';
+        params['data'] = datObj;
+        params['successCallbackFunction'] = renderMenu;
+        doAjax(params);
+
+
 
     });
 
@@ -188,4 +191,40 @@ function openAllHomeOption(){
 function openSearchByFilter(){
     $('[data-option="child-global"]').removeClass('hide');
     $('[data-option="select-filter"]').removeClass('hide');
+}
+
+/*
+ * For Get Response of Menu Ajax
+ */
+function renderMenu(dataObj) {
+    if(dataObj.menus==undefined){
+        location.href = dataObj.current_menu.url;
+        return false;
+    }
+
+    var data = {};
+    data.main_title = 'Company';
+    data.sub_title = 'Home';
+    data.id = 0;
+    data.type = 'home';
+    if (dataObj.menus != undefined) {
+        data.main_title = 'Home';
+        data.sub_title = dataObj.current_menu.menu_name;
+        data.id = dataObj.current_menu.id;
+    }
+    var menuHtml = '';
+    hideAllOption();
+    putDataOnLeft(data);
+    $(dataObj.dests).each(function (i, val) {
+        menuHtml += '<li><a class="cursor menu_item" data-action="select-menu" data-position="'+val.position+'" data-id="' + val.id + '">' + val.menu_name + '</a>';
+        menuHtml += '<a href="'+val.url+'" class="external-link"><i class="fa fa-external-link" aria-hidden="true"></i></a></li>';
+
+
+    });
+
+    $('[data-option="selected-option-list"]').html(menuHtml);
+    $('[data-option="global"]').removeClass('hide');
+    $('[data-option="child-global"]').removeClass('hide');
+    $('[data-option="selected-option-list"]').removeClass('hide');
+
 }
