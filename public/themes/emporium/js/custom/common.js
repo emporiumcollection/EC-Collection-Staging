@@ -208,7 +208,7 @@ function renderMenu(dataObj) {
     data.sub_title = 'Home';
     data.id = 0;
     data.type = 'home';
-    if (dataObj.menus != undefined) {
+    if (dataObj.current_menu != undefined) {
         data.main_title = 'Home';
         data.sub_title = dataObj.current_menu.menu_name;
         data.id = dataObj.current_menu.id;
