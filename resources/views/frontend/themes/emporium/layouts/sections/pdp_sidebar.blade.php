@@ -7,7 +7,7 @@
     </div>
     <div class="mobilemenu-inner">
     	<div class="mobilemainnav openmobilemenu">
-	    	<div class="mobilenavheader"><a href="index.html"><img src="images/design-location-logo.png" alt="Emporium Voyage" class="img-responsive"/></a></div>
+	    	<div class="mobilenavheader"><a href="{{URL::to('')}}"><img src="{{ asset('themes/emporium/images/logo.png')}}" alt="Emporium Voyage" class="img-responsive"/></a></div>
             <ul class="mobilemenulist">
             	<li>
                 	<div class="mobile-leftsearch">
@@ -35,11 +35,23 @@
                     </div>
                </li>
                 <li><a href="#hotelInfo" class="closenavlink scrollpage">HOTEL INFO</a></li>
-                <li><a href="#roomsSuit" class="closenavlink scrollpage">ROOMS & SUITES</a></li>
-                <li><a href="#design-architecture" class="closenavlink scrollpage">DESIGN & ARCHITECTURE</a></li>
-                <li><a href="restaurant.html">RESTAURANT & BAR</a></li>
-                <li><a href="#video" class="closenavlink scrollpage">VIDEO</a></li>
-                <li><a href="#bookHotel" class="yellowbtn scrollpage closenavlink">BOOK Ham Yard Hotel </a></li>
+				@if (array_key_exists('typedata', $propertyDetail))
+					<li><a href="#roomsSuit" class="closenavlink scrollpage">ROOMS & SUITES</a></li>
+				@endif
+				
+				@if($propertyDetail['data']->architecture_title!='' && $propertyDetail['data']->architecture_desciription!='')
+					<li><a href="#design-architecture" class="closenavlink scrollpage">DESIGN & ARCHITECTURE</a></li>
+				@endif
+				
+				@if($propertyDetail['data']->restaurant_title!='' && $propertyDetail['data']->restaurant_desciription!='')
+					<li><a href="{{URL::to($propertyDetail['data']->property_slug.'/restaurant')}}">RESTAURANT & BAR</a></li>
+				@endif
+				
+				@if($propertyDetail['data']->video_title!='')
+					<li><a href="#video" class="closenavlink scrollpage">VIDEO</a></li>
+				@endif
+				
+                <li><a href="#bookHotel" class="yellowbtn scrollpage closenavlink">BOOK $propertyDetail['data']->property_name </a></li>
             </ul>
             <div class="left-carousal">
             	<div id="owl-carousel" class="owl-carousel">
@@ -49,85 +61,31 @@
                     	<div class="book-with-us-tittles">
                             <h2>Why book with us?</h2>
                         </div>
-                        <ul class="side-bar-book-with-us-list">
-						<li>
-                        	<h3>Handpicked Selection of Hotels</h3>
-                        	<p>from selected luxury destinations worldwide</p>
-                        </li>
-                        <li>
-                        	<h3>Upgrade and Late Checkout</h3>
-                        	<p>At any Hotel upon Avilability</p>
-                        </li>
-                        <li>
-                        	<h3>Preferred Guest Discounts at New Hotels</h3>
-                        	<p>join our members club</p>
-                        </li>
-                        <li>
-                        	<h3>Free Wifi</h3>
-                        	<p>Guaranteed at all our Partner Hotels</p>
-                        </li>
-                     </ul>
+                        {{--*/ $uspmod = CommonHelper::getUspMod() /*--}}
+                        @if(!empty($uspmod['whybookwithus']))
+                            <ul class="side-bar-book-with-us-list">
+                                @foreach ($uspmod['whybookwithus'] as $usps)
+                                    <li>
+                                        <h3>{{$usps->title}}</h3>
+                                        <p>{{$usps->sub_title}}</p>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        @endif
                     </div>
                 </div>
-                <div class="item">
-                	<a href="javascript:void(0)"><img src="images/left-side-banner.png"></a>
-                </div>
+                {{--*/ $sidebarads = CommonHelper::getSidebarAds('detail', 'Hotel') /*--}}
+                @if(!empty($sidebarads['leftsidebarads']))
+                    @foreach($sidebarads['leftsidebarads'] as $ads)
+                        <div class="item">
+                            <a href="{{ (strpos($ads->adv_link, 'http://') !== false) ? $ads->adv_link : 'http://'.$ads->adv_link }}"><img src="{{URL::to('uploads/users/advertisement/'.$ads->adv_img)}}"></a>
+                        </div>
+                    @endforeach
+                @endif
               </div>
             </div>
             
         </div>
-        <div class="restaurantnav">
-	    	<div class="mobilenavheader">
-            	<h3>RESTAURANT 1</h3>
-                <a href="javascript:void(0)" class="homelinknav backtohomelink"><i class="fa fa-angle-left"></i> BACK</a>
-            </div>
-            <ul class="mobilemenulist">
-            	<li>
-                	<div class="mobile-leftsearch">
-                    	<input type="text" class="form-control"/>
-                        <button type="button"><i class="fa fa-search"></i></button>
-                    </div>
-               </li>
-              <li><a href="#hotelInfo" class="closenavlink">HOTEL INFO</a></li>
-                <li><a href="#roomsSuit" class="">ROOMS & SUITES</a></li>
-                <li><a href="#designArch">DESIGN & ARCHITECTURE</a></li>
-                <li><a href="restaurant.html">RESTAURANT & BAR</a></li>
-                <li><a href="#bookHotel" class="yellowbtn scrollpage closenavlink">BOOK Ham Yard Hotel </a></li>
-            </ul>
-            <div class="left-carousal">
-            	<div id="owl-carousel" class="owl-carousel">
-                
-                <div class="item">
-                	<div class="side-bar-why-book-with-us">
-                    	<div class="book-with-us-tittles">
-                            <h2>Why book with us?</h2>
-                        </div>
-                        <ul class="side-bar-book-with-us-list">
-						<li>
-                        	<h3>Handpicked Selection of Hotels</h3>
-                        	<p>from selected luxury destinations worldwide</p>
-                        </li>
-                        <li>
-                        	<h3>Upgrade and Late Checkout</h3>
-                        	<p>At any Hotel upon Avilability</p>
-                        </li>
-                        <li>
-                        	<h3>Preferred Guest Discounts at New Hotels</h3>
-                        	<p>join our members club</p>
-                        </li>
-                        <li>
-                        	<h3>Free Wifi</h3>
-                        	<p>Guaranteed at all our Partner Hotels</p>
-                        </li>
-                     </ul>
-                    </div>
-                </div>
-                <div class="item">
-                	<a href="javascript:void(0)"><img src="images/left-side-banner.png"></a>
-                </div>
-              </div>
-            </div>
-        </div>
-        
+      
     </div>
 </div>

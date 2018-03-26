@@ -108,7 +108,7 @@
 				  <div class="container-fluid">
 					<div class="row">
 					  <div class="col-sm-6 noPadding">
-						<div id="terraceSuiteSlider1" class="carousel slide leftSlider terraceSuiteSlider" data-ride="carousel">
+						<div id="{{$type->category_name.$type->id}}" class="carousel slide leftSlider terraceSuiteSlider" data-ride="carousel">
 						<div class="carousel-inner">
 							@for($rimg1=0; $rimg1 < $divd2; $rimg1++)
 								<div class="item {{ ($rimg1==0) ? 'active' : '' }}">
@@ -128,11 +128,11 @@
 								</div>
 							@endfor
 						</div>
-						<a class="left carousel-control left01" href="#terraceSuiteSlider1" data-slide="prev">
+						<a class="left carousel-control left01" href="#{{$type->category_name.$type->id}}" data-slide="prev">
 						  <span class="glyphicon glyphicon-chevron-left"></span>
 						  <span class="sr-only">Previous</span>
 						</a>
-						<a class="right carousel-control" href="#terraceSuiteSlider1" data-slide="next">
+						<a class="right carousel-control" href="#{{$type->category_name.$type->id}}" data-slide="next">
 						  <span class="glyphicon glyphicon-chevron-right"></span>
 						  <span class="sr-only">Next</span>
 						</a>
@@ -154,7 +154,7 @@
 						</div>
 					  </div>
 					  <div class="col-sm-3 noPadding hidden-xs">
-						<div id="terraceSuiteSlider11" class="carousel slide rightSlider terraceSuiteSlider" data-ride="carousel">
+						<div id="{{$type->category_name.$type->id}}s" class="carousel slide rightSlider terraceSuiteSlider" data-ride="carousel">
 						<div class="carousel-inner">
 							@for($rimg1=0; $rimg1 < $divd2; $rimg1++)
 								<div class="item {{ ($rimg1==1) ? 'active' : '' }}">
@@ -174,11 +174,11 @@
 								</div>
 							@endfor
 						</div>
-						<a class="left carousel-control left01" href="#terraceSuiteSlider11" data-slide="prev">
+						<a class="left carousel-control left01" href="#{{$type->category_name.$type->id}}s" data-slide="prev">
 						  <span class="glyphicon glyphicon-chevron-left"></span>
 						  <span class="sr-only">Previous</span>
 						</a>
-						<a class="right carousel-control" href="#terraceSuiteSlider11" data-slide="next">
+						<a class="right carousel-control" href="#{{$type->category_name.$type->id}}s" data-slide="next">
 						  <span class="glyphicon glyphicon-chevron-right"></span>
 						  <span class="sr-only">Next</span>
 						</a>
@@ -252,7 +252,7 @@
 							{{--*/ $kn=0; /*--}}
 							@foreach($propertyDetail['typedata'] as $key=>$type)
 								@if (array_key_exists($type->id, $propertyDetail['roomimgs']))
-									<li data-target="#HamYardHotelSlider" data-slide-to="{{$kn}}" class="{{($k==0) ? 'active' : ''}}"><img src="{{$propertyDetail['roomimgs'][$propertyDetail['typedata'][$key]->id]['imgsrc'].$propertyDetail['roomimgs'][$propertyDetail['typedata'][$key]->id]['imgs'][0]->file_name}}" alt="Image"></li>
+									<li data-target="#HamYardHotelSlider" data-slide-to="{{$kn}}" class="{{($kn==0) ? 'active' : ''}}"><img src="{{$propertyDetail['roomimgs'][$propertyDetail['typedata'][$key]->id]['imgsrc'].$propertyDetail['roomimgs'][$propertyDetail['typedata'][$key]->id]['imgs'][0]->file_name}}" alt="Image"></li>
 									{{--*/ $kn++; /*--}}
 								@endif
 							@endforeach
@@ -293,7 +293,7 @@
 	@endif
 
 
-	<setion id="bookHotel" class="hotelSearchDateSection">
+	<section id="bookHotel" class="hotelSearchDateSection">
 		<div class="HamYardHotelInner">
 			<div class="hotelSearchDateInnerContent text-center">
 				<div class="container-fluid">
@@ -313,14 +313,14 @@
 				  <li>
 					<h3>Arrival</h3>
 					<div class="form-group">
-					<input name="arrive" id="reservationdate1" class="form-control datefield" type="text" readonly required>
+					<input name="arrive" id="reservationdate1" class="form-control datefield reservationdate" type="text" readonly required>
 					<div class="input-group-icon"><i class="fa fa-calander"></i></div>
 				</div>  
 				  </li>
 				  <li>
 					<h3>Departure</h3>
 					<div class="form-group">
-					<input name="departure" id="reservationdate1" class="form-control datefield" type="text" readonly required>
+					<input name="departure" id="reservationdate1" class="form-control datefield reservationdate" type="text" readonly required>
 					<div class="input-group-icon"><i class="fa fa-calander"></i></div>
 				  </li>
 				  <li>
@@ -377,7 +377,7 @@
 		  </div>
 			</div>
 		</div>
-	</setion>
+	</section>
 
 	@if($propertyDetail['data']->assign_detail_city!='')
 		@if(!empty($relatedgridpropertiesArr))
@@ -423,26 +423,26 @@
 	@endif
 	<!-- Selection of Luxury Hotels end -->
 	<!-- Instagram Gallery Section -->
-	<section id="instagram-section">
-		<div class="col-sm-12 text-center">
-			<h2 class="heading">GET SOCIAL</h2>
-		</div>
-		<section id ="instagran" class="sections-instagram">
-			<div class="full-width">
-				<div data-is data-is-api="{{ URL::to('runInsta')}}" data-is-source="{{(!empty($propertyDetail) && $propertyDetail['data']->social_instagram!='')? $propertyDetail['data']->social_instagram : '@socialdesignlocations777' }}" data-is-rows="2" data-is-columns="5"></div>
+	@if($propertyDetail['data']->social_instagram!='')
+		<section id="instagram-section">
+			<div class="col-sm-12 text-center">
+				<h2 class="heading">GET SOCIAL</h2>
 			</div>
+			<section id ="instagran" class="sections-instagram">
+				<div class="full-width">
+					<div data-is data-is-api="{{ URL::to('runInsta')}}" data-is-source="{{(!empty($propertyDetail) && $propertyDetail['data']->social_instagram!='')? $propertyDetail['data']->social_instagram : '@socialdesignlocations777' }}" data-is-rows="2" data-is-columns="5"></div>
+				</div>
+			</section>
 		</section>
-	</section>
-
 	@endif
+@endif
 
 @endsection
 
 
 {{--For Right Side Icons --}}
 @section('right_side_iconbar')
-
-	@parent
+	@include('frontend.themes.emporium.layouts.sections.pdp_right_iconbar')
 @show
 
 {{-- For Include style files --}}
