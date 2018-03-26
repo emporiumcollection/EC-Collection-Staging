@@ -85,6 +85,14 @@
             </div>
             <div class="hide" data-option="search-by-date">
                 <form action="{{url('search')}}" method="get">
+                    {{--*/
+                            $setDateArvStr = date('j-n-Y');
+                            $setDateDepStr = date('j-n-Y',strtotime('+1 day'));
+                            $setDateArvArr = explode('-',$setDateArvStr);
+                            $setDateDepArr = explode('-',$setDateDepStr);
+                    /*--}}
+                    <input name="arrive" type="hidden" value="{{date('d-m-Y')}}">
+                    <input name="departure" type="hidden" value="{{date('d-m-Y', strtotime('+1 day'))}}">
                     <ul class="mobilemenulist">
                         <li>
                             <p>Emporium Voyage is your deal, vogue vacation planner!</p>
@@ -96,27 +104,27 @@
                                 </li>
                                 <li>
                                     <label>DAY</label>
-                                    <select class="calenderselectbox" name="arrival-day">
+                                    <select class="calenderselectbox" data-option="arrival-day" data-action="choose-date">
                                         @for($arvDay=1;$arvDay<=31;$arvDay++)
-                                            <option>{{$arvDay}}</option>
+                                            <option @if($setDateArvArr[0]==$arvDay) {{ 'selected' }} @endif value="{{(strlen($arvDay)>1)?$arvDay:'0'.$arvDay}}">{{$arvDay}}</option>
                                         @endfor
 
                                     </select>
                                 </li>
                                 <li>
                                     <label>MONTH</label>
-                                    <select class="calenderselectbox" name="arrival-month">
+                                    <select class="calenderselectbox" data-option="arrival-month" data-action="choose-date">
                                         @for($arvMonth=1; $arvMonth<=12; ++$arvMonth)
-                                            <option value="{{$arvMonth}}">{{ date('F', mktime(0, 0, 0, $arvMonth, 1)) }}</option>
+                                            <option  @if($setDateArvArr[2]==$arvMonth) {{ 'selected' }} @endif value="{{(strlen($arvMonth)>1)?$arvMonth:'0'.$arvMonth}}">{{ date('F', mktime(0, 0, 0, $arvMonth, 1)) }}</option>
                                         @endfor
                                     </select>
                                 </li>
                                 <li>
                                     <label>YEAR</label>
-                                    <select class="calenderselectbox" name="arrival-year">
+                                    <select class="calenderselectbox" data-option="arrival-year" data-action="choose-date">
                                         {{--*/ $arvYearRange = range(date('Y'), date('Y', strtotime('+5 years'))) /*--}}
                                         @foreach($arvYearRange as $arvYear)
-                                            <option>{{$arvYear}}</option>
+                                            <option  @if($setDateArvArr[2]==$arvYear) {{ 'selected' }} @endif value="{{$arvYear}}">{{$arvYear}}</option>
                                         @endforeach
                                     </select>
                                 </li>
@@ -130,26 +138,26 @@
                                 </li>
                                 <li>
                                     <label>DAY</label>
-                                    <select class="calenderselectbox" name="departure-day">
+                                    <select class="calenderselectbox" data-option="departure-day" data-action="choose-date">
                                         @for($depDay=1;$depDay<=31;$depDay++)
-                                            <option>{{$depDay}}</option>
+                                            <option @if($setDateDepArr[0]==$depDay) {{ 'selected' }} @endif value="{{(strlen($depDay)>1)?$depDay:'0'.$depDay}}">{{$depDay}}</option>
                                         @endfor
                                     </select>
                                 </li>
                                 <li>
                                     <label>MONTH</label>
-                                    <select class="calenderselectbox" name="departure-month">
+                                    <select class="calenderselectbox" data-option="departure-month" data-action="choose-date">
                                         @for($depMonth=1; $depMonth<=12; ++$depMonth)
-                                            <option value="{{$depMonth}}">{{ date('F', mktime(0, 0, 0, $depMonth, 1)) }}</option>
+                                            <option @if($setDateDepArr[1]==$arvMonth) {{ 'selected' }} @endif value="{{(strlen($depMonth)>1)?$depMonth:'0'.$depMonth}}">{{ date('F', mktime(0, 0, 0, $depMonth, 1)) }}</option>
                                         @endfor
                                     </select>
                                 </li>
                                 <li>
                                     <label>YEAR</label>
-                                    <select class="calenderselectbox" name="departure-year">
+                                    <select class="calenderselectbox" data-option="departure-year" data-action="choose-date">
                                         {{--*/ $depYearRange = range(date('Y'), date('Y', strtotime('+5 years'))) /*--}}
                                         @foreach($depYearRange as $depYear)
-                                            <option>{{$depYear}}</option>
+                                            <option @if($setDateDepArr[2]==$depYear) {{ 'selected' }} @endif value="{{$depYear}}">{{$depYear}}</option>
                                         @endforeach
                                     </select>
                                 </li>

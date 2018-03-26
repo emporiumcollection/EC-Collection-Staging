@@ -56,6 +56,33 @@ $(document).ready(function () {
         openAllHomeOption();
     });
 
+    /*
+     * For Select By Date of Left Sidebar
+     */
+    $(document).on('change', '[data-action="choose-date"]', function () {
+        var arrival = $('select[data-option="arrival-day"]').val()+'-'+$('select[data-option="arrival-month"]').val()+'-'+$('select[data-option="arrival-year"]').val();
+        var departure = $('select[data-option="departure-day"]').val()+'-'+$('select[data-option="departure-month"]').val()+'-'+$('select[data-option="departure-year"]').val();
+        var arrive = '';
+        $('input[name="arrive"]').val(arrival);
+        $('input[name="departure"]').val(departure);
+    });
+
+    /*
+     * For Select By Filter of Left Sidebar
+     */
+    $(document).on('click', '[data-action="select-filter"]', function () {
+        hideAllOption();
+        var data = {};
+        data.main_title = 'Search By Filter';
+        data.sub_title = 'Home';
+        data.id = 0;
+        putDataOnLeft(data);
+        openSearchByFilter();
+
+
+    });
+    
+
 });
 
 /*
@@ -117,7 +144,7 @@ function putDataOnLeft(data){
     $('[data-option="child-global"] [data-option-title="global"]').html(data.main_title);
     $('[data-option="child-global"] [data-option-action="back"] span').html(data.sub_title);
     $('[data-option="child-global"] [data-option-action="back"]').attr('data-id',data.id);
-    $('[data-option="child-global"] [data-option-action="back"]').attr('data-id',data.id);
+    $('[data-option="child-global"] [data-option-action="back"]').attr('data-option-action-type',data.type);
 }
 /*
  * For open collection options
@@ -140,4 +167,11 @@ function openSearchByDate(){
 function openAllHomeOption(){
     $('[data-option="home"]').removeClass('hide');
     $('[data-option="global"]').removeClass('hide');
+}
+/*
+ * For open search-by-date options
+ */
+function openSearchByFilter(){
+    $('[data-option="child-global"]').removeClass('hide');
+    $('[data-option="select-filter"]').removeClass('hide');
 }
