@@ -108,7 +108,7 @@
 				  <div class="container-fluid">
 					<div class="row">
 					  <div class="col-sm-6 noPadding">
-						<div id="{{$type->category_name.$type->id}}" class="carousel slide leftSlider terraceSuiteSlider" data-ride="carousel">
+						<div id="left{{$type->id}}" class="carousel slide leftSlider terraceSuiteSlider" data-ride="carousel">
 						<div class="carousel-inner">
 							@for($rimg1=0; $rimg1 < $divd2; $rimg1++)
 								<div class="item {{ ($rimg1==0) ? 'active' : '' }}">
@@ -128,11 +128,11 @@
 								</div>
 							@endfor
 						</div>
-						<a class="left carousel-control left01" href="#{{$type->category_name.$type->id}}" data-slide="prev">
+						<a class="left carousel-control left01" href="#left{{$type->id}}" data-slide="prev">
 						  <span class="glyphicon glyphicon-chevron-left"></span>
 						  <span class="sr-only">Previous</span>
 						</a>
-						<a class="right carousel-control" href="#{{$type->category_name.$type->id}}" data-slide="next">
+						<a class="right carousel-control" href="#left{{$type->id}}" data-slide="next">
 						  <span class="glyphicon glyphicon-chevron-right"></span>
 						  <span class="sr-only">Next</span>
 						</a>
@@ -154,7 +154,7 @@
 						</div>
 					  </div>
 					  <div class="col-sm-3 noPadding hidden-xs">
-						<div id="{{$type->category_name.$type->id}}s" class="carousel slide rightSlider terraceSuiteSlider" data-ride="carousel">
+						<div id="right{{$type->id}}" class="carousel slide rightSlider terraceSuiteSlider" data-ride="carousel">
 						<div class="carousel-inner">
 							@for($rimg1=0; $rimg1 < $divd2; $rimg1++)
 								<div class="item {{ ($rimg1==1) ? 'active' : '' }}">
@@ -174,11 +174,11 @@
 								</div>
 							@endfor
 						</div>
-						<a class="left carousel-control left01" href="#{{$type->category_name.$type->id}}s" data-slide="prev">
+						<a class="left carousel-control left01" href="#right{{$type->id}}" data-slide="prev">
 						  <span class="glyphicon glyphicon-chevron-left"></span>
 						  <span class="sr-only">Previous</span>
 						</a>
-						<a class="right carousel-control" href="#{{$type->category_name.$type->id}}s" data-slide="next">
+						<a class="right carousel-control" href="#right{{$type->id}}" data-slide="next">
 						  <span class="glyphicon glyphicon-chevron-right"></span>
 						  <span class="sr-only">Next</span>
 						</a>

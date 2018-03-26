@@ -51,7 +51,7 @@
 					<li><a href="#video" class="closenavlink scrollpage">VIDEO</a></li>
 				@endif
 				
-                <li><a href="#bookHotel" class="yellowbtn scrollpage closenavlink">BOOK $propertyDetail['data']->property_name </a></li>
+                <li><a href="#bookHotel" class="yellowbtn scrollpage closenavlink">BOOK {{$propertyDetail['data']->property_name}} </a></li>
             </ul>
             <div class="left-carousal">
             	<div id="owl-carousel" class="owl-carousel">
