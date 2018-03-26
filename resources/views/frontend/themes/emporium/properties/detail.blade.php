@@ -222,7 +222,7 @@
 				<div class="carousel-inner">
 					{{--*/ $k=1; /*--}}
 					@foreach($propertyDetail['typedata'] as $key=>$type)
-					dd(array_key_exists($type->id, $propertyDetail['roomimgs']);
+					{{dd(array_key_exists($type->id, $propertyDetail['roomimgs'])}}
 						@if (array_key_exists($type->id, $propertyDetail['roomimgs']))
 							<div style="background-image: url('{{$propertyDetail['roomimgs'][$propertyDetail['typedata'][$key]->id]['imgsrc'].$propertyDetail['roomimgs'][$propertyDetail['typedata'][$key]->id]['imgs'][0]->file_name}}');" class="item {{($k==1) ? 'active' : ''}}">
 								<div class="carousalCaption">
