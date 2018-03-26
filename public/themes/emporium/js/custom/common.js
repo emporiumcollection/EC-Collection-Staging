@@ -41,7 +41,7 @@ $(document).ready(function () {
         datObj.menuID = $(this).attr('data-id');
 
         var params = $.extend({}, doAjax_params_default);
-        params['url'] = BaseURL + '/destination/menu-ajax';
+        params['url'] = BaseURL + '/destination/menus-ajax';
         params['data'] = datObj;
         params['successCallbackFunction'] = renderMenu;
         doAjax(params);
