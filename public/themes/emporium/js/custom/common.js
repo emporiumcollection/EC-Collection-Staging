@@ -38,7 +38,7 @@ $(document).ready(function () {
     */
     $(document).on('click', '[data-action="select-menu"]', function () {
         var datObj = {};
-        datObj.catID = $(this).attr('data-id');
+        datObj.menuID = $(this).attr('data-id');
 
         var params = $.extend({}, doAjax_params_default);
         params['url'] = BaseURL + '/destination/menu-ajax';
