@@ -386,8 +386,7 @@ class PropertyController extends Controller {
 					
                     $filen = array();
                     if (!empty($roomfileArr)) {
-						$propertiesArr['roomimgs'][$type->id]['imgs'] = array();
-						//$propertiesArr['roomimgs'][$type->id]['imgs'] = $roomfileArr;
+						$propertiesArr['roomimgs'][$type->id]['imgs'] = $roomfileArr;
 						$propertiesArr['roomimgs'][$type->id]['imgsrc'] = (new ContainerController)->getThumbpath($roomfileArr[0]->folder_id);
 						$propertiesArr['roomimgs'][$type->id]['imgsrc_dir'] = public_path(str_replace(url().'/', '', (new ContainerController)->getThumbpath($roomfileArr[0]->folder_id)));
                         $propertiesArr['typedata'][$c] = $type;
