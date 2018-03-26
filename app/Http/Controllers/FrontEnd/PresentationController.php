@@ -23,7 +23,7 @@ class PresentationController extends Controller {
 		$this->data['currency'] = \DB::table('tb_settings')->select('content')->where('key_value', 'default_currency')->first();
 		
 	}
-
+  
 	public function getIndex( Request $request )
 	{
 		$this->data['pageslider']="";

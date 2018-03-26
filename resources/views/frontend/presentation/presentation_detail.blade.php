@@ -5,8 +5,23 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Emporium Voyage</title>
+     
+ @if($presentationPageDetails[0]->page_title!="" && $presentationPageDetails[0]->page_title!="NULL")
+        <title>{{ $presentationPageDetails[0]->page_title }}</title>
+      @endif
+      <meta property="og:title" content="{{ $presentationPageDetails[0]->page_title }}" />
+      @if($presentationPageDetails[0]->page_meta_description!="" && $presentationPageDetails[0]->page_meta_description!="NULL")
+      <meta name="description" content="{{ $presentationPageDetails[0]->page_meta_description }}">
+      <meta property="og:description" content="{{ $presentationPageDetails[0]->page_meta_description }}" />
+      @endif
+
+      @if($presentationPageDetails[0]->page_keyword!="" && $presentationPageDetails[0]->page_keyword!="NULL")
+      <meta name="keywords" content=" {{ $presentationPageDetails[0]->page_keyword }}">
+     @endif
+
 
     <!-- Bootstrap -->
     <link href="{{ asset('themes/emporium/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -26,11 +41,11 @@
       <nav id="cd-vertical-nav">
     <ul>
       
-      {{--*/ $countersection = 2 /*--}}
+      {{--*/ $countersection = 1 /*--}}
       @foreach($presentationslider as $pslider)
 
         <li>
-            <a href="#slidepresentation-{{ $countersection }}" data-number="{{ $countersection }}" @if($presentatiomode==0 && $countersection==2) class="is-selected" @endif >
+            <a href="#slidepresentation-{{ $countersection }}" data-number="{{ $countersection }}" @if( $countersection==1) class="is-selected" @endif >
               <span class="cd-dot"></span>
             </a>
           </li>
@@ -41,8 +56,9 @@
 
 
       @if($presentatiomode==1)  
+      {{--*/ $countersection++ /*--}}
       <li>
-        <a href="#thanksSection" data-number="1" @if($presentatiomode==1)  @endif>
+        <a href="#thanksSection" data-number="{{ $countersection }} ">
           <span class="cd-dot"></span>
         </a>
       </li>
@@ -54,19 +70,20 @@
 
 
 
-@if($presentatiomode==1) 
-    <div class="logoTopSec">
+
+    <div class="logoTopSec" @if($presentatiomode==0) style="display: none;" @endif>
       <img src="{{ asset('images/logo.png') }}" alt="Image">
     </div>
-    <section class="headerSection">
+    
+    <section class="headerSection" @if($presentatiomode==0) style="display: none;" @endif>
        <div class="textCcenterDiv">
         <h2><img src="{{ asset('images/logo.png') }}" alt="Image"></h2>
       </div>
-      <a href="#slidepresentation-2" class="scrollToNextrSection scrollToSection"><span><img src="{{ asset('images/down-arrow.png') }}"></span></a>
+      <a href="#slidepresentation-1" class="scrollToNextrSection scrollToSection"><span><img src="{{ asset('images/down-arrow.png') }}"></span></a>
     </section>
-    @endif
+  
 
-     {{--*/ $countersectionsub = 2 /*--}}
+     {{--*/ $countersectionsub = 1 /*--}}
       @foreach($presentationslider as $pslider)
 
       <section id="slidepresentation-{{ $countersectionsub }}" class="cd-section">
