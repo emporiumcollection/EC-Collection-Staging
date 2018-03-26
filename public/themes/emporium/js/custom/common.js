@@ -34,6 +34,20 @@ $(document).ready(function () {
     });
 
     /*
+    * For Company of Left Sidebar
+    */
+    $(document).on('click', '[data-action="select-collection"]', function () {
+        hideAllOption();
+        var data = {};
+        data.main_title = 'Search Our Collection';
+        data.sub_title = 'Home';
+        data.id = 0;
+        putDataOnLeft(data);
+        openCollection();
+
+    });
+
+    /*
      * For Select By Date of Left Sidebar
      */
     $(document).on('click', '[data-action="search-by-date"]', function () {
