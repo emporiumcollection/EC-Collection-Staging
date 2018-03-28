@@ -20,7 +20,7 @@
 				<div class="carousel-caption">
 				  <h1>{{$slider_row->slider_title}}</h1>
 				  <p>{{$slider_row->slider_description}}</p>
-				  <button type="button" class="button viewGalleryBtn">Contact us</button>
+				  <button type="button" class="button viewGalleryBtn termAndConditionBtn">Contact us</button>
 				</div>
 			  </div>
 			@endforeach
@@ -81,11 +81,62 @@
 @section('javascript')
     @parent
 	<script src="{{ asset('themes/emporium/js/smooth-scroll.js') }}"></script>
+	<script src="{{ asset('sximo/js/parsley.min.js')}}" type="text/javascript"></script>
 @endsection
 
 {{-- For custom script --}}
 @section('custom_js')
     @parent
+	<script>
+		 window.ParsleyConfig = {
+			errorsWrapper: '<div></div>',
+			errorTemplate: '<div class="alert alert-danger parsley" role="alert"></div>',
+			errorClass: 'has-error',
+			successClass: 'has-success'
+		};
+
+		$(function () {
+			$('#conatctform').parsley().on('field:validated', function() {
+			var ok = $('.parsley-error').length === 0;
+			$('.bs-callout-info').toggleClass('hidden', !ok);
+			$('.bs-callout-warning').toggleClass('hidden', ok);
+			})
+			.on('form:submit', function() {
+			submit_contact_request();
+			return false; // Don't submit form for this demo
+			});
+		});
+		
+		function submit_contact_request()
+		{
+			$.ajax({
+				  url: "{{ URL::to('save_query')}}",
+				  type: "post",
+				  data: $('#conatctform').serialize(),
+				  dataType: "json",
+				  success: function(data){
+					var html = '';
+					if(data.status=='error')
+					{
+						html +='<ul class="parsley-error-list">';
+						$.each(data.errors, function(idx, obj) {
+							html +='<li>'+obj+'</li>';
+						});
+						html +='</ul>';
+						$('#formerrors').html(html);
+					}
+					else{
+						var htmli = '';
+						htmli +='<div class="alert alert-success fade in block-inner">';
+						htmli +='<button data-dismiss="alert" class="close" type="button">×</button>';
+						htmli +='<i class="icon-checkmark-circle"></i> Contact Form Submitted Successfully </div>';
+						$('#formerrors').html(htmli);
+						$('#conatctform')[0].reset();
+					}
+				  }
+			});
+		}
+	</script>
 @endsection
 
 {{-- For footer --}}
