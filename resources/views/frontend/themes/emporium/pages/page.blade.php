@@ -72,31 +72,11 @@
 	<link href="{{ asset('themes/emporium/css/daterangepicker.css') }}" rel="stylesheet">
     <link href="{{ asset('themes/emporium/css/calendar.css') }}" rel="stylesheet">
 	<link href="{{ asset('themes/emporium/css/terms-and-conditions.css') }}" rel="stylesheet">
-	 <link href="{{ asset('themes/emporium/css/membership-css.css') }}" rel="stylesheet">
 @endsection
 
 {{-- For custom style  --}}
 @section('custom_css')
     @parent
-	<style>
-.has-error  {
-    border-color: #a94442;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-}
-.parsley-required{
-
-    padding: 15px;
-    margin-bottom: 20px;
-    border: 1px solid transparent;
-    border-radius: 4px;
-
-    color: #a94442;
-    background-color: #f2dede;
-    border-color: #ebccd1;
-
-}
-</style>
 @endsection
 
 {{-- For Include javascript files --}}
