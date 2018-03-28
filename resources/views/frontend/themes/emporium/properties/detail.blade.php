@@ -588,7 +588,7 @@
 			$('.galleryImgdata').html('');
 			var imagesPro = '';
 			var im=0;
-			var di=2;
+			var di=0;
 			var lngimg = Math.round((data.image.length)/3);
 			imagesPro += '<div class="row">';
 			$(data.image).each(function (i, val) {
