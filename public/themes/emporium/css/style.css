@@ -5,6 +5,7 @@ body{font-family: 'GeomanistLight', sans-serif; background:#252525}
 *{outline:0;}
 ul, li{margin:0; padding:0; list-style:none;}
 a:hover, a:focus, a:active{text-decoration:none}
+input:focus, .header-content select:focus, textarea:focus{outline:0;box-shadow:none !important;-webkit-box-shadow:none !important;}
 /* Header */
     #header{background-color: #3a3a3a; position:fixed; top:0;width:100%; z-index:999;}
 .logo-wrapper{padding:15px; text-align:center; width:320px;background: rgba(37, 37, 37, 1); float:left; display:none;}

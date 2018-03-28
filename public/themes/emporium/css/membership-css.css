@@ -1,24 +1,19 @@
 .sliderSection.membershipHotelSlider .carousel .item > img {min-width:100%;}
 
 .sliderSection.membershipHotelSlider .carousel {
-    filter: brightness(80%);
-}
-.has-error {
-    border-color: #a94442;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+	filter: brightness(80%);
 }
 .sliderSection.membershipHotelSlider .item{padding:110px 100px;}
 .sliderSection.membershipHotelSlider .carousel-caption {
-    top: 100px;
-    left: 100px;
-    bottom: auto;
-    padding: 80px;
-    max-width: unset;
-    width: 60%;
+	top: 100px;
+	left: 100px;
+	bottom: auto;
+	padding: 80px;
+	max-width: unset;
+	width: 60%;
     background: rgba(0,0,0,0.71);
     opacity: 1;
-    position:static;
+	position:static;
 }
 .sliderSection.membershipHotelSlider .carousel-caption h1 {
     color: #ABA07C;
@@ -44,10 +39,10 @@
     z-index: 9;
 }
 .sliderSection.membershipHotelSlider .carousel-control img {
-    transform: rotate(90deg);
-    -webkit-transform: rotate(90deg);
-    -moz-transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
+	transform: rotate(90deg);
+	-webkit-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
 }
 .sliderSection.membershipHotelSlider .carousel-caption .viewGalleryBtn {
     background: #ABA07C;
@@ -62,25 +57,25 @@
     text-transform: uppercase;
 }
 .scrollNextDiv {
-    position: absolute;
-    bottom: 60px;
-    left: 61%;
-    text-decoration: none;
-    text-transform: uppercase;
-    -webkit-animation-duration: 2.5s;
-    animation-duration: 2.5s;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
-    -webkit-animation-timing-function: linear;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-name: bounce;
-    animation-name: bounce;
-    z-index: 1;
+	position: absolute;
+	bottom: 60px;
+	left: 61%;
+	text-decoration: none;
+	text-transform: uppercase;
+	-webkit-animation-duration: 2.5s;
+	animation-duration: 2.5s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+	-webkit-animation-timing-function: linear;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-name: bounce;
+	animation-name: bounce;
+	z-index: 1;
 }
 .scrollNextDiv a {
-    color: #fff !important;
+	color: #fff !important;
 }
 @-webkit-keyframes bounce {
   0%, 20%, 40%, 60%, 80%, 100% {-webkit-transform: translate(-50%, 0) rotate(-90deg);}
@@ -99,22 +94,17 @@
 
 /******membershpipStepSec************/
 .membershpipStepSec {
-    padding: 30px 0 0; 
-    background:#f7f7f7;
+	padding: 30px 0 0; 
 }
-
-.membershpipStepSec.package{background:#252525}
-.membershpipStepSec.package .stepNumber p{color:#fff;}
-
 .stepNumber {
-    text-align: center;
-    color: #fff; 
+	text-align: center;
+	color: #fff; 
 }
 .stepNumber span {
     background: #89837b;
     color: #fff;
     display: inline-block;
-    font-family: 'geomanist_regularregular';
+	font-family: 'geomanist_regularregular';
     font-size: 23px;
     font-weight: 600; 
     width: 50px;
@@ -124,20 +114,19 @@
 }
 .stepNumber.active span {
     background: #ABA07C;
-    cursor: pointer;
+	cursor: pointer;
 }
 .stepNumber p {
-    display: block;
-    font-family: 'geomanist_regularregular';
-    margin-top: 10px;
+	display: block;
+	font-family: 'geomanist_regularregular';
+	margin-top: 10px;
     font-size: 16px;
     text-transform: uppercase;
     font-weight: 300;
-    color:#333;
 }
 .hotelInfoSection {
-    display: inline-block;
-    padding: 6% 10.5%;
+	display: inline-block;
+	padding: 6% 10.5%;
 }
 .hotelInfoSection h1 {
     color: #ABA07C;
@@ -161,28 +150,22 @@
     font-weight: bold;
 }
 
-.hotelInfoSection .form-group{margin-bottom:20px;}
-.hotelInfoSection .form-control{background-color: #fff;  border: 1px solid #d1d1d1; border-radius: 0; -webkit-border-radius: 0; color: #000; font-size: 14px; height: 45px; line-height: unset; margin-top: 0; padding: 12px 20px; text-transform: uppercase; width:100%; font-family: 'GeomanistLight', sans-serif; box-shadow:none; -webkit-box-shadow:none;}
-.hotelInfoSection select{-webkit-appearance: none; -webkit-border-radius: 0px; background:url(../images/icon-select-arrow-gray.png) 98% 15px no-repeat #fff !important;}
-.hotelInfoSection textarea.form-control{height:100px; resize:none; -webkit-resize:none;}
-.hotelInfoSection .form-control::placeholder {color: #000;opacity: 1;}
-.hotelInfoSection .form-control:-ms-input-placeholder {color: #000 !important;}
-.hotelInfoSection .form-control::-ms-input-placeholder {color: #000 !important;}
-.hotelInfoSection .form-control::-webkit-input-placeholder {color: #000 !important;}
+.hotelInfoSection .form-control{background-color: #89837b;  border: 0; border-radius: 0; -webkit-border-radius: 0; color: #fff; font-size: 12px; height: 35px; line-height: unset; margin-top: 0; padding: 9px 7px; text-transform: uppercase; width:100%; color:#fff;font-family: 'GeomanistLight', sans-serif;}
+.hotelInfoSection select{-webkit-appearance: none; -webkit-border-radius: 0px; background:url(../images/icon-select-arrow.png) 98% 12px no-repeat #89837b !important;}
 
 .hotelInfoSection .form-control[type="date"] {
-    padding: 0 15px;
+	padding: 0 15px;
 }
 .hotelInfoSection label {
-    color: #333;
-    padding: 0 10px 0 0;
-    font-family: 'geomanist_regularregular', sans-serif;
-    display: inline-block;
-    font-size: 15px;
+	color: #fff;
+	padding: 0 10px 0 0;
+    font-family: 'GeomanistLight', sans-serif;
+	display: inline-block;
+	font-size: 15px;
 }
 .hotelInfoSection a {
-    color: #ABA07C;
-    font-size: 15px;
+	color: #ABA07C;
+	font-size: 15px;
     transition: all 0.5s ease 0s;
     -webkit-transition: all 0.5s ease 0s;
     -moz-transition: all 0.5s ease 0s;
@@ -191,14 +174,14 @@
 }
 .hotelInfoSection a:focus,
 .hotelInfoSection a:hover {
-    text-decoration: underline;
+	text-decoration: underline;
 }
 .hotelInfoSection .form-group {
     display: inline-block;
     width: 100%;
 }
 .hotelInfoSection .form-control:focus {
-    border-color: #333; 
+	border-color: rgba(255,255,255,0.5); 
 }
 .hotelInfoSection input[type="checkbox"] {
     margin-right: 10px;
@@ -236,13 +219,13 @@
 }
 .btn.btn-white:focus{outline:none;}
 .btn.btn-white:hover {
-    background: #897d58;
+	background: #897d58;
 }
 
 
 /*****************/
 .woocommerce-MyAccount-navigation {
-    display: none;
+	display: none;
 }
 
 
@@ -259,7 +242,7 @@
 }
 .membershpipStepSec .panel-group .panel-default {
     border: none; 
-    background:#252525;
+	background:#252525;
 }
 
 .panel-default>.panel-heading+.panel-collapse>.panel-body{border:0;}
@@ -277,7 +260,7 @@
 }
 .packageRightSide p {
     margin-bottom: 0px; 
-    color:#fff;
+	color:#fff;
 }
 .packagePriceSec b{color:#fff;}
 .btn-cstmBtn {
@@ -303,11 +286,10 @@
 .membershpipStepSec .panel-group .panel-default + .packagePriceSec {
     margin-top: 20px;
 }
-.membershpipStepSec.package .aditionalFooter{padding-left:25px;} 
-.membershpipStepSec.package .aditionalFooter p{color:#fff;}
-.membershpipStepSec .aditionalFooter p{color:#333}
+
+
 .aditionalFooter {
-    padding: 0 85px 40px 10px;
+    padding: 0 85px 40px 25px;
 }
 .aditionalFooter p {
     color: #fff;
