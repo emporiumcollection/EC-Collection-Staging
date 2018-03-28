@@ -56,6 +56,8 @@ class MenuController extends Controller {
 		$this->data['groups'] 		= \DB::select(" SELECT * FROM tb_groups ");
 		$this->data['pages'] 		= \DB::select(" SELECT * FROM tb_pages ");
 		$this->data['frontpages'] 		= \DB::select(" SELECT * FROM tb_pages_content ");
+
+		$this->data['presentationpages'] 		= \DB::select(" SELECT * FROM tb_presentation_pages ");
 		$this->data['active'] 		= $pos;	
 		return view('sximo.menu.index',$this->data);	
 	}
