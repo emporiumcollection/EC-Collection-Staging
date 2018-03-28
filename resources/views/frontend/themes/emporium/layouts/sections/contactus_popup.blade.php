@@ -16,11 +16,12 @@
       </div>
       <div class="row">
           <div class="col-sm-6">
+			<div id="formerrors"></div>
             <form method="POST" action="{{URL::to('save_query')}}" accept-charset="UTF-8" class="form-horizontal" id="conatctform" parsley-validate="" novalidate=" " enctype="multipart/form-data">
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-3 col-form-label">Department *</label>
                     <div class="col-sm-9">
-                          <select name="department" class="form-control">
+                          <select name="department" class="form-control" required="required">
                             <option value="Info">Info</option>
                             <option value="Sales">Sales</option>
                             <option value="Reservations/Cancelations">Reservations/Cancelations</option>
@@ -34,13 +35,13 @@
             <div class="form-group row">
                 <label for="first_name" class="col-sm-3 col-form-label">First Name *</label>
                 <div class="col-sm-9">
-                    <input type="text" name="first_name" class="form-control">
+                    <input type="text" name="first_name" required="required" class="form-control">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="last_name" class="col-sm-3 col-form-label">Lastname *</label>
                 <div class="col-sm-9">
-                    <input type="text" name="last_name" class="form-control">
+                    <input type="text" name="last_name" required="required" class="form-control">
                 </div>
             </div>
             <div class="form-group row">
@@ -58,13 +59,13 @@
             <div class="form-group row">
                 <label for="postal_code" class="col-sm-3 col-form-label">Postal Code *</label>
                 <div class="col-sm-9">
-                    <input type="text" name="postal_code" class="form-control">
+                    <input type="text" name="postal_code" required="required" class="form-control">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="city" class="col-sm-3 col-form-label">City *</label>
                 <div class="col-sm-9">
-                    <input type="text" name="city" class="form-control">
+                    <input type="text" name="city" required="required" class="form-control">
                 </div>
             </div>
             <div class="form-group row">
@@ -88,7 +89,7 @@
             <div class="form-group row">
                 <label for="email" class="col-sm-3 col-form-label">E-Mail *</label>
                 <div class="col-sm-9">
-                    <input type="email" name="email" class="form-control">
+                    <input type="email" name="email" required="required" class="form-control">
                 </div>
             </div>
             <div class="form-group row">
@@ -104,7 +105,7 @@
                 </div>
             </div>
             </form>
-			<div id="formerrors"></div>
+			
           </div>
 
           <div class="col-sm-6">
