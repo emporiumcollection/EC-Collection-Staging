@@ -433,7 +433,7 @@ class PropertyController extends Controller {
             $pr = 0;
             foreach ($fileArr as $file) {
                 $propertiesArr['image'][$pr] = $file;
-                $propertiesArr['image'][$pr]->imgsrc = (new ContainerController)->getThumbpath($file->folder_id);
+                $propertiesArr['image'][$pr]->imgsrc = (new ContainerController)->getThumbpath($file->folder_id).$file->file_name;
                 $pr++;
             }
         }
@@ -483,7 +483,7 @@ class PropertyController extends Controller {
             $roomfileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.category_id', $cat_types->id)->where('tb_properties_images.type', 'Rooms Images')->orderBy('file_sort_num', 'asc')->first();
             if (!empty($roomfileArr)) {
                 $propertiesArr['roomimgs'] = $roomfileArr;
-                $propertiesArr['roomimgs']->imgsrc = (new ContainerController)->getThumbpath($roomfileArr->folder_id);
+                $propertiesArr['roomimgs']->imgsrc = (new ContainerController)->getThumbpath($roomfileArr->folder_id).$roomfileArr[0]->file_name;
                 
             }
 

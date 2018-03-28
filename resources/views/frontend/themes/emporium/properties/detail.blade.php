@@ -588,12 +588,12 @@
 			$('.galleryImgdata').html('');
 			var imagesPro = '';
 			var im=0;
-			var di=1;
+			var di=2;
 			var lngimg = Math.round((data.image.length)/3);
 			imagesPro += '<div class="row">';
 			$(data.image).each(function (i, val) {
 				var clsact = '';
-				imagesPro += '<div class="col-sm-4 col-xs-6">';
+				imagesPro += '<div class="col-sm-6 col-xs-6 col-md-4 col-lg-4">';
 				imagesPro += '<div class="popupHetelImage"><img src="' + val.imgsrc + '" alt="Image"></div>';
 				imagesPro += '</div>';
 				if(di==lngimg)
@@ -633,7 +633,7 @@
 				imagesPro += '<h2>';
 				imagesPro += (data.currency.content != '') ? data.currency.content : '$';
 				imagesPro += data.typedata.price;
-				imagesPro += '</h2">';
+				imagesPro += '</h2>';
 			}
 			imagesPro += '<a href="javascript:void(0);" onclick="choose_room_type(' + data.typedata.id + ');" class="button">Book</a>';
 			imagesPro += '</div>';
