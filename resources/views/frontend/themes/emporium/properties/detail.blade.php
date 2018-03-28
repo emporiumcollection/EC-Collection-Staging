@@ -46,7 +46,7 @@
 
 
         <!-- HAM YARD HOTEL -->
-        <setion id="hotelInfo" class="HamYardHotelSection">
+        <section id="hotelInfo" class="HamYardHotelSection">
             <div class="HamYardHotelInner">
                 <div class="container">
                     <div class="row">
@@ -71,9 +71,9 @@
                     </div>
                 </div>
             </div>
-        </setion>
+        </section>
         <!-- HAM YARD HOTEL -->
-        <setion class="HamYardHotelSection">
+        <section class="HamYardHotelSection">
             <div class="HamYardHotelInner">
                 <div class="container">
                     <div class="row">
@@ -98,7 +98,7 @@
                     </div>
                 </div>
             </div>
-        </setion>
+        </section>
 
         @if (array_key_exists('typedata', $propertyDetail))
             <!-- hotel slider 1 -->
@@ -474,6 +474,106 @@
                 </section>
             </section>
         @endif
+		
+		<!-- gallery Img Popup -->
+		<div class="galleryImgPopup fullWidthPopup">
+		  <a href="javascript:void(0);" class="loginPopupCloseButton">×</a>
+		  <div class="searchDateInnerContent text-center">
+			<div class="container-fluid">
+			  <div class="row">
+				  <div class="col-xs-12 text-center">
+					  <div class="gallyPopupHeader">
+						  <a href="index.html"><img src="images/design-location-logo.png" alt="Emporium Voyage" class="img-responsive mCS_img_loaded"></a>
+					  </div>
+				  </div>
+				  <div class="col-md-2 col-sm-3">
+					  <div class="galleryPopupLeftSide">
+						  <h1><a href="javascript:void(0);">New Hotel</a></h1>
+						  <div class="popupHotelDetail text-center">
+							  <h3>Hotel Zoo Berlin</h3>
+							  <p>New York City</p>
+							  <p>United States</p>
+							  <a class="btn" href="javascript:void(0);">View Hotel</a>
+						  </div>
+						  <a class="bootomViewNextBtn" href="javascript:void(0);">View All Hotel DOI</a>
+					  </div>
+				  </div>
+				  <div class="col-md-10 col-sm-9">
+					  <div class="row">
+						  <div class="col-sm-4 col-xs-6">
+							  <div class="popupHetelImage">
+								  <img src="images/ham-yard-hotel-london-united-kingdom-5.jpg" alt="Image">
+							  </div>
+						  </div>
+						  <div class="col-sm-4 col-xs-6">
+							  <div class="popupHetelImage">
+								  <img src="images/ham-yard-hotel-london-united-kingdom-6.jpg" alt="Image">
+							  </div>
+						  </div>
+						  <div class="col-sm-4 col-xs-6">
+							  <div class="popupHetelImage">
+								  <img src="images/ham-yard-hotel-london-united-kingdom-7.jpg" alt="Image">
+							  </div>
+						  </div>
+						  <div class="col-sm-4 col-xs-6">
+							  <div class="popupHetelImage">
+								  <img src="images/ham-yard-hotel-london-united-kingdom-8.jpg" alt="Image">
+							  </div>
+						  </div>
+						  <div class="col-sm-4 col-xs-6">
+							  <div class="popupHetelImage">
+								  <img src="images/ham-yard-hotel-london-united-kingdom-9.jpg" alt="Image">
+							  </div>
+						  </div>
+						  <div class="col-sm-4 col-xs-6">
+							  <div class="popupHetelImage">
+								  <img src="images/ham-yard-hotel-london-united-kingdom-11.jpg" alt="Image">
+							  </div>
+						  </div>
+					  </div>
+				  </div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+
+		<!-- Show More Popup -->
+		<div class="showMorePopup fullWidthPopup">
+		  <a href="javascript:void(0);" class="loginPopupCloseButton">×</a>
+			<div class="container-fluid">
+			  <div class="row">
+				  <div class="col-sm-4 col-md-6">
+					  
+				  </div>
+				  <div class="col-md-6 col-sm-8 col-xs-12 noPadding">
+					<div class="showMoreContent">
+					  <h1>TERRACE SUITE</h1>
+					  <ul>
+						<li>• 145sqm (1560sqft) </li>
+						<li>• Two King Beds </li>
+						<li>• Roof Top View </li>
+						<li>• Top Floor with terrace </li>
+						<li>• Open plan lounge, dining area and kitchen </li>
+						<li>• Individual Design </li>
+						<li>• Complimentary Wifi </li>
+						<li>• Air Conditioning </li>
+						<li>• LCD TV and DVD </li>
+						<li>• Writing desk </li>
+						<li>• Shower and Bathtub </li>
+						<li>• Rik Rak by Kit Kemp Bathroom Amenities </li>
+						<li>• Bluetooth Bose Units </li>
+						<li>• Sleeps 5 with extra bed</li>
+					  </ul>
+					  <p>A spectacular two bedroom fifth floor suite at 145sqm or 1560sqf. The vast living/dining room has high ceilings with full floor-to-ceiling windows and a terrace with views of the courtyard and London skyline. The spacious living room has a powder room, writing desk and a sleek designed Boffi kitchen. There are two spacious bedrooms each with a king beds and the en-suite bathrooms have a walk-in shower, large central bath and flat screen TV. Each of the bedrooms have a king bed with the en-suite bathroom that is beautifully designed with 2 basins, a bath tub and a separate shower with exclusive Rik Rak bath products designed by Kit Kemp. One rollaway allowed to sleep 5.</p>
+					  <div class="shoMoreButtonSection">
+						<h2>€4141</h2>
+						<a href="javascript:void(0);" class="button">BOOK Now</a>
+					  </div>
+					</div>
+				  </div>
+			  </div>
+			</div>
+		</div>
     @endif
 
 @endsection
