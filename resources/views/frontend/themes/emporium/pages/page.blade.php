@@ -45,7 +45,7 @@
 </div>
 <!-- Terms And Conditions ends -->
 
-@include('frontend.themes.emporium.layouts.sections.conatctus_popup')
+@include('frontend.themes.emporium.layouts.sections.contactus_popup')
 
 @endsection
 
