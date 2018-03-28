@@ -1,280 +1,479 @@
-
-@extends('frontend.layouts.ev.customer')
+@extends('frontend.themes.emporium.layouts.home')
+{{--  For Title --}}
+@section('title', $pageTitle)
+{{-- For Meta Keywords --}}
+@section('meta_keywords', $pageMetakey)
+{{-- For Meta Description --}}
+@section('meta_description', $pageMetadesc)
+{{-- For Page's Content Part --}}
 @section('content')
-	<!-- start contact form section -->
-                    <section class="wow fadeIn big-section cstmaiclass" id="align-to-top">
-                        <div class="container-fluid">
-                            <div class="stepwizard">
-                                <div class="stepwizard-row setup-panel">
-                                    <div class="stepwizard-step">
-                                        <a type="button" class="btn btn-primary btn-circle cursor" >1</a>
-                                        <p>Step 1</p>
-                                    </div>
-                                    <div class="stepwizard-step">
-                                        <a type="button" class="btn btn-default btn-circle cursor" disabled="disabled">2</a>
-                                        <p>Step 2</p>
-                                    </div>
-                                    <div class="stepwizard-step">
-                                        <a  type="button" class="btn btn-default btn-circle cursor" disabled="disabled">3</a>
-                                        <p>Step 3</p>
-                                    </div>
-                                    <div class="stepwizard-step">
-                                        <a type="button" class="btn btn-default btn-circle cursor" disabled="disabled">4</a>
-                                        <p>Step 4</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row equalize sm-equalize-auto">
-                                
-                                <div class="col-md-12 sm-clear-both wow fadeInLeft no-padding">
-                                    <div class="padding-ten-half-all bg-light-gray md-padding-seven-all xs-padding-30px-all height-100">
-                                        
-                                        <!--<span class="text-extra-dark-gray alt-font text-large font-weight-600 margin-25px-bottom display-block">Application form</span>--> 
-										<div id="formerrors"></div>
-                                        <form id="hotel-form" action="{{URL::to('frontend_hotelpost')}}" method="post">
-                                            <div class="col-md-12 sm-clear-both">
-                                                <div id="success-contact-form" class="no-margin-lr"></div>
-                                            </div>
-                                            <div class="row">
-                                                <h5 class="ev-regural-heading text-uppercase margin-20px-bottom font-weight-700 sm-width-100 xs-width-100">Hotel Information</h5>
-                                                <div class="col-md-6 col-sm-12 no-padding-left">
-                                                    <label>*Hotel Name</label>
-                                                    <input type="text" name="hotelinfo_name" id="name" placeholder="Hotel Name*" class="bg-white medium-input" required="">
-                                                </div>
-                                                <div class="col-md-6 col-sm-12 no-padding-right">
-                                                    <label>*Hotel Status</label>
-                                                    <select name="hotelinfo_status" class="bg-white medium-input" required="">
-                                                        <option value="">Select Status</option>
-                                                        <option value="Open">Open</option>
-                                                        <option value="Construction phase">Construction phase</option>
-                                                        <option value="Planning phase">Planning phase</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-6 col-sm-12 no-padding-left">
-                                                    <label>*Hotel Type</label>
-                                                    <select name="hotelinfo_type" class="bg-white medium-input" required="">
-                                                        <option value="">Hotel Type</option>
-                                                        <option value="Alternative">Alternative</option>
-                                                        <option value="Beach Resort">Beach Resort</option>
-                                                        <option value="Resort">Resort</option>
-                                                        <option value="City">City</option>
-                                                        <option value="Mountain">Mountain</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-6 col-sm-12 no-padding-right">
-                                                    <label>*Hotel Building</label>
-                                                    <select name="hotelinfo_building" class="bg-white medium-input" required="">
-                                                        <option value="">Hotel Building</option>
-                                                        <option value="New Construction">New Construction</option>
-                                                        <option value="Existing Building">Existing Building</option>
-                                                        <option value="Conversion">Conversion</option>
-                                                    </select>
-                                                </div> 
-                                                <div class="col-md-12 col-sm-12 no-padding">
-                                                    <label>*Hotel Opening Date</label>
-                                                    <input type="date" name="hotelinfo_opening_date" placeholder="Hotel Opening Date*" class="bg-white medium-input" required="">
-                                                </div>
-                                                <div class="col-md-6 col-sm-12 no-padding-left">
-                                                    <label>*Street & Number</label>
-                                                    <input type="text" name="hotelinfo_address" placeholder="Street & Number*" class="bg-white medium-input" required="">
-                                                </div>
-                                                <div class="col-md-6 col-sm-12 no-padding-right">
-                                                    <label>*City</label>
-                                                    <input type="text" name="hotelinfo_city" placeholder="City*" class="bg-white medium-input" required="">
-                                                </div>
-                                                <div class="col-md-6 col-sm-12 no-padding-left">
-                                                    <label>*Country</label>
-                                                    <input type="text" name="hotelinfo_country" placeholder="Country*" class="bg-white medium-input" required="">
-                                                </div>
-                                                <div class="col-md-6 col-sm-12 no-padding-right">
-                                                    <label>*Postal Code</label>
-                                                    <input type="text" name="hotelinfo_postal" placeholder="Postal Code*" class="bg-white medium-input" required="">
-                                                </div>
-                                                <div class="col-md-12 sm-clear-both no-padding">
-                                                    <label>*Hotel Website</label>
-                                                    <input type="text" name="hotelinfo_website" placeholder="Hotel Website*" class="bg-white medium-input" required="">
-                                                </div>
-                                                <div class="col-md-4 col-sm-12 no-padding-left">
-                                                    <label>*Days open for business</label>
-                                                    <input type="text" name="hotelinfo_daysopen" placeholder="Days open for business*" class="bg-white medium-input" required="">
-                                                </div>
-                                                <div class="col-md-4 col-sm-12">
-                                                    <label>Avg. Daily Rate</label>
-                                                    <input type="text" name="hotelinfo_avg_daily_rate" placeholder="Avg. Daily Rate*" value="EUR" class="bg-white medium-input" required="">
-                                                </div>
-                                                <div class="col-md-4 col-sm-12 no-padding-right">
-                                                    <label>Avg. Occupancy</label>
-                                                    <input type="text" name="hotelinfo_avg_occupancy" placeholder="Avg. Occupancy*" value="%" class="bg-white medium-input" required="">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <h5 class="ev-regural-heading text-uppercase margin-20px-bottom font-weight-700 sm-width-100 xs-width-100">Hotel Facilities</h5>
-                                                <div class="col-md-6 col-sm-12 no-padding-left" >
-                                                    <label>*Number of Rooms</label>
-                                                    <input type="text" name="hotelfac_num_rooms" placeholder="Number of Rooms*" class="bg-white medium-input" required="">
-                                                </div>
-                                                <div class="col-md-6 col-sm-12 no-padding-right">
-                                                    <label>*Number of Suites</label>
-                                                    <input type="text" name="hotelfac_num_suites" placeholder="Number of Suites*" class="bg-white medium-input" required="">
-                                                </div>
-                                                <div class="row padding-row">
-                                                    <div class="col-md-6 col-sm-12 no-padding-left">
-                                                        <label>F & B Outlets</label>
-                                                        <select name="hotelfac_fb_outlets[]" multiple="" class="bg-white medium-input" >
-                                                            <option value="">-</option>
-                                                            <option value="Restaurant">Restaurant</option>
-                                                            <option value="Bar">Bar</option>
-                                                            <option value="Beach Bar">Beach Bar</option>
-                                                            <option value="Club">Club</option>
-                                                            <option value="Lobby/Lounge">Lobby/Lounge</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-md-6 col-sm-12 no-padding-right">
-                                                        <label>Guest Facilities</label>
-                                                        <select name="hotelfac_guest_fac[]" multiple="" class="bg-white medium-input">
-                                                            <option value="">-</option>
-                                                            <option value="">Gym</option>
-                                                            <option value="">Indoor Pool</option>
-                                                            <option value="">Outdoor Pool</option>
-                                                            <option value="">Spa</option>
-                                                            <option value="">Business Center</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 col-sm-12 no-padding-left">
-                                                    <label>Meeting Area</label>
-                                                    <input type="text" name="hotelfac_meeting_area" placeholder="Meeting Area*" value="sqm" class="bg-white medium-input">
-                                                </div>
-                                                <div class="col-md-6 col-sm-12 no-padding-right">
-                                                    <label>Meeting Facilities</label>
-                                                    <select name="hotelfac_meeting_fac" class="bg-white medium-input">
-                                                        <option>Please select</option>
-                                                        <option>YES</option>
-                                                        <option>NO</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-12 sm-clear-both no-padding">
-                                                    <label>Comments/Other Facilities</label>
-                                                    <textarea name="hotelfac_comments"  placeholder="Comments/Other Facilities" rows="5" class="bg-white medium-textarea"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <h5 class="ev-regural-heading text-uppercase margin-20px-bottom font-weight-700 sm-width-100 xs-width-100">Hotel Description</h5>
-                                                <div class="col-md-6 col-sm-12 no-padding-left">
-                                                    <label>*Hotel Concept</label>
-                                                    <textarea name="hoteldesc_concept" placeholder="*Hotel Concept" rows="5" class="bg-white medium-textarea" required=""></textarea>
-                                                </div>
-                                                <div class="col-md-6 col-sm-12 no-padding-right">
-                                                    <label>Architecture & Design</label>
-                                                    <textarea name="hoteldesc_architecture_design"  placeholder="*Architecture & Design" rows="5" class="bg-white medium-textarea"></textarea>
-                                                </div>
-                                                <div class="col-md-6 col-sm-12 no-padding-left">
-                                                    <label>Architect Name</label>
-                                                    <input type="text" name="hoteldesc_architecture_name" placeholder="Architect Name" class="bg-white medium-input">
-                                                </div>
-                                                <div class="col-md-6 col-sm-12 no-padding-right">
-                                                    <label>Architect Website</label>
-                                                    <input type="text" name="hoteldesc_architecture_website" placeholder="Architect Website" class="bg-white medium-input">
-                                                </div>
-                                                <div class="col-md-6 col-sm-12 no-padding-left">
-                                                    <label>Interior Designer Name</label>
-                                                    <input type="text" name="hoteldesc_interior_designer_name" placeholder="Interior Designer Name" class="bg-white medium-input">
-                                                </div>
-                                                <div class="col-md-6 col-sm-12 no-padding-right">
-                                                    <label>Interior Designer Website</label>
-                                                    <input type="text" name="hoteldesc_interior_designer_website" placeholder="Interior Designer Website" class="bg-white medium-input">
-                                                </div>
-                                                <div class="col-md-6 col-sm-12 no-padding-left">
-                                                    <label>Local Integration</label>
-                                                    <textarea name="hoteldesc_local_integration" id="comment" placeholder="Local Integration" rows="5" class="bg-white medium-textarea"></textarea>
-                                                </div>
-                                                <div class="col-md-6 col-sm-12 no-padding-right">
-                                                    <label>Brand</label>
-                                                    <textarea name="hoteldesc_brand"  placeholder="Brand" rows="5" class="bg-white medium-textarea"></textarea>
-                                                </div>
-                                                <div class="col-md-6 col-sm-12 no-padding-left">
-                                                    <label>Brand Agency Name</label>
-                                                    <input type="text" name="hoteldesc_brand_agency_name" placeholder="Brand Agency Name" class="bg-white medium-input">
-                                                </div>
-                                                <div class="col-md-6 col-sm-12 no-padding-right">
-                                                    <label>Brand Agency Website</label>
-                                                    <input type="text" name="hoteldesc_brand_agency_website" placeholder="Brand Agency Website" class=" bg-white medium-input">
-                                                </div>
-                                                <div class="col-md-6 col-sm-12 no-padding-left">
-                                                    <label>Brand Linkedin Profile</label>
-                                                    <input type="text" name="hoteldesc_brand_linkdin_profile" placeholder="Brand Linkedin Profile" class="bg-white medium-input">
-                                                </div>
-                                                <div class="col-md-6 col-sm-12 no-padding-right">
-                                                    <label>Brand Instagram Profile</label>
-                                                    <input type="text" placeholder="Brand Instagram Profile" name="hoteldesc_brand_instagram_profile" class=" bg-white medium-input">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <h5 class="ev-regural-heading text-uppercase margin-20px-bottom font-weight-700 sm-width-100 xs-width-100">Contact Information</h5>
-                                                <h6 class="ev-regural-sub-heading text-uppercase margin-20px-bottom font-weight-600 sm-width-100 xs-width-100 border-bottom skcstm">Property Owning Entity:</h6>
-												
-                                                <div class="col-md-12 col-sm-12 no-padding entity">
-                                                    <label>*Entity Name</label>
-                                                    <input type="text" name="hotel_contactinfo_name" placeholder="Entity Name*" class="bg-white medium-input" required="">
-                                                </div>
-                                                <div class="col-md-6 col-sm-12 no-padding-left">
-                                                    <label>*Street & Number</label>
-                                                    <input type="text" name="hotel_contactinfo_address" placeholder="Street & Number*" class="bg-white medium-input" required="">
-                                                </div>
-                                                <div class="col-md-6 col-sm-12 no-padding-right">
-                                                    <label>*City</label>
-                                                    <input type="text" name="hotel_contactinfo_city" placeholder="City*" class="bg-white medium-input" required="">
-                                                </div>
-                                                <div class="col-md-6 col-sm-12 no-padding-left">
-                                                    <label>*Country</label>
-                                                    <input type="text" name="hotel_contactinfo_country" placeholder="Country*" class="bg-white medium-input" required="">
-                                                </div>
-                                                <div class="col-md-6 col-sm-12 no-padding-right">
-                                                    <label>*Postal Code</label>
-                                                    <input type="text" name="hotel_contactinfo_postal" placeholder="Postal Code*" class="bg-white medium-input" required="">
-                                                </div>
-                                                <div class="clear"></div>
-                                                <div class="headingmimiform">
-                                                    <h6 class="ev-regural-sub-heading text-uppercase margin-20px-bottom font-weight-600 sm-width-100 xs-width-100 border-bottom skcstm">Contact Person:</h6>
-                                                </div>
-                                                <div class="col-md-6 col-sm-12 no-padding-left">
-                                                    <label>*First Name</label>
-                                                    <input type="text" name="hotel_contactprsn_firstname" placeholder="First Name*" class="bg-white medium-input" required="">
-                                                </div>
-                                                <div class="col-md-6 col-sm-12 no-padding-right">
-                                                    <label>*Last Name</label>
-                                                    <input type="text" name="hotel_contactprsn_lastname" placeholder="Last Name*" class="bg-white medium-input" required="">
-                                                </div>
-                                                <div class="col-md-6 col-sm-12 no-padding-left">
-                                                    <label>*Company Name</label>
-                                                    <input type="text" name="hotel_contactprsn_companyname" placeholder="Company Name*" class="bg-white medium-input" required="">
-                                                </div>
-                                                <div class="col-md-6 col-sm-12 no-padding-right">
-                                                    <label>*Job Title</label>
-                                                    <input type="text" name="hotel_contactprsn_jobtitle" placeholder="Job Title*" class="bg-white medium-input" required="">
-                                                </div>
-												
-                                                <div class="col-md-6 col-sm-12 no-padding-left">
-                                                    <label>*Phone</label>
-                                                    <input type="text" name="hotel_contactprsn_phone" placeholder="Phone*" class="bg-white medium-input" required="">
-                                                </div>
-                                            </div>
-                                            <div class="row fooetr-form">
-                                                <div class="col-md-6 col-sm-12 no-padding-left">
-                                                    <span><input class="checkbox" type="checkbox" name="hotel_contactprsn_agree" value="1" required="">I agree with the <a href="#">Terms and Conditions</a></span>
-                                                </div>
-                                                <div class="col-md-6 col-sm-12 no-padding-right text-align-right">
-                                                    <input id="contact-us-button" type="submit" value="Submit" class="btn btn-white"  style="width: 200px" >
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
+	<!-- start Slider form section -->
+
+    <section class="sliderSection termConditionSlider">
+    @if(!empty($pageslider))
+      <div id="restaurantSlider" class="carousel" data-ride="carousel">
+        <!-- Indicators -->
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            @foreach($pageslider as $key => $slider_row)
+              <div class="item {{($key == 0)? 'active' : ''}}" style="background:url({{url('uploads/slider_images/'.$slider_row->slider_img)}}) center center no-repeat; background-size:cover;">
+                <div class="carousel-caption">
+                  <h1>{{$slider_row->slider_title}}</h1>
+                  <p>{{$slider_row->slider_description}}</p>
+                  <button type="button" class="button viewGalleryBtn">Contact us</button>
+                </div>
+              </div>
+            @endforeach
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#restaurantSlider" data-slide="prev">
+          <img src="{{ asset('themes/emporium/images/editorial-left-arrow.png') }}" alt="Icon">
+        </a>
+        <a class="right carousel-control" href="#restaurantSlider" data-slide="next">
+          <img src="{{ asset('themes/emporium/images/editorial-right-arrow.png') }}" alt="Icon">
+        </a>
+      </div>
+      <span class="scrollNextDiv"><a class="scrollpage" href="#membershpipStepSec">Scroll Down</a></span>
+    @endif
+    </section>
+    <!-- End Slider form section -->
+    <section id="membershpipStepSec" class="membershpipStepSec">
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-3">
+            <div class="stepNumber active">
+                <span>1</span>
+                <p>STEP 1</p>
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <div class="stepNumber">
+                <span>2</span>
+                <p>STEP 2</p>
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <div class="stepNumber">
+                <span>3</span>
+                <p>STEP 3</p>
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <div class="stepNumber">
+                <span>4</span>
+                <p>STEP 4</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="hotelInfoSection">
+                 <div class="col-md-12 sm-clear-both">
+                        <div id="success-contact-form" class="no-margin-lr"></div>
+                </div>
+                                      
+                <form id="hotel-form" action="{{URL::to('frontend_hotelpost')}}" method="post">
+                    <div class="row">
+                    <h1>Hotel Information</h1>
+                        <div class="col-md-6 col-sm-12 no-padding-left">
+                            <div class="form-group">
+                                <label>*Hotel Name</label>
+                                <input type="text" name="hotelinfo_name" id="name" placeholder="Hotel Name*" class="form-control" required="">
                             </div>
                         </div>
-                    </section>
+                        <div class="col-md-6 col-sm-12 no-padding-right">
+                            <div class="form-group">
+                                <label>*Hotel Status</label>
+                                 <select name="hotelinfo_status" class="form-control" required="">
+                                                    <option value="">Select Status</option>
+                                                    <option value="Open">Open</option>
+                                                    <option value="Construction phase">Construction phase</option>
+                                                    <option value="Planning phase">Planning phase</option>
+                                                </select>
+                              
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 no-padding-left">
+                            <div class="form-group">
+                                <label>*Hotel Type</label>
+                                 <select name="hotelinfo_type" class="form-control" required="">
+                                                    <option value="">Hotel Type</option>
+                                                    <option value="Alternative">Alternative</option>
+                                                    <option value="Beach Resort">Beach Resort</option>
+                                                    <option value="Resort">Resort</option>
+                                                    <option value="City">City</option>
+                                                    <option value="Mountain">Mountain</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 no-padding-right">
+                            <div class="form-group">
+                                <label>*Hotel Building</label>
+                               <select name="hotelinfo_building" class="form-control" required="">
+                                <option value="Hotel Building">Hotel Building</option>
+                                <option value="New Construction">New Construction</option>
+                                <option value="Existing Building">Existing Building</option>
+                                <option value="Conversion">Conversion</option>
+                            </select>
+                            </div>
+                        </div> 
+                        <div class="col-md-12 col-sm-12 no-padding">
+                            <div class="form-group">
+                                <label>*Hotel Opening Date</label>
+                                  <input type="date" name="hotelinfo_opening_date" placeholder="Hotel Opening Date*" class="form-control" required="">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 no-padding-left">
+                            <div class="form-group">
+                                <label>*Street &amp; Number</label>
+                                 <input type="text" name="hotelinfo_address" placeholder="Street &amp; Number*" class="form-control" required="">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 no-padding-right">
+                            <div class="form-group">
+                                <label>*City</label>
+                                 <input type="text" name="hotelinfo_city" placeholder="City*" class="form-control" required="">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 no-padding-left">
+                            <div class="form-group">
+                                <label>*Country</label>
+                                 <input type="text" name="hotelinfo_country" placeholder="Country*" class="form-control" required="">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 no-padding-right">
+                            <div class="form-group">
+                                <label>*Postal Code</label>
+                                <input type="text" name="hotelinfo_postal" placeholder="Postal Code*" class="form-control" required="">
+                            </div>
+                        </div>
 
-                <script>
+
+                        <div class="col-md-12 sm-clear-both no-padding">
+                            <div class="form-group">
+                                <label>*Hotel Website</label>
+                                <input type="text" name="hotelinfo_website" placeholder="Hotel Website*" class="form-control" required="">
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-12 no-padding-left">
+                            <div class="form-group">
+                                <label>*Days open for business</label>
+                                <input type="text" name="hotelinfo_daysopen" placeholder="Days open for business*" class="form-control" required="">
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                            <div class="form-group">
+                                <label>Avg. Daily Rate</label>
+                                <input class="form-control" type="text" placeholder="Avg. Daily Rate*">
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-12 no-padding-right">
+                            <div class="form-group">
+                                <label>Avg. Occupancy</label>
+                                <input type="text" name="hotelinfo_avg_occupancy" placeholder="Avg. Occupancy*" value="%" class="form-control" required="">
+                            </div>
+                        </div>
+                    </div>
+
+
+                
+                    <div class="row">
+                        <h1>Hotel Facilities</h1>
+                        <div class="col-md-6 col-sm-12 no-padding-left">
+                            <div class="form-group">
+                                <label>*Number of Rooms</label>
+                                <input type="text" name="hotelfac_num_rooms" placeholder="Number of Rooms*" class="form-control" required="">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 no-padding-right">
+                            <div class="form-group">
+                                <label>*Number of Suites</label>
+                                <input type="text" name="hotelfac_num_suites" placeholder="Number of Suites*" class="form-control" required="">
+                            </div>
+                        </div>
+                            <div class="col-md-6 col-sm-12 no-padding-left">
+                            <div class="form-group">
+                                <label>F &amp; B Outlets</label>
+                                <select name="hotelfac_fb_outlets[]" multiple="" class="form-control" >
+                                                        <option value="">-</option>
+                                                        <option value="Restaurant">Restaurant</option>
+                                                        <option value="Bar">Bar</option>
+                                                        <option value="Beach Bar">Beach Bar</option>
+                                                        <option value="Club">Club</option>
+                                                        <option value="Lobby/Lounge">Lobby/Lounge</option>
+                                                    </select>
+                            </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12 no-padding-right">
+                                <div class="form-group">
+                                    <label>Guest Facilities</label>
+                                     <select name="hotelfac_guest_fac[]" multiple="" class="form-control">
+                                                        <option value="">-</option>
+                                                        <option value="Gym">Gym</option>
+                                                        <option value="Indoor Pool">Indoor Pool</option>
+                                                        <option value="Outdoor Pool"></option>
+                                                        <option value="Spa">Spa</option>
+                                                        <option value="Business Center">Business Center</option>
+                                                    </select>
+                                </div>
+                            </div>
+                        <div class="col-md-6 col-sm-12 no-padding-left">
+                            <div class="form-group">
+                                <label>Meeting Area</label>
+                                <input type="text" name="hotelfac_meeting_area" placeholder="Meeting Area*" value="sqm" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 no-padding-right">
+                            <div class="form-group">
+                                <label>Meeting Facilities</label>
+                                 <select name="hotelfac_meeting_fac" class="form-control">
+                                                    <option>Please select</option>
+                                                    <option>YES</option>
+                                                    <option>NO</option>
+                                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-12 sm-clear-both no-padding">
+                            <div class="form-group">
+                                <label>Comments/Other Facilities</label>
+                                <textarea name="hotelfac_comments"  placeholder="Comments/Other Facilities" rows="5" class="form-control"></textarea>
+                               
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <h1>Hotel Description</h1>
+                        <div class="col-md-6 col-sm-12 no-padding-left">
+                            <div class="form-group">
+                                <label>*Hotel Concept</label>
+                                 <textarea name="hoteldesc_concept" placeholder="*Hotel Concept" rows="5" class="form-control" required=""></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 no-padding-right">
+                            <div class="form-group">
+                                <label>Architecture &amp; Design</label>
+                                <textarea name="hoteldesc_architecture_design"  placeholder="*Architecture & Design" rows="5" class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 no-padding-left">
+                            <div class="form-group">
+                                <label>Architect Name</label>
+                                <input type="text" name="hoteldesc_architecture_name" placeholder="Architect Name" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 no-padding-right">
+                            <div class="form-group">
+                                <label>Architect Website</label>
+                                <input type="text" name="hoteldesc_architecture_website" placeholder="Architect Website" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 no-padding-left">
+                            <div class="form-group">
+                                <label>Interior Designer Name</label>
+                                
+                                <input type="text" name="hoteldesc_interior_designer_name" placeholder="Interior Designer Name" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 no-padding-right">
+                            <div class="form-group">
+                                <label>Interior Designer Website</label>
+                                <input type="text" name="hoteldesc_interior_designer_website" placeholder="Interior Designer Website" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 no-padding-left">
+                            <div class="form-group">
+                                <label>Local Integration</label>
+                                <textarea name="hoteldesc_local_integration" id="comment" placeholder="Local Integration" rows="5" class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 no-padding-right">
+                            <div class="form-group">
+                                <label>Brand</label>
+                               <textarea name="hoteldesc_brand"  placeholder="Brand" rows="5" class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 no-padding-left">
+                            <div class="form-group">
+                                <label>Brand Agency Name</label>
+                               <input type="text" name="hoteldesc_brand_agency_name" placeholder="Brand Agency Name" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 no-padding-right">
+                            <div class="form-group">
+                                <label>Brand Agency Website</label>
+                                <input type="text" name="hoteldesc_brand_agency_website" placeholder="Brand Agency Website" class=" form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 no-padding-left">
+                            <div class="form-group">
+                                <label>Brand Linkedin Profile</label>
+                                <input type="text" name="hoteldesc_brand_linkdin_profile" placeholder="Brand Linkedin Profile" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 no-padding-right">
+                            <div class="form-group">
+                                <label>Brand Instagram Profile</label>
+                                 <input type="text" placeholder="Brand Instagram Profile" name="hoteldesc_brand_instagram_profile" class=" form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <h1>Contact Information</h1>
+                        <h2>Property Owning Entity:</h2>
+                        
+                        <div class="col-md-12 col-sm-12 no-padding entity">
+                            <div class="form-group">
+                                <label>*Entity Name</label>
+                                <input type="text" name="hotel_contactinfo_name" placeholder="Entity Name*" class="form-control" required="">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 no-padding-left">
+                            <div class="form-group">
+                                <label>*Street &amp; Number</label>
+                               <input type="text" name="hotel_contactinfo_address" placeholder="Street & Number*" class="form-control" required="">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 no-padding-right">
+                            <div class="form-group">
+                                <label>*City</label>
+                                <input type="text" name="hotel_contactinfo_city" placeholder="City*" class="form-control" required="">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 no-padding-left">
+                            <div class="form-group">
+                                <label>*Country</label>
+                               <input type="text" name="hotel_contactinfo_country" placeholder="Country*" class="form-control" required="">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 no-padding-right">
+                            <div class="form-group">
+                                <label>*Postal Code</label>
+                                 <input type="text" name="hotel_contactinfo_postal" placeholder="Postal Code*" class="form-control" required="">
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="headingmimiform">
+                            <h2>Contact Person:</h2>  
+                        </div>
+                        <div class="col-md-6 col-sm-12 no-padding-left">
+                            <div class="form-group">
+                                <label>*First Name</label>
+                                <input type="text" name="hotel_contactprsn_firstname" placeholder="First Name*" class="form-control" required="">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 no-padding-right">
+                            <div class="form-group">
+                                <label>*Last Name</label>
+                                <input type="text" name="hotel_contactprsn_lastname" placeholder="Last Name*" class="form-control" required="">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 no-padding-left">
+                            <div class="form-group">
+                                <label>*Company Name</label>
+                                <input type="text" name="hotel_contactprsn_companyname" placeholder="Company Name*" class="form-control" required="">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 no-padding-right">
+                            <div class="form-group">
+                                <label>*Job Title</label>
+                                <input type="text" name="hotel_contactprsn_jobtitle" placeholder="Job Title*" class="form-control" required="">
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 col-sm-12 no-padding-left">
+                            <div class="form-group">
+                                <label>*Phone</label>
+                                <input type="text" name="hotel_contactprsn_phone" placeholder="Phone*" class="form-control" required="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row fooetr-form">
+                        <div class="col-md-6 col-sm-12 no-padding-left">
+                            <span> <input class="checkbox" type="checkbox" name="hotel_contactprsn_agree" id="termConditionInput"  value="1" required=""><label for="termConditionInput">I agree with the</label> <a href="#">Terms and Conditions</a></span>
+                        </div>
+                        <div class="col-md-6 col-sm-12 no-padding-right text-align-right">
+
+                       
+                            <input type="submit"  type="submit" value="Submit" id="contact-us-button" class="btn btn-white pull-right" style="width: 200px">
+                        </div>
+                    </div>
+                </form>
+
+             <div id="formerrors"></div>
+                                   
+        </div>
+    </div>
+
+    </div>
+    </section>
+
+@endsection
+
+{{--For Right Side Icons --}}
+@section('right_side_iconbar')
+
+    @parent
+@show
+
+{{-- For Include Top Bar --}}
+@section('top_search_bar')
+    @parent
+@endsection
+
+{{-- For Include Side Bar --}}
+@section('sidebar')
+    @include('frontend.themes.emporium.layouts.sections.common_sidebar')
+@endsection
+
+{{-- For Include style files --}}
+@section('head')
+    @parent
+    <link href="{{ asset('themes/emporium/css/animate.css') }}" rel="stylesheet">
+    <link href="{{ asset('themes/emporium/css/daterangepicker.css') }}" rel="stylesheet">
+    <link href="{{ asset('themes/emporium/css/calendar.css') }}" rel="stylesheet">
+    <link href="{{ asset('themes/emporium/css/terms-and-conditions.css') }}" rel="stylesheet">
+    <link href="{{ asset('themes/emporium/css/membership-css.css') }}" rel="stylesheet">
+@endsection
+
+{{-- For custom style  --}}
+@section('custom_css')
+
+    @parent
+<style>
+.has-error  {
+    border-color: #a94442;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+.parsley-required{
+
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+
+}
+</style>
+@endsection
+
+{{-- For Include javascript files --}}
+@section('javascript')
+    @parent
+    <script src="{{ asset('themes/emporium/js/smooth-scroll.js') }}"></script>
+    <script src="{{ asset('sximo/js/parsley.min.js')}}" type="text/javascript"></script>
+@endsection
+
+{{-- For custom script --}}
+@section('custom_js')
+    @parent
+     <script>
               window.ParsleyConfig = {
                     errorsWrapper: '<div></div>',
                     errorTemplate: '<div class="alert alert-danger parsley" role="alert"></div>',
@@ -331,36 +530,7 @@
          </script>    
 @endsection
 
-@section('css')
-
-<!-- swiper carousel -->
-<link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/swiper.min.css')}}">
-<!-- style -->
-<link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/style.css')}}" />
-<!-- responsive css -->
-<link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/responsive.css')}}" />
-<!-- Custom style -->
-<link href="{{ asset('sximo/assets/memform/css/custom-ai.css')}}" rel="stylesheet" type="text/css"/>
-<link rel="stylesheet" href="{{ asset('sximo/css/hotel-membership/style.css')}}">
-<style>
-.has-error  {
-    border-color: #a94442;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-}
-</style>
-@endsection
-
-@section('script')
-
-<script type="text/javascript" src="{{ asset('sximo/assets/memform/js/smooth-scroll.js')}}"></script>
-        <!-- animation -->
-        <script type="text/javascript" src="{{ asset('sximo/assets/memform/js/wow.min.js')}}"></script>
-        <!-- swiper carousel -->
-        <script type="text/javascript" src="{{ asset('sximo/assets/memform/js/swiper.min.js')}}"></script>
-
-        <!-- images loaded -->
-        <script type="text/javascript" src="{{ asset('sximo/assets/memform/js/imagesloaded.pkgd.min.js')}}"></script>
-         <script src="{{ asset('sximo/js/parsley.min.js')}}" type="text/javascript"></script>
-         
+{{-- For footer --}}
+@section('footer')
+    @parent
 @endsection
