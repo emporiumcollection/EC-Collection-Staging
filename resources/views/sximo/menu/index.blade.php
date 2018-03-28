@@ -195,7 +195,14 @@
 								@if($row['module']== $frontpage->alias ) selected="selected" @endif
 								>Front page : {{ $frontpage->title}}</option>
 							@endforeach	
-							</optgroup>								
+							</optgroup>	
+							<optgroup label="Presentation Pages">
+							@foreach($presentationpages as $presentationpages)
+								<option value="luxury-travel/{{ $presentationpages->page_slug}}"
+								@if($row['module']=="luxury-travel/".$presentationpages->page_slug ) selected="selected" @endif
+								>Presentation page : {{ $presentationpages->page_name}}</option>
+							@endforeach	
+							</optgroup>									
 					</select> 		
 					 </div> 
 				  </div> 										

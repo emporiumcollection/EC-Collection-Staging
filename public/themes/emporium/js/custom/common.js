@@ -216,7 +216,7 @@ function renderMenu(dataObj) {
     var menuHtml = '';
     hideAllOption();
     putDataOnLeft(data);
-    $(dataObj.dests).each(function (i, val) {
+    $(dataObj.menus).each(function (i, val) {
         menuHtml += '<li><a class="cursor menu_item" data-action="select-menu" data-position="'+val.position+'" data-id="' + val.id + '">' + val.menu_name + '</a>';
         menuHtml += '<a href="'+val.url+'" class="external-link"><i class="fa fa-external-link" aria-hidden="true"></i></a></li>';
 
