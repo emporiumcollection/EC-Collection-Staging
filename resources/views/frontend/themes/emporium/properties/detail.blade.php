@@ -46,7 +46,7 @@
 
 
         <!-- HAM YARD HOTEL -->
-        <section id="hotelInfo" class="HamYardHotelSection">
+        <setion id="hotelInfo" class="HamYardHotelSection">
             <div class="HamYardHotelInner">
                 <div class="container">
                     <div class="row">
@@ -71,9 +71,9 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </setion>
         <!-- HAM YARD HOTEL -->
-        <section class="HamYardHotelSection">
+        <setion class="HamYardHotelSection">
             <div class="HamYardHotelInner">
                 <div class="container">
                     <div class="row">
@@ -98,7 +98,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </setion>
 
         @if (array_key_exists('typedata', $propertyDetail))
             <!-- hotel slider 1 -->
@@ -114,7 +114,7 @@
                                         <div class="carousel-inner">
                                             @for($rimg1=0; $rimg1 < $divd2; $rimg1++)
                                                 <div class="item {{ ($rimg1==0) ? 'active' : '' }}">
-                                                    <a href="javascript:void(0);" class="galleryImgBtn">
+                                                    <a href="javascript:void(0);" class="galleryImgBtn" rel="{{$type->id}}">
                                                         <img src="{{ asset('themes/emporium/images/photo-camera.png') }}"
                                                              alt="Icon">
                                                     </a>
@@ -125,7 +125,7 @@
 
                                             @for($rimg2=$rimg1; $rimg2 < $totimg; $rimg2++)
                                                 <div class="item">
-                                                    <a href="javascript:void(0);" class="galleryImgBtn">
+                                                    <a href="javascript:void(0);" class="galleryImgBtn" rel="{{$type->id}}">
                                                         <img src="{{ asset('themes/emporium/images/photo-camera.png') }}"
                                                              alt="Icon">
                                                     </a>
@@ -149,8 +149,8 @@
                                     <div class="sliderContent">
                                         <h3>{{$type->category_name}}</h3>
                                         <p>{{(strlen($type->room_desc) > 100) ? substr($type->room_desc,0,100).'...':$type->room_desc}}</p>
-                                        <button class="btn btn-default moreButtonPopup" type="button">More</button>
-                                        <button class="btn btn-default" type="button">Book Now</button>
+                                        <button class="btn btn-default moreButtonPopup" type="button" rel="{{$type->id}}">More</button>
+                                        <button class="btn btn-default" type="button" onclick="choose_room_type('{{$type->id}}');">Book Now</button>
                                         @if($type->price!='')
                                             <button class="btn btn-default"
                                                     type="button"> {{($currency->content!='') ? $currency->content : '$'}} {{$type->price}} </button>
@@ -169,7 +169,7 @@
                                         <div class="carousel-inner">
                                             @for($rimg1=0; $rimg1 < $divd2; $rimg1++)
                                                 <div class="item {{ ($rimg1==1) ? 'active' : '' }}">
-                                                    <a href="javascript:void(0);" class="galleryImgBtn">
+                                                    <a href="javascript:void(0);" class="galleryImgBtn" rel="{{$type->id}}">
                                                         <img src="{{ asset('themes/emporium/images/photo-camera.png') }}"
                                                              alt="Icon">
                                                     </a>
@@ -180,7 +180,7 @@
 
                                             @for($rimg2=$rimg1; $rimg2 < $totimg; $rimg2++)
                                                 <div class="item">
-                                                    <a href="javascript:void(0);" class="galleryImgBtn">
+                                                    <a href="javascript:void(0);" class="galleryImgBtn" rel="{{$type->id}}">
                                                         <img src="{{ asset('themes/emporium/images/photo-camera.png') }}"
                                                              alt="Icon">
                                                     </a>
@@ -474,108 +474,56 @@
                 </section>
             </section>
         @endif
-		
-		<!-- gallery Img Popup -->
-		<div class="galleryImgPopup fullWidthPopup">
-		  <a href="javascript:void(0);" class="loginPopupCloseButton">×</a>
-		  <div class="searchDateInnerContent text-center">
-			<div class="container-fluid">
-			  <div class="row">
-				  <div class="col-xs-12 text-center">
-					  <div class="gallyPopupHeader">
-						  <a href="index.html"><img src="images/design-location-logo.png" alt="Emporium Voyage" class="img-responsive mCS_img_loaded"></a>
-					  </div>
-				  </div>
-				  <div class="col-md-2 col-sm-3">
-					  <div class="galleryPopupLeftSide">
-						  <h1><a href="javascript:void(0);">New Hotel</a></h1>
-						  <div class="popupHotelDetail text-center">
-							  <h3>Hotel Zoo Berlin</h3>
-							  <p>New York City</p>
-							  <p>United States</p>
-							  <a class="btn" href="javascript:void(0);">View Hotel</a>
-						  </div>
-						  <a class="bootomViewNextBtn" href="javascript:void(0);">View All Hotel DOI</a>
-					  </div>
-				  </div>
-				  <div class="col-md-10 col-sm-9">
-					  <div class="row">
-						  <div class="col-sm-4 col-xs-6">
-							  <div class="popupHetelImage">
-								  <img src="images/ham-yard-hotel-london-united-kingdom-5.jpg" alt="Image">
-							  </div>
-						  </div>
-						  <div class="col-sm-4 col-xs-6">
-							  <div class="popupHetelImage">
-								  <img src="images/ham-yard-hotel-london-united-kingdom-6.jpg" alt="Image">
-							  </div>
-						  </div>
-						  <div class="col-sm-4 col-xs-6">
-							  <div class="popupHetelImage">
-								  <img src="images/ham-yard-hotel-london-united-kingdom-7.jpg" alt="Image">
-							  </div>
-						  </div>
-						  <div class="col-sm-4 col-xs-6">
-							  <div class="popupHetelImage">
-								  <img src="images/ham-yard-hotel-london-united-kingdom-8.jpg" alt="Image">
-							  </div>
-						  </div>
-						  <div class="col-sm-4 col-xs-6">
-							  <div class="popupHetelImage">
-								  <img src="images/ham-yard-hotel-london-united-kingdom-9.jpg" alt="Image">
-							  </div>
-						  </div>
-						  <div class="col-sm-4 col-xs-6">
-							  <div class="popupHetelImage">
-								  <img src="images/ham-yard-hotel-london-united-kingdom-11.jpg" alt="Image">
-							  </div>
-						  </div>
-					  </div>
+    @endif
+	
+	
+	<!-- gallery Img Popup -->
+	<div class="galleryImgPopup fullWidthPopup">
+	  <a href="javascript:void(0);" class="loginPopupCloseButton">×</a>
+	  <div class="searchDateInnerContent text-center">
+		<div class="container-fluid">
+		  <div class="row">
+			  <div class="col-xs-12 text-center">
+				  <div class="gallyPopupHeader">
+					  <a href="{{URL::to('')}}"><img src="{{ asset('themes/emporium/images/logo.png') }}" alt="Emporium Voyage" class="img-responsive mCS_img_loaded"></a>
 				  </div>
 			  </div>
-			</div>
+			  <div class="col-md-2 col-sm-3">
+				  <div class="galleryPopupLeftSide">
+					  <h1><a href="javascript:void(0);">New Hotel</a></h1>
+					  <div class="popupHotelDetail text-center">
+						  <h3>Hotel Zoo Berlin</h3>
+						  <p>New York City</p>
+						  <p>United States</p>
+						  <a class="btn" href="javascript:void(0);">View Hotel</a>
+					  </div>
+					  <a class="bootomViewNextBtn" href="javascript:void(0);">View All Hotel DOI</a>
+				  </div>
+			  </div>
+			  <div class="col-md-10 col-sm-9 galleryImgdata">
+				  
+			  </div>
 		  </div>
 		</div>
+	  </div>
+	</div>
 
-		<!-- Show More Popup -->
-		<div class="showMorePopup fullWidthPopup">
-		  <a href="javascript:void(0);" class="loginPopupCloseButton">×</a>
-			<div class="container-fluid">
-			  <div class="row">
-				  <div class="col-sm-4 col-md-6">
-					  
-				  </div>
-				  <div class="col-md-6 col-sm-8 col-xs-12 noPadding">
-					<div class="showMoreContent">
-					  <h1>TERRACE SUITE</h1>
-					  <ul>
-						<li>• 145sqm (1560sqft) </li>
-						<li>• Two King Beds </li>
-						<li>• Roof Top View </li>
-						<li>• Top Floor with terrace </li>
-						<li>• Open plan lounge, dining area and kitchen </li>
-						<li>• Individual Design </li>
-						<li>• Complimentary Wifi </li>
-						<li>• Air Conditioning </li>
-						<li>• LCD TV and DVD </li>
-						<li>• Writing desk </li>
-						<li>• Shower and Bathtub </li>
-						<li>• Rik Rak by Kit Kemp Bathroom Amenities </li>
-						<li>• Bluetooth Bose Units </li>
-						<li>• Sleeps 5 with extra bed</li>
-					  </ul>
-					  <p>A spectacular two bedroom fifth floor suite at 145sqm or 1560sqf. The vast living/dining room has high ceilings with full floor-to-ceiling windows and a terrace with views of the courtyard and London skyline. The spacious living room has a powder room, writing desk and a sleek designed Boffi kitchen. There are two spacious bedrooms each with a king beds and the en-suite bathrooms have a walk-in shower, large central bath and flat screen TV. Each of the bedrooms have a king bed with the en-suite bathroom that is beautifully designed with 2 basins, a bath tub and a separate shower with exclusive Rik Rak bath products designed by Kit Kemp. One rollaway allowed to sleep 5.</p>
-					  <div class="shoMoreButtonSection">
-						<h2>€4141</h2>
-						<a href="javascript:void(0);" class="button">BOOK Now</a>
-					  </div>
-					</div>
-				  </div>
+	<!-- Show More Popup -->
+	<div class="showMorePopup fullWidthPopup">
+	  <a href="javascript:void(0);" class="loginPopupCloseButton">×</a>
+		<div class="container-fluid">
+		  <div class="row">
+			  <div class="col-sm-4 col-md-6">
+				  
 			  </div>
-			</div>
+			  <div class="col-md-6 col-sm-8 col-xs-12 noPadding">
+				<div class="showMoreContent">
+				  
+				</div>
+			  </div>
+		  </div>
 		</div>
-    @endif
-
+	</div>
 @endsection
 
 
@@ -627,6 +575,83 @@
 {{-- For custom script --}}
 @section('custom_js')
     @parent
+	<script>
+		$(document).on('click', '.galleryImgBtn', function () {
+			var params = $.extend({}, doAjax_params_default);
+			params['url'] = BaseURL + '/getpropertyroomimages/' + $(this).attr('rel');
+			params['successCallbackFunction'] = renderRoomimages;
+			doAjax(params);
+
+		});
+		
+		function renderRoomimages(data) {
+			$('.galleryImgdata').html('');
+			var imagesPro = '';
+			var im=0;
+			var di=0;
+			var lngimg = Math.round((data.image.length)/3);
+			imagesPro += '<div class="row">';
+			$(data.image).each(function (i, val) {
+				var clsact = '';
+				imagesPro += '<div class="col-sm-6 col-xs-6 col-md-4 col-lg-4">';
+				imagesPro += '<div class="popupHetelImage"><img src="' + val.imgsrc + '" alt="Image"></div>';
+				imagesPro += '</div>';
+				if(di==lngimg)
+				{
+					di=0;
+					imagesPro += ' </div>';
+					imagesPro += '<div class="row">';
+				}
+				im++;
+				di++;
+			});
+			imagesPro += ' </div>';
+			$('.galleryImgdata').html(imagesPro);
+			$('.galleryImgPopup').addClass('openPopup');
+		}
+		
+		$(document).on('click', '.showMoreSec, .moreButtonPopup', function () {
+			$('.showMorePopup').css("background-image", "");
+			$('.showMoreContent').html('');
+			var params = $.extend({}, doAjax_params_default);
+			params['url'] = BaseURL + '/getpropertytypedetail/' + $(this).attr('rel');
+			params['successCallbackFunction'] = renderRoomdetails;
+			doAjax(params);
+
+		});
+		
+		function renderRoomdetails(data) {
+			var rimg = data.roomimgs.imgsrc;
+			$('.showMorePopup').css("background-image", "url('" + rimg + "')");
+			var imagesPro = '';
+			imagesPro += '<h1>' + data.typedata.category_name + '</h1>';
+			imagesPro += '<p>' + data.amenities.amenities_eng.replace(/\n/g, "<br />") + '</p>';
+			imagesPro += '<p>' + data.typedata.room_desc + '</p>';
+			imagesPro += '<div class="shoMoreButtonSection">';
+			if (data.typedata.price != '')
+			{
+				imagesPro += '<h2>';
+				imagesPro += (data.currency.content != '') ? data.currency.content : '$';
+				imagesPro += data.typedata.price;
+				imagesPro += '</h2>';
+			}
+			imagesPro += '<a href="javascript:void(0);" onclick="choose_room_type(' + data.typedata.id + ');" class="button">Book</a>';
+			imagesPro += '</div>';
+			$('.showMoreContent').html(imagesPro);
+			$('.showMorePopup').addClass('openPopup');
+		}
+		
+		function choose_room_type(type)
+		{
+			$('#roomType').val('');
+			if (type != '' && type > 0)
+			{
+				$('#roomType').val(type);
+				$(".detail-page-booking-form").trigger("submit");
+			}
+		}
+
+	</script>
 @endsection
 
 {{-- For footer --}}

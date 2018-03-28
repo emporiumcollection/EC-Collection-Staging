@@ -59,6 +59,13 @@ class CommonHelper
         $data['leftsidebarads'] = \DB::table('tb_advertisement')->select('adv_img', 'adv_link')->where('adv_type', 'sidebar')->where('adv_status', 1)->where('adv_position', $pos)->where('ads_cat_id', $cat_id)->get();
         return $data;
     }
+	
+	static function getDetailpageSidebarAds($pos, $cat_ids){
+		$cats = explode(',', $cat_ids);
+        $data = array();
+        $data['leftsidebarads'] = \DB::table('tb_advertisement')->select('adv_img', 'adv_link')->where('adv_type', 'sidebar')->where('adv_status', 1)->where('adv_position', $pos)->whereIn('ads_cat_id', $cats)->get();
+        return $data;
+    }
 
     static function calc_price($actprice,$actdays,$customdays){
 		if($actprice>0 && $actdays > 0 && $customdays > 0)

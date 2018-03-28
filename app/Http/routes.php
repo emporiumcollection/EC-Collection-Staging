@@ -375,8 +375,8 @@ Route::get('luxury_destinations/{continent}/{region}/{country}/{cat}', 'Frontend
 
 Route::get('luxury_hotels/{cat}', 'Frontend\PropertyController@propertySearch');
 Route::get('getpropertygallery/{id}/{type}', 'HomeController@getPropertyGalleryQuickView');
-Route::get('getpropertyroomimages/{id}', 'HomeController@getPropertyRoomimageGalleryView');
-Route::get('getpropertytypedetail/{id}', 'HomeController@getPropertyTypeQuickView');
+Route::get('getpropertyroomimages/{id}', 'Frontend\PropertyController@getPropertyRoomimageGalleryView');
+Route::get('getpropertytypedetail/{id}', 'Frontend\PropertyController@getPropertyTypeQuickView');
 Route::post('filter_category_destionation', 'HomeController@getPropertyByCategoryDestination');
 //Route::get('choosepackage/{id}', 'HomeController@index');
 
