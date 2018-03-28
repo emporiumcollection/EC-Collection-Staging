@@ -101,7 +101,7 @@
             <div class="form-group row">
                 <label for="send" class="col-sm-3 col-form-label"></label>
                 <div class="col-sm-9">
-                    <button type="button" class="btn btn-cstmBtn" onclick="submit_contact_request();">Send</button>
+                    <input type="submit" class="btn btn-cstmBtn" onclick="submit_contact_request();" value="Send">
                 </div>
             </div>
             </form>
