@@ -45,6 +45,8 @@
 </div>
 <!-- Terms And Conditions ends -->
 
+@include('frontend.themes.emporium.layouts.sections.conatctus_popup')
+
 @endsection
 
 {{--For Right Side Icons --}}
