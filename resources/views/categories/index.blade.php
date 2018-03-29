@@ -150,7 +150,7 @@ $(document).ready(function(){
 	$('input[name="search_keyword"]').keypress(function(e) {
 		// Enter pressed?
 		if(e.which == 10 || e.which == 13) {
-			location.href='{{url('slider')}}?categories=slider_title:like:'+$(this).val();
+			location.href='{{url('categories')}}?search=slider_title:like:'+$(this).val();
 		}
 	});
 	
