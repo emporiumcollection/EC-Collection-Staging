@@ -119,6 +119,15 @@
 									 	
 									 </div>
 								  </div>
+							<div class="form-group  " >
+								<label for="InstagramTag" class=" control-label col-md-3 text-left"> Instagram Tag </label>
+								<div class="col-md-7">
+									{!! Form::text('category_instagram_tag', $row['category_instagram_tag'],array('class'=>'form-control', 'placeholder'=>'',   )) !!}
+								</div>
+								<div class="col-md-2">
+
+								</div>
+							</div>
 								  <div class="form-group  " >
 									<label for="Approved" class=" control-label col-md-3 text-left"> Approved <span class="asterix"> * </span></label>
 									<div class="col-md-7">
