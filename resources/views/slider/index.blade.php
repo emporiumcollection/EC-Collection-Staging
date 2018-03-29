@@ -49,16 +49,24 @@
 	
 	
 	 {!! Form::open(array('url'=>'slider/delete/', 'class'=>'form-horizontal' ,'id' =>'SximoTable' )) !!}
-		
-		<select name='slider_category' id='slider_category' class="select2" onchange="fetchslidercategory(this.value);" > 
-			<option value="">-Select-</option>
-			@if(!empty($allcategories))
-				@foreach($allcategories as $catlist)
-					<option value="{{$catlist}}" <?php echo ($curntcat == $catlist) ? " selected='selected' " : '' ; ?>>{{$catlist}}</option>
-				@endforeach
-			@endif
-		</select> 
-			
+		<div class="row"  style="padding-bottom: 10px;">
+			<div class="col-sm-8 ">
+				<select name='slider_category' id='slider_category' class="select2" onchange="fetchslidercategory(this.value);" >
+					<option value="">All Slide</option>
+					@if(!empty($allcategories))
+						@foreach($allcategories as $catlist)
+							<option value="{{$catlist}}" <?php echo ($curntcat == $catlist) ? " selected='selected' " : '' ; ?>>{{$catlist}}</option>
+						@endforeach
+					@endif
+				</select>
+			</div>
+			<div class="col-sm-4 text-right ">
+				<input class=""  placeholder="Search" type="text" name="search_keyword"  >
+			</div>
+		</div>
+
+
+
 		<div class="table-responsive" style="min-height:300px;">
 			<table class="table table-striped ">
 				<thead>
@@ -130,6 +138,13 @@ $(document).ready(function(){
 	$('.do-quick-search').click(function(){
 		$('#SximoTable').attr('action','{{ URL::to("slider/multisearch")}}');
 		$('#SximoTable').submit();
+	});
+
+	$('input[name="search_keyword"]').keypress(function(e) {
+		// Enter pressed?
+		if(e.which == 10 || e.which == 13) {
+			$('#SximoTable').submit();
+		}
 	});
 	
 });	

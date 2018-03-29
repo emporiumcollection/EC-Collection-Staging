@@ -35,7 +35,7 @@ class SliderController extends Controller {
 
 	public function getIndex( Request $request )
 	{
-		$categ = 'Landing';
+		$categ = '';
 		if(!is_null($request->input('selcat')))
 		{
 			$categ = ($request->input('selcat')!='') ? $request->input('selcat') : 'Landing';
@@ -52,8 +52,13 @@ class SliderController extends Controller {
 		$filter = (!is_null($request->input('search')) ? $this->buildSearch() : '');
 		if(is_null($request->input('search')))
 		{
-			$filter .= ' AND slider_category="'.$categ.'"';
+            if($categ!='') {
+                $filter .= ' AND slider_category="' . $categ . '"';
+            }
 		}
+		if(!is_null($request->input('search_keyword'))){
+            $filter .= ' AND category_name LIKE "%' . $request->input('search_keyword') . '%" ';
+        }
 		$page = $request->input('page', 1);
 		$params = array(
 			'page'		=> $page ,

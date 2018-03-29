@@ -1296,7 +1296,7 @@ border-radius:0;
 .mobilemenulist .navheadimage{position:relative; border-top:1px solid #979797}
 .mobilemenulist .navheadimage a{padding:0;}
 .mobilemenulist .navheadimage img{max-width:100%}
-.mobilemenulist .navheadimage .headingoverlay{position:absolute; padding-left:25px; padding-top:55px; top:0;background: rgba(0, 0, 0, 0.7); width:100%; height:100%; color:#fff;}
+.mobilemenulist .navheadimage .headingoverlay{position:absolute; padding-left:25px; padding-top:55px; top:0;background: rgba(0, 0, 0, 0.2); width:100%; height:100%; color:#fff;}
 .mobilemenulist .mobilesublinks{padding:15px 0 15px 25px;}
 .mobilemenulist .mobilesublinks li{border:0;}
 .mobilemenulist .mobilesublinks li a{padding:5px 0;}
