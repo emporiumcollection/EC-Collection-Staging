@@ -8,6 +8,7 @@
             </div>
         </li>
     	<li class="loginSignPopupButton">
+          
         	<a href="javascript:void(0)" class="clicktologin"><i class="fa fa-lock"></i></a>
             <a href="javascript:void(0)" class="login-user" style="display:block;"><i class="fa fa-user"></i></a>
             <ul class="user-setting">

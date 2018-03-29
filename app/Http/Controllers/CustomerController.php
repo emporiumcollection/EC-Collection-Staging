@@ -966,6 +966,10 @@ return Redirect::to('customer/profile')->with('message', \SiteHelpers::alert('er
 
        $user = User::find(\Session::get('uid'));
        $this->data["guestUserData"]=$user;
+          $this->data['pageTitle'] = "Whoiam User Membership Type Selection";
+        $this->data['pageMetakey'] = "Whoiam User Membership";
+        $this->data['pageMetadesc'] = "Whoiam User Membership";
+        
        return view('customer.whoiam', $this->data);
     }
 
