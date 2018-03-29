@@ -498,5 +498,14 @@ class PropertyController extends Controller {
         exit;
     }
 
+    public function getSearchPropertyAjax(Request $request){
+        $this->data['properties'] = array();
+        $this->data['total_record'] = 50;
+        $this->data['record_per_page'] =  20;
+        $this->data['total_pages'] = 3;
+
+
+        return response()->json($this->data);
+    }
 
 }
