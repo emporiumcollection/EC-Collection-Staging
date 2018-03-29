@@ -191,6 +191,7 @@ class CategoriesController extends Controller {
 				}
 			}
 			$data['category_youtube_channel_url'] = Input::get('category_youtube_channel_url');
+            $data['category_instagram_tag'] = Input::get('category_instagram_tag');
 			$data['category_instagram_channel'] = Input::get('category_instagram_channel');
 			$data['category_alias'] = $alias;
 			$data['user_id'] = $uid;

@@ -90,6 +90,8 @@
 						<td>{{ $row->slider_title }}</td>
 						<td>{!! $row->slider_description !!}</td>
 						<td>{{ $row->slider_link }}</td>
+						<td>{{ $row->created }}</td>
+						<td>{{ $row->updated }}</td>
 						<td>
 							@if($row->slider_status==1)
 								<a  href="#" class="tips btn btn-xs btn-success" title="Click to Disable " onclick="change_option(this,'slider_status','{{$row->id}}',0);"><i class="fa fa-check "></i></a>
@@ -97,7 +99,7 @@
 								<a  href="#" class="tips btn btn-xs btn-danger" title="Click to enable " onclick="change_option(this,'slider_status','{{$row->id}}',1);"><i class="fa fa-times "></i></a>
 							@endif
 						</td>
-						
+
 					 <td>
 							@if($access['is_detail'] ==1)
 							<a href="{{ URL::to('slider/show/'.$row->id.'?return='.$return)}}" class="tips btn btn-xs btn-primary" title="{{ Lang::get('core.btn_view') }}"><i class="fa  fa-search "></i></a>

@@ -45,7 +45,7 @@ class SliderController extends Controller {
 			return Redirect::to('dashboard')
 				->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus','error');
 
-		$sort = (!is_null($request->input('sort')) ? $request->input('sort') : 'id'); 
+		$sort = (!is_null($request->input('sort')) ? $request->input('sort') : 'updated');
 		$order = (!is_null($request->input('order')) ? $request->input('order') : 'asc');
 		// End Filter sort and order for query 
 		// Filter Search for query		
