@@ -19,6 +19,7 @@ class RestaurantFrontController extends Controller {
 
 	public function propertyRestrurant( Request $request )
 	{
+		$this->data['pagetitle'] = 'restrurants';
 		return view('frontend.themes.emporium.properties.resto', $this->data);
 	}
 
