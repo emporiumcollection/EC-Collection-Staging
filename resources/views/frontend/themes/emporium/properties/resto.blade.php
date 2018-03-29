@@ -308,7 +308,7 @@
 												<h1><span>Restaurant</span></h1>
 												<h2>{{$resturantArr[1]->title}}</h2>
 												<div class="mCustomScrollbar" data-mcs-theme="minimal-dark">
-													<p> {{$resturantArr[1]->desciription}</p>
+													<p> {{$resturantArr[1]->desciription}}</p>
 													@if(array_key_exists('datamenu',$resturantArr[1]))
 														<div class="foodemenu">
 															<p>View Menus:<br/>
@@ -464,7 +464,7 @@
 												<h1><span>Bar</span></h1>
 												<h2>{{$barsArr[1]->title}}</h2>
 												<div class="mCustomScrollbar" data-mcs-theme="minimal-dark">
-													<p> {{$barsArr[1]->desciription}</p>
+													<p> {{$barsArr[1]->desciription}}</p>
 													@if(array_key_exists('datamenu',$barsArr[1]))
 														<div class="foodemenu">
 															<p>View Menus:<br/>
