@@ -7,18 +7,18 @@
 @section('meta_description', '')
 {{-- For Page's Content Part --}}
 @section('content')
-	@if(!empty($resturantArr))
+	@if(!empty($barsArr))
 		{{--*/ $clsact = ''; /*--}}
 		<!-- Restaurant slider starts here -->
 		<section class="sliderSection restaurantSliderSec">
 		  <div id="restaurantSlider" class="carousel" data-ride="carousel">
 			<div class="carousel-inner">
-				@if(array_key_exists('dataslider',$resturantArr[0]))
+				@if(array_key_exists('dataslider',$barsArr[0]))
 					{{--*/ $clsact = ($clsact=='') ? 'active' : ''; /*--}}
-				  <div class="item {{$clsact}}" style="background:url('{{$resturantArr[0]->dataslider}}') center center no-repeat; background-size:cover;">
+				  <div class="item {{$clsact}}" style="background:url('{{$barsArr[0]->dataslider}}') center center no-repeat; background-size:cover;">
 					<div class="carousel-caption">
-					  <h1>{{$resturantArr[0]->title}}</h1>
-					  <p>{{$resturantArr[0]->usp_text}}</p>
+					  <h1>{{$barsArr[0]->title}}</h1>
+					  <p>{{$barsArr[0]->usp_text}}</p>
 					  <button type="button" class="button viewGalleryBtn">View Gallery</button>
 					</div>
 				  </div>
@@ -37,29 +37,29 @@
 		</section>
 	@endif
 
-	@if(!empty($resturantArr[0]))
-		@if(array_key_exists('datagallery',$resturantArr[0]))
+	@if(!empty($barsArr[0]))
+		@if(array_key_exists('datagallery',$barsArr[0]))
 			<section id="restaurant1" class="hotelSliderSection">
 				<div class="container-fluid">
 					<div class="hotelSliderwrapper">
 						<div class="owl-carousel hotelSlider1 owl-theme">
-							@if(!empty($resturantArr[0]->datagallery))
-								@foreach($resturantArr[0]->datagallery as $resdatagallery)
+							@if(!empty($barsArr[0]->datagallery))
+								@foreach($barsArr[0]->datagallery as $resdatagallery)
 									<div class="item">
 										<div class="sliderimage">
-											<img src="{{$resturantArr[0]->datagallerypath.$resdatagallery->file_name}}" alt="image" class="img-responsive"/>
+											<img src="{{$barsArr[0]->datagallerypath.$resdatagallery->file_name}}" alt="image" class="img-responsive"/>
 										</div>
 										<div class="hotelSliderContentImage">
 											<div class="hotelSliderContent">
-												<h1><span>Restaurant</span></h1>
-												<h2>{{$resturantArr[0]->title}}</h2>
+												<h1><span>Bar</span></h1>
+												<h2>{{$barsArr[0]->title}}</h2>
 												<div class="mCustomScrollbar" data-mcs-theme="minimal-dark">
-													<p> {{$resturantArr[0]->desciription}}</p>
-													@if(array_key_exists('datamenu',$resturantArr[0]))
+													<p> {{$barsArr[0]->desciription}}</p>
+													@if(array_key_exists('datamenu',$barsArr[0]))
 														<div class="foodemenu">
 															<p>View Menus:<br/>
-															@if(!empty($resturantArr[0]->datamenu))
-																@foreach($resturantArr[0]->datamenu as $resdatamenu)
+															@if(!empty($barsArr[0]->datamenu))
+																@foreach($barsArr[0]->datamenu as $resdatamenu)
 																	<a href="{{$resturantArr[0]->datamenupath.$resdatamenu->file_name}}" target="_self" download="{{$resdatamenu->file_name}}">{{$resdatamenu->file_display_name}}</a>
 																@endforeach
 															@endif
@@ -67,7 +67,7 @@
 														</div>
 													@endif
 												</div>
-												<p class="text-center"><a href="javascript:void(0)">Reservation</a> | <a class="contactUsPopup contactPopupOne" href="javascript:void(0);">Contact Us</a></p>
+												<p class="text-center"><a href="javascript:void(0)">Bar</a> | <a class="contactUsPopup contactPopupOne" href="javascript:void(0);">Contact Us</a></p>
 											</div>
 										</div>
 									</div>
