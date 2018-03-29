@@ -185,62 +185,6 @@ $(function() {
 
 
 
-
-
-$(".searchourcollectonlink").click(function(){
-	$(".mobilemainnav, .searchbydatenav, .selectdestinationnav, .searchourcollecton").removeClass("openmobilemenu");
-	$(".searchourcollectonnav").addClass("openmobilemenu");
-})
-
-$("#searchbydate").click(function(){
-	$(".mobilemainnav, .searchourcollectonnav, .selectdestinationnav, .searchourcollectonnav, .selectexperiencenav").removeClass("openmobilemenu");
-	$(".searchbydatenav").addClass("openmobilemenu");
-})
-
-$(".backtohomelink").click(function(){
-	$(".mobilemainnav").addClass("openmobilemenu");
-	$(".searchbydatenav, .searchourcollectonnav, .selectdestinationnav, .searchourcollectonnav, .selectexperiencenav, .companynav, .selectafricanav, .restaurantnav, .searchbyfilternav, .destinationresultnav").removeClass("openmobilemenu");
-})
-
-$("#selectdestination").click(function(){
-	$(".mobilemainnav, .searchbydatenav, .searchourcollectonnav, .searchourcollectonnav, .selectexperiencenav").removeClass("openmobilemenu");
-	$(".selectdestinationnav").addClass("openmobilemenu");
-})
-
-$("#selectafrica").click(function(){
-	$(".selectafricanav").addClass("openmobilemenu");
-	$(".mobilemainnav, .searchbydatenav, .searchourcollectonnav, .selectdestinationnav, .selectexperiencenav").removeClass("openmobilemenu");
-})
-
-$("#selectafricanavchild").click(function(){
-	$(".selectafricanavchild").addClass("openmobilemenu");
-	$(".mobilemainnav, .searchbydatenav, .searchourcollectonnav, .selectdestinationnav, .selectexperiencenav, .selectafricanav").removeClass("openmobilemenu");
-})
-
-$("#selectexperience").click(function(){
-	$(".mobilemainnav, .searchbydatenav, .searchourcollectonnav, .selectdestinationnav, .selectafricanav").removeClass("openmobilemenu");
-	$(".selectexperiencenav").addClass("openmobilemenu");
-})
-
-$("#companynav").click(function(){
-	$(".mobilemainnav, .searchbydatenav, .searchourcollectonnav, .selectdestinationnav, .selectexperiencenav, .selectafricanav").removeClass("openmobilemenu");
-	$(".companynav").addClass("openmobilemenu");
-})
-
-$(".searchbyfilter").click(function(){
-	$(".mobilemainnav, .searchbydatenav, .searchourcollectonnav, .selectdestinationnav, .selectexperiencenav, .selectafricanav").removeClass("openmobilemenu");
-	$(".searchbyfilternav").addClass("openmobilemenu");
-})
-
-$(".backtodestinationnav").click(function(){
-	$(".selectdestinationnav").addClass("openmobilemenu");
-	$(".searchbydatenav, .selectafricanav").removeClass("openmobilemenu");
-})
-
-$(".backtoselectafricanav").click(function(){
-	$(".selectafricanav").addClass("openmobilemenu");
-	$(".searchbydatenav, .selectafricanavchild").removeClass("openmobilemenu");
-})
 // RESTAURANT NAV 
 
 $(".restaurantnavlink").click(function(){
@@ -411,18 +355,7 @@ $(".registerSecForMob").click(function() {
 });
 
 
-$(".searchOurCollectonButton").click(function(){
-	$('.searchOurCollectonpopup').addClass('openPopup');
-});
-$(".searchByDateButton").click(function(){
-	 $('.searchByDatePopup').addClass('openPopup');
-});
-$(".yourdestinationpopupButton").click(function(){
-	$('.yourdestinationpopup').addClass('openPopup');
-});
-$(".yourexperiencepopupButton").click(function(){
-	$('.yourexperiencepopup').addClass('openPopup');
-});
+
 $(".galleryImgBtn").click(function(){
   $('.galleryImgPopup').addClass('openPopup');
 });
@@ -511,26 +444,6 @@ $("body").on("click",".contentCirsclePopupBtn",function(){
       $('body').css("padding-right","");     
   });
 
-
-
-/*********Video Poster Play********/
-var v = document.getElementById('videoPoster');
-v.addEventListener(
-    'play', 
-    function() { 
-        v.play();
-    }, 
-    false);
-
-v.onclick = function() {
-    if (v.paused) {
-        v.play();
-    } else {
-        v.pause();
-    }
-
-    return false;
-};
 
 
 
