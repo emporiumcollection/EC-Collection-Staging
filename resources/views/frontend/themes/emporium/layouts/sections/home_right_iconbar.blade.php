@@ -8,8 +8,8 @@
             </div>
         </li>
     	<li class="loginSignPopupButton">
-        	<a href="javascript:void(0)" class="clicktologin" style="display:none;"><i class="fa fa-lock"></i></a>
-            <a href="javascript:void(0)" class="login-user"><i class="fa fa-user"></i></a>
+        	<a href="javascript:void(0)" class="clicktologin" ><i class="fa fa-lock"></i></a>
+            <a href="javascript:void(0)" class="login-user" style="display:none;"><i class="fa fa-user"></i></a>
             <ul class="user-setting">
             	<li><a href="javascript:void(0)">Profile</a></li>
                 <li><a href="javascript:void(0)">Change Possword</a></li>

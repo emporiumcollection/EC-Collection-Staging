@@ -25,3 +25,42 @@
 .mobilemenulist li a.menu_item{    float: left;
     width: 80%;}
 a.external-link{ float: right;width:20%; text-align: center;}
+
+
+#error-msg {
+  color: red;
+}
+#valid-msg {
+  color: #00C900;
+}
+input.error {
+  border: 1px solid #FF7C7C;
+}
+
+.ai-forgot-password-form-error-msg {
+    color: #ffec0cf2;
+    font-size: 15px;
+    margin-top: 5px;
+}
+.ai-sign-up-form-error-msg {
+    color: #ffec0cf2;
+    font-size: 15px;
+    margin-top: 5px;
+}
+.ai-forgot-password-form-success-msg {
+    color: #ffec0cf2;
+    font-size: 15px;
+}
+.ai-login-form-success-msg {
+    color: #0d870d;
+    font-size: 15px;
+}
+.ai-sign-up-form-success-msg {
+    color: #0d870d;
+    font-size: 15px;
+}
+.ai-login-form-error-msg {
+    color: #ffec0cf2;
+    font-size: 15px;
+    margin-top: 5px;
+}

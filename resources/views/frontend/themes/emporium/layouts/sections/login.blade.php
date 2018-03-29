@@ -18,15 +18,21 @@
                <img src="{{ asset('themes/emporium/images/angel-fernandez-alonso-220762.jpg')}}" alt="Images">
                <div class="loginFormDiv">
                   <h2>LOGIN WITH <br>YOUR ACCOUNT</h2>
-                  <form>
+
+                 <div class="ai-login-form-success-msg"></div>
+                 <div class="ai-login-form-error-msg"></div>
+                 <form  action="{{URL::to('customer/signin')}}" id="loginFormAction" method="POST">
+                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                      <div class="form-group">
-                        <input class="form-control" type="text" placeholder="Email Address">
+                        <input class="form-control" name="email" type="text" placeholder="Email Address" required="email" />
+                        
                      </div>
                      <div class="form-group">
                         <a class="forgetPassBtn" href="javascript:void(0);">FORGOT?</a>
-                        <input class="form-control" type="password" placeholder="Password">
+                       
+                        <input class="form-control" name="password" placeholder="Password" type="password" required="true" >
                      </div>
-                     <button class="button" type="button">Log In</button>
+                     <button class="button" type="submit">Log In</button>
                   </form>
                </div>
             </div>
@@ -36,17 +42,24 @@
                <img src="{{ asset('themes/emporium/images/matthew-kane-365718.jpg')}}" alt="Images">
                <div class="loginFormDiv">
                   <h3>CREATE YOUR ACCOUNT PASSWORD</h3>
-                  <form>
+                  <div class="ai-sign-up-form-error-msg"></div>
+                  <div class="ai-sign-up-form-success-msg"></div>
+                  <form  action="{{ url('customer/create')}}" method="POST" id="customerRegisterarioForm">
                      <div class="form-group">
-                        <input class="form-control" type="text" placeholder="Email Address">
+                        <input class="form-control" name="email" type="text" placeholder="Email Address">
+                        
                      </div>
                      <div class="form-group">
-                        <input class="form-control" type="text" placeholder="(201) 555-0123">
+                        <input type="hidden" id="txtmobileDialcode" name="txtmobileDialcode">
+                        <input class="form-control"  name="txtmobileNumber" id="txtmobileNumber" type="tel" >
+                      <span id="valid-msg" class="hide">✓ Valid</span>
+                       <span id="error-msg" class="hide">Invalid number</span>
                      </div>
                      <div class="form-group">
-                        <input class="form-control" type="password" placeholder="Password">
+                        
+                        <input class="form-control" name="password" type="password" placeholder="Password">
                      </div>
-                     <button class="button" type="button">Submit</button>
+                     <button class="button" type="submit">Submit</button>
                   </form>
                </div>
             </div>
@@ -56,12 +69,20 @@
                <img src="{{ asset('themes/emporium/images/Kootenay-Aurora-1-X3.jpg')}}" alt="Images">
                <div class="loginFormDiv">
                   <h3>FORGOT YOUR <br>PASSWORD</h3>
-                  <form>
+
+
+                  <div class="ai-forgot-password-form-success-msg"></div>
+                  <div class="ai-forgot-password-form-error-msg"></div>                             
+                                    
+                                   
+                  <form id="frmForgotPassword" action="{{ url('customer/request')}}" method="POST">
+                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                      <p>Enter your email and you will get Instructions to reset your password</p>
                      <div class="form-group">
-                        <input class="form-control" type="text" placeholder="Email Address">
+                        <input class="form-control" name="credit_email" type="text" placeholder="Email Address" required>
+                        
                      </div>
-                     <button class="button" type="button">Submit</button>
+                     <button class="button" type="submit">Submit</button>
                   </form>
                </div>
             </div>

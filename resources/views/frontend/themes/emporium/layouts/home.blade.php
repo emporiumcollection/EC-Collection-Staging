@@ -37,6 +37,9 @@
     @section('custom_css')
         @parent
         <link href="{{ asset('themes/emporium/css/custom.css') }}" rel="stylesheet">
+        <link href="{{ asset('sximo/assets/css/intlTelInput.css') }}" rel="stylesheet">
+
+       
     @show
 
 </head>
@@ -113,10 +116,129 @@
     <script src="{{ asset('themes/emporium/js/custom/experience.js') }}"></script>
     <script src="{{ asset('themes/emporium/js/custom/left_search.js') }}"></script>
     <script src="{{ asset('themes/emporium/js/custom/common.js') }}"></script>
+    <script src="{{ asset('sximo/assets/js/intlTelInput.js')}}" type="text/javascript"></script>
 @show
 {{-- For embed custom javascript code and files  --}}
 @section('custom_js')
     @parent
+
+
+<script type="text/javascript">
+ $(document).ready(function () {
+
+    /*Login BUTTON  Click Action Here*/
+         $("#loginFormAction").submit(function( event ) {
+            event.preventDefault();
+            
+            $(".ai-sign-up-form-error-msg").html( '' );
+            $(".ai-login-form-success-msg").html( '' );
+            
+            var formData = $(this).serialize();
+            
+            $.ajax({
+                url: "{{URL::to('customer_ajaxPostSignin')}}",
+                type: "POST",
+                dataType: "json",
+                data: formData,
+                success: function (data, textStatus, jqXHR) {
+                    if(data.status == 'success') {
+                        window.location.href = "{{URL::to('customer/profile')}}";
+                    }
+                    else {
+                        var message = data.message;
+                        for(var i = 0; i < data.errors.length; i++) {
+                            message += '<br>' + data.errors[i];
+                        }
+                        $(".ai-login-form-error-msg").html( message );
+                    }
+                }
+            });
+        });
+    /*End Login BUTTON  Click Action Here*/
+
+     /*Register BUTTON  Click Start Action Here*/
+
+            $("#customerRegisterarioForm").submit(function( event ){        
+
+
+                var countryData = $("#txtmobileNumber").intlTelInput("getSelectedCountryData");
+
+                var error = $("#txtmobileNumber").intlTelInput("getValidationError");
+                var isValid = $("#txtmobileNumber").intlTelInput("isValidNumber");
+
+                if(isValid){
+                    $("#txtmobileDialcode").val(countryData.dialCode);
+                }else{
+                    return false
+                }
+            event.preventDefault();
+            
+            $(".ai-sign-up-form-success-msg").html( '' );
+            $(".ai-sign-up-form-error-msg").html( '' );
+            $(".ai-login-form-success-msg").html( '' );
+            
+            var formData = $(this).serialize();
+            
+            $.ajax({
+                url: "{{URL::to('customer_ajaxPostCreate')}}",
+                type: "POST",
+                dataType: "json",
+                data: formData,
+                success: function (data, textStatus, jqXHR) {
+
+                   
+                    if(data.status == 'success') {
+                        $(".ai-sign-up-form-success-msg").html( data.message );
+                         window.location.href = "{{URL::to('whoiam')}}";
+                    }
+                    else {
+                        var message = data.message;
+                        for(var i = 0; i < data.errors.length; i++) {
+                            message += '<br>' + data.errors[i];
+                        }
+                        $(".ai-sign-up-form-error-msg").html( message );
+                    }
+                }
+            });
+        });
+
+       /*End Register BUTTON  Click Start Action Here*/     
+        
+    });
+
+
+
+
+var telInput = $("#txtmobileNumber"),
+errorMsg = $("#error-msg"),
+validMsg = $("#valid-msg");
+// initialise plugin
+telInput.intlTelInput({
+utilsScript: "{{ asset('sximo/assets/js/utils.js')}}"
+});
+
+var reset = function() {
+telInput.removeClass("error");
+errorMsg.addClass("hide");
+validMsg.addClass("hide");
+};
+
+// on blur: validate
+telInput.blur(function() {
+reset();
+if ($.trim(telInput.val())) {
+if (telInput.intlTelInput("isValidNumber")) {
+validMsg.removeClass("hide");
+} else {
+telInput.addClass("error");
+errorMsg.removeClass("hide");
+}
+}
+});
+
+// on keyup / change flag: reset
+telInput.on("keyup change", reset);
+ </script>
 
 @show
 </body>
