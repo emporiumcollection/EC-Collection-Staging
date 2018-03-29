@@ -72,7 +72,7 @@
 		</section>
 	@endif
 
-	@if(!empty($resturantArr[0])
+	@if(!empty($resturantArr[0]))
 		@if(array_key_exists('datagallery',$resturantArr[0]))
 			<section id="restaurant1" class="hotelSliderSection">
 				<div class="container-fluid">
@@ -290,7 +290,7 @@
 	</div>
 	</section>
 
-	@if(!empty($resturantArr[1])
+	@if(!empty($resturantArr[1]))
 		@if(array_key_exists('datagallery',$resturantArr[1]))
 			<!-- Restaurant slider 2 starts here -->
 			<section id="restaurant2" class="hotelSliderSection rightSideSlider">
@@ -353,7 +353,7 @@
 	<!-- Video Section END here -->
 
 
-	@if(!empty($resturantArr[2])
+	@if(!empty($resturantArr[2]))
 		@if(array_key_exists('datagallery',$resturantArr[2]))
 			<!-- Restaurant slider 3 starts here -->
 			<section id="restaurant3" class="hotelSliderSection fullWidthSlider">
@@ -398,7 +398,7 @@
 		@endif
 	@endif
 
-	@if(!empty($barsArr[0])
+	@if(!empty($barsArr[0]))
 		@if(array_key_exists('datagallery',$barsArr[0]))
 			<!-- BAR SECTION starts here -->
 			<section id="bar1" class="hotelSliderSection rightSideSlider">
@@ -446,7 +446,7 @@
 		@endif
 	@endif
 	
-	@if(!empty($barsArr[1])
+	@if(!empty($barsArr[1]))
 		@if(array_key_exists('datagallery',$barsArr[1]))
 			<!-- Restaurant slider 2 starts here -->
 			<section id="restaurant2" class="hotelSliderSection rightSideSlider">
@@ -494,7 +494,7 @@
 		@endif
 	@endif
 	
-	@if(!empty($barsArr[2])
+	@if(!empty($barsArr[2]))
 		@if(array_key_exists('datagallery',$barsArr[2]))
 			<!-- Restaurant slider 3 starts here -->
 			<section id="restaurant3" class="hotelSliderSection fullWidthSlider">
@@ -539,7 +539,7 @@
 		@endif
 	@endif
 	
-	@if(!empty($spasArr[0])
+	@if(!empty($spasArr[0]))
 		@if(array_key_exists('datagallery',$spasArr[0]))
 			<!-- BAR SECTION starts here -->
 			<section id="bar1" class="hotelSliderSection rightSideSlider">
