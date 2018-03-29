@@ -42,8 +42,12 @@
 			@if($access['is_excel'] ==1)
 			<a href="{{ URL::to('categories/download?return='.$return) }}" class="tips btn btn-sm btn-white" title="{{ Lang::get('core.btn_download') }}">
 			<i class="fa fa-download"></i>&nbsp;{{ Lang::get('core.btn_download') }} </a>
-			@endif			
-		 
+			@endif
+
+
+					<input class="pull-right"  placeholder="Search" type="text" name="search_keyword"  >
+
+
 		</div> 		
 
 	
@@ -141,6 +145,13 @@ $(document).ready(function(){
 	$('.do-quick-search').click(function(){
 		$('#SximoTable').attr('action','{{ URL::to("categories/multisearch")}}');
 		$('#SximoTable').submit();
+	});
+
+	$('input[name="search_keyword"]').keypress(function(e) {
+		// Enter pressed?
+		if(e.which == 10 || e.which == 13) {
+			location.href='{{url('slider')}}?categories=slider_title:like:'+$(this).val();
+		}
 	});
 	
 });	
