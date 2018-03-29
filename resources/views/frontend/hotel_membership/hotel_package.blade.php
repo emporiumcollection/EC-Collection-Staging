@@ -87,7 +87,7 @@
 
             {{--*/ $k=0; $tottyp = count($packages); /*--}}
              @foreach($packages as $key=>$package)
-           <div style="background-image: url(images/package-slider-img-1.jpg);" @if($k==0) class="item active" @else class="item" @endif>
+           <div style="background-image: url({{URL::to('uploads/packages/'.$package->package_image)}});" @if($k==0) class="item active" @else class="item" @endif>
              <div class="carousalCaption">
                <h3>{{$package->package_title}}</h3>
                <h2>Price: {!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($package->package_price,2) }}</h2>
@@ -118,7 +118,7 @@
               <ol class="carousel-indicators">
             {{--*/ $klist=0; $tottyp = count($packages); /*--}}
              @foreach($packages as $key=>$package)
-              <li data-target="#HamYardHotelSlider" data-slide-to="{{$klist}}" @if($klist==0) class="active" @endif><img src="images/package-slider-img-1.jpg" alt="Image"></li>             
+              <li data-target="#HamYardHotelSlider" data-slide-to="{{$klist}}" @if($klist==0) class="active" @endif><img src="{{URL::to('uploads/packages/'.$package->package_image)}}" alt="Image"></li>             
 
               {{--*/ $klist++; /*--}}
                                                 
