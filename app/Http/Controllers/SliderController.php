@@ -56,9 +56,7 @@ class SliderController extends Controller {
                 $filter .= ' AND slider_category="' . $categ . '"';
             }
 		}
-		if(!is_null($request->input('search_keyword'))){
-            $filter .= ' AND category_name LIKE "%' . $request->input('search_keyword') . '%" ';
-        }
+
 		$page = $request->input('page', 1);
 		$params = array(
 			'page'		=> $page ,

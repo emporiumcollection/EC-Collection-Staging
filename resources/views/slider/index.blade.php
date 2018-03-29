@@ -44,11 +44,8 @@
 			<i class="fa fa-download"></i>&nbsp;{{ Lang::get('core.btn_download') }} </a>
 			@endif			
 		 
-		</div> 		
+		</div>
 
-	
-	
-	 {!! Form::open(array('url'=>'slider/delete/', 'class'=>'form-horizontal' ,'id' =>'SximoTable' )) !!}
 		<div class="row"  style="padding-bottom: 10px;">
 			<div class="col-sm-8 ">
 				<select name='slider_category' id='slider_category' class="select2" onchange="fetchslidercategory(this.value);" >
@@ -61,9 +58,14 @@
 				</select>
 			</div>
 			<div class="col-sm-4 text-right ">
-				<input class=""  placeholder="Search" type="text" name="search_keyword"  >
+
+					<input class=""  placeholder="Search" type="text" name="search_keyword"  >
+
 			</div>
 		</div>
+
+	 {!! Form::open(array('url'=>'slider/delete/', 'class'=>'form-horizontal' ,'id' =>'SximoTable' )) !!}
+
 
 
 
@@ -143,7 +145,7 @@ $(document).ready(function(){
 	$('input[name="search_keyword"]').keypress(function(e) {
 		// Enter pressed?
 		if(e.which == 10 || e.which == 13) {
-			$('#SximoTable').submit();
+			location.href='{{url('slider')}}?search=slider_title:like:'+$(this).val();
 		}
 	});
 	
