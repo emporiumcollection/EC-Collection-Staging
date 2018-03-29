@@ -450,11 +450,11 @@
 }
 .parsley-required{
 
-    padding: 15px;
-    margin-bottom: 20px;
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     border: 1px solid transparent;
-    border-radius: 4px;
-
+    border-radius: 2px;
     color: #a94442;
     background-color: #f2dede;
     border-color: #ebccd1;
