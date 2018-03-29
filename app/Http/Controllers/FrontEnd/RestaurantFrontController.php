@@ -41,38 +41,133 @@ class RestaurantFrontController extends Controller {
 						$fetchressliderfolder = \DB::table('tb_container')->join('tb_frontend_container', 'tb_frontend_container.container_id', '=', 'tb_container.id')->select('id')->where('tb_container.parent_id', $resfile->folder_id)->where('tb_container.name', 'slider')->where('tb_frontend_container.container_type', 'folder')->first();
 						if(!empty($fetchressliderfolder))
 						{
-							$fetchressliderfiles = \DB::table('tb_container_files')->join('tb_frontend_container', 'tb_frontend_container.container_id', '=', 'tb_container_files.id')->where('tb_container_files.folder_id', $fetchressliderfolder->id)->where('tb_frontend_container.container_type', 'file')->get();
+							$fetchressliderfiles = \DB::table('tb_container_files')->join('tb_frontend_container', 'tb_frontend_container.container_id', '=', 'tb_container_files.id')->select('tb_container_files.folder_id','tb_container_files.file_name')->where('tb_container_files.folder_id', $fetchressliderfolder->id)->where('tb_frontend_container.container_type', 'file')->orderBy('tb_container_files.file_sort_num','asc')->first();
 							if(!empty($fetchressliderfiles))
 							{
-								$resturantArr[$rf]->dataslider = $fetchressliderfiles;
+								$resturantArr[$rf]->dataslider = (new ContainerController)->getThumbpath($fetchressliderfiles->folder_id).$fetchressliderfiles->file_name;
 							}
 						}
 						
 						$fetchresgalleryfolder = \DB::table('tb_container')->join('tb_frontend_container', 'tb_frontend_container.container_id', '=', 'tb_container.id')->select('id')->where('tb_container.parent_id', $resfile->folder_id)->where('tb_container.name', 'gallery')->where('tb_frontend_container.container_type', 'folder')->first();
 						if(!empty($fetchresgalleryfolder))
 						{
-							$fetchresgalleryfiles = \DB::table('tb_container_files')->join('tb_frontend_container', 'tb_frontend_container.container_id', '=', 'tb_container_files.id')->where('tb_container_files.folder_id', $fetchresgalleryfolder->id)->where('tb_frontend_container.container_type', 'file')->get();
+							$fetchresgalleryfiles = \DB::table('tb_container_files')->join('tb_frontend_container', 'tb_frontend_container.container_id', '=', 'tb_container_files.id')->where('tb_container_files.folder_id', $fetchresgalleryfolder->id)->where('tb_frontend_container.container_type', 'file')->orderBy('tb_container_files.file_sort_num','asc')->get();
 							if(!empty($fetchresgalleryfiles))
 							{
 								$resturantArr[$rf]->datagallery = $fetchresgalleryfiles;
+								$resturantArr[$rf]->datagallerypath = (new ContainerController)->getThumbpath($fetchresgalleryfolder->id);
 							}
 						}
 						
 						$fetchresmenufolder = \DB::table('tb_container')->join('tb_frontend_container', 'tb_frontend_container.container_id', '=', 'tb_container.id')->select('id')->where('tb_container.parent_id', $resfile->folder_id)->where('tb_container.name', 'menu')->where('tb_frontend_container.container_type', 'folder')->first();
 						if(!empty($fetchresmenufolder))
 						{
-							$fetchresmenufiles = \DB::table('tb_container_files')->join('tb_frontend_container', 'tb_frontend_container.container_id', '=', 'tb_container_files.id')->where('tb_container_files.folder_id', $fetchresmenufolder->id)->where('tb_frontend_container.container_type', 'file')->get();
+							$fetchresmenufiles = \DB::table('tb_container_files')->join('tb_frontend_container', 'tb_frontend_container.container_id', '=', 'tb_container_files.id')->where('tb_container_files.folder_id', $fetchresmenufolder->id)->where('tb_frontend_container.container_type', 'file')->orderBy('tb_container_files.file_sort_num','asc')->get();
 							if(!empty($fetchresmenufiles))
 							{
 								$resturantArr[$rf]->datamenu = $fetchresmenufiles;
+								$resturantArr[$rf]->datamenupath = (new ContainerController)->getThumbpath($fetchresmenufolder->id);
 							}
 						}
+						$rf++;
+					}
+				}
+			}
+			
+			if($props->bar_ids!='')
+			{
+				$baridArr = explode(',',$props->bar_ids);
+				$barfileArr = \DB::table('tb_images_res_spa_bar')->join('tb_bars', 'tb_bars.id', '=', 'tb_images_res_spa_bar.parent_id')->select('tb_bars.*', 'tb_images_res_spa_bar.parent_id', 'tb_images_res_spa_bar.folder_id', 'tb_images_res_spa_bar.type')->whereIn('tb_images_res_spa_bar.parent_id', $residArr)->where('tb_images_res_spa_bar.type', 'bar')->get();
+				if(!empty($barfileArr))
+				{
+					$bf=0;
+					foreach($barfileArr as $barfile)
+					{
+						$barsArr[$bf] = $barfile;
+						$fetchbarsliderfolder = \DB::table('tb_container')->join('tb_frontend_container', 'tb_frontend_container.container_id', '=', 'tb_container.id')->select('id')->where('tb_container.parent_id', $barfile->folder_id)->where('tb_container.name', 'slider')->where('tb_frontend_container.container_type', 'folder')->first();
+						if(!empty($fetchbarsliderfolder))
+						{
+							$fetchbarsliderfiles = \DB::table('tb_container_files')->join('tb_frontend_container', 'tb_frontend_container.container_id', '=', 'tb_container_files.id')->select('tb_container_files.folder_id','tb_container_files.file_name')->where('tb_container_files.folder_id', $fetchbarsliderfolder->id)->where('tb_frontend_container.container_type', 'file')orderBy('tb_container_files.file_sort_num','asc')->first();
+							if(!empty($fetchbarsliderfiles))
+							{
+								$barturantArr[$bf]->dataslider = (new ContainerController)->getThumbpath($fetchbarsliderfiles->folder_id).$fetchbarsliderfiles->file_name;
+							}
+						}
+						
+						$fetchbargalleryfolder = \DB::table('tb_container')->join('tb_frontend_container', 'tb_frontend_container.container_id', '=', 'tb_container.id')->select('id')->where('tb_container.parent_id', $barfile->folder_id)->where('tb_container.name', 'gallery')->where('tb_frontend_container.container_type', 'folder')->first();
+						if(!empty($fetchbargalleryfolder))
+						{
+							$fetchbargalleryfiles = \DB::table('tb_container_files')->join('tb_frontend_container', 'tb_frontend_container.container_id', '=', 'tb_container_files.id')->where('tb_container_files.folder_id', $fetchbargalleryfolder->id)->where('tb_frontend_container.container_type', 'file')->get();
+							if(!empty($fetchbargalleryfiles))
+							{
+								$barturantArr[$bf]->datagallery = $fetchbargalleryfiles;
+							}
+						}
+						
+						$fetchbarmenufolder = \DB::table('tb_container')->join('tb_frontend_container', 'tb_frontend_container.container_id', '=', 'tb_container.id')->select('id')->where('tb_container.parent_id', $barfile->folder_id)->where('tb_container.name', 'menu')->where('tb_frontend_container.container_type', 'folder')->first();
+						if(!empty($fetchbarmenufolder))
+						{
+							$fetchbarmenufiles = \DB::table('tb_container_files')->join('tb_frontend_container', 'tb_frontend_container.container_id', '=', 'tb_container_files.id')->where('tb_container_files.folder_id', $fetchbarmenufolder->id)->where('tb_frontend_container.container_type', 'file')->get();
+							if(!empty($fetchbarmenufiles))
+							{
+								$barsArr[$bf]->datamenu = $fetchbarmenufiles;
+							}
+						}
+						$bf++;
+					}
+				}
+			}
+			
+			if($props->spa_ids!='')
+			{
+				$spaidArr = explode(',',$props->spa_ids);
+				$spafileArr = \DB::table('tb_images_res_spa_bar')->join('tb_spas', 'tb_spas.id', '=', 'tb_images_res_spa_bar.parent_id')->select('tb_spas.*', 'tb_images_res_spa_bar.parent_id', 'tb_images_res_spa_bar.folder_id', 'tb_images_res_spa_bar.type')->whereIn('tb_images_res_spa_bar.parent_id', $residArr)->where('tb_images_res_spa_bar.type', 'spa')->get();
+				if(!empty($spafileArr))
+				{
+					$sf=0;
+					foreach($spafileArr as $spafile)
+					{
+						$spasArr[$sf] = $spafile;
+						$fetchspasliderfolder = \DB::table('tb_container')->join('tb_frontend_container', 'tb_frontend_container.container_id', '=', 'tb_container.id')->select('id')->where('tb_container.parent_id', $spafile->folder_id)->where('tb_container.name', 'slider')->where('tb_frontend_container.container_type', 'folder')->first();
+						if(!empty($fetchspasliderfolder))
+						{
+							$fetchspasliderfiles = \DB::table('tb_container_files')->join('tb_frontend_container', 'tb_frontend_container.container_id', '=', 'tb_container_files.id')->select('tb_container_files.folder_id','tb_container_files.file_name')->where('tb_container_files.folder_id', $fetchspasliderfolder->id)->where('tb_frontend_container.container_type', 'file')orderBy('tb_container_files.file_sort_num','asc')->first();
+							if(!empty($fetchspasliderfiles))
+							{
+								$spaturantArr[$sf]->dataslider = (new ContainerController)->getThumbpath($fetchspasliderfiles->folder_id).$fetchspasliderfiles->file_name;
+							}
+						}
+						
+						$fetchspagalleryfolder = \DB::table('tb_container')->join('tb_frontend_container', 'tb_frontend_container.container_id', '=', 'tb_container.id')->select('id')->where('tb_container.parent_id', $spafile->folder_id)->where('tb_container.name', 'gallery')->where('tb_frontend_container.container_type', 'folder')->first();
+						if(!empty($fetchspagalleryfolder))
+						{
+							$fetchspagalleryfiles = \DB::table('tb_container_files')->join('tb_frontend_container', 'tb_frontend_container.container_id', '=', 'tb_container_files.id')->where('tb_container_files.folder_id', $fetchspagalleryfolder->id)->where('tb_frontend_container.container_type', 'file')->get();
+							if(!empty($fetchspagalleryfiles))
+							{
+								$spaturantArr[$sf]->datagallery = $fetchspagalleryfiles;
+							}
+						}
+						
+						$fetchspamenufolder = \DB::table('tb_container')->join('tb_frontend_container', 'tb_frontend_container.container_id', '=', 'tb_container.id')->select('id')->where('tb_container.parent_id', $spafile->folder_id)->where('tb_container.name', 'menu')->where('tb_frontend_container.container_type', 'folder')->first();
+						if(!empty($fetchspamenufolder))
+						{
+							$fetchspamenufiles = \DB::table('tb_container_files')->join('tb_frontend_container', 'tb_frontend_container.container_id', '=', 'tb_container_files.id')->where('tb_container_files.folder_id', $fetchspamenufolder->id)->where('tb_frontend_container.container_type', 'file')->get();
+							if(!empty($fetchspamenufiles))
+							{
+								$spasArr[$sf]->datamenu = $fetchspamenufiles;
+							}
+						}
+						$sf++;
 					}
 				}
 			}
 			
 		}
-		print_r($resturantArr);
+		
+		$this->data['propertiesArr'] = $propertiesArr;
+		$this->data['resturantArr'] = $resturantArr;
+		$this->data['barsArr'] = $barsArr;
+		$this->data['spasArr'] = $spasArr;
 		return view('frontend.themes.emporium.properties.resto', $this->data);
 	}
 
