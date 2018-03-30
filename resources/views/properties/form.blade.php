@@ -319,7 +319,7 @@
                                             <option  value ="0">-- Select Restaurant --</option> 
                                             @foreach($restaurants as $val)
 
-                                            <option  value ="{{$val->id}}" {{(isset($row['restaurantids']) && in_array($val->id,explode(',',$row['restaurantids']))) ? " selected='selected' " : '' }}>{{$val->title}}</option> 						
+                                            <option  value ="{{$val->id}}" {{(isset($row['restaurant_ids']) && in_array($val->id,explode(',',$row['restaurant_ids']))) ? " selected='selected' " : '' }}>{{$val->title}}</option> 						
                                             @endforeach						
                                         </select> 
                                     </div> 
@@ -336,7 +336,7 @@
                                             <option  value ="0">-- Select Bar --</option> 
                                             @foreach($bars as $val)
 
-                                            <option  value ="{{$val->id}}" {{(isset($row['barids']) && in_array($val->id,explode(',',$row['barids']))) ? " selected='selected' " : '' }}>{{$val->title}}</option> 						
+                                            <option  value ="{{$val->id}}" {{(isset($row['bar_ids']) && in_array($val->id,explode(',',$row['bar_ids']))) ? " selected='selected' " : '' }}>{{$val->title}}</option> 						
                                             @endforeach						
                                         </select> 
                                     </div> 
@@ -353,7 +353,7 @@
                                             <option  value ="0">-- Select Spa --</option> 
                                             @foreach($spas as $val)
 
-                                            <option  value ="{{$val->id}}" {{(isset($row['spaids']) && in_array($val->id,explode(',',$row['spaids']))) ? " selected='selected' " : '' }}>{{$val->title}}</option> 						
+                                            <option  value ="{{$val->id}}" {{(isset($row['spa_ids']) && in_array($val->id,explode(',',$row['spa_ids']))) ? " selected='selected' " : '' }}>{{$val->title}}</option> 						
                                             @endforeach						
                                         </select> 
                                     </div> 
