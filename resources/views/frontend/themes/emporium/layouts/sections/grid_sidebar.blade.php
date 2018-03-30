@@ -80,10 +80,12 @@
             </ul>
             <ul class="mobilemenulist hide" data-option="selected-option-list">
             </ul>
-            <div class="bottomlink" data-option="global">Already have an account? <a class="loginSecForMob"
-                                                                                     href="javascript:void(0)">Login</a><br/>or<br/>Don't
-                have Emporium Voyage account <a class="registerSecForMob" href="javascript:void(0)">Register here</a>
-            </div>
+            @if (!Auth::check())
+
+                <div class="bottomlink" data-option="global">Members? <a class="loginSecForMob"
+                                                                         href="javascript:void(0)">Login</a><br/>or<br/>Become a Member <a class="registerSecForMob" href="javascript:void(0)">Register here</a>
+                </div>
+            @endif
             <div class="hide" data-option="search-by-date">
                 <form action="{{url('search')}}" method="get">
                     {{--*/
@@ -170,7 +172,7 @@
                 </form>
             </div>
             <div class="bottomlink text-center hide" data-option="search-by-date">View, Modify or Cancel your
-                Booking<br/> <a href="javascript:void(0)" class="loginSecForMob">Login</a></div>
+                Booking<br/> @if (!Auth::check())<a href="javascript:void(0)" class="loginSecForMob">Login</a>@endif</div>
             <div class="hide" data-option="select-filter">
                 <div class="rangeslidercontainer">
                       <div class="slidecontainer">

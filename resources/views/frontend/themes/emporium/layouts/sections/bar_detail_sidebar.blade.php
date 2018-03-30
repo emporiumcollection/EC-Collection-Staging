@@ -44,6 +44,12 @@
                <li><a href="#instagram-gallery">SPECIAL OCCASIONS</a></li>
                <li><a href="#get-directions">GET DIRECTIONS</a></li>
             </ul>
+            @if (!Auth::check())
+
+                <div class="bottomlink" data-option="global">Members? <a class="loginSecForMob"
+                                                                         href="javascript:void(0)">Login</a><br/>or<br/>Become a Member <a class="registerSecForMob" href="javascript:void(0)">Register here</a>
+                </div>
+            @endif
             <div class="left-carousal">
                 <div id="owl-carousel" class="owl-carousel">
                 

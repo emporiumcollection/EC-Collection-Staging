@@ -24,23 +24,23 @@
                         <ul>
                             <li>
                                 <a class="searchresultdata" href="javascript:void(0)" id="destinationsresult"><i
-                                            class="iconsheet icon-destinations"></i> Destinations <span>(3)</span></a>
+                                            class="iconsheet icon-destinations"></i> Destinations <span>(0)</span></a>
                             </li>
                             <li>
                                 <a class="searchresultdata" href="javascript:void(0)"><i
-                                            class="iconsheet icon-collections"></i> Collections <span>(11)</span></a>
+                                            class="iconsheet icon-collections"></i> Collections <span>(0)</span></a>
                             </li>
                             <li>
                                 <a class="searchresultdata" href="javascript:void(0)"><i
-                                            class="iconsheet icon-restaurant"></i> Restaurant <span>(5)</span></a>
+                                            class="iconsheet icon-restaurant"></i> Restaurant <span>(0)</span></a>
                             </li>
                             <li>
                                 <a class="searchresultdata" href="javascript:void(0)"><i class="iconsheet icon-bar"></i>
-                                    Bar <span>(2)</span></a>
+                                    Bar <span>(0)</span></a>
                             </li>
                             <li>
                                 <a class="searchresultdata" href="javascript:void(0)"><i class="iconsheet icon-spa"></i>
-                                    Spa <span>(2)</span></a>
+                                    Spa <span>(0)</span></a>
                             </li>
                         </ul>
                     </div>
@@ -79,10 +79,12 @@
             </ul>
             <ul class="mobilemenulist hide" data-option="selected-option-list">
             </ul>
-            <div class="bottomlink" data-option="global">Already have an account? <a class="loginSecForMob"
-                                                                                     href="javascript:void(0)">Login</a><br/>or<br/>Don't
-                have Emporium Voyage account <a class="registerSecForMob" href="javascript:void(0)">Register here</a>
+            @if (!Auth::check())
+
+            <div class="bottomlink" data-option="global">Members? <a class="loginSecForMob"
+                                                                                     href="javascript:void(0)">Login</a><br/>or<br/>Become a Member <a class="registerSecForMob" href="javascript:void(0)">Register here</a>
             </div>
+            @endif
             <div class="hide" data-option="search-by-date">
                 <form action="{{url('search')}}" method="get">
                     {{--*/
@@ -169,7 +171,7 @@
                 </form>
             </div>
             <div class="bottomlink text-center hide" data-option="search-by-date">View, Modify or Cancel your
-                Booking<br/> <a href="javascript:void(0)" class="loginSecForMob">Login</a></div>
+                Booking<br/> @if (!Auth::check())<a href="javascript:void(0)" class="loginSecForMob">Login</a>@endif</div>
 
         </div>
         <div class="left-carousal">

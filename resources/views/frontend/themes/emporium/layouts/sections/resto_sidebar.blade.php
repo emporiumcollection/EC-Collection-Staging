@@ -67,6 +67,12 @@
                 <li><a href="#get-directions" class="closenavlink scrollpage">GET DIRECTIONS</a></li>
                 <li><a href="{{URL::to($pagetitle)}}" class="yellowbtn">VISIT HOTEL</a></li>
             </ul>
+            @if (!Auth::check())
+
+                <div class="bottomlink" data-option="global">Members? <a class="loginSecForMob"
+                                                                         href="javascript:void(0)">Login</a><br/>or<br/>Become a Member <a class="registerSecForMob" href="javascript:void(0)">Register here</a>
+                </div>
+            @endif
             <div class="left-carousal">
                 <div id="owl-carousel" class="owl-carousel">
                 
