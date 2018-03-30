@@ -41,7 +41,7 @@
 
 <section>
 
- <div id="divWhoiam" class="termAndConditionSec">
+ <div id="divWhoiam" class="hotelInfoSection" style="background-color:#f7f7f7;">
 
 
 

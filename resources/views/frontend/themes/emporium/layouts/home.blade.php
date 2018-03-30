@@ -17,6 +17,7 @@
     <link href="{{ asset('themes/emporium/css/owl.carousel.css') }}" rel="stylesheet">
     <link href="{{ asset('themes/emporium/css/font-stylesheet.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('themes/emporium/css/jquery.mCustomScrollbar.css') }}">
+    <link href="{{ asset('themes/emporium/css/bootstrap-datepicker.css')}}" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -100,6 +101,7 @@
 <script src="{{ asset('themes/emporium/js/jquery-3.2.1.min.js') }}"></script>
 <script src="{{ asset('themes/emporium/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('themes/emporium/js/owl.carousel.js') }}"></script>
+ <script src="{{ asset('themes/emporium/js/bootstrap-datepicker.js')}}"></script>
 <!-- custom scrollbar plugin -->
 <script src="{{ asset('themes/emporium/js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
 <script src="{{ asset('themes/emporium/js/custom/do_ajax.js') }}"></script>
