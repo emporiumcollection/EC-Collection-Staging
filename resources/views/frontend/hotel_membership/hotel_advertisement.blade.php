@@ -36,9 +36,7 @@
             </div>
         </div>
     </div>
-    </div>
-
-   <div class="row">
+    <div class="row">
         <div class="col-xs-12">
                <div class="hotelInfoSection">
                     <form>
@@ -79,7 +77,7 @@
                             </div>
                                 </div>
                             </div> 
-                            
+
                             <div class="col-md-6 col-sm-12 no-padding" style="display: none;">
                                 <div class="form-group">
                                     <div class="form-group">
@@ -136,7 +134,10 @@
                     </form>
                 </div>
          </div>
-    </div>    
+    </div>  
+    </div>
+
+     
 
  </section> 
 @endsection
