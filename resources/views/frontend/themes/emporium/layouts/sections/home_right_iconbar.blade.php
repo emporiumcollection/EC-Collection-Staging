@@ -8,13 +8,18 @@
             </div>
         </li>
     	<li class="loginSignPopupButton">
-        	<a href="javascript:void(0)" class="clicktologin" ><i class="fa fa-lock"></i></a>
-            <a href="javascript:void(0)" class="login-user" style="display:none;"><i class="fa fa-user"></i></a>
+
+             @if(Session::get('uid')>0)
+            <a href="javascript:void(0)" class="login-user" style="display:block;"><i class="fa fa-user"></i></a>
             <ul class="user-setting">
-            	<li><a href="javascript:void(0)">Profile</a></li>
-                <li><a href="javascript:void(0)">Change Possword</a></li>
-                <li><a href="javascript:void(0)">Logout</a></li>
+                <li><a href="{{ URL::to('customer/profile')}}">Profile</a></li>
+                <li><a href="{{ URL::to('customer/profile?#resetPassword')}}">Change Possword</a></li>
+                <li><a href="{{ URL::to('customer/logout')}}">Logout</a></li>
             </ul>
+            @else
+                <a href="javascript:void(0)" class="clicktologin"><i class="fa fa-lock"></i></a>
+            @endif
+        	
         </li>
         <li class="calander"><a href="javascript:void(0)"><i class="fa fa-calendar"></i></a></li>
     </ul>
