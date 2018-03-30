@@ -310,6 +310,57 @@
 
                                     </div>
                                 </div>
+								
+								<div class="form-group  " >
+                                    <label for="Restaurants" class=" control-label col-md-4 text-left"> Restaurants</label>
+                                    <div class="col-md-6">
+
+                                        <select name='restaurantids[]' id="restaurantids" rows='5'   class='select2 ' multiple="multiple"   > 
+                                            <option  value ="0">-- Select Restaurant --</option> 
+                                            @foreach($restaurants as $val)
+
+                                            <option  value ="{{$val->id}}" {{(isset($row['restaurant_ids']) && in_array($val->id,explode(',',$row['restaurant_ids']))) ? " selected='selected' " : '' }}>{{$val->title}}</option> 						
+                                            @endforeach						
+                                        </select> 
+                                    </div> 
+                                    <div class="col-md-2">
+
+                                    </div>
+                                </div>
+								
+								<div class="form-group  " >
+                                    <label for="Bars" class=" control-label col-md-4 text-left"> Bars</label>
+                                    <div class="col-md-6">
+
+                                        <select name='barids[]' id="barids" rows='5'   class='select2 ' multiple="multiple"   > 
+                                            <option  value ="0">-- Select Bar --</option> 
+                                            @foreach($bars as $val)
+
+                                            <option  value ="{{$val->id}}" {{(isset($row['bar_ids']) && in_array($val->id,explode(',',$row['bar_ids']))) ? " selected='selected' " : '' }}>{{$val->title}}</option> 						
+                                            @endforeach						
+                                        </select> 
+                                    </div> 
+                                    <div class="col-md-2">
+
+                                    </div>
+                                </div>
+								
+								<div class="form-group  " >
+                                    <label for="Spas" class=" control-label col-md-4 text-left"> Spas</label>
+                                    <div class="col-md-6">
+
+                                        <select name='spaids[]' id="spaids" rows='5'   class='select2 ' multiple="multiple"   > 
+                                            <option  value ="0">-- Select Spa --</option> 
+                                            @foreach($spas as $val)
+
+                                            <option  value ="{{$val->id}}" {{(isset($row['spa_ids']) && in_array($val->id,explode(',',$row['spa_ids']))) ? " selected='selected' " : '' }}>{{$val->title}}</option> 						
+                                            @endforeach						
+                                        </select> 
+                                    </div> 
+                                    <div class="col-md-2">
+
+                                    </div>
+                                </div>
 
                             </div>
 
