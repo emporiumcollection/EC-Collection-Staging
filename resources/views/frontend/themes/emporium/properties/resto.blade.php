@@ -449,7 +449,7 @@
 	@if(!empty($barsArr[1]))
 		@if(array_key_exists('datagallery',$barsArr[1]))
 			<!-- Restaurant slider 2 starts here -->
-			<section id="restaurant2" class="hotelSliderSection rightSideSlider">
+			<section id="bar2" class="hotelSliderSection rightSideSlider">
 				<div class="container-fluid">
 					<div class="hotelSliderwrapper">
 						<div class="owl-carousel hotelSlider2 owl-theme">
@@ -497,7 +497,7 @@
 	@if(!empty($barsArr[2]))
 		@if(array_key_exists('datagallery',$barsArr[2]))
 			<!-- Restaurant slider 3 starts here -->
-			<section id="restaurant3" class="hotelSliderSection fullWidthSlider">
+			<section id="bar3" class="hotelSliderSection fullWidthSlider">
 				<div class="container-fluid">
 					<div class="hotelSliderwrapper">
 						<div class="owl-carousel hotelSlider1 owl-theme">
@@ -542,7 +542,7 @@
 	@if(!empty($spasArr[0]))
 		@if(array_key_exists('datagallery',$spasArr[0]))
 			<!-- BAR SECTION starts here -->
-			<section id="bar1" class="hotelSliderSection rightSideSlider">
+			<section id="spa1" class="hotelSliderSection rightSideSlider">
 				<div class="container-fluid">
 					<div class="hotelSliderwrapper">
 						<div class="owl-carousel hotelSlider2 owl-theme">
