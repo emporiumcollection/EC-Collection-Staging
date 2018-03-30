@@ -1016,6 +1016,7 @@ return Redirect::to('customer/profile')->with('message', \SiteHelpers::alert('er
 
                 $user->group_id=3;
                 $user->save();
+                
 
                 return Redirect::to('personalized-service')->with('messagetext', 'Profile has been saved!')->with('msgstatus', 'success'); 
              }
