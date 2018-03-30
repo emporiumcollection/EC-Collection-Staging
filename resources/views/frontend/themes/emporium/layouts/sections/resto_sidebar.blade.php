@@ -48,7 +48,7 @@
 				@if(!empty($barsArr))
 				{{--*/ $b=1; /*--}}
 				  @foreach($barsArr as $bar)
-					<li><a href="#restaurant{{$b}}" class="closenavlink scrollpage">{{$bar->title}}</a></li>
+					<li><a href="#bar{{$b}}" class="closenavlink scrollpage">{{$bar->title}}</a></li>
 					{{--*/ $b++; /*--}}
 				  @endforeach
 				@endif
@@ -56,7 +56,7 @@
 				@if(!empty($spasArr))
 				{{--*/ $s=1; /*--}}
 				  @foreach($spasArr as $spa)
-					<li><a href="#restaurant{{$s}}" class="closenavlink scrollpage">{{$spa->title}}</a></li>
+					<li><a href="#spa{{$s}}" class="closenavlink scrollpage">{{$spa->title}}</a></li>
 					{{--*/ $s++; /*--}}
 				  @endforeach
 				@endif
