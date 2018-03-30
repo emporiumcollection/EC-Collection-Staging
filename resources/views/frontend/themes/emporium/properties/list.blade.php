@@ -124,6 +124,7 @@
 @section('custom_js')
     @parent
 	<script>
+
 		var pageCounter = 1;
 		var it_scroll = false;
 		var totalPage = 3;
@@ -141,7 +142,10 @@
 		});
 		function scrollDataAjax(it_scroll, pageCounter){
 			if(it_scroll==true) {
-				var datObj = window.location.search;
+				var datObj = window.location.search+'?page='+pageCounter;
+                    datObj =  datObj+'&s={{$slug}}';
+
+
 
 				var params = $.extend({}, doAjax_params_default);
 				params['url'] = BaseURL + '/search-property-ajax'+datObj;

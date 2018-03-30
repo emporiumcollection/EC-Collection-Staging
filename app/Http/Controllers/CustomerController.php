@@ -18,6 +18,11 @@ class CustomerController extends Controller {
         $this->data['pageTitle'] = '';
         $this->data['data'] = CommonHelper::getInfo();
         $this->data['pageslider'] = \DB::table('tb_pages_sliders')->select( 'slider_title', 'slider_description', 'slider_img', 'slider_link', 'slider_video', 'slide_type')->where('slider_page_id', 107)->get();
+
+
+        $this->data['pageTitle'] = "Front end dashboard";
+        $this->data['pageMetakey'] = "Front end dashboard";
+        $this->data['pageMetadesc'] = "Front end dashboard";
     }
 
     public function getRegister($pid) {

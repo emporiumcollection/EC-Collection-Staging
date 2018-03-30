@@ -1,20 +1,22 @@
-
-@extends('frontend.layouts.ev.customer')
+@extends('frontend.themes.emporium.layouts.home')
+{{--  For Title --}}
+@section('title', $pageTitle)
+{{-- For Meta Keywords --}}
+@section('meta_keywords', $pageMetakey)
+{{-- For Meta Description --}}
+@section('meta_description', $pageMetadesc)
+{{-- For Page's Content Part --}}
 @section('content')
-<style>
-#formerrors { color:#ffec0cf2;}
-.input-hidden {
-  position: absolute;
-  left: -9999px;
-}
 
+<section>
+    <div class="col-md-12" style="background-color:#f7f7f7;">
+	    <div class="row">
+	    	&nbsp;
+	    </div>
+    <div class="row">
+	<div class="col-sm-12">
 
-</style>
-
-
-<div class="col-sm-12">
-
-  <!-- Nav tabs <i class="fa fa-bullhorn" aria-hidden="true"></i></div><span>Ads -->
+  
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">My Account</a></li>
     @if($info->group_id==7)
@@ -163,7 +165,7 @@
 		<div role="tabpanel" class="tab-pane" id="resetPassword">
 			
 <div class="row">
-            <div class="das-form-outer-align">
+         <div class="das-form-outer-align">
 
 		<div class="form-group has-feedback">
 			@if(Session::has('message'))
@@ -210,17 +212,14 @@
         </div>
 
 		</div>
-
+<!-- Comapny detail tab -->
 		<div role="tabpanel" class="tab-pane" id="companyDetails"> 
-
-			<div class="row">
+			<div class="row col-sm-12">
 	            <div class="das-form-outer-align">
-	            	<!-- Comapny detail tab -->
-	  
-	  <div class="tab-pane m-t" id="company">
+	            <div class="tab-pane m-t" id="company">
 		{!! Form::open(array('url'=>'customer/savecompanydetails/', 'class'=>'form-horizontal ' ,'files' => true)) !!}  
-			<input name="compedit_id" type="hidden" id="compedit_id" value="<?php if(!empty($extra)) { echo $extra->id; } ?>" />
-		<div class="row">
+				<input name="compedit_id" type="hidden" id="compedit_id" value="<?php if(!empty($extra)) { echo $extra->id; } ?>" />
+			<div class="row">
 			<div class="col-md-6">
 			  <div class="form-group">
 				<label for="ipt" class=" control-label col-md-4"> Company Name</label>
@@ -453,8 +452,86 @@
 </div>
    
 
-   <script>
-window.ParsleyConfig = {
+ </div>
+ <div class="row">
+ 		&nbsp;    	
+  </div>
+</div>
+  
+</section>
+ 
+@endsection
+
+
+
+
+{{--For Right Side Icons --}}
+@section('right_side_iconbar')
+
+    @parent
+@show
+
+{{-- For Include Top Bar --}}
+@section('top_search_bar')
+    @parent
+@endsection
+
+{{-- For Include Side Bar --}}
+@section('sidebar')
+    @include('frontend.themes.emporium.layouts.sections.common_sidebar')
+@endsection
+
+{{-- For Include style files --}}
+@section('head')
+    @parent
+    <link href="{{ asset('themes/emporium/css/animate.css') }}" rel="stylesheet">
+    <link href="{{ asset('themes/emporium/css/daterangepicker.css') }}" rel="stylesheet">
+    <link href="{{ asset('themes/emporium/css/calendar.css') }}" rel="stylesheet">
+    <link href="{{ asset('themes/emporium/css/terms-and-conditions.css') }}" rel="stylesheet">
+    <link href="{{ asset('themes/emporium/css/membership-css.css') }}" rel="stylesheet">
+    
+     
+@endsection
+
+{{-- For custom style  --}}
+@section('custom_css')
+
+    @parent
+<style>
+
+.disnon { display:none; }
+.hotelInfoSection {
+    display: inline-block;
+    padding: 6% 10%;!important;
+}
+#formerrors { color:#ffec0cf2;}
+.input-hidden {
+  position: absolute;
+  left: -9999px;
+}
+
+.has-error  {
+    border-color: #a94442;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+
+</style>
+@endsection
+
+{{-- For Include javascript files --}}
+@section('javascript')
+    @parent
+    <script src="{{ asset('themes/emporium/js/smooth-scroll.js') }}"></script>
+    <script src="{{ asset('sximo/js/parsley.min.js')}}" type="text/javascript"></script>
+
+@endsection
+
+{{-- For custom script --}}
+@section('custom_js')
+    @parent
+  <script>
+  	window.ParsleyConfig = {
     errorsWrapper: '<div></div>',
     errorTemplate: '<div class="alert alert-danger parsley" role="alert"></div>',
     errorClass: 'has-error',
@@ -485,14 +562,10 @@ $(function () {
   });
 
 });
-</script>
-
-
+  </script>
 @endsection
 
-
-
-@section('script')
-<script src="{{ asset('sximo/js/parsley.min.js')}}" type="text/javascript"></script>
-
+{{-- For footer --}}
+@section('footer')
+    @parent
 @endsection
