@@ -13,6 +13,9 @@ class PersonalizedServiceController extends Controller {
         $this->data['pageTitle'] = '';
         $this->data['data'] = CommonHelper::getInfo();
         $this->data['pageslider'] = \DB::table('tb_pages_sliders')->select( 'slider_title', 'slider_description', 'slider_img', 'slider_link', 'slider_video', 'slide_type')->where('slider_page_id', 35)->get();
+        $this->data['pageTitle'] = "Personalized Service";
+        $this->data['pageMetakey'] = "Personalized Service";
+        $this->data['pageMetadesc'] = "Personalized Service";
     }
     
     /* Method : Index
@@ -20,9 +23,9 @@ class PersonalizedServiceController extends Controller {
     */
     public function index(Request $request) {
        
-        if (!\Auth::check()):
+        /*if (!\Auth::check()):
             return Redirect::to('customer/login');
-        endif;
+        endif;*/
         
         $temp = $this->get_destinations();
         

@@ -117,10 +117,11 @@
 								<input type="text" name="txtPhoneNumber" value="{{$guestUserData->mobile_number}}" id="txtPhoneNumber" class="form-control dash-input-style" placeholder="+91-9876543210" required="">
 							</div>
 						</div>
-						<div class="form-group">        
-							<div class="col-sm-10">
-								<label class="col-sm-2"><input type="checkbox" id="newsLetter" name="newsLetter"></label>
+						<div class="form-group ">        
+							<div class="col-sm-10 ">
+							
 								<div class="radio">
+									<label class="col-sm-2"><input type="checkbox" id="newsLetter" name="newsLetter"></label>
 									<label >Subscribe to our notifications and news to our latest hotels, spa's and offers </label>
 								</div>
 							</div>
