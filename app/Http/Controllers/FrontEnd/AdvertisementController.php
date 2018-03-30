@@ -97,19 +97,22 @@ class AdvertisementController extends Controller {
                 $advertPkgID = '';
 
                 //print_r($request->session()->get('hotel_cart')); die;
-                if(!empty($request->session()->get('hotel_cart'))){
+        if(!empty($request->session()->get('hotel_cart'))){
 
-					foreach ($request->session()->get('hotel_cart') as $cartkey => $cartValue) {
-						if($cartValue['package']['type']=='advert'){
-							$advertPkgID = $cartValue['package']['content']['id'];
-						}
-					}
-                }
+        foreach ($request->session()->get('hotel_cart') as $cartkey => $cartValue) {
+        if($cartValue['package']['type']=='advert'){
+        $advertPkgID = $cartValue['package']['content']['id'];
+        }
+        }
+        }
 
                 $mainPkgQry  =  "Select *  from tb_advertisement_space where id = '". $advertPkgID."'";
                 $dataPackage = \DB::select($mainPkgQry);
 
-        
+         $this->data['pageTitle'] = "Advertiser Checkout Page";
+        $this->data['pageMetakey'] = "Advertiser Checkout Page";
+        $this->data['pageMetadesc'] = "Advertiser Checkout Page";
+
         $this->data['packages'] = $dataPackage;
         $this->data['pageslider']="";
         return view('frontend.advertiser.advertiser_checkout', $this->data);
