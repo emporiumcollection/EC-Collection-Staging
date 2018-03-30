@@ -71,6 +71,14 @@
                         @endif
                     </div>
                 </div>
+                    {{--*/ $sidebarads = CommonHelper::getSidebarAds('detail_spa_popup', 'Hotel') /*--}}
+                    @if(!empty($sidebarads['leftsidebarads']))
+                        @foreach($sidebarads['leftsidebarads'] as $ads)
+                            <div class="item">
+                                <a href="{{ (strpos($ads->adv_link, 'http://') !== false) ? $ads->adv_link : 'http://'.$ads->adv_link }}"><img src="{{URL::to('uploads/users/advertisement/'.$ads->adv_img)}}"></a>
+                            </div>
+                        @endforeach
+                    @endif
               </div>
             </div>
         </div>
