@@ -174,8 +174,8 @@
                     	dataGridHtml +='<div class="pricelabel">From EUR '+obj.price+' / night</div>';
 						dataGridHtml +='</figure>';
 						dataGridHtml +='<div class="title">';
-        				dataGridHtml +='<h3><a href="'+BASE_URL+'/'+obj.property_slug+'">'+obj.property_name+'</a></h3>';
-       					dataGridHtml +='<a href="'+BASE_URL+'/'+obj.property_slug+'" class="cartlink"><i class="fa fa-shopping-cart"></i></a>';
+        				dataGridHtml +='<h3><a href="'+BaseURL+'/'+obj.property_slug+'">'+obj.property_name+'</a></h3>';
+       					dataGridHtml +='<a href="'+BaseURL+'/'+obj.property_slug+'" class="cartlink"><i class="fa fa-shopping-cart"></i></a>';
         				dataGridHtml +='</div>';
 						dataGridHtml +='</div>';
 						dataGridHtml +='</div>';
