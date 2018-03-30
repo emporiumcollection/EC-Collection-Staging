@@ -1537,8 +1537,12 @@ button.searchButton.btn:hover {
   background: #252525; 
   height: 650px;
 }
+.HamYardHotelSection .container {
+    max-width: 1049px;
+}
 .HamYardHotelSlider {
   margin: 50px 0; 
+  /*position: relative;*/
 }
 .HamYardHotelSlider .item {
   width: 100%;
@@ -1550,10 +1554,10 @@ button.searchButton.btn:hover {
   -webkit-transition: all 0.01s ease 0s;
   -moz-transition: all 0.01s ease 0s;
   -ms-transition: all 0.01s ease 0s;
-  position: relative;
 }
 
 .carousalCaption {
+  /*position: relative;*/
   width: 50%;
   float: right;
   background: rgba(0,0,0,1);
@@ -1582,7 +1586,6 @@ button.searchButton.btn:hover {
     line-height: 20px;
     margin-top: 22px;
 }
-
 
 
 

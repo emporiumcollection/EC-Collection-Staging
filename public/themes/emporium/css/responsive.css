@@ -1,4 +1,9 @@
-
+@media screen and (max-width: 1400px) {
+  .HamYardHotelSection .container {
+      max-width: 700px;
+      width: 100%;
+  }
+}
 @media (max-width:1366px){
 .sliderSection.restaurantSliderSec .carousel-caption{width:100%;}	
 	/* 02-03-2018 */
