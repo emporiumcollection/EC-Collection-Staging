@@ -223,6 +223,8 @@ body.open{overflow:hidden;}
 .sidefixednav{top:90px;}
 .restaurantrightnav.contactfixed{top:261px;}
 .restaurantrightnav.backcontrol{top:340px;}
+.termAndConditionPopUp label{padding:0 0 0 15px; display:block;}
+.termAndConditionPopUp p{padding:30px 0;}
 }
 
 @media (max-width:480px){

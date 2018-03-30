@@ -1251,7 +1251,7 @@ border-radius:0;
 
 
 /*Mobile Navigation*/
-.mobilemenu {width:320px; position:fixed; left:0; top:0; z-index:999; height:100%;-webkit-transition: all .5s ease; -o-transition: all .5s ease; transition: all .5s ease;}
+.mobilemenu {width:320px; position:fixed; left:0; top:0; z-index:999; height:100%;-webkit-transition: all .5s ease; -o-transition: all .5s ease; transition: all .5s ease; border-right:1px solid #414246;}
 .mobilemenu.open{left:0}
 .mobilemenu-inner{background:#252525; max-width:320px; height:100%;}
 .mobilemenu-inner .mCSB_inside > .mCSB_container{margin-right:0!important;}
@@ -1296,7 +1296,7 @@ border-radius:0;
 .mobilemenulist .navheadimage{position:relative; border-top:1px solid #979797}
 .mobilemenulist .navheadimage a{padding:0;}
 .mobilemenulist .navheadimage img{max-width:100%}
-.mobilemenulist .navheadimage .headingoverlay{position:absolute; padding-left:25px; padding-top:55px; top:0;background: rgba(0, 0, 0, 0.4); width:100%; height:100%; color:#fff;}
+.mobilemenulist .navheadimage .headingoverlay{position:absolute; padding-left:25px; padding-top:55px; top:0;background: rgba(0, 0, 0, 0.7); width:100%; height:100%; color:#fff;}
 .mobilemenulist .mobilesublinks{padding:15px 0 15px 25px;}
 .mobilemenulist .mobilesublinks li{border:0;}
 .mobilemenulist .mobilesublinks li a{padding:5px 0;}
@@ -1786,3 +1786,125 @@ button.searchButton.btn:hover {
 }
 
 
+/* terms and condition contact form */
+
+.termAndConditionPopUp {
+  background: #252525;
+}
+.termAndConditionPopUp .gallyPopupHeader {
+  text-align: center; 
+}
+
+.termAndConditionPopUp .gallyPopupHeader a {
+  display: inline-block;
+}
+
+.termAndConditionPopUp .gallyPopupHeader img.logo{max-width:270px;}
+
+
+.termAndConditionPopUp p {
+  color: #ada077;
+  padding: 30px;
+  font-size: 15px;
+  text-align: left;
+}
+.termAndConditionPopUp .searchDateInnerContent {
+  width: 100%;
+}
+.btn-cstmBtn {
+    padding: 6px 25px;
+    background: #ABA07C;
+    float: left;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
+    color: #fff !important;
+    border-radius: 0px;
+    border: 1px solid #ABA07C;
+    transition: all 0.5s ease 0s;
+    -webkit-transition: all 0.5s ease 0s;
+    -moz-transition: all 0.5s ease 0s;
+}
+.btn-cstmBtn:hover,
+.btn-cstmBtn:focus {
+    background: transparent;
+    color: #ABA07C;
+    text-decoration: none !important;
+    border: 1px solid #ABA07C;
+}
+
+.searchDateInnerContent .btn-cstmBtn{width:100%;}
+
+.termAndConditionPopUp label {
+  color: #fff;
+  padding: 0 15px 0 45px;
+  font-size: 14px;
+  text-align: left;
+}
+
+
+.termAndConditionPopUp  .form-control{background-color: #89837b;  border: 0; border-radius: 0; -webkit-border-radius: 0; color: #fff; font-size: 12px; height: 35px; line-height: unset; margin-top: 0; padding: 9px 7px; text-transform: uppercase; width:100%; color:#fff;font-family: 'GeomanistLight', sans-serif;}
+.termAndConditionPopUp  select{-webkit-appearance: none; -webkit-border-radius: 0px; background:url(../images/icon-select-arrow.png) 98% 12px no-repeat #89837b !important;}
+.termAndConditionPopUp .form-control:focus {
+  border-color: rgba(255,255,255,0.5); 
+}
+.termAndConditionPopUp .form-control[type="date"] {
+  padding: 0 15px;
+}
+.termAndConditionPopUp .form-control::-webkit-input-placeholder {
+  color: rgba(255,255,255,0.8);
+}
+.termAndConditionPopUp .form-control::-moz-placeholder {
+  color: rgba(255,255,255,0.8);
+}
+.termAndConditionPopUp .form-control:-ms-input-placeholder {
+  color: rgba(255,255,255,0.8);
+}
+.termAndConditionPopUp .form-control:-moz-placeholder {
+  color: rgba(255,255,255,0.8);
+}
+.termAndConditionPopUp .tremPopupContactInfo p {
+  color: #fff;
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom:10px;
+  padding:0;
+}
+.termAndConditionPopUp .tremPopupContactInfo a {
+  width: 100%;
+  color: #ada077;
+  display: block;
+  text-align: left;
+  font-size: 15px; 
+}
+.termAndConditionPopUp .tremPopupContactInfo .vegasSocialUl {
+  margin-top: 20px;
+}
+.termAndConditionPopUp .tremPopupContactInfo .vegasSocialUl li {
+    display: inline-block;
+    padding-right: 5px;
+    width: auto !important;
+    padding-left: 5px;
+    min-width: unset;
+}
+.termAndConditionPopUp .tremPopupContactInfo .vegasSocialUl li a {
+  width: auto;
+}
+.termAndConditionPopUp .tremPopupContactInfo .vegasSocialUl li a i {
+    font-size: 14px;
+    background: #ABA07C;
+    padding: 6px 12px 4px 7px;
+    color: #fff;
+    margin-right: 0px;
+    text-align: center;
+    width: 25px;
+}
+
+.showprevnextimage{position: relative;}
+.showprevnextimage .nextprevshow{ position: absolute; left: -200px; top: 0; display:none;}
+.showprevnextimage .nextprevshow.open{display:block;}
+.datepicker.dropdown-menu{background:#252525 !important;}
+.datepicker.dropdown-menu th{color:#ABA07C !important;}
+.datepicker.dropdown-menu td{color:#fff !important;}
+.datepicker.dropdown-menu td:hover{color:#252525!important;}
+.datepicker-dropdown.datepicker-orient-top:after{border-top:6px solid #252525 !important}
