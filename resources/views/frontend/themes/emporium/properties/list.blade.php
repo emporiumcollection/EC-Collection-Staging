@@ -155,13 +155,26 @@
 					var dataGridHtml ='<div class="col-sm-6 col-md-6 col-lg-4">';
 						dataGridHtml +='<div class="hotel-card">';
 						dataGridHtml +='<figure>';
-						dataGridHtml +='';
-						dataGridHtml +='';
-						dataGridHtml +='';
-						dataGridHtml +='';
-						dataGridHtml +='';
-						dataGridHtml +='';
-						dataGridHtml +='';
+						if(obj.img_src!=undefined && obj.img_src!="") {
+							dataGridHtml += '<img alt="' + obj.file_name + '" src="' + obj.img_src + '" />';
+						}
+						dataGridHtml +='<a href="'+obj.property_slug+'" class="content-overlay">';
+						dataGridHtml +='<h5>'+obj.property_name+'</h5>';
+						if(obj.category_name!=undefined && obj.category_name!=""){
+                            dataGridHtml +='<p>From € '+obj.price+' '+obj.category_name+'</p>';
+						}else {
+                            dataGridHtml +='<p>From € '+obj.price+'</p>';
+						}
+
+						dataGridHtml +='</a>';
+                    	dataGridHtml +='<div class="pricelabel">From EUR '+obj.price+' / night</div>';
+						dataGridHtml +='</figure>';
+						dataGridHtml +='<div class="title">';
+        				dataGridHtml +='<h3><a href="'+BASE_URL+'/'+obj.property_slug+'">'+obj.property_name+'</a></h3>';
+       					dataGridHtml +='<a href="'+BASE_URL+'/'+obj.property_slug+'" class="cartlink"><i class="fa fa-shopping-cart"></i></a>';
+        				dataGridHtml +='</div>';
+						dataGridHtml +='</div>';
+						dataGridHtml +='</div>';
 					$('[data-option="property-grid-list"]').append(dataGridHtml);
 				});
 
@@ -174,28 +187,3 @@
 @section('footer')
     @parent
 @endsection
-
-<div class="col-sm-6 col-md-6 col-lg-4">
-	<div class="hotel-card">
-		<figure>
-			{{--*/ $propertyImage = CustomQuery::getPropertyImage($props->id); /*--}}
-
-			@if(!empty($propertyImage) && count($propertyImage)>0)
-
-				@if(isset($propertyImage))
-					<img alt="{{ $propertyImage->file_name }}" src="{{$propertyImage->img_src}}" />
-				@endif
-			@endif
-
-			<a href="{{URL::to($props->property_slug)}}" class="content-overlay">
-				<h5>{{ $props->property_name}}</h5>
-				<p>From € {{$props->price}} {{(isset($props->category_name))? '| '.$props->category_name : ''}}</p>
-			</a>
-			<div class="pricelabel">From EUR {{$props->price}} / night</div>
-		</figure>
-		<div class="title">
-			<h3><a href="{{URL::to($props->property_slug)}}">{{ $props->property_name}}</a></h3>
-			<a href="{{URL::to($props->property_slug)}}" class="cartlink"><i class="fa fa-shopping-cart"></i></a>
-		</div>
-	</div>
-</div>
