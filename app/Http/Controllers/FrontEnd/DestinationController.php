@@ -10,7 +10,7 @@ class DestinationController extends Controller {
         parent::__construct();
     }
 	
-	 public function getDestinatinosAjax(Request $request) {
+	public function getDestinatinosAjax(Request $request) {
 		
 		$category_id = $request->catID;
 
@@ -98,6 +98,67 @@ class DestinationController extends Controller {
             }
         }
         return $child_category_array;
+    }
+	
+	public function getGlobalSearchAjax(Request $request) {
+		
+		$keyword = trim($request->keyword);
+
+		$res = $respns = array(); 
+		if($keyword!='')
+		{
+            $fetchdestinations = DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_alias')->where('category_published', 1)->where('category_name', 'like', $keyword.'%')->where('parent_category_id', '!=', 8)->get();
+
+            if(!empty($fetchdestinations))
+            {
+                $res['dests'] = $fetchdestinations;
+            }
+			
+			$fetchcollection = DB::table('tb_properties')->select('id', 'property_name', 'property_slug')->where('property_status', 1)->where('property_name', 'like', $keyword.'%')->get();
+
+            if(!empty($fetchcollection))
+            {
+                $res['collection'] = $fetchcollection;
+            }
+			
+			$fetchrestro = DB::table('tb_restaurants')->select('id', 'title', 'alias')->where('title', 'like', $keyword.'%')->get();
+
+            if(!empty($fetchrestro))
+            {
+                $res['restro'] = $fetchrestro;
+            }
+			
+			$fetchbars = DB::table('tb_bars')->select('id', 'title', 'alias')->where('title', 'like', $keyword.'%')->get();
+
+            if(!empty($fetchbars))
+            {
+                $res['bars'] = $fetchbars;
+            }
+			
+			$fetchspas = DB::table('tb_spas')->select('id', 'title', 'alias')->where('title', 'like', $keyword.'%')->get();
+
+            if(!empty($fetchspas))
+            {
+                $res['bars'] = $fetchspas;
+            }
+			
+			if(!empty($res))
+			{
+				$respns['status'] = 'success';
+				$respns['data'] = $res;
+			}
+            else
+			{
+				$respns['status'] = 'error';
+				$respns['errors'] = 'Not found!';
+			}
+		}
+		else
+		{
+			$respns['status'] = 'error';
+			$respns['errors'] = 'Not found!';
+		}
+		return response()->json($respns);
     }
 
 }
