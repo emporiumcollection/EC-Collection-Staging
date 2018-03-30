@@ -130,6 +130,10 @@ class PropertiesController extends Controller {
 
         $this->data['amenties'] = \DB::table('tb_amenities')->where('amenity_status', '1')->get();
         $this->data['designers'] = \DB::table('tb_designers')->where('designer_status', '1')->get();
+		
+		$this->data['restaurants'] = \DB::table('tb_restaurants')->select('id', 'title')->get();
+		$this->data['bars'] = \DB::table('tb_bars')->select('id', 'title')->get();
+		$this->data['spas'] = \DB::table('tb_spas')->select('id', 'title')->get();
 
         $row_reservations = \DB::select(\DB::raw("SELECT COUNT(*) AS total_reservations FROM tb_reservations WHERE property_id = '$id' "));
         $row_reserved_rooms = \DB::select(\DB::raw("SELECT COUNT(*) AS total_reserved_rooms FROM td_reserved_rooms LEFT JOIN tb_reservations ON tb_reservations.id = td_reserved_rooms.reservation_id WHERE tb_reservations.property_id = '$id' "));
@@ -274,6 +278,24 @@ class PropertiesController extends Controller {
                 $data['property_category_id'] = implode(',', $request->input('destinations'));
             } else {
                 $data['property_category_id'] = '';
+            }
+			
+			if (!empty($request->input('spaids'))) {
+                $data['spa_ids'] = implode(',', $request->input('spaids'));
+            } else {
+                $data['spa_ids'] = '';
+            }
+			
+			if (!empty($request->input('restaurantids'))) {
+                $data['restaurant_ids'] = implode(',', $request->input('restaurantids'));
+            } else {
+                $data['restaurant_ids'] = '';
+            }
+			
+			if (!empty($request->input('barids'))) {
+                $data['bar_ids'] = implode(',', $request->input('barids'));
+            } else {
+                $data['bar_ids'] = '';
             }
 
             $data['owner_name'] = $request->input('owner_name');
