@@ -251,7 +251,7 @@
 
 	  <div class="arrowsIcons">
 		<a class="scrollpage" href="#restaurant1"><img src="images/arrow-up-icon.png" alt="icon"></a>
-		<a class="scrollpage" href="#restaurant2"><img src="images/arrow-down-icon.png" alt="icon"></a>
+		<a class="scrollpage" href="#video"><img src="images/arrow-down-icon.png" alt="icon"></a>
 	</div>
 	</section>
 
@@ -728,7 +728,7 @@
 
 {{-- For Include Side Bar --}}
 @section('sidebar')
-    @include('frontend.themes.emporium.layouts.sections.resto_sidebar')
+    @include('frontend.themes.emporium.layouts.sections.resto_detail_sidebar')
 @endsection
 
 {{-- For custom style  --}}

@@ -33,13 +33,13 @@
 			  <img src="{{ asset('themes/emporium/images/editorial-right-arrow.png') }}" alt="Icon">
 			</a>
 		  </div>
-		  <span class="scrollNextDiv"><a class="scrollpage" href="#restaurant1">Scroll Down</a></span>
+		  <span class="scrollNextDiv"><a class="scrollpage" href="#spa1">Scroll Down</a></span>
 		</section>
 	@endif
 
 	@if(!empty($spasArr[0]))
 		@if(array_key_exists('datagallery',$spasArr[0]))
-			<section id="restaurant1" class="hotelSliderSection">
+			<section id="spa1" class="hotelSliderSection">
 				<div class="container-fluid">
 					<div class="hotelSliderwrapper">
 						<div class="owl-carousel hotelSlider1 owl-theme">
@@ -250,8 +250,8 @@
 		</div>
 
 	  <div class="arrowsIcons">
-		<a class="scrollpage" href="#restaurant1"><img src="images/arrow-up-icon.png" alt="icon"></a>
-		<a class="scrollpage" href="#restaurant2"><img src="images/arrow-down-icon.png" alt="icon"></a>
+		<a class="scrollpage" href="#spa1"><img src="images/arrow-up-icon.png" alt="icon"></a>
+		<a class="scrollpage" href="#video"><img src="images/arrow-down-icon.png" alt="icon"></a>
 	</div>
 	</section>
 
@@ -729,7 +729,7 @@
 
 {{-- For Include Side Bar --}}
 @section('sidebar')
-    @include('frontend.themes.emporium.layouts.sections.resto_sidebar')
+    @include('frontend.themes.emporium.layouts.sections.spa_detail_sidebar')
 @endsection
 
 {{-- For custom style  --}}
