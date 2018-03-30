@@ -73,15 +73,16 @@
 	@endif
 
 	@if(!empty($resturantArr[0]))
-		
+		@if(array_key_exists('datagallery',$resturantArr[0]))
 			<section id="restaurant1" class="hotelSliderSection">
 				<div class="container-fluid">
 					<div class="hotelSliderwrapper">
 						<div class="owl-carousel hotelSlider1 owl-theme">
-							
+							@if(!empty($resturantArr[0]->datagallery))
+								@foreach($resturantArr[0]->datagallery as $resdatagallery)
 									<div class="item">
 										<div class="sliderimage">
-											<img src="" alt="image" class="img-responsive"/>
+											<img src="{{$resturantArr[0]->datagallerypath.$resdatagallery->file_name}}" alt="image" class="img-responsive"/>
 										</div>
 										<div class="hotelSliderContentImage">
 											<div class="hotelSliderContent">
@@ -105,7 +106,8 @@
 											</div>
 										</div>
 									</div>
-								
+								@endforeach
+							@endif
 						</div>
 					</div>
 				</div>
@@ -266,7 +268,7 @@
 					<a class="scrollpage" href="#emotionSection"><img src="images/arrow-down-icon.png" alt="icon"></a>
 				</div> -->
 			</section>
-		
+		@endif
 	@endif
 
 
