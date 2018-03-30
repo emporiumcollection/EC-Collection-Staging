@@ -160,5 +160,58 @@ class DestinationController extends Controller {
 		}
 		return response()->json($respns);
     }
+	
+	public function getAutoSuggestionAjax(Request $request) {
+		
+		$keyword = trim($request->keyword);
+
+		$dataArr = $respns = array(); 
+		$d=0;
+		if($keyword!='')
+		{
+            $fetchdestinations = DB::table('tb_categories')->select('id', 'category_name', 'category_alias')->where('category_published', 1)->where('category_name', 'like', $keyword.'%')->get();
+
+            if(!empty($fetchdestinations))
+            {
+                foreach($fetchdestinations as $destinations)
+				{
+					$dataArr[$d]['id'] = $destinations->id;
+					$dataArr[$d]['label'] = $destinations->category_name;
+					$dataArr[$d]['value'] = $destinations->category_alias;
+					$d++;
+				}
+            }
+			
+			$fetchcollection = DB::table('tb_properties')->select('id', 'property_name', 'property_slug')->where('property_status', 1)->where('property_name', 'like', $keyword.'%')->get();
+
+            if(!empty($fetchcollection))
+            {
+                foreach($fetchcollection as $collection)
+				{
+					$dataArr[$d]['id'] = $collection->id;
+					$dataArr[$d]['label'] = $collection->property_name;
+					$dataArr[$d]['value'] = $collection->property_slug;
+					$d++;
+				}
+            }
+			
+			if(!empty($dataArr))
+			{
+				$respns['status'] = 'success';
+				$respns['data'] = $dataArr;
+			}
+            else
+			{
+				$respns['status'] = 'error';
+				$respns['errors'] = 'Not found!';
+			}
+		}
+		else
+		{
+			$respns['status'] = 'error';
+			$respns['errors'] = 'Not found!';
+		}
+		return response()->json($respns);
+    }
 
 }
