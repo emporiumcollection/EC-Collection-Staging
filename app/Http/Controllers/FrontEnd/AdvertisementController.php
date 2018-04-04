@@ -163,6 +163,9 @@ class AdvertisementController extends Controller {
     public function getThanks(Request $request) {
 
         $this->data['pageTitle'] = 'Thank you Page';
+        $this->data['pageTitle'] = "Advertiser Thanks Page";
+        $this->data['pageMetakey'] = "Advertiser Thanks Page";
+        $this->data['pageMetadesc'] = "Advertiser Thanks Page";
         $this->data['data'] = CommonHelper::getInfo();
         $this->data['pageslider'] = "";
         $this->data['currency'] = \DB::table('tb_settings')->select('content')->where('key_value', 'default_currency')->first();
