@@ -40,7 +40,7 @@
         <link href="{{ asset('themes/emporium/css/custom.css') }}" rel="stylesheet">
         <link href="{{ asset('sximo/assets/css/intlTelInput.css') }}" rel="stylesheet">
 
-       
+
     @show
 
 </head>
@@ -101,7 +101,7 @@
 <script src="{{ asset('themes/emporium/js/jquery-3.2.1.min.js') }}"></script>
 <script src="{{ asset('themes/emporium/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('themes/emporium/js/owl.carousel.js') }}"></script>
- <script src="{{ asset('themes/emporium/js/bootstrap-datepicker.js')}}"></script>
+<script src="{{ asset('themes/emporium/js/bootstrap-datepicker.js')}}"></script>
 <!-- custom scrollbar plugin -->
 <script src="{{ asset('themes/emporium/js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
 <script src="{{ asset('themes/emporium/js/custom/do_ajax.js') }}"></script>
@@ -125,42 +125,69 @@
     @parent
 
 
-<script type="text/javascript">
- $(document).ready(function () {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Open Left Navigation For Search By Date on Page Load
+            @if(isset($_GET['action']) && $_GET['action']=='bydate' )
+            $('[data-action="search-by-date"]').trigger('click');
+            @endif
 
-    /*Login BUTTON  Click Action Here*/
-         $("#loginFormAction").submit(function( event ) {
-            event.preventDefault();
-            
-            $(".ai-sign-up-form-error-msg").html( '' );
-            $(".ai-login-form-success-msg").html( '' );
-            
-            var formData = $(this).serialize();
-            
-            $.ajax({
-                url: "{{URL::to('customer_ajaxPostSignin')}}",
-                type: "POST",
-                dataType: "json",
-                data: formData,
-                success: function (data, textStatus, jqXHR) {
-                    if(data.status == 'success') {
-                        window.location.href = "{{URL::to('customer/profile')}}";
-                    }
-                    else {
-                        var message = data.message;
-                        for(var i = 0; i < data.errors.length; i++) {
-                            message += '<br>' + data.errors[i];
+            // Open Left Navigation For Collection on Page Load
+            @if(Request::segment(1)=='luxurytravel' && Request::segment(2)=='Hotel')
+            $('[data-action="select-collection"]').trigger('click');
+            @endif
+
+            // Open Left Navigation For Experience on Page Load
+            @if(Request::segment(1)=='luxury_experience')
+            $('[data-action="select-experience"]').trigger('click');
+            @endif
+
+            // Open Left Navigation For Destinations on Page Load
+            @if(Request::segment(1)=='luxury_destinations')
+                var datObj = {};
+                datObj.catID = '{{$destination_category}}';
+                var params = $.extend({}, doAjax_params_default);
+                params['url'] = BaseURL + '/destination/destinatinos-ajax';
+                params['data'] = datObj;
+                params['successCallbackFunction'] = renderDestination;
+                doAjax(params);
+            @endif
+
+
+
+            /*Login BUTTON  Click Action Here*/
+            $("#loginFormAction").submit(function (event) {
+                event.preventDefault();
+
+                $(".ai-sign-up-form-error-msg").html('');
+                $(".ai-login-form-success-msg").html('');
+
+                var formData = $(this).serialize();
+
+                $.ajax({
+                    url: "{{URL::to('customer_ajaxPostSignin')}}",
+                    type: "POST",
+                    dataType: "json",
+                    data: formData,
+                    success: function (data, textStatus, jqXHR) {
+                        if (data.status == 'success') {
+                            window.location.href = "{{URL::to('customer/profile')}}";
                         }
-                        $(".ai-login-form-error-msg").html( message );
+                        else {
+                            var message = data.message;
+                            for (var i = 0; i < data.errors.length; i++) {
+                                message += '<br>' + data.errors[i];
+                            }
+                            $(".ai-login-form-error-msg").html(message);
+                        }
                     }
-                }
+                });
             });
-        });
-    /*End Login BUTTON  Click Action Here*/
+            /*End Login BUTTON  Click Action Here*/
 
-     /*Register BUTTON  Click Start Action Here*/
+            /*Register BUTTON  Click Start Action Here*/
 
-            $("#customerRegisterarioForm").submit(function( event ){        
+            $("#customerRegisterarioForm").submit(function (event) {
 
 
                 var countryData = $("#txtmobileNumber").intlTelInput("getSelectedCountryData");
@@ -168,80 +195,79 @@
                 var error = $("#txtmobileNumber").intlTelInput("getValidationError");
                 var isValid = $("#txtmobileNumber").intlTelInput("isValidNumber");
 
-                if(isValid){
+                if (isValid) {
                     $("#txtmobileDialcode").val(countryData.dialCode);
-                }else{
+                } else {
                     return false
                 }
-            event.preventDefault();
-            
-            $(".ai-sign-up-form-success-msg").html( '' );
-            $(".ai-sign-up-form-error-msg").html( '' );
-            $(".ai-login-form-success-msg").html( '' );
-            
-            var formData = $(this).serialize();
-            
-            $.ajax({
-                url: "{{URL::to('customer_ajaxPostCreate')}}",
-                type: "POST",
-                dataType: "json",
-                data: formData,
-                success: function (data, textStatus, jqXHR) {
+                event.preventDefault();
 
-                   
-                    if(data.status == 'success') {
-                        $(".ai-sign-up-form-success-msg").html( data.message );
-                         window.location.href = "{{URL::to('whoiam')}}";
-                    }
-                    else {
-                        var message = data.message;
-                        for(var i = 0; i < data.errors.length; i++) {
-                            message += '<br>' + data.errors[i];
+                $(".ai-sign-up-form-success-msg").html('');
+                $(".ai-sign-up-form-error-msg").html('');
+                $(".ai-login-form-success-msg").html('');
+
+                var formData = $(this).serialize();
+
+                $.ajax({
+                    url: "{{URL::to('customer_ajaxPostCreate')}}",
+                    type: "POST",
+                    dataType: "json",
+                    data: formData,
+                    success: function (data, textStatus, jqXHR) {
+
+
+                        if (data.status == 'success') {
+                            $(".ai-sign-up-form-success-msg").html(data.message);
+                            window.location.href = "{{URL::to('whoiam')}}";
                         }
-                        $(".ai-sign-up-form-error-msg").html( message );
+                        else {
+                            var message = data.message;
+                            for (var i = 0; i < data.errors.length; i++) {
+                                message += '<br>' + data.errors[i];
+                            }
+                            $(".ai-sign-up-form-error-msg").html(message);
+                        }
                     }
-                }
+                });
             });
+
+            /*End Register BUTTON  Click Start Action Here*/
+
         });
 
-       /*End Register BUTTON  Click Start Action Here*/     
-        
-    });
 
+        var telInput = $("#txtmobileNumber"),
+            errorMsg = $("#error-msg"),
+            validMsg = $("#valid-msg");
+        // initialise plugin
+        telInput.intlTelInput({
+            utilsScript: "{{ asset('sximo/assets/js/utils.js')}}"
+        });
 
+        var reset = function () {
+            telInput.removeClass("error");
+            errorMsg.addClass("hide");
+            validMsg.addClass("hide");
+        };
 
+        // on blur: validate
+        telInput.blur(function () {
+            reset();
+            if ($.trim(telInput.val())) {
+                if (telInput.intlTelInput("isValidNumber")) {
+                    validMsg.removeClass("hide");
+                } else {
+                    telInput.addClass("error");
+                    errorMsg.removeClass("hide");
+                }
+            }
+        });
 
-var telInput = $("#txtmobileNumber"),
-errorMsg = $("#error-msg"),
-validMsg = $("#valid-msg");
-// initialise plugin
-telInput.intlTelInput({
-utilsScript: "{{ asset('sximo/assets/js/utils.js')}}"
-});
-
-var reset = function() {
-telInput.removeClass("error");
-errorMsg.addClass("hide");
-validMsg.addClass("hide");
-};
-
-// on blur: validate
-telInput.blur(function() {
-reset();
-if ($.trim(telInput.val())) {
-if (telInput.intlTelInput("isValidNumber")) {
-validMsg.removeClass("hide");
-} else {
-telInput.addClass("error");
-errorMsg.removeClass("hide");
-}
-}
-});
-
-// on keyup / change flag: reset
-telInput.on("keyup change", reset);
- </script>
+        // on keyup / change flag: reset
+        telInput.on("keyup change", reset);
+    </script>
 
 @show
+{{$slug}}
 </body>
 </html>

@@ -359,11 +359,13 @@ Route::post('get-article-by-title', 'HomeController@getArticleByTitle');
 // property search urls
 Route::get('getproperty/{id}', 'HomeController@getPropertyQuickView');
 Route::get('search-property-ajax', 'Frontend\PropertyController@getSearchPropertyAjax');
+Route::get('propertyimagebyid/{propid}', 'Frontend\PropertyController@getPropertyImageById');
 Route::get('{slug}', 'Frontend\PropertyController@getPropertyDetail');
 Route::get('{slug}/restaurant', 'Frontend\RestaurantFrontController@propertyRestrurant');
 Route::get('restaurant/{slug}', 'Frontend\RestaurantFrontController@restrurantDetail');
 Route::get('bar/{slug}', 'Frontend\RestaurantFrontController@barDetail');
 Route::get('spa/{slug}', 'Frontend\RestaurantFrontController@spaDetail');
+Route::get('reserve_resto_table_request', 'Frontend\RestaurantFrontController@reserveRestoTableRequest');
 Route::get('pdp/{slug}', 'Frontend\PropertyController@getPropertyDetail');
 Route::get('search', 'Frontend\PropertyController@propertySearch');
 Route::get('our-collection-pages/{slug}/{page}', 'HomeController@getPropertyDetail_pages');

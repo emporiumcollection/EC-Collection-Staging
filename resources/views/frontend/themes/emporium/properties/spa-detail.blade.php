@@ -89,47 +89,49 @@
 						<p>Lorem ipsum dolor sit amet.</p>
 					  </div>
 					  <div class="modal-body">
+						<div id="formerrors"></div>
+						<form id="reserve_resto_table_form">
 						<div class="row">
-					  <div class="col-md-4">
-						 <div class="form-field">
-							 <select>
-								 <option>Please select</option>
-								 <option>dummy text</option>
-								 <option>dummy text</option>
-								 <option>dummy text</option>
-								 <option>dummy text</option>
-								 <option>dummy text</option>
-							 </select>
-						 </div> 
-					  </div>
-					   <div class="col-md-4">
-						 <div class="form-field">
-						  <input type="text" placeholder="First name*">
-						 </div> 
-					  </div>
+							<div class="col-md-4">
+								 <div class="form-field">
+									 <select name="restoid">
+										 <option>Please select</option>
+										 @if(!empty($spasArr))
+											  @foreach($spasArr as $spa)
+												<option value="{{$spa->id}}">{{$spa->title}}</option>
+											  @endforeach
+										  @endif
+									 </select>
+								 </div> 
+							</div>
+							<div class="col-md-4">
+								 <div class="form-field">
+								  <input type="text" name="firstname" placeholder="First name*">
+								 </div> 
+							  </div>
 						<div class="col-md-4">
 						 <div class="form-field">
-						  <input type="text" placeholder="Last name*">
+						  <input type="text" name="lastname" placeholder="Last name*">
 						 </div> 
 					  </div>
 					</div><!--row -->
 					 <div class="row">
 					  <div class="col-md-4">
 						 <div class="form-field">
-							<input type="email" placeholder="Email*">
+							<input type="email" name="emailaddress" placeholder="Email*">
 						 </div> 
 					  </div>
 					   <div class="col-md-4">
 						 <div class="form-field row">
-							<div class="col-xs-4"><input type="number" placeholder="0"></div> 
-							<div class="col-xs-8"><input type="number" placeholder="Telephone"></div> 
+							<div class="col-xs-4"><input type="number" name="telephone_code" placeholder="0"></div> 
+							<div class="col-xs-8"><input type="number" name="telephone_number" placeholder="Telephone"></div> 
 				  
 						 </div> 
 					  </div>
 						<div class="col-md-4">
 						 <div class="form-field row">
-						   <div class="col-xs-4"><input type="number" placeholder="0"></div> 
-							<div class="col-xs-8"><input type="number" placeholder="Telephone"></div> 
+						   <div class="col-xs-4"><input type="number" name="telephone_code2" placeholder="0"></div> 
+							<div class="col-xs-8"><input type="number" name="telephone_number2" placeholder="Telephone"></div> 
 						 </div> 
 					  </div>
 					</div><!--row -->
@@ -139,32 +141,25 @@
 							<label>Preferred date</label>
 							<div class="col-xs-4">
 								 <select>
-								 <option>DD</option>
-								 <option>dummy text</option>
-								 <option>dummy text</option>
-								 <option>dummy text</option>
-								 <option>dummy text</option>
-								 <option>dummy text</option>
+								 <option name="reserve_day">DD</option>
+								 @for($arvDay=1;$arvDay<=31;$arvDay++)
+									 <option value="{{(strlen($arvDay)>1)?$arvDay:'0'.$arvDay}}">{{$arvDay}}</option>
+								 @endfor
 							 </select>
 							</div> 
 							 <div class="col-xs-4">
-								 <select>
-								 <option>MM</option>
-								 <option>dummy text</option>
-								 <option>dummy text</option>
-								 <option>dummy text</option>
-								 <option>dummy text</option>
-								 <option>dummy text</option>
+								 <select name="reserve_month">
+								 @for($arvMonth=1; $arvMonth<=12; ++$arvMonth)
+									<option  value="{{(strlen($arvMonth)>1)?$arvMonth:'0'.$arvMonth}}">{{ date('F', mktime(0, 0, 0, $arvMonth, 1)) }}</option>
+								@endfor
 							 </select>
 							</div> 
 							 <div class="col-xs-4">
-								 <select>
-								 <option>YYYY</option>
-								 <option>dummy text</option>
-								 <option>dummy text</option>
-								 <option>dummy text</option>
-								 <option>dummy text</option>
-								 <option>dummy text</option>
+								 <select name="reserve_year">
+								 {{--*/ $arvYearRange = range(date('Y'), date('Y', strtotime('+5 years'))) /*--}}
+								@foreach($arvYearRange as $arvYear)
+									<option value="{{$arvYear}}">{{$arvYear}}</option>
+								@endforeach
 							 </select>
 							</div> 
 							
@@ -174,24 +169,18 @@
 						  <div class="form-field row">
 							<label>Preferred time</label>
 							<div class="col-xs-6">
-								 <select>
-								 <option>DD</option>
-								 <option>dummy text</option>
-								 <option>dummy text</option>
-								 <option>dummy text</option>
-								 <option>dummy text</option>
-								 <option>dummy text</option>
-							 </select>
+								<select name="reserve_hour">
+									@for($arvhour=0;$arvhour<=23;$arvhour++)
+									 <option value="{{$arvhour}}">{{$arvhour}}</option>
+								 @endfor
+								</select>
 							</div> 
 							 <div class="col-xs-6">
-								 <select>
-								 <option>MM</option>
-								 <option>dummy text</option>
-								 <option>dummy text</option>
-								 <option>dummy text</option>
-								 <option>dummy text</option>
-								 <option>dummy text</option>
-							 </select>
+								 <select name="reserve_minute">
+									@for($arvmint=0;$arvmint<=59;$arvmint++)
+									 <option value="{{$arvmint}}">{{$arvmint}}</option>
+								 @endfor
+								</select>
 							</div> 
 						   
 							
@@ -199,7 +188,7 @@
 					  </div>
 						<div class="col-md-4">
 						 <div class="form-field number-guest">
-						<input type="number" placeholder="Number of guest"> 
+						<input type="number" name="totalguest" placeholder="Number of guest"> 
 						
 						 </div> 
 					  </div>
@@ -207,20 +196,21 @@
 					<div class="row">
 						<div class="col-md-12">
 						   <div class="form-field areafield">
-							   <textarea placeholder="How can we help"></textarea>
+							   <textarea name="query" placeholder="How can we help"></textarea>
 						   </div> 
 						</div>
 					</div><!-- row-->
 
 					<div class="row">
 						<div class="col-md-12 term-check">
-							<input type="checkbox" id="signup-hotel-cipriani-restaurant">
+							<input name="agree" type="checkbox" id="signup-hotel-cipriani-restaurant">
 							<label for="signup-hotel-cipriani-restaurant">By ticking this box, you give your consent to be contacted about the Emporium Voyage offers, events and updates. You may opt out of receiving our updates at any time, either by using an unsubscribe link. To find out more see our <a target="_blank" href="javascript:void(0);">privacy policy</a> and full <a target="_blank" href="terms-and-conditions.html">terms and conditions</a>.</label>
 						   <div class="btn-outer">
-							 <button type="submit" class="submit-btn">Submit</button>
+							 <button type="submit" class="submit-btn" onclick="submit_resto_book_request();">Submit</button>
 						   </div>
 						</div>
 					</div>
+					</form>
 					  </div>
 					
 					  </div>
@@ -741,11 +731,62 @@
 {{-- For Include javascript files --}}
 @section('javascript')
     @parent
+	<script src="{{ asset('sximo/js/parsley.min.js')}}" type="text/javascript"></script>
 @endsection
 
 {{-- For custom script --}}
 @section('custom_js')
     @parent
+	<script>
+		 window.ParsleyConfig = {
+			errorsWrapper: '<div></div>',
+			errorTemplate: '<div class="alert alert-danger parsley" role="alert"></div>',
+			errorClass: 'has-error',
+			successClass: 'has-success'
+		};
+
+		$(function () {
+			$('#reserve_resto_table_form').parsley().on('field:validated', function() {
+			var ok = $('.parsley-error').length === 0;
+			$('.bs-callout-info').toggleClass('hidden', !ok);
+			$('.bs-callout-warning').toggleClass('hidden', ok);
+			})
+			.on('form:submit', function() {
+			submit_resto_book_request();
+			return false; // Don't submit form for this demo
+			});
+		});
+		
+		function submit_resto_book_request()
+		{
+			$.ajax({
+				  url: "{{ URL::to('reserve_resto_table_request')}}",
+				  type: "post",
+				  data: $('#reserve_resto_table_form').serialize(),
+				  dataType: "json",
+				  success: function(data){
+					var html = '';
+					if(data.status=='error')
+					{
+						html +='<ul class="parsley-error-list">';
+						$.each(data.errors, function(idx, obj) {
+							html +='<li>'+obj+'</li>';
+						});
+						html +='</ul>';
+						$('#formerrors').html(html);
+					}
+					else{
+						var htmli = '';
+						htmli +='<div class="alert alert-success fade in block-inner">';
+						htmli +='<button data-dismiss="alert" class="close" type="button">×</button>';
+						htmli +='<i class="icon-checkmark-circle"></i> Restaurant Table Booking Request Submitted Successfully </div>';
+						$('#formerrors').html(htmli);
+						$('#reserve_resto_table_form')[0].reset();
+					}
+				  }
+			});
+		}
+	</script>
 @endsection
 
 {{-- For footer --}}

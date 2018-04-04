@@ -117,7 +117,7 @@
 									<div class="col-md-6">
 									  
 					<?php $space_position = explode(',',$row['space_position']);
-					$space_position_opt = array( 'landing' => 'Landing Page Sidebar' ,  'landing_slider' => 'landing Page Slider' ,  'grid_results' => 'Grid Page Results' ,  'grid_sidebar' => 'Grid Page Sidebar' ,  'grid_slider' => 'Grid Page Slider' ,  'grid_popup' => 'Grid Page Quick View Pop Up' ,  'detail_sidebar' => 'Detail Page Sidebar' ,  'detail_restaurant_popup' => 'Detail Page Restaurant Pop Up' ,  'detail_spa_popup' => 'Detail Page Spa Pop Up' ,  'detail_bar_popup' => 'Detail Page Bar Pop Up' , ); ?>
+					$space_position_opt = array( 'landing' => 'Landing Page Sidebar' ,  'landing_slider' => 'landing Page Slider' ,  'grid_results' => 'Grid Page Results' ,  'grid_sidebar' => 'Grid Page Sidebar' ,  'grid_slider' => 'Grid Page Slider',  'detail_sidebar' => 'Detail Page Sidebar' ,  'detail_restaurant_page' => 'Restaurant Detail Page' ,  'detail_spa_page' => 'Spa Detail Page' ,  'detail_bar_page' => 'Bar Detail Page', 'restro_spa_bar_search_page' => 'Restaurant Bar Spa Search Page', 'social_media_page' => 'Social Media Page', 'youtube_channel_page' => 'Youtube channel Page', 'business_menu_page' => 'Business menu Page', 'wetransfer_upload_page' => 'Wetransfer upload files Page', 'wetransfer_download_page' => 'Wetransfer download files Page', 'email_template' => 'Email template', 'contracts_page' => 'Contracts Page' ); ?>
 					<select name='space_position' rows='5' required  class='select2 '  > 
 						<?php 
 						foreach($space_position_opt as $key=>$val)
