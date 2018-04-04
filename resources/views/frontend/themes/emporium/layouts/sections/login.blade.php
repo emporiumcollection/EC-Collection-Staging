@@ -9,8 +9,8 @@
             <div class="popupFooterSec">
                <ul>
                   <li class="col-xs-6"><a class="signInPopupButton" href="javascript:void(0);">Member Sign Up</a></li>
-                  <li class="col-xs-6"><a class="logInPopupButton" href="javascript:void(0);">MemberLog In</a></li>
-                  <li class="col-xs-12"><a class="logInPopupButton">Advertiser Login</a></li>
+                  <li class="col-xs-6"><a class="logInPopupButton" href="javascript:void(0);">Member Log In</a></li>
+                  <li class="col-xs-12"><a href="javascript:void(0);" class="logInPopupButton">Advertiser Login</a></li>
                </ul>
             </div>
             <div class="logInPopup lognSignPopoUp">
