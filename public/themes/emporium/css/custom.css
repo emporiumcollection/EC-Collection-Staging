@@ -65,5 +65,23 @@ input.error {
     margin-top: 5px;
 }
 
-.sliderSection .carousel-inner>.item, #restaurantSlider .carousel-inner, #search-result-slider .carousel-inner .item{ background-color: rgba(37,37,37,0.2);}
+.sliderSection .carousel-inner>.item, #restaurantSlider .carousel-inner, #search-result-slider .carousel-inner .item, .mobilemenulist .navheadimage .headingoverlay{ background-color: rgba(37,37,37,0.2);}
 .mobilemenulist .navheadimage{border-top:none; }
+
+.headoverlay .destinationTitle{
+    position: absolute;
+    bottom: -1px;
+    background: rgba(0,0,0,.5);
+    width: 100%;
+    padding: 23px 25px;
+}
+.headoverlay .hashTag {
+    color: #ABA07C;
+    font-size: 12px;
+}
+.mobilemenulist .navheadimage .headingoverlay{
+    padding-left: 0;
+    padding-top: 0;
+    top: 0;
+    background-color: rgba(37, 37, 37, 0.2);
+}

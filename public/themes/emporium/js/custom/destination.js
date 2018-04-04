@@ -75,7 +75,7 @@ function renderDestination(dataObj) {
         destinationHtml += '<li>';
         destinationHtml += '<div class="navheadimage">';
         destinationHtml += '<img src="'+imagePath+'" alt="" class="mCS_img_loaded">';
-        destinationHtml += '<div class="headingoverlay">' + dataObj.current_category.category_name + '</div></div>';
+        destinationHtml += '<div class="headingoverlay"><span class="destinationTitle">' + dataObj.current_category.category_name + '</span><br><span class="hashTag"></span></div></div>';
         destinationHtml += '</li>';
         destinationHtml += '<li><ul class="mobilesublinks">';
     }
