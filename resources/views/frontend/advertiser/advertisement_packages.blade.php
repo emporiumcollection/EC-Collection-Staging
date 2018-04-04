@@ -1,92 +1,262 @@
-
-@extends('frontend.layouts.ev.customer')
+@extends('frontend.themes.emporium.layouts.home')
+{{--  For Title --}}
+@section('title', $pageTitle)
+{{-- For Meta Keywords --}}
+@section('meta_keywords', $pageMetakey)
+{{-- For Meta Description --}}
+@section('meta_description', $pageMetadesc)
+{{-- For Page's Content Part --}}
 @section('content')
-<style type="text/css">
-    
-.hotel-book-now {
-                background: #ABA07C;
-                color: #fff;
-                font-size: 25px;
-                height: 71px;
-                margin: 0px 0px 10px 3px;
-                opacity: 1;
-                overflow-wrap: break-word;
-                padding: 27px 5px;
-                position: absolute;
-                text-align: center;
-                text-transform: uppercase;
-                width: 174px;
-                z-index: 99;
-                float: left;
-            }
-	.disnon { display:none; }
-
-</style>
-<section class="wow fadeIn big-section cstmaiclass" id="align-to-top">
+<section style="background-color:#f7f7f7;">
     <div class="container-fluid">
-        <div class="stepwizard">
-            <div class="stepwizard-row setup-panel">
-                <div class="stepwizard-step">
-                    <a type="button" class="btn btn-primary btn-circle cursor">1</a>
-                    <p>Step 1</p>
-                </div>
-                <div class="stepwizard-step">
-                    <a type="button" class="btn btn-default btn-circle cursor" disabled="disabled">2</a>
-                    <p>Step 2</p>
-                </div>
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="stepNumber active ">
+                <span>1</span>
+                <p>STEP 1</p>
             </div>
         </div>
-    </div>
-</section>
-
-<div class="container">
-    <h5 class="ev-regural-heading text-uppercase margin-20px-bottom font-weight-700 sm-width-100 xs-width-100">Advertisements Package</h5>
-    <div class="cart-big-border">
-        <div class="cart-small-border"></div>
-    </div>
-    <div class="row p-t-50">
-        <div class="col-md-6 col-sm-12 ">
-            <input type="hidden" name="ads_pkg_id"> 
-            {!! Form::label('ads_category_id', 'Choose Advertise Category')  !!}
-            {!! Form::select('ads_category_id', $category_list, null,['class' => 'bg-white medium-input'])  !!}
+        <div class="col-xs-6">
+            <div class="stepNumber ">
+                <span>2</span>
+                <p>STEP 2</p>
+            </div>
         </div>
-        <div class="col-md-6 col-sm-12 ">
-            {!! Form::label('ads_position', 'Choose Ads Position')  !!}
-            {!! Form::select('ads_position', $ads_position_list, null,['class' => 'bg-white medium-input'])  !!}
-        </div>
-        <div class="col-md-6 col-sm-12 ">
-            {!! Form::label('ads_pacakge_type', 'Choose Package Type')  !!}
-            {!! Form::select('ads_pacakge_type', $ads_pacakge_type, null,['class' => 'bg-white medium-input'])  !!}
-        </div>
-        <div class="col-md-6 col-sm-12 ">
-            {!! Form::label('ads_start_date', 'Start Date')  !!}
-            <input type="date" name="ads_start_date" id="ads_start_date" class="bg-white medium-input"> 
-        </div>
-        
-        <div class="col-md-6 col-sm-12 " data-ads-days="box" style="display: none;">
-            {!! Form::label('ads_days', 'Choose Days')  !!}
-            <input type="text" name="ads_days" value="1"   disabled="" class="bg-white medium-input">
-             <input type="hidden" data-ads-days="per-unit"> 
-        </div>
-        <div class="col-md-6 col-sm-12 ">
-            {!! Form::label('ads_package_price', 'Price')  !!}
-            <input type="hidden" data-ads-price="per-unit">
-            <div data-ads-price="list"> {!! isset($currency->content)?$currency->content:'$' !!} <span>0</span></div>
-        </div>
-    </div>
-
-    <div class="row p-t-50">
-        <div class="col-sm-12 text-right ads-total-price p-b-50" data-ads-price="total-list">Total : {!! isset($currency->content)?$currency->content:'$' !!} <span>0</span></div>
-        <div class="col-sm-12 text-right">
-            <input type="hidden" data-ads_package_total_price="list-unit">
-            <button class="customGoldBtn btn nextBtn cursor" disabled="" data-ads-action="addToCartAdvert">Add To Cart & Continue  </button> <a class="customGoldBtn btn nextBtn" href="{{url('advertiser/cart')}}">Continue  </a>
-        </div>
-        
-       
+            
     </div>
 </div>
+</section>
+
+<section id="membershpipStepSec" class="membershpipStepSec">
+    <div class="container-fluid">
+   
+    <div class="row">
+        <div class="col-xs-12">
+               <div class="hotelInfoSection">
+                    <form>
+                        <div class="row">
+                            <h1>Advertisements Package</h1>
+                            <div class="col-md-6 col-sm-12 no-padding-left">
+                                <div class="form-group">
+                                    
+                                    <input type="hidden" name="ads_pkg_id"> 
+                                    {!! Form::label('ads_category_id', '*Choose Advertise Category')  !!}
+                                    {!! Form::select('ads_category_id', $category_list, null,['class' => 'form-control'])  !!}
+                                    
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12 no-padding-right">
+                                <div class="form-group">
+                                    
+                                    {!! Form::label('ads_position', 'Choose Ads Position')  !!}
+                                    {!! Form::select('ads_position', $ads_position_list, null,['class' => 'form-control'])  !!}
+                                                        
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12 no-padding-left">
+                                <div class="form-group">
+                                   {!! Form::label('ads_pacakge_type', 'Choose Package Type')  !!}
+                                 {!! Form::select('ads_pacakge_type', $ads_pacakge_type, null,['class' => 'form-control'])  !!}
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12 no-padding-right">
+                                <div class="form-group">
+                                        {!! Form::label('ads_start_date', '*Start Date')  !!}
+                                    <div class="input-group date" data-provide="datepicker">
+                                        <input type="text" name="ads_start_date" id="ads_start_date" class="form-control"> 
+                                   
+                                        <div class="input-group-addon">
+                                            <span class="fa fa-calendar"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+
+                            <div class="col-md-6 col-sm-12 no-padding" style="display: none;">
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <label>*Hotel Opening Date</label>
+                                        <div class="input-group date" data-provide="datepicker">
+                                            <input type="text" class="form-control" id="data-date">
+                                            <div class="input-group-addon">
+                                                <span class="fa fa-calendar"></span>
+                                             </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12 no-padding-left">
+                                <div class="form-group" data-ads-days="box" style="display: none;">
+                                    {!! Form::label('ads_days', 'Choose Days')  !!}
+                                    <input type="text" name="ads_days" value="1"   disabled="" class="form-control">
+                                     <input type="hidden" data-ads-days="per-unit"> 
+                                    
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 col-sm-12 no-padding-left">
+                                <div class="form-group text-right">
+
+                                   {!! Form::label('ads_package_price', 'Price')  !!}
+                                    <input type="hidden" data-ads-price="per-unit">
+                                    <div data-ads-price="list">  
+                                        <label>{!! isset($currency->content)?$currency->content:'$' !!} <span>0</span></label>
+                                    </div>
+     
+                                    
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-sm-12 no-padding-left">
+                                <div class="form-group">
+
+                                     <div class="pull-right ads-total-price p-b-50" data-ads-price="total-list">
+                                        <label>Total : {!! isset($currency->content)?$currency->content:'$' !!} <span>0</span></label>
+                                     </div>
+                                    <input type="hidden" data-ads_package_total_price="list-unit">
+
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-sm-12 no-padding-left">
+                            <div class="packagePriceSec">
+
+                                <a href="{{url('advertiser/cart')}}" class="btn btn-cstmBtn pull-right">Continue</a>
+                                <button class="btn btn-cstmBtn pull-right" disabled="" data-ads-action="addToCartAdvert">Add To Cart & Continue  </button>
+                            </div>
+                                
+                            </div>
+                            </div>
+                    </form>
+                </div>
+         </div>
+    </div>
+</div>
+  
+</section>
+@endsection
 
 
+
+
+
+
+{{--For Right Side Icons --}}
+@section('right_side_iconbar')
+
+    @parent
+@show
+
+{{-- For Include Top Bar --}}
+@section('top_search_bar')
+    @parent
+@endsection
+
+{{-- For Include Side Bar --}}
+@section('sidebar')
+    @include('frontend.themes.emporium.layouts.sections.common_sidebar')
+@endsection
+
+{{-- For Include style files --}}
+@section('head')
+    @parent
+    <link href="{{ asset('themes/emporium/css/animate.css') }}" rel="stylesheet">
+    <link href="{{ asset('themes/emporium/css/daterangepicker.css') }}" rel="stylesheet">
+    <link href="{{ asset('themes/emporium/css/calendar.css') }}" rel="stylesheet">
+    <link href="{{ asset('themes/emporium/css/terms-and-conditions.css') }}" rel="stylesheet">
+    <link href="{{ asset('themes/emporium/css/membership-css.css') }}" rel="stylesheet">
+     
+@endsection
+
+{{-- For custom style  --}}
+@section('custom_css')
+
+    @parent
+<style>
+
+.disnon { display:none; }
+
+
+.cart-small-border {
+      height: 2px;
+    width: 200px;
+    background: #ABA07C;
+    margin-top: -2px;
+    z-index: 0;
+}
+.cart-big-border {
+  
+    width: 100%;
+    background: #eaeaea;
+    /* margin-top: -5px; */
+    height: 2px;
+    z-index: 9999;
+}
+.customGoldBtn {
+    background-color: #ABA07C;
+    border: none;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: Geomanist-Regular;
+}
+.customGoldBtn .btn i { margin-left: 0;}
+.p-t-50{padding-top: 50px;}
+.p-b-50{padding-bottom: 50px;}
+.ads-total-price{ font-size: 20px; }
+
+.has-error  {
+    border-color: #a94442;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+.parsley-required{
+
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+
+}
+
+.has-error  {
+    border-color: #a94442;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+
+.cart-small-border {
+      height: 2px;
+    width: 200px;
+    background: #ABA07C;
+    margin-top: -2px;
+    z-index: 0;
+}
+.cart-big-border {
+  
+    width: 100%;
+    background: #eaeaea;
+    /* margin-top: -5px; */
+    height: 2px;
+    z-index: 9999;
+}
+
+</style>
+@endsection
+
+{{-- For Include javascript files --}}
+@section('javascript')
+    @parent
+    <script src="{{ asset('themes/emporium/js/smooth-scroll.js') }}"></script>
+    <script src="{{ asset('sximo/js/parsley.min.js')}}" type="text/javascript"></script>
+
+@endsection
+
+{{-- For custom script --}}
+@section('custom_js')
+    @parent
 <script>
 
 
@@ -114,7 +284,7 @@ function changePrice(){
                     }
                     if($('#ads_pacakge_type').val()=='cpd' && data.space_cpd_price>0){
                         price = data.space_cpd_price;
-						$('input[name="ads_days"]').val(data.space_cpm_num_days);
+                        $('input[name="ads_days"]').val(data.space_cpm_num_days);
                         $('[data-ads-days="per-unit"]').val(data.space_cpm_num_days);
                     }
                     $('[data-ads-price="list"] span').html((price).toFixed(2));
@@ -207,68 +377,10 @@ $(document).ready(function () {
         });
     }
 
-</script>
+</script>   
 @endsection
 
-
-@section('css')
-
-<!-- swiper carousel -->
-<link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/swiper.min.css')}}">
-<!-- style -->
-<link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/style.css')}}" />
-<!-- responsive css -->
-<link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/responsive.css')}}" />
-<!-- Custom style -->
-<link href="{{ asset('sximo/assets/memform/css/custom-ai.css')}}" rel="stylesheet" type="text/css"/>
-<link rel="stylesheet" href="{{ asset('sximo/css/hotel-membership/style.css')}}">
-<style>
-.has-error  {
-    border-color: #a94442;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-}
-
-.cart-small-border {
-      height: 2px;
-    width: 200px;
-    background: #ABA07C;
-    margin-top: -2px;
-    z-index: 0;
-}
-.cart-big-border {
-  
-    width: 100%;
-    background: #eaeaea;
-    /* margin-top: -5px; */
-    height: 2px;
-    z-index: 9999;
-}
-.customGoldBtn {
-    background-color: #ABA07C;
-    border: none;
-    color: #fff;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-family: Geomanist-Regular;
-}
-.customGoldBtn .btn i { margin-left: 0;}
-.p-t-50{padding-top: 50px;}
-.p-b-50{padding-bottom: 50px;}
-.ads-total-price{ font-size: 20px; }
-</style>
+{{-- For footer --}}
+@section('footer')
+    @parent
 @endsection
-
-@section('script')
-
-<script type="text/javascript" src="{{ asset('sximo/assets/memform/js/smooth-scroll.js')}}"></script>
-        <!-- animation -->
-        <script type="text/javascript" src="{{ asset('sximo/assets/memform/js/wow.min.js')}}"></script>
-        <!-- swiper carousel -->
-        <script type="text/javascript" src="{{ asset('sximo/assets/memform/js/swiper.min.js')}}"></script>
-
-        <!-- images loaded -->
-        <script type="text/javascript" src="{{ asset('sximo/assets/memform/js/imagesloaded.pkgd.min.js')}}"></script>
-@endsection
-
-
