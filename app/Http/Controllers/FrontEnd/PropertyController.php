@@ -151,7 +151,14 @@ class PropertyController extends Controller {
 		}
 		
 		$this->data['slug'] = $keyword;
-		
+
+		$this->data['action']=request()->segments(1);
+        $this->data['destination_category'] =0;
+
+		if(request()->segment(1)=='luxury_destinations'){
+            $this->data['destination_category']=$cateObj->parent_category_id;
+        }
+
 		return view('frontend.themes.emporium.properties.list', $this->data);
                     
     }
