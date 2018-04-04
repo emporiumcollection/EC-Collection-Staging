@@ -446,7 +446,7 @@ class PropertyController extends Controller {
 		if(!empty($propertyImage))
 		{
 			$img = $propertyImage->img_src;
-			return response()->file($img);
+			return response()->file($img)->header("Content-Type", 'image/png');;
 		}
 		return false;
 	}
