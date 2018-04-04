@@ -99,7 +99,7 @@
 									<div class="col-md-6">
 									  
 					<?php $position = explode(',',$row['position']);
-					$position_opt = array('grid_results' => 'Grid Page Results' ,  'grid_sidebar' => 'Grid Page Sidebar' ,  'grid_slider' => 'Grid Page Slider' ,  'grid_popup' => 'Grid Page Quick View Pop Up' ,  'detail_sidebar' => 'Detail Page Sidebar' ,  'detail_restaurant_popup' => 'Detail Page Restaurant Pop Up' ,  'detail_spa_popup' => 'Detail Page Spa Pop Up' ,  'detail_bar_popup' => 'Detail Page Bar Pop Up' , ); ?>
+					$position_opt = array('grid_results' => 'Grid Page Results' ,  'grid_sidebar' => 'Grid Page Sidebar' ,  'grid_slider' => 'Grid Page Slider' ,  'grid_popup' => 'Grid Page Quick View Pop Up' ,  'detail_sidebar' => 'Detail Page Sidebar' ,  'detail_restaurant_page' => 'Restaurant Detail Page' ,  'detail_spa_page' => 'Spa Detail Page' ,  'detail_bar_page' => 'Bar Detail Page' ); ?>
 					<select name='position' rows='5' required  class='select2 '  > 
 						<?php 
 						foreach($position_opt as $key=>$val)

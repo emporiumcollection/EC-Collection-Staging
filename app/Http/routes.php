@@ -364,6 +364,7 @@ Route::get('{slug}/restaurant', 'Frontend\RestaurantFrontController@propertyRest
 Route::get('restaurant/{slug}', 'Frontend\RestaurantFrontController@restrurantDetail');
 Route::get('bar/{slug}', 'Frontend\RestaurantFrontController@barDetail');
 Route::get('spa/{slug}', 'Frontend\RestaurantFrontController@spaDetail');
+Route::get('reserve_resto_table_request', 'Frontend\RestaurantFrontController@reserveRestoTableRequest');
 Route::get('pdp/{slug}', 'Frontend\PropertyController@getPropertyDetail');
 Route::get('search', 'Frontend\PropertyController@propertySearch');
 Route::get('our-collection-pages/{slug}/{page}', 'HomeController@getPropertyDetail_pages');

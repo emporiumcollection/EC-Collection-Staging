@@ -305,6 +305,56 @@ class RestaurantFrontController extends Controller {
 		$this->data['spasArr'] = $spasArr;
 		return view('frontend.themes.emporium.properties.spa-detail', $this->data);
 	}
+	
+	function reserveRestoTableRequest(Request $request)
+	{
+		$rules['restoid'] = 'required';
+		$rules['firstname'] = 'required';
+		$rules['lastname'] = 'required';
+		$rules['emailaddress'] = 'required';
+		$rules['reserve_day'] = 'required';
+		$rules['reserve_month'] = 'required';
+		$rules['reserve_year'] = 'required';
+		$rules['reserve_hour'] = 'required';
+		$rules['reserve_minute'] = 'required';
+		$rules['totalguest'] = 'required';
+		$rules['agree'] = 'required';
+		$validator = Validator::make($request->all(), $rules);	
+		if ($validator->passes()) {
+			
+			$resArr = \DB::table('tb_restaurants')->where('id', $request->restoid)->first();
+			if(!empty($resArr))
+			{
+				$emlData['to'] 	 = $resArr->reservation_email;
+				$emlData['frmemail'] = $request->input('emailaddress');
+				$emlData['subject'] = 'Table Reservation request';
+				$emessage = '<p><b>First name : '.$request->input('firstname').'</b></p>';
+				$emessage .= '<p><b>last name : '.$request->input('lastname').'</b></p>';
+				$emessage .= '<p><b>Date : '.$request->input('reserve_day').' '.$request->input('reserve_month').' '. $request->input('reserve_year').'</b></p>';
+				$emessage .= '<p><b>Time : '.$request->input('reserve_hour').' '.$request->input('reserve_minute').'</b></p>';
+				$emessage .= '<p><b>Guests : '.$request->input('totalguest').'</b></p>';
+				$emessage .= '<p><b>Message : '.$request->input('query').'</b></p>';
+				$edata['emessage'] = $emessage;
+				
+				\Mail::send('user.emails.contact', $edata, function($message) use ($emlData)
+				{
+					$message->from($emlData['frmemail'], CNF_APPNAME);
+
+					$message->to( $emlData['to']);
+					
+					$message->subject($emlData['subject']);
+				});
+				
+				$rep['status'] = 'success';
+				return json_encode($rep);
+			}
+		}
+		else {
+			$rep['status'] = 'error';
+			$rep['errors'] = $validator->errors()->all();
+			return json_encode($rep);
+		}
+	}
 
 
 }
