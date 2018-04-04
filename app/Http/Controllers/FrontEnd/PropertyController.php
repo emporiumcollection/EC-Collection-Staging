@@ -446,9 +446,7 @@ class PropertyController extends Controller {
 		if(!empty($propertyImage))
 		{
 			$img = $propertyImage->img_src;
-			ob_end_clean();
-			 $this->output->set_header('Content-Type: image/jpeg');
-			 readfile($img);
+			return response()->file($img)
 		}
 		return false;
 	}
