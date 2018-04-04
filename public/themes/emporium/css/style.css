@@ -798,12 +798,10 @@ border-radius:0;
     line-height: 1.42857143;
     font-weight: bold;
 }
-.sliderSection .carousel-caption h1 a {
+.sliderSection .carousel-caption h1 a, .sliderSection .carousel-caption h1 a:hover {
   color: #ABA07C;
 }
-.sliderSection .carousel-caption h1 a:hover {
-  color: #337ab7;
-}
+
 .sliderSection .left.carousel-control {
   right: 110px;
 }
