@@ -5,7 +5,7 @@ use App\Http\Controllers\ContainerController;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 use App\Http\Controllers\Controller;
 use App\User;
-use DB,Validator, Input, Redirect;
+use DB,Validator, Input, Redirect, CustomQuery;
 class PropertyController extends Controller {
 
     public function __construct() {
@@ -438,5 +438,19 @@ class PropertyController extends Controller {
 
         return response()->json($this->data);
     }
+	
+	public function getPropertyImageById(Request $request)
+	{
+		$propid = $request->propid;
+		$propertyImage = CustomQuery::getPropertyImage($propid);
+		if(!empty($propertyImage))
+		{
+			$img = $propertyImage->img_src;
+			ob_end_clean();
+			 $this->output->set_header('Content-Type: image/jpeg');
+			 readfile($img);
+		}
+		return false;
+	}
 
 }
