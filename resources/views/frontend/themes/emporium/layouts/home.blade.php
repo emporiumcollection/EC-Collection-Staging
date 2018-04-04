@@ -128,6 +128,8 @@
     <script type="text/javascript">
         $(document).ready(function () {
 
+            $('[data-action="search-by-date"]').trigger('click');
+
             /*Login BUTTON  Click Action Here*/
             $("#loginFormAction").submit(function (event) {
                 event.preventDefault();

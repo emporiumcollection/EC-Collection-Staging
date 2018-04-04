@@ -86,16 +86,37 @@
                                                                          href="javascript:void(0)">Login</a><br/>or<br/>Become a Member <a class="registerSecForMob" href="javascript:void(0)">Register here</a>
                 </div>
             @endif
-            <div class="hide" data-option="search-by-date">
+            <div class="hide"  data-option="search-by-date">
                 <form action="{{url('search')}}" method="get">
+                    <input type="hidden" name="action" value="bydate">
                     {{--*/
                             $setDateArvStr = date('j-n-Y');
                             $setDateDepStr = date('j-n-Y',strtotime('+1 day'));
                             $setDateArvArr = explode('-',$setDateArvStr);
                             $setDateDepArr = explode('-',$setDateDepStr);
+                            $setDateDefaultArv = date('d-m-Y');
+                            $setDateDefaultDep = date('d-m-Y',strtotime('+1 day'));
                     /*--}}
-                    <input name="arrive" type="hidden" value="{{date('d-m-Y')}}">
-                    <input name="departure" type="hidden" value="{{date('d-m-Y', strtotime('+1 day'))}}">
+                    @if(isset($_GET['action']) && $_GET['action']=='bydate' )
+                        @if(isset($_GET['arrive']) && $_GET['arrive']!='')
+                            {{--*/
+                                $setDateArvStr = date('j-n-Y',strtotime($_GET['arrive']));
+                                $setDateArvArr = explode('-',$setDateArvStr);
+                               $setDateDefaultArv = date('d-m-Y',strtotime($_GET['arrive']));
+
+                            /*--}}
+                        @endif
+                        @if(isset($_GET['departure']) && $_GET['departure']!='')
+                            {{--*/
+
+                               $setDateDepStr = date('j-n-Y',strtotime($_GET['departure']));
+                               $setDateDepArr = explode('-',$setDateDepStr);
+                               $setDateDefaultDep = date('d-m-Y',strtotime($_GET['departure']));
+                            /*--}}
+                        @endif
+                    @endif
+                    <input name="arrive" type="hidden" value="{{$setDateDefaultArv}}">
+                    <input name="departure" type="hidden" value="{{$setDateDefaultDep}}">
                     <ul class="mobilemenulist">
                         <li>
                             <p>Emporium Voyage is your deal, vogue vacation planner!</p>
