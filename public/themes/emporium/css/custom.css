@@ -22,8 +22,8 @@
     display: inline-block;
     width: 100%;
 }
-.mobilemenulist li a.menu_item{    float: left;
-    width: 80%;}
+.mobilemenulist li a.menu_item{   /* float: left;
+    width: 80%;*/}
 a.external-link{ float: right;width:20%; text-align: center;}
 
 
@@ -64,3 +64,6 @@ input.error {
     font-size: 15px;
     margin-top: 5px;
 }
+
+.sliderSection .carousel-inner>.item, #restaurantSlider .carousel-inner, #search-result-slider .carousel-inner .item{ background-color: rgba(37,37,37,0.2);}
+.mobilemenulist .navheadimage{border-top:none; }

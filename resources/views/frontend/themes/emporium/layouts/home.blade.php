@@ -268,6 +268,6 @@
     </script>
 
 @show
-{{$slug}}
+
 </body>
 </html>
