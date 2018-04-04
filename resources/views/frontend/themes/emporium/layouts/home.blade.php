@@ -133,7 +133,7 @@
             @endif
 
             // Open Left Navigation For Collection on Page Load
-            @if(Request::segment(1)=='luxurytravel' && Request::segment(1)=='Hotel')
+            @if(Request::segment(1)=='luxurytravel' && Request::segment(2)=='Hotel')
             $('[data-action="select-collection"]').trigger('click');
             @endif
 
