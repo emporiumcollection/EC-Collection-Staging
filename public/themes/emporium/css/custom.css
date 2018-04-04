@@ -90,7 +90,7 @@ input.error {
     border-top: none;
 }
 
-.headoverlay .destinationTitle {
+.mobilemenulist .navheadimage .headingoverlay .destinationTitle {
     position: absolute;
     bottom: -1px;
     background: rgba(0, 0, 0, .5);
@@ -98,7 +98,7 @@ input.error {
     padding: 23px 25px;
 }
 
-.headoverlay .hashTag {
+.mobilemenulist .navheadimage .headingoverlay .hashTag {
     color: #ABA07C;
     font-size: 12px;
 }
