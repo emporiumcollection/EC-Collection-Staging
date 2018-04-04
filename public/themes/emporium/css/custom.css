@@ -66,10 +66,7 @@ input.error {
 }
 
 .sliderSection .carousel-inner>.item,
-#restaurantSlider .carousel-inner,
-#search-result-slider .carousel-inner .item,
-.mobilemenulist .navheadimage .headingoverlay,
-.hotel-card figure { background-color: rgba(37,37,37,0.2);}
+#restaurantSlider .carousel-inner, #search-result-slider .carousel-inner .item, .mobilemenulist .navheadimage .headingoverlay{ background-color: rgba(37,37,37,0.2);}
 .mobilemenulist .navheadimage{border-top:none; }
 
 .headoverlay .destinationTitle{
