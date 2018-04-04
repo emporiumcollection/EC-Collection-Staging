@@ -193,6 +193,16 @@
     @parent
 <style>
 
+.hrDotted {
+  border:none;
+  border-top:1px dotted #f00;
+  color:#fff;
+  background-color:#fff;
+  height:1px;
+  width:100%;
+
+}
+
 .disnon { display:none; }
 .hotelInfoSection {
     display: inline-block;
