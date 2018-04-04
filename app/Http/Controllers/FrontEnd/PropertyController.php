@@ -445,7 +445,10 @@ class PropertyController extends Controller {
 		$propertyImage = CustomQuery::getPropertyImage($propid);
 		if(!empty($propertyImage))
 		{
-			return $propertyImage->img_src;
+			$img = $propertyImage->img_src;
+			ob_end_clean();
+			 $this->output->set_header('Content-Type: image/jpeg');
+			 readfile($img);
 		}
 		return false;
 	}
