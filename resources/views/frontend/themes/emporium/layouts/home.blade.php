@@ -127,8 +127,20 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-
+            // Open Left Navigation For Search By Date on Page Load
+            @if(isset($_GET['action']) && $_GET['action']=='bydate' )
             $('[data-action="search-by-date"]').trigger('click');
+            @endif
+
+            // Open Left Navigation For Collection on Page Load
+            @if(Request::segment(1)=='luxurytravel' && Request::segment(1)=='Hotel')
+            $('[data-action="select-collection"]').trigger('click');
+            @endif
+
+            // Open Left Navigation For Experience on Page Load
+            @if(Request::segment(1)=='experience')
+            $('[data-action="select-experience"]').trigger('click');
+            @endif
 
             /*Login BUTTON  Click Action Here*/
             $("#loginFormAction").submit(function (event) {
