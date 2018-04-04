@@ -159,7 +159,7 @@
 					var dataGridHtml ='<div class="col-sm-6 col-md-6 col-lg-4">';
 						dataGridHtml +='<div class="hotel-card">';
 						dataGridHtml +='<figure>';
-						var imgscr = "{{URL::to('propertyimagebyid')}}/"+obj.id;
+						var imgscr = BaseURL + '/propertyimagebyid/'+obj.id;
 						dataGridHtml += '<img src="' + imgscr + '" />';
 						dataGridHtml +='<a href="'+obj.property_slug+'" class="content-overlay">';
 						dataGridHtml +='<h5>'+obj.property_name+'</h5>';
