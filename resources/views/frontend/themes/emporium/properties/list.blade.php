@@ -159,9 +159,8 @@
 					var dataGridHtml ='<div class="col-sm-6 col-md-6 col-lg-4">';
 						dataGridHtml +='<div class="hotel-card">';
 						dataGridHtml +='<figure>';
-						if(obj.img_src!=undefined && obj.img_src!="") {
-							dataGridHtml += '<img alt="' + obj.file_name + '" src="' + obj.img_src + '" />';
-						}
+						var imgscr = "{{URL::to('propertyimagebyid')}}/"+obj.id;
+						dataGridHtml += '<img src="' + imgscr + '" />';
 						dataGridHtml +='<a href="'+obj.property_slug+'" class="content-overlay">';
 						dataGridHtml +='<h5>'+obj.property_name+'</h5>';
 						if(obj.category_name!=undefined && obj.category_name!=""){

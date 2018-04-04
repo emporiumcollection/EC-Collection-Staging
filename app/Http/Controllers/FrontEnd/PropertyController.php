@@ -438,5 +438,16 @@ class PropertyController extends Controller {
 
         return response()->json($this->data);
     }
+	
+	public function getPropertyImageById(Request $request)
+	{
+		$propid = $request->propid;
+		$propertyImage = CustomQuery::getPropertyImage($propid);
+		if(!empty($propertyImage))
+		{
+			return $propertyImage->img_src;
+		}
+		return false;
+	}
 
 }
