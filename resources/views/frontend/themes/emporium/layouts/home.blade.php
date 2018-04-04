@@ -138,7 +138,7 @@
             @endif
 
             // Open Left Navigation For Experience on Page Load
-            @if(Request::segment(1)=='experience')
+            @if(Request::segment(1)=='luxury_experience')
             $('[data-action="select-experience"]').trigger('click');
             @endif
 
