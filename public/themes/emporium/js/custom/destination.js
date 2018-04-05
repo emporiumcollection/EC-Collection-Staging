@@ -17,6 +17,22 @@ $(document).ready(function () {
 
     });
 	
+	/*
+     * For Back to Destination of Left Sidebar
+     */
+    $(document).on('click', '[data-option-action="back"][data-option-action-type="destination"]', function () {
+      
+        var datObj = {};
+        datObj.catID = $(this).attr('data-id');
+       
+        var params = $.extend({}, doAjax_params_default);
+        params['url'] = BaseURL + '/destination/destinatinos-ajax';
+        params['data'] = datObj;
+        params['successCallbackFunction'] = renderDestination;
+        doAjax(params);
+       
+    });
+	
 	 /*
      * For Select Destination of Left Sidebar in youtube social page
      */
@@ -36,9 +52,9 @@ $(document).ready(function () {
     });
 
     /*
-     * For Back to Destination of Left Sidebar
+     * For Back to Destination of Left Sidebar in youtube social page
      */
-    $(document).on('click', '[data-option-action="back"][data-option-action-type="destination"]', function () {
+    $(document).on('click', '[data-option-action="back"][data-option-action-type="socialdestination"]', function () {
       
         var datObj = {};
         datObj.catID = $(this).attr('data-id');
@@ -46,7 +62,7 @@ $(document).ready(function () {
         var params = $.extend({}, doAjax_params_default);
         params['url'] = BaseURL + '/destination/destinatinos-ajax';
         params['data'] = datObj;
-        params['successCallbackFunction'] = renderDestination;
+        params['successCallbackFunction'] = renderDestinationSocialYoutube;
         doAjax(params);
        
     });
@@ -142,7 +158,7 @@ function renderDestinationSocialYoutube(dataObj) {
         data.main_title = 'Home';
         data.sub_title = 'Back To Destination';
         data.id = dataObj.current_category.parent_category_id;
-        data.type = 'destination';
+        data.type = 'socialdestination';
         var imagePath = BaseURL+'/uploads/category_imgs/'+dataObj.current_category.category_image;
         if(dataObj.current_category.category_image==''){
             imagePath = BaseURL+'/themes/emporium/images/mountain-image.jpg';
