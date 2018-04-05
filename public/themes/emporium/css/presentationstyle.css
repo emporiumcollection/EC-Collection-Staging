@@ -348,8 +348,23 @@ section {
 }
 
 .thankyousection h2{font-size:30px; color:#fff;}
-
-
+.fullWidthImg {
+	background-image: url(../images/hotel-image.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 100vh !important;
+	position: relative;
+}
+.fullWidthImg::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(37, 37, 37, 0.2);
+    height: 100%;
+    width: 100%;
+    content: "";
+}
 
 
 /*Media Queries starts here*/
@@ -422,6 +437,15 @@ section {
 	}
 	.imageSection {
 		height: 200px;
+	}
+	.contacSecInner {
+		padding: 40px 20px 0;
+	}
+	.contacSecInner h3 {
+	    font-size: 20px;
+	}
+	.contacSecInner h3 span {
+		display: inline-block;
 	}
 	
 }

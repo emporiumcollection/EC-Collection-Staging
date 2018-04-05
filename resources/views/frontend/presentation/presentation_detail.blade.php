@@ -45,7 +45,8 @@
       @foreach($presentationslider as $pslider)
 
         <li>
-            <a href="#slidepresentation-{{ $countersection }}" data-number="{{ $countersection }}" @if( $countersection==1) class="is-selected" @endif >
+            <a href="#slidepresentation-{{ $countersection }}" data-number="{{ $countersection }}" @if( $countersection==1) class="is-selected" @else  
+            class="" @endif >
               <span class="cd-dot"></span>
             </a>
           </li>
@@ -86,6 +87,12 @@
      {{--*/ $countersectionsub = 1 /*--}}
       @foreach($presentationslider as $pslider)
 
+      @if($pslider->slide_type=="ImageOnly" && $pslider->slider_img!="")
+         <section id="slidepresentation-{{ $countersectionsub }}" class="cd-section fullWidthImg" style="background-image: url({{url()}}/uploads/presentation/{{$pslider->slider_img}});">
+          </section>
+
+
+      @else
       <section id="slidepresentation-{{ $countersectionsub }}" class="cd-section">
         <div class="container-fluid">
          <div class="row">
@@ -116,7 +123,9 @@
            </div>
         </div>
       </section>
+@endif
 
+ 
      {{--*/ $countersectionsub++ /*--}}
      @endforeach
     @if($presentatiomode==1) 
