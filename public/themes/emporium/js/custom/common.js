@@ -99,9 +99,48 @@ $(document).ready(function () {
 
 
     });
+	
+	$(document).on('change', '[data-action="search_by_type"]', function () {
+        var datObj = {};
+        datObj.type = $('select[data-action="search_by_type"]').val();
+		datObj.city = $('select[data-action="search_by_city"]').val();
+       
+        var params = $.extend({}, doAjax_params_default);
+        params['url'] = BaseURL + '/resturantspabar_by_typecity_ajax';
+        params['data'] = datObj;
+        params['successCallbackFunction'] = renderResturantSpaBarByTypeCity;
+        doAjax(params);
+    });
     
-
+	$(document).on('change', '[data-action="make-reservation"]', function () {
+        var datObj = {};
+		datObj.type = $('select[data-action="search_by_type"]').val();
+		datObj.city = $('select[data-action="search_by_city"]').val();
+        datObj.searchid = $('select[data-action="search_by_name"]').val();
+		
+        var params = $.extend({}, doAjax_params_default);
+        params['url'] = BaseURL + '/resturantspabarSearch_ajax';
+        params['data'] = datObj;
+        params['successCallbackFunction'] = renderResturantSpaBarSearch;
+        doAjax(params);
+    });
+	
 });
+
+function renderResturantSpaBarByTypeCity(dataObj) {
+
+    var selectHtml = '<opyion value="">- Select -</option>';
+    $(dataObj.records).each(function (i, val) {
+        selectHtml += '<option value="' + val.id + '">' + val.title + '</option>';
+    });
+
+    $('[data-action="search_by_name"]').html(selectHtml);
+}
+
+function renderResturantSpaBarSearch(dataObj) {
+
+    
+}
 
 /*
  * For Hide All Option on Left Side Bar

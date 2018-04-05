@@ -16,6 +16,24 @@ $(document).ready(function () {
         doAjax(params);
 
     });
+	
+	 /*
+     * For Select Destination of Left Sidebar in youtube social page
+     */
+    $(document).on('click', '[data-action="select-destination-youtube"]', function () {
+       
+        var datObj = {};
+        datObj.catID = 0;
+        if ($(this).attr('data-id') > 0) {
+            datObj.catID = $(this).attr('data-id');
+        }
+        var params = $.extend({}, doAjax_params_default);
+        params['url'] = BaseURL + '/destination/destinatinos-ajax';
+        params['data'] = datObj;
+        params['successCallbackFunction'] = renderDestinationSocialYoutube;
+        doAjax(params);
+
+    });
 
     /*
      * For Back to Destination of Left Sidebar
@@ -92,6 +110,60 @@ function renderDestination(dataObj) {
         destinationHtml += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.category_name + '</a></li>';
              //destinationHtml += '<li><a class="cursor menu_item" data-action="select-destination" data-id="' + val.id + '">' + val.category_name + '</a>';
        // destinationHtml += '<a href="'+linkMenu+'" class="external-link"><i class="fa fa-external-link" aria-hidden="true"></i></a></li>';
+         
+       
+       });
+    if (dataObj.current_category != undefined) {
+        destinationHtml += '</ul></li>';
+    }
+
+    $('[data-option="selected-option-list"]').html(destinationHtml);
+    $('[data-option="global"]').removeClass('hide');
+    $('[data-option="child-global"]').removeClass('hide');
+    $('[data-option="selected-option-list"]').removeClass('hide');
+
+}
+
+/*
+ * For Get Response of social youtube Destination Ajax
+ */
+function renderDestinationSocialYoutube(dataObj) {
+    if(dataObj.dests==undefined){
+        //location.href = BaseURL+'/luxury_destinations/'+dataObj.path;
+        //return false;
+    }
+    var data = {};
+    data.main_title = 'Select Your Destination';
+    data.sub_title = 'Home';
+    data.id = 0;
+    data.type = 'home';
+    var destinationHtml = '';
+    if (dataObj.current_category != undefined) {
+        data.main_title = 'Home';
+        data.sub_title = 'Back To Destination';
+        data.id = dataObj.current_category.parent_category_id;
+        data.type = 'destination';
+        var imagePath = BaseURL+'/uploads/category_imgs/'+dataObj.current_category.category_image;
+        if(dataObj.current_category.category_image==''){
+            imagePath = BaseURL+'/themes/emporium/images/mountain-image.jpg';
+        }
+        destinationHtml += '<li>';
+        destinationHtml += '<div class="navheadimage">';
+        destinationHtml += '<img src="'+imagePath+'" alt="" class="mCS_img_loaded">';
+        destinationHtml += '<div class="headingoverlay"><span class="destinationTitle">' + dataObj.current_category.category_name + '</span><br><span class="hashTag"></span></div></div>';
+        destinationHtml += '</li>';
+        destinationHtml += '<li><ul class="mobilesublinks">';
+    }
+
+     hideAllOption();
+    putDataOnLeft(data);
+    
+    
+    $(dataObj.dests).each(function (i, val) {
+        var  linkMenu = BaseURL+'/social-youtube?scy='+val.category_alias;
+       // destinationHtml += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.category_name + '</a></li>';
+        destinationHtml += '<li><a class="cursor menu_item" data-action="select-destination-youtube" data-id="' + val.id + '">' + val.category_name + '</a>';
+        destinationHtml += '<a href="'+linkMenu+'" class="external-link"><i class="fa fa-external-link" aria-hidden="true"></i></a></li>';
          
        
        });

@@ -563,7 +563,7 @@ class CustomerController extends Controller {
         
         
 
-        $this->data['pageslider'] = \DB::table('tb_pages_sliders')->select( 'slider_title', 'slider_description', 'slider_img', 'slider_link', 'slider_video', 'slide_type')->where('slider_page_id', 107)->get();
+        $this->data['pageslider'] = \DB::table('tb_sliders')->select( 'slider_title', 'slider_description', 'slider_img', 'slider_link', 'slider_video', 'slide_type')->where('slider_category', 'Customer Dashboard')->get();
 
         $this->data2 = array(
             'pageTitle' => 'My Profile',
@@ -1054,7 +1054,7 @@ return Redirect::to('customer/profile')->with('message', \SiteHelpers::alert('er
         if (!\Auth::check())
             return redirect('customer/login');
 		
-		$this->data['pageslider'] = '';
+		$this->data['pageslider'] = \DB::table('tb_sliders')->select( 'slider_title', 'slider_description', 'slider_img', 'slider_link', 'slider_video', 'slide_type')->where('slider_category', 'Customer Dashboard')->get();
 
         $this->data['def_currency'] = \DB::table('tb_settings')->where('key_value', 'default_currency')->first();
         
