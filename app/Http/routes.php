@@ -366,6 +366,8 @@ Route::get('restaurant/{slug}', 'Frontend\RestaurantFrontController@restrurantDe
 Route::get('bar/{slug}', 'Frontend\RestaurantFrontController@barDetail');
 Route::get('spa/{slug}', 'Frontend\RestaurantFrontController@spaDetail');
 Route::get('reserve_resto_table_request', 'Frontend\RestaurantFrontController@reserveRestoTableRequest');
+Route::post('resturantspabar_by_typecity_ajax', 'Frontend\RestaurantFrontController@resturantSpaBarByTypeCityAjax');
+Route::post('resturantspabarSearch_ajax', 'Frontend\RestaurantFrontController@resturantSpaBarSearchAjax');
 Route::get('pdp/{slug}', 'Frontend\PropertyController@getPropertyDetail');
 Route::get('search', 'Frontend\PropertyController@propertySearch');
 Route::get('our-collection-pages/{slug}/{page}', 'HomeController@getPropertyDetail_pages');

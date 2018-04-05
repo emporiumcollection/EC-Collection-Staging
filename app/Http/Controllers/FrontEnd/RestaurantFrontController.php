@@ -355,6 +355,73 @@ class RestaurantFrontController extends Controller {
 			return json_encode($rep);
 		}
 	}
+	
+	public function resturantSpaBarByTypeCityAjax(Request $request)
+	{
+		$res = array();
+		$type = $request->type;
+		$city = $request->city;
+		if($type!='' && $city!='')
+		{
+			$srchtbl = 'tb_restaurants';
+			if($type=="bar")
+			{
+				$srchtbl = 'tb_bars';
+			}
+			elseif($type=="spa")
+			{
+				$srchtbl = 'tb_spas';
+			}
+			
+			$searchtable = \DB::table($srchtbl)->select('id','title','alias')->('category_id', $city)->get();
+			if(!empty($searchtable))
+			{
+				$res['status'] = 'success';
+                $res['records'] = $searchtable;
+			}
+		}
+		else
+		{
+			$res['status'] = 'error';
+			$res['errors'] = 'Please select city first!';
+		}
+		
+		return response()->json($res);
+	}
+	
+	public function resturantSpaBarSearchAjax(Request $request)
+	{
+		$res = array();
+		$type = $request->type;
+		$city = $request->city;
+		$searchid = $request->searchid;
+		if($type!='' && $city!='' && $searchid!='')
+		{
+			$srchtbl = 'tb_restaurants';
+			if($type=="bar")
+			{
+				$srchtbl = 'tb_bars';
+			}
+			elseif($type=="spa")
+			{
+				$srchtbl = 'tb_spas';
+			}
+			
+			$searchrecord = \DB::table($srchtbl)->('id', $searchid)->first();
+			if(!empty($searchrecord))
+			{
+				$res['status'] = 'success';
+                $res['record'] = $searchrecord;
+			}
+		}
+		else
+		{
+			$res['status'] = 'error';
+			$res['errors'] = 'Not Found!';
+		}
+		
+		return response()->json($res);
+	}
 
 
 }
