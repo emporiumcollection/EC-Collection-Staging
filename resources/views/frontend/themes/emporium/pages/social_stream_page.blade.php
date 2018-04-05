@@ -1,6 +1,6 @@
 @extends('frontend.themes.emporium.layouts.home')
 {{--  For Title --}}
-@section('title', 'Youtube Channel')
+@section('title', 'Social Wall')
 {{-- For Meta Keywords --}}
 @section('meta_keywords', '')
 {{-- For Meta Description --}}
@@ -33,7 +33,7 @@
 					{{--*/ $vimeoArr[] = $socialpropertiesArr->social_vimeo; /*--}}
 				@endif
 				
-				<p>You are viewing the social activity of : {{$socialpropertiesArr->property_name}}</p>
+				<p style="text-align:center; color:#ABA07C;">You are viewing the social activity of : {{$socialpropertiesArr->property_name}}</p>
 			@endif
 			<div id="social-stream"></div>
 		</div>
@@ -60,7 +60,7 @@
 {{-- For Include style files --}}
 @section('head')
     @parent
-	<link rel="stylesheet" type="text/css" href="{{ asset('sximo/jquery_social_stream/inc/layout.css')}}" media="all" />
+	
 	<link rel="stylesheet" type="text/css" href="{{ asset('sximo/jquery_social_stream/css/dcsns_wall.css')}}" media="all" />
 @endsection
 
