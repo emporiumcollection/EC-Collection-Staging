@@ -463,7 +463,7 @@ ul.EVMenu li.smallEV {
 .hotel-card:hover .content-overlay{bottom:0; }
 .hotel-card:hover figure img{transform:scale(1.1)}
 .hotel-card .title{overflow:hidden;}
-.hotel-card .title h3{font-size: 18px; font-weight:600;font-family: 'EB Garamond', serif; display:inline-block; margin:10px 0;}
+.hotel-card .title h3{font-size: 18px; font-weight:400;font-family: 'geomanist_regularregular', serif; display:inline-block; margin:10px 0;}
 .hotel-card .title h3 a{color: #000;}
 .hotel-card .cartlink{float:right; margin-top:10px; font-size:18px; color:#000;}
 .hotel-card .quicklinks li a{color:#ABA07C;-webkit-transition: all 0.5s ease 0s;-o-transition: all 0.5s ease 0s; transition:all 0.5s ease 0s}
@@ -798,12 +798,10 @@ border-radius:0;
     line-height: 1.42857143;
     font-weight: bold;
 }
-.sliderSection .carousel-caption h1 a {
+.sliderSection .carousel-caption h1 a, .sliderSection .carousel-caption h1 a:hover {
   color: #ABA07C;
 }
-.sliderSection .carousel-caption h1 a:hover {
-  color: #337ab7;
-}
+
 .sliderSection .left.carousel-control {
   right: 110px;
 }
@@ -1280,7 +1278,7 @@ border-radius:0;
 .mobilenavheader h3{font-size:16px; color:#fff; margin:0 0 25px 0}
 .searchourcollectonnav, .searchbydatenav, .mobilemainnav, .selectdestinationnav, .selectafricanav, .selectexperiencenav, .companynav, .selectafricanavchild, .restaurantnav, .searchbyfilternav, .destinationresultnav{display:none;}
 .homelinknav{padding: 10px 0 5px 0; margin-top:10px;color: #fff;display: inline-block;}
-.homelinknav:hover{color:#fff;}
+.homelinknav:hover, .homelinknav:focus{color:#fff; outline:none;}
 .homelinknav:hover i.fa{margin-right:8px;}
 .homelinknav i.fa{margin-right:5px; font-size:18px; transition: all .3s ease 0s;-webkit-transition: all .3s ease 0s;}
 .openmobilemenu{display:block;}

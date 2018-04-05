@@ -12,7 +12,6 @@
     user-select: none;
 }
 
-
 .show {
     display: block;
 }
@@ -22,19 +21,28 @@
     display: inline-block;
     width: 100%;
 }
-.mobilemenulist li a.menu_item{   /* float: left;
-    width: 80%;*/}
-a.external-link{ float: right;width:20%; text-align: center;}
 
+.mobilemenulist li a.menu_item {
+    /* float: left;
+     width: 80%;*/
+}
+
+a.external-link {
+    float: right;
+    width: 20%;
+    text-align: center;
+}
 
 #error-msg {
-  color: red;
+    color: red;
 }
+
 #valid-msg {
-  color: #00C900;
+    color: #00C900;
 }
+
 input.error {
-  border: 1px solid #FF7C7C;
+    border: 1px solid #FF7C7C;
 }
 
 .ai-forgot-password-form-error-msg {
@@ -42,48 +50,60 @@ input.error {
     font-size: 15px;
     margin-top: 5px;
 }
+
 .ai-sign-up-form-error-msg {
     color: #ffec0cf2;
     font-size: 15px;
     margin-top: 5px;
 }
+
 .ai-forgot-password-form-success-msg {
     color: #ffec0cf2;
     font-size: 15px;
 }
+
 .ai-login-form-success-msg {
     color: #0d870d;
     font-size: 15px;
 }
+
 .ai-sign-up-form-success-msg {
     color: #0d870d;
     font-size: 15px;
 }
+
 .ai-login-form-error-msg {
     color: #ffec0cf2;
     font-size: 15px;
     margin-top: 5px;
 }
 
-.sliderSection .carousel-inner>.item,
+.sliderSection .carousel-inner > .item,
 #restaurantSlider .carousel-inner,
 #search-result-slider .carousel-inner .item,
 .mobilemenulist .navheadimage .headingoverlay,
-.hotel-card figure { background-color: rgba(37,37,37,0.2);}
-.mobilemenulist .navheadimage{border-top:none; }
+.hotel-card figure {
+    background-color: rgba(37, 37, 37, 0.2);
+}
 
-.headoverlay .destinationTitle{
+.mobilemenulist .navheadimage {
+    border-top: none;
+}
+
+.mobilemenulist .navheadimage .headingoverlay .destinationTitle {
     position: absolute;
     bottom: -1px;
-    background: rgba(0,0,0,.5);
+    background: rgba(0, 0, 0, .5);
     width: 100%;
     padding: 23px 25px;
 }
-.headoverlay .hashTag {
+
+.mobilemenulist .navheadimage .headingoverlay .hashTag {
     color: #ABA07C;
     font-size: 12px;
 }
-.mobilemenulist .navheadimage .headingoverlay{
+
+.mobilemenulist .navheadimage .headingoverlay {
     padding-left: 0;
     padding-top: 0;
     top: 0;
