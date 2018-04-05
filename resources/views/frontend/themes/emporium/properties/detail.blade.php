@@ -17,17 +17,21 @@
                         <!-- Wrapper for slides -->
                         <div class="carousel-inner">
                             @foreach($propertyDetail['propimage'] as $propimg)
+
+                                @if(file_exists($propertyDetail['propimage_containerpath'].$propimg->file_name))
                                 {{--*/ $thactualsize = getimagesize($propertyDetail['propimage_containerpath'].$propimg->file_name); /*--}}
-                                @if($thactualsize[0]>$thactualsize[1])
-                                    <div class="item {{($propertyDetail['propimage'][0]==$propimg) ? 'active' : ''}}">
-                                        <img src="{{$propertyDetail['propimage_thumbpath'].$propimg->file_name}}"
-                                             alt="{{$propertyDetail['data']->property_name}}">
-                                        <div class="carousel-caption">
-                                            <h1>{{$propertyDetail['data']->property_name}}</h1>
-                                            <p>{{ $propertyDetail['data']->property_usp }}</p>
-                                        </div>
-                                    </div>
+                                        @if($thactualsize[0]>$thactualsize[1])
+                                            <div class="item {{($propertyDetail['propimage'][0]==$propimg) ? 'active' : ''}}">
+                                                <img src="{{$propertyDetail['propimage_thumbpath'].$propimg->file_name}}"
+                                                     alt="{{$propertyDetail['data']->property_name}}">
+                                                <div class="carousel-caption">
+                                                    <h1>{{$propertyDetail['data']->property_name}}</h1>
+                                                    <p>{{ $propertyDetail['data']->property_usp }}</p>
+                                                </div>
+                                            </div>
+                                        @endif
                                 @endif
+                               
                             @endforeach
                         </div>
 
