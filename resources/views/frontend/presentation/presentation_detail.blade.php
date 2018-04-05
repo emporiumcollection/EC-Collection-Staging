@@ -57,9 +57,9 @@
 
 
       @if($presentatiomode==1)  
-      {{--*/ $countersection++ /*--}}
-      <li>
-        <a href="#thanksSection" data-number="{{ $countersection }} ">
+      {{--*/ $countersection=$countersection /*--}}
+      <li> 
+        <a href="#thanksSection" data-number="{{ $countersection }} "  class="">
           <span class="cd-dot"></span>
         </a>
       </li>
