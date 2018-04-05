@@ -373,7 +373,7 @@ class RestaurantFrontController extends Controller {
 				$srchtbl = 'tb_spas';
 			}
 			
-			$searchtable = \DB::table($srchtbl)->select('id','title','alias')->('category_id', $city)->get();
+			$searchtable = \DB::table($srchtbl)->select('id','title','alias')->where('category_id', $city)->get();
 			if(!empty($searchtable))
 			{
 				$res['status'] = 'success';
@@ -407,7 +407,7 @@ class RestaurantFrontController extends Controller {
 				$srchtbl = 'tb_spas';
 			}
 			
-			$searchrecord = \DB::table($srchtbl)->('id', $searchid)->first();
+			$searchrecord = \DB::table($srchtbl)->where('id', $searchid)->first();
 			if(!empty($searchrecord))
 			{
 				$res['status'] = 'success';
