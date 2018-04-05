@@ -98,7 +98,7 @@
                         @endif
                     </div>
                 </div>
-                {{--*/ $sidebarads = CommonHelper::getSidebarAds('youtube_channel_page', $catid) /*--}}
+                {{--*/ $sidebarads = CommonHelper::getSidebarAds('social_media_page', 'Hotel') /*--}}
                 @if(!empty($sidebarads['leftsidebarads']))
                     @foreach($sidebarads['leftsidebarads'] as $ads)
                         <div class="item">
