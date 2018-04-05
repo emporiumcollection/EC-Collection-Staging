@@ -8,9 +8,10 @@
 {{-- For Page's Content Part --}}
 @section('content')
 <!-- End Slider form section -->
-<section id="membershpipStepSec" class="membershpipStepSec">
+
+<section style="background-color:#f7f7f7;">
     <div class="container-fluid">
-    <div class="row">
+       <div class="row">
         <div class="col-xs-3">
             <div class="stepNumber ">
                 <span>1</span>
@@ -36,6 +37,11 @@
             </div>
         </div>
     </div>
+
+</div>
+</section>
+<section id="membershpipStepSec" class="membershpipStepSec">
+    <div class="container-fluid">
     <div class="row">
         <div class="col-xs-12">
                <div class="hotelInfoSection">

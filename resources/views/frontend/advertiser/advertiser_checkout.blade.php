@@ -103,7 +103,7 @@
                                 
                                 <textarea name="order_comments" id="order_comments" placeholder="order Comments"></textarea>
                                
-                                <div>
+                            <div>
                               <script
                                 src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                                 data-key="pk_test_4KFTrHSWQ3FVkkfBwoQutZSC"

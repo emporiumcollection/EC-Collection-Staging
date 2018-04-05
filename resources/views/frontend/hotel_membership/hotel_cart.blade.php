@@ -41,9 +41,12 @@
     @endif
     
     <!-- End Slider form section -->
-    <section id="membershpipStepSec" class="membershpipStepSec">
+
+    <section style="background-color:#f7f7f7;">
+
     <div class="container-fluid">
-    <div class="row">
+    <div class="row" style="background-color:#f7f7f7; min-height: 30px;">&nbsp;</div>
+       <div class="row">
         <div class="col-xs-3">
             <div class="stepNumber ">
                 <span>1</span>
@@ -69,29 +72,23 @@
             </div>
         </div>
     </div>
-    <div class="col-xs-12">
-            <div class="hotelInfoSection">
-    		      
-                <div class="col-md-12">
-                        <div class="cartover-view-main margin-five-top">
+   </div>
+</section>
 
-                            
-
-                        	@if(!empty($packages))
-                            <h5 class="ev-regural-heading text-uppercase margin-20px-bottom font-weight-700 sm-width-100 xs-width-100">Your Packages</h5>
-                            
-                            <div class="cart-big-border">
-                            <div class="cart-small-border"></div>
-                            </div>
-                            <div class="tbale-form">
-                                <table class="table-width-custom">
+<section style="background-color:#f7f7f7;" >
+    <div class="container-fluid">
+                    
+                      @if(!empty($packages))                                                                
+                           <div class=" well">
+                                 <h2>Your Packages</h2>         
+                                <table class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th class="col-md-4 no-padding" colspan="2">Package</th>
-                                            <th class="col-md-4 no-padding">Quantity</th>
-                                            <th class="col-md-3 no-padding">Price</th>
+                                            <th scope="col" colspan="2">Package</th>
+                                            <th scope="col">Quantity</th>
+                                            <th scope="col">Price</th>
                                             
-                                            <th class="col-md-1 no-padding">Line Total</th>
+                                            <th scope="col">Line Total</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -154,62 +151,58 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="row bottom-cart-view-page">
-
-                                
-                                <div class="col-md-8 leftsideoverview">
-                                  
-                                </div>
-                                <div class="col-md-4 rightsidevartoverview">
-                                     <div class="carttotal">
-                                        <span class="label-total">Total (excl. VAT) </span>
-                                        <span class="cart-subtotal-amout">{!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($orderTotal,2,'.','')-(($orderTotal*$data["vatsettings"]->content)/100)}}</span>
-
-
-                                        
-                                           <span class="label-total">Vat {{ $data["vatsettings"]->content}}%</span>
-                                            <span class="cart-subtotal-amout">{!! isset($currency->content)?$currency->content:'$' !!} 
-
-                                            {{  ($orderTotal*$data["vatsettings"]->content)/100 }}</span>
-                                       
-                                                <span class="order-total-label">
-                                                    ------------------<br>
-                                                    Order Total<br>
-                                                    ------------------
-                                                </span>
-                                                <span class="cart-subtotal-amout cart-total-amout">
-                                                 ----------------------<br>
-                                                     {!! isset($currency->content)?$currency->content:'$' !!}  {{number_format($orderTotal,2,'.','')}}
-                                                <br>
-                                                ----------------------
-                                                </span>
-                                    
-
-                                     
-                                     
-                                    </div>
-                                    <div class="col-sm-12 text-right">
-                                        <a class="btn btn-cstmBtn pull-right" href="{{url('hotel/checkout')}}">Proceed To Checkout</a>
-                                    </div>
-                                </div>
+                            <div class="clearfix">&nbsp;</div>
+                          <div class="well col-md-4 pull-right">
+                            <div><hr class="hrDotted "></div>
+                            <div class="pull-right">
+                                <label>Total (excl. VAT) </label> 
+                                <label >{!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($orderTotal,2,'.','')-(($orderTotal*$data["vatsettings"]->content)/100)}}
+                                </label> 
                             </div>
-        					@else
-        						<h5 class="ev-regural-heading text-uppercase margin-20px-bottom font-weight-700 sm-width-100 xs-width-100">Your cart is empty</h5>
-                            	
-        	                    <div class="cart-big-border">
-                            	<div class="cart-small-border"></div>
-        	                    <div class="col-sm-12 text-right p-t-50">
-                            		<a class="btn btn-cstmBtn pull-right" href="{{url('hotel/package')}}">Continue To Choose Packages </a>
-                            	</div>
+                            <div class="clearfix" ><hr class="hrDotted"></div>
+
+                                                   
+                            <div class="pull-right">
+                                <label>Vat {{ $data["vatsettings"]->content}}%</label> 
+                                <label >{!! isset($currency->content)?$currency->content:'$' !!} {{  ($orderTotal*$data["vatsettings"]->content)/100 }}</label> 
+                            </div>
+                           
+
+                            <div class="clearfix"><hr class="hrDotted"></div>
+                            <div class="pull-right">
+                                     <label>Order Total</label> 
+                                     <label >{!! isset($currency->content)?$currency->content:'$' !!}  {{number_format($orderTotal,2,'.','')}}</label> 
+                            </div>
+                            <div><hr class="hrDotted"></div>
+
+                                <div class="col-sm-12 pull-right">
+                                        <a class="btn btn-cstmBtn pull-right" href="{{url('hotel/checkout')}}">Proceed To Checkout</a>
+                                </div>
+                         
+                            </div> 
+                            @else
+
+                                <div class="well">
+                                    <h2>Your cart is empty</h2>
+                             
+                                    <div class="col-sm-12 text-right p-t-50">
+                                        <a class="btn btn-cstmBtn pull-right" href="{{url('hotel/package')}}">Continue To Choose Packages </a>
+                                    </div>
+
+                                    <div class="cart-big-border">
+                                    
+                                  </div>
+                                 </div> 
                             @endif
-                        </div>
+                    
+                        
+
+                       
                     </div>
-                </div>
-            
-        </div>
-    </div>
-</div>
-</section>
+    </section>
+
+
+
 
 @endsection
 
@@ -296,6 +289,16 @@
     color: #a94442;
     background-color: #f2dede;
     border-color: #ebccd1;
+
+}
+
+.hrDotted {
+  border:none;
+  border-top:1px dotted #f00;
+  color:#fff;
+  background-color:#fff;
+  height:1px;
+  width:100%;
 
 }
 </style>

@@ -62,11 +62,9 @@
 </div>
 @endif
 
-<!-- terrace suit slider sec -->
-
-
-  <section id="membershpipStepSec" class="membershpipStepSec">
-    <div class="container-fluid">
+<section style="background-color:#f7f7f7;">
+  <div class="container-fluid">
+    <div class="row">&nbsp;</div>
     <div class="row">
         <div class="col-xs-3">
             <div class="stepNumber">
@@ -86,13 +84,21 @@
                 <p>STEP 3</p>
             </div>
         </div>
-        <div class="col-xs-3">
+        <div class="col-xs-2">
             <div class="stepNumber">
                 <span>4</span>
                 <p>STEP 4</p>
             </div>
         </div>
-    </div>
+    </div> 
+</div>
+</section>
+
+<!-- terrace suit slider sec -->
+
+
+  <section id="membershpipStepSec" class="membershpipStepSec">
+    <div class="container-fluid">
     <!--Accordan Code -->
     <div class="row">
     <div>
@@ -324,6 +330,9 @@
     font-family: Geomanist-Regular;
 }
 .customGoldBtn .btn i { margin-left: 0;}
+.membershpipStepSec{
+      padding: 20px 0 0
+}
 </style>
 @endsection
 

@@ -38,7 +38,9 @@
       </section>
     @endif
 <section id="orderDashboard" >
-<div class="col-md-12" style="background-color:#f7f7f7;">
+<div class="row">&nbsp;</div>	
+
+<div class=" col-md-12" style="background-color:#f7f7f7;">
 
 <table class="table table-striped table-bordered" >
 	<tbody>	
@@ -124,6 +126,8 @@
 	</div>
 @endif
 </div>
+
+<div class="row">&nbsp;</div>
 </section>
 	  
 @endsection

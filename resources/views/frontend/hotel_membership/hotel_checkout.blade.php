@@ -8,31 +8,26 @@
 {{-- For Page's Content Part --}}
 @section('content')
 <!-- End Slider form section -->
-<section id="membershpipStepSec" class="membershpipStepSec">
+
+<section style="background-color:#f7f7f7;">
+ <div class="row" style="background-color:#f7f7f7; min-height: 50px;">&nbsp;</div>
+
+</section>
+<section style="background-color:#f7f7f7;" >
     <div class="container-fluid">
     
     <div class="row">
-        <div class="col-xs-12">
-            <div class="hotelInfoSection">
-
-
-    		<div>
-                <div class="col-md-12 sm-clear-both wow fadeInLeft">
-                    <div class="cartover-view-main margin-five-top">
-                    	@if(!empty($packages))
-                        <h5 class="ev-regural-heading text-uppercase margin-20px-bottom font-weight-700 sm-width-100 xs-width-100">Review your shopping cart</h5>
-                        
-                        <div class="cart-big-border">
-                        <div class="cart-small-border"></div>
-                        </div>
-                        <div class="table-form">
-                            <table class="table-width-custom">
+        <div class="col-md-12">
+            @if(!empty($packages))
+                       <div class="well col-md-12">
+                            <h2>Review your shopping cart</h2>
+                            <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th class="col-sm-1 no-padding" >Package</th>                                    
-                                        <th class="col-sm-1 no-padding">Quantity</th>
-                                        <th class="col-sm-1 no-padding">Price</th>
-                                        <th class="col-sm-1 no-padding">Line Total</th>
+                                        <th scope="col" >Package</th>                                    
+                                        <th scope="col">Quantity</th>
+                                        <th scope="col">Price</th>
+                                        <th scope="col">Line Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -89,74 +84,90 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="row bottom-cart-view-page">
+        
                         
-                            <div class="col-md-4 rightsidevartoverview pull-right">
-                                <div class="carttotal">
-                                    <span class="label-total">Total (excl. VAT) </span>
-                                    <span class="cart-subtotal-amout">{!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($orderTotal,2,'.','')-(($orderTotal*$data["vatsettings"]->content)/100)}}</span>
-
-
-                                    
-                                       <span class="label-total">Vat {{ $data["vatsettings"]->content}}%</span>
-                                        <span class="cart-subtotal-amout">{!! isset($currency->content)?$currency->content:'$' !!} 
-
-                                        {{  ($orderTotal*$data["vatsettings"]->content)/100 }}</span>
-                             
-                                            <span class="order-total-label">
-                                                ------------------<br>
-                                                Order Total<br>
-                                                ------------------
-                                            </span>
-                                            <span class="cart-subtotal-amout cart-total-amout">
-                                             ----------------------<br>
-                                                 {!! isset($currency->content)?$currency->content:'$' !!}  {{number_format($orderTotal,2,'.','')}}
-                                            <br>
-                                            ----------------------
-                                            </span>
-                                   
-
-                                 
-                                 
-                                </div>
-                                <div class="col-sm-12 text-right">
-    							   <form action="{{URL::to('order-post')}}" method="POST">
-
-    								<input type="hidden" name="finalAmount" value="{{$orderTotal}}">
-
-    								<textarea name="order_comments" id="order_comments"></textarea>
-    							  <script
-    							    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-    							    data-key="pk_test_4KFTrHSWQ3FVkkfBwoQutZSC"
-    							    data-amount="{{$orderTotal*100}}"
-    							    data-name="emporium-voyage.com"
-    							    data-currency="EUR"
-    							    data-description="Luxury Travel Redefined"
-    							    data-image="{{ \URL::to('sximo/assets/images/Emporium-Voyage.png') }}" 
-    							    data-locale="auto">
-    							  </script>
-    							</form>
-                                </div>
-                            </div>
+        
+              <div class="row col-md-6 pull-right">                 
+                <div class="well col-md-12 pull-right">
+                        <div><hr class="hrDotted "></div>
+                        <div class="pull-right"><label>Total (excl. VAT) </label> <label >{!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($orderTotal,2,'.','')-(($orderTotal*$data["vatsettings"]->content)/100)}}</label> 
                         </div>
-    					@else
-    						<h5 class="ev-regural-heading text-uppercase margin-20px-bottom font-weight-700 sm-width-100 xs-width-100">Your cart is empty</h5>
-                        	
-    	                    <div class="cart-big-border">
-                        	<div class="cart-small-border"></div>
-    	                    <div class="col-sm-12 text-right p-t-50">
-                        		<a class="customGoldBtn btn nextBtn" href="{{url('hotel/package')}}">Continue To Choose Packages </a>
-                        	</div>
-                        @endif
-                    </div>
+                        <div class="clearfix" ><hr class="hrDotted"></div>
+
+                       
+                          <div class="pull-right">
+                            <label>Vat {{ $data["vatsettings"]->content}}%</label> 
+                            <label >
+                                {!! isset($currency->content)?$currency->content:'$' !!} 
+                                {{  ($orderTotal*$data["vatsettings"]->content)/100 }}
+                               </label> 
+                        </div>
+                       
+
+                        <div class="clearfix"><hr class="hrDotted"></div>
+                        <div class="pull-right">
+                        <label>Order Total</label> 
+                        <label > {!! isset($currency->content)?$currency->content:'$' !!}  {{number_format($orderTotal,2,'.','')}}</label> 
+                        </div>
+                        <div><hr class="hrDotted"></div>
+                         
+                </div>
+
+                <div class="clearfix"></div>
+                 <div class="well pull-right col-md-12">
+                        <form action="{{URL::to('order-post')}}" method="POST">
+
+                               <input type="hidden" name="finalAmount" value="{{$orderTotal}}">
+                                <label>Order Comments</label>
+                                <div class="clearfix"><hr class="hrDotted"></div>
+                                
+                                <textarea name="order_comments" id="order_comments"></textarea>
+                               
+                                <div>
+                                   <script
+                                        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                        data-key="pk_test_4KFTrHSWQ3FVkkfBwoQutZSC"
+                                        data-amount="{{$orderTotal*100}}"
+                                        data-name="emporium-voyage.com"
+                                        data-currency="EUR"
+                                        data-description="Luxury Travel Redefined"
+                                        data-image="{{ \URL::to('sximo/assets/images/Emporium-Voyage.png') }}" 
+                                        data-locale="auto">
+                                      </script>
+                              </div>
+                        </form>
+                        <div class="row" style="background-color:#f7f7f7; min-height: 50px;">&nbsp;</div>
                 </div>
             </div>
-         </div>
+                            
+    					@else
+
+                            <div class="well">
+                                <h2>Your cart is empty</h2>
+                         
+                                <div class="col-sm-12 text-right p-t-50">
+                                    <a class="btn btn-cstmBtn pull-right" href="{{url('hotel/package')}}">Continue To Choose Packages </a>
+                                </div>
+
+                                <div class="cart-big-border">
+                                
+                              </div>
+                             </div> 
+    						
+                        @endif
+                    
+                </div>
+            </div>
     </div>
 
 
 </section>
 
+
+<section style="background-color:#f7f7f7;">
+ <div class="row" style="background-color:#f7f7f7; min-height: 50px;">&nbsp;</div>
+
+</section>
 @endsection
 
 {{--For Right Side Icons --}}
