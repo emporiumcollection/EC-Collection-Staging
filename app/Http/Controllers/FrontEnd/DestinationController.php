@@ -18,7 +18,7 @@ class DestinationController extends Controller {
 		if($category_id!='')
 		{
 
-            $fetchchilds = DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_alias')->where('category_published', 1)->where('parent_category_id', $category_id)->where('parent_category_id', '!=', 8)->get();
+            $fetchchilds = DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_alias')->where('category_published', 1)->where('parent_category_id', $category_id)->where('id', '!=', 8)->get();
 
             if(!empty($fetchchilds))
             {
@@ -107,7 +107,7 @@ class DestinationController extends Controller {
 		$res = $respns = array(); 
 		if($keyword!='')
 		{
-            $fetchdestinations = DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_alias')->where('category_published', 1)->where('category_name', 'like', $keyword.'%')->where('parent_category_id', '!=', 8)->get();
+            $fetchdestinations = DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_alias')->where('category_published', 1)->where('category_name', 'like', $keyword.'%')->get();
 
             if(!empty($fetchdestinations))
             {

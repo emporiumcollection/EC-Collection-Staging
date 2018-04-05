@@ -702,7 +702,7 @@
 @section('right_side_iconbar')
 
 	@parent
-@show
+@endsection
 
 {{-- For Include style files --}}
 @section('head')
