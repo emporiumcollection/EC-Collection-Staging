@@ -534,7 +534,7 @@
 {{--For Right Side Icons --}}
 @section('right_side_iconbar')
     @include('frontend.themes.emporium.layouts.sections.pdp_right_iconbar')
-@show
+@endsection
 
 {{-- For Include style files --}}
 @section('head')

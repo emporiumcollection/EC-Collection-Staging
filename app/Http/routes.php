@@ -117,6 +117,7 @@ Route::get('bars', 'HomeController@barspage');
 Route::get('spas', 'HomeController@spaspage');
 
 Route::get('social-youtube', 'Frontend\FrontendPagesController@socialYoutube');
+Route::get('social-stream', 'Frontend\FrontendPagesController@socialStreamWall');
 
 Route::resource('sximoapi', 'SximoapiController'); 
 Route::group(['middleware' => 'auth'], function()

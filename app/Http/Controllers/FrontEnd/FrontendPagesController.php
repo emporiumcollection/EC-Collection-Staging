@@ -87,6 +87,25 @@ class FrontendPagesController extends Controller {
 		$this->data['channel_url'] = $channel_url;
 		$this->data['catid'] = $catid;
 		return view('frontend.themes.emporium.pages.social_youtube_page', $this->data);
-	}	
+	}
+
+	public function socialStreamWall(Request $request)
+	{
+		$socialpropertiesArr = array();
+		if (trim($request->input('sp'))!='' && !is_null($request->input('sp'))) {
+			$scprops = \DB::table('tb_properties')->select('property_name', 'social_twitter', 'social_facebook','social_google','social_youtube','social_pinterest','social_vimeo')->where('property_slug', trim($request->input('sp')))->where('property_status', 1)->first();
+		} else {
+			$scprops = \DB::table('tb_properties')->select('property_name', 'social_twitter', 'social_facebook','social_google','social_youtube','social_pinterest','social_vimeo')->where('property_status', 1)->first();
+		}
+
+		if (!empty($scprops)) {
+			$socialpropertiesArr = $scprops;
+		}
+		$this->data['socialpropertiesArr'] = $socialpropertiesArr;
+		
+		$this->data['propertiesArr'] = \DB::table('tb_properties')->select('property_name', 'property_slug')->where('property_status', 1)->where(function ($query) { $query->where('social_twitter', '!=', '')->orWhere('social_facebook', '!=', '')->orWhere('social_youtube', '!=', '')->orWhere('social_vimeo', '!=', '')->orWhere('social_pinterest', '!=', '')->orWhere('social_google', '!=', ''); })->get();
+		
+		return view('frontend.themes.emporium.pages.social_stream_page', $this->data);
+	}
 
 }
