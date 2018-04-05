@@ -1,10 +1,10 @@
 @extends('frontend.themes.emporium.layouts.home')
 {{--  For Title --}}
-@section('title', $pageTitle)
+@section('title', 'Youtube Channel')
 {{-- For Meta Keywords --}}
-@section('meta_keywords', $pageMetakey)
+@section('meta_keywords', '')
 {{-- For Meta Description --}}
-@section('meta_description', $pageMetadesc)
+@section('meta_description', '')
 {{-- For Page's Content Part --}}
 @section('content')
 
