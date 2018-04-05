@@ -455,12 +455,12 @@ class PropertyController extends Controller {
             $remoteImage = $propertyImage->img_src;
             $width = Image::make($remoteImage)->width();
             if( $width >600){
-                $image = Image::make($remoteImage)->resize(300, 300)->response('jpg');
+                $image = Image::make($remoteImage)->resize(600, 600)->response('jpg');
             }else{
                 $image = Image::make($remoteImage)->response('jpg');
             }
 
-            return $image->response('jpg');
+            return $image;
 
 		}
 		return false;
