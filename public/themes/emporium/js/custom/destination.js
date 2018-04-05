@@ -54,8 +54,8 @@ $(document).ready(function () {
  */
 function renderDestination(dataObj) {
     if(dataObj.dests==undefined){
-        location.href = BaseURL+'/luxury_destinations/'+dataObj.path;
-        return false;
+        //location.href = BaseURL+'/luxury_destinations/'+dataObj.path;
+        //return false;
     }
     var data = {};
     data.main_title = 'Select Your Destination';
