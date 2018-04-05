@@ -56,10 +56,10 @@
                 </li>
             </ul>
             <ul class="mobilemenulist" data-option="home">
-                <li><a class="cursor" data-action="select-destination" data-id="0">SELECT YOUR DESTINATION</a></li>
+                <li><a class="cursor" data-action="select-destination-youtube" data-id="0">SELECT YOUR DESTINATION</a></li>
                 <li><a class="cursor" data-action="select-menu" data-position="business" data-id="0">COMPANY</a></li>
             </ul>
-            <ul class="mobilemenulist hide" data-option="selected-option-list">
+            <ul class="mobilemenulist hide socialyoutubemenu" data-option="selected-option-list">
             </ul>
             @if (!Auth::check())
 

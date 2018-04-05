@@ -22,12 +22,12 @@
     width: 100%;
 }
 
-.mobilemenulist li a.menu_item {
-    /* float: left;
-     width: 80%;*/
+.socialyoutubemenu .mobilemenulist li a.menu_item {
+    float: left;
+    width: 80%;
 }
 
-a.external-link {
+.socialyoutubemenu .mobilemenulist li a.external-link {
     float: right;
     width: 20%;
     text-align: center;
