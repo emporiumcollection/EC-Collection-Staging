@@ -561,7 +561,10 @@ class CustomerController extends Controller {
         $ads_price = \DB::table('tb_settings')->where('key_value', 'default_advertisement_price')->first();
         $def_currency = \DB::table('tb_settings')->where('key_value', 'default_currency')->first();
         
-        $this->data['pageslider']=array();
+        
+
+        $this->data['pageslider'] = \DB::table('tb_pages_sliders')->select( 'slider_title', 'slider_description', 'slider_img', 'slider_link', 'slider_video', 'slide_type')->where('slider_page_id', 107)->get();
+
         $this->data2 = array(
             'pageTitle' => 'My Profile',
             'pageNote' => 'View Detail My Info',

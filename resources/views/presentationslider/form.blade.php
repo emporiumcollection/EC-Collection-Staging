@@ -129,6 +129,9 @@
 					<input type='radio' name='slide_type' value ='Image'  @if($row['slide_type'] == 'Image') checked="checked" @endif > Image </label>
 					<label class='radio radio-inline'>
 					<input type='radio' name='slide_type' value ='Video'  @if($row['slide_type'] == 'Video') checked="checked" @endif > Video </label> 
+
+					<label class='radio radio-inline'>
+					<input type='radio' name='slide_type' value ='ImageOnly' @if($row['slide_type'] == 'ImageOnly') checked="checked" @endif > ImageOnly </label> 
 									 </div> 
 									 <div class="col-md-2">
 									 	
