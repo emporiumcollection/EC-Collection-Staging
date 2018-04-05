@@ -257,6 +257,7 @@ class CommonHelper
                             'ZMW'=>'', 
 
                         );
+$allowedCurrenciesinProject=array("OMR","BHD","KWD","USD","CHF","EUR","KYD","GIP","GBP","JOD","FJD","AWG","AM","BGN","NZD","LYD","SGD","BND","AUD","CAD","INR");
 
                 $curl = curl_init();
                 curl_setopt_array($curl, array(
@@ -280,18 +281,16 @@ class CommonHelper
                 } else {
                     $returnCurrenyList=array();
                     $currencyList=json_decode($response);
-
+                foreach($allowedCurrenciesinProject as $currencyCodeAllowed){
                     foreach($currencyList as $currencyCode => $currencyName){
+                            if($currencyCodeAllowed==$currencyCode){
 
+                                $returnCurrenyList[$currencyCode]=$currencyCode."-".$currency_symbols[$currencyCode];
+                            }
 
-
-                        $returnCurrenyList[$currencyCode]=$currencyCode."-".$currency_symbols[$currencyCode];
-
-
-                    }
-
-
-                    
+                        }
+                     }
+                     
                      return (json_decode(json_encode($returnCurrenyList)));
                 }
        
