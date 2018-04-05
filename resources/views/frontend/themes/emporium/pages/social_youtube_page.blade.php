@@ -31,7 +31,7 @@
 
 {{-- For Include Side Bar --}}
 @section('sidebar')
-    @include('frontend.themes.emporium.layouts.sections.common_sidebar')
+    @include('frontend.themes.emporium.layouts.sections.social_youtube_sidebar')
 @endsection
 
 {{-- For Include style files --}}
