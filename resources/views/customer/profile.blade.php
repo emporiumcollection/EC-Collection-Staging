@@ -20,7 +20,7 @@
                 <div class="carousel-caption">
                   <h1>{{$slider_row->slider_title}}</h1>
                   <p>{{$slider_row->slider_description}}</p>
-                  <button type="button" class="button viewGalleryBtn">Contact us</button>
+                 
                 </div>
               </div>
             @endforeach
