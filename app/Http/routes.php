@@ -116,6 +116,8 @@ Route::get('runInsta', 'instaApiController@runInsta');
 Route::get('bars', 'HomeController@barspage');
 Route::get('spas', 'HomeController@spaspage');
 
+Route::get('social-youtube', 'Frontend\FrontendPagesController@socialYoutube');
+
 Route::resource('sximoapi', 'SximoapiController'); 
 Route::group(['middleware' => 'auth'], function()
 {
