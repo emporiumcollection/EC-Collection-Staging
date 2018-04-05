@@ -281,27 +281,16 @@ $allowedCurrenciesinProject=array("OMR","BHD","KWD","USD","CHF","EUR","KYD","GIP
                 } else {
                     $returnCurrenyList=array();
                     $currencyList=json_decode($response);
-
+                foreach($allowedCurrenciesinProject as $currencyCodeAllowed){
                     foreach($currencyList as $currencyCode => $currencyName){
-
-                        foreach($allowedCurrenciesinProject as $currencyCodeAllowed){
                             if($currencyCodeAllowed==$currencyCode){
 
                                 $returnCurrenyList[$currencyCode]=$currencyCode."-".$currency_symbols[$currencyCode];
-
                             }
 
-                             
-
                         }
-
-                       
-
-
-                    }
-
-
-                    
+                     }
+                     
                      return (json_decode(json_encode($returnCurrenyList)));
                 }
        
