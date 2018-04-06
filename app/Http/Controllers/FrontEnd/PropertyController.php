@@ -117,7 +117,7 @@ class PropertyController extends Controller {
 
 		}
 
-		$perPage = 12;
+		$perPage = 40;
 		$pageNumber = 1;
 		if(isset($request->page) && $request->page>0){
 			$pageNumber = $request->page;
@@ -155,7 +155,7 @@ class PropertyController extends Controller {
 		$this->data['action']=request()->segments(1);
         $this->data['destination_category'] =0;
 
-		if(request()->segment(1)=='luxury_destinations'){
+		if(request()->segment(1)=='luxury_destinations' || request()->segment(1)=='luxury_experience'){
             $this->data['destination_category']=$cateObj->id;
         }
 
@@ -419,7 +419,7 @@ class PropertyController extends Controller {
 
         }
 
-        $perPage = 12;
+        $perPage = 40;
         $pageNumber = 1;
         if(isset($request->page) && $request->page>0){
             $pageNumber = $request->page;
@@ -437,12 +437,21 @@ class PropertyController extends Controller {
 
         $property = DB::select($finalQry);
         $getRec = DB::select($CountRecordQry);
+		
+		foreach($property as $prop)
+		{
+			$containerObj = new \App\Http\Controllers\ContainerController;
+			$proertyObj = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $prop->id)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
+			$prop->img_src = $containerObj->getThumbpath($proertyObj->folder_id).$proertyObj->file_name;
+		}
 
         $this->data['properties'] = $property;
         $this->data['total_record'] = $getRec[0]->total_record;
         $this->data['total_pages'] = (isset($getRec[0]->total_record) && $getRec[0]->total_record>0)?(int)ceil($getRec[0]->total_record / $perPage):0;
-
-
+		$adscatid = 'Hotel';
+		if (!empty($cateObj)) { $adscatid = $cateObj->id; }
+		$this->data['resultads'] = \DB::table('tb_advertisement')->select('adv_img', 'adv_link', 'adv_title')->where('adv_type', 'sidebar')->where('adv_status', 1)->where('adv_position', 'grid_results')->where('ads_cat_id', $adscatid)->orderByRaw('RAND()')->first();
+		
         return response()->json($this->data);
     }
 	
