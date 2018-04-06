@@ -47,30 +47,48 @@
 				{{--*/ $rw = 1 /*--}}
 				<div class="row" data-option="property-grid-list">
 					@foreach($propertiesArr as $props)
-						<div class="col-sm-6 col-md-6 col-lg-4">
-							<div class="hotel-card">
-								<figure>
-									{{--*/ $propertyImage = CustomQuery::getPropertyImage($props->id); /*--}}
+						@if($rw%10==0)
+							{{--*/ $adscatid = ($destination_category > 0) ? $destination_category : 'Hotel'; $resultads = CommonHelper::getGridResultAds('grid_results', $adscatid) /*--}}
+							@if(!empty($resultads['resultads']))
+								<div class="col-sm-6 col-md-6 col-lg-4">
+									<div class="hotel-card">
+										<figure>
+											<img src="{{URL::to('uploads/users/advertisement/'.$resultads['resultads']->adv_img)}}" />
+											<a href="{{ (strpos($resultads['resultads']->adv_link, 'http://') !== false) ? $resultads['resultads']->adv_link : 'http://'.$resultads['resultads']->adv_link }}" class="content-overlay">
+												<h5>{{ $resultads['resultads']->adv_title}}</h5>
+											</a>
+										</figure>
+										<div class="title">
+											<h3><a href="{{ (strpos($resultads['resultads']->adv_link, 'http://') !== false) ? $resultads['resultads']->adv_link : 'http://'.$resultads['resultads']->adv_link }}">{{ $resultads['resultads']->adv_title}}</a></h3>
+										</div>
+									</div>
+								</div>
+							@endif
+						@else
+							<div class="col-sm-6 col-md-6 col-lg-4">
+								<div class="hotel-card">
+									<figure>
+										{{--*/ $propertyImage = CustomQuery::getPropertyImage($props->id); /*--}}
 
-									@if(!empty($propertyImage) && count($propertyImage)>0)
-										
-										@if(isset($propertyImage))
-											<img alt="{{ $propertyImage->file_name }}" src="{{$propertyImage->img_src}}" />
+										@if(!empty($propertyImage) && count($propertyImage)>0)
+											
+											@if(isset($propertyImage))
+												<img alt="{{ $propertyImage->file_name }}" src="{{$propertyImage->img_src}}" />
+											@endif
 										@endif
-									@endif
-									
-									<a href="{{URL::to($props->property_slug)}}" class="content-overlay">
-										<h5>{{ $props->property_name}}</h5>
-										<p>From € {{$props->price}} {{(isset($props->category_name))? '| '.$props->category_name : ''}}</p>
-									</a>
-									<div class="pricelabel">From EUR {{$props->price}} / night</div>
-								</figure>
-								<div class="title">
-									<h3><a href="{{URL::to($props->property_slug)}}">{{ $props->property_name}}</a></h3>
-									<a href="{{URL::to($props->property_slug)}}" class="cartlink"><i class="fa fa-shopping-cart"></i></a>
+										
+										<a href="{{URL::to($props->property_slug)}}" class="content-overlay">
+											<h5>{{ $props->property_name}}</h5>
+											<p>From € {{$props->price}} {{(isset($props->category_name))? '| '.$props->category_name : ''}}</p>
+										</a>
+										<div class="pricelabel">From EUR {{$props->price}} / night</div>
+									</figure>
+									<div class="title">
+										<h3><a href="{{URL::to($props->property_slug)}}">{{ $props->property_name}}</a></h3>
+										<a href="{{URL::to($props->property_slug)}}" class="cartlink"><i class="fa fa-shopping-cart"></i></a>
+									</div>
 								</div>
 							</div>
-						</div>
 						@if($rw%3==0)
 
 						@endif

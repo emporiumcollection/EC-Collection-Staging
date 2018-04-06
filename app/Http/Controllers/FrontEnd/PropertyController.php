@@ -155,7 +155,7 @@ class PropertyController extends Controller {
 		$this->data['action']=request()->segments(1);
         $this->data['destination_category'] =0;
 
-		if(request()->segment(1)=='luxury_destinations'){
+		if(request()->segment(1)=='luxury_destinations' || request()->segment(1)=='luxury_experience'){
             $this->data['destination_category']=$cateObj->id;
         }
 
