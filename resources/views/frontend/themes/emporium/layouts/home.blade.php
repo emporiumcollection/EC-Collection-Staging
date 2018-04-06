@@ -170,7 +170,7 @@
                         params['successCallbackFunction'] = function( data ) {
                             response( data);
                         };
-                        //doAjax(params);
+                        doAjax(params);
                     },
                     minLength: 2,
                     select: function( event, ui ) {
@@ -181,14 +181,48 @@
                 /*
                 * For Global Search
                 */
-                $(document).on('keypress','[data-action="gobal-search"]',function() {
-                   if($('[data-option="gobal-search"]').val()==''){
+                $(document).on('keyup','[data-action="gobal-search"]',function() {
+
+                   if($(this).val()==''){
+
                        $('[data-option="gobal-search"]').slideUp(300);
                    }else {
+                       $('[data-action="gobal-destinations"]').parent().hide();
+                       $('[data-action="gobal-collections"]').parent().hide();
+                       $('[data-action="gobal-restaurant"]').parent().hide();
+                       $('[data-action="gobal-bar"]').parent().hide();
+                       $('[data-action="gobal-spa"]').parent().hide();
+                       var datObj = {};
+                       datObj.keyword = $(this).val();
+                       var params = $.extend({}, doAjax_params_default);
+                       params['url'] = BaseURL + '/destination/global-search-ajax';
+                       params['data'] = datObj;
+                       params['successCallbackFunction'] = function( data ) {
+
+                           if(data.data.dest!=undefined){
+                               $('[data-action="gobal-destinations"] span').html(data.data.dest.length);
+                               $('[data-action="gobal-destinations"]').parent().show();
+                           }
+                           if(data.data.collection!=undefined){
+                               $('[data-action="gobal-collections"] span').html(data.data.collection.length);
+                               $('[data-action="gobal-collections"]').parent().show();
+                           }
+                           if(data.data.restro!=undefined){
+                               $('[data-action="gobal-restaurant"] span').html(data.data.restro.length);
+                               $('[data-action="gobal-restaurant"]').parent().show();
+                           }
+                           if(data.data.bar!=undefined){
+                               $('[data-action="gobal-bar"] span').html(data.data.bar.length);
+                               $('[data-action="gobal-bar"]').parent().show();
+                           }
+                           if(data.data.spa!=undefined){
+                               $('[data-action="gobal-spa"] span').html(data.data.spa.length);
+                               $('[data-action="gobal-spa"]').parent().show();
+                           }
+                       };
+                       doAjax(params);
                        $('[data-option="gobal-search"]').slideDown(300);
                    }
-                }).blur(function() {
-                    $('[data-option="gobal-search"]').slideUp(300);
                 });
 
 
