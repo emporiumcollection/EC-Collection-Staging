@@ -36,6 +36,9 @@ class StripepaymentController extends Controller
         $this->data['data'] = CommonHelper::getInfo();
         $this->data['pageslider'] = \DB::table('tb_pages_sliders')->select( 'slider_title', 'slider_description', 'slider_img', 'slider_link', 'slider_video', 'slide_type')->where('slider_page_id', 107)->get();
         $this->data['currency'] = \DB::table('tb_settings')->select('content')->where('key_value', 'default_currency')->first();
+        $this->data['pageTitle'] = "Payment for  Membership";
+        $this->data['pageMetakey'] = "Payment for  Membership";
+        $this->data['pageMetadesc'] = "Payment for  Membership";
             
         }
     
