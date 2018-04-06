@@ -145,7 +145,7 @@
 	<script>
 		$(document).ready(function () {
 			$(document).on('change', '#myRange', function () {
-				var max =  6000 - $(this).slider("value");
+				var max =  6000 - $(this).val();
 				var datObj = window.location.search;
 				datObj =  datObj+'?filter_min_price=' + 0;
 				datObj =  datObj+'&filter_max_price=' + max;
