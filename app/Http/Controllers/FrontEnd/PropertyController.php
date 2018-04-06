@@ -437,6 +437,13 @@ class PropertyController extends Controller {
 
         $property = DB::select($finalQry);
         $getRec = DB::select($CountRecordQry);
+		
+		foreach($property as $prop)
+		{
+			$containerObj = new \App\Http\Controllers\ContainerController;
+			$proertyObj = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $prop->id)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
+			$prop->img_src = $containerObj->getThumbpath($proertyObj->folder_id).$proertyObj->file_name;
+		}
 
         $this->data['properties'] = $property;
         $this->data['total_record'] = $getRec[0]->total_record;
