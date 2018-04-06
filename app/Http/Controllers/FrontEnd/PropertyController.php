@@ -58,8 +58,8 @@ class PropertyController extends Controller {
         if($request->segment(1)=='search'){
            $keyword = $request->s;
         }
-		
-		$this->data['slider'] = \DB::table('tb_sliders')->where('slider_category', $keyword)->get();
+		$sldkeyword = str_replace('-',' ',$keyword);
+		$this->data['slider'] = \DB::table('tb_sliders')->where('slider_category', $sldkeyword)->get();
 		
 
 		
