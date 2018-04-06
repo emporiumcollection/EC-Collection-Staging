@@ -448,8 +448,10 @@ class PropertyController extends Controller {
         $this->data['properties'] = $property;
         $this->data['total_record'] = $getRec[0]->total_record;
         $this->data['total_pages'] = (isset($getRec[0]->total_record) && $getRec[0]->total_record>0)?(int)ceil($getRec[0]->total_record / $perPage):0;
-
-
+		$adscatid = 'Hotel';
+		if (!empty($cateObj)) { $adscatid = $cateObj->id; }
+		$this->data['resultads'] = \DB::table('tb_advertisement')->select('adv_img', 'adv_link', 'adv_title')->where('adv_type', 'sidebar')->where('adv_status', 1)->where('adv_position', 'grid_results')->where('ads_cat_id', $adscatid)->orderByRaw('RAND()')->first();
+		
         return response()->json($this->data);
     }
 	

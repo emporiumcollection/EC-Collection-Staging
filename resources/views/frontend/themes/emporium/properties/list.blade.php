@@ -47,7 +47,7 @@
 				{{--*/ $rw = 1 /*--}}
 				<div class="row" data-option="property-grid-list">
 					@foreach($propertiesArr as $props)
-						@if($rw%10==0)
+						@if($rw%20==0)
 							{{--*/ $adscatid = ($destination_category > 0) ? $destination_category : 'Hotel'; $resultads = CommonHelper::getGridResultAds('grid_results', $adscatid) /*--}}
 							@if(!empty($resultads['resultads']))
 								<div class="col-sm-6 col-md-6 col-lg-4">
@@ -174,33 +174,52 @@
 		}
 
 		function renderPropertyList(data){
-				$.each(data.properties, function (idx, obj) {
+			$.each(data.properties, function (idx, obj) {
+				if(idx==20)
+				{
 					var dataGridHtml ='<div class="col-sm-6 col-md-6 col-lg-4">';
-						dataGridHtml +='<div class="hotel-card">';
-						dataGridHtml +='<figure>';
-						//var imgscr = BaseURL + '/propertyimagebyid/'+obj.id;
-						dataGridHtml += '<img src="' + obj.img_src + '" />';
-						dataGridHtml +='<a href="'+obj.property_slug+'" class="content-overlay">';
-						dataGridHtml +='<h5>'+obj.property_name+'</h5>';
-						if(obj.category_name!=undefined && obj.category_name!=""){
-                            dataGridHtml +='<p>From € '+obj.price+' '+obj.category_name+'</p>';
-						}else {
-                            dataGridHtml +='<p>From € '+obj.price+'</p>';
-						}
-
-						dataGridHtml +='</a>';
-                    	dataGridHtml +='<div class="pricelabel">From EUR '+obj.price+' / night</div>';
-						dataGridHtml +='</figure>';
-						dataGridHtml +='<div class="title">';
-        				dataGridHtml +='<h3><a href="'+BaseURL+'/'+obj.property_slug+'">'+obj.property_name+'</a></h3>';
-       					dataGridHtml +='<a href="'+BaseURL+'/'+obj.property_slug+'" class="cartlink"><i class="fa fa-shopping-cart"></i></a>';
-        				dataGridHtml +='</div>';
-						dataGridHtml +='</div>';
-						dataGridHtml +='</div>';
+					dataGridHtml +='<div class="hotel-card">';
+					dataGridHtml +='<figure>';
+					var imgscr = "{{URL::to('uploads/users/advertisement/')}}/" +data.resultads.adv_img;
+					dataGridHtml += '<img src="' + imgscr + '" />';
+					dataGridHtml +='<a href="'+data.resultads.adv_link+'" class="content-overlay">';
+					dataGridHtml +='<h5>'+data.resultads.adv_title+'</h5>';
+					dataGridHtml +='</a>';
+					dataGridHtml +='</figure>';
+					dataGridHtml +='<div class="title">';
+					dataGridHtml +='<h3><a href="'+data.resultads.adv_link+'">'+data.resultads.adv_title+'</a></h3>';
+					dataGridHtml +='</div>';
+					dataGridHtml +='</div>';
+					dataGridHtml +='</div>';
 					$('[data-option="property-grid-list"]').append(dataGridHtml);
-				});
+				}
+				else
+				{
+					var dataGridHtml ='<div class="col-sm-6 col-md-6 col-lg-4">';
+					dataGridHtml +='<div class="hotel-card">';
+					dataGridHtml +='<figure>';
+					//var imgscr = BaseURL + '/propertyimagebyid/'+obj.id;
+					dataGridHtml += '<img src="' + obj.img_src + '" />';
+					dataGridHtml +='<a href="'+obj.property_slug+'" class="content-overlay">';
+					dataGridHtml +='<h5>'+obj.property_name+'</h5>';
+					if(obj.category_name!=undefined && obj.category_name!=""){
+						dataGridHtml +='<p>From € '+obj.price+' '+obj.category_name+'</p>';
+					}else {
+						dataGridHtml +='<p>From € '+obj.price+'</p>';
+					}
 
-
+					dataGridHtml +='</a>';
+					dataGridHtml +='<div class="pricelabel">From EUR '+obj.price+' / night</div>';
+					dataGridHtml +='</figure>';
+					dataGridHtml +='<div class="title">';
+					dataGridHtml +='<h3><a href="'+BaseURL+'/'+obj.property_slug+'">'+obj.property_name+'</a></h3>';
+					dataGridHtml +='<a href="'+BaseURL+'/'+obj.property_slug+'" class="cartlink"><i class="fa fa-shopping-cart"></i></a>';
+					dataGridHtml +='</div>';
+					dataGridHtml +='</div>';
+					dataGridHtml +='</div>';
+					$('[data-option="property-grid-list"]').append(dataGridHtml);
+				}
+			});
 		}
 	</script>
 @endsection
