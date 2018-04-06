@@ -9,14 +9,15 @@
 @section('content')
 <!-- End Slider form section -->
 
-<section style="background-color:#f7f7f7;">
+<section style="background-color:#f7f7f7;" class="col-md-12">
+    <div class="container-fluid">
  <div class="row" style="background-color:#f7f7f7; min-height: 50px;">&nbsp;</div>
-
+</div>
 </section>
-<section style="background-color:#f7f7f7;" >
+<section style="background-color:#f7f7f7;" class="col-md-12" >
     <div class="container-fluid">
     
-    <div class="row">
+    <div class="row well">
         <div class="col-md-12">
             @if(!empty($packages))
                        <div class="well col-md-12">
@@ -164,7 +165,7 @@
 </section>
 
 
-<section style="background-color:#f7f7f7;">
+<section style="background-color:#f7f7f7;" class="col-md-12">
  <div class="row" style="background-color:#f7f7f7; min-height: 50px;">&nbsp;</div>
 
 </section>
