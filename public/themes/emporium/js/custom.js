@@ -551,11 +551,17 @@ v.onclick = function() {
 // Range slider js
 var slider = document.getElementById("myRange");
 var output = document.getElementById("pricevalue");
-output.innerHTML = slider.value;
+if(slider){
+  output.innerHTML = slider.value;
 
+  
 slider.oninput = function() {
   output.innerHTML = this.value;
 }
+}
+
+
+
 
 
 

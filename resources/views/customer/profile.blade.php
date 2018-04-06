@@ -96,25 +96,25 @@
 		<div class="row">
             <div class="das-form-outer-align">
                
-                	<form class="form-horizontal my-profile-main-form-align" name="basicInfo" id="basicInfo" method="post" action=" {{URL::to('customer/saveprofile')}}" enctype="multipart/form-data">
+                	<form class="form-horizontal my-profile-main-form-align" name="basicInfo" id="basicInfo" method="post" action=" {{URL::to('customer/saveprofile')}}" enctype="multipart/form-data" data-parsley-validate="true">
 						<input type="hidden" name="usertype" value="guests" id="userTypeHotel" class="input-hidden usertype" required=""/>
 					<div id="guests">
 					<div class="form-group">
 						<label class=" control-label col-sm-2">Client Number</label>
 						<div class="col-sm-6">
-						<input name="clientID" type="text" id="clientID" disabled="disabled" class="form-control input-sm" required  value="{{$info->id}}" />  
+						<input name="clientID" type="text" id="clientID" disabled="disabled" class="form-control input-sm" required=""  value="{{$info->id}}" />  
 						 </div> 
 					  </div>  
 					<div class="form-group">
 						<label class=" control-label col-sm-2">Username </label>
 						<div class="col-sm-6">
-						<input name="username" type="text" id="username" disabled="disabled" class="form-control input-sm" required  value="{{$info->email}}" />  
+						<input name="username" type="text" id="username" disabled="disabled" class="form-control input-sm" data-parsley-type="email"  value="{{$info->email}}" />  
 						 </div> 
 					  </div>  
 						<div class="form-group">
 							<label class="control-label col-sm-2">First Name</label>
 							<div class="col-sm-6">
-								<input type="text" name="first_name" id="first_name" value="{{$info->first_name}}"class="form-control dash-input-style" placeholder="John" required="">
+								<input type="text" name="first_name" id="first_name"  data-parsley-type="alphanum" value="{{$info->first_name}}" class="form-control dash-input-style" placeholder="John" required="">
 							</div>
 						</div>
 						<div class="form-group">
@@ -178,8 +178,8 @@
 
 					
 						<div class="form-group">        
-							<div class="col-sm-12">
-								<input type="submit" class="btn btn-default dash-btn-style" value="Save Profile">
+							<div class="col-sm-8">
+								<input type="submit" class="btn btn-white pull-right" value="Save Profile">
 							</div>
 						</div>
 					</div>
@@ -192,9 +192,9 @@
 
 		</div>
 
-		<div role="tabpanel" class="tab-pane" id="resetPassword">
+<div role="tabpanel" class="tab-pane" id="resetPassword">
 			
-<div class="row">
+<div class="row col-md-6">
          <div class="das-form-outer-align">
 
 		<div class="form-group has-feedback">
@@ -209,7 +209,7 @@
 		</div>			
 			
 
-            	{!! Form::open(array('url' => 'customer/savepassword', 'class'=>'form-vertical','name'=>'passwordInfo','id'=>'passwordInfo')) !!}
+            	{!! Form::open(array('url' => 'customer/savepassword', 'class'=>'form-vertical','name'=>'passwordInfo','id'=>'passwordInfo','data-parsley-validate'=>'true')) !!}
 
             	{!! Form::hidden('userID',$info->id) !!}
 	
@@ -220,18 +220,18 @@
 				
 		<div class="form-group has-feedback">
 			<label>New Password </label>
-			{!! Form::password('password',  array('class'=>'form-control required', 'placeholder'=>'New Password')) !!}
+			{!! Form::password('password',  array('class'=>'form-control required', 'placeholder'=>'New Password','required'=>'','data-parsley-minlength'=>'6','minlength'=>'6')) !!}
 			<i class="icon-lock form-control-feedback"></i>
 		</div>
 		
 		  <div class="form-group has-feedback">
 			<label>Re-type Password</label>
-		   {!! Form::password('password_confirmation', array('class'=>'form-control required', 'placeholder'=>'Confirm Password')) !!}
+		   {!! Form::password('password_confirmation', array('class'=>'form-control required', 'placeholder'=>'Confirm Password','required'=>'','data-parsley-minlength'=>'6','minlength'=>'6')) !!}
 			<i class="icon-lock form-control-feedback"></i>
 		</div>
       <div class="form-group has-feedback">
       
-			  <input type="submit" class="btn btn-default dash-btn-style  pull-left" name="btnSubmit" value="Reset My Password">
+			  <input type="submit" class="btn btn-white pull-right"  name="btnSubmit" value="Reset My Password">
 			
       </div>
 	  		
@@ -247,50 +247,50 @@
 			<div class="row col-sm-12">
 	            <div class="das-form-outer-align">
 	            <div class="tab-pane m-t" id="company">
-		{!! Form::open(array('url'=>'customer/savecompanydetails/', 'class'=>'form-horizontal ' ,'files' => true)) !!}  
+		{!! Form::open(array('url'=>'customer/savecompanydetails/', 'class'=>'form-horizontal ','name'=>'companyDetailsForm','id'=>'companyDetailsForm','data-parsley-validate'=>'true','files' => true)) !!}  
 				<input name="compedit_id" type="hidden" id="compedit_id" value="<?php if(!empty($extra)) { echo $extra->id; } ?>" />
 			<div class="row">
 			<div class="col-md-6">
 			  <div class="form-group">
 				<label for="ipt" class=" control-label col-md-4"> Company Name</label>
 				<div class="col-md-8">
-				<input name="company_name" type="text" id="company_name" class="form-control input-sm" required  value="<?php if(!empty($extra)) { echo $extra->company_name; } ?>" />  
+				<input name="company_name" type="text" id="company_name" class="form-control input-sm" required='' value="<?php if(!empty($extra)) { echo $extra->company_name; } ?>" />  
 				 </div> 
 			  </div>
 			  <div class="form-group">
 				<label for="ipt" class=" control-label col-md-4"> Company Owner </label>
 				<div class="col-md-8">
-				<input name="company_owner" type="text" id="company_owner" class="form-control input-sm" required  value="<?php if(!empty($extra)) { echo $extra->company_owner; } ?>" />  
+				<input name="company_owner" type="text" id="company_owner" class="form-control input-sm" required='' value="<?php if(!empty($extra)) { echo $extra->company_owner; } ?>" />  
 				 </div> 
 			  </div>
 			  <div class="form-group">
 				<label for="ipt" class=" control-label col-md-4"> Contact Person </label>
 				<div class="col-md-8">
-				<input name="contact_person" type="text" id="contact_person" class="form-control input-sm" required  value="<?php if(!empty($extra)) { echo $extra->contact_person; } ?>" />  
+				<input name="contact_person" type="text" id="contact_person" class="form-control input-sm" required='' value="<?php if(!empty($extra)) { echo $extra->contact_person; } ?>" />  
 				 </div> 
 			  </div>
 			  <div class="form-group">
 				<label for="ipt" class=" control-label col-md-4">Company E-Mail </label>
 				<div class="col-md-8">
-				<input name="company_email" type="email" id="company_email"  class="form-control input-sm" required value="<?php if(!empty($extra)) { echo $extra->company_email; } ?>" /> 
+				<input name="company_email" type="email" id="company_email"  class="form-control input-sm" required='' value="<?php if(!empty($extra)) { echo $extra->company_email; } ?>" /> 
 				 </div> 
 			  </div> 
 			  <div class="form-group">
 				<label for="ipt" class="control-label col-md-4">Phone # </label>
 				<div class="col-md-8">
-				<input name="company_phone" type="text" id="company_phone"  class="form-control input-sm" required value="<?php if(!empty($extra)) { echo $extra->company_phone; } ?>" /> 
+				<input name="company_phone" type="text" id="company_phone"  class="form-control input-sm" required='' value="<?php if(!empty($extra)) { echo $extra->company_phone; } ?>" /> 
 				 </div> 
 			  </div>
 			  <div class="form-group">
 				<label for="ipt" class="control-label col-md-4">Website </label>
 				<div class="col-md-8">
-				<input name="company_website" type="text" id="company_website"  class="form-control input-sm" required value="<?php if(!empty($extra)) { echo $extra->company_website; } ?>" /> 
+				<input name="company_website" type="text" id="company_website"  class="form-control input-sm" required='' value="<?php if(!empty($extra)) { echo $extra->company_website; } ?>" /> 
 				 </div> 
 			  </div>
 			  <div class="form-group">
 				<label for="ipt" class="control-label col-md-4">Tax # </label>
 				<div class="col-md-8">
-				<input name="company_tax_no" type="text" id="company_tax_no"  class="form-control input-sm" required value="<?php if(!empty($extra)) { echo $extra->company_tax_number; } ?>" /> 
+				<input name="company_tax_no" type="text" id="company_tax_no"  class="form-control input-sm" required='' value="<?php if(!empty($extra)) { echo $extra->company_tax_number; } ?>" /> 
 				 </div> 
 			  </div>
 			</div>
@@ -391,7 +391,7 @@
 		  <div class="form-group">
 			<label for="ipt" class=" control-label col-sm-2">&nbsp;</label>
 			<div class="col-md-8 pull-left">
-				<button class="btn btn-default dash-btn-style pull-left" type="submit">Save Details </button>
+				<button class="btn btn-white pull-right" type="submit"> Save Details </button>
 			 </div> 
 		  </div> 	
 		
@@ -540,10 +540,23 @@
   left: -9999px;
 }
 
+
 .has-error  {
     border-color: #a94442;
     -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+.parsley-required{
+
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+
 }
 
 </style>
@@ -591,6 +604,15 @@ $(function () {
     return true; // Don't submit form for this demo
   });
 
+
+$('#companyDetailsForm').parsley().on('field:validated', function() {
+    var ok = $('.parsley-error').length === 0;
+    $('.bs-callout-info').toggleClass('hidden', !ok);
+    $('.bs-callout-warning').toggleClass('hidden', ok);
+  })
+  .on('form:submit', function() {
+    return true; // Don't submit form for this demo
+  });
 });
   </script>
 @endsection

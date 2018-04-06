@@ -14,6 +14,11 @@ class PropertymanagementController extends Controller {
         $this->data['data'] = CommonHelper::getInfo();
         $this->data['pageslider'] = \DB::table('tb_pages_sliders')->select( 'slider_title', 'slider_description', 'slider_img', 'slider_link', 'slider_video', 'slide_type')->where('slider_page_id', 107)->get();
 
+
+         $this->data['pageTitle'] = "Property management front end dashboard";
+        $this->data['pageMetakey'] = "Property management front end dashboard";
+        $this->data['pageMetadesc'] = "Property management front end dashboard";
+
     }
 	
 	 public function propertyManagement(Request $request) {

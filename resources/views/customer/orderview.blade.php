@@ -37,48 +37,48 @@
       <span class="scrollNextDiv"><a class="scrollpage" href="#orderDashboard">Scroll Down</a></span>
       </section>
     @endif
-<section id="orderDashboard" >
+<section id="orderDashboard" class="col-md-12 pull-left" >
 <div class="row">&nbsp;</div>	
 
-<div class=" col-md-12" style="background-color:#f7f7f7;">
+<div class="well col-md-12" style="background-color:#f7f7f7;">
 
 <table class="table table-striped table-bordered" >
 	<tbody>	
 
 			<tr>
-				<td width='80%' class='label-view text-right'>Order IdDD</td>
-				<td># {{ $order->id }} </td>
+				<td width='80%' class='label-view text-right'>Order Id</td>
+				<th># {{ $order->id }} </th>
 				
 			</tr>
 			
 			<tr>
 				<td width='80%' class='label-view text-right'>Invoice No.</td>
-				<td># {{ $order->invoice_num }} </td>
+				<th># {{ $order->invoice_num }} </th>
 				
 			</tr>
 			
 			<tr>
 				<td width='80%' class='label-view text-right'>Created</td>
-				<td>{{ $order->created }} </td>
+				<th>{{ $order->created }} </th>
 				
 			</tr>
 		
 			<tr>
 				<td width='80%' class='label-view text-right'>Status</td>
-				<td>{{ $order->status }} </td>
+				<th>{{ $order->status }} </th>
 				
 			</tr>
 		
 			<tr>
 				<td width='80%' class='label-view text-right'>Comments</td>
-				<td>{{ $order->comments }} </td>
+				<th>{{ $order->comments }} </th>
 				
 			</tr>
 	</tbody>	
 </table>   
 
 @if(!empty($order_item_detail))
-	<div id="item-pnl">
+	<div id="item-pnl" class="col-md-12">
 		<div class="row items-pnl-head">
 			<div class="col-sm-1 col">No.</div>
 			<div class="col-sm-7 col">PACKAGES</div>
