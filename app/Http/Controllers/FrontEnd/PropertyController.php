@@ -117,7 +117,7 @@ class PropertyController extends Controller {
 
 		}
 
-		$perPage = 12;
+		$perPage = 40;
 		$pageNumber = 1;
 		if(isset($request->page) && $request->page>0){
 			$pageNumber = $request->page;
@@ -419,7 +419,7 @@ class PropertyController extends Controller {
 
         }
 
-        $perPage = 12;
+        $perPage = 40;
         $pageNumber = 1;
         if(isset($request->page) && $request->page>0){
             $pageNumber = $request->page;
