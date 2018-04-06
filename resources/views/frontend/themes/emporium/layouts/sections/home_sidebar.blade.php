@@ -11,7 +11,7 @@
                             class="img-responsive"/></a></div>
             <div class="mobilenavheader hide" data-option="child-global">
                 <h3 data-option-title="global"></h3>
-                <a  class="homelinknav backtohomelink cursor" data-option-action="back"
+                <a class="homelinknav backtohomelink cursor" data-option-action="back"
                    data-option-action-type="home" data-id="0"><i class="fa fa-angle-left"></i> <span>HOME</span></a>
             </div>
             <ul class="mobilemenulist common-search-bar" data-option="search-bar">
@@ -23,24 +23,29 @@
                     <div id="filtersearchpopup" data-option="gobal-search" style="display:none;">
                         <ul>
                             <li>
-                                <a class="searchresultdata"  data-action="gobal-destinations"><i
-                                            class="iconsheet icon-destinations"></i> Destinations <span>(0)</span></a>
+                                <a class="searchresultdata cursor" data-action="gobal-destinations">
+                                    <i class="iconsheet icon-destinations"></i> Destinations <span>(0)</span>
+                                </a>
                             </li>
                             <li>
-                                <a class="searchresultdata"  data-action="gobal-collections"><i
-                                            class="iconsheet icon-collections"></i> Collections <span>(0)</span></a>
+                                <a class="searchresultdata cursor" data-action="gobal-collections">
+                                    <i class="iconsheet icon-collections"></i> Collections <span>(0)</span>
+                                </a>
                             </li>
                             <li>
-                                <a class="searchresultdata" data-action="gobal-restaurant"><i
-                                            class="iconsheet icon-restaurant"></i> Restaurant <span>(0)</span></a>
+                                <a class="searchresultdata cursor" data-action="gobal-restaurant">
+                                    <i class="iconsheet icon-restaurant"></i> Restaurant <span>(0)</span>
+                                </a>
                             </li>
                             <li>
-                                <a class="searchresultdata" data-action="gobal-bar"><i class="iconsheet icon-bar"></i>
-                                    Bar <span>(0)</span></a>
+                                <a class="searchresultdata cursor" data-action="gobal-bar">
+                                    <i class="iconsheet icon-bar"></i> Bar <span>(0)</span>
+                                </a>
                             </li>
                             <li>
-                                <a class="searchresultdata" data-action="gobal-spa"><i class="iconsheet icon-spa"></i>
-                                    Spa <span>(0)</span></a>
+                                <a class="searchresultdata cursor" data-action="gobal-spa">
+                                    <i class="iconsheet icon-spa"></i> Spa <span>(0)</span>
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -59,7 +64,7 @@
                 <li><a class="cursor" data-action="select-collection">SEARCH OUR COLLECTION</a></li>
                 <li><a class="cursor" data-action="search-by-date">SEARCH BY DATE</a></li>
                 <li><a class="cursor" data-action="select-destination" data-id="0">SELECT YOUR DESTINATION</a></li>
-                <li><a class="cursor" data-action="select-experience" >SELECT YOUR EXPERIENCE</a></li>
+                <li><a class="cursor" data-action="select-experience">SELECT YOUR EXPERIENCE</a></li>
                 <!--li><a href="javascript:void(0)" >PERSONALIZED SERVICE</a></li-->
                 <li><a class="cursor" data-action="select-menu" data-position="business" data-id="0">COMPANY</a></li>
             </ul>
@@ -79,11 +84,24 @@
             </ul>
             <ul class="mobilemenulist hide" data-option="selected-option-list">
             </ul>
+            {{-- For Gobal Search List --}}
+            <ul class="mobilemenulist hide" data-option="dest-option-list">
+            </ul>
+            <ul class="mobilemenulist hide" data-option="collection-option-list">
+            </ul>
+            <ul class="mobilemenulist hide" data-option="resto-option-list">
+            </ul>
+            <ul class="mobilemenulist hide" data-option="bar-option-list">
+            </ul>
+            <ul class="mobilemenulist hide" data-option="spa-option-list">
+            </ul>
+            {{-- End  Gobal Search List --}}
             @if (!Auth::check())
 
-            <div class="bottomlink" data-option="global">Members? <a class="loginSecForMob"
-                                                                                     href="javascript:void(0)">Login</a><br/>or<br/>Become a Member <a class="registerSecForMob" href="javascript:void(0)">Register here</a>
-            </div>
+                <div class="bottomlink" data-option="global">Members? <a class="loginSecForMob"
+                                                                         href="javascript:void(0)">Login</a><br/>or<br/>Become
+                    a Member <a class="registerSecForMob" href="javascript:void(0)">Register here</a>
+                </div>
             @endif
             <div class="hide" data-option="search-by-date">
                 <form action="{{url('search')}}" method="get">
@@ -106,7 +124,8 @@
                                 </li>
                                 <li>
                                     <label>DAY</label>
-                                    <select class="calenderselectbox" data-option="arrival-day" data-action="choose-date">
+                                    <select class="calenderselectbox" data-option="arrival-day"
+                                            data-action="choose-date">
                                         @for($arvDay=1;$arvDay<=31;$arvDay++)
                                             <option @if($setDateArvArr[0]==$arvDay) {{ 'selected' }} @endif value="{{(strlen($arvDay)>1)?$arvDay:'0'.$arvDay}}">{{$arvDay}}</option>
                                         @endfor
@@ -115,18 +134,20 @@
                                 </li>
                                 <li>
                                     <label>MONTH</label>
-                                    <select class="calenderselectbox" data-option="arrival-month" data-action="choose-date">
+                                    <select class="calenderselectbox" data-option="arrival-month"
+                                            data-action="choose-date">
                                         @for($arvMonth=1; $arvMonth<=12; ++$arvMonth)
-                                            <option  @if($setDateArvArr[2]==$arvMonth) {{ 'selected' }} @endif value="{{(strlen($arvMonth)>1)?$arvMonth:'0'.$arvMonth}}">{{ date('F', mktime(0, 0, 0, $arvMonth, 1)) }}</option>
+                                            <option @if($setDateArvArr[2]==$arvMonth) {{ 'selected' }} @endif value="{{(strlen($arvMonth)>1)?$arvMonth:'0'.$arvMonth}}">{{ date('F', mktime(0, 0, 0, $arvMonth, 1)) }}</option>
                                         @endfor
                                     </select>
                                 </li>
                                 <li>
                                     <label>YEAR</label>
-                                    <select class="calenderselectbox" data-option="arrival-year" data-action="choose-date">
+                                    <select class="calenderselectbox" data-option="arrival-year"
+                                            data-action="choose-date">
                                         {{--*/ $arvYearRange = range(date('Y'), date('Y', strtotime('+5 years'))) /*--}}
                                         @foreach($arvYearRange as $arvYear)
-                                            <option  @if($setDateArvArr[2]==$arvYear) {{ 'selected' }} @endif value="{{$arvYear}}">{{$arvYear}}</option>
+                                            <option @if($setDateArvArr[2]==$arvYear) {{ 'selected' }} @endif value="{{$arvYear}}">{{$arvYear}}</option>
                                         @endforeach
                                     </select>
                                 </li>
@@ -140,7 +161,8 @@
                                 </li>
                                 <li>
                                     <label>DAY</label>
-                                    <select class="calenderselectbox" data-option="departure-day" data-action="choose-date">
+                                    <select class="calenderselectbox" data-option="departure-day"
+                                            data-action="choose-date">
                                         @for($depDay=1;$depDay<=31;$depDay++)
                                             <option @if($setDateDepArr[0]==$depDay) {{ 'selected' }} @endif value="{{(strlen($depDay)>1)?$depDay:'0'.$depDay}}">{{$depDay}}</option>
                                         @endfor
@@ -148,7 +170,8 @@
                                 </li>
                                 <li>
                                     <label>MONTH</label>
-                                    <select class="calenderselectbox" data-option="departure-month" data-action="choose-date">
+                                    <select class="calenderselectbox" data-option="departure-month"
+                                            data-action="choose-date">
                                         @for($depMonth=1; $depMonth<=12; ++$depMonth)
                                             <option @if($setDateDepArr[1]==$arvMonth) {{ 'selected' }} @endif value="{{(strlen($depMonth)>1)?$depMonth:'0'.$depMonth}}">{{ date('F', mktime(0, 0, 0, $depMonth, 1)) }}</option>
                                         @endfor
@@ -156,7 +179,8 @@
                                 </li>
                                 <li>
                                     <label>YEAR</label>
-                                    <select class="calenderselectbox" data-option="departure-year" data-action="choose-date">
+                                    <select class="calenderselectbox" data-option="departure-year"
+                                            data-action="choose-date">
                                         {{--*/ $depYearRange = range(date('Y'), date('Y', strtotime('+5 years'))) /*--}}
                                         @foreach($depYearRange as $depYear)
                                             <option @if($setDateDepArr[2]==$depYear) {{ 'selected' }} @endif value="{{$depYear}}">{{$depYear}}</option>
@@ -171,7 +195,8 @@
                 </form>
             </div>
             <div class="bottomlink text-center hide" data-option="search-by-date">View, Modify or Cancel your
-                Booking<br/> @if (!Auth::check())<a href="javascript:void(0)" class="loginSecForMob">Login</a>@endif</div>
+                Booking<br/> @if (!Auth::check())<a href="javascript:void(0)" class="loginSecForMob">Login</a>@endif
+            </div>
 
         </div>
         <div class="left-carousal">
@@ -199,7 +224,8 @@
                 @if(!empty($sidebarads['leftsidebarads']))
                     @foreach($sidebarads['leftsidebarads'] as $ads)
                         <div class="item">
-                            <a href="{{ (strpos($ads->adv_link, 'http://') !== false) ? $ads->adv_link : 'http://'.$ads->adv_link }}"><img src="{{URL::to('uploads/users/advertisement/'.$ads->adv_img)}}"></a>
+                            <a href="{{ (strpos($ads->adv_link, 'http://') !== false) ? $ads->adv_link : 'http://'.$ads->adv_link }}"><img
+                                        src="{{URL::to('uploads/users/advertisement/'.$ads->adv_img)}}"></a>
                         </div>
                     @endforeach
                 @endif

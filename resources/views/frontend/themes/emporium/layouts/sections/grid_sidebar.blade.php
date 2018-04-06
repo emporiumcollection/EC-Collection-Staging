@@ -17,30 +17,35 @@
             <ul class="mobilemenulist common-search-bar" data-option="search-bar">
                 <li>
                     <div class="mobile-leftsearch">
-                        <input type="text" class="form-control" id="search"/>
+                        <input type="text" class="form-control" data-action="gobal-search"/>
                         <button type="button"><i class="fa fa-search"></i></button>
                     </div>
-                    <div id="filtersearchpopup" style="display:none;">
+                    <div id="filtersearchpopup" data-option="gobal-search" style="display:none;">
                         <ul>
                             <li>
-                                <a class="searchresultdata" href="javascript:void(0)" id="destinationsresult"><i
-                                            class="iconsheet icon-destinations"></i> Destinations <span>(3)</span></a>
+                                <a class="searchresultdata cursor" data-action="gobal-destinations">
+                                    <i class="iconsheet icon-destinations"></i> Destinations <span>(0)</span>
+                                </a>
                             </li>
                             <li>
-                                <a class="searchresultdata" href="javascript:void(0)"><i
-                                            class="iconsheet icon-collections"></i> Collections <span>(11)</span></a>
+                                <a class="searchresultdata cursor" data-action="gobal-collections">
+                                    <i class="iconsheet icon-collections"></i> Collections <span>(0)</span>
+                                </a>
                             </li>
                             <li>
-                                <a class="searchresultdata" href="javascript:void(0)"><i
-                                            class="iconsheet icon-restaurant"></i> Restaurant <span>(5)</span></a>
+                                <a class="searchresultdata cursor" data-action="gobal-restaurant">
+                                    <i class="iconsheet icon-restaurant"></i> Restaurant <span>(0)</span>
+                                </a>
                             </li>
                             <li>
-                                <a class="searchresultdata" href="javascript:void(0)"><i class="iconsheet icon-bar"></i>
-                                    Bar <span>(2)</span></a>
+                                <a class="searchresultdata cursor" data-action="gobal-bar">
+                                    <i class="iconsheet icon-bar"></i> Bar <span>(0)</span>
+                                </a>
                             </li>
                             <li>
-                                <a class="searchresultdata" href="javascript:void(0)"><i class="iconsheet icon-spa"></i>
-                                    Spa <span>(2)</span></a>
+                                <a class="searchresultdata cursor" data-action="gobal-spa">
+                                    <i class="iconsheet icon-spa"></i> Spa <span>(0)</span>
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -80,6 +85,18 @@
             </ul>
             <ul class="mobilemenulist hide" data-option="selected-option-list">
             </ul>
+            {{-- For Gobal Search List --}}
+            <ul class="mobilemenulist hide" data-option="dest-option-list">
+            </ul>
+            <ul class="mobilemenulist hide" data-option="collection-option-list">
+            </ul>
+            <ul class="mobilemenulist hide" data-option="resto-option-list">
+            </ul>
+            <ul class="mobilemenulist hide" data-option="bar-option-list">
+            </ul>
+            <ul class="mobilemenulist hide" data-option="spa-option-list">
+            </ul>
+            {{-- End  Gobal Search List --}}
             @if (!Auth::check())
 
                 <div class="bottomlink" data-option="global">Members? <a class="loginSecForMob"
