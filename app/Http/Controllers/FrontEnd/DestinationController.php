@@ -111,7 +111,7 @@ class DestinationController extends Controller {
 
             if(!empty($fetchdestinations))
             {
-                $res['dests'] = $fetchdestinations;
+                $res['dest'] = $fetchdestinations;
             }
 			
 			$fetchcollection = DB::table('tb_properties')->select('id', 'property_name', 'property_slug')->where('property_status', 1)->where('property_name', 'like', $keyword.'%')->get();
@@ -132,14 +132,14 @@ class DestinationController extends Controller {
 
             if(!empty($fetchbars))
             {
-                $res['bars'] = $fetchbars;
+                $res['bar'] = $fetchbars;
             }
 			
 			$fetchspas = DB::table('tb_spas')->select('id', 'title', 'alias')->where('title', 'like', $keyword.'%')->get();
 
             if(!empty($fetchspas))
             {
-                $res['bars'] = $fetchspas;
+                $res['spa'] = $fetchspas;
             }
 			
 			if(!empty($res))
