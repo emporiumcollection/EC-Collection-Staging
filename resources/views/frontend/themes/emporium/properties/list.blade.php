@@ -143,7 +143,16 @@
 @section('custom_js')
     @parent
 	<script>
-
+		$(document).ready(function () {
+			$(document).on('change', '#myRange', function () {
+				var max =  6000 - $(this).slider("value");
+				var datObj = window.location.search;
+				datObj =  datObj+'?filter_min_price=' + 0;
+				datObj =  datObj+'&filter_max_price=' + max;
+				window.history.pushState("object or string", "Title", datObj);
+			});
+		});
+		
 		var pageCounter = 1;
 		var it_scroll = false;
 		var totalPage = 3;
@@ -163,7 +172,6 @@
 			if(it_scroll==true) {
 				var datObj = window.location.search+'?page='+pageCounter;
                     datObj =  datObj+'&s={{$slug}}';
-
 
 
 				var params = $.extend({}, doAjax_params_default);
