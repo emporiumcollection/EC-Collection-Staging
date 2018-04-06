@@ -17,10 +17,10 @@
             <ul class="mobilemenulist common-search-bar" data-option="search-bar">
                 <li>
                     <div class="mobile-leftsearch">
-                        <input type="text" class="form-control" id="search"/>
+                        <input type="text" class="form-control" data-action="gobal-search"/>
                         <button type="button"><i class="fa fa-search"></i></button>
                     </div>
-                    <div id="filtersearchpopup" style="display:none;">
+                    <div data-option="gobal-search" style="display:none;">
                         <ul>
                             <li>
                                 <a class="searchresultdata" href="javascript:void(0)" id="destinationsresult"><i

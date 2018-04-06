@@ -154,9 +154,48 @@
                 doAjax(params);
             @endif
 
+            /*
+            * For Auto suggestion list for Top Search Bar
+            */
 
 
-            /*Login BUTTON  Click Action Here*/
+                $('[data-action="auto-suggestion"]' ).autocomplete({
+                    source: function( request, response ) {
+                        var datObj = {};
+                        datObj.keyword = request.term;
+                        var params = $.extend({}, doAjax_params_default);
+                        params['url'] = BaseURL + '/destination/auto-suggestion-ajax';
+                        params['data'] = datObj;
+                        params['dataType'] = 'jsonp';
+                        params['successCallbackFunction'] = function( data ) {
+                            response( data);
+                        };
+                        //doAjax(params);
+                    },
+                    minLength: 2,
+                    select: function( event, ui ) {
+                        log( "Selected: " + ui.item.value + " aka " + ui.item.id );
+                    }
+                } );
+
+                /*
+                * For Global Search
+                */
+                $(document).on('keypress','[data-action="gobal-search"]',function() {
+                   if($('[data-option="gobal-search"]').val()==''){
+                       $('[data-option="gobal-search"]').slideUp(300);
+                   }else {
+                       $('[data-option="gobal-search"]').slideDown(300);
+                   }
+                }).blur(function() {
+                    $('[data-option="gobal-search"]').slideUp(300);
+                });
+
+
+
+            /*
+            * Login BUTTON  Click Action Here
+            */
             $("#loginFormAction").submit(function (event) {
                 event.preventDefault();
 
@@ -184,9 +223,11 @@
                     }
                 });
             });
-            /*End Login BUTTON  Click Action Here*/
 
-            /*Register BUTTON  Click Start Action Here*/
+
+            /*
+            * Register BUTTON  Click Start Action Here
+            */
 
             $("#customerRegisterarioForm").submit(function (event) {
 
@@ -232,7 +273,7 @@
                 });
             });
 
-            /*End Register BUTTON  Click Start Action Here*/
+
 
         });
 
@@ -267,31 +308,7 @@
         // on keyup / change flag: reset
         telInput.on("keyup change", reset);
 
-        /*
-        * For Auto suggestion list for Top Search Bar
-        */
 
-        $( function() {
-            $( '[data-action="auto-suggestion"]' ).autocomplete({
-                source: function( request, response ) {
-                    var datObj = {};
-                    datObj.keyword = request.term;
-                    var params = $.extend({}, doAjax_params_default);
-                    params['url'] = BaseURL + '/destination/auto-suggestion-ajax';
-                    params['data'] = datObj;
-                    params['dataType'] = 'jsonp';
-                    params['successCallbackFunction'] = function( data ) {
-                        response( JSON.stringify(data) );
-                    };
-                    doAjax(params);
-                },
-                minLength: 2,
-                select: function( event, ui ) {
-                    log( "Selected: " + ui.item.value + " aka " + ui.item.id );
-                }
-            } );
-
-        } );
     </script>
 
 @show
