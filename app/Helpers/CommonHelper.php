@@ -63,7 +63,7 @@ class CommonHelper
 	static function getGridResultAds($pos, $cat_id = 'Hotel'){
 
         $data = array();
-        $data['resultads'] = \DB::table('tb_advertisement')->select('adv_img', 'adv_link')->where('adv_type', 'sidebar')->where('adv_status', 1)->where('adv_position', $pos)->where('ads_cat_id', $cat_id)->inRandomOrder()->first();
+        $data['resultads'] = \DB::table('tb_advertisement')->select('adv_img', 'adv_link', 'adv_title')->where('adv_type', 'sidebar')->where('adv_status', 1)->where('adv_position', $pos)->where('ads_cat_id', $cat_id)->orderByRaw('RAND()')->first();
         return $data;
     }
 	
