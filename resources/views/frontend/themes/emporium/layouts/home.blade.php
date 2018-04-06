@@ -18,7 +18,7 @@
     <link href="{{ asset('themes/emporium/css/font-stylesheet.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('themes/emporium/css/jquery.mCustomScrollbar.css') }}">
     <link href="{{ asset('themes/emporium/css/bootstrap-datepicker.css')}}" rel="stylesheet">
-
+    <link href="{{ asset('lib/jquery-ui/jquery-ui.min.css') }}" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -102,6 +102,7 @@
 <script src="{{ asset('themes/emporium/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('themes/emporium/js/owl.carousel.js') }}"></script>
 <script src="{{ asset('themes/emporium/js/bootstrap-datepicker.js')}}"></script>
+<script src="{{ asset('lib/jquery-ui/jquery-ui.min.js') }}"></script>
 <!-- custom scrollbar plugin -->
 <script src="{{ asset('themes/emporium/js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
 <script src="{{ asset('themes/emporium/js/custom/do_ajax.js') }}"></script>
@@ -265,6 +266,32 @@
 
         // on keyup / change flag: reset
         telInput.on("keyup change", reset);
+
+        /*
+        * For Auto suggestion list for Top Search Bar
+        */
+
+        $( function() {
+            $( '[data-action="auto-suggestion"]' ).autocomplete({
+                source: function( request, response ) {
+                    var datObj = {};
+                    datObj.keyword = request.term;
+                    var params = $.extend({}, doAjax_params_default);
+                    params['url'] = BaseURL + '/destination/auto-suggestion-ajax';
+                    params['data'] = datObj;
+                    params['dataType'] = 'jsonp';
+                    params['successCallbackFunction'] = function( data ) {
+                        response( JSON.stringify(data) );
+                    };
+                    doAjax(params);
+                },
+                minLength: 2,
+                select: function( event, ui ) {
+                    log( "Selected: " + ui.item.value + " aka " + ui.item.id );
+                }
+            } );
+
+        } );
     </script>
 
 @show

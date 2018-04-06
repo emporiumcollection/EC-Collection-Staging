@@ -2,7 +2,7 @@
  <div class="row">
 	<div class="col-sm-3 col-md-3">
 	   <div class="form-group">
-		  <input type="text" name="s" placeholder="ENTER YOUR HOTEL OR DESTINATION"/>
+		  <input type="text" name="s" data-action="auto-suggestion" placeholder="ENTER YOUR HOTEL OR DESTINATION"/>
 	   </div>
 	</div>
 	<div class="col-sm-4 col-md-4 calendarbox">

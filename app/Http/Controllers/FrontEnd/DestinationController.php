@@ -195,23 +195,10 @@ class DestinationController extends Controller {
 				}
             }
 			
-			if(!empty($dataArr))
-			{
-				$respns['status'] = 'success';
-				$respns['data'] = $dataArr;
-			}
-            else
-			{
-				$respns['status'] = 'error';
-				$respns['errors'] = 'Not found!';
-			}
+
 		}
-		else
-		{
-			$respns['status'] = 'error';
-			$respns['errors'] = 'Not found!';
-		}
-		return response()->json($respns);
+
+		return response()->json(array($request->callback=>$dataArr));
     }
 
 }
