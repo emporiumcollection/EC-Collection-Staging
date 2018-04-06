@@ -325,12 +325,12 @@ $(".cookie-bar-hide-btn").click(function () {
 // 	$('#filtersearchpopup').slideUp();
 // });
 // });
-
+/*
 jQuery("#search").focus(function() {
    jQuery('#filtersearchpopup').slideDown(300);
 }).blur(function() {
    jQuery('#filtersearchpopup').slideUp(300);
-});
+});*/
 /*****************************************/
 	
 
@@ -546,7 +546,7 @@ v.onclick = function() {
 
 */
 
-
+/*
 
 // Range slider js
 var slider = document.getElementById("myRange");
@@ -564,4 +564,4 @@ slider.oninput = function() {
 
 
 
-
+*/
