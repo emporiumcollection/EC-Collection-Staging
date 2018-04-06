@@ -1,37 +1,21 @@
-@extends('frontend.layouts.ev.customer')
+
+@extends('frontend.themes.emporium.layouts.home')
+{{--  For Title --}}
+@section('title', $pageTitle)
+{{-- For Meta Keywords --}}
+@section('meta_keywords', $pageMetakey)
+{{-- For Meta Description --}}
+@section('meta_description', $pageMetadesc)
+{{-- For Page's Content Part --}}
 @section('content')
-<style>
-#formerrors { color:#ffec0cf2;}
-.input-hidden {
-  position: absolute;
-  left: -9999px;
-}
 
-input[type=radio]:checked + label>img {
-  border: 1px solid #fff;
-  box-shadow: 0 0 3px 3px #090;
-}
-
-/* Stuff after this is only to make things more pretty */
-input[type=radio] + label>img {
-  border: 1px dashed #444;
-  width: 128px;
-  height: 128px;
-  transition: 500ms all;
-}
-
-input[type=radio]:checked + label>img {
-  transform: 
-    rotateZ(-2deg) 
-    rotateX(2deg);
-}
-
-
-</style>
 <section>
+<div class="row col-md-12">
+	&nbsp;
 
-    <div>
+</div>
 
+  <div class="well">
   <!-- Nav tabs <i class="fa fa-bullhorn" aria-hidden="true"></i></div><span>Ads -->
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation"><a href="{{URL::to('hotel/propertymanagement')}}">Account Settings</a></li>
@@ -79,27 +63,58 @@ input[type=radio]:checked + label>img {
     
 @endsection
 
-@section('css')
+{{--For Right Side Icons --}}
+@section('right_side_iconbar')
 
-<!-- swiper carousel -->
-<link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/swiper.min.css')}}">
-<!-- style -->
-<link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/style.css')}}" />
-<!-- responsive css -->
-<link rel="stylesheet" href="{{ asset('sximo/assets/memform/css/responsive.css')}}" />
-<!-- Custom style -->
-<link href="{{ asset('sximo/assets/memform/css/custom-ai.css')}}" rel="stylesheet" type="text/css"/>
+    @parent
+@show
+
+{{-- For Include Top Bar --}}
+@section('top_search_bar')
+    @parent
+@endsection
+
+{{-- For Include Side Bar --}}
+@section('sidebar')
+    @include('frontend.themes.emporium.layouts.sections.common_sidebar')
+@endsection
+
+{{-- For Include style files --}}
+@section('head')
+    @parent
+    <link href="{{ asset('themes/emporium/css/animate.css') }}" rel="stylesheet">
+    <link href="{{ asset('themes/emporium/css/daterangepicker.css') }}" rel="stylesheet">
+    <link href="{{ asset('themes/emporium/css/calendar.css') }}" rel="stylesheet">
+    <link href="{{ asset('themes/emporium/css/terms-and-conditions.css') }}" rel="stylesheet">
+    <link href="{{ asset('themes/emporium/css/membership-css.css') }}" rel="stylesheet">
+    
+     
+@endsection
+
+{{-- For custom style  --}}
+@section('custom_css')
+
+    @parent
 
 @endsection
 
-@section('script')
-<script src="{{ asset('sximo/js/parsley.min.js')}}" type="text/javascript"></script>
-<script type="text/javascript" src="{{ asset('sximo/assets/memform/js/smooth-scroll.js')}}"></script>
-<!-- animation -->
-<script type="text/javascript" src="{{ asset('sximo/assets/memform/js/wow.min.js')}}"></script>
-<!-- swiper carousel -->
-<script type="text/javascript" src="{{ asset('sximo/assets/memform/js/swiper.min.js')}}"></script>
+{{-- For Include javascript files --}}
+@section('javascript')
+    @parent
+    <script src="{{ asset('themes/emporium/js/smooth-scroll.js') }}"></script>
+    <script src="{{ asset('sximo/js/parsley.min.js')}}" type="text/javascript"></script>
 
-<!-- images loaded -->
-<script type="text/javascript" src="{{ asset('sximo/assets/memform/js/imagesloaded.pkgd.min.js')}}"></script>
 @endsection
+
+{{-- For custom script --}}
+@section('custom_js')
+    @parent
+  
+@endsection
+
+{{-- For footer --}}
+@section('footer')
+    @parent
+@endsection
+
+
