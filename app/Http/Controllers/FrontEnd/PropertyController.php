@@ -24,7 +24,7 @@ class PropertyController extends Controller {
         $this->data['slider'] = \DB::table('tb_sliders')->select('slider_category','slider_title','slider_description','slider_img','slider_link','slide_type')->where('slider_category', $request->slug)->get();
 
         
-        $perPage = 12;
+        $perPage = 40;
         $pageNumber = 1;
         if(isset($request->page) && $request->page>0){
             $pageNumber = $request->page;
@@ -379,7 +379,11 @@ class PropertyController extends Controller {
         if (!is_null($request->childs) && $request->childs != '') {
             $childs = $request->childs;
         }
-
+		
+		if (!is_null($request->filter_max_price) && $request->filter_max_price != '') {
+            $filter_max_price = $request->filter_max_price;
+        }
+		
 
         $catprops = '';
 
@@ -418,6 +422,15 @@ class PropertyController extends Controller {
             }
 
         }
+		
+		if ($filter_max_price != '') {
+             
+            $getPriceQry =" , (SELECT pcrp.rack_rate FROM tb_properties_category_rooms_price pcrp   where pr.id=pcrp.property_id and pcrp.rack_rate between '0' and '".$filter_max_price."' order by pcrp.rack_rate DESC limit 0,1 ) as price , " ;
+            $filterPriceQry = " and pr.id in(SELECT pr.id FROM tb_properties_category_rooms_price pcrp, tb_properties pr   where pr.id=pcrp.property_id and pcrp.rack_rate between '0' and '".$filter_max_price."' group by pr.id order by pcrp.rack_rate DESC) ";
+        }else{
+             $getPriceQry =" , (SELECT pcrp.rack_rate FROM tb_properties_category_rooms_price pcrp  where pr.id=pcrp.property_id  order by pcrp.rack_rate DESC limit 0,1 ) as price ," ;
+             $filterPriceQry = "";
+        }
 
         $perPage = 40;
         $pageNumber = 1;
@@ -427,9 +440,10 @@ class PropertyController extends Controller {
         $pageStart = ($pageNumber -1) * $perPage;
 
         $query = "SELECT pr.editor_choice_property,pr.feature_property,pr.id,pr.property_name,pr.property_slug,pr.property_category_id ";
+		$query .= $getPriceQry;
         $query .= ", (SELECT pcrp.rack_rate FROM tb_properties_category_rooms_price pcrp  where pr.id=pcrp.property_id  order by pcrp.rack_rate DESC limit 0,1 ) as price " ;
         $query .= " FROM tb_properties pr ";
-        $whereClause =" WHERE ((pr.property_name LIKE '%$keyword%'AND pr.property_type = 'Hotel') OR city LIKE '%$keyword%' ".$catprops." ) AND pr.property_status = 1  ";
+        $whereClause =" WHERE ((pr.property_name LIKE '%$keyword%'AND pr.property_type = 'Hotel') OR city LIKE '%$keyword%' ".$catprops." ) AND pr.property_status = 1  ".$filterPriceQry;
         $orderBy = "ORDER BY (SELECT rack_rate FROM tb_properties_category_rooms_price pcrp WHERE pcrp.property_id = pr.id ORDER BY rack_rate DESC LIMIT 1) * 1 DESC, pr.editor_choice_property desc, pr.feature_property desc ";
         $limit = " LIMIT ". $pageStart.",".$perPage;
         $finalQry = $query.$whereClause.$orderBy.$limit ;
