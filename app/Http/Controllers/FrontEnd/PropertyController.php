@@ -23,7 +23,7 @@ class PropertyController extends Controller {
 
         $this->data['slider'] = \DB::table('tb_sliders')->select('slider_category','slider_title','slider_description','slider_img','slider_link','slide_type')->where('slider_category', $request->slug)->get();
 
-        
+         $this->data['destination_category'] =0;
         $perPage = 40;
         $pageNumber = 1;
         if(isset($request->page) && $request->page>0){
