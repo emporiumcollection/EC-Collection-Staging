@@ -79,9 +79,7 @@
 										
 										<a href="{{URL::to($props->property_slug)}}" class="content-overlay">
 											<h5>{{ $props->property_name}}</h5>
-											<p>From € {{$props->price}} {{(isset($props->category_name))? '| '.$props->category_name : ''}}</p>
 										</a>
-										<div class="pricelabel">From EUR {{$props->price}} / night</div>
 									</figure>
 									<div class="title">
 										<h3><a href="{{URL::to($props->property_slug)}}">{{ $props->property_name}}</a></h3>
