@@ -176,10 +176,13 @@ function renderDestinationSocialYoutube(dataObj) {
     
     
     $(dataObj.dests).each(function (i, val) {
-        var  linkMenu = BaseURL+'/social-youtube?scy='+val.category_alias;
-       // destinationHtml += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.category_name + '</a></li>';
-        destinationHtml += '<li><a class="cursor menu_item" data-action="select-destination-youtube" data-id="' + val.id + '">' + val.category_name + '</a>';
-        destinationHtml += '<a href="'+linkMenu+'" class="external-link"><i class="fa fa-external-link" aria-hidden="true"></i></a></li>';
+		var  linkMenu = BaseURL+'/social-youtube/'+val.category_alias;
+        if(dataObj.path!=undefined){
+            linkMenu = BaseURL+'/social-youtube/'+dataObj.path+'/'+val.category_alias;
+        }
+        destinationHtml += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.category_name + '</a></li>';
+      //  destinationHtml += '<li><a class="cursor menu_item" data-action="select-destination-youtube" data-id="' + val.id + '">' + val.category_name + '</a>';
+      //  destinationHtml += '<a href="'+linkMenu+'" class="external-link"><i class="fa fa-external-link" aria-hidden="true"></i></a></li>';
          
        
        });

@@ -72,8 +72,8 @@ class FrontendPagesController extends Controller {
 	{
 		$channel_url = '';
 		$catid = '';
-		if (trim($request->input('scy'))!='' && !is_null($request->input('scy'))) {
-			$cateObjsc = \DB::table('tb_categories')->select('id', 'category_youtube_channel_url')->where('category_alias', trim($request->input('scy')))->where('category_published', 1)->first();
+		if (trim($request->cat)!='' && !is_null($request->cat)) {
+			$cateObjsc = \DB::table('tb_categories')->select('id', 'category_youtube_channel_url')->where('category_alias', trim($request->cat))->where('category_published', 1)->first();
 		}
 		else
 		{
