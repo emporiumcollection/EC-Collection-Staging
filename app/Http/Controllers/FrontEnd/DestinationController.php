@@ -20,7 +20,7 @@ class DestinationController extends Controller {
 			$fetchchildsQuery = \DB::select("select tb_categories.id, tb_categories.parent_category_id, tb_categories.category_name, tb_categories.category_image, tb_categories.category_alias from  tb_categories, tb_properties where tb_categories.category_published = '1' and tb_categories.parent_category_id = '".$category_id."' and tb_categories.id != '8' and FIND_IN_SET(tb_categories.id,tb_properties.property_category_id) group by tb_categories.id");
            // $fetchchilds = DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_alias')->where('category_published', 1)->where('parent_category_id', $category_id)->where('id', '!=', 8)->get();
 
-            if(!empty($fetchchilds))
+            if(!empty($fetchchildsQuery))
             {
                 $res['status'] = 'success';
                 $res['dests'] = $fetchchildsQuery;
