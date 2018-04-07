@@ -116,15 +116,15 @@ $(function () {
                                                     </li>
                                                     <li>
                                                         <div class="booking-form-heading">Departure Date</div>
-                                                        <input  id="date-range-destination" size="20" name="booking_destination" value="{{ ($destination_date!='') ? $destination_date : '' }}">
+                                                        <input  id="date-range-destination" size="20" name="booking_destination" value="{{ ($departure!='') ? $departure : '' }}">
                                                     </li>
                                                 </ul>
                                             </div>
                                             <div class="right-input-align">
                                                 <?php
                                                 $number_of_nights = '';
-                                                if($arrive_date != '' && $destination_date != '') {
-                                                    $date1 = date_create(date('Y-m-d H:i:s', strtotime($destination_date)));
+                                                if($arrive_date != '' && $departure != '') {
+                                                    $date1 = date_create(date('Y-m-d H:i:s', strtotime($departure)));
                                                     $date2 = date_create(date('Y-m-d H:i:s', strtotime($arrive_date)));
                                                     $diff = date_diff($date1, $date2);
                                                     $number_of_nights = $diff->format("%a");
