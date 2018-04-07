@@ -3842,9 +3842,9 @@ class HomeController extends Controller {
             $this->data['arrive_date'] = date("d.m.Y", strtotime(trim($request->input('arrive'))));
         }
 
-        if (!is_null($request->input('destination')) && $request->input('destination') != '') {
-            \Session::put('destination_date', $request->input('destination'));
-            $this->data['destination_date'] = date("d.m.Y", strtotime(trim($request->input('destination'))));
+        if (!is_null($request->input('departure')) && $request->input('departure') != '') {
+            \Session::put('departure', $request->input('departure'));
+            $this->data['departure'] = date("d.m.Y", strtotime(trim($request->input('departure'))));
         }
 
         if (!is_null($request->input('booking_adults')) && $request->input('booking_adults') != '') {
