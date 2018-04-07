@@ -51,7 +51,7 @@
 
         <!-- HAM YARD HOTEL -->
         <setion id="hotelInfo" class="HamYardHotelSection">
-            <div class="HamYardHotelInner">
+            <div class="HamYardHotelInner HamYardHotelInnerfirst">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6">
@@ -78,7 +78,7 @@
         </setion>
         <!-- HAM YARD HOTEL -->
         <setion class="HamYardHotelSection">
-            <div class="HamYardHotelInner">
+            <div class="HamYardHotelInner HamYardHotelInnersecond">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6">
@@ -559,8 +559,12 @@
     @if(!empty($propertyDetail))
         @if( array_key_exists('propimage', $propertyDetail))
             <style>
-                .HamYardHotelInner {
+                .HamYardHotelInnerfirst {
                     background-image: url('{{ $propertyDetail['propimage_thumbpath'].$propertyDetail['propimage'][1]->file_name}}');
+                }
+				
+				.HamYardHotelInnersecond {
+                    background-image: url('{{ $propertyDetail['propimage_thumbpath'].$propertyDetail['propimage'][2]->file_name}}');
                 }
             </style>
         @endif
