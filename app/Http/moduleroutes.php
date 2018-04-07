@@ -57,4 +57,7 @@
                     Route::controller('contract', 'ContractController');
                     Route::controller('presentation', 'PresentationController');
                     Route::controller('presentationslider', 'PresentationsliderController');
+                    Route::controller('events', 'EventsController');
+                    Route::controller('eventpackages', 'EventpackagesController');
+                    Route::controller('eventreservations', 'EventreservationsController');
                     ?>
