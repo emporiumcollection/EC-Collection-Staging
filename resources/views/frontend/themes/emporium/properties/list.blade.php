@@ -144,7 +144,15 @@
 		$(document).ready(function () {
 			$(document).on('change', '#myRange', function () {
 				var datObj = window.location.search;
-				datObj =  datObj+'?filter_max_price=' + $(this).val();
+				if(datObj.match(/filter_max_price/g))
+				{
+					var str = datObj.split("?");
+					datObj =  str[0]+'?filter_max_price=' + $(this).val();
+				}
+				else
+				{
+					datObj =  datObj+'?filter_max_price=' + $(this).val();
+				}
 				window.history.pushState("object or string", "Title", datObj);
 				priceFilterAjax();
 			});
