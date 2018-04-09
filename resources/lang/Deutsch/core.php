@@ -125,6 +125,7 @@ return array(
  "tab_popup_menu"			=> "Popup Menu",
  "tab_popup2_menu"			=> "Popup 2 Menu",
  "tab_business_menu"			=> "Business Menu",
+ "tab_intranet_menu"			=> "Intranet Menu",
  "sb_reorder"			=> "Menüreihenfolge Speichern",  
  "fr_mtitle"			=> "Name / Titel",  
  "fr_mtype"			=> "Menü Art",  
