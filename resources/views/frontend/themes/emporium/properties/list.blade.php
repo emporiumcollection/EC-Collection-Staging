@@ -262,7 +262,7 @@
 				}
 				else
 				{
-					var dataGridHtml +='<div class="col-sm-6 col-md-6 col-lg-4">';
+					dataGridHtml +='<div class="col-sm-6 col-md-6 col-lg-4">';
 					dataGridHtml +='<div class="hotel-card">';
 					dataGridHtml +='<figure>';
 					//var imgscr = BaseURL + '/propertyimagebyid/'+obj.id;
