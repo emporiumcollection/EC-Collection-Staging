@@ -241,10 +241,11 @@
 		
 		function renderPropertyListPriceFilter(data){
 			$('[data-option="property-grid-list"]').html('');
+			var dataGridHtml = '';
 			$.each(data.properties, function (idx, obj) {
 				if(idx==20)
 				{
-					var dataGridHtml ='<div class="col-sm-6 col-md-6 col-lg-4">';
+					dataGridHtml +='<div class="col-sm-6 col-md-6 col-lg-4">';
 					dataGridHtml +='<div class="hotel-card">';
 					dataGridHtml +='<figure>';
 					var imgscr = "{{URL::to('uploads/users/advertisement/')}}/" +data.resultads.adv_img;
@@ -258,11 +259,10 @@
 					dataGridHtml +='</div>';
 					dataGridHtml +='</div>';
 					dataGridHtml +='</div>';
-					$('[data-option="property-grid-list"]').append(dataGridHtml);
 				}
 				else
 				{
-					var dataGridHtml ='<div class="col-sm-6 col-md-6 col-lg-4">';
+					var dataGridHtml +='<div class="col-sm-6 col-md-6 col-lg-4">';
 					dataGridHtml +='<div class="hotel-card">';
 					dataGridHtml +='<figure>';
 					//var imgscr = BaseURL + '/propertyimagebyid/'+obj.id;
