@@ -144,7 +144,15 @@
 		$(document).ready(function () {
 			$(document).on('change', '#myRange', function () {
 				var datObj = window.location.search;
-				datObj =  datObj+'?filter_max_price=' + $(this).val();
+				if(datObj.match(/filter_max_price/g))
+				{
+					var str = datObj.split("?");
+					datObj =  str[0]+'?filter_max_price=' + $(this).val();
+				}
+				else
+				{
+					datObj =  datObj+'?filter_max_price=' + $(this).val();
+				}
 				window.history.pushState("object or string", "Title", datObj);
 				priceFilterAjax();
 			});
@@ -167,7 +175,15 @@
 		});
 		function scrollDataAjax(it_scroll, pageCounter){
 			if(it_scroll==true) {
-				var datObj = window.location.search+'?page='+pageCounter;
+				var str = window.location.search;
+				if(str.match(/filter_max_price/g))
+				{
+					var datObj = window.location.search+'&page='+pageCounter;
+				}
+				else
+				{
+					var datObj = window.location.search+'?page='+pageCounter;
+				}
                     datObj =  datObj+'&s={{$slug}}';
 
 
@@ -241,10 +257,11 @@
 		
 		function renderPropertyListPriceFilter(data){
 			$('[data-option="property-grid-list"]').html('');
+			var dataGridHtml = '';
 			$.each(data.properties, function (idx, obj) {
 				if(idx==20)
 				{
-					var dataGridHtml ='<div class="col-sm-6 col-md-6 col-lg-4">';
+					dataGridHtml +='<div class="col-sm-6 col-md-6 col-lg-4">';
 					dataGridHtml +='<div class="hotel-card">';
 					dataGridHtml +='<figure>';
 					var imgscr = "{{URL::to('uploads/users/advertisement/')}}/" +data.resultads.adv_img;
@@ -258,11 +275,10 @@
 					dataGridHtml +='</div>';
 					dataGridHtml +='</div>';
 					dataGridHtml +='</div>';
-					$('[data-option="property-grid-list"]').append(dataGridHtml);
 				}
 				else
 				{
-					var dataGridHtml ='<div class="col-sm-6 col-md-6 col-lg-4">';
+					dataGridHtml +='<div class="col-sm-6 col-md-6 col-lg-4">';
 					dataGridHtml +='<div class="hotel-card">';
 					dataGridHtml +='<figure>';
 					//var imgscr = BaseURL + '/propertyimagebyid/'+obj.id;
