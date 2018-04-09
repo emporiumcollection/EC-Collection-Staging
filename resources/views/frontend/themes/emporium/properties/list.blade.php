@@ -150,9 +150,9 @@
 			});
 		});
 		
-		var pageCounter = 1;
+		var pageCounter = 2;
 		var it_scroll = false;
-		var totalPage = 3;
+		var totalPage = '{{$total_pages}}';
 		$(window).scroll(function () {
 
 			if (pageCounter > totalPage) {
