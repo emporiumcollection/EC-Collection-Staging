@@ -229,6 +229,7 @@
 							<option value="popup" @if($row['position']=='popup' ) selected="selected" @endif>{{ Lang::get('core.tab_popup_menu') }} </option>
 							<option value="popup_2" @if($row['position']=='popup_2' ) selected="selected" @endif>{{ Lang::get('core.tab_popup2_menu') }} </option>
 							<option value="business" @if($row['position']=='business' ) selected="selected" @endif>{{ Lang::get('core.tab_business_menu') }} </option>
+							<option value="intranet" @if($row['position']=='intranet' ) selected="selected" @endif>{{ Lang::get('core.tab_intranet_menu') }} </option>
 						</select>
 					 </div> 
 				  </div>
