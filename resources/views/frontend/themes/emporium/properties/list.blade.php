@@ -168,7 +168,7 @@
 		function scrollDataAjax(it_scroll, pageCounter){
 			if(it_scroll==true) {
 				var str = window.location.search;
-				if(str.match('?'))
+				if(str.match(/filter_max_price/g))
 				{
 					var datObj = window.location.search+'&page='+pageCounter;
 				}
