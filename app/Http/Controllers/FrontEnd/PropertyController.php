@@ -379,7 +379,7 @@ class PropertyController extends Controller {
         if (!is_null($request->childs) && $request->childs != '') {
             $childs = $request->childs;
         }
-		
+		$filter_max_price = '';
 		if (!is_null($request->filter_max_price) && $request->filter_max_price != '') {
             $filter_max_price = $request->filter_max_price;
         }
