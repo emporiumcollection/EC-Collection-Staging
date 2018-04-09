@@ -167,7 +167,15 @@
 		});
 		function scrollDataAjax(it_scroll, pageCounter){
 			if(it_scroll==true) {
-				var datObj = window.location.search+'?page='+pageCounter;
+				var str = window.location.search;
+				if(str.match('?'))
+				{
+					var datObj = window.location.search+'&page='+pageCounter;
+				}
+				else
+				{
+					var datObj = window.location.search+'?page='+pageCounter;
+				}
                     datObj =  datObj+'&s={{$slug}}';
 
 
