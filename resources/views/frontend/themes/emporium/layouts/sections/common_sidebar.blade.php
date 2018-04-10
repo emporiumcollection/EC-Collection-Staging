@@ -35,20 +35,45 @@
                         </ul>
                     </div>
                </li>
-			   {{--*/ $page_menus = SiteHelpers::menus('business') /*--}}
-               @if(!empty($page_menus))
-				   @foreach ($page_menus as $pmenu)
-						<li>
-							<a @if($pmenu['menu_type'] =='external') href="{{ URL::to($pmenu['url'])}}" @else href="{{ URL::to($pmenu['module'])}}" @endif id="companynav{{$pmenu['menu_id']}}">
-								@if(CNF_MULTILANG ==1 && isset($pmenu['menu_lang']['title'][Session::get('lang')]))
-									{{ $pmenu['menu_lang']['title'][Session::get('lang')] }}
-								@else
-									{{$pmenu['menu_name']}}
-								@endif
-							</a>
-						</li>
-					@endforeach
+    @if(Auth::check() &&  (Auth::User()->group_id==5 || Auth::User()->group_id==7)   )
+
+    {{--*/ $intranet_menus = SiteHelpers::menus('intranet') /*--}}
+               @if(!empty($intranet_menus))
+                   @foreach ($intranet_menus as $pmenu)
+                        <li>
+                        
+                            <a @if($pmenu['menu_type'] =='external') href="{{ URL::to($pmenu['url'])}}" @else href="{{ URL::to($pmenu['module'])}}" @endif id="companynav{{$pmenu['menu_id']}}">
+                                @if(CNF_MULTILANG ==1 && isset($pmenu['menu_lang']['title'][Session::get('lang')]))
+                                    {{ $pmenu['menu_lang']['title'][Session::get('lang')] }}
+                                @else
+                                    {{$pmenu['menu_name']}}
+                                @endif
+                            </a>
+                        </li>
+                    @endforeach
                 @endif
+
+
+                @else
+
+                {{--*/ $page_menus = SiteHelpers::menus('business') /*--}}
+               @if(!empty($page_menus))
+                   @foreach ($page_menus as $pmenu)
+                        <li>
+                            <a @if($pmenu['menu_type'] =='external') href="{{ URL::to($pmenu['url'])}}" @else href="{{ URL::to($pmenu['module'])}}" @endif id="companynav{{$pmenu['menu_id']}}">
+                                @if(CNF_MULTILANG ==1 && isset($pmenu['menu_lang']['title'][Session::get('lang')]))
+                                    {{ $pmenu['menu_lang']['title'][Session::get('lang')] }}
+                                @else
+                                    {{$pmenu['menu_name']}}
+                                @endif
+                            </a>
+                        </li>
+                    @endforeach
+                @endif
+    @endif
+
+
+			   
             </ul>
             @if (!Auth::check())
 
