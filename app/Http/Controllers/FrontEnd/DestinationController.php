@@ -22,8 +22,32 @@ class DestinationController extends Controller {
 
             if(!empty($fetchchilds))
             {
+				$destarr = array();
+				foreach ($fetchchilds as $dest) {
+                    $subdest = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name')->where('parent_category_id', $dest->id)->get();
+					$getcats = '';
+					$chldIds = array();
+					if (!empty($subdest)) {
+						$chldIds = $this->fetchcategoryChildListIds($dest->id);
+						array_unshift($chldIds, $dest->id);
+					} else {
+						$chldIds[] = $dest->id;
+					}
+					
+					if (!empty($chldIds)) {
+						$getcats = " AND (" . implode(" || ", array_map(function($v) {
+											return sprintf("FIND_IN_SET('%s', property_category_id)", $v);
+										}, array_values($chldIds))) . ")";
+					}
+					
+					$preprops = DB::select(DB::raw("SELECT COUNT(*) AS total_rows FROM tb_properties WHERE property_status = '1' $getcats"));
+
+					if (isset($preprops[0]->total_rows) && $preprops[0]->total_rows > 0) {
+						$destarr[] = $dest;
+					}
+				}
                 $res['status'] = 'success';
-                $res['dests'] = $fetchchilds;
+                $res['dests'] = $destarr;
             }
             else
             {
@@ -42,6 +66,20 @@ class DestinationController extends Controller {
 			$res['errors'] = 'Please select destination first!';
 		}
 		return response()->json($res);
+    }
+	
+	public function fetchcategoryChildListIds($id = 0, $child_category_array = '') {
+
+        if (!is_array($child_category_array))
+            $child_category_array = array();
+        $results = \DB::table('tb_categories')->select('id')->where('parent_category_id', $id)->get();
+        if ($results) {
+            foreach ($results as $row) {
+                $child_category_array[] = $row->id;
+                $child_category_array = $this->fetchcategoryChildListIds($row->id, $child_category_array);
+            }
+        }
+        return $child_category_array;
     }
 
     public function getExperiencesAjax(Request $request) {
