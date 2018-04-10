@@ -18,7 +18,7 @@
   <div class="well">
   <!-- Nav tabs <i class="fa fa-bullhorn" aria-hidden="true"></i></div><span>Ads -->
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation"><a href="{{URL::to('hotel/propertymanagement')}}">Account Settings</a></li>
+    <li role="presentation"><a href="{{URL::to('customer/profile')}}">Account Settings</a></li>
 	<li role="presentation"  class="active"><a href="{{URL::to('hotel/propertymanagement')}}" aria-controls="propertymanagementlist" role="tab" data-toggle="tab">Property Management</a></li>
   </ul>
 
