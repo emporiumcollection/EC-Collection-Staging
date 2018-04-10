@@ -54,7 +54,6 @@
 	 
 	@elseif($info->group_id==5)
 		<li role="presentation"><a href="{{URL::to('hotel/propertymanagement')}}">Property management</a></li>
-		<li role="presentation"><a href="#comingsoon" aria-controls="comingsoon" role="tab" data-toggle="tab">Reservation management</a></li>
 		<li role="presentation"><a href="#comingsoon" aria-controls="comingsoon" role="tab" data-toggle="tab">Memberships</a></li>
 		<li role="presentation"><a href="#comingsoon" aria-controls="comingsoon" role="tab" data-toggle="tab">Advertising</a></li>
 <li role="presentation"><a href="#userAdminDashboardDiv" aria-controls="userAdminDashboardDiv" role="tab" data-toggle="tab">Hotel Dashboard</a></li>
@@ -417,12 +416,12 @@
     <div role="tabpanel" class="tab-pane" id="comingsoon">Coming Soon...</div>
 <!-- Show Links for Admin Back end moduels-->
     <div role="tabpanel" class="tab-pane" id="userAdminDashboardDiv">
-			<div>
+			<div class="well">
                                     {{--*/ $footer_menus = SiteHelpers::menus('intranet') /*--}}
 									@foreach ($footer_menus as $fmenu)
-										<div class="col-xs-12 {{($fmenu!=$footer_menus[0]) ? 'footer-padding-0' : ''}}">
+										<div class="col-md-12 {{($fmenu!=$footer_menus[0]) ? 'footer-padding-0' : ''}}">
 											<div class="row-">
-												<div class="accordion res-design-footer">
+												<div>
 													@if(CNF_MULTILANG ==1 &&  isset($fmenu['menu_lang']['title'][Session::get('lang')]))
 														{{ $fmenu['menu_lang']['title'][Session::get('lang')] }}
 													@else
