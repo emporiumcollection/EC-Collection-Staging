@@ -56,7 +56,6 @@
 		<li role="presentation"><a href="{{URL::to('hotel/propertymanagement')}}">Property management</a></li>
 		<li role="presentation"><a href="#comingsoon" aria-controls="comingsoon" role="tab" data-toggle="tab">Memberships</a></li>
 		<li role="presentation"><a href="#comingsoon" aria-controls="comingsoon" role="tab" data-toggle="tab">Advertising</a></li>
-<li role="presentation"><a href="#userAdminDashboardDiv" aria-controls="userAdminDashboardDiv" role="tab" data-toggle="tab">Hotel Dashboard</a></li>
 
 
 	@elseif($info->group_id==3)
@@ -414,52 +413,7 @@
     <div role="tabpanel" class="tab-pane" id="messages">Coming Soon...</div>
  
     <div role="tabpanel" class="tab-pane" id="comingsoon">Coming Soon...</div>
-<!-- Show Links for Admin Back end moduels-->
-    <div role="tabpanel" class="tab-pane" id="userAdminDashboardDiv">
-			<div class="well">
-                                    {{--*/ $footer_menus = SiteHelpers::menus('intranet') /*--}}
-									@foreach ($footer_menus as $fmenu)
-										<div class="col-md-12 {{($fmenu!=$footer_menus[0]) ? 'footer-padding-0' : ''}}">
-											<div class="row-">
-												<div>
-													@if(CNF_MULTILANG ==1 &&  isset($fmenu['menu_lang']['title'][Session::get('lang')]))
-														{{ $fmenu['menu_lang']['title'][Session::get('lang')] }}
-													@else
-														
-														<a @if($fmenu['menu_type'] =='external') href="{{ URL::to($fmenu['url'])}}" @else href="{{ URL::to($fmenu['module'])}}" @endif>
-																	@if(CNF_MULTILANG ==1 && isset($fmenu['menu_lang']['title'][Session::get('lang')]))
-																		{{ $fmenu['menu_lang']['title'][Session::get('lang')] }}
-																	@else
-																		{{$fmenu['menu_name']}}
-																	@endif
-																</a>
-													@endif</div>
-												<div class="panel">
-												@if(count($fmenu['childs']) > 0)
-													<ul class="">
-														@foreach ($fmenu['childs'] as $fmenu2)
-															<li>
-																<a @if($fmenu2['menu_type'] =='external') href="{{ URL::to($fmenu2['url'])}}" @else href="{{ URL::to($fmenu2['module'])}}" @endif>
-																	@if(CNF_MULTILANG ==1 && isset($fmenu2['menu_lang']['title'][Session::get('lang')]))
-																		{{ $fmenu2['menu_lang']['title'][Session::get('lang')] }}
-																	@else
-																		{{$fmenu2['menu_name']}}
-																	@endif
-																</a>
-															</li>
-														@endforeach
-													</ul>
-												@endif
-												</div>
-											</div>
-										</div>
-									@endforeach
-                            
-                                </div>
 
-
-    </div>
- <!-- End Show Links for Admin Back end moduels-->
 
    
 
