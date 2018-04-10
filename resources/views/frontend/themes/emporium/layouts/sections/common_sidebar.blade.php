@@ -51,7 +51,7 @@
                             </a>
 
                             @if(count($pmenu['childs']) > 0)
-                                                    <ul class="">
+                                                    <ul class="mobilesublinks">
                                                         @foreach ($pmenu['childs'] as $fmenu2)
                                                             <li>
                                                                 <a @if($fmenu2['menu_type'] =='external') href="{{ URL::to($fmenu2['url'])}}" @else href="{{ URL::to($fmenu2['module'])}}" @endif>
