@@ -49,6 +49,23 @@
                                     {{$pmenu['menu_name']}}
                                 @endif
                             </a>
+
+                            @if(count($pmenu['childs']) > 0)
+                                                    <ul class="">
+                                                        @foreach ($pmenu['childs'] as $fmenu2)
+                                                            <li>
+                                                                <a @if($fmenu2['menu_type'] =='external') href="{{ URL::to($fmenu2['url'])}}" @else href="{{ URL::to($fmenu2['module'])}}" @endif>
+                                                                    @if(CNF_MULTILANG ==1 && isset($fmenu2['menu_lang']['title'][Session::get('lang')]))
+                                                                        {{ $fmenu2['menu_lang']['title'][Session::get('lang')] }}
+                                                                    @else
+                                                                        {{$fmenu2['menu_name']}}
+                                                                    @endif
+                                                                </a>
+                                                            </li>
+                                                        @endforeach
+                                                    </ul>
+                                                @endif
+                                                
                         </li>
                     @endforeach
                 @endif
