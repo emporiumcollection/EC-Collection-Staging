@@ -42,7 +42,7 @@
                    @foreach ($intranet_menus as $pmenu)
                         <li>
                         
-                            <a @if($pmenu['menu_type'] =='external') href="{{ URL::to($pmenu['url'])}}" @else href="{{ URL::to($pmenu['module'])}}" @endif id="companynav{{$pmenu['menu_id']}}">
+                            <a @if($pmenu['menu_type'] =='external') href="{{ URL::to($pmenu['url'])}}" @else href="{{ URL::to($pmenu['module'])}}" @endif id="intranetNav{{$pmenu['menu_id']}}" data-toggle="collapse" data-target="#subIntranetNav{{$pmenu['menu_id']}}">
                                 @if(CNF_MULTILANG ==1 && isset($pmenu['menu_lang']['title'][Session::get('lang')]))
                                     {{ $pmenu['menu_lang']['title'][Session::get('lang')] }}
                                 @else
@@ -51,7 +51,9 @@
                             </a>
 
                             @if(count($pmenu['childs']) > 0)
-                                                    <ul class="mobilesublinks">
+
+                            <div id="subIntranetNav{{$pmenu['menu_id']}}" class="collapse">
+                                                    <ul class="mobilesublinks" >
                                                         @foreach ($pmenu['childs'] as $fmenu2)
                                                             <li>
                                                                 <a @if($fmenu2['menu_type'] =='external') href="{{ URL::to($fmenu2['url'])}}" @else href="{{ URL::to($fmenu2['module'])}}" @endif>
@@ -64,6 +66,7 @@
                                                             </li>
                                                         @endforeach
                                                     </ul>
+                             </div>                       
                                                 @endif
                                                 
                         </li>
