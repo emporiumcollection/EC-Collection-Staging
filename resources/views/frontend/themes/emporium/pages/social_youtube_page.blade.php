@@ -53,7 +53,20 @@
 {{-- For custom script --}}
 @section('custom_js')
     @parent
-	
+	<script>
+		$(document).ready(function () {
+			// Open Left Navigation For Destinations on Page Load
+			@if(Request::segment(1)=='social-youtube')
+				var datObj = {};
+				datObj.catID = '{{$catid}}';
+				var params = $.extend({}, doAjax_params_default);
+				params['url'] = BaseURL + '/destination/destinatinos-ajax';
+				params['data'] = datObj;
+				params['successCallbackFunction'] = renderDestinationSocialYoutube;
+				doAjax(params);
+			@endif
+		});
+	</script>
 @endsection
 
 {{-- For footer --}}
