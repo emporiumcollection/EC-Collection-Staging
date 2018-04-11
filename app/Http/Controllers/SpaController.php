@@ -174,7 +174,7 @@ class SpaController extends Controller {
                 $data['category_id'] = '';
             }
             $data['title'] = $request->input('title');
-            $data['desciription'] = $request->input('desciription');
+            $data['description'] = $request->input('description');
             $data['video_link'] = $request->input('video_link');
             $data['url'] = $request->input('url');
             $data['menu'] = $request->input('menu');
