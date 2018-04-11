@@ -8,7 +8,6 @@ use App\Models\Restaurant;
 use App\Models\Bar;
 use App\Models\Spa;
 use Illuminate\Http\Request;
-use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 use Validator, Input, Redirect,File, DB;
 use App\Http\Controllers\ContainerController;
 
@@ -308,4 +307,75 @@ class ImportdataController extends Controller {
             return false;
         }
     }
+
+    public function getUpadteAllData(Request $request)
+    {
+
+        $data = Properties::where('imported', '=', 0)->orderBy('id', 'asc')->paginate(5);
+        $count = 1;
+        foreach ($data as $val) {
+            $restoId = array();
+            $spaId = array();
+            $barId = array();
+            if (trim($val->restaurant_title) != '') {
+                $restoArr = DB::table('tb_restaurants')->where('alias', '=', str_slug($val->restaurant_title))->get();
+                if (empty($restoArr)) {
+                    $restoId[] = $restoArr->id;
+                }
+            }
+
+            if (trim($val->restaurant2_title) != '') {
+                $restoArr2 = DB::table('tb_restaurants')->where('alias', '=', str_slug($val->restaurant2_title))->get();
+                if (empty($restoArr2)) {
+                    $restoId[] = $restoArr2->id;
+                }
+            }
+
+            if (trim($val->restaurant3_title) != '') {
+                $restoArr3 = DB::table('tb_restaurants')->where('alias', '=', str_slug($val->restaurant3_title))->get();
+                if (empty($restoArr3)) {
+                    $restoId[] = $restoArr3->id;
+                }
+            }
+
+            if (trim($val->bar_title) != '') {
+                $barArr = DB::table('tb_bars')->where('alias', '=', str_slug($val->bar_title))->get();
+                if (empty($barArr)) {
+                    $barId[] = $barArr->id;
+                }
+            }
+
+            if (trim($val->bar2_title) != '') {
+                $barArr2 = DB::table('tb_bars')->where('alias', '=', str_slug($val->bar2_title))->get();
+                if (empty($barArr2)) {
+                    $barId[] = $barArr2->id;
+                }
+            }
+
+            if (trim($val->bar3_title) != '') {
+                $barArr3 = DB::table('tb_bars')->where('alias', '=', str_slug($val->bar3_title))->get();
+                if (empty($barArr3)) {
+                    $barId[] = $barArr3->id;
+                }
+            }
+
+            if (trim($val->spa_title) != '') {
+                $spaArr = DB::table('tb_spas')->where('alias', '=', str_slug($val->spa_title))->get();
+                if (empty($spaArr)) {
+                    $spaId[] = $spaArr->id;
+                }
+            }
+
+            $restaurant_ids = implode(',',$restoId);
+            $spa_ids = implode(',',$spaId);
+            $bar_ids = implode(',',$barId);
+            DB::table('tb_properties')->where('id', $val->id)->update(['imported' => 1,'restaurant_ids'=>$restaurant_ids,'spa_ids'=>$spa_ids,'bar_ids'=>$bar_ids]);
+            $count++;
+        }
+        if ($count > 5) {
+            header("refresh: 3;");
+        }
+        echo "Updated Properties: " . Properties::count() . '<br>';
+    }
+
 }
