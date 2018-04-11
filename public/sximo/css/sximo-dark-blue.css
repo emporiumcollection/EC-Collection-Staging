@@ -12,7 +12,7 @@
    font-family: 'Lato', sans-serif;
   font-size: 13px;
   line-height: 1.42857143;
-  background: #364150;
+  background: #2e2e2e;
  
   color: #333; overflow-x:hidden
 }
@@ -46,7 +46,7 @@ h3,h4,h5 {
   font-weight: 600;
 }
 .nav > li > a {
-  color: #a7b1c2;
+  color: #fff;
   font-weight: 500;
   font-size:11px;
   padding: 14px 20px 14px 25px;
@@ -59,7 +59,7 @@ h3,h4,h5 {
 }
 .navbar-default .nav > li > a:hover,
 .navbar-default .nav > li > a:focus {
-  background-color: #293846;
+  background-color: #89837b;
   color: white;
 }
 .nav.navbar-top-links > li > a:hover,
@@ -71,7 +71,7 @@ h3,h4,h5 {
 }
 .expanded-menu > li > a { border-top:1px solid rgba(255, 255, 255, 0.05); }
 .expanded-menu > li > a i { width:35px; height:44px; line-height:44px; float:left; margin:-12px 10px -12px -15px; position:relative; border-right:1px solid rgba(255, 255, 255, 0.05);}
-.expanded-menu > li.active > a i{ color:#19aa8d;}
+.expanded-menu > li.active > a i{ color:#ABA07C;}
 
 .navbar {
   border: 0;
@@ -171,7 +171,7 @@ h3,h4,h5 {
   transition: all 0.5s;
 }
 .nav > li.active {
-  background: #293846;
+  background: #89837b;
 }
 .nav.nav-second-level > li.active {
   border: none;
@@ -205,7 +205,7 @@ h3,h4,h5 {
   font-size: 12px;
 }
 .nav.navbar-top-links a  i{
-  color : #428bca; 
+  color : #252525; 
 }
 .nav.navbar-top-links a  i.fa{
    font-size:14px; 
@@ -285,7 +285,7 @@ body.minimize-sidemenu .navbar-default .nav > li > .nav-second-level li a {
   padding: 18px 0;
 }
 .logo-header {
-  background:#2b3643; height:60px;
+  background:#252525; height:60px;
 }
 .sxim-init .navbar-static-side,
 .sxim-init .nav-header,
@@ -379,8 +379,8 @@ body.minimize-sidemenu #page-wrapper {
   color: #fff;
 }
 .btn-primary {
-  background-color: #428bca;
-  border-color: #357ebd;
+  background-color: #252525;
+  border-color: #252525;
   color: #FFFFFF;
 }
 .btn-primary:hover,
@@ -412,7 +412,7 @@ fieldset[disabled] .btn-primary:hover,
 fieldset[disabled] .btn-primary:focus,
 fieldset[disabled] .btn-primary:active,
 fieldset[disabled] .btn-primary.active {
-  background-color: ##45b6af;
+  background-color: #45b6af;
   border-color: #1dc5a3;
 }
 .btn-success {
@@ -1212,9 +1212,9 @@ body.body-small .footer.fixed {
   -moz-border-left-colors: none;
   -moz-border-right-colors: none;
   -moz-border-top-colors: none;
-  background: #428bca;
-  border-color: #357ebd #357ebd rgba(0, 0, 0, 0);
-  border-bottom: #357ebd;
+  background: #252525;
+  border-color: #252525 #252525 rgba(0, 0, 0, 0);
+  border-bottom: #252525;
   border-image: none; font-weight:600;
   border-style: solid;
   border-width: 1px;
@@ -1796,7 +1796,7 @@ code {
 background: #fff;
 }
 
-.dd-handle:hover { color: #FFF; background: #4D90FD; border-color:#428BCA; }
+.dd-handle:hover { color: #FFF; background: #4D90FD; border-color:#252525; }
 
 .dd-item > button { color:#555;font-family: FontAwesome;display: block; position: relative; cursor: pointer; float: left; width: 25px; height: 20px; margin: 8px 2px; padding: 0; text-indent: 100%; white-space: nowrap; overflow: hidden; border: 0; background: transparent; font-size: 10px; line-height: 1; text-align: center; }
 .dd-item > button:before {  display: block; position: absolute; width: 100%; text-align: center; text-indent: 0; }
@@ -1839,7 +1839,7 @@ text-indent: 100%;
 white-space: nowrap; 
 overflow: hidden;
 border: 1px solid #3276B1;
-background: #428BCA;
+background: #252525;
 height:36px;
 box-shadow:1px 1px 0 rgba(255, 255, 255, 0.2) inset;
 }
@@ -1981,7 +1981,7 @@ box-shadow:1px 1px 0 rgba(255, 255, 255, 0.2) inset;
   -moz-border-right-colors: none;
   -moz-border-top-colors: none;
   background-color: #ffffff;
-  border-color: #357ebd;
+  border-color: #252525;
   border-image: none;
   border-style: solid solid none;
   border-width: 1px 0px 0;
@@ -2038,7 +2038,7 @@ fieldset legend { font-size:16px; padding:10px 0; font-weight:500;}
 .page-content-wrapper { padding:0 15px;}
 .ribon-sximo { margin:20px 0;}
 
-.panel { background:none !important;; border-color:none !important;}
+.panel { background:none !important; border-color:0px !important;}
 .panel.panel-default { background:none !important;; border-color:#eee !important;}
 
 /* Back to to */
@@ -2244,7 +2244,7 @@ li.L9 {
 .select-alt { float:left; padding:5px 2px; border:solid 1px #ddd; margin-right:5px; font-size: 11px;}
 
 /* dashboard */
-.shortcut { border:solid 1px #eee; border-top:solid 1px #428bca;}
+.shortcut { border:solid 1px #eee; border-top:solid 1px #252525;}
 .shortcut i{ font-size:50px;  } 
 .shortcut span.h3{ font-weight:400 !important; font-size:16px; }
 .shortcut span.h3 { color: #233646 }
@@ -2268,7 +2268,7 @@ li.L9 {
     margin-right: 0;
 }
 .spin-icon {
-    background: #428bca none repeat scroll 0 0;
+    background: #252525 none repeat scroll 0 0;
     border-radius: 20px 0 0 20px;
     color: #fff;
     cursor: pointer;
