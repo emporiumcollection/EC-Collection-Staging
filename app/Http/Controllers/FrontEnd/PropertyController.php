@@ -180,6 +180,7 @@ class PropertyController extends Controller {
     }
 	
 	public function getPropertyDetail(Request $request) {
+
         $propertiesArr = array();
 		$crpropertiesArr = array();
 		$relatedgridpropertiesArr = array();
@@ -279,6 +280,10 @@ class PropertyController extends Controller {
         $this->data['propertyDetail'] = $propertiesArr;
         $this->data['relatedproperties'] = $crpropertiesArr;
 		$this->data['relatedgridpropertiesArr'] = $relatedgridpropertiesArr;
+	
+		$this->data['propertyEvents'] = \DB::table('tb_events')->where('property_id', $props->id)->get();
+
+		dd($this->data['propertyEvents']);
         return view('frontend.themes.emporium.properties.detail', $this->data);
     }
 	
@@ -496,5 +501,34 @@ class PropertyController extends Controller {
 		}
 		return false;
 	}
+
+
+	public function getEventsDetail(Request $request) {
+
+        $propertiesArr = array();
+		$crpropertiesArr = array();
+		$relatedgridpropertiesArr = array();
+        $props = \DB::table('tb_properties')->where('property_slug', $request->slug)->first();
+
+        $this->data['slug'] = $request->slug;
+        if (!empty($props)) {
+            $propertiesArr['data'] = $props;
+            $propertiesArr['propimage'] = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_container_files.id', 'tb_container_files.file_name', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $props->id)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->get();
+
+            $propertiesArr['propimage_thumbpath'] = (new ContainerController)->getThumbpath($propertiesArr['propimage'][0]->folder_id);
+			$propertiesArr['propimage_thumbpath_dir'] = public_path(str_replace(url().'/', '', (new ContainerController)->getThumbpath($propertiesArr['propimage'][0]->folder_id))); 
+            $propertiesArr['propimage_containerpath'] = (new ContainerController)->getContainerUserPath($propertiesArr['propimage'][0]->folder_id);
+			
+			$this->data['currency'] = \DB::table('tb_settings')->select('content')->where('key_value', 'default_currency')->first();
+
+         }
+          $this->data['pageTitle'] = "Hotel Events";
+        $this->data['pageMetakey'] = "Hotel Events";
+        $this->data['pageMetadesc'] = "Hotel Events";
+	
+		$this->data['propertyEvents'] = \DB::table('tb_events')->where('property_id', $props->id)->get();
+
+		return view('frontend.themes.emporium.properties.events', $this->data);
+    }
 
 }

@@ -369,6 +369,9 @@ Route::get('search-property-ajax', 'Frontend\PropertyController@getSearchPropert
 Route::get('propertyimagebyid/{propid}', 'Frontend\PropertyController@getPropertyImageById');
 Route::get('{slug}', 'Frontend\PropertyController@getPropertyDetail');
 Route::get('{slug}/restaurant', 'Frontend\RestaurantFrontController@propertyRestrurant');
+
+Route::get('{slug}/events', 'Frontend\PropertyController@getEventsDetail');
+
 Route::get('restaurant/{slug}', 'Frontend\RestaurantFrontController@restrurantDetail');
 Route::get('bar/{slug}', 'Frontend\RestaurantFrontController@barDetail');
 Route::get('spa/{slug}', 'Frontend\RestaurantFrontController@spaDetail');
