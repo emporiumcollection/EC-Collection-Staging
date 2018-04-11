@@ -38,19 +38,19 @@ class SpaController extends Controller {
         /*\DB::table('tb_module')
             ->where('module_id', '=',$row->module_id )
             ->update(array('module_config' => \SiteHelpers::CF_encode_json($config)));*/
-        //$row = \DB::table('tb_module')->where('module_id', 97)->first();
-        //$data = \SiteHelpers::CF_decode_json($row->module_config);
-       // $data['grid'][3]['field'] = 'description';
-        //$data['grid'][3]['label'] = 'Description';
-        //$data['forms'][3]['field'] = 'description';
-        //$data['forms'][3]['label'] = 'Description';
+        $row = \DB::table('tb_module')->where('module_id', 99)->first();
+        $data = \SiteHelpers::CF_decode_json($row->module_config);
+        $data['grid'][3]['field'] = 'description';
+        $data['grid'][3]['label'] = 'Description';
+        $data['forms'][3]['field'] = 'description';
+        $data['forms'][3]['label'] = 'Description';
         //unset($data['grid'][3]);
         //unset($data['forms'][3]);
 
-       // print_r($data );
-        /*\DB::table('tb_module')
-            ->where('module_id', '=',97 )
-            ->update(array('module_config' => \SiteHelpers::CF_encode_json($data)));*/
+       //print_r($data );
+        \DB::table('tb_module')
+            ->where('module_id', '=',99 )
+            ->update(array('module_config' => \SiteHelpers::CF_encode_json($data)));
         //die;
         if($this->access['is_view'] ==0)
 			return Redirect::to('dashboard')

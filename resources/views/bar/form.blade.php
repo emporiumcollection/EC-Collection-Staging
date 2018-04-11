@@ -50,7 +50,7 @@
 						<label for="description" class=" control-label col-md-4 text-left"> Description <span class="asterix"> * </span></label>
 						<div class="col-md-6">
 
-							{!! Form::textarea('description', null, ['class' => 'form-control','size' => '30x5']) !!}
+							{!! Form::textarea('description', $row['description'], ['class' => 'form-control','size' => '30x5']) !!}
 						</div>
 						<div class="col-md-2">
 							
@@ -189,7 +189,7 @@
 						<label for="Restaurant Usp Text" class=" control-label col-md-4 text-left"> Bar Usp Text </label>
 						<div class="col-md-6">
 
-							{!! Form::textarea('usp_text', null, ['class' => 'form-control','size' => '30x5']) !!}
+							{!! Form::textarea('usp_text', $row['usp_text'], ['class' => 'form-control','size' => '30x5']) !!}
 						</div>
 						<div class="col-md-2">
 							
@@ -199,7 +199,7 @@
 						<label for="Restaurant Usp Person" class=" control-label col-md-4 text-left"> Bar Usp Person </label>
 						<div class="col-md-6">
 
-							{!! Form::textarea('usp_person', null, ['class' => 'form-control','size' => '30x5']) !!}
+							{!! Form::textarea('usp_person', $row['usp_person'], ['class' => 'form-control','size' => '30x5']) !!}
 						</div>
 						<div class="col-md-2">
 							
@@ -218,7 +218,7 @@
 						<label for="Meta Description" class=" control-label col-md-4 text-left"> Meta Description </label>
 						<div class="col-md-6">
 
-							{!! Form::textarea('meta_description', null, ['class' => 'form-control','size' => '30x5']) !!}
+							{!! Form::textarea('meta_description', $row['meta_description'], ['class' => 'form-control','size' => '30x5']) !!}
 
 						</div>
 						<div class="col-md-2">
