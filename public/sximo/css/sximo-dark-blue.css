@@ -412,12 +412,12 @@ fieldset[disabled] .btn-primary:hover,
 fieldset[disabled] .btn-primary:focus,
 fieldset[disabled] .btn-primary:active,
 fieldset[disabled] .btn-primary.active {
-  background-color: #45b6af;
+  background-color: #89837b;
   border-color: #1dc5a3;
 }
 .btn-success {
-  background-color: #45b6af;
-  border-color: #3ea49d;
+  background-color: #89837b;
+  border-color: #89837b;
   color: #FFFFFF;
 }
 .btn-success:hover,
@@ -565,8 +565,8 @@ fieldset[disabled] .btn-warning.active {
   border-color: #f9b66d;
 }
 .btn-danger {
-  background-color: #f3565d;
-  border-color: #f13e46;
+  background-color: #ABA07C;
+  border-color: #ABA07C;
   color: #FFFFFF;
 }
 .btn-danger:hover,
@@ -574,8 +574,8 @@ fieldset[disabled] .btn-warning.active {
 .btn-danger:active,
 .btn-danger.active,
 .open .dropdown-toggle.btn-danger {
-  background-color: #f1353d;
-  border-color: #ec111b;
+  background-color: #ABA07C;
+  border-color: #ABA07C;
   color: #FFFFFF;
 }
 .btn-danger:active,
@@ -598,8 +598,8 @@ fieldset[disabled] .btn-danger:hover,
 fieldset[disabled] .btn-danger:focus,
 fieldset[disabled] .btn-danger:active,
 fieldset[disabled] .btn-danger.active {
-  background-color: #ef6776;
-  border-color: #ef6776;
+  background-color: #ABA07C;
+  border-color: #ABA07C;
 }
 .btn-link {
   color: inherit;
@@ -801,7 +801,7 @@ button.dim:active:before {
 }
 .label-success,
 .badge-success {
-  background-color: #45b6af;
+  background-color: #89837b;
   color: #ffffff;
 }
 .label-warning,
@@ -816,7 +816,7 @@ button.dim:active:before {
 }
 .label-danger,
 .badge-danger {
-  background-color: #f1353d;
+  background-color: #ABA07C;
   color: #FFFFFF;
 }
 .label-info,
@@ -1451,7 +1451,7 @@ code {
   color: inherit;
 }
 .text-success {
-  color: #45b6af;
+  color: #89837b;
 }
 .text-info {
   color: #89c4f4;
@@ -1460,7 +1460,7 @@ code {
   color: #dfba49;
 }
 .text-danger {
-  color: #f3565d;
+  color: #ABA07C;
 }
 .text-muted {
   color: #888888;
@@ -2313,7 +2313,7 @@ li.L9 {
 .setings-item ul li a span.dark-blue-skin{ background: #364150;}
 .setings-item ul li a span.light-blue-skin{ background: #4276a4;}
 .setings-item ul li a span.black-skin{ background: #111;}
-.setings-item ul li a span.default-skin{ background: #3ea49d;}
+.setings-item ul li a span.default-skin{ background: #89837b;}
 
 
 .nav-inside { background: #fff !important;}
