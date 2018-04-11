@@ -39,7 +39,7 @@
 					</div>
 					
 					<div class="form-group  " >
-						<label for="Desciription" class=" control-label col-md-4 text-left"> Desciription <span class="asterix"> * </span></label>
+						<label for="description" class=" control-label col-md-4 text-left"> Description <span class="asterix"> * </span></label>
 						<div class="col-md-6">
 							{!! Form::textarea('description', null, ['class' => 'form-control','size' => '30x5']) !!}
 
