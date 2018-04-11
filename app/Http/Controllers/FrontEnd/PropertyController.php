@@ -283,7 +283,7 @@ class PropertyController extends Controller {
 	
 		$this->data['propertyEvents'] = \DB::table('tb_events')->where('property_id', $props->id)->get();
 
-		dd($this->data['propertyEvents']);
+		//dd($this->data['propertyEvents']);
         return view('frontend.themes.emporium.properties.detail', $this->data);
     }
 	
