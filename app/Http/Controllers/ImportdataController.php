@@ -366,10 +366,13 @@ class ImportdataController extends Controller {
                 }
             }
 
-            $restaurant_ids = implode(',',$restoId);
-            $spa_ids = implode(',',$spaId);
-            $bar_ids = implode(',',$barId);
-            DB::table('tb_properties')->where('id', $val->id)->update(['imported' => 1,'restaurant_ids'=>$restaurant_ids,'spa_ids'=>$spa_ids,'bar_ids'=>$bar_ids]);
+            echo $restaurant_ids = implode(',',$restoId);
+            echo '<br>';
+            echo $spa_ids = implode(',',$spaId);
+            echo '<br>';
+            echo  $bar_ids = implode(',',$barId);
+            echo '<br>';
+           // DB::table('tb_properties')->where('id', $val->id)->update(['imported' => 1,'restaurant_ids'=>$restaurant_ids,'spa_ids'=>$spa_ids,'bar_ids'=>$bar_ids]);
             $count++;
         }
         if ($count > 5) {
