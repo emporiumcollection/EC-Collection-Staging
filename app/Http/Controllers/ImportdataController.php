@@ -319,49 +319,49 @@ class ImportdataController extends Controller {
             $barId = array();
             if (trim($val->restaurant_title) != '') {
                 $restoArr = DB::table('tb_restaurants')->where('alias', '=', str_slug($val->restaurant_title))->get();
-                if (empty($restoArr)) {
+                if (!empty($restoArr)) {
                     $restoId[] = $restoArr->id;
                 }
             }
 
             if (trim($val->restaurant2_title) != '') {
                 $restoArr2 = DB::table('tb_restaurants')->where('alias', '=', str_slug($val->restaurant2_title))->get();
-                if (empty($restoArr2)) {
+                if (!empty($restoArr2)) {
                     $restoId[] = $restoArr2->id;
                 }
             }
 
             if (trim($val->restaurant3_title) != '') {
                 $restoArr3 = DB::table('tb_restaurants')->where('alias', '=', str_slug($val->restaurant3_title))->get();
-                if (empty($restoArr3)) {
+                if (!empty($restoArr3)) {
                     $restoId[] = $restoArr3->id;
                 }
             }
 
             if (trim($val->bar_title) != '') {
                 $barArr = DB::table('tb_bars')->where('alias', '=', str_slug($val->bar_title))->get();
-                if (empty($barArr)) {
+                if (!empty($barArr)) {
                     $barId[] = $barArr->id;
                 }
             }
 
             if (trim($val->bar2_title) != '') {
                 $barArr2 = DB::table('tb_bars')->where('alias', '=', str_slug($val->bar2_title))->get();
-                if (empty($barArr2)) {
+                if (!empty($barArr2)) {
                     $barId[] = $barArr2->id;
                 }
             }
 
             if (trim($val->bar3_title) != '') {
                 $barArr3 = DB::table('tb_bars')->where('alias', '=', str_slug($val->bar3_title))->get();
-                if (empty($barArr3)) {
+                if (!empty($barArr3)) {
                     $barId[] = $barArr3->id;
                 }
             }
 
             if (trim($val->spa_title) != '') {
                 $spaArr = DB::table('tb_spas')->where('alias', '=', str_slug($val->spa_title))->get();
-                if (empty($spaArr)) {
+                if (!empty($spaArr)) {
                     $spaId[] = $spaArr->id;
                 }
             }
