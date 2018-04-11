@@ -228,7 +228,7 @@ class RestaurantController extends Controller {
 			
 		} else {
 
-			return Redirect::to('restaurant/update/')->with('messagetext',\Lang::get('core.note_error'))->with('msgstatus','error')
+			return Redirect::to('restaurant/update/'.$id)->with('messagetext',\Lang::get('core.note_error'))->with('msgstatus','error')
 			->withErrors($validator)->withInput();
 		}	
 	

@@ -41,8 +41,9 @@
 					<div class="form-group  " >
 						<label for="Desciription" class=" control-label col-md-4 text-left"> Desciription <span class="asterix"> * </span></label>
 						<div class="col-md-6">
-							<textarea name='description' rows='5' id='description' class='form-control '
-							required  >{{ $row['description'] }}</textarea>
+							{!! Form::textarea('description', null, ['class' => 'form-control','size' => '30x5']) !!}
+
+
 						</div>
 						<div class="col-md-2">
 							
@@ -179,8 +180,8 @@
 					<div class="form-group  " >
 						<label for="SPA Usp Text" class=" control-label col-md-4 text-left"> SPA Usp Text </label>
 						<div class="col-md-6">
-							<textarea name='usp_text' rows='5' id='usp_text' class='form-control '
-							>{{ $row['usp_text'] }}</textarea>
+							{!! Form::textarea('usp_text', null, ['class' => 'form-control','size' => '30x5','required'=>true]) !!}
+
 						</div>
 						<div class="col-md-2">
 							
@@ -189,8 +190,7 @@
 					<div class="form-group  " >
 						<label for="SPA Usp Person" class=" control-label col-md-4 text-left"> SPA Usp Person </label>
 						<div class="col-md-6">
-							<textarea name='usp_person' rows='5' id='usp_person' class='form-control '
-							>{{ $row['usp_person'] }}</textarea>
+							{!! Form::textarea('usp_person', null, ['class' => 'form-control','size' => '30x5','required'=>true]) !!}
 						</div>
 						<div class="col-md-2">
 							
@@ -199,8 +199,8 @@
 					<div class="form-group  " >
 						<label for="Manager Text" class=" control-label col-md-4 text-left"> Manager Text </label>
 						<div class="col-md-6">
-							<textarea name='manager_text' rows='5' id='manager_text' class='form-control '
-							>{{ $row['manager_text'] }}</textarea>
+
+							{!! Form::textarea('manager_text', null, ['class' => 'form-control','size' => '30x5','required'=>true]) !!}
 						</div>
 						<div class="col-md-2">
 							
@@ -209,8 +209,9 @@
 					<div class="form-group  " >
 						<label for="Opening Hrs" class=" control-label col-md-4 text-left"> Opening Hrs </label>
 						<div class="col-md-6">
-							<textarea name='opening_hrs' rows='5' id='opening_hrs' class='form-control '
-							>{{ $row['opening_hrs'] }}</textarea>
+
+							{!! Form::textarea('opening_hrs', null, ['class' => 'form-control','size' => '30x5','required'=>true]) !!}
+
 						</div>
 						<div class="col-md-2">
 							
@@ -237,8 +238,8 @@
 					<div class="form-group  " >
 						<label for="Meta Description" class=" control-label col-md-4 text-left"> Meta Description </label>
 						<div class="col-md-6">
-							<textarea name='meta_description' rows='5' id='meta_description' class='form-control '
-							>{{ $row['meta_description'] }}</textarea>
+
+							{!!  Form::textarea('meta_description', null, ['class' => 'form-control','size' => '30x5','required'=>true]) !!}
 						</div>
 						<div class="col-md-2">
 							
