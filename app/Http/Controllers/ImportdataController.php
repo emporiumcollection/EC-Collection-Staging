@@ -308,7 +308,7 @@ class ImportdataController extends Controller {
         }
     }
 
-    public function getUpadteAllData(Request $request)
+    public function getUpdateAllData(Request $request)
     {
 
         $data = Properties::where('imported', '=', 0)->orderBy('id', 'asc')->paginate(5);
@@ -318,67 +318,66 @@ class ImportdataController extends Controller {
             $spaId = array();
             $barId = array();
             if (trim($val->restaurant_title) != '') {
-                $restoArr = DB::table('tb_restaurants')->where('alias', '=', str_slug($val->restaurant_title))->get();
+                $restoArr = DB::table('tb_restaurants')->where('alias', '=', str_slug($val->restaurant_title))->first();
                 if (!empty($restoArr)) {
                     $restoId[] = $restoArr->id;
                 }
             }
 
             if (trim($val->restaurant2_title) != '') {
-                $restoArr2 = DB::table('tb_restaurants')->where('alias', '=', str_slug($val->restaurant2_title))->get();
+                $restoArr2 = DB::table('tb_restaurants')->where('alias', '=', str_slug($val->restaurant2_title))->first();
                 if (!empty($restoArr2)) {
                     $restoId[] = $restoArr2->id;
                 }
             }
 
             if (trim($val->restaurant3_title) != '') {
-                $restoArr3 = DB::table('tb_restaurants')->where('alias', '=', str_slug($val->restaurant3_title))->get();
+                $restoArr3 = DB::table('tb_restaurants')->where('alias', '=', str_slug($val->restaurant3_title))->first();
                 if (!empty($restoArr3)) {
                     $restoId[] = $restoArr3->id;
                 }
             }
 
             if (trim($val->bar_title) != '') {
-                $barArr = DB::table('tb_bars')->where('alias', '=', str_slug($val->bar_title))->get();
+                $barArr = DB::table('tb_bars')->where('alias', '=', str_slug($val->bar_title))->first();
                 if (!empty($barArr)) {
                     $barId[] = $barArr->id;
                 }
             }
 
             if (trim($val->bar2_title) != '') {
-                $barArr2 = DB::table('tb_bars')->where('alias', '=', str_slug($val->bar2_title))->get();
+                $barArr2 = DB::table('tb_bars')->where('alias', '=', str_slug($val->bar2_title))->first();
                 if (!empty($barArr2)) {
                     $barId[] = $barArr2->id;
                 }
             }
 
             if (trim($val->bar3_title) != '') {
-                $barArr3 = DB::table('tb_bars')->where('alias', '=', str_slug($val->bar3_title))->get();
+                $barArr3 = DB::table('tb_bars')->where('alias', '=', str_slug($val->bar3_title))->first();
                 if (!empty($barArr3)) {
                     $barId[] = $barArr3->id;
                 }
             }
 
             if (trim($val->spa_title) != '') {
-                $spaArr = DB::table('tb_spas')->where('alias', '=', str_slug($val->spa_title))->get();
+                $spaArr = DB::table('tb_spas')->where('alias', '=', str_slug($val->spa_title))->first();
                 if (!empty($spaArr)) {
                     $spaId[] = $spaArr->id;
                 }
             }
 
-            echo $restaurant_ids = implode(',',$restoId);
-            echo '<br>';
-            echo $spa_ids = implode(',',$spaId);
-            echo '<br>';
-            echo  $bar_ids = implode(',',$barId);
-            echo '<br>';
-           // DB::table('tb_properties')->where('id', $val->id)->update(['imported' => 1,'restaurant_ids'=>$restaurant_ids,'spa_ids'=>$spa_ids,'bar_ids'=>$bar_ids]);
+            $restaurant_ids = implode(',',$restoId);
+            $spa_ids = implode(',',$spaId);
+            $bar_ids = implode(',',$barId);
+
+            DB::table('tb_properties')->where('id', $val->id)->update(['imported' => 1,'restaurant_ids'=>$restaurant_ids,'spa_ids'=>$spa_ids,'bar_ids'=>$bar_ids]);
             $count++;
         }
         if ($count > 5) {
             header("refresh: 3;");
         }
-        echo "Updated Properties: " . Properties::count() . '<br>';
+        $dataPro = Properties::where('imported', '=', 1)->count();
+        echo "Updated Properties: " . $dataPro;
     }
 
 }
