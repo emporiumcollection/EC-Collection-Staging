@@ -746,8 +746,8 @@ class HomeController extends Controller {
         return Redirect::back();
     }
 
-    public function getSkin($skin = 'sximo') {
-        \Session::put('themes', $skin);
+    public function getSkin($skin = 'sximo-dark-blue') {
+        \Session::put('themes', 'sximo-dark-blue');
         return Redirect::back();
     }
 
