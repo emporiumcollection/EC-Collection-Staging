@@ -175,7 +175,7 @@ class BarController extends Controller {
                 $data['category_id'] = '';
             }
             $data['sub_title'] = $request->input('sub_title');
-            $data['menu'] = $request->input('menu');
+           // $data['menu'] = $request->input('menu');
             $data['reservation_email'] = $request->input('reservation_email');
             $data['reservation_contact'] = $request->input('reservation_contact');
             $data['website'] = $request->input('website');

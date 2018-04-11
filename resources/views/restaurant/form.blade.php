@@ -166,16 +166,7 @@
 						</div>
 					</div>
 
-					<div class="form-group  " >
-						<label for="Desciription" class=" control-label col-md-4 text-left"> Menu <span class="asterix">  </span></label>
-						<div class="col-md-6">
-							<textarea name='menu' rows='5' id='menu' class='form-control '
-							required  >{{ $row['menu'] }}</textarea>
-						</div>
-						<div class="col-md-2">
-							
-						</div>
-					</div>
+
 					<div class="form-group  " >
 						<label for="Restaurant Usp Text" class=" control-label col-md-4 text-left"> Restaurant Usp Text </label>
 						<div class="col-md-6">

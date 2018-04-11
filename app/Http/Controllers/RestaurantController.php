@@ -188,7 +188,7 @@ class RestaurantController extends Controller {
             $data['reservation_email'] = $request->input('reservation_email');
             $data['reservation_contact'] = $request->input('reservation_contact');
             $data['website'] = $request->input('website');
-            $data['menu'] = $request->input('menu');
+            //$data['menu'] = $request->input('menu');
 			$data['url'] = $request->input('url');
 			$data['location'] = $request->input('location');
 			$data['usp_text'] = $request->input('usp_text');

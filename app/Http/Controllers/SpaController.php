@@ -177,7 +177,7 @@ class SpaController extends Controller {
             $data['description'] = $request->input('description');
             $data['video_link'] = $request->input('video_link');
             $data['url'] = $request->input('url');
-            $data['menu'] = $request->input('menu');
+            //$data['menu'] = $request->input('menu');
             $data['usp_person'] = $request->input('usp_person');
             $data['usp_text'] = $request->input('usp_text');
             $data['manager_text'] = $request->input('manager_text');
