@@ -49,8 +49,8 @@
 					<div class="form-group  " >
 						<label for="Desciription" class=" control-label col-md-4 text-left"> Desciription <span class="asterix"> * </span></label>
 						<div class="col-md-6">
-							<textarea name='desciription' rows='5' id='desciription' class='form-control '
-							required  >{{ $row['desciription'] }}</textarea>
+							<textarea name='description' rows='5' id='description' class='form-control '
+							required  >{{ $row['description'] }}</textarea>
 						</div>
 						<div class="col-md-2">
 							

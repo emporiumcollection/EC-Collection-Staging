@@ -164,7 +164,7 @@ class RestaurantController extends Controller {
 			//$data = $this->validatePost('tb_restaurant');
 			
 			$data['title'] = $request->input('title');
-			$data['desciription'] = $request->input('desciription');
+			$data['description'] = $request->input('description');
 			if (!is_null($request->input('video_type'))) {
 				$data['video_type'] = $request->input('video_type');
 			}
