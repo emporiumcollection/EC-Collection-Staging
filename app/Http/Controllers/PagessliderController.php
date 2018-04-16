@@ -38,7 +38,7 @@ class PagessliderController extends Controller {
 		// Filter Search for query		
 		$filter = (!is_null($request->input('search')) ? $this->buildSearch() : '');
 		$categ = '';
-		if(!is_null($request->input('selpage')))
+		if(!is_null($request->input('selpage')) && $request->input('selpage')!='')
 		{
 			$categ = ($request->input('selpage')!='') ? $request->input('selpage') : '';
 			$filter .= ' AND slider_page_id="'.$categ.'"';

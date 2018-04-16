@@ -141,7 +141,7 @@
 	</div>	  
 </div>	
 <!-- Selected Files/Folder downloaded as High PDF -->
-{!! Form::open(array('url'=>'change_order_num_pagessliders', 'class'=>'columns' ,'id' =>'change_order_num_sliders', 'method'=>'post' )) !!}
+{!! Form::open(array('url'=>'change_order_num_pagessliders', 'class'=>'columns' ,'id' =>'change_order_num_pagessliders', 'method'=>'post' )) !!}
 	<input type="hidden" name="sliderID" id="sliderID" value="">
 	<input type="hidden" name="order_type" id="order_type" value="">
 	<input type="hidden" name="curnurl" value="{{ Request::url().'?selpage='.$curntcat }}">
