@@ -88,6 +88,10 @@ class DestinationController extends Controller {
 		$fetchexperience = DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_alias')->where('category_published', 1)->where('parent_category_id', 8)->get();
 		if(!empty($fetchexperience))
 		{
+			usort($fetchexperience, function($a, $b) {
+				return trim($a->category_name) < trim($b->category_name);
+			});
+			
 			$res['status'] = 'success';
 			$res['dests'] = $fetchexperience;
 			
