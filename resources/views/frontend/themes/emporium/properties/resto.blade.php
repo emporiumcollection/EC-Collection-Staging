@@ -586,24 +586,21 @@
 	@endif
 
 	<!-- Greenry Section here -->
-	<div id="seasonal-events" class="greenrysection">
+	<div id="seasonal-events-top" class="greenrysection">
 
-		  @if(!empty($eventsArray))
- 			 {{--*/ $clsact ="" /*--}}
-			@foreach($eventsArray as $events)
-				<div class="content-circle contentCirsclePopupBtn">
-					<h2>{{$events->title}}</h2>
-					<h3>A Table</h3>
-					<p>{{$events->desciription}}</p>
-				</div>
-		@endforeach
-		@endif
+
+
+	<div class="content-circle contentCirsclePopupBtn">
+        <h2>Request</h2>
+        <h3>A Table</h3>
+        <p>Lorem ipsum dolor sit amet, mei omnium iudicabit cu. Eruditi urbanitas persequeris in has, mel te prodesset conceptam. Id quando deterruisset est. Quaestio scripserit nec eu. An argumentum temporibus usu, ne mei aeterno imperdiet, case aeque id vis.</p>
+    </div>
 		<div class="arrowsIcons">
 			<a class="scrollpage" href="#seasonal-events"><img src="{{ asset('themes/emporium/images/arrow-up-icon.png') }}" alt="icon"></a>
 			<a class="scrollpage" href="#instagram-gallery"><img src="{{ asset('themes/emporium/images/arrow-down-icon.png') }}" alt="icon"></a>
 		</div>
 
-		<div id="contentCirsclePopup" class="custom_modal modal fade" role="dialog">
+	<div id="contentCirsclePopup" class="custom_modal modal fade" role="dialog">
 	  <div class="modal-dialog">
 
 		<!-- Modal content-->
@@ -757,7 +754,18 @@
 	</div>
 	<!-- Instagram Gallery Section -->
 	<!-- terrace suit slider sec -->
-
+<div id="seasonal-events" class="greenrysection">
+ @if(!empty($eventsArray))
+ 			 {{--*/ $clsact ="" /*--}}
+			@foreach($eventsArray as $events)
+				<div class="content-circle contentCirsclePopupBtn">
+					<h2>{{$events->title}}</h2>
+					<h3>A Table</h3>
+					<p>{{$events->desciription}}</p>
+				</div>
+		@endforeach
+		@endif
+</div>		
 @if (!empty($eventPackagesArray))
 <div class="HamYardHotelSection">
   <div>
