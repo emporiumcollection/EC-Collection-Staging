@@ -8,7 +8,7 @@ main(__DIR__ . '/config.json', __DIR__ . '/storage');
 
 function main($config_path, $storage_path) {
     if (!is_readable($config_path)) {
-        response(error_ext('config.json does not exist or can not be read'));
+        instaresponse(error_ext('config.json does not exist or can not be read'));
     }
 
     $config = json_decode(file_get_contents($config_path), true);
@@ -30,7 +30,7 @@ function main($config_path, $storage_path) {
         )
     ));
 
-    $routes = route(array(
+    $routes = instaroute(array(
         '/v1/media/shortcode/{shortcode}' => 'serve_media_shortcode',
         '/v1/users/{username}/media/recent' => 'serve_user_media_recent',
         '/v1/users/{username}' => 'serve_user',
@@ -95,7 +95,7 @@ function serve_media_shortcode($shortcode) {
         );
     }
 
-    response($result);
+    instaresponse($result);
 }
 
 function serve_user($username) {
@@ -104,7 +104,7 @@ function serve_user($username) {
     $allowed_usernames = !empty($config['allowed_usernames']) ? $config['allowed_usernames'] : '*';
 
     if (!is_allowed($username, $allowed_usernames)) {
-        response(error_ext('specified username is not allowed'));
+        instaresponse(error_ext('specified username is not allowed'));
     }
 
     $fallback = true;
@@ -189,7 +189,7 @@ function serve_user($username) {
         );
     }
 
-    response($result);
+    instaresponse($result);
 }
 
 function serve_user_media_recent($username) {
@@ -198,7 +198,7 @@ function serve_user_media_recent($username) {
     $allowed_usernames = !empty($config['allowed_usernames']) ? $config['allowed_usernames'] : '*';
 
     if (!is_allowed($username, $allowed_usernames)) {
-        response(error_ext('specified username is not allowed'));
+        instaresponse(error_ext('specified username is not allowed'));
     }
 
     $result = null;
@@ -298,7 +298,7 @@ function serve_user_media_recent($username) {
         }
     }
 
-    response($result);
+    instaresponse($result);
 }
 
 
@@ -332,7 +332,7 @@ function serve_tag_media_recent($tag) {
     $allowed_tags = !empty($config['allowed_tags']) ? $config['allowed_tags'] : '*';
 
     if (!is_allowed($tag, $allowed_tags)) {
-        response(error_ext('specified tag is not allowed'));
+        instaresponse(error_ext('specified tag is not allowed'));
     }
 
     $fallback = true;
@@ -440,7 +440,7 @@ function serve_tag_media_recent($tag) {
         }
     }
 
-    response($result);
+    instaresponse($result);
 }
 
 function tag_media_recent_format_data($hashtag_data) {
@@ -578,7 +578,7 @@ function serve_location_media_recent($location_id) {
         }
     }
 
-    response($result);
+    instaresponse($result);
 }
 
 function location_media_recent_format_data($location_data) {
@@ -597,7 +597,7 @@ function location_media_recent_format_data($location_data) {
 }
 
 function serve_not_found() {
-    response(error('bad request'));
+    instaresponse(error('bad request'));
 }
 
 function query_client_request($page_data, $variables, $query_hash) {
@@ -645,7 +645,7 @@ function run($path, $routes) {
 
     } else if (!function_exists($handler_name)) {
         //        log_error('Undefined handler "' . $handler_name . '"');
-        response(error_ext('Undefined handler "' . $handler_name . '"'));
+        instaresponse(error_ext('Undefined handler "' . $handler_name . '"'));
     }
 
     log_info('Request delegated to "' . $handler_name . '" handler');
@@ -662,7 +662,7 @@ function index($key, $value = null, $f = false) {
     return !empty($index[$key]) ? $index[$key] : null;
 }
 
-function route($list) {
+function instaroute($list) {
     $map = array();
 
     foreach ($list as $path => $handler_name) {
@@ -719,7 +719,7 @@ function error_ext($additional) {
     return error('service is unavailable now', 400, $additional);
 }
 
-function response($data) {
+function instaresponse($data) {
     $callback = input('callback');
     $c = input('c', false);
 
