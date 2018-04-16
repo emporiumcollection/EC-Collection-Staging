@@ -154,7 +154,6 @@ $(document).ready(function () {
     $(document).on('keyup', '[data-action="gobal-search"]', function () {
 
         if ($(this).val() == '') {
-
             $('[data-option="gobal-search"]').slideUp(300);
         } else {
             $('[data-action="gobal-destinations"]').parent().hide();
@@ -229,7 +228,7 @@ $(document).ready(function () {
     $(document).on('click', '[data-action="gobal-collections"]', function () {
         hideAllOption();
         var data = {};
-        data.main_title = 'Destinations';
+        data.main_title = 'Collections';
         data.sub_title = 'Home';
         data.id = 0;
         putDataOnLeft(data);
@@ -245,7 +244,7 @@ $(document).ready(function () {
     $(document).on('click', '[data-action="gobal-destinations"]', function () {
         hideAllOption();
         var data = {};
-        data.main_title = 'Collections';
+        data.main_title = 'Destinations';
         data.sub_title = 'Home';
         data.id = 0;
         putDataOnLeft(data);
@@ -293,8 +292,8 @@ $(document).ready(function () {
     $(document).on('click', '[data-action="gobal-bar"]', function () {
         hideAllOption();
         var data = {};
-        data.main_title = 'Destinations';
-        data.sub_title = 'Bars';
+        data.main_title = 'Bars';
+        data.sub_title = 'Home';
         data.id = 0;
         putDataOnLeft(data);
         $('[data-option="bar-option-list"]').removeClass('hide');
@@ -334,7 +333,7 @@ function hideAllOption() {
     $('[data-option="resto-option-list"]').addClass('hide');
     $('[data-option="spa-option-list"]').addClass('hide');
     $('[data-option="bar-option-list"]').addClass('hide');
-    $('[data-option="gobal-search"]').addClass('hide');
+    $('[data-option="gobal-search"]').css('display','none');
 }
 
 /*
