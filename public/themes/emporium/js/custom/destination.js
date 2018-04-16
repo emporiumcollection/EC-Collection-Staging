@@ -99,8 +99,14 @@ function renderDestination(dataObj) {
     var destinationHtml = '';
     if (dataObj.current_category != undefined) {
         data.main_title = 'Home';
-        data.sub_title = 'Back To Destination';
-        data.id = dataObj.current_category.parent_category_id;
+        if (dataObj.currentParentCate != undefined) {
+            data.sub_title = 'Back To '+dataObj.currentParentCate.category_name;;
+            data.id = dataObj.currentParentCate.id;
+        }else{
+            data.sub_title = 'Back To Destination';
+            data.id = dataObj.current_category.parent_category_id;
+        }
+
         data.type = 'destination';
         var imagePath = BaseURL+'/uploads/category_imgs/'+dataObj.current_category.category_image;
         if(dataObj.current_category.category_image==''){

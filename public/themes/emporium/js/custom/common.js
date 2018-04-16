@@ -152,6 +152,11 @@ $(document).ready(function () {
     * For Global Search
     */
     $(document).on('keyup', '[data-action="gobal-search"]', function () {
+        $('[data-option="dest-option-list"]').addClass('hide');
+        $('[data-option="collection-option-list"]').addClass('hide');
+        $('[data-option="resto-option-list"]').addClass('hide');
+        $('[data-option="spa-option-list"]').addClass('hide');
+        $('[data-option="bar-option-list"]').addClass('hide');
 
         if ($(this).val() == '') {
             $('[data-option="gobal-search"]').slideUp(300);
