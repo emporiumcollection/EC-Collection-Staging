@@ -206,6 +206,7 @@
 					dataGridHtml +='<a href="'+data.resultads.adv_link+'" class="content-overlay">';
 					dataGridHtml +='<h5>'+data.resultads.adv_title+'</h5>';
 					dataGridHtml +='</a>';
+                    dataGridHtml +='<div class="pricelabel">Advertisement</div>';
 					dataGridHtml +='</figure>';
 					dataGridHtml +='<div class="title">';
 					dataGridHtml +='<h3><a href="'+data.resultads.adv_link+'">'+data.resultads.adv_title+'</a></h3>';
@@ -269,6 +270,7 @@
 					dataGridHtml +='<a href="'+data.resultads.adv_link+'" class="content-overlay">';
 					dataGridHtml +='<h5>'+data.resultads.adv_title+'</h5>';
 					dataGridHtml +='</a>';
+                    dataGridHtml +='<div class="pricelabel">Advertisement</div>';
 					dataGridHtml +='</figure>';
 					dataGridHtml +='<div class="title">';
 					dataGridHtml +='<h3><a href="'+data.resultads.adv_link+'">'+data.resultads.adv_title+'</a></h3>';
