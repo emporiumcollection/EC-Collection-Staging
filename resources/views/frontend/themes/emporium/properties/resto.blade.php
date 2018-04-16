@@ -602,8 +602,8 @@
 		@endforeach
 		@endif
 		<div class="arrowsIcons">
-			<a class="scrollpage" href="#seasonal-events"><img src="images/arrow-up-icon.png" alt="icon"></a>
-			<a class="scrollpage" href="#instagram-gallery"><img src="images/arrow-down-icon.png" alt="icon"></a>
+			<a class="scrollpage" href="#seasonal-events"><img src="{{ asset('themes/emporium/images/arrow-up-icon.png') }}" alt="icon"></a>
+			<a class="scrollpage" href="#instagram-gallery"><img src="{{ asset('themes/emporium/images/arrow-down-icon.png') }}" alt="icon"></a>
 		</div>
 
 		<div id="contentCirsclePopup" class="custom_modal modal fade" role="dialog">
@@ -761,7 +761,7 @@
 	<!-- Instagram Gallery Section -->
 	<!-- terrace suit slider sec -->
 
-	@if (!empty($eventPackagesArray))
+@if (!empty($eventPackagesArray))
 <div class="HamYardHotelSection">
   <div>
      <div id="HamYardHotelSlider" class="carousel slide HamYardHotelSlider" data-ride="carousel">
