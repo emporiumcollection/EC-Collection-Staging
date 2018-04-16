@@ -111,10 +111,10 @@
 							@endif
 						</td>
 						<td>
-							@if(count($row)!=$i)
+							@if(count($rowData)!=$i)
 								<a href="#" class="tips btn btn-xs btn-primary" title="Move Down" onclick="change_ordering('down','{{$row->id}}');"><i class="fa  fa-arrow-down"></i></a>
 							@endif
-							@if($row[0]!=$row)
+							@if($rowData[0]!=$row)
 								<a href="#" class="tips btn btn-xs btn-primary" title="Move Up" onclick="change_ordering('up','{{$row->id}}');"><i class="fa fa-arrow-up"></i></a>
 							@endif
 						</td>
