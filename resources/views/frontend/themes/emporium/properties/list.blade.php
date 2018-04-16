@@ -18,7 +18,8 @@
 						<div class="item {{($key == 0)? 'active' : ''}}" style="background-image:url({{url('uploads/slider_images/'.$slider_row->slider_img)}});">
 							<div class="carousel-caption">
 								<h6>{{$slug}}</h6>
-								<h2><a href="{{$slider_row->slider_link}}">{{$slider_row->slider_title}}</a></h2>
+								<h2>
+									<a onclick="return !window.open(this.href, '{{ ((strpos($slider_row->slider_link, 'http://') || strpos($slider_row->slider_link, 'https://')) === false) ? $slider_row->slider_link : 'http://'.$slider_row->slider_link }}', 'width=900,height=500,left=100, top=100, scrollbars, resizable')" href="{{ ((strpos($slider_row->slider_link, 'http://') || strpos($slider_row->slider_link, 'https://')) === false) ? $slider_row->slider_link : 'http://'.$slider_row->slider_link }}">{{$slider_row->slider_title}}</a></h2>
 								<p>{{$slider_row->slider_description}}</p>
 							</div>
 						</div>
@@ -118,7 +119,23 @@
     </section>
     {{--  Search Result end --}}
 
-
+	<!-- Instagram Gallery Section -->
+	@if($destination_category > 0)
+		@if($destination_category_instagram != '')
+			<section id="instagram-section">
+				<div class="col-sm-12 text-center">
+					<h2 class="heading">GET SOCIAL</h2>
+				</div>
+				<section id="instagran" class="sections-instagram">
+					<div class="full-width">
+						<div data-is data-is-api="{{ url('runInsta')}}"
+							 data-is-source="{{ $destination_category_instagram }}"
+							 data-is-rows="2" data-is-columns="5"></div>
+					</div>
+				</section>
+			</section>
+		@endif
+	@endif
 
 @endsection
 

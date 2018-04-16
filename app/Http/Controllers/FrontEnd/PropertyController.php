@@ -157,6 +157,7 @@ class PropertyController extends Controller {
 
 		if(request()->segment(1)=='luxury_destinations' || request()->segment(1)=='luxury_experience'){
             $this->data['destination_category']=$cateObj->id;
+			$this->data['destination_category_instagram']=$cateObj->category_instagram_channel;
         }
 
 		return view('frontend.themes.emporium.properties.list', $this->data);
