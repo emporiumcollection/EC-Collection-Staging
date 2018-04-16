@@ -68,7 +68,7 @@
             </ul>
             {{-- For Gobal Search List --}}
             @include('frontend.themes.emporium.layouts.sections.global-search-list')
-            </ul>
+
             {{-- End  Gobal Search List --}}
             @if (!Auth::check())
 
