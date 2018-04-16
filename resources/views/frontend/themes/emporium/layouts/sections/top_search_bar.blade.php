@@ -1,7 +1,7 @@
 <form action="{{URL::to('search')}}" method="get" id="reservationForm" name="reservationform" class="reservation-form">
  <div class="row">
 	<div class="col-sm-3 col-md-3">
-	   <div class="form-group">
+	   <div class="form-group ui-widget" >
 		  <input type="text" name="s" data-action="auto-suggestion" placeholder="ENTER YOUR HOTEL OR DESTINATION"/>
 	   </div>
 	</div>

@@ -144,7 +144,7 @@ $(document).ready(function () {
         },
         minLength: 2,
         select: function (event, ui) {
-            log("Selected: " + ui.item.value + " aka " + ui.item.id);
+            console.log("Selected: " + ui.item.label + " aka " + ui.item.id);
         }
     });
 

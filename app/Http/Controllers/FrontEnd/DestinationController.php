@@ -248,7 +248,8 @@ class DestinationController extends Controller {
 
 		}
 
-		return response()->json(array($request->callback=>$dataArr));
+		$ajxData = json_encode($dataArr);
+		echo $request->callback.'('.$ajxData.')';
     }
 
 }
