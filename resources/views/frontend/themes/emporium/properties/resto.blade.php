@@ -754,25 +754,29 @@
 	</div>
 	<!-- Instagram Gallery Section -->
 	<!-- terrace suit slider sec -->
-<div id="seasonal-events" class="greenrysection">
+<div id="seasonal-events" style="background-color:#f7f7f7;" class="col-md-12">
  @if(!empty($eventsArray))
  			 {{--*/ $clsact ="" /*--}}
+ 			 {{--*/ $sliderCounter =1 /*--}}
 			@foreach($eventsArray as $events)
-				<div class="content-circle contentCirsclePopupBtn">
+				<div>
 					<h2>{{$events->title}}</h2>
-					<h3>A Table</h3>
 					<p>{{$events->desciription}}</p>
 				</div>
-		@endforeach
-		@endif
-</div>		
+
 @if (!empty($eventPackagesArray))
+ 
+
+ @if ($sliderCounter==1)
 <div class="HamYardHotelSection">
   <div>
      <div id="HamYardHotelSlider" class="carousel slide HamYardHotelSlider" data-ride="carousel">
         <div class="carousel-inner">
 
-            {{--*/ $k=0; $tottyp = count($eventPackagesArray); /*--}}
+   @endif     	
+
+
+          {{--*/ $k=0; $tottyp = count($eventPackagesArray); /*--}}
              @foreach($eventPackagesArray as $key=>$package)
            <div style="background-image: url({{URL::to('uploads/event_package_images/'.$package->package_image)}});" @if($k==0) class="item active" @else class="item" @endif>
              <div class="carousalCaption">
@@ -783,10 +787,14 @@
            </div>
 
            {{--*/ $k++; /*--}}
-                                                
+                                      
         @endforeach
-           
-        </div>
+        @if ($sliderCounter==1)    
+       		 </div>
+        @endif
+
+
+
           <div class="HamYardHotelSliderOptions">
            
             <div class="terraceSuitindicator">
@@ -818,6 +826,12 @@
   </div>
 </div>
 @endif
+
+  {{--*/ $sliderCounter ++ /*--}}        
+		@endforeach
+		@endif
+</div>		
+
 
 	<!-- terrace suit slider sec -->
 	<div id="instagram-gallery" class="instagram-gallery owl-carousel">
