@@ -176,14 +176,6 @@ class SliderController extends Controller {
 		
 		$this->data['id'] = $id;
 		$this->data['access']		= $this->access;
-		
-		$checkslid = \DB::table('tb_sliders')->get();
-		$s=1;
-		foreach($checkslid as $slid)
-		{
-			\DB::table('tb_sliders')->where('id', $slid->id)->update(['sort_num'=>$s]);
-			$s++;
-		}
 		return view('slider.view',$this->data);	
 	}	
 
