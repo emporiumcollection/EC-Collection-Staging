@@ -824,7 +824,7 @@
 </div>		
 
 
-	<!-- terrace suit slider sec -->
+	<!-- terrace suit slider sec 
 	<div id="instagram-gallery" class="instagram-gallery owl-carousel">
 		<div class="item">
 			<div class="instagram-box">
@@ -1000,7 +1000,7 @@
 			<a class="scrollpage" href="#seasonal-events"><img src="images/arrow-up-icon.png" alt="icon"></a>
 			<a class="scrollpage" href="#get-directions"><img src="images/arrow-down-icon.png" alt="icon"></a>
 		</div>
-	</div>
+	</div>-->
 
 	<div id="get-directions">
 		<div id="map"></div>
@@ -1047,9 +1047,6 @@
     </div>
 </div>
 
-
-
-<div class="whiteoverlay"></div>
 @endsection
 
 
@@ -1063,6 +1060,12 @@
 @section('head')
     @parent
 	<link href="{{ asset('themes/emporium/css/restaurant-css.css') }}" rel="stylesheet">
+	<link href="{{ asset('themes/emporium/css/animate.css') }}" rel="stylesheet">
+    <link href="{{ asset('themes/emporium/css/daterangepicker.css') }}" rel="stylesheet">
+    <link href="{{ asset('themes/emporium/css/calendar.css') }}" rel="stylesheet">
+    <link href="{{ asset('themes/emporium/css/terms-and-conditions.css') }}" rel="stylesheet">
+ 	<link 	href="{{ asset('themes/emporium/css/pdpage-css.css') }}" rel="stylesheet">
+    
 @endsection
 
 
@@ -1139,6 +1142,41 @@
 					}
 				  }
 			});
+		}
+
+
+
+
+
+		$(document).on('click', '.showMoreSec, .moreButtonPopup', function () {
+			$('.showMorePopup').css("background-image", "");
+			$('.showMoreContent').html('');
+			var params = $.extend({}, doAjax_params_default);
+			params['url'] = BaseURL + '/getpropertytypedetail/' + $(this).attr('rel');
+			params['successCallbackFunction'] = renderRoomdetails;
+			doAjax(params);
+
+		});
+		
+		function renderRoomdetails(data) {
+			var rimg = data.roomimgs.imgsrc;
+			$('.showMorePopup').css("background-image", "url('" + rimg + "')");
+			var imagesPro = '';
+			imagesPro += '<h1>' + data.typedata.category_name + '</h1>';
+			imagesPro += '<p>' + data.amenities.amenities_eng.replace(/\n/g, "<br />") + '</p>';
+			imagesPro += '<p>' + data.typedata.room_desc + '</p>';
+			imagesPro += '<div class="shoMoreButtonSection">';
+			if (data.typedata.price != '')
+			{
+				imagesPro += '<h2>';
+				imagesPro += (data.currency.content != '') ? data.currency.content : '$';
+				imagesPro += data.typedata.price;
+				imagesPro += '</h2>';
+			}
+			imagesPro += '<a href="javascript:void(0);" onclick="choose_room_type(' + data.typedata.id + ');" class="button">Book</a>';
+			imagesPro += '</div>';
+			$('.showMoreContent').html(imagesPro);
+			$('.showMorePopup').addClass('openPopup');
 		}
 	</script>
 @endsection
