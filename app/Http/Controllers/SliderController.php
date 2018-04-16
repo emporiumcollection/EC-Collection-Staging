@@ -72,7 +72,7 @@ class SliderController extends Controller {
 		// Build pagination setting
 		$page = $page >= 1 && filter_var($page, FILTER_VALIDATE_INT) !== false ? $page : 1;	
 		$pagination = new Paginator($results['rows'], $results['total'], $params['limit']);	
-		$pagination->setPath('slider');
+		$pagination->setPath('slider')->appends('selcat', $request->input('selcat'));
 		
 		/*if(!empty($results['rows']))
 		{
