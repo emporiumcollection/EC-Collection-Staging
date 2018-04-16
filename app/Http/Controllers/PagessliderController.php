@@ -8,7 +8,7 @@ class PagessliderController extends Controller {
 	protected $layout = "layouts.main";
 	protected $data = array();	
 	public $module = 'pagesslider';
-	static $per_page	= '10';
+	static $per_page	= '20';
 	public function __construct()
 	{
 		
@@ -32,17 +32,18 @@ class PagessliderController extends Controller {
 		if($this->access['is_view'] ==0) 
 			return Redirect::to('dashboard')
 				->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus','error');
-		$sort = (!is_null($request->input('sort')) ? $request->input('sort') : 'id'); 
-		$order = (!is_null($request->input('order')) ? $request->input('order') : 'asc');
+		$sort = (!is_null($request->input('sort')) ? $request->input('sort') : 'sort_num'); 
+		$order = (!is_null($request->input('order')) ? $request->input('order') : 'desc');
 		// End Filter sort and order for query 
 		// Filter Search for query		
 		$filter = (!is_null($request->input('search')) ? $this->buildSearch() : '');
-		if(!is_null($request->input('selpage')))
+		$categ = '';
+		if(!is_null($request->input('selpage')) && $request->input('selpage')!='')
 		{
 			$categ = ($request->input('selpage')!='') ? $request->input('selpage') : '';
 			$filter .= ' AND slider_page_id="'.$categ.'"';
 		}
-		
+		$this->data['curntcat'] = $categ;
 		$page = $request->input('page', 1);
 		$params = array(
 			'page'		=> $page ,
@@ -58,7 +59,7 @@ class PagessliderController extends Controller {
 		// Build pagination setting
 		$page = $page >= 1 && filter_var($page, FILTER_VALIDATE_INT) !== false ? $page : 1;	
 		$pagination = new Paginator($results['rows'], $results['total'], $params['limit']);	
-		$pagination->setPath('pagesslider');
+		$pagination->setPath('pagesslider')->appends('selpage', $request->input('selpage'));
 		
 		$this->data['rowData']		= $results['rows'];
 		// Build Pagination 
@@ -153,6 +154,13 @@ class PagessliderController extends Controller {
 			if($request->input('id') =='')
 			{
 				$data['created'] = date('y-m-d h:i:s');
+				$check_ordering = \DB::table('tb_pages_sliders')->orderBy('sort_num', 'desc')->first();
+				if(!empty($check_ordering)){
+					$data['sort_num'] = $check_ordering->sort_num + 1;
+				}
+				else{
+					$data['sort_num'] = 1;
+				}
 			}
 			else
 			{
@@ -198,7 +206,23 @@ class PagessliderController extends Controller {
 		// delete multipe rows 
 		if(count($request->input('ids')) >=1)
 		{
+			$sel_ids = $request->input('ids');
+			$exitdel = \DB::table('tb_pages_sliders')->where('id',$sel_ids[0])->first();
 			$this->model->destroy($request->input('ids'));
+			
+			if(!empty($exitdel))
+			{
+				$nextEntries = \DB::table('tb_pages_sliders')->where('sort_num', '>', $exitdel->sort_num)->orderBy('sort_num','asc')->get();
+				if(!empty($nextEntries))
+				{
+					$next_order = $exitdel->sort_num;
+					foreach($nextEntries as $next)
+					{
+						$update_ordering = \DB::table('tb_pages_sliders')->where('id',$next->id)->update(['sort_num'=>$next_order]);
+						$next_order = $next_order + 1;
+					}
+				}
+			}
 			
 			\SiteHelpers::auditTrail( $request , "ID : ".implode(",",$request->input('ids'))."  , Has Been Removed Successfull");
 			// redirect
@@ -229,4 +253,54 @@ class PagessliderController extends Controller {
             return "error";
         }
     }
+	
+	function change_pagessliders_ordering( Request $request )
+	{
+		$uid = \Auth::user()->id;
+		$slider_id = Input::get('sliderID');
+		$action = Input::get('order_type');
+		$ret_url = Input::get('curnurl');
+		if($slider_id!='' && $slider_id>0)
+		{
+			$exist = \DB::table('tb_pages_sliders')->where('id', $slider_id)->first();
+			if(!empty($exist))
+			{
+				if($action=='up')
+				{
+					$previous = \DB::table('tb_pages_sliders')->where('sort_num', '>', $exist->sort_num)->orderBy('sort_num','asc')->first();
+					if(!empty($previous))
+					{
+						$previous_order = $previous->sort_num - 1;
+						$update_ordering = \DB::table('tb_pages_sliders')->where('id',$previous->id)->update(['sort_num'=>$previous_order]);
+					}
+					$new_ord_num = $exist->sort_num + 1;
+				}
+				elseif($action=='down')
+				{
+					$next = \DB::table('tb_pages_sliders')->where('sort_num', '<', $exist->sort_num)->orderBy('sort_num','desc')->first();
+					if(!empty($next))
+					{
+						$next_order = $next->sort_num + 1;
+						$update_ordering = \DB::table('tb_pages_sliders')->where('id',$next->id)->update(['sort_num'=>$next_order]);
+					}
+					
+					$new_ord_num = $exist->sort_num - 1;
+				}
+				if($new_ord_num<1) { $new_ord_num = 1; }
+				$update_ordering = \DB::table('tb_pages_sliders')->where('id',$slider_id)->update(['sort_num'=>$new_ord_num]);
+				if($update_ordering)
+				{
+					return Redirect::to($ret_url)->with('messagetext',\Lang::get('core.note_success'))->with('msgstatus','success');
+				}
+			}
+			else
+			{
+				return Redirect::to($ret_url)->with('messagetext','No record found')->with('msgstatus','error');
+			}
+		}
+		else
+		{
+			return Redirect::to($ret_url)->with('messagetext','No record found')->with('msgstatus','error');
+		}
+	}
 }

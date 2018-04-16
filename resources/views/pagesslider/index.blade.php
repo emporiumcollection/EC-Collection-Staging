@@ -74,6 +74,7 @@
 					@endif
 				@endforeach
 				<th width="70">Status</th>
+				<th width="100">Ordering</th>
 				<th width="70" >{{ Lang::get('core.btn_action') }}</th>
 			  </tr>
         </thead>
@@ -106,6 +107,13 @@
 					@endif
 				</td>
 				
+				<td>
+					@if(count($rowData)!=$i)
+						<a href="#" class="tips btn btn-xs btn-primary" title="Move Down" onclick="change_ordering('down','{{$row->id}}');"><i class="fa  fa-arrow-down"></i></a>
+					@endif
+					@if($rowData[0]!=$row)
+						<a href="#" class="tips btn btn-xs btn-primary" title="Move Up" onclick="change_ordering('up','{{$row->id}}');"><i class="fa fa-arrow-up"></i></a>
+					@endif
 				</td>
 				 <td>
 					 	@if($access['is_detail'] ==1)
@@ -132,6 +140,12 @@
 </div>	
 	</div>	  
 </div>	
+<!-- Selected Files/Folder downloaded as High PDF -->
+{!! Form::open(array('url'=>'change_order_num_pagessliders', 'class'=>'columns' ,'id' =>'change_order_num_pagessliders', 'method'=>'post' )) !!}
+	<input type="hidden" name="sliderID" id="sliderID" value="">
+	<input type="hidden" name="order_type" id="order_type" value="">
+	<input type="hidden" name="curnurl" value="{{ Request::url().'?selpage='.$curntcat }}">
+</form>	
 <script>
 $(document).ready(function(){
 	$('.do-quick-search').click(function(){
@@ -179,6 +193,16 @@ function change_option(row,filed_name,row_id,act)
 			}
 		  }
 		});
+	}
+}
+
+function change_ordering(type, fieldId)
+{
+	if(fieldId>0)
+	{
+		$('#sliderID').val(fieldId);
+		$('#order_type').val(type);
+		$( "#change_order_num_pagessliders" ).submit();
 	}
 }
 </script>		
