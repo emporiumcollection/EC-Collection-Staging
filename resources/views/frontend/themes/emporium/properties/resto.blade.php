@@ -754,7 +754,7 @@
 	</div>
 	<!-- Instagram Gallery Section -->
 	<!-- terrace suit slider sec -->
-<div id="seasonal-events" class="greenrysection">
+<div id="seasonal-events" style="background-color:#f7f7f7;" class="col-md-12">
  @if(!empty($eventsArray))
  			 {{--*/ $clsact ="" /*--}}
  			 {{--*/ $sliderCounter =1 /*--}}
