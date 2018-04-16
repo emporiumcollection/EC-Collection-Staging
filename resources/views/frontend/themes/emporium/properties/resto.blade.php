@@ -264,10 +264,7 @@
 					</div>
 
 				  </div>
-				  <!-- <div class="arrowsIcons">
-					<a class="scrollpage" href="#restaurantSlider"><img src="images/arrow-up-icon.png" alt="icon"></a>
-					<a class="scrollpage" href="#emotionSection"><img src="images/arrow-down-icon.png" alt="icon"></a>
-				</div> -->
+			
 			</section>
 		@endif
 	@endif
@@ -286,8 +283,8 @@
 		</div>
 
 	  <div class="arrowsIcons">
-		<a class="scrollpage" href="#restaurant1"><img src="images/arrow-up-icon.png" alt="icon"></a>
-		<a class="scrollpage" href="#restaurant2"><img src="images/arrow-down-icon.png" alt="icon"></a>
+		<a class="scrollpage" href="#restaurant1"><img src="{{ asset('themes/emporium/images/arrow-up-icon.png') }}" alt="icon"></a>
+		<a class="scrollpage" href="#restaurant2"><img src="{{ asset('themes/emporium/images/arrow-down-icon.png') }}" alt="icon"></a>
 	</div>
 	</section>
 
