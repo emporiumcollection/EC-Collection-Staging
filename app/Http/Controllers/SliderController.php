@@ -54,6 +54,13 @@ class SliderController extends Controller {
 		{
             if($categ!='') {
                 $filter .= ' AND slider_category="' . $categ . '"';
+				$checkslid = \DB::table('tb_sliders')->where('slider_category', $categ)->get();
+				$s=1;
+				foreach($checkslid as $slid)
+				{
+					\DB::table('tb_sliders')->where('id', $slid->id)->update(['sort_num'=>$s]);
+					$s++;
+				}
             }
 		}
 
