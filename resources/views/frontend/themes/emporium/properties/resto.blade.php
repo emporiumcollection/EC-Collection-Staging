@@ -758,20 +758,17 @@
  @if(!empty($eventsArray))
  			 {{--*/ $clsact ="" /*--}}
  			 {{--*/ $sliderCounter =1 /*--}}
-			@foreach($eventsArray as $events)
-				<div>
-					
-				</div>
+
+ 			  {{--*/ $k=0; $tottyp = count($eventsArray); /*--}}
+@foreach($eventsArray as $events)
+		
 
 			
 
 {{--*/ $eventPackagesArray= \DB::table('tb_event_packages')->where('event_id', $events->id)->get() /*--}}
 
-	
-
 @if (!empty($eventPackagesArray))
- 
-
+          
  @if ($sliderCounter==1)
 <div class="HamYardHotelSection">
   <div>
@@ -781,7 +778,7 @@
    @endif     	
 
 
-          {{--*/ $k=0; $tottyp = count($eventPackagesArray); /*--}}
+
              @foreach($eventPackagesArray as $key=>$package)
            <div style="background-image: url({{URL::to('uploads/event_package_images/'.$package->package_image)}});" @if($k==0) class="item active" @else class="item" @endif>
              <div class="carousalCaption">
