@@ -231,6 +231,7 @@
                             <div class="sliderlegend">Hight - Low</div>
                             <select name="currencyOption" class="form-control">
                                 <option value="EUR">Currency</option>
+								{{--*/ $currencyList=(CommonHelper::getCurrencyList()); /*--}}
 								@foreach($currencyList as $currencyCode => $currencyName)
 
 									<option value="{{ $currencyCode }}" title="{{ $currencyName }}">{{ $currencyName }}
