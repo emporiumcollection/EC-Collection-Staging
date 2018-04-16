@@ -18,7 +18,8 @@
 						<div class="item {{($key == 0)? 'active' : ''}}" style="background-image:url({{url('uploads/slider_images/'.$slider_row->slider_img)}});">
 							<div class="carousel-caption">
 								<h6>{{$slug}}</h6>
-								<h2><a href="{{$slider_row->slider_link}}">{{$slider_row->slider_title}}</a></h2>
+								<h2>
+									<a onclick="return !window.open(this.href, '{{ ((strpos($slider_row->slider_link, 'http://') || strpos($slider_row->slider_link, 'https://')) === false) ? $slider_row->slider_link : 'http://'.$slider_row->slider_link }}', 'width=900,height=500,left=100, top=100, scrollbars, resizable')" href="{{ ((strpos($slider_row->slider_link, 'http://') || strpos($slider_row->slider_link, 'https://')) === false) ? $slider_row->slider_link : 'http://'.$slider_row->slider_link }}">{{$slider_row->slider_title}}</a></h2>
 								<p>{{$slider_row->slider_description}}</p>
 							</div>
 						</div>
@@ -118,7 +119,23 @@
     </section>
     {{--  Search Result end --}}
 
-
+	<!-- Instagram Gallery Section -->
+	@if($destination_category > 0)
+		@if($destination_category_instagram != '')
+			<section id="instagram-section">
+				<div class="col-sm-12 text-center">
+					<h2 class="heading">GET SOCIAL</h2>
+				</div>
+				<section id="instagran" class="sections-instagram">
+					<div class="full-width">
+						<div data-is data-is-api="{{ url('runInsta')}}"
+							 data-is-source="{{ $destination_category_instagram }}"
+							 data-is-rows="2" data-is-columns="5"></div>
+					</div>
+				</section>
+			</section>
+		@endif
+	@endif
 
 @endsection
 
@@ -154,6 +171,8 @@
 {{-- For Include javascript files --}}
 @section('javascript')
     @parent
+	<!-- instagram -->
+	<script src="{{ asset('sximo/instajs/instashow/elfsight-instagram-feed.js')}}"></script>
 @endsection
 
 {{-- For custom script --}}
@@ -182,6 +201,7 @@
 		var totalPage = '{{$total_pages}}';
 		$(window).scroll(function () {
 
+		    if(window.height < 600) { return false; }
 			if (pageCounter > totalPage) {
 				return false;
 			} else {
@@ -217,22 +237,25 @@
 			$.each(data.properties, function (idx, obj) {
 				if(idx==20)
 				{
-					var dataGridHtml ='<div class="col-sm-6 col-md-6 col-lg-4">';
-					dataGridHtml +='<div class="hotel-card">';
-					dataGridHtml +='<figure>';
-					var imgscr = "{{URL::to('uploads/users/advertisement/')}}/" +data.resultads.adv_img;
-					dataGridHtml += '<img src="' + imgscr + '" />';
-					dataGridHtml +='<a href="'+data.resultads.adv_link+'" class="content-overlay">';
-					dataGridHtml +='<h5>'+data.resultads.adv_title+'</h5>';
-					dataGridHtml +='</a>';
-                    dataGridHtml +='<div class="pricelabel">Advertisement</div>';
-					dataGridHtml +='</figure>';
-					dataGridHtml +='<div class="title">';
-					dataGridHtml +='<h3><a href="'+data.resultads.adv_link+'">'+data.resultads.adv_title+'</a></h3>';
-					dataGridHtml +='</div>';
-					dataGridHtml +='</div>';
-					dataGridHtml +='</div>';
-					$('[data-option="property-grid-list"]').append(dataGridHtml);
+					if(data.resultads)
+					{
+						var dataGridHtml ='<div class="col-sm-6 col-md-6 col-lg-4">';
+						dataGridHtml +='<div class="hotel-card">';
+						dataGridHtml +='<figure>';
+						var imgscr = "{{URL::to('uploads/users/advertisement/')}}/" +data.resultads.adv_img;
+						dataGridHtml += '<img src="' + imgscr + '" />';
+						dataGridHtml +='<a href="'+data.resultads.adv_link+'" class="content-overlay">';
+						dataGridHtml +='<h5>'+data.resultads.adv_title+'</h5>';
+						dataGridHtml +='</a>';
+						dataGridHtml +='<div class="pricelabel">Advertisement</div>';
+						dataGridHtml +='</figure>';
+						dataGridHtml +='<div class="title">';
+						dataGridHtml +='<h3><a href="'+data.resultads.adv_link+'">'+data.resultads.adv_title+'</a></h3>';
+						dataGridHtml +='</div>';
+						dataGridHtml +='</div>';
+						dataGridHtml +='</div>';
+						$('[data-option="property-grid-list"]').append(dataGridHtml);
+					}
 				}
 				else
 				{
@@ -281,21 +304,24 @@
 			$.each(data.properties, function (idx, obj) {
 				if(idx==20)
 				{
-					dataGridHtml +='<div class="col-sm-6 col-md-6 col-lg-4">';
-					dataGridHtml +='<div class="hotel-card">';
-					dataGridHtml +='<figure>';
-					var imgscr = "{{URL::to('uploads/users/advertisement/')}}/" +data.resultads.adv_img;
-					dataGridHtml += '<img src="' + imgscr + '" />';
-					dataGridHtml +='<a href="'+data.resultads.adv_link+'" class="content-overlay">';
-					dataGridHtml +='<h5>'+data.resultads.adv_title+'</h5>';
-					dataGridHtml +='</a>';
-                    dataGridHtml +='<div class="pricelabel">Advertisement</div>';
-					dataGridHtml +='</figure>';
-					dataGridHtml +='<div class="title">';
-					dataGridHtml +='<h3><a href="'+data.resultads.adv_link+'">'+data.resultads.adv_title+'</a></h3>';
-					dataGridHtml +='</div>';
-					dataGridHtml +='</div>';
-					dataGridHtml +='</div>';
+					if(data.resultads)
+					{
+						dataGridHtml +='<div class="col-sm-6 col-md-6 col-lg-4">';
+						dataGridHtml +='<div class="hotel-card">';
+						dataGridHtml +='<figure>';
+						var imgscr = "{{URL::to('uploads/users/advertisement/')}}/" +data.resultads.adv_img;
+						dataGridHtml += '<img src="' + imgscr + '" />';
+						dataGridHtml +='<a href="'+data.resultads.adv_link+'" class="content-overlay">';
+						dataGridHtml +='<h5>'+data.resultads.adv_title+'</h5>';
+						dataGridHtml +='</a>';
+						dataGridHtml +='<div class="pricelabel">Advertisement</div>';
+						dataGridHtml +='</figure>';
+						dataGridHtml +='<div class="title">';
+						dataGridHtml +='<h3><a href="'+data.resultads.adv_link+'">'+data.resultads.adv_title+'</a></h3>';
+						dataGridHtml +='</div>';
+						dataGridHtml +='</div>';
+						dataGridHtml +='</div>';
+					}
 				}
 				else
 				{

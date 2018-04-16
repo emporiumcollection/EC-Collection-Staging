@@ -129,7 +129,7 @@ $(document).ready(function () {
     */
 
 
-    $('[data-action="auto-suggestion"]').autocomplete({
+   $('[data-action="auto-suggestion"]').autocomplete({
         source: function (request, response) {
             var datObj = {};
             datObj.keyword = request.term;
@@ -144,7 +144,12 @@ $(document).ready(function () {
         },
         minLength: 2,
         select: function (event, ui) {
-            console.log("Selected: " + ui.item.label + " aka " + ui.item.id);
+            //log("Selected: " + ui.item.label + " aka " + ui.item.id);
+
+            if(ui.item.type) {
+                location.href=BaseURL + '/' + ui.item.id;
+            }
+
         }
     });
 
@@ -157,6 +162,12 @@ $(document).ready(function () {
         $('[data-option="resto-option-list"]').addClass('hide');
         $('[data-option="spa-option-list"]').addClass('hide');
         $('[data-option="bar-option-list"]').addClass('hide');
+
+        $('[data-option="dest-option-list"]').empty();
+        $('[data-option="collection-option-list"]').empty();
+        $('[data-option="resto-option-list"]').empty();
+        $('[data-option="spa-option-list"]').empty();
+        $('[data-option="bar-option-list"]').empty();
 
         if ($(this).val() == '') {
             $('[data-option="gobal-search"]').slideUp(300);

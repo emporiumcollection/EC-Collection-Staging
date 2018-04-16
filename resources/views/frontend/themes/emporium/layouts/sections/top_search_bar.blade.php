@@ -22,9 +22,10 @@
 	   </div>
 	</div>
 	<div class="col-sm-2 col-md-2">
-	   <div class="form-group">
-		  <input name="adult" type="number" placeholder="ADULT CHILDREN">
-	   </div>
+	    <div class="form-group">
+		    <input name="adult" type="number" placeholder="ADULT CHILDREN">
+	    </div>
+
 	</div>
 	<div class="col-md-2">
 
