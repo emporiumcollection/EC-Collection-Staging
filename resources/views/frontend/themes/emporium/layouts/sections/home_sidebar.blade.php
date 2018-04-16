@@ -83,11 +83,13 @@
 										<img src="{{ asset('themes/emporium/images/mountain-image.jpg') }}" alt=""/>
 									@endif
 									<div class="headingoverlay">
-										@if(CNF_MULTILANG ==1 && isset($cmenu['menu_lang']['title'][Session::get('lang')]))
-										  {{ $cmenu['menu_lang']['title'][Session::get('lang')] }}
-										@else
-										  {{$cmenu['menu_name']}}
-										@endif
+										<span class="destinationTitle">
+											@if(CNF_MULTILANG ==1 && isset($cmenu['menu_lang']['title'][Session::get('lang')]))
+											  {{ $cmenu['menu_lang']['title'][Session::get('lang')] }}
+											@else
+											  {{$cmenu['menu_name']}}
+											@endif
+										</span>
 									</div>
 								</a>
 							</div>
