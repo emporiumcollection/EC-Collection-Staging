@@ -7,6 +7,85 @@
 @section('meta_description', '')
 {{-- For Page's Content Part --}}
 @section('content')
+
+<div>
+{{ print_r($eventsArray) }}
+
+{{ print_r($eventPackagesArray) }}
+
+  @if(!empty($eventsArray))
+  {{--*/ $clsact ="" /*--}}
+				  @foreach($eventsArray as $events)
+					
+						{{--*/ $clsact = ($clsact=='') ? 'active' : ''; /*--}}
+					  <div class="item {{$clsact}}">
+						<div class="carousel-caption">
+						  <h1>{{$events->title}}</h1>
+						  <p>{{$events->usp_text}}</p>
+						  <button type="button" class="button viewGalleryBtn">View Gallery</button>
+						</div>
+					  </div>
+
+
+
+
+@if (!empty($eventPackagesArray))
+<div class="HamYardHotelSection">
+  <div>
+     <div id="HamYardHotelSlider" class="carousel slide HamYardHotelSlider" data-ride="carousel">
+        <div class="carousel-inner">
+
+            {{--*/ $k=0; $tottyp = count($eventPackagesArray); /*--}}
+             @foreach($eventPackagesArray as $key=>$package)
+           <div style="background-image: url({{URL::to('uploads/event_package_images/'.$package->package_image)}});" @if($k==0) class="item active" @else class="item" @endif>
+             <div class="carousalCaption">
+               <h3>{{$package->package_title}}</h3>
+               <h2>Price: {!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($package->package_price,2) }}</h2>
+               <p>{!! nl2br($package->package_description) !!}</p>
+             </div>
+           </div>
+
+           {{--*/ $k++; /*--}}
+                                                
+        @endforeach
+           
+        </div>
+          <div class="HamYardHotelSliderOptions">
+           
+            <div class="terraceSuitindicator">
+              <div class="terraceSuitarrow">
+                <div class="terraceSuitCounter">
+                  <p> </p>
+                  <div class="num"></div>
+                </div>
+                <a class="left left1 carousel-control" href="#HamYardHotelSlider" data-slide="prev">
+                  <img src="{{ asset('themes/emporium/images/editorial-left-arrow.png') }}" alt="icon">
+                </a>
+                <a class="right carousel-control" href="#HamYardHotelSlider" data-slide="next">
+                  <img src="{{ asset('themes/emporium/images/editorial-right-arrow.png') }}" alt="icon">
+                </a>
+              </div>
+              <ol class="carousel-indicators">
+            {{--*/ $klist=0; $tottyp = count($eventPackagesArray); /*--}}
+             @foreach($eventPackagesArray as $key=>$package)
+              <li data-target="#HamYardHotelSlider" data-slide-to="{{$klist}}" @if($klist==0) class="active" @endif><img src="{{URL::to('uploads/event_package_images/'.$package->package_image)}}" alt="Image"></li>             
+
+              {{--*/ $klist++; /*--}}
+                                                
+            @endforeach
+            </ol>
+            <div class="showMoreSec"><button type="button" class="btn buttonDefault">SHOW MORE</button></div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+@endif
+					
+@endforeach
+@endif
+
+</div>
 	@if(!empty($resturantArr) || !empty($barsArr) || !empty($spasArr))
 		{{--*/ $clsact = ''; /*--}}
 		<!-- Restaurant slider starts here -->
@@ -43,6 +122,10 @@
 				  @endforeach
 			  @endif
 			  
+			  
+
+
+
 			  @if(!empty($spasArr))
 				  @foreach($spasArr as $spas)
 					@if(array_key_exists('dataslider',$spas))
@@ -56,7 +139,12 @@
 					  </div>
 					@endif
 				  @endforeach
-			  @endif
+			  @endif 
+
+
+
+			
+
 			  
 			</div>
 

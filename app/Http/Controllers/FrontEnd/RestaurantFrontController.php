@@ -25,6 +25,9 @@ class RestaurantFrontController extends Controller {
 		$resturantArr = array();
 		$spasArr = array();
 		$barsArr = array();
+		$eventsArray=array();
+		$eventPackagesArray=array();
+
 		$props = \DB::table('tb_properties')->select('restaurant_ids','spa_ids','bar_ids','id')->where('property_slug', $request->slug)->first();
         if (!empty($props)) {
             $propertiesArr['data'] = $props;
@@ -161,6 +164,14 @@ class RestaurantFrontController extends Controller {
 					}
 				}
 			}
+
+			$eventsArray = \DB::table('tb_events')->where('property_id', $props->id)->get();
+
+			if(count($eventsArray)>0){
+
+				$eventPackagesArray= \DB::table('tb_event_packages')->where('event_id', $eventsArray[0]->id)->get();
+
+			}
 			
 		}
 		
@@ -168,6 +179,9 @@ class RestaurantFrontController extends Controller {
 		$this->data['resturantArr'] = $resturantArr;
 		$this->data['barsArr'] = $barsArr;
 		$this->data['spasArr'] = $spasArr;
+		$this->data['eventsArray'] = $eventsArray;
+		$this->data['eventPackagesArray'] = $eventPackagesArray;
+		
 		return view('frontend.themes.emporium.properties.resto', $this->data);
 	}
 	
