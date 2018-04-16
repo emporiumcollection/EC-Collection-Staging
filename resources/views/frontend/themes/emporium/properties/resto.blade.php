@@ -8,80 +8,7 @@
 {{-- For Page's Content Part --}}
 @section('content')
 
-<div>
-  @if(!empty($eventsArray))
-  {{--*/ $clsact ="" /*--}}
-				  @foreach($eventsArray as $events)
-					
-						{{--*/ $clsact = ($clsact=='') ? 'active' : ''; /*--}}
-					  <div class="item {{$clsact}}">
-						<div class="carousel-caption">
-						  <h1>{{$events->title}}</h1>
-						  <p>{{$events->usp_text}}</p>
-						  <button type="button" class="button viewGalleryBtn">View Gallery</button>
-						</div>
-					  </div>
 
-
-
-
-@if (!empty($eventPackagesArray))
-<div class="HamYardHotelSection">
-  <div>
-     <div id="HamYardHotelSlider" class="carousel slide HamYardHotelSlider" data-ride="carousel">
-        <div class="carousel-inner">
-
-            {{--*/ $k=0; $tottyp = count($eventPackagesArray); /*--}}
-             @foreach($eventPackagesArray as $key=>$package)
-           <div style="background-image: url({{URL::to('uploads/event_package_images/'.$package->package_image)}});" @if($k==0) class="item active" @else class="item" @endif>
-             <div class="carousalCaption">
-               <h3>{{$package->package_title}}</h3>
-               <h2>Price: {!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($package->package_price,2) }}</h2>
-               <p>{!! nl2br($package->package_description) !!}</p>
-             </div>
-           </div>
-
-           {{--*/ $k++; /*--}}
-                                                
-        @endforeach
-           
-        </div>
-          <div class="HamYardHotelSliderOptions">
-           
-            <div class="terraceSuitindicator">
-              <div class="terraceSuitarrow">
-                <div class="terraceSuitCounter">
-                  <p> </p>
-                  <div class="num"></div>
-                </div>
-                <a class="left left1 carousel-control" href="#HamYardHotelSlider" data-slide="prev">
-                  <img src="{{ asset('themes/emporium/images/editorial-left-arrow.png') }}" alt="icon">
-                </a>
-                <a class="right carousel-control" href="#HamYardHotelSlider" data-slide="next">
-                  <img src="{{ asset('themes/emporium/images/editorial-right-arrow.png') }}" alt="icon">
-                </a>
-              </div>
-              <ol class="carousel-indicators">
-            {{--*/ $klist=0; $tottyp = count($eventPackagesArray); /*--}}
-             @foreach($eventPackagesArray as $key=>$package)
-              <li data-target="#HamYardHotelSlider" data-slide-to="{{$klist}}" @if($klist==0) class="active" @endif><img src="{{URL::to('uploads/event_package_images/'.$package->package_image)}}" alt="Image"></li>             
-
-              {{--*/ $klist++; /*--}}
-                                                
-            @endforeach
-            </ol>
-            <div class="showMoreSec"><button type="button" class="btn buttonDefault">SHOW MORE</button></div>
-          </div>
-        </div>
-      </div>
-  </div>
-</div>
-@endif
-					
-@endforeach
-@endif
-
-</div>
 	@if(!empty($resturantArr) || !empty($barsArr) || !empty($spasArr))
 		{{--*/ $clsact = ''; /*--}}
 		<!-- Restaurant slider starts here -->
@@ -663,11 +590,17 @@
 
 	<!-- Greenry Section here -->
 	<div id="seasonal-events" class="greenrysection">
-		<div class="content-circle contentCirsclePopupBtn">
-			<h2>Request</h2>
-			<h3>A Table</h3>
-			<p>Lorem ipsum dolor sit amet, mei omnium iudicabit cu. Eruditi urbanitas persequeris in has, mel te prodesset conceptam. Id quando deterruisset est. Quaestio scripserit nec eu. An argumentum temporibus usu, ne mei aeterno imperdiet, case aeque id vis.</p>
-		</div>
+
+		  @if(!empty($eventsArray))
+ 			 {{--*/ $clsact ="" /*--}}
+			@foreach($eventsArray as $events)
+				<div class="content-circle contentCirsclePopupBtn">
+					<h2>{{$events->title}}</h2>
+					<h3>A Table</h3>
+					<p>{{$events->desciription}}</p>
+				</div>
+		@endforeach
+		@endif
 		<div class="arrowsIcons">
 			<a class="scrollpage" href="#seasonal-events"><img src="images/arrow-up-icon.png" alt="icon"></a>
 			<a class="scrollpage" href="#instagram-gallery"><img src="images/arrow-down-icon.png" alt="icon"></a>
@@ -827,95 +760,60 @@
 	</div>
 	<!-- Instagram Gallery Section -->
 	<!-- terrace suit slider sec -->
-	<div class="HamYardHotelSection">
-	  <div class="container">
-		 <div id="HamYardHotelSlider" class="carousel slide HamYardHotelSlider" data-ride="carousel">
-			<div class="carousel-inner">
-			   <div style="background-image: url(images/DeluxRooms-Ham-Yard-hotel1-design-locations1.jpg);" class="item active">
-				 <div class="carousalCaption">
-				   <h3>Experience Ham Yard Hotel</h3>
-				   <h2>TERRACE SUITE</h2>
-				   <p>A spectacular two bedroom fifth floor suite at 145sqm or 1560sqf. The vast living/dining room has high ceilings with full floor-to-ceiling windows and a terrace with views of the courtyard and London skyline. The spacious living room has a powder room, writing desk and a sleek designed Boffi kitchen...</p>
-				 </div>
-			   </div>
-			   <div style="background-image: url(images/DeluxRooms-Ham-Yard-hotel5-design-locations1.jpg);" class="item">
-				 <div class="carousalCaption">
-				   <h3>Experience Ham Yard Hotel</h3>
-				   <h2>DELUXE TWO BEDROOM SUITE</h2>
-				   <p>Individually designed by Kit Kemp, the Deluxe Junior Suites approx. (52sqm or 559sqf) have a king or twin bed. The junior suite is equipped with a writing desk, sitting area, flat screen television, wireless internet, two line telephones with voice mail, personal electronic safe and a fully stocked ...</p>
-				 </div>
-			   </div>
-			   
-			   <div style="background-image: url(images/DeluxRooms-Ham-Yard-hotel6-design-locations1.jpg);" class="item">
-				 <div class="carousalCaption">
-				   <h3>Experience Ham Yard Hotel</h3>
-				   <h2>DELUXE TWO BEDROOM SUITE</h2>
-				   <p>Individually designed by Kit Kemp, the Deluxe Junior Suites approx. (52sqm or 559sqf) have a king or twin bed. The junior suite is equipped with a writing desk, sitting area, flat screen television, wireless internet, two line telephones with voice mail, personal electronic safe and a fully stocked ...</p>
-				 </div>
-			   </div>
-			   
-			   <div style="background-image: url(images/DeluxRooms-Ham-Yard-hotel2-design-locations1.jpg);" class="item">
-				 <div class="carousalCaption">
-				   <h3>Experience Ham Yard Hotel</h3>
-				   <h2>DELUXE TWO BEDROOM SUITE</h2>
-				   <p>Individually designed by Kit Kemp, the Deluxe Junior Suites approx. (52sqm or 559sqf) have a king or twin bed. The junior suite is equipped with a writing desk, sitting area, flat screen television, wireless internet, two line telephones with voice mail, personal electronic safe and a fully stocked ...</p>
-				 </div>
-			   </div>
-			   
-			   <div style="background-image: url(images/DeluxRooms-Ham-Yard-hotel7-design-locations1.jpg);" class="item">
-				 <div class="carousalCaption">
-				   <h3>Experience Ham Yard Hotel</h3>
-				   <h2>DELUXE TWO BEDROOM SUITE</h2>
-				   <p>Individually designed by Kit Kemp, the Deluxe Junior Suites approx. (52sqm or 559sqf) have a king or twin bed. The junior suite is equipped with a writing desk, sitting area, flat screen television, wireless internet, two line telephones with voice mail, personal electronic safe and a fully stocked ...</p>
-				 </div>
-			   </div>
-			   
-			   <div style="background-image: url(images/DeluxRooms-Ham-Yard-hotel4-design-locations1.jpg);" class="item">
-				 <div class="carousalCaption">
-				   <h3>Experience Ham Yard Hotel</h3>
-				   <h2>DELUXE TWO BEDROOM SUITE</h2>
-				   <p>Individually designed by Kit Kemp, the Deluxe Junior Suites approx. (52sqm or 559sqf) have a king or twin bed. The junior suite is equipped with a writing desk, sitting area, flat screen television, wireless internet, two line telephones with voice mail, personal electronic safe and a fully stocked ...</p>
-				 </div>
-			   </div>
 
-			   <div style="background-image: url(images/DeluxRooms-Ham-Yard-hotel3-design-locations1.jpg);" class="item">
-				 <div class="carousalCaption">
-				   <h3>Experience Ham Yard Hotel</h3>
-				   <h2>DELUXE TWO BEDROOM SUITE</h2>
-				   <p>Individually designed by Kit Kemp, the Deluxe Junior Suites approx. (52sqm or 559sqf) have a king or twin bed. The junior suite is equipped with a writing desk, sitting area, flat screen television, wireless internet, two line telephones with voice mail, personal electronic safe and a fully stocked ...</p>
-				 </div>
-			   </div>
-			</div>
-			  <div class="HamYardHotelSliderOptions">
-			   
-				<div class="terraceSuitindicator">
-				  <div class="terraceSuitarrow">
-					<div class="terraceSuitCounter">
-					  <p> </p>
-					  <div class="num"></div>
-					</div>
-					<a class="left left1 carousel-control" href="#HamYardHotelSlider" data-slide="prev">
-					  <img src="images/editorial-left-arrow.png" alt="icon">
-					</a>
-					<a class="right carousel-control" href="#HamYardHotelSlider" data-slide="next">
-					  <img src="images/editorial-right-arrow.png" alt="icon">
-					</a>
-				  </div>
-				  <ol class="carousel-indicators">
-				  <li data-target="#HamYardHotelSlider" data-slide-to="0" class="active"><img src="images/DeluxRooms-Ham-Yard-hotel1-design-locations1.jpg" alt="Image"></li>
-				  <li data-target="#HamYardHotelSlider" data-slide-to="1"><img src="images/DeluxRooms-Ham-Yard-hotel5-design-locations1.jpg" alt="Image"></li>
-				  <li data-target="#HamYardHotelSlider" data-slide-to="2"><img src="images/DeluxRooms-Ham-Yard-hotel6-design-locations1.jpg" alt="Image"></li>
-				  <li data-target="#HamYardHotelSlider" data-slide-to="3"><img src="images/DeluxRooms-Ham-Yard-hotel2-design-locations1.jpg" alt="Image"></li>
-				  <li data-target="#HamYardHotelSlider" data-slide-to="4"><img src="images/DeluxRooms-Ham-Yard-hotel7-design-locations1.jpg" alt="Image"></li>
-				  <li data-target="#HamYardHotelSlider" data-slide-to="5"><img src="images/DeluxRooms-Ham-Yard-hotel4-design-locations1.jpg" alt="Image"></li>
-				  <li data-target="#HamYardHotelSlider" data-slide-to="6"><img src="images/DeluxRooms-Ham-Yard-hotel3-design-locations1.jpg" alt="Image"></li>
-				</ol>
-				<div class="showMoreSec"><button type="button" class="btn buttonDefault">SHOW MORE</button></div>
-			  </div>
-			</div>
-		  </div>
-	  </div>
-	</div>
+	@if (!empty($eventPackagesArray))
+<div class="HamYardHotelSection">
+  <div>
+     <div id="HamYardHotelSlider" class="carousel slide HamYardHotelSlider" data-ride="carousel">
+        <div class="carousel-inner">
+
+            {{--*/ $k=0; $tottyp = count($eventPackagesArray); /*--}}
+             @foreach($eventPackagesArray as $key=>$package)
+           <div style="background-image: url({{URL::to('uploads/event_package_images/'.$package->package_image)}});" @if($k==0) class="item active" @else class="item" @endif>
+             <div class="carousalCaption">
+               <h3>{{$package->package_title}}</h3>
+               <h2>Price: {!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($package->package_price,2) }}</h2>
+               <p>{!! nl2br($package->package_description) !!}</p>
+             </div>
+           </div>
+
+           {{--*/ $k++; /*--}}
+                                                
+        @endforeach
+           
+        </div>
+          <div class="HamYardHotelSliderOptions">
+           
+            <div class="terraceSuitindicator">
+              <div class="terraceSuitarrow">
+                <div class="terraceSuitCounter">
+                  <p> </p>
+                  <div class="num"></div>
+                </div>
+                <a class="left left1 carousel-control" href="#HamYardHotelSlider" data-slide="prev">
+                  <img src="{{ asset('themes/emporium/images/editorial-left-arrow.png') }}" alt="icon">
+                </a>
+                <a class="right carousel-control" href="#HamYardHotelSlider" data-slide="next">
+                  <img src="{{ asset('themes/emporium/images/editorial-right-arrow.png') }}" alt="icon">
+                </a>
+              </div>
+              <ol class="carousel-indicators">
+            {{--*/ $klist=0; $tottyp = count($eventPackagesArray); /*--}}
+             @foreach($eventPackagesArray as $key=>$package)
+              <li data-target="#HamYardHotelSlider" data-slide-to="{{$klist}}" @if($klist==0) class="active" @endif><img src="{{URL::to('uploads/event_package_images/'.$package->package_image)}}" alt="Image"></li>             
+
+              {{--*/ $klist++; /*--}}
+                                                
+            @endforeach
+            </ol>
+            <div class="showMoreSec"><button type="button" class="btn buttonDefault">SHOW MORE</button></div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+@endif
+
 	<!-- terrace suit slider sec -->
 	<div id="instagram-gallery" class="instagram-gallery owl-carousel">
 		<div class="item">
