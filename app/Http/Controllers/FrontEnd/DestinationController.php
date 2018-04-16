@@ -157,35 +157,35 @@ class DestinationController extends Controller {
 		$res = $respns = array(); 
 		if($keyword!='')
 		{
-            $fetchdestinations = DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_alias')->where('category_published', 1)->where('category_name', 'like', $keyword.'%')->where('id', '!=', 8)->where('parent_category_id', '!=', 8)->get();
+            $fetchdestinations = DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_alias')->where('category_published', 1)->where('category_name', 'like', '%'.$keyword.'%')->where('id', '!=', 8)->where('parent_category_id', '!=', 8)->get();
 
             if(!empty($fetchdestinations))
             {
                 $res['dest'] = $fetchdestinations;
             }
 			
-			$fetchcollection = DB::table('tb_properties')->select('id', 'property_name', 'property_slug')->where('property_status', 1)->where('property_name', 'like', $keyword.'%')->get();
+			$fetchcollection = DB::table('tb_properties')->select('id', 'property_name', 'property_slug')->where('property_status', 1)->where('property_name', 'like', '%'.$keyword.'%')->get();
 
             if(!empty($fetchcollection))
             {
                 $res['collection'] = $fetchcollection;
             }
 			
-			$fetchrestro = DB::table('tb_restaurants')->select('id', 'title', 'alias')->where('title', 'like', $keyword.'%')->get();
+			$fetchrestro = DB::table('tb_restaurants')->select('id', 'title', 'alias')->where('title', 'like', '%'.$keyword.'%')->get();
 
             if(!empty($fetchrestro))
             {
                 $res['restro'] = $fetchrestro;
             }
 			
-			$fetchbars = DB::table('tb_bars')->select('id', 'title', 'alias')->where('title', 'like', $keyword.'%')->get();
+			$fetchbars = DB::table('tb_bars')->select('id', 'title', 'alias')->where('title', 'like', '%'.$keyword.'%')->get();
 
             if(!empty($fetchbars))
             {
                 $res['bar'] = $fetchbars;
             }
 			
-			$fetchspas = DB::table('tb_spas')->select('id', 'title', 'alias')->where('title', 'like', $keyword.'%')->get();
+			$fetchspas = DB::table('tb_spas')->select('id', 'title', 'alias')->where('title', 'like', '%'.$keyword.'%')->get();
 
             if(!empty($fetchspas))
             {
@@ -219,7 +219,7 @@ class DestinationController extends Controller {
 		$d=0;
 		if($keyword!='')
 		{
-            $fetchdestinations = DB::table('tb_categories')->select('id', 'category_name', 'category_alias')->where('category_published', 1)->where('category_name', 'like', $keyword.'%')->get();
+            $fetchdestinations = DB::table('tb_categories')->select('id', 'category_name', 'category_alias')->where('category_published', 1)->where('category_name', 'like', '%'.$keyword.'%')->get();
 
             if(!empty($fetchdestinations))
             {
@@ -232,7 +232,7 @@ class DestinationController extends Controller {
 				}
             }
 			
-			$fetchcollection = DB::table('tb_properties')->select('id', 'property_name', 'property_slug')->where('property_status', 1)->where('property_name', 'like', $keyword.'%')->get();
+			$fetchcollection = DB::table('tb_properties')->select('id', 'property_name', 'property_slug')->where('property_status', 1)->where('property_name', 'like', '%'.$keyword.'%')->get();
 
             if(!empty($fetchcollection))
             {
