@@ -62,6 +62,9 @@ class DestinationController extends Controller {
             if($category_id>0){
                 $currentCate = DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_alias')->where('category_published', 1)->where('id', $category_id)->first();
                 $res['current_category'] = $currentCate;
+                $currentParentCate = DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_alias')->where('category_published', 1)->where('id', $currentCate->parent_category_id)->first();
+                $res['current_category'] = $currentCate;
+                $res['currentParentCate'] = $currentParentCate;
 				$res['path'] = implode('/',array_reverse($this->fetchcategoryaliaspath($category_id)));
             }
 		}
