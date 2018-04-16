@@ -834,7 +834,7 @@
 </div>
 @endif
 
-  {{--*/ $sliderCounter ++ /*--}}        
+  {{--*/ $sliderCounter++ /*--}}        
 		@endforeach
 		@endif
 </div>		
