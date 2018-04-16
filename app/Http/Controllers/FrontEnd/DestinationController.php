@@ -154,7 +154,7 @@ class DestinationController extends Controller {
 		$res = $respns = array(); 
 		if($keyword!='')
 		{
-            $fetchdestinations = DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_alias')->where('category_published', 1)->where('category_name', 'like', $keyword.'%')->get();
+            $fetchdestinations = DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_alias')->where('category_published', 1)->where('category_name', 'like', $keyword.'%')->where('id', '!=', 8)->where('parent_category_id', '!=', 8)->get();
 
             if(!empty($fetchdestinations))
             {
