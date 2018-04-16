@@ -236,7 +236,7 @@
 			$.each(data.properties, function (idx, obj) {
 				if(idx==20)
 				{
-					if(data.resultads.length > 0)
+					if(data.resultads)
 					{
 						var dataGridHtml ='<div class="col-sm-6 col-md-6 col-lg-4">';
 						dataGridHtml +='<div class="hotel-card">';
@@ -303,7 +303,7 @@
 			$.each(data.properties, function (idx, obj) {
 				if(idx==20)
 				{
-					if(data.resultads.length > 0)
+					if(data.resultads)
 					{
 						dataGridHtml +='<div class="col-sm-6 col-md-6 col-lg-4">';
 						dataGridHtml +='<div class="hotel-card">';
