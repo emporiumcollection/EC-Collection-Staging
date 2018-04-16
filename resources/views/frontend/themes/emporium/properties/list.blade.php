@@ -171,6 +171,8 @@
 {{-- For Include javascript files --}}
 @section('javascript')
     @parent
+	<!-- instagram -->
+	<script src="{{ asset('sximo/instajs/instashow/elfsight-instagram-feed.js')}}"></script>
 @endsection
 
 {{-- For custom script --}}
@@ -235,22 +237,25 @@
 			$.each(data.properties, function (idx, obj) {
 				if(idx==20)
 				{
-					var dataGridHtml ='<div class="col-sm-6 col-md-6 col-lg-4">';
-					dataGridHtml +='<div class="hotel-card">';
-					dataGridHtml +='<figure>';
-					var imgscr = "{{URL::to('uploads/users/advertisement/')}}/" +data.resultads.adv_img;
-					dataGridHtml += '<img src="' + imgscr + '" />';
-					dataGridHtml +='<a href="'+data.resultads.adv_link+'" class="content-overlay">';
-					dataGridHtml +='<h5>'+data.resultads.adv_title+'</h5>';
-					dataGridHtml +='</a>';
-                    dataGridHtml +='<div class="pricelabel">Advertisement</div>';
-					dataGridHtml +='</figure>';
-					dataGridHtml +='<div class="title">';
-					dataGridHtml +='<h3><a href="'+data.resultads.adv_link+'">'+data.resultads.adv_title+'</a></h3>';
-					dataGridHtml +='</div>';
-					dataGridHtml +='</div>';
-					dataGridHtml +='</div>';
-					$('[data-option="property-grid-list"]').append(dataGridHtml);
+					if(data.resultads)
+					{
+						var dataGridHtml ='<div class="col-sm-6 col-md-6 col-lg-4">';
+						dataGridHtml +='<div class="hotel-card">';
+						dataGridHtml +='<figure>';
+						var imgscr = "{{URL::to('uploads/users/advertisement/')}}/" +data.resultads.adv_img;
+						dataGridHtml += '<img src="' + imgscr + '" />';
+						dataGridHtml +='<a href="'+data.resultads.adv_link+'" class="content-overlay">';
+						dataGridHtml +='<h5>'+data.resultads.adv_title+'</h5>';
+						dataGridHtml +='</a>';
+						dataGridHtml +='<div class="pricelabel">Advertisement</div>';
+						dataGridHtml +='</figure>';
+						dataGridHtml +='<div class="title">';
+						dataGridHtml +='<h3><a href="'+data.resultads.adv_link+'">'+data.resultads.adv_title+'</a></h3>';
+						dataGridHtml +='</div>';
+						dataGridHtml +='</div>';
+						dataGridHtml +='</div>';
+						$('[data-option="property-grid-list"]').append(dataGridHtml);
+					}
 				}
 				else
 				{
@@ -299,21 +304,24 @@
 			$.each(data.properties, function (idx, obj) {
 				if(idx==20)
 				{
-					dataGridHtml +='<div class="col-sm-6 col-md-6 col-lg-4">';
-					dataGridHtml +='<div class="hotel-card">';
-					dataGridHtml +='<figure>';
-					var imgscr = "{{URL::to('uploads/users/advertisement/')}}/" +data.resultads.adv_img;
-					dataGridHtml += '<img src="' + imgscr + '" />';
-					dataGridHtml +='<a href="'+data.resultads.adv_link+'" class="content-overlay">';
-					dataGridHtml +='<h5>'+data.resultads.adv_title+'</h5>';
-					dataGridHtml +='</a>';
-                    dataGridHtml +='<div class="pricelabel">Advertisement</div>';
-					dataGridHtml +='</figure>';
-					dataGridHtml +='<div class="title">';
-					dataGridHtml +='<h3><a href="'+data.resultads.adv_link+'">'+data.resultads.adv_title+'</a></h3>';
-					dataGridHtml +='</div>';
-					dataGridHtml +='</div>';
-					dataGridHtml +='</div>';
+					if(data.resultads)
+					{
+						dataGridHtml +='<div class="col-sm-6 col-md-6 col-lg-4">';
+						dataGridHtml +='<div class="hotel-card">';
+						dataGridHtml +='<figure>';
+						var imgscr = "{{URL::to('uploads/users/advertisement/')}}/" +data.resultads.adv_img;
+						dataGridHtml += '<img src="' + imgscr + '" />';
+						dataGridHtml +='<a href="'+data.resultads.adv_link+'" class="content-overlay">';
+						dataGridHtml +='<h5>'+data.resultads.adv_title+'</h5>';
+						dataGridHtml +='</a>';
+						dataGridHtml +='<div class="pricelabel">Advertisement</div>';
+						dataGridHtml +='</figure>';
+						dataGridHtml +='<div class="title">';
+						dataGridHtml +='<h3><a href="'+data.resultads.adv_link+'">'+data.resultads.adv_title+'</a></h3>';
+						dataGridHtml +='</div>';
+						dataGridHtml +='</div>';
+						dataGridHtml +='</div>';
+					}
 				}
 				else
 				{
