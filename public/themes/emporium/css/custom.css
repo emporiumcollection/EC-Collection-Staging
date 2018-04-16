@@ -109,3 +109,25 @@ input.error {
     top: 0;
     background-color: rgba(37, 37, 37, 0.2);
 }
+
+body .ui-widget.ui-widget-content {
+    border: 0px solid #c5c5c5;
+    background-color: #252525;
+    z-index: 999;
+}
+body .ui-widget.ui-widget-content li {
+    border-bottom: 1px solid #545454;
+    color: #fff;
+    padding: 6px 48px;
+}
+body .ui-widget.ui-widget-content li:hover {
+    cursor: pointer;
+    color: #fff;
+    background-color: #c7ab84;
+}
+body .ui-widget.ui-widget-content .ui-state-active {
+    border: 1px solid transparent;
+    background: transparent;
+    font-weight: normal;
+    color: #fff;
+}
