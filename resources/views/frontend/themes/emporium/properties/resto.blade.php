@@ -587,9 +587,6 @@
 
 	<!-- Greenry Section here -->
 	<div id="seasonal-events-top" class="greenrysection">
-
-
-
 	<div class="content-circle contentCirsclePopupBtn">
         <h2>Request</h2>
         <h3>A Table</h3>
@@ -756,36 +753,31 @@
 	<!-- terrace suit slider sec -->
 <div id="seasonal-events" style="background-color:#f7f7f7;" class="col-md-12">
  @if(!empty($eventsArray))
- 			 {{--*/ $clsact ="" /*--}}
- 			 {{--*/ $sliderCounter =1 /*--}}
+ {{--*/ $clsact ="" /*--}}
+ {{--*/ $sliderCounter =1 /*--}}
 
- 			  {{--*/ $k=0; $tottyp = count($eventsArray); /*--}}
-@foreach($eventsArray as $events)
-		
+ {{--*/ $k=0; $tottyp = count($eventsArray); /*--}}
+@foreach($eventsArray as $events)			
 
-			
+{{--*/ $eventPackagesArray= $eventPackagesArrayAll[$events->id] /*--}}
 
-{{--*/ $eventPackagesArray= \DB::table('tb_event_packages')->where('event_id', $events->id)->get() /*--}}
+@if (!empty($eventsArray))
 
-@if (!empty($eventPackagesArray))
-          
- @if ($sliderCounter==1)
 <div class="HamYardHotelSection">
   <div>
      <div id="HamYardHotelSlider" class="carousel slide HamYardHotelSlider" data-ride="carousel">
         <div class="carousel-inner">
-
-   @endif     	
-
+   	
 
 
-             @foreach($eventPackagesArray as $key=>$package)
+
+           @foreach($eventsArray as $key=>$package)
            <div style="background-image: url({{URL::to('uploads/event_package_images/'.$package->package_image)}});" @if($k==0) class="item active" @else class="item" @endif>
              <div class="carousalCaption">
 
-             	<h2>Event : {{$events->title}}</h2>
+				<h2>Event : {{$events->title}}</h2>
 				<p>Event: Details :{{$events->desciription}}</p>
-               <h3>{{$package->package_title}}</h3>
+				<h3>{{$package->package_title}}</h3>
                <h2>Price: {!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($package->package_price,2) }}</h2>
                <p>{!! nl2br($package->package_description) !!}</p>
              </div>
@@ -794,12 +786,11 @@
            {{--*/ $k++; /*--}}
                                       
         @endforeach
-        @if ($sliderCounter==1)    
+       
        		 </div>
-        @endif
 
 
- @if ($sliderCounter==1)
+
           <div class="HamYardHotelSliderOptions">
            
             <div class="terraceSuitindicator">
@@ -824,11 +815,13 @@
                                                 
             @endforeach
             </ol>
-            <div class="showMoreSec"><button type="button" class="btn buttonDefault">SHOW MORE</button></div>
+
+             <div class="showMoreSec"><button type="button" class="btn buttonDefault" >SHOW MORE</button></div>
+      
           </div>
         </div>
 
-        @endif     
+       
       </div>
   </div>
 </div>
@@ -1021,6 +1014,51 @@
 	<div id="get-directions">
 		<div id="map"></div>
 	</div>
+
+
+
+
+
+<div class="showMorePopup fullWidthPopup">
+  <a href="javascript:void(0);" class="loginPopupCloseButton">×</a>
+    <div class="container-fluid">
+      <div class="row">
+          <div class="col-sm-4 col-md-6">
+              
+          </div>
+          <div class="col-md-6 col-sm-8 col-xs-12 noPadding">
+            <div class="showMoreContent">
+              <h1>TERRACE SUITE</h1>
+              <ul>
+                <li>• 145sqm (1560sqft) </li>
+                <li>• Two King Beds </li>
+                <li>• Roof Top View </li>
+                <li>• Top Floor with terrace </li>
+                <li>• Open plan lounge, dining area and kitchen </li>
+                <li>• Individual Design </li>
+                <li>• Complimentary Wifi </li>
+                <li>• Air Conditioning </li>
+                <li>• LCD TV and DVD </li>
+                <li>• Writing desk </li>
+                <li>• Shower and Bathtub </li>
+                <li>• Rik Rak by Kit Kemp Bathroom Amenities </li>
+                <li>• Bluetooth Bose Units </li>
+                <li>• Sleeps 5 with extra bed</li>
+              </ul>
+              <p>A spectacular two bedroom fifth floor suite at 145sqm or 1560sqf. The vast living/dining room has high ceilings with full floor-to-ceiling windows and a terrace with views of the courtyard and London skyline. The spacious living room has a powder room, writing desk and a sleek designed Boffi kitchen. There are two spacious bedrooms each with a king beds and the en-suite bathrooms have a walk-in shower, large central bath and flat screen TV. Each of the bedrooms have a king bed with the en-suite bathroom that is beautifully designed with 2 basins, a bath tub and a separate shower with exclusive Rik Rak bath products designed by Kit Kemp. One rollaway allowed to sleep 5.</p>
+              <div class="shoMoreButtonSection">
+                <h2>€4141</h2>
+                <a href="javascript:void(0);" class="button">BOOK Now</a>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+</div>
+
+
+
+<div class="whiteoverlay"></div>
 @endsection
 
 
