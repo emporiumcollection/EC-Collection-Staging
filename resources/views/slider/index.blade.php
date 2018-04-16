@@ -147,7 +147,7 @@
 {!! Form::open(array('url'=>'change_order_num_sliders', 'class'=>'columns' ,'id' =>'change_order_num_sliders', 'method'=>'post' )) !!}
 	<input type="hidden" name="sliderID" id="sliderID" value="">
 	<input type="hidden" name="order_type" id="order_type" value="">
-	<input type="hidden" name="curnurl" value="{{ Request::url() }}">
+	<input type="hidden" name="curnurl" value="{{ Request::url().'?selcat='.$curntcat }}">
 </form>	
 <script>
 $(document).ready(function(){

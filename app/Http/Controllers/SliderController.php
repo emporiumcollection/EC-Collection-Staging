@@ -12,7 +12,7 @@ class SliderController extends Controller {
 	protected $layout = "layouts.main";
 	protected $data = array();	
 	public $module = 'slider';
-	static $per_page	= '10';
+	static $per_page	= '20';
 
 	public function __construct()
 	{
