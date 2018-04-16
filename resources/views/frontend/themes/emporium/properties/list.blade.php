@@ -57,6 +57,7 @@
 											<a href="{{ (strpos($resultads['resultads']->adv_link, 'http://') !== false) ? $resultads['resultads']->adv_link : 'http://'.$resultads['resultads']->adv_link }}" class="content-overlay">
 												<h5>{{ $resultads['resultads']->adv_title}}</h5>
 											</a>
+											<div class="pricelabel">Advertisement</div>
 										</figure>
 										<div class="title">
 											<h3><a href="{{ (strpos($resultads['resultads']->adv_link, 'http://') !== false) ? $resultads['resultads']->adv_link : 'http://'.$resultads['resultads']->adv_link }}">{{ $resultads['resultads']->adv_title}}</a></h3>
@@ -88,11 +89,29 @@
 								</div>
 							</div>
 						@endif
-						@if($rw%3==0)
 
-						@endif
 						{{--*/ $rw++ /*--}}
-					@endforeach	
+					@endforeach
+
+					@if($total_record<20)
+						@if(!empty($resultads['resultads']))
+							<div class="col-sm-6 col-md-6 col-lg-4">
+								<div class="hotel-card">
+									<figure>
+										<img src="{{URL::to('uploads/users/advertisement/'.$resultads['resultads']->adv_img)}}" />
+										<a href="{{ (strpos($resultads['resultads']->adv_link, 'http://') !== false) ? $resultads['resultads']->adv_link : 'http://'.$resultads['resultads']->adv_link }}" class="content-overlay">
+											<h5>{{ $resultads['resultads']->adv_title}}</h5>
+										</a>
+										<div class="pricelabel">Advertisement</div>
+									</figure>
+									<div class="title">
+										<h3><a href="{{ (strpos($resultads['resultads']->adv_link, 'http://') !== false) ? $resultads['resultads']->adv_link : 'http://'.$resultads['resultads']->adv_link }}">{{ $resultads['resultads']->adv_title}}</a></h3>
+									</div>
+								</div>
+							</div>
+						@endif
+					@endif
+
 				</div>
 			@endif
         </div>
