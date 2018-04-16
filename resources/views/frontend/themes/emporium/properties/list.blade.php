@@ -200,8 +200,7 @@
 		var it_scroll = false;
 		var totalPage = '{{$total_pages}}';
 		$(window).scroll(function () {
-
-		    if(window.height < 600) { return false; }
+		    if($(window).height() < 600) { return false; }
 			if (pageCounter > totalPage) {
 				return false;
 			} else {
