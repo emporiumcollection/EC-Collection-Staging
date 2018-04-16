@@ -16,7 +16,6 @@
 
             {{-- For Gobal Search List --}}
             @include('frontend.themes.emporium.layouts.sections.global-search-list')
-
             {{-- End  Gobal Search List --}}
 
             <ul class="mobilemenulist">
