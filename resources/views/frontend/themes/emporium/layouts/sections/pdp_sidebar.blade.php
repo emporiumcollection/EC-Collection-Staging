@@ -9,31 +9,16 @@
     	<div class="mobilemainnav openmobilemenu">
 	    	<div class="mobilenavheader"><a href="{{URL::to('')}}"><img src="{{ asset('themes/emporium/images/logo.png')}}" alt="Emporium Voyage" class="img-responsive"/></a></div>
             <ul class="mobilemenulist">
-            	<li>
-                	<div class="mobile-leftsearch">
-                    	<input type="text" class="form-control" id="search"/>
-                        <button type="button"><i class="fa fa-search"></i></button>
-                    </div>
-                    <div id="filtersearchpopup" style="display:none;">
-                    	<ul>
-                        	<li>
-                            	<a class="searchresultdata" href="javascript:void(0)"><i class="iconsheet icon-destinations"></i> Destinations <span>(3)</span></a>
-                            </li>
-                            <li>
-                            	<a class="searchresultdata" href="javascript:void(0)"><i class="iconsheet icon-collections"></i> Collections <span>(11)</span></a>
-                            </li>
-                            <li>
-                            	<a class="searchresultdata" href="javascript:void(0)"><i class="iconsheet icon-restaurant"></i> Restaurant <span>(5)</span></a>
-                            </li>
-                            <li>
-                            	<a class="searchresultdata" href="javascript:void(0)"><i class="iconsheet icon-bar"></i> Bar <span>(2)</span></a>
-                            </li>
-                            <li>
-                            	<a class="searchresultdata" href="javascript:void(0)"><i class="iconsheet icon-spa"></i> Spa <span>(2)</span></a>
-                            </li>
-                        </ul>
-                    </div>
-               </li>
+                {{-- Global Search Bar --}}
+                @include('frontend.themes.emporium.layouts.sections.global-search-bar')
+                {{-- End Global Search Bar--}}
+            </ul>
+
+            {{-- For Gobal Search List --}}
+            @include('frontend.themes.emporium.layouts.sections.global-search-list')
+            {{-- End  Gobal Search List --}}
+
+            <ul class="mobilemenulist">
                 <li><a href="#hotelInfo" class="closenavlink scrollpage">HOTEL INFO</a></li>
 				@if (array_key_exists('typedata', $propertyDetail))
 					<li><a href="#roomsSuit" class="closenavlink scrollpage">ROOMS & SUITES</a></li>

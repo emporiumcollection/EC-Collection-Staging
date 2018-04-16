@@ -45,6 +45,7 @@ class SiteHelpers
 									'menu_name'		=> $row2->menu_name,
 									'menu_lang'		=> json_decode($row2->menu_lang,true),
 									'menu_icons'	=> $row2->menu_icons,
+									'image'	=> $row2->image,
 									'childs'		=> array()
 								);	
 												
@@ -71,6 +72,7 @@ class SiteHelpers
 												'menu_name'		=> $row3->menu_name,
 												'menu_lang'		=> json_decode($row3->menu_lang,true),
 												'menu_icons'	=> $row3->menu_icons,
+												'image'	=> $row3->image,
 												'childs'		=> array()
 											);	
 										$child_level_3[] = $menu3;	
@@ -94,6 +96,7 @@ class SiteHelpers
 						'menu_name'		=> $row->menu_name,
 						'menu_lang'		=> json_decode($row->menu_lang,true),
 						'menu_icons'	=> $row->menu_icons,
+						'image'	=> $row->image,
 						'childs'		=> $child_level
 					);			
 				

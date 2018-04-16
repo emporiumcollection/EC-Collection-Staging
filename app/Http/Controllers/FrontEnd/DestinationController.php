@@ -46,6 +46,11 @@ class DestinationController extends Controller {
 						$destarr[] = $dest;
 					}
 				}
+				
+				usort($destarr, function($a, $b) {
+					return trim($a->category_name) > trim($b->category_name);
+				});
+				
                 $res['status'] = 'success';
                 $res['dests'] = $destarr;
             }
@@ -88,6 +93,10 @@ class DestinationController extends Controller {
 		$fetchexperience = DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_alias')->where('category_published', 1)->where('parent_category_id', 8)->get();
 		if(!empty($fetchexperience))
 		{
+			usort($fetchexperience, function($a, $b) {
+				return trim($a->category_name) > trim($b->category_name);
+			});
+			
 			$res['status'] = 'success';
 			$res['dests'] = $fetchexperience;
 			
@@ -145,7 +154,7 @@ class DestinationController extends Controller {
 		$res = $respns = array(); 
 		if($keyword!='')
 		{
-            $fetchdestinations = DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_alias')->where('category_published', 1)->where('category_name', 'like', $keyword.'%')->get();
+            $fetchdestinations = DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_alias')->where('category_published', 1)->where('category_name', 'like', $keyword.'%')->where('id', '!=', 8)->where('parent_category_id', '!=', 8)->get();
 
             if(!empty($fetchdestinations))
             {

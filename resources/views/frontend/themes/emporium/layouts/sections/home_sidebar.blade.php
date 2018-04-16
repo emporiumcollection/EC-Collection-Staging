@@ -6,50 +6,20 @@
     </div>
     <div class="mobilemenu-inner">
         <div class="mobilemainnav openmobilemenu">
-            <div class="mobilenavheader " data-option="home"><a href="{{url('/')}}"><img
-                            src="{{ asset('themes/emporium/images/logo.png')}}" alt="Emporium Voyage"
-                            class="img-responsive"/></a></div>
+            <div class="mobilenavheader " data-option="home">
+				<a href="{{url('/')}}">
+					<img src="{{ asset('themes/emporium/images/logo.png')}}" alt="Emporium Voyage" class="img-responsive"/>
+				</a>
+			</div>
             <div class="mobilenavheader hide" data-option="child-global">
                 <h3 data-option-title="global"></h3>
                 <a class="homelinknav backtohomelink cursor" data-option-action="back"
                    data-option-action-type="home" data-id="0"><i class="fa fa-angle-left"></i> <span>HOME</span></a>
             </div>
             <ul class="mobilemenulist common-search-bar" data-option="search-bar">
-                <li>
-                    <div class="mobile-leftsearch">
-                        <input type="text" class="form-control" data-action="gobal-search"/>
-                        <button type="button"><i class="fa fa-search"></i></button>
-                    </div>
-                    <div id="filtersearchpopup" data-option="gobal-search" style="display:none;">
-                        <ul>
-                            <li>
-                                <a class="searchresultdata cursor" data-action="gobal-destinations">
-                                    <i class="iconsheet icon-destinations"></i> Destinations <span>(0)</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="searchresultdata cursor" data-action="gobal-collections">
-                                    <i class="iconsheet icon-collections"></i> Collections <span>(0)</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="searchresultdata cursor" data-action="gobal-restaurant">
-                                    <i class="iconsheet icon-restaurant"></i> Restaurant <span>(0)</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="searchresultdata cursor" data-action="gobal-bar">
-                                    <i class="iconsheet icon-bar"></i> Bar <span>(0)</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="searchresultdata cursor" data-action="gobal-spa">
-                                    <i class="iconsheet icon-spa"></i> Spa <span>(0)</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+                {{-- Global Search Bar --}}
+                @include('frontend.themes.emporium.layouts.sections.global-search-bar')
+                {{-- End Global Search Bar--}}
                 <li data-option="intro-text" class="hide">
                     <p></p>
                 </li>
@@ -69,32 +39,36 @@
                 <li><a class="cursor" data-action="select-menu" data-position="business" data-id="0">COMPANY</a></li>
             </ul>
             <ul class="mobilemenulist hide" data-option="search-our-collection">
-                <li>
-                    <div class="navheadimage"><a href="{{url('luxurytravel/Hotel')}}"><img
-                                    src="{{ asset('themes/emporium/images/mountain-image.jpg') }}" alt=""/>
-                            <div class="headingoverlay">HOTELS</div>
-                        </a></div>
-                </li>
-                <li>
-                    <div class="navheadimage"><a href="http://emporium-yachts.com/"><img
-                                    src="{{ asset('themes/emporium/images/mountain-image.jpg') }}" alt=""/>
-                            <div class="headingoverlay">YACHTS</div>
-                        </a></div>
-                </li>
+				{{--*/ $colection_menus = SiteHelpers::menus('top') /*--}}
+				@if(!empty($colection_menus))
+					@foreach ($colection_menus as $cmenu)
+						<li>
+							<div class="navheadimage">
+								<a @if($cmenu['menu_type'] =='external') href="{{ URL::to($cmenu['url'])}}" @else href="{{ URL::to($cmenu['module'])}}" @endif>
+									@if($cmenu['image']!='')
+										<img src="{{ URL::to('uploads/menu_imgs/'.$cmenu['image']) }}" alt=""/>
+									@else
+										<img src="{{ asset('themes/emporium/images/mountain-image.jpg') }}" alt=""/>
+									@endif
+									<div class="headingoverlay">
+										<span class="destinationTitle">
+											@if(CNF_MULTILANG ==1 && isset($cmenu['menu_lang']['title'][Session::get('lang')]))
+											  {{ $cmenu['menu_lang']['title'][Session::get('lang')] }}
+											@else
+											  {{$cmenu['menu_name']}}
+											@endif
+										</span>
+									</div>
+								</a>
+							</div>
+						</li>
+					@endforeach
+				@endif
             </ul>
             <ul class="mobilemenulist hide" data-option="selected-option-list">
             </ul>
             {{-- For Gobal Search List --}}
-            <ul class="mobilemenulist hide" data-option="dest-option-list">
-            </ul>
-            <ul class="mobilemenulist hide" data-option="collection-option-list">
-            </ul>
-            <ul class="mobilemenulist hide" data-option="resto-option-list">
-            </ul>
-            <ul class="mobilemenulist hide" data-option="bar-option-list">
-            </ul>
-            <ul class="mobilemenulist hide" data-option="spa-option-list">
-            </ul>
+            @include('frontend.themes.emporium.layouts.sections.global-search-list')
             {{-- End  Gobal Search List --}}
             @if (!Auth::check())
 
