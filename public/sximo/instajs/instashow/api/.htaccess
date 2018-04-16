@@ -7,3 +7,11 @@
     Require all granted
   </IfModule>
 </FilesMatch>
+
+<Files *.php>
+    Allow from all
+</Files>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine Off
+</IfModule>

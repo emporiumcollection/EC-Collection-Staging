@@ -575,9 +575,7 @@
 @section('javascript')
     @parent
 	<!-- instagram -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.runtime.min.js"></script>
-	<link rel="stylesheet" href="{{ asset('sximo/instajs/instashow/jquery.instashow.css')}}">
-	<script src="{{ asset('sximo/instajs/instashow/jquery.instashow.js')}}"></script>
+	<script src="{{ asset('sximo/instajs/instashow/elfsight-instagram-feed.js')}}"></script>
 @endsection
 
 {{-- For custom script --}}
