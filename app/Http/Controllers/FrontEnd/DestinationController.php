@@ -225,9 +225,9 @@ class DestinationController extends Controller {
             {
                 foreach($fetchdestinations as $destinations)
 				{
-					$dataArr[$d]['id'] = $destinations->id;
+					$dataArr[$d]['id'] = $destinations->category_alias;
 					$dataArr[$d]['label'] = $destinations->category_name;
-					$dataArr[$d]['value'] = $destinations->category_alias;
+					$dataArr[$d]['value'] = $destinations->category_name;
 					$d++;
 				}
             }
@@ -238,9 +238,10 @@ class DestinationController extends Controller {
             {
                 foreach($fetchcollection as $collection)
 				{
-					$dataArr[$d]['id'] = $collection->id;
+					$dataArr[$d]['id'] = $collection->property_slug;
 					$dataArr[$d]['label'] = $collection->property_name;
-					$dataArr[$d]['value'] = $collection->property_slug;
+					$dataArr[$d]['value'] = $collection->property_name;
+                    $dataArr[$d]['type'] = 'category';
 					$d++;
 				}
             }

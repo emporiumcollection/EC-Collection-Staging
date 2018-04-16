@@ -758,15 +758,17 @@
  @if(!empty($eventsArray))
  			 {{--*/ $clsact ="" /*--}}
  			 {{--*/ $sliderCounter =1 /*--}}
-			@foreach($eventsArray as $events)
-				<div>
-					<h2>{{$events->title}}</h2>
-					<p>{{$events->desciription}}</p>
-				</div>
+
+ 			  {{--*/ $k=0; $tottyp = count($eventsArray); /*--}}
+@foreach($eventsArray as $events)
+		
+
+			
+
+{{--*/ $eventPackagesArray= \DB::table('tb_event_packages')->where('event_id', $events->id)->get() /*--}}
 
 @if (!empty($eventPackagesArray))
- 
-
+          
  @if ($sliderCounter==1)
 <div class="HamYardHotelSection">
   <div>
@@ -776,10 +778,13 @@
    @endif     	
 
 
-          {{--*/ $k=0; $tottyp = count($eventPackagesArray); /*--}}
+
              @foreach($eventPackagesArray as $key=>$package)
            <div style="background-image: url({{URL::to('uploads/event_package_images/'.$package->package_image)}});" @if($k==0) class="item active" @else class="item" @endif>
              <div class="carousalCaption">
+
+             	<h2>Event : {{$events->title}}</h2>
+				<p>Event: Details :{{$events->desciription}}</p>
                <h3>{{$package->package_title}}</h3>
                <h2>Price: {!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($package->package_price,2) }}</h2>
                <p>{!! nl2br($package->package_description) !!}</p>
@@ -794,7 +799,7 @@
         @endif
 
 
-
+ @if ($sliderCounter==1)
           <div class="HamYardHotelSliderOptions">
            
             <div class="terraceSuitindicator">
@@ -822,12 +827,14 @@
             <div class="showMoreSec"><button type="button" class="btn buttonDefault">SHOW MORE</button></div>
           </div>
         </div>
+
+        @endif     
       </div>
   </div>
 </div>
 @endif
 
-  {{--*/ $sliderCounter ++ /*--}}        
+  {{--*/ $sliderCounter++ /*--}}        
 		@endforeach
 		@endif
 </div>		

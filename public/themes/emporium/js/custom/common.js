@@ -129,7 +129,7 @@ $(document).ready(function () {
     */
 
 
-    $('[data-action="auto-suggestion"]').autocomplete({
+   $('[data-action="auto-suggestion"]').autocomplete({
         source: function (request, response) {
             var datObj = {};
             datObj.keyword = request.term;
@@ -144,7 +144,12 @@ $(document).ready(function () {
         },
         minLength: 2,
         select: function (event, ui) {
-            console.log("Selected: " + ui.item.label + " aka " + ui.item.id);
+            //log("Selected: " + ui.item.label + " aka " + ui.item.id);
+
+            if(ui.item.type) {
+                location.href=BaseURL + '/' + ui.item.id;
+            }
+
         }
     });
 
