@@ -9,10 +9,6 @@
 @section('content')
 
 <div>
-{{ print_r($eventsArray) }}
-
-{{ print_r($eventPackagesArray) }}
-
   @if(!empty($eventsArray))
   {{--*/ $clsact ="" /*--}}
 				  @foreach($eventsArray as $events)
