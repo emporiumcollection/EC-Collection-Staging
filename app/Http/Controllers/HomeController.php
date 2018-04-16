@@ -29,7 +29,7 @@ class HomeController extends Controller {
     public function index(Request $request) {
 
         $this->data['landingads'] = \DB::table('tb_advertisement')->select('adv_img', 'adv_link')->where('adv_type', 'sidebar')->where('adv_position', 'landing')->get();
-        $this->data['slider'] = \DB::table('tb_sliders')->select('slider_category', 'slider_title', 'slider_description', 'slider_img', 'slider_link', 'slider_video', 'slide_type')->where('slider_category', 'Landing')->orderBy('sort_num','asc')->get();
+        $this->data['slider'] = \DB::table('tb_sliders')->select('slider_category', 'slider_title', 'slider_description', 'slider_img', 'slider_link', 'slider_video', 'slide_type')->where('slider_category', 'Landing')->where('slider_status',1)->orderBy('sort_num','asc')->get();
         $this->data['whybookwithus'] = \DB::table('tb_whybookwithus')->select('id', 'title', 'sub_title')->where('status', 0)->get();
         $this->data['pageTitle'] = 'Home';
         $this->data['pageMetakey'] = CNF_METAKEY;

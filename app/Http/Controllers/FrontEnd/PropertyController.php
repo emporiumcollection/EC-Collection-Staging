@@ -21,7 +21,7 @@ class PropertyController extends Controller {
 	{
 		$this->data['slug'] = $request->slug;
 
-        $this->data['slider'] = \DB::table('tb_sliders')->select('slider_category','slider_title','slider_description','slider_img','slider_link','slide_type')->where('slider_category', $request->slug)->orderBy('sort_num','asc')->get();
+        $this->data['slider'] = \DB::table('tb_sliders')->select('slider_category','slider_title','slider_description','slider_img','slider_link','slide_type')->where('slider_category', $request->slug)->where('slider_status',1)->orderBy('sort_num','asc')->get();
 
          $this->data['destination_category'] =0;
         $perPage = 40;
@@ -59,7 +59,7 @@ class PropertyController extends Controller {
            $keyword = $request->s;
         }
 		$sldkeyword = str_replace('-',' ',$keyword);
-		$this->data['slider'] = \DB::table('tb_sliders')->where('slider_category', $sldkeyword)->orderBy('sort_num','asc')->get();
+		$this->data['slider'] = \DB::table('tb_sliders')->where('slider_category', $sldkeyword)->where('slider_status',1)->orderBy('sort_num','asc')->get();
 		
 
 		
