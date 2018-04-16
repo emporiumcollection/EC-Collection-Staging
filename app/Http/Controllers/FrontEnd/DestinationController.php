@@ -46,6 +46,11 @@ class DestinationController extends Controller {
 						$destarr[] = $dest;
 					}
 				}
+				
+				usort($destarr, function($a, $b) {
+					return trim($a->category_name) > trim($b->category_name);
+				});
+				
                 $res['status'] = 'success';
                 $res['dests'] = $destarr;
             }
@@ -89,7 +94,7 @@ class DestinationController extends Controller {
 		if(!empty($fetchexperience))
 		{
 			usort($fetchexperience, function($a, $b) {
-				return trim($a->category_name) < trim($b->category_name);
+				return trim($a->category_name) > trim($b->category_name);
 			});
 			
 			$res['status'] = 'success';
