@@ -224,7 +224,7 @@ function renderExperience(dataObj) {
         experienceHtml += '<li><div class="navheadimage">';
         experienceHtml += '<a href="'+BaseURL+'/luxury_experience/'+val.category_alias+'">';
         experienceHtml += '<img src="'+imagePath+'" alt="" class="mCS_img_loaded">';
-        experienceHtml += '<div class="headingoverlay">' + val.category_name + '</div>';
+        experienceHtml += '<div class="headingoverlay"><span class="destinationTitle">' + val.category_name + '</span></div>';
         experienceHtml += '</a></div></li>';
     });
 
