@@ -40,7 +40,7 @@ class PagessliderController extends Controller {
 		if(!is_null($request->input('selpage')))
 		{
 			$categ = ($request->input('selpage')!='') ? $request->input('selpage') : '';
-			$filter .= ' AND slider_category="'.$categ.'"';
+			$filter .= ' AND slider_page_id="'.$categ.'"';
 		}
 		
 		$page = $request->input('page', 1);
@@ -78,7 +78,7 @@ class PagessliderController extends Controller {
 		// Master detail link if any 
 		$this->data['subgrid']	= (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array()); 
 		
-		$fetchcats = \DB::table('tb_pages')->get();
+		$fetchcats = \DB::table('tb_pages_content')->get();
 		$showcat = array();
 		if(!empty($fetchcats))
 		{
