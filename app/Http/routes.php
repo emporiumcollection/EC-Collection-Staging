@@ -285,7 +285,7 @@ Route::group(['middleware' => 'auth'], function()
 	
 	Route::get('fetchpackagedetails/{pckid}', 'HomeController@fetchpackagedetails');
 	Route::get('userorder_downloadinvoicepdf/{ordid}', 'UserorderController@ordersdownloadinvoicepdf');
-	Route::post('delete_menu_image', 'MenuController@deleteMenuImage');
+	Route::post('delete_menu_image', 'Sximo\MenuController@deleteMenuImage');
 
 
 });	
