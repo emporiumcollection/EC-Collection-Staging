@@ -100,10 +100,10 @@ function renderDestination(dataObj) {
     if (dataObj.current_category != undefined) {
         data.main_title = 'Home';
         if (dataObj.currentParentCate != undefined) {
-            data.sub_title = 'Back To '+dataObj.currentParentCate.category_name;;
+            data.sub_title = 'Back To '+dataObj.currentParentCate.category_name;
             data.id = dataObj.currentParentCate.id;
         }else{
-            data.sub_title = 'Back To Destination';
+            data.sub_title = 'Back To '+dataObj.currentParentCate.category_name;
             data.id = dataObj.current_category.parent_category_id;
         }
 
@@ -115,7 +115,7 @@ function renderDestination(dataObj) {
         destinationHtml += '<li>';
         destinationHtml += '<div class="navheadimage">';
         destinationHtml += '<img src="'+imagePath+'" alt="" class="mCS_img_loaded">';
-        destinationHtml += '<div class="headingoverlay"><span class="destinationTitle">' + dataObj.current_category.category_name + '</span><br><span class="hashTag">' + dataObj.current_category.category_instagram_tag + '</span></div></div>';
+        destinationHtml += '<div class="headingoverlay"><span class="destinationTitle">' + dataObj.current_category.category_name + '<br><span class="hashTag">' + dataObj.current_category.category_instagram_tag + '</span></span></div></div>';
         destinationHtml += '</li>';
         destinationHtml += '<li><ul class="mobilesublinks">';
     }
@@ -172,7 +172,7 @@ function renderDestinationSocialYoutube(dataObj) {
         destinationHtml += '<li>';
         destinationHtml += '<div class="navheadimage">';
         destinationHtml += '<img src="'+imagePath+'" alt="" class="mCS_img_loaded">';
-        destinationHtml += '<div class="headingoverlay"><span class="destinationTitle">' + dataObj.current_category.category_name + '</span><br><span class="hashTag">' + dataObj.current_category.category_instagram_tag + '</span></div></div>';
+        destinationHtml += '<div class="headingoverlay"><span class="destinationTitle">' + dataObj.current_category.category_name + '<br><span class="hashTag">' + dataObj.current_category.category_instagram_tag + '</span></span></div></div>';
         destinationHtml += '</li>';
         destinationHtml += '<li><ul class="mobilesublinks">';
     }

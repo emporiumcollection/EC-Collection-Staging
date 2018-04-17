@@ -64,7 +64,8 @@ document.addEventListener("touchstart", function() {},false);
 		},
 		showDropdowns: true,
 		singleDatePicker: true,
-		startDate: todayDate
+		startDate: todayDate,
+		minDate : todayDate
 	});
 	
 /*

@@ -95,12 +95,12 @@ input.error {
     bottom: -1px;
     background: rgba(0, 0, 0, .5);
     width: 100%;
-    padding: 23px 25px;
+    padding: 10px 25px;
 }
 
 .mobilemenulist .navheadimage .headingoverlay .hashTag {
-    color: #ABA07C;
-    font-size: 12px;
+    color: #fff;
+    /*font-size: 12px;*/
 }
 
 .mobilemenulist .navheadimage .headingoverlay {
@@ -119,6 +119,7 @@ body .ui-widget.ui-widget-content li {
     border-bottom: 1px solid #545454;
     color: #fff;
     padding: 6px 48px;
+    position: relative;
 }
 body .ui-widget.ui-widget-content li:hover {
     cursor: pointer;
@@ -130,6 +131,26 @@ body .ui-widget.ui-widget-content .ui-state-active {
     background: transparent;
     font-weight: normal;
     color: #fff;
+}
+body .ui-widget.ui-widget-content li i.iconsheet.icon-destinations {
+    background-position: 0px -100px;
+}
+body .ui-widget.ui-widget-content li i.iconsheet.icon-collections {
+    background-position: 0px 2px;
+}
+body .ui-widget.ui-widget-content li i.iconsheet {
+    position: absolute;
+    left: 15px;
+    top: 0px;
+    width: 30px;
+    height: 30px;
+    border: 0px solid #000;
+    background: url(../images/iconsheet.png) no-repeat;
+    background-size: 50px auto;
+    -webkit-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+    z-index: 99;
 }
 
 
@@ -155,5 +176,6 @@ body .ui-widget.ui-widget-content .ui-state-active {
     outline: 0;
     text-decoration: none;
 }
+
 
 
