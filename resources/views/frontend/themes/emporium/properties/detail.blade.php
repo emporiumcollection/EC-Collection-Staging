@@ -323,7 +323,7 @@
 
 
         <section id="bookHotel" class="hotelSearchDateSection">
-            <div class="HamYardHotelInner">
+            <div class="HamYardHotelInner HamYardHotelInnerfooter">
                 <div class="hotelSearchDateInnerContent text-center">
                     <div class="container-fluid">
                         <div class="row">
@@ -565,6 +565,10 @@
 				
 				.HamYardHotelInnersecond {
                     background-image: url('{{ $propertyDetail['propimage_thumbpath'].$propertyDetail['propimage'][2]->file_name}}');
+                }
+				
+				.HamYardHotelInnerfooter {
+                    background-image: url('{{ $propertyDetail['propimage_thumbpath'].$propertyDetail['propimage'][3]->file_name}}');
                 }
             </style>
         @endif
