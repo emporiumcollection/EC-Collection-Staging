@@ -119,6 +119,7 @@ body .ui-widget.ui-widget-content li {
     border-bottom: 1px solid #545454;
     color: #fff;
     padding: 6px 48px;
+    position: relative;
 }
 body .ui-widget.ui-widget-content li:hover {
     cursor: pointer;
@@ -130,6 +131,21 @@ body .ui-widget.ui-widget-content .ui-state-active {
     background: transparent;
     font-weight: normal;
     color: #fff;
+}
+body .ui-widget.ui-widget-content li i.iconsheet.icon-destinations {
+    background-position: 0px -155px;
+}
+body .ui-widget.ui-widget-content li i.iconsheet {
+    position: absolute;
+    left: 15px;
+    top: 0px;
+    width: 30px;
+    height: 35px;
+    background: url(../images/iconsheet.png) no-repeat;
+    -webkit-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+    z-index: 999999999999999999;
 }
 
 
@@ -155,5 +171,6 @@ body .ui-widget.ui-widget-content .ui-state-active {
     outline: 0;
     text-decoration: none;
 }
+
 
 

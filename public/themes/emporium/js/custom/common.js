@@ -129,7 +129,7 @@ $(document).ready(function () {
     */
 
 
-   $('[data-action="auto-suggestion"]').autocomplete({
+    $('[data-action="auto-suggestion"]').autocomplete({
         source: function (request, response) {
             var datObj = {};
             datObj.keyword = request.term;
@@ -151,7 +151,17 @@ $(document).ready(function () {
             }
 
         }
-   });
+    })
+    .autocomplete( "instance" )._renderItem = function( ul, item ) {
+        var destIcon = '';
+        if(item.type) {
+            destIcon = '<i class="iconsheet icon-destinations"></i>';
+        }
+
+        return $('<li>')
+        .append( destIcon + item.label )
+        .appendTo( ul );
+    };
 
    /*
    * For Global Search
@@ -194,7 +204,7 @@ $(document).ready(function () {
             $('[data-option="spa-option-list"]').html('');
             $('[data-option="bar-option-list"]').html('');
 
-
+            $('#filtersearchpopup ul li:first-child ul.mobilemenulist').css("display", "block");
 
             if (data.data.dest == undefined) {
                 $('[data-action="gobal-destinations"] span').html(0);
