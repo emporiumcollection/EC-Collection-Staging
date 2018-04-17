@@ -764,14 +764,14 @@
 
 			{{--*/ $k=0; $tottyp = count($eventsArray); /*--}}
            @foreach($eventsArray as $key=>$package)
-           <div style="background-image: url({{URL::to('uploads/event_package_images/'.$package->package_image)}});" @if($k==0) class="item active" @else class="item" @endif>
+           <div id="{{$package->id}}" style="background-image: url({{URL::to('uploads/event_package_images/'.$package->package_image)}});" @if($k==0) class="item active" @else class="item" @endif>
              <div class="carousalCaption">
 
-				<h2>Event : {{$package->title}}</h2>
-				<p>Event: Details :{{$package->desciription}}</p>
-				<h3>{{$package->package_title}}</h3>
-               <h2>Price: {!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($package->package_price,2) }}</h2>
-               <p>{!! nl2br($package->package_description) !!}</p>
+				<h2>Event:{{$package->title}}</h2>
+				<p>Event Details:{{$package->desciription}}</p>
+				<p>USP:{{$package->usp_text}}</p>
+				<p>Contact:{{$package->reservation_email}}</p>
+               
              </div>
            </div>
 
@@ -808,7 +808,7 @@
             @endforeach
             </ol>
 
-             <div class="showMoreSec"><button type="button" class="btn buttonDefault" >SHOW MORE</button></div>
+             <div class="showMoreSec" rel="125"><button type="button" class="btn buttonDefault" >SHOW MORE</button></div>
       
           </div>
         </div>
@@ -1151,32 +1151,54 @@
 		$(document).on('click', '.showMoreSec, .moreButtonPopup', function () {
 			$('.showMorePopup').css("background-image", "");
 			$('.showMoreContent').html('');
+			//alert($(this).attr('rel'));
 			var params = $.extend({}, doAjax_params_default);
-			params['url'] = BaseURL + '/getpropertytypedetail/' + $(this).attr('rel');
-			params['successCallbackFunction'] = renderRoomdetails;
+			params['url'] = BaseURL + '/getEventPackages/'+$(this).attr('rel');
+			params['successCallbackFunction'] = renderPackagDetails;
 			doAjax(params);
 
 		});
 		
-		function renderRoomdetails(data) {
-			var rimg = data.roomimgs.imgsrc;
-			$('.showMorePopup').css("background-image", "url('" + rimg + "')");
-			var imagesPro = '';
-			imagesPro += '<h1>' + data.typedata.category_name + '</h1>';
-			imagesPro += '<p>' + data.amenities.amenities_eng.replace(/\n/g, "<br />") + '</p>';
-			imagesPro += '<p>' + data.typedata.room_desc + '</p>';
-			imagesPro += '<div class="shoMoreButtonSection">';
-			if (data.typedata.price != '')
-			{
-				imagesPro += '<h2>';
-				imagesPro += (data.currency.content != '') ? data.currency.content : '$';
-				imagesPro += data.typedata.price;
-				imagesPro += '</h2>';
-			}
-			imagesPro += '<a href="javascript:void(0);" onclick="choose_room_type(' + data.typedata.id + ');" class="button">Book</a>';
-			imagesPro += '</div>';
-			$('.showMoreContent').html(imagesPro);
-			$('.showMorePopup').addClass('openPopup');
+		function renderPackagDetails(data) {
+			
+
+			var packageDetailsHtml = '';
+
+		if(data.status=="success"){
+			$(data.records).each(function( i, val ) {
+				if(i==0){
+
+				var rimg ="/uploads/event_package_images/"+val.package_image;
+				$('.showMorePopup').css("background-image", "url('" + rimg + "')");	
+					
+				packageDetailsHtml += '<h1>Event: ' + val.title + '</h1>';
+				packageDetailsHtml += '<p> Event Description: ' + val.desciription.replace(/\n/g, "<br />") + '</p>';
+
+				}
+		
+	
+
+				packageDetailsHtml += '<h1> Package::' + val.package_title + '</h1>';
+				packageDetailsHtml += '<p>' + val.package_description.replace(/\n/g, "<br />") + '</p>';
+				packageDetailsHtml += '<p>' + val.package_duration + '</p>';
+
+				packageDetailsHtml += '<div class="shoMoreButtonSection">';
+				if (val.package_price != '')
+				{
+					packageDetailsHtml += '<h2>';
+					packageDetailsHtml += '$';
+					packageDetailsHtml += val.package_price;
+					packageDetailsHtml += '</h2>';
+				}
+				packageDetailsHtml += '<a href="javascript:void(0);" class="button">Book</a>';
+				packageDetailsHtml += '</div>';
+				
+
+		  });
+
+		}
+		$('.showMoreContent').html(packageDetailsHtml);
+		$('.showMorePopup').addClass('openPopup');
 		}
 	</script>
 @endsection
