@@ -200,10 +200,7 @@
 		var it_scroll = false;
 		var totalPage = '{{$total_pages}}';
 		$(window).scroll(function () {
-            if ($(window).scrollTop() < 600) {
-                console.log("Height lessthe 600px");
-                return false;
-			}
+            if ($(window).scrollTop() < 600) { return false; }
 
             if (pageCounter > totalPage) {
 				return false;
