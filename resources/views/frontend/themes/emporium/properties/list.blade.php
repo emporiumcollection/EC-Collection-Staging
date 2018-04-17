@@ -19,7 +19,12 @@
 							<div class="carousel-caption">
 								<h6>{{$slug}}</h6>
 								<h2>
-									<a onclick="return !window.open(this.href, '{{ ((strpos($slider_row->slider_link, 'http://') || strpos($slider_row->slider_link, 'https://')) === false) ? $slider_row->slider_link : 'http://'.$slider_row->slider_link }}', 'width=900,height=500,left=100, top=100, scrollbars, resizable')" href="{{ ((strpos($slider_row->slider_link, 'http://') || strpos($slider_row->slider_link, 'https://')) === false) ? $slider_row->slider_link : 'http://'.$slider_row->slider_link }}">{{$slider_row->slider_title}}</a></h2>
+									@if($slider_row->slider_link!='#' && $slider_row->slider_link!='')
+										<a onclick="return !window.open(this.href, '{{ ((strpos($slider_row->slider_link, 'http://') || strpos($slider_row->slider_link, 'https://')) === false) ? $slider_row->slider_link : 'http://'.$slider_row->slider_link }}', 'width=900,height=500,left=100, top=100, scrollbars, resizable')" href="{{ ((strpos($slider_row->slider_link, 'http://') || strpos($slider_row->slider_link, 'https://')) === false) ? $slider_row->slider_link : 'http://'.$slider_row->slider_link }}">{{$slider_row->slider_title}}</a>
+									@else
+										{{$slider_row->slider_title}}
+									@endif
+								</h2>
 								<p>{{$slider_row->slider_description}}</p>
 							</div>
 						</div>
@@ -48,7 +53,7 @@
 				{{--*/ $rw = 1 /*--}}
 				<div class="row" data-option="property-grid-list">
 					@foreach($propertiesArr as $props)
-						@if($rw%20==0)
+						@if($rw%19==0)
 							{{--*/ $adscatid = ($destination_category > 0) ? $destination_category : 'Hotel'; $resultads = CommonHelper::getGridResultAds('grid_results', $adscatid) /*--}}
 							@if(!empty($resultads['resultads']))
 								<div class="col-sm-6 col-md-6 col-lg-4">
@@ -235,7 +240,7 @@
 
 		function renderPropertyList(data){
 			$.each(data.properties, function (idx, obj) {
-				if(idx==20)
+				if(idx==19)
 				{
 					if(data.resultads)
 					{
@@ -302,7 +307,7 @@
 			$('[data-option="property-grid-list"]').html('');
 			var dataGridHtml = '';
 			$.each(data.properties, function (idx, obj) {
-				if(idx==20)
+				if(idx==19)
 				{
 					if(data.resultads)
 					{
