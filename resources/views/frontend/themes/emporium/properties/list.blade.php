@@ -200,8 +200,9 @@
 		var it_scroll = false;
 		var totalPage = '{{$total_pages}}';
 		$(window).scroll(function () {
-		    if($(window).height() < 600) { return false; }
-			if (pageCounter > totalPage) {
+            if ($(window).scrollTop() < 600) { return false; }
+
+            if (pageCounter > totalPage) {
 				return false;
 			} else {
 				it_scroll = true;
@@ -284,19 +285,19 @@
 				}
 			});
 		}
-		
+
 		function priceFilterAjax(){
-			
+
 				var datObj = window.location.search;
                     datObj =  datObj+'&s={{$slug}}';
-					
+
 				var params = $.extend({}, doAjax_params_default);
 				params['url'] = BaseURL + '/search-property-ajax'+datObj;
 				params['successCallbackFunction'] = renderPropertyListPriceFilter;
 				doAjax(params);
-			
+
 		}
-		
+
 		function renderPropertyListPriceFilter(data){
 			$('[data-option="property-grid-list"]').html('');
 			var dataGridHtml = '';
