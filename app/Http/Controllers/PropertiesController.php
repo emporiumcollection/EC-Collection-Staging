@@ -59,6 +59,12 @@ class PropertiesController extends Controller {
 			$this->data['curstatus'] = $request->input('selstatus');
 		}
 
+        if(\Session::get('gid')!=1 && \Session::get('gid')!=2){
+                $uid = \Auth::user()->id;
+
+                $filter .= " AND user_id = '".$uid."'" ;
+
+        }
         $page = $request->input('page', 1);
         $params = array(
             'page' => $page,
