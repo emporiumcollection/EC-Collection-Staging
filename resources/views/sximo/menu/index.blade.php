@@ -237,9 +237,9 @@
 					<label for="Image" class=" control-label col-md-4 text-left"> Image </label>
 					<div class="col-md-8">
 						<input  type='file' name='image' id='image' style='width:150px !important;'  />
-						<div>
+						<div class="imgmenu">
 						{!! SiteHelpers::showUploadedFile($row['image'],'/uploads/menu_imgs/') !!}
-						
+						<li class="fa fa-times" onclick="remove_menuImage({{ $row['menu_id'] }});"></li>
 						</div>
 					 </div>
 				</div>
@@ -363,6 +363,32 @@ function update_out(selector, sel2){
 	$(sel2).val(JSON.stringify(out));
 
 }
+
+function remove_menuImage(menuid)
+{
+	var conf = confirm("Are you sure? you want to delete!");
+	if(conf==true)
+	{
+		$.ajax({
+		  url: "{{ URL::to('delete_menu_image')}}",
+		  type: "post",
+		  data: "menuid=" + menuid,
+		  dataType: "json",
+		  success: function(data){
+			  var html ='';
+			  if(data=='error')
+			  {
+					alert("Record Not Found!");
+					
+			  }
+			  else{
+					$('.imgmenu').remove();
+					alert("Image Deleted Successfully!");
+			  }
+		  }
+		});
+	}
+} 
 </script>		
 @stop 
 		 	  

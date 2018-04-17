@@ -188,7 +188,29 @@ class MenuController extends Controller {
 		return Redirect::to('sximo/menu')
 				->with('messagetext', 'Successfully deleted row!')->with('msgstatus','success');
 
-	}						
+	}
+
+	public function deleteMenuImage(Request $request)
+	{
+		if($request->menuid!='' && $request->menuid > 0)
+		{
+			$menus = \DB::table('tb_menu')->where('menu_id','=',$request->menuid)->count();
+			if($menus > 0)
+			{
+				$removeimg = \DB::table('tb_menu')->where('menu_id','=',$request->menuid)->update(["image"=>""]);
+				
+				return "success";
+			}
+			else
+			{
+				return "error";
+			}
+		}
+		else
+		{
+			return "error";
+		}
+	}
 
 
 }
