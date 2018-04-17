@@ -445,5 +445,29 @@ $eventsArray = \DB::table('tb_events')->join('tb_event_packages', 'tb_events.id'
 		return response()->json($res);
 	}
 
+public function getEventPackages( Request $request )
+	{
+			$res = array();
+			$eventID = $request->eventID;
+			
+			if($eventID!='')
+			{
+				
 
+				$eventsArray = \DB::table('tb_events')->join('tb_event_packages', 'tb_events.id', '=', 'tb_event_packages.event_id')->where('event_id', $eventID)->orderBy('tb_event_packages.event_id')->get();
+				if(!empty($eventsArray))
+				{
+					$res['status'] = 'success';
+	                $res['records'] = $eventsArray;
+				}
+			}
+			else
+			{
+				$res['status'] = 'error';
+				$res['errors'] = 'Please select event to view pacakges!';
+		}
+		
+		return response()->json($res);	
+
+	}
 }

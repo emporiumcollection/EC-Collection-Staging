@@ -466,3 +466,4 @@ Route::resource('sximoapi', 'SximoapiController');
 
 Route::controller('restaurantfront/{id}', 'Frontend\RestaurantFrontController');
 Route::controller('luxury-travel/{slug}', 'Frontend\PresentationController');
+Route::get('getEventPackages/{eventID}', 'Frontend\RestaurantFrontController@getEventPackages');
