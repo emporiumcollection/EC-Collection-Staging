@@ -133,3 +133,27 @@ body .ui-widget.ui-widget-content .ui-state-active {
 }
 
 
+#filtersearchpopup ul ul.mobilemenulist {
+    background: #252525;
+}
+#filtersearchpopup ul ul.mobilemenulist li {
+    border-bottom: 1px solid #414246;
+}
+#filtersearchpopup ul ul.mobilemenulist li a {
+    padding: 15px 25px;
+    display: block;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 15px;
+    transition: all .3s ease 0s;
+    -webkit-transition: all .3s ease 0s;
+}
+#filtersearchpopup ul ul.mobilemenulist li a:hover {
+    background-color: #89837B;
+    border-left: 4px solid #a1a39c;
+    color: #fff;
+    outline: 0;
+    text-decoration: none;
+}
+
+

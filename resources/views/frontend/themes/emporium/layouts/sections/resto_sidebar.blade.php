@@ -12,31 +12,10 @@
                 <a href="{{URL::to($pagetitle)}}" class="homelinknav backtodestinationnav"><i class="fa fa-angle-left"></i> BACK TO HOTEL</a>
             </div>
             <ul class="mobilemenulist">
-                <li>
-                    <div class="mobile-leftsearch">
-                        <input type="text" class="form-control" id="search"/>
-                        <button type="button"><i class="fa fa-search"></i></button>
-                    </div>
-                    <div id="filtersearchpopup" style="display:none;">
-                        <ul>
-                            <li>
-                                <a class="searchresultdata" href="javascript:void(0)"><i class="iconsheet icon-destinations"></i> Destinations <span>(3)</span></a>
-                            </li>
-                            <li>
-                                <a class="searchresultdata" href="javascript:void(0)"><i class="iconsheet icon-collections"></i> Collections <span>(11)</span></a>
-                            </li>
-                            <li>
-                                <a class="searchresultdata" href="javascript:void(0)"><i class="iconsheet icon-restaurant"></i> Restaurant <span>(5)</span></a>
-                            </li>
-                            <li>
-                                <a class="searchresultdata" href="javascript:void(0)"><i class="iconsheet icon-bar"></i> Bar <span>(2)</span></a>
-                            </li>
-                            <li>
-                                <a class="searchresultdata" href="javascript:void(0)"><i class="iconsheet icon-spa"></i> Spa <span>(2)</span></a>
-                            </li>
-                        </ul>
-                    </div>
-               </li>
+                {{-- Global Search Bar --}}
+                @include('frontend.themes.emporium.layouts.sections.global-search-bar')
+                {{-- End Global Search Bar --}}
+
                 @if(!empty($resturantArr))
 				{{--*/ $r=1; /*--}}
 				  @foreach($resturantArr as $resturant)
