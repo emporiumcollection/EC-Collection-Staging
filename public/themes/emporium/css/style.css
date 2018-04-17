@@ -656,7 +656,7 @@ border-radius:0;
 
 /* Range slider */
 
-.rangeslidercontainer{background:#deded9;padding: 16px 18px;}
+.rangeslidercontainer{background:#89837B;padding: 16px 18px; color:#fff;}
 .rangeslidercontainer .slidecontainer {
     width: 100%;
 }
@@ -696,7 +696,7 @@ border-radius:0;
     cursor: pointer;
 	box-shadow: 0 0px 3px #000;
 }
-.rangeslidercontainer p{font-size:14px; font-weight:700;color:#61646a; text-align:right; float:right; margin-top:5px;}
+.rangeslidercontainer p{font-size:14px; font-weight:700;color:#fff; text-align:right; float:right; margin-top:5px;}
 .rangeslidercontainer select{float:left; width:110px;}
 .rangeslidercontainer select.form-control:focus{outline:0; box-shadow:none;-webkit-box-shadow:none; border-color:#ccc;}
 .sliderlegend{ 
