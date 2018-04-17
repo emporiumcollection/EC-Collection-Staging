@@ -386,11 +386,11 @@ function hideAllOption() {
     $('[data-option="selected-option-list"]').addClass('hide');
     $('[data-option="search-by-date"]').addClass('hide');
     $('[data-option="search-our-collection"]').addClass('hide');
-    $('[data-option="dest-option-list"]').addClass('hide');
+    /*$('[data-option="dest-option-list"]').addClass('hide');
     $('[data-option="collection-option-list"]').addClass('hide');
     $('[data-option="resto-option-list"]').addClass('hide');
     $('[data-option="spa-option-list"]').addClass('hide');
-    $('[data-option="bar-option-list"]').addClass('hide');
+    $('[data-option="bar-option-list"]').addClass('hide');*/
     $('[data-option="gobal-search"]').css('display','none');
 }
 

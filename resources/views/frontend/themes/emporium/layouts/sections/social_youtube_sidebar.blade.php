@@ -17,8 +17,7 @@
             <ul class="mobilemenulist common-search-bar" data-option="search-bar">
                 {{-- Global Search Bar --}}
                 @include('frontend.themes.emporium.layouts.sections.global-search-bar')
-                {{-- End Global Search Bar --}}
-
+                {{-- End Global Search Bar--}}
                 <li data-option="intro-text" class="hide">
                     <p></p>
                 </li>
