@@ -133,19 +133,24 @@ body .ui-widget.ui-widget-content .ui-state-active {
     color: #fff;
 }
 body .ui-widget.ui-widget-content li i.iconsheet.icon-destinations {
-    background-position: 0px -155px;
+    background-position: 0px -100px;
+}
+body .ui-widget.ui-widget-content li i.iconsheet.icon-collections {
+    background-position: 0px 2px;
 }
 body .ui-widget.ui-widget-content li i.iconsheet {
     position: absolute;
     left: 15px;
     top: 0px;
     width: 30px;
-    height: 35px;
+    height: 30px;
+    border: 0px solid #000;
     background: url(../images/iconsheet.png) no-repeat;
+    background-size: 50px auto;
     -webkit-transition: all .5s ease;
     -o-transition: all .5s ease;
     transition: all .5s ease;
-    z-index: 999999999999999999;
+    z-index: 99;
 }
 
 
