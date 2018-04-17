@@ -568,7 +568,7 @@
                 }
 				
 				.HamYardHotelInnerfooter {
-                    background-image: url('{{ $propertyDetail['propimage_thumbpath'].$propertyDetail['propimage'][3]->file_name}}');
+                    background-image: url('{{ $propertyDetail['propimage_thumbpath'].$propertyDetail['propimage'][3]->file_name}}') !important;
                 }
             </style>
         @endif
