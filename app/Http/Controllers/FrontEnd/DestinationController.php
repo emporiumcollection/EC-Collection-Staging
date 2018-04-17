@@ -201,12 +201,14 @@ class DestinationController extends Controller {
 			{
 				$respns['status'] = 'error';
 				$respns['errors'] = 'Not found!';
+                $respns['data'] = array();
 			}
 		}
 		else
 		{
 			$respns['status'] = 'error';
 			$respns['errors'] = 'Not found!';
+            $respns['data'] = array();
 		}
 		return response()->json($respns);
     }

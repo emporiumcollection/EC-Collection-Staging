@@ -151,110 +151,130 @@ $(document).ready(function () {
             }
 
         }
-    });
+   });
 
-    /*
-    * For Global Search
-    */
-    $(document).on('keyup', '[data-action="gobal-search"]', function () {
-        $('[data-option="dest-option-list"]').addClass('hide');
-        $('[data-option="collection-option-list"]').addClass('hide');
-        $('[data-option="resto-option-list"]').addClass('hide');
-        $('[data-option="spa-option-list"]').addClass('hide');
-        $('[data-option="bar-option-list"]').addClass('hide');
-
-        $('[data-option="dest-option-list"]').html('');
-        $('[data-option="collection-option-list"]').html('');
-        $('[data-option="resto-option-list"]').html('');
-        $('[data-option="spa-option-list"]').html('');
-        $('[data-option="bar-option-list"]').html('');
-
+   /*
+   * For Global Search
+   */
+   $(document).on('keyup', '[data-action="gobal-search"]', function () {
         if ($(this).val() == '') {
             $('[data-option="gobal-search"]').slideUp(300);
         } else {
-            $('[data-action="gobal-destinations"]').parent().hide();
-            $('[data-action="gobal-collections"]').parent().hide();
-            $('[data-action="gobal-restaurant"]').parent().hide();
-            $('[data-action="gobal-bar"]').parent().hide();
-            $('[data-action="gobal-spa"]').parent().hide();
-            var datObj = {};
-            datObj.keyword = $(this).val();
-            var params = $.extend({}, doAjax_params_default);
-            params['url'] = BaseURL + '/destination/global-search-ajax';
-            params['data'] = datObj;
-            params['successCallbackFunction'] = function (data) {
+            globalSearch($(this).val());
+        }
+   });
 
-                if (data.data.dest != undefined) {
-                    var html ='';
-                    $('[data-action="gobal-destinations"] span').html(data.data.dest.length);
-                    $(data.data.dest).each(function (i, val) {
-                        var  linkMenu = BaseURL+'/luxury_destinations/'+val.category_alias;
-                        html += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.category_name + '</a></li>';
-                    });
-                    $('[data-option="dest-option-list"]').html(html);
-                    $('[data-action="gobal-destinations"]').parent().show();
-                }
-                if (data.data.collection != undefined) {
-                    var html ='';
-                    $('[data-action="gobal-collections"] span').html(data.data.collection.length);
-                    $(data.data.collection).each(function (i, val) {
-                        var  linkMenu = BaseURL+'/'+val.property_slug;
-                        html += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.property_name + '</a></li>';
-                    });
-                    $('[data-option="collection-option-list"]').html(html);
-                    $('[data-action="gobal-collections"]').parent().show();
-                }
-                if (data.data.restro != undefined) {
-                    var html ='';
-                    $('[data-action="gobal-restaurant"] span').html(data.data.restro.length);
-                    $(data.data.restro).each(function (i, val) {
-                        var  linkMenu = BaseURL+'/'+val.alias;
-                        html += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.title + '</a></li>';
-                    });
-                    $('[data-option="resto-option-list"]').html(html);
-                    $('[data-action="gobal-restaurant"]').parent().show();
-                }
-                if (data.data.bar != undefined) {
-                    var html ='';
-                    $('[data-action="gobal-bar"] span').html(data.data.bar.length);
-                    $(data.data.bar).each(function (i, val) {
-                        var  linkMenu = BaseURL+'/'+val.alias;
-                        html += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.title + '</a></li>';
-                    });
-                    $('[data-option="bar-option-list"]').html(html);
-                    $('[data-action="gobal-bar"]').parent().show();
-                }
-                if (data.data.spa != undefined) {
-                    var html ='';
-                    $('[data-action="gobal-spa"] span').html(data.data.spa.length);
-                    $(data.data.spa).each(function (i, val) {
-                        var  linkMenu = BaseURL+'/'+val.property_slug;
-                        html += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.title + '</a></li>';
-                    });
-                    $('[data-option="spa-option-list"]').html(html);
-                    $('[data-action="gobal-spa"]').parent().show();
-                }
-            };
-            doAjax(params);
-            $('[data-option="gobal-search"]').slideDown(300);
+    $(document).on('click', '[data-action="gobal-search-button"]', function () {
+        if ($('[data-action="gobal-search"]').val() == '') {
+            $('[data-option="gobal-search"]').slideUp(300);
+        } else {
+            globalSearch($('[data-action="gobal-search"]').val());
         }
     });
 
+   /*
+   * For Global Search function
+   */
+   function globalSearch(searcValue) {
+       $('[data-action="gobal-destinations"]').parent().hide();
+       $('[data-action="gobal-collections"]').parent().hide();
+       $('[data-action="gobal-restaurant"]').parent().hide();
+       $('[data-action="gobal-bar"]').parent().hide();
+       $('[data-action="gobal-spa"]').parent().hide();
 
-    /*
-    * For Show Gobal Collection
-    */
+        var datObj = {};
+        datObj.keyword = searcValue;
+        var params = $.extend({}, doAjax_params_default);
+        params['url'] = BaseURL + '/destination/global-search-ajax';
+        params['data'] = datObj;
+        params['successCallbackFunction'] = function (data) {
+            $('[data-option="dest-option-list"]').html('');
+            $('[data-option="collection-option-list"]').html('');
+            $('[data-option="resto-option-list"]').html('');
+            $('[data-option="spa-option-list"]').html('');
+            $('[data-option="bar-option-list"]').html('');
 
-    $(document).on('click', '[data-action="gobal-collections"]', function () {
-        hideAllOption();
+
+
+            if (data.data.dest == undefined) {
+                $('[data-action="gobal-destinations"] span').html(0);
+            }else {
+                var html ='';
+                $('[data-action="gobal-destinations"] span').html(data.data.dest.length);
+                $(data.data.dest).each(function (i, val) {
+                    var  linkMenu = BaseURL+'/luxury_destinations/'+val.category_alias;
+                    html += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.category_name + '</a></li>';
+                });
+                $('[data-option="dest-option-list"]').html(html);
+                $('[data-action="gobal-destinations"]').parent().show();
+            }
+            if (data.data.collection == undefined) {
+                $('[data-action="gobal-collections"] span').html(0);
+            }else{
+                var html ='';
+                $('[data-action="gobal-collections"] span').html(data.data.collection.length);
+                $(data.data.collection).each(function (i, val) {
+                    var  linkMenu = BaseURL+'/'+val.property_slug;
+                    html += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.property_name + '</a></li>';
+                });
+                $('[data-option="collection-option-list"]').html(html);
+                $('[data-action="gobal-collections"]').parent().show();
+            }
+            if (data.data.restro == undefined) {
+                $('[data-action="gobal-restaurant"] span').html(0);
+            } else {
+                var html ='';
+                $('[data-action="gobal-restaurant"] span').html(data.data.restro.length);
+                $(data.data.restro).each(function (i, val) {
+                    var  linkMenu = BaseURL+'/'+val.alias;
+                    html += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.title + '</a></li>';
+                });
+                $('[data-option="resto-option-list"]').html(html);
+                $('[data-action="gobal-restaurant"]').parent().show();
+            }
+            if (data.data.bar == undefined) {
+                $('[data-action="gobal-bar"] span').html(0);
+            } else {
+                var html ='';
+                $('[data-action="gobal-bar"] span').html(data.data.bar.length);
+                $(data.data.bar).each(function (i, val) {
+                    var  linkMenu = BaseURL+'/'+val.alias;
+                    html += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.title + '</a></li>';
+                });
+                $('[data-option="bar-option-list"]').html(html);
+                $('[data-action="gobal-bar"]').parent().show();
+            }
+            if (data.data.spa == undefined) {
+                $('[data-action="gobal-spa"] span').html(0);
+            } else {
+                var html ='';
+                $('[data-action="gobal-spa"] span').html(data.data.spa.length);
+                $(data.data.spa).each(function (i, val) {
+                    var  linkMenu = BaseURL+'/'+val.property_slug;
+                    html += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.title + '</a></li>';
+                });
+                $('[data-option="spa-option-list"]').html(html);
+                $('[data-action="gobal-spa"]').parent().show();
+            }
+        };
+        doAjax(params);
+        $('[data-option="gobal-search"]').slideDown(300);
+   }
+
+
+   /*
+   * For Show Gobal Collection
+   */
+   $(document).on('click', '[data-action="gobal-collections"]', function () {
+        /*hideAllOption();
         var data = {};
         data.main_title = 'Collections';
         data.sub_title = 'Home';
         data.id = 0;
         putDataOnLeft(data);
         $('[data-option="collection-option-list"]').removeClass('hide');
-        $('[data-option="child-global"]').removeClass('hide');
-
+        $('[data-option="child-global"]').removeClass('hide');*/
+        //$(this).parent().children('[data-option="collection-option-list"]').removeClass('hide');
     });
 
     /*
@@ -262,15 +282,15 @@ $(document).ready(function () {
     */
 
     $(document).on('click', '[data-action="gobal-destinations"]', function () {
-        hideAllOption();
+        /*hideAllOption();
         var data = {};
         data.main_title = 'Destinations';
         data.sub_title = 'Home';
         data.id = 0;
         putDataOnLeft(data);
         $('[data-option="dest-option-list"]').removeClass('hide');
-        $('[data-option="child-global"]').removeClass('hide');
-
+        $('[data-option="child-global"]').removeClass('hide');*/
+        //$(this).parent().children('[data-option="dest-option-list"]').removeClass('hide');
     });
 
     /*
@@ -278,14 +298,15 @@ $(document).ready(function () {
     */
 
     $(document).on('click', '[data-action="gobal-restaurant"]', function () {
-        hideAllOption();
+        /*hideAllOption();
         var data = {};
         data.main_title = 'Restaurants';
         data.sub_title = 'Home';
         data.id = 0;
         putDataOnLeft(data);
         $('[data-option="resto-option-list"]').removeClass('hide');
-        $('[data-option="child-global"]').removeClass('hide');
+        $('[data-option="child-global"]').removeClass('hide');*/
+        //$(this).parent().children('[data-option="resto-option-list"]').removeClass('hide');
 
     });
 
@@ -294,15 +315,15 @@ $(document).ready(function () {
     */
 
     $(document).on('click', '[data-action="gobal-spa"]', function () {
-        hideAllOption();
+        /*hideAllOption();
         var data = {};
         data.main_title = 'Spas';
         data.sub_title = 'Home';
         data.id = 0;
         putDataOnLeft(data);
         $('[data-option="spa-option-list"]').removeClass('hide');
-        $('[data-option="child-global"]').removeClass('hide');
-
+        $('[data-option="child-global"]').removeClass('hide');*/
+        //$(this).parent().children('[data-option="spa-option-list"]').removeClass('hide');
     });
 
     /*
@@ -310,21 +331,26 @@ $(document).ready(function () {
     */
 
     $(document).on('click', '[data-action="gobal-bar"]', function () {
-        hideAllOption();
+        /*hideAllOption();
         var data = {};
         data.main_title = 'Bars';
         data.sub_title = 'Home';
         data.id = 0;
         putDataOnLeft(data);
         $('[data-option="bar-option-list"]').removeClass('hide');
-        $('[data-option="child-global"]').removeClass('hide');
+        $('[data-option="child-global"]').removeClass('hide');*/
+        //$(this).parent().children('[data-option="bar-option-list"]').removeClass('hide');
 
+    });
+
+    $(document).on('click', '.searchresultdata', function() {
+        $(this).parent().children('.mobilemenulist').slideToggle(400);
+        $(this).parent().siblings().children('.mobilemenulist').slideUp(400);
     });
 
 });
 
 function renderResturantSpaBarByTypeCity(dataObj) {
-
     var selectHtml = '<opyion value="">- Select -</option>';
     $(dataObj.records).each(function (i, val) {
         selectHtml += '<option value="' + val.id + '">' + val.title + '</option>';

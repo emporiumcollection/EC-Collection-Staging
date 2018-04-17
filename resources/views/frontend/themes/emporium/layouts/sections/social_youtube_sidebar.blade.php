@@ -15,36 +15,10 @@
                    data-option-action-type="home" data-id="0"><i class="fa fa-angle-left"></i> <span>HOME</span></a>
             </div>
             <ul class="mobilemenulist common-search-bar" data-option="search-bar">
-                <li>
-                    <div class="mobile-leftsearch">
-                        <input type="text" class="form-control" id="search"/>
-                        <button type="button"><i class="fa fa-search"></i></button>
-                    </div>
-                    <div id="filtersearchpopup" style="display:none;">
-                        <ul>
-                            <li>
-                                <a class="searchresultdata" href="javascript:void(0)" id="destinationsresult"><i
-                                            class="iconsheet icon-destinations"></i> Destinations <span>(0)</span></a>
-                            </li>
-                            <li>
-                                <a class="searchresultdata" href="javascript:void(0)"><i
-                                            class="iconsheet icon-collections"></i> Collections <span>(0)</span></a>
-                            </li>
-                            <li>
-                                <a class="searchresultdata" href="javascript:void(0)"><i
-                                            class="iconsheet icon-restaurant"></i> Restaurant <span>(0)</span></a>
-                            </li>
-                            <li>
-                                <a class="searchresultdata" href="javascript:void(0)"><i class="iconsheet icon-bar"></i>
-                                    Bar <span>(0)</span></a>
-                            </li>
-                            <li>
-                                <a class="searchresultdata" href="javascript:void(0)"><i class="iconsheet icon-spa"></i>
-                                    Spa <span>(0)</span></a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+                {{-- Global Search Bar --}}
+                @include('frontend.themes.emporium.layouts.sections.global-search-bar')
+                {{-- End Global Search Bar --}}
+
                 <li data-option="intro-text" class="hide">
                     <p></p>
                 </li>
