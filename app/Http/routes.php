@@ -22,7 +22,7 @@ Route::get('/', 'HomeController@index');
 Route::group(['middleware' => 'auth'], function()
 {
     
-        Route::resource('usercontract', 'UsercontractController');
+     Route::resource('usercontract', 'UsercontractController');
     
 	//Route::get('crmlayouts', 'CrmlayoutController@index');
 	Route::resource('crmlayouts', 'CrmlayoutController');

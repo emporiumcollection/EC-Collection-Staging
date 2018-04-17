@@ -8,6 +8,7 @@ use Socialize;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 use Validator,Input, Redirect;
+use App\Models\Contract;
 use DB, CommonHelper;
 class CustomerController extends Controller {
 
@@ -977,7 +978,14 @@ return Redirect::to('customer/profile')->with('message', \SiteHelpers::alert('er
           $this->data['pageTitle'] = "Whoiam User Membership Type Selection";
         $this->data['pageMetakey'] = "Whoiam User Membership";
         $this->data['pageMetadesc'] = "Whoiam User Membership";
-        
+        $contractObject =new Contract();
+
+        $params = array(
+            
+        );
+        $resultContract= $contractObject->getRows($params); 
+       
+        $this->data['contractdata']=$resultContract["rows"];
        return view('customer.whoiam', $this->data);
     }
 

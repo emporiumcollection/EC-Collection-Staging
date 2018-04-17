@@ -22,7 +22,7 @@
         <div class="sbox animated fadeInRight">
             <div class="sbox-content">
                 <div class="panel-group" id="uc-accordion">
-                    <?php
+                    xxx<?php
                     if(!empty($rowData)) {
                         $sn = 1;
                         foreach ($rowData as $row) {

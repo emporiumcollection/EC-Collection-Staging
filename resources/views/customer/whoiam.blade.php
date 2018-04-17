@@ -45,6 +45,8 @@
 
 
 
+
+
   <!-- Tab panes -->
   <div class="tab-content">
      <div role="tabpanel" class="tab-pane active" id="profile"> 
@@ -130,10 +132,23 @@
 								<input type="checkbox"  id="personalize" name="personalize" checked="checked">
 							</label>
 								<div class="radio">
-									<label class="radsio-label" >I require personalized service bookings in my account profile</label>
+									<label class="radio-label" >I require personalized service bookings in my account profile</label>
 								</div>
+
+
 							</div>
 						</div>
+
+
+							<div class="col-sm-10" id="contractSignCheck">
+								<label class="col-sm-2">
+								<input type="checkbox"  id="contractSignCheck" name="contractSignCheck" value="">
+							</label>
+								<div  data-toggle="modal" data-target="#myModal">
+									<label class="radio-label" >Read and accept contract conditions.</label>
+								</div>
+
+							</div>
 						<div class="form-group">        
 							<div class="col-sm-12">
 								<input type="submit" class="btn btn-white pull-right" value="Save Profile" >
@@ -144,7 +159,7 @@
 					<div id="formerrors"></div>
 
 					
-			              </div>
+			          </div>
 			        </div>
 			    </div>   
             </div>
@@ -155,8 +170,53 @@
   </div>
 
 </div>
-   
-   
+ <div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Contract Section</h4>
+      </div>
+      <div class="modal-body">
+      	  <div class="sbox animated fadeInRight">
+            <div class="sbox-content">
+                <div class="panel-group" id="uc-accordion">
+                <?php
+                    if(!empty($contractdata)) {
+                        $sn = 0;
+                        foreach ($contractdata as $row) {
+                            ?>
+                             <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#uc-accordion" href="#uc-collapse-<?php echo $sn; ?>"><?php echo $row->title; ?></a>
+                                    </h4>
+                                </div>
+                                <div id="uc-collapse-<?php echo $sn; ?>" class="panel-collapse collapse <?php echo ($sn == 1)? 'in' : ''; ?>">
+                                    <div class="panel-body"><?php echo nl2br($row->description); ?></div>
+                                </div>
+                            </div>
+                                
+                            <?php
+                            $sn++;
+                        }
+                    }
+                    ?>
+                </div>
+            </div>
+  </div>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 </section>
    
 
