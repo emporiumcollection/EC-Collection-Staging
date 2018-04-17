@@ -769,9 +769,9 @@
 
 				<h2>Event:{{$package->title}}</h2>
 				<p>Event Details:{{$package->desciription}}</p>
-				<h3>{{$package->package_title}}</h3>
-               <h2>Price: {!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($package->package_price,2) }}</h2>
-               <p>{!! nl2br($package->package_description) !!}</p>
+				<p>USP:{{$package->usp_text}}</p>
+				<p>Contact:{{$package->reservation_email}}</p>
+               
              </div>
            </div>
 
@@ -1151,7 +1151,7 @@
 		$(document).on('click', '.showMoreSec, .moreButtonPopup', function () {
 			$('.showMorePopup').css("background-image", "");
 			$('.showMoreContent').html('');
-			alert($(this).attr('rel'));
+			//alert($(this).attr('rel'));
 			var params = $.extend({}, doAjax_params_default);
 			params['url'] = BaseURL + '/getEventPackages/'+$(this).attr('rel');
 			params['successCallbackFunction'] = renderPackagDetails;
@@ -1168,7 +1168,7 @@
 			$(data.records).each(function( i, val ) {
 				if(i==0){
 
-				var rimg ="uploads/event_package_images/"+val.package_image;
+				var rimg ="/uploads/event_package_images/"+val.package_image;
 				$('.showMorePopup').css("background-image", "url('" + rimg + "')");	
 					
 				packageDetailsHtml += '<h1>Event: ' + val.title + '</h1>';
