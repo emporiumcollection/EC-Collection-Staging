@@ -155,6 +155,8 @@ $(document).ready(function () {
     .autocomplete( "instance" )._renderItem = function( ul, item ) {
         var destIcon = '';
         if(item.type) {
+            destIcon = '<i class="iconsheet icon-collections"></i>';
+        } else {
             destIcon = '<i class="iconsheet icon-destinations"></i>';
         }
 
