@@ -199,16 +199,16 @@ class MenuController extends Controller {
 			{
 				$removeimg = \DB::table('tb_menu')->where('menu_id','=',$request->menuid)->update(["image"=>""]);
 				
-				return "success";
+				return json_encode(array("status"=>"success"));
 			}
 			else
 			{
-				return "error";
+				return json_encode(array("status"=>"error"));
 			}
 		}
 		else
 		{
-			return "error";
+			return json_encode(array("status"=>"error"));
 		}
 	}
 

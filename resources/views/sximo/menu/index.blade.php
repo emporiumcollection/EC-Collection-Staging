@@ -239,7 +239,9 @@
 						<input  type='file' name='image' id='image' style='width:150px !important;'  />
 						<div class="imgmenu">
 						{!! SiteHelpers::showUploadedFile($row['image'],'/uploads/menu_imgs/') !!}
-						<li class="fa fa-times" onclick="remove_menuImage({{ $row['menu_id'] }});"></li>
+						@if($row['image']!='')
+							<li class="fa fa-times" onclick="remove_menuImage({{ $row['menu_id'] }});"></li>
+						@endif
 						</div>
 					 </div>
 				</div>
@@ -376,7 +378,7 @@ function remove_menuImage(menuid)
 		  dataType: "json",
 		  success: function(data){
 			  var html ='';
-			  if(data=='error')
+			  if(data.status=='error')
 			  {
 					alert("Record Not Found!");
 					
