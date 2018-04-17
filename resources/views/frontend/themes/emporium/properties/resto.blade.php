@@ -757,14 +757,14 @@
 
 <div class="HamYardHotelSection">
   <div>
-     <div id="HamYardHotelSlider" class="carousel slide HamYardHotelSlider" data-ride="carousel">
-        <div class="carousel-inner">
+     <div id="HamYardHotelEventslider" class="carousel slide HamYardHotelSlider" data-ride="carousel">
+        <div class="carousel-inner" id="eventPackageSlider">
    	
 
 
 			{{--*/ $k=0; $tottyp = count($eventsArray); /*--}}
            @foreach($eventsArray as $key=>$package)
-           <div id="{{$package->id}}" style="background-image: url({{URL::to('uploads/event_package_images/'.$package->package_image)}});" @if($k==0) class="item active" @else class="item" @endif>
+           <div  id="{{ $package->event_id }}" style="background-image: url({{URL::to('uploads/event_package_images/'.$package->package_image)}});" @if($k==0) class="item active" @else class="item" @endif>
              <div class="carousalCaption">
 
 				<h2>Event:{{$package->title}}</h2>
@@ -791,17 +791,17 @@
                   <p> </p>
                   <div class="num"></div>
                 </div>
-                <a class="left left1 carousel-control" href="#HamYardHotelSlider" data-slide="prev">
+                <a class="left left1 carousel-control" href="#HamYardHotelEventslider" data-slide="prev">
                   <img src="{{ asset('themes/emporium/images/editorial-left-arrow.png') }}" alt="icon">
                 </a>
-                <a class="right carousel-control" href="#HamYardHotelSlider" data-slide="next">
+                <a class="right carousel-control" href="#HamYardHotelEventslider" data-slide="next">
                   <img src="{{ asset('themes/emporium/images/editorial-right-arrow.png') }}" alt="icon">
                 </a>
               </div>
-              <ol class="carousel-indicators">
+              <ol class="carousel-indicators" id="eventSliderNav">
             {{--*/ $klist=0; $tottyp = count($eventsArray); /*--}}
              @foreach($eventsArray as $key=>$package)
-              <li data-target="#HamYardHotelSlider" data-slide-to="{{$klist}}" @if($klist==0) class="active" @endif><img src="{{URL::to('uploads/event_package_images/'.$package->package_image)}}" alt="Image"></li>             
+              <li data-target="#HamYardHotelEventslider" data-slide-to="{{$klist}}" @if($klist==0) class="active" @endif rel="{{ $package->event_id }}"><img src="{{URL::to('uploads/event_package_images/'.$package->package_image)}}" alt="Image"></li>             
 
               {{--*/ $klist++; /*--}}
                                                 
@@ -1009,7 +1009,7 @@
 
 
 
-
+<!-- div used to show popup -->
 <div class="showMorePopup fullWidthPopup">
   <a href="javascript:void(0);" class="loginPopupCloseButton">×</a>
     <div class="container-fluid">
@@ -1019,24 +1019,9 @@
           </div>
           <div class="col-md-6 col-sm-8 col-xs-12 noPadding">
             <div class="showMoreContent">
-              <h1>TERRACE SUITE</h1>
-              <ul>
-                <li>• 145sqm (1560sqft) </li>
-                <li>• Two King Beds </li>
-                <li>• Roof Top View </li>
-                <li>• Top Floor with terrace </li>
-                <li>• Open plan lounge, dining area and kitchen </li>
-                <li>• Individual Design </li>
-                <li>• Complimentary Wifi </li>
-                <li>• Air Conditioning </li>
-                <li>• LCD TV and DVD </li>
-                <li>• Writing desk </li>
-                <li>• Shower and Bathtub </li>
-                <li>• Rik Rak by Kit Kemp Bathroom Amenities </li>
-                <li>• Bluetooth Bose Units </li>
-                <li>• Sleeps 5 with extra bed</li>
-              </ul>
-              <p>A spectacular two bedroom fifth floor suite at 145sqm or 1560sqf. The vast living/dining room has high ceilings with full floor-to-ceiling windows and a terrace with views of the courtyard and London skyline. The spacious living room has a powder room, writing desk and a sleek designed Boffi kitchen. There are two spacious bedrooms each with a king beds and the en-suite bathrooms have a walk-in shower, large central bath and flat screen TV. Each of the bedrooms have a king bed with the en-suite bathroom that is beautifully designed with 2 basins, a bath tub and a separate shower with exclusive Rik Rak bath products designed by Kit Kemp. One rollaway allowed to sleep 5.</p>
+              <h1></h1>
+              
+              <p></p>
               <div class="shoMoreButtonSection">
                 <h2>€4141</h2>
                 <a href="javascript:void(0);" class="button">BOOK Now</a>
@@ -1046,6 +1031,7 @@
       </div>
     </div>
 </div>
+<!-- div used to show popup -->
 
 @endsection
 
@@ -1150,10 +1136,10 @@
 
 		$(document).on('click', '.showMoreSec, .moreButtonPopup', function () {
 			$('.showMorePopup').css("background-image", "");
-			$('.showMoreContent').html('');
-			//alert($(this).attr('rel'));
+			$('.showMoreContent').html('');			
+			//$('#eventSliderNav').find(".active").attr("rel");
 			var params = $.extend({}, doAjax_params_default);
-			params['url'] = BaseURL + '/getEventPackages/'+$(this).attr('rel');
+			params['url'] = BaseURL + '/getEventPackages/'+ $('#eventSliderNav').find(".active").attr("rel");
 			params['successCallbackFunction'] = renderPackagDetails;
 			doAjax(params);
 

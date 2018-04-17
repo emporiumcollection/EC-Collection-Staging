@@ -187,7 +187,7 @@
                 <div class="rangeslidercontainer">
                       <div class="slidecontainer">
                             <input type="range" min="1" max="6000" value="0" class="slider" id="myRange">
-                            <div class="sliderlegend">Hight - Low</div>
+                            <div class="sliderlegend">High - Low</div>
                             <select name="currencyOption" class="form-control">
                                 <option value="EUR">Currency</option>
 								{{--*/ $currencyList=(CommonHelper::getCurrencyList()); /*--}}
