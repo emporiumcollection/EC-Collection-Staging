@@ -230,7 +230,7 @@ function renderExperience(dataObj) {
         experienceHtml += '<li><div class="navheadimage">';
         experienceHtml += '<a href="'+BaseURL+'/luxury_experience/'+val.category_alias+'">';
         experienceHtml += '<img src="'+imagePath+'" alt="" class="mCS_img_loaded">';
-        experienceHtml += '<div class="headingoverlay"><span class="destinationTitle">' + val.category_name + '</span><br><span class="hashTag">' + val.current_category.category_instagram_tag + '</span></div>';
+        experienceHtml += '<div class="headingoverlay"><span class="destinationTitle">' + val.category_name + '</span></div>';
         experienceHtml += '</a></div></li>';
     });
 
