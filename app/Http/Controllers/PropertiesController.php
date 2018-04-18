@@ -136,11 +136,18 @@ class PropertiesController extends Controller {
 
         $this->data['amenties'] = \DB::table('tb_amenities')->where('amenity_status', '1')->get();
         $this->data['designers'] = \DB::table('tb_designers')->where('designer_status', '1')->get();
-		
-		$this->data['restaurants'] = \DB::table('tb_restaurants')->select('id', 'title')->get();
-		$this->data['bars'] = \DB::table('tb_bars')->select('id', 'title')->get();
-		$this->data['spas'] = \DB::table('tb_spas')->select('id', 'title')->get();
-
+		if(\Session::get('gid')!=1 && \Session::get('gid')!=2){
+			$uid = \Auth::user()->id;
+			$this->data['restaurants'] = \DB::table('tb_restaurants')->select('id', 'title')->where('user_id', $uid)->get();
+			$this->data['bars'] = \DB::table('tb_bars')->select('id', 'title')->where('user_id', $uid)->get();
+			$this->data['spas'] = \DB::table('tb_spas')->select('id', 'title')->where('user_id', $uid)->get();
+		}
+		else
+		{
+			$this->data['restaurants'] = \DB::table('tb_restaurants')->select('id', 'title')->get();
+			$this->data['bars'] = \DB::table('tb_bars')->select('id', 'title')->get();
+			$this->data['spas'] = \DB::table('tb_spas')->select('id', 'title')->get();
+		}
         $row_reservations = \DB::select(\DB::raw("SELECT COUNT(*) AS total_reservations FROM tb_reservations WHERE property_id = '$id' "));
         $row_reserved_rooms = \DB::select(\DB::raw("SELECT COUNT(*) AS total_reserved_rooms FROM td_reserved_rooms LEFT JOIN tb_reservations ON tb_reservations.id = td_reserved_rooms.reservation_id WHERE tb_reservations.property_id = '$id' "));
         $row_turnover = \DB::select(\DB::raw("SELECT SUM(number_of_nights * price) AS total_turnover FROM td_reserved_rooms LEFT JOIN tb_reservations ON tb_reservations.id = td_reserved_rooms.reservation_id WHERE tb_reservations.property_id = '$id' "));
