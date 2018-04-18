@@ -206,13 +206,28 @@ $(document).ready(function () {
             $('[data-option="spa-option-list"]').html('');
             $('[data-option="bar-option-list"]').html('');
 
-            $('#filtersearchpopup ul li:first-child ul.mobilemenulist').css("display", "block");
+            if(data.data.collection.length > 0) {
+                $('#filtersearchpopup ul li:nth-child(1) ul.mobilemenulist').css("display", "block");
+                console.log("1");
+            } else if(data.data.dest.length > 0) {
+                $('#filtersearchpopup ul li:nth-child(2) ul.mobilemenulist').css("display", "block");
+                console.log("2");
+            } else if(data.data.restro.length > 0) {
+                $('#filtersearchpopup ul li:nth-child(3) ul.mobilemenulist').css("display", "block");
+                console.log("3");
+            } else if(data.data.spa.length > 0) {
+                $('#filtersearchpopup ul li:nth-child(4) ul.mobilemenulist').css("display", "block");
+                console.log("5");
+            } else if(data.data.bar.length > 0) {
+                $('#filtersearchpopup ul li:nth-child(5) ul.mobilemenulist').css("display", "block");
+                console.log("4");
+            }
 
             if (data.data.dest == undefined) {
-                $('[data-action="gobal-destinations"] span').html(0);
+                $('[data-action="gobal-destinations"] span').html('Destination (0)');
             }else {
                 var html ='';
-                var destString = (data.data.dest.length > 1 ? "Destinations" : "Destination");
+                var destString = (data.data.dest.length > 1) ? "Destinations" : "Destination";
                 $('[data-action="gobal-destinations"] span').html(destString + ' ('+data.data.dest.length+')');
                 $(data.data.dest).each(function (i, val) {
                     var  linkMenu = BaseURL+'/luxury_destinations/'+val.category_alias;
@@ -222,10 +237,10 @@ $(document).ready(function () {
                 $('[data-action="gobal-destinations"]').parent().show();
             }
             if (data.data.collection == undefined) {
-                $('[data-action="gobal-collections"] span').html(0);
+                $('[data-action="gobal-collections"] span').html('Collection (0)');
             }else{
                 var html ='';
-                var collString = (data.data.collection.length > 1 ? "Collections" : "Collection");
+                var collString = (data.data.collection.length > 1) ? "Collections" : "Collection";
                 $('[data-action="gobal-collections"] span').html(collString + ' ('+data.data.collection.length+')');
                 $(data.data.collection).each(function (i, val) {
                     var  linkMenu = BaseURL+'/'+val.property_slug;
@@ -235,10 +250,10 @@ $(document).ready(function () {
                 $('[data-action="gobal-collections"]').parent().show();
             }
             if (data.data.restro == undefined) {
-                $('[data-action="gobal-restaurant"] span').html(0);
+                $('[data-action="gobal-restaurant"] span').html('Restaurant (0)');
             } else {
                 var html ='';
-                var restroString = (data.data.restro.length > 1 ? "Restaurants" : "Restaurant");
+                var restroString = (data.data.restro.length > 1) ? "Restaurants" : "Restaurant";
                 $('[data-action="gobal-restaurant"] span').html(restroString + ' ('+data.data.restro.length+')');
                 $(data.data.restro).each(function (i, val) {
                     var  linkMenu = BaseURL+'/'+val.alias;
@@ -248,10 +263,10 @@ $(document).ready(function () {
                 $('[data-action="gobal-restaurant"]').parent().show();
             }
             if (data.data.bar == undefined) {
-                $('[data-action="gobal-bar"] span').html(0);
+                $('[data-action="gobal-bar"] span').html('Bar (0)');
             } else {
                 var html ='';
-                var barString = (data.data.bar.length > 1 ? "Bars" : "Bar");
+                var barString = (data.data.bar.length > 1) ? "Bars" : "Bar";
                 $('[data-action="gobal-bar"] span').html(barString + ' ('+data.data.bar.length+')');
                 $(data.data.bar).each(function (i, val) {
                     var  linkMenu = BaseURL+'/'+val.alias;
@@ -261,10 +276,10 @@ $(document).ready(function () {
                 $('[data-action="gobal-bar"]').parent().show();
             }
             if (data.data.spa == undefined) {
-                $('[data-action="gobal-spa"] span').html(0);
+                $('[data-action="gobal-spa"] span').html('Spa (0)');
             } else {
                 var html ='';
-                var spaString = (data.data.spa.length > 1 ? "Spas" : "Spa");
+                var spaString = (data.data.spa.length > 1) ? "Spas" : "Spa";
                 $('[data-action="gobal-spa"] span').html(spaString + ' ('+data.data.spa.length+')');
                 $(data.data.spa).each(function (i, val) {
                     var  linkMenu = BaseURL+'/'+val.property_slug;
