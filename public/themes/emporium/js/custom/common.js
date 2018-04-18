@@ -518,13 +518,26 @@ function renderMenu(dataObj) {
     hideAllOption();
     putDataOnLeft(data);
     $(dataObj.menus).each(function (i, val) {
-        console.log(val);
-        menuHtml += '<li><a href="' + val.url + '" class="cursor menu_item" data-action="select-menu" data-position="' + val.position + '" data-id="' + val.id + '">' + val.menu_name + '</a></li>';
+        if(val.menu_type == "external") {
+            if(val.url == "#" || val.url == "") {
+                menuHtml += '<li><a class="cursor menu_item" data-action="select-menu" data-position="' + val.position + '" data-id="' + val.menu_id + '">' + val.menu_name + '</a></li>';
+            } else {
+                menuHtml += '<li><a href="' + val.url + '" class="cursor menu_item" data-action="select-menu" data-position="' + val.position + '" data-id="' + val.id + '">' + val.menu_name + '</a></li>';
+            }
+        } else {
+            menuHtml += '<li><a href="' + BaseURL + '/' + val.module + '" class="cursor menu_item" data-action="select-menu" data-position="' + val.position + '" data-id="' + val.id + '">' + val.menu_name + '</a></li>';
+        }
+
     });
 
     $('[data-option="selected-option-list"]').html(menuHtml);
     $('[data-option="global"]').removeClass('hide');
     $('[data-option="child-global"]').removeClass('hide');
     $('[data-option="selected-option-list"]').removeClass('hide');
-
 }
+
+$(document).on('click', '[data-action="agree-button"]', function () {
+    $(".transferSecSecond").addClass("openTransferSec");
+    $(".transferSecFirst").removeClass("openTransferSec");
+    $(".transferSecThird").removeClass("openTransferSec");
+})

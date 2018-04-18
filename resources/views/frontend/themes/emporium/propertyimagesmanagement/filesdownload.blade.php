@@ -944,25 +944,11 @@
                         
                         <div class="col-md-10 main-page-landing">
                             <div class="row">
-								<div class="form-errors"> </div>
-                               <form method="get" id="filetransferform" action="{{URL::to('hotel/transferimages')}}">
-									<div class="form-group  " >
-										<input  class="form-control" name="propertyname" id="propertyname" placeholder="Enter Your Property name" value="" type="text">
-									</div>
-									<div class="form-group  " >
-										<input  class="form-control" name="emailaddress" id="emailaddress" placeholder="Enter Your Email" value="" type="email">
-									</div>
-									<div class="form-group  " >
-										<textarea class="form-control" name="message" id="message"></textarea>
-									</div>
-									<div class="form-group  " >
-										<div class="dropzone" id="dropzoneFileUpload"> </div>
-									</div>
-									
-									<div class="form-group  " >
-										<button class="form-control" >Send </button>
-									</div>
-                                </form> 
+								@if($filepath!='')
+									<a href="{{ URL::to('uploads/varients_imgs/'.$filepath) }}" class="btn btn-primary" download="{{$filepath}}" target="_self" >Download </a>
+								@else
+									Wrong Link
+								@endif
                             </div>
                         </div>
                        
@@ -1157,7 +1143,7 @@
                         
                           */  
       ?>
-
+                        {!!Storage::get('homeOurDestination.html')!!}
                        
                         
                     </div>
@@ -2134,7 +2120,7 @@
                                                         
                                                         //
                                                     ?>
-
+                                                    {!!Storage::get('homeOurDestinationMobile.html')!!}
                                                    
                                                 </div>
                                             </div>
