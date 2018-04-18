@@ -6,13 +6,32 @@
     </div>
     <div class="mobilemenu-inner">
     	<div class="mobilemainnav openmobilemenu">
-	    	<div class="mobilenavheader">
-            	<a href="{{URL::to('')}}"><img src="{{ asset('themes/emporium/images/logo.png') }}" alt="Emporium Voyage" class="img-responsive"/></a>
+            <div class="mobilenavheader " data-option="home">
+                <a href="{{url('/')}}">
+                    <img src="{{ asset('themes/emporium/images/logo.png')}}" alt="Emporium Voyage" class="img-responsive"/>
+                </a>
             </div>
-            <ul class="mobilemenulist">
+            <div class="mobilenavheader hide" data-option="child-global">
+                <h3 data-option-title="global"></h3>
+                <a class="homelinknav backtohomelink cursor" data-option-action="back"
+                   data-option-action-type="home" data-id="0"><i class="fa fa-angle-left"></i> <span>HOME</span></a>
+            </div>
+            <ul class="mobilemenulist common-search-bar" data-option="search-bar">
                 {{-- Global Search Bar --}}
                 @include('frontend.themes.emporium.layouts.sections.global-search-bar')
-                {{-- End Global Search Bar --}}
+                {{-- End Global Search Bar--}}
+                <li data-option="intro-text" class="hide">
+                    <p></p>
+                </li>
+                <li class="hide" data-option="selected-thumb">
+                    <div class="navheadimage">
+                        <img data-option="selected-thumb-img" alt=""/>
+                        <div class="headingoverlay" data-option="selected-thumb-text"></div>
+                    </div>
+                </li>
+            </ul>
+            <ul class="mobilemenulist" data-option="home">
+
 
     @if(Auth::check() &&  (Auth::User()->group_id==5 || Auth::User()->group_id==7)   )
 
@@ -56,7 +75,7 @@
                @if(!empty($page_menus))
                    @foreach ($page_menus as $pmenu)
                         <li>
-                            <a @if($pmenu['menu_type'] =='external') @if($pmenu['url'] == "#" || $pmenu['url'] == '') data-action="select-menu" data-position="business" data-id="{{ $pmenu['menu_id'] }}" @else href="{{ URL::to($pmenu['url'])}}" @endif @else href="{{ URL::to($pmenu['module'])}}" @endif id="companynav{{$pmenu['menu_id']}}">
+                            <a class="cursor menu_item" @if($pmenu['menu_type'] =='external') @if($pmenu['url'] == "#" || $pmenu['url'] == '') data-action="select-menu" data-position="business" data-id="{{ $pmenu['menu_id'] }}" @else href="{{ URL::to($pmenu['url'])}}" @endif @else href="{{ URL::to($pmenu['module'])}}" @endif id="companynav{{$pmenu['menu_id']}}">
                                 @if(CNF_MULTILANG ==1 && isset($pmenu['menu_lang']['title'][Session::get('lang')]))
                                     {{ $pmenu['menu_lang']['title'][Session::get('lang')] }}
                                 @else
@@ -68,6 +87,8 @@
                 @endif
             @endif
 
+            </ul>
+            <ul class="mobilemenulist hide" data-option="selected-option-list">
             </ul>
             @if (!Auth::check())
                 <div class="bottomlink" data-option="global">Members? <a class="loginSecForMob"
