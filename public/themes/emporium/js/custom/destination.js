@@ -103,7 +103,7 @@ function renderDestination(dataObj) {
             data.sub_title = 'Back To '+dataObj.currentParentCate.category_name;
             data.id = dataObj.currentParentCate.id;
         }else{
-            data.sub_title = 'Back To '+dataObj.currentParentCate.category_name;
+            data.sub_title = 'Back To Destination';
             data.id = dataObj.current_category.parent_category_id;
         }
 
