@@ -59,8 +59,8 @@
             <form method="get" id="filetransferform" action="{{URL::to('hotel/transferimages')}}">
                 <div class="uploadInput">
                     <h2>+ Add Your Files</h2>
-                    {{--<input type="file">--}}
-                    <div class="dropzone" id="dropzoneFileUpload"> </div>
+                    <input type="file">
+                    {{--<div class="dropzone" id="dropzoneFileUpload"> </div>--}}
                 </div>
                 <div class="form-group">
                     <input type="email" class="form-control" placeholder="Email to">
