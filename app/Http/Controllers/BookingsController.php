@@ -50,7 +50,14 @@ class BookingsController extends Controller {
             $this->data['hide_email_btn'] = true;
             $filter .= " AND (client_id='" . $uid . "')";
         }
-
+		if(\Session::get('gid')!=1 && \Session::get('gid')!=2){
+            $uid = \Auth::user()->id;
+			$checkallprop = \DB::table('tb_properties')->select('id')->where('user_id', $uid)->get();
+			if(!empty($checkallprop))
+			{
+				$filter .= " AND property_id in (".implode(',',$checkallprop).")";
+			}
+		}
         $page = $request->input('page', 1);
         $params = array(
             'page' => $page,
