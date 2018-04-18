@@ -81,7 +81,7 @@ class PropertyController extends Controller {
 
 		   
 		$cateObj = \DB::table('tb_categories')->where('category_alias', $keyword)->where('category_published', 1)->first();
-
+		print_r($cateObj); die;
         $chldIds = array();
 		if (!empty($cateObj)) {
 			$channel_url = $cateObj->category_youtube_channel_url;
