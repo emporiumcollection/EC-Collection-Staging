@@ -59,7 +59,8 @@ class PropertyimagesmanagementController extends Controller {
 		$this->data['ourmaindesitnation'] = '';
 		$this->data['social_links'] = \DB::table('tb_social')->where('status', 1)->get();
 		$this->data['landing_menus'] = array();
-        return view('frontend.propertyimagesmanagement.filesupload', $this->data);
+
+        return view('frontend.themes.emporium.propertyimagesmanagement.filesupload', $this->data);
     }
 	
 	function createNewFolder($Foldername, $ParentfolderId) {
