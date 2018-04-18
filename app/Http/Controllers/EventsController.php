@@ -45,7 +45,10 @@ class EventsController extends Controller {
 		// End Filter sort and order for query 
 		// Filter Search for query		
 		$filter = (!is_null($request->input('search')) ? $this->buildSearch() : '');
-
+		if(\Session::get('gid')!=1 && \Session::get('gid')!=2){
+			$uid = \Auth::user()->id;
+			$filter .= " AND user_id = '".$uid."'" ;
+        }
 		
 		$page = $request->input('page', 1);
 		$params = array(
@@ -112,6 +115,11 @@ class EventsController extends Controller {
 		$this->data['fields'] 		=  \SiteHelpers::fieldLang($this->info['config']['forms']);
 		
 		$this->data['id'] = $id;
+		$this->data['group'] = \Session::get('gid');
+		if(\Session::get('gid')!=1 && \Session::get('gid')!=2){
+			$uid = \Auth::user()->id;
+			$this->data['proprty'] = \DB::table('tb_properties')->select('id','property_name')->where('property_status', 1)->where('user_id', $uid)->get();
+        }
 		return view('events.form',$this->data);
 	}	
 
@@ -143,7 +151,9 @@ class EventsController extends Controller {
 		$validator = Validator::make($request->all(), $rules);	
 		if ($validator->passes()) {
 			$data = $this->validatePost('tb_events');
-				
+			if(\Session::get('gid')!=1 && \Session::get('gid')!=2){
+				$data['user_id'] = \Auth::user()->id;
+			}
 			$id = $this->model->insertRow($data , $request->input('id'));
 			
 			if(!is_null($request->input('apply')))
