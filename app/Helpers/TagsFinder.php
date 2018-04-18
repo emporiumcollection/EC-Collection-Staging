@@ -47,6 +47,22 @@ class TagsFinder {
         return substr($tagStr, 0, -1);
     }
 	
+	static function findProperties() {
+        $tagStr = "";
+        if(\Session::get('gid')!=1 && \Session::get('gid')!=2){
+			$uid = \Auth::user()->id;
+			$proprty = \DB::table('tb_properties')->where('property_status', 1)->where('user_id', $uid)->get();
+        }
+		else
+		{
+			$proprty = \DB::table('tb_properties')->where('property_status', 1)->get();
+		}
+        foreach ($proprty as $propt) {
+            $tagStr .= "'" . $propt->property_name . "',";
+        }
+        return substr($tagStr, 0, -1);
+    }
+	
 	static function finddestinations() {
         $destStr = "";
         $categories = \DB::table('tb_categories')->where('category_published', 1)->where('parent_category_id', '!=', 8)->where('id', '!=', 8)->get();
