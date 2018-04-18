@@ -61,6 +61,7 @@ class PropertyimagesmanagementController extends Controller {
 		$this->data['landing_menus'] = array();
 
         return view('frontend.themes.emporium.propertyimagesmanagement.filesupload', $this->data);
+        //return view('frontend.propertyimagesmanagement.filesupload', $this->data);
     }
 	
 	function createNewFolder($Foldername, $ParentfolderId) {

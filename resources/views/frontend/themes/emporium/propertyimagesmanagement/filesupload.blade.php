@@ -56,20 +56,23 @@
 
         </div>
         <div class="transferFileSec transferSecSecond">
-            <div class="uploadInput">
-                <h2>+ Add Your Files</h2>
-                <input type="file">
-            </div>
-            <div class="form-group">
-                <input type="email" class="form-control" placeholder="Email to">
-            </div>
-            <div class="form-group">
-                <input type="email" class="form-control" placeholder="Your email">
-            </div>
-            <div class="form-group">
-                <textarea class="form-control" rows="3" placeholder="Message"></textarea>
-            </div>
-            <button class="bnt SendButon AddFileButton" type="button">Send</button>
+            <form method="get" id="filetransferform" action="{{URL::to('hotel/transferimages')}}">
+                <div class="uploadInput">
+                    <h2>+ Add Your Files</h2>
+                    {{--<input type="file">--}}
+                    <div class="dropzone" id="dropzoneFileUpload"> </div>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="Email to">
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="Your email">
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" rows="3" placeholder="Message"></textarea>
+                </div>
+                <button class="bnt SendButon AddFileButton" type="button">Send</button>
+            </form>
         </div>
         <div class="carousel-caption transferSecThird">
             <label class="labelHeading">Lorem Ipsum is simply dummy text
@@ -107,6 +110,7 @@
     @parent
     <link href="{{ asset('themes/emporium/css/terms-and-conditions.css') }}" rel="stylesheet">
     <link href="{{ asset('themes/emporium/css/transfer-css.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('sximo/css/dropzone.css') }}">
 @endsection
 
 {{-- For custom style  --}}
@@ -118,6 +122,8 @@
 @section('javascript')
     @parent
     <script src="{{ asset('sximo/js/parsley.min.js')}}" type="text/javascript"></script>
+
+    <script src="{{ asset('sximo/js/dropzone.js') }}"></script>
 @endsection
 
 {{-- For custom script --}}
@@ -172,6 +178,46 @@
                 }
             });
         }
+    </script>
+
+    <script>
+        $(document).on('ready', function () {
+            var baseUrl = "{{ url::to('hotel/transferaddfile') }}";
+            var token = "{{ Session::getToken() }}";
+            Dropzone.autoDiscover = false;
+            var myDropzone = new Dropzone("div#dropzoneFileUpload", {
+                url: baseUrl,
+                params: {
+                    _token: token,
+                    fold_id: 6200,
+                    emailaddress: $('#emailaddress').val(),
+                    message: $('textarea#message').val(),
+                    propertyname: $('#propertyname').val(),
+                },
+                paramName: "file", // The name that will be used to transfer the file
+                addRemoveLinks: true,
+                success: function(file, response){
+                    if(response=='error')
+                    {
+                        $('.form-errors').html('Something went wrong, please check the form and try again!');
+                    }
+                    else
+                    {
+                        $('.form-errors').html('Files added successfully!');
+                    }
+
+                },
+                init: function() {
+                    var thisDropzone = this;
+                    this.on("processing", function(file) {
+                        thisDropzone.options.params.fold_id = localStorage.getItem('fold_id');
+                        thisDropzone.options.params.emailaddress = $('#emailaddress').val();
+                        thisDropzone.options.params.message = $('textarea#message').val();
+                        thisDropzone.options.params.propertyname = $('#propertyname').val();
+                    });
+                }
+            });
+        });
     </script>
 @endsection
 
