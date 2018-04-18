@@ -45,7 +45,10 @@ class BarController extends Controller {
 		// End Filter sort and order for query 
 		// Filter Search for query		
 		$filter = (!is_null($request->input('search')) ? $this->buildSearch() : '');
-
+		if(\Session::get('gid')!=1 && \Session::get('gid')!=2){
+			$uid = \Auth::user()->id;
+			$filter .= " AND user_id = '".$uid."'" ;
+        }
 		
 		$page = $request->input('page', 1);
 		$params = array(
@@ -174,6 +177,8 @@ class BarController extends Controller {
             } else {
                 $data['category_id'] = '';
             }
+			$uid = \Auth::user()->id;
+			$data['user_id'] = $uid;
             $data['sub_title'] = $request->input('sub_title');
            // $data['menu'] = $request->input('menu');
             $data['description'] = $request->input('description');
