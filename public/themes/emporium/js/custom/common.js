@@ -212,7 +212,8 @@ $(document).ready(function () {
                 $('[data-action="gobal-destinations"] span').html(0);
             }else {
                 var html ='';
-                $('[data-action="gobal-destinations"] span').html(data.data.dest.length);
+                var destString = (data.data.dest.length > 1 ? "Destinations" : "Destination");
+                $('[data-action="gobal-destinations"] span').html(destString + ' ('+data.data.dest.length+')');
                 $(data.data.dest).each(function (i, val) {
                     var  linkMenu = BaseURL+'/luxury_destinations/'+val.category_alias;
                     html += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.category_name + '</a></li>';
@@ -224,7 +225,8 @@ $(document).ready(function () {
                 $('[data-action="gobal-collections"] span').html(0);
             }else{
                 var html ='';
-                $('[data-action="gobal-collections"] span').html(data.data.collection.length);
+                var collString = (data.data.collection.length > 1 ? "Collections" : "Collection");
+                $('[data-action="gobal-collections"] span').html(collString + ' ('+data.data.collection.length+')');
                 $(data.data.collection).each(function (i, val) {
                     var  linkMenu = BaseURL+'/'+val.property_slug;
                     html += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.property_name + '</a></li>';
@@ -236,7 +238,8 @@ $(document).ready(function () {
                 $('[data-action="gobal-restaurant"] span').html(0);
             } else {
                 var html ='';
-                $('[data-action="gobal-restaurant"] span').html(data.data.restro.length);
+                var restroString = (data.data.restro.length > 1 ? "Restaurants" : "Restaurant");
+                $('[data-action="gobal-restaurant"] span').html(restroString + ' ('+data.data.restro.length+')');
                 $(data.data.restro).each(function (i, val) {
                     var  linkMenu = BaseURL+'/'+val.alias;
                     html += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.title + '</a></li>';
@@ -248,7 +251,8 @@ $(document).ready(function () {
                 $('[data-action="gobal-bar"] span').html(0);
             } else {
                 var html ='';
-                $('[data-action="gobal-bar"] span').html(data.data.bar.length);
+                var barString = (data.data.bar.length > 1 ? "Bars" : "Bar");
+                $('[data-action="gobal-bar"] span').html(barString + ' ('+data.data.bar.length+')');
                 $(data.data.bar).each(function (i, val) {
                     var  linkMenu = BaseURL+'/'+val.alias;
                     html += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.title + '</a></li>';
@@ -260,7 +264,8 @@ $(document).ready(function () {
                 $('[data-action="gobal-spa"] span').html(0);
             } else {
                 var html ='';
-                $('[data-action="gobal-spa"] span').html(data.data.spa.length);
+                var spaString = (data.data.spa.length > 1 ? "Spas" : "Spa");
+                $('[data-action="gobal-spa"] span').html(spaString + ' ('+data.data.spa.length+')');
                 $(data.data.spa).each(function (i, val) {
                     var  linkMenu = BaseURL+'/'+val.property_slug;
                     html += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.title + '</a></li>';
