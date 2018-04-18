@@ -318,7 +318,7 @@ var substringMatcher = function(strs) {
   };
 };
 
-var states = [{!! TagsFinder::tags() !!}];
+var states = [{!! TagsFinder::findProperties() !!}];
 
 $('.searchform-navbar .typeahead').typeahead({
   hint: true,
