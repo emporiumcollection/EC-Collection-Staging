@@ -16,7 +16,7 @@ class TagsFinder {
 				$tagStr .= "'" . $tag->tag_title . "',";
 			//}
         }
-        $proprty = \DB::table('tb_properties')->where('property_status', 1)->get();
+        $proprty = \DB::table('tb_properties')->select('id','property_name')->where('property_status', 1)->get();
         foreach ($proprty as $propt) {
             $tagStr .= "'" . $propt->property_name . "',";
         }
@@ -51,11 +51,11 @@ class TagsFinder {
         $tagStr = "";
         if(\Session::get('gid')!=1 && \Session::get('gid')!=2){
 			$uid = \Auth::user()->id;
-			$proprty = \DB::table('tb_properties')->where('property_status', 1)->where('user_id', $uid)->get();
+			$proprty = \DB::table('tb_properties')->select('id','property_name')->where('property_status', 1)->where('user_id', $uid)->get();
         }
 		else
 		{
-			$proprty = \DB::table('tb_properties')->where('property_status', 1)->get();
+			$proprty = \DB::table('tb_properties')->select('id','property_name')->where('property_status', 1)->get();
 		}
         foreach ($proprty as $propt) {
             $tagStr .= "'" . $propt->property_name . "',";

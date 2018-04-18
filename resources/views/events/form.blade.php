@@ -198,7 +198,8 @@
 									 <div class="col-md-2">
 									 	
 									 </div>
-								  </div> 					
+								  </div> 
+								@if($group!=1 && $group!=2)
 								  <div class="form-group  " >
 									<label for="Property Id" class=" control-label col-md-4 text-left"> Property Id </label>
 									<div class="col-md-6">
@@ -216,7 +217,26 @@
 									 <div class="col-md-2">
 									 	
 									 </div>
-								  </div> 					
+								  </div> 
+								@else
+								  <div class="form-group  " >
+									<label for="Property Id" class=" control-label col-md-4 text-left"> Property Id </label>
+									<div class="col-md-6">
+									  <select name='property_id' class='select2' >
+										@if(!empty($proprty))
+											@foreach($proprty as $prps)
+												<option value="{{$prps->id}}" {{ ($prps->id==$row['property_id']) ? 'selected="selected"' : '' }}>	
+													{{$prps->property_name}}
+												</option>
+											@endforeach
+										@endif
+									  </select> 
+									 </div> 
+									 <div class="col-md-2">
+									 	<input type="hidden" name="user_id" value="1" />
+									 </div>
+								  </div>
+								@endif
 								  <div class="form-group  " >
 									<label for="Reservation Contact" class=" control-label col-md-4 text-left"> Reservation Contact </label>
 									<div class="col-md-6">
