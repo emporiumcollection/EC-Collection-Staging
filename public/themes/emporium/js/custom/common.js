@@ -208,19 +208,14 @@ $(document).ready(function () {
 
             if(data.data.collection.length > 0) {
                 $('#filtersearchpopup ul li:nth-child(1) ul.mobilemenulist').css("display", "block");
-                console.log("1");
             } else if(data.data.dest.length > 0) {
                 $('#filtersearchpopup ul li:nth-child(2) ul.mobilemenulist').css("display", "block");
-                console.log("2");
             } else if(data.data.restro.length > 0) {
                 $('#filtersearchpopup ul li:nth-child(3) ul.mobilemenulist').css("display", "block");
-                console.log("3");
             } else if(data.data.spa.length > 0) {
                 $('#filtersearchpopup ul li:nth-child(4) ul.mobilemenulist').css("display", "block");
-                console.log("5");
             } else if(data.data.bar.length > 0) {
                 $('#filtersearchpopup ul li:nth-child(5) ul.mobilemenulist').css("display", "block");
-                console.log("4");
             }
 
             if (data.data.dest == undefined) {
@@ -523,10 +518,8 @@ function renderMenu(dataObj) {
     hideAllOption();
     putDataOnLeft(data);
     $(dataObj.menus).each(function (i, val) {
-        menuHtml += '<li><a class="cursor menu_item" data-action="select-menu" data-position="' + val.position + '" data-id="' + val.id + '">' + val.menu_name + '</a>';
-        menuHtml += '<a href="' + val.url + '" class="external-link"><i class="fa fa-external-link" aria-hidden="true"></i></a></li>';
-
-
+        console.log(val);
+        menuHtml += '<li><a href="' + val.url + '" class="cursor menu_item" data-action="select-menu" data-position="' + val.position + '" data-id="' + val.id + '">' + val.menu_name + '</a></li>';
     });
 
     $('[data-option="selected-option-list"]').html(menuHtml);

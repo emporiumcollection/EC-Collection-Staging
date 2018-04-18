@@ -639,7 +639,7 @@ border-radius:0;
 .contactfixed:hover{right:0}
 .restaurantrightnav.contactfixed{top:257px;}
 .restaurantrightnav.backcontrol{top:336px;}
-.pdprightnav.contactfixed{top:266px;}
+.pdprightnav.contactfixed{top:256px;}
 .homerightmenu.contactfixed{top:175px;}
 .searchresultnav.contactfixed{top:175px;}
 .contactfixed ul li{float:left; width:100%;}
@@ -649,7 +649,7 @@ border-radius:0;
 .contactfixed ul li a:hover{color:#fff;}
 .contactfixed ul li a i{margin-right:20px; font-size:16px;}
 .searchresultnav.backcontrol{top:254px;}
-.backcontrol{position:fixed; right:0; top:306px; width:65px; z-index:99999;}
+.backcontrol{position:fixed; right:0; top:339px; width:65px; z-index:99999;}
 .backcontrol ul li{border-left: 1px solid #ABA07C; border-bottom: 1px solid #414246;}
 .backcontrol ul li:last-child{border-bottom:0;}
 .backcontrol ul li a{background-color: #ABA07C; display:block;border: 0 none;border-radius: 0;font-size: 12px;height: 38px;font-weight:bold;padding:10px 3px;opacity: 1;color: #fff; text-align:center;}

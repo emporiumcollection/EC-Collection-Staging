@@ -85,8 +85,8 @@
                             $setDateArvArr = explode('-',$setDateArvStr);
                             $setDateDepArr = explode('-',$setDateDepStr);
                     /*--}}
-                    <input name="arrive" type="hidden" value="{{date('d-m-Y')}}">
-                    <input name="departure" type="hidden" value="{{date('d-m-Y', strtotime('+1 day'))}}">
+                    <?php /* <input name="arrive" type="hidden" value="{{date('d-m-Y')}}">
+                    <input name="departure" type="hidden" value="{{date('d-m-Y', strtotime('+1 day'))}}"> */ ?>
                     <ul class="mobilemenulist">
                         <li>
                             <p>Emporium Voyage is your deal, vogue vacation planner!</p>
@@ -96,7 +96,11 @@
                                 <li>
                                     <h4>ARRIVAL</h4>
                                 </li>
-                                <li>
+                                <li class="arrival-li">
+                                    <i class="fa fa-calander"></i>
+                                    <input name="arrive" id="reservationdateside" class="form-control datefield reservationdate" type="text" placeholder="Arrival" readonly="" required="">
+                                </li>
+                                <?php /* <li>
                                     <label>DAY</label>
                                     <select class="calenderselectbox" data-option="arrival-day"
                                             data-action="choose-date">
@@ -119,12 +123,12 @@
                                     <label>YEAR</label>
                                     <select class="calenderselectbox" data-option="arrival-year"
                                             data-action="choose-date">
-                                        {{--*/ $arvYearRange = range(date('Y'), date('Y', strtotime('+5 years'))) /*--}}
+                                        {{--* / $arvYearRange = range(date('Y'), date('Y', strtotime('+5 years'))) /*- -}}
                                         @foreach($arvYearRange as $arvYear)
                                             <option @if($setDateArvArr[2]==$arvYear) {{ 'selected' }} @endif value="{{$arvYear}}">{{$arvYear}}</option>
                                         @endforeach
                                     </select>
-                                </li>
+                                </li> */ ?>
                             </ul>
                             <div class="clearfix"></div>
                         </li>
@@ -133,7 +137,11 @@
                                 <li>
                                     <h4>DEPARTURE</h4>
                                 </li>
-                                <li>
+                                <li class="departure-li">
+                                    <i class="fa fa-calander"></i>
+                                    <input name="departure" id="reservationdateside1" class="form-control datefield reservationdate" type="text" placeholder="Departure" readonly="" required="">
+                                </li>
+                                <?php /* <li>
                                     <label>DAY</label>
                                     <select class="calenderselectbox" data-option="departure-day"
                                             data-action="choose-date">
@@ -155,12 +163,12 @@
                                     <label>YEAR</label>
                                     <select class="calenderselectbox" data-option="departure-year"
                                             data-action="choose-date">
-                                        {{--*/ $depYearRange = range(date('Y'), date('Y', strtotime('+5 years'))) /*--}}
+                                        {{--* / $depYearRange = range(date('Y'), date('Y', strtotime('+5 years'))) /*--}}
                                         @foreach($depYearRange as $depYear)
                                             <option @if($setDateDepArr[2]==$depYear) {{ 'selected' }} @endif value="{{$depYear}}">{{$depYear}}</option>
                                         @endforeach
                                     </select>
-                                </li>
+                                </li> */ ?>
                             </ul>
                             <button class="searchButton btn" type="submit">Search</button>
                             <div class="clearfix"></div>
