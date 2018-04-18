@@ -1283,14 +1283,29 @@ border-radius:0;
 .homelinknav i.fa{margin-right:5px; font-size:18px; transition: all .3s ease 0s;-webkit-transition: all .3s ease 0s;}
 .openmobilemenu{display:block;}
 
-.calenderwrapper{margin:15px 10px; float:left;}
-.calenderwrapper li{border:0; color:#fff; margin-top:5px; float:left; width:100%;}
+.calenderwrapper{margin:15px 10px; float:left;width: calc(100% - 20px);}
+.calenderwrapper li{border:0; color:#fff; margin-top:5px; float:left; width:100%;position: relative;}
 .calenderwrapper li:first-child{padding:0 0 10px 40px;}
 .calenderwrapper li h4{margin:0; font-size:14px;}
 .calenderwrapper li label{width:45%; background:#89837b; padding:8px 15px 8px 40px;color:#fff; float:left;font-family: 'geomanistlightwebfont';}
 .calenderwrapper li select{ border:0; float:left; color:#333; width:55%; padding:8px 15px 8px 40px; border-radius:0; -webkit-border-radius:0; -webkit-appearance:none;appearance:none; background:url(../images/select-arrow.png) no-repeat 92% center #fff;}
 .calenderwrapper li select:focus{outline:0;}
 .calenderwrapper.departure li label{background:#aba00b;}
+ul.calenderwrapper li .fa.fa-calander {
+    position: absolute;
+    top: 8px;
+    left: 15px;
+}
+ul.calenderwrapper li .fa.fa-calander:before {
+    content: '\f073';
+}
+ul.calenderwrapper li .form-control.datefield {
+    padding-left: 40px;
+    background: #89837b;
+    border: 0px solid #89837b;
+    color: #fff;
+    border-radius: 0px;
+}
 .mobilemenulist .navheadimage{position:relative; border-top:1px solid #979797}
 .mobilemenulist .navheadimage a{padding:0;}
 .mobilemenulist .navheadimage img{max-width:100%}

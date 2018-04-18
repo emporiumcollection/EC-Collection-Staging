@@ -176,23 +176,6 @@ body .ui-widget.ui-widget-content li i.iconsheet {
     outline: 0;
     text-decoration: none;
 }
-ul.calenderwrapper li {
-    position: relative;
-}
-ul.calenderwrapper li .fa.fa-calander {
-    position: absolute;
-    top: 8px;
-    left: 15px;
-}
-ul.calenderwrapper li .fa.fa-calander:before {
-    content: '\f073';
-}
-ul.calenderwrapper li .form-control.datefield {
-    padding-left: 40px;
-    background: #89837b;
-    border: 0px solid #89837b;
-    color: #fff;
-}
 
 
 
