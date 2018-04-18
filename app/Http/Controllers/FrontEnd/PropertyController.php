@@ -81,7 +81,7 @@ class PropertyController extends Controller {
 
 		   
 		$cateObj = \DB::table('tb_categories')->where('category_alias', $keyword)->where('category_published', 1)->first();
-		print_r($cateObj); die;
+
         $chldIds = array();
 		if (!empty($cateObj)) {
 			$channel_url = $cateObj->category_youtube_channel_url;
@@ -132,7 +132,7 @@ class PropertyController extends Controller {
 		$limit = " LIMIT ". $pageStart.",".$perPage; 
 		$finalQry = $query.$whereClause.$orderBy.$limit ; 
 		$CountRecordQry = "Select count(*) as total_record from tb_properties pr ".$whereClause ;
-		
+		echo $finalQry; die;
 		$property = DB::select($finalQry);
 		$getRec = DB::select($CountRecordQry);
 
