@@ -55,7 +55,15 @@ class BookingsController extends Controller {
 			$checkallprop = \DB::table('tb_properties')->select('id')->where('user_id', $uid)->get();
 			if(!empty($checkallprop))
 			{
-				$filter .= " AND property_id in (".implode(',',$checkallprop).")";
+				$prpArr = array();
+				foreach($checkallprop as $prp)
+				{
+					$prpArr[] = $prp->id;
+				}
+				if(!empty($prpArr))
+				{
+					$filter .= " AND property_id in (".implode(',',$prpArr).")";
+				}
 			}
 		}
         $page = $request->input('page', 1);
