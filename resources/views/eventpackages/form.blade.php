@@ -112,7 +112,27 @@
 									 <div class="col-md-2">
 									 	
 									 </div>
-								  </div> 					
+								  </div> 
+								@if($group!=1 && $group!=2)
+								  <div class="form-group  " >
+									<label for="Event Id" class=" control-label col-md-4 text-left"> Event Id </label>
+									<div class="col-md-6">
+									  <select name='event_id' class='select2' >
+										@if(!empty($events))
+											@foreach($events as $event)
+												<option value="{{$event->id}}" {{ ($event->id==$row['event_id']) ? 'selected="selected"' : '' }}>	
+													{{$event->title}}
+												</option>
+											@endforeach
+										@endif
+									  </select> 
+									 </div> 
+									 <div class="col-md-2">
+									 	<input type="hidden" name="user_id" value="1" />
+									 </div>
+								  </div>
+								  
+								@else
 								  <div class="form-group  " >
 									<label for="User Id" class=" control-label col-md-4 text-left"> User Id <span class="asterix"> * </span></label>
 									<div class="col-md-6">
@@ -130,7 +150,8 @@
 									 <div class="col-md-2">
 									 	
 									 </div>
-								  </div> 					
+								  </div> 
+								@endif
 								  <div class="form-group  " >
 									<label for="Created At" class=" control-label col-md-4 text-left"> Created At </label>
 									<div class="col-md-6">
