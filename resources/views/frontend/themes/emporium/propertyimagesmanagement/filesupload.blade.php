@@ -124,9 +124,9 @@
 {{-- For Include javascript files --}}
 @section('javascript')
     @parent
-    <script src="{{ asset('sximo/js/parsley.min.js')}}" type="text/javascript"></script>
-
+    <script src="{{ asset('sximo/assets/js/jquery-2.1.0.min.js')}}" type="text/javascript"></script>
     <script src="{{ asset('sximo/js/dropzone.js') }}"></script>
+    <script src="{{ asset('sximo/js/parsley.min.js')}}" type="text/javascript"></script>
 @endsection
 
 {{-- For custom script --}}
@@ -185,7 +185,7 @@
 
     <script>
         $(function () {
-            var baseUrl = "{{ url::to('hotel/transferaddfile') }}";
+            var baseUrl = "http://localhost/emporium-staging-forge/public/hotel/transferaddfile";
             var token = "{{ Session::getToken() }}";
             Dropzone.autoDiscover = false;
             var myDropzone = new Dropzone("div#dropzoneFileUpload", {
