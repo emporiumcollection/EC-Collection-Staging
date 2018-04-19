@@ -16,7 +16,6 @@
                     @foreach($slider as $key => $slider_row)
                         <div class="item {{($key == 0)? 'active' : ''}}">
                             <a ><img src="{{url('uploads/slider_images/'.$slider_row->slider_img)}}" alt="{{$slider_row->slider_title}}"></a>
-
                         </div>
                     @endforeach
                 </div>
@@ -53,50 +52,31 @@
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
             <button data-action="agree-button" class="bnt SendButon agreeButton" type="button">I Agree</button>
-
         </div>
-        <div class="transferFileSec transferSecSecond">
-            <form method="get" id="filetransferform" action="{{URL::to('hotel/transferimages')}}">
+
+        <form method="post" id="filetransferform" action="{{URL::to('hotel/transferimages')}}" enctype="multipart/form-data">
+            <div class="transferFileSec transferSecSecond">            
                 <div class="form-errors"> </div>
                 <div class="uploadInput">
                     <h2>+ Add Your Files</h2>
-                    {{--<input type="file">--}}
-                </div>
-                <div class="form-group  " >
-                    <div class="dropzone" id="dropzoneFileUpload"> </div>
+                    <input type="file" id="files" name="files[]" multiple>                    
+                </div>                
+                <div class="form-group">
+                    <input type="email" name="from_email" class="form-control" placeholder="Email to">
                 </div>
                 <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Email to">
+                    <input type="email" name="to_email" class="form-control" placeholder="Your email">
                 </div>
                 <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Your email">
+                    <textarea name="msg" class="form-control" rows="3" placeholder="Message"></textarea>
                 </div>
-                <div class="form-group">
-                    <textarea class="form-control" rows="3" placeholder="Message"></textarea>
-                </div>
-                <button class="bnt SendButon AddFileButton" type="button">Send</button>
-            </form>
-        </div>
-        <div class="carousel-caption transferSecThird">
-            <label class="labelHeading">Lorem Ipsum is simply dummy text
-                <input type="checkbox" checked="checked">
-                <span class="checkmark"></span>
-            </label>
-            <label class="labelHeading">Lorem Ipsum is simply dummy text
-                <input type="checkbox">
-                <span class="checkmark"></span>
-            </label>
-            <label class="labelHeading">Lorem Ipsum is simply dummy text
-                <input type="checkbox">
-                <span class="checkmark"></span>
-            </label>
-            <label class="labelHeading">Lorem Ipsum is simply dummy text
-                <input type="checkbox">
-                <span class="checkmark"></span>
-            </label>
-            <button class="bnt SendButon" type="button">Send</button>
-        </div>
-
+                <button data-action="send-email-button" class="bnt SendButon AddFileButton" type="button">Send</button>            
+            </div>
+            <div class="carousel-caption transferSecThird">
+                <div id="selectedFiles"></div>            
+                <button data-action="send-email-files" class="bnt SendButon" type="button">Send</button>
+            </div>
+        </form>
     </section>
 
     @include('frontend.themes.emporium.layouts.sections.contactus_popup')
@@ -104,7 +84,6 @@
 
 {{--For Right Side Icons --}}
 @section('right_side_iconbar')
-
     @include('frontend.themes.emporium.layouts.sections.home_right_iconbar')
 @endsection
 
@@ -123,9 +102,7 @@
 
 {{-- For Include javascript files --}}
 @section('javascript')
-    @parent
-    <script src="{{ asset('sximo/assets/js/jquery-2.1.0.min.js')}}" type="text/javascript"></script>
-    <script src="{{ asset('sximo/js/dropzone.js') }}"></script>
+    @parent    
     <script src="{{ asset('sximo/js/parsley.min.js')}}" type="text/javascript"></script>
 @endsection
 
@@ -133,6 +110,37 @@
 @section('custom_js')
     @parent
     <script>
+        /* add multiple files */
+        var selDiv = "";        
+        document.addEventListener("DOMContentLoaded", init, false);        
+        function init() {
+            document.querySelector('#files').addEventListener('change', handleFileSelect, false);
+            selDiv = document.querySelector("#selectedFiles");
+        }            
+        function handleFileSelect(e) {            
+            if(!e.target.files) return;            
+            selDiv.innerHTML = "";            
+            var files = e.target.files;
+            for(var i=0; i<files.length; i++) {
+                var f = files[i];                
+                selDiv.innerHTML += '<label class="labelHeading">'+f.name+'<input name="filescheckbox[]" type="checkbox" checked><span class="checkmark"></span></label>';
+            }        
+        }
+
+        $(document).on('click', '[data-action="send-email-files"]', function () {
+            $.ajax({
+                url: "{{ url('hotel/transferaddfilessend') }}",
+                type: "post",
+                data: $('#filetransferform').serialize(),
+                dataType: "json",
+                success: function(data){
+                    console.log(data);
+                }
+            });
+        });
+        /* add multiple files */
+
+
         window.ParsleyConfig = {
             errorsWrapper: '<div></div>',
             errorTemplate: '<div class="alert alert-danger parsley" role="alert"></div>',
@@ -184,7 +192,7 @@
     </script>
 
     <script>
-        $(function () {
+        /*$(function () {
             var baseUrl = "{{ url::to('hotel/transferaddfile') }}";
             var token = "{{ Session::getToken() }}";
             Dropzone.autoDiscover = false;
@@ -220,7 +228,7 @@
                     });
                 }
             });
-        });
+        });*/
     </script>
 @endsection
 

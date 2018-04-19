@@ -306,6 +306,7 @@ Route::get('advertiser/package', 'Frontend\AdvertisementController@advertisement
 
 Route::get('hotel/transferimages', 'Frontend\PropertyimagesmanagementController@propertyImageupload');
 Route::post('hotel/transferaddfile', 'Frontend\PropertyimagesmanagementController@transferaddfile');
+Route::post('hotel/transferaddfilessend', 'Frontend\PropertyimagesmanagementController@transferaddfilessend');
 Route::get('download-document/{code}', 'Frontend\PropertyimagesmanagementController@downloadFileCrm');
 Route::get('hotel/propertyimagereminder', 'Frontend\PropertyimagesmanagementController@propertyimageReminder');
 
