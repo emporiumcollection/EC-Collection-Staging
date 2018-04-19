@@ -140,7 +140,23 @@
 									 <div class="col-md-2">
 									 	
 									 </div>
-								  </div> 					
+								  </div>
+								  <div class="form-group  " >
+									<label for="Package Modules" class=" control-label col-md-4 text-left"> Package Modules <span class="asterix"> * </span></label>
+									<div class="col-md-6">
+									  <select name='package_modules[]' multiple class='select2'>
+										@if(!empty($mods))
+										{{--*/ $existmod = explode(',',$row['package_modules']); /*--}}
+											@foreach($mods as $mod)
+												<option value="{{$mod->module_id}}" {{(in_array($mod->module_id, $existmod)) ? 'selected="selected"' : '' }} >{{$mod->module_title}}</option>
+											@endforeach
+										@endif
+									  </select> 
+									 </div> 
+									 <div class="col-md-2">
+									 	
+									 </div>
+								  </div>
 								  <div class="form-group  " >
 									<label for="Package Status" class=" control-label col-md-4 text-left"> Package Status <span class="asterix"> * </span></label>
 									<div class="col-md-6">
