@@ -1,10 +1,4 @@
-<header id="header">
-	<div class="logo-wrapper">
-		<a href="{{URL::to('')}}"><img src="{{ asset('themes/emporium/images/logo.png')}}" alt="Emporium Voyage"/></a>
-	</div>
 
-	<div class="header-content">
-		<div class="col-lg-12 header-search">
 			<div class="row">
 				<div class="col-sm-3 col-md-3">
 					<div class="form-group">
@@ -49,18 +43,4 @@
 				</div>
 				<div class="col-sm-2 col-md-2"><button class="btn yellowbtn" data-action="make-reservation">MAKE RESERVATION</button></div>
 			</div>
-		</div>
-	</div>
-	<div class="menu" id="menu">                       
-        <a href="javascript:void(0)" id="close" onclick="trigger"></a>
-		<ul class="nav navbar-nav">
-			<li><a href="https://www.emporium-voyage.com/membership_hotel">Become a Member Hotel</a></li>
-			<li><a href="terms-and-conditions.html">Terms and Conditions</a></li>
-			<li><a href="https://www.emporium-voyage.com/Impressum">Imprint</a></li>
-		</ul>
-                        
-        <div class="tilt-container">
-			<img src="{{ asset('images/emporium-voyage-company-menu.jpg') }}" alt="" class="background">
-		</div>                
-    </div>
-</header>
+		
