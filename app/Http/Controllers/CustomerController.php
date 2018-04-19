@@ -1521,18 +1521,20 @@ $html .= '<div style="clear:both;"></div>
                     <td colspan="4" align="right"  height="25px;">&nbsp;</td>
                  </tr>
                 <tr style="background:#eeeeee;">
-                    <th width="10%">No.</th>
+                    <th width="10%"></th>
                     <th width="90%" >Details </th>
             
                 </tr>';
+
+                $html .= '<tr>
+                <td colspan="2"><hr  style="border-top:1px solid #000; width:100%"/></td></tr>';
       $contractObject =new Contract();
       $params = array(         
         );
       $resultContract= $contractObject->getRows($params); 
       $sn = 1;
        foreach ($resultContract["rows"] as $row) {
-         $html .= '<tr>
-                <td colspan="2"><hr  style="border-top:1px solid #000; width:100%"/></td></tr>';
+   
                 $html .= '
                      <tr>
                              <td>'.$sn.'</td>
@@ -1550,8 +1552,7 @@ $html .= '<div style="clear:both;"></div>
                 <td colspan="2"><hr  style="border-top:1px solid #000; width:100%"/></td></tr>';       
                     $sn++;
        }
-     $html .= '<tr>
-                <td colspan="2"><hr  style="border-top:1px solid #000; width:100%"/></td></tr>';
+
      $html .= '</table>';
 /* End  Contract Data here */
 $html .= '</div>';
