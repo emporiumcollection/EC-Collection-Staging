@@ -43,9 +43,11 @@ class RestaurantFrontController extends Controller {
 					{
 						$resturantArr[$rf] = $resfile;
 						$fetchressliderfolder = \DB::table('tb_container')->join('tb_frontend_container', 'tb_frontend_container.container_id', '=', 'tb_container.id')->select('tb_container.id')->where('tb_container.parent_id', $resfile->folder_id)->where('tb_container.name', 'slider')->where('tb_frontend_container.container_type', 'folder')->first();
+						print_r($fetchressliderfolder);
 						if(!empty($fetchressliderfolder))
 						{
 							$fetchressliderfiles = \DB::table('tb_container_files')->join('tb_frontend_container', 'tb_frontend_container.container_id', '=', 'tb_container_files.id')->select('tb_container_files.folder_id','tb_container_files.file_name')->where('tb_container_files.folder_id', $fetchressliderfolder->id)->where('tb_frontend_container.container_type', 'file')->orderBy('tb_container_files.file_sort_num','asc')->first();
+							print_r($fetchressliderfiles);
 							if(!empty($fetchressliderfiles))
 							{
 								$resturantArr[$rf]->dataslider = (new ContainerController)->getThumbpath($fetchressliderfiles->folder_id).$fetchressliderfiles->file_name;
