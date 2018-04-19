@@ -1082,6 +1082,9 @@ return Redirect::to('customer/profile')->with('message', \SiteHelpers::alert('er
 				$order_item_detail[$o]->pckname = 'Advertisement';
 				$order_item_detail[$o]->pckprice = 0;
 				$order_item_detail[$o]->pckcontent = '';
+
+                $order_item_detail[$o]->package_modules = '';
+                
 				$order_item_detail[$o]->qty = 1;
 				if($oitem->package_type=='hotel')
 				{
@@ -1090,6 +1093,18 @@ return Redirect::to('customer/profile')->with('message', \SiteHelpers::alert('er
 					{
 						$order_item_detail[$o]->pckname = $pchkdet->package_title;
 						$order_item_detail[$o]->pckprice = $pchkdet->package_price;
+                        $moduleDetailFromOrder="";
+                        foreach (json_decode($oitem->package_data) as $key => $value) {
+                             
+                                     $order_item_detail[$o]->pckname = $value->package_title;
+                                   
+                                   
+                                     $order_item_detail[$o]->pckprice = $value->package_price;                                
+
+                                
+                                     $order_item_detail[$o]->package_modules = $value->package_modules;
+                           }
+                       
 					}
 				}
 				elseif($oitem->package_type=='advert')
