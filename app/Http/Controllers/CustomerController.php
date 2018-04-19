@@ -1457,9 +1457,9 @@ return Redirect::to('customer/profile')->with('message', \SiteHelpers::alert('er
                 .clrgrey{ color:#3f3f3f;} 
                 .alnRight{text-align:right;} 
                 .alnCenter{text-align:center;} 
-                td{font-size:12px; padding:1px;} 
-                th{background-color:#999; color:#000000; text-align:left; padding:1px; font-size:14px;}
-                .totl{background-color:#999; color:#000000; font-weight:bold;} 
+                td{font-size:12px; padding:0px;} 
+                th{background-color:#999; color:#000000; text-align:left; padding:0px; font-size:12px;}
+           
                 h2{padding-bottom:0px; margin-bottom:0px;} 
                 .valin{ vertical-align:top;} 
                 .valinbt{ vertical-align:bottom; text-align:right;}
@@ -1504,8 +1504,8 @@ return Redirect::to('customer/profile')->with('message', \SiteHelpers::alert('er
 
         <table width="100%">
             <tr>
-                <td colspan="3">
-                    <hr  style="border-top:1px solid #000;"/>
+                <td>
+                    &nbsp;
                 </td>
             </tr>
         ';
@@ -1518,13 +1518,9 @@ $html .= '<div style="clear:both;"></div>
             <div class="Mrgtop20 font13">
             <table width="100%">
                  <tr>
-                    <td colspan="4" align="right"  height="25px;">&nbsp;</td>
+                    <td colspan="2" align="right"  height="25px;">&nbsp;</td>
                  </tr>
-                <tr style="background:#eeeeee;">
-                    <th width="10%"></th>
-                    <th width="90%" ></th>
-            
-                </tr>';
+                ';
 
               
       $contractObject =new Contract();
