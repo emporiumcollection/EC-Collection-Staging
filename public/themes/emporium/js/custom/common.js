@@ -252,7 +252,7 @@ $(document).ready(function () {
                 var restroString = (data.data.restro.length > 1) ? "Restaurants" : "Restaurant";
                 $('[data-action="gobal-restaurant"] span').html(restroString + ' ('+data.data.restro.length+')');
                 $(data.data.restro).each(function (i, val) {
-                    var  linkMenu = BaseURL+'/restaurant/'+val.alias;
+                    var  linkMenu = BaseURL+'/restaurants/'+val.alias;
                     html += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.title + '</a></li>';
                 });
                 $('[data-option="resto-option-list"]').html(html);
@@ -265,7 +265,7 @@ $(document).ready(function () {
                 var barString = (data.data.bar.length > 1) ? "Bars" : "Bar";
                 $('[data-action="gobal-bar"] span').html(barString + ' ('+data.data.bar.length+')');
                 $(data.data.bar).each(function (i, val) {
-                    var  linkMenu = BaseURL+'/bar/'+val.alias;
+                    var  linkMenu = BaseURL+'/bars/'+val.alias;
                     html += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.title + '</a></li>';
                 });
                 $('[data-option="bar-option-list"]').html(html);
@@ -278,7 +278,7 @@ $(document).ready(function () {
                 var spaString = (data.data.spa.length > 1) ? "Spas" : "Spa";
                 $('[data-action="gobal-spa"] span').html(spaString + ' ('+data.data.spa.length+')');
                 $(data.data.spa).each(function (i, val) {
-                    var  linkMenu = BaseURL+'/spa/'+val.alias;
+                    var  linkMenu = BaseURL+'/spas/'+val.alias;
                     html += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.title + '</a></li>';
                 });
                 $('[data-option="spa-option-list"]').html(html);
