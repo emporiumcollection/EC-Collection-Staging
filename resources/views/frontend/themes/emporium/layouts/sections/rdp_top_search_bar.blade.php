@@ -28,7 +28,7 @@
 				</div>
 				<div class="col-sm-2 col-md-2">
 					<div class="form-group">
-						<<?php  $currencyList=(CommonHelper::getCurrencyList()); ?>
+						<?php  $currencyList=(CommonHelper::getCurrencyList()); ?>
 						<select name='currencyOption' class="form-control">
 							<option value="EUR">Currency</option>
 							@foreach($currencyList as $currencyCode => $currencyName)
