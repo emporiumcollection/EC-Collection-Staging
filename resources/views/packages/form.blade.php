@@ -146,8 +146,9 @@
 									<div class="col-md-6">
 									  <select name='package_modules[]' multiple class='select2'>
 										@if(!empty($mods))
+										{{--*/ $existmod = explode(',',$row['package_modules']); /*--}}
 											@foreach($mods as $mod)
-												<option value="{{$mod->module_id}}">{{$mod->module_title}}</option>
+												<option value="{{$mod->module_id}}" {{(array_key_exists($mod->module_id, $existmod)) ? 'selected="selected"' : '' }} >{{$mod->module_title}}</option>
 											@endforeach
 										@endif
 									  </select> 
