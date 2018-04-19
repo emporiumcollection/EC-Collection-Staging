@@ -18,7 +18,7 @@
 			  @if(!empty($resturantArr))
 				  @foreach($resturantArr as $resturant)
 					@if(array_key_exists('dataslider',$resturant))
-						{{--*/ $clsact = ($clsact=='') ? 'active' : 'active'; /*--}}
+						@if($clsact=='') {{--*/ $clsact = 'active'; /*--}} @endif
 					  <div class="item {{$clsact}}" style="background:url('{{$resturant->dataslider}}') center center no-repeat; background-size:cover;">
 						<div class="carousel-caption">
 						  <h1>{{$resturant->title}}</h1>
@@ -33,7 +33,7 @@
 			  @if(!empty($barsArr))
 				  @foreach($barsArr as $bars)
 					@if(array_key_exists('dataslider',$bars))
-						{{--*/ $clsact = ($clsact=='') ? 'active' : 'active'; /*--}}
+						@if($clsact=='') {{--*/ $clsact = 'active'; /*--}} @endif
 					  <div class="item {{$clsact}}" style="background:url('{{$bars->dataslider}}') center center no-repeat; background-size:cover;">
 						<div class="carousel-caption">
 						  <h1>{{$bars->title}}</h1>
@@ -52,7 +52,7 @@
 			  @if(!empty($spasArr))
 				  @foreach($spasArr as $spas)
 					@if(array_key_exists('dataslider',$spas))
-						{{--*/ $clsact = ($clsact=='') ? 'active' : 'active'; /*--}}
+						@if($clsact=='') {{--*/ $clsact = 'active'; /*--}} @endif
 					  <div class="item {{$clsact}}" style="background:url('{{$spas->dataslider}}') center center no-repeat; background-size:cover;">
 						<div class="carousel-caption">
 						  <h1>{{$spas->title}}</h1>
