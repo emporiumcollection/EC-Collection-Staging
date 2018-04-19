@@ -39,141 +39,132 @@
 	@endif
 </section>
 
-<section>
-
- <div id="divWhoiam" class="hotelInfoSection" style="background-color:#f7f7f7;">
-
+<section style="background-color:#f7f7f7;"  class="col-md-12">
+<form class="form-horizontal my-profile-main-form-align" name="basicInfo" id="basicInfo" method="post" action=" {{URL::to('customer/savewhoiam')}}">
 
 
+	 <div id="divWhoiam" class="hotelInfoSection col-md-12" >
+			  <div class="tab-content">
+			     <div role="tabpanel" class="tab-pane active" id="profile"> 
+			     	<div class="col-md-12">
+					        <div class="row">
+					            <div class="das-form-outer-align">
+										<div class="form-group profile-page-submit-radio-align">   
+						   					<div class="col-sm-12">
+												<input type="radio" name="usertype" value="guests" id="usertypeGuest" class="input input-hidden usertype" required="" />
+												<label for="usertypeGuest">
+													
+												  <img 
+												    src="{{ asset('sximo/assets/images/guest-icon.png')}}"	 
+												    alt="I am Guest" />
+												    <p>I am Guest</p>
+												</label>
 
 
-  <!-- Tab panes -->
-  <div class="tab-content">
-     <div role="tabpanel" class="tab-pane active" id="profile"> 
-     	<div class="col-md-10">
-        <div class="row">
-            <div class="das-form-outer-align">
+												<input type="radio" name="usertype" value="hotel" id="userTypeHotel" class="input input-hidden usertype" required=""/>
+												<label for="userTypeHotel">
+												  <img 
+												    src="{{ asset('sximo/assets/images/hotel-icon.png')}}"	
+												    alt="I am Hotel" />
+												     <p>I am Hotel</p>
+												</label>
 
-
-                <form class="form-horizontal my-profile-main-form-align" name="basicInfo" id="basicInfo" method="post" action=" {{URL::to('customer/savewhoiam')}}">
-					<div class="form-group profile-page-submit-radio-align">   
-   
-                     <div class="col-sm-12">
-							<input type="radio" name="usertype" value="guests" id="usertypeGuest" class="input input-hidden usertype" required="" />
-							<label for="usertypeGuest">
-								
-							  <img 
-							    src="{{ asset('sximo/assets/images/guest-icon.png')}}"	 
-							    alt="I am Guest" />
-							    <p>I am Guest</p>
-							</label>
-
-
-							<input type="radio" name="usertype" value="hotel" id="userTypeHotel" class="input input-hidden usertype" required=""/>
-							<label for="userTypeHotel">
-							  <img 
-							    src="{{ asset('sximo/assets/images/hotel-icon.png')}}"	
-							    alt="I am Hotel" />
-							     <p>I am Hotel</p>
-							</label>
-
-							<input type="radio" name="usertype" value="advertiser" id="userTypeAdvertiser" required="" class=" input input-hidden usertype" />
-							<label for="userTypeAdvertiser">
-							  <img src="{{ asset('sximo/assets/images/advertiser-icon.png')}}"					    
-							    alt="I am advertiser" />
-							     <p>I am Advertiser</p>
-							</label>
-						</div>
-                    </div>
-                    <diV>
-
-			      @if(Session::has('message'))	  
-					   {!! Session::get('message') !!}
-				@endif	
-	<ul>
-		@foreach($errors->all() as $error)
-			<li class="alert alert-danger parsley">{{ $error }}</li>
-		@endforeach
-	</ul>
-</diV>
-
-<div class="row">
-        <div class="col-md-12 row">
-            <div class="hotelInfoSection">
-					<div id="guests">
-						<div class="form-group">
-							<label class="col-sm-2">First Name</label>
-							<div class="col-sm-10">
-								<input type="text" name="first_name" id="first_name" class="form-control dash-input-style" placeholder="John" required="" value="{{$guestUserData->first_name}}">
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-sm-2">Last Name</label>
-							<div class="col-sm-10">
-								<input type="text" name="last_name" id ="last_name"  class="form-control dash-input-style" placeholder="Doe" value="{{ $guestUserData->last_name }}" required="">
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-sm-2">Phone</label>
-							<div class="col-sm-10">          
-								<input type="text" name="txtPhoneNumber" value="{{$guestUserData->mobile_number}}" id="txtPhoneNumber" class="form-control dash-input-style" placeholder="+91-9876543210" required="">
-							</div>
-						</div>
-						<div class="form-group ">        
-							<div class="col-sm-10 ">
-							
-								<div class="radio">
-									<label class="col-sm-2"><input type="checkbox" id="newsLetter" name="newsLetter"></label>
-									<label >Subscribe to our notifications and news to our latest hotels, spa's and offers </label>
-								</div>
-							</div>
-							<div class="col-sm-10" id="personalizeCheck">
-								<label class="col-sm-2">
-								<input type="checkbox"  id="personalize" name="personalize" checked="checked">
-							</label>
-								<div class="radio">
-									<label class="radio-label" >I require personalized service bookings in my account profile</label>
-								</div>
-
-
-							</div>
-						</div>
-
-
-							<div class="col-sm-10" id="contractSignCheck">
-								<label class="col-sm-2">
-								<input type="checkbox"  id="contractSignCheck" name="contractSignCheck" value="">
-							</label>
-								<div  data-toggle="modal" data-target="#myModal">
-									<label class="radio-label" >Read and accept contract conditions.</label>
-								</div>
-
-							</div>
-						<div class="form-group">        
-							<div class="col-sm-12">
-								<input type="submit" class="btn btn-white pull-right" value="Save Profile" >
+												<input type="radio" name="usertype" value="advertiser" id="userTypeAdvertiser" required="" class=" input input-hidden usertype" />
+												<label for="userTypeAdvertiser">
+												  <img src="{{ asset('sximo/assets/images/advertiser-icon.png')}}"					    
+												    alt="I am advertiser" />
+												     <p>I am Advertiser</p>
+												</label>
+											</div>
+					                    </div>
+					             </div>
+										
+									@if(Session::has('message'))	  
+									{!! Session::get('message') !!}
+									@endif	
+									<ul>
+										@foreach($errors->all() as $error)
+											<li class="alert alert-danger parsley">{{ $error }}</li>
+										@endforeach
+									</ul>
 							</div>
 						</div>
 					</div>
-					</form>
+				</div>
+	 </div>
+
+	<div class="row col-md-12">
+    
+        <div class="hotelInfoSection">
+				<div id="guests">
+					<div class="form-group">
+						<label class="col-sm-2">First Name</label>
+						<div class="col-sm-10">
+							<input type="text" name="first_name" id="first_name" class="form-control dash-input-style" placeholder="John" required="" value="{{$guestUserData->first_name}}">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2">Last Name</label>
+						<div class="col-sm-10">
+							<input type="text" name="last_name" id ="last_name"  class="form-control dash-input-style" placeholder="Doe" value="{{ $guestUserData->last_name }}" required="">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2">Phone</label>
+						<div class="col-sm-10">          
+							<input type="text" name="txtPhoneNumber" value="{{$guestUserData->mobile_number}}" id="txtPhoneNumber" class="form-control dash-input-style" placeholder="+91-9876543210" required="">
+						</div>
+					</div>
+					<div class="form-group ">
+						<div class="col-sm-12 ">
+							<div class="radio">
+								<label class="col-sm-2">
+									<input type="checkbox" id="newsLetter" name="newsLetter"></label>
+								<label>
+									Subscribe to our notifications and news to our latest hotels, spa's and offers. 
+								</label>
+							</div>
+						</div>					
+					</div>
+					<div class="form-group ">
+							<div class="col-sm-12" id="personalizeCheck">
+								<label class="col-sm-2">
+								<input type="checkbox"  id="personalize" name="personalize" checked="checked">
+								</label>
+								<div class="checkbox">
+									<label class="radio-label" >I require personalized service bookings in my account profile</label>
+								</div>
+							</div>
+					</div>
+					<div class="form-group ">
+						<div class="col-sm-12" id="contractSignCheck">
+							<label class="col-sm-2" data-toggle="modal" data-target="#myModal">
+							<input type="checkbox"  id="contractSignCheck" name="contractSignCheck" value="">
+							</label>
+								<div class="checkbox" data-toggle="modal" data-target="#myModal">
+									<label class="radio-label" >View terms of contract.</label>
+								</div>
+							
+
+						</div>
+					</div>							
+					<div class="form-group">
+							<div class="col-sm-12">
+								<input type="submit" class="btn btn-white pull-right" value="Save Profile" >
+							</div>
+					</div>
 					<div id="formerrors"></div>
+				</div>
+		 </div>
+			
+	</div>
+        
 
-					
-			          </div>
-			        </div>
-			    </div>   
-            </div>
-        </div>
-    </div>
-</div>
 
-  </div>
-
-</div>
- <div id="myModal" class="modal fade" role="dialog">
+<!-- contract section start-->
+ <div id="myModal" class="modal fade col-md-12" role="dialog">
   <div class="modal-dialog">
 
-    <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -182,41 +173,55 @@
       <div class="modal-body">
       	  <div class="sbox animated fadeInRight">
             <div class="sbox-content">
-                <div class="panel-group" id="uc-accordion">
-                <?php
-                    if(!empty($contractdata)) {
-                        $sn = 0;
-                        foreach ($contractdata as $row) {
-                            ?>
-                             <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#uc-accordion" href="#uc-collapse-<?php echo $sn; ?>"><?php echo $row->title; ?></a>
-                                    </h4>
-                                </div>
-                                <div id="uc-collapse-<?php echo $sn; ?>" class="panel-collapse collapse <?php echo ($sn == 1)? 'in' : ''; ?>">
-                                    <div class="panel-body"><?php echo nl2br($row->description); ?></div>
-                                </div>
-                            </div>
-                                
-                            <?php
-                            $sn++;
-                        }
-                    }
-                    ?>
-                </div>
+	                <div class="panel-group" id="uc-accordion">
+	                <?php
+	                    if(!empty($contractdata)) {
+	                        $sn = 0;
+	                        foreach ($contractdata as $row) {
+	                            ?>
+	                             <div class="panel panel-default">
+	                                <div class="panel-heading">
+	                                    <h4 class="panel-title">
+	                                        <a data-toggle="collapse" data-parent="#uc-accordion" href="#uc-collapse-<?php echo $sn; ?>"><?php echo $row->title; ?></a>
+	                                    </h4>
+	                                </div>
+	                                <div id="uc-collapse-<?php echo $sn; ?>" class="panel-collapse collapse <?php echo ($sn == 0)? 'in' : ''; ?>">
+	                                    <div class="panel-body"><?php echo nl2br($row->description); ?></div>
+	                                </div>
+	                            </div>
+	                                
+	                            <?php
+	                            $sn++;
+	                        }
+	                    }
+	                    ?>
+	                </div>
             </div>
-  </div>
+  			</div>
         
       </div>
       <div class="modal-footer">
+      		<div class="form-group ">
+						<div class="col-sm-12" id="contractSignCheck">
+							<label class="col-sm-2" data-toggle="modal" data-target="#myModal">
+							<input type="checkbox"  id="contractSignCheckFinal" name="contractSignCheckFinal" value="accepted" required="">
+							</label>
+								<div class="checkbox">
+									<label class="radio-label">I hereby accept the terms of contract.</label>
+								</div>
+							
+
+						</div>
+			</div>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
 
   </div>
 </div>
+<!-- End contract section start-->
 
+</form>
 </section>
    
 
@@ -301,6 +306,10 @@
     background-color: #f2dede;
     border-color: #ebccd1;
 
+}
+.hotelInfoSection {
+    display: inline-block;
+    padding: 2% 11.5%;
 }
 </style>
 @endsection

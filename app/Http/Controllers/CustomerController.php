@@ -988,7 +988,7 @@ return Redirect::to('customer/profile')->with('message', \SiteHelpers::alert('er
         $this->data['contractdata']=$resultContract["rows"];
        return view('customer.whoiam', $this->data);
     }
-
+        
 
     public function postSavewhoiam(Request $request) {
 
@@ -997,6 +997,7 @@ return Redirect::to('customer/profile')->with('message', \SiteHelpers::alert('er
         $rules = array(
             'first_name' => 'required|alpha_num|min:2',
             'last_name' => 'required|alpha_num|min:2',
+            'contractSignCheckFinal'=>'required',
         );
 
 
@@ -1016,6 +1017,9 @@ return Redirect::to('customer/profile')->with('message', \SiteHelpers::alert('er
             $user->first_name = $request->input('first_name');
             $user->last_name = $request->input('last_name');
             $user->mobile_number=$request->input('txtPhoneNumber');
+
+            $user->contracts= $this->getDownloadContractPdf($user->id);
+
             if (isset($data['avatar']))
                 $user->avatar = $newfilename;
 
@@ -1400,10 +1404,10 @@ return Redirect::to('customer/profile')->with('message', \SiteHelpers::alert('er
                 $html .= '<tr><td colspan="3" style="text-align:right;"><b>Total(Excl.VAT)<b></td><td class="algRgt font13"><b>'.$currency->content .' '.($Totprice -(($Totprice*$this->data['data']['vatsettings']->content)/100)).'<b></td></tr>';
                 $html .= '<tr><td colspan="3" style="text-align:right;"><b>VAT('. $this->data['data']['vatsettings']->content .'%)<b></td><td class="algRgt font13"><b>'.$currency->content .' '.(($Totprice*$this->data['data']['vatsettings']->content)/100).'<b></td></tr>';
 
-                $html .= '<tr><td colspan="4"><hr  style="border-top:1px solid #000; width:100%"/></td>';
+                $html .= '<tr><td colspan="4"><hr  style="border-top:1px solid #000; width:100%"/></td></tr>';
 
                 $html .= '<tr><td colspan="3" class="algRgt font13"><b>Total<b></td><td class="algRgt font13"><b>'.$currency->content .' '.number_format($Totprice, 2, '.', ',').'<b></td></tr>';
-                $html .= '<tr><td colspan="4"><hr  style="border-top:1px solid #000; width:100%"/></td>';
+                $html .= '<tr><td colspan="4"><hr  style="border-top:1px solid #000; width:100%"/></td></tr>';
                 $html .= '</table></div>';
 			
 				$pdf = \App::make('dompdf.wrapper');
@@ -1418,5 +1422,143 @@ return Redirect::to('customer/profile')->with('message', \SiteHelpers::alert('er
 			return 'error';
 		} 
     }
+
+
+
+ /* Function By Ram To generate Contract PDF */
+  public function getDownloadContractPdf($userID) {
+
+       $downFileName = 'user-contract-'.$userID."-".date('d-m-Y').'.pdf';
+    
+        if($userID!="")
+        {
+        $html = '
+        <style> 
+                .main { margin:2px; width:100%; font-family: arial, sans-serif; } 
+                .page-break { page-break-after: always; } 
+
+                .header{ width: 100%; position:fixed; top: -35px; text-align:center; height:200px;} 
+                .footer {width: 100%; position:fixed;} 
+                .pagenum:after {content: counter(page);} 
+                .imgBox { text-align:center; width:400px; } 
+                .nro { text-align:center; font-size:12px; } 
+                .header img { width:250px; height: 50px; } 
+                .Mrgtop80 {margin-top:80px;} 
+                .Mrgtop40 {margin-top:40px;}
+                .Mrgtop20 {margin-top:10px;} 
+                .monimg img { width:125px; height:80px; }  
+                .font13 { font-size:13px; } 
+                .font12 { font-size:12px; } 
+                .algRgt { text-align:right; } 
+                .algCnt { text-align:center; } 
+                .footer {bottom: 150px;}
+                .pagenum:after {content: counter(page);}
+                .title {text-align:right; width:100%; font-size:30px; font-weight:bold;} 
+                .clrgrey{ color:#3f3f3f;} 
+                .alnRight{text-align:right;} 
+                .alnCenter{text-align:center;} 
+                td{font-size:12px; padding:0px;} 
+                th{background-color:#999; color:#000000; text-align:left; padding:0px; font-size:12px;}
+           
+                h2{padding-bottom:0px; margin-bottom:0px;} 
+                .valin{ vertical-align:top;} 
+                .valinbt{ vertical-align:bottom; text-align:right;}
+                .page {
+                background: white;
+                display: block;
+                margin: 0 auto;
+                margin-bottom: 0.5cm;
+
+                }
+
+                @media print {
+                body, page {
+                margin: 0;
+                box-shadow: 0;
+                }
+                }
+
+        </style>';
+
+
+        $html .= '
+        <div class="main">
+            <div class="header">
+
+                <table width="100%">
+                    <tr>
+                        <td class="title" align="center">
+                             <center><img src="'. \URL::to('sximo/assets/images/logo-design_1.png').'" width="250px;" height="50px;"></center>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="title" align="center">
+                            <center> &nbsp;</center>
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+        <div style="clear:both;"> &nbsp;</div>
+        <div class="footer">
+
+        <table width="100%">
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
+        ';
+
+        $html .= '</table>
+        </div>';
+
+/* Add Contract Data here */
+$html .= '<div style="clear:both;"></div>
+            <div class="Mrgtop20 font13">
+            <table width="100%">
+                 <tr>
+                    <td colspan="2" align="right"  height="25px;">&nbsp;</td>
+                 </tr>
+                ';
+
+              
+      $contractObject =new Contract();
+      $params = array(         
+        );
+      $resultContract= $contractObject->getRows($params); 
+      $sn = 1;
+       foreach ($resultContract["rows"] as $row) {
+   
+                $html .= '
+                  <tr style="background:#eeeeee;">
+                    <th width="10%">'.$sn.'</th>
+                    <th width="90%" ><h4>'.$row->title.'</h4></th>
+            
+                </tr>
+                    ';
+
+
+                $html .= '
+                     <tr>
+                        <td colspan="2">'.nl2br($row->description).'</td>
+                      </tr>';
+      
+                    $sn++;
+       }
+
+     $html .= '</table>';
+/* End  Contract Data here */
+$html .= '</div>';
+                $pdf = \App::make('dompdf.wrapper');
+                $pdf->loadHTML($html);
+                $fileGenerated=$pdf->download($downFileName);
+                $pdf->save(public_path(). '/uploads/users/'.$downFileName);
+                return $downFileName;
+        }
+        
+    }
+
+ /* End function by Ram to generate PDF*/      
 
 }

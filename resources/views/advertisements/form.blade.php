@@ -96,7 +96,7 @@
 									<div class="col-md-6">
 									  
 					<?php $adv_position = explode(',',$row['adv_position']);
-					$adv_position_opt = array( 'landing' => 'Landing Page Sidebar' ,  'grid_sidebar' => 'Grid Page Sidebar' ,  'grid_results' => 'Grid Page Results' ,  'detail' => 'Detail Page Sidebar' ,  'landing_slider' => 'landing Page Slider' ,  'grid_slider' => 'Grid Page Slider' , ); ?>
+					$adv_position_opt = array( 'landing' => 'Landing Page Sidebar' ,  'landing_slider' => 'landing Page Slider' ,  'grid_results' => 'Grid Page Results' ,  'grid_sidebar' => 'Grid Page Sidebar' ,  'grid_slider' => 'Grid Page Slider',  'detail_sidebar' => 'Detail Page Sidebar' ,  'detail_restaurant_page' => 'Restaurant Detail Page' ,  'detail_spa_page' => 'Spa Detail Page' ,  'detail_bar_page' => 'Bar Detail Page', 'restro_spa_bar_search_page' => 'Restaurant Bar Spa Search Page', 'social_media_page' => 'Social Media Page', 'youtube_channel_page' => 'Youtube channel Page', 'business_menu_page' => 'Business menu Page', 'wetransfer_upload_page' => 'Wetransfer upload files Page', 'wetransfer_download_page' => 'Wetransfer download files Page', 'email_template' => 'Email template', 'contracts_page' => 'Contracts Page' ); ?>
 					<select name='adv_position' rows='5' required  class='select2 '  > 
 						<?php 
 						foreach($adv_position_opt as $key=>$val)

@@ -114,6 +114,7 @@ class PackagesController extends Controller {
 		$this->data['fields'] =  \SiteHelpers::fieldLang($this->info['config']['forms']);
 		
 		$this->data['id'] = $id;
+		$this->data['mods'] = \DB::table('tb_module')->select('module_id','module_title')->get();
 		return view('packages.form',$this->data);
 	}	
 
@@ -153,6 +154,10 @@ class PackagesController extends Controller {
             } else {
                 $data['updated_at'] = date('Y-m-d h:i:s');
             }
+			if(!is_null($request->input('package_modules')))
+			{
+				$data['package_modules'] = implode(',',$request->input('package_modules'));
+			}
 			$id = $this->model->insertRow($data , $request->input('id'));
 			
 			if(!is_null($request->input('apply')))
