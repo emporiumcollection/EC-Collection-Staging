@@ -117,7 +117,7 @@
                                 </li>
                                 <li class="arrival-li">
                                     <i class="fa fa-calander"></i>
-                                    <input name="arrive" id="reservationdateside" class="form-control datefield reservationdate" type="text" placeholder="Arrival" readonly="" required="">
+                                    <input name="arrive" id="reservationdateside" class="form-control datefield reservationdate" type="text" placeholder="Arrival" value="@$_GET['arrive'];" readonly="" required="">
                                 </li>
                                 <?php /* <li>
                                     <label>DAY</label>
