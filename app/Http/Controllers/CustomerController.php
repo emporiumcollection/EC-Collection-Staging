@@ -1557,8 +1557,8 @@ $html .= '<div style="clear:both;"></div>
 $html .= '</div>';
                 $pdf = \App::make('dompdf.wrapper');
                 $pdf->loadHTML($html);
-               $fileGenerated=$pdf->download($downFileName);
-               copy($fileGenerated, "uploads/users/".$downFileName);;
+                $fileGenerated=$pdf->download($downFileName);
+                $pdf->save(public_path(). '/uploads/users/'.$downFileName);
                 return $downFileName;
         }
         
