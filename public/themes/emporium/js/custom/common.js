@@ -254,7 +254,7 @@ $(document).ready(function () {
                 $(data.data.restro).each(function (i, val) {
                     var  linkMenu = BaseURL+'/restaurant/'+val.alias;
                     html += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.title + '</a></li>';
-                });
+                }); 
                 $('[data-option="resto-option-list"]').html(html);
                 $('[data-action="gobal-restaurant"]').parent().show();
             }
