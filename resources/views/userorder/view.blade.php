@@ -117,7 +117,28 @@
 					<div class="row items-pnl-body" id="item-row">
 						<div class="fieldwrapper">
 							<div class="col-sm-1 col">{{$nos}}</div>
-							<div class="col-sm-7 col"><b>{{$detail->pckname}}</b> @if($detail->pckcontent!='') <br> {{$detail->pckcontent}} @endif</div>
+							<div class="col-sm-7 col"><b>{{$detail->pckname}}</b> @if($detail->pckcontent!='') <br> {{$detail->pckcontent}} @endif
+
+@if($detail->package_modules!='')
+							<div >
+                                @if($detail->package_modules !="" && $detail->package_modules!="NULL")
+                              
+                                  <h2>Module Access purchased in this package are:</h2>
+                                  {{--*/  $modulesOffered = DB::table('tb_module')->whereIn('module_id', explode(',',$detail->package_modules))->get();/*--}}
+                                  @foreach ($modulesOffered as $moduleRow)
+                                  
+                                    <p><h2>Module Name: {{ $moduleRow->module_name}}</h2></p>
+                                    <b>Module Note: {{ $moduleRow->module_note}}</b>
+                                    
+                                   @endforeach
+                                   
+                                @endif
+                                </div>
+
+
+					@endif 
+
+							</div>
 							<div class="col-sm-2 col" style="text-align:center;">{{$detail->qty}}</div>
 							<div class="col-sm-2 col" style="text-align:center;">{{$currency->content . $detail->pckprice}}</div>
 						</div>
