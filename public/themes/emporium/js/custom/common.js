@@ -128,7 +128,7 @@ $(document).ready(function () {
     *  For Auto suggestion list for Top Search Bar
     */
 
-    if($('[data-action="auto-suggestion"]')) {    
+    if($('[data-action="auto-suggestion"]').length) {   
         $('[data-action="auto-suggestion"]').autocomplete({
             source: function (request, response) {
                 var datObj = {};
