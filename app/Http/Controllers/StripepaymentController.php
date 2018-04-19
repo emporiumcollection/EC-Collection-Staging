@@ -348,6 +348,9 @@ public function checkoutPost(Request $request)
                             if($cartValue['package']['type']=='hotel'){
                                  $orditemdta['package_type'] = $cartValue['package']['type']; 
                                  $orditemdta['package_id'] = $cartValue['package']['id'];
+                                
+                            $packgeDataDetalis = DB::table('tb_packages')->where('id',$cartValue['package']['id'])->get();
+                             $orditemdta['package_data'] = json_encode($packgeDataDetalis);
                             }
                             if($cartValue['package']['type']=='advert'){
                                  $orditemdta['package_type'] = $cartValue['package']['type']; 
