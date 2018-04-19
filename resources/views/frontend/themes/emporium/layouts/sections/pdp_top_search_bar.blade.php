@@ -1,10 +1,4 @@
-<header id="header">
-	<div class="logo-wrapper">
-		<a href="{{URL::to('')}}"><img src="{{ asset('themes/emporium/images/logo.png')}}" alt="Emporium Voyage"/></a>
-	</div>
 
-	<div class="header-content">
-		<div class="col-lg-12 header-search">
 			<form action="{{url().'/book-property/'.$propertyDetail['data']->property_slug}}" id="reservationForm" name="reservationform" class="reservation-form pdpreservation-form">
 				<div class="row">
 					<div class="col-sm-3 col-md-2">
@@ -60,6 +54,4 @@
 					<div class="col-sm-3 col-md-2"><button class="btn yellowbtn">MAKE RESERVATION</button></div>
 				</div>
 			</form>
-		</div> 
-	</div>
-</header>
+		

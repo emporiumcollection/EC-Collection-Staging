@@ -6,7 +6,7 @@
         <span></span>
     </div>
     <div class="mobilemenu-inner">
-        <div class="restaurantnav">
+        <div class="mobilemainnav openmobilemenu">
             <div class="mobilenavheader">
 				<a href="{{URL::to('')}}"><img src="{{ asset('themes/emporium/images/logo.png') }}" alt="Emporium Voyage" class="img-responsive"/></a>
                 @if(!empty($barsArr[0])) <h3>{{$barsArr[0]->title}}</h3> @endif

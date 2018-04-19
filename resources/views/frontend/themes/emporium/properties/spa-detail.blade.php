@@ -54,7 +54,7 @@
 												<h1><span>Restaurant</span></h1>
 												<h2>{{$spasArr[0]->title}}</h2>
 												<div class="mCustomScrollbar" data-mcs-theme="minimal-dark">
-													<p> {{$spasArr[0]->desciription}}</p>
+													<p> {{$spasArr[0]->description}}</p>
 													@if(array_key_exists('datamenu',$spasArr[0]))
 														<div class="foodemenu">
 															<p>View Menus:<br/>

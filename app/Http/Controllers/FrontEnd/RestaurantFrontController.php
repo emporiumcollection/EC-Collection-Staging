@@ -94,7 +94,7 @@ class RestaurantFrontController extends Controller {
 							$fetchbarsliderfiles = \DB::table('tb_container_files')->join('tb_frontend_container', 'tb_frontend_container.container_id', '=', 'tb_container_files.id')->select('tb_container_files.folder_id','tb_container_files.file_name')->where('tb_container_files.folder_id', $fetchbarsliderfolder->id)->where('tb_frontend_container.container_type', 'file')->orderBy('tb_container_files.file_sort_num','asc')->first();
 							if(!empty($fetchbarsliderfiles))
 							{
-								$barturantArr[$bf]->dataslider = (new ContainerController)->getThumbpath($fetchbarsliderfiles->folder_id).$fetchbarsliderfiles->file_name;
+								$barsArr[$bf]->dataslider = (new ContainerController)->getThumbpath($fetchbarsliderfiles->folder_id).$fetchbarsliderfiles->file_name;
 							}
 						}
 						
@@ -104,7 +104,8 @@ class RestaurantFrontController extends Controller {
 							$fetchbargalleryfiles = \DB::table('tb_container_files')->join('tb_frontend_container', 'tb_frontend_container.container_id', '=', 'tb_container_files.id')->where('tb_container_files.folder_id', $fetchbargalleryfolder->id)->where('tb_frontend_container.container_type', 'file')->orderBy('tb_container_files.file_sort_num','asc')->get();
 							if(!empty($fetchbargalleryfiles))
 							{
-								$barturantArr[$bf]->datagallery = $fetchbargalleryfiles;
+								$barsArr[$bf]->datagallery = $fetchbargalleryfiles;
+								$barsArr[$bf]->datagallerypath = (new ContainerController)->getThumbpath($fetchbargalleryfolder->id);
 							}
 						}
 						
@@ -115,6 +116,7 @@ class RestaurantFrontController extends Controller {
 							if(!empty($fetchbarmenufiles))
 							{
 								$barsArr[$bf]->datamenu = $fetchbarmenufiles;
+								$barsArr[$bf]->datamenupath = (new ContainerController)->getThumbpath($fetchbarmenufolder->id);
 							}
 						}
 						$bf++;
@@ -138,7 +140,7 @@ class RestaurantFrontController extends Controller {
 							$fetchspasliderfiles = \DB::table('tb_container_files')->join('tb_frontend_container', 'tb_frontend_container.container_id', '=', 'tb_container_files.id')->select('tb_container_files.folder_id','tb_container_files.file_name')->where('tb_container_files.folder_id', $fetchspasliderfolder->id)->where('tb_frontend_container.container_type', 'file')->orderBy('tb_container_files.file_sort_num','asc')->first();
 							if(!empty($fetchspasliderfiles))
 							{
-								$spaturantArr[$sf]->dataslider = (new ContainerController)->getThumbpath($fetchspasliderfiles->folder_id).$fetchspasliderfiles->file_name;
+								$spasArr[$sf]->dataslider = (new ContainerController)->getThumbpath($fetchspasliderfiles->folder_id).$fetchspasliderfiles->file_name;
 							}
 						}
 						
@@ -148,7 +150,8 @@ class RestaurantFrontController extends Controller {
 							$fetchspagalleryfiles = \DB::table('tb_container_files')->join('tb_frontend_container', 'tb_frontend_container.container_id', '=', 'tb_container_files.id')->where('tb_container_files.folder_id', $fetchspagalleryfolder->id)->where('tb_frontend_container.container_type', 'file')->orderBy('tb_container_files.file_sort_num','asc')->get();
 							if(!empty($fetchspagalleryfiles))
 							{
-								$spaturantArr[$sf]->datagallery = $fetchspagalleryfiles;
+								$spasArr[$sf]->datagallery = $fetchspagalleryfiles;
+								$spasArr[$sf]->datagallerypath = (new ContainerController)->getThumbpath($fetchspagalleryfolder->id);
 							}
 						}
 						
@@ -159,6 +162,7 @@ class RestaurantFrontController extends Controller {
 							if(!empty($fetchspamenufiles))
 							{
 								$spasArr[$sf]->datamenu = $fetchspamenufiles;
+								$spasArr[$sf]->datamenupath = (new ContainerController)->getThumbpath($fetchspamenufolder->id);
 							}
 						}
 						$sf++;
@@ -261,7 +265,7 @@ class RestaurantFrontController extends Controller {
 				$fetchbarsliderfiles = \DB::table('tb_container_files')->join('tb_frontend_container', 'tb_frontend_container.container_id', '=', 'tb_container_files.id')->select('tb_container_files.folder_id','tb_container_files.file_name')->where('tb_container_files.folder_id', $fetchbarsliderfolder->id)->where('tb_frontend_container.container_type', 'file')->orderBy('tb_container_files.file_sort_num','asc')->first();
 				if(!empty($fetchbarsliderfiles))
 				{
-					$barturantArr[$bf]->dataslider = (new ContainerController)->getThumbpath($fetchbarsliderfiles->folder_id).$fetchbarsliderfiles->file_name;
+					$barsArr[$bf]->dataslider = (new ContainerController)->getThumbpath($fetchbarsliderfiles->folder_id).$fetchbarsliderfiles->file_name;
 				}
 			}
 			
@@ -271,7 +275,8 @@ class RestaurantFrontController extends Controller {
 				$fetchbargalleryfiles = \DB::table('tb_container_files')->join('tb_frontend_container', 'tb_frontend_container.container_id', '=', 'tb_container_files.id')->where('tb_container_files.folder_id', $fetchbargalleryfolder->id)->where('tb_frontend_container.container_type', 'file')->orderBy('tb_container_files.file_sort_num','asc')->get();
 				if(!empty($fetchbargalleryfiles))
 				{
-					$barturantArr[$bf]->datagallery = $fetchbargalleryfiles;
+					$barsArr[$bf]->datagallery = $fetchbargalleryfiles;
+					$barsArr[$bf]->datagallerypath = (new ContainerController)->getThumbpath($fetchbargalleryfolder->id);
 				}
 			}
 			
@@ -282,6 +287,7 @@ class RestaurantFrontController extends Controller {
 				if(!empty($fetchbarmenufiles))
 				{
 					$barsArr[$bf]->datamenu = $fetchbarmenufiles;
+					$barsArr[$bf]->datamenupath = (new ContainerController)->getThumbpath($fetchbarmenufolder->id);
 				}
 			}
 		}
@@ -306,7 +312,7 @@ class RestaurantFrontController extends Controller {
 				$fetchspasliderfiles = \DB::table('tb_container_files')->join('tb_frontend_container', 'tb_frontend_container.container_id', '=', 'tb_container_files.id')->select('tb_container_files.folder_id','tb_container_files.file_name')->where('tb_container_files.folder_id', $fetchspasliderfolder->id)->where('tb_frontend_container.container_type', 'file')->orderBy('tb_container_files.file_sort_num','asc')->first();
 				if(!empty($fetchspasliderfiles))
 				{
-					$spaturantArr[$sf]->dataslider = (new ContainerController)->getThumbpath($fetchspasliderfiles->folder_id).$fetchspasliderfiles->file_name;
+					$spasArr[$sf]->dataslider = (new ContainerController)->getThumbpath($fetchspasliderfiles->folder_id).$fetchspasliderfiles->file_name;
 				}
 			}
 			
@@ -316,7 +322,8 @@ class RestaurantFrontController extends Controller {
 				$fetchspagalleryfiles = \DB::table('tb_container_files')->join('tb_frontend_container', 'tb_frontend_container.container_id', '=', 'tb_container_files.id')->where('tb_container_files.folder_id', $fetchspagalleryfolder->id)->where('tb_frontend_container.container_type', 'file')->orderBy('tb_container_files.file_sort_num','asc')->get();
 				if(!empty($fetchspagalleryfiles))
 				{
-					$spaturantArr[$sf]->datagallery = $fetchspagalleryfiles;
+					$spasArr[$sf]->datagallery = $fetchspagalleryfiles;
+					$spasArr[$sf]->datagallerypath = (new ContainerController)->getThumbpath($fetchspagalleryfolder->id);
 				}
 			}
 			
@@ -327,6 +334,7 @@ class RestaurantFrontController extends Controller {
 				if(!empty($fetchspamenufiles))
 				{
 					$spasArr[$sf]->datamenu = $fetchspamenufiles;
+					$spasArr[$sf]->datamenupath = (new ContainerController)->getThumbpath($fetchspamenufolder->id);
 				}
 			}
 		}
