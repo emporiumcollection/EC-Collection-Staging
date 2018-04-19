@@ -185,7 +185,7 @@
 
     <script>
         $(function () {
-            var baseUrl = "http://localhost/emporium-staging-forge/public/hotel/transferaddfile";
+            var baseUrl = "{{ url::to('hotel/transferaddfile') }}";
             var token = "{{ Session::getToken() }}";
             Dropzone.autoDiscover = false;
             var myDropzone = new Dropzone("div#dropzoneFileUpload", {
