@@ -105,6 +105,20 @@
                                                 	<span class="product-title">{{$package->package_title}}</span>
                                                     <a href="javascript:voic(0);" onclick="javascript:removeItemFromCart({{$package->id}},{{ $package->package_price }});"><i class="fa fa-trash"></i></a>
                                                 </div>
+                                                <div>
+                                                @if($package->package_modules !="" && $package->package_modules!="NULL")
+                                              
+                                                  <h4>Module Offered in this packages are:</h4>
+                                                  {{--*/  $modulesOffered = DB::table('tb_module')->whereIn('module_id', explode(',',$package->package_modules))->get();/*--}}
+                                                  @foreach ($modulesOffered as $moduleRow)
+                                                  
+                                                    <p><h5>Module Name: {{ $moduleRow->module_name}}</h5></p>
+                                                    <p>Module Note: {{ $moduleRow->module_note}}</p>
+                                                    <p>Module Description: {!! nl2br($moduleRow->module_desc) !!}</p>
+                                                   @endforeach
+                                                   
+                                                @endif
+                                                </div>
                                             </td>
                                             
                                             <td class="overview-td">1</td>

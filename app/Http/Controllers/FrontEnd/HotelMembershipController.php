@@ -188,6 +188,7 @@ class HotelMembershipController extends Controller {
     */
     public function hotelPackage(Request $request) {
         $this->data['packages'] = \DB::table('tb_packages')->where('package_status', 1)->get();
+        $this->data['moduleDetails'] = \DB::table('tb_module')->get();
         return view('frontend.hotel_membership.hotel_package', $this->data);
     }
 
@@ -246,7 +247,7 @@ class HotelMembershipController extends Controller {
             }
         }
 
-        $htoelPkgQry = "Select tb_pkg.id,tb_pkg.package_title,tb_pkg.package_image,tb_pkg.package_price  from tb_packages tb_pkg where tb_pkg.id in(".implode(',',$hotelPkgID).")"; 
+        $htoelPkgQry = "Select tb_pkg.id,tb_pkg.package_title,tb_pkg.package_image,tb_pkg.package_price,tb_pkg.package_modules  from tb_packages tb_pkg where tb_pkg.id in(".implode(',',$hotelPkgID).")"; 
         $dataPackage = \DB::select($htoelPkgQry);
 		$this->data['packages'] = $dataPackage;
 		$adsdataPackage = array();
@@ -281,7 +282,7 @@ class HotelMembershipController extends Controller {
 		}
 
 		
-		$mainPkgQry = "Select tb_pkg.id,tb_pkg.package_title,tb_pkg.package_image,tb_pkg.package_price  from tb_packages tb_pkg where tb_pkg.id in(".implode(',',$hotelPkgID).")"; 
+		$mainPkgQry = "Select tb_pkg.id,tb_pkg.package_title,tb_pkg.package_image,tb_pkg.package_price,tb_pkg.package_modules  from tb_packages tb_pkg where tb_pkg.id in(".implode(',',$hotelPkgID).")"; 
 		$dataPackage = \DB::select($mainPkgQry);        
 		$this->data['packages'] = $dataPackage;
 		
