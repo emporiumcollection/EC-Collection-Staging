@@ -19,7 +19,7 @@
 				  @foreach($resturantArr as $resturant)
 					@if(array_key_exists('dataslider',$resturant))
 						{{--*/ $clsact = ''; /*--}}
-						@if($checkslid==false) {{--*/ $clsact = 'active'; $checkslid==true; /*--}} @endif
+						@if($checkslid==false) {{--*/ $clsact = 'active'; $checkslid=true; /*--}} @endif
 					  <div class="item {{$clsact}}" style="background:url('{{$resturant->dataslider}}') center center no-repeat; background-size:cover;">
 						<div class="carousel-caption">
 						  <h1>{{$resturant->title}}</h1>
@@ -35,7 +35,7 @@
 				  @foreach($barsArr as $bars)
 					@if(array_key_exists('dataslider',$bars))
 						{{--*/ $clsact = ''; /*--}}
-						@if($checkslid==false) {{--*/ $clsact = 'active'; $checkslid==true; /*--}} @endif
+						@if($checkslid==false) {{--*/ $clsact = 'active'; $checkslid=true; /*--}} @endif
 					  <div class="item {{$clsact}}" style="background:url('{{$bars->dataslider}}') center center no-repeat; background-size:cover;">
 						<div class="carousel-caption">
 						  <h1>{{$bars->title}}</h1>
@@ -51,7 +51,7 @@
 				  @foreach($spasArr as $spas)
 					@if(array_key_exists('dataslider',$spas))
 						{{--*/ $clsact = ''; /*--}}
-						@if($checkslid==false) {{--*/ $clsact = 'active'; $checkslid==true; /*--}} @endif
+						@if($checkslid==false) {{--*/ $clsact = 'active'; $checkslid=true; /*--}} @endif
 					  <div class="item {{$clsact}}" style="background:url('{{$spas->dataslider}}') center center no-repeat; background-size:cover;">
 						<div class="carousel-caption">
 						  <h1>{{$spas->title}}</h1>
