@@ -1018,9 +1018,7 @@ return Redirect::to('customer/profile')->with('message', \SiteHelpers::alert('er
             $user->last_name = $request->input('last_name');
             $user->mobile_number=$request->input('txtPhoneNumber');
 
-            $user->contracts= getDownloadContractPdf($user->id);
-
-
+            $user->contracts= $this->getDownloadContractPdf($user->id);
 
             if (isset($data['avatar']))
                 $user->avatar = $newfilename;
