@@ -90,6 +90,22 @@
 						<td>{{ $row->updated_at }} </td>
 						
 					</tr>
+
+
+					@if($row->contracts!="NULL" && $row->contracts!="")
+							
+				
+
+					<tr>
+						<td width='30%' class='label-view text-right'>View Contract</td>
+						<td><span class="fileinput-exists"> Download Contract File </span>
+									{!! SiteHelpers::showUploadedFile($row->contracts,'/uploads/users/',80,80) !!}
+								</span> </td>
+						
+					</tr>
+						@endif
+
+					
 				
 					<tr>
 						<td width='30%' class='label-view text-right'>Active</td>
