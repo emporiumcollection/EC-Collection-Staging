@@ -294,8 +294,8 @@ class RestaurantFrontController extends Controller {
 		$this->data['pagetitle'] = $request->slug;
 		$spasArr = array();
 		
-		$spafileArr = \DB::table('tb_images_res_spa_bar')->join('tb_spas', 'tb_spas.id', '=', 'tb_images_res_spa_bar.parent_id')->select('tb_spas.*', 'tb_images_res_spa_bar.parent_id', 'tb_images_res_spa_bar.folder_id', 'tb_images_res_spa_bar.type')->where('tb_spas.alias', $request->slug)->where('tb_images_res_spa_bar.type', 'spa')->get();
-		print_r($spafileArr); die;
+		$spafileArr = \DB::table('tb_images_res_spa_bar')->join('tb_spas', 'tb_spas.id', '=', 'tb_images_res_spa_bar.parent_id')->select('tb_spas.*', 'tb_images_res_spa_bar.parent_id', 'tb_images_res_spa_bar.folder_id', 'tb_images_res_spa_bar.type')->where('tb_spas.alias', $request->slug)->where('tb_images_res_spa_bar.type', 'spa')->first();
+		
 		if(!empty($spafileArr))
 		{
 			$sf=0;
