@@ -1057,7 +1057,7 @@
 
 {{-- For Include Top Bar --}}
 @section('top_search_bar')
-    
+    @include('frontend.themes.emporium.layouts.sections.rdp_top_search_bar')
 @endsection
 
 {{-- For Include Side Bar --}}
