@@ -82,6 +82,10 @@ class PropertyimagesmanagementController extends Controller {
         }
     }
     
+    public function transferaddfilessend(Request $request){
+    	print_r($request->hasFile('files[]'));
+	}
+
     public function transferaddfile(Request $request)
 	{
 		if (\Auth::check() == true) {

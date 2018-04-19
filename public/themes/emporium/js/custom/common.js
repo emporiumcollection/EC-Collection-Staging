@@ -541,4 +541,10 @@ $(document).on('click', '[data-action="agree-button"]', function () {
     $(".transferSecSecond").addClass("openTransferSec");
     $(".transferSecFirst").removeClass("openTransferSec");
     $(".transferSecThird").removeClass("openTransferSec");
-})
+});
+
+$(document).on('click', '[data-action="send-email-button"]', function () {
+    $(".transferSecThird").addClass("openTransferSec");
+    $(".transferSecSecond").removeClass("openTransferSec");
+    $(".transferSecSecond").removeClass("openTransferSec");
+});
