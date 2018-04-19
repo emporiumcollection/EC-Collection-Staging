@@ -105,6 +105,7 @@ class RestaurantFrontController extends Controller {
 							if(!empty($fetchbargalleryfiles))
 							{
 								$barsArr[$bf]->datagallery = $fetchbargalleryfiles;
+								$barsArr[$bf]->datagallerypath = (new ContainerController)->getThumbpath($fetchbargalleryfolder->id);
 							}
 						}
 						
@@ -115,6 +116,7 @@ class RestaurantFrontController extends Controller {
 							if(!empty($fetchbarmenufiles))
 							{
 								$barsArr[$bf]->datamenu = $fetchbarmenufiles;
+								$barsArr[$bf]->datamenupath = (new ContainerController)->getThumbpath($fetchbarmenufolder->id);
 							}
 						}
 						$bf++;
@@ -149,6 +151,7 @@ class RestaurantFrontController extends Controller {
 							if(!empty($fetchspagalleryfiles))
 							{
 								$spasArr[$sf]->datagallery = $fetchspagalleryfiles;
+								$spasArr[$sf]->datagallerypath = (new ContainerController)->getThumbpath($fetchspagalleryfolder->id);
 							}
 						}
 						
@@ -159,6 +162,7 @@ class RestaurantFrontController extends Controller {
 							if(!empty($fetchspamenufiles))
 							{
 								$spasArr[$sf]->datamenu = $fetchspamenufiles;
+								$spasArr[$sf]->datamenupath = (new ContainerController)->getThumbpath($fetchspamenufolder->id);
 							}
 						}
 						$sf++;
@@ -272,6 +276,7 @@ class RestaurantFrontController extends Controller {
 				if(!empty($fetchbargalleryfiles))
 				{
 					$barsArr[$bf]->datagallery = $fetchbargalleryfiles;
+					$barsArr[$bf]->datagallerypath = (new ContainerController)->getThumbpath($fetchbargalleryfolder->id);
 				}
 			}
 			
@@ -282,6 +287,7 @@ class RestaurantFrontController extends Controller {
 				if(!empty($fetchbarmenufiles))
 				{
 					$barsArr[$bf]->datamenu = $fetchbarmenufiles;
+					$barsArr[$bf]->datamenupath = (new ContainerController)->getThumbpath($fetchbarmenufolder->id);
 				}
 			}
 		}
@@ -317,6 +323,7 @@ class RestaurantFrontController extends Controller {
 				if(!empty($fetchspagalleryfiles))
 				{
 					$spasArr[$sf]->datagallery = $fetchspagalleryfiles;
+					$spasArr[$sf]->datagallerypath = (new ContainerController)->getThumbpath($fetchspagalleryfolder->id);
 				}
 			}
 			
@@ -327,6 +334,7 @@ class RestaurantFrontController extends Controller {
 				if(!empty($fetchspamenufiles))
 				{
 					$spasArr[$sf]->datamenu = $fetchspamenufiles;
+					$spasArr[$sf]->datamenupath = (new ContainerController)->getThumbpath($fetchspamenufolder->id);
 				}
 			}
 		}
