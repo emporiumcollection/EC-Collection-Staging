@@ -254,7 +254,7 @@ $(document).ready(function () {
                 $(data.data.restro).each(function (i, val) {
                     var  linkMenu = BaseURL+'/restaurant/'+val.alias;
                     html += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.title + '</a></li>';
-                }); 
+                });
                 $('[data-option="resto-option-list"]').html(html);
                 $('[data-action="gobal-restaurant"]').parent().show();
             }
@@ -278,7 +278,7 @@ $(document).ready(function () {
                 var spaString = (data.data.spa.length > 1) ? "Spas" : "Spa";
                 $('[data-action="gobal-spa"] span').html(spaString + ' ('+data.data.spa.length+')');
                 $(data.data.spa).each(function (i, val) {
-                    var  linkMenu = BaseURL+'/spa/'+val.property_slug;
+                    var  linkMenu = BaseURL+'/spa/'+val.alias;
                     html += '<li><a class="cursor menu_item" href="'+linkMenu+'">' + val.title + '</a></li>';
                 });
                 $('[data-option="spa-option-list"]').html(html);
