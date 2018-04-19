@@ -8,7 +8,7 @@
     <div class="mobilemenu-inner">
         <div class="mobilemainnav openmobilemenu">
             <div class="mobilenavheader">
-                <a href="{{URL::to('')}}"><img src="{{ asset('themes/emporium/images/design-location-logo.png') }}" alt="Emporium Voyage" class="img-responsive"/></a>
+                <a href="{{URL::to('')}}"><img src="{{ asset('themes/emporium/images/logo.png') }}" alt="Emporium Voyage" class="img-responsive"/></a>
                 <a href="{{URL::to($pagetitle)}}" class="homelinknav backtodestinationnav"><i class="fa fa-angle-left"></i> BACK TO HOTEL</a>
             </div>
             <ul class="mobilemenulist">
