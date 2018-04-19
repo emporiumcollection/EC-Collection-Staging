@@ -374,9 +374,9 @@ Route::get('{slug}/restaurant', 'Frontend\RestaurantFrontController@propertyRest
 
 Route::get('{slug}/events', 'Frontend\PropertyController@getEventsDetail');
 
-Route::get('restaurant/{slug}', 'Frontend\RestaurantFrontController@restrurantDetail');
-Route::get('bar/{slug}', 'Frontend\RestaurantFrontController@barDetail');
-Route::get('spa/{slug}', 'Frontend\RestaurantFrontController@spaDetail');
+Route::get('restaurants/{slug}', 'Frontend\RestaurantFrontController@restrurantDetail');
+Route::get('bars/{slug}', 'Frontend\RestaurantFrontController@barDetail');
+Route::get('spas/{slug}', 'Frontend\RestaurantFrontController@spaDetail');
 Route::get('reserve_resto_table_request', 'Frontend\RestaurantFrontController@reserveRestoTableRequest');
 Route::post('resturantspabar_by_typecity_ajax', 'Frontend\RestaurantFrontController@resturantSpaBarByTypeCityAjax');
 Route::post('resturantspabarSearch_ajax', 'Frontend\RestaurantFrontController@resturantSpaBarSearchAjax');
