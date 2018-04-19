@@ -42,6 +42,7 @@ class RestaurantFrontController extends Controller {
 					foreach($resfileArr as $resfile)
 					{
 						$resturantArr[$rf] = $resfile;
+						echo "tt";
 						$fetchressliderfolder = \DB::table('tb_container')->join('tb_frontend_container', 'tb_frontend_container.container_id', '=', 'tb_container.id')->select('tb_container.id')->where('tb_container.parent_id', $resfile->folder_id)->where('tb_container.name', 'slider')->where('tb_frontend_container.container_type', 'folder')->first();
 						print_r($fetchressliderfolder);
 						if(!empty($fetchressliderfolder))
