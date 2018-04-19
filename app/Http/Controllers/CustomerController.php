@@ -1522,12 +1522,11 @@ $html .= '<div style="clear:both;"></div>
                  </tr>
                 <tr style="background:#eeeeee;">
                     <th width="10%"></th>
-                    <th width="90%" >Details </th>
+                    <th width="90%" ></th>
             
                 </tr>';
 
-                $html .= '<tr>
-                <td colspan="2"><hr  style="border-top:1px solid #000; width:100%"/></td></tr>';
+              
       $contractObject =new Contract();
       $params = array(         
         );
@@ -1536,20 +1535,19 @@ $html .= '<div style="clear:both;"></div>
        foreach ($resultContract["rows"] as $row) {
    
                 $html .= '
-                     <tr>
-                             <td>'.$sn.'</td>
-                             <td><h4>'.$row->title.'</h4></td>
-                        
-                    </tr>';
+                  <tr style="background:#eeeeee;">
+                    <th width="10%">'.$sn.'</th>
+                    <th width="90%" ><h4>'.$row->title.'</h4></th>
+            
+                </tr>
+                    ';
 
 
                 $html .= '
                      <tr>
                         <td colspan="2">'.nl2br($row->description).'</td>
                       </tr>';
-
-                $html .= '<tr>
-                <td colspan="2"><hr  style="border-top:1px solid #000; width:100%"/></td></tr>';       
+      
                     $sn++;
        }
 
