@@ -45,7 +45,7 @@
                   <img src="{{ asset('themes/emporium/images/editorial-right-arrow.png') }}" alt="icon">
                 </a>
               </div>
-              <ol class="carousel-indicators">
+            <ol class="carousel-indicators">
             {{--*/ $klist=0; $tottyp = count($packages); /*--}}
              @foreach($packages as $key=>$package)
               <li data-target="#HamYardHotelSlider" data-slide-to="{{$klist}}" @if($klist==0) class="active" @endif><img src="{{URL::to('uploads/packages/'.$package->package_image)}}" alt="Image"></li>             
@@ -101,6 +101,7 @@
     <div class="container-fluid">
     <!--Accordan Code -->
     <div class="row">
+
     <div>
     @if (!empty($packages))
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -130,6 +131,20 @@
                             <div class="pull-right" style="width:70%">
                                 <p>Package Duration :: {{$package->package_duration}} {{$package->package_duration_type}} </p>  
                                 <p>Package Details: {!! nl2br($package->package_description) !!}</p>
+                                 <div>
+                                @if($package->package_modules !="" && $package->package_modules!="NULL")
+                              
+                                  <h4>Module Offered in this packages are:</h4>
+                                  {{--*/  $modulesOffered = DB::table('tb_module')->whereIn('module_id', explode(',',$package->package_modules))->get();/*--}}
+                                  @foreach ($modulesOffered as $moduleRow)
+                                  
+                                    <p><h5>Module Name: {{ $moduleRow->module_name}}</h5></p>
+                                    <p>Module Note: {{ $moduleRow->module_note}}</p>
+                                    <p>Module Description: {!! nl2br($moduleRow->module_desc) !!}</p>
+                                   @endforeach
+                                   
+                                @endif
+                                </div>
                                  @if($package->package_price_type==0)
                                 <div class="book-btn-sec"><b> 
                                     {!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($package->package_price,2) }} </b>
