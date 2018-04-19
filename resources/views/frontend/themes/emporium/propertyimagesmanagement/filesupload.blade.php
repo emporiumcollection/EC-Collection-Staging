@@ -8,7 +8,7 @@
 {{-- For Page's Content Part --}}
 @section('content')
     <!-- slider starts here -->
-    <section class="sliderSection">
+    <section class="sliderSection"> 
         @if(!empty($slider))
             <div id="myCarousel" class="carousel" data-ride="carousel">
                 <!-- Wrapper for slides -->
