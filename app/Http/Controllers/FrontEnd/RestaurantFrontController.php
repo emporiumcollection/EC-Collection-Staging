@@ -190,7 +190,7 @@ class RestaurantFrontController extends Controller {
 			}
 			
 		}
-		
+		print_r($resturantArr); print_r($barsArr); print_r($spasArr);
 		$this->data['propertiesArr'] = $propertiesArr;
 		$this->data['resturantArr'] = $resturantArr;
 		$this->data['barsArr'] = $barsArr;
