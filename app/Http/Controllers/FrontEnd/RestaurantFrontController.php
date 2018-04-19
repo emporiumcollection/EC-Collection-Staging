@@ -204,6 +204,7 @@ class RestaurantFrontController extends Controller {
 		$resturantArr = array();
 		 
 		$resfileArr = \DB::table('tb_images_res_spa_bar')->join('tb_restaurants', 'tb_restaurants.id', '=', 'tb_images_res_spa_bar.parent_id')->select('tb_restaurants.*', 'tb_images_res_spa_bar.parent_id', 'tb_images_res_spa_bar.folder_id', 'tb_images_res_spa_bar.type')->where('tb_restaurants.alias', $request->slug)->where('tb_images_res_spa_bar.type', 'res')->first();
+		print_r($resfileArr);
 		if(!empty($resfileArr))
 		{
 			$rf=0;
@@ -242,6 +243,7 @@ class RestaurantFrontController extends Controller {
 			}
 		}
 		$this->data['resturantArr'] = $resturantArr;
+		print_r($resturantArr); die;
 		return view('frontend.themes.emporium.properties.resto-detail', $this->data);
 	}
 	
