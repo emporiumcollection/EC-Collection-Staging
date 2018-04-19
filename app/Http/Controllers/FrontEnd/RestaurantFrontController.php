@@ -5,7 +5,7 @@ use App\Http\Controllers\controller;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use DB, Input, Redirect;
-
+use App\Http\Controllers\ContainerController;
 
 class RestaurantFrontController extends Controller {
 
@@ -26,6 +26,7 @@ class RestaurantFrontController extends Controller {
 		$spasArr = array();
 		$barsArr = array();
 		$eventsArray=array();
+		$inspireArray=array();
 		$eventPackagesArray=array();
 
 		$props = \DB::table('tb_properties')->select('restaurant_ids','spa_ids','bar_ids','id')->where('property_slug', $request->slug)->first();
@@ -166,10 +167,8 @@ class RestaurantFrontController extends Controller {
 			}
 
 
-$eventsArray = \DB::table('tb_events')->join('tb_event_packages', 'tb_events.id', '=', 'tb_event_packages.event_id')->where('tb_events.property_id', $props->id)->groupBy('tb_event_packages.event_id')->get();
-
-
-//\DB::table('tb_events')->where('property_id', $props->id)->get();
+			$eventsArray = \DB::table('tb_events')->join('tb_event_packages', 'tb_events.id', '=', 'tb_event_packages.event_id')->where('tb_events.property_id', $props->id)->groupBy('tb_event_packages.event_id')->get();
+			//\DB::table('tb_events')->where('property_id', $props->id)->get();
 
 			if(count($eventsArray)>0){
 				foreach ($eventsArray as $evValue) {
@@ -177,8 +176,13 @@ $eventsArray = \DB::table('tb_events')->join('tb_event_packages', 'tb_events.id'
 					$eventPackagesArray[$evValue->id]= \DB::table('tb_event_packages')->where('event_id', $evValue->id)->get();
 
 				}
-
-				
+			}
+			
+			$inspirefolder = \DB::table('tb_container_files')->where('folder_id', 8691)->get();
+			if(!empty($inspirefolder))
+			{
+				$this->data['inspirefolderpath'] = (new ContainerController)->getThumbpath(8691); 
+				$inspireArray = $inspirefolder;
 			}
 			
 		}
@@ -189,6 +193,7 @@ $eventsArray = \DB::table('tb_events')->join('tb_event_packages', 'tb_events.id'
 		$this->data['spasArr'] = $spasArr;
 		$this->data['eventsArray'] = $eventsArray;
 		$this->data['eventPackagesArrayAll'] = $eventPackagesArray;
+		$this->data['inspireArray'] = $inspireArray;
 		
 		return view('frontend.themes.emporium.properties.resto', $this->data);
 	}

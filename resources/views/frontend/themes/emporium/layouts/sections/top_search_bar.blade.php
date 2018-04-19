@@ -9,13 +9,13 @@
 	   <div class="row">
 		  <div class="col-sm-6">
 			 <div class="form-group">
-				<input name="arrive" id="reservationdate" class="form-control datefield reservationdate" type="text" placeholder="Arrival" readonly required>
+				<input name="arrive" id="reservationdate" class="form-control datefield reservationdate" type="text" placeholder="Arrival" readonly required value="@if(isset($_GET['arrive']) && $_GET['arrive']!=''){{$_GET['arrive']}}@endif">
 				<div class="input-group-icon"><i class="fa fa-calander"></i></div>
 			 </div>
 		  </div>
 		  <div class="col-sm-6">
 			 <div class="form-group">
-				<input name="departure" id="reservationdate1" class="form-control datefield reservationdate" type="text" placeholder="Departure" readonly required>
+				<input name="departure" id="reservationdate1" class="form-control datefield reservationdate" type="text" placeholder="Departure" readonly required value="@if(isset($_GET['departure']) && $_GET['departure']!=''){{$_GET['departure']}}@endif">
 				<div class="input-group-icon"><i class="fa fa-calander"></i></div>
 			 </div>
 		  </div>

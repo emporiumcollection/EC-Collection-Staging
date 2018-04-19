@@ -8,7 +8,7 @@
     <div class="mobilemenu-inner">
         <div class="restaurantnav">
             <div class="mobilenavheader">
-				<a href="{{URL::to('')}}"><img src="{{ asset('themes/emporium/images/design-location-logo.png') }}" alt="Emporium Voyage" class="img-responsive"/></a>
+				<a href="{{URL::to('')}}"><img src="{{ asset('themes/emporium/images/logo.png') }}" alt="Emporium Voyage" class="img-responsive"/></a>
                 @if(!empty($spasArr[0])) <h3>{{$spasArr[0]->title}}</h3> @endif
                 <a href="{{URL::to('')}}" class="homelinknav backtohomelink"><i class="fa fa-angle-left"></i> Home</a>
             </div>

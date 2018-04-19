@@ -270,23 +270,23 @@
 	@endif
 
 
-	<!-- Emotion starts here -->
-	<!-- Emotion starts here -->
-	<section id="emotionSection" class="emotionSection">
-		<div class="owl-carousel emotionSlider owl-theme">
-			<div class="item">
-				<img src="images/18155648145-44473422980.jpg" alt="image">
+	@if(!empty($inspireArray))
+		<!-- Emotion starts here -->
+		<section id="emotionSection" class="emotionSection">
+			<div class="owl-carousel emotionSlider owl-theme">
+				@foreach($inspireArray as $inspire)
+					<div class="item">
+						<img src="{{$inspirefolderpath.$inspire->file_name}}" alt="image">
+					</div>
+				@endforeach
 			</div>
-			<div class="item">
-				<img src="images/19404604410-57248710302.jpg" alt="image">
-			</div>
-		</div>
 
-	  <div class="arrowsIcons">
-		<a class="scrollpage" href="#restaurant1"><img src="{{ asset('themes/emporium/images/arrow-up-icon.png') }}" alt="icon"></a>
-		<a class="scrollpage" href="#restaurant2"><img src="{{ asset('themes/emporium/images/arrow-down-icon.png') }}" alt="icon"></a>
-	</div>
-	</section>
+			<div class="arrowsIcons">
+				<a class="scrollpage" href="#restaurant1"><img src="{{ asset('themes/emporium/images/arrow-up-icon.png') }}" alt="icon"></a>
+				<a class="scrollpage" href="#restaurant2"><img src="{{ asset('themes/emporium/images/arrow-down-icon.png') }}" alt="icon"></a>
+			</div>
+		</section>
+	@endif
 
 	@if(!empty($resturantArr[1]))
 		@if(array_key_exists('datagallery',$resturantArr[1]))
@@ -1057,7 +1057,7 @@
 
 {{-- For Include Top Bar --}}
 @section('top_search_bar')
-    
+    @include('frontend.themes.emporium.layouts.sections.rdp_top_search_bar')
 @endsection
 
 {{-- For Include Side Bar --}}

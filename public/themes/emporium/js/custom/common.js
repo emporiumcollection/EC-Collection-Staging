@@ -128,42 +128,43 @@ $(document).ready(function () {
     *  For Auto suggestion list for Top Search Bar
     */
 
+    if($('[data-action="auto-suggestion"]')) {    
+        $('[data-action="auto-suggestion"]').autocomplete({
+            source: function (request, response) {
+                var datObj = {};
+                datObj.keyword = request.term;
+                var params = $.extend({}, doAjax_params_default);
+                params['url'] = BaseURL + '/destination/auto-suggestion-ajax';
+                params['data'] = datObj;
+                params['dataType'] = 'jsonp';
+                params['successCallbackFunction'] = function (data) {
+                    response(data);
+                };
+                doAjax(params);
+            },
+            minLength: 2,
+            select: function (event, ui) {
+                //log("Selected: " + ui.item.label + " aka " + ui.item.id);
 
-    $('[data-action="auto-suggestion"]').autocomplete({
-        source: function (request, response) {
-            var datObj = {};
-            datObj.keyword = request.term;
-            var params = $.extend({}, doAjax_params_default);
-            params['url'] = BaseURL + '/destination/auto-suggestion-ajax';
-            params['data'] = datObj;
-            params['dataType'] = 'jsonp';
-            params['successCallbackFunction'] = function (data) {
-                response(data);
-            };
-            doAjax(params);
-        },
-        minLength: 2,
-        select: function (event, ui) {
-            //log("Selected: " + ui.item.label + " aka " + ui.item.id);
+                if(ui.item.type) {
+                    location.href=BaseURL + '/' + ui.item.id;
+                }
 
-            if(ui.item.type) {
-                location.href=BaseURL + '/' + ui.item.id;
+            }
+        })
+        .autocomplete( "instance" )._renderItem = function( ul, item ) {
+            var destIcon = '';
+            if(item.type) {
+                destIcon = '<i class="iconsheet icon-collections"></i>';
+            } else {
+                destIcon = '<i class="iconsheet icon-destinations"></i>';
             }
 
-        }
-    })
-    .autocomplete( "instance" )._renderItem = function( ul, item ) {
-        var destIcon = '';
-        if(item.type) {
-            destIcon = '<i class="iconsheet icon-collections"></i>';
-        } else {
-            destIcon = '<i class="iconsheet icon-destinations"></i>';
-        }
-
-        return $('<li>')
-        .append( destIcon + item.label )
-        .appendTo( ul );
-    };
+            return $('<li>')
+            .append( destIcon + item.label )
+            .appendTo( ul );
+        };
+    }
 
    /*
    * For Global Search

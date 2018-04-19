@@ -224,40 +224,29 @@
 				</div> -->
 			</section>
 		@endif
+		
+		@if($resturantArr[0]->video_type!='')
+			<!-- Video Section starts here -->
+			<section id="video" class="videoSection">
+				@if($resturantArr[0]->video_type=="link")
+					{{--*/ $vlink = explode('/',$resturantArr[0]->video_link); $vimeoid = end($vlink); /*--}}
+                    @if($resturantArr[0]->video_link_type=="youtube")
+                        {{--*/  $videolink = "https://www.youtube.com/embed/".$vimeoid; /*--}}
+                        <iframe src="{{$videolink}}" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    @elseif($resturantArr[0]->video_link_type=="vimeo")
+                        {{--*/  $videolink = "https://player.vimeo.com/video/".$vimeoid; /*--}}
+                        <iframe src="{{$videolink}}" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    @endif
+				@elseif($resturantArr[0]->video_type=="upload")
+					<video id="videoPoster" controls poster="{{ asset('themes/emporium/images/video-poster.jpg')}}">
+					  <source src="{{URL::to('uploads/resturants/'.$resturantArr[0]->video)}}" type="video/mp4">
+					</video>
+				@endif
+			</section>
+			<!-- Video Section END here -->
+		@endif
 	@endif
 
-
-	<!-- Emotion starts here -->
-	<!-- Emotion starts here -->
-	<section id="emotionSection" class="emotionSection">
-		<div class="owl-carousel emotionSlider owl-theme">
-			<div class="item">
-				<img src="images/18155648145-44473422980.jpg" alt="image">
-			</div>
-			<div class="item">
-				<img src="images/19404604410-57248710302.jpg" alt="image">
-			</div>
-		</div>
-
-	  <div class="arrowsIcons">
-		<a class="scrollpage" href="#restaurant1"><img src="images/arrow-up-icon.png" alt="icon"></a>
-		<a class="scrollpage" href="#video"><img src="images/arrow-down-icon.png" alt="icon"></a>
-	</div>
-	</section>
-
-	<!-- Video Section starts here -->
-	<section id="video" class="videoSection">
-		<!-- <iframe src="https://www.youtube.com/embed/yAoLSRbwxL8" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
-		<video id="videoPoster" controls poster="images/video-poster.jpg">
-		  <source src="images/dummy-video.mp4" type="video/mp4">
-		  <source src="images/dummy-video.wemb" type="video/wemb">
-		</video>
-		<!-- <div class="arrowsIcons">
-			<a class="scrollpage" href="#restaurant1"><img src="images/arrow-up-icon.png" alt="icon"></a>
-			<a class="scrollpage" href="#restaurant2"><img src="images/arrow-down-icon.png" alt="icon"></a>
-		</div> -->
-	</section>
-	<!-- Video Section END here -->
 
 	<!-- Greenry Section here -->
 	<div id="seasonal-events" class="greenrysection">
