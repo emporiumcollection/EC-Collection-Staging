@@ -89,8 +89,9 @@
 						<p>Lorem ipsum dolor sit amet.</p>
 					  </div>
 					  <div class="modal-body">
-						<div id="formerrors"></div>
+						
 						<form id="reserve_resto_table_form">
+						<div id="formerrors"></div>
 						<div class="row">
 							<div class="col-md-4">
 								 <div class="form-field">
@@ -140,8 +141,8 @@
 						 <div class="form-field row">
 							<label>Preferred date</label>
 							<div class="col-xs-4">
-								 <select>
-								 <option name="reserve_day">DD</option>
+								 <select name="reserve_day">
+								 <option value="">DD</option>
 								 @for($arvDay=1;$arvDay<=31;$arvDay++)
 									 <option value="{{(strlen($arvDay)>1)?$arvDay:'0'.$arvDay}}">{{$arvDay}}</option>
 								 @endfor
@@ -206,7 +207,7 @@
 							<input name="agree" type="checkbox" id="signup-hotel-cipriani-restaurant">
 							<label for="signup-hotel-cipriani-restaurant">By ticking this box, you give your consent to be contacted about the Emporium Voyage offers, events and updates. You may opt out of receiving our updates at any time, either by using an unsubscribe link. To find out more see our <a target="_blank" href="javascript:void(0);">privacy policy</a> and full <a target="_blank" href="terms-and-conditions.html">terms and conditions</a>.</label>
 						   <div class="btn-outer">
-							 <button type="submit" class="submit-btn" onclick="submit_resto_book_request();">Submit</button>
+							 <button type="submit" class="submit-btn" onclick="submit_resto_book_request('reserve_resto_table_form');">Submit</button>
 						   </div>
 						</div>
 					</div>
@@ -255,8 +256,8 @@
 			<p>Lorem ipsum dolor sit amet, mei omnium iudicabit cu. Eruditi urbanitas persequeris in has, mel te prodesset conceptam. Id quando deterruisset est. Quaestio scripserit nec eu. An argumentum temporibus usu, ne mei aeterno imperdiet, case aeque id vis.</p>
 		</div>
 		<div class="arrowsIcons">
-			<a class="scrollpage" href="#seasonal-events"><img src="images/arrow-up-icon.png" alt="icon"></a>
-			<a class="scrollpage" href="#instagram-gallery"><img src="images/arrow-down-icon.png" alt="icon"></a>
+			<a class="scrollpage" href="#seasonal-events"><img src="{{ asset('themes/emporium/images/arrow-up-icon.png')}}" alt="icon"></a>
+			<a class="scrollpage" href="#instagram-gallery"><img src="{{ asset('themes/emporium/images/arrow-down-icon.png')}}" alt="icon"></a>
 		</div>
 
 		<div id="contentCirsclePopup" class="custom_modal modal fade" role="dialog">
@@ -271,47 +272,50 @@
 			<p>Lorem ipsum dolor sit amet.</p>
 		  </div>
 		  <div class="modal-body">
+		  
+			<form id="reserve_resto_table_form2">
+			<div id="formerrors"></div>
 			<div class="row">
 		  <div class="col-md-4">
 			 <div class="form-field">
-				 <select>
+				 <select name="restoid">
 					 <option>Please select</option>
-					 <option>dummy text</option>
-					 <option>dummy text</option>
-					 <option>dummy text</option>
-					 <option>dummy text</option>
-					 <option>dummy text</option>
+					 @if(!empty($spasArr))
+						  @foreach($spasArr as $spa)
+							<option value="{{$spa->id}}">{{$spa->title}}</option>
+						  @endforeach
+					  @endif
 				 </select>
 			 </div> 
 		  </div>
 		   <div class="col-md-4">
 			 <div class="form-field">
-			  <input type="text" placeholder="First name*">
+			  <input type="text" name="firstname" placeholder="First name*">
 			 </div> 
 		  </div>
 			<div class="col-md-4">
 			 <div class="form-field">
-			  <input type="text" placeholder="Last name*">
+			  <input type="text" name="lastname" placeholder="Last name*">
 			 </div> 
 		  </div>
 		</div><!--row -->
 		 <div class="row">
 		  <div class="col-md-4">
 			 <div class="form-field">
-				<input type="email" placeholder="Email*">
+				<input type="email" name="emailaddress" placeholder="Email*">
 			 </div> 
 		  </div>
 		   <div class="col-md-4">
 			 <div class="form-field row">
-				<div class="col-xs-4"><input type="number" placeholder="0"></div> 
-				<div class="col-xs-8"><input type="number" placeholder="Telephone"></div> 
+				<div class="col-xs-4"><input type="number" name="telephone_code" placeholder="0"></div> 
+				<div class="col-xs-8"><input type="number" name="telephone_number" placeholder="Telephone"></div> 
 	  
 			 </div> 
 		  </div>
 			<div class="col-md-4">
 			 <div class="form-field row">
-			   <div class="col-xs-4"><input type="number" placeholder="0"></div> 
-				<div class="col-xs-8"><input type="number" placeholder="Telephone"></div> 
+			   <div class="col-xs-4"><input type="number" name="telephone_code2" placeholder="0"></div> 
+				<div class="col-xs-8"><input type="number" name="telephone_number2" placeholder="Telephone"></div> 
 			 </div> 
 		  </div>
 		</div><!--row -->
@@ -320,34 +324,27 @@
 			 <div class="form-field row">
 				<label>Preferred date</label>
 				<div class="col-xs-4">
-					 <select>
-					 <option>DD</option>
-					 <option>dummy text</option>
-					 <option>dummy text</option>
-					 <option>dummy text</option>
-					 <option>dummy text</option>
-					 <option>dummy text</option>
-				 </select>
+					 <select name="reserve_day">
+						 <option value="">DD</option>
+						 @for($arvDay=1;$arvDay<=31;$arvDay++)
+							 <option value="{{(strlen($arvDay)>1)?$arvDay:'0'.$arvDay}}">{{$arvDay}}</option>
+						 @endfor
+					 </select>
 				</div> 
 				 <div class="col-xs-4">
-					 <select>
-					 <option>MM</option>
-					 <option>dummy text</option>
-					 <option>dummy text</option>
-					 <option>dummy text</option>
-					 <option>dummy text</option>
-					 <option>dummy text</option>
-				 </select>
+					 <select name="reserve_month">
+						 @for($arvMonth=1; $arvMonth<=12; ++$arvMonth)
+							<option  value="{{(strlen($arvMonth)>1)?$arvMonth:'0'.$arvMonth}}">{{ date('F', mktime(0, 0, 0, $arvMonth, 1)) }}</option>
+						@endfor
+					 </select>
 				</div> 
 				 <div class="col-xs-4">
-					 <select>
-					 <option>YYYY</option>
-					 <option>dummy text</option>
-					 <option>dummy text</option>
-					 <option>dummy text</option>
-					 <option>dummy text</option>
-					 <option>dummy text</option>
-				 </select>
+					 <select name="reserve_year">
+						 {{--*/ $arvYearRange = range(date('Y'), date('Y', strtotime('+5 years'))) /*--}}
+						@foreach($arvYearRange as $arvYear)
+							<option value="{{$arvYear}}">{{$arvYear}}</option>
+						@endforeach
+					 </select>
 				</div> 
 				
 			 </div> 
@@ -356,24 +353,18 @@
 			  <div class="form-field row">
 				<label>Preferred time</label>
 				<div class="col-xs-6">
-					 <select>
-					 <option>DD</option>
-					 <option>dummy text</option>
-					 <option>dummy text</option>
-					 <option>dummy text</option>
-					 <option>dummy text</option>
-					 <option>dummy text</option>
-				 </select>
+					 <select name="reserve_hour">
+						@for($arvhour=0;$arvhour<=23;$arvhour++)
+						 <option value="{{$arvhour}}">{{$arvhour}}</option>
+					 @endfor
+					</select>
 				</div> 
 				 <div class="col-xs-6">
-					 <select>
-					 <option>MM</option>
-					 <option>dummy text</option>
-					 <option>dummy text</option>
-					 <option>dummy text</option>
-					 <option>dummy text</option>
-					 <option>dummy text</option>
-				 </select>
+					 <select name="reserve_minute">
+						@for($arvmint=0;$arvmint<=59;$arvmint++)
+						 <option value="{{$arvmint}}">{{$arvmint}}</option>
+					 @endfor
+					</select>
 				</div> 
 			   
 				
@@ -381,7 +372,7 @@
 		  </div>
 			<div class="col-md-4">
 			 <div class="form-field number-guest">
-			<input type="number" placeholder="Number of guest"> 
+			<input type="number" name="totalguest" placeholder="Number of guest"> 
 			
 			 </div> 
 		  </div>
@@ -389,7 +380,7 @@
 		<div class="row">
 			<div class="col-md-12">
 			   <div class="form-field areafield">
-				   <textarea placeholder="How can we help"></textarea>
+				  <textarea name="query" placeholder="How can we help"></textarea>
 			   </div> 
 			</div>
 		</div><!-- row-->
@@ -399,10 +390,11 @@
 				<input type="checkbox" id="signup-hotel-cipriani-restaurant">
 				<label for="signup-hotel-cipriani-restaurant">By ticking this box, you give your consent to be contacted about the Emporium Voyage offers, events and updates. You may opt out of receiving our updates at any time, either by using an unsubscribe link. To find out more see our <a target="_blank" href="javascript:void(0);">privacy policy</a> and full <a target="_blank" href="terms-and-conditions.html">terms and conditions</a>.</label>
 			   <div class="btn-outer">
-				 <button type="submit" class="submit-btn">Submit</button>
+				 <button type="submit" class="submit-btn" onclick="submit_resto_book_request('reserve_resto_table_form2');">Submit</button>
 			   </div>
 			</div>
 		</div>
+		</form>
 		  </div>
 		
 		  </div>
@@ -410,274 +402,6 @@
 		</div>
 
 	  </div>
-	</div>
-	<!-- Instagram Gallery Section -->
-	<!-- terrace suit slider sec -->
-	<div class="HamYardHotelSection">
-	  <div class="container">
-		 <div id="HamYardHotelSlider" class="carousel slide HamYardHotelSlider" data-ride="carousel">
-			<div class="carousel-inner">
-			   <div style="background-image: url(images/DeluxRooms-Ham-Yard-hotel1-design-locations1.jpg);" class="item active">
-				 <div class="carousalCaption">
-				   <h3>Experience Ham Yard Hotel</h3>
-				   <h2>TERRACE SUITE</h2>
-				   <p>A spectacular two bedroom fifth floor suite at 145sqm or 1560sqf. The vast living/dining room has high ceilings with full floor-to-ceiling windows and a terrace with views of the courtyard and London skyline. The spacious living room has a powder room, writing desk and a sleek designed Boffi kitchen...</p>
-				 </div>
-			   </div>
-			   <div style="background-image: url(images/DeluxRooms-Ham-Yard-hotel5-design-locations1.jpg);" class="item">
-				 <div class="carousalCaption">
-				   <h3>Experience Ham Yard Hotel</h3>
-				   <h2>DELUXE TWO BEDROOM SUITE</h2>
-				   <p>Individually designed by Kit Kemp, the Deluxe Junior Suites approx. (52sqm or 559sqf) have a king or twin bed. The junior suite is equipped with a writing desk, sitting area, flat screen television, wireless internet, two line telephones with voice mail, personal electronic safe and a fully stocked ...</p>
-				 </div>
-			   </div>
-			   
-			   <div style="background-image: url(images/DeluxRooms-Ham-Yard-hotel6-design-locations1.jpg);" class="item">
-				 <div class="carousalCaption">
-				   <h3>Experience Ham Yard Hotel</h3>
-				   <h2>DELUXE TWO BEDROOM SUITE</h2>
-				   <p>Individually designed by Kit Kemp, the Deluxe Junior Suites approx. (52sqm or 559sqf) have a king or twin bed. The junior suite is equipped with a writing desk, sitting area, flat screen television, wireless internet, two line telephones with voice mail, personal electronic safe and a fully stocked ...</p>
-				 </div>
-			   </div>
-			   
-			   <div style="background-image: url(images/DeluxRooms-Ham-Yard-hotel2-design-locations1.jpg);" class="item">
-				 <div class="carousalCaption">
-				   <h3>Experience Ham Yard Hotel</h3>
-				   <h2>DELUXE TWO BEDROOM SUITE</h2>
-				   <p>Individually designed by Kit Kemp, the Deluxe Junior Suites approx. (52sqm or 559sqf) have a king or twin bed. The junior suite is equipped with a writing desk, sitting area, flat screen television, wireless internet, two line telephones with voice mail, personal electronic safe and a fully stocked ...</p>
-				 </div>
-			   </div>
-			   
-			   <div style="background-image: url(images/DeluxRooms-Ham-Yard-hotel7-design-locations1.jpg);" class="item">
-				 <div class="carousalCaption">
-				   <h3>Experience Ham Yard Hotel</h3>
-				   <h2>DELUXE TWO BEDROOM SUITE</h2>
-				   <p>Individually designed by Kit Kemp, the Deluxe Junior Suites approx. (52sqm or 559sqf) have a king or twin bed. The junior suite is equipped with a writing desk, sitting area, flat screen television, wireless internet, two line telephones with voice mail, personal electronic safe and a fully stocked ...</p>
-				 </div>
-			   </div>
-			   
-			   <div style="background-image: url(images/DeluxRooms-Ham-Yard-hotel4-design-locations1.jpg);" class="item">
-				 <div class="carousalCaption">
-				   <h3>Experience Ham Yard Hotel</h3>
-				   <h2>DELUXE TWO BEDROOM SUITE</h2>
-				   <p>Individually designed by Kit Kemp, the Deluxe Junior Suites approx. (52sqm or 559sqf) have a king or twin bed. The junior suite is equipped with a writing desk, sitting area, flat screen television, wireless internet, two line telephones with voice mail, personal electronic safe and a fully stocked ...</p>
-				 </div>
-			   </div>
-
-			   <div style="background-image: url(images/DeluxRooms-Ham-Yard-hotel3-design-locations1.jpg);" class="item">
-				 <div class="carousalCaption">
-				   <h3>Experience Ham Yard Hotel</h3>
-				   <h2>DELUXE TWO BEDROOM SUITE</h2>
-				   <p>Individually designed by Kit Kemp, the Deluxe Junior Suites approx. (52sqm or 559sqf) have a king or twin bed. The junior suite is equipped with a writing desk, sitting area, flat screen television, wireless internet, two line telephones with voice mail, personal electronic safe and a fully stocked ...</p>
-				 </div>
-			   </div>
-			</div>
-			  <div class="HamYardHotelSliderOptions">
-			   
-				<div class="terraceSuitindicator">
-				  <div class="terraceSuitarrow">
-					<div class="terraceSuitCounter">
-					  <p> </p>
-					  <div class="num"></div>
-					</div>
-					<a class="left left1 carousel-control" href="#HamYardHotelSlider" data-slide="prev">
-					  <img src="images/editorial-left-arrow.png" alt="icon">
-					</a>
-					<a class="right carousel-control" href="#HamYardHotelSlider" data-slide="next">
-					  <img src="images/editorial-right-arrow.png" alt="icon">
-					</a>
-				  </div>
-				  <ol class="carousel-indicators">
-				  <li data-target="#HamYardHotelSlider" data-slide-to="0" class="active"><img src="images/DeluxRooms-Ham-Yard-hotel1-design-locations1.jpg" alt="Image"></li>
-				  <li data-target="#HamYardHotelSlider" data-slide-to="1"><img src="images/DeluxRooms-Ham-Yard-hotel5-design-locations1.jpg" alt="Image"></li>
-				  <li data-target="#HamYardHotelSlider" data-slide-to="2"><img src="images/DeluxRooms-Ham-Yard-hotel6-design-locations1.jpg" alt="Image"></li>
-				  <li data-target="#HamYardHotelSlider" data-slide-to="3"><img src="images/DeluxRooms-Ham-Yard-hotel2-design-locations1.jpg" alt="Image"></li>
-				  <li data-target="#HamYardHotelSlider" data-slide-to="4"><img src="images/DeluxRooms-Ham-Yard-hotel7-design-locations1.jpg" alt="Image"></li>
-				  <li data-target="#HamYardHotelSlider" data-slide-to="5"><img src="images/DeluxRooms-Ham-Yard-hotel4-design-locations1.jpg" alt="Image"></li>
-				  <li data-target="#HamYardHotelSlider" data-slide-to="6"><img src="images/DeluxRooms-Ham-Yard-hotel3-design-locations1.jpg" alt="Image"></li>
-				</ol>
-				<div class="showMoreSec"><button type="button" class="btn buttonDefault">SHOW MORE</button></div>
-			  </div>
-			</div>
-		  </div>
-	  </div>
-	</div>
-	<!-- terrace suit slider sec -->
-	<div id="instagram-gallery" class="instagram-gallery owl-carousel">
-		<div class="item">
-			<div class="instagram-box">
-				<figure><img src="images/instagram-img-01.jpg" alt="" /></figure>
-				<a href="javascript:void(0)" class="hover-detail">
-					<p>Eu mea deleniti expetendis. Sea ei partem fuisset. Per modus summo necessitatibus cum.</p>
-				</a>
-			</div>
-			<div class="instagram-box">
-				<figure><img src="images/instagram-img-02.jpg" alt="" /></figure>
-				<a href="javascript:void(0)" class="hover-detail">
-					<p>Eu mea deleniti expetendis. Sea ei partem fuisset. Per modus summo necessitatibus cum.</p>
-				</a>
-			</div>
-		</div>
-		<div class="item">
-			<div class="instagram-box">
-				<figure><img src="images/instagram-img-03.jpg" alt="" /></figure>
-				<a href="javascript:void(0)" class="hover-detail">
-					<p>Eu mea deleniti expetendis. Sea ei partem fuisset. Per modus summo necessitatibus cum.</p>
-				</a>
-			</div>
-			<div class="instagram-box">
-				<figure><img src="images/instagram-img-04.jpg" alt="" /></figure>
-				<a href="javascript:void(0)" class="hover-detail">
-					<p>Eu mea deleniti expetendis. Sea ei partem fuisset. Per modus summo necessitatibus cum.</p>
-				</a>
-			</div>
-		</div>
-		<div class="item">
-			<div class="instagram-box">
-				<figure><img src="images/instagram-img-05.jpg" alt="" /></figure>
-				<a href="javascript:void(0)" class="hover-detail">
-					<p>Eu mea deleniti expetendis. Sea ei partem fuisset. Per modus summo necessitatibus cum.</p>
-				</a>
-			</div>
-			<div class="instagram-box">
-				<figure><img src="images/instagram-img-06.jpg" alt="" /></figure>
-				<a href="javascript:void(0)" class="hover-detail">
-					<p>Eu mea deleniti expetendis. Sea ei partem fuisset. Per modus summo necessitatibus cum.</p>
-				</a>
-			</div>
-		</div>
-		<div class="item">
-			<div class="instagram-box">
-				<figure><img src="images/instagram-img-01.jpg" alt="" /></figure>
-				<a href="javascript:void(0)" class="hover-detail">
-					<p>Eu mea deleniti expetendis. Sea ei partem fuisset. Per modus summo necessitatibus cum.</p>
-				</a>
-			</div>
-			<div class="instagram-box">
-				<figure><img src="images/instagram-img-02.jpg" alt="" /></figure>
-				<a href="javascript:void(0)" class="hover-detail">
-					<p>Eu mea deleniti expetendis. Sea ei partem fuisset. Per modus summo necessitatibus cum.</p>
-				</a>
-			</div>
-		</div>
-		<div class="item">
-			<div class="instagram-box">
-				<figure><img src="images/instagram-img-03.jpg" alt="" /></figure>
-				<a href="javascript:void(0)" class="hover-detail">
-					<p>Eu mea deleniti expetendis. Sea ei partem fuisset. Per modus summo necessitatibus cum.</p>
-				</a>
-			</div>
-			<div class="instagram-box">
-				<figure><img src="images/instagram-img-04.jpg" alt="" /></figure>
-				<a href="javascript:void(0)" class="hover-detail">
-					<p>Eu mea deleniti expetendis. Sea ei partem fuisset. Per modus summo necessitatibus cum.</p>
-				</a>
-			</div>
-		</div>
-		<div class="item">
-			<div class="instagram-box">
-				<figure><img src="images/instagram-img-05.jpg" alt="" /></figure>
-				<a href="javascript:void(0)" class="hover-detail">
-					<p>Eu mea deleniti expetendis. Sea ei partem fuisset. Per modus summo necessitatibus cum.</p>
-				</a>
-			</div>
-			<div class="instagram-box">
-				<figure><img src="images/instagram-img-06.jpg" alt="" /></figure>
-				<a href="javascript:void(0)" class="hover-detail">
-					<p>Eu mea deleniti expetendis. Sea ei partem fuisset. Per modus summo necessitatibus cum.</p>
-				</a>
-			</div>
-		</div>
-		<div class="item">
-			<div class="instagram-box">
-				<figure><img src="images/instagram-img-01.jpg" alt="" /></figure>
-				<a href="javascript:void(0)" class="hover-detail">
-					<p>Eu mea deleniti expetendis. Sea ei partem fuisset. Per modus summo necessitatibus cum.</p>
-				</a>
-			</div>
-			<div class="instagram-box">
-				<figure><img src="images/instagram-img-02.jpg" alt="" /></figure>
-				<a href="javascript:void(0)" class="hover-detail">
-					<p>Eu mea deleniti expetendis. Sea ei partem fuisset. Per modus summo necessitatibus cum.</p>
-				</a>
-			</div>
-		</div>
-		<div class="item">
-			<div class="instagram-box">
-				<figure><img src="images/instagram-img-03.jpg" alt="" /></figure>
-				<a href="javascript:void(0)" class="hover-detail">
-					<p>Eu mea deleniti expetendis. Sea ei partem fuisset. Per modus summo necessitatibus cum.</p>
-				</a>
-			</div>
-			<div class="instagram-box">
-				<figure><img src="images/instagram-img-04.jpg" alt="" /></figure>
-				<a href="javascript:void(0)" class="hover-detail">
-					<p>Eu mea deleniti expetendis. Sea ei partem fuisset. Per modus summo necessitatibus cum.</p>
-				</a>
-			</div>
-		</div>
-		<div class="item">
-			<div class="instagram-box">
-				<figure><img src="images/instagram-img-05.jpg" alt="" /></figure>
-				<a href="javascript:void(0)" class="hover-detail">
-					<p>Eu mea deleniti expetendis. Sea ei partem fuisset. Per modus summo necessitatibus cum.</p>
-				</a>
-			</div>
-			<div class="instagram-box">
-				<figure><img src="images/instagram-img-06.jpg" alt="" /></figure>
-				<a href="javascript:void(0)" class="hover-detail">
-					<p>Eu mea deleniti expetendis. Sea ei partem fuisset. Per modus summo necessitatibus cum.</p>
-				</a>
-			</div>
-		</div>
-		<div class="item">
-			<div class="instagram-box">
-				<figure><img src="images/instagram-img-01.jpg" alt="" /></figure>
-				<a href="javascript:void(0)" class="hover-detail">
-					<p>Eu mea deleniti expetendis. Sea ei partem fuisset. Per modus summo necessitatibus cum.</p>
-				</a>
-			</div>
-			<div class="instagram-box">
-				<figure><img src="images/instagram-img-02.jpg" alt="" /></figure>
-				<a href="javascript:void(0)" class="hover-detail">
-					<p>Eu mea deleniti expetendis. Sea ei partem fuisset. Per modus summo necessitatibus cum.</p>
-				</a>
-			</div>
-		</div>
-		<div class="item">
-			<div class="instagram-box">
-				<figure><img src="images/instagram-img-03.jpg" alt="" /></figure>
-				<a href="javascript:void(0)" class="hover-detail">
-					<p>Eu mea deleniti expetendis. Sea ei partem fuisset. Per modus summo necessitatibus cum.</p>
-				</a>
-			</div>
-			<div class="instagram-box">
-				<figure><img src="images/instagram-img-04.jpg" alt="" /></figure>
-				<a href="javascript:void(0)" class="hover-detail">
-					<p>Eu mea deleniti expetendis. Sea ei partem fuisset. Per modus summo necessitatibus cum.</p>
-				</a>
-			</div>
-		</div>
-		<div class="item">
-			<div class="instagram-box">
-				<figure><img src="images/instagram-img-05.jpg" alt="" /></figure>
-				<a href="javascript:void(0)" class="hover-detail">
-					<p>Eu mea deleniti expetendis. Sea ei partem fuisset. Per modus summo necessitatibus cum.</p>
-				</a>
-			</div>
-			<div class="instagram-box">
-				<figure><img src="images/instagram-img-06.jpg" alt="" /></figure>
-				<a href="javascript:void(0)" class="hover-detail">
-					<p>Eu mea deleniti expetendis. Sea ei partem fuisset. Per modus summo necessitatibus cum.</p>
-				</a>
-			</div>
-		</div>
-
-
-		<div class="arrowsIcons">
-			<a class="scrollpage" href="#seasonal-events"><img src="images/arrow-up-icon.png" alt="icon"></a>
-			<a class="scrollpage" href="#get-directions"><img src="images/arrow-down-icon.png" alt="icon"></a>
-		</div>
 	</div>
 
 	<div id="get-directions">
@@ -739,17 +463,27 @@
 			$('.bs-callout-warning').toggleClass('hidden', ok);
 			})
 			.on('form:submit', function() {
-			submit_resto_book_request();
+			submit_resto_book_request('reserve_resto_table_form');
+			return false; // Don't submit form for this demo
+			});
+			
+			$('#reserve_resto_table_form2').parsley().on('field:validated', function() {
+			var ok = $('.parsley-error').length === 0;
+			$('.bs-callout-info').toggleClass('hidden', !ok);
+			$('.bs-callout-warning').toggleClass('hidden', ok);
+			})
+			.on('form:submit', function() {
+			submit_resto_book_request('reserve_resto_table_form2');
 			return false; // Don't submit form for this demo
 			});
 		});
 		
-		function submit_resto_book_request()
+		function submit_resto_book_request(formid)
 		{
 			$.ajax({
 				  url: "{{ URL::to('reserve_resto_table_request')}}",
 				  type: "post",
-				  data: $('#reserve_resto_table_form').serialize(),
+				  data: $('#'+formid).serialize(),
 				  dataType: "json",
 				  success: function(data){
 					var html = '';
@@ -760,15 +494,15 @@
 							html +='<li>'+obj+'</li>';
 						});
 						html +='</ul>';
-						$('#formerrors').html(html);
+						$('#'+formid + ' #formerrors').html(html);
 					}
 					else{
 						var htmli = '';
 						htmli +='<div class="alert alert-success fade in block-inner">';
 						htmli +='<button data-dismiss="alert" class="close" type="button">×</button>';
 						htmli +='<i class="icon-checkmark-circle"></i> Restaurant Table Booking Request Submitted Successfully </div>';
-						$('#formerrors').html(htmli);
-						$('#reserve_resto_table_form')[0].reset();
+						$('#'+formid + ' #formerrors').html(htmli);
+						$('#'+formid)[0].reset();
 					}
 				  }
 			});
