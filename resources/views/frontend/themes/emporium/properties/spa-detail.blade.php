@@ -51,7 +51,7 @@
 										</div>
 										<div class="hotelSliderContentImage">
 											<div class="hotelSliderContent">
-												<h1><span>Restaurant</span></h1>
+												<h1><span>Spa</span></h1>
 												<h2>{{$spasArr[0]->title}}</h2>
 												<div class="mCustomScrollbar" data-mcs-theme="minimal-dark">
 													<p> {{$spasArr[0]->description}}</p>
