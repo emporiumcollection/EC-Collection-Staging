@@ -1530,7 +1530,7 @@ $html .= '<div style="clear:both;"></div>
         );
       $resultContract= $contractObject->getRows($params); 
       $sn = 1;
-       foreach ($resultContract["rows"] as $key => $value) {
+       foreach ($resultContract["rows"] as $row) {
          $html .= '<tr>
                 <td colspan="2"><hr  style="border-top:1px solid #000; width:100%"/></td></tr>';
                 $html .= '
