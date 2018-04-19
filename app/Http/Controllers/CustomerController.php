@@ -1526,7 +1526,7 @@ $html .= '<div style="clear:both;"></div>
             
                 </tr>';
       $contractObject =new Contract();
-     $resultContract= $contractObject->getRows($params); 
+      $resultContract= $contractObject->getRows($params); 
       $sn = 1;
        foreach ($resultContract["rows"] as $key => $value) {
          $html .= '<tr>
