@@ -176,7 +176,22 @@
 								
 							</div>
 						</div>
-
+						@if($info->contracts !="NULL")
+							
+					  <div class="form-group  " >
+							<label for="ipt" class=" control-label col-sm-2"> Contract Details </label>
+							<div class="col-sm-6">
+							<div>
+							  <span class="btn">
+							  	<span class="fileinput-exists"> Download Contract File </span>
+									{!! SiteHelpers::showUploadedFile($info->contracts,'/uploads/users/',80,80) !!}
+								</span>
+								
+								
+							</div>
+							</div> 
+						  </div> 
+						@endif
 					
 						<div class="form-group">        
 							<div class="col-sm-8">

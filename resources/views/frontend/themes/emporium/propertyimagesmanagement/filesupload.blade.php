@@ -57,10 +57,13 @@
         </div>
         <div class="transferFileSec transferSecSecond">
             <form method="get" id="filetransferform" action="{{URL::to('hotel/transferimages')}}">
+                <div class="form-errors"> </div>
                 <div class="uploadInput">
                     <h2>+ Add Your Files</h2>
-                    <input type="file">
-                    {{--<div class="dropzone" id="dropzoneFileUpload"> </div>--}}
+                    {{--<input type="file">--}}
+                </div>
+                <div class="form-group  " >
+                    <div class="dropzone" id="dropzoneFileUpload"> </div>
                 </div>
                 <div class="form-group">
                     <input type="email" class="form-control" placeholder="Email to">
@@ -121,9 +124,9 @@
 {{-- For Include javascript files --}}
 @section('javascript')
     @parent
-    <script src="{{ asset('sximo/js/parsley.min.js')}}" type="text/javascript"></script>
-
+    <script src="{{ asset('sximo/assets/js/jquery-2.1.0.min.js')}}" type="text/javascript"></script>
     <script src="{{ asset('sximo/js/dropzone.js') }}"></script>
+    <script src="{{ asset('sximo/js/parsley.min.js')}}" type="text/javascript"></script>
 @endsection
 
 {{-- For custom script --}}
@@ -181,7 +184,7 @@
     </script>
 
     <script>
-        $(document).on('ready', function () {
+        $(function () {
             var baseUrl = "{{ url::to('hotel/transferaddfile') }}";
             var token = "{{ Session::getToken() }}";
             Dropzone.autoDiscover = false;
