@@ -87,10 +87,7 @@
     color: #fff !important;
 }
 
-
-
-
-.SendButon {
+.SendButon, .downloadFiles {
     display: block;
     margin: 0 auto 30px;
     background: #ABA07C;
@@ -102,6 +99,12 @@
     transition: all 0.5s ease 0s;
     -webkit-transition: all 0.5s ease 0s;
     -moz-transition: all 0.5s ease 0s;
+}
+.downloadFilesWrapp a.downloadFiles {
+    display: inline-block;
+}
+.downloadFilesWrapp a.downloadFiles:hover {
+   color: #fff;
 }
 .sidefixednav,
 .homerightmenu {
