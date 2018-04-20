@@ -1,7 +1,6 @@
 <li>
     <div class="mobile-leftsearch">
         <input type="text" class="form-control" data-action="gobal-search"/>
-		<button type="button" onclick="clearsearch();"><i class="fa fa-times"></i></button>
         <button type="button" data-action="gobal-search-button"><i class="fa fa-search"></i></button>
     </div>
     <div id="filtersearchpopup" data-option="gobal-search" style="display:none;">
@@ -48,9 +47,3 @@
         </ul>
     </div>
 </li>
-<script>
-	function clearsearch()
-	{
-		$('[data-action="gobal-search"]').val('');
-	}
-</script>
