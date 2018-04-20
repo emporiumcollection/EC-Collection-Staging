@@ -169,10 +169,19 @@ $(document).ready(function () {
    /*
    * For Global Search
    */
+
+   $(document).on('click', '[data-action="clear-search"]', function () {  
+        $('[data-action="clear-search"]').hide();      
+        $('[data-action="gobal-search"]').val('');
+        $('[data-action="gobal-search-button"]').trigger( "click" );
+   });
+
    $(document).on('keyup', '[data-action="gobal-search"]', function () {
         if ($(this).val() == '') {
+            $('[data-action="clear-search"]').hide();
             $('[data-option="gobal-search"]').slideUp(300);
         } else {
+            $('[data-action="clear-search"]').show();
             globalSearch($(this).val());
         }
    });
