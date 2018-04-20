@@ -47,7 +47,7 @@
 			@if($propertiesArr)
 				<div class="row">
 					<div class="col-sm-12 text-center">
-						<h2 class="heading">{{$total_record}} Luxury Hotel(s) Found for {{$slug}}</h2>
+						<h2 class="heading">{{$total_record}} Luxury Hotel(s) Found for {{$slug}} {{$dateslug}}</h2>
 					</div>
 				</div>
 				{{--*/ $rw = 1 /*--}}
@@ -199,6 +199,10 @@
 				window.history.pushState("object or string", "Title", datObj);
 				priceFilterAjax();
 			});
+			
+			@if($dateslug!='')
+				$('[data-action="search-by-date"]').trigger('click');
+			@endif
 		});
 		
 		var pageCounter = 2;

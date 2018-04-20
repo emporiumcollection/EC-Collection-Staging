@@ -76,10 +76,10 @@
                 <div class="footer-coloumn">
                     <h2>Follow us</h2>
                     <ul class="social-menu">
-                        <li><a href="javascript:void(0)"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="javascript:void(0)"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a href="javascript:void(0)"><i class="fa fa-pinterest-p"></i></a></li>
-                        <li><a href="javascript:void(0)"><i class="fa fa-instagram"></i></a></li>
+                        <li><a href="https://www.facebook.com/emporiumvoyage/"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://fr.linkedin.com/company/emporiumvoyage"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="https://www.pinterest.cl/emporiumvoyage/?redirected=1"><i class="fa fa-pinterest-p"></i></a></li>
+                        <li><a href="https://www.instagram.com/emporiumvoyage/"><i class="fa fa-instagram"></i></a></li>
                     </ul>
                 </div>
             </div>
