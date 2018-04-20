@@ -199,6 +199,10 @@
 				window.history.pushState("object or string", "Title", datObj);
 				priceFilterAjax();
 			});
+			
+			@if($dateslug!='')
+				$('[data-action="search-by-date"]').trigger('click');
+			@endif
 		});
 		
 		var pageCounter = 2;

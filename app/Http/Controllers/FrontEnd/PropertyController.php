@@ -73,7 +73,7 @@ class PropertyController extends Controller {
 		if (!is_null($request->departure) && $request->departure != '') {
 			\Session::put('departure_date', $request->departure);
 			$this->data['departure_date'] = $request->departure;
-			$this->data['dateslug'] = $this->data['dateslug'].'-'.$request->departure;
+			$this->data['dateslug'] = $this->data['dateslug'].' to '.$request->departure;
 			$departure = date("Y-m-d", strtotime(trim($request->departure)));
 		}
 
