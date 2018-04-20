@@ -8,13 +8,14 @@
 {{-- For Page's Content Part --}}
 @section('content')
 	@if(!empty($resturantArr))
-		{{--*/ $clsact = ''; /*--}}
+		{{--*/ $checkslid = false; /*--}}
 		<!-- Restaurant slider starts here -->
 		<section class="sliderSection restaurantSliderSec">
 		  <div id="restaurantSlider" class="carousel" data-ride="carousel">
 			<div class="carousel-inner">
 				@if(array_key_exists('dataslider',$resturantArr[0]))
-					{{--*/ $clsact = ($clsact=='') ? 'active' : ''; /*--}}
+					{{--*/ $clsact = ''; /*--}}
+					@if($checkslid==false) {{--*/ $clsact = 'active'; $checkslid=true; /*--}} @endif
 				  <div class="item {{$clsact}}" style="background:url('{{$resturantArr[0]->dataslider}}') center center no-repeat; background-size:cover;">
 					<div class="carousel-caption">
 					  <h1>{{$resturantArr[0]->title}}</h1>
@@ -257,8 +258,8 @@
 			<p>Lorem ipsum dolor sit amet, mei omnium iudicabit cu. Eruditi urbanitas persequeris in has, mel te prodesset conceptam. Id quando deterruisset est. Quaestio scripserit nec eu. An argumentum temporibus usu, ne mei aeterno imperdiet, case aeque id vis.</p>
 		</div>
 		<div class="arrowsIcons">
-			<a class="scrollpage" href="#seasonal-events"><img src="images/arrow-up-icon.png" alt="icon"></a>
-			<a class="scrollpage" href="#instagram-gallery"><img src="images/arrow-down-icon.png" alt="icon"></a>
+			<a class="scrollpage" href="#seasonal-events"><img src="{{ asset('themes/emporium/images/arrow-up-icon.png')}}" alt="icon"></a>
+			<a class="scrollpage" href="#instagram-gallery"><img src="{{ asset('themes/emporium/images/arrow-down-icon.png')}}" alt="icon"></a>
 		</div>
 
 		<div id="contentCirsclePopup" class="custom_modal modal fade" role="dialog">

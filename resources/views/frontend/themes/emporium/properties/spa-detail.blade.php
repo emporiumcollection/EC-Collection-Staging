@@ -8,13 +8,14 @@
 {{-- For Page's Content Part --}}
 @section('content')
 	@if(!empty($spasArr))
-		{{--*/ $clsact = ''; /*--}}
+		{{--*/ $checkslid = false; /*--}}
 		<!-- Restaurant slider starts here -->
 		<section class="sliderSection restaurantSliderSec">
 		  <div id="restaurantSlider" class="carousel" data-ride="carousel">
 			<div class="carousel-inner"> 
 				@if(array_key_exists('dataslider',$spasArr[0]))
-					{{--*/ $clsact = ($clsact=='') ? 'active' : ''; /*--}}
+					{{--*/ $clsact = ''; /*--}}
+					@if($checkslid==false) {{--*/ $clsact = 'active'; $checkslid=true; /*--}} @endif
 				  <div class="item {{$clsact}}" style="background:url('{{$spasArr[0]->dataslider}}') center center no-repeat; background-size:cover;">
 					<div class="carousel-caption">
 					  <h1>{{$spasArr[0]->title}}</h1>

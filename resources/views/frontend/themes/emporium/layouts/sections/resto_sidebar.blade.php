@@ -40,7 +40,7 @@
 				  @endforeach
 				@endif
 
-                <li><a href="#video" class="closenavlink scrollpage">VIDEO</a></li>
+                <!--<li><a href="#video" class="closenavlink scrollpage">VIDEO</a></li>-->
                 <li><a href="#seasonal-events" class="closenavlink scrollpage">SEASONAL EVENTS</a></li>
                 <li><a href="#instagram-gallery" class="closenavlink scrollpage">SPECIAL OCCASIONS</a></li>
                 <li><a href="#get-directions" class="closenavlink scrollpage">GET DIRECTIONS</a></li>

@@ -19,8 +19,6 @@
 
                 <li><a href="#restaurant1">INFO</a></li>
                 <li><a href="#video" class="">VIDEO</a></li>
-                <li><a href="#seasonal-events">SEASONAL EVENTS</a></li>
-                <li><a href="#instagram-gallery">SPECIAL OCCASIONS</a></li>
                 <li><a href="#get-directions">GET DIRECTIONS</a></li>
             </ul>
             @if (!Auth::check())

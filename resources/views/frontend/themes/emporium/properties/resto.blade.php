@@ -330,9 +330,9 @@
 		@endif
 	@endif
 
-	<!-- Video Section starts here -->
+	<!-- Video Section starts here 
 	<section id="video" class="videoSection">
-		<!-- <iframe src="https://www.youtube.com/embed/yAoLSRbwxL8" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
+		<!-- <iframe src="https://www.youtube.com/embed/yAoLSRbwxL8" allow="autoplay; encrypted-media" allowfullscreen></iframe> 
 		<video id="videoPoster" controls poster="images/video-poster.jpg">
 		  <source src="images/dummy-video.mp4" type="video/mp4">
 		  <source src="images/dummy-video.wemb" type="video/wemb">
@@ -340,7 +340,7 @@
 		<!-- <div class="arrowsIcons">
 			<a class="scrollpage" href="#restaurant1"><img src="images/arrow-up-icon.png" alt="icon"></a>
 			<a class="scrollpage" href="#restaurant2"><img src="images/arrow-down-icon.png" alt="icon"></a>
-		</div> -->
+		</div> 
 	</section>
 	<!-- Video Section END here -->
 
