@@ -62,16 +62,18 @@ class PropertyController extends Controller {
 		$this->data['slider'] = \DB::table('tb_sliders')->where('slider_category', $sldkeyword)->where('slider_status',1)->orderBy('sort_num','asc')->get();
 		
 
-		
+		$this->data['dateslug'] = '';
 		$arrive = $departure = $adult = $childs = '';
 		if (!is_null($request->arrive) && $request->arrive != '') {
 			\Session::put('arrive_date', $request->arrive);
 			$this->data['arrive_date'] = $request->arrive;
+			$this->data['dateslug'] = $request->arrive;
 			$arrive = date("Y-m-d", strtotime(trim($request->arrive)));
 		}
 		if (!is_null($request->departure) && $request->departure != '') {
 			\Session::put('departure_date', $request->departure);
 			$this->data['departure_date'] = $request->departure;
+			$this->data['dateslug'] = $this->data['dateslug'].'-'.$request->departure;
 			$departure = date("Y-m-d", strtotime(trim($request->departure)));
 		}
 
