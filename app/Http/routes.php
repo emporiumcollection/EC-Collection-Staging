@@ -15,7 +15,7 @@
 
 
 Route::get('/', 'HomeController@index');
-
+Route::get('wetransfer', 'PropertiesController@show_wetransfer');
 /*
  * AIC: CRM Layout Module
  */
@@ -252,6 +252,11 @@ Route::group(['middleware' => 'auth'], function()
 	Route::post('delete_property_category_rooms', 'PropertiesController@delete_property_room');
 	Route::post('copy_category_rooms', 'PropertiesController@copy_category_rooms');
 	Route::post('property_images_uploads', 'PropertiesController@property_images_uploads');
+
+
+	Route::post('property_images_wetransfer', 'PropertiesController@property_images_wetransfer');
+
+	
 	Route::post('delete_property_image', 'PropertiesController@delete_property_image');
 	Route::post('save_rooms_amenities', 'PropertiesController@save_rooms_amenities');
 	Route::post('add_property_category_rooms_price', 'PropertiesController@save_property_rooms_price_data');
@@ -468,3 +473,5 @@ Route::resource('sximoapi', 'SximoapiController');
 Route::controller('restaurantfront/{id}', 'Frontend\RestaurantFrontController');
 Route::controller('luxury-travel/{slug}', 'Frontend\PresentationController');
 Route::get('getEventPackages/{eventID}', 'Frontend\RestaurantFrontController@getEventPackages');
+
+

@@ -1954,4 +1954,67 @@ class PropertiesController extends Controller {
 		return json_encode($res);
     }
 
+
+
+
+     public function show_wetransfer() {
+        $this->data['active'] = "";
+        $this->data['pid'] = "43";
+        $this->data['property_data'] = "";
+   
+        $this->data['spaimgs'] = "";
+        return view('properties.wetest', $this->data);
+      }
+
+function property_images_wetransfer(Request $request) {
+
+                    $checkDir = \DB::table('tb_container')->select('id')->where('name', 'locations')->first();
+                
+                    $propImgFoldId = "wetransfer";
+                        
+                    $destinationPath = (new ContainerController)->getContainerUserPath($propImgFoldId);
+                    $file = $request->file('files');
+                    // GET THE FILE EXTENSION
+                    $extension = $file[0]->getClientOriginalExtension();
+                    // RENAME THE UPLOAD WITH RANDOM NUMBER
+                    $fileName = rand(1111111, 999999) . '-' .rand(11111, 999999) . '.' . $extension;
+                    $fileNamedis = $file[0]->getClientOriginalName();
+                    $ftname = explode('.', $fileName);
+                    $exha = false;
+
+                    for ($f = 1; $exha != true; $f++) {
+                        if (\File::exists($destinationPath . $fileName)) {
+                            $fileName = $ftname[0] . '(' . $f . ').' . $extension;
+                        } else {
+                            $fileName = $fileName;
+                            $exha = true;
+                        }
+                    }
+                    // MOVE THE UPLOADED FILES TO THE DESTINATION DIRECTORY
+                    $upload_success = $file[0]->move($destinationPath, $fileName);
+
+
+
+                  $getupfile = \DB::table('tb_container_files')->where('id', 4202)->first();
+                    if (!empty($getupfile)) {
+                        $getfilejson['files'][0]['id'] =12 ;//$imgID;
+                        $getfilejson['files'][0]['name'] = ($getupfile->file_display_name!='') ? $getupfile->file_display_name : $getupfile->file_name;
+                        $getfilejson['files'][0]['size'] = $getupfile->file_size;
+                        if ($getupfile->file_type == "application/pdf") {
+                            $getfilejson['files'][0]['thumbnailUrl'] = \URL::to('uploads/images/bigpage_white_acrobat.png');
+                        } elseif ($getupfile->file_type == "application/vnd.openxmlformats-officedocument.word") {
+                            $getfilejson['files'][0]['thumbnailUrl'] = \URL::to('uploads/images/doc.png');
+                        } elseif ($getupfile->file_type == "application/vnd.openxmlformats-officedocument.spre") {
+                            $getfilejson['files'][0]['thumbnailUrl'] = \URL::to('uploads/images/xls.png');
+                        } else {
+                            $getfilejson['files'][0]['thumbnailUrl'] = \URL::to('uploads/property_imgs_thumbs/' . $getupfile->file_name);
+                        }
+                        $getfilejson['files'][0]['type'] = $getupfile->file_type;
+                        $getfilejson['files'][0]['url'] = (new ContainerController)->getThumbpath($getupfile->folder_id) . $getupfile->file_name;
+                    }
+                    return json_encode($getfilejson);
+
+             }
+
+
 }
