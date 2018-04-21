@@ -1927,10 +1927,10 @@ button.searchButton.btn:hover {
 .nav-tabs>li>a { color:#000 !important; }
 
 #yottie_1 .yottie-widget-header, #yottie_1 .yottie-widget-feed, #yottie_1 .yottie-widget-nav {background:#252525 !important;}
-#yottie_1 .yottie-widget-header-channel-title, #yottie_1 .yottie-widget-header-channel-title a {
+#yottie_1 .yottie-widget-header-channel-title, #yottie_1 .yottie-widget-header-channel-title a, #yottie_1 .yottie-widget-header-properties-item, #yottie_1 .yottie-widget-video-info-title, #yottie_1 .yottie-widget-video-info-properties-item {
     color: #ABA07C !important;
 }
-#yottie_1 .yottie-widget-header-channel-caption, #yottie_1 .yottie-widget-nav-list-item.yottie-active a, #yottie_1 .yottie-widget-nav-list-item.yottie-active:hover a {
+#yottie_1 .yottie-widget-header-channel-caption, #yottie_1 .yottie-widget-nav-list-item.yottie-active a, #yottie_1 .yottie-widget-nav-list-item.yottie-active:hover a, #yottie_1 .yottie-widget-video-info-caption {
     color: #fff !important;
 }
 .yottie-widget-feed-section-search-form-input{background:#89837b !important; border:0; border-radius:0;-webkit-border-radius:0;}
