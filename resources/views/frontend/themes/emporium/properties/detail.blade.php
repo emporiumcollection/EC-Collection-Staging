@@ -172,7 +172,7 @@
                                          data-ride="carousel">
                                         <div class="carousel-inner">
                                             @for($rimg1=0; $rimg1 < $divd2; $rimg1++)
-                                                <div class="item @if($totimg<4) active @else {{ ($rimg1==1) ? 'active' : '' }} @endif">
+                                                <div class="item {{ ($rimg1==1) ? 'active' : '' }}">
                                                     <a href="javascript:void(0);" class="galleryImgBtn" rel="{{$type->id}}">
                                                         <img src="{{ asset('themes/emporium/images/photo-camera.png') }}"
                                                              alt="Icon">
@@ -183,7 +183,7 @@
                                             @endfor
 
                                             @for($rimg2=$rimg1; $rimg2 < $totimg; $rimg2++)
-                                                <div class="item">
+                                                <div class="item @if($totimg<3) active @endif">
                                                     <a href="javascript:void(0);" class="galleryImgBtn" rel="{{$type->id}}">
                                                         <img src="{{ asset('themes/emporium/images/photo-camera.png') }}"
                                                              alt="Icon">
