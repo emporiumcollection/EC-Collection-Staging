@@ -22,6 +22,18 @@
                          </div>
                       </div>
                     @endforeach
+					{{--*/ $sliderads = CommonHelper::getSliderAds('landing_slider', 'Hotel') /*--}}
+					@if(!empty($sliderads['leftsidebarads']))
+						@foreach($sliderads['leftsidebarads'] as $ads)
+							<div class="item">
+								<a ><img src="{{URL::to('uploads/users/advertisement/'.$ads->adv_img)}}" alt="{{$ads->adv_title}}"></a>
+								<div class="carousel-caption">
+									<h1><a href="{{ (strpos($ads->adv_link, 'http://') !== false) ? $ads->adv_link : 'http://'.$ads->adv_link }}">{{$ads->adv_title}}</a></h1>
+									<p>{{$ads->adv_desc}}</p>
+								</div>
+							</div>
+						@endforeach
+					@endif
                  </div>
                  <!-- Left and right controls -->
                  <a class="left carousel-control" href="#myCarousel" data-slide="prev">

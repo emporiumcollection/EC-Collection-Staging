@@ -29,6 +29,24 @@
 							</div>
 						</div>
 					@endforeach
+					{{--*/ $adscatid = ($destination_category > 0) ? $destination_category : 'Hotel'; $sliderads = CommonHelper::getSliderAds('grid_slider', $adscatid) /*--}}
+					@if(!empty($sliderads['leftsidebarads']))
+						@foreach($sliderads['leftsidebarads'] as $ads)
+							<div class="item" style="background-image:url({{URL::to('uploads/users/advertisement/'.$ads->adv_img)}});">
+								<div class="carousel-caption">
+									<h6>Advertisement</h6>
+									<h2>
+										@if($ads->adv_link!='#' && $ads->adv_link!='')
+											<a onclick="return !window.open(this.href, '{{ ((strpos($ads->adv_link, 'http://') || strpos($ads->adv_link, 'https://')) === false) ? $ads->adv_link : 'http://'.$ads->adv_link }}', 'width=900,height=500,left=100, top=100, scrollbars, resizable')" href="{{ ((strpos($ads->adv_link, 'http://') || strpos($ads->adv_link, 'https://')) === false) ? $ads->adv_link : 'http://'.$ads->adv_link }}">{{$ads->adv_title}}</a>
+										@else
+											{{$ads->adv_title}}
+										@endif
+									</h2>
+									<p>{{$ads->adv_desc}}</p>
+								</div>
+							</div>
+						@endforeach
+					@endif
 				</div>
 
 				<!-- Left and right controls -->

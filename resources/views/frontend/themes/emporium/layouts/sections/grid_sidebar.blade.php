@@ -235,7 +235,7 @@
                         @endif
                     </div>
                 </div>
-                {{--*/ $sidebarads = CommonHelper::getSidebarAds('grid_sidebar', 'Hotel') /*--}}
+                {{--*/ $adscatid = ($destination_category > 0) ? $destination_category : 'Hotel'; $sidebarads = CommonHelper::getSidebarAds('grid_sidebar', $adscatid) /*--}}
                 @if(!empty($sidebarads['leftsidebarads']))
                     @foreach($sidebarads['leftsidebarads'] as $ads)
                         <div class="item">
