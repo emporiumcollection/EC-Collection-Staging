@@ -20,6 +20,7 @@ class PropertyController extends Controller {
 	public function getPropertyGridListByCategory(Request $request)
 	{
 		$this->data['slug'] = $request->slug;
+		$this->data['dateslug'] = '';
 
         $this->data['slider'] = \DB::table('tb_sliders')->select('slider_category','slider_title','slider_description','slider_img','slider_link','slide_type')->where('slider_category', $request->slug)->where('slider_status',1)->orderBy('sort_num','asc')->get();
 
