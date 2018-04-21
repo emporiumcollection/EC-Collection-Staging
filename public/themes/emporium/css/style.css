@@ -1924,3 +1924,4 @@ button.searchButton.btn:hover {
 .datepicker.dropdown-menu td{color:#fff !important;}
 .datepicker.dropdown-menu td:hover{color:#252525!important;}
 .datepicker-dropdown.datepicker-orient-top:after{border-top:6px solid #252525 !important}
+.nav-tabs>li>a { color:#000 !important; }
