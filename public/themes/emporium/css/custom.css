@@ -20,6 +20,7 @@
     clear: both;
     display: inline-block;
     width: 100%;
+    position: relative;
 }
 
 .socialyoutubemenu .mobilemenulist li a.menu_item {
@@ -175,6 +176,12 @@ body .ui-widget.ui-widget-content li i.iconsheet {
     color: #fff;
     outline: 0;
     text-decoration: none;
+}
+.mobilemenulist i.fa.fa-angle-right {
+    color: #fff;
+    position: absolute;
+    top: 35%;
+    right: 20px;
 }
 
 
