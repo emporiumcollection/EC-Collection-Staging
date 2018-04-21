@@ -82,6 +82,7 @@
                                     {{$pmenu['menu_name']}}
                                 @endif
                             </a>
+                            @if($pmenu['menu_type'] =='external') @if($pmenu['url'] != "#" || $pmenu['url'] != '') <i class="fa fa-angle-right"></i> @endif @endif
                         </li>
                     @endforeach
                 @endif

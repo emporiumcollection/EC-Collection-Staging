@@ -530,7 +530,7 @@ function renderMenu(dataObj) {
     $(dataObj.menus).each(function (i, val) {
         if(val.menu_type == "external") {
             if(val.url == "#" || val.url == "") {
-                menuHtml += '<li><a class="cursor menu_item" data-action="select-menu" data-position="' + val.position + '" data-id="' + val.menu_id + '">' + val.menu_name + '</a></li>';
+                menuHtml += '<li><a class="cursor menu_item" data-action="select-menu" data-position="' + val.position + '" data-id="' + val.menu_id + '">' + val.menu_name + '</a><i class="fa fa-angle-right"></i></li>';
             } else {
                 menuHtml += '<li><a href="' + val.url + '" class="cursor menu_item" data-action="select-menu" data-position="' + val.position + '" data-id="' + val.id + '">' + val.menu_name + '</a></li>';
             }
