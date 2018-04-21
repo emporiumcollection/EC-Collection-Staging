@@ -520,9 +520,9 @@ function renderMenu(dataObj) {
     data.id = 0;
     data.type = 'home';
     if (dataObj.current_menu != undefined) {
-        data.main_title = 'Home';
+        data.main_title = '<a style="color:#fff;" href="'+ BaseURL +'">Home</a>';
         data.sub_title = dataObj.current_menu.menu_name;
-        data.id = dataObj.current_menu.id;
+        data.id = dataObj.current_menu.menu_id;
     }
     var menuHtml = '';
     hideAllOption();
