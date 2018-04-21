@@ -1943,5 +1943,5 @@ button.searchButton.btn:hover {
 
 .yottie-widget-feed-section-pagination .swiper-pagination-bullet-active, .yottie-widget-feed-section-pagination .swiper-pagination-bullet-active:hover{background:#ABA07C !important;color:#fff !important}
 #yottie_1 .yottie-widget-video-info-passed-time{color:#ccc !important}
-.yottie-widget-video-preview-thumbnail img{filter: brightness(0.5); -webit-filter: brightness(0.5);}
+.yottie-widget-video-preview-thumbnail img{filter: brightness(0.5); -webit-filter: brightness(0.6);}
 .yottie-widget-video-preview-thumbnail img:after{content:""; position:absolute;left:0; top:0;height:100%;width:100%;}
