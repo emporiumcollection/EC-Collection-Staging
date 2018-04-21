@@ -176,8 +176,8 @@
                     </ul>
                 </form>
             </div>
-            <div class="bottomlink text-center hide" data-option="search-by-date">View, Modify or Cancel your
-                Booking<br/> @if (!Auth::check())<a href="javascript:void(0)" class="loginSecForMob">Login</a>@endif
+            <div class="bottomlink text-center hide" data-option="search-by-date">@if (!Auth::check()) View, Modify or Cancel your
+                Booking<br/> <a href="javascript:void(0)" class="loginSecForMob">Login</a> @else <a href="{{URL::to('dashboard')}}">View, Modify or Cancel your Booking</a> @endif
             </div>
 
         </div>
