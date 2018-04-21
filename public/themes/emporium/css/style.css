@@ -1932,5 +1932,8 @@ button.searchButton.btn:hover {
 }
 #yottie_1 .yottie-widget-header-channel-caption, #yottie_1 .yottie-widget-nav-list-item.yottie-active a, #yottie_1 .yottie-widget-nav-list-item.yottie-active:hover a, #yottie_1 .yottie-widget-video-info-caption {
     color: #fff !important;
+	font-family: 'geomanistlightwebfont' !important;
 }
 .yottie-widget-feed-section-search-form-input{background:#89837b !important; border:0; border-radius:0;-webkit-border-radius:0;}
+#yottie_1 .yottie-widget-video{background:#ABA07C !important;
+}
