@@ -523,6 +523,7 @@ function renderMenu(dataObj) {
         data.main_title = '<a style="color:#fff;" href="'+ BaseURL +'">Home</a>';
         data.sub_title = dataObj.current_menu.menu_name;
         data.id = dataObj.current_menu.menu_id;
+		data.type = 'select-menu';
     }
     var menuHtml = '';
     hideAllOption();
