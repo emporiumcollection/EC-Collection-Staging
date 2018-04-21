@@ -1348,7 +1348,7 @@ ul.calenderwrapper li .form-control.datefield {
 .daterangepicker:before, .daterangepicker:after{border-bottom: 7px solid #252525;}
 .daterangepicker .calendar-table{background:none; border:0;}
 .daterangepicker.daterangecalendar-design{font-family: 'geomanist_regularregular', sans-serif;}
-.daterangepicker.daterangecalendar-design.dropdown-menu{width:308px;}
+.daterangepicker.daterangecalendar-design.dropdown-menu{width:308px; z-index: 99999;}
 .daterangepicker.daterangecalendar-design.dropdown-menu .calendar{border:0;}
 .daterangepicker .calendar td{border:1px solid #fff; color:#fff;}
 .daterangepicker.daterangecalendar-design .calendar .calendar-table{padding:0;}
