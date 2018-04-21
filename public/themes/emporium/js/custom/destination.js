@@ -98,7 +98,7 @@ function renderDestination(dataObj) {
     data.type = 'home';
     var destinationHtml = '';
     if (dataObj.current_category != undefined) {
-        data.main_title = '<a href="">Home</a>';
+        data.main_title = '<a style="color:#fff;" href="'+ BaseURL +'">Home</a>';
         if (dataObj.currentParentCate != undefined) {
             data.sub_title = 'Back To '+dataObj.currentParentCate.category_name;
             data.id = dataObj.currentParentCate.id;
