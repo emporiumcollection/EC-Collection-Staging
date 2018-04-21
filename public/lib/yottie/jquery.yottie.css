@@ -1,7 +1,7 @@
 /* 
 	Yottie
-	Version: 2.5.0
-	Release date: Sun Apr 09 2017
+	Version: 2.6.0
+	Release date: Tue Oct 03 2017
 	
 	elfsight.com
 	
@@ -729,6 +729,150 @@ li.yottie-widget-nav-list-item.yottie-active a {
 .yottie-widget-feed-ads .adsbygoogle {
   margin: 10px 0;
 }
+.yottie-widget-feed-section-pagination {
+  position: relative;
+  padding: 20px !important;
+}
+span.yottie-widget-feed-section-pagination-bullet {
+  text-align: center;
+  min-width: 18px;
+  font-size: 12px;
+  padding: 5px 7px;
+  margin: 0 3px 0;
+  width: auto;
+  height: auto;
+  border-radius: 2px;
+  color: #aaa;
+  background: rgba(175,175,175,0.1);
+  opacity: 1;
+  transition: color 0.3s;
+}
+@media only screen and (max-width: 640px) {
+  span.yottie-widget-feed-section-pagination-bullet {
+    min-width: 14px;
+  }
+}
+span.yottie-widget-feed-section-pagination-bullet:hover {
+  color: #f00;
+}
+span.yottie-widget-feed-section-pagination-bullet-more {
+  position: relative;
+  padding: 5px 9px;
+}
+span.yottie-widget-feed-section-pagination-bullet-more:hover::before,
+span.yottie-widget-feed-section-pagination-bullet-more:hover::after {
+  background: #f00;
+}
+span.yottie-widget-feed-section-pagination-bullet-more::before,
+span.yottie-widget-feed-section-pagination-bullet-more::after {
+  position: absolute;
+  top: 11px;
+  right: 40%;
+  width: 8px;
+  height: 1px;
+  content: '';
+  background: #aaa;
+  transition: background 0.3s;
+}
+span.yottie-widget-feed-section-pagination-bullet-more::before {
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+  -webkit-transform-origin: 100% 100%;
+      -ms-transform-origin: 100% 100%;
+          transform-origin: 100% 100%;
+}
+span.yottie-widget-feed-section-pagination-bullet-more::after {
+  -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  -webkit-transform-origin: 100% 0%;
+      -ms-transform-origin: 100% 0%;
+          transform-origin: 100% 0%;
+}
+.yottie-widget-feed-section-pagination .swiper-pagination-bullet-active {
+  color: #fff;
+  background: rgba(175,175,175,0.7);
+}
+.yottie-widget-feed-section-search {
+  padding: 20px 0 !important;
+  margin: 0 20px !important;
+}
+.yottie-widget-feed-section-search::before,
+.yottie-widget-feed-section-search::after {
+  display: table;
+  width: 100%;
+  height: 0;
+  clear: both;
+  float: none;
+  content: '';
+}
+.yottie-widget-feed-section-search-selector {
+  float: right;
+  height: 33px;
+  line-height: 33px;
+  margin-left: 20px !important;
+}
+.yottie-widget-feed-section-search-selector-label {
+  color: #aaa;
+  cursor: pointer;
+}
+.yottie-widget-feed-section-search-selector-label-input {
+  position: relative;
+  top: 2px;
+  margin-right: 5px;
+  outline: none;
+  cursor: pointer;
+}
+.yottie-widget-feed-section-search-form {
+  position: relative;
+  width: 33%;
+  float: right;
+  margin-bottom: 0;
+}
+@media only screen and (max-width: 640px) {
+  .yottie-widget-feed-section-search-form {
+    width: 50%;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .yottie-widget-feed-section-search-form {
+    width: 100%;
+  }
+}
+.yottie-widget-feed-section-search-form-input {
+  border-radius: 2px;
+  border: 1px solid rgba(175,175,175,0.3);
+  outline: none;
+  padding: 8px 16px;
+  width: 100%;
+  color: #aaa;
+  box-sizing: border-box;
+  background: transparent;
+}
+.yottie-widget-feed-section-search-form-input::-ms-clear {
+  display: none;
+}
+.yottie-widget-feed-section-search-form-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 9px 8px 7px 8px;
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  cursor: pointer;
+}
+.yottie-widget-feed-section-search-form-button-icon {
+  display: block;
+  height: 100%;
+  width: 100%;
+  fill: #dedede;
+  transition: fill 0.5s;
+}
+.yottie-widget-feed-section-search-form-button:hover .yottie-widget-feed-section-search-form-button-icon {
+  fill: #f00;
+}
 div.yottie-widget-feed-section {
   display: none;
   position: relative;
@@ -989,6 +1133,7 @@ div.yottie-widget-feed-section-loader.yottie-visible {
   display: block;
   position: relative;
   z-index: 1;
+  min-height: 1px;
 }
 .yottie-widget-video-preview-thumbnail {
   display: block;

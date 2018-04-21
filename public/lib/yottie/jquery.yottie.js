@@ -1,7 +1,7 @@
 /* 
 	Yottie
-	Version: 2.5.0
-	Release date: Sun Apr 09 2017
+	Version: 2.6.0
+	Release date: Tue Oct 03 2017
 	
 	elfsight.com
 	
@@ -984,6 +984,8 @@ module.exports = {
         arrowsControl: true,
         scrollControl: false,
         dragControl: true,
+        paginationControl: true,
+        search: true,
         direction: 'horizontal',
         freeMode: false,
         scrollbar: false,
@@ -1507,7 +1509,8 @@ module.exports = Olivie.component('Popup', function () {
                         videoId: self.video.id,
                         playerVars: {
                             autoplay: self.app.options.popup.autoplay,
-                            showinfo: false
+                            showinfo: false,
+                            rel: 0
                         },
                         events: {
                             onStateChange: function (e) {
@@ -1841,16 +1844,25 @@ module.exports = Olivie.class('FeedSection', [], function (controller, group) {
         self.$novideos = $(self.controller.renderer.render('feed.section.novideos', { message: 'There are no videos in this group.' }));
         self.$novideos.appendTo(self.$element);
     }
-    self.$inner = self.$element.children().first();
+    self.$inner = self.$element.find('.yottie-widget-feed-section-inner');
     self.$loader = $(self.controller.renderer.render('feed.loader'));
+    if (self.get('controller.app.options.content.search')) {
+        self.$filter = $(self.controller.renderer.render('feed.filter'));
+        self.$filter.find('.yottie-widget-feed-section-search-selector-label-input').attr('name', 'filterField_' + self.title);
+        self.$filter.prependTo(self.$element);
+    }
     if (self.hasSource && self.get('controller.app.options.content.arrowsControl')) {
-        self.$element.append(self.controller.renderer.render('feed.arrows'));
+        self.$inner.append(self.controller.renderer.render('feed.arrows'));
         self.$arrowPrev = self.$element.find('.yottie-widget-feed-section-arrow-prev');
         self.$arrowNext = self.$element.find('.yottie-widget-feed-section-arrow-next');
     }
     if (self.hasSource && self.get('controller.app.options.content.scrollbar')) {
         self.$scrollbar = $(self.controller.renderer.render('feed.scrollbar'));
         self.$scrollbar.appendTo(self.$element);
+    }
+    if (self.get('controller.app.options.content.paginationControl')) {
+        self.$pagination = $(self.controller.renderer.render('feed.pagination'));
+        self.$pagination.appendTo(self.$element);
     }
     self.$loader.appendTo(self.$element);
     self.fetcher = self.createFetcher();
@@ -1959,7 +1971,10 @@ module.exports = Olivie.class('FeedSection', [], function (controller, group) {
     $arrowNext: null,
     $scrollbar: null,
     $loader: null,
+    $pagination: null,
     isPlaying: null,
+    filterStr: '',
+    filterField: 'title&description',
     createFeedSectionElement: function () {
         var self = this;
         return $(self.controller.renderer.render('feed.section'));
@@ -2065,9 +2080,9 @@ module.exports = Olivie.class('FeedSection', [], function (controller, group) {
             q.reject();
         } else {
             if (!noloader) {
-                self.showLoader(300);
+                self.showLoader();
             }
-            self.fetcher.fetch(count).done(function (list) {
+            self.fetcher.fetch(count, self.filterStr, self.filterField).done(function (list) {
                 var $slideVideos = $();
                 var $slide = $(self.controller.renderer.render('feed.slide'));
                 $.each(list, function (i, video) {
@@ -2079,6 +2094,17 @@ module.exports = Olivie.class('FeedSection', [], function (controller, group) {
                 self.fitSlides($slide);
                 self.hideLoader();
                 q.resolve();
+            }).fail(function () {
+                self.swiper.stopAutoplay();
+                if (!self.fetcher.hasNext() && self.$element.find('.yottie-widget-feed-section-slide').length === 0) {
+                    var $slide = $(self.controller.renderer.render('feed.slide'));
+                    self.$novideos = $(self.controller.renderer.render('feed.section.novideos', { message: 'There are no videos by this request: "' + self.filterStr + '".' }));
+                    self.$novideos.appendTo($slide);
+                    self.swiper.appendSlide($slide);
+                }
+                self.hideLoader();
+                self.$arrowNext.toggleClass('yottie-widget-feed-section-arrow-has-next', false);
+                q.reject();
             });
         }
         return q.promise();
@@ -2102,7 +2128,8 @@ module.exports = Olivie.class('FeedSection', [], function (controller, group) {
             });
         var dragControl = self.get('controller.app.options.content.dragControl');
         var scrollControl = self.get('controller.app.options.content.scrollControl');
-        var disableMove = !dragControl && !scrollControl;
+        var paginationControl = self.get('controller.app.options.content.paginationControl');
+        var disableMove = !dragControl && !scrollControl && !paginationControl;
         var Swiper = window.Swiper || Swiper;
         self.swiper = new Swiper(self.$inner, {
             direction: direction,
@@ -2129,13 +2156,30 @@ module.exports = Olivie.class('FeedSection', [], function (controller, group) {
             watchSlidesProgress: true,
             watchSlidesVisibility: true,
             onlyExternal: disableMove,
+            pagination: self.$pagination ? self.$pagination.get() : null,
+            paginationClickable: true,
+            paginationBulletRender: function (swiper, index, className) {
+                return '<span class="yottie-widget-feed-section-pagination-bullet ' + className + '">' + (index + 1) + '</span>';
+            },
             onTouchStart: function (swiper, e) {
                 if (disableMove) {
                     e.preventDefault();
                 }
             }
         });
-        self.swiper.on('reachEnd', function (e) {
+        if (paginationControl) {
+            self.swiper.on('onPaginationRendered', function () {
+                if (self.fetcher.hasNext()) {
+                    var $bulletMore = $('<span class="yottie-widget-feed-section-pagination-bullet yottie-widget-feed-section-pagination-bullet-more swiper-pagination-bullet">&nbsp;</span>').get(0);
+                    $(self.swiper.paginationContainer).append($bulletMore);
+                }
+                self.rebuildPagination();
+            });
+            self.swiper.on('onSlideChangeEnd', function () {
+                self.rebuildPagination();
+            });
+        }
+        self.swiper.on('reachEnd', function () {
             var hasNext = self.fetcher.hasNext();
             self.swiper.stopAutoplay();
             if (hasNext && !self.redistributing) {
@@ -2172,7 +2216,8 @@ module.exports = Olivie.class('FeedSection', [], function (controller, group) {
                         videoId: id,
                         playerVars: {
                             autoplay: true,
-                            showinfo: false
+                            showinfo: false,
+                            rel: 0
                         },
                         events: {
                             onStateChange: function (e) {
@@ -2255,6 +2300,34 @@ module.exports = Olivie.class('FeedSection', [], function (controller, group) {
         }
         $(window).resize(function () {
             self.fit();
+        });
+        self.$element.on('submit', '.yottie-widget-feed-section-search-form', function (e) {
+            e.preventDefault();
+            self.$element.find('.yottie-widget-feed-section-search-form-input').trigger('change');
+        });
+        self.$element.on('click', '.yottie-widget-feed-section-search-form-button', function () {
+            self.$element.find('.yottie-widget-feed-section-search-form-input').trigger('change');
+        });
+        self.$element.on('change', '.yottie-widget-feed-section-search-form-input', function () {
+            self.filterStr = self.$element.find('.yottie-widget-feed-section-search-form-input').get(0).value;
+            self.showLoader();
+            self.swiper.isEnd = true;
+            self.swiper.removeAllSlides();
+            self.fetcher = self.createFetcher();
+            self.fetcher.prepare().done(function () {
+                self.swiper.isEnd = false;
+                self.appendSlide().done(function () {
+                    self.fit();
+                    if (!self.auto) {
+                        return;
+                    }
+                    setTimeout(function () {
+                        if (!self.isPlaying && self.swiper.autoplaying && !self.hover) {
+                            self.swiper.slideNext();
+                        }
+                    }, self.auto);
+                });
+            });
         });
     },
     fit: function () {
@@ -2385,6 +2458,38 @@ module.exports = Olivie.class('FeedSection', [], function (controller, group) {
             self.loaderTimeout = null;
         }
         self.$loader.removeClass('yottie-visible');
+    },
+    rebuildPagination: function () {
+        var self = this;
+        var $bullets = self.$element.find('.yottie-widget-feed-section-pagination-bullet');
+        var activeIndex = self.swiper.activeIndex;
+        var emptyArr = [
+                [],
+                []
+            ], k = 0;
+        var range = 3;
+        $.map($bullets, function (item, i) {
+            if (i < $bullets.length - 1) {
+                if (i < range - 2 || i > activeIndex - range / 2 && i < activeIndex + range / 2 || i > $bullets.length - range) {
+                    if (i === activeIndex) {
+                        k = 1;
+                    }
+                    $(item).css('display', 'inline-block').text(i + 1);
+                } else {
+                    emptyArr[k].push(i);
+                    $(item).css('display', 'none').text('...');
+                }
+            }
+        });
+        var emptyArrMid = emptyArr.map(function (itemArr) {
+                return parseInt(itemArr[0]) + parseInt((itemArr[itemArr.length - 1] - itemArr[0]) / 2);
+            });
+        $.map($bullets, function (item, i) {
+            if (i === emptyArrMid[0] || i === emptyArrMid[1]) {
+                $(item).css('display', 'inline-block');
+            }
+        });
+        $(self.swiper.paginationContainer).html($bullets);
     }
 });
 },{"./../../../../olivie/src/js/jquery":7,"./../../../../olivie/src/js/olivie":14,"./../../defaults":16,"./../youtube/proxy-storage":36,"./grid":23}],22:[function(require,module,exports){
@@ -2442,7 +2547,7 @@ module.exports = Olivie.component('Feed', function () {
     run: function (sourceGroups) {
         var self = this;
         self.$element = self.createFeedElement();
-        self.$inner = self.$element.children().first();
+        self.$inner = self.$element.find('.yottie-widget-feed-inner');
         $.each(sourceGroups, function (i, group) {
             var section = new FeedSection(self, group);
             section.$element.appendTo(self.$inner);
@@ -3208,13 +3313,30 @@ module.exports = Olivie.class('UniversalVideoFetcher', [], function (source, par
         });
         return q.promise();
     },
-    fetch: function (maxResults, q) {
+    fetch: function (maxResults, filterStr, filterField, q) {
+        filterStr = filterStr || '';
+        filterField = filterField || 'title';
         var self = this;
         q = q || $.Deferred();
         var chunk;
         var stack;
         var fetchPromises = [];
         var hasNext = self.hasNext();
+        var filterFunc = function (arr, filterStr) {
+            var clearStr = function (str) {
+                return str.toLowerCase().trim().replace(/[_+-.,!@#$%^&*();\/|<>"':?\d]/g, '');
+            };
+            var filterStrCleared = clearStr(filterStr);
+            arr = arr.filter(function (elem) {
+                var snippet = elem.snippet, title = clearStr(snippet.title), description = clearStr(snippet.description);
+                if (filterField === 'title&description') {
+                    return title.indexOf(filterStrCleared) !== -1 || description.indexOf(filterStrCleared) !== -1;
+                } else {
+                    return title.indexOf(filterStrCleared) !== -1;
+                }
+            });
+            return arr;
+        };
         if (!self.isReady()) {
             q.reject(0);
         } else if (self.stack.length >= maxResults || !hasNext && self.stack.length) {
@@ -3228,7 +3350,7 @@ module.exports = Olivie.class('UniversalVideoFetcher', [], function (source, par
                 if (!fetcher.hasNext()) {
                     return;
                 }
-                fetchPromises.push(fetcher.fetch(maxResults));
+                fetchPromises.push(fetcher.fetch(filterStr !== '' ? 49 : maxResults));
             });
             if (!fetchPromises.length && self.stack && self.stack.length) {
                 stack = self.stack.slice();
@@ -3244,6 +3366,9 @@ module.exports = Olivie.class('UniversalVideoFetcher', [], function (source, par
                     }
                     var list = res[0];
                     var fetcher = res[1];
+                    if (filterStr !== '') {
+                        list = filterFunc(list, filterStr);
+                    }
                     if (fetcher.constructor.id === 'VideoFetcher') {
                         Array.prototype.push.apply(self.stack, list);
                     } else {
@@ -3266,7 +3391,7 @@ module.exports = Olivie.class('UniversalVideoFetcher', [], function (source, par
                     videosLoadPromise.resolve();
                 }
                 videosLoadPromise.done(function () {
-                    self.fetch(maxResults, q);
+                    self.fetch(maxResults, filterStr, filterField, q);
                 });
             });
         }
@@ -4184,6 +4309,16 @@ views['feed']['container'] = Handlebars.template({
     },
     'useData': true
 });
+views['feed']['filter'] = Handlebars.template({
+    'compiler': [
+        6,
+        '>= 2.0.0-beta.1'
+    ],
+    'main': function (depth0, helpers, partials, data) {
+        return '<svg xmlns="http://www.w3.org/2000/svg" style="position: absolute; width: 0; height: 0;"><symbol viewBox="0 0 1024 1024" id="icon-search"><path d="M983.417 791.956 839.232 647.771c-.518-.518-1.037-.801-1.555-1.32 30.967-60.285 48.737-128.489 48.737-201.076 0-243.969-197.73-441.699-441.84-441.699-243.969 0-441.699 197.73-441.699 441.699 0 244.016 197.73 441.84 441.699 441.84 72.587 0 140.791-17.77 201.218-48.737.377.518.66 1.037 1.178 1.555l144.185 144.185c53.168 53.026 139.236 53.026 192.262 0 53.026-52.979 53.026-139.236 0-192.262zm-538.796-40.583c-168.931 0-305.81-137.02-305.81-305.951s136.926-305.81 305.81-305.81c169.072 0 305.951 136.926 305.951 305.81 0 168.931-136.926 305.951-305.951 305.951z"></path></symbol></svg><div class="yottie-widget-feed-section-search"><form class="yottie-widget-feed-section-search-form"> <input class="yottie-widget-feed-section-search-form-input" placeholder="Search..."> <a class="yottie-widget-feed-section-search-form-button"><svg class="yottie-widget-feed-section-search-form-button-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-search"></use></svg></a></form></div>';
+    },
+    'useData': true
+});
 views['feed']['loader'] = Handlebars.template({
     'compiler': [
         6,
@@ -4191,6 +4326,16 @@ views['feed']['loader'] = Handlebars.template({
     ],
     'main': function (depth0, helpers, partials, data) {
         return '<div class="yottie-widget-feed-section-loader"><div class="yottie-spinner"></div></div>';
+    },
+    'useData': true
+});
+views['feed']['pagination'] = Handlebars.template({
+    'compiler': [
+        6,
+        '>= 2.0.0-beta.1'
+    ],
+    'main': function (depth0, helpers, partials, data) {
+        return '<div class="yottie-widget-feed-section-pagination swiper-pagination"></div>';
     },
     'useData': true
 });
@@ -5504,7 +5649,7 @@ module.exports = Olivie.application('Yottie', function (id, element, options) {
             client.ga.collect(mes);
         }
     });
-}, { VERSION: '2.5.0' }, {
+}, { VERSION: '2.6.0' }, {
     id: null,
     $element: null,
     options: null,
