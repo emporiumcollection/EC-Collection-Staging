@@ -28,9 +28,11 @@
 					<li><a href="#design-architecture" class="closenavlink scrollpage">DESIGN & ARCHITECTURE</a></li>
 				@endif
 				
+				<?php /*
 				@if($propertyDetail['data']->restaurant_ids!='' || $propertyDetail['data']->spa_ids!='' || $propertyDetail['data']->bar_ids!='')
 					<li><a href="{{URL::to($propertyDetail['data']->property_slug.'/restaurant')}}">RESTAURANT & BAR</a></li>
-				@endif
+				@endif 
+				*/ ?>
 				
 				@if($propertyDetail['data']->video_title!='')
 					<li><a href="#video" class="closenavlink scrollpage">VIDEO</a></li>
