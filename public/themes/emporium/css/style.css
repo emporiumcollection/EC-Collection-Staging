@@ -1939,4 +1939,6 @@ button.searchButton.btn:hover {
 }
 #yottie_1 .yottie-widget-video-info-title{font-family: 'geomanist_regularregular', serif !important;}
 #yottie_1 .yottie-widget-video-info-passed-time{font-family: 'geomanistlightwebfont' !important;}
-.yottie-widget-feed-section-search-form-input:focus{color:#fff !important;}
+.yottie-widget-feed-section-search-form-input, .yottie-widget-feed-section-search-form-input:focus{color:#fff !important;font-family: 'geomanistlightwebfont' !important;}
+
+.yottie-widget-feed-section-pagination .swiper-pagination-bullet-active, .yottie-widget-feed-section-pagination .swiper-pagination-bullet-active:hover{background:#ABA07C;color:#fff !important}
