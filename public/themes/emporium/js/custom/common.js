@@ -522,8 +522,7 @@ function renderMenu(dataObj) {
     if (dataObj.current_menu != undefined) {
         data.main_title = '<a style="color:#fff;" href="'+ BaseURL +'">Home</a>';
         data.sub_title = dataObj.current_menu.menu_name;
-        data.id = dataObj.current_menu.menu_id;
-		data.type = 'select-menu';
+        data.id = dataObj.current_menu.id;
     }
     var menuHtml = '';
     hideAllOption();
