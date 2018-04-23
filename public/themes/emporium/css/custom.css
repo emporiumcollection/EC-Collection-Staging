@@ -185,3 +185,12 @@ body .ui-widget.ui-widget-content li i.iconsheet {
 .mobile-leftsearch-error {
     color: #ABA07C;
 }
+.daterangepicker.daterangecalendar-design i.fa.fa-close {
+    color: #fff;
+    position: absolute;
+    right: 20px;
+    font-size: 22px;
+    top: 5px;
+    z-index: 999999999;
+    cursor: pointer;
+}
