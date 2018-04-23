@@ -154,7 +154,6 @@ body .ui-widget.ui-widget-content li i.iconsheet {
     z-index: 99;
 }
 
-
 #filtersearchpopup ul ul.mobilemenulist {
     background: #252525;
 }
@@ -183,6 +182,6 @@ body .ui-widget.ui-widget-content li i.iconsheet {
     top: 35%;
     right: 20px;
 }
-
-
-
+.mobile-leftsearch-error {
+    color: red;
+}

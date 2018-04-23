@@ -177,6 +177,7 @@ $(document).ready(function () {
    });
 
    $(document).on('keyup', '[data-action="gobal-search"]', function () {
+        $('[data-action="gobal-search-error"]').html('');
         if ($(this).val() == '') {
             $('[data-action="clear-search"]').hide();
             $('[data-option="gobal-search"]').slideUp(300);
@@ -188,9 +189,11 @@ $(document).ready(function () {
 
     $(document).on('click', '[data-action="gobal-search-button"]', function () {
         if ($('[data-action="gobal-search"]').val() == '') {
+            $('[data-action="gobal-search-error"]').html('Please enter your search term');
             $('[data-option="gobal-search"]').slideUp(300);
         } else {
             globalSearch($('[data-action="gobal-search"]').val());
+            $('[data-action="gobal-search-error"]').html('');
         }
     });
 
