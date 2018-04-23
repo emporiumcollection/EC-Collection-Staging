@@ -47,11 +47,6 @@
                     <p>Subscribe and get 10% off on your next reservation</p>
                     <form action="http://just-emarketing.com/app/index.php/lists/za243dkcsjde0/subscribe" method="post" accept-charset="utf-8" target="_blank">
                         <div class="row">
-							<div class="col-sm-6">
-                                <div class="form-group">
-                                    <input type="text" placeholder="Email" name="EMAIL" class="form-control" required="required"/>
-                                </div>
-                            </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <input type="text" placeholder="First Name" name="FNAME" class="form-control" required="required"/>
@@ -62,6 +57,11 @@
                                     <input type="text" placeholder="Last Name" name="LNAME" class="form-control" required="required"/>
                                 </div>
 
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="text" placeholder="Email" name="EMAIL" class="form-control" required="required"/>
+                                </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
