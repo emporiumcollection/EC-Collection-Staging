@@ -1950,8 +1950,10 @@ button.searchButton.btn:hover {
 .stream li.dcsns-twitter a, .modern.light .stream li .socicon{color:#ABA07C !important}
 .modern.light .stream li, .modern.light .stream li .section-intro{background:transparent !important}
 .modern.light .stream li, .modern.light .stream li .section-intro a, .modern.light .stream li .section-intro span{color: #ABA07C !important;}
-
-
+.modern .stream li .inner {
+    min-height: 190px;
+}
+.modern.light .stream li .section-intro a:hover, .modern.light .stream li .section-title a:hover, .modern.light .stream li .section-text a:hover, .stream li.dcsns-twitter .twitter-user a:hover strong{color:#ABA07C !important}
 
 
 
