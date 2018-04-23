@@ -170,7 +170,7 @@ $(document).ready(function () {
    * For Global Search
    */
 
-   $(document).on('click', '[data-action="clear-search"]', function () {  
+   $(document).on('click', '[data-action="clear-search"]', function () {
         $('[data-action="clear-search"]').hide();      
         $('[data-action="gobal-search"]').val('');
         $('[data-action="gobal-search-button"]').trigger( "click" );
