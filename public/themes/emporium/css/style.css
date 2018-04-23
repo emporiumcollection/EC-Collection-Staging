@@ -1945,3 +1945,13 @@ button.searchButton.btn:hover {
 #yottie_1 .yottie-widget-video-info-passed-time{color:#ccc !important}
 .yottie-widget-video-preview-thumbnail img{filter: brightness(0.5); -webit-filter: brightness(0.6);}
 .yottie-widget-video-preview-thumbnail img:after{content:""; position:absolute;left:0; top:0;height:100%;width:100%;}
+.stream li.dcsns-twitter .twitter-user a strong{color: #ABA07C !important; font-family: 'geomanist_regularregular', serif !important;}
+.modern .twitter-text{color:#fff !important;}
+.stream li.dcsns-twitter a{color:#ABA07C !important}
+.modern.light .stream li{background:transparent !important}
+
+
+
+
+
+
