@@ -18,13 +18,13 @@ class DestinationController extends Controller {
 		if($category_id!='')
 		{
 			//$fetchchildsQuery = \DB::select("select tb_categories.id, tb_categories.parent_category_id, tb_categories.category_name, tb_categories.category_image, tb_categories.category_alias from  tb_categories, tb_properties where tb_categories.category_published = '1' and tb_categories.parent_category_id = '".$category_id."' and tb_categories.id != '8' and FIND_IN_SET(tb_categories.id,tb_properties.property_category_id) group by tb_categories.id");
-            $fetchchilds = DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_alias')->where('category_published', 1)->where('parent_category_id', $category_id)->where('id', '!=', 8)->get();
+            $fetchchilds = DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_alias', 'category_youtube_channel_url')->where('category_published', 1)->where('parent_category_id', $category_id)->where('id', '!=', 8)->get();
 
             if(!empty($fetchchilds))
             {
 				$destarr = array();
 				foreach ($fetchchilds as $dest) {
-                    $subdest = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name')->where('parent_category_id', $dest->id)->get();
+                    $subdest = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_youtube_channel_url')->where('parent_category_id', $dest->id)->get();
 					$getcats = '';
 					$chldIds = array();
 					if (!empty($subdest)) {
@@ -60,9 +60,9 @@ class DestinationController extends Controller {
                 $res['errors'] = 'No child destination found!';
             }
             if($category_id>0){
-                $currentCate = DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_alias', 'category_instagram_tag')->where('category_published', 1)->where('id', $category_id)->first();
+                $currentCate = DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_alias', 'category_instagram_tag', 'category_youtube_channel_url')->where('category_published', 1)->where('id', $category_id)->first();
                 $res['current_category'] = $currentCate;
-                $currentParentCate = DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_alias')->where('category_published', 1)->where('id', $currentCate->parent_category_id)->first();
+                $currentParentCate = DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_alias', 'category_youtube_channel_url')->where('category_published', 1)->where('id', $currentCate->parent_category_id)->first();
                 $res['current_category'] = $currentCate;
                 $res['currentParentCate'] = $currentParentCate;
 				$res['path'] = implode('/',array_reverse($this->fetchcategoryaliaspath($category_id)));
