@@ -1947,8 +1947,9 @@ button.searchButton.btn:hover {
 .yottie-widget-video-preview-thumbnail img:after{content:""; position:absolute;left:0; top:0;height:100%;width:100%;}
 .stream li.dcsns-twitter .twitter-user a strong{color: #ABA07C !important; font-family: 'geomanist_regularregular', serif !important;}
 .modern .twitter-text{color:#fff !important;}
-.stream li.dcsns-twitter a{color:#ABA07C !important}
-.modern.light .stream li{background:transparent !important}
+.stream li.dcsns-twitter a, .modern.light .stream li .socicon{color:#ABA07C !important}
+.modern.light .stream li, .modern.light .stream li .section-intro{background:transparent !important}
+.modern.light .stream li, .modern.light .stream li .section-intro a, .modern.light .stream li .section-intro span{color: #ABA07C !important;}
 
 
 
