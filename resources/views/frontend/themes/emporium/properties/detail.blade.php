@@ -310,10 +310,10 @@
                     {{--*/ $vlink = explode('/',$propertyDetail['data']->video_link); $vimeoid = end($vlink); /*--}}
                     @if($propertyDetail['data']->video_link_type=="youtube")
                         {{--*/  $videolink = "https://www.youtube.com/embed/".$vimeoid; /*--}}
-                        <iframe src="{{$videolink}}" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        <iframe width="100%" height="680px;" src="{{$videolink}}" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                     @elseif($propertyDetail['data']->video_link_type=="vimeo")
                         {{--*/  $videolink = "https://player.vimeo.com/video/".$vimeoid; /*--}}
-                        <iframe src="{{$videolink}}" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        <iframe width="100%" height="680px;" src="{{$videolink}}" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                     @endif
 
                 @endif
