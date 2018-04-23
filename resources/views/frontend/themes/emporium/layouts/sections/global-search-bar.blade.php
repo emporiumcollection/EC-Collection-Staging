@@ -1,6 +1,7 @@
 <li>
     <div class="mobile-leftsearch">
-        <input type="text" class="form-control" data-action="gobal-search"/>
+        <div class="mobile-leftsearch-error" data-action="gobal-search-error"></div>
+        <input title="Thanks" type="text" class="form-control" data-action="gobal-search"/>
         <button style="right: 35px; display: none;" type="button" data-action="clear-search"><i class="fa fa-close"></i></button>
         <button type="button" data-action="gobal-search-button"><i class="fa fa-search"></i></button>
     </div>
