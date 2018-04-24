@@ -180,7 +180,7 @@ class PagessliderController extends Controller {
 			{
 				$return = 'pagesslider/update/'.$id.'?return='.self::returnUrl();
 			} else {
-				$return = 'pagesslider?return='.self::returnUrl();
+				$return = 'pagesslider?selpage='.$request->input('slider_page_id').'&return='.self::returnUrl();
 			}
 			// Insert logs into database
 			if($request->input('id') =='')
