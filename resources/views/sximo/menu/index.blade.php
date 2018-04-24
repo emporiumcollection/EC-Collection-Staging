@@ -93,7 +93,7 @@
 		 {!! Form::close() !!}	
 		 </div>
 		</div>
-		<div class="col-sm-7">
+		<div class="col-sm-7" style="margin-bottom:50px;">
 		<h5>
 				@if($row['menu_id'] =='')
 					Create New Menu
