@@ -770,7 +770,7 @@ border-radius:0;
   z-index: 9;
 }
 .sliderSection  .carousel-caption {
-  background: rgba(0,0,0,0.9);
+  background: rgba(37,37,37,0.9);
   bottom: 85px;
   opacity: .71;
   padding: 21px;
@@ -784,9 +784,9 @@ border-radius:0;
 .sliderSection  .carousel-caption p {
   color: #fff;
   font-family: 'geomanist_regularregular';
-  font-size: 20px;
+  font-size: 18px;
   font-weight: lighter;
-  line-height: 31px;
+  line-height: 28px;
   margin-top: 13px;
 }
 .sliderSection  .carousel-caption h1 {
