@@ -230,7 +230,7 @@ class SliderController extends Controller {
 			{
 				$return = 'slider/update/'.$id.'?return='.self::returnUrl();
 			} else {
-				$return = 'slider?return='.self::returnUrl();
+				$return = 'slider?selcat='.$request->input('slider_category').'&return='.self::returnUrl();
 			}
 
 			// Insert logs into database
