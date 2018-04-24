@@ -293,14 +293,7 @@
 					dataGridHtml += '<img src="' + obj.img_src + '" />';
 					dataGridHtml +='<a href="'+obj.property_slug+'" class="content-overlay">';
 					dataGridHtml +='<h5>'+obj.property_name+'</h5>';
-					if(obj.category_name!=undefined && obj.category_name!=""){
-						dataGridHtml +='<p>From € '+obj.price+' '+obj.category_name+'</p>';
-					}else {
-						dataGridHtml +='<p>From € '+obj.price+'</p>';
-					}
-
 					dataGridHtml +='</a>';
-					dataGridHtml +='<div class="pricelabel">From EUR '+obj.price+' / night</div>';
 					dataGridHtml +='</figure>';
 					dataGridHtml +='<div class="title">';
 					dataGridHtml +='<h3><a href="'+BaseURL+'/'+obj.property_slug+'">'+obj.property_name+'</a></h3>';
