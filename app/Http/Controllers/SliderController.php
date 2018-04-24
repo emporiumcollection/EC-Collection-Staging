@@ -201,7 +201,7 @@ class SliderController extends Controller {
 			if($request->input('id') =='')
 			{
 				$data['created'] = date('y-m-d h:i:s');
-				$check_ordering = \DB::table('tb_sliders')->orderBy('sort_num', 'desc')->first();
+				$check_ordering = \DB::table('tb_sliders')->where('slider_category',$request->input('slider_category'))->orderBy('sort_num', 'desc')->first();
 				if(!empty($check_ordering)){
 					$data['sort_num'] = $check_ordering->sort_num + 1;
 				}
@@ -266,7 +266,7 @@ class SliderController extends Controller {
 			
 			if(!empty($exitdel))
 			{
-				$nextEntries = \DB::table('tb_sliders')->where('sort_num', '>', $exitdel->sort_num)->orderBy('sort_num','asc')->get();
+				$nextEntries = \DB::table('tb_sliders')->where('slider_category',$exitdel->slider_category)->where('sort_num', '>', $exitdel->sort_num)->orderBy('sort_num','asc')->get();
 				if(!empty($nextEntries))
 				{
 					$next_order = $exitdel->sort_num;
@@ -322,7 +322,7 @@ class SliderController extends Controller {
 			{
 				if($action=='up')
 				{
-					$previous = \DB::table('tb_sliders')->where('sort_num', '>', $exist->sort_num)->orderBy('sort_num','asc')->first();
+					$previous = \DB::table('tb_sliders')->where('slider_category',$exist->slider_category)->where('sort_num', '>', $exist->sort_num)->orderBy('sort_num','asc')->first();
 					if(!empty($previous))
 					{
 						$previous_order = $previous->sort_num - 1;
@@ -332,7 +332,7 @@ class SliderController extends Controller {
 				}
 				elseif($action=='down')
 				{
-					$next = \DB::table('tb_sliders')->where('sort_num', '<', $exist->sort_num)->orderBy('sort_num','desc')->first();
+					$next = \DB::table('tb_sliders')->where('slider_category',$exist->slider_category)->where('sort_num', '<', $exist->sort_num)->orderBy('sort_num','desc')->first();
 					if(!empty($next))
 					{
 						$next_order = $next->sort_num + 1;
