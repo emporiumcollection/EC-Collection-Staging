@@ -56,7 +56,7 @@ $(document).ready(function () {
     $(document).on('click', '[data-action="search-by-date"]', function () {
         hideAllOption();
         var data = {};
-        data.main_title = 'Search By Date';
+        data.main_title = 'Search availability';
         data.sub_title = 'Home';
         data.id = 0;
         putDataOnLeft(data);
@@ -518,7 +518,7 @@ function renderMenu(dataObj) {
     }
 
     var data = {};
-    data.main_title = 'Company';
+    data.main_title = 'Company & Info';
     data.sub_title = 'Home';
     data.id = 0;
     data.type = 'home';
