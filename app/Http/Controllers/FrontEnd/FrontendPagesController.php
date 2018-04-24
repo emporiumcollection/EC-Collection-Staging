@@ -101,6 +101,9 @@ class FrontendPagesController extends Controller {
 		if (!empty($scprops)) {
 			$socialpropertiesArr = $scprops;
 		}
+		 usort($socialpropertiesArr, function($a, $b) {
+			return trim($a->property_name) > trim($b->property_name);
+		});
 		$this->data['socialpropertiesArr'] = $socialpropertiesArr;
 		
 		$this->data['propertiesArr'] = \DB::table('tb_properties')->select('property_name', 'property_slug')->where('property_status', 1)->where(function ($query) { $query->where('social_twitter', '!=', '')->orWhere('social_facebook', '!=', '')->orWhere('social_youtube', '!=', '')->orWhere('social_vimeo', '!=', '')->orWhere('social_pinterest', '!=', '')->orWhere('social_google', '!=', ''); })->get();
