@@ -755,6 +755,7 @@ border-radius:0;
     object-fit: cover;
     object-position: center 0px;
     width: 100%;
+    background-color: #252525;
 }
 .sliderSection .carousel-control {
   right: 0px;
@@ -783,7 +784,7 @@ border-radius:0;
 }
 .sliderSection  .carousel-caption p {
   color: #fff;
-  font-family: 'geomanist_regularregular';
+  font-family: GeomanistLight;
   font-size: 18px;
   font-weight: lighter;
   line-height: 28px;
@@ -791,8 +792,8 @@ border-radius:0;
 }
 .sliderSection  .carousel-caption h1 {
     color: #ABA07C;
-    font-family: ACaslonPro-Regular;
-    font-size: 32px;
+    font-family: GeomanistLight;
+    font-size: 26px;
     font-style: normal;
     margin: 0px;
     line-height: 1.42857143;
