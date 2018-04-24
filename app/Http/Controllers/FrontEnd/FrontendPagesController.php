@@ -93,9 +93,9 @@ class FrontendPagesController extends Controller {
 	{
 		$socialpropertiesArr = array();
 		if (trim($request->input('sp'))!='' && !is_null($request->input('sp'))) {
-			$scprops = \DB::table('tb_properties')->select('property_name', 'social_twitter', 'social_facebook','social_google','social_youtube','social_pinterest','social_vimeo')->where('property_slug', trim($request->input('sp')))->where('property_status', 1)->orderBy('property_name','asc')->first();
+			$scprops = \DB::table('tb_properties')->select('property_name', 'social_twitter', 'social_facebook','social_google','social_youtube','social_pinterest','social_vimeo')->where('property_slug', trim($request->input('sp')))->where('property_status', 1)->where(function ($query) { $query->where('social_twitter', '!=', '')->orWhere('social_facebook', '!=', '')->orWhere('social_youtube', '!=', '')->orWhere('social_vimeo', '!=', '')->orWhere('social_pinterest', '!=', '')->orWhere('social_google', '!=', ''); })->orderBy('property_name','asc')->first();
 		} else {
-			$scprops = \DB::table('tb_properties')->select('property_name', 'social_twitter', 'social_facebook','social_google','social_youtube','social_pinterest','social_vimeo')->where('property_status', 1)->orderBy('property_name','asc')->first();
+			$scprops = \DB::table('tb_properties')->select('property_name', 'social_twitter', 'social_facebook','social_google','social_youtube','social_pinterest','social_vimeo')->where('property_status', 1)->where(function ($query) { $query->where('social_twitter', '!=', '')->orWhere('social_facebook', '!=', '')->orWhere('social_youtube', '!=', '')->orWhere('social_vimeo', '!=', '')->orWhere('social_pinterest', '!=', '')->orWhere('social_google', '!=', ''); })->orderBy('property_name','asc')->first();
 		}
 
 		if (!empty($scprops)) {
