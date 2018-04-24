@@ -32,6 +32,9 @@
             <ul class="mobilemenulist" data-option="home">
                 <li><a class="cursor">Hotel Social Channels</a></li>
 				@if(!empty($propertiesArr))
+				{{--*/ usort($propertiesArr, function($a, $b) {
+						return trim($a->property_name) > trim($b->property_name);
+				}); /*--}}
 					<li>
 						<ul class="mobilesublinks">
 							@foreach($propertiesArr as $property)
