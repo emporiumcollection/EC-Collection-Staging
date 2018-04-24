@@ -171,8 +171,8 @@ body .ui-widget.ui-widget-content li i.iconsheet {
     margin-left: 30px;
 }
 #filtersearchpopup ul ul.mobilemenulist li a:hover {
-    background-color: #89837B;
-    border-left: 4px solid #a1a39c;
+    background-color: #252525;
+    border-left: 4px solid #ABA07C;
     color: #fff;
     outline: 0;
     text-decoration: none;
