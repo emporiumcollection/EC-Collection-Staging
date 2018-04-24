@@ -310,7 +310,6 @@
 	width: 100%;
 	overflow: hidden;
 	position: relative;
-	margin-bottom: 20px;
 }
 /* Filter */
 #wall {
@@ -337,7 +336,7 @@
 }
 .dcsns-toolbar .filter .link-all {
 	color: #fff;
-	height: 28px;
+	height: 21px;
 	padding: 7px 7px 4px 7px;
 	text-shadow: 0 0 1px #555;
 	font-weight: bold;

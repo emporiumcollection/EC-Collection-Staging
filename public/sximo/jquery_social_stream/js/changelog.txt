@@ -1,3 +1,9 @@
+v1.6.2 10/07/2017
+Updated: Facebook post link if no image
+Updated: Facebook limit
+Updated: Facebook API v2.8
+Updated: Facebook https images
+
 v1.6.1 6/04/2017
 Updated: Twitter images
 Updated: Remove comments if using posts feed

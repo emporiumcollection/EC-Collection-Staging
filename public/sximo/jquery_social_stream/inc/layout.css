@@ -102,7 +102,9 @@ input[type="submit"]:focus, input[type="button"]:focus {
 /* LAYOUT */
 /* ----------------------------------------- */
 body {
+	background: #dfdfdf url(images/noize.png) repeat 100% 0;
 	color: #343434;
+	font-family: 'PTSansRegular';
 	font-size: 14px;
 }
 a {
@@ -278,11 +280,11 @@ ul {
 	margin-bottom: 1.5em;
 }
 ul li {
-	/*background: url(images/bullet.png) no-repeat  0px 1px;
+	background: url(images/bullet.png) no-repeat  0px 1px;
 	margin-bottom:5px;
 	padding-left:20px;
 	font-size:13px;
-	line-height: 1.5em;*/
+	line-height: 1.5em;
 }
 ol {
 	list-style: decimal;
