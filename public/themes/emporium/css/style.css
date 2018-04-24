@@ -792,11 +792,11 @@ border-radius:0;
 .sliderSection  .carousel-caption h1 {
     color: #ABA07C;
     font-family: ACaslonPro-Regular;
-    font-size: 36px;
+    font-size: 32px;
     font-style: normal;
     margin: 0px;
     line-height: 1.42857143;
-    font-weight: bold;
+    font-weight: normal;
 }
 .sliderSection .carousel-caption h1 a, .sliderSection .carousel-caption h1 a:hover {
   color: #ABA07C;
