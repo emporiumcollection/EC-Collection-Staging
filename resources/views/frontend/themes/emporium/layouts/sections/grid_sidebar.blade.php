@@ -31,12 +31,12 @@
             <ul class="mobilemenulist" data-option="home">
                 <li><a class="cursor" data-action="select-filter">FILTER BY PRICE</a></li>
                 <li><a class="cursor" data-action="select-collection">SEARCH OUR COLLECTION</a></li>
-                <li><a class="cursor" data-action="search-by-date">SEARCH BY DATE</a></li>
-                <li><a class="cursor" data-action="select-destination" data-id="0">SELECT YOUR DESTINATION</a></li>
-                <li><a class="cursor" data-action="select-experience" >SELECT YOUR EXPERIENCE</a></li>
+                <li><a class="cursor" data-action="search-by-date">Search availability</a></li>
+                <li><a class="cursor" data-action="select-destination" data-id="0">Search by destination</a></li>
+                <li><a class="cursor" data-action="select-experience" >Search by Experience</a></li>
                 <!--li><a href="javascript:void(0)" >PERSONALIZED SERVICE</a></li-->
                 <!--<li><a class="cursor" data-action="company">COMPANY</a></li>-->
-                <li><a class="cursor" data-action="select-menu" data-position="business" data-id="0">COMPANY</a></li>
+                <li><a class="cursor" data-action="select-menu" data-position="business" data-id="0">Company & Info</a></li>
             </ul>
             <ul class="mobilemenulist hide" data-option="search-our-collection">
                 {{--*/ $colection_menus = SiteHelpers::menus('top') /*--}}
