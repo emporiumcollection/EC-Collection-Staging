@@ -405,8 +405,8 @@ ul.EVMenu li.smallEV {
 
 .book-with-us-tittles h2 {
     font-family: 'ACaslonPro-Regular', serif;
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 15px;
+    font-weight: normal;
     color: #ABA07C;
     margin-bottom: 0;
     margin-top: 0;
@@ -417,7 +417,7 @@ ul.EVMenu li.smallEV {
 .side-bar-why-book-with-us ul li{list-style:none; text-align:left;}
 .side-bar-why-book-with-us ul h3 {
     font-size: 14px;
-    font-weight: bold;
+    font-weight: normal;
     margin-bottom: 0;
 	padding-left:25px;
 	color:#ABA07C;
@@ -1261,19 +1261,19 @@ border-radius:0;
 .mobilemenu .block-content.content span:nth-child(3){top:23px;}
 .mobilenavheader{padding:15px 25px; }
 .mobilemenulist li{border-bottom:1px solid #414246;}
-.mobilemenulist li a{padding:15px 25px; display:block; color:#fff; text-transform:uppercase; font-size:15px; transition: all .3s ease 0s;-webkit-transition: all .3s ease 0s;}
-.mobilemenulist li a.scrollpage.active, .mobilemenulist li a:hover{background-color: #89837B; border-left: 4px solid #a1a39c;  color: #fff;outline: 0; text-decoration: none;}
+.mobilemenulist li a{padding:15px 25px; display:block; color:#fff; text-transform:uppercase; font-size:13px; transition: all .3s ease 0s;-webkit-transition: all .3s ease 0s;}
+.mobilemenulist li a.scrollpage.active, .mobilemenulist li a:hover{background-color: #89837B; border-left: 4px solid #ABA07C;;  color: #fff;outline: 0; text-decoration: none;}
 .mobilemenulist li .navheadimage a:hover{border:0;}
 .mobilemenulist li a.yellowbtn{background:#aba00b }
 .mobilemenulist li p{padding:15px 25px; color:#fff;}
 .mobilemenulist li p.pdlr25px{padding-left:25px; padding-right:25px;}
 .mobilemenulist li p a{padding:3px; display: inline-block; text-transform:capitalize;}
 .mobilemenulist .mobile-leftsearch{position:relative; padding:15px 25px;}
-.mobilemenulist .mobile-leftsearch input[type=text]{border:0; color:#fff; padding:5px 30px 5px 5px; border:0; border-radius:0; background:none; font-size:14px;}
+.mobilemenulist .mobile-leftsearch input[type=text]{border:0; color:#ABA07C;; padding:5px 30px 5px 5px; border:0; border-radius:0; background:none; font-size:14px;text-transform: uppercase;}
 .mobilemenulist .mobile-leftsearch input[type=text]:focus{border:0; outline:0; box-shadow:none;}
 .mobilemenulist .mobile-leftsearch button{position:absolute; right:10px; top:22px; border:0; background:none;}
 .mobilemenulist .mobile-leftsearch button i{font-size:16px; color:#fff}
-.mobilemenu-inner .bottomlink{background:#252525; padding:15px 15px 15px 25px; color:#fff; font-size:14px;}
+.mobilemenu-inner .bottomlink{background:#252525; padding:15px 15px 15px 25px; color:#fff; font-size:13px;}
 .mobilemenu-inner .bottomlink a{color:#fff; text-decoration:underline;}
 .mobilenavheader h3{font-size:16px; color:#fff; margin:0 0 25px 0}
 .searchourcollectonnav, .searchbydatenav, .mobilemainnav, .selectdestinationnav, .selectafricanav, .selectexperiencenav, .companynav, .selectafricanavchild, .restaurantnav, .searchbyfilternav, .destinationresultnav{display:none;}
