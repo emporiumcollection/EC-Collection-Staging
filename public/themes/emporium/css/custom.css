@@ -108,7 +108,7 @@ input.error {
     padding-left: 0;
     padding-top: 0;
     top: 0;
-    background-color: rgba(37, 37, 37, 0.2);
+    background-color: rgba(37, 37, 37, 0.35);
 }
 
 body .ui-widget.ui-widget-content {
