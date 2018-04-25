@@ -10,8 +10,7 @@
   left: 0;
   height: 100%;
   width: 100%;
-  background: #000;
-  opacity: 0.2;
+  background: rgba(37,37,37,0.3);
   content: "";
 }
 .luxuryHotelSlider .carousel-inner .item img {
