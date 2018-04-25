@@ -7,6 +7,36 @@
 @section('meta_description', $pageMetadesc)
 {{-- For Page's Content Part --}}
 @section('content')
+
+<section class="sliderSection termConditionSlider">
+	@if(!empty($pageslider))
+	  <div id="restaurantSlider" class="carousel" data-ride="carousel">
+		<!-- Indicators -->
+		<!-- Wrapper for slides -->
+		<div class="carousel-inner">
+			@foreach($pageslider as $key => $slider_row)
+			  <div class="item {{($key == 0)? 'active' : ''}}" style="background:url({{url('uploads/slider_images/'.$slider_row->slider_img)}}) center center no-repeat; background-size:cover;">
+				<div class="carousel-caption">
+				  <h1>{{$slider_row->slider_title}}</h1>
+				  <p>{{$slider_row->slider_description}}</p>
+				  <button type="button" class="button viewGalleryBtn termAndConditionBtn">Contact us</button>
+				</div>
+			  </div>
+			@endforeach
+		</div>
+
+		<!-- Left and right controls -->
+		<a class="left carousel-control" href="#restaurantSlider" data-slide="prev">
+		  <img src="{{ asset('themes/emporium/images/editorial-left-arrow.png') }}" alt="Icon">
+		</a>
+		<a class="right carousel-control" href="#restaurantSlider" data-slide="next">
+		  <img src="{{ asset('themes/emporium/images/editorial-right-arrow.png') }}" alt="Icon">
+		</a>
+	  </div>
+	  <span class="scrollNextDiv"><a class="scrollpage" href="#divWhoiam">Scroll Down</a></span>
+	@endif
+</section>
+
 <section style="background-color:#f7f7f7;">
     <div class="container-fluid">
     <div class="row">
@@ -35,7 +65,7 @@
                <div class="hotelInfoSection">
                     <form>
                         <div class="row">
-                            <h1>Advertisements Package</h1>
+                            <h1>Advertising Packages</h1>
                             <div class="col-md-6 col-sm-12 no-padding-left">
                                 <div class="form-group">
                                     
