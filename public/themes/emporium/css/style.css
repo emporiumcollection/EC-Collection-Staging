@@ -720,13 +720,13 @@ border-radius:0;
 /* Footer */
 #footer{background:#252525; padding:30px 10px; border-top:1px solid;}
 .footer-coloumn{margin-bottom:15px; padding-right:50px}
-.footer-coloumn h2{font-size:15px; margin:20px 0;text-transform: uppercase; font-weight:400; color:#ABA07C;font-family: 'ACaslonPro-Regular', serif;}
+.footer-coloumn h2{font-size:14px; margin:20px 0;text-transform: uppercase; font-weight:400; color:#ABA07C;font-family: 'ACaslonPro-Regular', serif;}
 .footer-nav-menu li{margin:5px 0;}
-.footer-nav-menu li a{font-size:16px;color: #fff; text-decoration: none;}
+.footer-nav-menu li a{font-size:14px;color: #fff; text-decoration: none;}
 .footer-nav-menu li a:hover{color:#ABA07C;}
-.footer-coloumn p{font-size:14px; color:#fff; line-height:24px;}
+.footer-coloumn p{font-size:14px; color:#fff; line-height:21px;}
 .newsletter input[type=text]{border:0; border-bottom:1px solid #414246; box-shadow:none; border-radius:0; background:none; padding-left:0;}
-.newsletter-btn{border:0; background:#ABA07C; font-size:14px; font-weight:600; color:#fff; padding:8px 25px;-webkit-transition: all .3s ease;-o-transition: all .3s ease; transition: all .3s ease;}
+.newsletter-btn{border:0; background:#ABA07C; font-size:14px; font-weight:400; color:#fff; padding:8px 25px;-webkit-transition: all .3s ease;-o-transition: all .3s ease; transition: all .3s ease;}
 .newsletter-btn:hover{background:#1e2023}
 .social-menu li{float:left; margin:0 5px;}
 .social-menu li a{background:#ABA07C; color:#fff; display:block; padding:5px 10px; font-size:18px;-webkit-transition: all .3s ease;-o-transition: all .3s ease; transition: all .3s ease;}
