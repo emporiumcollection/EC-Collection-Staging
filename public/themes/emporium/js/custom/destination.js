@@ -114,7 +114,7 @@ function renderDestination(dataObj) {
         }
         destinationHtml += '<li>';
         destinationHtml += '<div class="navheadimage">';
-        destinationHtml += '<img src="'+imagePath+'" alt="" class="mCS_img_loaded">';
+        destinationHtml += '<img src="'+imagePath+'" alt="" class="mCS_img_loaded desaturate">';
         destinationHtml += '<div class="headingoverlay"><span class="destinationTitle">' + dataObj.current_category.category_name + '<br><span class="hashTag">' + dataObj.current_category.category_instagram_tag + '</span></span></div></div>';
         destinationHtml += '</li>';
         destinationHtml += '<li><ul class="mobilesublinks">';
@@ -177,7 +177,7 @@ function renderDestinationSocialYoutube(dataObj) {
         }
         destinationHtml += '<li>';
         destinationHtml += '<div class="navheadimage">';
-        destinationHtml += '<img src="'+imagePath+'" alt="" class="mCS_img_loaded">';
+        destinationHtml += '<img src="'+imagePath+'" alt="" class="mCS_img_loaded desaturate">';
         destinationHtml += '<div class="headingoverlay"><span class="destinationTitle">' + dataObj.current_category.category_name + '<br><span class="hashTag">' + dataObj.current_category.category_instagram_tag + '</span></span></div></div>';
         destinationHtml += '</li>';
         destinationHtml += '<li><ul class="mobilesublinks">';
@@ -236,7 +236,7 @@ function renderExperience(dataObj) {
         }
         experienceHtml += '<li><div class="navheadimage">';
         experienceHtml += '<a href="'+BaseURL+'/luxury_experience/'+val.category_alias+'">';
-        experienceHtml += '<img src="'+imagePath+'" alt="" class="mCS_img_loaded">';
+        experienceHtml += '<img src="'+imagePath+'" alt="" class="mCS_img_loaded desaturate">';
         experienceHtml += '<div class="headingoverlay"><span class="destinationTitle">' + val.category_name + '</span></div>';
         experienceHtml += '</a></div></li>';
     });
