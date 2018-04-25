@@ -137,7 +137,7 @@
 							</div>
 					</div>
 					<div class="form-group ">
-						<div class="col-sm-12" id="contractSignCheck">
+						<div class="col-sm-12" id="contractSignCheckmain">
 							<label class="col-sm-2" data-toggle="modal" data-target="#myModal">
 							<input type="checkbox"  id="contractSignCheck" name="contractSignCheck" value="">
 							</label>
@@ -364,6 +364,7 @@
 		 if($('#userTypeAdvertiser').prop("checked")==true){
 
 		 	 $('#personalizeCheck').hide();
+			 $('#contractSignCheckmain').hide();
 		 	
 		 }
 		 var uservar = $(this).val();
