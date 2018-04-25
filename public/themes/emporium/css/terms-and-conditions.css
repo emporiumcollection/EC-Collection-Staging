@@ -102,8 +102,8 @@
 }
 .termAndConditionSec h5 {
     color: #ABA07C;
-    font-size: 24px;
-    line-height: 30px;
+    font-size: 18px;
+    line-height: 24px;
     text-transform: capitalize;
     font-family: 'GeomanistLight', sans-serif;
     font-weight: 300;
@@ -112,11 +112,11 @@
 }
 .termAndConditionSec p {
     font-family:'GeomanistLight', sans-serif;
-    font-size: 15px;
+    font-size: 14px;
     line-height: normal;
 	color:#fff;
 	line-height:26px;
-	margin-bottom:15px;
+	margin-bottom:1px;
 }
 .termAndConditionSec p a{color:#ABA07C;}
 .termAndConditionSec p a:hover{color:#fff;}
