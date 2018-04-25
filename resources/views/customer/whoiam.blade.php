@@ -353,12 +353,14 @@
 		 if($('#userTypeHotel').prop("checked")==true){
 
 		 	 $('#personalizeCheck').hide();
+			 $('#contractSignCheckmain').show();
 		 	
 		 }
 
 		 if($('#usertypeGuest').prop("checked")==true){
 
 		 	 $('#personalizeCheck').show();
+			 $('#contractSignCheckmain').hide();
 		 	
 		 }
 		 if($('#userTypeAdvertiser').prop("checked")==true){
