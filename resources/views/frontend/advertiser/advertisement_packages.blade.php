@@ -163,7 +163,7 @@
     <link href="{{ asset('themes/emporium/css/calendar.css') }}" rel="stylesheet">
     <link href="{{ asset('themes/emporium/css/terms-and-conditions.css') }}" rel="stylesheet">
     <link href="{{ asset('themes/emporium/css/membership-css.css') }}" rel="stylesheet">
-     
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 @endsection
 
 {{-- For custom style  --}}
@@ -251,6 +251,7 @@
     @parent
     <script src="{{ asset('themes/emporium/js/smooth-scroll.js') }}"></script>
     <script src="{{ asset('sximo/js/parsley.min.js')}}" type="text/javascript"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 
 @endsection
 
