@@ -489,7 +489,7 @@
 		  <div class="row">
 			  <div class="col-xs-12 text-center">
 				  <div class="gallyPopupHeader">
-					  <a href="{{URL::to('')}}"><img src="{{ asset('themes/emporium/images/logo.png') }}" alt="Emporium Voyage" class="img-responsive mCS_img_loaded"></a>
+					  <a href="{{URL::to('')}}"><img src="{{ asset('themes/emporium/images/emporium-voyage-logo.png') }}" alt="Emporium Voyage" class="img-responsive mCS_img_loaded"></a>
 				  </div>
 			  </div>
 			  <div class="col-md-2 col-sm-3">

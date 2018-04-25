@@ -7,7 +7,7 @@
     <div class="mobilemenu-inner">
         <div class="mobilemainnav openmobilemenu">
             <div class="mobilenavheader " data-option="home"><a href="{{url('/')}}"><img
-                            src="{{ asset('themes/emporium/images/logo.png')}}" alt="Emporium Voyage"
+                            src="{{ asset('themes/emporium/images/emporium-voyage-logo.png')}}" alt="Emporium Voyage"
                             class="img-responsive"/></a></div>
             <div class="mobilenavheader hide" data-option="child-global">
                 <h3 data-option-title="global"></h3>

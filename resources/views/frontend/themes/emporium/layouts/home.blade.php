@@ -64,7 +64,7 @@
     <header id="header">
         <!--<i class="fa fa-bars hamburgMenu" aria-hidden="true"></i>-->
         <div class="logo-wrapper">
-            <a href="{{url('/')}}"><img src="{{ asset('themes/emporium/images/logo.png') }}"
+            <a href="{{url('/')}}"><img src="{{ asset('themes/emporium/images/emporium-voyage-logo.png') }}"
                                         alt="Emporium Voyage"/></a>
         </div>
         <div class="header-content">
