@@ -1966,9 +1966,9 @@ button.searchButton.btn:hover {
 }
 .modern.light .stream li .section-intro a:hover, .modern.light .stream li .section-title a:hover, .modern.light .stream li .section-text a:hover, .stream li.dcsns-twitter .twitter-user a:hover strong{color:#ABA07C !important}
 
-
+/*
 img.desaturate {
 	filter: grayscale(100%);
-}
+}*/
 
 .image-overaly-bg{content:""; position:absolute; left:0; right:0; top:0; width:100%; height:100%;background:rgba(37,37,37,0.25)}
