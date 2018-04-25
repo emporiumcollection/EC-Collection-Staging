@@ -34,7 +34,6 @@
 }
 .luxuryHotelSlider .carousel-caption {
   background-color: rgba(37, 37, 37, 0.9);
-  opacity: .9;
   bottom: 85px;
   padding: 21px;
   position: absolute;
@@ -113,7 +112,7 @@
 .HamYardHotelInner {
     background-blend-mode: multiply;
     filter: brightness(.9);
-    background-color: #292b2e;
+    background-color: #252525;
     background-image: url(../images/ham-yard-hotel-london-united-kingdom-15.jpg); 
     background-position: center center;
     background-repeat: no-repeat;
