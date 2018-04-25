@@ -41,7 +41,7 @@
                                     
                                     <input type="hidden" name="ads_pkg_id"> 
                                     {!! Form::label('ads_category_id', '*Choose Advertise Category')  !!}
-                                    {!! Form::select('ads_category_id', $category_list, null,['class' => 'form-control select2', 'id'=>'ads_category_id'])  !!}
+                                    {!! Form::select('ads_category_id', $category_list, null,['class' => 'form-control', 'id'=>'ads_category_id'])  !!}
                                     
                                 </div>
                             </div>
