@@ -343,12 +343,14 @@ $(document).ready(function () {
 
         addToCartAdvert();
     });
+	
+	$('#ads_category_id').select2();
 
     
     //For set Defualt Start Date 
     document.getElementById("ads_start_date").valueAsDate = new Date(<?php echo date("Y, n - 1, d, H, i, s"); ?>);
 	
-	$('#ads_category_id').select2();
+	
 
 });
 
