@@ -123,10 +123,10 @@
                   <a href="mailto:management@emporium-voyage.com">management@emporium-voyage.com</a>
                   <a href="mailto:info@emporium-voyage.com">info@emporium-voyage.com</a>
                   <ul class="list-inline vegasSocialUl" style="margin-left:0px;">
-                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                    <li><a href="https://www.facebook.com/emporiumvoyage/"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                    <li><a href="https://fr.linkedin.com/company/emporiumvoyage"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                    <li><a href="https://www.pinterest.cl/emporiumvoyage/?redirected=1"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+                    <li><a href="https://www.instagram.com/emporiumvoyage/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
                   </ul>
               </div>
           </div>
