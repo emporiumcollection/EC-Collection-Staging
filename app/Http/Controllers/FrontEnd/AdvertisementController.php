@@ -25,6 +25,9 @@ class AdvertisementController extends Controller {
         
 		$category_list = \DB::table('tb_categories')->select('category_name','id')->get();
 		$this->data['category_list'][] = ' - Category - ';
+		 usort($category_list, function($a, $b) {
+			return trim($a->category_name) > trim($b->category_name);
+		});
 		foreach ($category_list as $key => $categoryObj) {
 			$this->data['category_list'][$categoryObj->id] = $categoryObj->category_name;
 		}
