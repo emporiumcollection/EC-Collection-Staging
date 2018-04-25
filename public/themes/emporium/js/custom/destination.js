@@ -92,7 +92,7 @@ function renderDestination(dataObj) {
         //return false;
     }
     var data = {};
-    data.main_title = 'Select By Destination';
+    data.main_title = 'Search By Destination';
     data.sub_title = 'Home';
     data.id = 0;
     data.type = 'home';
@@ -155,7 +155,7 @@ function renderDestinationSocialYoutube(dataObj) {
         //return false;
     }
     var data = {};
-    data.main_title = 'Select By Destination';
+    data.main_title = 'Search By Destination';
     data.sub_title = 'Home';
     data.id = 0;
     data.type = 'home';
@@ -217,7 +217,7 @@ function renderDestinationSocialYoutube(dataObj) {
 function renderExperience(dataObj) {
 
     var data = {};
-    data.main_title = 'Select By Experience';
+    data.main_title = 'Search By Experience';
     data.sub_title = 'Home';
     data.id = 0;
     if (dataObj.current_category != undefined) {
