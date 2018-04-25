@@ -10,7 +10,7 @@
   left: 0;
   height: 100%;
   width: 100%;
-  background: rgba(37,37,37,0.3);
+  background: rgba(37,37,37,0.35);
   content: "";
 }
 .luxuryHotelSlider .carousel-inner .item img {
@@ -365,7 +365,6 @@
 #luxury-hotel-selection .hotel-card:hover .pricelabel{opacity:0;-webkit-opacity:0;}
 #luxury-hotel-selection.search-result .hotel-card:hover .content-overlay{padding-top: 70px;
     background: rgba(37,37,37,0.8);
-    margin: 20px;
     width: 70%;
     height: 66%;
     left: 15%;
