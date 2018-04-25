@@ -41,7 +41,7 @@
                                     
                                     <input type="hidden" name="ads_pkg_id"> 
                                     {!! Form::label('ads_category_id', '*Choose Advertise Category')  !!}
-                                    {!! Form::select('ads_category_id', $category_list, null,['class' => 'form-control'])  !!}
+                                    {!! Form::select('ads_category_id', $category_list, null,['class' => 'form-control select2', 'id'=>'ads_category_id'])  !!}
                                     
                                 </div>
                             </div>
@@ -346,7 +346,8 @@ $(document).ready(function () {
     
     //For set Defualt Start Date 
     document.getElementById("ads_start_date").valueAsDate = new Date(<?php echo date("Y, n - 1, d, H, i, s"); ?>);
-
+	
+	$('#ads_category_id').select2();
 
 });
 
