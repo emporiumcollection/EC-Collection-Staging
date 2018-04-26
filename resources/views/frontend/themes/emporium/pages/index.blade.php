@@ -1,10 +1,10 @@
 @extends('frontend.themes.emporium.layouts.home')
 {{--  For Title --}}
-@section('title', 'Home')
+@section('title', 'Emporium Voyage - Your Ultimate Luxury Travel Partner')
 {{-- For Meta Keywords --}}
-@section('meta_keywords', '')
+@section('meta_keywords', 'Emporium Voyage, Luxury Hotel Booking, Luxury 5 Star Hotels')
 {{-- For Meta Description --}}
-@section('meta_description', '')
+@section('meta_description', 'Emporium Voyage - Your Ultimate Luxury Travel Partner')
 {{-- For Page's Content Part --}}
 @section('content')
     <!-- slider starts here -->
