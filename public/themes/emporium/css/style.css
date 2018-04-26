@@ -1973,7 +1973,7 @@ img.desaturate {
 }*/
 
 .image-overaly-bg{content:""; position:absolute; left:0; right:0; top:0; width:100%; height:100%;background:rgba(37,37,37,0.25)}
-.eapps-instagram-feed-posts-item-image:after{content: "";
+.eapps-instagram-feed-posts-item-image-landscape .eapps-instagram-feed-posts-item-image:after{content: "";
     position: absolute;
     height: 100%;
     width: 100%;
