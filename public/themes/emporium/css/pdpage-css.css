@@ -406,6 +406,16 @@ z-index:999;
 .roomSuitSlider .terraceSuiteSlider .item:hover > img {
   opacity: 0.2;
 }
+
+.roomSuitSlider .terraceSuiteSlider .item:after{
+position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(37,37,37,0.35);
+    content: ""; z-index:0;}
+
 .roomSuitSlider .terraceSuiteSlider .item a {
   position: absolute;
   top: 50%;
