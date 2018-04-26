@@ -835,8 +835,8 @@ position: absolute;
   }
 }
 /* 26-04-2018 */
-.eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-image{border:2px solid #333;}
-.eapps-instagram-feed-posts-item-image-landscape .eapps-instagram-feed-posts-item-image:after{content: "";
+
+.eapps-instagram-feed-posts-item-image-wrapper:after{content: "";
     position: absolute;
     height: 100%;
     width: 100%;
