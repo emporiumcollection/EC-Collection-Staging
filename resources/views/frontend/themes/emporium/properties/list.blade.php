@@ -1,10 +1,10 @@
 @extends('frontend.themes.emporium.layouts.home')
 {{--  For Title --}}
-@section('title', 'List Page')
+@section('title', 'Emporium Voyage Luxury Hotel Collection')
 {{-- For Meta Keywords --}}
-@section('meta_keywords', '')
+@section('meta_keywords', 'Emporium Voyage Luxury Hotel Collection')
 {{-- For Meta Description --}}
-@section('meta_description', '')
+@section('meta_description', 'Emporium Voyage Luxury Hotel Collection')
 {{-- For Page's Content Part --}}
 @section('content')
     <!-- Restaurant slider starts here -->
