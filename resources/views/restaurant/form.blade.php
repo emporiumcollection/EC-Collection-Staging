@@ -88,6 +88,16 @@
 						
 					</div>
 				</div> 
+				
+					<div class="form-group  " >
+						<label for="Part of hotel" class=" control-label col-md-4 text-left"> Part of hotel </label>
+						<div class="col-md-6">
+							<input name="part_of_hotel" id="part_of_hotel" type="checkbox" class="form-control input-sm" value="1" {{($row['part_of_hotel'] == 1) ? " checked='checked' " : '' }}  /> 
+						</div> 
+						<div class="col-md-2">
+
+						</div>
+					</div> 
 					
 					<div class="form-group  " >
 						<label for="Video Type" class=" control-label col-md-4 text-left"> Video Type </label>

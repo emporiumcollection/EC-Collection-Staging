@@ -211,6 +211,10 @@ class RestaurantController extends Controller {
                     $data['video'] = $room_suites_videofilename;
                 }
             }
+			
+			if (!is_null($request->input('part_of_hotel'))) {
+				$data['part_of_hotel'] = 1;
+			}
 				
 			$id = $this->model->insertRow($data , $request->input('id'));
 			
