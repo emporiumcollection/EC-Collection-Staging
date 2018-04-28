@@ -183,6 +183,7 @@ $(document).ready(function () {
             $('[data-option="gobal-search"]').slideUp(300);
         } else {
             $('[data-action="clear-search"]').show();
+			console.log($(this).val().length);
 			if($(this).val().length > 2)
 			{
 				globalSearch($(this).val());
