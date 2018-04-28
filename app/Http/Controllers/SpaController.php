@@ -211,6 +211,10 @@ class SpaController extends Controller {
             $data['website'] = $request->input('website');
 			$data['location'] = $request->input('location');
 
+			if (!is_null($request->input('part_of_hotel'))) {
+				$data['part_of_hotel'] = 1;
+			}
+			
 			$id = $this->model->insertRow($data , $request->input('id'));
 			
 			if(!is_null($request->input('apply')))
