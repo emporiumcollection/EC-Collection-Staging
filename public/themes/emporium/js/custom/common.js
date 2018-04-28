@@ -184,7 +184,7 @@ $(document).ready(function () {
         } else {
             $('[data-action="clear-search"]').show();
 			var fvalue = $(this).val();
-			console.log($(fvalue.length);
+			console.log(fvalue.length);
 			if(fvalue.length > 2)
 			{
 				globalSearch($(this).val());
