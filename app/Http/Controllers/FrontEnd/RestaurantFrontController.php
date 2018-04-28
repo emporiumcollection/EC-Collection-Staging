@@ -344,6 +344,7 @@ class RestaurantFrontController extends Controller {
 	
 	function reserveRestoTableRequest(Request $request)
 	{
+		$rules['reservetype'] = 'required';
 		$rules['restoid'] = 'required';
 		$rules['firstname'] = 'required';
 		$rules['lastname'] = 'required';
@@ -358,12 +359,43 @@ class RestaurantFrontController extends Controller {
 		$validator = Validator::make($request->all(), $rules);	
 		if ($validator->passes()) {
 			
-			$resArr = \DB::table('tb_restaurants')->where('id', $request->restoid)->first();
+			$type = $request->input('reservetype');
+			$srchtbl = 'tb_restaurants';
+			if($type=="bar")
+			{
+				$srchtbl = 'tb_bars';
+			}
+			elseif($type=="spa")
+			{
+				$srchtbl = 'tb_spas';
+			}
+			
+			$resArr = \DB::table($srchtbl)->where('id', $request->restoid)->first();
 			if(!empty($resArr))
 			{
+				$rsdata['reservetype'] = $type;
+				$rsdata['tbl_id'] = $request->restoid;
+				$rsdata['firstname'] = $request->input('firstname');
+				$rsdata['lastname'] = $request->input('lastname');
+				$rsdata['emailaddress'] = $request->input('emailaddress');
+				$rsdata['telephone_code'] = $request->input('telephone_code');
+				$rsdata['telephone_number'] = $request->input('telephone_number');
+				$rsdata['telephone_code2'] = $request->input('telephone_code2');
+				$rsdata['telephone_number2'] = $request->input('telephone_number2');
+				$rsdata['reserve_day'] = $request->input('reserve_day');
+				$rsdata['reserve_month'] = $request->input('reserve_month');
+				$rsdata['reserve_year'] = $request->input('reserve_year');
+				$rsdata['reserve_hour'] = $request->input('reserve_hour');
+				$rsdata['reserve_minute'] = $request->input('reserve_minute');
+				$rsdata['totalguest'] = $request->input('totalguest');
+				$rsdata['query'] = $request->input('query');
+				$rsdata['created'] = date('Y-m-d h:i:s');
+				\DB::table('tb_restro_spa_bar_reservation')->insertGetId($rsdata);
+				
 				$emlData['to'] 	 = $resArr->reservation_email;
 				$emlData['frmemail'] = $request->input('emailaddress');
-				$emlData['subject'] = 'Table Reservation request';
+				$emlData['subject'] = 'Table Reservation request for '.$resArr->title;
+				$emessage = '<p><b>Name : '.$resArr->title.'</b></p>';
 				$emessage = '<p><b>First name : '.$request->input('firstname').'</b></p>';
 				$emessage .= '<p><b>last name : '.$request->input('lastname').'</b></p>';
 				$emessage .= '<p><b>Date : '.$request->input('reserve_day').' '.$request->input('reserve_month').' '. $request->input('reserve_year').'</b></p>';
@@ -377,6 +409,15 @@ class RestaurantFrontController extends Controller {
 					$message->from($emlData['frmemail'], CNF_APPNAME);
 
 					$message->to( $emlData['to']);
+					
+					$message->subject($emlData['subject']);
+				});
+				
+				\Mail::send('user.emails.contact', $edata, function($message) use ($emlData)
+				{
+					$message->from($emlData['to'], CNF_APPNAME);
+
+					$message->to( $emlData['frmemail']);
 					
 					$message->subject($emlData['subject']);
 				});

@@ -96,6 +96,7 @@
 						<div class="row">
 							<div class="col-md-4">
 								 <div class="form-field">
+									<input type="hidden" value="restro" name="reservetype" />
 									 <select name="restoid">
 										 <option>Please select</option>
 										 @if(!empty($resturantArr))
@@ -142,8 +143,8 @@
 						 <div class="form-field row">
 							<label>Preferred date</label>
 							<div class="col-xs-4">
-								 <select>
-								 <option name="reserve_day">DD</option>
+								 <select name="reserve_day">
+								 <option >DD</option>
 								 @for($arvDay=1;$arvDay<=31;$arvDay++)
 									 <option value="{{(strlen($arvDay)>1)?$arvDay:'0'.$arvDay}}">{{$arvDay}}</option>
 								 @endfor
@@ -280,6 +281,7 @@
 			<div class="row">
 		  <div class="col-md-4">
 			 <div class="form-field">
+				<input type="hidden" value="restro" name="reservetype" />
 				 <select name="restoid">
 					 <option>Please select</option>
 					 @if(!empty($resturantArr))

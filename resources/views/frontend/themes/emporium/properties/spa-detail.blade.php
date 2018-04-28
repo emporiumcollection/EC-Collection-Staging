@@ -85,7 +85,7 @@
 					<div class="modal-content">
 					  <div class="cstm_heading modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h1 class="modal-title">Planet Restaurant</h1>
+						<h1 class="modal-title">Planet Spa</h1>
 						<p>Lorem ipsum dolor sit amet.</p>
 						<p>Lorem ipsum dolor sit amet.</p>
 					  </div>
@@ -96,6 +96,7 @@
 						<div class="row">
 							<div class="col-md-4">
 								 <div class="form-field">
+									<input type="hidden" value="spa" name="reservetype" />
 									 <select name="restoid">
 										 <option>Please select</option>
 										 @if(!empty($spasArr))
@@ -268,7 +269,7 @@
 		<div class="modal-content">
 		  <div class="cstm_heading modal-header">
 			<button type="button" class="close" data-dismiss="modal">&times;</button>
-			<h1 class="modal-title">Planet Restaurant</h1>
+			<h1 class="modal-title">Planet Spa</h1>
 			<p>Lorem ipsum dolor sit amet.</p>
 			<p>Lorem ipsum dolor sit amet.</p>
 		  </div>
@@ -279,6 +280,7 @@
 			<div class="row">
 		  <div class="col-md-4">
 			 <div class="form-field">
+				<input type="hidden" value="spa" name="reservetype" />
 				 <select name="restoid">
 					 <option>Please select</option>
 					 @if(!empty($spasArr))

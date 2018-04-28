@@ -85,7 +85,7 @@
 					<div class="modal-content">
 					  <div class="cstm_heading modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h1 class="modal-title">Planet Restaurant</h1>
+						<h1 class="modal-title">Planet Bar</h1>
 						<p>Lorem ipsum dolor sit amet.</p>
 						<p>Lorem ipsum dolor sit amet.</p>
 					  </div>
@@ -96,6 +96,7 @@
 						<div class="row">
 							<div class="col-md-4">
 								 <div class="form-field">
+									<input type="hidden" value="bar" name="reservetype" />
 									 <select name="restoid">
 										 <option>Please select</option>
 										 @if(!empty($barsArr))
@@ -142,8 +143,8 @@
 						 <div class="form-field row">
 							<label>Preferred date</label>
 							<div class="col-xs-4">
-								 <select>
-								 <option name="reserve_day">DD</option>
+								 <select name="reserve_day">
+								 <option >DD</option>
 								 @for($arvDay=1;$arvDay<=31;$arvDay++)
 									 <option value="{{(strlen($arvDay)>1)?$arvDay:'0'.$arvDay}}">{{$arvDay}}</option>
 								 @endfor
@@ -268,7 +269,7 @@
 		<div class="modal-content">
 		  <div class="cstm_heading modal-header">
 			<button type="button" class="close" data-dismiss="modal">&times;</button>
-			<h1 class="modal-title">Planet Restaurant</h1>
+			<h1 class="modal-title">Planet Bar</h1>
 			<p>Lorem ipsum dolor sit amet.</p>
 			<p>Lorem ipsum dolor sit amet.</p>
 		  </div>
@@ -279,6 +280,7 @@
 			<div class="row">
 		  <div class="col-md-4">
 			 <div class="form-field">
+				<input type="hidden" value="restro" name="reservetype" />
 				 <select name="restoid">
 					 <option>Please select</option>
 					 @if(!empty($barsArr))
