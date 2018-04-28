@@ -473,7 +473,7 @@
                     <div class="full-width">
                         <div data-is data-is-api="{{ url('runInsta')}}"
                              data-is-source="{{(!empty($propertyDetail) && $propertyDetail['data']->social_instagram!='')? $propertyDetail['data']->social_instagram : '@socialdesignlocations777' }}"
-                             data-is-rows="2" data-is-columns="5"></div>
+                             data-is-rows="2" data-is-limit="0" data-is-columns="5"></div>
                     </div>
                 </section>
             </section>
