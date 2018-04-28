@@ -3114,9 +3114,9 @@ class ContainerController extends Controller {
 				$undsep = explode('-',$sepr);
 				if($undsep[0]=='folder')
 				{
-					$slvr_exists = DB::table('tb_container')->where('id', $undsep[1])->where(function ($query) { $query->where('name', 'slider')->orWhere('name', 'produktvarianten');})->count();
+					/*$slvr_exists = DB::table('tb_container')->where('id', $undsep[1])->where(function ($query) { $query->where('name', 'slider')->orWhere('name', 'produktvarianten');})->count();
 					if($slvr_exists==0)
-					{
+					{*/
 						$check_fold = DB::table('tb_frontend_container')->where('container_id', $undsep[1])->where('container_type', 'folder')->first();
 						if(empty($check_fold))
 						{
@@ -3134,15 +3134,6 @@ class ContainerController extends Controller {
 									$check_file = DB::table('tb_frontend_container')->where('container_id', $curfiles->id)->where('container_type', 'file')->first();
 									if(empty($check_file))
 									{
-										/*$dirPath = $this->getContainerUserPath($curfiles->folder_id);
-										$copytofolder = public_path().'/uploads/folder_cover_imgs/';
-										
-										// IMage for Product page
-										$pdimg = \Image::make($dirPath.$curfiles->file_name);
-										$pdimg->resize(305, 223);
-										$pdimgfile = 'product_file_'.$curfiles->file_name;
-										$pdimg->save($copytofolder.$pdimgfile);*/
-										
 										$ftdata['user_id'] = $uid;
 										$ftdata['container_id'] = $curfiles->id;
 										$ftdata['container_type'] = 'file';
@@ -3174,15 +3165,6 @@ class ContainerController extends Controller {
 												$check_file = DB::table('tb_frontend_container')->where('container_id', $file->id)->where('container_type', 'file')->first();
 												if(empty($check_file))
 												{
-													/*$dirPath = $this->getContainerUserPath($file->folder_id);
-													$copytofolder = public_path().'/uploads/folder_cover_imgs/';
-													
-													// IMage for Product page
-													$pdimg = \Image::make($dirPath.$file->file_name);
-													$pdimg->resize(305, 223);
-													$pdimgfile = 'product_file_'.$file->file_name;
-													$pdimg->save($copytofolder.$pdimgfile);*/
-													
 													$ftdata['user_id'] = $uid;
 													$ftdata['container_id'] = $file->id;
 													$ftdata['container_type'] = 'file';
@@ -3195,7 +3177,7 @@ class ContainerController extends Controller {
 								}
 							}
 						}
-					}
+					/* } */
 				}
 				if($undsep[0]=='file')
 				{
@@ -3203,16 +3185,6 @@ class ContainerController extends Controller {
 					if(empty($check_file))
 					{
 						$file = DB::table('tb_container_files')->where('id', $undsep[1])->first();
-						/*$dirPath = $this->getContainerUserPath($file->folder_id);
-						$copytofolder = public_path().'/uploads/folder_cover_imgs/';
-						
-						// IMage for Product page
-						$pdimg = \Image::make($dirPath.$file->file_name);
-						$pdimg->resize(305, 223);
-						$pdimgfile = 'product_file_'.$file->file_name;
-						$pdimg->save($copytofolder.$pdimgfile);*/
-						
-						
 						$ftdata['user_id'] = $uid;
 						$ftdata['container_id'] = $undsep[1];
 						$ftdata['container_type'] = 'file';
@@ -3335,9 +3307,9 @@ class ContainerController extends Controller {
 		{
 			if($cont_type=='folder')
 			{
-				$slvr_exists = DB::table('tb_container')->where('id', $item)->where(function ($query) { $query->where('name', 'slider')->orWhere('name', 'produktvarianten');})->count();
+				/*$slvr_exists = DB::table('tb_container')->where('id', $item)->where(function ($query) { $query->where('name', 'slider')->orWhere('name', 'produktvarianten');})->count();
 				if($slvr_exists==0)
-				{
+				{*/
 					$check_fold = DB::table('tb_frontend_container')->where('container_id', $item)->where('container_type', 'folder')->first();
 					$childList = $this->fetchFolderChildListIds($item);
 					if($action==0)
@@ -3358,15 +3330,6 @@ class ContainerController extends Controller {
 									$check_file = DB::table('tb_frontend_container')->where('container_id', $curfiles->id)->where('container_type', 'file')->first();
 									if(empty($check_file))
 									{
-										/*$dirPath = $this->getContainerUserPath($curfiles->folder_id);
-										$copytofolder = public_path().'/uploads/folder_cover_imgs/';
-										
-										// IMage for Product page
-										$pdimg = \Image::make($dirPath.$curfiles->file_name);
-										$pdimg->resize(305, 223);
-										$pdimgfile = 'product_file_'.$curfiles->file_name;
-										$pdimg->save($copytofolder.$pdimgfile);*/
-										
 										$ftdata['user_id'] = $uid;
 										$ftdata['container_id'] = $curfiles->id;
 										$ftdata['container_type'] = 'file';
@@ -3398,15 +3361,6 @@ class ContainerController extends Controller {
 												$check_file = DB::table('tb_frontend_container')->where('container_id', $file->id)->where('container_type', 'file')->first();
 												if(empty($check_file))
 												{
-													/*$dirPath = $this->getContainerUserPath($file->folder_id);
-													$copytofolder = public_path().'/uploads/folder_cover_imgs/';
-													
-													// IMage for Product page
-													$pdimg = \Image::make($dirPath.$file->file_name);
-													$pdimg->resize(305, 223);
-													$pdimgfile = 'product_file_'.$file->file_name;
-													$pdimg->save($copytofolder.$pdimgfile);*/
-													
 													$ftdata['user_id'] = $uid;
 													$ftdata['container_id'] = $file->id;
 													$ftdata['container_type'] = 'file';
@@ -3460,7 +3414,7 @@ class ContainerController extends Controller {
 							}
 						}
 					}
-				}
+				/* } */
 			}
 			if($cont_type=='file')
 			{
@@ -3470,14 +3424,6 @@ class ContainerController extends Controller {
 					if(empty($check_file))
 					{
 						$file = DB::table('tb_container_files')->where('id', $item)->first();
-						/*$dirPath = $this->getContainerUserPath($file->folder_id);
-						$copytofolder = public_path().'/uploads/folder_cover_imgs/';
-						
-						// IMage for Product page
-						$pdimg = \Image::make($dirPath.$file->file_name);
-						$pdimg->resize(305, 223);
-						$pdimgfile = 'product_file_'.$file->file_name;
-						$pdimg->save($copytofolder.$pdimgfile);*/
 						
 						$ftdata['user_id'] = $uid;
 						$ftdata['container_id'] = $item;
