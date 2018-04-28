@@ -183,8 +183,9 @@ $(document).ready(function () {
             $('[data-option="gobal-search"]').slideUp(300);
         } else {
             $('[data-action="clear-search"]').show();
-			console.log($(this).val().length);
-			if($(this).val().length > 2)
+			//console.log($(this).val().length);
+			var fvalue = $(this).val();
+			if($(fvalue.length > 2)
 			{
 				globalSearch($(this).val());
 			}
@@ -196,7 +197,8 @@ $(document).ready(function () {
             $('[data-action="gobal-search-error"]').html('Please enter your search term');
             $('[data-option="gobal-search"]').slideUp(300);
         } else {
-			if($('[data-action="gobal-search"]').val().length > 2)
+			var fvalue = $('[data-action="gobal-search"]').val();
+			if($(fvalue.length > 2)
 			{
 				globalSearch($('[data-action="gobal-search"]').val());
 				$('[data-action="gobal-search-error"]').html('');
