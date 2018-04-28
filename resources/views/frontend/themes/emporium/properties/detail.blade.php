@@ -427,7 +427,7 @@
                             @if($relatedgridpropertiesArr)
                                 {{--*/ $rw = 1;	$node_no = 1; $ads_node = 0; /*--}}
                                 @foreach($relatedgridpropertiesArr as $props)
-                                    <div class="col-sm-6 col-md-6 col-lg-3">
+                                    <div class="col-sm-6 col-md-6 col-lg-4">
                                         <div class="hotel-card">
                                             <figure>
                                                 @if(array_key_exists('image', $props))
