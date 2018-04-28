@@ -23,7 +23,7 @@
                 <ul class="mobilemenulist" style="display: none;" data-option="dest-option-list"></ul>
             </li>
 
-            <!-- <li>
+             <li>
                 <a class="searchresultdata cursor" data-action="gobal-restaurant">
                     <i class="iconsheet icon-restaurant"></i> <span>Restaurant (0)</span>
                 </a>
@@ -45,7 +45,7 @@
                 </a>
 
                 <ul class="mobilemenulist" style="display: none;" data-option="bar-option-list"> </ul>
-            </li> -->
+            </li>
         </ul>
     </div>
 </li>

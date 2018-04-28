@@ -183,7 +183,10 @@ $(document).ready(function () {
             $('[data-option="gobal-search"]').slideUp(300);
         } else {
             $('[data-action="clear-search"]').show();
-            globalSearch($(this).val());
+			if($(this).val().length > 2)
+			{
+				globalSearch($(this).val());
+			}
         }
    });
 
@@ -192,8 +195,11 @@ $(document).ready(function () {
             $('[data-action="gobal-search-error"]').html('Please enter your search term');
             $('[data-option="gobal-search"]').slideUp(300);
         } else {
-            globalSearch($('[data-action="gobal-search"]').val());
-            $('[data-action="gobal-search-error"]').html('');
+			if($('[data-action="gobal-search"]').val().length > 2)
+			{
+				globalSearch($('[data-action="gobal-search"]').val());
+				$('[data-action="gobal-search-error"]').html('');
+			}
         }
     });
 
