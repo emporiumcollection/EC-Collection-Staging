@@ -18,8 +18,10 @@
                 {{-- End Global Search Bar --}}
 
                <li><a href="#spa1">INFO</a></li>
-               <li><a href="#video" class="">VIDEO</a></li>
-               <li><a href="#get-directions">GET DIRECTIONS</a></li>
+               @if($spasArr[0]->video_type!='')
+					<li><a href="#video" class="">VIDEO</a></li>
+				@endif
+               <!-- <li><a href="#get-directions">GET DIRECTIONS</a></li>-->
             </ul>
             @if (!Auth::check())
 

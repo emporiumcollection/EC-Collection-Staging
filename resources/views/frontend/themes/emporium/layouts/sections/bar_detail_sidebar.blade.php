@@ -17,8 +17,10 @@
                 @include('frontend.themes.emporium.layouts.sections.global-search-bar')
                 {{-- End Global Search Bar --}}
                 <li><a href="#bar1">INFO</a></li>
-                <li><a href="#video" class="">VIDEO</a></li>
-                <li><a href="#get-directions">GET DIRECTIONS</a></li>
+				@if($barsArr[0]->video_type!='')
+					<li><a href="#video" class="">VIDEO</a></li>
+				@endif
+               <!-- <li><a href="#get-directions">GET DIRECTIONS</a></li>-->
             </ul>
             @if (!Auth::check())
 
