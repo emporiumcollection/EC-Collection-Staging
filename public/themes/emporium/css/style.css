@@ -466,7 +466,7 @@ ul.EVMenu li.smallEV {
 	z-index:0;
     background: rgba(37,37,37,0.35);
 }
-.hotel-card figure img{max-width:100%;width:100%;-webkit-transition: all .5s ease;-o-transition: all .5s ease; transition: all .5s ease; height:320px;}
+.hotel-card figure img{max-width:100%;width:100%;-webkit-transition: all .5s ease;-o-transition: all .5s ease; transition: all .5s ease; height:auto;}
 .content-overlay{background:rgba(0, 0, 0, 0.7); text-decoration:none;position:absolute; bottom:-100%; left:0; width:100%; height:100%; padding:90px 15px;-webkit-transition: all 0.5s ease 0s;-o-transition: all 0.5s ease 0s; transition:all 0.5s ease 0s; text-align:center;}
 .content-overlay:hover{text-decoration:none;}
 .hotel-card .content-overlay h3{color:#fff;}
