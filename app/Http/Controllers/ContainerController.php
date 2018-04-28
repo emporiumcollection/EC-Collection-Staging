@@ -3148,9 +3148,9 @@ class ContainerController extends Controller {
 							{
 								foreach($childList as $child)
 								{
-									$slvr_exists = DB::table('tb_container')->where('id', $child)->where(function ($query) { $query->where('name', 'slider')->orWhere('name', 'produktvarianten');})->count();
+									/*$slvr_exists = DB::table('tb_container')->where('id', $child)->where(function ($query) { $query->where('name', 'slider')->orWhere('name', 'produktvarianten');})->count();
 									if($slvr_exists==0)
-									{
+									{*/
 										$cftdata['user_id'] = $uid;
 										$cftdata['container_id'] = $child;
 										$cftdata['container_type'] = 'folder';
@@ -3173,7 +3173,7 @@ class ContainerController extends Controller {
 												}
 											}
 										}
-									}
+									/* } */
 								}
 							}
 						}
@@ -3196,9 +3196,9 @@ class ContainerController extends Controller {
 						{
 							foreach($parentList as $parent)
 							{
-								$slvr_exists = DB::table('tb_container')->where('id', $parent)->where(function ($query) { $query->where('name', 'slider')->orWhere('name', 'produktvarianten');})->count();
+								/*$slvr_exists = DB::table('tb_container')->where('id', $parent)->where(function ($query) { $query->where('name', 'slider')->orWhere('name', 'produktvarianten');})->count();
 								if($slvr_exists==0)
-								{
+								{*/
 									$check_parent = DB::table('tb_frontend_container')->where('container_id', $parent)->where('container_type', 'folder')->first();
 									if(empty($check_parent))
 									{
@@ -3208,7 +3208,7 @@ class ContainerController extends Controller {
 										$cftdata['created'] = date('Y-m-d h:i:s');
 										\DB::table('tb_frontend_container')->insertGetId($cftdata);
 									}
-								}
+								/* } */
 							}
 						}
 					}
@@ -3344,9 +3344,9 @@ class ContainerController extends Controller {
 							{
 								foreach($childList as $child)
 								{
-									$slvr_exists = DB::table('tb_container')->where('id', $child)->where(function ($query) { $query->where('name', 'slider')->orWhere('name', 'produktvarianten');})->count();
+									/*$slvr_exists = DB::table('tb_container')->where('id', $child)->where(function ($query) { $query->where('name', 'slider')->orWhere('name', 'produktvarianten');})->count();
 									if($slvr_exists==0)
-									{
+									{*/
 										$cftdata['user_id'] = $uid;
 										$cftdata['container_id'] = $child;
 										$cftdata['container_type'] = 'folder';
@@ -3369,7 +3369,7 @@ class ContainerController extends Controller {
 												}
 											}
 										}
-									}
+									/* } */
 								}
 							}
 						}
@@ -3436,9 +3436,9 @@ class ContainerController extends Controller {
 						{
 							foreach($parentList as $parent)
 							{
-								$slvr_exists = DB::table('tb_container')->where('id', $parent)->where(function ($query) { $query->where('name', 'slider')->orWhere('name', 'produktvarianten');})->count();
+								/*$slvr_exists = DB::table('tb_container')->where('id', $parent)->where(function ($query) { $query->where('name', 'slider')->orWhere('name', 'produktvarianten');})->count();
 								if($slvr_exists==0)
-								{
+								{*/
 									$check_parent = DB::table('tb_frontend_container')->where('container_id', $parent)->where('container_type', 'folder')->first();
 									if(empty($check_parent))
 									{
@@ -3448,7 +3448,7 @@ class ContainerController extends Controller {
 										$cftdata['created'] = date('Y-m-d h:i:s');
 										\DB::table('tb_frontend_container')->insertGetId($cftdata);
 									}
-								}
+								/* } */
 							}
 						}
 					}
