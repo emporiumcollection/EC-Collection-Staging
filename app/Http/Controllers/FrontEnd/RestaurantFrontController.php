@@ -29,7 +29,7 @@ class RestaurantFrontController extends Controller {
 		$inspireArray=array();
 		$eventPackagesArray=array();
 
-		$props = \DB::table('tb_properties')->select('restaurant_ids','spa_ids','bar_ids','id')->where('property_slug', $request->slug)->first();
+		$props = \DB::table('tb_properties')->select('restaurant_ids','spa_ids','bar_ids','id', 'social_youtube')->where('property_slug', $request->slug)->first();
         if (!empty($props)) {
             $propertiesArr['data'] = $props;
 			if($props->restaurant_ids!='')

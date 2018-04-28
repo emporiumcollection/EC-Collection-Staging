@@ -39,11 +39,13 @@
 					{{--*/ $s++; /*--}}
 				  @endforeach
 				@endif
-
-                <!--<li><a href="#video" class="closenavlink scrollpage">VIDEO</a></li>-->
-                <li><a href="#seasonal-events" class="closenavlink scrollpage">SEASONAL EVENTS</a></li>
-                <li><a href="#instagram-gallery" class="closenavlink scrollpage">SPECIAL OCCASIONS</a></li>
-                <li><a href="#get-directions" class="closenavlink scrollpage">GET DIRECTIONS</a></li>
+				@if($propertiesArr['data']->social_youtube!='')
+					<li><a href="#video" class="closenavlink scrollpage">VIDEO</a></li>-->
+                @endif
+				@if (!empty($eventsArray))
+					<li><a href="#seasonal-events" class="closenavlink scrollpage">SEASONAL EVENTS</a></li>
+                @endif
+                <!--<li><a href="#get-directions" class="closenavlink scrollpage">GET DIRECTIONS</a></li>-->
                 <li><a href="{{URL::to($pagetitle)}}" class="yellowbtn">VISIT HOTEL</a></li>
             </ul>
             @if (!Auth::check())

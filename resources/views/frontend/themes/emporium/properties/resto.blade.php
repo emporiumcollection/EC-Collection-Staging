@@ -343,7 +343,10 @@
 		</div> 
 	</section>
 	<!-- Video Section END here -->
-
+	
+	@if($propertiesArr['data']->social_youtube!='')
+		<div data-yt data-yt-channel="{{ $propertiesArr['data']->social_youtube }}" data-yt-content-columns="4"  data-yt-content-rows="1"></div>
+	@endif
 
 	@if(!empty($resturantArr[2]))
 		@if(array_key_exists('datagallery',$resturantArr[2]))
@@ -1069,6 +1072,7 @@
 @section('javascript')
     @parent
 	<script src="{{ asset('sximo/js/parsley.min.js')}}" type="text/javascript"></script>
+	<script src="{{ asset('lib/yottie/jquery.yottie.bundled.js')}}"></script>
 @endsection
 
 {{-- For custom script --}}
