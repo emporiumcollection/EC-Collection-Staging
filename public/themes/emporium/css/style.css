@@ -474,7 +474,7 @@ ul.EVMenu li.smallEV {
 .hotel-card:hover .content-overlay{bottom:0; }
 .hotel-card:hover figure img{transform:scale(1.1)}
 .hotel-card .title{overflow:hidden;}
-.hotel-card .title h3{font-size: 18px; font-weight:400;font-family: 'geomanist_regularregular', serif; display:inline-block; margin:10px 0;}
+.hotel-card .title h3{font-size: 18px; font-weight:400;font-family: 'GeomanistLight', serif; display:inline-block; margin:10px 0;}
 .hotel-card .title h3 a{color: #000;}
 .hotel-card .cartlink{float:right; margin-top:10px; font-size:18px; color:#000;}
 .hotel-card .quicklinks li a{color:#ABA07C;-webkit-transition: all 0.5s ease 0s;-o-transition: all 0.5s ease 0s; transition:all 0.5s ease 0s}
