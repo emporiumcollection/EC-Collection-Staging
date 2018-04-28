@@ -19,7 +19,7 @@
 	/* Restaurant Carousel CSS end */
 }
 @media (max-width:1024px){
-.logo-wrapper{ padding: 15px 15px 0; max-width:220px; display:block;}
+.logo-wrapper{ padding: 15px 15px 0; max-width:250px; display:block; float:none; margin:0 auto;}
 .page-container{padding:74px 0 0 0;}
 .left-sidebar{left:-100%;}
 body.open{overflow:hidden;}
@@ -237,7 +237,7 @@ body.open{overflow:hidden;}
 
 @media (max-width:480px){
 	#header{min-height:75px;}
-.logo-wrapper{max-width:277px;}
+/*.logo-wrapper{max-width:277px;}*/
 .logo-wrapper img{max-width:100%;}
 .login-control-head{top:-47px;}
 	.searchDateInnerContent ul li {
