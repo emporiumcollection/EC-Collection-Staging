@@ -333,7 +333,6 @@ class BarController extends Controller {
 
 	public function barReservations( $id)
 	{	
-		$this->data['access']		= $this->access;
 		if($id =='')
 		{
 			if($this->access['is_add'] ==0 )
@@ -344,16 +343,24 @@ class BarController extends Controller {
 		{
 			if($this->access['is_edit'] ==0 )
 			return Redirect::to('dashboard')->with('messagetext',\Lang::get('core.note_restric'))->with('msgstatus','error');
+		}				
+				
+		$row = $this->model->find($id);
+		if($row)
+		{
+			$this->data['row'] =  $row;
+		} else {
+			$this->data['row'] = $this->model->getColumnTable('tb_bars'); 
 		}
+		$this->data['fields'] 		=  \SiteHelpers::fieldLang($this->info['config']['forms']);
+		
+		$this->data['id'] = $id;
+		
 		$this->data['reservedata'] = array();
 		$checkData = \DB::table('tb_restro_spa_bar_reservation')->where('tbl_id', $id)->where('reservetype', 'bar')->get();
 		if (!empty($checkData)) {
 			$this->data['reservedata'] = $checkData;
 		}
-		$this->data['pagination']	= 1;
-		// Build pager number and append current param GET
-		$this->data['pager'] 		= 1;
-		//print_r($this->data['reservedata']);
 		return view('bar.barreservationlist',$this->data);	
 	}	
 
