@@ -1389,13 +1389,13 @@ ul.calenderwrapper li .form-control.datefield {
 #filtersearchpopup ul li .searchresultdata i.iconsheet{position:absolute; left:15px;  top:11px;width:25px; height:34px; background:url(../images/iconsheet.png) no-repeat;-webkit-transition: all .5s ease; -o-transition: all .5s ease; transition: all .5s ease;}
 
 #filtersearchpopup ul li .searchresultdata span{display:inline-block; margin-left:5px;}
-/*
+
 #filtersearchpopup ul li .searchresultdata i.iconsheet.icon-destinations{background-position: -1px -156px;}
 #filtersearchpopup ul li .searchresultdata i.iconsheet.icon-collections{background-position: -1px -5px;}
 #filtersearchpopup ul li .searchresultdata i.iconsheet.icon-restaurant{background-position: -1px -216px;}
 #filtersearchpopup ul li .searchresultdata i.iconsheet.icon-bar{background-position: -1px -54px;}
 #filtersearchpopup ul li .searchresultdata i.iconsheet.icon-spa{background-position: -1px -107px;}
-
+/*
 #filtersearchpopup ul li .searchresultdata:hover i.iconsheet.icon-destinations{background-position: -43px -156px;}
 #filtersearchpopup ul li .searchresultdata:hover i.iconsheet.icon-collections{background-position: -44px -5px;}
 #filtersearchpopup ul li .searchresultdata:hover i.iconsheet.icon-restaurant{background-position: -43px -216px;}
