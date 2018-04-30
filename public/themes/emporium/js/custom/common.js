@@ -192,7 +192,7 @@ $(document).ready(function () {
 			
 			
             return $('<li>')
-            .append( destIcon + item.label )
+            .append( item.label )
             .appendTo( ul );
         };
     }
