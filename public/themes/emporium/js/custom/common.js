@@ -572,24 +572,16 @@ $(document).on('click', '[data-action="send-email-button"]', function () {
 
 $(document).on('click', '[data-action="contactform-restaurant"]', function () {
     var contactType = $(this).attr("rel");
-    var contactRel = $(this).attr("rel2");	
-    if(contactType == 'Restaurant') {
-        $('.con-type').val(contactType);
-        $('#restoid').val(contactRel);
-    } else if(contactType == 'Bar') {
-        $('.con-type').val(contactType);
-        $('#restoid').val(contactRel);
-    } else if(contactType == 'Spa') {
-        $('.con-type').val(contactType);
-        $('#restoid').val(contactRel);
-    } else {
-        $('.con-type').val('');
-        $('#restoid').val(0);
-    }
+    var contactRel = $(this).attr("rel2");
+	$('.con-type').val('');
+    $('#restoid').val(0);
+	if(contactType != ''){
+		$('.con-type').val(contactType);
+		$('#restoid').val(contactRel);
+	}
 });
 
 $(document).on('change', '[data-action="restoid"]', function () {
-    //var contactType = $(this).attr("rel");
 	var contactType = $('option:selected', this).attr('rel');
     $('.con-type').val(contactType);
 });

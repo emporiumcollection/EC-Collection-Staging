@@ -107,7 +107,7 @@
 														</div>
 													@endif
 												</div>
-												<p class="text-center"><a href="javascript:void(0)">Reservation</a> | <a data-action="contactform-restaurant" rel="Restaurant" rel2="{{$resturantArr[0]->id}}" class="contactUsPopup contactPopupOne" href="javascript:void(0);">Contact Us</a></p>
+												<p class="text-center"><a href="javascript:void(0)">Reservation</a> | <a data-action="contactform-restaurant" rel="restro" rel2="{{$resturantArr[0]->id}}" class="contactUsPopup contactPopupOne" href="javascript:void(0);">Contact Us</a></p>
 											</div>
 										</div>
 									</div>
@@ -325,7 +325,7 @@
 													@endif
 												</div>
 												<!--<p class="text-center"><a href="javascript:void(0)">Restaurant</a> / <a class="contactUsPopup" data-toggle="modal" data-target="#contactPopupSection" href="javascript:void(0);">Contact Us</a></p>-->
-												<p class="text-center"><a href="javascript:void(0)">Restaurant</a> | <a rel="Restaurant" rel2="{{$resturantArr[1]->id}}" data-action="contactform-restaurant" class="contactUsPopup contactPopupOne" href="javascript:void(0);">Contact Us</a></p>
+												<p class="text-center"><a href="javascript:void(0)">Restaurant</a> | <a rel="restro" rel2="{{$resturantArr[1]->id}}" data-action="contactform-restaurant" class="contactUsPopup contactPopupOne" href="javascript:void(0);">Contact Us</a></p>
 											</div>
 										</div>
 									</div>
@@ -393,7 +393,7 @@
 													@endif
 												</div>
 												<!--<p class="text-center"><a href="javascript:void(0)">Restaurant</a> / <a class="contactUsPopup" data-toggle="modal" data-target="#contactPopupSection" href="javascript:void(0);">Contact Us</a></p>-->
-												<p class="text-center"><a href="javascript:void(0)">Restaurant</a> | <a rel="Restaurant" rel2="{{$resturantArr[2]->id}}" data-action="contactform-restaurant" class="contactUsPopup contactPopupOne" href="javascript:void(0);">Contact Us</a></p>
+												<p class="text-center"><a href="javascript:void(0)">Restaurant</a> | <a rel="restro" rel2="{{$resturantArr[2]->id}}" data-action="contactform-restaurant" class="contactUsPopup contactPopupOne" href="javascript:void(0);">Contact Us</a></p>
 											</div>
 										</div>
 									</div>
@@ -438,7 +438,7 @@
 													@endif
 												</div>
 												<!--<p class="text-center"><a href="javascript:void(0)">Bar</a> / <a class="contactUsPopup" data-toggle="modal" data-target="#contactPopupSection" href="javascript:void(0);">Contact Us</a></p>-->
-												<p class="text-center"><a href="javascript:void(0)">Bar</a> | <a rel="Bar" rel2="{{$barsArr[0]->id}}" data-action="contactform-restaurant" class="contactUsPopup contactPopupOne" href="javascript:void(0);">Contact Us</a></p>
+												<p class="text-center"><a href="javascript:void(0)">Bar</a> | <a rel="bar" rel2="{{$barsArr[0]->id}}" data-action="contactform-restaurant" class="contactUsPopup contactPopupOne" href="javascript:void(0);">Contact Us</a></p>
 											</div>
 										</div>
 									</div>
@@ -487,7 +487,7 @@
 													@endif
 												</div>
 												<!--<p class="text-center"><a href="javascript:void(0)">Bar</a> / <a class="contactUsPopup" data-toggle="modal" data-target="#contactPopupSection" href="javascript:void(0);">Contact Us</a></p>-->
-												<p class="text-center"><a href="javascript:void(0)">Bar</a> | <a rel="Bar" rel2="{{$barsArr[1]->id}}" data-action="contactform-restaurant" class="contactUsPopup contactPopupOne" href="javascript:void(0);">Contact Us</a></p>
+												<p class="text-center"><a href="javascript:void(0)">Bar</a> | <a rel="bar" rel2="{{$barsArr[1]->id}}" data-action="contactform-restaurant" class="contactUsPopup contactPopupOne" href="javascript:void(0);">Contact Us</a></p>
 											</div>
 										</div>
 									</div>
@@ -537,7 +537,7 @@
 													@endif
 												</div>
 												<!--<p class="text-center"><a href="javascript:void(0)">Bar</a> / <a class="contactUsPopup" data-toggle="modal" data-target="#contactPopupSection" href="javascript:void(0);">Contact Us</a></p>-->
-												<p class="text-center"><a href="javascript:void(0)">Bar</a> | <a rel="Bar" rel2="{{$barsArr[2]->id}}" data-action="contactform-restaurant" class="contactUsPopup contactPopupOne" href="javascript:void(0);">Contact Us</a></p>
+												<p class="text-center"><a href="javascript:void(0)">Bar</a> | <a rel="bar" rel2="{{$barsArr[2]->id}}" data-action="contactform-restaurant" class="contactUsPopup contactPopupOne" href="javascript:void(0);">Contact Us</a></p>
 											</div>
 										</div>
 									</div>
@@ -582,7 +582,7 @@
 													@endif
 												</div>
 												<!--<p class="text-center"><a href="javascript:void(0)">Spa</a> / <a class="contactUsPopup" data-toggle="modal" data-target="#contactPopupSection" href="javascript:void(0);">Contact Us</a></p>-->
-												<p class="text-center"><a href="javascript:void(0)">Spa</a> | <a rel="Spa" rel2="{{$spasArr[0]->id}}" data-action="contactform-restaurant" class="contactUsPopup contactPopupOne" href="javascript:void(0);">Contact Us</a></p>
+												<p class="text-center"><a href="javascript:void(0)">Spa</a> | <a rel="spa" rel2="{{$spasArr[0]->id}}" data-action="contactform-restaurant" class="contactUsPopup contactPopupOne" href="javascript:void(0);">Contact Us</a></p>
 											</div>
 										</div>
 									</div>
