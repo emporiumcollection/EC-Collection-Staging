@@ -621,7 +621,16 @@ $(document).on('change', '[data-action="restoid"]', function () {
 $(document).on('click', '.ui-menu-item', function() {
 	var rdpType = $('[data-action="search_by_type"]').val();
 	var rdpCountry = $('[data-action="auto-suggestion-rdp"]').val();
-	console.log(rdpType + ' - ' + rdpCountry);
+	
+	var datObj = {};
+	datObj.menuID = $(this).attr('data-id');
+	datObj.menu_pos = $(this).attr('data-position');
+
+	var params = $.extend({}, doAjax_params_default);
+	params['url'] = BaseURL + '/destination/resturant-spa-bar-by-type-city-ajax';
+	params['data'] = datObj;
+	params['successCallbackFunction'] = renderRdp;
+	doAjax(params);
 });
 
 $(document).on('change', '[data-action="search_by_type"]', function() {
@@ -629,3 +638,16 @@ $(document).on('change', '[data-action="search_by_type"]', function() {
 	var rdpCountry = $('[data-action="auto-suggestion-rdp"]').val();
 	console.log(rdpType + ' - ' + rdpCountry);
 });
+
+
+function renderRdp(dataObj) {
+    if (dataObj.records == undefined) {
+        
+        return false;
+    }
+	var Html = '';
+    $(dataObj.records).each(function (i, val) {
+        var rdpLi = '<option value="'+val.alias+'">'+val.title+'</li>';
+		$('[data-action="search_by_name"]').html(rdpLi);
+    });
+}

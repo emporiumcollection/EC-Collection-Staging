@@ -280,5 +280,37 @@ class DestinationController extends Controller {
 		$ajxData = json_encode($dataArr);
 		echo $request->callback.'('.$ajxData.')';
     }
-
+	
+	public function getResturantSpaBarByTypeCityAjax(Request $request)
+	{
+		$res = array();
+		$type = $request->type;
+		$city = $request->city;
+		if($type!='' && $city!='')
+		{
+			$srchtbl = 'tb_restaurants';
+			if($type=="bar")
+			{
+				$srchtbl = 'tb_bars';
+			}
+			elseif($type=="spa")
+			{
+				$srchtbl = 'tb_spas';
+			}
+			
+			$searchtable = \DB::table($srchtbl)->select('id','title','alias')->where('category_id', $city)->get();
+			if(!empty($searchtable))
+			{
+				$res['status'] = 'success';
+                $res['records'] = $searchtable;
+			}
+		}
+		else
+		{
+			$res['status'] = 'error';
+			$res['errors'] = 'Please select city first!';
+		}
+		
+		return response()->json($res);
+	}
 }
