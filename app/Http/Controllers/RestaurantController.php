@@ -355,6 +355,16 @@ class RestaurantController extends Controller {
 		}
 		return \Response::json($res);
     }
+	
+	public function getReservations( $id = null)
+	{	
+		$this->data['reservedata'] = '';
+		$checkData = \DB::table('tb_restro_spa_bar_reservation')->where('tbl_id', $id)->where('reservetype', 'restro')->get();
+		if (!empty($checkData)) {
+			$this->data['reservedata'] = $checkData;
+		}
+		return view('restaurant.reservation_index',$this->data);	
+	}
 
 
 }
