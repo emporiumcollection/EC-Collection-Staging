@@ -291,8 +291,9 @@ Route::group(['middleware' => 'auth'], function()
 	Route::get('fetchpackagedetails/{pckid}', 'HomeController@fetchpackagedetails');
 	Route::get('userorder_downloadinvoicepdf/{ordid}', 'UserorderController@ordersdownloadinvoicepdf');
 	Route::post('delete_menu_image', 'Sximo\MenuController@deleteMenuImage');
-	Route::get('restaurant_reservations/{id}', 'RestaurantController@Reservations');
+	Route::get('restaurant_reservations/{id}', 'RestaurantController@restroReservations');
 	Route::get('bar_reservations/{id}', 'BarController@barReservations');
+	Route::get('spa_reservations/{id}', 'SpaController@spaReservations');
 
 
 });	

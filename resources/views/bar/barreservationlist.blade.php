@@ -22,6 +22,7 @@
 <div class="sbox animated fadeInRight">
 	<div class="sbox-title"> <h5> <i class="fa fa-table"></i> </h5>
 <div class="sbox-tools" >
+	<a href="{{ URL::to('bar') }}" class="tips btn btn-xs btn-default pull-right" title="" data-original-title=""><i class="fa fa-arrow-circle-left"></i>&nbsp;Zurück</a>
 		</div>
 	</div>
 	<div class="sbox-content"> 	

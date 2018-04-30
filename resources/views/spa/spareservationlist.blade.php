@@ -22,7 +22,7 @@
 <div class="sbox animated fadeInRight">
 	<div class="sbox-title"> <h5> <i class="fa fa-table"></i> </h5>
 <div class="sbox-tools" >
-	<a href="{{ URL::to('restaurant') }}" class="tips btn btn-xs btn-default pull-right" title="" data-original-title=""><i class="fa fa-arrow-circle-left"></i>&nbsp;Zurück</a>
+	<a href="{{ URL::to('spa') }}" class="tips btn btn-xs btn-default pull-right" title="" data-original-title=""><i class="fa fa-arrow-circle-left"></i>&nbsp;Zurück</a>
 		</div>
 	</div>
 	<div class="sbox-content"> 	
@@ -49,22 +49,24 @@
 			  </tr>
         </thead>
 
-        <tbody>        						
-            @foreach ($reservedata as $row)
-                <tr>
-					<td width="30"> {{ ++$i }} </td>
-					<td> {{ $row->firstname . ' ' . $row->lastname }}</td>
-					<td> {{ $row->emailaddress }}</td>	
-					<td> {{ $row->telephone_code . $row->telephone_number }}</td>
-					<td> {{ $row->telephone_code2 . $row->telephone_number2 }}</td>
-					<td> {{ $row->reserve_day . ' ' . $row->reserve_month . ', ' . $row->reserve_year }}</td>
-					<td> {{ $row->reserve_hour . ' : '. $row->reserve_minute }}</td>
-					<td> {{ $row->totalguest }}</td>
-					<td> {{ $row->query }}</td>
-					<td> {{ $row->created }}</td>
-                </tr>	
-            @endforeach
-              
+        <tbody>     
+			@if(!empty($reservedata))
+				@foreach ($reservedata as $row)
+					<tr>
+						<td width="30"> {{ ++$i }} </td>
+						<td> {{ $row->firstname . ' ' . $row->lastname }}</td>
+						<td> {{ $row->emailaddress }}</td>	
+						<td> {{ $row->telephone_code . $row->telephone_number }}</td>
+						<td> {{ $row->telephone_code2 . $row->telephone_number2 }}</td>
+						<td> {{ $row->reserve_day . ' ' . $row->reserve_month . ', ' . $row->reserve_year }}</td>
+						<td> {{ $row->reserve_hour . ' : '. $row->reserve_minute }}</td>
+						<td> {{ $row->totalguest }}</td>
+						<td> {{ $row->query }}</td>
+						<td> {{ $row->created }}</td>
+					</tr>	
+				@endforeach
+             @endif
+			 
         </tbody>
       
     </table>
@@ -75,11 +77,5 @@
 	</div>
 </div>	
 	</div>	  
-</div>	
-<script>
-$(document).ready(function(){
-
-	
-});	
-</script>		
+</div>			
 @stop
