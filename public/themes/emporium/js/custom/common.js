@@ -569,3 +569,8 @@ $(document).on('click', '[data-action="send-email-button"]', function () {
     $(".transferSecSecond").removeClass("openTransferSec");
     $(".transferSecSecond").removeClass("openTransferSec");
 });
+
+$(document).on('click', '[data-action="contactform-restaurant"]', function () {
+    var contactType = $(this).attr("id");
+    alert(contactType);
+});
