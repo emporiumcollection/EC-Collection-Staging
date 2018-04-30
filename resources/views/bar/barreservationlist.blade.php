@@ -1,6 +1,4 @@
-@extends('layouts.app')
 
-@section('content')
 
   <div class="page-content row">
     <!-- Page header -->
@@ -72,9 +70,8 @@
 	<input type="hidden" name="md" value="" />
 	</div>
 	
-	@include('footer')
+	
 	</div>
 </div>	
 	</div>	  
 </div>			
-@stop
