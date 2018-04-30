@@ -135,7 +135,7 @@
 							<div class="col-md-4">
 								 <div class="form-field">
 								 	<input class="con-type" type="hidden" name="res-type" value="" />
-									 <select id="restoid" name="restoid">
+									 <select data-action="restoid" id="restoid" name="restoid">
 										 <option value="0">Please select</option>
 										 @if(!empty($resturantArr))
 											  @foreach($resturantArr as $resturant)

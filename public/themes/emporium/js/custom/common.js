@@ -583,3 +583,8 @@ $(document).on('click', '[data-action="contactform-restaurant"]', function () {
         $('#restoid').val(0);
     }
 });
+
+$(document).on('change', '[data-action="restoid"]', function () {
+    var contactType = $(this).attr("rel");
+    alert(contactType);
+});
