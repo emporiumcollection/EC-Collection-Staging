@@ -576,13 +576,13 @@ $(document).on('click', '[data-action="contactform-restaurant"]', function () {
         $('.con-type').val(contactType);
         $('#restoid').val(40);
         console.log(contactType);
-    } if(contactType == 'Restaurant') {
+    } if(contactType == 'Bar') {
         $('.con-type').val(contactType);
         $('#restoid').val(18);
         console.log(contactType);
     } else {
         $('.con-type').val('');
-        $('#dropdownid').val();
+        $('#dropdownid').val('');
         console.log(contactType);
     }
 });
