@@ -262,12 +262,12 @@ class RestaurantFrontController extends Controller {
 			if($barfileArr->part_of_hotel==1)
 			{
 				$barsArr[$bf]->social_youtube = '';
-				echo $qury = "Select social_youtube from tb_properties where FIND_IN_SET(".$barfileArr->id.",bar_ids) and bar_ids!=''";
+				$qury = "Select social_youtube from tb_properties where FIND_IN_SET(".$barfileArr->id.",bar_ids) and bar_ids!='' and social_youtube !=''";
 				$exequry = \DB::select($qury);
-				print_r($exequry); die;
+				//print_r($exequry); die;
 				if(!empty($exequry))
 				{
-					$barsArr[$bf]->social_youtube = $exequry->social_youtube;
+					$barsArr[$bf]->social_youtube = $exequry[0]->social_youtube;
 				}
 			}
 			
