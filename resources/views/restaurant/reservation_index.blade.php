@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-{{--*/ usort($tableGrid, "SiteHelpers::_sort") /*--}}
+
   <div class="page-content row">
     <!-- Page header -->
     <div class="page-header">
@@ -31,7 +31,7 @@
 
 	
 	
-	 {!! Form::open(array('url'=>'restaurant/delete/', 'class'=>'form-horizontal' ,'id' =>'SximoTable' )) !!}
+	 
 	 <div class="table-responsive" style="min-height:300px;">
     <table class="table table-striped ">
         <thead>
@@ -69,7 +69,7 @@
     </table>
 	<input type="hidden" name="md" value="" />
 	</div>
-	{!! Form::close() !!}
+	
 	@include('footer')
 	</div>
 </div>	
@@ -78,10 +78,6 @@
 <script>
 $(document).ready(function(){
 
-	$('.do-quick-search').click(function(){
-		$('#SximoTable').attr('action','{{ URL::to("restaurant/multisearch")}}');
-		$('#SximoTable').submit();
-	});
 	
 });	
 </script>		
