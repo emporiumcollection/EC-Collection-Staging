@@ -582,7 +582,7 @@ $(document).on('click', '[data-action="contactform-restaurant"]', function () {
         console.log(contactType);
     } else {
         $('.con-type').val('');
-        $('#dropdownid').val('');
+        $('#dropdownid').val(0);
         console.log(contactType);
     }
 });

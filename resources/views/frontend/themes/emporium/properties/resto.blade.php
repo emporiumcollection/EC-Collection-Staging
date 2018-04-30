@@ -136,7 +136,7 @@
 								 <div class="form-field">
 								 	<input class="con-type" type="hidden" name="res-type" value="" />
 									 <select id="restoid" name="restoid">
-										 <option>Please select</option>
+										 <option value="0">Please select</option>
 										 @if(!empty($resturantArr))
 											  @foreach($resturantArr as $resturant)
 												<option value="{{$resturant->id}}" rel="restro">{{$resturant->title}}</option>
