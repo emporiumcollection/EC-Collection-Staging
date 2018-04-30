@@ -280,7 +280,7 @@
 			<div class="row">
 		  <div class="col-md-4">
 			 <div class="form-field">
-				<input type="hidden" value="restro" name="reservetype" />
+				<input type="hidden" value="bar" name="reservetype" />
 				 <select name="restoid">
 					 <option>Please select</option>
 					 @if(!empty($barsArr))

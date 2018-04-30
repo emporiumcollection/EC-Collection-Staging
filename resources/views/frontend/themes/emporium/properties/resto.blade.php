@@ -134,7 +134,7 @@
 						<div class="row">
 							<div class="col-md-4">
 								 <div class="form-field">
-								 	<input class="con-type" type="hidden" name="res-type" value="" />
+								 	<input class="con-type" type="hidden" name="reservetype" value="" />
 									 <select data-action="restoid" id="restoid" name="restoid">
 										 <option value="0">Please select</option>
 										 @if(!empty($resturantArr))
