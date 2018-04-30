@@ -664,7 +664,7 @@ function renderRdp(dataObj) {
 	var Html = '<option>-Select-</option>';
 	$('[data-action="search_by_name"]').html("<option>-Select-</option>");
     $(dataObj.records).each(function (i, val) {
-        var Html += '<option value="'+val.alias+'">'+val.title+'</option>';
+        Html += '<option value="'+val.alias+'">'+val.title+'</option>';
 		
     });
 	$('[data-action="search_by_name"]').html(Html);
