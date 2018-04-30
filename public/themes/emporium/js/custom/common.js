@@ -655,14 +655,13 @@ $(document).on('change', '[data-action="search_by_type"]', function() {
 
 
 function renderRdp(dataObj) {
-	console.log(dataObj);
-    /*if (dataObj.records == undefined) {        
+    if (dataObj.records == undefined) {        
         return false;
     }
 	var Html = '';
     $(dataObj.records).each(function (i, val) {
         var Html = '<option value="'+val.alias+'">'+val.title+'</option>';
 		$('[data-action="search_by_name"]').html(Html);
-		console.log(Html + 'ss');
-    });*/
+		console.log(Html);
+    });
 }
