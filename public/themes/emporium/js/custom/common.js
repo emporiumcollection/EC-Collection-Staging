@@ -573,15 +573,15 @@ $(document).on('click', '[data-action="send-email-button"]', function () {
 $(document).on('click', '[data-action="contactform-restaurant"]', function () {
     var contactType = $(this).attr("rel");
     if(contactType == 'Restaurant') {
-        $('.con-type').value(contactType);
+        $('.con-type').val(contactType);
         $('#restoid').val(40);
         console.log(contactType);
     } if(contactType == 'Restaurant') {
-        $('.con-type').value(contactType);
+        $('.con-type').val(contactType);
         $('#restoid').val(18);
         console.log(contactType);
     } else {
-        $('.con-type').value('');
+        $('.con-type').val('');
         $('#dropdownid').val();
         console.log(contactType);
     }
