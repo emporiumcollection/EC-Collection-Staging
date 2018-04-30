@@ -339,7 +339,7 @@ class BarController extends Controller {
 			$this->data['reservedata'] = $checkData;
 		}
 		//print_r($this->data['reservedata']);
-		return view('bar.barreservation_list',$this->data);	
+		return view('bar.barreservationlist',$this->data);	
 	}	
 
 
