@@ -188,11 +188,11 @@ $(document).ready(function () {
             }
         })
         .autocomplete( "instance" )._renderItem = function( ul, item ) {
-            
-			
+			var destIcon = '';
+            destIcon = '<i class="iconsheet icon-destinations"></i>';
 			
             return $('<li>')
-            .append( item.label )
+            .append( destIcon + item.label )
             .appendTo( ul );
         };
     }
@@ -615,4 +615,10 @@ $(document).on('click', '[data-action="contactform-restaurant"]', function () {
 $(document).on('change', '[data-action="restoid"]', function () {
 	var contactType = $('option:selected', this).attr('rel');
     $('.con-type').val(contactType);
+});
+
+$(document).on('click'), '.ui-menu-item', function() {
+	var rdpType = $('[data-action="search_by_type"]').val();
+	var rdpCountry = $('[data-action="auto-suggestion-rdp"]').val();
+	console.log(rdpType + ' - ' + rdpCountry);
 });
