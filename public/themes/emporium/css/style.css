@@ -1382,9 +1382,9 @@ ul.calenderwrapper li .form-control.datefield {
 #bookHotel .hotelBorderList li .form-control:focus{box-shadow:none;-webkit-box-shadow:none;}
 
 /* Filter Search */
-#filtersearchpopup{background:#89837b; }
+/*#filtersearchpopup{background:#89837b; }*/
 #filtersearchpopup ul li{border-bottom:1px solid #9f9588;}
-#filtersearchpopup ul li .searchresultdata{padding:15px 15px 15px 50px; position:relative; color:#fff;}
+#filtersearchpopup ul li .searchresultdata{padding:15px 15px 15px 50px; position:relative; color:#fff; background:#89837b;}
 #filtersearchpopup ul li .searchresultdata:hover {color:#000;}
 #filtersearchpopup ul li .searchresultdata i.iconsheet{position:absolute; left:15px;  top:11px;width:25px; height:34px; background:url(../images/iconsheet.png) no-repeat;-webkit-transition: all .5s ease; -o-transition: all .5s ease; transition: all .5s ease;}
 
@@ -1403,7 +1403,7 @@ ul.calenderwrapper li .form-control.datefield {
 #filtersearchpopup ul li .searchresultdata:hover i.iconsheet.icon-spa{background-position: -43px -107px;}
 
 #filtersearchpopup ul li .searchresultdata span{font-size:13px;}
-#filtersearchpopup ul li .searchresultdata:hover{background:#efefef}
+/*#filtersearchpopup ul li .searchresultdata:hover{background:#efefef}*/
 #filtersearchpopup ul li .searchresultdata:hover i{color:#000;}
 
 
