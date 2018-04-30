@@ -43,7 +43,7 @@
 			<a href="{{ URL::to('bar/download?return='.$return) }}" class="tips btn btn-sm btn-white" title="{{ Lang::get('core.btn_download') }}">
 			<i class="fa fa-download"></i>&nbsp;{{ Lang::get('core.btn_download') }} </a>
 			@endif			
-		 
+			
 		</div> 		
 
 	
@@ -97,7 +97,7 @@
 						<a  href="{{ URL::to('bar/update/'.$row->id.'?return='.$return) }}" class="tips btn btn-xs btn-success" title="{{ Lang::get('core.btn_edit') }}"><i class="fa fa-edit "></i></a>
 						@endif
 						<a href="{{ URL::to('bar/images/'.$row->id.'?return='.$return)}}" class="tips btn btn-xs btn-primary" title="{{ Lang::get('core.btn_view') }}"><i class="fa fa-file-image-o "></i></a>
-												
+						<a href="{{ URL::to('bar_reservations/'.$row->id)}}" class="tips btn btn-xs btn-primary" title="{{ Lang::get('core.btn_view') }}"><i class="fa fa-file-image-o "></i></a>						
 					
 				</td>				 
                 </tr>

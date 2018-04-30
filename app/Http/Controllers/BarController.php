@@ -329,7 +329,17 @@ class BarController extends Controller {
 			$res['status'] = 'error';
 		}
 		return \Response::json($res);
-    }		
+    }
+
+	public function Reservations( $id)
+	{	
+		$this->data['reservedata'] = '';
+		$checkData = \DB::table('tb_restro_spa_bar_reservation')->where('tbl_id', $id)->where('reservetype', 'bar')->get();
+		if (!empty($checkData)) {
+			$this->data['reservedata'] = $checkData;
+		}
+		return view('bar.reservation_index',$this->data);	
+	}	
 
 
 }
