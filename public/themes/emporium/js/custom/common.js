@@ -590,6 +590,6 @@ $(document).on('click', '[data-action="contactform-restaurant"]', function () {
 
 $(document).on('change', '[data-action="restoid"]', function () {
     //var contactType = $(this).attr("rel");
-	 var contactType = $('option:selected', this).attr('rel');
-    alert(contactType);
+	var contactType = $('option:selected', this).attr('rel');
+    $('.con-type').val(contactType);
 });
