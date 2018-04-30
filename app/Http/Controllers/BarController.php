@@ -331,15 +331,15 @@ class BarController extends Controller {
 		return \Response::json($res);
     }
 
-	public function barReservations( )
+	public function barReservations( $id)
 	{	
-	echo 'sdfgsdgfsd';
-die;		$this->data['reservedata'] = '';
+		$this->data['reservedata'] = '';
 		$checkData = \DB::table('tb_restro_spa_bar_reservation')->where('tbl_id', $id)->where('reservetype', 'bar')->get();
 		if (!empty($checkData)) {
 			$this->data['reservedata'] = $checkData;
 		}
-		return view('bar.reservation_index',$this->data);	
+		print_r($this->data['reservedata']);
+		//return view('bar.reservation_index',$this->data);	
 	}	
 
 
