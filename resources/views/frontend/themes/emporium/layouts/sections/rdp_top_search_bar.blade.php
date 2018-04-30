@@ -17,7 +17,8 @@
 							<option>CITY 01</option>
 							<option>CITY 02</option>
 						</select>-->
-						<div class="form-group ui-widget" >
+						<div class="form-group ui-widget">
+							<input id="rdpCounId" type="hidden" name="rdpCounId" value="" />
 							<input type="text" name="rdp" data-action="auto-suggestion-rdp" placeholder="SEARCH BY CITY"/>
 						</div>
 					</div>

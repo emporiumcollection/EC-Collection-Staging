@@ -182,9 +182,10 @@ $(document).ready(function () {
             },
             minLength: 2,
             select: function (event, ui) {
-                if(ui.item.type) {
+                /*if(ui.item.type) {
                     location.href=BaseURL + '/' + ui.item.id;
-                }
+                }*/
+				$('#rdpCounId').val(ui.item.value);
             }
         })
         .autocomplete( "instance" )._renderItem = function( ul, item ) {
@@ -619,6 +620,12 @@ $(document).on('change', '[data-action="restoid"]', function () {
 
 $(document).on('click', '.ui-menu-item', function() {
 	var rdpType = $('[data-action="search_by_type"]').val();
+	var rdpCountry = $('[data-action="auto-suggestion-rdp"]').val();
+	console.log(rdpType + ' - ' + rdpCountry);
+});
+
+$(document).on('change', '[data-action="search_by_type"]', function() {
+	var rdpType = $('option:selected', this).attr('val');
 	var rdpCountry = $('[data-action="auto-suggestion-rdp"]').val();
 	console.log(rdpType + ' - ' + rdpCountry);
 });
