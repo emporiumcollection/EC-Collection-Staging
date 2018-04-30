@@ -1385,7 +1385,7 @@ ul.calenderwrapper li .form-control.datefield {
 /*#filtersearchpopup{background:#89837b; }*/
 #filtersearchpopup ul li{border-bottom:1px solid #9f9588;}
 #filtersearchpopup ul li .searchresultdata{padding:15px 15px 15px 50px; position:relative; color:#fff; background:#89837b;}
-#filtersearchpopup ul li .searchresultdata:hover {color:#000;padding-left: 50px !important;}
+#filtersearchpopup ul li .searchresultdata:hover {padding-left: 50px !important;}
 #filtersearchpopup ul li .searchresultdata i.iconsheet{position:absolute; left:15px;  top:11px;width:25px; height:34px; background:url(../images/iconsheet.png) no-repeat;-webkit-transition: all .5s ease; -o-transition: all .5s ease; transition: all .5s ease;}
 
 #filtersearchpopup ul li .searchresultdata span{display:inline-block; margin-left:5px;}
