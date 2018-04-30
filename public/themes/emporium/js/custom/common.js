@@ -571,6 +571,15 @@ $(document).on('click', '[data-action="send-email-button"]', function () {
 });
 
 $(document).on('click', '[data-action="contactform-restaurant"]', function () {
-    var contactType = $(this).attr("id");
-    alert(contactType);
+    var contactType = $(this).attr("rel");
+    if(contactType 'Restaurant') {
+        $('.con-type').value(contactType);
+        $('#restoid').val(40);
+    } if(contactType 'Restaurant') {
+        $('.con-type').value(contactType);
+        $('#restoid').val(18);
+    } else {
+        $('.con-type').value('');
+        $('#dropdownid').val();
+    }
 });

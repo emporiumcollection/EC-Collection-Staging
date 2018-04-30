@@ -107,7 +107,7 @@
 														</div>
 													@endif
 												</div>
-												<p class="text-center"><a href="javascript:void(0)">Reservation</a> | <a data-action="contactform-restaurant" id="Restaurant" class="contactUsPopup contactPopupOne" href="javascript:void(0);">Contact Us</a></p>
+												<p class="text-center"><a href="javascript:void(0)">Reservation</a> | <a data-action="contactform-restaurant" rel="Restaurant" class="contactUsPopup contactPopupOne" href="javascript:void(0);">Contact Us</a></p>
 											</div>
 										</div>
 									</div>
@@ -134,7 +134,8 @@
 						<div class="row">
 							<div class="col-md-4">
 								 <div class="form-field">
-									 <select name="restoid">
+								 	<input class="con-type" type="hidden" name="res-type" value="" />
+									 <select id="restoid" name="restoid">
 										 <option>Please select</option>
 										 @if(!empty($resturantArr))
 											  @foreach($resturantArr as $resturant)
@@ -435,7 +436,7 @@
 													@endif
 												</div>
 												<!--<p class="text-center"><a href="javascript:void(0)">Bar</a> / <a class="contactUsPopup" data-toggle="modal" data-target="#contactPopupSection" href="javascript:void(0);">Contact Us</a></p>-->
-												<p class="text-center"><a href="javascript:void(0)">Bar</a> | <a id="Bar" data-action="contactform-restaurant" class="contactUsPopup contactPopupOne" href="javascript:void(0);">Contact Us</a></p>
+												<p class="text-center"><a href="javascript:void(0)">Bar</a> | <a rel="Bar" data-action="contactform-restaurant" class="contactUsPopup contactPopupOne" href="javascript:void(0);">Contact Us</a></p>
 											</div>
 										</div>
 									</div>
@@ -596,7 +597,7 @@
 	<!-- Greenry Section here -->
 	<div id="seasonal-events-top" class="greenrysection">
 	<!-- <div class="content-circle contentCirsclePopupBtn"> -->
-	<div id="" data-action="contactform-restaurant" class="content-circle contactPopupOne">
+	<div rel="" data-action="contactform-restaurant" class="content-circle contactPopupOne">
         <h2>Request</h2>
         <h3>A Table</h3>
         <p>Lorem ipsum dolor sit amet, mei omnium iudicabit cu. Eruditi urbanitas persequeris in has, mel te prodesset conceptam. Id quando deterruisset est. Quaestio scripserit nec eu. An argumentum temporibus usu, ne mei aeterno imperdiet, case aeque id vis.</p>
