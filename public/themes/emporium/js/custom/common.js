@@ -621,22 +621,36 @@ $(document).on('change', '[data-action="restoid"]', function () {
 $(document).on('click', '.ui-menu-item', function() {
 	var rdpType = $('[data-action="search_by_type"]').val();
 	var rdpCountry = $('[data-action="auto-suggestion-rdp"]').val();
-	
-	var datObj = {};
-	datObj.menuID = $(this).attr('data-id');
-	datObj.menu_pos = $(this).attr('data-position');
+	if(rdpType!='' && rdpCountry!='')
+	{
+		var datObj = {};
+		datObj.type = rdpType;
+		datObj.city = rdpCountry;
 
-	var params = $.extend({}, doAjax_params_default);
-	params['url'] = BaseURL + '/destination/resturant-spa-bar-by-type-city-ajax';
-	params['data'] = datObj;
-	params['successCallbackFunction'] = renderRdp;
-	doAjax(params);
+		var params = $.extend({}, doAjax_params_default);
+		params['url'] = BaseURL + '/destination/resturant-spa-bar-by-type-city-ajax';
+		params['data'] = datObj;
+		params['successCallbackFunction'] = renderRdp;
+		doAjax(params);
+	}
 });
 
 $(document).on('change', '[data-action="search_by_type"]', function() {
-	var rdpType = $(this.value);
+	var rdpType = $(this).val();
 	var rdpCountry = $('[data-action="auto-suggestion-rdp"]').val();
-	console.log(rdpType + ' - ' + rdpCountry);
+	
+	if(rdpType!='' && rdpCountry!='')
+	{
+		var datObj = {};
+		datObj.type = rdpType;
+		datObj.city = rdpCountry;
+
+		var params = $.extend({}, doAjax_params_default);
+		params['url'] = BaseURL + '/destination/resturant-spa-bar-by-type-city-ajax';
+		params['data'] = datObj;
+		params['successCallbackFunction'] = renderRdp;
+		doAjax(params);
+	}
 });
 
 
