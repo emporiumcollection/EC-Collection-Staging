@@ -18,7 +18,7 @@
                 {{-- End Global Search Bar --}}
 
                <li><a href="#spa1">INFO</a></li>
-               @if($spasArr[0]->video_type!='')
+               @if($spasArr[0]->video_type!='' || ($spasArr[0]->part_of_hotel==1 && $spasArr[0]->social_youtube!=''))
 					<li><a href="#video" class="">VIDEO</a></li>
 				@endif
                <!-- <li><a href="#get-directions">GET DIRECTIONS</a></li>-->

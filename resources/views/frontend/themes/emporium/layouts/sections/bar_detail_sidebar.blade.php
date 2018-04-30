@@ -17,7 +17,7 @@
                 @include('frontend.themes.emporium.layouts.sections.global-search-bar')
                 {{-- End Global Search Bar --}}
                 <li><a href="#bar1">INFO</a></li>
-				@if($barsArr[0]->video_type!='' || $barsArr[0]->part_of_hotel==1)
+				@if($barsArr[0]->video_type!='' || ($barsArr[0]->part_of_hotel==1 && $barsArr[0]->social_youtube!=''))
 					<li><a href="#video" class="">VIDEO</a></li>
 				@endif
                <!-- <li><a href="#get-directions">GET DIRECTIONS</a></li>-->

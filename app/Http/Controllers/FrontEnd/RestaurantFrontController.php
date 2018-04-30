@@ -213,6 +213,18 @@ class RestaurantFrontController extends Controller {
 			$rf=0;
 			
 			$resturantArr[$rf] = $resfileArr;
+			if($resfileArr->part_of_hotel==1)
+			{
+				$resturantArr[$rf]->social_youtube = '';
+				$qury = "Select social_youtube from tb_properties where FIND_IN_SET(".$resfileArr->id.",restaurant_ids) and restaurant_ids!='' and social_youtube !=''";
+				$exequry = \DB::select($qury);
+				//print_r($exequry); die;
+				if(!empty($exequry))
+				{
+					$resturantArr[$rf]->social_youtube = $exequry[0]->social_youtube;
+				}
+			}
+			
 			$fetchressliderfolder = \DB::table('tb_container')->join('tb_frontend_container', 'tb_frontend_container.container_id', '=', 'tb_container.id')->select('tb_container.id')->where('tb_container.parent_id', $resfileArr->folder_id)->where('tb_container.name', 'slider')->where('tb_frontend_container.container_type', 'folder')->first();
 			if(!empty($fetchressliderfolder))
 			{
@@ -318,6 +330,18 @@ class RestaurantFrontController extends Controller {
 		{
 			$sf=0;
 			$spasArr[$sf] = $spafileArr;
+			if($spafileArr->part_of_hotel==1)
+			{
+				$spasArr[$sf]->social_youtube = '';
+				$qury = "Select social_youtube from tb_properties where FIND_IN_SET(".$spafileArr->id.",spa_ids) and spa_ids!='' and social_youtube !=''";
+				$exequry = \DB::select($qury);
+				//print_r($exequry); die;
+				if(!empty($exequry))
+				{
+					$spasArr[$sf]->social_youtube = $exequry[0]->social_youtube;
+				}
+			}
+			
 			$fetchspasliderfolder = \DB::table('tb_container')->join('tb_frontend_container', 'tb_frontend_container.container_id', '=', 'tb_container.id')->select('tb_container.id')->where('tb_container.parent_id', $spafileArr->folder_id)->where('tb_container.name', 'slider')->where('tb_frontend_container.container_type', 'folder')->first();
 			if(!empty($fetchspasliderfolder))
 			{
