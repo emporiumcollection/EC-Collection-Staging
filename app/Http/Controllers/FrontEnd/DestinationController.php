@@ -285,6 +285,7 @@ class DestinationController extends Controller {
 	{
 		$res = array();
 		$type = $request->type;
+		$city = $request->city;
 		if($type!='' && $city!='')
 		{
 			$srchtbl = 'tb_restaurants';
