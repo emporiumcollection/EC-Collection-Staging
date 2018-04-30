@@ -1,6 +1,4 @@
-@extends('layouts.app')
 
-@section('content')
 
   <div class="page-content row">
     <!-- Page header -->
@@ -38,7 +36,7 @@
         </thead>
 
         <tbody>     
-			@if($reservedata!='')
+			@if(!empty($reservedata))
 				@foreach ($reservedata as $row)
 					<tr>
 						<td width="30"> {{ ++$i }} </td>
@@ -61,9 +59,8 @@
 	<input type="hidden" name="md" value="" />
 	</div>
 	
-	@include('footer')
+	
 	</div>
 </div>	
 	</div>	  
 </div>			
-@stop
