@@ -576,7 +576,7 @@ $(document).on('click', '[data-action="contactform-restaurant"]', function () {
         $('.con-type').val(contactType);
         $('#restoid').val(40);
         console.log(contactType);
-    } if(contactType == 'Bar') {
+    } else if(contactType == 'Bar') {
         $('.con-type').val(contactType);
         $('#restoid').val(18);
         console.log(contactType);
