@@ -343,10 +343,6 @@ class BarController extends Controller {
 		// End Filter sort and order for query 
 		// Filter Search for query		
 		$filter = (!is_null($request->input('search')) ? $this->buildSearch() : '');
-		if(\Session::get('gid')!=1 && \Session::get('gid')!=2){
-			$uid = \Auth::user()->id;
-			$filter .= " AND user_id = '".$uid."'" ;
-        }
 		
 		$page = $request->input('page', 1);
 		$params = array(
@@ -358,14 +354,18 @@ class BarController extends Controller {
 			'global'	=> (isset($this->access['is_global']) ? $this->access['is_global'] : 0 )
 		);
 		// Get Query 
-		$results = $this->model->getRows( $params );		
+		$this->data['reservedata'] = array();
+		$checkData = \DB::table('tb_restro_spa_bar_reservation')->where('tbl_id', $request->id)->where('reservetype', 'bar')->get();
+		if (!empty($checkData)) {
+			$this->data['reservedata'] = $checkData;
+		}		
 		
 		// Build pagination setting
 		$page = $page >= 1 && filter_var($page, FILTER_VALIDATE_INT) !== false ? $page : 1;	
-		$pagination = new Paginator($results['rows'], $results['total'], $params['limit']);	
-		$pagination->setPath('bar');
+		$pagination = new Paginator($this->data['reservedata'], count($this->data['reservedata']), $params['limit']);	
+		//$pagination->setPath('bar');
 		
-		$this->data['rowData']		= $results['rows'];
+		//$this->data['rowData']		= $results['rows'];
 		// Build Pagination 
 		$this->data['pagination']	= $pagination;
 		// Build pager number and append current param GET
@@ -383,11 +383,7 @@ class BarController extends Controller {
 		// Master detail link if any 
 		$this->data['subgrid']	= (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array()); 
 		// Render into template
-		$this->data['reservedata'] = array();
-		$checkData = \DB::table('tb_restro_spa_bar_reservation')->where('tbl_id', $request->id)->where('reservetype', 'bar')->get();
-		if (!empty($checkData)) {
-			$this->data['reservedata'] = $checkData;
-		}
+		
 		return view('bar.barreservationlist',$this->data);
 	}
 
