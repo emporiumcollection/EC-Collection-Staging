@@ -297,12 +297,20 @@ class DestinationController extends Controller {
 			{
 				$srchtbl = 'tb_spas';
 			}
-			
-			$searchtable = \DB::table($srchtbl)->select('id','title','alias')->where('category_id', $city)->get();
-			if(!empty($searchtable))
+			$checkcatid = \DB::table('tb_categories')->select('id')->where('category_name', $city)->first();
+			if(!empty($checkcatid))
 			{
-				$res['status'] = 'success';
-                $res['records'] = $searchtable;
+				$searchtable = \DB::table($srchtbl)->select('id','title','alias')->where('category_id', $checkcatid->id)->get();
+				if(!empty($searchtable))
+				{
+					$res['status'] = 'success';
+					$res['records'] = $searchtable;
+				}
+			}
+			else
+			{
+				$res['status'] = 'error';
+				$res['errors'] = 'Please select city first!';
 			}
 		}
 		else

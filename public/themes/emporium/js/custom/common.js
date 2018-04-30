@@ -99,7 +99,7 @@ $(document).ready(function () {
 
     });
 
-    $(document).on('change', '[data-action="search_by_type"]', function () {
+    /*$(document).on('change', '[data-action="search_by_type"]', function () {
         var datObj = {};
         datObj.type = $('select[data-action="search_by_type"]').val();
         datObj.city = $('select[data-action="search_by_city"]').val();
@@ -109,7 +109,7 @@ $(document).ready(function () {
         params['data'] = datObj;
         params['successCallbackFunction'] = renderResturantSpaBarByTypeCity;
         doAjax(params);
-    });
+    });*/
 
     $(document).on('change', '[data-action="make-reservation"]', function () {
         var datObj = {};
@@ -431,14 +431,14 @@ $(document).ready(function () {
 
 });
 
-function renderResturantSpaBarByTypeCity(dataObj) {
+/*function renderResturantSpaBarByTypeCity(dataObj) {
     var selectHtml = '<opyion value="">- Select -</option>';
     $(dataObj.records).each(function (i, val) {
         selectHtml += '<option value="' + val.id + '">' + val.title + '</option>';
     });
 
     $('[data-action="search_by_name"]').html(selectHtml);
-}
+}*/
 
 function renderResturantSpaBarSearch(dataObj) {
 
