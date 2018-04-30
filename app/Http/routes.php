@@ -292,7 +292,7 @@ Route::group(['middleware' => 'auth'], function()
 	Route::get('userorder_downloadinvoicepdf/{ordid}', 'UserorderController@ordersdownloadinvoicepdf');
 	Route::post('delete_menu_image', 'Sximo\MenuController@deleteMenuImage');
 	Route::get('restaurant_reservations/{id}', 'RestaurantController@Reservations');
-	Route::get('bar_reservations/{id}', 'BarController@barReservations');
+	Route::get('bar_reservations', 'BarController@barReservations');
 
 
 });	

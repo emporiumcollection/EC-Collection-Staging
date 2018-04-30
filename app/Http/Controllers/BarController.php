@@ -331,9 +331,10 @@ class BarController extends Controller {
 		return \Response::json($res);
     }
 
-	public function barReservations( $id)
+	public function barReservations( )
 	{	
-		$this->data['reservedata'] = '';
+	echo 'sdfgsdgfsd';
+die;		$this->data['reservedata'] = '';
 		$checkData = \DB::table('tb_restro_spa_bar_reservation')->where('tbl_id', $id)->where('reservetype', 'bar')->get();
 		if (!empty($checkData)) {
 			$this->data['reservedata'] = $checkData;
