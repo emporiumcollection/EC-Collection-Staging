@@ -2,7 +2,7 @@
 /*#search-result-slider .carousel-inner .item:after{opacity:0;-webkit-opacity:0;}*/
 #search-result-slider .carousel-caption{max-width:530px; height:100%; top:0; bottom:0; padding:136px 100px 50px 70px;}
 #search-result-slider .carousel-caption h6{margin:24px 0 0;}
-#search-result-slider .carousel-caption h2{font-family: GeomanistLight; font-size:21px; color:#ABA07C; margin:10px 0 10px; line-height:30px;}
+#search-result-slider .carousel-caption h2{font-family: GeomanistLight; font-size:18px; color:#ABA07C; margin:10px 0 10px; line-height:30px;}
 #search-result-slider .carousel-caption h2 a, #search-result-slider .carousel-caption h2 a:hover{color:#ABA07C;}
 #search-result-slider .carousel-caption p{font-size:14px; line-height:22px; height: 223px; overflow-y: auto;}
 #search-result-slider .carousel-control{background:#ABA07C; opacity:1;-webkit-opacity:1; width:auto; height:auto; padding:10px 20px; line-height:30px;}
