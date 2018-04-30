@@ -4,9 +4,9 @@
 					<div class="form-group">
 						<select name="search_by_type" data-action="search_by_type"  class="form-control">
 							<option value="">SELECT TYPE</option>
-							<option value="restaurant">Restaurant</option>
-							<option value="bar">Bar</option>
-							<option value="spa">Spa</option>
+							<option value="restaurants">Restaurant</option>
+							<option value="bars">Bar</option>
+							<option value="spas">Spa</option>
 						</select>
 					</div>
 				</div>

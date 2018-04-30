@@ -393,7 +393,7 @@ class RestaurantFrontController extends Controller {
 				\DB::table('tb_restro_spa_bar_reservation')->insertGetId($rsdata);
 				
 				$emlData['to'] 	 = $resArr->reservation_email;
-				$emlData['frmemail'] = $request->input('emailaddress');
+				$emlData['frmemail'] =  "info@emporium-voyage.com";
 				$emlData['subject'] = 'Table Reservation request for '.$resArr->title;
 				$emessage = '<p><b>Name : '.$resArr->title.'</b></p>';
 				$emessage = '<p><b>First name : '.$request->input('firstname').'</b></p>';
@@ -413,11 +413,13 @@ class RestaurantFrontController extends Controller {
 					$message->subject($emlData['subject']);
 				});
 				
+				$emlData['to'] 	= $request->input('emailaddress');
+				$emlData['frmemail'] =  "info@emporium-voyage.com";
 				\Mail::send('user.emails.contact', $edata, function($message) use ($emlData)
 				{
-					$message->from($emlData['to'], CNF_APPNAME);
+					$message->from($emlData['frmemail'], CNF_APPNAME);
 
-					$message->to( $emlData['frmemail']);
+					$message->to( $emlData['to']);
 					
 					$message->subject($emlData['subject']);
 				});
