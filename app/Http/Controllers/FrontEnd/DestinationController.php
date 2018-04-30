@@ -285,7 +285,7 @@ class DestinationController extends Controller {
 	{
 		$res = array();
 		$type = $request->type;
-		$city = $request->city;
+		echo $city = $request->city;
 		if($type!='' && $city!='')
 		{
 			$srchtbl = 'tb_restaurants';
@@ -298,6 +298,7 @@ class DestinationController extends Controller {
 				$srchtbl = 'tb_spas';
 			}
 			$checkcatid = \DB::table('tb_categories')->select('id')->where('category_name', $city)->first();
+			print_r($checkcatid);
 			if(!empty($checkcatid))
 			{
 				$searchtable = \DB::table($srchtbl)->select('id','title','alias')->where('category_id', $checkcatid->id)->get();
