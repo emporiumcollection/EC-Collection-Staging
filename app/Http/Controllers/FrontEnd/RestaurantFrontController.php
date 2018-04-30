@@ -259,6 +259,17 @@ class RestaurantFrontController extends Controller {
 		{
 			$bf=0;
 			$barsArr[$bf] = $barfileArr;
+			if($barfileArr->part_of_hotel==1)
+			{
+				$barsArr[$bf]->social_youtube = '';
+				$qury = "Select social_youtube from tb_properties where FIND_IN_SET(".$barfileArr->id.",bar_ids) and bar_ids!=''";
+				$exequry = \DB::select($qury);
+				if(!empty($exequry))
+				{
+					$barsArr[$bf]->social_youtube = $exequry->social_youtube;
+				}
+			}
+			
 			$fetchbarsliderfolder = \DB::table('tb_container')->join('tb_frontend_container', 'tb_frontend_container.container_id', '=', 'tb_container.id')->select('tb_container.id')->where('tb_container.parent_id', $barfileArr->folder_id)->where('tb_container.name', 'slider')->where('tb_frontend_container.container_type', 'folder')->first();
 			if(!empty($fetchbarsliderfolder))
 			{

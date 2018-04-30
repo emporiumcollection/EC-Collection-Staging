@@ -228,25 +228,29 @@
 			</section>
 		@endif
 	
-		@if($barsArr[0]->video_type!='')
-			<!-- Video Section starts here -->
-			<section id="video" class="videoSection">
-				@if($barsArr[0]->video_type=="link")
-					{{--*/ $vlink = explode('/',$barsArr[0]->video_link); $vimeoid = end($vlink); /*--}}
-                    @if($barsArr[0]->video_link_type=="youtube")
-                        {{--*/  $videolink = "https://www.youtube.com/embed/".$vimeoid; /*--}}
-                        <iframe src="{{$videolink}}" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                    @elseif($barsArr[0]->video_link_type=="vimeo")
-                        {{--*/  $videolink = "https://player.vimeo.com/video/".$vimeoid; /*--}}
-                        <iframe src="{{$videolink}}" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                    @endif
-				@elseif($barsArr[0]->video_type=="upload")
-					<video id="videoPoster" controls poster="{{ asset('themes/emporium/images/video-poster.jpg')}}">
-					  <source src="{{URL::to('uploads/bars/'.$barsArr[0]->video)}}" type="video/mp4">
-					</video>
-				@endif
-			</section>
-			<!-- Video Section END here -->
+		@if($barsArr[0]->part_of_hotel==1 && $barsArr[0]->social_youtube!='')
+			<div data-yt data-yt-channel="{{ $barsArr[0]->social_youtube }}" data-yt-content-columns="4"  data-yt-content-rows="1"></div>
+		@else
+			@if($barsArr[0]->video_type!='')
+				<!-- Video Section starts here -->
+				<section id="video" class="videoSection">
+					@if($barsArr[0]->video_type=="link")
+						{{--*/ $vlink = explode('/',$barsArr[0]->video_link); $vimeoid = end($vlink); /*--}}
+						@if($barsArr[0]->video_link_type=="youtube")
+							{{--*/  $videolink = "https://www.youtube.com/embed/".$vimeoid; /*--}}
+							<iframe src="{{$videolink}}" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+						@elseif($barsArr[0]->video_link_type=="vimeo")
+							{{--*/  $videolink = "https://player.vimeo.com/video/".$vimeoid; /*--}}
+							<iframe src="{{$videolink}}" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+						@endif
+					@elseif($barsArr[0]->video_type=="upload")
+						<video id="videoPoster" controls poster="{{ asset('themes/emporium/images/video-poster.jpg')}}">
+						  <source src="{{URL::to('uploads/bars/'.$barsArr[0]->video)}}" type="video/mp4">
+						</video>
+					@endif
+				</section>
+				<!-- Video Section END here -->
+			@endif
 		@endif
 	@endif
 	
@@ -446,6 +450,7 @@
 @section('javascript')
     @parent
 	<script src="{{ asset('sximo/js/parsley.min.js')}}" type="text/javascript"></script>
+	<script src="{{ asset('lib/yottie/jquery.yottie.bundled.js')}}"></script>
 @endsection
 
 {{-- For custom script --}}
