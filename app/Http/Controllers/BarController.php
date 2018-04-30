@@ -338,8 +338,8 @@ class BarController extends Controller {
 		if (!empty($checkData)) {
 			$this->data['reservedata'] = $checkData;
 		}
-		print_r($this->data['reservedata']);
-		//return view('bar.reservation_index',$this->data);	
+		//print_r($this->data['reservedata']);
+		return view('bar.reservation_index',$this->data);	
 	}	
 
 
