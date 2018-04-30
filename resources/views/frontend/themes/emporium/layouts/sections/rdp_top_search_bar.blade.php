@@ -12,11 +12,14 @@
 				</div>
 				<div class="col-sm-3 col-md-3">
 					<div class="form-group">
-						<select name="search_by_city" data-action="search_by_city" class="form-control">
+						<!--<select name="search_by_city" data-action="search_by_city" class="form-control">
 							<option value="">SEARCH BY CITY</option>
 							<option>CITY 01</option>
 							<option>CITY 02</option>
-						</select>
+						</select>-->
+						<div class="form-group ui-widget" >
+							<input type="text" name="s" data-action="auto-suggestion" placeholder="SEARCH BY CITY"/>
+						</div>
 					</div>
 				</div>
 				<div class="col-sm-2 col-md-2">
