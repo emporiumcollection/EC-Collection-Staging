@@ -33,7 +33,7 @@
 </div>
 <div class="searchresultnav backcontrol">
 	<ul>
-	    <li><a href="javascript:void(0)">BACK</a></li>
+	    <li><a href="javascript:void(0)" onclick="window.history.back();">BACK</a></li>
     	<li><a href="javascript:void(0)" id="back-to-top">TOP</a></li>
     </ul>
 </div>
