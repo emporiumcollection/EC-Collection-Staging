@@ -331,16 +331,65 @@ class BarController extends Controller {
 		return \Response::json($res);
     }
 
-	public function barReservations(Request $request, $id)
-	{	
+	public function barReservations( Request $request )
+	{
+
+		if($this->access['is_view'] ==0) 
+			return Redirect::to('dashboard')
+				->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus','error');
+
+		$sort = (!is_null($request->input('sort')) ? $request->input('sort') : 'id'); 
+		$order = (!is_null($request->input('order')) ? $request->input('order') : 'asc');
+		// End Filter sort and order for query 
+		// Filter Search for query		
+		$filter = (!is_null($request->input('search')) ? $this->buildSearch() : '');
+		if(\Session::get('gid')!=1 && \Session::get('gid')!=2){
+			$uid = \Auth::user()->id;
+			$filter .= " AND user_id = '".$uid."'" ;
+        }
+		
+		$page = $request->input('page', 1);
+		$params = array(
+			'page'		=> $page ,
+			'limit'		=> (!is_null($request->input('rows')) ? filter_var($request->input('rows'),FILTER_VALIDATE_INT) : static::$per_page ) ,
+			'sort'		=> $sort ,
+			'order'		=> $order,
+			'params'	=> $filter,
+			'global'	=> (isset($this->access['is_global']) ? $this->access['is_global'] : 0 )
+		);
+		// Get Query 
+		$results = $this->model->getRows( $params );		
+		
+		// Build pagination setting
+		$page = $page >= 1 && filter_var($page, FILTER_VALIDATE_INT) !== false ? $page : 1;	
+		$pagination = new Paginator($results['rows'], $results['total'], $params['limit']);	
+		$pagination->setPath('bar');
+		
+		$this->data['rowData']		= $results['rows'];
+		// Build Pagination 
+		$this->data['pagination']	= $pagination;
+		// Build pager number and append current param GET
+		$this->data['pager'] 		= $this->injectPaginate();	
+		// Row grid Number 
+		$this->data['i']			= ($page * $params['limit'])- $params['limit']; 
+		// Grid Configuration 
+		$this->data['tableGrid'] 	= $this->info['config']['grid'];
+		$this->data['tableForm'] 	= $this->info['config']['forms'];
+		$this->data['colspan'] 		= \SiteHelpers::viewColSpan($this->info['config']['grid']);		
+		// Group users permission
+		$this->data['access']		= $this->access;
+		// Detail from master if any
+		
+		// Master detail link if any 
+		$this->data['subgrid']	= (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array()); 
+		// Render into template
 		$this->data['reservedata'] = array();
-		$checkData = \DB::table('tb_restro_spa_bar_reservation')->where('tbl_id', $id)->where('reservetype', 'bar')->get();
+		$checkData = \DB::table('tb_restro_spa_bar_reservation')->where('tbl_id', $request->id)->where('reservetype', 'bar')->get();
 		if (!empty($checkData)) {
 			$this->data['reservedata'] = $checkData;
 		}
-		//print_r($this->data['reservedata']);
-		return view('bar.barreservationlist',$this->data);	
-	}	
+		return view('bar.barreservationlist',$this->data);
+	}
 
 
 }
