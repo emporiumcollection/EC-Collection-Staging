@@ -185,7 +185,7 @@ $(document).ready(function () {
                 /*if(ui.item.type) {
                     location.href=BaseURL + '/' + ui.item.id;
                 }*/
-				$('#rdpCounId').val(ui.item.value);
+				//$('#rdpCounId').val(ui.item.value);
             }
         })
         .autocomplete( "instance" )._renderItem = function( ul, item ) {
@@ -625,7 +625,7 @@ $(document).on('click', '.ui-menu-item', function() {
 });
 
 $(document).on('change', '[data-action="search_by_type"]', function() {
-	var rdpType = $('option:selected', this).attr('val');
+	var rdpType = $(this.value);
 	var rdpCountry = $('[data-action="auto-suggestion-rdp"]').val();
 	console.log(rdpType + ' - ' + rdpCountry);
 });
