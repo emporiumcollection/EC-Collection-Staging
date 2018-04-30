@@ -331,7 +331,7 @@ class BarController extends Controller {
 		return \Response::json($res);
     }
 
-	public function Reservations( $id)
+	public function barReservations( $id)
 	{	
 		$this->data['reservedata'] = '';
 		$checkData = \DB::table('tb_restro_spa_bar_reservation')->where('tbl_id', $id)->where('reservetype', 'bar')->get();
