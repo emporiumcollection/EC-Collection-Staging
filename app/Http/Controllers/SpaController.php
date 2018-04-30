@@ -409,7 +409,7 @@ class SpaController extends Controller {
 		$this->data['subgrid']	= (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array()); 
 		// Render into template
 		
-		return view('bar.spareservationlist',$this->data);
+		return view('spa.spareservationlist',$this->data);
 	}
 
 

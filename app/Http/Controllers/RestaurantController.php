@@ -410,7 +410,7 @@ class RestaurantController extends Controller {
 		$this->data['subgrid']	= (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array()); 
 		// Render into template
 		
-		return view('bar.reservation_index',$this->data);
+		return view('restaurant.reservation_index',$this->data);
 	}
 
 
