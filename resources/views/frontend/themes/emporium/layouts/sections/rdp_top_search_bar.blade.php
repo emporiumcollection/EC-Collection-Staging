@@ -18,7 +18,7 @@
 							<option>CITY 02</option>
 						</select>-->
 						<div class="form-group ui-widget" >
-							<input type="text" name="s" data-action="auto-suggestion" placeholder="SEARCH BY CITY"/>
+							<input type="text" name="rdp" data-action="auto-suggestion-rdp" placeholder="SEARCH BY CITY"/>
 						</div>
 					</div>
 				</div>

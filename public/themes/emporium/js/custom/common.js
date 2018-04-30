@@ -165,6 +165,41 @@ $(document).ready(function () {
             .appendTo( ul );
         };
     }
+	
+	if($('[data-action="auto-suggestion-rdp"]').length) {   
+        $('[data-action="auto-suggestion-rdp"]').autocomplete({
+            source: function (request, response) {
+                var datObj = {};
+                datObj.keyword = request.term;
+                var params = $.extend({}, doAjax_params_default);
+                params['url'] = BaseURL + '/destination/auto-suggestion-ajax';
+                params['data'] = datObj;
+                params['dataType'] = 'jsonp';
+                params['successCallbackFunction'] = function (data) {
+                    response(data);
+                };
+                doAjax(params);
+            },
+            minLength: 2,
+            select: function (event, ui) {
+                if(ui.item.type) {
+                    location.href=BaseURL + '/' + ui.item.id;
+                }
+            }
+        })
+        .autocomplete( "instance" )._renderItem = function( ul, item ) {
+            var destIcon = '';
+            if(!item.type) {
+                destIcon = '<i class="iconsheet icon-collections"></i>';
+            }
+			
+            return $('<li>')
+			if(!item.type) {
+				.append( destIcon + item.label )
+			}
+            .appendTo( ul );
+        };
+    }
 
    /*
    * For Global Search
