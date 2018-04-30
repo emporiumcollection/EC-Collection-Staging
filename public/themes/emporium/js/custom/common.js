@@ -572,12 +572,16 @@ $(document).on('click', '[data-action="send-email-button"]', function () {
 
 $(document).on('click', '[data-action="contactform-restaurant"]', function () {
     var contactType = $(this).attr("rel");
+    var contactRel = $(this).attr("rel");
     if(contactType == 'Restaurant') {
         $('.con-type').val(contactType);
-        $('#restoid').val(40);
+        $('#restoid').val(contactRel);
     } else if(contactType == 'Bar') {
         $('.con-type').val(contactType);
-        $('#restoid').val(18);
+        $('#restoid').val(contactRel);
+    } else if(contactType == 'Spa') {
+        $('.con-type').val(contactType);
+        $('#restoid').val(contactRel);
     } else {
         $('.con-type').val('');
         $('#restoid').val(0);
