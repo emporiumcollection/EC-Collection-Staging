@@ -617,7 +617,7 @@ $(document).on('change', '[data-action="restoid"]', function () {
     $('.con-type').val(contactType);
 });
 
-$(document).on('click'), '.ui-menu-item', function() {
+$(document).on('click', '.ui-menu-item', function() {
 	var rdpType = $('[data-action="search_by_type"]').val();
 	var rdpCountry = $('[data-action="auto-suggestion-rdp"]').val();
 	console.log(rdpType + ' - ' + rdpCountry);
