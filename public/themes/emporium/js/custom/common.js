@@ -632,6 +632,8 @@ $(document).on('click', '.ui-menu-item', function() {
 		params['data'] = datObj;
 		params['successCallbackFunction'] = renderRdp;
 		doAjax(params);
+	} else {
+		$('[data-action="search_by_name"]').html("<option >-Select-</option>");
 	}
 });
 
@@ -651,6 +653,9 @@ $(document).on('change', '[data-action="search_by_type"]', function() {
 		params['successCallbackFunction'] = renderRdp;
 		doAjax(params);
 	}
+	else {
+		$('[data-action="search_by_name"]').html("<option >-Select-</option>");
+	}
 });
 
 
@@ -658,10 +663,17 @@ function renderRdp(dataObj) {
     if (dataObj.records == undefined) {        
         return false;
     }
-	var Html = '';
+	var Html = '<option>-Select-</option>';
+	$('[data-action="search_by_name"]').html("<option>-Select-</option>");
     $(dataObj.records).each(function (i, val) {
         var Html = '<option value="'+val.alias+'">'+val.title+'</option>';
 		$('[data-action="search_by_name"]').html(Html);
-		console.log(Html);
     });
 }
+
+$(document).on('click', '[data-action="make-reservation"]', function () {
+    var rdpType = $('[data-action="search_by_type"]').val();
+	var rdpCountry = $('[data-action="search_by_name"]').val();
+
+	window.location.href = BaseURL+'/'+rdpType+'/'+rdpCountry;
+});
