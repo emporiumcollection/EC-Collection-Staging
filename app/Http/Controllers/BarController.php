@@ -350,6 +350,9 @@ class BarController extends Controller {
 		if (!empty($checkData)) {
 			$this->data['reservedata'] = $checkData;
 		}
+		$this->data['pagination']	= 1;
+		// Build pager number and append current param GET
+		$this->data['pager'] 		= 1;
 		//print_r($this->data['reservedata']);
 		return view('bar.barreservationlist',$this->data);	
 	}	
