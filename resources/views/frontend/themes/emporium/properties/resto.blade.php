@@ -138,7 +138,17 @@
 										 <option>Please select</option>
 										 @if(!empty($resturantArr))
 											  @foreach($resturantArr as $resturant)
-												<option value="{{$resturant->id}}">{{$resturant->title}}</option>
+												<option value="{{$resturant->id}}" rel="restro">{{$resturant->title}}</option>
+											  @endforeach
+										  @endif
+										  @if(!empty($barsArr))
+											  @foreach($barsArr as $bar)
+												<option value="{{$bar->id}}" rel="bar">{{$bar->title}}</option>
+											  @endforeach
+										  @endif
+										  @if(!empty($spasArr))
+											  @foreach($spasArr as $spa)
+												<option value="{{$spa->id}}" rel="spa">{{$spa->title}}</option>
 											  @endforeach
 										  @endif
 									 </select>
