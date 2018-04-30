@@ -271,7 +271,8 @@ class DestinationController extends Controller {
 				{
 					$dataArr[$d]['id'] = $destinations->category_alias;
 					$dataArr[$d]['label'] = $destinations->category_name;
-					$dataArr[$d]['value'] = $destinations->id;
+					$dataArr[$d]['value'] = $destinations->category_name;
+					$dataArr[$d]['ids'] = $destinations->id;
 					$d++;
 				}
             }

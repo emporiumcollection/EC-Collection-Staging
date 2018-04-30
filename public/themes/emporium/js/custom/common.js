@@ -185,7 +185,7 @@ $(document).ready(function () {
                 /*if(ui.item.type) {
                     location.href=BaseURL + '/' + ui.item.id;
                 }*/
-				//$('#rdpCounId').val(ui.item.value);
+				$('#rdpCounId').val(ui.item.ids);
             }
         })
         .autocomplete( "instance" )._renderItem = function( ul, item ) {
