@@ -331,36 +331,14 @@ class BarController extends Controller {
 		return \Response::json($res);
     }
 
-	public function barReservations( $id)
+	public function barReservations(Request $request, $id)
 	{	
-		if($id =='')
-		{
-			if($this->access['is_add'] ==0 )
-			return Redirect::to('dashboard')->with('messagetext',\Lang::get('core.note_restric'))->with('msgstatus','error');
-		}	
-		
-		if($id !='')
-		{
-			if($this->access['is_edit'] ==0 )
-			return Redirect::to('dashboard')->with('messagetext',\Lang::get('core.note_restric'))->with('msgstatus','error');
-		}				
-				
-		$row = $this->model->find($id);
-		if($row)
-		{
-			$this->data['row'] =  $row;
-		} else {
-			$this->data['row'] = $this->model->getColumnTable('tb_bars'); 
-		}
-		$this->data['fields'] 		=  \SiteHelpers::fieldLang($this->info['config']['forms']);
-		
-		$this->data['id'] = $id;
-		
 		$this->data['reservedata'] = array();
 		$checkData = \DB::table('tb_restro_spa_bar_reservation')->where('tbl_id', $id)->where('reservetype', 'bar')->get();
 		if (!empty($checkData)) {
 			$this->data['reservedata'] = $checkData;
 		}
+		//print_r($this->data['reservedata']);
 		return view('bar.barreservationlist',$this->data);	
 	}	
 
