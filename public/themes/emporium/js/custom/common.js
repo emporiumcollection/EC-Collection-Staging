@@ -572,7 +572,7 @@ $(document).on('click', '[data-action="send-email-button"]', function () {
 
 $(document).on('click', '[data-action="contactform-restaurant"]', function () {
     var contactType = $(this).attr("rel");
-    var contactRel = $(this).attr("rel2");
+    var contactRel = $(this).attr("rel2");	
     if(contactType == 'Restaurant') {
         $('.con-type').val(contactType);
         $('#restoid').val(contactRel);
@@ -589,6 +589,7 @@ $(document).on('click', '[data-action="contactform-restaurant"]', function () {
 });
 
 $(document).on('change', '[data-action="restoid"]', function () {
-    var contactType = $(this).attr("rel");
+    //var contactType = $(this).attr("rel");
+	 var contactType = $(this + "option:selected").attr("rel");
     alert(contactType);
 });
