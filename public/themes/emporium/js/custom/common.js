@@ -575,14 +575,11 @@ $(document).on('click', '[data-action="contactform-restaurant"]', function () {
     if(contactType == 'Restaurant') {
         $('.con-type').val(contactType);
         $('#restoid').val(40);
-        console.log(contactType);
     } else if(contactType == 'Bar') {
         $('.con-type').val(contactType);
         $('#restoid').val(18);
-        console.log(contactType);
     } else {
         $('.con-type').val('');
-        $('#dropdownid').val(0);
-        console.log(contactType);
+        $('#restoid').val(0);
     }
 });
