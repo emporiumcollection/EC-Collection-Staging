@@ -356,7 +356,7 @@ class RestaurantController extends Controller {
 		return \Response::json($res);
     }
 	
-	public function getReservations( $id = null)
+	public function Reservations( $id = null)
 	{	
 		$this->data['reservedata'] = '';
 		$checkData = \DB::table('tb_restro_spa_bar_reservation')->where('tbl_id', $id)->where('reservetype', 'restro')->get();
