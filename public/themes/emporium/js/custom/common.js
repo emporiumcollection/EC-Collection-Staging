@@ -673,6 +673,7 @@ function renderRdp(dataObj) {
 $(document).on('click', '[data-action="make-reservation"]', function () {
     var rdpType = $('[data-action="search_by_type"]').val();
 	var rdpCountry = $('[data-action="search_by_name"]').val();
-
-	window.location.href = BaseURL+'/'+rdpType+'/'+rdpCountry;
+	if(rdpType != '' && rdpCountry != ''){
+		window.location.href = BaseURL+'/'+rdpType+'/'+rdpCountry;
+	}
 });
