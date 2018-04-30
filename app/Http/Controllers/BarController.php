@@ -333,6 +333,7 @@ class BarController extends Controller {
 
 	public function barReservations( $id)
 	{	
+		$this->data['access']		= $this->access;
 		$this->data['reservedata'] = array();
 		$checkData = \DB::table('tb_restro_spa_bar_reservation')->where('tbl_id', $id)->where('reservetype', 'bar')->get();
 		if (!empty($checkData)) {
