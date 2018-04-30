@@ -254,5 +254,30 @@ class DestinationController extends Controller {
 		$ajxData = json_encode($dataArr);
 		echo $request->callback.'('.$ajxData.')';
     }
+	
+	public function getAutoSuggestionAjaxRdp(Request $request) {
+		
+		$keyword = trim($request->keyword);
+
+		$dataArr = $respns = array(); 
+		$d=0;
+		if($keyword!='')
+		{
+            $fetchdestinations = DB::table('tb_categories')->select('id', 'category_name', 'category_alias')->where('category_published', 1)->where('category_name', 'like', '%'.$keyword.'%')->get();
+
+            if(!empty($fetchdestinations))
+            {
+                foreach($fetchdestinations as $destinations)
+				{
+					$dataArr[$d]['id'] = $destinations->category_alias;
+					$dataArr[$d]['label'] = $destinations->category_name;
+					$dataArr[$d]['value'] = $destinations->category_name;
+					$d++;
+				}
+            }
+		}
+		$ajxData = json_encode($dataArr);
+		echo $request->callback.'('.$ajxData.')';
+    }
 
 }

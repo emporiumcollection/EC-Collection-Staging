@@ -172,7 +172,7 @@ $(document).ready(function () {
                 var datObj = {};
                 datObj.keyword = request.term;
                 var params = $.extend({}, doAjax_params_default);
-                params['url'] = BaseURL + '/destination/auto-suggestion-ajax';
+                params['url'] = BaseURL + '/destination/auto-suggestion-ajax-rdp';
                 params['data'] = datObj;
                 params['dataType'] = 'jsonp';
                 params['successCallbackFunction'] = function (data) {
@@ -188,15 +188,11 @@ $(document).ready(function () {
             }
         })
         .autocomplete( "instance" )._renderItem = function( ul, item ) {
-            var destIcon = '';
-            if(!item.type) {
-                destIcon = '<i class="iconsheet icon-collections"></i>';
-            }
+            
+			
 			
             return $('<li>')
-			if(!item.type) {
-				.append( destIcon + item.label )
-			}
+            .append( destIcon + item.label )
             .appendTo( ul );
         };
     }
