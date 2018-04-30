@@ -572,14 +572,17 @@ $(document).on('click', '[data-action="send-email-button"]', function () {
 
 $(document).on('click', '[data-action="contactform-restaurant"]', function () {
     var contactType = $(this).attr("rel");
-    if(contactType 'Restaurant') {
+    if(contactType == 'Restaurant') {
         $('.con-type').value(contactType);
         $('#restoid').val(40);
-    } if(contactType 'Restaurant') {
+        console.log(contactType);
+    } if(contactType == 'Restaurant') {
         $('.con-type').value(contactType);
         $('#restoid').val(18);
+        console.log(contactType);
     } else {
         $('.con-type').value('');
         $('#dropdownid').val();
+        console.log(contactType);
     }
 });
