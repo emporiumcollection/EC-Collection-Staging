@@ -434,7 +434,8 @@
 														</div>
 													@endif
 												</div>
-												<p class="text-center"><a href="javascript:void(0)">Bar</a> / <a class="contactUsPopup" data-toggle="modal" data-target="#contactPopupSection" href="javascript:void(0);">Contact Us</a></p>
+												<!--<p class="text-center"><a href="javascript:void(0)">Bar</a> / <a class="contactUsPopup" data-toggle="modal" data-target="#contactPopupSection" href="javascript:void(0);">Contact Us</a></p>-->
+												<p class="text-center"><a href="javascript:void(0)">Bar</a> | <a class="contactUsPopup contactPopupOne" href="javascript:void(0);">Contact Us</a></p>
 											</div>
 										</div>
 									</div>
