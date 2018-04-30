@@ -1390,11 +1390,11 @@ ul.calenderwrapper li .form-control.datefield {
 
 #filtersearchpopup ul li .searchresultdata span{display:inline-block; margin-left:5px;}
 
-#filtersearchpopup ul li .searchresultdata i.iconsheet.icon-destinations{background-position: -1px -156px;}
-#filtersearchpopup ul li .searchresultdata i.iconsheet.icon-collections{background-position: -1px -5px;}
-#filtersearchpopup ul li .searchresultdata i.iconsheet.icon-restaurant{background-position: -1px -216px;}
-#filtersearchpopup ul li .searchresultdata i.iconsheet.icon-bar{background-position: -1px -54px;}
-#filtersearchpopup ul li .searchresultdata i.iconsheet.icon-spa{background-position: -1px -107px;}
+#filtersearchpopup ul li .searchresultdata i.iconsheet.icon-destinations{background-position: 0 -131px;}
+#filtersearchpopup ul li .searchresultdata i.iconsheet.icon-collections{background-position: 0 1px;}
+#filtersearchpopup ul li .searchresultdata i.iconsheet.icon-restaurant{background-position: 0 -187px;}
+#filtersearchpopup ul li .searchresultdata i.iconsheet.icon-bar{background-position: 0 -43px;}
+#filtersearchpopup ul li .searchresultdata i.iconsheet.icon-spa{background-position: 0 -89px;}
 /*
 #filtersearchpopup ul li .searchresultdata:hover i.iconsheet.icon-destinations{background-position: -43px -156px;}
 #filtersearchpopup ul li .searchresultdata:hover i.iconsheet.icon-collections{background-position: -44px -5px;}
