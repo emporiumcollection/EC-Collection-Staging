@@ -285,7 +285,7 @@
 					dataGridHtml +='<figure>';
 					var imgscr = BaseURL + '/propertyimagebyid/'+obj.id;
 					dataGridHtml += '<img src="' + imgscr + '" />';
-					dataGridHtml +='<a href="'+obj.property_slug+'" class="content-overlay">';
+					dataGridHtml +='<a href="'+BaseURL+'/'+obj.property_slug+'" class="content-overlay">';
 					dataGridHtml +='<h5>'+obj.property_name+'</h5>';
 					dataGridHtml +='</a>';
 					dataGridHtml +='</figure>';
@@ -344,7 +344,7 @@
 					dataGridHtml +='<figure>';
 					var imgscr = BaseURL + '/propertyimagebyid/'+obj.id;
 					dataGridHtml += '<img src="' + imgscr + '" />';
-					dataGridHtml +='<a href="'+obj.property_slug+'" class="content-overlay">';
+					dataGridHtml +='<a href="'+BaseURL+'/'+obj.property_slug+'" class="content-overlay">';
 					dataGridHtml +='<h5>'+obj.property_name+'</h5>';
 					if(obj.category_name!=undefined && obj.category_name!=""){
 						dataGridHtml +='<p>From € '+obj.price+' '+obj.category_name+'</p>';
