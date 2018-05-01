@@ -506,7 +506,7 @@ class PropertyController extends Controller {
 		return false;*/
 		
 		$image = Image::make('http://34.244.60.137/uploads/menu_imgs/77006192-24315553.jpg')->resize(600, 600)->response('jpg');
-		
+		return $image;
 	}
 
 
