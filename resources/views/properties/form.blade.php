@@ -41,10 +41,10 @@
                             <li class="yachtin" style="display:none;"><a href="#yachtinfo" data-toggle="tab">Yacht Info </a></li>
                             <li class=""><a href="#rooms_suites" data-toggle="tab">Rooms & Suites</a></li>
                             <li class=""><a href="#architecture_design" data-toggle="tab">Architecture & Design</a></li>
-                            <li class="" ><a href="#spas" data-toggle="tab" >Spas</a></li>
+                            <!--<li class="" ><a href="#spas" data-toggle="tab" >Spas</a></li>
                             <li class="" ><a href="#restaurant" data-toggle="tab" >Restaurant</a></li>
                             <li class="" ><a href="#bar" data-toggle="tab" >Bar</a></li>
-                            <li class="" ><a href="#video" data-toggle="tab" >Video</a></li>
+                            <li class="" ><a href="#video" data-toggle="tab" >Video</a></li>-->
                             <li class="" ><a href="#socialmedia" data-toggle="tab" >Social Networks</a></li>
                         </ul>
                         <div class="tab-content">
@@ -324,7 +324,7 @@
                                         </select> 
                                     </div> 
                                     <div class="col-md-2">
-
+										<a href="{{URL::to('restaurant')}}" >Add Restaurants</a>
                                     </div>
                                 </div>
 								
@@ -341,7 +341,7 @@
                                         </select> 
                                     </div> 
                                     <div class="col-md-2">
-
+										<a href="{{URL::to('bar')}}" >Add Bars</a>
                                     </div>
                                 </div>
 								
@@ -358,7 +358,7 @@
                                         </select> 
                                     </div> 
                                     <div class="col-md-2">
-
+										<a href="{{URL::to('spa')}}" >Add Spas</a>
                                     </div>
                                 </div>
 
