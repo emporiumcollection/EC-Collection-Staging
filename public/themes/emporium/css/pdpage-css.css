@@ -697,7 +697,7 @@ position: absolute;
 	#luxury-hotel-selection .hotel-card:hover .content-overlay{padding-top:125px;}	
 	#luxury-hotel-selection.search-result .hotel-card:hover .content-overlay{padding-top:125px;}
 	.sliderArrow a.nextClick{margin-left:125px;}
-	#luxury-hotel-selection.search-result .col-sm-6{padding:0 30px;}
+	#luxury-hotel-selection.search-result .col-sm-6{padding:0 45px;}
 }
 
 @media screen and (max-width: 991px) {
