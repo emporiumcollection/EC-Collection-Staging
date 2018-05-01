@@ -488,7 +488,7 @@ class PropertyController extends Controller {
 	
 	public function getPropertyImageById(Request $request)
 	{
-		$propid = $request->propid;
+		/*$propid = $request->propid;
 		$propertyImage = CustomQuery::getPropertyImage($propid);
 		if(!empty($propertyImage))
 		{
@@ -503,7 +503,10 @@ class PropertyController extends Controller {
             return $image;
 
 		}
-		return false;
+		return false;*/
+		
+		$image = Image::make('http://34.244.60.137/uploads/menu_imgs/77006192-24315553.jpg')->resize(600, 600)->response('jpg');
+		echo $image;
 	}
 
 
