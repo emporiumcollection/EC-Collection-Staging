@@ -63,7 +63,7 @@ body.open{overflow:hidden;}
 		margin: 20px 0 40px;
 	}
 	
-	.mobilemenu{min-width:500px; left:-100%;z-index:99999;}
+	.mobilemenu{min-width:500px; left:-100%;z-index:99999; border-right:0;}
 	.mobilemenu-inner{width:460px; max-width:none}
 	.mobileaddbanner{display:block;}
 	.mobileaddbanner img{margin:0 auto;}
