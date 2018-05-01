@@ -99,7 +99,7 @@
 										@if(!empty($propertyImage) && count($propertyImage)>0)
 											
 											@if(isset($propertyImage))
-												<img alt="{{ $propertyImage->file_name }}" src="{{$propertyImage->img_src}}" />
+												<img alt="{{ $propertyImage->file_name }}" src="{{ CustomQuery::getPropertyImageio($props->id) }}" />
 													{{ CustomQuery::getPropertyImageio($props->id) }}
 											@endif
 										@endif
