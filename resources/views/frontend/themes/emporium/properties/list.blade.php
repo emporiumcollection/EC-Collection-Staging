@@ -95,7 +95,7 @@
 								<div class="hotel-card">
 									<figure>
 										{{--*/ $propertyImage = CustomQuery::getPropertyImage($props->id); /*--}}
-											{{dd($propertyImage)}}
+
 										@if(!empty($propertyImage) && count($propertyImage)>0)
 											
 											@if(isset($propertyImage))
