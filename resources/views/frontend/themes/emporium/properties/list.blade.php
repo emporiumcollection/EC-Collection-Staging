@@ -95,7 +95,7 @@
 								<div class="hotel-card">
 									<figure>
 										
-												<img alt="{{ $propertyImage->file_name }}" src="{{URL::to('propertyimagebyid/'.$props->id)}}" />
+												<img alt="" src="{{URL::to('propertyimagebyid/'.$props->id)}}" />
 												
 											
 										
