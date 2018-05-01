@@ -344,14 +344,14 @@
                                     <li>
                                         <h3>Arrival</h3>
                                         <div class="form-group">
-                                            <input name="arrive" id="reservationdate1" class="form-control datefield reservationdate" type="text" readonly required>
+                                            <input name="arrive" id="reservationdate-1" class="form-control datefield reservationdate" type="text" readonly required>
                                             <div class="input-group-icon"><i class="fa fa-calander"></i></div>
                                         </div>
                                     </li>
                                     <li>
                                         <h3>Departure</h3>
                                         <div class="form-group">
-                                            <input name="departure" id="reservationdate1" class="form-control datefield reservationdate" type="text" readonly required>
+                                            <input name="departure" id="reservationdate-2" class="form-control datefield reservationdate" type="text" readonly required>
                                             <div class="input-group-icon"><i class="fa fa-calander"></i></div>
                                         </div>
                                     </li>
