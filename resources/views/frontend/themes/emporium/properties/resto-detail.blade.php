@@ -419,8 +419,7 @@
 
 {{--For Right Side Icons --}}
 @section('right_side_iconbar')
-
-	@parent
+	@include('frontend.themes.emporium.layouts.sections.rdp_right_iconbar')
 @endsection
 
 {{-- For Include style files --}}
