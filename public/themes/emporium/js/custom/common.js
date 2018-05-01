@@ -148,8 +148,13 @@ $(document).ready(function () {
 
                 if(ui.item.type == 'category') {
                     location.href=BaseURL + '/' + ui.item.id;
-                }
-
+                } else if(ui.item.type == 'restro') {
+                    location.href=BaseURL + '/restaurants/' + ui.item.id;
+                } else if(ui.item.type == 'bar') {
+                    location.href=BaseURL + '/bars/' + ui.item.id;
+                } else if(ui.item.type == 'spa') {
+                    location.href=BaseURL + '/spas/' + ui.item.id;
+                } else {}
             }
         })
         .autocomplete( "instance" )._renderItem = function( ul, item ) {
