@@ -350,7 +350,7 @@
 #design-architecture .content-box .quote-small-box p:after{content:""; background:url(../images/comma.png) center no-repeat; position:absolute; right:0; bottom:0; width:19px; height:16px;}
 /** Selection of Luxury Hotels **/
 #luxury-hotel-selection{background:#252525; padding:20px 30px 40px;max-width:1510px; margin:0 auto;}
-#luxury-hotel-selection.search-result .col-sm-6{padding:0 40px;}
+#luxury-hotel-selection.search-result .col-sm-6{padding:0 45px;}
 #luxury-hotel-selection .heading{letter-spacing:5px; font-size:13px; color:#ABA07C; text-transform:uppercase; text-align:center;font-family: 'geomanistlightwebfont'; margin:0 0 40px;}
 #luxury-hotel-selection .hotel-card .quicklinks li a i, #luxury-hotel-selection  .hotel-card .cartlink{color:#ABA07C;}
 #luxury-hotel-selection .hotel-card .title h3 a { color: #ABA07C; font-size: 16px !important;}
