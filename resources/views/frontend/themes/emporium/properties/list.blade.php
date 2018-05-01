@@ -94,15 +94,10 @@
 							<div class="col-sm-6 col-md-6 col-lg-4">
 								<div class="hotel-card">
 									<figure>
-										{{--*/ $propertyImage = CustomQuery::getPropertyImage($props->id); /*--}}
-
-										@if(!empty($propertyImage) && count($propertyImage)>0)
+										
+												<img alt="{{ $propertyImage->file_name }}" src="{{URL::to('propertyimagebyid/'.$props->id)}}" />
+												
 											
-											@if(isset($propertyImage))
-												<img alt="{{ $propertyImage->file_name }}" src="{{ CustomQuery::getPropertyImageio($props->id) }}" />
-													{{ CustomQuery::getPropertyImageio($props->id) }}
-											@endif
-										@endif
 										
 										<a href="{{URL::to($props->property_slug)}}" class="content-overlay">
 											<h5>{{ $props->property_name}}</h5>

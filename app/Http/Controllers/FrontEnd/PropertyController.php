@@ -488,25 +488,22 @@ class PropertyController extends Controller {
 	
 	public function getPropertyImageById(Request $request)
 	{
-		/*$propid = $request->propid;
+		$propid = $request->propid;
 		$propertyImage = CustomQuery::getPropertyImage($propid);
 		if(!empty($propertyImage))
 		{
             $remoteImage = $propertyImage->img_src;
             $width = Image::make($remoteImage)->width();
-            if( $width >600){
+            /*if( $width >600){
                 $image = Image::make($remoteImage)->resize(600, 600)->response('jpg');
             }else{
                 $image = Image::make($remoteImage)->response('jpg');
-            }
-
+            }*/
+			$image = Image::make($remoteImage)->resize(600, 600)->response('jpg');
             return $image;
 
 		}
-		return false;*/
-		
-		$image = Image::make('http://34.244.60.137/uploads/menu_imgs/77006192-24315553.jpg')->resize(600, 600)->response('jpg');
-		return $image;
+		return false;
 	}
 
 

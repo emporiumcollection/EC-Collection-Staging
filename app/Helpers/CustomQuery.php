@@ -28,18 +28,5 @@ class CustomQuery
 
     }
 
-    static function getPropertyImageio($propId){
-		$containerObj = new \App\Http\Controllers\ContainerController;
-		$proertyObj = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $propId)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
-		if(!empty($proertyObj))
-		{
-			$filepth = $containerObj->getContainerUserPath($proertyObj->folder_id).$proertyObj->file_name;
-			
-			$img_src = \Image::make($filepth)->resize(600, 600)->response('png');
-			return $img_src;
-		}
-		return false;
-
-
-    }
+    
 }
