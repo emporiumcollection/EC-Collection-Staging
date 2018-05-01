@@ -20,9 +20,35 @@
             @endif
         </li>
         <li class="calander"><a href="javascript:void(0)"><i class="fa fa-calendar"></i></a></li>
-        <li><a href="javascript:void(0)"  class="showprevnextimage"><img src="{{ asset('themes/emporium/images/editorial-left-arrow.png') }}" alt=""/>
-        <span class="nextprevshow" style="display: none; opacity: 1;"><img src="{{ asset('themes/emporium/images/nextprev-image.jpg') }}" alt="" width="200"></span></a></li>
-        <li><a href="javascript:void(0)" class="showprevnextimage"><img src="{{ asset('themes/emporium/images/editorial-right-arrow.png') }}" alt=""/><span class="nextprevshow" style="display: none; opacity: 1;"><img src="{{ asset('themes/emporium/images/nextprev-image.jpg') }}" alt="" width="200"></span></a></li>
+		
+		@if(!empty($relatedgridpropertiesArr))
+			@if(array_key_exists('0',$relatedgridpropertiesArr))
+				<li>
+					<a href="javascript:void(0)"  class="showprevnextimage">
+						<img src="{{ asset('themes/emporium/images/editorial-left-arrow.png') }}" alt=""/>
+						<span class="nextprevshow" style="display: none; opacity: 1;">
+							@if(array_key_exists('image', $relatedgridpropertiesArr[0]))
+								<img src="{{url('uploads/property_imgs_thumbs/front_property_'.$relatedgridpropertiesArr[0]['image']->folder_id.'_'.$relatedgridpropertiesArr[0]['image']->file_name)}}" alt="{{$relatedgridpropertiesArr[0]['data']->property_name}}" width="200">
+							@endif
+						</span>
+					</a>
+				</li>
+			@endif
+			
+			@if(array_key_exists('1',$relatedgridpropertiesArr))
+				<li>
+					<a href="javascript:void(0)" class="showprevnextimage">
+						<img src="{{ asset('themes/emporium/images/editorial-right-arrow.png') }}" alt=""/>
+						<span class="nextprevshow" style="display: none; opacity: 1;">
+							@if(array_key_exists('image', $relatedgridpropertiesArr[1]))
+								<img src="{{url('uploads/property_imgs_thumbs/front_property_'.$relatedgridpropertiesArr[1]['image']->folder_id.'_'.$relatedgridpropertiesArr[1]['image']->file_name)}}" alt="{{$relatedgridpropertiesArr[1]['data']->property_name}}" width="200">
+							@endif
+						</span>
+					</a>
+				</li>
+			@endif
+		@endif
+		
     </ul>
 </div>
 <div class="pdprightnav contactfixed">
