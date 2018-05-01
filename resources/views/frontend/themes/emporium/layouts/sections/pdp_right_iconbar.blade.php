@@ -20,8 +20,9 @@
             @endif
         </li>
         <li class="calander"><a href="javascript:void(0)"><i class="fa fa-calendar"></i></a></li>
-        <li><a href="javascript:void(0)"><img src="{{ asset('themes/emporium/images/editorial-left-arrow.png') }}" alt=""/></a></li>
-        <li><a href="javascript:void(0)"><img src="{{ asset('themes/emporium/images/editorial-right-arrow.png') }}" alt=""/></a></li>
+        <li><a href="javascript:void(0)"  class="showprevnextimage"><img src="{{ asset('themes/emporium/images/editorial-left-arrow.png') }}" alt=""/>
+        <span class="nextprevshow" style="display: none; opacity: 1;"><img src="{{ asset('themes/emporium/images/nextprev-image.jpg') }}" alt=""></span></a></li>
+        <li><a href="javascript:void(0)" class="showprevnextimage"><img src="{{ asset('themes/emporium/images/editorial-right-arrow.png') }}" alt=""/><span class="nextprevshow" style="display: none; opacity: 1;"><img src="{{ asset('themes/emporium/images/nextprev-image.jpg') }}" alt=""></span></a></li>
     </ul>
 </div>
 <div class="pdprightnav contactfixed">
