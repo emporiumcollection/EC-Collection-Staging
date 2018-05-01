@@ -308,7 +308,7 @@ class RestaurantFrontController extends Controller {
 	{
 		$this->data['pagetitle'] = $request->slug;
 		
-		$barsArr = array();
+		$barsArr = $relatedgridArr = array();
 		$barfileArr = \DB::table('tb_images_res_spa_bar')->join('tb_bars', 'tb_bars.id', '=', 'tb_images_res_spa_bar.parent_id')->select('tb_bars.*', 'tb_images_res_spa_bar.parent_id', 'tb_images_res_spa_bar.folder_id', 'tb_images_res_spa_bar.type')->where('tb_bars.alias', $request->slug)->where('tb_images_res_spa_bar.type', 'bar')->first();
 		if(!empty($barfileArr))
 		{
@@ -357,15 +357,57 @@ class RestaurantFrontController extends Controller {
 					$barsArr[$bf]->datamenupath = (new ContainerController)->getThumbpath($fetchbarmenufolder->id);
 				}
 			}
+			
+			$relatedgridquery = "SELECT tb_bars.id, tb_bars.title, tb_bars.alias, tb_images_res_spa_bar.parent_id, tb_images_res_spa_bar.folder_id, tb_images_res_spa_bar.type FROM tb_bars join tb_images_res_spa_bar on tb_images_res_spa_bar.parent_id = tb_bars.id WHERE tb_bars.id != '". $barfileArr->id ."' AND FIND_IN_SET('". $barfileArr->category_id ."', tb_bars.category_id) AND tb_images_res_spa_bar.type = 'bar' ORDER BY tb_bars.id DESC LIMIT 2";
+			
+			$relatedgrid = DB::select(DB::raw($relatedgridquery));
+			if (!empty($relatedgrid)) {
+				$pr = 0;
+				foreach ($relatedgrid as $rgrest) {
+					$relatedgridArr[$pr]['data']['alias'] = 'bars/'.$rgrest->alias;
+					$relatedgridArr[$pr]['data']['title'] = $rgrest->title;
+					$fetchresgallery = \DB::table('tb_container')->join('tb_frontend_container', 'tb_frontend_container.container_id', '=', 'tb_container.id')->select('tb_container.id')->where('tb_container.parent_id', $rgrest->folder_id)->where('tb_container.name', 'gallery')->where('tb_frontend_container.container_type', 'folder')->first();
+					if(!empty($fetchresgallery))
+					{
+						$resgalleryfiles = \DB::table('tb_container_files')->join('tb_frontend_container', 'tb_frontend_container.container_id', '=', 'tb_container_files.id')->where('tb_container_files.folder_id', $fetchresgallery->id)->where('tb_frontend_container.container_type', 'file')->orderBy('tb_container_files.file_sort_num','asc')->first();
+						if(!empty($resgalleryfiles))
+						{
+							if (!File::exists(public_path(). '/uploads/thumbs/format_'.$resgalleryfiles->folder_id.'_'.$resgalleryfiles->file_name))
+							{
+								$imgpath = (new ContainerController)->getContainerUserPath($resgalleryfiles->folder_id);
+								$mdimg = \Image::make($imgpath.$resgalleryfiles->file_name);
+								$actualsize = getimagesize($imgpath.$resgalleryfiles->file_name);
+								if($actualsize[0]>$actualsize[1])
+								{
+									$mdimg->resize(320, null, function ($constraint) {
+										$constraint->aspectRatio();
+									});
+								}
+								else
+								{
+									$mdimg->resize(null, 320, function ($constraint) {
+										$constraint->aspectRatio();
+									});
+								}
+								$thumbfile = 'format_'.$resgalleryfiles->folder_id.'_'.$resgalleryfiles->file_name;
+								$mdimg->save(public_path(). '/uploads/thumbs/'.$thumbfile);
+							}
+							$relatedgridArr[$pr]['data']['galleryimage'] = $resgalleryfiles;
+						}
+					}
+					$pr++;
+				}
+			}
 		}
 		$this->data['barsArr'] = $barsArr;
+		$this->data['relatedgridArr'] = $relatedgridArr;
 		return view('frontend.themes.emporium.properties.bar-detail', $this->data);
 	}
 	
 	public function spaDetail( Request $request )
 	{
 		$this->data['pagetitle'] = $request->slug;
-		$spasArr = array();
+		$spasArr = $relatedgridArr = array();
 		
 		$spafileArr = \DB::table('tb_images_res_spa_bar')->join('tb_spas', 'tb_spas.id', '=', 'tb_images_res_spa_bar.parent_id')->select('tb_spas.*', 'tb_images_res_spa_bar.parent_id', 'tb_images_res_spa_bar.folder_id', 'tb_images_res_spa_bar.type')->where('tb_spas.alias', $request->slug)->where('tb_images_res_spa_bar.type', 'spa')->first();
 		
@@ -416,8 +458,50 @@ class RestaurantFrontController extends Controller {
 					$spasArr[$sf]->datamenupath = (new ContainerController)->getThumbpath($fetchspamenufolder->id);
 				}
 			}
+			
+			$relatedgridquery = "SELECT tb_spas.id, tb_spas.title, tb_spas.alias, tb_images_res_spa_bar.parent_id, tb_images_res_spa_bar.folder_id, tb_images_res_spa_bar.type FROM tb_spas join tb_images_res_spa_bar on tb_images_res_spa_bar.parent_id = tb_spas.id WHERE tb_spas.id != '". $spafileArr->id ."' AND FIND_IN_SET('". $spafileArr->category_id ."', tb_spas.category_id) AND tb_images_res_spa_bar.type = 'spa' ORDER BY tb_spas.id DESC LIMIT 2";
+			
+			$relatedgrid = DB::select(DB::raw($relatedgridquery));
+			if (!empty($relatedgrid)) {
+				$pr = 0;
+				foreach ($relatedgrid as $rgrest) {
+					$relatedgridArr[$pr]['data']['alias'] = 'spas/'.$rgrest->alias;
+					$relatedgridArr[$pr]['data']['title'] = $rgrest->title;
+					$fetchresgallery = \DB::table('tb_container')->join('tb_frontend_container', 'tb_frontend_container.container_id', '=', 'tb_container.id')->select('tb_container.id')->where('tb_container.parent_id', $rgrest->folder_id)->where('tb_container.name', 'gallery')->where('tb_frontend_container.container_type', 'folder')->first();
+					if(!empty($fetchresgallery))
+					{
+						$resgalleryfiles = \DB::table('tb_container_files')->join('tb_frontend_container', 'tb_frontend_container.container_id', '=', 'tb_container_files.id')->where('tb_container_files.folder_id', $fetchresgallery->id)->where('tb_frontend_container.container_type', 'file')->orderBy('tb_container_files.file_sort_num','asc')->first();
+						if(!empty($resgalleryfiles))
+						{
+							if (!File::exists(public_path(). '/uploads/thumbs/format_'.$resgalleryfiles->folder_id.'_'.$resgalleryfiles->file_name))
+							{
+								$imgpath = (new ContainerController)->getContainerUserPath($resgalleryfiles->folder_id);
+								$mdimg = \Image::make($imgpath.$resgalleryfiles->file_name);
+								$actualsize = getimagesize($imgpath.$resgalleryfiles->file_name);
+								if($actualsize[0]>$actualsize[1])
+								{
+									$mdimg->resize(320, null, function ($constraint) {
+										$constraint->aspectRatio();
+									});
+								}
+								else
+								{
+									$mdimg->resize(null, 320, function ($constraint) {
+										$constraint->aspectRatio();
+									});
+								}
+								$thumbfile = 'format_'.$resgalleryfiles->folder_id.'_'.$resgalleryfiles->file_name;
+								$mdimg->save(public_path(). '/uploads/thumbs/'.$thumbfile);
+							}
+							$relatedgridArr[$pr]['data']['galleryimage'] = $resgalleryfiles;
+						}
+					}
+					$pr++;
+				}
+			}
 		}
 		$this->data['spasArr'] = $spasArr;
+		$this->data['relatedgridArr'] = $relatedgridArr;
 		return view('frontend.themes.emporium.properties.spa-detail', $this->data);
 	}
 	
