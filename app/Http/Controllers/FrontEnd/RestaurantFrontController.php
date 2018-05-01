@@ -6,6 +6,7 @@ use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use DB, Input, Redirect;
 use App\Http\Controllers\ContainerController;
+use File;
 
 class RestaurantFrontController extends Controller {
 
