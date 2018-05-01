@@ -492,7 +492,8 @@ class PropertyController extends Controller {
 		$propertyImage = CustomQuery::getPropertyImage($propid);
 		if(!empty($propertyImage))
 		{
-            $remoteImage = $propertyImage->img_src;
+			//echo $propertyImage->containerfolder_src;
+            $remoteImage = $propertyImage->containerfolder_src;
             $width = Image::make($remoteImage)->width();
             /*if( $width >600){
                 $image = Image::make($remoteImage)->resize(600, 600)->response('jpg');

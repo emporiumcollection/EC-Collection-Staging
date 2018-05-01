@@ -22,6 +22,7 @@ class CustomQuery
 		{
 			$proertyObj->img_src = $containerObj->getThumbpath($proertyObj->folder_id).$proertyObj->file_name;
 			$proertyObj->folder_src = $containerObj->getThumbpath($proertyObj->folder_id);
+			$proertyObj->containerfolder_src = $containerObj->getContainerUserPath($proertyObj->folder_id).$proertyObj->file_name;
 		}
 		return $proertyObj;
 
