@@ -24,7 +24,7 @@
 		@if(!empty($relatedgridpropertiesArr))
 			@if(array_key_exists('0',$relatedgridpropertiesArr))
 				<li>
-					<a href="javascript:void(0)"  class="showprevnextimage">
+					<a href="{{url($relatedgridpropertiesArr[0]['data']->property_slug)}}"  class="showprevnextimage">
 						<img src="{{ asset('themes/emporium/images/editorial-left-arrow.png') }}" alt=""/>
 						<span class="nextprevshow" style="display: none; opacity: 1;">
 							@if(array_key_exists('image', $relatedgridpropertiesArr[0]))
@@ -37,7 +37,7 @@
 			
 			@if(array_key_exists('1',$relatedgridpropertiesArr))
 				<li>
-					<a href="javascript:void(0)" class="showprevnextimage">
+					<a href="{{url($relatedgridpropertiesArr[1]['data']->property_slug)}}" class="showprevnextimage">
 						<img src="{{ asset('themes/emporium/images/editorial-right-arrow.png') }}" alt=""/>
 						<span class="nextprevshow" style="display: none; opacity: 1;">
 							@if(array_key_exists('image', $relatedgridpropertiesArr[1]))
