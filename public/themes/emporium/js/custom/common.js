@@ -146,14 +146,18 @@ $(document).ready(function () {
             select: function (event, ui) {
                 //log("Selected: " + ui.item.label + " aka " + ui.item.id);
 
-                if(ui.item.type) {
+                if(ui.item.type == 'category') {
                     location.href=BaseURL + '/' + ui.item.id;
-                }
-
+                } else if(ui.item.type == 'restro') {
+                    location.href=BaseURL + '/restaurants/' + ui.item.id;
+                } else if(ui.item.type == 'bar') {
+                    location.href=BaseURL + '/bars/' + ui.item.id;
+                } else if(ui.item.type == 'spa') {
+                    location.href=BaseURL + '/spas/' + ui.item.id;
+                } else {}
             }
         })
         .autocomplete( "instance" )._renderItem = function( ul, item ) {
-            console.log(item.type);
             var destIcon = '';
             if(item.type == 'category') {
                 destIcon = '<i class="iconsheet icon-collections"></i>';
