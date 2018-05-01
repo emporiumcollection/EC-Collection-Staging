@@ -271,15 +271,15 @@ $(document).ready(function () {
             $('[data-option="spa-option-list"]').html('');
             $('[data-option="bar-option-list"]').html('');
 
-            if(data.data.collection.length > 0) {
+            if(data.data.collection != undefined && data.data.collection.length > 0) {
                 $('#filtersearchpopup ul li:nth-child(1) ul.mobilemenulist').css("display", "block");
-            } else if(data.data.dest.length > 0) {
+            } else if(data.data.dest != undefined && data.data.dest.length > 0) {
                 $('#filtersearchpopup ul li:nth-child(2) ul.mobilemenulist').css("display", "block");
-            } else if(data.data.restro.length > 0) {
+            } else if(data.data.restro != undefined && data.data.restro.length > 0) {
                 $('#filtersearchpopup ul li:nth-child(3) ul.mobilemenulist').css("display", "block");
-            } else if(data.data.spa.length > 0) {
+            } else if(data.data.spa != undefined && data.data.spa.length > 0) {
                 $('#filtersearchpopup ul li:nth-child(4) ul.mobilemenulist').css("display", "block");
-            } else if(data.data.bar.length > 0) {
+            } else if(data.data.bar != undefined && data.data.bar.length > 0) {
                 $('#filtersearchpopup ul li:nth-child(5) ul.mobilemenulist').css("display", "block");
             }
 
