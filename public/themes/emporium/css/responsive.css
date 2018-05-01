@@ -146,6 +146,7 @@ body.open{overflow:hidden;}
 	.page-container{padding-top:70px;}
 	.social-menu li{margin:0 15px 0 0;}
 	#menu ul li a{font-size:22px; line-height:26px;}
+	.sliderFooter{bottom:-40px;}
 	.sliderFooter ul li a{font-size:12px;}
 	#menu ul li a::before{height:3px;}
 	.sliderSection .carousel-caption h1 {font-size: 25px;line-height: 1.2;}
