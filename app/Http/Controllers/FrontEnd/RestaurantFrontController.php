@@ -259,13 +259,11 @@ class RestaurantFrontController extends Controller {
 			
 			$relatedgridquery = "SELECT tb_restaurants.id, tb_restaurants.title, tb_restaurants.alias, tb_images_res_spa_bar.parent_id, tb_images_res_spa_bar.folder_id, tb_images_res_spa_bar.type FROM tb_restaurants join tb_images_res_spa_bar on tb_images_res_spa_bar.parent_id = tb_restaurants.id WHERE tb_restaurants.id != '". $resfileArr->id ."' AND FIND_IN_SET('". $resfileArr->category_id ."', tb_restaurants.category_id) AND tb_images_res_spa_bar.type = 'res' ORDER BY tb_restaurants.id DESC LIMIT 2";
 			
-			//$resfileArr = \DB::table('tb_images_res_spa_bar')->join('tb_restaurants', 'tb_restaurants.id', '=', 'tb_images_res_spa_bar.parent_id')->select('tb_restaurants.*', 'tb_images_res_spa_bar.parent_id', 'tb_images_res_spa_bar.folder_id', 'tb_images_res_spa_bar.type')->where('tb_restaurants.alias', $request->slug)->where('tb_images_res_spa_bar.type', 'res')->first();
-
 			$relatedgrid = DB::select(DB::raw($relatedgridquery));
 			if (!empty($relatedgrid)) {
 				$pr = 0;
 				foreach ($relatedgrid as $rgrest) {
-					$relatedgridArr[$pr]['data']['alias'] = $rgrest->alias;
+					$relatedgridArr[$pr]['data']['alias'] = 'restaurants/'.$rgrest->alias;
 					$relatedgridArr[$pr]['data']['title'] = $rgrest->title;
 					$fetchresgallery = \DB::table('tb_container')->join('tb_frontend_container', 'tb_frontend_container.container_id', '=', 'tb_container.id')->select('tb_container.id')->where('tb_container.parent_id', $rgrest->folder_id)->where('tb_container.name', 'gallery')->where('tb_frontend_container.container_type', 'folder')->first();
 					if(!empty($fetchresgallery))
@@ -273,6 +271,26 @@ class RestaurantFrontController extends Controller {
 						$resgalleryfiles = \DB::table('tb_container_files')->join('tb_frontend_container', 'tb_frontend_container.container_id', '=', 'tb_container_files.id')->where('tb_container_files.folder_id', $fetchresgallery->id)->where('tb_frontend_container.container_type', 'file')->orderBy('tb_container_files.file_sort_num','asc')->first();
 						if(!empty($resgalleryfiles))
 						{
+							if (!File::exists(public_path(). '/uploads/thumbs/format_'.$resgalleryfiles->folder_id.'_'.$resgalleryfiles->file_name))
+							{
+								$imgpath = (new ContainerController)->getContainerUserPath($resgalleryfiles->folder_id);
+								$mdimg = \Image::make($imgpath.$resgalleryfiles->file_name);
+								$actualsize = getimagesize($imgpath.$resgalleryfiles->file_name);
+								if($actualsize[0]>$actualsize[1])
+								{
+									$mdimg->resize(320, null, function ($constraint) {
+										$constraint->aspectRatio();
+									});
+								}
+								else
+								{
+									$mdimg->resize(null, 320, function ($constraint) {
+										$constraint->aspectRatio();
+									});
+								}
+								$thumbfile = 'format_'.$resgalleryfiles->folder_id.'_'.$resgalleryfiles->file_name;
+								$mdimg->save(public_path(). '/uploads/thumbs/'.$thumbfile);
+							}
 							$relatedgridArr[$pr]['data']['galleryimage'] = $resgalleryfiles;
 						}
 					}
