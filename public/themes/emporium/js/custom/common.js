@@ -153,6 +153,7 @@ $(document).ready(function () {
             }
         })
         .autocomplete( "instance" )._renderItem = function( ul, item ) {
+            console.log(item.type);
             var destIcon = '';
             if(item.type == 'category') {
                 destIcon = '<i class="iconsheet icon-collections"></i>';
