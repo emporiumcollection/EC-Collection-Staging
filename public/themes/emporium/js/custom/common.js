@@ -154,10 +154,16 @@ $(document).ready(function () {
         })
         .autocomplete( "instance" )._renderItem = function( ul, item ) {
             var destIcon = '';
-            if(item.type) {
+            if(item.type == 'category') {
                 destIcon = '<i class="iconsheet icon-collections"></i>';
-            } else {
+            } else if(item.type == 'destination') {
                 destIcon = '<i class="iconsheet icon-destinations"></i>';
+            } else if(item.type == 'restro') {
+                destIcon = '<i class="iconsheet icon-restaurant"></i>';
+            } else if(item.type == 'bar') {
+                destIcon = '<i class="iconsheet icon-bar"></i>';
+            } else {
+                destIcon = '<i class="iconsheet icon-spa"></i>';
             }
 
             return $('<li>')
