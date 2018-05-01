@@ -99,7 +99,8 @@
 										@if(!empty($propertyImage) && count($propertyImage)>0)
 											
 											@if(isset($propertyImage))
-												<img alt="{{ $propertyImage->file_name }}" src="{{ \Image::make('http://34.244.60.137/uploads/menu_imgs/77006192-24315553.jpg')->resize(600, 600)->encode('jpg') }}" />
+												<img alt="{{ $propertyImage->file_name }}" src="{{$propertyImage->img_src}}" />
+													{{ CustomQuery::getPropertyImageio($props->id) }}
 											@endif
 										@endif
 										
