@@ -99,7 +99,7 @@
 										@if(!empty($propertyImage) && count($propertyImage)>0)
 											
 											@if(isset($propertyImage))
-												<img alt="{{ $propertyImage->file_name }}" src="{{$propertyImage->img_src}}" />
+												{{$propertyImage->img_src}}
 											@endif
 										@endif
 										
