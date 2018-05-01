@@ -20,7 +20,9 @@ class CustomQuery
 		$proertyObj = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $propId)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
 		if(!empty($proertyObj))
 		{
-			$proertyObj->img_src = $containerObj->getThumbpath($proertyObj->folder_id).$proertyObj->file_name;
+			$filepth = $containerObj->getThumbpath($proertyObj->folder_id).$proertyObj->file_name;
+			
+			$proertyObj->img_src = \Image::make($filepth)->resize(600, 600);
 			$proertyObj->folder_src = $containerObj->getThumbpath($proertyObj->folder_id);
 		}
 		return $proertyObj;
