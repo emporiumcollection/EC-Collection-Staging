@@ -453,7 +453,7 @@ ul.EVMenu li.smallEV {
 .breadcrumb-nav li a:hover:after{width:100%; left:0;}
 .heading{font-size:24px; margin-bottom:30px;}
 /* Hotel Cards */
-.hotel-card{margin-bottom:30px; height:300px;}
+.hotel-card{margin-bottom:30px;}
 .hotel-card figure{overflow:hidden; position:relative;}
 .hotel-card figure:after {
     content: "";
