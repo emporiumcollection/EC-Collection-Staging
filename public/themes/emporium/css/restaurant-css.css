@@ -19,7 +19,8 @@ section,
 .arrowsIcons img {
 	width: 50px;
 }
-.header-content .btn.yellowbtn{background-color:#aba00b !important; padding:7px 30px;}
+.header-content .btn.yellowbtn{background-color:#aba00b !important; padding:9px 0px 5px; width: 100%;
+    text-align: center;}
 
 .sliderSection.restaurantSliderSec .carousel .item > img {min-width:100%;}
 
