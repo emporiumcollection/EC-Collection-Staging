@@ -22,7 +22,7 @@ class CustomQuery
 		{
 			$filepth = $containerObj->getThumbpath($proertyObj->folder_id).$proertyObj->file_name;
 			
-			$proertyObj->img_src = \Image::make($filepth)->resize(600, 600);
+			$proertyObj->img_src = \Image::make($filepth)->resize(600, 600)->response('jpg');
 			$proertyObj->folder_src = $containerObj->getThumbpath($proertyObj->folder_id);
 		}
 		return $proertyObj;
