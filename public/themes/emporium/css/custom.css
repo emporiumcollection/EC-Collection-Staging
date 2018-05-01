@@ -139,6 +139,15 @@ body .ui-widget.ui-widget-content li i.iconsheet.icon-destinations {
 body .ui-widget.ui-widget-content li i.iconsheet.icon-collections {
     background-position: 0px 5px;
 }
+body .ui-widget.ui-widget-content li i.iconsheet.icon-restaurant {
+    background-position: 0px -152px;
+}
+body .ui-widget.ui-widget-content li i.iconsheet.icon-bar {
+    background-position: 0px -33px;
+}
+body .ui-widget.ui-widget-content li i.iconsheet.icon-spa {
+    background-position: 0px -70px;
+}
 body .ui-widget.ui-widget-content li i.iconsheet {
     position: absolute;
     left: 15px;
