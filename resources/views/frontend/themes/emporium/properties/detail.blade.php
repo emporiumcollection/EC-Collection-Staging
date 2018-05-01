@@ -351,7 +351,7 @@
                                     <li>
                                         <h3>Departure</h3>
                                         <div class="form-group">
-                                            <input name="departure" id="reservationdate1" class="form-control datefield reservationdate" type="text" readonly required>
+                                            <input name="departure" id="reservationdate2" class="form-control datefield reservationdate" type="text" readonly required>
                                             <div class="input-group-icon"><i class="fa fa-calander"></i></div>
                                         </div>
                                     </li>
