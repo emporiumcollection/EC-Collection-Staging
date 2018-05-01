@@ -64,16 +64,6 @@
     </ul>
 </div>
 <style>
-	@if(empty($relatedgridArr))
-		.pdprightnav.contactfixed {
-			top: 175px !important;
-		}
-		
-		.backcontrol {
-			top: 254px !important;
-		}
-	@endif
-	
 	@if(!array_key_exists('1',$relatedgridArr))
 		.pdprightnav.contactfixed {
 			top: 216px !important;
@@ -81,6 +71,16 @@
 		
 		.backcontrol {
 			top: 294px !important;
+		}
+	@endif
+	
+	@if(empty($relatedgridArr))
+		.pdprightnav.contactfixed {
+			top: 175px !important;
+		}
+		
+		.backcontrol {
+			top: 254px !important;
 		}
 	@endif
 	

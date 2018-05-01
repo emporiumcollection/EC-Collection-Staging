@@ -63,3 +63,26 @@
     	<li><a href="javascript:void(0)" id="back-to-top">TOP</a></li>
     </ul>
 </div>
+
+<style>
+	@if(!array_key_exists('1',$relatedgridpropertiesArr))
+		.pdprightnav.contactfixed {
+			top: 216px !important;
+		}
+		
+		.backcontrol {
+			top: 294px !important;
+		}
+	@endif
+	
+	@if(empty($relatedgridpropertiesArr))
+		.pdprightnav.contactfixed {
+			top: 175px !important;
+		}
+		
+		.backcontrol {
+			top: 254px !important;
+		}
+	@endif
+	
+</style>
