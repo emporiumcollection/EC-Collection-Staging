@@ -185,7 +185,7 @@ body.open{overflow:hidden;}
 		min-width: 100%;
 	}
 	
-	.mobilemenu{min-width:inherit; width:320px;}
+	.mobilemenu{min-width:inherit; width:320px; position:absolute;}
 	.mobilemenu-inner{max-width:280px;}
 	.mobilemenulist .navheadimage .headingoverlay{padding-top:55px;}
 	
