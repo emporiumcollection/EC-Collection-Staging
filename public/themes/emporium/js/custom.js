@@ -148,7 +148,7 @@ $( ".owl-prev").html('<i class="glyphicon glyphicon-menu-left"></i>');
 var removeClass = true;
 $(".sidefixednav .block-content.togglenav").click(function () {
     $(".mobilemenu").addClass('open');
-	$("body").addClass('overflowClass');
+	$(".page-container").addClass('overflowClass');
 	$(".whiteoverlay").fadeIn();
 	//$("body").css("overflow","hidden");
     removeClass = false;
@@ -161,7 +161,7 @@ $(".mobilemenu").click(function() {
 $(".mobilenavclosebtn, html").click(function () {
     if (removeClass) {
         $(".mobilemenu").removeClass('open');
-	    $("body").removeClass('overflowClass');
+	    $(".page-container").removeClass('overflowClass');
 		$(".whiteoverlay").fadeOut();
 		//$("body").css("overflow","visible");
     }
