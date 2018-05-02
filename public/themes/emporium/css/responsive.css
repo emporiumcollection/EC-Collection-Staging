@@ -82,6 +82,7 @@ body.open{overflow:hidden;}
 .sidefixednav ul li.hamburguricon{display:block;}
 .restaurantrightnav.contactfixed{top:256px;}
 .restaurantrightnav.backcontrol{top:335px;}
+.popupMainDiv.openPopup{position:absolute; height:100%;}
 }
 @media only screen and (max-width: 991px){
 	.hotelSliderSection .col-md-12 {
