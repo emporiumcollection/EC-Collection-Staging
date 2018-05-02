@@ -374,9 +374,11 @@ $(".show-submenu").click(function(){
 // slide popup
 $(".loginSignPopupButton .clicktologin").click(function() {
     $('.popupMainDiv').addClass('openPopup');
+$('body').css('overflow','hidden')
 });
 $(".mainPopupClose").click(function(){
 	$('.popupMainDiv').removeClass('openPopup');
+	$('body').css('overflow','auto')
 });
 $(".logInPopupButton").click(function() {
     $('.logInPopup').addClass('openPopup');
