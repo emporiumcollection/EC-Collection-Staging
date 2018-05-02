@@ -157,6 +157,7 @@ body.open{overflow:hidden;}
 	.sliderFooter {padding: 18px 10px;}
 	.sliderFooter ul{margin: 0px;}
 	.sliderFooter ul li {width: 100%;}
+	.loginFormDiv{top:70px;}
 	.loginFormDiv h3 {font-size: 16px;}
 	.loginFormDiv h2 {font-size: 22px;margin: 0px;}
 	.searchBoxDiv {padding: 0px;}
