@@ -64,7 +64,7 @@ body.open{overflow:hidden;}
 	}
 	
 	.mobilemenu{min-width:500px; left:-100%;z-index:99999; border-right:0;}
-	.mobilemenu-inner{width:460px; max-width:none}
+	.mobilemenu-inner{width:460px; max-width:none; overflow:auto;}
 	.mobileaddbanner{display:block;}
 	.mobileaddbanner img{margin:0 auto;}
 	.mobilemenulist .navheadimage .headingoverlay{padding-top:90px;}
