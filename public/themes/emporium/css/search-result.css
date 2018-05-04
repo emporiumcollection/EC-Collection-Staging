@@ -9,29 +9,23 @@
 #search-result-slider .left.carousel-control{right:531px;}
 #search-result-slider .right.carousel-control{right:468px;}
 #luxury-hotel-selection .search-result .hotel-card figure img{width:100%;}
-@media (max-width:1366px){
-#luxury-hotel-selection .hotel-card:hover .content-overlay{padding-top:65px;}	
-}
 
 @media (max-width:1024px){
 #search-result-slider .carousel-caption{max-width:445px}
 #search-result-slider .left.carousel-control{right:445px;}	
 #search-result-slider .right.carousel-control{right:382px;}	
-#luxury-hotel-selection .hotel-card:hover .content-overlay{padding-top:135px;}
 }
 
 @media (max-width:991px){
 #search-result-slider .carousel-caption{max-width:400px}
 #search-result-slider .left.carousel-control{right:400px;}	
 #search-result-slider .right.carousel-control{right:337px;}	
-#luxury-hotel-selection .hotel-card:hover .content-overlay{padding-top:75px;}
 }
 @media (max-width:767px){
 #search-result-slider .carousel-inner .item{height:auto;}
 #search-result-slider .carousel-caption{ padding:50px 70px 50px 30px; position:static; max-width:100%;}
 #search-result-slider .left.carousel-control{right:80px;}	
 #search-result-slider .right.carousel-control{right:17px;}		
-#luxury-hotel-selection .hotel-card:hover .content-overlay{padding-top:95px;}
 }
 @media (max-width:480x){
 #search-result-slider .carousel-caption{ padding:50px 30px; }	
