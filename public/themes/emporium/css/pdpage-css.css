@@ -791,7 +791,7 @@ position: absolute;
   .showMoreContent p {
     line-height: 20px;
   }
-#luxury-hotel-selection.search-result .hotel-card:hover .content-overlay, #luxury-hotel-selection .hotel-card:hover .content-overlay{padding-top:100px;}
+#luxury-hotel-selection.search-result .hotel-card:hover .content-overlay, #luxury-hotel-selection .hotel-card:hover .content-overlay{padding-top:40px;}
 .sliderArrow a.nextClick{margin-left:170px;}
 }
 @media screen and (max-width: 480px) {
