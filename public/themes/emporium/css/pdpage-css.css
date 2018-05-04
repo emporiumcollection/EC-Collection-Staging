@@ -367,12 +367,8 @@
 #luxury-hotel-selection .hotel-card .content-overlay p{font-size:14px; color:#fff; margin-bottom:20px; font-weight:600;}
 #luxury-hotel-selection .hotel-card .pricelabel{position:absolute; right:0; bottom:0; background:#000; color: #fff; font-size:15px; padding:5px 10px; opacity:0.65}
 #luxury-hotel-selection .hotel-card:hover .pricelabel{opacity:0;-webkit-opacity:0;}
-#luxury-hotel-selection.search-result .hotel-card:hover .content-overlay{padding-top: 60px;
+#luxury-hotel-selection.search-result .hotel-card:hover .content-overlay{
     background: rgba(37,37,37,0.8);
-    width: 70%;
-    height: 66%;
-    left: 15%;
-    top: 20%;
 z-index:999;
 }
 
