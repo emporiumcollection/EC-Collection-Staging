@@ -18,6 +18,7 @@
     <link href="{{ asset('themes/emporium/css/font-stylesheet.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('themes/emporium/css/jquery.mCustomScrollbar.css') }}">
     <link href="{{ asset('themes/emporium/css/bootstrap-datepicker.css')}}" rel="stylesheet">
+
     <link href="{{ asset('lib/jquery-ui/jquery-ui.min.css') }}" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -26,6 +27,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     {{--For Include and Add Files in Head --}}
+        <link href="{{ asset('themes/emporium/css/slick.css') }}" rel="stylesheet">
     @section('head')
         @parent
         <link href="{{ asset('themes/emporium/css/daterangepicker.css') }}" rel="stylesheet">
@@ -37,6 +39,7 @@
     {{--For Custom Styles --}}
     @section('custom_css')
         @parent
+
         <link href="{{ asset('themes/emporium/css/custom.css') }}" rel="stylesheet">
         <link href="{{ asset('sximo/assets/css/intlTelInput.css') }}" rel="stylesheet">
 
@@ -141,8 +144,19 @@
 
             // Open Left Navigation For Experience on Page Load
             @if(Request::segment(1)=='luxury_experience')
-            $('[data-action="select-experience"]').trigger('click');
+           
+                  hideAllOption();
+
+                   var datObj = {};
+                    datObj.catID = '{{$destination_category}}';
+                  var params = $.extend({}, doAjax_params_default);
+                  params['url'] = BaseURL + '/destination/experiences-ajax';
+                   params['data'] = datObj;
+                  params['successCallbackFunction'] = renderExperience;
+                  doAjax(params);
             @endif
+
+
 
             // Open Left Navigation For Destinations on Page Load
             @if(Request::segment(1)=='luxury_destinations')

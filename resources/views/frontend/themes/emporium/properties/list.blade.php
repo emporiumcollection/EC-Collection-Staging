@@ -7,134 +7,145 @@
 @section('meta_description', 'Emporium Voyage Luxury Hotel Collection')
 {{-- For Page's Content Part --}}
 @section('content')
-    <!-- Restaurant slider starts here -->
-    <section id="search-result-slider" class="luxuryHotelSlider">
-		 @if(!empty($slider))
-			<div id="myCarousel" class="carousel" data-ride="carousel">
-				<!-- Indicators -->
-				{{--  Wrapper for slides --}}
-				<div class="carousel-inner">
-					@foreach($slider as $key => $slider_row)
-						<div class="item {{($key == 0)? 'active' : ''}}" style="background-image:url({{url('uploads/slider_images/'.$slider_row->slider_img)}});">
-							<div class="carousel-caption">
-								<h6>{{$slug}}</h6>
-								<h2>
-									@if($slider_row->slider_link!='#' && $slider_row->slider_link!='')
-										<a onclick="return !window.open(this.href, '{{ ((strpos($slider_row->slider_link, 'http://') || strpos($slider_row->slider_link, 'https://')) === false) ? $slider_row->slider_link : 'http://'.$slider_row->slider_link }}', 'width=900,height=500,left=100, top=100, scrollbars, resizable')" href="{{ ((strpos($slider_row->slider_link, 'http://') || strpos($slider_row->slider_link, 'https://')) === false) ? $slider_row->slider_link : 'http://'.$slider_row->slider_link }}">{{$slider_row->slider_title}}</a>
-									@else
-										{{$slider_row->slider_title}}
-									@endif
-								</h2>
-								<p>{{$slider_row->slider_description}}</p>
-							</div>
-						</div>
-					@endforeach
-					{{--*/ $adscatid = ($destination_category > 0) ? $destination_category : 'Hotel'; $sliderads = CommonHelper::getSliderAds('grid_slider', $adscatid) /*--}}
-					@if(!empty($sliderads['leftsidebarads']))
-						@foreach($sliderads['leftsidebarads'] as $ads)
-							<div class="item" style="background-image:url({{URL::to('uploads/users/advertisement/'.$ads->adv_img)}});">
-								<div class="carousel-caption">
-									<h6>Advertisement</h6>
-									<h2>
-										@if($ads->adv_link!='#' && $ads->adv_link!='')
-											<a onclick="return !window.open(this.href, '{{ ((strpos($ads->adv_link, 'http://') || strpos($ads->adv_link, 'https://')) === false) ? $ads->adv_link : 'http://'.$ads->adv_link }}', 'width=900,height=500,left=100, top=100, scrollbars, resizable')" href="{{ ((strpos($ads->adv_link, 'http://') || strpos($ads->adv_link, 'https://')) === false) ? $ads->adv_link : 'http://'.$ads->adv_link }}">{{$ads->adv_title}}</a>
-										@else
-											{{$ads->adv_title}}
-										@endif
-									</h2>
-									<p>{{$ads->adv_desc}}</p>
-								</div>
-							</div>
-						@endforeach
-					@endif
-				</div>
-				@if(count($slider) > 1)
-					<!-- Left and right controls -->
-					<a class="left carousel-control" href="#myCarousel" data-slide="prev">
-						<img src="{{ asset('themes/emporium/images/editorial-left-arrow.png') }}" alt="Icon"/>
-					</a>
-					<a class="right carousel-control" href="#myCarousel" data-slide="next">
-						<img src="{{ asset('themes/emporium/images/editorial-right-arrow.png') }}" alt="Icon"/>
-					</a>
-				@endif
-			</div>
-		@endif
-    </section>
-    {{-- Search Result --}}
-    <section id="luxury-hotel-selection" class="search-result">
-        <div class="container-fluid">
-			@if($propertiesArr)
-				<div class="row">
-					<div class="col-sm-12 text-center">
-						<h2 class="heading">{{$total_record}} Luxury Hotel(s) Found for {{$slug}} {{$dateslug}}</h2>
-					</div>
-				</div>
-				{{--*/ $rw = 1 /*--}}
-				<div class="row" data-option="property-grid-list">
-					@foreach($propertiesArr as $props)
-						@if($rw%19==0)
-							{{--*/ $adscatid = ($destination_category > 0) ? $destination_category : 'Hotel'; $resultads = CommonHelper::getGridResultAds('grid_results', $adscatid) /*--}}
-							@if(!empty($resultads['resultads']))
-								<div class="col-sm-6 col-md-6 col-lg-4">
-									<div class="hotel-card">
-										<figure>
-											<img src="{{URL::to('uploads/users/advertisement/'.$resultads['resultads']->adv_img)}}" />
-											<a href="{{ (strpos($resultads['resultads']->adv_link, 'http://') !== false) ? $resultads['resultads']->adv_link : 'http://'.$resultads['resultads']->adv_link }}" class="content-overlay">
-												<h5>{{ $resultads['resultads']->adv_title}}</h5>
-											</a>
-											<div class="pricelabel">Advertisement</div>
-										</figure>
-										<div class="title">
-											<h3><a href="{{ (strpos($resultads['resultads']->adv_link, 'http://') !== false) ? $resultads['resultads']->adv_link : 'http://'.$resultads['resultads']->adv_link }}">{{ $resultads['resultads']->adv_title}}</a></h3>
-										</div>
-									</div>
-								</div>
-							@endif
-						@else
-							<div class="col-sm-6 col-md-6 col-lg-4">
-								<div class="hotel-card">
-									<figure>
-										<img alt="{{ $props->property_name}}" src="{{URL::to('propertyimagebyid/'.$props->id)}}" />
-										
-										<a href="{{URL::to($props->property_slug)}}" class="content-overlay">
-											<h5>{{ $props->property_name}}</h5>
-										</a>
-									</figure>
-									<div class="title">
-										<h3><a href="{{URL::to($props->property_slug)}}">{{ $props->property_name}}</a></h3>
-										<a href="{{URL::to($props->property_slug)}}" class="cartlink"><i class="fa fa-shopping-cart"></i></a>
-									</div>
-								</div>
-							</div>
-						@endif
+   
 
-						{{--*/ $rw++ /*--}}
-					@endforeach
 
-					@if($total_record<20)
-						@if(!empty($resultads['resultads']))
-							<div class="col-sm-6 col-md-6 col-lg-4">
-								<div class="hotel-card">
-									<figure>
-										<img src="{{URL::to('uploads/users/advertisement/'.$resultads['resultads']->adv_img)}}" />
-										<a href="{{ (strpos($resultads['resultads']->adv_link, 'http://') !== false) ? $resultads['resultads']->adv_link : 'http://'.$resultads['resultads']->adv_link }}" class="content-overlay">
-											<h5>{{ $resultads['resultads']->adv_title}}</h5>
-										</a>
-										<div class="pricelabel">Advertisement</div>
-									</figure>
-									<div class="title">
-										<h3><a href="{{ (strpos($resultads['resultads']->adv_link, 'http://') !== false) ? $resultads['resultads']->adv_link : 'http://'.$resultads['resultads']->adv_link }}">{{ $resultads['resultads']->adv_title}}</a></h3>
-									</div>
-								</div>
-							</div>
-						@endif
-					@endif
 
-				</div>
-			@endif
+
+@if(!empty($slider))
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="row">
+    <div class="slider multiple-items">
+
+
+@foreach($slider as $key => $slider_row)
+      <div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+         <a  href="{{ $slider_row->slider_link }}" >
+		          <img src="{{ url('uploads/slider_images/'.$slider_row->slider_img)}}" class="img-responsive">
+		          {{-- url('uploads/slider_images/'.$slider_row->slider_img) --}}
+    		  </a>
         </div>
-    </section>
-    {{--  Search Result end --}}
+        <div class="col-md-6 col-sm-6 col-xs-12 slidertext">
+          <h6 class="cat-links">
+                        <a href="{{ $slider_row->slider_link }}" rel="category tag" tabindex="0" class="categoryname" style="outline: none;">{{$slug}}</a>
+                    </h6>
+                    <h5 class="entry-title">
+                    <a href="{{ $slider_row->slider_link }}" rel="bookmark" tabindex="0" style="outline: none;"> {{$slider_row->slider_title}}</a>
+                </h5>
+             <p> <a  href="{{ $slider_row->slider_link }}" >    {{$slider_row->slider_description}}  </a></p>
+             <a class="remoreslider" href="{{ $slider_row->slider_link }}">Read More</a>
+        </div>
+      </div>
+
+@endforeach   
+
+
+     </div>
+    </div>
+  </div>
+@endif
+
+  <div class="col-md-12 col-sm-12 col-xs-12 misonrysection">
+  	@if($propertiesArr)
+  	<h4 class="bannerbtm">{{$total_record}} Luxury Hotel(s) Found for {{$slug}} {{$dateslug}}</h4>
+	@endif
+    <div class="row">
+
+ 
+@if($featurePropertiesArr)
+			<div class="grid">
+		@foreach($featurePropertiesArr as $props)
+
+    <div class="col-md-6 col-sm-6 col-xs-12 biggrid">
+        <div class="row">
+          <div class="gridinner">
+            <a href="{{URL::to($props->property_slug)}}" title="{{ $props->property_name}}">
+          		  <img src="{{ URL::to('propertyimagebyid/'.$props->id)}}" class="img-responsive" alt="{{ $props->property_name}}" title="{{ $props->property_name}}">
+               {{-- URL::to('propertyimagebyid/'.$props->id)--}}
+           	</a>
+            <div class="gridtext">
+              <h5 class="entry-title">
+                  <a href="{{URL::to($props->property_slug)}}" rel="bookmark" style="">{{ $props->property_name}}   </a>
+                   <a href="{{URL::to($props->property_slug)}}"><i class="fa fa-shopping-cart"></i></a>
+              </h5>
+               <p>  {{ $props->property_usp}}</p>
+                  <a class="read-more-link" href="{{URL::to($props->property_slug)}}"  title="Read More">Read More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+	@endforeach
+</div>
+@endif
+
+      <div class="clearfix"></div>
+    <div class="grid">
+    
+
+
+@if($propertiesArr)
+		@foreach($propertiesArr as $props)
+      <div class="col-md-3 col-sm-3 col-xs-12 grid-item">
+        <div class="row">
+           <div class="gridinner">
+            <a href="{{URL::to($props->property_slug)}}" title="{{ $props->property_name}}">
+          		  <img src="{{ URL::to('propertyimagebyid/'.$props->id)}}" class="img-responsive" alt="{{ $props->property_name}}" title="{{ $props->property_name}}">
+               {{-- URL::to('propertyimagebyid/'.$props->id)--}}
+           	</a>
+            <div class="gridtext">
+              <h5 class="entry-title">
+                  <a href="{{URL::to($props->property_slug)}}" rel="bookmark" style="">{{ $props->property_name}}   </a>
+                  <a href="{{URL::to($props->property_slug)}}"><i class="fa fa-shopping-cart"></i></a>
+              </h5>
+               <p>  {{ $props->property_usp}}</p>
+                  <a class="read-more-link" href="{{URL::to($props->property_slug)}}" title="Read More">Read More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      @endforeach 
+@endif
+
+     
+  </div>
+  </div>
+  <div class="col-md-12 col-xs-12 col-xs-12 text-center">
+  @if($total_pages>1)
+				<ul class="pagination">
+	 				@for($i=1;$i<=$total_pages;$i++)
+	 					<?php
+							$url=Request::url().'?';
+							$queryStrings=Request::query();
+							if(isset($queryStrings['page']))
+							{
+								unset($queryStrings['page']);
+							}
+							foreach($queryStrings as $keyQuery=>$querystring):
+								$url.=$keyQuery.'='.$querystring.'&';
+							endforeach;
+						?>
+	 					 <li class="@if($i==$active_page) active @endif"><a href="{{ $url.'page='.$i }}">{{ $i }}</a></li>
+	 				@endfor
+	 
+				</ul>
+				@endif
+				<div class="btmline"></div>
+</div>
+</div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
 
 	<!-- Instagram Gallery Section -->
 	@if($destination_category > 0)
@@ -175,7 +186,10 @@
 {{-- For Include style files --}}
 @section('head')
     @parent
-    <link href="{{ asset('themes/emporium/css/animate.css') }}" rel="stylesheet">
+
+
+
+        <link href="{{ asset('themes/emporium/css/animate.css') }}" rel="stylesheet">
 	<link href="{{ asset('themes/emporium/css/pdpage-css.css') }}" rel="stylesheet">
 	<link href="{{ asset('themes/emporium/css/search-result.css') }}" rel="stylesheet">
 @endsection
@@ -187,15 +201,124 @@
 
 {{-- For Include javascript files --}}
 @section('javascript')
-    @parent
+
 	<!-- instagram -->
+
+
+
+
+
+        @parent
+
 	<script src="{{ asset('sximo/instajs/instashow/elfsight-instagram-feed.js')}}"></script>
+	  <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+  <script type="text/javascript" src="{{ asset('themes/emporium/js/imagesloaded.pkgd.min.js')}}"></script>
+  <script type="text/javascript" src="{{ asset('themes/emporium/js/slick.js')}}"></script>
+   <script type="text/javascript">
+   $('.multiple-items').slick({
+    dots: true,
+    arrows: false,
+    autoplay: true,
+    infinite: false,
+    speed: 1000,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    vertical: true,
+    speed: 1000,
+    autoplaySpeed:1000,
+  });
+  </script>
+  <script type="text/javascript">
+ // init Masonry
+var $grid = $('.grid').masonry({
+  // options...
+});
+// layout Masonry after each image loads
+$grid.imagesLoaded().progress( function() {
+  $grid.masonry('layout');
+});
+  </script>
 @endsection
 
 {{-- For custom script --}}
 @section('custom_js')
     @parent
 	<script>
+
+		@if((Request::has("arrive")))
+		var todayDate = moment();
+$('input[name="arrive"]').daterangepicker({
+		locale: {
+			format: 'MM-DD-YYYY',
+			daysOfWeek: [
+				"SUN",
+				"MON",
+				"TUE",
+				"WED",
+				"THU",
+				"FRI",
+				"SAT"
+			],
+			monthNames: [
+				"January",
+				"February",
+				"March",
+				"April",
+				"May",
+				"June",
+				"July",
+				"August",
+				"September",
+				"October",
+				"November",
+				"December"
+			],
+			firstDay: 0
+		},
+		showDropdowns: true,
+		singleDatePicker: true,
+		startDate: '{{ Request::input("arrive")}}',
+		minDate : todayDate
+	});
+@endif
+
+		@if((Request::has("departure")))
+		var todayDate = moment();
+$('input[name="departure"]').daterangepicker({
+		locale: {
+			format: 'MM-DD-YYYY',
+			daysOfWeek: [
+				"SUN",
+				"MON",
+				"TUE",
+				"WED",
+				"THU",
+				"FRI",
+				"SAT"
+			],
+			monthNames: [
+				"January",
+				"February",
+				"March",
+				"April",
+				"May",
+				"June",
+				"July",
+				"August",
+				"September",
+				"October",
+				"November",
+				"December"
+			],
+			firstDay: 0
+		},
+		showDropdowns: true,
+		singleDatePicker: true,
+		startDate: '{{ Request::input("departure")}}',
+		minDate : todayDate
+	});
+@endif
+		//$('').datepicker('setDate', )
 		$(document).ready(function () {
 			$(document).on('change', '#myRange', function () {
 				var datObj = window.location.search;
@@ -221,13 +344,13 @@
 		var it_scroll = false;
 		var totalPage = '{{$total_pages}}';
 		$(window).scroll(function () {
-            if ($(window).scrollTop() < 600) { return false; }
+            if ($(window).scrollTop() < 400) { return false; }
 
             if (pageCounter > totalPage) {
 				return false;
 			} else {
-				it_scroll = true;
-				scrollDataAjax(it_scroll, pageCounter);
+				//it_scroll = true;
+				//scrollDataAjax(it_scroll, pageCounter);
 
 			}
 			pageCounter++;
@@ -366,9 +489,12 @@
 			$('[data-option="property-grid-list"]').html(dataGridHtml);
 		}
 	</script>
+	
 @endsection
 
 {{-- For footer --}}
 @section('footer')
     @parent
+
+
 @endsection

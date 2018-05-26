@@ -920,3 +920,34 @@ input[type="checkbox"]:checked ~ .reveal-if-active {
         padding: 120px 26px;
     }
 }
+
+
+
+/* popup css */
+.arrowlefttop
+{
+    position: absolute;
+    top: 22px;
+    font-size:25px;
+    color:#fff;
+}
+.timestop
+{
+    position: absolute;
+    top: 22px;
+    font-size: 25px;
+    right: 30px;
+    color: #f00;  
+}
+
+@media(max-width:767px)
+{
+.arrowlefttop
+{
+    display:none;
+}
+.timestop
+{
+    top:0px;
+}
+}

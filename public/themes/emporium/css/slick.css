@@ -1,0 +1,307 @@
+/* Slider */
+.slick-slider
+{
+    position: relative;
+
+    display: block;
+    box-sizing: border-box;
+
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    -ms-touch-action: pan-y;
+        touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.slick-list
+{
+    position: relative;
+
+    display: block;
+    overflow: hidden;
+
+    margin: 0;
+    padding: 0;
+}
+.slick-list:focus
+{
+    outline: none;
+}
+.slick-list.dragging
+{
+    cursor: pointer;
+    cursor: hand;
+}
+
+.slick-slider .slick-track,
+.slick-slider .slick-list
+{
+    -webkit-transform: translate3d(0, 0, 0);
+       -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+         -o-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+}
+
+.slick-track
+{
+    position: relative;
+    top: 0;
+    left: 0;
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.slick-track:before,
+.slick-track:after
+{
+    display: table;
+
+    content: '';
+}
+.slick-track:after
+{
+    clear: both;
+}
+.slick-loading .slick-track
+{
+    visibility: hidden;
+}
+
+.slick-slide
+{
+    display: none;
+    float: left;
+
+    height: 100%;
+    min-height: 1px;
+}
+[dir='rtl'] .slick-slide
+{
+    float: right;
+}
+.slick-slide img
+{
+    display: block;
+}
+.slick-slide.slick-loading img
+{
+    display: none;
+}
+.slick-slide.dragging img
+{
+    pointer-events: none;
+}
+.slick-initialized .slick-slide
+{
+    display: block;
+}
+.slick-loading .slick-slide
+{
+    visibility: hidden;
+}
+.slick-vertical .slick-slide
+{
+    display:flex;
+    align-items:center;
+    text-align:center;
+    height: auto;
+    border: 1px solid transparent;
+}
+.slick-arrow.slick-hidden {
+    display: none;
+}
+
+
+.gridtext p
+{
+      line-height:28px;
+    color:#fff;
+}
+.gridtext h5 a i
+{
+    font-size: 20px;
+    color: #a39b7d;
+    float: right;
+}
+ .slick-dots li
+  {
+    list-style:none;
+  }
+    .slick-dots
+    {
+         padding: 0px;
+    position: absolute;
+    top: 50%;
+    right:15px;
+    }
+.slick-dots li button {
+    margin: 10px 0px;
+    border-radius: 50%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border: 1px solid #4a4a4a;
+    height:20px;
+    width:20px;
+}
+  .gridinner {
+    padding: 15px;
+    border: 1px solid #4a4a4a;
+    overflow: auto;
+    width: 100%;
+    display: block;
+        width: calc(100% - -1px);
+        margin-bottom:-1px;
+}
+.cat-links
+{
+  font-size:14px;
+  color:#000;
+}
+.entry-title a
+{
+  color:#fff;
+  font-size:25px;
+}
+.misonrysection
+{
+  margin-top:50px;
+}
+.slidertext
+{
+  padding:0px 50px;
+}
+.slidertext p a
+{
+    color: #fff;
+  line-height:28px;
+}
+.slidertext .categoryname
+{
+  text-transform:uppercase;
+  color:#fff;
+  font-size:20px;
+}
+.pagination 
+{
+  position:relative;
+  border-bottom:1px solid #4a4a4a;
+}
+.pagination li a
+{
+    background:#262626;
+  border:none;
+  color:#fff;
+  font-size:18px;
+      padding: 5px 25px;
+}
+.pagination li a.active
+{
+background-color: #3b99db;
+    color: #fff;
+}
+.pagination li a:hover
+{
+    background-color: #3b99db;
+    color: #fff;
+}
+
+.pagination li a:after {
+    content: '';
+    height: 10px;
+    position: absolute;
+    width: 1px;
+    background: #4a4a4a;
+    bottom: 0px;
+    left: 30px;
+}
+.multiple-items
+{
+  height:100vh;
+  display:flex;
+  align-items:center;
+}
+
+body
+{
+overflow-x:hidden;
+}
+
+
+select.monthselect,select.yearselect {
+    height: 40px !important;
+}
+th.next.available i
+{
+  margin-left:10px;
+}
+
+
+.misonrysection .biggrid .gridinner
+
+{
+  border-bottom:none;
+}
+.gridinner a,.remoreslider,.slidertext .categoryname
+{
+  color:#ABA07C;
+}
+.misonrysection .bannerbtm
+{
+  color:#ABA07C;
+  text-align:center;
+}
+.btmline
+{
+    border-bottom: 1px solid #4b4b4b;   
+    width:100%;
+    margin: 40px -30px;
+}
+.pagination
+{
+      margin: 50px 0px 20px 0;
+}
+/*.daterangepicker.daterangecalendar-design
+{
+  position:fixed;
+}*/
+@media (max-width:1024px)
+{
+  th.next.available
+  {
+    display:none;
+  }
+}
+@media (min-width:767px)
+{
+  .sidefixednav
+  {
+    width:65px !important;
+  }
+}
+
+
+@media (max-width:767px)
+{
+    .multiple-items,.slick-vertical .slick-slide
+    {
+        display:block;
+    }
+    .multiple-items
+    {
+        height:auto;
+    }
+    .mobilemenu
+    {
+      position:fixed !important;
+    }
+
+}

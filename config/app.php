@@ -152,8 +152,7 @@ return [
 		Intervention\Image\ImageServiceProvider::class,
 		Maatwebsite\Excel\ExcelServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
-        Laravel\Cashier\CashierServiceProvider::class,
-        Kouz\LaravelAirbrake\ServiceProvider::class
+        Laravel\Cashier\CashierServiceProvider::class
 
     ],
 
