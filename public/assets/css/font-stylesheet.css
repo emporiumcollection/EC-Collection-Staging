@@ -1,0 +1,76 @@
+@font-face {
+    font-family: 'geomanist_regularregular';
+    src: url('../fonts/geomanist-regular_2-webfont.woff2') format('woff2'),
+         url('../fonts/geomanist-regular_2-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'geomanistlightwebfont';
+    src: url('../fonts/geomanistlightwebfont.eot');
+    src: url('../fonts/geomanistlightwebfont.eot') format('embedded-opentype'),
+         url('../fonts/geomanistlightwebfont.woff2') format('woff2'),
+         url('../fonts/geomanistlightwebfont.woff') format('woff'),
+         url('../fonts/geomanistlightwebfont.ttf') format('truetype'),
+         url('../fonts/geomanistlightwebfont.svg#geomanistlightwebfont') format('svg');
+}
+@font-face {
+    font-family: 'GeomanistLight';
+    src: url('../fonts/GeomanistLight.eot');
+    src: url('../fonts/GeomanistLight.eot') format('embedded-opentype'),
+         url('../fonts/GeomanistLight.woff2') format('woff2'),
+         url('../fonts/GeomanistLight.woff') format('woff'),
+         url('../fonts/GeomanistLight.ttf') format('truetype'),
+         url('../fonts/GeomanistLight.svg#GeomanistLight') format('svg');
+}
+
+
+
+@font-face {
+  font-family: 'ACaslonPro-Regular';
+  src: url('../fonts/ACaslonPro-Regular.eot') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'ACaslonPro-Regular';
+  src:  url('../fonts/ACaslonPro-Regular.otf')  format('opentype'), url('../fonts/ACaslonPro-Regular.ttf')  format('truetype'), url('../fonts/ACaslonPro-Regular.svg#ACaslonPro-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'UnthriftSecondPersonal';
+  src: url('../fonts/UnthriftSecondPersonal.eot') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'UnthriftSecondPersonal';
+  src: url('../fonts/UnthriftSecondPersonal.ttf')  format('truetype'), url('../fonts/UnthriftSecondPersonal.svg#UnthriftSecondPersonal') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+    font-family: 'SilverSouthScript';
+    src: url('../fonts/SilverSouthScript.eot');
+    src: url('../fonts/SilverSouthScript.eot') format('embedded-opentype'),
+         url('../fonts/SilverSouthScript.woff2') format('woff2'),
+         url('../fonts/SilverSouthScript.woff') format('woff'),
+         url('../fonts/SilverSouthScript.ttf') format('truetype'),
+         url('../fonts/SilverSouthScript.svg#SilverSouthScript') format('svg');
+}
+@font-face {
+    font-family: 'SilverSouthSerif';
+    src: url('../fonts/SilverSouthSerif.eot');
+    src: url('../fonts/SSilverSouthSerif.eot') format('embedded-opentype'),
+         url('../fonts/SilverSouthSerif.woff2') format('woff2'),
+         url('../fonts/SilverSouthSerif.woff') format('woff'),
+         url('../fonts/SilverSouthSerif.ttf') format('truetype'),
+         url('../fonts/SilverSouthSerif.svg#SilverSouthSerif') format('svg');
+}

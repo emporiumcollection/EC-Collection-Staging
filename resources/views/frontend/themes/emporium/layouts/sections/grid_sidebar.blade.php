@@ -29,7 +29,7 @@
                 </li>
             </ul>
             <ul class="mobilemenulist" data-option="home">
-                <li><a class="cursor" data-action="select-filter">FILTER BY PRICE</a></li>
+              <!--  <li><a class="cursor" data-action="select-filter">FILTER BY PRICE</a></li>-->
                 <li><a class="cursor" data-action="select-collection">SEARCH OUR COLLECTION</a></li>
                 <li><a class="cursor" data-action="search-by-date">Search availability</a></li>
                 <li><a class="cursor" data-action="select-destination" data-id="0">Search by destination</a></li>
@@ -156,7 +156,7 @@
                                 </li>
                                 <li class="departure-li">
                                     <i class="fa fa-calander"></i>
-                                    <input name="departure" id="reservationdateside1" class="form-control datefield reservationdate" type="text" placeholder="Departure" readonly="" required="" value="@if(isset($_GET['departure']) && $_GET['departure']!=''){{$_GET['departure']}}@endif">
+                                    <input name="departure" id="reservationdateside1" class="form-control datefield reservationdate" type="text" placeholder="Departure" readonly="" required="" value="{{$_GET['departure'] or ''}}">
                                 </li>
                                 <?php /* <li>
                                     <label>DAY</label>

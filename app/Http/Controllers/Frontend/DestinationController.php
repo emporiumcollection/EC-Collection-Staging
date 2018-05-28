@@ -93,13 +93,30 @@ class DestinationController extends Controller {
     public function getExperiencesAjax(Request $request) {
 		
 		$res = array(); 
-		$fetchexperience = DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_alias')->where('category_published', 1)->where('parent_category_id', 8)->get();
+		if(isset($request->catID))
+		{
+			$category_id=$request->catID;
+			/*$currentCate = DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_alias')->where('category_published', 1)->where('parent_category_id', 8)->where('id', $category_id)->first();
+                $res['current_category'] = $currentCate;
+                $currentParentCate = DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_alias')->where('category_published', 1)->where('parent_category_id', 8)->where('id', $currentCate->parent_category_id)->first();
+                $res['current_category'] = $currentCate;
+                $res['currentParentCate'] = $currentParentCate;
+				$res['path'] = implode('/',array_reverse($this->fetchcategoryaliaspath($category_id)));*/
+			$fetchexperience = DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_alias')->where('category_published', 1)->where('parent_category_id', 8)->orderByRaw(DB::raw("FIELD(id, $category_id) desc, category_name "))->get();
+
+		}
+		else
+		{
+				$fetchexperience = DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_alias')->where('category_published', 1)->where('parent_category_id', 8)->orderByRaw(DB::raw("category_name"))->get();
+			
+		}
+		
 		if(!empty($fetchexperience))
 		{
-			usort($fetchexperience, function($a, $b) {
+			/*usort($fetchexperience, function($a, $b) {
 				return trim($a->category_name) > trim($b->category_name);
 			});
-			
+			*/
 			$res['status'] = 'success';
 			$res['dests'] = $fetchexperience;
 			

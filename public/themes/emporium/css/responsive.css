@@ -271,4 +271,15 @@ body.open{overflow:hidden;}
 .sidefixednav{top:85px;}
 .restaurantrightnav.contactfixed{top:256px;}
 .restaurantrightnav.backcontrol{top:334px;}
+
+
+
+
+.sidefixednav {width: 45px; opacity: 0.5; z-index: 999;}
+	.sidefixednav:hover,.backcontrol:hover,.contactfixed ul li a:hover,.contactfixed:hover{opacity:1;}
+	.contactfixed {width: 289px; opacity: 0.5; z-index: 999;}
+.backcontrol {width: 44px;opacity: 0.5;z-index: 999; }
+.contactfixed ul li a {padding-left: 12px;opacity: 0.5; z-index: 999;}
+
+
 }

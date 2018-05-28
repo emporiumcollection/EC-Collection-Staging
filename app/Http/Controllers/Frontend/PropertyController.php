@@ -25,31 +25,48 @@ class PropertyController extends Controller {
         $this->data['slider'] = \DB::table('tb_sliders')->select('slider_category','slider_title','slider_description','slider_img','slider_link','slide_type')->where('slider_category', $request->slug)->where('slider_status',1)->orderBy('sort_num','asc')->get();
 
          $this->data['destination_category'] =0;
-        $perPage = 40;
+        $perPage = 30;
         $pageNumber = 1;
         if(isset($request->page) && $request->page>0){
             $pageNumber = $request->page;
         }
         $pageStart = ($pageNumber -1) * $perPage;
 
-        $query = "SELECT pr.editor_choice_property,pr.feature_property,pr.id,pr.property_name,pr.property_slug,pr.property_category_id,"; 
+        $query = "SELECT pr.editor_choice_property,pr.property_usp,pr.feature_property,pr.id,pr.property_name,pr.property_slug,pr.property_category_id,"; 
         $query .= " (SELECT rack_rate FROM tb_properties_category_rooms_price pcrp where pr.id=pcrp.property_id order by rack_rate DESC limit 0,1 ) as price ," ;
         $query .= " (SELECT category_name FROM tb_categories ct where pr.property_category_id=ct.id limit 0,1 ) as category_name ";
         $query .= " FROM tb_properties  pr";
-        $whereClause = " WHERE pr.property_type='" . $request->slug . "' AND pr.property_status = '1' ";
-        $OrderByQry =  "ORDER BY (SELECT rack_rate FROM tb_properties_category_rooms_price pcrp WHERE pcrp.property_id = pr.id ORDER BY rack_rate DESC LIMIT 1) * 1 DESC, pr.editor_choice_property desc, pr.feature_property desc LIMIT $pageStart, $perPage ";
+        $whereClause = " WHERE pr.property_type='" . $request->slug . "' AND pr.property_status = '1' AND pr.feature_property = 0 ";
+        $OrderByQry =  "ORDER BY (SELECT rack_rate FROM tb_properties_category_rooms_price pcrp WHERE pcrp.property_id = pr.id ORDER BY rack_rate DESC LIMIT 1) * 1 DESC, pr.editor_choice_property desc LIMIT $pageStart, $perPage ";
         $fianlQry = $query.' '.$whereClause.' '.$OrderByQry;
         $CountRecordQry = " Select count(*) as total_record FROM tb_properties pr  ".$whereClause;
+
+        //featured Data
+         $query = "SELECT pr.editor_choice_property,pr.property_usp,pr.feature_property,pr.id,pr.property_name,pr.property_slug,pr.property_category_id,"; 
+        $query .= " (SELECT rack_rate FROM tb_properties_category_rooms_price pcrp where pr.id=pcrp.property_id order by rack_rate DESC limit 0,1 ) as price ," ;
+        $query .= " (SELECT category_name FROM tb_categories ct where pr.property_category_id=ct.id limit 0,1 ) as category_name ";
+        $query .= " FROM tb_properties  pr";
+        $whereClause = " WHERE pr.property_type='" . $request->slug . "' AND pr.property_status = '1' AND pr.feature_property = 1 ";
+        $OrderByQry =  " order by RAND() LIMIT 4 ";
+        $featureQuery = $query.' '.$whereClause.' '.$OrderByQry;
+        
+
+        
         $getRec = DB::select($CountRecordQry);
         $propertiesArr = DB::select($fianlQry);
+        $featureData = DB::select($featureQuery);
+
+		$this->data['featurePropertiesArr']=$featureData;
         $this->data['propertiesArr'] = $propertiesArr;
         $this->data['total_record'] = $getRec[0]->total_record;
         $this->data['total_pages'] = (isset($getRec[0]->total_record) && $getRec[0]->total_record>0)?(int)ceil($getRec[0]->total_record / $perPage):0;
+        $this->data['active_page']=$pageNumber;	
 		return view('frontend.themes.emporium.properties.list', $this->data);
 	}
 	
 	function propertySearch(Request $request) {
 
+		
 		$selCurrency=$request->input("currencyOption");
         \Session::put('currencyOption', $selCurrency);
 		
@@ -69,13 +86,15 @@ class PropertyController extends Controller {
 			\Session::put('arrive_date', $request->arrive);
 			$this->data['arrive_date'] = $request->arrive;
 			$this->data['dateslug'] = $request->arrive;
-			$arrive = date("Y-m-d", strtotime(trim($request->arrive)));
+			$arrive = trim($request->arrive);
+			$this->data['arrive_date']=$arrive;
 		}
 		if (!is_null($request->departure) && $request->departure != '') {
 			\Session::put('departure_date', $request->departure);
 			$this->data['departure_date'] = $request->departure;
 			$this->data['dateslug'] = $this->data['dateslug'].' to '.$request->departure;
-			$departure = date("Y-m-d", strtotime(trim($request->departure)));
+			$departure = trim($request->departure);
+			$this->data['departure_date']=$departure;
 		}
 
 
@@ -120,28 +139,41 @@ class PropertyController extends Controller {
 
 		}
 
-		$perPage = 40;
+		$perPage = 30;
 		$pageNumber = 1;
 		if(isset($request->page) && $request->page>0){
 			$pageNumber = $request->page;
 		}
 		$pageStart = ($pageNumber -1) * $perPage;
 
-		$query = "SELECT pr.editor_choice_property,pr.feature_property,pr.id,pr.property_name,pr.property_slug,pr.property_category_id ";
+		$query = "SELECT pr.editor_choice_property,pr.property_usp,pr.feature_property,pr.id,pr.property_name,pr.property_slug,pr.property_category_id ";
 		$query .= ", (SELECT pcrp.rack_rate FROM tb_properties_category_rooms_price pcrp  where pr.id=pcrp.property_id  order by pcrp.rack_rate DESC limit 0,1 ) as price " ;
 		$query .= " FROM tb_properties pr ";
-		$whereClause =" WHERE ((pr.property_name LIKE '%".$keyword."%' AND pr.property_type = 'Hotel') OR city LIKE '%".$keyword."%' ".$catprops." ) AND pr.property_status = 1  ";
-		$orderBy = "ORDER BY (SELECT rack_rate FROM tb_properties_category_rooms_price pcrp WHERE pcrp.property_id = pr.id ORDER BY rack_rate DESC LIMIT 1) * 1 DESC, pr.editor_choice_property desc, pr.feature_property desc ";
+		$whereClause =" WHERE ((pr.property_name LIKE '%".$keyword."%' AND pr.property_type = 'Hotel') OR city LIKE '%".$keyword."%' ".$catprops." ) AND pr.property_status = 1 AND  pr.feature_property = 0 ";
+		$orderBy = "ORDER BY (SELECT rack_rate FROM tb_properties_category_rooms_price pcrp WHERE pcrp.property_id = pr.id ORDER BY rack_rate DESC LIMIT 1) * 1 DESC, pr.editor_choice_property desc  ";
 		$limit = " LIMIT ". $pageStart.",".$perPage; 
 		$finalQry = $query.$whereClause.$orderBy.$limit ; 
 		$CountRecordQry = "Select count(*) as total_record from tb_properties pr ".$whereClause ;
-		
+			
+			//Feature Query
+		$query = "SELECT pr.editor_choice_property,pr.property_usp,pr.feature_property,pr.id,pr.property_name,pr.property_slug,pr.property_category_id ";
+		$query .= ", (SELECT pcrp.rack_rate FROM tb_properties_category_rooms_price pcrp  where pr.id=pcrp.property_id  order by pcrp.rack_rate DESC limit 0,1 ) as price " ;
+		$query .= " FROM tb_properties pr ";
+		$whereClause =" WHERE ((pr.property_name LIKE '%".$keyword."%' AND pr.property_type = 'Hotel') OR city LIKE '%".$keyword."%' ".$catprops." ) AND pr.property_status = 1 AND  pr.feature_property = 1 ";
+		$orderBy = "ORDER BY RAND()  ";
+		$limit = " LIMIT 4";
+		$featureQuery = $query.$whereClause.$orderBy.$limit ; 
+
+
 		$property = DB::select($finalQry);
 		$getRec = DB::select($CountRecordQry);
-
+		$featureData = DB::select($featureQuery);
+		
+		$this->data['featurePropertiesArr']=$featureData;
 		$this->data['propertiesArr'] = $property;
 		$this->data['total_record'] = $getRec[0]->total_record;
 		$this->data['total_pages'] = (isset($getRec[0]->total_record) && $getRec[0]->total_record>0)?(int)ceil($getRec[0]->total_record / $perPage):0;
+		$this->data['active_page']=$pageNumber;
 
 		$uid = isset(\Auth::user()->id) ? \Auth::user()->id : '';
 		
@@ -153,6 +185,7 @@ class PropertyController extends Controller {
 			}
 		}
 		
+
 		$this->data['slug'] = $keyword;
 
 		$this->data['action']=request()->segments(1);
@@ -448,7 +481,7 @@ class PropertyController extends Controller {
         }
         $pageStart = ($pageNumber -1) * $perPage;
 
-        $query = "SELECT pr.editor_choice_property,pr.feature_property,pr.id,pr.property_name,pr.property_slug,pr.property_category_id ";
+        $query = "SELECT pr.editor_choice_property,pr.property_usp,pr.feature_property,pr.id,pr.property_name,pr.property_slug,pr.property_category_id ";
 		$query .= $getPriceQry;
         //$query .= ", (SELECT pcrp.rack_rate FROM tb_properties_category_rooms_price pcrp  where pr.id=pcrp.property_id  order by pcrp.rack_rate DESC limit 0,1 ) as price " ;
         $query .= " FROM tb_properties pr ";

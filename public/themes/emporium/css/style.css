@@ -636,7 +636,7 @@ border-radius:0;
 
 .mobile-search{display:none !important;}
 
-.sidefixednav{position:fixed; right:0; top:83px; background:#252525; width:65px; z-index:9999;}
+.sidefixednav{position:fixed; right:0; top:83px; background:#252525; width:45px; z-index:9999;}
 .sidefixednav ul{margin:0; list-style:none;}
 .sidefixednav ul li{border:1px solid #414246; margin-top:-1px;}
 .sidefixednav ul li.hamburguricon{padding:5px 0 12px; display:none;} 
@@ -810,7 +810,7 @@ border-radius:0;
     font-weight: normal;
 }
 .sliderSection .carousel-caption h1 a, .sliderSection .carousel-caption h1 a:hover {
-  color: #ABA07C;
+  color: #ffffff;
 }
 
 .sliderSection .left.carousel-control {

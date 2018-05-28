@@ -5835,3 +5835,17 @@ div#fixed_wrapper {
 #back-to-top {
     text-transform: capitalize;
 }
+
+@media (min-width:1200px)
+{
+
+ 
+ 
+  .hero-slider-wrapper {
+    height: auto;
+    position: static;
+    background:#fff;
+  }
+
+
+}
