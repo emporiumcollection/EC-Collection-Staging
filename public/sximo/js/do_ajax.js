@@ -25,7 +25,7 @@ function doAjax(params){
 			url: url,
 			data: data,
 			dataType: dataType,
-			async: true,
+			async: false,
 	       	beforeSend: function(jqXHR, settings) {
 	            if (typeof beforeSendCallbackFunction === "function") {
 	                beforeSendCallbackFunction();

@@ -7,9 +7,8 @@
 @section('meta_description', 'Emporium Voyage Luxury Hotel Collection')
 {{-- For Page's Content Part --}}
 @section('content')
+ 
    
-
-
 
 
 @if(!empty($slider))
@@ -85,25 +84,52 @@
 
 
 @if($propertiesArr)
+{{--*/ $rw = 1 /*--}}
 		@foreach($propertiesArr as $props)
-      <div class="col-md-3 col-sm-3 col-xs-12 grid-item">
-        <div class="row">
-           <div class="gridinner">
-            <a href="{{URL::to($props->property_slug)}}" title="{{ $props->property_name}}">
-          		  <img src="{{ URL::to('propertyimagebyid/'.$props->id)}}" class="img-responsive" alt="{{ $props->property_name}}" title="{{ $props->property_name}}">
-               {{-- URL::to('propertyimagebyid/'.$props->id)--}}
-           	</a>
-            <div class="gridtext">
-              <h5 class="entry-title">
-                  <a href="{{URL::to($props->property_slug)}}" rel="bookmark" style="">{{ $props->property_name}}   </a>
-                  <a href="{{URL::to($props->property_slug)}}"><i class="fa fa-shopping-cart"></i></a>
-              </h5>
-               <p>  {{ $props->property_usp}}</p>
-                  <a class="read-more-link" href="{{URL::to($props->property_slug)}}" title="Read More">Read More</a>
-            </div>
-          </div>
-        </div>
-      </div>
+			@if($rw%19==0)
+							{{--*/ $adscatid = ($destination_category > 0) ? $destination_category : 'Hotel'; $resultads = CommonHelper::getGridResultAds('grid_results', $adscatid) /*--}}
+							@if(!empty($resultads['resultads']))
+								 <div class="col-md-3 col-sm-3 col-xs-12 grid-item">
+							        <div class="row">
+							           <div class="gridinner">
+							            <a href="#" >
+							          		  <img src="{{URL::to('uploads/users/advertisement/'.$resultads['resultads']->adv_img)}}" class="img-responsive" >
+							               {{-- URL::to('propertyimagebyid/'.$props->id)--}}
+							           	</a>
+							            <div class="gridtext">
+							              <h5 class="entry-title">
+							                  <a href="{{ (strpos($resultads['resultads']->adv_link, 'http://') !== false) ? $resultads['resultads']->adv_link : 'http://'.$resultads['resultads']->adv_link }}" rel="bookmark" style="">{{ $resultads['resultads']->adv_title}}   </a>
+							                  <a href="#">Advertisement</a>
+							              </h5>
+							               
+							                  <a class="read-more-link" href="{{ (strpos($resultads['resultads']->adv_link, 'http://') !== false) ? $resultads['resultads']->adv_link : 'http://'.$resultads['resultads']->adv_link }}">{{ $resultads['resultads']->adv_title}}</a>
+							            </div>
+							          </div>
+							        </div>
+							      </div>
+							@endif
+							@else
+							      <div class="col-md-3 col-sm-3 col-xs-12 grid-item">
+							        <div class="row">
+							           <div class="gridinner">
+							            <a href="{{URL::to($props->property_slug)}}" title="{{ $props->property_name}}">
+							          		  <img src="{{ URL::to('propertyimagebyid/'.$props->id)}}" class="img-responsive" alt="{{ $props->property_name}}" title="{{ $props->property_name}}">
+							               {{-- URL::to('propertyimagebyid/'.$props->id)--}}
+							           	</a>
+							            <div class="gridtext">
+							              <h5 class="entry-title">
+							                  <a href="{{URL::to($props->property_slug)}}" rel="bookmark" style="">{{ $props->property_name}}   </a>
+							                  <a href="{{URL::to($props->property_slug)}}"><i class="fa fa-shopping-cart"></i></a>
+							              </h5>
+							               <p>  {{ $props->property_usp}}</p>
+							                  <a class="read-more-link" href="{{URL::to($props->property_slug)}}" title="Read More">Read More</a>
+							            </div>
+							          </div>
+							        </div>
+							      </div>
+							 @endif
+
+      		{{--*/ $rw++ /*--}}
       @endforeach 
 @endif
 
@@ -134,10 +160,6 @@
 </div>
 </div>
   
-
-
-
-
 
 
 
@@ -186,12 +208,11 @@
 {{-- For Include style files --}}
 @section('head')
     @parent
-
-
-
-        <link href="{{ asset('themes/emporium/css/animate.css') }}" rel="stylesheet">
+    <link href="{{ asset('themes/emporium/css/animate.css') }}" rel="stylesheet">
 	<link href="{{ asset('themes/emporium/css/pdpage-css.css') }}" rel="stylesheet">
 	<link href="{{ asset('themes/emporium/css/search-result.css') }}" rel="stylesheet">
+
+
 @endsection
 
 {{-- For custom style  --}}
@@ -201,15 +222,9 @@
 
 {{-- For Include javascript files --}}
 @section('javascript')
-
+    @parent
 	<!-- instagram -->
-
-
-
-
-
-        @parent
-
+	
 	<script src="{{ asset('sximo/instajs/instashow/elfsight-instagram-feed.js')}}"></script>
 	  <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
   <script type="text/javascript" src="{{ asset('themes/emporium/js/imagesloaded.pkgd.min.js')}}"></script>
@@ -318,7 +333,6 @@ $('input[name="departure"]').daterangepicker({
 		minDate : todayDate
 	});
 @endif
-		//$('').datepicker('setDate', )
 		$(document).ready(function () {
 			$(document).on('change', '#myRange', function () {
 				var datObj = window.location.search;
@@ -341,17 +355,18 @@ $('input[name="departure"]').daterangepicker({
 		});
 		
 		var pageCounter = 2;
+		var pagehgt = 1200;
 		var it_scroll = false;
 		var totalPage = '{{$total_pages}}';
 		$(window).scroll(function () {
-            if ($(window).scrollTop() < 400) { return false; }
+            if ($(window).scrollTop() < pagehgt) { return false; }
 
             if (pageCounter > totalPage) {
 				return false;
 			} else {
-				//it_scroll = true;
+			//	it_scroll = true;
 				//scrollDataAjax(it_scroll, pageCounter);
-
+				//pagehgt = pagehgt + 1000;
 			}
 			pageCounter++;
 
@@ -489,12 +504,9 @@ $('input[name="departure"]').daterangepicker({
 			$('[data-option="property-grid-list"]').html(dataGridHtml);
 		}
 	</script>
-	
 @endsection
 
 {{-- For footer --}}
 @section('footer')
     @parent
-
-
 @endsection

@@ -24,8 +24,8 @@ class PropertyController extends Controller {
 
         $this->data['slider'] = \DB::table('tb_sliders')->select('slider_category','slider_title','slider_description','slider_img','slider_link','slide_type')->where('slider_category', $request->slug)->where('slider_status',1)->orderBy('sort_num','asc')->get();
 
-         $this->data['destination_category'] =0;
-        $perPage = 30;
+          $this->data['destination_category'] =0;
+        $perPage = 42;
         $pageNumber = 1;
         if(isset($request->page) && $request->page>0){
             $pageNumber = $request->page;
@@ -66,7 +66,6 @@ class PropertyController extends Controller {
 	
 	function propertySearch(Request $request) {
 
-		
 		$selCurrency=$request->input("currencyOption");
         \Session::put('currencyOption', $selCurrency);
 		
@@ -86,15 +85,13 @@ class PropertyController extends Controller {
 			\Session::put('arrive_date', $request->arrive);
 			$this->data['arrive_date'] = $request->arrive;
 			$this->data['dateslug'] = $request->arrive;
-			$arrive = trim($request->arrive);
-			$this->data['arrive_date']=$arrive;
+			$arrive = date("Y-m-d", strtotime(trim($request->arrive)));
 		}
 		if (!is_null($request->departure) && $request->departure != '') {
 			\Session::put('departure_date', $request->departure);
 			$this->data['departure_date'] = $request->departure;
 			$this->data['dateslug'] = $this->data['dateslug'].' to '.$request->departure;
-			$departure = trim($request->departure);
-			$this->data['departure_date']=$departure;
+			$departure = date("Y-m-d", strtotime(trim($request->departure)));
 		}
 
 
@@ -139,7 +136,8 @@ class PropertyController extends Controller {
 
 		}
 
-		$perPage = 30;
+		
+		$perPage = 42;
 		$pageNumber = 1;
 		if(isset($request->page) && $request->page>0){
 			$pageNumber = $request->page;
@@ -176,6 +174,8 @@ class PropertyController extends Controller {
 		$this->data['active_page']=$pageNumber;
 
 		$uid = isset(\Auth::user()->id) ? \Auth::user()->id : '';
+
+		
 		
 		$tags_Arr = \DB::table('tb_tags_manager')->where('tag_status', 1)->get();
 		$tagsArr = array();
@@ -185,7 +185,6 @@ class PropertyController extends Controller {
 			}
 		}
 		
-
 		$this->data['slug'] = $keyword;
 
 		$this->data['action']=request()->segments(1);
@@ -481,7 +480,7 @@ class PropertyController extends Controller {
         }
         $pageStart = ($pageNumber -1) * $perPage;
 
-        $query = "SELECT pr.editor_choice_property,pr.property_usp,pr.feature_property,pr.id,pr.property_name,pr.property_slug,pr.property_category_id ";
+        $query = "SELECT pr.editor_choice_property,pr.feature_property,pr.id,pr.property_name,pr.property_slug,pr.property_category_id ";
 		$query .= $getPriceQry;
         //$query .= ", (SELECT pcrp.rack_rate FROM tb_properties_category_rooms_price pcrp  where pr.id=pcrp.property_id  order by pcrp.rack_rate DESC limit 0,1 ) as price " ;
         $query .= " FROM tb_properties pr ";
@@ -522,22 +521,37 @@ class PropertyController extends Controller {
 	public function getPropertyImageById(Request $request)
 	{
 		$propid = $request->propid;
+		$props = \DB::table('tb_properties')->select('property_name')->where('id', $propid)->first();
+		$propertyName = strtolower(str_replace(' ','',$props->property_name));
 		$propertyImage = CustomQuery::getPropertyImage($propid);
-		if(!empty($propertyImage))
-		{
+		/*if(!empty($propertyImage)) {
 			//echo $propertyImage->containerfolder_src;
-            $remoteImage = $propertyImage->containerfolder_src;
-            $width = Image::make($remoteImage)->width();
-            /*if( $width >600){
-                $image = Image::make($remoteImage)->resize(600, 600)->response('jpg');
-            }else{
-                $image = Image::make($remoteImage)->response('jpg');
-            }*/
+			$remoteImage = $propertyImage->containerfolder_src;
+            		/*$width = Image::make($remoteImage)->width();
+            		/*if( $width >600){
+                		$image = Image::make($remoteImage)->resize(600, 600)->response('jpg');
+            		}else{
+                		$image = Image::make($remoteImage)->response('jpg');
+            		}* /
 			$image = Image::make($remoteImage)->resize(600, 600)->response('jpg');
-            return $image;
-
+			//$image = '<img src="'.$propertyImage->folder_src.'emporium-voyage_memmobaleeira.jpg">';
+            		return $image;
+		}*/
+		
+		$remoteImage = $propertyImage->containerfolder_src;		
+		$propertyNameImg = $propertyImage->containerfolder_path_src.'emporium-voyage_'.$propertyName.'.jpeg';
+		if(file_exists($propertyNameImg)){
+			header("Content-type: image/jpeg");
+			$data = file_get_contents($propertyNameImg);
+			$image = 'data:image/jpeg;base64,' . base64_encode($data);
+		} else {
+			if(!empty($propertyImage)) {
+				$image = Image::make($remoteImage)->resize(600, 600)->response('jpg');
+			} else {
+				return false;
+			}
 		}
-		return false;
+		return $image;
 	}
 
 

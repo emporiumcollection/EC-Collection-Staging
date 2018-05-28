@@ -135,7 +135,7 @@
                         <li>
                             <ul class="calenderwrapper departure">
                                 <li>
-                                    <h4>DEPARTURE </h4>
+                                    <h4>DEPARTURE</h4>
                                 </li>
                                 <li class="departure-li">
                                     <i class="fa fa-calander"></i>

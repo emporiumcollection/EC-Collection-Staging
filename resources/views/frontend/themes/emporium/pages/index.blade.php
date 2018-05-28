@@ -16,10 +16,10 @@
                     @foreach($slider as $key => $slider_row)
                       <div class="item {{($key == 0)? 'active' : ''}}">
 		      <div class="image-overaly-bg"></div>
-                         <a href="{{$slider_row->slider_link}}"><img src="{{url('uploads/slider_images/'.$slider_row->slider_img)}}" alt="{{$slider_row->slider_title}}"></a>
+                         <a><img src="{{url('uploads/slider_images/'.$slider_row->slider_img)}}" alt="{{$slider_row->slider_title}}"></a>
                          <div class="carousel-caption">
                             <h1><a href="{{$slider_row->slider_link}}">{{$slider_row->slider_title}}</a></h1>
-                            <p> <a href="{{$slider_row->slider_link}}" style="color:white;">{{$slider_row->slider_description}}</a></p>
+                            <p>{{$slider_row->slider_description}}</p>
                          </div>
                       </div>
                     @endforeach

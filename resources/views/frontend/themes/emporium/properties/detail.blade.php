@@ -539,7 +539,7 @@
 {{-- For Include style files --}}
 @section('head')
     @parent
-    <link href="{{ asset('themes/emporium/css/pdpage-css.css') }}" rel="stylesheet">
+    
 @endsection
 
 
@@ -556,6 +556,7 @@
 {{-- For custom style  --}}
 @section('custom_css')
     @parent
+    <link href="{{ asset('themes/emporium/css/pdpage-css.css') }}" rel="stylesheet">
     @if(!empty($propertyDetail))
         @if( array_key_exists('propimage', $propertyDetail))
             <style>

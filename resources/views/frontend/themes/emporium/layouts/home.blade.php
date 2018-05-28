@@ -18,7 +18,6 @@
     <link href="{{ asset('themes/emporium/css/font-stylesheet.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('themes/emporium/css/jquery.mCustomScrollbar.css') }}">
     <link href="{{ asset('themes/emporium/css/bootstrap-datepicker.css')}}" rel="stylesheet">
-
     <link href="{{ asset('lib/jquery-ui/jquery-ui.min.css') }}" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -27,7 +26,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     {{--For Include and Add Files in Head --}}
-        <link href="{{ asset('themes/emporium/css/slick.css') }}" rel="stylesheet">
+     <link href="{{ asset('themes/emporium/css/slick.css') }}" rel="stylesheet">
     @section('head')
         @parent
         <link href="{{ asset('themes/emporium/css/daterangepicker.css') }}" rel="stylesheet">
@@ -39,17 +38,21 @@
     {{--For Custom Styles --}}
     @section('custom_css')
         @parent
-
         <link href="{{ asset('themes/emporium/css/custom.css') }}" rel="stylesheet">
         <link href="{{ asset('sximo/assets/css/intlTelInput.css') }}" rel="stylesheet">
 
 
     @show
-	<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="760dec3f-be0e-4331-bd80-0c07fb2f2e1e" type="text/javascript" async></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110391807-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-	<script id="CookieDeclaration" src="https://consent.cookiebot.com/760dec3f-be0e-4331-bd80-0c07fb2f2e1e/cd.js" type="text/javascript" async></script>
+  gtag('config', 'UA-110391807-1');
+</script>
 
-</head>
 <body>
 {{--For Right Side Icons --}}
 @section('right_side_iconbar')
@@ -143,6 +146,7 @@
             @endif
 
             // Open Left Navigation For Experience on Page Load
+           // Open Left Navigation For Experience on Page Load
             @if(Request::segment(1)=='luxury_experience')
            
                   hideAllOption();
@@ -292,6 +296,7 @@
     </script>
 
 @show
-
+<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="760dec3f-be0e-4331-bd80-0c07fb2f2e1e" type="text/javascript" async></script>
+</head>
 </body>
 </html>

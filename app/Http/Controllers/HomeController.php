@@ -3835,10 +3835,9 @@ class HomeController extends Controller {
           $villas = \DB::table('tb_properties')->where('property_type', 'Villas')->get();
           $yachts = \DB::table('tb_properties')->where('property_type', 'Yachts')->get(); */
 
-         
         $props = \DB::table('tb_properties')->where('property_slug', $request->slug)->first();
 
-        if (!is_null($request->input('arrive')) && $request->query('arrive') != '') {
+        if (!is_null($request->input('arrive')) && $request->input('arrive') != '') {
             \Session::put('arrive_date', $request->input('arrive'));
             $arrive = trim($request->input('arrive'));
                 $arrive_array=explode("-",$arrive);
@@ -3852,7 +3851,7 @@ class HomeController extends Controller {
 
         if (!is_null($request->input('departure')) && $request->input('departure') != '') {
             \Session::put('departure', $request->input('departure'));
-
+            
 
              $departure = trim($request->input('departure'));
                 $departure_array=explode("-",$departure);
@@ -3866,6 +3865,7 @@ class HomeController extends Controller {
         }
 		$this->data['adults'] = '';
 		$this->data['childs'] = '';
+      //  dd($request->all());
         if (!is_null($request->input('booking_adults')) && $request->input('booking_adults') != '') {
             \Session::put('adults', $request->input('booking_adults'));
             $this->data['adults'] = $request->input('booking_adults');
