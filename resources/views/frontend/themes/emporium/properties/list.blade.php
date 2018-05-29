@@ -132,17 +132,17 @@
 							      <div class="col-md-3 col-sm-3 col-xs-12 grid-item">
 							        <div class="row">
 							           <div class="gridinner">
-							            <a href="{{URL::to($props->property_slug)}}" title="{{ $props->property_name}}">
+							            <a href="{{ $url }}" title="{{ $props->property_name}}">
 							          		  <img src="{{ URL::to('propertyimagebyid/'.$props->id)}}" class="img-responsive" alt="{{ $props->property_name}}" title="{{ $props->property_name}}">
 							               {{-- URL::to('propertyimagebyid/'.$props->id)--}}
 							           	</a>
 							            <div class="gridtext">
 							              <h5 class="entry-title">
-							                  <a href="{{URL::to($props->property_slug)}}" rel="bookmark" style="">{{ $props->property_name}}   </a>
-							                  <a href="{{URL::to($props->property_slug)}}"><i class="fa fa-shopping-cart"></i></a>
+							                  <a href="{{$url}}" rel="bookmark" style="">{{ $props->property_name}}   </a>
+							                  <a href="{{$url}}"><i class="fa fa-shopping-cart"></i></a>
 							              </h5>
 							               <p>  {{ $props->property_usp}}</p>
-							                  <a class="read-more-link" href="{{URL::to($props->property_slug)}}" title="Read More">Read More</a>
+							                  <a class="read-more-link" href="{{$url}}" title="Read More">Read More</a>
 							            </div>
 							          </div>
 							        </div>

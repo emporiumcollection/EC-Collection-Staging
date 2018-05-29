@@ -1983,3 +1983,36 @@ img.desaturate {
 	z-index:0;
 	background: rgba(37,37,37,0.35);}
 .overflowClass{overflow:hidden}
+
+
+
+  .multiple-items,.misonrysection,#footer
+  {
+    padding-right: 80px;
+  }
+
+@media(max-width:479px)
+{
+
+  .multiple-items,.misonrysection
+  {
+    padding-right:65px;
+  }
+}
+
+@media(max-width:767px)
+{
+
+ padding-right: 80px !important;
+  }
+.sidefixednav,.contactfixed,.searchresultnav.backcontrol
+{
+  opacity:.5;
+}
+
+.sidefixednav:hover,.contactfixed:hover,.backcontrol ul li a
+{
+  opacity:1 !important;
+}
+
+}
