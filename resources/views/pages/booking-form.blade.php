@@ -150,6 +150,7 @@ $(function () {
 
                                                     <option {{ ($adults!='' && $adults==4) ? 'selected' : '' }}>4</option>
                                                     <option {{ ($adults!='' && $adults==5) ? 'selected' : '' }}>5</option>
+                                                     <option {{ ($adults!='' && $adults==6) ? 'selected' : '' }}>6</option>
                                                 </select>
                                             </div>
                                             <div class="right-input-align2">
