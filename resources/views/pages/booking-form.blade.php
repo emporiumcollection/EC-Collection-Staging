@@ -134,7 +134,7 @@ $(function () {
                                                 }
                                                 ?>
                                                 <div class="booking-form-heading">Number of Nights(s)</div>
-                                                <input id="number_of_nights" name="number_of_nights" type="number" value="{{$number_of_nights}}">
+                                                <input id="number_of_nights" min="0" name="number_of_nights" type="number" value="{{$number_of_nights}}">
                                             </div>
                                         </div>
                                         <div class="booking-form-all-fields-row-2">

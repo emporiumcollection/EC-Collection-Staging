@@ -587,6 +587,79 @@
 @section('custom_js')
     @parent
 	<script>
+            @if((Request::has("arrive")))
+        var todayDate = moment();
+$('input[name="arrive"]').daterangepicker({
+        locale: {
+            format: 'MM-DD-YYYY',
+            daysOfWeek: [
+                "SUN",
+                "MON",
+                "TUE",
+                "WED",
+                "THU",
+                "FRI",
+                "SAT"
+            ],
+            monthNames: [
+                "January",
+                "February",
+                "March",
+                "April",
+                "May",
+                "June",
+                "July",
+                "August",
+                "September",
+                "October",
+                "November",
+                "December"
+            ],
+            firstDay: 0
+        },
+        showDropdowns: true,
+        singleDatePicker: true,
+        startDate: '{{ Request::input("arrive")}}',
+        minDate : todayDate
+    });
+@endif
+
+        @if((Request::has("departure")))
+        var todayDate = moment();
+$('input[name="departure"]').daterangepicker({
+        locale: {
+            format: 'MM-DD-YYYY',
+            daysOfWeek: [
+                "SUN",
+                "MON",
+                "TUE",
+                "WED",
+                "THU",
+                "FRI",
+                "SAT"
+            ],
+            monthNames: [
+                "January",
+                "February",
+                "March",
+                "April",
+                "May",
+                "June",
+                "July",
+                "August",
+                "September",
+                "October",
+                "November",
+                "December"
+            ],
+            firstDay: 0
+        },
+        showDropdowns: true,
+        singleDatePicker: true,
+        startDate: '{{ Request::input("departure")}}',
+        minDate : todayDate
+    });
+@endif
 		$(document).on('click', '.galleryImgBtn', function () {
 			var params = $.extend({}, doAjax_params_default);
 			params['url'] = BaseURL + '/getpropertyroomimages/' + $(this).attr('rel');

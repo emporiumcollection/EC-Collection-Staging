@@ -55,21 +55,32 @@
 @if($featurePropertiesArr)
 			<div class="grid">
 		@foreach($featurePropertiesArr as $props)
+			
+			<?php
+				$url=URL::to($props->property_slug);
+				if(Request::has("departure") || Request::has("arrive"))
+				{
+					$url.='?arrive='.Request::input("arrive")."&departure=".Request::input("departure");
+				}
+
+
+			?> 
+
 
     <div class="col-md-6 col-sm-6 col-xs-12 biggrid">
         <div class="row">
           <div class="gridinner">
-            <a href="{{URL::to($props->property_slug)}}" title="{{ $props->property_name}}">
+            <a href="{{ $url }}" title="{{ $props->property_name}}">
           		  <img src="{{ URL::to('propertyimagebyid/'.$props->id)}}" class="img-responsive" alt="{{ $props->property_name}}" title="{{ $props->property_name}}">
                {{-- URL::to('propertyimagebyid/'.$props->id)--}}
            	</a>
             <div class="gridtext">
               <h5 class="entry-title">
-                  <a href="{{URL::to($props->property_slug)}}" rel="bookmark" style="">{{ $props->property_name}}   </a>
-                   <a href="{{URL::to($props->property_slug)}}"><i class="fa fa-shopping-cart"></i></a>
+                  <a href="{{ $url}}" rel="bookmark" style="">{{ $props->property_name}}   </a>
+                   <a href="{{ $url }}"><i class="fa fa-shopping-cart"></i></a>
               </h5>
                <p>  {{ $props->property_usp}}</p>
-                  <a class="read-more-link" href="{{URL::to($props->property_slug)}}"  title="Read More">Read More</a>
+                  <a class="read-more-link" href="{{ $url }}"  title="Read More">Read More</a>
             </div>
           </div>
         </div>
@@ -86,6 +97,15 @@
 @if($propertiesArr)
 {{--*/ $rw = 1 /*--}}
 		@foreach($propertiesArr as $props)
+			<?php
+				$url=URL::to($props->property_slug);
+				if(Request::has("departure") || Request::has("arrive"))
+				{
+					$url.='?arrive='.Request::input("arrive")."&departure=".Request::input("departure");
+				}
+
+
+			?> 
 			@if($rw%19==0)
 							{{--*/ $adscatid = ($destination_category > 0) ? $destination_category : 'Hotel'; $resultads = CommonHelper::getGridResultAds('grid_results', $adscatid) /*--}}
 							@if(!empty($resultads['resultads']))

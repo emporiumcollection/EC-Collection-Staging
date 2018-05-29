@@ -19,7 +19,7 @@
                          <a><img src="{{url('uploads/slider_images/'.$slider_row->slider_img)}}" alt="{{$slider_row->slider_title}}"></a>
                          <div class="carousel-caption">
                             <h1><a href="{{$slider_row->slider_link}}">{{$slider_row->slider_title}}</a></h1>
-                            <p>{{$slider_row->slider_description}}</p>
+                            <p><a href="{{$slider_row->slider_link}}" style="color:white;">{{$slider_row->slider_description}}</a></p>
                          </div>
                       </div>
                     @endforeach
@@ -30,7 +30,7 @@
 								<a ><img src="{{URL::to('uploads/users/advertisement/'.$ads->adv_img)}}" alt="{{$ads->adv_title}}"></a>
 								<div class="carousel-caption">
 									<h1><a href="{{ (strpos($ads->adv_link, 'http://') !== false) ? $ads->adv_link : 'http://'.$ads->adv_link }}">{{$ads->adv_title}}</a></h1>
-									<p>{{$ads->adv_desc}}</p>
+									<p><a href="{{ (strpos($ads->adv_link, 'http://') !== false) ? $ads->adv_link : 'http://'.$ads->adv_link }}" style="color:white;">{{$ads->adv_desc}} </a></p>
 								</div>
 							</div>
 						@endforeach
