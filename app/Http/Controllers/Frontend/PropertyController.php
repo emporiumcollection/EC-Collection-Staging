@@ -520,6 +520,7 @@ class PropertyController extends Controller {
 	
 	public function getPropertyImageById(Request $request)
 	{
+	
 		$propid = $request->propid;
 		$props = \DB::table('tb_properties')->select('property_name')->where('id', $propid)->first();
 		$propertyName = strtolower(str_replace(' ','',$props->property_name));
