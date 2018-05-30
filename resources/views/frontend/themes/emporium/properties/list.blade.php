@@ -50,7 +50,43 @@
   	<h4 class="bannerbtm">{{$total_record}} Luxury Hotel(s) Found for {{$slug}} {{$dateslug}}</h4>
 	@endif
     <div class="row">
+ 
+@if($editorPropertiesArr)
+			<div class="grid">
+		@foreach($editorPropertiesArr as $props)
+			
+			<?php
+				$url=URL::to($props->property_slug);
+				if(Request::has("departure") || Request::has("arrive"))
+				{
+					$url.='?arrive='.Request::input("arrive")."&departure=".Request::input("departure");
+				}
 
+
+			?> 
+
+
+    <div class="col-md-6 col-sm-6 col-xs-12 biggrid">
+        <div class="row">
+          <div class="gridinner">
+            <a href="{{ $url }}" title="{{ $props->property_name}}">
+          		  <img src="{{ URL::to('propertyimagebyid/'.$props->id)}}" class="img-responsive" alt="{{ $props->property_name}}" title="{{ $props->property_name}}">
+               {{-- URL::to('propertyimagebyid/'.$props->id)--}}
+           	</a>
+            <div class="gridtext">
+              <h5 class="entry-title">
+                  <a href="{{ $url}}" rel="bookmark" style="">{{ $props->property_name}}   </a>
+                   <a href="{{ $url }}"><i class="fa fa-shopping-cart"></i></a>
+              </h5>
+               <p>  {{ $props->property_usp}}</p>
+                  <a class="read-more-link" href="{{ $url }}"  title="Read More">Read More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+	@endforeach
+</div>
+@endif
  
 @if($featurePropertiesArr)
 			<div class="grid">
