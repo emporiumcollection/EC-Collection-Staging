@@ -524,8 +524,7 @@ class PropertyController extends Controller {
 		$propid = $request->propid;
 		$props = \DB::table('tb_properties')->select('property_name')->where('id', $propid)->first();
 		$propertyName = strtolower(str_replace(' ','',$props->property_name));
-		$propertyImage = CustomQuery::getPropertyImage($propid);
-	
+		$propertyImage = CustomQuery::getPropertyImage($propid);	
 		$remoteImage = $propertyImage->containerfolder_src;		
 		$propertyNameImg = $propertyImage->containerfolder_path_src.'emporium-voyage_'.$propertyName.'.jpeg';
 		echo $width = Image::make($remoteImage)->width();die();
