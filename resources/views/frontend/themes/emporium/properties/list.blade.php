@@ -145,7 +145,7 @@
 			@if($rw%19==0)
 							{{--*/ $adscatid = ($destination_category > 0) ? $destination_category : 'Hotel'; $resultads = CommonHelper::getGridResultAds('grid_results', $adscatid) /*--}}
 							@if(!empty($resultads['resultads']))
-								 <div class="col-md-3 col-sm-3 col-xs-12 grid-item">
+								 <div class="col-md-4 col-sm-4 col-xs-12 grid-item">
 							        <div class="row">
 							           <div class="gridinner">
 							            <a href="#" >
@@ -165,7 +165,7 @@
 							      </div>
 							@endif
 							@else
-							      <div class="col-md-3 col-sm-3 col-xs-12 grid-item">
+							      <div class="col-md-4 col-sm-4 col-xs-12 grid-item">
 							        <div class="row">
 							           <div class="gridinner">
 							            <a href="{{ $url }}" title="{{ $props->property_name}}">
