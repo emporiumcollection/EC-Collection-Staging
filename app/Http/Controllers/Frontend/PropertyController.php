@@ -525,20 +525,7 @@ class PropertyController extends Controller {
 		$props = \DB::table('tb_properties')->select('property_name')->where('id', $propid)->first();
 		$propertyName = strtolower(str_replace(' ','',$props->property_name));
 		$propertyImage = CustomQuery::getPropertyImage($propid);
-		/*if(!empty($propertyImage)) {
-			//echo $propertyImage->containerfolder_src;
-			$remoteImage = $propertyImage->containerfolder_src;
-            		/*$width = Image::make($remoteImage)->width();
-            		/*if( $width >600){
-                		$image = Image::make($remoteImage)->resize(600, 600)->response('jpg');
-            		}else{
-                		$image = Image::make($remoteImage)->response('jpg');
-            		}* /
-			$image = Image::make($remoteImage)->resize(600, 600)->response('jpg');
-			//$image = '<img src="'.$propertyImage->folder_src.'emporium-voyage_memmobaleeira.jpg">';
-            		return $image;
-		}*/
-		
+	
 		$remoteImage = $propertyImage->containerfolder_src;		
 		$propertyNameImg = $propertyImage->containerfolder_path_src.'emporium-voyage_'.$propertyName.'.jpeg';
 		echo $width = Image::make($remoteImage)->width();die();
