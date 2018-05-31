@@ -3,7 +3,7 @@
 font-face {
      font-family: 'SilverSouthSerif';
      src: url('../fonts/SilverSouthSerif.eot');
-     src: url('../fonts/SSilverSouthSerif.eot') format('embedded-opentype'),
+     src: url('../fonts/SilverSouthSerif.eot') format('embedded-opentype'),
           url('../fonts/SilverSouthSerif.woff2') format('woff2'),
           url('../fonts/SilverSouthSerif.woff') format('woff'),
           url('../fonts/SilverSouthSerif.ttf') format('truetype'),
@@ -400,7 +400,7 @@ th.next.available i
     -moz-transition: all 0.3s ease 0s;
     -ms-transition: all 0.3s ease 0s;
     -o-transition: all 0.3s ease 0s;
- 
+  height:300px;
 }
 
 
