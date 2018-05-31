@@ -70,7 +70,7 @@
         <div class="row">
           <div class="gridinner">
             <a href="{{ $url }}" title="{{ $props->property_name}}">
-          		  <img src="{{ URL::to('propertyimagebyid/'.$props->id)}}" class="img-responsive" alt="{{ $props->property_name}}" title="{{ $props->property_name}}">
+          		  <img src="{{ URL::to('getPropertySliderImageById/'.$props->id)}}" class="img-responsive" alt="{{ $props->property_name}}" title="{{ $props->property_name}}">
                {{-- URL::to('propertyimagebyid/'.$props->id)--}}
            	</a>
             <div class="gridtext">
@@ -107,7 +107,7 @@
         <div class="row">
           <div class="gridinner">
             <a href="{{ $url }}" title="{{ $props->property_name}}">
-          		  <img src="{{ URL::to('propertyimagebyid/'.$props->id)}}" class="img-responsive" alt="{{ $props->property_name}}" title="{{ $props->property_name}}">
+          		  <img src="{{ URL::to('getPropertySliderImageById/'.$props->id)}}" class="img-responsive" alt="{{ $props->property_name}}" title="{{ $props->property_name}}">
                {{-- URL::to('propertyimagebyid/'.$props->id)--}}
            	</a>
             <div class="gridtext">
