@@ -423,41 +423,42 @@
                                     IN {{$propertyDetail['data']->assign_detail_city}}</h2>
                             </div>
                         </div>
-                        <div class="row">
-                            @if($relatedgridpropertiesArr)
-                                {{--*/ $rw = 1;	$node_no = 1; $ads_node = 0; /*--}}
-                                @foreach($relatedgridpropertiesArr as $props)
-                                    <div class="col-sm-6 col-md-6 col-lg-4">
-                                        <div class="hotel-card">
-                                            <figure>
-                                                @if(array_key_exists('image', $props))
-                                                    <img src="{{url('uploads/property_imgs_thumbs/front_property_'.$props['image']->folder_id.'_'.$props['image']->file_name)}}"
-                                                         alt="Emporium"/>
-                                                @endif
-                                                <a href="{{url($props['data']->property_slug)}}"
-                                                   class="content-overlay">
-                                                    <h5>{{$props['data']->property_name}}</h5>
-                                                    <p>From
-                                                        € {{$props['data']->price}} {{(isset($props['data']->category_name)) ? '| '.$props['data']->category_name : '' }}</p>
-                                                </a>
-                                            </figure>
-                                            <div class="title">
-                                                <h3>
-                                                    <a href="{{url($props['data']->property_slug)}}">{{$props['data']->property_name}}</a>
-                                                </h3>
-                                                <a href="{{url($props['data']->property_slug)}}" class="cartlink"><i
-                                                            class="fa fa-shopping-cart"></i></a>
-                                            </div>
+                       <div class="grid">
+    
+
+
+@if($relatedgridpropertiesArr)
+
+        @foreach($relatedgridpropertiesArr as $props)
+          
+            
+                                  <div class="col-md-4 col-sm-4 col-xs-12 grid-item">
+                                    <div class="row">
+                                       <div class="gridinner">
+                                        <a href="{{ url($props['data']->property_slug)}}" title="{{ $props['data']->property_name }}">
+                                              <img src="{{ URL::to('propertyimagebyid/'.$props['data']->id)}}" class="img-responsive" alt="{{$props['data']->property_name}}" title="{{$props['data']->property_name}}">
+                                          
+                                        </a>
+                                        <div class="gridtext">
+                                          <h5 class="entry-title">
+                                              <a href="{{url($props['data']->property_slug)}}" rel="bookmark" style="">{{$props['data']->property_name}}  </a>
+                                              <a href="{{url($props['data']->property_slug)}}"><i class="fa fa-shopping-cart"></i></a>
+                                          </h5>
+                                           <p>  {{ $props['data']->property_usp }}</p>
+                                              <a class="read-more-link" href="{{url($props['data']->property_slug)}}" title="Read More">Read More</a>
                                         </div>
+                                      </div>
                                     </div>
-                                    @if($rw%4==0)
-                        </div>
-                        <div class="row">
-                            @endif
-                            {{--*/ $rw++; $node_no++; /*--}}
-                            @endforeach
-                            @endif
-                        </div>
+                                  </div>
+                 
+      @endforeach 
+@endif
+
+     
+  </div>  
+		      
+		      
+		      
                     </div>
                 </section>
             @endif
