@@ -557,7 +557,7 @@ class PropertyController extends Controller {
 			$image = 'data:image/jpeg;base64,' . base64_encode($data);
 		} else {
 			if(!empty($propertyImage)) {
-				$height1 = 250 * $height /$width;
+				$height1 = 400 * $height /$width;
 				$image = Image::make($remoteImage)->resize(400,$height1)->response('jpg');
 			} else {
 				return false;
