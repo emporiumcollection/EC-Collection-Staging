@@ -33,7 +33,7 @@
                     <a href="{{ $slider_row->slider_link }}" rel="bookmark" tabindex="0" style="outline: none;"> {{$slider_row->slider_title}}</a>
                 </h5>
              <p> <a  href="{{ $slider_row->slider_link }}" >    {{$slider_row->slider_description}}  </a></p>
-             <a class="remoreslider" href="{{ $slider_row->slider_link }}">Read More</a>
+             <a class="remoreslider" href="{{ $slider_row->slider_link }}">Read more</a>
         </div>
       </div>
 
@@ -79,7 +79,7 @@
                    <a href="{{ $url }}"><i class="fa fa-shopping-cart"></i></a>
               </h5>
                <p>  {{ $props->property_usp}}</p>
-                  <a class="read-more-link" href="{{ $url }}"  title="Read More">Read More</a>
+                  <a class="read-more-link" href="{{ $url }}"  title="Read More">Read more</a>
             </div>
           </div>
         </div>
@@ -116,7 +116,7 @@
                    <a href="{{ $url }}"><i class="fa fa-shopping-cart"></i></a>
               </h5>
                <p>  {{ $props->property_usp}}</p>
-                  <a class="read-more-link" href="{{ $url }}"  title="Read More">Read More</a>
+                  <a class="read-more-link" href="{{ $url }}"  title="Read More">Read more</a>
             </div>
           </div>
         </div>
@@ -183,7 +183,7 @@
 							                  <a href="{{$url}}"><i class="fa fa-shopping-cart"></i></a>
 							              </h5>
 							               <p>  {{ $props->property_usp}}</p>
-							                  <a class="read-more-link" href="{{$url}}" title="Read More">read more</a>
+							                  <a class="read-more-link" href="{{$url}}" title="Read More">Read more</a>
 							            </div>
 							          </div>
 							        </div>
