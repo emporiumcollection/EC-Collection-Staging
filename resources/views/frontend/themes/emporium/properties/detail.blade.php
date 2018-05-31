@@ -435,21 +435,26 @@
                                   <div class="col-md-4 col-sm-4 col-xs-12 grid-item">
                                     <div class="row">
                                        <div class="gridinner">
-                                        <a href="{{ url($props['data']->property_slug)}}" title="{{ $props['data']->property_name }}">
-                                              <img src="{{ URL::to('propertyimagebyid/'.$props['data']->id)}}" class="img-responsive" alt="{{$props['data']->property_name}}" title="{{$props['data']->property_name}}">
-                                          
+                                        <div class="image">
+                                                 <a class="showhide" href="{{ url($props['data']->property_slug)}}" rel="bookmark" style="">{{ $props['data']->property_name}}   </a>
+                                        <a href="{{ url($props['data']->property_slug)}}" title="{{ $props['data']->property_name}}">
+                                              <img src="{{ URL::to('propertyimagebyid/'.$props['data']->id)}}" class="img-responsive" alt="{{ $props['data']->property_name}}" title="{{ $props['data']->property_name}}">
+                                           {{-- URL::to('propertyimagebyid/'.$props['data']->id)--}}
                                         </a>
+
+                                       </div>
                                         <div class="gridtext">
                                           <h5 class="entry-title">
-                                              <a href="{{url($props['data']->property_slug)}}" rel="bookmark" style="">{{$props['data']->property_name}}  </a>
-                                              <a href="{{url($props['data']->property_slug)}}"><i class="fa fa-shopping-cart"></i></a>
+                                              <a href="{{ url($props['data']->property_slug)}}" rel="bookmark" style="">{{ $props['data']->property_name}}   </a>
+                                              <a href="{{ url($props['data']->property_slug)}}"><i class="fa fa-shopping-cart"></i></a>
                                           </h5>
-                                           <p>  {{ $props['data']->property_usp }}</p>
-                                              <a class="read-more-link" href="{{url($props['data']->property_slug)}}" title="Read More">read more</a>
+                                           <p>  {{ $props->property_usp}}</p>
+                                              <a class="read-more-link" href="{{ url($props['data']->property_slug)}}" title="Read More">read more</a>
                                         </div>
                                       </div>
                                     </div>
                                   </div>
+                 
                  
       @endforeach 
 @endif
