@@ -165,20 +165,25 @@
 							      </div>
 							@endif
 							@else
+							      
 							      <div class="col-md-4 col-sm-4 col-xs-12 grid-item">
 							        <div class="row">
 							           <div class="gridinner">
+							           	<div class="image">
+							           		     <a class="showhide" href="{{$url}}" rel="bookmark" style="">{{ $props->property_name}}   </a>
 							            <a href="{{ $url }}" title="{{ $props->property_name}}">
 							          		  <img src="{{ URL::to('propertyimagebyid/'.$props->id)}}" class="img-responsive" alt="{{ $props->property_name}}" title="{{ $props->property_name}}">
 							               {{-- URL::to('propertyimagebyid/'.$props->id)--}}
 							           	</a>
+
+							           </div>
 							            <div class="gridtext">
 							              <h5 class="entry-title">
 							                  <a href="{{$url}}" rel="bookmark" style="">{{ $props->property_name}}   </a>
 							                  <a href="{{$url}}"><i class="fa fa-shopping-cart"></i></a>
 							              </h5>
 							               <p>  {{ $props->property_usp}}</p>
-							                  <a class="read-more-link" href="{{$url}}" title="Read More">Read More</a>
+							                  <a class="read-more-link" href="{{$url}}" title="Read More">read more</a>
 							            </div>
 							          </div>
 							        </div>
