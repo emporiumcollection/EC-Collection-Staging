@@ -445,7 +445,7 @@
                                               <a href="{{url($props['data']->property_slug)}}"><i class="fa fa-shopping-cart"></i></a>
                                           </h5>
                                            <p>  {{ $props['data']->property_usp }}</p>
-                                              <a class="read-more-link" href="{{url($props['data']->property_slug)}}" title="Read More">Read More</a>
+                                              <a class="read-more-link" href="{{url($props['data']->property_slug)}}" title="Read More">read more</a>
                                         </div>
                                       </div>
                                     </div>
