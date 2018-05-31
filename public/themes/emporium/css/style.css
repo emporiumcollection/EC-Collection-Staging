@@ -2016,3 +2016,69 @@ img.desaturate {
 }
 
 }
+
+
+
+
+
+/* 
+    New Design CSS
+ */
+
+ .entry-title a
+ {
+  font-size:13px !important;
+  text-transform:uppercase;
+ }
+
+.gridinner img
+{
+  width:100%;
+}
+.multiple-items
+{
+  background: #252525;
+  height:600px;
+  padding:50px 80px 50px 0px;
+}
+
+.misonrysection
+{
+  max-width:1440px;
+  margin:0 auto;
+    float:none;
+    clear:both;
+}
+
+.page-container
+{
+   background: #252525; 
+}
+
+
+@media(max-width:479px)
+{
+
+  .multiple-items,.misonrysection
+  {
+    padding-right:65px;
+  }
+}
+
+@media(max-width:767px)
+{
+
+ padding-right: 80px !important;
+  }
+.sidefixednav,.contactfixed,.searchresultnav.backcontrol
+{
+  opacity:.5;
+}
+
+.sidefixednav:hover,.contactfixed:hover,.backcontrol ul li a
+{
+  opacity:1 !important;
+}
+
+}
+
