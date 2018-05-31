@@ -347,3 +347,26 @@ th.next.available i
 {
    background: #252525; 
 }
+.pagination
+{
+  display:table !important;
+}
+.pagination>li
+{
+  display:table-cell !important;
+}
+
+.pagination>.active>a
+{
+  background:none;
+  color:#fff !important;
+}
+.pagination li a
+{
+      color: #ac9898 !important;
+}
+.pagination li a:hover,.pagination>.active>a:hover,.pagination li a:focus,.pagination>.active>a:focus
+{
+  background:none !important;
+  color:#fff;
+}
