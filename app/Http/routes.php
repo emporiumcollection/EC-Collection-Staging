@@ -378,6 +378,7 @@ Route::post('get-article-by-title', 'HomeController@getArticleByTitle');
 Route::get('getproperty/{id}', 'HomeController@getPropertyQuickView');
 Route::get('search-property-ajax', 'Frontend\PropertyController@getSearchPropertyAjax');
 Route::get('propertyimagebyid/{propid}', 'Frontend\PropertyController@getPropertyImageById');
+Route::get('propertysliderimagebyid/{propid}', 'Frontend\PropertyController@getPropertySliderImageById');
 Route::get('{slug}', 'Frontend\PropertyController@getPropertyDetail');
 Route::get('{slug}/restaurant', 'Frontend\RestaurantFrontController@propertyRestrurant');
 
