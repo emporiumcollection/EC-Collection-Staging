@@ -1,4 +1,17 @@
 /* Slider */
+
+font-face {
+     font-family: 'SilverSouthSerif';
+     src: url('../fonts/SilverSouthSerif.eot');
+     src: url('../fonts/SSilverSouthSerif.eot') format('embedded-opentype'),
+          url('../fonts/SilverSouthSerif.woff2') format('woff2'),
+          url('../fonts/SilverSouthSerif.woff') format('woff'),
+          url('../fonts/SilverSouthSerif.ttf') format('truetype'),
+          url('../fonts/SilverSouthSerif.svg#SilverSouthSerif') format('svg');
+ }
+
+
+
 .slick-slider
 {
     position: relative;
@@ -121,6 +134,7 @@
 
 .gridtext p
 {
+  font-family: 'SilverSouthSerif';
       line-height:28px;
     color:#fff;
 }
@@ -181,6 +195,7 @@
 }
 .slidertext p a
 {
+  font-family: 'SilverSouthSerif';
     color: #fff;
   line-height:28px;
 }
@@ -197,6 +212,7 @@
 }
 .pagination li a
 {
+  font-family: 'SilverSouthSerif';
     background:#262626;
   border:none;
   color:#fff;
