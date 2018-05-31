@@ -62,10 +62,10 @@ class PropertyController extends Controller {
         $editorData = DB::select($editorQuery);
         $this->data['editorPropertiesArr']=$editorData;
 
-        
         $getRec = DB::select($CountRecordQry);
         $propertiesArr = DB::select($fianlQry);
         $featureData = DB::select($featureQuery);
+
 
 		$this->data['featurePropertiesArr']=$featureData;
         $this->data['propertiesArr'] = $propertiesArr;
@@ -173,7 +173,7 @@ class PropertyController extends Controller {
 		$limit = " LIMIT 4";
 		$featureQuery = $query.$whereClause.$orderBy.$limit ; 
 		
-        //Editor choice editor_choice_property
+		  //Editor choice editor_choice_property
          $query = "SELECT pr.editor_choice_property,pr.property_usp,pr.feature_property,pr.id,pr.property_name,pr.property_slug,pr.property_category_id,"; 
         $query .= " (SELECT rack_rate FROM tb_properties_category_rooms_price pcrp where pr.id=pcrp.property_id order by rack_rate DESC limit 0,1 ) as price ," ;
         $query .= " (SELECT category_name FROM tb_categories ct where pr.property_category_id=ct.id limit 0,1 ) as category_name ";
@@ -241,8 +241,7 @@ class PropertyController extends Controller {
 
         $propertiesArr = array();
 		$crpropertiesArr = array();
-		$
-			= array();
+		$relatedgridpropertiesArr = array();
         $props = \DB::table('tb_properties')->where('property_slug', $request->slug)->first();
 
         $this->data['slug'] = $request->slug;
@@ -558,8 +557,8 @@ class PropertyController extends Controller {
 			$image = 'data:image/jpeg;base64,' . base64_encode($data);
 		} else {
 			if(!empty($propertyImage)) {
-				$height1 = 400 * $height /$width;
-				$image = Image::make($remoteImage)->resize(400,$height1)->response('jpg');
+				$height1 = 250 * $height /$width;
+				$image = Image::make($remoteImage)->resize(250,$height1)->response('jpg');
 			} else {
 				return false;
 			}
@@ -592,7 +591,6 @@ class PropertyController extends Controller {
 		return $image;
 	}
 	
-
 
 	public function getEventsDetail(Request $request) {
 
