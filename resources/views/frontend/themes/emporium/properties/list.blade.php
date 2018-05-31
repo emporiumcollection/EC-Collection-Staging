@@ -192,7 +192,11 @@
      
   </div>
   </div>
+
+</div>
+  
   <div class="col-md-12 col-xs-12 col-xs-12 text-center">
+  	<div class="row">
   @if($total_pages>1)
 				<ul class="pagination">
 	 				@for($i=1;$i<=$total_pages;$i++)
@@ -212,11 +216,9 @@
 	 
 				</ul>
 				@endif
-				<div class="btmline"></div>
-</div>
+	</div>
 </div>
   
-
 
 
 
