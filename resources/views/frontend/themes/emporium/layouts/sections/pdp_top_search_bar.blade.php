@@ -39,7 +39,7 @@
 					<div class="col-sm-3 col-md-2">
 						<div class="form-group">
 							<label>&nbsp;</label>
-							<select name="roomType" class="form-control"  required="required" title="Please Choose Room(s)"  oninvalid="this.setCustomValidity('Please Select Room(s)')">
+							<select name="roomType" class="form-control"  required="required" title="Please Choose Room(s)"  oninvalid="this.setCustomValidity('Please Select Room(s)')"   oninput="this.setCustomValidity('')" >
 								<option disabled="" value="" selected>Select Room(s)</option>
 								@if (array_key_exists('typedata', $propertyDetail))
 									@foreach($propertyDetail['typedata'] as $type)
