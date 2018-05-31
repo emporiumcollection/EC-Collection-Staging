@@ -2068,17 +2068,15 @@ img.desaturate {
 @media(max-width:767px)
 {
 
- padding-right: 80px !important;
-  }
-.sidefixednav,.contactfixed,.searchresultnav.backcontrol
-{
-  opacity:.5;
-}
+	.sidefixednav,.contactfixed,.searchresultnav.backcontrol
+	{
+	  opacity:.5;
+	}
 
-.sidefixednav:hover,.contactfixed:hover,.backcontrol ul li a
-{
-  opacity:1 !important;
-}
+	.sidefixednav:hover,.contactfixed:hover,.backcontrol ul li a
+	{
+	  opacity:1 !important;
+	}
 
 }
 
