@@ -1,15 +1,5 @@
 /* Slider */
 
-font-face {
-     font-family: 'SilverSouthSerif';
-     src: url('../fonts/SilverSouthSerif.eot');
-     src: url('../fonts/SilverSouthSerif.eot') format('embedded-opentype'),
-          url('../fonts/SilverSouthSerif.woff2') format('woff2'),
-          url('../fonts/SilverSouthSerif.woff') format('woff'),
-          url('../fonts/SilverSouthSerif.ttf') format('truetype'),
-          url('../fonts/SilverSouthSerif.svg#SilverSouthSerif') format('svg');
- }
-
 
 
 .slick-slider
@@ -134,7 +124,7 @@ font-face {
 
 .gridtext p
 {
-  font-family: 'SilverSouthSerif';
+
       line-height:28px;
     color:#fff;
 }
