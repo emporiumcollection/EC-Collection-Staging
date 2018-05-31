@@ -268,7 +268,15 @@ th.next.available i
 .pagination
 {
       margin: 50px 0px 20px 0;
+      width:100%;
+      text-align:center;
 }
+
+.pagination>li
+{
+  display:inline-block !important;
+}
+
 /*.daterangepicker.daterangecalendar-design
 {
   position:fixed;
@@ -305,7 +313,6 @@ th.next.available i
     }
 
 }
-
 /* 
     New Design CSS
  */
@@ -338,29 +345,4 @@ th.next.available i
 .page-container
 {
    background: #252525; 
-}
-
-
-@media(max-width:479px)
-{
-
-  .multiple-items,.misonrysection
-  {
-    padding-right:65px;
-  }
-}
-
-@media(max-width:767px)
-{
-
-	.sidefixednav,.contactfixed,.searchresultnav.backcontrol
-	{
-	  opacity:.5;
-	}
-
-	.sidefixednav:hover,.contactfixed:hover,.backcontrol ul li a
-	{
-	  opacity:1 !important;
-	}
-
 }
