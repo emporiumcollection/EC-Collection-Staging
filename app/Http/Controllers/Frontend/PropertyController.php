@@ -183,6 +183,7 @@ class PropertyController extends Controller {
         $editorQuery = $query.' '.$whereClause.' '.$OrderByQry;
 
         $editorData = DB::select($editorQuery);
+		dd($editorData);
         $this->data['editorPropertiesArr']=$editorData;
 
 		$property = DB::select($finalQry);
