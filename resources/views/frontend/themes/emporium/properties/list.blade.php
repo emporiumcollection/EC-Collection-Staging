@@ -80,7 +80,7 @@
 @if(!empty($editorPropertiesArr))
   <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="row">
-    		<h4 class="gridheading">{{ count($editorPropertiesArr) }} <span class="newfont"> Editor choice</span> Hotels Found for {{ $slug }}</h4>
+    		<h4 class="gridheading">{{ count($editorPropertiesArr) }} <span class="newfont"> Editor's choice</span> Hotels Found for {{ $slug }}</h4>
     <div class="slider multiple-items">
 
 
@@ -131,7 +131,7 @@
 
 
 @if(!empty($featurePropertiesArr))
-		<h4 class="gridheading"> {{ count($featurePropertiesArr) }}<span class="newfont"> Feature </span> Hotels Found for {{ $slug }}</h4>
+		<h4 class="gridheading"> {{ count($featurePropertiesArr) }}<span class="newfont"> Featured </span> Hotels Found for {{ $slug }}</h4>
 			<div class="grid">
 
 
@@ -230,7 +230,7 @@
 							                  <a href="{{$url}}"><i class="fa fa-shopping-cart"></i></a>
 							              </h5>
 							               <p>  {{ $props->property_usp}}</p>
-							                  <a class="read-more-link" href="{{$url}}" title="discover"><span class="newfont"> discover</span></a>
+							                  <a class="read-more-link" href="{{$url}}" title="discover"><span class="newfontsimple"> Discover</span></a>
 							            </div>
 							          </div>
 							        </div>

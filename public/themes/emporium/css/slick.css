@@ -478,9 +478,13 @@ opacity:1;
  font-family: 'SilverSouthScript';
   
 }
-a .newfont
+ a .newfont
 {
-  font-size:20px;
+  font-size:50px;
  font-family: 'SilverSouthScript';
   
+}
+a .newfontsimple{
+   font-size:50px;
+ font-family: 'SilverSouthScript';
 }
