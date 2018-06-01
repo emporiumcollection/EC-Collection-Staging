@@ -1,5 +1,15 @@
 /* Slider */
 
+font-face {
+     font-family: 'SilverSouthSerif';
+     src: url('../fonts/SilverSouthSerif.eot');
+     src: url('../fonts/SilverSouthSerif.eot') format('embedded-opentype'),
+          url('../fonts/SilverSouthSerif.woff2') format('woff2'),
+          url('../fonts/SilverSouthSerif.woff') format('woff'),
+          url('../fonts/SilverSouthSerif.ttf') format('truetype'),
+          url('../fonts/SilverSouthSerif.svg#SilverSouthSerif') format('svg');
+ }
+
 
 
 .slick-slider
@@ -124,7 +134,7 @@
 
 .gridtext p
 {
-
+font-family: GeomanistLight;  
       line-height:28px;
     color:#fff;
 }
@@ -185,7 +195,7 @@
 }
 .slidertext p a
 {
-  font-family: 'SilverSouthSerif';
+font-family: GeomanistLight; 
     color: #fff;
   line-height:28px;
 }
