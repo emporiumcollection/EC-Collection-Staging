@@ -25,7 +25,14 @@
 										{{$slider_row->slider_title}}
 									@endif
 								</h2>
-								<p>{{$slider_row->slider_description}}</p>
+								<p>@if($slider_row->slider_link!='#' && $slider_row->slider_link!='')
+										<a onclick="return !window.open(this.href, '{{ ((strpos($slider_row->slider_link, 'http://') || strpos($slider_row->slider_link, 'https://')) === false) ? $slider_row->slider_link : 'http://'.$slider_row->slider_link }}', 'width=900,height=500,left=100, top=100, scrollbars, resizable')" href="{{ ((strpos($slider_row->slider_link, 'http://') || strpos($slider_row->slider_link, 'https://')) === false) ? $slider_row->slider_link : 'http://'.$slider_row->slider_link }}" style="color:white;	">{{$slider_row->slider_description}}</a>
+									@else
+										{{$slider_row->slider_description}}
+									@endif
+
+
+								</p>
 							</div>
 						</div>
 					@endforeach
