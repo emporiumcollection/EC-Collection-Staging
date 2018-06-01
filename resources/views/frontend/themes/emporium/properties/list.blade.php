@@ -49,7 +49,14 @@
 											{{$ads->adv_title}}
 										@endif
 									</h2>
-									<p>{{$ads->adv_desc}}</p>
+									<p>@if($ads->adv_link!='#' && $ads->adv_link!='')
+											<a onclick="return !window.open(this.href, '{{ ((strpos($ads->adv_link, 'http://') || strpos($ads->adv_link, 'https://')) === false) ? $ads->adv_link : 'http://'.$ads->adv_link }}', 'width=900,height=500,left=100, top=100, scrollbars, resizable')" href="{{ ((strpos($ads->adv_link, 'http://') || strpos($ads->adv_link, 'https://')) === false) ? $ads->adv_link : 'http://'.$ads->adv_link }}">{{$ads->adv_desc}}</a>
+										@else
+											{{$ads->adv_desc}}
+										@endif
+
+
+									</p>
 								</div>
 							</div>
 						@endforeach
@@ -73,6 +80,7 @@
 @if(!empty($editorPropertiesArr))
   <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="row">
+    		<h4 class="gridheading">{{ count($editorPropertiesArr) }} <span class="newfont"> Editor choice</span> Hotels Found for {{ $slug }}</h4>
     <div class="slider multiple-items">
 
 
@@ -102,7 +110,7 @@
                     <a href="{{ $url }}" rel="bookmark" tabindex="0" style="outline: none;"> {{ $props->property_name}}</a>
                 </h5>
              <p> <a  href="{{ $url }}" >    {{ $props->property_usp}}  </a></p>
-             <a class="remoreslider" href="{{ $url }}">Read More</a>
+             <a class="remoreslider" href="{{ $url }}"><span class="newfont"> Discover</span></a>
         </div>
       </div>
 
@@ -115,18 +123,18 @@
 @endif
 
   <div class="col-md-12 col-sm-12 col-xs-12 misonrysection">
-  {{ count($editorPropertiesArr) }}
-  	@if($propertiesArr)
-  	<h4 class="bannerbtm">{{$total_record}} Luxury Hotel(s) Found for {{$slug}} {{$dateslug}}</h4>
-	@endif
+  
     <div class="row">
 
  
 
 
 
-@if($featurePropertiesArr)
+@if(!empty($featurePropertiesArr))
+		<h4 class="gridheading"> {{ count($featurePropertiesArr) }}<span class="newfont"> Feature </span> Hotels Found for {{ $slug }}</h4>
 			<div class="grid">
+
+
 		@foreach($featurePropertiesArr as $props)
 			
 			<?php
@@ -149,11 +157,11 @@
            	</a>
             <div class="gridtext">
               <h5 class="entry-title">
-                  <a href="{{ $url}}" rel="bookmark" style="">{{ $props->property_name}}  -- Featured </a>
+                  <a href="{{ $url}}" rel="bookmark" style="">{{ $props->property_name}} -- Featured  </a>
                    <a href="{{ $url }}"><i class="fa fa-shopping-cart"></i></a>
               </h5>
                <p>  {{ $props->property_usp}}</p>
-                  <a class="read-more-link" href="{{ $url }}"  title="Discover">Discover</a>
+                  <a class="read-more-link" href="{{ $url }}"  title="Discover" ><span class="newfont"> Discover</span></a>
             </div>
           </div>
         </div>
@@ -163,6 +171,9 @@
 @endif
 
       <div class="clearfix"></div>
+      	@if($propertiesArr)
+  	<h4 class="gridheading">{{$total_record}} 	<span class="newfont"> Luxury Hotel(s)</span> Found for {{$slug}} {{$dateslug}}</h4>
+	@endif
     <div class="grid">
     
 
@@ -219,7 +230,7 @@
 							                  <a href="{{$url}}"><i class="fa fa-shopping-cart"></i></a>
 							              </h5>
 							               <p>  {{ $props->property_usp}}</p>
-							                  <a class="read-more-link" href="{{$url}}" title="discover">discover</a>
+							                  <a class="read-more-link" href="{{$url}}" title="discover"><span class="newfont"> discover</span></a>
 							            </div>
 							          </div>
 							        </div>
