@@ -1,5 +1,25 @@
 /* Slider */
 
+@font-face {
+     font-family: 'SilverSouthSerif';
+     src: url('../fonts/SilverSouthSerif.eot');
+     src: url('../fonts/SilverSouthSerif.eot') format('embedded-opentype'),
+          url('../fonts/SilverSouthSerif.woff2') format('woff2'),
+          url('../fonts/SilverSouthSerif.woff') format('woff'),
+          url('../fonts/SilverSouthSerif.ttf') format('truetype'),
+          url('../fonts/SilverSouthSerif.svg#SilverSouthSerif') format('svg');
+ }
+
+
+@font-face {
+     font-family:'SilverSouthScript';
+     src: url('../fonts/SilverSouthScript.eot');
+     src: url('../fonts/SilverSouthScript.eot') format('embedded-opentype'),
+          url('../fonts/SilverSouthScript.woff2') format('woff2'),
+          url('../fonts/SilverSouthScript.woff') format('woff'),
+          url('../fonts/SilverSouthScript.ttf') format('truetype'),
+          url('../fonts/SilverSouthScript.svg') format('svg');
+ }
 
 
 .slick-slider
@@ -254,7 +274,7 @@ th.next.available i
 .misonrysection .biggrid .gridinner
 
 {
-  border-bottom:none;
+
 }
 .gridinner a,.remoreslider,.slidertext .categoryname
 {
@@ -441,4 +461,25 @@ position: absolute;
 .gridinner .image:hover .showhide
 {
 opacity:1;
+}
+.gridheading 
+{
+ 
+  color:#ABA07C;
+  text-align:center;
+  width:100%;
+  padding:20px 0px;
+  font-size:25px;
+}
+.gridheading .newfont
+{
+  font-size:40px;
+ font-family: 'SilverSouthScript';
+  
+}
+a .newfont
+{
+  font-size:20px;
+ font-family: 'SilverSouthScript';
+  
 }
