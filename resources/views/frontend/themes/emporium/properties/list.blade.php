@@ -7,33 +7,95 @@
 @section('meta_description', 'Emporium Voyage Luxury Hotel Collection')
 {{-- For Page's Content Part --}}
 @section('content')
- 
+    <!-- Restaurant slider starts here -->
+    <section id="search-result-slider" class="luxuryHotelSlider">
+		 @if(!empty($slider))
+			<div id="myCarousel" class="carousel" data-ride="carousel">
+				<!-- Indicators -->
+				{{--  Wrapper for slides --}}
+				<div class="carousel-inner">
+					@foreach($slider as $key => $slider_row)
+						<div class="item {{($key == 0)? 'active' : ''}}" style="background-image:url({{url('uploads/slider_images/'.$slider_row->slider_img)}});">
+							<div class="carousel-caption">
+								<h6>{{$slug}}</h6>
+								<h2>
+									@if($slider_row->slider_link!='#' && $slider_row->slider_link!='')
+										<a onclick="return !window.open(this.href, '{{ ((strpos($slider_row->slider_link, 'http://') || strpos($slider_row->slider_link, 'https://')) === false) ? $slider_row->slider_link : 'http://'.$slider_row->slider_link }}', 'width=900,height=500,left=100, top=100, scrollbars, resizable')" href="{{ ((strpos($slider_row->slider_link, 'http://') || strpos($slider_row->slider_link, 'https://')) === false) ? $slider_row->slider_link : 'http://'.$slider_row->slider_link }}">{{$slider_row->slider_title}}</a>
+									@else
+										{{$slider_row->slider_title}}
+									@endif
+								</h2>
+								<p>{{$slider_row->slider_description}}</p>
+							</div>
+						</div>
+					@endforeach
+					{{--*/ $adscatid = ($destination_category > 0) ? $destination_category : 'Hotel'; $sliderads = CommonHelper::getSliderAds('grid_slider', $adscatid) /*--}}
+					@if(!empty($sliderads['leftsidebarads']))
+						@foreach($sliderads['leftsidebarads'] as $ads)
+							<div class="item" style="background-image:url({{URL::to('uploads/users/advertisement/'.$ads->adv_img)}});">
+								<div class="carousel-caption">
+									<h6>Advertisement</h6>
+									<h2>
+										@if($ads->adv_link!='#' && $ads->adv_link!='')
+											<a onclick="return !window.open(this.href, '{{ ((strpos($ads->adv_link, 'http://') || strpos($ads->adv_link, 'https://')) === false) ? $ads->adv_link : 'http://'.$ads->adv_link }}', 'width=900,height=500,left=100, top=100, scrollbars, resizable')" href="{{ ((strpos($ads->adv_link, 'http://') || strpos($ads->adv_link, 'https://')) === false) ? $ads->adv_link : 'http://'.$ads->adv_link }}">{{$ads->adv_title}}</a>
+										@else
+											{{$ads->adv_title}}
+										@endif
+									</h2>
+									<p>{{$ads->adv_desc}}</p>
+								</div>
+							</div>
+						@endforeach
+					@endif
+				</div>
+				@if(count($slider) > 1)
+					<!-- Left and right controls -->
+					<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+						<img src="{{ asset('themes/emporium/images/editorial-left-arrow.png') }}" alt="Icon"/>
+					</a>
+					<a class="right carousel-control" href="#myCarousel" data-slide="next">
+						<img src="{{ asset('themes/emporium/images/editorial-right-arrow.png') }}" alt="Icon"/>
+					</a>
+				@endif
+			</div>
+		@endif
+    </section>
    
 
 
-@if(!empty($slider))
+@if(!empty($editorPropertiesArr))
   <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="row">
     <div class="slider multiple-items">
 
 
-@foreach($slider as $key => $slider_row)
+@foreach($editorPropertiesArr as  $props)
+<?php
+				$url=URL::to($props->property_slug);
+				if(Request::has("departure") || Request::has("arrive"))
+				{
+					$url.='?arrive='.Request::input("arrive")."&departure=".Request::input("departure");
+				}
+
+
+			?> 
+
       <div>
         <div class="col-md-6 col-sm-6 col-xs-12">
-         <a  href="{{ $slider_row->slider_link }}" >
-		          <img src="{{ url('uploads/slider_images/'.$slider_row->slider_img)}}" class="img-responsive">
+         <a  href="{{ $url }}" >
+		          <img src="{{ url('uploads/slider_images/'.$slider_row->slider_img)}}" class="img-responsive" title="{{ $props->property_name}}" alt="{{ $props->property_name}}">
 		          {{-- url('uploads/slider_images/'.$slider_row->slider_img) --}}
     		  </a>
         </div>
         <div class="col-md-6 col-sm-6 col-xs-12 slidertext">
           <h6 class="cat-links">
-                        <a href="{{ $slider_row->slider_link }}" rel="category tag" tabindex="0" class="categoryname" style="outline: none;">{{$slug}}</a>
+                      
                     </h6>
                     <h5 class="entry-title">
-                    <a href="{{ $slider_row->slider_link }}" rel="bookmark" tabindex="0" style="outline: none;"> {{$slider_row->slider_title}}</a>
+                    <a href="{{ $url }}" rel="bookmark" tabindex="0" style="outline: none;"> {{ $props->property_name}}</a>
                 </h5>
-             <p> <a  href="{{ $slider_row->slider_link }}" >    {{$slider_row->slider_description}}  </a></p>
-             <a class="remoreslider" href="{{ $slider_row->slider_link }}">Read more</a>
+             <p> <a  href="{{ $url }}" >    {{ $props->property_usp}}  </a></p>
+             <a class="remoreslider" href="{{ $url }}">Read More</a>
         </div>
       </div>
 
@@ -50,44 +112,11 @@
   	<h4 class="bannerbtm">{{$total_record}} Luxury Hotel(s) Found for {{$slug}} {{$dateslug}}</h4>
 	@endif
     <div class="row">
+
  
-@if($editorPropertiesArr)
-			<div class="grid">
-		@foreach($editorPropertiesArr as $props)
-			
-			<?php
-				$url=URL::to($props->property_slug);
-				if(Request::has("departure") || Request::has("arrive"))
-				{
-					$url.='?arrive='.Request::input("arrive")."&departure=".Request::input("departure");
-				}
 
 
-			?> 
 
-
-    <div class="col-md-6 col-sm-6 col-xs-12 biggrid">
-        <div class="row">
-          <div class="gridinner">
-            <a href="{{ $url }}" title="{{ $props->property_name}}">
-          		  <img src="{{ URL::to('propertysliderimagebyid/'.$props->id)}}" class="img-responsive" alt="{{ $props->property_name}}" title="{{ $props->property_name}}">
-               {{-- URL::to('propertyimagebyid/'.$props->id)--}}
-           	</a>
-            <div class="gridtext">
-              <h5 class="entry-title">
-                  <a href="{{ $url}}" rel="bookmark" style="">{{ $props->property_name}}   </a>
-                   <a href="{{ $url }}"><i class="fa fa-shopping-cart"></i></a>
-              </h5>
-               <p>  {{ $props->property_usp}}</p>
-                  <a class="read-more-link" href="{{ $url }}"  title="Read More">Read more</a>
-            </div>
-          </div>
-        </div>
-      </div>
-	@endforeach
-</div>
-@endif
- 
 @if($featurePropertiesArr)
 			<div class="grid">
 		@foreach($featurePropertiesArr as $props)
@@ -116,7 +145,7 @@
                    <a href="{{ $url }}"><i class="fa fa-shopping-cart"></i></a>
               </h5>
                <p>  {{ $props->property_usp}}</p>
-                  <a class="read-more-link" href="{{ $url }}"  title="Read More">Read more</a>
+                  <a class="read-more-link" href="{{ $url }}"  title="Read More">Read More</a>
             </div>
           </div>
         </div>
@@ -165,7 +194,6 @@
 							      </div>
 							@endif
 							@else
-							      
 							      <div class="col-md-4 col-sm-4 col-xs-12 grid-item">
 							        <div class="row">
 							           <div class="gridinner">
@@ -197,9 +225,8 @@
      
   </div>
   </div>
-
 </div>
-  
+
   <div class="col-md-12 col-xs-12 col-xs-12 text-center">
   	<div class="row">
   @if($total_pages>1)
@@ -224,6 +251,7 @@
 	</div>
 </div>
   
+
 
 
 
