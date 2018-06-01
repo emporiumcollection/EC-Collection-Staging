@@ -230,7 +230,7 @@
 							                  <a href="{{$url}}"><i class="fa fa-shopping-cart"></i></a>
 							              </h5>
 							               <p>  {{ $props->property_usp}}</p>
-							                  <a class="read-more-link" href="{{$url}}" title="discover"><span class="newfontsimple"> discover</span></a>
+							                  <a class="read-more-link" href="{{$url}}" title="discover"><span class="newfontsimple"> Discover</span></a>
 							            </div>
 							          </div>
 							        </div>
