@@ -148,11 +148,11 @@
            	</a>
             <div class="gridtext">
               <h5 class="entry-title">
-                  <a href="{{ $url}}" rel="bookmark" style="">{{ $props->property_name}}   </a>
+                  <a href="{{ $url}}" rel="bookmark" style="">{{ $props->property_name}}  -- Featured </a>
                    <a href="{{ $url }}"><i class="fa fa-shopping-cart"></i></a>
               </h5>
                <p>  {{ $props->property_usp}}</p>
-                  <a class="read-more-link" href="{{ $url }}"  title="Read More">Read More</a>
+                  <a class="read-more-link" href="{{ $url }}"  title="Discover">Discover</a>
             </div>
           </div>
         </div>
