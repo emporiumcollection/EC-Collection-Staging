@@ -115,6 +115,7 @@
 @endif
 
   <div class="col-md-12 col-sm-12 col-xs-12 misonrysection">
+  {{ count($editorPropertiesArr) }}
   	@if($propertiesArr)
   	<h4 class="bannerbtm">{{$total_record}} Luxury Hotel(s) Found for {{$slug}} {{$dateslug}}</h4>
 	@endif
