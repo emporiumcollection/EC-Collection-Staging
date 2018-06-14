@@ -7,7 +7,7 @@
 @section('meta_description', 'Emporium Voyage Luxury Hotel Collection')
 {{-- For Page's Content Part --}}
 @section('content')
-    <!-- Restaurant slider starts aks here -->
+    <!-- Restaurant slider starts {{ public_path() }} here -->
     <section id="search-result-slider" class="luxuryHotelSlider">
 		 @if(!empty($slider))
 			<div id="myCarousel" class="carousel" data-ride="carousel">
