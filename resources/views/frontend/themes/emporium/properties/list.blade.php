@@ -98,7 +98,7 @@
       <div>
         <div class="col-md-6 col-sm-6 col-xs-12">
          <a  href="{{ $url }}" >
-		          <img src="{{ url('uploads/slider_images/'.$slider_row->slider_img)}}" class="img-responsive" title="{{ $props->property_name}}" alt="{{ $props->property_name}}">
+		          <img data-src="{{ url('uploads/slider_images/'.$slider_row->slider_img)}}" class="img-responsive" title="{{ $props->property_name}}" alt="{{ $props->property_name}}">
 		          {{-- url('uploads/slider_images/'.$slider_row->slider_img) --}}
     		  </a>
         </div>
@@ -152,7 +152,7 @@
         <div class="row">
           <div class="gridinner">
             <a href="{{ $url }}" title="{{ $props->property_name}}">
-          		  <img src="{{ URL::to('propertysliderimagebyid/'.$props->id)}}" class="img-responsive" alt="{{ $props->property_name}}" title="{{ $props->property_name}}">
+          		  <img data-src="{{ URL::to('propertysliderimagebyid/'.$props->id)}}" class="img-responsive" alt="{{ $props->property_name}}" title="{{ $props->property_name}}">
                {{-- URL::to('propertyimagebyid/'.$props->id)--}}
            	</a>
             <div class="gridtext">
@@ -197,7 +197,7 @@
 							        <div class="row">
 							           <div class="gridinner">
 							            <a href="#" >
-							          		  <img src="{{URL::to('uploads/users/advertisement/'.$resultads['resultads']->adv_img)}}" class="img-responsive" >
+							          		  <img data-src="{{URL::to('uploads/users/advertisement/'.$resultads['resultads']->adv_img)}}" class="img-responsive" >
 							               {{-- URL::to('propertyimagebyid/'.$props->id)--}}
 							           	</a>
 							            <div class="gridtext">
@@ -219,7 +219,7 @@
 							           	<div class="image">
 							           		     <a class="showhide" href="{{$url}}" rel="bookmark" style="">{{ $props->property_name}}   </a>
 							            <a href="{{ $url }}" title="{{ $props->property_name}}">
-							          		  <img src="{{ URL::to('propertyimagebyid/'.$props->id)}}" class="img-responsive" alt="{{ $props->property_name}}" title="{{ $props->property_name}}">
+							          		  <img data-src="{{ URL::to('propertyimagebyid/'.$props->id)}}" class="img-responsive" alt="{{ $props->property_name}}" title="{{ $props->property_name}}">
 							               {{-- URL::to('propertyimagebyid/'.$props->id)--}}
 							           	</a>
 
