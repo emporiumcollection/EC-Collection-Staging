@@ -7,7 +7,7 @@
 @section('meta_description', 'Emporium Voyage Luxury Hotel Collection')
 {{-- For Page's Content Part --}}
 @section('content')
-    <!-- Restaurant slider starts {{ public_path() }} here -->
+    <!-- Restaurant slider starts here -->
     <section id="search-result-slider" class="luxuryHotelSlider">
 		 @if(!empty($slider))
 			<div id="myCarousel" class="carousel" data-ride="carousel">
@@ -151,6 +151,11 @@
     <div class="col-md-6 col-sm-6 col-xs-12 biggrid">
         <div class="row">
           <div class="gridinner">
+          {{--*/
+          
+            $propertyImage = CustomQuery::getPropertyImage($props->id);
+            print_r($propertyImage);
+          /*--}}
             <a href="{{ $url }}" title="{{ $props->property_name}}">
           		  <img src="{{ URL::to('propertysliderimagebyid/'.$props->id)}}" class="img-responsive" alt="{{ $props->property_name}}" title="{{ $props->property_name}}">
                {{-- URL::to('propertyimagebyid/'.$props->id)--}}
