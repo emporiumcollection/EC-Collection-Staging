@@ -237,7 +237,7 @@ class PropertyController extends Controller {
             }
         }*/
         $cutomeQuery = "SELECT id FROM  (SELECT parent_category_id, id FROM tb_categories ORDER BY parent_category_id, id) products_sorted, (SELECT @pv := '39') initialisation WHERE FIND_IN_SET(parent_category_id, @pv) > 0 AND @pv := CONCAT(@pv, ',', id)";
-        $results = DB::select($featureQuery);
+        $results = DB::select($cutomeQuery);
         foreach ($results as $row) {
             $child_category_array[] = $row->id;
         }
