@@ -117,13 +117,15 @@ class PropertyController extends Controller {
 		if (!empty($cateObj)) {
 			$channel_url = $cateObj->category_youtube_channel_url;
 			$this->data['channel_url'] = $channel_url;
-			$cateObjtemp = \DB::table('tb_categories')->where('parent_category_id', $cateObj->id)->where('category_published', 1)->get();
+			/*$cateObjtemp = \DB::table('tb_categories')->where('parent_category_id', $cateObj->id)->where('category_published', 1)->get();
 			if (!empty($cateObjtemp)) {
 				$chldIds = $this->fetchcategoryChildListIds($cateObj->id);
 				array_unshift($chldIds, $cateObj->id);
 			} else {
 				$chldIds[] = $cateObj->id;
-			}
+			}*/
+            $chldIds = $this->fetchcategoryChildListIds($cateObj->id);
+            if(count($chldIds) <= 0){ $chldIds[] = $cateObj->id; }
 			$getcats = '';
 			if (!empty($chldIds)) {
 				$getcats = " AND (" . implode(" || ", array_map(function($v) {
@@ -223,7 +225,7 @@ class PropertyController extends Controller {
                     
     }
 	
-	function fetchcategoryChildListIds($id = 0, $child_category_array = '') {
+	function fetchcategoryChildListIds($id = 0, $child_category_array = array()) {
 
         /*if (!is_array($child_category_array))
             $child_category_array = array();
