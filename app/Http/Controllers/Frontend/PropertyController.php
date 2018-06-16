@@ -225,18 +225,20 @@ class PropertyController extends Controller {
 	
 	function fetchcategoryChildListIds($id = 0, $child_category_array = '') {
 
-        if (!is_array($child_category_array))
+        /*if (!is_array($child_category_array))
             $child_category_array = array();
         //$uid = \Auth::user()->id;
         // Get Query 
-        /*$results = \DB::table('tb_categories')->where('parent_category_id', $id)->get();
+        $results = \DB::table('tb_categories')->where('parent_category_id', $id)->get();
         if ($results) {
             foreach ($results as $row) {
                 $child_category_array[] = $row->id;
                 $child_category_array = $this->fetchcategoryChildListIds($row->id, $child_category_array);
             }
         }*/
-        $cutomeQuery = "SELECT id FROM  (SELECT parent_category_id, id FROM tb_categories ORDER BY parent_category_id, id) products_sorted, (SELECT @pv := '39') initialisation WHERE FIND_IN_SET(parent_category_id, @pv) > 0 AND @pv := CONCAT(@pv, ',', id)";
+        
+        $child_category_array = array();
+        $cutomeQuery = "SELECT id FROM  (SELECT parent_category_id, id FROM tb_categories ORDER BY parent_category_id, id) products_sorted, (SELECT @pv := ".$id.") initialisation WHERE FIND_IN_SET(parent_category_id, @pv) > 0 AND @pv := CONCAT(@pv, ',', id)";
         $results = DB::select($cutomeQuery);
         foreach ($results as $row) {
             $child_category_array[] = $row->id;
