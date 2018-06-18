@@ -133,7 +133,7 @@ class PropertyController extends Controller {
 								}, array_values($chldIds))) . ")";*/
                 
                 $tids = trim((count($chldIds) > 0)? implode(',',$chldIds):'');
-                if(strlen($tids) > 0){ $getcats = " AND FIND_IN_SET(property_category_id, ".$tids.")"; }
+                if(strlen($tids) > 0){ $getcats = " AND FIND_IN_SET(property_category_id, '".$tids."')"; }
 			}
 
 			if ($arrive != '') {
