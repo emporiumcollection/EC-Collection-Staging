@@ -128,9 +128,12 @@ class PropertyController extends Controller {
             if(count($chldIds) <= 0){ $chldIds[] = $cateObj->id; }
 			$getcats = '';
 			if (!empty($chldIds)) {
-				$getcats = " AND (" . implode(" || ", array_map(function($v) {
+				/*$getcats = " AND (" . implode(" || ", array_map(function($v) {
 									return sprintf("FIND_IN_SET('%s', property_category_id)", $v);
-								}, array_values($chldIds))) . ")";
+								}, array_values($chldIds))) . ")";*/
+                
+                $tids = trim((count($chldIds) > 0)? implode(',',$chldIds):'');
+                if(strlen($tids) > 0){ $getcats = " AND FIND_IN_SET(property_category_id, ".$tids.")"; }
 			}
 
 			if ($arrive != '') {
