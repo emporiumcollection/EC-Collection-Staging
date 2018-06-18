@@ -240,9 +240,8 @@ class PropertyController extends Controller {
         }*/
         
         $child_category_array = array();
-        $cutomeQuery = "SELECT count(id) FROM  (SELECT parent_category_id, id FROM tb_categories ORDER BY parent_category_id, id) products_sorted, (SELECT @pv := ".$id.") initialisation WHERE FIND_IN_SET(parent_category_id, @pv) > 0 AND @pv := CONCAT(@pv, ',', id)";
+        $cutomeQuery = "SELECT id FROM  (SELECT parent_category_id, id FROM tb_categories ORDER BY parent_category_id, id) products_sorted, (SELECT @pv := ".$id.") initialisation WHERE FIND_IN_SET(parent_category_id, @pv) > 0 AND @pv := CONCAT(@pv, ',', id)";
         $results = DB::select($cutomeQuery);
-        print_r($results);die;
         foreach ($results as $row) {
             $child_category_array[] = $row->id;
         }
