@@ -446,6 +446,7 @@ $('input[name="departure"]').daterangepicker({
 
 var noImg = "{{ URL::to('sximo/images/transparent.png') }}";
 function load_all_images(){
+    $grid.masonry('layout');
     var totalHotelImg = $('img.rad-img').length;
     var rri = 1;
     $('img.rad-img').each(function(){
