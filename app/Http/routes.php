@@ -403,8 +403,6 @@ Route::get('luxury_destinations/{continent}/{cat}', 'Frontend\PropertyController
 Route::get('luxury_destinations/{continent}/{region}/{cat}', 'Frontend\PropertyController@propertySearch');
 Route::get('luxury_destinations/{continent}/{region}/{country}/{cat}', 'Frontend\PropertyController@propertySearch');
 
-Route::post('properties-grid-ajax', 'Frontend\PropertyController@getPropertiesGrid');
-
 Route::get('luxury_hotels/{cat}', 'Frontend\PropertyController@propertySearch');
 Route::get('getpropertygallery/{id}/{type}', 'HomeController@getPropertyGalleryQuickView');
 Route::get('getpropertyroomimages/{id}', 'Frontend\PropertyController@getPropertyRoomimageGalleryView');
