@@ -296,7 +296,7 @@ class PropertyController extends Controller {
     		$whereClause =" WHERE ((pr.property_name LIKE '%".$keyword."%' AND pr.property_type = 'Hotel') OR city LIKE '%".$keyword."%' ".$catprops." ) AND pr.property_status = 1 AND  pr.feature_property = 0 ";
     		$orderBy = "ORDER BY (SELECT rack_rate FROM tb_properties_category_rooms_price pcrp WHERE pcrp.property_id = pr.id ORDER BY rack_rate DESC LIMIT 1) * 1 DESC, pr.editor_choice_property desc  ";
     		$limit = " LIMIT ". $pageStart.",".$perPage; 
-    		$finalQry = $query.$whereClause.$orderBy.$limit ; 
+    		echo $finalQry = $query.$whereClause.$orderBy.$limit ; 
     		$CountRecordQry = "Select count(*) as total_record from tb_properties pr ".$whereClause ;
             $property = DB::select($finalQry);
 		}
