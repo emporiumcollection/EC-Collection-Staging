@@ -1322,7 +1322,7 @@ class ContainerController extends Controller {
 	function getThumbpath($id)
 	{
 		$fpath = \URL::to('uploads/container_user_files').'/';
-		echo $fpath; die;
+		echo $fpath.'<br>';
 		$folds = array_reverse($this->fetchFolderParentList($id));
 		if(!empty($folds))
 		{
