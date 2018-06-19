@@ -198,9 +198,6 @@ class PropertyController extends Controller {
 		$this->data['total_record'] = $getRec[0]->total_record;
 		$this->data['total_pages'] = (isset($getRec[0]->total_record) && $getRec[0]->total_record>0)?(int)ceil($getRec[0]->total_record / $perPage):0;
 		$this->data['active_page']=$pageNumber;
-        $this->data['child_ids'] = json_encode($chldIds);
-        $this->data['arrive'] = $arrive;
-        $this->data['departure'] = $departure;
 
 		$uid = isset(\Auth::user()->id) ? \Auth::user()->id : '';
 
@@ -253,65 +250,6 @@ class PropertyController extends Controller {
         /** new optimized query by aks end **/
         
         return $child_category_array;
-    }
-    
-    public function getPropertiesGrid(Request $request){
-        $chldIds = json_decode($request->childid);
-        $totalcnt = (int) count($chldIds);
-        $departure = trim($request->departure);
-        $arrive = trim($request->arrive);
-        $keyword = trim($request->keywordstr);
-        
-        $return_arr = array('total_record'=>0,'total_pages'=>1);
-        
-		if($totalcnt > 0) {
-			
-			$getcats = '';
-			if (!empty($chldIds)) {
-				$getcats = " AND (" . implode(" || ", array_map(function($v) {
-									return sprintf("FIND_IN_SET('%s', property_category_id)", $v);
-								}, array_values($chldIds))) . ")";
-			}
-
-			if ($arrive != '') {
-				$getcats = '';
-				if (!empty($chldIds)) {
-					$getcats = " AND (" . implode(" || ", array_map(function($v) {
-										return sprintf("FIND_IN_SET('%s', pr.property_category_id)", $v);
-									}, array_values($chldIds))) . ")";
-				}
-				if ($departure != '') {
-					$getdestind = " AND pctr.room_active_to <= '".$departure."'";
-				}
-				$catprops = " OR pr.id in( SELECT pr.id FROM tb_properties pr, tb_properties_category_rooms pctr   WHERE pctr.property_id = pr.id AND  pr.property_status='1' AND pctr.room_active_from <= '".$arrive."' ".$getdestind."  ".$getcats." ) ";
-			} else {
-				$catprops = " OR pr.id in(SELECT id FROM tb_properties WHERE property_status='1' ".$getcats." ) ";
-			}
-            
-            $perPage = 42;
-    		$pageNumber = 1;
-    		if(isset($request->page) && $request->page>0){
-    			$pageNumber = $request->page;
-    		}
-    		$pageStart = ($pageNumber -1) * $perPage;
-            
-            $query = "SELECT pr.editor_choice_property,pr.property_usp,pr.feature_property,pr.id,pr.property_name,pr.property_slug,pr.property_category_id ";
-    		$query .= ", (SELECT pcrp.rack_rate FROM tb_properties_category_rooms_price pcrp  where pr.id=pcrp.property_id  order by pcrp.rack_rate DESC limit 0,1 ) as price " ;
-    		$query .= " FROM tb_properties pr ";
-    		$whereClause =" WHERE ((pr.property_name LIKE '%".$keyword."%' AND pr.property_type = 'Hotel') OR city LIKE '%".$keyword."%' ".$catprops." ) AND pr.property_status = 1 AND  pr.feature_property = 0 ";
-    		$orderBy = "ORDER BY (SELECT rack_rate FROM tb_properties_category_rooms_price pcrp WHERE pcrp.property_id = pr.id ORDER BY rack_rate DESC LIMIT 1) * 1 DESC, pr.editor_choice_property desc  ";
-    		$limit = " LIMIT ". $pageStart.",".$perPage; 
-    		$finalQry = $query.$whereClause.$orderBy.$limit ; 
-    		$CountRecordQry = "Select count(*) as total_record from tb_properties pr ".$whereClause ;
-            $property = DB::select($finalQry);
-            $getRec = DB::select($CountRecordQry);
-            
-            $return_arr['data'] = $property;
-            $return_arr['total_record'] = $getRec[0]->total_record;
-            $return_arr['total_pages'] = (isset($getRec[0]->total_record) && $getRec[0]->total_record>0)?(int)ceil($getRec[0]->total_record / $perPage):0;
-		}
-        
-        return response()->json($return_arr);
     }
 	
 	public function getPropertyDetail(Request $request) {

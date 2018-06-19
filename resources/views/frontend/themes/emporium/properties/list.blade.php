@@ -443,23 +443,7 @@ $('input[name="departure"]').daterangepicker({
 		minDate : todayDate
 	});
 @endif
-
-function rad_rungridAjax(){
-    $.ajax({
-        type: 'POST',
-        data: {keywordstr:'{{ $slug }}',arrive:'{{ $arrive }}',departure:'{{ $departure }}',page:'{{ $active_page }}',childid:'{{ $child_ids }}'},
-        url: '{{ URL::to('properties-grid-ajax') }}',
-        success: function(data){
-            console.log(data);
-        },
-        error: function(e){
-            console.log('error');
-        }
-    });
-}
-
 		$(document).ready(function () {
-		      rad_rungridAjax();
 			$(document).on('change', '#myRange', function () {
 				var datObj = window.location.search;
 				if(datObj.match(/filter_max_price/g))
