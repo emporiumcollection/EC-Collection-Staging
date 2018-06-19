@@ -443,6 +443,21 @@ $('input[name="departure"]').daterangepicker({
 		minDate : todayDate
 	});
 @endif
+
+function rad_rungridAjax(){
+    $.ajax({
+        type: 'POST',
+        data: {childid:'test'},
+        url: '{{ URL::to('properties-grid-ajax') }}',
+        success: function(data){
+            console.log(data);
+        },
+        error: function(e){
+            console.log('error');
+        }
+    });
+}
+
 		$(document).ready(function () {
 			$(document).on('change', '#myRange', function () {
 				var datObj = window.location.search;

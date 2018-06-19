@@ -251,6 +251,10 @@ class PropertyController extends Controller {
         
         return $child_category_array;
     }
+    
+    public function getPropertiesGrid(Request $request){
+        echo "done";
+    }
 	
 	public function getPropertyDetail(Request $request) {
 
