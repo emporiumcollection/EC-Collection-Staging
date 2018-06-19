@@ -260,7 +260,6 @@ class PropertyController extends Controller {
         $arrive = '';
         $keyword = trim($request->keywordstr);
         echo $totalcnt.' tet';
-        $chldIds = array();
 		if($totalcnt > 0) {
 			echo $totalcnt.' tet';
 			$getcats = '';
