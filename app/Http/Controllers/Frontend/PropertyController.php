@@ -260,6 +260,7 @@ class PropertyController extends Controller {
         
         $chldIds = array();
 		if(count($chldIds) > 0) {
+			echo count($chldIds).' tet';
 			$getcats = '';
 			if (!empty($chldIds)) {
 				$getcats = " AND (" . implode(" || ", array_map(function($v) {
