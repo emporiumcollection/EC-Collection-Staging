@@ -257,7 +257,7 @@ class PropertyController extends Controller {
         $childIds = json_decode($request->childid);
         $departure = '';
         $keyword = trim($request->keywordstr);
-        
+        echo $childIds.count($childIds);
         $chldIds = array();
 		if(count($chldIds) > 0) {
 			
