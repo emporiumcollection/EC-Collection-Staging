@@ -164,13 +164,13 @@
 
             // Open Left Navigation For Destinations on Page Load
             @if(Request::segment(1)=='luxury_destinations')
-                /*var datObj = {};
+                var datObj = {};
                 datObj.catID = '{{$destination_category}}';
                 var params = $.extend({}, doAjax_params_default);
                 params['url'] = BaseURL + '/destination/destinatinos-ajax';
                 params['data'] = datObj;
                 params['successCallbackFunction'] = renderDestination;
-                doAjax(params);*/
+                doAjax(params);
             @endif
 
 
