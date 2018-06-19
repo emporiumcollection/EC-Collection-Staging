@@ -199,6 +199,8 @@ class PropertyController extends Controller {
 		$this->data['total_pages'] = (isset($getRec[0]->total_record) && $getRec[0]->total_record>0)?(int)ceil($getRec[0]->total_record / $perPage):0;
 		$this->data['active_page']=$pageNumber;
         $this->data['child_ids'] = json_encode($chldIds);
+        $this->data['arrive'] = $arrive;
+        $this->data['departure'] = $departure;
 
 		$uid = isset(\Auth::user()->id) ? \Auth::user()->id : '';
 
@@ -256,8 +258,8 @@ class PropertyController extends Controller {
     public function getPropertiesGrid(Request $request){
         $chldIds = json_decode($request->childid);
         $totalcnt = (int) count($chldIds);
-        $departure = '';
-        $arrive = '';
+        $departure = trim($request->departure);
+        $arrive = trim($request->arrive);
         $keyword = trim($request->keywordstr);
         
         $return_arr = array('total_record'=>0,'total_pages'=>1);

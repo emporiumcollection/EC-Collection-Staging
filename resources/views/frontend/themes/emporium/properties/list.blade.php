@@ -447,7 +447,7 @@ $('input[name="departure"]').daterangepicker({
 function rad_rungridAjax(){
     $.ajax({
         type: 'POST',
-        data: {keywordstr:'{{ $slug }}',childid:'{{ $child_ids }}'},
+        data: {keywordstr:'{{ $slug }}',arrive:'{{ $arrive }}',departure:'{{ $departure }}',page:'{{ $active_page }}',childid:'{{ $child_ids }}'},
         url: '{{ URL::to('properties-grid-ajax') }}',
         success: function(data){
             console.log(data);
