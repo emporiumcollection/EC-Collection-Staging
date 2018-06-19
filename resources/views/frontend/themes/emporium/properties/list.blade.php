@@ -468,7 +468,8 @@ function load_all_images(){
             thisObj.css('display','block');
         }
         
-        thisObj.removeClass('rad-img');    
+        thisObj.removeClass('rad-img');   
+        $grid.masonry('layout'); 
     });
 }
 
