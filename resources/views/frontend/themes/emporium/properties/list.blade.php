@@ -219,7 +219,7 @@
 							           	<div class="image">
 							           		     <a class="showhide" href="{{$url}}" rel="bookmark" style="">{{ $props->property_name}}   </a>
 							            <a href="{{ $url }}" title="{{ $props->property_name}}">
-							          		  <img src="{{ URL::to('propertyimagebyid/'.$props->id)}}" class="img-responsive" alt="{{ $props->property_name}}" title="{{ $props->property_name}}">
+							          		  <img src="" data-src="{{ URL::to('propertyimagebyid/'.$props->id)}}" class="img-responsive rad-img" alt="{{ $props->property_name}}" title="{{ $props->property_name}}">
 							               {{-- URL::to('propertyimagebyid/'.$props->id)--}}
 							           	</a>
 
