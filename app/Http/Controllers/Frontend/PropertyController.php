@@ -257,7 +257,7 @@ class PropertyController extends Controller {
         $chldIds = json_decode($request->childid);
         $departure = '';
         $keyword = trim($request->keywordstr);
-        
+        echo count($chldIds).' tet';
         $chldIds = array();
 		if(count($chldIds) > 0) {
 			echo count($chldIds).' tet';
