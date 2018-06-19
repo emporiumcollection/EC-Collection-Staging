@@ -254,7 +254,7 @@ class PropertyController extends Controller {
     }
     
     public function getPropertiesGrid(Request $request){
-        $childIds = json_encode($request->childid);
+        $childIds = json_decode($request->childid);
         $departure = '';
         $keyword = trim($request->keywordstr);
         
