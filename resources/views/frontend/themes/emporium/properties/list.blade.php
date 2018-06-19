@@ -459,6 +459,7 @@ function rad_rungridAjax(){
 }
 
 		$(document).ready(function () {
+		      rad_rungridAjax();
 			$(document).on('change', '#myRange', function () {
 				var datObj = window.location.search;
 				if(datObj.match(/filter_max_price/g))
