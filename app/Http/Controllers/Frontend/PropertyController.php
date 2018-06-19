@@ -254,7 +254,8 @@ class PropertyController extends Controller {
     }
     
     public function getPropertiesGrid(Request $request){
-        echo "done";
+        $childIds = $request->childid;
+        echo $childIds;
     }
 	
 	public function getPropertyDetail(Request $request) {
