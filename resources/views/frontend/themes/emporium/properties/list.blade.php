@@ -365,7 +365,256 @@ $grid.imagesLoaded().progress( function() {
   </script>
 @endsection
 
+{{-- For custom script --}}
+@section('custom_js')
+    @parent
+	<script>
 
+		@if((Request::has("arrive")))
+		var todayDate = moment();
+$('input[name="arrive"]').daterangepicker({
+		locale: {
+			format: 'MM-DD-YYYY',
+			daysOfWeek: [
+				"SUN",
+				"MON",
+				"TUE",
+				"WED",
+				"THU",
+				"FRI",
+				"SAT"
+			],
+			monthNames: [
+				"January",
+				"February",
+				"March",
+				"April",
+				"May",
+				"June",
+				"July",
+				"August",
+				"September",
+				"October",
+				"November",
+				"December"
+			],
+			firstDay: 0
+		},
+		showDropdowns: true,
+		singleDatePicker: true,
+		startDate: '{{ Request::input("arrive")}}',
+		minDate : todayDate
+	});
+@endif
+
+		@if((Request::has("departure")))
+		var todayDate = moment();
+$('input[name="departure"]').daterangepicker({
+		locale: {
+			format: 'MM-DD-YYYY',
+			daysOfWeek: [
+				"SUN",
+				"MON",
+				"TUE",
+				"WED",
+				"THU",
+				"FRI",
+				"SAT"
+			],
+			monthNames: [
+				"January",
+				"February",
+				"March",
+				"April",
+				"May",
+				"June",
+				"July",
+				"August",
+				"September",
+				"October",
+				"November",
+				"December"
+			],
+			firstDay: 0
+		},
+		showDropdowns: true,
+		singleDatePicker: true,
+		startDate: '{{ Request::input("departure")}}',
+		minDate : todayDate
+	});
+@endif
+		$(document).ready(function () {
+			$(document).on('change', '#myRange', function () {
+				var datObj = window.location.search;
+				if(datObj.match(/filter_max_price/g))
+				{
+					var str = datObj.split("?");
+					datObj =  str[0]+'?filter_max_price=' + $(this).val();
+				}
+				else
+				{
+					datObj =  datObj+'?filter_max_price=' + $(this).val();
+				}
+				window.history.pushState("object or string", "Title", datObj);
+				priceFilterAjax();
+			});
+			
+			@if($dateslug!='')
+				$('[data-action="search-by-date"]').trigger('click');
+			@endif
+		});
+		
+		var pageCounter = 2;
+		var pagehgt = 1200;
+		var it_scroll = false;
+		var totalPage = '{{$total_pages}}';
+		$(window).scroll(function () {
+            if ($(window).scrollTop() < pagehgt) { return false; }
+
+            if (pageCounter > totalPage) {
+				return false;
+			} else {
+			//	it_scroll = true;
+				//scrollDataAjax(it_scroll, pageCounter);
+				//pagehgt = pagehgt + 1000;
+			}
+			pageCounter++;
+
+		});
+		function scrollDataAjax(it_scroll, pageCounter){
+			if(it_scroll==true) {
+				var str = window.location.search;
+				if(str.match(/filter_max_price/g))
+				{
+					var datObj = window.location.search+'&page='+pageCounter;
+				}
+				else
+				{
+					var datObj = window.location.search+'?page='+pageCounter;
+				}
+                    datObj =  datObj+'&s={{$slug}}';
+
+
+				var params = $.extend({}, doAjax_params_default);
+				params['url'] = BaseURL + '/search-property-ajax'+datObj;
+				params['successCallbackFunction'] = renderPropertyList;
+				doAjax(params);
+			}
+		}
+
+		function renderPropertyList(data){
+			$.each(data.properties, function (idx, obj) {
+				if(idx==19)
+				{
+					if(data.resultads)
+					{
+						var dataGridHtml ='<div class="col-sm-6 col-md-6 col-lg-4">';
+						dataGridHtml +='<div class="hotel-card">';
+						dataGridHtml +='<figure>';
+						var imgscr = "{{URL::to('uploads/users/advertisement/')}}/" +data.resultads.adv_img;
+						dataGridHtml += '<img src="' + imgscr + '" />';
+						dataGridHtml +='<a href="'+data.resultads.adv_link+'" class="content-overlay">';
+						dataGridHtml +='<h5>'+data.resultads.adv_title+'</h5>';
+						dataGridHtml +='</a>';
+						dataGridHtml +='<div class="pricelabel">Advertisement</div>';
+						dataGridHtml +='</figure>';
+						dataGridHtml +='<div class="title">';
+						dataGridHtml +='<h3><a href="'+data.resultads.adv_link+'">'+data.resultads.adv_title+'</a></h3>';
+						dataGridHtml +='</div>';
+						dataGridHtml +='</div>';
+						dataGridHtml +='</div>';
+						$('[data-option="property-grid-list"]').append(dataGridHtml);
+					}
+				}
+				else
+				{
+					var dataGridHtml ='<div class="col-sm-6 col-md-6 col-lg-4">';
+					dataGridHtml +='<div class="hotel-card">';
+					dataGridHtml +='<figure>';
+					var imgscr = BaseURL + '/propertyimagebyid/'+obj.id;
+					dataGridHtml += '<img src="' + imgscr + '" />';
+					dataGridHtml +='<a href="'+BaseURL+'/'+obj.property_slug+'" class="content-overlay">';
+					dataGridHtml +='<h5>'+obj.property_name+'</h5>';
+					dataGridHtml +='</a>';
+					dataGridHtml +='</figure>';
+					dataGridHtml +='<div class="title">';
+					dataGridHtml +='<h3><a href="'+BaseURL+'/'+obj.property_slug+'">'+obj.property_name+'</a></h3>';
+					dataGridHtml +='<a href="'+BaseURL+'/'+obj.property_slug+'" class="cartlink"><i class="fa fa-shopping-cart"></i></a>';
+					dataGridHtml +='</div>';
+					dataGridHtml +='</div>';
+					dataGridHtml +='</div>';
+					$('[data-option="property-grid-list"]').append(dataGridHtml);
+				}
+			});
+		}
+
+		function priceFilterAjax(){
+
+				var datObj = window.location.search;
+                    datObj =  datObj+'&s={{$slug}}';
+
+				var params = $.extend({}, doAjax_params_default);
+				params['url'] = BaseURL + '/search-property-ajax'+datObj;
+				params['successCallbackFunction'] = renderPropertyListPriceFilter;
+				doAjax(params);
+
+		}
+
+		function renderPropertyListPriceFilter(data){
+			$('[data-option="property-grid-list"]').html('');
+			var dataGridHtml = '';
+			$.each(data.properties, function (idx, obj) {
+				if(idx==19)
+				{
+					if(data.resultads)
+					{
+						dataGridHtml +='<div class="col-sm-6 col-md-6 col-lg-4">';
+						dataGridHtml +='<div class="hotel-card">';
+						dataGridHtml +='<figure>';
+						var imgscr = "{{URL::to('uploads/users/advertisement/')}}/" +data.resultads.adv_img;
+						dataGridHtml += '<img src="' + imgscr + '" />';
+						dataGridHtml +='<a href="'+data.resultads.adv_link+'" class="content-overlay">';
+						dataGridHtml +='<h5>'+data.resultads.adv_title+'</h5>';
+						dataGridHtml +='</a>';
+						dataGridHtml +='<div class="pricelabel">Advertisement</div>';
+						dataGridHtml +='</figure>';
+						dataGridHtml +='<div class="title">';
+						dataGridHtml +='<h3><a href="'+data.resultads.adv_link+'">'+data.resultads.adv_title+'</a></h3>';
+						dataGridHtml +='</div>';
+						dataGridHtml +='</div>';
+						dataGridHtml +='</div>';
+					}
+				}
+				else
+				{
+					dataGridHtml +='<div class="col-sm-6 col-md-6 col-lg-4">';
+					dataGridHtml +='<div class="hotel-card">';
+					dataGridHtml +='<figure>';
+					var imgscr = BaseURL + '/propertyimagebyid/'+obj.id;
+					dataGridHtml += '<img src="' + imgscr + '" />';
+					dataGridHtml +='<a href="'+BaseURL+'/'+obj.property_slug+'" class="content-overlay">';
+					dataGridHtml +='<h5>'+obj.property_name+'</h5>';
+					if(obj.category_name!=undefined && obj.category_name!=""){
+						dataGridHtml +='<p>From € '+obj.price+' '+obj.category_name+'</p>';
+					}else {
+						dataGridHtml +='<p>From € '+obj.price+'</p>';
+					}
+
+					dataGridHtml +='</a>';
+					dataGridHtml +='<div class="pricelabel">From EUR '+obj.price+' / night</div>';
+					dataGridHtml +='</figure>';
+					dataGridHtml +='<div class="title">';
+					dataGridHtml +='<h3><a href="'+BaseURL+'/'+obj.property_slug+'">'+obj.property_name+'</a></h3>';
+					dataGridHtml +='<a href="'+BaseURL+'/'+obj.property_slug+'" class="cartlink"><i class="fa fa-shopping-cart"></i></a>';
+					dataGridHtml +='</div>';
+					dataGridHtml +='</div>';
+					dataGridHtml +='</div>';
+				}
+			});
+			$('[data-option="property-grid-list"]').html(dataGridHtml);
+		}
+	</script>
+@endsection
 
 {{-- For footer --}}
 @section('footer')
