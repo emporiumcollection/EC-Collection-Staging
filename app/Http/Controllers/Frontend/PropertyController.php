@@ -243,7 +243,7 @@ class PropertyController extends Controller {
         $child_category_array = array();
         $cutomeQuery = "SELECT id FROM  (SELECT parent_category_id, id FROM tb_categories WHERE (category_published = 1) ORDER BY parent_category_id, id) products_sorted, (SELECT @pv := ".$id.") initialisation WHERE FIND_IN_SET(parent_category_id, @pv) > 0 AND @pv := CONCAT(@pv, ',', id)";
         $results = DB::select($cutomeQuery);
-        $results1 = DB::select('EXEC simpleproc('.$id.')');
+        $results1 = DB::select('EXEC property_multi_level_child_proc('.$id.')');
         foreach ($results as $row) {
             $child_category_array[] = $row->id;
         }
