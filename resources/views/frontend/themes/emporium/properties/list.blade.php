@@ -443,7 +443,40 @@ $('input[name="departure"]').daterangepicker({
 		minDate : todayDate
 	});
 @endif
+
+var noImg = "{{ URL::to('sximo/images/transparent.png') }}";
+function load_all_images(){
+    $('img.rad-img').each(function(){
+        var thisSrc = $(this).data('src');
+        var thisObj = $(this);
+        if(((typeof thisSrc) != undefined) && ((typeof thisSrc) != 'undefined')){
+        
+        if(thisSrc.length > 0){
+            $("<img/>")
+            .on('load', function() { thisObj.attr('src',$(this).attr('src')); })
+            .on('error', function() { thisObj.attr('src',noImg); thisObj.css('opacity','0'); })
+            .attr("src", thisSrc);
+        }else
+        {
+            thisObj.attr('src',noImg);
+            thisObj.css('display','block');
+        }
+            thisObj.removeAttr('data-src');
+        }else
+        {
+            thisObj.attr('src',noImg);
+            thisObj.css('display','block');
+        }
+        
+        thisObj.removeClass('rad-img');    
+    });
+}
+
 		$(document).ready(function () {
+		  //load images after load full page
+          load_all_images();
+          //End
+          
 			$(document).on('change', '#myRange', function () {
 				var datObj = window.location.search;
 				if(datObj.match(/filter_max_price/g))
