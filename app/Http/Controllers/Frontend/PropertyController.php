@@ -302,7 +302,11 @@ class PropertyController extends Controller {
     		$finalQry = $query.$whereClause.$orderBy.$limit ; 
     		$CountRecordQry = "Select count(*) as total_record from tb_properties pr ".$whereClause ;
             $property = DB::select($finalQry);
-            $return_arr = $property;
+            $getRec = DB::select($CountRecordQry);
+            
+            $return_arr['data'] = $property;
+            $return_arr['total_record'] = $getRec[0]->total_record;
+            $return_arr['total_pages'] = (isset($getRec[0]->total_record) && $getRec[0]->total_record>0)?(int)ceil($getRec[0]->total_record / $perPage):0;
 		}
         
         return response()->json($return_arr);
