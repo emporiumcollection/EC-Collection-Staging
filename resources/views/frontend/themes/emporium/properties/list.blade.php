@@ -456,11 +456,12 @@ function load_all_images(){
         if(thisSrc.length > 0){
             $("<img/>")
             .on('load', function() { 
-                thisObj.attr('src',$(this).attr('src')); console.log(rri,'img');
-                if(totalHotelImg == rri){ $grid.masonry('layout'); console.log('done');  }else{ rri++; }
+                thisObj.attr('src',$(this).attr('src'));
+                if(totalHotelImg == rri){ $grid.masonry('layout'); }else{ rri++; }
             })
             .on('error', function() { 
                 thisObj.attr('src',noImg); thisObj.css('opacity','0'); 
+                if(totalHotelImg == rri){ $grid.masonry('layout'); }else{ rri++; }
             })
             .attr("src", thisSrc);
         }else
