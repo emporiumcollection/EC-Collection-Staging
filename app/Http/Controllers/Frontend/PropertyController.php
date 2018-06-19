@@ -260,7 +260,7 @@ class PropertyController extends Controller {
         $arrive = '';
         $keyword = trim($request->keywordstr);
         
-        $return_arr = array();
+        $return_arr = array('total_record'=>0,'total_pages'=>1);
         
 		if($totalcnt > 0) {
 			
