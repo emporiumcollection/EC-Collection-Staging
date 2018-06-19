@@ -457,13 +457,11 @@ function load_all_images(){
             $("<img/>")
             .on('load', function() { 
                 thisObj.attr('src',$(this).attr('src'));
-                $grid.masonry('layout');
-                //if(totalHotelImg == rri){ $grid.masonry('layout'); }else{ rri++; }
+                if(totalHotelImg == rri){ $grid.masonry('layout'); }else{ rri++; }
             })
             .on('error', function() { 
-                thisObj.attr('src',noImg); thisObj.css('opacity','0');
-                $grid.masonry('layout'); 
-                //if(totalHotelImg == rri){ $grid.masonry('layout'); }else{ rri++; }
+                thisObj.attr('src',noImg); thisObj.css('opacity','0'); 
+                if(totalHotelImg == rri){ $grid.masonry('layout'); }else{ rri++; }
             })
             .attr("src", thisSrc);
         }else
