@@ -447,13 +447,13 @@ $('input[name="departure"]').daterangepicker({
 function rad_rungridAjax(){
     $.ajax({
         type: 'POST',
-        data: {childid:'test'},
+        data: {childid:'{{ $child_ids }}'},
         url: '{{ URL::to('properties-grid-ajax') }}',
         success: function(data){
             console.log(data);
         },
         error: function(e){
-            console.log('errorr');
+            console.log('error');
         }
     });
 }

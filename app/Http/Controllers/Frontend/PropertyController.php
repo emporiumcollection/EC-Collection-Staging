@@ -198,6 +198,7 @@ class PropertyController extends Controller {
 		$this->data['total_record'] = $getRec[0]->total_record;
 		$this->data['total_pages'] = (isset($getRec[0]->total_record) && $getRec[0]->total_record>0)?(int)ceil($getRec[0]->total_record / $perPage):0;
 		$this->data['active_page']=$pageNumber;
+        $this->data['child_ids'] = json_encode($chldIds);
 
 		$uid = isset(\Auth::user()->id) ? \Auth::user()->id : '';
 
