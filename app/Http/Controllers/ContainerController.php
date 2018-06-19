@@ -1321,7 +1321,8 @@ class ContainerController extends Controller {
 	
 	function getThumbpath($id)
 	{
-		$fpath = \URL::to('uploads/container_user_files').'/';		
+		$fpath = \URL::to('uploads/container_user_files').'/';
+		//echo $fpath; die;
 		$folds = array_reverse($this->fetchFolderParentList($id));
 		if(!empty($folds))
 		{
@@ -1330,7 +1331,6 @@ class ContainerController extends Controller {
 				$fpath .= $fold.'/';
 			}
 		}
-        echo $fpath.'<br>';
 		return $fpath;
 	}
 	
@@ -1347,7 +1347,6 @@ class ContainerController extends Controller {
 			}
 		}
 		$actPath = $publicpath.'/uploads/container_user_files/'.$fpath;
-        echo $actPath.'<br>';        
 		return $actPath;
 	}
 	
