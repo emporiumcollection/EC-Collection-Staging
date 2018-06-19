@@ -444,46 +444,10 @@ $('input[name="departure"]').daterangepicker({
 	});
 @endif
 
-var noImg = "{{ URL::to('sximo/images/transparent.png') }}";
-function load_all_images(){
-    var totalHotelImg = $('img.rad-img').length;
-    var rri = 1;
-    $('img.rad-img').each(function(){
-        var thisSrc = $(this).data('src');
-        var thisObj = $(this);
-        if(((typeof thisSrc) != undefined) && ((typeof thisSrc) != 'undefined')){
-        
-        if(thisSrc.length > 0){
-            $("<img/>")
-            .on('load', function() { 
-                thisObj.attr('src',$(this).attr('src'));
-                if(totalHotelImg == rri){ $grid.masonry('layout'); }else{ rri++; }
-            })
-            .on('error', function() { 
-                thisObj.attr('src',noImg); thisObj.css('opacity','0'); 
-                if(totalHotelImg == rri){ $grid.masonry('layout'); }else{ rri++; }
-            })
-            .attr("src", thisSrc);
-        }else
-        {
-            thisObj.attr('src',noImg);
-            thisObj.css('display','block');
-        }
-            thisObj.removeAttr('data-src');
-        }else
-        {
-            thisObj.attr('src',noImg);
-            thisObj.css('display','block');
-        }
-        
-        thisObj.removeClass('rad-img');
-    });
-}
+
 
 		$(document).ready(function () {
-		  //load images after load full page
-          load_all_images();
-          //End
+		  
           
 			$(document).on('change', '#myRange', function () {
 				var datObj = window.location.search;
