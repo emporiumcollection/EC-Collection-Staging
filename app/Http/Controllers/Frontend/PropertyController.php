@@ -259,9 +259,11 @@ class PropertyController extends Controller {
         $departure = '';
         $arrive = '';
         $keyword = trim($request->keywordstr);
-        echo $totalcnt.' tet';
+        
+        $return_arr = array();
+        
 		if($totalcnt > 0) {
-			echo $totalcnt.' tet';
+			
 			$getcats = '';
 			if (!empty($chldIds)) {
 				$getcats = " AND (" . implode(" || ", array_map(function($v) {
@@ -300,7 +302,10 @@ class PropertyController extends Controller {
     		$finalQry = $query.$whereClause.$orderBy.$limit ; 
     		$CountRecordQry = "Select count(*) as total_record from tb_properties pr ".$whereClause ;
             $property = DB::select($finalQry);
+            $return_arr = $property;
 		}
+        
+        return response()->json($return_arr);
     }
 	
 	public function getPropertyDetail(Request $request) {
