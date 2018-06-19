@@ -255,12 +255,13 @@ class PropertyController extends Controller {
     
     public function getPropertiesGrid(Request $request){
         $chldIds = json_decode($request->childid);
+        $totalcnt = (int) count($chldIds);
         $departure = '';
         $keyword = trim($request->keywordstr);
-        echo count($chldIds).' tet';
+        echo $totalcnt.' tet';
         $chldIds = array();
-		if(count($chldIds) > 0) {
-			echo count($chldIds).' tet';
+		if($totalcnt > 0) {
+			echo $totalcnt.' tet';
 			$getcats = '';
 			if (!empty($chldIds)) {
 				$getcats = " AND (" . implode(" || ", array_map(function($v) {
