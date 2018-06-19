@@ -578,8 +578,7 @@ class PropertyController extends Controller {
 				return false;
 			}
 		}
-        echo "ok";
-		//return $image;
+		return $image;
 	}
 	public function getPropertySliderImageById(Request $request)
 	{
