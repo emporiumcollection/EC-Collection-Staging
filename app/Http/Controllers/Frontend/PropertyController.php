@@ -170,7 +170,7 @@ class PropertyController extends Controller {
 		$whereClause =" WHERE ((pr.property_name LIKE '%".$keyword."%' AND pr.property_type = 'Hotel') OR city LIKE '%".$keyword."%' ".$catprops." ) AND pr.property_status = 1 AND  pr.feature_property = 0 ";
 		$orderBy = "ORDER BY pcrp.rack_rate DESC, pr.editor_choice_property desc  ";
 		$limit = " LIMIT ". $pageStart.",".$perPage; 
-		$finalQry = $query.$whereClause.$orderBy.$limit ; 
+		$finalQry = "SELECT * FROM (".$query.$whereClause." ORDER BY price DESC) tempX GROUP BY id ".$orderBy.$limit ; 
 		$CountRecordQry = "Select count(*) as total_record from tb_properties pr ".$whereClause ;
 			
 			//Feature Query
