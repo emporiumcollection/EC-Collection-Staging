@@ -147,45 +147,13 @@ class PropertyController extends Controller {
                 }
             }
         }
-        echo "<pre>";print_r($getcatsID);
-        exit;
         
-		if (!empty($cateObj)) {
-			$channel_url = $cateObj->category_youtube_channel_url;
-			$this->data['channel_url'] = $channel_url;
-			/*$cateObjtemp = \DB::table('tb_categories')->where('parent_category_id', $cateObj->id)->where('category_published', 1)->get();
-			if (!empty($cateObjtemp)) {
-				$chldIds = $this->fetchcategoryChildListIds($cateObj->id);
-				array_unshift($chldIds, $cateObj->id);
-			} else {
-				$chldIds[] = $cateObj->id;
-			}*/
-            $chldIds = $this->fetchcategoryChildListIds($cateObj->id);
-            if(count($chldIds) <= 0){ $chldIds[] = $cateObj->id; }
-			$getcats = '';
-			if (!empty($chldIds)) {
-				$getcats = " AND (" . implode(" || ", array_map(function($v) {
-									return sprintf("FIND_IN_SET('%s', property_category_id)", $v);
-								}, array_values($chldIds))) . ")";
-			}
-
-			if ($arrive != '') {
-				$getcats = '';
-				if (!empty($chldIds)) {
-					$getcats = " AND (" . implode(" || ", array_map(function($v) {
-										return sprintf("FIND_IN_SET('%s', pr.property_category_id)", $v);
-									}, array_values($chldIds))) . ")";
-				}
-				if ($departure != '') {
-					$getdestind = " AND pctr.room_active_to <= '$departure'";
-				}
-				$catprops = " OR pr.id in( SELECT pr.id FROM tb_properties pr, tb_properties_category_rooms pctr   WHERE pctr.property_id = pr.id AND  pr.property_status='1' AND pctr.room_active_from <= '".$arrive."' ".$getdestind."  ".$getcats." ) ";
-			} else {
-				$catprops = " OR pr.id in(SELECT id FROM tb_properties WHERE property_status='1' $getcats ) ";
-			}
-
-		}
-
+        if(count($getcatsID) > 0){
+            $timplod = implode(',',$getcatsID);
+            $catprops = " OR pr.id in(".$timplod.") ";
+        }
+        /*echo "<pre>";print_r($catprops);
+        exit;*/
 		
 		$perPage = 42;
 		$pageNumber = 1;
@@ -194,28 +162,27 @@ class PropertyController extends Controller {
 		}
 		$pageStart = ($pageNumber -1) * $perPage;
 
-		$query = "SELECT pr.editor_choice_property,pr.property_usp,pr.feature_property,pr.id,pr.property_name,pr.property_slug,pr.property_category_id ";
-		$query .= ", (SELECT pcrp.rack_rate FROM tb_properties_category_rooms_price pcrp  where pr.id=pcrp.property_id  order by pcrp.rack_rate DESC limit 0,1 ) as price " ;
-		$query .= " FROM tb_properties pr ";
-		$whereClause =" WHERE ((pr.property_name LIKE '%".$keyword."%' AND pr.property_type = 'Hotel') OR city LIKE '%".$keyword."%' ".$catprops." ) AND pr.property_status = 1 AND  pr.feature_property = 0 ";
-		$orderBy = "ORDER BY (SELECT rack_rate FROM tb_properties_category_rooms_price pcrp WHERE pcrp.property_id = pr.id ORDER BY rack_rate DESC LIMIT 1) * 1 DESC, pr.editor_choice_property desc  ";
+		$query = "SELECT pr.editor_choice_property,pr.property_usp,pr.feature_property,pr.id,pr.property_name,pr.property_slug,pr.property_category_id,pcrp.rack_rate as price ";
+		$query .= " FROM tb_properties pr LEFT JOIN tb_properties_category_rooms_price pcrp ON pr.id = pcrp.property_id ";
+		
+        $whereClause =" WHERE ((pr.property_name LIKE '%".$keyword."%' AND pr.property_type = 'Hotel') OR city LIKE '%".$keyword."%' ".$catprops." ) AND pr.property_status = 1 AND  pr.feature_property = 0 ";
+		
+        $orderBy = "ORDER BY pcrp.rack_rate DESC, pr.editor_choice_property desc  ";
 		$limit = " LIMIT ". $pageStart.",".$perPage; 
 		$finalQry = $query.$whereClause.$orderBy.$limit ; 
-		$CountRecordQry = "Select count(*) as total_record from tb_properties pr ".$whereClause ;
+		$CountRecordQry = "Select count(pr.id) as total_record from tb_properties pr ".$whereClause ;
 			
 			//Feature Query
-		$query = "SELECT pr.editor_choice_property,pr.property_usp,pr.feature_property,pr.id,pr.property_name,pr.property_slug,pr.property_category_id ";
-		$query .= ", (SELECT pcrp.rack_rate FROM tb_properties_category_rooms_price pcrp  where pr.id=pcrp.property_id  order by pcrp.rack_rate DESC limit 0,1 ) as price " ;
-		$query .= " FROM tb_properties pr ";
+		$query = "SELECT pr.editor_choice_property,pr.property_usp,pr.feature_property,pr.id,pr.property_name,pr.property_slug,pr.property_category_id,pcrp.rack_rate as price ";
+		$query .= " FROM tb_properties pr LEFT JOIN tb_properties_category_rooms_price pcrp ON pr.id = pcrp.property_id ";
 		$whereClause =" WHERE ((pr.property_name LIKE '%".$keyword."%' AND pr.property_type = 'Hotel') OR city LIKE '%".$keyword."%' ".$catprops." ) AND pr.property_status = 1 AND  pr.feature_property = 1 ";
 		$orderBy = "ORDER BY RAND()  ";
 		$limit = " LIMIT 4";
 		$featureQuery = $query.$whereClause.$orderBy.$limit ; 
 		
 		  //Editor choice editor_choice_property
-         $query = "SELECT pr.editor_choice_property,pr.property_usp,pr.feature_property,pr.id,pr.property_name,pr.property_slug,pr.property_category_id ";
-		$query .= ", (SELECT pcrp.rack_rate FROM tb_properties_category_rooms_price pcrp  where pr.id=pcrp.property_id  order by pcrp.rack_rate DESC limit 0,1 ) as price " ;
-		$query .= " FROM tb_properties pr ";
+         $query = "SELECT pr.editor_choice_property,pr.property_usp,pr.feature_property,pr.id,pr.property_name,pr.property_slug,pr.property_category_id,pcrp.rack_rate as price ";
+		$query .= " FROM tb_properties pr LEFT JOIN tb_properties_category_rooms_price pcrp ON pr.id = pcrp.property_id ";
 		$whereClause =" WHERE ((pr.property_name LIKE '%".$keyword."%' AND pr.property_type = 'Hotel') OR city LIKE '%".$keyword."%' ".$catprops." ) AND pr.property_status = 1 AND  pr.editor_choice_property = 1 ";
 		$orderBy = "ORDER BY RAND()  ";
 		$limit = " LIMIT 4";
