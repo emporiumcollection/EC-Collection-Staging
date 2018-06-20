@@ -150,10 +150,10 @@ class PropertyController extends Controller {
 				}
 				$catprops = " OR pr.id in( SELECT pr.id FROM tb_properties pr, tb_properties_category_rooms pctr   WHERE pctr.property_id = pr.id AND  pr.property_status='1' AND pctr.room_active_from <= '".$arrive."' ".$getdestind."  ".$getcats." ) ";
                 
-                $catprops1 = " OR pr.id in( SELECT pr.id FROM property_categories_split_in_rows pr, tb_properties_category_rooms pctr  WHERE pctr.property_id = pr.id AND  pr.property_status='1' AND pctr.room_active_from <= '".$arrive."' ".$getdestind."  ".$getcats1." ) ";
+                $catprops1 = " OR pr.id in( SELECT pr.id FROM property_categories_split_in_rows pr, tb_properties_category_rooms pctr  WHERE pctr.property_id = pr.id AND  pr.property_status='1' AND pctr.room_active_from <= '".$arrive."' ".$getdestind."  ".$getcats1."  GROUP BY id ) ";
 			} else {
 				$catprops = " OR pr.id in(SELECT id FROM tb_properties WHERE property_status='1' $getcats ) ";
-                $catprops1 = " OR pr.id in(SELECT id FROM property_categories_split_in_rows WHERE property_status='1' ".$getcats1." ) ";
+                $catprops1 = " OR pr.id in(SELECT id FROM property_categories_split_in_rows WHERE property_status='1' ".$getcats1."  GROUP BY id ) ";
 			}
 
 		}
