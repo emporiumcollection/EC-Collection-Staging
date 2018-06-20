@@ -116,6 +116,36 @@ class PropertyController extends Controller {
 		$cateObj = \DB::table('tb_categories')->where('category_alias', $keyword)->where('category_published', 1)->first();
 
         $chldIds = array();
+        if (!empty($cateObj)) {
+            $channel_url = $cateObj->category_youtube_channel_url;
+            $this->data['channel_url'] = $channel_url;
+            
+            //get all children start
+            $chldIds = $this->fetchcategoryChildListIds($cateObj->id);
+            //End
+            if(count($chldIds) <= 0){ $chldIds[] = $cateObj->id; }
+            
+            $getcatsID = array();
+            if (count($chldIds) > 0) {
+                $impload_ids = implode(',',$chldIds);
+                $catcond = " AND (property_category_id IN(".$impload_ids."))";
+                $ch_queries = "SELECT id FROM property_categories_split_in_rows WHERE property_status='1' ".$catcond;
+                if(strlen(trim($arrive)) > 0){
+                    $ch_queries = "";
+                    $getdestind = "";
+                    if (strlen(trim($departure)) > 0) { $getdestind = " AND pctr.room_active_to <= '".$departure."'"; }
+                    $ch_queries = "SELECT pr.id FROM property_categories_split_in_rows pr, tb_properties_category_rooms pctr WHERE pctr.property_id = pr.id AND  pr.property_status='1' AND pctr.room_active_from <= '".$arrive."' ".$getdestind."  ".$catcond." )";
+                }
+                
+                $ch_queries = trim($ch_queries);
+                if(strlen($ch_queries) > 0){
+                    $getcatsID = DB::select($ch_queries);
+                }
+            }
+        }
+        echo "<pre>";print_r($getcatsID);
+        die;
+        
 		if (!empty($cateObj)) {
 			$channel_url = $cateObj->category_youtube_channel_url;
 			$this->data['channel_url'] = $channel_url;
