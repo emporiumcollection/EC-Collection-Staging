@@ -174,7 +174,7 @@ class PropertyController extends Controller {
 		$orderBy = "ORDER BY (SELECT rack_rate FROM tb_properties_category_rooms_price pcrp WHERE pcrp.property_id = pr.id ORDER BY rack_rate DESC LIMIT 1) * 1 DESC, pr.editor_choice_property desc  ";
 		$limit = " LIMIT ". $pageStart.",".$perPage; 
 		$finalQry = $query.$whereClause.$orderBy.$limit ; 
-        $finalQry1 = $query.$whereClause1.$orderBy.$limit ; 
+        $finalQry1 = "SELECT id FROM property_categories_split_in_rows WHERE property_status='1' ".$getcats1.""; 
 		$CountRecordQry = "Select count(*) as total_record from tb_properties pr ".$whereClause ;
 			
 			//Feature Query
