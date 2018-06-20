@@ -35,13 +35,17 @@ class DestinationController extends Controller {
 						$chldIds[] = $dest->id;
 					}
 					
-					if (!empty($chldIds)) {
+					/*if (!empty($chldIds)) {
 						$getcats = " AND (" . implode(" || ", array_map(function($v) {
 											return sprintf("FIND_IN_SET('%s', property_category_id)", $v);
 										}, array_values($chldIds))) . ")";
 					}
 					
-					$preprops = DB::select(DB::raw("SELECT COUNT(*) AS total_rows FROM tb_properties WHERE property_status = '1' $getcats"));
+					$preprops = DB::select(DB::raw("SELECT COUNT(*) AS total_rows FROM tb_properties WHERE property_status = '1' $getcats"));*/
+                    
+                    $getcats = "";
+                    if (count($chldIds) > 0) { $getcats = " AND (category_id IN(".implode(",",$chldIds)."))"; }
+                    $preprops = DB::select(DB::raw("SELECT COUNT(id) AS total_rows FROM property_categories_split_in_rows WHERE property_status = '1' ".$getcats));
 
 					if (isset($preprops[0]->total_rows) && $preprops[0]->total_rows > 0) {
 						$destarr[] = $dest;
