@@ -108,8 +108,7 @@ class PropertyController extends Controller {
 
 
 		/******* New Query by Ravinder ********/ 
-		$catprops = '';
-        $catprops1 = '';      
+		$catprops = '';   
 
 		   
 		$cateObj = \DB::table('tb_categories')->where('category_alias', $keyword)->where('category_published', 1)->first();
@@ -128,13 +127,10 @@ class PropertyController extends Controller {
             $chldIds = $this->fetchcategoryChildListIds($cateObj->id);
             if(count($chldIds) <= 0){ $chldIds[] = $cateObj->id; }
 			$getcats = '';
-            $getcats1 = '';
 			if (!empty($chldIds)) {
 				$getcats = " AND (" . implode(" || ", array_map(function($v) {
 									return sprintf("FIND_IN_SET('%s', property_category_id)", $v);
 								}, array_values($chldIds))) . ")";
-                                
-                $getcats1 = " AND (category_id in(".implode(',',$chldIds)."))";
 			}
 
 			if ($arrive != '') {
@@ -143,17 +139,13 @@ class PropertyController extends Controller {
 					$getcats = " AND (" . implode(" || ", array_map(function($v) {
 										return sprintf("FIND_IN_SET('%s', pr.property_category_id)", $v);
 									}, array_values($chldIds))) . ")";
-                    $getcats1 = " AND (pr.category_id in(".implode(',',$chldIds)."))";
 				}
 				if ($departure != '') {
 					$getdestind = " AND pctr.room_active_to <= '$departure'";
 				}
 				$catprops = " OR pr.id in( SELECT pr.id FROM tb_properties pr, tb_properties_category_rooms pctr   WHERE pctr.property_id = pr.id AND  pr.property_status='1' AND pctr.room_active_from <= '".$arrive."' ".$getdestind."  ".$getcats." ) ";
-                
-                $catprops1 = " OR pr.id in( SELECT pr.id FROM property_categories_split_in_rows pr, tb_properties_category_rooms pctr  WHERE pctr.property_id = pr.id AND  pr.property_status='1' AND pctr.room_active_from <= '".$arrive."' ".$getdestind."  ".$getcats1."  GROUP BY id ) ";
 			} else {
 				$catprops = " OR pr.id in(SELECT id FROM tb_properties WHERE property_status='1' $getcats ) ";
-                $catprops1 = " OR pr.id in(SELECT id FROM property_categories_split_in_rows WHERE property_status='1' ".$getcats1."  GROUP BY id ) ";
 			}
 
 		}
@@ -169,18 +161,10 @@ class PropertyController extends Controller {
 		$query = "SELECT pr.editor_choice_property,pr.property_usp,pr.feature_property,pr.id,pr.property_name,pr.property_slug,pr.property_category_id ";
 		$query .= ", (SELECT pcrp.rack_rate FROM tb_properties_category_rooms_price pcrp  where pr.id=pcrp.property_id  order by pcrp.rack_rate DESC limit 0,1 ) as price " ;
 		$query .= " FROM tb_properties pr ";
-        
-        $query1 = "SELECT pr.editor_choice_property,pr.property_usp,pr.feature_property,pr.id,pr.property_name,pr.property_slug,pr.property_category_id, pcrp.rack_rate as price";
-		$query1 .= " FROM tb_properties pr LEFT JOIN tb_properties_category_rooms_price pcrp ON pr.id = pcrp.property_id";
-        
 		$whereClause =" WHERE ((pr.property_name LIKE '%".$keyword."%' AND pr.property_type = 'Hotel') OR city LIKE '%".$keyword."%' ".$catprops." ) AND pr.property_status = 1 AND  pr.feature_property = 0 ";
-        $whereClause1 =" WHERE ((pr.property_name LIKE '%".$keyword."%' AND pr.property_type = 'Hotel') OR city LIKE '%".$keyword."%' ".$catprops1." ) AND pr.property_status = 1 AND  pr.feature_property = 0 ";
 		$orderBy = "ORDER BY (SELECT rack_rate FROM tb_properties_category_rooms_price pcrp WHERE pcrp.property_id = pr.id ORDER BY rack_rate DESC LIMIT 1) * 1 DESC, pr.editor_choice_property desc  ";
-        
-        $orderBy1 = "ORDER BY pcrp.rack_rate DESC, pr.editor_choice_property desc  ";
 		$limit = " LIMIT ". $pageStart.",".$perPage; 
 		$finalQry = $query.$whereClause.$orderBy.$limit ; 
-        $finalQry1 = $query1.$whereClause1.$orderBy1.$limit ; 
 		$CountRecordQry = "Select count(*) as total_record from tb_properties pr ".$whereClause ;
 			
 			//Feature Query
@@ -206,7 +190,6 @@ class PropertyController extends Controller {
         $this->data['editorPropertiesArr']=$editorData;
 
 		$property = DB::select($finalQry);
-        $property1 = DB::select($finalQry1);
 		$getRec = DB::select($CountRecordQry);
 		$featureData = DB::select($featureQuery);
 		
