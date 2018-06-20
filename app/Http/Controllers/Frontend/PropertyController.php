@@ -134,7 +134,7 @@ class PropertyController extends Controller {
 									return sprintf("FIND_IN_SET('%s', property_category_id)", $v);
 								}, array_values($chldIds))) . ")";
                                 
-                $getcats1 = " AND (category_id IN('".implode(',',$chldIds)."'))";
+                $getcats1 = " AND (category_id IN(".implode(',',$chldIds)."))";
 			}
 
 			if ($arrive != '') {
@@ -143,7 +143,7 @@ class PropertyController extends Controller {
 					$getcats = " AND (" . implode(" || ", array_map(function($v) {
 										return sprintf("FIND_IN_SET('%s', pr.property_category_id)", $v);
 									}, array_values($chldIds))) . ")";
-                    $getcats1 = " AND (pr.category_id IN('".implode(',',$chldIds)."'))";
+                    $getcats1 = " AND (pr.category_id IN(".implode(',',$chldIds)."))";
 				}
 				if ($departure != '') {
 					$getdestind = " AND pctr.room_active_to <= '$departure'";
