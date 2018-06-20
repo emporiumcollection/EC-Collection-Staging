@@ -139,12 +139,16 @@ class PropertyController extends Controller {
                 
                 $ch_queries = trim($ch_queries);
                 if(strlen($ch_queries) > 0){
-                    $getcatsID = DB::select($ch_queries);
+                    $childresult = DB::select($ch_queries);
+                    
+                    foreach($childresult as $siChild){
+                        $getcatsID[] = $siChild->id;
+                    }
                 }
             }
         }
         echo "<pre>";print_r($getcatsID);
-        die;
+        exit;
         
 		if (!empty($cateObj)) {
 			$channel_url = $cateObj->category_youtube_channel_url;
@@ -232,7 +236,6 @@ class PropertyController extends Controller {
 		$this->data['active_page']=$pageNumber;
 
 		$uid = isset(\Auth::user()->id) ? \Auth::user()->id : '';
-
 		
 		
 		$tags_Arr = \DB::table('tb_tags_manager')->where('tag_status', 1)->get();
