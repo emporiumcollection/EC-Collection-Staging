@@ -133,12 +133,12 @@ class PropertyController extends Controller {
 									return sprintf("FIND_IN_SET('%s', pr.property_category_id)", $v);
 								}, array_values($chldIds))) . ")";*/
                 
-                $ch_queries = "SELECT pr.id FROM property_categories_split_in_rows pr WHERE pr.property_status='1' ".$catcond;
+                $ch_queries = "SELECT pr.id FROM property_categories_split_in_rows pr WHERE pr.property_status='1' ".$catcond." GROUP BY pr.id";
                 if(strlen(trim($arrive)) > 0){
                     $ch_queries = "";
                     $getdestind = "";
                     if (strlen(trim($departure)) > 0) { $getdestind = " AND pctr.room_active_to <= '".$departure."'"; }
-                    $ch_queries = "SELECT pr.id FROM property_categories_split_in_rows pr, tb_properties_category_rooms pctr WHERE pctr.property_id = pr.id AND  pr.property_status='1' AND pctr.room_active_from <= '".$arrive."' ".$getdestind."  ".$catcond." )";
+                    $ch_queries = "SELECT pr.id FROM property_categories_split_in_rows pr, tb_properties_category_rooms pctr WHERE pctr.property_id = pr.id AND  pr.property_status='1' AND pctr.room_active_from <= '".$arrive."' ".$getdestind."  ".$catcond." GROUP BY pr.id";
                 }
                 
                 $ch_queries = trim($ch_queries);
@@ -155,43 +155,7 @@ class PropertyController extends Controller {
         if(count($getcatsID) > 0){
             $timplod = implode(',',$getcatsID);
             $catprops = " OR pr.id in(".$timplod.") ";
-        }        
-        
-		if (!empty($cateObj)) {
-			$channel_url = $cateObj->category_youtube_channel_url;
-			$this->data['channel_url'] = $channel_url;
-			/*$cateObjtemp = \DB::table('tb_categories')->where('parent_category_id', $cateObj->id)->where('category_published', 1)->get();
-			if (!empty($cateObjtemp)) {
-				$chldIds = $this->fetchcategoryChildListIds($cateObj->id);
-				array_unshift($chldIds, $cateObj->id);
-			} else {
-				$chldIds[] = $cateObj->id;
-			}*/
-            $chldIds = $this->fetchcategoryChildListIds($cateObj->id);
-            if(count($chldIds) <= 0){ $chldIds[] = $cateObj->id; }
-			$getcats = '';
-			if (!empty($chldIds)) {
-				$getcats = " AND (" . implode(" || ", array_map(function($v) {
-									return sprintf("FIND_IN_SET('%s', property_category_id)", $v);
-								}, array_values($chldIds))) . ")";
-			}
-
-			if ($arrive != '') {
-				$getcats = '';
-				if (!empty($chldIds)) {
-					$getcats = " AND (" . implode(" || ", array_map(function($v) {
-										return sprintf("FIND_IN_SET('%s', pr.property_category_id)", $v);
-									}, array_values($chldIds))) . ")";
-				}
-				if ($departure != '') {
-					$getdestind = " AND pctr.room_active_to <= '$departure'";
-				}
-				$catprops = " OR pr.id in( SELECT pr.id FROM tb_properties pr, tb_properties_category_rooms pctr   WHERE pctr.property_id = pr.id AND  pr.property_status='1' AND pctr.room_active_from <= '".$arrive."' ".$getdestind."  ".$getcats." ) ";
-			} else {
-				$catprops = " OR pr.id in(SELECT id FROM tb_properties WHERE property_status='1' $getcats ) ";
-			}
-
-		}
+        }
 
 		
 		$perPage = 42;
