@@ -152,8 +152,6 @@ class PropertyController extends Controller {
             $timplod = implode(',',$getcatsID);
             $catprops = " OR pr.id in(".$timplod.") ";
         }
-        /*echo "<pre>";print_r($catprops);
-        exit;*/
 		
 		$perPage = 42;
 		$pageNumber = 1;
