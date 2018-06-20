@@ -168,7 +168,7 @@ class PropertyController extends Controller {
 		$query = "SELECT pr.editor_choice_property,pr.property_usp,pr.feature_property,pr.id,pr.property_name,pr.property_slug,pr.property_category_id,pcrp.rack_rate as price ";
 		$query .= " FROM tb_properties pr LEFT JOIN tb_properties_category_rooms_price pcrp ON pr.id = pcrp.property_id  ";
 		$whereClause =" WHERE ((pr.property_name LIKE '%".$keyword."%' AND pr.property_type = 'Hotel') OR city LIKE '%".$keyword."%' ".$catprops." ) AND pr.property_status = 1 AND  pr.feature_property = 0 ";
-		$orderBy = "ORDER BY pcrp.rack_rate DESC, pr.editor_choice_property desc  ";
+		$orderBy = "ORDER BY price DESC, editor_choice_property DESC  ";
 		$limit = " LIMIT ". $pageStart.",".$perPage; 
 		$finalQry = "SELECT * FROM (".$query.$whereClause." ORDER BY price DESC) tempX GROUP BY id ".$orderBy.$limit ; 
 		$CountRecordQry = "Select count(*) as total_record from tb_properties pr ".$whereClause ;
