@@ -128,8 +128,8 @@ class PropertyController extends Controller {
             $getcatsID = array();
             if (count($chldIds) > 0) {
                 $impload_ids = implode(',',$chldIds);
-                //$catcond = " AND (pr.property_category_id IN(".$impload_ids."))";
-                $catcond = " AND (" . implode(" || ", array_map(function($v) {
+                $catcond = " AND (pr.category_id IN(".$impload_ids."))";
+                //$catcond = " AND (" . implode(" || ", array_map(function($v) {
 									return sprintf("FIND_IN_SET('%s', pr.property_category_id)", $v);
 								}, array_values($chldIds))) . ")";
                 
