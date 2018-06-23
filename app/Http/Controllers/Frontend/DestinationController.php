@@ -93,7 +93,7 @@ class DestinationController extends Controller {
             }
         }*/
         
-        /** new optimized query by aks (18/16/2018) start **/
+        /** new optimized query by aks (18/June/2018) start **/
         $child_category_array = array();
         /*$cutomeQuery = "SELECT id FROM  (SELECT parent_category_id, id FROM tb_categories WHERE (category_published = 1) ORDER BY parent_category_id, id) products_sorted, (SELECT @pv := ".$id.") initialisation WHERE FIND_IN_SET(parent_category_id, @pv) > 0 AND @pv := CONCAT(@pv, ',', id)";
         $results = DB::select($cutomeQuery);*/
