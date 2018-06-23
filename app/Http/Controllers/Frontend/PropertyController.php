@@ -109,7 +109,6 @@ class PropertyController extends Controller {
 		}
 
 
-		/******* New Query by Ravinder ********/ 
 		$catprops = '';   
 
 		   
