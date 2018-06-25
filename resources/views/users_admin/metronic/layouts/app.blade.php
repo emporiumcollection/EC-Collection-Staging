@@ -39,11 +39,7 @@
 							<div class="m-stack m-stack--ver m-stack--general">
 								<div class="m-stack__item m-stack__item--middle m-brand__logo">
 									<a href="{{ URL::to('dashboard')}}" class="m-brand__logo-wrapper">
-                                        @if(file_exists(public_path().'/sximo/images/'.CNF_LOGO) && CNF_LOGO !='')
-                                            {!! SiteHelpers::avatarProfile(80,80) !!}
-                                        @else
-                                            <img alt="" src="{{ asset('sximo/images/logo.png') }}" alt="{{ CNF_APPNAME }}"/>
-                                        @endif										
+                                        <img src="{{ asset('metronic/assets/demo/demo6/media/img/logo/logo.png') }}" alt="{{ CNF_APPNAME }}"/>									
 									</a>
 									<h3 class="m-header__title"> {{ CNF_APPNAME }} </h3>
 								</div>
