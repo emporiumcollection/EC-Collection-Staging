@@ -13,8 +13,14 @@ class DashboardController extends Controller {
 
 	public function getIndex( Request $request )
 	{
-		$this->data['online_users'] = \DB::table('tb_users')->orderBy('last_activity','desc')->limit(10)->get(); 
-		return view('dashboard.index',$this->data);
+	   if(\Auth::check()){
+            $row = User::find(\Auth::user()->id);
+            $this->data['online_users'] = \DB::table('tb_users')->orderBy('last_activity','desc')->limit(10)->get(); 
+            return view('dashboard.index',$this->data);
+	   }else
+       {
+            \Auth::logout();
+       }		
 	}	
 
 
