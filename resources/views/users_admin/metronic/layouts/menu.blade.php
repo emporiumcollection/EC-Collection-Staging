@@ -11,6 +11,26 @@
                 		 m-menu-scrollable="1" m-menu-dropdown-timeout="500"  
                 		>
 						<ul class="m-menu__nav  m-menu__nav--dropdown-submenu-arrow ">
+                            @foreach ($sidebar as $menu)
+                                <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  m-menu-submenu-toggle="hover">
+                                    <a  
+                                    @if($menu['menu_type'] =='external')
+                						href="{{ $menu['url'] }}" 
+                					@else
+                						href="{{ URL::to($menu['module'])}}" 
+                					@endif				 class="m-menu__link m-menu__toggle">
+    									<i class="{{$menu['menu_icons']}}"></i>
+    									<span class="m-menu__link-text">
+    										@if(CNF_MULTILANG ==1 && isset($menu['menu_lang']['title'][Session::get('lang')]))
+                        						{{ $menu['menu_lang']['title'][Session::get('lang')] }}
+                        					@else
+                        						{{$menu['menu_name']}}
+                        					@endif
+    									</span>
+    									@if(count($menu['childs']) > 0 )<i class="m-menu__ver-arrow la la-angle-right"></i>@endif
+    								</a>
+                                </li>
+                            @endforeach
 							<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  m-menu-submenu-toggle="hover">
 								<a  href="javascript:;" class="m-menu__link m-menu__toggle">
 									<i class="m-menu__link-icon flaticon-layers"></i>
