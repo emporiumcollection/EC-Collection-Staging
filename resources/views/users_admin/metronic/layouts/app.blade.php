@@ -18,8 +18,8 @@
 		</script>
 		<!--end::Web font -->
         <!--begin::Base Styles -->
-		<link href="{{ asset('assets/vendors/base/vendors.bundle.css') }}" rel="stylesheet" type="text/css" />
-		<link href="{{ asset('assets/demo/demo6/base/style.bundle.css') }}" rel="stylesheet" type="text/css" />
+		<link href="{{ asset('metronic/assets/vendors/base/vendors.bundle.css') }}" rel="stylesheet" type="text/css" />
+		<link href="{{ asset('metronic/assets/demo/demo6/base/style.bundle.css') }}" rel="stylesheet" type="text/css" />
 		<!--end::Base Styles -->
 		<link rel="shortcut icon" href="{{ asset('favicon.ico')}}" />
         
@@ -2455,15 +2455,15 @@
 		<!-- end::Scroll Top -->
         
     	<!--begin::Base Scripts -->
-		<script src="{{ asset('assets/vendors/base/vendors.bundle.js') }}" type="text/javascript"></script>
-		<script src="{{ asset('assets/demo/demo6/base/scripts.bundle.js') }}" type="text/javascript"></script>
+		<script src="{{ asset('metronic/assets/vendors/base/vendors.bundle.js') }}" type="text/javascript"></script>
+		<script src="{{ asset('metronic/assets/demo/demo6/base/scripts.bundle.js') }}" type="text/javascript"></script>
 		<!--end::Base Scripts -->  
         
         @yield('script')
 		@yield('custom_js_script')
         
         <!--begin::Page Snippets -->
-		<script src="{{ asset('assets/app/js/dashboard.js') }}" type="text/javascript"></script>
+		<script src="{{ asset('metronic/assets/app/js/dashboard.js') }}" type="text/javascript"></script>
 		<!--end::Page Snippets -->
 	</body>
 	<!-- end::Body -->
