@@ -117,7 +117,8 @@
 			<!-- end::Footer -->
 		</div>
 		<!-- end:: Page -->
-      		      <!-- begin::Quick Sidebar -->
+        
+        <!-- begin::Quick Sidebar -->
 		<div id="m_quick_sidebar" class="m-quick-sidebar m-quick-sidebar--tabbed m-quick-sidebar--skin-light">
 			<div class="m-quick-sidebar__content m--hide">
 				<span id="m_quick_sidebar_close" class="m-quick-sidebar__close">
