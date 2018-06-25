@@ -195,7 +195,7 @@
                     data: formData,
                     success: function (data, textStatus, jqXHR) {
                         if (data.status == 'success') {
-                            window.location.href = "{{URL::to('customer/profile')}}";
+                            window.location.href = "{{URL::to('user/profile')}}";
                         }
                         else {
                             var message = data.message;
