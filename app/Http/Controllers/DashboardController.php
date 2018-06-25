@@ -21,7 +21,6 @@ class DashboardController extends Controller {
         
 		$this->data['online_users'] = \DB::table('tb_users')->orderBy('last_activity','desc')->limit(10)->get(); 
 		return view($file_name,$this->data);
-	}	
-
+	}
 
 }
