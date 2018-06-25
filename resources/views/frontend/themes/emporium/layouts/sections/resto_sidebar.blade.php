@@ -23,7 +23,7 @@
 					{{--*/ $r++; /*--}}
 				  @endforeach
 				@endif
-				
+
 				@if(!empty($barsArr))
 				{{--*/ $b=1; /*--}}
 				  @foreach($barsArr as $bar)
@@ -31,7 +31,7 @@
 					{{--*/ $b++; /*--}}
 				  @endforeach
 				@endif
-				
+
 				@if(!empty($spasArr))
 				{{--*/ $s=1; /*--}}
 				  @foreach($spasArr as $spa)
@@ -56,7 +56,7 @@
             @endif
             <div class="left-carousal">
                 <div id="owl-carousel" class="owl-carousel">
-                
+
                 <div class="item">
                     <div class="side-bar-why-book-with-us">
                         <div class="book-with-us-tittles">
@@ -76,8 +76,8 @@
                     </div>
                 </div>
               </div>
-            </div>    
+            </div>
         </div>
-       
+
     </div>
 </div>

@@ -54,12 +54,12 @@ class PropertyController extends Controller {
          $query = "SELECT pr.editor_choice_property,pr.property_usp,pr.feature_property,pr.id,pr.property_name,pr.property_slug,pr.property_category_id,"; 
         $query .= " (SELECT rack_rate FROM tb_properties_category_rooms_price pcrp where pr.id=pcrp.property_id order by rack_rate DESC limit 0,1 ) as price ," ;
         $query .= " (SELECT category_name FROM tb_categories ct where pr.property_category_id=ct.id limit 0,1 ) as category_name ";
-		$query .= " FROM tb_properties pr ";
-		//$whereClause =" WHERE ((pr.property_name LIKE '%".$keyword."%' AND pr.property_type = 'Hotel') OR city LIKE '%".$keyword."%' ".$catprops." ) AND pr.property_status = 1 AND  pr.editor_choice_property = 1 ";
+        $query .= " FROM tb_properties  pr";
         $whereClause = " WHERE pr.property_type='" . $request->slug . "' AND pr.property_status = '1' AND pr.editor_choice_property = 1 ";
-		$orderBy = "ORDER BY RAND()  ";
-		$limit = " LIMIT 4";
-		$editorQuery = $query.$whereClause.$orderBy.$limit ; 
+        $OrderByQry =  " order by RAND() LIMIT 4 ";
+
+        
+		$editorQuery = $query.' '.$whereClause.' '.$OrderByQry; 
 
 
         $editorData = DB::select($editorQuery);
@@ -77,7 +77,7 @@ class PropertyController extends Controller {
         $this->data['active_page']=$pageNumber;	
 		return view('frontend.themes.emporium.properties.list', $this->data);
 	}
-    
+	
 	function propertySearch(Request $request) {
 
 		$selCurrency=$request->input("currencyOption");
@@ -155,7 +155,6 @@ class PropertyController extends Controller {
             $timplod = implode(',',$getcatsID);
             $catprops = " OR pr.id in(".$timplod.") ";
         }
-
 		
 		$perPage = 42;
 		$pageNumber = 1;
@@ -165,11 +164,11 @@ class PropertyController extends Controller {
 		$pageStart = ($pageNumber -1) * $perPage;
 
 		$query = "SELECT pr.editor_choice_property,pr.property_usp,pr.feature_property,pr.id,pr.property_name,pr.property_slug,pr.property_category_id,pcrp.rack_rate as price ";
-		$query .= " FROM tb_properties pr LEFT JOIN tb_properties_category_rooms_price pcrp ON pr.id = pcrp.property_id  ";
+		$query .= " FROM tb_properties pr LEFT JOIN tb_properties_category_rooms_price pcrp ON pr.id = pcrp.property_id ";
 		$whereClause =" WHERE ((pr.property_name LIKE '%".$keyword."%' AND pr.property_type = 'Hotel') OR city LIKE '%".$keyword."%' ".$catprops." ) AND pr.property_status = 1 AND  pr.feature_property = 0 ";
 		$orderBy = "ORDER BY price DESC, editor_choice_property DESC  ";
 		$limit = " LIMIT ". $pageStart.",".$perPage; 
-		$finalQry = "SELECT * FROM (".$query.$whereClause." ORDER BY price DESC) tempX GROUP BY id ".$orderBy.$limit ; 
+        $finalQry = "SELECT * FROM (".$query.$whereClause." ORDER BY price DESC) tempX GROUP BY id ".$orderBy.$limit ; 
 		$CountRecordQry = "Select count(*) as total_record from tb_properties pr ".$whereClause ;
 			
 			//Feature Query
@@ -203,6 +202,7 @@ class PropertyController extends Controller {
 		$this->data['active_page']=$pageNumber;
 
 		$uid = isset(\Auth::user()->id) ? \Auth::user()->id : '';
+
 		
 		
 		$tags_Arr = \DB::table('tb_tags_manager')->where('tag_status', 1)->get();
@@ -243,8 +243,6 @@ class PropertyController extends Controller {
         
         /** new optimized query by aks (18/June/2018) start **/
         $child_category_array = array();
-        /*$cutomeQuery = "SELECT id FROM  (SELECT parent_category_id, id FROM tb_categories WHERE (category_published = 1) ORDER BY parent_category_id, id) products_sorted, (SELECT @pv := ".$id.") initialisation WHERE FIND_IN_SET(parent_category_id, @pv) > 0 AND @pv := CONCAT(@pv, ',', id)";
-        $results = DB::select($cutomeQuery);*/
         $results1 = DB::select(DB::raw("call property_multi_level_child_proc(?)"),[$id]);
         foreach ($results1 as $row) {
             $child_category_array[] = $row->id;
@@ -572,11 +570,11 @@ class PropertyController extends Controller {
 			$image = 'data:image/jpeg;base64,' . base64_encode($data);
 		} else {
 			if(!empty($propertyImage)) {
-                $tObj = Image::make($remoteImage);
+				$tObj = Image::make($remoteImage);
                 $width = $tObj->width();
                 $height = $tObj->height();
-                
-				$height1 = 400 * $height /$width;
+        
+                $height1 = 400 * $height /$width;
 				$image = $tObj->resize(400,$height1)->response('jpg');
 			} else {
 				return false;

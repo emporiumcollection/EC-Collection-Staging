@@ -20,7 +20,7 @@
                 <div class="carousel-caption">
                   <h1>{{$slider_row->slider_title}}</h1>
                   <p>{{$slider_row->slider_description}}</p>
-                  
+
                 </div>
               </div>
             @endforeach
@@ -29,53 +29,55 @@
         <!-- Left and right controls -->
         <a class="left carousel-control" href="#restaurantSlider" data-slide="prev">
           <img src="{{ asset('themes/emporium/images/editorial-left-arrow.png') }}" alt="Icon">
+          <span>previous</span>
         </a>
         <a class="right carousel-control" href="#restaurantSlider" data-slide="next">
           <img src="{{ asset('themes/emporium/images/editorial-right-arrow.png') }}" alt="Icon">
         </a>
       </div>
-      <span class="scrollNextDiv"><a class="scrollpage" href="#orderDashboard">Scroll Down</a></span>
+      <span class="scrollNextDiv"><a class="scrollpage" href="#orderDashboard">Scroll Down</a><span>Next</span>
+      </span>
       </section>
     @endif
 <section id="orderDashboard" class="col-md-12 pull-left" >
-<div class="row">&nbsp;</div>	
+<div class="row">&nbsp;</div>
 
 <div class="well col-md-12" style="background-color:#f7f7f7;">
 
 <table class="table table-striped table-bordered" >
-	<tbody>	
+	<tbody>
 
 			<tr>
 				<td width='80%' class='label-view text-right'>Order Id</td>
 				<th># {{ $order->id }} </th>
-				
+
 			</tr>
-			
+
 			<tr>
 				<td width='80%' class='label-view text-right'>Invoice No.</td>
 				<th># {{ $order->invoice_num }} </th>
-				
+
 			</tr>
-			
+
 			<tr>
 				<td width='80%' class='label-view text-right'>Created</td>
 				<th>{{ $order->created }} </th>
-				
+
 			</tr>
-		
+
 			<tr>
 				<td width='80%' class='label-view text-right'>Status</td>
 				<th>{{ $order->status }} </th>
-				
+
 			</tr>
-		
+
 			<tr>
 				<td width='80%' class='label-view text-right'>Comments</td>
 				<th>{{ $order->comments }} </th>
-				
+
 			</tr>
-	</tbody>	
-</table>   
+	</tbody>
+</table>
 
 @if(!empty($order_item_detail))
 	<div id="item-pnl" class="col-md-12">
@@ -85,7 +87,7 @@
 			<div class="col-sm-2 col" style="text-align:center;">QTY</div>
 			<div class="col-sm-2 col" style="text-align:center;">PRICE</div>
 		</div>
-		{{--*/ 
+		{{--*/
 				$qty = 1;
 				$qtyPr = 1;
 			   $Totprice = 0;
@@ -100,21 +102,21 @@
 					@if($detail->package_modules!='')
 							<div >
                                 @if($detail->package_modules !="" && $detail->package_modules!="NULL")
-                              
+
                                   <h5>Module Access purchased in this package are:</h5>
                                   {{--*/  $modulesOffered = DB::table('tb_module')->whereIn('module_id', explode(',',$detail->package_modules))->get();/*--}}
                                   @foreach ($modulesOffered as $moduleRow)
-                                  
+
                                     <p><h6>Module Name: {{ $moduleRow->module_name}}</h5></p>
                                     <p>Module Note: {{ $moduleRow->module_note}}</p>
-                                    
+
                                    @endforeach
-                                   
+
                                 @endif
                                 </div>
 
 
-					@endif 
+					@endif
 					</div>
 
 
@@ -151,7 +153,7 @@
 
 <div class="row">&nbsp;</div>
 </section>
-	  
+
 @endsection
 
 {{--For Right Side Icons --}}
@@ -178,8 +180,8 @@
     <link href="{{ asset('themes/emporium/css/calendar.css') }}" rel="stylesheet">
     <link href="{{ asset('themes/emporium/css/terms-and-conditions.css') }}" rel="stylesheet">
     <link href="{{ asset('themes/emporium/css/membership-css.css') }}" rel="stylesheet">
-    
-     
+
+
 @endsection
 
 {{-- For custom style  --}}
@@ -192,7 +194,7 @@
 		border: 1px solid #ccc;
 		border-radius: 4px;
 	}
-	
+
 	#item-pnl .input-group-addon
 	{
 		padding:6px 9px;
@@ -200,7 +202,7 @@
 	.btn {
 		 height: 22px !important;
 	}
-	
+
 	#item-pnl .items-pnl-body {
 		border-top: 1px solid #ccc;
 	}
@@ -219,7 +221,7 @@
 {{-- For custom script --}}
 @section('custom_js')
     @parent
- 
+
 @endsection
 
 {{-- For footer --}}

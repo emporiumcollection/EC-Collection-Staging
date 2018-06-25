@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB,Validator, Input, Redirect;
 
-class DestinationController extends Controller {
+class DestinationController_bkup extends Controller {
 
     public function __construct() {
         parent::__construct();
@@ -35,17 +35,13 @@ class DestinationController extends Controller {
 						$chldIds[] = $dest->id;
 					}
 					
-					/*if (!empty($chldIds)) {
+					if (!empty($chldIds)) {
 						$getcats = " AND (" . implode(" || ", array_map(function($v) {
 											return sprintf("FIND_IN_SET('%s', property_category_id)", $v);
 										}, array_values($chldIds))) . ")";
 					}
 					
-					$preprops = DB::select(DB::raw("SELECT COUNT(*) AS total_rows FROM tb_properties WHERE property_status = '1' $getcats"));*/
-                    
-                    $getcats = "";
-                    if (count($chldIds) > 0) { $getcats = " AND (category_id IN(".implode(",",$chldIds)."))"; }
-                    $preprops = DB::select(DB::raw("SELECT COUNT(id) AS total_rows FROM property_categories_split_in_rows WHERE property_status = '1' ".$getcats));
+					$preprops = DB::select(DB::raw("SELECT COUNT(*) AS total_rows FROM tb_properties WHERE property_status = '1' $getcats"));
 
 					if (isset($preprops[0]->total_rows) && $preprops[0]->total_rows > 0) {
 						$destarr[] = $dest;
@@ -83,7 +79,7 @@ class DestinationController extends Controller {
 	
 	public function fetchcategoryChildListIds($id = 0, $child_category_array = '') {
 
-        /*if (!is_array($child_category_array))
+        if (!is_array($child_category_array))
             $child_category_array = array();
         $results = \DB::table('tb_categories')->select('id')->where('parent_category_id', $id)->get();
         if ($results) {
@@ -91,16 +87,7 @@ class DestinationController extends Controller {
                 $child_category_array[] = $row->id;
                 $child_category_array = $this->fetchcategoryChildListIds($row->id, $child_category_array);
             }
-        }*/
-        
-        /** new optimized query by aks (18/June/2018) start **/
-        $child_category_array = array();
-        $results1 = DB::select(DB::raw("call property_multi_level_child_proc(?)"),[$id]);
-        foreach ($results1 as $row) {
-            $child_category_array[] = $row->id;
         }
-        /** new optimized query by aks end **/        
-                                        
         return $child_category_array;
     }
 

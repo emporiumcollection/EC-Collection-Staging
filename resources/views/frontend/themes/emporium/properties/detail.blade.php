@@ -279,14 +279,19 @@
                                             <li data-target="#HamYardHotelSlider" data-slide-to="{{$kn}}"
                                                 class="{{($kn==0) ? 'active' : ''}}"><img
                                                         src="{{$propertyDetail['roomimgs'][$propertyDetail['typedata'][$key]->id]['imgsrc'].$propertyDetail['roomimgs'][$propertyDetail['typedata'][$key]->id]['imgs'][0]->file_name}}"
-                                                        alt="Image"></li>
+                                                        alt="Image">
+
+<div rel="{{$type->id}}" name="{{$type->category_name}}" class="showMoreSec" style="display:inline-block;">
+                                    <button type="button" class="btn buttonDefault">SHOW MORE</button>
+                                </div>
+
+                                                    </li>
+
                                             {{--*/ $kn++; /*--}}
                                         @endif
                                     @endforeach
                                 </ol>
-                                <div class="showMoreSec">
-                                    <button type="button" class="btn buttonDefault">SHOW MORE</button>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -711,6 +716,7 @@ $('input[name="departure"]').daterangepicker({
 		});
 		
 		function renderRoomdetails(data) {
+            console.log(data)
 			var rimg = data.roomimgs.imgsrc;
 			$('.showMorePopup').css("background-image", "url('" + rimg + "')");
 			var imagesPro = '';

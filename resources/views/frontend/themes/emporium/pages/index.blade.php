@@ -7,8 +7,16 @@
 @section('meta_description', 'Emporium Voyage - Your Ultimate Luxury Travel Partner')
 {{-- For Page's Content Part --}}
 @section('content')
+<div class="logo-box">
+ 		<a href="{{url('/')}}" class="logo-bx">
+					<img src="{{ asset('themes/emporium/images/emporium-voyage-logo.png')}}" alt="Emporium Voyage" class="img-responsive"/>
+		</a>
+		<div class="vdo-link">
+				<a href="#">play video <span class="circle"></span></a>
+		</div>
+</div>
     <!-- slider starts here -->
-         <section class="sliderSection">
+         <section class="sliderSection" id="home_sld">
             @if(!empty($slider))
               <div id="myCarousel" class="carousel" data-ride="carousel">
                  <!-- Wrapper for slides -->
@@ -16,11 +24,14 @@
                     @foreach($slider as $key => $slider_row)
                       <div class="item {{($key == 0)? 'active' : ''}}">
 		      <div class="image-overaly-bg"></div>
-                         <a href="{{$slider_row->slider_link}}"><img src="{{url('uploads/slider_images/'.$slider_row->slider_img)}}" alt="{{$slider_row->slider_title}}"></a>
+                         <a href="{{$slider_row->slider_link}}" style="position:relative; z-index:9;"><img src="{{url('uploads/slider_images/'.$slider_row->slider_img)}}" alt="{{$slider_row->slider_title}}"></a>
                          <div class="carousel-caption">
+                         	<div class="round-crcle"></div>
+                         	 <div class="cnt-box">
                             <h1><a href="{{$slider_row->slider_link}}">{{$slider_row->slider_title}}</a></h1>
                             <p><a href="{{$slider_row->slider_link}}" style="color:white;">{{$slider_row->slider_description}}</a></p>
                          </div>
+                       </div>
                       </div>
                     @endforeach
 					{{--*/ $sliderads = CommonHelper::getSliderAds('landing_slider', 'Hotel') /*--}}
@@ -29,9 +40,12 @@
 							<div class="item">
 								<a ><img src="{{URL::to('uploads/users/advertisement/'.$ads->adv_img)}}" alt="{{$ads->adv_title}}"></a>
 								<div class="carousel-caption">
+									<div class="round-crcle"></div>
+                         	 <div class="cnt-box">
 									<h1><a href="{{ (strpos($ads->adv_link, 'http://') !== false) ? $ads->adv_link : 'http://'.$ads->adv_link }}">{{$ads->adv_title}}</a></h1>
 									<p><a href="{{ (strpos($ads->adv_link, 'http://') !== false) ? $ads->adv_link : 'http://'.$ads->adv_link }}" style="color:white;">{{$ads->adv_desc}} </a></p>
 								</div>
+							</div>
 							</div>
 						@endforeach
 					@endif
@@ -65,13 +79,13 @@
                 @ENDIF
             </div>
          </section>
-		 
+
 		@include('frontend.themes.emporium.layouts.sections.contactus_popup')
 @endsection
 
 {{--For Right Side Icons --}}
       @section('right_side_iconbar')
-      
+
       @include('frontend.themes.emporium.layouts.sections.home_right_iconbar')
       @endsection
 
@@ -114,7 +128,7 @@
 			return false; // Don't submit form for this demo
 			});
 		});
-		
+
 		function submit_contact_request()
 		{
 			$.ajax({
@@ -149,5 +163,5 @@
 
 {{-- For footer --}}
 @section('footer')
-    
+
 @endsection

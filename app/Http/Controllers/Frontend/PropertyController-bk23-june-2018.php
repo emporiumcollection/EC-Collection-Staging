@@ -6,7 +6,7 @@ use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 use App\Http\Controllers\Controller;
 use App\User;
 use DB,Validator, Input, Redirect, CustomQuery, Image;
-class PropertyController extends Controller {
+class PropertyController_bkup extends Controller {
 
     public function __construct() {
         parent::__construct();
@@ -19,6 +19,7 @@ class PropertyController extends Controller {
 	
 	public function getPropertyGridListByCategory(Request $request)
 	{
+		dd("hello");
 		$this->data['slug'] = $request->slug;
 		$this->data['dateslug'] = '';
 
@@ -54,12 +55,12 @@ class PropertyController extends Controller {
          $query = "SELECT pr.editor_choice_property,pr.property_usp,pr.feature_property,pr.id,pr.property_name,pr.property_slug,pr.property_category_id,"; 
         $query .= " (SELECT rack_rate FROM tb_properties_category_rooms_price pcrp where pr.id=pcrp.property_id order by rack_rate DESC limit 0,1 ) as price ," ;
         $query .= " (SELECT category_name FROM tb_categories ct where pr.property_category_id=ct.id limit 0,1 ) as category_name ";
-		$query .= " FROM tb_properties pr ";
-		//$whereClause =" WHERE ((pr.property_name LIKE '%".$keyword."%' AND pr.property_type = 'Hotel') OR city LIKE '%".$keyword."%' ".$catprops." ) AND pr.property_status = 1 AND  pr.editor_choice_property = 1 ";
+        $query .= " FROM tb_properties  pr";
         $whereClause = " WHERE pr.property_type='" . $request->slug . "' AND pr.property_status = '1' AND pr.editor_choice_property = 1 ";
-		$orderBy = "ORDER BY RAND()  ";
-		$limit = " LIMIT 4";
-		$editorQuery = $query.$whereClause.$orderBy.$limit ; 
+        $OrderByQry =  " order by RAND() LIMIT 4 ";
+
+        
+		$editorQuery = $query.' '.$whereClause.' '.$OrderByQry; 
 
 
         $editorData = DB::select($editorQuery);
@@ -77,7 +78,7 @@ class PropertyController extends Controller {
         $this->data['active_page']=$pageNumber;	
 		return view('frontend.themes.emporium.properties.list', $this->data);
 	}
-    
+	
 	function propertySearch(Request $request) {
 
 		$selCurrency=$request->input("currencyOption");
@@ -119,15 +120,13 @@ class PropertyController extends Controller {
 		if (!empty($cateObj)) {
 			$channel_url = $cateObj->category_youtube_channel_url;
 			$this->data['channel_url'] = $channel_url;
-			/*$cateObjtemp = \DB::table('tb_categories')->where('parent_category_id', $cateObj->id)->where('category_published', 1)->get();
+			$cateObjtemp = \DB::table('tb_categories')->where('parent_category_id', $cateObj->id)->where('category_published', 1)->get();
 			if (!empty($cateObjtemp)) {
 				$chldIds = $this->fetchcategoryChildListIds($cateObj->id);
 				array_unshift($chldIds, $cateObj->id);
 			} else {
 				$chldIds[] = $cateObj->id;
-			}*/
-            $chldIds = $this->fetchcategoryChildListIds($cateObj->id);
-            if(count($chldIds) <= 0){ $chldIds[] = $cateObj->id; }
+			}
 			$getcats = '';
 			if (!empty($chldIds)) {
 				$getcats = " AND (" . implode(" || ", array_map(function($v) {
@@ -227,9 +226,9 @@ class PropertyController extends Controller {
                     
     }
 	
-	function fetchcategoryChildListIds($id = 0, $child_category_array = array()) {
+	function fetchcategoryChildListIds($id = 0, $child_category_array = '') {
 
-        /*if (!is_array($child_category_array))
+        if (!is_array($child_category_array))
             $child_category_array = array();
         //$uid = \Auth::user()->id;
         // Get Query 
@@ -239,18 +238,7 @@ class PropertyController extends Controller {
                 $child_category_array[] = $row->id;
                 $child_category_array = $this->fetchcategoryChildListIds($row->id, $child_category_array);
             }
-        }*/
-        
-        /** new optimized query by aks (18/16/2018) start **/
-        $child_category_array = array();
-        /*$cutomeQuery = "SELECT id FROM  (SELECT parent_category_id, id FROM tb_categories WHERE (category_published = 1) ORDER BY parent_category_id, id) products_sorted, (SELECT @pv := ".$id.") initialisation WHERE FIND_IN_SET(parent_category_id, @pv) > 0 AND @pv := CONCAT(@pv, ',', id)";
-        $results = DB::select($cutomeQuery);*/
-        $results1 = DB::select(DB::raw("call property_multi_level_child_proc(?)"),[$id]);
-        foreach ($results1 as $row) {
-            $child_category_array[] = $row->id;
         }
-        /** new optimized query by aks end **/
-        
         return $child_category_array;
     }
 	

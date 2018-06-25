@@ -1,5 +1,5 @@
 
-<div class="mobilemenu">
+<div class="mobilemenu" id="left-sd-menu">
 	<div class="block-content togglenav content active mobilenavclosebtn">
         <span></span>
         <span> </span>
@@ -23,21 +23,21 @@
 				@if (array_key_exists('typedata', $propertyDetail))
 					<li><a href="#roomsSuit" class="closenavlink scrollpage">ROOMS & SUITES</a></li>
 				@endif
-				
+
 				@if($propertyDetail['data']->architecture_title!='' && $propertyDetail['data']->architecture_desciription!='')
 					<li><a href="#design-architecture" class="closenavlink scrollpage">DESIGN & ARCHITECTURE</a></li>
 				@endif
-				
+
 				<?php /*
-				@if($propertyDetail['data']->restaurant_ids!='' || $propertyDetail['data']->spa_ids!='' || $propertyDetail['data']->bar_ids!='')
-					<li><a href="{{URL::to($propertyDetail['data']->property_slug.'/restaurant')}}">RESTAURANT & BAR</a></li>
-				@endif 
-				*/ ?>
-				
+@if($propertyDetail['data']->restaurant_ids!='' || $propertyDetail['data']->spa_ids!='' || $propertyDetail['data']->bar_ids!='')
+<li><a href="{{URL::to($propertyDetail['data']->property_slug.'/restaurant')}}">RESTAURANT & BAR</a></li>
+@endif
+ */?>
+
 				@if($propertyDetail['data']->video_title!='')
 					<li><a href="#video" class="closenavlink scrollpage">VIDEO</a></li>
 				@endif
-				
+
                 <li><a href="#bookHotel" class="yellowbtn scrollpage closenavlink">BOOK {{$propertyDetail['data']->property_name}} </a></li>
             </ul>
             @if (!Auth::check())
@@ -48,7 +48,7 @@
             @endif
             <div class="left-carousal">
             	<div id="owl-carousel" class="owl-carousel">
-                
+
                 <div class="item">
                 	<div class="side-bar-why-book-with-us">
                     	<div class="book-with-us-tittles">
@@ -77,8 +77,8 @@
                 @endif
               </div>
             </div>
-            
+
         </div>
-      
+
     </div>
 </div>

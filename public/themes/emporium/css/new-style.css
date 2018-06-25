@@ -1,0 +1,221 @@
+.page-container {
+    padding: 0 !important;
+}
+#home_sld .cnt-box {
+    display: none;
+}
+
+.mobilemenu {    
+    left: -340px !important;    
+}
+
+#home_sld .carousel-caption {
+    background: transparent;
+}
+
+.sidefixednav{
+    right: -90px !important;
+}
+.contactfixed{
+    right:-320px !important;
+}
+.logo-box {
+    position: absolute;
+    z-index: 99;
+    bottom: 30%;
+    left: 60px;
+}
+.vdo-link {
+    margin-top: 30px;
+    color: #ffff;
+}
+.vdo-link > a{
+      font-size: 15px;
+      color: #fff;
+      text-transform: uppercase;
+}
+
+#home_sld .sliderFooter {
+    display: none;
+}
+#home_sld .left.carousel-control {
+    left: 60px !important;
+    right: auto !important;
+}
+#home_sld a.right.carousel-control{
+  right: 60px !important;
+  text-align: right;
+}
+#home_sld .carousel-control{
+  bottom: 30px;
+  background: transparent;
+  width: 200px;
+  padding: 0 7px;
+  height: auto;
+  text-align: left;
+  text-transform: uppercase;   
+
+}
+#home_sld .image-overaly-bg {    
+    background: rgba(37,37,37,0.2);
+    z-index: 1;
+}
+
+#home_sld .carousel-control  > img{
+  display: none;
+}
+#home_sld .carousel-control  span{
+  display: inline-block;
+  font-size: 15px;
+}
+#home_sld .left.carousel-control:before,
+#home_sld .right.carousel-control:after{
+  display: inline-block;
+  vertical-align: middle;
+  width: 100px;
+  height: 2px;
+  background: #fff;
+  content: "";
+}
+#home_sld .left.carousel-control:after,
+#home_sld .right.carousel-control:before{
+  position: absolute;
+  display: block;
+  content: "";
+  width: 0;
+  height: 0;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-right: 9px solid #fff;
+  top: 5px;
+  bottom: 0;
+  margin: auto;
+  left: 0;
+  -webkit-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
+}
+#home_sld .right.carousel-control:before{
+  left: auto;
+  right: 0;
+  border-right: 0;
+  border-left: 9px solid #fff;
+}
+#home_sld .right.carousel-control:after{
+  will-change: transform;
+    transform-origin: 100% 0;
+    transform: scaleX(1) translateZ(0);
+    transition: transform 1s cubic-bezier(.835,-.005,.06,1);
+}
+#home_sld .right.carousel-control:hover:after{
+  transform: scaleX(0) translateZ(0);
+}
+
+#home_sld .right.carousel-control span{margin-right: 40px;
+  will-change: transform;
+    transform-origin: 100% 0;
+    transform: translateX(0) translateZ(0);
+    transition: transform 1s cubic-bezier(.835,-.005,.06,1);}
+#home_sld .right.carousel-control:hover span{
+  transform: translateX(100px) translateZ(0);
+  margin-right: 0;
+}
+
+.brgr-menu {
+    width: 30px;
+    height: 20px;
+    position: absolute;
+    top: 40px;
+    right: 60px;
+    z-index: 55;
+    cursor: pointer;
+}
+.brgr-menu:before,
+.brgr-menu:after,
+.brgr-menu > div{
+  position:absolute;
+  width: 100%;
+  height: 2px;
+  top:0;
+  left: 0;
+  background: #fff;
+  content: "";
+  -webkit-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+}
+.brgr-menu > div{
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+.brgr-menu:after{
+  top:auto;
+  bottom: 0;
+}
+.homerightmenu{
+  -webkit-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+.homerightmenu.sidefixednav.me-right {
+    right: 0 !important;
+}
+.homerightmenu.contactfixed.me-right {
+    right: -245px !important;
+}
+.homerightmenu.contactfixed.me-right:hover{
+   right: 0px !important;
+}
+.mobilemenu.me-left {
+    left: 0 !important;
+}
+
+.brgr-menu.highlight:before {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    bottom: 0;
+    margin: auto;
+}
+.brgr-menu.highlight:after {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+    -moz-transform: rotate(-135deg);
+    -ms-transform: rotate(-135deg);
+    -o-transform: rotate(-135deg);
+    top: 0;
+    margin: auto;
+}
+.brgr-menu.highlight > div{
+  display: none;
+}
+
+.round-crcle {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border: 1px solid;
+    border-radius: 100%;
+    cursor: pointer;
+    bottom: 25%
+}
+
+.logo-box span {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    right: -50px;
+    width: 30px;
+    height: 30px;
+    color: #fff;
+    font-size: 20px;
+    border: 1px solid;
+    border-radius: 100%;
+    line-height: 26px;
+    text-align: center;
+}
