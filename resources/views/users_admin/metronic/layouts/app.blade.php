@@ -40,7 +40,7 @@
 								<div class="m-stack__item m-stack__item--middle m-brand__logo">
 									<a href="{{ URL::to('dashboard')}}" class="m-brand__logo-wrapper">
                                         @if(file_exists(public_path().'/sximo/images/'.CNF_LOGO) && CNF_LOGO !='')
-                                            {!! SiteHelpers::avatar(155, '') !!}
+                                            {!! SiteHelpers::avatarProfile(80,80) !!}
                                         @else
                                             <img alt="" src="{{ asset('sximo/images/logo.png') }}" alt="{{ CNF_APPNAME }}"/>
                                         @endif										
