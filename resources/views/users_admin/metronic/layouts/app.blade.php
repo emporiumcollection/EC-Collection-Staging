@@ -69,7 +69,7 @@
 						<!-- END: Brand -->
 						<div class="m-stack__item m-stack__item--fluid m-header-head" id="m_header_nav">
 							<div class="m-header__title">
-								<h3 class="m-header__title-text"> {{ CNF_APPNAME }} </h3>
+								<h3 class="m-header__title-text"> Applications </h3>
 							</div>
 							<!-- BEGIN: Horizontal Menu -->
 							<button class="m-aside-header-menu-mobile-close  m-aside-header-menu-mobile-close--skin-light " id="m_aside_header_menu_mobile_close_btn">
