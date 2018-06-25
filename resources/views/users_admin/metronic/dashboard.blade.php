@@ -1,1 +1,1 @@
-Hello
+@extends('users_admin.metronic.layouts.app')
