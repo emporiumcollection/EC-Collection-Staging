@@ -84,6 +84,11 @@
                 <!-- END: Left Aside -->
                 
 				<div class="m-grid__item m-grid__item--fluid m-wrapper">
+                    <!-- BEGIN: Subheader_search -->
+                    <div class="m-subheader-search">
+						@yeild('subheader_search')
+					</div>
+                    <!-- END: Subheader_search -->
 					<!-- BEGIN: Subheader -->
 					@include('users_admin/metronic/layouts/sub_header')
 					<!-- END: Subheader -->
