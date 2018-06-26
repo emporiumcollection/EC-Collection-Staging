@@ -569,3 +569,9 @@ slider.oninput = function() {
 
 
 */
+
+ $( ".c-header__btn-menu" ).click(function() {
+  $( this ).toggleClass( "highlight" );
+  $(".homerightmenu").toggleClass( "me-right");
+  $(".mobilemenu").toggleClass( "me-left");
+});
