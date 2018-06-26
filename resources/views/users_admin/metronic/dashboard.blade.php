@@ -1,7 +1,7 @@
 @extends('users_admin.metronic.layouts.app')
 
 @section('page_name')
-    Dashboard
+    Dashboard test
 @stop
 
 @section('subheader_search')
