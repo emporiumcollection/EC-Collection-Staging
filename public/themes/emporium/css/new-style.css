@@ -495,7 +495,6 @@ svg:not(:root) {
   max-width: 280px;
   padding: 0;
 }
-
 .carousel-inner {
     height: 100vh;
 }

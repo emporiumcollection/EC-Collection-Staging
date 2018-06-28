@@ -225,7 +225,6 @@
       return false; // Don't submit form for this demo
       });
     });
-
     function submit_contact_request()
     {
       $.ajax({
