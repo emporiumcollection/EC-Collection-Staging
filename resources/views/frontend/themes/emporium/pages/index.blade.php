@@ -88,9 +88,9 @@
                  <!-- Wrapper for slides -->
                  <div class="carousel-inner">
                     @foreach($slider as $key => $slider_row)
-                      <div class="item {{($key == 0)? 'active' : ''}}">
+                      <div class="item {{($key == 0)? 'active' : ''}}" style="background: url({{url('uploads/slider_images/'.$slider_row->slider_img)}});">
           <div class="image-overaly-bg"></div>
-                         <a href="{{$slider_row->slider_link}}" style="position:relative; z-index:9;" data-tilt data-tilt-max="50" data-tilt-speed="400" data-tilt-perspective="500"><img src="{{url('uploads/slider_images/'.$slider_row->slider_img)}}" alt="{{$slider_row->slider_title}}"></a>
+                         <a href="{{$slider_row->slider_link}}" style="position:relative; z-index:9;" data-tilt data-tilt-max="50" data-tilt-speed="400" data-tilt-perspective="500"></a>
 
                          <div class="carousel-caption">
                           <div class="head-sec">
@@ -106,8 +106,8 @@
           {{--*/ $sliderads = CommonHelper::getSliderAds('landing_slider', 'Hotel') /*--}}
           @if(!empty($sliderads['leftsidebarads']))
             @foreach($sliderads['leftsidebarads'] as $ads)
-              <div class="item">
-                <a><img src="{{URL::to('uploads/users/advertisement/'.$ads->adv_img)}}" alt="{{$ads->adv_title}}"></a>
+              <div class="item" style="background: url({{URL::to('uploads/users/advertisement/'.$ads->adv_img)}});">
+                <a></a>
                 <div class="carousel-caption">
                   <div class="round-crcle"></div>
                            <div class="cnt-box">
@@ -173,6 +173,9 @@
             </div>
          </section>
 
+         <div class="pop-hetel">
+
+         </div>
 
     @include('frontend.themes.emporium.layouts.sections.contactus_popup')
 @endsection
