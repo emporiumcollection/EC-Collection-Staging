@@ -84,6 +84,14 @@
     @parent
 	<script src="{{ asset('themes/emporium/js/smooth-scroll.js') }}"></script>
 	<script src="{{ asset('sximo/js/parsley.min.js')}}" type="text/javascript"></script>
+	<script src="{{ asset('themes/emporium/js/scroll.js') }}"></script>
+	<script type="text/javascript">
+	VanillaTilt.init(document.querySelector(".your-element"), {
+		max: 25,
+		speed: 400
+	});
+</script>
+
 @endsection
 
 {{-- For custom script --}}
@@ -108,7 +116,7 @@
 			return false; // Don't submit form for this demo
 			});
 		});
-		
+
 		function submit_contact_request()
 		{
 			$.ajax({

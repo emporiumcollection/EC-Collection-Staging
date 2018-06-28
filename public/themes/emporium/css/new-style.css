@@ -27,7 +27,7 @@
     left: 60px;
     top: 8.333333333333334vh;
     left: 8.333333333333334%;
-    max-width: 300px;
+    max-width: 200px;
 }
 .vdo-link {
     margin-top: 30px;
@@ -115,6 +115,10 @@
 }
 #home_sld .right.carousel-control:hover:after{
   transform: scaleX(0) translateZ(0);
+}
+#home_sld .item{
+  height: 100vh;
+  
 }
 
 #home_sld .right.carousel-control .txt-mid{
@@ -223,12 +227,18 @@
 
 .round-crcle {
     position: absolute;
-    width: 50px;
-    height: 50px;
+    width: 35px;
+    height: 35px;
     border: 1px solid;
     border-radius: 100%;
     cursor: pointer;
-    bottom: 25%
+    bottom: 0;
+    text-align: center;
+    top: 0;
+    margin: auto;
+    right: -50px;
+    line-height: 32px;
+    font-size: 20px;
 }
 
 .logo-box span {
@@ -459,8 +469,12 @@ svg:not(:root) {
 }
 
 .t-text--xs {
-  font-size: 11px;
-  font-size: .6875rem
+  font-size: 12px;
+  color: #fff;
+}
+.t-icon--arrow-x-end {
+    width: 7px;
+    height: 8px;
 }
 
 .t-text--sm {
@@ -472,6 +486,77 @@ svg:not(:root) {
   font-size: 18px;
   font-size: 1.125rem
 }
+
+#home_sld .carousel-caption{
+  right: auto;
+  left:8.333333333333334% ;
+  bottom: 35%;
+  width: auto;
+  max-width: 280px;
+  padding: 0;
+}
+
+.head-sec h1 {
+    font-size: 25px !important;
+    font-weight: bold !important;
+    letter-spacing: 0.5px;
+}
+
+.cnt-box {
+    position: absolute;
+    top: 50%;
+    z-index: 33;
+    left: 120%;
+    width: 650px;
+    transform: translateY(-52%);
+    -webkit-transform: translateY(-52%);
+}
+
+#myCarousel .carousel-inner .item {
+  opacity: 0;
+  transition-property: opacity;
+}
+
+#myCarousel .carousel-inner .active {
+  opacity: 1;
+}
+
+#myCarousel .carousel-inner .active.left,
+#myCarousel .carousel-inner .active.right {
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+}
+
+#myCarousel .carousel-inner .next.left,
+#myCarousel .carousel-inner .prev.right {
+  opacity: 1;
+}
+
+#myCarousel .carousel-control {
+  z-index: 2;
+} 
+@media all and (transform-3d), (-webkit-transform-3d) {
+    #myCarousel .carousel-inner > .item.next,
+    #myCarousel .carousel-inner > .item.active.right {
+      opacity: 0;
+      -webkit-transform: translate3d(0, 0, 0);
+              transform: translate3d(0, 0, 0);
+    }
+    #myCarousel .carousel-inner > .item.prev,
+    #myCarousel .carousel-inner > .item.active.left {
+      opacity: 0;
+      -webkit-transform: translate3d(0, 0, 0);
+              transform: translate3d(0, 0, 0);
+    }
+    #myCarousel .carousel-inner > .item.next.left,
+    #myCarousel .carousel-inner > .item.prev.right,
+    #myCarousel .carousel-inner > .item.active {
+      opacity: 1;
+      -webkit-transform: translate3d(0, 0, 0);
+              transform: translate3d(0, 0, 0);
+    }
+} 
 
 @media screen and (max-width:1024px) {
   .t-text--xl {
@@ -640,15 +725,15 @@ svg:not(:root) {
 }
 
 .u-marg-l-w1of13 {
-  margin-left: 7.692307692307693%
+  margin-left: 8.333333333333334%;
 }
 
 .u-marg-r-w1of13 {
-  margin-right: 7.692307692307693%
+  margin-right: 8.999%;
 }
 
 .u-marg-b-vh2of13 {
-  margin-bottom: 15.384615384615385vh
+  margin-bottom: 15.384615384615385vh;
 }
 
 .u-pad-l-w1of24 {
