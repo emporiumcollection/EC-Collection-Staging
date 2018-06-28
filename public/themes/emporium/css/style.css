@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=EB+Garamond:400,500,600,700');
 @import url(new-style.css);
+
 body{font-family: 'GeomanistLight', sans-serif; background:#252525;}
 *{outline:0;}
 ul, li{margin:0; padding:0; list-style:none;}
