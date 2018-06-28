@@ -495,13 +495,11 @@ svg:not(:root) {
   max-width: 280px;
   padding: 0;
 }
-
 .head-sec h1 {
     font-size: 25px !important;
     font-weight: bold !important;
     letter-spacing: 0.5px;
 }
-
 .cnt-box {
     position: absolute;
     top: 50%;
@@ -511,7 +509,6 @@ svg:not(:root) {
     transform: translateY(-52%);
     -webkit-transform: translateY(-52%);
 }
-
 #myCarousel .carousel-inner .item {
   opacity: 0;
   transition-property: opacity;

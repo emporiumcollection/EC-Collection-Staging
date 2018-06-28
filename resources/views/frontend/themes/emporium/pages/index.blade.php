@@ -226,6 +226,7 @@
       });
     });
 
+
     function submit_contact_request()
     {
       $.ajax({
