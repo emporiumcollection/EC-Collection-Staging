@@ -583,7 +583,6 @@ slider.oninput = function() {
  $('.round-crcle').mouseout(function () {
       $('.cnt-box').hide("slow");      
  });
-
 var movementStrength = 25;
 var height = movementStrength / $(window).height();
 var width = movementStrength / $(window).width();
