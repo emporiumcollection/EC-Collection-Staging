@@ -80,7 +80,7 @@
               </a></div>
 </div>
 
-<div class="u-inline-block menu-bx"><button class="c-header__btn-sound t-btn u-inline-block u-valign-middle u-vacuum"><div class="u-inline-block u-valign-middle u-marg-r-sm u-hide@sm"><div class="c-header__btn-sound__bar u-relative u-inline-block"></div><div class="c-header__btn-sound__bar u-relative u-inline-block"></div><div class="c-header__btn-sound__bar u-relative u-inline-block"></div><div class="c-header__btn-sound__bar u-relative u-inline-block"></div><div class="c-header__btn-sound__bar u-relative u-inline-block"></div></div> <span class="t-text--xs t-text--ls-xxs t-text--black u-inline-block u-uppercase u-valign-middle">Sound</span></button> <button class="c-header__btn-menu t-btn u-relative u-inline-block u-valign-middle u-vacuum"><div class="c-header__btn-menu__dot u-inline-block u-bg--white"></div><div class="c-header__btn-menu__dot u-inline-block u-bg--white"></div><div class="c-header__btn-menu__dot u-inline-block u-bg--white"></div> <div class="c-header__btn-menu__bar u-absolute u-pos-center u-inline-block"></div><div class="c-header__btn-menu__bar u-absolute u-pos-center u-inline-block"></div> <div class="c-header__btn-menu__circle u-absolute u-shape-circle"></div> <div class="c-header__btn-menu__content u-absolute u-pos-tl u-backface-hidden u-hide@sm"><p class="c-header__btn-menu__content__label t-text--xs t-text--ls-xxs t-text--black u-absolute u-pos-tl u-uppercase u-force-inline"><span class="c-header__btn-menu__content__label__word u-inline-block">Open</span> <span class="c-header__btn-menu__content__label__word u-inline-block">Menu</span></p> <p class="c-header__btn-menu__content__label t-text--xs t-text--ls-xxs t-text--black u-absolute u-pos-tl u-uppercase u-force-inline"><span class="c-header__btn-menu__content__label__word u-inline-block">Close</span> <span class="c-header__btn-menu__content__label__word u-inline-block">Menu</span></p></div></button></div>
+<div class="u-inline-block menu-bx"><button class="c-header__btn-sound t-btn u-inline-block u-valign-middle u-vacuum log_in-btn"><div class="u-inline-block u-valign-middle u-marg-r-sm u-hide@sm"><div class="c-header__btn-sound__bar u-relative u-inline-block"></div><div class="c-header__btn-sound__bar u-relative u-inline-block"></div><div class="c-header__btn-sound__bar u-relative u-inline-block"></div><div class="c-header__btn-sound__bar u-relative u-inline-block"></div><div class="c-header__btn-sound__bar u-relative u-inline-block"></div></div> <span class="t-text--xs t-text--ls-xxs t-text--black u-inline-block u-uppercase u-valign-middle">Login <span class="u-hide">Play</span></span></button><button class="c-header__btn-menu t-btn u-relative u-inline-block u-valign-middle u-vacuum"><div class="c-header__btn-menu__dot u-inline-block u-bg--white"></div><div class="c-header__btn-menu__dot u-inline-block u-bg--white"></div><div class="c-header__btn-menu__dot u-inline-block u-bg--white"></div> <div class="c-header__btn-menu__bar u-absolute u-pos-center u-inline-block"></div><div class="c-header__btn-menu__bar u-absolute u-pos-center u-inline-block"></div> <div class="c-header__btn-menu__circle u-absolute u-shape-circle"></div> <div class="c-header__btn-menu__content u-absolute u-pos-tl u-backface-hidden u-hide@sm"><p class="c-header__btn-menu__content__label t-text--xs t-text--ls-xxs t-text--black u-absolute u-pos-tl u-uppercase u-force-inline"><span class="c-header__btn-menu__content__label__word u-inline-block">Open</span> <span class="c-header__btn-menu__content__label__word u-inline-block">Menu</span></p> <p class="c-header__btn-menu__content__label t-text--xs t-text--ls-xxs t-text--black u-absolute u-pos-tl u-uppercase u-force-inline"><span class="c-header__btn-menu__content__label__word u-inline-block">Close</span> <span class="c-header__btn-menu__content__label__word u-inline-block">Menu</span></p></div></button></div>
     <!-- slider starts here -->
          <section class="sliderSection" id="home_sld">
             @if(!empty($slider))
@@ -96,7 +96,9 @@
                           <div class="head-sec">
                           <h1><a href="{{$slider_row->slider_link}}">{{$slider_row->slider_title}}</a></h1>
                          </div>
-                          <div class="round-crcle">+</div>
+                          <div class="round-crcle">
+                                  <button class="c-slide__icon-more t-btn u-inline-block u-absolute u-pos-t u-marg-l-xxs u-valign-top u-shape-circle u-marg-t-xs u-marg-t-0@sm" style="left: 20px; transform: translateX(7.14446e-25px) translateY(5.59666e-25px) scale(1) translateZ(0px);"><div class="c-slide__icon-more__container u-absolute u-pos-center"><div class="c-slide__icon-more__bar u-absolute u-bg--white"></div><div class="c-slide__icon-more__bar u-absolute u-bg--white"></div></div> <img src="{{ asset('themes/emporium/images/gradient-circle.svg')}}" class="c-slide__icon-more__gradient o-wrapper--panel u-fit"></button>
+                          </div>
                            <div class="cnt-box">
                             <p><a href="{{$slider_row->slider_link}}" style="color:white;">{{$slider_row->slider_description}}</a></p>
                          </div>
@@ -225,6 +227,7 @@
       return false; // Don't submit form for this demo
       });
     });
+
     function submit_contact_request()
     {
       $.ajax({
