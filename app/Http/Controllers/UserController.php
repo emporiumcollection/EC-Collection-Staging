@@ -431,7 +431,14 @@ class UserController extends Controller {
             'sidebar_ads_info' => $sidebar_ads_info,
             'maindest' => $maindest,
         );
-        return view('user.profile', $this->data);
+        
+        $group_id = \Auth::user()->group_id;
+        $file_name = 'user.profile';
+        if(in_array($group_id,array(5))){
+            $file_name = 'users_admin.metronic.user.profile';
+        }
+        
+        return view($file_name, $this->data);
     }
 
     public function postSaveprofile(Request $request) {
