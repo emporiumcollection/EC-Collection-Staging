@@ -15,7 +15,7 @@ class DashboardController extends Controller {
 	{
         $group_id = \Auth::user()->group_id;
         $file_name = 'dashboard.index';
-        if($group_id == 5){
+        if(in_array($group_id,array(5))){
             $file_name = 'users_admin.metronic.dashboard';
         }
         

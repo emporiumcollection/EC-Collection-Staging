@@ -166,7 +166,7 @@ return array(
  "note_success"			=> "Saved successfully!",  
  "note_error"			=> "The following errors occurred !",  
  "note_success_delete"			=> "Removed successfully!",  
- "companydetails"			=> "Comapny Details",  
+ "companydetails"			=> "Company Details",  
  "shipping_billing_details"			=> "Shipping/Billing",  
  "membership_plans"			=> "Membership Plans",  
  "user_slider_ads"			=> "Purchase Slider Advertisement", 

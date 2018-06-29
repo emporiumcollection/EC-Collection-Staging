@@ -20,8 +20,13 @@
         <!--begin::Base Styles -->
 		<link href="{{ asset('metronic/assets/vendors/base/vendors.bundle.css') }}" rel="stylesheet" type="text/css" />
 		<link href="{{ asset('metronic/assets/demo/demo6/base/style.bundle.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('metronic/assets/css/fonts/awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('metronic/assets/css/icons.min.css') }}" rel="stylesheet" /> 
+        <link href="{{ asset('metronic/assets/demo/demo6/base/custom.css') }}" rel="stylesheet" type="text/css" />
 		<!--end::Base Styles -->
 		<link rel="shortcut icon" href="{{ asset('favicon.ico')}}" />
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         
         @yield('style')
 	</head>
@@ -54,7 +59,7 @@
 										<span></span>
 									</a>
 									<!-- END -->
-			<!-- BEGIN: Topbar Toggler -->
+                            <!-- BEGIN: Topbar Toggler -->
 									<a id="m_aside_header_topbar_mobile_toggle" href="javascript:;" class="m-brand__icon m--visible-tablet-and-mobile-inline-block">
 										<i class="flaticon-more"></i>
 									</a>
@@ -85,10 +90,8 @@
                 
 				<div class="m-grid__item m-grid__item--fluid m-wrapper">
                     <!-- BEGIN: Subheader_search -->
-                    <div class="m-subheader-search">
-						@yield('subheader_search')
-					</div>
-                    <!-- END: Subheader_search -->
+                    @yield('subheader_search')
+					<!-- END: Subheader_search -->
 					<!-- BEGIN: Subheader -->
 					@include('users_admin/metronic/layouts/sub_header')
 					<!-- END: Subheader -->

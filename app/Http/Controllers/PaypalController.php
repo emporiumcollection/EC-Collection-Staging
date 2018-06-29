@@ -392,11 +392,23 @@ class PaypalController extends Controller
 				    $advData['adv_img'] = $newfilename;
 					if($request->input('adsType')=="slider")
 					{
-						$destinationPath_slider = './uploads/slider_images/';
+					    $sourceFilePath=$destinationPath.$newfilename;
+                        $destinationPath='./uploads/users/slider_images/';
+                        if(!is_dir($destinationPath)){
+                            @mkdir($destinationPath,0777,true);
+                        }
+                        $destinationPath = $destinationPath.$newfilename;
+                        $filename_slider = $file->getClientOriginalName();
+						$extension_slider = $file->getClientOriginalExtension(); //if you need extension of the file
+                        $destinationPath_slider = './uploads/users/slider_images/';
+						$newfilename_slider = $destinationPath_slider.rand(00000000,99999999).'-'.rand(00000000,99999999).'.'.$extension_slider;
+                        $uploadSuccess_slider = \File::copy($sourceFilePath,$newfilename_slider);
+                        
+						/*$destinationPath_slider = './uploads/slider_images/';
 						$filename_slider = $file->getClientOriginalName();
 						$extension_slider = $file->getClientOriginalExtension(); //if you need extension of the file
 						$newfilename_slider = rand(00000000,99999999).'-'.rand(00000000,99999999).'.'.$extension_slider;
-						$uploadSuccess_slider = $request->file('advertise_img')->move($destinationPath_slider, $newfilename_slider);				 
+						$uploadSuccess_slider = $request->file('advertise_img')->move($destinationPath_slider, $newfilename_slider);*/				 
 						if( $uploadSuccess_slider ) {
 							$slidData['slider_img'] = $newfilename_slider;
 						}
