@@ -89,7 +89,7 @@
     margin-right: 3px;
 }
 #home_sld .image-overaly-bg{
-  background: rgba(37,37,37,0);   
+  background: rgba(37,37,37,0.2);   
 }
 #home_sld .image-overaly-bg.bg-dark { 
   background: rgba(37,37,37,0.5);
@@ -326,6 +326,13 @@
     right: 9.000%;
     top: 9.333vh;
 }
+
+.menu-bx.unlog button.c-header__btn-menu {
+    display: none;
+}
+.menu-bx.unlog .c-header__btn-sound {
+    margin-right: 0;
+}
 /*effct css*/
 /*** uncss> filename: static/build.css ***/
 
@@ -550,16 +557,13 @@ svg:not(:root) {
 }
 #home_sld .carousel-caption {
     right: 8.999%;
-    top: 50%;
+    top: 38%;
     width: auto;
     padding: 0 0 0 50px;
     text-align: left;
-    bottom: auto;
-    transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
-    -o-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
+    bottom: auto;    
     max-width: 460px;
+    width: 100%;
 }
 #home_sld .carousel-caption.item-front .round-crcle{
   display: none;
@@ -4250,10 +4254,16 @@ z-index:0;
   }
   #home_sld .carousel-caption {
     right: 15px;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    padding: 0 0 0 120px;    
   }
   #home_sld .carousel-caption .cnt-box {
     position: static;
     width: auto;    
     transform: none;
 }  
+   
 }

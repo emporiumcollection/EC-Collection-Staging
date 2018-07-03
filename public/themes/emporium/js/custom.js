@@ -593,7 +593,7 @@ slider.oninput = function() {
       $('.carousel-caption').addClass("mob-hide");
      $('.bg-dark').fadeIn("slow");                
  });
- $("#home_sld .c-slideshow__control--right").mouseover(function (){    
+ $(".round-crcle").mouseout(function (){    
        $('.cnt-box').fadeOut("slow");
        $('.bg-dark').fadeOut("slow");    
 });
