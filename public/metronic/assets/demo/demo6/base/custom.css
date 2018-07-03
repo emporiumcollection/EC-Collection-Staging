@@ -62,3 +62,6 @@
 .form-control[disabled]{
     cursor: not-allowed;
 }
+.fileinput-new{
+    position:relative;
+}

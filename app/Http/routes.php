@@ -278,7 +278,7 @@ Route::group(['middleware' => 'auth'], function()
 	Route::post('emailCRM', 'CrmhotelController@emailCRM');
 	Route::get('pull_property_hotels', 'CrmhotelController@pull_property_hotels');
 	Route::post('getfolderlistforselectoptions', 'ContainerController@fetchFolderTreeOptions');
-	Route::post('getPropertyRates', 'PropertiesController@getPropertyRates');
+    Route::post('getPropertyRates', 'PropertiesController@getPropertyRates');
 
 	Route::post('gallery_images_uploads', 'CitycontentController@gallery_images_uploads');
 	Route::post('delete_gallery_image', 'CitycontentController@delete_gallery_image');
@@ -294,7 +294,11 @@ Route::group(['middleware' => 'auth'], function()
 	Route::get('restaurant_reservations/{id}', 'RestaurantController@restroReservations');
 	Route::get('bar_reservations/{id}', 'BarController@barReservations');
 	Route::get('spa_reservations/{id}', 'SpaController@spaReservations');
-
+    
+    Route::post('deleteUserAds', 'UserController@deleteUserAds');
+    Route::post('save_new_profile', 'UserController@saveNewprofile');
+    Route::post('save_new_company_details', 'UserController@saveNewcompanydetails');
+    Route::post('confirm_new_profile', 'UserController@confirmNewprofile');
 
 });	
 
@@ -440,6 +444,11 @@ Route::post('payment', array(
 Route::post('adspayment', array(
 	'as' => 'adspayment',
 	'uses' => 'PaypalController@advertisementPayment',
+));
+
+Route::post('save_new_adspayment', array(
+	'as' => 'save_new_adspayment',
+	'uses' => 'PaypalController@saveNewadspayment',
 ));
 
 // this is after make the payment, PayPal redirect back to your site

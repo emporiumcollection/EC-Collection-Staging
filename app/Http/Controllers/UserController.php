@@ -433,9 +433,15 @@ class UserController extends Controller {
         );
         
         $group_id = \Auth::user()->group_id;
-        $file_name = 'user.profile';
+        //$file_name = 'user.profile';
         if(in_array($group_id,array(5))){
             $file_name = 'users_admin.metronic.user.profile';
+        }
+        elseif(!empty($info->new_user) && $info->new_user == 1){
+            $file_name = 'users_admin.metronic.user.new_profile';
+        }
+        else{
+            $file_name = 'user.profile';
         }
         
         return view($file_name, $this->data);
@@ -456,7 +462,6 @@ class UserController extends Controller {
         $validator = Validator::make($request->all(), $rules);
 
         if ($validator->passes()) {
-
 
             if (!is_null(Input::file('avatar'))) {
                 $file = $request->file('avatar');
@@ -483,6 +488,101 @@ class UserController extends Controller {
             return Redirect::to('user/profile')->with('messagetext', 'The following errors occurred')->with('msgstatus', 'error')
                             ->withErrors($validator)->withInput();
         }
+    }
+    
+    public function saveNewprofile(Request $request){
+        $return_array = array();
+        if (!\Auth::check())
+            return Redirect::to('user/login');
+        $rules = array(
+            'first_name' => 'required|alpha_num|min:2',
+            'last_name' => 'required|alpha_num|min:2',
+            'username' => 'required|alpha_num|min:2',
+        );
+        
+        if ($request->input('email') != \Session::get('eid')) {
+            $rules['email'] = 'required|email|unique:tb_users';
+        }
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->passes()) {
+
+            if (!is_null(Input::file('avatar'))) {
+                $file = $request->file('avatar');
+                $destinationPath = './uploads/users/';
+                $filename = $file->getClientOriginalName();
+                $extension = $file->getClientOriginalExtension(); //if you need extension of the file
+                $newfilename = \Session::get('uid') . '.' . $extension;
+                $uploadSuccess = $request->file('avatar')->move($destinationPath, $newfilename);
+                if ($uploadSuccess) {
+                    $data['avatar'] = $newfilename;
+                }
+            }
+
+            $user = User::find(\Session::get('uid'));
+            $user->first_name = $request->input('first_name');
+            $user->last_name = $request->input('last_name');
+            $user->email = $request->input('email');
+            $user->username = $request->input('username');
+            $user->form_wizard = $request->input('form_wizard');
+            if (isset($data['avatar']))
+                $user->avatar = $newfilename;
+            $user->save();
+            
+            $return_array['status'] = 'success';
+            $return_array['message'] = 'Profile has been saved!';
+
+        } else {
+            
+            $return_array['status'] = 'error';
+            $return_array['message'] = 'Profile not saved errors occurred!';
+            
+        }
+        
+        echo json_encode($return_array);
+        exit;
+    }
+    
+    public function confirmNewprofile(Request $request){
+        
+        $return_array = array();
+        if (!\Auth::check())
+            return Redirect::to('user/login');
+        
+        $rules = array(
+            'accept' => 'required',
+        );
+        
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->passes()) {
+            
+            if($request->input('accept') == 1){
+                $user = User::find(\Session::get('uid'));
+                $user->new_user = 0;
+                $user->form_wizard = $request->input('form_wizard');
+                $user->save();
+                
+                $return_array['status'] = 'success';
+                $return_array['message'] = 'Profile has been successfully submitted!';    
+            }
+            else{
+                $return_array['status'] = 'error';
+                $return_array['message'] = 'Profile not submitted errors occurred!';
+            }
+
+            
+
+        } else {
+            
+            $return_array['status'] = 'error';
+            $return_array['message'] = 'Profile not submitted errors occurred!';
+            
+        }
+        
+        echo json_encode($return_array);
+        exit;
     }
 
     public function postSavepassword(Request $request) {
@@ -716,6 +816,83 @@ class UserController extends Controller {
             return Redirect::to('user/profile')->with('messagetext', 'The following errors occurred')->with('msgstatus', 'error')
                             ->withErrors($validator)->withInput();
         }
+    }
+    
+    public function saveNewcompanydetails(Request $request) {
+        
+        if (!\Auth::check())
+            return Redirect::to('user/login');
+
+        $rules = array(
+            'company_name' => 'required',
+            'company_owner' => 'required',
+            'contact_person' => 'required',
+            'company_phone' => 'required',
+            'company_website' => 'required',
+            'company_tax_no' => 'required',
+            'company_logo' => 'mimes:jpeg,png'
+        );
+
+        if ($request->input('company_email') != \Session::get('eid')) {
+            $rules['company_email'] = 'required|email';
+        }
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->passes()) {
+            
+            if (!is_null(Input::file('company_logo'))) {
+                $file = $request->file('company_logo');
+                $destinationPath = './uploads/users/company/';
+                $filename = $file->getClientOriginalName();
+                $extension = $file->getClientOriginalExtension(); //if you need extension of the file
+                $newfilename = \Session::get('uid') . '.' . $extension;
+                $uploadSuccess = $request->file('company_logo')->move($destinationPath, $newfilename);
+                if ($uploadSuccess) {
+                    $data['company_logo'] = $newfilename;
+                }
+            }
+
+            $data['user_id'] = \Auth::user()->id;
+            $data['company_name'] = Input::get('company_name');
+            $data['company_owner'] = Input::get('company_owner');
+            $data['contact_person'] = Input::get('contact_person');
+            $data['company_email'] = Input::get('company_email');
+            $data['company_address'] = Input::get('company_address');
+            $data['company_address2'] = Input::get('company_address2');
+            $data['company_city'] = Input::get('company_city');
+            $data['company_postal_code'] = Input::get('company_postal_code');
+            $data['company_country'] = Input::get('company_country');
+            $data['company_phone'] = Input::get('company_phone');
+            $data['company_website'] = Input::get('company_website');
+            $data['company_tax_number'] = Input::get('company_tax_no');
+            $data['steuernummer'] = Input::get('steuernummer');
+            $data['umsatzsteuer_id'] = Input::get('umsatzsteuer_id');
+            $data['geschäftsführer'] = Input::get('geschäftsführer');
+            $data['handelsregister'] = Input::get('handelsregister');
+            $data['amtsgericht'] = Input::get('amtsgericht');
+            
+            $_user = User::find(\Session::get('uid'));
+            $_user->form_wizard = $request->input('form_wizard');
+            $_user->save();
+            
+            if (Input::get('compedit_id') != "" && Input::get('compedit_id') > 0) {
+                $data['updated'] = date('y-m-d h:i:s');
+                \DB::table('tb_user_company_details')->where('id', Input::get('compedit_id'))->update($data);
+            } else {
+                $data['created'] = date('y-m-d h:i:s');
+                \DB::table('tb_user_company_details')->insert($data);
+            }
+
+            $return_array['status'] = 'success';
+            $return_array['message'] = 'Company details has been saved!';
+        } else {
+            $return_array['status'] = 'error';
+            $return_array['message'] = 'Company details not saved error occurred!';
+        }
+        
+        echo json_encode($return_array);
+        exit;
     }
 
     public function postSaveshippingbilling(Request $request) {
