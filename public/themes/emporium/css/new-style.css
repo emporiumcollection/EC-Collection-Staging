@@ -4200,7 +4200,7 @@ z-index:0;
 }
 
 
-@media (max-width: 480px){
+@media (max-width: 768px){
   .logo-box {
     max-width: 150px;
     left: 15px;
