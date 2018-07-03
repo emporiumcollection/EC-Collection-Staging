@@ -80,18 +80,19 @@
   padding: 0 7px;
   height: auto;
   text-align: left;
-  text-transform: uppercase;   
-
+  text-transform: uppercase; 
+}
+.log_in-btn i.fa.fa-user-circle {
+    font-size: 20px;
+    vertical-align: middle;
+    margin-top: -5px;
+    margin-right: 3px;
 }
 #home_sld .image-overaly-bg{
-  background: rgba(37,37,37,0.5);   
+  background: rgba(37,37,37,0);   
 }
 #home_sld .image-overaly-bg.bg-dark { 
-  background: rgba(30,30,30,0.5);
-  background: -moz-linear-gradient(top, rgba(30,30,30,0.5) 0%, rgba(48,48,48,0.5) 56%, rgba(0,0,0,0.7) 72%, rgba(0,0,0,0.9) 99%, rgba(0,0,0,0.9) 100%);
-  background: -webkit-linear-gradient(top, rgba(30,30,30,0.5) 0%,rgba(48,48,48,0.5) 56%,rgba(0,0,0,0.7) 72%,rgba(0,0,0,0.9) 99%,rgba(0,0,0,0.9) 100%);
-  background: linear-gradient(to bottom, rgba(30,30,30,0.5) 0%,rgba(48,48,48,0.5) 56%,rgba(0,0,0,0.7) 72%,rgba(0,0,0,0.9) 99%,rgba(0,0,0,0.9) 100%); 
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#801e1e1e', endColorstr='#e6000000',GradientType=0 );
+  background: rgba(37,37,37,0.5);
   z-index: 1;
 }
 #home_sld .head-sec h1 a {
