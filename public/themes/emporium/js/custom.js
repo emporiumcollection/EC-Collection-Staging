@@ -563,11 +563,6 @@ slider.oninput = function() {
   output.innerHTML = this.value;
 }
 }
-
-
-
-
-
 */
 
  $( ".c-header__btn-menu" ).click(function() {
@@ -580,34 +575,40 @@ slider.oninput = function() {
  $( ".log_in-btn" ).click(function() {
   $(".popupMainDiv").toggleClass("openPopup");
 });
-
-
-
  $('.cnt-box').hide();
  $('.bg-dark').hide();
- $('.round-crcle').mouseover(function () {
-      $('.cnt-box').show("slow");
-      $('.carousel-caption').addClass("mob-hide");
-      $('.bg-dark').fadeIn("slow");                
- });
+ $('.round-crcle').hover(
+  function () {
+    $('.cnt-box').show("slow");
+     $('.carousel-caption').addClass("mob-hide");
+      $('.bg-dark').fadeIn("slow");
+  }, 
+  function () {
+   $('.cnt-box').hide();
+  }
+);
+ // $('.round-crcle').mouseover(function () {
+ //      $('.cnt-box').show("slow");
+ //      $('.carousel-caption').addClass("mob-hide");
+ //      $('.bg-dark').fadeIn("slow");                
+ // });
  $('.round-crcle').mouseout(function () {
-      $('#home_sld .cnt-box').hide("slow");
       $('#home_sld .carousel-caption').removeClass("mob-hide");
        $('.bg-dark').fadeOut("slow");         
  });
 
+// var movementStrength = 25;
+// var height = movementStrength / $(window).height();
+// var width = movementStrength / $(window).width();
+// $("#home_sld .item").mousemove(function(e){
+//           var pageX = e.pageX - ($(window).width() / 2);
+//           var pageY = e.pageY - ($(window).height() / 2);
+//           var newvalueX = width * pageX * -1 - 0;
+//           var newvalueY = height * pageY * -1 - 20;
+//           $('#home_sld .item').css("background-position", newvalueX+"px     "+newvalueY+"px");
+// });
 
 
-var movementStrength = 25;
-var height = movementStrength / $(window).height();
-var width = movementStrength / $(window).width();
-$("#home_sld .item").mousemove(function(e){
-          var pageX = e.pageX - ($(window).width() / 2);
-          var pageY = e.pageY - ($(window).height() / 2);
-          var newvalueX = width * pageX * -1 - 0;
-          var newvalueY = height * pageY * -1 - 20;
-          $('#home_sld .item').css("background-position", newvalueX+"px     "+newvalueY+"px");
-});
 
 $("button").click(function(){
     $(".header-content").removeClass("showsearch");

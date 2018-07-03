@@ -25,20 +25,20 @@
             @if(!empty($slider))
               <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
                  <!-- Wrapper for slides -->
-                 <div class="carousel-inner">
+                 <div class="carousel-inner wrapper">
                     @foreach($slider as $key => $slider_row)
-                      <div class="item {{($key == 0)? 'active' : ''}}" style="background: url({{url('uploads/slider_images/'.$slider_row->slider_img)}});">
+                      <div class="card item {{($key == 0)? 'active' : ''}}" data-tilt>
           <div class="image-overaly-bg"></div>
           <div class="image-overaly-bg bg-dark"></div>
-                         <a href="{{$slider_row->slider_link}}" style="position:relative; z-index:9;" data-tilt data-tilt-max="50" data-tilt-speed="400" data-tilt-perspective="500"></a>
-
+                         <a href="{{$slider_row->slider_link}}" class="bg bg-full"  data-tilt data-tilt-max="50" data-tilt-speed="400" data-tilt-perspective="500" style="background: url({{url('uploads/slider_images/'.$slider_row->slider_img)}});"></a>
                          <div class="carousel-caption">
                           <div class="head-sec">
-                          <h1><a href="{{$slider_row->slider_link}}">{{$slider_row->slider_title}}</a></h1>
-                         </div>
-                          <div class="round-crcle">
+                           <div class="round-crcle">
                                   <button class="c-slide__icon-more t-btn u-inline-block u-absolute u-pos-t u-marg-l-xxs u-valign-top u-shape-circle u-marg-t-xs u-marg-t-0@sm" style="left: 20px; transform: translateX(7.14446e-25px) translateY(5.59666e-25px) scale(1) translateZ(0px);"><div class="c-slide__icon-more__container u-absolute u-pos-center"><div class="c-slide__icon-more__bar u-absolute u-bg--white"></div><div class="c-slide__icon-more__bar u-absolute u-bg--white"></div></div> <img src="{{ asset('themes/emporium/images/gradient-circle.svg')}}" class="c-slide__icon-more__gradient o-wrapper--panel u-fit"></button>
                           </div>
+                          <h1><a href="{{$slider_row->slider_link}}">{{$slider_row->slider_title}}</a></h1>
+                         </div>
+
                            <div class="cnt-box">
                             <p><a href="{{$slider_row->slider_link}}" style="color:white;">{{$slider_row->slider_description}}</a></p>
                          </div>

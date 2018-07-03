@@ -19,6 +19,10 @@
     <link rel="stylesheet" href="{{ asset('themes/emporium/css/jquery.mCustomScrollbar.css') }}">
     <link href="{{ asset('themes/emporium/css/bootstrap-datepicker.css')}}" rel="stylesheet">
     <link href="{{ asset('lib/jquery-ui/jquery-ui.min.css') }}" rel="stylesheet">
+    <!-- tilt css include -->
+    <link href="{{ asset('themes/emporium/css/tilt-style.css') }}" rel="stylesheet">
+    <link href="{{ asset('themes/emporium/css/tilt-normalize.min.css') }}" rel="stylesheet">
+    <!-- end of tilt css include -->
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -53,7 +57,11 @@
   gtag('config', 'UA-110391807-1');
 </script>
 
+@if(!empty($pageTitle))
+<body class='{{str_replace(" ","_","$pageTitle")}}'>
+@else
 <body>
+ @endif
 {{--For Right Side Icons --}}
 @section('right_side_iconbar')
     @parent
@@ -113,6 +121,10 @@
 <!-- custom scrollbar plugin -->
 <script src="{{ asset('themes/emporium/js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
 <script src="{{ asset('themes/emporium/js/custom/do_ajax.js') }}"></script>
+<!-- tilt js include -->
+<script src="{{ asset('themes/emporium/js/tilt-jquery.js') }}"></script>
+<script src="{{ asset('themes/emporium/js/tilt-index.js') }}"></script>
+<!-- tilt js include -->
 {{-- For including javascript files --}}
 @section('javascript')
     @parent
@@ -148,7 +160,7 @@
             // Open Left Navigation For Experience on Page Load
            // Open Left Navigation For Experience on Page Load
             @if(Request::segment(1)=='luxury_experience')
-           
+
                   hideAllOption();
 
                    var datObj = {};
