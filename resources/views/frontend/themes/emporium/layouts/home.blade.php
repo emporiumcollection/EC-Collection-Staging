@@ -20,8 +20,6 @@
     <link href="{{ asset('themes/emporium/css/bootstrap-datepicker.css')}}" rel="stylesheet">
     <link href="{{ asset('lib/jquery-ui/jquery-ui.min.css') }}" rel="stylesheet">
     <!-- tilt css include -->
-    <link href="{{ asset('themes/emporium/css/tilt-style.css') }}" rel="stylesheet">
-    <link href="{{ asset('themes/emporium/css/tilt-normalize.min.css') }}" rel="stylesheet">
     <!-- end of tilt css include -->
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -122,8 +120,7 @@
 <script src="{{ asset('themes/emporium/js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
 <script src="{{ asset('themes/emporium/js/custom/do_ajax.js') }}"></script>
 <!-- tilt js include -->
-<script src="{{ asset('themes/emporium/js/tilt-jquery.js') }}"></script>
-<script src="{{ asset('themes/emporium/js/tilt-index.js') }}"></script>
+
 <!-- tilt js include -->
 {{-- For including javascript files --}}
 @section('javascript')

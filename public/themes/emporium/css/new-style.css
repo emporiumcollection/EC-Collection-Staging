@@ -1,4 +1,3 @@
-@import ("effect-css.css");
 .Home .page-container {
     padding: 0 !important;
 }
@@ -262,6 +261,17 @@
 .Home .brgr-menu.highlight > div{
   display: none;
 }
+.round-crcle .c-slide__icon-more__container{
+  transition: all 700ms ease;
+  -webkit-transition: all 700ms ease;
+  -ms-transition: all 700ms ease;
+  -moz-transition: all 700ms ease;
+  -o-transition: all 700ms ease;
+}
+
+.round-crcle:hover  .c-slide__icon-more__container{
+    opacity: 0;
+}
 
 .Home .bg-full {
     height: 100vh;
@@ -318,7 +328,7 @@
     position: absolute;
     z-index: 999;
     right: 9.000%;
-    top: 70px;
+    top: 9.333vh;
 }
 /*effct css*/
 /*** uncss> filename: static/build.css ***/
@@ -542,13 +552,26 @@ svg:not(:root) {
   font-size: 18px;
   font-size: 1.125rem
 }
-#home_sld .carousel-caption{
-  right: 8.999%;
-  top: 38%;
-  width: auto;    
-  padding: 0 0 0 50px;
-  text-align: right; 
-  bottom: auto; 
+#home_sld .carousel-caption {
+    right: 8.999%;
+    top: 50%;
+    width: auto;
+    padding: 0 0 0 50px;
+    text-align: right;
+    bottom: auto;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+}
+#home_sld .carousel-caption.item-front .round-crcle{
+  display: none;
+}
+#home_sld .carousel-caption.item-front .cnt-box{
+    position: static;
+    width: auto;
+    display: block !important;
+    transform: none;  
 }
 .carousel-inner {
     height: 100vh;
@@ -568,9 +591,12 @@ z-index:0;
 #home_sld .u-bg--gray-dark {
     background-color: #ABA07C;
 }
-
 .cnt-box {
-    position: static;   
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 600px;
+    right: 105%;
 }
 #myCarousel .carousel-inner .item {
   opacity: 0;
@@ -4201,31 +4227,37 @@ z-index:0;
 
 
 @media (max-width: 768px){
-  .logo-box {
+  .Home .logo-box{
     max-width: 150px;
     left: 15px;
     top: 20px;
   }
-  .c-slideshow__control__bottom {    
+  .Home .c-slideshow__control__bottom {    
     margin-bottom: 40px;
   }
-  .c-slideshow__control {
+   .Home .c-slideshow__control {
     margin-bottom: 40px;
   }
-  .menu-bx {    
-    right: 15PX;
-    top: 32px;
+  .Home .menu-bx {    
+    top: 42px;
+    right: 15px;
   }
-  .home .sliderSection .carousel-caption h1 {
+   .Home .sliderSection .carousel-caption h1 {
     font-size: 18px;
    }
-  .home .u-marg-r-w1of13 {
+   .Home .u-marg-r-w1of13 {
     margin-right: 15px;
   }
-  .home .u-marg-l-w1of13 {
+  .Home .u-marg-l-w1of13 {
     margin-left: 15px;
   }
   #home_sld .carousel-caption {
     right: 15px;
-  }  
+  }
+  #home_sld .carousel-caption .cnt-box {
+    position: static;
+    width: auto;
+    display: block !important;
+    transform: none;
+}  
 }

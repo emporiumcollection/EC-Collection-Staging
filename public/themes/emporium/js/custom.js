@@ -563,6 +563,11 @@ slider.oninput = function() {
   output.innerHTML = this.value;
 }
 }
+
+
+
+
+
 */
 
  $( ".c-header__btn-menu" ).click(function() {
@@ -575,26 +580,32 @@ slider.oninput = function() {
  $( ".log_in-btn" ).click(function() {
   $(".popupMainDiv").toggleClass("openPopup");
 });
- $('.cnt-box').hide();
- $('.bg-dark').hide();
- $('.round-crcle').hover(
-  function () {
-    $('.cnt-box').show("slow");
-     $('.carousel-caption').addClass("mob-hide");
-      $('.bg-dark').fadeIn("slow");
-  }, 
-  function () {
-   $('.cnt-box').hide();
-  }
-);
- // $('.round-crcle').mouseover(function () {
- //      $('.cnt-box').show("slow");
- //      $('.carousel-caption').addClass("mob-hide");
- //      $('.bg-dark').fadeIn("slow");                
- // });
+ $('.cnt-box').hide(); 
+ $('.round-crcle').hide(); 
+ //$('.round-crcle').hover(
+//function () {
+//     $('.cnt-box').show("slow");
+//      $('.carousel-caption').addClass("mob-hide");
+//       $('.bg-dark').fadeIn("slow");
+//   }, 
+//   function () {
+//    $('.cnt-box').hide();
+//   }
+// );
+$("#home_sld .c-slideshow__control--right").click(function(){     
+    $("#home_sld .carousel-caption").removeClass("item-front"); 
+    $('.round-crcle').fadeIn("slow");
+    $('.cnt-box').fadeout("slow");    
+});
+ $('.round-crcle').mouseover(function () {
+      $('.cnt-box').fadeIn("slow");
+      $('.carousel-caption').addClass("mob-hide");
+     $('.bg-dark').fadeIn("slow");                
+ });
  $('.round-crcle').mouseout(function () {
       $('#home_sld .carousel-caption').removeClass("mob-hide");
-       $('.bg-dark').fadeOut("slow");         
+       $('.bg-dark').fadeOut("slow");
+       $('.cnt-box').fadeOut("slow");         
  });
 
 // var movementStrength = 25;
@@ -617,7 +628,8 @@ $("button").click(function(){
 $("#home_sld .c-slideshow__control--right").click(function(){
     $(".sliderFooter").fadeIn("slow");
     $(".hide-frst").fadeIn("slow");
-    $("footer").removeClass("first-arw");  
+    $("footer").removeClass("first-arw");
+    $("#home_sld .carousel-caption").removeClass("item-front");  
     
 });
 

@@ -30,8 +30,10 @@
                       <div class="card item {{($key == 0)? 'active' : ''}}" data-tilt>
           <div class="image-overaly-bg"></div>
           <div class="image-overaly-bg bg-dark"></div>
-                         <a href="{{$slider_row->slider_link}}" class="bg bg-full"  data-tilt data-tilt-max="50" data-tilt-speed="400" data-tilt-perspective="500" style="background: url({{url('uploads/slider_images/'.$slider_row->slider_img)}});"></a>
-                         <div class="carousel-caption">
+                         <a href="{{$slider_row->slider_link}}">
+                           <img src="{{url('uploads/slider_images/'.$slider_row->slider_img)}}"> alt=""/>
+                         </a>
+                         <div class="carousel-caption item-front">
                           <div class="head-sec">
                            <div class="round-crcle">
                                   <button class="c-slide__icon-more t-btn u-inline-block u-absolute u-pos-t u-marg-l-xxs u-valign-top u-shape-circle u-marg-t-xs u-marg-t-0@sm" style="left: 20px; transform: translateX(7.14446e-25px) translateY(5.59666e-25px) scale(1) translateZ(0px);"><div class="c-slide__icon-more__container u-absolute u-pos-center"><div class="c-slide__icon-more__bar u-absolute u-bg--white"></div><div class="c-slide__icon-more__bar u-absolute u-bg--white"></div></div> <img src="{{ asset('themes/emporium/images/gradient-circle.svg')}}" class="c-slide__icon-more__gradient o-wrapper--panel u-fit"></button>
@@ -48,8 +50,8 @@
           {{--*/ $sliderads = CommonHelper::getSliderAds('landing_slider', 'Hotel') /*--}}
           @if(!empty($sliderads['leftsidebarads']))
             @foreach($sliderads['leftsidebarads'] as $ads)
-              <div class="item" style="background: url({{URL::to('uploads/users/advertisement/'.$ads->adv_img)}});">
-                <a></a>
+              <div class="item">
+                <a><img src="{{URL::to('uploads/users/advertisement/'.$ads->adv_img)}}" alt="" /></a>
                 <div class="carousel-caption">
                   <div class="round-crcle"></div>
                            <div class="cnt-box">
@@ -77,7 +79,7 @@
 <img src="{{ asset('themes/emporium/images/arrow-y-top-end.svg')}}" alt="" class="c-slideshow__control__bottom__icon t-icon--arrow-y u-absolute u-pos-bl" />
 
 </div></div> <a href="#myCarousel" data-slide="next" class="c-slideshow__control c-slideshow__control--right t-link u-absolute u-vacuum u-pos-br u-pad-t-sm u-pad-b-xs u-marg-r-w1of13 u-marg-b-vh1of12 u-align-right"><div><div class="c-slideshow__control__line--before u-bg--white u-inline-block u-valign-middle u-hide@sm"></div> <span class="c-slideshow__control__label t-text--xs t-text--ls-md t-text--black u-relative u-inline-block u-valign-middle u-marg-r-lg u-uppercase u-marg-r-md@md u-block@sm u-align-right@sm u-marg-b-xs@sm u-marg-r-0@sm"><span class="c-slideshow__control__label__word u-absolute u-pos-tr u-force-inline u-inline-block u-inline-block nxt-pg">Next</span>
-  <span class="c-slideshow__control__label__word">Scroll to explore</span>
+  <span class="c-slideshow__control__label__word">Scroll explore</span>
   <span class="frst-scn">Ultra Luxury by invitation only</span>
 </span> <div class="u-relative u-inline-block u-valign-middle u-overflow-h"><div class="c-slideshow__control__line--after u-bg--white u-inline-block u-valign-middle"></div>
 
