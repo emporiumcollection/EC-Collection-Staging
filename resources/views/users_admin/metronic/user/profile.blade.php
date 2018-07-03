@@ -356,7 +356,7 @@
                 										Adresse
                 									</label>
                 									<div class="col-7">
-                										<input name="company_address" type="text" id="comapny_address" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->company_tax_number; } ?>" />  
+                										<input name="company_address" type="text" id="comapny_address" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->company_address; } ?>" />  
                 									</div>
                 								</div>
                                                 <div class="form-group m-form__group row">

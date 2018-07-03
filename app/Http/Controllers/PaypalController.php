@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 use Validator, Input, Redirect, URL ;
@@ -548,6 +549,204 @@ class PaypalController extends Controller
 					->with('message', \SiteHelpers::alert('error','The following  errors occurred'))
 					->withErrors($validator)->withInput();
 		}
+	}
+    
+    public function saveNewadspayment(Request $request)
+	{
+	   $return_array = array();
+	   	$rules = array(
+			'adslink'=>'required',
+			'advertise_img'  => 'mimes:jpeg,png,jpg,mp4',
+		);
+		
+		if(Input::get('advedit_id')=="" && Input::get('advedit_id')==0)
+		{
+			$rules['advertise_img'] = 'required';
+		}
+		
+		$validator = Validator::make($request->all(), $rules);
+
+		if ($validator->passes()) {
+			
+			if(!is_null(Input::file('advertise_img')))
+			{
+				$file = $request->file('advertise_img'); 
+				$destinationPath = './uploads/users/advertisement/';
+				$filename = $file->getClientOriginalName();
+				$extension = $file->getClientOriginalExtension(); //if you need extension of the file
+				$newfilename = \Session::get('uid').'.'.$extension;
+				$uploadSuccess = $request->file('advertise_img')->move($destinationPath, $newfilename);				 
+				if( $uploadSuccess ) {
+				    $advData['adv_img'] = $newfilename;
+					if($request->input('adsType')=="slider")
+					{
+					    $sourceFilePath=$destinationPath.$newfilename;
+                        $destinationPath='./uploads/users/slider_images/';
+                        if(!is_dir($destinationPath)){
+                            @mkdir($destinationPath,0777,true);
+                        }
+                        $destinationPath = $destinationPath.$newfilename;
+                        $filename_slider = $file->getClientOriginalName();
+						$extension_slider = $file->getClientOriginalExtension(); //if you need extension of the file
+                        $destinationPath_slider = './uploads/users/slider_images/';
+						$newfilename_slider = $destinationPath_slider.rand(00000000,99999999).'-'.rand(00000000,99999999).'.'.$extension_slider;
+                        $uploadSuccess_slider = \File::copy($sourceFilePath,$newfilename_slider);
+                        
+						if( $uploadSuccess_slider ) {
+							$slidData['slider_img'] = $newfilename_slider;
+						}
+					}
+				} 
+				
+			}
+            
+            $_user = User::find(\Session::get('uid'));
+            $_user->form_wizard = $request->input('form_wizard');
+            $_user->save();
+		
+            $curdate = date('y-m-d');
+			$advData['user_id'] = \Auth::user()->id;
+			$advData['adv_link'] = $request->input('adslink');
+			$advData['adv_title'] = $request->input('adstitle');
+			$advData['adv_desc'] = $request->input('adsdesc');
+			$advData['adv_type'] = $request->input('adsType');
+            
+            if($request->input('adsType')=="slider")
+			{
+				$advData['ads_slider_cat'] = $request->input('ads_slider_cat');
+				$slidData['user_id'] = \Auth::user()->id;
+				$slidData['slider_link'] = $request->input('adslink');
+				$slidData['slider_title'] = $request->input('adstitle');
+				$slidData['slider_description'] = $request->input('adsdesc');
+				$slidData['slider_category'] = $request->input('ads_slider_cat');
+			}
+			else
+			{
+				$advData['ads_cat_id'] = $request->input('adsCat');
+				$advData['adv_position'] = $request->input('adspos');
+			}
+            
+			if(Input::get('advedit_id')!="" && Input::get('advedit_id')>0)
+			{
+				$advData['updated'] = date('y-m-d h:i:s');
+				\DB::table('tb_advertisement')->where('id', Input::get('advedit_id'))->update($advData);
+				
+				if($request->input('adsType')=="slider")
+				{
+					$slidData['updated'] = date('y-m-d h:i:s');
+					\DB::table('tb_sliders')->where('advert_id', Input::get('advedit_id'))->update($slidData);
+				}
+				
+                $return_array['status'] = 'success';
+                $return_array['message'] = 'Update Successfully.';
+			}
+			else
+			{
+				$advData['adv_status'] = 0;
+				$advData['created'] = date('y-m-d h:i:s');
+				$advId = \DB::table('tb_advertisement')->insertGetId($advData);
+				
+				if($request->input('adsType')=="slider")
+				{
+				    $slidData['created'] = date('y-m-d h:i:s');
+					$slidData['advert_id'] = $advId;
+					\DB::table('tb_sliders')->insertGetId($slidData);
+                    $return_array['status'] = 'success';
+                    $return_array['message'] = 'Update Successfully.';
+				}
+			}
+            if($request->input('pay')=='yes'){
+				$currncy = 'USD';
+				if($request->input('adscurrency')=='€')
+				{
+					$currncy = 'EUR';
+				}
+				elseif($request->input('adscurrency')=='£')
+				{
+					$currncy = 'GBP';
+				}
+				$payer = new Payer();
+				$payer->setPaymentMethod('paypal');
+			 
+				$item_1 = new Item();
+				$item_1->setName('Purchase Advertisement') // item name
+					->setCurrency($currncy)
+					->setQuantity(1)
+					->setPrice($request->input('adsprice')); // unit price
+			 
+				// add item to list
+				$item_list = new ItemList();
+				$item_list->setItems(array($item_1));
+			 
+				$amount = new Amount();
+				$amount->setCurrency($currncy)->setTotal($request->input('adsprice'));
+			 
+				$transaction = new Transaction();
+				$transaction->setAmount($amount)
+					->setItemList($item_list)
+					->setDescription('Your transaction description');
+			 
+				$redirect_urls = new RedirectUrls();
+				$redirect_urls->setReturnUrl(URL::to('save_new_adspayment/status')) // Specify return URL
+					->setCancelUrl(URL::to('save_new_adspayment/status'));
+			 	$payment = new Payment();
+				$payment->setIntent('Sale')
+					->setPayer($payer)
+					->setRedirectUrls($redirect_urls)
+					->setTransactions(array($transaction));
+			 
+				try {
+					$payment->create($this->_api_context);
+				} catch (\PayPal\Exception\PPConnectionException $ex) {
+					if (\Config::get('app.debug')) {
+						echo "Exception: " . $ex->getMessage() . PHP_EOL;
+						$err_data = json_decode($ex->getData(), true);
+						exit;
+					} else {
+						die('Some error occur, sorry for inconvenient');
+					}
+				}
+			 
+				foreach($payment->getLinks() as $link) {
+					if($link->getRel() == 'approval_url') {
+						$redirect_url = $link->getHref();
+						break;
+					}
+				}
+			 
+				// add payment ID to session
+				Session::put('paypal_payment_id', $payment->getId());
+				Session::put('newads_id', $advId);
+			 
+				if(isset($redirect_url)) {
+					// redirect to paypal
+                    //$return_array['url'] = $redirect_url;
+					//return Redirect::away($redirect_url);
+				}
+                else{
+                    $return_array['status'] = 'error';
+                    $return_array['message'] = 'Unknown error occurred';
+                }
+				//return Redirect::route('original.route')
+				//	->with('error', 'Unknown error occurred');
+			}
+			elseif($request->input('adsprice')==0)
+			{
+				\DB::table('tb_advertisement')->where('id',$advId)->update(['adv_status'=>1, 'adv_expire'=> Date('Y-m-d', strtotime("+".$request->input('adsvalidation')." days"))]);
+				
+                $return_array['status'] = 'success';
+                $return_array['message'] = 'Added Successfully';
+			}
+		}
+		else
+		{
+		  $return_array['status'] = 'error';
+          $return_array['message'] = 'Advertisement Form not submitted errors occured';
+			
+		}
+        
+        echo json_encode($return_array);
+        exit;
 	}
 	
 	public function getadsPaymentStatus()
