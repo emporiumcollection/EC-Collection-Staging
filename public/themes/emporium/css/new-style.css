@@ -84,12 +84,7 @@
 
 }
 #home_sld .image-overaly-bg{
-  background: rgba(30,30,30,0.5);
-  background: -moz-linear-gradient(top, rgba(37,37,37,0.28) 0%, rgba(0,0,0,0.4) 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(top, rgba(37,37,37,0.28) 0%,rgba(0,0,0,0.4) 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom, rgba(37,37,37,0.28) 0%,rgba(0,0,0,0.4) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#47252525', endColorstr='#66000000',GradientType=0 ); /* IE6-9 */
-  
+  background: rgba(37,37,37,0.5);   
 }
 #home_sld .image-overaly-bg.bg-dark { 
   background: rgba(30,30,30,0.5);
@@ -100,7 +95,7 @@
   z-index: 1;
 }
 #home_sld .head-sec h1 a {
-    color: #fff;
+    color: #ABA07C;
 }
 #home_sld .carousel-control  > img{
   display: none;
@@ -557,12 +552,13 @@ svg:not(:root) {
     top: 50%;
     width: auto;
     padding: 0 0 0 50px;
-    text-align: right;
+    text-align: left;
     bottom: auto;
     transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
     -o-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
+    max-width: 460px;
 }
 #home_sld .carousel-caption.item-front .round-crcle{
   display: none;
@@ -592,11 +588,11 @@ z-index:0;
     background-color: #ABA07C;
 }
 .cnt-box {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 600px;
-    right: 105%;
+  position: static;
+  top: 50%;
+  transform: none;
+  width: auto;
+  right: 0;
 }
 #myCarousel .carousel-inner .item {
   opacity: 0;

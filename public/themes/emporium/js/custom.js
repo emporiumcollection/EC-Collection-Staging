@@ -563,11 +563,6 @@ slider.oninput = function() {
   output.innerHTML = this.value;
 }
 }
-
-
-
-
-
 */
 
  $( ".c-header__btn-menu" ).click(function() {
@@ -580,8 +575,9 @@ slider.oninput = function() {
  $( ".log_in-btn" ).click(function() {
   $(".popupMainDiv").toggleClass("openPopup");
 });
- $('.cnt-box').hide(); 
- $('.round-crcle').hide(); 
+ $('.cnt-box').hide();
+ $('.bg-dark').hide();
+
  //$('.round-crcle').hover(
 //function () {
 //     $('.cnt-box').show("slow");
@@ -592,23 +588,12 @@ slider.oninput = function() {
 //    $('.cnt-box').hide();
 //   }
 // );
-$("#home_sld .c-slideshow__control--right").click(function(){     
-    $("#home_sld .carousel-caption").removeClass("item-front"); 
-    $('.round-crcle').fadeIn("slow");
-    $('.cnt-box').fadeout("slow");    
-});
  $('.round-crcle').mouseover(function () {
       $('.cnt-box').fadeIn("slow");
       $('.carousel-caption').addClass("mob-hide");
      $('.bg-dark').fadeIn("slow");                
  });
- $('.round-crcle').mouseout(function () {
-      $('#home_sld .carousel-caption').removeClass("mob-hide");
-       $('.bg-dark').fadeOut("slow");
-       $('.cnt-box').fadeOut("slow");         
- });
-
-// var movementStrength = 25;
+ // var movementStrength = 25;
 // var height = movementStrength / $(window).height();
 // var width = movementStrength / $(window).width();
 // $("#home_sld .item").mousemove(function(e){
@@ -619,8 +604,6 @@ $("#home_sld .c-slideshow__control--right").click(function(){
 //           $('#home_sld .item').css("background-position", newvalueX+"px     "+newvalueY+"px");
 // });
 
-
-
 $("button").click(function(){
     $(".header-content").removeClass("showsearch");
 });
@@ -629,8 +612,9 @@ $("#home_sld .c-slideshow__control--right").click(function(){
     $(".sliderFooter").fadeIn("slow");
     $(".hide-frst").fadeIn("slow");
     $("footer").removeClass("first-arw");
-    $("#home_sld .carousel-caption").removeClass("item-front");  
-    
+    $("#home_sld .carousel-caption").removeClass("item-front");
+     $('.bg-dark').fadeOut("slow");
+       $('.cnt-box').fadeOut("slow");    
 });
 
 
