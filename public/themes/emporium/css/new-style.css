@@ -89,14 +89,18 @@
     margin-right: 3px;
 }
 #home_sld .image-overaly-bg{
-  background: rgba(37,37,37,0.1);   
+  background: /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#3a3a3a+0,303030+100&0.28+0,0.4+100 */
+background: -moz-linear-gradient(top, rgba(58,58,58,0.28) 0%, rgba(48,48,48,0.4) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(58,58,58,0.28) 0%,rgba(48,48,48,0.4) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(58,58,58,0.28) 0%,rgba(48,48,48,0.4) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#473a3a3a', endColorstr='#66303030',GradientType=0 ); /* IE6-9 */   
 }
 #home_sld .image-overaly-bg.bg-dark { 
   background: rgba(37,37,37,0.5);
   z-index: 1;
 }
 #home_sld .head-sec h1 a {
-    color: #ABA07C;
+    color: #fff;
 }
 #home_sld .carousel-control  > img{
   display: none;
@@ -429,11 +433,6 @@ img {
   -ms-interpolation-mode: bicubic
 }
 
-html {
-  font-family: sans-serif;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%
-}
 
 
 
@@ -469,7 +468,7 @@ svg:not(:root) {
 .t-h4 {
   font-size: 55px;
   font-size: 3.4375rem;
-  font-family: TheinhardtMed, sans-serif
+  
 }
 
 @media screen and (max-width:770px) {
@@ -534,7 +533,7 @@ svg:not(:root) {
 .t-text--xl,
 .t-text--xs,
 .t-text--xxl {
-  font-family: TheinhardtReg, sans-serif;
+  
   line-height: 1.6
 }
 
@@ -675,17 +674,6 @@ home_sld .u-bg--gray-dark {
   letter-spacing: .2em
 }
 
-.t-text--reg {
-  font-family: NettoOT, sans-serif
-}
-
-.t-text--black {
-  font-family: NettoOffc-Black, sans-serif
-}
-
-.t-text--medium {
-  font-family: TheinhardtMed, sans-serif
-}
 
 .t-text-lh--sm {
   line-height: 1.1
@@ -1196,6 +1184,10 @@ home_sld .u-bg--gray-dark {
 
 .u-pointer-none {
   pointer-events: none
+}
+
+.Home footer.c-slideshow__footer * {
+    font-family: GeomanistLight !important;
 }
 
 @media screen and (min-width:1600px) {
