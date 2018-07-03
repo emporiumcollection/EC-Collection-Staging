@@ -4256,8 +4256,7 @@ z-index:0;
   }
   #home_sld .carousel-caption .cnt-box {
     position: static;
-    width: auto;
-    display: block !important;
+    width: auto;    
     transform: none;
 }  
 }
