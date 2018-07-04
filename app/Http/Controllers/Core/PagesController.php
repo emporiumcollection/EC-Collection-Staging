@@ -80,7 +80,6 @@ class PagesController extends Controller {
 		
 		// Master detail link if any 
 		$this->data['subgrid']	= (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array()); 
-        echo "<pre>";print_r($this->data);die;
 		// Render into template
 		return view('core.pages.index',$this->data);
 	}	
