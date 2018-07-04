@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-{{--*/ usort($tableGrid, "SiteHelpers::_sort") /*--}}
+{{--*/ echo "<pre>";print_r($tableGrid); echo "</pre>"; usort($tableGrid, "SiteHelpers::_sort") /*--}}
   <div class="page-content row">
     <!-- Page header -->
     <div class="page-header">
