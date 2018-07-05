@@ -346,6 +346,53 @@ z-index: 1;
 .menu-bx.unlog .c-header__btn-sound {
     margin-right: 0;
 }
+.styledSelect {
+    width: 100%;
+    background: transparent;
+    color: #fff;
+    border: 1px solid #FFF;
+    padding: 10px;
+    text-transform: uppercase;
+  font-size:16px; 
+}
+.styledSelect:after {
+    content: "";
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #fff transparent transparent transparent;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    bottom: 0;
+    z-index: 55;
+    margin: auto;
+}
+.reltv{
+  position: relative;
+  z-index: 999;
+}
+.reltv .user-type{
+  display: none;
+}
+.reltv ul.options {
+    position: absolute;
+    top: 103%;
+    width: 100%;
+    padding: 15px;
+    background: rgba(37,37,37,1);
+    color: #fff;
+    border: 1px solid #fff;
+}
+.reltv ul.options li{
+  padding: 5px;
+  text-transform: uppercase;
+  font-size:16px; 
+  border-bottom: 1px solid #fff;
+}
+.reltv ul.options li:last-child{
+  border-bottom: 0;
+}
 /*effct css*/
 /*** uncss> filename: static/build.css ***/
 

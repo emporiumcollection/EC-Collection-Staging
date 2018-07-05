@@ -25,11 +25,11 @@
                      <input type="hidden" name="_token" value="{{ csrf_token() }}">
                      <div class="form-group">
                         <input class="form-control" name="email" type="text" placeholder="Email Address" required="email" />
-                        
+
                      </div>
                      <div class="form-group">
                         <a class="forgetPassBtn" href="javascript:void(0);">FORGOT?</a>
-                       
+
                         <input class="form-control" name="password" placeholder="Password" type="password" required="true" >
                      </div>
                      <button class="button" type="submit">Log In</button>
@@ -41,13 +41,21 @@
 
                <img src="{{ asset('themes/emporium/images/matthew-kane-365718.jpg')}}" alt="Images">
                <div class="loginFormDiv">
+                  <div class="reltv">
+                  <select class="user-type">
+                     <option>Choose your requerment</option>
+                     <option>B2B Hotel</option>
+                     <option>Advertiser</option>
+                     <option>Traveller</option>
+                  </select>
+               </div>
                   <h3>CREATE YOUR ACCOUNT PASSWORD</h3>
                   <div class="ai-sign-up-form-error-msg"></div>
                   <div class="ai-sign-up-form-success-msg"></div>
                   <form  action="{{ url('customer/create')}}" method="POST" id="customerRegisterarioForm">
                      <div class="form-group">
                         <input class="form-control" name="email" type="text" placeholder="Email Address">
-                        
+
                      </div>
                      <div class="form-group">
                         <input type="hidden" id="txtmobileDialcode" name="txtmobileDialcode">
@@ -56,7 +64,7 @@
                        <span id="error-msg" class="hide">Invalid number</span>
                      </div>
                      <div class="form-group">
-                        
+
                         <input class="form-control" name="password" type="password" placeholder="Password">
                      </div>
                      <button class="button" type="submit">Submit</button>
@@ -72,15 +80,15 @@
 
 
                   <div class="ai-forgot-password-form-success-msg"></div>
-                  <div class="ai-forgot-password-form-error-msg"></div>                             
-                                    
-                                   
+                  <div class="ai-forgot-password-form-error-msg"></div>
+
+
                   <form id="frmForgotPassword" action="{{ url('customer/request')}}" method="POST">
                      <input type="hidden" name="_token" value="{{ csrf_token() }}">
                      <p>Enter your email and you will get Instructions to reset your password</p>
                      <div class="form-group">
                         <input class="form-control" name="credit_email" type="text" placeholder="Email Address" required>
-                        
+
                      </div>
                      <button class="button" type="submit">Submit</button>
                   </form>
