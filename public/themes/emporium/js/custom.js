@@ -588,17 +588,26 @@ slider.oninput = function() {
 //    $('.cnt-box').hide();
 //   }
 // );
-if ( $(window).width() > 800 ) {
- $('.round-crcle').mouseover(function () {
-      $('.cnt-box').fadeIn("slow");
-      $('.carousel-caption').addClass("mob-hide");
-     $('.bg-dark').fadeIn("slow");                
- });
- $(".round-crcle").mouseout(function (){    
-       $('.cnt-box').fadeOut("slow");
-       $('.bg-dark').fadeOut("slow");    
-});
+if ( $(window).width() > 800 ) { 
+
+ $(function(){
+    $('.round-crcle').hover(function() {
+         $('.cnt-box').fadeIn("slow");
+        $('.bg-dark').fadeIn("slow");  
+  }, function() {
+    $('.cnt-box').fadeOut("slow");
+       $('.bg-dark').fadeOut("slow");   
+  })
+})
 }
+
+$(function(){
+  $('.logo-box, .menu-bx , .c-slideshow__control , .log_in-btn , .Home .sliderFooter a').hover(function() {
+    $('.bg-dark').fadeIn("slow");
+  }, function() {
+    $('.bg-dark').fadeOut("slow"); 
+  })
+})
 
 if ( $(window).width() < 800 ) {
 $(".round-crcle").click(function(){
