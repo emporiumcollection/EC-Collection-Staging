@@ -380,15 +380,21 @@ z-index: 1;
     top: 103%;
     width: 100%;
     padding: 15px;
-    background: rgba(37,37,37,1);
+    background: rgba(37,37,37,0.9);
     color: #fff;
     border: 1px solid #fff;
 }
 .reltv ul.options li{
-  padding: 5px;
+  padding: 10px 5px;
   text-transform: uppercase;
   font-size:16px; 
   border-bottom: 1px solid #fff;
+  transition: all 500ms ease;
+  -webkit-transition: all 500ms ease;
+  cursor: pointer;
+}
+.reltv ul.options li:hover{
+  background: #000;
 }
 .reltv ul.options li:last-child{
   border-bottom: 0;
@@ -4300,6 +4306,9 @@ home_sld .u-bg--gray-dark {
 }
 .Home .sliderFooter {
     bottom: 0;
+}
+.round-crcle:hover .c-slide__icon-more__container{
+    opacity: 1;
 }
    
 }
