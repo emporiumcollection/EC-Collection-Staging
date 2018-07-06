@@ -34,6 +34,12 @@ class HomeController extends Controller {
         $this->data['pageTitle'] = 'Home';
         $this->data['pageMetakey'] = CNF_METAKEY;
         $this->data['pageMetadesc'] = CNF_METADESC;
+        
+        $this->data['_user_logged_in'] = '';
+        if (\Auth::check()){
+            $this->data['_user_logged_in'] = 'user_logged_in';    
+        }
+        
         return view('frontend.themes.emporium.pages.index', $this->data);
     }
     
