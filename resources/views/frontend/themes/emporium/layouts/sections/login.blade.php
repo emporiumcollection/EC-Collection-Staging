@@ -46,7 +46,7 @@
                      <option>Choose Your User Type</option>
                      <option>B2B Hotel</option>
                      <option>Advertiser</option>
-                     <option>Traveller</option>
+                     <option>Discerning Traveler</option>
                   </select>
                </div>
                   <h3>CREATE YOUR ACCOUNT PASSWORD</h3>
