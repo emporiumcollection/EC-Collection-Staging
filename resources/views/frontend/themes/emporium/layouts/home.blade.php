@@ -56,7 +56,7 @@
 </script>
 
 @if(!empty($pageTitle))
-<body class='{{str_replace(" ","_","$pageTitle")}}'>
+<body class='{{str_replace(" ","_","$pageTitle")}} {{$_user_logged_in}} '>
 @else
 <body>
  @endif

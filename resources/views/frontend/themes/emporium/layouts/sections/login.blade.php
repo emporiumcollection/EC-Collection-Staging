@@ -2,7 +2,7 @@
       <div class="popupMainDiv">
          <div class="rightSideSec">
             <div class="popupTopSec"><a href="javascript:void(0);" class="mainPopupClose">×</a></div>
-            <img src="{{ asset('themes/emporium/images/Step.jpg')}}" alt="Images">
+            <img src="{{ asset('themes/emporium/images/emporium-voyage-membership.jpg')}}" alt="Images">
             <div class="accountContent">
                <h2>Your Account With Us</h2>
             </div>
@@ -15,7 +15,7 @@
             </div>
             <div class="logInPopup lognSignPopoUp">
                <div class="popupTopSec"><span>NEED HELP?</span><a href="javascript:void(0);" class="mainPopupClose">×</a></div>
-               <img src="{{ asset('themes/emporium/images/angel-fernandez-alonso-220762.jpg')}}" alt="Images">
+               <img src="{{ asset('themes/emporium/images/emporium-voyage-login.jpg')}}" alt="Images">
                <div class="loginFormDiv">
                   <h2>LOGIN WITH <br>YOUR ACCOUNT</h2>
 
