@@ -574,6 +574,7 @@ slider.oninput = function() {
 
  $( ".log_in-btn" ).click(function() {
   $(".popupMainDiv").toggleClass("openPopup");
+  $(".signInPopup").removeClass("openPopup");   
 });
  $('.cnt-box').hide();
  $('.bg-dark').hide();
@@ -648,6 +649,9 @@ $("#home_sld .c-slideshow__control--right").click(function(){
 });
 
 
+
+
+
 $('.user-type').each(function () {
 
     // Cache the number of options
@@ -710,6 +714,8 @@ $('.user-type').each(function () {
         $list.hide();
     });
 });
+
+
 
 
 
