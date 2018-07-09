@@ -43,7 +43,7 @@
                <div class="loginFormDiv">
                   <div class="reltv">
                   <select class="user-type">
-                     <option>Choose your requerment</option>
+                     <option>Choose Your User Type</option>
                      <option>B2B Hotel</option>
                      <option>Advertiser</option>
                      <option>Traveller</option>
