@@ -15,7 +15,7 @@
             </div>
             <div class="logInPopup lognSignPopoUp">
                <div class="popupTopSec"><span>NEED HELP?</span><a href="javascript:void(0);" class="mainPopupClose">×</a></div>
-               <img src="{{ asset('themes/emporium/images/emporium-voyage-membership.jpg')}}" alt="Images">
+               <img src="{{ asset('themes/emporium/images/emporium-voyage-login.jpg')}}" alt="Images">
                <div class="loginFormDiv">
                   <h2>LOGIN WITH <br>YOUR ACCOUNT</h2>
 
@@ -39,7 +39,7 @@
             <div class="signInPopup lognSignPopoUp">
                <div class="popupTopSec"><span>NEED HELP?</span><a href="javascript:void(0);" class="mainPopupClose">×</a></div>
 
-               <img src="{{ asset('themes/emporium/images/matthew-kane-365718.jpg')}}" alt="Images">
+               <img src="{{ asset('themes/emporium/images/emporium-voyage-membership.jpg')}}" alt="Images">
                <div class="loginFormDiv">
                   <div class="reltv">
                   <select class="user-type">
