@@ -13,6 +13,10 @@
                 		>
 						<ul class="m-menu__nav  m-menu__nav--dropdown-submenu-arrow ">
                             
+                            <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  m-menu-submenu-toggle="hover">
+                                <a href="{{ URL::to('dashboard')}}" class="m-menu__link"><i class="m-menu__link-icon fa fa-dashboard"></i> <span class="m-menu__link-text">{{ Lang::get('core.m_dashboard') }}</span></a>
+                            </li>
+                            
                             @foreach ($sidebar as $menu)
                                 <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  m-menu-submenu-toggle="hover">
                                     <a  

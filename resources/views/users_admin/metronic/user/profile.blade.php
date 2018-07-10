@@ -185,42 +185,42 @@
                                 {!! Form::open(array('url'=>'user/saveprofile/', 'class'=>'m-form m-form--fit m-form--label-align-right ' ,'files' => true)) !!}
                                     <div class="m-portlet__body">
                                         <div class="form-group m-form__group row">
-        									<label for="ipt" class="col-2 col-form-label">
+        									<label for="ipt" class="col-sm-12 col-md-2 col-form-label">
         										Username
         									</label>
-        									<div class="col-7">
+        									<div class="col-sm-12 col-md-7">
         										<input name="username" type="text" id="username" class="form-control m-input" disabled="disabled" required  value="{{ $info->username }}" />  
         									</div>
         								</div>
                                         <div class="form-group m-form__group row">
-        									<label for="ipt" class="col-2 col-form-label">
+        									<label for="ipt" class="col-sm-12 col-md-2 col-form-label">
         										{{ Lang::get('core.email') }}
         									</label>
-        									<div class="col-7">
+        									<div class="col-sm-12 col-md-7">
         										<input name="email" type="text" id="email" class="form-control m-input" required  value="{{ $info->email }}" />  
         									</div>
         								</div>
                                         <div class="form-group m-form__group row">
-        									<label for="ipt" class="col-2 col-form-label">
+        									<label for="ipt" class="col-sm-12 col-md-2 col-form-label">
         										{{ Lang::get('core.firstname') }}
         									</label>
-        									<div class="col-7">
+        									<div class="col-sm-12 col-md-7">
         										<input name="first_name" type="text" id="first_name" class="form-control m-input" required  value="{{ $info->first_name }}" />  
         									</div>
         								</div>
                                         <div class="form-group m-form__group row">
-        									<label for="ipt" class="col-2 col-form-label">
+        									<label for="ipt" class="col-sm-12 col-md-2 col-form-label">
         										{{ Lang::get('core.lastname') }}
         									</label>
-        									<div class="col-7">
+        									<div class="col-sm-12 col-md-7">
         										<input name="last_name" type="text" id="last_name" class="form-control m-input" required  value="{{ $info->last_name }}" />  
         									</div>
         								</div>
                                         <div class="form-group m-form__group row">
-        									<label for="ipt" class="col-2 col-form-label">
+        									<label for="ipt" class="col-sm-12 col-md-2 col-form-label">
         										Avatar
         									</label>
-        									<div class="col-7">
+        									<div class="col-sm-12 col-md-7">
                                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                                     <span class="btn btn-primary btn-file">
                                     			  	  <span class="fileinput-new">Upload Avatar Image</span>
@@ -242,8 +242,8 @@
                                     <div class="m-portlet__foot m-portlet__foot--fit">
         								<div class="m-form__actions">
         									<div class="row">
-        										<div class="col-2"></div>
-        										<div class="col-7">
+        										<div class="col-sm-12 col-md-2"></div>
+        										<div class="col-sm-12 col-md-7">
         											<button type="submit" class="btn btn-success m-btn m-btn--air m-btn--custom">
         												{{ Lang::get('core.sb_savechanges') }}
         											</button>
@@ -258,18 +258,18 @@
                                 {!! Form::open(array('url'=>'user/savepassword/', 'class'=>'m-form m-form--fit m-form--label-align-right ')) !!}
                                     <div class="m-portlet__body">
                                         <div class="form-group m-form__group row">
-        									<label for="ipt" class="col-2 col-form-label">
+        									<label for="ipt" class="col-sm-12 col-md-2 col-form-label">
         										{{ Lang::get('core.newpassword') }}
         									</label>
-        									<div class="col-7">
+        									<div class="col-sm-12 col-md-7">
         										<input name="password" type="password" id="password" class="form-control m-input" required  value="" />  
         									</div>
         								</div>
                                         <div class="form-group m-form__group row">
-        									<label for="ipt" class="col-2 col-form-label">
+        									<label for="ipt" class="col-sm-12 col-md-2 col-form-label">
         										{{ Lang::get('core.conewpassword') }}
         									</label>
-        									<div class="col-7">
+        									<div class="col-sm-12 col-md-7">
         										<input name="password_confirmation" type="password" id="password_confirmation" class="form-control m-input" required  value="" />  
         									</div>
         								</div> 
@@ -277,8 +277,8 @@
                                     <div class="m-portlet__foot m-portlet__foot--fit">
         								<div class="m-form__actions">
         									<div class="row">
-        										<div class="col-2"></div>
-        										<div class="col-7">
+        										<div class="col-sm-12 col-md-2"></div>
+        										<div class="col-sm-12 col-md-7">
         											<button type="submit" class="btn btn-danger m-btn m-btn--air m-btn--custom">
         												{{ Lang::get('core.sb_savechanges') }}
         											</button>
@@ -294,110 +294,110 @@
                                     <div class="m-portlet__body">
                                         <input name="compedit_id" type="hidden" id="compedit_id" value="<?php if(!empty($extra)) { echo $extra->id; } ?>" />
                                         <div class="row">
-                                            <div class="col-md-6 col-xs-12">
+                                            <div class="col-md-6 col-sm-12">
                                                 <div class="form-group m-form__group row">
-                									<label for="ipt" class="col-md-5 col-2 col-form-label">
+                									<label for="ipt" class="col-sm-12 col-md-5 col-form-label">
                 										Firmenname
                 									</label>
-                									<div class="col-7">
+                									<div class="col-sm-12 col-md-7">
                 										<input name="company_name" type="text" id="company_name" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->company_name; } ?>" />  
                 									</div>
                 								</div>
                                                 <div class="form-group m-form__group row">
-                									<label for="ipt" class="col-md-5 col-2 col-form-label">
+                									<label for="ipt" class="col-sm-12 col-md-5 col-form-label">
                 										Inhaber
                 									</label>
-                									<div class="col-7">
+                									<div class="col-sm-12 col-md-7">
                 										<input name="company_owner" type="text" id="company_owner" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->company_owner; } ?>" />  
                 									</div>
                 								</div>
                                                 <div class="form-group m-form__group row">
-                									<label for="ipt" class="col-md-5 col-2 col-form-label">
+                									<label for="ipt" class="col-sm-12 col-md-5 col-form-label">
                 										Ansprechpartner
                 									</label>
-                									<div class="col-7">
+                									<div class="col-sm-12 col-md-7">
                 										<input name="contact_person" type="text" id="contact_person" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->contact_person; } ?>" />  
                 									</div>
                 								</div> 
                                                 <div class="form-group m-form__group row">
-                									<label for="ipt" class="col-md-5 col-2 col-form-label">
+                									<label for="ipt" class="col-sm-12 col-md-5 col-form-label">
                 										E-Mail Adresse
                 									</label>
-                									<div class="col-7">
+                									<div class="col-sm-12 col-md-7">
                 										<input name="company_email" type="text" id="company_email" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->company_email; } ?>" />  
                 									</div>
                 								</div> 
                                                 <div class="form-group m-form__group row">
-                									<label for="ipt" class="col-md-5 col-2 col-form-label">
+                									<label for="ipt" class="col-sm-12 col-md-5 col-form-label">
                 										Phone #
                 									</label>
-                									<div class="col-7">
+                									<div class="col-sm-12 col-md-7">
                 										<input name="company_phone" type="text" id="company_phone" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->company_phone; } ?>" />  
                 									</div>
                 								</div>
                                                 <div class="form-group m-form__group row">
-                									<label for="ipt" class="col-md-5 col-2 col-form-label">
+                									<label for="ipt" class="col-sm-12 col-md-5 col-form-label">
                 										Website
                 									</label>
-                									<div class="col-7">
+                									<div class="col-sm-12 col-md-7">
                 										<input name="company_website" type="text" id="company_website" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->company_website; } ?>" />  
                 									</div>
                 								</div>
                                                 <div class="form-group m-form__group row">
-                									<label for="ipt" class="col-md-5 col-2 col-form-label">
+                									<label for="ipt" class="col-sm-12 col-md-5 col-form-label">
                 										Tax #
                 									</label>
-                									<div class="col-7">
+                									<div class="col-sm-12 col-md-7">
                 										<input name="company_tax_no" type="text" id="company_tax_no" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->company_tax_number; } ?>" />  
                 									</div>
                 								</div>
                                             </div>
-                                            <div class="col-md-6 col-xs-12">
+                                            <div class="col-md-6 col-sm-12">
                                                 <div class="form-group m-form__group row">
-                									<label for="ipt" class="col-md-5 col-2 col-form-label">
+                									<label for="ipt" class="col-sm-12 col-md-5 col-form-label">
                 										Adresse
                 									</label>
-                									<div class="col-7">
+                									<div class="col-sm-12 col-md-7">
                 										<input name="company_address" type="text" id="comapny_address" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->company_address; } ?>" />  
                 									</div>
                 								</div>
                                                 <div class="form-group m-form__group row">
-                									<label for="ipt" class="col-md-5 col-2 col-form-label">
+                									<label for="ipt" class="col-sm-12 col-md-5 col-form-label">
                 										Adresse
                 									</label>
-                									<div class="col-7">
+                									<div class="col-sm-12 col-md-7">
                 										<input name="company_address2" type="text" id="company_address2" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->company_address2; } ?>" />  
                 									</div>
                 								</div>
                                                 <div class="form-group m-form__group row">
-                									<label for="ipt" class="col-md-5 col-2 col-form-label">
+                									<label for="ipt" class="col-sm-12 col-md-5 col-form-label">
                 										ORT
                 									</label>
-                									<div class="col-7">
+                									<div class="col-sm-12 col-md-7">
                 										<input name="company_city" type="text" id="comapny_city" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->company_city; } ?>" />  
                 									</div>
                 								</div>
                                                 <div class="form-group m-form__group row">
-                									<label for="ipt" class="col-md-5 col-2 col-form-label">
+                									<label for="ipt" class="col-sm-12 col-md-5 col-form-label">
                 										Pin
                 									</label>
-                									<div class="col-7">
+                									<div class="col-sm-12 col-md-7">
                 										<input name="company_postal_code" type="text" id="company_postal_code" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->company_postal_code; } ?>" maxlength="6" />  
                 									</div>
                 								</div>
                                                 <div class="form-group m-form__group row">
-                									<label for="ipt" class="col-md-5 col-2 col-form-label">
+                									<label for="ipt" class="col-sm-12 col-md-5 col-form-label">
                 										Land
                 									</label>
-                									<div class="col-7">
+                									<div class="col-sm-12 col-md-7">
                 										<input name="company_country" type="text" id="comapny_country" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->company_country; } ?>"/>  
                 									</div>
                 								</div>
                                                 <div class="form-group m-form__group row">
-                									<label for="ipt" class="col-md-5 col-2 col-form-label">
+                									<label for="ipt" class="col-sm-12 col-md-5 col-form-label">
                 										Firmenlogo
                 									</label>
-                									<div class="col-7">
+                									<div class="col-sm-12 col-md-7">
                 										<div class="fileinput fileinput-new" data-provides="fileinput">
                                         				  <span class="btn btn-primary btn-file">
                                         					<span class="fileinput-new">Hochladen</span><span class="fileinput-exists">Change</span>
@@ -419,47 +419,47 @@
                                             <div class="col-12 tax-minhead">
                                                 <span class="minhead">Tax Info</span>
                                             </div>
-                                            <div class="col-md-6 col-xs-12">
+                                            <div class="col-md-6 col-sm-12">
                                                 <div class="form-group m-form__group row">
-                									<label for="ipt" class="col-md-5 col-2 col-form-label">
+                									<label for="ipt" class="col-sm-12 col-md-5 col-form-label">
                 										Steuernummer
                 									</label>
-                									<div class="col-7">
+                									<div class="col-sm-12 col-md-7">
                 										<input name="steuernummer" type="text" id="steuernummer" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->steuernummer; } ?>"/>  
                 									</div>
                 								</div>
                                                 <div class="form-group m-form__group row">
-                									<label for="ipt" class="col-md-5 col-2 col-form-label">
+                									<label for="ipt" class="col-sm-12 col-md-5 col-form-label">
                 										Umsatzsteuer ID
                 									</label>
-                									<div class="col-7">
+                									<div class="col-sm-12 col-md-7">
                 										<input name="umsatzsteuer_id" type="text" id="umsatzsteuer_id" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->umsatzsteuer_id; } ?>"/>  
                 									</div>
                 								</div>
                                                 <div class="form-group m-form__group row">
-                									<label for="ipt" class="col-md-5 col-2 col-form-label">
+                									<label for="ipt" class="col-sm-12 col-md-5 col-form-label">
                 										Gesch&auml;ftsf&uuml;hrer
                 									</label>
                                                    
-                									<div class="col-7">
+                									<div class="col-sm-12 col-md-7">
                 										<input name="gesch&auml;ftsf&uuml;hrer" type="text" id="gesch&auml;ftsf&uuml;hrer" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->geschäftsführer; } ?>"/>  
                 									</div>
                 								</div>
                                             </div>
-                                            <div class="col-md-6 col-xs-12">
+                                            <div class="col-md-6 col-sm-12">
                                                 <div class="form-group m-form__group row">
-                									<label for="ipt" class="col-md-5 col-2 col-form-label">
+                									<label for="ipt" class="col-sm-12 col-md-5 col-form-label">
                 										Handelsregister
                 									</label>
-                									<div class="col-7">
+                									<div class="col-sm-12 col-md-7">
                 										<input name="handelsregister" type="text" id="handelsregister" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->handelsregister; } ?>"/>  
                 									</div>
                 								</div>
                                                 <div class="form-group m-form__group row">
-                									<label for="ipt" class="col-md-5 col-2 col-form-label">
+                									<label for="ipt" class="col-sm-12 col-md-5 col-form-label">
                 										Amtsgericht
                 									</label>
-                									<div class="col-7">
+                									<div class="col-sm-12 col-md-7">
                 										<input name="amtsgericht" type="text" id="amtsgericht" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->amtsgericht; } ?>" maxlength="6"/>  
                 									</div>
                 								</div>
@@ -469,8 +469,8 @@
                                     <div class="m-portlet__foot m-portlet__foot--fit">
         								<div class="m-form__actions">
         									<div class="row">
-        										<div class="col-2"></div>
-        										<div class="col-7">
+        										
+        										<div class="col-sm-12 col-md-12 text-center">
         											<button type="submit" class="btn btn-success m-btn m-btn--air m-btn--custom">
         												{{ Lang::get('core.sb_savechanges') }}
         											</button>
@@ -497,10 +497,10 @@
                                 <input name="adsvalidation" type="hidden" class="form-control input-sm" value="{{(!empty($slider_ads_expiry_days))?$slider_ads_expiry_days->content:''}}"/> 
                         		<input name="advedit_id" type="hidden" class="form-control input-sm" value="{{(!empty($slider_ads_info))?$slider_ads_info->id:''}}"/> 
                                 <div class="form-group m-form__group row">
-    								<label for="ipt" class="col-2 col-form-label">
+    								<label for="ipt" class="col-sm-12 col-md-2 col-form-label">
     									{{ Lang::get('core.ads_image') }}
     								</label>
-    								<div class="col-7">
+    								<div class="col-sm-12 col-md-7">
                                         <div class="fileinput fileinput-new" data-provides="fileinput">
                                             <span class="btn btn-primary btn-file">
                             			  	  <span class="fileinput-new">Hochladen</span>
@@ -519,34 +519,34 @@
     								</div>
     							</div> 
                                 <div class="form-group m-form__group row">
-    								<label for="ipt" class="col-2 col-form-label">
+    								<label for="ipt" class="col-sm-12 col-md-2 col-form-label">
     									{{ Lang::get('core.ads_link') }}
     								</label>
-    								<div class="col-7">
+    								<div class="col-sm-12 col-md-7">
     									<input name="adslink" type="text" id="adslink" class="form-control m-input" required  value="{{(!empty($slider_ads_info))?$slider_ads_info->adv_link:''}}" />  
     								</div>
     							</div>
                                 <div class="form-group m-form__group row">
-    								<label for="ipt" class="col-2 col-form-label">
+    								<label for="ipt" class="col-sm-12 col-md-2 col-form-label">
     									{{ Lang::get('core.ads_title') }}
     								</label>
-    								<div class="col-7">
+    								<div class="col-sm-12 col-md-7">
     									<input name="adstitle" type="text" id="adstitle" class="form-control m-input" required  value="{{(!empty($slider_ads_info))?$slider_ads_info->adv_title:''}}" />  
     								</div>
     							</div>
                                 <div class="form-group m-form__group row">
-    								<label for="ipt" class="col-2 col-form-label">
+    								<label for="ipt" class="col-sm-12 col-md-2 col-form-label">
     									{{ Lang::get('core.ads_description') }}
     								</label>
-    								<div class="col-7">
+    								<div class="col-sm-12 col-md-7">
     									<input name="adsdesc" type="text" id="adsdesc" class="form-control m-input" required  value="{{(!empty($slider_ads_info))?$slider_ads_info->adv_desc:''}}" />  
     								</div>
     							</div>
                                 <div class="form-group m-form__group row">
-    								<label for="ipt" class="col-2 col-form-label">
+    								<label for="ipt" class="col-sm-12 col-md-2 col-form-label">
     									{{ Lang::get('core.ads_category') }}
     								</label>
-    								<div class="col-7">
+    								<div class="col-sm-12 col-md-7">
                                         <select name="ads_slider_cat" required class="form-control">
                         					<option value="">-- Select --</option>
                         					<option value="Hotel" {{(!empty($slider_ads_info) && $slider_ads_info->ads_slider_cat=="Hotel")?'selected="selected"':''}}>Hotel</option>
@@ -561,8 +561,8 @@
                             <div class="m-portlet__foot m-portlet__foot--fit">
 								<div class="m-form__actions">
 									<div class="row">
-										<div class="col-2"></div>
-										<div class="col-7">
+										<div class="col-sm-12 col-md-2"></div>
+										<div class="col-sm-12 col-md-7">
                                             <?php $curdate = date('Y-m-d'); 
 					if((!empty($slider_ads_info) && $slider_ads_info->adv_expire>=$curdate) || (!empty($slider_ads_price) && $slider_ads_price->content==0)){ ?>
     											<input name="pay" type="hidden" class="form-control input-sm" value="no"/> 
@@ -603,10 +603,10 @@
                                 <input name="advedit_id" type="hidden" class="form-control input-sm" value="{{(!empty($sidebar_ads_info))?$sidebar_ads_info->id:''}}"/>
                                 
                                 <div class="form-group m-form__group row">
-    								<label for="ipt" class="col-2 col-form-label">
+    								<label for="ipt" class="col-sm-12 col-md-2 col-form-label">
     									{{ Lang::get('core.ads_image') }}
     								</label>
-    								<div class="col-7">
+    								<div class="col-sm-12 col-md-7">
                                         <div class="fileinput fileinput-new" data-provides="fileinput">
                                             <span class="btn btn-primary btn-file">
                             			  	  <span class="fileinput-new">Hochladen</span>
@@ -625,34 +625,34 @@
     								</div>
     							</div> 
                                 <div class="form-group m-form__group row">
-    								<label for="ipt" class="col-2 col-form-label">
+    								<label for="ipt" class="col-sm-12 col-md-2 col-form-label">
     									{{ Lang::get('core.ads_link') }}
     								</label>
-    								<div class="col-7">
+    								<div class="col-sm-12 col-md-7">
     									<input name="adslink" type="text" id="side_adslink" class="form-control m-input" required  value="{{(!empty($sidebar_ads_info))?$sidebar_ads_info->adv_link:''}}" />  
     								</div>
     							</div>
                                 <div class="form-group m-form__group row">
-    								<label for="ipt" class="col-2 col-form-label">
+    								<label for="ipt" class="col-sm-12 col-md-2 col-form-label">
     									{{ Lang::get('core.ads_title') }}
     								</label>
-    								<div class="col-7">
+    								<div class="col-sm-12 col-md-7">
     									<input name="adstitle" type="text" id="side_adstitle" class="form-control m-input" required  value="{{(!empty($sidebar_ads_info))?$sidebar_ads_info->adv_title:''}}" />  
     								</div>
     							</div>
                                 <div class="form-group m-form__group row">
-    								<label for="ipt" class="col-2 col-form-label">
+    								<label for="ipt" class="col-sm-12 col-md-2 col-form-label">
     									{{ Lang::get('core.ads_description') }}
     								</label>
-    								<div class="col-7">
+    								<div class="col-sm-12 col-md-7">
     									<input name="adsdesc" type="text" id="side_adsdesc" class="form-control m-input" required  value="{{(!empty($sidebar_ads_info))?$sidebar_ads_info->adv_desc:''}}" />  
     								</div>
     							</div>
                                 <div class="form-group m-form__group row">
-    								<label for="ipt" class="col-2 col-form-label">
+    								<label for="ipt" class="col-sm-12 col-md-2 col-form-label">
     									{{ Lang::get('core.ads_category') }}
     								</label>
-    								<div class="col-7">
+    								<div class="col-sm-12 col-md-7">
     									<select name="adsCat" class="form-control">
                         					<option value="">-- Select --</option>
                         					<option value="Hotel" {{(!empty($sidebar_ads_info) && $sidebar_ads_info->ads_cat_id=="Hotel")?'selected="selected"':''}}>Hotel</option>
@@ -669,10 +669,10 @@
     								</div>
     							</div>
                                 <div class="form-group m-form__group row">
-    								<label for="ipt" class="col-2 col-form-label">
+    								<label for="ipt" class="col-sm-12 col-md-2 col-form-label">
     									{{ Lang::get('core.ads_position') }}
     								</label>
-    								<div class="col-7">
+    								<div class="col-sm-12 col-md-7">
     									<select name="adspos" required class="form-control">
                         					<option value="">-- Select --</option>
                         					<option value="landing" {{(!empty($sidebar_ads_info) && $sidebar_ads_info->adv_position=="landing")?'selected="selected"':''}}>landing Page Sidebar</option>
@@ -686,8 +686,8 @@
                             <div class="m-portlet__foot m-portlet__foot--fit">
 								<div class="m-form__actions">
 									<div class="row">
-										<div class="col-2"></div>
-										<div class="col-7">
+										<div class="col-sm-12 col-md-2"></div>
+										<div class="col-sm-12 col-md-7">
                                             <?php $curdate = date('Y-m-d'); 
 					                               if((!empty($sidebar_ads_info) && $sidebar_ads_info->adv_expire>=$curdate) || (!empty($sidebar_ads_price) && $sidebar_ads_price->content==0)){ ?>
                                                         <input name="pay" type="hidden" class="form-control input-sm" value="no"/>
