@@ -13,10 +13,10 @@ class DashboardController extends Controller {
 
 	public function getIndex( Request $request )
 	{
-        $is_demo6 = (bool) \CommonHelper::isHotelDashBoard();
+        $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
         $file_name = 'dashboard.index';
-        if($is_demo6 === true){
-            $file_name = 'users_admin.metronic.dashboard';
+        if(strlen($is_demo6) > 0){
+            $file_name = $is_demo6.'.dashboard';
         }
         
 		$this->data['online_users'] = \DB::table('tb_users')->orderBy('last_activity','desc')->limit(10)->get(); 
