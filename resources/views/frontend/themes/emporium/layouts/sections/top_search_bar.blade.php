@@ -30,7 +30,7 @@
 	<div class="col-md-2">
 
 
-		<?php  $currencyList=(CommonHelper::getCurrencyList()); ?>
+		<?php  $currencyList=(CommonHelper::getCurrencyList()); if(empty($currencyList)){ $currencyList = array(); } ?>
         <select name='currencyOption' class="form-control">
             <option value="EUR">Currency</option>
             @foreach($currencyList as $currencyCode => $currencyName)

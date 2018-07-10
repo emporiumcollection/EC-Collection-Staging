@@ -46,7 +46,7 @@
 									<a href="{{ URL::to('dashboard')}}" class="m-brand__logo-wrapper">
                                         <img src="{{ asset('metronic/assets/demo/demo6/media/img/logo/logo.png') }}" alt="{{ CNF_APPNAME }}"/>				
 									</a>
-									<h3 class="m-header__title"> {{ CNF_APPNAME }} </h3>
+									<h3 class="m-header__title" style="display: none;"> {{ CNF_APPNAME }} </h3>
 								</div>
 								<div class="m-stack__item m-stack__item--middle m-brand__tools">
 									<!-- BEGIN: Responsive Aside Left Menu Toggler -->
@@ -127,6 +127,7 @@
 		<!-- end:: Page -->
         
         <!-- begin::Quick Sidebar -->
+        <?php /**
 		<div id="m_quick_sidebar" class="m-quick-sidebar m-quick-sidebar--tabbed m-quick-sidebar--skin-light">
 			<div class="m-quick-sidebar__content m--hide">
 				<span id="m_quick_sidebar_close" class="m-quick-sidebar__close">
@@ -728,6 +729,7 @@
 				</div>
 			</div>
 		</div>
+        **/ ?>
 		<!-- end::Quick Sidebar -->		    
 	    <!-- begin::Scroll Top -->
 		<div id="m_scroll_top" class="m-scroll-top">

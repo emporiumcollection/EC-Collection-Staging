@@ -433,15 +433,14 @@ class UserController extends Controller {
         );
         
         $group_id = \Auth::user()->group_id;
-        //$file_name = 'user.profile';
-        if(in_array($group_id,array(5))){
+        $file_name = 'user.profile';
+        $is_demo6 = (bool) \CommonHelper::isHotelDashBoard();
+        if($is_demo6 === true){
             $file_name = 'users_admin.metronic.user.profile';
-        }
-        elseif(!empty($info->new_user) && $info->new_user == 1){
-            $file_name = 'users_admin.metronic.user.new_profile';
-        }
-        else{
-            $file_name = 'user.profile';
+            $is_newuser = (int) $info->new_user;
+            if($info->new_user == 1){
+                $file_name = 'users_admin.metronic.user.new_profile';
+            }
         }
         
         return view($file_name, $this->data);

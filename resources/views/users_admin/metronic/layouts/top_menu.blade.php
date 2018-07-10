@@ -141,24 +141,24 @@
 															<div class="m-scrollable" data-scrollable="false" data-height="380" data-mobile-height="200">
 																<div class="m-nav-grid m-nav-grid--skin-light">
 																	<div class="m-nav-grid__row">
-																		<a href="#" class="m-nav-grid__item">
-																			<i class="m-nav-grid__icon flaticon-file"></i>
+																		<a href="{{ URL::to('dashboard')}}" class="m-nav-grid__item">
+																			<i class="m-nav-grid__icon flaticon-dashboard"></i>
 																			<span class="m-nav-grid__text">
-																				Generate Report
+																				{{ Lang::get('core.m_dashboard') }}
 																			</span>
 																		</a>
-																		<a href="#" class="m-nav-grid__item">
-																			<i class="m-nav-grid__icon flaticon-time"></i>
+																		<a href="{{ URL::to('')}}" class="m-nav-grid__item">
+																			<i class="m-nav-grid__icon flaticon-imac"></i>
 																			<span class="m-nav-grid__text">
-																				Add New Event
+																				Main Site
 																			</span>
 																		</a>
 																	</div>
 																	<div class="m-nav-grid__row">
-																		<a href="#" class="m-nav-grid__item">
-																			<i class="m-nav-grid__icon flaticon-folder"></i>
+																		<a href="{{ URL::to('core/elfinder')}}" class="m-nav-grid__item">
+																			<i class="m-nav-grid__icon flaticon-folder-4"></i>
 																			<span class="m-nav-grid__text">
-																				Create New Task
+																				File Manager
 																			</span>
 																		</a>
 																		<a href="#" class="m-nav-grid__item">
@@ -220,14 +220,14 @@
 																		<i class="m-nav__link-icon flaticon-profile-1"></i>
 																		<span class="m-nav__link-title">
 																			<span class="m-nav__link-wrap">
-																				My Profile
+																				{{ Lang::get('core.m_profile') }}
 																			</span>
 																		</span>
 																	</a>
 																</li>
 																<li class="m-nav__separator m-nav__separator--fit"></li>
 																<li class="m-nav__item">
-																	<a href="{{ URL::to('user/logout')}}" class="btn m-btn--pill    btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder"> Logout </a>
+																	<a href="{{ URL::to('user/logout')}}" class="btn m-btn--pill    btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder"> {{ Lang::get('core.m_logout') }} </a>
 																</li>
 															</ul>
 														</div>
@@ -235,6 +235,7 @@
 												</div>
 											</div>
 										</li>
+                                        <?php /**
 										<li id="m_quick_sidebar_toggle" class="m-nav__item">
 											<a href="#" class="m-nav__link m-dropdown__toggle">
 												<span class="m-nav__link-icon m-nav__link-icon-alt">
@@ -244,6 +245,7 @@
 												</span>
 											</a>
 										</li>
+                                        **/ ?>
 									</ul>
 								</div>
 							</div>

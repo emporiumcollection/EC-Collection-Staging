@@ -13,9 +13,9 @@ class DashboardController extends Controller {
 
 	public function getIndex( Request $request )
 	{
-        $group_id = \Auth::user()->group_id;
+        $is_demo6 = (bool) \CommonHelper::isHotelDashBoard();
         $file_name = 'dashboard.index';
-        if(in_array($group_id,array(5))){
+        if($is_demo6 === true){
             $file_name = 'users_admin.metronic.dashboard';
         }
         
