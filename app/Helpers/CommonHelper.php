@@ -29,9 +29,9 @@ class CommonHelper
         $group_id = (int) \Auth::user()->group_id;
         $user = self::getusertype($group_id);
         $match_array = array('hotel');
-        $return = false;
+        $return = "";
         
-        if(in_array($user,$match_array)){ $return = true; }
+        if(in_array($user,$match_array)){ $return = 'users_admin.metronic'; }
         
         return $return;
     }
