@@ -3,6 +3,40 @@ namespace App\Helpers;
 use Session, DB ;
 class CommonHelper
 {
+    // check user type
+    static function getusertype($postData){
+        
+        $type = ((is_int($postData))?'int':((is_string($postData))?'string':''));
+        
+        $rtype = false;
+        
+        $users = array('superadmin'=>1,'admin'=>2,'user'=>3,'reservation-agent'=>4,'hotel'=>5,'accounting'=>6,'advertiser'=>7,'quality-assurer'=>8,'hotel-manager'=>9,'design-team'=>10);
+        
+        if($type == 'string'){            
+            if(isset($users[$postData])){ $rtype = $users[$postData]; }
+        }elseif($type == 'int')
+        {
+            $postData = (int) $postData;
+            $rtype = array_search($postData, $users);
+        }
+        
+        return $rtype;
+    }
+    //End
+    
+    //is user metronic dashboard
+    static function isHotelDashBoard(){
+        $group_id = (int) \Auth::user()->group_id;
+        $user = self::getusertype($group_id);
+        $match_array = array('hotel');
+        $return = false;
+        
+        if(in_array($user,$match_array)){ $return = true; }
+        
+        return $return;
+    }
+    //end
+    
     //Return All images path of Property
     static function getInfo(){
 
