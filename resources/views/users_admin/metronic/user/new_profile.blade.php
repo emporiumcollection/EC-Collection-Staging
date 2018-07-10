@@ -1131,66 +1131,70 @@
 			</div>
 			<!--End::Main Portlet-->
         </div>
-	</div>
-    <script>
-	$('input[type="checkbox"][id="copyadd"]').on('ifChecked', function(){
-		$('#billing_address').val($('#shipping_address').val());
-		$('#billing_address2').val($('#shipping_address2').val());
-		$('#billing_city').val($('#shipping_city').val());
-		$('#billing_postal_code').val($('#shipping_postal_code').val());
-		$('#billing_country').val($('#shipping_country').val());
-	});
-	
-	function fillProfile(obj)
-	{
-		var custid = $(obj).val();
-		$.ajax({
-		  url: "{{ URL::to('getUserprofile')}}",
-		  type: "post",
-		  data: "customer="+custid,
-		  dataType: "json",
-		  success: function(data){
-			if(data!='error')
-			{
-				$('#company_phone').val(data.phone);
-				$('#company_email').val(data.email);
-				$('#company_postal_code').val(data.zip);
-				$('#comapny_address').val(data.street);
-				$('#company_name').val(data.shoptitle);
-				$('#company_city').val(data.city);
-			}
-		  }
-		});
-	}
-	
-	function deleteAds(ads_id, formid)
-	{
-		if(ads_id!='')
+	</div>    
+@stop
+
+@section('custom_js_script')    
+<script>
+$('input[type="checkbox"][id="copyadd"]').on('ifChecked', function(){
+	$('#billing_address').val($('#shipping_address').val());
+	$('#billing_address2').val($('#shipping_address2').val());
+	$('#billing_city').val($('#shipping_city').val());
+	$('#billing_postal_code').val($('#shipping_postal_code').val());
+	$('#billing_country').val($('#shipping_country').val());
+});
+
+function fillProfile(obj)
+{
+	var custid = $(obj).val();
+	$.ajax({
+	  url: "{{ URL::to('getUserprofile')}}",
+	  type: "post",
+	  data: "customer="+custid,
+	  dataType: "json",
+	  success: function(data){
+		if(data!='error')
 		{
-			var confirmd = confirm("{{ Lang::get('core.ads_delete_confirm_msg') }}");
-			if(confirmd==true)
-			{
-				$.ajax({
-				  url: "{{ URL::to('deleteUserAds')}}",
-				  type: "post",
-				  data: "adsId="+ads_id,
-				  dataType: "json",
-				  success: function(data){
-					if(data!='error')
-					{
-						$('#'+formid)[0].reset();
-					}
-					else{
-						alert('No Advertisement Found');
-					}
-				  }
-				});
-			}
+			$('#company_phone').val(data.phone);
+			$('#company_email').val(data.email);
+			$('#company_postal_code').val(data.zip);
+			$('#comapny_address').val(data.street);
+			$('#company_name').val(data.shoptitle);
+			$('#company_city').val(data.city);
+		}
+	  }
+	});
+}
+
+function deleteAds(ads_id, formid)
+{
+	if(ads_id!='')
+	{
+		var confirmd = confirm("{{ Lang::get('core.ads_delete_confirm_msg') }}");
+		if(confirmd==true)
+		{
+			$.ajax({
+			  url: "{{ URL::to('deleteUserAds')}}",
+			  type: "post",
+			  data: "adsId="+ads_id,
+			  dataType: "json",
+			  success: function(data){
+				if(data!='error')
+				{
+					$('#'+formid)[0].reset();
+				}
+				else{
+					alert('No Advertisement Found');
+				}
+			  }
+			});
 		}
 	}
-    </script>
-    <script src="{{ asset('metronic/assets/demo/demo6/base/wizard.js') }}"></script>
+}
+</script>
 @stop
+
 @section('script')
+    <script src="{{ asset('metronic/assets/demo/demo6/base/wizard.js') }}"></script>
     <script src="{{ asset('metronic/assets/demo/demo6/base/toastr.js') }}"></script>
 @stop
