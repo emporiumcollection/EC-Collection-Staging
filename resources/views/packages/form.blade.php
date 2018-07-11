@@ -39,20 +39,25 @@
 									 <div class="col-md-2">
 									 	
 									 </div>
-								  </div> 
+								  </div> 					
 								  <div class="form-group  " >
 									<label for="Package Category" class=" control-label col-md-4 text-left"> Package Category <span class="asterix"> * </span></label>
 									<div class="col-md-6">
-										<select name="package_category" class="form-control">
-											<option value="hotel_listing" {{($row['package_category']=='hotel_listing') ? 'selected="selected"' : ''}}>Hotel Listing</option>
-											<option value="hotel_marketing" {{($row['package_category']=='hotel_marketing') ? 'selected="selected"' : ''}}>Hotel Marketing</option>
-										</select>
-									   
+									  
+					<?php $package_category = explode(',',$row['package_category']);
+					$package_category_opt = array( 'hotel_listing' => 'Hotel Listing' ,  'hotel_marketing' => 'Hotel Marketing' , ); ?>
+					<select name='package_category' rows='5' required  class='form-control'  > 
+						<?php 
+						foreach($package_category_opt as $key=>$val)
+						{
+							echo "<option  value ='$key' ".($row['package_category'] == $key ? " selected='selected' " : '' ).">$val</option>"; 						
+						}						
+						?></select> 
 									 </div> 
 									 <div class="col-md-2">
 									 	
 									 </div>
-								  </div>
+								  </div> 					
 								  <div class="form-group  " >
 									<label for="Package Title" class=" control-label col-md-4 text-left"> Package Title <span class="asterix"> * </span></label>
 									<div class="col-md-6">
@@ -61,16 +66,7 @@
 									 <div class="col-md-2">
 									 	
 									 </div>
-								  </div>
-								  <div class="form-group  " >
-									<label for="Package USP" class=" control-label col-md-4 text-left"> Package USP <span class="asterix"> * </span></label>
-									<div class="col-md-6">
-									  {!! Form::text('package_usp', $row['package_usp'],array('class'=>'form-control', 'placeholder'=>'', 'required'=>'true'  )) !!} 
-									 </div> 
-									 <div class="col-md-2">
-									 	
-									 </div>
-								  </div>
+								  </div> 					
 								  <div class="form-group  " >
 									<label for="Package Description" class=" control-label col-md-4 text-left"> Package Description </label>
 									<div class="col-md-6">
@@ -140,23 +136,7 @@
 									 <div class="col-md-2">
 									 	
 									 </div>
-								  </div>
-								  <div class="form-group  " >
-									<label for="Package Modules" class=" control-label col-md-4 text-left"> Package Modules <span class="asterix"> * </span></label>
-									<div class="col-md-6">
-									  <select name='package_modules[]' multiple class='select2'>
-										@if(!empty($mods))
-										{{--*/ $existmod = explode(',',$row['package_modules']); /*--}}
-											@foreach($mods as $mod)
-												<option value="{{$mod->module_id}}" {{(in_array($mod->module_id, $existmod)) ? 'selected="selected"' : '' }} >{{$mod->module_title}}</option>
-											@endforeach
-										@endif
-									  </select> 
-									 </div> 
-									 <div class="col-md-2">
-									 	
-									 </div>
-								  </div>
+								  </div> 					
 								  <div class="form-group  " >
 									<label for="Package Status" class=" control-label col-md-4 text-left"> Package Status <span class="asterix"> * </span></label>
 									<div class="col-md-6">
@@ -165,6 +145,33 @@
 					<input type='radio' name='package_status' value ='0' required @if($row['package_status'] == '0') checked="checked" @endif > Inactive </label>
 					<label class='radio radio-inline'>
 					<input type='radio' name='package_status' value ='1' required @if($row['package_status'] == '1') checked="checked" @endif > Active </label> 
+									 </div> 
+									 <div class="col-md-2">
+									 	
+									 </div>
+								  </div> 					
+								  <div class="form-group  " >
+									<label for="Package USP" class=" control-label col-md-4 text-left"> Package USP <span class="asterix"> * </span></label>
+									<div class="col-md-6">
+									  {!! Form::text('package_usp', $row['package_usp'],array('class'=>'form-control', 'placeholder'=>'', 'required'=>'true'  )) !!} 
+									 </div> 
+									 <div class="col-md-2">
+									 	
+									 </div>
+								  </div> 					
+								  <div class="form-group  " >
+									<label for="User Groups" class=" control-label col-md-4 text-left"> User Groups <span class="asterix"> * </span></label>
+									<div class="col-md-6">
+									  <select name='allow_user_groups[]' multiple rows='5' id='allow_user_groups' class='select2 ' required  ></select> 
+									 </div> 
+									 <div class="col-md-2">
+									 	
+									 </div>
+								  </div> 					
+								  <div class="form-group  " >
+									<label for="Package Modules" class=" control-label col-md-4 text-left"> Package Modules <span class="asterix"> * </span></label>
+									<div class="col-md-6">
+									  <select name='package_modules[]' multiple rows='5' id='package_modules' class='select2 ' required  ></select> 
 									 </div> 
 									 <div class="col-md-2">
 									 	
@@ -196,6 +203,12 @@
    <script type="text/javascript">
 	$(document).ready(function() { 
 		
+		
+		$("#allow_user_groups").jCombo("{{ URL::to('packages/comboselect?filter=tb_groups:group_id:name') }}",
+		{  selected_value : '{{ $row["allow_user_groups"] }}' });
+		
+		$("#package_modules").jCombo("{{ URL::to('packages/comboselect?filter=tb_module:module_id:module_title') }}",
+		{  selected_value : '{{ $row["package_modules"] }}' });
 		 
 
 		$('.removeCurrentFiles').on('click',function(){

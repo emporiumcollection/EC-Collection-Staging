@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\controller;
 use App\Models\Packages;
+use App\Models\Packagegroups;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 use Validator, Input, Redirect ; 
@@ -158,7 +159,33 @@ class PackagesController extends Controller {
 			{
 				$data['package_modules'] = implode(',',$request->input('package_modules'));
 			}
+            
+            $userGroups = array();
+            if(!is_null($request->input('allow_user_groups')))
+			{
+				if(is_array($request->input('allow_user_groups'))){ $userGroups = $request->input('allow_user_groups'); }
+                $data['allow_user_groups'] = implode(',',$request->input('allow_user_groups'));
+			}
+            
 			$id = $this->model->insertRow($data , $request->input('id'));
+            
+            //insert user groups in related table packages_user_groups
+            if((count($userGroups) > 0) && ($id > 0)){
+                $packagegroupsmodel = new Packagegroups();
+                
+                $groupsData = array();
+                foreach($userGroups as $si_group){
+                    $row = $packagegroupsmodel->select('id')->where(array('group_id'=>$si_group,'package_id'=>$id))->first();
+                    $rowid = ((isset($row->id))?$row->id:null);
+                    $groupsData[] = array('id'=>$rowid,'group_id'=>$si_group,'package_id'=>$id);
+                }
+                
+                if(count($groupsData) > 0){
+                    $packagegroupsmodel->where(array('package_id'=>$id))->delete();
+                    $packagegroupsmodel->insert($groupsData); 
+                }
+            }
+            //End
 			
 			if(!is_null($request->input('apply')))
 			{

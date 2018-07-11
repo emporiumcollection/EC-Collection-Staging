@@ -36,12 +36,6 @@
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>Image</td>
-						<td>{!! SiteHelpers::showUploadedFile($row->package_image,'/uploads/packages/') !!} </td>
-						
-					</tr>
-				
-					<tr>
 						<td width='30%' class='label-view text-right'>Title</td>
 						<td>{{ $row->package_title }} </td>
 						
@@ -50,6 +44,12 @@
 					<tr>
 						<td width='30%' class='label-view text-right'>Description</td>
 						<td>{{ $row->package_description }} </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>Image</td>
+						<td>{!! SiteHelpers::showUploadedFile($row->package_image,'/uploads/packages/') !!} </td>
 						
 					</tr>
 				
@@ -80,6 +80,30 @@
 					<tr>
 						<td width='30%' class='label-view text-right'>Status</td>
 						<td>{{ $row->package_status }} </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>Package Usp</td>
+						<td>{{ $row->package_usp }} </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>Package Category</td>
+						<td>{{ $row->package_category }} </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>Package Modules</td>
+						<td>{{ $row->package_modules }} </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>Allow User Groups</td>
+						<td>{{ $row->allow_user_groups }} </td>
 						
 					</tr>
 				
