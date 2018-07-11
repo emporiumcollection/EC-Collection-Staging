@@ -62,6 +62,7 @@
 						<th>{{ $t['label'] }}</th>
 					@endif
 				@endforeach
+                <th>Slug</th>
 				<th width="70" >{{ Lang::get('core.btn_action') }}</th>
 			  </tr>
         </thead>
@@ -71,7 +72,8 @@
             @foreach ($rowData as $row)
                 <tr>
 					<td width="30"> {{ ++$i }} </td>
-					<td width="50"><input type="checkbox" class="ids" name="id[]" value="{{ $row->group_id }}" />  </td>									
+					<td width="50"><input type="checkbox" class="ids" name="id[]" value="{{ $row->group_id }}" />  </td>
+                 {{--*/ $slugname = '...'; /*--}}									
 				 @foreach ($tableGrid as $field)
 					 @if($field['view'] =='1')
 					 <td>
@@ -81,10 +83,13 @@
 						@else	
 							{{--*/ $conn = (isset($field['conn']) ? $field['conn'] : array() ) /*--}}
 							{!! SiteHelpers::gridDisplay($row->$col,$field['field'],$conn) !!}	
-						@endif						 
+						@endif	
+                        
+                        @if($field['field'] == 'name') {{--*/ $slugname = trim($row->$col); /*--}} @endif					 
 					 </td>
 					 @endif					 
 				 @endforeach
+                 <td>{!! CommonHelper::url_title($slugname,'-',true) !!}	</td>
 				 <td>
 					 	@if($access['is_detail'] ==1)
 						<a href="{{ URL::to('core/groups/show/'.$row->group_id.'?return='.$return)}}" class="tips btn btn-xs btn-white" title="{{ Lang::get('core.btn_view') }}"><i class="fa  fa-search "></i></a>
