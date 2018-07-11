@@ -572,10 +572,15 @@ slider.oninput = function() {
   $(".menu-bx").toggleClass( "is-nav-active");  
 });
 
- $( ".log_in-btn" ).click(function() {
+ $( ".menu-bx .log_in-btn" ).click(function() {
   $(".popupMainDiv").toggleClass("openPopup");
-  $(".signInPopup").removeClass("openPopup");   
+  $(".signInPopup").removeClass("openPopup");      
 });
+ $( ".c-slideshow__control__bottom" ).click(function() {
+  $(".signInPopup").addClass("openPopup");
+  $(".popupMainDiv").toggleClass("openPopup");      
+});
+ 
  $('.cnt-box').hide();
  $('.bg-dark').hide();
 

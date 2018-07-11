@@ -15,7 +15,9 @@
 .Home #header .logo-wrapper{
   display: none;
 }
-
+.lognSignPopoUp{
+  width: 100%;
+}
 @media (min-width: 1025px){
   .Home .mobilemenu {    
       left: -340px !important;    
