@@ -36,23 +36,26 @@
                   </form>
                </div>
             </div>
+            
             <div class="signInPopup lognSignPopoUp">
+                <form  action="{{ url('customer/create')}}" method="POST" id="customerRegisterarioForm">
+                
                <div class="popupTopSec"><span>NEED HELP?</span><a href="javascript:void(0);" class="mainPopupClose">×</a></div>
 
                <img src="{{ asset('themes/emporium/images/emporium-voyage-membership.jpg')}}" alt="Images">
                <div class="loginFormDiv">
                   <div class="reltv">
-                  <select class="user-type">
-                     <option>Choose Your User Type</option>
-                     <option>B2B Hotel</option>
-                     <option>Advertiser</option>
-                     <option>Discerning Traveler</option>
+                  <select name="user_type" class="user-type">
+                     <option value="">Choose Your User Type</option>
+                     <option value="{!! CommonHelper::getusertype('hotel-b2b') !!}">B2B Hotel</option>
+                     <option value="{!! CommonHelper::getusertype('advertiser-b2b') !!}">Advertiser</option>
+                     <option value="{!! CommonHelper::getusertype('users-b2c') !!}">Discerning Traveler</option>
                   </select>
                </div>
                   <h3>CREATE YOUR ACCOUNT PASSWORD</h3>
                   <div class="ai-sign-up-form-error-msg"></div>
                   <div class="ai-sign-up-form-success-msg"></div>
-                  <form  action="{{ url('customer/create')}}" method="POST" id="customerRegisterarioForm">
+                  
                      <div class="form-group">
                         <input class="form-control" name="email" type="text" placeholder="Email Address">
 
@@ -68,9 +71,11 @@
                         <input class="form-control" name="password" type="password" placeholder="Password">
                      </div>
                      <button class="button" type="submit">Submit</button>
-                  </form>
+                  
                </div>
+               </form>
             </div>
+            
             <div class="forgetPassPopup lognSignPopoUp">
                <div class="popupTopSec"><span>NEED HELP?</span><a href="javascript:void(0);" class="mainPopupClose">×</a></div>
 

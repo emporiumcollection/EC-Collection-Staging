@@ -115,10 +115,10 @@ class CustomerController extends Controller {
         $rules = array(
 //            'firstname' => 'required|alpha_num|min:2',
 //            'lastname' => 'required|alpha_num|min:2',
+            'user_type' => 'required|integer',
             'email' => 'required|email|unique:tb_users',
             'password' => 'required',
             'txtmobileNumber' =>'required',
-
 //            'mobile_number' => mobile_number'required|confirmed',
 //            'password_confirmation' => 'required',
             //'membership_plan'=>'required',
@@ -143,7 +143,7 @@ class CustomerController extends Controller {
 //            $authen->last_name = $request->input('lastname');
             $authen->email = trim($request->input('email'));
             $authen->activation = $code;
-            $authen->group_id = 3;
+            $authen->group_id = (int) $request->input('user_type');
             $authen->mobile_number=trim($request->input('txtmobileNumber'));
             $authen->mobile_code=trim($request->input('txtmobileDialcode'));
             $authen->password = \Hash::make($request->input('password'));
