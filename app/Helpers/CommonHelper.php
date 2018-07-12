@@ -73,8 +73,9 @@ class CommonHelper
     //End
     
     //is user metronic dashboard
-    static function isHotelDashBoard(){
-        $group_id = (int) \Auth::user()->group_id;
+    static function isHotelDashBoard($g_id=0){
+        $g_id = (int) $g_id;
+        $group_id = (int) (($g_id > 0)?$g_id:\Auth::user()->group_id);
         $user = self::getusertype($group_id);
         $match_array = array('hotel-b2b');
         $return = "";

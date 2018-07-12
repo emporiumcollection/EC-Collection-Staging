@@ -985,12 +985,12 @@ return Redirect::to('customer/profile')->with('message', \SiteHelpers::alert('er
         );
         $resultContract= $contractObject->getRows($params); 
         
-        $extra = \DB::table('tb_properties')->where('user_id', \Auth::user()->id)->first();
+        $extra = \DB::table('tb_properties')->where('user_id', $user->id)->first();
         $this->data['extra'] = $extra;
         //print_r($extra); die;
         $this->data['user'] = $user;
         $this->data['contractdata']=$resultContract["rows"];
-        $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+        $is_demo6 = trim(\CommonHelper::isHotelDashBoard($user->group_id));
         $t_f = 'whoiam';
         if(isset($extra->approved)){ if(!((bool) $extra->approved)){ $t_f = 'approval_pending'; }}
         $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.customer.'.$t_f:'customer.whoiam';      
