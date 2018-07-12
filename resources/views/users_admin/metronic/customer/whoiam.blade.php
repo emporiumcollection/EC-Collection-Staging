@@ -29,7 +29,7 @@
 					<div class="m-portlet__head-caption">
 						<div class="m-portlet__head-title">
 							<h3 class="m-portlet__head-text">
-								Update Your Profile
+								Add Hotel Information
 							</h3>
 						</div>
 					</div>					
@@ -38,7 +38,7 @@
                 <!--begin: Portlet Body-->
 				<div class="m-portlet__body m-portlet__body--no-padding">
 					<!--begin: Form Wizard-->
-					<div class="m-wizard m-wizard--3 m-wizard--success" id="m_wizard">
+					<div class="m-wizard m-wizard--3 m-wizard--success" id="m_hotel_wizard">
 						<!--begin: Message container -->
 						<div class="m-portlet__padding-x">
 							<!-- Here you can put a message or alert -->
@@ -92,57 +92,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="m-wizard__step" m-wizard-target="m_wizard_form_step_3" class="wizard_step_3">
-												<div class="m-wizard__step-info">
-													<a href="#" class="m-wizard__step-number">
-														<span>
-															<span>
-																3
-															</span>
-														</span>
-													</a>
-													<div class="m-wizard__step-line">
-														<span></span>
-													</div>
-													<div class="m-wizard__step-label">
-														Packages
-													</div>
-												</div>
-											</div>
-                                            <div class="m-wizard__step" m-wizard-target="m_wizard_form_step_4" class="wizard_step_4">
-												<div class="m-wizard__step-info">
-													<a href="#" class="m-wizard__step-number">
-														<span>
-															<span>
-																4
-															</span>
-														</span>
-													</a>
-													<div class="m-wizard__step-line">
-														<span></span>
-													</div>
-													<div class="m-wizard__step-label">
-														Advertisement Packages
-													</div>
-												</div>
-											</div>
-											<div class="m-wizard__step" m-wizard-target="m_wizard_form_step_5" class="wizard_step_5">
-												<div class="m-wizard__step-info">
-													<a href="#" class="m-wizard__step-number">
-														<span>
-															<span>
-																5
-															</span>
-														</span>
-													</a>
-													<div class="m-wizard__step-line">
-														<span></span>
-													</div>
-													<div class="m-wizard__step-label">
-														Checkout
-													</div>
-												</div>
-											</div>
+											
 										</div>
 									</div>
 									<!--end: Form Wizard Nav -->
@@ -156,7 +106,7 @@
 1) Use m-form--label-align-left class to alight the form input lables to the right
 2) Use m-form--state class to highlight input control borders on form validation
 -->
-                                        {!! Form::open(array('url'=>'#', 'class'=>'m-form m-form--label-align-left- m-form--state- ', 'id'=>'m_form' ,'files' => true)) !!}
+                                        {!! Form::open(array('url'=>'#', 'class'=>'m-form m-form--label-align-left- m-form--state- ', 'id'=>'hotel_form' ,'files' => true)) !!}
                                         <div class="m-portlet__body m-portlet__body--no-padding">
                                             <input type="hidden" name="base_url" id="base_url" value="{{ url() }}" />
                                             <!--begin: Form Wizard Step 1-->
@@ -173,7 +123,7 @@
     														Username:
     													</label>
     													<div class="col-xl-9 col-lg-9">
-    														<input name="username" type="text" id="username" class="form-control m-input" required  value="" />  
+    														<input name="username" type="text" id="username" class="form-control m-input" required=""  value="{{ $user->username }}" />  
     													</div>
     												</div>
     												<div class="form-group m-form__group row">
@@ -181,7 +131,7 @@
     														 {{ Lang::get('core.firstname') }} 
     													</label>
     													<div class="col-xl-9 col-lg-9">
-    														<input type="text" name="first_name" id="first_name" class="form-control dash-input-style" placeholder="John" required="" value="">
+    														<input type="text" name="first_name" id="first_name" class="form-control dash-input-style" placeholder="John" required="" value="{{ $user->first_name }}">
     													</div>
     												</div>
                                                     <div class="form-group m-form__group row">
@@ -189,15 +139,9 @@
     														{{ Lang::get('core.lastname') }}
     													</label>
     													<div class="col-xl-9 col-lg-9">
-    														<input type="text" name="last_name" id ="last_name"  class="form-control dash-input-style" placeholder="Doe" value="" required="">
+    														<input type="text" name="last_name" id ="last_name"  class="form-control dash-input-style" placeholder="Doe" value="{{ $user->last_name }}" required="">
     													</div>
-    												</div>
-                                                    <div class="form-group m-form__group row">
-                                						<label class="col-xl-3 col-lg-3 col-form-label">Phone</label>
-                                						<div class="col-xl-9 col-lg-9">          
-                                							<input type="text" name="txtPhoneNumber" value="" id="txtPhoneNumber" class="form-control dash-input-style" placeholder="+91-9876543210" required="">
-                                						</div>
-                                					</div>
+    												</div>                                                    
                                                     
                                                     <div class="form-group m-form__group row">
     													<label class="col-xl-3 col-lg-3 col-form-label">
@@ -206,18 +150,17 @@
     													<div class="col-xl-9 col-lg-9">
                                                             <div class="fileinput fileinput-new" data-provides="fileinput">
                                                                 <span class="btn btn-primary btn-file">
-                                                			  	  <span class="fileinput-new">Upload Avatar Image</span>
-                                                                  @if(!empty($info->avatar))
-                                                                    <span class="fileinput-exists"> Change</span>
-                                                                  @endif
-                                                                    
-                                                					<input type="file" name="avatar">
+                                                                    <span class="fileinput-new">Upload Avatar Image</span>
+                                                                    @if(!empty($user->avatar))
+                                                                        <span class="fileinput-exists"> Change</span>
+                                                                    @endif                                                                    
+                                                				    <input type="file" name="avatar">
                                                 				</span>
                                                                 <span class="fileinput-filename"></span>
                                                                 <a href="#" class="close fileinput-exists" data-dismiss="fileinput" style="float: none">&times;</a>
                                                                 <br />
                                                     			Image Dimension 80 x 80 px <br />
-                                                    			<?php /* {!! SiteHelpers::showUploadedFile($info->avatar,'/uploads/users/',80,80) !!} */ ?>
+    		                                                    {!! SiteHelpers::showUploadedFile($user->avatar,'/uploads/users/',80,80) !!}
                                                             </div>
     													</div>
     												</div>
@@ -237,7 +180,7 @@
                                 						<div class="col-12 m-form__group-sub" id="contractSignCheckmain">
                                                             <div class="m-checkbox-inline">
                                     							<label class="m-checkbox m-checkbox--solid m-checkbox--brand" data-toggle="modal" data-target="#myModal">
-                                    							     <input type="checkbox"  id="contractSignCheck" name="contractSignCheck" value="">
+                                    							     <input type="checkbox"  id="contractSignCheck" name="contractSignCheck" <?php echo ($user->contracts=="1") ? 'checked="checked"' : '';  ?> value="1">
                                                                      View terms of contract.
                                                                      <span></span>
                                     							</label>
@@ -324,841 +267,375 @@
     											<div class="m-form__section m-form__section--first">
     												<div class="m-form__heading">
     													<h3 class="m-form__heading-title">
-    														{{ Lang::get('core.companydetails') }}
+    														Hotel Information
     													</h3>
-    												</div>
-                                                    <input name="form_wizard_2" type="hidden" id="form_wizard_2" value="2" />
-                                                    <input name="compedit_id" type="hidden" id="compedit_id" value="" />
+                                                        <input name="form_wizard_2" type="hidden" id="form_wizard_2" value="2" />
+                                                        <input name="compedit_id" type="hidden" id="compedit_id" value="" />
+    												</div>                                                    
                                                     <div class="form-group m-form__group row">
-                                                        <div class="col-lg-6">
-                                                            <div class="form-group m-form__group">
-                                                                <label for="ipt" class="form-control-label">
-                                								    Firmenname
-                                								</label>
-                                									<input name="company_name" type="text" id="company_name" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->company_name; } ?>" />
-                                                            </div>
-                                                            <div class="form-group m-form__group">
-                                                                <label for="ipt" class="form-control-label">
-                                								    Inhaber
-                                								</label>
-                                									<input name="company_owner" type="text" id="company_owner" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->company_owner; } ?>" />
-                                                            </div>
-                                                            <div class="form-group m-form__group">
-                                                                <label for="ipt" class="form-control-label">
-                                								    Ansprechpartner
-                                								</label>
-                                									<input name="contact_person" type="text" id="contact_person" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->contact_person; } ?>" />
-                                                            </div> 
-                                                            <div class="form-group m-form__group">
-                                                                <label for="ipt" class="form-control-label">
-                                								    E-Mail Adresse
-                                								</label>
-                                									<input name="company_email" type="text" id="company_email" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->company_email; } ?>" />
-                                                            </div>
-                                                            <div class="form-group m-form__group">
-                                                                <label for="ipt" class="form-control-label">
-                                								    Phone #
-                                								</label>
-                                									<input name="company_phone" type="text" id="company_phone" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->company_phone; } ?>" />
-                                                            </div> 
-                                                            <div class="form-group m-form__group">
-                                                                <label for="ipt" class="form-control-label">
-                                								    Website
-                                								</label>
-                                									<input name="company_website" type="text" id="company_website" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->company_website; } ?>" />
-                                                            </div> 
-                                                            <div class="form-group m-form__group">
-                                                                <label for="ipt" class="form-control-label">
-                                								    Tax #
-                                								</label>
-                                									<input name="company_tax_no" type="text" id="company_tax_no" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->company_tax_number; } ?>" />
-                                                            </div>    
-                                                        </div><!-- //col-lg-6 m-form__group-sub -->
-                                                        <div class="col-lg-6">
-                                                            <div class="form-group m-form__group">
-                                                                <label for="ipt" class="form-control-label">
-                                								    Adresse
-                                								</label>
-                                									<input name="company_address" type="text" id="company_address" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->company_address; } ?>" />
-                                                            </div>
-                                                            <div class="form-group m-form__group">
-                                                                <label for="ipt" class="form-control-label">
-                                								    Adresse
-                                								</label>
-                                									<input name="company_address2" type="text" id="company_address2" class="form-control m-input"  value="<?php if(!empty($extra)) { echo $extra->company_address2; } ?>" />
-                                                            </div>
-                                                            <div class="form-group m-form__group">
-                                                                <label for="ipt" class="form-control-label">
-                                								    ORT
-                                								</label>
-                                									<input name="company_city" type="text" id="comapny_city" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->company_city; } ?>" />
-                                                            </div>
-                                                            <div class="form-group m-form__group">
-                                                                <label for="ipt" class="form-control-label">
-                                								    Pin
-                                								</label>
-                                									<input name="company_postal_code" type="text" id="company_postal_code" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->company_postal_code; } ?>" maxlength="6" />
-                                                            </div>
-                                                            <div class="form-group m-form__group">
-                                                                <label for="ipt" class="form-control-label">
-                                								    Land
-                                								</label>
-                                									<input name="company_country" type="text" id="comapny_country" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->company_country; } ?>" />
-                                                            </div>
-                                                            <div class="form-group m-form__group">
-                            									<label for="ipt" class="form-control-label">
-                            										Firmenlogo
-                            									</label>
-                        										<div class="fileinput fileinput-new" data-provides="fileinput">
-                                                				  <span class="btn btn-primary btn-file">
-                                                					   <span class="fileinput-new">Hochladen</span>
-                                                                       @if(!empty($extra->company_logo))
-                                                                        <span class="fileinput-exists">Change</span>
-                                                                       @endif 
-                                                					   <input type="file" name="company_logo">
-                                                				    </span>
-                                                					<span class="fileinput-filename"></span>
-                                                					<a href="#" class="close fileinput-exists" data-dismiss="fileinput" style="float: none">&times;</a>
-                                                				</div>
-                                                				<br />
-                                                				 Image Dimension 155 x 30 px <br />
-                                                				@if(!empty($extra))
-                                                				{!! SiteHelpers::showUploadedFile($extra->company_logo,'/uploads/users/company/',155, 30, '') !!}
-                                                				@endif  
-                            								</div>
-                                                        </div><!-- //col-lg-6 m-form__group-sub -->
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">
+                        								    *Hotel Name
+                        								</label>
+                                                        <div class="col-xl-9 col-lg-9">
+                        								    <input type="text" name="hotelinfo_name" id="name" placeholder="Hotel Name*" class="form-control" required="" value="<?php if(!empty($extra)) { echo $extra->property_name; } ?>" >
+                                                        </div>                 
                                                     </div>
-                                                    <div class="row">
-                                                        <div class="col-12 tax-minhead">
-                                                            <span class="minhead">Tax Info</span>
-                                                        </div>
-                                                        <div class="col-md-6 col-xs-12">
-                                                            <div class="form-group m-form__group row">
-                            									<label for="ipt" class="col-md-5 col-2 col-form-label">
-                            										Steuernummer
-                            									</label>
-                            									<div class="col-7">
-                            										<input name="steuernummer" type="text" id="steuernummer" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->steuernummer; } ?>"/>  
-                            									</div>
-                            								</div>
-                                                            <div class="form-group m-form__group row">
-                            									<label for="ipt" class="col-md-5 col-2 col-form-label">
-                            										Umsatzsteuer ID
-                            									</label>
-                            									<div class="col-7">
-                            										<input name="umsatzsteuer_id" type="text" id="umsatzsteuer_id" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->umsatzsteuer_id; } ?>"/>  
-                            									</div>
-                            								</div>
-                                                            <div class="form-group m-form__group row">
-                            									<label for="ipt" class="col-md-5 col-2 col-form-label">
-                            										Gesch&auml;ftsf&uuml;hrer
-                            									</label>
-                                                               
-                            									<div class="col-7">
-                            										<input name="gesch&auml;ftsf&uuml;hrer" type="text" id="gesch&auml;ftsf&uuml;hrer" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->geschäftsführer; } ?>"/>  
-                            									</div>
-                            								</div>
-                                                        </div>
-                                                        <div class="col-md-6 col-xs-12">
-                                                            <div class="form-group m-form__group row">
-                            									<label for="ipt" class="col-md-5 col-2 col-form-label">
-                            										Handelsregister
-                            									</label>
-                            									<div class="col-7">
-                            										<input name="handelsregister" type="text" id="handelsregister" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->handelsregister; } ?>"/>  
-                            									</div>
-                            								</div>
-                                                            <div class="form-group m-form__group row">
-                            									<label for="ipt" class="col-md-5 col-2 col-form-label">
-                            										Amtsgericht
-                            									</label>
-                            									<div class="col-7">
-                            										<input name="amtsgericht" type="text" id="amtsgericht" class="form-control m-input" required  value="<?php if(!empty($extra)) { echo $extra->amtsgericht; } ?>" maxlength="6"/>  
-                            									</div>
-                            								</div>
-                                                        </div>
-                                                    </div>
-    											</div>
-    										</div>
-    										<!--end: Form Wizard Step 2-->
-                                            <!--begin: Form Wizard Step 3-->
-    										<div class="m-wizard__form-step" id="m_wizard_form_step_3">
-    											<div class="m-form__section m-form__section--first">
-    												<div class="m-form__heading">
-    													<h3 class="m-form__heading-title">
-    														{{ Lang::get('core.user_slider_ads') }}
-    													</h3>
-    												</div>
                                                     <div class="form-group m-form__group row">
-                        								<div class="col-12 ml-auto">
-                        									<h3>Slider Advertisement Costs you {{(!empty($slider_ads_price))? $def_currency->content.$slider_ads_price->content:''}} and is valid for {{(!empty($slider_ads_expiry_days))?$slider_ads_expiry_days->content:''}} days.</h3>
-                        								</div>
-                        							</div>
-                                                    <input name="form_wizard_3" type="hidden" id="form_wizard_3" value="3" />
-                                                    <input name="adscurrency" type="hidden" class="form-control input-sm" value=""/> 
-                                                    <input name="adsType" type="hidden" class="form-control input-sm" value="slider"/> 
-                                            		<input name="adsprice" type="hidden" class="form-control input-sm" value=""/>
-                                                    <input name="adsvalidation" type="hidden" class="form-control input-sm" value=""/> 
-                                            		<input name="advedit_id" type="hidden" class="form-control input-sm" value=""/>
-                                                    <div class="form-group m-form__group row">
-                                                        <div class="col-lg-12">
-                                                            <label for="ipt" class="form-control-label">
-                            									{{ Lang::get('core.ads_image') }}
-                            								</label>
-                            								<div class="fileinput fileinput-new" data-provides="fileinput">
-                                                                <span class="btn btn-primary btn-file">
-                                                			  	  <span class="fileinput-new">Hochladen</span>
-                                                                  <?php /* @if(!empty(@$slider_ads_info->adv_img))
-                                                                    <span class="fileinput-exists"> Change</span>
-                                                                  @endif */ ?>
-                                                                  <input type="file" name="advertise_img"/>
-                                                				</span>
-                                                                <span class="fileinput-filename"></span>
-                                                                <a href="#" class="close fileinput-exists" data-dismiss="fileinput" style="float: none">&times;</a>
-                                                                <br />
-                                                    			<?php /* @if(!empty($slider_ads_info))
-                                                					{!! SiteHelpers::showUploadedFile($slider_ads_info->adv_img,'/uploads/users/advertisement/',155, 150, '') !!}
-                                                				  @endif */ ?>
-                                                            </div>
-                                                        </div>
-                        							</div>
-                                                    <div class="form-group m-form__group row">
-                                                        <div class="col-lg-12">
-                                                            <label class="form-control-label">
-    															{{ Lang::get('core.ads_link') }}
-    														</label>
-    														<input name="adslink" type="text" id="adslink" class="form-control m-input" required  value="{{(!empty($slider_ads_info))?$slider_ads_info->adv_link:''}}" />  
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">
+                                								    *Hotel Status
+                                								</label>
+                                                        <div class="col-xl-9 col-lg-9">
+                            								<select name="hotelinfo_status" class="form-control" required="">
+                                                                <option value="">Select Status</option>
+                                                                <option value="Open" <?php echo (!empty($extra) ? ($extra->hotelinfo_status=='Open') ? 'selected="selected"' : '' : ''); ?> >Open</option>
+                                                                <option value="Construction phase"<?php echo (!empty($extra) ? ($extra->hotelinfo_status=='Construction phase') ? 'selected="selected"' : '' : ''); ?>>Construction phase</option>
+                                                                <option value="Planning phase"<?php echo (!empty($extra) ? ($extra->hotelinfo_status=='Planning phase') ? 'selected="selected"' : '' : ''); ?>>Planning phase</option>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                     <div class="form-group m-form__group row">
-                                                        <div class="col-lg-12">
-                                                            <label class="form-control-label">
-    															{{ Lang::get('core.ads_title') }}
-    														</label>
-    														<input name="adstitle" type="text" id="adstitle" class="form-control m-input" required  value="{{(!empty($slider_ads_info))?$slider_ads_info->adv_title:''}}" />   
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">*Hotel Type</label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            <select name="hotelinfo_type" class="form-control" required="">
+                                                                <option value="">Hotel Type</option>
+                                                                <option value="Alternative" <?php echo (!empty($extra) ? ($extra->hotelinfo_type=='Alternative') ? 'selected="selected"' : '' : ''); ?>>Alternative</option>
+                                                                <option value="Beach Resort" <?php echo (!empty($extra) ? ($extra->hotelinfo_type=='Beach Resort') ? 'selected="selected"' : '' : ''); ?>>Beach Resort</option>
+                                                                <option value="Resort" <?php echo (!empty($extra) ? ($extra->hotelinfo_type=='Resort') ? 'selected="selected"' : '' : ''); ?>>Resort</option>
+                                                                <option value="City" <?php echo (!empty($extra) ? ($extra->hotelinfo_type=='City') ? 'selected="selected"' : '' : ''); ?>>City</option>
+                                                                <option value="Mountain" <?php echo (!empty($extra) ? ($extra->hotelinfo_type=='Mountain') ? 'selected="selected"' : '' : ''); ?>>Mountain</option>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                     <div class="form-group m-form__group row">
-                                                        <div class="col-lg-12">
-                                                            <label class="form-control-label">
-    															{{ Lang::get('core.ads_description') }}
-    														</label>
-    														<input name="adsdesc" type="text" id="adsdesc" class="form-control m-input" required  value="{{(!empty($slider_ads_info))?$slider_ads_info->adv_desc:''}}" />     
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">*Hotel Building</label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            <select name="hotelinfo_building" class="form-control" required="">
+                                                                <option value="Hotel Building" <?php echo (!empty($extra) ? ($extra->hotelinfo_building=='Hotel Building') ? 'selected="selected"' : '' : ''); ?>>Hotel Building</option>
+                                                                <option value="New Construction" <?php echo (!empty($extra) ? ($extra->hotelinfo_building=='New Construction') ? 'selected="selected"' : '' : ''); ?>>New Construction</option>
+                                                                <option value="Existing Building" <?php echo (!empty($extra) ? ($extra->hotelinfo_building=='Existing Building') ? 'selected="selected"' : '' : ''); ?>>Existing Building</option>
+                                                                <option value="Conversion" <?php echo (!empty($extra) ? ($extra->hotelinfo_building=='Conversion') ? 'selected="selected"' : '' : ''); ?>>Conversion</option>
+                                                            </select>
+                                                        </div>
+                                                    </div> 
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">*Hotel Opening Date</label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                        <?php 
+                                                            $hod ='';
+                                                            if(!empty($extra)) { 
+                                                                if(!empty($extra->hotelinfo_opening_date)){
+                                                                    $hod = date('m/d/Y', strtotime($extra->hotelinfo_opening_date));
+                                                                }                                                            
+                                                            }                  
+                                                        ?>
+                                                            <input type="text" name="hotelinfo_opening_date" id="m_datepicker_1" placeholder="Hotel Opening Date*" class="form-control" required="" value="<?php if(!empty($extra)) { echo $hod; } ?>">
                                                         </div>
                                                     </div>
                                                     <div class="form-group m-form__group row">
-                                                        <div class="col-lg-12">
-                                                            <label class="form-control-label">
-    															{{ Lang::get('core.ads_category') }}
-    														</label>
-    														<select id="ads_slider_cat" name="ads_slider_cat" required class="form-control m-input">
-                                            					<option value="">-- Select --</option>
-                                            					<option value="Hotel" {{(!empty($slider_ads_info) && $slider_ads_info->ads_slider_cat=="Hotel")?'selected="selected"':''}}>Hotel</option>
-                                            					<option value="Villas" {{(!empty($slider_ads_info) && $slider_ads_info->ads_slider_cat=="Villas")?'selected="selected"':''}}>Villas</option>
-                                            					<option value="Yachts" {{(!empty($slider_ads_info) && $slider_ads_info->ads_slider_cat=="Yachts")?'selected="selected"':''}}>Yachts</option>
-                                            					<option value="Safari Lodges" {{(!empty($slider_ads_info) && $slider_ads_info->ads_slider_cat=="Safari Lodges")?'selected="selected"':''}}>Safari Lodges</option>
-                                            					<option value="Spas" {{(!empty($slider_ads_info) && $slider_ads_info->ads_slider_cat=="Spas")?'selected="selected"':''}}>Spas</option>
-                                            				</select>    
-                                                        </div>
-                                                    </div>
-                                                    <?php $curdate = date('Y-m-d'); 
-					                               if((!empty($slider_ads_info) && $slider_ads_info->adv_expire>=$curdate) || (!empty($slider_ads_price) && $slider_ads_price->content==0)){ ?>
-    											     <input name="pay" type="hidden" class="form-control input-sm" value="no"/> 
-                                                
-                                                <?php } else { ?>
-                                                    <input name="pay" type="hidden" class="form-control input-sm" value="yes"/>
-                                                <?php } ?>
-    											</div>
-    										</div>
-    										<!--end: Form Wizard Step 3-->
-                                            
-                                            <!--begin: Form Wizard Step 4-->
-                                            <div class="m-wizard__form-step" id="m_wizard_form_step_4">
-                                                <div class="m-form__section m-form__section--first">
-                                                    <div class="m-form__heading">
-    													<h3 class="m-form__heading-title">
-    														{{ Lang::get('core.user_sidebar_ads') }}
-    													</h3>
-    												</div>
-                                                    <div class="form-group m-form__group row">
-                        								<div class="col-12 ml-auto">
-                        									<h3>Sidebar Advertisement Costs you {{(!empty($sidebar_ads_price))? $def_currency->content.$sidebar_ads_price->content:''}} and is valid for {{(!empty($sidebar_ads_expiry_days))?$sidebar_ads_expiry_days->content:''}} days.</h3>
-                        								</div>
-                        							</div>
-                                                    <input name="form_wizard_4" type="hidden" id="form_wizard_4" value="4" />
-                                                    <input name="adscurrency_2" type="hidden" class="form-control input-sm" value=""/> 
-                                                    <input name="adsType_2" type="hidden" class="form-control input-sm" value="sidebar"/> 
-                                                    <input name="adsprice_2" type="hidden" class="form-control input-sm" value=""/> 
-                                                    <input name="adsvalidation_2" type="hidden" class="form-control input-sm" value=""/> 
-                                                    <input name="advedit_id_2" type="hidden" class="form-control input-sm" value=""/>
-                                                    <div class="form-group m-form__group row">
-                                                        <div class="col-lg-12">
-                                                            <label class="form-control-label">
-        														{{ Lang::get('core.ads_image') }}
-        													</label>
-                                                            <div class="fileinput fileinput-new" data-provides="fileinput">
-                                                                <span class="btn btn-primary btn-file">
-                                                			  	  <span class="fileinput-new">Hochladen</span>
-                                                                   <?php /* @if(!empty(@$sidebar_ads_info->adv_img))
-                                                                    <span class="fileinput-exists"> Change</span>
-                                                                  @endif */ ?>
-                                                                  <input type="file" name="advertise_img_2"/>
-                                                				</span>
-                                                                <span class="fileinput-filename"></span>
-                                                                <a href="#" class="close fileinput-exists" data-dismiss="fileinput" style="float: none">&times;</a>
-                                                                <br />
-                                                    			<?php /* @if(!empty($sidebar_ads_info))
-                                                					{!! SiteHelpers::showUploadedFile($sidebar_ads_info->adv_img,'/uploads/users/advertisement/',155, 150, '') !!}
-                                                				  @endif */ ?>
-                                                            </div>
-                                                        </div>
-                        							</div>
-                                                    <div class="form-group m-form__group row">
-                                                        <div class="col-lg-12">
-                                                            <label for="ipt" class="form-control-label">
-                            									{{ Lang::get('core.ads_link') }}
-                            								</label>
-                            								<input name="adslink_2" type="text" id="side_adslink" class="form-control m-input" required  value="{{(!empty($sidebar_ads_info))?$sidebar_ads_info->adv_link:''}}" />  
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">*Street &amp; Number</label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            <input type="text" name="hotelinfo_address" placeholder="Street &amp; Number*" class="form-control" required="" value="<?php if(!empty($extra)) { echo $extra->hotelinfo_address; } ?>">
                                                         </div>
                                                     </div>
                                                     <div class="form-group m-form__group row">
-                                                        <div class="col-lg-12">
-                                                            <label for="ipt" class="form-control-label">
-                            									{{ Lang::get('core.ads_title') }}
-                            								</label>
-                            								<input name="adstitle_2" type="text" id="side_adstitle" class="form-control m-input" required  value="{{(!empty($sidebar_ads_info))?$sidebar_ads_info->adv_title:''}}" />  
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">*City</label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            <input type="text" name="hotelinfo_city" placeholder="City*" class="form-control" required="" value="<?php if(!empty($extra)) { echo $extra->city; } ?>">
                                                         </div>
                                                     </div>
                                                     <div class="form-group m-form__group row">
-                                                        <div class="col-lg-12">
-                                                            <label for="ipt" class="form-control-label">
-                            									{{ Lang::get('core.ads_description') }}
-                            								</label>
-                            								<input name="adsdesc_2" type="text" id="side_adsdesc" class="form-control m-input" required  value="{{(!empty($sidebar_ads_info))?$sidebar_ads_info->adv_desc:''}}" />  
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">*Country</label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            <input type="text" name="hotelinfo_country" placeholder="Country*" class="form-control" required="" value="<?php if(!empty($extra)) { echo $extra->country; } ?>">
                                                         </div>
                                                     </div>
                                                     <div class="form-group m-form__group row">
-                                                        <div class="col-lg-12">
-                                                            <label for="ipt" class="form-control-label">
-                            									{{ Lang::get('core.ads_category') }}
-                            								</label>
-                            								<select name="adsCat_2" id="adsCat_2" class="form-control m-input">
-                                            					<option value="">-- Select --</option>
-                                            					<option value="Hotel" {{(!empty($sidebar_ads_info) && $sidebar_ads_info->ads_cat_id=="Hotel")?'selected="selected"':''}}>Hotel</option>
-                                            					<option value="Villas" {{(!empty($sidebar_ads_info) && $sidebar_ads_info->ads_cat_id=="Villas")?'selected="selected"':''}}>Villas</option>
-                                            					<option value="Yachts" {{(!empty($sidebar_ads_info) && $sidebar_ads_info->ads_cat_id=="Yachts")?'selected="selected"':''}}>Yachts</option>
-                                            					<option value="Safari Lodges" {{(!empty($sidebar_ads_info) && $sidebar_ads_info->ads_cat_id=="Safari Lodges")?'selected="selected"':''}}>Safari Lodges</option>
-                                            					<option value="Spas" {{(!empty($sidebar_ads_info) && $sidebar_ads_info->ads_cat_id=="Spas")?'selected="selected"':''}}>Spas</option>
-                                            					@if(!empty($maindest))
-                                            						@foreach($maindest as $dist)
-                                            							<option value="{{$dist['id']}}" {{((!empty($sidebar_ads_info)) && $dist['id']==$sidebar_ads_info->ads_cat_id)?'selected="selected"':''}}>{{$dist['name']}}</option>
-                                            						@endforeach
-                                            					@endif
-                                            				</select> 
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">*Postal Code</label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            <input type="text" name="hotelinfo_postal" placeholder="Postal Code*" class="form-control" required="" value="<?php if(!empty($extra)) { echo $extra->hotelinfo_postal; } ?>" >
+                                                        </div>
+                                                    </div>                                    
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">*Hotel Website</label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            <input type="text" name="hotelinfo_website" placeholder="Hotel Website*" class="form-control" required="" value="<?php if(!empty($extra)) { echo $extra->website; } ?>">
                                                         </div>
                                                     </div>
                                                     <div class="form-group m-form__group row">
-                                                        <div class="col-lg-12">
-                                                            <label for="ipt" class="form-control-label">
-                            									{{ Lang::get('core.ads_position') }}
-                            								</label>
-                            								<select name="adspos_2" id="adspos_2" required class="form-control m-input">
-                                            					<option value="">-- Select --</option>
-                                            					<option value="landing" {{(!empty($sidebar_ads_info) && $sidebar_ads_info->adv_position=="landing")?'selected="selected"':''}}>landing Page Sidebar</option>
-                                            					<option value="grid_sidebar" {{(!empty($sidebar_ads_info) && $sidebar_ads_info->adv_position=="grid_sidebar")?'selected="selected"':''}}>Grid Page Sidebar</option>
-                                            					<option value="grid_results" {{(!empty($sidebar_ads_info) && $sidebar_ads_info->adv_position=="grid_results")?'selected="selected"':''}}>Grid Page Results </option>
-                                            					<option value="detail" {{(!empty($sidebar_ads_info) && $sidebar_ads_info->adv_position=="detail")?'selected="selected"':''}}>Detail Page Sidebar </option>
-                                            				</select>
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">*Days open for business</label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            <input type="text" name="hotelinfo_daysopen" placeholder="Days open for business*" class="form-control" required="" value="<?php if(!empty($extra)) { echo $extra->hotelinfo_daysopen; } ?>">
                                                         </div>
                                                     </div>
-                                                    <?php $curdate = date('Y-m-d'); 
-					                               if((!empty($sidebar_ads_info) && $sidebar_ads_info->adv_expire>=$curdate) || (!empty($sidebar_ads_price) && $sidebar_ads_price->content==0)){ ?>
-                                                        <input name="pay_2" type="hidden" class="form-control input-sm" value="no"/>
-                                                   <?php } else { ?>
-                                                        <input name="pay_2" type="hidden" class="form-control input-sm" value="yes"/>
-                                                   <?php } ?>
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">Avg. Daily Rate</label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            <input class="form-control" name="hotelinfo_avg_daily_rate" type="text" placeholder="Avg. Daily Rate*" value="<?php if(!empty($extra)) { echo $extra->hotelinfo_avg_daily_rate; } ?>" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">Avg. Occupancy</label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            <input type="text" name="hotelinfo_avg_occupancy" placeholder="Avg. Occupancy*" value="%" class="form-control" required="" value="<?php if(!empty($extra)) { echo $extra->hotelinfo_avg_occupancy; } ?>">
+                                                        </div>
+                                                    </div>    
                                                 </div>
+                                                <div class="m-separator m-separator--dashed m-separator--lg"></div>
+                                                <div class="m-form__section">
+    											    <div class="m-form__heading">
+    												    <h3 class="m-form__heading-title">
+    												       Hotel Facilities    													   
+    													</h3>
+                                                    </div>
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">*Number of Rooms</label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            <input type="text" name="hotelfac_num_rooms" placeholder="Number of Rooms*" class="form-control" required="" value="<?php if(!empty($extra)) { echo $extra->hotelfac_num_rooms; } ?>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">*Number of Suites</label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            <input type="text" name="hotelfac_num_suites" placeholder="Number of Suites*" class="form-control" required="" value="<?php if(!empty($extra)) { echo $extra->hotelfac_num_suites; } ?>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">F &amp; B Outlets</label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            <?php 
+                                                                $arr_outlets = array();
+                                                                if(!empty($extra)) { 
+                                                                    if(!empty($extra->hotelfac_fb_outlets)){
+                                                                        $str_outlets = $extra->hotelfac_fb_outlets;
+                                                                        $arr_outlets = explode(',', $str_outlets);
+                                                                    }
+                                                                }                                                            
+                                                            ?>
+                                                            <select name="hotelfac_fb_outlets[]" multiple="" class="form-control" >
+                                                                <option value="">-</option>
+                                                                <option value="Restaurant" <?php echo in_array('Restaurant', $arr_outlets) ? 'selected="selected"' : '' ?> >Restaurant</option>
+                                                                <option value="Bar" <?php echo in_array('Bar', $arr_outlets) ? 'selected="selected"' : '' ?>>Bar</option>
+                                                                <option value="Beach Bar" <?php echo in_array('Beach Bar', $arr_outlets) ? 'selected="selected"' : '' ?>>Beach Bar</option>
+                                                                <option value="Club" <?php echo in_array('Club', $arr_outlets) ? 'selected="selected"' : '' ?>>Club</option>
+                                                                <option value="Lobby/Lounge" <?php echo in_array('Lobby/Lounge', $arr_outlets) ? 'selected="selected"' : '' ?>>Lobby/Lounge</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">Guest Facilities</label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            <?php 
+                                                                $arr_guest_fac = array();
+                                                                if(!empty($extra)) { 
+                                                                    if(!empty($extra->hotelfac_guest_fac)){
+                                                                        $str_guest_fac = $extra->hotelfac_guest_fac;
+                                                                        $arr_guest_fac = explode(',', $str_guest_fac);
+                                                                    }
+                                                                }                                                            
+                                                             ?>
+                                                             <select name="hotelfac_guest_fac[]" multiple="" class="form-control">
+                                                                <option value="">-</option>
+                                                                <option value="Gym" <?php echo in_array('Gym', $arr_guest_fac) ? 'selected="selected"' : '' ?>>Gym</option>
+                                                                <option value="Indoor Pool" <?php echo in_array('Indoor Pool', $arr_guest_fac) ? 'selected="selected"' : '' ?>>Indoor Pool</option>
+                                                                <option value="Outdoor Pool" <?php echo in_array('Outdoor Pool', $arr_guest_fac) ? 'selected="selected"' : '' ?>></option>
+                                                                <option value="Spa" <?php echo in_array('Spa', $arr_guest_fac) ? 'selected="selected"' : '' ?>>Spa</option>
+                                                                <option value="Business Center" <?php echo in_array('Business Center', $arr_guest_fac) ? 'selected="selected"' : '' ?>>Business Center</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">Meeting Area</label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            <input type="text" name="hotelfac_meeting_area" placeholder="Meeting Area*" value="sqm" class="form-control" value="<?php if(!empty($extra)) { echo $extra->hotelfac_meeting_area; } ?>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">Meeting Facilities</label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            <select name="hotelfac_meeting_fac" class="form-control">
+                                                                <option>Please select</option>
+                                                                <option value="Yes" <?php echo (!empty($extra) ? ($extra->hotelfac_meeting_fac=='Yes') ? 'selected="selected"' : '' : ''); ?>>YES</option>
+                                                                <option value="No" <?php echo (!empty($extra) ? ($extra->hotelfac_meeting_fac=='No') ? 'selected="selected"' : '' : ''); ?>>NO</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">Comments/Other Facilities</label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            <textarea name="hotelfac_comments"  placeholder="Comments/Other Facilities" rows="5" class="form-control"><?php if(!empty($extra)) { echo $extra->hotelfac_comments; } ?></textarea>
+                                                           
+                                                        </div>
+                                                    </div>
+                                                </div> 
+                                                <div class="m-separator m-separator--dashed m-separator--lg"></div>
+                                                <div class="m-form__section">
+    											    <div class="m-form__heading">
+    												    <h3 class="m-form__heading-title">
+    												       Hotel Description    													   
+    													</h3>
+                                                    </div>
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">*Hotel Concept</label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                             <textarea name="hoteldesc_concept" placeholder="*Hotel Concept" rows="5" class="form-control" required=""><?php if(!empty($extra)) { echo $extra->hoteldesc_concept; } ?></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">Architecture &amp; Design</label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            <textarea name="hoteldesc_architecture_design"  placeholder="*Architecture & Design" rows="5" class="form-control"><?php if(!empty($extra)) { echo $extra->architecture_design_desciription; } ?></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">Architect Name</label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            <input type="text" name="hoteldesc_architecture_name" placeholder="Architect Name" class="form-control" value="<?php if(!empty($extra)) { echo $extra->architecture_design_title; } ?>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">Architect Website</label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            <input type="text" name="hoteldesc_architecture_website" placeholder="Architect Website" class="form-control" value="<?php if(!empty($extra)) { echo $extra->architecture_design_url; } ?>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">Interior Designer Name</label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            <input type="text" name="hoteldesc_interior_designer_name" placeholder="Interior Designer Name" class="form-control" value="<?php if(!empty($extra)) { echo $extra->architecture_designer_title; } ?>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">Interior Designer Website</label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            <input type="text" name="hoteldesc_interior_designer_website" placeholder="Interior Designer Website" class="form-control" value="<?php if(!empty($extra)) { echo $extra->architecture_designer_url; } ?>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">Local Integration</label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            <textarea name="hoteldesc_local_integration" id="comment" placeholder="Local Integration" rows="5" class="form-control"><?php if(!empty($extra)) { echo $extra->hoteldesc_local_integration; } ?></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">Brand</label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                           <textarea name="hoteldesc_brand"  placeholder="Brand" rows="5" class="form-control"> <?php if(!empty($extra)) { echo $extra->hoteldesc_brand; } ?></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">Brand Agency Name</label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                           <input type="text" name="hoteldesc_brand_agency_name" placeholder="Brand Agency Name" class="form-control" value="<?php if(!empty($extra)) { echo $extra->hoteldesc_brand_agency_name; } ?>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">Brand Agency Website</label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            <input type="text" name="hoteldesc_brand_agency_website" placeholder="Brand Agency Website" class=" form-control" value="<?php if(!empty($extra)) { echo $extra->hoteldesc_brand_agency_website; } ?>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">Brand Linkedin Profile</label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            <input type="text" name="hoteldesc_brand_linkdin_profile" placeholder="Brand Linkedin Profile" class="form-control" value="<?php if(!empty($extra)) { echo $extra->hoteldesc_brand_linkdin_profile; } ?>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">Brand Instagram Profile</label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                             <input type="text" placeholder="Brand Instagram Profile" name="hoteldesc_brand_instagram_profile" class=" form-control" value="<?php if(!empty($extra)) { echo $extra->social_instagram; } ?>">
+                                                        </div>
+                                                    </div>
+                                                 </div>
+                                                 <div class="m-separator m-separator--dashed m-separator--lg"></div>
+                                                 <div class="m-form__section">
+    											    <div class="m-form__heading">
+    												    <h3 class="m-form__heading-title">
+    												       Contact Information    													   
+    													</h3>                                                        
+                                                    </div>
+                                                    <div class="m-form__heading">    												   
+                                                        <h6>Property Owning Entity:</h6>                                                       
+                                                    </div>
+                                                    
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">*Entity Name</label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            <input type="text" name="hotel_contactinfo_name" placeholder="Entity Name*" class="form-control" required="" value="<?php if(!empty($extra)) { echo $extra->hotel_contactinfo_name; } ?>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">*Street &amp; Number</label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                           <input type="text" name="hotel_contactinfo_address" placeholder="Street & Number*" class="form-control" required="" value="<?php if(!empty($extra)) { echo $extra->owner_address; } ?>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">*City</label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            <input type="text" name="hotel_contactinfo_city" placeholder="City*" class="form-control" required="" value="<?php if(!empty($extra)) { echo $extra->owner_city; } ?>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">*Country</label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                           <input type="text" name="hotel_contactinfo_country" placeholder="Country*" class="form-control" required="" value="<?php if(!empty($extra)) { echo $extra->owner_country; } ?>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">*Postal Code</label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                             <input type="text" name="hotel_contactinfo_postal" placeholder="Postal Code*" class="form-control" required="" value="<?php if(!empty($extra)) { echo $extra->owner_postal_code; } ?>">
+                                                        </div>
+                                                    </div> 
+                                                    <div class="m-form__heading">
+    												    <h6>
+    												       Contact Person:    													   
+    													</h6>                                                        
+                                                    </div>
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">*First Name</label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            <input type="text" name="hotel_contactprsn_firstname" placeholder="First Name*" class="form-control" required="" value="<?php if(!empty($extra)) { echo $extra->owner_name; } ?>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">*Last Name</label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            <input type="text" name="hotel_contactprsn_lastname" placeholder="Last Name*" class="form-control" required="" value="<?php if(!empty($extra)) { echo $extra->owner_last_name; } ?>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">*Company Name</label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            <input type="text" name="hotel_contactprsn_companyname" placeholder="Company Name*" class="form-control" required="" value="<?php if(!empty($extra)) { echo $extra->hotel_contactprsn_companyname; } ?>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">*Job Title</label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            <input type="text" name="hotel_contactprsn_jobtitle" placeholder="Job Title*" class="form-control" required="" value="<?php if(!empty($extra)) { echo $extra->hotel_contactprsn_jobtitle; } ?>">
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="form-group m-form__group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">*Phone</label>
+                                                        <div class="col-xl-9 col-lg-9">
+                                                            <input type="text" name="hotel_contactprsn_phone" placeholder="Phone*" class="form-control" required="" value="<?php if(!empty($extra)) { echo $extra->owner_phone_primary; } ?>">
+                                                        </div>
+                                                    </div>    
+                                                    <div class="form-group m-form__group row">
+                                                        <div class="col-12 m-checkbox-inline">
+                                							<label class="m-checkbox m-checkbox--solid m-checkbox--brand">
+                                							     <input class="checkbox" type="checkbox" name="hotel_contactprsn_agree" id="termConditionInput"  value="1" required="" <?php echo (!empty($extra) ? ($extra->hotel_contactprsn_agree=='1') ? 'checked="checked"' : '' : ''); ?>>
+                                                                 I agree with the <a href="#">Terms and Conditions</a>
+                                                                 <span></span>
+                                							</label>
+                                						</div>
+                                                    </div>                                               
+                                                 </div>                                                                                                     
                                             </div>
-                                            <!--end: Form Wizard Step 4-->
-                                            
-                                            <!--begin: Form Wizard Step 5-->
-    										<div class="m-wizard__form-step" id="m_wizard_form_step_5">
-                                                <input name="form_wizard_5" type="hidden" id="form_wizard_5" value="5" />
-    											<!--begin::Section-->
-    											<div class="m-accordion m-accordion--default" id="m_accordion_1" role="tablist">
-    												<!--begin::Item-->
-    												<div class="m-accordion__item active">
-    													<div class="m-accordion__item-head"  role="tab" id="m_accordion_1_item_1_head" data-toggle="collapse" href="#m_accordion_1_item_1_body" aria-expanded="  false">
-    														<span class="m-accordion__item-icon">
-    															<i class="fa flaticon-user-ok"></i>
-    														</span>
-    														<span class="m-accordion__item-title">
-    															{{ Lang::get('core.personalinfo') }}
-    														</span>
-    														<span class="m-accordion__item-mode"></span>
-    													</div>
-    													<div class="m-accordion__item-body collapse show" id="m_accordion_1_item_1_body" class=" " role="tabpanel" aria-labelledby="m_accordion_1_item_1_head" data-parent="#m_accordion_1">
-    														<!--begin::Content-->
-    														<div class="tab-content active  m--padding-30">
-    															<div class="m-form__section m-form__section--first">
-    																<div class="m-form__heading">
-    																	<h4 class="m-form__heading-title">
-    																		{{ Lang::get('core.personalinfo') }}
-    																	</h4>
-    																</div>
-                                                                    <div class="form-group m-form__group m-form__group--sm row">
-    																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		Username:
-    																	</label>
-    																	<div class="col-xl-8 col-lg-8">
-    																		<span class="m-form__control-static">
-    																			
-    																		</span>
-    																	</div>
-    																</div>
-    																<div class="form-group m-form__group m-form__group--sm row">
-    																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		Email:
-    																	</label>
-    																	<div class="col-xl-8 col-lg-8">
-    																		<span class="m-form__control-static">
-    																			
-    																		</span>
-    																	</div>
-    																</div>
-    																<div class="form-group m-form__group m-form__group--sm row">
-    																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		{{ Lang::get('core.firstname') }}
-    																	</label>
-    																	<div class="col-xl-8 col-lg-8">
-    																		<span class="m-form__control-static">
-    																			
-    																		</span>
-    																	</div>
-    																</div>
-                                                                    <div class="form-group m-form__group m-form__group--sm row">
-    																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		{{ Lang::get('core.lastname') }}
-    																	</label>
-    																	<div class="col-xl-8 col-lg-8">
-    																		<span class="m-form__control-static">
-    																			
-    																		</span>
-    																	</div>
-    																</div>
-                                                                    
-                                                                    <div class="form-group m-form__group m-form__group--sm row">
-    																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		Avatar
-    																	</label>
-    																	<div class="col-xl-8 col-lg-8">
-    																		<span class="m-form__control-static">
-    																		<?php /*	{!! SiteHelpers::showUploadedFile($info->avatar,'/uploads/users/',80,80) !!} */ ?>
-    																		</span>
-    																	</div>
-    																</div>
-    															</div>
-    														</div>
-    														<!--end::Section-->
-    													</div>
-    												</div>
-    												<!--end::Item-->
-                                                    
-                                                    <!--begin::Item-->
-    												<div class="m-accordion__item">
-    													<div class="m-accordion__item-head collapsed" role="tab" id="m_accordion_1_item_2_head" data-toggle="collapse" href="#m_accordion_1_item_2_body" aria-expanded="    false">
-    														<span class="m-accordion__item-icon">
-    															<i class="fa  flaticon-placeholder"></i>
-    														</span>
-    														<span class="m-accordion__item-title">
-    															{{ Lang::get('core.companydetails') }}
-    														</span>
-    														<span class="m-accordion__item-mode"></span>
-    													</div>
-    													<div class="m-accordion__item-body collapse" id="m_accordion_1_item_2_body" class=" " role="tabpanel" aria-labelledby="m_accordion_1_item_2_head" data-parent="#m_accordion_1">
-    														<!--begin::Content-->
-    														<div class="tab-content  m--padding-30">
-    															<div class="m-form__section m-form__section--first">
-    																<div class="m-form__heading">
-    																	<h4 class="m-form__heading-title">
-    																		{{ Lang::get('core.companydetails') }}
-    																	</h4>
-    																</div>
-    																<div class="form-group m-form__group m-form__group--sm row">
-    																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		Firmenname:
-    																	</label>
-    																	<div class="col-xl-8 col-lg-8">
-    																		<span class="m-form__control-static">
-    																			<?php if(!empty($extra)) { echo $extra->company_name; } ?>
-    																		</span>
-    																	</div>
-    																</div>
-    																<div class="form-group m-form__group m-form__group--sm row">
-    																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		Inhaber:
-    																	</label>
-    																	<div class="col-xl-8 col-lg-8">
-    																		<span class="m-form__control-static">
-    																			<?php if(!empty($extra)) { echo $extra->company_owner; } ?>
-    																		</span>
-    																	</div>
-    																</div>
-    																<div class="form-group m-form__group m-form__group--sm row">
-    																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		Ansprechpartner:
-    																	</label>
-    																	<div class="col-xl-8 col-lg-8">
-    																		<span class="m-form__control-static">
-    																			<?php if(!empty($extra)) { echo $extra->contact_person; } ?>
-    																		</span>
-    																	</div>
-    																</div>
-                                                                    <div class="form-group m-form__group m-form__group--sm row">
-    																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		E-Mail Adresse:
-    																	</label>
-    																	<div class="col-xl-8 col-lg-8">
-    																		<span class="m-form__control-static">
-    																			<?php if(!empty($extra)) { echo $extra->company_email; } ?>
-    																		</span>
-    																	</div>
-    																</div>
-                                                                    <div class="form-group m-form__group m-form__group--sm row">
-    																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		Phone #:
-    																	</label>
-    																	<div class="col-xl-8 col-lg-8">
-    																		<span class="m-form__control-static">
-    																			<?php if(!empty($extra)) { echo $extra->contact_person; } ?>
-    																		</span>
-    																	</div>
-    																</div>
-                                                                    <div class="form-group m-form__group m-form__group--sm row">
-    																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		Website:
-    																	</label>
-    																	<div class="col-xl-8 col-lg-8">
-    																		<span class="m-form__control-static">
-    																			<?php if(!empty($extra)) { echo $extra->company_website; } ?>
-    																		</span>
-    																	</div>
-    																</div>
-                                                                    <div class="form-group m-form__group m-form__group--sm row">
-    																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		Tax #:
-    																	</label>
-    																	<div class="col-xl-8 col-lg-8">
-    																		<span class="m-form__control-static">
-    																			<?php if(!empty($extra)) { echo $extra->company_tax_number; } ?>
-    																		</span>
-    																	</div>
-    																</div>
-                                                                    <div class="form-group m-form__group m-form__group--sm row">
-    																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		Adresse:
-    																	</label>
-    																	<div class="col-xl-8 col-lg-8">
-    																		<span class="m-form__control-static">
-    																			<?php if(!empty($extra)) { echo $extra->company_address; } ?>
-    																		</span>
-    																	</div>
-    																</div>
-                                                                    <div class="form-group m-form__group m-form__group--sm row">
-    																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		Adresse:
-    																	</label>
-    																	<div class="col-xl-8 col-lg-8">
-    																		<span class="m-form__control-static">
-    																			<?php if(!empty($extra)) { echo $extra->company_address2; } ?>
-    																		</span>
-    																	</div>
-    																</div>
-                                                                    <div class="form-group m-form__group m-form__group--sm row">
-    																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		ORT:
-    																	</label>
-    																	<div class="col-xl-8 col-lg-8">
-    																		<span class="m-form__control-static">
-    																			<?php if(!empty($extra)) { echo $extra->company_city; } ?>
-    																		</span>
-    																	</div>
-    																</div>
-                                                                    <div class="form-group m-form__group m-form__group--sm row">
-    																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		Pin:
-    																	</label>
-    																	<div class="col-xl-8 col-lg-8">
-    																		<span class="m-form__control-static">
-    																			<?php if(!empty($extra)) { echo $extra->company_postal_code; } ?>
-    																		</span>
-    																	</div>
-    																</div>
-                                                                    <div class="form-group m-form__group m-form__group--sm row">
-    																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		Land:
-    																	</label>
-    																	<div class="col-xl-8 col-lg-8">
-    																		<span class="m-form__control-static">
-    																			<?php if(!empty($extra)) { echo $extra->company_country; } ?>
-    																		</span>
-    																	</div>
-    																</div>
-                                                                    <div class="form-group m-form__group m-form__group--sm row">
-    																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		Firmenlogo:
-    																	</label>
-    																	<div class="col-xl-8 col-lg-8">
-    																		<span class="m-form__control-static">
-    																			@if(!empty($extra))
-                                                                				    {!! SiteHelpers::showUploadedFile($extra->company_logo,'/uploads/users/company/',155, 30, '') !!}
-                                                                				@endif
-    																		</span>
-    																	</div>
-    																</div>
-                                                                    <div class="form-group m-form__group m-form__group--sm row">
-    																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		Steuernummer:
-    																	</label>
-    																	<div class="col-xl-8 col-lg-8">
-    																		<span class="m-form__control-static">
-    																			<?php if(!empty($extra)) { echo $extra->steuernummer; } ?>
-    																		</span>
-    																	</div>
-    																</div>
-                                                                    <div class="form-group m-form__group m-form__group--sm row">
-    																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		Umsatzsteuer ID:
-    																	</label>
-    																	<div class="col-xl-8 col-lg-8">
-    																		<span class="m-form__control-static">
-    																			<?php if(!empty($extra)) { echo $extra->umsatzsteuer_id; } ?>
-    																		</span>
-    																	</div>
-    																</div>
-                                                                    <div class="form-group m-form__group m-form__group--sm row">
-    																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		Gesch&auml;ftsf&uuml;hrer:
-    																	</label>
-    																	<div class="col-xl-8 col-lg-8">
-    																		<span class="m-form__control-static">
-    																			<?php if(!empty($extra)) { echo $extra->geschäftsführer; } ?>
-    																		</span>
-    																	</div>
-    																</div>
-                                                                    <div class="form-group m-form__group m-form__group--sm row">
-    																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		Handelsregister:
-    																	</label>
-    																	<div class="col-xl-8 col-lg-8">
-    																		<span class="m-form__control-static">
-    																			<?php if(!empty($extra)) { echo $extra->handelsregister; } ?>
-    																		</span>
-    																	</div>
-    																</div>
-                                                                    <div class="form-group m-form__group m-form__group--sm row">
-    																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		Amtsgericht:
-    																	</label>
-    																	<div class="col-xl-8 col-lg-8">
-    																		<span class="m-form__control-static">
-    																			<?php if(!empty($extra)) { echo $extra->amtsgericht; } ?>
-    																		</span>
-    																	</div>
-    																</div>
-    															</div>
-    															
-    														</div>
-    														<!--end::Content-->
-    													</div>
-    												</div>
-    												<!--end::Item-->
-                                                    
-                                                    <!--begin::Item-->
-    												<div class="m-accordion__item">
-    													<div class="m-accordion__item-head collapsed" role="tab" id="m_accordion_1_item_3_head" data-toggle="collapse" href="#m_accordion_1_item_3_body" aria-expanded="    false">
-    														<span class="m-accordion__item-icon">
-    															<i class="fa  flaticon-placeholder"></i>
-    														</span>
-    														<span class="m-accordion__item-title">
-    															{{ Lang::get('core.user_slider_ads') }}
-    														</span>
-    														<span class="m-accordion__item-mode"></span>
-    													</div>
-    													<div class="m-accordion__item-body collapse" id="m_accordion_1_item_3_body" class=" " role="tabpanel" aria-labelledby="m_accordion_1_item_3_head" data-parent="#m_accordion_1">
-    														<!--begin::Content-->
-    														<div class="tab-content  m--padding-30">
-    															<div class="m-form__section m-form__section--first">
-    																<div class="m-form__heading">
-    																	<h4 class="m-form__heading-title">
-    																		{{ Lang::get('core.user_slider_ads') }}
-    																	</h4>
-    																</div>
-    																<div class="form-group m-form__group m-form__group--sm row">
-    																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		{{ Lang::get('core.ads_image') }}:
-    																	</label>
-    																	<div class="col-xl-8 col-lg-8">
-    																		<span class="m-form__control-static">
-                                                                                @if(!empty($slider_ads_info))
-    																			 {!! SiteHelpers::showUploadedFile($slider_ads_info->adv_img,'/uploads/users/advertisement/',155, 150, '') !!}
-                                                                                @endif
-    																		</span>
-    																	</div>
-    																</div>
-    																<div class="form-group m-form__group m-form__group--sm row">
-    																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		{{ Lang::get('core.ads_link') }}:
-    																	</label>
-    																	<div class="col-xl-8 col-lg-8">
-    																		<span class="m-form__control-static">
-                                                                            	{{(!empty($slider_ads_info))?$slider_ads_info->adv_link:''}}
-    																		</span>
-    																	</div>
-    																</div>
-    																<div class="form-group m-form__group m-form__group--sm row">
-    																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		{{ Lang::get('core.ads_title') }}:
-    																	</label>
-    																	<div class="col-xl-8 col-lg-8">
-    																		<span class="m-form__control-static">
-    																			{{(!empty($slider_ads_info))?$slider_ads_info->adv_title:''}}
-    																		</span>
-    																	</div>
-    																</div>
-    																<div class="form-group m-form__group m-form__group--sm row">
-    																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		{{ Lang::get('core.ads_description') }}
-    																	</label>
-    																	<div class="col-xl-8 col-lg-8">
-    																		<span class="m-form__control-static">
-    																			{{(!empty($slider_ads_info))?$slider_ads_info->adv_desc:''}}
-    																		</span>
-    																	</div>
-    																</div>
-    																<div class="form-group m-form__group m-form__group--sm row">
-    																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		{{ Lang::get('core.ads_category') }}:
-    																	</label>
-    																	<div class="col-xl-8 col-lg-8">
-    																		<span class="m-form__control-static">
-                                                                                {{(!empty($slider_ads_info))?$slider_ads_info->ads_slider_cat:''}}
-    																		</span>
-    																	</div>
-    																</div>
-    															</div>
-    														</div>
-    														<!--end::Content-->
-    													</div>
-    												</div>
-    												<!--end::Item-->
-                                                     
-                                                    <!--begin::Item-->
-    												<div class="m-accordion__item">
-    													<div class="m-accordion__item-head collapsed" role="tab" id="m_accordion_1_item_4_head" data-toggle="collapse" href="#m_accordion_1_item_4_body" aria-expanded="    false">
-    														<span class="m-accordion__item-icon">
-    															<i class="fa  flaticon-placeholder"></i>
-    														</span>
-    														<span class="m-accordion__item-title">
-    															{{ Lang::get('core.user_sidebar_ads') }}
-    														</span>
-    														<span class="m-accordion__item-mode"></span>
-    													</div>
-    													<div class="m-accordion__item-body collapse" id="m_accordion_1_item_4_body" class=" " role="tabpanel" aria-labelledby="m_accordion_1_item_4_head" data-parent="#m_accordion_1">
-    														<!--begin::Content-->
-    														<div class="tab-content  m--padding-30">
-    															<div class="m-form__section m-form__section--first">
-    																<div class="m-form__heading">
-    																	<h4 class="m-form__heading-title">
-    																		{{ Lang::get('core.user_sidebar_ads') }}
-    																	</h4>
-    																</div>
-    																<div class="form-group m-form__group m-form__group--sm row">
-    																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		{{ Lang::get('core.ads_image') }}:
-    																	</label>
-    																	<div class="col-xl-8 col-lg-8">
-    																		<span class="m-form__control-static">
-    																			@if(!empty($sidebar_ads_info))
-                                                                					{!! SiteHelpers::showUploadedFile($sidebar_ads_info->adv_img,'/uploads/users/advertisement/',155, 150, '') !!}
-                                                                				@endif
-    																		</span>
-    																	</div>
-    																</div>
-    																<div class="form-group m-form__group m-form__group--sm row">
-    																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		{{ Lang::get('core.ads_link') }}:
-    																	</label>
-    																	<div class="col-xl-8 col-lg-8">
-    																		<span class="m-form__control-static">
-    																			{{(!empty($sidebar_ads_info))?$sidebar_ads_info->adv_link:''}}
-    																		</span>
-    																	</div>
-    																</div>
-    																<div class="form-group m-form__group m-form__group--sm row">
-    																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		{{ Lang::get('core.ads_title') }}:
-    																	</label>
-    																	<div class="col-xl-8 col-lg-8">
-    																		<span class="m-form__control-static">
-    																			{{(!empty($sidebar_ads_info))?$sidebar_ads_info->adv_title:''}}
-    																		</span>
-    																	</div>
-    																</div>
-    																<div class="form-group m-form__group m-form__group--sm row">
-    																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		{{ Lang::get('core.ads_description') }}:
-    																	</label>
-    																	<div class="col-xl-8 col-lg-8">
-    																		<span class="m-form__control-static">
-    																			{{(!empty($sidebar_ads_info))?$sidebar_ads_info->adv_desc:''}}
-    																		</span>
-    																	</div>
-    																</div>
-    																<div class="form-group m-form__group m-form__group--sm row">
-    																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		{{ Lang::get('core.ads_category') }}:
-    																	</label>
-    																	<div class="col-xl-8 col-lg-8">
-    																		<span class="m-form__control-static">
-                                                                                {{(!empty($sidebar_ads_info))?$sidebar_ads_info->ads_cat_id:''}}
-    																		</span>
-    																	</div>
-    																</div>
-                                                                    <div class="form-group m-form__group m-form__group--sm row">
-    																	<label class="col-xl-4 col-lg-4 col-form-label">
-    																		{{ Lang::get('core.ads_position') }}
-    																	</label>
-    																	<div class="col-xl-8 col-lg-8">
-    																		<span class="m-form__control-static">
-                                                                                {{(!empty($sidebar_ads_info))?$sidebar_ads_info->adv_position:''}}
-    																		</span>
-    																	</div>
-    																</div>
-    															</div>
-    														</div>
-    														<!--end::Content-->
-    													</div>
-    												</div>
-    												<!--end::Item-->
-    											</div>
-    											<!--end::Section-->
-                                                
-                                                <!--end::Section-->
-    											<div class="m-separator m-separator--dashed m-separator--lg"></div>
-    											<div class="form-group m-form__group m-form__group--sm row">
-    												<div class="col-xl-12">
-    													<div class="m-checkbox-inline">
-    														<label class="m-checkbox m-checkbox--solid m-checkbox--brand">
-    															<input type="checkbox" name="accept" value="1">
-    															Click here to indicate that you have read and agree to the terms presented in the Terms and Conditions agreement
-    															<span></span>
-    														</label>
-    													</div>
-    												</div>
-    											</div>
-    										</div>
-    										<!--end: Form Wizard Step 5-->
+    										<!--end: Form Wizard Step 2-->
                                         </div>
                                         
                                         <!--begin: Form Actions -->
@@ -1213,77 +690,35 @@
 			<!--End::Main Portlet-->
         </div>
 	</div>
-<!-- contract section start-->
- <div id="myModal_old" class="modal fade col-md-12" role="dialog">
-  <div class="modal-dialog">
-
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Contract Section</h4>
-      </div>
-      <div class="modal-body">
-      	  <div class="sbox animated fadeInRight">
-            <div class="sbox-content">
-	                <div class="panel-group" id="uc-accordion">
-	                <?php
-	                    if(!empty($contractdata)) {
-	                        $sn = 0;
-	                        foreach ($contractdata as $row) {
-	                            ?>
-	                             <div class="panel panel-default">
-	                                <div class="panel-heading">
-	                                    <h4 class="panel-title">
-	                                        <a data-toggle="collapse" data-parent="#uc-accordion" href="#uc-collapse-<?php echo $sn; ?>"><?php echo $row->title; ?></a>
-	                                    </h4>
-	                                </div>
-	                                <div id="uc-collapse-<?php echo $sn; ?>" class="panel-collapse collapse <?php echo ($sn == 0)? 'in' : ''; ?>">
-	                                    <div class="panel-body"><?php echo nl2br($row->description); ?></div>
-	                                </div>
-	                            </div>
-	                                
-	                            <?php
-	                            $sn++;
-	                        }
-	                    }
-	                    ?>
-	                </div>
-            </div>
-  			</div>
-        
-      </div>
-      <div class="modal-footer">
-      		<div class="form-group ">
-						<div class="col-sm-12" id="contractSignCheck">
-							<label class="col-sm-2" data-toggle="modal" data-target="#myModal">
-							<input type="checkbox"  id="contractSignCheckFinal" name="contractSignCheckFinal" value="accepted" required="">
-							</label>
-								<div class="checkbox">
-									<label class="radio-label">I hereby accept the terms of contract.</label>
-								</div>
-							
-
-						</div>
-			</div>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-
-  </div>
-</div>
 
 
-
-<!-- End contract section start-->
-
-
-
-
-    <script>
-	
-    </script>
-    <script src="{{ asset('metronic/assets/demo/demo6/base/wizard.js') }}"></script>
+    <script src="{{ asset('metronic/assets/demo/demo6/base/hotel_wizard.js') }}"></script>
 @stop
+
+{{-- For custom script --}}
+@section('custom_js_script')
+    @parent
+    <script>
+        $(document).ready( function () { 
+            $("#contractSignCheck").click(function(){
+                if($("#contractSignCheck").is(':checked')){
+                    $("#contractSignCheckFinal").prop("checked", true);
+                }else{
+                    $("#contractSignCheckFinal").prop("checked", false);
+                }
+            });
+            $("#contractSignCheckFinal").click(function(){
+                if($("#contractSignCheckFinal").is(':checked')){
+                    $("#contractSignCheck").prop("checked", true);
+                }else{
+                    $("#contractSignCheck").prop("checked", false);
+                }
+            });
+        });
+    </script>
+@endsection
+
 @section('script')
+    <script src="{{ asset('metronic/assets/demo/demo6/base/bootstrap-datepicker.js') }}"></script>
     <script src="{{ asset('metronic/assets/demo/demo6/base/toastr.js') }}"></script>
 @stop

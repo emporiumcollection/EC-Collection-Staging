@@ -297,12 +297,15 @@ Route::group(['middleware' => 'auth'], function()
     
     Route::post('deleteUserAds', 'UserController@deleteUserAds');
     Route::post('save_new_profile', 'UserController@saveNewprofile');
+    
+    Route::post('save_new_hotel_profile', 'UserController@saveNewHotelprofile');
+        
     Route::post('save_new_company_details', 'UserController@saveNewcompanydetails');
     Route::post('confirm_new_profile', 'UserController@confirmNewprofile');
 
-});	
+});
 
-
+Route::post('hotel_membership', 'Frontend\HotelMembershipController@hotelMembershipSignupSave');
 
 Route::get('hotel/membership', 'Frontend\HotelMembershipController@membershipSignup');
 Route::post('hotel/membership', 'Frontend\HotelMembershipController@membershipSignupSave');

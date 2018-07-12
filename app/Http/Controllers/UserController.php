@@ -948,5 +948,59 @@ class UserController extends Controller {
             return "error";
         }
     }
+    
+    public function saveNewHotelprofile(Request $request){
+        $return_array = array();
+        if (!\Auth::check())
+            return Redirect::to('user/login');
+        $rules = array(
+            'first_name' => 'required|alpha_num|min:2',
+            'last_name' => 'required|alpha_num|min:2',
+            'username' => 'required|alpha_num|min:2',
+            'contractSignCheck' => 'required',
+        );
 
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->passes()) {
+
+            if (!is_null(Input::file('avatar'))) {
+                $file = $request->file('avatar');
+                $destinationPath = './uploads/users/';
+                $filename = $file->getClientOriginalName();
+                $extension = $file->getClientOriginalExtension(); //if you need extension of the file
+                $newfilename = \Session::get('uid') . '.' . $extension;
+                $uploadSuccess = $request->file('avatar')->move($destinationPath, $newfilename);
+                if ($uploadSuccess) {
+                    $data['avatar'] = $newfilename;
+                }
+            }
+
+            $user = User::find(\Session::get('uid'));
+            $user->first_name = $request->input('first_name');
+            $user->last_name = $request->input('last_name');
+            //$user->mobile_number=trim($request->input('txtPhoneNumber'));
+            //$user->email = $request->input('txtPhoneNumber');
+            $user->username = $request->input('username');
+            $user->form_wizard = $request->input('form_wizard');
+            $user->contracts = $request->input('contractSignCheck');
+
+            if (isset($data['avatar']))
+                $user->avatar = $newfilename;
+            $user->save();
+            
+            $return_array['status'] = 'success';
+            $return_array['message'] = 'Profile has been saved!';
+
+        } else {
+            
+            $return_array['status'] = 'error';
+            $return_array['message'] = 'Profile not saved errors occurred!';
+            
+        }
+        
+        echo json_encode($return_array);
+        exit;
+    }
+    
 }
