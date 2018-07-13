@@ -8,10 +8,6 @@
 #home_sld .image-overaly-bg{
   z-index: 2;
 }
-
-.Home #header{
-  display: none;
-}
 .Home #header .logo-wrapper{
   display: none;
 }
