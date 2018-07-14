@@ -91,6 +91,12 @@
 				{
 					$url.='?arrive='.Request::input("arrive")."&departure=".Request::input("departure");
 				}
+                
+                $editorproperty_images = CustomQuery::getPropertyImagesFromDB($props->id,3);
+                $eddatasrc = array();
+                foreach($editorproperty_images as $si_img){
+                    $eddatasrc[] = array('file_id'=>$si_img->file_id,'folder'=>$si_img->folder_id,'file_name'=>$si_img->file_name);
+                }
 
 
 			?> 
@@ -98,8 +104,7 @@
       <div>
         <div class="col-md-6 col-sm-6 col-xs-12">
          <a  href="{{ $url }}" >
-		          <img src="{{ URL::to('propertysliderimagebyid/'.$props->id)}}" class="img-responsive" title="{{ $props->property_name}}" alt="{{ $props->property_name}}">
-		         
+		          <img src="{{ URL::to('sximo/images/transparent.png') }}" data-src="{{ URL::to('propertysliderimagebyid/'.$props->id)}}" class="img-responsive rad-img" alt="{{ $props->property_name}}" title="{{ $props->property_name}}" data-imagessrc='<?php if(count($eddatasrc) > 0){ echo "["; $ttarr = array(); foreach($eddatasrc as $sisrc){ $ttarr[] = '{"src":"'.URL::to('radtempimage/'.$props->id.'/'.$sisrc['file_id']).'"}'; } echo implode(',',$ttarr); echo "]"; } ?>' />
     		  </a>
         </div>
         <div class="col-md-6 col-sm-6 col-xs-12 slidertext">
@@ -144,10 +149,10 @@
 					$url.='?arrive='.Request::input("arrive")."&departure=".Request::input("departure");
 				}
                 
-                $propertyr_images = CustomQuery::getPropertyImagesFromDB($props->id,3);
-                $datasrc = array();
-                foreach($propertyr_images as $si_img){
-                    $datasrc[] = array('file_id'=>$si_img->file_id,'folder'=>$si_img->folder_id,'file_name'=>$si_img->file_name);
+                $featuredpropertyr_images = CustomQuery::getPropertyImagesFromDB($props->id,3);
+                $featdatasrc = array();
+                foreach($featuredpropertyr_images as $si_img){
+                    $featdatasrc[] = array('file_id'=>$si_img->file_id,'folder'=>$si_img->folder_id,'file_name'=>$si_img->file_name);
                 }
 			?> 
 
@@ -156,8 +161,7 @@
         <div class="row">
           <div class="gridinner">
             <a href="{{ $url }}" title="{{ $props->property_name}}">
-          		  <img src="{{ URL::to('sximo/images/transparent.png') }}" data-src="{{ URL::to('propertysliderimagebyid/'.$props->id)}}" class="img-responsive rad-img" alt="{{ $props->property_name}}" title="{{ $props->property_name}}" data-imagessrc='<?php if(count($datasrc) > 0){ echo "["; $ttarr = array(); foreach($datasrc as $sisrc){ $ttarr[] = '{"src":"'.URL::to('radtempimage/'.$props->id.'/'.$sisrc['file_id']).'"}'; } echo implode(',',$ttarr); echo "]"; } ?>'
-                    /> 
+          		  <img src="{{ URL::to('sximo/images/transparent.png') }}" data-src="{{ URL::to('propertysliderimagebyid/'.$props->id)}}" class="img-responsive rad-img" alt="{{ $props->property_name}}" title="{{ $props->property_name}}" data-imagessrc='<?php if(count($featdatasrc) > 0){ echo "["; $ttarr = array(); foreach($featdatasrc as $sisrc){ $ttarr[] = '{"src":"'.URL::to('radtempimage/'.$props->id.'/'.$sisrc['file_id']).'"}'; } echo implode(',',$ttarr); echo "]"; } ?>' /> 
                   
                   {{-- <img src="{{ URL::to('sximo/images/transparent.png') }}" data-src="http://staging.emporium-voyage.com/propertysliderimagebyid/61" class="img-responsive rad-img" alt="The Soho Hotel " title="The Soho Hotel"
                   data-imagessrc='[{"src":"http://staging.emporium-voyage.com/propertysliderimagebyid/69"},{"src":"http://staging.emporium-voyage.com/propertyimagebyid/213"}]' /> --}}
