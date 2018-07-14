@@ -122,6 +122,7 @@ class CommonHelper
                         }
                     }
                 }
+                $red_url = 'whoiam';
             }
             return $red_url;
         } 
