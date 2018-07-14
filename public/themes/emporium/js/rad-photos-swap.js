@@ -3,6 +3,8 @@
     $.fn.photoSwapFun = function() {
         var imgObj = this;
         var imagessrc =  imgObj.data('imagessrc');
+        imgObj.removeAttr('data-imagessrc');
+        if(typeof imagessrc == 'string'){ imagessrc = $.parseJSON(imagessrc); }
         if(typeof imagessrc == 'object'){
             if(imagessrc.length > 0){
                 var imageObjWidth = parseFloat(imgObj.width()).toFixed(2);
@@ -16,7 +18,7 @@
                             //slidehtml += '<span id="slide-'+imgcnt+'" class="rad-img-slides'+((imgcnt == 0)?' active':'')+'" style="transform: translateX(0%);"><img src="'+imgObj.attr('src')+'" width="100%" /></span>'; imgcnt++;
                             $.each(imagessrc, function(index, value){
                                 if(typeof value['src'] != 'undefined'){
-                                    slidehtml += '<span id="slide-'+imgcnt+'" class="rad-img-slides'+((imgcnt == 0)?' active':'')+'" style="transform: translateX('+(imgcnt * 100)+'%);width: '+imageObjWidth+'px; height: '+imageObjHeight+'px; background-image:url(\''+value['src']+'\')"></span>';
+                                    slidehtml += '<span id="slide-'+imgcnt+'" class="rad-img-slides'+((imgcnt == 0)?' active':'')+'" style="transform: translateX('+(0 * 100)+'%);width: '+imageObjWidth+'px; height: '+imageObjHeight+'px; background-image:url(\''+value['src']+'\')"></span>';
                                     imgcnt++;
                                     is_image_av = true;
                                 }
@@ -71,9 +73,9 @@
                     var tobj = thisObj.find('.rad-slide-row');
                     tobj.stop();
                     tobj.clearQueue().finish();
-                    tobj.css('-webkit-transform','translate3d(-'+transformX+'%)');
+                    /*tobj.css('-webkit-transform','translate3d(-'+transformX+'%)');
                     tobj.css('-moz-transform','translate3d(-'+transformX+'%)');
-                    tobj.css('transform','translateX(-'+transformX+'%)');
+                    tobj.css('transform','translateX(-'+transformX+'%)');*/
                     //console.log(x,' : ',offset.left,' : ',containerWidth,' : ',numImages,' : ',oneImagePortion,' : ',position,' : ',itid,' : ',transformX,' ; ',tobj.html()); 
                 }
                            
@@ -96,16 +98,12 @@
                     $("<img/>")
                     .on('load', function() { 
                         thisObj.attr('src',$(this).attr('src'));
-                        if(typeof thisObj.data('imagessrc') != 'undefined'){  
-                            thisObj.photoSwapFun();
-                        }                
+                        thisObj.photoInitFun();             
                         if(totalHotelImg == rri){ if(typeof $grid != 'undefined'){ $grid.masonry('layout'); } }else{ rri++; }
                     })
                     .on('error', function() { 
                         thisObj.attr('src',noImg); thisObj.css('opacity','0'); 
-                        if(typeof thisObj.data('imagessrc') != 'undefined'){  
-                            thisObj.photoSwapFun();
-                        }
+                        thisObj.photoInitFun();
                         if(totalHotelImg == rri){ if(typeof $grid != 'undefined'){ $grid.masonry('layout'); } }else{ rri++; }
                     })
                     .attr("src", thisSrc);
@@ -123,6 +121,29 @@
                 
                 thisObj.removeClass('rad-img');
             });
+        }
+    },
+    
+    $.fn.photoInitFun = function() {
+        var thisObj = this;
+        
+        if(typeof thisObj.data('ajax-link') != 'undefined'){
+            var rurl = thisObj.data('ajax-link').trim();
+            thisObj.removeAttr('data-ajax-link');
+            if(rurl.length > 0){
+                $.ajax({
+                    type: 'POST',
+                    url: rurl,
+                    success: function(res){
+                       thisObj.data('imagessrc',res);
+                       thisObj.photoSwapFun();
+                    },
+                    error: function(e){}
+                });   
+            }
+        }
+        else if(typeof thisObj.data('imagessrc') != 'undefined'){ 
+            thisObj.photoSwapFun();
         }
     }
 

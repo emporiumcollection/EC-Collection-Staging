@@ -608,6 +608,22 @@ class PropertyController extends Controller {
 		return $image;
 	}
     
+    public function getPropertyAjaxFilesByID(Request $request)
+	{	
+		$propid = $request->propid;
+        $limit = (int) $request->limit;
+        $limit = (($limit > 0)?$limit:0);
+        
+        
+        $featuredpropertyr_images = CustomQuery::getPropertyImagesFromDB($propid,$limit);
+        $featdatasrc = array();
+        foreach($featuredpropertyr_images as $si_img){
+            $featdatasrc[] = array('src'=> \URL::to('radtempimage/'.$propid.'/'.$si_img->file_id));
+        }
+        
+		return json_encode($featdatasrc);
+	}
+    
     public function getPropertyImageByFileID(Request $request)
 	{	
 		$propid = $request->propid;
