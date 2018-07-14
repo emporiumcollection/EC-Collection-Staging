@@ -97,10 +97,10 @@ class CommonHelper
         $user = self::getusertype($group_id);
         $match_array = array('hotel-b2b');
         $return = "";
-        
+        $red_url = '';
         if(in_array($user,$match_array)){ 
             $obj_hotel  = \DB::table('tb_properties')->where('user_id', $u_id)->first();
-            $red_url = '';
+            
             if(!empty($obj_hotel)){ 
                 if(isset($obj_hotel->approved)){ 
                     if($obj_hotel->approved==0){ 
@@ -123,9 +123,12 @@ class CommonHelper
                     }
                 }
                 $red_url = 'whoiam';
-            }
-            return $red_url;
+            }else{
+                $red_url = 'whoiam';
+            }            
         } 
+        return $red_url;
+        
     }
     //end
     
