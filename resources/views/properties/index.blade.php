@@ -114,6 +114,11 @@
 						@endif
 						<a  href="{{ URL::to('properties_settings/'.$row->id.'/property_images') }}" class="tips btn btn-xs btn-success" title="Property Images"><i class="fa fa-file-image-o"></i></a>
 						<a  href="#" onclick="getseasonrates({{$row->id}});" class="tips btn btn-xs btn-success" title="Rates" data-toggle="modal" data-target="#psrModal"><i class="fa fa-usd"></i></a>
+                        @if($row->approved==1)
+							<a  href="#" class="tips btn btn-xs btn-success" title="Click to Unapprove " onclick="change_approval(this,'approved','{{$row->id}}',0);"><i class="fa fa-check "></i></a>
+						@else
+							<a  href="#" class="tips btn btn-xs btn-danger" title="Click to Approve " onclick="change_approval(this,'approved','{{$row->id}}',1);"><i class="fa fa-times "></i></a>
+						@endif
 				</td>				 
                 </tr>
 				
@@ -191,6 +196,44 @@ function select_field_changeType(type)
 		}
 	  }
 	});
+}
+
+
+function change_approval(row,filed_name,row_id,act)
+{
+	if(row_id!='' && row_id>0)
+	{
+		$.ajax({
+		  url: "{{ URL::to('enable_diable_hotel_approval')}}",
+		  type: "post",
+		  data: 'filed_name='+filed_name+'&row_id='+row_id+'&action='+act,
+		  success: function(data){
+			if(data!='error')
+			{
+				if(act==1)
+				{
+					$(row).removeClass('btn-danger');
+					$(row).addClass('btn-success');
+					$(row).children( "i.fa" ).removeClass('fa-times');
+					$(row).children( "i.fa" ).addClass('fa-check');
+					$(row).attr("onclick","change_approval(this,'"+filed_name+"','"+row_id+"',0)");
+					$(row).attr("title","Click to Unapprove");
+					$(row).attr("data-original-title","Click to Unapprove");
+				}
+				else if(act==0)
+				{	
+					$(row).removeClass('btn-success');
+					$(row).addClass('btn-danger');
+					$(row).children( "i.fa" ).removeClass('fa-check');
+					$(row).children( "i.fa" ).addClass('fa-times');
+					$(row).attr("onclick","change_approval(this,'"+filed_name+"','"+row_id+"',1)");
+					$(row).attr("title","Click to Approve");
+					$(row).attr("data-original-title","Click to Approve");
+				}
+			}
+		  }
+		});
+	}
 }
 
 function change_option(row,filed_name,row_id,act)

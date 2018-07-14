@@ -189,9 +189,15 @@ class HotelMembershipController extends Controller {
      * For Hotel Choose Package Page
     */
     public function hotelPackage(Request $request) {
-        $this->data['packages'] = \DB::table('tb_packages')->where('package_status', 1)->get();
+        $group_id = \Session::get('gid');
+        $this->data['packages'] = \DB::table('tb_packages')->where('allow_user_groups', $group_id)->where('package_status', 1)->get();
         $this->data['moduleDetails'] = \DB::table('tb_module')->get();
-        return view('frontend.hotel_membership.hotel_package', $this->data);
+        
+        $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+        $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.frontend.hotel_membership.hotel_package':'frontend.hotel_membership.hotel_package';      
+        
+        return view($file_name, $this->data);
+        //return view('frontend.hotel_membership.hotel_package', $this->data);
     }
 
     /*
@@ -259,7 +265,11 @@ class HotelMembershipController extends Controller {
 		}
 		$this->data['adspackages'] = $adsdataPackage;
 		
-        return view('frontend.hotel_membership.hotel_cart', $this->data);
+        $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+        $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.frontend.hotel_membership.hotel_cart':'frontend.hotel_membership.hotel_cart';
+        
+        return view($file_name, $this->data);
+        //return view('frontend.hotel_membership.hotel_cart', $this->data);
     }
 
     /*
@@ -295,7 +305,11 @@ class HotelMembershipController extends Controller {
 		}
 		$this->data['adspackages'] = $adsdataPackage;
         $this->data['pageslider']="";
-        return view('frontend.hotel_membership.hotel_checkout', $this->data);
+        
+        $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+        $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.frontend.hotel_membership.hotel_checkout':'frontend.hotel_membership.hotel_checkout';
+        return view($file_name, $this->data);
+        //return view('frontend.hotel_membership.hotel_checkout', $this->data);
     }
 
     /*

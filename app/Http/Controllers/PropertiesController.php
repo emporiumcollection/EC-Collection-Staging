@@ -2015,6 +2015,49 @@ function property_images_wetransfer(Request $request) {
                     return json_encode($getfilejson);
 
              }
+             
+    function enable_diable_hotelApproval() {
+        $uid = \Auth::user()->id;
+        $items = Input::get('row_id');
+        $filed_name = Input::get('filed_name');
+        $action = Input::get('action');
+        if ($items != '') {
+            $exist = \DB::table('tb_properties')->where('id', $items)->first();
+            //print_r($exist); die;
+            if (!empty($exist)) {
+                $usr_id= $exist->user_id;
+                \DB::table('tb_properties')->where('id', $items)->update([$filed_name => $action]);
+                
+                $email_user = \DB::table('tb_users')->where('id', $usr_id)->first();
+                                
+                $edata = array();
+                $emlData['frmemail'] = 'info@design-locations.biz';                
+                $emlData['email'] = $email_user->email;
+                $emlData['subject'] = 'Property Approval';                
+                
+                if($action==1){                     
+                    $file_name = 'user.emails.hotel_approval';
+                }else{                      
+                    $file_name = 'user.emails.hotel_unapproval';
+                }
+                
+                \Mail::send($file_name, $edata, function($message) use ($emlData) {
+                    $message->from($emlData['frmemail'], CNF_APPNAME);
+
+                    $message->to($emlData['email']);
+
+                    $message->subject($emlData['subject']);
+                });
+                
+                return "success";
+            } else {
+                return "error";
+            }
+        } else {
+            return "error";
+        }
+    }
+                                       
 
 
 }

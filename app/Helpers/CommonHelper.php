@@ -1,6 +1,7 @@
 <?php
 namespace App\Helpers;
 use Session, DB ;
+
 class CommonHelper
 {
     static function url_title($str, $separator = '-', $lowercase = FALSE)
@@ -83,6 +84,47 @@ class CommonHelper
         if(in_array($user,$match_array)){ $return = 'users_admin.metronic'; }
         
         return $return;
+    }
+    //end
+    
+    //is user metronic dashboard
+    static function check_membership_package($u_id=0){
+        $u_id = (int) $u_id;
+        $g_id = \Auth::user()->group_id;
+        
+        $g_id = (int) $g_id;
+        $group_id = (int) (($g_id > 0)?$g_id:\Auth::user()->group_id);
+        $user = self::getusertype($group_id);
+        $match_array = array('hotel-b2b');
+        $return = "";
+        
+        if(in_array($user,$match_array)){ 
+            $obj_hotel  = \DB::table('tb_properties')->where('user_id', $u_id)->first();
+            $red_url = '';
+            if(!empty($obj_hotel)){ 
+                if(isset($obj_hotel->approved)){ 
+                    if($obj_hotel->approved==0){ 
+                        $red_url = 'whoiam';
+                    }else{ 
+                        $obj_order  = \DB::table('tb_orders')->where('user_id', $u_id)->get();
+                        //print_r($obj_order); die;
+                        if(count($obj_order) > 0){
+                            foreach($obj_order as $order){
+                                if($order->status=="Success"){
+                                    $red_url = '';
+                                    break;
+                                }else{
+                                    $red_url = 'hotel/package';
+                                }
+                            }
+                        }else{                        
+                            $red_url = 'hotel/package';
+                        }
+                    }
+                }
+            }
+            return $red_url;
+        } 
     }
     //end
     

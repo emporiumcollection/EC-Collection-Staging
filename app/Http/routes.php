@@ -263,6 +263,9 @@ Route::group(['middleware' => 'auth'], function()
 	Route::post('change_property_type', 'PropertiesController@change_property_type');
 	Route::post('enable_diable_propertystatus', 'PropertiesController@enable_diable_propertystatus');
 	Route::post('get_category_rooms_reservations', 'PropertiesController@get_category_rooms_reservations');
+    
+    Route::post('enable_diable_hotel_approval', 'PropertiesController@enable_diable_hotelApproval');
+    
 	Route::post('add_new_reservation', 'PropertiesController@add_new_reservation');
 	Route::post('add_new_booking', 'HomeController@new_booking');
 	
