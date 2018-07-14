@@ -51,7 +51,7 @@
 							<div class="m-accordion__item-body collapse" id="m_accordion_3_item_{{ $k }}_body" class=" " role="tabpanel" aria-labelledby="m_accordion_3_item_{{ $k }}_head" data-parent="#m_accordion_3">
 								<div class="m-accordion__item-content">
 									<div  style="width:20%; padding-right: 1%;" class="pull-left">
-                                        <img class="img-responsive object-fit-size" src="{{URL::to('uploads/packages/'.$package->package_image)}}" alt="{{$package->package_image}}" >
+                                        <img class="img-responsive object-fit-size" src="{{URL::to('uploads/packages/'.$package->package_image)}}" alt="{{$package->package_image}}" style="width: 100%;" >
                                     </div>
                                     <div class="pull-right" style="width:70%">
                                         <p>Package Duration :: {{$package->package_duration}} {{$package->package_duration_type}}</p>  
