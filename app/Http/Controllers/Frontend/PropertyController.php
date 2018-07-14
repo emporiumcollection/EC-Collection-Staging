@@ -607,6 +607,33 @@ class PropertyController extends Controller {
 		}
 		return $image;
 	}
+    
+    public function getPropertyImageByFileID(Request $request)
+	{	
+		$propid = $request->propid;
+        $fileid = $request->fileid;
+        
+        $props = \DB::table('tb_properties')->select('property_name')->where('id', $propid)->first();
+		$propertyName = strtolower(str_replace(' ','',$props->property_name));
+		$propertyImage = CustomQuery::getPropertyImagesFromDBByFileId($fileid);	
+		$remoteImage = $propertyImage->containerfolder_src;		
+		$propertyNameImg = $propertyImage->containerfolder_path_src.'emporium-voyage_'.$propertyName.'.jpeg';
+		$width = Image::make($remoteImage)->width();
+		$height = Image::make($remoteImage)->height();
+		if(file_exists($propertyNameImg)){
+			header("Content-type: image/jpeg");
+			$data = file_get_contents($propertyNameImg);
+			$image = 'data:image/jpeg;base64,' . base64_encode($data);
+		} else {
+			if(!empty($propertyImage)) {
+				$height1 = 600 * $height /$width;
+				$image = Image::make($remoteImage)->resize(600,$height1)->response('jpg');
+			} else {
+				return false;
+			}
+		}
+		return $image;
+	}
 	
 
 	public function getEventsDetail(Request $request) {
