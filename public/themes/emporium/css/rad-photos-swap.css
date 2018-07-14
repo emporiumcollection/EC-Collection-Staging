@@ -3,7 +3,7 @@
 .rad-slider-wrap .images-groups-parent:hover{ opacity: 1; }
 .rad-slider-wrap .images-groups-parent, .rad-slider-wrap .rad-main-outer-image{ -webkit-transition:opacity 0.5s linear; -moz-transition:opacity 0.5s linear; -o-transition:opacity 0.5s linear; -ms-transition:opacity 0.5s linear; transition:opacity 0.5s linear; }
 .rad-slider-wrap .rad-images-parent{ position: relative; overflow: hidden; }
-.rad-slider-wrap .rad-images-parent .rad-slide-row{ -webkit-transition:all 0.5s ease-in; -moz-transition:all 0.5s ease-in; -o-transition:all 0.5s ease-in; -ms-transition:all 0.5s ease-in; transition:all 0.5s ease-in; }
+.rad-slider-wrap .rad-images-parent .rad-slide-row{ -webkit-transition:all 0.3s ease-in; -moz-transition:all 0.3s ease-in; -o-transition:all 0.3s ease-in; -ms-transition:all 0.3s ease-in; transition:all 0.3s ease-in; }
 .rad-slider-wrap .rad-images-parent .rad-slide-row .rad-img-slides{ background-repeat: no-repeat; background-size: cover; background-position: top center; display: inline-block; width:100%; position: absolute; }
 .rad-cursor-click{ background: transparent; width: 100%; height: 100%; position:absolute; overflow: hidden; opacity: 0; z-index: 0; }
 @media only screen and (max-width: 768px){ .rad-cursor-click{ z-index: 9; } }
