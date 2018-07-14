@@ -15,10 +15,11 @@
                         slidehtml += '<div class="rad-images-parent" style="width: '+imageObjWidth+'px; height: '+imageObjHeight+'px;">';
                             slidehtml += '<div class="rad-slide-row" style="left: 0;">';
                             var imgcnt = 0;
-                            //slidehtml += '<span id="slide-'+imgcnt+'" class="rad-img-slides'+((imgcnt == 0)?' active':'')+'" style="transform: translateX(0%);"><img src="'+imgObj.attr('src')+'" width="100%" /></span>'; imgcnt++;
+                            //slidehtml += '<span id="slide-'+imgcnt+'" class="rad-img-slides'+((imgcnt == 0)?' active':'')+'" style="left: 0%;"><img src="'+imgObj.attr('src')+'" width="100%" /></span>'; imgcnt++;
                             $.each(imagessrc, function(index, value){
                                 if(typeof value['src'] != 'undefined'){
-                                    slidehtml += '<span id="slide-'+imgcnt+'" class="rad-img-slides'+((imgcnt == 0)?' active':'')+'" style="transform: translateX('+(0 * 100)+'%);width: '+imageObjWidth+'px; height: '+imageObjHeight+'px; background-image:url(\''+value['src']+'\')"></span>';
+                                    //slidehtml += '<span id="slide-'+imgcnt+'" class="rad-img-slides'+((imgcnt == 0)?' active':'')+'" style="transform: translateX('+(0 * 100)+'%);width: '+imageObjWidth+'px; height: '+imageObjHeight+'px; background-image:url(\''+value['src']+'\')"></span>';
+                                    slidehtml += '<span id="slide-'+imgcnt+'" class="rad-img-slides'+((imgcnt == 0)?' active':'')+'" style="left:'+((imgcnt == 0)?'0':'100')+'%; width: '+imageObjWidth+'px; height: '+imageObjHeight+'px; background-image:url(\''+value['src']+'\')"></span>';
                                     imgcnt++;
                                     is_image_av = true;
                                 }
@@ -38,6 +39,38 @@
             }
         }
     },
+    
+    $.fn.photoFadeInOut = function(position) {
+        var thisObj = this;
+        
+        thisObj.find('.rad-slide-row .rad-img-slides').removeClass('active');
+        thisObj.find('.rad-slide-row').find("#slide-"+position).addClass('active');
+    }
+    
+    $.fn.photoSlideEffect = function(position) {
+        var thisObj = this;
+        var itid = parseInt(thisObj.find('.rad-slide-row .rad-img-slides.active').attr('id').split("-").pop());
+        var $movetype = 'left';
+        if(itid > position){ $movetype = 'right'; }
+        
+        var currentActive = thisObj.find('.rad-slide-row').find("#slide-"+position);
+        var previousActive = thisObj.find('.rad-slide-row .rad-img-slides.active');
+        
+        thisObj.find('.rad-slide-row .rad-img-slides').removeClass('active');
+        currentActive.addClass('active');
+        
+        previousActive.css('z-index','0');
+        currentActive.css('z-index','1');
+        
+        currentActive.stop();
+        currentActive.clearQueue().finish();
+        previousActive.stop();
+        previousActive.clearQueue().finish();
+        
+        var timerEv = 400;
+        previousActive.animate({left: (($movetype == 'left')?'-25':'25')+'%'}, timerEv, 'swing', function(){ previousActive.css('left',(($movetype == 'left')?'-100':'100')+'%'); });
+        currentActive.animate({left: '0%'}, timerEv, 'linear');
+    }
     
     $.fn.photoOnMouseOver = function() {
         var rObj = this;
@@ -67,13 +100,14 @@
                 var itid = parseInt(thisObj.find('.rad-slide-row .rad-img-slides.active').attr('id').split("-").pop());
                 if(itid === position){ isanimate = false; }
                 if(isanimate){
-                    thisObj.find('.rad-slide-row .rad-img-slides').removeClass('active');
+                    thisObj.photoSlideEffect(position);
+                    /*thisObj.find('.rad-slide-row .rad-img-slides').removeClass('active');
                     thisObj.find('.rad-slide-row').find("#slide-"+position).addClass('active');
                     transformX = (position * 100);
                     var tobj = thisObj.find('.rad-slide-row');
                     tobj.stop();
                     tobj.clearQueue().finish();
-                    /*tobj.css('-webkit-transform','translate3d(-'+transformX+'%)');
+                    tobj.css('-webkit-transform','translate3d(-'+transformX+'%)');
                     tobj.css('-moz-transform','translate3d(-'+transformX+'%)');
                     tobj.css('transform','translateX(-'+transformX+'%)');*/
                     //console.log(x,' : ',offset.left,' : ',containerWidth,' : ',numImages,' : ',oneImagePortion,' : ',position,' : ',itid,' : ',transformX,' ; ',tobj.html()); 
