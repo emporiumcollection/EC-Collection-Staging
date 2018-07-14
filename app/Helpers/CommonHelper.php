@@ -121,8 +121,9 @@ class CommonHelper
                             $red_url = 'hotel/package';
                         }
                     }
+                }else{
+                    $red_url = 'whoiam';
                 }
-                $red_url = 'whoiam';
             }else{
                 $red_url = 'whoiam';
             }            
