@@ -415,7 +415,7 @@ th.next.available i
 }
 
 
-.gridinner .image:hover a img
+/*.gridinner .image:hover a img
 {
 -webkit-filter: blur(3px);
     -moz-filter: blur(3px);
@@ -462,7 +462,8 @@ position: absolute;
 .gridinner .image:hover .showhide
 {
 opacity:1;
-}
+}*/
+
 .gridheading 
 {
  
