@@ -1,5 +1,6 @@
 (function($) {
-
+    
+    //in image tag (data-imagessrc='[{"src":"http://example.com/imgage_link.jpg"},{"src":"http://example.com/imgage_link.png"}]')
     $.fn.photoSwapFun = function() {
         var imgObj = this;
         var imagessrc =  imgObj.data('imagessrc');
@@ -39,13 +40,14 @@
             }
         }
     },
+    //End
     
     $.fn.photoFadeInOut = function(position) {
         var thisObj = this;
         
         thisObj.find('.rad-slide-row .rad-img-slides').removeClass('active');
         thisObj.find('.rad-slide-row').find("#slide-"+position).addClass('active');
-    }
+    },
     
     $.fn.photoSlideEffect = function(position) {
         var thisObj = this;
@@ -70,7 +72,8 @@
         var timerEv = 400;
         previousActive.animate({left: (($movetype == 'left')?'-25':'25')+'%'}, timerEv, 'swing', function(){ previousActive.css('left',(($movetype == 'left')?'-100':'100')+'%'); });
         currentActive.animate({left: '0%'}, timerEv, 'linear');
-    }
+    },
+    
     
     $.fn.photoOnMouseOver = function() {
         var rObj = this;
@@ -117,6 +120,7 @@
         });
     },
     
+    
     $.fn.photoLoadAfterPageLoad = function(noImg) {
         var imag_cll = this;
         if(typeof $grid != 'undefined'){ $grid.masonry('layout'); }
@@ -158,6 +162,7 @@
         }
     },
     
+    //in image tag data-ajax-link="http://sample.com/page" (FYI: return data in form of json ex. [{"src":"http://example.com/imgage_link.jpg"},{"src":"http://example.com/imgage_link.png"}])
     $.fn.photoInitFun = function() {
         var thisObj = this;
         
@@ -180,5 +185,6 @@
             thisObj.photoSwapFun();
         }
     }
+    //End
 
 }(jQuery));
