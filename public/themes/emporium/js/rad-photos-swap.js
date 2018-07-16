@@ -69,8 +69,8 @@
         previousActive.stop();
         previousActive.clearQueue().finish();
         
-        var timerEv = 400;
-        previousActive.animate({left: (($movetype == 'left')?'-25':'25')+'%'}, timerEv, 'swing', function(){ previousActive.css('left',(($movetype == 'left')?'-100':'100')+'%'); });
+        var timerEv = 300;
+        previousActive.animate({left: (($movetype == 'left')?'-20':'20')+'%'}, timerEv, 'swing', function(){ previousActive.css('left',(($movetype == 'left')?'-100':'100')+'%'); });
         currentActive.animate({left: '0%'}, timerEv, 'linear');
     },
     
