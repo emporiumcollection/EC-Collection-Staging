@@ -144,6 +144,9 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
+            
+            
+            
             // Open Left Navigation For Search By Date on Page Load
             @if(isset($_GET['action']) && $_GET['action']=='bydate' )
             $('[data-action="search-by-date"]').trigger('click');
@@ -221,10 +224,11 @@
             /*
             * Register BUTTON  Click Start Action Here
             */
-
+            
             $("#customerRegisterarioForm").submit(function (event) {
 
-
+                
+                
                 var countryData = $("#txtmobileNumber").intlTelInput("getSelectedCountryData");
 
                 var error = $("#txtmobileNumber").intlTelInput("getValidationError");
@@ -253,7 +257,8 @@
 
                         if (data.status == 'success') {
                             $(".ai-sign-up-form-success-msg").html(data.message);
-                            window.location.href = "{{URL::to('whoiam')}}";
+                            //window.location.href = "{{URL::to('whoiam')}}";
+                            window.location.href = "{{URL::to('dashboard')}}";
                         }
                         else {
                             var message = data.message;
@@ -276,6 +281,13 @@
             validMsg = $("#valid-msg");
         // initialise plugin
         telInput.intlTelInput({
+            initialCountry: "auto",
+            geoIpLookup: function(callback) {
+                $.get('https://ipinfo.io', function() {}, "jsonp").always(function(resp) {
+                  var countryCode = (resp && resp.country) ? resp.country : "";
+                  callback(countryCode);
+                });
+            },
             utilsScript: "{{ asset('sximo/assets/js/utils.js')}}"
         });
 

@@ -14,10 +14,55 @@
 						<ul class="m-menu__nav  m-menu__nav--dropdown-submenu-arrow ">
                             
                             <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  m-menu-submenu-toggle="hover">
-                                <a href="{{ URL::to('dashboard')}}" class="m-menu__link"><i class="m-menu__link-icon fa fa-dashboard"></i> <span class="m-menu__link-text">{{ Lang::get('core.m_dashboard') }}</span></a>
+                                <a href="{{ URL::to('dashboard')}}" class="m-menu__link"><i class="m-menu__link-icon fa fa-dashboard"></i> <span class="m-menu__link-text">Dashboard & Profile</span></a>
                             </li>
                             
-                            @foreach ($sidebar as $menu)
+                            <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  m-menu-submenu-toggle="hover">
+                                <a href="{{ URL::to('hotel/package')}}" class="m-menu__link"><i class="m-menu__link-icon fa fa-dashboard"></i> <span class="m-menu__link-text">Membership & Support Services</span></a>
+                            </li>
+                            
+                            <li class="m-menu__item m-menu__item--submenu m-menu__item" aria-haspopup="true" m-menu-submenu-toggle="hover">
+                                    <a href="#" class="m-menu__link  m-menu__toggle ">                                    
+                                        <i class="m-menu__link-icon icon-calendar"></i>
+                                        <span class="m-menu__link-text">
+                        						Reservation & Distribution
+                                        </span>
+                                        <i class="m-menu__ver-arrow la la-angle-right"></i>
+                                    </a>
+                                  
+                                    <div class="m-menu__submenu " m-hidden-height="80" style="">
+                                        <span class="m-menu__arrow"></span>
+                                            <ul class="m-menu__subnav">
+                                                <li class="m-menu__item " aria-haspopup="true" m-menu-link-redirect="1">
+                                                    <a href="#" class="m-menu__link">                           
+                                                        <i class="m-menu__link-icon icon-calendar"></i>
+                                                        <span class="m-menu__link-text">Property Management System</span>
+                                                    </a>
+                                                </li>
+                                                <li class="m-menu__item " aria-haspopup="true" m-menu-link-redirect="1">
+                                                    <a href="#" class="m-menu__link">
+                                                        
+                                                        <i class="m-menu__link-icon icon-calendar"></i>
+                                                        <span class="m-menu__link-text">
+                                                            Reservation Management System
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                            </ul>                                            
+                                        </div>
+                                                                    
+                             </li> 
+                            
+                            <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  m-menu-submenu-toggle="hover">
+                                <a href="#" class="m-menu__link"><i class="m-menu__link-icon fa fa-dashboard"></i> <span class="m-menu__link-text">Sales & Marketing</span></a>
+                            </li>
+                            
+                            <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  m-menu-submenu-toggle="hover">
+                                <a href="#" class="m-menu__link"><i class="m-menu__link-icon fa fa-dashboard"></i> <span class="m-menu__link-text">Quality Assurance</span></a>
+                            </li>
+                            
+                            
+                           <?php /* @foreach ($sidebar as $menu)
                                 <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  m-menu-submenu-toggle="hover">
                                     <a  
                                     @if($menu['menu_type'] =='external')
@@ -82,7 +127,7 @@
                                     @endif
                                 </li>
                             @endforeach
-                            
+                            */ ?>
 						</ul>
 					</div>
 					<!-- END: Aside Menu -->

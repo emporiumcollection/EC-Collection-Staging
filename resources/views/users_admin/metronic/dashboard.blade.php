@@ -5,7 +5,7 @@
 @stop
 
 @section('subheader_search')
-    <div class="m-subheader-search">
+    <?php /* <div class="m-subheader-search">
         <h2 class="m-subheader-search__title">
     		Recent Bookings
     		<span class="m-subheader-search__desc">
@@ -51,7 +51,7 @@
     			</div>
     		</div>
     	</form>
-    </div>
+    </div> */ ?>
 @stop
 
 @section('breadcrumb')
@@ -65,7 +65,12 @@
 
 @section('content')
     <!--Begin::Section_portlet-->
-	<div class="m-portlet">
+    <div class="m-portlet">
+		<div class="m-portlet__body  m-portlet__body--no-padding">
+			Space for slider            
+		</div>
+	</div>
+	<?php /* <div class="m-portlet">
 		<div class="m-portlet__body  m-portlet__body--no-padding">
 			<div class="row m-row--no-padding m-row--col-separator-xl">
 				<div class="col-xl-4">
@@ -189,11 +194,11 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> */ ?>
 	<!--End::Section_portlet-->
     
     <!--Begin::Section-->
-	<div class="row">
+	<?php /* <div class="row">
 		<div class="col-xl-12">
 			<div class="m-portlet m-portlet--mobile ">
 				<div class="m-portlet__head">
@@ -291,5 +296,5 @@
 			</div>
 		</div>		
 	</div>
-	<!--End::Section-->
+	<!--End::Section--> */ ?>
 @stop

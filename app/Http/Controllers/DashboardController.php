@@ -14,10 +14,11 @@ class DashboardController extends Controller {
 
 	public function getIndex( Request $request )
 	{
-        $url = \CommonHelper::check_membership_package(\Session::get('uid'));
+        /*$url = \CommonHelper::check_membership_package(\Session::get('uid'));
         if(strlen(trim($url))>0){
             return Redirect::to($url);
-        }
+        }*/
+        
         $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
         $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.dashboard':'dashboard.index';      
           

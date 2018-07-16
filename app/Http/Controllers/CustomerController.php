@@ -117,7 +117,7 @@ class CustomerController extends Controller {
 //            'lastname' => 'required|alpha_num|min:2',
             'user_type' => 'required|integer',
             'email' => 'required|email|unique:tb_users',
-            'password' => 'required',
+            'password' => 'required|min:8|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=)(?=.*[\d\X])(?=.*[!$#%]).*$/',
             'txtmobileNumber' =>'required',
 //            'mobile_number' => mobile_number'required|confirmed',
 //            'password_confirmation' => 'required',
@@ -147,11 +147,21 @@ class CustomerController extends Controller {
             $authen->mobile_number=trim($request->input('txtmobileNumber'));
             $authen->mobile_code=trim($request->input('txtmobileDialcode'));
             $authen->password = \Hash::make($request->input('password'));
-            $authen->active = '0';
+            $authen->active = '1';
             $authen->save();
 
             $ucdata['user_id'] = $authen->id;
-            \Session::set("uid",$authen->id);
+            $userId = $authen->id;
+            //\Session::set("uid",$authen->id);
+            
+            \Auth::loginUsingId($userId);
+            \DB::table('tb_users')->where('id', '=', $userId)->update(array('last_login' => date("Y-m-d H:i:s")));
+            \Session::put('uid', $userId);
+            \Session::put('gid', $authen->group_id);
+            \Session::put('eid', $authen->email);
+            \Session::put('ll', date("Y-m-d H:i:s"));      
+            
+                                 
 
 //            $ucdata['company_name'] = Input::get('company_name');
 //            $ucdata['company_address'] = Input::get('company_address');
