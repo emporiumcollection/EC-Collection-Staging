@@ -14,6 +14,9 @@
 .lognSignPopoUp{
   width: 100%;
 }
+.Home #header{
+  background: transparent !important;
+}
 @media (min-width: 1025px){
   .Home .mobilemenu {    
       left: -340px !important;    
@@ -4317,6 +4320,7 @@ home_sld .u-bg--gray-dark {
 }
    
 }
+
 
 @media (max-width: 480px){
   .Home .sliderFooter ul li a {
