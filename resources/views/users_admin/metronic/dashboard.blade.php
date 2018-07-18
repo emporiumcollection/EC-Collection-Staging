@@ -94,8 +94,7 @@
     @endif
     <div class="m--clearfix" style="clear: both;"><br /></div>
     <!--Begin::Section_portlet-->
-    <div class="m-portlet">
-		<div class="m-portlet__body  m-portlet__body--no-padding">
+    
 			    <div class="row">
 					<div class="col-sm-12 col-md-4 col-xl-4">
 						<!--begin:: Widgets/Tasks -->
@@ -1013,11 +1012,9 @@
 				</div>
 				<!--End::Section-->
                 
-		</div>
-	</div>
-	<div class="m-portlet">
-		<div class="m-portlet__body  m-portlet__body--no-padding">
-			<div class="row m-row--no-padding m-row--col-separator-xl">
+		
+	
+			<div class="row">
 				<div class="col-sm-12 col-md-4 col-xl-4">
 					
                     
@@ -1027,97 +1024,30 @@
 							<div class="m-portlet__head-caption">
 								<div class="m-portlet__head-title">
 									<h3 class="m-portlet__head-text">
-										Announcements
+										
 									</h3>
 								</div>
-							</div>
-							<div class="m-portlet__head-tools">
-								<ul class="m-portlet__nav">
-									<li class="m-portlet__nav-item m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push" m-dropdown-toggle="hover">
-										<a href="#" class="m-portlet__nav-link m-portlet__nav-link--icon m-portlet__nav-link--icon-xl">
-											<i class="la la-ellipsis-h m--font-light"></i>
-										</a>
-										<div class="m-dropdown__wrapper">
-											<span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
-											<div class="m-dropdown__inner">
-												<div class="m-dropdown__body">
-													<div class="m-dropdown__content">
-														<ul class="m-nav">
-															<li class="m-nav__section m-nav__section--first">
-																<span class="m-nav__section-text">
-																	Quick Actions
-																</span>
-															</li>
-															<li class="m-nav__item">
-																<a href="" class="m-nav__link">
-																	<i class="m-nav__link-icon flaticon-share"></i>
-																	<span class="m-nav__link-text">
-																		Activity
-																	</span>
-																</a>
-															</li>
-															<li class="m-nav__item">
-																<a href="" class="m-nav__link">
-																	<i class="m-nav__link-icon flaticon-chat-1"></i>
-																	<span class="m-nav__link-text">
-																		Messages
-																	</span>
-																</a>
-															</li>
-															<li class="m-nav__item">
-																<a href="" class="m-nav__link">
-																	<i class="m-nav__link-icon flaticon-info"></i>
-																	<span class="m-nav__link-text">
-																		FAQ
-																	</span>
-																</a>
-															</li>
-															<li class="m-nav__item">
-																<a href="" class="m-nav__link">
-																	<i class="m-nav__link-icon flaticon-lifebuoy"></i>
-																	<span class="m-nav__link-text">
-																		Support
-																	</span>
-																</a>
-															</li>
-															<li class="m-nav__separator m-nav__separator--fit"></li>
-															<li class="m-nav__item">
-																<a href="#" class="btn btn-outline-danger m-btn m-btn--pill m-btn--wide btn-sm">
-																	Cancel
-																</a>
-															</li>
-														</ul>
-													</div>
-												</div>
-											</div>
-										</div>
-									</li>
-								</ul>
-							</div>
+							</div>							
 						</div>
 						<div class="m-portlet__body">
 							<!--begin::Widget 7-->
-							<div class="m-widget7 m-widget7--skin-dark">
-								<div class="m-widget7__desc">
-									Lorem ipsum dolor sit amet,consectetuer edipiscing elit,sed diam nonummy euismod tinciduntut laoreet doloremagna
-								</div>
+							<div class="m-widget7 m-widget7--skin-dark">								
 								<div class="m-widget7__user">
 									<div class="m-widget7__user-img">
-										<img class="m-widget7__img" src="../../assets/app/media/img//users/100_5.jpg" alt="">
+										<img class="m-widget7__img" src="{{asset('metronic/assets/app/media/img/users/100_3.jpg')}}" alt="">
 									</div>
 									<div class="m-widget7__info">
 										<span class="m-widget7__username">
 											Nick Mana
 										</span>
-										<br>
-										<span class="m-widget7__time">
-											6 hours ago
-										</span>
 									</div>
 								</div>
+                                <div class="m-widget7__desc">
+									Welcome Text Here Welcome Text Here Welcome Text Here Welcome Text Here
+								</div>
 								<div class="m-widget7__button">
-									<a class="m-btn m-btn--pill btn btn-accent" href="#" role="button">
-										All Feeds
+									<a class="m-btn m-btn--pill btn btn-accent" href="{{URL::to('user/profile')}}" role="button">
+										GO TO MY PROFILE
 									</a>
 								</div>
 							</div>
@@ -1136,7 +1066,7 @@
 							<div class="m-portlet__head-caption">
 								<div class="m-portlet__head-title">
 									<h3 class="m-portlet__head-text">
-										Authors Profit
+										Quick Navigation
 									</h3>
 								</div>
 							</div>
@@ -1212,16 +1142,12 @@
 									</div>
 									<div class="m-widget4__info">
 										<span class="m-widget4__title">
-											Trump Themes
-										</span>
-										<br>
-										<span class="m-widget4__sub">
-											Make Metronic Great Again
+											Property Management
 										</span>
 									</div>
 									<span class="m-widget4__ext">
 										<span class="m-widget4__number m--font-brand">
-											+$2500
+											<a href="#">View</a>
 										</span>
 									</span>
 								</div>
@@ -1231,16 +1157,12 @@
 									</div>
 									<div class="m-widget4__info">
 										<span class="m-widget4__title">
-											StarBucks
-										</span>
-										<br>
-										<span class="m-widget4__sub">
-											Good Coffee & Snacks
+											Reservation Management
 										</span>
 									</div>
 									<span class="m-widget4__ext">
 										<span class="m-widget4__number m--font-brand">
-											-$290
+											<a href="#">View</a>
 										</span>
 									</span>
 								</div>
@@ -1250,16 +1172,12 @@
 									</div>
 									<div class="m-widget4__info">
 										<span class="m-widget4__title">
-											Phyton
-										</span>
-										<br>
-										<span class="m-widget4__sub">
-											A Programming Language
+											Sales Reports
 										</span>
 									</div>
 									<span class="m-widget4__ext">
 										<span class="m-widget4__number m--font-brand">
-											+$17
+											<a href="#">View</a>
 										</span>
 									</span>
 								</div>
@@ -1269,16 +1187,12 @@
 									</div>
 									<div class="m-widget4__info">
 										<span class="m-widget4__title">
-											GreenMakers
-										</span>
-										<br>
-										<span class="m-widget4__sub">
-											Make Green Great Again
-										</span>
+											View Modules
+										</span>										
 									</div>
 									<span class="m-widget4__ext">
 										<span class="m-widget4__number m--font-brand">
-											-$2.50
+											<a href="#">View</a>
 										</span>
 									</span>
 								</div>
@@ -1288,16 +1202,27 @@
 									</div>
 									<div class="m-widget4__info">
 										<span class="m-widget4__title">
-											FlyThemes
-										</span>
-										<br>
-										<span class="m-widget4__sub">
-											A Let's Fly Fast Again Language
+											Cancelations
 										</span>
 									</div>
 									<span class="m-widget4__ext">
 										<span class="m-widget4__number m--font-brand">
-											+$200
+											<a href="#">View</a>
+										</span>
+									</span>
+								</div>
+                                <div class="m-widget4__item">
+									<div class="m-widget4__img m-widget4__img--logo">
+										<img src="assets/app/media/img/client-logos/logo1.png" alt="">
+									</div>
+									<div class="m-widget4__info">
+										<span class="m-widget4__title">
+											Arrivals & Departures
+										</span>
+									</div>
+									<span class="m-widget4__ext">
+										<span class="m-widget4__number m--font-brand">
+											<a href="#">View</a>
 										</span>
 									</span>
 								</div>
@@ -1320,7 +1245,7 @@
 										<div class="m-portlet__head-caption">
 											<div class="m-portlet__head-title">
 												<h3 class="m-portlet__head-text">
-													Earnings
+													Packages
 												</h3>
 											</div>
 										</div>
@@ -1395,27 +1320,18 @@
 												<div class="m-widget_head-owlcarousel-items owl-carousel">
 													<div class="m-widget_head-owlcarousel-item carousel">
 														<span>
-															KeenThemes
-														</span>
-														<span>
-															Admin Themes
-														</span>
+															Package Name 1
+														</span>														
 													</div>
 													<div class="m-widget_head-owlcarousel-item carousel">
 														<span>
-															Creek State
-														</span>
-														<span>
-															WP Experts
-														</span>
+															Package Name 2
+														</span>														
 													</div>
 													<div class="m-widget_head-owlcarousel-item carousel">
 														<span>
-															Onteco
-														</span>
-														<span>
-															Social Networks
-														</span>
+															Package Name 3
+														</span>														
 													</div>
 												</div>
 											</div>
@@ -1427,74 +1343,12 @@
 																<div class="m-widget_body-item-pic">
 																	<img src="assets/app/media/img/users/100_4.jpg" title="">
 																</div>
-																<div class="m-widget_body-item-desc">
+																<div class="m-widget_body-item-desc ">
 																	<span>
-																		Amy Black
-																	</span>
-																	<span>
-																		A Programming Language
-																	</span>
+																		Package Description Package Description Package Description Package Description Package Description Package Description 
+																	</span>																	
 																</div>
-																<div class="m-widget_body-item-price">
-																	<span>
-																		+$381
-																	</span>
-																</div>
-															</div>
-															<div class="m-widget_body-item">
-																<div class="m-widget_body-item-pic">
-																	<img src="assets/app/media/img/users/100_3.jpg" title="">
-																</div>
-																<div class="m-widget_body-item-desc">
-																	<span>
-																		Mike Green
-																	</span>
-																	<span>
-																		Programming Language Definition
-																	</span>
-																</div>
-																<div class="m-widget_body-item-price">
-																	<span>
-																		+$17
-																	</span>
-																</div>
-															</div>
-															<div class="m-widget_body-item">
-																<div class="m-widget_body-item-pic">
-																	<img src="assets/app/media/img/users/100_7.jpg" title="">
-																</div>
-																<div class="m-widget_body-item-desc">
-																	<span>
-																		Jade Blue
-																	</span>
-																	<span>
-																		Let's Fly Fast Again
-																	</span>
-																</div>
-																<div class="m-widget_body-item-price">
-																	<span>
-																		+$200
-																	</span>
-																</div>
-															</div>
-															<div class="m-widget_body-item">
-																<div class="m-widget_body-item-pic">
-																	<img src="assets/app/media/img/users/300_9.jpg" title="">
-																</div>
-																<div class="m-widget_body-item-desc">
-																	<span>
-																		Jimmy Grey
-																	</span>
-																	<span>
-																		Good Coffee & Snacks
-																	</span>
-																</div>
-																<div class="m-widget_body-item-price">
-																	<span>
-																		-$290
-																	</span>
-																</div>
-															</div>
+															</div>																														
 														</div>
 													</div>
 													<div class="m-widget_body-owlcarousel-item carousel">
@@ -1505,72 +1359,11 @@
 																</div>
 																<div class="m-widget_body-item-desc">
 																	<span>
-																		Mike Green
+																	   Package Description 2 Package Description 2 Package Description 2 Package Description 2 Package Description 2 Package  Description 2	
 																	</span>
-																	<span>
-																		Programming Computers in Everyday
-																	</span>
-																</div>
-																<div class="m-widget_body-item-price">
-																	<span>
-																		+$17
-																	</span>
-																</div>
+																</div>																
 															</div>
-															<div class="m-widget_body-item">
-																<div class="m-widget_body-item-pic">
-																	<img src="assets/app/media/img/users/100_4.jpg" title="">
-																</div>
-																<div class="m-widget_body-item-desc">
-																	<span>
-																		Amy Black
-																	</span>
-																	<span>
-																		A Programming Language
-																	</span>
-																</div>
-																<div class="m-widget_body-item-price">
-																	<span>
-																		+$381
-																	</span>
-																</div>
-															</div>
-															<div class="m-widget_body-item">
-																<div class="m-widget_body-item-pic">
-																	<img src="assets/app/media/img/users/100_9.jpg" title="">
-																</div>
-																<div class="m-widget_body-item-desc">
-																	<span>
-																		Jimmy Grey
-																	</span>
-																	<span>
-																		Let's Fly Fast Again
-																	</span>
-																</div>
-																<div class="m-widget_body-item-price">
-																	<span>
-																		-$290
-																	</span>
-																</div>
-															</div>
-															<div class="m-widget_body-item">
-																<div class="m-widget_body-item-pic">
-																	<img src="assets/app/media/img/users/300_7.jpg" title="">
-																</div>
-																<div class="m-widget_body-item-desc">
-																	<span>
-																		Jade Blue
-																	</span>
-																	<span>
-																		Good Coffee & Snacks
-																	</span>
-																</div>
-																<div class="m-widget_body-item-price">
-																	<span>
-																		+$200
-																	</span>
-																</div>
-															</div>
+															
 														</div>
 													</div>
 													<div class="m-widget_body-owlcarousel-item carousel">
@@ -1581,72 +1374,11 @@
 																</div>
 																<div class="m-widget_body-item-desc">
 																	<span>
-																		Jade Blue
-																	</span>
-																	<span>
-																		Good Coffee & Snacks
-																	</span>
-																</div>
-																<div class="m-widget_body-item-price">
-																	<span>
-																		+$200
+																	   Package Description 3 Package Description 3 Package Description 3 Package Description 3 Package Description 3 Package  Description 3	
 																	</span>
 																</div>
 															</div>
-															<div class="m-widget_body-item">
-																<div class="m-widget_body-item-pic">
-																	<img src="assets/app/media/img/users/100_9.jpg" title="">
-																</div>
-																<div class="m-widget_body-item-desc">
-																	<span>
-																		Jimmy Grey
-																	</span>
-																	<span>
-																		Programming Language Definition
-																	</span>
-																</div>
-																<div class="m-widget_body-item-price">
-																	<span>
-																		-$290
-																	</span>
-																</div>
-															</div>
-															<div class="m-widget_body-item">
-																<div class="m-widget_body-item-pic">
-																	<img src="assets/app/media/img/users/100_4.jpg" title="">
-																</div>
-																<div class="m-widget_body-item-desc">
-																	<span>
-																		Amy Black
-																	</span>
-																	<span>
-																		Let's Fly Fast Again
-																	</span>
-																</div>
-																<div class="m-widget_body-item-price">
-																	<span>
-																		+$381
-																	</span>
-																</div>
-															</div>
-															<div class="m-widget_body-item">
-																<div class="m-widget_body-item-pic">
-																	<img src="assets/app/media/img/users/300_3.jpg" title="">
-																</div>
-																<div class="m-widget_body-item-desc">
-																	<span>
-																		Mike Green
-																	</span>
-																	<span>
-																		A Programming Language
-																	</span>
-																</div>
-																<div class="m-widget_body-item-price">
-																	<span>
-																		+$17
-																	</span>
-																</div>
-															</div>
+															
 														</div>
 													</div>
 												</div>
@@ -1669,11 +1401,10 @@
                 </div>
                 				
 			</div>
-		</div>
-  </div>
-  <div class="m-portlet">
-        <div class="m-portlet__body  m-portlet__body--no-padding">
-			<div class="row m-row--no-padding m-row--col-separator-xl">
+		
+            
+            
+			<div class="row">
 				<div class="col-sm-12 col-md-4 col-xl-4">
 					<!--begin:: Widgets/Activity-->
 					<div class="m-portlet m-portlet--bordered-semi m-portlet--widget-fit m-portlet--full-height m-portlet--skin-light  m-portlet--rounded-force">
@@ -2184,11 +1915,9 @@
                 </div>
                 						
 			</div>
-		</div>
-  </div>
-  <div class="m-portlet">
-        <div class="m-portlet__body  m-portlet__body--no-padding">
-			<div class="row m-row--no-padding m-row--col-separator-xl">
+		
+  
+			<div class="row">
 				<div class="col-sm-12 col-md-4 col-xl-4">
 					<!--begin:: Widgets/Activity-->
 					<div class="m-portlet m-portlet--bordered-semi m-portlet--widget-fit m-portlet--full-height m-portlet--skin-light  m-portlet--rounded-force">
@@ -2196,7 +1925,7 @@
 							<div class="m-portlet__head-caption">
 								<div class="m-portlet__head-title">
 									<h3 class="m-portlet__head-text m--font-light">
-										Reservation & Distribution
+										Sales & Marketing
 									</h3>
 								</div>
 							</div>
@@ -2360,7 +2089,7 @@
 															#
 														</td>
 														<td class="m-widget11__app">
-															Application
+															Guest Name & room
 														</td>
 														<td class="m-widget11__sales">
 															Sales
@@ -2744,7 +2473,7 @@
 											<div class="progress-bar m--bg-danger" role="progressbar" style="width: 63%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
 										</div>
 										<span class="m-widget25__progress-sub">
-											Sales Growth
+											Rooms
 										</span>
 									</div>
 									<div class="m-widget25__progress">
@@ -2756,7 +2485,7 @@
 											<div class="progress-bar m--bg-accent" role="progressbar" style="width: 39%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
 										</div>
 										<span class="m-widget25__progress-sub">
-											Product Growth
+											Events
 										</span>
 									</div>
 									<div class="m-widget25__progress" >
@@ -2768,7 +2497,7 @@
 											<div class="progress-bar m--bg-warning" role="progressbar" style="width: 54%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
 										</div>
 										<span class="m-widget25__progress-sub">
-											Community Growth
+											Restuarant / Spa / Bar
 										</span>
 									</div>
 								</div>
@@ -2780,29 +2509,268 @@
                 
                 							
 			</div>
-		</div>
-  </div>
-  <div class="m-portlet">
-        <div class="m-portlet__body  m-portlet__body--no-padding">
-			<div class="row m-row--no-padding m-row--col-separator-xl">
-				<div class="col-xl-12">
-					<!--begin:: Widgets/Stats2-1 -->
-					<div class="m-widget1">
-						<div class="m-widget1__item">
-							<div class="row m-row--no-padding align-items-center">
-								<div class="col">
-									<h3 class="m-widget1__title">
-										 Quality Assurance
-									</h3>									
+		
+            
+            <div class="row">
+				<div class="col-sm-12 col-md-6 col-xl-6">
+					<!--begin:: Widgets/Activity-->
+					<div class="m-portlet m-portlet--bordered-semi m-portlet--widget-fit m-portlet--full-height m-portlet--skin-light  m-portlet--rounded-force">
+						<div class="m-portlet__head">
+							<div class="m-portlet__head-caption">
+								<div class="m-portlet__head-title">
+									<h3 class="m-portlet__head-text m--font-light">
+										Quality Assurance
+									</h3>
+								</div>
+							</div>
+							<div class="m-portlet__head-tools">
+								<ul class="m-portlet__nav">
+									<li class="m-portlet__nav-item m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push" m-dropdown-toggle="hover">
+										<a href="#" class="m-portlet__nav-link m-portlet__nav-link--icon m-portlet__nav-link--icon-xl">
+											<i class="fa fa-genderless m--font-light"></i>
+										</a>
+										<div class="m-dropdown__wrapper">
+											<span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
+											<div class="m-dropdown__inner">
+												<div class="m-dropdown__body">
+													<div class="m-dropdown__content">
+														<ul class="m-nav">
+															<li class="m-nav__section m-nav__section--first">
+																<span class="m-nav__section-text">
+																	Quick Actions
+																</span>
+															</li>
+															<li class="m-nav__item">
+																<a href="" class="m-nav__link">
+																	<i class="m-nav__link-icon flaticon-share"></i>
+																	<span class="m-nav__link-text">
+																		Activity
+																	</span>
+																</a>
+															</li>
+															<li class="m-nav__item">
+																<a href="" class="m-nav__link">
+																	<i class="m-nav__link-icon flaticon-chat-1"></i>
+																	<span class="m-nav__link-text">
+																		Messages
+																	</span>
+																</a>
+															</li>
+															<li class="m-nav__item">
+																<a href="" class="m-nav__link">
+																	<i class="m-nav__link-icon flaticon-info"></i>
+																	<span class="m-nav__link-text">
+																		FAQ
+																	</span>
+																</a>
+															</li>
+															<li class="m-nav__item">
+																<a href="" class="m-nav__link">
+																	<i class="m-nav__link-icon flaticon-lifebuoy"></i>
+																	<span class="m-nav__link-text">
+																		Support
+																	</span>
+																</a>
+															</li>
+															<li class="m-nav__separator m-nav__separator--fit"></li>
+															<li class="m-nav__item">
+																<a href="#" class="btn btn-outline-danger m-btn m-btn--pill m-btn--wide btn-sm">
+																	Cancel
+																</a>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="m-portlet__body">
+							<div class="m-widget17">
+								<div class="m-widget17__visual m-widget17__visual--chart m-portlet-fit--top m-portlet-fit--sides m--bg-danger">
+									<div class="m-widget17__chart" style="height:320px;">
+										<canvas id="m_chart_activities"></canvas>
+									</div>
+								</div>
+								<div class="m-widget17__stats">
+									<div class="m-widget17__items m-widget17__items-col1">
+										<div class="m-widget17__item">
+											<span class="m-widget17__icon">
+												<i class="flaticon-truck m--font-brand"></i>
+											</span>
+											<span class="m-widget17__subtitle">
+												Quality Assurance
+											</span>
+											<span class="m-widget17__desc">
+												15 New Paskages
+											</span>
+										</div>
+										<div class="m-widget17__item">
+											<span class="m-widget17__icon">
+												<i class="flaticon-paper-plane m--font-info"></i>
+											</span>
+											<span class="m-widget17__subtitle">
+												Container
+											</span>
+											<span class="m-widget17__desc">
+												72 Support Cases
+											</span>
+										</div>
+									</div>
+									<div class="m-widget17__items m-widget17__items-col2">
+										<div class="m-widget17__item">
+											<span class="m-widget17__icon">
+												<i class="flaticon-pie-chart m--font-success"></i>
+											</span>
+											<span class="m-widget17__subtitle">
+												Reservation Management
+											</span>
+											<span class="m-widget17__desc">
+												72 New Items
+											</span>
+										</div>
+										
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-					<!--end:: Widgets/Stats2-1 -->
-				</div>							
+					<!--end:: Widgets/Activity-->
+				</div>
+                
+                <div class="col-sm-12 col-md-6 col-xl-6">
+                    
+                    <!--begin:: Widgets/Adwords Stats-->
+					<div class="m-portlet m-portlet--full-height m-portlet--skin-light m-portlet--fit ">
+						<div class="m-portlet__head">
+							<div class="m-portlet__head-caption">
+								<div class="m-portlet__head-title">
+									<h3 class="m-portlet__head-text">
+										AdWords Stats
+									</h3>
+								</div>
+							</div>
+							<div class="m-portlet__head-tools">
+								<ul class="m-portlet__nav">
+									<li class="m-portlet__nav-item m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push" m-dropdown-toggle="hover" aria-expanded="true">
+										<a href="#" class="m-portlet__nav-link m-dropdown__toggle dropdown-toggle btn btn--sm m-btn--pill btn-secondary m-btn m-btn--label-brand">
+											Today
+										</a>
+										<div class="m-dropdown__wrapper" style="z-index: 101;">
+											<span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust" style="left: auto; right: 47px;"></span>
+											<div class="m-dropdown__inner">
+												<div class="m-dropdown__body">
+													<div class="m-dropdown__content">
+														<ul class="m-nav">
+															<li class="m-nav__section m-nav__section--first">
+																<span class="m-nav__section-text">
+																	Quick Actions
+																</span>
+															</li>
+															<li class="m-nav__item">
+																<a href="" class="m-nav__link">
+																	<i class="m-nav__link-icon flaticon-share"></i>
+																	<span class="m-nav__link-text">
+																		Activity
+																	</span>
+																</a>
+															</li>
+															<li class="m-nav__item">
+																<a href="" class="m-nav__link">
+																	<i class="m-nav__link-icon flaticon-chat-1"></i>
+																	<span class="m-nav__link-text">
+																		Messages
+																	</span>
+																</a>
+															</li>
+															<li class="m-nav__item">
+																<a href="" class="m-nav__link">
+																	<i class="m-nav__link-icon flaticon-info"></i>
+																	<span class="m-nav__link-text">
+																		FAQ
+																	</span>
+																</a>
+															</li>
+															<li class="m-nav__item">
+																<a href="" class="m-nav__link">
+																	<i class="m-nav__link-icon flaticon-lifebuoy"></i>
+																	<span class="m-nav__link-text">
+																		Support
+																	</span>
+																</a>
+															</li>
+															<li class="m-nav__separator m-nav__separator--fit"></li>
+															<li class="m-nav__item">
+																<a href="#" class="btn btn-outline-danger m-btn m-btn--pill m-btn--wide btn-sm">
+																	Cancel
+																</a>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="m-portlet__body">
+							<div class="m-widget21" style="min-height: 420px">
+								<div class="row">
+									<div class="col col-sm-12 col-md-6 col-xl-6">
+										<div class="m-widget21__item m--pull-right">
+											<span class="m-widget21__icon">
+												<a href="#" class="btn btn-brand m-btn m-btn--icon m-btn--icon-only m-btn--custom m-btn--pill">
+													<i class="fa flaticon-alert-2 m--font-light"></i>
+												</a>
+											</span>
+											<div class="m-widget21__info">
+												<span class="m-widget21__title">
+													Sales
+												</span>
+												<br>
+												<span class="m-widget21__sub">
+													IPO, Margins, Transactions
+												</span>
+											</div>
+										</div>
+									</div>
+									<div class="col col-sm-12 col-md-6 col-xl-6 m--align-left">
+										<div class="m-widget21__item m--pull-left">
+											<span class="m-widget21__icon">
+												<a href="#" class="btn btn-accent m-btn m-btn--icon m-btn--icon-only m-btn--custom m-btn--pill">
+													<i class="fa flaticon-coins m--font-light m--font-light"></i>
+												</a>
+											</span>
+											<div class="m-widget21__info">
+												<span class="m-widget21__title">
+													Commission Paid
+												</span>
+												<br>
+												<span class="m-widget21__sub">
+													Expenses, Loses, Profits
+												</span>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="m-widget21__chart m-portlet-fit--sides" style="height:310px;"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+									<canvas id="m_chart_adwords_stats" width="502" height="310" class="chartjs-render-monitor" style="display: block; width: 502px; height: 310px;"></canvas>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--end:: Widgets/Adwords Stats-->
+                </div>
+                
+                
+                							
 			</div>
-		</div>
-	</div>
+  
+			
+		
 	<!--End::Section_portlet-->
     
     <!--Begin::Section-->
@@ -2934,10 +2902,21 @@
         color: #ABA07C;
     }
     .m-widget2 .m-widget2__item .m-widget2__desc{
-        padding-top: 1.00rem !important;
+        vertical-align: middle !important;
     }
     .m-task-link{ text-decoration: none; color: #575962;}
     .m-task-link:hover{ text-decoration: none; color: #575962;}
+    
+    .m-widget7 .m-widget7__user .m-widget7__user-img .m-widget7__img{
+        margin-top: 0rem;
+    }
+    .m-widget7 .m-widget7__user{
+        margin-bottom: 2rem;
+    }
+    .m-widget7 .m-widget7__desc{
+        margin-top: 2rem;
+        margin-bottom: 3em;
+    }
     </style>
 @endsection
 {{-- For custom style  --}}
