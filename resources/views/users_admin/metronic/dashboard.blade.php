@@ -226,10 +226,7 @@
 						</div>
 						<div class="m-portlet__body">
 							<div class="m-widget4">
-								<div class="m-widget4__item">
-									<div class="m-widget4__img m-widget4__img--logo">
-										<img src="assets/app/media/img/client-logos/logo5.png" alt="">
-									</div>
+								<div class="m-widget4__item">									
 									<div class="m-widget4__info">
 										<span class="m-widget4__title">
 											Property Management
@@ -241,10 +238,7 @@
 										</span>
 									</span>
 								</div>
-								<div class="m-widget4__item">
-									<div class="m-widget4__img m-widget4__img--logo">
-										<img src="assets/app/media/img/client-logos/logo4.png" alt="">
-									</div>
+								<div class="m-widget4__item">									
 									<div class="m-widget4__info">
 										<span class="m-widget4__title">
 											Reservation Management
@@ -256,10 +250,7 @@
 										</span>
 									</span>
 								</div>
-								<div class="m-widget4__item">
-									<div class="m-widget4__img m-widget4__img--logo">
-										<img src="assets/app/media/img/client-logos/logo3.png" alt="">
-									</div>
+								<div class="m-widget4__item">									
 									<div class="m-widget4__info">
 										<span class="m-widget4__title">
 											Sales Reports
@@ -271,10 +262,7 @@
 										</span>
 									</span>
 								</div>
-								<div class="m-widget4__item">
-									<div class="m-widget4__img m-widget4__img--logo">
-										<img src="assets/app/media/img/client-logos/logo2.png" alt="">
-									</div>
+								<div class="m-widget4__item">									
 									<div class="m-widget4__info">
 										<span class="m-widget4__title">
 											View Modules
@@ -286,10 +274,7 @@
 										</span>
 									</span>
 								</div>
-								<div class="m-widget4__item">
-									<div class="m-widget4__img m-widget4__img--logo">
-										<img src="assets/app/media/img/client-logos/logo1.png" alt="">
-									</div>
+								<div class="m-widget4__item">									
 									<div class="m-widget4__info">
 										<span class="m-widget4__title">
 											Cancelations
@@ -301,10 +286,7 @@
 										</span>
 									</span>
 								</div>
-                                <div class="m-widget4__item">
-									<div class="m-widget4__img m-widget4__img--logo">
-										<img src="assets/app/media/img/client-logos/logo1.png" alt="">
-									</div>
+                                <div class="m-widget4__item">									
 									<div class="m-widget4__info">
 										<span class="m-widget4__title">
 											Arrivals & Departures
@@ -317,10 +299,7 @@
 									</span>
 								</div>
                                 
-                                <div class="m-widget4__item">
-									<div class="m-widget4__img m-widget4__img--logo">
-										<img src="assets/app/media/img/client-logos/logo1.png" alt="">
-									</div>
+                                <div class="m-widget4__item">									
 									<div class="m-widget4__info">
 										<span class="m-widget4__title">
 											Advertising
@@ -447,7 +426,7 @@
 														<div class="m-widget_body-items">
 															<div class="m-widget_body-item">
 																<div class="m-widget_body-item-pic">
-																	<img src="assets/app/media/img/users/100_4.jpg" title="">
+																	<img src="{{asset('metronic/assets/app/media/img/users/emp.png')}}" title="">
 																</div>
 																<div class="m-widget_body-item-desc ">
 																	<span>
@@ -461,7 +440,7 @@
 														<div class="m-widget_body-items">
 															<div class="m-widget_body-item">
 																<div class="m-widget_body-item-pic">
-																	<img src="assets/app/media/img/users/100_3.jpg" title="">
+																	<img src="{{asset('metronic/assets/app/media/img/users/emp.png')}}" title="">
 																</div>
 																<div class="m-widget_body-item-desc">
 																	<span>
@@ -476,7 +455,7 @@
 														<div class="m-widget_body-items">
 															<div class="m-widget_body-item">
 																<div class="m-widget_body-item-pic">
-																	<img src="assets/app/media/img/users/100_7.jpg" title="">
+																	<img src="{{asset('metronic/assets/app/media/img/users/emp.png')}}" title="">
 																</div>
 																<div class="m-widget_body-item-desc">
 																	<span>
@@ -2074,7 +2053,7 @@
 							<div class="m-widget17">
 								<div class="m-widget17__visual m-widget17__visual--chart m-portlet-fit--top m-portlet-fit--sides m--bg-danger">
 									<div class="m-widget17__chart" style="height:320px;">
-										<canvas id="m_chart_activities"></canvas>
+										<canvas id="m_chart_activities2"></canvas>
 									</div>
 								</div>
 								<div class="m-widget17__stats">
@@ -2239,7 +2218,7 @@
 									</div>
 								</div>
 								<div class="m-widget21__chart m-portlet-fit--sides" style="height:310px;"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
-									<canvas id="m_chart_adwords_stats" width="502" height="310" class="chartjs-render-monitor" style="display: block; width: 502px; height: 310px;"></canvas>
+									<canvas id="m_chart_adwords_stats3" width="502" height="310" class="chartjs-render-monitor" style="display: block; width: 502px; height: 310px;"></canvas>
 								</div>
 							</div>
 						</div>
@@ -2459,7 +2438,7 @@
 							<div class="m-widget17">
 								<div class="m-widget17__visual m-widget17__visual--chart m-portlet-fit--top m-portlet-fit--sides m--bg-danger">
 									<div class="m-widget17__chart" style="height:320px;">
-										<canvas id="m_chart_activities"></canvas>
+										<canvas id="m_chart_activities3"></canvas>
 									</div>
 								</div>
 								<div class="m-widget17__stats">
@@ -2493,11 +2472,11 @@
 							<div class="m-portlet__head-caption">
 								<div class="m-portlet__head-title">
 									<h3 class="m-portlet__head-text">
-										AdWords Stats
+										Report
 									</h3>
 								</div>
 							</div>
-							<div class="m-portlet__head-tools">
+							<div class="m-portlet__head-tools" style="display: none;">
 								<ul class="m-portlet__nav">
 									<li class="m-portlet__nav-item m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push" m-dropdown-toggle="hover" aria-expanded="true">
 										<a href="#" class="m-portlet__nav-link m-dropdown__toggle dropdown-toggle btn btn--sm m-btn--pill btn-secondary m-btn m-btn--label-brand">
@@ -2574,11 +2553,7 @@
 											<div class="m-widget21__info">
 												<span class="m-widget21__title">
 													Sales
-												</span>
-												<br>
-												<span class="m-widget21__sub">
-													IPO, Margins, Transactions
-												</span>
+												</span>												
 											</div>
 										</div>
 									</div>
@@ -2592,17 +2567,13 @@
 											<div class="m-widget21__info">
 												<span class="m-widget21__title">
 													Commission Paid
-												</span>
-												<br>
-												<span class="m-widget21__sub">
-													Expenses, Loses, Profits
-												</span>
+												</span>												
 											</div>
 										</div>
 									</div>
 								</div>
 								<div class="m-widget21__chart m-portlet-fit--sides" style="height:310px;"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
-									<canvas id="m_chart_adwords_stats" width="502" height="310" class="chartjs-render-monitor" style="display: block; width: 502px; height: 310px;"></canvas>
+									<canvas id="m_chart_adwords_stats2" width="502" height="310" class="chartjs-render-monitor" style="display: block; width: 502px; height: 310px;"></canvas>
 								</div>
 							</div>
 						</div>
@@ -2618,112 +2589,12 @@
 		
 	<!--End::Section_portlet-->
     
-    <!--Begin::Section-->
-	<?php /* <div class="row">
-		<div class="col-xl-12">
-			<div class="m-portlet m-portlet--mobile ">
-				<div class="m-portlet__head">
-					<div class="m-portlet__head-caption">
-						<div class="m-portlet__head-title">
-							<h3 class="m-portlet__head-text">
-								Exclusive Datatable Plugin
-							</h3>
-						</div>
-					</div>
-					<div class="m-portlet__head-tools">
-						<ul class="m-portlet__nav">
-							<li class="m-portlet__nav-item">
-								<div class="m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push" m-dropdown-toggle="hover" aria-expanded="true">
-									<a href="#" class="m-portlet__nav-link btn btn-lg btn-secondary  m-btn m-btn--icon m-btn--icon-only m-btn--pill  m-dropdown__toggle">
-										<i class="la la-ellipsis-h m--font-brand"></i>
-									</a>
-									<div class="m-dropdown__wrapper">
-										<span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
-										<div class="m-dropdown__inner">
-											<div class="m-dropdown__body">
-												<div class="m-dropdown__content">
-													<ul class="m-nav">
-														<li class="m-nav__section m-nav__section--first">
-															<span class="m-nav__section-text">
-																Quick Actions
-															</span>
-														</li>
-														<li class="m-nav__item">
-															<a href="" class="m-nav__link">
-																<i class="m-nav__link-icon flaticon-share"></i>
-																<span class="m-nav__link-text">
-																	Create Post
-																</span>
-															</a>
-														</li>
-														<li class="m-nav__item">
-															<a href="" class="m-nav__link">
-																<i class="m-nav__link-icon flaticon-chat-1"></i>
-																<span class="m-nav__link-text">
-																	Send Messages
-																</span>
-															</a>
-														</li>
-														<li class="m-nav__item">
-															<a href="" class="m-nav__link">
-																<i class="m-nav__link-icon flaticon-multimedia-2"></i>
-																<span class="m-nav__link-text">
-																	Upload File
-																</span>
-															</a>
-														</li>
-														<li class="m-nav__section">
-															<span class="m-nav__section-text">
-																Useful Links
-															</span>
-														</li>
-														<li class="m-nav__item">
-															<a href="" class="m-nav__link">
-																<i class="m-nav__link-icon flaticon-info"></i>
-																<span class="m-nav__link-text">
-																	FAQ
-																</span>
-															</a>
-														</li>
-														<li class="m-nav__item">
-															<a href="" class="m-nav__link">
-																<i class="m-nav__link-icon flaticon-lifebuoy"></i>
-																<span class="m-nav__link-text">
-																	Support
-																</span>
-															</a>
-														</li>
-														<li class="m-nav__separator m-nav__separator--fit m--hide"></li>
-														<li class="m-nav__item m--hide">
-															<a href="#" class="btn btn-outline-danger m-btn m-btn--pill m-btn--wide btn-sm">
-																Submit
-															</a>
-														</li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</li>
-						</ul>
-					</div>
-				</div>
-				<div class="m-portlet__body">
-					<!--begin: Datatable -->
-					<div class="m_datatable" id="m_datatable_latest_orders"></div>
-					<!--end: Datatable -->
-				</div>
-			</div>
-		</div>		
-	</div>
-	<!--End::Section--> */ ?>
+    
 @stop
 {{-- For custom style  --}}
 @section('style')
     @parent
-    <link href="{{ asset('themes/emporium/css/terms-and-conditions.css') }}" rel="stylesheet">
-    <link href="{{ asset('metronic/assets/demo/demo6/base/bootstrap.css') }}" rel="stylesheet">    
+    
     <style>
     .carousel-control {
         position: absolute;
@@ -2775,10 +2646,6 @@
 @endsection
 {{-- For custom style  --}}
 @section('custom_js_script')
-    @parent
-      
-    <script src="{{ asset('metronic/assets/demo/demo6/base/bootstrap.js') }}"></script> 
-    <script> 
-    $('.carousel').carousel();
-    </script>
+    @parent      
+    
 @endsection
