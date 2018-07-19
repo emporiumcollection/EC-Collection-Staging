@@ -92,9 +92,9 @@
         <span class="scrollNextDiv"><a class="scrollpage" href="#membershpipStepSec">Scroll Down</a></span>
     </section>
     @endif */ ?>
-    <div class="m--clearfix" style="clear: both;"><br /></div>
+    
     <!--Begin::Section_portlet-->
-            <div class="m-subheader" style="padding: 0px;">
+            <div class="m-subheader" style="padding: 0px; margin-bottom: 20px;">
 				<div class="d-flex align-items-center">
 					<div class="mr-auto">
 						<h3 class="m-subheader__title m-subheader__title--separator">
@@ -479,7 +479,7 @@
 			</div>
     <!-- Third Row -->
             
-            <div class="m-subheader" style="padding: 0px;">
+            <div class="m-subheader" style="padding: 0px; margin-bottom: 20px;">
 				<div class="d-flex align-items-center">
 					<div class="mr-auto">
 						<h3 class="m-subheader__title m-subheader__title--separator">
@@ -1422,7 +1422,7 @@
 		    <!-- End First Row -->   
 	        
 		
-           <div class="m-subheader" style="padding: 0px;">
+           <div class="m-subheader" style="padding: 0px; margin-bottom: 20px;">
 				<div class="d-flex align-items-center">
 					<div class="mr-auto">
 						<h3 class="m-subheader__title m-subheader__title--separator">
@@ -1963,7 +1963,7 @@
                 						
 			</div>
 		
-            <div class="m-subheader" style="padding: 0px;">
+            <div class="m-subheader" style="padding: 0px; margin-bottom: 20px;">
 				<div class="d-flex align-items-center">
 					<div class="mr-auto">
 						<h3 class="m-subheader__title m-subheader__title--separator">
@@ -2348,7 +2348,7 @@
                 							
 			</div>
 		
-            <div class="m-subheader" style="padding: 0px;">
+            <div class="m-subheader" style="padding: 0px; margin-bottom: 20px;">
 				<div class="d-flex align-items-center">
 					<div class="mr-auto">
 						<h3 class="m-subheader__title m-subheader__title--separator">
