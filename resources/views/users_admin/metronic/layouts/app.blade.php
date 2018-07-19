@@ -44,7 +44,7 @@
 							<div class="m-stack m-stack--ver m-stack--general">
 								<div class="m-stack__item m-stack__item--middle m-brand__logo">
 									<a href="{{ URL::to('dashboard')}}" class="m-brand__logo-wrapper">
-                                        <img src="{{ asset('metronic/assets/demo/demo6/media/img/logo/logo.png') }}" alt="{{ CNF_APPNAME }}"/>				
+                                        <img src="{{ asset('metronic/assets/demo/demo6/media/img/logo/logo.png') }}" alt="{{ CNF_APPNAME }}" style="max-width: 76px;" />				
 									</a>
 									<h3 class="m-header__title" style="display: none;"> {{ CNF_APPNAME }} </h3>
 								</div>
@@ -89,12 +89,14 @@
                 <!-- END: Left Aside -->
                 
 				<div class="m-grid__item m-grid__item--fluid m-wrapper">
-                    <!-- BEGIN: Subheader_search -->
-                    @yield('subheader_search')
-					<!-- END: Subheader_search -->
+                    
 					<!-- BEGIN: Subheader -->
 					@include('users_admin/metronic/layouts/sub_header')
 					<!-- END: Subheader -->
+                    
+                    <!-- BEGIN: Subheader_search -->
+                    @yield('subheader_search')
+					<!-- END: Subheader_search -->
 					<div class="m-content">
 						@yield('content')
 					</div>
@@ -127,7 +129,7 @@
 		<!-- end:: Page -->
         
         <!-- begin::Quick Sidebar -->
-        <?php /**
+        
 		<div id="m_quick_sidebar" class="m-quick-sidebar m-quick-sidebar--tabbed m-quick-sidebar--skin-light">
 			<div class="m-quick-sidebar__content m--hide">
 				<span id="m_quick_sidebar_close" class="m-quick-sidebar__close">
@@ -136,7 +138,7 @@
 				<ul id="m_quick_sidebar_tabs" class="nav nav-tabs m-tabs m-tabs-line m-tabs-line--brand" role="tablist">
 					<li class="nav-item m-tabs__item">
 						<a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_quick_sidebar_tabs_messenger" role="tab">
-							Messages
+							Communication
 						</a>
 					</li>
 					<li class="nav-item m-tabs__item">
@@ -400,7 +402,7 @@
 							</div>
 							<div class="m-list-settings__group">
 								<div class="m-list-settings__heading">
-									System Settings
+									Reservation Settings
 								</div>
 								<div class="m-list-settings__item">
 									<span class="m-list-settings__item-label">
@@ -414,10 +416,10 @@
 											</label>
 										</span>
 									</span>
-								</div>
+								</div>                                
 								<div class="m-list-settings__item">
 									<span class="m-list-settings__item-label">
-										Error Reporting
+										Email Notifications
 									</span>
 									<span class="m-list-settings__item-control">
 										<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
@@ -430,7 +432,7 @@
 								</div>
 								<div class="m-list-settings__item">
 									<span class="m-list-settings__item-label">
-										Applications Logs
+										Currency Support
 									</span>
 									<span class="m-list-settings__item-control">
 										<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
@@ -440,33 +442,7 @@
 											</label>
 										</span>
 									</span>
-								</div>
-								<div class="m-list-settings__item">
-									<span class="m-list-settings__item-label">
-										Backup Servers
-									</span>
-									<span class="m-list-settings__item-control">
-										<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
-											<label>
-												<input type="checkbox" checked="checked" name="">
-												<span></span>
-											</label>
-										</span>
-									</span>
-								</div>
-								<div class="m-list-settings__item">
-									<span class="m-list-settings__item-label">
-										Audit Logs
-									</span>
-									<span class="m-list-settings__item-control">
-										<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
-											<label>
-												<input type="checkbox" name="">
-												<span></span>
-											</label>
-										</span>
-									</span>
-								</div>
+								</div>								
 							</div>
 						</div>
 					</div>
@@ -729,7 +705,7 @@
 				</div>
 			</div>
 		</div>
-        **/ ?>
+        
 		<!-- end::Quick Sidebar -->		    
 	    <!-- begin::Scroll Top -->
 		<div id="m_scroll_top" class="m-scroll-top">
