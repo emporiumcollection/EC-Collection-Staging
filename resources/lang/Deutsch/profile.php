@@ -14,4 +14,5 @@ return array(
     "my-users"			=> "My Users",
     "advertising"       =>"Advertising",
     "general-settings"       =>"Nachrichten",
+    "messages"          =>"Nachrichten",
  );

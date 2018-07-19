@@ -332,7 +332,7 @@
 						<div class="m-list-settings m-scrollable">
 							<div class="m-list-settings__group">
 								<div class="m-list-settings__heading">
-									{{ Lang::get('profile.my-company') }}
+									{{ Lang::get('profile.messages') }}
 								</div>
 								<div class="m-list-settings__item">
 									<span class="m-list-settings__item-label">
@@ -372,23 +372,18 @@
 											</label>
 										</span>
 									</span>
+								</div>								
+							</div>
+	                        
+                            
+                            
+                            <div class="m-list-settings__group">
+								<div class="m-list-settings__heading">
+									{{ Lang::get('profile.reminders') }}
 								</div>
 								<div class="m-list-settings__item">
 									<span class="m-list-settings__item-label">
-										Backup Storage
-									</span>
-									<span class="m-list-settings__item-control">
-										<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
-											<label>
-												<input type="checkbox" name="">
-												<span></span>
-											</label>
-										</span>
-									</span>
-								</div>
-								<div class="m-list-settings__item">
-									<span class="m-list-settings__item-label">
-										Audit Logs
+										{{ Lang::get('profile.email') }}
 									</span>
 									<span class="m-list-settings__item-control">
 										<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
@@ -399,27 +394,9 @@
 										</span>
 									</span>
 								</div>
-							</div>
-							<div class="m-list-settings__group">
-								<div class="m-list-settings__heading">
-									Reservation Settings
-								</div>
 								<div class="m-list-settings__item">
 									<span class="m-list-settings__item-label">
-										System Logs
-									</span>
-									<span class="m-list-settings__item-control">
-										<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
-											<label>
-												<input type="checkbox" name="">
-												<span></span>
-											</label>
-										</span>
-									</span>
-								</div>                                
-								<div class="m-list-settings__item">
-									<span class="m-list-settings__item-label">
-										Email Notifications
+										{{ Lang::get('profile.push-messages') }}
 									</span>
 									<span class="m-list-settings__item-control">
 										<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
@@ -432,7 +409,20 @@
 								</div>
 								<div class="m-list-settings__item">
 									<span class="m-list-settings__item-label">
-										Currency Support
+										{{ Lang::get('profile.sms') }}
+									</span>
+									<span class="m-list-settings__item-control">
+										<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
+											<label>
+												<input type="checkbox" name="">
+												<span></span>
+											</label>
+										</span>
+									</span>
+								</div>	
+                                <div class="m-list-settings__item">
+									<span class="m-list-settings__item-label">
+										{{ Lang::get('profile.phone-call') }}
 									</span>
 									<span class="m-list-settings__item-control">
 										<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
@@ -444,6 +434,67 @@
 									</span>
 								</div>								
 							</div>
+                            
+                            <div class="m-list-settings__group">
+								<div class="m-list-settings__heading">
+									{{ Lang::get('profile.customer-services') }}
+								</div>
+								<div class="m-list-settings__item">
+									<span class="m-list-settings__item-label">
+										{{ Lang::get('profile.email') }}
+									</span>
+									<span class="m-list-settings__item-control">
+										<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
+											<label>
+												<input type="checkbox" checked="checked" name="">
+												<span></span>
+											</label>
+										</span>
+									</span>
+								</div>
+								<div class="m-list-settings__item">
+									<span class="m-list-settings__item-label">
+										{{ Lang::get('profile.push-messages') }}
+									</span>
+									<span class="m-list-settings__item-control">
+										<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
+											<label>
+												<input type="checkbox" name="">
+												<span></span>
+											</label>
+										</span>
+									</span>
+								</div>
+								<div class="m-list-settings__item">
+									<span class="m-list-settings__item-label">
+										{{ Lang::get('profile.sms') }}
+									</span>
+									<span class="m-list-settings__item-control">
+										<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
+											<label>
+												<input type="checkbox" name="">
+												<span></span>
+											</label>
+										</span>
+									</span>
+								</div>	
+                                <div class="m-list-settings__item">
+									<span class="m-list-settings__item-label">
+										{{ Lang::get('profile.phone-call') }}
+									</span>
+									<span class="m-list-settings__item-control">
+										<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
+											<label>
+												<input type="checkbox" name="">
+												<span></span>
+											</label>
+										</span>
+									</span>
+								</div>								
+							</div>
+                            
+                            
+                            
 						</div>
 					</div>
 					<div class="tab-pane" id="m_quick_sidebar_tabs_logs" role="tabpanel">
