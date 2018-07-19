@@ -18,7 +18,7 @@
                             </li>
                             
                             <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  m-menu-submenu-toggle="hover">
-                                <a href="{{ URL::to('hotel/package')}}" class="m-menu__link"><i class="m-menu__link-icon fa fa-dashboard"></i> <span class="m-menu__link-text">Membership & Support Services</span></a>
+                                <a href="{{ URL::to('hotel/package')}}" class="m-menu__link"><i class="m-menu__link-icon fa fa-shopping-bag"></i> <span class="m-menu__link-text">Membership & Support Services</span></a>
                             </li>
                             
                             <li class="m-menu__item m-menu__item--submenu m-menu__item" aria-haspopup="true" m-menu-submenu-toggle="hover">
@@ -35,14 +35,14 @@
                                             <ul class="m-menu__subnav">
                                                 <li class="m-menu__item " aria-haspopup="true" m-menu-link-redirect="1">
                                                     <a href="#" class="m-menu__link">                           
-                                                        <i class="m-menu__link-icon icon-calendar"></i>
+                                                        <i class="m-menu__link-icon fa fa-home"></i>
                                                         <span class="m-menu__link-text">Property Management System</span>
                                                     </a>
                                                 </li>
                                                 <li class="m-menu__item " aria-haspopup="true" m-menu-link-redirect="1">
                                                     <a href="#" class="m-menu__link">
                                                         
-                                                        <i class="m-menu__link-icon icon-calendar"></i>
+                                                        <i class="m-menu__link-icon fa fa-plane"></i>
                                                         <span class="m-menu__link-text">
                                                             Reservation Management System
                                                         </span>
@@ -54,11 +54,11 @@
                              </li> 
                             
                             <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  m-menu-submenu-toggle="hover">
-                                <a href="#" class="m-menu__link"><i class="m-menu__link-icon fa fa-dashboard"></i> <span class="m-menu__link-text">Sales & Marketing</span></a>
+                                <a href="#" class="m-menu__link"><i class="m-menu__link-icon fa fa-flask"></i> <span class="m-menu__link-text">Sales & Marketing</span></a>
                             </li>
                             
                             <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  m-menu-submenu-toggle="hover">
-                                <a href="#" class="m-menu__link"><i class="m-menu__link-icon fa fa-dashboard"></i> <span class="m-menu__link-text">Quality Assurance</span></a>
+                                <a href="#" class="m-menu__link"><i class="m-menu__link-icon fa fa-thumbs-up"></i> <span class="m-menu__link-text">Quality Assurance</span></a>
                             </li>
                             
                             

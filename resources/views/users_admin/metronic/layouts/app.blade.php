@@ -332,11 +332,11 @@
 						<div class="m-list-settings m-scrollable">
 							<div class="m-list-settings__group">
 								<div class="m-list-settings__heading">
-									General Settings
+									{{ Lang::get('profile.my-company') }}
 								</div>
 								<div class="m-list-settings__item">
 									<span class="m-list-settings__item-label">
-										Email Notifications
+										{{ Lang::get('profile.email') }}
 									</span>
 									<span class="m-list-settings__item-control">
 										<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
@@ -349,7 +349,7 @@
 								</div>
 								<div class="m-list-settings__item">
 									<span class="m-list-settings__item-label">
-										Site Tracking
+										{{ Lang::get('profile.push-messages') }}
 									</span>
 									<span class="m-list-settings__item-control">
 										<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
@@ -362,7 +362,7 @@
 								</div>
 								<div class="m-list-settings__item">
 									<span class="m-list-settings__item-label">
-										SMS Alerts
+										{{ Lang::get('profile.sms') }}
 									</span>
 									<span class="m-list-settings__item-control">
 										<span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">

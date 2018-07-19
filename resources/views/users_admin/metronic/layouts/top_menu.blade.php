@@ -245,12 +245,35 @@
 																		<i class="m-nav__link-icon flaticon-profile-1"></i>
 																		<span class="m-nav__link-title">
 																			<span class="m-nav__link-wrap">
-																				{{ Lang::get('core.m_profile') }}
+																				{{ Lang::get('profile.my-profile') }}
+																			</span>
+																		</span>
+																	</a>
+																</li>
+																
+                                                                <li class="m-nav__item">
+																	<a href="{{ URL::to('user/profile')}}" class="m-nav__link">
+																		<i class="m-nav__link-icon flaticon-suitcase"></i>
+																		<span class="m-nav__link-title">
+																			<span class="m-nav__link-wrap">
+																				{{ Lang::get('profile.my-company') }}
+																			</span>
+																		</span>
+																	</a>
+																</li>
+																
+                                                                <li class="m-nav__item">
+																	<a href="{{ URL::to('user/profile')}}" class="m-nav__link">
+																		<i class="m-nav__link-icon flaticon-user"></i>
+																		<span class="m-nav__link-title">
+																			<span class="m-nav__link-wrap">
+																				{{ Lang::get('profile.my-users') }}
 																			</span>
 																		</span>
 																	</a>
 																</li>
 																<li class="m-nav__separator m-nav__separator--fit"></li>
+                                                                
 																<li class="m-nav__item">
 																	<a href="{{ URL::to('user/logout')}}" class="btn m-btn--pill    btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder"> {{ Lang::get('core.m_logout') }} </a>
 																</li>

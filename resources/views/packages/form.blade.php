@@ -44,15 +44,20 @@
 									<label for="Package Category" class=" control-label col-md-4 text-left"> Package Category <span class="asterix"> * </span></label>
 									<div class="col-md-6">
 									  
-					<?php $package_category = explode(',',$row['package_category']);
-					$package_category_opt = array( 'hotel_listing' => 'Hotel Listing' ,  'hotel_marketing' => 'Hotel Marketing' , ); ?>
-					<select name='package_category' rows='5' required  class='form-control'  > 
-						<?php 
-						foreach($package_category_opt as $key=>$val)
-						{
-							echo "<option  value ='$key' ".($row['package_category'] == $key ? " selected='selected' " : '' ).">$val</option>"; 						
-						}						
-						?></select> 
+					                   <?php //$package_category = explode(',',$row['package_category']);
+                                             //$package_category_opt = array( 'hotel_listing' => 'Hotel Listing' ,  'hotel_marketing' => 'Hotel Marketing' , ); ?>
+					                         <select name='package_category' rows='5' required  class='form-control'  >
+                                                <option value="">Select Category</option>
+                                                <option value="Sales_Marketing" <?php echo ($row['package_category'] == 'Sales_Marketing' ? " selected='selected' " : '' ); ?>>Sales & Marketing</option>
+                                                <option value="Reservation_Distribution" <?php echo ($row['package_category'] == 'Reservation_Distribution' ? " selected='selected' " : '' ); ?>>Reservation & Distribution</option> 
+                                                <option value="Advertising" <?php echo ($row['package_category'] == 'Advertising' ? " selected='selected' " : '' ); ?>>Advertising</option>  
+                        						<?php /*
+                        						foreach($package_category_opt as $key=>$val)
+                        						{
+                        							echo "<option  value ='$key' ".($row['package_category'] == $key ? " selected='selected' " : '' ).">$val</option>"; 						
+                        						} */						
+                        						?>
+                                             </select> 
 									 </div> 
 									 <div class="col-md-2">
 									 	

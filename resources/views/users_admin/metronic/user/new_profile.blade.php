@@ -114,11 +114,11 @@
 														<span></span>
 													</div>
 													<div class="m-wizard__step-label">
-														{{ Lang::get('core.user_slider_ads') }}
+														{{ Lang::get('profile.advertising') }}
 													</div>
 												</div>
 											</div>
-                                            <div class="m-wizard__step" m-wizard-target="m_wizard_form_step_4" class="wizard_step_4">
+                                            <!--<div class="m-wizard__step" m-wizard-target="m_wizard_form_step_4" class="wizard_step_4">
 												<div class="m-wizard__step-info">
 													<a href="#" class="m-wizard__step-number">
 														<span>
@@ -151,7 +151,7 @@
 														Confirmation
 													</div>
 												</div>
-											</div>
+											</div> -->
 										</div>
 									</div>
 									<!--end: Form Wizard Nav -->
