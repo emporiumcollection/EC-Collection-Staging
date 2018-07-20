@@ -27,12 +27,12 @@ var WizardDemo = function () {
                 else if(_wizard_step == '2'){
                        wizard_step_2();
                 }
-                else if(_wizard_step == '3'){
+                /*else if(_wizard_step == '3'){
                     wizard_step_3();
                 }
                 else if(_wizard_step == '4'){
                     wizard_step_4();
-                }
+                }*/
             }
         });
 
@@ -135,7 +135,7 @@ var WizardDemo = function () {
                     ads_slider_cat: true,
                 },                
 
-                //== Slider Advertisement (step 4)
+                /*//== Slider Advertisement (step 4)
                 adslink: {
                     required: true,
                     url:true                    
@@ -155,15 +155,15 @@ var WizardDemo = function () {
                 //=== Confirmation(step 5)
                 accept: {
                     required: true
-                }
+                }*/
             },
 
             //== Validation messages
-            messages: {
+           /* messages: {
                 accept: {
                     required: "You must accept the Terms and Conditions agreement!"
                 } 
-            },
+            },*/
             
             //== Display error  
             invalidHandler: function(event, validator) {
@@ -184,8 +184,85 @@ var WizardDemo = function () {
             }
         });   
     }
-
+    
     var initSubmit = function() {
+        var btn = formEl.find('[data-wizard-action="submit"]');
+
+        btn.on('click', function(e) {
+            e.preventDefault();
+
+            if (validator.form()) {
+                
+                var fdata = new FormData();
+    
+                fdata.append("adslink",$("input[name=adslink]").val());
+                fdata.append("adstitle",$("input[name=adstitle]").val());
+                fdata.append("adsdesc",$("input[name=adsdesc]").val());
+                fdata.append("ads_slider_cat",$("#ads_slider_cat :selected").val());
+                fdata.append("_token",$("input[name=_token]").val());
+                fdata.append("form_wizard",$("input[name=form_wizard_3]").val());
+                fdata.append("adscurrency",$("input[name=adscurrency]").val());
+                fdata.append("adsType",$("input[name=adsType]").val());
+                fdata.append("adsprice",$("input[name=adsprice]").val());
+                fdata.append("adsvalidation",$("input[name=adsvalidation]").val());
+                fdata.append("advedit_id",$("input[name=advedit_id]").val());
+                fdata.append("pay",$("input[name=pay]").val());
+                if($("input[name=advertise_img]")[0].files.length>0){
+                   fdata.append("advertise_img",$("input[name=advertise_img]")[0].files[0]) 
+                }
+                   
+                var base_url = $('#base_url').val();
+                $.ajax({
+                    url:base_url+'/save_new_adspayment',
+                    type:'POST',
+                    dataType:'json',
+                    contentType: false,
+                    processData: false,
+                    data:fdata,
+                    headers: {
+                        'Access-Control-Allow-Origin': '*'
+                    },
+                    success:function(response){
+                        /*if(response.url.length > 0){
+                            window.location.href = response.url;
+                        }*/
+                        if(response.status == 'success'){
+                            toastr.success(response.message);
+                            setTimeout(function(){
+                                   location.reload();
+                            }, 3000); 
+                        }
+                        else{
+                            toastr.error(response.message);
+                        }
+                    }
+                });
+                
+                //== See: src\js\framework\base\app.js 
+                /*mApp.progress(btn);
+                //mApp.block(formEl);
+                
+                alert('ok'); 
+
+                //== See: http://malsup.com/jquery/form/#ajaxSubmit
+                formEl.ajaxSubmit({
+                    success: function() {
+                        mApp.unprogress(btn);
+                        //mApp.unblock(formEl);
+
+                        swal({
+                            "title": "", 
+                            "text": "The application has been successfully submitted!", 
+                            "type": "success",
+                            "confirmButtonClass": "btn btn-secondary m-btn m-btn--wide"
+                        });
+                    }
+                });*/
+            }
+        });
+    } 
+    
+    /*var initSubmit = function() {
         var btn = formEl.find('[data-wizard-action="submit"]');
 
         btn.on('click', function(e) {
@@ -215,7 +292,7 @@ var WizardDemo = function () {
                     }
                 }); 
                 
-                //== See: src\js\framework\base\app.js
+                //== See: src\js\framework\base\app.js */
                 /*mApp.progress(btn);
                 //mApp.block(formEl);
                 
@@ -235,9 +312,9 @@ var WizardDemo = function () {
                         });
                     }
                 });*/
-            }
+ /*           }
         });
-    }
+    } */
 
     return {
         // public functions

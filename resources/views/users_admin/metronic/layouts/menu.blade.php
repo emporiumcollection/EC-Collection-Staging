@@ -34,7 +34,7 @@
                                         <span class="m-menu__arrow"></span>
                                             <ul class="m-menu__subnav">
                                                 <li class="m-menu__item " aria-haspopup="true" m-menu-link-redirect="1">
-                                                    <a href="#" class="m-menu__link">                           
+                                                    <a href="{{ URL::to('properties')}}" class="m-menu__link">                           
                                                         <i class="m-menu__link-icon fa fa-home"></i>
                                                         <span class="m-menu__link-text">Property Management System</span>
                                                     </a>

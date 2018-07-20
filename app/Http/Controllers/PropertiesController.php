@@ -100,7 +100,11 @@ class PropertiesController extends Controller {
         $this->data['subgrid'] = (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array());
         // Render into template
 		$this->data['fetch_cat'] = \DB::table('tb_categories')->get();
-        return view('properties.index', $this->data);
+        
+        $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+        $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.index':'properties.index'; 
+        
+        return view($file_name, $this->data);
     }
 
     function getUpdate(Request $request, $id = null) {
@@ -162,7 +166,11 @@ class PropertiesController extends Controller {
 			$this->data['total_commissions'] = (isset($row_turnover[0]->total_turnover))? ($row_turnover[0]->total_turnover * ($this->data['row']->commission / 100)) : 0;
 			$this->data['total_rooms_booked'] = (isset($row_reserved_rooms[0]->total_reserved_rooms))? $row_reserved_rooms[0]->total_reserved_rooms : 0;
 		}
-        return view('properties.form', $this->data);
+        
+        $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+        $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.form':'properties.form'; 
+        
+        return view($file_name, $this->data);
     }
 
     public function getShow($id = null) {
