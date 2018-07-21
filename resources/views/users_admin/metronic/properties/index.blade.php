@@ -59,16 +59,32 @@
 <div class="row">
     
         @foreach ($rowData as $row)
+        <?php 
+        
+        ?>
             <div class="col-md-4 col-xs-12">
             <!--begin:: Widgets/Activity-->
 					<div class="m-portlet m-portlet--bordered-semi m-portlet--widget-fit m-portlet--full-height m-portlet--skin-light  m-portlet--rounded-force">
 						<div class="m-portlet__head">
 							<div class="m-portlet__head-caption">
 								<div class="m-portlet__head-title">
-									<h3 class="m-portlet__head-text m--font-light">
-										{{$row->property_name}}
-									</h3>
+									<span class="m-switch m-switch--outline m-switch--success switch-btn-bot-pad">
+    									<label>
+    										<input type="checkbox" checked="checked" name="">
+    										<span></span>
+    									</label>
+    								</span>                                    
 								</div>
+							</div>
+                            <div class="m-portlet__head-tools">
+								<ul class="m-portlet__nav">
+									<li class="m-portlet__nav-item m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push" m-dropdown-toggle="hover">
+										<a href="{{ URL::to('properties/show/'.$row->id.'?return='.$return)}}" title="View Online" class="m-portlet__nav-link m-portlet__nav-link--icon m-portlet__nav-link--icon-xl">
+											<i class="fa fa-globe m--font-light"></i>
+										</a>
+										
+									</li>
+								</ul>
 							</div>
 							<div class="m-portlet__head-tools">
 								<ul class="m-portlet__nav">
@@ -86,112 +102,86 @@
 																<span class="m-nav__section-text">
 																	Quick Actions
 																</span>
-															</li>
-                                                            @if($row->assign_detail_city!='0' && $row->assign_detail_city!='')
-                                                                <li class="m-nav__item">
-    																<a href="#" class="m-nav__link">
-    																	<i class="m-nav__link-icon fa fa-check"></i>
-    																	<span class="m-nav__link-text">
-    																		City Assigned
-    																	</span>
-    																</a>
-    															</li>
-                                    							
-                                    						@else
-                                                                <li class="m-nav__item">
-    																<a href="#" class="m-nav__link" title="please assign city">
-    																	<i class="m-nav__link-icon fa fa-check"></i>
-    																	<span class="m-nav__link-text">
-                                    							             Assign city
-                                                                        </span>
-    																</a>
-    															</li>
-                                    						@endif
-                                    						
-                                    					 	@if($access['is_detail'] ==1)                                    						
-                                                                <li class="m-nav__item">
-    																<a href="{{ URL::to('properties/show/'.$row->id.'?return='.$return)}}" class="m-nav__link">
-    																	<i class="m-nav__link-icon fa fa-search"></i>
-    																	<span class="m-nav__link-text">
-    																		{{ Lang::get('core.btn_view') }}
-    																	</span>
-    																</a>
-															    </li>
-                                    						@endif
-                                    						@if($access['is_edit'] ==1)                                    						
-                                                                <li class="m-nav__item">
-    																<a href="{{ URL::to('properties/update/'.$row->id.'?return='.$return) }}" class="m-nav__link">
-    																	<i class="m-nav__link-icon fa fa-edit"></i>
-    																	<span class="m-nav__link-text">
-    																		{{ Lang::get('core.btn_edit') }}
-    																	</span>
-    																</a>
-															    </li>
-                                    						@endif
+															</li> 
                                                             <li class="m-nav__item">
-																<a href="{{ URL::to('properties_settings/'.$row->id.'/types') }}" class="m-nav__link">
-																	<i class="m-nav__link-icon fa fa-cogs"></i>
+																<a href="{{ URL::to('properties/update/'.$row->id.'?return='.$return) }}" class="m-nav__link">
+																	<i class="m-nav__link-icon fa fa-search"></i>
 																	<span class="m-nav__link-text">
-																		{{ Lang::get('core.btn_config') }}
+																		Manage Hotel/Property
 																	</span>
 																</a>
-														    </li>
-                                    											
-                                    						@if($row->property_status==1)                                    							
-                                                                <li class="m-nav__item">
-    																<a href="#" class="m-nav__link" onclick="change_option(this,'property_status','{{$row->id}}',0);">
-    																	<i class="m-nav__link-icon fa fa-check"></i>
-    																	<span class="m-nav__link-text">
-    																		Click to Disable
-    																	</span>
-    																</a>
-    														    </li>
-                                    						@else                                    							
-                                                                <li class="m-nav__item">
-    																<a href="#" class="m-nav__link" onclick="change_option(this,'property_status','{{$row->id}}',1);">
-    																	<i class="m-nav__link-icon fa fa-check"></i>
-    																	<span class="m-nav__link-text">
-    																		Click to enable
-    																	</span>
-    																</a>
-    														    </li>
-                                    						@endif
+														    </li> 
                                                             <li class="m-nav__item">
-																<a href="{{ URL::to('properties_settings/'.$row->id.'/property_images') }}" class="m-nav__link">
-																	<i class="m-nav__link-icon fa fa-file-image-o"></i>
+																<a href="{{ URL::to('properties_settings/'.$row->id.'/types')}}" class="m-nav__link">
+																	<i class="m-nav__link-icon fa fa-search"></i>
 																	<span class="m-nav__link-text">
-																		Property Images
+																		Manage Room Types
+																	</span>
+																</a>
+														    </li> 
+                                                            <li class="m-nav__item">
+																<a href="{{ URL::to('properties_settings/'.$row->id.'/rooms')}}" class="m-nav__link">
+																	<i class="m-nav__link-icon fa fa-search"></i>
+																	<span class="m-nav__link-text">
+																		Manage Rooms
+																	</span>
+																</a>
+														    </li> 
+                                                            <li class="m-nav__item">
+																<a href="{{ URL::to('properties_settings/'.$row->id.'/seasons')}}" class="m-nav__link">
+																	<i class="m-nav__link-icon fa fa-search"></i>
+																	<span class="m-nav__link-text">
+																		Manage Seasons
+																	</span>
+																</a>
+														    </li> 
+                                                            <li class="m-nav__item">
+																<a href="{{ URL::to('properties_settings/'.$row->id.'/price')}}" class="m-nav__link">
+																	<i class="m-nav__link-icon fa fa-search"></i>
+																	<span class="m-nav__link-text">
+																		Manage Price
+																	</span>
+																</a>
+														    </li> 
+                                                            <li class="m-nav__item">
+																<a href="{{ URL::to('properties_settings/'.$row->id.'/property_documents')}}" class="m-nav__link">
+																	<i class="m-nav__link-icon fa fa-search"></i>
+																	<span class="m-nav__link-text">
+																		Property Documents
+																	</span>
+																</a>
+														    </li> 
+                                                            <li class="m-nav__item">
+																<a href="{{ URL::to('properties_settings/'.$row->id.'/property_images')}}" class="m-nav__link">
+																	<i class="m-nav__link-icon fa fa-search"></i>
+																	<span class="m-nav__link-text">
+																		Manage Images
+																	</span>
+																</a>
+														    </li> 
+                                                            <li class="m-nav__item">
+																<a href="{{ URL::to('properties_settings/'.$row->id.'/gallery_images')}}" class="m-nav__link">
+																	<i class="m-nav__link-icon fa fa-search"></i>
+																	<span class="m-nav__link-text">
+																		Manage Galleries
+																	</span>
+																</a>
+														    </li> 
+                                                            <li class="m-nav__item">
+																<a href="#" class="m-nav__link">
+																	<i class="m-nav__link-icon fa fa-search"></i>
+																	<span class="m-nav__link-text">
+																		Become Featured
+																	</span>
+																</a>
+														    </li> <li class="m-nav__item">
+																<a href="#" class="m-nav__link">
+																	<i class="m-nav__link-icon fa fa-search"></i>
+																	<span class="m-nav__link-text">
+																		Get Help
 																	</span>
 																</a>
 														    </li>
-                                    						<li class="m-nav__item">
-																<a href="#" class="m-nav__link" onclick="getseasonrates({{$row->id}});" data-toggle="modal" data-target="#psrModal">
-																	<i class="m-nav__link-icon fa fa-usd"></i>
-																	<span class="m-nav__link-text">
-																		Rates
-																	</span>
-																</a>
-														    </li>
-                                    						
-                                                            @if($row->approved==1)
-                                                                <li class="m-nav__item">
-    																<a href="#" class="m-nav__link" onclick="change_approval(this,'approved','{{$row->id}}',0);">
-    																	<i class="m-nav__link-icon fa fa-check"></i>
-    																	<span class="m-nav__link-text">
-    																		Click to Unapprove
-    																	</span>
-    																</a>
-    														    </li>
-                                    						@else                                    							
-                                                                <li class="m-nav__item">
-    																<a href="#" class="m-nav__link" onclick="change_approval(this,'approved','{{$row->id}}',1);">
-    																	<i class="m-nav__link-icon fa fa-times"></i>
-    																	<span class="m-nav__link-text">
-    																		Click to Approve
-    																	</span>
-    																</a>
-    														    </li>
-                                    						@endif															
 														</ul>
 													</div>
 												</div>
@@ -204,7 +194,13 @@
 						<div class="m-portlet__body">
 							<div class="m-widget17">
 								<div class="m-widget17__visual m-widget17__visual--chart m-portlet-fit--top m-portlet-fit--sides m--bg-danger">
-									<div class="m-widget17__chart" style="height:50px;">										
+									<div class="m-widget17__chart" style="height:300px;">
+                                        
+                                        <div class="" style="background: url(http://staging.emporium-voyage.com/uploads/container_user_files/locations/hh/property-images/64070036634-63502574132.jpeg); width: 100%; background-size: cover; height:300px; opacity: 50%;">
+                                        <div class="hotel_name">
+                                            {{$row->property_name}}
+                                        </div>
+                                        </div>								
 									</div>
 								</div>
 								<div class="m-widget17__stats">
@@ -225,7 +221,7 @@
 												<i class="flaticon-paper-plane m--font-info"></i>
 											</span>
 											<span class="m-widget17__subtitle">
-												Hotel Group 2
+												Hotel Group 3
 											</span>
 											<span class="m-widget17__desc">
 												72 Users
@@ -238,14 +234,25 @@
 												<i class="flaticon-pie-chart m--font-success"></i>
 											</span>
 											<span class="m-widget17__subtitle">
-												Hotel Group 3
+												Hotel Group 2
 											</span>
 											<span class="m-widget17__desc">
 												72 Users
 											</span>
 										</div>
-										
+										<div class="m-widget17__item">
+											<span class="m-widget17__icon">
+												<i class="flaticon-paper-plane m--font-info"></i>
+											</span>
+											<span class="m-widget17__subtitle">
+												Hotel Group 4
+											</span>
+											<span class="m-widget17__desc">
+												72 Users
+											</span>
+										</div>
 									</div>
+                                    
 								</div>
 							</div>
 						</div>
@@ -256,3 +263,38 @@
     
 </div>
 @stop
+{{-- For custom style  --}}
+@section('style')
+    @parent
+    <style>
+        .m-pertlet_head-switch-btn{
+            vertical-align: middle;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -ms-flex-line-pack: start;
+            align-content: flex-start;
+        }
+        .switch-btn-bot-pad label{
+            margin-bottom: 0px;
+        }
+        .m-widget17 .m-widget17__visual .m-widget17__chart{
+            padding-top: 5rem;
+        }
+        .hotel_name{
+            position: relative;
+            color: #000;
+            background: #fff;
+            /* width: 50%; */
+            text-align: center;
+            margin: 0px auto;
+            /* padding-top: 50px; */
+            /* margin-top: 50px; */
+            font-size: 25px;
+            opacity: 0.6;
+        }
+    </style>
+@endsection

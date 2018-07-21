@@ -160,7 +160,7 @@
 									</h3>
 								</div>
 							</div>
-							<div class="m-portlet__head-tools">
+							<div class="m-portlet__head-tools" style="display: none;">
 								<ul class="m-portlet__nav">
 									<li class="m-portlet__nav-item m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push" m-dropdown-toggle="hover">
 										<a href="#" class="m-portlet__nav-link m-dropdown__toggle dropdown-toggle btn btn--sm m-btn--pill btn-secondary m-btn m-btn--label-brand">
@@ -234,7 +234,7 @@
 									</div>
 									<span class="m-widget4__ext">
 										<span class="m-widget4__number m--font-brand">
-											<a href="#">View</a>
+											<a href="{{ URL::to('properties')}}">View</a>
 										</span>
 									</span>
 								</div>
