@@ -101,7 +101,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="m-wizard__step" m-wizard-target="m_wizard_form_step_3" class="wizard_step_3">
+											<!--<div class="m-wizard__step" m-wizard-target="m_wizard_form_step_3" class="wizard_step_3">
 												<div class="m-wizard__step-info">
 													<a href="#" class="m-wizard__step-number">
 														<span>
@@ -118,7 +118,7 @@
 													</div>
 												</div>
 											</div>
-                                            <!--<div class="m-wizard__step" m-wizard-target="m_wizard_form_step_4" class="wizard_step_4">
+                                            <div class="m-wizard__step" m-wizard-target="m_wizard_form_step_4" class="wizard_step_4">
 												<div class="m-wizard__step-info">
 													<a href="#" class="m-wizard__step-number">
 														<span>
@@ -401,7 +401,7 @@
     										</div>
     										<!--end: Form Wizard Step 2-->
                                             <!--begin: Form Wizard Step 3-->
-    										<div class="m-wizard__form-step" id="m_wizard_form_step_3">
+    										<?php /*<div class="m-wizard__form-step" id="m_wizard_form_step_3">
     											<div class="m-form__section m-form__section--first">
     												<div class="m-form__heading">
     													<h3 class="m-form__heading-title">
@@ -491,7 +491,7 @@
     										</div>
     										<!--end: Form Wizard Step 3-->
                                             
-                                            <?php /*
+                                            
                                             <!--begin: Form Wizard Step 4-->
                                             <div class="m-wizard__form-step" id="m_wizard_form_step_4">
                                                 <div class="m-form__section m-form__section--first">

@@ -873,6 +873,7 @@ class UserController extends Controller {
             
             $_user = User::find(\Session::get('uid'));
             $_user->form_wizard = $request->input('form_wizard');
+            $_user->new_user = 0;
             $_user->save();
             
             if (Input::get('compedit_id') != "" && Input::get('compedit_id') > 0) {

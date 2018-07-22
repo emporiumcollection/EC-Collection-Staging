@@ -16,7 +16,7 @@ var WizardDemo = function () {
         //== Validation before going to next page
         wizard.on('beforeNext', function(wizard) {
             if (validator.form() !== true) {
-                wizard.stop();  // don't go to the next step
+                wizard.stop=true;   // don't go to the next step
             }
             else{
                 var _wizard_step = wizard.getStep();
@@ -24,10 +24,10 @@ var WizardDemo = function () {
                 if(_wizard_step == '1'){
                        wizard_step_1();
                 }
-                else if(_wizard_step == '2'){
+                /*else if(_wizard_step == '2'){
                        wizard_step_2();
                 }
-                /*else if(_wizard_step == '3'){
+                else if(_wizard_step == '3'){
                     wizard_step_3();
                 }
                 else if(_wizard_step == '4'){
@@ -120,7 +120,7 @@ var WizardDemo = function () {
                     maxlength: 6 
                 },
 
-                //== Slider Advertisement (step 3)
+                /*//== Slider Advertisement (step 3)
                 adslink: {
                     required: true,
                     url:true                    
@@ -135,7 +135,7 @@ var WizardDemo = function () {
                     ads_slider_cat: true,
                 },                
 
-                /*//== Slider Advertisement (step 4)
+                //== Slider Advertisement (step 4)
                 adslink: {
                     required: true,
                     url:true                    
@@ -193,7 +193,54 @@ var WizardDemo = function () {
 
             if (validator.form()) {
                 
-                var fdata = new FormData();
+                 var fdata = new FormData();
+    
+    fdata.append("compedit_id",$("input[name=compedit_id]").val());
+    fdata.append("company_name",$("input[name=company_name]").val());
+    fdata.append("company_owner",$("input[name=company_owner]").val());
+    fdata.append("contact_person",$("input[name=contact_person]").val());
+    fdata.append("company_email",$("input[name=company_email]").val());
+    fdata.append("company_phone",$("input[name=company_phone]").val());
+    fdata.append("company_website",$("input[name=company_website]").val());
+    fdata.append("company_tax_no",$("input[name=company_tax_no]").val());
+    fdata.append("company_address",$("input[name=company_address]").val());
+    fdata.append("company_address2",$("input[name=company_address2]").val());
+    fdata.append("company_city",$("input[name=company_city]").val());
+    fdata.append("company_postal_code",$("input[name=company_postal_code]").val());
+    fdata.append("company_country",$("input[name=company_country]").val());
+    fdata.append("steuernummer",$("input[name=steuernummer]").val());
+    fdata.append("umsatzsteuer_id",$("input[name=umsatzsteuer_id]").val());
+    fdata.append("geschäftsführer",$("input[name=geschäftsführer]").val());
+    fdata.append("handelsregister",$("input[name=handelsregister]").val());
+    fdata.append("amtsgericht",$("input[name=amtsgericht]").val());
+    fdata.append("_token",$("input[name=_token]").val());
+    fdata.append("form_wizard",$("input[name=form_wizard_2]").val());
+    if($("input[name=company_logo]")[0].files.length>0){
+       fdata.append("company_logo",$("input[name=company_logo]")[0].files[0]) 
+    }
+       
+    var base_url = $('#base_url').val();
+    $.ajax({
+        url:base_url+'/save_new_company_details',
+        type:'POST',
+        dataType:'json',
+        contentType: false,
+        processData: false,
+        data:fdata,
+        success:function(response){
+            if(response.status == 'success'){
+                toastr.success(response.message);
+                setTimeout(function(){
+                       location.reload();
+                }, 3000); 
+            }
+            else{
+                toastr.error(response.message);
+            }
+        }
+    }); 
+                
+               /* var fdata = new FormData();
     
                 fdata.append("adslink",$("input[name=adslink]").val());
                 fdata.append("adstitle",$("input[name=adstitle]").val());
@@ -223,9 +270,7 @@ var WizardDemo = function () {
                         'Access-Control-Allow-Origin': '*'
                     },
                     success:function(response){
-                        /*if(response.url.length > 0){
-                            window.location.href = response.url;
-                        }*/
+                        
                         if(response.status == 'success'){
                             toastr.success(response.message);
                             setTimeout(function(){
@@ -236,7 +281,7 @@ var WizardDemo = function () {
                             toastr.error(response.message);
                         }
                     }
-                });
+                });*/
                 
                 //== See: src\js\framework\base\app.js 
                 /*mApp.progress(btn);
