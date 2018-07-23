@@ -54761,6 +54761,13 @@ i.m-menu__link-icon.fa {
     display: none;
 }
 
+.owl-stage-outer .m-widget_head-owlcarousel-item.carousel:hover {
+    background: #a99f7d !important;    
+}
+.owl-stage-outer .m-widget_head-owlcarousel-item.carousel:hover span{
+    color: #fff !important;
+}
+
 
 
 
