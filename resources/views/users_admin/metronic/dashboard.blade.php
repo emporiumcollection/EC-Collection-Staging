@@ -94,6 +94,7 @@
     @endif */ ?>
     
     <!--Begin::Section_portlet-->
+        <div class="parent_hotel_name">
             <div class="m-subheader" style="padding: 0px; margin-bottom: 20px;">
 				<div class="d-flex align-items-center">
 					<div class="mr-auto">
@@ -102,7 +103,8 @@
 						</h3>
 					</div>
 				</div>
-			</div> 
+			</div>
+        
         <!-- Second Row -->
 			<div class="row">
 				<div class="col-sm-12 col-md-4 col-xl-4">
@@ -477,8 +479,9 @@
                 </div>
                 				
 			</div>
+        </div>
     <!-- Third Row -->
-            
+        <div class="parent_notifications">           
             <div class="m-subheader" style="padding: 0px; margin-bottom: 20px;">
 				<div class="d-flex align-items-center">
 					<div class="mr-auto">
@@ -488,7 +491,7 @@
 					</div>
 				</div>
 			</div> 
-            
+           
 			    <div class="row">
 					<div class="col-sm-12 col-md-8 col-xl-8">
                         <div class="row">
@@ -1417,11 +1420,12 @@
                     </div>
                     
 				</div>
+        </div>
 				<!--End::Section-->
                 
 		    <!-- End First Row -->   
 	        
-		
+		<div class="parent_reservation_ans_distribution">
            <div class="m-subheader" style="padding: 0px; margin-bottom: 20px;">
 				<div class="d-flex align-items-center">
 					<div class="mr-auto">
@@ -1962,7 +1966,8 @@
                 </div>
                 						
 			</div>
-		
+		</div>
+        <div class="parent_sales_and_marketing">
             <div class="m-subheader" style="padding: 0px; margin-bottom: 20px;">
 				<div class="d-flex align-items-center">
 					<div class="mr-auto">
@@ -2346,7 +2351,8 @@
                 </div>
                 							
 			</div>
-		
+        </div>
+        <div class="parent_quality_assurance">		
             <div class="m-subheader" style="padding: 0px; margin-bottom: 20px;">
 				<div class="d-flex align-items-center">
 					<div class="mr-auto">
@@ -2356,7 +2362,7 @@
 					</div>
 				</div>
 			</div>
-            
+         
             <div class="row">
 				<div class="col-sm-12 col-md-4 col-xl-4">
 					<!--begin:: Widgets/Activity-->
@@ -2570,8 +2576,8 @@
 																							<span class="m-widget16__date">
 																								Exterior/Grounds
 																							</span>
-																							<span class="m-widget16__price m--align-right m--font-danger">
-																								7%
+																							<span class="m-widget16__price m--align-right m--font-accent">
+																								14%
 																							</span>
 																						</div>
 																						<!--end::widget item-->
@@ -2692,26 +2698,7 @@
 																						<div class="m-widget16__visual">
 																							<div id="m_chart_support_tickets" style="height: 180px"></div>
 																						</div>
-																						<div class="m-widget16__legends">
-																							<div class="m-widget16__legend">
-																								<span class="m-widget16__legend-bullet m--bg-info"></span>
-																								<span class="m-widget16__legend-text">
-																									70% Bedroom
-																								</span>
-																							</div>
-																							<div class="m-widget16__legend">
-																								<span class="m-widget16__legend-bullet m--bg-accent"></span>
-																								<span class="m-widget16__legend-text">
-																									20% Bathroom
-																								</span>
-																							</div>
-																							<div class="m-widget16__legend">
-																								<span class="m-widget16__legend-bullet m--bg-danger"></span>
-																								<span class="m-widget16__legend-text">
-																									10% Other
-																								</span>
-																							</div>
-																						</div>
+																						
 																					</div>
 																				</div>
 																			</div>
@@ -2725,7 +2712,7 @@
                 
                 							
 			</div>
-  
+  </div>   
 			
 		
 	<!--End::Section_portlet-->
