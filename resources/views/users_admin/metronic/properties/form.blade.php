@@ -138,13 +138,19 @@
                                                     <div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label">Property Name <span class="asterix"> * </span></label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            {!! Form::text('property_name', $row['property_name'],array('class'=>'form-control', 'placeholder'=>'', 'required'=>'true'  )) !!} 
+                                                            {!! Form::text('property_name', $row['property_name'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>'', 'required'=>'true'  )) !!}
+                                                            <span class="m-form__help">
+    															Please enter your property name
+    														</span>  
                                                         </div> 
                                                     </div> 					
                                                     <div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> Property Short Name </label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            {!! Form::text('property_short_name', $row['property_short_name'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
+                                                            {!! Form::text('property_short_name', $row['property_short_name'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>'',   )) !!}
+                                                            <span class="m-form__help">
+    															Please enter your property short name
+    														</span>  
                                                         </div>                                                        
                                                     </div> 					
                                                     <div class="form-group m-form__group row">
@@ -153,12 +159,16 @@
                                                             <?php $property_type = explode(',', $row['property_type']);
                                                             $property_type_opt = array('Hotel' => 'Hotel', 'Yachts' => 'Yachts', 'Villas' => 'Villas', 'Spas' => 'Spas', 'Safari Lodges' => 'Safari Lodges');
                                                             ?>
-                                                            <select name='property_type' id='property_type' rows='5' required="required"  class='form-control select2 ' onchange="check_yachts(this.value)";  > 
+                                                            <select name='property_type' id='property_type' rows='5' required="required"  class='form-control m-input m-input--solid select2 ' onchange="check_yachts(this.value)";  > 
                                                                 <?php
                                                                 foreach ($property_type_opt as $key => $val) {
                                                                     echo "<option  value ='$key' " . ($row['property_type'] == $key ? " selected='selected' " : '' ) . ">$val</option>";
                                                                 }
-                                                                ?></select> 
+                                                                ?>
+                                                            </select>
+                                                            <span class="m-form__help">
+    															Please enter property type
+    														</span>  
                                                         </div>                                                        
                                                     </div> 					
                                                     <div class="form-group m-form__group row">
@@ -167,58 +177,80 @@
                                                             <?php $booking_type = explode(',', $row['booking_type']);
                                                             $booking_type_opt = array('Rent' => 'Rent', 'Buy' => 'Buy', 'Both' => 'Both',);
                                                             ?>
-                                                            <select name='booking_type' rows='5' required="required"  class='form-control select2 '  > 
+                                                            <select name='booking_type' rows='5' required="required"  class='form-control m-input m-input--solid select2 '  > 
                                                                 <?php
                                                                 foreach ($booking_type_opt as $key => $val) {
                                                                     echo "<option  value ='$key' " . ($row['booking_type'] == $key ? " selected='selected' " : '' ) . ">$val</option>";
                                                                 }
-                                                                ?></select> 
+                                                                ?>
+                                                            </select>
+                                                            <span class="m-form__help">
+    															Please enter booking type
+    														</span>  
                                                         </div>
                                                     </div> 					
                                                     <div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> City Tax ( in % ) </label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            {!! Form::text('city_tax', $row['city_tax'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
+                                                            {!! Form::text('city_tax', $row['city_tax'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>'',   )) !!}
+                                                            <span class="m-form__help">
+    															Please enter city tax
+    														</span>  
                                                         </div>
                                                     </div>
                                                     <div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> Commission ( in % ) </label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            {!! Form::text('commission', $row['commission'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
+                                                            {!! Form::text('commission', $row['commission'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>'',   )) !!}
+                                                            <span class="m-form__help">
+    															Please enter commission
+    														</span> 
                                                         </div>
                                                     </div>
                     
                                                     <div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> About </label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            <textarea name="about_property" class="form-control">{{$row['about_property']}}</textarea> 
+                                                            <textarea name="about_property" class="form-control m-input m-input--solid">{{$row['about_property']}}</textarea>
+                                                            <span class="m-form__help">
+    															Please enter short note about your property 
+    														</span> 
                                                         </div>                                                         
                                                     </div> 
                     
                                                     <div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> Property USP </label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            <textarea name="property_usp" class="form-control">{{$row['property_usp']}}</textarea> 
+                                                            <textarea name="property_usp" class="form-control m-input m-input--solid">{{$row['property_usp']}}</textarea>
+                                                            <span class="m-form__help">
+    															Please enter property USP
+    														</span> 
                                                         </div>                                                         
                                                     </div> 
                     
                                                     <div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> Assign User <span class="asterix"> * </span></label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            <select name='assigned_user_id' rows='5' id='assigned_user_id' class='form-control select2'></select> 
+                                                            <select name='assigned_user_id' rows='5' id='assigned_user_id' class='form-control m-input m-input--solid select2'></select>
+                                                            <span class="m-form__help">
+    															Please select user
+    														</span> 
                                                         </div>                                                        
                                                     </div> 
                     
                                                     <div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> Assign Amenities </label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            <select name='assigned_amenities[]' rows='5' id='assigned_amenities' class='form-control select2 ' multiple="multiple"  >
+                                                            <select name='assigned_amenities[]' rows='5' id='assigned_amenities' class='form-control m-input m-input--solid select2 ' multiple="multiple"  >
                                                                 @if(!empty($amenties))
                                                                 @foreach($amenties as $amenty)
                                                                 <option value="{{$amenty->id}}" {{(isset($row['assign_amenities']) && in_array($amenty->id,explode(',',$row['assign_amenities']))) ? " selected='selected' " : '' }}>{{$amenty->amenity_title}}</option>
                                                                 @endforeach
                                                                 @endif
-                                                            </select> 
+                                                            </select>
+                                                            <span class="m-form__help">
+    															Please select assign amenties
+    														</span> 
                                                         </div>
                                                     </div> 
                     
@@ -236,13 +268,16 @@
                                                     <div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> Destinations</label>
                                                         <div class="col-xl-9 col-lg-9">                    
-                                                            <select name='destinations[]' id="property_category_id" rows='5'   class='form-control select2 ' multiple="multiple"   > 
+                                                            <select name='destinations[]' id="property_category_id" rows='5'   class='form-control m-input m-input--solid select2 ' multiple="multiple"   > 
                                                                 <option  value ="0">-- Select Category --</option> 
                                                                 @foreach($categories as $val)
                     
                                                                 <option  value ="{{$val->id}}" {{(isset($row['property_category_id']) && in_array($val->id,explode(',',$row['property_category_id']))) ? " selected='selected' " : '' }}>{{$val->category_name}}</option> 						
                                                                 @endforeach						
                                                             </select> 
+                                                            <span class="m-form__help">
+    															Please select destination
+    														</span>
                                                         </div>
                                                     </div>
                     
@@ -261,55 +296,76 @@
                                                     <div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> Detail Section 1 Title </label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            {!! Form::text('detail_section1_title', $row['detail_section1_title'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
+                                                            {!! Form::text('detail_section1_title', $row['detail_section1_title'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>'',   )) !!}
+                                                            <span class="m-form__help">
+    															Please enter detail section 1 title
+    														</span> 
                                                         </div>
                                                     </div>
                     
                                                     <div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> Detail Section 1 Description Box 1 </label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            <textarea name="detail_section1_description_box1" class="form-control">{{$row['detail_section1_description_box1']}}</textarea> 
+                                                            <textarea name="detail_section1_description_box1" class="form-control m-input m-input--solid">{{$row['detail_section1_description_box1']}}</textarea>
+                                                            <span class="m-form__help">
+    															Please enter details section 1 description box 1
+    														</span> 
                                                         </div>
                                                     </div> 
                     
                                                     <div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> Detail Section 1 Description Box 2 </label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            <textarea name="detail_section1_description_box2" class="form-control">{{$row['detail_section1_description_box2']}}</textarea> 
+                                                            <textarea name="detail_section1_description_box2" class="form-control m-input m-input--solid">{{$row['detail_section1_description_box2']}}</textarea>
+                                                            <span class="m-form__help">
+    															Please enter details section 1 description box 2
+    														</span> 
                                                         </div>
                                                     </div> 
                     
                                                     <div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> Detail Section 2 Title </label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            {!! Form::text('detail_section2_title', $row['detail_section2_title'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
+                                                            {!! Form::text('detail_section2_title', $row['detail_section2_title'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>'',   )) !!}
+                                                            <span class="m-form__help">
+    															Please enter detail section 2 title
+    														</span> 
                                                         </div>
                                                     </div>
                     
                                                     <div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> Detail Section 2 Description Box 1 </label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            <textarea name="detail_section2_description_box1" class="form-control">{{$row['detail_section2_description_box1']}}</textarea> 
+                                                            <textarea name="detail_section2_description_box1" class="form-control m-input m-input--solid">{{$row['detail_section2_description_box1']}}</textarea>
+                                                            <span class="m-form__help">
+    															Please enter details section 2 description box 1
+    														</span> 
                                                         </div>
                                                     </div>
                     
                                                     <div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> Detail Section 2 Description Box 2 </label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            <textarea name="detail_section2_description_box2" class="form-control">{{$row['detail_section2_description_box2']}}</textarea> 
+                                                            <textarea name="detail_section2_description_box2" class="form-control m-input m-input--solid">{{$row['detail_section2_description_box2']}}</textarea>
+                                                            <span class="m-form__help">
+    															Please enter details section 2 description box 2
+    														</span> 
                                                         </div>
                                                     </div>
                     
                                                     <div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> Assign Detail City</label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            <select name='assign_detail_city' id="assign_detail_city" rows='5' class='form-control select2 ' > 
+                                                            <select name='assign_detail_city' id="assign_detail_city" rows='5' class='form-control m-input m-input--solid select2 ' > 
                                                                 <option  value ="0">-- Select --</option> 
                                                                 @foreach($categories as $val)
                     
                                                                 <option  value ="{{$val->category_name}}" {{(isset($row['assign_detail_city']) && ($val->category_name==$row['assign_detail_city'])) ? " selected='selected' " : '' }}>{{$val->category_name}}</option> 						
                                                                 @endforeach						
-                                                            </select> 
+                                                            </select>
+                                                            <span class="m-form__help">
+    															Please select assign detail city
+    														</span> 
                                                         </div>                                                        
                                                     </div>
                     								
@@ -344,39 +400,48 @@
                     								<div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> Restaurants</label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            <select name='restaurantids[]' id="restaurantids" rows='5'   class='form-control select2 ' multiple="multiple"   > 
+                                                            <select name='restaurantids[]' id="restaurantids" rows='5'   class='form-control m-input m-input--solid select2 ' multiple="multiple"   > 
                                                                 <option  value ="0">-- Select Restaurant --</option> 
                                                                 @foreach($restaurants as $val)
                     
                                                                 <option  value ="{{$val->id}}" {{(isset($row['restaurant_ids']) && in_array($val->id,explode(',',$row['restaurant_ids']))) ? " selected='selected' " : '' }}>{{$val->title}}</option> 						
                                                                 @endforeach						
                                                             </select> 
+                                                            <span class="m-form__help">
+    															Please select restaurants
+    														</span>
                                                         </div>
                                                     </div>
                     								
                     								<div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> Bars</label>
                                                         <div class="col-xl-9 col-lg-9">                    
-                                                            <select name='barids[]' id="barids" rows='5' class='form-control select2 ' multiple="multiple"   > 
+                                                            <select name='barids[]' id="barids" rows='5' class='form-control m-input m-input--solid select2 ' multiple="multiple"   > 
                                                                 <option  value ="0">-- Select Bar --</option> 
                                                                 @foreach($bars as $val)
                     
                                                                 <option  value ="{{$val->id}}" {{(isset($row['bar_ids']) && in_array($val->id,explode(',',$row['bar_ids']))) ? " selected='selected' " : '' }}>{{$val->title}}</option> 						
                                                                 @endforeach						
-                                                            </select> 
+                                                            </select>
+                                                            <span class="m-form__help">
+    															Please select bars
+    														</span> 
                                                         </div>
                                                     </div>
                     								
                     								<div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> Spas</label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            <select name='spaids[]' id="spaids" rows='5'   class='form-control select2 ' multiple="multiple"   > 
+                                                            <select name='spaids[]' id="spaids" rows='5'   class='form-control m-input m-input--solid select2 ' multiple="multiple"   > 
                                                                 <option  value ="0">-- Select Spa --</option> 
                                                                 @foreach($spas as $val)
                     
                                                                 <option  value ="{{$val->id}}" {{(isset($row['spa_ids']) && in_array($val->id,explode(',',$row['spa_ids']))) ? " selected='selected' " : '' }}>{{$val->title}}</option> 						
                                                                 @endforeach						
                                                             </select> 
+                                                            <span class="m-form__help">
+    															Please select spas
+    														</span>
                                                         </div>
                                                     </div>
                                                                                  					
