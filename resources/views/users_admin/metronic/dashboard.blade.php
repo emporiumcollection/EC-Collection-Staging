@@ -2103,6 +2103,125 @@
 				</div>
                 
                 <div class="col-sm-12 col-md-4 col-xl-4">
+                    <!--begin:: Widgets/Product Sales-->
+					<div class="m-portlet m-portlet--bordered-semi m-portlet--space m-portlet--full-height ">
+						<div class="m-portlet__head">
+							<div class="m-portlet__head-caption">
+								<div class="m-portlet__head-title">
+									<h3 class="m-portlet__head-text">
+										Product Sales
+										<span class="m-portlet__head-desc">
+											Total Sales By Products
+										</span>
+									</h3>
+								</div>
+							</div>
+							<div class="m-portlet__head-tools">
+								<ul class="m-portlet__nav">
+									<li class="m-portlet__nav-item m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push" m-dropdown-toggle="hover" aria-expanded="true">
+										<a href="#" class="m-portlet__nav-link m-dropdown__toggle dropdown-toggle btn btn--sm m-btn--pill btn-secondary m-btn m-btn--label-brand">
+											Filter
+										</a>
+										<div class="m-dropdown__wrapper">
+											<span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust" style="left: auto; right: 36.5px;"></span>
+											<div class="m-dropdown__inner">
+												<div class="m-dropdown__body">
+													<div class="m-dropdown__content">
+														<ul class="m-nav">
+															<li class="m-nav__item">
+																<a href="" class="m-nav__link">
+																	<i class="m-nav__link-icon flaticon-share"></i>
+																	<span class="m-nav__link-text">
+																		Activity
+																	</span>
+																</a>
+															</li>
+															<li class="m-nav__item">
+																<a href="" class="m-nav__link">
+																	<i class="m-nav__link-icon flaticon-chat-1"></i>
+																	<span class="m-nav__link-text">
+																		Messages
+																	</span>
+																</a>
+															</li>
+															<li class="m-nav__item">
+																<a href="" class="m-nav__link">
+																	<i class="m-nav__link-icon flaticon-info"></i>
+																	<span class="m-nav__link-text">
+																		FAQ
+																	</span>
+																</a>
+															</li>
+															<li class="m-nav__item">
+																<a href="" class="m-nav__link">
+																	<i class="m-nav__link-icon flaticon-lifebuoy"></i>
+																	<span class="m-nav__link-text">
+																		Support
+																	</span>
+																</a>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="m-portlet__body">
+							<div class="m-widget25">
+								<span class="m-widget25__price m--font-brand">
+									$237,650
+								</span>
+								<span class="m-widget25__desc">
+									Total Revenue This Month
+								</span>
+								<div class="m-widget25--progress">
+									<div class="m-widget25__progress">
+										<span class="m-widget25__progress-number">
+											63%
+										</span>
+										<div class="m--space-10"></div>
+										<div class="progress m-progress--sm">
+											<div class="progress-bar m--bg-danger" role="progressbar" style="width: 63%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+										</div>
+										<span class="m-widget25__progress-sub">
+											Rooms
+										</span>
+									</div>
+									<div class="m-widget25__progress">
+										<span class="m-widget25__progress-number">
+											39%
+										</span>
+										<div class="m--space-10"></div>
+										<div class="progress m-progress--sm">
+											<div class="progress-bar m--bg-accent" role="progressbar" style="width: 39%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+										</div>
+										<span class="m-widget25__progress-sub">
+											Events
+										</span>
+									</div>
+									<div class="m-widget25__progress" >
+										<span class="m-widget25__progress-number">
+											54%
+										</span>
+										<div class="m--space-10"></div>
+										<div class="progress m-progress--sm">
+											<div class="progress-bar m--bg-warning" role="progressbar" style="width: 54%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+										</div>
+										<span class="m-widget25__progress-sub">
+											Restuarant / Spa / Bar
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--end:: Widgets/Product Sales-->
+                </div>
+                
+                <div class="col-sm-12 col-md-4 col-xl-4">
                     <!--begin:: Widgets/Adwords Stats-->
 					<div class="m-portlet m-portlet--full-height m-portlet--skin-light m-portlet--fit ">
 						<div class="m-portlet__head">
@@ -2225,126 +2344,6 @@
 					</div>
 					<!--end:: Widgets/Adwords Stats-->
                 </div>
-                
-                <div class="col-sm-12 col-md-4 col-xl-4">
-                    <!--begin:: Widgets/Product Sales-->
-					<div class="m-portlet m-portlet--bordered-semi m-portlet--space m-portlet--full-height ">
-						<div class="m-portlet__head">
-							<div class="m-portlet__head-caption">
-								<div class="m-portlet__head-title">
-									<h3 class="m-portlet__head-text">
-										Product Sales
-										<span class="m-portlet__head-desc">
-											Total Sales By Products
-										</span>
-									</h3>
-								</div>
-							</div>
-							<div class="m-portlet__head-tools">
-								<ul class="m-portlet__nav">
-									<li class="m-portlet__nav-item m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push" m-dropdown-toggle="hover" aria-expanded="true">
-										<a href="#" class="m-portlet__nav-link m-dropdown__toggle dropdown-toggle btn btn--sm m-btn--pill btn-secondary m-btn m-btn--label-brand">
-											Filter
-										</a>
-										<div class="m-dropdown__wrapper">
-											<span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust" style="left: auto; right: 36.5px;"></span>
-											<div class="m-dropdown__inner">
-												<div class="m-dropdown__body">
-													<div class="m-dropdown__content">
-														<ul class="m-nav">
-															<li class="m-nav__item">
-																<a href="" class="m-nav__link">
-																	<i class="m-nav__link-icon flaticon-share"></i>
-																	<span class="m-nav__link-text">
-																		Activity
-																	</span>
-																</a>
-															</li>
-															<li class="m-nav__item">
-																<a href="" class="m-nav__link">
-																	<i class="m-nav__link-icon flaticon-chat-1"></i>
-																	<span class="m-nav__link-text">
-																		Messages
-																	</span>
-																</a>
-															</li>
-															<li class="m-nav__item">
-																<a href="" class="m-nav__link">
-																	<i class="m-nav__link-icon flaticon-info"></i>
-																	<span class="m-nav__link-text">
-																		FAQ
-																	</span>
-																</a>
-															</li>
-															<li class="m-nav__item">
-																<a href="" class="m-nav__link">
-																	<i class="m-nav__link-icon flaticon-lifebuoy"></i>
-																	<span class="m-nav__link-text">
-																		Support
-																	</span>
-																</a>
-															</li>
-														</ul>
-													</div>
-												</div>
-											</div>
-										</div>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<div class="m-portlet__body">
-							<div class="m-widget25">
-								<span class="m-widget25__price m--font-brand">
-									$237,650
-								</span>
-								<span class="m-widget25__desc">
-									Total Revenue This Month
-								</span>
-								<div class="m-widget25--progress">
-									<div class="m-widget25__progress">
-										<span class="m-widget25__progress-number">
-											63%
-										</span>
-										<div class="m--space-10"></div>
-										<div class="progress m-progress--sm">
-											<div class="progress-bar m--bg-danger" role="progressbar" style="width: 63%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-										</div>
-										<span class="m-widget25__progress-sub">
-											Rooms
-										</span>
-									</div>
-									<div class="m-widget25__progress">
-										<span class="m-widget25__progress-number">
-											39%
-										</span>
-										<div class="m--space-10"></div>
-										<div class="progress m-progress--sm">
-											<div class="progress-bar m--bg-accent" role="progressbar" style="width: 39%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-										</div>
-										<span class="m-widget25__progress-sub">
-											Events
-										</span>
-									</div>
-									<div class="m-widget25__progress" >
-										<span class="m-widget25__progress-number">
-											54%
-										</span>
-										<div class="m--space-10"></div>
-										<div class="progress m-progress--sm">
-											<div class="progress-bar m--bg-warning" role="progressbar" style="width: 54%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-										</div>
-										<span class="m-widget25__progress-sub">
-											Restuarant / Spa / Bar
-										</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!--end:: Widgets/Product Sales-->
-                </div>
-                
                 							
 			</div>
 		
@@ -2552,7 +2551,7 @@
 																								Bedroom
 																							</span>
 																							<span class="m-widget16__price m--align-right m--font-brand">
-																								70%
+																								20%
 																							</span>
 																						</div>
 																						<!--end::widget item-->	
@@ -2562,21 +2561,129 @@
 																								Bathroom
 																							</span>
 																							<span class="m-widget16__price m--align-right m--font-accent">
-																								20%
+																								10%
 																							</span>
 																						</div>
 																						<!--end::widget item-->
 						<!--begin::widget item-->
 																						<div class="m-widget16__item">
 																							<span class="m-widget16__date">
-																								Other
+																								Exterior/Grounds
 																							</span>
 																							<span class="m-widget16__price m--align-right m--font-danger">
-																								10%
+																								7%
 																							</span>
 																						</div>
 																						<!--end::widget item-->
-						
+                                                                                        
+                                                                                        <div class="m-widget16__item">
+																							<span class="m-widget16__date">
+																								Lobby
+																							</span>
+																							<span class="m-widget16__price m--align-right m--font-danger">
+																								6%
+																							</span>
+																						</div>
+																						<!--end::widget item-->
+                                                                                        <div class="m-widget16__item">
+																							<span class="m-widget16__date">
+																								Restaurants/Bars
+																							</span>
+																							<span class="m-widget16__price m--align-right m--font-danger">
+																								5%
+																							</span>
+																						</div>
+																						<!--end::widget item-->
+                                                                                        <div class="m-widget16__item">
+																							<span class="m-widget16__date">
+																								Guest Room Corridors
+																							</span>
+																							<span class="m-widget16__price m--align-right m--font-danger">
+																								5%
+																							</span>
+																						</div>
+																						<!--end::widget item-->
+                                                                                        <div class="m-widget16__item">
+																							<span class="m-widget16__date">
+																								Restrooms
+																							</span>
+																							<span class="m-widget16__price m--align-right m--font-danger">
+																								5%
+																							</span>
+																						</div>
+																						<!--end::widget item-->
+                                                                                        <div class="m-widget16__item">
+																							<span class="m-widget16__date">
+																								Elevators
+																							</span>
+																							<span class="m-widget16__price m--align-right m--font-danger">
+																								
+																							</span>
+																						</div>
+                                                                                        <!--end::widget item-->
+                                                                                        <div class="m-widget16__item">
+																							<span class="m-widget16__date">
+																								HE Employee - Behavioural Standards
+																							</span>
+																							<span class="m-widget16__price m--align-right m--font-danger">
+																								5%
+																							</span>
+																						</div>
+																						<!--end::widget item-->
+                                                                                        <div class="m-widget16__item">
+																							<span class="m-widget16__date">
+																								Fitness Center
+																							</span>
+																							<span class="m-widget16__price m--align-right m--font-danger">
+																								5%
+																							</span>
+																						</div>
+																						<!--end::widget item-->
+                                                                                        <div class="m-widget16__item">
+																							<span class="m-widget16__date">
+																								Swimming Pool/Beach
+																							</span>
+																							<span class="m-widget16__price m--align-right m--font-danger">
+																								5%
+																							</span>
+																						</div>
+																						<!--end::widget item-->
+                                                                                        <div class="m-widget16__item">
+																							<span class="m-widget16__date">
+																								Tennis/Squash Courts
+																							</span>
+																							<span class="m-widget16__price m--align-right m--font-danger">
+																								5%
+																							</span>
+																						</div>
+																						<!--end::widget item-->
+                                                                                        <div class="m-widget16__item">
+																							<span class="m-widget16__date">
+																								Steam Room/Sauna/Jacuzzi
+																							</span>
+																							<span class="m-widget16__price m--align-right m--font-danger">
+																								5%
+																							</span>
+																						</div>
+																						<!--end::widget item-->
+                                                                                        <div class="m-widget16__item">
+																							<span class="m-widget16__date">
+																								Changing Rooms
+																							</span>
+																							<span class="m-widget16__price m--align-right m--font-danger">
+																								5%
+																							</span>
+																						</div>
+																						<!--end::widget item-->
+                                                                                        <div class="m-widget16__item">
+																							<span class="m-widget16__date">
+																								Other Fields
+																							</span>
+																							<span class="m-widget16__price m--align-right m--font-danger">
+																								5%
+																							</span>
+																						</div>
+																						<!--end::widget item-->
 																						
 																					</div>
 																				</div>
