@@ -45,7 +45,7 @@
 						</div>
 						<!--end: Message container -->
 						<div class="row m-row--no-padding">
-							<div class="col-xl-3 col-lg-12">
+							<div class="col-xl-3 col-lg-12 bg-gray">
 								<!--begin: Form Wizard Head -->
 								<div class="m-wizard__head">
 									<!--begin: Form Wizard Progress -->
@@ -125,6 +125,7 @@
                                         {!! Form::open(array('url'=>'#', 'class'=>'m-form m-form--label-align-left- m-form--state- ', 'id'=>'property_update_form' ,'files' => true)) !!}
                                         <div class="m-portlet__body m-portlet__body--no-padding">
                                             <input type="hidden" name="base_url" id="base_url" value="{{ url() }}" />
+                                            <input type="hidden" name="id" value="<?php echo $row['id']; ?>" />
                                             <!--begin: Form Wizard Step 1-->
     										<div class="m-wizard__form-step m-wizard__form-step--current" id="m_wizard_form_step_1">
                                                 <input name="form_wizard" type="hidden" id="form_wizard" value="1" />  
@@ -136,20 +137,20 @@
     												</div>   
                                                     
                                                     <div class="form-group m-form__group row">
-                                                        <label class="col-xl-3 col-lg-3 col-form-label">Property Name <span class="asterix"> * </span></label>
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">{{ Lang::get('hotel.property-name') }} <span class="asterix"> * </span></label>
                                                         <div class="col-xl-9 col-lg-9">
                                                             {!! Form::text('property_name', $row['property_name'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>'', 'required'=>'true'  )) !!}
                                                             <span class="m-form__help">
-    															Please enter your property name
+    															{{ Lang::get('hotel.property-name-help-text') }}
     														</span>  
                                                         </div> 
                                                     </div> 					
                                                     <div class="form-group m-form__group row">
-                                                        <label class="col-xl-3 col-lg-3 col-form-label"> Property Short Name </label>
+                                                        <label class="col-xl-3 col-lg-3 col-form-label"> {{ Lang::get('hotel.property-short-name') }} </label>
                                                         <div class="col-xl-9 col-lg-9">
                                                             {!! Form::text('property_short_name', $row['property_short_name'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>'',   )) !!}
                                                             <span class="m-form__help">
-    															Please enter your property short name
+    															{{ Lang::get('hotel.property-short-name-help-text') }}
     														</span>  
                                                         </div>                                                        
                                                     </div> 					
@@ -425,7 +426,7 @@
                                                             </select>
                                                             <span class="m-form__help">
     															Please select bars
-    														</span> 
+    														</span>
                                                         </div>
                                                     </div>
                     								
@@ -462,21 +463,21 @@
                                                     <div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> Title </label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            {!! Form::text('architecture_title', $row['architecture_title'],array('class'=>'form-control', 'placeholder'=>''  )) !!} 
+                                                            {!! Form::text('architecture_title', $row['architecture_title'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!} 
                                                         </div>
                                                     </div> 
             
                                                     <div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> Description </label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            <textarea name="architecture_desciription" class="form-control">{{$row['architecture_desciription']}}</textarea> 
+                                                            <textarea name="architecture_desciription" class="form-control m-input m-input--solid">{{$row['architecture_desciription']}}</textarea> 
                                                         </div>
                                                     </div> 
             
                                                     <div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> Image </label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            <input  type='file' class="form-control" name='architecture_image' id='architecture_image'  />
+                                                            <input  type='file' class="form-control m-input m-input--solid" name='architecture_image' id='architecture_image'  />
                                                             <div >
                                                                 {!! SiteHelpers::showUploadedFile($row['architecture_image'],'/uploads/properties_subtab_imgs/') !!}
             
@@ -505,7 +506,7 @@
                                                     <div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> Video </label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            <input  type='file' name='architecture_video' id='architecture_video' class="form-control"  />
+                                                            <input  type='file' name='architecture_video' id='architecture_video' class="form-control m-input m-input--solid"  />
                                                             <div >
                                                                 {!! SiteHelpers::showUploadedFile($row['architecture_video'],'/uploads/properties_subtab_imgs/') !!}
             
@@ -535,7 +536,7 @@
                                                         <div class="form-group m-form__group row">
                                                             <label class="col-xl-3 col-lg-3 col-form-label"> Video Link </label>
                                                             <div class="col-xl-9 col-lg-9">
-                                                                <input type='text' name='architecture_video_link' id='architecture_video_link' class="form-control" value="{{$row['architecture_video_link']}}" />
+                                                                <input type='text' name='architecture_video_link' id='architecture_video_link' class="form-control m-input m-input--solid" value="{{$row['architecture_video_link']}}" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -544,7 +545,7 @@
                                                     <div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> Designer </label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            <select name='assigned_architecture_designer[]' rows='5' id='assigned_architecture_designer' class='form-control select2 ' multiple="multiple"  >
+                                                            <select name='assigned_architecture_designer[]' rows='5' id='assigned_architecture_designer' class='form-control m-input m-input--solid select2 ' multiple="multiple"  >
                                                                 @if(!empty($designers))
                                                                 @foreach($designers as $designer)
                                                                 <option value="{{$designer->id}}" {{(isset($row['assigned_architecture_designer']) && in_array($designer->id,explode(',',$row['assigned_architecture_designer']))) ? " selected='selected' " : '' }}>{{$designer->designer_name}}</option>
@@ -555,7 +556,7 @@
                                                     </div>    
                                                 </div>
                                                 <div class="m-separator m-separator--dashed m-separator--lg"></div>
-                                                <div class="m-form__section">
+                                                <div class="m-form__section bg-gray">
     											    <div class="m-form__heading">
     												    <h3 class="m-form__heading-title">
     												       Design    													   
@@ -564,21 +565,21 @@
                                                     <div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> Title </label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            {!! Form::text('architecture_design_title', $row['architecture_design_title'],array('class'=>'form-control', 'placeholder'=>''  )) !!} 
+                                                            {!! Form::text('architecture_design_title', $row['architecture_design_title'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!} 
                                                         </div>
                                                     </div> 
             
                                                     <div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> Description </label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            <textarea name="architecture_design_desciription" class="form-control">{{$row['architecture_design_desciription']}}</textarea> 
+                                                            <textarea name="architecture_design_desciription" class="form-control m-input m-input--solid">{{$row['architecture_design_desciription']}}</textarea> 
                                                         </div>
                                                     </div> 
             
                                                     <div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> Image </label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            <input  type='file' class="form-control" name='architecture_design_image' id='architecture_design_image'  />
+                                                            <input  type='file' class="form-control m-input m-input--solid" name='architecture_design_image' id='architecture_design_image'  />
                                                             <div >
                                                                 {!! SiteHelpers::showUploadedFile($row['architecture_design_image'],'/uploads/properties_subtab_imgs/') !!}
             
@@ -610,7 +611,7 @@
                                                     <div class="form-group architecture_design_videotypeupload" style="display:none;" >
                                                         <label for="Video" class=" control-label col-md-4 text-left"> Video </label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            <input  type='file' name='architecture_design_video' id='architecture_design_video'  />
+                                                            <input  type='file' name='architecture_design_video' class="form-control  m-input m-input--solid" id='architecture_design_video'  />
                                                             <div >
                                                                 {!! 	SiteHelpers::showUploadedFile($row['architecture_design_video'],'/uploads/properties_subtab_imgs/') !!}
             
@@ -622,18 +623,25 @@
                                                         <div class="form-group m-form__group row">
                                                             <label class="col-xl-3 col-lg-3 col-form-label"> Link Type </label>
                                                             <div class="col-xl-9 col-lg-9">
-                                                                <label class='radio radio-inline'>
-                                                                    <input type='radio' name='architecture_design_video_link_type' value ='youtube' @if($row['architecture_design_video_link_type'] == 'youtube') checked="checked" @endif > Youtube </label>
-                                                                <label class='radio radio-inline'>
-                                                                    <input type='radio' name='architecture_design_video_link_type' value ='vimeo' @if($row['architecture_design_video_link_type'] == 'vimeo') checked="checked" @endif > Vimeo </label> 
-                                                            </div> 
-            
+                                                                <div class="m-radio-inline">
+        															<label class="m-radio m-radio--solid m-radio--brand">
+        																<input type="radio" name="architecture_design_video_link_type" value ='youtube'  @if($row['architecture_design_video_link_type'] == 'youtube') checked="checked" @endif >
+        																Youtube
+        																<span></span>
+        															</label>
+        															<label class="m-radio m-radio--solid m-radio--brand">
+        																<input type="radio" name="architecture_design_video_link_type" value ='vimeo' @if($row['architecture_design_video_link_type'] == 'vimeo') checked="checked" @endif >
+        																Vimeo
+        																<span></span>
+        															</label>
+        														</div>
+                                                            </div>
                                                         </div>
             
                                                         <div class="form-group m-form__group row">
                                                             <label class="col-xl-3 col-lg-3 col-form-label"> Video Link </label>
                                                             <div class="col-xl-9 col-lg-9">
-                                                                <input type='text' name='architecture_design_video_link' id='architecture_design_video_link' class="form-control" value="{{$row['architecture_design_video_link']}}" />
+                                                                <input type='text' name='architecture_design_video_link' id='architecture_design_video_link' class="form-control m-input m-input--solid" value="{{$row['architecture_design_video_link']}}" />
                                                             </div>            
                                                         </div>
                                                     </div>
@@ -641,7 +649,7 @@
                                                     <div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> URL </label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            {!! Form::text('architecture_design_url', $row['architecture_design_url'],array('class'=>'form-control', 'placeholder'=>''  )) !!} 
+                                                            {!! Form::text('architecture_design_url', $row['architecture_design_url'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!} 
                                                         </div>
                                                     </div> 
                                                  </div>
@@ -655,21 +663,21 @@
                                                     <div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> Title </label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            {!! Form::text('architecture_designer_title', $row['architecture_designer_title'],array('class'=>'form-control', 'placeholder'=>''  )) !!} 
+                                                            {!! Form::text('architecture_designer_title', $row['architecture_designer_title'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!} 
                                                         </div>
                                                     </div> 
             
                                                     <div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> Description </label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            <textarea name="architecture_designer_desciription" class="form-control">{{$row['architecture_designer_desciription']}}</textarea> 
+                                                            <textarea name="architecture_designer_desciription" class="form-control m-input m-input--solid">{{$row['architecture_designer_desciription']}}</textarea> 
                                                         </div>
                                                     </div> 
             
                                                     <div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> Image </label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            <input  type='file' class="form-control" name='architecture_designer_image' id='architecture_designer_image'  />
+                                                            <input  type='file' class="form-control m-input m-input--solid" name='architecture_designer_image' id='architecture_designer_image'  />
                                                             <div >
                                                                 {!! SiteHelpers::showUploadedFile($row['architecture_designer_image'],'/uploads/properties_subtab_imgs/') !!}
             
@@ -699,7 +707,7 @@
                                                     <div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> Video </label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            <input  type='file' class="form-control" name='architecture_designer_video' id='architecture_designer_video'  />
+                                                            <input  type='file' class="form-control m-input m-input--solid" name='architecture_designer_video' id='architecture_designer_video'  />
                                                             <div >
                                                                 {!! SiteHelpers::showUploadedFile($row['architecture_designer_video'],'/uploads/properties_subtab_imgs/') !!}
             
@@ -711,10 +719,18 @@
                                                         <div class="form-group m-form__group row">
                                                             <label class="col-xl-3 col-lg-3 col-form-label"> Link Type </label>
                                                             <div class="col-xl-9 col-lg-9">
-                                                                <label class='radio radio-inline'>
-                                                                    <input type='radio' name='architecture_designer_video_link_type' value ='youtube' @if($row['architecture_designer_video_link_type'] == 'youtube') checked="checked" @endif > Youtube </label>
-                                                                <label class='radio radio-inline'>
-                                                                    <input type='radio' name='architecture_designer_video_link_type' value ='vimeo' @if($row['architecture_designer_video_link_type'] == 'vimeo') checked="checked" @endif > Vimeo </label> 
+                                                                <div class="m-radio-inline">
+        															<label class="m-radio m-radio--solid m-radio--brand">
+        																<input type="radio" name="architecture_designer_video_link_type" value='youtube' @if($row['architecture_designer_video_link_type'] == 'youtube') checked="checked" @endif >
+        																Upload
+        																<span></span>
+        															</label>
+        															<label class="m-radio m-radio--solid m-radio--brand">
+        																<input type="radio" name="architecture_designer_video_link_type" value='vimeo' @if($row['architecture_designer_video_link_type'] == 'vimeo') checked="checked" @endif >
+        																Vimeo
+        																<span></span>
+        															</label>
+        														</div>
                                                             </div> 
             
                                                         </div>
@@ -722,7 +738,7 @@
                                                         <div class="form-group m-form__group row">
                                                             <label class="col-xl-3 col-lg-3 col-form-label"> Video Link </label>
                                                             <div class="col-xl-9 col-lg-9">
-                                                                <input type='text' name='architecture_designer_video_link' id='architecture_designer_video_link' class="form-control" value="{{$row['architecture_designer_video_link']}}" />
+                                                                <input type='text' name='architecture_designer_video_link' id='architecture_designer_video_link' class="form-control m-input m-input--solid" value="{{$row['architecture_designer_video_link']}}" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -730,7 +746,7 @@
                                                     <div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> Designer </label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            <select name='architecture_designer_designer[]' rows='5' id='architecture_designer_designer' class='form-control select2 ' multiple="multiple"  >
+                                                            <select name='architecture_designer_designer[]' rows='5' id='architecture_designer_designer' class='form-control m-input m-input--solid select2 ' multiple="multiple"  >
                                                                 @if(!empty($designers))
                                                                 @foreach($designers as $designer)
                                                                 <option value="{{$designer->id}}" {{(isset($row['architecture_designer_designer']) && in_array($designer->id,explode(',',$row['architecture_designer_designer']))) ? " selected='selected' " : '' }}>{{$designer->designer_name}}</option>
@@ -743,7 +759,7 @@
                                                     <div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> URL </label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            {!! Form::text('architecture_designer_url', $row['architecture_designer_url'],array('class'=>'form-control', 'placeholder'=>''  )) !!} 
+                                                            {!! Form::text('architecture_designer_url', $row['architecture_designer_url'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!} 
                                                         </div>
                                                     </div> 
                                                 </div>                                                                                              
@@ -780,49 +796,49 @@
                                                     <div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> Facebook </label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            {!! Form::text('social_facebook', $row['social_facebook'],array('class'=>'form-control', 'placeholder'=>''  )) !!} 
+                                                            {!! Form::text('social_facebook', $row['social_facebook'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!} 
                                                         </div>
                                                     </div>
                     
                                                     <div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> Twitter </label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            {!! Form::text('social_twitter', $row['social_twitter'],array('class'=>'form-control', 'placeholder'=>''  )) !!} 
+                                                            {!! Form::text('social_twitter', $row['social_twitter'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!} 
                                                         </div>
                                                     </div>
                     
                                                     <div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> Google+ </label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            {!! Form::text('social_google', $row['social_google'],array('class'=>'form-control', 'placeholder'=>''  )) !!} 
+                                                            {!! Form::text('social_google', $row['social_google'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!} 
                                                         </div>
                                                     </div>
                     
                                                     <div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> Youtube </label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            {!! Form::text('social_youtube', $row['social_youtube'],array('class'=>'form-control', 'placeholder'=>''  )) !!} 
+                                                            {!! Form::text('social_youtube', $row['social_youtube'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!} 
                                                         </div>
                                                     </div>
                     
                                                     <div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> Pinterest </label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            {!! Form::text('social_pinterest', $row['social_pinterest'],array('class'=>'form-control', 'placeholder'=>''  )) !!} 
+                                                            {!! Form::text('social_pinterest', $row['social_pinterest'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!} 
                                                         </div>
                                                     </div>
                     
                                                     <div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> Vimeo </label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            {!! Form::text('social_vimeo', $row['social_vimeo'],array('class'=>'form-control', 'placeholder'=>''  )) !!} 
+                                                            {!! Form::text('social_vimeo', $row['social_vimeo'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!} 
                                                         </div>
                                                     </div>
                     
                                                     <div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> Instagram </label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            {!! Form::text('social_instagram', $row['social_instagram'],array('class'=>'form-control', 'placeholder'=>''  )) !!} 
+                                                            {!! Form::text('social_instagram', $row['social_instagram'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>''  )) !!} 
                                                         </div>
                                                     </div>
                                                     
