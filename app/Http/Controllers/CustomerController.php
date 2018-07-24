@@ -139,7 +139,7 @@ class CustomerController extends Controller {
         });
         
         Validator::extend('has_one_upper_case', function ($attribute, $value, $parameters, $validator) {
-            return (ctype_lower ($value) == false);
+            return preg_match('/[A-Z]+/', $value);
         });
         
         Validator::extend('has_numbers', function ($attribute, $value, $parameters, $validator) {
