@@ -54,7 +54,7 @@
 						</div>
 						<!--end: Message container -->
 						<div class="row m-row--no-padding">
-							<div class="col-xl-3 col-lg-12">
+							<div class="col-xl-3 col-lg-12 bg-gray">
 								<!--begin: Form Wizard Head -->
 								<div class="m-wizard__head">
 									<!--begin: Form Wizard Progress -->
