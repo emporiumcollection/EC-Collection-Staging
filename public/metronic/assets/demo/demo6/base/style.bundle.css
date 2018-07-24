@@ -54825,6 +54825,14 @@ i.m-menu__link-icon.fa {
     padding: 40px 15px 30px;
     margin: 0 -30px;
 }
+.bg-gray {
+    background: #f2f2f2;
+}
+.m-form__section.bg-gray {
+    padding: 30px 4rem;
+    margin: 0 -4rem !important;
+    background: #fafafa;
+}
 
 
 

@@ -2470,9 +2470,25 @@
 				</div>
                 
                 <div class="col-sm-12 col-md-8 col-xl-8">
-                    
+                    <div class="m-portlet m-portlet--tab">
+																	<div class="m-portlet__head">
+																		<div class="m-portlet__head-caption">
+																			<div class="m-portlet__head-title">
+																				<span class="m-portlet__head-icon m--hide">
+																					<i class="la la-gear"></i>
+																				</span>
+																				<h3 class="m-portlet__head-text">
+																					Animated Time-Line Pie Chart
+																				</h3>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="m-portlet__body">
+																		<div id="m_amcharts_13" style="height: 500px;"></div>
+																	</div>
+																</div>
                     <!--begin:: Widgets/Support Cases-->
-																<div class="m-portlet  m-portlet--full-height ">
+																<?php /* <div class="m-portlet  m-portlet--full-height ">
 																	<div class="m-portlet__head">
 																		<div class="m-portlet__head-caption">
 																			<div class="m-portlet__head-title">
@@ -2705,7 +2721,7 @@
 																		</div>
 																	</div>
 																</div>
-																<!--end:: Widgets/Support Stats-->
+																<!--end:: Widgets/Support Stats--> */ ?>
 					
                 </div>
                 
@@ -2722,7 +2738,7 @@
 {{-- For custom style  --}}
 @section('style')
     @parent
-    
+    <link href="//www.amcharts.com/lib/3/plugins/export/export.css" rel="stylesheet" type="text/css" />
     <style>
     .carousel-control {
         position: absolute;
@@ -2772,8 +2788,20 @@
     }
     </style>
 @endsection
+
 {{-- For custom style  --}}
 @section('custom_js_script')
     @parent      
     
 @endsection
+@section('script')
+    <script src="//www.amcharts.com/lib/3/amcharts.js" type="text/javascript"></script>
+	<script src="//www.amcharts.com/lib/3/serial.js" type="text/javascript"></script>
+	<script src="//www.amcharts.com/lib/3/radar.js" type="text/javascript"></script>
+	<script src="//www.amcharts.com/lib/3/pie.js" type="text/javascript"></script>
+	<script src="//www.amcharts.com/lib/3/plugins/tools/polarScatter/polarScatter.min.js" type="text/javascript"></script>
+	<script src="//www.amcharts.com/lib/3/plugins/animate/animate.min.js" type="text/javascript"></script>
+	<script src="//www.amcharts.com/lib/3/plugins/export/export.min.js" type="text/javascript"></script>
+	<script src="//www.amcharts.com/lib/3/themes/light.js" type="text/javascript"></script>
+    <script src="{{ asset('metronic/assets/app/js/charts.js') }}"></script>    
+@stop
