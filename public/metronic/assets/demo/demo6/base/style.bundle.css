@@ -3212,7 +3212,7 @@ fieldset:disabled a.btn {
 .btn-outline-danger:hover {
     color: #fff;
     background-color: #f4516c;
-    border-color: #f4516c
+    border-color: #f4516c;
 }
 
 .btn-outline-danger.focus,
@@ -10214,10 +10214,21 @@ a.text-dark:hover {
     border-color: #A99F7D
 }
 
-.btn-brand:hover {
-    color: #fff;
-    background-color: #00abfb;
-    border-color: #00a3ee
+.m-widget21 .m-widget21__item .m-widget21__icon>a.btn.btn-brand {
+    background: #00c5dc;
+    border-color: #00c5dc;
+}
+.m-widget21 .m-widget21__item .m-widget21__icon>a.btn.btn-accent{
+        background-color: #716aca;
+        border-color: #716aca;
+    }
+
+.btn-brand:hover ,
+.m-widget21 .m-widget21__item .m-widget21__icon>a.btn.btn-brand:hover,
+.m-widget21 .m-widget21__item .m-widget21__icon>a.btn.btn-accent:hover{
+    color: #898b96;
+    background-color: transparent;
+    border-color: #898b96
 }
 
 .btn-brand.focus,
@@ -10960,16 +10971,16 @@ a.text-dark:hover {
 }
 
 .btn-outline-danger {
-    color: #f4516c;
+    color: #F37F83;
     background-color: transparent;
     background-image: none;
-    border-color: #f4516c
+    border-color: #F37F83;
 }
 
 .btn-outline-danger:hover {
     color: #fff;
-    background-color: #f4516c;
-    border-color: #f4516c
+    background-color: #F37F83;
+    border-color: #F37F83;
 }
 
 .btn-outline-danger.focus,
@@ -22469,8 +22480,8 @@ code {
 .btn-outline-danger.focus,
 .btn-outline-danger:focus,
 .btn-outline-danger:hover {
-    border-color: #f4516c;
-    background: #f4516c;
+    border-color: #F37F83;
+    background: #F37F83;
     color: #fff
 }
 
@@ -22502,10 +22513,11 @@ button:focus {
 
 .btn.btn-default,
 .btn.btn-secondary {
-    background: #fff;
-    border-color: #ebedf2
+    background: #a99f7d;
+    border-color: #a99f7d;
+    color: #fff;
+    text-transform: uppercase;
 }
-
 .btn.btn-default i,
 .btn.btn-secondary i {
     color: #6f727d
@@ -22521,8 +22533,8 @@ button:focus {
 .btn.btn-secondary:hover:not(:disabled),
 .show>.btn.btn-default.dropdown-toggle,
 .show>.btn.btn-secondary.dropdown-toggle {
-    border-color: #ebedf2;
-    background-color: #f4f5f8
+    border-color: #898b96;
+    background-color: #898b96;
 }
 
 .btn.btn-default.disabled,
@@ -22633,6 +22645,11 @@ button:focus {
 .show>.btn.m-btn--gradient-from-brand.m-btn--gradient-to-light.dropdown-toggle {
     background: #03afff;
     background: linear-gradient(135deg, #03afff 30%, #f0f0f0 100%)
+}
+.m-portlet--rounded-force button.btn.m-btn--pill.btn-secondary.m-btn.m-btn--hover-brand.m-btn--custom:hover{
+    border-color: #898b96 !important;
+    color: #898b96 !important;
+    background: transparent !important;
 }
 
 .btn.m-btn--gradient-from-brand.m-btn--gradient-to-accent {
@@ -29970,13 +29987,15 @@ body.m-portlet--fullscreen.m-aside-left--fixed .m-aside-left {
 }
 
 .m-widget17 .m-widget17__stats .m-widget17__items .m-widget17__item .m-widget17__subtitle {
-    display: block;
+        display: block;
     margin-top: 6.2rem;
     margin-left: 20px;
     margin-top: 1.8rem;
     margin-left: 1.5rem;
-    font-size: 1.2rem;
-    font-weight: 500
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: 5px;
 }
 
 .m-widget17 .m-widget17__stats .m-widget17__items .m-widget17__item .m-widget17__desc {
@@ -54554,7 +54573,7 @@ body.m-content--skin-light2 {
 /*update colors*/
 .m-brand.m-brand--skin-light,
 .m-grid__item.m-grid__item--fluid.m-wrapper {
-	background: #fff !important;
+    background: #fff !important;
 }
 .m-header .m-header-head {    
     -webkit-box-shadow: none;
@@ -54584,8 +54603,8 @@ i.m-menu__link-icon.fa {
 .m-header-menu.m-header-menu--skin-light .m-menu__nav>.m-menu__item.m-menu__item--hover>
 .m-menu__link .m-menu__link-text, .m-header-menu.m-header-menu--skin-light .m-menu__nav>
 .m-menu__item:hover>.m-menu__link .m-menu__link-text{
-	background: transparent;
-	border: 1px solid #eaeaea;
+    background: transparent;
+    border: 1px solid #eaeaea;
 }
 
 .m-topbar .m-topbar__nav.m-nav>.m-nav__item>.m-nav__link .m-nav__link-icon.m-nav__link-icon-alt .m-nav__link-icon-wrapper {
@@ -54603,8 +54622,8 @@ i.m-menu__link-icon.fa {
 }
 
 .m-topbar .m-topbar__nav.m-nav>.m-nav__item>.m-nav__link .m-topbar__usericon .m-nav__link-icon-wrapper:hover{
-	background: #A99F7D;
-	color: #fff;
+    background: #A99F7D;
+    color: #fff;
 }
 .m-topbar .m-topbar__nav.m-nav>.m-nav__item>
 .m-nav__link .m-nav__link-icon.m-nav__link-icon-alt .m-nav__link-icon-wrapper,
@@ -54800,6 +54819,11 @@ i.m-menu__link-icon.fa {
 .m-portlet.m-portlet--bordered-semi.m-portlet--widget-fit.m-portlet--full-height.m-portlet--skin-light.m-portlet--rounded-force {
     background: #f2f2f2 !important;
     border: 1px solid #f5f5f5;
+}
+.m-content>div:nth-child(even) .row {
+    background: #f5f5f5;
+    padding: 40px 15px 30px;
+    margin: 0 -30px;
 }
 
 
