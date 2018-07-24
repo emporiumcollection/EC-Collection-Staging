@@ -1066,7 +1066,11 @@ class PropertiesController extends Controller {
         $this->data['tabss'] = $tabdata;
         if ($active == 'types') {
             $this->data['cat_types'] = $this->find_categories($property_id);
-            return view('properties.settings_cats', $this->data);
+            
+            $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+            $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.settings_cats':'properties.settings_cats'; 
+            
+            return view($file_name, $this->data);
         } elseif ($active == 'rooms') {
             $this->data['cat_types'] = $this->find_categories_room($property_id);
             $this->data['amenties'] = \DB::table('tb_amenities')->where('amenity_status', '1')->get();
@@ -1078,7 +1082,11 @@ class PropertiesController extends Controller {
                 }
                 $this->data['room_amenties_desc'] = $rooms_desc;
             }
-            return view('properties.settings_rooms', $this->data);
+            $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+            $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.settings_rooms':'properties.settings_rooms'; 
+            
+            return view($file_name, $this->data);
+            
         } elseif ($active == 'price') {
             $seasonArr = array();
             if ($this->data['property_data']->default_seasons != 1) {
@@ -1090,17 +1098,25 @@ class PropertiesController extends Controller {
             $this->data['Seasons'] = $checkseason;
             $this->data['room_prices'] = $this->find_categories_room_price($property_id);
             //print "<pre>"; print_r($this->data['room_prices']);
-            return view('properties.settings_price', $this->data);
+            
+            $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+            $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.settings_price':'properties.settings_price';
+            
+            return view($file_name, $this->data);
         } elseif ($active == 'property_images') {
             $this->data['imgs'] = $this->get_property_files($property_id, 'Property Images');
             $this->data['slider_imgs'] = $this->get_property_files($property_id, 'Property Slider Images');
             return view('properties.settings_property_images', $this->data);
         } elseif ($active == 'property_documents') {
             $this->data['hotel_broch'] = $this->get_property_files($property_id, 'Hotel Brochure');
-	    $this->data['restru_menu'] = $this->get_property_files($property_id, 'Restaurant Menu');
-	    $this->data['spa_broch'] = $this->get_property_files($property_id, 'Spa Brochure');
-		$this->data['hotelcontacts'] = $this->get_property_files($property_id, 'Hotel Contracts');
-            return view('properties.settings_property_documents', $this->data);
+    	    $this->data['restru_menu'] = $this->get_property_files($property_id, 'Restaurant Menu');
+    	    $this->data['spa_broch'] = $this->get_property_files($property_id, 'Spa Brochure');
+    		$this->data['hotelcontacts'] = $this->get_property_files($property_id, 'Hotel Contracts');
+            
+            $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+            $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.settings_property_documents':'properties.settings_property_documents';
+            
+            return view($file_name, $this->data);
         } elseif ($active == 'gallery_images') {
             $this->data['spaimgs'] = $this->get_property_files($property_id, 'Spa Gallery Images');
             $this->data['resturan_imgs'] = $this->get_property_files($property_id, 'Restrurants Gallery Images');
@@ -1136,7 +1152,11 @@ class PropertiesController extends Controller {
                 }
             }
             $this->data['Seasons'] = $seasonArr;
-            return view('properties.settings_seasons', $this->data);
+            
+            $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+            $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.settings_seasons':'properties.settings_seasons'; 
+            
+            return view($file_name, $this->data);
         }
     }
 
@@ -2066,6 +2086,771 @@ function property_images_wetransfer(Request $request) {
         }
     }
                                        
+    public function updateHotelInfo(Request $request){
+        $uid = \Auth::user()->id;
+        $id = $request->input('id');
+        
+        $rules = array(
+            'property_name' => 'required',
+            'property_type' => 'required',
+            'booking_type' => 'required',         
+        );
+        //        
+        $validator = Validator::make($request->all(), $rules);
 
+        //print_r($validator);        
+        if ($validator->passes()) { 
+            //$data = $this->validatePost('tb_properties');
+            $alias = \SiteHelpers::seoUrl(Input::get('property_short_name'));
+            $exha = false;
+            for ($f = 1; $exha != true; $f++) {
+                if ($request->input('id') == '') {
+                    $check_alias = \DB::table('tb_properties')->where('property_slug', $alias)->count();
+                } else {
+                    $check_alias = \DB::table('tb_properties')->where('property_slug', $alias)->where('id', '!=', $id)->count();
+                }
+                if ($check_alias > 0) {
+                    $alias = $alias . '-' . $f;
+                } else {
+                    $alias = $alias;
+                    $exha = true;
+                }
+            }
+            $data['user_id'] = $uid;
+            $data['property_slug'] = $alias;
+
+            if ($request->input('id') == '') {
+                $data['created'] = date('Y-m-d h:i:s');
+            } else {
+                $data['updated'] = date('Y-m-d h:i:s');
+            }
+            $data['property_name'] = $request->input('property_name');
+            $data['property_short_name'] = $request->input('property_short_name');
+            $data['property_type'] = $request->input('property_type');
+            $data['booking_type'] = $request->input('booking_type');
+            
+            $data['city_tax'] = $request->input('city_tax');
+            $data['commission'] = $request->input('commission');
+            $data['about_property'] = $request->input('about_property');
+            $data['property_usp'] = $request->input('property_usp');
+            $data['assigned_user_id'] = $request->input('assigned_user_id');
+            
+            
+            
+            $data['commission'] = $request->input('commission');
+            $data['about_property'] = $request->input('about_property');
+            $data['property_usp'] = $request->input('property_usp');
+            $data['assigned_user_id'] = $request->input('assigned_user_id');            
+            
+
+            if (!empty($request->input('assigned_amenities'))) {
+                $data['assign_amenities'] = implode(',', $request->input('assigned_amenities'));
+            } else {
+                $data['assign_amenities'] = '';
+            }
+
+            if (!is_null($request->input('copy_amenities_rooms'))) {
+                $data['copy_amenities_rooms'] = $request->input('copy_amenities_rooms');
+            } else {
+                $data['copy_amenities_rooms'] = 0;
+            }
+
+            if (!empty($request->input('destinations'))) {
+                $data['property_category_id'] = implode(',', $request->input('destinations'));
+            } else {
+                $data['property_category_id'] = '';
+            }
+
+
+            if (!is_null($request->input('default_seasons'))) {
+                $data['default_seasons'] = $request->input('default_seasons');
+            } else {
+                $data['default_seasons'] = 0;
+            }
+            
+            $data['detail_section1_title'] = $request->input('detail_section1_title');
+            $data['detail_section1_description_box1'] = $request->input('detail_section1_description_box1');
+            $data['detail_section1_description_box2'] = $request->input('detail_section1_description_box2');
+            $data['detail_section2_title'] = $request->input('detail_section2_title');
+            $data['detail_section2_description_box1'] = $request->input('detail_section2_description_box1');
+            $data['detail_section2_description_box2'] = $request->input('detail_section2_description_box2');
+            $data['assign_detail_city'] = $request->input('assign_detail_city');
+
+            
+            
+			
+			if (!is_null($request->input('feature_property'))) {
+                $data['feature_property'] = $request->input('feature_property');
+            } else {
+                $data['feature_property'] = 0;
+            }
+			
+			if (!is_null($request->input('editor_choice_property'))) {
+                $data['editor_choice_property'] = $request->input('editor_choice_property');
+            } else {
+                $data['editor_choice_property'] = 0;
+            }
+
+            
+			
+			if (!empty($request->input('spaids'))) {
+                $data['spa_ids'] = implode(',', $request->input('spaids'));
+            } else {
+                $data['spa_ids'] = '';
+            }
+			
+			if (!empty($request->input('restaurantids'))) {
+                $data['restaurant_ids'] = implode(',', $request->input('restaurantids'));
+            } else {
+                $data['restaurant_ids'] = '';
+            }
+			
+			if (!empty($request->input('barids'))) {
+                $data['bar_ids'] = implode(',', $request->input('barids'));
+            } else {
+                $data['bar_ids'] = '';
+            }
+
+            // Yachts info tab
+            if ($request->input('property_type') == 'Yachts') {
+                $yacht_category = $request->input('yacht_category');
+                $data['yacht_category'] = implode(', ', $yacht_category);
+                $data['yacht_build_year'] = $request->input('yacht_build_year');
+                $data['yachts_guest'] = $request->input('yachts_guest');
+                $data['yacht_length'] = $request->input('yacht_length');
+                if (!empty($request->input('yacht_builder'))) {
+                    $data['yacht_builder'] = implode(',', $request->input('yacht_builder'));
+                }
+                $data['yacht_beam'] = $request->input('yacht_beam');
+                $data['yacht_draft'] = $request->input('yacht_draft');
+                $data['yacht_grt'] = $request->input('yacht_grt');
+                $data['yacht_cabins'] = $request->input('yacht_cabins');
+                $data['yacht_crew'] = $request->input('yacht_crew');
+                $data['yacht_for_sale'] = $request->input('yacht_for_sale');
+                $data['yacht_for_charter'] = $request->input('yacht_for_charter');
+            }
+
+            $destinationPath = public_path() . '/uploads/properties_subtab_imgs/';
+
+            //room & suites tab
+            $data['rooms_suites_title'] = $request->input('rooms_suites_title');
+            $data['rooms_suites_desciription'] = $request->input('rooms_suites_desciription');
+            if ($request->input('rooms_suites_video_type') != '') {
+                $data['rooms_suites_video_type'] = $request->input('rooms_suites_video_type');
+            }
+            if ($request->input('rooms_suites_video_link_type') != '') {
+                $data['rooms_suites_video_link_type'] = $request->input('rooms_suites_video_link_type');
+            }
+            $data['rooms_suites_video_link'] = $request->input('rooms_suites_video_link');
+            if (!is_null($request->file('rooms_suites_image'))) {
+                $file = $request->file('rooms_suites_image');
+                $filename = $file->getClientOriginalName();
+                $extension = $file->getClientOriginalExtension(); //if you need extension of the file
+                $room_suites_filename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $extension;
+                $uploadSuccess = $file->move($destinationPath, $room_suites_filename);
+                if ($uploadSuccess) {
+                    $data['rooms_suites_image'] = $room_suites_filename;
+                }
+            }
+
+            if (!is_null($request->file('rooms_suites_video'))) {
+                $room_suites_vfile = $request->file('rooms_suites_video');
+                $room_suites_vfilename = $room_suites_vfile->getClientOriginalName();
+                $room_suites_vextension = $room_suites_vfile->getClientOriginalExtension(); //if you need extension of the file
+                $room_suites_videofilename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $room_suites_vextension;
+                $room_suites_vuploadSuccess = $room_suites_vfile->move($destinationPath, $room_suites_videofilename);
+                if ($room_suites_vuploadSuccess) {
+                    $data['rooms_suites_video'] = $room_suites_videofilename;
+                }
+            }
+            //room & suites end
+            // Architechure 
+            $data['architecture_title'] = $request->input('architecture_title');
+            $data['architecture_desciription'] = $request->input('architecture_desciription');
+            if ($request->input('architecture_video_type') != '') {
+                $data['architecture_video_type'] = $request->input('architecture_video_type');
+            }
+            if ($request->input('architecture_video_link_type') != '') {
+                $data['architecture_video_link_type'] = $request->input('architecture_video_link_type');
+            }
+            $data['architecture_video_link'] = $request->input('architecture_video_link');
+            if (!empty($request->input('assigned_architecture_designer'))) {
+                $data['assigned_architecture_designer'] = implode(',', $request->input('assigned_architecture_designer'));
+            }
+            if (!is_null($request->file('architecture_image'))) {
+                $architecture_file = $request->file('architecture_image');
+                $architecture_filename = $architecture_file->getClientOriginalName();
+                $architecture_extension = $architecture_file->getClientOriginalExtension(); //if you need extension of the file
+                $architecture_filename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $architecture_extension;
+                $architecture_uploadSuccess = $architecture_file->move($destinationPath, $architecture_filename);
+                if ($architecture_uploadSuccess) {
+                    $data['architecture_image'] = $architecture_filename;
+                }
+            }
+
+            if (!is_null($request->file('architecture_video'))) {
+                $architecture_vfile = $request->file('architecture_video');
+                $architecture_vfilename = $architecture_vfile->getClientOriginalName();
+                $architecture_vextension = $architecture_vfile->getClientOriginalExtension(); //if you need extension of the file
+                $architecture_videofilename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $architecture_vextension;
+                $architecture_vuploadSuccess = $architecture_vfile->move($destinationPath, $architecture_videofilename);
+                if ($architecture_vuploadSuccess) {
+                    $data['architecture_video'] = $architecture_videofilename;
+                }
+            }
+
+            // Design 
+            $data['architecture_design_title'] = $request->input('architecture_design_title');
+            $data['architecture_design_desciription'] = $request->input('architecture_design_desciription');
+            $data['architecture_design_url'] = $request->input('architecture_design_url');
+            if ($request->input('architecture_design_video_type') != '') {
+                $data['architecture_design_video_type'] = $request->input('architecture_design_video_type');
+            }
+            if ($request->input('architecture_design_video_link_type') != '') {
+                $data['architecture_design_video_link_type'] = $request->input('architecture_design_video_link_type');
+            }
+            $data['architecture_design_video_link'] = $request->input('architecture_design_video_link');
+            if (!is_null($request->file('architecture_design_image'))) {
+                $architecture_design_file = $request->file('architecture_design_image');
+                $architecture_design_filename = $architecture_design_file->getClientOriginalName();
+                $architecture_design_extension = $architecture_design_file->getClientOriginalExtension(); //if you need extension of the file
+                $architecture_design_filename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $architecture_design_extension;
+                $architecture_design_uploadSuccess = $architecture_design_file->move($destinationPath, $architecture_design_filename);
+                if ($architecture_design_uploadSuccess) {
+                    $data['architecture_design_image'] = $architecture_design_filename;
+                }
+            }
+
+            if (!is_null($request->file('architecture_design_video'))) {
+                $architecture_design_vfile = $request->file('architecture_designer_video');
+                $architecture_design_vfilename = $architecture_design_vfile->getClientOriginalName();
+                $architecture_design_vextension = $architecture_design_vfile->getClientOriginalExtension(); //if you need extension of the file
+                $architecture_design_videofilename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $architecture_design_vextension;
+                $architecture_design_vuploadSuccess = $architecture_design_vfile->move($destinationPath, $architecture_design_videofilename);
+                if ($architecture_design_vuploadSuccess) {
+                    $data['architecture_design_video'] = $architecture_design_videofilename;
+                }
+            }
+
+            // Designer
+            $data['architecture_designer_title'] = $request->input('architecture_designer_title');
+            $data['architecture_designer_desciription'] = $request->input('architecture_designer_desciription');
+            $data['architecture_designer_url'] = $request->input('architecture_designer_url');
+            if (!empty($request->input('architecture_designer_designer'))) {
+                $data['architecture_designer_designer'] = implode(',', $request->input('architecture_designer_designer'));
+            }
+            if ($request->input('architecture_designer_video_type') != '') {
+                $data['architecture_designer_video_type'] = $request->input('architecture_designer_video_type');
+            }
+            if ($request->input('architecture_designer_video_link_type') != '') {
+                $data['architecture_designer_video_link_type'] = $request->input('architecture_designer_video_link_type');
+            }
+            $data['architecture_designer_video_link'] = $request->input('architecture_designer_video_link');
+
+            if (!is_null($request->file('architecture_designer_image'))) {
+                $architecture_designer_file = $request->file('architecture_designer_image');
+                $architecture_designer_filename = $architecture_designer_file->getClientOriginalName();
+                $architecture_designer_extension = $architecture_designer_file->getClientOriginalExtension(); //if you need extension of the file
+                $architecture_designer_filename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $architecture_designer_extension;
+                $architecture_designer_uploadSuccess = $architecture_designer_file->move($destinationPath, $architecture_designer_filename);
+                if ($architecture_designer_uploadSuccess) {
+                    $data['architecture_designer_image'] = $architecture_designer_filename;
+                }
+            }
+
+            if (!is_null($request->file('architecture_designer_video'))) {
+                $architecture_designer_vfile = $request->file('architecture_designer_video');
+                $architecture_designer_vfilename = $architecture_designer_vfile->getClientOriginalName();
+                $architecture_designer_vextension = $architecture_designer_vfile->getClientOriginalExtension(); //if you need extension of the file
+                $architecture_designer_videofilename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $architecture_designer_vextension;
+                $architecture_designer_vuploadSuccess = $architecture_designer_vfile->move($destinationPath, $architecture_designer_videofilename);
+                if ($architecture_designer_vuploadSuccess) {
+                    $data['architecture_designer_video'] = $architecture_designer_videofilename;
+                }
+            }
+
+            // Spas
+            $data['spa_title'] = $request->input('spa_title');
+            $data['spa_desciription'] = $request->input('spa_desciription');
+            $data['spa_url'] = $request->input('spa_url');
+            $data['spa_usp_text'] = $request->input('spa_usp_text');
+            $data['spa_usp_person'] = $request->input('spa_usp_person');
+            $data['spa_manager_text'] = $request->input('spa_manager_text');
+            $data['spa_opening_hours'] = $request->input('spa_opening_hours');
+            $data['spa_phone_number'] = $request->input('spa_phone_number');
+            if (!empty($request->input('spa_designer'))) {
+                $data['spa_designer'] = implode(',', $request->input('spa_designer'));
+            }
+            if ($request->input('spa_video_type') != '') {
+                $data['spa_video_type'] = $request->input('spa_video_type');
+            }
+            if ($request->input('spa_video_link_type') != '') {
+                $data['spa_video_link_type'] = $request->input('spa_video_link_type');
+            }
+            $data['spa_video_link'] = $request->input('spa_video_link');
+            if (!is_null($request->file('spa_image1'))) {
+                $spa_file = $request->file('spa_image1');
+                $spa_filename = $spa_file->getClientOriginalName();
+                $spa_extension = $spa_file->getClientOriginalExtension(); //if you need extension of the file
+                $spa_filename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $spa_extension;
+                $spa_uploadSuccess = $spa_file->move($destinationPath, $spa_filename);
+                if ($spa_uploadSuccess) {
+                    $data['spa_image1'] = $spa_filename;
+                }
+            }
+
+            if (!is_null($request->file('spa_image2'))) {
+                $spa_file2 = $request->file('spa_image2');
+                $spa_filename2 = $spa_file2->getClientOriginalName();
+                $spa_extension2 = $spa_file2->getClientOriginalExtension(); //if you need extension of the file
+                $spa_filename2 = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $spa_extension2;
+                $spa_uploadSuccess2 = $spa_file2->move($destinationPath, $spa_filename2);
+                if ($spa_uploadSuccess2) {
+                    $data['spa_image2'] = $spa_filename2;
+                }
+            }
+
+            if (!is_null($request->file('spa_image3'))) {
+                $spa_file3 = $request->file('spa_image3');
+                $spa_filename3 = $spa_file3->getClientOriginalName();
+                $spa_extension3 = $spa_file3->getClientOriginalExtension(); //if you need extension of the file
+                $spa_filename3 = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $spa_extension3;
+                $spa_uploadSuccess3 = $spa_file3->move($destinationPath, $spa_filename3);
+                if ($spa_uploadSuccess3) {
+                    $data['spa_image3'] = $spa_filename3;
+                }
+            }
+
+            if (!is_null($request->file('spa_image4'))) {
+                $spa_file4 = $request->file('spa_image4');
+                $spa_filename4 = $spa_file4->getClientOriginalName();
+                $spa_extension4 = $spa_file4->getClientOriginalExtension(); //if you need extension of the file
+                $spa_filename4 = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $spa_extension4;
+                $spa_uploadSuccess4 = $spa_file4->move($destinationPath, $spa_filename4);
+                if ($spa_uploadSuccess4) {
+                    $data['spa_image4'] = $spa_filename4;
+                }
+            }
+
+            if (!is_null($request->file('spa_video'))) {
+                $spa_vfile = $request->file('spa_video');
+                $spa_vfilename = $spa_vfile->getClientOriginalName();
+                $spa_vextension = $spa_vfile->getClientOriginalExtension(); //if you need extension of the file
+                $spa_videofilename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $spa_vextension;
+                $spa_vuploadSuccess = $spa_vfile->move($destinationPath, $spa_videofilename);
+                if ($spa_vuploadSuccess) {
+                    $data['spa_video'] = $spa_videofilename;
+                }
+            }
+
+            // Resturants
+            $data['restaurant_title'] = $request->input('restaurant_title');
+            $data['restaurant_desciription'] = $request->input('restaurant_desciription');
+            $data['restaurant_url'] = $request->input('restaurant_url');
+            $data['restaurant_usp_text'] = $request->input('restaurant_usp_text');
+            $data['restaurant_usp_person'] = $request->input('restaurant_usp_person');
+            if (!empty($request->input('restaurant_designer'))) {
+                $data['restaurant_designer'] = implode(',', $request->input('restaurant_designer'));
+            }
+            if ($request->input('restaurant_video_type') != '') {
+                $data['restaurant_video_type'] = $request->input('restaurant_video_type');
+            }
+            if ($request->input('restaurant_video_link_type') != '') {
+                $data['restaurant_video_link_type'] = $request->input('restaurant_video_link_type');
+            }
+            $data['restaurant_video_link'] = $request->input('restaurant_video_link');
+            if (!is_null($request->file('restaurant_image'))) {
+                $restaurant_file = $request->file('restaurant_image');
+                $restaurant_filename = $restaurant_file->getClientOriginalName();
+                $restaurant_extension = $restaurant_file->getClientOriginalExtension(); //if you need extension of the file
+                $restaurant_filename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $restaurant_extension;
+                $restaurant_uploadSuccess = $restaurant_file->move($destinationPath, $restaurant_filename);
+                if ($restaurant_uploadSuccess) {
+                    $data['restaurant_image'] = $restaurant_filename;
+                }
+            }
+
+            if (!is_null($request->file('restaurant_image2'))) {
+                $restaurant_file2 = $request->file('restaurant_image2');
+                $restaurant_filename2 = $restaurant_file2->getClientOriginalName();
+                $restaurant_extension2 = $restaurant_file2->getClientOriginalExtension(); //if you need extension of the file
+                $restaurant_filename2 = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $restaurant_extension2;
+                $restaurant_uploadSuccess2 = $restaurant_file2->move($destinationPath, $restaurant_filename2);
+                if ($restaurant_uploadSuccess2) {
+                    $data['restaurant_image2'] = $restaurant_filename2;
+                }
+            }
+
+            if (!is_null($request->file('restaurant_video'))) {
+                $restaurant_vfile = $request->file('restaurant_video');
+                $restaurant_vfilename = $restaurant_vfile->getClientOriginalName();
+                $restaurant_vextension = $restaurant_vfile->getClientOriginalExtension(); //if you need extension of the file
+                $restaurant_videofilename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $restaurant_vextension;
+                $restaurant_vuploadSuccess = $restaurant_vfile->move($destinationPath, $restaurant_videofilename);
+                if ($restaurant_vuploadSuccess) {
+                    $data['restaurant_video'] = $restaurant_videofilename;
+                }
+            }
+
+            //resturant 2
+
+            $data['restaurant2_title'] = $request->input('restaurant2_title');
+            $data['restaurant2_desciription'] = $request->input('restaurant2_desciription');
+            $data['restaurant2_url'] = $request->input('restaurant2_url');
+            $data['restaurant2_usp_text'] = $request->input('restaurant2_usp_text');
+            $data['restaurant2_usp_person'] = $request->input('restaurant2_usp_person');
+            if (!empty($request->input('restaurant2_designer'))) {
+                $data['restaurant2_designer'] = implode(',', $request->input('restaurant2_designer'));
+            }
+            if ($request->input('restaurant2_video_type') != '') {
+                $data['restaurant2_video_type'] = $request->input('restaurant2_video_type');
+            }
+            if ($request->input('restaurant2_video_link_type') != '') {
+                $data['restaurant2_video_link_type'] = $request->input('restaurant2_video_link_type');
+            }
+            $data['restaurant2_video_link'] = $request->input('restaurant2_video_link');
+            if (!is_null($request->file('restaurant2_image'))) {
+                $restaurant2_file = $request->file('restaurant2_image');
+                $restaurant2_filename = $restaurant2_file->getClientOriginalName();
+                $restaurant2_extension = $restaurant2_file->getClientOriginalExtension(); //if you need extension of the file
+                $restaurant2_filename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $restaurant2_extension;
+                $restaurant2_uploadSuccess = $restaurant2_file->move($destinationPath, $restaurant2_filename);
+                if ($restaurant2_uploadSuccess) {
+                    $data['restaurant2_image'] = $restaurant2_filename;
+                }
+            }
+
+            if (!is_null($request->file('restaurant2_image2'))) {
+                $restaurant2_file2 = $request->file('restaurant2_image2');
+                $restaurant2_filename2 = $restaurant2_file2->getClientOriginalName();
+                $restaurant2_extension2 = $restaurant2_file2->getClientOriginalExtension(); //if you need extension of the file
+                $restaurant2_filename2 = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $restaurant2_extension2;
+                $restaurant2_uploadSuccess2 = $restaurant2_file2->move($destinationPath, $restaurant2_filename2);
+                if ($restaurant2_uploadSuccess2) {
+                    $data['restaurant2_image2'] = $restaurant2_filename2;
+                }
+            }
+
+            if (!is_null($request->file('restaurant2_video'))) {
+                $restaurant2_vfile = $request->file('restaurant2_video');
+                $restaurant2_vfilename = $restaurant2_vfile->getClientOriginalName();
+                $restaurant2_vextension = $restaurant2_vfile->getClientOriginalExtension(); //if you need extension of the file
+                $restaurant2_videofilename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $restaurant2_vextension;
+                $restaurant2_vuploadSuccess = $restaurant2_vfile->move($destinationPath, $restaurant2_videofilename);
+                if ($restaurant2_vuploadSuccess) {
+                    $data['restaurant2_video'] = $restaurant2_videofilename;
+                }
+            }
+			
+			//resturant 3
+
+            $data['restaurant3_title'] = $request->input('restaurant3_title');
+            $data['restaurant3_desciription'] = $request->input('restaurant3_desciription');
+            $data['restaurant3_url'] = $request->input('restaurant3_url');
+            $data['restaurant3_usp_text'] = $request->input('restaurant3_usp_text');
+            $data['restaurant3_usp_person'] = $request->input('restaurant3_usp_person');
+            if (!empty($request->input('restaurant3_designer'))) {
+                $data['restaurant3_designer'] = implode(',', $request->input('restaurant3_designer'));
+            }
+            if ($request->input('restaurant3_video_type') != '') {
+                $data['restaurant3_video_type'] = $request->input('restaurant3_video_type');
+            }
+            if ($request->input('restaurant3_video_link_type') != '') {
+                $data['restaurant3_video_link_type'] = $request->input('restaurant3_video_link_type');
+            }
+            $data['restaurant3_video_link'] = $request->input('restaurant3_video_link');
+            if (!is_null($request->file('restaurant3_image'))) {
+                $restaurant3_file = $request->file('restaurant3_image');
+                $restaurant3_filename = $restaurant3_file->getClientOriginalName();
+                $restaurant3_extension = $restaurant3_file->getClientOriginalExtension(); //if you need extension of the file
+                $restaurant3_filename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $restaurant3_extension;
+                $restaurant3_uploadSuccess = $restaurant3_file->move($destinationPath, $restaurant3_filename);
+                if ($restaurant3_uploadSuccess) {
+                    $data['restaurant3_image'] = $restaurant3_filename;
+                }
+            }
+
+            if (!is_null($request->file('restaurant3_image2'))) {
+                $restaurant3_file2 = $request->file('restaurant3_image2');
+                $restaurant3_filename2 = $restaurant3_file2->getClientOriginalName();
+                $restaurant3_extension2 = $restaurant3_file2->getClientOriginalExtension(); //if you need extension of the file
+                $restaurant3_filename2 = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $restaurant3_extension2;
+                $restaurant3_uploadSuccess2 = $restaurant3_file2->move($destinationPath, $restaurant3_filename2);
+                if ($restaurant3_uploadSuccess2) {
+                    $data['restaurant3_image2'] = $restaurant3_filename2;
+                }
+            }
+
+            if (!is_null($request->file('restaurant3_video'))) {
+                $restaurant3_vfile = $request->file('restaurant3_video');
+                $restaurant3_vfilename = $restaurant3_vfile->getClientOriginalName();
+                $restaurant3_vextension = $restaurant3_vfile->getClientOriginalExtension(); //if you need extension of the file
+                $restaurant3_videofilename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $restaurant3_vextension;
+                $restaurant3_vuploadSuccess = $restaurant3_vfile->move($destinationPath, $restaurant3_videofilename);
+                if ($restaurant3_vuploadSuccess) {
+                    $data['restaurant3_video'] = $restaurant3_videofilename;
+                }
+            }
+
+            // bar
+            $data['bar_title'] = $request->input('bar_title');
+            $data['bar_sub_title'] = $request->input('bar_sub_title');
+            $data['bar_desciription'] = $request->input('bar_desciription');
+            $data['bar_url'] = $request->input('bar_url');
+            $data['bar_usp_text'] = $request->input('bar_usp_text');
+            $data['bar_usp_person'] = $request->input('bar_usp_person');
+            if (!empty($request->input('bar_designer'))) {
+                $data['bar_designer'] = implode(',', $request->input('bar_designer'));
+            }
+            if ($request->input('bar_video_type') != '') {
+                $data['bar_video_type'] = $request->input('bar_video_type');
+            }
+            if ($request->input('bar_video_link_type') != '') {
+                $data['bar_video_link_type'] = $request->input('bar_video_link_type');
+            }
+            $data['bar_video_link'] = $request->input('bar_video_link');
+            if (!is_null($request->file('bar_image'))) {
+                $bar_file = $request->file('bar_image');
+                $bar_filename = $bar_file->getClientOriginalName();
+                $bar_extension = $bar_file->getClientOriginalExtension(); //if you need extension of the file
+                $bar_filename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $bar_extension;
+                $bar_uploadSuccess = $bar_file->move($destinationPath, $bar_filename);
+                if ($bar_uploadSuccess) {
+                    $data['bar_image'] = $bar_filename;
+                }
+            }
+
+            if (!is_null($request->file('bar_image2'))) {
+                $bar_file2 = $request->file('bar_image2');
+                $bar_filename2 = $bar_file2->getClientOriginalName();
+                $bar_extension2 = $bar_file2->getClientOriginalExtension(); //if you need extension of the file
+                $bar_filename2 = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $bar_extension2;
+                $bar_uploadSuccess2 = $bar_file2->move($destinationPath, $bar_filename2);
+                if ($bar_uploadSuccess2) {
+                    $data['bar_image2'] = $bar_filename2;
+                }
+            }
+
+            if (!is_null($request->file('bar_image3'))) {
+                $bar_file3 = $request->file('bar_image3');
+                $bar_filename3 = $bar_file3->getClientOriginalName();
+                $bar_extension3 = $bar_file3->getClientOriginalExtension(); //if you need extension of the file
+                $bar_filename3 = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $bar_extension3;
+                $bar_uploadSuccess3 = $bar_file3->move($destinationPath, $bar_filename3);
+                if ($bar_uploadSuccess3) {
+                    $data['bar_image3'] = $bar_filename3;
+                }
+            }
+
+            if (!is_null($request->file('bar_video'))) {
+                $bar_vfile = $request->file('bar_video');
+                $bar_vfilename = $bar_vfile->getClientOriginalName();
+                $bar_vextension = $bar_vfile->getClientOriginalExtension(); //if you need extension of the file
+                $bar_videofilename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $bar_vextension;
+                $bar_vuploadSuccess = $bar_vfile->move($destinationPath, $bar_videofilename);
+                if ($bar_vuploadSuccess) {
+                    $data['bar_video'] = $bar_videofilename;
+                }
+            }
+			
+			// bar 2
+            $data['bar2_title'] = $request->input('bar2_title');
+            $data['bar2_sub_title'] = $request->input('bar2_sub_title');
+            $data['bar2_desciription'] = $request->input('bar2_desciription');
+            $data['bar2_url'] = $request->input('bar2_url');
+            $data['bar2_usp_text'] = $request->input('bar2_usp_text');
+            $data['bar2_usp_person'] = $request->input('bar2_usp_person');
+            if (!empty($request->input('bar2_designer'))) {
+                $data['bar2_designer'] = implode(',', $request->input('bar2_designer'));
+            }
+            if ($request->input('bar2_video_type') != '') {
+                $data['bar2_video_type'] = $request->input('bar2_video_type');
+            }
+            if ($request->input('bar2_video_link_type') != '') {
+                $data['bar2_video_link_type'] = $request->input('bar2_video_link_type');
+            }
+            $data['bar2_video_link'] = $request->input('bar2_video_link');
+            if (!is_null($request->file('bar2_image'))) {
+                $bar2_file = $request->file('bar2_image');
+                $bar2_filename = $bar2_file->getClientOriginalName();
+                $bar2_extension = $bar2_file->getClientOriginalExtension(); //if you need extension of the file
+                $bar2_filename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $bar2_extension;
+                $bar2_uploadSuccess = $bar2_file->move($destinationPath, $bar2_filename);
+                if ($bar2_uploadSuccess) {
+                    $data['bar2_image'] = $bar2_filename;
+                }
+            }
+
+            if (!is_null($request->file('bar2_image2'))) {
+                $bar2_file2 = $request->file('bar2_image2');
+                $bar2_filename2 = $bar2_file2->getClientOriginalName();
+                $bar2_extension2 = $bar2_file2->getClientOriginalExtension(); //if you need extension of the file
+                $bar2_filename2 = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $bar2_extension2;
+                $bar2_uploadSuccess2 = $bar2_file2->move($destinationPath, $bar2_filename2);
+                if ($bar2_uploadSuccess2) {
+                    $data['bar2_image2'] = $bar2_filename2;
+                }
+            }
+
+            if (!is_null($request->file('bar2_image3'))) {
+                $bar2_file3 = $request->file('bar2_image3');
+                $bar2_filename3 = $bar2_file3->getClientOriginalName();
+                $bar2_extension3 = $bar2_file3->getClientOriginalExtension(); //if you need extension of the file
+                $bar2_filename3 = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $bar2_extension3;
+                $bar2_uploadSuccess3 = $bar2_file3->move($destinationPath, $bar2_filename3);
+                if ($bar2_uploadSuccess3) {
+                    $data['bar2_image3'] = $bar2_filename3;
+                }
+            }
+
+            if (!is_null($request->file('bar2_video'))) {
+                $bar2_vfile = $request->file('bar2_video');
+                $bar2_vfilename = $bar2_vfile->getClientOriginalName();
+                $bar2_vextension = $bar2_vfile->getClientOriginalExtension(); //if you need extension of the file
+                $bar2_videofilename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $bar2_vextension;
+                $bar2_vuploadSuccess = $bar2_vfile->move($destinationPath, $bar2_videofilename);
+                if ($bar2_vuploadSuccess) {
+                    $data['bar2_video'] = $bar2_videofilename;
+                }
+            }
+			
+			// bar 3
+            $data['bar3_title'] = $request->input('bar3_title');
+            $data['bar3_sub_title'] = $request->input('bar3_sub_title');
+            $data['bar3_desciription'] = $request->input('bar3_desciription');
+            $data['bar3_url'] = $request->input('bar3_url');
+            $data['bar3_usp_text'] = $request->input('bar3_usp_text');
+            $data['bar3_usp_person'] = $request->input('bar3_usp_person');
+            if (!empty($request->input('bar3_designer'))) {
+                $data['bar3_designer'] = implode(',', $request->input('bar3_designer'));
+            }
+            if ($request->input('bar3_video_type') != '') {
+                $data['bar3_video_type'] = $request->input('bar3_video_type');
+            }
+            if ($request->input('bar3_video_link_type') != '') {
+                $data['bar3_video_link_type'] = $request->input('bar3_video_link_type');
+            }
+            $data['bar3_video_link'] = $request->input('bar3_video_link');
+            if (!is_null($request->file('bar3_image'))) {
+                $bar3_file = $request->file('bar3_image');
+                $bar3_filename = $bar3_file->getClientOriginalName();
+                $bar3_extension = $bar3_file->getClientOriginalExtension(); //if you need extension of the file
+                $bar3_filename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $bar3_extension;
+                $bar3_uploadSuccess = $bar3_file->move($destinationPath, $bar3_filename);
+                if ($bar3_uploadSuccess) {
+                    $data['bar3_image'] = $bar3_filename;
+                }
+            }
+
+            if (!is_null($request->file('bar3_image2'))) {
+                $bar3_file2 = $request->file('bar3_image2');
+                $bar3_filename2 = $bar3_file2->getClientOriginalName();
+                $bar3_extension2 = $bar3_file2->getClientOriginalExtension(); //if you need extension of the file
+                $bar3_filename2 = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $bar3_extension2;
+                $bar3_uploadSuccess2 = $bar3_file2->move($destinationPath, $bar3_filename2);
+                if ($bar3_uploadSuccess2) {
+                    $data['bar3_image2'] = $bar3_filename2;
+                }
+            }
+
+            if (!is_null($request->file('bar3_image3'))) {
+                $bar3_file3 = $request->file('bar3_image3');
+                $bar3_filename3 = $bar3_file3->getClientOriginalName();
+                $bar3_extension3 = $bar3_file3->getClientOriginalExtension(); //if you need extension of the file
+                $bar3_filename3 = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $bar3_extension3;
+                $bar3_uploadSuccess3 = $bar3_file3->move($destinationPath, $bar3_filename3);
+                if ($bar3_uploadSuccess3) {
+                    $data['bar3_image3'] = $bar3_filename3;
+                }
+            }
+
+            if (!is_null($request->file('bar3_video'))) {
+                $bar3_vfile = $request->file('bar3_video');
+                $bar3_vfilename = $bar3_vfile->getClientOriginalName();
+                $bar3_vextension = $bar3_vfile->getClientOriginalExtension(); //if you need extension of the file
+                $bar3_videofilename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $bar3_vextension;
+                $bar3_vuploadSuccess = $bar3_vfile->move($destinationPath, $bar3_videofilename);
+                if ($bar3_vuploadSuccess) {
+                    $data['bar3_video'] = $bar3_videofilename;
+                }
+            }
+
+            // Video section
+            $data['video_title'] = $request->input('video_title');
+            $data['video_desciription'] = $request->input('video_desciription');
+            $data['video_sub_title'] = $request->input('video_sub_title');
+            if ($request->input('video_type') != '') {
+                $data['video_type'] = $request->input('video_type');
+            }
+            if ($request->input('video_link_type') != '') {
+                $data['video_link_type'] = $request->input('video_link_type');
+            }
+            $data['video_link'] = $request->input('video_link');
+            if (!is_null($request->file('video_image'))) {
+                $video_file = $request->file('video_image');
+                $video_filename = $video_file->getClientOriginalName();
+                $video_extension = $video_file->getClientOriginalExtension(); //if you need extension of the file
+                $video_filename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $video_extension;
+                $video_uploadSuccess = $video_file->move($destinationPath, $video_filename);
+                if ($video_uploadSuccess) {
+                    $data['video_image'] = $video_filename;
+                }
+            }
+
+            if (!is_null($request->file('video_video'))) {
+                $video_vfile = $request->file('video_video');
+                $video_vfilename = $video_vfile->getClientOriginalName();
+                $video_vextension = $video_vfile->getClientOriginalExtension(); //if you need extension of the file
+                $video_videofilename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $video_vextension;
+                $video_vuploadSuccess = $video_vfile->move($destinationPath, $video_videofilename);
+                if ($video_vuploadSuccess) {
+                    $data['video_video'] = $video_videofilename;
+                }
+            }
+
+            $id = $this->model->insertRow($data, $request->input('id'));
+
+            if (!is_null($request->input('copy_amenities_rooms')) && !empty($request->input('assigned_amenities'))) {
+                $check_pcats = \DB::table('tb_properties_category_types')->where('property_id', $id)->get();
+                if (!empty($check_pcats)) {
+                    foreach ($check_pcats as $pcats) {
+                        $check_pcats_exist = \DB::table('tb_properties_category_amenities')->where('property_id', $id)->where('cat_id', $pcats->id)->first();
+                        $Amdata['property_id'] = $id;
+                        $Amdata['cat_id'] = $pcats->id;
+                        $Amdata['user_id'] = $uid;
+                        $Amdata['amenity_ids'] = implode(',', $request->input('assigned_amenities'));
+                        if (!empty($check_pcats_exist)) {
+                            $Amdata['updated'] = date('Y-m-d h:i:s');
+                            \DB::table('tb_properties_category_amenities')->where('id', $check_pcats_exist->id)->update($Amdata);
+                        } else {
+                            $Amdata['created'] = date('Y-m-d h:i:s');
+                            \DB::table('tb_properties_category_amenities')->insertGetId($Amdata);
+                        }
+                    }
+                }
+            }
+
+
+            if (!is_null($request->input('apply'))) {
+                $return = 'properties/update/' . $id . '?return=' . self::returnUrl();
+            } else {
+                $return = 'properties?return=' . self::returnUrl();
+            }
+
+            // Insert logs into database
+            if ($request->input('id') == '') {
+                \SiteHelpers::auditTrail($request, 'New Data with ID ' . $id . ' Has been Inserted !');
+            } else {
+                \SiteHelpers::auditTrail($request, 'Data with ID ' . $id . ' Has been Updated !');
+            }
+
+            return Redirect::to($return)->with('messagetext', \Lang::get('core.note_success'))->with('msgstatus', 'success');
+        } else {
+                print_r($validator->errors()->all());
+                echo "55ff"; die;
+            //return Redirect::to('properties/update/' . $id)->with('messagetext', \Lang::get('core.note_error'))->with('msgstatus', 'error')
+            //                ->withErrors($validator)->withInput();
+        }
+    }
 
 }
