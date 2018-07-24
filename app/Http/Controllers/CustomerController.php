@@ -118,7 +118,7 @@ class CustomerController extends Controller {
             'user_type' => 'required|integer',
             'email' => 'required|email|unique:tb_users',
             //'password' => 'required|min:8|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=)(?=.*[\d\X])(?=.*[!$#%]).*$/',
-            'password' => 'required|min:8|has_letters|has_one_upper_case|has_numbers|has_special_chars',
+            'password' => 'required|min:8|has_letters|has_one_upper_case|has_special_chars',
             'txtmobileNumber' =>'required',
 //            'mobile_number' => mobile_number'required|confirmed',
 //            'password_confirmation' => 'required',
