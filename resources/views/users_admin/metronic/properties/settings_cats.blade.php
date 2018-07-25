@@ -102,10 +102,11 @@
 												<input name="guests_babies" id="guests_babies" type="text" class="form-control input-sm" value="{{$cat->guests_babies}}" data-rule-number="true" required="required" /> 
 											</div>
 											<div class="form-group col-lg-3">
+                                                <label for="babies_count_toward_total">Babies count toward total </label>
 												<div class="margin-top-10">
                                                     <div class="m-checkbox-inline">
             											<label class="m-checkbox m-checkbox--solid m-checkbox--brand">
-            												<input type="checkbox" name="count_baby" value="1" {{($cat->baby_count==1) ? 'checked="checked"' : ''}}> Babies count toward total
+            												<input type="checkbox" name="count_baby" value="1" {{($cat->baby_count==1) ? 'checked="checked"' : ''}}> 
             												<span></span>
             											</label>
             										</div>
@@ -175,10 +176,11 @@
 											<input name="guests_babies" id="guests_babies" type="text" class="form-control input-sm" value="" data-rule-number="true" required="required" /> 
 										</div>
 										<div class="form-group col-lg-3">
+                                            <label for="babies_count_toward_total">Babies count toward total </label>
 											<div class="margin-top-10">
                                                 <div class="m-checkbox-inline">
         											<label class="m-checkbox m-checkbox--solid m-checkbox--brand">
-        												<input type="checkbox" name="count_baby" value="1"> Babies count toward total
+        												<input type="checkbox" name="count_baby" value="1">
         												<span></span>
         											</label>
         										</div>
@@ -246,11 +248,11 @@
 											<input name="guests_babies" id="guests_babies" type="text" class="form-control input-sm" value="" data-rule-number="true" required="required" /> 
 										</div>
 										<div class="form-group col-lg-3">
-											<div class="margin-top-10">
-												
+                                            <label for="babies_count_toward_total">Babies count toward total </label>
+											<div class="margin-top-10">												
                                                 <div class="m-checkbox-inline">
         											<label class="m-checkbox m-checkbox--solid m-checkbox--brand">
-        												<input type="checkbox" name="count_baby" value="1"> Babies count toward total
+        												<input type="checkbox" name="count_baby" value="1">
         												<span></span>
         											</label>
         										</div>
