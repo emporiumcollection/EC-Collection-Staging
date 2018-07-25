@@ -136,7 +136,7 @@
 								</div>
                                 <div class="m-widget7__desc">
 									Welcome to the emporium Voyage World. 
-Emporium Voyage is a prestige organisation seeking to serve your every need Navigate through your Dashboard and connect with your account executive from within your messaging App
+Emporium Voyage is a prestige organisation seeking to serve your every need. Navigate through your dashboard and connect with your account execitive with any questions you may have.
 								</div>
 								<div class="m-widget7__button">
 									<a class="m-btn m-btn--pill btn btn-accent" href="{{URL::to('user/profile')}}" role="button">
