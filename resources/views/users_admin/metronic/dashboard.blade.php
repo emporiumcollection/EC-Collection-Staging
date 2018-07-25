@@ -2068,10 +2068,10 @@
 												<i class="flaticon-truck m--font-brand"></i>
 											</span>
 											<span class="m-widget17__subtitle">
-												Property Management
+												Email-Marketing
 											</span>
 											<span class="m-widget17__desc">
-												15 New Paskages
+												<a href="#">View</a>
 											</span>
 										</div>
 										<div class="m-widget17__item">
@@ -2079,10 +2079,10 @@
 												<i class="flaticon-paper-plane m--font-info"></i>
 											</span>
 											<span class="m-widget17__subtitle">
-												Container
+												Heatmap Tracking
 											</span>
 											<span class="m-widget17__desc">
-												72 Support Cases
+												<a href="#">View</a>
 											</span>
 										</div>
 									</div>
@@ -2092,10 +2092,10 @@
 												<i class="flaticon-pie-chart m--font-success"></i>
 											</span>
 											<span class="m-widget17__subtitle">
-												Reservation Management
+												Social Content Distribution
 											</span>
 											<span class="m-widget17__desc">
-												72 New Items
+												<a href="#">View</a>
 											</span>
 										</div>
 										
@@ -2478,7 +2478,7 @@
 																					<i class="la la-gear"></i>
 																				</span>
 																				<h3 class="m-portlet__head-text">
-																					Animated Time-Line Pie Chart
+																					Quality Assurance Program
 																				</h3>
 																			</div>
 																		</div>
