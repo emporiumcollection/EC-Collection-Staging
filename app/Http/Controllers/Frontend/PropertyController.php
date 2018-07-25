@@ -115,6 +115,7 @@ class PropertyController extends Controller {
 		$cateObj = \DB::table('tb_categories')->where('category_alias', $keyword)->where('category_published', 1)->first();
 
         $chldIds = array();
+        $getcatsID = array();
         if (!empty($cateObj)) {
             $channel_url = $cateObj->category_youtube_channel_url;
             $this->data['channel_url'] = $channel_url;
@@ -124,7 +125,6 @@ class PropertyController extends Controller {
             //End
             if(count($chldIds) <= 0){ $chldIds[] = $cateObj->id; }
             
-            $getcatsID = array();
             if (count($chldIds) > 0) {
                 $impload_ids = implode(',',$chldIds);
                 $catcond = " AND (pr.category_id IN(".$impload_ids."))";
