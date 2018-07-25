@@ -135,7 +135,8 @@
 									</div>
 								</div>
                                 <div class="m-widget7__desc">
-									Welcome Text Here Welcome Text Here Welcome Text Here Welcome Text Here
+									Welcome to the emporium Voyage World. 
+Emporium Voyage is a prestige organisation seeking to serve your every need Navigate through your Dashboard and connect with your account executive from within your messaging App
 								</div>
 								<div class="m-widget7__button">
 									<a class="m-btn m-btn--pill btn btn-accent" href="{{URL::to('user/profile')}}" role="button">
@@ -336,7 +337,7 @@
 												</h3>
 											</div>
 										</div>
-										<div class="m-portlet__head-tools">
+										<div class="m-portlet__head-tools" style="display: none;">
 											<ul class="m-portlet__nav">
 												<li class="m-portlet__nav-item m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push" m-dropdown-toggle="hover">
 													<a href="#" class="m-portlet__nav-link m-dropdown__toggle dropdown-toggle btn btn--sm m-btn--pill btn-secondary m-btn  ">
@@ -402,72 +403,52 @@
 									</div>
 									<div class="m-portlet__body m-portlet__body--no-padding">
 										<!--begin::Widget 30-->
+                                        <?php
+                                            $group_id = \Session::get('gid');
+                                            $packages = \DB::table('tb_packages')->where('allow_user_groups', $group_id)->where('package_status', 1)->get();
+                                        ?>
 										<div class="m-widget30">
 											<div class="m-widget_head">
 												<div class="m-widget_head-owlcarousel-items owl-carousel">
-													<div class="m-widget_head-owlcarousel-item carousel">
-														<span>
-															Package Name 1
-														</span>														
-													</div>
-													<div class="m-widget_head-owlcarousel-item carousel">
-														<span>
-															Package Name 2
-														</span>														
-													</div>
-													<div class="m-widget_head-owlcarousel-item carousel">
-														<span>
-															Package Name 3
-														</span>														
-													</div>
+                                                    <?php if(count($packages) > 0){
+                                                        foreach($packages as $package){
+                                                    ?>
+                                                            <div class="m-widget_head-owlcarousel-item carousel">
+        														<span>
+        															<?php echo $package->package_title; ?>
+        														</span>														
+        													</div>
+                                                    <?php        
+                                                            }
+                                                        }
+                                                    ?>
+													
 												</div>
 											</div>
 											<div class="m-widget_body">
 												<div class="m-widget_body-owlcarousel-items owl-carousel" id="m_widget_body_owlcarousel_items">
-													<div class="m-widget_body-owlcarousel-item carousel">
+													<?php 
+                                                    if(count($packages) > 0){                                                        
+                                                    ?>  
+                                                    @foreach($packages as $key=>$package)                                                  
+                                                    <div class="m-widget_body-owlcarousel-item carousel">
 														<div class="m-widget_body-items">
 															<div class="m-widget_body-item">
-																<div class="m-widget_body-item-pic">
-																	<img src="{{asset('metronic/assets/app/media/img/users/emp.png')}}" title="">
+																<div class="m-widget_body-item-pic">	
+                                                                    <img class="img-responsive object-fit-size" src="{{URL::to('uploads/packages/'.$package->package_image)}}" alt="{{$package->package_image}}" style="width: 100%;" >
 																</div>
 																<div class="m-widget_body-item-desc ">
 																	<span>
-																		Package Description Package Description Package Description Package Description Package Description Package Description 
+                                                                        {{$package->package_description}}
 																	</span>																	
 																</div>
 															</div>																														
 														</div>
 													</div>
-													<div class="m-widget_body-owlcarousel-item carousel">
-														<div class="m-widget_body-items">
-															<div class="m-widget_body-item">
-																<div class="m-widget_body-item-pic">
-																	<img src="{{asset('metronic/assets/app/media/img/users/emp.png')}}" title="">
-																</div>
-																<div class="m-widget_body-item-desc">
-																	<span>
-																	   Package Description 2 Package Description 2 Package Description 2 Package Description 2 Package Description 2 Package  Description 2	
-																	</span>
-																</div>																
-															</div>
-															
-														</div>
-													</div>
-													<div class="m-widget_body-owlcarousel-item carousel">
-														<div class="m-widget_body-items">
-															<div class="m-widget_body-item">
-																<div class="m-widget_body-item-pic">
-																	<img src="{{asset('metronic/assets/app/media/img/users/emp.png')}}" title="">
-																</div>
-																<div class="m-widget_body-item-desc">
-																	<span>
-																	   Package Description 3 Package Description 3 Package Description 3 Package Description 3 Package Description 3 Package  Description 3	
-																	</span>
-																</div>
-															</div>
-															
-														</div>
-													</div>
+                                                    @endforeach
+                                                    <?php                                                            
+                                                    }
+                                                    ?>
 												</div>
 											</div>
 										</div>
@@ -1523,7 +1504,7 @@
 									<div class="m-widget17__items m-widget17__items-col1">
 										<div class="m-widget17__item">
 											<span class="m-widget17__icon">
-												<i class="flaticon-truck m--font-brand"></i>
+												<i class="fa fa-home m--font-brand"></i>
 											</span>
 											<span class="m-widget17__subtitle">
 												Property Management
@@ -2065,7 +2046,7 @@
 									<div class="m-widget17__items m-widget17__items-col1">
 										<div class="m-widget17__item">
 											<span class="m-widget17__icon">
-												<i class="flaticon-truck m--font-brand"></i>
+												<i class="fa fa-envelope m--font-brand"></i>
 											</span>
 											<span class="m-widget17__subtitle">
 												Email-Marketing
@@ -2450,13 +2431,13 @@
 									<div class="m-widget17__items m-widget17__items-col1">
 										<div class="m-widget17__item">
 											<span class="m-widget17__icon">
-												<i class="flaticon-truck m--font-brand"></i>
+												<i class="fa fa-check-square m--font-brand"></i>
 											</span>
 											<span class="m-widget17__subtitle">
 												Quality Assurance
 											</span>
 											<span class="m-widget17__desc">
-												
+												<a href="#">View QA Module</a>
 											</span>
 										</div>
 										
