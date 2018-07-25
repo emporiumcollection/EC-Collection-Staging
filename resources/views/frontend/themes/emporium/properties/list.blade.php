@@ -445,9 +445,14 @@ $('input[name="departure"]').daterangepicker({
 @endif
 
 var noImg = "{{ URL::to('sximo/images/transparent.png') }}";
+        $(window).on('load', function(e){
+            //load images after load full page
+                $('img.rad-img').photoLoadAfterPageLoad(noImg);
+            //End
+    	});
 		$(document).ready(function () {
 		  //load images after load full page
-          $('img.rad-img').photoLoadAfterPageLoad(noImg);
+          //$('img.rad-img').photoLoadAfterPageLoad(noImg);
           //End
           
 			$(document).on('change', '#myRange', function () {
