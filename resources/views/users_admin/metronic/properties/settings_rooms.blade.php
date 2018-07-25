@@ -537,11 +537,11 @@ $(document).ready(function () {
 						html +='</div>';
                          
 						html +='</div>';
-						html +='<div class="form-group col-lg-4">';
+						html +='<div class="form-group col-lg-3">';
 						html +='<label for="room_active_from'+data.room.category_id+'-'+newid+'">Active from </label>';
 						html +='<input name="room_active_from" id="room_active_from'+data.room.category_id+'-'+newid+'" type="text" class="form-control input-sm datepic" value="" required="required" />'; 
 						html +='</div>';
-						html +='<div class="form-group col-lg-4">';
+						html +='<div class="form-group col-lg-3">';
 						html +='<label for="room_active_to'+data.room.category_id+'-'+newid+'">Active to</label>';
 						html +='<input name="room_active_to" id="room_active_to'+data.room.category_id+'-'+newid+'" type="text" class="form-control input-sm datepic" value="" />';
 						html +='</div>';
