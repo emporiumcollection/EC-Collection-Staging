@@ -141,7 +141,7 @@
                     })
                     .on('error', function() { 
                         thisObj.attr('src',noImg); thisObj.css('opacity','0'); 
-                        thisObj.photoInitFun();
+                        //thisObj.photoInitFun();
                         if(totalHotelImg == rri){ if(typeof $grid != 'undefined'){ $grid.masonry('layout'); } }else{ rri++; }
                     })
                     .attr("src", thisSrc);
