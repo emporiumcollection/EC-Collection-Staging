@@ -38,6 +38,7 @@
         <div class="col-sm-8 col-md-8 col-lg-8">
             <a href="{{URL::to('properties/update/'.$pid)}}" class="tips btn btn-xs btn-primary pull-right" title="" data-original-title="Property Management"><i class="fa fa-edit"></i>&nbsp;Property Management</a>
         </div>
+        <div class="col-sm-12 col-md-12 col-lg-12">
         <!--begin::Portlet-->
 		<div class="m-portlet">
 			<div class="m-portlet__body">
@@ -50,16 +51,23 @@
         				@endforeach
         			@endif					
 				</ul>
-				<div class="tab-content">
-					<div class="tab-pane active">
-                        <div class="tab-container">
-						<ul class="nav nav-tabs">
-							<li class="active"><a href="#tab_hotel_brochure" data-toggle="tab">Hotel Brochure</a></li>
-							<li><a href="#tab_restaurant_menu" data-toggle="tab">Restaurant Menu</a></li>
-							<li><a href="#tab_spa_brochure" data-toggle="tab">Spa Brochure</a></li>
-							<li><a href="#tab_contracts" data-toggle="tab">Hotel Contracts</a></li>
-						</ul>
-						<div class="tab-content" style="margin-top: 20px;">
+                <div class="m-portlet">
+                    <div class="m-portlet__body">
+                        <ul class="nav nav-tabs" role="tablist">
+							<li class="nav-item">
+                                <a class="nav-link active" href="#" data-target="#tab_hotel_brochure" data-toggle="tab">Hotel Brochure</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" data-target="#tab_restaurant_menu" data-toggle="tab">Restaurant Menu</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" data-target="#tab_spa_brochure" data-toggle="tab">Spa Brochure</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" data-target="#tab_contracts" data-toggle="tab">Hotel Contracts</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
 							<div class="tab-pane use-padding active" id="tab_hotel_brochure">
 								<!-- The file upload form used as target for the file upload widget -->
 								<form id="fileupload" class="fileupload" action="{{URL::to('property_images_uploads')}}" method="POST" enctype="multipart/form-data">
@@ -452,10 +460,11 @@
 								</div>
 							</div>
 						</div>
-					</div>
                     </div>
                 </div>
+				
             </div>
+        </div>
         </div>
      </div>
 @stop
@@ -468,7 +477,18 @@
     <link rel="stylesheet" href="{{ asset('sximo/file_upload/css/jquery.fileupload-ui.css')}}">
     <!-- CSS adjustments for browsers with JavaScript disabled -->
     <noscript><link rel="stylesheet" href="{{ asset('sximo/file_upload/css/jquery.fileupload-noscript.css')}}"></noscript>
-    <noscript><link rel="stylesheet" href="{{ asset('sximo/file_upload/css/jquery.fileupload-ui-noscript.css')}}"></noscript>    
+    <noscript><link rel="stylesheet" href="{{ asset('sximo/file_upload/css/jquery.fileupload-ui-noscript.css')}}"></noscript>  
+    
+    <style>
+        .fade {
+          opacity: 0;
+          transition:opacity .15s linear;
+        }
+        .fade.in {
+            opacity: 1;
+          }
+    </style>
+      
 @endsection
 
 @section('script')

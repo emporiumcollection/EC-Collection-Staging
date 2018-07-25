@@ -1106,7 +1106,11 @@ class PropertiesController extends Controller {
         } elseif ($active == 'property_images') {
             $this->data['imgs'] = $this->get_property_files($property_id, 'Property Images');
             $this->data['slider_imgs'] = $this->get_property_files($property_id, 'Property Slider Images');
-            return view('properties.settings_property_images', $this->data);
+            
+            $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+            $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.settings_property_images':'properties.settings_property_images';
+            
+            return view($file_name, $this->data);
         } elseif ($active == 'property_documents') {
             $this->data['hotel_broch'] = $this->get_property_files($property_id, 'Hotel Brochure');
     	    $this->data['restru_menu'] = $this->get_property_files($property_id, 'Restaurant Menu');
@@ -1121,7 +1125,11 @@ class PropertiesController extends Controller {
             $this->data['spaimgs'] = $this->get_property_files($property_id, 'Spa Gallery Images');
             $this->data['resturan_imgs'] = $this->get_property_files($property_id, 'Restrurants Gallery Images');
             $this->data['bar_imgs'] = $this->get_property_files($property_id, 'Bar Gallery Images');
-            return view('properties.settings_gallery_images', $this->data);
+            
+            $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+            $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.settings_gallery_images':'properties.settings_gallery_images';
+            
+            return view($file_name, $this->data);
         } elseif ($active == 'calendar') {
             $this->data['cat_types'] = $this->find_categories_room($property_id);
             return view('properties.settings_calendar', $this->data);

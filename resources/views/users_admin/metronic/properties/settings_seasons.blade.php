@@ -38,6 +38,7 @@
         <div class="col-sm-8 col-md-8 col-lg-8">
             <a href="{{URL::to('properties/update/'.$pid)}}" class="tips btn btn-xs btn-primary pull-right" title="" data-original-title="Property Management"><i class="fa fa-edit"></i>&nbsp;Property Management</a>
         </div>
+        <div class="col-sm-12 col-md-12 col-lg-12">
         <!--begin::Portlet-->
 		<div class="m-portlet">
 			<div class="m-portlet__body">
@@ -72,7 +73,7 @@
 												</div>
 												
 											</div>
-											<div class="col-lg-3 align-right">
+											<div class="col-lg-3 m--align-right">
 												<div class="butt">
 													<button type="button" class="btn btn-danger b-btn" onclick="delete_season_data({{$season->id}});"><i class="fa fa-trash-0"></i> Delete</button>
 													<button type="submit" class="btn btn-success b-btn addseason"><i class="fa fa-save"></i> Save</button>
@@ -136,7 +137,7 @@
             										</div>
             									</div>
             								</div>
-            								<div class="col-lg-3 align-right">
+            								<div class="col-lg-3 m--align-right">
             									<div class="butt">
             										<button type="submit" class="btn btn-success b-btn addseason"><i class="fa fa-plus"></i> Add</button>
             									</div>
@@ -177,7 +178,7 @@
             										</div>
             									</div>
             								</div>
-            								<div class="col-lg-3 align-right">
+            								<div class="col-lg-3 m--align-right">
             									<div class="butt">
             										<button type="submit" class="btn btn-success b-btn addseasonDates"><i class="fa fa-plus"></i> Add</button>
             									</div>
@@ -192,6 +193,7 @@
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </div>
 @stop

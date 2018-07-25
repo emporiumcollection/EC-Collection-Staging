@@ -51,6 +51,7 @@
         				@endforeach
         			@endif					
 				</ul>
+                
 				<div class="tab-content">
 					<div class="tab-pane active">
 						@if(!empty($cat_types))
@@ -59,22 +60,30 @@
 								<p>Changing the name for existing rooms will change it in existing reservation and normally shouldn't be done Room active dates are used to determine when the room is available for booking, and used to calculate day to day occupancy statistics. Leave end date blank unless you want the room to expire at some point</p>
 							</div> 
 							<div class="tab-container">
-								<ul class="nav nav-tabs">
+								<ul class="nav nav-tabs" role="tablist">
 									@foreach($cat_types as $cat)
-										<li><a href="#tab{{$cat['data']->id}}" data-toggle="tab">{{$cat['data']->category_name}}</a></li>
+										<li class="nav-item">
+                                            <a class="nav-link" href="#" data-target="#tab{{$cat['data']->id}}" data-toggle="tab">{{$cat['data']->category_name}}</a>
+                                        </li>
 									@endforeach
 								</ul>
 								<div class="tab-content">
 									@foreach($cat_types as $cat)
 										<div class="tab-pane use-padding" id="tab{{$cat['data']->id}}">
-											<div class="tab-container" style="margin-top: 20px;">
-												<ul class="nav nav-tabs">
-													<li><a href="#rooms_details_cat{{$cat['data']->id}}" data-toggle="tab">Rooms Details</a></li>
-													<li><a href="#rooms_images_cat{{$cat['data']->id}}" data-toggle="tab">Rooms Images</a></li>
-													<li><a href="#rooms_amenity_cat{{$cat['data']->id}}" data-toggle="tab">Amenities</a></li>
+											<div class="tab-container">
+												<ul class="nav nav-tabs" role="tablist">
+													<li class="nav-item">
+                                                        <a class="nav-link"  href="#" data-target="#rooms_details_cat{{$cat['data']->id}}" data-toggle="tab">Rooms Details</a>
+                                                    </li>
+													<li class="nav-item">
+                                                        <a class="nav-link" href="#" data-target="#rooms_images_cat{{$cat['data']->id}}" data-toggle="tab">Rooms Images</a>
+                                                    </li>
+													<li class="nav-item">
+                                                        <a class="nav-link"  href="#" data-target="#rooms_amenity_cat{{$cat['data']->id}}" data-toggle="tab">Amenities</a>
+                                                    </li>
 												</ul>
 												
-												<div class="tab-content" style="margin-top: 20px;">
+												<div class="tab-content">
 													<div class="tab-pane use-padding" id="rooms_details_cat{{$cat['data']->id}}">
 														@if(array_key_exists('rooms', $cat))
 															{{--*/ $r=1; /*--}}
@@ -92,7 +101,15 @@
 																				</div> 
 																				<div class="form-group col-lg-2">
 																					<label for="room_active_full">Active Full Year </label>
-																					<input name="room_active_full" id="room_active_full" type="checkbox" class="form-control input-sm datepic" value="1" {{($room->active_full_year==1) ? 'checked="checked"' : ''}} /> 
+																					
+                                                                                    
+                                                                                    <div class="m-checkbox-inline m--align-center">
+                                            											<label class="m-checkbox m-checkbox--solid m-checkbox--brand">
+                                            												<input name="room_active_full" id="room_active_full" type="checkbox" class="form-control input-sm " value="1" {{($room->active_full_year==1) ? 'checked="checked"' : ''}}>
+                                            												<span></span>
+                                            											</label>
+                                            										</div>
+                                                                                    
 																				</div>
 																				<div class="form-group col-lg-3">
 																					<label for="room_active_from{{$cat['data']->id}}-{{$r}}">Active from </label>
@@ -128,7 +145,13 @@
 																			</div>
 																			<div class="form-group col-lg-2">
 																				<label for="room_active_full">Active Full Year </label>
-																				<input name="room_active_full" id="room_active_full" type="checkbox" class="form-control input-sm datepic" value="1"  /> 
+																				 
+                                                                                <div class="m-checkbox-inline m--align-center">
+                                        											<label class="m-checkbox m-checkbox--solid m-checkbox--brand">
+                                        												<input name="room_active_full" id="room_active_full" type="checkbox" class="form-control" value="1">
+                                        												<span></span>
+                                        											</label>
+                                        										</div>
 																			</div>
 																			<div class="form-group col-lg-3">
 																				<label for="room_active_from{{$cat['data']->id}}-{{$r}}">Active from </label>
@@ -161,7 +184,13 @@
 																			</div> 
 																			<div class="form-group col-lg-2">
 																				<label for="room_active_full">Active Full Year </label>
-																				<input name="room_active_full" id="room_active_full" type="checkbox" class="form-control input-sm datepic" value="1"  /> 
+																				
+                                                                                <div class="m-checkbox-inline">
+                                        											<label class="m-checkbox m-checkbox--solid m-checkbox--brand">
+                                        												<input name="room_active_full" id="room_active_full" type="checkbox" value="1">
+                                        												<span></span>
+                                        											</label>
+                                        										</div>
 																			</div>
 																			<div class="form-group col-lg-3">
 																				<label for="room_active_from{{$cat['data']->id}}-1">Active from </label>
@@ -289,7 +318,7 @@
 																	<div class="row">
 																		<div class="form-group col-lg-12">
 																			<label for="room_name">Amenities </label>
-																			<select name='assigned_amenities[]' rows='5' id='assigned_amenities' class='select2 ' multiple="multiple" required="required">
+																			<select name='assigned_amenities[]' rows='5' id='assigned_amenities' class='form-control select2 ' multiple="multiple" required="required">
 																			  @if(!empty($amenties))
 																					@foreach($amenties as $amenty)
 																						<option value="{{$amenty->id}}" {{(array_key_exists('amenty', $cat) && in_array($amenty->id,explode(',',$cat['amenties']))) ? " selected='selected' " : '' }}>{{$amenty->amenity_title}}</option>
@@ -318,7 +347,7 @@
 																		</div>
 																	</div>
 																</div>
-																<div class="col-lg-4 align-right">
+																<div class="col-lg-4 m--align-right">
 																	<div class="butt margin-top-10">
 																		<button type="button" class="btn btn-success b-btn" onclick="save_amenities_data({{$cat['data']->id}});"><i class="fa fa-plus"></i> Save</button>
 																	</div>
@@ -382,7 +411,35 @@
 	</div>
   </div>
 </div>
+@stop
+{{-- For custom style  --}}
+@section('style')
+    @parent
+    <link href="{{ asset('sximo/css/bookingSys.css')}}" rel="stylesheet">
+    <script src="{{ asset('sximo/js/jquery.validate.js')}}"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+    <link rel="stylesheet" href="{{ asset('sximo/file_upload/css/jquery.fileupload.css')}}">
+    <link rel="stylesheet" href="{{ asset('sximo/file_upload/css/jquery.fileupload-ui.css')}}">
+    
+    <!-- CSS adjustments for browsers with JavaScript disabled -->
+    <noscript><link rel="stylesheet" href="{{ asset('sximo/file_upload/css/jquery.fileupload-noscript.css')}}"></noscript>
+    <noscript><link rel="stylesheet" href="{{ asset('sximo/file_upload/css/jquery.fileupload-ui-noscript.css')}}"></noscript> 
+    
+    <style>
+        .fade {
+          opacity: 0;
+          transition:opacity .15s linear;
+        }
+        .fade.in {
+            opacity: 1;
+          }
+    </style>
+     
+@endsection
 
+@section('script')
 <script>
 
 $(document).ready(function () {
@@ -656,6 +713,41 @@ $(document).ready(function () {
 {% } %}
 </script>
 
+<!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
+<script src="{{ asset('sximo/file_upload/js/vendor/jquery.ui.widget.js')}}"></script>
+<!-- The Templates plugin is included to render the upload/download listings -->
+<script src="//blueimp.github.io/JavaScript-Templates/js/tmpl.min.js"></script>
+<!-- The Load Image plugin is included for the preview images and image resizing functionality -->
+<script src="//blueimp.github.io/JavaScript-Load-Image/js/load-image.all.min.js"></script>
+<!-- The Canvas to Blob plugin is included for image resizing functionality -->
+<script src="//blueimp.github.io/JavaScript-Canvas-to-Blob/js/canvas-to-blob.min.js"></script>
+<!-- Bootstrap JS is not required, but included for the responsive demo navigation -->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<!-- blueimp Gallery script -->
+<script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
+<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+<script src="{{ asset('sximo/file_upload/js/jquery.iframe-transport.js')}}"></script>
+<!-- The basic File Upload plugin -->
+<script src="{{ asset('sximo/file_upload/js/jquery.fileupload.js')}}"></script>
+<!-- The File Upload processing plugin -->
+<script src="{{ asset('sximo/file_upload/js/jquery.fileupload-process.js')}}"></script>
+<!-- The File Upload image preview & resize plugin -->
+<script src="{{ asset('sximo/file_upload/js/jquery.fileupload-image.js')}}"></script>
+<!-- The File Upload audio preview plugin -->
+<script src="{{ asset('sximo/file_upload/js/jquery.fileupload-audio.js')}}"></script>
+<!-- The File Upload video preview plugin -->
+<script src="{{ asset('sximo/file_upload/js/jquery.fileupload-video.js')}}"></script>
+<!-- The File Upload validation plugin -->
+<script src="{{ asset('sximo/file_upload/js/jquery.fileupload-validate.js')}}"></script>
+<!-- The File Upload user interface plugin -->
+<script src="{{ asset('sximo/file_upload/js/jquery.fileupload-ui.js')}}"></script>
+<!-- The main application script -->
+<script> var baseUrl = "{{URL::to('property_images_uploads')}}"; </script>
+<script src="{{ asset('sximo/file_upload/js/main.js')}}"></script>
+<!-- The XDomainRequest Transport is included for cross-domain file deletion for IE 8 and IE 9 -->
+<!--[if (gte IE 8)&(lt IE 10)]>
+<script src="js/cors/jquery.xdr-transport.js"></script>
+<![endif]-->
 
 
 <script>
