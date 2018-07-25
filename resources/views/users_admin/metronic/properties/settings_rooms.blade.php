@@ -185,7 +185,7 @@
 																			<div class="form-group col-lg-2">
 																				<label for="room_active_full">Active Full Year </label>
 																				
-                                                                                <div class="m-checkbox-inline">
+                                                                                <div class="m-checkbox-inline m--align-center">
                                         											<label class="m-checkbox m-checkbox--solid m-checkbox--brand">
                                         												<input name="room_active_full" id="room_active_full" type="checkbox" value="1">
                                         												<span></span>
@@ -528,7 +528,14 @@ $(document).ready(function () {
 						html +='</div>'; 
 						html +='<div class="form-group col-lg-2">';
 						html +='<label for="room_active_full">Active Full Year </label>';
-						html +='<input name="room_active_full" id="room_active_full" type="checkbox" class="form-control input-sm datepic" value="1"  />'; 
+						//html +='<input name="room_active_full" id="room_active_full" type="checkbox" class="form-control input-sm datepic" value="1"  />';
+                        html +='<div class="m-checkbox-inline m--align-center">';
+						html +='<label class="m-checkbox m-checkbox--solid m-checkbox--brand">';
+						html +='<input name="room_active_full" id="room_active_full" type="checkbox" value="1">';
+						html +='<span></span>';
+						html +='</label>';
+						html +='</div>';
+                         
 						html +='</div>';
 						html +='<div class="form-group col-lg-4">';
 						html +='<label for="room_active_from'+data.room.category_id+'-'+newid+'">Active from </label>';
