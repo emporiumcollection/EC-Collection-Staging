@@ -161,7 +161,7 @@ $(".mobilemenu").click(function() {
 $(".mobilenavclosebtn, html").click(function () {
     if (removeClass) {
         $(".mobilemenu").removeClass('open');
-	    $(".page-container").removeClass('overflowClass');
+        $(".page-container").removeClass('overflowClass');
 		$(".whiteoverlay").fadeOut();
 		//$("body").css("overflow","visible");
     }
@@ -568,7 +568,7 @@ slider.oninput = function() {
  $( ".c-header__btn-menu" ).click(function() {
   $( this ).toggleClass( "highlight" );
   $(".homerightmenu").toggleClass("me-right");
-  $(".mobilemenu").toggleClass( "me-left");
+  $(".mobilemenu").toggleClass( "open");
   $(".menu-bx").toggleClass( "is-nav-active");  
 });
 
