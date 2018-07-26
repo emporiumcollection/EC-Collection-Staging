@@ -7,7 +7,12 @@
 	</div>
 	<div class="col-sm-4 col-md-4 calendarbox">
 	   <div class="row">
-		  <div class="col-sm-6">
+            <div class="col-xs-12 col-md-12 t-datepicker">
+                <div class="t-check-in"></div>
+                <div class="t-check-out"></div>
+            </div>
+            
+		  {{--<div class="col-sm-6">
 			 <div class="form-group">
 				<input name="arrive" id="reservationdate" class="form-control datefield reservationdate" type="text" placeholder="Arrival" readonly required value="@if(isset($_GET['arrive']) && $_GET['arrive']!=''){{$_GET['arrive']}}@endif">
 				<div class="input-group-icon"><i class="fa fa-calander"></i></div>
@@ -18,7 +23,7 @@
 				<input name="departure" id="reservationdate1" class="form-control datefield reservationdate" type="text" placeholder="Departure" readonly required value="@if(isset($_GET['departure']) && $_GET['departure']!=''){{$_GET['departure']}}@endif">
 				<div class="input-group-icon"><i class="fa fa-calander"></i></div>
 			 </div>
-		  </div>
+		  </div>--}}
 	   </div>
 	</div>
 	<div class="col-sm-2 col-md-2">

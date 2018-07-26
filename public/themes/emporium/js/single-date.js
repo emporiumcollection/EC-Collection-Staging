@@ -34,7 +34,8 @@ document.addEventListener("touchstart", function() {},false);
 	Style-1 - With Dropdown and Date Format: MM-DD-YYYY
 |--------------------------------------------------------------------------
 */
-	$('.reservationdate').daterangepicker({
+	
+    $('.reservationdate').daterangepicker({
 		locale: {
 			format: 'MM-DD-YYYY',
 			daysOfWeek: [
