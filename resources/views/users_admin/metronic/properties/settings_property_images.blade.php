@@ -13,14 +13,20 @@
     </li>
     <li class="m-nav__separator"> - </li>
     <li class="m-nav__item"> 
-        <a href="javascript:;" class="m-nav__link"> 
+        <a href="{{ URL::to('properties')}}" class="m-nav__link"> 
+            <span class="m-nav__link-text"> Reservation & Distribution </span> 
+        </a> 
+    </li>
+    <li class="m-nav__separator"> - </li>
+    <li class="m-nav__item"> 
+        <a href="{{ URL::to('properties')}}" class="m-nav__link"> 
             <span class="m-nav__link-text"> Properties </span> 
         </a> 
     </li>
     @if(!empty($property_data))
     <li class="m-nav__separator"> - </li>
     <li class="m-nav__item"> 
-        <a href="javascript:;" class="m-nav__link"> 
+        <a href="{{ URL::to('properties')}}" class="m-nav__link"> 
             <span class="m-nav__link-text"> {{ucfirst($property_data->property_name)}}  </span> 
         </a> 
     </li>
@@ -33,6 +39,9 @@
     @endif
 @stop
 @section('content')
+    <?php $imgfancy = array();
+	$filType = array('jpg'=>'JPEG image', 'jpeg'=>'JPEG image', 'JPG'=>'JPEG image', 'png'=>'PNG image', 'gif'=>'GIF image', 'xls'=>'Excel spreadsheet', 'eps'=>'EPS Image', 'mp4'=>'MPEG-4 video', 'mkv'=>'Matroska Video', 'flv'=>'Flash Video', 'avi'=>'Audio Video', 'wma'=>'Windows Media Audio', 'wmp'=>'Windows Media Player', 'psd'=>'PSD Image', 'pdf'=>'PDF document', 'ppt'=>'PowerPoint presentation', 'mp3'=>'MP3 audio', 'tif'=>'TIFF image', 'doc'=>'Word document', 'docx'=>'Word document', 'bmp'=>'Bitmap image', 'cad'=>'CAD image', 'zip'=>'Compress document');
+ ?>
     <div class="row">
     
         @if(Session::has('message'))	  

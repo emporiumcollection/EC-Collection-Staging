@@ -619,8 +619,11 @@ class ContainerController extends Controller {
 				return view('container.iframe',$this->data);
 			}
 			else
-			{
-				return view('container.index',$this->data);
+			{    
+			    $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+                $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.container.index':'container.index';
+                
+				return view($file_name,$this->data);
 			}
 		}
 	}	

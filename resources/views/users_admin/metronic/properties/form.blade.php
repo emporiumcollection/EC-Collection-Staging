@@ -13,10 +13,30 @@
     </li>
     <li class="m-nav__separator"> - </li>
     <li class="m-nav__item"> 
-        <a href="javascript:;" class="m-nav__link"> 
-            <span class="m-nav__link-text"> Property </span> 
+        <a href="{{ URL::to('properties')}}" class="m-nav__link"> 
+            <span class="m-nav__link-text"> Reservation & Distribution </span> 
         </a> 
     </li>
+    <li class="m-nav__separator"> - </li>
+    <li class="m-nav__item"> 
+        <a href="{{ URL::to('properties')}}" class="m-nav__link"> 
+            <span class="m-nav__link-text"> Properties </span> 
+        </a> 
+    </li>
+    <?php if(!empty($row['property_name'])){ ?>
+    <li class="m-nav__separator"> - </li>
+    <li class="m-nav__item"> 
+        <a href="{{ URL::to('properties')}}" class="m-nav__link"> 
+            <span class="m-nav__link-text"> <?php echo ucfirst($row['property_name']); ?>  </span> 
+        </a> 
+    </li>
+    <li class="m-nav__separator"> - </li>
+    <li class="m-nav__item"> 
+        <a href="javascript:;" class="m-nav__link"> 
+            <span class="m-nav__link-text"> Hotel/Property </span> 
+        </a> 
+    </li>
+    <?php } ?>
 @stop
 
 @section('content')

@@ -13,7 +13,13 @@
     </li>
     <li class="m-nav__separator"> - </li>
     <li class="m-nav__item"> 
-        <a href="javascript:;" class="m-nav__link"> 
+        <a href="{{ URL::to('properties')}}" class="m-nav__link"> 
+            <span class="m-nav__link-text"> Reservation & Distribution </span> 
+        </a> 
+    </li>
+    <li class="m-nav__separator"> - </li>
+    <li class="m-nav__item"> 
+        <a href="{{ URL::to('properties')}}" class="m-nav__link"> 
             <span class="m-nav__link-text"> Properties </span> 
         </a> 
     </li>
@@ -70,7 +76,7 @@
 								<div class="m-portlet__head-title">
 									<span class="m-switch m-switch--outline m-switch--success switch-btn-bot-pad">
     									<label>
-    										<input type="checkbox" checked="checked" name="">
+    										<input type="checkbox" name="switch_property" id="switch_property" />
     										<span></span>
     									</label>
     								</span>                                    
@@ -105,47 +111,47 @@
 															</li> 
                                                             <li class="m-nav__item">
 																<a href="{{ URL::to('properties/update/'.$row->id.'?return='.$return) }}" class="m-nav__link">
-																	<i class="m-nav__link-icon fa fa-search"></i>
+																	<i class="m-nav__link-icon"></i>
 																	<span class="m-nav__link-text">
-																		Manage Hotel/Property
+																		Hotel/Property
 																	</span>
 																</a>
 														    </li> 
                                                             <li class="m-nav__item">
 																<a href="{{ URL::to('properties_settings/'.$row->id.'/types')}}" class="m-nav__link">
-																	<i class="m-nav__link-icon fa fa-search"></i>
+																	<i class="m-nav__link-icon"></i>
 																	<span class="m-nav__link-text">
-																		Manage Room Types
+																		Room Types
 																	</span>
 																</a>
 														    </li> 
                                                             <li class="m-nav__item">
 																<a href="{{ URL::to('properties_settings/'.$row->id.'/rooms')}}" class="m-nav__link">
-																	<i class="m-nav__link-icon fa fa-search"></i>
+																	<i class="m-nav__link-icon"></i>
 																	<span class="m-nav__link-text">
-																		Manage Rooms
+																		Rooms
 																	</span>
 																</a>
 														    </li> 
                                                             <li class="m-nav__item">
 																<a href="{{ URL::to('properties_settings/'.$row->id.'/seasons')}}" class="m-nav__link">
-																	<i class="m-nav__link-icon fa fa-search"></i>
+																	<i class="m-nav__link-icon"></i>
 																	<span class="m-nav__link-text">
-																		Manage Seasons
+																		Seasons
 																	</span>
 																</a>
 														    </li> 
                                                             <li class="m-nav__item">
 																<a href="{{ URL::to('properties_settings/'.$row->id.'/price')}}" class="m-nav__link">
-																	<i class="m-nav__link-icon fa fa-search"></i>
+																	<i class="m-nav__link-icon"></i>
 																	<span class="m-nav__link-text">
-																		Manage Price
+																		Price
 																	</span>
 																</a>
 														    </li> 
                                                             <li class="m-nav__item">
 																<a href="{{ URL::to('properties_settings/'.$row->id.'/property_documents')}}" class="m-nav__link">
-																	<i class="m-nav__link-icon fa fa-search"></i>
+																	<i class="m-nav__link-icon"></i>
 																	<span class="m-nav__link-text">
 																		Property Documents
 																	</span>
@@ -153,30 +159,31 @@
 														    </li> 
                                                             <li class="m-nav__item">
 																<a href="{{ URL::to('properties_settings/'.$row->id.'/property_images')}}" class="m-nav__link">
-																	<i class="m-nav__link-icon fa fa-search"></i>
+																	<i class="m-nav__link-icon"></i>
 																	<span class="m-nav__link-text">
-																		Manage Images
+																		Images
 																	</span>
 																</a>
 														    </li> 
                                                             <li class="m-nav__item">
 																<a href="{{ URL::to('properties_settings/'.$row->id.'/gallery_images')}}" class="m-nav__link">
-																	<i class="m-nav__link-icon fa fa-search"></i>
+																	<i class="m-nav__link-icon"></i>
 																	<span class="m-nav__link-text">
-																		Manage Galleries
+																		Galleries
 																	</span>
 																</a>
 														    </li> 
                                                             <li class="m-nav__item">
 																<a href="#" class="m-nav__link">
-																	<i class="m-nav__link-icon fa fa-search"></i>
+																	<i class="m-nav__link-icon"></i>
 																	<span class="m-nav__link-text">
 																		Become Featured
 																	</span>
 																</a>
-														    </li> <li class="m-nav__item">
+														    </li> 
+                                                            <li class="m-nav__item">
 																<a href="#" class="m-nav__link">
-																	<i class="m-nav__link-icon fa fa-search"></i>
+																	<i class="m-nav__link-icon"></i>
 																	<span class="m-nav__link-text">
 																		Get Help
 																	</span>
@@ -260,13 +267,97 @@
 					<!--end:: Widgets/Activity-->
             </div>
         @endforeach
-    
+        
+</div>
+<div class="row bg-gray">    
+    <div class="col-sm-12 col-md-2 box-property">
+        <a href="{{ URL::to('properties/update/'.$row->id.'?return='.$return) }}">																	
+			<span class="m-nav__link-text">
+				Hotel/Property
+			</span>
+		</a>
+    </div>    
+    <div class="col-sm-12 col-md-2 box-property">
+        <a href="{{ URL::to('properties_settings/'.$row->id.'/types')}}">
+			<i class="m-nav__link-icon"></i>
+			<span class="m-nav__link-text">
+				Room Types
+			</span>
+		</a>
+    </div>    
+    <div class="col-sm-12 col-md-2 box-property">
+        <a href="{{ URL::to('properties_settings/'.$row->id.'/rooms')}}">
+			<i class="m-nav__link-icon"></i>
+			<span class="m-nav__link-text">
+				Rooms
+			</span>
+		</a>
+    </div>    
+    <div class="col-sm-12 col-md-2 box-property">
+        <a href="{{ URL::to('properties_settings/'.$row->id.'/seasons')}}">
+			<i class="m-nav__link-icon"></i>
+			<span class="m-nav__link-text">
+				Seasons
+			</span>
+		</a>
+    </div>    
+    <div class="col-sm-12 col-md-2 box-property">
+        <a href="{{ URL::to('properties_settings/'.$row->id.'/price')}}">
+			<i class="m-nav__link-icon"></i>
+			<span class="m-nav__link-text">
+				Price
+			</span>
+		</a>
+    </div>    
+    <div class="col-sm-12 col-md-2 box-property">
+        <a href="{{ URL::to('properties_settings/'.$row->id.'/property_documents')}}">
+			<i class="m-nav__link-icon"></i>
+			<span class="m-nav__link-text">
+				Property Documents
+			</span>
+		</a>
+    </div>    
+    <div class="col-sm-12 col-md-2 box-property">
+        <a href="{{ URL::to('properties_settings/'.$row->id.'/property_images')}}">
+			<i class="m-nav__link-icon"></i>
+			<span class="m-nav__link-text">
+				Images
+			</span>
+		</a>
+    </div>    
+    <div class="col-sm-12 col-md-2 box-property">
+        <a href="{{ URL::to('properties_settings/'.$row->id.'/gallery_images')}}">
+			<i class="m-nav__link-icon"></i>
+			<span class="m-nav__link-text">
+				Galleries
+			</span>
+		</a>
+    </div>    
+    <div class="col-sm-12 col-md-2 box-property">
+        <a href="#">
+			<i class="m-nav__link-icon"></i>
+			<span class="m-nav__link-text">
+				Become Featured
+			</span>
+		</a>
+    </div>    
+    <div class="col-sm-12 col-md-2 box-property box-property">
+        <a href="#" class="m-nav__link">
+			<i class="m-nav__link-icon"></i>
+			<span class="m-nav__link-text">
+				Get Help
+			</span>
+		</a>
+    </div>    
 </div>
 @stop
 {{-- For custom style  --}}
 @section('style')
     @parent
     <style>
+        .box-property{
+            background-color: #fff; padding: 10px; margin: 10px 20px; text-align: center; font-size: 15px;
+        }
         .m-pertlet_head-switch-btn{
             vertical-align: middle;
             display: -webkit-box;
@@ -298,3 +389,52 @@
         }
     </style>
 @endsection
+@section('custom_js_script')
+<script>
+$(document).ready(function () {
+    $("#switch_property").click(function(){
+      if($("#switch_property").is(":checked")){
+        
+      }else{
+        
+      }      
+    });
+});
+function change_option(row,filed_name,row_id,act)
+{
+	if(row_id!='' && row_id>0)
+	{
+		$.ajax({
+		  url: "{{ URL::to('enable_diable_propertystatus')}}",
+		  type: "post",
+		  data: 'filed_name='+filed_name+'&row_id='+row_id+'&action='+act,
+		  success: function(data){
+			if(data!='error')
+			{
+				if(act==1)
+				{
+					$(row).removeClass('btn-danger');
+					$(row).addClass('btn-success');
+					$(row).children( "i.fa" ).removeClass('fa-times');
+					$(row).children( "i.fa" ).addClass('fa-check');
+					$(row).attr("onclick","change_option(this,'"+filed_name+"','"+row_id+"',0)");
+					$(row).attr("title","Click to Disable");
+					$(row).attr("data-original-title","Click to Disable");
+				}
+				else if(act==0)
+				{	
+					$(row).removeClass('btn-success');
+					$(row).addClass('btn-danger');
+					$(row).children( "i.fa" ).removeClass('fa-check');
+					$(row).children( "i.fa" ).addClass('fa-times');
+					$(row).attr("onclick","change_option(this,'"+filed_name+"','"+row_id+"',1)");
+					$(row).attr("title","Click to Enable");
+					$(row).attr("data-original-title","Click to Enable");
+				}
+			}
+		  }
+		});
+	}
+}
+</script>
+@stop

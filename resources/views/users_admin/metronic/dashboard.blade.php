@@ -1553,7 +1553,7 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
 							<div class="m-portlet__head-caption">
 								<div class="m-portlet__head-title">
 									<h3 class="m-portlet__head-text">
-										Guest Arrivals
+										Guest Arrivals | Departures
 									</h3>
 								</div>
 							</div>
