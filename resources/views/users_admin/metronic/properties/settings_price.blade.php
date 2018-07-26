@@ -17,6 +17,20 @@
             <span class="m-nav__link-text"> Properties </span> 
         </a> 
     </li>
+    @if(!empty($property_data))
+    <li class="m-nav__separator"> - </li>
+    <li class="m-nav__item"> 
+        <a href="javascript:;" class="m-nav__link"> 
+            <span class="m-nav__link-text"> {{ucfirst($property_data->property_name)}}  </span> 
+        </a> 
+    </li>
+    <li class="m-nav__separator"> - </li>
+    <li class="m-nav__item"> 
+        <a href="javascript:;" class="m-nav__link"> 
+            <span class="m-nav__link-text"> {{ucfirst($active)}} </span> 
+        </a> 
+    </li>
+    @endif
 @stop
 @section('content')
     <div class="row">
