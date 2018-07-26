@@ -20,7 +20,7 @@
 					</div>
 					<div class="col-sm-4 col-md-4 calendarbox">
 						<div class="row">
-                            <div class="col-xs-12 col-md-12 t-datepicker t-margin-top25">
+                            <div id="t-topbar-picker" class="col-xs-12 col-md-12 t-datepicker t-margin-top25">
                                 <div class="t-check-in"></div>
                                 <div class="t-check-out"></div>
                             </div>                        

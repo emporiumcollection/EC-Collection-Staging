@@ -1200,6 +1200,8 @@
                     if ( this_el_arrow.find('.t-arrow-top').length === 0 ) {
                         this_el_arrow.append('<span class="t-arrow-top"></span>')
                     }
+                    var topArrowPostion = $(pr_el).position().top;
+                    topArrowPostion = ((topArrowPostion > 10)?(topArrowPostion+19):topArrowPostion);
                     var CI_CO_width = $(pr_el).position().left + $(pr_el).outerWidth()/2
                     var leftArrTop = this_el_arrow.find('.t-arrow-top').outerWidth()/2
 
@@ -1212,6 +1214,7 @@
                     this_el_arrow.find('.t-arrow-top').animate({
                         'left': CI_CO_width-leftArrTop+'px'
                     }, settings.durationArrowTop)
+                    if(this_el_arrow.hasClass('rsidebar')){this_el_arrow.find('.t-arrow-top').css({'margin-top': topArrowPostion+'px'});}
                 }
                 $(pr_el).find('.t-dates').parent().append('<div class="t-datepicker-day'+checkNumCalendar+'">'+convertArrayToString(dataTheme)+'</div>')
                 // Thêm calendar vào t-check-in hoặc t-check-out

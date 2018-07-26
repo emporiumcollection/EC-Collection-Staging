@@ -166,8 +166,29 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
+            $('#t-topbar-picker').tDatePicker({
+                'numCalendar':'2',
+                'autoClose':true,
+                'durationArrowTop':'200',
+                'formatDate':'mm-dd-yyyy',
+                'titleCheckIn':'Arrival',
+                'titleCheckOut':'Departure',
+                'inputNameCheckIn':'arrive',
+                'inputNameCheckOut':'departure',
+                'titleDateRange':'days',
+                'titleDateRanges':'days',
+                'iconDate':'<i class="fa fa-calendar"></i>',
+                'limitDateRanges':'365',
+                'dateCheckIn':'@if(isset($_GET['arrive']) && $_GET['arrive']!=''){{$_GET['arrive']}}@else{{'null'}}@endif',
+                'dateCheckOut':'@if(isset($_GET['departure']) && $_GET['departure']!=''){{$_GET['departure']}}@else{{'null'}}@endif'
+            }).on('afterCheckOut',function(e, dateCO) {
+                if(((typeof $(this).closest('form').find('[name="adult"]').val()) != 'undefined') && ((typeof $(this).closest('form').find('[name="adult"]').val()) != undefined)){
+                    $(this).closest('form').find('[name="adult"]').focus();
+                }
+            });
             
-            $('.t-datepicker').tDatePicker({
+            $('#t-sidebar-picker').tDatePicker({
+                'numCalendar':'1',
                 'autoClose':true,
                 'durationArrowTop':'200',
                 'formatDate':'mm-dd-yyyy',
