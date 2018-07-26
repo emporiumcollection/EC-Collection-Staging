@@ -147,8 +147,13 @@ $( ".owl-prev").html('<i class="glyphicon glyphicon-menu-left"></i>');
 
 var removeClass = true;
 $(".sidefixednav .block-content.togglenav").click(function () {
-    $(".mobilemenu").addClass('open');
-	$(".page-container").addClass('overflowClass');
+    $(".mobilemenu").toggleClass('open');
+    $(".mobilemenu").toggleClass('me-left');    
+	$(".page-container").toggleClass('overflowClass');
+  $(".menu-bx").removeClass('is-nav-active');
+  $(".homerightmenu").removeClass('me-right');
+  
+  
 	$(".whiteoverlay").fadeIn();
 	//$("body").css("overflow","hidden");
     removeClass = false;
@@ -270,10 +275,10 @@ $(".searchourcollectonlink").click(function(){
 
 if ($(window).width() < 1025) {
 
-   $(".closenavlink").click(function(){
+   $(".closenavlink , .mobilenavclosebtn").click(function(){
 	$(".mobilemenu").removeClass("open");
 	$(".whiteoverlay").fadeOut();
-})
+})    
 }
 else {
   
@@ -568,8 +573,14 @@ slider.oninput = function() {
  $( ".c-header__btn-menu" ).click(function() {
   $( this ).toggleClass( "highlight" );
   $(".homerightmenu").toggleClass("me-right");
-  $(".mobilemenu").toggleClass( "me-left");
+  $(".mobilemenu").toggleClass( "open");
   $(".menu-bx").toggleClass( "is-nav-active");  
+});
+
+
+ $( ".mobilenavclosebtn" ).click(function() {
+  $(".mobilemenu").removeClass( "open");
+  $(".mobilemenu").removeClass( "me-left");    
 });
 
  $( ".menu-bx .log_in-btn" ).click(function() {
