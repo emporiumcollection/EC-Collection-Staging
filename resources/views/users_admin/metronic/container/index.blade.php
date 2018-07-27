@@ -26,23 +26,9 @@
 @stop
 
 @section('content')
-<link href="{{ asset('sximo/css/custom_ps.css')}}" rel="stylesheet">
 
-<link rel="stylesheet" href="{{ asset('sximo/css/dropzone.css') }}">
-<script src="{{ asset('sximo/js/tooltip_popup.js') }}"></script>
 
-<script src="{{ asset('sximo/js/plugins/fancybox/jquery.fancybox.js') }}"></script>
 
-<link rel="stylesheet" href="{{ asset('sximo/js/plugins/fancybox/helpers/jquery.fancybox-buttons.css?v=1.0.5') }}">
-<script src="{{ asset('sximo/js/plugins/fancybox/helpers/jquery.fancybox-buttons.js?v=1.0.5') }}"></script>
-<style>
-.size-bar-side{overflow: hidden;}
-div[data-load="left-side-tree"]{max-height: 600px;    overflow: auto;}
-.leng { display:none; }
-.btn_orange, .btn_orange:hover, .btn_orange:focus, .btn_orange:active, .btn_orange.active, .open .dropdown-toggle.btn_orange {  background-color: orange; border-color: orange; }
-.disnon { display:none; }
-.lightboxmodal { z-index:1060; }
-</style>
 <?php $imgfancy = array();
 	$filType = array('jpg'=>'JPEG image', 'jpeg'=>'JPEG image', 'JPG'=>'JPEG image', 'png'=>'PNG image', 'gif'=>'GIF image', 'xls'=>'Excel spreadsheet', 'eps'=>'EPS Image', 'mp4'=>'MPEG-4 video', 'mkv'=>'Matroska Video', 'flv'=>'Flash Video', 'avi'=>'Audio Video', 'wma'=>'Windows Media Audio', 'wmp'=>'Windows Media Player', 'psd'=>'PSD Image', 'pdf'=>'PDF document', 'ppt'=>'PowerPoint presentation', 'mp3'=>'MP3 audio', 'tif'=>'TIFF image', 'doc'=>'Word document', 'docx'=>'Word document', 'bmp'=>'Bitmap image', 'cad'=>'CAD image', 'zip'=>'Compress document');
  ?>
@@ -424,11 +410,28 @@ div[data-load="left-side-tree"]{max-height: 600px;    overflow: auto;}
 {{-- For custom style  --}}
 @section('style')
     @parent
+    <link href="{{ asset('sximo/css/custom_ps.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('sximo/css/dropzone.css') }}">
+    <link rel="stylesheet" href="{{ asset('sximo/js/plugins/fancybox/helpers/jquery.fancybox-buttons.css?v=1.0.5') }}">
     <link href="http://staging.emporium-voyage.com/sximo/js/plugins/iCheck/skins/square/green.css" rel="stylesheet">     
+    <style>
+    .clear{
+        clear: both;
+    }
+    
+    .size-bar-side{overflow: hidden;}
+    div[data-load="left-side-tree"]{max-height: 600px;    overflow: auto;}
+    .leng { display:none; }
+    .btn_orange, .btn_orange:hover, .btn_orange:focus, .btn_orange:active, .btn_orange.active, .open .dropdown-toggle.btn_orange {  background-color: orange; border-color: orange; }
+    .disnon { display:none; }
+    .lightboxmodal { z-index:1060; }
+    </style>
 @endsection
 
 @section('script')
-    
+    <script src="{{ asset('sximo/js/tooltip_popup.js') }}"></script>
+    <script src="{{ asset('sximo/js/plugins/fancybox/jquery.fancybox.js') }}"></script>
+    <script src="{{ asset('sximo/js/plugins/fancybox/helpers/jquery.fancybox-buttons.js?v=1.0.5') }}"></script>
     <script type="text/javascript" src="{{ asset('sximo/js/plugins/jquery-ui.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('sximo/js/plugins/iCheck/icheck.min.js') }}"></script>
     <script src="{{ asset('sximo/js/dropzone.js') }}"></script>
