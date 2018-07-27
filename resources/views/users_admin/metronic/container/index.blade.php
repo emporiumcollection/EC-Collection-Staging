@@ -36,7 +36,7 @@
 	<div class="col-sm-3">	
 		<div class="row">
 			<div class="col-sm-12">
-				<a href="{{ URL::to('container?show='.$showType) }}" class="files label"><span>Files</span></a>
+				<a href="#" class="files label"><span>Files</span></a>
 				<div data-load="left-side-tree"><p style="padding-top: 20px;">Loading...</p></div>
 			</div>
 		</div>
@@ -151,10 +151,10 @@
 				@if($fid>0)
 					<h2 class="folder">
 						<span id="folder_name">
-							<a href="{{ URL::to('container?show='.$showType) }}"><span>Files</span></a>
+							<a href="#"><span>Files</span></a>
 							@if(!empty($parentArr))
 								@foreach($parentArr as $parArr)
-									/ @if(end($parentArr)!=$parArr)<a href="{{ URL::to('folders/'.$parArr->id.'?show='.$showType) }}">{{$parArr->display_name}}</a>@else {{$parArr->display_name}} @endif
+									/ @if(end($parentArr)!=$parArr)<a href="#">{{$parArr->display_name}}</a>@else {{$parArr->display_name}} @endif
 								@endforeach
 							@endif
 						</span>
@@ -174,7 +174,7 @@
 				@endif
 				</div>
 				@if($showType=="thumb")	
-					<div class="gallery-select-all">
+					<div class="gallery-select-all" style="display: none;">
 						<label style="float:left;">
 							<input type="checkbox" value="1" id="check_all" class="check-all"> Select all
 						</label>
@@ -215,7 +215,7 @@
 					<div id="folders_data_list"><p style="padding-top: 30px; text-align: center;">Loading...</p></div>
 					
 				@elseif($showType=="list")
-					<div class="gallery-select-all">
+					<div class="gallery-select-all" style="display: none;">
 						<label style="float:left;">
 							<input type="checkbox" value="1" id="check_all" class="check-all"> Select all
 						</label>

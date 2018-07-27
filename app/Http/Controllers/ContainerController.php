@@ -3575,12 +3575,21 @@ class ContainerController extends Controller {
 		);
 		// Get Query 
 		$results = $this->model->getRows( $params );
-	  if ($results) {
-		foreach($results['rows'] as $row) {
-			$parent_folders_array[] = $row;
-			$parent_folders_array = $this->fetchFolderParentListArray($row->parent_id, $parent_folders_array);
-		}
-	  }
+        
+      if(\Auth::user()->group_id==5)
+	  {  
+	       foreach($results['rows'] as $row) {
+    			$parent_folders_array[] = $row;    			
+    	   }
+      }else{
+    	  if ($results) {
+    		foreach($results['rows'] as $row) {
+    			$parent_folders_array[] = $row;
+    			$parent_folders_array = $this->fetchFolderParentListArray($row->parent_id, $parent_folders_array);
+    		}
+    	  }
+       }
+      
 	  return $parent_folders_array;
 	}
 	
@@ -5313,7 +5322,9 @@ class ContainerController extends Controller {
 			}
 			else
 			{
-				return view('container.index_ajax',$this->data);
+			    $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+                $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.container.index_ajax':'container.index_ajax';  
+				return view($file_name,$this->data);
 			}
 		}
 	}

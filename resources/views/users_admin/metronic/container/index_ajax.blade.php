@@ -7,10 +7,10 @@
   @if($fid>0)
 	<h2 class="folder">
 		<span id="folder_name">
-			<a href="{{ URL::to('container?show='.$showType) }}"><span>Files</span></a>
+			<a href="#"><span>Files</span></a>
 			@if(!empty($parentArr))
 				@foreach($parentArr as $parArr)
-					/ @if(end($parentArr)!=$parArr)<a href="{{ URL::to('folders/'.$parArr->id.'?show='.$showType) }}" data-action-open="folder" rel_row="{{$parArr->id}}">{{$parArr->display_name}}</a>@else {{$parArr->display_name}} @endif
+					/ @if(end($parentArr)!=$parArr)<a href="#"  rel_row="{{$parArr->id}}">{{$parArr->display_name}}</a>@else {{$parArr->display_name}} @endif
 				@endforeach
 			@endif
 		</span>
@@ -41,7 +41,7 @@
 										@if($row['ftype']=='folder')
 										<div class="gallery-box ui-state-default">
 											<div class="caption folder">
-												<a data-action-open="folder" rel_row="{{$row['id']}}" href="{{ URL::to('getFolderListAjax/').'/'.$row['id'].'?show='.$showType }}">{{(strlen($row['name']) > 8) ? substr($row['name'],0,8)."~" : $row['name']}}</a>
+												<a data-action-open="folder" rel_row="{{$row['id']}}" href="#">{{(strlen($row['name']) > 8) ? substr($row['name'],0,8)."~" : $row['name']}}</a>
 												<img src="{{URL::to('uploads/images/information.png')}}" style="cursor:pointer;" class="screenshot" rel="{{($row['title']!='')?$row['title']:''}}" rel2="{{($row['description']!='')?$row['description']:''}}" title="{{$row['name']}}" />
 												@if($row['assign_front']=='yes')
 													<img src="{{URL::to('uploads/images/activated.png')}}" style="cursor:pointer; margin-left:5px;" title="Click to Deactivate Frontend" onclick="frontend_grid(this,'folder','{{$row['id']}}',1);" />
@@ -84,7 +84,7 @@
 											?>
 											
 											<div class="caption {{$imgclass}}">
-												<a data-action-open="file" rel_row="{{$row['id']}}" rel_fid="{{$fid}}" class="lfile" href="{{ URL::to('files/view/').'/'.$fid.'/'.$row['id'].'?show='.$showType }}" title="{{$row['name']}}">{{strlen($fname) > 5 ? substr($fname,0,2)."~.".$ext : $fname}}</a>
+												<a data-action-open="file" rel_row="{{$row['id']}}" rel_fid="{{$fid}}" class="lfile" href="#" title="{{$row['name']}}">{{strlen($fname) > 5 ? substr($fname,0,2)."~.".$ext : $fname}}</a>
 												<img src="{{URL::to('uploads/images/information.png')}}" style="cursor:pointer;" class="screenshot" rel="{{($row['title']!='')?$row['title']:''}}" rel2="{{($row['description']!='')?$row['description']:''}}" title="{{$fname}}" />
 												@if($row['assign_front']=='yes')
 													<img src="{{URL::to('uploads/images/activated.png')}}" style="cursor:pointer; margin-left:5px;" title="Click to Deactivate Frontend" onclick="frontend_grid(this,'file','{{$row['id']}}',1);" />
@@ -102,7 +102,7 @@
 												$imgclass = "bigpdf";
 											}?>
 											<div class="thumb cinner{{$imgclass}}" <?php if($isImg==1) { ?> style="background: url('{{URL::to('uploads/thumbs/').'/thumb_'.$fid.'_'.$row['name']}}') no-repeat  center center; background-size:100px auto;" <?php } ?>>
-												<a data-action-open="file" rel_row="{{$row['id']}}" rel_fid="{{$fid}}" href="{{ URL::to('files/view/').'/'.$fid.'/'.$row['id'].'?show='.$showType }}" class="screenshot fancybox-buttons" rel="{{URL::to('uploads/thumbs/').'/format_'.$fid.'_'.$row['name']}}" title="{{$fname}}" rel2="{{$fname}}" data-fancybox-group="button">
+												<a data-action-open="file" rel_row="{{$row['id']}}" rel_fid="{{$fid}}" href="#" class="screenshot fancybox-buttons" rel="{{URL::to('uploads/thumbs/').'/format_'.$fid.'_'.$row['name']}}" title="{{$fname}}" rel2="{{$fname}}" data-fancybox-group="button">
 													&nbsp;
 												</a>
 											</div>
