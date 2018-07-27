@@ -23,21 +23,7 @@
                             <div id="t-topbar-picker" class="col-xs-12 col-md-12 t-datepicker t-margin-top25">
                                 <div class="t-check-in"></div>
                                 <div class="t-check-out"></div>
-                            </div>                        
-							{{--<div class="col-sm-6">
-								<div class="form-group">
-									<label>&nbsp;</label>
-									<input name="arrive" id="reservationdate" class="form-control datefield reservationdate" type="text" placeholder="Arrival" readonly required>
-									<div class="input-group-icon"><i class="fa fa-calander"></i></div>
-								</div>    
-							</div>
-							<div class="col-sm-6">
-								<div class="form-group">
-									<label>&nbsp;</label>
-									<input name="departure" id="reservationdate1" class="form-control datefield reservationdate" type="text" placeholder="Arrival" readonly required>
-									<div class="input-group-icon"><i class="fa fa-calander"></i></div>
-								</div>     
-							</div>--}}
+                            </div>
 						</div>
 					</div>
 					<div class="col-sm-3 col-md-2">

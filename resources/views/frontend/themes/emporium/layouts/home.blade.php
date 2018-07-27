@@ -38,7 +38,7 @@
     <link href="{{ asset('themes/emporium/css/owl.carousel.css') }}" rel="stylesheet">
     <link href="{{ asset('themes/emporium/css/font-stylesheet.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('themes/emporium/css/jquery.mCustomScrollbar.css') }}">
-    <link href="{{ asset('themes/emporium/css/bootstrap-datepicker.css')}}" rel="stylesheet">
+    {{--<link href="{{ asset('themes/emporium/css/bootstrap-datepicker.css')}}" rel="stylesheet">--}}
     <link href="{{ asset('lib/jquery-ui/jquery-ui.min.css') }}" rel="stylesheet">
     <!-- tilt css include -->
     <!-- end of tilt css include -->
@@ -52,8 +52,8 @@
      <link href="{{ asset('themes/emporium/css/slick.css') }}" rel="stylesheet">
     @section('head')
         @parent
-        <link href="{{ asset('themes/emporium/css/daterangepicker.css') }}" rel="stylesheet">
-        <link href="{{ asset('themes/emporium/css/calendar.css') }}" rel="stylesheet">
+        {{--<link href="{{ asset('themes/emporium/css/daterangepicker.css') }}" rel="stylesheet">
+        <link href="{{ asset('themes/emporium/css/calendar.css') }}" rel="stylesheet">--}}
     @show
 
     <link href="{{ asset('themes/emporium/css/style.css') }}" rel="stylesheet">
@@ -150,8 +150,8 @@
     <!-- Date Picker js -->
     <script src="{{ asset('themes/emporium/js/moment.min.js') }}"></script>
 
-    <script src="{{ asset('themes/emporium/js/daterangepicker.js') }}"></script>
-    <script src="{{ asset('themes/emporium/js/single-date.js') }}"></script>
+    {{--<script src="{{ asset('themes/emporium/js/daterangepicker.js') }}"></script>
+    <script src="{{ asset('themes/emporium/js/single-date.js') }}"></script>--}}
     <script src="{{ asset('themes/emporium/js/custom.js') }}"></script>
     <script src="{{ asset('themes/emporium/js/custom/destination.js') }}"></script>
     <script src="{{ asset('themes/emporium/js/custom/experience.js') }}"></script>
