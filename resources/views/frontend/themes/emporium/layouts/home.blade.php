@@ -286,7 +286,7 @@
 
                 
                 var tobje = $("#txtmobileNumber").closest('.form-group').find('#error-msg');
-                if(((typeof tobje.html()) != 'undefined') && ((typeof tobje.html()) != undefined)){tobje.html('Invalid number');}
+                //if(((typeof tobje.html()) != 'undefined') && ((typeof tobje.html()) != undefined)){tobje.html('Invalid number');}
                 var countryData = $("#txtmobileNumber").intlTelInput("getSelectedCountryData");
 
                 var error = $("#txtmobileNumber").intlTelInput("getValidationError");
@@ -296,7 +296,7 @@
                     $("#txtmobileDialcode").val(countryData.dialCode);
                 } else {
                     if(((typeof tobje.html()) != 'undefined') && ((typeof tobje.html()) != undefined) && ($("#txtmobileNumber").val().length <= 0)){
-                        tobje.html('This field is required.');
+                        //tobje.html('This field is required.');
                         tobje.removeClass('hide');
                     }
                     $("#txtmobileNumber").addClass('error');
