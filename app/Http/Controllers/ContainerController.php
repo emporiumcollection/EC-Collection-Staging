@@ -5328,8 +5328,16 @@ class ContainerController extends Controller {
 	}
 	
 	public function getFolderListAjaxonload(Request $request, $id = 0){
-		$partarr = array_reverse($this->fetchFolderParentListIds($id));
-		$folderList = $this->fetchFolderTreeListonload(0, $id, '', $request->input('show'), $partarr);
+	   if(\Auth::user()->group_id==5)
+	   {
+	       $obj_par_id = \DB::table('tb_container')->select('parent_id')->where('id', $id)->first();
+           $par_id = $obj_par_id->parent_id;
+           //$partarr = array_reverse($this->fetchFolderParentListIds($id));
+           $folderList = $this->fetchFolderTreeListonload($par_id, $id, '', $request->input('show'));
+       }else{            
+            $partarr = array_reverse($this->fetchFolderParentListIds($id));
+            $folderList = $this->fetchFolderTreeListonload(0, $id, '', $request->input('show'), $partarr);
+       }
 		$treeList = '';
 		foreach ($folderList as $r) {
 			echo $r;

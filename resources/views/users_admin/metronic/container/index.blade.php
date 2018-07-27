@@ -66,7 +66,7 @@ div[data-load="left-side-tree"]{max-height: 600px;    overflow: auto;}
 		</div>
 	</div>
 	<div class="col-sm-9">
-		<div class="row">
+		<div class="row" style="display: none;">
 			<div class="col-sm-12">
 				<button type="button" class="btn btn-success btn-lg" onclick="selectfolderfiles();" data-toggle="modal" data-target="#sendEmail">
 					<span class="icn"><i class="icon-share"></i> {{\Lang::get('core.menu_share')}}</span>
@@ -192,7 +192,7 @@ div[data-load="left-side-tree"]{max-height: 600px;    overflow: auto;}
 						<label style="float:left;">
 							<input type="checkbox" value="1" id="check_all" class="check-all"> Select all
 						</label>
-						<div class="row">
+						<div class="row" style="display: none;">
 							{!! Form::open(array('url'=>'containersearch', 'class'=>'columns' ,'id' =>'search', 'method'=>'get' )) !!}
 								<input type="hidden" name="show" value="{{ $showType }}">
 								<div class="col-sm-4">
@@ -233,7 +233,7 @@ div[data-load="left-side-tree"]{max-height: 600px;    overflow: auto;}
 						<label style="float:left;">
 							<input type="checkbox" value="1" id="check_all" class="check-all"> Select all
 						</label>
-						<div class="row">
+						<div class="row" style="display: none;">
 							{!! Form::open(array('url'=>'containersearch', 'class'=>'columns' ,'id' =>'search', 'method'=>'get' )) !!}
 								<input type="hidden" name="show" value="{{ $showType }}">
 								<div class="col-sm-4">
