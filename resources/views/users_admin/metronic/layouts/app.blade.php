@@ -166,11 +166,11 @@
 							Settings
 						</a>
 					</li>
-					<li class="nav-item m-tabs__item">
+					<?php /* <li class="nav-item m-tabs__item">
 						<a class="nav-link m-tabs__link" data-toggle="tab" href="#m_quick_sidebar_tabs_logs" role="tab">
 							Logs
 						</a>
-					</li>
+					</li> */ ?>
 				</ul>
 				<div class="tab-content">
 					<div class="tab-pane active" id="m_quick_sidebar_tabs_messenger" role="tabpanel">
@@ -575,7 +575,7 @@
                             
 						</div>
 					</div>
-					<div class="tab-pane" id="m_quick_sidebar_tabs_logs" role="tabpanel">
+					<?php /* <div class="tab-pane" id="m_quick_sidebar_tabs_logs" role="tabpanel">
 						<div class="m-list-timeline m-scrollable">
 							<div class="m-list-timeline__group">
 								<div class="m-list-timeline__heading">
@@ -830,7 +830,7 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> */ ?>
 				</div>
 			</div>
 		</div>

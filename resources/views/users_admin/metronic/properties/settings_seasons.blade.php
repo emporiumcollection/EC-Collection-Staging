@@ -33,7 +33,7 @@
     <li class="m-nav__separator"> - </li>
     <li class="m-nav__item"> 
         <a href="javascript:;" class="m-nav__link"> 
-            <span class="m-nav__link-text"> {{ucfirst($active)}} </span> 
+            <span class="m-nav__link-text breadcrumb-end"> {{ucfirst($active)}} </span> 
         </a> 
     </li>
     @endif
@@ -257,6 +257,7 @@
 @stop
 @section('custom_js_script')
 <script src="{{ asset('sximo/js/jquery.validate.js')}}"></script>
+<script src="{{ asset('metronic/assets/demo/demo6/base/toastr.js') }}"></script>
 
 <script>
 $(document).ready(function () {
@@ -355,6 +356,8 @@ function save_addseason_data(formid)
 					htmli +='<i class="icon-checkmark-circle"></i> Record Inserted Successfully </div>';
 					$('.page-content-wrapper #formerrors').html(htmli);
 					 window.scrollTo(0, 0);
+                     toastr.success("Record Inserted Successfully");
+                     window.location.reload();
 				}
 			}
 		  }
@@ -382,6 +385,8 @@ function save_addseasondates_data(formid)
 				html +='</ul>';
 				$('.page-content-wrapper #formerrors').html(html);
 				window.scrollTo(0, 0);
+                toastr.success(html);
+                window.location.reload();
 			}
 			else
 			{
@@ -392,6 +397,8 @@ function save_addseasondates_data(formid)
 					html +='<i class="icon-checkmark-circle"></i> Record Updated Successfully </div>';
 					$('.page-content-wrapper #formerrors').html(html);
 					window.scrollTo(0, 0);
+                    toastr.success("Record Updated Successfully");
+                    window.location.reload();
 				}
 				else
 				{
@@ -425,6 +432,8 @@ function save_addseasondates_data(formid)
 					htmli +='<i class="icon-checkmark-circle"></i> Record Inserted Successfully </div>';
 					$('.page-content-wrapper #formerrors').html(htmli);
 					 window.scrollTo(0, 0);
+                     toastr.success("Record Inserted Successfully");
+                     window.location.reload();
 				}
 			}
 		  }
@@ -453,6 +462,9 @@ function delete_season_data(seasonId)
 						html +='<i class="icon-checkmark-circle"></i> Record Not Found </div>';
 						$('.page-content-wrapper #formerrors').html(html);
 						window.scrollTo(0, 0);
+                        
+                        toastr.success("Record Inserted Successfully");
+                        window.location.reload();
 				  }
 				  else{
 						$('.seasonbox-'+seasonId).remove();
@@ -461,6 +473,9 @@ function delete_season_data(seasonId)
 						html +='<i class="icon-checkmark-circle"></i> Record Deleted Successfully </div>';
 						$('.page-content-wrapper #formerrors').html(html);
 						window.scrollTo(0, 0);
+                        
+                        toastr.success("Record Inserted Successfully");
+                        window.location.reload();
 				  }
 			  }
 			});

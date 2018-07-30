@@ -166,7 +166,7 @@
 						<div class="m-portlet__body">
 							<div class="m-widget17">
 								<div class="m-widget17__visual m-widget17__visual--chart m-portlet-fit--top m-portlet-fit--sides m--bg-danger">
-									<div class="m-widget17__chart" style="height:300px;">
+									<div class="m-widget17__chart" style="height:360px;">
                                         
                                         <div class="" style="background: url(http://staging.emporium-voyage.com/uploads/container_user_files/locations/hh/property-images/64070036634-63502574132.jpeg); width: 100%; background-size: cover; height:300px; opacity: 50%;">
                                         <div class="hotel_name">

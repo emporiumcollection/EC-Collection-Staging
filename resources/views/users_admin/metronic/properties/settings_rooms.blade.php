@@ -33,7 +33,7 @@
     <li class="m-nav__separator"> - </li>
     <li class="m-nav__item"> 
         <a href="javascript:;" class="m-nav__link"> 
-            <span class="m-nav__link-text"> {{ucfirst($active)}} </span> 
+            <span class="m-nav__link-text breadcrumb-end"> {{ucfirst($active)}} </span> 
         </a> 
     </li>
     @endif
@@ -610,6 +610,7 @@ $(document).ready(function () {
 						html +='<i class="icon-checkmark-circle"></i> Record Updated Successfully </div>';
 						$('.page-content-wrapper #formerrors').html(html);
 						window.scrollTo(0, 0);
+                        window.location.reload();
 					}
 					else
 					{
@@ -675,6 +676,9 @@ $(document).ready(function () {
 								showButtonPanel: true,
 								dateFormat: 'yy-mm-dd'
 						});
+                        
+                        
+                        
 					}
 				}
 			  }

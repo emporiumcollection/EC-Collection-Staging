@@ -33,7 +33,7 @@
     <li class="m-nav__separator"> - </li>
     <li class="m-nav__item"> 
         <a href="javascript:;" class="m-nav__link"> 
-            <span class="m-nav__link-text"> {{ucfirst($active)}} </span> 
+            <span class="m-nav__link-text breadcrumb-end"> {{ucfirst($active)}} </span> 
         </a> 
     </li>
     @endif

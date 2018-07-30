@@ -168,7 +168,7 @@
 											<i class="m-menu__hor-arrow la la-angle-down"></i>
 											<i class="m-menu__ver-arrow la la-angle-right"></i>
 										</a>
-										<div class="m-menu__submenu  m-menu__submenu--fixed m-menu__submenu--left" style="width:1000px">
+										<div class="m-menu__submenu  m-menu__submenu--fixed m-menu__submenu--left" style="width:250px">
 											<span class="m-menu__arrow m-menu__arrow--adjust"></span>
 											<div class="m-menu__subnav">
 												<ul class="m-menu__content">
@@ -222,7 +222,7 @@
 															</li>
 														</ul>
 													</li>
-													<li class="m-menu__item">
+													<?php /* <li class="m-menu__item">
 														<h3 class="m-menu__heading m-menu__toggle">
 															<span class="m-menu__link-text">
 																Project Reports
@@ -413,7 +413,7 @@
 																</a>
 															</li>
 														</ul>
-													</li>
+													</li> */ ?>
 												</ul>
 											</div>
 										</div>

@@ -33,7 +33,7 @@
     <li class="m-nav__separator"> - </li>
     <li class="m-nav__item"> 
         <a href="javascript:;" class="m-nav__link"> 
-            <span class="m-nav__link-text"> {{ucfirst(str_replace('_', ' ', $active))}} </span> 
+            <span class="m-nav__link-text breadcrumb-end"> {{ucfirst(str_replace('_', ' ', $active))}} </span> 
         </a> 
     </li>
     @endif
@@ -344,6 +344,7 @@
     </style>
 @endsection
 @section('custom_js_script')
+<script src="{{ asset('metronic/assets/demo/demo6/base/toastr.js') }}"></script>
 <script src="{{ asset('sximo/js/jquery.validate.js')}}"></script>
 <script>
 
@@ -359,7 +360,7 @@ $(document).ready(function () {
              return false; // required to block normal submit since you used ajax
          }
      });*/
-	$(document).on('click', '.btn', function (){
+	$(document).on('click', '.btn', function (){ console.log($(this).parents('form.add_property_type_setup').attr('id'));
 		 var frmid = $(this).parents('form.add_property_type_setup').attr('id');
 		  $('#'+frmid).validate({
 			submitHandler: function (form) {
@@ -501,7 +502,9 @@ $(document).ready(function () {
 						htmli +='<button data-dismiss="alert" class="close" type="button">×</button>';
 						htmli +='<i class="icon-checkmark-circle"></i> Record Inserted Successfully </div>';
 						$('.page-content-wrapper #formerrors').html(htmli);
-						 //window.scrollTo(0, 0);
+						 window.scrollTo(0, 0);
+                         
+                         toastr.success("Record Inserted Successfully");
                          window.location.reload();
 					}
 				}
