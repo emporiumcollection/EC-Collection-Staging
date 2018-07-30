@@ -39,6 +39,7 @@
     @endif
 @stop
 @section('content')
+    
     <div class="row">
     
         @if(Session::has('message'))	  
@@ -73,141 +74,178 @@
 				</ul>
 				<div class="tab-content">
 					<div class="tab-pane active">
-                        	@if(!empty($Seasons))
-                            {{--*/ $c=1; /*--}}
-							@foreach($Seasons as $season)
-								<div class="seasonbox-{{$season->id}} margin-top-10">
-									<form id="add_season-{{$season->id}}" class="add_season">
-										<input type="hidden" name="edit_season_id" value="{{$season->id}}" >
-										<div class="row">
-											<div class="col-lg-9">
-												<div class="row">
-													<div class="form-group col-lg-4">
-														<label for="Name">Name </label>
-														<input name="season_name" id="season_name" type="text" class="form-control input-sm" value="{{$season->season_name}}" required="required" /> 
-													</div> 
-													<div class="form-group col-lg-2">
-														<label for="Priority">Priority </label>
-														<input name="season_priority" id="season_priority" type="text" class="form-control input-sm" value="{{$season->season_priority}}" /> 
-													</div>
-												</div>
-												
-											</div>
-											<div class="col-lg-3 m--align-right">
-												<div class="butt">
-													<button type="button" class="btn btn-danger b-btn" onclick="delete_season_data({{$season->id}});"><i class="fa fa-trash-0"></i> Delete</button>
-													<button type="submit" class="btn btn-success b-btn addseason"><i class="fa fa-save"></i> Save</button>
-												</div>
-											</div>
-										</div>
-									</form>
-									<hr>
-									<div class="datebox">
-										@if(array_key_exists('dates',$season))
-											@foreach($season->dates as $sdate)
-												<form id="add_dates-{{$sdate->id}}" class="seasons_dates">
-												<input type="hidden" name="edit_season_dates_id" value="{{$sdate->id}}">
-													<div class="row">
-														<div class="col-lg-4">
-															<div class="row">
-																<div class="form-group col-lg-6">
-																	<label for="From Date">From Date</label>
-																	<input name="season_from_date" id="season_from_date{{$sdate->id}}" type="text" class="form-control input-sm datepic" value="{{$sdate->season_from_date}}" required="required" /> 
-																</div> 
-																<div class="form-group col-lg-6">
-																	<label for="To Date">To Date</label>
-																	<input name="season_to_date" id="season_to_date{{$sdate->id}}" type="text" class="form-control input-sm datepic" value="{{$sdate->season_to_date}}" required="required" /> 
-																</div>
-															</div>
-														</div>
-														<div class="col-lg-3">
-															<div class="butt margin-top-10">
-																<button type="button" class="btn btn-danger b-btn" onclick="delete_season_dates_data({{$sdate->id}});"><i class="fa fa-trash-0"></i> Delete</button>
-																<button type="submit" class="btn btn-success b-btn addseasonDates"><i class="fa fa-save"></i> Save</button>
-															</div>
-														</div>
-													</div>
-												</form>
-											@endforeach
-										@endif
-									</div>
-								</div>
-								{{--*/ $c++; /*--}}
-							@endforeach
-						@endif
-                        
-                        
-                        <div class="tab-pane active use-padding" id="addseasons">	
-            				<div class="sbox  "> 
-            					<div class="sbox-title">Add Season</div>
-            					<div class="sbox-content"> 
-            						<form id="add_season" class="add_season">
-            						<input type="hidden" name="edit_season_id" value="">
-            						<input type="hidden" name="property_id" value="{{$pid}}" >
-            							<div class="row">
-            								<div class="col-lg-9">
-            									<div class="row">
-            										<div class="form-group col-lg-4">
-            											<label for="Name">Name </label>
-            											<input name="season_name" id="season_name" type="text" class="form-control input-sm" value="" required="required" /> 
-            										</div> 
-            										<div class="form-group col-lg-2">
-            											<label for="Priority">Priority </label>
-            											<input name="season_priority" id="season_priority" type="text" class="form-control input-sm" value="" /> 
-            										</div>
-            									</div>
-            								</div>
-            								<div class="col-lg-3 m--align-right">
-            									<div class="butt">
-            										<button type="submit" class="btn btn-success b-btn addseason"><i class="fa fa-plus"></i> Add</button>
-            									</div>
-            								</div>
-            							</div>
-            						</form>
-            					</div>
-            				</div>	 
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <h3 class="main-heading">{{ Lang::get('hotel-property.season-heading')}}</h3>
+                            </div>
+                        </div>  
+                        <div class="row">
+                            <div class="col-md-12 col-xs-12">
+                                <div class="m-alert m-alert--icon m-alert--icon-solid m-alert--outline alert alert-danger alert-dismissible fade show" role="alert">
+                                   <div class="m-alert__icon">
+                                        <i class="flaticon-exclamation-1"></i>
+                                        <span></span>
+                                   </div>
+                                   <div class="m-alert__text">                
+                                        {{ Lang::get('hotel-property.season-info')}}
+                                   </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane active use-padding" id="addseasons">
+                            
+                                <div class="col-sm-12 col-md-12 col-lg-12 fun-bg-gray">
+                    				<div class="sbox  "> 
+                    					<h6>Add Season</h6>
+                    					<div class="sbox-content"> 
+                    						<form id="add_season" class="add_season">
+                    						<input type="hidden" name="edit_season_id" value="">
+                    						<input type="hidden" name="property_id" value="{{$pid}}" >
+                    							<div class="row">
+                    								<div class="col-lg-9">
+                    									<div class="row">
+                    										<div class="form-group col-lg-4">
+                    											<label for="Name">Name </label>
+                    											<input name="season_name" id="season_name" type="text" class="form-control input-sm" value="" required="required" /> 
+                    										</div> 
+                    										<div class="form-group col-lg-2">
+                    											<label for="Priority">Priority </label>
+                    											<input name="season_priority" id="season_priority" type="text" class="form-control input-sm" value="" /> 
+                    										</div>
+                    									</div>
+                    								</div>
+                    								<div class="col-lg-3 m--align-right">
+                    									<div class="butt">
+                    										<button type="submit" class="btn btn-success b-btn addseason"><i class="fa fa-plus"></i> Add</button>
+                    									</div>
+                    								</div>
+                    							</div>
+                    						</form>
+                    					</div>
+                    				</div>
+                                </div>
+                            
+                            
+                                <div class="col-sm-12 col-md-12 col-lg-12 gray-seprator"></div>
+                            
             			</div>
                         
                         <div class="tab-pane active use-padding" id="addDates">	
-            				<div class="sbox  "> 
-            					<div class="sbox-title">Add Season's Dates</div>
-            					<div class="sbox-content"> 
-            						<form id="add_dates" class="seasons_dates">
-            						<input type="hidden" name="edit_season_dates_id" value="">
-            							<div class="row">
-            								<div class="col-lg-9">
-            									<div class="row">
-            										<div class="form-group col-lg-3">
-            											<label for="From Date">From Date</label>
-            											<input name="season_from_date" id="season_from_date" type="text" class="form-control input-sm datepic" value="" required="required" /> 
-            										</div> 
-            										<div class="form-group col-lg-3">
-            											<label for="To Date">To Date</label>
-            											<input name="season_to_date" id="season_to_date" type="text" class="form-control input-sm datepic" value="" required="required" /> 
-            										</div>
-            										<div class="form-group col-lg-3">
-            											<label for="Season">Seasons </label>
-            											<select name="seasons" class="form-control input-sm" required="required">
-            												<option></option>
-            												@if(!empty($Seasons))
-            													@foreach($Seasons as $season)
-            														<option value="{{$season->id}}">{{$season->season_name}}</option>
-            													@endforeach
-            												@endif
-            											</select>
-            										</div>
-            									</div>
-            								</div>
-            								<div class="col-lg-3 m--align-right">
-            									<div class="butt">
-            										<button type="submit" class="btn btn-success b-btn addseasonDates"><i class="fa fa-plus"></i> Add</button>
-            									</div>
-            								</div>
-            							</div>
-            						</form>
-            					</div>
-            				</div>	 
+                            
+                            <div class="col-sm-12 col-md-12 col-lg-12 fun-bg-gray">
+                				<div class="sbox  "> 
+                					<h6>Add Season's Dates</h6>
+                					<div class="sbox-content"> 
+                						<form id="add_dates" class="seasons_dates">
+                						<input type="hidden" name="edit_season_dates_id" value="">
+                							<div class="row">
+                								<div class="col-lg-9">
+                									<div class="row">
+                										<div class="form-group col-lg-3">
+                											<label for="From Date">From Date</label>
+                											<input name="season_from_date" id="season_from_date" type="text" class="form-control input-sm datepic" value="" required="required" /> 
+                										</div> 
+                										<div class="form-group col-lg-3">
+                											<label for="To Date">To Date</label>
+                											<input name="season_to_date" id="season_to_date" type="text" class="form-control input-sm datepic" value="" required="required" /> 
+                										</div>
+                										<div class="form-group col-lg-3">
+                											<label for="Season">Seasons </label>
+                											<select name="seasons" class="form-control input-sm" required="required">
+                												<option></option>
+                												@if(!empty($Seasons))
+                													@foreach($Seasons as $season)
+                														<option value="{{$season->id}}">{{$season->season_name}}</option>
+                													@endforeach
+                												@endif
+                											</select>
+                										</div>
+                									</div>
+                								</div>
+                								<div class="col-lg-3 m--align-right">
+                									<div class="butt">
+                										<button type="submit" class="btn btn-success b-btn addseasonDates"><i class="fa fa-plus"></i> Add</button>
+                									</div>
+                								</div>
+                							</div>
+                						</form>
+                					</div>
+                				</div>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-12 gray-seprator"></div>	 
             			</div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                        	@if(!empty($Seasons))
+                            <div class="content-block">
+                            {{--*/ $c=1; /*--}}
+							@foreach($Seasons as $season)
+                                <div class="alt-bg">
+    								<div class="seasonbox-{{$season->id}}">
+    									<form id="add_season-{{$season->id}}" class="add_season">
+    										<input type="hidden" name="edit_season_id" value="{{$season->id}}" >
+    										<div class="row">
+    											<div class="col-lg-9">
+    												<div class="row">
+    													<div class="form-group col-lg-4">
+    														<label for="Name">Name </label>
+    														<input name="season_name" id="season_name" type="text" class="form-control input-sm" value="{{$season->season_name}}" required="required" /> 
+    													</div> 
+    													<div class="form-group col-lg-4">
+    														<label for="Priority">Priority </label>
+    														<input name="season_priority" id="season_priority" type="text" class="form-control input-sm" value="{{$season->season_priority}}" /> 
+    													</div>
+    												</div>
+    												
+    											</div>
+    											<div class="col-lg-3 m--align-right">
+    												<div class="butt">
+    													<button type="button" class="btn btn-danger b-btn" onclick="delete_season_data({{$season->id}});"><i class="fa fa-trash-0"></i> Delete</button>
+    													<button type="submit" class="btn btn-success b-btn addseason"><i class="fa fa-save"></i> Save</button>
+    												</div>
+    											</div>
+    										</div>
+    									</form>
+    									<hr>
+    									<div class="datebox">
+    										@if(array_key_exists('dates',$season))
+    											@foreach($season->dates as $sdate)
+    												<form id="add_dates-{{$sdate->id}}" class="seasons_dates">
+    												<input type="hidden" name="edit_season_dates_id" value="{{$sdate->id}}">
+    													<div class="row">
+    														<div class="col-lg-9">
+    															<div class="row">
+    																<div class="form-group col-lg-4">
+    																	<label for="From Date">From Date</label>
+    																	<input name="season_from_date" id="season_from_date{{$sdate->id}}" type="text" class="form-control input-sm datepic" value="{{$sdate->season_from_date}}" required="required" /> 
+    																</div> 
+    																<div class="form-group col-lg-4">
+    																	<label for="To Date">To Date</label>
+    																	<input name="season_to_date" id="season_to_date{{$sdate->id}}" type="text" class="form-control input-sm datepic" value="{{$sdate->season_to_date}}" required="required" /> 
+    																</div>
+    															</div>
+    														</div>
+    														<div class="col-lg-3 m--align-right">
+    															<div class="butt">
+    																<button type="button" class="btn btn-danger b-btn" onclick="delete_season_dates_data({{$sdate->id}});"><i class="fa fa-trash-0"></i> Delete</button>
+    																<button type="submit" class="btn btn-success b-btn addseasonDates"><i class="fa fa-save"></i> Save</button>
+    															</div>
+    														</div>
+    													</div>
+    												</form>
+    											@endforeach
+    										@endif
+    									</div>
+    								</div>
+                                </div>
+								{{--*/ $c++; /*--}}
+							@endforeach
+                            </div>
+						@endif
+                        </div>
+                        </div>
+                        
+                        
                         
                         
                     </div>

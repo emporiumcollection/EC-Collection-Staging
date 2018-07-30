@@ -40,6 +40,7 @@
 @stop
 
 @section('content')
+    
     <div class="row">
     
         @if(Session::has('message'))	  
@@ -74,6 +75,24 @@
                 
 				<div class="tab-content">
 					<div class="tab-pane active">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <h3 class="main-heading">{{ Lang::get('hotel-property.room-heading')}}</h3>
+                            </div>
+                        </div>  
+                        <div class="row">
+                            <div class="col-md-12 col-xs-12">
+                                <div class="m-alert m-alert--icon m-alert--icon-solid m-alert--outline alert alert-danger alert-dismissible show" role="alert">
+                                   <div class="m-alert__icon">
+                                        <i class="flaticon-exclamation-1"></i>
+                                        <span></span>
+                                   </div>
+                                   <div class="m-alert__text">                
+                                        {{ Lang::get('hotel-property.room-info')}}
+                                   </div>
+                                </div>
+                            </div>
+                        </div>
 						@if(!empty($cat_types))
 						<div class="box well">
 							<div class="header">
@@ -82,7 +101,7 @@
 							<div class="tab-container">
 								<ul class="nav nav-tabs" role="tablist">
 									@foreach($cat_types as $cat)
-										<li class="nav-item">
+										<li class="nav-item bg-gray">
                                             <a class="nav-link" href="#" data-target="#tab{{$cat['data']->id}}" data-toggle="tab">{{$cat['data']->category_name}}</a>
                                         </li>
 									@endforeach
@@ -105,14 +124,73 @@
 												
 												<div class="tab-content">
 													<div class="tab-pane use-padding" id="rooms_details_cat{{$cat['data']->id}}">
+                                                        
 														@if(array_key_exists('rooms', $cat))
 															{{--*/ $r=1; /*--}}
+                                                            <div class="row">
+                                                                <div class="col-md-12 col-xs-12">
+                                                                    <div class="m-alert m-alert--icon m-alert--icon-solid m-alert--outline alert alert-danger alert-dismissible" role="alert">
+                                                                       <div class="m-alert__icon">
+                                                                            <i class="flaticon-exclamation-1"></i>
+                                                                            <span></span>
+                                                                       </div>
+                                                                       <div class="m-alert__text">                
+                                                                            {{ Lang::get('hotel-property.room-detail-info')}}
+                                                                       </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <div class="col-sm-12 col-md-12 col-lg-12 fun-bg-gray">
+                                                                <form id="add_property_room_setup{{$cat['data']->id}}-{{$r}}" class="add_property_room_setup">
+    																<input type="hidden" name="property_id" value="{{$pid}}" >
+    																<input type="hidden" name="category_id" value="{{$cat['data']->id}}" >
+    																<input type="hidden" name="edit_room_id" value="" >
+    																<div class="row">
+    																	<div class="col-lg-8">
+    																		<div class="row">
+    																			<div class="form-group col-lg-4">
+    																				<label for="room_name">Number/Name </label>
+    																				<input name="room_name" id="room_name" type="text" class="form-control input-sm" value="" required="required" /> 
+    																			</div>
+    																			<div class="form-group col-lg-2">
+    																				<label for="room_active_full">Active Full Year </label>
+    																				 
+                                                                                    <div class="m-checkbox-inline m--align-center">
+                                            											<label class="m-checkbox m-checkbox--solid m-checkbox--brand">
+                                            												<input name="room_active_full" id="room_active_full" type="checkbox" class="form-control" value="1">
+                                            												<span></span>
+                                            											</label>
+                                            										</div>
+    																			</div>
+    																			<div class="form-group col-lg-3">
+    																				<label for="room_active_from{{$cat['data']->id}}-{{$r}}">Active from </label>
+    																				<input name="room_active_from" id="room_active_from{{$cat['data']->id}}-{{$r}}" type="text" class="form-control input-sm datepic" value="" required="required" /> 
+    																			</div>
+    																			<div class="form-group col-lg-3">
+    																				<label for="room_active_to{{$cat['data']->id}}-{{$r}}">Active to</label>
+    																				<input name="room_active_to" id="room_active_to{{$cat['data']->id}}-{{$r}}" type="text" class="form-control input-sm datepic" value="" /> 
+    																			</div>
+    																		</div>
+    																	</div>
+    																	<div class="col-lg-4 m--align-right">
+    																		<div class="butt margin-top-10">
+    																			<button type="submit" class="btn btn-success b-btn"><i class="fa fa-plus"></i> Add</button>
+    																		</div>
+    																	</div>
+    																</div>
+    															</form>
+                                                            </div>
+                                                            <div class="col-sm-12 col-md-12 col-lg-12 gray-seprator"></div>
+                                                            
+                                                            <div class="content-block">
 															@foreach($cat['rooms'] as $room)
+                                                                <div class="alt-bg">
 																<form id="add_property_room_setup{{$cat['data']->id}}-{{$r}}" class="add_property_room_setup">
 																	<input type="hidden" name="property_id" value="{{$pid}}" >
 																	<input type="hidden" name="category_id" value="{{$cat['data']->id}}" >
 																	<input type="hidden" name="edit_room_id" value="{{$room->id}}" >
-																	<div class="row margin-top-10">
+																	<div class="row">
 																		<div class="col-lg-8">
 																			<div class="row">
 																				<div class="form-group col-lg-4">
@@ -150,88 +228,85 @@
 																		</div>
 																	</div>
 																</form>
+                                                                </div>
 																{{--*/ $r++ /*--}}
 															@endforeach
-															<form id="add_property_room_setup{{$cat['data']->id}}-{{$r}}" class="add_property_room_setup">
-																<input type="hidden" name="property_id" value="{{$pid}}" >
-																<input type="hidden" name="category_id" value="{{$cat['data']->id}}" >
-																<input type="hidden" name="edit_room_id" value="" >
-																<div class="row margin-top-10">
-																	<div class="col-lg-8">
-																		<div class="row">
-																			<div class="form-group col-lg-4">
-																				<label for="room_name">Number/Name </label>
-																				<input name="room_name" id="room_name" type="text" class="form-control input-sm" value="" required="required" /> 
-																			</div>
-																			<div class="form-group col-lg-2">
-																				<label for="room_active_full">Active Full Year </label>
-																				 
-                                                                                <div class="m-checkbox-inline m--align-center">
-                                        											<label class="m-checkbox m-checkbox--solid m-checkbox--brand">
-                                        												<input name="room_active_full" id="room_active_full" type="checkbox" class="form-control" value="1">
-                                        												<span></span>
-                                        											</label>
-                                        										</div>
-																			</div>
-																			<div class="form-group col-lg-3">
-																				<label for="room_active_from{{$cat['data']->id}}-{{$r}}">Active from </label>
-																				<input name="room_active_from" id="room_active_from{{$cat['data']->id}}-{{$r}}" type="text" class="form-control input-sm datepic" value="" required="required" /> 
-																			</div>
-																			<div class="form-group col-lg-3">
-																				<label for="room_active_to{{$cat['data']->id}}-{{$r}}">Active to</label>
-																				<input name="room_active_to" id="room_active_to{{$cat['data']->id}}-{{$r}}" type="text" class="form-control input-sm datepic" value="" /> 
-																			</div>
-																		</div>
-																	</div>
-																	<div class="col-lg-4 m--align-right">
-																		<div class="butt margin-top-10">
-																			<button type="submit" class="btn btn-success b-btn"><i class="fa fa-plus"></i> Add</button>
-																		</div>
-																	</div>
-																</div>
-															</form>
+															</div>
 														@else
-															<form id="add_property_room_setup{{$cat['data']->id}}-1" class="add_property_room_setup">
-																<input type="hidden" name="property_id" value="{{$pid}}" >
-																<input type="hidden" name="category_id" value="{{$cat['data']->id}}" >
-																<input type="hidden" name="edit_room_id" value="" >
-																<div class="row margin-top-10">
-																	<div class="col-lg-8">
-																		<div class="row">
-																			<div class="form-group col-lg-4">
-																				<label for="room_name">Number/Name </label>
-																				<input name="room_name" id="room_name" type="text" class="form-control input-sm" value="" required="required" /> 
-																			</div> 
-																			<div class="form-group col-lg-2">
-																				<label for="room_active_full">Active Full Year </label>
-																				
-                                                                                <div class="m-checkbox-inline m--align-center">
-                                        											<label class="m-checkbox m-checkbox--solid m-checkbox--brand">
-                                        												<input name="room_active_full" id="room_active_full" type="checkbox" value="1">
-                                        												<span></span>
-                                        											</label>
-                                        										</div>
-																			</div>
-																			<div class="form-group col-lg-3">
-																				<label for="room_active_from{{$cat['data']->id}}-1">Active from </label>
-																				<input name="room_active_from" id="room_active_from{{$cat['data']->id}}-1" type="text" class="form-control input-sm datepic" value="" required="required" /> 
-																			</div>
-																			<div class="form-group col-lg-3">
-																				<label for="room_active_to{{$cat['data']->id}}-1">Active to</label>
-																				<input name="room_active_to" id="room_active_to{{$cat['data']->id}}-1" type="text" class="form-control input-sm datepic" value="" /> 
-																			</div>
-																		</div>
-																	</div>
-																	<div class="col-lg-4 m--align-right">
-																		<div class="butt margin-top-10">
-																			<button type="submit" class="btn btn-success b-btn"><i class="fa fa-plus"></i> Add</button>
-																		</div>
-																	</div>
-																</div>
-															</form>
+                                                            <div class="row">
+                                                                <div class="col-md-12 col-xs-12">
+                                                                    <div class="m-alert m-alert--icon m-alert--icon-solid m-alert--outline alert alert-danger alert-dismissible" role="alert">
+                                                                       <div class="m-alert__icon">
+                                                                            <i class="flaticon-exclamation-1"></i>
+                                                                            <span></span>
+                                                                       </div>
+                                                                       <div class="m-alert__text">                
+                                                                            {{ Lang::get('hotel-property.room-detail-info')}}
+                                                                       </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-sm-12 col-md-12 col-lg-12 fun-bg-gray">
+    															 <form id="add_property_room_setup{{$cat['data']->id}}-1" class="add_property_room_setup">
+    																<input type="hidden" name="property_id" value="{{$pid}}" >
+    																<input type="hidden" name="category_id" value="{{$cat['data']->id}}" >
+    																<input type="hidden" name="edit_room_id" value="" >
+    																<div class="row">
+    																	<div class="col-lg-8">
+    																		<div class="row">
+    																			<div class="form-group col-lg-4">
+    																				<label for="room_name">Number/Name </label>
+    																				<input name="room_name" id="room_name" type="text" class="form-control input-sm" value="" required="required" /> 
+    																			</div> 
+    																			<div class="form-group col-lg-2">
+    																				<label for="room_active_full">Active Full Year </label>
+    																				
+                                                                                    <div class="m-checkbox-inline m--align-center">
+                                            											<label class="m-checkbox m-checkbox--solid m-checkbox--brand">
+                                            												<input name="room_active_full" id="room_active_full" type="checkbox" value="1">
+                                            												<span></span>
+                                            											</label>
+                                            										</div>
+    																			</div>
+    																			<div class="form-group col-lg-3">
+    																				<label for="room_active_from{{$cat['data']->id}}-1">Active from </label>
+    																				<input name="room_active_from" id="room_active_from{{$cat['data']->id}}-1" type="text" class="form-control input-sm datepic" value="" required="required" /> 
+    																			</div>
+    																			<div class="form-group col-lg-3">
+    																				<label for="room_active_to{{$cat['data']->id}}-1">Active to</label>
+    																				<input name="room_active_to" id="room_active_to{{$cat['data']->id}}-1" type="text" class="form-control input-sm datepic" value="" /> 
+    																			</div>
+    																		</div>
+    																	</div>
+    																	<div class="col-lg-4 m--align-right">
+    																		<div class="butt margin-top-10">
+    																			<button type="submit" class="btn btn-success b-btn"><i class="fa fa-plus"></i> Add</button>
+    																		</div>
+    																	</div>
+    																</div>
+    															</form>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-sm-12 col-md-12 col-lg-12 gray-seprator"></div>
+                                                            </div>
 														@endif
 													</div>
 													<div class="tab-pane use-padding" id="rooms_images_cat{{$cat['data']->id}}">
+                                                        <div class="row">
+                                                            <div class="col-md-12 col-xs-12">
+                                                                <div class="m-alert m-alert--icon m-alert--icon-solid m-alert--outline alert alert-danger alert-dismissible" role="alert">
+                                                                   <div class="m-alert__icon">
+                                                                        <i class="flaticon-exclamation-1"></i>
+                                                                        <span></span>
+                                                                   </div>
+                                                                   <div class="m-alert__text">                
+                                                                        {{ Lang::get('hotel-property.room-image-info')}}
+                                                                   </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
 														<!-- The file upload form used as target for the file upload widget -->
 														<form class="fileupload" action="{{URL::to('property_images_uploads')}}" method="POST" enctype="multipart/form-data">
 															<input type="hidden" name="propId" value="{{$pid}}" />
@@ -330,7 +405,20 @@
 													
 													
 													<div class="tab-pane use-padding" id="rooms_amenity_cat{{$cat['data']->id}}">
-														<form id="add_amenities_room_setup{{$cat['data']->id}}" class="add_amenities_room_setup">
+                                                        <div class="row">
+                                                            <div class="col-md-12 col-xs-12">
+                                                                <div class="m-alert m-alert--icon m-alert--icon-solid m-alert--outline alert alert-danger alert-dismissible" role="alert">
+                                                                   <div class="m-alert__icon">
+                                                                        <i class="flaticon-exclamation-1"></i>
+                                                                        <span></span>
+                                                                   </div>
+                                                                   <div class="m-alert__text">                
+                                                                        {{ Lang::get('hotel-property.room-amenties-info')}}
+                                                                   </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+														<form id="add_amenities_room_setup{{$cat['data']->id}}" class="add_amenities_room_setup fun-bg-gray">
 															<input type="hidden" name="property_id" value="{{$pid}}" >
 															<input type="hidden" name="category_id" value="{{$cat['data']->id}}" >
 															<div class="row margin-top-10">

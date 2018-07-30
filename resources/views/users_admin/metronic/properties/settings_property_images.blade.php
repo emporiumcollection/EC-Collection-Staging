@@ -87,6 +87,24 @@
     						</ul>
                             <div class="tab-content">
         							<div class="tab-pane use-padding active" id="tab_property_image">
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                                <h3 class="main-heading">{{ Lang::get('hotel-property.image-heading')}}</h3>
+                                            </div>
+                                        </div>  
+                                        <div class="row">
+                                            <div class="col-md-12 col-xs-12">
+                                                <div class="m-alert m-alert--icon m-alert--icon-solid m-alert--outline alert alert-danger alert-dismissible show" role="alert">
+                                                   <div class="m-alert__icon">
+                                                        <i class="flaticon-exclamation-1"></i>
+                                                        <span></span>
+                                                   </div>
+                                                   <div class="m-alert__text">                
+                                                        {{ Lang::get('hotel-property.image-info')}}
+                                                   </div>
+                                                </div>
+                                            </div>
+                                        </div>                                    
         								<!-- The file upload form used as target for the file upload widget -->
         								<form id="fileupload" class="fileupload" action="{{URL::to('property_images_uploads')}}" method="POST" enctype="multipart/form-data">
         									<input type="hidden" name="propId" value="{{$pid}}" />
@@ -183,6 +201,24 @@
         							</div>
         							
         							<div class="tab-pane use-padding" id="tab_property_slider_image">
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                                <h3 class="main-heading">{{ Lang::get('hotel-property.image-slider-heading')}}</h3>
+                                            </div>
+                                        </div>  
+                                        <div class="row">
+                                            <div class="col-md-12 col-xs-12">
+                                                <div class="m-alert m-alert--icon m-alert--icon-solid m-alert--outline alert alert-danger alert-dismissible show" role="alert">
+                                                   <div class="m-alert__icon">
+                                                        <i class="flaticon-exclamation-1"></i>
+                                                        <span></span>
+                                                   </div>
+                                                   <div class="m-alert__text">                
+                                                        {{ Lang::get('hotel-property.image-slider-info')}}
+                                                   </div>
+                                                </div>
+                                            </div>
+                                        </div>    
         								<!-- The file upload form used as target for the file upload widget -->
         								<form id="fileupload" class="fileupload" action="{{URL::to('property_images_uploads')}}" method="POST" enctype="multipart/form-data">
         									<input type="hidden" name="propId" value="{{$pid}}" />

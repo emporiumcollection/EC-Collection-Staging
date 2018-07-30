@@ -39,6 +39,7 @@
     @endif
 @stop
 @section('content')
+    
     <div class="row">
     
         @if(Session::has('message'))	  
@@ -73,6 +74,24 @@
 				</ul>
 				<div class="tab-content">
 					<div class="tab-pane active">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <h3 class="main-heading">{{ Lang::get('hotel-property.price-heading')}}</h3>
+                            </div>
+                        </div>  
+                        <div class="row">
+                            <div class="col-md-12 col-xs-12">
+                                <div class="m-alert m-alert--icon m-alert--icon-solid m-alert--outline alert alert-danger alert-dismissible fade show" role="alert">
+                                   <div class="m-alert__icon">
+                                        <i class="flaticon-exclamation-1"></i>
+                                        <span></span>
+                                   </div>
+                                   <div class="m-alert__text">                
+                                        {{ Lang::get('hotel-property.price-info')}}
+                                   </div>
+                                </div>
+                            </div>
+                        </div>
                         @if(!empty($room_prices))
 						{{--*/ $p=1; /*--}}
 						@foreach($room_prices as $cat)

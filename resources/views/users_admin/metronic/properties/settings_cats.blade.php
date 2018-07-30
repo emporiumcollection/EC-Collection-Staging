@@ -39,7 +39,8 @@
     @endif
 @stop
 
-@section('content')
+@section('content')  
+    
     <div class="row">
     
         @if(Session::has('message'))	  
@@ -75,13 +76,111 @@
 				</ul>
 				<div class="tab-content">
 					<div class="tab-pane active">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <h3 class="main-heading">{{ Lang::get('hotel-property.type-heading')}}</h3>
+                            </div>
+                        </div>  
+                        <div class="row">
+                            <div class="col-md-12 col-xs-12">
+                                <div class="m-alert m-alert--icon m-alert--icon-solid m-alert--outline alert alert-danger alert-dismissible fade show" role="alert">
+                                   <div class="m-alert__icon">
+                                        <i class="flaticon-exclamation-1"></i>
+                                        <span></span>
+                                   </div>
+                                   <div class="m-alert__text">                
+                                        {{ Lang::get('hotel-property.type-info')}}
+                                   </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                            
+                        
+                        
 						@if(!empty($cat_types))
-					{{--*/ $c=1; /*--}}
+					   {{--*/ $c=1; /*--}}
+                        <div class="col-sm-12 col-md-12 col-lg-12 fun-bg-gray">
+                            <form id="add_property_type_setup-{{$c}}" class="add_property_type_setup">
+    							<input type="hidden" name="property_id" value="{{$pid}}" >
+    							<input type="hidden" name="edit_type_id" value="" >
+    							<div class="row">
+    								<div class="col-lg-9">
+    									<div class="row">
+    										<div class="form-group col-lg-3">
+    											<label for="cat_name">Category Name </label>
+    											<input name="cat_name" id="cat_name" type="text" class="form-control input-sm" value="" required="required" /> 
+    										</div> 
+    										<div class="form-group col-lg-3">
+    											<label for="cat_short_name">Short name </label>
+    											<input name="cat_short_name" id="cat_short_name" type="text" class="form-control input-sm" value="" required="required" /> 
+    										</div>
+    										<div class="form-group col-lg-3">
+    											<label for="guests_base_price">Guests incl. in base price</label>
+    											<input name="guests_base_price" id="guests_base_price" type="text" class="form-control input-sm" value="" data-rule-number="true" required="required" /> 
+    										</div>
+    										<div class="form-group col-lg-3">
+    											<label for="min_stay">Minimum Stay </label>
+    											<input name="min_stay" type="text" class="form-control input-sm" data-rule-number="true" value="" /> 
+    										</div>
+    									</div>
+    									<div class="row">
+    										<div class="form-group col-lg-1">
+    											<b>Maximum guests: </b>
+    										</div> 	
+    										<div class="form-group col-lg-2">
+    											<label for="guests_total">Total </label>
+    											<input name="guests_total" id="guests_total" type="text" class="form-control input-sm" value="" data-rule-number="true" required="required" /> 
+    										</div> 
+    										<div class="form-group col-lg-2">
+    											<label for="guests_adult">Adults </label>
+    											<input name="guests_adult" id="guests_adult" type="text" class="form-control input-sm" value="" data-rule-number="true" required="required" /> 
+    										</div>
+    										<div class="form-group col-lg-2">
+    											<label for="guests_junior">Juniors</label>
+    											<input name="guests_junior" id="guests_junior" type="text" class="form-control input-sm" value="" data-rule-number="true" required="required" /> 
+    										</div>
+    										<div class="form-group col-lg-2">
+    											<label for="guests_babies">Babies </label>
+    											<input name="guests_babies" id="guests_babies" type="text" class="form-control input-sm" value="" data-rule-number="true" required="required" /> 
+    										</div>
+    										<div class="form-group col-lg-3">
+                                                <label for="babies_count_toward_total">Babies count toward total </label>
+    											<div class="margin-top-10">
+                                                    <div class="m-checkbox-inline">
+            											<label class="m-checkbox m-checkbox--solid m-checkbox--brand">
+            												<input type="checkbox" name="count_baby" value="1">
+            												<span></span>
+            											</label>
+            										</div>
+    											</div>
+    										</div>
+    									</div>
+    								</div>
+    								<div class="col-lg-3  m--align-right">
+    									<div class="butt">
+    										<button type="submit" class="btn btn-success b-btn"><i class="fa fa-plus"></i> Add</button>
+    									</div>
+    									<div class="margin-top-10">										
+                                            <div class="m-checkbox-inline">
+    											<label class="m-checkbox m-checkbox--solid m-checkbox--brand">
+    												<input type="checkbox" name="show_booking" checked="1" value="1"> Show on Booking Platform
+    												<span></span>
+    											</label>
+    										</div>
+    									</div>
+    								</div>
+    							</div>
+    						</form>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-12 gray-seprator"></div>
+                        <div class="content-block">
 						@foreach($cat_types as $cat)
+                            <div class="alt-bg">
 							<form id="add_property_type_setup-{{$c}}" class="add_property_type_setup">
 								<input type="hidden" name="property_id" value="{{$pid}}" >
 								<input type="hidden" name="edit_type_id" value="{{$cat->id}}" >
-								<div class="row">
+								<div class="row ">
 									<div class="col-lg-9">
 										<div class="row">
 											<div class="form-group col-lg-3">
@@ -150,81 +249,12 @@
 									</div>
 								</div>
 							</form>
+                            </div>
 							{{--*/ $c++; /*--}}
 						@endforeach
-                        <form id="add_property_type_setup-{{$c}}" class="add_property_type_setup">
-							<input type="hidden" name="property_id" value="{{$pid}}" >
-							<input type="hidden" name="edit_type_id" value="" >
-							<div class="row">
-								<div class="col-lg-9">
-									<div class="row">
-										<div class="form-group col-lg-3">
-											<label for="cat_name">Category Name </label>
-											<input name="cat_name" id="cat_name" type="text" class="form-control input-sm" value="" required="required" /> 
-										</div> 
-										<div class="form-group col-lg-3">
-											<label for="cat_short_name">Short name </label>
-											<input name="cat_short_name" id="cat_short_name" type="text" class="form-control input-sm" value="" required="required" /> 
-										</div>
-										<div class="form-group col-lg-3">
-											<label for="guests_base_price">Guests incl. in base price</label>
-											<input name="guests_base_price" id="guests_base_price" type="text" class="form-control input-sm" value="" data-rule-number="true" required="required" /> 
-										</div>
-										<div class="form-group col-lg-3">
-											<label for="min_stay">Minimum Stay </label>
-											<input name="min_stay" type="text" class="form-control input-sm" data-rule-number="true" value="" /> 
-										</div>
-									</div>
-									<div class="row">
-										<div class="form-group col-lg-1">
-											<b>Maximum guests: </b>
-										</div> 	
-										<div class="form-group col-lg-2">
-											<label for="guests_total">Total </label>
-											<input name="guests_total" id="guests_total" type="text" class="form-control input-sm" value="" data-rule-number="true" required="required" /> 
-										</div> 
-										<div class="form-group col-lg-2">
-											<label for="guests_adult">Adults </label>
-											<input name="guests_adult" id="guests_adult" type="text" class="form-control input-sm" value="" data-rule-number="true" required="required" /> 
-										</div>
-										<div class="form-group col-lg-2">
-											<label for="guests_junior">Juniors</label>
-											<input name="guests_junior" id="guests_junior" type="text" class="form-control input-sm" value="" data-rule-number="true" required="required" /> 
-										</div>
-										<div class="form-group col-lg-2">
-											<label for="guests_babies">Babies </label>
-											<input name="guests_babies" id="guests_babies" type="text" class="form-control input-sm" value="" data-rule-number="true" required="required" /> 
-										</div>
-										<div class="form-group col-lg-3">
-                                            <label for="babies_count_toward_total">Babies count toward total </label>
-											<div class="margin-top-10">
-                                                <div class="m-checkbox-inline">
-        											<label class="m-checkbox m-checkbox--solid m-checkbox--brand">
-        												<input type="checkbox" name="count_baby" value="1">
-        												<span></span>
-        											</label>
-        										</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-3  m--align-right">
-									<div class="butt">
-										<button type="submit" class="btn btn-success b-btn"><i class="fa fa-plus"></i> Add</button>
-									</div>
-									<div class="margin-top-10">										
-                                        <div class="m-checkbox-inline">
-											<label class="m-checkbox m-checkbox--solid m-checkbox--brand">
-												<input type="checkbox" name="show_booking" checked="1" value="1"> Show on Booking Platform
-												<span></span>
-											</label>
-										</div>
-									</div>
-								</div>
-							</div>
-						</form>
-					@else
-						<form id="add_property_type_setup-1" class="add_property_type_setup">
+                        </div>	
+                    @else
+						<form id="add_property_type_setup-1" class="add_property_type_setup fun-bg-gray">
 							<input type="hidden" name="property_id" value="{{$pid}}" >
 							<input type="hidden" name="edit_type_id" value="" >
 							<div class="row">
@@ -296,6 +326,7 @@
 								</div>
 							</div>
 						</form>
+    					    				
 					@endif
 					</div>
 				</div>
@@ -304,6 +335,14 @@
 		<!--end::Portlet-->
     </div>
 @stop
+
+{{-- For custom style  --}}
+@section('style')
+    @parent
+    <style>
+        
+    </style>
+@endsection
 @section('custom_js_script')
 <script src="{{ asset('sximo/js/jquery.validate.js')}}"></script>
 <script>
@@ -454,14 +493,16 @@ $(document).ready(function () {
 						html +='</div>';
 						html +='</form>';
 						$('#'+formid).after(html);
-						$('#'+splt[0]+'-'+newid).find('input[type="checkbox"]').iCheck({checkboxClass: 'icheckbox_square-green'});
+						//$('#'+splt[0]+'-'+newid).find('input[type="checkbox"]').iCheck({checkboxClass: 'icheckbox_square-green'});
+                        $('#'+splt[0]+'-'+newid).find('input[type="checkbox"]');
 						
 						var htmli = '';
 						htmli +='<div class="alert alert-success fade in block-inner">';
 						htmli +='<button data-dismiss="alert" class="close" type="button">×</button>';
 						htmli +='<i class="icon-checkmark-circle"></i> Record Inserted Successfully </div>';
 						$('.page-content-wrapper #formerrors').html(htmli);
-						 window.scrollTo(0, 0);
+						 //window.scrollTo(0, 0);
+                         window.location.reload();
 					}
 				}
 			  }

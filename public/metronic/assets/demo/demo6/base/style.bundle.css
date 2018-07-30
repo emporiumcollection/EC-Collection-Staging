@@ -54833,8 +54833,38 @@ i.m-menu__link-icon.fa {
     margin: 0 -4rem !important;
     background: #fafafa;
 }
+.fun-bg-gray{
+    background: #f2f2f2;
+    padding: 10px;
+}
+.gray-seprator{
+    background-color: #f2f2f2;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 1px;
+}
+.main-heading{
+    font-size: 1.50rem;
+}
+.content-block .alt-bg:nth-child(even){
+    background: #f5f5f5;
+    
+    padding: 10px 15px 0px 15px;
+    margin-bottom: 10px;
+}
 
-
-
-
-
+.alert.m-alert--outline.alert-danger{
+    border-color: #efefef !important;
+    color: #898b96 !important;
+    font-weight: normal;
+    font-size: 12px;
+}
+.alert.m-alert--outline.alert-danger.m-alert--icon-solid .m-alert__icon{
+    background: #efefef;
+}
+.alert.m-alert--outline.alert-danger.m-alert--icon-solid .m-alert__icon span{
+    border-left-color: #efefef;
+}
+.breadcrumb-end{
+    text-decoration: underline;
+}
