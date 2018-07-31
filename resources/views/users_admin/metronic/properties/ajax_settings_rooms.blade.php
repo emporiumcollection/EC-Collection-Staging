@@ -1,4 +1,3 @@
-{{--*/ print_r($cat_types); /*--}}
 @foreach($cat_types as $cat)
 @if(array_key_exists('rooms', $cat))
 	{{--*/ $r=1; /*--}}
