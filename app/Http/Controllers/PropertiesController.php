@@ -1167,7 +1167,31 @@ class PropertiesController extends Controller {
             return view($file_name, $this->data);
         }
     }
-
+    
+    public function ajax_show_settings() {
+        
+        $property_id = $_REQUEST['id'];
+        $property_cat_id = $_REQUEST['cid'];
+        $this->data['pid'] = $property_id;
+        //$this->data['property_data'] = \DB::table('tb_properties')->where('id', $property_id)->first();
+        
+        $this->data['cat_types'] = $this->find_categories_room_ajax($property_cat_id);
+        //$this->data['amenties'] = \DB::table('tb_amenities')->where('amenity_status', '1')->get();
+        //$this->data['room_amenties_desc'] = array();
+        //$room_amenties_desc = \DB::table('tb_properties_category_types')->select('id', 'room_desc')->where('property_id', $property_id)->get();
+        //if (!empty($room_amenties_desc)) {
+        //    foreach ($room_amenties_desc as $roomdesc) {
+        //        $rooms_desc[$roomdesc->id] = $roomdesc->room_desc;
+        //    }
+        //    $this->data['room_amenties_desc'] = $rooms_desc;
+        //}
+        $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+        $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.ajax_settings_rooms':'properties.settings_rooms'; 
+        
+        echo view($file_name, $this->data);
+        
+    }
+    
     function get_property_files($property_id, $filetype) {
         $fileArr = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*',  \DB::raw("(CASE WHEN (tb_container_files.file_display_name = '') THEN tb_container_files.file_name ELSE tb_container_files.file_display_name END) as file_display_name"), 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $property_id)->where('tb_properties_images.type', $filetype)->get();
         $filen = array();
@@ -1186,7 +1210,28 @@ class PropertiesController extends Controller {
         $cat_types = \DB::table('tb_properties_category_types')->where('property_id', $property_id)->where('status', 0)->get();
         return $cat_types;
     }
+    
+    function find_categories_room_ajax($property_id) {
+        $cats = array();
+        $cat_types = \DB::table('tb_properties_category_types')->where('id', $property_id)->where('status', 0)->get();
+        if (!empty($cat_types)) {
+            $c = 0;
+            foreach ($cat_types as $type) {
+                $cats[$c]['data'] = $type;
+                $cat_rooms = \DB::table('tb_properties_category_rooms')->where('category_id', $property_id)->where('category_id', $type->id)->get();
+                if (!empty($cat_rooms)) {
+                    foreach ($cat_rooms as $room) {
+                        $cats[$c]['rooms'][] = $room;
+                    }
+                }
+                
+                $c++;
+            }
+        }
 
+        return $cats;
+    }
+    
     function find_categories_room($property_id) {
         $cats = array();
         $cat_types = \DB::table('tb_properties_category_types')->where('property_id', $property_id)->where('status', 0)->get();
@@ -1386,6 +1431,8 @@ class PropertiesController extends Controller {
             $res['status'] = 'success';
             $res['room'] = $romdata;
             $res['type'] = $instype;
+            $res['pid'] = $data['property_id'];
+            $res['category_id'] = $request->input('category_id');
             return json_encode($res);
         } else {
 
@@ -1394,7 +1441,7 @@ class PropertiesController extends Controller {
             return json_encode($res);
         }
     }
-
+    
     function delete_property_room(Request $request) {
         $uid = \Auth::user()->id;
         $roomId = $request->input('room_id');

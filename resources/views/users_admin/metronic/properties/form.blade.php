@@ -219,7 +219,7 @@
     														</span>  
                                                         </div>
                                                     </div>
-                                                    <div class="form-group m-form__group row">
+                                                    <?php /* <div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> Commission ( in % ) </label>
                                                         <div class="col-xl-9 col-lg-9">
                                                             {!! Form::text('commission', $row['commission'],array('class'=>'form-control m-input m-input--solid', 'placeholder'=>'',   )) !!}
@@ -227,7 +227,7 @@
     															Please enter commission
     														</span> 
                                                         </div>
-                                                    </div>
+                                                    </div> */ ?>
                     
                                                     <div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> About </label>

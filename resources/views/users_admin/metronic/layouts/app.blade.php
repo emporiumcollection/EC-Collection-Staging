@@ -350,6 +350,22 @@
 					</div>
 					<div class="tab-pane" id="m_quick_sidebar_tabs_settings" role="tabpanel">
 						<div class="m-list-settings m-scrollable">
+                            <div class="m-list-settings__group">
+                                <div class="m-list-settings__heading">
+									Translation
+								</div>
+								<div class="m-list-settings__item">
+									<span class="m-list-settings__item-label">
+										Language
+									</span>
+                                    <span class="m-list-settings__item-control">
+                                    <select class="form-control">
+                                        <option value="english">English</option>
+                                        <option value="German">German</option>
+                                    </select>	
+                                    </span>								
+								</div>
+                            </div>
 							<div class="m-list-settings__group">
 								<div class="m-list-settings__heading">
 									{{ Lang::get('profile.messages') }}

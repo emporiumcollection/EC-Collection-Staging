@@ -245,6 +245,9 @@ Route::group(['middleware' => 'auth'], function()
 	Route::get('customfields_edit_tab_content/{fid}/{tab}', 'CustomfieldsController@CustomfieldsEditTabContent');
 	
 	Route::get('properties_settings/{pid}/{tab}', 'PropertiesController@show_settings');
+    
+    Route::post('ajax_properties_setting_rooms', 'PropertiesController@ajax_show_settings');
+    
 	Route::post('properties_settings/{pid}/{tab}', 'PropertiesController@show_settings');
 	Route::post('add_property_type', 'PropertiesController@save_property_type_data');
 	Route::post('delete_property_type', 'PropertiesController@delete_property_type');

@@ -124,7 +124,7 @@
 												
 												<div class="tab-content">
 													<div class="tab-pane use-padding" id="rooms_details_cat{{$cat['data']->id}}">
-                                                        
+                                                        <div id="refresh">
 														@if(array_key_exists('rooms', $cat))
 															{{--*/ $r=1; /*--}}
                                                             <div class="row">
@@ -185,6 +185,7 @@
                                                             
                                                             <div class="content-block">
 															@foreach($cat['rooms'] as $room)
+                                                                {{--*/ $r++ /*--}}
                                                                 <div class="alt-bg">
 																<form id="add_property_room_setup{{$cat['data']->id}}-{{$r}}" class="add_property_room_setup">
 																	<input type="hidden" name="property_id" value="{{$pid}}" >
@@ -229,7 +230,7 @@
 																	</div>
 																</form>
                                                                 </div>
-																{{--*/ $r++ /*--}}
+																
 															@endforeach
 															</div>
 														@else
@@ -292,6 +293,7 @@
                                                                 <div class="col-sm-12 col-md-12 col-lg-12 gray-seprator"></div>
                                                             </div>
 														@endif
+                                                        </div>
 													</div>
 													<div class="tab-pane use-padding" id="rooms_images_cat{{$cat['data']->id}}">
                                                         <div class="row">
@@ -566,7 +568,7 @@ $(document).ready(function () {
 		$('.datepic').datepicker({
 				numberOfMonths: 2,
 				showButtonPanel: true,
-				dateFormat: 'yy-mm-dd'
+				format: 'yyyy-mm-dd'
 		});
 		
 	$(document).on('click', '.btn', function (){
@@ -579,7 +581,21 @@ $(document).ready(function () {
 		 });
 	 });
 });
-
+    
+    function get_property_rooms(id, cid){ 
+        $.ajax({
+		  url: "{{ URL::to('ajax_properties_setting_rooms')}}",
+		  type: "post",
+		  data: {id:id, cid:cid},
+		  //dataType: "json",
+		  success: function(data){ console.log(data);
+            console.log($("#refresh").html());
+		    $("#refresh").html('');
+			$("#refresh").html(data);
+          }
+        });        
+    }
+    
 	function save_rooms_tabdata(formid)
 	{
 		if(formid!='')
@@ -614,7 +630,9 @@ $(document).ready(function () {
 					}
 					else
 					{
-						splt = formid.split('-');
+					   console.log(data.pid);
+                       get_property_rooms(data.pid, data.category_id)
+						/*splt = formid.split('-');
 						newid = parseInt(splt[1]) + 1;
 						
 						$('#'+formid+' .butt button').remove();
@@ -675,7 +693,7 @@ $(document).ready(function () {
 								numberOfMonths: 2,
 								showButtonPanel: true,
 								dateFormat: 'yy-mm-dd'
-						});
+						});*/
                         
                         
                         
