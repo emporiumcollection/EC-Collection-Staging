@@ -236,6 +236,15 @@ body.open{overflow:hidden;}
 .restaurantrightnav.backcontrol{top:340px;}
 .termAndConditionPopUp label{padding:0 0 0 15px; display:block;}
 .termAndConditionPopUp p{padding:30px 0;}
+.searchresultnav.contactfixed {
+    right: -265px;
+}
+.contactfixed ul li a {    
+    padding: 10px 10px 10px 17px;
+  }
+  .backcontrol{
+  	width: 45px;
+  }  
 }
 
 @media (max-width:480px){
@@ -268,18 +277,23 @@ body.open{overflow:hidden;}
 		margin-bottom: 20px;
 	}
 
-.sidefixednav{top:85px;}
 .restaurantrightnav.contactfixed{top:256px;}
 .restaurantrightnav.backcontrol{top:334px;}
-
-
-
-
-.sidefixednav {width: 45px; opacity: 0.5; z-index: 999;}
+.sidefixednav{top:125px;}
+.searchresultnav.contactfixed {
+    top: 214px;
+}
+.searchresultnav.backcontrol {
+    top: 294px;
+}
+.searchresultnav.contactfixed {
+    right: -244px;
+}
+.sidefixednav {width: 45px; opacity: 0.5; z-index: 999;  top: 125px;}
 	.sidefixednav:hover,.backcontrol:hover,.contactfixed ul li a:hover,.contactfixed:hover{opacity:1;}
 	.contactfixed {width: 289px; opacity: 0.5; z-index: 999;}
 .backcontrol {width: 44px;opacity: 0.5;z-index: 999; }
 .contactfixed ul li a {padding-left: 12px;opacity: 0.5; z-index: 999;}
 
-
 }
+
