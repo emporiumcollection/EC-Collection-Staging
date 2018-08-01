@@ -1,7 +1,7 @@
 @extends('users_admin.metronic.layouts.app')
 
 @section('page_name')
-    Account  <small>Enter Your Info</small>
+    Packages <small>view</small>
 @stop
 
 @section('breadcrumb')
@@ -13,8 +13,14 @@
     </li>
     <li class="m-nav__separator"> - </li>
     <li class="m-nav__item"> 
+        <a href="{{ URL::to('dashboard')}}" class="m-nav__link"> 
+            <span class="m-nav__link-text"> Membership &amp; Support Services </span> 
+        </a> 
+    </li>
+    <li class="m-nav__separator"> - </li>
+    <li class="m-nav__item"> 
         <a href="javascript:;" class="m-nav__link"> 
-            <span class="m-nav__link-text breadcrumb-end"> Choose Packages </span> 
+            <span class="m-nav__link-text breadcrumb-end"> Choose Your Package </span> 
         </a> 
     </li>
 @stop
