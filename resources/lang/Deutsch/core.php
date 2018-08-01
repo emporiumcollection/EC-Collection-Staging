@@ -304,5 +304,13 @@ return array(
  "crmhotel_email_popup_emaillist"			=> "Email List",
  "crmhotel_email_popup_send_btn"			=> "Send",
 "ads_delete_confirm_msg"			=> "Are you sure to delete this?", 
-"fr_youtube_api_key"=>'Youtube API Key'
+"fr_youtube_api_key"=>'Youtube API Key',
+
+/*------------ Start ----------- */
+/* Module Heading and Alerts info */
+
+"user_packages_heading"=>'Choose Your Package',
+"user_packages_info"=>'Your Package info'
+
+/*------------ End -------------*/
  );

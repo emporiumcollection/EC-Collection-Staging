@@ -54868,3 +54868,10 @@ i.m-menu__link-icon.fa {
 .breadcrumb-end{
     text-decoration: underline;
 }
+.top-margin-20{
+    margin-top: 20px;
+}
+.border-2px{
+    border: 2px solid #efefef;
+    padding: 10px;
+}

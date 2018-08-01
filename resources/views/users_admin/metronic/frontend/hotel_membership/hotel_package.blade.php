@@ -14,16 +14,34 @@
     <li class="m-nav__separator"> - </li>
     <li class="m-nav__item"> 
         <a href="javascript:;" class="m-nav__link"> 
-            <span class="m-nav__link-text"> Choose Packages </span> 
+            <span class="m-nav__link-text breadcrumb-end"> Choose Packages </span> 
         </a> 
     </li>
 @stop
 
 @section('content')
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <h3 class="main-heading">{{ Lang::get('core.user_packages_heading')}}</h3>
+        </div>
+    </div>  
+    <div class="row">
+        <div class="col-md-12 col-xs-12">
+            <div class="m-alert m-alert--icon m-alert--icon-solid m-alert--outline alert alert-danger alert-dismissible fade show" role="alert">
+               <div class="m-alert__icon">
+                    <i class="flaticon-exclamation-1"></i>
+                    <span></span>
+               </div>
+               <div class="m-alert__text">                
+                    {{ Lang::get('core.user_packages_info')}}
+               </div>
+            </div>
+        </div>
+    </div>
 	<div class="row">
         <div class="col-md-12 col-xs-12">
        	    <div class="m-portlet m-portlet--full-height">
-				<div class="m-portlet__head">
+				<!--<div class="m-portlet__head">
 					<div class="m-portlet__head-caption">
 						<div class="m-portlet__head-title">
 							<h3 class="m-portlet__head-text">
@@ -31,72 +49,225 @@
 							</h3>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<div class="m-portlet__body">
-					<!--begin::Section-->
-					<div class="m-accordion m-accordion--default m-accordion--solid" id="m_accordion_3" role="tablist">
-						<!--begin::Item-->
-                        {{--*/ $k=1; $tottyp = count($packages); /*--}}
-                        @foreach($packages as $key=>$package)
-						<div class="m-accordion__item">
-							<div class="m-accordion__item-head collapsed"  role="tab" id="m_accordion_3_item_{{ $k }}_head" data-toggle="collapse" href="#m_accordion_3_item_{{ $k }}_body" aria-expanded="    false">
-								<span class="m-accordion__item-icon">
-									<i class="fa flaticon-user-ok"></i>
-								</span>
-								<span class="m-accordion__item-title">
-									{{$package->package_title}}  :: {{ $package->id }} :: Price: {!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($package->package_price,2) }}
-								</span>
-								<span class="m-accordion__item-mode"></span>
-							</div>
-							<div class="m-accordion__item-body collapse" id="m_accordion_3_item_{{ $k }}_body" class=" " role="tabpanel" aria-labelledby="m_accordion_3_item_{{ $k }}_head" data-parent="#m_accordion_3">
-								<div class="m-accordion__item-content">
-									<div  style="width:20%; padding-right: 1%;" class="pull-left">
-                                        <img class="img-responsive object-fit-size" src="{{URL::to('uploads/packages/'.$package->package_image)}}" alt="{{$package->package_image}}" style="width: 100%;" >
-                                    </div>
-                                    <div class="pull-right" style="width:70%">
-                                        <p>Package Duration :: {{$package->package_duration}} {{$package->package_duration_type}}</p>  
-                                        <p>Package Details: {!! nl2br($package->package_description) !!}</p>
-                                        <div>
-                                        @if($package->package_modules !="" && $package->package_modules!="NULL")                              
-                                          <h4>Module Offered in this packages are:</h4>
-                                          {{--*/  $modulesOffered = DB::table('tb_module')->whereIn('module_id', explode(',',$package->package_modules))->get();/*--}}
-                                          @foreach ($modulesOffered as $moduleRow)                                  
-                                            <p><h5>Module Name: {{ $moduleRow->module_name}}</h5></p>
-                                            <p>Module Note: {{ $moduleRow->module_note}}</p>
-                                            <p>Module Description: {!! nl2br($moduleRow->module_desc) !!}</p>
-                                          @endforeach                                   
-                                        @endif
-                                        </div>
-                                        @if($package->package_price_type==0)
-                                        <div class="book-btn-sec">
-                                            <b>{!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($package->package_price,2) }} </b>
-                                            <div class="pull-right" style="margin: 5px;">
-                                                <div>
-                                                    <a href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->package_price }});" class="btn btn-success">Add to cart</a>
+                    <ul class="nav nav-tabs" role="tablist">
+    					<li class="nav-item"> 
+                            <a class="nav-link active" href="#sales_marketing" data-toggle="tab"> 
+                                Sales & Marketing 
+                            </a>
+                        </li>
+                        <li class="nav-item"> 
+                            <a class="nav-link" href="#reservation_distribution" data-toggle="tab"> 
+                                Reservation & Distribution 
+                            </a>
+                        </li>
+                        <li class="nav-item"> 
+                            <a class="nav-link" href="#advertising" data-toggle="tab"> 
+                                Advertising
+                            </a>
+                        </li>			
+    				</ul>
+    				<div class="tab-content">
+    					
+                            <div class="tab-pane active" id="sales_marketing">
+                                <!--begin::Section-->
+            					<div class="m-accordion m-accordion--default m-accordion--solid" id="m_accordion_3_sales_marketing" role="tablist">
+            						<!--begin::Item-->
+                                    {{--*/ $k=1; $tottyp = count($packages); /*--}}                                    
+                                    @foreach($packages as $key=>$package)
+                                    @if($package->package_category=="Sales_Marketing")
+            						<div class="m-accordion__item">
+            							<div class="m-accordion__item-head collapsed"  role="tab" id="m_accordion_3_item_sales_marketing_{{ $k }}_head" data-toggle="collapse" href="#m_accordion_3_item_sales_marketing_{{ $k }}_body" aria-expanded="    false">
+            								<span class="m-accordion__item-icon">
+            									<i class="fa flaticon-user-ok"></i>
+            								</span>
+            								<span class="m-accordion__item-title">
+            									{{$package->package_title}} Price: {!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($package->package_price,2) }}
+            								</span>
+            								<span class="m-accordion__item-mode"></span>
+            							</div>
+            							<div class="m-accordion__item-body collapse" id="m_accordion_3_item_sales_marketing_{{ $k }}_body" class=" " role="tabpanel" aria-labelledby="m_accordion_3_item_sales_marketing_{{ $k }}_head" data-parent="#m_accordion_3_sales_marketing">
+            								<div class="m-accordion__item-content">
+            									<div class="col-sm-6 col-md-6 col-lg-6 pull-left">
+                                                    <img class="img-responsive object-fit-size" src="{{URL::to('uploads/packages/'.$package->package_image)}}" alt="{{$package->package_image}}" style="width: 100%;" >
                                                 </div>
-                                            </div>
-                                        </div>
-            
-                                        @elseif($package->package_price_type==1)                   
-                                        <div class="book-btn-sec">
-                                            <div class="pull-left" >
-                                                <div>
-                                                    <a href="javascript:void(0);"  class="customGoldBtn btn btn-info nextBtn">Price On Request</a>
+                                                <div  class="col-sm-6 col-md-6 col-lg-6 pull-right">
+                                                    <div class="row">
+                                                        <div  class="col-sm-12 col-md-12 col-lg-12 border-2px">
+                                                            <p>Package Duration :: {{$package->package_duration}} {{$package->package_duration_type}}</p>  
+                                                            <p>Package Details: {!! nl2br($package->package_description) !!}</p>
+                                                            <h4>Package Modules Include:</h4>
+                                                            {{--*/  $modulesOffered = DB::table('tb_module')->whereIn('module_id', explode(',',$package->package_modules))->get();/*--}}
+                                                            {{--*/ $mod_arr = array(); /*--}}  
+                                                            @foreach ($modulesOffered as $moduleRow)
+                                                                {{--*/ $mod_arr[] = $moduleRow->module_name; /*--}}                                 
+                                                                
+                                                            @endforeach  
+                                                            {{--*/ $str_module = implode(', ', $mod_arr); echo $str_module; /*--}}
+                                                            <div class="row">
+                                                                <div class="col-sm-12 col-md-12 col-lg-12 top-margin-20">
+                                                                    <h6>{!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($package->package_price,2) }} </h6>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="book-btn-sec">
+                                                        
+                                                        <div class="pull-right" style="margin: 5px;">
+                                                            <div>
+                                                                <a href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->package_price }});" class="btn btn-success">Add to cart</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                        
+                                                      
                                                 </div>
-                                            </div>
-                                            <div class="pull-right" >
-                                                <div>
-                                                    <a href="{{ \URL::to('Impressum') }}"  class="customGoldBtn btn btn-info nextBtn">Contact for buying</a>
+            								</div>
+            							</div>
+            						</div>
+                                    @endif
+                                    {{--*/ $k++; /*--}}
+                                    @endforeach
+            						<!--end::Item-->     
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="tab-pane" id="reservation_distribution">
+                                <!--begin::Section-->
+            					<div class="m-accordion m-accordion--default m-accordion--solid" id="m_accordion_3_reservation_distribution" role="tablist">
+            						<!--begin::Item-->
+                                    {{--*/ $k=1; $tottyp = count($packages); /*--}}
+                                    @foreach($packages as $key=>$package)
+                                    @if($package->package_category=="Reservation_Distribution")
+            						<div class="m-accordion__item">
+            							<div class="m-accordion__item-head collapsed"  role="tab" id="m_accordion_3_item_reservation_distribution_{{ $k }}_head" data-toggle="collapse" href="#m_accordion_3_item_reservation_distribution_{{ $k }}_body" aria-expanded="    false">
+            								<span class="m-accordion__item-icon">
+            									<i class="fa flaticon-user-ok"></i>
+            								</span>
+            								<span class="m-accordion__item-title">
+            									{{$package->package_title}} Price: {!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($package->package_price,2) }}
+            								</span>
+            								<span class="m-accordion__item-mode"></span>
+            							</div>
+            							<div class="m-accordion__item-body collapse" id="m_accordion_3_item_reservation_distribution_{{ $k }}_body" class=" " role="tabpanel" aria-labelledby="m_accordion_3_item_reservation_distribution_{{ $k }}_head" data-parent="#m_accordion_3_reservation_distribution">
+            								<div class="m-accordion__item-content">
+            									<div class="col-sm-6 col-md-6 col-lg-6 pull-left">
+                                                    <img class="img-responsive object-fit-size" src="{{URL::to('uploads/packages/'.$package->package_image)}}" alt="{{$package->package_image}}" style="width: 100%;" >
                                                 </div>
-                                            </div>
-                                        </div>
-                                        @endif      
-                                    </div>
-								</div>
-							</div>
-						</div>
-                        @endforeach
-						<!--end::Item--> 
+                                                <div  class="col-sm-6 col-md-6 col-lg-6 pull-right">
+                                                    <div class="row">
+                                                        <div  class="col-sm-12 col-md-12 col-lg-12 border-2px">
+                                                            <p>Package Duration :: {{$package->package_duration}} {{$package->package_duration_type}}</p>  
+                                                            <p>Package Details: {!! nl2br($package->package_description) !!}</p>
+                                                            <h4>Package Modules Include:</h4>
+                                                            {{--*/  $modulesOffered = DB::table('tb_module')->whereIn('module_id', explode(',',$package->package_modules))->get();/*--}}
+                                                            {{--*/ $mod_arr = array(); /*--}}  
+                                                            @foreach ($modulesOffered as $moduleRow)
+                                                                {{--*/ $mod_arr[] = $moduleRow->module_name; /*--}}                                 
+                                                                
+                                                            @endforeach  
+                                                            {{--*/ $str_module = implode(', ', $mod_arr); echo $str_module; /*--}}
+                                                            <div class="row">
+                                                                <div class="col-sm-12 col-md-12 col-lg-12 top-margin-20">
+                                                                    <h6>{!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($package->package_price,2) }} </h6>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="book-btn-sec">
+                                                        
+                                                        <div class="pull-right" style="margin: 5px;">
+                                                            <div>
+                                                                <a href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->package_price }});" class="btn btn-success">Add to cart</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                        
+                                                      
+                                                </div>
+            								</div>
+            							</div>
+            						</div>
+                                    @endif
+                                    {{--*/ $k++; /*--}}
+                                    @endforeach
+            						<!--end::Item-->     
+                                </div>
+                            </div>
+                            
+                            <div class="tab-pane" id="advertising">
+                                <!--begin::Section-->
+            					<div class="m-accordion m-accordion--default m-accordion--solid" id="m_accordion_3_advertising" role="tablist">
+            						<!--begin::Item-->
+                                    {{--*/ $k=1; $tottyp = count($packages); /*--}}
+                                    @foreach($packages as $key=>$package)
+                                    @if($package->package_category=="Advertising")
+            						<div class="m-accordion__item">
+            							<div class="m-accordion__item-head collapsed"  role="tab" id="m_accordion_3_item_advertising_{{ $k }}_head" data-toggle="collapse" href="#m_accordion_3_item_advertising_{{ $k }}_body" aria-expanded="    false">
+            								<span class="m-accordion__item-icon">
+            									<i class="fa flaticon-user-ok"></i>
+            								</span>
+            								<span class="m-accordion__item-title">
+            									{{$package->package_title}} Price: {!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($package->package_price,2) }}
+            								</span>
+            								<span class="m-accordion__item-mode"></span>
+            							</div>
+            							<div class="m-accordion__item-body collapse" id="m_accordion_3_item_advertising_{{ $k }}_body" class=" " role="tabpanel" aria-labelledby="m_accordion_3_item_advertising_{{ $k }}_head" data-parent="#m_accordion_3_advertising">
+            								<div class="m-accordion__item-content">
+            									<div class="col-sm-6 col-md-6 col-lg-6 pull-left">
+                                                    <img class="img-responsive object-fit-size" src="{{URL::to('uploads/packages/'.$package->package_image)}}" alt="{{$package->package_image}}" style="width: 100%;" >
+                                                </div>
+                                                <div  class="col-sm-6 col-md-6 col-lg-6 pull-right">
+                                                    <div class="row">
+                                                        <div  class="col-sm-12 col-md-12 col-lg-12 border-2px">
+                                                            <p>Package Duration :: {{$package->package_duration}} {{$package->package_duration_type}}</p>  
+                                                            <p>Package Details: {!! nl2br($package->package_description) !!}</p>
+                                                            <h4>Package Modules Include:</h4>
+                                                            {{--*/  $modulesOffered = DB::table('tb_module')->whereIn('module_id', explode(',',$package->package_modules))->get();/*--}}
+                                                            {{--*/ $mod_arr = array(); /*--}}  
+                                                            @foreach ($modulesOffered as $moduleRow)
+                                                                {{--*/ $mod_arr[] = $moduleRow->module_name; /*--}}                                 
+                                                                
+                                                            @endforeach  
+                                                            {{--*/ $str_module = implode(', ', $mod_arr); echo $str_module; /*--}}
+                                                            <div class="row">
+                                                                <div class="col-sm-12 col-md-12 col-lg-12 top-margin-20">
+                                                                    <h6>{!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($package->package_price,2) }} </h6>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="book-btn-sec">
+                                                        
+                                                        <div class="pull-right" style="margin: 5px;">
+                                                            <div>
+                                                                <a href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->package_price }});" class="btn btn-success">Add to cart</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                        
+                                                      
+                                                </div>
+            								</div>
+            							</div>
+            						</div>
+                                    @endif
+                                    {{--*/ $k++; /*--}}
+                                    @endforeach
+            						<!--end::Item-->     
+                                </div>
+                            </div>
+                            
+                            
+                            
+                            
+                        
+					
 
 					</div>
 					<!--end::Section-->
