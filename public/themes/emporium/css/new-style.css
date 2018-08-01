@@ -20,8 +20,9 @@
 .Home #header{
   background: transparent !important;
 }
-
-
+.Home .mobilemenu .mobilenavclosebtn{
+  display: none !important;
+}
 #home_sld .carousel-caption {
     background: transparent;
 }
@@ -632,9 +633,6 @@ svg:not(:root) {
     bottom: auto;    
     max-width: 460px;
     width: 100%;
-}
-#home_sld .carousel-caption.item-front .round-crcle{
-  display: none;
 }
 #home_sld .carousel-caption.item-front .cnt-box{
     position: static;
