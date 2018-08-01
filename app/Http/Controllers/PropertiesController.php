@@ -1445,11 +1445,15 @@ class PropertiesController extends Controller {
     function delete_property_room(Request $request) {
         $uid = \Auth::user()->id;
         $roomId = $request->input('room_id');
+        $catid = $request->input('catid');
+        $pid = $request->input('pid');
         $checkRoom = \DB::table('tb_properties_category_rooms')->where('id', $roomId)->count();
         if ($checkRoom > 0) {
             $ups = \DB::table('tb_properties_category_rooms')->where('id', $roomId)->delete();
 
             $res['status'] = 'success';
+            $res['pid'] = $pid;
+            $res['catid'] = $catid;
             return json_encode($res);
         } else {
             $res['status'] = 'error';

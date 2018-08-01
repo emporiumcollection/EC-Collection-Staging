@@ -124,7 +124,7 @@
 												
 												<div class="tab-content">
 													<div class="tab-pane use-padding" id="rooms_details_cat{{$cat['data']->id}}">
-                                                        <div id="refresh">
+                                                        <div id="refresh_{{$cat['data']->id}}">
 														@if(array_key_exists('rooms', $cat))
 															{{--*/ $r=1; /*--}}
                                                             <div class="row">
@@ -222,8 +222,8 @@
 																		</div>
 																		<div class="col-lg-4 m--align-right">
 																			<div class="butt margin-top-10">
-																				<button type="button" class="btn btn-primary b-btn" onclick="copy_rooms_data({{$room->id}});" data-toggle="modal" data-target="#copyroom"><i class="fa fa-trash-0"></i> Copy</button>
-																				<button type="button" class="btn btn-danger b-btn" onclick="delete_rooms_tabdata({{$room->id}},{{$r}},{{$cat['data']->id}});"><i class="fa fa-trash-0"></i> Delete</button>
+																				<button type="button" class="btn btn-primary b-btn" onclick="copy_rooms_data({{$room->id}});" ><i class="fa fa-trash-0"></i> Copy</button>
+																				<button type="button" class="btn btn-danger b-btn" onclick="delete_rooms_tabdata({{$room->id}},{{$r}},{{$cat['data']->id}}, {{$pid}});"><i class="fa fa-trash-0"></i> Delete</button>
 																				<button type="submit" class="btn btn-success b-btn"><i class="fa fa-save"></i> Save</button>
 																			</div>
 																		</div>
@@ -550,6 +550,7 @@
 @endsection
 
 @section('script')
+<script src="{{ asset('metronic/assets/demo/demo6/base/toastr.js') }}"></script>
 <script>
 
 $(document).ready(function () {
@@ -589,9 +590,14 @@ $(document).ready(function () {
 		  data: {id:id, cid:cid},
 		  //dataType: "json",
 		  success: function(data){ console.log(data);
-            console.log($("#refresh").html());
-		    $("#refresh").html('');
-			$("#refresh").html(data);
+           
+		    $("#refresh_"+cid).html('');
+			$("#refresh_"+cid).html(data);
+            $('.datepic').datepicker({
+    				numberOfMonths: 2,
+    				showButtonPanel: true,
+    				format: 'yyyy-mm-dd'
+    		});
           }
         });        
     }
@@ -615,6 +621,7 @@ $(document).ready(function () {
 					});
 					html +='</ul>';
 					$('.page-content-wrapper #formerrors').html(html);
+                    toastr.error(html);
 					window.scrollTo(0, 0);
 				}
 				else
@@ -625,13 +632,14 @@ $(document).ready(function () {
 						html +='<button data-dismiss="alert" class="close" type="button">×</button>';
 						html +='<i class="icon-checkmark-circle"></i> Record Updated Successfully </div>';
 						$('.page-content-wrapper #formerrors').html(html);
-						window.scrollTo(0, 0);
-                        window.location.reload();
+                        toastr.success("Record Updated Successfully");    
+						window.scrollTo(0, 0);                                            
+                        //window.location.reload();
 					}
 					else
 					{
-					   console.log(data.pid);
-                       get_property_rooms(data.pid, data.category_id)
+					   toastr.success("Record Inserted Successfully");
+                       get_property_rooms(data.pid, data.category_id);
 						/*splt = formid.split('-');
 						newid = parseInt(splt[1]) + 1;
 						
@@ -704,7 +712,7 @@ $(document).ready(function () {
 		}
 	}
 	
-	function delete_rooms_tabdata(roomId,formid,catid)
+	function delete_rooms_tabdata(roomId,formid,catid, pid)
 	{
 		if(roomId!='' && roomId>0)
 		{
@@ -714,7 +722,7 @@ $(document).ready(function () {
 				$.ajax({
 				  url: "{{ URL::to('delete_property_category_rooms')}}",
 				  type: "post",
-				  data: "room_id="+roomId,
+				  data: {room_id:roomId, catid:catid, pid:pid},
 				  dataType: "json",
 				  success: function(data){
 					  var html ='';
@@ -724,7 +732,8 @@ $(document).ready(function () {
 							html +='<button data-dismiss="alert" class="close" type="button">×</button>';
 							html +='<i class="icon-checkmark-circle"></i> Record Not Found </div>';
 							$('.page-content-wrapper #formerrors').html(html);
-							window.scrollTo(0, 0);
+                            toastr.success("Record Not Found");
+							//window.scrollTo(0, 0);
 					  }
 					  else{
 							$('#add_property_room_setup'+catid+'-'+formid).remove();
@@ -732,7 +741,9 @@ $(document).ready(function () {
 							html +='<button data-dismiss="alert" class="close" type="button">×</button>';
 							html +='<i class="icon-checkmark-circle"></i> Record Deleted Successfully </div>';
 							$('.page-content-wrapper #formerrors').html(html);
-							window.scrollTo(0, 0);
+                            toastr.success("Record Deleted Successfully");
+							//window.scrollTo(0, 0);
+                            get_property_rooms(data.pid, data.catid);
 					  }
 				  }
 				});
@@ -757,14 +768,16 @@ $(document).ready(function () {
 						html +='<button data-dismiss="alert" class="close" type="button">×</button>';
 						html +='<i class="icon-checkmark-circle"></i> Record Not Found </div>';
 						$('.page-content-wrapper #formerrors').html(html);
-						window.scrollTo(0, 0);
+						//window.scrollTo(0, 0);
+                        toastr.success("Record Not Found");
 				  }
 				  else{
 						html +='<div class="alert alert-success fade in block-inner">';
 						html +='<button data-dismiss="alert" class="close" type="button">×</button>';
 						html +='<i class="icon-checkmark-circle"></i> Record Updated Successfully </div>';
 						$('.page-content-wrapper #formerrors').html(html);
-						window.scrollTo(0, 0);
+						//window.scrollTo(0, 0);
+                        toastr.success("Record Updated Successfully");
 				  }
 			  }
 			});
@@ -777,6 +790,7 @@ $(document).ready(function () {
 		{
 			$('#roomID').val(roomID);
 		}
+        $('#copyroom').modal('show');
 	}
 </script>
 

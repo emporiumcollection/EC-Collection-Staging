@@ -96,8 +96,8 @@
 				</div>
 				<div class="col-lg-4 m--align-right">
 					<div class="butt margin-top-10">
-						<button type="button" class="btn btn-primary b-btn" onclick="copy_rooms_data({{$room->id}});" data-toggle="modal" data-target="#copyroom"><i class="fa fa-trash-0"></i> Copy</button>
-						<button type="button" class="btn btn-danger b-btn" onclick="delete_rooms_tabdata({{$room->id}},{{$r}},{{$cat['data']->id}});"><i class="fa fa-trash-0"></i> Delete</button>
+						<button type="button" class="btn btn-primary b-btn" onclick="copy_rooms_data({{$room->id}});" ><i class="fa fa-trash-0"></i> Copy</button>
+						<button type="button" class="btn btn-danger b-btn" onclick="delete_rooms_tabdata({{$room->id}},{{$r}},{{$cat['data']->id}},{{$pid}});"><i class="fa fa-trash-0"></i> Delete</button>
 						<button type="submit" class="btn btn-success b-btn"><i class="fa fa-save"></i> Save</button>
 					</div>
 				</div>
