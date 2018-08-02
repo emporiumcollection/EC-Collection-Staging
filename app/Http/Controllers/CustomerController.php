@@ -110,8 +110,6 @@ class CustomerController extends Controller {
 
     public function ajaxPostCreate(Request $request) {
 
-
-
         $rules = array(
 //            'firstname' => 'required|alpha_num|min:2',
 //            'lastname' => 'required|alpha_num|min:2',
@@ -157,6 +155,10 @@ class CustomerController extends Controller {
             'has_one_upper_case' => 'The :attribute field must be at least one uppercase character.',
         );
         
+        if($request->input('user_type') == '3'):
+            $rules['referral_code'] = 'required'; 
+        endif;
+        
         $validator = Validator::make($request->all(), $rules, $messages);
 
         if ($validator->passes()) {
@@ -171,6 +173,11 @@ class CustomerController extends Controller {
             $authen->mobile_number=trim($request->input('txtmobileNumber'));
             $authen->mobile_code=trim($request->input('txtmobileDialcode'));
             $authen->password = \Hash::make($request->input('password'));
+            
+            if($request->input('user_type') == '3'):
+                $authen->new_user = '0';
+            endif;
+            
             $authen->active = '1';
             $authen->save();
 
@@ -206,7 +213,7 @@ class CustomerController extends Controller {
 
             //return Redirect::to('choose/'.$umId);
 
-            $response = array('status' => 'success', 'message' => 'Registered successfully');
+            $response = array('status' => 'success', 'message' => 'Registered successfully', 'gid' => $authen->group_id);
             
 //            return Redirect::to('customer/login')->with('message', \SiteHelpers::alert('success', 'Registered successfully.'));
         } else {
@@ -561,12 +568,15 @@ class CustomerController extends Controller {
                         else :
                             $getusercompany = \DB::table('tb_user_company_details')->where('user_id', $row->id)->first();
                             if (!empty($getusercompany)) {
-                                $response = array('status' => 'success', 'message' => 'Logged in successfully', 'errors' => array());
+                                $response = array('status' => 'success', 'message' => 'Logged in successfully', 'errors' => array(), 'gid'=>$row->group_id);
                             } else {
                                 if($row->group_id == 4) {
-                                    $response = array('status' => 'success', 'message' => 'Please complete your profile and company details', 'errors' => array());
+                                    $response = array('status' => 'success', 'message' => 'Please complete your profile and company details', 'errors' => array(),'gid'=>$row->group_id);
+                                }elseif($row->group_id == 3){
+                                    $response = array('status' => 'success', 'message' => 'Please complete your profile', 'errors' => array(), 'gid'=>$row->group_id, 'new_user'=>$row->new_user);
+                                }else{
+                                    $response = array('status' => 'success', 'message' => 'Please complete your profile and company details', 'errors' => array(),'gid'=>$row->group_id );
                                 }
-                                $response = array('status' => 'success', 'message' => 'Please complete your profile and company details', 'errors' => array());
                             }
 
                         endif;
@@ -1003,7 +1013,31 @@ return Redirect::to('customer/profile')->with('message', \SiteHelpers::alert('er
         }
     }
 
+    public function traveller(){
+        $user = User::find(\Session::get('uid'));
+        $this->data["guestUserData"]=$user;
+        $this->data['pageTitle'] = "Whoiam User Membership Type Selection";
+        $this->data['pageMetakey'] = "Whoiam User Membership";
+        $this->data['pageMetadesc'] = "Whoiam User Membership";
+        $contractObject =new Contract();
 
+        $params = array(
+            
+        );
+        $resultContract= $contractObject->getRows($params); 
+        
+        $extra = \DB::table('tb_properties')->where('user_id', $user->id)->first();
+        $this->data['extra'] = $extra;
+        //print_r($extra); die;
+        $this->data['user'] = $user;
+        $this->data['contractdata']=$resultContract["rows"];
+        $is_demo6 = trim(\CommonHelper::isHotelDashBoard($user->group_id));
+        
+        $t_f = 'whoiam';
+        if(isset($extra->approved)){ if(!((bool) $extra->approved)){ $t_f = 'approval_pending'; }}
+        $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.customer.'.$t_f:'customer.whoiam';      
+        return view($file_name, $this->data);
+    }
 
     public function whoIam() {
 

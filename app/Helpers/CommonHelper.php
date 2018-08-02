@@ -78,11 +78,13 @@ class CommonHelper
         $g_id = (int) $g_id;
         $group_id = (int) (($g_id > 0)?$g_id:\Auth::user()->group_id);
         $user = self::getusertype($group_id);
-        $match_array = array('hotel-b2b');
         $return = "";
-        
-        if(in_array($user,$match_array)){ $return = 'users_admin.metronic'; }
-        
+        if($user=="hotel-b2b"){
+            $match_array = array('hotel-b2b');
+            if(in_array($user,$match_array)){ $return = 'users_admin.metronic'; }
+        }else if($user=="users-b2c"){
+            $return = 'users_admin.traveller';
+        }
         return $return;
     }
     //end

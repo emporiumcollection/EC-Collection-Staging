@@ -48,13 +48,14 @@
                   <div class="ai-sign-up-form-error-msg"></div>
                   <div class="ai-sign-up-form-success-msg"></div>
                   <div class="reltv">
-                  <select name="user_type" class="user-type">
+                  <select name="user_type" class="user-type" id="sel-user-type">
                      <option value="">Choose Your User Type</option>
                      <option value="{!! CommonHelper::getusertype('hotel-b2b') !!}">B2B Hotel</option>
                      <option value="{!! CommonHelper::getusertype('advertiser-b2b') !!}">Advertiser</option>
                      <option value="{!! CommonHelper::getusertype('users-b2c') !!}">Discerning Traveler</option>
                   </select>
                   </div>
+                  <div class="user_ref"></div>
                   <div class="form-group">
                         <input class="form-control" name="email" type="text" placeholder="Email Address">
                   </div>

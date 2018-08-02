@@ -166,6 +166,17 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
+            
+            var list = $('ul.options li');
+            $(list).click(function(){
+                var list_val = $(this).attr('rel');
+                var user_ref = '';
+                if(list_val.length > 0 && list_val == '3'){
+                    user_ref = '<div class="form-group"> <input class="form-control" name="referral_code" type="text" placeholder="Enter Referral Code"> </div>';
+                }
+                $('.user_ref').html(user_ref);
+            });
+                                    
             $('#t-topbar-picker').tDatePicker({
                 'numCalendar':'2',
                 'autoClose':true,
@@ -264,7 +275,16 @@
                     data: formData,
                     success: function (data, textStatus, jqXHR) {
                         if (data.status == 'success') {
-                            window.location.href = "{{URL::to('dashboard')}}";
+                            if(data.gid==3){
+                                console.log(data.new_user);
+                                if(data.new_user=='0'){
+                                    window.location.href = "{{URL::to('traveller')}}";
+                                }else{
+                                    window.location.href = "{{URL::to('dashboard')}}";
+                                }
+                            }else{
+                                window.location.href = "{{URL::to('dashboard')}}";
+                            }
                         }
                         else {
                             var message = data.message;
@@ -321,7 +341,11 @@
                         if (data.status == 'success') {
                             $(".ai-sign-up-form-success-msg").html(data.message);
                             //window.location.href = "{{URL::to('whoiam')}}";
-                            window.location.href = "{{URL::to('dashboard')}}";
+                            if(data.gid==3){
+                                window.location.href = "{{URL::to('traveller')}}";
+                            }else{
+                                window.location.href = "{{URL::to('dashboard')}}";
+                            }
                         }
                         else {
                             var message = data.message;

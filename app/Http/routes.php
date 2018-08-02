@@ -90,6 +90,8 @@ Route::controller('home', 'HomeController');
 
 Route::controller('/user', 'UserController');
 Route::controller('/customer', 'CustomerController');
+Route::get('/traveller', 'CustomerController@traveller');  
+
 Route::get('/whoiam', 'CustomerController@whoIam');  
 
 Route::post('customer_ajaxPostCreate', 'CustomerController@ajaxPostCreate'); 
@@ -305,6 +307,8 @@ Route::group(['middleware' => 'auth'], function()
     Route::post('save_new_profile', 'UserController@saveNewprofile');
     
     Route::post('save_new_hotel_profile', 'UserController@saveNewHotelprofile');
+    
+    Route::post('save_new_traveller_profile', 'UserController@saveNewTravellerProfile');
         
     Route::post('save_new_company_details', 'UserController@saveNewcompanydetails');
     Route::post('confirm_new_profile', 'UserController@confirmNewprofile');
