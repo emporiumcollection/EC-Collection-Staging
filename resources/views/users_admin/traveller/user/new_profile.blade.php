@@ -1,10 +1,16 @@
-@extends('users_admin.traveller.layouts.blank_app')
+@extends('users_admin.traveller.layouts.app')
 
 @section('page_name')
     Account  <small>Enter Your Info</small>
 @stop
 
 @section('breadcrumb')
+    <li class="m-nav__separator"> - </li>
+    <li class="m-nav__item"> 
+        <a href="{{ URL::to('dashboard')}}" class="m-nav__link"> 
+            <span class="m-nav__link-text"> Dashboard </span> 
+        </a> 
+    </li>
     <li class="m-nav__separator"> - </li>
     <li class="m-nav__item"> 
         <a href="javascript:;" class="m-nav__link"> 
@@ -23,10 +29,10 @@
 					<div class="m-portlet__head-caption">
 						<div class="m-portlet__head-title">
 							<h3 class="m-portlet__head-text">
-								Add Information
+								Update Your Profile
 							</h3>
 						</div>
-					</div>					
+					</div>
 				</div>
 				<!--end: Portlet Head-->
                 <!--begin: Portlet Body-->
@@ -39,7 +45,7 @@
 						</div>
 						<!--end: Message container -->
 						<div class="row m-row--no-padding">
-							<div class="col-xl-3 col-lg-12">
+							<div class="col-xl-3 col-lg-12 bg-gray">
 								<!--begin: Form Wizard Head -->
 								<div class="m-wizard__head">
 									<!--begin: Form Wizard Progress -->
@@ -86,7 +92,6 @@
 													</div>
 												</div>
 											</div>
-											
 										</div>
 									</div>
 									<!--end: Form Wizard Nav -->
@@ -105,7 +110,7 @@
                                             <input type="hidden" name="base_url" id="base_url" value="{{ url() }}" />
                                             <!--begin: Form Wizard Step 1-->
     										<div class="m-wizard__form-step m-wizard__form-step--current" id="m_wizard_form_step_1">
-                                                <input name="form_wizard" type="hidden" id="form_wizard" value="1" />  
+                                                  
     											<div class="m-form__section m-form__section--first">
                                                     <div class="m-form__heading">
     													<h3 class="m-form__heading-title">
@@ -114,17 +119,12 @@
     												</div>
                                                     
                                                     
-                                                    
-                                                    
-                                                    
-                                                    
-                                                    
-    												<div class="form-group m-form__group row">
+                                                    <div class="form-group m-form__group row">
     													<label class="col-xl-3 col-lg-3 col-form-label">
     														 First Name 
     													</label>
     													<div class="col-xl-9 col-lg-9">
-    														<input type="text" name="first_name" id="first_name" class="form-control dash-input-style" placeholder="John" required="" value="{{ $user->first_name }}">
+    														<input type="text" name="first_name" id="first_name" class="form-control dash-input-style" placeholder="John" required="" value="{{ $info->first_name }}">
     													</div>
     												</div>
                                                     <div class="form-group m-form__group row">
@@ -132,7 +132,7 @@
     														Last Name
     													</label>
     													<div class="col-xl-9 col-lg-9">
-    														<input type="text" name="last_name" id ="last_name"  class="form-control dash-input-style" placeholder="Doe" value="{{ $user->last_name }}" required="">
+    														<input type="text" name="last_name" id ="last_name"  class="form-control dash-input-style" placeholder="Doe" value="{{ $info->last_name }}" required="">
                                                             <span class="m-form__help">Your public profile only shows your first name. When you request a booking, your Hotel of choice will see your first and last name.</span>
     													</div>
     												</div>
@@ -142,7 +142,7 @@
     														Email
     													</label>
     													<div class="col-xl-9 col-lg-9">
-    														<input type="text" name="email" id ="email"  class="form-control dash-input-style" placeholder="Doe" value="{{ $user->email }}" readonly="readonly">
+    														<input type="text" name="email" id ="email"  class="form-control dash-input-style" placeholder="Doe" value="{{ $info->email }}" readonly="readonly">
                                                             <span class="m-form__help"></span>
     													</div>
     												</div>
@@ -152,7 +152,7 @@
     													   Phone Number	
     													</label>
     													<div class="col-xl-9 col-lg-9">
-    														<input type="text" name="txtmobileNumber" id ="txtmobileNumber"  class="form-control dash-input-style" placeholder="Doe" value="{{ $user->mobile_number }}" readonly="readonly">
+    														<input type="text" name="txtmobileNumber" id ="txtmobileNumber"  class="form-control dash-input-style" placeholder="Doe" value="{{ $info->mobile_number }}" readonly="readonly">
                                                             <span>Add a phone number</span>
                                                             <span class="m-form__help">This is only shared once you have a confirmed booking with a Emporium Voyage Collection Partner Hotel. This is how we communicate booking confirmations.</span>
     													</div>
@@ -164,9 +164,9 @@
     													</label>
     													<div class="col-xl-9 col-lg-9">
     														<select class="form-control" id="gender" name="gender">
-                                                                <option value="Male">Male</option>
-                                                                <option value="Female">Female</option>
-                                                                <option value="Other">Other</option>
+                                                                <option value="euro">Male</option>
+                                                                <option value="dollar">Female</option>
+                                                                <option value="dollar">Other</option>
                                                             </select>
     													</div>
     												</div>
@@ -224,9 +224,8 @@
     												</div>
                                                     
                                                     
-                                                    
-                                                    
     											</div>
+                                                
                                             </div>
                                             <!--begin: Form Wizard Step 1-->
                                             
@@ -237,20 +236,14 @@
     													<h3 class="m-form__heading-title">
     														Personalized Preferences
     													</h3>
-                                                        <input name="form_wizard_2" type="hidden" id="form_wizard_2" value="2" />
-                                                        <input name="compedit_id" type="hidden" id="compedit_id" value="" />
-    												</div>   
-                                                    
-                                                    <div class="form-group m-form__group row">
-    													<div class="col-xl-9 col-lg-9">
-    														<a href="#" class="btn btn-default" id="personalized-skip">Skip</a>
-    													</div>
     												</div>
                                                     
-                                                                                    
-                                                 </div>                                                                                                     
-                                            </div>
+                                                    
+                                                    
+    											</div>
+    										</div>
     										<!--end: Form Wizard Step 2-->
+                                            
                                         </div>
                                         
                                         <!--begin: Form Actions -->
@@ -304,47 +297,68 @@
 			</div>
 			<!--End::Main Portlet-->
         </div>
-	</div>
-    
+	</div>    
 @stop
 
-{{-- For custom script --}}
-@section('custom_js_script')
-    @parent
-    <script>
-        $(document).ready(function(){
-            
-           $("#personalized-skip").click(function(e){ 
-                e.preventDefault();
-                console.log("ggg");           
-                var fdata = new FormData();                
-                fdata.append("_token",$("input[name=_token]").val());
-                fdata.append("form_wizard",$("input[name=form_wizard_2]").val()); 
-                console.log(fdata);
-                $.ajax({
-                    url:"{{URL::to('traveller_skip_preferences')}}",
-                    type:'POST',
-                    dataType:'json',
-                    contentType: false,
-                    processData: false,
-                    data:fdata,
-                    headers: {
-                        'Access-Control-Allow-Origin': '*'
-                    },
-                    success:function(response){
-                        if(response.status == 'success'){
-                            toastr.success(response.message);
-                            window.location.href="{{URL::to('dashboard')}}";
-                        }
-                        else{
-                            toastr.error(response.message);
-                        }
-                    }
-                }); 
-           });
-        });
-    </script>
-@endsection
+@section('custom_js_script')    
+<script>
+$('input[type="checkbox"][id="copyadd"]').on('ifChecked', function(){
+	$('#billing_address').val($('#shipping_address').val());
+	$('#billing_address2').val($('#shipping_address2').val());
+	$('#billing_city').val($('#shipping_city').val());
+	$('#billing_postal_code').val($('#shipping_postal_code').val());
+	$('#billing_country').val($('#shipping_country').val());
+});
+
+function fillProfile(obj)
+{
+	var custid = $(obj).val();
+	$.ajax({
+	  url: "{{ URL::to('getUserprofile')}}",
+	  type: "post",
+	  data: "customer="+custid,
+	  dataType: "json",
+	  success: function(data){
+		if(data!='error')
+		{
+			$('#company_phone').val(data.phone);
+			$('#company_email').val(data.email);
+			$('#company_postal_code').val(data.zip);
+			$('#comapny_address').val(data.street);
+			$('#company_name').val(data.shoptitle);
+			$('#company_city').val(data.city);
+		}
+	  }
+	});
+}
+
+function deleteAds(ads_id, formid)
+{
+	if(ads_id!='')
+	{
+		var confirmd = confirm("{{ Lang::get('core.ads_delete_confirm_msg') }}");
+		if(confirmd==true)
+		{
+			$.ajax({
+			  url: "{{ URL::to('deleteUserAds')}}",
+			  type: "post",
+			  data: "adsId="+ads_id,
+			  dataType: "json",
+			  success: function(data){
+				if(data!='error')
+				{
+					$('#'+formid)[0].reset();
+				}
+				else{
+					alert('No Advertisement Found');
+				}
+			  }
+			});
+		}
+	}
+}
+</script>
+@stop
 
 @section('script')
     <script src="{{ asset('metronic/assets/demo/demo6/base/traveller_wizard.js') }}"></script>

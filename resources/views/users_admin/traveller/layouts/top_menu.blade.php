@@ -139,7 +139,7 @@
 															Shortcuts
 														</span>
 													</div>
-													<div class="m-dropdown__body m-dropdown__body--paddingless">
+													<div class="m-dropdown__body m-dropdown__body--paddingless" style="display: none;">
 														<div class="m-dropdown__content">
 															<div class="m-scrollable" data-scrollable="false" data-height="380" data-mobile-height="200">
 																<div class="m-nav-grid m-nav-grid--skin-light">
@@ -251,7 +251,7 @@
 																	</a>
 																</li>
 																
-                                                                <li class="m-nav__item">
+                                                                <li class="m-nav__item" style="display: none;">
 																	<a href="{{ URL::to('user/profile')}}" class="m-nav__link">
 																		<i class="m-nav__link-icon flaticon-suitcase"></i>
 																		<span class="m-nav__link-title">
@@ -262,7 +262,7 @@
 																	</a>
 																</li>
 																
-                                                                <li class="m-nav__item">
+                                                                <li class="m-nav__item" style="display: none;">
 																	<a href="{{ URL::to('user/profile')}}" class="m-nav__link">
 																		<i class="m-nav__link-icon flaticon-user"></i>
 																		<span class="m-nav__link-title">

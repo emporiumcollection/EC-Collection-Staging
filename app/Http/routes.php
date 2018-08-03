@@ -90,7 +90,8 @@ Route::controller('home', 'HomeController');
 
 Route::controller('/user', 'UserController');
 Route::controller('/customer', 'CustomerController');
-Route::get('/traveller', 'CustomerController@traveller');  
+Route::get('/traveller', 'CustomerController@traveller'); 
+Route::post('/traveller_skip_preferences', 'CustomerController@skipPreferences');  
 
 Route::get('/whoiam', 'CustomerController@whoIam');  
 

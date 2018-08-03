@@ -436,10 +436,11 @@ class UserController extends Controller {
         $file_name = 'user.profile';
         $is_demo6 = (bool) \CommonHelper::isHotelDashBoard();
         if($is_demo6 === true){
-            $file_name = 'users_admin.metronic.user.profile';
+            $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+            $file_name = $is_demo6.'.user.profile';
             $is_newuser = (int) $info->new_user;
             if($info->new_user == 1){
-                $file_name = 'users_admin.metronic.user.new_profile';
+                $file_name = $is_demo6.'.user.new_profile';
             }
         }
         
@@ -480,6 +481,42 @@ class UserController extends Controller {
             $user->email = $request->input('email');
             if (isset($data['avatar']))
                 $user->avatar = $newfilename;
+            $user->save();
+
+            return Redirect::to('user/profile')->with('messagetext', 'Profile has been saved!')->with('msgstatus', 'success');
+        } else {
+            return Redirect::to('user/profile')->with('messagetext', 'The following errors occurred')->with('msgstatus', 'error')
+                            ->withErrors($validator)->withInput();
+        }
+    }
+    
+    public function postSavetravellerprofile(Request $request) {
+        if (!\Auth::check())
+            return Redirect::to('user/login');
+            
+        $rules = array(
+            'first_name' => 'required|alpha_num|min:2',
+            'last_name' => 'required|alpha_num|min:2',
+        );
+
+        if ($request->input('email') != \Session::get('eid')) {
+            $rules['email'] = 'required|email|unique:tb_users';
+        }
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->passes()) {
+
+            $user = User::find(\Session::get('uid'));
+            $user->first_name = $request->input('first_name');
+            $user->last_name = $request->input('last_name');
+            $user->email = $request->input('email');
+            
+            $user->mobile_number = $request->input('txtmobileNumber');
+            $user->gender = $request->input('gender');            
+            $user->prefer_communication_with = $request->input('prefer_communication_with');
+            $user->preferred_currency = $request->input('preferred_currency');
+            
             $user->save();
 
             return Redirect::to('user/profile')->with('messagetext', 'Profile has been saved!')->with('msgstatus', 'success');

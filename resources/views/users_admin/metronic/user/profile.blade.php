@@ -77,7 +77,7 @@
 								</span>
 							</a>
 						</li>
-						<li class="m-nav__item nav-item m-tabs__item">
+						<li class="m-nav__item nav-item m-tabs__item" style="display: none;">
                             <a href="#slider-ad" class="m-nav__link nav-link m-tabs__link" data-toggle="tab" role="tab">
 								<i class="m-nav__link-icon flaticon-coins"></i>
 								<span class="m-nav__link-text">
@@ -85,7 +85,7 @@
 								</span>
 							</a>
 						</li>
-						<li class="m-nav__item nav-item m-tabs__item">
+						<li class="m-nav__item nav-item m-tabs__item" style="display: none;">
                             <a href="#sidebar-ad" class="m-nav__link nav-link m-tabs__link" data-toggle="tab" role="tab">
 								<i class="m-nav__link-icon flaticon-coins"></i>
 								<span class="m-nav__link-text">

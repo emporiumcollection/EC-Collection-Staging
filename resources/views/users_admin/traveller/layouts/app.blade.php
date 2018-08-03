@@ -93,8 +93,8 @@
 								<h3 class="m-header__title-text"> Applications </h3>
 							</div>
 							
-                            @include('users_admin/metronic/layouts/horz_menu')
-                            @include('users_admin/metronic/layouts/top_menu')				            
+                            @include('users_admin/traveller/layouts/horz_menu')
+                            @include('users_admin/traveller/layouts/top_menu')				            
                             
 						</div>
 					</div>
@@ -105,13 +105,13 @@
 			<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
 				
                 <!-- BEGIN: Left Aside -->
-                @include('users_admin/metronic/layouts/menu')
+                @include('users_admin/traveller/layouts/menu')
                 <!-- END: Left Aside -->
                 
 				<div class="m-grid__item m-grid__item--fluid m-wrapper">
                     
 					<!-- BEGIN: Subheader -->
-					@include('users_admin/metronic/layouts/sub_header')
+					@include('users_admin/traveller/layouts/sub_header')
 					<!-- END: Subheader -->
                     
                     <!-- BEGIN: Subheader_search -->

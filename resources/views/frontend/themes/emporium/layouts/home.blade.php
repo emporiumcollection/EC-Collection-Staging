@@ -277,7 +277,7 @@
                         if (data.status == 'success') {
                             if(data.gid==3){
                                 console.log(data.new_user);
-                                if(data.new_user=='0'){
+                                if(data.new_user=='1'){
                                     window.location.href = "{{URL::to('traveller')}}";
                                 }else{
                                     window.location.href = "{{URL::to('dashboard')}}";

@@ -175,7 +175,7 @@ class CustomerController extends Controller {
             $authen->password = \Hash::make($request->input('password'));
             
             if($request->input('user_type') == '3'):
-                $authen->new_user = '0';
+                $authen->new_user = '1';
             endif;
             
             $authen->active = '1';
@@ -1657,6 +1657,17 @@ $html .= '</div>';
         
     }
 
- /* End function by Ram to generate PDF*/      
+ /* End function by Ram to generate PDF*/   
+ 
+    public function skipPreferences(Request $request){
+        $_user = User::find(\Session::get('uid'));
+        $_user->form_wizard = $request->input('form_wizard');
+        $_user->new_user = 0;
+        $_user->save();
+        $return_array['status'] = 'success';
+        $return_array['message'] = 'Successfully completed wizard!';
+        echo json_encode($return_array);
+        exit;
+    }   
 
 }
