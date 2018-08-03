@@ -174,10 +174,6 @@
   font-family: 'geomanistlightwebfont';
   text-transform: uppercase;
 }
-
-
-
-
 /************hotelSearchDateSection************/
 .hotelSearchDateSection {
   width: 100%;
@@ -439,8 +435,8 @@ position: absolute;
 }
 .roomSuitSlider .terraceSuiteSlider .item a img {
   opacity: 1;
-  width: 30px !important;
-  height: 30px !important;
+  width: 50px !important;
+  height: 50px !important;
 }
 .roomSuitSlider .owl-theme .owl-controls {
     height: 0px;
@@ -504,6 +500,25 @@ position: absolute;
 .sliderArrow .prevClick {
   
   margin-left: 5px;
+}
+.gallyPopupHeader img.img-responsive.mCS_img_loaded {
+    max-width: 300px;
+}
+
+.roomSuitSlider .terraceSuiteSlider .item a:before {
+    position: relative;
+    content: "";
+    display: block;
+    font-family: FontAwesome;
+    font-size: 60px;
+    color: #fff; 
+    content: "\f030";
+}
+.roomSuitSlider .terraceSuiteSlider .item a img{
+  display: none;
+}
+.gallyPopupHeader img.img-responsive.mCS_img_loaded {
+    max-width: 300px;
 }
 
 /**************/
@@ -707,6 +722,9 @@ position: absolute;
   /**dlw**/
   #design-architecture .content-box .quote-small-box{left:-25px; padding:25px;}
   .sliderArrow a.nextClick{margin-left:75px;}
+  .gallyPopupHeader img.img-responsive.mCS_img_loaded {
+      max-width: 300px;
+  }
 } 
 @media screen and (max-width: 767px) { 
   .hotelSearchDateInnerContent ul li {
