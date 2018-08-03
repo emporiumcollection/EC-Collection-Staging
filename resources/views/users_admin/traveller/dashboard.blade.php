@@ -1,4 +1,4 @@
-@extends('users_admin.metronic.layouts.app')
+@extends('users_admin.traveller.layouts.app')
 
 @section('page_name')
     Dashboard

@@ -542,7 +542,7 @@ class CustomerController extends Controller {
             if (\Auth::attempt(array('email' => $request->input('email'), 'password' => $request->input('password')), $remember)) {
                 if (\Auth::check()) {
                     $row = User::find(\Auth::user()->id);
-
+                    //print_r($row);
                     if ($row->active == '0') {
                         // inactive 
                         \Auth::logout();
@@ -558,6 +558,7 @@ class CustomerController extends Controller {
                         \Session::put('eid', $row->email);
                         \Session::put('ll', $row->last_login);
                         \Session::put('fid', $row->first_name . ' ' . $row->last_name);
+                        
                         if (!is_null($request->input('language'))) {
                             \Session::put('lang', $request->input('language'));
                         } else {
@@ -566,10 +567,16 @@ class CustomerController extends Controller {
                         if (CNF_FRONT == 'false') :
                             $response = array('status' => 'success', 'message' => 'Logged in successfully', 'errors' => array());
                         else :
+                            
                             $getusercompany = \DB::table('tb_user_company_details')->where('user_id', $row->id)->first();
                             if (!empty($getusercompany)) {
-                                $response = array('status' => 'success', 'message' => 'Logged in successfully', 'errors' => array(), 'gid'=>$row->group_id);
+                                if($row->group_id == 3){
+                                    $response = array('status' => 'success', 'message' => 'Please complete your profile', 'errors' => array(), 'gid'=>$row->group_id, 'new_user'=>$row->new_user);                             
+                                }else{
+                                    $response = array('status' => 'success', 'message' => 'Logged in successfully', 'errors' => array(), 'gid'=>$row->group_id);
+                                }                                
                             } else {
+                                
                                 if($row->group_id == 4) {
                                     $response = array('status' => 'success', 'message' => 'Please complete your profile and company details', 'errors' => array(),'gid'=>$row->group_id);
                                 }elseif($row->group_id == 3){
@@ -1030,7 +1037,7 @@ return Redirect::to('customer/profile')->with('message', \SiteHelpers::alert('er
         $this->data['extra'] = $extra;
         //print_r($extra); die;
         $this->data['user'] = $user;
-        $this->data['contractdata']=$resultContract["rows"];
+        //$this->data['contractdata']=$resultContract["rows"];
         $is_demo6 = trim(\CommonHelper::isHotelDashBoard($user->group_id));
         
         $t_f = 'whoiam';
