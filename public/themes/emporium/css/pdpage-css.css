@@ -655,6 +655,7 @@ position: absolute;
     top: 50%;
     position: relative;
     transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
 }
 .sliderArrow a.nextClick{margin-left:174px;}
 
@@ -804,6 +805,17 @@ position: absolute;
   }
 
 .sliderArrow a.nextClick{margin-left:170px;}
+  .roomSuitSlider .noPadding {  
+      height: auto;
+      padding: 20px 0;
+  }
+
+  .roomSuitSlider .noPadding .sliderContent {
+    padding: 0px 30px 0;
+    position: relative;
+    transform: none;
+    -webkit-transform: none;
+  }
 }
 @media screen and (max-width: 480px) {
   .hotelSearchDateInnerContent ul li {
