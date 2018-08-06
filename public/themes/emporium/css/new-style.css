@@ -26,6 +26,14 @@
 #home_sld .carousel-caption {
     background: transparent;
 }
+.dsp-flex{
+    display: -webkit-box; 
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex; 
+    display: flex;
+    flex-wrap: wrap;
+}
 
 .Home .sidefixednav{
     right: -90px !important;
