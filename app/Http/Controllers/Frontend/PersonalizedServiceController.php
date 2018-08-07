@@ -196,7 +196,7 @@ class PersonalizedServiceController extends Controller {
                         'created' => date("Y-m-d H:i:s"),
                         'updated' => date("Y-m-d H:i:s")
                     );
-        print_r($params); die;
+        //print_r($params); die;
         \DB::table('tb_personalized_services')->insert($params);
         
         $_user = User::find(\Session::get('uid'));
