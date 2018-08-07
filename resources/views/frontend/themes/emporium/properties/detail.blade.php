@@ -424,11 +424,11 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-sm-12 text-center">
-                                <h2 class="heading">VIEW OUR SELECTION OF LUXURY HOTELS
+                                <h2 class="heading" style="text-transform: uppercase;">view our selection of "related" luxury hotels in
                                     IN {{$propertyDetail['data']->assign_detail_city}}</h2>
                             </div>
                         </div>
-                       <div class="grid">
+                       <div class="grid dsp-flex">
     
 
 

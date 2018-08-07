@@ -34,7 +34,10 @@
     display: flex;
     flex-wrap: wrap;
 }
-
+.mobilenavheader.hide + .mobilenavheader h3 {
+    padding: 0 !important;
+    margin-bottom: 10px !important;
+}
 .Home .sidefixednav{
     right: -90px !important;
 }
@@ -73,7 +76,6 @@
     padding: 0 15px 10px 15px;
     background: transparent;
 }
-
 #home_sld .left.carousel-control {
     left: 60px !important;
     right: auto !important;
@@ -165,7 +167,6 @@ z-index: 1;
 #home_sld .item{
   height: 100vh;  
 }
-
 #home_sld .right.carousel-control .txt-mid{
     margin-right: 40px;
     will-change: transform;
