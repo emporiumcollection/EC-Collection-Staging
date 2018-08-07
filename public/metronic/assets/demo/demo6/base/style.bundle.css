@@ -54875,3 +54875,26 @@ i.m-menu__link-icon.fa {
     border: 2px solid #efefef;
     padding: 10px;
 }
+.personalized-suggestions-pannel-list-align{
+    list-style: none;
+}
+.personalized-suggestions-pannel-list-align li{
+    display: inline;
+    margin-right: 10px;
+}
+.personalized-suggestions-pannel-list-align li a{
+    text-decoration: underline;
+}
+.datepic-max-width{
+    max-width: 100% !important;
+}
+.ps-input-width{
+    width: 98%;
+    margin-left: 10px;   
+}
+.pref-botoom-pad{
+  padding-bottom: 20px;  
+}
+.display-none{
+    display: none !important;
+}
