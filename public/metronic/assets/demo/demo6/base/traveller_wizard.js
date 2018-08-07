@@ -24,12 +24,18 @@ var WizardDemo = function () {
                 if(_wizard_step == '1'){
                        wizard_step_1();
                 }
+                
             }
         });
 
         //== Change event
         wizard.on('change', function(wizard) {
             mUtil.scrollTop();
+            if(wizard.isLastStep()){
+                    $("#wizard_submit_btn").css('display', 'none'); 
+                }else{
+                    $("#wizard_submit_btn").css('display', ''); 
+                }
         });
     }
 
@@ -123,7 +129,7 @@ function wizard_step_1(){
         data:fdata,
         success:function(response){
             if(response.status == 'success'){
-                toastr.success(response.message);
+                toastr.success(response.message);                               
             }
             else{
                 toastr.error(response.message);

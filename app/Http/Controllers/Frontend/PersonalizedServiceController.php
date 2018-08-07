@@ -170,6 +170,48 @@ class PersonalizedServiceController extends Controller {
         return Redirect::to('personalized-service')->with(['info' => 'Your Info Saved Successfully.']);
     }
     
+    public function ajax_save(Request $request) {
+        
+        if (!\Auth::check()):
+            return Redirect::to('customer/login');
+        endif;
+        
+        $customer_id = \Auth::user()->id;
+        //echo $request->input('late_check_out');
+        $params = array(
+                        'customer_id' => $customer_id,
+                        'adults' => $request->input('adults'),
+                        'youth' => $request->input('youth'),
+                        'children' => $request->input('children'),
+                        'toddlers' => $request->input('toddlers'),
+                        'earliest_arrival' => date("Y-m-d", strtotime($request->input('earliest_arrival'))),
+                        'late_check_out' => date("Y-m-d", strtotime($request->input('late_check_out'))),
+                        'stay_time' => $request->input('stay_time'),
+                        'destinations' => $request->input('destinations'),
+                        'inspirations' => $request->input('inspirations'),
+                        'experiences' => $request->input('experiences'),
+                        'note' => $request->input('note'),
+                        'reservation_agent' => '0',
+                        'status' => 'Pending',
+                        'created' => date("Y-m-d H:i:s"),
+                        'updated' => date("Y-m-d H:i:s")
+                    );
+        print_r($params); die;
+        \DB::table('tb_personalized_services')->insert($params);
+        
+        $_user = User::find(\Session::get('uid'));
+        $_user->form_wizard = $request->input('form_wizard');
+        $_user->new_user = 0;
+        $_user->save();
+        
+        //return Redirect::to('personalized-service')->with(['info' => 'Your Info Saved Successfully.']);
+        $return_array['status'] = 'success';
+        $return_array['message'] = 'Personlized preferences has been saved!';
+        
+        echo json_encode($return_array);
+        exit;
+    }
+    
     /*
      * AIC: Update from data in DB
      */
