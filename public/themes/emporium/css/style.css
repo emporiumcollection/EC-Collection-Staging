@@ -1279,18 +1279,21 @@ border-radius:0;
 .mobilemenulist li p.pdlr25px{padding-left:25px; padding-right:25px;}
 .mobilemenulist li p a{padding:3px; display: inline-block; text-transform:capitalize;}
 .mobilemenulist .mobile-leftsearch{position:relative; padding:15px 25px;}
-.mobilemenulist .mobile-leftsearch input[type=text]{border:0; color:#ABA07C;; padding:5px 30px 5px 5px; border:0; border-radius:0; background:none; font-size:14px;text-transform: uppercase;}
+.mobilemenulist .mobile-leftsearch input[type=text]{border:0; color:#ABA07C; padding:5px 30px 5px 5px;  border-radius:0; background:none; font-size:14px;text-transform: uppercase;}
+.mobilemenulist .mobile-leftsearch input[type=text]:focus{
+  border:1px solid #ABA07C;
+}
 .mobilemenulist .mobile-leftsearch input[type=text]:focus{border:0; outline:0; box-shadow:none;}
 .mobilemenulist .mobile-leftsearch button{position:absolute; right:10px; top:22px; border:0; background:none;}
 .mobilemenulist .mobile-leftsearch button i{font-size:16px; color:#fff}
 .mobilemenu-inner .bottomlink{background:#252525; padding:15px 15px 15px 25px; color:#fff; font-size:13px;}
 .mobilemenu-inner .bottomlink a{color:#fff; text-decoration:underline;}
-.mobilenavheader h3{font-size:16px; color:#fff; margin:0 0 25px 0}
+.mobilenavheader h3{font-size:14px;color:#fff;margin: 0;}
 .searchourcollectonnav, .searchbydatenav, .mobilemainnav, .selectdestinationnav, .selectafricanav, .selectexperiencenav, .companynav, .selectafricanavchild, .restaurantnav, .searchbyfilternav, .destinationresultnav{display:none;}
 .homelinknav{padding: 10px 0 5px 0; margin-top:10px;color: #fff;display: inline-block;}
 .homelinknav:hover, .homelinknav:focus{color:#fff; outline:none;}
 .homelinknav:hover i.fa{margin-right:8px;}
-.homelinknav i.fa{margin-right:5px; font-size:18px; transition: all .3s ease 0s;-webkit-transition: all .3s ease 0s;}
+.homelinknav i.fa{margin-right:5px; font-size:14px; transition: all .3s ease 0s;-webkit-transition: all .3s ease 0s;}
 .openmobilemenu{display:block;}
 
 .calenderwrapper{margin:15px 10px; float:left;width: calc(100% - 20px);}
