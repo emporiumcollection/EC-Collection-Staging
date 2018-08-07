@@ -461,6 +461,7 @@ function renderResturantSpaBarSearch(dataObj) {
  */
 function hideAllOption() {
     $('[data-option="home"]').addClass('hide');
+    $('[data-option-type="logo"]').removeClass('hide');
     $('[data-option="global"]').addClass('hide');
     $('[data-option="child-global"]').addClass('hide');
     $('[data-option="selected-option-list"]').addClass('hide');
