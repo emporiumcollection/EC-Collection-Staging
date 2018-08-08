@@ -118,10 +118,13 @@ function wizard_step_1(){
     fdata.append("preferred_currency",$("#preferred_currency :selected").val());
     fdata.append("_token",$("input[name=_token]").val());
     fdata.append("form_wizard",$("input[name=form_wizard]").val());    
+    if($("input[type=file]")[0].files.length>0){
+       fdata.append("avatar",$("input[type=file]")[0].files[0]) 
+    }
        
     var base_url = $('#base_url').val();
     $.ajax({
-        url:base_url+'/save_new_traveller_profile',
+        url:base_url+'/save_new_traveller_profile', 
         type:'POST',
         dataType:'json',
         contentType: false,

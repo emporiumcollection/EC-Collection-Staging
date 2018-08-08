@@ -414,7 +414,14 @@ class UserController extends Controller {
         $sidebar_ads_expiry_days = \DB::table('tb_settings')->where('key_value', 'filter_advertisement_expiry_days')->first();
         $sidebar_ads_price = \DB::table('tb_settings')->where('key_value', 'filter_advertisement_price')->first();
         $def_currency = \DB::table('tb_settings')->where('key_value', 'default_currency')->first();
-
+        
+        $temp = $this->get_destinations_new();
+        //print_r($temp); die;
+        $destinations = $temp;
+        $inspirations = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_custom_title')->where('category_published', 1)->where('parent_category_id', 627)->get();
+        $experiences = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_custom_title')->where('category_published', 1)->where('parent_category_id', 8)->get();
+        
+        
         $maindest = (new CategoriesController)->fetchCategoryTree();
 
         $this->data = array(
@@ -430,6 +437,9 @@ class UserController extends Controller {
             'slider_ads_info' => $slider_ads_info,
             'sidebar_ads_info' => $sidebar_ads_info,
             'maindest' => $maindest,
+            'destinations' => $destinations,
+            'inspirations' => $inspirations,
+            'experiences' => $experiences
         );
         
         $group_id = \Auth::user()->group_id;
@@ -446,7 +456,68 @@ class UserController extends Controller {
         
         return view($file_name, $this->data);
     }
+    
+    public function get_destinations_new($parent = 0, $spacing = '', $folder_tree_array = '') {
 
+        if (!is_array($folder_tree_array))
+		  $folder_tree_array = array();          
+		
+		  $filter = " AND parent_category_id='".$parent."'";
+		  $params = array(
+			'params'	=> $filter,
+			'order'		=> 'asc'
+		  );
+		  // Get Query 
+    	  $results = \DB::table('tb_categories')->where('parent_category_id', $parent)->where('id', '!=', 8)->get();
+          //print_r($results); die;
+          if ($results) {
+    		foreach($results as $row) {
+    		  $folder_tree_array[] = array("id" => $row->id, "name" => $spacing . $row->category_name);
+    		  $folder_tree_array = $this->get_destinations_new($row->id, $spacing . '', $folder_tree_array);
+    		}
+    	  }          
+    	  return $folder_tree_array;
+    }
+    
+    public function get_destinations($id = 0) {
+
+        $_chldIds = array();
+        
+        if($id == 0) {
+            $sub_destinations = \DB::table('tb_categories')->where('parent_category_id', 0)->where('id', '!=', 8)->get();
+        }
+        else {
+            $sub_destinations = \DB::table('tb_categories')->where('parent_category_id', $id)->get();
+        }
+        
+        if(!empty($sub_destinations)) {
+            foreach ($sub_destinations as $key => $sub_destination) {
+                
+                $chldIds = array();
+                
+                $chldIds[] = $sub_destination->id;
+                $temp = $this->get_destinations($sub_destination->id);
+
+                $sub_destinations[$key]->sub_destinations = $temp['sub_destinations'];
+                $chldIds = array_merge($chldIds, $temp['chldIds']);
+                $_chldIds = array_merge($_chldIds, $chldIds);
+                
+                $getcats = '';
+                if (!empty($chldIds)) {
+                    $getcats = " AND (" . implode(" || ", array_map(function($v) {
+                                        return sprintf("FIND_IN_SET('%s', property_category_id)", $v);
+                                    }, array_values($chldIds))) . ")";
+                    $preprops = \DB::select(\DB::raw("SELECT COUNT(*) AS total_rows FROM tb_properties WHERE property_status = '1' $getcats"));
+                    if($preprops[0]->total_rows == 0) {
+                        unset($sub_destinations[$key]);
+                    }
+                }
+            }
+        }
+        
+        return array('sub_destinations' => $sub_destinations, 'chldIds' => $_chldIds);
+    }
+    
     public function postSaveprofile(Request $request) {
         if (!\Auth::check())
             return Redirect::to('user/login');
@@ -506,7 +577,19 @@ class UserController extends Controller {
         $validator = Validator::make($request->all(), $rules);
 
         if ($validator->passes()) {
-
+            
+            if (!is_null(Input::file('avatar'))) {
+                $file = $request->file('avatar');
+                $destinationPath = './uploads/users/';
+                $filename = $file->getClientOriginalName();
+                $extension = $file->getClientOriginalExtension(); //if you need extension of the file
+                $newfilename = \Session::get('uid') . '.' . $extension;
+                $uploadSuccess = $request->file('avatar')->move($destinationPath, $newfilename);
+                if ($uploadSuccess) {
+                    $data['avatar'] = $newfilename;
+                }
+            }
+            
             $user = User::find(\Session::get('uid'));
             $user->first_name = $request->input('first_name');
             $user->last_name = $request->input('last_name');
@@ -516,7 +599,9 @@ class UserController extends Controller {
             $user->gender = $request->input('gender');            
             $user->prefer_communication_with = $request->input('prefer_communication_with');
             $user->preferred_currency = $request->input('preferred_currency');
-            
+            if (isset($data['avatar']))
+                $user->avatar = $newfilename;
+                
             $user->save();
 
             return Redirect::to('user/profile')->with('messagetext', 'Profile has been saved!')->with('msgstatus', 'success');
@@ -1054,7 +1139,7 @@ class UserController extends Controller {
 
         if ($validator->passes()) {
 
-            /*if (!is_null(Input::file('avatar'))) {
+            if (!is_null(Input::file('avatar'))) {
                 $file = $request->file('avatar');
                 $destinationPath = './uploads/users/';
                 $filename = $file->getClientOriginalName();
@@ -1064,7 +1149,7 @@ class UserController extends Controller {
                 if ($uploadSuccess) {
                     $data['avatar'] = $newfilename;
                 }
-            }*/
+            }
 
             $user = User::find(\Session::get('uid'));
             $user->first_name = $request->input('first_name');
@@ -1077,7 +1162,8 @@ class UserController extends Controller {
             
             $user->prefer_communication_with = $request->input('prefer_communication_with');
             $user->preferred_currency = $request->input('preferred_currency');
-
+            if(isset($data['avatar']))
+                $user->avatar = $newfilename;
             
             $user->save();
             

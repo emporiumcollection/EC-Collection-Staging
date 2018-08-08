@@ -152,7 +152,14 @@
     													   Phone Number	
     													</label>
     													<div class="col-xl-9 col-lg-9">
-    														<input type="text" name="txtmobileNumber" id ="txtmobileNumber"  class="form-control dash-input-style" placeholder="Doe" value="{{ $user->mobile_number }}" readonly="readonly">
+                                                            <div class="input-group m-input-group m-input-group--square">
+																<div class="input-group-prepend">
+																	<span class="input-group-text" id="basic-addon1">
+																		{{ $user->mobile_code }}
+																	</span>
+																</div>
+																<input type="text" name="txtmobileNumber" id ="txtmobileNumber"  class="form-control dash-input-style" placeholder="Doe" value="{{ $user->mobile_number }}" readonly="readonly">
+															</div>    														
                                                             <span>Add a phone number</span>
                                                             <span class="m-form__help">This is only shared once you have a confirmed booking with a Emporium Voyage Collection Partner Hotel. This is how we communicate booking confirmations.</span>
     													</div>
@@ -173,30 +180,53 @@
                                                     
                                                     <div class="form-group m-form__group row">
     													<label class="col-xl-3 col-lg-3 col-form-label">
+    														Avatar
+    													</label>
+    													<div class="col-xl-9 col-lg-9">
+                                                            <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                                <span class="btn btn-primary btn-file">
+                                                			  	  <span class="fileinput-new">Upload Avatar Image</span>
+                                                                  @if(!empty($user->avatar))
+                                                                    <span class="fileinput-exists"> Change</span>
+                                                                  @endif
+                                                                    
+                                                					<input type="file" name="avatar">
+                                                				</span>
+                                                                <span class="fileinput-filename"></span>
+                                                                <a href="#" class="close fileinput-exists" data-dismiss="fileinput" style="float: none">&times;</a>
+                                                                <br />
+                                                    			Image Dimension 80 x 80 px <br />
+                                                    			{!! SiteHelpers::showUploadedFile($user->avatar,'/uploads/users/',80,80) !!}
+                                                            </div>
+    													</div>
+    												</div>
+                                                    
+                                                    <div class="form-group m-form__group row">
+    													<label class="col-xl-3 col-lg-3 col-form-label">
     														 Preferred Language
     													</label>
     													<div class="col-xl-9 col-lg-9">
     														<select class="form-control" id="prefer_communication_with" name="prefer_communication_with">
                                                                 <option value="id">Bahasa Indonesia</option>
                                                                 <option value="ms">Bahasa Melayu</option>
-                                                                <option value="ca">Català</option>
+                                                                <option value="ca">Catala</option>
                                                                 <option value="da">Dansk</option>
                                                                 <option value="de">Deutsch</option>
                                                                 <option value="en" selected="selected">English</option>
-                                                                <option value="es">Español</option>
+                                                                <option value="es">Espanol</option>
                                                                 <option value="el">E???????</option>
-                                                                <option value="fr">Français</option>
+                                                                <option value="fr">Francais</option>
                                                                 <option value="hr">Hrvatski</option>
                                                                 <option value="it">Italiano</option>
                                                                 <option value="hu">Magyar</option>
                                                                 <option value="nl">Nederlands</option>
                                                                 <option value="no">Norsk</option>
                                                                 <option value="pl">Polski</option>
-                                                                <option value="pt">Português</option>
+                                                                <option value="pt">Portugues</option>
                                                                 <option value="fi">Suomi</option>
                                                                 <option value="sv">Svenska</option>
-                                                                <option value="tr">Türkçe</option>
-                                                                <option value="is">Íslenska</option>
+                                                                <option value="tr">Turkce</option>
+                                                                <option value="is">Islenska</option>
                                                                 <option value="cs">Ceština</option>
                                                                 <option value="ru">???????</option>
                                                                 <option value="th">???????</option>
@@ -214,10 +244,16 @@
     													<label class="col-xl-3 col-lg-3 col-form-label">
     														 Preferred Currency
     													</label>
+                                                        <?php  $currencyList=(CommonHelper::getCurrencyList()); if(empty($currencyList)){ $currencyList = array(); } ?>
     													<div class="col-xl-9 col-lg-9">
     														<select class="form-control" id="preferred_currency" name="preferred_currency">
-                                                                <option value="euro">Euro</option>
-                                                                <option value="dollar">Dollar</option>
+                                                                <option value="EUR">Currency</option>
+                                                                @foreach($currencyList as $currencyCode => $currencyName)
+
+                                                                    <option value="{{ $currencyCode }}" title="{{ $currencyName }}">{{ $currencyName }}
+                                                                </option>
+                                                    
+                                                                @endforeach
                                                             </select>
                                                             <span class="m-form__help">here we list our own list of currencies.</span>
     													</div>
@@ -265,8 +301,8 @@
                                                                                 <?php
                                                                                 if(!empty($destinations)) {
                                                                                     foreach ($destinations as $destination) {
-                                                                                        echo '<option value="'.$destination->id.'">'.$destination->category_name.'</option>'.PHP_EOL;
-                                                                                        if(!empty($destination->sub_destinations)) {
+                                                                                        echo '<option value="'.$destination["id"].'">'.$destination["name"].'</option>'.PHP_EOL;
+                                                                                        /*if(!empty($destination->sub_destinations)) {
                                                                                             foreach ($destination->sub_destinations as $sub_destination) {
                                                                                                 echo '<option value="'.$sub_destination->id.'">'.$sub_destination->category_name.'</option>'.PHP_EOL;
                                                                                                 if(!empty($sub_destination->sub_destinations)) {
@@ -275,7 +311,7 @@
                                                                                                     }
                                                                                                 }
                                                                                             }
-                                                                                        }
+                                                                                        }*/
                                                                                     }
                                                                                 }
                                                                                 ?>
@@ -288,21 +324,8 @@
                                                                             <p class="sub-des-heading wrong-selected-text">We can not make travel arrangements to "Delhi".</p>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center">
-                                                                        <p class="sub-des-heading suggestions-headin-tittle">The following alternatives could be interesting:</p>
-                                                                    </div>
-                                                                    <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
-                                                                        <ul class="personalized-suggestions-pannel-list-align">
-                                                                            <?php
-                                                                            if(!empty($destinations)) {
-                                                                                foreach ($destinations as $destination) {
-                                                                                    echo '<li><a href="#'.$destination->id.'">'.$destination->category_name.'</a></li>';
-                                                                                }
-                                                                            }
-                                                                            ?>
-                                                                        </ul>
-                                                                    </div>
-                                                                    <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-right">
+                                                                    
+                                                                    <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-right pref-top-pad">
                                                                         <input type="button" name="next"  data-next-id="travel-style" class="next btn btn-default" value="Continue" />
                                                                     </div>
                                                                 </div>
@@ -311,7 +334,7 @@
                                                             <div class="personalized-pefrences m--hide">
                                                                 <div class="row">
                                                                 <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center">
-                                                                    <h2 class="black-heading-big">Inspirations</h2>
+                                                                    <h2 class="black-heading-big">What inspires you?</h2>
                                                                 </div>
                                                                 <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center">
                                                                     <div class="row inspiration" id="inspiration">
@@ -333,7 +356,7 @@
                                                                     ?> 
                                                                     </div>                                                                   
                                                                 </div>
-                                                                <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center">
+                                                                <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center pref-top-pad">
                                                                     <div class="row">
                                                                         <div class="col-xl-6 col-sm-6 col-md-6 col-lg-6 m--align-left">                   
                                                                             <input type="button" name="previous" data-prev-id="holiday-destination" holiday-destination class="previous btn btn-default" value="Previous" />
@@ -372,7 +395,7 @@
                                                                             ?>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center">
+                                                                    <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center pref-top-pad">
                                                                         <div class="row">
                                                                             <div class="col-xl-6 col-sm-6 col-md-6 col-lg-6 m--align-left"> 
                                                                                 <input type="button" name="previous" data-prev-id="travel-style"  class="previous btn btn-default" value="Previous" />                           
@@ -391,14 +414,14 @@
                                                                         <p class="sub-des-heading">Tell us what you value - the more detailed the better.</p>
                                                                     </div>
                                                                     <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
-                                                                        <textarea class="form-control ps-text-area-style" name="note" placeholder="Further comments or wishes? A concrete trip tour, a special occasion such as A honeymoon or your approximate travel budget." id="preferences_note"></textarea>
+                                                                        <textarea class="form-control ps-text-area-style" name="note" placeholder="Further comments or wishes? A concrete trip tour, a special occasion such as A honeymoon." id="preferences_note"></textarea>
                                                                     </div> 
                                                                     
                                                                     <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 help-hover-icon">
                                                                         <a class="custom-tooltip" href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Your callback date can be selected in last step"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
                                                                     </div>
                                                                 
-                                                                    <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center">
+                                                                    <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center pref-top-pad">
                                                                         <div class="row">
                                                                             <div class="col-xl-6 col-sm-6 col-md-6 col-lg-6 m--align-left"> 
                                                                                 <input type="button" name="previous" data-prev-id="travel-style" class="previous btn btn-default" value="Previous" />
@@ -416,7 +439,7 @@
                                                                     <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center">
                                                                         <h2 class="black-heading-big">How many people travel?</h2>
                                                                     </div>
-                                                                 </div>   
+                                                                </div>   
                                                                 <div class="row m--align-center pref-botoom-pad">
                                                                     <div class="col-md-6 col-sm-6">
                                                                         <p class="sub-des-heading suggestions-headin-tittle spinner-label">Adults</p>
@@ -431,18 +454,17 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="row m--align-center pref-botoom-pad">
-                                                                        <div class="col-md-6 col-sm-6">
-                                                                            <p class="sub-des-heading suggestions-headin-tittle spinner-label">Youth</p>
-                                                                            <p class="smalldes-label">12-17 Years</p>
+                                                                    <div class="col-md-6 col-sm-6">
+                                                                        <p class="sub-des-heading suggestions-headin-tittle spinner-label">Youth</p>
+                                                                        <p class="smalldes-label">12-17 Years</p>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-6">
+                                                                        <div class="ps-youth-handle-counter ps-handle-counter">
+                                                                            <button type="button" class="spinner-btns counter-minus btn btn-primary">-</button>
+                                                                            <input class="spinner-input" name="youth" type="text" value="0" id="youth">
+                                                                            <button type="button" class="spinner-btns counter-plus btn btn-primary">+</button>
                                                                         </div>
-                                                                        <div class="col-md-6 col-sm-6">
-                                                                            <div class="ps-youth-handle-counter ps-handle-counter">
-                                                                                <button type="button" class="spinner-btns counter-minus btn btn-primary">-</button>
-                                                                                <input class="spinner-input" name="youth" type="text" value="0" id="youth">
-                                                                                <button type="button" class="spinner-btns counter-plus btn btn-primary">+</button>
-                                                                            </div>
-                                                                        </div>
-                                                                    
+                                                                    </div>                                                                    
                                                                 </div>
                                                                 <div class="row m--align-center pref-botoom-pad">
                                                                     <div class="col-md-6 col-sm-6">
@@ -470,9 +492,7 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                
-                                                            
-                                                                <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center">
+                                                                <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center pref-top-pad">
                                                                     <div class="row">
                                                                         <div class="col-xl-6 col-sm-6 col-md-6 col-lg-6 m--align-left"> 
                                                                             <input type="button" name="previous" data-prev-id="details" class="previous btn btn-default" value="Previous" />
@@ -482,11 +502,9 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            
                                                             </div>
                                                             <div class="personalized-pefrences m--hide">
                                                                 <div class="row">
-                                                                
                                                                     <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center">
                                                                         <h2 class="black-heading-big">When would you like to travel?</h2>
                                                                     </div>
@@ -505,12 +523,53 @@
                                                                                 <option value="4-5 Weeks">4-5 Weeks</option>
                                                                             </select>
                                                                         </div>
+                                                                        <div class="form-group pref-left-pad-10"> 
+                                                                            <div class="m-checkbox-list"> 
+																				<label class="m-checkbox m-checkbox--state-primary">
+																					<input type="checkbox" name="agree" id="agree" />
+																					I Agree
+																					<span></span>
+																				</label>
+																			</div>
+                                                                            <div class="error" id="error" style="display: none;">
+                                                                                Please check agree checkbox.
+                                                                            </div>
+                                                                            <span class="m-form__help">
+																				Some help text goes here
+																			</span>                                                                            
+                                                                        </div>
+                                                                        <div class="form-group pref-left-pad-10">
+                                                                            <div class="m-checkbox-list">
+																				<label class="m-checkbox m-checkbox--state-primary">
+																					<input type="checkbox" name="privacy_policy" id="privacy_policy" />
+																					<a href="https://www.iubenda.com/privacy-policy/70156957" class="iubenda-white iubenda-embed iub-legal-only iub-no-markup" title="Privacy Policy" target="_blank">Privacy Policy</a>
+																					<span></span>
+																				</label>
+                                                                            </div>
+                                                                            <span class="m-form__help">
+																				Some help text goes here
+																			</span>
+                                                                         </div>            
+																		 <div class="form-group pref-left-pad-10">
+                                                                            <div class="m-checkbox-list">
+                                                                            	<label class="m-checkbox m-checkbox--state-primary">
+																					<input type="checkbox" name="cookie_policy" id="cookie_policy" />
+																					<a href="https://www.iubenda.com/privacy-policy/70156957/cookie-policy" class="iubenda-white iubenda-embed iub-no-markup" title="Cookie Policy" target="_blank">Cookie Policy</a>
+																					<span></span>
+																				</label>
+                                                                            </div>
+                                                                            <span class="m-form__help">
+																				Some help text goes here
+																			</span>
+                                                                         </div>
                                                                     </div>
                                                                     <div class="help-hover-icon">
                                                                         <a class="custom-tooltip" href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Of course, we will let you know if the chosen travel period coincides with local holidays, festivals, high season or an unfavorable season." data-original-title="Of course, we will let you know if the chosen travel period coincides with local holidays, festivals, high season or an unfavorable season."><i class="fa fa-info-circle" aria-hidden="true"></i></a>
                                                                     </div>
-                                                                
-                                                                    <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center">
+                                                                    
+                                                                    
+                                                                    
+                                                                    <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center pref-top-pad">
                                                                         <div class="row">
                                                                             <div class="col-xl-6 col-sm-6 col-md-6 col-lg-6 m--align-left"> 
                                                                                 <input type="button" name="previous" data-prev-id="details" class="previous btn btn-default" value="Previous" />
@@ -521,13 +580,8 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            
-                                                        </form>
-                                                    
-                                                    
-                                                    
-                                                                                    
+                                                            </div>                                                            
+                                                        </form>                                                                                    
                                                  </div>                                                                                                     
                                             </div>
     										<!--end: Form Wizard Step 2-->
@@ -777,7 +831,6 @@
            });
            $("#preferences_submit_btn").click(function(e){ 
                 e.preventDefault();
-                console.log("pref");           
                 
                 var destinations=[];
                 var i = 0;
@@ -801,55 +854,59 @@
                 }); 
                 
                 var note = $("#preferences_note").text();
-                console.log(destinations);
-                console.log(insperations);
-                console.log(experiences);
                 
-                
-                
-                var fdata = new FormData();                
-                fdata.append("_token",$("input[name=_token]").val());
-                fdata.append("form_wizard",$("input[name=form_wizard_2]").val()); 
-                
-                fdata.append("destinations", destinations); 
-                fdata.append("inspirations", insperations);
-                fdata.append("experiences", experiences);
-                fdata.append("note", note);
-                fdata.append("adults",$("input[name=adults]").val());
-                fdata.append("youth",$("input[name=youth]").val());
-                fdata.append("children",$("input[name=children]").val());
-                fdata.append("toddlers",$("input[name=toddlers]").val());
-                
-                
-                fdata.append("earliest_arrival",$("input[name=preferences_arrive]").val());
-                fdata.append("late_check_out",$("input[name=preferences_late_check_out]").val());
-                
-                var stay_time=[];
-                $('#stay_time :selected').each(function(){
-                     stay_time[$(this).val()]=$(this).text();
-                });
-                
-                fdata.append("stay_time",stay_time);
-                $.ajax({
-                    url:"{{URL::to('personalized-service/ajax_save')}}",
-                    type:'POST',
-                    dataType:'json',
-                    contentType: false,
-                    processData: false,
-                    data:fdata,
-                    headers: {
-                        'Access-Control-Allow-Origin': '*'
-                    },
-                    success:function(response){
-                        if(response.status == 'success'){
-                            toastr.success(response.message);
-                            window.location.href="{{URL::to('dashboard')}}";
+                var error = true;
+                if($("#agree").is(":checked")){
+                    error = false;
+                }
+                if(error){ console.log("error");
+                    $("#error").css("display", "");
+                }else{                    
+                    $("#error").css("display", "none");
+                    var fdata = new FormData();                
+                    fdata.append("_token",$("input[name=_token]").val());
+                    fdata.append("form_wizard",$("input[name=form_wizard_2]").val()); 
+                    
+                    fdata.append("destinations", destinations); 
+                    fdata.append("inspirations", insperations);
+                    fdata.append("experiences", experiences);
+                    fdata.append("note", note);
+                    fdata.append("adults",$("input[name=adults]").val());
+                    fdata.append("youth",$("input[name=youth]").val());
+                    fdata.append("children",$("input[name=children]").val());
+                    fdata.append("toddlers",$("input[name=toddlers]").val());
+                    
+                    
+                    fdata.append("earliest_arrival",$("input[name=preferences_arrive]").val());
+                    fdata.append("late_check_out",$("input[name=preferences_late_check_out]").val());
+                    
+                    var stay_time=[];
+                    $('#stay_time :selected').each(function(){
+                         stay_time[$(this).val()]=$(this).text();
+                    });
+                    
+                    fdata.append("stay_time",stay_time);
+                    $.ajax({
+                        url:"{{URL::to('personalized-service/ajax_save')}}",
+                        type:'POST',
+                        dataType:'json',
+                        contentType: false,
+                        processData: false,
+                        data:fdata,
+                        headers: {
+                            'Access-Control-Allow-Origin': '*'
+                        },
+                        success:function(response){
+                            if(response.status == 'success'){
+                                toastr.success(response.message);
+                                window.location.href="{{URL::to('dashboard')}}";
+                            }
+                            else{
+                                toastr.error(response.message);
+                            }
                         }
-                        else{
-                            toastr.error(response.message);
-                        }
-                    }
-                }); 
+                    }); 
+                }
            });
         });
     </script>

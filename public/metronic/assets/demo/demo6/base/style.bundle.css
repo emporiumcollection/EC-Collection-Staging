@@ -54898,3 +54898,13 @@ i.m-menu__link-icon.fa {
 .display-none{
     display: none !important;
 }
+.pref-top-pad{
+  padding-top: 40px;  
+} 
+.pref-left-pad-10{
+    padding-left: 10px;
+}
+.error{
+    color: red;
+    width: 100%;
+}

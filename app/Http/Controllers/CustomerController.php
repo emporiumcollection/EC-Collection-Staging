@@ -1033,11 +1033,11 @@ return Redirect::to('customer/profile')->with('message', \SiteHelpers::alert('er
         );
         $resultContract= $contractObject->getRows($params); 
         
-        $temp = $this->get_destinations();
+        $temp = $this->get_destinations_new();
         
         //print_r($temp);
         
-        $this->data['destinations'] = $temp['sub_destinations'];
+        $this->data['destinations'] = $temp;
         $this->data['inspirations'] = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_custom_title')->where('category_published', 1)->where('parent_category_id', 627)->get();
         $this->data['experiences'] = \DB::table('tb_categories')->select('id', 'parent_category_id', 'category_name', 'category_image', 'category_custom_title')->where('category_published', 1)->where('parent_category_id', 8)->get();
         
@@ -1054,42 +1054,26 @@ return Redirect::to('customer/profile')->with('message', \SiteHelpers::alert('er
         return view($file_name, $this->data);
     }
     
-    public function get_destinations($id = 0) {
+    public function get_destinations_new($parent = 0, $spacing = '', $folder_tree_array = '') {
 
-        $_chldIds = array();
-        
-        if($id == 0) {
-            $sub_destinations = \DB::table('tb_categories')->where('parent_category_id', 0)->where('id', '!=', 8)->get();
-        }
-        else {
-            $sub_destinations = \DB::table('tb_categories')->where('parent_category_id', $id)->get();
-        }
-        
-        if(!empty($sub_destinations)) {
-            foreach ($sub_destinations as $key => $sub_destination) {
-                
-                $chldIds = array();
-                
-                $chldIds[] = $sub_destination->id;
-                $temp = $this->get_destinations($sub_destination->id);
-                $sub_destinations[$key]->sub_destinations = $temp['sub_destinations'];
-                $chldIds = array_merge($chldIds, $temp['chldIds']);
-                $_chldIds = array_merge($_chldIds, $chldIds);
-                
-                $getcats = '';
-                if (!empty($chldIds)) {
-                    $getcats = " AND (" . implode(" || ", array_map(function($v) {
-                                        return sprintf("FIND_IN_SET('%s', property_category_id)", $v);
-                                    }, array_values($chldIds))) . ")";
-                    $preprops = DB::select(DB::raw("SELECT COUNT(*) AS total_rows FROM tb_properties WHERE property_status = '1' $getcats"));
-                    if($preprops[0]->total_rows == 0) {
-                        unset($sub_destinations[$key]);
-                    }
-                }
-            }
-        }
-        
-        return array('sub_destinations' => $sub_destinations, 'chldIds' => $_chldIds);
+        if (!is_array($folder_tree_array))
+		  $folder_tree_array = array();          
+		
+		  $filter = " AND parent_category_id='".$parent."'";
+		  $params = array(
+			'params'	=> $filter,
+			'order'		=> 'asc'
+		  );
+		  // Get Query 
+    	  $results = \DB::table('tb_categories')->where('parent_category_id', $parent)->where('id', '!=', 8)->get();
+          //print_r($results); die;
+          if ($results) {
+    		foreach($results as $row) {
+    		  $folder_tree_array[] = array("id" => $row->id, "name" => $spacing . $row->category_name);
+    		  $folder_tree_array = $this->get_destinations_new($row->id, $spacing . '', $folder_tree_array);
+    		}
+    	  }          
+    	  return $folder_tree_array;
     }
     
     public function whoIam() {
