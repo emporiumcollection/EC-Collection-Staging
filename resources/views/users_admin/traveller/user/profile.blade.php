@@ -742,7 +742,7 @@ $(document).ready(function(){
                 success:function(response){
                     if(response.status == 'success'){
                         toastr.success(response.message);
-                        //window.location.href="{{URL::to('dashboard')}}";
+                        window.location.href="{{URL::to('user/profile')}}";
                     }
                     else{
                         toastr.error(response.message);
