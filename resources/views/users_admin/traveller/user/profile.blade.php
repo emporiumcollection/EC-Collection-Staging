@@ -155,8 +155,7 @@
                                     				</span>
                                                     <span class="fileinput-filename"></span>
                                                     <a href="#" class="close fileinput-exists" data-dismiss="fileinput" style="float: none">&times;</a>
-                                                    <br />
-                                        			Image Dimension 80 x 80 px <br />
+                                                    <br />                                        			
                                         			{!! SiteHelpers::showUploadedFile($info->avatar,'/uploads/users/',80,80) !!}
                                                 </div>
         									</div>
