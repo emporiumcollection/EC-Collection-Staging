@@ -21,8 +21,8 @@ var WizardDemo = function () {
             else{
                 var _wizard_step = wizard.getStep();
                 //var base_url = $('#base_url').val();
-                if(_wizard_step == '1'){
-                       wizard_step_1();
+                if(_wizard_step == '2'){
+                       wizard_step_2();
                 }
                 
             }
@@ -108,7 +108,7 @@ jQuery(document).ready(function() {
     WizardDemo.init();
 });
 
-function wizard_step_1(){
+function wizard_step_2(){
     var fdata = new FormData();
     //fdata.append("email",$("input[name=email]").val());
     fdata.append("first_name",$("input[name=first_name]").val());

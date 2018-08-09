@@ -178,6 +178,7 @@ class PersonalizedServiceController extends Controller {
         
         $customer_id = \Auth::user()->id;
         //echo $request->input('late_check_out');
+        $ps_id = $request->input('ps_id');
         $params = array(
                         'customer_id' => $customer_id,
                         'adults' => $request->input('adults'),
@@ -197,17 +198,22 @@ class PersonalizedServiceController extends Controller {
                         'updated' => date("Y-m-d H:i:s")
                     );
         //print_r($params); die;
-        \DB::table('tb_personalized_services')->insert($params);
-        
-        $_user = User::find(\Session::get('uid'));
-        $_user->form_wizard = $request->input('form_wizard');
-        $_user->new_user = 0;
-        $_user->save();
-        
-        //return Redirect::to('personalized-service')->with(['info' => 'Your Info Saved Successfully.']);
-        $return_array['status'] = 'success';
-        $return_array['message'] = 'Personlized preferences has been saved!';
-        
+        if(!empty($ps_id)){
+            \DB::table('tb_personalized_services')->where('ps_id', $ps_id)->update($params);
+            $return_array['status'] = 'success';
+            $return_array['message'] = 'Personlized preferences has been updated!';
+        }else{
+            \DB::table('tb_personalized_services')->insert($params);
+            
+            $_user = User::find(\Session::get('uid'));
+            $_user->form_wizard = $request->input('form_wizard');
+            $_user->new_user = 0;
+            $_user->save();
+            
+            //return Redirect::to('personalized-service')->with(['info' => 'Your Info Saved Successfully.']);
+            $return_array['status'] = 'success';
+            $return_array['message'] = 'Personlized preferences has been saved!';
+        }
         echo json_encode($return_array);
         exit;
     }

@@ -136,7 +136,15 @@
         										Phone Number
         									</label>
         									<div class="col-sm-12 col-md-7">
-        										<input name="txtmobileNumber" type="text" id="txtmobileNumber" class="form-control m-input" required  value="{{ $info->mobile_number }}" />  
+                                                <div class="input-group m-input-group m-input-group--square">
+													<div class="input-group-prepend">
+														<span class="input-group-text" id="basic-addon1">
+															{{ $info->mobile_code }}
+														</span>
+													</div>
+													<input name="txtmobileNumber" type="text" id="txtmobileNumber" class="form-control m-input" required  value="{{ $info->mobile_number }}" />
+												</div>    	
+        										  
         									</div>
         								</div>
                                         <div class="form-group m-form__group row">
@@ -155,7 +163,8 @@
                                     				</span>
                                                     <span class="fileinput-filename"></span>
                                                     <a href="#" class="close fileinput-exists" data-dismiss="fileinput" style="float: none">&times;</a>
-                                                    <br />                                        			
+                                                    <br /> 
+                                                    Image Dimension 80 x 80 px <br />                                       			
                                         			{!! SiteHelpers::showUploadedFile($info->avatar,'/uploads/users/',80,80) !!}
                                                 </div>
         									</div>
@@ -179,35 +188,13 @@
         									<div class="col-sm-12 col-md-7">
         										<select class="form-control" id="prefer_communication_with" name="prefer_communication_with">
                                                     <option value="en"  <?php echo $info->prefer_communication_with=="en" ? "selected='selected'" : "" ?>>English</option>
-                                                    <option value="id"  <?php echo $info->prefer_communication_with=="id" ? "selected='selected'" : "" ?> >Bahasa Indonesia</option>
-                                                    <option value="ms"  <?php echo $info->prefer_communication_with=="ms" ? "selected='selected'" : "" ?>>Bahasa Melayu</option>
-                                                    <option value="ca"  <?php echo $info->prefer_communication_with=="ca" ? "selected='selected'" : "" ?>>Catala</option>
-                                                    <option value="da"  <?php echo $info->prefer_communication_with=="da" ? "selected='selected'" : "" ?>>Dansk</option>
-                                                    <option value="de"  <?php echo $info->prefer_communication_with=="de" ? "selected='selected'" : "" ?>>Deutsch</option>
-                                                    
-                                                    <option value="es"  <?php echo $info->prefer_communication_with=="es" ? "selected='selected'" : "" ?>>Espanol</option>
-                                                    <option value="el"  <?php echo $info->prefer_communication_with=="el" ? "selected='selected'" : "" ?>>E???????</option>
-                                                    <option value="fr"  <?php echo $info->prefer_communication_with=="fr" ? "selected='selected'" : "" ?>>Francais</option>
-                                                    <option value="hr"  <?php echo $info->prefer_communication_with=="hr" ? "selected='selected'" : "" ?>>Hrvatski</option>
-                                                    <option value="it"  <?php echo $info->prefer_communication_with=="it" ? "selected='selected'" : "" ?>>Italiano</option>
-                                                    <option value="hu"  <?php echo $info->prefer_communication_with=="hu" ? "selected='selected'" : "" ?>>Magyar</option>
-                                                    <option value="nl"  <?php echo $info->prefer_communication_with=="nl" ? "selected='selected'" : "" ?>>Nederlands</option>
-                                                    <option value="no"  <?php echo $info->prefer_communication_with=="no" ? "selected='selected'" : "" ?>>Norsk</option>
-                                                    <option value="pl"  <?php echo $info->prefer_communication_with=="pl" ? "selected='selected'" : "" ?>>Polski</option>
-                                                    <option value="pt"  <?php echo $info->prefer_communication_with=="pt" ? "selected='selected'" : "" ?>>Portugues</option>
-                                                    <option value="fi"  <?php echo $info->prefer_communication_with=="fi" ? "selected='selected'" : "" ?>>Suomi</option>
-                                                    <option value="sv"  <?php echo $info->prefer_communication_with=="sv" ? "selected='selected'" : "" ?>>Svenska</option>
-                                                    <option value="tr"  <?php echo $info->prefer_communication_with=="tr" ? "selected='selected'" : "" ?>>Turkce</option>
-                                                    <option value="is"  <?php echo $info->prefer_communication_with=="is" ? "selected='selected'" : "" ?>>Islenska</option>
-                                                    <option value="cs"  <?php echo $info->prefer_communication_with=="cs" ? "selected='selected'" : "" ?>>Cestina</option>
-                                                    <option value="ru"  <?php echo $info->prefer_communication_with=="ru" ? "selected='selected'" : "" ?>>???????</option>
-                                                    <option value="th"  <?php echo $info->prefer_communication_with=="th" ? "selected='selected'" : "" ?>>???????</option>
-                                                    <option value="zh"  <?php echo $info->prefer_communication_with=="zh" ? "selected='selected'" : "" ?>>?? (??)</option>
-                                                    <option value="zh-TW"  <?php echo $info->prefer_communication_with=="zh-TW" ? "selected='selected'" : "" ?>>?? (??)</option>
-                                                    <option value="ja"  <?php echo $info->prefer_communication_with=="ja" ? "selected='selected'" : "" ?>>???</option>
-                                                    <option value="ko"  <?php echo $info->prefer_communication_with=="ko" ? "selected='selected'" : "" ?>>???</option>
+                                                    <option value="de"  <?php echo $info->prefer_communication_with=="de" ? "selected='selected'" : "" ?>>Deutsch</option>                                                    
+                                                    <option value="es"  <?php echo $info->prefer_communication_with=="es" ? "selected='selected'" : "" ?>>Espanol</option>                                                    
+                                                    <option value="fr"  <?php echo $info->prefer_communication_with=="fr" ? "selected='selected'" : "" ?>>Francais</option>                                                    
+                                                    <option value="it"  <?php echo $info->prefer_communication_with=="it" ? "selected='selected'" : "" ?>>Italiano</option>                                                    
+                                                    <option value="nl"  <?php echo $info->prefer_communication_with=="nl" ? "selected='selected'" : "" ?>>Nederlands</option>                                                    
                                                 </select>
-                                                  
+                                                <span class="m-form__help">We'll send you messages in this language.</span>  
         									</div>
         								</div>
                                         <div class="form-group m-form__group row">
@@ -224,7 +211,7 @@
                                                     </option>                                        
                                                     @endforeach
                                                 </select>
-                                                 
+                                                <span class="m-form__help">Select the currency in which we display prices.</span> 
         									</div>
         								</div>
                                         
@@ -279,8 +266,9 @@
                         		{!! Form::close() !!}
                             </div>
         					<div class="tab-pane " id="preferences">
+                                
                                 <form action="{{URL::to('personalized-service/save')}}" method="POST">
-                                                            
+                                        <input type="hidden" name="ps_id" value="{{@isset($preferences->ps_id) ? $preferences->ps_id : ''}}" />                    
                                         <div class="personalized-pefrences pref-top-pad">
                                         <div class="row">
                                             <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center">
@@ -290,21 +278,20 @@
                                             
 								            <div class="col-xl-12 col-lg-12">
                                                <div class="choosen-input-align">
+                                                    <?php
+                                                        $dest_array= array();
+                                                        if(isset($preferences->destinations)){
+                                                            $dest_array = explode(',', $preferences->destinations);
+                                                        }
+                                                    ?>
                                                     <select name="destinations[]" data-placeholder="Ex: Argentina, South Africa, Cape Town" class="form-control chosen-select-default chosen-select-input-style" multiple tabindex="4" id="destinationSelect">
-                                                        <?php
+                                                        <?php                                                        
                                                         if(!empty($destinations)) {
                                                             foreach ($destinations as $destination) {
-                                                                echo '<option value="'.$destination['id'].'">'.$destination['name'].'</option>'.PHP_EOL;
-                                                                /*if(!empty($destination->sub_destinations)) {
-                                                                    foreach ($destination->sub_destinations as $sub_destination) {
-                                                                        echo '<option value="'.$sub_destination->id.'">'.$sub_destination->category_name.'</option>'.PHP_EOL;
-                                                                        if(!empty($sub_destination->sub_destinations)) {
-                                                                            foreach ($sub_destination->sub_destinations as $sub_dest) {
-                                                                                echo '<option value="'.$sub_dest->id.'">'.$sub_dest->category_name.'</option>'.PHP_EOL;
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                }*/
+                                                                
+                                                                $selected = in_array($destination['id'], $dest_array) ? "selected='selected'" : ""; 
+                                                                
+                                                                echo '<option value="'.$destination['id'].'" '.$selected.' >'.$destination['name'].'</option>'.PHP_EOL;                                                                
                                                             }
                                                         }
                                                         ?>
@@ -332,15 +319,23 @@
                                         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center">
                                             <div class="row inspiration" id="inspiration">
                                             <?php
+                                                $insp_array= array();
+                                                if(isset($preferences->inspirations)){
+                                                    $insp_array = explode(',', $preferences->inspirations);
+                                                }
+                                            ?>
+                                            <?php
                                             if(!empty($inspirations)) {
                                                 foreach ($inspirations as $inspiration) {
+                                                    $checked = in_array($inspiration->id, $insp_array) ? "checked='checked'" : ""; 
+                                                    $active = in_array($inspiration->id, $insp_array) ? "active" : "";
                                                     ?>
                                                     <div class="col-md-3 col-sm-6">
                                                         
-                                                                <label for="inspiration_{{$inspiration->id}}" style="background-image: url('{{URL::to('uploads/category_imgs/'.$inspiration->category_image)}}');" class="personalized-service-checkbox-label">
+                                                                <label for="inspiration_{{$inspiration->id}}" style="background-image: url('{{URL::to('uploads/category_imgs/'.$inspiration->category_image)}}');" class="personalized-service-checkbox-label <?php echo $active; ?>">
                                                                     <span class="selected-chexkbox"><i class="fa fa-check" aria-hidden="true"></i></span>{{$inspiration->category_name}}
                                                                 </label>
-                                                                <input id="inspiration_{{$inspiration->id}}" class="personalized-service-checkbox-input" name="inspirations[]" value="{{$inspiration->id}}" type="checkbox">
+                                                                <input id="inspiration_{{$inspiration->id}}" class="personalized-service-checkbox-input" name="inspirations[]" value="{{$inspiration->id}}" type="checkbox" <?php echo $checked; ?>>
                                                             
                                                     </div>
                                                     <?php
@@ -369,16 +364,24 @@
                                             <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center">
                                                 <div class="row exprerience">
                                                     <?php
+                                                        $exp_array= array();
+                                                        if(isset($preferences->experiences)){
+                                                            $exp_array = explode(',', $preferences->experiences);
+                                                        }
+                                                    ?>
+                                                    <?php
                                                     if(!empty($experiences)) {
                                                         foreach ($experiences as $experience) {
+                                                            $checked = in_array($experience->id, $exp_array) ? "checked='checked'" : ""; 
+                                                            $active = in_array($experience->id, $exp_array) ? "active" : "";
                                                             ?>
                                                             <div class="col-md-3 col-sm-6">
                                                                 
                                                                     <div class="form-group ps-fields-align">
-                                                                        <label for="experience_{{$experience->id}}" style="background-image: url('{{URL::to('uploads/category_imgs/'.$experience->category_image)}}');" class="personalized-service-checkbox-label">
+                                                                        <label for="experience_{{$experience->id}}" style="background-image: url('{{URL::to('uploads/category_imgs/'.$experience->category_image)}}');" class="personalized-service-checkbox-label <?php echo $active; ?>">
                                                                             <span class="selected-chexkbox"><i class="fa fa-check" aria-hidden="true"></i></span>{{$experience->category_name}}
                                                                         </label>
-                                                                        <input id="experience_{{$experience->id}}" class="personalized-service-checkbox-input" name="experiences[]" value="{{$experience->id}}" type="checkbox">
+                                                                        <input id="experience_{{$experience->id}}" class="personalized-service-checkbox-input" name="experiences[]" value="{{$experience->id}}" type="checkbox" <?php echo $checked; ?>>
                                                                     </div>
                                                                 
                                                             </div>
@@ -407,7 +410,7 @@
                                                 <p class="sub-des-heading">Tell us what you value - the more detailed the better.</p>
                                             </div>
                                             <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
-                                                <textarea class="form-control ps-text-area-style" name="note" placeholder="Further comments or wishes? A concrete trip tour, a special occasion such as A honeymoon." id="preferences_note"></textarea>
+                                                <textarea class="form-control ps-text-area-style" name="note" placeholder="Further comments or wishes? A concrete trip tour, a special occasion such as A honeymoon." id="preferences_note">{{@isset($preferences->note) ? $preferences->note : ''}}</textarea>
                                             </div> 
                                             
                                             <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 help-hover-icon">
@@ -441,7 +444,7 @@
                                             <div class="col-md-6 col-sm-6">
                                                 <div class="ps-adults-handle-counter ps-handle-counter">
                                                     <button type="button" class="spinner-btns counter-minus btn btn-primary">-</button>
-                                                    <input class="spinner-input" name="adults" type="text" value="2" id="adults">
+                                                    <input class="spinner-input" name="adults" type="text" value="{{@isset($preferences->adults) ? $preferences->adults : 2}}" id="adults">
                                                     <button type="button" class="spinner-btns counter-plus btn btn-primary">+</button>
                                                 </div>
                                             </div>
@@ -454,7 +457,7 @@
                                             <div class="col-md-6 col-sm-6">
                                                 <div class="ps-youth-handle-counter ps-handle-counter">
                                                     <button type="button" class="spinner-btns counter-minus btn btn-primary">-</button>
-                                                    <input class="spinner-input" name="youth" type="text" value="0" id="youth">
+                                                    <input class="spinner-input" name="youth" type="text" value="{{@isset($preferences->youth) ? $preferences->youth : 0}}" id="youth">
                                                     <button type="button" class="spinner-btns counter-plus btn btn-primary">+</button>
                                                 </div>
                                             </div>                                                                    
@@ -467,20 +470,20 @@
                                             <div class="col-md-6 col-sm-6">
                                                 <div class="ps-children-handle-counter ps-handle-counter">
                                                     <button type="button" class="spinner-btns counter-minus btn btn-primary">-</button>
-                                                    <input class="spinner-input" name="children" type="text" value="0" id="children">
+                                                    <input class="spinner-input" name="children" type="text" value="{{@isset($preferences->children) ? $preferences->children : 0}}" id="children">
                                                     <button type="button" class="spinner-btns counter-plus btn btn-primary">+</button>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row m--align-center pref-botoom-pad"> 
                                             <div class="col-md-6 col-sm-6">
-                                                <p class="sub-des-heading suggestions-headin-tittle spinner-label">toddlers</p>
+                                                <p class="sub-des-heading suggestions-headin-tittle spinner-label">Toddlers</p>
                                                 <p class="smalldes-label">under 2 Years</p>
                                             </div>
                                             <div class="col-md-6 col-sm-6">
                                                 <div class="ps-toddlers-handle-counter ps-handle-counter">
                                                     <button type="button" class="spinner-btns counter-minus btn btn-primary">-</button>
-                                                    <input class="spinner-input" name="toddlers" type="text" value="0" id="toddlers">
+                                                    <input class="spinner-input" name="toddlers" type="text" value="{{@isset($preferences->toddlers) ? $preferences->toddlers : 0}}" id="toddlers">
                                                     <button type="button" class="spinner-btns counter-plus btn btn-primary">+</button>
                                                 </div>
                                             </div>
@@ -504,22 +507,24 @@
                                             <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
                                                 <div id="t-preferences-picker" class="rsidebar datepic-max-width t-datepicker">
                                                     
-                                                        <div class="t-check-in"></div>
+                                                        <div class="t-check-in"></div>  
                                                         <div class="t-check-out"></div>
+                                                        <input type="hidden" value="{{@isset($preferences->earliest_arrival) ? $preferences->earliest_arrival : ''}}" name="hid_preferences_arrive" id="hid_preferences_arrive">
+                                                        <input type="hidden" value="{{@isset($preferences->late_check_out) ? $preferences->late_check_out : ''}}" name="hid_preferences_late_check_out" id="hid_preferences_late_check_out">  
                                                     
                                                 </div>
                                                 <div class="form-group">
                                                     <select class="form-control ps-input-style ps-input-width" name="stay_time" id="stay_time">
-                                                        <option value="1-2 Weeks">1-2 Weeks</option>
-                                                        <option value="2-3 Weeks">2-3 Weeks</option>
-                                                        <option value="3-4 Weeks">3-4 Weeks</option>
-                                                        <option value="4-5 Weeks">4-5 Weeks</option>
+                                                        <option value="1-2 Weeks" {{@isset($preferences->stay_time) ? $preferences->stay_time=='1-2 Weeks' ? "selected='selected'" : "" : ""}}>1-2 Weeks</option>
+                                                        <option value="2-3 Weeks" {{@isset($preferences->stay_time) ? $preferences->stay_time=='2-3 Weeks' ? "selected='selected'" : "" : ""}}>2-3 Weeks</option>
+                                                        <option value="3-4 Weeks" {{@isset($preferences->stay_time) ? $preferences->stay_time=='3-4 Weeks' ? "selected='selected'" : "" : ""}}>3-4 Weeks</option>
+                                                        <option value="4-5 Weeks" {{@isset($preferences->stay_time) ? $preferences->stay_time=='4-5 Weeks' ? "selected='selected'" : "" : ""}}>4-5 Weeks</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group pref-left-pad-10"> 
                                                     <div class="m-checkbox-list"> 
 														<label class="m-checkbox m-checkbox--state-primary">
-															<input type="checkbox" name="agree" id="agree" />
+															<input type="checkbox" name="agree" id="agree" checked="checked" />
 															I Agree
 															<span></span>
 														</label>
@@ -573,7 +578,25 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>                                                            
+                                    </div>
+                                    <div class="personalized-pefrences m--hide  pref-top-pad">
+                                        <div class="row">
+                                            <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center">
+                                                <h2 class="black-heading-big">Welcome</h2>
+                                            </div>
+                                            <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
+                                                
+                                            </div>                                                                                                                                        
+                                            <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center pref-top-pad">
+                                                <div class="row">
+                                                    <div class="col-xl-6 col-sm-6 col-md-6 col-lg-6 m--align-left"> 
+                                                        <input type="button" name="previous" data-prev-id="details" class="previous btn btn-default" value="Previous" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                                                                                
                                 </form> 
                             </div>
         				</div>
@@ -625,6 +648,26 @@
             return false;
         });
         
+        var t_chk_v = $("#hid_preferences_arrive").val();
+        var t_chk_out_v = $("#hid_preferences_late_check_out").val();
+        var chk_date = ''; 
+        if(t_chk_v != '' && t_chk_v != '1970-01-01'){
+            var dt = new Date(t_chk_v);
+            var t_chk_v_year = dt.getFullYear(); 
+            var t_chk_v_month = dt.getMonth(); 
+            var t_chk_v_day = dt.getDate(); 
+            chk_date = new Date(t_chk_v_year,t_chk_v_month,t_chk_v_day)
+        }
+        var chk_out_date = ''; 
+        if(t_chk_out_v != '' && t_chk_out_v != '1970-01-01'){
+            var dt_out = new Date(t_chk_out_v);
+            var t_chk_v_out_year = dt_out.getFullYear(); 
+            var t_chk_v_out_month = dt_out.getMonth(); 
+            var t_chk_v_out_day = dt_out.getDate(); 
+            chk_out_date = new Date(t_chk_v_out_year,t_chk_v_out_month,t_chk_v_out_day);
+        }
+        
+        
         $('#t-preferences-picker').tDatePicker({
             'numCalendar':'1',
             'autoClose':true,
@@ -638,8 +681,10 @@
             'titleDateRanges':'days',
             'iconDate':'<i class="fa fa-calendar"></i>',
             'limitDateRanges':'365',
-            'dateCheckIn':'@if(isset($_GET['arrive']) && $_GET['arrive']!=''){{$_GET['arrive']}}@else{{'null'}}@endif',
-            'dateCheckOut':'@if(isset($_GET['departure']) && $_GET['departure']!=''){{$_GET['departure']}}@else{{'null'}}@endif'
+            'dateCheckIn':chk_date,
+            'dateCheckOut':chk_out_date,
+            //'dateCheckIn':'@if(isset($_GET['preferences_arrive']) && $_GET['preferences_arrive']!=''){{$_GET['preferences_arrive']}}@else{{'null'}}@endif',
+            //'dateCheckOut':'@if(isset($_GET['preferences_late_check_out']) && $_GET['preferences_late_check_out']!=''){{$_GET['preferences_late_check_out']}}@else{{'null'}}@endif'
         });
         
         
@@ -696,7 +741,7 @@ $(document).ready(function(){
            k++;
         }); 
         
-        var note = $("#preferences_note").text();
+        var note = $("#preferences_note").val();
         
         var error = true;
         if($("#agree").is(":checked")){
@@ -706,7 +751,8 @@ $(document).ready(function(){
             $("#error").css("display", "");
         }else{                    
             $("#error").css("display", "none");
-            var fdata = new FormData();                
+            var fdata = new FormData();  
+            fdata.append("ps_id", $("input[name=ps_id]").val());               
             fdata.append("_token",$("input[name=_token]").val());
             fdata.append("form_wizard",$("input[name=form_wizard_2]").val()); 
             
@@ -722,13 +768,9 @@ $(document).ready(function(){
             
             fdata.append("earliest_arrival",$("input[name=preferences_arrive]").val());
             fdata.append("late_check_out",$("input[name=preferences_late_check_out]").val());
+                    
+            fdata.append("stay_time",$('#stay_time :selected').val());
             
-            var stay_time=[];
-            $('#stay_time :selected').each(function(){
-                 stay_time[$(this).val()]=$(this).text();
-            });
-            
-            fdata.append("stay_time",stay_time);
             $.ajax({
                 url:"{{URL::to('personalized-service/ajax_save')}}",
                 type:'POST',
@@ -742,7 +784,9 @@ $(document).ready(function(){
                 success:function(response){
                     if(response.status == 'success'){
                         toastr.success(response.message);
-                        window.location.href="{{URL::to('user/profile')}}";
+                        current_fs = $("#preferences_submit_btn").closest( ".personalized-pefrences" );
+                        next_fs = $(current_fs).next(".personalized-pefrences").removeClass('m--hide');                    
+                        current_fs.addClass('m--hide');
                     }
                     else{
                         toastr.error(response.message);

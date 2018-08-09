@@ -52,7 +52,7 @@
 <!--begin: Form Wizard Nav -->
 									<div class="m-wizard__nav">
 										<div class="m-wizard__steps">
-											<div class="m-wizard__step m-wizard__step--current" m-wizard-target="m_wizard_form_step_1" class="wizard_step_1">
+                                            <div class="m-wizard__step m-wizard__step--current" m-wizard-target="m_wizard_form_step_1" class="wizard_step_1">
 												<div class="m-wizard__step-info">
 													<a href="#" class="m-wizard__step-number">
 														<span>
@@ -65,7 +65,7 @@
 														<span></span>
 													</div>
 													<div class="m-wizard__step-label">
-														Personal Information
+														Welcome
 													</div>
 												</div>
 											</div>
@@ -75,6 +75,23 @@
 														<span>
 															<span>
 																2
+															</span>
+														</span>
+													</a>
+													<div class="m-wizard__step-line">
+														<span></span>
+													</div>
+													<div class="m-wizard__step-label">
+														Personal Information
+													</div>
+												</div>
+											</div>
+											<div class="m-wizard__step" m-wizard-target="m_wizard_form_step_3" class="wizard_step_3">
+												<div class="m-wizard__step-info">
+													<a href="#" class="m-wizard__step-number">
+														<span>
+															<span>
+																3
 															</span>
 														</span>
 													</a>
@@ -103,8 +120,30 @@
                                         {!! Form::open(array('url'=>'#', 'class'=>'m-form m-form--label-align-left- m-form--state- ', 'id'=>'traveller_form' ,'files' => true)) !!}
                                         <div class="m-portlet__body m-portlet__body--no-padding">
                                             <input type="hidden" name="base_url" id="base_url" value="{{ url() }}" />
-                                            <!--begin: Form Wizard Step 1-->
-    										<div class="m-wizard__form-step m-wizard__form-step--current" id="m_wizard_form_step_1">
+                                            <div class="m-wizard__form-step m-wizard__form-step--current" id="m_wizard_form_step_1">
+                                                <input name="form_wizard" type="hidden" id="form_wizard" value="1" />  
+    											<div class="m-form__section m-form__section--first">
+                                                    <div class="m-form__heading">
+    													<h3 class="m-form__heading-title">
+    														Welcome
+    													</h3>
+    												</div>
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+    												
+                                                    
+                                                    
+                                                    
+                                                    
+    											</div>
+                                            </div>
+                                            <!--begin: Form Wizard Step 2-->                                            
+    										<div class="m-wizard__form-step" id="m_wizard_form_step_2">
                                                 <input name="form_wizard" type="hidden" id="form_wizard" value="1" />  
     											<div class="m-form__section m-form__section--first">
                                                     <div class="m-form__heading">
@@ -194,7 +233,8 @@
                                                 				</span>
                                                                 <span class="fileinput-filename"></span>
                                                                 <a href="#" class="close fileinput-exists" data-dismiss="fileinput" style="float: none">&times;</a>
-                                                                <br />                                                    			
+                                                                <br /> 
+                                                                Image Dimension 80 x 80 px <br />                                                   			
                                                     			{!! SiteHelpers::showUploadedFile($user->avatar,'/uploads/users/',80,80) !!}
                                                             </div>
     													</div>
@@ -206,33 +246,12 @@
     													</label>
     													<div class="col-xl-9 col-lg-9">
     														<select class="form-control" id="prefer_communication_with" name="prefer_communication_with">
-                                                                <option value="id">Bahasa Indonesia</option>
-                                                                <option value="ms">Bahasa Melayu</option>
-                                                                <option value="ca">Catala</option>
-                                                                <option value="da">Dansk</option>
-                                                                <option value="de">Deutsch</option>
-                                                                <option value="en" selected="selected">English</option>
-                                                                <option value="es">Espanol</option>
-                                                                <option value="el">E???????</option>
-                                                                <option value="fr">Francais</option>
-                                                                <option value="hr">Hrvatski</option>
-                                                                <option value="it">Italiano</option>
-                                                                <option value="hu">Magyar</option>
-                                                                <option value="nl">Nederlands</option>
-                                                                <option value="no">Norsk</option>
-                                                                <option value="pl">Polski</option>
-                                                                <option value="pt">Portugues</option>
-                                                                <option value="fi">Suomi</option>
-                                                                <option value="sv">Svenska</option>
-                                                                <option value="tr">Turkce</option>
-                                                                <option value="is">Islenska</option>
-                                                                <option value="cs">Ceština</option>
-                                                                <option value="ru">???????</option>
-                                                                <option value="th">???????</option>
-                                                                <option value="zh">?? (??)</option>
-                                                                <option value="zh-TW">?? (??)</option>
-                                                                <option value="ja">???</option>
-                                                                <option value="ko">???</option>
+                                                                <option value="en" selected="selected">English</option>                                                                
+                                                                <option value="de">Deutsch</option>                                                                
+                                                                <option value="es">Espanol</option>                                                                
+                                                                <option value="fr">Francais</option>                                                                
+                                                                <option value="it">Italiano</option>                                                                
+                                                                <option value="nl">Nederlands</option>                                                                
                                                             </select>
                                                             <span class="m-form__help">We'll send you messages in this language.</span>
     													</div>
@@ -254,7 +273,7 @@
                                                     
                                                                 @endforeach
                                                             </select>
-                                                            <span class="m-form__help">here we list our own list of currencies.</span>
+                                                            <span class="m-form__help">Select the currency in which we display prices.</span>
     													</div>
     												</div>
                                                     
@@ -266,7 +285,7 @@
                                             <!--begin: Form Wizard Step 1-->
                                             
                                             <!--begin: Form Wizard Step 2-->
-    										<div class="m-wizard__form-step" id="m_wizard_form_step_2">
+    										<div class="m-wizard__form-step" id="m_wizard_form_step_3">
     											<div class="m-form__section m-form__section--first">
                                                     <div class="m-form__heading">
     													<h3 class="m-form__heading-title">
@@ -480,7 +499,7 @@
                                                                 </div>
                                                                 <div class="row m--align-center pref-botoom-pad"> 
                                                                     <div class="col-md-6 col-sm-6">
-                                                                        <p class="sub-des-heading suggestions-headin-tittle spinner-label">toddlers</p>
+                                                                        <p class="sub-des-heading suggestions-headin-tittle spinner-label">Toddlers</p>
                                                                         <p class="smalldes-label">under 2 Years</p>
                                                                     </div>
                                                                     <div class="col-md-6 col-sm-6">
@@ -579,7 +598,27 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>                                                            
+                                                            </div> 
+                                                            
+                                                            <div class="personalized-pefrences m--hide">
+                                                                <div class="row">
+                                                                    <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center">
+                                                                        <h2 class="black-heading-big">Welcome</h2>
+                                                                    </div>
+                                                                    <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
+                                                                        
+                                                                    </div>                                                                                                                                        
+                                                                    <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center pref-top-pad">
+                                                                        <div class="row">
+                                                                            <div class="col-xl-6 col-sm-6 col-md-6 col-lg-6 m--align-left"> 
+                                                                                <input type="button" name="previous" data-prev-id="details" class="previous btn btn-default" value="Previous" />
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div> 
+                                                            
+                                                                                                                       
                                                         </form>                                                                                    
                                                  </div>                                                                                                     
                                             </div>
@@ -668,13 +707,15 @@
                 $(".next").click(function () {                    
                     current_fs = $(this).closest( ".personalized-pefrences" );
                     next_fs = $(current_fs).next(".personalized-pefrences").removeClass('m--hide');                    
-                    current_fs.addClass('m--hide');                    
+                    current_fs.addClass('m--hide');    
+                    $("#personalized-skip").removeClass('m--hide');                
                 });
 
                 $(".previous").click(function () {                    
                     current_fs = $(this).closest( ".personalized-pefrences" );
                     next_fs = $(current_fs).prev(".personalized-pefrences").removeClass('m--hide');                    
-                    current_fs.addClass('m--hide');     
+                    current_fs.addClass('m--hide'); 
+                    $("#personalized-skip").removeClass('m--hide');    
                 });
 
                 $(".submit").click(function () {
@@ -852,7 +893,7 @@
                    k++;
                 }); 
                 
-                var note = $("#preferences_note").text();
+                var note = $("#preferences_note").val();
                 
                 var error = true;
                 if($("#agree").is(":checked")){
@@ -879,12 +920,7 @@
                     fdata.append("earliest_arrival",$("input[name=preferences_arrive]").val());
                     fdata.append("late_check_out",$("input[name=preferences_late_check_out]").val());
                     
-                    var stay_time=[];
-                    $('#stay_time :selected').each(function(){
-                         stay_time[$(this).val()]=$(this).text();
-                    });
-                    
-                    fdata.append("stay_time",stay_time);
+                    fdata.append("stay_time",$('#stay_time :selected').val());
                     $.ajax({
                         url:"{{URL::to('personalized-service/ajax_save')}}",
                         type:'POST',
@@ -898,7 +934,10 @@
                         success:function(response){
                             if(response.status == 'success'){
                                 toastr.success(response.message);
-                                window.location.href="{{URL::to('dashboard')}}";
+                                current_fs = $("#preferences_submit_btn").closest( ".personalized-pefrences" );
+                                next_fs = $(current_fs).next(".personalized-pefrences").removeClass('m--hide');                    
+                                current_fs.addClass('m--hide');  
+                                $("#personalized-skip").addClass('m--hide');
                             }
                             else{
                                 toastr.error(response.message);
