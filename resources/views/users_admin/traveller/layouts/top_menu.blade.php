@@ -245,33 +245,42 @@
 																		<i class="m-nav__link-icon flaticon-profile-1"></i>
 																		<span class="m-nav__link-title">
 																			<span class="m-nav__link-wrap">
-																				{{ Lang::get('profile.my-profile') }}
+																				My Profile / Preferences
+																			</span>
+																		</span>
+																	</a>
+																</li>																
+                                                                
+																<li class="m-nav__item">
+																	<a href="{{ URL::to('user/companion')}}" class="m-nav__link">
+																		<i class="m-nav__link-icon flaticon-suitcase"></i>
+																		<span class="m-nav__link-title">
+																			<span class="m-nav__link-wrap">
+																				 My Companions
 																			</span>
 																		</span>
 																	</a>
 																</li>
-																
-                                                                <li class="m-nav__item" style="display: none;">
+                                                                <li class="m-nav__item">
 																	<a href="{{ URL::to('user/profile')}}" class="m-nav__link">
 																		<i class="m-nav__link-icon flaticon-suitcase"></i>
 																		<span class="m-nav__link-title">
 																			<span class="m-nav__link-wrap">
-																				{{ Lang::get('profile.my-company') }}
+																				  Invite Guests / Invite Guest System
 																			</span>
 																		</span>
 																	</a>
 																</li>
-																
-                                                                <li class="m-nav__item" style="display: none;">
+                                                                <li class="m-nav__item">
 																	<a href="{{ URL::to('user/profile')}}" class="m-nav__link">
-																		<i class="m-nav__link-icon flaticon-user"></i>
+																		<i class="m-nav__link-icon flaticon-suitcase"></i>
 																		<span class="m-nav__link-title">
 																			<span class="m-nav__link-wrap">
-																				{{ Lang::get('profile.my-users') }}
+																				  Account Settings
 																			</span>
 																		</span>
 																	</a>
-																</li>
+																</li> 
 																<li class="m-nav__separator m-nav__separator--fit"></li>
                                                                 
 																<li class="m-nav__item">

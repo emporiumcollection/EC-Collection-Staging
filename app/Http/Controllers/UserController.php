@@ -1182,5 +1182,11 @@ class UserController extends Controller {
         echo json_encode($return_array);
         exit;
     }
+    public function getCompanion(){
+        $user = User::find(\Session::get('uid'));
+        $is_demo6 = trim(\CommonHelper::isHotelDashBoard($user->group_id));        
+        $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.user.companion':'';      
+        return view($file_name);
+    }
     
 }

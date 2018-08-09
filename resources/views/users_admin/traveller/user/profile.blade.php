@@ -71,7 +71,31 @@
 									</span>
 								</span>
 							</a>
-						</li>						
+						</li>
+                        <li class="m-nav__item nav-item m-tabs__item">
+                            <a href="href="#preferences"" class="m-nav__link nav-link m-tabs__link active" data-toggle="tab" role="tab">
+								<i class="m-nav__link-icon flaticon-browser"></i>
+								<span class="m-nav__link-title">
+									<span class="m-nav__link-wrap">
+										<span class="m-nav__link-text">
+											Personalized Preferences
+										</span>
+									</span>
+								</span>
+							</a>
+						</li>		
+                        <li class="m-nav__item nav-item m-tabs__item">
+                            <a href="href="#preferences"" class="m-nav__link nav-link m-tabs__link active" data-toggle="tab" role="tab">
+								<i class="m-nav__link-icon flaticon-delete-2"></i>
+								<span class="m-nav__link-title">
+									<span class="m-nav__link-wrap">
+										<span class="m-nav__link-text">
+											Remove Account
+										</span>
+									</span>
+								</span>
+							</a>
+						</li>					
 					</ul>
                     
 				</div>
