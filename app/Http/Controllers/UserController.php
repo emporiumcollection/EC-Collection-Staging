@@ -1188,5 +1188,22 @@ class UserController extends Controller {
         $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.user.companion':'';      
         return view($file_name);
     }
-    
+    public function getInvite(){
+        $user = User::find(\Session::get('uid'));
+        $is_demo6 = trim(\CommonHelper::isHotelDashBoard($user->group_id));        
+        $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.user.invite':'';      
+        return view($file_name);
+    }
+    public function getSettings(){
+        $user = User::find(\Session::get('uid'));
+        $is_demo6 = trim(\CommonHelper::isHotelDashBoard($user->group_id));        
+        $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.user.settings':'';      
+        return view($file_name);
+    }
+    public function getCompany(){
+        $user = User::find(\Session::get('uid'));
+        $is_demo6 = trim(\CommonHelper::isHotelDashBoard($user->group_id));        
+        $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.user.company':'';      
+        return view($file_name);
+    }
 }

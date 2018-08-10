@@ -61,7 +61,7 @@
 							</span>
 						</li>
 						<li class="m-nav__item nav-item m-tabs__item">
-                            <a href="#myprofile" class="m-nav__link nav-link m-tabs__link active" data-toggle="tab" role="tab">
+                            <a href="#myprofile" id="left-personal-info" class="m-nav__link nav-link m-tabs__link active" data-toggle="tab" role="tab">
 								<i class="m-nav__link-icon flaticon-profile-1"></i>
 								<span class="m-nav__link-title">
 									<span class="m-nav__link-wrap">
@@ -73,7 +73,7 @@
 							</a>
 						</li>
                         <li class="m-nav__item nav-item m-tabs__item">
-                            <a href="href="#preferences"" class="m-nav__link nav-link m-tabs__link active" data-toggle="tab" role="tab">
+                            <a href="#preferences" id="left-personal-preferences" class="m-nav__link nav-link m-tabs__link active" data-toggle="tab" role="tab">
 								<i class="m-nav__link-icon flaticon-browser"></i>
 								<span class="m-nav__link-title">
 									<span class="m-nav__link-wrap">
@@ -85,7 +85,7 @@
 							</a>
 						</li>		
                         <li class="m-nav__item nav-item m-tabs__item">
-                            <a href="href="#preferences"" class="m-nav__link nav-link m-tabs__link active" data-toggle="tab" role="tab">
+                            <a href="#" class="m-nav__link nav-link m-tabs__link active" data-toggle="tab" role="tab">
 								<i class="m-nav__link-icon flaticon-delete-2"></i>
 								<span class="m-nav__link-title">
 									<span class="m-nav__link-wrap">
@@ -102,6 +102,17 @@
 			</div>
 		</div>
 		<div class="col-xl-9 col-lg-8">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 bottom-pad">
+                    <img src="{{URL::to('images/800x450.png')}}" style="width: 100%;" />
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <h2>My Profile / Preferences</h2>
+                    Intro text
+                </div>
+            </div>
+            <div class="row">
+            <div class="col-xl-12 col-lg-12">                                
             <div class="m-portlet m-portlet--full-height m-portlet--tabs  ">
                 <div class="tab-content">
         			<div class="tab-pane active" id="myprofile">
@@ -628,7 +639,8 @@
             
                 </div><!-- /tab-content -->
 			</div><!-- //tabs -->
-
+            </div>            
+            </div>
 		</div>
 	</div>
 @stop
@@ -651,6 +663,13 @@
 <script src=" {{ asset('sximo/assets/js/handleCounter.js') }}" type="text/javascript"></script>
 <script>
     $(document).ready(function () {
+        
+        $("#left-personal-info").click(function(){
+            $('#myprofile [href="#info"]').trigger('click');    
+        });
+        $("#left-personal-preferences").click(function(){
+            $('#myprofile [href="#preferences"]').trigger('click');    
+        });
         // Multi Tab Form
         var current_fs, next_fs, previous_fs;
         var left, opacity, scale;

@@ -262,7 +262,7 @@
 																	</a>
 																</li>
                                                                 <li class="m-nav__item">
-																	<a href="{{ URL::to('user/profile')}}" class="m-nav__link">
+																	<a href="{{ URL::to('user/invite')}}" class="m-nav__link">
 																		<i class="m-nav__link-icon flaticon-suitcase"></i>
 																		<span class="m-nav__link-title">
 																			<span class="m-nav__link-wrap">
@@ -272,7 +272,7 @@
 																	</a>
 																</li>
                                                                 <li class="m-nav__item">
-																	<a href="{{ URL::to('user/profile')}}" class="m-nav__link">
+																	<a href="{{ URL::to('user/settings')}}" class="m-nav__link">
 																		<i class="m-nav__link-icon flaticon-suitcase"></i>
 																		<span class="m-nav__link-title">
 																			<span class="m-nav__link-wrap">

@@ -25534,9 +25534,10 @@ button:focus {
 }
 
 .m-card-user .m-card-user__pic img {
-    max-width: 70px!important;
+    max-width: 80px!important;
     margin: 0!important;
-    border-radius: 100%
+    border-radius: 100%;
+    height: auto;
 }
 
 .m-card-user .m-card-user__pic .m-card-user__no-photo {
@@ -54910,4 +54911,42 @@ i.m-menu__link-icon.fa {
 }
 .bottom-pad{
   padding-bottom: 20px;  
+}
+.top-pad{
+  padding-top: 20px;  
+}
+.setting-left-side-menu{
+    line-height: 35px;
+}
+.payment-box{
+    margin-top: 10px;
+    border: 1px solid #efefef;
+}
+.gray-bg-color{
+    background-color: #efefef;
+}
+.payment-box .heading{    
+    color: #000;
+    padding: 10px;
+}
+.add-payment-box{
+    border: 1px solid #efefef;
+    padding: 30px;
+    margin: 20px;
+}
+.margin-top{
+    margin-top: 25px;
+}
+.border-top-with-padding{
+    border-top: 1px solid #efefef;
+    margin-top: 20px;
+    padding-top: 20px;
+}
+.pad-zero{
+    padding: 0px !important;
+}
+.pad-margin-zero{
+    margin: -20px !important;
+    padding: 20px !important;
+    background: #fff !important;
 }

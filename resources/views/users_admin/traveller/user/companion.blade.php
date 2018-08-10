@@ -1,7 +1,7 @@
 @extends('users_admin.traveller.layouts.app')
 
 @section('page_name')
-    Companion  <small>Add Traveller</small>
+    My Companions  <small>Add Companion</small>
 @stop
 
 @section('breadcrumb')
@@ -14,7 +14,7 @@
     <li class="m-nav__separator"> - </li>
     <li class="m-nav__item"> 
         <a href="javascript:;" class="m-nav__link"> 
-            <span class="m-nav__link-text"> Companion </span> 
+            <span class="m-nav__link-text"> My Companions </span> 
         </a> 
     </li>
 @stop
@@ -23,14 +23,14 @@
     <div class="row">
         <div class="col-xl-3 col-lg-4">
             <div class="col-sm-12 col-md-12 col-lg-12 bottom-pad">
-                <h2>Travellers</h2>                
+                <h2>My Companions</h2>                
             </div>
             <div class="col-sm-12 col-md-12 col-lg-12">
                 <div class="row">
-                    <div class="col-sm-6">
-                        <h6>First Traveller</h6>
+                    <div class="col-sm-8">
+                        <h6>First Companion</h6>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                         <a href="#"><i class="fa fa-search fa-lg"></i></a>
                         <a href="#"><i class="fa fa-edit fa-lg"></i></a>
                         <a href="#"><i class="fa fa-trash fa-lg"></i></a>
@@ -40,10 +40,10 @@
         </div>
         <div class="col-xl-9 col-lg-8">
             <div class="col-sm-12 col-md-12 col-lg-12 bottom-pad">
-                <img src="{{URL::to('images/800x450.png')}}" />
+                <img src="{{URL::to('images/800x450.png')}}" style="width: 100%;" />
             </div>
             <div class="col-sm-12 col-md-12 col-lg-12">
-                <h2>Add Traveller</h2>
+                <h2>Add Companion</h2>
                 <p>Intro text</p>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-12">
