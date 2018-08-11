@@ -117,8 +117,7 @@
                   <p>80999 Munich</p>
                   <p>Germany</p>
                   <p>Central reservations :</p>
-                  <p>+1 934 451 1317</p>
-                  <br/>
+                  <p>+1 934 451 1317</p>                  
                   <p>Email :</p>
                   <a href="mailto:sales@emporium-voyage.com">sales@emporium-voyage.com</a>
                   <a href="mailto:marketing@emporium-voyage.com">marketing@emporium-voyage.com</a>
