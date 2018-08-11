@@ -21256,7 +21256,7 @@ strong {
     display: block;
     margin: 0 0 20px 0;
     padding: 0;
-    font-family: Roboto;
+    font-family: Playfair-display;
     font-weight: 500
 }
 
@@ -26262,7 +26262,7 @@ button:focus {
     align-items: center;
     font-size: 1.3rem;
     font-weight: 500;
-    font-family: Roboto;
+    font-family: Playfair-display;
     margin: 0;
     padding: 0
 }
@@ -26280,7 +26280,7 @@ button:focus {
     display: block;
     font-size: .85rem;
     font-weight: 300;
-    font-family: Roboto
+    font-family: Playfair-display
 }
 
 .m-portlet .m-portlet__head .m-portlet__head-tools {
@@ -54260,7 +54260,7 @@ body.m-content--skin-light2 {
 .m-subheader .m-subheader__title {
     display: inline-block;
     padding: 7px 25px 7px 0;
-    font-family: Roboto;
+    font-family: Playfair-display;
     font-weight: 300;
     font-size: 1.55rem;
     font-weight: 500;
