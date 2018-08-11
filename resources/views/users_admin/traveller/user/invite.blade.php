@@ -52,22 +52,93 @@
             </div>
             <div class="col-sm-12 col-md-12 col-lg-12">
                 <div class="m-portlet m-portlet--full-height  ">
-                    {!! Form::open(array('url'=>'user/savetravellerprofile/', 'class'=>'m-form m-form--fit m-form--label-align-right ' ,'files' => true)) !!}
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        @if(Session::has('message'))
+            				{!! Session::get('message') !!}
+            			@endif
+                    </div>
+                    {!! Form::open(array('url'=>'user/invite/', 'class'=>'m-form m-form--fit m-form--label-align-right ' ,'files' => true)) !!}
                         <div class="m-portlet__body">
-                            <div class="form-group m-form__group">								
-								<div class="input-group">
-									<input type="text" class="form-control" placeholder="Enter email address">
-									<div class="input-group-append">
-										<button class="btn btn-primary" type="button">
-											Send Invite
-										</button>
+                            <div class="form-group m-form__group row">
+								<div class="col-lg-6">
+									<label>
+										First name *
+									</label>
+									<div class="m-input-icon m-input-icon--right">
+										<input type="text" name="first_name" class="form-control m-input" placeholder="Enter invitee first name">
+                                        <span class="error">{{ $errors->first('first_name') }}</span>
 									</div>
 								</div>
+								<div class="col-lg-6">
+									<label class="">
+										Last Name *
+									</label>
+									<div class="m-input-icon m-input-icon--right">
+										<input type="text" name="last_name" class="form-control m-input" placeholder="Enter invitee last name">
+                                        <span class="error">{{ $errors->first('last_name') }}</span>
+									</div>
+								</div>
+							</div>
+                            <div class="form-group m-form__group row">	
+                                <div class="col-lg-12">							
+								    <label>
+										Email *
+									</label>
+									<div class="m-input-icon m-input-icon--right">
+										<input type="text" name="email" class="form-control m-input" placeholder="Enter invitee email address">
+                                        <span class="error">{{ $errors->first('email') }}</span>
+									</div>
+                                </div>
 							</div> 
+                            <div class="form-group m-form__group row">	
+                                <div class="col-lg-12">							
+								    <label>
+										Message
+									</label>
+									<div class="m-input-icon m-input-icon--right">
+										<textarea name="message" class="form-control"></textarea>
+                                        <span class="m-form__help">Defalut message will be send if you do not enter message.</span>
+									</div>
+                                </div>
+							</div> 
+                            <div class="col-sm-12 col-md-12 col-lg-12 m--align-right">
+                                <button type="submit" class="btn btn-primary" id="btn_send_invites">Send Invites</button>
+                            </div>
                         </div> 
             		{!! Form::close() !!}
                 </div>
             </div>
         </div>
     </div>
+@stop
+@section('custom_js_script')
+    <script>
+        /*$(document).ready(function(){
+           $("#btn_send_invites").click(function(){ console.log("ff23");
+                var fdata = $( "form" ).serialize();
+                $.ajax({
+                    url:"{{URL::to('user/invite')}}",
+                    type:'POST',
+                    dataType:'json',
+                    contentType: false,
+                    processData: false,
+                    data:fdata,
+                    headers: {
+                        'Access-Control-Allow-Origin': '*'
+                    },
+                    success:function(response){
+                        if(response.status == 'success'){
+                            toastr.success(response.message);
+                            current_fs = $("#preferences_submit_btn").closest( ".personalized-pefrences" );
+                            next_fs = $(current_fs).next(".personalized-pefrences").removeClass('m--hide');                    
+                            current_fs.addClass('m--hide');
+                        }
+                        else{
+                            toastr.error(response.message);
+                        }
+                    }
+                });
+           }); 
+        });*/
+    </script>
 @stop

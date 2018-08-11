@@ -54908,6 +54908,7 @@ i.m-menu__link-icon.fa {
 .error{
     color: red;
     width: 100%;
+    font-size: 12px;
 }
 .bottom-pad{
   padding-bottom: 20px;  

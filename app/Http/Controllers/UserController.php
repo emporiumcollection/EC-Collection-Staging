@@ -1194,6 +1194,41 @@ class UserController extends Controller {
         $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.user.invite':'';      
         return view($file_name);
     }
+    public function postInvite(Request $request){
+        $user = User::find(\Session::get('uid'));
+        
+        $return_array = array();
+        if (!\Auth::check())
+            return Redirect::to('user/login');
+        $rules = array(
+            'first_name' => 'required|alpha_num|min:2',
+            'last_name' => 'required|alpha_num|min:2',
+            'email' => 'required'
+        );
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->passes()) {
+            
+            $user = User::find(\Session::get('uid'));
+            $invitee_data['user_id'] = $user->id;
+            $invitee_data['first_name'] = $request->input('first_name');
+            $invitee_data['last_name'] = $request->input('last_name');            
+            $invitee_data['email'] = $request->input('email');
+            $invitee_data['message'] = $request->input('message');
+            $invitee_data['referral_code'] = strtoupper(uniqid());
+            $invitee_data['created'] = date("Y-m-d");
+            
+            $inviteeId = \DB::table('tb_invitee')->insertGetId($invitee_data);             
+            if($inviteeId > 0){
+                
+            }            
+            return Redirect::to('user/invite/')->with('message', 'Invites send successfully')->with('msgstatus', 'success');
+        } else {
+            return Redirect::to('user/invite/')->withErrors($validator)->withInput();
+        }        
+        
+    }
     public function getSettings(){
         $user = User::find(\Session::get('uid'));
         $is_demo6 = trim(\CommonHelper::isHotelDashBoard($user->group_id));        

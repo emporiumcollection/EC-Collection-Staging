@@ -129,7 +129,18 @@
     													</h3>
     												</div>
                                                     
-                                                    
+                                                    <div class="row">                                            
+                                                        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
+                                                            <img src="{{URL::to('images/800x200.png')}}" style="width: 100%;" />
+                                                        </div> 
+                                                        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center">
+                                                            <h2 class="black-heading-big">Welcome to emporium-voyage</h2>
+                                                        </div> 
+                                                        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
+                                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare diam at convallis lacinia. Duis a sapien et erat finibus molestie eu id nisi. Integer nibh elit, blandit ac volutpat eget, tempus eget enim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas mollis dictum risus. Vivamus aliquam at elit non dictum. Integer nisi ante, interdum at purus vitae, rhoncus bibendum dui. Praesent pharetra augue at ultrices facilisis. Vestibulum erat urna, iaculis et purus in, fermentum varius nibh.
+                                                        </div> 
+                                                        
+                                                    </div>
                                                     
                                                     
                                                     
@@ -564,6 +575,9 @@
 																					<span></span>
 																				</label>
                                                                             </div>
+                                                                            <div class="error" id="privacy_policy_error" style="display: none;">
+                                                                                Please check privacy policy checkbox.
+                                                                            </div>
                                                                             <span class="m-form__help">
 																				Some help text goes here
 																			</span>
@@ -575,6 +589,9 @@
 																					<a href="https://www.iubenda.com/privacy-policy/70156957/cookie-policy" class="iubenda-white iubenda-embed iub-no-markup" title="Cookie Policy" target="_blank">Cookie Policy</a>
 																					<span></span>
 																				</label>
+                                                                            </div>
+                                                                            <div class="error" id="cookie_policy_error" style="display: none;">
+                                                                                Please check cookie policy checkbox.
                                                                             </div>
                                                                             <span class="m-form__help">
 																				Some help text goes here
@@ -601,17 +618,26 @@
                                                             </div> 
                                                             
                                                             <div class="personalized-pefrences m--hide">
-                                                                <div class="row">
-                                                                    <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center">
-                                                                        <h2 class="black-heading-big">Welcome</h2>
-                                                                    </div>
+                                                                <div class="row">                                            
                                                                     <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
-                                                                        
-                                                                    </div>                                                                                                                                        
+                                                                        <img src="{{URL::to('images/800x200.png')}}" style="width: 100%;" />
+                                                                    </div> 
+                                                                    <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center">
+                                                                        <h2 class="black-heading-big">Thank You</h2>
+                                                                    </div> 
+                                                                    <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
+                                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare diam at convallis lacinia. Duis a sapien et erat finibus molestie eu id nisi. Integer nibh elit, blandit ac volutpat eget, tempus eget enim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas mollis dictum risus. Vivamus aliquam at elit non dictum. Integer nisi ante, interdum at purus vitae, rhoncus bibendum dui. Praesent pharetra augue at ultrices facilisis. Vestibulum erat urna, iaculis et purus in, fermentum varius nibh.
+                                                                    </div> 
+                                                                    <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
+                                                                           
+                                                                    </div>                                                                                                                                       
                                                                     <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center pref-top-pad">
                                                                         <div class="row">
                                                                             <div class="col-xl-6 col-sm-6 col-md-6 col-lg-6 m--align-left"> 
                                                                                 <input type="button" name="previous" data-prev-id="details" class="previous btn btn-default" value="Previous" />
+                                                                            </div>
+                                                                            <div class="col-xl-6 col-sm-6 col-md-6 col-lg-6 m--align-right"> 
+                                                                                <a href="{{Url::to('dashboard')}}" class="btn btn-primary">Go to Dashboard</a> 
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -897,10 +923,30 @@
                 
                 var error = true;
                 if($("#agree").is(":checked")){
+                    $("#error").css("display", "none");
                     error = false;
-                }
-                if(error){ console.log("error");
+                }else{
+                    error = true;
                     $("#error").css("display", "");
+                }
+                if($("#privacy_policy").is(":checked")){
+                    $("#privacy_policy_error").css("display", "none");
+                    error = false;
+                }else{
+                    error = true;
+                    $("#privacy_policy_error").css("display", "");
+                }
+                if($("#cookie_policy").is(":checked")){
+                    $("#cookie_policy_error").css("display", "none");
+                    error = false;
+                }else{
+                    error = true;
+                    $("#cookie_policy_error").css("display", "");
+                }
+                
+                
+                if(error){ console.log("error");
+                    //$("#error").css("display", "");
                 }else{                    
                     $("#error").css("display", "none");
                     var fdata = new FormData();                
