@@ -110,7 +110,12 @@
 
           <div class="col-sm-6">
               <div class="tremPopupContactInfo">
-                  <p>emporium-voyage</p>
+                  <p>emporium-voyage&trade;</p>
+                  <p>a product of number7even UG</p>
+                  <p>number7even UG</p>
+                  <p>Eisolzriederstrasse 12</p>
+                  <p>80999 Munich</p>
+                  <p>Germany</p>
                   <p>Central reservations :</p>
                   <p>+1 934 451 1317</p>
                   <br/>
