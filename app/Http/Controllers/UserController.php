@@ -1237,7 +1237,7 @@ class UserController extends Controller {
                 //}
                 
                 $etemp = 'invite';
-                //echo view('user.emails.invites.' . $etemp, $edata);
+                echo view('user.emails.invites.' . $etemp, $edata); die;
                 \Mail::send('user.emails.invites.' . $etemp, $edata, function($message) use ($emlData) {
                     $message->from($emlData['frmemail'], CNF_APPNAME);
 
