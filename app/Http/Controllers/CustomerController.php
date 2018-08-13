@@ -178,44 +178,83 @@ class CustomerController extends Controller {
                 $authen->new_user = '1';
             endif;
             
-            $authen->active = '1';
-            $authen->save();
-
-            $ucdata['user_id'] = $authen->id;
-            $userId = $authen->id;
-            //\Session::set("uid",$authen->id);
+            if($request->input('user_type') == '3'){
+                $referral_code = trim($request->input('referral_code'));
+                $ref_code = true;
+                $invitee = \DB::table('tb_invitee')->where('email', $authen->email)->get();
+                if(count($invitee)>0){
+                    foreach($invitee as $invite){                        
+                        if($invite->referral_code==$referral_code){
+                            $ref_code = false;
+                        }
+                    }
+                    if($ref_code){
+                        $response = array('status' => 'error', 'message' => 'Refferal Code not matched', 'gid' => $authen->group_id, 'errors'=>true);
+                    }else{
+                        $authen->active = '1';
+                        $authen->save();
             
-            \Auth::loginUsingId($userId);
-            \DB::table('tb_users')->where('id', '=', $userId)->update(array('last_login' => date("Y-m-d H:i:s")));
-            \Session::put('uid', $userId);
-            \Session::put('gid', $authen->group_id);
-            \Session::put('eid', $authen->email);
-            \Session::put('ll', date("Y-m-d H:i:s"));      
+                        $ucdata['user_id'] = $authen->id;
+                        $userId = $authen->id;
+                        
+                        \Auth::loginUsingId($userId);
+                        \DB::table('tb_users')->where('id', '=', $userId)->update(array('last_login' => date("Y-m-d H:i:s")));
+                        \Session::put('uid', $userId);
+                        \Session::put('gid', $authen->group_id);
+                        \Session::put('eid', $authen->email);
+                        \Session::put('ll', date("Y-m-d H:i:s"));
             
-                                 
-
-//            $ucdata['company_name'] = Input::get('company_name');
-//            $ucdata['company_address'] = Input::get('company_address');
-//            $ucdata['company_address2'] = Input::get('company_address2');
-            //$ucdata['company_phone'] = Input::get('company_phone');
-            //$ucdata['company_website'] = Input::get('company_website');
-            //$ucdata['company_tax_number'] = Input::get('company_tax_no');
-            if (Input::get('accept_terms')) {
-//                $ucdata['accept_terms'] = Input::get('accept_terms');
+                        \DB::table('tb_user_company_details')->insert($ucdata);
+            
+                        $response = array('status' => 'success', 'message' => 'Registered successfully', 'gid' => $authen->group_id);
+                    }
+                }else{
+                    $response = array('status' => 'error', 'message' => 'Refferal Code doest not exist', 'gid' => $authen->group_id, 'errors'=>true);
+                }
+            }else{
+                
+                    
+                    
+                    
+                    $authen->active = '1';
+                    $authen->save();
+        
+                    $ucdata['user_id'] = $authen->id;
+                    $userId = $authen->id;
+                    //\Session::set("uid",$authen->id);
+                    
+                    \Auth::loginUsingId($userId);
+                    \DB::table('tb_users')->where('id', '=', $userId)->update(array('last_login' => date("Y-m-d H:i:s")));
+                    \Session::put('uid', $userId);
+                    \Session::put('gid', $authen->group_id);
+                    \Session::put('eid', $authen->email);
+                    \Session::put('ll', date("Y-m-d H:i:s"));      
+                    
+                                         
+        
+        //            $ucdata['company_name'] = Input::get('company_name');
+        //            $ucdata['company_address'] = Input::get('company_address');
+        //            $ucdata['company_address2'] = Input::get('company_address2');
+                    //$ucdata['company_phone'] = Input::get('company_phone');
+                    //$ucdata['company_website'] = Input::get('company_website');
+                    //$ucdata['company_tax_number'] = Input::get('company_tax_no');
+                    if (Input::get('accept_terms')) {
+        //                $ucdata['accept_terms'] = Input::get('accept_terms');
+                    }
+        
+                    \DB::table('tb_user_company_details')->insert($ucdata);
+        
+                    /* $umdata['user_id'] = $authen->id;
+                      $umdata['membership_id'] = $request->input('membership_plan');
+                      $umdata['created'] = date('Y-m-d h:i:s');
+                      $umId = \DB::table('tb_users_membership')->insertGetId($umdata); */
+        
+                    //return Redirect::to('choose/'.$umId);
+        
+                    $response = array('status' => 'success', 'message' => 'Registered successfully', 'gid' => $authen->group_id);
+                    
+        //            return Redirect::to('customer/login')->with('message', \SiteHelpers::alert('success', 'Registered successfully.'));
             }
-
-            \DB::table('tb_user_company_details')->insert($ucdata);
-
-            /* $umdata['user_id'] = $authen->id;
-              $umdata['membership_id'] = $request->input('membership_plan');
-              $umdata['created'] = date('Y-m-d h:i:s');
-              $umId = \DB::table('tb_users_membership')->insertGetId($umdata); */
-
-            //return Redirect::to('choose/'.$umId);
-
-            $response = array('status' => 'success', 'message' => 'Registered successfully', 'gid' => $authen->group_id);
-            
-//            return Redirect::to('customer/login')->with('message', \SiteHelpers::alert('success', 'Registered successfully.'));
         } else {
             $response = array('status' => 'error', 'message' => 'The following errors occurred', 'errors' => $validator->errors()->all());
 //            return Redirect::to('customer/register/' . $request->input('membership_plan'))->with('message', \SiteHelpers::alert('error', 'The following errors occurred')

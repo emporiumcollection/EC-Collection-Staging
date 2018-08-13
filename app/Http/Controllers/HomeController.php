@@ -2967,7 +2967,7 @@ class HomeController extends Controller {
                         $toouser['pathToFile'] = $patOFile;
                         $etemp = $request->input('emailTemplate');
                         \Mail::send('user.emails.' . $etemp, $data, function($message) use ($toouser) {
-                            $message->from('info@design-locations.biz', CNF_APPNAME);
+                            $message->from('marketing@emporium-voyage.com', CNF_APPNAME);
 
                             $message->to($toouser['email']);
 
@@ -5620,7 +5620,7 @@ class HomeController extends Controller {
 
             $headers = "MIME-Version: 1.0" . "\r\n";
             $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-            $headers .= 'From: ' . CNF_APPNAME . '<info@design-locations.biz>' . "\r\n";
+            $headers .= 'From: ' . CNF_APPNAME . '<marketing@emporium-voyage.com>' . "\r\n";
 
             mail($property->email, "Booking Confirmation", $bookingEmailTemplate, $headers);
             mail($user_info->email, "Booking Confirmation", $bookingEmailTemplate, $headers);

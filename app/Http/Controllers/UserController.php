@@ -755,7 +755,7 @@ class UserController extends Controller {
 
                 $token = base64_encode(rand(10000, 10000000));
                 $edata = array();
-                $emlData['frmemail'] = 'info@design-locations.biz';
+                $emlData['frmemail'] = 'marketing@emporium-voyage.com';
                 $edata['token'] = $token;
                 $emlData['email'] = $request->input('credit_email');
                 $emlData['subject'] = 'REQUEST PASSWORD RESET';
@@ -1207,8 +1207,9 @@ class UserController extends Controller {
         );
 
         $validator = Validator::make($request->all(), $rules);
-
+        
         if ($validator->passes()) {
+            $referral_code = strtoupper(uniqid());
             
             $user = User::find(\Session::get('uid'));
             $invitee_data['user_id'] = $user->id;
@@ -1216,12 +1217,34 @@ class UserController extends Controller {
             $invitee_data['last_name'] = $request->input('last_name');            
             $invitee_data['email'] = $request->input('email');
             $invitee_data['message'] = $request->input('message');
-            $invitee_data['referral_code'] = strtoupper(uniqid());
+            $invitee_data['referral_code'] = $referral_code;
             $invitee_data['created'] = date("Y-m-d");
             
             $inviteeId = \DB::table('tb_invitee')->insertGetId($invitee_data);             
             if($inviteeId > 0){
                 
+                $edata = array();
+                $emlData['frmemail'] = 'marketing@emporium-voyage.com';
+                $edata['referral_code'] = $referral_code;
+                $edata['emessage'] = $request->input('message');
+                $edata['first_name'] = $request->input('first_name');
+                $edata['last_name'] = $request->input('last_name');
+                $emlData['email'] = $request->input('email');
+                $emlData['subject'] = 'Invitation send by '.$request->input('email');
+                
+                //if (\Session::get('newlang') == 'English') {
+                //    $etemp = 'auth.reminder_eng';
+                //}
+                
+                $etemp = 'invite';
+                //echo view('user.emails.invites.' . $etemp, $edata);
+                \Mail::send('user.emails.invites.' . $etemp, $edata, function($message) use ($emlData) {
+                    $message->from($emlData['frmemail'], CNF_APPNAME);
+
+                    $message->to($emlData['email']);
+
+                    $message->subject($emlData['subject']);
+                });
             }            
             return Redirect::to('user/invite/')->with('message', 'Invites send successfully')->with('msgstatus', 'success');
         } else {

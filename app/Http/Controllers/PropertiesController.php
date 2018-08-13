@@ -2118,7 +2118,7 @@ function property_images_wetransfer(Request $request) {
                 $email_user = \DB::table('tb_users')->where('id', $usr_id)->first();
                                 
                 $edata = array();
-                $emlData['frmemail'] = 'info@design-locations.biz';                
+                $emlData['frmemail'] = 'marketing@emporium-voyage.com';                
                 $emlData['email'] = $email_user->email;
                 $emlData['subject'] = 'Property Approval';                
                 

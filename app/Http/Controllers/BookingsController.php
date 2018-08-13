@@ -685,7 +685,7 @@ class BookingsController extends Controller {
 
         $headers = "MIME-Version: 1.0" . "\r\n";
         $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-        $headers .= 'From: ' . CNF_APPNAME . '<info@design-locations.biz>' . "\r\n";
+        $headers .= 'From: ' . CNF_APPNAME . '<marketing@emporium-voyage.com>' . "\r\n";
 
         mail($property->email, "Booking Confirmation", $bookingEmailTemplate, $headers);
         mail($user_info->email, "Booking Confirmation", $bookingEmailTemplate, $headers);
