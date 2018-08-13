@@ -3837,7 +3837,8 @@ class HomeController extends Controller {
           $yachts = \DB::table('tb_properties')->where('property_type', 'Yachts')->get(); */
 
         $props = \DB::table('tb_properties')->where('property_slug', $request->slug)->first();
-
+        
+        $arrive_date = '';
         if (!is_null($request->input('arrive')) && $request->input('arrive') != '') {
             \Session::put('arrive_date', $request->input('arrive'));
             $arrive = trim($request->input('arrive'));
@@ -3847,9 +3848,10 @@ class HomeController extends Controller {
                 $arrive_array[1]=$t;
                 $arrive_date=implode(".",$arrive_array);
 
-            $this->data['arrive_date']=$arrive_date;
+            
         }
-
+        $this->data['arrive_date']=$arrive_date;
+        $departure_date ='';
         if (!is_null($request->input('departure')) && $request->input('departure') != '') {
             \Session::put('departure', $request->input('departure'));
             
@@ -3862,8 +3864,9 @@ class HomeController extends Controller {
                 $departure_date=implode(".",$departure_array);
 
             
-            $this->data['departure'] = $departure_date;
+            
         }
+        $this->data['departure'] = $departure_date;
 		$this->data['adults'] = '';
 		$this->data['childs'] = '';
       //  dd($request->all());
