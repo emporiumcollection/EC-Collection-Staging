@@ -1237,7 +1237,8 @@ class UserController extends Controller {
                 //}
                 
                 $etemp = 'invite';
-                echo view('user.emails.invites.' . $etemp, $edata); die;
+                //echo view('user.emails.invites.' . $etemp, $edata); die;
+                try{ 
                 \Mail::send('user.emails.invites.' . $etemp, $edata, function($message) use ($emlData) {
                     $message->from($emlData['frmemail'], CNF_APPNAME);
 
@@ -1245,6 +1246,9 @@ class UserController extends Controller {
 
                     $message->subject($emlData['subject']);
                 });
+                }catch(Exception $ex){
+                    //print_r($ex); 
+                }
             }            
             return Redirect::to('user/invite/')->with('message', 'Invites send successfully')->with('msgstatus', 'success');
         } else {

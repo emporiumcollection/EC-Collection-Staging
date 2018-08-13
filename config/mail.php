@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'username' => 'sales@emporium-voyage.com',
+    'username' => 'marketing@emporium-collection.com',
 
     /*
     |--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return [
     |
     */
 
-    'password' => 'bWF74r8vSR',
+    'password' => 'klVoEqcOse2Sg78J',
 
     /*
     |--------------------------------------------------------------------------
