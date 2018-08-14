@@ -228,7 +228,13 @@ $(function () {
                                                                     <h4>{{$type->category_name}}</h4>
                                                                     @if($type->price!='')
                                                                     <div class="hotel-slider-price">
-                                                                        {{($currency->content!='') ? $currency->content : '$'}} {{$type->price}}
+                                                                        @if($discount_apply!='')
+                                                                            {{($currency->content!='') ? $currency->content : '$'}} {{$type->price}}
+                                                                            <br />Discount 10% {{($currency->content!='') ? $currency->content : '$'}} {{ ($type->price) * 10 / 100 }}
+                                                                            <br /> {{($currency->content!='') ? $currency->content : '$'}} {{ $type->price - (($type->price) * 10 / 100) }}
+                                                                        @else
+                                                                            {{($currency->content!='') ? $currency->content : '$'}} {{$type->price}}         
+                                                                        @endif
                                                                     </div>
                                                                     @endif
                                                                     <div class="description">{{$type->room_desc}}</div>
@@ -1350,7 +1356,7 @@ $(function () {
                                                 <h4 class="margin-bottom-15">Terms And Conditions</h4>
                                                 <input class="our_term_n_conditions_check_box" name="term_n_conditions" value="On" type="checkbox">
                                                 <label>
-                                                    By checking this box, I accept and acknowledge <a data-toggle="modal" data-target="#our_term_n_conditions_modal" href="#">Design Locations</a> 
+                                                    By checking this box, I accept and acknowledge <a data-toggle="modal" data-target="#our_term_n_conditions_modal" href="#">emporium-voyage</a> 
                                                 </label>
                                                 <div id="our_term_n_conditions_modal" class="modal fade" role="dialog">
                                                     <div class="modal-dialog">
@@ -1445,11 +1451,18 @@ All prices displayed on the Design-Locations websites are current, day prices, s
                                                         </div>
                                                     </div>
                                                 </div>
+                                                
+                                                <div class="clearfix"></div>
+                                                <input class="emporium_voyage_term_n_conditions_check_box" name="emporium_voyage_term_n_conditions" value="On" type="checkbox">
+                                                <label>
+                                                    I here by agreed to emporium-voyage
+                                                </label>
+                                                
                                                 <div class="clearfix"></div>
                                                 <?php if(!empty($hotel_terms_n_conditions) && trim($hotel_terms_n_conditions->terms_n_conditions) != ''): ?>
                                                 <input class="hotel_term_n_conditions_check_box" name="hotel_term_n_conditions" value="On" type="checkbox">
                                                 <label>
-                                                    By checking this box, I accept and acknowledge <a data-toggle="modal" data-target="#hotel_term_n_conditions_modal" href="#">{{$propertyDetail['data']->property_name}}</a>
+                                                    I agree to my personal data being stored and used to make this reservation <a data-toggle="modal" data-target="#hotel_term_n_conditions_modal" href="#">emporium-voyage</a>
                                                 </label>
                                                 <div id="hotel_term_n_conditions_modal" class="modal fade" role="dialog">
                                                     <div class="modal-dialog">
@@ -1465,11 +1478,21 @@ All prices displayed on the Design-Locations websites are current, day prices, s
                                                     </div>
                                                 </div>
                                                 <?php endif; ?>
+                                                
+                                                <div class="clearfix"></div>
+                                                <input class="hotel_offer_personal_preferences_check_box" name="hotel_offer_personal_preferences" value="On" type="checkbox">
+                                                <label>
+                                                    I agree to receive information and commercial offers based on my personal preferences.
+                                                </label>
+                                                
                                             </div>
                                             <!--Terms and conditions-->
                                             <div class="partition-border-bottom"></div>
                                             <div class="validations">
                                                 <div id="frontend_booking_term_n_conditions_errorloc" class="error_strings text-danger"></div>
+                                                <div id="frontend_booking_emporium_voyage_term_n_conditions_errorloc" class="error_strings text-danger"></div>
+                                                <div id="frontend_booking_hotel_offer_personal_preferences_errorloc" class="error_strings text-danger"></div>
+                                                
                                                 <div id="frontend_booking_booking_arrive_errorloc" class="error_strings text-danger"></div>
                                                 <div id="frontend_booking_booking_destination_errorloc" class="error_strings text-danger"></div>
                                                 <div id="frontend_booking_number_of_nights_errorloc" class="error_strings text-danger"></div>
@@ -1840,6 +1863,10 @@ All prices displayed on the Design-Locations websites are current, day prices, s
             frmvalidator.EnableOnPageErrorDisplay();
             frmvalidator.EnableMsgsTogether();
             frmvalidator.addValidation("term_n_conditions", "shouldselchk=On", "You must agree with our terms and conditions.");
+            
+            frmvalidator.addValidation("emporium_voyage_term_n_conditions", "shouldselchk=On", "You must agree to emporium-voyage.");
+            frmvalidator.addValidation("hotel_offer_personal_preferences", "shouldselchk=On", "You must agree to personal preferences.");
+            
 //            frmvalidator.addValidation("hotel_term_n_conditions", "shouldselchk=On", "You must agree with hotel terms and conditions.");
             frmvalidator.addValidation("booking_arrive", "req", "Please enter arrival date.");
             frmvalidator.addValidation("booking_destination", "req", "Please enter departure date.");

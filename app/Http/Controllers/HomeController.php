@@ -3996,10 +3996,16 @@ class HomeController extends Controller {
           $this->data['yachts'] = $yachts; */
 
         $this->data['is_logged_in'] = 'false';
+        $discount_apply = '';
         if (\Auth::check()) {
             $this->data['is_logged_in'] = 'true';
+            
+            $discount_apply = \DB::table('tb_user_invitee_discount')->where('user_id', \Auth::user()->id)->where('availability', 1)->first();
+            
         }
-
+        //print_r($discount_apply);
+        
+        $this->data['discount_apply']=$discount_apply;
         $this->data['hotel_terms_n_conditions'] = \DB::table('td_property_terms_n_conditions')->where('property_id', $props->id)->first();
 
         $this->data['propertyDetail'] = $propertiesArr;
@@ -4980,10 +4986,13 @@ class HomeController extends Controller {
         $rules['roomType'] = 'required';
         $validator = Validator::make($request->all(), $rules);
         if ($validator->passes()) {
-
+            
+            $discount_apply = '';
             if (\Auth::check()) {
                 $uid = \Auth::user()->id;
                 $userdet = \DB::table('tb_users')->where('id', $uid)->first();
+                
+                $discount_apply = \DB::table('tb_user_invitee_discount')->where('user_id', \Auth::user()->id)->where('availability', 1)->first();
             }
             $props = \DB::table('tb_properties')->where('id', $request->input('property'))->first();
             $curnDate = date('Y-m-d');
@@ -5046,6 +5055,12 @@ class HomeController extends Controller {
             $data['price_mode'] = 'daily';
             $data['created_by'] = $uid;
             $data['created_date'] = date('Y-m-d h:i:s');
+            
+            if($discount_apply!=''){
+                $discount = ($price*10/100);
+                $data['discount'] = $discount;
+            }
+            
 
             $resid = \DB::table('tb_reservations')->insertGetId($data);
 
@@ -5194,7 +5209,7 @@ class HomeController extends Controller {
 
             /*
              * Send email notification
-             */
+             */             
 
             $reservation = \DB::table('tb_reservations')->where('id', $resid)->first();
             $preferences = \DB::table('td_booking_preferences')->where('reservation_id', $reservation->id)->first();
@@ -5209,11 +5224,19 @@ class HomeController extends Controller {
 
             $bookingEmail = base_path() . "/resources/views/user/emails/booking_notification.blade.php";
             $bookingEmailTemplate = file_get_contents($bookingEmail);
+            
+            $reservation_price = $reservation->price;
+             if($discount_apply!=''){
+                $discount_price = ($reservation->price*10/100);
+                $org_price = $reservation->price - $discount_price;
+                $reservation_price = $org_price;
+            }
 
             $bookingEmailTemplate = str_replace('{reservation_id}', 'DL-' . date('d.m.y') . '-' . $reservation->id, $bookingEmailTemplate);
             $bookingEmailTemplate = str_replace('{checkin_date}', date('M d, Y', strtotime($reservation->checkin_date)), $bookingEmailTemplate);
             $bookingEmailTemplate = str_replace('{checkout_date}', date('M d, Y', strtotime($reservation->checkout_date)), $bookingEmailTemplate);
-            $bookingEmailTemplate = str_replace('{price}', '€' . $reservation->price, $bookingEmailTemplate);
+            //$bookingEmailTemplate = str_replace('{price}', '€' . $reservation->price, $bookingEmailTemplate);
+            $bookingEmailTemplate = str_replace('{price}', '€' . $reservation_price, $bookingEmailTemplate);
 
             $bookingEmailTemplate = str_replace('{already_stayed}', $preferences->already_stayed, $bookingEmailTemplate);
             $bookingEmailTemplate = str_replace('{family_name}', trim($preferences->first_name . ' ' . $preferences->last_name), $bookingEmailTemplate);
@@ -5541,7 +5564,7 @@ class HomeController extends Controller {
             $total_price = 0;
             $html = '';
             foreach ($reserved_rooms as $reserved_room) {
-                $total_price += ($reservation->number_of_nights * $reservation->price);
+                $total_price += ($reservation->number_of_nights * $reservation_price);
                 $html .= '<tr>
                             <th width="209" class="stack2" style="margin: 0;padding: 0;border-collapse: collapse;">
                                 <table width="209" align="center" cellpadding="0" cellspacing="0" border="0" class="table60032" style="border-bottom-color: #C7AB84;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
@@ -5568,7 +5591,7 @@ class HomeController extends Controller {
                                     <tr>
                                         <td width="30" class="wz2" style="border-collapse: collapse;"></td>
                                         <!-- PRICE -->
-                                        <td class="RegularText5TD" style="border-collapse: collapse;" mc:edit="mcsec-26">€' . $reservation->price . '</td>
+                                        <td class="RegularText5TD" style="border-collapse: collapse;" mc:edit="mcsec-26">€' . $reservation_price . '</td>
                                         <td width="30" class="wz2" style="border-collapse: collapse;"></td>
                                     </tr>
                                     <tr>
@@ -5600,7 +5623,7 @@ class HomeController extends Controller {
                                     <tr>
                                         <td width="30" class="wz2" style="border-collapse: collapse;"></td>
                                         <!-- TOTAL -->
-                                        <td class="RegularText5TD" style="border-collapse: collapse;" mc:edit="mcsec-28">€' . ($reservation->number_of_nights * $reservation->price) . '</td>
+                                        <td class="RegularText5TD" style="border-collapse: collapse;" mc:edit="mcsec-28">€' . ($reservation->number_of_nights * $reservation_price) . '</td>
                                         <td width="30" class="wz2" style="border-collapse: collapse;"></td>
                                     </tr>
                                     <tr>
@@ -5633,7 +5656,7 @@ class HomeController extends Controller {
             /*
              * Log in user
              */
-
+            
             if (!\Auth::check()) {
 
                 $temp = \Auth::attempt(array('email' => $request->input('email'), 'password' => $request->input('password')), 'false');
@@ -5651,6 +5674,10 @@ class HomeController extends Controller {
                         \Session::put('fid', $row->first_name . ' ' . $row->last_name);
                         \Session::put('lang', 'Deutsch');
                     }
+                }
+            }else{
+                if($discount_apply!=''){  
+                    \DB::table('tb_user_invitee_discount')->where('id', $discount_apply->id)->update(array('availability' => 0));
                 }
             }
 

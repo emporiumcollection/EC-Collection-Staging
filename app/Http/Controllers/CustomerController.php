@@ -181,16 +181,21 @@ class CustomerController extends Controller {
             if($request->input('user_type') == '3'){
                 $referral_code = trim($request->input('referral_code'));
                 $ref_code = true;
+                $inv_id = '';
                 $invitee = \DB::table('tb_invitee')->where('email', $authen->email)->get();
                 if(count($invitee)>0){
                     foreach($invitee as $invite){                        
                         if($invite->referral_code==$referral_code){
+                            $inv_id = $invite->id;
                             $ref_code = false;
                         }
                     }
                     if($ref_code){
                         $response = array('status' => 'error', 'message' => 'Refferal Code not matched', 'gid' => $authen->group_id, 'errors'=>true);
                     }else{
+                        
+                        
+                        
                         $authen->active = '1';
                         $authen->save();
             
@@ -205,6 +210,12 @@ class CustomerController extends Controller {
                         \Session::put('ll', date("Y-m-d H:i:s"));
             
                         \DB::table('tb_user_company_details')->insert($ucdata);
+                        
+                        $disdata['user_id']=$authen->id;
+                        $disdata['invitee_id']=$inv_id;
+                        $disdata['availability']= 1;
+                        
+                        \DB::table('tb_user_invitee_discount')->insert($disdata);
             
                         $response = array('status' => 'success', 'message' => 'Registered successfully', 'gid' => $authen->group_id);
                     }

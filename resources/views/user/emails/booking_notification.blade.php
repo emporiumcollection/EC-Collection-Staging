@@ -1323,8 +1323,8 @@
                                                                                                                                                             <b>{property_name} Terms And Conditions</b>
                                                                                                                                                             <br/>{hotel_terms_n_conditions}
                                                                                                                                                             <br/>
-                                                                                                                                                            <br/><a href="http://design-locations.biz">www.design-locations.biz</a>
-                                                                                                                                                            <br/><a href="mailto:reservations@design-locations.biz">reservations@design-locations.biz</a>
+                                                                                                                                                            <br/><a href="https://emporium-voyage.com/">emporium-voyage.com/</a>
+                                                                                                                                                            <br/><a href="mailto:reservations@emporium-voyage.com">reservations@emporium-voyage.com</a>
                                                                                                                                                         </td>
                                                                                                                                                         <td width="30" class="wz" style="border-collapse: collapse;"></td>
                                                                                                                                                     </tr>
@@ -1366,7 +1366,7 @@
                                                                                                                                         </tr>
                                                                                                                                         <tr>
                                                                                                                                             <!--NOTES -->
-                                                                                                                                            <td mc:edit="mcsec-52" style="border-collapse: collapse; color: #333;" class="thankYouMessageTD">THANK YOU VERY MUCH FOR CHOOSING Design-Locations</td>
+                                                                                                                                            <td mc:edit="mcsec-52" style="border-collapse: collapse; color: #333;" class="thankYouMessageTD">THANK YOU VERY MUCH FOR CHOOSING emporium-voyage</td>
                                                                                                                                         </tr>
                                                                                                                                         <tr>
                                                                                                                                             <td height="25" style="font-size: 0;line-height:1;border-collapse: collapse;">&nbsp;</td>

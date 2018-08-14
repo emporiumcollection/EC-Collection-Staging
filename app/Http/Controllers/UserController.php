@@ -1219,6 +1219,10 @@ class UserController extends Controller {
             $invitee_data['message'] = $request->input('message');
             $invitee_data['referral_code'] = $referral_code;
             $invitee_data['created'] = date("Y-m-d");
+            $today =  date("Y-m-d");            
+            $expiry_date = date("Y-m-d", strtotime("+1 month", strtotime($today)));
+            
+            $invitee_data['expired_on'] = $expiry_date;
             
             $inviteeId = \DB::table('tb_invitee')->insertGetId($invitee_data);             
             if($inviteeId > 0){
