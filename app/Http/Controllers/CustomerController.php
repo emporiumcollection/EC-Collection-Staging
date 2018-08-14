@@ -211,7 +211,7 @@ class CustomerController extends Controller {
             
                         \DB::table('tb_user_company_details')->insert($ucdata);
                         
-                        $disdata['user_id']=$authen->id;
+                        $disdata['user_id']=$invitee->user_id;
                         $disdata['invitee_id']=$inv_id;
                         $disdata['availability']= 1;
                         
