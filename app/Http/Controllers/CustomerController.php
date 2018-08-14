@@ -183,10 +183,12 @@ class CustomerController extends Controller {
                 $ref_code = true;
                 $inv_id = '';
                 $invitee = \DB::table('tb_invitee')->where('email', $authen->email)->get();
+                print_r();
                 if(count($invitee)>0){
                     foreach($invitee as $invite){                        
                         if($invite->referral_code==$referral_code){
                             $inv_id = $invite->id;
+                            $inv_uid = $invite->user_id;
                             $ref_code = false;
                         }
                     }
@@ -211,7 +213,7 @@ class CustomerController extends Controller {
             
                         \DB::table('tb_user_company_details')->insert($ucdata);
                         
-                        $disdata['user_id']=$invitee->user_id;
+                        $disdata['user_id']=$inv_uid;
                         $disdata['invitee_id']=$inv_id;
                         $disdata['availability']= 1;
                         
