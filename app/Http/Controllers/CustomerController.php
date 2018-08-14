@@ -183,7 +183,7 @@ class CustomerController extends Controller {
                 $ref_code = true;
                 $inv_id = '';
                 $invitee = \DB::table('tb_invitee')->where('email', $authen->email)->get();
-                print_r();
+                
                 if(count($invitee)>0){
                     foreach($invitee as $invite){                        
                         if($invite->referral_code==$referral_code){
