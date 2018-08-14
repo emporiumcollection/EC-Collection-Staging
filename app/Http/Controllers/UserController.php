@@ -1223,7 +1223,7 @@ class UserController extends Controller {
             $expiry_date = date("Y-m-d", strtotime("+1 month", strtotime($today)));
             
             $invitee_data['expired_on'] = $expiry_date;
-            
+            print_r($invitee_data); die;
             $inviteeId = \DB::table('tb_invitee')->insertGetId($invitee_data);             
             if($inviteeId > 0){
                 
