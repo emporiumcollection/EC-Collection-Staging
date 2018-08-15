@@ -287,9 +287,9 @@
         										{{ Lang::get('core.newpassword') }}
         									</label>
         									<div class="col-sm-12 col-md-7">
-										Password must be 8 character.
-										Must be one uppercase character.
-										Must be one Non-alphanumeric (!, @, # etc.) character.
+										Password must be 8 character. <br /> 
+										Must be one uppercase character. <br /> 
+										Must be one Non-alphanumeric (!, @, # etc.) character. <br /> 
         										<input name="password" type="password" id="password" class="form-control m-input" required  value="" />  
         									</div>
         								</div>
