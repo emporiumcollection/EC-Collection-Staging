@@ -1,7 +1,7 @@
 @extends('users_admin.traveller.layouts.app')
 
 @section('page_name')
-    Account  <small>My Profile | Preferences</small>
+    Account  <small> My Profile | Preferences </small>
 @stop
 
 @section('breadcrumb')
@@ -78,7 +78,7 @@
 								<span class="m-nav__link-title">
 									<span class="m-nav__link-wrap">
 										<span class="m-nav__link-text">
-											Personalized Preferences
+											Personal Preferences
 										</span>
 									</span>
 								</span>
@@ -112,7 +112,7 @@
                     <img src="{{URL::to('images/personal_information.jpg')}}" style="width: 100%;" />
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-12 bottom-pad" style="display: none;" id="img_personal_preferences">
-                    <div class="b2c-banner-text">Personalized Preferences</div>
+                    <div class="b2c-banner-text">Personal Preferences</div>
                     <img src="{{URL::to('images/personal_preferences.jpg')}}" style="width: 100%;" />
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-12 bottom-pad" style="display: none;" id="img_change_password">
@@ -121,7 +121,7 @@
                 </div>
                 
                 <div class="col-sm-12 col-md-12 col-lg-12">
-                    <h2>My Profile / Preferences</h2>
+                    <h2> My Profile | Preferences </h2>
                     In this section you manage all aspects of your profile which include, personal information, personal preferences and account settings.
                 </div>
             </div>
