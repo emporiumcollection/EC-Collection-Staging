@@ -198,12 +198,12 @@
         								</div>
                                         <div class="form-group m-form__group row">
         									<label for="ipt" class="col-sm-12 col-md-2 col-form-label">
-        										Avatar
+        										My Profile Image
         									</label>
         									<div class="col-sm-12 col-md-7">
                                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                                     <span class="btn btn-primary btn-file">
-                                    			  	  <span class="fileinput-new">Upload Avatar Image</span>
+                                    			  	  <span class="fileinput-new">Upload your Profile Image</span>
                                                       @if(!empty($info->avatar))
                                                         <span class="fileinput-exists"> Change</span>
                                                       @endif
@@ -213,7 +213,7 @@
                                                     <span class="fileinput-filename"></span>
                                                     <a href="#" class="close fileinput-exists" data-dismiss="fileinput" style="float: none">&times;</a>
                                                     <br /> 
-                                                    Image Dimension 80 x 80 px <br />                                       			
+                                                    Make sure your image dimension is 80 x 80px <br />                                       			
                                         			{!! SiteHelpers::showUploadedFile($info->avatar,'/uploads/users/',80,80) !!}
                                                 </div>
         									</div>
@@ -243,7 +243,7 @@
                                                     <option value="it"  <?php echo $info->prefer_communication_with=="it" ? "selected='selected'" : "" ?>>Italiano</option>                                                    
                                                     <option value="nl"  <?php echo $info->prefer_communication_with=="nl" ? "selected='selected'" : "" ?>>Nederlands</option>                                                    
                                                 </select>
-                                                <span class="m-form__help">We'll send you messages in this language.</span>  
+                                                <span class="m-form__help">We'll send you communication in this language.</span>  
         									</div>
         								</div>
                                         <div class="form-group m-form__group row">
@@ -260,7 +260,7 @@
                                                     </option>                                        
                                                     @endforeach
                                                 </select>
-                                                <span class="m-form__help">Select the currency in which we display prices.</span> 
+                                                <span class="m-form__help">Select the currency in which we display system wide prices.</span> 
         									</div>
         								</div>
                                         
@@ -287,6 +287,9 @@
         										{{ Lang::get('core.newpassword') }}
         									</label>
         									<div class="col-sm-12 col-md-7">
+										Password must be 8 character.
+										Must be one uppercase character.
+										Must be one Non-alphanumeric (!, @, # etc.) character.
         										<input name="password" type="password" id="password" class="form-control m-input" required  value="" />  
         									</div>
         								</div>
