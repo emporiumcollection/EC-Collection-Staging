@@ -46,6 +46,7 @@
             <div class="col-sm-12 col-md-12 col-lg-12 bottom-pad m--align-center">
                 <div class="m-card-profile__pic">
                     <div class="m-card-profile__pic-wrapper">
+                        <div class="b2c-banner-text">Company Account</div>
 						<img src="{{URL::to('images/company.jpg')}}" style="width: 100%;" />
 					</div>
 				</div>
