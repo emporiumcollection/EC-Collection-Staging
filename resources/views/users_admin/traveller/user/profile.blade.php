@@ -104,6 +104,7 @@
 		<div class="col-xl-9 col-lg-8">
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-12 bottom-pad">
+                    <div class="b2c-banner-text">My Profile</div>
                     <img src="{{URL::to('images/profile.jpg')}}" style="width: 100%;" />
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-12">
