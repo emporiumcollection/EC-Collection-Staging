@@ -56,6 +56,8 @@
                                 <th class="number"> No </th>
                                 <th> <input type="checkbox" class="checkall" /></th>
                                 <th>Title</th>
+                                <th>Category</th>
+                                <th>Status</th>
                                 <th width="70" >{{ Lang::get('core.btn_action') }}</th>
                             </tr>
                         </thead>
@@ -66,6 +68,8 @@
                                 <td width="30"> {{ ++$i }} </td>
                                 <td width="50"><input type="checkbox" class="ids" name="ids[]" value="{{ $row->contract_id }}" />  </td>									
                                 <td>{{$row->title}}</td>
+                                <td>{{ucfirst(str_replace('-',' ',trim($row->contract_type)))}}</td>
+                                <td>@if((bool) $row->status) Active @else Inactive @endif</td>
                                 <td>
                                     @if($access['is_detail'] ==1)
                                     <a href="{{ URL::to('contract/show/'.$row->contract_id.'?return='.$return)}}" class="tips btn btn-xs btn-primary" title="{{ Lang::get('core.btn_view') }}"><i class="fa  fa-search "></i></a>
