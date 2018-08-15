@@ -103,11 +103,11 @@
 		</div>
 		<div class="col-xl-9 col-lg-8">
             <div class="row">
-                <div class="col-sm-12 col-md-12 col-lg-12 bottom-pad">
+                <div class="col-sm-12 col-md-12 col-lg-12 bottom-pad" style="display: none;">
                     <div class="b2c-banner-text">My Profile</div>
                     <img src="{{URL::to('images/profile.jpg')}}" style="width: 100%;" id="img_my_profile" />
                 </div>
-                <div class="col-sm-12 col-md-12 col-lg-12 bottom-pad" style="display: none;" id="img_personal_information">
+                <div class="col-sm-12 col-md-12 col-lg-12 bottom-pad" style="display: ;" id="img_personal_information">
                     <div class="b2c-banner-text">Personal Information</div>
                     <img src="{{URL::to('images/personal_information.jpg')}}" style="width: 100%;" />
                 </div>
@@ -115,6 +115,11 @@
                     <div class="b2c-banner-text">Personalized Preferences</div>
                     <img src="{{URL::to('images/personal_preferences.jpg')}}" style="width: 100%;" />
                 </div>
+                <div class="col-sm-12 col-md-12 col-lg-12 bottom-pad" style="display: none;" id="img_change_password">
+                    <div class="b2c-banner-text">Change Password</div>
+                    <img src="{{URL::to('images/changepassword.jpg')}}" style="width: 100%;" />
+                </div>
+                
                 <div class="col-sm-12 col-md-12 col-lg-12">
                     <h2>My Profile / Preferences</h2>
                     Intro text
@@ -129,18 +134,18 @@
         					<div class="m-portlet__head-tools">
         						<ul class="nav nav-tabs m-tabs m-tabs-line   m-tabs-line--left m-tabs-line--primary" role="tablist">
         							<li class="nav-item m-tabs__item">
-        								<a class="nav-link m-tabs__link active" data-toggle="tab" href="#info" role="tab">
+        								<a class="nav-link m-tabs__link active" data-toggle="tab" href="#info" role="tab" id="tab_info">
         									<i class="flaticon-share m--hide"></i>
         									Personal Information
         								</a>
         							</li>
         							<li class="nav-item m-tabs__item">
-        								<a class="nav-link m-tabs__link" data-toggle="tab" href="#pass" role="tab">
+        								<a class="nav-link m-tabs__link" data-toggle="tab" href="#pass" role="tab" id="tab_change_pass">
         									Change Password
         								</a>
         							</li>
         							<li class="nav-item m-tabs__item">
-        								<a class="nav-link m-tabs__link" data-toggle="tab" href="#preferences" role="tab">
+        								<a class="nav-link m-tabs__link" data-toggle="tab" href="#preferences" role="tab" id="tab_preferences">
         									Personalized Preferences
         								</a>
         							</li>
@@ -688,17 +693,38 @@
 <script>
     $(document).ready(function () {
         
+        $('#tab_info').click(function(){
+            $("#img_my_profile").css('display', 'none');
+            $("#img_personal_information").css('display', '');  
+            $("#img_personal_preferences").css('display', 'none');
+            $("#img_change_password").css('display', 'none');                
+        });
+        $('#tab_change_pass').click(function(){
+            $("#img_my_profile").css('display', 'none');
+            $("#img_personal_information").css('display', 'none');  
+            $("#img_personal_preferences").css('display', 'none'); 
+            $("#img_change_password").css('display', '');      
+        });
+        $('#tab_preferences').click(function(){
+            $("#img_my_profile").css('display', 'none');
+            $("#img_personal_information").css('display', 'none');  
+            $("#img_personal_preferences").css('display', ''); 
+            $("#img_change_password").css('display', 'none');      
+        });
+        
         $("#left-personal-info").click(function(){
             $('#myprofile [href="#info"]').trigger('click');  
             $("#img_my_profile").css('display', 'none');
             $("#img_personal_information").css('display', '');  
-            $("#img_personal_preferences").css('display', 'none');    
+            $("#img_personal_preferences").css('display', 'none'); 
+            $("#img_change_password").css('display', 'none');      
         });
         $("#left-personal-preferences").click(function(){
             $('#myprofile [href="#preferences"]').trigger('click'); 
             $("#img_my_profile").css('display', 'none');
             $("#img_personal_information").css('display', 'none');  
-            $("#img_personal_preferences").css('display', '');   
+            $("#img_personal_preferences").css('display', '');  
+            $("#img_change_password").css('display', 'none');    
         });
         // Multi Tab Form
         var current_fs, next_fs, previous_fs;
