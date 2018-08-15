@@ -20,7 +20,7 @@
     <li class="m-nav__separator"> - </li>
     <li class="m-nav__item"> 
         <a href="javascript:;" class="m-nav__link"> 
-            <span class="m-nav__link-text"> Create Company </span> 
+            <span class="m-nav__link-text"> Create a Company </span> 
         </a> 
     </li>
 @stop
@@ -31,13 +31,13 @@
             <div class="col-sm-12 col-md-12 col-lg-12">
                 <div class="row">
                     <div class="col-sm-12 col-md-12 col-lg-12">
-                        <a href="{{ URL::to('user/settings')}}" class="setting-left-side-menu"><i class="m-nav__link-icon fa fa-credit-card"></i> Add Payment Method</a>
+                        <a href="{{ URL::to('user/settings')}}" class="setting-left-side-menu"><i class="m-nav__link-icon fa fa-credit-card"></i> Add a Payment Method</a>
                     </div>      
                     <div class="col-sm-12 col-md-12 col-lg-12">
-                        <a href="{{ URL::to('user/company')}}" class="setting-left-side-menu"><i class="m-nav__link-icon flaticon-profile-1"></i> Create Company</a>
+                        <a href="{{ URL::to('user/company')}}" class="setting-left-side-menu"><i class="m-nav__link-icon flaticon-profile-1"></i> Create a Company</a>
                     </div> 
                     <div class="col-sm-12 col-md-12 col-lg-12">
-                        <a href="#" class="setting-left-side-menu" id="m_quick_sidebar_toggle_2"><i class="m-nav__link-icon flaticon-music-2"></i> Notifications</a>
+                        <a href="#" class="setting-left-side-menu" id="m_quick_sidebar_toggle_2"><i class="m-nav__link-icon flaticon-interface-10"></i> Notification Settings</a>
                     </div>               
                 </div>              
             </div>
@@ -53,7 +53,7 @@
             </div>
             <div class="col-sm-12 col-md-12 col-lg-12">
                 <h2>Company account</h2>
-                <p>Intro text for Company account</p>
+                <p>In this section, add all your company related information for tax purposes. Make sure to enter your details correct as the infomration will be used for billing.</p>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-12">
                 
