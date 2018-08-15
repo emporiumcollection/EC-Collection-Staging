@@ -1,7 +1,7 @@
 @extends('users_admin.traveller.layouts.app')
 
 @section('page_name')
-    Account  <small>View Detail My Info</small>
+    Account  <small>My Profile | Preferences</small>
 @stop
 
 @section('breadcrumb')
@@ -14,7 +14,7 @@
     <li class="m-nav__separator"> - </li>
     <li class="m-nav__item"> 
         <a href="javascript:;" class="m-nav__link"> 
-            <span class="m-nav__link-text"> Account </span> 
+            <span class="m-nav__link-text"> My Profile | Preferences </span> 
         </a> 
     </li>
 @stop
@@ -122,7 +122,7 @@
                 
                 <div class="col-sm-12 col-md-12 col-lg-12">
                     <h2>My Profile / Preferences</h2>
-                    Intro text
+                    In this section you manage all aspects of your profile which include, personal information, personal preferences and account settings.
                 </div>
             </div>
             <div class="row">
@@ -333,7 +333,7 @@
                                                             $dest_array = explode(',', $preferences->destinations);
                                                         }
                                                     ?>
-                                                    <select name="destinations[]" data-placeholder="Ex: Argentina, South Africa, Cape Town" class="form-control chosen-select-default chosen-select-input-style" multiple tabindex="4" id="destinationSelect">
+                                                    <select name="destinations[]" data-placeholder="Ex: London, Berlin, Cape Town, or New York" class="form-control chosen-select-default chosen-select-input-style" multiple tabindex="4" id="destinationSelect">
                                                         <?php                                                        
                                                         if(!empty($destinations)) {
                                                             foreach ($destinations as $destination) {
@@ -350,7 +350,7 @@
                                             </div>
                                             <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center">
                                                 <div class="wrong-selection-pannel">
-                                                    <p class="sub-des-heading wrong-selected-text">We can not make travel arrangements to "Delhi".</p>
+                                                    <p class="sub-des-heading wrong-selected-text">Select the destinations you prefer to travel to.</p>
                                                 </div>
                                             </div>
                                             
@@ -408,7 +408,7 @@
                                     <div class="personalized-pefrences m--hide pref-top-pad">
                                         <div class="row" id="experience">
                                             <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center">
-                                                <h2 class="black-heading-big">What would you like experience</h2>
+                                                <h2 class="black-heading-big">What would you like to experience</h2>
                                             </div>
                                             <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center">
                                                 <div class="row exprerience">
@@ -551,7 +551,7 @@
                                     <div class="personalized-pefrences m--hide pref-top-pad">
                                         <div class="row">
                                             <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center">
-                                                <h2 class="black-heading-big">When would you like to travel?</h2>
+                                                <h2 class="black-heading-big">When do you normally travel?</h2>
                                             </div>
                                             <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
                                                 <div id="t-preferences-picker" class="rsidebar datepic-max-width t-datepicker">
@@ -563,6 +563,7 @@
                                                     
                                                 </div>
                                                 <div class="form-group">
+						<h2 class="black-heading-big">How long do you normally like to travel?</h2>
                                                     <select class="form-control ps-input-style ps-input-width" name="stay_time" id="stay_time">
                                                         <option value="1-2 Weeks" {{@isset($preferences->stay_time) ? $preferences->stay_time=='1-2 Weeks' ? "selected='selected'" : "" : ""}}>1-2 Weeks</option>
                                                         <option value="2-3 Weeks" {{@isset($preferences->stay_time) ? $preferences->stay_time=='2-3 Weeks' ? "selected='selected'" : "" : ""}}>2-3 Weeks</option>
@@ -574,22 +575,23 @@
                                                     <div class="m-checkbox-list"> 
 														<label class="m-checkbox m-checkbox--state-primary">
 															<input type="checkbox" name="agree" id="agree" />
-															I Agree
+															I Agree to the Emporium-Voyage Privacy & Data Protection Policy
 															<span></span>
 														</label>
 													</div>
                                                     <div class="error" id="error" style="display: none;">
-                                                        Please check agree checkbox.
+                                                        Please agree to the Privacy & Data Protection Policy.
                                                     </div>
                                                     <span class="m-form__help">
-														Some help text goes here
+														 I agree that my personal data will be collected and stored and used electronically to help the reservation agents with specialized offers pertaining to my travel preferences. 
+Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.com or from your settings section in your account admin.
 													</span>                                                                            
                                                 </div>
                                                 <div class="form-group pref-left-pad-10">
                                                     <div class="m-checkbox-list">
 														<label class="m-checkbox m-checkbox--state-primary">
 															<input type="checkbox" name="privacy_policy" id="privacy_policy" />
-															<a href="https://www.iubenda.com/privacy-policy/70156957" class="iubenda-white iubenda-embed iub-legal-only iub-no-markup" title="Privacy Policy" target="_blank">Privacy Policy</a>
+															<a href="https://www.iubenda.com/privacy-policy/70156957" class="iubenda-white iubenda-embed iub-legal-only iub-no-markup" title="Privacy Policy" target="_blank">Emporium-Voyage Privacy Policy</a>
 															<span></span>
 														</label>
                                                     </div>
@@ -597,7 +599,7 @@
                                                         Please check privacy policy checkbox.
                                                     </div>
                                                     <span class="m-form__help">
-														Some help text goes here
+														I have read and agree to the Emporium-Voyage Privacy Policy.
 													</span>
                                                  </div>            
 												 <div class="form-group pref-left-pad-10">
@@ -612,7 +614,7 @@
                                                         Please check cookie policy checkbox.
                                                     </div>
                                                     <span class="m-form__help">
-														Some help text goes here
+														I have read and agree to the Emporium-Voyage Cookie Policy
 													</span>
                                                  </div>
                                             </div>
