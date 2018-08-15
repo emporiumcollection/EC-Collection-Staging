@@ -7,14 +7,11 @@
  */
 (function(a) {
     a.fn.jCombo = function(b, d) {
-        function h(b, d, e, f, g, fc, cp) {
-            var send_data = {};            
-            if(((typeof fc) != 'undefined') && (fc.trim() != '')){send_data = {parent: fc+":"+e+":"+cp};}
+        function h(b, d, e, f, g) {
             a.ajax({
                 type: "GET",
                 dataType: "json",
-                data: send_data,
-                url: d,
+                url: d + e,
                 success: function(a) {
                     var d = "";
                     if (a.length == 0) {
@@ -56,8 +53,6 @@
             parent: "",
             selected_value: "",
             parent_value: "",
-            input_param: "",
-            condition_param: "where",
             initial_text: "-- Please Select --"
         };
         var d = a.extend(e, d);
@@ -68,9 +63,9 @@
             g.bind("change", function(c) {
                 f.attr("disabled", "disabled");
                 if (a(this).val() != "0" && a(this).val() != "") f.removeAttr("disabled");
-                h(f, b, a(this).val(), d.initial_text, d.selected_value, d.input_param, d.condition_param)
+                h(f, b, a(this).val(), d.initial_text, d.selected_value)
             })
         }
-        h(f, b, d.parent_value, d.initial_text, d.selected_value, d.input_param, d.condition_param)
+        h(f, b, d.parent_value, d.initial_text, d.selected_value)
     }
 })(jQuery)

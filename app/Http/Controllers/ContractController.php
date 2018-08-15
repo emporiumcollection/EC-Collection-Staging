@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\controller;
 use App\Models\Contract;
+use App\Models\Contractsevents;
+use App\Models\Contractshotels;
+use App\Models\Contractspackages;
+use App\Models\Contractsusergroups;
+use App\Models\Contractsusers;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 use Validator,
@@ -179,11 +184,218 @@ class ContractController extends Controller {
     function postSave(Request $request) {
 
         $rules = $this->validateForm();
-        $validator = Validator::make($request->all(), $rules);
+        
+        $category_type = trim($request->input('contract_type'));
+        $check_hotel = true;
+        $check_revised_commission = false;
+        $check_packages = true;
+        $check_user_groups = true;
+        $check_groups_users = true;
+        
+        switch($category_type){
+            case "sign-up":
+                $check_hotel = false;
+                $check_packages = false;
+                $check_groups_users = false;
+            break;
+            
+            case "packages":
+                $check_hotel = false;
+            break;
+            
+            case "hotels":
+                $check_packages = false;
+                $check_user_groups = false;
+                $check_revised_commission = true;
+            break;
+        }
+
+        $is_all_hotels = (bool) trim($request->input('all_hotels'));
+        $is_revised_commission = (bool) trim($request->input('revised_commission'));
+        $is_all_packages = (bool) trim($request->input('all_packages'));
+        $is_all_user_groups = (bool) trim($request->input('all_user_groups'));
+        $is_all_groups_users = (bool) trim($request->input('all_groups_users'));
+        
+        if(($is_all_hotels == false) && ($check_hotel === true)){ $rules["hotel_ids"] = "required"; }
+        if(($is_revised_commission == true) && ($check_hotel === true) && ($check_revised_commission === true)){ $rules["full_availability_commission"] = "required|numeric"; $rules["partial_availability_commission"] = "required|numeric"; }
+        if(($is_all_packages == false) && ($check_packages === true)){ $rules["package_ids"] = "required"; }
+        if(($is_all_user_groups == false) && ($check_user_groups === true)){ $rules["user_group_ids"] = "required"; }
+        if(($is_all_groups_users == false) && ($is_all_user_groups == false) && ($check_user_groups === true) && ($check_groups_users === true)){ $rules["user_ids"] = "required"; }
+        
+        $validator = Validator::make($request->all(), $rules);        
         if ($validator->passes()) {
-            $data = $this->validatePost('tb_contract');
+            //$data = $this->validatePost('tb_contract');
+            $package_ids_array = array();
+            $hotel_ids_array = array();
+            $user_group_ids_array = array();
+            $user_ids_array = array();
+            
+            $uid = \Auth::user()->id;
+            $data = array();
+            $data['contract_type'] = trim($request->input('contract_type'));
+            $data['title'] = trim($request->input('title'));
+            $data['description'] = trim($request->input('description'));
+            $data['status'] = (bool) trim($request->input('contract_status'));
+            
+            if(($check_packages == true))
+            {
+                $data['package_ids'] = 'all';
+                if((!is_null($request->input('package_ids'))) && (is_array($request->input('package_ids'))) && ($is_all_packages == false)){
+                    $package_ids_array = $request->input('package_ids');
+                    $data['package_ids'] = trim(implode(',',$request->input('package_ids')));
+                }                    
+            }
+            
+            if(($check_hotel == true))
+            {
+                $data['hotel_ids'] = 'all';
+                if((!is_null($request->input('hotel_ids'))) && (is_array($request->input('hotel_ids'))) && ($is_all_hotels == false)){
+                    $hotel_ids_array = $request->input('hotel_ids');
+                    $data['hotel_ids'] = trim(implode(',',$request->input('hotel_ids')));
+                }                    
+            }
+            
+            if(($check_user_groups == true))
+            {
+                $data['user_group_ids'] = 'all';
+                if((!is_null($request->input('user_group_ids'))) && (is_array($request->input('user_group_ids'))) && ($is_all_user_groups == false)){
+                    $user_group_ids_array = $request->input('user_group_ids');
+                    $data['user_group_ids'] = trim(implode(',',$request->input('user_group_ids')));
+                }
+            }
+            
+            if(($check_user_groups === true) && ($check_groups_users === true))
+            {
+                $data['user_ids'] = 'all';
+                if(($is_all_groups_users == false) && ($is_all_user_groups == false) && (!is_null($request->input('user_ids'))) && (is_array($request->input('user_ids')))){
+                    $user_ids_array = $request->input('user_ids');
+                    $data['user_ids'] = trim(implode(',',$request->input('user_ids')));
+                }                    
+            }
+            
+            $data['is_commission_set'] = 0;
+            if(($is_revised_commission == true) && ($check_hotel === true) && ($check_revised_commission === true)){
+                $data['full_availability_commission'] = trim($request->input('full_availability_commission'));
+                $data['partial_availability_commission'] = trim($request->input('partial_availability_commission'));
+                $data['is_commission_set'] = 1;
+            }
+                
+            $data['deleted'] = 0;
+            
+            if ($request->input('contract_id') == '') {
+                $data['created_by'] = $uid;
+                $data['created_on'] = date('Y-m-d h:i:s');
+            }else
+            {
+                $data['updated_by'] = $uid;
+                $data['update_on'] = date('Y-m-d h:i:s');
+            }            
 
             $id = $this->model->insertRow($data, $request->input('contract_id'));
+            
+            if($id > 0){
+                
+                /** insert packages start **/
+                $contractspackages = new Contractspackages();
+                if(count($package_ids_array) > 0){                    
+                    $rows = $contractspackages->select('id','package_id')->where(array('contract_id'=>$id))->get();
+                    $teData = array();
+                    foreach($rows as $row){
+                        $teData[$row->package_id] = $row->id;
+                    }
+                    
+                    $tiData = array();
+                    foreach($package_ids_array as $package_id){
+                        $rowid = ((isset($teData[$package_id]))?$teData[$package_id]:null);
+                        $tiData[] = array('id'=>$rowid,'package_id'=>$package_id,'contract_id'=>$id);
+                    }
+                    
+                    if(count($tiData) > 0){
+                        $contractspackages->where(array('contract_id'=>$id))->delete();
+                        $contractspackages->insert($tiData); 
+                    }    
+                }else
+                {
+                    $contractspackages->where(array('contract_id'=>$id))->delete();
+                }
+                /** insert packages end **/
+                
+                /** insert hotels start **/
+                $contractshotels = new Contractshotels();
+                if(count($hotel_ids_array) > 0){                    
+                    $rows = $contractshotels->select('id','hotel_id')->where(array('contract_id'=>$id))->get();
+                    $teData = array();
+                    foreach($rows as $row){
+                        $teData[$row->hotel_id] = $row->id;
+                    }
+                    
+                    $tiData = array();
+                    foreach($hotel_ids_array as $hotel_id){
+                        $rowid = ((isset($teData[$hotel_id]))?$teData[$hotel_id]:null);
+                        $tiData[] = array('id'=>$rowid,'hotel_id'=>$hotel_id,'contract_id'=>$id);
+                    }
+                    
+                    if(count($tiData) > 0){
+                        $contractshotels->where(array('contract_id'=>$id))->delete();
+                        $contractshotels->insert($tiData); 
+                    }    
+                }else
+                {
+                    $contractshotels->where(array('contract_id'=>$id))->delete();
+                }
+                /** insert hotels end **/
+                
+                /** insert users groups start **/
+                $contractsusergroups = new Contractsusergroups();
+                if(count($user_group_ids_array) > 0){                    
+                    $rows = $contractsusergroups->select('id','group_id')->where(array('contract_id'=>$id))->get();
+                    $teData = array();
+                    foreach($rows as $row){
+                        $teData[$row->group_id] = $row->id;
+                    }
+                    
+                    $tiData = array();
+                    foreach($user_group_ids_array as $user_group_id){
+                        $rowid = ((isset($teData[$user_group_id]))?$teData[$user_group_id]:null);
+                        $tiData[] = array('id'=>$rowid,'group_id'=>$user_group_id,'contract_id'=>$id);
+                    }
+                    
+                    if(count($tiData) > 0){
+                        $contractsusergroups->where(array('contract_id'=>$id))->delete();
+                        $contractsusergroups->insert($tiData); 
+                    }    
+                }else
+                {
+                    $contractsusergroups->where(array('contract_id'=>$id))->delete();
+                }
+                /** insert users groups end **/
+                
+                /** insert users start **/
+                $contractsusers = new Contractsusers();
+                if(count($user_ids_array) > 0){                    
+                    $rows = $contractsusers->select('id','user_id')->where(array('contract_id'=>$id))->get();
+                    $teData = array();
+                    foreach($rows as $row){
+                        $teData[$row->user_id] = $row->id;
+                    }
+                    
+                    $tiData = array();
+                    foreach($user_ids_array as $user_id){
+                        $rowid = ((isset($teData[$user_id]))?$teData[$user_id]:null);
+                        $tiData[] = array('id'=>$rowid,'user_id'=>$user_id,'contract_id'=>$id);
+                    }
+                    
+                    if(count($tiData) > 0){
+                        $contractsusers->where(array('contract_id'=>$id))->delete();
+                        $contractsusers->insert($tiData); 
+                    }    
+                }else
+                {
+                    $contractsusers->where(array('contract_id'=>$id))->delete();
+                }
+                /** insert users end **/
+                
+            }
 
             if (!is_null($request->input('apply'))) {
                 $return = 'contract/update/' . $id . '?return=' . self::returnUrl();
