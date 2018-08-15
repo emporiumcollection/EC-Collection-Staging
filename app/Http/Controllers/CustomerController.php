@@ -222,7 +222,7 @@ class CustomerController extends Controller {
                         $response = array('status' => 'success', 'message' => 'Registered successfully', 'gid' => $authen->group_id);
                     }
                 }else{
-                    $response = array('status' => 'error', 'message' => 'Refferal Code doest not exist', 'gid' => $authen->group_id, 'errors'=>true);
+                    $response = array('status' => 'error', 'message' => 'Please connect with your referrer to resend your invitation or write us an email on <a href="mailto:marketing@emporium-voyage.com">marketing@emporium-voyage.com', 'gid' => $authen->group_id, 'errors'=>true);
                 }
             }else{
                 

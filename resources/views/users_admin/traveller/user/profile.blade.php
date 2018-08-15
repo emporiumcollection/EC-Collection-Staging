@@ -105,7 +105,15 @@
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-12 bottom-pad">
                     <div class="b2c-banner-text">My Profile</div>
-                    <img src="{{URL::to('images/profile.jpg')}}" style="width: 100%;" />
+                    <img src="{{URL::to('images/profile.jpg')}}" style="width: 100%;" id="img_my_profile" />
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-12 bottom-pad" style="display: none;" id="img_personal_information">
+                    <div class="b2c-banner-text">Personal Information</div>
+                    <img src="{{URL::to('images/personal_information.jpg')}}" style="width: 100%;" />
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-12 bottom-pad" style="display: none;" id="img_personal_preferences">
+                    <div class="b2c-banner-text">Personalized Preferences</div>
+                    <img src="{{URL::to('images/personal_preferences.jpg')}}" style="width: 100%;" />
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-12">
                     <h2>My Profile / Preferences</h2>
@@ -681,10 +689,16 @@
     $(document).ready(function () {
         
         $("#left-personal-info").click(function(){
-            $('#myprofile [href="#info"]').trigger('click');    
+            $('#myprofile [href="#info"]').trigger('click');  
+            $("#img_my_profile").css('display', 'none');
+            $("#img_personal_information").css('display', '');  
+            $("#img_personal_preferences").css('display', 'none');    
         });
         $("#left-personal-preferences").click(function(){
-            $('#myprofile [href="#preferences"]').trigger('click');    
+            $('#myprofile [href="#preferences"]').trigger('click'); 
+            $("#img_my_profile").css('display', 'none');
+            $("#img_personal_information").css('display', 'none');  
+            $("#img_personal_preferences").css('display', '');   
         });
         // Multi Tab Form
         var current_fs, next_fs, previous_fs;

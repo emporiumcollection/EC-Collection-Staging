@@ -54968,3 +54968,14 @@ i.m-menu__link-icon.fa {
     font-family: SilverSouthScript;
     font-size: 80px;
 }
+@media (max-width:768px) {
+    .b2c-banner-text{
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        margin-top: 10px;
+        color: #fff;
+        font-family: SilverSouthScript;
+        font-size: 40px;
+    }
+}
