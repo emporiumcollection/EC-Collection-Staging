@@ -54,6 +54,9 @@
             .date-picker-wrapper.no-shortcuts.no-gap.two-months {
                 top: 585px !important;
             }
+            .font-italic{
+                font-style: italic;
+            }
         </style>
 		<!-- Global site tag (gtag.js) - Google Analytics -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110391807-1"></script>
@@ -1356,7 +1359,9 @@ $(function () {
                                                 <h4 class="margin-bottom-15">Terms And Conditions</h4>
                                                 <input class="our_term_n_conditions_check_box" name="term_n_conditions" value="On" type="checkbox">
                                                 <label>
-                                                    By checking this box, I accept and acknowledge <a data-toggle="modal" data-target="#our_term_n_conditions_modal" href="#">emporium-voyage</a> 
+                                                    I have read the <a href="{{Url::to('privacy-policy')}}">Privacy Policy</a>. <span class="font-italic">I agree that my personal data will be collected and stored electronically and used electronically to make this reservation with emporium-voyage and the respective partner hotel.</span>  <?php /* <a data-toggle="modal" data-target="#our_term_n_conditions_modal" href="#">emporium-voyage</a> */ ?> 
+                                                    <br />
+                                                    <span class="font-italic">Note: You may revoke your consent at any time by e-mail to <a href="mailto:info@emporium-voyage.com">info@emporium-voyage.com</a> or from your settings section in your account admin.</span>
                                                 </label>
                                                 <div id="our_term_n_conditions_modal" class="modal fade" role="dialog">
                                                     <div class="modal-dialog">
@@ -1453,12 +1458,6 @@ All prices displayed on the Design-Locations websites are current, day prices, s
                                                 </div>
                                                 
                                                 <div class="clearfix"></div>
-                                                <input class="emporium_voyage_term_n_conditions_check_box" name="emporium_voyage_term_n_conditions" value="On" type="checkbox">
-                                                <label>
-                                                    I here by agreed to emporium-voyage
-                                                </label>
-                                                
-                                                <div class="clearfix"></div>
                                                 <?php if(!empty($hotel_terms_n_conditions) && trim($hotel_terms_n_conditions->terms_n_conditions) != ''): ?>
                                                 <input class="hotel_term_n_conditions_check_box" name="hotel_term_n_conditions" value="On" type="checkbox">
                                                 <label>
@@ -1482,7 +1481,12 @@ All prices displayed on the Design-Locations websites are current, day prices, s
                                                 <div class="clearfix"></div>
                                                 <input class="hotel_offer_personal_preferences_check_box" name="hotel_offer_personal_preferences" value="On" type="checkbox">
                                                 <label>
-                                                    I agree to receive information and commercial offers based on my personal preferences.
+                                                    <span class="font-italic">I agree to receive booking confirmations via email or phone and acknowledge that i can change my communication methods from my personal account preferences.</span>
+                                                </label>
+                                                <div class="clearfix"></div>
+                                                <input class="emporium_voyage_term_n_conditions_check_box" name="emporium_voyage_term_n_conditions" value="On" type="checkbox">
+                                                <label>
+                                                    <span class="font-italic">I agree to the emporium-voyage&trade;  <a href="{{Url::to('terms-and-conditions')}}">terms and conditions</a> pertaining to the reservation.</span>
                                                 </label>
                                                 
                                             </div>

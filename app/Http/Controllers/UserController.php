@@ -788,9 +788,10 @@ class UserController extends Controller {
     public function getReset(Request $request, $token = '') {
         if (\Auth::check())
             return Redirect::to('dashboard');
-        $token = $request->input('token');
+        //$token = $request->input('token');
         $user = User::where('reminder', '=', $token);
-        if ($user->count() >= 1) {
+        
+        if ($user->count() >= 1) { 
             $data = array('verCode' => $token);
             return view('user.remind', $data);
         } else {

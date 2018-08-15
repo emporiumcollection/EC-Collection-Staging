@@ -204,3 +204,8 @@ body .ui-widget.ui-widget-content li i.iconsheet {
     z-index: 999999999;
     cursor: pointer;
 }
+.ai-sign-up-form-password-hint {
+    color: #ffec0c;
+    font-size: 15px;
+    margin-top: 5px;
+}

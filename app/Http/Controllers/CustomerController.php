@@ -786,6 +786,7 @@ class CustomerController extends Controller {
                 if (\Session::get('newlang') == 'English') {
                     $etemp = 'auth.reminder_eng';
                 }
+                //echo view('customer.emails.' . $etemp, $edata); die;
                 \Mail::send('customer.emails.' . $etemp, $edata, function($message) use ($emlData) {
                     $message->from($emlData['frmemail'], CNF_APPNAME);
 
@@ -796,14 +797,14 @@ class CustomerController extends Controller {
 
 
                 $affectedRows = User::where('email', '=', $user->email)
-                        ->update(array('reminder' => $request->input('_token')));
+                        ->update(array('reminder' => $token));
 
-                return Redirect::to('customer/login')->with('message', \SiteHelpers::alert('success', 'Please check your email'));
+                return Redirect::to('user/login')->with('message', \SiteHelpers::alert('success', 'Please check your email'));
             } else {
-                return Redirect::to('customer/login')->with('message', \SiteHelpers::alert('error', 'Cant find email address'));
+                return Redirect::to('user/login')->with('message', \SiteHelpers::alert('error', 'Cant find email address'));
             }
         } else {
-            return Redirect::to('customer/login')->with('message', \SiteHelpers::alert('error', 'The following errors occurred')
+            return Redirect::to('user/login')->with('message', \SiteHelpers::alert('error', 'The following errors occurred')
                     )->withErrors($validator)->withInput();
         }
     }

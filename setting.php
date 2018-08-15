@@ -2,7 +2,7 @@
 define('CNF_APPNAME','Emporium Voyage Membership Portal');
 define('CNF_APPDESC','Emporium Voyage Membership Portal');
 define('CNF_COMNAME','Emporium Voyage Membership Portal');
-define('CNF_EMAIL','reservations@emporium-voyage.com');
+define('CNF_EMAIL','marketing@emporium-collection.com');
 define('CNF_METAKEY','Emporium Voyage Membership Portal');
 define('CNF_METADESC','Emporium Voyage Membership Portal');
 define('CNF_GROUP','3');

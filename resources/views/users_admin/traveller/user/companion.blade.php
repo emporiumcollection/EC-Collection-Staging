@@ -40,7 +40,7 @@
         </div>
         <div class="col-xl-9 col-lg-8">
             <div class="col-sm-12 col-md-12 col-lg-12 bottom-pad">
-                <img src="{{URL::to('images/800x450.png')}}" style="width: 100%;" />
+                <img src="{{URL::to('images/companion.jpg')}}" style="width: 100%;" />
             </div>
             <div class="col-sm-12 col-md-12 col-lg-12">
                 <h2>Add Companion</h2>

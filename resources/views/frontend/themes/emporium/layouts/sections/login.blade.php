@@ -65,6 +65,9 @@
                         <span id="valid-msg" class="hide">✓ Valid</span>
                         <span id="error-msg" class="hide">Invalid number</span>
                   </div>
+                  <div class="ai-sign-up-form-password-hint">
+                    Password must be 8 character.<br />Must be one uppercase character.<br />Must be one Non-alphanumeric (!, @, # etc.) character.                    
+                  </div>
                   <div class="form-group">
                         <input class="form-control" name="password" type="password" placeholder="Password" data-html="true" data-toggle="tooltip" data-placement="top" title="Password must be 8 character. &#13;Must be one uppercase character. &#13;Must be one Non-alphanumeric (!, @, # etc.) character.">
                   </div>

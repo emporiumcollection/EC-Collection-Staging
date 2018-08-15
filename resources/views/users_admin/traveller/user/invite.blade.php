@@ -42,7 +42,7 @@
             <div class="col-sm-12 col-md-12 col-lg-12 bottom-pad m--align-center">
                 <div class="m-card-profile__pic">
                     <div class="m-card-profile__pic-wrapper">
-						<img src="{{URL::to('images/800x450.png')}}" style="width: 100%;" />
+						<img src="{{URL::to('images/invite.jpg')}}" style="width: 100%;" />
 					</div>
 				</div>
             </div>

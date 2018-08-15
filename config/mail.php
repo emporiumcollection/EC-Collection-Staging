@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'from' => 'sales@emporium-voyage.com',
+    'from' => 'marketing@emporium-collection.com',
 
     /*
     |--------------------------------------------------------------------------
