@@ -257,9 +257,10 @@ class PropertyController extends Controller {
         $propertiesArr = array();
 		$crpropertiesArr = array();
 		$relatedgridpropertiesArr = array();
-        $props = \DB::table('tb_properties')->where('property_slug', $request->slug)->first();
-
-        $this->data['slug'] = $request->slug;
+        $this->data['slug'] = rtrim($request->slug,'-');
+        //$props = \DB::table('tb_properties')->where('property_slug', $request->slug)->first();
+        $props = \DB::table('tb_properties')->whereRaw("TRIM(TRAILING '-' FROM property_slug ) = ?", [$this->data['slug']])->first();
+        
         if (!empty($props)) {
             $propertiesArr['data'] = $props;
             $propertiesArr['propimage'] = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_container_files.id', 'tb_container_files.file_name', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $props->id)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->get();

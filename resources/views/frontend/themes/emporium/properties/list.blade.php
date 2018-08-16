@@ -86,7 +86,7 @@
 
 @foreach($editorPropertiesArr as  $props)
 <?php
-				$url=URL::to($props->property_slug);
+				$url=URL::to(rtrim($props->property_slug,'-'));
 				if(Request::has("departure") || Request::has("arrive"))
 				{
 					$url.='?arrive='.Request::input("arrive")."&departure=".Request::input("departure");
@@ -135,7 +135,7 @@
 		@foreach($featurePropertiesArr as $props)
 			
 			<?php
-				$url=URL::to($props->property_slug);
+				$url=URL::to(rtrim($props->property_slug,'-'));
 				if(Request::has("departure") || Request::has("arrive"))
 				{
 					$url.='?arrive='.Request::input("arrive")."&departure=".Request::input("departure");
@@ -180,7 +180,7 @@
 {{--*/ $rw = 1 /*--}}
 		@foreach($propertiesArr as $props)
 			<?php
-				$url=URL::to($props->property_slug);
+				$url=URL::to(rtrim($props->property_slug,'-'));
 				if(Request::has("departure") || Request::has("arrive"))
 				{
 					$url.='?arrive='.Request::input("arrive")."&departure=".Request::input("departure");
