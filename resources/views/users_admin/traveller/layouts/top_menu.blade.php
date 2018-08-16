@@ -139,57 +139,43 @@
 															Shortcuts
 														</span>
 													</div>
-													<div class="m-dropdown__body m-dropdown__body--paddingless" style="display: none;">
+													<div class="m-dropdown__body m-dropdown__body--paddingless">
 														<div class="m-dropdown__content">
 															<div class="m-scrollable" data-scrollable="false" data-height="380" data-mobile-height="200">
 																<div class="m-nav-grid m-nav-grid--skin-light">
 																	<div class="m-nav-grid__row">
-																		<a href="{{ URL::to('dashboard')}}" class="m-nav-grid__item">
-																			<i class="m-nav-grid__icon flaticon-dashboard"></i>
+																		<a href="{{ URL::to('user/profile')}}" class="m-nav-grid__item">
+																			<i class="m-nav-grid__icon flaticon-profile-1"></i>
 																			<span class="m-nav-grid__text">
-																				Property Management
+																				My Profile
 																			</span>
 																		</a>
-																		<a href="{{ URL::to('')}}" class="m-nav-grid__item">
-																			<i class="m-nav-grid__icon flaticon-imac"></i>
+																		<a href="{{ URL::to('user/settings')}}" class="m-nav-grid__item">
+																			<i class="m-nav-grid__icon flaticon-settings-1"></i>
 																			<span class="m-nav-grid__text">
-																				Reservation Management
+																				Account Settings
 																			</span>
 																		</a>
 																	</div>
 																	<div class="m-nav-grid__row">
-																		<a href="{{ URL::to('core/elfinder')}}" class="m-nav-grid__item">
-																			<i class="m-nav-grid__icon flaticon-folder-4"></i>
+																		<a href="{{ URL::to('user/invite')}}" class="m-nav-grid__item">
+																			<i class="m-nav-grid__icon flaticon-mail-1"></i>
 																			<span class="m-nav-grid__text">
-																				Sales Reports
+																				Guest Invitations
 																			</span>
 																		</a>
-																		<a href="#" class="m-nav-grid__item">
-																			<i class="m-nav-grid__icon flaticon-clipboard"></i>
+																		<a href="#" class="m-nav-grid__item" id="top_menu_communication">
+																			<i class="m-nav-grid__icon flaticon-computer"></i>
 																			<span class="m-nav-grid__text">
-																				View Modules
-																			</span>
-																		</a>
-																	</div>
-                                                                    <div class="m-nav-grid__row">
-																		<a href="{{ URL::to('core/elfinder')}}" class="m-nav-grid__item">
-																			<i class="m-nav-grid__icon flaticon-folder-4"></i>
-																			<span class="m-nav-grid__text">
-																				Cancelations
-																			</span>
-																		</a>
-																		<a href="#" class="m-nav-grid__item">
-																			<i class="m-nav-grid__icon flaticon-clipboard"></i>
-																			<span class="m-nav-grid__text">
-																				Arrivals & Departures
+																				Communication
 																			</span>
 																		</a>
 																	</div>
                                                                     <div class="m-nav-grid__row">
-																		<a href="{{ URL::to('core/elfinder')}}" class="m-nav-grid__item">
-																			<i class="m-nav-grid__icon flaticon-folder-4"></i>
+																		<a href="{{ URL::to('user/companion')}}" class="m-nav-grid__item">
+																			<i class="m-nav-grid__icon flaticon-users"></i>
 																			<span class="m-nav-grid__text">
-																				Advertising
+																				Companions
 																			</span>
 																		</a>
 																	</div>

@@ -869,6 +869,14 @@
         
         <!--begin::Page Snippets -->
 		<script src="{{ asset('metronic/assets/app/js/dashboard.js') }}" type="text/javascript"></script>
+        <script>
+            $(document).ready(function(){
+               $("#top_menu_communication").click(function(){
+                    $(".m-topbar__nav #m_quick_sidebar_toggle").trigger('click');
+                    $('#m_quick_sidebar_tabs [href="#m_quick_sidebar_tabs_messenger"]').trigger('click');
+               }); 
+            });
+        </script>
 		<!--end::Page Snippets -->
 	</body>
 	<!-- end::Body -->

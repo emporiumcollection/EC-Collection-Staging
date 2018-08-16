@@ -29203,7 +29203,7 @@ body.m-portlet--fullscreen.m-aside-left--fixed .m-aside-left {
 .m-widget7 .m-widget7__desc {
     text-align: center;
     margin-top: 7rem;
-    font-size: 1.3rem
+    /*font-size: 1.3rem*/
 }
 
 .m-widget7 .m-widget7__user {
@@ -54968,6 +54968,30 @@ i.m-menu__link-icon.fa {
     font-family: SilverSouthScript;
     font-size: 80px;
 }
+.setting-box{
+    background-color: #eeeeee;
+    text-align: center;
+    width: 19%;
+    margin: 6px;
+    padding: 50px;
+}
+.a_white{ color:#fff !important; }
+.day_size_big{
+    font-size: 40px !important;
+    color: #fff !important;
+}
+.slider_heading_text{
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    left: 100px;
+    background: #000;
+    padding: 22px;
+    min-width: 180px;
+    min-height: 100px;
+}    
 @media (max-width:768px) {
     .b2c-banner-text{
         position: absolute;
@@ -54977,5 +55001,12 @@ i.m-menu__link-icon.fa {
         color: #fff;
         font-family: SilverSouthScript;
         font-size: 40px;
+    }
+    .setting-box{
+        background-color: #eeeeee;
+        text-align: center;
+        width: 98%;
+        margin: 6px;
+        padding: 50px;
     }
 }
