@@ -4,6 +4,74 @@ use Session, DB ;
 
 class CommonHelper
 {
+    static function get_default_contracts($type="all",$gid=0,$package_id=0,$hotel_id=0,$event_id=0){
+        $gid = (int) $gid;
+        $package_id = (int) $package_id;
+        $package_id = (($package_id > 0)?$package_id:0); 
+        $hotel_id = (int) $hotel_id;
+        $hotel_id = (($hotel_id > 0)?$hotel_id:0); 
+        $event_id = (int) $event_id;
+        $event_id = (($event_id > 0)?$event_id:0); 
+        $type = strtolower(trim($type));
+        $type = str_replace(' ','-',$type);
+        
+        $uid = 0;
+        $groupId = (($gid > 0)?$gid:0);        
+        if(\Auth::check()){
+            $uid = \Auth::user()->id;
+            $groupId = \Auth::user()->group_id;            
+        }
+        
+        $fdata = array();
+        switch($type){
+            case 'general':
+                
+            break;
+            
+            case 'sign-up':
+                //get specific group wise contracts
+                $rdata  = \DB::table('tb_contracts')->select('tb_contracts.contract_id','tb_contracts.title','tb_contracts.description','tb_contracts.contract_type','tb_contracts.full_availability_commission','tb_contracts.partial_availability_commission','tb_contracts.is_commission_set')->where('tb_contracts.contract_type',$type);
+                if($groupId > 0){ $rdata = $rdata->join('tb_contracts_user_groups_ref','tb_contracts.contract_id','=','tb_contracts_user_groups_ref.contract_id')->where('tb_contracts_user_groups_ref.group_id',$groupId); }else{ $rdata->where('tb_contracts.user_group_ids','all'); }
+                $rdata = $rdata->orderBy('tb_contracts.contract_id','DESC')->where('status',1)->where('deleted',0)->get();                
+                foreach($rdata as $rval){
+                    $fdata[$rval->contract_id] = $rval;
+                }
+                //End
+                
+                //get common contracts
+                $adata  = \DB::table('tb_contracts')->select('tb_contracts.contract_id','tb_contracts.title','tb_contracts.description','tb_contracts.contract_type','tb_contracts.full_availability_commission','tb_contracts.partial_availability_commission','tb_contracts.is_commission_set')->where('tb_contracts.contract_type',$type)->where('tb_contracts.user_group_ids','all')->orderBy('tb_contracts.contract_id','DESC')->where('status',1)->where('deleted',0)->get();
+                foreach($adata as $aval){
+                    $fdata[$aval->contract_id] = $aval;
+                }
+                //End
+            break;
+            
+            case 'packages':
+            
+            break;
+            
+            case 'hotels':
+            
+            break;
+            
+            case 'commission':
+                
+            break;
+            
+            case 'events':
+            
+            break;
+            
+            default:
+                                
+            break;
+        }
+        
+        //echo "<pre>";print_r($fdata); die;
+        
+        return $fdata;
+    }
+    
     static function url_title($str, $separator = '-', $lowercase = FALSE)
     {
         if ($separator == 'dash') 

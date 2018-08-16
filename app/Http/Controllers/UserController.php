@@ -444,6 +444,10 @@ class UserController extends Controller {
             'preferences' => $preferences
         );
         
+        //get contract during signup
+        $this->data['contracts'] = \CommonHelper::get_default_contracts('sign-up');
+        //End
+        
         $group_id = \Auth::user()->group_id;
         $file_name = 'user.profile';
         $is_demo6 = (bool) \CommonHelper::isHotelDashBoard();

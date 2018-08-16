@@ -205,19 +205,23 @@ class ContractController extends Controller {
             
             case "hotels":
                 $check_packages = false;
-                $check_user_groups = false;
+            break;
+            
+            case "commission":
+                $check_packages = false;
                 $check_revised_commission = true;
             break;
         }
 
         $is_all_hotels = (bool) trim($request->input('all_hotels'));
-        $is_revised_commission = (bool) trim($request->input('revised_commission'));
+        //$is_revised_commission = (bool) trim($request->input('revised_commission'));
         $is_all_packages = (bool) trim($request->input('all_packages'));
         $is_all_user_groups = (bool) trim($request->input('all_user_groups'));
         $is_all_groups_users = (bool) trim($request->input('all_groups_users'));
         
         if(($is_all_hotels == false) && ($check_hotel === true)){ $rules["hotel_ids"] = "required"; }
-        if(($is_revised_commission == true) && ($check_hotel === true) && ($check_revised_commission === true)){ $rules["full_availability_commission"] = "required|numeric"; $rules["partial_availability_commission"] = "required|numeric"; }
+        //if(($is_revised_commission == true) && ($check_hotel === true) && ($check_revised_commission === true)){ $rules["full_availability_commission"] = "required|numeric"; $rules["partial_availability_commission"] = "required|numeric"; }
+        if(($check_revised_commission === true)){ $rules["full_availability_commission"] = "required|numeric"; $rules["partial_availability_commission"] = "required|numeric"; }
         if(($is_all_packages == false) && ($check_packages === true)){ $rules["package_ids"] = "required"; }
         if(($is_all_user_groups == false) && ($check_user_groups === true)){ $rules["user_group_ids"] = "required"; }
         if(($is_all_groups_users == false) && ($is_all_user_groups == false) && ($check_user_groups === true) && ($check_groups_users === true)){ $rules["user_ids"] = "required"; }
@@ -236,6 +240,14 @@ class ContractController extends Controller {
             $data['title'] = trim($request->input('title'));
             $data['description'] = trim($request->input('description'));
             $data['status'] = (bool) trim($request->input('contract_status'));
+            $data['package_ids'] = '';
+            $data['hotel_ids'] = '';
+            $data['user_group_ids'] = '';
+            $data['user_ids'] = '';
+            $data['deleted'] = 0;
+            $data['is_commission_set'] = 0;
+            $data['full_availability_commission'] = '0.00';
+            $data['partial_availability_commission'] = '0.00';
             
             if(($check_packages == true))
             {
@@ -273,14 +285,13 @@ class ContractController extends Controller {
                 }                    
             }
             
-            $data['is_commission_set'] = 0;
-            if(($is_revised_commission == true) && ($check_hotel === true) && ($check_revised_commission === true)){
-                $data['full_availability_commission'] = trim($request->input('full_availability_commission'));
-                $data['partial_availability_commission'] = trim($request->input('partial_availability_commission'));
+            if(($check_revised_commission === true)){
+                $fulval = (float) trim($request->input('full_availability_commission'));
+                $parval = (float) trim($request->input('partial_availability_commission'));
+                $data['full_availability_commission'] = number_format($fulval,2,'.','');
+                $data['partial_availability_commission'] = number_format($parval,2,'.','');
                 $data['is_commission_set'] = 1;
             }
-                
-            $data['deleted'] = 0;
             
             if ($request->input('contract_id') == '') {
                 $data['created_by'] = $uid;

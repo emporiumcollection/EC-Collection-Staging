@@ -45,8 +45,8 @@
                                     <label for="Contract Category" class=" control-label col-md-4 text-left"> Contract Category <span class="asterix"> * </span></label>
 									<div class="col-md-6">
 									  
-					                   {{--*/ $contracts_category_opt = array( 'general' => 'General' ,  'sign-up' => 'Sign up' , 'packages' => 'Packages' , 'hotels' => 'Hotels' ); /*--}}
-					                         <select name='contract_type' rows='5' required  class='form-control'  >
+					                   {{--*/ $contracts_category_opt = array( 'general' => 'General' ,  'sign-up' => 'Sign up' , 'packages' => 'Packages' , 'hotels' => 'Hotels', 'commission' => 'Commission' ); /*--}}
+					                         <select name='contract_type' rows='5' required  class='select2  select2-offscreen'  >
                                                 <option value="">Select Type</option>
                         						{{--*/
                         						foreach($contracts_category_opt as $key=>$val)
@@ -161,7 +161,7 @@
 									 </div>
 								  </div>
                                   
-                                  <div id="revised_commission_div" class="form-group  " style="display: none;" >
+                                  {{--<div id="revised_commission_div" class="form-group  " style="display: none;" >
 									<label class=" control-label col-md-4 text-left"></label>
 									<div class="col-md-6">									  
                     					<label class='checkbox checkbox-inline'>
@@ -170,7 +170,7 @@
 									 <div class="col-md-2">
 									 	
 									 </div>
-								  </div>
+								  </div>--}}
                                   
                                   <div id="full_availability_commission_div" class="form-group  " style="display: none;" >
 									<label for="full_availability_commission" class=" control-label col-md-4 text-left"> Full Availability Commission (%) <span class="asterix"> * </span> </label>
@@ -241,7 +241,7 @@
             $("#users_div").fadeOut(); 
         }
         
-        if(($('[name="revised_commission"]').is(":checked") === true) && (contract_typeVal == 'hotels')){ $("#full_availability_commission_div").fadeIn(); $("#partial_availability_commission_div").fadeIn();  }else{ $("#full_availability_commission_div").fadeOut(); $("#partial_availability_commission_div").fadeOut(); }
+        /*if(($('[name="revised_commission"]').is(":checked") === true) && (contract_typeVal == 'hotels')){ $("#full_availability_commission_div").fadeIn(); $("#partial_availability_commission_div").fadeIn();  }else{ $("#full_availability_commission_div").fadeOut(); $("#partial_availability_commission_div").fadeOut(); }*/
    }
 	$(document).ready(function() { 
 		
@@ -270,32 +270,53 @@
             var thisval = $(this).val();
             
             if(thisval == 'hotels'){
-                $("#revised_commission_div").fadeIn();
+                //$("#revised_commission_div").fadeIn();
                 
                 $(".all_hotels").fadeIn(); 
                 $(".all_packages").fadeOut(); 
-                $(".all_user_groups").fadeOut();
+                $(".all_user_groups").fadeIn();
                 $(".all_hotels").removeClass('hide');  
                 $(".all_packages").addClass('hide'); 
-                $(".all_user_groups").addClass('hide'); 
+                $(".all_user_groups").removeClass('hide'); 
+                
+                $("#full_availability_commission_div").fadeOut(); 
+                $("#partial_availability_commission_div").fadeOut();
+            }else if(thisval == 'commission'){
+                //$("#revised_commission_div").fadeIn();
+                
+                $(".all_hotels").fadeIn(); 
+                $(".all_packages").fadeOut(); 
+                $(".all_user_groups").fadeIn();
+                $(".all_hotels").removeClass('hide');  
+                $(".all_packages").addClass('hide'); 
+                $(".all_user_groups").removeClass('hide');
+                
+                $("#full_availability_commission_div").fadeIn(); 
+                $("#partial_availability_commission_div").fadeIn(); 
             }else if(thisval == 'sign-up'){
-                $("#revised_commission_div").fadeOut();
+                //$("#revised_commission_div").fadeOut();
                 
                 $(".all_hotels").fadeOut(); 
                 $(".all_packages").fadeOut();
                 $(".all_user_groups").fadeIn(); 
                 $(".all_hotels").addClass('hide');  
                 $(".all_packages").addClass('hide'); 
-                $(".all_user_groups").removeClass('hide');
+                $(".all_user_groups").removeClass('hide'); 
+                
+                $("#full_availability_commission_div").fadeOut(); 
+                $("#partial_availability_commission_div").fadeOut();
             }else if(thisval == 'packages'){
-                $("#revised_commission_div").fadeOut();
+                //$("#revised_commission_div").fadeOut();
                 
                 $(".all_hotels").fadeOut(); 
                 $(".all_packages").fadeIn();
                 $(".all_user_groups").fadeIn(); 
                 $(".all_hotels").addClass('hide');  
                 $(".all_packages").removeClass('hide'); 
-                $(".all_user_groups").removeClass('hide');
+                $(".all_user_groups").removeClass('hide'); 
+                
+                $("#full_availability_commission_div").fadeOut(); 
+                $("#partial_availability_commission_div").fadeOut();
             }else{
                 $("#revised_commission_div").fadeOut();
                 
@@ -304,7 +325,10 @@
                 $(".all_user_groups").fadeIn();
                 $(".all_hotels").removeClass('hide');  
                 $(".all_packages").removeClass('hide'); 
-                $(".all_user_groups").removeClass('hide');
+                $(".all_user_groups").removeClass('hide'); 
+                
+                $("#full_availability_commission_div").fadeOut(); 
+                $("#partial_availability_commission_div").fadeOut();
             }
             
             check_checkboxes();
