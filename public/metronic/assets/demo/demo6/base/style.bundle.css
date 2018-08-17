@@ -34630,7 +34630,8 @@ th>.m-checkbox.m-checkbox--single {
 }
 
 .m-input-icon.m-input-icon--right .form-control {
-    padding-right: 2.8rem
+    /*padding-right: 2.8rem*/
+    padding-right: 0rem
 }
 
 .m-input-icon.m-input-icon--right .form-control.form-control-lg,
@@ -54997,6 +54998,14 @@ i.m-menu__link-icon.fa {
     padding: 5px;
     margin: 5px 0px;
 }  
+.dash-res-view{    
+    font-size: 25px;
+    padding: 34px 0px !important;
+}
+.top-heading{
+    font-size: 15px;
+    color: #fff !important;
+}
 @media (max-width:768px) {
     .b2c-banner-text{
         position: absolute;
@@ -55014,4 +55023,10 @@ i.m-menu__link-icon.fa {
         margin: 6px;
         padding: 50px;
     }
+}
+.search-cal-top{
+    top: 15px !important;
+}
+.search-btn-top-margin{
+    margin-top: 14px;
 }

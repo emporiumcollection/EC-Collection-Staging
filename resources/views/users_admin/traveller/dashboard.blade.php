@@ -12,42 +12,45 @@
     			Onling Bookings Management
     		</span>
     	</h2>
-    	<form class="m-form">
+    	<form class="m-form reservation-form" action="{{URL::to('search')}}" method="get" id="reservationForm" name="reservationform">
     		<div class="m-grid m-grid--ver-desktop m-grid--desktop">
     			<div class="m-grid__item m-grid__item--middle">
-    				<div class="m-input-icon m-input-icon--fixed m-input-icon--fixed-large m-input-icon--right">
-    					<input type="text" class="form-control form-control-lg m-input m-input--pill" placeholder="Booking Number">
-    					<span class="m-input-icon__icon m-input-icon__icon--right">
-    						<span>
-    							<i class="la la-puzzle-piece"></i>
-    						</span>
-    					</span>
+    				<div class="m-input-icon m-input-icon--fixed m-input-icon--right">
+    					<input type="text" name="s" data-action="auto-suggestion" class="form-control" placeholder="Enter your hotel or destination"/>
     				</div>
-    				<div class="m-input-icon m-input-icon--fixed m-input-icon--fixed-md m-input-icon--right">
-    					<input type="text" class="form-control form-control-lg m-input m-input--pill" placeholder="From">
-    					<span class="m-input-icon__icon m-input-icon__icon--right">
-    						<span>
-    							<i class="la la-calendar-check-o"></i>
-    						</span>
-    					</span>
+    				<div class="m-input-icon m-input-icon--fixed-large m-input-icon--fixed-md m-input-icon--right search-cal-top">
+    					<div class="calendarbox">
+                    	   <div class="row">
+                                <div id="t-topbar-picker" class="col-xs-12 col-md-12 t-datepicker">
+                                    <div class="t-check-in"></div>
+                                    <div class="t-check-out"></div>
+                                </div>
+                    	   </div>
+                    	</div>
     				</div>
-    				<div class="m-input-icon m-input-icon--fixed m-input-icon--fixed-md m-input-icon--right">
-    					<input type="text" class="form-control form-control-lg m-input m-input--pill" placeholder="To">
-    					<span class="m-input-icon__icon m-input-icon__icon--right">
-    						<span>
-    							<i class="la la-calendar-check-o"></i>
-    						</span>
-    					</span>
+                    <div class="m-input-icon m-input-icon--fixed-small m-input-icon--fixed-md m-input-icon--right">
+    					<input name="adult" type="number" class="form-control " placeholder="Adult children">
+    				</div>
+                    <div class="m-input-icon m-input-icon--fixed-small m-input-icon--fixed-md m-input-icon--right">
+    					
+                        <?php  $currencyList=(CommonHelper::getCurrencyList()); if(empty($currencyList)){ $currencyList = array(); } ?>
+                        <select name='currencyOption' class="form-control form-control-height">
+                            <option value="EUR">Currency</option>
+                            @foreach($currencyList as $currencyCode => $currencyName)
+                
+                                <option value="{{ $currencyCode }}" title="{{ $currencyName }}">{{ $currencyName }}
+                            </option>
+                
+                            @endforeach                
+                        </select>
+                        
     				</div>
     			</div>
-    			<div class="m-grid__item m-grid__item--middle">
+    			<div class="m-grid__item m-grid__item--middle search-btn-top-margin">
     				<div class="m--margin-top-20 m--visible-tablet-and-mobile"></div>
-    				<button type="button" class="btn m-btn--pill m-subheader-search__submit-btn">
+    				<button type="submit" class="btn m-btn--pill m-subheader-search__submit-btn">
     					Search Bookings
     				</button>
-    				<a href="#" class="m-subheader-search__link m-link">
-    					Advance Search
-    				</a>
     			</div>
     		</div>
     	</form>
@@ -270,21 +273,24 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
         		</div>
         		<div class="m-portlet__body">
         			<div class="m-widget28">
-        				<div class="m-widget28__pic m-portlet-fit--sides"></div>
+        				<div class="m-widget28__pic m-portlet-fit--sides" style="background: url('{{Url::to('images/hotel_reservation.jpg')}}'); background-size: cover;"></div>
         				<div class="m-widget28__container">
         					<!-- begin::Nav pills -->
         					<ul class="m-widget28__nav-items nav nav-pills nav-fill" role="tablist">
         						<li class="m-widget28__nav-item nav-item">
-        							<a class="nav-link active a_white" data-toggle="pill" href="#menu11">
-        								<img src="{{Url::to('images/hotel_reservation.jpg')}}" class="dash-res-img" /> 
+                                    <div class="top-heading">Book Again</div>
+        							<a class="nav-link a_white dash-res-view" data-toggle="pill" href="#menu11">
+        								View
         							</a>
         						</li>
         						<li class="m-widget28__nav-item nav-item">
+                                    <div class="top-heading">Arrival</div>
         							<a class="nav-link a_white" data-toggle="pill" href="#menu21">
         								<span class="day_size_big">15</span> Aug 2018
         							</a>
         						</li>
         						<li class="m-widget28__nav-item nav-item">
+                                    <div class="top-heading">Departure</div>
         							<a class="nav-link a_white" data-toggle="pill" href="#menu31">
         								<span class="day_size_big">25</span> Aug 2018
         							</a>
@@ -294,14 +300,7 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
                             <!-- begin::Tab Content -->
         					<div class="m-widget28__tab tab-content">
         						<div id="menu11" class="m-widget28__tab-container tab-pane active">
-        							<div class="m-widget28__tab-items">
-                                        <div class="m-widget28__tab-item">
-        									<span>
-        									</span>
-        									<span>
-        										<i class="flaticon-cart"></i> Book Again
-        									</span>
-        								</div>
+        							<div class="m-widget28__tab-items">                                        
         								<div class="m-widget28__tab-item">
         									<span>
         										Hotel Name
@@ -415,21 +414,24 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
         		</div>
         		<div class="m-portlet__body">
         			<div class="m-widget28">
-        				<div class="m-widget28__pic m-portlet-fit--sides"></div>
+        				<div class="m-widget28__pic m-portlet-fit--sides" style="background: url('{{Url::to('images/event_reservation.jpg')}}'); background-size: cover;"></div>
         				<div class="m-widget28__container">
         					<!-- begin::Nav pills -->
         					<ul class="m-widget28__nav-items nav nav-pills nav-fill" role="tablist">
         						<li class="m-widget28__nav-item nav-item">
-        							<a class="nav-link active" data-toggle="pill" href="#menu11">
-        								<img src="{{Url::to('images/event_reservation.jpg')}}" class="dash-res-img" /> 
+                                    <div class="top-heading">Book Again</div>
+        							<a class="nav-link a_white dash-res-view" data-toggle="pill" href="#menu11">
+        								View
         							</a>
         						</li>
         						<li class="m-widget28__nav-item nav-item">
+                                    <div class="top-heading">Start Date</div>
         							<a class="nav-link" data-toggle="pill" href="#menu21">
         								<span class="day_size_big">15</span> Aug 2018
         							</a>
         						</li>
         						<li class="m-widget28__nav-item nav-item">
+                                    <div class="top-heading">End Date</div>
         							<a class="nav-link" data-toggle="pill" href="#menu31">
         								<span class="day_size_big">25</span> Aug 2018
         							</a>
@@ -439,14 +441,7 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
                             <!-- begin::Tab Content -->
         					<div class="m-widget28__tab tab-content">
         						<div id="menu11" class="m-widget28__tab-container tab-pane active">
-        							<div class="m-widget28__tab-items">
-                                        <div class="m-widget28__tab-item">
-        									<span>
-        									</span>
-        									<span>
-        										<i class="flaticon-cart"></i> Book Again
-        									</span>
-        								</div>
+        							<div class="m-widget28__tab-items">                                        
         								<div class="m-widget28__tab-item">
         									<span>
         										Event Name
@@ -582,43 +577,20 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
 										Preferences 1
 									</span>
 									<span class="m-widget17__desc">
-										<a href="#">View</a> <a href="#">Edit</a>
-									</span>
-								</div>
-								<div class="m-widget17__item">
-									<span class="m-widget17__icon">
 										
-									</span>
-									<span class="m-widget17__subtitle">
-										Preferences 3
-									</span>
-									<span class="m-widget17__desc">
-										<a href="#">View</a> <a href="#">Edit</a>
 									</span>
 								</div>
 							</div>
 							<div class="m-widget17__items m-widget17__items-col2">
 								<div class="m-widget17__item">
-									<span class="m-widget17__icon">
+                                    <span class="m-widget17__icon">
 										
 									</span>
-									<span class="m-widget17__subtitle">
-										Preferences 2
-									</span>
-									<span class="m-widget17__desc">
-									    <a href="#">View</a> <a href="#">Edit</a>	
-									</span>
-								</div>
-								<div class="m-widget17__item">
-									<span class="m-widget17__icon">
-										
-									</span>
-									<span class="m-widget17__subtitle">                                        
-										<i class="flaticon-plus"></i>
-									</span>
-									<span class="m-widget17__desc">
-										Add Prefernces
-									</span>
+                                    <span class="m-widget17__subtitle" style="text-align: center;">
+    									   <i class="la la-plus"></i>
+									</span>  
+                                    <span class="m-widget17__desc">
+                                    </span>                                  
 								</div>
 							</div>
 						</div>
@@ -702,7 +674,9 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
     @parent
     <link href="{{ asset('themes/emporium/css/terms-and-conditions.css') }}" rel="stylesheet">
     <link href="//www.amcharts.com/lib/3/plugins/export/export.css" rel="stylesheet" type="text/css" />
-    
+    <link href="{{ asset('themes/emporium/daterangepicker/css/t-datepicker.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('themes/emporium/daterangepicker/css/themes/t-datepicker-bluegrey.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('themes/emporium/css/custom.css') }}" rel="stylesheet">
     <style>
     .carousel {
   position: relative;
@@ -984,12 +958,43 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
 .carousel-indicators .active {
 background: #428bca;
 }
+
+/* t-date picker  */
+.search-cal-top .t-dates{
+    background: #f2f2f2;
+    color: #898b96;
+    padding: 9px 15px;
+    height: 39px;
+    box-sizing: border-box;
+    border: 1px solid #898b96;
+    border-radius: 3px;
+}
+.search-cal-top .t-check-in{
+   width: 45% !important;
+   margin-right: 17px;
+}
+.search-cal-top .t-check-out{
+   width: 45% !important;
+}
+.form-control-height{
+    height: 39px !important;
+}
+.ui-widget.ui-widget-content {
+    padding: 0px;
+    max-width: 350px;
+}
+/* End */
     </style>
 @endsection
 
 {{-- For custom style  --}}
 @section('custom_js_script')
-    @parent      
+    @parent   
+    <script type="text/javascript">var BaseURL = '{{ url() }}'; </script>
+    <script src="{{ asset('lib/jquery-ui/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('themes/emporium/js/custom/do_ajax.js') }}"></script>
+    <script src="{{ asset('themes/emporium/js/custom/common.js') }}"></script>
+    <script src="{{ asset('themes/emporium/daterangepicker/js/t-datepicker.js') }}"></script>   
     <script>
         $(document).ready(function(){
            $("#dash_communication").click(function(){
@@ -997,8 +1002,30 @@ background: #428bca;
                 $('#m_quick_sidebar_tabs [href="#m_quick_sidebar_tabs_messenger"]').trigger('click');
            });
            $('#Carousel').carousel({
-        interval: 5000
-    }) 
+                interval: 5000
+           })
+           
+           $('#t-topbar-picker').tDatePicker({
+                'numCalendar':'2',
+                'autoClose':true,
+                'durationArrowTop':'200',
+                'formatDate':'mm-dd-yyyy',
+                'titleCheckIn':'Arrival',
+                'titleCheckOut':'Departure',
+                'inputNameCheckIn':'arrive',
+                'inputNameCheckOut':'departure',
+                'titleDateRange':'days',
+                'titleDateRanges':'days',
+                'iconDate':'<i class="fa fa-calendar"></i>',
+                'limitDateRanges':'365',
+                'dateCheckIn':'@if(isset($_GET['arrive']) && $_GET['arrive']!=''){{$_GET['arrive']}}@else{{'null'}}@endif',
+                'dateCheckOut':'@if(isset($_GET['departure']) && $_GET['departure']!=''){{$_GET['departure']}}@else{{'null'}}@endif'
+            }).on('afterCheckOut',function(e, dateCO) {
+                if(((typeof $(this).closest('form').find('[name="adult"]').val()) != 'undefined') && ((typeof $(this).closest('form').find('[name="adult"]').val()) != undefined)){
+                    $(this).closest('form').find('[name="adult"]').focus();
+                }
+            });
+            
         });
     </script>
 @endsection
