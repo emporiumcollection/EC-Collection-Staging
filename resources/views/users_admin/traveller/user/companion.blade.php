@@ -21,21 +21,23 @@
 
 @section('content')
     <div class="row">
-        <div class="col-xl-3 col-lg-4">
-            <div class="col-sm-12 col-md-12 col-lg-12 bottom-pad">
-                <h2>My Companions</h2>                
-            </div>
-            <div class="col-sm-12 col-md-12 col-lg-12">
-                <div class="row">
-                    <div class="col-sm-8">
-                        <h6>First Companion</h6>
-                    </div>
-                    <div class="col-sm-4">
-                        <a href="#"><i class="fa fa-search fa-lg"></i></a>
-                        <a href="#"><i class="fa fa-edit fa-lg"></i></a>
-                        <a href="#"><i class="fa fa-trash fa-lg"></i></a>
-                    </div>
-                </div>              
+        <div class="col-xl-3 col-lg-4 bg-gray">
+            <div class="row margin-top">
+                <div class="col-sm-12 col-md-12 col-lg-12 bottom-pad">
+                    <h2>My Companions</h2>                
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <h6>First Companion</h6>
+                        </div>
+                        <div class="col-sm-4">
+                            <a href="#"><i class="fa fa-search fa-lg"></i></a>
+                            <a href="#"><i class="fa fa-edit fa-lg"></i></a>
+                            <a href="#"><i class="fa fa-trash fa-lg"></i></a>
+                        </div>
+                    </div>              
+                </div>
             </div>
         </div>
         <div class="col-xl-9 col-lg-8">

@@ -34,7 +34,7 @@
         </div>
 		<div class="col-xl-3 col-lg-4">
 			<div class="m-portlet m-portlet--full-height  ">
-				<div class="m-portlet__body">
+				<div class="m-portlet__body bg-gray">
 					<div class="m-card-profile">
 						<div class="m-card-profile__title m--hide">
 							Your Profile
@@ -185,15 +185,14 @@
         										Phone Number
         									</label>
         									<div class="col-sm-12 col-md-7">
-                                                <div class="input-group m-input-group m-input-group--square">
-													<div class="input-group-prepend">
-														<span class="input-group-text" id="basic-addon1">
-															{{ $info->mobile_code }}
-														</span>
-													</div>
+                                                <div class="row">
+                                                <div class="col-sm-2 col-md-2" style="padding-right: 0px;">
+                                                    <input type="text" name="txtmobilecode" class="form-control" value="{{ $info->mobile_code }}" required />
+												</div>
+                                                <div class="col-sm-10 col-md-10" style="padding-left: 0px;">		
 													<input name="txtmobileNumber" type="text" id="txtmobileNumber" class="form-control m-input" required  value="{{ $info->mobile_number }}" />
-												</div>    	
-        										  
+												</div>
+                                                </div>
         									</div>
         								</div>
                                         <div class="form-group m-form__group row">

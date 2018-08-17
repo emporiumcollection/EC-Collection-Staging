@@ -574,6 +574,8 @@ class UserController extends Controller {
         $rules = array(
             'first_name' => 'required|alpha_num|min:2',
             'last_name' => 'required|alpha_num|min:2',
+            'txtmobilecode' => 'required',
+            'txtmobileNumber' => 'required',
         );
 
         if ($request->input('email') != \Session::get('eid')) {
@@ -601,6 +603,7 @@ class UserController extends Controller {
             $user->last_name = $request->input('last_name');
             $user->email = $request->input('email');
             
+            $user->mobile_code = $request->input('txtmobilecode');
             $user->mobile_number = $request->input('txtmobileNumber');
             $user->gender = $request->input('gender');            
             $user->prefer_communication_with = $request->input('prefer_communication_with');

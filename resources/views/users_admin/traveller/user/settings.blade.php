@@ -21,8 +21,8 @@
 
 @section('content')
     <div class="row">
-        <div class="col-xl-3 col-lg-4">            
-            <div class="col-sm-12 col-md-12 col-lg-12">
+        <div class="col-xl-3 col-lg-4 bg-gray">            
+            <div class="col-sm-12 col-md-12 col-lg-12 margin-top">
                 <div class="row">
                     <div class="col-sm-12 col-md-12 col-lg-12">
                         <a href="#" class="setting-left-side-menu"><i class="m-nav__link-icon fa fa-credit-card"></i> Add Payment Method</a>

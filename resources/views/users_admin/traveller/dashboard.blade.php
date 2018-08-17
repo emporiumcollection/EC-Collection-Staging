@@ -138,8 +138,8 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
                 <div class="item {{($key == 0)? 'active' : ''}}">
                 	<div class="row">
                 	  <div class="col-md-12">
-                        <a href="{{$slider_row->slider_link}}" class="thumbnail">
-                            <div class="slider_heading_text">{{$slider_row->slider_title}}</div>
+                        <a href="{{$slider_row->slider_link}}" class="thumbnail">                            
+                            <div class="b2c-banner-text">{{$slider_row->slider_title}}</div>
                             <img src="{{url('uploads/slider_images/'.$slider_row->slider_img)}}" alt="{{$slider_row->slider_title}}" style="max-width:100%;">
                         </a>
                       </div>                	  
@@ -276,7 +276,7 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
         					<ul class="m-widget28__nav-items nav nav-pills nav-fill" role="tablist">
         						<li class="m-widget28__nav-item nav-item">
         							<a class="nav-link active a_white" data-toggle="pill" href="#menu11">
-        								Hotel Image
+        								<img src="{{Url::to('images/hotel_reservation.jpg')}}" class="dash-res-img" /> 
         							</a>
         						</li>
         						<li class="m-widget28__nav-item nav-item">
@@ -295,6 +295,13 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
         					<div class="m-widget28__tab tab-content">
         						<div id="menu11" class="m-widget28__tab-container tab-pane active">
         							<div class="m-widget28__tab-items">
+                                        <div class="m-widget28__tab-item">
+        									<span>
+        									</span>
+        									<span>
+        										<i class="flaticon-cart"></i> Book Again
+        									</span>
+        								</div>
         								<div class="m-widget28__tab-item">
         									<span>
         										Hotel Name
@@ -414,7 +421,7 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
         					<ul class="m-widget28__nav-items nav nav-pills nav-fill" role="tablist">
         						<li class="m-widget28__nav-item nav-item">
         							<a class="nav-link active" data-toggle="pill" href="#menu11">
-        								Hotel Image
+        								<img src="{{Url::to('images/event_reservation.jpg')}}" class="dash-res-img" /> 
         							</a>
         						</li>
         						<li class="m-widget28__nav-item nav-item">
@@ -433,9 +440,16 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
         					<div class="m-widget28__tab tab-content">
         						<div id="menu11" class="m-widget28__tab-container tab-pane active">
         							<div class="m-widget28__tab-items">
+                                        <div class="m-widget28__tab-item">
+        									<span>
+        									</span>
+        									<span>
+        										<i class="flaticon-cart"></i> Book Again
+        									</span>
+        								</div>
         								<div class="m-widget28__tab-item">
         									<span>
-        										Hotel Name
+        										Event Name
         									</span>
         									<span>
         										Studio Munich / Room Name
@@ -459,13 +473,13 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
         								</div>
         								<div class="m-widget28__tab-item">
         									<span>
-        										Hotel Terms
+        										Event Terms
         									</span>
         									<span>
-        										Show hotel terms 
+        										Show Event Terms 
         									</span>
                                             
-                                            <a href="#" id="show_more">Show More</a>
+                                            <a href="#" id="show_more_event_terms">Show More</a>
         								</div>
         							</div>
         						</div>
@@ -483,7 +497,7 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
 					<div class="m-portlet__head-caption">
 						<div class="m-portlet__head-title">
 							<h3 class="m-portlet__head-text m--font-light">
-								My preferences
+								My Preferences
 							</h3>
 						</div>
 					</div>
