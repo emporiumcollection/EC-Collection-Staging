@@ -2719,7 +2719,7 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
     		<div class="modal-content">
     			<div class="modal-header">
     				<h5 class="modal-title" id="contractModalLabel">
-    					Our Policy Agreement
+    					Privacy & Data Protection
     				</h5>    				
     			</div>
     			<div class="modal-body">
