@@ -1280,4 +1280,21 @@ class UserController extends Controller {
         $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.user.company':'';      
         return view($file_name);
     }
+    public function postIagree(Request $request){
+        $iagree_data['i_agree'] = $request->input('agree');
+        $iagree_data['privacy_policy'] = $request->input('privacy_policy');
+        $iagree_data['cookie_policy'] = $request->input('cookie_policy');
+        if($iagree_data['i_agree'] !=0 && $iagree_data['privacy_policy']!=0 && $iagree_data['cookie_policy']!=0){
+            $u_id = \Session::get('uid');  
+            
+            \DB::table('tb_users')->where('id', $u_id)->update($iagree_data);
+            
+            $return_array['status'] = 'success';
+            $return_array['message'] = 'Thank for accepting';
+        }else{            
+            $return_array['status'] = 'error';
+            $return_array['message'] = 'error while accepting policy';
+        } 
+        echo json_encode($return_array);      
+    }
 }

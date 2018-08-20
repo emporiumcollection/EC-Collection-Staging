@@ -22,7 +22,10 @@ class DashboardController extends Controller {
         $this->data['pageslider'] = \DB::table('tb_pages_sliders')->select( 'slider_title', 'slider_description', 'slider_img', 'slider_link', 'slider_video', 'slide_type')->where('slider_page_id', 119)->where('slider_status', 1)->get();
         
         $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
-        $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.dashboard':'dashboard.index';      
+        $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.dashboard':'dashboard.index'; 
+             
+        $u_id = \Session::get('uid');  
+        $this->data['logged_user'] = \DB::table('tb_users')->where('id', $u_id)->first();
           
 		$this->data['online_users'] = \DB::table('tb_users')->orderBy('last_activity','desc')->limit(10)->get(); 
 		return view($file_name,$this->data);

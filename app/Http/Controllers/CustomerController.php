@@ -1080,7 +1080,10 @@ return Redirect::to('customer/profile')->with('message', \SiteHelpers::alert('er
         $this->data['pageMetakey'] = "Whoiam User Membership";
         $this->data['pageMetadesc'] = "Whoiam User Membership";
         $contractObject =new Contract();
-
+        
+        $u_id = \Session::get('uid');  
+        $this->data['logged_user'] = \DB::table('tb_users')->where('id', $u_id)->first();
+        
         $params = array(
             
         );

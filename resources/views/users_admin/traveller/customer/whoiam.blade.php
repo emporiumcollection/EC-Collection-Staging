@@ -704,6 +704,79 @@
         </div>
 	</div>
     
+ <!--Start: First Time on Dashboard modal pop up-->
+    <div class="modal fade" id="agree_model" tabindex="-1" role="dialog" aria-labelledby="agreeModalLabel" aria-hidden="true" style="display: none;">
+    	<div class="modal-dialog modal-lg" role="document">
+    		<div class="modal-content">
+    			<div class="modal-header">
+    				<h5 class="modal-title" id="contractModalLabel">
+    					Our Policy Agreement
+    				</h5>    				
+    			</div>
+    			<div class="modal-body">
+                    <div class="m-portlet m-portlet--full-height">
+                        
+                        <form class="m-form">
+                        <div class="m-portlet__body">
+                            <div class="form-group pref-left-pad-10"> 
+                                <div class="m-checkbox-list"> 
+									<label class="m-checkbox m-checkbox--state-primary">
+										<input type="checkbox" name="modal_agree" id="modal_agree" value="1" />
+										I Agree to the Emporium-Voyage Privacy & Data Protection Policy
+										<span></span>
+									</label>
+								</div>
+                                <div class="error" id="modal_error" style="display: none;">
+                                    Please agree to the Privacy & Data Protection Policy.
+                                </div>
+                                <span class="m-form__help">
+									 I agree that my personal data will be collected and stored and used electronically to help the reservation agents with specialized offers pertaining to my travel preferences. 
+Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.com or from your settings section in your account admin.
+								</span>                                                                            
+                            </div>
+                            <div class="form-group pref-left-pad-10">
+                                <div class="m-checkbox-list">
+									<label class="m-checkbox m-checkbox--state-primary">
+										<input type="checkbox" name="modal_privacy_policy" id="modal_privacy_policy" value="1" />
+										<a href="https://www.iubenda.com/privacy-policy/70156957" class="iubenda-white iubenda-embed iub-legal-only iub-no-markup" title="Privacy Policy" target="_blank">Emporium-Voyage Privacy Policy</a>
+										<span></span>
+									</label>
+                                </div>
+                                <div class="error" id="modal_privacy_policy_error" style="display: none;">
+                                    Please check privacy policy checkbox.
+                                </div>
+                                <span class="m-form__help">
+									I have read and agree to the Emporium-Voyage Privacy Policy.
+								</span>
+                             </div>            
+							 <div class="form-group pref-left-pad-10">
+                                <div class="m-checkbox-list">
+                                	<label class="m-checkbox m-checkbox--state-primary">
+										<input type="checkbox" name="modal_cookie_policy" id="modal_cookie_policy" value="1" />
+										<a href="https://www.iubenda.com/privacy-policy/70156957/cookie-policy" class="iubenda-white iubenda-embed iub-no-markup" title="Cookie Policy" target="_blank">Cookie Policy</a>
+										<span></span>
+									</label>
+                                </div>
+                                <div class="error" id="modal_cookie_policy_error" style="display: none;">
+                                    Please check cookie policy checkbox.
+                                </div>
+                                <span class="m-form__help">
+									I have read and agree to the Emporium-Voyage Cookie Policy
+								</span>
+                             </div>
+                        </div>
+                        </form>
+                        
+                    </div>                				
+    			</div>
+    			<div class="modal-footer">    				
+                    <button type="button" class="btn btn-primary" id="contractacceptbtn">Accept</button>
+    			</div>
+    		</div>
+    	</div>
+    </div>    
+ <!--end: modal pop up-->
+    
 @stop
 
 {{-- For custom style  --}}
@@ -725,6 +798,76 @@
         <script src=" {{ asset('sximo/assets/js/handleCounter.js') }}" type="text/javascript"></script>
         <script>
             $(document).ready(function () {
+                
+            <?php 
+                if($logged_user->i_agree == 0 || $logged_user->privacy_policy == 0 || $logged_user->cookie_policy == 0){ ?>
+                    $("#agree_model").modal({backdrop: 'static', keyboard: false}, 'show');
+            <?php } ?>
+            
+            $("#contractacceptbtn").click(function(){ 
+                var error = true;
+                var agree = 0;
+                var privacy_policy = 0;
+                var cookie_policy = 0;
+                if($("#modal_agree").is(":checked")){
+                    agree = $("#modal_agree").val();
+                    $("#modal_error").css("display", "none");
+                    error = false;
+                }else{
+                    error = true;
+                    $("#modal_error").css("display", "");
+                }
+                if($("#modal_privacy_policy").is(":checked")){
+                    privacy_policy = $("#modal_privacy_policy").val();
+                    $("#modal_privacy_policy_error").css("display", "none");
+                    error = false;
+                }else{
+                    error = true;
+                    $("#modal_privacy_policy_error").css("display", "");
+                }
+                if($("#modal_cookie_policy").is(":checked")){
+                    cookie_policy = $("#modal_cookie_policy").val();
+                    $("#modal_cookie_policy_error").css("display", "none");
+                    error = false;
+                }else{
+                    error = true;
+                    $("#modal_cookie_policy_error").css("display", "");
+                }
+                
+                
+                if(error){ console.log("error");
+                    
+                }else{
+                    var fdata = new FormData();                
+                    fdata.append("_token",$("input[name=_token]").val());                    
+                    
+                    fdata.append("agree", agree); 
+                    fdata.append("privacy_policy", privacy_policy);
+                    fdata.append("cookie_policy", cookie_policy);
+                    
+                    $.ajax({
+                        url:"{{URL::to('user/iagree')}}",
+                        type:'POST',
+                        dataType:'json',
+                        contentType: false,
+                        processData: false,
+                        data:fdata,
+                        headers: {
+                            'Access-Control-Allow-Origin': '*'
+                        },
+                        success:function(response){
+                            if(response.status == 'success'){
+                                toastr.success(response.message);
+                                $("#agree_model").modal('hide');
+                            }
+                            else{
+                                toastr.error(response.message);
+                            }
+                        }
+                    });
+                }
+            });
+                
                 // Multi Tab Form
                 var current_fs, next_fs, previous_fs;
                 var left, opacity, scale;
