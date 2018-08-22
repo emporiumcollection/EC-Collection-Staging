@@ -105,7 +105,9 @@ class ConfigController extends Controller {
 		$frontendUpload = base_path()."/resources/views/user/emails/frontend_upload.blade.php";
 		$frontendDownload = base_path()."/resources/views/user/emails/frontend_download.blade.php";
 		$removalreminder = base_path()."/resources/views/user/emails/removal_reminder.blade.php";
-		
+        
+		$refferalInvitation = base_path()."/resources/views/user/emails/invite.blade.php";
+        
 		$this->data = array(
 			'groups'	=> Groups::all(),
 			'pageTitle'	=> 'Blast Email',
@@ -124,6 +126,7 @@ class ConfigController extends Controller {
 			'frontendDownload'	=> 	file_get_contents($frontendDownload),
 			'removalreminder'	=> 	file_get_contents($removalreminder),
 			'active'		=> 'email',
+            'refferalInvitation'	=> 	file_get_contents($refferalInvitation),
 		);	
 		return view('sximo.config.email',$this->data);		
 	
@@ -154,6 +157,8 @@ class ConfigController extends Controller {
 			$frontendUpload = base_path()."/resources/views/user/emails/frontend_upload.blade.php";
 			$frontendDownload = base_path()."/resources/views/user/emails/frontend_download.blade.php";
 			$removalreminder = base_path()."/resources/views/user/emails/removal_reminder.blade.php";
+            
+            $refferalInvitation = base_path()."/resources/views/user/emails/invite.blade.php";
 			
 			$fp=fopen($regEmailFile,"w+"); 				
 			fwrite($fp,$_POST['regEmail']); 
@@ -207,6 +212,10 @@ class ConfigController extends Controller {
 			fwrite($rrm,$_POST['removalreminder']); 
 			fclose($rrm);
 			
+            $rim=fopen($refferalInvitation,"w+"); 				
+			fwrite($rim,$_POST['refferalInvitation']); 
+			fclose($rim);
+            
 			return Redirect::to('sximo/config/email')->with('messagetext', 'Email Has Been Updated')->with('msgstatus','success');	
 			
 		}	else {

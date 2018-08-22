@@ -28,13 +28,35 @@
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-12">
                     <div class="row">
-                        <div class="col-sm-8">
-                            <h6>Invited Guests</h6>
-                        </div>
-                        <div class="col-sm-4">
-                            <a href="#"><i class="fa fa-search fa-lg"></i></a>
-                            <a href="#"><i class="fa fa-edit fa-lg"></i></a>
-                            <a href="#"><i class="fa fa-trash fa-lg"></i></a>
+                        <div class="col-sm-12">
+                            <?php 
+                            if(count($invitees)>0){
+                            ?>
+                                <table class="table">
+                                    <tr>
+                                        <th>Name</th>                                        
+                                        <th>Actions</th>
+                                    </tr>
+                                
+                                    <?php
+                                    foreach($invitees as $invitee){ 
+                                    ?>
+                                        <tr>
+                                            <td><?php echo $invitee->first_name." ".$invitee->last_name; ?></td>                                            
+                                            <td>
+                                                <a href="#" title="View" onclick="view_invitee({{$invitee->id}});"><i class="fa fa-search fa-lg"></i></a>
+                                                <a href="#" title="Edit" onclick="edit_invitee({{$invitee->id}});"><i class="fa fa-edit fa-lg"></i></a>
+                                                <a href="#" title="Delete" onclick="delete_invitee({{$invitee->id}});"><i class="fa fa-trash fa-lg"></i></a></td>
+                                        </tr>    
+                                    <?php 
+                                    } 
+                                    ?>
+                                </table>
+                            <?php
+                            }else{
+                                echo "You haven't sent any invitation.";
+                            }
+                            ?>
                         </div>
                     </div>              
                 </div>
@@ -113,11 +135,141 @@
             </div>
         </div>
     </div>
+<!--Start: First Time on Dashboard modal pop up-->
+    <div class="modal fade" id="view-modal" tabindex="-1" role="dialog" aria-labelledby="viewModalLabel" aria-hidden="true" style="display: none;">
+    	<div class="modal-dialog modal-lg" role="document">
+    		<div class="modal-content">
+    			<div class="modal-header">
+    				<h5 class="modal-title" id="viewModalLabel">
+    					View
+    				</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    					<span aria-hidden="true">
+    						×
+    					</span>
+    				</button>    				
+    			</div>
+    			<div class="modal-body">
+                    <div class="m-portlet m-portlet--full-height">
+                        
+                        <form class="m-form">
+                            <div class="m-portlet__body">
+                                
+								<div class="col-sm-12 col-md-12">
+									First Name: <span id="first_name"></span>  
+								</div>
+								
+                                <div class="col-sm-12 col-md-12">
+									Last Name: <span id="last_name"></span>  
+								</div>
+								
+                                <div class="col-sm-12 col-md-12">
+									Email: <span id="email"></span> 
+								</div>
+								
+                                <div class="col-sm-12 col-md-12">
+									Message: <span id="message"></span>  
+								</div>
+								<div class="col-sm-12 col-md-12">
+									Refferal Code: <span id="refferal_code"></span>  
+								</div>
+                            </div>
+                        </form>
+                        
+                    </div>                				
+    			</div>
+    			<div class="modal-footer">  
+                    <button type="button" class="btn btn-secondary" id="viewclosebtn" data-dismiss="modal">Close</button>                    
+    			</div>
+    		</div>
+    	</div>
+    </div>    
+ <!--end: modal pop up-->
+ 
+<!--Start: First Time on Dashboard modal pop up-->
+    <div class="modal fade" id="edit-modal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true" style="display: none;">
+    	<div class="modal-dialog modal-lg" role="document">
+    		<div class="modal-content">
+    			<div class="modal-header">
+    				<h5 class="modal-title" id="editModalLabel">
+    					Edit
+    				</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    					<span aria-hidden="true">
+    						×
+    					</span>
+    				</button>    				
+    			</div>
+    			<div class="modal-body">
+                    <div class="m-portlet m-portlet--full-height">
+                        
+                        <form class="m-form" name="edit_form" id="edit_form">
+                            <div class="m-portlet__body">
+                                
+								<div class="form-group m-form__group row">
+									<label for="ipt" class="col-sm-12 col-md-2 col-form-label">
+										First Name
+									</label>
+									<div class="col-sm-12 col-md-10">
+                                        <input type="hidden" id="edit_id" name="edit_id" />
+										<input name="edit_first_name" type="text" id="edit_first_name" class="form-control" />  
+									</div>
+								</div>
+								
+                                <div class="form-group m-form__group row">
+									<label for="ipt" class="col-sm-12 col-md-2 col-form-label">
+										Last Name
+									</label>
+									<div class="col-sm-12 col-md-10">
+										<input name="edit_last_name" type="text" id="edit_last_name" class="form-control" />  
+									</div>  
+								</div>
+								
+                                <div class="form-group m-form__group row">
+                                    <label for="ipt" class="col-sm-12 col-md-2 col-form-label">
+										Email
+									</label>
+									<div class="col-sm-12 col-md-10">
+										<input name="edit_email" type="text" id="edit_email" class="form-control" />  
+									</div>
+								</div>
+								
+                                <div class="form-group m-form__group row">
+									<label for="ipt" class="col-sm-12 col-md-2 col-form-label">
+										Message
+									</label>
+									<div class="col-sm-12 col-md-10">
+										<textarea name="edit_message" id="edit_message" class="form-control"></textarea>
+									</div>
+								</div>
+                                <div class="form-group m-form__group row">
+									<label for="ipt" class="col-sm-12 col-md-2 col-form-label">
+										refferal_code
+									</label>
+									<div class="col-sm-12 col-md-10">
+										<input name="edit_refferal_code" id="edit_refferal_code" class="form-control" />
+									</div>
+								</div>
+								
+                            </div>
+                        </form>
+                        
+                    </div>                				
+    			</div>
+    			<div class="modal-footer">  
+                    <button type="button" class="btn btn-secondary" id="editclosebtn" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="updatebtn">Update</button>                   
+    			</div>
+    		</div>
+    	</div>
+    </div>    
+ <!--end: modal pop up-->
+
 @stop
 @section('custom_js_script')
     <script>
-        /*$(document).ready(function(){
-           $("#btn_send_invites").click(function(){ console.log("ff23");
+        $(document).ready(function(){
+        /*   $("#btn_send_invites").click(function(){ console.log("ff23");
                 var fdata = $( "form" ).serialize();
                 $.ajax({
                     url:"{{URL::to('user/invite')}}",
@@ -141,7 +293,159 @@
                         }
                     }
                 });
-           }); 
-        });*/
+           }); */
+           $("#edit_form").validate({
+                        //== Validate only visible fields
+                        ignore: ":hidden",
+                        
+                        //== Validation rules
+                        rules: {                 
+                            edit_first_name: {
+                                required: true,
+                                minlength: 2,
+                            },
+                            edit_last_name: {
+                                required: true,
+                                minlength: 2,
+                            },
+                            edit_email: {
+                                required: true,
+                                email: true 
+                            }, 
+                        },
+            
+                        //== Validation messages
+                        messages: {
+                            edit_first_name: {
+                                required: "First name field is required"
+                            }, 
+                            edit_last_name: {
+                                required: "Last name field is required"
+                            },
+                            edit_email: {
+                                required: "Email field is required"
+                            },
+                        },
+                        
+                        //== Display error  
+                        invalidHandler: function(event, validator) {
+                            
+                            //mUtil.scrollTop();
+            
+                            //swal({
+                            //    "title": "", 
+                            //    "text": "There are some errors in your submission. Please correct them.", 
+                            //    "type": "error",
+                            //    "confirmButtonClass": "btn btn-secondary m-btn m-btn--wide"
+                            //});
+                        },
+            
+                        //== Submit valid form
+                        submitHandler: function (form) {
+                            var fdata = $( form ).serialize();
+                            //console.log(fdata);
+                            $.ajax({
+                                url:"{{URL::to('editinvite')}}",
+                                type:'POST',
+                                dataType:'json',                    
+                                data:fdata,
+                                headers: {
+                                    'Access-Control-Allow-Origin': '*'
+                                },
+                                success:function(response){
+                                    if(response.status == 'success'){
+                                        toastr.success(response.message);
+                                        $("#edit-modal").modal('hide');
+                                    }
+                                    else{
+                                        toastr.error(response.message);
+                                    }
+                                }
+                            });
+                        }
+                    });
+           $("#updatebtn").click(function(){
+            
+                
+                $("#edit_form").submit();
+                       
+                
+                
+            
+            
+                
+           });
+        });
+        function view_invitee(id){
+            
+            $.ajax({
+                url:"{{URL::to('viewInvite')}}",
+                type:'POST',
+                dataType:'json',                
+                data:{'id':id},
+                headers: {
+                    'Access-Control-Allow-Origin': '*'
+                },
+                success:function(response){
+                    if(response.length != 0){
+                        $("#first_name").html(response[0].first_name);
+                        $("#last_name").html(response[0].last_name);
+                        $("#email").html(response[0].email);
+                        $("#message").html(response[0].message);
+                        $("#refferal_code").html(response[0].referral_code);
+                        
+                        $("#view-modal").modal('show');
+                    }
+                }
+            }); 
+                       
+        }
+        function edit_invitee(id){
+            
+            $.ajax({
+                url:"{{URL::to('viewInvite')}}",
+                type:'POST',
+                dataType:'json',                
+                data:{'id':id},
+                headers: {
+                    'Access-Control-Allow-Origin': '*'
+                },
+                success:function(response){
+                    if(response.length != 0){
+                        $("#edit_id").val(response[0].id);
+                        $("#edit_first_name").val(response[0].first_name);
+                        $("#edit_last_name").val(response[0].last_name);
+                        $("#edit_email").val(response[0].email);
+                        $("#edit_message").val(response[0].message);
+                        $("#edit_refferal_code").val(response[0].referral_code);
+                        $("#edit-modal").modal('show');
+                    }
+                }
+            }); 
+                       
+        }
+        function delete_invitee(id){
+            
+            $.ajax({
+                url:"{{URL::to('deleteinvite')}}",
+                type:'POST',
+                dataType:'json',                
+                data:{'id':id},
+                headers: {
+                    'Access-Control-Allow-Origin': '*'
+                },
+                success:function(response){
+                    if(response.status == 'success'){
+                        toastr.success(response.message);
+                        window.location.reload();
+                    }
+                    else{
+                        toastr.error(response.message);
+                    }
+                }
+            }); 
+                       
+        }
+        
     </script>
 @stop

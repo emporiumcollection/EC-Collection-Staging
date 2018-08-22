@@ -96,9 +96,18 @@ Route::controller('/customer', 'CustomerController');
 Route::get('/traveller', 'CustomerController@traveller'); 
 Route::post('/traveller_skip_preferences', 'CustomerController@skipPreferences');  
 
-Route::get('/whoiam', 'CustomerController@whoIam');  
+Route::get('/whoiam', 'CustomerController@whoIam');
 
-Route::post('customer_ajaxPostCreate', 'CustomerController@ajaxPostCreate'); 
+Route::post('/viewInvite', 'UserController@viewInvite');   
+Route::post('editinvite', 'UserController@editInvite'); 
+Route::post('deleteinvite', 'UserController@deleteInvite');
+
+Route::post('customer_ajaxPostCreate', 'CustomerController@ajaxPostCreate');
+
+Route::post('leadcreate', 'UserController@ajaxLeadCreate');
+Route::get('crmhotel/leadlisting', 'Core\UsersController@leadlisting'); 
+Route::post('socialinfo', 'UserController@ajaxSocialInfo');
+
 Route::post('customer_ajaxPostSignin', 'CustomerController@ajaxPostSignin'); 
 Route::post('customer_ajaxPostRequest', 'CustomerController@ajaxPostRequest'); 
 
@@ -287,7 +296,13 @@ Route::group(['middleware' => 'auth'], function()
 	Route::post('delete_selected_image', 'PropertiesController@delete_selectedproperty_image');
 	Route::post('fetch_property_info', 'CrmhotelController@fetch_property_info');
 	Route::post('fetch_company_info', 'CrmhotelController@fetch_company_info');
+    
+    Route::post('fetch_user_info', 'CrmhotelController@fetch_user_info');
+    
 	Route::post('emailCRM', 'CrmhotelController@emailCRM');
+    
+    Route::post('emailInviteCRM', 'CrmhotelController@emailInviteCRM');
+    
 	Route::get('pull_property_hotels', 'CrmhotelController@pull_property_hotels');
 	Route::post('getfolderlistforselectoptions', 'ContainerController@fetchFolderTreeOptions');
     Route::post('getPropertyRates', 'PropertiesController@getPropertyRates');

@@ -310,7 +310,11 @@ return array(
 /* Module Heading and Alerts info */
 
 "user_packages_heading"=>'Choose Your Package',
-"user_packages_info"=>'Your Package info'
+"user_packages_info"=>'Your Package info',
 
 /*------------ End -------------*/
+
+     "btn_lead_create"			=> "Lead Erstellen",
+     "btn_lead_listing"			=> "Lead Listing",
+     "refferal_invite"			=> "Refferal Invitation",
  );

@@ -353,6 +353,140 @@ class UsersController extends Controller {
 
 	}
 
+    function getInvite()
+	{
+		$this->data = array(
+			'groups'	=> Groups::all(),
+			'pageTitle'	=> 'Invite Email',
+			'pageNote'	=> 'Send invitation to users'
+		);	
+		return view('core.users.invite',$this->data);		
+	}
+    
+    function postDoinvite( Request $request)
+	{
 
+		$rules = array(
+			'first_name' => 'required|alpha_num|min:2',
+            'last_name' => 'required|alpha_num|min:2',
+            'email' => 'required'		
+		);	
+		$validator = Validator::make($request->all(), $rules);	
+		if ($validator->passes()) 
+		{	
 
+			//if(!is_null($request->input('groups')))
+			//{
+				$referral_code = strtoupper(uniqid());
+            
+                $user = \DB::table('tb_users')->where('id',\Session::get('uid'))->first();
+                
+                $invitee_data['user_id'] = $user->id;
+                $invitee_data['first_name'] = $request->input('first_name');
+                $invitee_data['last_name'] = $request->input('last_name');            
+                $invitee_data['email'] = $request->input('email');
+                $invitee_data['message'] = $request->input('message');
+                $invitee_data['referral_code'] = $referral_code;
+                $invitee_data['created'] = date("Y-m-d");
+                $today =  date("Y-m-d");            
+                $expiry_date = date("Y-m-d", strtotime("+1 month", strtotime($today)));
+                
+                $invitee_data['expired_on'] = $expiry_date;
+                
+                $inviteeId = \DB::table('tb_invitee')->insertGetId($invitee_data);             
+                if($inviteeId > 0){
+                    
+                    $edata = array();
+                    $emlData['frmemail'] = 'marketing@emporium-voyage.com';
+                    $edata['referral_code'] = $referral_code;
+                    $edata['emessage'] = $request->input('message');
+                    $edata['first_name'] = $request->input('first_name');
+                    $edata['last_name'] = $request->input('last_name');
+                    $emlData['email'] = $request->input('email');
+                    $emlData['subject'] = 'Invitation send by '.$request->input('email');
+                    
+                    //if (\Session::get('newlang') == 'English') {
+                    //    $etemp = 'auth.reminder_eng';
+                    //}
+                    
+                    $etemp = 'invite';
+                    //echo view('user.emails.invites.' . $etemp, $edata); die;
+                    try{ 
+                    \Mail::send('user.emails.invites.' . $etemp, $edata, function($message) use ($emlData) {
+                        $message->from($emlData['frmemail'], CNF_APPNAME);
+    
+                        $message->to($emlData['email']);
+    
+                        $message->subject($emlData['subject']);
+                    });
+                    }catch(Exception $ex){
+                        //print_r($ex); 
+                    }
+                }
+				return Redirect::to('core/users/invite')->with('messagetext', 'Invitation has been sent')->with('msgstatus','success');
+
+			//}
+			//return Redirect::to('core/users/blast')->with('messagetext','No Message has been sent')->with('msgstatus','info');
+			
+
+		} else {
+
+			return Redirect::to('core/users/invite')->with('messagetext', 'The following errors occurred')->with('msgstatus','error')
+			->withErrors($validator)->withInput();
+
+		}	
+
+	}
+    public function leadlisting( Request $request )
+	{
+
+		if($this->access['is_view'] ==0) 
+			return Redirect::to('dashboard')
+				->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus','error');
+						
+		$sort = (!is_null($request->input('sort')) ? $request->input('sort') : 'id'); 
+		$order = (!is_null($request->input('order')) ? $request->input('order') : 'asc');
+		// End Filter sort and order for query 
+		// Filter Search for query		
+		$filter = (!is_null($request->input('search')) ? $this->buildSearch() : '');
+		$filter .= " AND tb_users.group_id >= '10'" ;
+
+		
+		$page = $request->input('page', 1);
+		$params = array(
+			'page'		=> $page ,
+			'limit'		=> (!is_null($request->input('rows')) ? filter_var($request->input('rows'),FILTER_VALIDATE_INT) : static::$per_page ) ,
+			'sort'		=> $sort ,
+			'order'		=> $order,
+			'params'	=> $filter,
+			'global'	=> (isset($this->access['is_global']) ? $this->access['is_global'] : 0 )
+		);
+		// Get Query 
+		$results = $this->model->getRows( $params );		
+		
+		// Build pagination setting
+		$page = $page >= 1 && filter_var($page, FILTER_VALIDATE_INT) !== false ? $page : 1;	
+		$pagination = new Paginator($results['rows'], $results['total'], $params['limit']);	
+		$pagination->setPath('users');
+		
+		$this->data['rowData']		= $results['rows'];
+		// Build Pagination 
+		$this->data['pagination']	= $pagination;
+		// Build pager number and append current param GET
+		$this->data['pager'] 		= $this->injectPaginate();	
+		// Row grid Number 
+		$this->data['i']			= ($page * $params['limit'])- $params['limit']; 
+		// Grid Configuration 
+		$this->data['tableGrid'] 	= $this->info['config']['grid'];
+		$this->data['tableForm'] 	= $this->info['config']['forms'];
+		$this->data['colspan'] 		= \SiteHelpers::viewColSpan($this->info['config']['grid']);		
+		// Group users permission
+		$this->data['access']		= $this->access;
+		// Detail from master if any
+		
+		// Master detail link if any 
+		$this->data['subgrid']	= (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array()); 
+		// Render into template
+		return view('core.users.leadlisting',$this->data);
+	}
 }

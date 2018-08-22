@@ -21,12 +21,11 @@
     </div>
 	
 	
-	<div class="page-content-wrapper m-t">	 	
-	<div id="formerrors"></div>
-	
+	<div class="page-content-wrapper m-t">
+
 <div class="sbox animated fadeInRight">
 	<div class="sbox-title"> <h5> <i class="fa fa-table"></i> </h5>
-<div class="sbox-tools" >
+        <div class="sbox-tools" >
 		<a href="{{ url($pageModule) }}" class="btn btn-xs btn-white tips" title="Clear Search" ><i class="fa fa-trash-o"></i> Clear Search </a>
 		@if(Session::get('gid') ==1)
 			<a href="{{ URL::to('sximo/module/config/'.$pageModule) }}" class="btn btn-xs btn-white tips" title=" {{ Lang::get('core.btn_config') }}" ><i class="fa fa-cog"></i></a>
@@ -60,7 +59,7 @@
 
 	
 	
-	 {!! Form::open(array('url'=>'crmhotel/delete/', 'class'=>'form-horizontal' ,'id' =>'SximoTable' )) !!}
+	 {!! Form::open(array('url'=>'core/users/delete/', 'class'=>'form-horizontal' ,'id' =>'SximoTable' )) !!}
 	 <div class="table-responsive" style="min-height:300px;">
     <table class="table table-striped ">
         <thead>
@@ -69,39 +68,49 @@
 				<th> <input type="checkbox" class="checkall" /></th>
 				
 				@foreach ($tableGrid as $t)
-					@if($t['view'] =='1')				
-						<?php $limited = isset($t['limited']) ? $t['limited'] :''; ?>
-						@if(SiteHelpers::filterColumn($limited ))
-						
-							<th>{{ $t['label'] }}</th>			
-						@endif 
+					@if($t['view'] =='1')
+						<th>{{ $t['label'] }}</th>
 					@endif
 				@endforeach
-				<th width="180" >{{ Lang::get('core.btn_action') }}</th>
+				<th width="70" >{{ Lang::get('core.btn_action') }}</th>
 			  </tr>
         </thead>
 
-        <tbody>        						
+        <tbody>
+						
             @foreach ($rowData as $row)
-			{{--*/ $hotel_slug = \SiteHelpers::seoUrl($row->hotel_name); /*--}}
                 <tr>
 					<td width="30"> {{ ++$i }} </td>
 					<td width="50"><input type="checkbox" class="ids" name="ids[]" value="{{ $row->id }}" />  </td>									
-					<td> <a target="_blank" href="{{URL::to($hotel_slug)}}">{{$row->hotel_name}}</a> </td>
-					<td> {{$row->hotel_email}} </td>
-					<td> {{$row->hotel_main_phone}} </td>
-					<td> {{$row->hotel_manager_name}} </td>
-				 <td>
+				 @foreach ($tableGrid as $field)
+					 @if($field['view'] =='1')
+					 <td>	
+						@if($field['field'] == 'avatar')
+							<?php if( file_exists( './uploads/users/'.$row->avatar) && $row->avatar !='') { ?>
+							<img src="{{ URL::to('uploads/users').'/'.$row->avatar }} " border="0" width="40" class="img-circle" />
+							<?php  } else { ?> 
+							<img alt="" src="http://www.gravatar.com/avatar/{{ md5($row->email) }}" width="40" class="img-circle" />
+							<?php } ?>					 				 
+					 	@elseif($field['field'] =='active')
+							{!! ($row->active ==1 ? '<lable class="label label-success">Active</label>' : '<lable class="label label-danger">Inactive</label>')  !!}
+								
+						@else	
+							{{--*/ $col = $field['field']; /*--}}
+							{{--*/ $conn = (isset($field['conn']) ? $field['conn'] : array() ) /*--}}
+							{!! SiteHelpers::gridDisplay($row->$col,$field['field'],$conn) !!}	
+						@endif						 
+					 </td>
+					 @endif					 
+				 @endforeach
+				 <td width="100">
 					 	@if($access['is_detail'] ==1)
-						<a href="{{ URL::to('crmhotel/show/'.$row->id.'?return='.$return)}}" class="tips btn btn-xs btn-primary" title="{{ Lang::get('core.btn_view') }}"><i class="fa  fa-search "></i></a>
+						<a href="{{ URL::to('core/users/show/'.$row->id.'?return='.$return)}}" class="tips btn btn-xs btn-white" title="{{ Lang::get('core.btn_view') }}" style="display: none;"><i class="fa  fa-search "></i></a>
 						@endif
 						@if($access['is_edit'] ==1)
-						<a  href="{{ URL::to('crmhotel/update/'.$row->id.'?return='.$return) }}" class="tips btn btn-xs btn-success" title="{{ Lang::get('core.btn_edit') }}"><i class="fa fa-edit "></i></a>
+						<a  href="{{ URL::to('core/users/update/'.$row->id.'?return='.$return) }}" class="tips btn btn-xs btn-white" title="{{ Lang::get('core.btn_edit') }}" style="display: none;"><i class="fa fa-edit "></i></a>
 						@endif
-						<a  href="{{ URL::to('properties/update/'.$row->propr_id.'?return='.$return) }}" class="tips btn btn-xs btn-success" title="property module"><i class="fa fa-cogs"></i></a>	
-						<a  href="{{ URL::to('properties_settings/'.$row->propr_id.'/types') }}" class="tips btn btn-xs btn-success" title="reservations"><i class="fa fa-cogs"></i></a>					
-						<a  href="javascript:void(0);" class="tips btn btn-xs btn-success" title="Email" onclick="sendemails_crmhotels('{{$row->id}}');"><i class="fa fa-envelope-o"></i></a>
-						<a  href="{{(strpos($row->hotel_website, 'http') !== false) ? $row->hotel_website : 'http://'.$row->hotel_website }}" class="tips btn btn-xs btn-success" title="website"><i class="fa fa-globe"></i></a>
+						<a  href="javascript:void(0);" class="tips btn btn-xs btn-success" title="Email" onclick="sendemails_crmhotels('{{$row->id}}');"><i class="fa fa-envelope-o"></i></a>						
+					
 				</td>				 
                 </tr>
 				
@@ -117,7 +126,8 @@
 	</div>
 </div>	
 	</div>	  
-</div>
+</div>	
+
 <!--Email popup start-->
 <div id="email-page" class="popup">
 	<div class="popup-inner">
@@ -186,7 +196,7 @@
 											<div class="form-group">
 												<select class="form-control ai-blue-bordered-input" name="template_email_popup">
 													<option selected disabled>Template</option>
-													<option value="crm_email">Template CRM</option>
+													<option value="invite">Invitation Email</option>
 												</select>
 											</div>
 											<div class="form-group " >
@@ -239,73 +249,35 @@
 
 <!--Email popup end-->
 
-	
 <script>
 $(document).ready(function(){
 
 	$('.do-quick-search').click(function(){
-		$('#SximoTable').attr('action','{{ URL::to("crmhotel/multisearch")}}');
+		$('#SximoTable').attr('action','{{ URL::to("core/users/multisearch")}}');
 		$('#SximoTable').submit();
 	});
-	
 	$(".popup-close-btn").click(function (event) {
         event.preventDefault();
         $(this).parent().parent().fadeOut("slow");
         $("body").removeClass("fixed");
     });
-});	
-
-function sendmotId(boxid)
-{
-	$('#boxid').val(boxid);
-}
-
-function openContainerDIV()
-{
-	$('#openContainer').show();
-	
-}
-function closeContainerDIV()
-{
-	$('#openContainer').hide();
-	
-}
-
-function selectimg(obj)
-{
-	
-
-
-	var bid = $('#boxid').val();
-	var cat = $('#cat_id').val();
-	var sList='';
-	var sListid='';
-	var highrespath='';
-	sList = $(obj).attr('rel2');
-	imgname = $(obj).attr('rel');
-	imagepath = $(obj).attr('rel3');
-	$('#box'+bid).val(imagepath);
-	$('#boxspan'+bid).html(imgname);
-	$('#openContainer').hide();
-	
-}
-
+});
 function sendemails_crmhotels(crmid)
 {
 	if(crmid > 0 && crmid!='')
 	{
 		$.ajax({
-		  url: "{{ URL::to('fetch_company_info')}}",
+		  url: "{{ URL::to('fetch_user_info')}}",
 		  type: "post",
-		  data: 'crmid='+crmid,
+		  data: 'crmuid='+crmid,
 		  dataType: "json",
 		  success: function(data){
 			if(data.status!='error')
 			{
-				$('#crm_email_popup').val(data.crm.hotel_email);
-				$('#propertyid_email_popup').val(data.crm.propr_id);
+				$('#crm_email_popup').val(data.crm.email);
+				$('#propertyid_email_popup').val(data.crm.id);
 				$('#crmId_email_popup').val(crmid);
-				$('#crmmap_popup').attr('src','https://www.google.com/maps?q='+data.crm.hotel_address+'&output=embed');
+				$('#crmmap_popup').attr('src','https://www.google.com/maps?q='+data.crm.address+'&output=embed');
 				$('#crmemaillist').html('');
 				if(data.crmemails.length)
 				{
@@ -335,14 +307,13 @@ function sendemails_crmhotels(crmid)
 		});
 	}
 }
-
 function submitcrmemail()
 {
 	$('#message_email_popup').val($('.note-editable').html());
 	var form_data = new FormData(document.getElementById('emailcrm'));
 	$.ajax({
 	  method: "post",
-	  url: "{{URL::to('emailCRM')}}",
+	  url: "{{URL::to('emailInviteCRM')}}",
 	  cache : false,
 	  contentType: false, // Important.
 	  processData: false,
@@ -355,12 +326,12 @@ function submitcrmemail()
 			$("#email-page").fadeOut("slow");
 			$("body").removeClass("fixed");
 			html ='<div class="alert alert-danger fade in block-inner">';
-			html +='<button data-dismiss="alert" class="close" type="button">Ã—</button>';
+			html +='<button data-dismiss="alert" class="close" type="button">×</button>';
 			html +='<i class="icon-checkmark-circle"></i> Email Sent! </div>';
 			$('.page-content-wrapper #formerrors').html(html);
 		  }
 	  }
 	});
-}
+}	
 </script>		
 @stop

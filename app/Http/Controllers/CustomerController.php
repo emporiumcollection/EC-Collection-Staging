@@ -182,7 +182,8 @@ class CustomerController extends Controller {
                 $referral_code = trim($request->input('referral_code'));
                 $ref_code = true;
                 $inv_id = '';
-                $invitee = \DB::table('tb_invitee')->where('email', $authen->email)->get();
+                $today = date('Y-m-d');
+                $invitee = \DB::table('tb_invitee')->where('email', $authen->email)->where('status', 0)->where('expired_on', '>', $today)->get();
                 
                 if(count($invitee)>0){
                     foreach($invitee as $invite){                        

@@ -97,6 +97,8 @@
 	  <li ><a href="#frontendUploadtemplate" data-toggle="tab"> Frontend upload Template </a></li>
 	  <li ><a href="#frontendDownloadtemplate" data-toggle="tab"> Frontend download Template </a></li>
 	  <li ><a href="#removalRemindertemplate" data-toggle="tab"> Removal Reminder Template </a></li>
+      
+      <li ><a href="#refferalInvitationtemplate" data-toggle="tab"> Refferal Invitation Template </a></li>
 	</ul>
 
 	<div class="tab-content">
@@ -119,7 +121,26 @@
 			</div>
 		</div>
 	  </div>
+      
+      <div class="tab-pane m-t" id="refferalInvitationtemplate">
+			<div class="col-sm-6 animated fadeInRight">
+				<div class="sbox  "> 
+					<div class="sbox-title">  {{ Lang::get('core.refferal_invite') }}</div>
+					<div class="sbox-content"> 	
+						  <div class="form-group">
+							<label for="ipt" class=" control-label ">{{ Lang::get('core.tab_email') }} </label>					
+							<textarea rows="20" name="refferalInvitation" class="form-control input-sm markItUp">{{ $refferalInvitation }}</textarea>					 
+						  </div> 
 
+					  <div class="form-group">
+							<button class="btn btn-primary" type="submit">{{ Lang::get('core.sb_savechanges') }}</button>
+						 </div> 
+					</div>	 
+			  </div>
+			</div>
+		</div>
+      
+        
 		<div class="tab-pane m-t" id="fpassword">
 			<div class="col-sm-6 animated fadeInRight">
 				<div class="sbox  "> 

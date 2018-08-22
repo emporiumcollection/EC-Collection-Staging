@@ -1198,9 +1198,10 @@ class UserController extends Controller {
     }
     public function getInvite(){
         $user = User::find(\Session::get('uid'));
+        $this->data['invitees'] = \DB::table('tb_invitee')->where('user_id', \Session::get('uid'))->where('status', 0)->get();
         $is_demo6 = trim(\CommonHelper::isHotelDashBoard($user->group_id));        
         $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.user.invite':'';      
-        return view($file_name);
+        return view($file_name, $this->data);
     }
     public function postInvite(Request $request){
         $user = User::find(\Session::get('uid'));
@@ -1297,4 +1298,148 @@ class UserController extends Controller {
         } 
         echo json_encode($return_array);      
     }
+    public function viewInvite(Request $request){
+        $id = $request->input('id'); 
+        $invitee = \DB::table('tb_invitee')->where('id', $id)->get();
+        echo json_encode($invitee);
+    }
+    public function editInvite(Request $request){
+        $user = User::find(\Session::get('uid'));
+        
+        $return_array = array();
+        if (!\Auth::check())
+            return Redirect::to('user/login');
+        $rules = array(
+            'edit_first_name' => 'required|alpha_num|min:2',
+            'edit_last_name' => 'required|alpha_num|min:2',
+            'edit_email' => 'required'
+        );
+
+        $validator = Validator::make($request->all(), $rules);
+        
+        if ($validator->passes()) { 
+            //$referral_code = strtoupper(uniqid());
+            
+            $user = User::find(\Session::get('uid'));
+            $inv_id = $request->input('edit_id');
+            $invitee_data['user_id'] = $user->id;
+            $invitee_data['first_name'] = $request->input('edit_first_name');
+            $invitee_data['last_name'] = $request->input('edit_last_name');            
+            $invitee_data['email'] = $request->input('edit_email');
+            $invitee_data['message'] = $request->input('edit_message');
+            $invitee_data['referral_code'] = $request->input('edit_refferal_code');
+            //$invitee_data['created'] = date("Y-m-d");
+            //$today =  date("Y-m-d");            
+            //$expiry_date = date("Y-m-d", strtotime("+1 month", strtotime($today)));
+            
+            //$invitee_data['expired_on'] = $expiry_date;
+            //print_r($invitee_data);
+            $inviteeId = \DB::table('tb_invitee')->where('id', $inv_id)->update($invitee_data);             
+            if($inviteeId > 0){
+                
+                $edata = array();
+                $emlData['frmemail'] = 'marketing@emporium-voyage.com';
+                $edata['referral_code'] = $request->input('edit_refferal_code');
+                $edata['emessage'] = $request->input('message');
+                $edata['first_name'] = $request->input('first_name');
+                $edata['last_name'] = $request->input('last_name');
+                $emlData['email'] = $request->input('email');
+                $emlData['subject'] = 'Invitation send by '.$request->input('email');
+                
+                //if (\Session::get('newlang') == 'English') {
+                //    $etemp = 'auth.reminder_eng';
+                //}
+                
+                $etemp = 'invite';
+                //echo view('user.emails.invites.' . $etemp, $edata); die;
+                try{ 
+                \Mail::send('user.emails.invites.' . $etemp, $edata, function($message) use ($emlData) {
+                    $message->from($emlData['frmemail'], CNF_APPNAME);
+
+                    $message->to($emlData['email']);
+
+                    $message->subject($emlData['subject']);
+                });
+                }catch(Exception $ex){
+                    //print_r($ex); 
+                }
+            }  
+            $return_array['status'] = 'success';
+            $return_array['message'] = 'Updated successfully';          
+            
+        } else {
+            $return_array['status'] = 'error';
+            $return_array['message'] = 'Error While updating';            
+        }        
+        echo json_encode($return_array);
+    }
+    public function deleteInvite(Request $request){
+        $id = $request->input('id'); 
+        $invitee = \DB::table('tb_invitee')->where('id', $id)->update(array('status'=>1));
+        
+        $return_array['status'] = 'success';
+        $return_array['message'] = 'Deleted successfully'; 
+        
+        echo json_encode($return_array);
+    }
+    
+    public function ajaxLeadCreate(Request $request) {
+
+        $rules = array(
+            'firstname' => 'required|alpha_num|min:2',
+            'lastname' => 'required|alpha_num|min:2',
+            'group_id' => 'required|integer',
+            'email' => 'required|email|unique:tb_users',
+            'phone' =>'required',
+        );
+        $messages = array(
+            'firstname.required' => 'The first name field is required.',
+            'lastname.required' => 'The last name field is required.',
+            'group_id.required' => 'The user type field is required.',
+            'email.required' => 'The email field is required.',
+            'phone.required' => 'The phone field is required.',
+        );
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->passes()) { 
+            
+            $authen = new User;
+            $authen->first_name = $request->input('firstname');
+            $authen->last_name = $request->input('lastname');
+            $authen->email = trim($request->input('email'));
+            $authen->lead_type = trim($request->input('lead_type'));
+            $authen->hotel_type = trim($request->input('hotel_type'));            
+            $authen->group_id = (int) $request->input('group_id');
+            $authen->mobile_number=trim($request->input('phone'));
+            
+            $authen->instagram = trim($request->input('instagram'));
+            $authen->facebook = trim($request->input('facebook'));
+            $authen->linkedin = trim($request->input('linkedin'));
+                  
+            $authen->active = '0';
+            $authen->save();
+            
+            $ucdata['user_id'] = $authen->id;
+            $ucdata['company_name'] = trim($request->input('company_name'));
+            $ucdata['company_address'] = trim($request->input('company_address'));
+            $ucdata['company_city'] = trim($request->input('company_city'));
+            $ucdata['company_postal_code'] = trim($request->input('company_postal_code'));
+            $ucdata['company_country'] = trim($request->input('company_country'));
+            $ucdata['company_phone'] = trim($request->input('company_phone'));
+            $ucdata['company_website'] = trim($request->input('company_website'));
+            $ucdata['company_email'] = trim($request->input('company_email'));
+            $ucdata['company_status'] = trim($request->input('crm_prop_status'));
+            
+             \DB::table('tb_user_company_details')->insert($ucdata);
+            
+            $response = array('status' => 'success', 'message' => 'New Lead added successfully');
+            
+        } else {
+            $response = array('status' => 'error', 'message' => 'The following errors occurred', 'errors' => $validator->errors()->all());
+        }
+        
+        echo json_encode($response);
+    }
+    
+    
 }
