@@ -449,7 +449,7 @@ class UsersController extends Controller {
 		// End Filter sort and order for query 
 		// Filter Search for query		
 		$filter = (!is_null($request->input('search')) ? $this->buildSearch() : '');
-		$filter .= " AND tb_users.group_id >= '10'" ;
+		$filter .= " AND tb_users.group_id >= '11'" ;
 
 		
 		$page = $request->input('page', 1);
