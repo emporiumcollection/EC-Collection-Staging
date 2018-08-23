@@ -92,6 +92,8 @@
                             <option value="Agency or Tour Operator">Agency or Tour Operator</option>  
                             <option value="Villas">Villas</option>
                             <option value="Industry Professional">Industry Professional</option>
+                            <option value="Yachts Broker">Yachts Broker</option>
+                            <option value="Shipyard">Shipyard</option>
                           </select>		  
 						 </div> 
 						 <div class="col-md-2">
@@ -122,10 +124,7 @@
                             <option value="New Hotel">New Hotel</option>
                             <option value="Private Island Resorts">Private Island Resorts</option>  
                             <option value="Sports Resort">Sports Resort</option>
-                            <option value="Romantic Resort">Romantic Resort</option>
-                            
-                            <option value="Yachts Broker">Yachts Broker</option>
-                            <option value="Shipyard">Shipyard</option>
+                            <option value="Romantic Resort">Romantic Resort</option>                            
                           </select>		  
 						 </div> 
 						 <div class="col-md-2">

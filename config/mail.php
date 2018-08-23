@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'from' => 'marketing@emporium-collection.com',
+    'from' => 'sales@emporium-voyage.com',
 
     /*
     |--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'username' => 'marketing@emporium-collection.com',
+    'username' => 'sales@emporium-voyage.com',
 
     /*
     |--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return [
     |
     */
 
-    'password' => 'klVoEqcOse2Sg78J',
+    'password' => 'bWF74r8vSR',
 
     /*
     |--------------------------------------------------------------------------
