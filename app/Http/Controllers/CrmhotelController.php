@@ -311,8 +311,11 @@ class CrmhotelController extends Controller {
     public function emailCRM(Request $request)
     {
         $crmemail = trim($request->input('crm_email_popup'));
+        
 		if($crmemail!='')
 		{
+            $expo_to = explode(',', $crmemail);
+            
 			$ccemail = trim($request->input('cc_email_popup'));
 			$crmId = $request->input('crmId_email_popup');
 			$propertyId = $request->input('propertyid_email_popup');
@@ -349,33 +352,56 @@ class CrmhotelController extends Controller {
 						$actimgname = $filename_pos7;
 					}
 				}
-			}
+			}		
 			
-			$toouser['email'] = $crmemail;
-			$toouser['cc_email_popup'] = $ccemail;
-			$toouser['subject'] = $subjectemail;
-			$toouser['attchfle'] = $actimgpath;
-			$emailArr['attchflename'] = $actimgname;
-			$ucode = rand(11111111, 99999999).rand(11111111, 99999999);
-			$emailArr['link'] = 'download-document/'.$ucode;
-			$tempe = 'crm_email';
-			if($templateemail!='')
-			{
-				$tempe = $templateemail;
-			}
-			\Mail::send('user.emails.'.$tempe, $emailArr, function($message) use ($toouser)
-			{
-				$message->from('sales@emporium-voyage.com', CNF_APPNAME);
-
-				$message->to( $toouser['email']);
-				if($toouser['cc_email_popup']!='')
-				{
-					$message->cc($toouser['cc_email_popup']);
-				}
-				$message->subject($toouser['subject']);
-			});
-			
-			$data['crm_id'] = $crmId;
+            $batch_com_data = array();
+            if($propertyId != ""){
+                $expo_prop = explode(',', $propertyId);
+                for($i=0; $i < count($expo_prop); $i++) {
+                    
+                    //$toouser['email'] = $crmemail;
+                    $toouser['email'] = $expo_to[$i];
+        			$toouser['cc_email_popup'] = $ccemail;
+        			$toouser['subject'] = $subjectemail;
+        			$toouser['attchfle'] = $actimgpath;
+        			$emailArr['attchflename'] = $actimgname;
+        			$ucode = rand(11111111, 99999999).rand(11111111, 99999999);
+        			$emailArr['link'] = 'download-document/'.$ucode;
+        			$tempe = 'crm_email';
+        			if($templateemail!='')
+        			{
+        				$tempe = $templateemail;
+        			}
+        			\Mail::send('user.emails.'.$tempe, $emailArr, function($message) use ($toouser)
+        			{
+        				$message->from('sales@emporium-voyage.com', CNF_APPNAME);
+        
+        				$message->to( $toouser['email']);
+        				if($toouser['cc_email_popup']!='')
+        				{
+        					$message->cc($toouser['cc_email_popup']);
+        				}
+        				$message->subject($toouser['subject']);
+        			});
+                    
+                    $data['crm_id'] = $expo_prop[$i];
+        			$data['user_id'] = \Auth::user()->id;
+        			$data['property_id'] = $expo_prop[$i];
+        			$data['email_address'] = $expo_to[$i];
+        			$data['cc_email_address'] = $ccemail;
+        			$data['email_subject'] = $subjectemail;
+        			$data['email_template'] = $templateemail;
+        			$data['email_message'] = $request->input('message_email_popup');
+        			$data['email_attachfile'] = $actimgname;
+        			$data['email_uniquescode'] = $ucode;
+                    //$batch_com_data[] = $data;
+                    $ins = \DB::table('tb_crm_emailcommunication')->insert($data);
+                }                
+            }
+            //print_r($batch_com_data); die;
+            //$ins = \DB::table('tb_crm_emailcommunication')->insert($batch_com_data);
+            
+			/*$data['crm_id'] = $crmId;
 			$data['user_id'] = \Auth::user()->id;
 			$data['property_id'] = $propertyId;
 			$data['email_address'] = $crmemail;
@@ -385,7 +411,7 @@ class CrmhotelController extends Controller {
 			$data['email_message'] = $request->input('message_email_popup');
 			$data['email_attachfile'] = $actimgname;
 			$data['email_uniquescode'] = $ucode;
-			$ins = \DB::table('tb_crm_emailcommunication')->insert($data);
+			$ins = \DB::table('tb_crm_emailcommunication')->insert($data); */
 			
 			$ret['status'] = "success";
 		}
@@ -427,7 +453,63 @@ class CrmhotelController extends Controller {
     public function fetch_property_company_info(Request $request)
 	{
 		$crmid = $request->input('crmid');
-		if($crmid > 0)
+        $ids = $request->input('ids');
+        //echo $ids;
+        $checkcrms = array();
+        if ($ids != '') {
+            $expo = explode(',', $ids);
+            if(count($expo) > 0 ) {
+                $checkcrms =  \DB::table('tb_properties')->select('id','email','hotelinfo_address')->whereIn('id', $expo)->get();
+                $emails = '';
+                $p_ids = '';
+                $hotelinfo_address = "";
+                foreach($checkcrms as $chk){
+                    if(trim($chk->email) !="" ){
+                        $emails.= ($emails =='') ? trim($chk->email) : ((trim($chk->email)!='') ? ", ".trim($chk->email) : '');
+                        $p_ids.= ($p_ids =='') ? trim($chk->id) : ",".trim($chk->id);
+                        if($chk->id==$crmid){
+                            $hotelinfo_address = trim($chk->hotelinfo_address);
+                        }
+                    }
+                }
+                //print_r($checkcrms);
+                $ret['status'] = 'success';
+				$ret['crm']['email'] = $emails;
+                $ret['crm']['id'] = $p_ids;
+                $ret['crm']['hotelinfo_address'] = $hotelinfo_address;
+                $ret['crmemails'] = array();
+				$checkcrmemails =  \DB::table('tb_crm_emailcommunication')->select('email_subject',\DB::raw("DATE_FORMAT(created_at, '%M %d') as created_at"),'id','email_message')->where('crm_id', $crmid)->get();
+				if(!empty($checkcrmemails))
+				{
+					$ret['crmemails'] = $checkcrmemails;
+				}
+            }            
+        }else{
+            if($crmid > 0)
+    		{
+    			$checkcrm =  \DB::table('tb_properties')->select('id','email','hotelinfo_address')->where('id', $crmid)->first();
+    			if(!empty($checkcrm))
+    			{
+    				$ret['status'] = 'success';
+    				$ret['crm'] = $checkcrm;
+    				$ret['crmemails'] = array();
+    				$checkcrmemails =  \DB::table('tb_crm_emailcommunication')->select('email_subject',\DB::raw("DATE_FORMAT(created_at, '%M %d') as created_at"),'id','email_message')->where('crm_id', $crmid)->get();
+    				if(!empty($checkcrmemails))
+    				{
+    					$ret['crmemails'] = $checkcrmemails;
+    				}
+    			}
+    			else
+    			{
+    				$ret['status'] = 'error';
+    			}
+    		}
+    		else
+    		{
+    			$ret['status'] = 'error';
+    		}
+        } 
+		/*if($crmid > 0)
 		{
 			$checkcrm =  \DB::table('tb_properties')->select('id','email','hotelinfo_address')->where('id', $crmid)->first();
 			if(!empty($checkcrm))
@@ -449,7 +531,7 @@ class CrmhotelController extends Controller {
 		else
 		{
 			$ret['status'] = 'error';
-		}
+		}*/
 		return json_encode($ret);
 	}
     
@@ -495,37 +577,75 @@ class CrmhotelController extends Controller {
     public function fetch_user_info(Request $request)
 	{
 		$crm_uid = $request->input('crmuid');
-		if($crm_uid > 0)
-		{
-			$checkcrm =  \DB::table('tb_users')->select('id','email','address')->where('id', $crm_uid)->first();
-			if(!empty($checkcrm))
-			{
-				$ret['status'] = 'success';
-				$ret['crm'] = $checkcrm;
-				$ret['crmemails'] = array();
+        $ids = $request->input('ids');
+        //echo $ids;
+        $checkcrms = array();
+        if ($ids != '') {
+            $expo = explode(',', $ids);
+            if(count($expo) > 0 ) {
+                $checkcrms =  \DB::table('tb_users')->select('id','email','address')->whereIn('id', $expo)->get();
+                $emails = '';
+                $p_ids = '';
+                $address = "";
+                foreach($checkcrms as $chk){
+                    if(trim($chk->email) !="" ){
+                        $emails.= ($emails =='') ? trim($chk->email) : ((trim($chk->email)!='') ? ", ".trim($chk->email) : '');
+                        $p_ids.= ($p_ids =='') ? trim($chk->id) : ",".trim($chk->id);
+                        if($chk->id==$crm_uid){
+                            $address = trim($chk->address);
+                        }
+                    }
+                }
+                //print_r($checkcrms);
+                $ret['status'] = 'success';
+				$ret['crm']['email'] = $emails;
+                $ret['crm']['id'] = $p_ids;
+                $ret['crm']['address'] = $address;
+                $ret['crmemails'] = array();
 				$checkcrmemails =  \DB::table('tb_crm_emailcommunication')->select('email_subject',\DB::raw("DATE_FORMAT(created_at, '%M %d') as created_at"),'id','email_message')->where('crm_id', $crm_uid)->get();
 				if(!empty($checkcrmemails))
 				{
 					$ret['crmemails'] = $checkcrmemails;
 				}
-			}
-			else
-			{
-				$ret['status'] = 'error';
-			}
-		}
-		else
-		{
-			$ret['status'] = 'error';
-		}
+            }            
+        }
+        else
+        {
+	        if($crm_uid > 0)
+    		{
+    			$checkcrm =  \DB::table('tb_users')->select('id','email','address')->where('id', $crm_uid)->first();
+    			if(!empty($checkcrm))
+    			{
+    				$ret['status'] = 'success';
+    				$ret['crm'] = $checkcrm;
+    				$ret['crmemails'] = array();
+    				$checkcrmemails =  \DB::table('tb_crm_emailcommunication')->select('email_subject',\DB::raw("DATE_FORMAT(created_at, '%M %d') as created_at"),'id','email_message')->where('crm_id', $crm_uid)->get();
+    				if(!empty($checkcrmemails))
+    				{
+    					$ret['crmemails'] = $checkcrmemails;
+    				}
+    			}
+    			else
+    			{
+    				$ret['status'] = 'error';
+    			}
+    		}
+    		else
+    		{
+    			$ret['status'] = 'error';
+    		}
+        }
 		return json_encode($ret);
 	}
     //Email to CRM 
     public function emailInviteCRM(Request $request)
     {
         $crmemail = trim($request->input('crm_email_popup'));
+        
 		if($crmemail!='')
 		{
+            $expo_to = explode(',', $crmemail);
+            
 			$ccemail = trim($request->input('cc_email_popup'));
 			$crmId = $request->input('crmId_email_popup');
 			$propertyId = $request->input('propertyid_email_popup');
@@ -535,6 +655,7 @@ class CrmhotelController extends Controller {
 			$destinationPath = public_path().'/uploads/varients_imgs/';
 			$actimgpath = '';
 			$actimgname = '';
+            
 			if(!is_null($request->file('upload_email_popup')))
 			{
 				$filepos7 = $request->file('upload_email_popup');
@@ -564,7 +685,7 @@ class CrmhotelController extends Controller {
 				}
 			}
 			
-			$toouser['email'] = $crmemail;
+			
 			$toouser['cc_email_popup'] = $ccemail;
 			$toouser['subject'] = $subjectemail;
 			$toouser['attchfle'] = $actimgpath;
@@ -579,57 +700,70 @@ class CrmhotelController extends Controller {
 			{
 				$tempe = $templateemail;
 			}
+            
             $emailArr['byfirstname'] = \Auth::user()->first_name;
             $emailArr['bylastname'] = \Auth::user()->last_name;
             $emailArr['byemail'] = \Auth::user()->email;
             
-            $lead_user = \DB::table('tb_users')->where('id', $propertyId)->first();
-            $today =  date("Y-m-d");    
-            $emailArr['tofirstname'] = $lead_user->first_name;
-            $emailArr['tolastname'] = $lead_user->last_name;
-            $emailArr['todate'] = $today;
-            $expiry_date = date("Y-m-d", strtotime("+30 day", strtotime($today)));
-            $emailArr['todays'] = 30;
-            $emailArr['referral_code'] = $referral_code;            
-            
-			\Mail::send('user.emails.'.$tempe, $emailArr, function($message) use ($toouser)
-			{
-				$message->from('sales@emporium-voyage.com', CNF_APPNAME);
-
-				$message->to( $toouser['email']);
-				if($toouser['cc_email_popup']!='')
-				{
-					$message->cc($toouser['cc_email_popup']);
-				}
-				$message->subject($toouser['subject']);
-			});
-			
-			$data['crm_id'] = $crmId;
-			$data['user_id'] = \Auth::user()->id;
-			$data['invitee_id'] = $propertyId;
-			$data['email_address'] = $crmemail;
-			$data['cc_email_address'] = $ccemail;
-			$data['email_subject'] = $subjectemail;
-			$data['email_template'] = $templateemail;
-			$data['email_message'] = $request->input('message_email_popup');
-			$data['email_attachfile'] = $actimgname;
-			$data['email_uniquescode'] = $ucode;
-			$ins = \DB::table('tb_crm_emailcommunication')->insert($data);
             
             
-            //$user = User::find(\Session::get('uid'));
-            $invitee_data['user_id'] = \Auth::user()->id;
-            $invitee_data['first_name'] = $lead_user->first_name;
-            $invitee_data['last_name'] = $lead_user->last_name;;            
-            $invitee_data['email'] = $lead_user->email;
-            $invitee_data['message'] = $request->input('message_email_popup');
-            $invitee_data['referral_code'] = $referral_code;
-            $invitee_data['created'] = $today;
-            
-            $invitee_data['expired_on'] = $expiry_date;
-            
-            $inviteeId = \DB::table('tb_invitee')->insertGetId($invitee_data);    
-            
+            if($propertyId != ""){
+                
+                $expo_prop = explode(',', $propertyId);
+                
+                for($i=0; $i < count($expo_prop); $i++) {
+                    
+                    $toouser['email'] = $expo_to[$i];
+                    
+                    $lead_user = \DB::table('tb_users')->where('id', $expo_prop[$i])->first();
+                    
+                    $today =  date("Y-m-d");    
+                    $emailArr['tofirstname'] = $lead_user->first_name;
+                    $emailArr['tolastname'] = $lead_user->last_name;
+                    $emailArr['todate'] = $today;
+                    $expiry_date = date("Y-m-d", strtotime("+30 day", strtotime($today)));
+                    $emailArr['todays'] = 30;
+                    $emailArr['referral_code'] = $referral_code;            
+                    
+        			\Mail::send('user.emails.'.$tempe, $emailArr, function($message) use ($toouser)
+        			{
+        				$message->from('sales@emporium-voyage.com', CNF_APPNAME);
+        
+        				$message->to( $toouser['email']);
+                        //$message->to($expo_to[$i]);
+        				if($toouser['cc_email_popup']!='')
+        				{
+        					$message->cc($toouser['cc_email_popup']);
+        				}
+        				$message->subject($toouser['subject']);
+        			}); 
+    			
+        			$data['crm_id'] =  $expo_prop[$i];
+        			$data['user_id'] = \Auth::user()->id;
+        			$data['invitee_id'] = $expo_prop[$i];
+        			$data['email_address'] = $expo_to[$i];
+        			$data['cc_email_address'] = $ccemail;
+        			$data['email_subject'] = $subjectemail;
+        			$data['email_template'] = $templateemail;
+        			$data['email_message'] = $request->input('message_email_popup');
+        			$data['email_attachfile'] = $actimgname;
+        			$data['email_uniquescode'] = $ucode;                    
+        			$ins = \DB::table('tb_crm_emailcommunication')->insert($data);                
+                
+                    //$user = User::find(\Session::get('uid'));
+                    $invitee_data['user_id'] = \Auth::user()->id;
+                    $invitee_data['first_name'] = $lead_user->first_name;
+                    $invitee_data['last_name'] = $lead_user->last_name;;            
+                    $invitee_data['email'] = $lead_user->email;
+                    $invitee_data['message'] = $request->input('message_email_popup');
+                    $invitee_data['referral_code'] = $referral_code;
+                    $invitee_data['created'] = $today;
+                    
+                    $invitee_data['expired_on'] = $expiry_date;
+                    
+                    $inviteeId = \DB::table('tb_invitee')->insertGetId($invitee_data);
+                 }    
+            }
             
 			$ret['status'] = "success";
 		}

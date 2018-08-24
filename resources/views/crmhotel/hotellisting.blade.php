@@ -282,12 +282,20 @@ function selectimg(obj)
 
 function sendemails_crmhotels(crmid)
 {
+    var sList = "";
+	$('input[type=checkbox].ids').each(function () {
+		if(this.checked)
+		{
+			sList += (sList=="" ? $(this).val() : "," + $(this).val());
+		}
+		
+	});
 	if(crmid > 0 && crmid!='')
 	{
 		$.ajax({
 		  url: "{{ URL::to('fetch_property_company_info')}}",
 		  type: "post",
-		  data: 'crmid='+crmid,
+		  data: {crmid:crmid, ids:sList},
 		  dataType: "json",
 		  success: function(data){
 			if(data.status!='error')

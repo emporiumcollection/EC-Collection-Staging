@@ -283,12 +283,20 @@ function selectimg(obj)
 
 function sendemails_crmhotels(crmid)
 {
+    var sList = "";
+	$('input[type=checkbox].ids').each(function () {
+		if(this.checked)
+		{
+			sList += (sList=="" ? $(this).val() : "," + $(this).val());
+		}
+		
+	});
 	if(crmid > 0 && crmid!='')
 	{
 		$.ajax({
 		  url: "{{ URL::to('fetch_user_info')}}",
 		  type: "post",
-		  data: 'crmuid='+crmid,
+		  data: {crmuid:crmid, ids:sList},
 		  dataType: "json",
 		  success: function(data){
 			if(data.status!='error')
@@ -333,7 +341,7 @@ function submitcrmemail()
 	var form_data = new FormData(document.getElementById('emailcrm'));
 	$.ajax({
 	  method: "post",
-	  url: "{{URL::to('emailCRM')}}",
+	  url: "{{URL::to('emailInviteCRM')}}",
 	  cache : false,
 	  contentType: false, // Important.
 	  processData: false,

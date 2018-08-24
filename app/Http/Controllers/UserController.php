@@ -1388,14 +1388,14 @@ class UserController extends Controller {
         $rules = array(
             'firstname' => 'required|alpha_num|min:2',
             'lastname' => 'required|alpha_num|min:2',
-            //'group_id' => 'required|integer',
+            'phonecode' => 'required',
             'email' => 'required|email|unique:tb_users',
             'phone' =>'required',
         );
         $messages = array(
             'firstname.required' => 'The first name field is required.',
             'lastname.required' => 'The last name field is required.',
-            //'group_id.required' => 'The user type field is required.',
+            'phonecode.required' => 'The phone code field is required.',
             'email.required' => 'The email field is required.',
             'phone.required' => 'The phone field is required.',
         );
@@ -1408,12 +1408,17 @@ class UserController extends Controller {
             $authen->last_name = $request->input('lastname');
             $authen->email = trim($request->input('email'));
             $authen->lead_type = trim($request->input('lead_type'));
-            $authen->hotel_type = trim($request->input('hotel_type'));  
+            //$authen->hotel_type = $request->input('hotel_type');  
+            if(!is_null($request->input('hotel_type')))
+			{
+				$authen->hotel_type = implode(',',$request->input('hotel_type'));
+			}
             
             $gp_id = \CommonHelper::getusertype('new-lead'); 
                          
             $authen->group_id = (int) $gp_id;
             
+            $authen->mobile_code=trim($request->input('phonecode'));
             $authen->mobile_number=trim($request->input('phone'));
             
             $authen->instagram = trim($request->input('instagram'));

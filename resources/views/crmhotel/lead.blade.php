@@ -72,7 +72,7 @@
                       <div class="form-group  " >
 						<label for="Lead Type" class=" control-label col-md-4 text-left"> Lead Type </label>
 						<div class="col-md-6">
-						  <select name="lead_type" id="lead_type" class="form-control">
+						  <select name="lead_type" id="lead_type" class="form-control" >
                             <option value="Airline">Airline</option>
                             <option value="Airport">Airport</option>
                             <option value="Inflight Managzine">Inflight Managzine</option>
@@ -84,7 +84,8 @@
                             <option value="City Destination">City Destination</option>
                             <option value="DMC's Destination Mang">DMC's Destination Mang</option>
                             <option value="Festival & Events Destination">Festival & Events Destination</option>
-                            <option value="Luxury Islands">Luxury Islands</option>  
+                            <option value="Luxury Islands">Luxury Islands</option> 
+                            <option value="Hotel">Hotel</option> 
                             <option value="Meetings & Conferences">Meetings & Conferences</option>
                             <option value="National Parks">National Parks</option>
                             <option value="Tourist Attraction">Tourist Attraction</option>  
@@ -102,10 +103,10 @@
 							
 						 </div>
 					  </div> 
-                      <div class="form-group  " >
+                      <div class="form-group" style="display: none;" id="dv_hotel_type">
 						<label for="Hotel Type" class=" control-label col-md-4 text-left"> Hotel Type </label>
 						<div class="col-md-6">
-						  <select name="hotel_type" id="lead_type" class="form-control">
+						  <select name="hotel_type[]" id="hotel_type" class="select2" multiple rows='5'>
                             <option value="Beach Resort">Beach Resort</option>
                             <option value="Boutique Hotel">Boutique Hotel</option>
                             <option value="Boutique Hotel Brands">Boutique Hotel Brands</option>
@@ -163,8 +164,11 @@
 					  </div> 					
 					  <div class="form-group  " >
 						 <label for="Phone" class=" control-label col-md-4 text-left"> Phone </label>
-		                 <div class="col-md-6">
-						  {!! Form::text('phone', '',array('class'=>'form-control', 'placeholder'=>'', 'id' => 'phone' )) !!}
+                         <div class="col-md-1" style="padding-right: 0px;">
+                            {!! Form::text('phonecode', '',array('class'=>'form-control', 'placeholder'=>'code', 'id' => 'phonecode' )) !!}
+                         </div>
+		                 <div class="col-md-5" style="padding-left: 0px;">
+						  {!! Form::text('phone', '',array('class'=>'form-control', 'placeholder'=>'phone', 'id' => 'phone' )) !!}
 						  
 						 </div> 
 						 <div class="col-md-2">
@@ -442,6 +446,16 @@
     		  }
     		});
         });
+        
+        $("#lead_type").change(function(){
+           var lead_val = $("#lead_type").val();
+           if(lead_val=="Hotel"){
+                $("#dv_hotel_type").css('display', '');
+           }else{
+                $("#dv_hotel_type").css('display', 'none');
+           }
+        });
+        
 	});
 </script>  	 
 @include('layouts/crm_layout/ai_vc')

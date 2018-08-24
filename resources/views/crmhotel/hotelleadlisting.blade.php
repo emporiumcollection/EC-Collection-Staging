@@ -80,7 +80,7 @@
 					<td> <a target="_blank" href="{{URL::to($property_slug)}}">{{$row->property_name}}</a> </td>
 					<td> {{$row->email}} </td>
 					<td> {{$row->phone}} </td>
-					<td>  </td>
+					<td> Lead  </td>
 				 <td>
 					 	@if($access['is_detail'] ==1)
 						<a href="{{ URL::to('crmhotel/show/'.$row->id.'?return='.$return)}}" class="tips btn btn-xs btn-primary" title="{{ Lang::get('core.btn_view') }}" style="display: none;"><i class="fa  fa-search "></i></a>
@@ -93,10 +93,8 @@
 						<a  href="javascript:void(0);" class="tips btn btn-xs btn-success" title="Email" onclick="sendemails_crmhotels('{{$row->id}}');"><i class="fa fa-envelope-o"></i></a>
 						<a  href="{{(strpos($row->website, 'http') !== false) ? $row->website : 'http://'.$row->website }}" class="tips btn btn-xs btn-success" title="website" style="display: none;"><i class="fa fa-globe"></i></a>
 				</td>				 
-                </tr>
-				
-            @endforeach
-              
+                </tr>				
+            @endforeach              
         </tbody>
       
     </table>
@@ -282,12 +280,21 @@ function selectimg(obj)
 
 function sendemails_crmhotels(crmid)
 {
+    var sList = "";
+	$('input[type=checkbox].ids').each(function () {
+		if(this.checked)
+		{
+			sList += (sList=="" ? $(this).val() : "," + $(this).val());
+		}
+		
+	});
+    
 	if(crmid > 0 && crmid!='')
 	{
 		$.ajax({
 		  url: "{{ URL::to('fetch_property_company_info')}}",
 		  type: "post",
-		  data: 'crmid='+crmid,
+		  data: {crmid:crmid, ids:sList},
 		  dataType: "json",
 		  success: function(data){
 			if(data.status!='error')
@@ -323,7 +330,7 @@ function sendemails_crmhotels(crmid)
 			}
 		  }
 		});
-	}
+	} 
 }
 
 function submitcrmemail()
