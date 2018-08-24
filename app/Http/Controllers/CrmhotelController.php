@@ -487,7 +487,8 @@ class CrmhotelController extends Controller {
        /*         $this->data['all_rows'] = CrmLayoutHelper::fetchCrmLayout($module_id); */
 
                 /********************************/
-                
+        $gp_id = \CommonHelper::getusertype('new-lead'); 
+        $this->data['group_id'] =  $gp_id;     
 		$this->data['id'] = $id;
 		return view('crmhotel.lead',$this->data);
 	}

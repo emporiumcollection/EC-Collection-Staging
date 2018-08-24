@@ -57,9 +57,11 @@
 				   <fieldset class="muti-form-align" id="personalinfo">
                   
                     
-                      <div class="form-group  " >
+                      <div class="form-group  " style="display: none;">
 						<label for="User Type" class=" control-label col-md-4 text-left"> User Type </label>
 						<div class="col-md-6">
+                            <input type="text" class="form-control" value="New Lead" readonly="readonly"/>
+                            <input type="hidden" name="group_id" value="{{ $group_id }}" />
 						 <select name='group_id' rows='5' id='group_id' code='{$group_id}' 
 							class='select2 '  required  ></select> 	  
 						 </div> 
