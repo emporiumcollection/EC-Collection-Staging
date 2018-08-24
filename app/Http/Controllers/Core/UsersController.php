@@ -446,10 +446,11 @@ class UsersController extends Controller {
 						
 		$sort = (!is_null($request->input('sort')) ? $request->input('sort') : 'id'); 
 		$order = (!is_null($request->input('order')) ? $request->input('order') : 'asc');
+        $gp_id = \CommonHelper::getusertype('new-lead');        
 		// End Filter sort and order for query 
 		// Filter Search for query		
 		$filter = (!is_null($request->input('search')) ? $this->buildSearch() : '');
-		$filter .= " AND tb_users.group_id >= '11'" ;
+		$filter .= " AND tb_users.group_id >= '".$gp_id."'" ;
 
 		
 		$page = $request->input('page', 1);

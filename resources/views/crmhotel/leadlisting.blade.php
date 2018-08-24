@@ -36,42 +36,26 @@
 	<div class="sbox-content"> 	
 	    <div class="toolbar-line ">
 			@if($access['is_add'] ==1)
-	   		<a href="{{ URL::to('crmhotel/update') }}" class="tips btn btn-sm btn-white"  title="{{ Lang::get('core.btn_create') }}" style="display: none;">
+	   		<a href="{{ URL::to('crmhotel/update') }}" class="tips btn btn-sm btn-white"  title="{{ Lang::get('core.btn_create') }}">
 			<i class="fa fa-plus-circle "></i>&nbsp;{{ Lang::get('core.btn_create') }}</a>
 			@endif  
 			@if($access['is_remove'] ==1)
-			<a href="javascript://ajax"  onclick="SximoDelete();" class="tips btn btn-sm btn-white" title="{{ Lang::get('core.btn_remove') }}" style="display: none;">
+			<a href="javascript://ajax"  onclick="SximoDelete();" class="tips btn btn-sm btn-white" title="{{ Lang::get('core.btn_remove') }}">
 			<i class="fa fa-minus-circle "></i>&nbsp;{{ Lang::get('core.btn_remove') }}</a>
 			@endif 
-			<a href="{{ URL::to( 'crmhotel/search') }}" class="btn btn-sm btn-white" onclick="SximoModal(this.href,'Advance Search'); return false;"  style="display: none;"><i class="fa fa-search"></i> Search</a>				
+			<a href="{{ URL::to( 'crmhotel/search') }}" class="btn btn-sm btn-white" onclick="SximoModal(this.href,'Advance Search'); return false;" ><i class="fa fa-search"></i> Search</a>				
 			@if($access['is_excel'] ==1)
-			<a href="{{ URL::to('crmhotel/download?return='.$return) }}" class="tips btn btn-sm btn-white" title="{{ Lang::get('core.btn_download') }}" style="display: none;">
+			<a href="{{ URL::to('crmhotel/download?return='.$return) }}" class="tips btn btn-sm btn-white" title="{{ Lang::get('core.btn_download') }}">
 			<i class="fa fa-download"></i>&nbsp;{{ Lang::get('core.btn_download') }} </a>
 			@endif			
 		    @if($access['is_add'] ==1)
-	   		
+	   		<a href="{{ URL::to('crmhotel/lead') }}" class="tips btn btn-sm btn-white"  title="{{ Lang::get('core.btn_lead_create') }}">
+			<i class="fa fa-plus-circle "></i>&nbsp;{{ Lang::get('core.btn_lead_create') }}</a>
 			@endif  
             @if($access['is_add'] ==1)
-	   		
-			@endif 
-            
-            <a href="{{ URL::to('crmhotel/index') }}" class="tips btn btn-sm btn-white active"  title="Hotel Lead Listing">
-			<i class="fa fa-list "></i>&nbsp;Hotel Lead Listing</a>
-            
-            <a href="{{ URL::to('crmhotel/lead') }}" class="tips btn btn-sm btn-white"  title="{{ Lang::get('core.btn_lead_create') }}">
-			<i class="fa fa-plus-circle "></i>&nbsp;{{ Lang::get('core.btn_lead_create') }}</a>
-            
-            <a href="{{ URL::to('crmhotel/leadlisting') }}" class="tips btn btn-sm btn-white"  title="User Lead Listing">
-			<i class="fa fa-list "></i>&nbsp;{{ Lang::get('core.btn_lead_listing') }}</a>
-             
-            <a href="{{ URL::to('crmhotel/hotellisting') }}" class="tips btn btn-sm btn-white"  title="Hotel">
-			<i class="fa fa-list "></i>&nbsp;Hotel</a>
-            
-            <a href="{{ URL::to('crmhotel/hoteluserlisting') }}" class="tips btn btn-sm btn-white"  title="Hotel User">
-			<i class="fa fa-list "></i>&nbsp;Hotel User</a>
-            
-            <a href="{{ URL::to('crmhotel/travelleruserlisting') }}" class="tips btn btn-sm btn-white"  title="Traveller">
-			<i class="fa fa-list "></i>&nbsp;Traveller</a>
+	   		<a href="{{ URL::to('crmhotel/leadlisting') }}" class="tips btn btn-sm btn-white"  title="{{ Lang::get('core.btn_lead_listing') }}">
+			<i class="fa fa-plus-circle "></i>&nbsp;{{ Lang::get('core.btn_lead_listing') }}</a>
+			@endif  
 		</div> 		
 
 	

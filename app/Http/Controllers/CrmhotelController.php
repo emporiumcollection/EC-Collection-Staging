@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\controller;
 use App\Models\Crmhotel;
+use App\Models\Properties;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 use Validator, Input, Redirect ;  
@@ -41,7 +42,7 @@ class CrmhotelController extends Controller {
 
 	public function getIndex( Request $request )
 	{
-
+        /*
 		if($this->access['is_view'] ==0) 
 			return Redirect::to('dashboard')
 				->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus','error');
@@ -88,7 +89,14 @@ class CrmhotelController extends Controller {
 		// Master detail link if any 
 		$this->data['subgrid']	= (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array()); 
 		// Render into template
-		return view('crmhotel.index',$this->data);
+		return view('crmhotel.index',$this->data); */ 
+        
+        
+        $this->data['access']		= $this->access;
+        $this->data['i']=0;
+        $this->data['rowData'] = \DB::table('tb_properties')->where('property_status', 0)->simplePaginate(static::$per_page);
+        //print_r($properties);
+        return view('crmhotel.hotelleadlisting',$this->data);
 	}	
 
 
@@ -415,6 +423,36 @@ class CrmhotelController extends Controller {
 		}
 		return json_encode($ret);
 	}
+    
+    public function fetch_property_company_info(Request $request)
+	{
+		$crmid = $request->input('crmid');
+		if($crmid > 0)
+		{
+			$checkcrm =  \DB::table('tb_properties')->select('id','email','hotelinfo_address')->where('id', $crmid)->first();
+			if(!empty($checkcrm))
+			{
+				$ret['status'] = 'success';
+				$ret['crm'] = $checkcrm;
+				$ret['crmemails'] = array();
+				$checkcrmemails =  \DB::table('tb_crm_emailcommunication')->select('email_subject',\DB::raw("DATE_FORMAT(created_at, '%M %d') as created_at"),'id','email_message')->where('crm_id', $crmid)->get();
+				if(!empty($checkcrmemails))
+				{
+					$ret['crmemails'] = $checkcrmemails;
+				}
+			}
+			else
+			{
+				$ret['status'] = 'error';
+			}
+		}
+		else
+		{
+			$ret['status'] = 'error';
+		}
+		return json_encode($ret);
+	}
+    
     function getLead(Request $request, $id = null)
 	{
 	
@@ -598,5 +636,24 @@ class CrmhotelController extends Controller {
 			$ret['status'] = "error";
 		}
 		return $ret;
+    }
+    public function getHotellisting(Request $request){
+        $this->data['access']		= $this->access;
+        $this->data['i']=0;
+        $this->data['rowData'] = \DB::table('tb_properties')->where('property_status', 1)->simplePaginate(static::$per_page);;
+        //print_r($properties);
+        return view('crmhotel.hotellisting',$this->data);
+    }
+    public function getHoteluserlisting(Request $request){
+        $this->data['access']		= $this->access;
+        $this->data['i']=0;
+        $this->data['rowData'] = \DB::table('tb_users')->join('tb_groups', 'tb_groups.group_id', '=', 'tb_users.group_id')->where('tb_users.group_id', 5)->where('active', 1)->get();        
+        return view('crmhotel.hoteluserlisting',$this->data);
+    }
+    public function getTravelleruserlisting(Request $request){
+        $this->data['access']		= $this->access;
+        $this->data['i']=0;
+        $this->data['rowData'] = \DB::table('tb_users')->join('tb_groups', 'tb_groups.group_id', '=', 'tb_users.group_id')->where('tb_users.group_id', 3)->where('active', 1)->get();        
+        return view('crmhotel.travelleruserlisting',$this->data);
     }
 }

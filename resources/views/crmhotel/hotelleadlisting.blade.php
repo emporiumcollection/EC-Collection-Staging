@@ -5,7 +5,7 @@
 <style>
 .modal-dialog { width:500px !important; }
 </style>
-{{--*/ usort($tableGrid, "SiteHelpers::_sort") /*--}}
+
   <div class="page-content row">
     <!-- Page header -->
     <div class="page-header">
@@ -35,27 +35,7 @@
 	</div>
 	<div class="sbox-content"> 	
 	    <div class="toolbar-line ">
-			@if($access['is_add'] ==1)
-	   		<a href="{{ URL::to('crmhotel/update') }}" class="tips btn btn-sm btn-white"  title="{{ Lang::get('core.btn_create') }}" style="display: none;">
-			<i class="fa fa-plus-circle "></i>&nbsp;{{ Lang::get('core.btn_create') }}</a>
-			@endif  
-			@if($access['is_remove'] ==1)
-			<a href="javascript://ajax"  onclick="SximoDelete();" class="tips btn btn-sm btn-white" title="{{ Lang::get('core.btn_remove') }}" style="display: none;">
-			<i class="fa fa-minus-circle "></i>&nbsp;{{ Lang::get('core.btn_remove') }}</a>
-			@endif 
-			<a href="{{ URL::to( 'crmhotel/search') }}" class="btn btn-sm btn-white" onclick="SximoModal(this.href,'Advance Search'); return false;"  style="display: none;"><i class="fa fa-search"></i> Search</a>				
-			@if($access['is_excel'] ==1)
-			<a href="{{ URL::to('crmhotel/download?return='.$return) }}" class="tips btn btn-sm btn-white" title="{{ Lang::get('core.btn_download') }}" style="display: none;">
-			<i class="fa fa-download"></i>&nbsp;{{ Lang::get('core.btn_download') }} </a>
-			@endif			
-		    @if($access['is_add'] ==1)
-	   		
-			@endif  
-            @if($access['is_add'] ==1)
-	   		
-			@endif 
-            
-            <a href="{{ URL::to('crmhotel/index') }}" class="tips btn btn-sm btn-white active"  title="Hotel Lead Listing">
+			<a href="{{ URL::to('crmhotel/index') }}" class="tips btn btn-sm btn-white active"  title="Hotel Lead Listing">
 			<i class="fa fa-list "></i>&nbsp;Hotel Lead Listing</a>
             
             <a href="{{ URL::to('crmhotel/lead') }}" class="tips btn btn-sm btn-white"  title="{{ Lang::get('core.btn_lead_create') }}">
@@ -83,41 +63,35 @@
 			<tr>
 				<th class="number"> No </th>
 				<th> <input type="checkbox" class="checkall" /></th>
-				
-				@foreach ($tableGrid as $t)
-					@if($t['view'] =='1')				
-						<?php $limited = isset($t['limited']) ? $t['limited'] :''; ?>
-						@if(SiteHelpers::filterColumn($limited ))
-						
-							<th>{{ $t['label'] }}</th>			
-						@endif 
-					@endif
-				@endforeach
+				<th>Property</th>
+				<th>Hotel Email</th>
+                <th>Hotel Main Phone</th>
+                <th>Status</th>
 				<th width="180" >{{ Lang::get('core.btn_action') }}</th>
 			  </tr>
         </thead>
 
         <tbody>        						
             @foreach ($rowData as $row)
-			{{--*/ $hotel_slug = \SiteHelpers::seoUrl($row->hotel_name); /*--}}
+			{{--*/ $property_slug = \SiteHelpers::seoUrl($row->property_name); /*--}}
                 <tr>
 					<td width="30"> {{ ++$i }} </td>
 					<td width="50"><input type="checkbox" class="ids" name="ids[]" value="{{ $row->id }}" />  </td>									
-					<td> <a target="_blank" href="{{URL::to($hotel_slug)}}">{{$row->hotel_name}}</a> </td>
-					<td> {{$row->hotel_email}} </td>
-					<td> {{$row->hotel_main_phone}} </td>
-					<td> {{$row->hotel_manager_name}} </td>
+					<td> <a target="_blank" href="{{URL::to($property_slug)}}">{{$row->property_name}}</a> </td>
+					<td> {{$row->email}} </td>
+					<td> {{$row->phone}} </td>
+					<td>  </td>
 				 <td>
 					 	@if($access['is_detail'] ==1)
-						<a href="{{ URL::to('crmhotel/show/'.$row->id.'?return='.$return)}}" class="tips btn btn-xs btn-primary" title="{{ Lang::get('core.btn_view') }}"><i class="fa  fa-search "></i></a>
+						<a href="{{ URL::to('crmhotel/show/'.$row->id.'?return='.$return)}}" class="tips btn btn-xs btn-primary" title="{{ Lang::get('core.btn_view') }}" style="display: none;"><i class="fa  fa-search "></i></a>
 						@endif
 						@if($access['is_edit'] ==1)
-						<a  href="{{ URL::to('crmhotel/update/'.$row->id.'?return='.$return) }}" class="tips btn btn-xs btn-success" title="{{ Lang::get('core.btn_edit') }}"><i class="fa fa-edit "></i></a>
+						<a  href="{{ URL::to('crmhotel/update/'.$row->id.'?return='.$return) }}" class="tips btn btn-xs btn-success" title="{{ Lang::get('core.btn_edit') }}" style="display: none;"><i class="fa fa-edit "></i></a>
 						@endif
-						<a  href="{{ URL::to('properties/update/'.$row->propr_id.'?return='.$return) }}" class="tips btn btn-xs btn-success" title="property module"><i class="fa fa-cogs"></i></a>	
-						<a  href="{{ URL::to('properties_settings/'.$row->propr_id.'/types') }}" class="tips btn btn-xs btn-success" title="reservations"><i class="fa fa-cogs"></i></a>					
+						<a  href="{{ URL::to('properties/update/'.$row->id.'?return='.$return) }}" class="tips btn btn-xs btn-success" title="property module" style="display: none;"><i class="fa fa-cogs"></i></a>	
+						<a  href="{{ URL::to('properties_settings/'.$row->id.'/types') }}" class="tips btn btn-xs btn-success" title="reservations" style="display: none;"><i class="fa fa-cogs"></i></a>					
 						<a  href="javascript:void(0);" class="tips btn btn-xs btn-success" title="Email" onclick="sendemails_crmhotels('{{$row->id}}');"><i class="fa fa-envelope-o"></i></a>
-						<a  href="{{(strpos($row->hotel_website, 'http') !== false) ? $row->hotel_website : 'http://'.$row->hotel_website }}" class="tips btn btn-xs btn-success" title="website"><i class="fa fa-globe"></i></a>
+						<a  href="{{(strpos($row->website, 'http') !== false) ? $row->website : 'http://'.$row->website }}" class="tips btn btn-xs btn-success" title="website" style="display: none;"><i class="fa fa-globe"></i></a>
 				</td>				 
                 </tr>
 				
@@ -129,7 +103,7 @@
 	<input type="hidden" name="md" value="" />
 	</div>
 	{!! Form::close() !!}
-	@include('footer')
+	<?php echo $rowData->render(); ?>
 	</div>
 </div>	
 	</div>	  
@@ -311,17 +285,17 @@ function sendemails_crmhotels(crmid)
 	if(crmid > 0 && crmid!='')
 	{
 		$.ajax({
-		  url: "{{ URL::to('fetch_company_info')}}",
+		  url: "{{ URL::to('fetch_property_company_info')}}",
 		  type: "post",
 		  data: 'crmid='+crmid,
 		  dataType: "json",
 		  success: function(data){
 			if(data.status!='error')
 			{
-				$('#crm_email_popup').val(data.crm.hotel_email);
-				$('#propertyid_email_popup').val(data.crm.propr_id);
+				$('#crm_email_popup').val(data.crm.email);
+				$('#propertyid_email_popup').val(data.crm.id);
 				$('#crmId_email_popup').val(crmid);
-				$('#crmmap_popup').attr('src','https://www.google.com/maps?q='+data.crm.hotel_address+'&output=embed');
+				$('#crmmap_popup').attr('src','https://www.google.com/maps?q='+data.crm.hotelinfo_address+'&output=embed');
 				$('#crmemaillist').html('');
 				if(data.crmemails.length)
 				{

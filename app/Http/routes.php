@@ -297,6 +297,7 @@ Route::group(['middleware' => 'auth'], function()
 	Route::post('fetch_property_info', 'CrmhotelController@fetch_property_info');
 	Route::post('fetch_company_info', 'CrmhotelController@fetch_company_info');
     
+    Route::post('fetch_property_company_info', 'CrmhotelController@fetch_property_company_info');
     Route::post('fetch_user_info', 'CrmhotelController@fetch_user_info');
     
 	Route::post('emailCRM', 'CrmhotelController@emailCRM');
