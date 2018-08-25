@@ -129,7 +129,44 @@ class UsersController extends Controller {
 		$this->data['id'] = $id;
 		return view('core.users.form',$this->data);
 	}	
+    
+    function getCrmupdate(Request $request, $id = null)
+	{
+            
+            $module_id = 1;
+	
+		if($id =='')
+		{
+			if($this->access['is_add'] ==0 )
+			return Redirect::to('dashboard')->with('messagetext',\Lang::get('core.note_restric'))->with('msgstatus','error');
+		}	
+		
+		if($id !='')
+		{
+			if($this->access['is_edit'] ==0 )
+			return Redirect::to('dashboard')->with('messagetext',\Lang::get('core.note_restric'))->with('msgstatus','error');
+		}				
+				
+		$row = $this->model->find($id);
+		if($row)
+		{
+			$this->data['row'] =  $row;
+		} else {
+			$this->data['row'] = $this->model->getColumnTable('tb_users'); 
+		}
 
+                /*
+                 * CRM Layout: Fetch page layout
+                 */
+
+                $this->data['all_rows'] = CrmLayoutHelper::fetchCrmLayout($module_id);
+
+                /********************************/
+                
+		$this->data['id'] = $id;
+		return view('core.users.crmform',$this->data);
+	}
+    
 	public function getShow( $id = null)
 	{
 	
@@ -255,7 +292,113 @@ class UsersController extends Controller {
 		}	
 	
 	}	
+    
+    function postCrmsave( Request $request, $id =0)
+	{
+		
+		$rules = $this->validateForm();
+		if($request->input('id') =='')
+		{
+			$rules['password'] 				= 'required|between:6,12';
+			$rules['password_confirmation'] = 'required|between:6,12';
+			$rules['email'] 				= 'required|email|unique:tb_users';
+			$rules['username'] 				= 'required|alpha_num||min:2|unique:tb_users';
+			
+		} else {
+			if($request->input('password') !='')
+			{
+				$rules['password'] 				='required|between:6,12';
+				$rules['password_confirmation'] ='required|between:6,12';			
+			}
+		}
 
+		$validator = Validator::make($request->all(), $rules);	
+		if ($validator->passes()) {
+			$data = $this->validatePost('tb_users');
+
+			$data = $this->validatePost('tb_users');
+			if($request->input('id') =='')
+			{
+				$data['password'] = \Hash::make(Input::get('password'));
+			} else {
+				if(Input::get('password') !='')
+				{
+					$data['password'] = \Hash::make(Input::get('password'));
+				} else {
+					unset($data['password']);
+				}
+			}
+					
+			
+			$id = $this->model->insertRow($data , $request->input('id'));
+
+
+
+			if(!is_null(Input::file('avatar')))
+			{
+				$updates = array();
+				$file = $request->file('avatar'); 
+				$destinationPath = './uploads/users/';
+				$filename = $file->getClientOriginalName();
+				$extension = $file->getClientOriginalExtension(); //if you need extension of the file
+				 $newfilename = $id.'.'.$extension;
+				$uploadSuccess = $request->file('avatar')->move($destinationPath, $newfilename);				 
+				if( $uploadSuccess ) {
+				    $updates['avatar'] = $newfilename; 
+				} 
+				$this->model->insertRow($updates , $id );
+			}	
+
+                        if (!is_null($request->input('customFields'))) {
+
+                            $mod_slug = $request->segment(2);
+                            $cstfields = $request->input('customFields');
+                            foreach ($request->input('customFields') as $key => $valu) {
+                                if (isset($valu['value']) && !empty($valu['value'])) {
+                                    $fieltype = $valu['type'];
+                                    if ($fieltype == 'checkbox') {
+                                        $fieldArrLabel = array();
+                                        $fieldArrValue = array();
+                                        foreach ($valu['value'] as $valueStr) {
+                                            $exlpodeStrFieldValue = explode('||', $valueStr);
+                                            $fieldArrValue[] = $exlpodeStrFieldValue[0];
+                                            $fieldArrLabel[] = $exlpodeStrFieldValue[1];
+                                        }
+                                        $fieldValue = implode(',', $fieldArrValue);
+                                        $fieldLabel = implode(',', $fieldArrLabel);
+                                    } else {
+                                        $exlpodeFieldValue = explode('||', $valu['value']);
+                                        $fieldValue = isset($exlpodeFieldValue[0]) ? $exlpodeFieldValue[0] : '';
+                                        $fieldLabel = isset($exlpodeFieldValue[1]) ? $exlpodeFieldValue[1] : '';
+                                    }
+                                    $modcustomfieldvalue = new ModelsModcustomfieldvalue;
+                                    $modcustomfieldvalue->idmob_mfv = $mod_slug;
+                                    $modcustomfieldvalue->record_id_mfv = $request->input('id');
+                                    $modcustomfieldvalue->option_type_mfv = $fieltype;
+                                    $modcustomfieldvalue->option_name_mfv = $key;
+                                    $modcustomfieldvalue->option_label_mfv = $fieldLabel;
+                                    $modcustomfieldvalue->option_value_mfv = $fieldValue;
+                                    $modcustomfieldvalue->save();
+                                }
+                            }
+                        }
+
+                        if(!is_null($request->input('apply')))
+			{
+				$return = 'core/users/crmupdate/'.$id.'?return='.self::returnUrl();
+			} else {
+				$return = 'crmhotel/leadlisting?return='.self::returnUrl();
+			}
+			
+			return Redirect::to($return)->with('messagetext',\Lang::get('core.note_success'))->with('msgstatus','success');
+			
+		} else {
+
+			return Redirect::to('core/users/crmupdate/'.$id)->with('messagetext',\Lang::get('core.note_error'))->with('msgstatus','error')
+			->withErrors($validator)->withInput();
+		}	
+	
+	}
 	public function postDelete( Request $request)
 	{
 		

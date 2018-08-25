@@ -38,23 +38,23 @@
 			
             <div class="stepwizard">
                 <div class="stepwizard-row setup-panel">
-                    <div class="stepwizard-step">
-                        <a href="#step-1" type="button" class="btn btn-primary btn-circle Personal-Info">1</a>
+                    <div class="stepwizard-step top-step" id="top-step-1">
+                        <a href="#step-1" type="button" class="btn btn-primary btn-circle Personal-Info" >1</a>
                         <p>Personal Info</p>
                     </div>
-                    <div class="stepwizard-step">
-                        <a href="#step-2" type="button" class="btn btn-default btn-circle Social-Info" disabled="disabled">2</a>
+                    <div class="stepwizard-step top-step" id="top-step-2">
+                        <a href="#step-2" type="button" class="btn btn-default btn-circle Social-Info"  disabled="disabled">2</a>
                         <p>Social Info</p>
                     </div>
-                    <div class="stepwizard-step">
-                        <a href="#step-3" type="button" class="btn btn-default btn-circle Company-Info" disabled="disabled">3</a>
+                    <div class="stepwizard-step top-step">
+                        <a href="#step-3" type="button" class="btn btn-default btn-circle Company-Info" id="top-step-3" disabled="disabled">3</a>
                         <p>Company Info</p>
                     </div>
                 </div>
             </div>
 			<div class="col-md-12 col-sm-12">
 				{!! Form::open(array('url'=>'#', 'class'=>'form-horizontal','files' => true , 'id'=>'frm_personal_info', 'parsley-validate'=>'','novalidate'=>' ')) !!}
-				   <fieldset class="muti-form-align" id="personalinfo">
+				   <fieldset class="muti-form-align" id="step-1">
                   
                     
                       <div class="form-group  " style="display: none;">
@@ -64,6 +64,24 @@
                             <input type="hidden" name="group_id" value="{{ $group_id }}" />
 						 <select name='group_id' rows='5' id='group_id' code='{$group_id}' 
 							class='select2 '  required  ></select> 	  
+						 </div> 
+						 <div class="col-md-2">
+							
+						 </div>
+					  </div> 
+                      <div class="form-group  " >
+						<label for="First Name" class=" control-label col-md-4 text-left"> First Name </label>
+						<div class="col-md-6">
+						  {!! Form::text('firstname', '',array('class'=>'form-control', 'placeholder'=>'', 'id' => 'first_name' )) !!}			  
+						 </div> 
+						 <div class="col-md-2">
+							
+						 </div>
+					  </div> 
+                      <div class="form-group  " >
+						 <label for="Last Name" class=" control-label col-md-4 text-left"> Last Name </label>
+		                 <div class="col-md-6">
+						  {!! Form::text('lastname', '',array('class'=>'form-control', 'placeholder'=>'', 'id' => 'last_name' )) !!}		  
 						 </div> 
 						 <div class="col-md-2">
 							
@@ -134,24 +152,7 @@
 							
 						 </div>
 					  </div> 
-					  <div class="form-group  " >
-						<label for="First Name" class=" control-label col-md-4 text-left"> First Name </label>
-						<div class="col-md-6">
-						  {!! Form::text('firstname', '',array('class'=>'form-control', 'placeholder'=>'', 'id' => 'first_name' )) !!}			  
-						 </div> 
-						 <div class="col-md-2">
-							
-						 </div>
-					  </div> 
-                      <div class="form-group  " >
-						 <label for="Last Name" class=" control-label col-md-4 text-left"> Last Name </label>
-		                 <div class="col-md-6">
-						  {!! Form::text('lastname', '',array('class'=>'form-control', 'placeholder'=>'', 'id' => 'last_name' )) !!}		  
-						 </div> 
-						 <div class="col-md-2">
-							
-						 </div>
-					  </div> 
+					  
                       <div class="form-group  " >
 						 <label for="Email" class=" control-label col-md-4 text-left"> Email </label>
 		                 <div class="col-md-6">
@@ -184,12 +185,15 @@
                       </div>
 				
                 </fieldset>
-                <fieldset class="hide-form muti-form-align" id="socialinfo">
+                <fieldset class="hide-form muti-form-align" id="step-2">
 				
                     
 					  <div class="form-group  " >
 						<label for="Instagram" class=" control-label col-md-4 text-left"> Instagram </label>
-						<div class="col-md-6">
+						<div class="col-md-1" style="padding-right: 0px;">
+                            <input type="text" class="form-control" value="http://" readonly="readonly" />
+                         </div>
+		                 <div class="col-md-5" style="padding-left: 0px;">
 						  {!! Form::text('instagram', '',array('class'=>'form-control', 'placeholder'=>'', 'id' => 'instagram' )) !!}			  
 						 </div> 
 						 <div class="col-md-2">
@@ -198,7 +202,10 @@
 					  </div> 
                       <div class="form-group  " >
 						 <label for="Linkedin" class=" control-label col-md-4 text-left"> Linkedin </label>
-		                 <div class="col-md-6">
+                         <div class="col-md-1" style="padding-right: 0px;">
+                            <input type="text" class="form-control" value="http://" readonly="readonly" />
+                         </div>
+		                 <div class="col-md-5" style="padding-left: 0px;">
 						  {!! Form::text('linkedin', '',array('class'=>'form-control', 'placeholder'=>'', 'id' => 'linkedin' )) !!}		  
 						 </div> 
 						 <div class="col-md-2">
@@ -207,7 +214,10 @@
 					  </div> 
                       <div class="form-group  " >
 						 <label for="facebook" class=" control-label col-md-4 text-left"> Facebook </label>
-		                 <div class="col-md-6">
+		                 <div class="col-md-1" style="padding-right: 0px;">
+                            <input type="text" class="form-control" value="http://" readonly="readonly" />
+                         </div>
+		                 <div class="col-md-5" style="padding-left: 0px;">
 						  {!! Form::text('facebook', '',array('class'=>'form-control', 'placeholder'=>'', 'id' => 'facebook' )) !!}
 						  
 						 </div> 
@@ -227,7 +237,7 @@
                       </div> 
 				
                 </fieldset>
-                <fieldset class="hide-form muti-form-align" id="companyinfo">
+                <fieldset class="hide-form muti-form-align" id="step-3">
 				
                     
 					  <div class="form-group hidethis " style="display:none;">
@@ -303,8 +313,11 @@
 						 </div>
 					  </div> 					
 					  <div class="form-group  " >
-						<label for="Company Website" class=" control-label col-md-4 text-left"> Company Website </label>
-						<div class="col-md-6">
+						 <label for="Company Website" class=" control-label col-md-4 text-left"> Company Website </label>
+				         <div class="col-md-1" style="padding-right: 0px;">
+                            <input type="text" class="form-control" value="http://" readonly="readonly" />
+                         </div>
+		                 <div class="col-md-5" style="padding-left: 0px;">
 						  {!! Form::text('company_website', '',array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
 						 </div> 
 						 <div class="col-md-2">
@@ -350,6 +363,15 @@
 </div>			 
 <script type="text/javascript">
 	$(document).ready(function() { 
+	   
+        $(".top-step").click(function(){
+            $('.stepwizard-step').find('a').attr("disabled","disabled");
+            $(this).find('a').removeAttr('disabled');
+            $(".muti-form-align").addClass('hide-form');            
+            st_id = $(this).find('a').attr('href');
+            $(st_id).removeClass('hide-form');
+        });
+       
 		var current_fs, next_fs, previous_fs;
         $(".next").click(function(){
             current_fs = $(this).closest( ".muti-form-align" );

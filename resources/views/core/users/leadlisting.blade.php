@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+<script src="{{ asset('sximo/js/typeahead.bundle.js')}}"></script>
+<link href="{{ asset('sximo/assets/css/custom_ps.css')}}" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" type="text/css" href="{{ asset('sximo/css/m-popup.css')}}">
 <style>
 .modal-dialog { width:500px !important; }
@@ -51,6 +53,10 @@
             
             <a href="{{ URL::to('crmhotel/travelleruserlisting') }}" class="tips btn btn-sm btn-white"  title="Traveller">
 			<i class="fa fa-list "></i>&nbsp;Traveller</a>
+            
+            <div id="searchform-navbar" class="searchform-navbar" style="float:right;">
+				<input  class="bh-search-input typeahead search-navbar search-box" name="s" id="search-navbar" placeholder="Search" type="text">
+			</div>
 		</div> 		
 
 	
@@ -103,7 +109,7 @@
 						<a href="{{ URL::to('core/users/show/'.$row->id.'?return='.$return)}}" class="tips btn btn-xs btn-white" title="{{ Lang::get('core.btn_view') }}" style="display: none;"><i class="fa  fa-search "></i></a>
 						@endif
 						@if($access['is_edit'] ==1)
-						<a  href="{{ URL::to('core/users/update/'.$row->id.'?return='.$return) }}" class="tips btn btn-xs btn-white" title="{{ Lang::get('core.btn_edit') }}" style="display: none;"><i class="fa fa-edit "></i></a>
+						<a  href="{{ URL::to('core/users/crmupdate/'.$row->id.'?return='.$return) }}" class="tips btn btn-xs btn-white" title="{{ Lang::get('core.btn_edit') }}" ><i class="fa fa-edit "></i></a>
 						@endif
 						<a  href="javascript:void(0);" class="tips btn btn-xs btn-success" title="Email" onclick="sendemails_crmhotels('{{$row->id}}');"><i class="fa fa-envelope-o"></i></a>						
 					
@@ -153,7 +159,24 @@
 										<iframe id="crmmap_popup" src="https://www.google.com/maps?q=Randall Miller %26 Associates 300 E Broadway, Logansport, IN 46947&output=embed"></iframe>
 									</div>
 
-
+                                    <!-- Instagram Gallery Section -->
+                                    
+                                        <section id="instagram-section">
+                                            <div class="col-sm-12 text-center">
+                                                <h2 class="heading">GET SOCIAL</h2>
+                                            </div>
+                                            <section id="instagran" class="sections-instagram">
+                                                <div class="full-width">
+                                                    <div data-is data-is-api="{{ url('runInsta')}}"
+                                                         data-is-source=""
+                                                         data-is-rows="2" data-is-limit="0" data-is-columns="5"></div>
+                                                </div>
+                                            </section>
+                                        </section>
+                                    
+        
+        
+        
 										<!-- open container Modal -->
 										<div  id="openContainer" tabindex="-1" style="display: none;" role="dialog" aria-labelledby="myModalLabel">
 										  <div class="modal-dialog" role="document">
@@ -245,6 +268,7 @@
 
 <!--Email popup end-->
 
+<script src="{{ asset('sximo/instajs/instashow/elfsight-instagram-feed.js')}}"></script>
 <script>
 $(document).ready(function(){
 
@@ -336,6 +360,43 @@ function submitcrmemail()
 		  }
 	  }
 	});
-}	
+}
+var substringMatcher = function(strs) {
+  return function findMatches(q, cb) {
+    var matches, substringRegex;
+
+    // an array that will be populated with substring matches
+    matches = [];
+
+    // regex used to determine if a string contains the substring `q`
+    substrRegex = new RegExp(q, 'i');
+
+    // iterate through the pool of strings and for any string that
+    // contains the substring `q`, add it to the `matches` array
+    $.each(strs, function(i, str) {
+      if (substrRegex.test(str)) {
+        matches.push(str);
+      }
+    });
+
+    cb(matches);
+  };
+};	
+var states = [{!! TagsFinder::findLeadListing() !!}];
+
+$('.searchform-navbar .typeahead').typeahead({
+  hint: true,
+  highlight: true,
+  minLength: 1
+},
+{
+  name: 'states',
+  source: substringMatcher(states)
+});
+$('.search-navbar').on('typeahead:selected', function (e, datum) {
+	var propname = $(this);
+	var sname = propname.val();
+	window.location.href = "{{URL::to('crmhotel/leadlisting')}}?search=first_name:equal:" + sname + "|";
+});
 </script>		
 @stop

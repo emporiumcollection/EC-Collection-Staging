@@ -1386,11 +1386,13 @@ class UserController extends Controller {
     public function ajaxLeadCreate(Request $request) {
 
         $rules = array(
-            'firstname' => 'required|alpha_num|min:2',
-            'lastname' => 'required|alpha_num|min:2',
+            'firstname' => 'required',
+            'lastname' => 'required',
             'phonecode' => 'required',
             'email' => 'required|email|unique:tb_users',
             'phone' =>'required',
+            'company_name' =>'required',
+            'company_email' =>'required',
         );
         $messages = array(
             'firstname.required' => 'The first name field is required.',
@@ -1398,6 +1400,8 @@ class UserController extends Controller {
             'phonecode.required' => 'The phone code field is required.',
             'email.required' => 'The email field is required.',
             'phone.required' => 'The phone field is required.',
+            'company_name.required' => 'The company name field is required.',
+            'company_email.required' => 'The company email field is required.',
         );
         $validator = Validator::make($request->all(), $rules, $messages);
 

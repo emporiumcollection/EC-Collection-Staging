@@ -113,5 +113,32 @@ class TagsFinder {
         }
         return rtrim($tagStr, ',');
     }
+    
+    static function findLeadProperties() {
+        $tagStr = "";
+        if(\Session::get('gid')!=1 && \Session::get('gid')!=2){
+			$uid = \Auth::user()->id;
+			$proprty = \DB::table('tb_properties')->select('id','property_name')->where('property_status', 1)->where('user_id', $uid)->get();
+        }
+		else
+		{
+			$proprty = \DB::table('tb_properties')->select('id','property_name')->where('property_status', 1)->get();
+		}
+        foreach ($proprty as $propt) {
+            $tagStr .= "'" . $propt->property_name . "',";
+        }
+        return substr($tagStr, 0, -1);
+    }
+    static function findLeadListing() {
+        $tagStr = "";
+        $gp_id = \CommonHelper::getusertype('new-lead');
+        
+		$proprty = \DB::table('tb_users')->select('id','first_name')->where('group_id', $gp_id)->get();
+		
+        foreach ($proprty as $propt) {
+            $tagStr .= "'" . $propt->first_name . "',";
+        }
+        return substr($tagStr, 0, -1);
+    }
 
 }
