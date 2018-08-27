@@ -24,109 +24,111 @@
 	
 	
 	<div class="page-content-wrapper m-t">
+    <div id="formerrors"></div>
 
-<div class="sbox animated fadeInRight">
-	<div class="sbox-title"> <h5> <i class="fa fa-table"></i> </h5>
-        <div class="sbox-tools" >
-		<a href="{{ url($pageModule) }}" class="btn btn-xs btn-white tips" title="Clear Search" ><i class="fa fa-trash-o"></i> Clear Search </a>
-		@if(Session::get('gid') ==1)
-			<a href="{{ URL::to('sximo/module/config/'.$pageModule) }}" class="btn btn-xs btn-white tips" title=" {{ Lang::get('core.btn_config') }}" ><i class="fa fa-cog"></i></a>
-		@endif 
-		</div>
-	</div>
-	<div class="sbox-content"> 	
-	    <div class="toolbar-line ">
-			<a href="{{ URL::to('crmhotel/index') }}" class="tips btn btn-sm btn-white"  title="Hotel Lead Listing">
-			<i class="fa fa-list "></i>&nbsp;Hotel Lead Listing</a>
-            
-            <a href="{{ URL::to('crmhotel/lead') }}" class="tips btn btn-sm btn-white"  title="{{ Lang::get('core.btn_lead_create') }}">
-			<i class="fa fa-plus-circle "></i>&nbsp;{{ Lang::get('core.btn_lead_create') }}</a>
-            
-            <a href="{{ URL::to('crmhotel/leadlisting') }}" class="tips btn btn-sm btn-white active"  title="User Lead Listing">
-			<i class="fa fa-list "></i>&nbsp;{{ Lang::get('core.btn_lead_listing') }}</a>
-             
-            <a href="{{ URL::to('crmhotel/hotellisting') }}" class="tips btn btn-sm btn-white"  title="Hotel">
-			<i class="fa fa-list "></i>&nbsp;Hotel</a>
-            
-            <a href="{{ URL::to('crmhotel/hoteluserlisting') }}" class="tips btn btn-sm btn-white"  title="Hotel User">
-			<i class="fa fa-list "></i>&nbsp;Hotel User</a>
-            
-            <a href="{{ URL::to('crmhotel/travelleruserlisting') }}" class="tips btn btn-sm btn-white"  title="Traveller">
-			<i class="fa fa-list "></i>&nbsp;Traveller</a>
-            
-            <div id="searchform-navbar" class="searchform-navbar" style="float:right;">
-				<input  class="bh-search-input typeahead search-navbar search-box" name="s" id="search-navbar" placeholder="Search" type="text">
-			</div>
-		</div> 		
-
-	
-	
-	 {!! Form::open(array('url'=>'core/users/delete/', 'class'=>'form-horizontal' ,'id' =>'SximoTable' )) !!}
-	 <div class="table-responsive" style="min-height:300px;">
-    <table class="table table-striped ">
-        <thead>
-			<tr>
-				<th class="number"> No </th>
-				<th> <input type="checkbox" class="checkall" /></th>
-				
-				@foreach ($tableGrid as $t)
-					@if($t['view'] =='1')
-						<th>{{ $t['label'] }}</th>
-					@endif
-				@endforeach
-				<th width="70" >{{ Lang::get('core.btn_action') }}</th>
-			  </tr>
-        </thead>
-
-        <tbody>
-						
-            @foreach ($rowData as $row)
-                <tr>
-					<td width="30"> {{ ++$i }} </td>
-					<td width="50"><input type="checkbox" class="ids" name="ids[]" value="{{ $row->id }}" />  </td>									
-				 @foreach ($tableGrid as $field)
-					 @if($field['view'] =='1')
-					 <td>	
-						@if($field['field'] == 'avatar')
-							<?php if( file_exists( './uploads/users/'.$row->avatar) && $row->avatar !='') { ?>
-							<img src="{{ URL::to('uploads/users').'/'.$row->avatar }} " border="0" width="40" class="img-circle" />
-							<?php  } else { ?> 
-							<img alt="" src="http://www.gravatar.com/avatar/{{ md5($row->email) }}" width="40" class="img-circle" />
-							<?php } ?>					 				 
-					 	@elseif($field['field'] =='active')
-							{!! ($row->active ==1 ? '<lable class="label label-success">Active</label>' : '<lable class="label label-danger">Inactive</label>')  !!}
-								
-						@else	
-							{{--*/ $col = $field['field']; /*--}}
-							{{--*/ $conn = (isset($field['conn']) ? $field['conn'] : array() ) /*--}}
-							{!! SiteHelpers::gridDisplay($row->$col,$field['field'],$conn) !!}	
-						@endif						 
-					 </td>
-					 @endif					 
-				 @endforeach
-				 <td width="100">
-					 	@if($access['is_detail'] ==1)
-						<a href="{{ URL::to('core/users/show/'.$row->id.'?return='.$return)}}" class="tips btn btn-xs btn-white" title="{{ Lang::get('core.btn_view') }}" style="display: none;"><i class="fa  fa-search "></i></a>
-						@endif
-						@if($access['is_edit'] ==1)
-						<a  href="{{ URL::to('core/users/crmupdate/'.$row->id.'?return='.$return) }}" class="tips btn btn-xs btn-white" title="{{ Lang::get('core.btn_edit') }}" ><i class="fa fa-edit "></i></a>
-						@endif
-						<a  href="javascript:void(0);" class="tips btn btn-xs btn-success" title="Email" onclick="sendemails_crmhotels('{{$row->id}}');"><i class="fa fa-envelope-o"></i></a>						
-					
-				</td>				 
-                </tr>
-				
-            @endforeach
-              
-        </tbody>
-      
-    </table>
-	<input type="hidden" name="md" value="" />
-	</div>
-	{!! Form::close() !!}
-	@include('footer')
-	</div>
-</div>	
+    <div class="sbox animated fadeInRight">
+    	<div class="sbox-title"> <h5> <i class="fa fa-table"></i> </h5>
+            <div class="sbox-tools" >
+    		<a href="{{ url($pageModule) }}" class="btn btn-xs btn-white tips" title="Clear Search" ><i class="fa fa-trash-o"></i> Clear Search </a>
+    		@if(Session::get('gid') ==1)
+    			<a href="{{ URL::to('sximo/module/config/'.$pageModule) }}" class="btn btn-xs btn-white tips" title=" {{ Lang::get('core.btn_config') }}" ><i class="fa fa-cog"></i></a>
+    		@endif 
+    		</div>
+    	</div>
+    	<div class="sbox-content"> 	
+    	    <div class="toolbar-line ">
+    			<a href="{{ URL::to('crmhotel/index') }}" class="tips btn btn-sm btn-white"  title="Hotel Lead Listing">
+    			<i class="fa fa-list "></i>&nbsp;Hotel Lead Listing</a>
+                
+                <a href="{{ URL::to('crmhotel/lead') }}" class="tips btn btn-sm btn-white"  title="{{ Lang::get('core.btn_lead_create') }}">
+    			<i class="fa fa-plus-circle "></i>&nbsp;{{ Lang::get('core.btn_lead_create') }}</a>
+                
+                <a href="{{ URL::to('crmhotel/leadlisting') }}" class="tips btn btn-sm btn-white active"  title="User Lead Listing">
+    			<i class="fa fa-list "></i>&nbsp;{{ Lang::get('core.btn_lead_listing') }}</a>
+                 
+                <a href="{{ URL::to('crmhotel/hotellisting') }}" class="tips btn btn-sm btn-white"  title="Hotel">
+    			<i class="fa fa-list "></i>&nbsp;Hotel</a>
+                
+                <a href="{{ URL::to('crmhotel/hoteluserlisting') }}" class="tips btn btn-sm btn-white"  title="Hotel User">
+    			<i class="fa fa-list "></i>&nbsp;Hotel User</a>
+                
+                <a href="{{ URL::to('crmhotel/travelleruserlisting') }}" class="tips btn btn-sm btn-white"  title="Traveller">
+    			<i class="fa fa-list "></i>&nbsp;Traveller</a>
+                
+                <div id="searchform-navbar" class="searchform-navbar" style="float:right; display: none;">
+    				<input  class="bh-search-input typeahead search-navbar search-box" name="s" id="search-navbar" placeholder="Search" type="text">
+    			</div>
+                <a href="{{ URL::to( 'core/users/crmsearch') }}" class="btn btn-sm btn-white" onclick="SximoModal(this.href,'Advance Search'); return false;" ><i class="text-danger fa fa-search"></i> Search</a>
+    		</div> 		
+    
+    	
+    	
+    	 {!! Form::open(array('url'=>'core/users/delete/', 'class'=>'form-horizontal' ,'id' =>'SximoTable' )) !!}
+    	 <div class="table-responsive" style="min-height:300px;">
+        <table class="table table-striped ">
+            <thead>
+    			<tr>
+    				<th class="number"> No </th>
+    				<th> <input type="checkbox" class="checkall" /></th>
+    				
+    				@foreach ($tableGrid as $t)
+    					@if($t['view'] =='1')
+    						<th>{{ $t['label'] }}</th>
+    					@endif
+    				@endforeach
+    				<th width="70" >{{ Lang::get('core.btn_action') }}</th>
+    			  </tr>
+            </thead>
+    
+            <tbody>
+    						
+                @foreach ($rowData as $row)
+                    <tr>
+    					<td width="30"> {{ ++$i }} </td>
+    					<td width="50"><input type="checkbox" class="ids" name="ids[]" value="{{ $row->id }}" />  </td>									
+    				 @foreach ($tableGrid as $field)
+    					 @if($field['view'] =='1')
+    					 <td>	
+    						@if($field['field'] == 'avatar')
+    							<?php if( file_exists( './uploads/users/'.$row->avatar) && $row->avatar !='') { ?>
+    							<img src="{{ URL::to('uploads/users').'/'.$row->avatar }} " border="0" width="40" class="img-circle" />
+    							<?php  } else { ?> 
+    							<img alt="" src="http://www.gravatar.com/avatar/{{ md5($row->email) }}" width="40" class="img-circle" />
+    							<?php } ?>					 				 
+    					 	@elseif($field['field'] =='active')
+    							{!! ($row->active ==1 ? '<lable class="label label-success">Active</label>' : '<lable class="label label-danger">Inactive</label>')  !!}
+    								
+    						@else	
+    							{{--*/ $col = $field['field']; /*--}}
+    							{{--*/ $conn = (isset($field['conn']) ? $field['conn'] : array() ) /*--}}
+    							{!! SiteHelpers::gridDisplay($row->$col,$field['field'],$conn) !!}	
+    						@endif						 
+    					 </td>
+    					 @endif					 
+    				 @endforeach
+    				 <td width="100">
+    					 	@if($access['is_detail'] ==1)
+    						<a href="{{ URL::to('core/users/show/'.$row->id.'?return='.$return)}}" class="tips btn btn-xs btn-white" title="{{ Lang::get('core.btn_view') }}" style="display: none;"><i class="fa  fa-search "></i></a>
+    						@endif
+    						@if($access['is_edit'] ==1)
+    						<a  href="{{ URL::to('core/users/crmupdate/'.$row->id.'?return='.$return) }}" class="tips btn btn-xs btn-white" title="{{ Lang::get('core.btn_edit') }}" ><i class="fa fa-edit "></i></a>
+    						@endif
+    						<a  href="javascript:void(0);" class="tips btn btn-xs btn-success" title="Email" onclick="sendemails_crmhotels('{{$row->id}}');"><i class="fa fa-envelope-o"></i></a>						
+    					
+    				</td>				 
+                    </tr>
+    				
+                @endforeach
+                  
+            </tbody>
+          
+        </table>
+    	<input type="hidden" name="md" value="" />
+    	</div>
+    	{!! Form::close() !!}
+    	@include('footer')
+    	</div>
+    </div>	
 	</div>	  
 </div>	
 
@@ -158,23 +160,6 @@
 									<div class="client-location-map">
 										<iframe id="crmmap_popup" src="https://www.google.com/maps?q=Randall Miller %26 Associates 300 E Broadway, Logansport, IN 46947&output=embed"></iframe>
 									</div>
-
-                                    <!-- Instagram Gallery Section -->
-                                    
-                                        <section id="instagram-section">
-                                            <div class="col-sm-12 text-center">
-                                                <h2 class="heading">GET SOCIAL</h2>
-                                            </div>
-                                            <section id="instagran" class="sections-instagram">
-                                                <div class="full-width">
-                                                    <div data-is data-is-api="{{ url('runInsta')}}"
-                                                         data-is-source=""
-                                                         data-is-rows="2" data-is-limit="0" data-is-columns="5"></div>
-                                                </div>
-                                            </section>
-                                        </section>
-                                    
-        
         
         
 										<!-- open container Modal -->

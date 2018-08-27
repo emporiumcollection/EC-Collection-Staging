@@ -52,6 +52,9 @@
             
             <a href="{{ URL::to('crmhotel/travelleruserlisting') }}" class="tips btn btn-sm btn-white"  title="Traveller">
 			<i class="fa fa-list "></i>&nbsp;Traveller</a>
+            
+            <a href="{{ URL::to( 'core/users/crmhotelusersearch') }}" class="btn btn-sm btn-white" onclick="SximoModal(this.href,'Advance Search'); return false;" ><i class="text-danger fa fa-search"></i> Search</a>
+            
 		</div> 		
 
 	

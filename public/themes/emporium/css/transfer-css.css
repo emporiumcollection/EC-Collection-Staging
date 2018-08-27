@@ -4,7 +4,8 @@
 .transferFileSec {
     width: 100%;
     max-width: 500px;
-    position: absolute;
+    /*position: absolute;*/
+    position: relative;
     background: rgba(0,0,0,0.7);
     padding: 0px;
     bottom: 85px;
@@ -113,7 +114,7 @@
 .transferSecFirst,
 .transferSecSecond,
 .transferSecThird {
-    display: none;
+    /*display: none;*/
     padding: 40px !important;
 }
 .transferSecFirst .SendButon,

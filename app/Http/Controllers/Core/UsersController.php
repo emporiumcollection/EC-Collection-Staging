@@ -633,4 +633,137 @@ class UsersController extends Controller {
 		// Render into template
 		return view('core.users.leadlisting',$this->data);
 	}
+    public function getCrmsearch( $mode = 'native')
+	{
+
+		$this->data['tableForm'] 	= $this->info['config']['forms'];	
+		$this->data['tableGrid'] 	= $this->info['config']['grid'];
+		$this->data['searchMode'] = 'native';
+		$this->data['pageUrl']		= url('crmhotel/leadlisting');
+		return view('sximo.module.utility.search',$this->data);
+	
+	}
+    
+    public function hoteluserlisting( Request $request )
+	{
+
+		if($this->access['is_view'] ==0) 
+			return Redirect::to('dashboard')
+				->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus','error');
+						
+		$sort = (!is_null($request->input('sort')) ? $request->input('sort') : 'id'); 
+		$order = (!is_null($request->input('order')) ? $request->input('order') : 'asc');
+        $gp_id = \CommonHelper::getusertype('hotel-b2b');        
+		// End Filter sort and order for query 
+		// Filter Search for query		
+		$filter = (!is_null($request->input('search')) ? $this->buildSearch() : '');
+		$filter .= " AND tb_users.group_id = '".$gp_id."'" ;
+
+		
+		$page = $request->input('page', 1);
+		$params = array(
+			'page'		=> $page ,
+			'limit'		=> (!is_null($request->input('rows')) ? filter_var($request->input('rows'),FILTER_VALIDATE_INT) : static::$per_page ) ,
+			'sort'		=> $sort ,
+			'order'		=> $order,
+			'params'	=> $filter,
+			'global'	=> (isset($this->access['is_global']) ? $this->access['is_global'] : 0 )
+		);
+		// Get Query 
+		$results = $this->model->getRows( $params );		
+		
+		// Build pagination setting
+		$page = $page >= 1 && filter_var($page, FILTER_VALIDATE_INT) !== false ? $page : 1;	
+		$pagination = new Paginator($results['rows'], $results['total'], $params['limit']);	
+		$pagination->setPath('users');
+		
+		$this->data['rowData']		= $results['rows'];
+		// Build Pagination 
+		$this->data['pagination']	= $pagination;
+		// Build pager number and append current param GET
+		$this->data['pager'] 		= $this->injectPaginate();	
+		// Row grid Number 
+		$this->data['i']			= ($page * $params['limit'])- $params['limit']; 
+		// Grid Configuration 
+		$this->data['tableGrid'] 	= $this->info['config']['grid'];
+		$this->data['tableForm'] 	= $this->info['config']['forms'];
+		$this->data['colspan'] 		= \SiteHelpers::viewColSpan($this->info['config']['grid']);		
+		// Group users permission
+		$this->data['access']		= $this->access;
+		// Detail from master if any
+		
+		// Master detail link if any 
+		$this->data['subgrid']	= (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array()); 
+		// Render into template
+		return view('core.users.hoteluserlisting',$this->data);
+	}	
+    public function travelleruserlisting( Request $request )
+	{
+
+		if($this->access['is_view'] ==0) 
+			return Redirect::to('dashboard')
+				->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus','error');
+						
+		$sort = (!is_null($request->input('sort')) ? $request->input('sort') : 'id'); 
+		$order = (!is_null($request->input('order')) ? $request->input('order') : 'asc');
+        $gp_id = \CommonHelper::getusertype('users-b2c');        
+		// End Filter sort and order for query 
+		// Filter Search for query		
+		$filter = (!is_null($request->input('search')) ? $this->buildSearch() : '');
+		$filter .= " AND tb_users.group_id = '".$gp_id."'" ;
+
+		
+		$page = $request->input('page', 1);
+		$params = array(
+			'page'		=> $page ,
+			'limit'		=> (!is_null($request->input('rows')) ? filter_var($request->input('rows'),FILTER_VALIDATE_INT) : static::$per_page ) ,
+			'sort'		=> $sort ,
+			'order'		=> $order,
+			'params'	=> $filter,
+			'global'	=> (isset($this->access['is_global']) ? $this->access['is_global'] : 0 )
+		);
+		// Get Query 
+		$results = $this->model->getRows( $params );		
+		
+		// Build pagination setting
+		$page = $page >= 1 && filter_var($page, FILTER_VALIDATE_INT) !== false ? $page : 1;	
+		$pagination = new Paginator($results['rows'], $results['total'], $params['limit']);	
+		$pagination->setPath('users');
+		
+		$this->data['rowData']		= $results['rows'];
+		// Build Pagination 
+		$this->data['pagination']	= $pagination;
+		// Build pager number and append current param GET
+		$this->data['pager'] 		= $this->injectPaginate();	
+		// Row grid Number 
+		$this->data['i']			= ($page * $params['limit'])- $params['limit']; 
+		// Grid Configuration 
+		$this->data['tableGrid'] 	= $this->info['config']['grid'];
+		$this->data['tableForm'] 	= $this->info['config']['forms'];
+		$this->data['colspan'] 		= \SiteHelpers::viewColSpan($this->info['config']['grid']);		
+		// Group users permission
+		$this->data['access']		= $this->access;
+		// Detail from master if any
+		
+		// Master detail link if any 
+		$this->data['subgrid']	= (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array()); 
+		// Render into template
+		return view('core.users.travelleruserlisting',$this->data);
+	}
+    public function getCrmhotelusersearch( $mode = 'native')
+	{
+		$this->data['tableForm'] 	= $this->info['config']['forms'];	
+		$this->data['tableGrid'] 	= $this->info['config']['grid'];
+		$this->data['searchMode'] = 'native';
+		$this->data['pageUrl']		= url('crmhotel/hoteluserlisting');
+		return view('sximo.module.utility.search',$this->data);	
+	}
+    public function getCrmtravellerusersearch( $mode = 'native')
+	{
+		$this->data['tableForm'] 	= $this->info['config']['forms'];	
+		$this->data['tableGrid'] 	= $this->info['config']['grid'];
+		$this->data['searchMode'] = 'native';
+		$this->data['pageUrl']		= url('crmhotel/travelleruserlisting');
+		return view('sximo.module.utility.search',$this->data);	
+	}
 }

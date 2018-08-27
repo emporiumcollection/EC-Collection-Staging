@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<link href="{{ asset('sximo/assets/css/custom_ps.css')}}" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" type="text/css" href="{{ asset('sximo/css/m-popup.css')}}">
 <style>
 .modal-dialog { width:500px !important; }
@@ -52,6 +53,9 @@
             
             <a href="{{ URL::to('crmhotel/travelleruserlisting') }}" class="tips btn btn-sm btn-white"  title="Traveller">
 			<i class="fa fa-list "></i>&nbsp;Traveller</a>
+            
+            <a href="{{ URL::to( 'crmhotel/search') }}" class="btn btn-sm btn-white" onclick="SximoModal(this.href,'Advance Search'); return false;" ><i class="fa fa-search"></i> Search</a>
+            
 		</div> 		
 
 	
@@ -71,9 +75,10 @@
 			  </tr>
         </thead>
 
-        <tbody>        						
+        <tbody>        
+            {{--*/ $j = 0; /*--}}							
             @foreach ($rowData as $row)
-			{{--*/ $property_slug = \SiteHelpers::seoUrl($row->property_name); /*--}}
+			{{--*/ $property_slug = \SiteHelpers::seoUrl($row->property_name); $j = ++$j; /*--}}
                 <tr>
 					<td width="30"> {{ ++$i }} </td>
 					<td width="50"><input type="checkbox" class="ids" name="ids[]" value="{{ $row->id }}" />  </td>									
@@ -92,6 +97,9 @@
 						<a  href="{{ URL::to('properties_settings/'.$row->id.'/types') }}" class="tips btn btn-xs btn-success" title="reservations" style="display: none;"><i class="fa fa-cogs"></i></a>					
 						<a  href="javascript:void(0);" class="tips btn btn-xs btn-success" title="Email" onclick="sendemails_crmhotels('{{$row->id}}');"><i class="fa fa-envelope-o"></i></a>
 						<a  href="{{(strpos($row->website, 'http') !== false) ? $row->website : 'http://'.$row->website }}" class="tips btn btn-xs btn-success" title="website" style="display: none;"><i class="fa fa-globe"></i></a>
+                        
+                        <a  href="#" class="tips btn btn-xs btn-success" title="Instagram" data-toggle="modal" data-target="#instaModal{{ $j }}"><i class="fa fa-instagram"></i></a>
+                        
 				</td>				 
                 </tr>
 				
@@ -103,11 +111,50 @@
 	<input type="hidden" name="md" value="" />
 	</div>
 	{!! Form::close() !!}
-	<?php echo $rowData->render(); ?>
+	@include('footer')	
 	</div>
 </div>	
 	</div>	  
 </div>
+{{--*/ $k = 0; /*--}}					
+@foreach ($rowData as $row)
+{{--*/ $k = ++$k; /*--}}
+<!-- Property Instagram Modal -->
+<div class="modal fade" id="instaModal{{ $k }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false" >
+      <div class="modal-dialog" role="document">
+    	<div class="modal-content">
+    	  <div class="modal-header">
+    		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    		<h4 class="modal-title" id="myModalLabel">Instagram</h4>
+    	  </div>
+    	  <div class="modal-body">
+    		<table>
+    			<tbody>
+                    
+                    @if($row->social_instagram!='')
+                        <section id="instagram-section">
+                            <div class="col-sm-12 text-center">
+                                <h2 class="heading">GET SOCIAL</h2>
+                            </div>
+                            <section id="instagran" class="sections-instagram">
+                                <div class="full-width">
+                                    <div data-is data-is-api="{{ url('runInsta')}}"
+                                         data-is-source="{{($row->social_instagram!='')? $row->social_instagram : '@socialdesignlocations777' }}" data-is-rows="2" data-is-limit="0" data-is-columns="5"></div>
+                                </div>
+                            </section>
+                        </section>
+                    @endif
+    			</tbody>
+    		</table>
+    	  </div>
+    	  <div class="modal-footer">
+    		<button type="button" class="btn btn-default" data-dismiss="modal" aria-label="Close">OK</button>
+    	  </div>
+    	  </form>
+    	</div>
+      </div>
+</div>            
+@endforeach   
 <!--Email popup start-->
 <div id="email-page" class="popup">
 	<div class="popup-inner">
@@ -229,7 +276,7 @@
 
 <!--Email popup end-->
 
-	
+<script src="{{ asset('sximo/instajs/instashow/elfsight-instagram-feed.js')}}"></script>	
 <script>
 $(document).ready(function(){
 

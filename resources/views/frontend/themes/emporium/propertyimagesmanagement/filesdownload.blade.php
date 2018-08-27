@@ -54,6 +54,7 @@
             <button data-action="agree-button" class="bnt SendButon agreeButton" type="button">I Agree</button>
         </div>
 
+        <!--<div class="downloadFilesWrapp transferFileSec transferSecSecond"> -->
         <div class="downloadFilesWrapp transferFileSec transferSecSecond">
             @if($filepath!='')
                 <a href="{{ URL::to('uploads/varients_imgs/'.$filepath) }}" class="btn downloadFiles" download="{{$filepath}}" target="_self" >Download </a>

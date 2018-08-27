@@ -63,7 +63,7 @@
       content: "";
      }
     .row-bx .col-6{
-      width: 48%;
+      width: 45%;
       float: left;
       padding: 0;
       margin-right: 4%;      
@@ -72,17 +72,17 @@
       margin-right: 0;
     }
     .sections.bg-gray {
-    background: #f5f5f5;
-      padding: 30px 0;
-  }
-  .img-box {
-    height: 300px;
-    color: #fff;
-    background: url(http://staging.emporium-voyage.com/images/bg-map.png) no-repeat center bottom;
-    background-size: cover;
-    padding: 30px;
-    position: relative;
-  }
+        background: #f5f5f5;
+          padding: 30px 0;
+    }
+    .img-box {
+        height: 300px;
+        color: #fff;
+        background: url(http://staging.emporium-voyage.com/images/bg-map.png) no-repeat center bottom;
+        background-size: cover;
+        padding: 30px;
+        position: relative;
+    }
 
   .bg-city.img-box {
      background: url(http://staging.emporium-voyage.com/images/bg-city.png) no-repeat center bottom;
@@ -259,125 +259,124 @@ p.gray-tx {
 <body style="margin: 0; padding: 0;">
  	<div class="invitation-box">
  		<div class="container-box">
- 		<div class="header"> 			
- 				<div style="border-bottom: 1px solid #ddd; padding: 100px 0; text-align: center;">
- 				<a href="#"><img src="http://staging.emporium-voyage.com/images/emporium-voyage-logo.png" alt="" style="width: 250px;" /></a>
- 				</div>
- 				<div class="sections">
+     		<div class="header"> 			
+    			<div style="border-bottom: 1px solid #ddd; padding: 100px 0; text-align: center;">
+    			     <a href="#"><img src="http://staging.emporium-voyage.com/images/emporium-voyage-logo.png" alt="" style="width: 250px;" /></a>
+    			</div>
+    			<div class="sections">
+                    <div class="container-box">
+                      <div class="txt-box">
+            				<h3>INVITATION SEND</h3>
+            				{!! $msg !!}
+                            <br><br>
+                            Please click on download button to download the file
+                            <br>
+                            <a href="{{ URL::to($link) }}">Download</a>
+                            <br>
+                            if button does not work please copy below link and paste into browser.<br>
+                            {{ URL::to($link) }}                        
+                      </div>
+                   </div>
+    			</div> 				
+     		</div>		 		
+     	</div>
+     	<div class="sections bg-gray">
+     		<div class="container-box">
+     			<div class="row-bx">
+     				<div class="col-6 bg-white">
+     					<div class="img-box bg-city">
+     						<h4>You have been<br>
+    							invited to join<br>
+    							emporium-voyage
+    						</h4>
+                            <div class="rounds"></div>
+     					</div>             
+                        <div class="pad-box">
+                            <div class="invite-box">
+                                <span class="sub-txt">Invitaiton by</span>
+                                <h4>{{ $byfirstname }} {{ $bylastname }}</h4>
+                                <a href="mailto:{{ $byemail }}">{{ $byemail }}</a>
+                            </div>
+                        </div>
+     				</div>
+     				<!-- end of div -->
+    
+                    <div class="col-6 bg-white">
+                      <div class="img-box">
+                        <h4>
+                        </h4>
+                      </div>
+                      <div class="pad-box bg-shadow">
+                          <div class="invite-box invite-person">
+                            <span class="sub-txt">Invited</span>
+                            <h4>{{ $tofirstname }} {{ $tolastname }}</h4>            
+                          </div>
+                          <div class="dates-n-valid">
+                            <div class="col-8">
+                              <span class="sub-txt">{{ $todate }} </span>
+                            </div>
+                            <div class="col-4">
+                              <span class="sub-txt">Validity</span>
+                              <p>{{ $todays }} days</p>
+                            </div>
+                           </div> 
+                      </div>
+                      <!-- end of valid dates -->
+                      <div class="box-barcode"> 
+                          <h2>Refferal Code </h2>
+                          {{$referral_code}}           
+                      </div>
+                    </div>
+                    <!-- end of div -->
+     			</div>
+     		</div>
+     	</div>
+        <div style="clear: both;"></div>
+        <div class="sections">
             <div class="container-box">
-              <div class="txt-box">
-       					<h3>INVITATION SEND</h3>
-       					<p>I am a member of emporium-voyage a online travel agency specializing in exclusive ultra luxury rooms from the worlds best hotels</p>
-              </div>
-           </div>
- 				</div> 				
- 		</div>		 		
- 	</div>
- 	<div class="sections bg-gray pad-60">
- 		<div class="container-box">
- 			<div class="row-bx">
- 				<div class="col-6 bg-white">
- 					<div class="img-box bg-city">
- 						<h4>You have been<br>
-							invited to join<br>
-							emporium-voyage
-						</h4>
-            <div class="rounds"></div>
- 					</div>             
-              <div class="pad-box">
-                <div class="invite-box">
-                <span class="sub-txt">Invitaiton by</span>
-                <h4>{{ $byfirstname }} {{ $bylastname }}</h4>
-                <a href="mailto:{{ $byemail }}">{{ $byemail }}</a>
-              </div>
-              <div class="msg-box">
-                <span class="sub-txt">Message</span>
-                <h4>Dear {{ $tofirstname }} {{ $tolastname }},</h4>
-                <p>
-                  I am a member of emporium-voyage a online travel agency specializing in eclusive ultra luxury rooms from the worlds best hotels
-                </p>
+              <div class="text-cnter-box">
+                 <p>emporium-voyage is your ideal, vogue vacation planner! With it's ultra-exclusive spaces<br> and elite spas huddled in its cocoon, emporium-voyage ensure the ultimate ultra luxury <br>experience. Our expertise lies in our utmost diligence to provide our beau monde<br> customers with an exotic experience they will relish forever.</p>
               </div>
             </div>
- 				</div>
- 				<!-- end of div -->
-
-        <div class="col-6 bg-white">
-          <div class="img-box">
-            <h4>
-            </h4>
-          </div>
-           <div class="pad-box bg-shadow">
-              <div class="invite-box invite-person">
-                <span class="sub-txt">Invited</span>
-                <h4>{{ $tofirstname }} {{ $tolastname }}</h4>            
-              </div>
-              <div class="dates-n-valid">
-                <div class="col-8">
-                  <span class="sub-txt">{{ $todate }} </span>
-                </div>
-                <div class="col-4">
-                  <span class="sub-txt">Validity</span>
-                  <p>{{ $todays }} days</p>
-                </div>
-               </div> 
-          </div>
-          <!-- end of valid dates -->
-          <div class="box-barcode"> 
-              <h2>Refferal Code </h2>
-              {{$referral_code}}           
-          </div>
         </div>
-        <!-- end of div -->
- 			</div>
- 		</div>
- 	</div>
+        <div style="clear: both;"></div>
 
-  <div class="sections">
-    <div class="container-box">
-      <div class="text-cnter-box">
-         <p>emporium-voyage is your ideal, vogue vacation planner! With it's ultra-exclusive spaces<br> and elite spas huddled in its cocoon, emporium-voyage ensure the ultimate ultra luxury <br>experience. Our expertise lies in our utmost diligence to provide our beau monde<br> customers with an exotic experience they will relish forever.</p>
-      </div>
+        <!-- start footer -->
+        <div class="sections bg-gray">
+            <div class="container-box">
+                <div class="row-bx">
+                    <div class="col-12">
+                      <div class="text-center tag-line">
+                        <h3>emporium - voyage</h3>
+                        <p>Ultra luxury rooms from the worlds leading hotels from selected destinations</p>
+                      </div>
+                    
+                      <div class="social-sec">
+                         <ul>
+                           <li><a href="#" target="blank"><img src="http://staging.emporium-voyage.com/images/link-in.png" alt="" /></a></li>
+                           <li><a href="#" target="blank"><img src="http://staging.emporium-voyage.com/images/face-book.png" alt="" /></a></li>
+                           <li><a href="#" target="blank"><img src="http://staging.emporium-voyage.com/images/twitter.png" alt="" /></a></li>
+                           <li><a href="#" target="blank"><img src="http://staging.emporium-voyage.com/images/google-png.png" alt="" /></a></li>
+                         </ul>
+                      </div>
+                    </div>
+                </div>
+                <!-- end of sections -->
+                <div class="row-bx">
+                  <div class="col-6">
+                    <p class="gray-tx">&copy emporium-voyage</p>
+                  </div>
+                  <div class="col-6">
+                    <ul class="pul-ri8">
+                      <li><a href="#">Join</a></li>
+                      <li><a href="#">Magazine</a></li>
+                      <li><a href="#">Contact</a></li>
+                    </ul>
+                  </div>
+                </div>
+            </div>
+        </div>          
+
     </div>
-  </div>
-
-
-<!-- start footer -->
-  <div class="sections bg-gray">
-    <div class="container-box">
-      <div class="row-bx">
-        <div class="col-12">
-          <div class="text-center tag-line">
-            <h3>emporium - voyage</h3>
-            <p>Ultra luxury rooms from the worlds leading hotels from selected destinations</p>
-          </div>
-
-          <div class="social-sec">
-             <ul>
-               <li><a href="#" target="blank"><img src="http://staging.emporium-voyage.com/images/link-in.png" alt="" /></a></li>
-               <li><a href="#" target="blank"><img src="http://staging.emporium-voyage.com/images/face-book.png" alt="" /></a></li>
-               <li><a href="#" target="blank"><img src="http://staging.emporium-voyage.com/images/twitter.png" alt="" /></a></li>
-               <li><a href="#" target="blank"><img src="http://staging.emporium-voyage.com/images/google-png.png" alt="" /></a></li>
-             </ul>
-          </div>
-        </div>
-      </div>
-        <!-- end of sections -->
-    <div class="row-bx">
-      <div class="col-6">
-        <p class="gray-tx">&copy emporium-voyage</p>
-      </div>
-      <div class="col-6">
-        <ul class="pul-ri8">
-          <li><a href="#">Join</a></li>
-          <li><a href="#">Magazine</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      </div>
-
-      </div>
-    </div>
-  </div>      
-
- </div>
 </body>
 </html>

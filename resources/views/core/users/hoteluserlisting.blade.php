@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<script src="{{ asset('sximo/js/typeahead.bundle.js')}}"></script>
-<link href="{{ asset('sximo/assets/css/custom_ps.css')}}" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" type="text/css" href="{{ asset('sximo/css/m-popup.css')}}">
 <style>
 .modal-dialog { width:500px !important; }
@@ -26,15 +24,18 @@
 	<div class="page-content-wrapper m-t">	 	
 	<div id="formerrors"></div>
 	
-    <div class="sbox animated fadeInRight">
+<div class="sbox animated fadeInRight">
 	<div class="sbox-title"> <h5> <i class="fa fa-table"></i> </h5>
-        <div class="sbox-tools" >
-    		
+<div class="sbox-tools" >
+		<a href="{{ url($pageModule) }}" class="btn btn-xs btn-white tips" title="Clear Search" ><i class="fa fa-trash-o"></i> Clear Search </a>
+		@if(Session::get('gid') ==1)
+			<a href="{{ URL::to('sximo/module/config/'.$pageModule) }}" class="btn btn-xs btn-white tips" title=" {{ Lang::get('core.btn_config') }}" ><i class="fa fa-cog"></i></a>
+		@endif 
 		</div>
 	</div>
 	<div class="sbox-content"> 	
 	    <div class="toolbar-line ">
-			<a href="{{ URL::to('crmhotel/index') }}" class="tips btn btn-sm btn-white active"  title="Hotel Lead Listing">
+			<a href="{{ URL::to('crmhotel/index') }}" class="tips btn btn-sm btn-white"  title="Hotel Lead Listing">
 			<i class="fa fa-list "></i>&nbsp;Hotel Lead Listing</a>
             
             <a href="{{ URL::to('crmhotel/lead') }}" class="tips btn btn-sm btn-white"  title="{{ Lang::get('core.btn_lead_create') }}">
@@ -46,13 +47,13 @@
             <a href="{{ URL::to('crmhotel/hotellisting') }}" class="tips btn btn-sm btn-white"  title="Hotel">
 			<i class="fa fa-list "></i>&nbsp;Hotel</a>
             
-            <a href="{{ URL::to('crmhotel/hoteluserlisting') }}" class="tips btn btn-sm btn-white"  title="Hotel User">
+            <a href="{{ URL::to('crmhotel/hoteluserlisting') }}" class="tips btn btn-sm btn-white active"  title="Hotel User">
 			<i class="fa fa-list "></i>&nbsp;Hotel User</a>
             
             <a href="{{ URL::to('crmhotel/travelleruserlisting') }}" class="tips btn btn-sm btn-white"  title="Traveller">
 			<i class="fa fa-list "></i>&nbsp;Traveller</a>
             
-            <a href="{{ URL::to( 'crmhotel/hotelleadsearch') }}" class="btn btn-sm btn-white" onclick="SximoModal(this.href,'Advance Search'); return false;" ><i class="fa fa-search"></i> Search</a>
+            <a href="{{ URL::to( 'core/users/crmhotelusersearch') }}" class="btn btn-sm btn-white" onclick="SximoModal(this.href,'Advance Search'); return false;" ><i class="text-danger fa fa-search"></i> Search</a>
 		</div> 		
 
 	
@@ -64,95 +65,52 @@
 			<tr>
 				<th class="number"> No </th>
 				<th> <input type="checkbox" class="checkall" /></th>
-				<th>Property</th>
-				<th>Hotel Email</th>
-                <th>Hotel Main Phone</th>
-                <th>Status</th>
+				<th>Avatar</th>
+				<th>Group</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
 				<th width="180" >{{ Lang::get('core.btn_action') }}</th>
 			  </tr>
         </thead>
 
-        <tbody>        
-        	{{--*/ $j = 0; /*--}}					
+        <tbody>        						
             @foreach ($rowData as $row)
-			{{--*/ $property_slug = \SiteHelpers::seoUrl($row->property_name); $j = ++$j; /*--}}
+			
                 <tr>
 					<td width="30"> {{ ++$i }} </td>
 					<td width="50"><input type="checkbox" class="ids" name="ids[]" value="{{ $row->id }}" />  </td>									
-					<td> <a target="_blank" href="{{URL::to($property_slug)}}">{{$row->property_name}}</a> </td>
+					<td> 
+                        <?php if( file_exists( './uploads/users/'.$row->avatar) && $row->avatar !='') { ?>
+							<img src="{{ URL::to('uploads/users').'/'.$row->avatar }} " border="0" width="40" class="img-circle" />
+							<?php  } else { ?> 
+							<img alt="" src="http://www.gravatar.com/avatar/{{ md5($row->email) }}" width="40" class="img-circle" />
+					    <?php } ?> 
+                    </td>
+                    <td> {{$row->name}} </td>
+					<td> {{$row->first_name}} </td>
+					<td> {{$row->last_name}} </td>
 					<td> {{$row->email}} </td>
-					<td> {{$row->phone}} </td>
-					<td> Lead  </td>
 				 <td>
-					 	@if($access['is_detail'] ==1)
-						<a href="{{ URL::to('crmhotel/show/'.$row->id.'?return='.$return)}}" class="tips btn btn-xs btn-primary" title="{{ Lang::get('core.btn_view') }}" style="display: none;"><i class="fa  fa-search "></i></a>
-						@endif
-						@if($access['is_edit'] ==1)
-						<a  href="{{ URL::to('crmhotel/update/'.$row->id.'?return='.$return) }}" class="tips btn btn-xs btn-success" title="{{ Lang::get('core.btn_edit') }}" style="display: none;"><i class="fa fa-edit "></i></a>
-						@endif
-						<a  href="{{ URL::to('properties/update/'.$row->id.'?return='.$return) }}" class="tips btn btn-xs btn-success" title="property module" style="display: none;"><i class="fa fa-cogs"></i></a>	
-						<a  href="{{ URL::to('properties_settings/'.$row->id.'/types') }}" class="tips btn btn-xs btn-success" title="reservations" style="display: none;"><i class="fa fa-cogs"></i></a>					
+					 						
 						<a  href="javascript:void(0);" class="tips btn btn-xs btn-success" title="Email" onclick="sendemails_crmhotels('{{$row->id}}');"><i class="fa fa-envelope-o"></i></a>
-						<a  href="{{(strpos($row->website, 'http') !== false) ? $row->website : 'http://'.$row->website }}" class="tips btn btn-xs btn-success" title="website" style="display: none;"><i class="fa fa-globe"></i></a>
-                        
-                        <a  href="#" class="tips btn btn-xs btn-success" title="Instagram" data-toggle="modal" data-target="#instaModal{{ $j }}"><i class="fa fa-instagram"></i></a>
-                        
+						
 				</td>				 
-                </tr>				
-            @endforeach              
+                </tr>
+				
+            @endforeach
+              
         </tbody>
       
     </table>
 	<input type="hidden" name="md" value="" />
 	</div>
 	{!! Form::close() !!}
-    @include('footer')	
+	
 	</div>
 </div>	
 	</div>	  
 </div>
-
-{{--*/ $k = 0; /*--}}					
-@foreach ($rowData as $row)
-
-{{--*/ $k = ++$k; /*--}}
-<!-- Property Instagram Modal -->
-<div class="modal fade" id="instaModal{{ $k }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false" >
-      <div class="modal-dialog" role="document">
-    	<div class="modal-content">
-    	  <div class="modal-header">
-    		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    		<h4 class="modal-title" id="myModalLabel">Instagram</h4>
-    	  </div>
-    	  <div class="modal-body">
-    		<table>
-    			<tbody>
-                    
-                    @if($row->social_instagram!='')
-                        <section id="instagram-section">
-                            <div class="col-sm-12 text-center">
-                                <h2 class="heading">GET SOCIAL</h2>
-                            </div>
-                            <section id="instagran" class="sections-instagram">
-                                <div class="full-width">
-                                    <div data-is data-is-api="{{ url('runInsta')}}"
-                                         data-is-source="{{($row->social_instagram!='')? $row->social_instagram : '@socialdesignlocations777' }}" data-is-rows="2" data-is-limit="0" data-is-columns="5"></div>
-                                </div>
-                            </section>
-                        </section>
-                    @endif
-    			</tbody>
-    		</table>
-    	  </div>
-    	  <div class="modal-footer">
-    		<button type="button" class="btn btn-default" data-dismiss="modal" aria-label="Close">OK</button>
-    	  </div>
-    	  </form>
-    	</div>
-      </div>
-</div>            
-@endforeach
-
 <!--Email popup start-->
 <div id="email-page" class="popup">
 	<div class="popup-inner">
@@ -274,7 +232,7 @@
 
 <!--Email popup end-->
 
-<script src="{{ asset('sximo/instajs/instashow/elfsight-instagram-feed.js')}}"></script>	
+	
 <script>
 $(document).ready(function(){
 
@@ -335,13 +293,12 @@ function sendemails_crmhotels(crmid)
 		}
 		
 	});
-    
 	if(crmid > 0 && crmid!='')
 	{
 		$.ajax({
-		  url: "{{ URL::to('fetch_property_company_info')}}",
+		  url: "{{ URL::to('fetch_user_info')}}",
 		  type: "post",
-		  data: {crmid:crmid, ids:sList},
+		  data: {crmuid:crmid, ids:sList},
 		  dataType: "json",
 		  success: function(data){
 			if(data.status!='error')
@@ -349,7 +306,7 @@ function sendemails_crmhotels(crmid)
 				$('#crm_email_popup').val(data.crm.email);
 				$('#propertyid_email_popup').val(data.crm.id);
 				$('#crmId_email_popup').val(crmid);
-				$('#crmmap_popup').attr('src','https://www.google.com/maps?q='+data.crm.hotelinfo_address+'&output=embed');
+				$('#crmmap_popup').attr('src','https://www.google.com/maps?q='+data.crm.address+'&output=embed');
 				$('#crmemaillist').html('');
 				if(data.crmemails.length)
 				{
@@ -377,7 +334,7 @@ function sendemails_crmhotels(crmid)
 			}
 		  }
 		});
-	} 
+	}
 }
 
 function submitcrmemail()
@@ -386,7 +343,7 @@ function submitcrmemail()
 	var form_data = new FormData(document.getElementById('emailcrm'));
 	$.ajax({
 	  method: "post",
-	  url: "{{URL::to('emailCRM')}}",
+	  url: "{{URL::to('emailInviteCRM')}}",
 	  cache : false,
 	  contentType: false, // Important.
 	  processData: false,

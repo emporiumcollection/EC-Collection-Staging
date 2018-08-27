@@ -105,7 +105,10 @@ Route::post('deleteinvite', 'UserController@deleteInvite');
 Route::post('customer_ajaxPostCreate', 'CustomerController@ajaxPostCreate');
 
 Route::post('leadcreate', 'UserController@ajaxLeadCreate');
-Route::get('crmhotel/leadlisting', 'Core\UsersController@leadlisting'); 
+Route::get('crmhotel/leadlisting', 'Core\UsersController@leadlisting');
+Route::get('crmhotel/hoteluserlisting', 'Core\UsersController@hoteluserlisting');
+Route::get('crmhotel/travelleruserlisting', 'Core\UsersController@travelleruserlisting');
+ 
 Route::post('socialinfo', 'UserController@ajaxSocialInfo');
 
 Route::post('customer_ajaxPostSignin', 'CustomerController@ajaxPostSignin'); 

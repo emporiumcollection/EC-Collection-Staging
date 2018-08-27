@@ -18,14 +18,15 @@ class CrmhotelController extends Controller {
 
 	protected $layout = "layouts.main";
 	protected $data = array();	
-	public $module = 'crmhotel';
+	//public $module = 'crmhotel';
+    public $module = 'properties';
 	static $per_page	= '50';
 
 	public function __construct()
 	{
 		
 		$this->beforeFilter('csrf', array('on'=>'post'));
-		$this->model = new Crmhotel();
+		$this->model = new Properties();
 		
 		$this->info = $this->model->makeInfo( $this->module);
 		$this->access = $this->model->validAccess($this->info['id']);
@@ -33,7 +34,7 @@ class CrmhotelController extends Controller {
 		$this->data = array(
 			'pageTitle'	=> 	$this->info['title'],
 			'pageNote'	=>  $this->info['note'],
-			'pageModule'=> 'crmhotel',
+			'pageModule'=> 'properties',
 			'return'	=> self::returnUrl()
 			
 		);
@@ -92,10 +93,82 @@ class CrmhotelController extends Controller {
 		return view('crmhotel.index',$this->data); */ 
         
         
-        $this->data['access']		= $this->access;
+        /*$this->data['access']		= $this->access;
         $this->data['i']=0;
         $this->data['rowData'] = \DB::table('tb_properties')->where('property_status', 0)->simplePaginate(static::$per_page);
         //print_r($properties);
+        return view('crmhotel.hotelleadlisting',$this->data);*/
+        
+        if ($this->access['is_view'] == 0)
+            return Redirect::to('dashboard')
+                            ->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus', 'error');
+
+        $sort = (!is_null($request->input('sort')) ? $request->input('sort') : (!is_null($request->input('search')) ? 'id' : 'property_status'));
+        $order = (!is_null($request->input('order')) ? $request->input('order') : 'desc');
+        // End Filter sort and order for query 
+        // Filter Search for query		
+        $filter = (!is_null($request->input('search')) ? $this->buildSearch() : '');
+        $filter .= " AND tb_properties.property_status = '0'" ;
+        
+		$this->data['curntcat'] =  '';
+		$this->data['curstatus'] =  '';
+		if(!is_null($request->input('selcat')) && $request->input('selcat')!='')
+		{
+			$filter .= ' AND FIND_IN_SET('.$request->input('selcat').', property_category_id)';
+			$this->data['curntcat'] = $request->input('selcat');
+		}
+		if(!is_null($request->input('selstatus')) && $request->input('selstatus')!='')
+		{
+			$pstatus = ($request->input('selstatus')=='active') ? 1 : 0;
+			$filter .= ' AND property_status = '.$pstatus;
+			$this->data['curstatus'] = $request->input('selstatus');
+		}
+
+        if(\Session::get('gid')!=1 && \Session::get('gid')!=2){
+                $uid = \Auth::user()->id;
+
+                $filter .= " AND user_id = '".$uid."'" ;
+
+        }
+        $page = $request->input('page', 1);
+        $params = array(
+            'page' => $page,
+            'limit' => (!is_null($request->input('rows')) ? filter_var($request->input('rows'), FILTER_VALIDATE_INT) : static::$per_page ),
+            'sort' => $sort,
+            'order' => $order,
+            'params' => $filter,
+            'global' => (isset($this->access['is_global']) ? $this->access['is_global'] : 0 )
+        );
+        // Get Query 
+        $results = $this->model->getRows($params);
+
+        // Build pagination setting
+        $page = $page >= 1 && filter_var($page, FILTER_VALIDATE_INT) !== false ? $page : 1;
+        $pagination = new Paginator($results['rows'], $results['total'], $params['limit']);
+        $pagination->setPath('properties');
+		
+        $this->data['rowData'] = $results['rows'];
+        // Build Pagination 
+        $this->data['pagination'] = $pagination;
+        // Build pager number and append current param GET
+        $this->data['pager'] = $this->injectPaginate();
+        // Row grid Number 
+        $this->data['i'] = ($page * $params['limit']) - $params['limit'];
+        // Grid Configuration 
+        $this->data['tableGrid'] = $this->info['config']['grid'];
+        $this->data['tableForm'] = $this->info['config']['forms'];
+        $this->data['colspan'] = \SiteHelpers::viewColSpan($this->info['config']['grid']);
+        // Group users permission
+        $this->data['access'] = $this->access;
+        // Detail from master if any
+        // Master detail link if any 
+        $this->data['subgrid'] = (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array());
+        // Render into template
+		$this->data['fetch_cat'] = \DB::table('tb_categories')->get();
+        
+        //$is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+        //$file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.index':'properties.index'; 
+        
         return view('crmhotel.hotelleadlisting',$this->data);
 	}	
 
@@ -651,7 +724,7 @@ class CrmhotelController extends Controller {
 			$propertyId = $request->input('propertyid_email_popup');
 			$subjectemail = trim($request->input('subject_email_popup'));
 			$templateemail = trim($request->input('template_email_popup'));
-			$emailArr['msg'] = $request->input('message_email_popup');
+			$emailArr['msg'] =$request->input('message_email_popup');
 			$destinationPath = public_path().'/uploads/varients_imgs/';
 			$actimgpath = '';
 			$actimgname = '';
@@ -725,6 +798,8 @@ class CrmhotelController extends Controller {
                     $emailArr['todays'] = 30;
                     $emailArr['referral_code'] = $referral_code;            
                     
+                    //echo view('user.emails.'.$tempe, $emailArr); die;
+                     
         			\Mail::send('user.emails.'.$tempe, $emailArr, function($message) use ($toouser)
         			{
         				$message->from('sales@emporium-voyage.com', CNF_APPNAME);
@@ -773,22 +848,112 @@ class CrmhotelController extends Controller {
 		return $ret;
     }
     public function getHotellisting(Request $request){
-        $this->data['access']		= $this->access;
+        /*$this->data['access']		= $this->access;
         $this->data['i']=0;
         $this->data['rowData'] = \DB::table('tb_properties')->where('property_status', 1)->simplePaginate(static::$per_page);;
         //print_r($properties);
+        return view('crmhotel.hotellisting',$this->data);*/
+        
+        if ($this->access['is_view'] == 0)
+            return Redirect::to('dashboard')
+                            ->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus', 'error');
+
+        $sort = (!is_null($request->input('sort')) ? $request->input('sort') : (!is_null($request->input('search')) ? 'id' : 'property_status'));
+        $order = (!is_null($request->input('order')) ? $request->input('order') : 'desc');
+        // End Filter sort and order for query 
+        // Filter Search for query		
+        $filter = (!is_null($request->input('search')) ? $this->buildSearch() : '');
+        $filter .= " AND tb_properties.property_status = '1'" ;
+        
+		$this->data['curntcat'] =  '';
+		$this->data['curstatus'] =  '';
+		if(!is_null($request->input('selcat')) && $request->input('selcat')!='')
+		{
+			$filter .= ' AND FIND_IN_SET('.$request->input('selcat').', property_category_id)';
+			$this->data['curntcat'] = $request->input('selcat');
+		}
+		if(!is_null($request->input('selstatus')) && $request->input('selstatus')!='')
+		{
+			$pstatus = ($request->input('selstatus')=='active') ? 1 : 0;
+			$filter .= ' AND property_status = '.$pstatus;
+			$this->data['curstatus'] = $request->input('selstatus');
+		}
+
+        if(\Session::get('gid')!=1 && \Session::get('gid')!=2){
+                $uid = \Auth::user()->id;
+
+                $filter .= " AND user_id = '".$uid."'" ;
+
+        }
+        $page = $request->input('page', 1);
+        $params = array(
+            'page' => $page,
+            'limit' => (!is_null($request->input('rows')) ? filter_var($request->input('rows'), FILTER_VALIDATE_INT) : static::$per_page ),
+            'sort' => $sort,
+            'order' => $order,
+            'params' => $filter,
+            'global' => (isset($this->access['is_global']) ? $this->access['is_global'] : 0 )
+        );
+        // Get Query 
+        $results = $this->model->getRows($params);
+
+        // Build pagination setting
+        $page = $page >= 1 && filter_var($page, FILTER_VALIDATE_INT) !== false ? $page : 1;
+        $pagination = new Paginator($results['rows'], $results['total'], $params['limit']);
+        $pagination->setPath('properties');
+		
+        $this->data['rowData'] = $results['rows'];
+        // Build Pagination 
+        $this->data['pagination'] = $pagination;
+        // Build pager number and append current param GET
+        $this->data['pager'] = $this->injectPaginate();
+        // Row grid Number 
+        $this->data['i'] = ($page * $params['limit']) - $params['limit'];
+        // Grid Configuration 
+        $this->data['tableGrid'] = $this->info['config']['grid'];
+        $this->data['tableForm'] = $this->info['config']['forms'];
+        $this->data['colspan'] = \SiteHelpers::viewColSpan($this->info['config']['grid']);
+        // Group users permission
+        $this->data['access'] = $this->access;
+        // Detail from master if any
+        // Master detail link if any 
+        $this->data['subgrid'] = (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array());
+        // Render into template
+		$this->data['fetch_cat'] = \DB::table('tb_categories')->get();
+        
+        //$is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+        //$file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.index':'properties.index'; 
+        
         return view('crmhotel.hotellisting',$this->data);
+        
     }
-    public function getHoteluserlisting(Request $request){
+    /*public function getHoteluserlisting(Request $request){
         $this->data['access']		= $this->access;
         $this->data['i']=0;
         $this->data['rowData'] = \DB::table('tb_users')->join('tb_groups', 'tb_groups.group_id', '=', 'tb_users.group_id')->where('tb_users.group_id', 5)->where('active', 1)->get();        
         return view('crmhotel.hoteluserlisting',$this->data);
-    }
-    public function getTravelleruserlisting(Request $request){
+    }*/
+    /*public function getTravelleruserlisting(Request $request){
         $this->data['access']		= $this->access;
         $this->data['i']=0;
         $this->data['rowData'] = \DB::table('tb_users')->join('tb_groups', 'tb_groups.group_id', '=', 'tb_users.group_id')->where('tb_users.group_id', 3)->where('active', 1)->get();        
         return view('crmhotel.travelleruserlisting',$this->data);
-    }
+    }*/
+    public function getSearch( $mode = 'native')
+	{        
+		$this->data['tableForm'] 	= $this->info['config']['forms'];	
+		$this->data['tableGrid'] 	= $this->info['config']['grid'];
+		$this->data['searchMode'] = 'native';
+		$this->data['pageUrl']		= url('crmhotel/hotellisting');
+		return view('sximo.module.utility.search',$this->data);	
+	}
+    public function getHotelleadsearch( $mode = 'native')
+	{        
+		$this->data['tableForm'] 	= $this->info['config']['forms'];	
+		$this->data['tableGrid'] 	= $this->info['config']['grid'];
+		$this->data['searchMode'] = 'native';
+		$this->data['pageUrl']		= url('crmhotel');
+		return view('sximo.module.utility.search',$this->data);
+	
+	}	
 }
