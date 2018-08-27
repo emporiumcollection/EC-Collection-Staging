@@ -237,7 +237,7 @@
     												</div>
     											</div>
                                                 
-                                                @if(count($contracts) > 0)
+                                                @if((count($contracts) > 0) || (count($userContracts) > 0))
                                                 <div class="m-separator m-separator--dashed m-separator--lg"></div>
                                                 
                                                 <div class="m-form__section">
@@ -1157,7 +1157,8 @@
         </div>
 	</div>
     
-    @if(count($contracts) > 0)
+    {{--*/ $new_contract_ava = false; /*--}}
+    @if((count($contracts) > 0) || (count($userContracts) > 0))
     <div class="modal fade" id="contract_model" tabindex="-1" role="dialog" aria-labelledby="contractModalLabel" aria-hidden="true" style="display: none;">
     	<div class="modal-dialog modal-lg" role="document">
     		<div class="modal-content">
@@ -1177,11 +1178,12 @@
                         
                         <div class="m-portlet__body">
                             <div class="m-accordion m-accordion--default m-accordion--solid" id="contract_accordion" role="tablist">
-                                @foreach($contracts as $si_contract)
+                                <!-- already accepted contracts start -->
+                                @foreach($userContracts as $si_contract)
                                     <div class="m-accordion__item">
                                         <div class="m-accordion__item-head collapsed" role="tab" id="contract_accordion_item_{{$si_contract->contract_id}}_head" data-toggle="collapse" href="#contract_accordion_item_{{$si_contract->contract_id}}_body" aria-expanded="false">
                                             <span class="m-accordion__item-icon"><i class="fa flaticon-list-3"></i></span>
-                                            <span class="m-accordion__item-title">{{$si_contract->title}}</span>
+                                            <span class="m-accordion__item-title">{{$si_contract->title}} <a href="#" class="si_accept_contract already_accepted text-success"><i class="r-icon-tag la la-unlock"></i></a></span>
                                             <span class="m-accordion__item-mode"></span>
                                         </div>
                                         
@@ -1190,8 +1192,30 @@
                                                 <p>{{$si_contract->description}}</p>
                                             </div>
                                         </div>
-                                    </div>                                        
+                                    </div>
                                 @endforeach
+                                <!-- already accepted contracts end -->
+                                
+                                <!-- new contracts start -->
+                                @foreach($contracts as $si_contract)
+                                    @if(!isset($userContracts[$si_contract->contract_id]))
+                                        {{--*/ $new_contract_ava = true; /*--}}
+                                    <div class="m-accordion__item">
+                                        <div class="m-accordion__item-head collapsed" role="tab" id="contract_accordion_item_{{$si_contract->contract_id}}_head" data-toggle="collapse" href="#contract_accordion_item_{{$si_contract->contract_id}}_body" aria-expanded="false">
+                                            <span class="m-accordion__item-icon"><i class="fa flaticon-list-3"></i></span>
+                                            <span class="m-accordion__item-title">{{$si_contract->title}} <a href="#" class="si_accept_contract text-danger"><i class="r-icon-tag la la-unlock-alt"></i></a></span>
+                                            <span class="m-accordion__item-mode"></span>
+                                        </div>
+                                        
+                                        <div class="m-accordion__item-body collapse" id="contract_accordion_item_{{$si_contract->contract_id}}_body" role="tabpanel" aria-labelledby="contract_accordion_item_{{$si_contract->contract_id}}_head" data-parent="#contract_accordion">
+                                            <div class="m-accordion__item-content">
+                                                <p>{{$si_contract->description}}</p>
+                                            </div>
+                                        </div>
+                                    </div>    
+                                    @endif                                    
+                                @endforeach
+                                <!-- new contracts end -->
                             </div>
                         </div>
                     </div>                				
@@ -1209,13 +1233,76 @@
 
 @section('custom_js_script')    
 <script>
+function removeAndAddIcons(thisObj,isAdd){
+    if(isAdd === true){
+        thisObj.removeClass('text-danger');
+        thisObj.addClass('text-success');
+        
+        thisObj.find('.r-icon-tag').removeClass('la-unlock-alt');
+        thisObj.find('.r-icon-tag').addClass('la-unlock');
+    }else{
+        thisObj.removeClass('text-success');
+        thisObj.addClass('text-danger');
+        
+        thisObj.find('.r-icon-tag').removeClass('la-unlock');
+        thisObj.find('.r-icon-tag').addClass('la-unlock-alt');
+    }
+}
+
 $(document).ready(function(){
+    var ischeckedaccepeted = true;
+    $(".si_accept_contract").each(function(){
+        if($(this).hasClass('text-danger')){ ischeckedaccepeted = false; }
+    });
+    if(ischeckedaccepeted === true){
+        if($('[name="accept_contract"]').is(":checked") === false){ $('[name="accept_contract"]').closest('label').trigger('click'); }
+    }else
+    {
+        if($('[name="accept_contract"]').is(":checked") === true){ $('[name="accept_contract"]').closest('label').trigger('click'); }
+    }
+    
+    $('#contract_model').on('show.bs.modal', function (e) {
+      // do something...
+      if($('[name="accept_contract"]').is(":checked") === true){ $(".si_accept_contract").not('.already_accepted').each(function(){removeAndAddIcons($(this),true);}); }else{ $(".si_accept_contract").not('.already_accepted').each(function(){removeAndAddIcons($(this),false);}); }
+    });
+    
+    $(".si_accept_contract").click(function(e){
+        e.preventDefault();
+        
+        if($(this).hasClass('text-danger')){ removeAndAddIcons($(this),true); }else{ removeAndAddIcons($(this),false); }
+        
+        
+        var ischecked = true;
+        $(".si_accept_contract").each(function(){
+            if($(this).hasClass('text-danger')){ ischecked = false; }
+        });
+        
+        if(ischecked === true){
+            $("#contractacceptbtn").trigger('click');
+        }else
+        {
+            if($('[name="accept_contract"]').is(":checked") === true){ $('[name="accept_contract"]').closest('label').trigger('click'); }
+        }
+        
+        return false;
+    });
+    
    $("#contractacceptbtn").click(function(e){
         e.preventDefault();
         
+        $(".si_accept_contract").each(function(){
+            removeAndAddIcons($(this),true);
+        });
+        
         if($('[name="accept_contract"]').is(":checked") === false){ $('[name="accept_contract"]').closest('label').trigger('click'); }
         $("#contractclosebtn").trigger('click');
+        
+        return false;
    });
+   
+   @if($new_contract_ava === true)
+   $('#contract_model').modal('show')
+   @endif
 });
 $('input[type="checkbox"][id="copyadd"]').on('ifChecked', function(){
 	$('#billing_address').val($('#shipping_address').val());

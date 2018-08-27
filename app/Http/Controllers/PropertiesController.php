@@ -62,7 +62,7 @@ class PropertiesController extends Controller {
         if(\Session::get('gid')!=1 && \Session::get('gid')!=2){
                 $uid = \Auth::user()->id;
 
-                $filter .= " AND user_id = '".$uid."'" ;
+                $filter .= " AND ((user_id = '".$uid."') OR (assigned_user_id = '".$uid."'))" ;
 
         }
         $page = $request->input('page', 1);
@@ -100,6 +100,29 @@ class PropertiesController extends Controller {
         $this->data['subgrid'] = (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array());
         // Render into template
 		$this->data['fetch_cat'] = \DB::table('tb_categories')->get();
+        
+        $hotelIds = array();
+        foreach($this->data['rowData'] as $si_hotel){
+            $hotelIds[] = $si_hotel->id;
+        }
+        
+        $this->data['userContracts'] = array();
+        $this->data['commission_contract'] = \DB::table('tb_users_contracts')->select('tb_users_contracts.id','tb_users_contracts.contract_id','tb_users_contracts.title','tb_users_contracts.description')->where('tb_users_contracts.contract_type','commission')->orderBy('tb_users_contracts.contract_id','DESC')->where('tb_users_contracts.status',1)->where('tb_users_contracts.is_expried',0)->where('tb_users_contracts.deleted',0)->first();
+        $this->data['hotel_contracts'] = array();
+        if(count($hotelIds) > 0){
+            $usersContracts = \DB::table('tb_users_contracts')->select('tb_users_contracts.id','tb_users_contracts.contract_id','tb_users_contracts.title','tb_users_contracts.description')->where('tb_users_contracts.contract_type','hotel')->orderBy('tb_users_contracts.contract_id','DESC')->where('tb_users_contracts.status',1)->where('tb_users_contracts.is_expried',0)->where('tb_users_contracts.deleted',0)->get();
+            $resetContracts = array();
+            foreach($usersContracts as $si_contract){
+                $resetContracts[$si_contract->contract_id] = $si_contract;
+            }
+            $this->data['userContracts'] = $resetContracts;
+            
+            if(count($this->data['commission_contract']) <= 0){
+                $commission_contract = \CommonHelper::get_default_contracts('commission','default',0,$hotelIds);
+            }
+            
+            
+        }
         
         $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
         $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.index':'properties.index'; 

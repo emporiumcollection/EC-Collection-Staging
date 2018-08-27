@@ -226,6 +226,27 @@
                                                     
     											</div>
                                                 
+                                                @if(count($contracts) > 0)
+                                                <div class="m-separator m-separator--dashed m-separator--lg"></div>
+                                                
+                                                <div class="m-form__section">
+                                                    <div class="m-form__heading">
+                                                        <h3 class="m-form__heading-title">Contracts</h3>
+                                                    </div>
+                                                    
+                                                    <div class="form-group m-form__group row">
+                                                        <div class="col-lg-6 m-form__group-sub">
+                                                            <div class="m-checkbox-inline">
+                                                                <label class="m-checkbox m-checkbox--solid m-checkbox--brand">
+                                                                    <input type="checkbox" name="accept_contract" value="1" required="required" /> Please accept contracts first.<span></span>
+                                                                </label>
+                                                            </div>
+                                                            <span class="m-form__help"><a href="#" onclick="javascript: return false;" data-toggle="modal" data-target="#contract_model">View contract</a></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                @endif
+                                                
                                             </div>
                                             <!--begin: Form Wizard Step 1-->
                                             
@@ -297,11 +318,68 @@
 			</div>
 			<!--End::Main Portlet-->
         </div>
-	</div>    
+	</div>
+    
+    @if(count($contracts) > 0)
+    <div class="modal fade" id="contract_model" tabindex="-1" role="dialog" aria-labelledby="contractModalLabel" aria-hidden="true" style="display: none;">
+    	<div class="modal-dialog modal-lg" role="document">
+    		<div class="modal-content">
+    			<div class="modal-header">
+    				<h5 class="modal-title" id="contractModalLabel">
+    					Contracts
+    				</h5>
+    				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    					<span aria-hidden="true">
+    						×
+    					</span>
+    				</button>
+    			</div>
+    			<div class="modal-body">
+                    <div class="m-portlet m-portlet--full-height">
+                        {{--<div class="m-portlet__head"></div>--}}
+                        
+                        <div class="m-portlet__body">
+                            <div class="m-accordion m-accordion--default m-accordion--solid" id="contract_accordion" role="tablist">
+                                @foreach($contracts as $si_contract)
+                                    <div class="m-accordion__item">
+                                        <div class="m-accordion__item-head collapsed" role="tab" id="contract_accordion_item_{{$si_contract->contract_id}}_head" data-toggle="collapse" href="#contract_accordion_item_{{$si_contract->contract_id}}_body" aria-expanded="false">
+                                            <span class="m-accordion__item-icon"><i class="fa flaticon-list-3"></i></span>
+                                            <span class="m-accordion__item-title">{{$si_contract->title}}</span>
+                                            <span class="m-accordion__item-mode"></span>
+                                        </div>
+                                        
+                                        <div class="m-accordion__item-body collapse" id="contract_accordion_item_{{$si_contract->contract_id}}_body" role="tabpanel" aria-labelledby="contract_accordion_item_{{$si_contract->contract_id}}_head" data-parent="#contract_accordion">
+                                            <div class="m-accordion__item-content">
+                                                <p>{{$si_contract->description}}</p>
+                                            </div>
+                                        </div>
+                                    </div>                                        
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>                				
+    			</div>
+    			<div class="modal-footer">
+    				<button type="button" class="btn btn-secondary" id="contractclosebtn" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="contractacceptbtn">Accept</button>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+    @endif
+        
 @stop
 
 @section('custom_js_script')    
 <script>
+$(document).ready(function(){
+   $("#contractacceptbtn").click(function(e){
+        e.preventDefault();
+        
+        if($('[name="accept_contract"]').is(":checked") === false){ $('[name="accept_contract"]').closest('label').trigger('click'); }
+        $("#contractclosebtn").trigger('click');
+   });
+});
 $('input[type="checkbox"][id="copyadd"]').on('ifChecked', function(){
 	$('#billing_address').val($('#shipping_address').val());
 	$('#billing_address2').val($('#shipping_address2').val());

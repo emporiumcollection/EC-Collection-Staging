@@ -445,6 +445,12 @@ class UserController extends Controller {
         );
         
         //get contract during signup
+        $usersContracts = \DB::table('tb_users_contracts')->select('tb_users_contracts.id','tb_users_contracts.contract_id','tb_users_contracts.title','tb_users_contracts.description')->where('tb_users_contracts.contract_type','sign-up')->orderBy('tb_users_contracts.contract_id','DESC')->where('tb_users_contracts.status',1)->where('tb_users_contracts.is_expried',0)->where('tb_users_contracts.deleted',0)->get();
+        $resetContracts = array();
+        foreach($usersContracts as $si_contract){
+            $resetContracts[$si_contract->contract_id] = $si_contract;
+        }
+        $this->data['userContracts'] = $resetContracts;
         $this->data['contracts'] = \CommonHelper::get_default_contracts('sign-up');
         //End
         
@@ -531,6 +537,13 @@ class UserController extends Controller {
             'first_name' => 'required|alpha_num|min:2',
             'last_name' => 'required|alpha_num|min:2',
         );
+        
+        //get contract during signup
+        $contracts = \CommonHelper::get_default_contracts('sign-up','tb_contracts.*');
+        if(count($contracts) > 0){
+            $rules['accept_contract'] = 'required';
+        }
+        //End
 
         if ($request->input('email') != \Session::get('eid')) {
             $rules['email'] = 'required|email|unique:tb_users';
@@ -559,6 +572,10 @@ class UserController extends Controller {
             if (isset($data['avatar']))
                 $user->avatar = $newfilename;
             $user->save();
+            
+            //insert contracts
+            \CommonHelper::submit_contracts($contracts,'sign-up');
+            //End
 
             return Redirect::to('user/profile')->with('messagetext', 'Profile has been saved!')->with('msgstatus', 'success');
         } else {
@@ -577,6 +594,13 @@ class UserController extends Controller {
             'txtmobilecode' => 'required',
             'txtmobileNumber' => 'required',
         );
+        
+        //get contract during signup
+        $contracts = \CommonHelper::get_default_contracts('sign-up','tb_contracts.*');
+        if(count($contracts) > 0){
+            $rules['accept_contract'] = 'required';
+        }
+        //End
 
         if ($request->input('email') != \Session::get('eid')) {
             $rules['email'] = 'required|email|unique:tb_users';
@@ -612,6 +636,10 @@ class UserController extends Controller {
                 $user->avatar = $newfilename;
                 
             $user->save();
+            
+            //insert contracts
+            \CommonHelper::submit_contracts($contracts,'sign-up');
+            //End
 
             return Redirect::to('user/profile')->with('messagetext', 'Profile has been saved!')->with('msgstatus', 'success');
         } else {
@@ -629,6 +657,13 @@ class UserController extends Controller {
             'last_name' => 'required|alpha_num|min:2',
             'username' => 'required|alpha_num|min:2',
         );
+        
+        //get contract during signup
+        $contracts = \CommonHelper::get_default_contracts('sign-up','tb_contracts.*');
+        if(count($contracts) > 0){
+            $rules['accept_contract'] = 'required';
+        }
+        //End
         
         if ($request->input('email') != \Session::get('eid')) {
             $rules['email'] = 'required|email|unique:tb_users';
@@ -659,6 +694,10 @@ class UserController extends Controller {
             if (isset($data['avatar']))
                 $user->avatar = $newfilename;
             $user->save();
+            
+            //insert contracts
+            \CommonHelper::submit_contracts($contracts,'sign-up');
+            //End
             
             $return_array['status'] = 'success';
             $return_array['message'] = 'Profile has been saved!';

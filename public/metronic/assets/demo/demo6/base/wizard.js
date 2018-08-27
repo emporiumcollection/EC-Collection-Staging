@@ -385,8 +385,9 @@ function wizard_step_1(){
     fdata.append("email",$("input[name=email]").val());
     fdata.append("first_name",$("input[name=first_name]").val());
     fdata.append("last_name",$("input[name=last_name]").val());
+    fdata.append("last_name",$("input[name=last_name]").val());
     fdata.append("_token",$("input[name=_token]").val());
-    fdata.append("form_wizard",$("input[name=form_wizard]").val());
+    fdata.append("accept_contract",$("input[name=accept_contract]").val());
     if($("input[type=file]")[0].files.length>0){
        fdata.append("avatar",$("input[type=file]")[0].files[0]) 
     }
