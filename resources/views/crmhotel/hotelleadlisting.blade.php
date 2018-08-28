@@ -405,6 +405,9 @@ function sendemails_crmhotels(crmid)
 					});
 					$('#crmemaillist').html(lhtml);
                     $('.collapse').collapse();
+				}else{
+				    var lhtml = 'There is no communication.';
+                    $('#crmemaillist').html(lhtml);
 				}
 				
 				$("#email-page").fadeIn("slow");
