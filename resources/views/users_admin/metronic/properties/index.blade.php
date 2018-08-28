@@ -28,13 +28,62 @@
 @section('content')
   
 <div class="row">
-    
-        @foreach ($rowData as $row)
-        <?php 
         
-        ?>
+        {{--*/ $is_commission_popup = false; /*--}}
+        @foreach ($rowData as $row)
             <div class="col-md-12 col-xs-12">
-            <!--begin:: Widgets/Activity-->
+                    {{--*/
+                    $comcontract = array();
+                    if(isset($hotels_commission_contracts[$row->id])){ $comcontract = $hotels_commission_contracts[$row->id]; }
+                    elseif(count($common_commission_contract) > 0){ $comcontract = $common_commission_contract; }
+                    /*--}}
+                    
+                    @if((count($comcontract) > 0) && (!isset($commission_contracts[$row->id])))
+                    {{--*/ $is_commission_popup = true; /*--}}
+                    <!--start:: contracts popup -->
+                    <div class="m-portlet m-portlet--bordered-semi m-portlet--widget-fit m-portlet--full-height m-portlet--rounded-force commission-popup-main-div">
+                        <div class="m-portlet col-sm-8 col-lg-8 inner-r-div">
+                            <div class="m-portlet__head">
+                                <div class="m-portlet__head-caption">
+                                    <div class="m-portlet__head-title"><h3 class="m-portlet__head-text">{{$comcontract->title}}</h3></div>
+                                </div>
+                            </div>
+                            
+                            <div class="m-portlet__body">
+                                <div class="m-scrollable m-scroller ps ps--active-y" data-scrollable="true" data-height="200" data-scrollbar-shown="true" style="height: 200px; overflow: hidden;">
+                                    {{$comcontract->description}}                                    
+                                    <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div>
+                                    <div class="ps__rail-y" style="top: 0px; height: 200px; right: 4px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 87px;"></div></div>
+                                </div>
+                            </div>
+                            
+                            <div class="m-portlet__foot">
+								<div class="row align-items-center">
+									<div class="col-lg-12 m--align-right">
+                                        <div class="m-form__group form-group">
+                                            <div class="m-radio-inline">
+                                                <label class="m-radio m-radio--bold m-radio--state-brand">
+                                                    <input type="radio" name="commission_type" value="full" /> Full ({{(float) $comcontract->full_availability_commission}}%)
+                                                    <span></span>
+                                                </label>
+                                                
+                                                <label class="m-radio m-radio--bold m-radio--state-brand">
+                                                    <input type="radio" name="commission_type" value="partial" /> Partial ({{(float) $comcontract->partial_availability_commission}}%)
+                                                    <span></span>
+                                                </label>
+                                                
+                                                <button type="submit" class="btn btn-success accept-btn" data-id="{{$row->id}}" data-contract-id="{{$comcontract->contract_id}}">Accept</button>
+                                            </div>
+                                        </div>
+									</div>
+								</div>
+							</div>
+                        </div>
+                    </div>
+                    <!--end:: contracts popup start -->
+                    @endif
+                    
+                    <!--begin:: Widgets/Activity-->
 					<div class="m-portlet m-portlet--bordered-semi m-portlet--widget-fit m-portlet--full-height m-portlet--skin-light  m-portlet--rounded-force">
 						<div class="m-portlet__head">
 							<div class="m-portlet__head-caption">
@@ -337,7 +386,7 @@
 {{-- For custom style  --}}
 @section('style')
     @parent
-    <style>
+    <style type="text/css">
         .box-property{
             background-color: #fff; padding: 10px; margin: 10px 20px; text-align: center; font-size: 15px;
         }
@@ -380,11 +429,79 @@
             text-align: center;
             margin-left: 0px;
         }
+        .commission-popup-main-div{ background-color: rgba(0, 0, 0, 0.5); position: absolute; z-index: 2; left: 0; right: 0; }
+        .commission-popup-main-div .inner-r-div{ margin: 10% auto; }
     </style>
 @endsection
 @section('custom_js_script')
 <script>
 $(document).ready(function () {
+    @if($is_commission_popup === true)
+    $(".accept-btn").click(function(e){
+        e.preventDefault();
+        var btnObj = $(this);
+        //loader start
+        btnObj.prop('disabled',true);
+        btnObj.html('Processing...');
+        btnObj.addClass('m-loader m-loader--light m-loader--right');
+        //End
+        var parentDiv = $(this).closest(".form-group");
+        var ischeckedc = parentDiv.find('[name="commission_type"]').is(":checked");
+        if(ischeckedc === true){
+            var hotelId = btnObj.data('id');
+            var contractId = btnObj.data('contract-id');
+            var comType = parentDiv.find('[name="commission_type"]:checked').val();
+            //console.log(hotelId+' : '+contractId+' : '+comType);
+            var fdata = new FormData();
+            fdata.append("hotel_id",hotelId);
+            fdata.append("contract_id",contractId);
+            fdata.append("commission_type",comType);
+            $.ajax({
+                type:"POST",
+                url:"{{URL::to('properties/savecommissioncontract')}}",
+                dataType:'json',
+                contentType: false,
+                processData: false,
+                data:fdata,                
+                success: function(response){
+                    if(response.status == 'success'){
+                        toastr.success(response.message);
+                        parentDiv.closest(".commission-popup-main-div").hide();
+                    }
+                    else{
+                        if((typeof response.errors) != 'undefined'){
+                            $.each(response.errors,function(index, value){
+                                toastr.error(value);
+                            });
+                        }
+                        
+                        //loader start
+                        btnObj.prop('disabled',false);
+                        btnObj.html('Accept');
+                        btnObj.removeClass('m-loader m-loader--light m-loader--right');
+                        //End                                                
+                    }
+                },
+                error: function(e){
+                    //loader start
+                    btnObj.prop('disabled',false);
+                    btnObj.html('Accept');
+                    btnObj.removeClass('m-loader m-loader--light m-loader--right');
+                    //End
+                    toastr.error("Unexpected error occurred!");
+                }
+            });
+        }else{
+            //loader start
+            btnObj.prop('disabled',false);
+            btnObj.html('Accept');
+            btnObj.removeClass('m-loader m-loader--light m-loader--right');
+            //End
+            toastr.error("Please select hotel availablity!");
+        }
+    });
+    @endif
+    
     $("#switch_property").click(function(){
       if($("#switch_property").is(":checked")){
         

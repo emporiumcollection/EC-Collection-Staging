@@ -107,19 +107,31 @@ class PropertiesController extends Controller {
         }
         
         $this->data['userContracts'] = array();
-        $this->data['commission_contract'] = \DB::table('tb_users_contracts')->select('tb_users_contracts.id','tb_users_contracts.contract_id','tb_users_contracts.title','tb_users_contracts.description')->where('tb_users_contracts.contract_type','commission')->orderBy('tb_users_contracts.contract_id','DESC')->where('tb_users_contracts.status',1)->where('tb_users_contracts.is_expried',0)->where('tb_users_contracts.deleted',0)->first();
+        $commission_contracts = \DB::table('tb_users_contracts')->select('tb_users_contracts.id','tb_users_contracts.contract_id','tb_users_contracts.title','tb_users_contracts.description','tb_users_contracts.hotel_id')->where('tb_users_contracts.contract_type','commission')->where('tb_users_contracts.is_commission_set',1)->where('tb_users_contracts.status',1)->where('tb_users_contracts.is_expried',0)->where('tb_users_contracts.deleted',0)->orderBy('tb_users_contracts.contract_id','DESC')->get();
+        
+        $this->data['commission_contracts'] = array();
+        foreach($commission_contracts as $si_commcon){
+            $this->data['commission_contracts'][$si_commcon->hotel_id] = $si_commcon;
+        }
+        //echo "<pre>";print_r($this->data['commission_contracts']);die;
+        
         $this->data['hotel_contracts'] = array();
+        $this->data['hotels_commission_contracts'] = array();
+        $this->data['common_commission_contract'] = array();
         if(count($hotelIds) > 0){
             $usersContracts = \DB::table('tb_users_contracts')->select('tb_users_contracts.id','tb_users_contracts.contract_id','tb_users_contracts.title','tb_users_contracts.description')->where('tb_users_contracts.contract_type','hotel')->orderBy('tb_users_contracts.contract_id','DESC')->where('tb_users_contracts.status',1)->where('tb_users_contracts.is_expried',0)->where('tb_users_contracts.deleted',0)->get();
             $resetContracts = array();
             foreach($usersContracts as $si_contract){
                 $resetContracts[$si_contract->contract_id] = $si_contract;
             }
-            $this->data['userContracts'] = $resetContracts;
+            $this->data['userContracts'] = $resetContracts;            
             
-            if(count($this->data['commission_contract']) <= 0){
-                $commission_contract = \CommonHelper::get_default_contracts('commission','default',0,$hotelIds);
-            }
+            //get commission contracts from db for hotels
+            $commission_contract = \CommonHelper::get_default_contracts('commission','default',0,$hotelIds);
+            $this->data['hotels_commission_contracts'] = $commission_contract['hotels_wise'];
+            $this->data['common_commission_contract'] = $commission_contract['common'];
+            //echo "<pre>";print_r($commission_contract);die;
+            //End
             
             
         }
@@ -128,6 +140,57 @@ class PropertiesController extends Controller {
         $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.index':'properties.index'; 
         
         return view($file_name, $this->data);
+    }
+    
+    function postSavecommissioncontract(Request $request){
+        $return_array = array();
+        if (!\Auth::check()){$return_array['status'] = 'error'; $return_array['message'] = 'Errors occurred during save commission contract!'; $return_array['errors'] = array("Please login first before saving contract!");}
+        $rules = array(
+            'hotel_id' => 'required|numeric',
+            'contract_id' => 'required|numeric',
+            'commission_type' => 'required|alpha',
+        );
+        
+        $validator = Validator::make($request->all(), $rules);
+        
+        if ($validator->passes()) {
+            $hotelId = (int) $request->input('hotel_id');
+            $contractId = (int) $request->input('contract_id');
+            $commissionType = $request->input('commission_type');
+            
+            if(($hotelId > 0) && ($contractId > 0) && (strlen(trim($commissionType)) > 0)){
+                $contract = \DB::table('tb_contracts')->select('tb_contracts.*')->where('tb_contracts.contract_id',$contractId)->where('tb_contracts.status',1)->where('tb_contracts.deleted',0)->orderBy('tb_contracts.contract_id','DESC')->first();
+                if(isset($contract->contract_id)){
+                    //insert contracts
+                    \CommonHelper::submit_contracts(array($contract),'commission',$hotelId,$commissionType);
+                    //End
+                    
+                    $return_array['status'] = 'success';
+                    $return_array['message'] = 'Commission contract has been saved!';
+                }else{
+                    $return_array['status'] = 'error';
+                    $return_array['message'] = 'Errors occurred during save commission contract!';
+                    $return_array['errors'] = array("Invalid contract id!");
+                }
+            }else
+            {
+                $tarr = array();
+                if($hotelId <= 0){ $tarr[] = "Invalid hotel id!"; }
+                if($contractId <= 0){ $tarr[] = "Invalid contract id!"; }
+                if(strlen(trim($commissionType)) <= 0){ $tarr[] = "Invalid availability!"; }
+                
+                $return_array['status'] = 'error';
+                $return_array['message'] = 'Errors occurred during save commission contract!';
+                $return_array['errors'] = $tarr;
+            }
+        }else{
+            $return_array['status'] = 'error';
+            $return_array['message'] = 'Errors occurred during save commission contract!';
+            $return_array['errors'] = $validator->errors()->all();
+        }
+        
+        echo json_encode($return_array);
+        exit;
     }
 
     function getUpdate(Request $request, $id = null) {
