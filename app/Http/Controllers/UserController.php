@@ -1278,11 +1278,23 @@ class UserController extends Controller {
                 $edata = array();
                 $emlData['frmemail'] = 'marketing@emporium-voyage.com';
                 $edata['referral_code'] = $referral_code;
-                $edata['emessage'] = $request->input('message');
+                $edata['msg'] = $request->input('message');
                 $edata['first_name'] = $request->input('first_name');
                 $edata['last_name'] = $request->input('last_name');
                 $emlData['email'] = $request->input('email');
                 $emlData['subject'] = 'Invitation send by '.$request->input('email');
+                
+                $edata['byfirstname'] = $user->first_name;
+                $edata['bylastname'] = $user->last_name;
+                $edata['byemail'] = $user->email;
+                
+                    
+                $edata['tofirstname'] = $request->input('first_name');
+                $edata['tolastname'] = $request->input('last_name');
+                $edata['todate'] = $today;
+                $expiry_date = date("Y-m-d", strtotime("+30 day", strtotime($today)));
+                $edata['todays'] = 30;
+                $edata['referral_code'] = $referral_code; 
                 
                 //if (\Session::get('newlang') == 'English') {
                 //    $etemp = 'auth.reminder_eng';
@@ -1291,7 +1303,7 @@ class UserController extends Controller {
                 $etemp = 'invite';
                 //echo view('user.emails.invites.' . $etemp, $edata); die;
                 try{ 
-                \Mail::send('user.emails.invites.' . $etemp, $edata, function($message) use ($emlData) {
+                \Mail::send('user.emails.' . $etemp, $edata, function($message) use ($emlData) {
                     $message->from($emlData['frmemail'], CNF_APPNAME);
 
                     $message->to($emlData['email']);

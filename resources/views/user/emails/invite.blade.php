@@ -268,13 +268,15 @@ p.gray-tx {
                       <div class="txt-box">
             				<h3>INVITATION SEND</h3>
             				{!! $msg !!}
+                            <?php if(!empty($link)){ ?>
                             <br><br>
                             Please click on download button to download the file
                             <br>
                             <a href="{{ URL::to($link) }}">Download</a>
                             <br>
                             if button does not work please copy below link and paste into browser.<br>
-                            {{ URL::to($link) }}                        
+                            {{ URL::to($link) }}     
+                            <?php } ?>                   
                       </div>
                    </div>
     			</div> 				

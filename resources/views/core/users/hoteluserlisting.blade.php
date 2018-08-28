@@ -26,16 +26,11 @@
 	
 <div class="sbox animated fadeInRight">
 	<div class="sbox-title"> <h5> <i class="fa fa-table"></i> </h5>
-<div class="sbox-tools" >
-		<a href="{{ url($pageModule) }}" class="btn btn-xs btn-white tips" title="Clear Search" ><i class="fa fa-trash-o"></i> Clear Search </a>
-		@if(Session::get('gid') ==1)
-			<a href="{{ URL::to('sximo/module/config/'.$pageModule) }}" class="btn btn-xs btn-white tips" title=" {{ Lang::get('core.btn_config') }}" ><i class="fa fa-cog"></i></a>
-		@endif 
-		</div>
+
 	</div>
 	<div class="sbox-content"> 	
 	    <div class="toolbar-line ">
-			<a href="{{ URL::to('crmhotel/index') }}" class="tips btn btn-sm btn-white"  title="Hotel Lead Listing">
+			<a href="{{ URL::to('crmhotel') }}" class="tips btn btn-sm btn-white"  title="Hotel Lead Listing">
 			<i class="fa fa-list "></i>&nbsp;Hotel Lead Listing</a>
             
             <a href="{{ URL::to('crmhotel/lead') }}" class="tips btn btn-sm btn-white"  title="{{ Lang::get('core.btn_lead_create') }}">
@@ -106,7 +101,23 @@
 	<input type="hidden" name="md" value="" />
 	</div>
 	{!! Form::close() !!}
-	
+	<div class="table-footer">
+    	<div class="row">
+            <div class="col-sm-5">
+                <div class="table-actions" style=" padding: 10px 0">
+                
+                </div>					
+            </div>
+            <div class="col-sm-3">
+                <p class="text-center" style=" padding: 25px 0">
+        		Total : <b>{{ $pagination->total() }}</b>
+        		</p>
+            </div>
+            <div class="col-sm-4">			 
+    	       {!! $pagination->appends($pager)->render() !!}
+            </div>
+    	</div>
+	</div>
 	</div>
 </div>	
 	</div>	  
@@ -126,8 +137,8 @@
 			<div class="email-tabs-outer">
 				<div class="white-bar-menu-outer">
 					<ul class="nav nav-tabs email-pop-up-tabs">
-						<li class="active"><a data-toggle="tab" href="#email-tab1">{{ Lang::get('core.crmhotel_email_popup_emailtab') }}</a></li>
-						<li><a data-toggle="tab" href="#email-tab2">{{ Lang::get('core.crmhotel_email_popup_emaillist') }}</a></li>
+						<li class="active"><a data-toggle="tab" href="#email-tab1" class="em-tab">{{ Lang::get('core.crmhotel_email_popup_emailtab') }}</a></li>
+						<li><a data-toggle="tab" href="#email-tab2" class="em-tab">{{ Lang::get('core.crmhotel_email_popup_emaillist') }}</a></li>
 					</ul>
 				</div>
 				<div class="clearfix"></div>
@@ -246,6 +257,14 @@ $(document).ready(function(){
         $(this).parent().parent().fadeOut("slow");
         $("body").removeClass("fixed");
     });
+    $(".em-tab").on("click", function(){
+        $(".email-pop-up-tabs li").removeClass('active');
+        $(".tab-content .tab-pane").hide();
+        var tab_id = $(this).attr('href');
+        $(tab_id).addClass('in active');
+        $(tab_id).show();
+        $(this).closest('li').addClass('active');
+    });
 });	
 
 function sendmotId(boxid)
@@ -327,6 +346,7 @@ function sendemails_crmhotels(crmid)
 						lhtml +='</tr>';
 					});
 					$('#crmemaillist').html(lhtml);
+                    $('.collapse').collapse();
 				}
 				
 				$("#email-page").fadeIn("slow");

@@ -145,7 +145,7 @@ class CrmhotelController extends Controller {
         // Build pagination setting
         $page = $page >= 1 && filter_var($page, FILTER_VALIDATE_INT) !== false ? $page : 1;
         $pagination = new Paginator($results['rows'], $results['total'], $params['limit']);
-        $pagination->setPath('properties');
+        $pagination->setPath('crmhotel');
 		
         $this->data['rowData'] = $results['rows'];
         // Build Pagination 
@@ -167,7 +167,7 @@ class CrmhotelController extends Controller {
 		$this->data['fetch_cat'] = \DB::table('tb_categories')->get();
         
         //$is_demo6 = trim(\CommonHelper::isHotelDashBoard());
-        //$file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.index':'properties.index'; 
+        //$file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.index':'properties.index';
         
         return view('crmhotel.hotelleadlisting',$this->data);
 	}	
@@ -900,7 +900,7 @@ class CrmhotelController extends Controller {
         // Build pagination setting
         $page = $page >= 1 && filter_var($page, FILTER_VALIDATE_INT) !== false ? $page : 1;
         $pagination = new Paginator($results['rows'], $results['total'], $params['limit']);
-        $pagination->setPath('properties');
+        $pagination->setPath('hotellisting');
 		
         $this->data['rowData'] = $results['rows'];
         // Build Pagination 

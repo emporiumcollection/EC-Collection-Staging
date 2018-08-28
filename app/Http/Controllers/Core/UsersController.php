@@ -611,7 +611,7 @@ class UsersController extends Controller {
 		// Build pagination setting
 		$page = $page >= 1 && filter_var($page, FILTER_VALIDATE_INT) !== false ? $page : 1;	
 		$pagination = new Paginator($results['rows'], $results['total'], $params['limit']);	
-		$pagination->setPath('users');
+		$pagination->setPath('leadlisting');
 		
 		$this->data['rowData']		= $results['rows'];
 		// Build Pagination 
@@ -675,7 +675,7 @@ class UsersController extends Controller {
 		// Build pagination setting
 		$page = $page >= 1 && filter_var($page, FILTER_VALIDATE_INT) !== false ? $page : 1;	
 		$pagination = new Paginator($results['rows'], $results['total'], $params['limit']);	
-		$pagination->setPath('users');
+		$pagination->setPath('hoteluserlisting');
 		
 		$this->data['rowData']		= $results['rows'];
 		// Build Pagination 
@@ -728,7 +728,7 @@ class UsersController extends Controller {
 		// Build pagination setting
 		$page = $page >= 1 && filter_var($page, FILTER_VALIDATE_INT) !== false ? $page : 1;	
 		$pagination = new Paginator($results['rows'], $results['total'], $params['limit']);	
-		$pagination->setPath('users');
+		$pagination->setPath('travelleruserlisting');
 		
 		$this->data['rowData']		= $results['rows'];
 		// Build Pagination 

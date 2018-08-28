@@ -34,7 +34,7 @@
 	</div>
 	<div class="sbox-content"> 	
 	    <div class="toolbar-line ">
-			<a href="{{ URL::to('crmhotel/index') }}" class="tips btn btn-sm btn-white active"  title="Hotel Lead Listing">
+			<a href="{{ URL::to('crmhotel') }}" class="tips btn btn-sm btn-white active"  title="Hotel Lead Listing">
 			<i class="fa fa-list "></i>&nbsp;Hotel Lead Listing</a>
             
             <a href="{{ URL::to('crmhotel/lead') }}" class="tips btn btn-sm btn-white"  title="{{ Lang::get('core.btn_lead_create') }}">
@@ -106,7 +106,27 @@
 	<input type="hidden" name="md" value="" />
 	</div>
 	{!! Form::close() !!}
-    @include('footer')	
+    
+    
+    <div class="table-footer">
+    	<div class="row">
+            <div class="col-sm-5">
+                <div class="table-actions" style=" padding: 10px 0">
+                
+                </div>					
+            </div>
+            <div class="col-sm-3">
+                <p class="text-center" style=" padding: 25px 0">
+        		Total : <b>{{ $pagination->total() }}</b>
+        		</p>
+            </div>
+            <div class="col-sm-4">			 
+    	       {!! $pagination->appends($pager)->render() !!}
+            </div>
+    	</div>
+	</div>
+    
+    
 	</div>
 </div>	
 	</div>	  
@@ -168,8 +188,8 @@
 			<div class="email-tabs-outer">
 				<div class="white-bar-menu-outer">
 					<ul class="nav nav-tabs email-pop-up-tabs">
-						<li class="active"><a data-toggle="tab" href="#email-tab1">{{ Lang::get('core.crmhotel_email_popup_emailtab') }}</a></li>
-						<li><a data-toggle="tab" href="#email-tab2">{{ Lang::get('core.crmhotel_email_popup_emaillist') }}</a></li>
+						<li class="active"><a id="em-tab-1">{{ Lang::get('core.crmhotel_email_popup_emailtab') }}</a></li>
+						<li><a id="em-tab-2">{{ Lang::get('core.crmhotel_email_popup_emaillist') }}</a></li>
 					</ul>
 				</div>
 				<div class="clearfix"></div>
@@ -287,6 +307,20 @@ $(document).ready(function(){
         event.preventDefault();
         $(this).parent().parent().fadeOut("slow");
         $("body").removeClass("fixed");
+    });    
+    $("#em-tab-2").on("click", function(){
+        $(".email-pop-up-tabs li").removeClass('active');
+        $(".tab-content .tab-pane").hide();
+        $("#email-tab2").addClass('in active');
+        $("#email-tab2").show();
+        $(this).closest('li').addClass('active');
+    });
+    $("#em-tab-1").on("click", function(){
+        $(".email-pop-up-tabs li").removeClass('active');
+        $(".tab-content .tab-pane").hide();
+        $("#email-tab1").addClass('in active');
+        $("#email-tab1").show();
+        $(this).closest('li').addClass('active');
     });
 });	
 
@@ -370,6 +404,7 @@ function sendemails_crmhotels(crmid)
 						lhtml +='</tr>';
 					});
 					$('#crmemaillist').html(lhtml);
+                    $('.collapse').collapse();
 				}
 				
 				$("#email-page").fadeIn("slow");
