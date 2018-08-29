@@ -410,6 +410,8 @@
     				var message = '<li>'+ data.message+ '</li>';
                     $(".parsley-error-list").html(message); 
                     $("#frm_personal_info")[0].reset();
+                    window.location.href = "{{URL::to('crmhotel/leadlisting')}}";
+                    toastr.success('New Lead added successfully');                    
     			}else{
     			    var message = '';
                     for (var i = 0; i < data.errors.length; i++) {

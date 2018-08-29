@@ -295,7 +295,7 @@ class UsersController extends Controller {
     
     function postCrmsave( Request $request, $id =0)
 	{
-		
+		$id = $request->input('id');
 		$rules = $this->validateForm();
 		if($request->input('id') =='')
 		{
@@ -383,7 +383,7 @@ class UsersController extends Controller {
                             }
                         }
 
-                        if(!is_null($request->input('apply')))
+            if(!is_null($request->input('apply')))
 			{
 				$return = 'core/users/crmupdate/'.$id.'?return='.self::returnUrl();
 			} else {
@@ -392,8 +392,7 @@ class UsersController extends Controller {
 			
 			return Redirect::to($return)->with('messagetext',\Lang::get('core.note_success'))->with('msgstatus','success');
 			
-		} else {
-
+		} else {            
 			return Redirect::to('core/users/crmupdate/'.$id)->with('messagetext',\Lang::get('core.note_error'))->with('msgstatus','error')
 			->withErrors($validator)->withInput();
 		}	
