@@ -55,9 +55,9 @@
                 <h2>Company account</h2>
                 <p>In this section, add all your company related information for tax purposes. Make sure to enter your details correct as the infomration will be used for billing.</p>
             </div>
-            <div class="col-sm-12 col-md-12 col-lg-12">
-                @if(Session::has('message'))
-    				{!! Session::get('message') !!}
+            <div class="col-sm-12 col-md-12 col-lg-12" style="color: red;">
+                @if(Session::has('messagetext'))
+    				{!! Session::get('messagetext') !!}
     			@endif
             </div>
             <div class="col-sm-12 col-md-12 col-lg-12">
