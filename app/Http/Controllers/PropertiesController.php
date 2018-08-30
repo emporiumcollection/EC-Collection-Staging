@@ -106,7 +106,6 @@ class PropertiesController extends Controller {
             $hotelIds[] = $si_hotel->id;
         }
         
-        $this->data['userContracts'] = array();
         $commission_contracts = \DB::table('tb_users_contracts')->select('tb_users_contracts.id','tb_users_contracts.contract_id','tb_users_contracts.title','tb_users_contracts.description','tb_users_contracts.hotel_id')->where('tb_users_contracts.contract_type','commission')->where('tb_users_contracts.is_commission_set',1)->where('tb_users_contracts.status',1)->where('tb_users_contracts.is_expried',0)->where('tb_users_contracts.deleted',0)->orderBy('tb_users_contracts.contract_id','DESC')->get();
         
         $this->data['commission_contracts'] = array();
@@ -115,14 +114,17 @@ class PropertiesController extends Controller {
         }
         //echo "<pre>";print_r($this->data['commission_contracts']);die;
         
-        $this->data['hotel_contracts'] = array();
         $this->data['hotels_commission_contracts'] = array();
         $this->data['common_commission_contract'] = array();
+        $this->data['hotels_contracts'] = array();
+        $this->data['common_contracts'] = array();
+        $this->data['userContracts'] = array();
         if(count($hotelIds) > 0){
-            $usersContracts = \DB::table('tb_users_contracts')->select('tb_users_contracts.id','tb_users_contracts.contract_id','tb_users_contracts.title','tb_users_contracts.description')->where('tb_users_contracts.contract_type','hotel')->orderBy('tb_users_contracts.contract_id','DESC')->where('tb_users_contracts.status',1)->where('tb_users_contracts.is_expried',0)->where('tb_users_contracts.deleted',0)->get();
+            $usersContracts = \DB::table('tb_users_contracts')->select('tb_users_contracts.id','tb_users_contracts.contract_id','tb_users_contracts.title','tb_users_contracts.description','tb_users_contracts.hotel_id')->where('tb_users_contracts.contract_type','hotels')->whereIn('tb_users_contracts.hotel_id',$hotelIds)->where('tb_users_contracts.status',1)->where('tb_users_contracts.is_expried',0)->where('tb_users_contracts.deleted',0)->orderBy('tb_users_contracts.contract_id','DESC')->get();
             $resetContracts = array();
             foreach($usersContracts as $si_contract){
-                $resetContracts[$si_contract->contract_id] = $si_contract;
+                if(!isset($resetContracts[$si_contract->hotel_id])){ $resetContracts[$si_contract->hotel_id] = array(); }
+                $resetContracts[$si_contract->hotel_id][$si_contract->contract_id] = $si_contract;
             }
             $this->data['userContracts'] = $resetContracts;            
             
@@ -133,13 +135,67 @@ class PropertiesController extends Controller {
             //echo "<pre>";print_r($commission_contract);die;
             //End
             
-            
+            //get commission contracts from db for hotels
+            $hotels_contract = \CommonHelper::get_default_contracts('hotels','default',0,$hotelIds);
+            $this->data['hotels_contracts'] = $hotels_contract['hotels_wise'];
+            $this->data['common_contracts'] = $hotels_contract['common'];
+            //echo "<pre>";print_r($hotels_contract);die;
+            //End 
         }
-        
+        //print_r($this->data['userContracts']);die;
         $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
         $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.index':'properties.index'; 
         
         return view($file_name, $this->data);
+    }
+    
+    function postSavehotelcontract(Request $request){
+        $return_array = array();
+        if (!\Auth::check()){$return_array['status'] = 'error'; $return_array['message'] = 'Errors occurred during save contract!'; $return_array['errors'] = array("Please login first before saving contract!");}
+        $rules = array(
+            'hotel_id' => 'required|numeric',
+            'contract_id' => 'required',
+        );
+        
+        $validator = Validator::make($request->all(), $rules);
+        
+        if ($validator->passes()) {
+            $hotelId = (int) $request->input('hotel_id');
+            $contractId = $request->input('contract_id');
+            
+            if(($hotelId > 0) && (strlen(trim($contractId)) > 0)){
+                $contractIDS = explode(',',trim($contractId));
+                $contract = \DB::table('tb_contracts')->select('tb_contracts.*')->whereIn('tb_contracts.contract_id',$contractIDS)->where('tb_contracts.status',1)->where('tb_contracts.deleted',0)->orderBy('tb_contracts.contract_id','DESC')->get();
+                if(count($contract) > 0){
+                    //insert contracts
+                    \CommonHelper::submit_contracts($contract,'hotels',$hotelId);
+                    //End
+                    
+                    $return_array['status'] = 'success';
+                    $return_array['message'] = 'Hotel contracts has been saved!';
+                }else{
+                    $return_array['status'] = 'error';
+                    $return_array['message'] = 'Errors occurred during save hotel contracts!';
+                    $return_array['errors'] = array("Invalid contract id!");
+                }
+            }else
+            {
+                $tarr = array();
+                if($hotelId <= 0){ $tarr[] = "Invalid hotel id!"; }
+                if(strlen(trim($contractId)) <= 0){ $tarr[] = "Invalid contract id!"; }
+                
+                $return_array['status'] = 'error';
+                $return_array['message'] = 'Errors occurred during save hotel contracts!';
+                $return_array['errors'] = $tarr;
+            }
+        }else{
+            $return_array['status'] = 'error';
+            $return_array['message'] = 'Errors occurred during save hotel contracts!';
+            $return_array['errors'] = $validator->errors()->all();
+        }
+        
+        echo json_encode($return_array);
+        exit;
     }
     
     function postSavecommissioncontract(Request $request){

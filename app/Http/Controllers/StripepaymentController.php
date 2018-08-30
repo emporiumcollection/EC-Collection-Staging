@@ -339,6 +339,7 @@ public function checkoutPost(Request $request)
                         $orddta['user_id'] = \Session::get('uid'); 
                         $orddta['created'] = date('y-m-d h:i:s'); 
                         $ord_id = \DB::table('tb_orders')->insertGetId($orddta);
+                        $package_idsarr = array();
                         foreach ($request->session()->get('hotel_cart') as $cartkey => $cartValue) {
 
 
@@ -348,14 +349,16 @@ public function checkoutPost(Request $request)
                             if($cartValue['package']['type']=='hotel'){
                                  $orditemdta['package_type'] = $cartValue['package']['type']; 
                                  $orditemdta['package_id'] = $cartValue['package']['id'];
+                                 $package_idsarr[] = $orditemdta['package_id'];
                                 
-                            $packgeDataDetalis = DB::table('tb_packages')->where('id',$cartValue['package']['id'])->get();
-                             $orditemdta['package_data'] = json_encode($packgeDataDetalis);
+                                $packgeDataDetalis = DB::table('tb_packages')->where('id',$cartValue['package']['id'])->get();
+                                $orditemdta['package_data'] = json_encode($packgeDataDetalis);
                             }
                             if($cartValue['package']['type']=='advert'){
                                  $orditemdta['package_type'] = $cartValue['package']['type']; 
                                  $orditemdta['package_id'] = $cartValue['package']['content']['id'];
                                  $orditemdta['package_data'] = json_encode($cartValue['package']['content']);
+                                 $package_idsarr[] = $orditemdta['package_id'];
                             }
                             
                             $orditemdta['user_id'] = \Session::get('uid'); 
@@ -392,6 +395,43 @@ public function checkoutPost(Request $request)
                         \DB::table('tb_orders')->where('id',$ord_id)->update($orddta);
 						
 						\DB::table('tb_settings')->where('key_value', 'default_invoice_num')->update(['content' => ++$exp_num]);
+                        
+                        if(count($package_idsarr) > 0){
+                            $usersContracts = \DB::table('tb_users_contracts')->select('tb_users_contracts.id','tb_users_contracts.contract_id','tb_users_contracts.title','tb_users_contracts.description')->where('tb_users_contracts.contract_type','packages')->orderBy('tb_users_contracts.contract_id','DESC')->where('tb_users_contracts.status',1)->where('tb_users_contracts.is_expried',0)->where('tb_users_contracts.deleted',0)->get();
+                            $resetContracts = array();
+                            foreach($usersContracts as $si_contract){
+                                $resetContracts[$si_contract->contract_id] = $si_contract;
+                            }
+                            $this->data['userContracts'] = $resetContracts;
+                            $contracts = \CommonHelper::get_default_contracts('packages','tb_contracts.*',0,$package_idsarr);
+                            $common_contracts = $contracts['common'];
+                            $tpackage_contracts = $contracts['packages_wise'];
+                            $package_contracts = array();
+                            foreach($package_idsarr as $si_pack){
+                                if(isset($tpackage_contracts[$si_pack])){
+                                    foreach($tpackage_contracts[$si_pack] as $su_con){
+                                        $tobj = $su_con;
+                                        $tobj->package_id = $si_pack;
+                                        $tobj->order_id = $ord_id;
+                                        $package_contracts[$su_con->contract_id] = $tobj;
+                                    }                                    
+                                }
+                            }
+                            
+                            foreach($common_contracts as $sicommon){
+                                if(!isset($package_contracts[$sicommon->contract_id])){
+                                    $sicommon->order_id = $ord_id;
+                                    $package_contracts[$sicommon->contract_id] = $sicommon;
+                                }                                
+                            }
+                            //echo "<pre>";print_r($package_contracts);die;
+                            if(count($package_contracts) > 0){
+                                //insert contracts
+                                $package_idsarr[] = null;
+                                \CommonHelper::submit_contracts($package_contracts,'packages',$package_idsarr);
+                                //End
+                            }
+                        }
                        
                         $userinfom = User::find(\Session::get('uid'));
 

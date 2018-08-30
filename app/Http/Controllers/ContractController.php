@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\controller;
 use App\Models\Contract;
+use App\Models\Acceptedcontract;
 use App\Models\Contractsevents;
 use App\Models\Contractshotels;
 use App\Models\Contractspackages;
@@ -86,6 +87,136 @@ class ContractController extends Controller {
         $this->data['subgrid'] = (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array());
         // Render into template
         return view('contract.index', $this->data);
+    }
+    
+    private function setAcceptedContractGrid(){
+        $returnCOnt = array();
+        
+        $returnCOnt[] = array("field"=>"id","alias"=>"tb_users_contracts","language"=>array(),"label"=>"ID","view"=>0,"detail"=>1,"sortable"=>1,"search"=>1,"download"=>1,"frozen"=>1,"limited"=>"","width"=>100,"align"=>"left","sortlist"=>1);
+        $returnCOnt[] = array("field"=>"title","alias"=>"tb_users_contracts","language"=>array(),"label"=>"Title","view"=>1,"detail"=>1,"sortable"=>1,"search"=>1,"download"=>1,"frozen"=>1,"limited"=>"","width"=>100,"align"=>"left","sortlist"=>2);
+        $returnCOnt[] = array("field"=>"contract_type","alias"=>"tb_users_contracts","language"=>array(),"label"=>"Type","view"=>1,"detail"=>1,"sortable"=>1,"search"=>1,"download"=>1,"frozen"=>1,"limited"=>"","width"=>100,"align"=>"left","sortlist"=>3);
+        $returnCOnt[] = array("field"=>"commission_type","alias"=>"tb_users_contracts","language"=>array(),"label"=>"Commission Type","view"=>1,"detail"=>1,"sortable"=>1,"search"=>1,"download"=>1,"frozen"=>1,"limited"=>"","width"=>100,"align"=>"left","sortlist"=>4);
+        
+        return $returnCOnt;
+    }
+    
+    public function getAcceptedcontracts(Request $request){
+        if(!(\Auth::check())){
+            return Redirect::to('dashboard')
+                            ->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus', 'error');
+        }
+        
+        $uid = \Auth::user()->id;
+        $acceptedcontractsmodel = new Acceptedcontract();
+        
+        $sort = (!is_null($request->input('sort')) ? $request->input('sort') : 'id');
+        $order = (!is_null($request->input('order')) ? $request->input('order') : 'asc');
+        // End Filter sort and order for query 
+        // Filter Search for query		
+        $filter = (!is_null($request->input('search')) ? $this->buildSearch() : '');
+        
+        if(\Session::get('gid')!=1 && \Session::get('gid')!=2){
+                $filter .= " AND ((accepted_by = '".$uid."'))" ;
+
+        }
+
+        $page = $request->input('page', 1);
+        $params = array(
+            'page' => $page,
+            'limit' => (!is_null($request->input('rows')) ? filter_var($request->input('rows'), FILTER_VALIDATE_INT) : static::$per_page ),
+            'sort' => $sort,
+            'order' => $order,
+            'params' => $filter,
+            'global' => (isset($this->access['is_global']) ? $this->access['is_global'] : 0 )
+        );
+        // Get Query 
+        $results = $acceptedcontractsmodel->getRows($params,true);
+
+        // Build pagination setting
+        $page = $page >= 1 && filter_var($page, FILTER_VALIDATE_INT) !== false ? $page : 1;
+        $pagination = new Paginator($results['rows'], $results['total'], $params['limit']);
+        $pagination->setPath('contract/acceptedcontracts');
+
+        $this->data['rowData'] = $results['rows'];
+        // Build Pagination 
+        $this->data['pagination'] = $pagination;
+        // Build pager number and append current param GET
+        $this->data['pager'] = $this->injectPaginate();
+        // Row grid Number 
+        $this->data['i'] = ($page * $params['limit']) - $params['limit'];
+        $this->data['tableGrid'] = $this->setAcceptedContractGrid();
+        
+        $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+        if(strlen($is_demo6) > 0){
+            $file_name = $is_demo6.'.contracts.accepted';
+            return view($file_name,$this->data);
+        }else{
+            return Redirect::to('dashboard')
+                            ->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus', 'error');
+        }
+    }
+    
+    public function download_contract($contractid){
+        $downFileName = 'contract-order-'.date('d-m-Y').'-id_'.$contractid.'.pdf';
+        if(!empty($contractid) && $contractid>0)
+		{
+    	    // Get Query 
+            $result = \DB::table('tb_users_contracts')->where('id', $contractid)->get();
+            
+            if(!empty($result)){
+                $html = '<style> .main { margin:0 25px; width:700px; font-family: arial, sans-serif; } .page-break { page-break-after: always; } .header,.footer {width: 100%; position:fixed;} .header { top: 0px; text-align:center;} .footer {bottom: 30px; font-size:10px;} .pagenum:after {content: counter(page);} .imgBox { text-align:center; width:400px; margin:50px auto 30px auto;} .nro { text-align:center; font-size:12px; } .header img { width:125px; height: auto; } .Mrgtop80 {margin-top:80px;} .Mrgtop40 {margin-top:40px;} .Mrgtop20 {margin-top:10px;} .monimg img { width:125px; height:80px; } .font14 { font-size:14px; }  .font13 { font-size:13px; } .font12 { font-size:12px; } .algRgt { text-align:right; } .algCnt { text-align:center; }</style>';
+                $html .= '<div class="main"><div class="header"><img src="'. \URL::to('metronic/assets/demo/demo6/media/img/logo/logo.png').'"></div><br><br><br><div class="footer">© Copyright: Emporium Voyage Membership Portal</div></div>';
+                /*$html .= '<div class="Mrgtop80 font13"><table><tr style="background:#eeeeee;"><th class="alnCenter">Title </th><th class="alnCenter">Type </th><th  class="alnCenter">Description </th><th class="alnCenter">Availability </th><th class="alnCenter">Commission (%) </th></tr>';
+    			
+    				$html .= '<tr><td class="alnCenter">'.$result[0]->title.'</td><td><b>'.ucfirst($result[0]->contract_type).'</b></td><td class="algCnt">'.$result[0]->description.'</td><td class="algCnt">'.ucfirst($result[0]->commission_type).'</td><td>';
+                    if(!empty($result[0]->commission_type)){
+                        if($result[0]->commission_type == 'partial'){
+                            $html .= $result[0]->partial_availability_commission;
+                        }
+                        if($result[0]->commission_type == 'full'){
+                            $html .= $result[0]->full_availability_commission;
+                        }
+                    }
+                    else{
+                        $html .= '';
+                    }	
+                    $html .= '</td></tr>';
+    			
+    			$html .= '</table></div>';*/
+                $html .= '<div class="Mrgtop80 font14">';
+    				$html .= '<h3 class="algCnt">'.$result[0]->title.'</h3>';
+                    $html .= '<div>';
+                        $html .= '<p>Type : '.ucfirst($result[0]->contract_type).'</p>';
+                        if(!empty($result[0]->commission_type)){
+                            $html .= '<p>Availability : '.ucfirst($result[0]->commission_type).'</p>';    
+                        }
+                        if(!empty($result[0]->commission_type)){
+                            $html .= '<p>Commission (%) : ';
+                            if($result[0]->commission_type == 'partial'){
+                                $html .= $result[0]->partial_availability_commission;
+                            }
+                            if($result[0]->commission_type == 'full'){
+                                $html .= $result[0]->full_availability_commission;
+                            }
+                            $html .= '</p>';
+                        }
+                        else{
+                            $html .= '';
+                        }
+                    $html .= '</div>';
+                    $html .= '<p>'.$result[0]->description.'</p>';
+    			$html .= '</div>';
+                $pdf = \App::make('dompdf.wrapper');
+    			$pdf->loadHTML($html);
+    			return $pdf->download($downFileName);
+            }
+            else{
+    			return 'error';
+    		}
+		}
+        else{
+			return 'error';
+		}
     }
     
     public function my_contract(Request $request) {

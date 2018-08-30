@@ -452,6 +452,7 @@ Route::get('getpropertytypedetail/{id}', 'Frontend\PropertyController@getPropert
 Route::post('filter_category_destionation', 'HomeController@getPropertyByCategoryDestination');
 //Route::get('choosepackage/{id}', 'HomeController@index');
 
+Route::get('download_contract/{lid}', 'ContractController@download_contract');
 
 Route::post('find_property_by_name', 'HomeController@find_property_by_name');
 Route::get('getRooms/{slug}', 'PropertiesDetailController@getRoomsAjax');

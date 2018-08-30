@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 class Sximo extends Model {
 
 
-	public static function getRows( $args )
+	public static function getRows( $args, $bypass=0 )
 	{
        $table = with(new static)->table;
 	   $key = with(new static)->primaryKey;
@@ -25,7 +25,7 @@ class Sximo extends Model {
 
 		// Update permission global / own access new ver 1.1
 		$table = with(new static)->table;
-		if($global == 0 )
+		if(($global == 0) && ($bypass == 0) )
 				$params .= " AND {$table}.entry_by ='".\Session::get('uid')."'"; 	
 		// End Update permission global / own access new ver 1.1			
         

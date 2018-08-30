@@ -29,15 +29,46 @@
   
 <div class="row">
         
-        {{--*/ $is_commission_popup = false; /*--}}
+        {{--*/ $is_commission_popup = false; $hotelWiseContracts = array(); /*--}}
         @foreach ($rowData as $row)
+            {{--*/
+            $comcontract = array();
+            if(isset($hotels_commission_contracts[$row->id])){ $comcontract = $hotels_commission_contracts[$row->id]; }
+            elseif(count($common_commission_contract) > 0){ $comcontract = $common_commission_contract; }
+            
+            $acceptedHotelContracts = array();
+            if(isset($userContracts[$row->id])){ $acceptedHotelContracts = $userContracts[$row->id]; }
+            
+            $hotelcontract = array();
+            $fhotelcontract = array();
+            $hcontract_ids = array();
+            if(isset($hotels_contracts[$row->id])){ $fhotelcontract = $hotels_contracts[$row->id]; }
+            $fhotelcontract = array_merge($fhotelcontract,$common_contracts);
+            foreach($fhotelcontract as $tkey=>$shotelcontrat){
+                if(!isset($acceptedHotelContracts[$shotelcontrat->contract_id])){
+                    $hotelcontract[$tkey] = $shotelcontrat;
+                    $hcontract_ids[] = $shotelcontrat->contract_id;
+                }
+            }
+            /*--}}
+            
+            @if((count($hotelcontract) > 0))
+            {{--*/ $hotelWiseContracts[$row->id] = array('hotel_name'=>$row->property_name,'contracts'=>$hotelcontract); /*--}}
+            <!--start:: hotel contracts alert -->
             <div class="col-md-12 col-xs-12">
-                    {{--*/
-                    $comcontract = array();
-                    if(isset($hotels_commission_contracts[$row->id])){ $comcontract = $hotels_commission_contracts[$row->id]; }
-                    elseif(count($common_commission_contract) > 0){ $comcontract = $common_commission_contract; }
-                    /*--}}
-                    
+                <div class="m-alert m-alert--icon m-alert--outline alert alert-danger" role="alert">
+                    <div class="m-alert__icon"><i class="la la-warning"></i></div>
+                    <div class="m-alert__text"><strong>{{$row->property_name}}'s Contracts!</strong> Some contracts are pending for acceptance!</div>
+                    <div class="m-alert__actions">
+                        <button type="button" class="btn btn-danger btn-sm m-btn m-btn--pill m-btn--wide" data-toggle="modal" data-target="#contract_model_{{$row->id}}">View All</button>
+                        <button type="button" class="btn btn-danger btn-sm m-btn m-btn--pill m-btn--wide acceptcontractbtn" data-id="{{$row->id}}" data-contract-ids="{{implode(',',$hcontract_ids)}}">Accept All</button>
+                    </div>
+                </div>
+            </div>
+            <!--end:: hotel contracts alert -->
+            @endif
+            
+            <div class="col-md-12 col-xs-12">                    
                     @if((count($comcontract) > 0) && (!isset($commission_contracts[$row->id])))
                     {{--*/ $is_commission_popup = true; /*--}}
                     <!--start:: contracts popup -->
@@ -382,6 +413,44 @@
         
 </div>
 
+@foreach($hotelWiseContracts as $key=>$siHotelContract)
+{{--*/ $hotelName =  $siHotelContract["hotel_name"]; $hotelContracts =  $siHotelContract["contracts"]; /*--}}
+<div class="modal fade" id="contract_model_{{$key}}" tabindex="-1" role="dialog" aria-labelledby="contractModalLabel{{$key}}" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" data-id="{{$key}}">
+            <div class="modal-header">
+                <h5 class="modal-title" id="contractModalLabel{{$key}}">{{$hotelName}}'s Contracts</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="m-portlet__body">
+                    <div class="m-accordion m-accordion--default m-accordion--solid" id="contract_accordion{{$key}}" role="tablist">
+                        <!-- new contracts start -->
+                        @foreach($hotelContracts as $si_contract)
+                            <div class="m-accordion__item">
+                                <div class="m-accordion__item-head collapsed" role="tab" id="contract_accordion_item_{{$key}}_{{$si_contract->contract_id}}_head" data-toggle="collapse" href="#contract_accordion_item_{{$key}}_{{$si_contract->contract_id}}_body" aria-expanded="false">
+                                    <span class="m-accordion__item-icon"><i class="fa flaticon-list-3"></i></span>
+                                    <span class="m-accordion__item-title">{{$si_contract->title}} <a href="#" class="si_accept_contract text-success"><i class="r-icon-tag la la-unlock"></i></a></span>
+                                    <span class="m-accordion__item-mode"></span>
+                                </div>
+                                
+                                <div class="m-accordion__item-body collapse" id="contract_accordion_item_{{$key}}_{{$si_contract->contract_id}}_body" role="tabpanel" aria-labelledby="contract_accordion_item_{{$key}}_{{$si_contract->contract_id}}_head" data-parent="#contract_accordion{{$key}}">
+                                    <div class="m-accordion__item-content">
+                                        <p>{{$si_contract->description}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                        <!-- new contracts end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endforeach
+
 @stop
 {{-- For custom style  --}}
 @section('style')
@@ -436,6 +505,61 @@
 @section('custom_js_script')
 <script>
 $(document).ready(function () {
+    
+    $(".acceptcontractbtn").click(function(e){
+        e.preventDefault();
+        var btnObj = $(this);
+        //loader start
+        btnObj.prop('disabled',true);
+        btnObj.html('Processing...');
+        btnObj.addClass('m-loader m-loader--light m-loader--right');
+        //End
+        var hotelId = btnObj.data('id');
+        var contractId = btnObj.data('contract-ids');
+        
+        var fdata = new FormData();
+            fdata.append("hotel_id",hotelId);
+            fdata.append("contract_id",contractId);
+            
+        $.ajax({
+            type:"POST",
+            url:"{{URL::to('properties/savehotelcontract')}}",
+            dataType:'json',
+            contentType: false,
+            processData: false,
+            data:fdata,                
+            success: function(response){
+                if(response.status == 'success'){
+                    toastr.success(response.message);
+                    btnObj.closest(".m-alert").parent().hide();
+                }
+                else{
+                    if((typeof response.errors) != 'undefined'){
+                        $.each(response.errors,function(index, value){
+                            toastr.error(value);
+                        });
+                    }
+                    
+                    //loader start
+                    btnObj.prop('disabled',false);
+                    btnObj.html('Accept All');
+                    btnObj.removeClass('m-loader m-loader--light m-loader--right');
+                    //End                                                
+                }
+            },
+            error: function(e){
+                //loader start
+                btnObj.prop('disabled',false);
+                btnObj.html('Accept All');
+                btnObj.removeClass('m-loader m-loader--light m-loader--right');
+                //End
+                toastr.error("Unexpected error occurred!");
+            }
+        });
+        
+        return false;
+    });
+    
     @if($is_commission_popup === true)
     $(".accept-btn").click(function(e){
         e.preventDefault();
@@ -499,6 +623,8 @@ $(document).ready(function () {
             //End
             toastr.error("Please select hotel availablity!");
         }
+        
+        return false;
     });
     @endif
     

@@ -59,6 +59,9 @@
                             <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  m-menu-submenu-toggle="hover">
                                 <a href="#" class="m-menu__link"><i class="m-menu__link-icon fa fa-thumbs-up"></i> <span class="m-menu__link-text">Quality Assurance</span></a>
                             </li>
+                            <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  m-menu-submenu-toggle="hover">
+                                <a href="{{ URL::to('contract/acceptedcontracts')}}" class="m-menu__link"><i class="m-menu__link-icon fa fa-handshake"></i> <span class="m-menu__link-text">Accepted Contracts</span></a>
+                            </li>
                             
                             
                            <?php /* @foreach ($sidebar as $menu)
