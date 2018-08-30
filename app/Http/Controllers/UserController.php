@@ -1328,9 +1328,86 @@ class UserController extends Controller {
     }
     public function getCompany(){
         $user = User::find(\Session::get('uid'));
+        $this->data['extra'] = \DB::table('tb_user_company_details')->where('user_id', $user->id)->first();
+        //print_r($this->data['extra']);
         $is_demo6 = trim(\CommonHelper::isHotelDashBoard($user->group_id));        
         $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.user.company':'';      
-        return view($file_name);
+        return view($file_name, $this->data);
+    }
+    public function postSavecompamy(Request $request){
+        if (!\Auth::check())
+            return Redirect::to('user/login');
+
+        $rules = array(
+            'company_name' => 'required',
+            'company_owner_name' => 'required',
+            'company_legal_representive_name' => 'required',
+            'company_phone' => 'required',
+        );
+
+        /*if ($request->input('company_email') != \Session::get('eid')) {
+            $rules['company_email'] = 'required|email';
+        }*/
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->passes()) {
+
+
+            /*if (!is_null(Input::file('company_logo'))) {
+                $file = $request->file('company_logo');
+                $destinationPath = './uploads/users/company/';
+                $filename = $file->getClientOriginalName();
+                $extension = $file->getClientOriginalExtension(); //if you need extension of the file
+                $newfilename = \Session::get('uid') . '.' . $extension;
+                $uploadSuccess = $request->file('company_logo')->move($destinationPath, $newfilename);
+                if ($uploadSuccess) {
+                    $data['company_logo'] = $newfilename;
+                }
+            }*/
+
+            $data['user_id'] = \Auth::user()->id;
+            $data['company_name'] = Input::get('company_name');
+            $data['company_address'] = Input::get('company_address');
+            $data['company_city'] = Input::get('company_city');            
+            $data['company_state'] = Input::get('company_state');
+            $data['company_postal_code'] = Input::get('company_postal_code');
+            $data['company_country'] = Input::get('company_country');
+            $data['company_phone'] = Input::get('company_phone');
+            
+            $data['contact_person'] = Input::get('company_legal_representive_name');            
+            $data['company_email'] = Input::get('company_legal_representive_email');
+            $data['contact_person_phone'] = Input::get('company_legal_representive_phone');
+            $data['country_of_incorporation'] = Input::get('company_legal_representive_country_of_incorporation');
+            $data['company_tax_number'] = Input::get('company_registration_number');
+            $data['date_of_incorporation'] = Input::get('company_legal_representive_dt_incorporation');
+            
+            $data['company_owner'] = Input::get('company_owner_name');
+            $data['company_owner_dob'] = Input::get('company_owner_dob');
+            
+            /*$data['company_email'] = Input::get('company_email');            
+            $data['company_address2'] = Input::get('company_address2');
+            $data['company_website'] = Input::get('company_website');
+            $data['steuernummer'] = Input::get('steuernummer');
+            $data['umsatzsteuer_id'] = Input::get('umsatzsteuer_id');
+            $data['geschäftsführer'] = Input::get('geschäftsführer');
+            $data['handelsregister'] = Input::get('handelsregister');
+            $data['amtsgericht'] = Input::get('amtsgericht');*/
+            //print_r($data); die;
+            //echo Input::get('hid_id'); die;
+            if (Input::get('hid_id') != "" && Input::get('hid_id') > 0) {
+                $data['updated'] = date('y-m-d h:i:s');
+                \DB::table('tb_user_company_details')->where('id', Input::get('hid_id'))->update($data);
+            } else {
+                $data['created'] = date('y-m-d h:i:s');
+                \DB::table('tb_user_company_details')->insert($data);
+            }
+
+            return Redirect::to('user/company')->with('messagetext', 'Company details has been saved!')->with('msgstatus', 'success');
+        } else {
+            return Redirect::to('user/company')->with('messagetext', 'The following errors occurred')->with('msgstatus', 'error')
+                            ->withErrors($validator)->withInput();
+        }
     }
     public function postIagree(Request $request){
         $iagree_data['i_agree'] = $request->input('agree');

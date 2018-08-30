@@ -25,7 +25,7 @@
             <div class="col-sm-12 col-md-12 col-lg-12 margin-top">
                 <div class="row">
                     <div class="col-sm-12 col-md-12 col-lg-12">
-                        <a href="#" class="setting-left-side-menu"><i class="m-nav__link-icon fa fa-credit-card"></i> Add Payment Method</a>
+                        <a href="{{ URL::to('user/settings')}}" class="setting-left-side-menu"><i class="m-nav__link-icon fa fa-credit-card"></i> Add Payment Method</a>
                     </div>      
                     <div class="col-sm-12 col-md-12 col-lg-12">
                         <a href="{{ URL::to('user/company')}}" class="setting-left-side-menu"><i class="m-nav__link-icon flaticon-profile-1"></i> Create Company</a>

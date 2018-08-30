@@ -56,9 +56,14 @@
                 <p>In this section, add all your company related information for tax purposes. Make sure to enter your details correct as the infomration will be used for billing.</p>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-12">
+                @if(Session::has('message'))
+    				{!! Session::get('message') !!}
+    			@endif
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-12">
                 
 									
-                                        {!! Form::open(array('url'=>'#', 'class'=>'m-form m-form--label-align-left- m-form--state- ', 'id'=>'property_update_form' ,'files' => true)) !!}
+                                        {!! Form::open(array('url'=>'user/savecompamy/', 'class'=>'m-form m-form--label-align-left- m-form--state- ', 'id'=>'property_update_form' ,'files' => true)) !!}
                                         <div class="m-portlet__body m-portlet__body--no-padding">
                                             
                                             
@@ -70,9 +75,10 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group m-form__group row">
-                                                        <label class="col-xl-3 col-lg-3 col-form-label">Company name </label>
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">Company name<span>*</span> </label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            <input type="text" class="form-control" placeholder="" />                                                             
+                                                            <input type="text" class="form-control" placeholder="" name="company_name" value="<?php if(!empty($extra)) { echo $extra->company_name; } ?>" />             
+                                                            <span class="error">{{ $errors->first('company_name') }}</span>
                                                         </div> 
                                                     </div>  
                                                     <div class="m-separator m-separator--dashed m-separator--lg"></div>
@@ -82,47 +88,48 @@
     													</h3>                                                        
     												</div> 				
                                                     <div class="form-group m-form__group row">
-                                                        <label class="col-xl-3 col-lg-3 col-form-label">Street </label>
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">Address </label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            <input type="text" class="form-control" placeholder="" />                                                             
+                                                            <input type="text" class="form-control" placeholder="" name="company_address" value="<?php if(!empty($extra)) { echo $extra->company_address; } ?>"  /> 
                                                         </div> 
                                                     </div> 				
-                                                    <div class="form-group m-form__group row">
+                                                    <div class="form-group m-form__group row" style="display: none;">
                                                         <label class="col-xl-3 col-lg-3 col-form-label">Suite, bldg, etc. (optional) </label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            <input type="text" class="form-control" placeholder="" />                                                             
+                                                            <input type="text" class="form-control" placeholder="" name="company_bldg" value="<?php if(!empty($extra)) { echo $extra->company_name; } ?>"  />    
                                                         </div> 
                                                     </div> 			
                                                     <div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label">City </label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            <input type="text" class="form-control" placeholder="" />                                                             
+                                                            <input type="text" class="form-control" placeholder="" name="company_city" value="<?php if(!empty($extra)) { echo $extra->company_city; } ?>"  />        
                                                         </div> 
                                                     </div>
                                                     <div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label">State </label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            <input type="text" class="form-control" placeholder="" />                                                             
+                                                            <input type="text" class="form-control" placeholder="" name="company_state" value="<?php if(!empty($extra)) { echo $extra->company_state; } ?>"  />                                                   
                                                         </div> 
                                                     </div> 
                     
                                                     <div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label">ZIP code </label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            <input type="text" class="form-control" placeholder="" />                                                             
+                                                            <input type="text" class="form-control" placeholder="" name="company_postal_code" value="<?php if(!empty($extra)) { echo ($extra->company_postal_code > 0) ? $extra->company_postal_code : '' ; } ?>"  />                                                             
                                                         </div> 
                                                     </div>
                                                     <div class="form-group m-form__group row">
                                                         <label class="col-xl-3 col-lg-3 col-form-label">Country </label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            <input type="text" class="form-control" placeholder="" />                                                             
+                                                            <input type="text" class="form-control" placeholder="" name="company_country" value="<?php if(!empty($extra)) { echo $extra->company_country; } ?>"  />                                                             
                                                         </div> 
                                                     </div> 
                                                     
                                                     <div class="form-group m-form__group row">
-                                                        <label class="col-xl-3 col-lg-3 col-form-label">Phone number </label>
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">Phone number<span>*</span> </label>
                                                         <div class="col-xl-9 col-lg-9">
-                                                            <input type="text" class="form-control" placeholder="" />                                                             
+                                                            <input type="text" class="form-control" placeholder="" name="company_phone" value="<?php if(!empty($extra)) { echo $extra->company_phone; } ?>"  />          
+                                                            <span class="error">{{ $errors->first('company_phone') }}</span>          
                                                         </div> 
                                                     </div>
                                                     <div class="form-group m-form__group row">
@@ -146,47 +153,48 @@
                                                         </div> 
                                                         					
                                                         <div class="form-group m-form__group row">
-                                                            <label class="col-xl-3 col-lg-3 col-form-label">First name </label>
+                                                            <label class="col-xl-3 col-lg-3 col-form-label">Name<span>*</span> </label>
                                                             <div class="col-xl-9 col-lg-9">
-                                                                <input type="text" class="form-control" placeholder="" />                                                             
+                                                                <input type="text" class="form-control" placeholder="" name="company_legal_representive_name" value="<?php if(!empty($extra)) { echo $extra->contact_person; } ?>" /> 
+                                                                <span class="error">{{ $errors->first('company_legal_representive_name') }}</span>
                                                             </div> 
                                                         </div> 				
-                                                        <div class="form-group m-form__group row">
+                                                        <div class="form-group m-form__group row" style="display: none;">
                                                             <label class="col-xl-3 col-lg-3 col-form-label">Last name </label>
                                                             <div class="col-xl-9 col-lg-9">
-                                                                <input type="text" class="form-control" placeholder="" />                                                             
+                                                                <input type="text" class="form-control" placeholder="" name="company_last_name" value="<?php if(!empty($extra)) { echo $extra->company_email; } ?>" />                                                             
                                                             </div> 
                                                         </div> 			
                                                         <div class="form-group m-form__group row">
                                                             <label class="col-xl-3 col-lg-3 col-form-label">Email </label>
                                                             <div class="col-xl-9 col-lg-9">
-                                                                <input type="text" class="form-control" placeholder="" />                                                             
+                                                                <input type="text" class="form-control" placeholder="" name="company_legal_representive_email" value="<?php if(!empty($extra)) { echo $extra->company_email; } ?>"  />                                                             
                                                             </div> 
                                                         </div>
                                                         <div class="form-group m-form__group row">
                                                             <label class="col-xl-3 col-lg-3 col-form-label">Phone number </label>
                                                             <div class="col-xl-9 col-lg-9">
-                                                                <input type="text" class="form-control" placeholder="" />                                                             
+                                                                <input type="text" class="form-control" placeholder="" name="company_legal_representive_phone" value="<?php if(!empty($extra)) { echo $extra->contact_person_phone; } ?>"  />                                                             
                                                             </div> 
                                                         </div> 
                         
                                                         <div class="form-group m-form__group row">
                                                             <label class="col-xl-3 col-lg-3 col-form-label">Country of incorporation </label>
                                                             <div class="col-xl-9 col-lg-9">
-                                                                <input type="text" class="form-control" placeholder="" />                                                             
+                                                                <input type="text" class="form-control" placeholder="" name="company_legal_representive_country_of_incorporation" value="<?php if(!empty($extra)) { echo $extra->country_of_incorporation; } ?>"  />                                                             
                                                             </div> 
                                                         </div>
                                                         <div class="form-group m-form__group row">
                                                             <label class="col-xl-3 col-lg-3 col-form-label">Registration number </label>
                                                             <div class="col-xl-9 col-lg-9">
-                                                                <input type="text" class="form-control" placeholder="" />                                                             
+                                                                <input type="text" class="form-control" placeholder="" name="company_registration_number" value="<?php if(!empty($extra)) { echo $extra->company_tax_number; } ?>"  />                                                             
                                                             </div> 
                                                         </div> 
                                                         
                                                         <div class="form-group m-form__group row">
                                                             <label class="col-xl-3 col-lg-3 col-form-label">Date of incorporation </label>
                                                             <div class="col-xl-9 col-lg-9">
-                                                                <input type="text" class="form-control" placeholder="" />                                                             
+                                                                <input type="text" class="form-control datepic" placeholder="" name="company_legal_representive_dt_incorporation" value="<?php if(!empty($extra)) { echo ((!empty($extra->date_of_incorporation) && ($extra->date_of_incorporation != "0000-00-00" )) ? $extra->date_of_incorporation : ''); } ?>"  />                                                             
                                                             </div> 
                                                         </div>
                                                     </div>
@@ -198,25 +206,27 @@
                                                             </h3>
                                                         </div> 					
                                                         <div class="form-group m-form__group row">
-                                                            <label class="col-xl-3 col-lg-3 col-form-label">First name </label>
+                                                            <label class="col-xl-3 col-lg-3 col-form-label">Name<span>*</span> </label>
                                                             <div class="col-xl-9 col-lg-9">
-                                                                <input type="text" class="form-control" placeholder="" />                                                             
+                                                                <input type="text" class="form-control" placeholder="" name="company_owner_name" value="<?php if(!empty($extra)) { echo $extra->company_name; } ?>"  />          
+                                                                <span class="error">{{ $errors->first('company_owner_name') }}</span>
                                                             </div> 
                                                         </div> 				
-                                                        <div class="form-group m-form__group row">
+                                                        <div class="form-group m-form__group row" style="display: none;">
                                                             <label class="col-xl-3 col-lg-3 col-form-label">Last name </label>
                                                             <div class="col-xl-9 col-lg-9">
-                                                                <input type="text" class="form-control" placeholder="" />                                                             
+                                                                <input type="text" class="form-control" placeholder="" name="company_owner_last_name" value="<?php if(!empty($extra)) { echo $extra->company_owner; } ?>"  />                                                             
                                                             </div> 
                                                         </div> 			
                                                         <div class="form-group m-form__group row">
                                                             <label class="col-xl-3 col-lg-3 col-form-label">Date of birth </label>
                                                             <div class="col-xl-9 col-lg-9">
-                                                                <input type="text" class="form-control" name="" placeholder="">
+                                                                <input type="text" class="form-control datepic" placeholder="" name="company_owner_dob" value="<?php if(!empty($extra)) { echo ((!empty($extra->company_owner_dob) && ($extra->company_owner_dob != "0000-00-00" )) ? $extra->company_owner_dob : ''); } ?>" >
                                                             </div> 
                                                         </div>
                                                     </div> 
                                                     <div class="col-sm-12 col-md-12 c0l-lg-12 m--align-right">
+                                                        <input type="hidden" name="hid_id" value="<?php if(!empty($extra)) { echo $extra->id; } ?>" />
                                                         <button type="submit" class="btn btn-success b-btn"><i class="fa fa-save"></i> Save</button>
                                                     </div>
                                                     <div class="m-separator m-separator--dashed m-separator--lg"></div>
@@ -383,7 +393,13 @@
            $("#m_quick_sidebar_toggle_2").click(function(){ console.log("ff");
                 $(".m-topbar__nav #m_quick_sidebar_toggle").trigger('click');
                 $('#m_quick_sidebar_tabs [href="#m_quick_sidebar_tabs_settings"]').trigger('click');
-           }); 
+           });
+           $('.datepic').datepicker({
+    			numberOfMonths: 1,
+    			showButtonPanel: true,
+    			format: 'yyyy-mm-dd'
+    	   });
+ 
         });
     </script>
 @stop
