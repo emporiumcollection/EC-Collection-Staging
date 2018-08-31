@@ -1759,7 +1759,7 @@ class UserController extends Controller {
         $edata['last_name'] = $user->last_name;
         $edata['email'] = $user->email;
         $edata['link'] = 'core/users/update/'.$user->id;
-        $emlData['email'] = 'dalip.01rad@gmail.com';
+        $emlData['email'] = 'riaan@number7even.com';
         $emlData['subject'] = 'Account deactivation request';
         
         
