@@ -237,7 +237,7 @@
                                                             </h3>
                                                         </div> 
                                                         <div class="col-sm-12 col-md-12 c0l-lg-12">
-                                                            <button class="btn btn-success b-btn"><i class="fa fa-save"></i> Deactivate My Account</button>
+                                                            <button class="btn btn-success b-btn" id="deactivate_account"><i class="fa fa-save"></i> Deactivate My Account</button>
                                                         </div>	
                                                     </div>                        					
     											</div>
@@ -388,6 +388,7 @@
 
 @stop
 @section('custom_js_script')
+<script src="{{ asset('metronic/assets/demo/demo6/base/toastr.js') }}"></script>
     <script>
         $(document).ready(function(){
            $("#m_quick_sidebar_toggle_2").click(function(){ console.log("ff");
@@ -399,7 +400,24 @@
     			showButtonPanel: true,
     			format: 'yyyy-mm-dd'
     	   });
- 
+           
+           $("#deactivate_account").click(function(e){
+              e.preventDefault();
+              if(confirm('Are you sure, You want to deactivate your account')){
+                  $.ajax({
+                	  url: "{{ URL::to('user/deactivateaccount')}}",
+                	  type: "post",
+                	  dataType: "json",
+                	  success: function(response){
+                		if(response.status == 'success'){
+                            toastr.success(response.message);
+                            //window.location.href = "{{Url::to('/')}}";
+                        }
+                      }
+                   });
+               }
+           }); 
+           
         });
     </script>
 @stop

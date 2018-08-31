@@ -85,7 +85,7 @@
 							</a>
 						</li>		
                         <li class="m-nav__item nav-item m-tabs__item">
-                            <a href="#" class="m-nav__link nav-link m-tabs__link active" data-toggle="tab" role="tab">
+                            <a href="#" class="m-nav__link nav-link m-tabs__link active" id="remove_account">
 								<i class="m-nav__link-icon flaticon-delete-2"></i>
 								<span class="m-nav__link-title">
 									<span class="m-nav__link-wrap">
@@ -885,6 +885,24 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
     
 <script>
 $(document).ready(function(){
+    
+   $("#remove_account").click(function(){
+      if(confirm('Are you sure, You want to remove your account')){
+          $.ajax({
+        	  url: "{{ URL::to('user/removeaccount')}}",
+        	  type: "post",
+        	  dataType: "json",
+        	  success: function(response){
+        		if(response.status == 'success'){
+                    toastr.success(response.message);
+                    window.location.href = "{{Url::to('/')}}";
+                }
+              }
+           });
+       }
+   }); 
+    
+    
    $("#contractacceptbtn").click(function(e){
         e.preventDefault();
         

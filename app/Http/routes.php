@@ -102,6 +102,10 @@ Route::post('/viewInvite', 'UserController@viewInvite');
 Route::post('editinvite', 'UserController@editInvite'); 
 Route::post('deleteinvite', 'UserController@deleteInvite');
 
+Route::post('/viewcompanion', 'UserController@viewCompanion');   
+Route::post('editcompanion', 'UserController@editCompanion'); 
+Route::post('deletecompanion', 'UserController@deleteCompanion');
+
 Route::post('customer_ajaxPostCreate', 'CustomerController@ajaxPostCreate');
 
 Route::post('leadcreate', 'UserController@ajaxLeadCreate');
