@@ -405,6 +405,204 @@
 
 @show
 <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="760dec3f-be0e-4331-bd80-0c07fb2f2e1e" type="text/javascript" async></script>
+<style>
+.popover>.popover-title{
+    font-size:13px;
+    color:#000;
+}
+.popover>.popover-content{
+    color:#a94442;
+}
+.popover.primary {
+    border-color:#337ab7;
+}
+.popover.primary>.arrow {
+    border-top-color:#337ab7;
+}
+.popover.primary>.popover-title {
+    color:#fff;
+    background-color:#337ab7;
+    border-color:#337ab7;
+}
+.popover.primary.min_char>.popover-content>.pass_8{
+    color:#337ab7;
+}
+.popover.primary.upper_char>.popover-content>.upper_case{
+    color:#337ab7;
+}
+.popover.primary.spec_char>.non_alpha{
+    color:#337ab7;
+}
+.popover.success {
+    border-color:#d6e9c6;
+}
+.popover.success>.arrow {
+    border-top-color:#d6e9c6;
+}
+.popover.success>.popover-title {
+    color:#3c763d;
+    background-color:#dff0d8;
+    border-color:#d6e9c6;
+}
+.popover.success.min_char>.popover-content>.pass_8{
+    color:#3c763d;
+}
+.popover.success.upper_char>.popover-content>.upper_case{
+    color:#3c763d;
+}
+.popover.success.spec_char>.popover-content>.non_alpha{
+    color:#3c763d;
+}
+.popover.info {
+    border-color:#bce8f1;
+}
+.popover.info>.arrow {
+    border-top-color:#bce8f1;
+}
+.popover.info>.popover-title {
+    color:#31708f;
+    background-color:#d9edf7;
+    border-color:#bce8f1;
+}
+.popover.info.min_char>.popover-content>.pass_8{
+    color:#31708f;
+}
+.popover.info.upper_char>.popover-content>.upper_case{
+    color:#31708f;
+}
+.popover.info.spec_char>.non_alpha{
+    color:#31708f;
+}
+.popover.warning {
+    border-color:#faebcc;
+}
+.popover.warning>.arrow {
+    border-top-color:#faebcc;
+}
+.popover.warning>.popover-title {
+    color:#8a6d3b;
+    background-color:#fcf8e3;
+    border-color:#faebcc;
+}
+.popover.warning.min_char>.popover-content>.pass_8{
+    color:#8a6d3b;
+}
+.popover.warning..upper_char>.popover-content>.upper_case{
+    color:#8a6d3b;
+}
+.popover.warning.spec_char>.non_alpha{
+    color:#8a6d3b;
+}
+.popover.danger {
+    border-color:#ebccd1;
+}
+.popover.danger>.arrow {
+    border-top-color:#ebccd1;
+}
+.popover.danger>.popover-title {
+    color:#a94442;
+    background-color:#f2dede;
+    border-color:#ebccd1;
+}
+.popover.danger.min_char>.popover-content>.pass_8{
+    color:#a94442;
+}
+.popover.danger.upper_char>.popover-content>.upper_case{
+    color:#a94442;
+}
+.popover.danger.spec_char>.non_alpha{
+    color:#a94442;
+}
+
+</style>
+<script>
+$(document).ready(function(){
+
+//var special_character = /^[a-zA-Z!”$%&’()*\+,\/;\[\\\]\^_`{|}~]+$/;
+//var special_character = /^(?=\S*?[_@./#&+-])\S{1,}$/;
+//minimum 8 characters
+var bad = /(?=.{8,}).*/;
+//1 Uppercase
+var good = /^(?=\S*?[A-Z])\S.*$/;
+//Alpha Numeric plus minimum 8
+//var good = /^(?=\S*?[a-z])(?=\S*?[0-9])\S{8,}$/;
+//Must contain at least one upper case letter, one lower case letter and (one number OR one special char).
+//var better = /^(?=\S*?[A-Z])(?=\S*?[a-z])((?=\S*?[0-9])|(?=\S*?[^\w\*]))\S{8,}$/;
+//Must contain at least one upper case letter, one lower case letter and (one number AND one special char).
+var best = /^(?=\S*?[^\w\*])\S.*$/;
+
+$('#password').on('keyup', function () {
+    var password = $(this);
+    var pass = password.val();
+    var passLabel = $('[for="password"]');
+    var stength = '';
+    var pclass = '';
+    var pclass_min_char = '';
+    
+    var tcal = "";
+    var rem_class = '';
+    if(good.test(pass) == true){
+        pclass = 'success';
+        tcal = 'upper_char ';
+    }
+    else{
+        rem_class += 'upper_char ';
+    }
+    pclass_min_char += tcal;
+    
+    tcal = "";
+    if(bad.test(pass) == true){
+        pclass = 'success';
+        tcal = 'min_char ';
+    }
+    else{
+        rem_class += 'min_char ';
+    }
+    pclass_min_char += tcal;
+    
+    tcal = "";
+    if(best.test(pass) == true){
+        pclass = 'success';
+        tcal = 'spec_char';
+    }
+    else{
+        rem_class += 'spec_char ';
+    }
+    pclass_min_char += tcal;
+    
+    
+    /*var stength = 'Weak';
+    var pclass = 'danger';
+    if (best.test(pass) == true) {
+        stength = 'Very Strong';
+        pclass = 'success';
+    } else if (better.test(pass) == true) {
+        stength = 'Strong';
+        pclass = 'warning';
+    } else if (good.test(pass) == true) {
+        stength = 'Almost Strong';
+        pclass = 'warning';
+    } else if (bad.test(pass) == true) {
+        stength = 'Weak';
+    } else {
+        stength = 'Very Weak';
+    }*/
+
+    var popover = password.attr('data-content', stength).data('bs.popover');
+    //var popover = password.data('bs.popover');
+    //popover.setContent();
+    popover.$tip.addClass(popover.options.placement).removeClass('danger success info warning primary').addClass(pclass);
+    popover.$tip.addClass(popover.options.placement).addClass(pclass_min_char);
+    popover.$tip.addClass(popover.options.placement).removeClass(rem_class);
+
+});
+
+$('input[data-toggle="popover"]').popover({
+    placement: 'bottom',
+    trigger: 'focus'
+});
+
+})</script>
 </head>
 </body>
 </html>

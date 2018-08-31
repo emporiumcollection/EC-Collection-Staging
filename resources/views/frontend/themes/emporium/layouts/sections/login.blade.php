@@ -65,11 +65,12 @@
                         <span id="valid-msg" class="hide">✓ Valid</span>
                         <span id="error-msg" class="hide">Invalid number</span>
                   </div>
-                  <div class="ai-sign-up-form-password-hint">
+                  <?php /*<div class="ai-sign-up-form-password-hint">
                     Password must be 8 character.<br />Must be one uppercase character.<br />Must be one Non-alphanumeric (!, @, # etc.) character.                    
-                  </div>
+                  </div>*/ ?>
                   <div class="form-group">
-                        <input class="form-control" name="password" type="password" placeholder="Password" data-html="true" data-toggle="tooltip" data-placement="top" title="Password must be 8 character. &#13;Must be one uppercase character. &#13;Must be one Non-alphanumeric (!, @, # etc.) character.">
+                        
+                        <input class="form-control" id="password" name="password" type="password" placeholder="Password" data-html="true" data-toggle="popover" data-placement="top" title="Requirements for new password" data-html="true" data-content="<div class='pass_8'>Password must be 8 character.</div> <div class='upper_case'>&#13;Must be one uppercase character.</div> <div class='non_alpha'>&#13;Must be one Non-alphanumeric (!, @, # etc.) character.</div>">
                   </div>
                   <button class="button" type="submit">Submit</button>
                   
