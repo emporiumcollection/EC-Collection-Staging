@@ -762,7 +762,7 @@
                                         
                                         <div class="m-accordion__item-body collapse" id="contract_accordion_item_{{$si_contract->contract_id}}_body" role="tabpanel" aria-labelledby="contract_accordion_item_{{$si_contract->contract_id}}_head" data-parent="#contract_accordion">
                                             <div class="m-accordion__item-content">
-                                                <p>{{$si_contract->description}}</p>
+                                                <?php echo $si_contract->description; ?>
                                             </div>
                                         </div>
                                     </div>
@@ -782,7 +782,7 @@
                                         
                                         <div class="m-accordion__item-body collapse" id="contract_accordion_item_{{$si_contract->contract_id}}_body" role="tabpanel" aria-labelledby="contract_accordion_item_{{$si_contract->contract_id}}_head" data-parent="#contract_accordion">
                                             <div class="m-accordion__item-content">
-                                                <p>{{$si_contract->description}}</p>
+                                                <?php echo $si_contract->description; ?>
                                             </div>
                                         </div>
                                     </div>    

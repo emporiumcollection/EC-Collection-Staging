@@ -82,7 +82,7 @@
                             
                             <div class="m-portlet__body">
                                 <div class="m-scrollable m-scroller ps ps--active-y" data-scrollable="true" data-height="200" data-scrollbar-shown="true" style="height: 200px; overflow: hidden;">
-                                    {{$comcontract->description}}                                    
+                                    <?php echo $comcontract->description; ?>                                   
                                     <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div>
                                     <div class="ps__rail-y" style="top: 0px; height: 200px; right: 4px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 87px;"></div></div>
                                 </div>
@@ -437,7 +437,7 @@
                                 
                                 <div class="m-accordion__item-body collapse" id="contract_accordion_item_{{$key}}_{{$si_contract->contract_id}}_body" role="tabpanel" aria-labelledby="contract_accordion_item_{{$key}}_{{$si_contract->contract_id}}_head" data-parent="#contract_accordion{{$key}}">
                                     <div class="m-accordion__item-content">
-                                        <p>{{$si_contract->description}}</p>
+                                        <?php echo $si_contract->description; ?>
                                     </div>
                                 </div>
                             </div>

@@ -64,7 +64,7 @@
 								  <div class="form-group  " >
 									<label for="Title" class=" control-label col-md-4 text-left"> Title <span class="asterix"> * </span></label>
 									<div class="col-md-6">
-									  <textarea name='title' rows='5' id='title' class='form-control ' required="required">{{ $row['title'] }}</textarea> 
+									  <input name='title' id='title' class='form-control ' required="required" value="{{ $row['title'] }}" /> 
 									 </div> 
 									 <div class="col-md-2">
 									 	
@@ -214,7 +214,10 @@
 	</div>
 </div>		 
 </div>	
-</div>			 
+</div>
+
+<script src="{{ asset('assets/ckeditor/ckeditor.js') }}"></script>
+			 
    <script type="text/javascript">
    function check_checkboxes(){
         var contract_typeVal = $('[name="contract_type"]').val();
@@ -244,7 +247,8 @@
         /*if(($('[name="revised_commission"]').is(":checked") === true) && (contract_typeVal == 'hotels')){ $("#full_availability_commission_div").fadeIn(); $("#partial_availability_commission_div").fadeIn();  }else{ $("#full_availability_commission_div").fadeOut(); $("#partial_availability_commission_div").fadeOut(); }*/
    }
 	$(document).ready(function() { 
-		
+		 CKEDITOR.replace( 'description' );
+         
         $("#package_ids").jCombo("{{ URL::to('contract/comboselect?filter=tb_packages:id:package_title') }}",
 		{  selected_value : '{{ $row["package_ids"] }}' });
         

@@ -157,15 +157,209 @@ class ContractController extends Controller {
     }
     
     public function download_contract($contractid){
-        $downFileName = 'contract-order-'.date('d-m-Y').'-id_'.$contractid.'.pdf';
+        $downFileName = 'contract-order-'.date('d-m-Y').'_'.$contractid.'.pdf';
         if(!empty($contractid) && $contractid>0)
 		{
-    	    // Get Query 
-            $result = \DB::table('tb_users_contracts')->where('id', $contractid)->get();
+    	    // Get Query
+            $result = \DB::table('tb_users_contracts')
+            ->join('tb_users', 'tb_users_contracts.accepted_by', '=', 'tb_users.id')
+            ->where('tb_users_contracts.id', $contractid)
+            ->select('tb_users_contracts.*', 'tb_users.first_name','tb_users.last_name')
+            ->get();
+            
+            $bankdetails = \DB::table('tb_settings')->where('key_value', 'bank_details')->first();
+			$regdetail = \DB::table('tb_settings')->where('key_value', 'reg_detail')->first();
+			$contactdetail = \DB::table('tb_settings')->where('key_value', 'contact_detail')->first();
+            
             
             if(!empty($result)){
-                $html = '<style> .main { margin:0 25px; width:700px; font-family: arial, sans-serif; } .page-break { page-break-after: always; } .header,.footer {width: 100%; position:fixed;} .header { top: 0px; text-align:center;} .footer {bottom: 30px; font-size:10px;} .pagenum:after {content: counter(page);} .imgBox { text-align:center; width:400px; margin:50px auto 30px auto;} .nro { text-align:center; font-size:12px; } .header img { width:125px; height: auto; } .Mrgtop80 {margin-top:80px;} .Mrgtop40 {margin-top:40px;} .Mrgtop20 {margin-top:10px;} .monimg img { width:125px; height:80px; } .font14 { font-size:14px; }  .font13 { font-size:13px; } .font12 { font-size:12px; } .algRgt { text-align:right; } .algCnt { text-align:center; }</style>';
-                $html .= '<div class="main"><div class="header"><img src="'. \URL::to('metronic/assets/demo/demo6/media/img/logo/logo.png').'"></div><br><br><br><div class="footer">© Copyright: Emporium Voyage Membership Portal</div></div>';
+                $hotel_name = '';
+                if($result[0]->hotel_id != NULL && ($result[0]->contract_type == 'hotels' || $result[0]->contract_type == 'commission')){
+                    
+                    $result_hotel = \DB::table('tb_properties')->where('id', $result[0]->hotel_id)->get();
+                    if(!empty($result_hotel)){
+                        $hotel_name = ucfirst($result_hotel[0]->property_name);
+                    }
+
+                }
+                
+                $created_on = date_create($result[0]->created_on);
+                $date_signed = date_format($created_on,"Y/m/d");
+                
+                
+                $html = '<style> 
+						.main { margin:2px; width:100%; font-family: arial, sans-serif; } 
+						.page-break { page-break-after: always; } 
+						
+						.header{ width: 100%; position:fixed; top: -35px; text-align:center; height:200px;} 
+						.footer {width: 100%; position:fixed;} 
+						.pagenum:after {content: counter(page);} 
+						.imgBox { text-align:center; width:400px; } 
+						.nro { text-align:center; font-size:12px; } 
+						.header img { width:250px; height: 50px; } 
+						.Mrgtop80 {margin-top:80px;} 
+						.Mrgtop40 {margin-top:40px;}
+						.Mrgtop20 {margin-top:10px;} 
+						.monimg img { width:125px; height:80px; }  
+						.font13 { font-size:13px; } 
+						.font12 { font-size:12px; } 
+						.algRgt { text-align:right; } 
+						.algCnt { text-align:center; } 
+						.footer {bottom: 150px;}
+						.pagenum:after {content: counter(page);}
+						.title {text-align:right; width:100%; font-size:30px; font-weight:bold;} 
+						.clrgrey{ color:#3f3f3f;} 
+						.alnRight{text-align:right;} 
+						.alnCenter{text-align:center;} 
+						td{font-size:12px; padding:1px;} 
+						th{background-color:#999; color:#000000; text-align:left; padding:1px; font-size:14px;}
+						.totl{background-color:#999; color:#000000; font-weight:bold;} 
+						h2{padding-bottom:0px; margin-bottom:0px;} 
+						.valin{ vertical-align:top;} 
+						.valinbt{ vertical-align:bottom; text-align:right;}
+						.page {
+						  background: white;
+						  display: block;
+						  margin: 0 auto;
+						  margin-bottom: 0.5cm;
+						  
+						}
+						
+						@media print {
+						  body, page {
+						    margin: 0;
+						    box-shadow: 0;
+						  }
+						}
+                        .underline{
+                            border-bottom:1px solid #ccc;
+                            font-size:14px;                            
+                        }
+                        .fnt15{
+                            font-size:15px;
+                         }   
+                        .strong{
+                            font-weight:bold;
+                            width:150px;
+                            font-size:14px;
+                            text-align:right;
+                            margin-right:5px;                                                                                    
+                         }
+                         table{
+                            border-collapse:separate; 
+                            border-spacing: 0 0.5em;                            
+                          }  
+                          label {
+                            display: block;
+                            padding-left: 20px;
+                            text-indent: -15px;
+                            font-size:14px;                            
+                        }
+                        input {
+                            width: 13px;
+                            height: 13px;
+                            padding: 0;
+                            margin:0;
+                            top:-1px;                            
+                            position: relative;
+                            *overflow: hidden;
+                        }                                                      
+
+				</style>';
+                
+                $html .= '
+			
+					
+				<div class="main">
+				  <div class="header">
+
+					  <table width="100%">
+					 
+						 <tr>
+							<td class="title" align="center">
+							    
+								<center><img src="'. \URL::to('sximo/assets/images/logo-design_1.png').'" width="250px;" height="50px;"></center>
+								 
+							</td>
+						 </tr>
+ 							<tr>
+							<td class="title" align="center">
+								<center> &nbsp;</center>
+							</td>
+						 </tr>
+					
+						
+					 </table>
+						
+				  </div>
+				  <div style="clear:both;"> &nbsp;</div>
+					<div class="footer">
+
+							<table width="100%">
+							<tr>
+								<td colspan="3">
+										<hr  style="border-top:1px solid #000;"/>
+								 </td>
+							 </tr>
+								<tr style="border-bottom:1px solid #000;">
+									<td width="33%"><h2>Bank Details</h2></td>
+										<td width="33%"><h2>Company Details</h2></td>
+										<td width="33%"><h2>Contact Information</h2></td>
+								</tr>
+							   <tr><td class="valin">';
+				if(!empty($bankdetails))
+				{
+					$html .= nl2br($bankdetails->content);
+				}
+				$html .= '</td><td class="valin">';
+				if(!empty($regdetail))
+				{
+					$html .= nl2br($regdetail->content);
+				}
+				$html .= '</td><td class="valin">';
+				if(!empty($contactdetail))
+				{
+					$html .= nl2br($contactdetail->content);
+				}
+				$html .= '</td></tr></table></div>';
+                $html .= '<div class="Mrgtop80 font13">';
+                    $html .= '<h3 class="alnCenter">'.$result[0]->title.'</h3>';
+                    $html .= '<p> <span class="strong">Type: </span><span class="font14">'.ucfirst($result[0]->contract_type).'</span></p>';
+                    if(!empty($result[0]->commission_type)){
+                        $html .= '<p> <span class="strong">Availability: </span><span class="font14">'.ucfirst($result[0]->commission_type).'</p>';
+                        $html .= '<p> <span class="strong">Commission (%): </span><span class="font14">';
+                    
+                        if($result[0]->commission_type == 'partial'){
+                            $html .= $result[0]->partial_availability_commission;
+                        }
+                        if($result[0]->commission_type == 'full'){
+                            $html .= $result[0]->full_availability_commission;
+                        }
+                        $html .= '</span></p>';
+                    }
+                    
+                    $html .= '<p></span><span class="font14">'.$result[0]->description.'</span></p>';
+                    
+                $html .= '</div>';                
+				
+				$html .= '<div class="Mrgtop40 font13">';
+    				$html .= '<p class="font13">I hereby agree to supply the above for entry into Emporium-Voyage</p>';
+                    $html .= '<p class="font13">General terms & conditions apply.</p>';
+                    $html .= '<table>';
+                        $html .= '<tr><td class="strong">Signed by: </td> <td class="underline">'.ucfirst(@$result[0]->first_name).' '.ucfirst(@$result[0]->last_name).'</td></tr>';    
+                        $html .= '<tr><td class="strong">Print name: </td> <td class="underline">'.ucfirst(@$result[0]->first_name).' '.ucfirst(@$result[0]->last_name).'</td></tr>';
+                        $html .= '<tr><td class="strong">For and on behalf of: </td> <td class="underline">'.$hotel_name.'</td></tr>';
+                        $html .= '<tr><td class="strong">Date signed: </td> <td class="underline">'.$date_signed.'</td></tr>';
+                        $html .= '<tr><td></td><td><input type="checkbox" name="checkbox" checked disabled/><label style="display:inline-block;text-align:left;">I agreed to the Terms stipulated in this contract</label></td></tr>';
+                        $html .= '<tr><td class="strong">Signed by: </td> <td class="underline">'.ucfirst(@$result[0]->first_name).' '.ucfirst(@$result[0]->last_name).'</td></tr>';    
+                        $html .= '<tr><td class="strong">Print name: </td> <td class="underline">'.ucfirst(@$result[0]->first_name).' '.ucfirst(@$result[0]->last_name).'</td></tr>';
+                        $html .= '<tr><td class="strong">For and on behalf of: </td> <td class="underline">'.$hotel_name.'</td></tr>';
+                        $html .= '<tr><td class="strong">Date signed: </td> <td class="underline">'.$date_signed.'</td></tr>';
+                    $html .= '</table>';
+    			$html .= '</div>';
+                
+                /*$html = '<style> .main { margin:0 25px; width:700px; font-family: arial, sans-serif; } .page-break { page-break-after: always; } .header,.footer {width: 100%; position:fixed;} .header { top: 0px; text-align:center;} .footer {bottom: 30px; font-size:10px;} .pagenum:after {content: counter(page);} .imgBox { text-align:center; width:400px; margin:50px auto 30px auto;} .nro { text-align:center; font-size:12px; } .header img { width:125px; height: auto; } .Mrgtop80 {margin-top:80px;} .Mrgtop40 {margin-top:40px;} .Mrgtop20 {margin-top:10px;} .monimg img { width:125px; height:80px; } .font14 { font-size:14px; }  .font13 { font-size:13px; } .font12 { font-size:12px; } .algRgt { text-align:right; } .algCnt { text-align:center; }</style>';
+                $html .= '<div class="main"><div class="header"><img src="'. \URL::to('metronic/assets/demo/demo6/media/img/logo/logo.png').'"></div><br><br><br><div class="footer">© Copyright: Emporium Voyage Membership Portal</div></div>';*/
                 /*$html .= '<div class="Mrgtop80 font13"><table><tr style="background:#eeeeee;"><th class="alnCenter">Title </th><th class="alnCenter">Type </th><th  class="alnCenter">Description </th><th class="alnCenter">Availability </th><th class="alnCenter">Commission (%) </th></tr>';
     			
     				$html .= '<tr><td class="alnCenter">'.$result[0]->title.'</td><td><b>'.ucfirst($result[0]->contract_type).'</b></td><td class="algCnt">'.$result[0]->description.'</td><td class="algCnt">'.ucfirst($result[0]->commission_type).'</td><td>';
@@ -183,29 +377,8 @@ class ContractController extends Controller {
                     $html .= '</td></tr>';
     			
     			$html .= '</table></div>';*/
-                $html .= '<div class="Mrgtop80 font14">';
-    				$html .= '<h3 class="algCnt">'.$result[0]->title.'</h3>';
-                    $html .= '<div>';
-                        $html .= '<p>Type : '.ucfirst($result[0]->contract_type).'</p>';
-                        if(!empty($result[0]->commission_type)){
-                            $html .= '<p>Availability : '.ucfirst($result[0]->commission_type).'</p>';    
-                        }
-                        if(!empty($result[0]->commission_type)){
-                            $html .= '<p>Commission (%) : ';
-                            if($result[0]->commission_type == 'partial'){
-                                $html .= $result[0]->partial_availability_commission;
-                            }
-                            if($result[0]->commission_type == 'full'){
-                                $html .= $result[0]->full_availability_commission;
-                            }
-                            $html .= '</p>';
-                        }
-                        else{
-                            $html .= '';
-                        }
-                    $html .= '</div>';
-                    $html .= '<p>'.$result[0]->description.'</p>';
-    			$html .= '</div>';
+                //echo $html;
+                //die;                                
                 $pdf = \App::make('dompdf.wrapper');
     			$pdf->loadHTML($html);
     			return $pdf->download($downFileName);

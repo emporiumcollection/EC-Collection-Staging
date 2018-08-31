@@ -247,7 +247,7 @@
                                     <div class="m-accordion__item">
                                         <div class="m-accordion__item-head collapsed" role="tab" id="contract_accordion_item_{{$si_contract->contract_id}}_head" data-toggle="collapse" href="#contract_accordion_item_{{$si_contract->contract_id}}_body" aria-expanded="false">
                                             <span class="m-accordion__item-icon"><i class="fa flaticon-list-3"></i></span>
-                                            <span class="m-accordion__item-title">{{$si_contract->title}} <a href="#" class="si_accept_contract text-danger"><i class="r-icon-tag la la-unlock-alt"></i></a></span>
+                                            <span class="m-accordion__item-title">{{$si_contract->title}} <a href="#" class="si_accept_contract text-success"><i class="r-icon-tag la la-unlock"></i></a></span>
                                             <span class="m-accordion__item-mode"></span>
                                         </div>
                                         
