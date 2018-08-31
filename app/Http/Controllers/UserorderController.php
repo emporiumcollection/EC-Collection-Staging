@@ -487,10 +487,11 @@ class UserorderController extends Controller {
 				$nos = 1;
 				foreach($order_item as $oitem)
 				{
+				    $title = '';
+				    $pacpric = 0;
 					if($oitem->package_type=='hotel')
 					{
-						$title = '';
-						$pacpric = 0;
+						
 						$pchkdet = \DB::table('tb_packages')->select('package_title','package_price')->where('id', $oitem->package_id)->first();
 						if(!empty($pchkdet))
 						{
