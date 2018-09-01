@@ -77,7 +77,7 @@
 				<label class="text-left"> {{ Lang::get('core.language') }} </label>	
 				<select class="form-control" name="language">
 					@foreach(SiteHelpers::langOption() as $lang)
-					<option value="{{ $lang['folder'] }}" @if(Session::get('lang') ==$lang['folder']) selected @endif>  {{  $lang['name'] }}</option>
+					<option value="{{ $lang['folder'] }}" @if('en' ==$lang['folder']) selected @endif>  {{  $lang['name'] }}</option>
 					@endforeach
 
 				</select>	

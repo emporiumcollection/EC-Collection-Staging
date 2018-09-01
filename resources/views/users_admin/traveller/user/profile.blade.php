@@ -295,7 +295,7 @@
                         		{!! Form::close() !!}
         					</div>
         					<div class="tab-pane " id="pass">
-                                {!! Form::open(array('url'=>'user/savepassword/', 'class'=>'m-form m-form--fit m-form--label-align-right ')) !!}
+                                {!! Form::open(array('url'=>'user/savepassword/', 'class'=>'m-form m-form--fit m-form--label-align-right', 'id'=>'frm_changepass')) !!}
                                     <div class="m-portlet__body">
                                         <div class="form-group m-form__group row">
         									<label for="ipt" class="col-sm-12 col-md-2 col-form-label">
@@ -305,7 +305,7 @@
 										Password must be 8 character. <br /> 
 										Must be one uppercase character. <br /> 
 										Must be one Non-alphanumeric (!, @, # etc.) character. <br /> 
-        										<input name="password" type="password" id="password" class="form-control m-input" required  value="" />  
+        										<input name="password" type="password" id="password" class="form-control m-input" value="" />  
         									</div>
         								</div>
                                         <div class="form-group m-form__group row">
@@ -313,7 +313,7 @@
         										{{ Lang::get('core.conewpassword') }}
         									</label>
         									<div class="col-sm-12 col-md-7">
-        										<input name="password_confirmation" type="password" id="password_confirmation" class="form-control m-input" required  value="" />  
+        										<input name="password_confirmation" type="password" id="password_confirmation" class="form-control m-input" value="" />  
         									</div>
         								</div> 
                             		</div>
@@ -886,8 +886,77 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
 <script>
 $(document).ready(function(){
     
+       $.validator.addMethod("pwcheck",
+            function(value) {
+                return /[A-Z]/.test(value) // has a lowercase letter                        
+       }); 
+       $.validator.addMethod("specialcheck",
+            function(value) {
+                return /[^a-zA-Z\d]/.test(value) // has a lowercase letter                        
+       });  
+          
+       $("#frm_changepass").validate({
+            //== Validate only visible fields
+            //ignore: ":hidden",
+            
+            //== Validation rules
+            rules: {                 
+                password: {
+                    required: true,
+                    minlength: 8,
+                    pwcheck: true,
+                    specialcheck: true,
+                },
+                password_confirmation: {
+                    required: true,
+                    equalTo: "#password"
+                }
+            },
+    
+            //== Validation messages
+            messages: {
+                password: {
+                    pwcheck: "Must be one uppercase character",
+                    specialcheck: "Must be one special character",
+                }/*, 
+                password: {
+                    required: "Last name field is required"
+                }*/
+            },
+            
+            //== Display error  
+            invalidHandler: function(event, validator) {
+                
+            },
+    
+            //== Submit valid form
+            submitHandler: function (form) {
+                var fdata = $( form ).serialize();
+                $.ajax({
+                    url:"{{URL::to('changepassword')}}",
+                    type:'POST',
+                    dataType:'json',                    
+                    data:fdata,
+                    headers: {
+                        'Access-Control-Allow-Origin': '*'
+                    },
+                    success:function(response){
+                        if(response.status == 'success'){
+                            toastr.success(response.message);                                
+                            $("#frm_changepass")[0].reset();
+                        }
+                        else{
+                            toastr.error(response.message);
+                        }
+                    }
+                });
+            }
+        });    
+   
+    
+    
    $("#remove_account").click(function(){
-      if(confirm('Are you sure, You want to remove your account')){
+      if(confirm('Are you sure you wish to permanently remove your account. This action cannot be reversed. All your reservation & account information will be removed')){
           $.ajax({
         	  url: "{{ URL::to('user/removeaccount')}}",
         	  type: "post",

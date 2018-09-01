@@ -1,16 +1,13 @@
 @extends('users_admin.traveller.layouts.app')
 
 @section('page_name')
-    Dashboard
+    Luxury Travel Club
 @stop
     
 @section('subheader_search')
     <div class="m-subheader-search">
         <h2 class="m-subheader-search__title">
-    		Recent Bookings
-    		<span class="m-subheader-search__desc">
-    			Onling Bookings Management
-    		</span>
+    		Discover Ultra Luxury Experiences Worldwide 
     	</h2>
     	<form class="m-form reservation-form" action="{{URL::to('search')}}" method="get" id="reservationForm" name="reservationform">
     		<div class="m-grid m-grid--ver-desktop m-grid--desktop">
@@ -49,7 +46,7 @@
     			<div class="m-grid__item m-grid__item--middle search-btn-top-margin">
     				<div class="m--margin-top-20 m--visible-tablet-and-mobile"></div>
     				<button type="submit" class="btn m-btn--pill m-subheader-search__submit-btn">
-    					Search Bookings
+    					Search Hotels
     				</button>
     			</div>
     		</div>
@@ -71,8 +68,8 @@
     <div class="m-subheader" style="padding: 0px; margin-bottom: 20px;">
 		<div class="d-flex align-items-center">
 			<div class="mr-auto">
-				<h3 class="m-subheader__title m-subheader__title--separator">
-					Discerning Traveller | {{ Session::get('fid') }}
+				<h3 class="m-subheader__title">
+					Discerning Traveller
 				</h3>
 			</div>
 		</div>
@@ -88,9 +85,7 @@
 				<div class="m-portlet__head">
 					<div class="m-portlet__head-caption">
 						<div class="m-portlet__head-title">
-							<h3 class="m-portlet__head-text">
-								{{ Session::get('fid') }}
-							</h3>
+							
 						</div>
 					</div>							
 				</div>
@@ -98,12 +93,13 @@
 					<!--begin::Widget 7-->
 					<div class="m-widget7 m-widget7--skin-dark">								
 						<div class="m-widget7__user">
-							<div class="m-widget7__user-img">
-								<img class="m-widget7__img" src="{{asset('metronic/assets/app/media/img/users/emp.png')}}" alt="">
+							<div class="m-widget7__user-img m--align-center">
+								{!! SiteHelpers::avatarProfile(80,80,'') !!}
+                                <h5>{{ Session::get('fid') }}</h5>
 							</div>
 							<div class="m-widget7__info">
 								<span class="m-widget7__username">
-									Hotel Name
+								    {{ Session::get('fid') }}	
 								</span>
 							</div>
 						</div>
@@ -622,39 +618,41 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
             
             <div class="row">
                 <div class="setting-box">
-                    <a href="{{ URL::to('user/profile') }}">																	
-            			<span class="m-nav__link-text">
+                    <a href="{{ URL::to('user/profile') }}">
+                        <i class="grid_icon flaticon-profile-1"></i>																	
+            			<span class="grid_link-text">
             				My Profile
             			</span>
             		</a>
                 </div>
                 <div class="setting-box">
-                    <a href="{{ URL::to('user/settings') }}">																	
-            			<span class="m-nav__link-text">
+                    <a href="{{ URL::to('user/settings') }}">
+                        <i class="grid_icon flaticon-settings-1"></i>																	
+            			<span class="grid_link-text">
             				Account Settings
             			</span>
             		</a>
                 </div>
                 <div class="setting-box">
                     <a href="{{ URL::to('user/invite')}}">
-            			<i class="m-nav__link-icon"></i>
-            			<span class="m-nav__link-text">
+            			<i class="grid_icon flaticon-mail-1"></i>																	
+            			<span class="grid_link-text">
             				Guest Invitations
             			</span>
             		</a>
                 </div>
                 <div class="setting-box">
                     <a href="#" id="dash_communication">
-            			<i class="m-nav__link-icon"></i>
-            			<span class="m-nav__link-text">
+            			<i class="grid_icon flaticon-computer"></i>																	
+            			<span class="grid_link-text">
             				Communication
             			</span>
             		</a>
                 </div>
                 <div class="setting-box">
                     <a href="{{ URL::to('user/companion')}}">
-            			<i class="m-nav__link-icon"></i>
-            			<span class="m-nav__link-text">
+            			<i class="grid_icon flaticon-users"></i>																	
+            			<span class="grid_link-text">
             				Companions
             			</span>
             		</a>

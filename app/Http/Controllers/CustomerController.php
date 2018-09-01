@@ -615,7 +615,7 @@ class CustomerController extends Controller {
                         if (!is_null($request->input('language'))) {
                             \Session::put('lang', $request->input('language'));
                         } else {
-                            \Session::put('lang', 'Deutsch');
+                            \Session::put('lang', 'en');
                         }
                         if (CNF_FRONT == 'false') :
                             $response = array('status' => 'success', 'message' => 'Logged in successfully', 'errors' => array());

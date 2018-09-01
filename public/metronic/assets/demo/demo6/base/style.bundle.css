@@ -54974,7 +54974,21 @@ i.m-menu__link-icon.fa {
     text-align: center;
     width: 19%;
     margin: 6px;
-    padding: 50px;
+    padding: 30px 50px;
+}
+.setting-box .grid_icon{
+    text-align: center;
+    font-size: 35px;
+    font-size: 35px;
+    color: #d2d0d0;
+}
+.setting-box .grid_link-text{
+    display: block;
+    line-height: 1;
+    text-align: center;
+    margin: 10px 0 0 0;
+    font-size: 1rem;
+    font-weight: 500;
 }
 .a_white{ color:#fff !important; }
 .day_size_big{

@@ -73,12 +73,12 @@
             </div>
             <div class="col-sm-12 col-md-12 col-lg-12">
                 <div class="m-portlet m-portlet--full-height">
-                    <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="col-sm-12 col-md-12 col-lg-12" style="color: red;">
                         @if(Session::has('message'))
             				{!! Session::get('message') !!}
             			@endif
                     </div>
-                    {!! Form::open(array('url'=>'user/companion/', 'class'=>'m-form m-form--fit m-form--label-align-right ' ,'files' => true)) !!}
+                    {!! Form::open(array('url'=>'user/companion/', 'class'=>'m-form m-form--fit m-form--label-align-right', 'id'=>'frm_add' ,'files' => true)) !!}
                         <div class="m-portlet__body">  
                             <div class="form-group m-form__group row">
             					<label for="first_name" class="col-sm-12 col-md-2 col-form-label">
@@ -194,7 +194,7 @@
             					<div class="row">
             						<div class="col-sm-12 col-md-2"></div>
             						<div class="col-sm-12 col-md-7">
-            							<button type="submit" class="btn btn-success m-btn m-btn--air m-btn--custom">
+            							<button class="btn btn-success m-btn m-btn--air m-btn--custom" id="btn_add">
             								{{ Lang::get('core.sb_save') }}
             							</button>
             						</div>
@@ -384,7 +384,87 @@
 @section('custom_js_script')
     <script>
         var b_url = "{{url('/')}}";
-        $(document).ready(function(){        
+        $(document).ready(function(){  
+            
+           $("#frm_add").validate({
+                //== Validate only visible fields
+                ignore: ":hidden",
+                
+                //== Validation rules
+                rules: {                 
+                    first_name: {
+                        required: true
+                    },
+                    last_name: {
+                        required: true
+                    },
+                    email: {
+                        required: true
+                    }, 
+                },
+    
+                //== Validation messages
+                messages: {
+                    first_name: {
+                        required: "First name field is required"
+                    }, 
+                    last_name: {
+                        required: "Last name field is required"
+                    },
+                    email: {
+                        required: "Email field is required"
+                    },
+                },
+                
+                //== Display error  
+                invalidHandler: function(event, validator) {
+                    
+                },
+    
+                //== Submit valid form
+                submitHandler: function (form) {
+                    var fdata = new FormData();                    
+                    fdata.append("first_name",$("input[name=first_name]").val());
+                    fdata.append("last_name",$("input[name=last_name]").val());
+                    fdata.append("email",$("input[name=email]").val());
+                    fdata.append("phone_code",$("input[name=phone_code]").val());
+                    fdata.append("phone_number",$("input[name=phone_number]").val());
+                    
+                    fdata.append("gender",$("#gender :selected").val());
+                    fdata.append("preferred_language",$("#preferred_language :selected").val());
+                    fdata.append("preferred_currency",$("#preferred_currency :selected").val());
+                    
+                    fdata.append("_token",$("input[name=_token]").val());
+                    if($("input[name=avatar]")[0].files.length>0){
+                       fdata.append("avatar",$("input[name=avatar]")[0].files[0]) 
+                    }
+                    //console.log(fdata);
+                    $.ajax({
+                        url:"{{URL::to('addcompanion')}}",
+                        type:'POST',
+                        dataType:'json',                    
+                        data:fdata,
+                        contentType: false,
+                        processData: false,
+                        headers: {
+                            'Access-Control-Allow-Origin': '*'
+                        },
+                        success:function(response){
+                            if(response.status == 'success'){
+                                toastr.success(response.message);                                
+                                window.location.href = "{{URL::to('user/companion')}}";
+                            }
+                            else{
+                                toastr.error(response.message);
+                            }
+                        }
+                    });
+                }
+            });
+            $("#updatebtn").click(function(){                
+                $("#edit_form").submit();
+            }); 
+            
            $("#edit_form").validate({
                 //== Validate only visible fields
                 ignore: ":hidden",
