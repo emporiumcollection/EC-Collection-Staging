@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'host' => 'smtp.gmail.com',
+    'host' => 'mail.emporium-voyage.com',
 
     /*
     |--------------------------------------------------------------------------
@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'from' => 'aman01test@gmail.com',
+    'from' => 'marketing@emporium-voyage.com',
 
     /*
     |--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'username' => 'aman01test@gmail.com',
+    'username' => 'marketing@emporium-voyage.com',
 
     /*
     |--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return [
     |
     */
 
-    'password' => 'kpsqssliefhrwfkt',
+    'password' => 'Bpd9Daggmp',
 
     /*
     |--------------------------------------------------------------------------
