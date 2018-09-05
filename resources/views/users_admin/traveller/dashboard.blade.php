@@ -209,6 +209,55 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
         					</h3>
         				</div>
         			</div>
+                    <?php 
+                        
+                        $latest_reservation = \DB::table('tb_reservations')->where('client_id', $logged_user->id)->orderBy('id', 'DESC')->first();
+                        $arrival_day = '';
+                        $arrival_month = '';
+                        $arrival_year = '';
+                        $departure_day = '';
+                        $departure_month = '';
+                        $departure_year = '';
+                        if(count($latest_reservation)>0){
+                            $arrival = $latest_reservation->checkin_date;
+                            $arrival_day = date('j', strtotime($arrival));
+                            $arrival_month = date('M', strtotime($arrival));
+                            $arrival_year = date('Y', strtotime($arrival));
+                            $departure = $latest_reservation->checkout_date;
+                            $departure_day = date('j', strtotime($departure));
+                            $departure_month = date('M', strtotime($departure));
+                            $departure_year = date('Y', strtotime($departure));
+                            
+                            $obj_properties = \DB::table('tb_properties')->where('id', $latest_reservation->property_id)->orderBy('id', 'DESC')->first(); 
+                            //print_r($obj_properties);
+                            $reserved_rooms = \DB::table('td_reserved_rooms')->join('tb_properties_category_types', 'td_reserved_rooms.type_id', '=', 'tb_properties_category_types.id' )->where('reservation_id', $latest_reservation->id)->get(); 
+                            //print_r($reserved_rooms);
+                            $total_price = 0;
+                            $reservation_price = $latest_reservation->price;                            
+                            if(!empty($reserved_rooms)){
+                                foreach($reserved_rooms as $room){
+                                    $total_price += ($latest_reservation->number_of_nights * $reservation_price);
+                                }
+                            }
+                            $commission_due = $total_price * ($obj_properties->commission / 100);
+                            $grand_total = $commission_due + $total_price;
+                            
+                            $room_type= $reserved_rooms[0]->category_name;
+                            
+                            $room_type_id= $reserved_rooms[0]->type_id;
+                            
+                            $category = \DB::table('tb_properties_category_types')->where('id', $latest_reservation->type_id)->where('status', 0)->where('show_on_booking', 1)->first();
+                            
+                            $category_image = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $category->property_id)->where('tb_properties_images.category_id', $latest_reservation->type_id)->where('tb_properties_images.type', 'Rooms Images')->orderBy('tb_container_files.file_sort_num', 'asc')->first();
+                            
+                            $imgsrc = $container->getThumbpath($category_image->folder_id);
+                            
+                            $img = $imgsrc.'/'.$category_image->file_name;
+                            
+                            $book_again = 'book-property/'.$obj_properties->property_slug.'?property='.$obj_properties->id.'&roomType='.$room_type_id.'&arrive=&departure=&booking_adults=1&booking_children=0';
+                        }
+                        
+                    ?>
         			<div class="m-portlet__head-tools">
         				<ul class="m-portlet__nav">
         					<li class="m-portlet__nav-item m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push" m-dropdown-toggle="hover">
@@ -269,31 +318,35 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
         		</div>
         		<div class="m-portlet__body">
         			<div class="m-widget28">
-        				<div class="m-widget28__pic m-portlet-fit--sides" style="background: url('{{Url::to('images/hotel_reservation.jpg')}}'); background-size: cover;"></div>
+        				<div class="m-widget28__pic m-portlet-fit--sides" style="background: url('{{$img}}'); background-size: cover;">
+                            <div class="overlay"></div>
+                        </div>
         				<div class="m-widget28__container">
+                        <?php if(count($latest_reservation)>0){ ?>
         					<!-- begin::Nav pills -->
         					<ul class="m-widget28__nav-items nav nav-pills nav-fill" role="tablist">
         						<li class="m-widget28__nav-item nav-item">
                                     <div class="top-heading">Book Again</div>
-        							<a class="nav-link a_white dash-res-view" data-toggle="pill" href="#menu11">
+        							<a class="nav-link a_white dash-res-view" href="{{ Url::to($book_again) }}">
         								View
         							</a>
         						</li>
         						<li class="m-widget28__nav-item nav-item">
                                     <div class="top-heading">Arrival</div>
         							<a class="nav-link a_white" data-toggle="pill" href="#menu21">
-        								<span class="day_size_big">15</span> Aug 2018
+        								<span class="day_size_big">{{$arrival_day}}</span> {{$arrival_month}} {{$arrival_year}}
         							</a>
         						</li>
         						<li class="m-widget28__nav-item nav-item">
                                     <div class="top-heading">Departure</div>
         							<a class="nav-link a_white" data-toggle="pill" href="#menu31">
-        								<span class="day_size_big">25</span> Aug 2018
+        								<span class="day_size_big">{{$departure_day}}</span> {{$departure_month}} {{$departure_year}}
         							</a>
         						</li>
         					</ul>
         					<!-- end::Nav pills --> 
                             <!-- begin::Tab Content -->
+                            <?php if(!empty($obj_properties)){ ?>
         					<div class="m-widget28__tab tab-content">
         						<div id="menu11" class="m-widget28__tab-container tab-pane active">
         							<div class="m-widget28__tab-items">                                        
@@ -302,7 +355,7 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
         										Hotel Name
         									</span>
         									<span>
-        										Studio Munich / Room Name
+        										{{ $obj_properties->property_name }} / {{ $room_type }}
         									</span>
         								</div>
         								<div class="m-widget28__tab-item">
@@ -310,7 +363,7 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
         										Booking Confirmation Number
         									</span>
         									<span>
-        										D330-1234562546
+        										DL-<?php echo date('d.m.y', strtotime($latest_reservation->created_date)); ?>-{{ $latest_reservation->id }}
         									</span>
         								</div>
         								<div class="m-widget28__tab-item">
@@ -318,7 +371,7 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
         										Total Charges
         									</span>
         									<span>
-        										USD 1,250.000
+        										&euro;{{ $grand_total }}
         									</span>
         								</div>
         								<div class="m-widget28__tab-item">
@@ -326,15 +379,71 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
         										Hotel Terms
         									</span>
         									<span>
-        										Show hotel terms 
+        										<a href="#" data-toggle="modal" data-target="#hotel_term_popup"> Show hotel terms</a> 
         									</span>
-                                            
-                                            <a href="#" id="show_more">Show More</a>
+                                            <a href="{{Url::to('traveller/bookings')}}" id="show_more">Show More</a>
         								</div>
         							</div>
         						</div>
         					</div>
+                            <?php } ?>
         					<!-- end::Tab Content -->
+                            <?php } else { ?>
+                                    
+            					<!-- begin::Nav pills -->
+            					<ul class="m-widget28__nav-items nav nav-pills nav-fill ul_width" role="tablist">
+            						<li class="m-widget28__nav-item nav-item">
+                                        <div class="top-heading">Book Again</div>
+            							<a href="{{Url::to('/')}}" class="nav-link a_white dash-res-view">
+            								View
+            							</a>
+            						</li>
+            					</ul>
+            					<!-- end::Nav pills --> 
+                                <!-- begin::Tab Content -->
+                                <?php if(!empty($obj_properties)){ ?>
+            					<div class="m-widget28__tab tab-content">
+            						<div id="menu11" class="m-widget28__tab-container tab-pane active">
+            							<div class="m-widget28__tab-items">                                        
+            								<div class="m-widget28__tab-item">
+            									<span>
+            										Hotel Name
+            									</span>
+            									<span>
+            										{{ $obj_properties->property_name }} / {{ $room_type }}
+            									</span>
+            								</div>
+            								<div class="m-widget28__tab-item">
+            									<span>
+            										Booking Confirmation Number
+            									</span>
+            									<span>
+            										DL-<?php echo date('d.m.y', strtotime($latest_reservation->created_date)); ?>-{{ $latest_reservation->id }}
+            									</span>
+            								</div>
+            								<div class="m-widget28__tab-item">
+            									<span>
+            										Total Charges
+            									</span>
+            									<span>
+            										&euro;{{ $grand_total }}
+            									</span>
+            								</div>
+            								<div class="m-widget28__tab-item">
+            									<span>
+            										Hotel Terms
+            									</span>
+            									<span>
+            										Show hotel terms 
+            									</span>
+                                                
+                                                <a href="#" id="show_more">Show More</a>
+            								</div>
+            							</div>
+            						</div>
+            					</div>
+                                <?php } ?>                                 
+                            <?php } ?>
         				</div>
         			</div>
         		</div>
@@ -412,6 +521,7 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
         			<div class="m-widget28">
         				<div class="m-widget28__pic m-portlet-fit--sides" style="background: url('{{Url::to('images/event_reservation.jpg')}}'); background-size: cover;"></div>
         				<div class="m-widget28__container">
+                        
         					<!-- begin::Nav pills -->
         					<ul class="m-widget28__nav-items nav nav-pills nav-fill" role="tablist">
         						<li class="m-widget28__nav-item nav-item">
@@ -476,6 +586,7 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
         						</div>
         					</div>
         					<!-- end::Tab Content -->
+                            
         				</div>
         			</div>
         		</div>
@@ -570,7 +681,7 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
 										
 									</span>
 									<span class="m-widget17__subtitle">
-										Preferences 1
+										<a href="#" class="cls_preferences_1" >Preferences 1</a>
 									</span>
 									<span class="m-widget17__desc">
 										
@@ -665,6 +776,45 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
 </div>
 
 <!-- End Third Row -->
+
+<!--Start: First Time on Dashboard modal pop up-->
+    <div class="modal fade" id="hotel_term_popup" tabindex="-1" role="dialog" aria-labelledby="viewModalLabel" aria-hidden="true" style="display: none;">
+    	<div class="modal-dialog modal-lg" role="document">
+    		<div class="modal-content">
+    			<div class="modal-header">
+    				<h5 class="modal-title" id="viewModalLabel">
+    					Hotel Terms
+    				</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    					<span aria-hidden="true">
+    						×
+    					</span>
+    				</button>    				
+    			</div>
+    			<div class="modal-body">
+                    <div class="m-portlet m-portlet--full-height">
+                        <ul>
+                            <li>
+                                I have read the <a href="{{Url::to('privacy-policy')}}">Privacy Policy</a>. <span class="font-italic">I agree that my personal data will be collected and stored electronically and used electronically to make this reservation with emporium-voyage and the respective partner hotel.</span>
+                                <div class="m--clearfix"></div>
+                                <span class="font-italic" style="clear: both;">Note: You may revoke your consent at any time by e-mail to <a href="mailto:info@emporium-voyage.com">info@emporium-voyage.com</a> or from your settings section in your account admin.</span>
+                            </li>
+                            <li>
+                                <span class="font-italic">I agree to receive booking confirmations via email or phone and acknowledge that i can change my communication methods from my personal account preferences.</span>
+                            </li>
+                            <li>
+                                <span class="font-italic">I agree to the emporium-voyage&trade;  <a href="{{Url::to('terms-and-conditions')}}">terms and conditions</a> pertaining to the reservation.</span>
+                            </li>
+                        </ul>
+                    </div>                				
+    			</div>
+    			<div class="modal-footer">  
+                    <button type="button" class="btn btn-secondary" id="viewclosebtn" data-dismiss="modal">Close</button>                    
+    			</div>
+    		</div>
+    	</div>
+    </div>    
+ <!--end: modal pop up--> 
 
 @stop
 {{-- For custom style  --}}
@@ -1024,6 +1174,11 @@ background: #428bca;
                 }
             });
             
+            /*$(".cls_preferences_1").click(function(e){
+                e.preventDefault();                
+                window.location.href = "{{Url::to('user/profile')}}";
+                $("#tab_preferences").trigger('click');
+            });*/
         });
     </script>
 @endsection

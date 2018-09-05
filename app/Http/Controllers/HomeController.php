@@ -5182,7 +5182,7 @@ class HomeController extends Controller {
             $userData['landline_number'] = $request->input('landline_number');
             $userData['mobile_code'] = $request->input('mobile_code');
             $userData['mobile_number'] = $request->input('mobile_number');
-            $userData['email'] = $request->input('email');
+            //$userData['email'] = $request->input('email');
             $userData['prefer_communication_with'] = $request->input('prefer_communication_with');
 
             $userData['card_number'] = base64_encode($request->input('card_number'));
@@ -5643,14 +5643,33 @@ class HomeController extends Controller {
             $bookingEmailTemplate = str_replace('{grand_total}', '€' . $grand_total, $bookingEmailTemplate);
             $bookingEmailTemplate = str_replace('{hotel_terms_n_conditions}', $hotel_terms_n_conditions, $bookingEmailTemplate);
             $bookingEmailTemplate = str_replace('{property_email}', $property->email, $bookingEmailTemplate);
-
-            $headers = "MIME-Version: 1.0" . "\r\n";
-            $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-            $headers .= 'From: ' . CNF_APPNAME . '<marketing@emporium-voyage.com>' . "\r\n";
-
-            mail($property->email, "Booking Confirmation", $bookingEmailTemplate, $headers);
-            mail($user_info->email, "Booking Confirmation", $bookingEmailTemplate, $headers);
-
+            //print_r($bookingEmailTemplate); 
+            //$headers = "MIME-Version: 1.0" . "\r\n";
+            //$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+            //$headers .= 'From: ' . CNF_APPNAME . '<marketing@emporium-voyage.com>' . "\r\n";
+            //$headers .= 'From: ' . CNF_APPNAME . '<aman01test@gmail.com>' . "\r\n";
+            //mail($property->email, "Booking Confirmation", $bookingEmailTemplate, $headers);
+            //mail($user_info->email, "Booking Confirmation", $bookingEmailTemplate, $headers);
+            //mail('dalip.01rad@gmail.com', "Booking Confirmation", $bookingEmailTemplate, $headers);
+            $tempe = 'blank';
+            $emailArr['msg'] = $bookingEmailTemplate;
+            
+            $toouser['email'] = $property->email;
+			$toouser['subject'] = "Booking Confirmation";	
+            		
+            \Mail::send('user.emails.'.$tempe, $emailArr, function ($message) use ($toouser) {
+              $message->to($toouser['email'])
+                ->subject($toouser['subject'])
+                ->from('marketing@emporium-voyage.com', CNF_APPNAME);
+            });
+            $toouser1['email'] = $user_info->email;
+			$toouser1['subject'] = "Booking Confirmation";	
+            \Mail::send('user.emails.'.$tempe, $emailArr, function ($message) use ($toouser1) {
+              $message->to($toouser['email'])
+                ->subject($toouser['subject'])
+                ->from('marketing@emporium-voyage.com', CNF_APPNAME);
+            });
+            
             /*             * ******************* Email notification end here **************************** */
 
             /*
