@@ -363,7 +363,7 @@
                                         <td>{{ $row->category->category_name }}</td><td>{{$row->price}}</td><td>{{$row->number_of_nights}}</td><td class="m--align-right">{{ number_format($total_price, 2) }}</td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2" rowspan="3"><img src="{{$img}}" /></td><th>Sub total</th><td class="m--align-right">{{ number_format($total_price, 2) }}</td>
+                                        <td colspan="2" rowspan="3" width="60%"><img src="{{$img}}" style="height: 200px;" /></td><th>Sub total</th><td class="m--align-right">{{ number_format($total_price, 2) }}</td>
                                     </tr>
                                     <tr>
                                         <th>Commission due</th><td class="m--align-right">{{ number_format($commission_due, 2) }}</td>
