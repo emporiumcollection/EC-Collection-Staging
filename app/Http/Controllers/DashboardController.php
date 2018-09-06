@@ -30,6 +30,15 @@ class DashboardController extends Controller {
         $this->data['logged_user'] = \DB::table('tb_users')->where('id', $u_id)->first();
           
 		$this->data['online_users'] = \DB::table('tb_users')->orderBy('last_activity','desc')->limit(10)->get(); 
+        
+        $gp_id = trim(\CommonHelper::getusertype('users-b2c'));
+        
+        if(!empty($gp_id)){           
+           if($this->data['logged_user']->new_user == 1){
+                return Redirect::to('traveller');
+           }
+        }
+        
 		return view($file_name,$this->data);
 	}
 

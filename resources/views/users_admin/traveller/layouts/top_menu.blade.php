@@ -236,10 +236,19 @@
 																		</span>
 																	</a>
 																</li>																
-                                                                
+                                                                <li class="m-nav__item">
+																	<a href="{{ URL::to('traveller/bookings')}}" class="m-nav__link">
+																		<i class="m-nav__link-icon flaticon-book"></i>
+																		<span class="m-nav__link-title">
+																			<span class="m-nav__link-wrap">
+																				My Reservations
+																			</span>
+																		</span>
+																	</a>
+																</li>
 																<li class="m-nav__item">
 																	<a href="{{ URL::to('user/companion')}}" class="m-nav__link">
-																		<i class="m-nav__link-icon flaticon-suitcase"></i>
+																		<i class="m-nav__link-icon flaticon-user-add"></i>
 																		<span class="m-nav__link-title">
 																			<span class="m-nav__link-wrap">
 																				 My Companions
@@ -259,7 +268,7 @@
 																</li>
                                                                 <li class="m-nav__item">
 																	<a href="{{ URL::to('user/settings')}}" class="m-nav__link">
-																		<i class="m-nav__link-icon flaticon-suitcase"></i>
+																		<i class="m-nav__link-icon flaticon-settings"></i>
 																		<span class="m-nav__link-title">
 																			<span class="m-nav__link-wrap">
 																				  Account Settings
@@ -267,16 +276,7 @@
 																		</span>
 																	</a>
 																</li> 
-                                                                <li class="m-nav__item">
-																	<a href="{{ URL::to('traveller/bookings')}}" class="m-nav__link">
-																		<i class="m-nav__link-icon flaticon-profile-1"></i>
-																		<span class="m-nav__link-title">
-																			<span class="m-nav__link-wrap">
-																				My Reservations
-																			</span>
-																		</span>
-																	</a>
-																</li>	
+                                                                	
 																<li class="m-nav__separator m-nav__separator--fit"></li>
                                                                 
 																<li class="m-nav__item">

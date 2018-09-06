@@ -1025,7 +1025,7 @@ class BookingsController extends Controller {
                 $row->user_info = \DB::table('tb_users')->where('id', $row->client_id)->first();
                 
                 $row->reserved_rooms = \DB::table('td_reserved_rooms')->join('tb_properties_category_types', 'td_reserved_rooms.type_id', '=', 'tb_properties_category_types.id' )->where('reservation_id', $row->id)->get();
-            
+                $row->preferences = \DB::table('td_booking_preferences')->where('reservation_id', $row->id)->first();
                 
                 $this->data['row'] = $row;
             
