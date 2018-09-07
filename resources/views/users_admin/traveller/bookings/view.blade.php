@@ -13,8 +13,14 @@
     </li>
     <li class="m-nav__separator"> - </li>
     <li class="m-nav__item"> 
-        <a href="javascript:;" class="m-nav__link"> 
+        <a href="{{ Url::to('traveller/bookings') }}" class="m-nav__link"> 
             <span class="m-nav__link-text"> My Reservations </span> 
+        </a> 
+    </li>
+    <li class="m-nav__separator"> - </li>
+    <li class="m-nav__item"> 
+        <a href="javascript:;" class="m-nav__link"> 
+            <span class="m-nav__link-text"> DL-<?php echo date('d.m.y', strtotime($row->created_date)); ?>-{{ $row->id }} </span> 
         </a> 
     </li>
 @stop
@@ -26,6 +32,11 @@
         <div class="m-portlet m-portlet--full-height">
     		
     		<div class="m-portlet__body">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <h4>DL-<?php echo date('d.m.y', strtotime($row->created_date)); ?>-{{ $row->id }}</h4>
+                    </div>
+                </div>
     			<!--begin::Section-->
     			<div class="m-accordion m-accordion--default" id="m_accordion_1" role="tablist">
     				<!--begin::Item-->

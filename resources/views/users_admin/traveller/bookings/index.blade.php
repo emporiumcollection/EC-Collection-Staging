@@ -137,7 +137,7 @@
         										<a href="#" data-toggle="modal" data-target="#hotel_term_popup"> Show hotel terms</a> 
         									</span>
                                             {{--*/ $url = 'traveller/bookings/show/'.$row->id; /*--}}
-                                            <a href="{{Url::to($url)}}" id="show_more">More info</a>
+                                            <a href="{{Url::to($url)}}" id="show_more">View Reservation</a>
         								</div>
         							</div>
         						</div>
