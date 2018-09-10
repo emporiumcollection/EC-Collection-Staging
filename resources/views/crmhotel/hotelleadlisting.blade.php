@@ -96,6 +96,7 @@
 						<a  href="{{(strpos($row->website, 'http') !== false) ? $row->website : 'http://'.$row->website }}" class="tips btn btn-xs btn-success" title="website" style="display: none;"><i class="fa fa-globe"></i></a>
                         
                         <a  href="#" class="tips btn btn-xs btn-success" title="Instagram" data-toggle="modal" data-target="#instaModal{{ $j }}"><i class="fa fa-instagram"></i></a>
+                        <a  href="{{Url::to('crmhotel/leadupdate/'.$row->id.'?return='.$return)}}" class="tips btn btn-xs btn-success" title="Edit"><i class="fa fa-edit "></i></a>
                         
 				</td>				 
                 </tr>				

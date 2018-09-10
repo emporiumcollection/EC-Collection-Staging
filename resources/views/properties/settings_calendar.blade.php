@@ -230,8 +230,8 @@ $(document).ready(function () {
 	 });
 	 
 	 
-	 $(document).on('click', '#catrooms .scell', function (){
-		var clickcell = $(this);
+	 $(document).on('click', '#catrooms .scell', function (){ 
+		var clickcell = $(this); console.log(clickcell);
 		var monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 		var cdate = clickcell.attr('data-date');
 		var cnum = clickcell.attr('data-cell-number');
@@ -241,6 +241,9 @@ $(document).ready(function () {
 		var srartdateform = JSON.parse(cdate);
 		var chkin = srartdateform.year+'-'+srartdateform.month+'-'+srartdateform.date;
 		var enddate = startdate = chkindate = chkoutdate = '';
+        
+        clickcell.addClass('selectedCell');
+        
 		if($('#startid').val()!='')
 		{
 			$('#endid').val(cnum);

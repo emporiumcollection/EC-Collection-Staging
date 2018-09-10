@@ -26,7 +26,7 @@
             <div class="sbox-title"> <h4> <i class="fa fa-table"></i> <a href="{{URL::to('properties_settings/'.$row['id'].'/types')}}" class="tips btn btn-xs btn-primary pull-right" title="" data-original-title="Reservation Management"><i class="fa fa-edit"></i>&nbsp;Reservation Management</a></h4></div>
             <div class="sbox-content"> 	
 
-                {!! Form::open(array('url'=>'crmhotel/save?return='.$return, 'class'=>'form-horizontal','files' => true , 'parsley-validate'=>'','novalidate'=>' ')) !!}
+                {!! Form::open(array('url'=>'crmhotel/hotelleadsave?return='.$return, 'class'=>'form-horizontal','files' => true , 'parsley-validate'=>'','novalidate'=>' ')) !!}
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#LocationDetails" data-toggle="tab">Hotel Details</a></li>
                     <li class=""><a href="#HotelAdress" data-toggle="tab">Hotel Adress</a></li>

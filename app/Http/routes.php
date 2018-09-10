@@ -534,3 +534,5 @@ Route::get('getEventPackages/{eventID}', 'Frontend\RestaurantFrontController@get
 
 Route::get('traveller/bookings', 'BookingsController@travellerBookings');
 Route::get('traveller/bookings/show/{id}', 'BookingsController@showBooking');
+
+Route::get('hotel/bookings', 'BookingsController@hotelBookings');

@@ -252,6 +252,17 @@
 																</li>
 																
                                                                 <li class="m-nav__item">
+																	<a href="{{ URL::to('hotel/bookings')}}" class="m-nav__link">
+																		<i class="m-nav__link-icon flaticon-profile-1"></i>
+																		<span class="m-nav__link-title">
+																			<span class="m-nav__link-wrap">
+																				My Reservations
+																			</span>
+																		</span>
+																	</a>
+																</li>
+                                                                
+                                                                <li class="m-nav__item">
 																	<a href="{{ URL::to('user/profile')}}" class="m-nav__link">
 																		<i class="m-nav__link-icon flaticon-suitcase"></i>
 																		<span class="m-nav__link-title">
