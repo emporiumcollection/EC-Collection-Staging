@@ -10,7 +10,7 @@
         </div>
         <ul class="breadcrumb">
             <li><a href="{{ URL::to('dashboard') }}">{{ Lang::get('core.home') }}</a></li>
-            <li><a href="{{ URL::to('properties?return='.$return) }}">{{ $pageTitle }}</a></li>
+            <li><a href="{{ URL::to('crmhotel/hotellisting?return='.$return) }}">Hotel</a></li>
             <li class="active">{{ Lang::get('core.addedit') }} </li>
         </ul>
     </div>
