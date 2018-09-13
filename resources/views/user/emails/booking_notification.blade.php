@@ -7,6 +7,255 @@
         <meta name="format-detection" content="telephone=no" />
         <title>Booking Email Notification</title>
         <style type="text/css">
+        
+            *{box-sizing: border-box; margin:0;}
+          	body{
+          		max-width: 100%; width: 100%; font-family: Geomanist-Regular;   font-size: 15px; line-height: 1.5;
+              color: #5d5b5b; letter-spacing: 0.2px; 
+          	}
+            h1 , h2 , h3 , h4 , h5 , h6{
+              margin:5px 0; 
+            }
+            img{
+              max-width: 100%;
+            }
+            @font-face{
+              font-family: Geomanist-Regular;
+              src: url(fonts/Geomanist-Regular.otf);
+            }
+             @font-face{
+              font-family: Geomanist-Light;
+              src: url(fonts/Geomanist-Light.ttf);
+            }
+            @font-face{
+              font-family: geomanist-regular-italic-webfont;
+              src: url(fonts/geomanist-regular-italic-webfont.ttf);
+            }
+            
+            .container-box {
+                max-width: 600px;
+                margin: auto;
+            }
+            
+            .header{
+              text-align: center;
+            }
+            a{       
+               color: #5d5b5b;
+               text-decoration: none;
+            }
+        
+            .txt-box{
+              text-align: center;
+            }
+            .txt-box h3 {
+                font-size: 20px;
+                margin: 0 0 30px;
+                color: #5d5b5b;
+                font-weight: normal;
+                letter-spacing: 1px;
+            }
+            ul{
+              list-style: none;
+              color: #5d5b5b;
+            }
+        
+             .row-bx:after{
+              display: block;
+              clear: both;
+              content: "";
+             }
+            .row-bx .col-6{
+              width: 45%;
+              float: left;
+              padding: 0;
+              margin-right: 4%;      
+            }
+            .row-bx .col-6:last-child{
+              margin-right: 0;
+            }
+            .sections.bg-gray {
+                background: #f5f5f5;
+                  padding: 30px 0;
+            }
+            .img-box {
+                height: 300px;
+                color: #fff;
+                background: url(http://staging.emporium-voyage.com/images/bg-map.png) no-repeat center bottom;
+                background-size: cover;
+                padding: 30px;
+                position: relative;
+            }
+        
+          .bg-city.img-box {
+             background: url(http://staging.emporium-voyage.com/images/bg-city.png) no-repeat center bottom;
+            background-size: cover;
+          }
+          .rounds {
+            width: 50px;
+            height: 50px;
+            background: #fff;
+            border-radius: 100%;
+            position: absolute;
+            bottom: -25px;
+            right: 15px;
+            box-shadow: 0 5px 12px #dedddd;
+        }
+          .bg-white{
+            background: #fff;
+          }
+          .pad-box {
+            padding: 20px;
+        }
+        .bg-shadow{
+            box-shadow: 0 5px 10px #e4e4e2;
+            z-index: 5;
+            position: relative;
+        }
+        span.sub-txt {
+            font-size: 13px;
+            color: #bbb8b8;
+        }
+         h4 {
+            font-size: 17px;     
+            margin:0; 
+        }
+        .invite-box {
+            display: inline-block;
+            padding: 0 20px 10px 15px;
+            margin: 0 -15px;
+            box-shadow: 0 2px 5px #eaeaea;   
+        }
+        .invite-box a {
+            text-decoration: none;    
+        }
+        .msg-box {
+            margin-top: 0;
+            padding-top: 15px;
+            position: relative;
+        }
+        .invite-box.invite-person {
+            padding: 0;
+            margin: 0 0 20px;
+            box-shadow: none;
+        }
+        .dates-n-valid:after{
+          content: "";
+          display: block;
+          clear: both;
+        }
+        .col-8 , .col-4 {
+            width: 70%;
+            float: left;
+        }
+        .col-4{
+          width: 30%;
+        }
+        .dates-n-valid {
+            padding-bottom: 15px;
+        }
+        .dates-n-valid p {
+           
+        }
+        .img-box h4 {
+            color: #fff;
+            font-size: 17px;
+            line-height: 1.2;
+            margin-top: 15%;
+            font-weight: normal;
+        }
+        .msg-box h4 {
+            margin: 10px 0;
+        }
+        .box-barcode {
+            text-align: center;
+            padding: 20px;
+            margin-top: 10px;
+        }
+        .col-6.bg-white {
+            min-height: 594px;
+            background: #ffffff;
+        }
+        .text-cnter-box {
+            padding: 100px 0;
+            text-align: center;
+        }
+        .tag-line {
+            padding: 60px 0;
+            text-align: center;
+            font-family: Geomanist-Light;
+        }
+        .tag-line h3 {
+            font-weight: normal;
+            letter-spacing: 3px;
+            font-size: 25px;
+            color: #000;
+            margin-bottom: 20px;
+        }
+        .tag-line p{
+          font-family: geomanist-regular-italic-webfont;
+        }
+        .social-sec ul {
+            text-align: center;
+            padding: 20px 0;
+            margin-bottom: 30px;
+            border-top: 1px solid #fff;
+            border-bottom: 1px solid #fff;
+        }
+        .social-sec ul li{
+          display: inline-block;
+        }
+        ul.pul-ri8 {
+            float: right;
+        }
+        ul.pul-ri8 li{
+          float: left;
+          margin-left: 30px;
+        }
+        ul.pul-ri8 li:first-child{
+          margin-left: 0;
+        }
+        p.gray-tx {
+            color: #bfbebe;
+        }
+        .sections.bg-gray.pad-60 {
+            padding: 60px 0;
+        }
+        .txt-box {
+            padding: 100px 0 120px;
+            text-align: center;
+        }
+        
+        @media (max-width: 559px){
+          .container-box {
+            max-width: 320px;
+            margin: auto;
+          }
+          .row-bx .col-6 {
+            width: 100%;
+            float: none;
+            padding: 0;
+            margin-right: 0;
+            margin-bottom: 30px;
+          }
+          br{
+            display: none;
+          }
+          .img-box h4 br{
+            display: block;
+          }
+          ul.pul-ri8 {
+              float: none;
+          }
+          ul.pul-ri8 li{
+            float: none;
+            display: inline-block;
+          }
+          p.gray-tx {
+              text-align: center;
+          }
+        }
+        
             a {
                 text-decoration: none !important;
             }
@@ -238,70 +487,27 @@
         </style>
     </head>
 
-    <body style="background-color: #D8D8D4;margin: 0 auto;padding: 0 !important;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;-webkit-font-smoothing: antialiased;min-width: 100% !important;">
+    <body style="margin: 0 auto;padding: 0 !important;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;-webkit-font-smoothing: antialiased;min-width: 100% !important;">
+    
+        <div class="invitation-box">
+     		<div class="container-box">
+         		<div class="header"> 			
+        			<div style="border-bottom: 1px solid #ddd; padding: 100px 0; text-align: center;">
+        			     <a href="#"><img src="http://staging.emporium-voyage.com/images/emporium-voyage-logo.png" alt="" style="width: 250px;" /></a>
+        			</div>
+        			<div class="sections">
+                        <div class="container-box">
+                          <div class="txt-box">
+    
         <center>
-
+        
+            
             <div mc:repeatable>
-                <!--LOGO SECTION MODULE AT TOP-->
-                <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#D2D2C6" style="table-layout: fixed;margin: 0 auto;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                    <tr>
-                        <td align="center" style="border-collapse: collapse;">
-                            <table width="668" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#D2D2C6" class="table600Min" style="table-layout: fixed;margin: 0 auto;min-width: 668px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                <tr>
-                                    <td align="center" height="30" class="table600st" style="min-width: 668px;border-collapse: collapse;"></td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                </table>
-                <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#D2D2C6" style="table-layout: fixed;margin: 0 auto;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                    <tr>
-                        <td align="center" style="border-collapse: collapse;">
-                            <table width="668" align="center" cellpadding="0" cellspacing="0" border="0" class="table600Min" bgcolor="#D2D2C6" style="table-layout: fixed;margin: 0 auto;min-width: 668px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                <tr>
-                                    <td align="center" class="table600st" style="min-width: 668px;border-collapse: collapse;">
-                                        <table width="629" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#D8D8D4" class="table600" style="border-bottom: 1px solid #C7AB84;border-radius: 6px 6px 0 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                            <tr>
-                                                <td width="629" class="table600st" align="left" style="min-width: 629px;border-collapse: collapse;">
-                                                    <table width="629" align="left" cellpadding="0" cellspacing="0" border="0" class="table600Logo" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                        <tr>
-                                                            <!--LOGO IMAGE'S WIDTH MUST BE MAX 200px OR LOWER-->
-                                                            <!--HEIGHT MUST BE 100 px-->
-                                                            <td style="border-collapse: collapse;">
-                                                                <table cellpadding="0" cellspacing="0" border="0" class="centerize" style="border-bottom-color: #4B4743;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                    <tr>
-                                                                        <td width="30" class="esFrMb" style="border-collapse: collapse;"></td>
-                                                                        <td align="center" style="line-height: 1px;border-collapse: collapse;">
-                                                                            <a href="#" target="_blank"><img vspace="0" hspace="0" align="top" border="0" mc:edit="mcsec-1" src="http://design-locations.biz/sximo/assets/images/logo-design_1.png" style="display: block; width: 100%; margin-top: 15px;" alt="Logo Image" />
-                                                                            </a>
-                                                                        </td>
-                                                                        <td width="30" class="esFrMb" style="border-collapse: collapse;"></td>
-                                                                    </tr>
-                                                                </table>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="2" height="10" style="font-size: 0;line-height:1;border-collapse: collapse;">&nbsp;</td>
-                                                        </tr>
-                                                    </table>
-
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                </table>
-                <!--END OF THE MODULE-->
-            </div>
-            <div mc:repeatable>
-                <table width="100%" bgcolor="#D2D2C6" align="center" cellspacing="0" cellpadding="0" border="0" style="table-layout: fixed;margin: 0 auto;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                <table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" style="table-layout: fixed;margin: 0 auto;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                     <tbody>
                         <tr>
                             <td align="center" style="border-collapse: collapse;">
-                                <table width="668" bgcolor="#D2D2C6" align="center" cellspacing="0" cellpadding="0" border="0" class="table600Min" style="table-layout: fixed;margin: 0 auto;min-width: 668px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                <table width="668"  align="center" cellspacing="0" cellpadding="0" border="0" class="table600Min" style="table-layout: fixed;margin: 0 auto;min-width: 668px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                     <tbody>
                                         <tr>
                                             <td align="center" class="table600st" style="min-width: 668px;border-collapse: collapse;">
@@ -359,10 +565,10 @@
 
             <div mc:repeatable>
                 <!-- 1 COLUMN MODULE === YOUR PAYMENT IS PROCESSING TEXT -->
-                <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#D2D2C6" style="table-layout: fixed;margin: 0 auto;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0" style="table-layout: fixed;margin: 0 auto;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                     <tr>
                         <td align="center" style="border-collapse: collapse;">
-                            <table width="668" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#D2D2C6" class="table600Min" style="table-layout: fixed;margin: 0 auto;min-width: 668px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                            <table width="668" align="center" cellpadding="0" cellspacing="0" border="0"  class="table600Min" style="table-layout: fixed;margin: 0 auto;min-width: 668px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                 <tr>
                                     <td align="center" class="table600st" style="min-width: 668px;border-collapse: collapse;">
                                         <table width="629" bgcolor="#D8D8D4" align="center" cellpadding="0" cellspacing="0" border="0" class="table600Min" style="min-width: 629px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
@@ -409,10 +615,10 @@
 
             <div mc:repeatable>
                 <!-- 1 COLUMN MODULE === YOUR PAYMENT IS PROCESSING TEXT -->
-                <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#D2D2C6" style="table-layout: fixed;margin: 0 auto;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0" style="table-layout: fixed;margin: 0 auto;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                     <tr>
                         <td align="center" style="border-collapse: collapse;">
-                            <table width="668" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#D2D2C6" class="table600Min" style="table-layout: fixed;margin: 0 auto;min-width: 668px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                            <table width="668" align="center" cellpadding="0" cellspacing="0" border="0"  class="table600Min" style="table-layout: fixed;margin: 0 auto;min-width: 668px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                 <tr>
                                     <td align="center" class="table600st" style="min-width: 668px;border-collapse: collapse;">
                                         <table width="629" bgcolor="#D8D8D4" align="center" cellpadding="0" cellspacing="0" border="0" class="table600Min" style="min-width: 629px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
@@ -459,11 +665,11 @@
                 <!--END OF THE MODULE-->
             </div>
             <div mc:repeatable>
-                <table width="100%" bgcolor="#D2D2C6" align="center" cellspacing="0" cellpadding="0" border="0" style="table-layout: fixed;margin: 0 auto;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                <table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" style="table-layout: fixed;margin: 0 auto;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                     <tbody>
                         <tr>
                             <td align="center" style="border-collapse: collapse;">
-                                <table width="668" bgcolor="#D2D2C6" align="center" cellspacing="0" cellpadding="0" border="0" class="table600Min" style="table-layout: fixed;margin: 0 auto;min-width: 668px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                <table width="668"  align="center" cellspacing="0" cellpadding="0" border="0" class="table600Min" style="table-layout: fixed;margin: 0 auto;min-width: 668px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                     <tbody>
                                         <tr>
                                             <td align="center" class="table600st" style="min-width: 668px;border-collapse: collapse;">
@@ -487,7 +693,7 @@
                                                                                                         <tr>
                                                                                                             <td width="30" class="wz2" style="border-collapse: collapse;"></td>
                                                                                                             <!-- DESCRIPTION TEXT -->
-                                                                                                            <td class="header5TD" style="border-collapse: collapse;" mc:edit="mcsec-21">ROOM BBOKED</td>
+                                                                                                            <td class="header5TD" style="border-collapse: collapse;" mc:edit="mcsec-21">ROOM BOOKED</td>
                                                                                                             <td width="30" class="wz2" style="border-collapse: collapse;"></td>
                                                                                                         </tr>
                                                                                                         <tr>
@@ -519,10 +725,10 @@
             </div>
             <div mc:repeatable>
                 <!--2 COLUMNS MODULE == INVOICE CREDENTIALS == 2 (20 x 20)  ICONS ==-->
-                <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#D2D2C6" style="table-layout: fixed;margin: 0 auto;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0" style="table-layout: fixed;margin: 0 auto;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                     <tr>
                         <td align="center" style="border-collapse: collapse;">
-                            <table width="668" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#D2D2C6" class="table600Min" style="table-layout: fixed;margin: 0 auto;min-width: 668px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                            <table width="668" align="center" cellpadding="0" cellspacing="0" border="0"  class="table600Min" style="table-layout: fixed;margin: 0 auto;min-width: 668px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                 <tr>
                                     <td align="center" class="table600st" style="min-width: 668px;border-collapse: collapse;">
                                         <table width="629" align="center" cellpadding="0" cellspacing="0" border="0" class="table600Min" style="min-width: 628px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
@@ -544,7 +750,7 @@
                                                                                         <table width="252" align="left" cellpadding="0" cellspacing="0" border="0" class="tableTxt" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                             <tr>
                                                                                                 <!--ICON image at left here 20 x 20-->
-                                                                                                <td rowspan="2" width="25" align="center" valign="top" style="line-height: 1px;border-collapse: collapse;"><img mc:edit="mcsec-4" src="http://design-locations.biz/sximo/assets/images/invoice-icon-20x20.png" style="display:block;" alt="IMG" border="0" hspace="0" vspace="0" />
+                                                                                                <td rowspan="2" width="25" align="center" valign="top" style="line-height: 1px;border-collapse: collapse;"><img mc:edit="mcsec-4" src="http://staging.emporium-voyage.com/sximo/assets/images/invoice-icon-20x20.png" style="display:block;" alt="IMG" border="0" hspace="0" vspace="0" />
                                                                                                 </td>
                                                                                                 <td rowspan="2" width="14" style="font-size: 0;line-height:1;border-collapse: collapse;">&nbsp;</td>
                                                                                                 <!--Invoice Sent To SECTION-->
@@ -586,7 +792,7 @@
                                                                                         <table width="252" align="left" cellpadding="0" cellspacing="0" border="0" class="tableTxt" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                             <tr>
                                                                                                 <!--ICON image at left here 20 x 20-->
-                                                                                                <td rowspan="2" width="25" align="center" valign="top" style="line-height: 1px;border-collapse: collapse;"><img mc:edit="mcsec-8" src="http://design-locations.biz/sximo/assets/images/home-icon-20x20.png" style="display:block;" alt="IMG" border="0" hspace="0" vspace="0" />
+                                                                                                <td rowspan="2" width="25" align="center" valign="top" style="line-height: 1px;border-collapse: collapse;"><img mc:edit="mcsec-8" src="http://staging.emporium-voyage.com/sximo/assets/images/home-icon-20x20.png" style="display:block;" alt="IMG" border="0" hspace="0" vspace="0" />
                                                                                                 </td>
                                                                                                 <td rowspan="2" width="14" style="font-size: 0;line-height:1;border-collapse: collapse;">&nbsp;</td>
                                                                                                 <!--Invoice Sent From SECTION-->
@@ -637,10 +843,10 @@
 
             <div mc:repeatable>
                 <!--== 3 COLUMNS MODULE = INVOICE NO == INVOICE DATE == INVOICE TOTAL ==-->
-                <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#D2D2C6" style="table-layout: fixed;margin: 0 auto;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0" style="table-layout: fixed;margin: 0 auto;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                     <tr>
                         <td align="center" style="border-collapse: collapse;">
-                            <table width="668" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#D2D2C6" class="table600Min" style="table-layout: fixed;margin: 0 auto;min-width: 668px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                            <table width="668" align="center" cellpadding="0" cellspacing="0" border="0"  class="table600Min" style="table-layout: fixed;margin: 0 auto;min-width: 668px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                 <tr>
                                     <td align="center" class="table600st" style="min-width: 668px;border-collapse: collapse;">
                                         <table width="629" align="center" cellpadding="0" cellspacing="0" border="0" class="table600Min" style="min-width: 629px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
@@ -662,7 +868,7 @@
                                                                                         <table width="145" align="left" cellpadding="0" cellspacing="0" border="0" class="tableTxt" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                             <tr>
                                                                                                 <!--ICON image here 20 x 20-->
-                                                                                                <td rowspan="2" width="25" align="center" valign="top" style="line-height: 1px;border-collapse: collapse;"><img mc:edit="mcsec-12" src="http://design-locations.biz/sximo/assets/images/date-icon-20x20.png" style="display:block;" alt="IMG" border="0" hspace="0" vspace="0" />
+                                                                                                <td rowspan="2" width="25" align="center" valign="top" style="line-height: 1px;border-collapse: collapse;"><img mc:edit="mcsec-12" src="http://staging.emporium-voyage.com/sximo/assets/images/date-icon-20x20.png" style="display:block;" alt="IMG" border="0" hspace="0" vspace="0" />
                                                                                                 </td>
                                                                                                 <td rowspan="2" width="14" style="font-size: 0;line-height:1;border-collapse: collapse;">&nbsp;</td>
                                                                                                 <!--Invoice No-->
@@ -692,7 +898,7 @@
                                                                                         <table width="145" align="left" cellpadding="0" cellspacing="0" border="0" class="tableTxt" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                             <tr>
                                                                                                 <!--ICON image here 20 x 20-->
-                                                                                                <td rowspan="2" width="25" align="center" valign="top" style="line-height: 1px;border-collapse: collapse;"><img mc:edit="mcsec-15" src="http://design-locations.biz/sximo/assets/images/date-icon-20x20.png" style="display:block;" alt="IMG" border="0" hspace="0" vspace="0" />
+                                                                                                <td rowspan="2" width="25" align="center" valign="top" style="line-height: 1px;border-collapse: collapse;"><img mc:edit="mcsec-15" src="http://staging.emporium-voyage.com/sximo/assets/images/date-icon-20x20.png" style="display:block;" alt="IMG" border="0" hspace="0" vspace="0" />
                                                                                                 </td>
                                                                                                 <td rowspan="2" width="14" style="font-size: 0;line-height:1;border-collapse: collapse;">&nbsp;</td>
                                                                                                 <!--Invoice Date-->
@@ -722,7 +928,7 @@
                                                                                         <table width="145" align="left" cellpadding="0" cellspacing="0" border="0" class="tableTxt" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                             <tr>
                                                                                                 <!--ICON image 20 x 20-->
-                                                                                                <td rowspan="2" width="25" align="center" valign="top" style="line-height: 1px;border-collapse: collapse;"><img mc:edit="mcsec-18" src="http://design-locations.biz/sximo/assets/images/eur.png" style="display:block;" alt="IMG" border="0" hspace="0" vspace="0" />
+                                                                                                <td rowspan="2" width="25" align="center" valign="top" style="line-height: 1px;border-collapse: collapse;"><img mc:edit="mcsec-18" src="http://staging.emporium-voyage.com/sximo/assets/images/eur.png" style="display:block;" alt="IMG" border="0" hspace="0" vspace="0" />
                                                                                                 </td>
                                                                                                 <td rowspan="2" width="14" style="font-size: 0;line-height:1;border-collapse: collapse;">&nbsp;</td>
                                                                                                 <!--Invoice Total-->
@@ -759,11 +965,11 @@
             </div>
             <div mc:repeatable="">
                 <!--== 4 COLUMNS MODULE == MAIN INVOICE CAPTIONS == DESCRIPTION == QUANTITY == PRICE == TEXT ==-->
-                <table width="100%" bgcolor="#D2D2C6" align="center" cellspacing="0" cellpadding="0" border="0" style="table-layout: fixed;margin: 0 auto;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                <table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" style="table-layout: fixed;margin: 0 auto;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                     <tbody>
                         <tr>
                             <td align="center" style="border-collapse: collapse;">
-                                <table width="668" bgcolor="#D2D2C6" align="center" cellspacing="0" cellpadding="0" border="0" style="table-layout: fixed;margin: 0 auto;min-width: 668px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;" class="table600Min">
+                                <table width="668"  align="center" cellspacing="0" cellpadding="0" border="0" style="table-layout: fixed;margin: 0 auto;min-width: 668px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;" class="table600Min">
                                     <tbody>
                                         <tr>
                                             <td align="center" style="min-width: 668px;border-collapse: collapse;" class="table600st">
@@ -820,10 +1026,10 @@
             </div>
             <div mc:repeatable>
                 <!-- 1 COLUMN MODULE === YOUR PAYMENT IS PROCESSING TEXT -->
-                <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#D2D2C6" style="table-layout: fixed;margin: 0 auto;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0" style="table-layout: fixed;margin: 0 auto;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                     <tr>
                         <td align="center" style="border-collapse: collapse;">
-                            <table width="668" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#D2D2C6" class="table600Min" style="table-layout: fixed;margin: 0 auto;min-width: 668px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                            <table width="668" align="center" cellpadding="0" cellspacing="0" border="0"  class="table600Min" style="table-layout: fixed;margin: 0 auto;min-width: 668px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                 <tr>
                                     <td align="center" class="table600st" style="min-width: 668px;border-collapse: collapse;">
                                         <table width="629" bgcolor="#D8D8D4" align="center" cellpadding="0" cellspacing="0" border="0" class="table600Min" style="min-width: 629px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
@@ -1015,10 +1221,10 @@
 
                                                                                             <div mc:repeatable>
                                                                                                 <!--== 4 COLUMNS MODULE == MAIN INVOICE CAPTIONS == DESCRIPTION == QUANTITY == PRICE == TEXT ==-->
-                                                                                                <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#D2D2C6" style="table-layout: fixed;margin: 0 auto;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0"  style="table-layout: fixed;margin: 0 auto;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                     <tr>
                                                                                                         <td align="center" style="border-collapse: collapse;">
-                                                                                                            <table width="668" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#D2D2C6" class="table600Min" style="table-layout: fixed;margin: 0 auto;min-width: 668px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                            <table width="668" align="center" cellpadding="0" cellspacing="0" border="0"  class="table600Min" style="table-layout: fixed;margin: 0 auto;min-width: 668px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                                 <tr>
                                                                                                                     <td align="center" class="table600st" style="min-width: 668px;border-collapse: collapse;">
                                                                                                                         <table width="629" align="center" cellpadding="0" cellspacing="0" border="0" class="table600Min" style="min-width: 629px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
@@ -1116,10 +1322,10 @@
 
                                                                                             <div mc:repeatable>
                                                                                                 <!-- 4 COLUMN MODULE == ITEMS  DETAILS == NAME, PRICE, QUANTITY, TOTAL -->
-                                                                                                <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#D2D2C6" style="table-layout: fixed;margin: 0 auto;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0"  style="table-layout: fixed;margin: 0 auto;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                     <tr>
                                                                                                         <td align="center" style="border-collapse: collapse;">
-                                                                                                            <table width="668" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#D2D2C6" class="table600Min" style="table-layout: fixed;margin: 0 auto;min-width: 668px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                            <table width="668" align="center" cellpadding="0" cellspacing="0" border="0"  class="table600Min" style="table-layout: fixed;margin: 0 auto;min-width: 668px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                                 <tr>
                                                                                                                     <td align="center" class="table600st" style="min-width: 668px;border-collapse: collapse;">
                                                                                                                         <table width="629" align="center" cellpadding="0" cellspacing="0" border="0" class="table600Min" style="min-width: 629px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
@@ -1148,10 +1354,10 @@
 
                                                                                             <div mc:repeatable>
                                                                                                 <!-- 4 COLUMNS MODULE == FINAL INVOICE CALCULATIONS (SUBTOTAL, VAT, SHIPPING, TOTAL) + SIGNATURE ==  -->
-                                                                                                <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#D2D2C6" style="table-layout: fixed;margin: 0 auto;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0"  style="table-layout: fixed;margin: 0 auto;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                     <tr>
                                                                                                         <td align="center" style="border-collapse: collapse;">
-                                                                                                            <table width="668" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#D2D2C6" class="table600Min" style="table-layout: fixed;margin: 0 auto;min-width: 668px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                            <table width="668" align="center" cellpadding="0" cellspacing="0" border="0"  class="table600Min" style="table-layout: fixed;margin: 0 auto;min-width: 668px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                                 <tr>
                                                                                                                     <td align="center" class="table600st" style="min-width: 668px;border-collapse: collapse;">
                                                                                                                         <table width="629" align="center" cellpadding="0" cellspacing="0" border="0" class="table600Min" style="min-width: 629px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
@@ -1168,7 +1374,7 @@
                                                                                                                                                                     <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
                                                                                                                                                                 </tr>
                                                                                                                                                                 <tr>
-                                                                                                                                                                    <td width="347" align="center" style="line-height: 1px;border-collapse: collapse;" class="TDtable60034"><img mc:edit="mcsec-41" src="http://design-locations.biz/sximo/assets/images/signature-150x80.png" style="display:block;" alt="IMG" border="0" hspace="0" vspace="0" />
+                                                                                                                                                                    <td width="347" align="center" style="line-height: 1px;border-collapse: collapse;" class="TDtable60034"><img mc:edit="mcsec-41" src="http://staging.emporium-voyage.com/sximo/assets/images/signature-150x80.png" style="display:block;" alt="IMG" border="0" hspace="0" vspace="0" />
                                                                                                                                                                     </td>
                                                                                                                                                                 </tr>
                                                                                                                                                                 <tr>
@@ -1300,10 +1506,10 @@
 
                                                                                             <div mc:repeatable>
                                                                                                 <!-- 1 COLUMN MODULE === FINAL NOTES, ACCEPTED PAYMENT OPTIONS ETC. -->
-                                                                                                <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#D2D2C6" style="table-layout: fixed;margin: 0 auto;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0" style="table-layout: fixed;margin: 0 auto;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                     <tr>
                                                                                                         <td align="center" style="border-collapse: collapse;">
-                                                                                                            <table width="668" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#D2D2C6" class="table600Min" style="table-layout: fixed;margin: 0 auto;min-width: 668px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                            <table width="668" align="center" cellpadding="0" cellspacing="0" border="0"  class="table600Min" style="table-layout: fixed;margin: 0 auto;min-width: 668px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                                 <tr>
                                                                                                                     <td align="center" class="table600st" style="min-width: 668px;border-collapse: collapse;">
                                                                                                                         <table width="629" align="center" cellpadding="0" cellspacing="0" border="0" class="table600Min" style="min-width: 629px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
@@ -1351,13 +1557,13 @@
 
                                                                                             <div mc:repeatable>
                                                                                                 <!-- == FOOTER MODULE = MAILING OPTIONS == -->
-                                                                                                <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#D2D2C6" style="table-layout: fixed;margin: 0 auto;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0" style="table-layout: fixed;margin: 0 auto;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                     <tr>
                                                                                                         <td align="center" style="border-collapse: collapse;">
-                                                                                                            <table width="668" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#D2D2C6" class="table600Min" style="table-layout: fixed;margin: 0 auto;min-width: 668px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                            <table width="668" align="center" cellpadding="0" cellspacing="0" border="0"  class="table600Min" style="table-layout: fixed;margin: 0 auto;min-width: 668px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                                 <tr>
                                                                                                                     <td align="center" class="table600st" style="min-width: 668px;border-collapse: collapse;">
-                                                                                                                        <table width="629" align="center" cellpadding="0" cellspacing="0" bgcolor="#D2D2C6" border="0" class="table600Min" style="table-layout: fixed;margin: 0 auto;min-width: 629px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                                        <table width="629" align="center" cellpadding="0" cellspacing="0"  border="0" class="table600Min" style="table-layout: fixed;margin: 0 auto;min-width: 629px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                                             <tr>
                                                                                                                                 <td align="center" class="table600st" style="min-width: 629px;border-collapse: collapse;">
                                                                                                                                     <table width="610" align="center" cellpadding="0" cellspacing="0" border="0" class="table600" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
@@ -1386,6 +1592,60 @@
                                                                                             <!--END OF THE MODULE-->
                                                                                             <div mc:repeatable></div>
                                                                                             </center>
-                                                                                            </body>
+                                                                                            
 
-                                                                                            </html>
+</div>
+                   </div>
+    			</div> 				
+     		</div>		 		
+     	</div>
+        <div style="clear: both;"></div>
+        <div class="sections">
+            <div class="container-box">
+              <div class="text-cnter-box">
+                 <p>emporium-voyage is your ideal, vogue vacation planner! With it's ultra-exclusive spaces<br> and elite spas huddled in its cocoon, emporium-voyage ensure the ultimate ultra luxury <br>experience. Our expertise lies in our utmost diligence to provide our beau monde<br> customers with an exotic experience they will relish forever.</p>
+              </div>
+            </div>
+        </div>
+        <div style="clear: both;"></div>
+
+        <!-- start footer -->
+        <div class="sections bg-gray">
+            <div class="container-box">
+                <div class="row-bx">
+                    <div class="col-12">
+                      <div class="text-center tag-line">
+                        <h3>emporium - voyage</h3>
+                        <p>Ultra luxury rooms from the worlds leading hotels from selected destinations</p>
+                      </div>
+                    
+                      <div class="social-sec">
+                         <ul>
+                           <li><a href="#" target="blank"><img src="http://staging.emporium-voyage.com/images/link-in.png" alt="" /></a></li>
+                           <li><a href="#" target="blank"><img src="http://staging.emporium-voyage.com/images/face-book.png" alt="" /></a></li>
+                           <li><a href="#" target="blank"><img src="http://staging.emporium-voyage.com/images/twitter.png" alt="" /></a></li>
+                           <li><a href="#" target="blank"><img src="http://staging.emporium-voyage.com/images/google-png.png" alt="" /></a></li>
+                         </ul>
+                      </div>
+                    </div>
+                </div>
+                <!-- end of sections -->
+                <div class="row-bx">
+                  <div class="col-6">
+                    <p class="gray-tx">&copy emporium-voyage</p>
+                  </div>
+                  <div class="col-6">
+                    <ul class="pul-ri8">
+                      <li><a href="#">Join</a></li>
+                      <li><a href="#">Magazine</a></li>
+                      <li><a href="#">Contact</a></li>
+                    </ul>
+                  </div>
+                </div>
+            </div>
+        </div>  
+    </div>                                                                                            
+                                                                                            
+</body>
+
+</html>

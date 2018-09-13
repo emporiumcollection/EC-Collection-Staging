@@ -5651,7 +5651,7 @@ class HomeController extends Controller {
             
             $bookingEmailTemplate = str_replace('{hotel_terms_n_conditions}', $hotel_term_and_condition, $bookingEmailTemplate);
             $bookingEmailTemplate = str_replace('{property_email}', $property->email, $bookingEmailTemplate);
-            //print_r($bookingEmailTemplate); 
+            print_r($bookingEmailTemplate); die;
             //$headers = "MIME-Version: 1.0" . "\r\n";
             //$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
             //$headers .= 'From: ' . CNF_APPNAME . '<marketing@emporium-voyage.com>' . "\r\n";
@@ -5662,8 +5662,7 @@ class HomeController extends Controller {
             $tempe = 'blank';
             $emailArr['msg'] = $bookingEmailTemplate;
             
-            //$toouser['email'] = $property->email;
-            $toouser['email'] = 'dalip.01rad@gmail.com';
+            $toouser['email'] = $property->email;            
 			$toouser['subject'] = "Booking Confirmation";            		
             \Mail::send('user.emails.'.$tempe, $emailArr, function ($message) use ($toouser) {
               $message->to($toouser['email'])
