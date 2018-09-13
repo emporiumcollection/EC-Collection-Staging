@@ -149,10 +149,16 @@ class BookingsController extends Controller {
         if (\Auth::user()->group_id == 4) {
             return view('customer.bookings', $this->data);
         }
-        $is_demo6 = trim(\CommonHelper::isHotelDashBoard());        
-        $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.bookings.index':'bookings.index';
+        if (\Auth::user()->group_id == 3) {
+            return Redirect::to('traveller/bookings');
+        }
+        if (\Auth::user()->group_id == 5) {
+            return Redirect::to('hotel/bookings');
+        }
+        //$is_demo6 = trim(\CommonHelper::isHotelDashBoard());        
+        //$file_name = (strlen($is_demo6) > 0)?$is_demo6.'.bookings.index':'bookings.index';
         
-        return view($file_name, $this->data);
+        return view('bookings.index', $this->data);
     }
 
     function getUpdate(Request $request, $id = null) {

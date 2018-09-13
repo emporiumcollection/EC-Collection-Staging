@@ -5641,7 +5641,15 @@ class HomeController extends Controller {
             $bookingEmailTemplate = str_replace('{total_price}', '€' . $total_price, $bookingEmailTemplate);
             $bookingEmailTemplate = str_replace('{commission_due}', '€' . $commission_due, $bookingEmailTemplate);
             $bookingEmailTemplate = str_replace('{grand_total}', '€' . $grand_total, $bookingEmailTemplate);
-            $bookingEmailTemplate = str_replace('{hotel_terms_n_conditions}', $hotel_terms_n_conditions, $bookingEmailTemplate);
+            
+            $hotel_term_and_condition = '';
+            if(!empty($hotel_terms_n_conditions)){
+                if(isset($hotel_terms_n_conditions->terms_n_conditions)){
+                    $hotel_term_and_condition = $hotel_terms_n_conditions->terms_n_conditions;
+                }
+            }
+            
+            $bookingEmailTemplate = str_replace('{hotel_terms_n_conditions}', $hotel_term_and_condition, $bookingEmailTemplate);
             $bookingEmailTemplate = str_replace('{property_email}', $property->email, $bookingEmailTemplate);
             //print_r($bookingEmailTemplate); 
             //$headers = "MIME-Version: 1.0" . "\r\n";
