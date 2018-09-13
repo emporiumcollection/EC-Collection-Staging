@@ -5654,19 +5654,20 @@ class HomeController extends Controller {
             $tempe = 'blank';
             $emailArr['msg'] = $bookingEmailTemplate;
             
-            /*$toouser['email'] = $property->email;
-			$toouser['subject'] = "Booking Confirmation";	
-            		
+            //$toouser['email'] = $property->email;
+            $toouser['email'] = 'dalip.01rad@gmail.com';
+			$toouser['subject'] = "Booking Confirmation";            		
             \Mail::send('user.emails.'.$tempe, $emailArr, function ($message) use ($toouser) {
               $message->to($toouser['email'])
                 ->subject($toouser['subject'])
                 ->from('marketing@emporium-voyage.com', CNF_APPNAME);
-            });*/
+            });
+            
             $toouser1['email'] = $user_info->email;
 			$toouser1['subject'] = "Booking Confirmation";	
             \Mail::send('user.emails.'.$tempe, $emailArr, function ($message) use ($toouser1) {
-              $message->to($toouser['email'])
-                ->subject($toouser['subject'])
+              $message->to($toouser1['email'])
+                ->subject($toouser1['subject'])
                 ->from('marketing@emporium-voyage.com', CNF_APPNAME);
             });
             
