@@ -1148,461 +1148,461 @@
                                                                                         <div style="float: left; width: 100%;">
                                                                                             Other, please specify : {other_interests}
                                                                                         </div>
-                                                                                                <p class="RegularText4TD" style="float: left; width: 100%;">Sports</p>
-                                                                                                {sports_preferences_list}
-                                                                                                <p class="RegularText4TD" style="float: left; width: 100%;">Wellbeing</p>
-                                                                                                {wellbeing_preferences_list}
-                                                                                                <div style="float: left; width: 100%;">
-                                                                                                    I would prefer my in-room language settings to be: {prefer_language}
-                                                                                                </div>
-                                                                                                </td>
-                                                                                                <td width="30" class="wz" style="border-collapse: collapse;"></td>
-                                                                                                </tr>
+                                                                                        <p class="RegularText4TD" style="float: left; width: 100%;">Sports</p>
+                                                                                        {sports_preferences_list}
+                                                                                        <p class="RegularText4TD" style="float: left; width: 100%;">Wellbeing</p>
+                                                                                        {wellbeing_preferences_list}
+                                                                                        <div style="float: left; width: 100%;">
+                                                                                            I would prefer my in-room language settings to be: {prefer_language}
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td width="30" class="wz" style="border-collapse: collapse;"></td>
+                                                                                </tr>
 
+                                                                                <tr>
+                                                                                    <td width="30" class="wz" style="border-collapse: collapse;"></td>
+                                                                                    <!--TEXT SECTION-->
+                                                                                    <td mc:edit="mcsec-3" style="border-collapse: collapse; border-top: 1px solid rgb(221, 229, 241); float: left; width: 100%; margin: 6px 0 0; padding: 10px 0 3px;" class="header2TD">
+                                                                                        <span class="roomTypeName">Eating & Drinking preferences</span>
+                                                                                    </td>
+                                                                                    <td width="30" class="wz" style="border-collapse: collapse;"></td>
+                                                                                </tr>
+
+                                                                                <tr>
+                                                                                    <td width="30" class="wz" style="border-collapse: collapse;"></td>
+                                                                                    <!--TEXT SECTION-->
+                                                                                    <td class="RegularTextTD" style="border-collapse: collapse;" mc:edit="mcsec-3">
+                                                                                        <p class="RegularText4TD" style="float: left; width: 100%;">Dietary regime</p>
+                                                                                        {dietary_preferences_list}
+                                                                                        <div style="float: left; width: 100%;">
+                                                                                            Favourite dishes: {favourite_dishes}
+                                                                                            <br/> Food allergies: {food_allergies}
+                                                                                            <br/> Known allergies: {known_allergies}
+                                                                                            <br/>
+                                                                                        </div>
+                                                                                        <p class="RegularText4TD" style="float: left; width: 100%;">Snacks</p>
+                                                                                        {snacks_preferences_list}
+                                                                                        <p class="RegularText4TD" style="float: left; width: 100%;">Fruits</p>
+                                                                                        {fruits_preferences_list}
+                                                                                        <p class="RegularText4TD" style="float: left; width: 100%;">Hot beverages</p>
+                                                                                        {beverages_preferences_list}
+                                                                                        <p class="RegularText4TD" style="float: left; width: 100%;">Sodas</p>
+                                                                                        {sodas_preferences_list}
+                                                                                        <div style="float: left; width: 100%;">
+                                                                                            Preferred aperitif: {preferred_aperitif} Other remarks for our upcoming visit: {preferred_aperitif}
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td width="30" class="wz" style="border-collapse: collapse;"></td>
+                                                                                </tr>
+
+
+                                                                                <tr>
+                                                                                    <td colspan="3" height="25" style="font-size: 0;line-height:1;border-collapse: collapse;" class="vrtclAlgn">&nbsp;</td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                <!--END OF THE MODULE-->
+                </div>
+
+
+                            <div mc:repeatable>
+                                <!--== 4 COLUMNS MODULE == MAIN INVOICE CAPTIONS == DESCRIPTION == QUANTITY == PRICE == TEXT ==-->
+                                <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0"  style="table-layout: fixed;margin: 0 auto;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                    <tr>
+                                        <td align="center" style="border-collapse: collapse;">
+                                            <table width="668" align="center" cellpadding="0" cellspacing="0" border="0"  class="table600Min" style="table-layout: fixed;margin: 0 auto;min-width: 668px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                <tr>
+                                                    <td align="center" class="table600st" style="min-width: 668px;border-collapse: collapse;">
+                                                        <table width="629" align="center" cellpadding="0" cellspacing="0" border="0" class="table600Min" style="min-width: 629px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                            <tr>
+                                                                <td class="table600st" style="min-width: 629px;border-collapse: collapse;">
+                                                                    <table width="629" align="left" cellpadding="0" cellspacing="0" bgcolor="#4B4743" border="0" class="table600" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                        <tr>
+                                                                            <td align="left" style="border-collapse: collapse;">
+                                                                                <table align="center" cellpadding="0" cellspacing="0" border="0" style="border-bottom: 1px solid #C7AB84;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                    <tr>
+                                                                                        <th width="209" class="stack2" style="margin: 0;padding: 0;vertical-align: top;border-collapse: collapse;">
+                                                                                            <table width="209" align="center" cellpadding="0" cellspacing="0" border="0" class="table60032" style="border-bottom-color: #C7AB84;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                 <tr>
-                                                                                                    <td width="30" class="wz" style="border-collapse: collapse;"></td>
-                                                                                                    <!--TEXT SECTION-->
-                                                                                                    <td mc:edit="mcsec-3" style="border-collapse: collapse; border-top: 1px solid rgb(221, 229, 241); float: left; width: 100%; margin: 6px 0 0; padding: 10px 0 3px;" class="header2TD">
-                                                                                                        <span class="roomTypeName">Eating & Drinking preferences</span>
+                                                                                                    <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td width="30" class="wz2" style="border-collapse: collapse;"></td>
+                                                                                                    <!-- DESCRIPTION TEXT -->
+                                                                                                    <td class="header5TD" style="border-collapse: collapse;" mc:edit="mcsec-21">Room Details</td>
+                                                                                                    <td width="30" class="wz2" style="border-collapse: collapse;"></td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
+                                                                                                </tr>
+                                                                                            </table>
+                                                                                        </th>
+                                                                                        <th width="139" class="stack3" style="border-left: 1px solid #C7AB84;margin: 0;padding: 0;vertical-align: top;border-collapse: collapse;">
+                                                                                            <table width="139" align="center" cellpadding="0" cellspacing="0" border="0" class="table60033" style="border-bottom-color: #C7AB84;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <tr>
+                                                                                                    <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td width="30" class="wz2" style="border-collapse: collapse;"></td>
+                                                                                                    <!-- PRICE TEXT -->
+                                                                                                    <td class="header5TD" style="border-collapse: collapse;" mc:edit="mcsec-22">Price</td>
+                                                                                                    <td width="30" class="wz2" style="border-collapse: collapse;"></td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
+                                                                                                </tr>
+                                                                                            </table>
+                                                                                        </th>
+                                                                                        <th width="139" class="stack3" style="border-left: 1px solid #C7AB84;margin: 0;padding: 0;vertical-align: top;border-collapse: collapse;">
+                                                                                            <table width="139" align="center" cellpadding="0" cellspacing="0" border="0" class="table60033" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <tr>
+                                                                                                    <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td width="30" class="wz2" style="border-collapse: collapse;"></td>
+                                                                                                    <!-- QUANTITY TEXT -->
+                                                                                                    <td class="header5TD" style="border-collapse: collapse;" mc:edit="mcsec-23">Nights</td>
+                                                                                                    <td width="30" class="wz2" style="border-collapse: collapse;"></td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
+                                                                                                </tr>
+                                                                                            </table>
+                                                                                        </th>
+                                                                                        <th width="139" class="stack3" style="border-left: 1px solid #C7AB84;margin: 0;padding: 0;vertical-align: top;border-collapse: collapse;">
+                                                                                            <table width="139" align="center" cellpadding="0" cellspacing="0" border="0" class="table60033" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <tr>
+                                                                                                    <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td width="30" class="wz2" style="border-collapse: collapse;"></td>
+                                                                                                    <!-- TOTAL TEXT -->
+                                                                                                    <td class="header5TD" style="border-collapse: collapse;" mc:edit="mcsec-24">Total</td>
+                                                                                                    <td width="30" class="wz2" style="border-collapse: collapse;"></td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
+                                                                                                </tr>
+                                                                                            </table>
+                                                                                        </th>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <!--END OF THE MODULE-->
+                            </div>
+
+
+
+
+
+                            <div mc:repeatable>
+                                <!-- 4 COLUMN MODULE == ITEMS  DETAILS == NAME, PRICE, QUANTITY, TOTAL -->
+                                <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0"  style="table-layout: fixed;margin: 0 auto;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                    <tr>
+                                        <td align="center" style="border-collapse: collapse;">
+                                            <table width="668" align="center" cellpadding="0" cellspacing="0" border="0"  class="table600Min" style="table-layout: fixed;margin: 0 auto;min-width: 668px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                <tr>
+                                                    <td align="center" class="table600st" style="min-width: 668px;border-collapse: collapse;">
+                                                        <table width="629" align="center" cellpadding="0" cellspacing="0" border="0" class="table600Min" style="min-width: 629px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                            <tr>
+                                                                <td class="table600st" style="min-width: 629px;border-collapse: collapse;">
+                                                                    <table width="629" align="left" cellpadding="0" cellspacing="0" bgcolor="#D8D8D4" border="0" class="table600" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                        <tr>
+                                                                            <td align="left" style="border-collapse: collapse;">
+                                                                                <table align="center" cellpadding="0" cellspacing="0" border="0" style="border-bottom: 1px solid #C7AB84;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                    {reserved_rooms}
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <!--END OF THE MODULE-->
+                            </div>
+
+                            <div mc:repeatable>
+                                <!-- 4 COLUMNS MODULE == FINAL INVOICE CALCULATIONS (SUBTOTAL, VAT, SHIPPING, TOTAL) + SIGNATURE ==  -->
+                                <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0"  style="table-layout: fixed;margin: 0 auto;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                    <tr>
+                                        <td align="center" style="border-collapse: collapse;">
+                                            <table width="668" align="center" cellpadding="0" cellspacing="0" border="0"  class="table600Min" style="table-layout: fixed;margin: 0 auto;min-width: 668px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                <tr>
+                                                    <td align="center" class="table600st" style="min-width: 668px;border-collapse: collapse;">
+                                                        <table width="629" align="center" cellpadding="0" cellspacing="0" border="0" class="table600Min" style="min-width: 629px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                            <tr>
+                                                                <td class="table600st" style="min-width: 629px;border-collapse: collapse;">
+                                                                    <table width="629" align="left" cellpadding="0" cellspacing="0" bgcolor="#D8D8D4" border="0" class="table600" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                        <tr>
+                                                                            <td align="left" style="border-collapse: collapse;">
+                                                                                <table align="center" cellpadding="0" cellspacing="0" border="0" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                    <tr>
+                                                                                        <th width="349" height="100" rowspan="4" class="stack4" bgcolor="#D8D8D4" style="margin: 0;padding: 0;vertical-align: top;border-bottom: 1px solid #C7AB84;border-collapse: collapse;">
+                                                                                            <table width="349" align="center" cellpadding="0" cellspacing="0" border="0" class="table60034" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <tr>
+                                                                                                    <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td width="347" align="center" style="line-height: 1px;border-collapse: collapse;" class="TDtable60034"><img mc:edit="mcsec-41" src="http://staging.emporium-voyage.com/sximo/assets/images/signature-150x80.png" style="display:block;" alt="IMG" border="0" hspace="0" vspace="0" />
                                                                                                     </td>
-                                                                                                    <td width="30" class="wz" style="border-collapse: collapse;"></td>
                                                                                                 </tr>
-
                                                                                                 <tr>
-                                                                                                    <td width="30" class="wz" style="border-collapse: collapse;"></td>
-                                                                                                    <!--TEXT SECTION-->
-                                                                                                    <td class="RegularTextTD" style="border-collapse: collapse;" mc:edit="mcsec-3">
-                                                                                                        <p class="RegularText4TD" style="float: left; width: 100%;">Dietary regime</p>
-                                                                                                        {dietary_preferences_list}
-                                                                                                        <div style="float: left; width: 100%;">
-                                                                                                            Favourite dishes: {favourite_dishes}
-                                                                                                            <br/> Food allergies: {food_allergies}
-                                                                                                            <br/> Known allergies: {known_allergies}
-                                                                                                            <br/>
-                                                                                                        </div>
-                                                                                                        <p class="RegularText4TD" style="float: left; width: 100%;">Snacks</p>
-                                                                                                        {snacks_preferences_list}
-                                                                                                        <p class="RegularText4TD" style="float: left; width: 100%;">Fruits</p>
-                                                                                                        {fruits_preferences_list}
-                                                                                                        <p class="RegularText4TD" style="float: left; width: 100%;">Hot beverages</p>
-                                                                                                        {beverages_preferences_list}
-                                                                                                        <p class="RegularText4TD" style="float: left; width: 100%;">Sodas</p>
-                                                                                                        {sodas_preferences_list}
-                                                                                                        <div style="float: left; width: 100%;">
-                                                                                                            Preferred aperitif: {preferred_aperitif} Other remarks for our upcoming visit: {preferred_aperitif}
-                                                                                                        </div>
+                                                                                                    <td class="RegularText5TD" style="border-collapse: collapse;" mc:edit="mcsec-42">Riaan Kieynhans
+                                                                                                        <br/>Accounts Manager
+                                                                                                        <br/>(or any JPG/PNG)
                                                                                                     </td>
-                                                                                                    <td width="30" class="wz" style="border-collapse: collapse;"></td>
                                                                                                 </tr>
-
-
+                                                                                            </table>
+                                                                                        </th>
+                                                                                        <th width="139" class="stack3" valign="top" bgcolor="#D8D8D4" style="border-left: 1px solid #C7AB84;margin: 0;padding: 0;vertical-align: top;border-bottom: 1px solid #C7AB84;border-collapse: collapse;">
+                                                                                            <table width="139" align="center" cellpadding="0" cellspacing="0" border="0" class="table60033" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                 <tr>
-                                                                                                    <td colspan="3" height="25" style="font-size: 0;line-height:1;border-collapse: collapse;" class="vrtclAlgn">&nbsp;</td>
+                                                                                                    <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
                                                                                                 </tr>
-                                                                                                </table>
-                                                                                                </td>
+                                                                                                <tr>
+                                                                                                    <td width="30" class="wz2" style="border-collapse: collapse;"></td>
+                                                                                                    <!-- TOTAL -->
+                                                                                                    <td class="RegularText5TD" style="border-collapse: collapse;" mc:edit="mcsec-43">Sub Total</td>
+                                                                                                    <td width="30" class="wz2" style="border-collapse: collapse;"></td>
                                                                                                 </tr>
-                                                                                                </table>
-                                                                                                </td>
+                                                                                                <tr>
+                                                                                                    <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
                                                                                                 </tr>
-                                                                                                </table>
-                                                                                                </td>
+                                                                                            </table>
+                                                                                        </th>
+                                                                                        <th width="139" class="stack3" valign="top" bgcolor="#D8D8D4" style="border-left: 1px solid #C7AB84;margin: 0;padding: 0;vertical-align: top;border-bottom: 1px solid #C7AB84;border-collapse: collapse;">
+                                                                                            <table width="139" align="center" cellpadding="0" cellspacing="0" border="0" class="table60033" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <tr>
+                                                                                                    <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
                                                                                                 </tr>
-                                                                                                </table>
-                                                                                                </td>
+                                                                                                <tr>
+                                                                                                    <td width="30" class="wz2" style="border-collapse: collapse;"></td>
+                                                                                                    <!-- INVOICE TOTAL -->
+                                                                                                    <td class="RegularText5TD" style="border-collapse: collapse;" mc:edit="mcsec-44">{total_price}</td>
+                                                                                                    <td width="30" class="wz2" style="border-collapse: collapse;"></td>
                                                                                                 </tr>
-                                                                                                </table>
-                                                                                                </td>
+                                                                                                <tr>
+                                                                                                    <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
                                                                                                 </tr>
-                                                                                                </table>
-                                                                                                <!--END OF THE MODULE-->
-                                                                                            </div>
-
-
-                                                                                            <div mc:repeatable>
-                                                                                                <!--== 4 COLUMNS MODULE == MAIN INVOICE CAPTIONS == DESCRIPTION == QUANTITY == PRICE == TEXT ==-->
-                                                                                                <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0"  style="table-layout: fixed;margin: 0 auto;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                    <tr>
-                                                                                                        <td align="center" style="border-collapse: collapse;">
-                                                                                                            <table width="668" align="center" cellpadding="0" cellspacing="0" border="0"  class="table600Min" style="table-layout: fixed;margin: 0 auto;min-width: 668px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                                <tr>
-                                                                                                                    <td align="center" class="table600st" style="min-width: 668px;border-collapse: collapse;">
-                                                                                                                        <table width="629" align="center" cellpadding="0" cellspacing="0" border="0" class="table600Min" style="min-width: 629px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                                            <tr>
-                                                                                                                                <td class="table600st" style="min-width: 629px;border-collapse: collapse;">
-                                                                                                                                    <table width="629" align="left" cellpadding="0" cellspacing="0" bgcolor="#4B4743" border="0" class="table600" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                                                        <tr>
-                                                                                                                                            <td align="left" style="border-collapse: collapse;">
-                                                                                                                                                <table align="center" cellpadding="0" cellspacing="0" border="0" style="border-bottom: 1px solid #C7AB84;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                                                                    <tr>
-                                                                                                                                                        <th width="209" class="stack2" style="margin: 0;padding: 0;vertical-align: top;border-collapse: collapse;">
-                                                                                                                                                            <table width="209" align="center" cellpadding="0" cellspacing="0" border="0" class="table60032" style="border-bottom-color: #C7AB84;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                                                                                <tr>
-                                                                                                                                                                    <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
-                                                                                                                                                                </tr>
-                                                                                                                                                                <tr>
-                                                                                                                                                                    <td width="30" class="wz2" style="border-collapse: collapse;"></td>
-                                                                                                                                                                    <!-- DESCRIPTION TEXT -->
-                                                                                                                                                                    <td class="header5TD" style="border-collapse: collapse;" mc:edit="mcsec-21">Room Details</td>
-                                                                                                                                                                    <td width="30" class="wz2" style="border-collapse: collapse;"></td>
-                                                                                                                                                                </tr>
-                                                                                                                                                                <tr>
-                                                                                                                                                                    <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
-                                                                                                                                                                </tr>
-                                                                                                                                                            </table>
-                                                                                                                                                        </th>
-                                                                                                                                                        <th width="139" class="stack3" style="border-left: 1px solid #C7AB84;margin: 0;padding: 0;vertical-align: top;border-collapse: collapse;">
-                                                                                                                                                            <table width="139" align="center" cellpadding="0" cellspacing="0" border="0" class="table60033" style="border-bottom-color: #C7AB84;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                                                                                <tr>
-                                                                                                                                                                    <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
-                                                                                                                                                                </tr>
-                                                                                                                                                                <tr>
-                                                                                                                                                                    <td width="30" class="wz2" style="border-collapse: collapse;"></td>
-                                                                                                                                                                    <!-- PRICE TEXT -->
-                                                                                                                                                                    <td class="header5TD" style="border-collapse: collapse;" mc:edit="mcsec-22">Price</td>
-                                                                                                                                                                    <td width="30" class="wz2" style="border-collapse: collapse;"></td>
-                                                                                                                                                                </tr>
-                                                                                                                                                                <tr>
-                                                                                                                                                                    <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
-                                                                                                                                                                </tr>
-                                                                                                                                                            </table>
-                                                                                                                                                        </th>
-                                                                                                                                                        <th width="139" class="stack3" style="border-left: 1px solid #C7AB84;margin: 0;padding: 0;vertical-align: top;border-collapse: collapse;">
-                                                                                                                                                            <table width="139" align="center" cellpadding="0" cellspacing="0" border="0" class="table60033" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                                                                                <tr>
-                                                                                                                                                                    <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
-                                                                                                                                                                </tr>
-                                                                                                                                                                <tr>
-                                                                                                                                                                    <td width="30" class="wz2" style="border-collapse: collapse;"></td>
-                                                                                                                                                                    <!-- QUANTITY TEXT -->
-                                                                                                                                                                    <td class="header5TD" style="border-collapse: collapse;" mc:edit="mcsec-23">Nights</td>
-                                                                                                                                                                    <td width="30" class="wz2" style="border-collapse: collapse;"></td>
-                                                                                                                                                                </tr>
-                                                                                                                                                                <tr>
-                                                                                                                                                                    <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
-                                                                                                                                                                </tr>
-                                                                                                                                                            </table>
-                                                                                                                                                        </th>
-                                                                                                                                                        <th width="139" class="stack3" style="border-left: 1px solid #C7AB84;margin: 0;padding: 0;vertical-align: top;border-collapse: collapse;">
-                                                                                                                                                            <table width="139" align="center" cellpadding="0" cellspacing="0" border="0" class="table60033" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                                                                                <tr>
-                                                                                                                                                                    <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
-                                                                                                                                                                </tr>
-                                                                                                                                                                <tr>
-                                                                                                                                                                    <td width="30" class="wz2" style="border-collapse: collapse;"></td>
-                                                                                                                                                                    <!-- TOTAL TEXT -->
-                                                                                                                                                                    <td class="header5TD" style="border-collapse: collapse;" mc:edit="mcsec-24">Total</td>
-                                                                                                                                                                    <td width="30" class="wz2" style="border-collapse: collapse;"></td>
-                                                                                                                                                                </tr>
-                                                                                                                                                                <tr>
-                                                                                                                                                                    <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
-                                                                                                                                                                </tr>
-                                                                                                                                                            </table>
-                                                                                                                                                        </th>
-                                                                                                                                                    </tr>
-                                                                                                                                                </table>
-                                                                                                                                            </td>
-                                                                                                                                        </tr>
-                                                                                                                                    </table>
-                                                                                                                                </td>
-                                                                                                                            </tr>
-                                                                                                                        </table>
-                                                                                                                    </td>
-                                                                                                                </tr>
-                                                                                                            </table>
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                </table>
-                                                                                                <!--END OF THE MODULE-->
-                                                                                            </div>
+                                                                                            </table>
+                                                                                        </th>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <th width="139" class="stack3" valign="top" bgcolor="#D8D8D4" style="border-left: 1px solid #C7AB84;margin: 0;padding: 0;vertical-align: top;border-bottom: 1px solid #C7AB84;border-collapse: collapse;">
+                                                                                            <table width="139" align="center" cellpadding="0" cellspacing="0" border="0" class="table60033" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <tr>
+                                                                                                    <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td width="30" class="wz2" style="border-collapse: collapse;"></td>
+                                                                                                    <!-- SHIPPING -->
+                                                                                                    <td class="RegularText5TD" style="border-collapse: collapse;" mc:edit="mcsec-47">Commission Due</td>
+                                                                                                    <td width="30" class="wz2" style="border-collapse: collapse;"></td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
+                                                                                                </tr>
+                                                                                            </table>
+                                                                                        </th>
+                                                                                        <th width="139" class="stack3" valign="top" bgcolor="#D8D8D4" style="border-left: 1px solid #C7AB84;margin: 0;padding: 0;vertical-align: top;border-bottom: 1px solid #C7AB84;border-collapse: collapse;">
+                                                                                            <table width="139" align="center" cellpadding="0" cellspacing="0" border="0" class="table60033" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <tr>
+                                                                                                    <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td width="30" class="wz2" style="border-collapse: collapse;"></td>
+                                                                                                    <!-- INVOICE TOTAL -->
+                                                                                                    <td class="RegularText5TD" style="border-collapse: collapse;" mc:edit="mcsec-48">{commission_due}</td>
+                                                                                                    <td width="30" class="wz2" style="border-collapse: collapse;"></td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
+                                                                                                </tr>
+                                                                                            </table>
+                                                                                        </th>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <th width="139" class="stack3" bgcolor="#4B4743" valign="top" style="border-left: 1px solid #C7AB84;margin: 0;padding: 0;vertical-align: top;border-bottom: 1px solid #C7AB84;border-collapse: collapse;">
+                                                                                            <table width="139" align="center" cellpadding="0" cellspacing="0" border="0" class="table60033" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <tr>
+                                                                                                    <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td width="30" class="wz2" style="border-collapse: collapse;"></td>
+                                                                                                    <!-- TOTAL -->
+                                                                                                    <td bgcolor="#4B4743" class="header5TD" style="border-collapse: collapse;" mc:edit="mcsec-49">Total</td>
+                                                                                                    <td width="30" class="wz2" style="border-collapse: collapse;"></td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
+                                                                                                </tr>
+                                                                                            </table>
+                                                                                        </th>
+                                                                                        <th width="139" class="stack3" bgcolor="#4B4743" valign="top" style="border-left: 1px solid #C7AB84;margin: 0;padding: 0;vertical-align: top;border-bottom: 1px solid #C7AB84;border-collapse: collapse;">
+                                                                                            <table width="139" align="center" cellpadding="0" cellspacing="0" border="0" class="table60033" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <tr>
+                                                                                                    <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td width="30" class="wz2" style="border-collapse: collapse;"></td>
+                                                                                                    <!-- INVOICE TOTAL -->
+                                                                                                    <td bgcolor="#4B4743" class="header5TD" style="border-collapse: collapse;" mc:edit="mcsec-50">{grand_total}</td>
+                                                                                                    <td width="30" class="wz2" style="border-collapse: collapse;"></td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
+                                                                                                </tr>
+                                                                                            </table>
+                                                                                        </th>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <!--END OF THE MODULE-->
+                            </div>
 
 
 
-
-
-                                                                                            <div mc:repeatable>
-                                                                                                <!-- 4 COLUMN MODULE == ITEMS  DETAILS == NAME, PRICE, QUANTITY, TOTAL -->
-                                                                                                <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0"  style="table-layout: fixed;margin: 0 auto;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                    <tr>
-                                                                                                        <td align="center" style="border-collapse: collapse;">
-                                                                                                            <table width="668" align="center" cellpadding="0" cellspacing="0" border="0"  class="table600Min" style="table-layout: fixed;margin: 0 auto;min-width: 668px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                                <tr>
-                                                                                                                    <td align="center" class="table600st" style="min-width: 668px;border-collapse: collapse;">
-                                                                                                                        <table width="629" align="center" cellpadding="0" cellspacing="0" border="0" class="table600Min" style="min-width: 629px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                                            <tr>
-                                                                                                                                <td class="table600st" style="min-width: 629px;border-collapse: collapse;">
-                                                                                                                                    <table width="629" align="left" cellpadding="0" cellspacing="0" bgcolor="#D8D8D4" border="0" class="table600" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                                                        <tr>
-                                                                                                                                            <td align="left" style="border-collapse: collapse;">
-                                                                                                                                                <table align="center" cellpadding="0" cellspacing="0" border="0" style="border-bottom: 1px solid #C7AB84;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                                                                    {reserved_rooms}
-                                                                                                                                                </table>
-                                                                                                                                            </td>
-                                                                                                                                        </tr>
-                                                                                                                                    </table>
-                                                                                                                                </td>
-                                                                                                                            </tr>
-                                                                                                                        </table>
-                                                                                                                    </td>
-                                                                                                                </tr>
-                                                                                                            </table>
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                </table>
-                                                                                                <!--END OF THE MODULE-->
-                                                                                            </div>
-
-                                                                                            <div mc:repeatable>
-                                                                                                <!-- 4 COLUMNS MODULE == FINAL INVOICE CALCULATIONS (SUBTOTAL, VAT, SHIPPING, TOTAL) + SIGNATURE ==  -->
-                                                                                                <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0"  style="table-layout: fixed;margin: 0 auto;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                    <tr>
-                                                                                                        <td align="center" style="border-collapse: collapse;">
-                                                                                                            <table width="668" align="center" cellpadding="0" cellspacing="0" border="0"  class="table600Min" style="table-layout: fixed;margin: 0 auto;min-width: 668px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                                <tr>
-                                                                                                                    <td align="center" class="table600st" style="min-width: 668px;border-collapse: collapse;">
-                                                                                                                        <table width="629" align="center" cellpadding="0" cellspacing="0" border="0" class="table600Min" style="min-width: 629px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                                            <tr>
-                                                                                                                                <td class="table600st" style="min-width: 629px;border-collapse: collapse;">
-                                                                                                                                    <table width="629" align="left" cellpadding="0" cellspacing="0" bgcolor="#D8D8D4" border="0" class="table600" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                                                        <tr>
-                                                                                                                                            <td align="left" style="border-collapse: collapse;">
-                                                                                                                                                <table align="center" cellpadding="0" cellspacing="0" border="0" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                                                                    <tr>
-                                                                                                                                                        <th width="349" height="100" rowspan="4" class="stack4" bgcolor="#D8D8D4" style="margin: 0;padding: 0;vertical-align: top;border-bottom: 1px solid #C7AB84;border-collapse: collapse;">
-                                                                                                                                                            <table width="349" align="center" cellpadding="0" cellspacing="0" border="0" class="table60034" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                                                                                <tr>
-                                                                                                                                                                    <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
-                                                                                                                                                                </tr>
-                                                                                                                                                                <tr>
-                                                                                                                                                                    <td width="347" align="center" style="line-height: 1px;border-collapse: collapse;" class="TDtable60034"><img mc:edit="mcsec-41" src="http://staging.emporium-voyage.com/sximo/assets/images/signature-150x80.png" style="display:block;" alt="IMG" border="0" hspace="0" vspace="0" />
-                                                                                                                                                                    </td>
-                                                                                                                                                                </tr>
-                                                                                                                                                                <tr>
-                                                                                                                                                                    <td class="RegularText5TD" style="border-collapse: collapse;" mc:edit="mcsec-42">Riaan Kieynhans
-                                                                                                                                                                        <br/>Accounts Manager
-                                                                                                                                                                        <br/>(or any JPG/PNG)
-                                                                                                                                                                    </td>
-                                                                                                                                                                </tr>
-                                                                                                                                                            </table>
-                                                                                                                                                        </th>
-                                                                                                                                                        <th width="139" class="stack3" valign="top" bgcolor="#D8D8D4" style="border-left: 1px solid #C7AB84;margin: 0;padding: 0;vertical-align: top;border-bottom: 1px solid #C7AB84;border-collapse: collapse;">
-                                                                                                                                                            <table width="139" align="center" cellpadding="0" cellspacing="0" border="0" class="table60033" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                                                                                <tr>
-                                                                                                                                                                    <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
-                                                                                                                                                                </tr>
-                                                                                                                                                                <tr>
-                                                                                                                                                                    <td width="30" class="wz2" style="border-collapse: collapse;"></td>
-                                                                                                                                                                    <!-- TOTAL -->
-                                                                                                                                                                    <td class="RegularText5TD" style="border-collapse: collapse;" mc:edit="mcsec-43">Sub Total</td>
-                                                                                                                                                                    <td width="30" class="wz2" style="border-collapse: collapse;"></td>
-                                                                                                                                                                </tr>
-                                                                                                                                                                <tr>
-                                                                                                                                                                    <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
-                                                                                                                                                                </tr>
-                                                                                                                                                            </table>
-                                                                                                                                                        </th>
-                                                                                                                                                        <th width="139" class="stack3" valign="top" bgcolor="#D8D8D4" style="border-left: 1px solid #C7AB84;margin: 0;padding: 0;vertical-align: top;border-bottom: 1px solid #C7AB84;border-collapse: collapse;">
-                                                                                                                                                            <table width="139" align="center" cellpadding="0" cellspacing="0" border="0" class="table60033" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                                                                                <tr>
-                                                                                                                                                                    <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
-                                                                                                                                                                </tr>
-                                                                                                                                                                <tr>
-                                                                                                                                                                    <td width="30" class="wz2" style="border-collapse: collapse;"></td>
-                                                                                                                                                                    <!-- INVOICE TOTAL -->
-                                                                                                                                                                    <td class="RegularText5TD" style="border-collapse: collapse;" mc:edit="mcsec-44">{total_price}</td>
-                                                                                                                                                                    <td width="30" class="wz2" style="border-collapse: collapse;"></td>
-                                                                                                                                                                </tr>
-                                                                                                                                                                <tr>
-                                                                                                                                                                    <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
-                                                                                                                                                                </tr>
-                                                                                                                                                            </table>
-                                                                                                                                                        </th>
-                                                                                                                                                    </tr>
-                                                                                                                                                    <tr>
-                                                                                                                                                        <th width="139" class="stack3" valign="top" bgcolor="#D8D8D4" style="border-left: 1px solid #C7AB84;margin: 0;padding: 0;vertical-align: top;border-bottom: 1px solid #C7AB84;border-collapse: collapse;">
-                                                                                                                                                            <table width="139" align="center" cellpadding="0" cellspacing="0" border="0" class="table60033" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                                                                                <tr>
-                                                                                                                                                                    <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
-                                                                                                                                                                </tr>
-                                                                                                                                                                <tr>
-                                                                                                                                                                    <td width="30" class="wz2" style="border-collapse: collapse;"></td>
-                                                                                                                                                                    <!-- SHIPPING -->
-                                                                                                                                                                    <td class="RegularText5TD" style="border-collapse: collapse;" mc:edit="mcsec-47">Commission Due</td>
-                                                                                                                                                                    <td width="30" class="wz2" style="border-collapse: collapse;"></td>
-                                                                                                                                                                </tr>
-                                                                                                                                                                <tr>
-                                                                                                                                                                    <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
-                                                                                                                                                                </tr>
-                                                                                                                                                            </table>
-                                                                                                                                                        </th>
-                                                                                                                                                        <th width="139" class="stack3" valign="top" bgcolor="#D8D8D4" style="border-left: 1px solid #C7AB84;margin: 0;padding: 0;vertical-align: top;border-bottom: 1px solid #C7AB84;border-collapse: collapse;">
-                                                                                                                                                            <table width="139" align="center" cellpadding="0" cellspacing="0" border="0" class="table60033" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                                                                                <tr>
-                                                                                                                                                                    <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
-                                                                                                                                                                </tr>
-                                                                                                                                                                <tr>
-                                                                                                                                                                    <td width="30" class="wz2" style="border-collapse: collapse;"></td>
-                                                                                                                                                                    <!-- INVOICE TOTAL -->
-                                                                                                                                                                    <td class="RegularText5TD" style="border-collapse: collapse;" mc:edit="mcsec-48">{commission_due}</td>
-                                                                                                                                                                    <td width="30" class="wz2" style="border-collapse: collapse;"></td>
-                                                                                                                                                                </tr>
-                                                                                                                                                                <tr>
-                                                                                                                                                                    <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
-                                                                                                                                                                </tr>
-                                                                                                                                                            </table>
-                                                                                                                                                        </th>
-                                                                                                                                                    </tr>
-                                                                                                                                                    <tr>
-                                                                                                                                                        <th width="139" class="stack3" bgcolor="#4B4743" valign="top" style="border-left: 1px solid #C7AB84;margin: 0;padding: 0;vertical-align: top;border-bottom: 1px solid #C7AB84;border-collapse: collapse;">
-                                                                                                                                                            <table width="139" align="center" cellpadding="0" cellspacing="0" border="0" class="table60033" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                                                                                <tr>
-                                                                                                                                                                    <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
-                                                                                                                                                                </tr>
-                                                                                                                                                                <tr>
-                                                                                                                                                                    <td width="30" class="wz2" style="border-collapse: collapse;"></td>
-                                                                                                                                                                    <!-- TOTAL -->
-                                                                                                                                                                    <td bgcolor="#4B4743" class="header5TD" style="border-collapse: collapse;" mc:edit="mcsec-49">Total</td>
-                                                                                                                                                                    <td width="30" class="wz2" style="border-collapse: collapse;"></td>
-                                                                                                                                                                </tr>
-                                                                                                                                                                <tr>
-                                                                                                                                                                    <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
-                                                                                                                                                                </tr>
-                                                                                                                                                            </table>
-                                                                                                                                                        </th>
-                                                                                                                                                        <th width="139" class="stack3" bgcolor="#4B4743" valign="top" style="border-left: 1px solid #C7AB84;margin: 0;padding: 0;vertical-align: top;border-bottom: 1px solid #C7AB84;border-collapse: collapse;">
-                                                                                                                                                            <table width="139" align="center" cellpadding="0" cellspacing="0" border="0" class="table60033" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                                                                                <tr>
-                                                                                                                                                                    <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
-                                                                                                                                                                </tr>
-                                                                                                                                                                <tr>
-                                                                                                                                                                    <td width="30" class="wz2" style="border-collapse: collapse;"></td>
-                                                                                                                                                                    <!-- INVOICE TOTAL -->
-                                                                                                                                                                    <td bgcolor="#4B4743" class="header5TD" style="border-collapse: collapse;" mc:edit="mcsec-50">{grand_total}</td>
-                                                                                                                                                                    <td width="30" class="wz2" style="border-collapse: collapse;"></td>
-                                                                                                                                                                </tr>
-                                                                                                                                                                <tr>
-                                                                                                                                                                    <td colspan="3" height="20" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
-                                                                                                                                                                </tr>
-                                                                                                                                                            </table>
-                                                                                                                                                        </th>
-                                                                                                                                                    </tr>
-                                                                                                                                                </table>
-                                                                                                                                            </td>
-                                                                                                                                        </tr>
-                                                                                                                                    </table>
-                                                                                                                                </td>
-                                                                                                                            </tr>
-                                                                                                                        </table>
-                                                                                                                    </td>
-                                                                                                                </tr>
-                                                                                                            </table>
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                </table>
-                                                                                                <!--END OF THE MODULE-->
-                                                                                            </div>
+                            <div mc:repeatable>
+                                <!-- 1 COLUMN MODULE === FINAL NOTES, ACCEPTED PAYMENT OPTIONS ETC. -->
+                                <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0" style="table-layout: fixed;margin: 0 auto;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                    <tr>
+                                        <td align="center" style="border-collapse: collapse;">
+                                            <table width="668" align="center" cellpadding="0" cellspacing="0" border="0"  class="table600Min" style="table-layout: fixed;margin: 0 auto;min-width: 668px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                <tr>
+                                                    <td align="center" class="table600st" style="min-width: 668px;border-collapse: collapse;">
+                                                        <table width="629" align="center" cellpadding="0" cellspacing="0" border="0" class="table600Min" style="min-width: 629px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                            <tr>
+                                                                <td class="table600st" style="min-width: 629px;border-collapse: collapse;">
+                                                                    <table width="629" bgcolor="#D8D8D4" align="left" cellpadding="0" cellspacing="0" border="0" class="table600" style="border-radius: 0 0 6px 6px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                        <tr>
+                                                                            <td style="border-collapse: collapse;">
+                                                                                <table width="627" cellpadding="0" cellspacing="0" border="0" class="table600" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                    <tr>
+                                                                                        <td colspan="3" height="25" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td width="30" class="wz" style="border-collapse: collapse;"></td>
+                                                                                        <!--REGULAR TEXT SECTION-->
+                                                                                        <td class="RegularText5TD" style="border-collapse: collapse;" mc:edit="mcsec-51">
+                                                                                            <b>{property_name} Terms And Conditions</b>
+                                                                                            <br/>{hotel_terms_n_conditions}
+                                                                                            <br/>
+                                                                                            <br/><a href="https://emporium-voyage.com/">emporium-voyage.com/</a>
+                                                                                            <br/><a href="mailto:reservations@emporium-voyage.com">reservations@emporium-voyage.com</a>
+                                                                                        </td>
+                                                                                        <td width="30" class="wz" style="border-collapse: collapse;"></td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td colspan="3" height="30" class="va2" style="font-size: 0;line-height:1;border-collapse: collapse;">&nbsp;</td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <!--END OF THE MODULE-->
+                            </div>
 
 
 
-                                                                                            <div mc:repeatable>
-                                                                                                <!-- 1 COLUMN MODULE === FINAL NOTES, ACCEPTED PAYMENT OPTIONS ETC. -->
-                                                                                                <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0" style="table-layout: fixed;margin: 0 auto;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                    <tr>
-                                                                                                        <td align="center" style="border-collapse: collapse;">
-                                                                                                            <table width="668" align="center" cellpadding="0" cellspacing="0" border="0"  class="table600Min" style="table-layout: fixed;margin: 0 auto;min-width: 668px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                                <tr>
-                                                                                                                    <td align="center" class="table600st" style="min-width: 668px;border-collapse: collapse;">
-                                                                                                                        <table width="629" align="center" cellpadding="0" cellspacing="0" border="0" class="table600Min" style="min-width: 629px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                                            <tr>
-                                                                                                                                <td class="table600st" style="min-width: 629px;border-collapse: collapse;">
-                                                                                                                                    <table width="629" bgcolor="#D8D8D4" align="left" cellpadding="0" cellspacing="0" border="0" class="table600" style="border-radius: 0 0 6px 6px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                                                        <tr>
-                                                                                                                                            <td style="border-collapse: collapse;">
-                                                                                                                                                <table width="627" cellpadding="0" cellspacing="0" border="0" class="table600" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                                                                    <tr>
-                                                                                                                                                        <td colspan="3" height="25" style="font-size: 0;line-height:1;border-collapse: collapse;" class="va2">&nbsp;</td>
-                                                                                                                                                    </tr>
-                                                                                                                                                    <tr>
-                                                                                                                                                        <td width="30" class="wz" style="border-collapse: collapse;"></td>
-                                                                                                                                                        <!--REGULAR TEXT SECTION-->
-                                                                                                                                                        <td class="RegularText5TD" style="border-collapse: collapse;" mc:edit="mcsec-51">
-                                                                                                                                                            <b>{property_name} Terms And Conditions</b>
-                                                                                                                                                            <br/>{hotel_terms_n_conditions}
-                                                                                                                                                            <br/>
-                                                                                                                                                            <br/><a href="https://emporium-voyage.com/">emporium-voyage.com/</a>
-                                                                                                                                                            <br/><a href="mailto:reservations@emporium-voyage.com">reservations@emporium-voyage.com</a>
-                                                                                                                                                        </td>
-                                                                                                                                                        <td width="30" class="wz" style="border-collapse: collapse;"></td>
-                                                                                                                                                    </tr>
-                                                                                                                                                    <tr>
-                                                                                                                                                        <td colspan="3" height="30" class="va2" style="font-size: 0;line-height:1;border-collapse: collapse;">&nbsp;</td>
-                                                                                                                                                    </tr>
-                                                                                                                                                </table>
-                                                                                                                                            </td>
-                                                                                                                                        </tr>
-                                                                                                                                    </table>
-                                                                                                                                </td>
-                                                                                                                            </tr>
-                                                                                                                        </table>
-                                                                                                                    </td>
-                                                                                                                </tr>
-                                                                                                            </table>
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                </table>
-                                                                                                <!--END OF THE MODULE-->
-                                                                                            </div>
-
-
-
-                                                                                            <div mc:repeatable>
-                                                                                                <!-- == FOOTER MODULE = MAILING OPTIONS == -->
-                                                                                                <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0" style="table-layout: fixed;margin: 0 auto;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                    <tr>
-                                                                                                        <td align="center" style="border-collapse: collapse;">
-                                                                                                            <table width="668" align="center" cellpadding="0" cellspacing="0" border="0"  class="table600Min" style="table-layout: fixed;margin: 0 auto;min-width: 668px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                                <tr>
-                                                                                                                    <td align="center" class="table600st" style="min-width: 668px;border-collapse: collapse;">
-                                                                                                                        <table width="629" align="center" cellpadding="0" cellspacing="0"  border="0" class="table600Min" style="table-layout: fixed;margin: 0 auto;min-width: 629px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                                            <tr>
-                                                                                                                                <td align="center" class="table600st" style="min-width: 629px;border-collapse: collapse;">
-                                                                                                                                    <table width="610" align="center" cellpadding="0" cellspacing="0" border="0" class="table600" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                                                        <tr>
-                                                                                                                                            <td height="25" style="border-collapse: collapse;"></td>
-                                                                                                                                        </tr>
-                                                                                                                                        <tr>
-                                                                                                                                            <!--NOTES -->
-                                                                                                                                            <td mc:edit="mcsec-52" style="border-collapse: collapse; color: #333;" class="thankYouMessageTD">THANK YOU VERY MUCH FOR CHOOSING emporium-voyage</td>
-                                                                                                                                        </tr>
-                                                                                                                                        <tr>
-                                                                                                                                            <td height="25" style="font-size: 0;line-height:1;border-collapse: collapse;">&nbsp;</td>
-                                                                                                                                        </tr>
-
-                                                                                                                                    </table>
-                                                                                                                                </td>
-                                                                                                                            </tr>
-                                                                                                                        </table>
-                                                                                                                    </td>
-                                                                                                                </tr>
-                                                                                                            </table>
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                </table>
-                                                                                            </div>
-                                                                                            <!--END OF THE MODULE-->
-                                                                                            <div mc:repeatable></div>
-                                                                                            </center>
+                            <div mc:repeatable>
+                                <!-- == FOOTER MODULE = MAILING OPTIONS == -->
+                                <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0" style="table-layout: fixed;margin: 0 auto;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                    <tr>
+                                        <td align="center" style="border-collapse: collapse;">
+                                            <table width="668" align="center" cellpadding="0" cellspacing="0" border="0"  class="table600Min" style="table-layout: fixed;margin: 0 auto;min-width: 668px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                <tr>
+                                                    <td align="center" class="table600st" style="min-width: 668px;border-collapse: collapse;">
+                                                        <table width="629" align="center" cellpadding="0" cellspacing="0"  border="0" class="table600Min" style="table-layout: fixed;margin: 0 auto;min-width: 629px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                            <tr>
+                                                                <td align="center" class="table600st" style="min-width: 629px;border-collapse: collapse;">
+                                                                    <table width="610" align="center" cellpadding="0" cellspacing="0" border="0" class="table600" style="mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                        <tr>
+                                                                            <td height="25" style="border-collapse: collapse;"></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <!--NOTES -->
+                                                                            <td mc:edit="mcsec-52" style="border-collapse: collapse; color: #333;" class="thankYouMessageTD">THANK YOU VERY MUCH FOR CHOOSING emporium-voyage</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td height="25" style="font-size: 0;line-height:1;border-collapse: collapse;">&nbsp;</td>
+                                                                        </tr>
+                    
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <!--END OF THE MODULE-->
+                            <div mc:repeatable></div>
+                            </center>
                                                                                             
 
-</div>
+                        </div>
                    </div>
     			</div> 				
      		</div>		 		
      	</div>
         <div style="clear: both;"></div>
         <div class="sections">
-            <div class="container-box">
-              <div class="text-cnter-box">
+            <div style="max-width: 600px; margin: auto;">
+              <div style="padding: 100px 0; text-align: center;">
                  <p>emporium-voyage is your ideal, vogue vacation planner! With it's ultra-exclusive spaces<br> and elite spas huddled in its cocoon, emporium-voyage ensure the ultimate ultra luxury <br>experience. Our expertise lies in our utmost diligence to provide our beau monde<br> customers with an exotic experience they will relish forever.</p>
               </div>
             </div>
@@ -1610,35 +1610,35 @@
         <div style="clear: both;"></div>
 
         <!-- start footer -->
-        <div class="sections bg-gray">
-            <div class="container-box">
+        <div class="sections" style="background: #f5f5f5; padding: 30px 0;">
+            <div style="max-width: 600px; margin: auto;">
                 <div class="row-bx">
-                    <div class="col-12">
-                      <div class="text-center tag-line">
-                        <h3>emporium - voyage</h3>
+                    <div class="col-12" style="">
+                      <div style="padding: 60px 0; text-align: center; font-family: Geomanist-Light;">
+                        <h3 style="font-weight: normal; letter-spacing: 3px; font-size: 25px; color: #000; margin-bottom: 20px;">emporium - voyage</h3>
                         <p>Ultra luxury rooms from the worlds leading hotels from selected destinations</p>
                       </div>
                     
                       <div class="social-sec">
-                         <ul>
-                           <li><a href="#" target="blank"><img src="http://staging.emporium-voyage.com/images/link-in.png" alt="" /></a></li>
-                           <li><a href="#" target="blank"><img src="http://staging.emporium-voyage.com/images/face-book.png" alt="" /></a></li>
-                           <li><a href="#" target="blank"><img src="http://staging.emporium-voyage.com/images/twitter.png" alt="" /></a></li>
-                           <li><a href="#" target="blank"><img src="http://staging.emporium-voyage.com/images/google-png.png" alt="" /></a></li>
+                         <ul style="list-style: none; color: #5d5b5b; text-align: center; padding: 20px 0; margin-bottom: 30px; border-top: 1px solid #fff; border-bottom: 1px solid #fff;">
+                           <li style="display: inline-block;"><a href="#" target="blank"><img src="http://staging.emporium-voyage.com/images/link-in.png" alt="" /></a></li>
+                           <li style="display: inline-block;"><a href="#" target="blank"><img src="http://staging.emporium-voyage.com/images/face-book.png" alt="" /></a></li>
+                           <li style="display: inline-block;"><a href="#" target="blank"><img src="http://staging.emporium-voyage.com/images/twitter.png" alt="" /></a></li>
+                           <li style="display: inline-block;"><a href="#" target="blank"><img src="http://staging.emporium-voyage.com/images/google-png.png" alt="" /></a></li>
                          </ul>
                       </div>
                     </div>
                 </div>
                 <!-- end of sections -->
                 <div class="row-bx">
-                  <div class="col-6">
-                    <p class="gray-tx">&copy emporium-voyage</p>
+                  <div style="width: 45%; float: left; padding: 0; margin-right: 4%;">
+                    <p style="color: #bfbebe;">&copy; emporium-voyage</p>
                   </div>
-                  <div class="col-6">
-                    <ul class="pul-ri8">
-                      <li><a href="#">Join</a></li>
-                      <li><a href="#">Magazine</a></li>
-                      <li><a href="#">Contact</a></li>
+                  <div  style="width: 45%; float: left; padding: 0; margin-right: 4%;">
+                    <ul style="float: right;">
+                      <li style="float: left; margin-left: 0px;"><a href="#">Join</a></li>
+                      <li style="float: left; margin-left: 30px;"><a href="#">Magazine</a></li>
+                      <li style="float: left; margin-left: 30px;"><a href="#">Contact</a></li>
                     </ul>
                   </div>
                 </div>

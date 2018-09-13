@@ -310,7 +310,7 @@ p.gray-tx {
                 <!-- end of sections -->
                 <div class="row-bx">
                   <div class="col-6">
-                    <p class="gray-tx">&copy emporium-voyage</p>
+                    <p class="gray-tx">&copy; emporium-voyage</p>
                   </div>
                   <div class="col-6">
                     <ul class="pul-ri8">
