@@ -3,10 +3,9 @@
 	.st0{fill:#fff;stroke:#fff;stroke-width:.6px;stroke-miterlimit:10;}
 
 	svg {
-
-	    max-width: 600px;
+        max-width: 600px;
 	    margin: 0 auto;
-        background: #000;
+        background: transparent;
 	}
 
     @keyframes flash {
