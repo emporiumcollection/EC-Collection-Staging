@@ -1815,7 +1815,7 @@ $html .= '</div>';
             });
                     
             $euserdata = array();
-            $edata['email'] = $request->input('email');
+            $euserdata['email'] = $request->input('email');
             $emlData['frmemail'] = 'marketing@emporium-voyage.com';
             //$emlData['email'] = 'riaan@number7even.com';
             $emlData['email'] = CNF_SUPERADMIN_EMAIL;
