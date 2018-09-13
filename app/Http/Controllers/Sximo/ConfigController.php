@@ -72,6 +72,7 @@ class ConfigController extends Controller {
 			$val .= 	"define('CNF_ALLOWIP','".CNF_ALLOWIP."');\n";
 			$val .= 	"define('CNF_RESTRICIP','".CNF_RESTRICIP."');\n";									
 			$val .= 	"define('CNF_YOUTUBE_API_KEY','".$request->input('cnf_youtube_api_key')."');\n";
+            $val .= 	"define('CNF_SUPERADMIN_EMAIL','".$request->input('cnf_superadmin_email')."');\n";
 			$val .= 	"?>";
 	
 			$filename = base_path().'/setting.php';
@@ -107,6 +108,8 @@ class ConfigController extends Controller {
 		$removalreminder = base_path()."/resources/views/user/emails/removal_reminder.blade.php";
         
 		$refferalInvitation = base_path()."/resources/views/user/emails/invite.blade.php";
+        $requestReferralEmailtoSuperAdmin = base_path()."/resources/views/user/emails/request_referral.blade.php";
+        $requestReferralEmailtoUser = base_path()."/resources/views/user/emails/request_referral_user.blade.php";
         
 		$this->data = array(
 			'groups'	=> Groups::all(),
@@ -127,6 +130,8 @@ class ConfigController extends Controller {
 			'removalreminder'	=> 	file_get_contents($removalreminder),
 			'active'		=> 'email',
             'refferalInvitation'	=> 	file_get_contents($refferalInvitation),
+            'requestReferralEmailtoSuperAdmin'	=> 	file_get_contents($requestReferralEmailtoSuperAdmin),
+            'requestReferralEmailtoUser'	=> 	file_get_contents($requestReferralEmailtoUser),
 		);	
 		return view('sximo.config.email',$this->data);		
 	

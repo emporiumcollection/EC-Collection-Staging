@@ -318,11 +318,12 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
         		</div>
         		<div class="m-portlet__body">
         			<div class="m-widget28">
-        				<div class="m-widget28__pic m-portlet-fit--sides" style="background: url('{{$img}}'); background-size: cover;">
+        				
+                        <?php if(isset($latest_reservation) && !empty($latest_reservation)){ ?>
+                        <div class="m-widget28__pic m-portlet-fit--sides" style="background: url('{{$img}}'); background-size: cover;">
                             <div class="overlay"></div>
                         </div>
         				<div class="m-widget28__container">
-                        <?php if(count($latest_reservation)>0){ ?>
         					<!-- begin::Nav pills -->
         					<ul class="m-widget28__nav-items nav nav-pills nav-fill" role="tablist">
         						<li class="m-widget28__nav-item nav-item">
@@ -387,9 +388,13 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
         						</div>
         					</div>
                             <?php } ?>
+                        </div>
         					<!-- end::Tab Content -->
                             <?php } else { ?>
-                                    
+                                <div class="m-widget28__pic m-portlet-fit--sides" style="background: url('https://emporium-voyage.com/images/hotel_reservation.jpg'); background-size: cover;">
+                                    <div class="overlay"></div>
+                                </div>
+                				<div class="m-widget28__container">    
             					<!-- begin::Nav pills -->
             					<ul class="m-widget28__nav-items nav nav-pills nav-fill ul_width" role="tablist">
             						<li class="m-widget28__nav-item nav-item">
@@ -401,53 +406,45 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
             					</ul>
             					<!-- end::Nav pills --> 
                                 <!-- begin::Tab Content -->
-                                <?php if(!empty($obj_properties)){ ?>
+                                
             					<div class="m-widget28__tab tab-content">
             						<div id="menu11" class="m-widget28__tab-container tab-pane active">
             							<div class="m-widget28__tab-items">                                        
             								<div class="m-widget28__tab-item">
             									<span>
-            										Hotel Name
+            										
             									</span>
             									<span>
-            										{{ $obj_properties->property_name }} / {{ $room_type }}
+            										
             									</span>
             								</div>
             								<div class="m-widget28__tab-item">
             									<span>
-            										Booking Confirmation Number
+            										
             									</span>
             									<span>
-            										DL-<?php echo date('d.m.y', strtotime($latest_reservation->created_date)); ?>-{{ $latest_reservation->id }}
+            										
             									</span>
             								</div>
             								<div class="m-widget28__tab-item">
             									<span>
-            										Total Charges
+            										
             									</span>
             									<span>
-            										&euro;{{ $grand_total }}
+            										
             									</span>
             								</div>
-            								<div class="m-widget28__tab-item">
-            									<span>
-            										Hotel Terms
-            									</span>
-            									<span>
-            										Show hotel terms 
-            									</span>
-                                                
-                                                <a href="#" id="show_more">Show More</a>
-            								</div>
+            								
             							</div>
             						</div>
             					</div>
-                                <?php } ?>                                 
+                                                            
+                            </div>
                             <?php } ?>
-        				</div>
+        				
         			</div>
         		</div>
-        	</div>
+         	</div>
         </div>
         <div class="col-sm-12 col-md-4 col-xl-4">
             <div class="m-portlet m-portlet--head-overlay m-portlet--full-height   m-portlet--rounded-force">

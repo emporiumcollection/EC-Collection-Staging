@@ -266,11 +266,16 @@ p.gray-tx {
     			<div class="sections">
                     <div class="container-box">
                       <div class="txt-box">
-            				<h2>Password Reset</h2>
-
-                    		<div>
-                    			To reset your password, complete this form: {{ URL::to('user/reset', array($token)) }}.
-                    		</div>    
+            				<h2>Hello, </h2>
+                    		<p> User request for refferal code </p>
+                    		<p> Bellow is email </p>
+                    		<p>
+                    			Email : {{ $email }} <br />                    			
+                    		</p>
+                    		
+                    		<br /><br /><p> Thank You </p><br /><br />
+                    		
+                    		{{ CNF_APPNAME }}           
                       </div>
                    </div>
     			</div> 				

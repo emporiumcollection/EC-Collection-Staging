@@ -209,3 +209,30 @@ body .ui-widget.ui-widget-content li i.iconsheet {
     font-size: 15px;
     margin-top: 5px;
 }
+.signInPopup .form-group:nth-of-type(1){ 
+    margin-top: 15px !important;
+}
+.no-referral{
+    width: 100%; float: left; padding: 0px 0px 10px 0px;
+}
+.no-referral-input{
+    width: 8%; float: left;
+}
+.no-referral-label{
+    width: 92%; float: left; color: #fff;
+}
+
+.mg-top{
+   margin-top: 15px !important; 
+}
+.email-error{    
+    border: 1px solid #FF7C7C !important;
+    width: 80% !important;
+    float: left !important;
+}
+#email-error-msg{ 
+    width: 10%;    
+    color: #f00;    
+    float: left;
+    margin-left: 10px;
+}

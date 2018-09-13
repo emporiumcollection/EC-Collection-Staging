@@ -1274,7 +1274,12 @@ class PropertiesController extends Controller {
             return view($file_name, $this->data);
         } elseif ($active == 'calendar') {
             $this->data['cat_types'] = $this->find_categories_room($property_id);
-            return view('properties.settings_calendar', $this->data);
+            
+            $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+            $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.settings_calendar':'properties.settings_calendar'; 
+            
+            return view($file_name, $this->data);
+            //return view('properties.settings_calendar', $this->data);
         } elseif ($active == 'terms_and_conditions') {
             if (!is_null($request->input('terms_n_conditions'))) {
                 $row = \DB::table('td_property_terms_n_conditions')->where('property_id', $property_id)->first();

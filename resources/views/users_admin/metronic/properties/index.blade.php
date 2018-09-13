@@ -187,6 +187,14 @@
 																</a>
 														    </li> 
                                                             <li class="m-nav__item">
+																<a href="{{ URL::to('properties_settings/'.$row->id.'/calendar')}}" class="m-nav__link">
+																	<i class="m-nav__link-icon"></i>
+																	<span class="m-nav__link-text">
+																		Calender
+																	</span>
+																</a>
+														    </li> 
+                                                            <li class="m-nav__item">
 																<a href="{{ URL::to('properties_settings/'.$row->id.'/price')}}" class="m-nav__link">
 																	<i class="m-nav__link-icon"></i>
 																	<span class="m-nav__link-text">

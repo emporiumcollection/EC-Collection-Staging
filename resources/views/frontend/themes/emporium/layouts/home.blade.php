@@ -172,8 +172,10 @@
                 var list_val = $(this).attr('rel');
                 var user_ref = '';
                 if(list_val.length > 0 && list_val == '3'){
+                    $("input[name='email']").parent('.form-group').removeClass('mg-top');
                     user_ref = '<div class="form-group"> <input class="form-control" name="referral_code" type="text" placeholder="Enter Referral Code"> </div>';
-                }
+                    user_ref += '<div class="form-group"><div class="no-referral"><div class="no-referral-input"><input type="checkbox" id="no_referal_code" name="no_referal_code" ></div><div class="no-referral-label">I have no referral code. Please send me invitation</div></div></div>';
+                }else{$("input[name='email']").parent('.form-group').addClass('mg-top');}
                 $('.user_ref').html(user_ref);
             });
                                     
@@ -303,59 +305,96 @@
             */
             
             $("#customerRegisterarioForm").submit(function (event) {
-
                 
-                var tobje = $("#txtmobileNumber").closest('.form-group').find('#error-msg');
-                //if(((typeof tobje.html()) != 'undefined') && ((typeof tobje.html()) != undefined)){tobje.html('Invalid number');}
-                var countryData = $("#txtmobileNumber").intlTelInput("getSelectedCountryData");
-
-                var error = $("#txtmobileNumber").intlTelInput("getValidationError");
-                var isValid = $("#txtmobileNumber").intlTelInput("isValidNumber");
-
-                if (isValid) {
-                    $("#txtmobileDialcode").val(countryData.dialCode);
-                } else {
-                    if(((typeof tobje.html()) != 'undefined') && ((typeof tobje.html()) != undefined) && ($("#txtmobileNumber").val().length <= 0)){
-                        //tobje.html('This field is required.');
-                        tobje.removeClass('hide');
+                if($("#no_referal_code").is(':checked')){                    
+                    var email = $("#customerRegisterarioForm input[name='email']").val();
+                    if(email==''){
+                        $("#email-error-msg").removeClass('hide');
+                        $("#customerRegisterarioForm input[name='email']").addClass('email-error');
+                        return false
                     }
-                    $("#txtmobileNumber").addClass('error');
-                    return false
+                    event.preventDefault();
+    
+                    $(".ai-sign-up-form-success-msg").html('');
+                    $(".ai-sign-up-form-error-msg").html('');
+                    $(".ai-login-form-success-msg").html('');
+    
+                    var formData = $(this).serialize();
+    
+                    $.ajax({
+                        url: "{{URL::to('customer_request_referral')}}",
+                        type: "POST",
+                        dataType: "json",
+                        data: formData,
+                        success: function (data, textStatus, jqXHR) {
+    
+    
+                            if (data.status == 'success') {
+                                $(".ai-sign-up-form-success-msg").html(data.message);                                
+                            }
+                            else {
+                                var message = data.message;
+                                for (var i = 0; i < data.errors.length; i++) {
+                                    message += '<br>' + data.errors[i];
+                                }
+                                $(".ai-sign-up-form-error-msg").html(message);
+                            }
+                        }
+                    });
+                }else{
+                
+                    var tobje = $("#txtmobileNumber").closest('.form-group').find('#error-msg');
+                    //if(((typeof tobje.html()) != 'undefined') && ((typeof tobje.html()) != undefined)){tobje.html('Invalid number');}
+                    var countryData = $("#txtmobileNumber").intlTelInput("getSelectedCountryData");
+    
+                    var error = $("#txtmobileNumber").intlTelInput("getValidationError");
+                    var isValid = $("#txtmobileNumber").intlTelInput("isValidNumber");
+    
+                    if (isValid) {
+                        $("#txtmobileDialcode").val(countryData.dialCode);
+                    } else {
+                        if(((typeof tobje.html()) != 'undefined') && ((typeof tobje.html()) != undefined) && ($("#txtmobileNumber").val().length <= 0)){
+                            //tobje.html('This field is required.');
+                            tobje.removeClass('hide');
+                        }
+                        $("#txtmobileNumber").addClass('error');
+                        return false
+                    }
+                    event.preventDefault();
+    
+                    $(".ai-sign-up-form-success-msg").html('');
+                    $(".ai-sign-up-form-error-msg").html('');
+                    $(".ai-login-form-success-msg").html('');
+    
+                    var formData = $(this).serialize();
+    
+                    $.ajax({
+                        url: "{{URL::to('customer_ajaxPostCreate')}}",
+                        type: "POST",
+                        dataType: "json",
+                        data: formData,
+                        success: function (data, textStatus, jqXHR) {
+    
+    
+                            if (data.status == 'success') {
+                                $(".ai-sign-up-form-success-msg").html(data.message);
+                                //window.location.href = "{{URL::to('whoiam')}}";
+                                if(data.gid==3){
+                                    window.location.href = "{{URL::to('traveller')}}";
+                                }else{
+                                    window.location.href = "{{URL::to('dashboard')}}";
+                                }
+                            }
+                            else {
+                                var message = data.message;
+                                for (var i = 0; i < data.errors.length; i++) {
+                                    message += '<br>' + data.errors[i];
+                                }
+                                $(".ai-sign-up-form-error-msg").html(message);
+                            }
+                        }
+                    });
                 }
-                event.preventDefault();
-
-                $(".ai-sign-up-form-success-msg").html('');
-                $(".ai-sign-up-form-error-msg").html('');
-                $(".ai-login-form-success-msg").html('');
-
-                var formData = $(this).serialize();
-
-                $.ajax({
-                    url: "{{URL::to('customer_ajaxPostCreate')}}",
-                    type: "POST",
-                    dataType: "json",
-                    data: formData,
-                    success: function (data, textStatus, jqXHR) {
-
-
-                        if (data.status == 'success') {
-                            $(".ai-sign-up-form-success-msg").html(data.message);
-                            //window.location.href = "{{URL::to('whoiam')}}";
-                            if(data.gid==3){
-                                window.location.href = "{{URL::to('traveller')}}";
-                            }else{
-                                window.location.href = "{{URL::to('dashboard')}}";
-                            }
-                        }
-                        else {
-                            var message = data.message;
-                            for (var i = 0; i < data.errors.length; i++) {
-                                message += '<br>' + data.errors[i];
-                            }
-                            $(".ai-sign-up-form-error-msg").html(message);
-                        }
-                    }
-                });
             });
 
 

@@ -536,3 +536,4 @@ Route::get('traveller/bookings', 'BookingsController@travellerBookings');
 Route::get('traveller/bookings/show/{id}', 'BookingsController@showBooking');
 
 Route::get('hotel/bookings', 'BookingsController@hotelBookings');
+Route::post('customer_request_referral', 'CustomerController@ajaxSendMail');

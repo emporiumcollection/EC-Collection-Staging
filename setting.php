@@ -20,4 +20,5 @@ define('CNF_LOGO','backend-logo.png');
 define('CNF_ALLOWIP','');
 define('CNF_RESTRICIP','192.116.134 , 194.111.606.21 ');
 define('CNF_YOUTUBE_API_KEY','');
+define('CNF_SUPERADMIN_EMAIL','dalip.01rad@gmail.com');
 ?>

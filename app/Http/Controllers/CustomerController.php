@@ -111,23 +111,10 @@ class CustomerController extends Controller {
     public function ajaxPostCreate(Request $request) {
 
         $rules = array(
-//            'firstname' => 'required|alpha_num|min:2',
-//            'lastname' => 'required|alpha_num|min:2',
             'user_type' => 'required|integer',
-            'email' => 'required|email|unique:tb_users',
-            //'password' => 'required|min:8|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=)(?=.*[\d\X])(?=.*[!$#%]).*$/',
+            'email' => 'required|email|ignore_lead_user',
             'password' => 'required|min:8|has_letters|has_one_upper_case|has_special_chars',
             'txtmobileNumber' =>'required',
-//            'mobile_number' => mobile_number'required|confirmed',
-//            'password_confirmation' => 'required',
-            //'membership_plan'=>'required',
-//            'company_name' => 'required',
-//            'company_address' => 'required',
-//            'company_address2' => 'required',
-//            'company_phone' => 'required',
-            //'company_website'=>'required',
-            //'company_tax_no'=>'required',
-//            'accept_terms' => 'required'
         );
         if (CNF_RECAPTCHA == 'true')
             $rules['recaptcha_response_field'] = 'required|recaptcha';
@@ -148,11 +135,16 @@ class CustomerController extends Controller {
             return preg_match('/[^a-zA-Z\d]/', $value);
         });
         
+        Validator::extend('ignore_lead_user', function ($attribute, $value, $parameters, $validator) {
+            return $this->check_lead_user($value);
+        });
+        
         $messages = array(
             'has_letters' => 'The :attribute field must be at least one alpha character.',
             'has_numbers' => 'The :attribute field must be at least one numeric character.',
             'has_special_chars' => 'The :attribute field must be at least one non-alphanumeric (!, @, # etc.) character.',
             'has_one_upper_case' => 'The :attribute field must be at least one uppercase character.',
+            'ignore_lead_user' => 'Email is already exist',
         );
         
         if($request->input('user_type') == '3'):
@@ -163,19 +155,18 @@ class CustomerController extends Controller {
 
         if ($validator->passes()) {
             $code = rand(10000, 10000000);
-
-            $authen = new User;
-//            $authen->first_name = $request->input('firstname');
-//            $authen->last_name = $request->input('lastname');
-            $authen->email = trim($request->input('email'));
-            $authen->activation = $code;
-            $authen->group_id = (int) $request->input('user_type');
-            $authen->mobile_number=trim($request->input('txtmobileNumber'));
-            $authen->mobile_code=trim($request->input('txtmobileDialcode'));
-            $authen->password = \Hash::make($request->input('password'));
+                        
+    		$obj_user  = \DB::table('tb_users')->where('email', trim($request->input('email')))->first();
+ 
+            $user_data['email'] = trim($request->input('email'));
+            $user_data['activation'] = $code;
+            $user_data['group_id'] = (int) $request->input('user_type');
+            $user_data['mobile_number'] =trim($request->input('txtmobileNumber'));
+            $user_data['mobile_code'] =trim($request->input('txtmobileDialcode'));
+            $user_data['password'] = \Hash::make($request->input('password'));
             
             if($request->input('user_type') == '3'):
-                $authen->new_user = '1';
+                $user_data['new_user'] = '1';
             endif;
             
             if($request->input('user_type') == '3'){
@@ -183,7 +174,7 @@ class CustomerController extends Controller {
                 $ref_code = true;
                 $inv_id = '';
                 $today = date('Y-m-d');
-                $invitee = \DB::table('tb_invitee')->where('email', $authen->email)->where('status', 0)->where('expired_on', '>', $today)->get();
+                $invitee = \DB::table('tb_invitee')->where('email', trim($request->input('email')))->where('status', 0)->where('expired_on', '>', $today)->get();
                 
                 if(count($invitee)>0){
                     foreach($invitee as $invite){                        
@@ -197,77 +188,102 @@ class CustomerController extends Controller {
                         $response = array('status' => 'error', 'message' => 'Refferal Code not matched', 'gid' => $authen->group_id, 'errors'=>true);
                     }else{
                         
+                        $user_data['active'] = '1';
+                        if(isset($obj_user->id)){
+                             $user_id = \DB::table('tb_users')->where('id', $obj_user->id)->update($user_data); 
+                             $user_id = $obj_user->id;                          
+                        }else{                        
+                            //$authen->save();
+                            $user_id = \DB::table('tb_users')->insertGetId($user_data);
+                        }    
+                            $ucdata['user_id'] = $user_id;
+                            $userId = $user_id;
+                            
+                            \Auth::loginUsingId($userId);
+                            \DB::table('tb_users')->where('id', '=', $userId)->update(array('last_login' => date("Y-m-d H:i:s")));
+                            \Session::put('uid', $userId);
+                            \Session::put('gid', $user_data['group_id']);
+                            \Session::put('eid', $user_data['email']);
+                            \Session::put('ll', date("Y-m-d H:i:s"));
+                
+                            \DB::table('tb_user_company_details')->insert($ucdata);
+                            
+                            $disdata['user_id']=$inv_uid;
+                            $disdata['invitee_id']=$inv_id;
+                            $disdata['availability']= 1;
+                            
+                            \DB::table('tb_user_invitee_discount')->insert($disdata);
+                            
+                            $edata = array();
+                            $edata['email'] = $request->input('email');
+                            $edata['password'] = $request->input('password');
+                            $edata['firstname'] = '';
+                            $emlData['frmemail'] = 'marketing@emporium-voyage.com';
+                            //$emlData['email'] = 'riaan@number7even.com';
+                            $emlData['email'] = 'dalip.01rad@gmail.com';
+                            $emlData['subject'] = 'Registration';
+                            
+                            $etemp = 'registration';
+                            
+                            \Mail::send('user.emails.' . $etemp, $edata, function($message) use ($emlData) {
+                                $message->from($emlData['frmemail'], CNF_APPNAME);
+                
+                                $message->to($emlData['email']);
+                
+                                $message->subject($emlData['subject']);
+                            });
+                            
+                            $response = array('status' => 'success', 'message' => 'Registered successfully', 'gid' => $user_data['group_id']);
                         
-                        
-                        $authen->active = '1';
-                        $authen->save();
-            
-                        $ucdata['user_id'] = $authen->id;
-                        $userId = $authen->id;
-                        
-                        \Auth::loginUsingId($userId);
-                        \DB::table('tb_users')->where('id', '=', $userId)->update(array('last_login' => date("Y-m-d H:i:s")));
-                        \Session::put('uid', $userId);
-                        \Session::put('gid', $authen->group_id);
-                        \Session::put('eid', $authen->email);
-                        \Session::put('ll', date("Y-m-d H:i:s"));
-            
-                        \DB::table('tb_user_company_details')->insert($ucdata);
-                        
-                        $disdata['user_id']=$inv_uid;
-                        $disdata['invitee_id']=$inv_id;
-                        $disdata['availability']= 1;
-                        
-                        \DB::table('tb_user_invitee_discount')->insert($disdata);
-            
-                        $response = array('status' => 'success', 'message' => 'Registered successfully', 'gid' => $authen->group_id);
                     }
                 }else{
                     $response = array('status' => 'error', 'message' => 'Please connect with your referrer to resend your invitation or write us an email on <a href="mailto:marketing@emporium-voyage.com">marketing@emporium-voyage.com', 'gid' => $authen->group_id, 'errors'=>true);
                 }
-            }else{
-                
-                    
-                    
-                    
-                    $authen->active = '1';
-                    $authen->save();
-        
-                    $ucdata['user_id'] = $authen->id;
-                    $userId = $authen->id;
-                    //\Session::set("uid",$authen->id);
-                    
+            }else{                
+                    $user_data['active'] = '1';
+                    if(isset($obj_user->id)){
+                        $user_id = \DB::table('tb_users')->where('id', $obj_user->id)->update($user_data);
+                        $user_id = $obj_user->id;
+                    }else{                        
+                        //$authen->save();
+                        $user_id = \DB::table('tb_users')->insertGetId($user_data);
+                    }
+                    $ucdata['user_id'] = $user_id;
+                    $userId = $user_id; 
+                     
                     \Auth::loginUsingId($userId);
                     \DB::table('tb_users')->where('id', '=', $userId)->update(array('last_login' => date("Y-m-d H:i:s")));
                     \Session::put('uid', $userId);
-                    \Session::put('gid', $authen->group_id);
-                    \Session::put('eid', $authen->email);
-                    \Session::put('ll', date("Y-m-d H:i:s"));      
+                    \Session::put('gid', $user_data['group_id']);
+                    \Session::put('eid', $user_data['email']);
+                    \Session::put('ll', date("Y-m-d H:i:s"));     
                     
-                                         
-        
-        //            $ucdata['company_name'] = Input::get('company_name');
-        //            $ucdata['company_address'] = Input::get('company_address');
-        //            $ucdata['company_address2'] = Input::get('company_address2');
-                    //$ucdata['company_phone'] = Input::get('company_phone');
-                    //$ucdata['company_website'] = Input::get('company_website');
-                    //$ucdata['company_tax_number'] = Input::get('company_tax_no');
+       
                     if (Input::get('accept_terms')) {
         //                $ucdata['accept_terms'] = Input::get('accept_terms');
                     }
         
-                    \DB::table('tb_user_company_details')->insert($ucdata);
-        
-                    /* $umdata['user_id'] = $authen->id;
-                      $umdata['membership_id'] = $request->input('membership_plan');
-                      $umdata['created'] = date('Y-m-d h:i:s');
-                      $umId = \DB::table('tb_users_membership')->insertGetId($umdata); */
-        
-                    //return Redirect::to('choose/'.$umId);
-        
-                    $response = array('status' => 'success', 'message' => 'Registered successfully', 'gid' => $authen->group_id);
+                    \DB::table('tb_user_company_details')->insert($ucdata);                        
                     
-        //            return Redirect::to('customer/login')->with('message', \SiteHelpers::alert('success', 'Registered successfully.'));
+                    $edata = array();
+                    $edata['email'] = $request->input('email');
+                    $edata['password'] = $request->input('password');
+                    $edata['firstname'] = '';
+                    $emlData['frmemail'] = 'marketing@emporium-voyage.com';
+                    //$emlData['email'] = 'riaan@number7even.com';
+                    $emlData['email'] = 'dalip.01rad@gmail.com';
+                    $emlData['subject'] = 'Registration';
+                    
+                    $etemp = 'registration';
+                    
+                    \Mail::send('user.emails.' . $etemp, $edata, function($message) use ($emlData) {
+                        $message->from($emlData['frmemail'], CNF_APPNAME);
+        
+                        $message->to($emlData['email']);
+        
+                        $message->subject($emlData['subject']);
+                    });
+                    $response = array('status' => 'success', 'message' => 'Registered successfully', 'gid' => $user_data['group_id']);
             }
         } else {
             $response = array('status' => 'error', 'message' => 'The following errors occurred', 'errors' => $validator->errors()->all());
@@ -277,7 +293,21 @@ class CustomerController extends Controller {
         
         echo json_encode($response);
     }
-
+    
+    public function check_lead_user($email){
+        $gp_id = trim(\CommonHelper::getusertype('new-lead'));
+		$obj_user  = \DB::table('tb_users')->where('email', $email)->first();
+        if(!empty($obj_user)){
+            if($obj_user->group_id==$gp_id){
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return true;
+        }
+	}
+    
     public function chosepay($mid) {
         $this->data['umid'] = $mid;
         return view('customer.choosepay', $this->data);
@@ -1755,6 +1785,60 @@ $html .= '</div>';
         $return_array['message'] = 'Successfully completed wizard!';
         echo json_encode($return_array);
         exit;
+    }
+    
+    public function ajaxSendMail(Request $request) {
+
+        $rules = array( 
+            'email' => 'required|email|unique:tb_users',
+        );        
+        
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->passes()) {            
+            
+            $edata = array();
+            $edata['email'] = $request->input('email');
+            $emlData['frmemail'] = 'marketing@emporium-voyage.com';
+            //$emlData['email'] = 'riaan@number7even.com';
+            $emlData['email'] = CNF_SUPERADMIN_EMAIL;
+            $emlData['subject'] = 'Request for referral code by '.$request->input('email');
+            
+            $etemp = 'request_referral';
+            
+            \Mail::send('user.emails.' . $etemp, $edata, function($message) use ($emlData) {
+                $message->from($emlData['frmemail'], CNF_APPNAME);
+
+                $message->to($emlData['email']);
+
+                $message->subject($emlData['subject']);
+            });
+                    
+            $euserdata = array();
+            $edata['email'] = $request->input('email');
+            $emlData['frmemail'] = 'marketing@emporium-voyage.com';
+            //$emlData['email'] = 'riaan@number7even.com';
+            $emlData['email'] = CNF_SUPERADMIN_EMAIL;
+            $emlData['subject'] = 'Request for referral';
+            
+            $etemp = 'request_referral_user';
+            
+            \Mail::send('user.emails.' . $etemp, $euserdata, function($message) use ($emlData) {
+                $message->from($emlData['frmemail'], CNF_APPNAME);
+
+                $message->to($emlData['email']);
+
+                $message->subject($emlData['subject']);
+            });
+                    
+            
+            $response = array('status' => 'error', 'message' => 'Your request send to administrator. They will conctact with you shortly', 'errors'=>false);
+            
+        } else {
+            $response = array('status' => 'error', 'message' => 'The following errors occurred', 'errors' => $validator->errors()->all());
+        }
+        
+        echo json_encode($response);
     }   
 
 }

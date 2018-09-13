@@ -65,6 +65,14 @@
 			<input name="cnf_email" type="text" id="cnf_email" class="form-control input-sm" value="{{ CNF_EMAIL }}" /> 
 			 </div> 
 		  </div> 
+          
+          <div class="form-group">
+		    <label for="ipt" class=" control-label col-md-4">{{ Lang::get('core.fr_superadmin_emailsys') }} </label>
+			<div class="col-md-8">
+			<input name="cnf_superadmin_email" type="text" id="cnf_superadmin_email" class="form-control input-sm" value="{{ CNF_SUPERADMIN_EMAIL }}" /> 
+			 </div> 
+		  </div> 
+          
 		  <div class="form-group">
 		    <label for="ipt" class=" control-label col-md-4">{{ Lang::get('core.fr_youtube_api_key') }} </label>
 			<div class="col-md-8">
