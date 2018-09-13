@@ -220,7 +220,7 @@ class CustomerController extends Controller {
                             $edata['firstname'] = '';
                             $emlData['frmemail'] = 'marketing@emporium-voyage.com';
                             //$emlData['email'] = 'riaan@number7even.com';
-                            $emlData['email'] = 'dalip.01rad@gmail.com';
+                            $emlData['email'] = trim($request->input('email'));
                             $emlData['subject'] = 'Registration';
                             
                             $etemp = 'registration';
@@ -271,7 +271,7 @@ class CustomerController extends Controller {
                     $edata['firstname'] = '';
                     $emlData['frmemail'] = 'marketing@emporium-voyage.com';
                     //$emlData['email'] = 'riaan@number7even.com';
-                    $emlData['email'] = 'dalip.01rad@gmail.com';
+                    $emlData['email'] = trim($request->input('email'));
                     $emlData['subject'] = 'Registration';
                     
                     $etemp = 'registration';
@@ -1818,7 +1818,7 @@ $html .= '</div>';
             $euserdata['email'] = $request->input('email');
             $emlData['frmemail'] = 'marketing@emporium-voyage.com';
             //$emlData['email'] = 'riaan@number7even.com';
-            $emlData['email'] = CNF_SUPERADMIN_EMAIL;
+            $emlData['email'] = trim($request->input('email'));
             $emlData['subject'] = 'Request for referral';
             
             $etemp = 'request_referral_user';

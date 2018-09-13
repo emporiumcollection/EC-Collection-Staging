@@ -5662,8 +5662,7 @@ class HomeController extends Controller {
             $tempe = 'blank';
             $emailArr['msg'] = $bookingEmailTemplate;
             
-            //$toouser['email'] = $property->email;   
-            $toouser['email'] = 'dalip.01rad@gmail.com';         
+            $toouser['email'] = $property->email;            
 			$toouser['subject'] = "Booking Confirmation";            		
             \Mail::send('user.emails.'.$tempe, $emailArr, function ($message) use ($toouser) {
               $message->to($toouser['email'])
