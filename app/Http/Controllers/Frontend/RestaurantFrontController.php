@@ -15,7 +15,9 @@ class RestaurantFrontController extends Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		
+		if(!isset(\Auth::user()->id)){
+            Redirect::to('/')->send();
+        }
 	}
 
 	public function propertyRestrurant( Request $request )

@@ -568,6 +568,10 @@ slider.oninput = function() {
 
  $('.cnt-box').hide();
  $('.bg-dark').hide();
+ 
+ if($('#search-result-slider').hasClass('luxuryHotelSlider')){
+    $('.header-content').addClass('showsearch');
+ }
 
  //$('.round-crcle').hover(
 //function () {
@@ -714,7 +718,8 @@ $(function(){
     $( this ).toggleClass( "highlight" );
     $(".homerightmenu").toggleClass("me-right");
     $(".mobilemenu").toggleClass("me-left");
-    $(".menu-bx").toggleClass( "is-nav-active");  
+    $(".menu-bx").toggleClass( "is-nav-active"); 
+    $(".Home .logo-box").toggleClass( "remove-h-logo");
   });
 
    $( ".menu-bx .log_in-btn" ).click(function() {

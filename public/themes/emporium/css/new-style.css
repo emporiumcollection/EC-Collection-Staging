@@ -4380,3 +4380,29 @@ svg:not(:root) {
     font-size: 9px;
 }
 }
+
+.Home .logo-box.remove-h-logo{
+    opacity: 0;
+    -webkit-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+}
+#home_sld .item .round-crcle .c-slide__icon-more__container{
+    opacity: 0;
+}
+.slider-cnt-box{
+    display:block !important;
+    opacity: 1 !important;
+}
+.mobile-leftsearch .form-control::placeholder {
+    color: #ABA07C;
+    opacity: 1; /* Firefox */
+}
+
+.mobile-leftsearch .form-control:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color: #ABA07C;
+}
+
+.mobile-leftsearch .form-control::-ms-input-placeholder { /* Microsoft Edge */
+   color: #ABA07C;
+}

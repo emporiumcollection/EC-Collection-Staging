@@ -10,7 +10,9 @@ class PropertyController extends Controller {
 
     public function __construct() {
         parent::__construct();
-        
+        if(!isset(\Auth::user()->id)){
+            Redirect::to('/')->send();
+        }
     }
     
     /* Method : getPropertyDetail

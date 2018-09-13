@@ -36,7 +36,7 @@
                           <h1><a href="{{$slider_row->slider_link}}">{{$slider_row->slider_title}}</a></h1>
                          </div>
 
-                           <div class="cnt-box">
+                           <div class="cnt-box slider-cnt-box">
                             <p><a href="{{$slider_row->slider_link}}" style="color:white;">{{$slider_row->slider_description}}</a></p>
                          </div>
                        </div>
@@ -49,7 +49,7 @@
                 <a><img src="{{URL::to('uploads/users/advertisement/'.$ads->adv_img)}}" alt="" /></a>
                 <div class="carousel-caption">
                   <div class="round-crcle"></div>
-                           <div class="cnt-box">
+                           <div class="cnt-box slider-cnt-box">
                   <h1><a href="{{ (strpos($ads->adv_link, 'http://') !== false) ? $ads->adv_link : 'http://'.$ads->adv_link }}">{{$ads->adv_title}}</a></h1>
                   <p><a href="{{ (strpos($ads->adv_link, 'http://') !== false) ? $ads->adv_link : 'http://'.$ads->adv_link }}" style="color:white;">{{$ads->adv_desc}} </a></p>
                 </div>

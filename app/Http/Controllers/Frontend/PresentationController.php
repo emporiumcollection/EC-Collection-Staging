@@ -17,6 +17,9 @@ class PresentationController extends Controller {
 	{
 		
 		parent::__construct();
+        if(!isset(\Auth::user()->id)){
+            Redirect::to('/')->send();
+        }
 		$this->data['pageTitle'] = '';
 		$this->data['data'] = CommonHelper::getInfo();
 		$this->data['pageslider'] = "";

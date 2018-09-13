@@ -9,6 +9,9 @@ class DestinationController extends Controller {
 
     public function __construct() {
         parent::__construct();
+        if(!isset(\Auth::user()->id)){
+            Redirect::to('/')->send();
+        }
     }
 	
 	public function getDestinatinosAjax(Request $request) {
