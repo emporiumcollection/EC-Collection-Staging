@@ -1147,7 +1147,7 @@
                                                                                         {cultural_interests_list}
                                                                                         <div style="float: left; width: 100%;">
                                                                                             Other, please specify : {other_interests}
-                                                                                            <div>
+                                                                                        </div>
                                                                                                 <p class="RegularText4TD" style="float: left; width: 100%;">Sports</p>
                                                                                                 {sports_preferences_list}
                                                                                                 <p class="RegularText4TD" style="float: left; width: 100%;">Wellbeing</p>
@@ -1645,8 +1645,7 @@
             </div>
         </div>  
     </div>
-    </div>                                                                                            
-</div>                                                                                            
+                                                                                              
 </body>
 
 </html>
