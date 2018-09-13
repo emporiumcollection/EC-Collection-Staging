@@ -237,7 +237,7 @@ class CustomerController extends Controller {
                         
                     }
                 }else{
-                    $response = array('status' => 'error', 'message' => 'Please connect with your referrer to resend your invitation or write us an email on <a href="mailto:marketing@emporium-voyage.com">marketing@emporium-voyage.com', 'gid' => $authen->group_id, 'errors'=>true);
+                    $response = array('status' => 'error', 'message' => 'Please connect with your referrer to resend your invitation or write us an email on <a href="mailto:marketing@emporium-voyage.com">marketing@emporium-voyage.com', 'gid' => $user_data['group_id'], 'errors'=>true);
                 }
             }else{                
                     $user_data['active'] = '1';
@@ -1832,7 +1832,7 @@ $html .= '</div>';
             });
                     
             
-            $response = array('status' => 'error', 'message' => 'Your request send to administrator. They will conctact with you shortly', 'errors'=>false);
+            $response = array('status' => 'error', 'message' => 'Your request send to administrator. They will contact with you shortly', 'errors'=>false);
             
         } else {
             $response = array('status' => 'error', 'message' => 'The following errors occurred', 'errors' => $validator->errors()->all());

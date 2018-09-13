@@ -266,12 +266,8 @@ p.gray-tx {
     			<div class="sections">
                     <div class="container-box">
                       <div class="txt-box">
-            				<h2>Hello, </h2>
-                    		<p> User request for refferal code </p>
-                    		<p> Bellow is email </p>
-                    		<p>
-                    			Email : {{ $email }} <br />                    			
-                    		</p>
+            				<h2>Dear User, </h2>
+                    		<p> Thanks for showing interest in our company, We will connect with further details shortly. </p>
                     		
                     		<br /><br /><p> Thank You </p><br /><br />
                     		

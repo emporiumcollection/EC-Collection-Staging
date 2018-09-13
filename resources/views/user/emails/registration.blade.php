@@ -267,7 +267,7 @@ p.gray-tx {
                     <div class="container-box">
                       <div class="txt-box">
             				<h2>Hello {{ $firstname }} , </h2>
-                    		<p> Thank your for joining with our site </p>
+                    		<p> Thank you for joining with us </p>
                     		<p> Bellow is your account Info </p>
                     		<p>
                     			Email : {{ $email }} <br />
