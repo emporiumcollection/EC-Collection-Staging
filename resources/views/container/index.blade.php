@@ -455,6 +455,7 @@ div[data-load="left-side-tree"]{max-height: 600px;    overflow: auto;}
             Dropzone.autoDiscover = false;
              var myDropzone = new Dropzone("div#dropzoneFileUpload", {
                 url: baseUrl,
+                maxFilesize: 3,
                 params: {
                     _token: token,
 					fold_id: localStorage.getItem('fold_id')
