@@ -131,7 +131,7 @@
 		<h4 class="gridheading"> {{ count($featurePropertiesArr) }}<span class="newfont"> Featured </span> Hotels Found for {{ $slug }}  {{$dateslug}}</h4>
 			<div class="grid">
 
-
+                <section id="blog-landing-feature">
 		@foreach($featurePropertiesArr as $props)
 			
 			<?php
@@ -142,29 +142,32 @@
 				}
 			?> 
 
-
-    <div class="col-md-6 col-sm-6 col-xs-12 biggrid">
-        <div class="row">
-          <div class="gridinner">
-            <a href="{{ $url }}" title="{{ $props->property_name}}">
-          		  <img src="{{ URL::to('themes/emporium/images/emporium-voyage-logo-white-loader.svg') }}" data-src="{{ URL::to('propertysliderimagebyid/'.$props->id)}}" class="img-responsive rad-img" alt="{{ $props->property_name}}" title="{{ $props->property_name}}" data-ajax-link="{{ URL::to('ajax-rproperty-images/'.$props->id.'/3') }}" />
-                  
-                  {{-- <img src="{{ URL::to('themes/emporium/images/emporium-voyage-logo-white-loader.svg') }}" data-src="http://staging.emporium-voyage.com/propertysliderimagebyid/61" class="img-responsive rad-img" alt="The Soho Hotel " title="The Soho Hotel"
-                  data-imagessrc='[{"src":"http://staging.emporium-voyage.com/propertysliderimagebyid/61"},{"src":"http://staging.emporium-voyage.com/propertysliderimagebyid/69"},{"src":"http://staging.emporium-voyage.com/propertyimagebyid/213"}]' />  --}}
-               {{-- URL::to('propertyimagebyid/'.$props->id)--}}
-           	</a>
-            <div class="gridtext">
-              <h5 class="entry-title">
-                  <a href="{{ $url}}" rel="bookmark" style="">{{ $props->property_name}} -- Featured  </a>
-                   <a href="{{ $url }}"><i class="fa fa-shopping-cart"></i></a>
-              </h5>
-               <p>  {{ $props->property_usp}}</p>
-                  <a class="read-more-link" href="{{ $url }}"  title="Discover" ><span class="newfont"> Discover</span></a>
+    
+    <article class="white-panel"> 
+        <div class="col-md-12 col-sm-12 col-xs-12 biggrid">
+            <div class="row">
+              <div class="gridinner">
+                <a href="{{ $url }}" title="{{ $props->property_name}}">
+              		  <img src="{{ URL::to('themes/emporium/images/emporium-voyage-logo-white-loader.svg') }}" data-src="{{ URL::to('propertysliderimagebyid/'.$props->id)}}" class="img-responsive rad-img" alt="{{ $props->property_name}}" title="{{ $props->property_name}}" data-ajax-link="{{ URL::to('ajax-rproperty-images/'.$props->id.'/3') }}" />
+                      
+                      {{-- <img src="{{ URL::to('themes/emporium/images/emporium-voyage-logo-white-loader.svg') }}" data-src="http://staging.emporium-voyage.com/propertysliderimagebyid/61" class="img-responsive rad-img" alt="The Soho Hotel " title="The Soho Hotel"
+                      data-imagessrc='[{"src":"http://staging.emporium-voyage.com/propertysliderimagebyid/61"},{"src":"http://staging.emporium-voyage.com/propertysliderimagebyid/69"},{"src":"http://staging.emporium-voyage.com/propertyimagebyid/213"}]' />  --}}
+                   {{-- URL::to('propertyimagebyid/'.$props->id)--}}
+               	</a>
+                <div class="gridtext">
+                  <h5 class="entry-title">
+                      <a href="{{ $url}}" rel="bookmark" style="">{{ $props->property_name}} -- Featured  </a>
+                       <a href="{{ $url }}"><i class="fa fa-shopping-cart"></i></a>
+                  </h5>
+                   <p>  {{ $props->property_usp}}</p>
+                      <a class="read-more-link" href="{{ $url }}"  title="Discover" ><span class="newfont"> Discover</span></a>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+    </article>
 	@endforeach
+    </section>
 </div>
 @endif
 
@@ -174,9 +177,8 @@
 	@endif
     <div class="grid">
     
-
-
 @if($propertiesArr)
+<section id="blog-landing">
 {{--*/ $rw = 1 /*--}}
 		@foreach($propertiesArr as $props)
 			<?php
@@ -188,10 +190,11 @@
 
 
 			?> 
+            <article class="white-panel"> 
 			@if($rw%19==0)
 							{{--*/ $adscatid = ($destination_category > 0) ? $destination_category : 'Hotel'; $resultads = CommonHelper::getGridResultAds('grid_results', $adscatid) /*--}}
 							@if(!empty($resultads['resultads']))
-								 <div class="col-md-4 col-sm-4 col-xs-12 grid-item">
+								 <div class="col-md-12 col-sm-12 col-xs-12 grid-item">
 							        <div class="row">
 							           <div class="gridinner">
 							            <a href="#" >
@@ -210,8 +213,9 @@
 							        </div>
 							      </div>
 							@endif
-							@else
-							      <div class="col-md-4 col-sm-4 col-xs-12 grid-item">
+        
+                            @else
+                                  <div class="col-md-12 col-sm-12 col-xs-12 grid-item">
 							        <div class="row">
 							           <div class="gridinner">
 							           	<div class="image">
@@ -234,9 +238,10 @@
 							        </div>
 							      </div>
 							 @endif
-
+            </article>
       		{{--*/ $rw++ /*--}}
       @endforeach 
+      </section>
 @endif
 
      
@@ -320,7 +325,28 @@
 	<link href="{{ asset('themes/emporium/css/pdpage-css.css') }}" rel="stylesheet">
 	<link href="{{ asset('themes/emporium/css/search-result.css') }}" rel="stylesheet">
     <link href="{{ asset('themes/emporium/css/rad-photos-swap.css') }}" rel="stylesheet">
-
+<style>
+.grid{position: relative; overflow: hidden; padding-bottom: 5px; }
+#blog-landing, #blog-landing-feature {
+    position: relative;
+    max-width: 99%;
+    width: 99%;
+}
+img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+.white-panel {
+    position: absolute;
+}
+.white-panel:hover {
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+</style>
 @endsection
 
 {{-- For custom style  --}}
@@ -335,10 +361,11 @@
 	<!-- instagram -->
 	
 	<script src="{{ asset('sximo/instajs/instashow/elfsight-instagram-feed.js')}}"></script>
-	  <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
   <script type="text/javascript" src="{{ asset('themes/emporium/js/imagesloaded.pkgd.min.js')}}"></script>
   <script type="text/javascript" src="{{ asset('themes/emporium/js/slick.js')}}"></script>
   <script type="text/javascript" src="{{ asset('themes/emporium/js/rad-photos-swap.js')}}"></script>
+  <script type="text/javascript" src="{{ asset('themes/emporium/js/pinterest_grid.js')}}"></script>
    <script type="text/javascript">
    $('.multiple-items').slick({
     dots: true,
@@ -355,13 +382,13 @@
   </script>
   <script type="text/javascript">
  // init Masonry
-var $grid = $('.grid').masonry({
+/*var $grid = $('.grid').masonry({
   // options...
 });
 // layout Masonry after each image loads
 $grid.imagesLoaded().progress( function() {
   $grid.masonry('layout');
-});
+});*/
   </script>
 @endsection
 
@@ -379,7 +406,10 @@ $grid.imagesLoaded().progress( function() {
 		  //load images after load full page
           //$('img.rad-img').photoLoadAfterPageLoad(noImg);
           //End
-          
+            
+            $('#blog-landing').pinterest_grid({ no_columns: 3, padding_x: 0, padding_y: 0, margin_bottom: 0, single_column_breakpoint: 700 });
+            $('#blog-landing-feature').pinterest_grid({ no_columns: 2, padding_x: 0, padding_y: 0, margin_bottom: 0, single_column_breakpoint: 700 });
+            
 			$(document).on('change', '#myRange', function () {
 				var datObj = window.location.search;
 				if(datObj.match(/filter_max_price/g))
