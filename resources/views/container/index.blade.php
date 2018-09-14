@@ -470,6 +470,14 @@ div[data-load="left-side-tree"]{max-height: 600px;    overflow: auto;}
 						thisDropzone.options.params.fold_id = localStorage.getItem('fold_id');
 						thisDropzone.options.url = baseUrl;
 					});
+                    this.on('error', function(file, errorMessage) {
+                        if (file.accepted) {
+                          var mypreview = document.getElementsByClassName('dz-error');
+                          mypreview = mypreview[mypreview.length - 1];
+                          mypreview.classList.toggle('dz-error');
+                          mypreview.classList.toggle('dz-success');
+                        }
+                    });
 				}
              });
 			 
