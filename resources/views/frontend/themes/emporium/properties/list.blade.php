@@ -335,7 +335,8 @@
 	<!-- instagram -->
 	
 	<script src="{{ asset('sximo/instajs/instashow/elfsight-instagram-feed.js')}}"></script>
-	  <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+	  <?php /*<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>*/ ?>
+      <script src="{{ asset('themes/emporium/js/masonry.pkgd.min.js')}}"></script>
   <script type="text/javascript" src="{{ asset('themes/emporium/js/imagesloaded.pkgd.min.js')}}"></script>
   <script type="text/javascript" src="{{ asset('themes/emporium/js/slick.js')}}"></script>
   <script type="text/javascript" src="{{ asset('themes/emporium/js/rad-photos-swap.js')}}"></script>
