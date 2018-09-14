@@ -27,10 +27,9 @@
                         <input class="form-control" name="email" type="text" placeholder="Email Address" required="email" />
 
                      </div>
-                     <div class="form-group">
-                        <a class="forgetPassBtn" href="javascript:void(0);">FORGOT?</a>
-
+                     <div class="form-group password-div">
                         <input class="form-control" name="password" placeholder="Password" type="password" required="true" >
+                        <a class="forgetPassBtn" href="javascript:void(0);">FORGOT?</a>
                      </div>
                      <button class="button" type="submit">Log In</button>
                   </form>

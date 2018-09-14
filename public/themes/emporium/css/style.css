@@ -1031,7 +1031,8 @@ border-radius:0;
   float: left;
   width: 100%;
   border-bottom: 1px solid #fff;
-}   
+  position: relative;
+}
 .loginFormDiv p {
   float: left;
   color: #fff;
@@ -1049,7 +1050,11 @@ border-radius:0;
 }
 .loginFormDiv input:focus{outline:0; box-shadow:none;}
 .loginFormDiv .form-group a {
-  padding: 12px 12px 8px;
+  padding: 0px;
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  /*padding: 12px 12px 8px;*/
   font-size: 14px;
   font-weight: 700;
   float: right;

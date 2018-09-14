@@ -380,6 +380,7 @@ $('body').css('overflow','hidden')
 });
 $(".mainPopupClose").click(function(){
 	$('.popupMainDiv').removeClass('openPopup');
+    $(".Home .logo-box").removeClass( "remove-h-logo");
 	$('body').css('overflow','auto')
 });
 $(".logInPopupButton").click(function() {
@@ -723,6 +724,7 @@ $(function(){
   });
 
    $( ".menu-bx .log_in-btn" ).click(function() {
+    $(".Home .logo-box").addClass( "remove-h-logo");
     $(".popupMainDiv").toggleClass("openPopup");
     $(".signInPopup").removeClass("openPopup");      
   });
@@ -735,6 +737,7 @@ $(function(){
         $(".menu-bx").removeClass( "is-nav-active"); 
         $(".homerightmenu").removeClass("me-right");        
   });
+  
 });
 
 
