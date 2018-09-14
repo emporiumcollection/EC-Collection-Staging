@@ -124,7 +124,6 @@
     $.fn.photoLoadAfterPageLoad = function(noImg) {
         var imag_cll = this;
         if(typeof $grid != 'undefined'){ $grid.masonry('layout'); }
-        if(typeof $('#blog-landing').html() != 'undefined'){ $('#blog-landing').resetgrid(); }
         var totalHotelImg = imag_cll.length;
         var rri = 1;
         if(totalHotelImg > 0){
@@ -138,18 +137,12 @@
                     .on('load', function() { 
                         thisObj.attr('src',$(this).attr('src'));
                         thisObj.photoInitFun();             
-                        if(totalHotelImg == rri){ 
-                            if(typeof $grid != 'undefined'){ $grid.masonry('layout'); }
-                            if(typeof $('#blog-landing').html() != 'undefined'){ $('#blog-landing').resetgrid(); }                              
-                        }else{ rri++; }
+                        if(totalHotelImg == rri){ if(typeof $grid != 'undefined'){ $grid.masonry('layout'); } }else{ rri++; }
                     })
                     .on('error', function() { 
                         thisObj.attr('src',noImg); thisObj.css('opacity','0'); 
                         //thisObj.photoInitFun();
-                        if(totalHotelImg == rri){ 
-                            if(typeof $grid != 'undefined'){ $grid.masonry('layout'); } 
-                            if(typeof $('#blog-landing').html() != 'undefined'){ $('#blog-landing').resetgrid(); }                            
-                        }else{ rri++; }
+                        if(totalHotelImg == rri){ if(typeof $grid != 'undefined'){ $grid.masonry('layout'); } }else{ rri++; }
                     })
                     .attr("src", thisSrc);
                 }else
