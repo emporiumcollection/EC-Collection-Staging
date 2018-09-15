@@ -120,36 +120,66 @@
         });
     },
     
+    $.fn.preload = function(imageArray, noImg, index) {
+        index = index || 0;
+        var tooobj = this;
+        if (imageArray && imageArray.length > index) {
+            var thisObj = imageArray[index];
+            var thisSrc = thisObj.data('src');
+            
+            $("<img/>")
+            .on('load', function() { 
+                thisObj.attr('src',$(this).attr('src'));
+                thisObj.photoInitFun();
+                if(typeof $grid != 'undefined'){ $grid.masonry('layout'); }
+                tooobj.preload(imageArray, index + 1);
+            })
+            .on('error', function() { 
+                thisObj.attr('src',noImg); thisObj.css('opacity','1'); 
+                //thisObj.photoInitFun();
+                if(typeof $grid != 'undefined'){ $grid.masonry('layout'); }
+                tooobj.preload(imageArray, noImg, index + 1);
+            })
+            .attr("src", thisSrc);
+            
+        }else
+        {
+            if(typeof $grid != 'undefined'){ $grid.masonry('layout'); }
+        }
+    },
     
     $.fn.photoLoadAfterPageLoad = function(noImg) {
         var imag_cll = this;
         if(typeof $grid != 'undefined'){ $grid.masonry('layout'); }
         var totalHotelImg = imag_cll.length;
         var rri = 1;
+        var temp_arr = new Array();
         if(totalHotelImg > 0){
             imag_cll.each(function(){
                 var thisSrc = $(this).data('src');
                 var thisObj = $(this);
+                
                 if(((typeof thisSrc) != undefined) && ((typeof thisSrc) != 'undefined')){
                 
-                if(thisSrc.length > 0){
-                    $("<img/>")
-                    .on('load', function() { 
-                        thisObj.attr('src',$(this).attr('src'));
-                        thisObj.photoInitFun();             
-                        if(totalHotelImg == rri){ if(typeof $grid != 'undefined'){ $grid.masonry('layout'); } }else{ rri++; }
-                    })
-                    .on('error', function() { 
-                        thisObj.attr('src',noImg); thisObj.css('opacity','0'); 
-                        //thisObj.photoInitFun();
-                        if(totalHotelImg == rri){ if(typeof $grid != 'undefined'){ $grid.masonry('layout'); } }else{ rri++; }
-                    })
-                    .attr("src", thisSrc);
-                }else
-                {
-                    thisObj.attr('src',noImg);
-                    thisObj.css('display','block');
-                }
+                    if(thisSrc.length > 0){
+                        temp_arr.push(thisObj);
+                        /*$("<img/>")
+                        .on('load', function() { 
+                            thisObj.attr('src',$(this).attr('src'));
+                            thisObj.photoInitFun();             
+                            if(totalHotelImg == rri){ if(typeof $grid != 'undefined'){ $grid.masonry('layout'); } }else{ rri++; }
+                        })
+                        .on('error', function() { 
+                            thisObj.attr('src',noImg); thisObj.css('opacity','0'); 
+                            //thisObj.photoInitFun();
+                            if(totalHotelImg == rri){ if(typeof $grid != 'undefined'){ $grid.masonry('layout'); } }else{ rri++; }
+                        })
+                        .attr("src", thisSrc);*/
+                    }else
+                    {
+                        thisObj.attr('src',noImg);
+                        thisObj.css('display','block');
+                    }
                     thisObj.removeAttr('data-src');
                 }else
                 {
@@ -160,6 +190,9 @@
                 thisObj.removeClass('rad-img');
             });
         }
+        
+        if(typeof $grid != 'undefined'){ $grid.masonry('layout'); }
+        if(temp_arr.length > 0){ this.preload(temp_arr, noImg); }
     },
     
     //in image tag data-ajax-link="http://sample.com/page" (FYI: return data in form of json ex. [{"src":"http://example.com/imgage_link.jpg"},{"src":"http://example.com/imgage_link.png"}])

@@ -70,7 +70,7 @@ class ContainerController extends Controller {
 		$filess = $filess_temp->get();
 	
 		$ct=0; 
-		$this->data['rowData'] = '';
+		$this->data['rowData'] = array();
 		
 		foreach($results['rows'] as $folderObj ){
 			if($wnd=='iframe')
@@ -4835,7 +4835,7 @@ class ContainerController extends Controller {
 
 
 		$ct=0; 
-		$this->data['rowData'] = '';
+		$this->data['rowData'] = array();
 		
 		foreach($results['rows'] as $folderObj ){
 			if($wnd=='iframe')

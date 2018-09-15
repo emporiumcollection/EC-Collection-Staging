@@ -370,7 +370,7 @@ $grid.imagesLoaded().progress( function() {
 @section('custom_js')
     @parent
 	<script>
-        var noImg = "{{ URL::to('sximo/images/transparent.png') }}";
+        var noImg = "{{ URL::to('sximo/images/noimg.jpg') }}";
         $(window).on('load', function(e){
             //load images after load full page
                 $('img.rad-img').photoLoadAfterPageLoad(noImg);
