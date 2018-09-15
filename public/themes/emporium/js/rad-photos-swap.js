@@ -120,7 +120,7 @@
         });
     },
     
-    $.fn.preload = function(imageArray, noImg, index) {
+    $.fn.preload = function(imageArray, index) {
         index = index || 0;
         var tooobj = this;
         if (imageArray && imageArray.length > index) {
@@ -138,7 +138,7 @@
                 thisObj.attr('src',noImg); thisObj.css('opacity','1'); 
                 //thisObj.photoInitFun();
                 if(typeof $grid != 'undefined'){ $grid.masonry('layout'); }
-                tooobj.preload(imageArray, noImg, index + 1);
+                tooobj.preload(imageArray, index + 1);
             })
             .attr("src", thisSrc);
             
@@ -190,9 +190,8 @@
                 thisObj.removeClass('rad-img');
             });
         }
-        
         if(typeof $grid != 'undefined'){ $grid.masonry('layout'); }
-        if(temp_arr.length > 0){ this.preload(temp_arr, noImg); }
+        if(temp_arr.length > 0){ this.preload(temp_arr); }
     },
     
     //in image tag data-ajax-link="http://sample.com/page" (FYI: return data in form of json ex. [{"src":"http://example.com/imgage_link.jpg"},{"src":"http://example.com/imgage_link.png"}])
