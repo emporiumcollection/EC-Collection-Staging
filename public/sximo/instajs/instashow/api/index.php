@@ -8,14 +8,13 @@ main(__DIR__ . '/config.json', __DIR__ . '/storage');
 
 function main($config_path, $storage_path) {
     if (!is_readable($config_path)) {
-        response(error_ext('config.json does not exist or can not be read'));
+        instaresponse(error_ext('config.json does not exist or can not be read'));
     }
 
     $config = json_decode(file_get_contents($config_path), true);
     $config['storage_path'] = $storage_path;
 
     define('API_DEBUG', $config['debug'] === 'true');
-    define('SHARED_REGEXP', '#window\._sharedData\s?=\s?(.*);<\/script>#');
 
     index('config', $config);
 
@@ -31,7 +30,7 @@ function main($config_path, $storage_path) {
         )
     ));
 
-    $routes = route(array(
+    $routes = instaroute(array(
         '/v1/media/shortcode/{shortcode}' => 'serve_media_shortcode',
         '/v1/users/{username}/media/recent' => 'serve_user_media_recent',
         '/v1/users/{username}' => 'serve_user',
@@ -96,7 +95,7 @@ function serve_media_shortcode($shortcode) {
         );
     }
 
-    response($result);
+    instaresponse($result);
 }
 
 function serve_user($username) {
@@ -105,11 +104,14 @@ function serve_user($username) {
     $allowed_usernames = !empty($config['allowed_usernames']) ? $config['allowed_usernames'] : '*';
 
     if (!is_allowed($username, $allowed_usernames)) {
-        response(error_ext('specified username is not allowed'));
+        instaresponse(error_ext('specified username is not allowed'));
     }
 
     $fallback = true;
     $result = null;
+
+    $count = input('count', 33);
+    $max_id = input('max_id');
 
     $cache_key = '@' . $username . '_profile';
     $raw_data = storage_get($cache_key);
@@ -134,7 +136,7 @@ function serve_user($username) {
                 case 200:
                     $page_data_matches = array();
 
-                    if (!preg_match(SHARED_REGEXP, $page_res['body'], $page_data_matches)) {
+                    if (!preg_match('#window\._sharedData\s*=\s*(.*?)\s*;\s*</script>#', $page_res['body'], $page_data_matches)) {
                         $result = error();
 
                     } else {
@@ -166,6 +168,7 @@ function serve_user($username) {
     }
 
     if ($raw_data) {
+
         $formatted_data = array(
             'username' => $raw_data['username'],
             'profile_picture' => $raw_data['profile_pic_url'],
@@ -186,7 +189,7 @@ function serve_user($username) {
         );
     }
 
-    response($result);
+    instaresponse($result);
 }
 
 function serve_user_media_recent($username) {
@@ -195,7 +198,7 @@ function serve_user_media_recent($username) {
     $allowed_usernames = !empty($config['allowed_usernames']) ? $config['allowed_usernames'] : '*';
 
     if (!is_allowed($username, $allowed_usernames)) {
-        response(error_ext('specified username is not allowed'));
+        instaresponse(error_ext('specified username is not allowed'));
     }
 
     $result = null;
@@ -205,8 +208,6 @@ function serve_user_media_recent($username) {
 
     $cache_key = '@' . $username . '_media';
     $storage_expired_or_empty = storage_expired_or_empty($cache_key);
-
-    $formatted_data = array();
 
     if ($storage_expired_or_empty) {
         $page_res = client_request('get', '/' . $username . '/');
@@ -227,37 +228,39 @@ function serve_user_media_recent($username) {
                 case 200:
                     $page_data_matches = array();
 
-                    if (!preg_match(SHARED_REGEXP, $page_res['body'], $page_data_matches)) {
+                    if (!preg_match('#window\._sharedData\s*=\s*(.*?)\s*;\s*</script>#', $page_res['body'], $page_data_matches)) {
                         $result = error();
-                        break;
                     } else {
                         $page_data = json_decode($page_data_matches[1], true);
 
                         if (!$page_data || empty($page_data['entry_data']['ProfilePage'][0]['graphql']['user'])) {
                             $result = error();
-                            break;
+
                         } else {
                             $user_data = $page_data['entry_data']['ProfilePage'][0]['graphql']['user'];
 
                             if ($user_data['is_private']) {
                                 $result = error('you cannot view this resource');
-                                break;
+
                             } else {
-                                $page_formatted_data = user_media_recent_format_data($user_data);
+                                $query_res = query_client_request($page_data, array('id' => $user_data['id'], 'first' => $limit), '42323d64886122307be10013ad2dcc44');
 
-                                if (empty($page_formatted_data)) {
-                                    $result = error('no posts yet');
-                                    break;
+                                if ($query_res['http_code'] != 200) {
+                                    $count = 12;
+
+                                } else {
+                                    $query_data = json_decode($query_res['body'], true);
+
+                                    if (!$query_data) {
+                                        $result = error();
+
+                                    } else {
+                                        $user_data['edge_owner_to_timeline_media']['edges'] = $query_data['data']['user']['edge_owner_to_timeline_media']['edges'];
+                                    }
                                 }
 
-                                $cursor = count($page_formatted_data);
-
-                                $variables = array('id' => $user_data['id'], 'first' => 50);
-                                if ($user_data['edge_owner_to_timeline_media']['page_info']['end_cursor']) {
-                                    $variables['after'] = $user_data['edge_owner_to_timeline_media']['page_info']['end_cursor'];
-                                }
-
-                                $formatted_data = user_media_recent_query_recursive($cache_key, $page_data, $user_data, $variables, $limit, $cursor, $page_formatted_data);
+                                $formatted_data = user_media_recent_format_data($user_data);
+                                storage_set($cache_key, $formatted_data, true);
                             }
                         }
                     }
@@ -280,7 +283,7 @@ function serve_user_media_recent($username) {
             'data' => $stored_data
         );
     } else {
-        if (!empty($formatted_data)) {
+        if ($formatted_data) {
             list($pagination, $formatted_data) = paginate($formatted_data, 'max_id', $count, $max_id);
 
             $result = array(
@@ -290,43 +293,14 @@ function serve_user_media_recent($username) {
                 'pagination' => $pagination,
                 'data' => $formatted_data
             );
+        } else {
+            $result = error();
         }
     }
 
-    response($result);
+    instaresponse($result);
 }
 
-function user_media_recent_query_recursive($cache_key, $page_data, $user_data, $variables, $limit, $cursor = 0, $formatted_data = array()) {
-    $query_res = query_client_request($page_data, $variables, '42323d64886122307be10013ad2dcc44');
-
-    if ($query_res['http_code'] == 200) {
-        $query_data = json_decode($query_res['body'], true);
-
-        if ($query_data) {
-            $user_data['edge_owner_to_timeline_media']['edges'] = $query_data['data']['user']['edge_owner_to_timeline_media']['edges'];
-
-            $query_formatted_data = user_media_recent_format_data($user_data);
-            $formatted_data = array_merge_recursive($formatted_data, $query_formatted_data);
-
-            $count = count($query_formatted_data);
-            $cursor += $count;
-
-            if ($count < $variables['first'] || $cursor >= $limit) {
-                storage_set($cache_key, $formatted_data, true, false);
-            } else {
-                sleep(1);
-                $variables['after'] = $query_data['data']['user']['edge_owner_to_timeline_media']['page_info']['end_cursor'];
-                user_media_recent_query_recursive($cache_key, $page_data, $user_data, $variables, $limit, $cursor, $formatted_data);
-            }
-        }
-    } else {
-        if (!empty($formatted_data)) {
-            storage_set($cache_key, $formatted_data, true, true);
-        }
-    }
-
-    return $formatted_data;
-}
 
 function user_media_recent_format_data($user_data) {
     $formatted_data = array();
@@ -358,9 +332,10 @@ function serve_tag_media_recent($tag) {
     $allowed_tags = !empty($config['allowed_tags']) ? $config['allowed_tags'] : '*';
 
     if (!is_allowed($tag, $allowed_tags)) {
-        response(error_ext('specified tag is not allowed'));
+        instaresponse(error_ext('specified tag is not allowed'));
     }
 
+    $fallback = true;
     $result = null;
 
     $count = input('count', 33);
@@ -368,8 +343,6 @@ function serve_tag_media_recent($tag) {
 
     $cache_key = '#' . $tag;
     $storage_expired_or_empty = storage_expired_or_empty($cache_key);
-
-    $formatted_data = array();
 
     if ($storage_expired_or_empty) {
         $page_res = client_request('get', '/explore/tags/' . $tag . '/');
@@ -384,39 +357,53 @@ function serve_tag_media_recent($tag) {
                     break;
 
                 case 404:
-                    $result = error('this tag does not exist');
+                    $result = error('this user does not exist');
                     break;
 
                 case 200:
                     $page_data_matches = array();
 
-                    if (!preg_match(SHARED_REGEXP, $page_res['body'], $page_data_matches)) {
+                    if (!preg_match('#window\._sharedData\s*=\s*(.*?)\s*;\s*</script>#', $page_res['body'], $page_data_matches)) {
                         $result = error();
-                        break;
                     } else {
                         $page_data = json_decode($page_data_matches[1], true);
 
                         if (!$page_data) {
                             $result = error();
-                            break;
+
                         } else {
-                            $hashtag_data = $page_data['entry_data']['TagPage'][0]['graphql']['hashtag'];
+                            $hashtag_data = array(
+                                'edge_hashtag_to_media' => array(
+                                    'edges' => array()
+                                ),
+                                'edge_hashtag_to_top_posts' => array(
+                                    'edges' => array()
+                                )
+                            );
 
-                            $page_formatted_data = tag_media_recent_format_data($hashtag_data);
-
-                            if (empty($page_formatted_data)) {
-                                $result = error('no posts yet');
-                                break;
+                            if ($page_data && !empty($page_data['entry_data']['TagPage'][0]['graphql']['hashtag'])) {
+                                $hashtag_data = $page_data['entry_data']['TagPage'][0]['graphql']['hashtag'];
                             }
 
-                            $cursor = count($page_formatted_data);
+                            $query_res = query_client_request($page_data, array('tag_name' => $tag, 'first' => $limit), 'ded47faa9a1aaded10161a2ff32abb6b');
 
-                            $variables = array('tag_name' => $tag, 'first' => 50);
-                            if ($hashtag_data['edge_hashtag_to_media']['page_info']['end_cursor']) {
-                                $variables['after'] = $hashtag_data['edge_hashtag_to_media']['page_info']['end_cursor'];
+                            if ($query_res['http_code'] != 200) {
+                                $count = 12;
+
+                            } else {
+                                $query_data = json_decode($query_res['body'], true);
+
+                                if (!$query_data) {
+                                    $result = error();
+
+                                } else {
+                                    $hashtag_data['edge_hashtag_to_media']['edges'] = $query_data['data']['hashtag']['edge_hashtag_to_media']['edges'];
+                                    $hashtag_data['edge_hashtag_to_top_posts']['edges'] = $query_data['data']['hashtag']['edge_hashtag_to_top_posts']['edges'];
+                                }
                             }
 
-                            $formatted_data = tag_media_recent_query_recursive($cache_key, $page_data, $variables, $limit, $cursor, $page_formatted_data);
+                            $formatted_data = tag_media_recent_format_data($hashtag_data);
+                            storage_set($cache_key, $formatted_data, true);
                         }
                     }
 
@@ -438,7 +425,7 @@ function serve_tag_media_recent($tag) {
             'data' => $stored_data
         );
     } else {
-        if (!empty($formatted_data)) {
+        if ($formatted_data) {
             list($pagination, $formatted_data) = paginate($formatted_data, 'max_tag_id', $count, $max_id);
 
             $result = array(
@@ -448,43 +435,12 @@ function serve_tag_media_recent($tag) {
                 'pagination' => $pagination,
                 'data' => $formatted_data
             );
+        } else {
+            $result = error();
         }
     }
 
-    response($result);
-}
-
-function tag_media_recent_query_recursive($cache_key, $page_data, $variables, $limit, $cursor = 0, $formatted_data = array()) {
-    $query_res = query_client_request($page_data, $variables, 'ded47faa9a1aaded10161a2ff32abb6b');
-
-    if ($query_res['http_code'] == 200) {
-        $query_data = json_decode($query_res['body'], true);
-
-        if ($query_data) {
-            $hashtag_data['edge_hashtag_to_media']['edges'] = $query_data['data']['hashtag']['edge_hashtag_to_media']['edges'];
-            $hashtag_data['edge_hashtag_to_top_posts']['edges'] = array();
-
-            $query_formatted_data = tag_media_recent_format_data($hashtag_data);
-            $formatted_data = array_merge_recursive($formatted_data, $query_formatted_data);
-
-            $count = count($query_formatted_data);
-            $cursor += $count;
-
-            if ($count < $variables['first'] || $cursor >= $limit) {
-                storage_set($cache_key, $formatted_data, true, false);
-            } else {
-                sleep(1);
-                $variables['after'] = $query_data['data']['hashtag']['edge_hashtag_to_media']['page_info']['end_cursor'];
-                tag_media_recent_query_recursive($cache_key, $page_data, $variables, $limit, $cursor, $formatted_data);
-            }
-        }
-    } else {
-        if (!empty($formatted_data)) {
-            storage_set($cache_key, $formatted_data, true, true);
-        }
-    }
-
-    return $formatted_data;
+    instaresponse($result);
 }
 
 function tag_media_recent_format_data($hashtag_data) {
@@ -527,6 +483,7 @@ function serve_location_media_recent($location_id) {
     $config = index('config');
     $limit = !empty($config['media_limit']) ? $config['media_limit'] : 100;
 
+    $fallback = true;
     $result = null;
 
     $count = input('count', 33);
@@ -534,8 +491,6 @@ function serve_location_media_recent($location_id) {
 
     $cache_key = '&' . $location_id;
     $storage_expired_or_empty = storage_expired_or_empty($cache_key);
-
-    $formatted_data = array();
 
     if ($storage_expired_or_empty) {
         $page_res = client_request('get', '/explore/locations/' . $location_id . '/');
@@ -550,39 +505,43 @@ function serve_location_media_recent($location_id) {
                     break;
 
                 case 404:
-                    $result = error('this location does not exist');
+                    $result = error('this user does not exist');
                     break;
 
                 case 200:
                     $page_data_matches = array();
 
-                    if (!preg_match(SHARED_REGEXP, $page_res['body'], $page_data_matches)) {
+                    if (!preg_match('#window\._sharedData\s*=\s*(.*?)\s*;\s*</script>#', $page_res['body'], $page_data_matches)) {
                         $result = error();
-                        break;
                     } else {
                         $page_data = json_decode($page_data_matches[1], true);
 
                         if (!$page_data) {
                             $result = error();
-                            break;
+
                         } else {
-                            $location_data = $page_data['entry_data']['LocationsPage'][0]['graphql']['location'];
-
-                            $page_formatted_data = location_media_recent_format_data($location_data);
-
-                            if (empty($page_formatted_data)) {
-                                $result = error('no posts yet');
-                                break;
+                            if (!empty($page_data['entry_data']['LocationsPage'][0]['graphql']['location'])) {
+                                $location_data = $page_data['entry_data']['LocationsPage'][0]['graphql']['location'];
                             }
 
-                            $cursor = count($page_formatted_data);
+                            $query_res = query_client_request($page_data, array('id' => $location_id, 'first' => $limit), 'ac38b90f0f3981c42092016a37c59bf7');
 
-                            $variables = array('id' => $location_id, 'first' => 50);
-                            if ($location_data['edge_location_to_media']['page_info']['end_cursor']) {
-                                $variables['after'] = $location_data['edge_location_to_media']['page_info']['end_cursor'];
+                            if ($query_res['http_code'] != 200) {
+                                $count = 12;
+
+                            } else {
+                                $query_data = json_decode($query_res['body'], true);
+
+                                if (!$query_data) {
+                                    $result = error();
+
+                                } else {
+                                    $location_data['edge_location_to_media']['edges'] = $query_data['data']['location']['edge_location_to_media']['edges'];
+                                }
                             }
 
-                            $formatted_data = location_media_recent_query_recursive($cache_key, $page_data, $variables, $limit, $cursor, $page_formatted_data);
+                            $formatted_data = location_media_recent_format_data($location_data);
+                            storage_set($cache_key, $formatted_data, true);
                         }
                     }
 
@@ -604,7 +563,7 @@ function serve_location_media_recent($location_id) {
             'data' => $stored_data
         );
     } else {
-        if (!empty($formatted_data)) {
+        if ($formatted_data) {
             list($pagination, $formatted_data) = paginate($formatted_data, 'max_id', $count, $max_id);
 
             $result = array(
@@ -614,42 +573,12 @@ function serve_location_media_recent($location_id) {
                 'pagination' => $pagination,
                 'data' => $formatted_data
             );
+        } else {
+            $result = error();
         }
     }
 
-    response($result);
-}
-
-function location_media_recent_query_recursive($cache_key, $page_data, $variables, $limit, $cursor = 0, $formatted_data = array()) {
-    $query_res = query_client_request($page_data, $variables, 'ac38b90f0f3981c42092016a37c59bf7');
-
-    if ($query_res['http_code'] == 200) {
-        $query_data = json_decode($query_res['body'], true);
-
-        if ($query_data) {
-            $location_data['edge_location_to_media']['edges'] = $query_data['data']['location']['edge_location_to_media']['edges'];
-
-            $query_formatted_data = location_media_recent_format_data($location_data);
-            $formatted_data = array_merge_recursive($formatted_data, $query_formatted_data);
-
-            $count = count($query_formatted_data);
-            $cursor += $count;
-
-            if ($count < $variables['first'] || $cursor >= $limit) {
-                storage_set($cache_key, $formatted_data, true, false);
-            } else {
-                sleep(1);
-                $variables['after'] = $query_data['data']['location']['edge_location_to_media']['page_info']['end_cursor'];
-                location_media_recent_query_recursive($cache_key, $page_data, $variables, $limit, $cursor, $formatted_data);
-            }
-        }
-    } else {
-        if (!empty($formatted_data)) {
-            storage_set($cache_key, $formatted_data, true, true);
-        }
-    }
-
-    return $formatted_data;
+    instaresponse($result);
 }
 
 function location_media_recent_format_data($location_data) {
@@ -668,13 +597,15 @@ function location_media_recent_format_data($location_data) {
 }
 
 function serve_not_found() {
-    response(error('bad request'));
+    instaresponse(error('bad request'));
 }
 
 function query_client_request($page_data, $variables, $query_hash) {
     $client = index('client');
     $gis = md5(join(':', array(
         $page_data['rhx_gis'],
+        $page_data['config']['csrf_token'],
+        $client['headers']['User-Agent'],
         json_encode($variables)
     )));
 
@@ -714,7 +645,7 @@ function run($path, $routes) {
 
     } else if (!function_exists($handler_name)) {
         //        log_error('Undefined handler "' . $handler_name . '"');
-        response(error_ext('Undefined handler "' . $handler_name . '"'));
+        instaresponse(error_ext('Undefined handler "' . $handler_name . '"'));
     }
 
     log_info('Request delegated to "' . $handler_name . '" handler');
@@ -731,7 +662,7 @@ function index($key, $value = null, $f = false) {
     return !empty($index[$key]) ? $index[$key] : null;
 }
 
-function route($list) {
+function instaroute($list) {
     $map = array();
 
     foreach ($list as $path => $handler_name) {
@@ -788,14 +719,9 @@ function error_ext($additional) {
     return error('service is unavailable now', 400, $additional);
 }
 
-function response($data) {
+function instaresponse($data) {
     $callback = input('callback');
     $c = input('c', false);
-
-    if ($callback) {
-        $callback = htmlspecialchars(strip_tags($callback));
-        $validate_callback = preg_match('#^jQuery[0-9]*\_[0-9]*$#', $callback);
-    }
 
     if ($c !== false) {
         header('Content-type: text; charset=utf-8');
@@ -804,7 +730,7 @@ function response($data) {
     } else {
         $res = json_encode($data);
 
-        if ($callback && $validate_callback) {
+        if ($callback) {
             $res = '/**/ ' . $callback . '(' . $res . ')';
         }
 
@@ -814,7 +740,7 @@ function response($data) {
 }
 
 function get_c() {
-    return base64_decode('VGhpcyBwbHVnaW4gd2FzIGRldmVsb3BlZCBieSBFbGZzaWdodCBhbmQgaXQncyBjb3ZlcmVkIGJ5IENvZGVDYW55b24gUmVndWxhciBMaWNlbnNlDQpodHRwOi8vY29kZWNhbnlvbi5uZXQvbGljZW5zZXMvdGVybXMvcmVndWxhcg0KDQpodHRwczovL2VsZnNpZ2h0LmNvbQ0KKGMpIDIwMTggRWxmc2lnaHQuIEFsbCBSaWdodHMgUmVzZXJ2ZWQ=');
+    return base64_decode('VGhpcyBwbHVnaW4gd2FzIGRldmVsb3BlZCBieSBFbGZzaWdodCBhbmQgaXQncyBjb3ZlcmVkIGJ5IENvZGVDYW55b24gUmVndWxhciBMaWNlbnNlDQpodHRwOi8vY29kZWNhbnlvbi5uZXQvbGljZW5zZXMvdGVybXMvcmVndWxhcg0KDQpodHRwczovL2VsZnNpZ2h0LmNvbQ0KKGMpIDIwMTYgRWxmc2lnaHQuIEFsbCBSaWdodHMgUmVzZXJ2ZWQ=');
 }
 
 function storage_get_index_path($hash) {
@@ -894,9 +820,9 @@ function storage_get($key, $check_expire = true, $format = false) {
     return !empty($data) && is_array($data) ? $data : null;
 }
 
-function storage_set($key, $value, $format = false, $merge = false) {
+function storage_set($key, $value, $format = false) {
     if ($format) {
-        $value = storage_merge($key, $value, $merge);
+        $value = storage_merge($key, $value, $format);
     }
 
     $hash = md5($key);
@@ -914,19 +840,17 @@ function storage_set($key, $value, $format = false, $merge = false) {
     return true;
 }
 
-function storage_merge($key, $value, $merge) {
+function storage_merge($key, $value) {
     $config = index('config');
     $limit = !empty($config['media_limit']) ? $config['media_limit'] : 100;
 
     $value_assoc = array();
 
-    if ($merge) {
-        $storage_value = storage_get($key, false, true);
-        if (!empty($storage_value)) {
-            foreach ($storage_value as $i => $node) {
-                if ($i < $limit) {
-                    $value_assoc[$node['code']] = $node;
-                }
+    $storage_value = storage_get($key, false, true);
+    if (!empty($storage_value)) {
+        foreach ($storage_value as $i => $node) {
+            if ($i < $limit) {
+                $value_assoc[$node['code']] = $node;
             }
         }
     }
@@ -935,25 +859,21 @@ function storage_merge($key, $value, $merge) {
         $value_assoc[$node['code']] = $node;
     }
 
-    usort($value_assoc, 'nodes_compare');
+    usort($value_assoc, function ($item1, $item2) {
+        return $item1['created_time'] == $item2['created_time'] ? 0 : $item2['created_time'] < $item1['created_time'] ? -1 : 1;
+    });
 
     return array_slice($value_assoc, 0, $limit);
 }
 
-function nodes_compare($item1, $item2) {
-    return $item1['created_time'] == $item2['created_time'] ? 0 : $item2['created_time'] < $item1['created_time'] ? -1 : 1;
-}
-
 function client_request($type, $url, $options = null) {
     $client = index('client');
-    $config = index('config');
 
     log_info('Function client_request called with: ' . $type . ' (' . $url . ') ' . json_encode($options));
 
     $type = strtoupper($type);
     $options = is_array($options) ? $options : array();
 
-    $url_orig = $url;
     $url = (!empty($client['base_url']) ? rtrim($client['base_url'], '/') : '') . $url;
     $url_info = parse_url($url);
 
@@ -1025,6 +945,7 @@ function client_request($type, $url, $options = null) {
     if ($curl_support) {
         log_info('Trying to load data using cURL');
 
+        $config = index('config');
         $proxy_url = !empty($config['proxy']['server']) ? $config['proxy']['server'] : null;
         $proxy_credentials = null;
 
@@ -1170,11 +1091,6 @@ function client_request($type, $url, $options = null) {
         index('client', $client);
     }
 
-    if ($response_http_code === '429' && $config['test']['recursive_client'] === 'true') {
-         sleep(1);
-         return client_request($type, $url_orig, $options);
-    }
-
     return array(
         'status' => 1,
         'http_protocol' => $response_http_protocol,
@@ -1293,45 +1209,6 @@ function instagram_format_media($raw_data, $external = null) {
         'code' => !empty($raw_data['code']) ? $raw_data['code'] : $raw_data['shortcode'],
         'user' => $formatted_user
     );
-
-    if (!empty($raw_data['display_resources'])) {
-        $formatted_item['images']['thumbnail'] = array();
-        $formatted_item['images']['low_resolution'] = array();
-
-        foreach ($raw_data['display_resources'] as $thumbnail) {
-            switch ($thumbnail['config_width']) {
-                case 150:
-                    $formatted_item['images']['thumbnail'] = array(
-                        'url' => $thumbnail['src'],
-                        'width' => $thumbnail['config_width'],
-                        'height' => $thumbnail['config_height']
-                    );
-                    break;
-                case 320:
-                    $formatted_item['images']['low_resolution'] = array(
-                        'url' => $thumbnail['src'],
-                        'width' => $thumbnail['config_width'],
-                        'height' => $thumbnail['config_height']
-                    );
-                    break;
-                case 640:
-                    $formatted_item['images']['standard_resolution'] = array(
-                        'url' => $thumbnail['src'],
-                        'width' => $thumbnail['config_width'],
-                        'height' => $thumbnail['config_height']
-                    );
-                    break;
-            }
-        }
-
-        if (empty($formatted_item['images']['thumbnail'])) {
-            $formatted_item['images']['thumbnail'] = $formatted_item['images']['standard_resolution'];
-        }
-
-        if (empty($formatted_item['images']['low_resolution'])) {
-            $formatted_item['images']['low_resolution'] = $formatted_item['images']['standard_resolution'];
-        }
-    }
 
     if (!empty($raw_data['thumbnail_resources'])) {
         foreach ($raw_data['thumbnail_resources'] as $thumbnail) {
