@@ -288,7 +288,7 @@
 					<div class="full-width">
 						<div data-is data-is-api="{{ url('runInsta')}}"
 							 data-is-source="{{ $destination_category_instagram }}"
-							 data-is-rows="2" data-is-limit="0" data-is-columns="5"></div>
+							 data-is-rows="2" data-is-limit="0" data-is-columns="5" data-is-image-click-action="none"></div>
 					</div>
 				</section>
 			</section>
