@@ -5338,6 +5338,15 @@ class ContainerController extends Controller {
 
 	}
 	
+    public function getPressFolderListAjax(Request $request, $id = 0){
+		$folderList = $this->fetchFolderTreeList($id, '', '', $request->input('show'));
+		$treeList = '';
+		foreach ($folderList as $r) {
+			echo $r;
+		} 
+
+	}
+    
 	public function getFolderListAjaxonload(Request $request, $id = 0){
 	   if(\Auth::user()->group_id==5)
 	   {
@@ -6957,6 +6966,227 @@ class ContainerController extends Controller {
 		$this->data['searchedkeyword'] = $keyword;
 		
 		return view('container.presssearch_ajax',$this->data);
+	}
+    
+    public function PressShowfiles( $fid = 0, $id = 0)
+	{
+		$uid = \Auth::user()->id;
+		if($this->access['is_detail'] ==0) 
+			return Redirect::to('dashboard')
+				->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus','error');
+					
+		
+		$file_temp = DB::table('tb_container_files')->join('tb_container', 'tb_container.id', '=', 'tb_container_files.folder_id')->join('tb_users', 'tb_users.id', '=', 'tb_container_files.user_id')->select('tb_users.first_name', 'tb_users.last_name', 'tb_container_files.*', 'tb_container.display_name as folderName')->where('tb_container_files.id', $id);
+		
+		$file = $file_temp->first();
+		
+		$spaceAllowed = \Auth::user()->storage_space;
+		if($spaceAllowed==0){ $spaceAllowed = 1; }
+		$usedSpaceBytes_temp = DB::table('tb_container_files');
+		if(\Auth::user()->group_id==2)
+		{
+			$usedSpaceBytes_temp->where('user_id',$uid);
+		}
+		$usedSpaceBytes = $usedSpaceBytes_temp->sum('file_size');
+		if(\Auth::user()->group_id!=3)
+		{
+			$usedSpaceMb = ($usedSpaceBytes/(1000*1000));
+			$usedSpace = round($usedSpaceMb,2,PHP_ROUND_HALF_UP);
+			$usedSpacePercentage = ($usedSpace*100)/$spaceAllowed;
+			$this->data['allowStorage'] = $spaceAllowed;
+			$this->data['usedStorage'] = $usedSpace;
+			$this->data['usedStoragePerct'] = round($usedSpacePercentage,2,PHP_ROUND_HALF_UP);
+		}
+		
+		if(isset($_REQUEST['show']) && trim($_REQUEST['show'])!="")
+		{
+			$showType = trim($_REQUEST['show']);
+		}
+		else
+		{
+			$showType = "thumb";
+		}
+		
+		$this->data['showType'] = $showType;
+		$this->data['tree'] = $this->fetchPressTreeList('','','', $showType);
+		$this->data['access'] = $this->access;
+		$this->data['prevfolder'] = $fid;
+		$this->data['fileId'] = $id;
+		$this->data['group'] = \Auth::user()->group_id;
+		$this->data['rowFile'] = $file;
+		$imgsrc = $this->getThumbpath($file->folder_id);
+		$this->data['rowFile']->imgsrc = $imgsrc;
+		if(\Auth::user()->group_id==3)
+		{
+			$this->data['userpermissions'] = \DB::table('tb_permissions')->where('user_id',$uid)->where('folder_id',$fid)->first();
+		}
+		$this->data['rel_files'] = '';
+		if($file->file_type=="image/tiff")
+		{
+			$this->data['rel_files'] = \DB::table('tb_container_tiff_files')->where('file_id',$file->id)->get();
+		}
+		
+		$AttrArr = array();
+		$TagArr = array();
+		$parentList = $this->fetchFolderParentListIds($fid);
+		array_unshift($parentList, $id, $fid);
+		foreach($parentList as $attrList)
+		{
+			$checkattr = \DB::table('tb_container_attributes')->where('container_id',$attrList)->get();
+			if(!empty($checkattr))
+			{
+				$a=0;
+				foreach($checkattr as $fetchattr)
+				{
+					$AttrArr[$a]['AttrType'] = $fetchattr->attr_type;
+					$AttrArr[$a]['Attrs'] = \DB::table('tb_attributes')->where('id',$fetchattr->attr_id)->first();
+					if($fetchattr->attr_type=="checkboxes" || $fetchattr->attr_type=="dropdown" || $fetchattr->attr_type=="radio")
+					{
+						$expAttrval = explode(',',$fetchattr->attr_value);
+						$AttrArr[$a]['AttrVal'] = \DB::table('tb_attributes_options')->whereIn('id',$expAttrval)->get();
+					}
+					else{
+						$AttrArr[$a]['AttrVal'] = $fetchattr->attr_value;
+					}
+					$a++;
+				}
+			}
+			
+			$checktag = \DB::table('tb_container_tags')->where('container_id',$attrList)->get();
+			if(!empty($checktag))
+			{
+				foreach($checktag as $fetchtag)
+				{
+					$checktag = \DB::table('tb_tags_manager')->where('id',$fetchtag->tag_id)->first();
+					if(!empty($checktag))
+					{
+						$TagArr[] = $checktag ;
+					}
+				}
+			}
+		}
+		
+		$this->data['sub_images'] = DB::table('tb_file_subimages')->where('file_id',$file->id)->get();
+		$this->data['parentArr'] = array_reverse($this->fetchFolderParentListArray($fid));
+		
+		$this->data['AttrArr'] = $AttrArr;
+		$this->data['TagArr'] = $TagArr;
+		$sel_attributes = DB::table('tb_attributes')->where('attr_status',1);
+		if(\Auth::user()->group_id==2 || \Auth::user()->group_id==3)
+		{
+			$sel_attributes->where('attr_permission',1);
+		}
+		$this->data['sel_attributes'] = $sel_attributes->get();
+		
+		$this->data['varients'] = DB::table('tb_file_varients')->where('file_id',$file->id)->get();
+		$check_varint_attr = DB::table('tb_varient_attributes')->where('file_id',$file->id)->get();
+		$var_attr = array();
+		if(!empty($check_varint_attr))
+		{
+			foreach($check_varint_attr as $varint_attr)
+			{
+				$var_attr[$varint_attr->varient_id][$varint_attr->attr_id]['AttrType'] = $varint_attr->attr_type;
+				$var_attr[$varint_attr->varient_id][$varint_attr->attr_id]['AttrId'] = $varint_attr->attr_id;
+				$var_attr[$varint_attr->varient_id][$varint_attr->attr_id]['VarAttrId'] = $varint_attr->id;
+				$var_attr[$varint_attr->varient_id][$varint_attr->attr_id]['Attrs'] = \DB::table('tb_attributes')->where('id',$varint_attr->attr_id)->where('attr_status',1)->first();
+				if($varint_attr->attr_type=="checkboxes" || $varint_attr->attr_type=="dropdown" || $varint_attr->attr_type=="radio")
+				{
+					$var_attr[$varint_attr->varient_id][$varint_attr->attr_id]['AttrVal'] = $varint_attr->attr_value;
+					$var_attr[$varint_attr->varient_id][$varint_attr->attr_id]['AttrOpts'] = DB::table('tb_attributes_options')->where('attr_id',$varint_attr->attr_id)->get();
+				}
+				else{
+					$var_attr[$varint_attr->varient_id][$varint_attr->attr_id]['AttrVal'] = $varint_attr->attr_value;
+				}
+			}
+		}
+		
+		//print "<pre>";
+		//print_r($var_attr);
+		
+		$this->data['varient_attrs'] = $var_attr;
+		
+		$this->data['sel_tags'] = DB::table('tb_tags_manager')->where('tag_status',1)->get();
+        
+		$this->data['slider'] = \DB::table('tb_sliders')->where('slider_category', 'Hotel')->where('slider_status',1)->orderBy('sort_num','asc')->get();
+        $this->data['slug'] = '';
+        
+        $this->data['destination_category'] =0;
+        
+        //$media_id = DB::table('tb_container')->where('name', 'media-relations')->first();
+        
+        //$this->data['fid'] = $media_id->id;
+        
+		return view('frontend.themes.emporium.press.view',$this->data);	
+	}
+    
+    function fetchPressTreeList($parent = 0, $user_tree_array = '', $wnd = '', $showType='thumb') {
+ 
+		if (!is_array($user_tree_array))
+		$user_tree_array = array();
+	
+		$uid = \Auth::user()->id;
+		$filter = " AND id='8700'";
+		
+		$params = array(
+			'params'	=> $filter,
+			'order'		=> 'asc'
+		);
+		// Get Query 
+		$results = $this->model->getRows( $params );
+		
+	  if ($results) {
+		 $user_tree_array[] = '<ul class="folders parent'.$parent.'" rel="pr_'.$parent.'">';
+		 
+		if(!empty($results['rows']))
+		{
+			usort($results['rows'], function($a, $b) {
+				return $a->sort_num - $b->sort_num; 
+			});
+		}
+		
+		foreach($results['rows'] as $row) {
+			$totfiles_temp = DB::table('tb_container_files')->select('id')->where('folder_id',$row->id);
+			if(\Auth::user()->group_id==2 && $wnd!='iframe')
+			{
+				//$totfiles_temp->where('user_id',$uid);
+			}
+			$totfiles = $totfiles_temp->count();
+			
+			$totfolder_temp = DB::table('tb_container')->select('id')->where('parent_id',$row->id);
+			if(\Auth::user()->group_id==2 && $wnd!='iframe')
+			{
+				//$totfolder_temp->where('user_id',$uid);
+			}
+			$totfolders = $totfolder_temp->count();
+			if($wnd=='iframe')
+			{
+				$url = \URL::to('foldersiframe/'.$row->id.'/iframe');
+			}
+			else{
+				$url = \URL::to('getFolderListAjax/'.$row->id.'?show='.$showType);
+			}
+			
+			$active_cls = '';
+			if($parent==$row->id){
+				$active_cls = 'class="active"';
+			}
+			if($wnd=='iframe')
+			{
+				/*$childs = $this->fetchFolderChildListIds(30);
+				if($row->id==30 || in_array($row->id,$childs))
+				{*/ 
+					$user_tree_array[] = '<li '.$active_cls.'><a href="'.$url.'" data-action="expend-folder-tree-iframe" class="expand" title="" rel="'.$row->id.'"><span>'. $row->display_name.'<span>('.$totfolders.', '.$totfiles.')</span></span></a></li>';
+				//}
+			}
+			else
+			{
+				$user_tree_array[] = '<li '.$active_cls.'><a href="'.$url.'" class="expand" title="" data-action="expend-folder-tree" rel="'.$row->id.'"><span>'. $row->display_name.'<span>('.$totfolders.', '.$totfiles.')</span></span></a></li>';
+			}
+		 // $user_tree_array = $this->fetchFolderTreeList($row->id, $user_tree_array, $wnd, $showType);
+		}
+	$user_tree_array[] = "</ul>";
+	  }
+	  return $user_tree_array;
 	}
 
 }

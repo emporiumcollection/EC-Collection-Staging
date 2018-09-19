@@ -14,13 +14,7 @@
 				@endforeach
 			@endif
 		</span>
-		<em> &bull; {{$subfilestotal}} files &bull; {{$subfoldertotal}} folders &bull; {{$subfileSpace}} MB</em>&nbsp;&nbsp;
-		<a href="#" data-toggle="modal" data-target="#editDirectory" class="foldout renamefolder" title="Edit this folder">
-			<img src="{{URL::to('uploads/images/folder_edit.png')}}" alt="" width="16" height="16" title="" class="img-icon">
-		</a>&nbsp;&nbsp;
-		<a href="#" data-toggle="modal" data-target="#deleteFolder" class="foldout delete" title="Delete this folder">
-			<img src="{{URL::to('uploads/images/folder_delete.png')}}" alt="" width="16" height="16" title="" class="img-icon">
-		</a>
+		<em> &bull; {{$subfilestotal}} files &bull; {{$subfoldertotal}} folders &bull; {{$subfileSpace}} MB</em>&nbsp;&nbsp;		
 	</h2>
     @else
 	<h2 class="folder">
@@ -41,7 +35,7 @@
 										@if($row['ftype']=='folder')
 										<div class="gallery-box ui-state-default">
 											<div class="caption folder">
-												<a data-action-open="folder" rel_row="{{$row['id']}}" href="{{ URL::to('getFolderListAjax/').'/'.$row['id'].'?show='.$showType }}">{{(strlen($row['name']) > 8) ? substr($row['name'],0,8)."~" : $row['name']}}</a>
+												<a data-action-open="folder" rel_row="{{$row['id']}}" href="{{ URL::to('getPressFolderListAjax/').'/'.$row['id'].'?show='.$showType }}">{{(strlen($row['name']) > 8) ? substr($row['name'],0,8)."~" : $row['name']}}</a>
 												<img src="{{URL::to('uploads/images/information.png')}}" style="cursor:pointer;" class="screenshot" rel="{{($row['title']!='')?$row['title']:''}}" rel2="{{($row['description']!='')?$row['description']:''}}" title="{{$row['name']}}" />
 												@if($row['assign_front']=='yes')
 													<img src="{{URL::to('uploads/images/activated.png')}}" style="cursor:pointer; margin-left:5px;" title="Click to Deactivate Frontend" onclick="frontend_grid(this,'folder','{{$row['id']}}',1);" />
@@ -62,7 +56,7 @@
 											?>
 											
 											<div class="thumb folder" style="background: url('{{ $folderPic }}') no-repeat  center center; background-size:100px auto;" >
-												<a data-action-open="folder" rel_row="{{$row['id']}}" href="{{ URL::to('getFolderListAjax/').'/'.$row['id'].'?show='.$showType }}" rel="{{$folderPicPopup}}" rel2="{{$img_name}}" title="{{$row['name']}}" class="screenshot">&nbsp;</a>
+												<a data-action-open="folder" rel_row="{{$row['id']}}" href="{{ URL::to('getPressFolderListAjax/').'/'.$row['id'].'?show='.$showType }}" rel="{{$folderPicPopup}}" rel2="{{$img_name}}" title="{{$row['name']}}" class="screenshot">&nbsp;</a>
 											</div>
 											<div class="info">
 												<label><input type="checkbox" name="compont[]" id="compont" value="folder-{{$row['id']}}" class="no-border check-files ff"></label>
@@ -84,7 +78,7 @@
 											?>
 											
 											<div class="caption {{$imgclass}}">
-												<a data-action-open="file" rel_row="{{$row['id']}}" rel_fid="{{$fid}}" class="lfile" href="{{ URL::to('files/view/').'/'.$fid.'/'.$row['id'].'?show='.$showType }}" title="{{$row['name']}}">{{strlen($fname) > 5 ? substr($fname,0,2)."~.".$ext : $fname}}</a>
+												<a data-action-open="file" rel_row="{{$row['id']}}" rel_fid="{{$fid}}" class="lfile" href="{{ URL::to('press/view/').'/'.$fid.'/'.$row['id'].'?show='.$showType }}" title="{{$row['name']}}">{{strlen($fname) > 5 ? substr($fname,0,2)."~.".$ext : $fname}}</a>
 												<img src="{{URL::to('uploads/images/information.png')}}" style="cursor:pointer;" class="screenshot" rel="{{($row['title']!='')?$row['title']:''}}" rel2="{{($row['description']!='')?$row['description']:''}}" title="{{$fname}}" />
 												@if($row['assign_front']=='yes')
 													<img src="{{URL::to('uploads/images/activated.png')}}" style="cursor:pointer; margin-left:5px;" title="Click to Deactivate Frontend" onclick="frontend_grid(this,'file','{{$row['id']}}',1);" />
@@ -102,7 +96,7 @@
 												$imgclass = "bigpdf";
 											}?>
 											<div class="thumb cinner{{$imgclass}}" <?php if($isImg==1) { ?> style="background: url('{{URL::to('uploads/thumbs/').'/thumb_'.$fid.'_'.$row['name']}}') no-repeat  center center; background-size:100px auto;" <?php } ?>>
-												<a data-action-open="file" rel_row="{{$row['id']}}" rel_fid="{{$fid}}" href="{{ URL::to('files/view/').'/'.$fid.'/'.$row['id'].'?show='.$showType }}" class="screenshot fancybox-buttons" rel="{{URL::to('uploads/thumbs/').'/format_'.$fid.'_'.$row['name']}}" title="{{$fname}}" rel2="{{$fname}}" data-fancybox-group="button">
+												<a data-action-open="file" rel_row="{{$row['id']}}" rel_fid="{{$fid}}" href="{{ URL::to('press/view/').'/'.$fid.'/'.$row['id'].'?show='.$showType }}" class="screenshot fancybox-buttons" rel="{{URL::to('uploads/thumbs/').'/format_'.$fid.'_'.$row['name']}}" title="{{$fname}}" rel2="{{$fname}}" data-fancybox-group="button">
 													&nbsp;
 												</a>
 											</div>
@@ -166,7 +160,7 @@
 														<label><input type="checkbox" name="compont[]" id="compont" value="folder-{{$row['id']}}" class="no-border check-files ff"></label>
 													</td>
 													<td class="rowtitle folder">
-														<a data-action-open="folder" rel_row="{{$row['id']}}" href="{{ URL::to('getFolderListAjax/').'/'.$row['id'].'?show='.$showType }}">{{strlen($row['name']) > 22 ? substr($row['name'],0,20)."~" : $row['name']}}</a>
+														<a data-action-open="folder" rel_row="{{$row['id']}}" href="{{ URL::to('getPressFolderListAjax/').'/'.$row['id'].'?show='.$showType }}">{{strlen($row['name']) > 22 ? substr($row['name'],0,20)."~" : $row['name']}}</a>
 													</td>
 													<td></td>
 													<td></td>
@@ -196,7 +190,7 @@
 														<label><input type="checkbox" value="file-{{$row['id']}}-{{$ext}}" name="compont[]" id="compont" class="no-border check-files ff"></label>
 													</td>
 													<td class="rowtitle {{$imgclass}}">
-														<a data-action-open="file" rel_row="{{$row['id']}}" rel_fid="{{$fid}}" href="{{ URL::to('files/view/').'/'.$fid.'/'.$row['id'].'?show='.$showType }}" title="{{$row['name']}}">{{strlen($fname) > 22 ? substr($fname,0,18)."~.".$ext : $fname}}</a>
+														<a data-action-open="file" rel_row="{{$row['id']}}" rel_fid="{{$fid}}" href="{{ URL::to('press/view/').'/'.$fid.'/'.$row['id'].'?show='.$showType }}" title="{{$row['name']}}">{{strlen($fname) > 22 ? substr($fname,0,18)."~.".$ext : $fname}}</a>
 													</td>
 													<td style="text-align:center;">
 														<a href="#" class="screenshot fancybox-buttons" rel="{{URL::to('uploads/thumbs/').'/format_'.$fid.'_'.$row['name']}}" title="{{$fname}}" data-fancybox-group="button">
@@ -243,14 +237,14 @@
 											<?php if($pagination['current_page']==$i){ ?>
 												<li class="active"><span>{{$i}}</span></li>
 											<?php }else{ ?>
-												<li><a href="{{url('getFoldersAjax/'.$fid)}}?page={{$i}}&show={{$showType}}">{{$i}}</a></li>
+												<li><a href="{{url('getPressFoldersAjax/'.$fid)}}?page={{$i}}&show={{$showType}}">{{$i}}</a></li>
 											<?php }?>
 
 										<?php }?>	
 
 										<?php if($pagination['next_page']>0 && $pagination['total_page']>$pagination['next_page']){ ?>
 											
-											<li><a href="{{url('getFoldersAjax/'.$fid)}}?page={{$pagination['next_page']}}&show={{$showType}}" rel="next">»</a></li>
+											<li><a href="{{url('getPressFoldersAjax/'.$fid)}}?page={{$pagination['next_page']}}&show={{$showType}}" rel="next">»</a></li>
 										<?php }else{ ?>
 											<li><span>»</span></li>
 										<?php }?>

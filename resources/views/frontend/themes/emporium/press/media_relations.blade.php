@@ -77,20 +77,9 @@
     </section>
 	
     
-<link href="{{ asset('sximo/css/custom_ps.css')}}" rel="stylesheet">
-<script src="{{ asset('sximo/js/dropzone.js') }}"></script>
-<link rel="stylesheet" href="{{ asset('sximo/css/dropzone.css') }}">
-<script src="{{ asset('sximo/js/tooltip_popup.js') }}"></script>
-<link rel="stylesheet" href="{{ asset('sximo/js/plugins/fancybox/helpers/jquery.fancybox-buttons.css?v=1.0.5') }}">
-<script src="{{ asset('sximo/js/plugins/fancybox/helpers/jquery.fancybox-buttons.js?v=1.0.5') }}"></script>
-<style>
-.size-bar-side{overflow: hidden;}
-div[data-load="left-side-tree"]{max-height: 600px;    overflow: auto;}
-.leng { display:none; }
-.btn_orange, .btn_orange:hover, .btn_orange:focus, .btn_orange:active, .btn_orange.active, .open .dropdown-toggle.btn_orange {  background-color: orange; border-color: orange; }
-.disnon { display:none; }
-.lightboxmodal { z-index:1060; }
-</style>
+
+
+
 
 <?php $imgfancy = array();
 	$filType = array('jpg'=>'JPEG image', 'jpeg'=>'JPEG image', 'JPG'=>'JPEG image', 'png'=>'PNG image', 'gif'=>'GIF image', 'xls'=>'Excel spreadsheet', 'eps'=>'EPS Image', 'mp4'=>'MPEG-4 video', 'mkv'=>'Matroska Video', 'flv'=>'Flash Video', 'avi'=>'Audio Video', 'wma'=>'Windows Media Audio', 'wmp'=>'Windows Media Player', 'psd'=>'PSD Image', 'pdf'=>'PDF document', 'ppt'=>'PowerPoint presentation', 'mp3'=>'MP3 audio', 'tif'=>'TIFF image', 'doc'=>'Word document', 'docx'=>'Word document', 'bmp'=>'Bitmap image', 'cad'=>'CAD image', 'zip'=>'Compress document');
@@ -101,7 +90,7 @@ div[data-load="left-side-tree"]{max-height: 600px;    overflow: auto;}
 			<div class="col-sm-3">	
 				<div class="row">
 					<div class="col-sm-12">
-						<a href="{{ URL::to('container?show='.$showType) }}" class="files label"><span>Files</span></a>
+						<a href="{{ URL::to('press?show='.$showType) }}" class="files label"><span>Files</span></a>
 						<div data-load="left-side-tree"><p style="padding-top: 20px;">Loading...</p></div>
 					</div>
 				</div>
@@ -120,10 +109,6 @@ div[data-load="left-side-tree"]{max-height: 600px;    overflow: auto;}
 				
 				<div class="row">
 					<div class="col-sm-12">
-						<button type="button" class="btn btn-success btn-lg" onclick="selectfolderfiles();" data-toggle="modal" data-target="#sendEmail">
-							<span class="icn"><i class="icon-share"></i> {{\Lang::get('core.menu_share')}}</span>
-						</button>
-						
 						<!-- Download button -->
 						<div class="btn-group">
 						  <button type="button" class="btn btn-primary btn-lg dropdown-toggle btn_orange" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="icn"><i class="icon-folder-download"></i> {{\Lang::get('core.menu_download')}}</span></button>
@@ -146,7 +131,7 @@ div[data-load="left-side-tree"]{max-height: 600px;    overflow: auto;}
 						@if($fid>0)
 							<h2 class="folder">
 								<span id="folder_name">
-									<a href="{{ URL::to('container?show='.$showType) }}"><span>Files</span></a>
+									<a href="{{ URL::to('press?show='.$showType) }}"><span>Files</span></a>
 									@if(!empty($parentArr))
 										@foreach($parentArr as $parArr)
 											/ @if(end($parentArr)!=$parArr)<a href="{{ URL::to('folders/'.$parArr->id.'?show='.$showType) }}">{{$parArr->display_name}}</a>@else {{$parArr->display_name}} @endif
@@ -154,12 +139,6 @@ div[data-load="left-side-tree"]{max-height: 600px;    overflow: auto;}
 									@endif
 								</span>
 								<em> &bull; {{$subfilestotal}} files &bull; {{$subfoldertotal}} folders &bull; {{$subfileSpace}} MB</em>&nbsp;&nbsp;
-								<a href="#" data-toggle="modal" data-target="#editDirectory" class="foldout renamefolder" title="Edit this folder">
-									<img src="{{URL::to('uploads/images/folder_edit.png')}}" alt="" width="16" height="16" title="" class="img-icon">
-								</a>&nbsp;&nbsp;
-								<a href="#" data-toggle="modal" data-target="#deleteFolder" class="foldout delete" title="Delete this folder">
-									<img src="{{URL::to('uploads/images/folder_delete.png')}}" alt="" width="16" height="16" title="" class="img-icon">
-								</a>
 							</h2>
 						@else
 							<h2 class="folder">
@@ -168,12 +147,14 @@ div[data-load="left-side-tree"]{max-height: 600px;    overflow: auto;}
 							</h2>
 						@endif
 						</div>
+                    </div>
+                    <div class="col-sm-12">
 						@if($showType=="thumb")	
 							<div class="gallery-select-all">
 								<label style="float:left;">
 									<input type="checkbox" value="1" id="check_all" class="check-all"> Select all
 								</label>
-								<div class="row">
+								<div class="row" style="display: none;">
 									{!! Form::open(array('url'=>'presssearch', 'class'=>'columns' ,'id' =>'search', 'method'=>'get' )) !!}
 										<input type="hidden" name="show" value="{{ $showType }}">
 										<div class="col-sm-4">
@@ -205,6 +186,8 @@ div[data-load="left-side-tree"]{max-height: 600px;    overflow: auto;}
 									</form>
 								</div>
 							</div>
+                        </div>
+                        <div class="col-sm-12">
 							<div class="clear"></div>
 							<!-- Load Folders -->
 							<div id="folders_data_list"><p style="padding-top: 30px; text-align: center;">Loading...</p></div>
@@ -214,7 +197,7 @@ div[data-load="left-side-tree"]{max-height: 600px;    overflow: auto;}
 								<label style="float:left;">
 									<input type="checkbox" value="1" id="check_all" class="check-all"> Select all
 								</label>
-								<div class="row">
+								<div class="row" style="display: none;">
 									{!! Form::open(array('url'=>'presssearch', 'class'=>'columns' ,'id' =>'search', 'method'=>'get' )) !!}
 										<input type="hidden" name="show" value="{{ $showType }}">
 										<div class="col-sm-4">
@@ -339,6 +322,13 @@ div[data-load="left-side-tree"]{max-height: 600px;    overflow: auto;}
 {{-- For Include style files --}}
 @section('head')
     @parent
+    
+    <link href="{{ asset('sximo/css/custom_ps.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('sximo/css/dropzone.css') }}">
+    <link rel="stylesheet" href="{{ asset('sximo/js/plugins/fancybox/helpers/jquery.fancybox-buttons.css?v=1.0.5') }}">
+    
+    <link href="{{ asset('sximo/js/plugins/iCheck/skins/square/green.css')}}" rel="stylesheet">
+    
     <link href="{{ asset('themes/emporium/css/animate.css') }}" rel="stylesheet">
 	<link href="{{ asset('themes/emporium/css/pdpage-css.css') }}" rel="stylesheet">
 	<link href="{{ asset('themes/emporium/css/search-result.css') }}" rel="stylesheet">
@@ -349,12 +339,46 @@ div[data-load="left-side-tree"]{max-height: 600px;    overflow: auto;}
 {{-- For custom style  --}}
 @section('custom_css')
     @parent
-    
+    <style>
+    .size-bar-side{overflow: hidden;}
+    div[data-load="left-side-tree"]{max-height: 600px;    overflow: auto;}
+    .leng { display:none; }
+    .btn_orange, .btn_orange:hover, .btn_orange:focus, .btn_orange:active, .btn_orange.active, .open .dropdown-toggle.btn_orange {  background-color: orange; border-color: orange; }
+    .disnon { display:none; }
+    .lightboxmodal { z-index:1060; }
+    </style>
 @endsection
     
 {{-- For Include javascript files --}}
 @section('javascript')
     @parent    
+    
+		<script type="text/javascript" src="{{ asset('sximo/js/plugins/jquery.cookie.js') }}"></script>			
+					
+		<script type="text/javascript" src="{{ asset('sximo/js/plugins/iCheck/icheck.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('sximo/js/plugins/select2/select2.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('sximo/js/plugins/fancybox/jquery.fancybox.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('sximo/js/plugins/prettify.js') }}"></script>
+		<!--<script type="text/javascript" src="{{ asset('sximo/js/plugins/parsley.js') }}"></script>-->
+		<script type="text/javascript" src="{{ asset('sximo/js/plugins/datepicker/js/bootstrap-datetimepicker.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('sximo/js/plugins/switch.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('sximo/js/plugins/bootstrap.datetimepicker/js/bootstrap-datetimepicker.min.js') }}"></script>
+		
+		<script type="text/javascript" src="{{ asset('sximo/js/plugins/jasny-bootstrap/js/jasny-bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('sximo/js/sximo.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('sximo/js/plugins/jquery.form.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('sximo/js/plugins/jquery.jCombo.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('sximo/js/plugins/toastr/toastr.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('sximo/js/plugins/bootstrap.summernote/summernote.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('sximo/js/simpleclone.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('sximo/js/plugins/markitup/jquery.markitup.js') }}"></script>	
+		<script type="text/javascript" src="{{ asset('sximo/js/plugins/markitup/sets/default/set.js') }}"></script>	
+		
+        <script src="{{ asset('sximo/crm_layout/jquery-minicolors/jquery.minicolors.min.js')}}" type="text/javascript"></script>
+    
+    
+    <script src="{{ asset('sximo/js/tooltip_popup.js') }}"></script>
+    
 	<script src="{{ asset('sximo/js/dynamitable.jquery.min.js') }}"></script>
 @endsection
 
@@ -363,7 +387,7 @@ div[data-load="left-side-tree"]{max-height: 600px;    overflow: auto;}
     @parent	
 	<script>
 		//Load folders and folder tree by Ajax
-		function loadLeftSideTree(){ console.log("hello");
+		function loadLeftSideTree(){ 
 			$.ajax({
 				url: '{{url("getPressFolderListAjaxonload/")}}/{{(isset($fid) && $fid!="")?$fid:0}}?show={{(isset($_GET["show"]))?$_GET["show"]:""}}',
 				type: "get",
