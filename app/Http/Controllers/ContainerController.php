@@ -7123,9 +7123,11 @@ class ContainerController extends Controller {
  
 		if (!is_array($user_tree_array))
 		$user_tree_array = array();
-	
+	    
+        $obj_media = DB::table('tb_container')->where('name','media-relations')->first();
+        
 		$uid = \Auth::user()->id;
-		$filter = " AND id='8700'";
+		$filter = " AND id='".$obj_media->id."'";
 		
 		$params = array(
 			'params'	=> $filter,
