@@ -542,6 +542,9 @@ Route::get('traveller/bookings/show/{id}', 'BookingsController@showBooking');
 Route::get('hotel/bookings', 'BookingsController@hotelBookings');
 Route::post('customer_request_referral', 'CustomerController@ajaxSendMail');
 
+Route::get('press/view/{fid}/{id}', 'ContainerController@PressShowfiles');
+Route::get('tpress/view/{fid}/{id}', 'ContainerController@PressShowTiffFiles');
+Route::get('getPressFolderListAjax/{id}', 'ContainerController@getPressFolderListAjax');
 Route::get('getPressFolderListAjaxonload/{id}', 'ContainerController@getPressFolderListAjaxonload');    
 Route::get('getPressFoldersAjax/{id}', 'ContainerController@getPressFoldersAjax');
 Route::post('pressseletedfileszip', 'ContainerController@PressDownloadZipSelected');
