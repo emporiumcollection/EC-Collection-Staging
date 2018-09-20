@@ -420,6 +420,8 @@
 			$(document).on('click','[data-action="expend-folder-tree"]',function(e){
 				e.preventDefault();
 				$('.gallery-select-all').css('display', '');
+                $("#page-download").css('display', '');
+                $("#file-breadcrumb").css('display', '');
                 
 				$('#folders_data_list').html('<p style="padding-top: 30px; text-align: center;">Loading...</p>');
 				$('a[data-action="expend-folder-tree"]').removeClass('selected');
@@ -495,6 +497,8 @@
 			$(document).on('click','[data-action-open="folder"]',function(e){
 				e.preventDefault();
 				$('.gallery-select-all').css('display', 'none');
+                $("#page-download").css('display', '');
+                $("#file-breadcrumb").css('display', '');
                 
 				$('#folders_data_list').html('<p style="padding-top: 30px; text-align: center;">Loading...</p>');
 				$('a[data-action="expend-folder-tree"]').removeClass('selected');
