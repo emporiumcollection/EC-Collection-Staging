@@ -1,107 +1,17 @@
-@extends('frontend.themes.emporium.layouts.home')
-{{--  For Title --}}
-@section('title', 'Emporium Voyage Luxury Hotel Collection')
-{{-- For Meta Keywords --}}
-@section('meta_keywords', 'Emporium Voyage Luxury Hotel Collection')
-{{-- For Meta Description --}}
-@section('meta_description', 'Emporium Voyage Luxury Hotel Collection')
-{{-- For Page's Content Part --}}
-@section('content')
-
-    <!-- Restaurant slider starts here -->
-    <section id="search-result-slider" class="luxuryHotelSlider">
-		 @if(!empty($slider))
-			<div id="myCarousel" class="carousel" data-ride="carousel">
-				<!-- Indicators -->
-				{{--  Wrapper for slides --}}
-				<div class="carousel-inner">
-					@foreach($slider as $key => $slider_row)
-						<div class="item {{($key == 0)? 'active' : ''}}" style="background-image:url({{url('uploads/slider_images/'.$slider_row->slider_img)}});">
-							<div class="carousel-caption">
-								<h6>{{$slug}}</h6>
-								<h2>
-									@if($slider_row->slider_link!='#' && $slider_row->slider_link!='')
-										<a onclick="return !window.open(this.href, '{{ ((strpos($slider_row->slider_link, 'http://') || strpos($slider_row->slider_link, 'https://')) === false) ? $slider_row->slider_link : 'http://'.$slider_row->slider_link }}', 'width=900,height=500,left=100, top=100, scrollbars, resizable')" href="{{ ((strpos($slider_row->slider_link, 'http://') || strpos($slider_row->slider_link, 'https://')) === false) ? $slider_row->slider_link : 'http://'.$slider_row->slider_link }}">{{$slider_row->slider_title}}</a>
-									@else
-										{{$slider_row->slider_title}}
-									@endif
-								</h2>
-								<p>@if($slider_row->slider_link!='#' && $slider_row->slider_link!='')
-										<a onclick="return !window.open(this.href, '{{ ((strpos($slider_row->slider_link, 'http://') || strpos($slider_row->slider_link, 'https://')) === false) ? $slider_row->slider_link : 'http://'.$slider_row->slider_link }}', 'width=900,height=500,left=100, top=100, scrollbars, resizable')" href="{{ ((strpos($slider_row->slider_link, 'http://') || strpos($slider_row->slider_link, 'https://')) === false) ? $slider_row->slider_link : 'http://'.$slider_row->slider_link }}" style="color:white;	">{{$slider_row->slider_description}}</a>
-									@else
-										{{$slider_row->slider_description}}
-									@endif
-
-
-								</p>
-							</div>
-						</div>
-					@endforeach
-					{{--*/ $adscatid = ($destination_category > 0) ? $destination_category : 'Hotel'; $sliderads = CommonHelper::getSliderAds('grid_slider', $adscatid) /*--}}
-					@if(!empty($sliderads['leftsidebarads']))
-						@foreach($sliderads['leftsidebarads'] as $ads)
-							<div class="item" style="background-image:url({{URL::to('uploads/users/advertisement/'.$ads->adv_img)}});">
-								<div class="carousel-caption">
-									<h6>Advertisement</h6>
-									<h2>
-										@if($ads->adv_link!='#' && $ads->adv_link!='')
-											<a onclick="return !window.open(this.href, '{{ ((strpos($ads->adv_link, 'http://') || strpos($ads->adv_link, 'https://')) === false) ? $ads->adv_link : 'http://'.$ads->adv_link }}', 'width=900,height=500,left=100, top=100, scrollbars, resizable')" href="{{ ((strpos($ads->adv_link, 'http://') || strpos($ads->adv_link, 'https://')) === false) ? $ads->adv_link : 'http://'.$ads->adv_link }}">{{$ads->adv_title}}</a>
-										@else
-											{{$ads->adv_title}}
-										@endif
-									</h2>
-									<p>@if($ads->adv_link!='#' && $ads->adv_link!='')
-											<a onclick="return !window.open(this.href, '{{ ((strpos($ads->adv_link, 'http://') || strpos($ads->adv_link, 'https://')) === false) ? $ads->adv_link : 'http://'.$ads->adv_link }}', 'width=900,height=500,left=100, top=100, scrollbars, resizable')" href="{{ ((strpos($ads->adv_link, 'http://') || strpos($ads->adv_link, 'https://')) === false) ? $ads->adv_link : 'http://'.$ads->adv_link }}">{{$ads->adv_desc}}</a>
-										@else
-											{{$ads->adv_desc}}
-										@endif
-
-
-									</p>
-								</div>
-							</div>
-						@endforeach
-					@endif
-				</div>
-				@if(count($slider) > 1)
-					<!-- Left and right controls -->
-					<a class="left carousel-control" href="#myCarousel" data-slide="prev">
-						<img src="{{ asset('themes/emporium/images/editorial-left-arrow.png') }}" alt="Icon"/>
-					</a>
-					<a class="right carousel-control" href="#myCarousel" data-slide="next">
-						<img src="{{ asset('themes/emporium/images/editorial-right-arrow.png') }}" alt="Icon"/>
-					</a>
-				@endif
-			</div>
-		@endif
-    </section>
 
 <?php $expFilet = explode('.',$rowFile->file_name); 
 	  $expFile = end($expFilet);
       $imgclass = $expFile;
  ?>  
-	<div class="col-md-12 col-sm-12 col-xs-12" style="background: #fff; padding-top: 25px; padding-bottom: 25px;">
-		<div class="row">
-			<div class="col-sm-3">	
+	
+				
+				
 				<div class="row">
 					<div class="col-sm-12">
-						<a href="{{ URL::to('press?show='.$showType) }}" class="files label"><span>Files</span></a>
-						<?php foreach ($tree as $r) {
-							echo $r;
-						} ?>
-					</div>
-				</div>
-			</div>
-			
-			<div class="col-sm-9">
-				<div class="row">
-					<div class="col-sm-12">
-						<a class="btn btn-primary btn-lg" href="{{ URL::to('press/').'?show='.$showType }}"> {{\Lang::get('core.menu_back')}}</a>
-						
-						<a class="btn btn-primary btn-lg" href="{{$rowFile->imgsrc.$rowFile->file_name}}" download="{{$rowFile->file_name}}"> {{\Lang::get('core.menu_download')}}</a>
+						<a class="btn btn-primary btn-lg dropdown-toggle btn_orange" href="{{$rowFile->imgsrc.$rowFile->file_name}}" download="{{$rowFile->file_name}}"> {{\Lang::get('core.menu_download')}}</a>
 						@if($expFile=="tif" || $expFile=="cad")
-							<a class="btn btn-primary btn-lg" href="{{$rowFile->imgsrc.$expFilet[0].'.jpg'}}" download="{{$expFilet[0].'.jpg'}}"> {{\Lang::get('core.menu_download_jpg')}}</a>
-							<a class="btn btn-primary btn-lg" href="{{$rowFile->imgsrc.$expFilet[0].'.png'}}" download="{{$expFilet[0].'.png'}}"> {{\Lang::get('core.menu_download_png')}}</a>
+							<a class="btn btn-primary btn-lg dropdown-toggle btn_orange" href="{{$rowFile->imgsrc.$expFilet[0].'.jpg'}}" download="{{$expFilet[0].'.jpg'}}"> {{\Lang::get('core.menu_download_jpg')}}</a>
+							<a class="btn btn-primary btn-lg dropdown-toggle btn_orange" href="{{$rowFile->imgsrc.$expFilet[0].'.png'}}" download="{{$expFilet[0].'.png'}}"> {{\Lang::get('core.menu_download_png')}}</a>
 						@endif
 						
 					</div>
@@ -120,7 +30,7 @@
 						</h2>
 					</div>
 				</div>
-				<div class="row">
+                <div class="row">
 					<div class="col-sm-12">
 						<h1>{{($rowFile->file_display_name!='')? $rowFile->file_display_name:$rowFile->file_name}}</h1>
 					</div>
@@ -317,9 +227,7 @@
 					</div>
 				</div>
 				
-			</div>
-		</div>
-	</div>
+			
 
 	<!-- Edit File Modal -->
 	<div class="modal fade" id="editFile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -687,95 +595,9 @@
     
     
 
-@endsection
-
-{{--For Right Side Icons --}}
-@section('right_side_iconbar')
-
-	@parent
-@show
-
-{{-- For Include Top Bar --}}
-@section('top_search_bar')
-    @parent
-@endsection
-
-{{-- For Include Side Bar --}}
-@section('sidebar')
-    @include('frontend.themes.emporium.layouts.sections.grid_sidebar')
-@endsection
-
-{{-- For Include style files --}}
-@section('head')
-    @parent
     
-    <link href="{{ asset('sximo/css/custom_ps.css')}}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('sximo/css/dropzone.css') }}">
-    <link rel="stylesheet" href="{{ asset('sximo/js/plugins/fancybox/helpers/jquery.fancybox-buttons.css?v=1.0.5') }}">
-    
-    <link href="{{ asset('sximo/js/plugins/iCheck/skins/square/green.css')}}" rel="stylesheet">
-    
-    <link href="{{ asset('themes/emporium/css/animate.css') }}" rel="stylesheet">
-	<link href="{{ asset('themes/emporium/css/pdpage-css.css') }}" rel="stylesheet">
-	<link href="{{ asset('themes/emporium/css/search-result.css') }}" rel="stylesheet">
-    <link href="{{ asset('themes/emporium/css/rad-photos-swap.css') }}" rel="stylesheet">
 
-@endsection
-
-{{-- For custom style  --}}
-@section('custom_css')
-    @parent
-    <style>
-    	.var_add_Butt {
-    		color:#05A505 !important;
-    		float:right;
-    		cursor:pointer;
-    	}
-    	.var_remove_Butt {
-    		color:red !important;
-    		float:right;
-    		cursor:pointer;
-    	}
-    	.leng { display:none; }
-    </style>
-@endsection
-    
-{{-- For Include javascript files --}}
-@section('javascript')
-    @parent    
-    
-		<script type="text/javascript" src="{{ asset('sximo/js/plugins/jquery.cookie.js') }}"></script>			
-					
-		<script type="text/javascript" src="{{ asset('sximo/js/plugins/iCheck/icheck.min.js') }}"></script>
-		<script type="text/javascript" src="{{ asset('sximo/js/plugins/select2/select2.min.js') }}"></script>
-		<script type="text/javascript" src="{{ asset('sximo/js/plugins/fancybox/jquery.fancybox.js') }}"></script>
-		<script type="text/javascript" src="{{ asset('sximo/js/plugins/prettify.js') }}"></script>
-		<!--<script type="text/javascript" src="{{ asset('sximo/js/plugins/parsley.js') }}"></script>-->
-		<script type="text/javascript" src="{{ asset('sximo/js/plugins/datepicker/js/bootstrap-datetimepicker.min.js') }}"></script>
-		<script type="text/javascript" src="{{ asset('sximo/js/plugins/switch.min.js') }}"></script>
-		<script type="text/javascript" src="{{ asset('sximo/js/plugins/bootstrap.datetimepicker/js/bootstrap-datetimepicker.min.js') }}"></script>
-		
-		<script type="text/javascript" src="{{ asset('sximo/js/plugins/jasny-bootstrap/js/jasny-bootstrap.min.js') }}"></script>
-		<script type="text/javascript" src="{{ asset('sximo/js/sximo.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('sximo/js/plugins/jquery.form.js') }}"></script>
-		<script type="text/javascript" src="{{ asset('sximo/js/plugins/jquery.jCombo.min.js') }}"></script>
-		<script type="text/javascript" src="{{ asset('sximo/js/plugins/toastr/toastr.js') }}"></script>
-		<script type="text/javascript" src="{{ asset('sximo/js/plugins/bootstrap.summernote/summernote.min.js') }}"></script>
-		<script type="text/javascript" src="{{ asset('sximo/js/simpleclone.js') }}"></script>
-		<script type="text/javascript" src="{{ asset('sximo/js/plugins/markitup/jquery.markitup.js') }}"></script>	
-		<script type="text/javascript" src="{{ asset('sximo/js/plugins/markitup/sets/default/set.js') }}"></script>	
-		
-        <script src="{{ asset('sximo/crm_layout/jquery-minicolors/jquery.minicolors.min.js')}}" type="text/javascript"></script>
-    
-    
-    <script src="{{ asset('sximo/js/tooltip_popup.js') }}"></script>
-    
-	<script src="{{ asset('sximo/js/dynamitable.jquery.min.js') }}"></script>
-@endsection
-
-{{-- For custom script --}}
-@section('custom_js')
-    @parent	
+	
 	<script>
 	
 	$(document).ready(function() { 
@@ -1255,9 +1077,3 @@
 		}
 		
 	</script>
-@endsection
-
-{{-- For footer --}}
-@section('footer')
-    @parent
-@endsection

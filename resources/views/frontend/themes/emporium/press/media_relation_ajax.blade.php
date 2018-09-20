@@ -7,10 +7,10 @@
   @if($fid>0)
 	<h2 class="folder">
 		<span id="folder_name">
-			<a href="{{ URL::to('container?show='.$showType) }}"><span>Files</span></a>
+			<a href="{{ URL::to('press?show='.$showType) }}"><span>Files</span></a>
 			@if(!empty($parentArr))
 				@foreach($parentArr as $parArr)
-					/ @if(end($parentArr)!=$parArr)<a href="{{ URL::to('folders/'.$parArr->id.'?show='.$showType) }}" data-action-open="folder" rel_row="{{$parArr->id}}">{{$parArr->display_name}}</a>@else {{$parArr->display_name}} @endif
+					/ @if(end($parentArr)!=$parArr)<a href="{{ URL::to('press/'.$parArr->id.'?show='.$showType) }}" data-action-open="folder" rel_row="{{$parArr->id}}">{{$parArr->display_name}}</a>@else {{$parArr->display_name}} @endif
 				@endforeach
 			@endif
 		</span>
@@ -226,7 +226,7 @@
 									<ul class="pagination">
 										<?php if($pagination['prev_page']>0){ ?>
 											
-											<li><a href="{{url('getFoldersAjax/'.$fid)}}?page={{$pagination['prev_page']}}&show={{$showType}}" rel="prev">«</a></li>
+											<li><a href="{{url('getPressFoldersAjax/'.$fid)}}?page={{$pagination['prev_page']}}&show={{$showType}}" rel="prev">«</a></li>
 										<?php }else{ ?>
 											<li><span>«</span></li>
 										<?php }?>

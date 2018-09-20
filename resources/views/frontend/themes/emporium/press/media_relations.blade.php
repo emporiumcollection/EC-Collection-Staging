@@ -85,159 +85,149 @@
 	$filType = array('jpg'=>'JPEG image', 'jpeg'=>'JPEG image', 'JPG'=>'JPEG image', 'png'=>'PNG image', 'gif'=>'GIF image', 'xls'=>'Excel spreadsheet', 'eps'=>'EPS Image', 'mp4'=>'MPEG-4 video', 'mkv'=>'Matroska Video', 'flv'=>'Flash Video', 'avi'=>'Audio Video', 'wma'=>'Windows Media Audio', 'wmp'=>'Windows Media Player', 'psd'=>'PSD Image', 'pdf'=>'PDF document', 'ppt'=>'PowerPoint presentation', 'mp3'=>'MP3 audio', 'tif'=>'TIFF image', 'doc'=>'Word document', 'docx'=>'Word document', 'bmp'=>'Bitmap image', 'cad'=>'CAD image', 'zip'=>'Compress document');
  ?>
   
-    <div class="col-md-12 col-sm-12 col-xs-12" style="background: #fff; padding-top: 25px; padding-bottom: 25px;">	
-		<div class="row">
-			<div class="col-sm-3">	
-				<div class="row">
-					<div class="col-sm-12">
-						<a href="{{ URL::to('press?show='.$showType) }}" class="files label"><span>Files</span></a>
-						<div data-load="left-side-tree"><p style="padding-top: 20px;">Loading...</p></div>
-					</div>
+<div class="col-md-12 col-sm-12 col-xs-12" style="background: #fff; padding-top: 25px; padding-bottom: 25px;">	
+	<div class="row">
+		<div class="col-sm-3">	
+			<div class="row">
+				<div class="col-sm-12">
+					<a href="{{ URL::to('press?show='.$showType) }}" class="files label"><span>Files</span></a>
+					<div data-load="left-side-tree"><p style="padding-top: 20px;">Loading...</p></div>
 				</div>
-				<div class="row">
-					<div class="col-sm-12">
-						<div class="size-bar-side">
-							<div style="width: {{$usedStoragePerct}}%">&nbsp;</div>
-						</div>
-						<div class="size-txt-side">
-							<em>{{$usedStorage}} MB</em> ({{$usedStoragePerct}}%) of <em> {{$allowStorage}} MB</em> used
-						</div>
+			</div>			
+		</div>
+		<div class="col-sm-9">
+			
+			<div class="row">
+				<div class="col-sm-12">
+					<!-- Download button -->
+					<div class="btn-group" id="page-download">
+					  <button type="button" class="btn btn-primary btn-lg dropdown-toggle btn_orange" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="icn"><i class="icon-folder-download"></i> {{\Lang::get('core.menu_download')}}</span></button>
+					  <button type="button" class="btn btn-primary btn-lg dropdown-toggle btn_orange" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<span class="caret"></span>
+						<span class="sr-only">Toggle Dropdown</span>
+					  </button>
+					  <ul class="dropdown-menu">
+						<li><a href="#" onclick="select_folderfilesfor_download('file_download');">{{\Lang::get('core.menu_download_zip')}}</a></li>
+						<li><a href="#" onclick="select_folderfilesfor_download('lowpdf_download');">{{\Lang::get('core.menu_download_low_pdf')}}</a></li>
+						<li><a href="#" onclick="select_folderfilesfor_download('highpdf_download');">{{\Lang::get('core.menu_download_high_pdf')}}</a></li>
+						<li><a href="#" onclick="entire_folderfilesfor_download();">{{\Lang::get('core.menu_download_entire_folder')}}</a></li>
+					  </ul>
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-9">
-				
-				<div class="row">
-					<div class="col-sm-12">
-						<!-- Download button -->
-						<div class="btn-group">
-						  <button type="button" class="btn btn-primary btn-lg dropdown-toggle btn_orange" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="icn"><i class="icon-folder-download"></i> {{\Lang::get('core.menu_download')}}</span></button>
-						  <button type="button" class="btn btn-primary btn-lg dropdown-toggle btn_orange" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<span class="caret"></span>
-							<span class="sr-only">Toggle Dropdown</span>
-						  </button>
-						  <ul class="dropdown-menu">
-							<li><a href="#" onclick="select_folderfilesfor_download('file_download');">{{\Lang::get('core.menu_download_zip')}}</a></li>
-							<li><a href="#" onclick="select_folderfilesfor_download('lowpdf_download');">{{\Lang::get('core.menu_download_low_pdf')}}</a></li>
-							<li><a href="#" onclick="select_folderfilesfor_download('highpdf_download');">{{\Lang::get('core.menu_download_high_pdf')}}</a></li>
-							<li><a href="#" onclick="entire_folderfilesfor_download();">{{\Lang::get('core.menu_download_entire_folder')}}</a></li>
-						  </ul>
-						</div>
+			<div class="row">
+				<div class="col-sm-12" id="file-breadcrumb">
+					<div id="breadcrumb_line">
+					@if($fid>0)
+						<h2 class="folder">
+							<span id="folder_name">
+								<a href="{{ URL::to('press?show='.$showType) }}"><span>Files</span></a>
+								@if(!empty($parentArr))
+									@foreach($parentArr as $parArr)
+										/ @if(end($parentArr)!=$parArr)<a href="{{ URL::to('folders/'.$parArr->id.'?show='.$showType) }}">{{$parArr->display_name}}</a>@else {{$parArr->display_name}} @endif
+									@endforeach
+								@endif
+							</span>
+							<em> &bull; {{$subfilestotal}} files &bull; {{$subfoldertotal}} folders &bull; {{$subfileSpace}} MB</em>&nbsp;&nbsp;
+						</h2>
+					@else
+						<h2 class="folder">
+							<span id="folder_name">Files</span>
+							<em> &bull; {{$subfoldertotal}} folders</em>
+						</h2>
+					@endif
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-sm-12">
-						<div id="breadcrumb_line">
-						@if($fid>0)
-							<h2 class="folder">
-								<span id="folder_name">
-									<a href="{{ URL::to('press?show='.$showType) }}"><span>Files</span></a>
-									@if(!empty($parentArr))
-										@foreach($parentArr as $parArr)
-											/ @if(end($parentArr)!=$parArr)<a href="{{ URL::to('folders/'.$parArr->id.'?show='.$showType) }}">{{$parArr->display_name}}</a>@else {{$parArr->display_name}} @endif
-										@endforeach
-									@endif
-								</span>
-								<em> &bull; {{$subfilestotal}} files &bull; {{$subfoldertotal}} folders &bull; {{$subfileSpace}} MB</em>&nbsp;&nbsp;
-							</h2>
-						@else
-							<h2 class="folder">
-								<span id="folder_name">Files</span>
-								<em> &bull; {{$subfoldertotal}} folders</em>
-							</h2>
-						@endif
+                </div>
+                <div class="col-sm-12">
+					@if($showType=="thumb")	
+						<div class="gallery-select-all">
+							<label style="float:left;">
+								<input type="checkbox" value="1" id="check_all" class="check-all"> Select all
+							</label>
+							<div class="row" style="display: none;">
+								{!! Form::open(array('url'=>'presssearch', 'class'=>'columns' ,'id' =>'search', 'method'=>'get' )) !!}
+									<input type="hidden" name="show" value="{{ $showType }}">
+									<div class="col-sm-4">
+										<input type="text" name="searchkeyword" value="" class="form-control" placeholder="Enter your keyword here" style="height:37px !important;" />
+									</div>
+									<div class="col-sm-6" style="text-align:right; padding-right:0px;">
+										<button type="submit" class="btn btn-primary btn-lg">
+											<span class="icn"><i class="icon-search2"></i> {{\Lang::get('core.menu_search')}}</span>
+										</button>
+										<a href="{{ URL::to('press?show='.$showType) }}" class="btn btn-primary btn-lg">
+											<span class="icn"><i class="icon-spinner8"></i> {{\Lang::get('core.menu_reset')}}</span>
+										</a>
+										<!-- View button -->
+										<div class="btn-group">
+										  <button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="icn"><i class="icon-screen2"></i> {{\Lang::get('core.menu_view')}}</span></button>
+										  <button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											<span class="caret"></span>
+											<span class="sr-only">Toggle Dropdown</span>
+										  </button>
+										  <ul class="dropdown-menu">
+											<li><a href="{{ Request::url().'?show=list'}}">{{\Lang::get('core.menu_view_list')}}</a></li>
+											<li><a href="{{ Request::url().'?show=thumb'}}">{{\Lang::get('core.menu_view_gallery')}}</a></li>
+											<li><a href="#" id="fancybox-manual-c">{{\Lang::get('core.menu_view_slideshow')}}</a></li>
+											<li><a href="#" onclick="select_folderfilesfor_download('flipbook', 'high');">{{\Lang::get('core.menu_view_high_flipbook')}}</a></li>
+											<li><a href="#" onclick="select_folderfilesfor_download('flipbook', 'low');">{{\Lang::get('core.menu_view_low_flipbook')}}</a></li>
+										  </ul>
+										</div>
+									</div>
+								</form>
+							</div>
 						</div>
                     </div>
                     <div class="col-sm-12">
-						@if($showType=="thumb")	
-							<div class="gallery-select-all">
-								<label style="float:left;">
-									<input type="checkbox" value="1" id="check_all" class="check-all"> Select all
-								</label>
-								<div class="row" style="display: none;">
-									{!! Form::open(array('url'=>'presssearch', 'class'=>'columns' ,'id' =>'search', 'method'=>'get' )) !!}
-										<input type="hidden" name="show" value="{{ $showType }}">
-										<div class="col-sm-4">
-											<input type="text" name="searchkeyword" value="" class="form-control" placeholder="Enter your keyword here" style="height:37px !important;" />
+						<div class="clear"></div>
+						<!-- Load Folders -->
+						<div id="folders_data_list"><p style="padding-top: 30px; text-align: center;">Loading...</p></div>
+						
+					@elseif($showType=="list")
+						<div class="gallery-select-all">
+							<label style="float:left;">
+								<input type="checkbox" value="1" id="check_all" class="check-all"> Select all
+							</label>
+							<div class="row" style="display: none;">
+								{!! Form::open(array('url'=>'presssearch', 'class'=>'columns' ,'id' =>'search', 'method'=>'get' )) !!}
+									<input type="hidden" name="show" value="{{ $showType }}">
+									<div class="col-sm-4">
+										<input type="text" name="searchkeyword" value="" class="form-control" placeholder="Enter your keyword here" style="height:37px !important;" />
+									</div>
+									<div class="col-sm-6" style="text-align:right; padding-right:0px;">
+										<button type="submit" class="btn btn-primary btn-lg">
+											<span class="icn"><i class="icon-search2"></i> {{\Lang::get('core.menu_search')}}</span>
+										</button>
+										<a href="{{ URL::to('press?show='.$showType) }}" class="btn btn-primary btn-lg">
+											<span class="icn"><i class="icon-spinner8"></i> {{\Lang::get('core.menu_reset')}}</span>
+										</a>
+										<!-- View button -->
+										<div class="btn-group">
+										  <button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="icn"><i class="icon-screen2"></i> {{\Lang::get('core.menu_view')}}</span></button>
+										  <button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											<span class="caret"></span>
+											<span class="sr-only">Toggle Dropdown</span>
+										  </button>
+										  <ul class="dropdown-menu">
+											<li><a href="{{ Request::url().'?show=list'}}">{{\Lang::get('core.menu_view_list')}}</a></li>
+											<li><a href="{{ Request::url().'?show=thumb'}}">{{\Lang::get('core.menu_view_gallery')}}</a></li>
+											<li><a href="#" id="fancybox-manual-c">{{\Lang::get('core.menu_view_slideshow')}}</a></li>
+											<li><a href="#" onclick="select_folderfilesfor_download('flipbook', 'high');">{{\Lang::get('core.menu_view_high_flipbook')}}</a></li>
+											<li><a href="#" onclick="select_folderfilesfor_download('flipbook', 'low');">{{\Lang::get('core.menu_view_low_flipbook')}}</a></li>
+										  </ul>
 										</div>
-										<div class="col-sm-6" style="text-align:right; padding-right:0px;">
-											<button type="submit" class="btn btn-primary btn-lg">
-												<span class="icn"><i class="icon-search2"></i> {{\Lang::get('core.menu_search')}}</span>
-											</button>
-											<a href="{{ URL::to('press?show='.$showType) }}" class="btn btn-primary btn-lg">
-												<span class="icn"><i class="icon-spinner8"></i> {{\Lang::get('core.menu_reset')}}</span>
-											</a>
-											<!-- View button -->
-											<div class="btn-group">
-											  <button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="icn"><i class="icon-screen2"></i> {{\Lang::get('core.menu_view')}}</span></button>
-											  <button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-												<span class="caret"></span>
-												<span class="sr-only">Toggle Dropdown</span>
-											  </button>
-											  <ul class="dropdown-menu">
-												<li><a href="{{ Request::url().'?show=list'}}">{{\Lang::get('core.menu_view_list')}}</a></li>
-												<li><a href="{{ Request::url().'?show=thumb'}}">{{\Lang::get('core.menu_view_gallery')}}</a></li>
-												<li><a href="#" id="fancybox-manual-c">{{\Lang::get('core.menu_view_slideshow')}}</a></li>
-												<li><a href="#" onclick="select_folderfilesfor_download('flipbook', 'high');">{{\Lang::get('core.menu_view_high_flipbook')}}</a></li>
-												<li><a href="#" onclick="select_folderfilesfor_download('flipbook', 'low');">{{\Lang::get('core.menu_view_low_flipbook')}}</a></li>
-											  </ul>
-											</div>
-										</div>
-									</form>
-								</div>
+									</div>
+								</form>
 							</div>
-                        </div>
-                        <div class="col-sm-12">
-							<div class="clear"></div>
-							<!-- Load Folders -->
-							<div id="folders_data_list"><p style="padding-top: 30px; text-align: center;">Loading...</p></div>
-							
-						@elseif($showType=="list")
-							<div class="gallery-select-all">
-								<label style="float:left;">
-									<input type="checkbox" value="1" id="check_all" class="check-all"> Select all
-								</label>
-								<div class="row" style="display: none;">
-									{!! Form::open(array('url'=>'presssearch', 'class'=>'columns' ,'id' =>'search', 'method'=>'get' )) !!}
-										<input type="hidden" name="show" value="{{ $showType }}">
-										<div class="col-sm-4">
-											<input type="text" name="searchkeyword" value="" class="form-control" placeholder="Enter your keyword here" style="height:37px !important;" />
-										</div>
-										<div class="col-sm-6" style="text-align:right; padding-right:0px;">
-											<button type="submit" class="btn btn-primary btn-lg">
-												<span class="icn"><i class="icon-search2"></i> {{\Lang::get('core.menu_search')}}</span>
-											</button>
-											<a href="{{ URL::to('press?show='.$showType) }}" class="btn btn-primary btn-lg">
-												<span class="icn"><i class="icon-spinner8"></i> {{\Lang::get('core.menu_reset')}}</span>
-											</a>
-											<!-- View button -->
-											<div class="btn-group">
-											  <button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="icn"><i class="icon-screen2"></i> {{\Lang::get('core.menu_view')}}</span></button>
-											  <button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-												<span class="caret"></span>
-												<span class="sr-only">Toggle Dropdown</span>
-											  </button>
-											  <ul class="dropdown-menu">
-												<li><a href="{{ Request::url().'?show=list'}}">{{\Lang::get('core.menu_view_list')}}</a></li>
-												<li><a href="{{ Request::url().'?show=thumb'}}">{{\Lang::get('core.menu_view_gallery')}}</a></li>
-												<li><a href="#" id="fancybox-manual-c">{{\Lang::get('core.menu_view_slideshow')}}</a></li>
-												<li><a href="#" onclick="select_folderfilesfor_download('flipbook', 'high');">{{\Lang::get('core.menu_view_high_flipbook')}}</a></li>
-												<li><a href="#" onclick="select_folderfilesfor_download('flipbook', 'low');">{{\Lang::get('core.menu_view_low_flipbook')}}</a></li>
-											  </ul>
-											</div>
-										</div>
-									</form>
-								</div>
-							</div>
-							<!-- Load Folders -->
-							<div id="folders_data_list"><p style="padding-top: 30px; text-align: center;">Loading...</p></div>
-							
-						@endif
-					</div>
+						</div>
+						<!-- Load Folders -->
+						<div id="folders_data_list"><p style="padding-top: 30px; text-align: center;">Loading...</p></div>
+						
+					@endif
 				</div>
 			</div>
 		</div>
-    </div>
+	</div>
+</div>
 
 <div id="showallmodals"> </div>
 
@@ -389,7 +379,7 @@
 		//Load folders and folder tree by Ajax
 		function loadLeftSideTree(){ 
 			$.ajax({
-				url: '{{url("getPressFolderListAjaxonload/")}}/{{(isset($fid) && $fid!="")?$fid:0}}?show={{(isset($_GET["show"]))?$_GET["show"]:""}}',
+				url: '{{url("getPressFolderListAjaxonload/0")}}',
 				type: "get",
 				dataType: "html",
 				success: function(data){
@@ -401,24 +391,24 @@
 
 
 			$.ajax({
-					url: '{{url("getPressFoldersAjax/")}}/{{(isset($fid) && $fid!="")?$fid:0}}?show={{(isset($_GET["show"]))?$_GET["show"]:""}}',
-					type: "get",
-					dataType: "html",
-					success: function(data){
-						$('#folders_data_list').hide();
-						$('#folders_data_list').html(data);
-						$('#folders_data_list').fadeIn('slow');
-						$('#folders_data_list').find('input[type=checkbox]').iCheck({checkboxClass: 'icheckbox_square-green'});
-						$('#breadcrumb_line').html($('#folders_data_list').find('#get-breadcrumb').html());
-						$('#showallmodals').html($('#folders_data_list').find('#allmodal').html());
-						$('#allmodal').html('');
-						if({{$fid}}>0) { $('[data-target="#Directorypermission"]').removeAttr('disabled');  $('.upbtn').removeAttr('disabled'); $('input[name="fold_id"]').val('{{$fid}}'); localStorage.setItem('fold_id','{{$fid}}'); $('input[name="curnurl"]').val('{{URL::to("folders")}}/{{$fid}}?show={{$showType}}'); }
-						screenshotPreview();
-						screenshotPreviewimg();
-						screenshotPreviewimgclick();
-						screenshotPreviewmaterialimg();
-					}
-				});
+				url: '{{url("getPressFoldersAjax/")}}/{{(isset($fid) && $fid!="")?$fid:0}}?show={{(isset($_GET["show"]))?$_GET["show"]:""}}',
+				type: "get",
+				dataType: "html",
+				success: function(data){
+					$('#folders_data_list').hide();
+					$('#folders_data_list').html(data);
+					$('#folders_data_list').fadeIn('slow');
+					$('#folders_data_list').find('input[type=checkbox]').iCheck({checkboxClass: 'icheckbox_square-green'});
+					$('#breadcrumb_line').html($('#folders_data_list').find('#get-breadcrumb').html());
+					$('#showallmodals').html($('#folders_data_list').find('#allmodal').html());
+					$('#allmodal').html('');
+					if({{$fid}}>0) { $('[data-target="#Directorypermission"]').removeAttr('disabled');  $('.upbtn').removeAttr('disabled'); $('input[name="fold_id"]').val('{{$fid}}'); localStorage.setItem('fold_id','{{$fid}}'); $('input[name="curnurl"]').val('{{URL::to("folders")}}/{{$fid}}?show={{$showType}}'); }
+					screenshotPreview();
+					screenshotPreviewimg();
+					screenshotPreviewimgclick();
+					screenshotPreviewmaterialimg();
+				}
+			});
 		}
 		$(document).ready(function(){			
 			
@@ -429,7 +419,8 @@
 			//Load folders and folder tree on  extend tree 
 			$(document).on('click','[data-action="expend-folder-tree"]',function(e){
 				e.preventDefault();
-				
+				$('.gallery-select-all').css('display', '');
+                
 				$('#folders_data_list').html('<p style="padding-top: 30px; text-align: center;">Loading...</p>');
 				$('a[data-action="expend-folder-tree"]').removeClass('selected');
 				$(this).addClass('selected');
@@ -503,16 +494,17 @@
 		    //Load folders and folder tree on  extend tree 
 			$(document).on('click','[data-action-open="folder"]',function(e){
 				e.preventDefault();
-				
+				$('.gallery-select-all').css('display', 'none');
+                
 				$('#folders_data_list').html('<p style="padding-top: 30px; text-align: center;">Loading...</p>');
 				$('a[data-action="expend-folder-tree"]').removeClass('selected');
 				$(this).addClass('selected');
 				//$('a.selected[data-action="expend-folder-tree"]').next().after('<p class="loading">Loading...</p>');
 				$.ajax({
-					url: '{{url("getPressFolderListAjaxonload/")}}/'+$(this).attr('rel_row')+'?show={{(isset($_GET["show"]))?$_GET["show"]:""}}',
+					url: '{{url("getPressFolderListAjaxonload/")}}/'+$(this).attr('rel_row'),
 					type: "get",
 					dataType: "html",
-					success: function(data){
+					success: function(data){ 
 						$('[data-load="left-side-tree"]').hide();
 						$('[data-load="left-side-tree"]').fadeIn('slow');
 						$('[data-load="left-side-tree"]').html(data);
@@ -531,6 +523,53 @@
 						$('#folders_data_list').find('input[type=checkbox]').iCheck({checkboxClass: 'icheckbox_square-green'});
 						$('#breadcrumb_line').html($('#folders_data_list').find('#get-breadcrumb').html());
 						$('#showallmodals').html($('#folders_data_list').find('#allmodal').html());
+						$('#allmodal').html('');
+						if(relroid>0) { $('[data-target="#Directorypermission"]').removeAttr('disabled'); $('.upbtn').removeAttr('disabled'); $('input[name="fold_id"]').val(relroid); localStorage.setItem('fold_id',relroid); $('input[name="curnurl"]').val('{{URL::to("folders")}}/' + relroid+'?show={{$showType}}'); }
+						screenshotPreview();
+						screenshotPreviewimg();
+						screenshotPreviewimgclick();
+						screenshotPreviewmaterialimg();
+					}
+				});
+				
+
+			});
+
+            //Load folders and folder tree on  extend tree 
+			$(document).on('click','[data-action-open="file"]',function(e){
+				e.preventDefault();
+				$('.gallery-select-all').css('display', 'none');
+                $("#page-download").css('display', 'none');
+                $("#file-breadcrumb").css('display', 'none');
+				//$('#folders_data_list').html('<p style="padding-top: 30px; text-align: center;">Loading...</p>');
+				$('a[data-action="expend-folder-tree"]').removeClass('selected');
+				$(this).addClass('selected');
+				//$('a.selected[data-action="expend-folder-tree"]').next().after('<p class="loading">Loading...</p>');
+				$.ajax({
+					url: '{{url("getPressFolderListAjaxonload/")}}/'+$(this).attr('rel_row'),
+					type: "get",
+					dataType: "html",
+					success: function(data){ 
+						$('[data-load="left-side-tree"]').hide();
+						$('[data-load="left-side-tree"]').fadeIn('slow');
+						$('[data-load="left-side-tree"]').html(data);
+					}
+				});
+
+				var relroid = $(this).attr('rel_row');
+                var relrofid = $(this).attr('rel_fid');
+				$.ajax({
+					url: $(this).attr('href'),
+					type: "get",
+					dataType: "html",
+					success: function(data){
+						$('#folders_data_list').hide();
+						$('#folders_data_list').html(data);
+						$('#folders_data_list').fadeIn('slow');
+						//$('#folders_data_list').find('input[type=checkbox]').iCheck({checkboxClass: 'icheckbox_square-green'});
+						$('#breadcrumb_line').html($('#folders_data_list').find('#get-breadcrumb').html());
+						$('#showallmodals').html($('#folders_data_list').find('#allmodal').html());
+                        
 						$('#allmodal').html('');
 						if(relroid>0) { $('[data-target="#Directorypermission"]').removeAttr('disabled'); $('.upbtn').removeAttr('disabled'); $('input[name="fold_id"]').val(relroid); localStorage.setItem('fold_id',relroid); $('input[name="curnurl"]').val('{{URL::to("folders")}}/' + relroid+'?show={{$showType}}'); }
 						screenshotPreview();

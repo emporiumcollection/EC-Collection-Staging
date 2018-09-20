@@ -20,8 +20,10 @@ Route::get('wetransfer', 'PropertiesController@show_wetransfer');
  * AIC: CRM Layout Module
  */
  
+Route::get('press/{id}', 'ContainerController@media_relations');
 Route::get('press', 'ContainerController@media_relations');
 Route::get('presssearch', 'ContainerController@pressSearchAjax');
+Route::get('getPressFolderListAjaxonload/{id}', 'ContainerController@getPressFolderListAjaxonload');
 
 Route::group(['middleware' => 'auth'], function()
 {
@@ -542,10 +544,13 @@ Route::get('traveller/bookings/show/{id}', 'BookingsController@showBooking');
 Route::get('hotel/bookings', 'BookingsController@hotelBookings');
 Route::post('customer_request_referral', 'CustomerController@ajaxSendMail');
 
-Route::get('press/view/{fid}/{id}', 'ContainerController@PressShowfiles');
+//Route::get('press/view/{fid}/{id}', 'ContainerController@PressShowfiles');
+
+Route::get('press/view/{fid}/{id}', 'ContainerController@PressShowfilesAjax');
+
 Route::get('tpress/view/{fid}/{id}', 'ContainerController@PressShowTiffFiles');
 Route::get('getPressFolderListAjax/{id}', 'ContainerController@getPressFolderListAjax');
-Route::get('getPressFolderListAjaxonload/{id}', 'ContainerController@getPressFolderListAjaxonload');    
+    
 Route::get('getPressFoldersAjax/{id}', 'ContainerController@getPressFoldersAjax');
 Route::post('pressseletedfileszip', 'ContainerController@PressDownloadZipSelected');
 Route::post('pressseletedfileslowPdf', 'ContainerController@PressDownloadlowPdfSelected');
