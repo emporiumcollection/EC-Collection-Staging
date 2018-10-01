@@ -106,7 +106,7 @@
     						<a href="{{ URL::to('core/users/show/'.$row->id.'?return='.$return)}}" class="tips btn btn-xs btn-white" title="{{ Lang::get('core.btn_view') }}" style="display: none;"><i class="fa  fa-search "></i></a>
     						@endif
     						@if($access['is_edit'] ==1)
-    						<a  href="{{ URL::to('core/users/crmupdate/'.$row->id.'?return='.$return) }}" class="tips btn btn-xs btn-white" title="{{ Lang::get('core.btn_edit') }}" ><i class="fa fa-edit "></i></a>
+    						<a  href="{{ URL::to('crmhotel/updatelead/'.$row->id.'?return='.$return) }}" class="tips btn btn-xs btn-white" title="{{ Lang::get('core.btn_edit') }}" ><i class="fa fa-edit "></i></a>
     						@endif
     						<a  href="javascript:void(0);" class="tips btn btn-xs btn-success" title="Email" onclick="sendemails_crmhotels('{{$row->id}}');"><i class="fa fa-envelope-o"></i></a>						
     					

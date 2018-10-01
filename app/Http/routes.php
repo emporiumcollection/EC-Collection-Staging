@@ -117,6 +117,8 @@ Route::post('changepassword', 'UserController@ajaxSavepassword');
 Route::post('customer_ajaxPostCreate', 'CustomerController@ajaxPostCreate');
 
 Route::post('leadcreate', 'UserController@ajaxLeadCreate');
+Route::post('leadupdate', 'UserController@ajaxLeadUpdate');
+
 Route::get('crmhotel/leadlisting', 'Core\UsersController@leadlisting');
 Route::get('crmhotel/hoteluserlisting', 'Core\UsersController@hoteluserlisting');
 Route::get('crmhotel/travelleruserlisting', 'Core\UsersController@travelleruserlisting');
