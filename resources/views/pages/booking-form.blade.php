@@ -93,7 +93,13 @@ $(function () {
     });
 });
         </script>
-        <div class="booking-form-bg">
+        <?php 
+        $bg_img = '';
+        if(!empty($propertyDetail['propimage'][0]->file_name)){
+            $bg_img = $propertyDetail['propimage'][0]->imgsrc.$propertyDetail['propimage'][0]->file_name;
+        } 
+        ?>
+        <div class="" style="background-attachment: fixed; background-image: url({{$bg_img}}); background-repeat: no-repeat; background-size: cover; min-height: 100vh;">
             <div class="container">
                 <div class="form-custom-width">
                       <a href="{{ redirect()->back()->getTargetUrl() }}" class="arrowlefttop"><i class="fa fa-arrow-left"></i></a>

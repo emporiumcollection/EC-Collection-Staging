@@ -90,7 +90,7 @@
 		<div class="col-sm-3">	
 			<div class="row">
 				<div class="col-sm-12">
-					<a href="{{ URL::to('press?show='.$showType) }}" class="files label"><span>Files</span></a>
+					<a href="{{ URL::to('press?show='.$showType) }}" class="files label clor"><span>Files</span></a>
 					<div data-load="left-side-tree"><p style="padding-top: 20px;">Loading...</p></div>
 				</div>
 			</div>			
@@ -108,8 +108,8 @@
 					  </button>
 					  <ul class="dropdown-menu">
 						<li><a href="#" onclick="select_folderfilesfor_download('file_download');">{{\Lang::get('core.menu_download_zip')}}</a></li>
-						<li><a href="#" onclick="select_folderfilesfor_download('lowpdf_download');">{{\Lang::get('core.menu_download_low_pdf')}}</a></li>
-						<li><a href="#" onclick="select_folderfilesfor_download('highpdf_download');">{{\Lang::get('core.menu_download_high_pdf')}}</a></li>
+						<?php /* <li><a href="#" onclick="select_folderfilesfor_download('lowpdf_download');">{{\Lang::get('core.menu_download_low_pdf')}}</a></li>
+						<li><a href="#" onclick="select_folderfilesfor_download('highpdf_download');">{{\Lang::get('core.menu_download_high_pdf')}}</a></li> */ ?>
 						<li><a href="#" onclick="entire_folderfilesfor_download();">{{\Lang::get('core.menu_download_entire_folder')}}</a></li>
 					  </ul>
 					</div>
@@ -333,9 +333,12 @@
     .size-bar-side{overflow: hidden;}
     div[data-load="left-side-tree"]{max-height: 600px;    overflow: auto;}
     .leng { display:none; }
-    .btn_orange, .btn_orange:hover, .btn_orange:focus, .btn_orange:active, .btn_orange.active, .open .dropdown-toggle.btn_orange {  background-color: orange; border-color: orange; }
+    .btn_orange, .btn_orange:hover, .btn_orange:focus, .btn_orange:active, .btn_orange.active, .open .dropdown-toggle.btn_orange {  background-color: #ABA07C; border-color: #ABA07C; }
     .disnon { display:none; }
     .lightboxmodal { z-index:1060; }
+    .clor{
+        color: #000 !important;    
+    }
     </style>
 @endsection
     
@@ -379,7 +382,7 @@
 		//Load folders and folder tree by Ajax
 		function loadLeftSideTree(){ 
 			$.ajax({
-				url: '{{url("getPressFolderListAjaxonload/0")}}',
+				url: '{{url("getPressFolderListAjaxonload/")}}/{{(isset($fid) && $fid!="")?$fid:0}}',
 				type: "get",
 				dataType: "html",
 				success: function(data){
@@ -550,7 +553,7 @@
 				$(this).addClass('selected');
 				//$('a.selected[data-action="expend-folder-tree"]').next().after('<p class="loading">Loading...</p>');
 				$.ajax({
-					url: '{{url("getPressFolderListAjaxonload/")}}/'+$(this).attr('rel_row'),
+					url: '{{url("getPressFolderListAjaxonload/")}}/'+$(this).attr('rel_fid'),
 					type: "get",
 					dataType: "html",
 					success: function(data){ 
