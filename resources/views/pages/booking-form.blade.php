@@ -99,7 +99,7 @@ $(function () {
             $bg_img = $propertyDetail['propimage'][0]->imgsrc.$propertyDetail['propimage'][0]->file_name;
         } 
         ?>
-        <div class="" style="background-attachment: fixed; background-image: url({{$bg_img}}); background-repeat: no-repeat; background-size: cover; min-height: 100vh;">
+        <div class="" style="background-attachment: fixed; background-image: url('<?php echo $bg_img; ?>'); background-repeat: no-repeat; background-size: cover; min-height: 100vh;">
             <div class="container">
                 <div class="form-custom-width">
                       <a href="{{ redirect()->back()->getTargetUrl() }}" class="arrowlefttop"><i class="fa fa-arrow-left"></i></a>
