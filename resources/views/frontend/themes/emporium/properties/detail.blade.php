@@ -346,7 +346,20 @@
                             <input type="hidden" name="roomType" id="roomType" value=""/>
                             <div class="row">
                                 <ul class="hotelBorderList">
-                                    <li>
+                                    
+                                    <li style="width: 45%;" class="center-calendarbox">
+                                        <div id="t-middel-picker" class="t-datepicker">
+                                            <div class="t-date-divide">
+                                                <h3>Arrival</h3>
+                                                <div class="t-check-in"></div>
+                                            </div>
+                                            <div class="t-date-divide">
+                                                <h3>Departure</h3>
+                                                <div class="t-check-out"></div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <!--<li>
                                         <h3>Arrival</h3>
                                         <div class="form-group">
                                             <input name="arrive" id="reservationdate-1" class="form-control datefield reservationdate" type="text" readonly required>
@@ -359,7 +372,14 @@
                                             <input name="departure" id="reservationdate-2" class="form-control datefield reservationdate" type="text" readonly required>
                                             <div class="input-group-icon"><i class="fa fa-calander"></i></div>
                                         </div>
-                                    </li>
+                                    </li>-->
+                                    
+                                    <!-- <li style="width: 45%;" class="middle-calendarbox">
+                                        <div id="t-middel-picker" class="t-datepicker">
+                                            <div class="t-check-in"></div>
+                                            <div class="t-check-out"></div>
+                                        </div>
+                                    </li> -->
                                     <li>
                                         <h3>Adults</h3>
                                         <select name="booking_adults">
@@ -582,6 +602,21 @@
 				.HamYardHotelInnerfooter {
                     background-image: url('{{ $propertyDetail['propimage_thumbpath'].$propertyDetail['propimage'][3]->file_name}}') !important;
                 }
+                .center-calendarbox .fa.fa-calendar{
+                    float: left;
+                }
+                .center-calendarbox span{ color: #fff !important; display: inline !important; }
+                .t-day{ color: #000 !important; }
+                
+                .t-date-divide{
+                    float: left;
+                    width: 50%;
+                }
+                .center-calendarbox .t-check-in, .center-calendarbox .t-check-out{
+                    width: 98% !important;
+                    margin-top: 16px;
+                    margin-bottom: 40px;
+                }
             </style>
         @endif
     @endif
@@ -598,6 +633,35 @@
 @section('custom_js')
     @parent
 	<script>
+        $(document).ready(function () {
+            
+            
+            var chk_date = new Date(); 
+            
+            var chk_out_date = new Date();
+            
+            console.log(chk_date);
+            
+            $('#t-middel-picker').tDatePicker({
+                'numCalendar':'2',
+                'autoClose':true,
+                'durationArrowTop':'200',
+                'formatDate':'mm-dd-yyyy',
+                'titleCheckIn':'Arrival',
+                'titleCheckOut':'Departure',
+                'inputNameCheckIn':'arrive',
+                'inputNameCheckOut':'departure',
+                'titleDateRange':'days',
+                'titleDateRanges':'days',
+                'iconDate':'<i class="fa fa-calendar"></i>',
+                'limitDateRanges':'365',
+                'dateCheckIn':chk_date,
+                'dateCheckOut':chk_out_date,
+                //'dateCheckIn':'@if(isset($_GET['arrive']) && $_GET['arrive']!=''){{$_GET['arrive']}}@else{{'null'}}@endif',
+                //'dateCheckOut':'@if(isset($_GET['departure']) && $_GET['departure']!=''){{$_GET['departure']}}@else{{'null'}}@endif'
+            });
+        });
+        
         $(document).on('click', '.galleryImgBtn', function () {
 			var params = $.extend({}, doAjax_params_default);
 			params['url'] = BaseURL + '/getpropertyroomimages/' + $(this).attr('rel');

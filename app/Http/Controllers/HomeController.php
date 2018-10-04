@@ -3839,20 +3839,24 @@ class HomeController extends Controller {
         $props = \DB::table('tb_properties')->where('property_slug', $request->slug)->first();
         
         $arrive_date = '';
-        if (!is_null($request->input('arrive')) && $request->input('arrive') != '') {
+        $book_arrive_date = '';
+        if (!is_null($request->input('arrive')) && $request->input('arrive') != '' && $request->input('arrive') != 'null') {
             \Session::put('arrive_date', $request->input('arrive'));
             $arrive = trim($request->input('arrive'));
-                $arrive_array=explode("-",$arrive);
+                $arrive_array=explode("-",$arrive); 
                 $t=$arrive_array[0];
                 $arrive_array[0]=$arrive_array[1];
                 $arrive_array[1]=$t;
                 $arrive_date=implode(".",$arrive_array);
 
-            
+            $book_arrive_date = $arrive_array[2]."/".$arrive_array[1]."/".$arrive_array[0];
         }
         $this->data['arrive_date']=$arrive_date;
+        $this->data['book_arrive_date']=$book_arrive_date;
+        
+        $book_departure_date ='';
         $departure_date ='';
-        if (!is_null($request->input('departure')) && $request->input('departure') != '') {
+        if (!is_null($request->input('departure')) && $request->input('departure') != '' && $request->input('arrive') != 'null') {
             \Session::put('departure', $request->input('departure'));
             
 
@@ -3863,10 +3867,12 @@ class HomeController extends Controller {
                 $departure_array[1]=$t;
                 $departure_date=implode(".",$departure_array);
 
-            
+            $book_departure_date = $departure_array[2]."/".$departure_array[1]."/".$departure_array[0];
             
         }
         $this->data['departure'] = $departure_date;
+        $this->data['book_departure'] = $book_departure_date;
+        
 		$this->data['adults'] = '';
 		$this->data['childs'] = '';
       //  dd($request->all());
