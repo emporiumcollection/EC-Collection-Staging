@@ -1603,6 +1603,14 @@ All prices displayed on the Design-Locations websites are current, day prices, s
                     'limitDateRanges':'365',
                     'dateCheckIn':chk_date,
                     'dateCheckOut':chk_out_date,
+                }).on('afterCheckOut',function(e, dateCO) {
+                    s1 = dateCO[0];
+                    s2 = dateCO[1];
+                    var start = new Date(moment(s1).format('YYYY-MM-DD'));
+                    var end = new Date(moment(s2).format('YYYY-MM-DD'));
+                    var diff = new Date(end - start);
+                    var days = diff/1000/60/60/24;
+                    $('#number_of_nights').val(days + 1);                    
                 });
 /*                $('#two-inputs').dateRangePicker({
                     selectForward: (Boolean),

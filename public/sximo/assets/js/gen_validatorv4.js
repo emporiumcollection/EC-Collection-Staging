@@ -2536,7 +2536,7 @@ function VWZ_IsEmpty(value)
 
     value = sfm_str_trim(value);
 
-    return (value.length) == 0 ? true : false;
+    return (((value.length == 0) || (value == 'null')) ? true : false);
 
 }
 
