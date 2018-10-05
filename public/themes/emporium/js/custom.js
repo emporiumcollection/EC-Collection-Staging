@@ -570,7 +570,7 @@ slider.oninput = function() {
  $('.cnt-box').hide();
  $('.bg-dark').hide();
  
- if($('#search-result-slider').hasClass('luxuryHotelSlider')){
+ if(!($('.sidefixednav').hasClass('homerightmenu'))){
     $('.header-content').addClass('showsearch');
  }
 
