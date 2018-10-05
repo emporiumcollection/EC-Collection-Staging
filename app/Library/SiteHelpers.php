@@ -1292,7 +1292,7 @@ public static function alphaID($in, $to_num = false, $pad_up = false, $passKey =
 	
 	public static function avatarProfile( $width =75, $height =75, $cls='img-circle')
 	{
-		$avatar = '<img alt="" src="http://www.gravatar.com/avatar/'.md5(Session::get('email')).'"  height="30" width="'.$width.'" />';
+		$avatar = '<img alt="" src="https://www.gravatar.com/avatar/'.md5(Session::get('email')).'"  height="30" width="'.$width.'" />';
 		$Q = DB::table("tb_users")->where("id",'=',Session::get('uid'))->get();
 		if(count($Q)>=1) 
 		{
