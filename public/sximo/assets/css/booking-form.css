@@ -953,7 +953,7 @@ input[type="checkbox"]:checked ~ .reveal-if-active {
     height: 55px;
     text-align: center;
 }
-.radarrow.timestop{color:#ABA07C !important; font-weight: 700; font-size:30px; padding-top: 4px;}
+.radarrow.timestop{color:#ABA07C !important; /*font-weight: 700;*/ font-size:30px; padding-top: 4px;}
 .radarrow.rad-left{ left: 23px !important; }
 .radarrow.rad-right{ right: 23px !important; }
 .radarrow.rad-top{ top: 10px !important; }
