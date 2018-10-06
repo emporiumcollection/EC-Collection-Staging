@@ -107,8 +107,8 @@ $(function () {
         <div class="" style="background-attachment: fixed; background-image: url('<?php echo $bg_img; ?>'); background-repeat: no-repeat; background-size: cover; min-height: 100vh;">
             <div class="container">
                 <div class="form-custom-width">
-                      <a href="{{ redirect()->back()->getTargetUrl() }}" class="arrowlefttop"><i class="fa fa-arrow-left"></i></a>
-                      <a href="{{ redirect()->back()->getTargetUrl() }}" class="timestop"><i class="fa fa-times"></i></a>
+                      <a href="{{ redirect()->back()->getTargetUrl() }}" class="arrowlefttop radarrow rad-left rad-top"><img src="{{ asset('themes/emporium/images/editorial-left-arrow.png')}}" alt="Icon" /></a>
+                      <a href="{{ redirect()->back()->getTargetUrl() }}" class="timestop radarrow rad-right rad-top">&times;</a>
                     {{-- <a href="#"><img src="{{ asset('sximo/assets/images/logo-design_1.png')}}" alt="" class="img-responsive new-book-form-hotel-logo" style="width: 50%;" /></a> --}}
                       <a href="#"><img src="{{ asset('themes/emporium/images/emporium-voyage-logo.png')}}" alt="" class="img-responsive new-book-form-hotel-logo" style="width: 50%;" /></a>
                     <form id="frontend_booking" action="javascript:save_reserve_forms_data('frontend_booking');" >

@@ -37,7 +37,6 @@ a:hover, a:focus, a:active{
 .form-custom-width {
     background: #000000 none repeat scroll 0 0;
     background-color: rgba(0,0,0,0.5);
-    position: relative;
     margin: 0 auto;
     min-height: 100vh;
     padding: 120px 38px;
@@ -933,6 +932,7 @@ input[type="checkbox"]:checked ~ .reveal-if-active {
     font-size:25px;
     color:#fff;
 }
+
 .timestop
 {
     position: absolute;
@@ -941,6 +941,24 @@ input[type="checkbox"]:checked ~ .reveal-if-active {
     right: 30px;
     color: #f00;  
 }
+
+.radarrow{
+    position: absolute;
+    font-size:25px;
+    color:#fff;    
+    background-color: #000;
+    background-color: rgba(0,0,0,0.5);
+    padding: 7px 0 0;
+    width: 100px;
+    height: 55px;
+    text-align: center;
+}
+.radarrow.timestop{color:#ABA07C !important; font-weight: 700; font-size:30px; padding-top: 4px;}
+.radarrow.rad-left{ left: 23px !important; }
+.radarrow.rad-right{ right: 23px !important; }
+.radarrow.rad-top{ top: 10px !important; }
+.radarrow.rad-middle{ top: auto !important; }
+.radarrow.rad-bottom{ top: 10px !important; }
 
 @media(max-width:767px)
 {
