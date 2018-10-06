@@ -1712,7 +1712,7 @@ All prices displayed on the Design-Locations websites are current, day prices, s
                     if ($(this).data('prevent-click') == '1') {
                         event.stopPropagation();
                         event.preventDefault();
-                        alert("Please Fill Up The Fields Above Frist");
+                        alert("Complete all fields above to continue");
                     }
                 });
 
@@ -1726,7 +1726,7 @@ All prices displayed on the Design-Locations websites are current, day prices, s
                     if ($(this).data('prevent-click') == '1') {
                         event.stopPropagation();
                         event.preventDefault();
-                        alert("Please Fill Up The Fields Above Frist");
+                        alert("Complete all fields above to continue");
                     }
                 });
 
@@ -1740,7 +1740,7 @@ All prices displayed on the Design-Locations websites are current, day prices, s
                     if ($(this).data('prevent-click') == '1') {
                         event.stopPropagation();
                         event.preventDefault();
-                        alert("Please Fill Up The Fields Above Frist");
+                        alert("Complete all fields above to continue");
                     }
                 });
 
@@ -1799,7 +1799,7 @@ All prices displayed on the Design-Locations websites are current, day prices, s
                     if ($(this).data('prevent-click') == '1') {
                         event.stopPropagation();
                         event.preventDefault();
-                        alert("Please Fill Up The Fields Above Frist");
+                        alert("Complete all fields above to continue");
                     }
                 });
             });
@@ -1823,13 +1823,21 @@ All prices displayed on the Design-Locations websites are current, day prices, s
                 }
             };
             FormStuff.init();
-
+            
+            function radRemoveRooms(rrobj){
+                if(((typeof $(rrobj).closest('.parent-rad-div').html()) != undefined) && ((typeof $(rrobj).closest('.parent-rad-div').html()) != 'undefined')){
+                    $(rrobj).closest('.parent-rad-div').remove();
+                }
+                
+                return false;
+            }
+            
             $(document).ready(function () {
                 $(".add-new-room-btn").click(function (event) {
                     event.preventDefault();
 
-                    var html = '<div class="input-field1">';
-                    html += 'ROOMS';
+                    var html = '<div class="parent-rad-div"><div class="input-field1">';
+                    html += 'ROOMS  <a href="#" class="rad-booking-trash-icon" onclick="return radRemoveRooms(this);"><i class="fa fa-trash"></i></a>';
                     html += '</div>';
                     html += '<div class="input-field2">';
                     html += '<div class="booking-form-heading">Number of adults(s)</div>';
@@ -1848,7 +1856,7 @@ All prices displayed on the Design-Locations websites are current, day prices, s
                     html += '<option>2</option>';
                     html += '</select>';
                     html += '</div>';
-                    html += '<div class="clearfix"></div>';
+                    html += '<div class="clearfix"></div></div>';
                     $(this).before(html);
                 });
                 

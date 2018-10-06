@@ -178,6 +178,9 @@ a:hover, a:focus, a:active{
     text-align: center;
     width: 100%;
 }
+a.booking-add-room:hover, a.booking-add-room:focus{ color: #252525; }
+a.booking-add-room:active{ color: #fff; }
+.rad-booking-trash-icon{ color: #ABA07C !important; margin-left: 10px; cursor: pointer; }
 .validate-btn {
     background: #ABA07C none repeat scroll 0 0;
     border: medium none;
