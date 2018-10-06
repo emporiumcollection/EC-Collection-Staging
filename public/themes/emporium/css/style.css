@@ -1080,7 +1080,7 @@ border-radius:0;
 .fullWidthPopup {position: fixed;top: 0;left: -100%;width: 100%;height: 100vh;z-index: 999999;transition: all 1.2s ease 0s;-webkit-transition: all 1.2s ease 0s;-moz-transition: all 1.2s ease 0s;-ms-transition: all 1.2s ease 0s;overflow-x: hidden;}
 .fullWidthPopup .container {max-width: 1000px;}
 .fullWidthPopup.openPopup {width: 100%;left: 0;}
-.fullWidthPopup .loginPopupCloseButton {color: #ABA07C !important;display: inline-block;padding-right: 12px;float: right;position: absolute;top: 5px;right: 5px;}
+.fullWidthPopup .loginPopupCloseButton {color: #ABA07C !important;display: inline-block;padding-right: 12px;float: right;position: absolute;top: 5px;right: 5px; opacity: 0.5;}
 .fullWidthPopup.openPopup {display: block;width: 100%;left: 0px;top: 0;}
 .searchOurCollectonpopup {background-image: url(../images/GoOurCollectionBackground.jpg);background-repeat: no-repeat;background-size: cover;position: fixed;}
 .searchBoxDiv {width: 100%;display: inline-block;padding: 80px 0 0;width: 100vw;}
