@@ -35,6 +35,7 @@
                 <li><a class="cursor" data-action="search-by-date">Search availability</a></li>
                 <li><a class="cursor" data-action="select-destination" data-id="0">Search by destination</a></li>
                 <li><a class="cursor" data-action="select-experience">Search by Experience</a></li>
+                <li><a class="cursor" data-action="select-destination-youtube">Search Destination Channel</a></li>
                 <!--li><a href="javascript:void(0)" >PERSONALIZED SERVICE</a></li-->
                 <li><a class="cursor" data-action="select-menu" data-position="business" data-id="0">Company & Info</a></li>
             </ul>
