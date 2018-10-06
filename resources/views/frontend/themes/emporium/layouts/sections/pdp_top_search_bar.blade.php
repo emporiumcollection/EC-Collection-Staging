@@ -26,15 +26,33 @@
                             </div>
 						</div>
 					</div>
+                    {{--*/
+                    $selectedRoom = 0;
+                    $bigRoomPrice = 0;
+                    if (array_key_exists('typedata', $propertyDetail))
+                    {
+                        foreach($propertyDetail['typedata'] as $type)
+                        {
+                            if (array_key_exists($type->id, $propertyDetail['roomimgs']))
+                            {
+                                $pp = (float) $type->price;
+                                if($bigRoomPrice <= $pp){
+                                    $bigRoomPrice = $pp;
+                                    $selectedRoom = $type->id;
+                                }
+                            }
+                        }
+                    }
+                    /*--}}
 					<div class="col-sm-3 col-md-2">
 						<div class="form-group">
 							<label>&nbsp;</label>
 							<select name="roomType" class="form-control"  required="required" title="Please Choose Room(s)"  oninvalid="this.setCustomValidity('Please Select Room(s)')"   oninput="this.setCustomValidity('')" >
-								<option disabled="" value="" selected>Select Room(s)</option>
+								<option disabled="" value="" {{(($selectedRoom <= 0)?'selected="selected"':'')}}>Select Room(s)</option>
 								@if (array_key_exists('typedata', $propertyDetail))
 									@foreach($propertyDetail['typedata'] as $type)
 										@if (array_key_exists($type->id, $propertyDetail['roomimgs']))
-											<option value="{{$type->id}}">{{$type->category_name}}</option>
+											<option value="{{$type->id}}" {{(($selectedRoom == $type->id)?'selected="selected"':'')}}>{{$type->category_name}}</option>
 										@endif
 									@endforeach
 								@endif
