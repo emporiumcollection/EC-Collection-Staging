@@ -35,7 +35,9 @@ a:hover, a:focus, a:active{
     min-height: 100vh;
 }
 .form-custom-width {
-    background: #d2d2c6 none repeat scroll 0 0;
+    background: #000000 none repeat scroll 0 0;
+    background-color: rgba(0,0,0,0.5);
+    position: relative;
     margin: 0 auto;
     min-height: 100vh;
     padding: 120px 38px;
