@@ -45,8 +45,8 @@ class ContractController extends Controller {
             return Redirect::to('dashboard')
                             ->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus', 'error');
 
-        $sort = (!is_null($request->input('sort')) ? $request->input('sort') : 'contract_id');
-        $order = (!is_null($request->input('order')) ? $request->input('order') : 'asc');
+        $sort = (!is_null($request->input('sort')) ? $request->input('sort') : 'sort_num');
+        $order = (!is_null($request->input('order')) ? $request->input('order') : 'desc');
         // End Filter sort and order for query 
         // Filter Search for query		
         $filter = (!is_null($request->input('search')) ? $this->buildSearch() : '');
@@ -74,12 +74,14 @@ class ContractController extends Controller {
         $this->data['pagination'] = $pagination;
         // Build pager number and append current param GET
         $this->data['pager'] = $this->injectPaginate();
+        $this->data['radtotalRecords'] = $results['total'];
         // Row grid Number 
         $this->data['i'] = ($page * $params['limit']) - $params['limit'];
         // Grid Configuration 
         $this->data['tableGrid'] = $this->info['config']['grid'];
         $this->data['tableForm'] = $this->info['config']['forms'];
         $this->data['colspan'] = \SiteHelpers::viewColSpan($this->info['config']['grid']);
+        $this->data['curr_page'] = $page;
         // Group users permission
         $this->data['access'] = $this->access;
         // Detail from master if any
@@ -154,6 +156,87 @@ class ContractController extends Controller {
             return Redirect::to('dashboard')
                             ->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus', 'error');
         }
+    }
+    
+    public function download_signup_contract($isview='download'){
+        $viewPDF = (($isview == 'view')?true:false);
+        $downFileName = 'contract-signup-'.date('d-m-Y').'.pdf';
+        $selectFields = array('tb_users_contracts.*','tb_users.first_name','tb_users.last_name','tb_users_contracts.contract_type','tb_users_contracts.commission_type','tb_users_contracts.partial_availability_commission','tb_users_contracts.full_availability_commission');
+        $usersContracts = \DB::table('tb_users_contracts')
+                            ->select($selectFields)
+                            ->join('tb_users', 'tb_users_contracts.accepted_by', '=', 'tb_users.id')
+                            ->where('tb_users_contracts.contract_type','sign-up')->where('tb_users_contracts.accepted_by', \Auth::user()->id)->where('tb_users_contracts.status',1)->where('tb_users_contracts.is_expried',0)->where('tb_users_contracts.deleted',0)
+                            ->orderBy('tb_users_contracts.sort_num','DESC')->get();
+                            
+        $CommissionContracts = \DB::table('tb_users_contracts')
+                            ->select($selectFields)
+                            ->join('tb_users', 'tb_users_contracts.accepted_by', '=', 'tb_users.id')
+                            ->where('tb_users_contracts.contract_type','commission')->where('tb_users_contracts.accepted_by', \Auth::user()->id)->where('tb_users_contracts.status',1)->where('tb_users_contracts.is_expried',0)->where('tb_users_contracts.deleted',0)
+                            ->orderBy('tb_users_contracts.sort_num','ASC')->first();
+        if(isset($CommissionContracts->contract_type)){ $usersContracts[] = $CommissionContracts; }
+        
+        usort($usersContracts, function($a, $b) {
+						return $a->sort_num - $b->sort_num; 
+					});
+        $usersContracts = array_reverse($usersContracts);
+        
+        $center_content = '';
+        $i = 1;
+        $date_signed = '';
+        $username = '';
+        foreach($usersContracts as $si_contract){
+            $username = trim(ucfirst($si_contract->first_name).' '.ucfirst($si_contract->last_name));
+            $created_on = date_create($si_contract->created_on);
+            $date_signed = date_format($created_on,"Y/m/d");
+            $center_content .= '<div class="Mrgtop80 font13">';
+                $center_content .= '<h3>'.$i++.'. '.$si_contract->title.'</h3>';
+                if((!empty($si_contract->commission_type)) && ($si_contract->contract_type == 'commission')){
+                    $center_content .= '<p> <span class="strong">Availability: </span><span class="font14">'.ucfirst($si_contract->commission_type).'</p>';
+                    $center_content .= '<p> <span class="strong">Commission (%): </span><span class="font14">';
+                
+                    if($si_contract->commission_type == 'partial'){
+                        $center_content .= $si_contract->partial_availability_commission;
+                    }
+                    if($si_contract->commission_type == 'full'){
+                        $center_content .= $si_contract->full_availability_commission;
+                    }
+                    $center_content .= '</span></p>';
+                }   
+                $center_content .= '<p></span><span class="font14">'.$si_contract->description.'</span></p>';         
+            $center_content .= '</div>';
+        }
+        
+        if((strlen($username) > 0) && (strlen($date_signed) > 0)){
+            $center_content .= '<div class="Mrgtop40 font13">';
+				$center_content .= '<p class="font13">I hereby agree to supply the above for entry into Emporium-Voyage</p>';
+                $center_content .= '<p class="font13">General terms & conditions apply.</p>';
+                $center_content .= '<table>';
+                    $center_content .= '<tr><td class="strong">Signed by: </td> <td class="underline">'.$username.'</td></tr>';    
+                    $center_content .= '<tr><td class="strong">Print name: </td> <td class="underline">'.$username.'</td></tr>';
+                    $center_content .= '<tr><td class="strong">For and on behalf of: </td> <td class="underline">NA</td></tr>';
+                    $center_content .= '<tr><td class="strong">Date signed: </td> <td class="underline">'.$date_signed.'</td></tr>';
+                    $center_content .= '<tr><td></td><td><img src="'. \URL::to('sximo/assets/images/checked-box.png').'" width="20px;" height="20px;"><label style="display:inline-block;text-align:left;">I agreed to the Terms stipulated in this contract</label></td></tr>';
+                    $center_content .= '<tr><td class="strong">Signed by: </td> <td class="underline">'.$username.'</td></tr>';    
+                    $center_content .= '<tr><td class="strong">Print name: </td> <td class="underline">'.$username.'</td></tr>';
+                    $center_content .= '<tr><td class="strong">For and on behalf of: </td> <td class="underline">NA</td></tr>';
+                    $center_content .= '<tr><td class="strong">Date signed: </td> <td class="underline">'.$date_signed.'</td></tr>';
+                $center_content .= '</table>';
+			$center_content .= '</div>';
+        }
+        
+        $pdfHeader = \CommonHelper::getcontractPDFHeader($center_content);
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->setPaper('A4');
+        $pdf->loadHTML($pdfHeader);
+        $pdf->output();
+        $dom_pdf = $pdf->getDomPDF();
+        
+        $canvas = $dom_pdf ->get_canvas();
+        $y = $canvas->get_height() - 50;
+        $canvas->page_text(30, $y, 'Page {PAGE_NUM} of {PAGE_COUNT} - Accepted', null, 10, array(0, 0, 0));
+        //return $pdf->stream();
+        if($viewPDF === true){ return $pdf->stream(); }else{ return $pdf->download($downFileName); }        
+        //echo "<pre>".$pdfHeader;
     }
     
     public function download_contract($contractid){
@@ -544,6 +627,7 @@ class ContractController extends Controller {
             $data['title'] = trim($request->input('title'));
             $data['description'] = trim($request->input('description'));
             $data['status'] = (bool) trim($request->input('contract_status'));
+            $data['is_required'] = (bool) trim($request->input('is_required'));
             $data['package_ids'] = '';
             $data['hotel_ids'] = '';
             $data['user_group_ids'] = '';
@@ -600,6 +684,13 @@ class ContractController extends Controller {
             if ($request->input('contract_id') == '') {
                 $data['created_by'] = $uid;
                 $data['created_on'] = date('Y-m-d h:i:s');
+                $check_ordering = \DB::table('tb_contracts')->orderBy('sort_num', 'desc')->first();
+				if(!empty($check_ordering)){
+					$data['sort_num'] = $check_ordering->sort_num + 1;
+				}
+				else{
+					$data['sort_num'] = 1;
+				}
             }else
             {
                 $data['updated_by'] = $uid;
@@ -751,5 +842,55 @@ class ContractController extends Controller {
                             ->with('messagetext', 'No Item Deleted')->with('msgstatus', 'error');
         }
     }
+	
+	function postChangeordering( Request $request )
+	{
+		$uid = \Auth::user()->id;
+		$id = Input::get('pid');
+		$action = Input::get('order_type');
+		$ret_url = Input::get('curnurl');
+		if($id!='' && $id>0)
+		{
+			$exist = \DB::table('tb_contracts')->where('contract_id', $id)->first();
+			if(!empty($exist))
+			{
+				if($action=='up')
+				{
+					$previous = \DB::table('tb_contracts')->where('sort_num', '>', $exist->sort_num)->orderBy('sort_num','asc')->first();
+					if(!empty($previous))
+					{
+						$previous_order = $previous->sort_num - 1;
+						$update_ordering = \DB::table('tb_contracts')->where('contract_id',$previous->contract_id)->update(['sort_num'=>$previous_order]);
+					}
+					$new_ord_num = $exist->sort_num + 1;
+				}
+				elseif($action=='down')
+				{
+					$next = \DB::table('tb_contracts')->where('sort_num', '<', $exist->sort_num)->orderBy('sort_num','desc')->first();
+					if(!empty($next))
+					{
+						$next_order = $next->sort_num + 1;
+						$update_ordering = \DB::table('tb_contracts')->where('contract_id',$next->contract_id)->update(['sort_num'=>$next_order]);
+					}
+					
+					$new_ord_num = $exist->sort_num - 1;
+				}
+				if($new_ord_num<1) { $new_ord_num = 1; }
+				$update_ordering = \DB::table('tb_contracts')->where('contract_id',$id)->update(['sort_num'=>$new_ord_num]);
+				if($update_ordering)
+				{
+					return Redirect::to($ret_url)->with('messagetext',\Lang::get('core.note_success'))->with('msgstatus','success');
+				}
+			}
+			else
+			{
+				return Redirect::to($ret_url)->with('messagetext','No record found')->with('msgstatus','error');
+			}
+		}
+		else
+		{
+			return Redirect::to($ret_url)->with('messagetext','No record found')->with('msgstatus','error');
+		}
+	}
 
 }

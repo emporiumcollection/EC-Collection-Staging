@@ -349,7 +349,8 @@ Route::group(['middleware' => 'auth'], function()
         
     Route::post('save_new_company_details', 'UserController@saveNewcompanydetails');
     Route::post('confirm_new_profile', 'UserController@confirmNewprofile');
-
+    
+    Route::get('signup-contract/{isview}', 'ContractController@download_signup_contract');
 });
 
 Route::post('hotel_membership', 'Frontend\HotelMembershipController@hotelMembershipSignupSave');

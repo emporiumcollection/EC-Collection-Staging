@@ -239,21 +239,15 @@
         									</div>
         								</div>
                                         
-                                        @if((count($contracts) > 0) || (count($userContracts) > 0))
+                                        
                                         <div class="form-group m-form__group row">
-        									<label for="ipt" class="col-sm-12 col-md-2 col-form-label">Contracts</label>
-        									<div class="col-sm-12 col-md-7">
-                                                <div class="m-form__group-sub">
-                                                    <div class="m-checkbox-inline">
-                                                        <label class="m-checkbox m-checkbox--solid m-checkbox--brand">
-                                                            <input type="checkbox" name="accept_contract" value="1" required="required" /> Please accept contracts first.<span></span>
-                                                        </label>
-                                                    </div>
-                                                    <span class="m-form__help"><a href="#" onclick="javascript: return false;" data-toggle="modal" data-target="#contract_model">View contract</a></span>
-                                                </div>
-        									</div>
-        								</div>
-                                        @endif
+                                            <label for="ipt" class="col-sm-12 col-md-2 col-form-label">Contracts</label>
+                                            <div class="col-sm-12 col-md-7">                                                
+                                                <a href="{{ URL::to('signup-contract/view')}}" title="View" class="m-btn btn btn-primary" target="_blank"><i class="la la-eye"></i></a>
+                                                <a href="{{ URL::to('signup-contract/download')}}" title="Download" class="m-btn btn btn-success" target="_blank"><i class="la la-file-pdf-o"></i></a>
+                                            </div>
+                                        </div>
+                                        
                                     </div>
                                     <div class="m-portlet__foot m-portlet__foot--fit">
         								<div class="m-form__actions">
@@ -732,6 +726,20 @@
 	</div>
     {{--*/ $new_contract_ava = false; /*--}}
     @if((count($contracts) > 0) || (count($userContracts) > 0))
+    {{--*/ 
+		usort($contracts, function($a, $b) {
+			return $a->sort_num - $b->sort_num; 
+		});
+        
+        $contracts = array_reverse($contracts);
+        
+        $final_contracts = array();
+        foreach($contracts as $sicc){
+            if(!isset($userContracts[$sicc->contract_id])){ $tempobj = $sicc; $tempobj->already_done = false; }else{ $tempobj = $userContracts[$sicc->contract_id]; $tempobj->already_done = true; }
+            if(isset($tempobj->contract_id)){$final_contracts[] = $tempobj;}
+        }
+        
+	/*--}}
     <div class="modal fade" id="contract_model" tabindex="-1" role="dialog" aria-labelledby="contractModalLabel" aria-hidden="true" style="display: none;">
     	<div class="modal-dialog modal-lg" role="document">
     		<div class="modal-content">
@@ -739,11 +747,11 @@
     				<h5 class="modal-title" id="contractModalLabel">
     					Contracts
     				</h5>
-    				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    				{{--<button type="button" class="close" data-dismiss="modal" aria-label="Close">
     					<span aria-hidden="true">
     						×
     					</span>
-    				</button>
+    				</button>--}}
     			</div>
     			<div class="modal-body">
                     <div class="m-portlet m-portlet--full-height">
@@ -751,12 +759,16 @@
                         
                         <div class="m-portlet__body">
                             <div class="m-accordion m-accordion--default m-accordion--solid" id="contract_accordion" role="tablist">
-                                <!-- already accepted contracts start -->
-                                @foreach($userContracts as $si_contract)
-                                    <div class="m-accordion__item">
+                                
+                                <!-- contracts start -->
+                                {{--*/ $new_contract_ava = false; /*--}}
+                                @foreach($final_contracts as $si_contract)
+                                {{--*/ $alreadyAccepted = (bool) $si_contract->already_done; $is_agree = (bool) ((isset($si_contract->is_agree))?$si_contract->is_agree:false);  /*--}}
+                                {{--*/ if($alreadyAccepted !== true){ $new_contract_ava = true; } /*--}}
+                                    <div class="m-accordion__item {{(($alreadyAccepted === true)?(($is_agree === true)?'m-accordion__item--success':'m-accordion__item--danger'):'')}}">
                                         <div class="m-accordion__item-head collapsed" role="tab" id="contract_accordion_item_{{$si_contract->contract_id}}_head" data-toggle="collapse" href="#contract_accordion_item_{{$si_contract->contract_id}}_body" aria-expanded="false">
-                                            <span class="m-accordion__item-icon"><i class="fa flaticon-list-3"></i></span>
-                                            <span class="m-accordion__item-title">{{$si_contract->title}} <a href="#" class="si_accept_contract already_accepted text-success"><i class="r-icon-tag la la-unlock"></i></a></span>
+                                            <span class="m-accordion__item-icon"><span class="m-switch m-switch--sm {{(($alreadyAccepted === true)?'m-switch--outline m-switch--icon m-switch--success':'m-switch--icon m-switch--info')}}"><label><input type="checkbox" name="accepted_contracts[]" value="{{$si_contract->contract_id}}" class="{{(($alreadyAccepted === true)?'rad_user_contracts':'rad_contracts')}} {{(((bool) $si_contract->is_required  == true)?'rad_required':'')}}" {{(($is_agree === true)?'checked="checked"':'')}} {{(($alreadyAccepted === true)?'disabled="disabled"':'')}} /><span></span></label></span></span>
+                                            <span class="m-accordion__item-title">{{$si_contract->title}} <?php echo (((bool) $si_contract->is_required  == true)?'<span class="text-danger">*</span>':''); ?></span>
                                             <span class="m-accordion__item-mode"></span>
                                         </div>
                                         
@@ -767,35 +779,14 @@
                                         </div>
                                     </div>
                                 @endforeach
-                                <!-- already accepted contracts end -->
-                                
-                                <!-- new contracts start -->
-                                @foreach($contracts as $si_contract)
-                                    @if(!isset($userContracts[$si_contract->contract_id]))
-                                        {{--*/ $new_contract_ava = true; /*--}}
-                                    <div class="m-accordion__item">
-                                        <div class="m-accordion__item-head collapsed" role="tab" id="contract_accordion_item_{{$si_contract->contract_id}}_head" data-toggle="collapse" href="#contract_accordion_item_{{$si_contract->contract_id}}_body" aria-expanded="false">
-                                            <span class="m-accordion__item-icon"><i class="fa flaticon-list-3"></i></span>
-                                            <span class="m-accordion__item-title">{{$si_contract->title}} <a href="#" class="si_accept_contract text-danger"><i class="r-icon-tag la la-close"></i></a></span>
-                                            <span class="m-accordion__item-mode"></span>
-                                        </div>
-                                        
-                                        <div class="m-accordion__item-body collapse" id="contract_accordion_item_{{$si_contract->contract_id}}_body" role="tabpanel" aria-labelledby="contract_accordion_item_{{$si_contract->contract_id}}_head" data-parent="#contract_accordion">
-                                            <div class="m-accordion__item-content">
-                                                <?php echo $si_contract->description; ?>
-                                            </div>
-                                        </div>
-                                    </div>    
-                                    @endif                                    
-                                @endforeach
-                                <!-- new contracts end -->
+                                <!-- contracts end -->
                             </div>
                         </div>
                     </div>                				
     			</div>
     			<div class="modal-footer">
-    				<button type="button" class="btn btn-secondary" id="contractclosebtn" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="contractacceptbtn">Accept</button>
+    				{{--<button type="button" class="btn btn-secondary" id="contractclosebtn" data-dismiss="modal">Close</button>--}}
+                    <button type="button" class="btn btn-primary" id="contractacceptbtn">Save</button>
     			</div>
     		</div>
     	</div>
@@ -806,75 +797,63 @@
 
 @section('custom_js_script')
 <script>
-function removeAndAddIcons(thisObj,isAdd){
-    if(isAdd === true){
-        thisObj.removeClass('text-danger');
-        thisObj.addClass('text-success');
-        
-        thisObj.find('.r-icon-tag').removeClass('la-close');
-        thisObj.find('.r-icon-tag').addClass('la-check');
-    }else{
-        thisObj.removeClass('text-success');
-        thisObj.addClass('text-danger');
-        
-        thisObj.find('.r-icon-tag').removeClass('la-check');
-        thisObj.find('.r-icon-tag').addClass('la-close');
-    }
-}
-
-$(document).ready(function(){
-    var ischeckedaccepeted = true;
-    $(".si_accept_contract").each(function(){
-        if($(this).hasClass('text-danger')){ ischeckedaccepeted = false; }
-    });
-    if(ischeckedaccepeted === true){
-        if($('[name="accept_contract"]').is(":checked") === false){ $('[name="accept_contract"]').closest('label').trigger('click'); }
-    }else
-    {
-        if($('[name="accept_contract"]').is(":checked") === true){ $('[name="accept_contract"]').closest('label').trigger('click'); }
-    }
-    
-    $('#contract_model').on('show.bs.modal', function (e) {
-      // do something...
-      if($('[name="accept_contract"]').is(":checked") === true){ $(".si_accept_contract").not('.already_accepted').each(function(){removeAndAddIcons($(this),true);}); }else{ $(".si_accept_contract").not('.already_accepted').each(function(){removeAndAddIcons($(this),false);}); }
-    });
-    
-    $(".si_accept_contract").click(function(e){
-        e.preventDefault();
-        
-        if($(this).hasClass('text-danger')){ removeAndAddIcons($(this),true); }else{ removeAndAddIcons($(this),false); }
-        
-        
-        var ischecked = true;
-        $(".si_accept_contract").each(function(){
-            if($(this).hasClass('text-danger')){ ischecked = false; }
-        });
-        
-        if(ischecked === true){
-            $("#contractacceptbtn").trigger('click');
-        }else
-        {
-            if($('[name="accept_contract"]').is(":checked") === true){ $('[name="accept_contract"]').closest('label').trigger('click'); }
-        }
-        
-        return false;
-    });
-    
+$(document).ready(function(){    
    $("#contractacceptbtn").click(function(e){
         e.preventDefault();
         
-        $(".si_accept_contract").each(function(){
-            removeAndAddIcons($(this),true);
+        var btnObj = $(this);
+        btnObj.addClass('m-loader m-loader--right');
+        btnObj.html('Saving...');
+        btnObj.prop('disabled',true);
+        var is_runajax = true;
+        var agreedval = new Array();
+        var disagreedval = new Array();
+        $("input.rad_contracts").each(function(){
+            var pr = true;
+            if($(this).is(":checked") === false){ pr = false; if($(this).hasClass('rad_required')){ is_runajax = false; } }
+            
+            if(pr === true){ agreedval.push($(this).val()); }
+            else{disagreedval.push($(this).val());}            
         });
         
-        if($('[name="accept_contract"]').is(":checked") === false){ $('[name="accept_contract"]').closest('label').trigger('click'); }
-        $("#contractclosebtn").trigger('click');
-        
+        //run ajax if user will accept all required contracts
+        if((is_runajax === true) && ((agreedval.length > 0) || (disagreedval.length > 0))){
+            $.ajax({
+        	  url: "{{ URL::to('user/acceptcontracts')}}",
+        	  type: "post",
+        	  data: {"agree_contracts":agreedval,"disagree_contracts":disagreedval},
+        	  dataType: "json",
+        	  success: function(data){
+                if(data.status == "fail"){
+                    toastr.error(data.message); 
+                    btnObj.removeClass('m-loader m-loader--right');
+                    btnObj.html('Save');
+                    btnObj.prop('disabled',false);
+                }else
+                {
+                    toastr.success(data.message);
+                    $('#contract_model').modal("hide");
+                }
+        	  },
+              error: function(e){
+                toastr.error("Unexpected error occured, Please try again after some time!");  
+                btnObj.removeClass('m-loader m-loader--right');
+                btnObj.html('Save'); 
+              }
+        	});
+        }else
+        {
+            toastr.error("Please accept all required contracts!");  
+            btnObj.removeClass('m-loader m-loader--right');
+            btnObj.html('Save'); 
+            btnObj.prop('disabled',false);
+        }
+        //End
         return false;
    });
    
    @if($new_contract_ava === true)
-   $('#contract_model').modal('show')
+   $('#contract_model').modal({backdrop: 'static', keyboard: false, show: true});
    @endif
 });
 

@@ -58,6 +58,7 @@
                                 <th>Title</th>
                                 <th>Category</th>
                                 <th>Status</th>
+                                <th>Ordering</th>
                                 <th width="70" >{{ Lang::get('core.btn_action') }}</th>
                             </tr>
                         </thead>
@@ -70,6 +71,14 @@
                                 <td>{{$row->title}}</td>
                                 <td>{{ucfirst(str_replace('-',' ',trim($row->contract_type)))}}</td>
                                 <td>@if((bool) $row->status) Active @else Inactive @endif</td>
+                                <td>
+                                    @if($radtotalRecords!= $i)
+                						<a href="#" class="tips btn btn-xs btn-primary" title="Move Down" onclick="return change_ordering('down','{{$row->contract_id}}');"><i class="fa  fa-arrow-down"></i></a>
+                					@endif
+                					@if($i > 1)
+                						<a href="#" class="tips btn btn-xs btn-primary" title="Move Up" onclick="return change_ordering('up','{{$row->contract_id}}');"><i class="fa fa-arrow-up"></i></a>
+                					@endif
+                                </td>
                                 <td>
                                     @if($access['is_detail'] ==1)
                                     <a href="{{ URL::to('contract/show/'.$row->contract_id.'?return='.$return)}}" class="tips btn btn-xs btn-primary" title="{{ Lang::get('core.btn_view') }}"><i class="fa  fa-search "></i></a>
@@ -94,7 +103,13 @@
             </div>
         </div>	
     </div>	  
-</div>	
+</div>
+<!-- Selected Files/Folder downloaded as High PDF -->
+{!! Form::open(array('url'=>'contract/changeordering', 'class'=>'columns' ,'id' =>'change_order_num', 'method'=>'post' )) !!}
+	<input type="hidden" name="pid" id="pid" value="" />
+	<input type="hidden" name="order_type" id="order_type" value="" />
+	<input type="hidden" name="curnurl" value="{{ Request::url().'?page='.$curr_page }}" />
+</form>	
 <script>
     $(document).ready(function () {
 
@@ -104,5 +119,16 @@
         });
 
     });
+function change_ordering(type, fieldId)
+{
+	if(fieldId>0)
+	{
+		$('#pid').val(fieldId);
+		$('#order_type').val(type);
+		$( "#change_order_num" ).submit();
+	}
+    
+    return false;
+}
 </script>		
 @stop

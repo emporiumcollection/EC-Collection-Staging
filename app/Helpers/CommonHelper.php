@@ -3,7 +3,7 @@ namespace App\Helpers;
 use Session, DB ;
 
 class CommonHelper
-{
+{   
     static function submit_contracts($all_contracts_data,$type,$oid=0,$cType=""){
         $contracts = $all_contracts_data;
         
@@ -162,7 +162,7 @@ class CommonHelper
             $contractsAccepted = array();
             
             //insert contracts
-            $usersContracts = \DB::table('tb_users_contracts')->select('tb_users_contracts.id','tb_users_contracts.contract_id')->where('tb_users_contracts.contract_type','sign-up')->orderBy('tb_users_contracts.contract_id','DESC')->where('tb_users_contracts.status',1)->where('tb_users_contracts.is_expried',0)->where('tb_users_contracts.deleted',0)->get();
+            $usersContracts = \DB::table('tb_users_contracts')->select('tb_users_contracts.id','tb_users_contracts.contract_id')->where('tb_users_contracts.accepted_by', \Auth::user()->id)->where('tb_users_contracts.contract_type','sign-up')->where('tb_users_contracts.status',1)->where('tb_users_contracts.is_expried',0)->where('tb_users_contracts.deleted',0)->orderBy('tb_users_contracts.contract_id','DESC')->get();
             $resetuserContract = array();
             foreach($usersContracts as $si_usersContract){
                 $resetuserContract[$si_usersContract->contract_id] = $si_usersContract->id;                
@@ -180,6 +180,9 @@ class CommonHelper
                     $temparray['event_ids'] = $si_contract->event_ids;
                     $temparray['user_group_ids'] = $si_contract->user_group_ids;
                     $temparray['user_ids'] = $si_contract->user_ids;
+                    if(isset($si_contract->is_required)){ $temparray['is_required'] = (bool) $si_contract->is_required; }
+                    if(isset($si_contract->is_agree)){ $temparray['is_agree'] = (bool) $si_contract->is_agree; }
+                    if(isset($si_contract->sort_num)){ $temparray['sort_num'] = (int) $si_contract->sort_num; }
                     $temparray['status'] = 1;
                     $temparray['accepted_by'] = $uid;
                     $temparray['created_by'] = $uid;
@@ -214,7 +217,7 @@ class CommonHelper
         
         $fdata = array();
         $is_default = false;
-        if($fields == 'default'){ $is_default = true; $fields = array('tb_contracts.contract_id','tb_contracts.title','tb_contracts.description','tb_contracts.contract_type');}
+        if($fields == 'default'){ $is_default = true; $fields = array('tb_contracts.contract_id','tb_contracts.title','tb_contracts.description','tb_contracts.contract_type','tb_contracts.is_required','tb_contracts.sort_num');}
         
         switch($type){
             case 'general':
@@ -983,5 +986,113 @@ $allowedCurrenciesinProject=array("OMR","BHD","KWD","USD","CHF","EUR","KYD","GIP
             }
     }
 
+    static function getcontractPDFHeader($center_content){
+        $html = '<style> 
+						.main { margin:2px; width:100%; font-family: arial, sans-serif; } 
+						.page-break { page-break-after: always; } 
+						
+						.header{ width: 100%; position:fixed; top: -35px; text-align:center; height:200px;} 
+						.footer .page-number:after { content: counter(page); }
+						.pagenum:after {content: counter(page);} 
+						.imgBox { text-align:center; width:400px; } 
+						.nro { text-align:center; font-size:12px; } 
+						.header img { width:250px; height: 50px; } 
+						.Mrgtop80 {margin-top:80px;} 
+						.Mrgtop40 {margin-top:40px;}
+						.Mrgtop20 {margin-top:10px;} 
+						.monimg img { width:125px; height:80px; }  
+						.font13 { font-size:13px; } 
+						.font12 { font-size:12px; } 
+						.algRgt { text-align:right; } 
+						.algCnt { text-align:center; } 
+						
+						.pagenum:after {content: counter(page);}
+						.title {text-align:right; width:100%; font-size:30px; font-weight:bold;} 
+						.clrgrey{ color:#3f3f3f;} 
+						.alnRight{text-align:right;} 
+						.alnCenter{text-align:center;} 
+						td{font-size:12px; padding:1px;} 
+						th{background-color:#999; color:#000000; text-align:left; padding:1px; font-size:14px;}
+						.totl{background-color:#999; color:#000000; font-weight:bold;} 
+						h2{padding-bottom:0px; margin-bottom:0px;} 
+						.valin{ vertical-align:top;} 
+						.valinbt{ vertical-align:bottom; text-align:right;}
+						.page {
+						  background: white;
+						  display: block;
+						  margin: 0 auto;
+						  margin-bottom: 0.5cm;
+						  
+						}
+						
+						@media print {
+						  body, page {
+						    margin: 0;
+						    box-shadow: 0;
+						  }
+						}
+                        .underline{
+                            border-bottom:1px solid #ccc;
+                            font-size:14px;                            
+                        }
+                        .fnt15{
+                            font-size:15px;
+                         }   
+                        .strong{
+                            font-weight:bold;
+                            width:150px;
+                            font-size:14px;
+                            text-align:right;
+                            margin-right:5px;                                                                                    
+                         }
+                         table{
+                            border-collapse:separate; 
+                            border-spacing: 0 0.5em;                            
+                          }  
+                          label {
+                            display: block;
+                            padding-left: 20px;
+                            text-indent: -15px;
+                            font-size:14px;                            
+                        }
+                        input {
+                            width: 13px;
+                            height: 13px;
+                            padding: 0;
+                            margin:0;
+                            top:-1px;                            
+                            position: relative;
+                            *overflow: hidden;
+                        }                                                      
+
+				</style>';
+        
+        $html .= '
+            <div class="main">
+                <div class="header">
+                    <table width="100%">
+                        <tr>
+    						<td class="title" align="center">
+    						    
+    							<center><img src="'. \URL::to('sximo/assets/images/logo-design_1.png').'" width="250px;" height="105px;"></center>
+    							 
+    						</td>
+    					 </tr>
+    						<tr>
+    						<td class="title" align="center">
+    							<center> &nbsp;</center>
+    						</td>
+    					 </tr>
+                    </table>
+                </div>  
+                
+                <div style="clear:both;"> &nbsp;</div>
+                
+                '.$center_content.'
+            </div>
+        ';
+        
+        return $html;
+    }
 
 }

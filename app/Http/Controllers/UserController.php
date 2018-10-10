@@ -445,7 +445,7 @@ class UserController extends Controller {
         );
         
         //get contract during signup
-        $usersContracts = \DB::table('tb_users_contracts')->select('tb_users_contracts.id','tb_users_contracts.contract_id','tb_users_contracts.title','tb_users_contracts.description')->where('tb_users_contracts.contract_type','sign-up')->where('tb_users_contracts.accepted_by', \Auth::user()->id)->where('tb_users_contracts.status',1)->where('tb_users_contracts.is_expried',0)->where('tb_users_contracts.deleted',0)->orderBy('tb_users_contracts.contract_id','DESC')->get();
+        $usersContracts = \DB::table('tb_users_contracts')->select('tb_users_contracts.id','tb_users_contracts.contract_id','tb_users_contracts.title','tb_users_contracts.description','tb_users_contracts.is_required','tb_users_contracts.is_agree','tb_users_contracts.sort_num')->where('tb_users_contracts.contract_type','sign-up')->where('tb_users_contracts.accepted_by', \Auth::user()->id)->where('tb_users_contracts.status',1)->where('tb_users_contracts.is_expried',0)->where('tb_users_contracts.deleted',0)->orderBy('tb_users_contracts.contract_id','DESC')->get();
         $resetContracts = array();
         foreach($usersContracts as $si_contract){
             $resetContracts[$si_contract->contract_id] = $si_contract;
@@ -528,6 +528,37 @@ class UserController extends Controller {
         }
         
         return array('sub_destinations' => $sub_destinations, 'chldIds' => $_chldIds);
+    }
+    
+    public function postAcceptcontracts(Request $request){
+        if (!\Auth::check())
+            return Redirect::to('user/login');
+        
+        $return_arr = array("status"=>"fail","message"=>"Invalid contracts");
+        $agreeContratcts = (array) $request->agree_contracts; 
+        $disagreeContratcts = (array) $request->disagree_contracts;
+        
+        $refreshArray = array();
+        if((count($agreeContratcts) > 0) || (count($disagreeContratcts) > 0)){
+            $contracts = \CommonHelper::get_default_contracts('sign-up','tb_contracts.*');
+            
+            foreach($contracts as $si_contratc){
+                $si_contratc->is_agree = 0;
+                if(in_array($si_contratc->contract_id, $agreeContratcts)){ $si_contratc->is_agree = 1; }
+                $refreshArray[] = $si_contratc;
+            }
+        }
+        
+        if(count($refreshArray) > 0){
+            //insert contracts
+            \CommonHelper::submit_contracts($refreshArray,'sign-up');
+            //End
+            
+            $return_arr = array("status"=>"success","message"=>"Thanks for accepting contracts.");
+        }
+        
+        echo json_encode($return_arr);
+        exit;
     }
     
     public function postSaveprofile(Request $request) {
