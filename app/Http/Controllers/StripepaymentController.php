@@ -895,7 +895,7 @@ public function generateInvoice($ordid)
                        
                         \DB::table('tb_users')->where('id', \Session::get('uid'))->update(array('new_user'=>0, 'form_wizard'=>5));
                        
-                        /*$userinfom = User::find(\Session::get('uid'));
+                        $userinfom = User::find(\Session::get('uid'));
 
                            $pathToFile['path'] = $this->generateInvoice($ord_id);
                             //echo $pathToFile; die;
@@ -914,7 +914,7 @@ public function generateInvoice($ordid)
                                     
                                 });
                             }
-*/
+
                             $this->data['user'] = $user;
                             $this->data['pageTitle'] = 'Thank you Page';
                             $this->data['data'] = CommonHelper::getInfo();
