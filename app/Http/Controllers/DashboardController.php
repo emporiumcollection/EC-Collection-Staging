@@ -43,9 +43,9 @@ class DashboardController extends Controller {
                }
                $this->data['pageslider'] = \DB::table('tb_pages_sliders')->join('tb_pages_content', 'tb_pages_sliders.slider_page_id', '=' , 'tb_pages_content.pageID')->select( 'slider_title', 'slider_description', 'slider_img', 'slider_link', 'slider_video', 'slide_type')->where('tb_pages_content.alias', 'traveller-dashboard')->where('slider_status', 1)->get();
             }elseif($gp_id=="hotel-b2b"){
-               if($this->data['logged_user']->new_user == 1){
+               /*if($this->data['logged_user']->new_user == 1){
                     return Redirect::to('whoiam');
-               } 
+               }*/ 
                $this->data['pageslider'] = \DB::table('tb_pages_sliders')->join('tb_pages_content', 'tb_pages_sliders.slider_page_id', '=' , 'tb_pages_content.pageID')->select( 'slider_title', 'slider_description', 'slider_img', 'slider_link', 'slider_video', 'slide_type')->where('tb_pages_content.alias', 'hotel-dashboard')->where('slider_status', 1)->get();
             }
         }

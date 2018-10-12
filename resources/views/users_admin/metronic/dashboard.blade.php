@@ -2861,9 +2861,10 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
     <script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
     <script>
         $(document).ready(function(){
-            <?php //print_r($logged_user);
-                if($logged_user->i_agree == 0 || $logged_user->privacy_policy == 0 || $logged_user->cookie_policy == 0){ ?>
+            <?php if($logged_user->i_agree == 0 || $logged_user->privacy_policy == 0 || $logged_user->cookie_policy == 0){ ?>
                     $("#agree_model").modal({backdrop: 'static', keyboard: false}, 'show');
+            <?php }else if($logged_user->new_user == 1){ ?>
+                    window.location.href = "{{URL::to('whoiam')}}";
             <?php } ?>
             
             $("#contractacceptbtn").click(function(){
