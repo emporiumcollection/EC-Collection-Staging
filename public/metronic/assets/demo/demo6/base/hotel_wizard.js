@@ -1,18 +1,22 @@
 //== Class definition
+var wizard;
 var WizardDemo = function () {
     //== Base elements
     var wizardEl = $('#m_hotel_wizard');
     var formEl = $('#hotel_form');
     var validator;
-    var wizard;
     
     //== Private functions
     var initWizard = function () {
         //== Initialize form wizard
         wizard = new mWizard('m_hotel_wizard', {
-            startStep: 1
+            startStep: activeTab
         });
-
+        if(wizard.isLastStep()){
+            $("#wizard_submit_btn").css('display', 'none'); 
+        }else{
+            $("#wizard_submit_btn").css('display', ''); 
+        }
         //== Validation before going to next page
         wizard.on('beforeNext', function(wizard) {
             if (validator.form() !== true) {
@@ -21,15 +25,35 @@ var WizardDemo = function () {
             else{
                 var _wizard_step = wizard.getStep();
                 //var base_url = $('#base_url').val();
-                if(_wizard_step == '1'){
+                if((_wizard_step == '1') && (prevTab != _wizard_step)){
                        wizard_step_1();
+                }
+                else if((_wizard_step == '2') && (prevTab != _wizard_step)){
+                       wizard_step_2();
+                }
+                else if((_wizard_step == '3') && (prevTab != _wizard_step)){
+                       wizard_step_3();
+                }
+                else if((_wizard_step == '4') && (prevTab != _wizard_step)){
+                       wizard_step_4();
+                }
+                else if(_wizard_step == '5'){
+                    $("#wizard_submit_btn").css('display', 'none'); 
+                //       wizard_step_5();
                 }
             }
         });
-
+        wizard.on('beforePrev', function(wizard) {
+            prevTab--;
+        });
         //== Change event
         wizard.on('change', function(wizard) {
             mUtil.scrollTop();
+            if(wizard.isLastStep()){
+                $("#wizard_submit_btn").css('display', 'none'); 
+            }else{
+                $("#wizard_submit_btn").css('display', ''); 
+            }
         });
     }
 
@@ -56,12 +80,12 @@ var WizardDemo = function () {
                 txtPhoneNumber: {
                     required: true,                    
                 }, 
-                contractSignCheckFinal: {
-                    required: true,                    
-                },
-                contractSignCheck: {
-                    required: true,   
-                },
+                //contractSignCheckFinal: {
+                //    required: true,                    
+                //},
+                //contractSignCheck: {
+                //    required: true,   
+                //},
                 
                 //=== Confirmation(last step)
                 hotelinfo_name: {
@@ -179,39 +203,6 @@ var WizardDemo = function () {
 
     var initSubmit = function() {
         var btn = formEl.find('[data-wizard-action="submit"]');
-
-        btn.on('click', function(e) {
-            e.preventDefault();
-
-            if (validator.form()) {
-                
-                var base_url = $('#base_url').val();
-                var form_wizard = $("#form_wizard_2").val();
-                var accept = $('input[name=hotel_contactprsn_agree]').val();
-                
-                var fdata = $( "form" ).serialize();
-                
-                $.ajax({
-                    url:base_url+'/hotel_membership',
-                    type:'POST',
-                    dataType:'json',
-                    data:fdata,
-                    success:function(response){
-                        if(response.status == 'success'){
-                            toastr.success(response.message);
-                            var htmltxt = '<div class="col-md-12 col-xs-12"><div class="m-alert m-alert--icon m-alert--icon-solid m-alert--outline alert alert-danger alert-dismissible fade show" role="alert"><div class="m-alert__icon"><i class="flaticon-exclamation-1"></i><span></span></div> <div class="m-alert__text"> <strong>Approval pending!</strong> Any further information please contact administrator.</div> </div></div>';
-                            $('.m-content .row').html(htmltxt);
-                            /*setTimeout(function(){
-                                   location.reload();
-                              }, 3000);*/ 
-                        }
-                        else{
-                            toastr.error(response.message);
-                        }
-                    }
-                });                
-            }
-        });
     }
 
     return {
@@ -232,6 +223,33 @@ jQuery(document).ready(function() {
 });
 
 function wizard_step_1(){
+    wizard.stop = true;
+    var fdata = new FormData();    
+    fdata.append("form_wizard_1",$("input[name=form_wizard_1]").val());  
+    fdata.append("own_hotel_setup",$("input[name=accountsetup]:checked").val());       
+    var base_url = $('#base_url').val();
+    $.ajax({
+        url:base_url+'/ownhotelsetup',
+        type:'POST',
+        dataType:'json',
+        contentType: false,
+        processData: false,
+        data:fdata,
+        success:function(response){
+            if(response.status == 'success'){
+                toastr.success(response.message);
+                prevTab++;
+                wizard.goNext();
+            }
+            else{
+                toastr.error(response.message);
+            }
+        }
+    }); 
+}
+
+function wizard_step_2(){
+    wizard.stop = true;
     var fdata = new FormData();
     
     fdata.append("username",$("input[name=username]").val());
@@ -240,7 +258,7 @@ function wizard_step_1(){
     fdata.append("last_name",$("input[name=last_name]").val());
     fdata.append("contractSignCheck",$("input[name=contractSignCheck]").val());
     fdata.append("_token",$("input[name=_token]").val());
-    fdata.append("form_wizard",$("input[name=form_wizard]").val());
+    fdata.append("form_wizard",$("input[name=form_wizard_2]").val());
     if($("input[type=file]")[0].files.length>0){
        fdata.append("avatar",$("input[type=file]")[0].files[0]) 
     }
@@ -256,10 +274,78 @@ function wizard_step_1(){
         success:function(response){
             if(response.status == 'success'){
                 toastr.success(response.message);
+                prevTab++;
+                wizard.goNext();
             }
             else{
                 toastr.error(response.message);
             }
         }
     }); 
+}
+function wizard_step_3(){
+    wizard.stop = true;
+    var fdata = new FormData();    
+    fdata.append("form_wizard",$("input[name=form_wizard_3]").val());  
+    fdata.append("roomavailability",$("input[name=roomavailability]:checked").val());       
+    var base_url = $('#base_url').val();
+    $.ajax({
+        url:base_url+'/hotelavaibility',
+        type:'POST',
+        dataType:'json',
+        contentType: false,
+        processData: false,
+        data:fdata,
+        success:function(response){
+            if(response.status == 'success'){
+                toastr.success(response.message);
+                prevTab++;
+                wizard.goNext();
+            }
+            else{
+                toastr.error(response.message);
+            }
+        }
+    }); 
+}
+function wizard_step_4(){ 
+    wizard.stop = true;
+    var is_runajax = true;
+    var agreedval = new Array();
+    var disagreedval = new Array(); 
+    $("input.rad_contracts").each(function(){
+        var pr = true; console.log("gg");
+        if($(this).is(":checked") === false){ pr = false; if($(this).hasClass('rad_required')){ is_runajax = false; } }
+        console.log(pr);
+        if(pr === true){ agreedval.push($(this).val()); }
+        else{disagreedval.push($(this).val());}            
+    });
+    
+    //run ajax if user will accept all required contracts
+    if((is_runajax === true) && ((agreedval.length > 0) || (disagreedval.length > 0))){
+        $.ajax({
+    	  url: base_url+'/user/wizardacceptcontracts',
+    	  type: "post",
+    	  data: {"agree_contracts":agreedval,"disagree_contracts":disagreedval},
+    	  dataType: "json",
+    	  success: function(data){
+            if(data.status == "fail"){
+                toastr.error(data.message);
+            }else
+            {
+                toastr.success(data.message);
+                prevTab++;
+                wizard.goNext();
+            }
+    	  },
+          error: function(e){
+            toastr.error("Unexpected error occured, Please try again after some time!");
+          }
+    	});
+    }else
+    {
+        toastr.error("Please accept all required contracts!");
+    }
+    //End
+    return false;
 }

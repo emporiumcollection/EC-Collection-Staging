@@ -480,6 +480,7 @@ public function generateInvoice($ordid)
     {
         $downFileName = 'order-invoice-'.date('d-m-Y').'.pdf';
         //$cid = $request->input('contentId');
+        
         if($ordid!="" && $ordid>0)
         {
             $order_item_detail = array();
@@ -691,6 +692,9 @@ public function generateInvoice($ordid)
                     <td colspan="4" align="right"  height="25px;">&nbsp;</td>
                  </tr>
                 <tr style="background:#eeeeee;"><th width="10%">No.</th><th width="50%" >Item </th><th width="20%" class="algCnt">Quantity </th><th width="20%" class="algRgt">Price(Excl.VAT) </th></tr>';
+                
+                
+                
                 $qtyPr = 1;
                 $Totprice = 0;
                 $qty=1;
@@ -757,8 +761,8 @@ public function generateInvoice($ordid)
             
 			
 				$savePdfpath = public_path() . '/uploads/invoice_pdfs/';
-                $pdf = \App::make('dompdf.wrapper');
-                $pdf->loadHTML($html);            
+                $pdf = \App::make('dompdf.wrapper');                
+                $pdf->loadHTML($html);
                 $pdf->save($savePdfpath . $downFileName);
                 return $savePdfpath . $downFileName;
 			}
@@ -771,6 +775,169 @@ public function generateInvoice($ordid)
         }
     }
 
+    public function wizardcheckoutPost(Request $request)
+    {
+            
+        $userID=\Session::get('uid'); 
+            $user = User::find($userID);
+           
+            $input = $request->all();
+    
+            self::authorizeFromEnv();
+
+            \Stripe\Stripe::setApiKey("sk_test_C0Mmp1B1ZzxMbnpq4EJLNoOg");
+
+            // Token is created using Checkout or Elements!
+            // Get the payment token ID submitted by the form:
+            $token = $_POST['stripeToken'];
+
+           try {
+
+                        
+                        $orddta['status'] = 'Pending'; 
+                        $orddta['comments'] = $request->input('order_comments'); 
+                        $orddta['user_id'] = \Session::get('uid'); 
+                        $orddta['created'] = date('y-m-d h:i:s'); 
+                        $ord_id = \DB::table('tb_orders')->insertGetId($orddta);
+                        $package_idsarr = array();
+                        foreach ($request->session()->get('hotel_cart') as $cartkey => $cartValue) {
+
+
+
+                            $orditemdta['order_id'] = $ord_id; 
+                           
+                            if($cartValue['package']['type']=='hotel'){
+                                 $orditemdta['package_type'] = $cartValue['package']['type']; 
+                                 $orditemdta['package_id'] = $cartValue['package']['id'];
+                                 $package_idsarr[] = $orditemdta['package_id'];
+                                
+                                $packgeDataDetalis = DB::table('tb_packages')->where('id',$cartValue['package']['id'])->get();
+                                $orditemdta['package_data'] = json_encode($packgeDataDetalis);
+                            }
+                            if($cartValue['package']['type']=='advert'){
+                                 $orditemdta['package_type'] = $cartValue['package']['type']; 
+                                 $orditemdta['package_id'] = $cartValue['package']['content']['id'];
+                                 $orditemdta['package_data'] = json_encode($cartValue['package']['content']);
+                                 $package_idsarr[] = $orditemdta['package_id'];
+                            }
+                            
+                            $orditemdta['user_id'] = \Session::get('uid'); 
+                            $orditemdta['created'] = date('y-m-d h:i:s'); 
+                            \DB::table('tb_order_items')->insertGetId($orditemdta);
+                        }
+
+                // Charge the user's card:
+                   $charge = \Stripe\Charge::create(array(
+                      "amount" =>((int)$request->input("finalAmount")*100),
+                      "currency" => "EUR",
+                      "description" => "Package Charges",
+                      "source" => $token,
+                      "metadata" => array("order_id" => $ord_id),
+                    ));
+
+                    $jsnonString=$charge;
+                    $stringFromOb=str_replace("Stripe\Charge JSON: ", "", $jsnonString);
+                    $jarray=json_decode($stringFromOb);
+                    //print_r($catArray);
+                    //echo "<pre>";
+                   // print_r ($jarray->outcome->network_status);
+
+                    if($jarray->outcome->network_status=="approved_by_network"){
+						
+						$invoice_num = \DB::table('tb_settings')->where('key_value', 'default_invoice_num')->first();
+						$exp_num = $invoice_num->content;
+
+                        $orddta['status'] = 'Success'; 
+                        $orddta['comments'] = $request->input('order_comments'); 
+                        $orddta['user_id'] = \Session::get('uid'); 
+                        $orddta['updated'] = date('y-m-d h:i:s'); 
+						$orddta['invoice_num'] = $exp_num; 
+                        \DB::table('tb_orders')->where('id',$ord_id)->update($orddta);
+						
+						\DB::table('tb_settings')->where('key_value', 'default_invoice_num')->update(['content' => ++$exp_num]);
+                        
+                        if(count($package_idsarr) > 0){
+                            $usersContracts = \DB::table('tb_users_contracts')->select('tb_users_contracts.id','tb_users_contracts.contract_id','tb_users_contracts.title','tb_users_contracts.description')->where('tb_users_contracts.contract_type','packages')->orderBy('tb_users_contracts.contract_id','DESC')->where('tb_users_contracts.status',1)->where('tb_users_contracts.is_expried',0)->where('tb_users_contracts.deleted',0)->get();
+                            $resetContracts = array();
+                            foreach($usersContracts as $si_contract){
+                                $resetContracts[$si_contract->contract_id] = $si_contract;
+                            }
+                            $this->data['userContracts'] = $resetContracts;
+                            $contracts = \CommonHelper::get_default_contracts('packages','tb_contracts.*',0,$package_idsarr);
+                            $common_contracts = $contracts['common'];
+                            $tpackage_contracts = $contracts['packages_wise'];
+                            $package_contracts = array();
+                            foreach($package_idsarr as $si_pack){
+                                if(isset($tpackage_contracts[$si_pack])){
+                                    foreach($tpackage_contracts[$si_pack] as $su_con){
+                                        $tobj = $su_con;
+                                        $tobj->package_id = $si_pack;
+                                        $tobj->order_id = $ord_id;
+                                        $package_contracts[$su_con->contract_id] = $tobj;
+                                    }                                    
+                                }
+                            }
+                            
+                            foreach($common_contracts as $sicommon){
+                                if(!isset($package_contracts[$sicommon->contract_id])){
+                                    $sicommon->order_id = $ord_id;
+                                    $package_contracts[$sicommon->contract_id] = $sicommon;
+                                }                                
+                            }
+                            //echo "<pre>";print_r($package_contracts);die;
+                            if(count($package_contracts) > 0){
+                                //insert contracts
+                                $package_idsarr[] = null;
+                                \CommonHelper::submit_contracts($package_contracts,'packages',$package_idsarr);
+                                //End
+                            }
+                        }
+                       
+                        \DB::table('tb_users')->where('id', \Session::get('uid'))->update(array('new_user'=>0, 'form_wizard'=>5));
+                       
+                        /*$userinfom = User::find(\Session::get('uid'));
+
+                           $pathToFile['path'] = $this->generateInvoice($ord_id);
+                            //echo $pathToFile; die;
+                            $pathToFile['name'] = 'invoice-'.date('d-m-Y-h:i:s').'.pdf';
+                            $pathToFile['useremail'] = $userinfom->email;
+                            if($pathToFile)
+                            {
+                                $data = array();
+                                \Mail::send('user.emails.invoice', $data, function($message) use ($pathToFile)
+                                {
+                                    $message->from(CNF_EMAIL, CNF_APPNAME);
+                                    $message->subject("Your Order Invoice");
+                                    $message->to( $pathToFile['useremail']);
+
+                                    $message->attach($pathToFile['path'], ['as' => $pathToFile['name'], 'mime' => 'pdf']);
+                                    
+                                });
+                            }
+*/
+                            $this->data['user'] = $user;
+                            $this->data['pageTitle'] = 'Thank you Page';
+                            $this->data['data'] = CommonHelper::getInfo();
+                            $this->data['pageslider'] = "";
+                            $this->data['currency'] = \DB::table('tb_settings')->select('content')->where('key_value', 'default_currency')->first();
+                            
+                            $group_id = \Session::get('gid');
+                            $is_demo6 = trim(\CommonHelper::isHotelDashBoard($group_id));
+                            
+                            $file_name = (strlen($is_demo6) > 0)?$is_demo6.'/frontend.hotel_membership.thanks':'frontend.hotel_membership.thanks';   
+                            return view($file_name, $this->data);
+                    }else{
+
+                        return back()->with('success','Subscription is completed.');
+                    }
+                  
+
+                
+            } catch (Exception $e) {
+                return back()->with('success',$e->getMessage());
+            }
+            
+    }
 
 
 }

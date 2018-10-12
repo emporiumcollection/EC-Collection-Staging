@@ -1006,6 +1006,9 @@ border-radius:0;
 .forgetPassPopup.openPopup {
   display: block;
 }
+.travellerThanksPopup.openPopup {
+  display: block;
+}
 .loginFormDiv {
   position: absolute;
   top: 110px;

@@ -1980,5 +1980,76 @@ class UserController extends Controller {
         
         echo json_encode($response);
     }
-     
+    public function ownhotelsetup(Request $request){
+        $id = \Session::get('uid');
+        $own_setup = trim($request->input('own_hotel_setup'));
+        $form_wizard = trim($request->input('form_wizard_1')); 
+        $updated = \DB::table('tb_users')->where('id', $id)->update(array('own_hotel_setup'=>$own_setup, 'form_wizard'=>$form_wizard));
+        //if($updated){
+            $response = array('status' => 'success', 'message' => 'Account setup added successfully');
+        //}else{            
+        //    $response = array('status' => 'error', 'message' => 'Error while adding account setup');
+        //}
+        echo json_encode($response);
+    }
+    
+    public function hotelavaibility(Request $request){
+        $id = \Session::get('uid');
+        $roomavailability = trim($request->input('roomavailability'));
+        $form_wizard = trim($request->input('form_wizard')); 
+        $updated = \DB::table('tb_users')->where('id', $id)->update(array('commission'=>$roomavailability, 'form_wizard'=>$form_wizard));
+        
+        /** commission contracts start **/
+        $contractdata = \CommonHelper::get_default_contracts('commission','tb_contracts.*');
+        $contractdata["common"]->commission_type = $roomavailability;
+        $contracts = array();
+        $contracts[] = ((isset($contractdata["common"]))?$contractdata["common"]:'');
+        /** commission contracts end **/
+        
+        //insert contracts
+        \CommonHelper::submit_contracts($contracts,'commission',$id);
+        //End
+        
+        
+        //if($updated){
+            $response = array('status' => 'success', 'message' => 'Room availability added successfully');
+        //}else{            
+        //    $response = array('status' => 'error', 'message' => 'Error while adding room availability');
+        //}
+        echo json_encode($response);
+    } 
+    
+    public function postWizardacceptcontracts(Request $request){
+        $id = \Session::get('uid');
+        if (!\Auth::check())
+            return Redirect::to('user/login');
+        
+        $return_arr = array("status"=>"fail","message"=>"Invalid contracts");
+        $agreeContratcts = (array) $request->agree_contracts; 
+        $disagreeContratcts = (array) $request->disagree_contracts;
+        
+        $refreshArray = array();
+        if((count($agreeContratcts) > 0) || (count($disagreeContratcts) > 0)){
+            $contracts = \CommonHelper::get_default_contracts('sign-up','tb_contracts.*');
+            
+            foreach($contracts as $si_contratc){
+                $si_contratc->is_agree = 0;
+                if(in_array($si_contratc->contract_id, $agreeContratcts)){ $si_contratc->is_agree = 1; }
+                $refreshArray[] = $si_contratc;
+            }
+        }
+        
+        if(count($refreshArray) > 0){
+            //insert contracts
+            \CommonHelper::submit_contracts($refreshArray,'sign-up');
+            //End
+            \DB::table('tb_users')->where('id', $id)->update(array('form_wizard'=>4));
+            
+            $return_arr = array("status"=>"success","message"=>"Thanks for accepting contracts.");
+        }
+        
+        echo json_encode($return_arr);
+        exit;
+    }
+ 
 }

@@ -655,6 +655,8 @@ class CustomerController extends Controller {
                             if (!empty($getusercompany)) {
                                 if($row->group_id == 3){
                                     $response = array('status' => 'success', 'message' => 'Please complete your profile', 'errors' => array(), 'gid'=>$row->group_id, 'new_user'=>$row->new_user);                             
+                                }elseif($row->group_id == 5){
+                                    $response = array('status' => 'success', 'message' => 'Please complete your profile', 'errors' => array(), 'gid'=>$row->group_id, 'new_user'=>$row->new_user); 
                                 }else{
                                     $response = array('status' => 'success', 'message' => 'Logged in successfully', 'errors' => array(), 'gid'=>$row->group_id);
                                 }                                
@@ -663,6 +665,8 @@ class CustomerController extends Controller {
                                 if($row->group_id == 4) {
                                     $response = array('status' => 'success', 'message' => 'Please complete your profile and company details', 'errors' => array(),'gid'=>$row->group_id);
                                 }elseif($row->group_id == 3){
+                                    $response = array('status' => 'success', 'message' => 'Please complete your profile', 'errors' => array(), 'gid'=>$row->group_id, 'new_user'=>$row->new_user);
+                                }elseif($row->group_id == 5){
                                     $response = array('status' => 'success', 'message' => 'Please complete your profile', 'errors' => array(), 'gid'=>$row->group_id, 'new_user'=>$row->new_user);
                                 }else{
                                     $response = array('status' => 'success', 'message' => 'Please complete your profile and company details', 'errors' => array(),'gid'=>$row->group_id );
@@ -1164,24 +1168,46 @@ return Redirect::to('customer/profile')->with('message', \SiteHelpers::alert('er
     }
     
     public function whoIam() {
-
-       $user = User::find(\Session::get('uid'));
-       $this->data["guestUserData"]=$user;
-          $this->data['pageTitle'] = "Whoiam User Membership Type Selection";
+        if (!\Auth::check())
+            return Redirect::to('/');
+            
+        $user = User::find(\Session::get('uid'));
+        $this->data["guestUserData"]=$user;
+        $this->data['pageTitle'] = "Whoiam User Membership Type Selection";
         $this->data['pageMetakey'] = "Whoiam User Membership";
         $this->data['pageMetadesc'] = "Whoiam User Membership";
-        $contractObject =new Contract();
-
-        $params = array(
-            
-        );
-        $resultContract= $contractObject->getRows($params); 
+        
+        /** sign up contracts start **/
+        //get contract during signup
+        $usersContracts = \DB::table('tb_users_contracts')->select('tb_users_contracts.id','tb_users_contracts.contract_id','tb_users_contracts.title','tb_users_contracts.description','tb_users_contracts.is_required','tb_users_contracts.is_agree','tb_users_contracts.sort_num')->where('tb_users_contracts.contract_type','sign-up')->where('tb_users_contracts.accepted_by', \Auth::user()->id)->where('tb_users_contracts.status',1)->where('tb_users_contracts.is_expried',0)->where('tb_users_contracts.deleted',0)->orderBy('tb_users_contracts.contract_id','DESC')->get();
+        $resetContracts = array();
+        foreach($usersContracts as $si_contract){
+            $resetContracts[$si_contract->contract_id] = $si_contract;
+        }
+        $this->data['userContracts'] = $resetContracts;        
+        $this->data['contractdata'] = \CommonHelper::get_default_contracts('sign-up');        
+        /** sign up contracts end **/
+        
+        /** commission contracts start **/
+        $usersContracts = \DB::table('tb_users_contracts')->select('tb_users_contracts.*')->where('tb_users_contracts.contract_type','commission')->where('tb_users_contracts.accepted_by', \Auth::user()->id)->where('tb_users_contracts.status',1)->where('tb_users_contracts.is_expried',0)->where('tb_users_contracts.deleted',0)->orderBy('tb_users_contracts.contract_id','DESC')->first();
+        $contractdata = \CommonHelper::get_default_contracts('commission');
+        if(isset($usersContracts->contract_id)){ $this->data['commision_contractdata'] = $usersContracts; }
+        else{ $this->data['commision_contractdata'] = ((isset($contractdata["common"]))?$contractdata["common"]:array()); }
+        /** commission contracts end **/
+        
         
         $extra = \DB::table('tb_properties')->where('user_id', $user->id)->first();
         $this->data['extra'] = $extra;
         //print_r($extra); die;
         $this->data['user'] = $user;
-        $this->data['contractdata']=$resultContract["rows"];
+        
+        $this->data['pageslider'] = \DB::table('tb_pages_sliders')->join('tb_pages_content', 'tb_pages_sliders.slider_page_id', '=' , 'tb_pages_content.pageID')->select( 'slider_title', 'slider_description', 'slider_img', 'slider_link', 'slider_video', 'slide_type')->where('tb_pages_content.alias', 'hotel-dashboard')->where('slider_status', 1)->get();
+        
+        $group_id = \Session::get('gid');
+        $this->data['packages'] = \DB::table('tb_packages')->where('allow_user_groups', $group_id)->where('package_status', 1)->get();
+        
+        $this->data['active_tab']=$user->form_wizard;
+        
         $is_demo6 = trim(\CommonHelper::isHotelDashBoard($user->group_id));
         $t_f = 'whoiam';
         if(isset($extra->approved)){ if(!((bool) $extra->approved)){ $t_f = 'approval_pending'; }}
@@ -1799,6 +1825,12 @@ $html .= '</div>';
             
             $edata = array();
             $edata['email'] = $request->input('email');
+            $mobile = '';
+            $mobile_number =trim($request->input('txtmobileNumber'));
+            $mobile_code =trim($request->input('txtmobileDialcode'));
+            $mobile = $mobile_code."".$mobile_number;
+            $edata['mobile'] = $mobile;
+            
             $emlData['frmemail'] = 'marketing@emporium-voyage.com';
             //$emlData['email'] = 'riaan@number7even.com';
             $emlData['email'] = CNF_SUPERADMIN_EMAIL;
@@ -1832,7 +1864,7 @@ $html .= '</div>';
             });
                     
             
-            $response = array('status' => 'error', 'message' => 'Your request send to administrator. They will contact with you shortly', 'errors'=>false);
+            $response = array('status' => 'success', 'message' => 'Your request send to administrator. They will contact with you shortly', 'errors'=>false);
             
         } else {
             $response = array('status' => 'error', 'message' => 'The following errors occurred', 'errors' => $validator->errors()->all());

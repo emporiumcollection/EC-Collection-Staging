@@ -54,6 +54,9 @@ class CommonHelper
                     $temparray['event_ids'] = $si_contract->event_ids;
                     $temparray['user_group_ids'] = $si_contract->user_group_ids;
                     $temparray['user_ids'] = $si_contract->user_ids;
+                    if(isset($si_contract->is_required)){ $temparray['is_required'] = (bool) $si_contract->is_required; }
+                    if(isset($si_contract->is_agree)){ $temparray['is_agree'] = (bool) $si_contract->is_agree; }
+                    if(isset($si_contract->sort_num)){ $temparray['sort_num'] = (int) $si_contract->sort_num; }
                     $temparray['status'] = 1;
                     $temparray['accepted_by'] = $uid;
                     $temparray['created_by'] = $uid;
@@ -99,6 +102,9 @@ class CommonHelper
                     $temparray['event_ids'] = $si_contract->event_ids;
                     $temparray['user_group_ids'] = $si_contract->user_group_ids;
                     $temparray['user_ids'] = $si_contract->user_ids;
+                    if(isset($si_contract->is_required)){ $temparray['is_required'] = (bool) $si_contract->is_required; }
+                    if(isset($si_contract->is_agree)){ $temparray['is_agree'] = (bool) $si_contract->is_agree; }
+                    if(isset($si_contract->sort_num)){ $temparray['sort_num'] = (int) $si_contract->sort_num; }
                     $temparray['status'] = 1;
                     $temparray['accepted_by'] = $uid;
                     $temparray['created_by'] = $uid;
@@ -117,16 +123,18 @@ class CommonHelper
         if(\Auth::check()){
             $uid = \Auth::user()->id;
             $contractsAccepted = array();
-            
+            $update_array = array();
             //insert contracts
             $usersContracts = \DB::table('tb_users_contracts')->select('tb_users_contracts.id','tb_users_contracts.contract_id')->where('tb_users_contracts.contract_type','commission')->where('tb_users_contracts.hotel_id',$oid)->where('tb_users_contracts.status',1)->where('tb_users_contracts.is_expried',0)->where('tb_users_contracts.deleted',0)->orderBy('tb_users_contracts.contract_id','DESC')->get();
             $resetuserContract = array();
+            $resetuserContractIds = array();
             foreach($usersContracts as $si_usersContract){
-                $resetuserContract[$si_usersContract->contract_id] = $si_usersContract->id;                
+                $resetuserContract[$si_usersContract->contract_id] = $si_usersContract->id;  
+                $resetuserContractIds[$si_usersContract->id] = $si_usersContract->contract_id;               
             }
             
             foreach($contracts as $si_contract){
-                if(!isset($resetuserContract[$si_contract->contract_id])){
+                //if(!isset($resetuserContract[$si_contract->contract_id])){
                     $temparray = array();
                     $temparray['contract_id'] = $si_contract->contract_id;
                     $temparray['hotel_id'] = $oid;
@@ -140,18 +148,33 @@ class CommonHelper
                     $temparray['user_ids'] = $si_contract->user_ids;
                     $temparray['full_availability_commission'] = $si_contract->full_availability_commission;
                     $temparray['partial_availability_commission'] = $si_contract->partial_availability_commission;
+                    $temparray['is_required'] = true;
+                     $temparray['is_agree'] = true;
+                    if(isset($si_contract->sort_num)){ $temparray['sort_num'] = (int) $si_contract->sort_num; }
                     $temparray['is_commission_set'] = 1;
-                    $temparray['commission_type'] = $cType;
+                    $temparray['commission_type'] = $si_contract->commission_type;
                     $temparray['status'] = 1;
                     $temparray['accepted_by'] = $uid;
                     $temparray['created_by'] = $uid;
                     $temparray['created_on'] = date('Y-m-d H:i:s');
                     
+                    //$contractsAccepted[] = $temparray;
+                //}
+                if(in_array($si_contract->contract_id, $resetuserContractIds)){
+                    $updateContractsAccepted['updatedarray'] = $temparray;
+                    $updateContractsAccepted['id'] = (array_keys($resetuserContractIds, $si_contract->contract_id));
+                    $update_array[] = $updateContractsAccepted;
+                }else{
                     $contractsAccepted[] = $temparray;
                 }
             }
             
             if(count($contractsAccepted) > 0){ \DB::table('tb_users_contracts')->insert($contractsAccepted); }
+            if(count($update_array) > 0){
+                foreach($update_array as $item){
+                    \DB::table('tb_users_contracts')->where('id', $item['id'])->update($item['updatedarray']);
+                }
+            }
             //End
         }
     }
@@ -161,15 +184,18 @@ class CommonHelper
             $uid = \Auth::user()->id;
             $contractsAccepted = array();
             
+            $update_array = array();
             //insert contracts
             $usersContracts = \DB::table('tb_users_contracts')->select('tb_users_contracts.id','tb_users_contracts.contract_id')->where('tb_users_contracts.accepted_by', \Auth::user()->id)->where('tb_users_contracts.contract_type','sign-up')->where('tb_users_contracts.status',1)->where('tb_users_contracts.is_expried',0)->where('tb_users_contracts.deleted',0)->orderBy('tb_users_contracts.contract_id','DESC')->get();
             $resetuserContract = array();
+            $resetuserContractIds = array();
             foreach($usersContracts as $si_usersContract){
-                $resetuserContract[$si_usersContract->contract_id] = $si_usersContract->id;                
+                $resetuserContract[$si_usersContract->contract_id] = $si_usersContract->id;
+                $resetuserContractIds[$si_usersContract->id] = $si_usersContract->contract_id;                
             }
-            
+            //print_r($resetuserContractIds); die;
             foreach($contracts as $si_contract){
-                if(!isset($resetuserContract[$si_contract->contract_id])){
+                //if(!isset($resetuserContract[$si_contract->contract_id])){
                     $temparray = array();
                     $temparray['contract_id'] = $si_contract->contract_id;
                     $temparray['title'] = $si_contract->title;
@@ -188,11 +214,23 @@ class CommonHelper
                     $temparray['created_by'] = $uid;
                     $temparray['created_on'] = date('Y-m-d H:i:s');
                     
+                    //$contractsAccepted[] = $temparray;
+                //}
+                if(in_array($si_contract->contract_id, $resetuserContractIds)){
+                    $updateContractsAccepted['updatedarray'] = $temparray;
+                    $updateContractsAccepted['id'] = (array_keys($resetuserContractIds, $si_contract->contract_id));
+                    $update_array[] = $updateContractsAccepted;
+                }else{
                     $contractsAccepted[] = $temparray;
                 }
             }
             
             if(count($contractsAccepted) > 0){ \DB::table('tb_users_contracts')->insert($contractsAccepted); }
+            if(count($update_array) > 0){
+                foreach($update_array as $item){
+                    \DB::table('tb_users_contracts')->where('id', $item['id'])->update($item['updatedarray']);
+                }
+            }
             //End
         }
     }

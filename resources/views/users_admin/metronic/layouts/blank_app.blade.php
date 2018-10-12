@@ -47,8 +47,7 @@
         <!-- Favicon END -->
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
-        <script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
+        
         @yield('style')
 	</head>
 	<!-- end::Head -->
@@ -94,8 +93,8 @@
 								<h3 class="m-header__title-text"> Applications </h3>
 							</div>
 							
-                            @include('users_admin/traveller/layouts/blank_horz_menu')
-                            @include('users_admin/traveller/layouts/blank_top_menu')				            
+                            @include('users_admin/metronic/layouts/blank_horz_menu')
+                            @include('users_admin/metronic/layouts/blank_top_menu')				            
                             
 						</div>
 					</div>
@@ -103,16 +102,16 @@
 			</header>
 			<!-- END: Header -->		
 		<!-- begin::Body -->
-			<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
+			<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body" style="background: #fff;">
 				
                 <!-- BEGIN: Left Aside -->
-                @include('users_admin/traveller/layouts/blank_menu')
+                @include('users_admin/metronic/layouts/blank_menu')
                 <!-- END: Left Aside -->
                 
 				<div class="m-grid__item m-grid__item--fluid m-wrapper">
                     
 					<!-- BEGIN: Subheader -->
-					@include('users_admin/traveller/layouts/blank_sub_header')
+					@include('users_admin/metronic/layouts/blank_sub_header')
 					<!-- END: Subheader -->
                     
                     <!-- BEGIN: Subheader_search -->

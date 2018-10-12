@@ -21,8 +21,6 @@ class DashboardController extends Controller {
         
         $this->data['container'] = new ContainerController();
         
-        $this->data['pageslider'] = \DB::table('tb_pages_sliders')->select( 'slider_title', 'slider_description', 'slider_img', 'slider_link', 'slider_video', 'slide_type')->where('slider_page_id', 119)->where('slider_status', 1)->get();
-        
         $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
         
         $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.dashboard':'dashboard.index'; 
@@ -34,14 +32,23 @@ class DashboardController extends Controller {
           
 		$this->data['online_users'] = \DB::table('tb_users')->orderBy('last_activity','desc')->limit(10)->get(); 
         
-        /*$gp_id = trim(\CommonHelper::getusertype('users-b2c'));
+        $g_id = (int) \Session::get('gid');  
         
-        if(!empty($gp_id)){           
-           if($this->data['logged_user']->new_user == 1){
-                return Redirect::to('traveller');
-           }
-        }*/
+        $gp_id = trim(\CommonHelper::getusertype($g_id));
         
+        if(!empty($gp_id)){ 
+            if($gp_id=="users-b2c"){           
+               if($this->data['logged_user']->new_user == 1){
+                    return Redirect::to('traveller');
+               }
+               $this->data['pageslider'] = \DB::table('tb_pages_sliders')->join('tb_pages_content', 'tb_pages_sliders.slider_page_id', '=' , 'tb_pages_content.pageID')->select( 'slider_title', 'slider_description', 'slider_img', 'slider_link', 'slider_video', 'slide_type')->where('tb_pages_content.alias', 'traveller-dashboard')->where('slider_status', 1)->get();
+            }elseif($gp_id=="hotel-b2b"){
+               if($this->data['logged_user']->new_user == 1){
+                    return Redirect::to('whoiam');
+               } 
+               $this->data['pageslider'] = \DB::table('tb_pages_sliders')->join('tb_pages_content', 'tb_pages_sliders.slider_page_id', '=' , 'tb_pages_content.pageID')->select( 'slider_title', 'slider_description', 'slider_img', 'slider_link', 'slider_video', 'slide_type')->where('tb_pages_content.alias', 'hotel-dashboard')->where('slider_status', 1)->get();
+            }
+        }
 		return view($file_name,$this->data);
 	}
 

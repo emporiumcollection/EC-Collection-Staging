@@ -1,22 +1,7 @@
-@extends('users_admin.metronic.layouts.app')
+@extends('users_admin.metronic.layouts.blank_app')
 
 @section('page_name')
     Account  <small>Enter Your Info</small>
-@stop
-
-@section('breadcrumb')
-    <li class="m-nav__separator"> - </li>
-    <li class="m-nav__item"> 
-        <a href="{{ URL::to('dashboard')}}" class="m-nav__link"> 
-            <span class="m-nav__link-text"> Dashboard </span> 
-        </a> 
-    </li>
-    <li class="m-nav__separator"> - </li>
-    <li class="m-nav__item"> 
-        <a href="javascript:;" class="m-nav__link"> 
-            <span class="m-nav__link-text"> Account </span> 
-        </a> 
-    </li>
 @stop
 
 @section('content')
@@ -52,7 +37,7 @@
                                 <div class="col-xs-6 col-sm-4"><label>Pereferred Date</label><p>12-03-2018</p></div>
                                 <div class="col-xs-6 col-sm-4"><label>Pereferred Time</label><p>12:45 Am</p></div>
                                 <div class="col-xs-6 col-sm-4"><label>No Of Guest</label><p>3</p></div>
-                                <div class="col-xs-12"><label>Message</label><p> Thank you for submitting your information, you will be contact soon by our customer service department.</p></div>
+                                <div class="col-xs-12"><label>Message</label><p> Thank you for submitting your information.</p></div>
                     
                             </div>
                             <div class="row m--align-center">

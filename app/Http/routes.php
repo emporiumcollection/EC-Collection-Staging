@@ -351,6 +351,10 @@ Route::group(['middleware' => 'auth'], function()
     Route::post('confirm_new_profile', 'UserController@confirmNewprofile');
     
     Route::get('signup-contract/{isview}', 'ContractController@download_signup_contract');
+    
+    Route::post('ownhotelsetup', 'UserController@ownhotelsetup');
+    Route::post('hotelavaibility', 'UserController@hotelavaibility');
+    
 });
 
 Route::post('hotel_membership', 'Frontend\HotelMembershipController@hotelMembershipSignupSave');
@@ -488,7 +492,7 @@ Route::get('stripedetails/{uid}', 'StripepaymentController@index');
 
 Route::get('choosepackage/{packageid}', 'StripepaymentController@checkout');
 Route::post('order-post', 'StripepaymentController@checkoutPost');
-
+Route::post('wizard-order-post', 'StripepaymentController@wizardcheckoutPost');
 // Add this route for checkout or submit form to pass the item into paypal
 Route::post('payment', array(
 	'as' => 'payment',
@@ -558,3 +562,6 @@ Route::get('getPressFoldersAjax/{id}', 'ContainerController@getPressFoldersAjax'
 Route::post('pressseletedfileszip', 'ContainerController@PressDownloadZipSelected');
 Route::post('pressseletedfileslowPdf', 'ContainerController@PressDownloadlowPdfSelected');
 Route::post('pressseletedfileshighPdf', 'ContainerController@PressDownloadhighPdfSelected');
+
+Route::get('hotel/get_cart', 'Frontend\HotelMembershipController@getwizardCart');
+Route::get('hotel/get_checkout', 'Frontend\HotelMembershipController@getwizardCheckout');	
