@@ -144,12 +144,11 @@
 								  </div> 					
 								  <div class="form-group  " >
 									<label for="Package Status" class=" control-label col-md-4 text-left"> Package Status <span class="asterix"> * </span></label>
-									<div class="col-md-6">
-									  
-					<label class='radio radio-inline'>
-					<input type='radio' name='package_status' value ='0' required @if($row['package_status'] == '0') checked="checked" @endif > Inactive </label>
-					<label class='radio radio-inline'>
-					<input type='radio' name='package_status' value ='1' required @if($row['package_status'] == '1') checked="checked" @endif > Active </label> 
+									<div class="col-md-6">									  
+                    					<label class='radio radio-inline'>
+                    					<input type='radio' name='package_status' value ='0' required @if($row['package_status'] == '0') checked="checked" @endif > Inactive </label>
+                    					<label class='radio radio-inline'>
+                    					<input type='radio' name='package_status' value ='1' required @if($row['package_status'] == '1') checked="checked" @endif > Active </label> 
 									 </div> 
 									 <div class="col-md-2">
 									 	
@@ -172,7 +171,19 @@
 									 <div class="col-md-2">
 									 	
 									 </div>
-								  </div> 					
+								  </div>
+                                  <div class="form-group is_public_div" style="display: none;">
+									<label for="Is Public" class=" control-label col-md-4 text-left">Is Public <span class="asterix">*</span></label>
+									<div class="col-md-6">									  
+                    					<label class='radio radio-inline'>
+                    					<input type='radio' name='is_public' value ='0' required @if($row['is_public'] != '1') checked="checked" @endif > No </label>
+                    					<label class='radio radio-inline'>
+                    					<input type='radio' name='is_public' value ='1' required @if($row['is_public'] == '1') checked="checked" @endif > Yes </label> 
+									 </div> 
+									 <div class="col-md-2">
+									 	
+									 </div>
+								  </div>
 								  <div class="form-group  " >
 									<label for="Package Modules" class=" control-label col-md-4 text-left"> Package Modules <span class="asterix"> * </span></label>
 									<div class="col-md-6">
@@ -206,8 +217,8 @@
 </div>	
 </div>			 
    <script type="text/javascript">
-	$(document).ready(function() { 
-		
+   var userb2c = parseInt('{{\CommonHelper::getusertype("users-b2c")}}');
+	$(document).ready(function() {		
 		
 		$("#allow_user_groups").jCombo("{{ URL::to('packages/comboselect?filter=tb_groups:group_id:name') }}",
 		{  selected_value : '{{ $row["allow_user_groups"] }}' });
@@ -215,7 +226,19 @@
 		$("#package_modules").jCombo("{{ URL::to('packages/comboselect?filter=tb_module:module_id:module_title') }}",
 		{  selected_value : '{{ $row["package_modules"] }}' });
 		 
-
+        $("#allow_user_groups").on('change',function(){
+            var userrr = $(this).val();
+            $('.is_public_div').fadeOut();
+            if((typeof userrr == 'array') || (typeof userrr == 'object')){
+                $.each(userrr, function(index,value){
+                    var tval = parseInt(value);
+                    if(userb2c === tval){
+                        $('.is_public_div').fadeIn();
+                    }
+                });
+            }
+        });
+        
 		$('.removeCurrentFiles').on('click',function(){
 			var removeUrl = $(this).attr('href');
 			$.get(removeUrl,function(response){});

@@ -119,7 +119,7 @@ class Sximo extends Model {
     {   
         $limit = explode(':',$limit);
         $parent = explode(':',$parent);
-
+        
         if(count($limit) >=3)
         {
             $table = $params[0]; 
@@ -132,6 +132,11 @@ class Sximo extends Model {
                         $valarr = explode(',',$parent[1]);
                         $row =  \DB::table($table)->whereIn($parent[0],$valarr)->get();
                     break; 
+                    
+                    case 'find_in_set':
+                        $varl = ((strlen(trim($parent[1])) > 0)?trim($parent[1]):'NA');                    
+                        $row =  \DB::table($table)->whereRaw("FIND_IN_SET('".$varl."',".$parent[0].")")->get();
+                    break;
                     
                     case 'where':
                     default:
@@ -154,6 +159,11 @@ class Sximo extends Model {
                         $valarr = explode(',',$parent[1]);
                         $row =  \DB::table($table)->whereIn($parent[0],$valarr)->get();
                     break; 
+                    
+                    case 'find_in_set':
+                        $varl = ((strlen(trim($parent[1])) > 0)?trim($parent[1]):'NA');                    
+                        $row =  \DB::table($table)->whereRaw("FIND_IN_SET('".$varl."',".$parent[0].")")->get();
+                    break;
                     
                     case 'where':
                     default:

@@ -309,6 +309,13 @@ class PropertiesController extends Controller {
 			$this->data['total_rooms_booked'] = (isset($row_reserved_rooms[0]->total_reserved_rooms))? $row_reserved_rooms[0]->total_reserved_rooms : 0;
 		}
         
+        /** get property and package relations start **/
+        $prop_package_rel = \DB::table('tb_properties_category_package')->where('property_id', $id)->get();
+        $rest_arr = array();
+        foreach($prop_package_rel as $si_prop){ $rest_arr[] = $si_prop->package_id; }
+        $this->data['property_category'] = implode(',',$rest_arr);
+        /** get property and package relations end **/
+        
         $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
         $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.form':'properties.form'; 
         
@@ -338,6 +345,7 @@ class PropertiesController extends Controller {
         $uid = \Auth::user()->id;
         $id = $request->input('id');
         $rules = $this->validateForm();
+        $rules['property_category'] = 'required';
         $rules['owner_name'] = 'required';
         $rules['owner_last_name'] = 'required';
         $rules['owner_address'] = 'required';
@@ -385,6 +393,11 @@ class PropertiesController extends Controller {
                 $data['created'] = date('Y-m-d h:i:s');
             } else {
                 $data['updated'] = date('Y-m-d h:i:s');
+            }
+            
+            $property_packages = array();
+            if(is_array($request->input('property_category'))){
+                $property_packages = $request->input('property_category');
             }
 
             $data['commission'] = $request->input('commission');
@@ -1108,7 +1121,24 @@ class PropertiesController extends Controller {
                     }
                 }
             }
-
+            
+            /** insert property packages relation start **/
+            $finproperty_package_relation = array();
+            $upproperty_package_relation = array();
+            $prop_package_rel = \DB::table('tb_properties_category_package')->where('property_id', $id)->get();
+            $rest_arr = array();
+            foreach($prop_package_rel as $si_prop){ $rest_arr[$si_prop->package_id] = $si_prop; }
+            $prop_package_rel = $rest_arr;
+            \DB::table('tb_properties_category_package')->where('property_id', $id)->delete();
+            if((count($property_packages) > 0)){                
+                foreach($property_packages as $si_prop){ 
+                    if(isset($prop_package_rel[$si_prop])){ $finproperty_package_relation[] = array("property_id"=>$id,"package_id"=>$si_prop,"id"=>$prop_package_rel[$si_prop]->id); }
+                    else{ $finproperty_package_relation[] = array("property_id"=>$id,"package_id"=>$si_prop,"id"=>NULL); }
+                }
+            }
+            
+            if(count($finproperty_package_relation)){ \DB::table('tb_properties_category_package')->insert($finproperty_package_relation); }
+            /** insert property packages relation end **/
 
             if (!is_null($request->input('apply'))) {
                 $return = 'properties/update/' . $id . '?return=' . self::returnUrl();

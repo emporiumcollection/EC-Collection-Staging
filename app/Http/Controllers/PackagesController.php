@@ -167,6 +167,9 @@ class PackagesController extends Controller {
                 $data['allow_user_groups'] = implode(',',$request->input('allow_user_groups'));
 			}
             
+            $B2BGroupID = (int) \CommonHelper::getusertype("users-b2c");
+            if(!in_array($B2BGroupID,$userGroups)){ $data['is_public'] = 0; }
+            
 			$id = $this->model->insertRow($data , $request->input('id'));
             
             //insert user groups in related table packages_user_groups

@@ -67,7 +67,18 @@
                                     <div class="col-md-2">
 
                                     </div>
-                                </div> 					
+                                </div>
+                                
+                                <div class="form-group  " >
+									<label for="Property Category" class=" control-label col-md-4 text-left"> Property Category <span class="asterix"> * </span></label>
+									<div class="col-md-6">
+									  <select name='property_category[]' multiple rows='5' id='property_cat_ids' class='select2 ' required  ></select> 
+									 </div> 
+									 <div class="col-md-2">
+									 	
+									 </div>
+							     </div>
+                                  					
                                 <div class="form-group  " >
                                     <label for="Property Short Name" class=" control-label col-md-4 text-left"> Property Short Name </label>
                                     <div class="col-md-6">
@@ -2604,6 +2615,9 @@
     </div>			 
     <script type="text/javascript">
         $(document).ready(function () {
+
+            $("#property_cat_ids").jCombo("{{ URL::to('properties/comboselect?filter=tb_packages:id:package_title') }}",
+            {  input_param: 'allow_user_groups', parent_value: '{{\CommonHelper::getusertype("users-b2c")}}', selected_value : '{{ $property_category }}', condition_param: 'find_in_set' });
 
             if ($('input[type="radio"][id="displayupload"]').is(":checked"))
             {
