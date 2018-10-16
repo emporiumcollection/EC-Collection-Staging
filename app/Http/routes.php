@@ -355,6 +355,8 @@ Route::group(['middleware' => 'auth'], function()
     Route::post('ownhotelsetup', 'UserController@ownhotelsetup');
     Route::post('hotelavaibility', 'UserController@hotelavaibility');
     
+    Route::post('upload_contract', 'PropertiesController@contract_upload');
+    
 });
 
 Route::post('hotel_membership', 'Frontend\HotelMembershipController@hotelMembershipSignupSave');

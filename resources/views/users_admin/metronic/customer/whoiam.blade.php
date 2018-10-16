@@ -100,7 +100,7 @@
 														<span></span>
 													</div>
 													<div class="m-wizard__step-label">
-														Availability
+														Rates
 													</div>
 												</div>
 											</div>
@@ -129,6 +129,24 @@
 														<span>
 															<span>
 																5
+															</span>
+														</span>
+													</a>
+													<div class="m-wizard__step-line">
+														<span></span>
+													</div>
+													<div class="m-wizard__step-label">
+														Upload Contract
+													</div>
+												</div>
+											</div>
+                                            
+                                            <div class="m-wizard__step" m-wizard-target="m_wizard_form_step_6" class="wizard_step_6">
+												<div class="m-wizard__step-info">
+													<a href="#" class="m-wizard__step-number">
+														<span>
+															<span>
+																6
 															</span>
 														</span>
 													</a>
@@ -280,6 +298,43 @@
                                                             </div>
     													</div>
     												</div>
+                                                    
+                                                    <div class="form-group m-form__group row">
+    													<label class="col-xl-3 col-lg-3 col-form-label">
+    														Hotel Name:
+    													</label>
+    													<div class="col-xl-9 col-lg-9">
+    														<input name="hotelinfo_name" type="text" id="hotelinfo_name" class="form-control m-input" required=""  value="<?php echo isset($property_assigned->property_name) ? $property_assigned->property_name : '' ?>" />  
+    													</div>
+    												</div>
+                                                    
+                                                    <div class="form-group m-form__group row">
+    													<label class="col-xl-3 col-lg-3 col-form-label">
+    														Hotel City:
+    													</label>
+    													<div class="col-xl-9 col-lg-9">
+    														<input name="hotelinfo_city" type="text" id="hotelinfo_city" class="form-control m-input" required=""  value="<?php echo isset($property_assigned->city) ? $property_assigned->city : '' ?>" />  
+    													</div>
+    												</div>
+                                                    
+                                                    <div class="form-group m-form__group row">
+    													<label class="col-xl-3 col-lg-3 col-form-label">
+    														Hotel Country:
+    													</label>
+    													<div class="col-xl-9 col-lg-9">
+    														<input name="hotelinfo_country" type="text" id="hotelinfo_country" class="form-control m-input" required=""  value="<?php echo isset($property_assigned->country) ? $property_assigned->country : '' ?>" />  
+    													</div>
+    												</div>                                                    
+                                                    
+                                                    <div class="form-group m-form__group row">
+    													<label class="col-xl-3 col-lg-3 col-form-label">
+    														Hotel Website:
+    													</label>
+    													<div class="col-xl-9 col-lg-9">
+    														<input name="hotelinfo_website" type="text" id="hotelinfo_website" class="form-control m-input" value="<?php echo isset($property_assigned->website) ? $property_assigned->website : '' ?>" />  
+    													</div>
+    												</div>
+                                                    
                                                     <div class="form-group m-form__group row">
                                                         <div class="col-12 m-form__group-sub">     					                                
                                 							<div class="m-checkbox-inline">
@@ -304,7 +359,7 @@
                                                             <img src="{{URL::to('images/800x200.png')}}" style="width: 100%;" />
                                                         </div> 
                                                         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center margin-top">
-                                                            <h2 class="black-heading-big">Availability</h2>
+                                                            <h2 class="black-heading-big">Rates</h2>
                                                         </div> 
                                                         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
                                                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare diam at convallis lacinia. Duis a sapien et erat finibus molestie eu id nisi. Integer nibh elit, blandit ac volutpat eget, tempus eget enim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas mollis dictum risus. Vivamus aliquam at elit non dictum. Integer nisi ante, interdum at purus vitae, rhoncus bibendum dui. Praesent pharetra augue at ultrices facilisis. Vestibulum erat urna, iaculis et purus in, fermentum varius nibh.
@@ -315,12 +370,12 @@
                                                             <div class="m-radio-list">
                                     							<label class="m-radio">
                                     							     <input type="radio" name="roomavailability" value="full" <?php echo isset($commision_contractdata->commission_type) ? ($commision_contractdata->commission_type=="full" ? 'checked="checked"' : '') : 'checked="checked"'; ?> />
-                                                                        Full Availability (<?php echo (float) $commision_contractdata->full_availability_commission;?>%)
+                                                                        Rack Rate (<?php echo (float) $commision_contractdata->full_availability_commission;?>%)
                                                                      <span></span>
                                     							</label>
                                                                 <label class="m-radio">
                                     							     <input type="radio" name="roomavailability" value="partial" <?php echo isset($commision_contractdata->commission_type) ? ($commision_contractdata->commission_type=="partial" ? 'checked="checked"' : '') : ''; ?> />
-                                                                        Partial Availability (<?php echo (float) $commision_contractdata->partial_availability_commission;?>%)
+                                                                        Standard Tour Operator (STO <?php echo (float) $commision_contractdata->partial_availability_commission;?>%)
                                                                      <span></span>
                                     							</label>
                                     						</div>  
@@ -362,15 +417,13 @@
                                                                         			return $a->sort_num - $b->sort_num; 
                                                                         		});
                                                                                 
-                                                                                $contractdata = array_reverse($contractdata);
-                                                                                
                                                                                 $final_contracts = array();
                                                                                 foreach($contractdata as $sicc){
                                                                                     if(!isset($userContracts[$sicc->contract_id])){ $tempobj = $sicc; $tempobj->already_done = false; }else{ $tempobj = $userContracts[$sicc->contract_id]; $tempobj->already_done = true; }
                                                                                     if(isset($tempobj->contract_id)){$final_contracts[] = $tempobj;}
                                                                                 }
                                                                         	/*--}}
-                                                                       <?php
+                                                                       <?php                                                                               
                                                     	                        $sn = 0;
                                                     	                        foreach ($final_contracts as $row) {
                                                     	                            ?>
@@ -415,13 +468,48 @@
                                 						
                                 					       </div>
                                                             
-                                                        </div>
+                                                        </div>                                                
+                                                        
                                                     </div>
     											</div>
                                             </div>
                                             <!--begin: Form Wizard Step 5-->
                                             <div class="m-wizard__form-step" id="m_wizard_form_step_5">
-                                                <input name="form_wizard_5" type="hidden" id="form_wizard_5" value="5" />  
+                                                <input name="form_wizard_5" type="hidden" id="form_wizard_5" value="5" /> 
+                                                <input name="propId" type="hidden" id="propId" value="<?php echo isset($assigned_propid) ? $assigned_propid : ''; ?>" />  
+                                                <input type="hidden" name="uploadType" value="Hotel Contracts" />
+    											<div class="m-form__section">
+                                                    <div class="row">                                            
+                                                        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
+                                                            <img src="{{URL::to('images/800x200.png')}}" style="width: 100%;" />
+                                                        </div> 
+                                                        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center margin-top">
+                                                            <h2 class="black-heading-big">Upload Contract</h2>
+                                                        </div> 
+                                                        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 margin-top">
+                                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare diam at convallis lacinia. Duis a sapien et erat finibus molestie eu id nisi. Integer nibh elit, blandit ac volutpat eget, tempus eget enim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas mollis dictum risus. Vivamus aliquam at elit non dictum. Integer nisi ante, interdum at purus vitae, rhoncus bibendum dui. Praesent pharetra augue at ultrices facilisis. Vestibulum erat urna, iaculis et purus in, fermentum varius nibh.
+                                                            
+                                                        </div>
+                                                        
+                                                        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12"><br />             
+                                                            
+                                                             <div class="form-group m-form__group row">
+            													<label class="col-xl-3 col-lg-3 col-form-label">
+            														Upload Contract
+            													</label>
+            													                                                               
+                                                        		<input type="file" name="signed_contract">
+                                                        				
+                                                                    
+            												 </div>                                                                                                                      
+                                                        </div>                                                        
+                                                        
+                                                    </div>
+    											</div>
+                                            </div>
+                                            <!--begin: Form Wizard Step 6-->
+                                            <div class="m-wizard__form-step" id="m_wizard_form_step_6">
+                                                <input name="form_wizard_6" type="hidden" id="form_wizard_6" value="6" />  
     											<div class="m-form__section">
                                                     <div class="row" id="package_row">                                            
                                                         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
@@ -437,16 +525,36 @@
                                                             
                                                             <div class="form-group m-form__group row">
                                                             
-                                                                       <div class="m-accordion m-accordion--default" id="m_accordion_2" role="tablist" style="width: 100%;">
-                                                                       <!--begin::Item-->
                                                                        
-                                                                       <?php
-                                                    	                    if(!empty($packages)) {
-                                                    	                        $k = 0;
-                                                    	                        foreach ($packages as $package) {
-                                                    	                            ?>
-                                                    	                             <div class="m-accordion__item">
-                                                            							<div class="m-accordion__item-head collapsed"  role="tab" id="m_accordion_2_item_{{ $k }}_head" data-toggle="collapse" href="#m_accordion_2_item_{{ $k }}_body" aria-expanded="false">
+                                                                <div class="m-portlet__body" style="width:100%;">
+                                                                    <ul class="nav nav-tabs" role="tablist">
+                                                    					<li class="nav-item"> 
+                                                                            <a class="nav-link active" href="#sales_marketing" data-toggle="tab"> 
+                                                                                Sales & Marketing 
+                                                                            </a>
+                                                                        </li>
+                                                                        <li class="nav-item"> 
+                                                                            <a class="nav-link" href="#reservation_distribution" data-toggle="tab"> 
+                                                                                Reservation & Distribution 
+                                                                            </a>
+                                                                        </li>
+                                                                        <li class="nav-item"> 
+                                                                            <a class="nav-link" href="#advertising" data-toggle="tab"> 
+                                                                                Advertising
+                                                                            </a>
+                                                                        </li>			
+                                                    				</ul>
+                                                    				<div class="tab-content">
+                                                    					
+                                                                            <div class="tab-pane active" id="sales_marketing">
+                                                                                <!--begin::Section-->
+                                                            					<div class="m-accordion m-accordion--default m-accordion--solid" id="m_accordion_3_sales_marketing" role="tablist">
+                                                            						<!--begin::Item-->
+                                                                                    {{--*/ $k=1; $tottyp = count($packages); /*--}}                                    
+                                                                                    @foreach($packages as $key=>$package)
+                                                                                    @if($package->package_category=="Sales_Marketing")
+                                                            						<div class="m-accordion__item">
+                                                            							<div class="m-accordion__item-head collapsed"  role="tab" id="m_accordion_3_item_sales_marketing_{{ $k }}_head" data-toggle="collapse" href="#m_accordion_3_item_sales_marketing_{{ $k }}_body" aria-expanded="    false">
                                                             								<span class="m-accordion__item-icon">
                                                             									<i class="fa flaticon-user-ok"></i>
                                                             								</span>
@@ -455,7 +563,7 @@
                                                             								</span>
                                                             								<span class="m-accordion__item-mode"></span>
                                                             							</div>
-                                                            							<div class="m-accordion__item-body collapse" id="m_accordion_2_item_{{ $k }}_body" class=" " role="tabpanel" aria-labelledby="m_accordion_2_item_{{ $k }}_head" data-parent="#m_accordion_2">
+                                                            							<div class="m-accordion__item-body collapse" id="m_accordion_3_item_sales_marketing_{{ $k }}_body" class=" " role="tabpanel" aria-labelledby="m_accordion_3_item_sales_marketing_{{ $k }}_head" data-parent="#m_accordion_3_sales_marketing">
                                                             								<div class="m-accordion__item-content">
                                                             									<div class="col-sm-6 col-md-6 col-lg-6 pull-left">
                                                                                                     <img class="img-responsive object-fit-size" src="{{URL::to('uploads/packages/'.$package->package_image)}}" alt="{{$package->package_image}}" style="width: 100%;" >
@@ -512,17 +620,146 @@
                                                             								</div>
                                                             							</div>
                                                             						</div>
-                                                    	                                
-                                                    	                            <?php
-                                                    	                            $k++;
-                                                    	                        }
-                                                    	                    }
-                                                    	                    ?>
-                                                                       
-                                                                       
-                                                                       <!--end::Item-->
-                                                                       </div>
-                                                            
+                                                                                    @endif
+                                                                                    {{--*/ $k++; /*--}}
+                                                                                    @endforeach
+                                                            						<!--end::Item-->     
+                                                                                </div>
+                                                                            </div>
+                                                                            
+                                                                            
+                                                                            <div class="tab-pane" id="reservation_distribution">
+                                                                                <!--begin::Section-->
+                                                            					<div class="m-accordion m-accordion--default m-accordion--solid" id="m_accordion_3_reservation_distribution" role="tablist">
+                                                            						<!--begin::Item-->
+                                                                                    {{--*/ $k=1; $tottyp = count($packages); /*--}}
+                                                                                    @foreach($packages as $key=>$package)
+                                                                                    @if($package->package_category=="Reservation_Distribution")
+                                                            						<div class="m-accordion__item">
+                                                            							<div class="m-accordion__item-head collapsed"  role="tab" id="m_accordion_3_item_reservation_distribution_{{ $k }}_head" data-toggle="collapse" href="#m_accordion_3_item_reservation_distribution_{{ $k }}_body" aria-expanded="    false">
+                                                            								<span class="m-accordion__item-icon">
+                                                            									<i class="fa flaticon-user-ok"></i>
+                                                            								</span>
+                                                            								<span class="m-accordion__item-title">
+                                                            									{{$package->package_title}} Price: {!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($package->package_price,2) }}
+                                                            								</span>
+                                                            								<span class="m-accordion__item-mode"></span>
+                                                            							</div>
+                                                            							<div class="m-accordion__item-body collapse" id="m_accordion_3_item_reservation_distribution_{{ $k }}_body" class=" " role="tabpanel" aria-labelledby="m_accordion_3_item_reservation_distribution_{{ $k }}_head" data-parent="#m_accordion_3_reservation_distribution">
+                                                            								<div class="m-accordion__item-content">
+                                                            									<div class="col-sm-6 col-md-6 col-lg-6 pull-left">
+                                                                                                    <img class="img-responsive object-fit-size" src="{{URL::to('uploads/packages/'.$package->package_image)}}" alt="{{$package->package_image}}" style="width: 100%;" >
+                                                                                                </div>
+                                                                                                <div  class="col-sm-6 col-md-6 col-lg-6 pull-right">
+                                                                                                    <div class="row">
+                                                                                                        <div  class="col-sm-12 col-md-12 col-lg-12 border-2px">
+                                                                                                            <p>Package Duration :: {{$package->package_duration}} {{$package->package_duration_type}}</p>  
+                                                                                                            <p>Package Details: {!! nl2br($package->package_description) !!}</p>
+                                                                                                            <h4>Package Modules Include:</h4>
+                                                                                                            {{--*/  $modulesOffered = DB::table('tb_module')->whereIn('module_id', explode(',',$package->package_modules))->get();/*--}}
+                                                                                                            {{--*/ $mod_arr = array(); /*--}}  
+                                                                                                            @foreach ($modulesOffered as $moduleRow)
+                                                                                                                {{--*/ $mod_arr[] = $moduleRow->module_name; /*--}}                                 
+                                                                                                                
+                                                                                                            @endforeach  
+                                                                                                            {{--*/ $str_module = implode(', ', $mod_arr); echo $str_module; /*--}}
+                                                                                                            <div class="row">
+                                                                                                                <div class="col-sm-12 col-md-12 col-lg-12 top-margin-20">
+                                                                                                                    <h6>{!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($package->package_price,2) }} </h6>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    
+                                                                                                    <div class="row" style="padding: 10px;">
+                                                                                                        
+                                                                                                        <div class="col-lg-12 m--align-right">
+                                                                                                            <div>
+                                                                                                                <a href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->package_price }});" class="btn btn-success">Add to cart</a>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                        
+                                                                                                      
+                                                                                                </div>
+                                                            								</div>
+                                                            							</div>
+                                                            						</div>
+                                                                                    @endif
+                                                                                    {{--*/ $k++; /*--}}
+                                                                                    @endforeach
+                                                            						<!--end::Item-->     
+                                                                                </div>
+                                                                            </div>
+                                                                            
+                                                                            <div class="tab-pane" id="advertising">
+                                                                                <!--begin::Section-->
+                                                            					<div class="m-accordion m-accordion--default m-accordion--solid" id="m_accordion_3_advertising" role="tablist">
+                                                            						<!--begin::Item-->
+                                                                                    {{--*/ $k=1; $tottyp = count($packages); /*--}}
+                                                                                    @foreach($packages as $key=>$package)
+                                                                                    @if($package->package_category=="Advertising")
+                                                            						<div class="m-accordion__item">
+                                                            							<div class="m-accordion__item-head collapsed"  role="tab" id="m_accordion_3_item_advertising_{{ $k }}_head" data-toggle="collapse" href="#m_accordion_3_item_advertising_{{ $k }}_body" aria-expanded="    false">
+                                                            								<span class="m-accordion__item-icon">
+                                                            									<i class="fa flaticon-user-ok"></i>
+                                                            								</span>
+                                                            								<span class="m-accordion__item-title">
+                                                            									{{$package->package_title}} Price: {!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($package->package_price,2) }}
+                                                            								</span>
+                                                            								<span class="m-accordion__item-mode"></span>
+                                                            							</div>
+                                                            							<div class="m-accordion__item-body collapse" id="m_accordion_3_item_advertising_{{ $k }}_body" class=" " role="tabpanel" aria-labelledby="m_accordion_3_item_advertising_{{ $k }}_head" data-parent="#m_accordion_3_advertising">
+                                                            								<div class="m-accordion__item-content">
+                                                            									<div class="col-sm-6 col-md-6 col-lg-6 pull-left">
+                                                                                                    <img class="img-responsive object-fit-size" src="{{URL::to('uploads/packages/'.$package->package_image)}}" alt="{{$package->package_image}}" style="width: 100%;" >
+                                                                                                </div>
+                                                                                                <div  class="col-sm-6 col-md-6 col-lg-6 pull-right">
+                                                                                                    <div class="row">
+                                                                                                        <div  class="col-sm-12 col-md-12 col-lg-12 border-2px">
+                                                                                                            <p>Package Duration :: {{$package->package_duration}} {{$package->package_duration_type}}</p>  
+                                                                                                            <p>Package Details: {!! nl2br($package->package_description) !!}</p>
+                                                                                                            <h4>Package Modules Include:</h4>
+                                                                                                            {{--*/  $modulesOffered = DB::table('tb_module')->whereIn('module_id', explode(',',$package->package_modules))->get();/*--}}
+                                                                                                            {{--*/ $mod_arr = array(); /*--}}  
+                                                                                                            @foreach ($modulesOffered as $moduleRow)
+                                                                                                                {{--*/ $mod_arr[] = $moduleRow->module_name; /*--}}                                 
+                                                                                                                
+                                                                                                            @endforeach  
+                                                                                                            {{--*/ $str_module = implode(', ', $mod_arr); echo $str_module; /*--}}
+                                                                                                            <div class="row">
+                                                                                                                <div class="col-sm-12 col-md-12 col-lg-12 top-margin-20">
+                                                                                                                    <h6>{!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($package->package_price,2) }} </h6>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    
+                                                                                                    <div class="row" style="padding: 10px;">
+                                                                                                        
+                                                                                                        <div class="col-lg-12 m--align-right">
+                                                                                                            <div>
+                                                                                                                <a href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->package_price }});" class="btn btn-success">Add to cart</a>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                        
+                                                                                                      
+                                                                                                </div>
+                                                            								</div>
+                                                            							</div>
+                                                            						</div>
+                                                                                    @endif
+                                                                                    {{--*/ $k++; /*--}}
+                                                                                    @endforeach
+                                                            						<!--end::Item-->     
+                                                                                </div>
+                                                                            </div>
+                                                
+                                                					</div>
+                                                					
+                                                                    
+                                                				</div> 
                                                             
                                 						
                                 					       </div>
@@ -596,6 +833,7 @@
 			<!--End::Main Portlet-->
         </div>
 	</div>
+    
     <!-- Commission modal popup -->
     <div class="modal fade" id="commission_modal" tabindex="-1" role="dialog" aria-labelledby="commissionModalLabel" aria-hidden="true" style="display: none;">
     	<div class="modal-dialog modal-lg" role="document">
@@ -646,6 +884,7 @@
 
 {{-- For custom style  --}}
 @section('style')
+<link rel="stylesheet" href="{{ asset('sximo/css/dropzone.css') }}">
     <style>
     .carousel {
       position: relative;
@@ -960,7 +1199,34 @@
 @section('custom_js_script')
     @parent
     <script>
+        /*Dropzone.autoDiscover = false;*/    
         $(document).ready( function () {  
+            
+            /*var baseUrl = "{{ url::to('addfile') }}";
+            var token = "{{ Session::getToken() }}";
+            
+             var myDropzone = new Dropzone("div#dropzoneFileUpload", {
+                url: baseUrl,
+                maxFilesize: 3,
+                params: {
+                    _token: token,
+					fold_id: localStorage.getItem('fold_id')
+                },
+				paramName: "file", // The name that will be used to transfer the file
+				addRemoveLinks: true,
+				success: function(file, response){
+					
+				},
+				init: function() {
+					var thisDropzone = this;
+					this.on("processing", function(file) {
+						thisDropzone.options.params.fold_id = localStorage.getItem('fold_id');
+						thisDropzone.options.url = baseUrl;
+					});
+				}
+             });*/
+                         
+                                                
             base_url = $("#base_url").val();
             $('#Carousel').carousel({
                 interval: 5000
@@ -1058,6 +1324,11 @@
             xhttp.send();
     
         }
+        
+        function containerdropreload()
+		{
+			window.location.href = $('input[name="curnurl"]').val();
+		}                
 
     </script>
 @endsection
@@ -1073,6 +1344,7 @@
     var companySaveUrl = '{{URL::to("user/savenewcompanydetails")}}';
     var confirmUrl = '{{URL::to("user/confirmnewprofile")}}';
     </script>
+    <script src="{{ asset('sximo/js/dropzone.js') }}"></script>    
     <script src="{{ asset('metronic/assets/demo/demo6/base/hotel_wizard.js') }}"></script>
     <script src="{{ asset('metronic/assets/demo/demo6/base/bootstrap-datepicker.js') }}"></script>
     <script src="{{ asset('metronic/assets/demo/demo6/base/toastr.js') }}"></script>

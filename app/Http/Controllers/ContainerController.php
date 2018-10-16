@@ -5871,19 +5871,69 @@ class ContainerController extends Controller {
     
     public function getPressFolderListAjaxonload(Request $request, $fid=0){	   
         
-        $folderList = $this->fetchPressFolderTreeListonload($fid);
+        /*$folderList = $this->fetchPressFolderTreeListonload($fid);
        
 		$treeList = '';
 		foreach ($folderList as $r) {
 			echo $r;
-		} 
-
+		} */
+        
+        $tree = '';
+        $main_folder = \DB::table('tb_container')->where('name', 'media-relations')->first();
+        if(!empty($main_folder)){
+            $selected = ($fid == $main_folder->id) ? 'selected' : ''; 
+            $tree .= '<ul class="folders parent'.$main_folder->id.'" rel="pr_'.$main_folder->id.'" style="display:block;">';
+            $url = \URL::to('getPressFolderListAjax/'.$main_folder->id);                
+            $tree .= '<li><a href="'.$url.'" class="expand '.$selected.'" title="" data-action="expend-folder-tree" rel="'.$main_folder->id.'"><span>'. $main_folder->display_name.'<span></span></span></a>';
+            
+                $tree .= $this->fetchPressFolderTreeListonload($main_folder->id, $fid);
+            
+            $tree .= '</li>';               
+             
+            $tree .= '</ul>';
+        }
+        echo $tree;
 	}
 
-    function fetchPressFolderTreeListonload($fid) {
+    function fetchPressFolderTreeListonload($fid, $sel=0) {
 		
-		$user_tree_array = array();
-	
+        $uid = \Auth::user()->id;
+		$filter = " AND parent_id=".$fid;
+		
+		$params = array(
+			'params'	=> $filter,
+			'order'		=> 'asc'
+		);
+        
+		// Get Query 
+        $user_tree_array = '<ul class="folders parent'.$fid.'" rel="pr_'.$fid.'" style="display:block;">';
+        
+		$results = $this->model->getRows( $params );
+		
+        if ($results) {
+			
+			foreach($results['rows'] as $row) {
+				$totfiles = DB::table('tb_container_files')->select('id')->where('folder_id',$row->id)->count();
+				
+				$totfolders = DB::table('tb_container')->select('id')->where('parent_id',$row->id)->count();
+				$url = \URL::to('getPressFolderListAjax/'.$row->id.'?show=');
+                
+                $selected = ($sel == $row->id) ? 'selected' : ''; 
+                
+				$user_tree_array .= '<li><a href="'.$url.'" class="expand '.$selected.'" title="" data-action="expend-folder-tree" rel="'.$row->id.'"><span>'. $row->display_name.'<span>('.$totfolders.', '.$totfiles.')</span></span></a>';
+				
+                
+                $user_tree_array .= $this->fetchPressFolderTreeListonload($row->id, $sel);
+                
+                $user_tree_array .= '</li>';
+			}
+                        
+		}
+        $user_tree_array .= "</ul>";
+        return $user_tree_array;
+        
+		/*$user_tree_array = array();
+ 
 		$uid = \Auth::user()->id;
 		$filter = " AND name='media-relations'";
 		
@@ -5958,9 +6008,9 @@ class ContainerController extends Controller {
                 $str_folder .= '</li>';
                 $user_tree_array[] = $str_folder; 
 			}
-			$user_tree_array[] = "</ul>";
-		  }
-	  return $user_tree_array;
+			$user_tree_array[] = "</ul>"; 
+   	    }
+        return $user_tree_array;*/
 	}
     public function getPressFoldersAjax( $id = 0, $wnd = '' )
 	{

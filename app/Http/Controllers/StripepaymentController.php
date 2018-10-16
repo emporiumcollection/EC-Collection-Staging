@@ -893,7 +893,7 @@ public function generateInvoice($ordid)
                             }
                         }
                        
-                        \DB::table('tb_users')->where('id', \Session::get('uid'))->update(array('new_user'=>0, 'form_wizard'=>5));
+                        \DB::table('tb_users')->where('id', \Session::get('uid'))->update(array('new_user'=>0, 'form_wizard'=>6));
                        
                         $userinfom = User::find(\Session::get('uid'));
 

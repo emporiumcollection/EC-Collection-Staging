@@ -1201,12 +1201,24 @@ return Redirect::to('customer/profile')->with('message', \SiteHelpers::alert('er
         //print_r($extra); die;
         $this->data['user'] = $user;
         
+        $property_assigned = \DB::table('tb_properties')->where('assigned_user_id', $user->id)->first();
+        
+        $propid = '';
+        if(!empty($property_assigned)){
+            $propid = $property_assigned->id;
+        }
+        
+        $this->data['property_assigned'] = $property_assigned;
+        $this->data['assigned_propid'] = $propid;
+        
         $this->data['pageslider'] = \DB::table('tb_pages_sliders')->join('tb_pages_content', 'tb_pages_sliders.slider_page_id', '=' , 'tb_pages_content.pageID')->select( 'slider_title', 'slider_description', 'slider_img', 'slider_link', 'slider_video', 'slide_type')->where('tb_pages_content.alias', 'hotel-dashboard')->where('slider_status', 1)->get();
         
         $group_id = \Session::get('gid');
         $this->data['packages'] = \DB::table('tb_packages')->where('allow_user_groups', $group_id)->where('package_status', 1)->get();
         
         $this->data['active_tab']=$user->form_wizard;
+        
+        $this->data['fid'] = \Session::get('uid');
         
         $is_demo6 = trim(\CommonHelper::isHotelDashBoard($user->group_id));
         $t_f = 'whoiam';

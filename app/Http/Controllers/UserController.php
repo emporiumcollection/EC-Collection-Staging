@@ -1161,6 +1161,7 @@ class UserController extends Controller {
             'last_name' => 'required|alpha_num|min:2',
             'username' => 'required|alpha_num|min:2',
             'contractSignCheck' => 'required',
+            'hotelinfo_name' => 'required',
         );
 
         $validator = Validator::make($request->all(), $rules);
@@ -1192,9 +1193,30 @@ class UserController extends Controller {
                 $user->avatar = $newfilename;
             $user->save();
             
+            $hotelinfo_name = trim($request->input('hotelinfo_name'));
+            $hotelinfo_city = $request->input('hotelinfo_city');
+            $hotelinfo_country = $request->input('hotelinfo_country');
+            $hotelinfo_website = $request->input('hotelinfo_website');
+            
+            $prop_id = '';
+            $obj_prop = \DB::table('tb_properties')->where('property_name', $hotelinfo_name)->first();
+            if(!empty($obj_prop)){
+                \DB::table('tb_properties')->where('id', $obj_prop->id)->update(array('assigned_user_id'=>$user->id));
+                $prop_id =  $obj_prop->id;
+            }else{
+                $hotel_data = array(
+                    'hotelinfo_name' => trim($request->input('hotelinfo_name')),
+                    'hotelinfo_city' => $request->input('hotelinfo_city'),
+                    'hotelinfo_country' => $request->input('hotelinfo_country'),
+                    'hotelinfo_website' => $request->input('hotelinfo_website'),
+                    'assigned_user_id' => $user->id,
+                );   
+                $prop_id = \DB::table('tb_properties')->insertGetId($hotel_data);             
+            }
+            
             $return_array['status'] = 'success';
             $return_array['message'] = 'Profile has been saved!';
-
+            $return_array['pid'] = $prop_id;
         } else {
             
             $return_array['status'] = 'error';
