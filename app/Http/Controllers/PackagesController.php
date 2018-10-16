@@ -33,7 +33,7 @@ class PackagesController extends Controller {
 			'return'	=> self::returnUrl()
 			
 		);
-		
+		echo env('STRIPE_API_KEY');die;
 	}
 
 	public function getIndex( Request $request )
