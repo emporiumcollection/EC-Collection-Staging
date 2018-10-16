@@ -2034,7 +2034,7 @@ class UserController extends Controller {
         
         
         //if($updated){
-            $response = array('status' => 'success', 'message' => 'Room availability added successfully');
+            $response = array('status' => 'success', 'message' => 'Rates added successfully');
         //}else{            
         //    $response = array('status' => 'error', 'message' => 'Error while adding room availability');
         //}

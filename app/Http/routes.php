@@ -357,6 +357,8 @@ Route::group(['middleware' => 'auth'], function()
     
     Route::post('upload_contract', 'PropertiesController@contract_upload');
     
+    Route::post('package_skip', 'CustomerController@skipPackage'); 
+    
 });
 
 Route::post('hotel_membership', 'Frontend\HotelMembershipController@hotelMembershipSignupSave');

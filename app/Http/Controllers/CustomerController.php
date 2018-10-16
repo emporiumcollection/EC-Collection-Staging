@@ -1215,6 +1215,9 @@ return Redirect::to('customer/profile')->with('message', \SiteHelpers::alert('er
         
         $group_id = \Session::get('gid');
         $this->data['packages'] = \DB::table('tb_packages')->where('allow_user_groups', $group_id)->where('package_status', 1)->get();
+        if($propid!=''){
+            $this->data['hotelcontacts'] = (new PropertiesController)->get_property_files($propid, 'Hotel Contracts');
+        }        
         
         $this->data['active_tab']=$user->form_wizard;
         
@@ -1884,5 +1887,14 @@ $html .= '</div>';
         
         echo json_encode($response);
     }   
-
+    public function skipPackage(Request $request){
+        $_user = User::find(\Session::get('uid'));
+        $_user->form_wizard = $request->input('form_wizard');
+        $_user->new_user = 0;
+        $_user->save();
+        $return_array['status'] = 'success';
+        $return_array['message'] = 'Successfully completed wizard!';
+        echo json_encode($return_array);
+        exit;
+    }
 }

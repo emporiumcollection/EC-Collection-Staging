@@ -479,7 +479,8 @@
                                                 <input name="propId" type="hidden" id="propId" value="<?php echo isset($assigned_propid) ? $assigned_propid : ''; ?>" />  
                                                 <input type="hidden" name="uploadType" value="Hotel Contracts" />
     											<div class="m-form__section">
-                                                    <div class="row">                                            
+                                                    <div class="row">
+                                                                                                 
                                                         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
                                                             <img src="{{URL::to('images/800x200.png')}}" style="width: 100%;" />
                                                         </div> 
@@ -490,7 +491,7 @@
                                                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare diam at convallis lacinia. Duis a sapien et erat finibus molestie eu id nisi. Integer nibh elit, blandit ac volutpat eget, tempus eget enim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas mollis dictum risus. Vivamus aliquam at elit non dictum. Integer nisi ante, interdum at purus vitae, rhoncus bibendum dui. Praesent pharetra augue at ultrices facilisis. Vestibulum erat urna, iaculis et purus in, fermentum varius nibh.
                                                             
                                                         </div>
-                                                        
+										                
                                                         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12"><br />             
                                                             
                                                              <div class="form-group m-form__group row">
@@ -503,7 +504,17 @@
                                                                     
             												 </div>                                                                                                                      
                                                         </div>                                                        
-                                                        
+                                                        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
+                                                            <br />
+                                                                <?php 
+                                                                    if(isset($hotelcontacts)){ 
+                                                                ?>        
+                                                                        <a href="{{$hotelcontacts[0]->imgsrc.$hotelcontacts[0]->file_name}}" title="{{$hotelcontacts[0]->file_display_name}}" target="_blank" class="btn btn-primary" >View uploaded Contract</a>  
+                                                                <?php  
+                                                                    }
+                                                                ?>
+                                                            
+                                                        </div>
                                                     </div>
     											</div>
                                             </div>
@@ -521,6 +532,9 @@
                                                         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
                                                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare diam at convallis lacinia. Duis a sapien et erat finibus molestie eu id nisi. Integer nibh elit, blandit ac volutpat eget, tempus eget enim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas mollis dictum risus. Vivamus aliquam at elit non dictum. Integer nisi ante, interdum at purus vitae, rhoncus bibendum dui. Praesent pharetra augue at ultrices facilisis. Vestibulum erat urna, iaculis et purus in, fermentum varius nibh.
                                                         </div> 
+                                                        <div class="col-xl-12 col-lg-12 m--align-right">
+            											     <a href="#" class="btn btn-default" id="package-skip">Skip</a>
+						                                </div>
                                                         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 margin-top" id="dv_pkg">
                                                             
                                                             <div class="form-group m-form__group row">
@@ -1283,6 +1297,33 @@
                 $("#cart_row").css('display', 'none');
             });
             
+            $("#package-skip").click(function(e){ 
+                e.preventDefault();                        
+                var fdata = new FormData();                
+                fdata.append("_token",$("input[name=_token]").val());
+                fdata.append("form_wizard",$("input[name=form_wizard_6]").val()); 
+                console.log(fdata);
+                $.ajax({
+                    url:"{{URL::to('package_skip')}}",
+                    type:'POST',
+                    dataType:'json',
+                    contentType: false,
+                    processData: false,
+                    data:fdata,
+                    headers: {
+                        'Access-Control-Allow-Origin': '*'
+                    },
+                    success:function(response){
+                        if(response.status == 'success'){
+                            toastr.success(response.message);
+                            window.location.href="{{URL::to('dashboard')}}";
+                        }
+                        else{
+                            toastr.error(response.message);
+                        }
+                    }
+                }); 
+           });
         });
         function addToCartHotel(PackageID,PackagePrice){    
 
