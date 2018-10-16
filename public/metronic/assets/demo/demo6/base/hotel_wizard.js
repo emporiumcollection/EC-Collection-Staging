@@ -37,9 +37,11 @@ var WizardDemo = function () {
                 else if((_wizard_step == '4') && (prevTab != _wizard_step)){
                        wizard_step_4();
                 }
-                else if(_wizard_step == '5'){
-                    $("#wizard_submit_btn").css('display', 'none'); 
-                //       wizard_step_5();
+                else if((_wizard_step == '5') && (prevTab != _wizard_step)){
+                       wizard_step_5();
+                }
+                else if((_wizard_step == '6') && (prevTab != _wizard_step)){
+                       
                 }
             }
         });
@@ -91,7 +93,7 @@ var WizardDemo = function () {
                 hotelinfo_name: {
                     required: true,                    
                 }, 
-                hotelinfo_status: {
+                /*hotelinfo_status: {
                     required: true,                    
                 }, 
                 hotelinfo_type: {
@@ -168,7 +170,7 @@ var WizardDemo = function () {
                 
                 accept: {
                     required: true
-                }
+                }*/
             },
 
             //== Validation messages
@@ -259,6 +261,12 @@ function wizard_step_2(){
     fdata.append("contractSignCheck",$("input[name=contractSignCheck]").val());
     fdata.append("_token",$("input[name=_token]").val());
     fdata.append("form_wizard",$("input[name=form_wizard_2]").val());
+    
+    fdata.append("hotelinfo_name",$("input[name=hotelinfo_name]").val());
+    fdata.append("hotelinfo_city",$("input[name=hotelinfo_city]").val());
+    fdata.append("hotelinfo_country",$("input[name=hotelinfo_country]").val());
+    fdata.append("hotelinfo_website",$("input[name=hotelinfo_website]").val());
+    
     if($("input[type=file]")[0].files.length>0){
        fdata.append("avatar",$("input[type=file]")[0].files[0]) 
     }
@@ -273,6 +281,7 @@ function wizard_step_2(){
         data:fdata,
         success:function(response){
             if(response.status == 'success'){
+                $("#propId").val(response.pid);
                 toastr.success(response.message);
                 prevTab++;
                 wizard.goNext();
@@ -348,4 +357,35 @@ function wizard_step_4(){
     }
     //End
     return false;
+}
+function wizard_step_5(){ 
+    wizard.stop = true;
+    var fdata = new FormData();
+    
+    fdata.append("form_wizard",$("input[name=form_wizard_5]").val());
+    if($("input[type=file]")[1].files.length>0){
+       fdata.append("signedcontract",$("input[type=file]")[1].files[0]) 
+    }
+    fdata.append("propId",$("input[name=propId]").val());  
+    fdata.append("uploadType",$("input[name=uploadType]").val());  
+       
+    var base_url = $('#base_url').val();
+    $.ajax({
+        url:base_url+'/upload_contract',
+        type:'POST',
+        dataType:'json',
+        contentType: false,
+        processData: false,
+        data:fdata,
+        success:function(response){
+            if(response.status == 'success'){
+                toastr.success(response.message);
+                prevTab++;
+                wizard.goNext();
+            }
+            else{
+                toastr.error(response.message);
+            }
+        }
+    });
 }
