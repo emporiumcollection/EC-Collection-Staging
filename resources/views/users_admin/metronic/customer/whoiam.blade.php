@@ -906,12 +906,14 @@
     
     .carousel-inner {
       position: relative;
-      width: 100%;
+      /*width: 100%;*/
+      height: 400px;
       overflow: hidden;
     }
     
     .carousel-inner > .item {
-      position: relative;
+      position: absolute;
+      height: 400px;
       display: none;
       -webkit-transition: 0.6s ease-in-out left;
               transition: 0.6s ease-in-out left;
@@ -1242,9 +1244,67 @@
                          
                                                 
             base_url = $("#base_url").val();
-            $('#Carousel').carousel({
+            /*$('#Carousel').carousel({
                 interval: 5000
+            });*/
+            var current_fs, next_fs, previous_fs;
+            
+            
+            
+            
+            // settings
+              var $slider = $('.carousel-inner'); // class or id of carousel slider
+              var $slide = '.item'; // could also use 'img' if you're not using a ul
+              var $transition_time = 1000; // 1 second
+              var $time_between_slides = 4000; // 4 seconds
+            
+              function slides(){
+                return $slider.find($slide);
+              }
+            
+              slides().fadeOut();
+            
+              // set active classes
+              slides().first().addClass('active');
+              slides().first().fadeIn($transition_time);
+            
+              // auto scroll 
+              $interval = setInterval( 
+                function(){ 
+                  var $i = $slider.find($slide + '.active').index();
+                                      
+                  slides().eq($i).removeClass('active');
+                  slides().eq($i).fadeOut($transition_time);
+            
+                  if (slides().length == $i + 1) $i = -1; // loop to start
+            
+                  slides().eq($i + 1).fadeIn($transition_time);
+                  slides().eq($i + 1).addClass('active');
+                }
+                , $transition_time +  $time_between_slides 
+              );
+            
+            
+            $(".left").click(function(){
+                var $i = $slider.find($slide + '.active').index();
+                if($i - 1 >= 0){ 
+                  slides().eq($i).removeClass('active');
+                  slides().eq($i).fadeOut($transition_time);                  
+                  slides().eq($i - 1).fadeIn($transition_time);
+                  slides().eq($i - 1).addClass('active');
+                }
             });
+            
+            $(".right").click(function(){
+                var $i = $slider.find($slide + '.active').index();
+                if($i + 1 < slides().length){ 
+                  slides().eq($i).removeClass('active');
+                  slides().eq($i).fadeOut($transition_time);
+                  slides().eq($i + 1).fadeIn($transition_time);
+                  slides().eq($i + 1).addClass('active');
+                }
+            });
+            
             $("#contractSignCheck").click(function(){
                 if($("#contractSignCheck").is(':checked')){
                     $("#contractSignCheckFinal").prop("checked", true);
