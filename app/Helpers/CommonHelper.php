@@ -1025,16 +1025,39 @@ $allowedCurrenciesinProject=array("OMR","BHD","KWD","USD","CHF","EUR","KYD","GIP
     }
 
     static function getcontractPDFHeader($center_content){
+        
+        $contract_logo = \DB::table('tb_settings')->where('key_value', 'contract_logo')->first();
+        $contract_company = \DB::table('tb_settings')->where('key_value', 'contract_company')->first();
+		$contract_title1 = \DB::table('tb_settings')->where('key_value', 'contract_title1')->first();
+		$contract_title2 = \DB::table('tb_settings')->where('key_value', 'contract_title2')->first();
+		$contract_title3 = \DB::table('tb_settings')->where('key_value', 'contract_title3')->first();
+        $contract_paragraph = \DB::table('tb_settings')->where('key_value', 'contract_paragraph')->first();        
+        
+        $cont_logo = '';        
+        if($contract_logo->content!=''){
+            if(file_exists(public_path().'/sximo/images/'.$contract_logo->content)){
+                $cont_logo = \URL::to('/sximo/images/'.$contract_logo->content);
+            }else{
+                $cont_logo =  \URL::to('sximo/assets/images/logo-design_1.png');
+            }     
+        } 
+        
+        $bank_details = \DB::table('tb_settings')->where('key_value', 'bank_details')->first();
+        $reg_detail = \DB::table('tb_settings')->where('key_value', 'reg_detail')->first();
+		$contact_detail = \DB::table('tb_settings')->where('key_value', 'contact_detail')->first();       
+                                
         $html = '<style> 
 						.main { margin:2px; width:100%; font-family: arial, sans-serif; } 
 						.page-break { page-break-after: always; } 
 						
-						.header{ width: 100%; position:fixed; top: -35px; text-align:center; height:200px;} 
+						.header{ position: fixed; width: 100%; top: 0px; height:250px; background: #fff;} 
+                        .footer{ position: fixed; bottom: 0px; left: 0px; right: 0px; height: 100px; background: #fff; }
 						.footer .page-number:after { content: counter(page); }
 						.pagenum:after {content: counter(page);} 
 						.imgBox { text-align:center; width:400px; } 
 						.nro { text-align:center; font-size:12px; } 
-						.header img { width:250px; height: 50px; } 
+						.header img { height: 100px; } 
+                        .Mrgtop200 {margin-top:280px;} 
 						.Mrgtop80 {margin-top:80px;} 
 						.Mrgtop40 {margin-top:40px;}
 						.Mrgtop20 {margin-top:10px;} 
@@ -1045,7 +1068,8 @@ $allowedCurrenciesinProject=array("OMR","BHD","KWD","USD","CHF","EUR","KYD","GIP
 						.algCnt { text-align:center; } 
 						
 						.pagenum:after {content: counter(page);}
-						.title {text-align:right; width:100%; font-size:30px; font-weight:bold;} 
+						.title {text-align:right; width:100%; font-size:30px; font-weight:bold;}
+                        .title1 {width:100%; font-size:16px; font-weight:bold;} 
 						.clrgrey{ color:#3f3f3f;} 
 						.alnRight{text-align:right;} 
 						.alnCenter{text-align:center;} 
@@ -1107,29 +1131,70 @@ $allowedCurrenciesinProject=array("OMR","BHD","KWD","USD","CHF","EUR","KYD","GIP
         
         $html .= '
             <div class="main">
-                <div class="header">
+                <div class="header"> 
                     <table width="100%">
-                        <tr>
-    						<td class="title" align="center">
-    						    
-    							<center><img src="'. \URL::to('sximo/assets/images/logo-design_1.png').'" width="250px;" height="105px;"></center>
-    							 
+                        <tr>  
+    						<td>    						    
+    							<img src="'.$cont_logo.'" height="100px;">   				 	 
     						</td>
     					 </tr>
-    						<tr>
-    						<td class="title" align="center">
-    							<center> &nbsp;</center>
+                         <tr>
+    						<td class="title1" align="center">
+    							<center>'.$contract_title1->content.'</center>
     						</td>
     					 </tr>
+                         <tr>
+    						<td class="title1" align="center">
+    							<center>'.$contract_title2->content.'</center>
+    						</td>
+    					 </tr>
+                         <tr>
+    						<td align="left">
+    							'.$contract_paragraph->content.'
+    						</td>
+    					 </tr>
+                         <tr>
+    						<td class="title1" align="center">
+    							<center>'.$contract_title3->content.'</center>
+    						</td>
+    					 </tr>                                                                                                       
                     </table>
                 </div>  
                 
                 <div style="clear:both;"> &nbsp;</div>
                 
                 '.$center_content.'
+                
+                <div style="clear:both;"> &nbsp;</div>
+                <div class="footer"> 
+                    <table width="100%">  
+                        <tr>  
+    						<td width="33%">    						    
+    						  Bank details	   				 	 
+    						</td>
+                            <td width="33%">    						    
+    						  Company registration details	   				 	 
+    						</td>
+                            <td width="33%">    						    
+    						  Company contact details	   				 	 
+    						</td>
+    					</tr>                        
+                        <tr>  
+    						<td width="33%">    						    
+    						  '.$bank_details->content.'	   				 	 
+    						</td>
+                            <td width="33%">    						    
+    						  '.$reg_detail->content.'	   				 	 
+    						</td>
+                            <td width="33%">    						    
+    						  '.$contact_detail->content.'	   				 	 
+    						</td>
+    					 </tr>                                                                                        
+                    </table> 
+                </div>
             </div>
         ';
-        
+             
         return $html;
     }
 

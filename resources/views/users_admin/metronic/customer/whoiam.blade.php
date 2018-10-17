@@ -1270,7 +1270,8 @@
             
               // auto scroll 
               $interval = setInterval( 
-                function(){ 
+                function(){
+                if(slides().length > 1){
                   var $i = $slider.find($slide + '.active').index();
                                       
                   slides().eq($i).removeClass('active');
@@ -1280,6 +1281,7 @@
             
                   slides().eq($i + 1).fadeIn($transition_time);
                   slides().eq($i + 1).addClass('active');
+                  }
                 }
                 , $transition_time +  $time_between_slides 
               );

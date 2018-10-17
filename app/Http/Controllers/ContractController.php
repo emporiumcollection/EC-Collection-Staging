@@ -178,7 +178,7 @@ class ContractController extends Controller {
         usort($usersContracts, function($a, $b) {
 						return $a->sort_num - $b->sort_num; 
 					});
-        $usersContracts = array_reverse($usersContracts);
+        //$usersContracts = array_reverse($usersContracts);
         
         $center_content = '';
         $i = 1;
@@ -188,7 +188,12 @@ class ContractController extends Controller {
             $username = trim(ucfirst($si_contract->first_name).' '.ucfirst($si_contract->last_name));
             $created_on = date_create($si_contract->created_on);
             $date_signed = date_format($created_on,"Y/m/d");
-            $center_content .= '<div class="Mrgtop80 font13">';
+            if($i==1){
+                $center_content .= '<div class="Mrgtop200 font13">';
+            }else{
+                $center_content .= '<div class="Mrgtop80 font13">';
+            }
+            
                 $center_content .= '<h3>'.$i++.'. '.$si_contract->title.'</h3>';
                 if((!empty($si_contract->commission_type)) && ($si_contract->contract_type == 'commission')){
                     $center_content .= '<p> <span class="strong">Availability: </span><span class="font14">'.ucfirst($si_contract->commission_type).'</p>';

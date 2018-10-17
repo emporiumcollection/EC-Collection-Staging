@@ -10,7 +10,8 @@ $tabs = array(
 		'advertisement'			=> Lang::get('core.tab_advertisement'),
 		'kontakte'			=> 'Kontakte',
 		'container'			=> 'Container',
-		'designer'			=> 'Designer'
+		'designer'			=> 'Designer',
+        'contract'			=> 'Contract'
 	);
 
 ?>

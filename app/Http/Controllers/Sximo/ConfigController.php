@@ -722,5 +722,74 @@ class ConfigController extends Controller {
 		}
 	
 	}
+    
+    public function getContract()
+	{
+		$this->data = array(
+			'pageTitle'	=> 'Help Manual',
+			'pageNote'	=> 'Documentation',
+			'active'	=> 'contract'
+		);	
+		
+		$this->data['contract_logo'] = \DB::table('tb_settings')->where('key_value', 'contract_logo')->first();
+        $this->data['contract_company'] = \DB::table('tb_settings')->where('key_value', 'contract_company')->first();
+		$this->data['contract_title1'] = \DB::table('tb_settings')->where('key_value', 'contract_title1')->first();
+		$this->data['contract_title2'] = \DB::table('tb_settings')->where('key_value', 'contract_title2')->first();
+		$this->data['contract_title3'] = \DB::table('tb_settings')->where('key_value', 'contract_title3')->first();
+        $this->data['contract_paragraph'] = \DB::table('tb_settings')->where('key_value', 'contract_paragraph')->first();        
+        
+        $this->data['contract_company_eng'] = \DB::table('tb_settings')->where('key_value', 'contract_company_eng')->first();
+		$this->data['contract_title1_eng'] = \DB::table('tb_settings')->where('key_value', 'contract_title1_eng')->first();
+		$this->data['contract_title2_eng'] = \DB::table('tb_settings')->where('key_value', 'contract_title2_eng')->first();
+		$this->data['contract_title3_eng'] = \DB::table('tb_settings')->where('key_value', 'contract_title3_eng')->first();
+        $this->data['contract_paragraph_eng'] = \DB::table('tb_settings')->where('key_value', 'contract_paragraph_eng')->first();
+		
+		return view('sximo.config.contract',$this->data);	
+	}	
+	
+	
+	function postContract( Request $request)
+	{
+		
+		//print_r($_POST);exit;
+		$rules = array(
+			'contract_company'		=> 'required',			
+		);	
+		$validator = Validator::make($request->all(), $rules);	
+		if ($validator->passes()) 
+		{
+		    $logo = '';
+			if(!is_null(Input::file('contract_logo')))
+			{
+				$file = Input::file('contract_logo');                
+			 	$destinationPath = public_path().'/sximo/images/'; 
+				$filename = $file->getClientOriginalName();
+				$extension =$file->getClientOriginalExtension(); //if you need extension of the file
+				$logo = 'contract-logo.'.$extension;
+				$uploadSuccess = $file->move($destinationPath, $logo);
+                
+                \DB::table('tb_settings')->where('key_value', 'contract_logo')->update(['content' => $logo]);
+			}
+            
+			\DB::table('tb_settings')->where('key_value', 'contract_company')->update(['content' => Input::get('contract_company')]);			
+			\DB::table('tb_settings')->where('key_value', 'contract_title1')->update(['content' => Input::get('contract_title1')]);
+            \DB::table('tb_settings')->where('key_value', 'contract_title2')->update(['content' => Input::get('contract_title2')]);			
+			\DB::table('tb_settings')->where('key_value', 'contract_title3')->update(['content' => Input::get('contract_title3')]);
+            \DB::table('tb_settings')->where('key_value', 'contract_paragraph')->update(['content' => Input::get('contract_paragraph')]);
+			
+			\DB::table('tb_settings')->where('key_value', 'contract_company_eng')->update(['content' => Input::get('contract_company_eng')]);			
+			\DB::table('tb_settings')->where('key_value', 'contract_title1_eng')->update(['content' => Input::get('contract_title1_eng')]);
+            \DB::table('tb_settings')->where('key_value', 'contract_title2_eng')->update(['content' => Input::get('contract_title2_eng')]);			
+			\DB::table('tb_settings')->where('key_value', 'contract_title3_eng')->update(['content' => Input::get('contract_title3_eng')]);
+            \DB::table('tb_settings')->where('key_value', 'contract_paragraph_eng')->update(['content' => Input::get('contract_paragraph_eng')]);
+			
+			return Redirect::to('sximo/config/contract')->with('messagetext', 'Designer settings Has Been Updated')->with('msgstatus','success');	
+			
+		}	else {
 
+			return Redirect::to('sximo/config/contract')->with('messagetext', 'The following errors occurred')->with('msgstatus','success')
+			->withErrors($validator)->withInput();
+		}
+	
+	}
 }
