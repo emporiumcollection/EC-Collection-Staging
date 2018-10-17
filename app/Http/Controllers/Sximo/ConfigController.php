@@ -783,7 +783,7 @@ class ConfigController extends Controller {
 			\DB::table('tb_settings')->where('key_value', 'contract_title3_eng')->update(['content' => Input::get('contract_title3_eng')]);
             \DB::table('tb_settings')->where('key_value', 'contract_paragraph_eng')->update(['content' => Input::get('contract_paragraph_eng')]);
 			
-			return Redirect::to('sximo/config/contract')->with('messagetext', 'Designer settings Has Been Updated')->with('msgstatus','success');	
+			return Redirect::to('sximo/config/contract')->with('messagetext', 'Contract settings Has Been Updated')->with('msgstatus','success');	
 			
 		}	else {
 

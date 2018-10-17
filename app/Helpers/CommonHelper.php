@@ -1040,7 +1040,9 @@ $allowedCurrenciesinProject=array("OMR","BHD","KWD","USD","CHF","EUR","KYD","GIP
             }else{
                 $cont_logo =  \URL::to('sximo/assets/images/logo-design_1.png');
             }     
-        } 
+        }else{
+                $cont_logo =  \URL::to('sximo/assets/images/logo-design_1.png');
+        }  
         
         $bank_details = \DB::table('tb_settings')->where('key_value', 'bank_details')->first();
         $reg_detail = \DB::table('tb_settings')->where('key_value', 'reg_detail')->first();
