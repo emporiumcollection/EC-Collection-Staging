@@ -283,6 +283,18 @@
 																		</span>
 																	</a>
 																</li>
+                                                                
+                                                                <li class="m-nav__item">
+																	<a href="{{ URL::to('press')}}" class="m-nav__link">
+																		<i class="m-nav__link-icon 	flaticon-folder-4"></i>
+																		<span class="m-nav__link-title">
+																			<span class="m-nav__link-wrap">
+																				Press
+																			</span>
+																		</span>
+																	</a>
+																</li>
+                                                                
 																<li class="m-nav__separator m-nav__separator--fit"></li>
                                                                 
 																<li class="m-nav__item">

@@ -158,7 +158,17 @@ class ContractController extends Controller {
         }
     }
     
-    public function download_signup_contract($isview='download'){
+    public function replace_tags($string){
+        $string_array_replace = array(
+                    '{current_date}'=>$date_signed,
+        );
+        foreach($string_array_replace as $key => $key){
+            str_replace($key, $key, $string);
+        }
+        return $string;
+    }
+    
+    public function download_signup_contract($isview='download'){ 
         $viewPDF = (($isview == 'view')?true:false);
         $downFileName = 'contract-signup-'.date('d-m-Y').'.pdf';
         $selectFields = array('tb_users_contracts.*','tb_users.first_name','tb_users.last_name','tb_users_contracts.contract_type','tb_users_contracts.commission_type','tb_users_contracts.partial_availability_commission','tb_users_contracts.full_availability_commission');
@@ -206,9 +216,30 @@ class ContractController extends Controller {
                         $center_content .= $si_contract->full_availability_commission;
                     }
                     $center_content .= '</span></p>';
-                }   
-                $center_content .= '<p></span><span class="font14">'.$si_contract->description.'</span></p>';         
+                } 
+                $str_desc = $si_contract->description;
+                $valid_until = date('Y-m-d', strtotime('+2 years', strtotime($date_signed)));
+                $valid_until_year = date('Y', strtotime($valid_until));
+                $string_array_replace = array(                    
+                    '{signed_date}'=>$date_signed,
+                    '{valid_until}'=>$valid_until,
+                    '{valid_until_year}'=>$valid_until_year,
+                );
+                foreach($string_array_replace as $key => $value){                    
+                    $str_replaced = str_replace($key, $value, $str_desc);
+                    $str_desc = $str_replaced;
+                }                
+                $center_content .= '<p></span><span class="font14">'.$str_desc.'</span></p>';         
             $center_content .= '</div>';
+        }
+        
+        $contract_first_name = \DB::table('tb_settings')->where('key_value', 'contract_first_name')->first();
+		$contract_last_name = \DB::table('tb_settings')->where('key_value', 'contract_last_name')->first();
+        $contract_company = \DB::table('tb_settings')->where('key_value', 'contract_company')->first();
+        
+        $contract_full_name = '';
+        if(!empty($contract_first_name->content)){
+            $contract_full_name = $contract_first_name->content." ".$contract_last_name->content;
         }
         
         if((strlen($username) > 0) && (strlen($date_signed) > 0)){
@@ -216,9 +247,9 @@ class ContractController extends Controller {
 				$center_content .= '<p class="font13">I hereby agree to supply the above for entry into Emporium-Voyage</p>';
                 $center_content .= '<p class="font13">General terms & conditions apply.</p>';
                 $center_content .= '<table>';
-                    $center_content .= '<tr><td class="strong">Signed by: </td> <td class="underline">'.$username.'</td></tr>';    
-                    $center_content .= '<tr><td class="strong">Print name: </td> <td class="underline">'.$username.'</td></tr>';
-                    $center_content .= '<tr><td class="strong">For and on behalf of: </td> <td class="underline">NA</td></tr>';
+                    $center_content .= '<tr><td class="strong">Signed by: </td> <td class="underline">'.$contract_full_name.'</td></tr>';    
+                    $center_content .= '<tr><td class="strong">Print name: </td> <td class="underline">'.$contract_full_name.'</td></tr>';
+                    $center_content .= '<tr><td class="strong">For and on behalf of: </td> <td class="underline">'.$contract_company->content.'</td></tr>';
                     $center_content .= '<tr><td class="strong">Date signed: </td> <td class="underline">'.$date_signed.'</td></tr>';
                     $center_content .= '<tr><td></td><td><img src="'. \URL::to('sximo/assets/images/checked-box.png').'" width="20px;" height="20px;"><label style="display:inline-block;text-align:left;">I agreed to the Terms stipulated in this contract</label></td></tr>';
                     $center_content .= '<tr><td class="strong">Signed by: </td> <td class="underline">'.$username.'</td></tr>';    

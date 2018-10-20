@@ -5808,7 +5808,7 @@ class ContainerController extends Controller {
 		$is_demo6 = trim(\CommonHelper::isHotelDashBoard());
         $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.frontend.themes.emporium.press.media_relations':'frontend.themes.emporium.press.media_relations';
                 
-		return view($file_name,$this->data);
+		return view('frontend.themes.emporium.press.media_relations',$this->data);
 	}
     
    	function fetchPressFolderTreeList($parent = 0, $user_tree_array = '', $wnd = '', $showType='thumb') {

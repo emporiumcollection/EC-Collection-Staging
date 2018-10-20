@@ -731,12 +731,14 @@ class ConfigController extends Controller {
 			'active'	=> 'contract'
 		);	
 		
+        $this->data['contract_first_name'] = \DB::table('tb_settings')->where('key_value', 'contract_first_name')->first();
+        $this->data['contract_last_name'] = \DB::table('tb_settings')->where('key_value', 'contract_last_name')->first();  
 		$this->data['contract_logo'] = \DB::table('tb_settings')->where('key_value', 'contract_logo')->first();
         $this->data['contract_company'] = \DB::table('tb_settings')->where('key_value', 'contract_company')->first();
 		$this->data['contract_title1'] = \DB::table('tb_settings')->where('key_value', 'contract_title1')->first();
 		$this->data['contract_title2'] = \DB::table('tb_settings')->where('key_value', 'contract_title2')->first();
 		$this->data['contract_title3'] = \DB::table('tb_settings')->where('key_value', 'contract_title3')->first();
-        $this->data['contract_paragraph'] = \DB::table('tb_settings')->where('key_value', 'contract_paragraph')->first();        
+        $this->data['contract_paragraph'] = \DB::table('tb_settings')->where('key_value', 'contract_paragraph')->first();
         
         $this->data['contract_company_eng'] = \DB::table('tb_settings')->where('key_value', 'contract_company_eng')->first();
 		$this->data['contract_title1_eng'] = \DB::table('tb_settings')->where('key_value', 'contract_title1_eng')->first();
@@ -770,6 +772,9 @@ class ConfigController extends Controller {
                 
                 \DB::table('tb_settings')->where('key_value', 'contract_logo')->update(['content' => $logo]);
 			}
+            
+            \DB::table('tb_settings')->where('key_value', 'contract_first_name')->update(['content' => Input::get('contract_first_name')]);			
+			\DB::table('tb_settings')->where('key_value', 'contract_last_name')->update(['content' => Input::get('contract_last_name')]);
             
 			\DB::table('tb_settings')->where('key_value', 'contract_company')->update(['content' => Input::get('contract_company')]);			
 			\DB::table('tb_settings')->where('key_value', 'contract_title1')->update(['content' => Input::get('contract_title1')]);

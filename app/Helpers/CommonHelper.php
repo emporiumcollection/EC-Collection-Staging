@@ -1031,7 +1031,22 @@ $allowedCurrenciesinProject=array("OMR","BHD","KWD","USD","CHF","EUR","KYD","GIP
 		$contract_title1 = \DB::table('tb_settings')->where('key_value', 'contract_title1')->first();
 		$contract_title2 = \DB::table('tb_settings')->where('key_value', 'contract_title2')->first();
 		$contract_title3 = \DB::table('tb_settings')->where('key_value', 'contract_title3')->first();
-        $contract_paragraph = \DB::table('tb_settings')->where('key_value', 'contract_paragraph')->first();        
+        $contract_paragraph = \DB::table('tb_settings')->where('key_value', 'contract_paragraph')->first(); 
+        
+        $obj_hotel = \DB::table('tb_properties')->where('assigned_user_id', \Session::get('uid'))->first();
+        
+        $p_content = '';
+        if(!empty($contract_paragraph->content)){
+            $p_content = $contract_paragraph->content;
+            $string_array_replace = array(                    
+                '{hotel_name}'=>(isset($obj_hotel->property_name) ? $obj_hotel->property_name : ''),
+                '{company_name}'=>$contract_company->content,
+            );
+            foreach($string_array_replace as $key => $value){                    
+                $str_replaced = str_replace($key, $value, $p_content);
+                $p_content = $str_replaced;
+            }       
+        }    
         
         $cont_logo = '';        
         if($contract_logo->content!=''){
@@ -1152,7 +1167,7 @@ $allowedCurrenciesinProject=array("OMR","BHD","KWD","USD","CHF","EUR","KYD","GIP
     					 </tr>
                          <tr>
     						<td align="left">
-    							'.$contract_paragraph->content.'
+    							'.$p_content.'
     						</td>
     					 </tr>
                          <tr>
@@ -1165,7 +1180,7 @@ $allowedCurrenciesinProject=array("OMR","BHD","KWD","USD","CHF","EUR","KYD","GIP
                 
                 <div style="clear:both;"> &nbsp;</div>
                 
-                '.$center_content.'
+                '.nl2br($center_content).'
                 
                 <div style="clear:both;"> &nbsp;</div>
                 <div class="footer"> 
@@ -1196,7 +1211,7 @@ $allowedCurrenciesinProject=array("OMR","BHD","KWD","USD","CHF","EUR","KYD","GIP
                 </div>
             </div>
         ';
-             
+        echo $html; die;    
         return $html;
     }
 

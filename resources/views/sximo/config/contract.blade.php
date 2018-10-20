@@ -11,12 +11,11 @@
         <h3>Contract</h3>
       </div>
 
-		  <ul class="breadcrumb">
-			<li><a href="{{ URL::to('dashboard') }}">{{ Lang::get('core.home') }}</a></li>
-			<li><a href="{{ URL::to('sximo/config') }}">Setting</a></li>
-			<li class="active"> Contract </li>
-		  </ul>
-		
+	  <ul class="breadcrumb">
+		<li><a href="{{ URL::to('dashboard') }}">{{ Lang::get('core.home') }}</a></li>
+		<li><a href="{{ URL::to('sximo/config') }}">Setting</a></li>
+		<li class="active"> Contract </li>
+	  </ul>
 		  
     </div>
 
@@ -40,6 +39,26 @@
 	<div class="col-sm-12">
 	
 		<fieldset > <legend> Contract Settings </legend>
+          <div class="form-group">
+			<label for="ipt" class=" control-label col-md-2"> Contract First Name </label>
+			<div class="col-md-6">			
+				<input type="text" name="contract_first_name" class="form-control input-sm" value="{{$contract_first_name->content}}" />
+			</div>
+            
+			<div class="col-md-4">
+			</div>
+		  </div>
+          
+		  <div class="form-group">
+			<label for="ipt" class=" control-label col-md-2"> Contract Last Name </label>
+			<div class="col-md-6">			
+				<input type="text" name="contract_last_name" class="form-control input-sm" value="{{$contract_last_name->content}}" />
+			</div>
+            
+			<div class="col-md-4">
+			</div>
+		  </div>
+          
 		  <div class="form-group">
 		    <label for="ipt" class=" control-label col-md-2"> Logo </label>
 			<div class="col-md-6">				

@@ -70,7 +70,13 @@
     					@if($t['view'] =='1')
     						<th>{{ $t['label'] }}</th>
     					@endif
+                        
+                        @if($t['field'] == 'username')
+    						<th>Lead Type</th>
+    					@endif
+                        
     				@endforeach
+                    
     				<th width="70" >{{ Lang::get('core.btn_action') }}</th>
     			  </tr>
             </thead>
@@ -99,8 +105,12 @@
     							{!! SiteHelpers::gridDisplay($row->$col,$field['field'],$conn) !!}	
     						@endif						 
     					 </td>
-    					 @endif					 
+    					 @endif	
+                         @if($field['field'] == 'username')
+    						<td>{{$row->lead_type}}</td>
+    					@endif				 
     				 @endforeach
+                     
     				 <td width="100">
     					 	@if($access['is_detail'] ==1)
     						<a href="{{ URL::to('core/users/show/'.$row->id.'?return='.$return)}}" class="tips btn btn-xs btn-white" title="{{ Lang::get('core.btn_view') }}" style="display: none;"><i class="fa  fa-search "></i></a>

@@ -651,7 +651,7 @@
 		
 		var baseUrl = "{{ url::to('addsubimage') }}";
         var token = "{{ Session::getToken() }}";
-        Dropzone.autoDiscover = false;
+ /*       Dropzone.autoDiscover = false;
         var myDropzone = new Dropzone("div#dropzoneFileUpload", {
             url: baseUrl,
 			params: {
@@ -664,7 +664,7 @@
 				
 			}
 		});
-		
+*/		
 		function activate_deactivate_slider(img,img_id,act)
 		{
 			if(img_id!='' && img_id>0)
