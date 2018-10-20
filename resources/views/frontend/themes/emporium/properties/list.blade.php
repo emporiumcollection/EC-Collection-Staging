@@ -185,11 +185,16 @@
 				{
 					$url.='?arrive='.Request::input("arrive")."&departure=".Request::input("departure");
 				}
-
-
+                $temotional_gallery = array();
+                if(((($rw % 20) == 0) || ($rw == count($propertiesArr))) && (count($emotional_gallery) > 0)){
+                    for($i = 0; $i<3; $i++){
+                        if(count($emotional_gallery) > 0){ $temotional_gallery[] = array_shift($emotional_gallery); }
+                    }
+                }
 			?> 
 			@if($rw%19==0)
 							{{--*/ $adscatid = ($destination_category > 0) ? $destination_category : 'Hotel'; $resultads = CommonHelper::getGridResultAds('grid_results', $adscatid) /*--}}
+                            
 							@if(!empty($resultads['resultads']))
 								 <div class="col-md-4 col-sm-4 col-xs-12 grid-item">
 							        <div class="row">
@@ -234,6 +239,34 @@
 							        </div>
 							      </div>
 							 @endif
+                             
+                             @if(count($temotional_gallery) > 0)
+                                <?php
+                                $images_arr = array();
+                                foreach($temotional_gallery as $si_g_image){
+                                    $images_arr[] = \URL::to('containerimagebyid/'.$si_g_image->id);
+                                }
+                                $img_str = json_encode($images_arr);
+                                ?>
+                                <div class="col-md-4 col-sm-4 col-xs-12 grid-item">
+							        <div class="row">
+							           <div class="gridinner">
+							           	<div class="image">
+							           		    {{-- <a class="showhide" href="{{$url}}" rel="bookmark" style="">{{ $props->property_name}}   </a> --}}
+							            <a href="javascript:false;">
+							          		  <img src="{{ URL::to('themes/emporium/images/emporium-voyage-logo-white-loader.svg') }}" data-src="{{ URL::to('containerimagebyid/'.$temotional_gallery[0]->id)}}" data-rad-gallery-images="{{$img_str}}" class="img-responsive rad-img" alt="Emotional Gallery" title="Emotional Gallery"  />
+							               {{-- URL::to('propertyimagebyid/'.$props->id)--}}
+							           	</a>
+
+							           </div>
+							            <div class="gridtext">
+							              <h5 class="entry-title"></h5>
+							               <p></p>
+							            </div>
+							          </div>
+							        </div>
+							      </div>
+                            @endif
 
       		{{--*/ $rw++ /*--}}
       @endforeach 

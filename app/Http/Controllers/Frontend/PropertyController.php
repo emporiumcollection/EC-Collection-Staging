@@ -226,7 +226,7 @@ class PropertyController extends Controller {
             if((!empty($emtional_containerfiles)) && (is_array($emtional_containerfiles))){$emotional_gallery_array = $emtional_containerfiles;}
         }
         $this->data['emotional_gallery'] = $emotional_gallery_array;
-        //End
+        //End 
 		$tags_Arr = \DB::table('tb_tags_manager')->where('tag_status', 1)->get();
 		$tagsArr = array();
 		if (!empty($tags_Arr)) {
