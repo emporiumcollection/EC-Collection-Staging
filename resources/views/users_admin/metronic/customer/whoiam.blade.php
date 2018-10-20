@@ -448,7 +448,24 @@
                                                                                         <div class="m-accordion__item-body collapse" id="m_accordion_1_item_<?php echo $sn; ?>_body" role="tabpanel" aria-labelledby="m_accordion_1_item_<?php echo $sn; ?>_head" data-parent="#m_accordion_1">
                                                                                              <div class="m-accordion__item-content">
                                                                                               <p>
-                                                                                               <?php echo nl2br($row->description); ?>
+                                                                                               <?php 
+                                                                                               $date_signed = date('Y/m/d');
+                                                                                               $str_desc = $row->description;
+                $valid_until = date('Y-m-d', strtotime('+2 years', strtotime($date_signed)));
+                $valid_until_year = date('Y', strtotime($valid_until));
+                $string_array_replace = array(                    
+                    '{signed_date}'=>$date_signed,
+                    '{valid_until}'=>$valid_until,
+                    '{valid_until_year}'=>$valid_until_year,
+                );
+                foreach($string_array_replace as $key => $value){                    
+                    $str_replaced = str_replace($key, $value, $str_desc);
+                    $str_desc = $str_replaced;
+                }           
+                                                                                               
+                                                                                               echo nl2br($str_desc); 
+                                                                                               
+                                                                                               ?>
                                                                                               </p>
                                                                                              </div>
                                                                                         </div>
@@ -507,7 +524,7 @@
                                                         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
                                                             <br />
                                                                 <?php 
-                                                                    if(isset($hotelcontacts)){ 
+                                                                    if(isset($hotelcontacts) && count($hotelcontacts) > 0){ 
                                                                 ?>        
                                                                         <a href="{{$hotelcontacts[0]->imgsrc.$hotelcontacts[0]->file_name}}" title="{{$hotelcontacts[0]->file_display_name}}" target="_blank" class="btn btn-primary" >View uploaded Contract</a>  
                                                                 <?php  
