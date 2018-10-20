@@ -1205,13 +1205,14 @@ class UserController extends Controller {
                 $prop_id =  $obj_prop->id;
             }else{
                 $hotel_data = array(
-                    'hotelinfo_name' => trim($request->input('hotelinfo_name')),
-                    'hotelinfo_city' => $request->input('hotelinfo_city'),
-                    'hotelinfo_country' => $request->input('hotelinfo_country'),
-                    'hotelinfo_website' => $request->input('hotelinfo_website'),
+                    'property_name' => trim($request->input('hotelinfo_name')),
+                    'city' => $request->input('hotelinfo_city'),
+                    'country' => $request->input('hotelinfo_country'),
+                    'website' => $request->input('hotelinfo_website'),
                     'assigned_user_id' => $user->id,
                 );   
-                $prop_id = \DB::table('tb_properties')->insertGetId($hotel_data);             
+                $prop_id = \DB::table('tb_properties')->insertGetId($hotel_data);     
+                        
             }
             
             $return_array['status'] = 'success';
