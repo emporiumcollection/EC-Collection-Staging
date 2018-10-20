@@ -131,7 +131,7 @@
             .on('load', function() { 
                 thisObj.attr('src',$(this).attr('src'));
                 thisObj.photoInitFun();
-                if(index%9==0){
+                if((index%9==0) || (index == 0)){
                     if(typeof $grid != 'undefined'){ $grid.masonry('layout'); }
                 }
                 tooobj.preload(imageArray, index + 1);
@@ -139,7 +139,7 @@
             .on('error', function() { 
                 thisObj.attr('src',noImg); thisObj.css('opacity','1'); 
                 //thisObj.photoInitFun();
-                if(index%9==0){
+                if((index%9==0) || (index == 0)){
                     if(typeof $grid != 'undefined'){ $grid.masonry('layout'); }
                 }
                 tooobj.preload(imageArray, index + 1);
