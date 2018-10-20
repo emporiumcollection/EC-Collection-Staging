@@ -44,10 +44,16 @@ class CustomQuery
     static function getPropertyImagesFromDB($propId,$limit=0,$get_thumb_path=false,$get_containerpath=false){
 		$containerObj = new \App\Http\Controllers\ContainerController;
         if($limit > 0){
-            $proertyObj = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $propId)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->limit($limit)->get();    
+            $proertyObj = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $propId)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->limit($limit)->get(); 
+            if(empty($proertyObj)){
+                $proertyObj = \DB::table('tb_container_files')->select('tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_container_files.folder_id', $propId)->orderBy('tb_container_files.file_sort_num', 'asc')->limit($limit)->get();
+            }   
         }else
         {
             $proertyObj = \DB::table('tb_properties_images')->join('tb_container_files', 'tb_container_files.id', '=', 'tb_properties_images.file_id')->select('tb_properties_images.*', 'tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_properties_images.property_id', $propId)->where('tb_properties_images.type', 'Property Images')->orderBy('tb_container_files.file_sort_num', 'asc')->get();
+            if(empty($proertyObj)){
+                $proertyObj = \DB::table('tb_container_files')->select('tb_container_files.file_name', 'tb_container_files.file_size', 'tb_container_files.file_type', 'tb_container_files.folder_id')->where('tb_container_files.folder_id', $propId)->orderBy('tb_container_files.file_sort_num', 'asc')->get();
+            }
         }
         
         $returnObj = array();
