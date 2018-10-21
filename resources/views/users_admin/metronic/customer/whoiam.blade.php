@@ -100,7 +100,7 @@
 														<span></span>
 													</div>
 													<div class="m-wizard__step-label">
-														Rates
+														Commission
 													</div>
 												</div>
 											</div>
@@ -216,7 +216,11 @@
                                                             <h2 class="black-heading-big">Welcome to emporium-voyage</h2>
                                                         </div> 
                                                         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
-                                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare diam at convallis lacinia. Duis a sapien et erat finibus molestie eu id nisi. Integer nibh elit, blandit ac volutpat eget, tempus eget enim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas mollis dictum risus. Vivamus aliquam at elit non dictum. Integer nisi ante, interdum at purus vitae, rhoncus bibendum dui. Praesent pharetra augue at ultrices facilisis. Vestibulum erat urna, iaculis et purus in, fermentum varius nibh.
+                                                            Welcome to the emporium Voyage Members Club. Our vision is to become the largest and most comprehensive brand of curated luxury expereinces in the world, offoffering your guest true End-to-End Luxury concierge services. 
+                                                            Our organizations primary objective is to drive business to our member hotels. We focus on  High-net worth independent-minded travelers and tell your unique, special, distinctive stories providing the ultimate guest experience. 
+                                                            Please complte all the needed steps to ensure we capture the essence of your Brand Experience for ditribution in our strategic marketing campaigns. Your Property concierge is ready to answer all questions you may have. 
+                                                            We look forward to establishing a long Term relationship with your Brand. If you would like emporium voyage to set up your account for you,We are glad to help. After completing the wizard steps on the packages page simply select the setup package and our account managers we will gladly connect to get your Hotel setup, sales ready.
+                                                            Access is restricted to member hotels and employees only.
                                                             <hr />
                                                         </div> 
                                                         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
@@ -249,7 +253,9 @@
     													</h3>
     												</div>
                                                     <div class="col-sm-12 col-md-12">
-    													Info text
+    													Emporium-Voyage has dedicated considerable resources to developing and maintaining a strong corporate identity. As a result, The Emporium-Voyage brand has emerged as a globally recognized mark, representing the finest in luxuryhotels. 
+                                                        Please enter your Brand details to ensure accuracy. By actively engaging in an effort to promote your hotel’s membership in our organization, you become true brand ambassadors for Emporium-Voyage, which benefits all members globally. 
+                                                        Full details must be added in your companany profile from your Property dashboard.
                                                         <hr />
     												</div>
                                                     <div class="form-group m-form__group row">
@@ -340,7 +346,7 @@
                                 							<div class="m-checkbox-inline">
                                 								<label class="m-checkbox m-checkbox--solid m-checkbox--brand">
                                 									<input type="checkbox" id="newsLetter" name="newsLetter">      								
-                                									Subscribe to our notifications and news to our latest hotels, spa's and offers. 
+                                									Subscribe to our notifications and news, latest industry updates and features. 
                                                                     <span></span>
                                 								</label>
                                 							</div>
@@ -359,11 +365,10 @@
                                                             <img src="{{URL::to('images/800x200.png')}}" style="width: 100%;" />
                                                         </div> 
                                                         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center margin-top">
-                                                            <h2 class="black-heading-big">Rates</h2>
+                                                            <h2 class="black-heading-big">Commission</h2>
                                                         </div> 
                                                         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
-                                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare diam at convallis lacinia. Duis a sapien et erat finibus molestie eu id nisi. Integer nibh elit, blandit ac volutpat eget, tempus eget enim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas mollis dictum risus. Vivamus aliquam at elit non dictum. Integer nisi ante, interdum at purus vitae, rhoncus bibendum dui. Praesent pharetra augue at ultrices facilisis. Vestibulum erat urna, iaculis et purus in, fermentum varius nibh.
-                                                            <hr />
+Select the Commission Terms you wish to agree with.                                                             <hr />
                                                         </div> 
                                                         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
                                                             <?php if(!empty($commision_contractdata)){  ?>
@@ -399,7 +404,7 @@
                                                             <h2 class="black-heading-big">Contract</h2>
                                                         </div> 
                                                         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 margin-top">
-                                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare diam at convallis lacinia. Duis a sapien et erat finibus molestie eu id nisi. Integer nibh elit, blandit ac volutpat eget, tempus eget enim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas mollis dictum risus. Vivamus aliquam at elit non dictum. Integer nisi ante, interdum at purus vitae, rhoncus bibendum dui. Praesent pharetra augue at ultrices facilisis. Vestibulum erat urna, iaculis et purus in, fermentum varius nibh.
+                                                            Welcome to the Contract section. To streamline the signup & start our Business-to-Business relationship we have made it easy to complete the contract steps. View all sections, approve the section to continue and upon accpetance the contract betweeen your Property and Emporium-Voyage begins.The contract will be visibel in your documents ection and will be send to your by mail and post for your convenience. 
                                                             
                                                         </div> 
                                                         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
@@ -448,24 +453,7 @@
                                                                                         <div class="m-accordion__item-body collapse" id="m_accordion_1_item_<?php echo $sn; ?>_body" role="tabpanel" aria-labelledby="m_accordion_1_item_<?php echo $sn; ?>_head" data-parent="#m_accordion_1">
                                                                                              <div class="m-accordion__item-content">
                                                                                               <p>
-                                                                                               <?php 
-                                                                                               $date_signed = date('Y/m/d');
-                                                                                               $str_desc = $row->description;
-                $valid_until = date('Y-m-d', strtotime('+2 years', strtotime($date_signed)));
-                $valid_until_year = date('Y', strtotime($valid_until));
-                $string_array_replace = array(                    
-                    '{signed_date}'=>$date_signed,
-                    '{valid_until}'=>$valid_until,
-                    '{valid_until_year}'=>$valid_until_year,
-                );
-                foreach($string_array_replace as $key => $value){                    
-                    $str_replaced = str_replace($key, $value, $str_desc);
-                    $str_desc = $str_replaced;
-                }           
-                                                                                               
-                                                                                               echo nl2br($str_desc); 
-                                                                                               
-                                                                                               ?>
+                                                                                               <?php echo nl2br($row->description); ?>
                                                                                               </p>
                                                                                              </div>
                                                                                         </div>
@@ -502,18 +490,17 @@
                                                             <img src="{{URL::to('images/800x200.png')}}" style="width: 100%;" />
                                                         </div> 
                                                         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center margin-top">
-                                                            <h2 class="black-heading-big">Upload Contract</h2>
+                                                            <h2 class="black-heading-big">Upload Hotel STO Contract & Terms</h2>
                                                         </div> 
                                                         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 margin-top">
-                                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare diam at convallis lacinia. Duis a sapien et erat finibus molestie eu id nisi. Integer nibh elit, blandit ac volutpat eget, tempus eget enim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas mollis dictum risus. Vivamus aliquam at elit non dictum. Integer nisi ante, interdum at purus vitae, rhoncus bibendum dui. Praesent pharetra augue at ultrices facilisis. Vestibulum erat urna, iaculis et purus in, fermentum varius nibh.
-                                                            
+This section allows you to upload your Hotels STO contract & Terms. Your contracts are visible from your documents section for your convenience.                                                            
                                                         </div>
 										                
                                                         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12"><br />             
                                                             
                                                              <div class="form-group m-form__group row">
             													<label class="col-xl-3 col-lg-3 col-form-label">
-            														Upload Contract
+            														Upload STO Contract
             													</label>
             													                                                               
                                                         		<input type="file" name="signed_contract">
@@ -524,7 +511,7 @@
                                                         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
                                                             <br />
                                                                 <?php 
-                                                                    if(isset($hotelcontacts) && count($hotelcontacts) > 0){ 
+                                                                    if(isset($hotelcontacts)){ 
                                                                 ?>        
                                                                         <a href="{{$hotelcontacts[0]->imgsrc.$hotelcontacts[0]->file_name}}" title="{{$hotelcontacts[0]->file_display_name}}" target="_blank" class="btn btn-primary" >View uploaded Contract</a>  
                                                                 <?php  
@@ -544,10 +531,11 @@
                                                             <img src="{{URL::to('images/800x200.png')}}" style="width: 100%;" />
                                                         </div> 
                                                         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center margin-top">
-                                                            <h2 class="black-heading-big">Packages</h2>
+                                                            <h2 class="black-heading-big">Our membership Packages</h2>
                                                         </div> 
                                                         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
-                                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare diam at convallis lacinia. Duis a sapien et erat finibus molestie eu id nisi. Integer nibh elit, blandit ac volutpat eget, tempus eget enim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas mollis dictum risus. Vivamus aliquam at elit non dictum. Integer nisi ante, interdum at purus vitae, rhoncus bibendum dui. Praesent pharetra augue at ultrices facilisis. Vestibulum erat urna, iaculis et purus in, fermentum varius nibh.
+                                                            The emporium-Voyage packages opens a world of opportunity to further market your Brand. To start your Reservation-Distribition & mMrketing journey, please pay and conform your bi-anually subscription. Your invoice will be visible from your accounts section.
+                                                            We offer an array of packages to further promote and market your hotel to our high-net-worth members network. You can view additional packages at your leisure from the membership section.
                                                         </div> 
                                                         <div class="col-xl-12 col-lg-12 m--align-right">
             											     <a href="#" class="btn btn-default" id="package-skip">Skip</a>
@@ -875,7 +863,7 @@
     				</h5>
     				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
     					<span aria-hidden="true">
-    						�
+    						×
     					</span>
     				</button>
     			</div>
@@ -923,14 +911,12 @@
     
     .carousel-inner {
       position: relative;
-      /*width: 100%;*/
-      height: 400px;
+      width: 100%;
       overflow: hidden;
     }
     
     .carousel-inner > .item {
-      position: absolute;
-      height: 400px;
+      position: relative;
       display: none;
       -webkit-transition: 0.6s ease-in-out left;
               transition: 0.6s ease-in-out left;
@@ -1261,69 +1247,9 @@
                          
                                                 
             base_url = $("#base_url").val();
-            /*$('#Carousel').carousel({
+            $('#Carousel').carousel({
                 interval: 5000
-            });*/
-            var current_fs, next_fs, previous_fs;
-            
-            
-            
-            
-            // settings
-              var $slider = $('.carousel-inner'); // class or id of carousel slider
-              var $slide = '.item'; // could also use 'img' if you're not using a ul
-              var $transition_time = 1000; // 1 second
-              var $time_between_slides = 4000; // 4 seconds
-            
-              function slides(){
-                return $slider.find($slide);
-              }
-            
-              slides().fadeOut();
-            
-              // set active classes
-              slides().first().addClass('active');
-              slides().first().fadeIn($transition_time);
-            
-              // auto scroll 
-              $interval = setInterval( 
-                function(){
-                if(slides().length > 1){
-                  var $i = $slider.find($slide + '.active').index();
-                                      
-                  slides().eq($i).removeClass('active');
-                  slides().eq($i).fadeOut($transition_time);
-            
-                  if (slides().length == $i + 1) $i = -1; // loop to start
-            
-                  slides().eq($i + 1).fadeIn($transition_time);
-                  slides().eq($i + 1).addClass('active');
-                  }
-                }
-                , $transition_time +  $time_between_slides 
-              );
-            
-            
-            $(".left").click(function(){
-                var $i = $slider.find($slide + '.active').index();
-                if($i - 1 >= 0){ 
-                  slides().eq($i).removeClass('active');
-                  slides().eq($i).fadeOut($transition_time);                  
-                  slides().eq($i - 1).fadeIn($transition_time);
-                  slides().eq($i - 1).addClass('active');
-                }
             });
-            
-            $(".right").click(function(){
-                var $i = $slider.find($slide + '.active').index();
-                if($i + 1 < slides().length){ 
-                  slides().eq($i).removeClass('active');
-                  slides().eq($i).fadeOut($transition_time);
-                  slides().eq($i + 1).fadeIn($transition_time);
-                  slides().eq($i + 1).addClass('active');
-                }
-            });
-            
             $("#contractSignCheck").click(function(){
                 if($("#contractSignCheck").is(':checked')){
                     $("#contractSignCheckFinal").prop("checked", true);
