@@ -244,7 +244,8 @@
                                 <?php
                                 $images_arr = array();
                                 foreach($temotional_gallery as $si_g_image){
-                                    $images_arr[] = array("src"=>\URL::to('container-image/'.$si_g_image->id));
+                                    //$images_arr[] = array("src"=>\URL::to('container-image/'.$si_g_image->id));
+                                    $images_arr[] = array("src"=>\URL::to('uploads/thumbs/format_'.$si_g_image->folder_id.'_'.$si_g_image->file_name));
                                 }
                                 $img_str = json_encode($images_arr);
                                 ?>
@@ -254,7 +255,7 @@
 							           	<div class="image">
 							           		    {{-- <a class="showhide" href="{{$url}}" rel="bookmark" style="">{{ $props->property_name}}   </a> --}}
 							            <a href="javascript:false;">
-							          		 <img src="{{ URL::to('themes/emporium/images/emporium-voyage-logo-white-loader.svg') }}" data-src="{{ URL::to('container-image/'.$temotional_gallery[0]->id)}}" data-imagessrc="{{$img_str}}" class="img-responsive rad-img" alt="Emotional Gallery" title="Emotional Gallery" data-rad-auto-run="true"  />
+							          		 <img src="{{ URL::to('themes/emporium/images/emporium-voyage-logo-white-loader.svg') }}" data-src="{{$images_arr[0]['src']}}" data-imagessrc="{{$img_str}}" class="img-responsive rad-img" alt="Emotional Gallery" title="Emotional Gallery" data-rad-auto-run="true"  />
 							           	</a>
 
 							           </div>
