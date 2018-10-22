@@ -187,7 +187,7 @@
 				}
                 $temotional_gallery = array();
                 if(((($rw % 20) == 0) || ($rw == count($propertiesArr))) && (count($emotional_gallery) > 0)){
-                    for($i = 0; $i<3; $i++){
+                    for($i = 0; $i<5; $i++){
                         if(count($emotional_gallery) > 0){ $temotional_gallery[] = array_shift($emotional_gallery); }
                     }
                 }
@@ -244,7 +244,7 @@
                                 <?php
                                 $images_arr = array();
                                 foreach($temotional_gallery as $si_g_image){
-                                    $images_arr[] = \URL::to('containerimagebyid/'.$si_g_image->id);
+                                    $images_arr[] = array("src"=>\URL::to('containerimagebyid/'.$si_g_image->id));
                                 }
                                 $img_str = json_encode($images_arr);
                                 ?>
@@ -254,8 +254,7 @@
 							           	<div class="image">
 							           		    {{-- <a class="showhide" href="{{$url}}" rel="bookmark" style="">{{ $props->property_name}}   </a> --}}
 							            <a href="javascript:false;">
-							          		  <img src="{{ URL::to('themes/emporium/images/emporium-voyage-logo-white-loader.svg') }}" data-src="{{ URL::to('containerimagebyid/'.$temotional_gallery[0]->id)}}" data-rad-gallery-images="{{$img_str}}" class="img-responsive rad-img" alt="Emotional Gallery" title="Emotional Gallery"  />
-							               {{-- URL::to('propertyimagebyid/'.$props->id)--}}
+							          		 <img src="{{ URL::to('themes/emporium/images/emporium-voyage-logo-white-loader.svg') }}" data-src="{{ URL::to('containerimagebyid/'.$temotional_gallery[0]->id)}}" data-imagessrc="{{$img_str}}" class="img-responsive rad-img" alt="Emotional Gallery" title="Emotional Gallery" data-rad-auto-run="true"  />
 							           	</a>
 
 							           </div>

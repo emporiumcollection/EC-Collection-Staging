@@ -4,6 +4,8 @@
     $.fn.photoSwapFun = function() {
         var imgObj = this;
         var imagessrc =  imgObj.data('imagessrc');
+        var is_auto_run = false;
+        if(typeof imgObj.data('rad-auto-run') != 'undefined'){ is_auto_run = imgObj.data('rad-auto-run'); }
         imgObj.removeAttr('data-imagessrc');
         if(typeof imagessrc == 'string'){ imagessrc = $.parseJSON(imagessrc); }
         if(typeof imagessrc == 'object'){
@@ -31,16 +33,60 @@
                 
                 if((slidehtml.length > 0) && (is_image_av === true)){
                     imgObj.addClass('rad-main-outer-image');
-                    imgObj.wrap('<div class="rad-slider-wrap"></div>');
+                    imgObj.wrap('<div class="rad-slider-wrap'+((is_auto_run == true)?' rad-auto-slide':'')+'"></div>');
                     imgObj.before( slidehtml );
                     var sendObj = imgObj.closest('.rad-slider-wrap').find('.rad-images-parent');
-                    sendObj.photoOnMouseOver();
+                    if(is_auto_run == true){
+                        sendObj.slideautorunEffect();
+                    }else
+                    {
+                        sendObj.photoOnMouseOver();
+                    }                    
                     //console.log(imageObjWidth,' : ',imageObjHeight,' : ',imgObj.outerHtml);
                 }
             }
         }
     },
     //End
+    
+    $.fn.slideautorunEffect = function() {
+        var rObj = this;
+        rObj.closest('.rad-slider-wrap').find('.images-groups-parent .rad-img-slides').css('left','100%');
+        rObj.closest('.rad-slider-wrap').find('.images-groups-parent .rad-img-slides.active').css('left','0%');
+        
+        function runintervalFun(){
+            var myVar = setInterval(function(){
+                clearInterval(myVar);
+                
+                var currentObj = rObj.closest('.rad-slider-wrap').find('.images-groups-parent .rad-img-slides.active');
+                var activateObj = rObj.closest('.rad-slider-wrap').find('.images-groups-parent .rad-img-slides:first-child');
+                rObj.closest('.rad-slider-wrap').find('.images-groups-parent .rad-img-slides').removeClass('active');
+                if(typeof currentObj.attr('id') != 'undefined'){
+                    var nextObj = currentObj.next('.rad-img-slides');
+                    if(typeof nextObj.attr('id') != 'undefined'){ activateObj = nextObj; }
+                    
+                    activateObj.addClass('active');
+                    if(currentObj.attr('id') != activateObj.attr('id')){
+                        var timerEv = 300;
+                        currentObj.animate({left: '-20%'}, timerEv, 'swing', function(){ currentObj.css('left','100%'); });
+                        activateObj.animate({left: '0%'}, timerEv, 'linear', function(){ runintervalFun(); });
+                    }else
+                    {
+                        activateObj.css('left','0%');                        
+                        runintervalFun();
+                    }
+                }else
+                {
+                    activateObj.css('left','0%');
+                    activateObj.addClass('active');
+                    runintervalFun();
+                }                
+                             
+                
+            }, 5000);            
+        }
+        runintervalFun();
+    },
     
     $.fn.photoFadeInOut = function(position) {
         var thisObj = this;
