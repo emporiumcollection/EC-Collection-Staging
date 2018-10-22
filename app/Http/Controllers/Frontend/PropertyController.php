@@ -17,7 +17,6 @@ class PropertyController extends Controller {
         
         $package_cond = (array) $this->getPackagesIdsAccordingMembership();
         $this->pckages_ids = ((count($package_cond) > 0)?implode(',',$package_cond):'0');
-        die('done');
     }
     
     /* Method : getPropertyDetail
