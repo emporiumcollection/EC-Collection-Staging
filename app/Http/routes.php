@@ -441,7 +441,7 @@ Route::post('get-article-by-title', 'HomeController@getArticleByTitle');
 Route::get('getproperty/{id}', 'HomeController@getPropertyQuickView');
 Route::get('search-property-ajax', 'Frontend\PropertyController@getSearchPropertyAjax');
 Route::get('propertyimagebyid/{propid}', 'Frontend\PropertyController@getPropertyImageById');
-Route::get('containerimagebyid/{id}', 'Frontend\PropertyController@getContainerImageById');
+Route::get('container-image/{id}', 'Frontend\PropertyController@getContainerImageById');
 Route::get('propertysliderimagebyid/{propid}', 'Frontend\PropertyController@getPropertySliderImageById');
 Route::get('radtempimage/{propid}/{fileid}', 'Frontend\PropertyController@getPropertyImageByFileID');
 Route::post('ajax-rproperty-images/{propid}/{limit}', 'Frontend\PropertyController@getPropertyAjaxFilesByID');
