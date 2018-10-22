@@ -585,9 +585,9 @@ class PropertyController extends Controller {
 	
 	public function getContainerImageById(Request $request)
 	{
+	   print_r($request);
 	    $image = '';
 		$propid = $request->id;
-        echo $propid; die;
 		$containerImgObj = \DB::table('tb_container_files')->select('id','file_name','folder_id')->where('id', $propid)->first();
         if(isset($containerImgObj->file_name)){
             $img_src = $containerObj->getThumbpath($containerImgObj->folder_id).$containerImgObj->file_name;
