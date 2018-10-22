@@ -17,6 +17,7 @@ class PropertyController extends Controller {
         
         $package_cond = (array) $this->getPackagesIdsAccordingMembership();
         $this->pckages_ids = ((count($package_cond) > 0)?implode(',',$package_cond):'0');
+        die('done');
     }
     
     /* Method : getPropertyDetail
@@ -585,7 +586,6 @@ class PropertyController extends Controller {
 	
 	public function getContainerImageById(Request $request)
 	{
-	   die('done');
 	    $image = '';
 		$propid = $request->id;
 		$containerImgObj = \DB::table('tb_container_files')->select('id','file_name','folder_id')->where('id', $propid)->first();
