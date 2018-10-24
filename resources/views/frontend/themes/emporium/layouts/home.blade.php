@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title> @yield('title') | {{ CNF_APPNAME }}</title>
+    <title> @yield('title') | {{ CNF_APPNAME }} - Testing</title>
     
     <!-- Favicon Start -->
     <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('assets/images/favicon/apple-icon-57x57.png') }}" />
