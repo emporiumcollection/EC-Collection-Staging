@@ -498,6 +498,7 @@ Route::get('stripedetails/{uid}', 'StripepaymentController@index');
 Route::get('choosepackage/{packageid}', 'StripepaymentController@checkout');
 Route::post('order-post', 'StripepaymentController@checkoutPost');
 Route::post('wizard-order-post', 'StripepaymentController@wizardcheckoutPost');
+Route::post('wizard-subtract-fee', 'StripepaymentController@wizardSubtractFee');
 // Add this route for checkout or submit form to pass the item into paypal
 Route::post('payment', array(
 	'as' => 'payment',
@@ -569,4 +570,8 @@ Route::post('pressseletedfileslowPdf', 'ContainerController@PressDownloadlowPdfS
 Route::post('pressseletedfileshighPdf', 'ContainerController@PressDownloadhighPdfSelected');
 
 Route::get('hotel/get_cart', 'Frontend\HotelMembershipController@getwizardCart');
-Route::get('hotel/get_checkout', 'Frontend\HotelMembershipController@getwizardCheckout');	
+Route::get('hotel/get_checkout', 'Frontend\HotelMembershipController@getwizardCheckout');
+
+Route::get('hotel/add_package_to_cart_wizard', 'Frontend\HotelMembershipController@addToCartWizardAjax');
+
+Route::get('hotel/thanks/{id}', 'Frontend\HotelMembershipController@hotelThanks');	

@@ -330,7 +330,7 @@
     
     
                             if (data.status == 'success') {
-                                $(".ai-sign-up-form-success-msg").html(data.message);                                
+                                $(".ai-sign-up-form-error-msg").html(data.message);                                
                             }
                             else {
                                 var message = data.message;

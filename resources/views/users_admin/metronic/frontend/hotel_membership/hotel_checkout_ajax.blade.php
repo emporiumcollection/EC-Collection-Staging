@@ -110,6 +110,19 @@
                         {!! isset($currency->content)?$currency->content:'$' !!}  {{number_format($orderTotal,2,'.','')}}
                     </td> 
                 </tr>
+                
+                @if($subtract_at_booking_amt > 0)
+                <tr>
+                    <td>
+                    <label>Subtract this fee from my first booking commission.</label> 
+                    </td>
+                    <td>
+                    <label >{!! isset($currency->content)?$currency->content:'$' !!}  {{number_format($subtract_at_booking_amt,2,'.','')}}</label>
+                    </td> 
+                </tr>
+                {{--*/ $orderTotal = $orderTotal - $subtract_at_booking_amt; /*--}}
+                @endif
+                
             </table>
         </div>
     </div>
@@ -117,6 +130,7 @@
 <div class="m--clearfix"></div>
 <div class="m-section" style="width: 100%;">
     <div class="m-section__content">
+        
         <div class="col-md-4 col-sm-12 m--pull-right" style="padding-bottom: 50px;">
         <form action="{{URL::to('wizard-order-post')}}" method="POST" class="m-form m-form--fit m-form--label-align-right">
 
@@ -126,6 +140,7 @@
                 <label>Order Comments</label>                                
                 <textarea name="order_comments" id="order_comments" class="form-control m-input"></textarea>
             </div>
+            @if($orderTotal > 0)
             <div class="form-group m-form__group">
                 <script
                     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
@@ -138,8 +153,14 @@
                     data-locale="auto">
                 </script>
             </div>
+            @else
+            <div class="form-group m-form__group m--pull-right">
+                <a class="btn btn-primary" href="#" id="finish_btn">Submit</a>
+            </div>
+            @endif
         </form>
-        </div>
+        </div>        
+        
     </div>
 </div>
 @else

@@ -84,6 +84,17 @@
         <label >{!! isset($currency->content)?$currency->content:'$' !!}  {{number_format($orderTotal,2,'.','')}}</label>
         </td> 
     </tr>
+    @if($subtract_at_booking_amt > 0)
+    <tr>
+        <td>
+        <label>Subtract this fee from my first booking commission.</label> 
+        </td>
+        <td>
+        <label >{!! isset($currency->content)?$currency->content:'$' !!}  {{number_format($subtract_at_booking_amt,2,'.','')}}</label>
+        </td> 
+    </tr>
+    @endif
+    
     </table>
     </div>
 </div>

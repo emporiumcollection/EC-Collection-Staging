@@ -89,7 +89,18 @@
 				</div>	
 			 </div> 
 		  </div> 
-		     
+		   
+           <div class="form-group">
+		    <label for="ipt" class=" control-label col-md-4"> Subtract this fee from my first booking commission </label>
+			<div class="col-md-8">
+				<div class="checkbox">
+					<input name="cnf_subtract_fee_first_booking" type="checkbox" id="cnf_subtract_fee_first_booking" value="1"
+					@if(CNF_SUBTRACT_FEE ==1) checked @endif
+					  />  {{ Lang::get('core.fr_enable') }} 
+				</div>	
+			 </div> 
+		  </div> 
+             
 		   <div class="form-group">
 		    <label for="ipt" class=" control-label col-md-4">{{ Lang::get('core.fr_mainlanguage') }} </label>
 			<div class="col-md-8">

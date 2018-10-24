@@ -8,6 +8,7 @@ define('CNF_METADESC','Emporium Voyage Membership Portal');
 define('CNF_GROUP','3');
 define('CNF_ACTIVATION','confirmation');
 define('CNF_MULTILANG','1');
+define('CNF_SUBTRACT_FEE','1');
 define('CNF_LANG','en');
 define('CNF_REGIST','true');
 define('CNF_FRONT','true');

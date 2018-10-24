@@ -60,6 +60,7 @@ class ConfigController extends Controller {
 			$val .= 	"define('CNF_GROUP','".CNF_GROUP."');\n";	
 			$val .= 	"define('CNF_ACTIVATION','".CNF_ACTIVATION."');\n";	
 			$val .= 	"define('CNF_MULTILANG','".(!is_null($request->input('cnf_multilang')) ? 1 : 0 )."');\n";
+            $val .= 	"define('CNF_SUBTRACT_FEE','".(!is_null($request->input('cnf_subtract_fee_first_booking')) ? 1 : 0 )."');\n";
 			$val .= 	"define('CNF_LANG','".$request->input('cnf_lang')."');\n";
 			$val .= 	"define('CNF_REGIST','".CNF_REGIST."');\n";	
 			$val .= 	"define('CNF_FRONT','".CNF_FRONT."');\n";		

@@ -216,6 +216,8 @@ class PropertiesController extends Controller {
             
             if(($hotelId > 0) && ($contractId > 0) && (strlen(trim($commissionType)) > 0)){
                 $contract = \DB::table('tb_contracts')->select('tb_contracts.*')->where('tb_contracts.contract_id',$contractId)->where('tb_contracts.status',1)->where('tb_contracts.deleted',0)->orderBy('tb_contracts.contract_id','DESC')->first();
+                //print_r($contract); die;
+                $contract->commission_type = $commissionType;
                 if(isset($contract->contract_id)){
                     //insert contracts
                     \CommonHelper::submit_contracts(array($contract),'commission',$hotelId,$commissionType);

@@ -72,7 +72,7 @@
                     @if((count($comcontract) > 0) && (!isset($commission_contracts[$row->id])))
                     {{--*/ $is_commission_popup = true; /*--}}
                     <!--start:: contracts popup -->
-                    <div class="m-portlet m-portlet--bordered-semi m-portlet--widget-fit m-portlet--full-height m-portlet--rounded-force commission-popup-main-div">
+                    <?php /* <div class="m-portlet m-portlet--bordered-semi m-portlet--widget-fit m-portlet--full-height m-portlet--rounded-force commission-popup-main-div">
                         <div class="m-portlet col-sm-8 col-lg-8 inner-r-div">
                             <div class="m-portlet__head">
                                 <div class="m-portlet__head-caption">
@@ -110,7 +110,7 @@
 								</div>
 							</div>
                         </div>
-                    </div>
+                    </div> */ ?>
                     <!--end:: contracts popup start -->
                     @endif
                     

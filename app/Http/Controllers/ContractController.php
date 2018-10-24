@@ -188,7 +188,9 @@ class ContractController extends Controller {
         usort($usersContracts, function($a, $b) {
 						return $a->sort_num - $b->sort_num; 
 					});
-        //$usersContracts = array_reverse($usersContracts);
+        $usersContracts = array_reverse($usersContracts);
+        
+        //$package_price = \DB::table('tb_orders')->where('user_id', \Auth::user()->id)->orderBy('tb_orders.id', 'DESC')->first();
         
         $center_content = '';
         $i = 1;
@@ -197,7 +199,8 @@ class ContractController extends Controller {
         foreach($usersContracts as $si_contract){
             $username = trim(ucfirst($si_contract->first_name).' '.ucfirst($si_contract->last_name));
             $created_on = date_create($si_contract->created_on);
-            $date_signed = date_format($created_on,"Y/m/d");
+            $date_signed = date_format($created_on,"d:m:Y");
+            $date_signed2 = date_format($created_on,"Y/m/d");
             if($i==1){
                 $center_content .= '<div class="Mrgtop200 font13">';
             }else{
@@ -218,10 +221,11 @@ class ContractController extends Controller {
                     $center_content .= '</span></p>';
                 } 
                 $str_desc = $si_contract->description;
-                $valid_until = date('Y-m-d', strtotime('+2 years', strtotime($date_signed)));
+                $valid_until = date('jS F Y', strtotime('+2 years', strtotime($date_signed2)));
                 $valid_until_year = date('Y', strtotime($valid_until));
+                $date_signedf = date('jS F Y', strtotime($date_signed2));
                 $string_array_replace = array(                    
-                    '{signed_date}'=>$date_signed,
+                    '{signed_date}'=>$date_signedf,
                     '{valid_until}'=>$valid_until,
                     '{valid_until_year}'=>$valid_until_year,
                 );
