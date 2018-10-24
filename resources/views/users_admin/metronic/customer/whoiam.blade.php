@@ -39,6 +39,7 @@
 						</div>
 						<!--end: Message container -->
 						<div class="row m-row--no-padding">
+                            
 							<div class="col-xl-3 col-lg-12">
 								<!--begin: Form Wizard Head -->
 								<div class="m-wizard__head">
@@ -245,7 +246,12 @@
                                                 <input name="form_wizard_2" type="hidden" id="form_wizard_2" value="2" />  
     											<div class="m-form__section" style="margin: 0px;">
                                                     <div class="form-group m-form__group row">
-                                                        <img src="{{URL::to('images/800x200.png')}}" />
+                                                        
+                                                            
+                                                                <div class="b2c-banner-text">Profile &amp; Company</div>
+                                        						<img src="{{URL::to('images/hotel_company_profile.jpg')}}" style="width: 100%;" />
+                                        					
+                                        				                                                      
                                                     </div>
                                                     <div class="m-form__heading margin-top">
     													<h3 class="m-form__heading-title">
@@ -362,7 +368,8 @@
     											<div class="m-form__section">
                                                     <div class="row">                                            
                                                         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
-                                                            <img src="{{URL::to('images/800x200.png')}}" style="width: 100%;" />
+                                                            <div class="b2c-banner-text">Commission</div>
+                                        					<img src="{{URL::to('images/hotel_commission_profile.jpg')}}" style="width: 100%;" />
                                                         </div> 
                                                         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center margin-top">
                                                             <h2 class="black-heading-big">Commission</h2>
@@ -398,7 +405,8 @@ Select the Commission Terms you wish to agree with.                             
     											<div class="m-form__section">
                                                     <div class="row">                                            
                                                         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
-                                                            <img src="{{URL::to('images/800x200.png')}}" style="width: 100%;" />
+                                                            <div class="b2c-banner-text">Contract</div>
+                                        					<img src="{{URL::to('images/hotel_contract.jpg')}}" style="width: 100%;" />
                                                         </div> 
                                                         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center margin-top">
                                                             <h2 class="black-heading-big">Contract</h2>
@@ -421,6 +429,8 @@ Select the Commission Terms you wish to agree with.                             
                                                                         		usort($contractdata, function($a, $b) {
                                                                         			return $a->sort_num - $b->sort_num; 
                                                                         		});
+                                                                                
+                                                                                $contractdata = array_reverse($contractdata);
                                                                                 
                                                                                 $final_contracts = array();
                                                                                 foreach($contractdata as $sicc){
@@ -453,7 +463,25 @@ Select the Commission Terms you wish to agree with.                             
                                                                                         <div class="m-accordion__item-body collapse" id="m_accordion_1_item_<?php echo $sn; ?>_body" role="tabpanel" aria-labelledby="m_accordion_1_item_<?php echo $sn; ?>_head" data-parent="#m_accordion_1">
                                                                                              <div class="m-accordion__item-content">
                                                                                               <p>
-                                                                                               <?php echo nl2br($row->description); ?>
+                                                                                               <?php 
+                                                                                               
+                                                                                                $str_desc = $row->description;
+                                                                                                $current_date = date('Y-m-d');
+                                                                                                $date_signed = date('d:m:Y');
+                                                                                                $valid_until = date('d:m:Y', strtotime('+2 years', strtotime($current_date)));
+                                                                                                $valid_until_year = date('Y', strtotime($valid_until));
+                                                                                                $string_array_replace = array(                    
+                                                                                                    '{signed_date}'=>$date_signed,
+                                                                                                    '{valid_until}'=>$valid_until,
+                                                                                                    '{valid_until_year}'=>$valid_until_year,
+                                                                                                );
+                                                                                                foreach($string_array_replace as $key => $value){                    
+                                                                                                    $str_replaced = str_replace($key, $value, $str_desc);
+                                                                                                    $str_desc = $str_replaced;
+                                                                                                }       
+                                                                                               
+                                                                                               ?>
+                                                                                               <?php echo nl2br($str_desc); ?>
                                                                                               </p>
                                                                                              </div>
                                                                                         </div>
@@ -511,7 +539,7 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
                                                             <br />
                                                                 <?php 
-                                                                    if(isset($hotelcontacts)){ 
+                                                                    if(isset($hotelcontacts) && count($hotelcontacts)>0){ 
                                                                 ?>        
                                                                         <a href="{{$hotelcontacts[0]->imgsrc.$hotelcontacts[0]->file_name}}" title="{{$hotelcontacts[0]->file_display_name}}" target="_blank" class="btn btn-primary" >View uploaded Contract</a>  
                                                                 <?php  
@@ -528,7 +556,8 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
     											<div class="m-form__section">
                                                     <div class="row" id="package_row">                                            
                                                         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
-                                                            <img src="{{URL::to('images/800x200.png')}}" style="width: 100%;" />
+                                                            <div class="b2c-banner-text">Our membership Packages</div>
+                                        					<img src="{{URL::to('images/hotel_packages.jpg')}}" style="width: 100%;" />
                                                         </div> 
                                                         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center margin-top">
                                                             <h2 class="black-heading-big">Our membership Packages</h2>
@@ -584,6 +613,7 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                             							</div>
                                                             							<div class="m-accordion__item-body collapse" id="m_accordion_3_item_sales_marketing_{{ $k }}_body" class=" " role="tabpanel" aria-labelledby="m_accordion_3_item_sales_marketing_{{ $k }}_head" data-parent="#m_accordion_3_sales_marketing">
                                                             								<div class="m-accordion__item-content">
+                                                                                                <div class="row">
                                                             									<div class="col-sm-6 col-md-6 col-lg-6 pull-left">
                                                                                                     <img class="img-responsive object-fit-size" src="{{URL::to('uploads/packages/'.$package->package_image)}}" alt="{{$package->package_image}}" style="width: 100%;" >
                                                                                                 </div>
@@ -627,15 +657,30 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                                                             @endif 
                                                                                                         @endif 
                                                                                 
-                                                                                                        <div class="col-lg-12 m--align-right">
-                                                                                                            <div>
-                                                                                                                <a href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->package_price }});" class="btn btn-success">Add to cart</a>
-                                                                                                            </div>
-                                                                                                        </div>
+                                                                                                        
                                                                                                     </div>
                                                                         
                                                                                                       
                                                                                                 </div>
+                                                                                                </div>
+                                                                                                @if(CNF_SUBTRACT_FEE)
+                                                                                                <div class="row">
+                                                                                                
+                                                                                                    <div class="col-xl-8 col-sm-8 col-md-8 col-lg-8">
+                                                                                                        <div class="m-checkbox-inline">
+                                                                            								<label class="m-checkbox m-checkbox--solid m-checkbox--brand">
+                                                                            									<input type="checkbox" id="fee_subtract_on_booking_{{$package->id}}" name="fee_subtract_on_booking_{{$package->id}}" value="yes">      								
+                                                                            									Subtract this fee from my first booking commission. 
+                                                                                                                <span></span>
+                                                                            								</label>
+                                                                            							</div>
+                                                                                                    </div>
+                                                                                                    <div class="col-xl-4 col-sm-4 col-md-4 col-lg-4 m--align-right">
+                                                                                                        <a href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->package_price }});" class="btn btn-success">Add to cart</a>
+                                                                                                    </div>
+                                                                                               
+                                                                                                </div>
+                                                                                                @endif
                                                             								</div>
                                                             							</div>
                                                             						</div>
@@ -666,6 +711,7 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                             							</div>
                                                             							<div class="m-accordion__item-body collapse" id="m_accordion_3_item_reservation_distribution_{{ $k }}_body" class=" " role="tabpanel" aria-labelledby="m_accordion_3_item_reservation_distribution_{{ $k }}_head" data-parent="#m_accordion_3_reservation_distribution">
                                                             								<div class="m-accordion__item-content">
+                                                                                            <div class="row">
                                                             									<div class="col-sm-6 col-md-6 col-lg-6 pull-left">
                                                                                                     <img class="img-responsive object-fit-size" src="{{URL::to('uploads/packages/'.$package->package_image)}}" alt="{{$package->package_image}}" style="width: 100%;" >
                                                                                                 </div>
@@ -688,19 +734,28 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                                                                 </div>
                                                                                                             </div>
                                                                                                         </div>
-                                                                                                    </div>
-                                                                                                    
-                                                                                                    <div class="row" style="padding: 10px;">
-                                                                                                        
-                                                                                                        <div class="col-lg-12 m--align-right">
-                                                                                                            <div>
-                                                                                                                <a href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->package_price }});" class="btn btn-success">Add to cart</a>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                        
+                                                                                                    </div>                
                                                                                                       
                                                                                                 </div>
+                                                                                            </div>
+                                                                                            @if(CNF_SUBTRACT_FEE)
+                                                                                            <div class="row" style="margin-top: 10px;">
+                                                                                                
+                                                                                                <div class="col-xl-8 col-sm-8 col-md-8 col-lg-8">
+                                                                                                    <div class="m-checkbox-inline">
+                                                                        								<label class="m-checkbox m-checkbox--solid m-checkbox--brand">
+                                                                        									<input type="checkbox" id="fee_subtract_on_booking_{{$package->id}}" name="fee_subtract_on_booking_{{$package->id}}" value="yes">      								
+                                                                        									Subtract this fee from my first booking commission. 
+                                                                                                            <span></span>
+                                                                        								</label>
+                                                                        							</div>
+                                                                                                </div>
+                                                                                                <div class="col-xl-4 col-sm-4 col-md-4 col-lg-4 m--align-right">
+                                                                                                    <a href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->package_price }});" class="btn btn-success">Add to cart</a>
+                                                                                                </div>
+                                                                                           
+                                                                                            </div> 
+                                                                                            @endif   
                                                             								</div>
                                                             							</div>
                                                             						</div>
@@ -730,6 +785,7 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                             							</div>
                                                             							<div class="m-accordion__item-body collapse" id="m_accordion_3_item_advertising_{{ $k }}_body" class=" " role="tabpanel" aria-labelledby="m_accordion_3_item_advertising_{{ $k }}_head" data-parent="#m_accordion_3_advertising">
                                                             								<div class="m-accordion__item-content">
+                                                                                            <div class="row">
                                                             									<div class="col-sm-6 col-md-6 col-lg-6 pull-left">
                                                                                                     <img class="img-responsive object-fit-size" src="{{URL::to('uploads/packages/'.$package->package_image)}}" alt="{{$package->package_image}}" style="width: 100%;" >
                                                                                                 </div>
@@ -754,17 +810,27 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                                                         </div>
                                                                                                     </div>
                                                                                                     
-                                                                                                    <div class="row" style="padding: 10px;">
-                                                                                                        
-                                                                                                        <div class="col-lg-12 m--align-right">
-                                                                                                            <div>
-                                                                                                                <a href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->package_price }});" class="btn btn-success">Add to cart</a>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                        
-                                                                                                      
+                                                                                                    
                                                                                                 </div>
+                                                                                                </div>
+                                                                                                @if(CNF_SUBTRACT_FEE)
+                                                                                                <div class="row" style="margin-top: 10px;">
+                                                                                                
+                                                                                                    <div class="col-xl-8 col-sm-8 col-md-8 col-lg-8">
+                                                                                                        <div class="m-checkbox-inline">
+                                                                            								<label class="m-checkbox m-checkbox--solid m-checkbox--brand">
+                                                                            									<input type="checkbox" id="fee_subtract_on_booking_{{$package->id}}" name="fee_subtract_on_booking_{{$package->id}}" value="yes">      								
+                                                                            									Subtract this fee from my first booking commission. 
+                                                                                                                <span></span>
+                                                                            								</label>
+                                                                            							</div>
+                                                                                                    </div>
+                                                                                                    <div class="col-xl-4 col-sm-4 col-md-4 col-lg-4 m--align-right">
+                                                                                                        <a href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->package_price }});" class="btn btn-success">Add to cart</a>
+                                                                                                    </div>
+                                                                                               
+                                                                                                </div>
+                                                                                                @endif
                                                             								</div>
                                                             							</div>
                                                             						</div>
@@ -782,7 +848,7 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                             
                                 						
                                 					       </div>
-                                                           <div class="col-lg-12 m--align-right" id="pgk_continue_btn" style="display: none;">                     						
+                                                           <div class="col-lg-12 m--align-right" id="pgk_continue_btn">                     						
                                                                 <a id="continue_btn" class="btn btn-success pull-right" style="color: #fff;">Continue</a>		
                                                             </div> 
                                                         </div>
@@ -1270,7 +1336,7 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                 $.ajax({
                     url:base_url+'/hotel/get_cart', 
                     type:'get',
-                    success:function(response){ console.log(response);
+                    success:function(response){ 
                         $("#cart_row").css('display', '');
                         $("#cart_row").html('');
                         $("#dv_pkg").css('display', 'none');
@@ -1302,6 +1368,33 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                 $("#cart_row").css('display', 'none');
             });
             
+            $(document).on('click', '#finish_btn', function(e){
+                e.preventDefault();                        
+                var fdata = new FormData();                
+                fdata.append("_token",$("input[name=_token]").val());
+                
+                $.ajax({
+                    url:"{{URL::to('wizard-subtract-fee')}}",
+                    type:'POST',
+                    dataType:'json',
+                    contentType: false,
+                    processData: false,
+                    data:fdata,
+                    headers: {
+                        'Access-Control-Allow-Origin': '*'
+                    },
+                    success:function(response){
+                        if(response.status == 'success'){
+                            //toastr.success(response.message);
+                            window.location.href="{{URL::to('hotel/thanks')}}/"+response.order_id;
+                        }
+                        else{
+                            toastr.error(response.message);
+                        }
+                    }
+                });
+            });
+            
             $("#package-skip").click(function(e){ 
                 e.preventDefault();                        
                 var fdata = new FormData();                
@@ -1331,7 +1424,10 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
            });
         });
         function addToCartHotel(PackageID,PackagePrice){    
-
+            var fee_subtract_on_booking = '';             
+            if($('#fee_subtract_on_booking_'+PackageID).is(":checked")){
+                fee_subtract_on_booking = 'yes';
+            }
             var PackagePrice=PackagePrice;
             var PackageID=PackageID;
             var xhttp = new XMLHttpRequest();
@@ -1341,7 +1437,7 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                 $("#pgk_continue_btn").css('display', '');
             }
             };
-            xhttp.open("GET", "{{ URL::to('hotel/add_package_to_cart')}}?cart[package][id]="+PackageID+"&cart[package][price]="+PackagePrice+"&cart[package][qty]=1&cart[package][type]=hotel", true);
+            xhttp.open("GET", "{{ URL::to('hotel/add_package_to_cart_wizard')}}?cart[package][id]="+PackageID+"&cart[package][price]="+PackagePrice+"&cart[package][qty]=1&cart[package][type]=hotel&cart[package][fee]="+fee_subtract_on_booking, true);
             xhttp.send();
         
         } 

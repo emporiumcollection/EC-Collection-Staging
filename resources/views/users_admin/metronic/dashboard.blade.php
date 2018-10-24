@@ -2729,7 +2729,8 @@ Emporium Voyage is a prestige organisation seeking to serve your every need. Nav
                         <div class="m-portlet__body" style="padding: 0px;">
                             
                             <div class="col-sm-12 col-md-12">
-                                <img src="{{URL::to('images/800x200.png')}}" style="width: 100%;" />
+                                <div class="b2c-banner-text">Welcome</div>
+               					<img src="{{URL::to('images/hotel_pop_up_terms.jpg')}}" style="width: 100%;" />
                             </div>
                             <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center">
                                 <h2 class="black-heading-big">Welcome to emporium-voyage</h2>

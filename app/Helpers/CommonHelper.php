@@ -1211,7 +1211,7 @@ $allowedCurrenciesinProject=array("OMR","BHD","KWD","USD","CHF","EUR","KYD","GIP
                 </div>
             </div>
         ';
-        echo $html; die;    
+        //echo $html; die;    
         return $html;
     }
 

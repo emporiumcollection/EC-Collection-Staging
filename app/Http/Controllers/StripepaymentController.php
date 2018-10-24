@@ -904,7 +904,7 @@ public function generateInvoice($ordid)
                        
                         $userinfom = User::find(\Session::get('uid'));
 
-                           /*$pathToFile['path'] = $this->generateInvoice($ord_id);
+                           $pathToFile['path'] = $this->generateInvoice($ord_id);
                             //echo $pathToFile; die;
                             $pathToFile['name'] = 'invoice-'.date('d-m-Y-h:i:s').'.pdf';
                             $pathToFile['useremail'] = $userinfom->email;
@@ -920,7 +920,7 @@ public function generateInvoice($ordid)
                                     $message->attach($pathToFile['path'], ['as' => $pathToFile['name'], 'mime' => 'pdf']);
                                     
                                 });
-                            }*/
+                            }
 
                             $this->data['user'] = $user;
                             $this->data['order_id'] = $ord_id;
