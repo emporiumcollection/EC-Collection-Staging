@@ -187,7 +187,7 @@
 				}
                 $temotional_gallery = array();
                 if(((($rw % 20) == 0) || ($rw == count($propertiesArr))) && (count($emotional_gallery) > 0)){
-                    for($i = 0; $i<5; $i++){
+                    for($i = 0; $i<9; $i++){
                         if(count($emotional_gallery) > 0){ $temotional_gallery[] = array_shift($emotional_gallery); }
                     }
                 }
@@ -255,7 +255,7 @@
 							           	<div class="image">
 							           		    {{-- <a class="showhide" href="{{$url}}" rel="bookmark" style="">{{ $props->property_name}}   </a> --}}
 							            <a href="javascript:false;">
-							          		 <img src="{{ URL::to('themes/emporium/images/emporium-voyage-logo-white-loader.svg') }}" data-src="{{$images_arr[0]['src']}}" data-imagessrc="{{$img_str}}" class="img-responsive rad-img" alt="Emotional Gallery" title="Emotional Gallery" data-rad-auto-run="true"  />
+							          		 <img src="{{ URL::to('themes/emporium/images/emporium-voyage-logo-white-loader.svg') }}" data-src="{{$images_arr[0]['src']}}" data-imagessrc="{{$img_str}}" class="img-responsive rad-img" alt="Emotional Gallery" title="Emotional Gallery" data-rad-auto-run="true" data-rad-effect-type="fade"  />
 							           	</a>
 
 							           </div>

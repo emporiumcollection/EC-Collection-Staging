@@ -222,7 +222,7 @@ class PropertyController extends Controller {
         $emtional_parentFolder = \DB::table('tb_container')->select('id')->where('name','emotion-gallery')->first();
         if(isset($emtional_parentFolder->id)){
             $peid = (int) $emtional_parentFolder->id;
-            $emtional_containerfiles = \DB::table('tb_container')->select('tb_container_files.id','tb_container_files.file_name','tb_container_files.folder_id','tb_container.name')->join('tb_container_files','tb_container_files.folder_id','=','tb_container.id')->where('parent_id',$peid)->where('name',$keyword)->get();
+            $emtional_containerfiles = \DB::table('tb_container')->select('tb_container_files.id','tb_container_files.file_name','tb_container_files.folder_id','tb_container.name')->join('tb_container_files','tb_container_files.folder_id','=','tb_container.id')->where('parent_id',$peid)->where('name',$keyword)->orderby('tb_container_files.file_sort_num','asc')->get();
             if((!empty($emtional_containerfiles)) && (is_array($emtional_containerfiles))){$emotional_gallery_array = $emtional_containerfiles;}
         }
         $this->data['emotional_gallery'] = $emotional_gallery_array;

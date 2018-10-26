@@ -37,7 +37,7 @@
                     imgObj.before( slidehtml );
                     var sendObj = imgObj.closest('.rad-slider-wrap').find('.rad-images-parent');
                     if(is_auto_run == true){
-                        sendObj.slideautorunEffect();
+                        sendObj.slideautorunEffect(imgObj);
                     }else
                     {
                         sendObj.photoOnMouseOver();
@@ -49,11 +49,36 @@
     },
     //End
     
-    $.fn.slideautorunEffect = function() {
+    $.fn.slideautorunEffect = function(timgObj) {
         var rObj = this;
-        rObj.closest('.rad-slider-wrap').find('.images-groups-parent .rad-img-slides').css('left','100%');
-        rObj.closest('.rad-slider-wrap').find('.images-groups-parent .rad-img-slides.active').css('left','0%');
+        var tType = 'NA';
+        if((typeof timgObj.data('rad-effect-type')) != 'undefined'){
+            tType = timgObj.data('rad-effect-type');
+        }
+        var forActiveObj = new Object();
+        var forInactiveObj = new Object();
+        var forDuringAniObj = new Object();
+        var timerEv = 300;
         
+        rObj.closest('.rad-slider-wrap').find('.images-groups-parent .rad-img-slides').css('left','0%');
+        switch(tType){
+            case 'slide':
+                forInactiveObj['left'] = '100%';
+                forActiveObj['left'] = '0%';
+                forDuringAniObj['left'] = '-20%';
+                
+            break;
+            
+            default :
+                timerEv = 600;
+                forInactiveObj['opacity'] = '0';
+                forActiveObj['opacity'] = '1';
+                forDuringAniObj['opacity'] = '0.5';
+            break;
+        }
+                
+        rObj.closest('.rad-slider-wrap').find('.images-groups-parent .rad-img-slides').css(forInactiveObj);
+        rObj.closest('.rad-slider-wrap').find('.images-groups-parent .rad-img-slides.active').css(forActiveObj);
         function runintervalFun(){
             var myVar = setInterval(function(){
                 clearInterval(myVar);
@@ -67,17 +92,24 @@
                     
                     activateObj.addClass('active');
                     if(currentObj.attr('id') != activateObj.attr('id')){
-                        var timerEv = 300;
-                        currentObj.animate({left: '-20%'}, timerEv, 'swing', function(){ currentObj.css('left','100%'); });
-                        activateObj.animate({left: '0%'}, timerEv, 'linear', function(){ runintervalFun(); });
+                        if(tType == 'fade'){
+                            activateObj.fadeIn(timerEv,function(){
+                                currentObj.css(forInactiveObj);
+                                runintervalFun();
+                            });
+                        }else
+                        {
+                            currentObj.animate(forDuringAniObj, timerEv, 'swing', function(){ currentObj.css(forInactiveObj); });
+                            activateObj.animate(forActiveObj, timerEv, 'linear', function(){ runintervalFun(); });
+                        }                        
                     }else
                     {
-                        activateObj.css('left','0%');                        
+                        activateObj.css(forActiveObj);                        
                         runintervalFun();
                     }
                 }else
                 {
-                    activateObj.css('left','0%');
+                    activateObj.css(forActiveObj);
                     activateObj.addClass('active');
                     runintervalFun();
                 }                
