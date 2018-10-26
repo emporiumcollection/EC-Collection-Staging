@@ -3335,5 +3335,38 @@ function property_images_wetransfer(Request $request) {
         }
         echo json_encode($return_array); exit;
     }
-
+    
+    public function getViewcontract($property_id){
+        $hotelcontacts = $this->get_property_files($property_id, 'Hotel Contracts');
+        $filepath = '';
+        if(!empty($hotelcontacts)){
+            foreach($hotelcontacts as $img){
+                $filepath = $img->imgsrc.$img->file_name;
+            }
+        }
+        
+        if($filepath!='')
+		{
+		    $path = $filepath;			
+				$flipimgs = array();
+				$fl=0;
+					
+					$flipimgs[$fl]['imgpath'] = $path;
+					$flipimgs[$fl]['imgname'] = '';
+					$flipimgs[$fl]['file_type'] = 'application/pdf';
+					$flipimgs[$fl]['folder'] = '';
+					
+				$this->data['flips'] = $flipimgs;
+				$this->data['fliptype'] = 'high';
+                
+				return view('properties.flipbook', $this->data);
+			
+		}
+		else
+		{ 
+		    $return = 'properties/?return=' . self::returnUrl();
+			return Redirect::to($return)->with('messagetext','Contract has not uploaded yet.')->with('msgstatus','error');
+		}
+    }
+    
 }

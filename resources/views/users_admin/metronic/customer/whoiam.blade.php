@@ -419,89 +419,101 @@ Select the Commission Terms you wish to agree with.                             
                                                             
                                                             <div class="form-group m-form__group row">
                                                             
-                                                                       <div class="m-accordion m-accordion--default" id="m_accordion_1" role="tablist" style="width: 100%;">
-                                                                       <!--begin::Item-->
-                                                                       {{--*/ $new_contract_ava = false; /*--}}
-                                                                       <?php
-                                                    	                    if(!empty($contractdata)) {
-                                               	                       ?>
-                                                                            {{--*/ 
-                                                                        		usort($contractdata, function($a, $b) {
-                                                                        			return $a->sort_num - $b->sort_num; 
-                                                                        		});
+                                                               <div class="m-accordion m-accordion--default" id="m_accordion_1" role="tablist" style="width: 100%;">
+                                                               <!--begin::Item-->
+                                                               {{--*/ $new_contract_ava = false; /*--}}
+                                                               <?php
+                                            	                    if(!empty($contractdata)) {
+                                       	                       ?>
+                                                                    {{--*/ 
+                                                                		usort($contractdata, function($a, $b) {
+                                                                			return $a->sort_num - $b->sort_num; 
+                                                                		});
+                                                                        
+                                                                        $contractdata = array_reverse($contractdata);
+                                                                        
+                                                                        $final_contracts = array();
+                                                                        foreach($contractdata as $sicc){
+                                                                            if(!isset($userContracts[$sicc->contract_id])){ $tempobj = $sicc; $tempobj->already_done = false; }else{ $tempobj = $userContracts[$sicc->contract_id]; $tempobj->already_done = true; }
+                                                                            if(isset($tempobj->contract_id)){$final_contracts[] = $tempobj;}
+                                                                        }
+                                                                	/*--}}
+                                                               <?php                                                                               
+                                            	                        $sn = 0;
+                                            	                        foreach ($final_contracts as $row) {
+                                            	                            ?>
+                                                                            {{--*/ $alreadyAccepted = (bool) $row->already_done; $is_agree = (bool) ((isset($row->is_agree))?$row->is_agree:false);  /*--}}
+                        {{--*/ if($alreadyAccepted !== true){ $new_contract_ava = true; } /*--}}
+                                            	                             <div class="m-accordion__item">
+                                            	                                <div class="m-accordion__item-head collapsed" role="tab" id="m_accordion_1_item_<?php echo $sn; ?>_head" data-toggle="collapse" href="#m_accordion_1_item_<?php echo $sn; ?>_body" aria-expanded="false">
                                                                                 
-                                                                                $contractdata = array_reverse($contractdata);
-                                                                                
-                                                                                $final_contracts = array();
-                                                                                foreach($contractdata as $sicc){
-                                                                                    if(!isset($userContracts[$sicc->contract_id])){ $tempobj = $sicc; $tempobj->already_done = false; }else{ $tempobj = $userContracts[$sicc->contract_id]; $tempobj->already_done = true; }
-                                                                                    if(isset($tempobj->contract_id)){$final_contracts[] = $tempobj;}
-                                                                                }
-                                                                        	/*--}}
-                                                                       <?php                                                                               
-                                                    	                        $sn = 0;
-                                                    	                        foreach ($final_contracts as $row) {
-                                                    	                            ?>
-                                                                                    {{--*/ $alreadyAccepted = (bool) $row->already_done; $is_agree = (bool) ((isset($row->is_agree))?$row->is_agree:false);  /*--}}
-                                {{--*/ if($alreadyAccepted !== true){ $new_contract_ava = true; } /*--}}
-                                                    	                             <div class="m-accordion__item">
-                                                    	                                <div class="m-accordion__item-head collapsed" role="tab" id="m_accordion_1_item_<?php echo $sn; ?>_head" data-toggle="collapse" href="#m_accordion_1_item_<?php echo $sn; ?>_body" aria-expanded="false">
+                                                                                    <span class="m-accordion__item-icon">
+                                                                                        <span class="m-switch m-switch--sm {{(($alreadyAccepted === true)?'m-switch--outline m-switch--icon m-switch--success':'m-switch--icon m-switch--info')}}">
+                                                                                            <label>
+                                                                                                <input type="checkbox" name="accepted_contracts[]" value="{{$row->contract_id}}" class="rad_contracts {{(((bool) $row->is_required  == true)?'rad_required':'')}}" {{(($is_agree === true)?'checked="checked"':'')}} />
+                                                                                                <span></span>
+                                                                                            </label>
+                                                                                        </span>
+                                                                                    </span>
+                                                                                    <span class="m-accordion__item-title">
+                                                                                      <?php echo $row->title; ?> <?php echo (((bool) $row->is_required  == true)?'<span class="text-danger">*</span>':''); ?>
+                                                                                    </span>
+                                                                                    <span class="m-accordion__item-mode"></span>                          
+                                            	                                </div>
+                                                                                <div class="m-accordion__item-body collapse" id="m_accordion_1_item_<?php echo $sn; ?>_body" role="tabpanel" aria-labelledby="m_accordion_1_item_<?php echo $sn; ?>_head" data-parent="#m_accordion_1">
+                                                                                     <div class="m-accordion__item-content">
+                                                                                      <p>
+                                                                                       <?php 
+                                                                                       
+                                                                                        $str_desc = $row->description;
+                                                                                        $current_date = date('Y-m-d');
+                                                                                        $date_signed = date('jS F Y');
                                                                                         
-                                                                                            <span class="m-accordion__item-icon">
-                                                                                                <span class="m-switch m-switch--sm {{(($alreadyAccepted === true)?'m-switch--outline m-switch--icon m-switch--success':'m-switch--icon m-switch--info')}}">
-                                                                                                    <label>
-                                                                                                        <input type="checkbox" name="accepted_contracts[]" value="{{$row->contract_id}}" class="rad_contracts {{(((bool) $row->is_required  == true)?'rad_required':'')}}" {{(($is_agree === true)?'checked="checked"':'')}} />
-                                                                                                        <span></span>
-                                                                                                    </label>
-                                                                                                </span>
-                                                                                            </span>
-                                                                                            <span class="m-accordion__item-title">
-                                                                                              <?php echo $row->title; ?> <?php echo (((bool) $row->is_required  == true)?'<span class="text-danger">*</span>':''); ?>
-                                                                                            </span>
-                                                                                            <span class="m-accordion__item-mode"></span>                          
-                                                    	                                </div>
-                                                                                        <div class="m-accordion__item-body collapse" id="m_accordion_1_item_<?php echo $sn; ?>_body" role="tabpanel" aria-labelledby="m_accordion_1_item_<?php echo $sn; ?>_head" data-parent="#m_accordion_1">
-                                                                                             <div class="m-accordion__item-content">
-                                                                                              <p>
-                                                                                               <?php 
-                                                                                               
-                                                                                                $str_desc = $row->description;
-                                                                                                $current_date = date('Y-m-d');
-                                                                                                $date_signed = date('d:m:Y');
-                                                                                                $valid_until = date('d:m:Y', strtotime('+2 years', strtotime($current_date)));
-                                                                                                $valid_until_year = date('Y', strtotime($valid_until));
-                                                                                                $string_array_replace = array(                    
-                                                                                                    '{signed_date}'=>$date_signed,
-                                                                                                    '{valid_until}'=>$valid_until,
-                                                                                                    '{valid_until_year}'=>$valid_until_year,
-                                                                                                );
-                                                                                                foreach($string_array_replace as $key => $value){                    
-                                                                                                    $str_replaced = str_replace($key, $value, $str_desc);
-                                                                                                    $str_desc = $str_replaced;
-                                                                                                }       
-                                                                                               
-                                                                                               ?>
-                                                                                               <?php echo nl2br($str_desc); ?>
-                                                                                              </p>
-                                                                                             </div>
-                                                                                        </div>
-                                                    	                            </div>
-                                                    	                                
-                                                    	                            <?php
-                                                    	                            $sn++;
-                                                    	                        }
-                                                    	                    }
-                                                    	                    ?>
-                                                                       
-                                                                       
-                                                                       <!--end::Item-->
-                                                                       </div>
-                                                            
-                                                            
+                                                                                        $valid_until = date('jS F Y', strtotime('+2 years', strtotime($current_date)));
+                                                                                        $valid_until_year = date('Y', strtotime($valid_until));
+                                                                                        $string_array_replace = array(                    
+                                                                                            '{signed_date}'=>$date_signed,
+                                                                                            '{valid_until}'=>$valid_until,
+                                                                                            '{valid_until_year}'=>$valid_until_year,
+                                                                                        );
+                                                                                        foreach($string_array_replace as $key => $value){                    
+                                                                                            $str_replaced = str_replace($key, $value, $str_desc);
+                                                                                            $str_desc = $str_replaced;
+                                                                                        }       
+                                                                                       
+                                                                                       ?>
+                                                                                       <?php echo nl2br($str_desc); ?>
+                                                                                      </p>
+                                                                                     </div>
+                                                                                </div>
+                                            	                            </div>
+                                            	                                
+                                            	                            <?php
+                                            	                            $sn++;
+                                            	                        }
+                                            	                    }
+                                            	                    ?>
+                                                               
+                                                               
+                                                               <!--end::Item-->
+                                                               </div>
                                 						
                                 					       </div>
                                                             
                                                         </div>                                                
+                                                        
+                                                        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12" id="dv_contract_view_download" @if($new_contract_ava) style="display: none;" @else style="display: '';" @endif >
+                                                            <div class="form-group m-form__group row">
+                                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                                    Contracts
+                                                                </label>
+                                                                <div class="col-xl-9 col-lg-9">                                                
+                                                                    <a href="{{ URL::to('user/contractflipbook')}}" title="View Contract" class="m-btn btn btn-primary" target="_blank"><i class="la la-eye"></i></a>
+                                                                    <a href="{{ URL::to('signup-contract/download')}}" title="Download contract to proceed" class="m-btn btn btn-success" target="_blank" id="btn_download"><i class="la la-file-pdf-o"></i></a>
+                                                                    <input type="hidden" name="hd_download" id="hd_download" value="0" />
+                                                                </div>
+                                                            </div>       
+                                                        </div>
                                                         
                                                     </div>
     											</div>
@@ -515,7 +527,8 @@ Select the Commission Terms you wish to agree with.                             
                                                     <div class="row">
                                                                                                  
                                                         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
-                                                            <img src="{{URL::to('images/800x200.png')}}" style="width: 100%;" />
+                                                            <div class="b2c-banner-text">Upload Hotel STO Contract & Terms</div>
+                                        					<img src="{{URL::to('images/hotel_contract.jpg')}}" style="width: 100%;" />
                                                         </div> 
                                                         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center margin-top">
                                                             <h2 class="black-heading-big">Upload Hotel STO Contract & Terms</h2>
@@ -529,24 +542,20 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                              <div class="form-group m-form__group row">
             													<label class="col-xl-3 col-lg-3 col-form-label">
             														Upload STO Contract
-            													</label>
-            													                                                               
+            													</label>                                                      
                                                         		<input type="file" name="signed_contract">
-                                                        				
-                                                                    
             												 </div>                                                                                                                      
-                                                        </div>                                                        
-                                                        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
-                                                            <br />
-                                                                <?php 
-                                                                    if(isset($hotelcontacts) && count($hotelcontacts)>0){ 
-                                                                ?>        
-                                                                        <a href="{{$hotelcontacts[0]->imgsrc.$hotelcontacts[0]->file_name}}" title="{{$hotelcontacts[0]->file_display_name}}" target="_blank" class="btn btn-primary" >View uploaded Contract</a>  
-                                                                <?php  
-                                                                    }
-                                                                ?>
+                                                        </div>   
+                                                        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12"><br />             
                                                             
-                                                        </div>
+                                                             <div class="form-group m-form__group row">
+            													<label class="col-xl-3 col-lg-3 col-form-label">
+            														Upload Hotel Brochure
+            													</label>                                                      
+                                                        		<input type="file" name="hotel_brochure" />
+            												 </div>                                                                                                                      
+                                                        </div>                                                     
+                                                        
                                                     </div>
     											</div>
                                             </div>
@@ -937,11 +946,23 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                     <div class="m-portlet m-portlet--full-height">                        
                         <div class="m-portlet__body">
                             <div class="m-accordion m-accordion--default m-accordion--solid" id="commission_accordion" role="tablist">
-                                
+                                {{--*/ $new_contract_ava = false; /*--}}
+                                <?php
+                                    if(!empty($commision_contractdata)) {
+                                ?>
+                                    
                                 <!-- contracts start -->
                                     <div class="m-accordion__item">
                                         <div class="m-accordion__item-head collapsed" role="tab" id="contract_accordion_item_{{$commision_contractdata->contract_id}}_head" data-toggle="collapse" href="#contract_accordion_item_{{$commision_contractdata->contract_id}}_body" aria-expanded="false">
                                             <span class="m-accordion__item-icon"></span>
+                                            <span class="m-accordion__item-icon">
+                                                <span class="m-switch m-switch--sm {{(($commission_contract_selected === true)?'m-switch--outline m-switch--icon m-switch--success':'m-switch--icon m-switch--info')}}">
+                                                    <label>
+                                                        <input type="checkbox" name="accepted_commission_contracts" class="rad_commission_contracts" {{(($commission_contract_selected === true)?'checked="checked"':'')}} />
+                                                        <span></span>
+                                                    </label>
+                                                </span>
+                                            </span>
                                             <span class="m-accordion__item-title">{{$commision_contractdata->title}}</span>
                                             <span class="m-accordion__item-mode"></span>
                                         </div>
@@ -953,6 +974,9 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                         </div>
                                     </div>
                                 <!-- contracts end -->
+                                <?php
+                                    }
+                                ?>
                             </div>
                         </div>
                     </div>                				
@@ -1422,6 +1446,11 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                     }
                 }); 
            });
+           
+           $("#btn_download").click(function(){
+                $("#hd_download").val(1);
+           });
+           
         });
         function addToCartHotel(PackageID,PackagePrice){    
             var fee_subtract_on_booking = '';             
@@ -1477,7 +1506,7 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
 
 @section('script')
     <script type="text/javascript">
-    var activeTab = '@if($active_tab > 0){{$active_tab}}@else{{0}}@endif'; console.log(activeTab);
+    var activeTab = '@if($active_tab > 0){{$active_tab}}@else{{0}}@endif'; 
     activeTab = parseInt(activeTab);
     var prevTab = activeTab;
     activeTab++;

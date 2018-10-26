@@ -119,6 +119,7 @@
 						@else
 							<a  href="#" class="tips btn btn-xs btn-danger" title="Click to Approve " onclick="change_approval(this,'approved','{{$row->id}}',1);"><i class="fa fa-times "></i></a>
 						@endif
+                        <a href="{{ URL::to('properties/viewcontract/'.$row->id.'?return='.$return) }}" title="View Contract" class="tips btn btn-xs btn-success" ><i class="fa fa-eye"></i></a>
 				</td>				 
                 </tr>
 				

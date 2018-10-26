@@ -293,29 +293,37 @@ function wizard_step_2(){
     }); 
 }
 function wizard_step_3(){
-    wizard.stop = true;
-    var fdata = new FormData();    
-    fdata.append("form_wizard",$("input[name=form_wizard_3]").val());  
-    fdata.append("roomavailability",$("input[name=roomavailability]:checked").val());       
-    var base_url = $('#base_url').val();
-    $.ajax({
-        url:base_url+'/hotelavaibility',
-        type:'POST',
-        dataType:'json',
-        contentType: false,
-        processData: false,
-        data:fdata,
-        success:function(response){
-            if(response.status == 'success'){
-                toastr.success(response.message);
-                prevTab++;
-                wizard.goNext();
+    wizard.stop = true;    
+    
+    if($("input[name=accepted_commission_contracts]").is(":checked")){
+        
+        var fdata = new FormData();    
+        fdata.append("form_wizard",$("input[name=form_wizard_3]").val());  
+        fdata.append("roomavailability",$("input[name=roomavailability]:checked").val());       
+        var base_url = $('#base_url').val();
+        $.ajax({
+            url:base_url+'/hotelavaibility',
+            type:'POST',
+            dataType:'json',
+            contentType: false,
+            processData: false,
+            data:fdata,
+            success:function(response){
+                if(response.status == 'success'){
+                    toastr.success(response.message);
+                    prevTab++;
+                    wizard.goNext();
+                }
+                else{
+                    toastr.error(response.message);
+                }
             }
-            else{
-                toastr.error(response.message);
-            }
-        }
-    }); 
+        });
+    
+    }else{
+        toastr.success("Please view commission contract and accept it.");
+    }
+     
 }
 function wizard_step_4(){ 
     wizard.stop = true;
@@ -323,37 +331,51 @@ function wizard_step_4(){
     var agreedval = new Array();
     var disagreedval = new Array(); 
     $("input.rad_contracts").each(function(){
-        var pr = true; console.log("gg");
+        var pr = true; 
         if($(this).is(":checked") === false){ pr = false; if($(this).hasClass('rad_required')){ is_runajax = false; } }
-        console.log(pr);
+        
         if(pr === true){ agreedval.push($(this).val()); }
         else{disagreedval.push($(this).val());}            
     });
-    
-    //run ajax if user will accept all required contracts
-    if((is_runajax === true) && ((agreedval.length > 0) || (disagreedval.length > 0))){
-        $.ajax({
-    	  url: base_url+'/user/wizardacceptcontracts',
-    	  type: "post",
-    	  data: {"agree_contracts":agreedval,"disagree_contracts":disagreedval},
-    	  dataType: "json",
-    	  success: function(data){
-            if(data.status == "fail"){
-                toastr.error(data.message);
-            }else
-            {
-                toastr.success(data.message);
-                prevTab++;
-                wizard.goNext();
-            }
-    	  },
-          error: function(e){
-            toastr.error("Unexpected error occured, Please try again after some time!");
-          }
-    	});
-    }else
-    {
-        toastr.error("Please accept all required contracts!");
+    var dwl_val =  $('#hd_download').val();
+    if(dwl_val==0){
+        //run ajax if user will accept all required contracts
+        if((is_runajax === true) && ((agreedval.length > 0) || (disagreedval.length > 0))){
+            $.ajax({
+        	  url: base_url+'/user/wizardacceptcontracts',
+        	  type: "post",
+        	  data: {"agree_contracts":agreedval,"disagree_contracts":disagreedval},
+        	  dataType: "json",
+        	  success: function(data){
+                if(data.status == "fail"){
+                    toastr.error(data.message);
+                }else
+                {
+                    //toastr.success(data.message);
+                    $("#dv_contract_view_download").css('display', '');
+                    var dwl_val =  $('#hd_download').val();
+                    if(dwl_val==0){
+                        toastr.error('Please download contract to proceed');
+                    }else{
+                        toastr.success('Thanks for accepting and downloading contracts');
+                        prevTab++;
+                        wizard.goNext();
+                    }
+                }
+        	  },
+              error: function(e){
+                toastr.error("Unexpected error occured, Please try again after some time!");
+              }
+        	});
+        }else
+        {
+            toastr.error("Please accept all required contracts!");
+        }
+    }
+    else{
+        toastr.error('Thanks for accepting and downloading contracts');
+        prevTab++;
+        wizard.goNext();
     }
     //End
     return false;

@@ -1191,8 +1191,9 @@ return Redirect::to('customer/profile')->with('message', \SiteHelpers::alert('er
         /** commission contracts start **/
         $usersContracts = \DB::table('tb_users_contracts')->select('tb_users_contracts.*')->where('tb_users_contracts.contract_type','commission')->where('tb_users_contracts.accepted_by', \Auth::user()->id)->where('tb_users_contracts.status',1)->where('tb_users_contracts.is_expried',0)->where('tb_users_contracts.deleted',0)->orderBy('tb_users_contracts.contract_id','DESC')->first();
         $contractdata = \CommonHelper::get_default_contracts('commission');
-        if(isset($usersContracts->contract_id)){ $this->data['commision_contractdata'] = $usersContracts; }
-        else{ $this->data['commision_contractdata'] = ((isset($contractdata["common"]))?$contractdata["common"]:array()); }
+        
+        if(isset($usersContracts->contract_id)){ $this->data['commision_contractdata'] = $usersContracts; $this->data['commission_contract_selected']=true; }
+        else{ $this->data['commision_contractdata'] = ((isset($contractdata["common"]))?$contractdata["common"]:array()); $this->data['commission_contract_selected']=false; }
         /** commission contracts end **/
         
         
