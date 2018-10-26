@@ -186,7 +186,7 @@
 					$url.='?arrive='.Request::input("arrive")."&departure=".Request::input("departure");
 				}
                 $temotional_gallery = array();
-                if(((($rw % 20) == 0) || ($rw == count($propertiesArr))) && (count($emotional_gallery) > 0)){
+                if(((($rw % 19) == 0) || ($rw == count($propertiesArr))) && (count($emotional_gallery) > 0)){
                     for($i = 0; $i<9; $i++){
                         if(count($emotional_gallery) > 0){ $temotional_gallery[] = array_shift($emotional_gallery); }
                     }
