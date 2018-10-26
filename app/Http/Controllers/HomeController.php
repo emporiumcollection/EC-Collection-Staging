@@ -35,6 +35,11 @@ class HomeController extends Controller {
         $this->data['pageMetakey'] = CNF_METAKEY;
         $this->data['pageMetadesc'] = CNF_METADESC;
         
+        if(!((bool) \auth()->check())){
+            $package_cond = (array) $this->getPackagesIdsAccordingMembership();
+            $this->data['isfPublic'] = ((count($package_cond) > 0)?true:false);
+        }   
+        
         return view('frontend.themes.emporium.pages.index', $this->data);
     }
     

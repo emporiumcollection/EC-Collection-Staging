@@ -76,8 +76,13 @@
   gtag('config', 'UA-110391807-1');
 </script>
 
+{{--*/
+$isfLoginned = (bool) \auth()->check();
+if((isset($isfPublic)) && ($isfLoginned === false)){ $isfLoginned = (bool) $isfPublic; }
+/*--}}
+
 @if(!empty($pageTitle))
-<body class='{{str_replace(" ","_","$pageTitle")}} @if(auth()->check()) {{'user_logged_in'}} @endif '>
+<body class='{{str_replace(" ","_","$pageTitle")}} @if($isfLoginned) {{'user_logged_in'}} @endif '>
 @else
 <body>
  @endif
