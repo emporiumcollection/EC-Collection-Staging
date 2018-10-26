@@ -70,6 +70,7 @@
             break;
             
             default :
+                tType = 'fade';
                 timerEv = 600;
                 forInactiveObj['opacity'] = '0';
                 forActiveObj['opacity'] = '1';
