@@ -72,9 +72,9 @@
             default :
                 tType = 'fade';
                 timerEv = 600;
-                forInactiveObj['opacity'] = '0';
-                forActiveObj['opacity'] = '1';
-                forDuringAniObj['opacity'] = '0.5';
+                forInactiveObj['display'] = 'none';
+                forActiveObj['display'] = 'inline-block';
+                forDuringAniObj['display'] = 'none';
             break;
         }
                 
