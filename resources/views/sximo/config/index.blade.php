@@ -184,15 +184,15 @@
     		    <label for="ipt" class=" control-label col-md-2"> Membership Category   </label>
     			<div class="col-md-10">
                 @if(!empty($b2c_packages))
-                    @foreach($b2c_packages as $pkg) 
+                    @foreach($b2c_packages as $pkg)                                 
     				<label class="checkbox checkbox-inline">
     					<input name="public_package[]" type="checkbox" id="public_package" @if($pkg->is_public == '1') checked="checked" @endif value="{{$pkg->id}}" />  {{$pkg->package_title}}
     				</label>
                     @endforeach
-                @endif	
+                @endif	                                    
     			 </div> 
     		  </div> 
-        </div>
+        </div>        
         
         <div class="col-sm-12 animated">
             <div class="form-group">
@@ -201,8 +201,8 @@
     				<button class="btn btn-primary" type="submit">{{ Lang::get('core.sb_savechanges') }} </button>
     			 </div> 
     		  </div> 
-        </div>
-        
+        </div>                        
+                                                        
 		 {!! Form::close() !!}
 	</div>
 	</div>	 
