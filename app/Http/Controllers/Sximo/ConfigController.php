@@ -22,13 +22,17 @@ class ConfigController extends Controller {
 	public function getIndex()
 	{	
 		$this->data['active'] = '';
+        
+        $gId = \CommonHelper::getusertype("users-b2c");
+        
+        $this->data['b2c_packages'] = \DB::table('tb_packages')->select('tb_packages.id','tb_packages.package_title', 'tb_packages.is_public')->join('tb_packages_user_groups', 'tb_packages.id', '=', 'tb_packages_user_groups.package_id')->where('tb_packages_user_groups.group_id', $gId)->get();
+        
 		return view('sximo.config.index',$this->data);	
 	}
 
 
 	static function postSave( Request $request )
-	{
-		
+	{	    
 		$rules = array(
 			'cnf_appname'=>'required|min:2',
 			'cnf_appdesc'=>'required|min:2',
@@ -80,6 +84,23 @@ class ConfigController extends Controller {
 			$fp=fopen($filename,"w+"); 
 			fwrite($fp,$val); 
 			fclose($fp); 
+            
+            $gId = \CommonHelper::getusertype("users-b2c");        
+            $b2c_packages = \DB::table('tb_packages')->select('tb_packages.id','tb_packages.package_title', 'tb_packages.is_public')->join('tb_packages_user_groups', 'tb_packages.id', '=', 'tb_packages_user_groups.package_id')->where('tb_packages_user_groups.group_id', $gId)->get();
+            $pkgs = array();
+    		$pkg = $request->input('public_package');
+            if(!empty($pkg)){
+                $pkgs = $pkg;
+            }            
+            if(!empty($b2c_packages)){
+                foreach($b2c_packages as $pkg){
+                    if(in_array($pkg->id, $pkgs)) 
+                    \DB::table('tb_packages')->where('id', $pkg->id)->update(array('is_public'=>1));
+                    else
+                    \DB::table('tb_packages')->where('id', $pkg->id)->update(array('is_public'=>0));
+                }
+            }
+            
 			return Redirect::to('sximo/config')->with('messagetext','Setting Has Been Save Successful')->with('msgstatus','success');
 		} else {
 			return Redirect::to('sximo/config')->with('messagetext', 'The following errors occurred')->with('msgstatus','success')

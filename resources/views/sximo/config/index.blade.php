@@ -101,7 +101,7 @@
 			 </div> 
 		  </div> 
              
-		   <div class="form-group">
+		  <div class="form-group">
 		    <label for="ipt" class=" control-label col-md-4">{{ Lang::get('core.fr_mainlanguage') }} </label>
 			<div class="col-md-8">
 
@@ -143,12 +143,7 @@
 			 </div> 
 		  </div> 		  
 		  
-		  <div class="form-group">
-		    <label for="ipt" class=" control-label col-md-4">&nbsp;</label>
-			<div class="col-md-8">
-				<button class="btn btn-primary" type="submit">{{ Lang::get('core.sb_savechanges') }} </button>
-			 </div> 
-		  </div> 
+		  
 		</div>
 
 		<div class="col-sm-6 animated fadeInRight ">
@@ -182,7 +177,32 @@
 			 </div> 
 		  </div>  		  
 
-		</div>  
+		</div>
+        
+        <div class="col-sm-12 animated">
+            <div class="form-group">
+    		    <label for="ipt" class=" control-label col-md-2"> Membership Category   </label>
+    			<div class="col-md-10">
+                @if(!empty($b2c_packages))
+                    @foreach($b2c_packages as $pkg) 
+    				<label class="checkbox checkbox-inline">
+    					<input name="public_package[]" type="checkbox" id="public_package" @if($pkg->is_public == '1') checked="checked" @endif value="{{$pkg->id}}" />  {{$pkg->package_title}}
+    				</label>
+                    @endforeach
+                @endif	
+    			 </div> 
+    		  </div> 
+        </div>
+        
+        <div class="col-sm-12 animated">
+            <div class="form-group">
+    		    <label for="ipt" class=" control-label col-md-4">&nbsp;</label>
+    			<div class="col-md-8">
+    				<button class="btn btn-primary" type="submit">{{ Lang::get('core.sb_savechanges') }} </button>
+    			 </div> 
+    		  </div> 
+        </div>
+        
 		 {!! Form::close() !!}
 	</div>
 	</div>	 
