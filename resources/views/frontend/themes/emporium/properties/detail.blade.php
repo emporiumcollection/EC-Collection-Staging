@@ -155,10 +155,12 @@
                                         <p>{{(strlen($type->room_desc) > 100) ? substr($type->room_desc,0,100).'...':$type->room_desc}}</p>
                                         <button class="btn btn-default moreButtonPopup" type="button" rel="{{$type->id}}">More</button>
                                         <button class="btn btn-default" type="button" onclick="choose_room_type('{{$type->id}}');">Book Now</button>
+                                        
                                         @if($type->price!='')
                                             <button class="btn btn-default"
-                                                    type="button"> {{($currency->content!='') ? $currency->content : '$'}} {{$type->price}} </button>
+                                                    type="button"> {{($currency->content!='') ? $currency->content : '$'}} {{ isset(\Auth::user()->id) ? $type->price : 'Login to view'}} </button>
                                         @endif
+                                        
                                         <div class="sliderArrow">
                                             <a href="javascript:void(0);" class="prevClick"><i
                                                         class="fa fa-angle-left"></i></a>
@@ -559,6 +561,22 @@
 		  </div>
 		</div>
 	</div>
+    <!-- Show Login Popup -->
+	<div class="showLoginPopup fullWidthPopup">
+	  <a href="javascript:void(0);" class="loginPopupCloseButton">×</a>
+		<div class="container-fluid">
+		  <div class="row">
+			  <div class="col-sm-4 col-md-6">
+				  
+			  </div>
+			  <div class="col-md-6 col-sm-8 col-xs-12 noPadding">
+				<div class="showLoginContent">
+				    Please Login to book  
+				</div>
+			  </div>
+		  </div>
+		</div>
+	</div>
 @endsection
 
 
@@ -633,14 +651,21 @@
 @section('custom_js')
     @parent
 	<script>
+        var logined = true;
+        <?php
+            if(isset(\Auth::user()->id)){
+        ?>
+                logined = false;    
+        <?php
+            }
+        ?>
         $(document).ready(function () {
-            
             
             var chk_date = new Date(); 
             
             var chk_out_date = new Date();
             
-            console.log(chk_date);
+            
             
             $('#t-middel-picker').tDatePicker({
                 'numCalendar':'2',
@@ -714,28 +739,36 @@
 			imagesPro += '<h1>' + data.typedata.category_name + '</h1>';
 			imagesPro += '<p>' + data.amenities.amenities_eng.replace(/\n/g, "<br />") + '</p>';
 			imagesPro += '<p>' + data.typedata.room_desc + '</p>';
-			imagesPro += '<div class="shoMoreButtonSection">';
-			if (data.typedata.price != '')
-			{
-				imagesPro += '<h2>';
-				imagesPro += (data.currency.content != '') ? data.currency.content : '$';
-				imagesPro += data.typedata.price;
-				imagesPro += '</h2>';
-			}
-			imagesPro += '<a href="javascript:void(0);" onclick="choose_room_type(' + data.typedata.id + ');" class="button">Book</a>';
-			imagesPro += '</div>';
+            
+            
+    			imagesPro += '<div class="shoMoreButtonSection">';
+    			if (data.typedata.price != '')
+    			{
+    				imagesPro += '<h2>';
+    				imagesPro += (data.currency.content != '') ? data.currency.content : '$';
+    				imagesPro += (logined) ? 'Login to view' : data.typedata.price;
+    				imagesPro += '</h2>';
+    			}
+    			imagesPro += '<a href="javascript:void(0);" onclick="choose_room_type(' + data.typedata.id + ');" class="button">Book</a>';
+    			imagesPro += '</div>';
+            
+            
 			$('.showMoreContent').html(imagesPro);
 			$('.showMorePopup').addClass('openPopup');
 		}
 		
 		function choose_room_type(type)
 		{
-			$('#roomType').val('');
-			if (type != '' && type > 0)
-			{
-				$('#roomType').val(type);
-				$(".detail-page-booking-form").trigger("submit");
-			}
+            if(logined){
+                $("#showLoginPopup").modal();
+            }else{
+    			$('#roomType').val('');
+    			if (type != '' && type > 0)
+    			{
+    				$('#roomType').val(type);
+    				$(".detail-page-booking-form").trigger("submit");
+    			}
+            }
 		}
 
 	</script>

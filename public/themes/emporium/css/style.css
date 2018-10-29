@@ -1804,11 +1804,13 @@ button.searchButton.btn:hover {
   background: #ABA07C;
   color: #fff;
   font-size: 25px;
-  margin-left: -194px;
+  /* margin-left: -194px; */
+  margin-left: -218px;
   padding: 17px 5px;
   text-align: center;
   text-transform: uppercase;
-  width: 174px;
+ /* width: 174px; */
+    width: 200px;
 }
 .shoMoreButtonSection a {
   display: inline-block;
