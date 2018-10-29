@@ -33,6 +33,18 @@ class PropertiesController extends Controller {
             'return' => self::returnUrl()
         );
     }
+    
+    public function getRadsetdefaultpackagetohotel(Request $request){
+        $publicPakages_results = \DB::table('tb_packages')->select('id')->where('is_public',true)->first();
+        $getproperises = \DB::table('tb_properties')->select('tb_properties.id')->leftJoin('tb_properties_category_package','tb_properties.id','=','tb_properties_category_package.property_id')->whereNull('tb_properties_category_package.id')->get();
+        
+        $batchInsert = array();
+        foreach($getproperises as $sipro){
+            $batchInsert[] = array('property_id'=>$sipro->id,'package_id'=>$publicPakages_results->id);
+        }
+        if(count($batchInsert) > 0){\DB::table('tb_properties_category_package')->insert($batchInsert);}
+        echo count($getproperises).'<pre>';print_r($batchInsert);die;
+    }
 
     public function getIndex(Request $request) {
 
