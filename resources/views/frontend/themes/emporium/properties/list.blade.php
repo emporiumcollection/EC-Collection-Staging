@@ -131,7 +131,7 @@
 		<h4 class="gridheading"> {{ count($featurePropertiesArr) }}<span class="newfont"> Featured </span> Hotels Found for {{ $slug }}  {{$dateslug}}</h4>
 			<div class="grid">
 
-
+        {{ $frw = 1 }}
 		@foreach($featurePropertiesArr as $props)
 			
 			<?php
@@ -140,6 +140,13 @@
 				{
 					$url.='?arrive='.Request::input("arrive")."&departure=".Request::input("departure");
 				}
+                $femotional_gallery = array();
+                if(($frw == 1) && (count($emotional_gallery) > 0)){
+                    for($i = 0; $i<9; $i++){
+                        if(count($emotional_gallery) > 0){ $femotional_gallery[] = array_shift($emotional_gallery); }
+                    }
+                }
+                $frw++;
 			?> 
 
 
@@ -164,6 +171,31 @@
           </div>
         </div>
       </div>
+      
+      @if(count($femotional_gallery) > 0)
+      <?php
+        $images_arr = array();
+        foreach($femotional_gallery as $si_g_image){
+            //$images_arr[] = array("src"=>\URL::to('container-image/'.$si_g_image->id));
+            $images_arr[] = array("src"=>\URL::to('uploads/thumbs/format_'.$si_g_image->folder_id.'_'.$si_g_image->file_name));
+        }
+        $img_str = json_encode($images_arr);
+        ?>
+      <div class="col-md-6 col-sm-6 col-xs-12 biggrid">
+        <div class="row">
+          <div class="gridinner">
+            <a href="javascript:false;">
+          		  <img src="{{ URL::to('themes/emporium/images/emporium-voyage-logo-white-loader.svg') }}" data-src="{{$images_arr[0]['src']}}" data-imagessrc="{{$img_str}}" class="img-responsive rad-img" alt="Emotional Gallery" title="Emotional Gallery" data-rad-auto-run="true" data-rad-effect-type="fade"  />
+           	</a>
+            <div class="gridtext">
+              <h5 class="entry-title"></h5>
+               <p></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      @endif
+      
 	@endforeach
 </div>
 @endif
@@ -186,11 +218,11 @@
 					$url.='?arrive='.Request::input("arrive")."&departure=".Request::input("departure");
 				}
                 $temotional_gallery = array();
-                if(((($rw % 19) == 0) || ($rw == count($propertiesArr))) && (count($emotional_gallery) > 0)){
+                /*if(((($rw % 19) == 0) || ($rw == count($propertiesArr))) && (count($emotional_gallery) > 0)){
                     for($i = 0; $i<9; $i++){
                         if(count($emotional_gallery) > 0){ $temotional_gallery[] = array_shift($emotional_gallery); }
                     }
-                }
+                }*/
 			?> 
 			@if($rw%19==0)
 							{{--*/ $adscatid = ($destination_category > 0) ? $destination_category : 'Hotel'; $resultads = CommonHelper::getGridResultAds('grid_results', $adscatid) /*--}}
