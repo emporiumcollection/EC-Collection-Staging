@@ -1188,6 +1188,7 @@ class UserController extends Controller {
             $user->username = $request->input('username');
             $user->form_wizard = $request->input('form_wizard');
             $user->contracts = $request->input('contractSignCheck');
+            $user->european = $request->input('european');
 
             if (isset($data['avatar']))
                 $user->avatar = $newfilename;
@@ -1214,6 +1215,20 @@ class UserController extends Controller {
                 $prop_id = \DB::table('tb_properties')->insertGetId($hotel_data);     
                         
             }
+            
+            $hotelinfo_vat_no = trim($request->input('hotelinfo_vat_no'));
+            if(!empty($hotelinfo_vat_no)){
+                $obj_comp = \DB::table('tb_user_company_details')->where('user_id', $user->id)->first();
+                $company_data = array(
+                    'company_tax_number' => $hotelinfo_vat_no
+                );
+                if(empty($obj_comp)){
+                    \DB::table('tb_user_company_details')->insertGetId($company_data);
+                }else{
+                    \DB::table('tb_user_company_details')->where('id', $obj_comp->id)->update($company_data);
+                }
+            }
+            
             
             $return_array['status'] = 'success';
             $return_array['message'] = 'Profile has been saved!';
@@ -2078,7 +2093,8 @@ class UserController extends Controller {
     function getContractflipbook()
 	{	   
 		$red = '/';
-        
+        $group_id = \Session::get('gid');
+        $default_package = \DB::table('tb_packages')->where('allow_user_groups', $group_id)->where('package_status', 1)->where('package_for', 2)->first();
 		$downFileName = 'uploads/contract-signup-'.\Auth::user()->id.'_'.date('d-m-Y').'.pdf';
         $selectFields = array('tb_users_contracts.*','tb_users.first_name','tb_users.last_name','tb_users_contracts.contract_type','tb_users_contracts.commission_type','tb_users_contracts.partial_availability_commission','tb_users_contracts.full_availability_commission');
         $usersContracts = \DB::table('tb_users_contracts')
@@ -2137,6 +2153,7 @@ class UserController extends Controller {
                     '{signed_date}'=>$date_signedf,
                     '{valid_until}'=>$valid_until,
                     '{valid_until_year}'=>$valid_until_year,
+                    '{annual_fee}'=>(!empty($default_package) ? $default_package->package_price : '2700'),
                 );
                 foreach($string_array_replace as $key => $value){                    
                     $str_replaced = str_replace($key, $value, $str_desc);
@@ -2156,10 +2173,10 @@ class UserController extends Controller {
         }
         
         if((strlen($username) > 0) && (strlen($date_signed) > 0)){
-            $center_content .= '<div class="Mrgtop40 font13">';
+            $center_content .= '<div class="Mrgtop80 font13">';
 				$center_content .= '<p class="font13">I hereby agree to supply the above for entry into Emporium-Voyage</p>';
                 $center_content .= '<p class="font13">General terms & conditions apply.</p>';
-                $center_content .= '<table>';
+                $center_content .= '<table class="tablewc">';
                     $center_content .= '<tr><td class="strong">Signed by: </td> <td class="underline">'.$contract_full_name.'</td></tr>';    
                     $center_content .= '<tr><td class="strong">Print name: </td> <td class="underline">'.$contract_full_name.'</td></tr>';
                     $center_content .= '<tr><td class="strong">For and on behalf of: </td> <td class="underline">'.$contract_company->content.'</td></tr>';
@@ -2167,7 +2184,7 @@ class UserController extends Controller {
                     $center_content .= '<tr><td></td><td><img src="'. \URL::to('sximo/assets/images/checked-box.png').'" width="20px;" height="20px;"><label style="display:inline-block;text-align:left;">I agreed to the Terms stipulated in this contract</label></td></tr>';
                     $center_content .= '<tr><td class="strong">Signed by: </td> <td class="underline">'.$username.'</td></tr>';    
                     $center_content .= '<tr><td class="strong">Print name: </td> <td class="underline">'.$username.'</td></tr>';
-                    $center_content .= '<tr><td class="strong">For and on behalf of: </td> <td class="underline">NA</td></tr>';
+                    $center_content .= '<tr><td class="strong">For and on behalf of: </td> <td class="underline">'.$contract_company->content.'</td></tr>';
                     $center_content .= '<tr><td class="strong">Date signed: </td> <td class="underline">'.$date_signed.'</td></tr>';
                 $center_content .= '</table>';
 			$center_content .= '</div>';
@@ -2212,4 +2229,68 @@ class UserController extends Controller {
 			return Redirect::to($red)->with('messagetext','Invalid link.')->with('msgstatus','error');
 		}
 	}
+    public function getViewuploadedcontract(Request $request, $property_id){
+        $hotelcontacts = (new PropertiesController)->get_property_files($property_id, 'Hotel Contracts');
+        $filepath = '';
+        if(!empty($hotelcontacts)){
+            foreach($hotelcontacts as $img){
+                $filepath = $img->imgsrc.$img->file_name;
+            }
+        }
+        
+        if($filepath!='')
+		{
+		    $path = $filepath;			
+				$flipimgs = array();
+				$fl=0;
+					
+					$flipimgs[$fl]['imgpath'] = $path;
+					$flipimgs[$fl]['imgname'] = '';
+					$flipimgs[$fl]['file_type'] = 'application/pdf';
+					$flipimgs[$fl]['folder'] = '';
+					
+				$this->data['flips'] = $flipimgs;
+				$this->data['fliptype'] = 'high';
+                
+				return view('properties.flipbook', $this->data);
+			
+		}
+		else
+		{ 
+		    $return = 'properties/?return=' . self::returnUrl();
+			return Redirect::to($return)->with('messagetext','Contract has not uploaded yet.')->with('msgstatus','error');
+		}
+    }
+    public function getViewuploadedbrochure(Request $request, $property_id){
+        $hotelcontacts = (new PropertiesController)->get_property_files($property_id, 'Hotel Brochure');
+        $filepath = '';
+        if(!empty($hotelcontacts)){
+            foreach($hotelcontacts as $img){
+                $filepath = $img->imgsrc.$img->file_name;
+            }
+        }
+        
+        if($filepath!='')
+		{
+		    $path = $filepath;			
+				$flipimgs = array();
+				$fl=0;
+					
+					$flipimgs[$fl]['imgpath'] = $path;
+					$flipimgs[$fl]['imgname'] = '';
+					$flipimgs[$fl]['file_type'] = 'application/pdf';
+					$flipimgs[$fl]['folder'] = '';
+					
+				$this->data['flips'] = $flipimgs;
+				$this->data['fliptype'] = 'high';
+                
+				return view('properties.flipbook', $this->data);
+			
+		}
+		else
+		{ 
+		    $return = 'properties/?return=' . self::returnUrl();
+			return Redirect::to($return)->with('messagetext','Contract has not uploaded yet.')->with('msgstatus','error');
+		}
+    }
 }

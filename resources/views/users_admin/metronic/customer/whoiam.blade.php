@@ -347,6 +347,35 @@
     													</div>
     												</div>
                                                     
+                                                   <div class="form-group m-form__group row">
+    													<label class="col-xl-3 col-lg-3 col-form-label">
+    														European
+    													</label>
+    													<div class="col-xl-9 col-lg-9">
+                                                            <div class="m-radio-inline">
+                                    							<label class="m-radio">
+                                    							     <input type="radio" name="european" value="1" <?php echo $user->european==1 ? 'checked="checked"' : ''; ?> />
+                                                                        Yes
+                                                                     <span></span>
+                                    							</label>
+                                                                <label class="m-radio">
+                                    							     <input type="radio" name="european" value="0" <?php echo $user->european==0 ? 'checked="checked"' : ''; ?> />
+                                                                        No
+                                                                     <span></span>
+                                    							</label>
+                                    						</div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="form-group m-form__group row" id="dv_vat_no">
+    													<label class="col-xl-3 col-lg-3 col-form-label">
+    														Vat Number
+    													</label>
+    													<div class="col-xl-9 col-lg-9">
+    														<input name="hotelinfo_vat_no" required="required" type="text" id="hotelinfo_vat_no" class="form-control m-input" value="{{$company_details->company_tax_number}}" />  
+    													</div>
+    												</div>
+                                                    
                                                     <div class="form-group m-form__group row">
                                                         <div class="col-12 m-form__group-sub">     					                                
                                 							<div class="m-checkbox-inline">
@@ -464,7 +493,8 @@ Select the Commission Terms you wish to agree with.                             
                                                                                      <div class="m-accordion__item-content">
                                                                                       <p>
                                                                                        <?php 
-                                                                                       
+                                                                                        $group_id = \Session::get('gid');
+                                                                                        $default_package = \DB::table('tb_packages')->where('allow_user_groups', $group_id)->where('package_status', 1)->where('package_for', 2)->first();
                                                                                         $str_desc = $row->description;
                                                                                         $current_date = date('Y-m-d');
                                                                                         $date_signed = date('jS F Y');
@@ -475,6 +505,7 @@ Select the Commission Terms you wish to agree with.                             
                                                                                             '{signed_date}'=>$date_signed,
                                                                                             '{valid_until}'=>$valid_until,
                                                                                             '{valid_until_year}'=>$valid_until_year,
+                                                                                            '{annual_fee}'=>(!empty($default_package) ? $default_package->package_price : '2700'),
                                                                                         );
                                                                                         foreach($string_array_replace as $key => $value){                    
                                                                                             $str_replaced = str_replace($key, $value, $str_desc);
@@ -555,6 +586,26 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                         		<input type="file" name="hotel_brochure" />
             												 </div>                                                                                                                      
                                                         </div>                                                     
+                                                        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
+                                                            <br />
+                                                                <?php 
+                                                                    //if(isset($hotelcontacts) && count($hotelcontacts)>0){ 
+                                                                ?>        
+                                                                        <!-- <a href="{{$hotelcontacts[0]->imgsrc.$hotelcontacts[0]->file_name}}" title="{{$hotelcontacts[0]->file_display_name}}" target="_blank" class="btn btn-primary" >View uploaded Contract</a> --> 
+                                                                        <a href="{{Url::to('user/viewuploadedcontract/')}}/{{$assigned_propid}}" title="View uploaded Contract" target="_blank" class="btn btn-primary" >View uploaded Contract</a>
+                                                                <?php  
+                                                                    //}
+                                                                ?>
+                                                                <?php 
+                                                                    //if(isset($hotelcontacts) && count($hotelcontacts)>0){ 
+                                                                ?>        
+                                                                        <!-- <a href="{{$hotel_broch[0]->imgsrc.$hotel_broch[0]->file_name}}" title="{{$hotel_broch[0]->file_display_name}}" target="_blank" class="btn btn-primary" >View Hotel Brochure</a> -->  
+                                                                        <a href="{{Url::to('user/viewuploadedbrochure/')}}/{{$assigned_propid}}" title="View uploaded Brochure" target="_blank" class="btn btn-primary" >View uploaded Brochure</a>
+                                                                <?php  
+                                                                    //}
+                                                                ?>
+                                                            
+                                                        </div>
                                                         
                                                     </div>
     											</div>
@@ -977,6 +1028,11 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                 <?php
                                     }
                                 ?>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12">
+                                    Please confirm the commission contract to proceed to the next step.
+                                </div>
                             </div>
                         </div>
                     </div>                				
@@ -1449,6 +1505,23 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
            
            $("#btn_download").click(function(){
                 $("#hd_download").val(1);
+           });
+           var _euro = $("input[name=european]:checked").val();
+           if(_euro){
+                $("#dv_vat_no").css('display', ''); 
+           }else{
+                $("#dv_vat_no").css('display', 'none');
+           }
+           $("input[name=european]").click(function(){
+                var europo_val = $("input[name=european]:checked").val();
+                console.log(europo_val);
+                if(europo_val==0){
+                    $("#dv_vat_no").css('display', 'none');
+                    $("#hotelinfo_vat_no").removeAttr('required');
+                }else{
+                    $("#dv_vat_no").css('display', '');
+                    $("#hotelinfo_vat_no").attr('required', 'required');
+                }
            });
            
         });

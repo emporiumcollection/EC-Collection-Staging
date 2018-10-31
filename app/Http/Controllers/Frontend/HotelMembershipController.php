@@ -666,7 +666,8 @@ class HotelMembershipController extends Controller {
                 }
             }
         }else{
-            $default_package = \DB::table('tb_packages')->where('id', 4)->first();
+            $group_id = \Session::get('gid');
+            $default_package = \DB::table('tb_packages')->where('allow_user_groups', $group_id)->where('package_status', 1)->where('package_for', 2)->first();
             $cartPkgType = $default_package->id.'_hotel';  
             $cart = array();
             //$cartObj = $request->input('cart')['package'];
@@ -687,8 +688,42 @@ class HotelMembershipController extends Controller {
             $request->session()->put('hotel_cart', $cartItems);
             $hotelPkgID[] = $default_package->id;
         }
-
-        $htoelPkgQry = "Select tb_pkg.id,tb_pkg.package_title,tb_pkg.package_image,tb_pkg.package_price,tb_pkg.package_modules  from tb_packages tb_pkg where tb_pkg.id in(".implode(',',$hotelPkgID).")"; 
+        
+        $obj_user = \DB::table('tb_users')->where('id', \Auth::user()->id)->first();
+        //print_r($obj_user);
+        if(!empty($obj_user)){
+            $group_id = \Session::get('gid');
+            $setup_package = \DB::table('tb_packages')->where('allow_user_groups', $group_id)->where('package_status', 1)->where('package_for', 1)->first();
+                          
+            if($obj_user->own_hotel_setup){                
+                $cartPkgType = $setup_package->id.'_hotel';  
+                $cart = array();  
+                $cartItems = $request->session()->get('hotel_cart');
+                if(!isset($cartItems[$cartPkgType])){
+                    $cart[$cartPkgType]['package']['id'] = $setup_package->id;
+                    $cart[$cartPkgType]['package']['price'] = $setup_package->package_price;
+                    $cart[$cartPkgType]['package']['qty'] = 1;
+                    $cart[$cartPkgType]['package']['type'] = 'hotel';
+                    $cart[$cartPkgType]['package']['content'] = '';
+                    $cart[$cartPkgType]['package']['fee'] = '';
+                    if(!empty($cartItems)){
+                        $cartItems = array_merge($cartItems,$cart);
+                    }else{
+                        $cartItems = $cart;
+                    }
+            
+                    $request->session()->put('hotel_cart', $cartItems);
+                    $hotelPkgID[] = $setup_package->id;
+                }
+            }else{
+                $cartPkgType = $setup_package->id.'_hotel';                
+                $cartItems = $request->session()->get('hotel_cart');
+                unset($cartItems[$cartPkgType]);
+                $request->session()->put('hotel_cart', $cartItems);                
+            }
+        }
+        
+        $htoelPkgQry = "Select tb_pkg.id,tb_pkg.package_title,tb_pkg.package_image,tb_pkg.package_price,tb_pkg.package_modules,tb_pkg.package_for  from tb_packages tb_pkg where tb_pkg.id in(".implode(',',$hotelPkgID).")"; 
         $dataPackage = \DB::select($htoelPkgQry);
 		$this->data['packages'] = $dataPackage;
 		$adsdataPackage = array();
@@ -715,7 +750,16 @@ class HotelMembershipController extends Controller {
             foreach ($request->session()->get('hotel_cart') as $cartkey => $cartValue) {
 				if($cartValue['package']['type']=='hotel' && isset($cartValue['package']['fee'])){
 				    if($cartValue['package']['fee']=='yes')
-					   $subtract_at_booking_amt += $cartValue['package']['price'];
+                    {   
+                        $vat = $this->data["data"]["vatsettings"]->content;
+                        if(!$obj_user->european){                            
+                            $vat_val = ($cartValue['package']['price'] * $vat/100);
+                            $ex_vat = $cartValue['package']['price'] - $vat_val;
+                            $subtract_at_booking_amt += $ex_vat;
+                        }else{
+					       $subtract_at_booking_amt += $cartValue['package']['price'];
+                        }
+                    }
 				}
 			}
         }
@@ -777,12 +821,19 @@ class HotelMembershipController extends Controller {
             $this->data['common_contracts'] = $contracts['common'];
             $this->data['package_contracts'] = $contracts['packages_wise'];
         }
-        
+        $obj_user = \DB::table('tb_users')->where('id', \Auth::user()->id)->first();
         $subtract_at_booking_amt = 0;
         if(!empty($request->session()->get('hotel_cart'))){
             foreach ($request->session()->get('hotel_cart') as $cartkey => $cartValue) {
 				if($cartValue['package']['type']=='hotel' && $cartValue['package']['fee']=='yes'){
-					$subtract_at_booking_amt += $cartValue['package']['price'];
+					$vat = $this->data["data"]["vatsettings"]->content;
+                    if(!$obj_user->european){                            
+                        $vat_val = ($cartValue['package']['price'] * $vat/100);
+                        $ex_vat = $cartValue['package']['price'] - $vat_val;
+                        $subtract_at_booking_amt += $ex_vat;
+                    }else{
+				       $subtract_at_booking_amt += $cartValue['package']['price'];
+                    }
 				}
 			}
         }

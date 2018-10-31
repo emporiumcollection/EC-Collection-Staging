@@ -160,6 +160,8 @@ class PackagesController extends Controller {
 				$data['package_modules'] = implode(',',$request->input('package_modules'));
 			}
             
+            $data['package_for'] = $request->input('package_for');
+            
             $userGroups = array();
             if(!is_null($request->input('allow_user_groups')))
 			{

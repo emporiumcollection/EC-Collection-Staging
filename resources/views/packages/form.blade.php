@@ -193,7 +193,20 @@
 									 <div class="col-md-2">
 									 	
 									 </div>
-								  </div> </fieldset>
+								  </div>
+                                  <div class="form-group">
+									<label for="Is Public" class=" control-label col-md-4 text-left">Set Default membership or Setup </label>
+									<div class="col-md-6">									  
+                    					<label class='radio radio-inline'>
+                    					<input type='radio' name='package_for' value ='1' @if($row['package_for'] == '1') checked="checked" @endif > Setup </label>
+                    					<label class='radio radio-inline'>
+                    					<input type='radio' name='package_for' value ='2' @if($row['package_for'] == '2') checked="checked" @endif > Default Membership </label> 
+									 </div> 
+									 <div class="col-md-2">
+									 	
+									 </div>
+								  </div> 
+                    </fieldset>
 			</div>
 			
 			

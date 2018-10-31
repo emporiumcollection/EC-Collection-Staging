@@ -41,7 +41,7 @@ var WizardDemo = function () {
                        wizard_step_5();
                 }
                 else if((_wizard_step == '6') && (prevTab != _wizard_step)){
-                       
+                     wizard_step_6();
                 }
             }
         });
@@ -267,6 +267,9 @@ function wizard_step_2(){
     fdata.append("hotelinfo_country",$("input[name=hotelinfo_country]").val());
     fdata.append("hotelinfo_website",$("input[name=hotelinfo_website]").val());
     
+    fdata.append("european", $("input[name=european]:checked").val());
+    fdata.append("hotelinfo_vat_no", $("input[name=hotelinfo_vat_no]").val());
+    
     if($("input[type=file]")[0].files.length>0){
        fdata.append("avatar",$("input[type=file]")[0].files[0]) 
     }
@@ -321,7 +324,7 @@ function wizard_step_3(){
         });
     
     }else{
-        toastr.success("Please view commission contract and accept it.");
+        toastr.success("Please confirm the commission contract to proceed to the next step.");
     }
      
 }
@@ -373,7 +376,7 @@ function wizard_step_4(){
         }
     }
     else{
-        toastr.error('Thanks for accepting and downloading contracts');
+        toastr.success('Thanks for accepting and downloading contracts');
         prevTab++;
         wizard.goNext();
     }
@@ -385,9 +388,14 @@ function wizard_step_5(){
     var fdata = new FormData();
     
     fdata.append("form_wizard",$("input[name=form_wizard_5]").val());
-    if($("input[type=file]")[1].files.length>0){
-       fdata.append("signedcontract",$("input[type=file]")[1].files[0]) 
+    if($("input[name=signed_contract]")[0].files.length>0){
+       fdata.append("signedcontract",$("input[name=signed_contract]")[0].files[0]) 
     }
+    
+    if($("input[name=hotel_brochure]")[0].files.length>0){
+       fdata.append("hotelbrochure",$("input[name=hotel_brochure]")[0].files[0]) 
+    }
+    
     fdata.append("propId",$("input[name=propId]").val());  
     fdata.append("uploadType",$("input[name=uploadType]").val());  
        
@@ -400,7 +408,9 @@ function wizard_step_5(){
         processData: false,
         data:fdata,
         success:function(response){
-            if(response.status == 'success'){
+            if(response.status == 'success'){                
+                $("#dv_pkg").css('display', '');
+                $("#cart_row").css('display', 'none');
                 toastr.success(response.message);
                 prevTab++;
                 wizard.goNext();
@@ -410,4 +420,7 @@ function wizard_step_5(){
             }
         }
     });
+}
+function wizard_step_6(){
+    
 }

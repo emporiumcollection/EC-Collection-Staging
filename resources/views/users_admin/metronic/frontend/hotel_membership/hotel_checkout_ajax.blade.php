@@ -101,7 +101,11 @@
                         {{  ($orderTotal*$data["vatsettings"]->content)/100 }}                                
                     </td> 
                 </tr>
-                
+                <?php 
+                    if(!(\Auth::user()->european)){    
+                        $orderTotal = $orderTotal - (($orderTotal*$data["vatsettings"]->content)/100); 
+                    } 
+                ?> 
                 <tr>
                     <td>
                         <label>Order Total</label> 

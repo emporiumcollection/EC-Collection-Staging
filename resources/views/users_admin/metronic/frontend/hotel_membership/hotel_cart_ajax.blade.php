@@ -12,7 +12,7 @@
         </tr>
     </thead>
     <tbody>
-    	{{--*/ $subTotal = 0; $orderTotal = 0; /*--}}
+    	{{--*/ $subTotal = 0; $orderTotal = 0; $package_for = array(1, 2); /*--}}
     	@foreach($packages as $package)
 		{{--*/ $subTotal += $package->package_price; /*--}}
         <tr>
@@ -23,7 +23,9 @@
             <td>
           		<div class="product-title-and-remove-option">
                 	<span class="product-title">{{$package->package_title}}</span>
-                    <a href="javascript:voic(0);" onclick="javascript:removeItemFromCart({{$package->id}},{{ $package->package_price }});"><i class="fa fa-trash"></i></a>
+                    <?php if(!in_array($package->package_for, $package_for)){ ?>
+                        <a href="javascript:voic(0);" onclick="javascript:removeItemFromCart({{$package->id}},{{ $package->package_price }});"><i class="fa fa-trash"></i></a>
+                    <?php } ?>
                 </div>
                 <div>
                 @if($package->package_modules !="" && $package->package_modules!="NULL")
@@ -75,7 +77,10 @@
         <label >{!! isset($currency->content)?$currency->content:'$' !!} {{  ($orderTotal*$data["vatsettings"]->content)/100 }}</label>
         </td> 
     </tr>
-    
+    <?php 
+    if((!(\Auth::user()->european))){    
+        $orderTotal = $orderTotal - (($orderTotal*$data["vatsettings"]->content)/100); 
+    } ?> 
     <tr>
         <td>
         <label>Order Total</label> 

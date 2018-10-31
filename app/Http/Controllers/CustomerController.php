@@ -1218,11 +1218,14 @@ return Redirect::to('customer/profile')->with('message', \SiteHelpers::alert('er
         $this->data['packages'] = \DB::table('tb_packages')->where('allow_user_groups', $group_id)->where('package_status', 1)->get();
         if($propid!=''){
             $this->data['hotelcontacts'] = (new PropertiesController)->get_property_files($propid, 'Hotel Contracts');
+            $this->data['hotel_broch'] = (new PropertiesController)->get_property_files($propid, 'Hotel Brochure');
         }        
         
         $this->data['active_tab']=$user->form_wizard;
         
         $this->data['fid'] = \Session::get('uid');
+        
+        $this->data['company_details'] = \DB::table('tb_user_company_details')->where('user_id', $user->id)->first();
         
         $is_demo6 = trim(\CommonHelper::isHotelDashBoard($user->group_id));
         $t_f = 'whoiam';

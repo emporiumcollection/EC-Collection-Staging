@@ -767,6 +767,10 @@ class ConfigController extends Controller {
 		$this->data['contract_title2_eng'] = \DB::table('tb_settings')->where('key_value', 'contract_title2_eng')->first();
 		$this->data['contract_title3_eng'] = \DB::table('tb_settings')->where('key_value', 'contract_title3_eng')->first();
         $this->data['contract_paragraph_eng'] = \DB::table('tb_settings')->where('key_value', 'contract_paragraph_eng')->first();
+        
+        $this->data['contract_block1'] = \DB::table('tb_settings')->where('key_value', 'contract_block1')->first();
+		$this->data['contract_block2'] = \DB::table('tb_settings')->where('key_value', 'contract_block2')->first();
+		$this->data['contract_block3'] = \DB::table('tb_settings')->where('key_value', 'contract_block3')->first();
 		
 		return view('sximo.config.contract',$this->data);	
 	}	
@@ -809,6 +813,10 @@ class ConfigController extends Controller {
             \DB::table('tb_settings')->where('key_value', 'contract_title2_eng')->update(['content' => Input::get('contract_title2_eng')]);			
 			\DB::table('tb_settings')->where('key_value', 'contract_title3_eng')->update(['content' => Input::get('contract_title3_eng')]);
             \DB::table('tb_settings')->where('key_value', 'contract_paragraph_eng')->update(['content' => Input::get('contract_paragraph_eng')]);
+            
+            \DB::table('tb_settings')->where('key_value', 'contract_block1')->update(['content' => Input::get('contract_block1')]);			
+			\DB::table('tb_settings')->where('key_value', 'contract_block2')->update(['content' => Input::get('contract_block2')]);
+            \DB::table('tb_settings')->where('key_value', 'contract_block3')->update(['content' => Input::get('contract_block3')]);
 			
 			return Redirect::to('sximo/config/contract')->with('messagetext', 'Contract settings Has Been Updated')->with('msgstatus','success');	
 			

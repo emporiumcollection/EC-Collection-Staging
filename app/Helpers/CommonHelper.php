@@ -1059,12 +1059,12 @@ $allowedCurrenciesinProject=array("OMR","BHD","KWD","USD","CHF","EUR","KYD","GIP
                 $cont_logo =  \URL::to('sximo/assets/images/logo-design_1.png');
         }  
         
-        $bank_details = \DB::table('tb_settings')->where('key_value', 'bank_details')->first();
-        $reg_detail = \DB::table('tb_settings')->where('key_value', 'reg_detail')->first();
-		$contact_detail = \DB::table('tb_settings')->where('key_value', 'contact_detail')->first();       
+        $contract_block1 = \DB::table('tb_settings')->where('key_value', 'contract_block1')->first();
+        $contract_block2 = \DB::table('tb_settings')->where('key_value', 'contract_block2')->first();
+		$contract_block3 = \DB::table('tb_settings')->where('key_value', 'contract_block3')->first();       
                                 
         $html = '<style> 
-						.main { margin:2px; width:100%; font-family: arial, sans-serif; } 
+						.main { margin:2px; width:100%; font-family: Poppins, sans-serif; } 
 						.page-break { page-break-after: always; } 
 						
 						.header{ position: fixed; width: 100%; top: 0px; height:250px; background: #fff;} 
@@ -1073,7 +1073,7 @@ $allowedCurrenciesinProject=array("OMR","BHD","KWD","USD","CHF","EUR","KYD","GIP
 						.pagenum:after {content: counter(page);} 
 						.imgBox { text-align:center; width:400px; } 
 						.nro { text-align:center; font-size:12px; } 
-						.header img { height: 100px; } 
+						.header img { height: 100px; margin-bottom: 20px; } 
                         .Mrgtop200 {margin-top:280px;} 
 						.Mrgtop80 {margin-top:80px;} 
 						.Mrgtop40 {margin-top:40px;}
@@ -1103,7 +1103,10 @@ $allowedCurrenciesinProject=array("OMR","BHD","KWD","USD","CHF","EUR","KYD","GIP
 						  margin-bottom: 0.5cm;
 						  
 						}
-						
+						.tablewc{
+						  width: 50%; 
+                          margin: 0px auto;
+                        }
 						@media print {
 						  body, page {
 						    margin: 0;
@@ -1143,7 +1146,12 @@ $allowedCurrenciesinProject=array("OMR","BHD","KWD","USD","CHF","EUR","KYD","GIP
                             position: relative;
                             *overflow: hidden;
                         }                                                      
-
+                        br {
+                            content: "";
+                            margin: 2em;
+                            display: block;
+                            font-size: 36%;
+                        }
 				</style>';
         
         $html .= '
@@ -1152,7 +1160,7 @@ $allowedCurrenciesinProject=array("OMR","BHD","KWD","USD","CHF","EUR","KYD","GIP
                     <table width="100%">
                         <tr>  
     						<td>    						    
-    							<img src="'.$cont_logo.'" height="100px;">   				 	 
+    							<center><img src="'.$cont_logo.'" height="100px;"></center>  				 	 
     						</td>
     					 </tr>
                          <tr>
@@ -1184,27 +1192,17 @@ $allowedCurrenciesinProject=array("OMR","BHD","KWD","USD","CHF","EUR","KYD","GIP
                 
                 <div style="clear:both;"> &nbsp;</div>
                 <div class="footer"> 
-                    <table width="100%">  
+                    <table width="100%" class="Mrgtop40">  
+                                          
                         <tr>  
     						<td width="33%">    						    
-    						  Bank details	   				 	 
+    						  '.$contract_block1->content.'	   				 	 
     						</td>
                             <td width="33%">    						    
-    						  Company registration details	   				 	 
+    						  '.$contract_block2->content.'	   				 	 
     						</td>
                             <td width="33%">    						    
-    						  Company contact details	   				 	 
-    						</td>
-    					</tr>                        
-                        <tr>  
-    						<td width="33%">    						    
-    						  '.$bank_details->content.'	   				 	 
-    						</td>
-                            <td width="33%">    						    
-    						  '.$reg_detail->content.'	   				 	 
-    						</td>
-                            <td width="33%">    						    
-    						  '.$contact_detail->content.'	   				 	 
+    						  '.$contract_block3->content.'	   				 	 
     						</td>
     					 </tr>                                                                                        
                     </table> 
