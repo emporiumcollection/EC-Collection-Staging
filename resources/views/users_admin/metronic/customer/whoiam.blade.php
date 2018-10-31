@@ -588,11 +588,21 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                         </div>                                                     
                                                         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
                                                             <br />
-                                                                
+                                                                <?php 
+                                                                    if(isset($hotelcontacts) && count($hotelcontacts)>0){ 
+                                                                ?>  
                                                                         <a href="{{Url::to('user/viewuploadedcontract/')}}/{{$assigned_propid}}" title="View uploaded Contract" target="_blank" class="btn btn-primary" >View uploaded Contract</a>
-                                                                
+                                                                <?php  
+                                                                    }
+                                                                ?>
+                                                                <?php 
+                                                                    if(isset($hotelcontacts) && count($hotelcontacts)>0){ 
+                                                                ?>        
+                                                                        
                                                                         <a href="{{Url::to('user/viewuploadedbrochure/')}}/{{$assigned_propid}}" title="View uploaded Brochure" target="_blank" class="btn btn-primary" >View uploaded Brochure</a>
-                                                                
+                                                                <?php  
+                                                                    }
+                                                                ?>
                                                             
                                                         </div>
                                                         
