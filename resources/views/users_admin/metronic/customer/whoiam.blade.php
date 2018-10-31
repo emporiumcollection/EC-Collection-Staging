@@ -588,22 +588,11 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                         </div>                                                     
                                                         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
                                                             <br />
-                                                                <?php 
-                                                                    //if(isset($hotelcontacts) && count($hotelcontacts)>0){ 
-                                                                ?>        
-                                                                        <!-- <a href="{{$hotelcontacts[0]->imgsrc.$hotelcontacts[0]->file_name}}" title="{{$hotelcontacts[0]->file_display_name}}" target="_blank" class="btn btn-primary" >View uploaded Contract</a> --> 
+                                                                
                                                                         <a href="{{Url::to('user/viewuploadedcontract/')}}/{{$assigned_propid}}" title="View uploaded Contract" target="_blank" class="btn btn-primary" >View uploaded Contract</a>
-                                                                <?php  
-                                                                    //}
-                                                                ?>
-                                                                <?php 
-                                                                    //if(isset($hotelcontacts) && count($hotelcontacts)>0){ 
-                                                                ?>        
-                                                                        <!-- <a href="{{$hotel_broch[0]->imgsrc.$hotel_broch[0]->file_name}}" title="{{$hotel_broch[0]->file_display_name}}" target="_blank" class="btn btn-primary" >View Hotel Brochure</a> -->  
+                                                                
                                                                         <a href="{{Url::to('user/viewuploadedbrochure/')}}/{{$assigned_propid}}" title="View uploaded Brochure" target="_blank" class="btn btn-primary" >View uploaded Brochure</a>
-                                                                <?php  
-                                                                    //}
-                                                                ?>
+                                                                
                                                             
                                                         </div>
                                                         
