@@ -170,6 +170,8 @@ class ContractController extends Controller {
     
     public function download_signup_contract($isview='download'){ 
         $viewPDF = (($isview == 'view')?true:false);
+        $group_id = \Session::get('gid');
+        $default_package = \DB::table('tb_packages')->where('allow_user_groups', $group_id)->where('package_status', 1)->where('package_for', 2)->first();
         $downFileName = 'contract-signup-'.date('d-m-Y').'.pdf';
         $selectFields = array('tb_users_contracts.*','tb_users.first_name','tb_users.last_name','tb_users_contracts.contract_type','tb_users_contracts.commission_type','tb_users_contracts.partial_availability_commission','tb_users_contracts.full_availability_commission');
         $usersContracts = \DB::table('tb_users_contracts')
@@ -228,6 +230,7 @@ class ContractController extends Controller {
                     '{signed_date}'=>$date_signedf,
                     '{valid_until}'=>$valid_until,
                     '{valid_until_year}'=>$valid_until_year,
+                    '{annual_fee}'=>(!empty($default_package) ? $default_package->package_price : '2700'),
                 );
                 foreach($string_array_replace as $key => $value){                    
                     $str_replaced = str_replace($key, $value, $str_desc);
@@ -250,7 +253,7 @@ class ContractController extends Controller {
             $center_content .= '<div class="Mrgtop40 font13">';
 				$center_content .= '<p class="font13">I hereby agree to supply the above for entry into Emporium-Voyage</p>';
                 $center_content .= '<p class="font13">General terms & conditions apply.</p>';
-                $center_content .= '<table>';
+                $center_content .= '<table class="tablewc">';
                     $center_content .= '<tr><td class="strong">Signed by: </td> <td class="underline">'.$contract_full_name.'</td></tr>';    
                     $center_content .= '<tr><td class="strong">Print name: </td> <td class="underline">'.$contract_full_name.'</td></tr>';
                     $center_content .= '<tr><td class="strong">For and on behalf of: </td> <td class="underline">'.$contract_company->content.'</td></tr>';
@@ -258,7 +261,7 @@ class ContractController extends Controller {
                     $center_content .= '<tr><td></td><td><img src="'. \URL::to('sximo/assets/images/checked-box.png').'" width="20px;" height="20px;"><label style="display:inline-block;text-align:left;">I agreed to the Terms stipulated in this contract</label></td></tr>';
                     $center_content .= '<tr><td class="strong">Signed by: </td> <td class="underline">'.$username.'</td></tr>';    
                     $center_content .= '<tr><td class="strong">Print name: </td> <td class="underline">'.$username.'</td></tr>';
-                    $center_content .= '<tr><td class="strong">For and on behalf of: </td> <td class="underline">NA</td></tr>';
+                    $center_content .= '<tr><td class="strong">For and on behalf of: </td> <td class="underline">'.$contract_company->content.'</td></tr>';
                     $center_content .= '<tr><td class="strong">Date signed: </td> <td class="underline">'.$date_signed.'</td></tr>';
                 $center_content .= '</table>';
 			$center_content .= '</div>';
