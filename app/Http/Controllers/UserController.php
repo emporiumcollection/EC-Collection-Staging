@@ -1201,8 +1201,40 @@ class UserController extends Controller {
             
             $prop_id = '';
             $obj_prop = \DB::table('tb_properties')->where('property_name', $hotelinfo_name)->first();
+            $super_admin = \DB::table('tb_users')->where('group_id', 1)->where('active', 1)->get();
+            //print_r($super_admin); die;
             if(!empty($obj_prop)){
-                \DB::table('tb_properties')->where('id', $obj_prop->id)->update(array('assigned_user_id'=>$user->id));
+                $prop_user = \DB::table('tb_properties_users')->where('property_id', $obj_prop->id)->get();
+                if(count($prop_user)>0){
+                    $super_admins = array();
+                    $data_prop_user = array();
+                    foreach($prop_user as $si_usr){
+                        $super_admins[]= $si_usr->user_id;
+                    }
+                    foreach($super_admin as $si_usr){
+                        if(!in_array($si_usr->id, $super_admins)){
+                            $data_prop_user[] = array('property_id'=>$obj_prop->id, 'user_id'=>$si_usr->id);
+                        }
+                    }
+                    //if(empty($prop_user)){
+                        //foreach($prop_user as $si_usr){
+                            if(!in_array($user->id, $super_admins)){
+                                $data_prop_user[] = array('property_id'=>$obj_prop->id, 'user_id'=>$user->id);
+                            }
+                        //}                    
+                    //}
+                    if(count($data_prop_user)>0){
+                        \DB::table('tb_properties_users')->insert($data_prop_user);
+                    }
+                }else{
+                    $data_prop_user = array();
+                    foreach($super_admin as $si_adm){
+                         $data_prop_user[] = array('property_id'=>$obj_prop->id, 'user_id'=>$si_adm->id);
+                    }             
+                    $data_prop_user[] = array('property_id'=>$obj_prop->id, 'user_id'=>$user->id);
+                    \DB::table('tb_properties_users')->insert($data_prop_user);   
+                }
+                //\DB::table('tb_properties')->where('id', $obj_prop->id)->update(array('assigned_user_id'=>$user->id));
                 $prop_id =  $obj_prop->id;
             }else{
                 $hotel_data = array(
@@ -1210,10 +1242,15 @@ class UserController extends Controller {
                     'city' => $request->input('hotelinfo_city'),
                     'country' => $request->input('hotelinfo_country'),
                     'website' => $request->input('hotelinfo_website'),
-                    'assigned_user_id' => $user->id,
-                );   
-                $prop_id = \DB::table('tb_properties')->insertGetId($hotel_data);     
-                        
+                    //'assigned_user_id' => $user->id,
+                ); 
+                $prop_id = \DB::table('tb_properties')->insertGetId($hotel_data);    
+                $data_prop_user = array();
+                foreach($super_admin as $si_adm){
+                     $data_prop_user[] = array('property_id'=>$prop_id, 'user_id'=>$si_adm->id);
+                }             
+                $data_prop_user[] = array('property_id'=>$prop_id, 'user_id'=>$user->id);
+                \DB::table('tb_properties_users')->insert($data_prop_user);                        
             }
             
             $hotelinfo_vat_no = trim($request->input('hotelinfo_vat_no'));

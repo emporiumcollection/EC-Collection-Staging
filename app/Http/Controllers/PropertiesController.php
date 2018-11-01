@@ -330,6 +330,13 @@ class PropertiesController extends Controller {
         $this->data['property_category'] = implode(',',$rest_arr);
         /** get property and package relations end **/
         
+        /** get property and user relations start **/
+        $prop_user_rel = \DB::table('tb_properties_users')->where('property_id', $id)->get();
+        $rest_arr = array();
+        foreach($prop_user_rel as $si_user){ $rest_user_arr[] = $si_user->user_id; }
+        $this->data['property_user'] = implode(',',$rest_user_arr);
+        /** get property and user relations end **/
+        
         $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
         $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.form':'properties.form'; 
         
@@ -368,6 +375,7 @@ class PropertiesController extends Controller {
         $rules['owner_country'] = 'required';
         $rules['owner_phone_primary'] = 'required';
         $rules['owner_email_primary'] = 'required';
+        $rules['assigned_user_id'] = 'required';
         /* if($request->input('owner_contact_person')!='Owner')
           {
           $rules['agent_name'] = 'required';
@@ -417,6 +425,12 @@ class PropertiesController extends Controller {
             $data['commission'] = $request->input('commission');
             $data['about_property'] = $request->input('about_property');
             $data['property_usp'] = $request->input('property_usp');
+            
+            $assigned_users = array();
+            if (is_array($request->input('assigned_user_id'))) {
+                $assigned_users = $request->input('assigned_user_id');
+            }
+            
             $data['detail_section1_title'] = $request->input('detail_section1_title');
             $data['detail_section1_description_box1'] = $request->input('detail_section1_description_box1');
             $data['detail_section1_description_box2'] = $request->input('detail_section1_description_box2');
@@ -1153,7 +1167,20 @@ class PropertiesController extends Controller {
             
             if(count($finproperty_package_relation)){ \DB::table('tb_properties_category_package')->insert($finproperty_package_relation); }
             /** insert property packages relation end **/
-
+            
+            
+            /** insert property packages relation start **/
+            $final_assigned_users = array();            
+            \DB::table('tb_properties_users')->where('property_id', $id)->delete();            
+            if((count($assigned_users) > 0)){                
+                foreach($assigned_users as $si_user){ 
+                    $final_assigned_users[] = array("property_id"=>$id,"user_id"=>$si_user); 
+                }
+            }            
+            if(count($final_assigned_users)){ \DB::table('tb_properties_users')->insert($final_assigned_users); }
+            /** insert property packages relation end **/
+            
+            
             if (!is_null($request->input('apply'))) {
                 $return = 'properties/update/' . $id . '?return=' . self::returnUrl();
             } else {

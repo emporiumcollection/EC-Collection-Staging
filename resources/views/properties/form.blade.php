@@ -166,7 +166,7 @@
                                 <div class="form-group  " >
                                     <label for="Assign User" class=" control-label col-md-4 text-left"> Assign User <span class="asterix"> * </span></label>
                                     <div class="col-md-6">
-                                        <select name='assigned_user_id' rows='5' id='assigned_user_id' class='select2 ' required  ></select> 
+                                        <select name='assigned_user_id[]' rows='5' id='assigned_user_id' class='select2 ' required  multiple="multiple" ></select> 
                                     </div> 
                                     <div class="col-md-2">
 
@@ -2827,7 +2827,7 @@
             });
 
             $("#assigned_user_id").jCombo("{{ URL::to('properties/comboselect?filter=tb_users:id:first_name|last_name') }}",
-                    {selected_value: '{{ $row["assigned_user_id"] }}'});
+                    {selected_value: '{{ $property_user }}'});
 
 
             $('.removeCurrentFiles').on('click', function () {
