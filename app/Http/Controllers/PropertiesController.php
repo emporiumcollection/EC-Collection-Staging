@@ -332,7 +332,7 @@ class PropertiesController extends Controller {
         
         /** get property and user relations start **/
         $prop_user_rel = \DB::table('tb_properties_users')->where('property_id', $id)->get();
-        $rest_arr = array();
+        $rest_user_arr = array();
         foreach($prop_user_rel as $si_user){ $rest_user_arr[] = $si_user->user_id; }
         $this->data['property_user'] = implode(',',$rest_user_arr);
         /** get property and user relations end **/
