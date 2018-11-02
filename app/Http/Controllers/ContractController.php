@@ -173,6 +173,13 @@ class ContractController extends Controller {
         $group_id = \Session::get('gid');
         $default_package = \DB::table('tb_packages')->where('allow_user_groups', $group_id)->where('package_status', 1)->where('package_for', 2)->first();
         $downFileName = 'contract-signup-'.date('d-m-Y').'.pdf';
+        
+        $obj_properties = \DB::table("tb_properties_users")->join('tb_properties', 'tb_properties_users.property_id', '=', 'tb_properties.id')->where('tb_properties_users.user_id', \Auth::user()->id)->first();
+        $property_name = '';
+        if(!empty($obj_properties)){
+            $property_name = $obj_properties->property_name;
+        }
+        
         $selectFields = array('tb_users_contracts.*','tb_users.first_name','tb_users.last_name','tb_users_contracts.contract_type','tb_users_contracts.commission_type','tb_users_contracts.partial_availability_commission','tb_users_contracts.full_availability_commission');
         $usersContracts = \DB::table('tb_users_contracts')
                             ->select($selectFields)
@@ -250,13 +257,13 @@ class ContractController extends Controller {
         }
         
         if((strlen($username) > 0) && (strlen($date_signed) > 0)){
-            $center_content .= '<div class="Mrgtop40 font13">';
+            $center_content .= '<div class="Mrgtop40 font13 tb_page_break">';
 				$center_content .= '<p class="font13">I hereby agree to supply the above for entry into Emporium-Voyage</p>';
                 $center_content .= '<p class="font13">General terms & conditions apply.</p>';
                 $center_content .= '<table class="tablewc">';
                     $center_content .= '<tr><td class="strong">Signed by: </td> <td class="underline">'.$contract_full_name.'</td></tr>';    
                     $center_content .= '<tr><td class="strong">Print name: </td> <td class="underline">'.$contract_full_name.'</td></tr>';
-                    $center_content .= '<tr><td class="strong">For and on behalf of: </td> <td class="underline">'.$contract_company->content.'</td></tr>';
+                    $center_content .= '<tr><td class="strong">For and on behalf of: </td> <td class="underline">'.$property_name.'</td></tr>';
                     $center_content .= '<tr><td class="strong">Date signed: </td> <td class="underline">'.$date_signed.'</td></tr>';
                     $center_content .= '<tr><td></td><td><img src="'. \URL::to('sximo/assets/images/checked-box.png').'" width="20px;" height="20px;"><label style="display:inline-block;text-align:left;">I agreed to the Terms stipulated in this contract</label></td></tr>';
                     $center_content .= '<tr><td class="strong">Signed by: </td> <td class="underline">'.$username.'</td></tr>';    
@@ -269,16 +276,16 @@ class ContractController extends Controller {
         
         $pdfHeader = \CommonHelper::getcontractPDFHeader($center_content);
         $pdf = \App::make('dompdf.wrapper');
-        $pdf->setPaper('A4');
-        $pdf->loadHTML($pdfHeader);
-        $pdf->output();
-        $dom_pdf = $pdf->getDomPDF();
+        @$pdf->setPaper('A4');
+        @$pdf->loadHTML($pdfHeader);
+        @$pdf->output();
+        @$dom_pdf = $pdf->getDomPDF();
         
-        $canvas = $dom_pdf ->get_canvas();
+        $canvas = @$dom_pdf ->get_canvas();
         $y = $canvas->get_height() - 50;
         $canvas->page_text(30, $y, 'Page {PAGE_NUM} of {PAGE_COUNT} - Accepted', null, 10, array(0, 0, 0));
         //return $pdf->stream();
-        if($viewPDF === true){ return $pdf->stream(); }else{ return $pdf->download($downFileName); }        
+        if($viewPDF === true){ return @$pdf->stream(); }else{ return @$pdf->download($downFileName); }        
         //echo "<pre>".$pdfHeader;
     }
     

@@ -1201,8 +1201,8 @@ return Redirect::to('customer/profile')->with('message', \SiteHelpers::alert('er
         $this->data['extra'] = $extra;
         //print_r($extra); die;
         $this->data['user'] = $user;
-        
-        $property_assigned = \DB::table('tb_properties')->where('assigned_user_id', $user->id)->first();
+        $property_assigned = \DB::table("tb_properties_users")->join('tb_properties', 'tb_properties_users.property_id', '=', 'tb_properties.id')->where('tb_properties_users.user_id', \Auth::user()->id)->first();
+        //$property_assigned = \DB::table('tb_properties')->where('assigned_user_id', $user->id)->first();
         
         $propid = '';
         if(!empty($property_assigned)){

@@ -346,7 +346,14 @@
     														<input name="hotelinfo_website" type="text" id="hotelinfo_website" class="form-control m-input" value="<?php echo isset($property_assigned->website) ? $property_assigned->website : '' ?>" />  
     													</div>
     												</div>
-                                                    
+                                                   
+                                                </div>
+                                                <div class="m-form__section">
+                                                   <div class="m-form__heading margin-top">
+    													<h3 class="m-form__heading-title">
+    														Company Registration
+    													</h3>
+									               </div> 
                                                    <div class="form-group m-form__group row">
     													<label class="col-xl-3 col-lg-3 col-form-label">
     														European
@@ -535,15 +542,23 @@ Select the Commission Terms you wish to agree with.                             
                                                         
                                                         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12" id="dv_contract_view_download" @if($new_contract_ava) style="display: none;" @else style="display: '';" @endif >
                                                             <div class="form-group m-form__group row">
-                                                                <label class="col-xl-3 col-lg-3 col-form-label">
+                                                                <label class="col-xl-2 col-lg-2 col-form-label">
                                                                     Contracts
                                                                 </label>
                                                                 <div class="col-xl-9 col-lg-9">                                                
-                                                                    <a href="{{ URL::to('user/contractflipbook')}}" title="View Contract" class="m-btn btn btn-primary" target="_blank"><i class="la la-eye"></i></a>
-                                                                    <a href="{{ URL::to('signup-contract/download')}}" title="Download contract to proceed" class="m-btn btn btn-success" target="_blank" id="btn_download"><i class="la la-file-pdf-o"></i></a>
+                                                                    <a href="{{ URL::to('user/contractflipbook')}}" title="View Contract" class="m-btn btn btn-primary" target="_blank"><i class="la la-eye"></i>View Contract</a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group m-form__group row">
+                                                                <label class="col-xl-2 col-lg-2 col-form-label">
+                                                                    
+                                                                </label>
+                                                                <div class="col-xl-9 col-lg-9">                                                
+                                                                    
+                                                                    <a href="{{ URL::to('signup-contract/download')}}" title="Download contract to proceed" class="m-btn btn btn-success" target="_blank" id="btn_download"><i class="la la-file-pdf-o"></i>Download Contract</a>
                                                                     <input type="hidden" name="hd_download" id="hd_download" value="0" />
                                                                 </div>
-                                                            </div>       
+                                                            </div>              
                                                         </div>
                                                         
                                                     </div>
@@ -636,15 +651,15 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                 <div class="m-portlet__body" style="width:100%;">
                                                                     <ul class="nav nav-tabs" role="tablist">
                                                     					<li class="nav-item"> 
-                                                                            <a class="nav-link active" href="#sales_marketing" data-toggle="tab"> 
-                                                                                Sales & Marketing 
-                                                                            </a>
-                                                                        </li>
-                                                                        <li class="nav-item"> 
-                                                                            <a class="nav-link" href="#reservation_distribution" data-toggle="tab"> 
+                                                                            <a class="nav-link active" href="#reservation_distribution" data-toggle="tab"> 
                                                                                 Reservation & Distribution 
                                                                             </a>
                                                                         </li>
+                                                                        <li class="nav-item"> 
+                                                                            <a class="nav-link" href="#sales_marketing" data-toggle="tab"> 
+                                                                                Sales & Marketing 
+                                                                            </a>
+                                                                        </li>                                                                        
                                                                         <li class="nav-item"> 
                                                                             <a class="nav-link" href="#advertising" data-toggle="tab"> 
                                                                                 Advertising
@@ -652,8 +667,80 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                         </li>			
                                                     				</ul>
                                                     				<div class="tab-content">
-                                                    					
-                                                                            <div class="tab-pane active" id="sales_marketing">
+                                                    					    <div class="tab-pane  active" id="reservation_distribution">
+                                                                                <!--begin::Section-->
+                                                            					<div class="m-accordion m-accordion--default m-accordion--solid" id="m_accordion_3_reservation_distribution" role="tablist">
+                                                            						<!--begin::Item-->
+                                                                                    {{--*/ $k=1; $tottyp = count($packages); /*--}}
+                                                                                    @foreach($packages as $key=>$package)
+                                                                                    @if($package->package_category=="Reservation_Distribution")
+                                                            						<div class="m-accordion__item">
+                                                            							<div class="m-accordion__item-head collapsed"  role="tab" id="m_accordion_3_item_reservation_distribution_{{ $k }}_head" data-toggle="collapse" href="#m_accordion_3_item_reservation_distribution_{{ $k }}_body" aria-expanded="    false">
+                                                            								<span class="m-accordion__item-icon">
+                                                            									<i class="fa flaticon-user-ok"></i>
+                                                            								</span>
+                                                            								<span class="m-accordion__item-title">
+                                                            									{{$package->package_title}} Price: {!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($package->package_price,2) }}
+                                                            								</span>
+                                                            								<span class="m-accordion__item-mode"></span>
+                                                            							</div>
+                                                            							<div class="m-accordion__item-body collapse" id="m_accordion_3_item_reservation_distribution_{{ $k }}_body" class=" " role="tabpanel" aria-labelledby="m_accordion_3_item_reservation_distribution_{{ $k }}_head" data-parent="#m_accordion_3_reservation_distribution">
+                                                            								<div class="m-accordion__item-content">
+                                                                                            <div class="row">
+                                                            									<div class="col-sm-6 col-md-6 col-lg-6 pull-left">
+                                                                                                    <img class="img-responsive object-fit-size" src="{{URL::to('uploads/packages/'.$package->package_image)}}" alt="{{$package->package_image}}" style="width: 100%;" >
+                                                                                                </div>
+                                                                                                <div  class="col-sm-6 col-md-6 col-lg-6 pull-right">
+                                                                                                    <div class="row">
+                                                                                                        <div  class="col-sm-12 col-md-12 col-lg-12 border-2px">
+                                                                                                            <p>Package Duration :: {{$package->package_duration}} {{$package->package_duration_type}}</p>  
+                                                                                                            <p>Package Details: {!! nl2br($package->package_description) !!}</p>
+                                                                                                            <h4>Package Modules Include:</h4>
+                                                                                                            {{--*/  $modulesOffered = DB::table('tb_module')->whereIn('module_id', explode(',',$package->package_modules))->get();/*--}}
+                                                                                                            {{--*/ $mod_arr = array(); /*--}}  
+                                                                                                            @foreach ($modulesOffered as $moduleRow)
+                                                                                                                {{--*/ $mod_arr[] = $moduleRow->module_name; /*--}}                                 
+                                                                                                                
+                                                                                                            @endforeach  
+                                                                                                            {{--*/ $str_module = implode(', ', $mod_arr); echo $str_module; /*--}}
+                                                                                                            <div class="row">
+                                                                                                                <div class="col-sm-12 col-md-12 col-lg-12 top-margin-20">
+                                                                                                                    <h6>{!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($package->package_price,2) }} </h6>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>                
+                                                                                                      
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            @if(CNF_SUBTRACT_FEE)
+                                                                                            <div class="row" style="margin-top: 10px;">
+                                                                                                
+                                                                                                <div class="col-xl-8 col-sm-8 col-md-8 col-lg-8">
+                                                                                                    <div class="m-checkbox-inline">
+                                                                        								<label class="m-checkbox m-checkbox--solid m-checkbox--brand">
+                                                                        									<input type="checkbox" id="fee_subtract_on_booking_{{$package->id}}" name="fee_subtract_on_booking_{{$package->id}}" value="yes">      								
+                                                                        									Subtract this fee from my first booking commission. 
+                                                                                                            <span></span>
+                                                                        								</label>
+                                                                        							</div>
+                                                                                                </div>
+                                                                                                <div class="col-xl-4 col-sm-4 col-md-4 col-lg-4 m--align-right">
+                                                                                                    <a href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->package_price }});" class="btn btn-success">Add to cart</a>
+                                                                                                </div>
+                                                                                           
+                                                                                            </div> 
+                                                                                            @endif   
+                                                            								</div>
+                                                            							</div>
+                                                            						</div>
+                                                                                    @endif
+                                                                                    {{--*/ $k++; /*--}}
+                                                                                    @endforeach
+                                                            						<!--end::Item-->     
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="tab-pane" id="sales_marketing">
                                                                                 <!--begin::Section-->
                                                             					<div class="m-accordion m-accordion--default m-accordion--solid" id="m_accordion_3_sales_marketing" role="tablist">
                                                             						<!--begin::Item-->
@@ -751,79 +838,7 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                             </div>
                                                                             
                                                                             
-                                                                            <div class="tab-pane" id="reservation_distribution">
-                                                                                <!--begin::Section-->
-                                                            					<div class="m-accordion m-accordion--default m-accordion--solid" id="m_accordion_3_reservation_distribution" role="tablist">
-                                                            						<!--begin::Item-->
-                                                                                    {{--*/ $k=1; $tottyp = count($packages); /*--}}
-                                                                                    @foreach($packages as $key=>$package)
-                                                                                    @if($package->package_category=="Reservation_Distribution")
-                                                            						<div class="m-accordion__item">
-                                                            							<div class="m-accordion__item-head collapsed"  role="tab" id="m_accordion_3_item_reservation_distribution_{{ $k }}_head" data-toggle="collapse" href="#m_accordion_3_item_reservation_distribution_{{ $k }}_body" aria-expanded="    false">
-                                                            								<span class="m-accordion__item-icon">
-                                                            									<i class="fa flaticon-user-ok"></i>
-                                                            								</span>
-                                                            								<span class="m-accordion__item-title">
-                                                            									{{$package->package_title}} Price: {!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($package->package_price,2) }}
-                                                            								</span>
-                                                            								<span class="m-accordion__item-mode"></span>
-                                                            							</div>
-                                                            							<div class="m-accordion__item-body collapse" id="m_accordion_3_item_reservation_distribution_{{ $k }}_body" class=" " role="tabpanel" aria-labelledby="m_accordion_3_item_reservation_distribution_{{ $k }}_head" data-parent="#m_accordion_3_reservation_distribution">
-                                                            								<div class="m-accordion__item-content">
-                                                                                            <div class="row">
-                                                            									<div class="col-sm-6 col-md-6 col-lg-6 pull-left">
-                                                                                                    <img class="img-responsive object-fit-size" src="{{URL::to('uploads/packages/'.$package->package_image)}}" alt="{{$package->package_image}}" style="width: 100%;" >
-                                                                                                </div>
-                                                                                                <div  class="col-sm-6 col-md-6 col-lg-6 pull-right">
-                                                                                                    <div class="row">
-                                                                                                        <div  class="col-sm-12 col-md-12 col-lg-12 border-2px">
-                                                                                                            <p>Package Duration :: {{$package->package_duration}} {{$package->package_duration_type}}</p>  
-                                                                                                            <p>Package Details: {!! nl2br($package->package_description) !!}</p>
-                                                                                                            <h4>Package Modules Include:</h4>
-                                                                                                            {{--*/  $modulesOffered = DB::table('tb_module')->whereIn('module_id', explode(',',$package->package_modules))->get();/*--}}
-                                                                                                            {{--*/ $mod_arr = array(); /*--}}  
-                                                                                                            @foreach ($modulesOffered as $moduleRow)
-                                                                                                                {{--*/ $mod_arr[] = $moduleRow->module_name; /*--}}                                 
-                                                                                                                
-                                                                                                            @endforeach  
-                                                                                                            {{--*/ $str_module = implode(', ', $mod_arr); echo $str_module; /*--}}
-                                                                                                            <div class="row">
-                                                                                                                <div class="col-sm-12 col-md-12 col-lg-12 top-margin-20">
-                                                                                                                    <h6>{!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($package->package_price,2) }} </h6>
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>                
-                                                                                                      
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            @if(CNF_SUBTRACT_FEE)
-                                                                                            <div class="row" style="margin-top: 10px;">
-                                                                                                
-                                                                                                <div class="col-xl-8 col-sm-8 col-md-8 col-lg-8">
-                                                                                                    <div class="m-checkbox-inline">
-                                                                        								<label class="m-checkbox m-checkbox--solid m-checkbox--brand">
-                                                                        									<input type="checkbox" id="fee_subtract_on_booking_{{$package->id}}" name="fee_subtract_on_booking_{{$package->id}}" value="yes">      								
-                                                                        									Subtract this fee from my first booking commission. 
-                                                                                                            <span></span>
-                                                                        								</label>
-                                                                        							</div>
-                                                                                                </div>
-                                                                                                <div class="col-xl-4 col-sm-4 col-md-4 col-lg-4 m--align-right">
-                                                                                                    <a href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->package_price }});" class="btn btn-success">Add to cart</a>
-                                                                                                </div>
-                                                                                           
-                                                                                            </div> 
-                                                                                            @endif   
-                                                            								</div>
-                                                            							</div>
-                                                            						</div>
-                                                                                    @endif
-                                                                                    {{--*/ $k++; /*--}}
-                                                                                    @endforeach
-                                                            						<!--end::Item-->     
-                                                                                </div>
-                                                                            </div>
+                                                                            
                                                                             
                                                                             <div class="tab-pane" id="advertising">
                                                                                 <!--begin::Section-->
