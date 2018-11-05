@@ -141,11 +141,13 @@
 					$url.='?arrive='.Request::input("arrive")."&departure=".Request::input("departure");
 				}
                 $femotional_gallery = array();
-                if(($frw == 1) && (count($emotional_gallery) > 0)){
-                    for($i = 0; $i<9; $i++){
-                        if(count($emotional_gallery) > 0){ $femotional_gallery[] = array_shift($emotional_gallery); }
+                if(isset($emotional_gallery)){                
+                    if(($frw == 1) && (count($emotional_gallery) > 0)){
+                        for($i = 0; $i<9; $i++){
+                            if(count($emotional_gallery) > 0){ $femotional_gallery[] = array_shift($emotional_gallery); }
+                        }
                     }
-                }
+                }                
                 $frw++;
 			?> 
 
