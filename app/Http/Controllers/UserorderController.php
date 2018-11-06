@@ -444,11 +444,11 @@ class UserorderController extends Controller {
 										<td>
 
 
-										<p>'. $companydet->company_address .' . '.$companydet->company_address2 .'
+										<p>'. $companydet->company_address .'  '.$companydet->company_address2 .'
 
 										<br/>'.$companydet->company_city .'<br/>
 
-										'. $companydet->company_postal_code.' . '.$companydet->company_country .'
+										'. ($companydet->company_postal_code > 0) ? $companydet->company_postal_code : '' .'  '.$companydet->company_country .'
 										</p>
 
 										</td>
