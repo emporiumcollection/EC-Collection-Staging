@@ -359,6 +359,8 @@ Route::group(['middleware' => 'auth'], function()
     
     Route::post('package_skip', 'CustomerController@skipPackage'); 
     
+    Route::post('hotel/subtractfee', 'Frontend\HotelMembershipController@subtractfee'); 
+    
 });
 
 Route::post('hotel_membership', 'Frontend\HotelMembershipController@hotelMembershipSignupSave');
@@ -570,6 +572,9 @@ Route::post('pressseletedfileslowPdf', 'ContainerController@PressDownloadlowPdfS
 Route::post('pressseletedfileshighPdf', 'ContainerController@PressDownloadhighPdfSelected');
 
 Route::get('hotel/get_cart', 'Frontend\HotelMembershipController@getwizardCart');
+
+Route::post('hotel/update_cart', 'Frontend\HotelMembershipController@postwizardCart');
+
 Route::get('hotel/get_checkout', 'Frontend\HotelMembershipController@getwizardCheckout');
 
 Route::get('hotel/add_package_to_cart_wizard', 'Frontend\HotelMembershipController@addToCartWizardAjax');

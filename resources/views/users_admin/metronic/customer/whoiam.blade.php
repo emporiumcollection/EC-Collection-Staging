@@ -353,7 +353,7 @@
     													<h3 class="m-form__heading-title">
     														Company Registration
     													</h3>
-									               </div> 
+									               </div>                                                                                                                                                     
                                                    <div class="form-group m-form__group row">
     													<label class="col-xl-3 col-lg-3 col-form-label">
     														European
@@ -671,6 +671,13 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                                 <!--begin::Section-->
                                                             					<div class="m-accordion m-accordion--default m-accordion--solid" id="m_accordion_3_reservation_distribution" role="tablist">
                                                             						<!--begin::Item-->
+                                                                                    <?php 
+                                                                                        $cart_session_arr = array();
+                                                                                        $cart_session = (\Session::get('hotel_cart'));
+                                                                                        if(!empty($cart_session)){
+                                                                                            $cart_session_arr = $cart_session;
+                                                                                        } 
+                                                                                    ?>
                                                                                     {{--*/ $k=1; $tottyp = count($packages); /*--}}
                                                                                     @foreach($packages as $key=>$package)
                                                                                     @if($package->package_category=="Reservation_Distribution")
@@ -719,16 +726,30 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                                                 <div class="col-xl-8 col-sm-8 col-md-8 col-lg-8">
                                                                                                     <div class="m-checkbox-inline">
                                                                         								<label class="m-checkbox m-checkbox--solid m-checkbox--brand">
-                                                                        									<input type="checkbox" id="fee_subtract_on_booking_{{$package->id}}" name="fee_subtract_on_booking_{{$package->id}}" value="yes">      								
+                                                                                                        <?php $arr_index = $package->id."_hotel";
+                                                                                                            $checked = '';
+                                                                                                            //print_r($cart_session_arr);
+                                                                                                            if(array_key_exists($arr_index, $cart_session_arr)){
+                                                                                                                $ind_arr = $cart_session_arr[$arr_index];
+                                                                                                                //print_r($ind_arr);
+                                                                                                                if(!empty($ind_arr)){
+                                                                                                                     if($ind_arr['package']['fee']=='yes'){
+                                                                                                                        $checked = 'checked="checked"';
+                                                                                                                     }   
+                                                                                                                }
+                                                                                                            }
+                                                                                                        ?>
+                                                                        									<input type="checkbox" id="fee_subtract_on_booking_{{$package->id}}" name="fee_subtract_on_booking_{{$package->id}}" value="yes" data-id="{{$package->id}}" class="subtract_checkbox" {{$checked}}>      								
                                                                         									Subtract this fee from my first booking commission. 
                                                                                                             <span></span>
                                                                         								</label>
                                                                         							</div>
                                                                                                 </div>
+                                                                                                @if($package->package_for==0)                                                                                                
                                                                                                 <div class="col-xl-4 col-sm-4 col-md-4 col-lg-4 m--align-right">
                                                                                                     <a href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->package_price }});" class="btn btn-success">Add to cart</a>
                                                                                                 </div>
-                                                                                           
+                                                                                                @endif
                                                                                             </div> 
                                                                                             @endif   
                                                             								</div>
@@ -815,16 +836,30 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                                                     <div class="col-xl-8 col-sm-8 col-md-8 col-lg-8">
                                                                                                         <div class="m-checkbox-inline">
                                                                             								<label class="m-checkbox m-checkbox--solid m-checkbox--brand">
-                                                                            									<input type="checkbox" id="fee_subtract_on_booking_{{$package->id}}" name="fee_subtract_on_booking_{{$package->id}}" value="yes">      								
+                                                                                                            <?php $arr_index = $package->id."_hotel";
+                                                                                                                $checked = '';
+                                                                                                                //print_r($cart_session_arr);
+                                                                                                                if(array_key_exists($arr_index, $cart_session_arr)){
+                                                                                                                    $ind_arr = $cart_session_arr[$arr_index];
+                                                                                                                    //print_r($ind_arr);
+                                                                                                                    if(!empty($ind_arr)){
+                                                                                                                         if($ind_arr['package']['fee']=='yes'){
+                                                                                                                            $checked = 'checked="checked"';
+                                                                                                                         }   
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            ?>
+                                                                            									<input type="checkbox" id="fee_subtract_on_booking_{{$package->id}}" name="fee_subtract_on_booking_{{$package->id}}" value="yes" data-id="{{$package->id}}" class="subtract_checkbox" {{$checked}}>      								
                                                                             									Subtract this fee from my first booking commission. 
                                                                                                                 <span></span>
                                                                             								</label>
                                                                             							</div>
                                                                                                     </div>
+                                                                                                    @if($package->package_for==0)                                                                                                    
                                                                                                     <div class="col-xl-4 col-sm-4 col-md-4 col-lg-4 m--align-right">
                                                                                                         <a href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->package_price }});" class="btn btn-success">Add to cart</a>
                                                                                                     </div>
-                                                                                               
+                                                                                                    @endif
                                                                                                 </div>
                                                                                                 @endif
                                                             								</div>
@@ -893,16 +928,30 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                                                     <div class="col-xl-8 col-sm-8 col-md-8 col-lg-8">
                                                                                                         <div class="m-checkbox-inline">
                                                                             								<label class="m-checkbox m-checkbox--solid m-checkbox--brand">
-                                                                            									<input type="checkbox" id="fee_subtract_on_booking_{{$package->id}}" name="fee_subtract_on_booking_{{$package->id}}" value="yes">      								
+                                                                                                            <?php $arr_index = $package->id."_hotel";
+                                                                                                                $checked = '';
+                                                                                                                //print_r($cart_session_arr);
+                                                                                                                if(array_key_exists($arr_index, $cart_session_arr)){
+                                                                                                                    $ind_arr = $cart_session_arr[$arr_index];
+                                                                                                                    //print_r($ind_arr);
+                                                                                                                    if(!empty($ind_arr)){
+                                                                                                                         if($ind_arr['package']['fee']=='yes'){
+                                                                                                                            $checked = 'checked="checked"';
+                                                                                                                         }   
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            ?>
+                                                                            									<input type="checkbox" id="fee_subtract_on_booking_{{$package->id}}" name="fee_subtract_on_booking_{{$package->id}}" value="yes" data-id="{{$package->id}}" class="subtract_checkbox" {{$checked}}>      								
                                                                             									Subtract this fee from my first booking commission. 
                                                                                                                 <span></span>
                                                                             								</label>
                                                                             							</div>
                                                                                                     </div>
+                                                                                                    @if($package->package_for==0)                                                                                                    
                                                                                                     <div class="col-xl-4 col-sm-4 col-md-4 col-lg-4 m--align-right">
                                                                                                         <a href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->package_price }});" class="btn btn-success">Add to cart</a>
                                                                                                     </div>
-                                                                                               
+                                                                                                    @endif
                                                                                                 </div>
                                                                                                 @endif
                                                             								</div>
@@ -1427,10 +1476,46 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
             
             $("#continue_btn").click(function(e){
                 e.preventDefault();
+                
+                /*var subtract_ids = new Array();                                
+                $("input.subtract_checkbox").each(function(){ 
+                    $pkg_val= $(this).attr('data-id');                                        
+                    if($(this).is(":checked")){ 
+                        subtract_ids.push($pkg_val);
+                    }        
+                });                                
+                $.ajax({
+                    url:base_url+'/hotel/update_cart', 
+                    type:'POST',    
+                    dataType:'json',
+                    data:{"subtract_id":subtract_ids},
+                    success:function(response){ 
+                        if(response.success){
+                            console.log(response.data);
+                            $.ajax({
+                                url:base_url+'/hotel/get_cart', 
+                                type:'get',    
+                               
+                                success:function(response){ 
+                                    console.log("hello");
+                                    $("#cart_row").css('display', '');
+                                    $("#cart_row").html('');
+                                    $("#dv_pkg").css('display', 'none');
+                                    $("#cart_row").html(response);   
+                                    
+                                    
+                                }
+                            });
+                        }
+                    }
+                });*/
+                                              
                 $.ajax({
                     url:base_url+'/hotel/get_cart', 
-                    type:'get',
+                    type:'get',    
+                   
                     success:function(response){ 
+                        
                         $("#cart_row").css('display', '');
                         $("#cart_row").html('');
                         $("#dv_pkg").css('display', 'none');
@@ -1456,6 +1541,25 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                     }
                 }); 
             });
+            
+            $(document).on('click','.subtract_checkbox',function(e){
+                var pkgid = $(this).attr('data-id'); 
+                var fees = '';           
+                if($(this).is(":checked")){ 
+                    var fees = 'yes';   
+                }
+                $.ajax({
+                    url:base_url+'/hotel/subtractfee', 
+                    type:'POST',    
+                    dataType:'json',
+                    data:{"pkgid":pkgid, "fees":fees},
+                    success:function(response){ 
+                        
+                    }
+                });
+            });
+            
+            
             $(document).on('click','#choose_pkg_btn',function(e){
                 e.preventDefault();
                 $("#dv_pkg").css('display', '');
@@ -1488,6 +1592,7 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                     }
                 });
             });
+                                                        
             
             $("#package-skip").click(function(e){ 
                 e.preventDefault();                        

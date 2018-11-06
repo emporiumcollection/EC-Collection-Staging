@@ -1066,7 +1066,7 @@ $allowedCurrenciesinProject=array("OMR","BHD","KWD","USD","CHF","EUR","KYD","GIP
         $html = '<style> 
 						.main { margin:2px; width:100%; font-family: Poppins, sans-serif; } 
 						.page-break { page-break-after: always; } 
-						.tb_page_break{ page-break-before: always; page-break-after: always; }
+						.tb_page_break{ page-break-before: always; }
 						.header{ position: fixed; width: 100%; top: 0px; height:250px; background: #fff;} 
                         .footer{ position: fixed; bottom: 0px; left: 0px; right: 0px; height: 100px; background: #fff; }
 						.footer .page-number:after { content: counter(page); }

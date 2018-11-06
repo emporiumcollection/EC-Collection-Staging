@@ -261,13 +261,13 @@ class ContractController extends Controller {
 				$center_content .= '<p class="font13">I hereby agree to supply the above for entry into Emporium-Voyage</p>';
                 $center_content .= '<p class="font13">General terms & conditions apply.</p>';
                 $center_content .= '<table class="tablewc">';
-                    $center_content .= '<tr><td class="strong">Signed by: </td> <td class="underline">'.$contract_full_name.'</td></tr>';    
-                    $center_content .= '<tr><td class="strong">Print name: </td> <td class="underline">'.$contract_full_name.'</td></tr>';
+                    $center_content .= '<tr><td class="strong">Signed by: </td> <td class="underline">'.$username.'</td></tr>';    
+                    $center_content .= '<tr><td class="strong">Print name: </td> <td class="underline">'.$username.'</td></tr>';
                     $center_content .= '<tr><td class="strong">For and on behalf of: </td> <td class="underline">'.$property_name.'</td></tr>';
                     $center_content .= '<tr><td class="strong">Date signed: </td> <td class="underline">'.$date_signed.'</td></tr>';
                     $center_content .= '<tr><td></td><td><img src="'. \URL::to('sximo/assets/images/checked-box.png').'" width="20px;" height="20px;"><label style="display:inline-block;text-align:left;">I agreed to the Terms stipulated in this contract</label></td></tr>';
-                    $center_content .= '<tr><td class="strong">Signed by: </td> <td class="underline">'.$username.'</td></tr>';    
-                    $center_content .= '<tr><td class="strong">Print name: </td> <td class="underline">'.$username.'</td></tr>';
+                    $center_content .= '<tr><td class="strong">Signed by: </td> <td class="underline">'.$contract_full_name.'</td></tr>';    
+                    $center_content .= '<tr><td class="strong">Print name: </td> <td class="underline">'.$contract_full_name.'</td></tr>';
                     $center_content .= '<tr><td class="strong">For and on behalf of: </td> <td class="underline">'.$contract_company->content.'</td></tr>';
                     $center_content .= '<tr><td class="strong">Date signed: </td> <td class="underline">'.$date_signed.'</td></tr>';
                 $center_content .= '</table>';

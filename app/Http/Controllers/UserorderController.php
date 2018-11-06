@@ -284,20 +284,35 @@ class UserorderController extends Controller {
 				$invoice_email_id = \DB::table('tb_settings')->where('key_value', 'invoice_email_id')->first();
 				$invoice_address = \DB::table('tb_settings')->where('key_value', 'invoice_address')->first();
 				$invoice_num = \DB::table('tb_settings')->where('key_value', 'default_invoice_num')->first();
+                
+                $invoice_total_footer_message = \DB::table('tb_settings')->where('key_value', 'invoice_total_footer_message')->first();
+                $invoice_footer_message = \DB::table('tb_settings')->where('key_value', 'invoice_footer_message')->first();
 				
 				$userInfo = \DB::table('tb_users')->where('id', $order_item[0]->user_id)->first();
 				$companydet = \DB::table('tb_user_company_details')->where('user_id', $order_item[0]->user_id )->first();
 				
+                $cont_logo = '';  
+                $contract_logo = \DB::table('tb_settings')->where('key_value', 'contract_logo')->first();      
+                if($contract_logo->content!=''){
+                    if(file_exists(public_path().'/sximo/images/'.$contract_logo->content)){
+                        $cont_logo = \URL::to('/sximo/images/'.$contract_logo->content);
+                    }else{
+                        $cont_logo =  \URL::to('sximo/assets/images/logo-design_1.png');
+                    }     
+                }else{
+                        $cont_logo =  \URL::to('sximo/assets/images/logo-design_1.png');
+                }  
+                
 				$html = '<style> 
-						.main { margin:2px; width:100%; font-family: arial, sans-serif; } 
+						.main { margin:2px; width:100%; font-family: arial, sans-serif; color: #252525; } 
 						.page-break { page-break-after: always; } 
 						
-						.header{ width: 100%; position:fixed; top: -35px; text-align:center; height:200px;} 
-						.footer {width: 100%; position:fixed;} 
+						.header{ width: 100%; position:fixed; top: -35px; text-align:center; height:100px;} 
+						.footer {width: 100%; position:fixed; color: #252525; padding:20px 40px;} 
 						.pagenum:after {content: counter(page);} 
 						.imgBox { text-align:center; width:400px; } 
 						.nro { text-align:center; font-size:12px; } 
-						.header img { width:250px; height: 50px; } 
+						.header img { height: 100px; } 
 						.Mrgtop80 {margin-top:80px;} 
 						.Mrgtop40 {margin-top:40px;}
 						.Mrgtop20 {margin-top:10px;} 
@@ -313,11 +328,13 @@ class UserorderController extends Controller {
 						.alnRight{text-align:right;} 
 						.alnCenter{text-align:center;} 
 						td{font-size:12px; padding:1px;} 
-						th{background-color:#999; color:#000000; text-align:left; padding:1px; font-size:14px;}
-						.totl{background-color:#999; color:#000000; font-weight:bold;} 
+						th{background-color:#efefef; color:#252525; text-align:left; padding:1px; font-size:14px;}
+                        .th-details{ padding:15px; }
+						.totl{background-color:#efefef; color:#252525; font-weight:bold;} 
 						h2{padding-bottom:0px; margin-bottom:0px;} 
 						.valin{ vertical-align:top;} 
 						.valinbt{ vertical-align:bottom; text-align:right;}
+                        .bg-color{ background-color: #efefef; }
 						.page {
 						  background: white;
 						  display: block;
@@ -340,14 +357,14 @@ class UserorderController extends Controller {
 			
 					
 				<div class="main">
-				  <div class="header">
+				  <div class="header bg-color">
 
 					  <table width="100%">
 					 
 						 <tr>
 							<td class="title" align="center">
 							    
-								<center><img src="'. \URL::to('sximo/assets/images/logo-design_1.png').'" width="250px;" height="50px;"></center>
+								<center><img src="'.$cont_logo.'" height="100px;"></center>
 								 
 							</td>
 						 </tr>
@@ -362,15 +379,11 @@ class UserorderController extends Controller {
 						
 				  </div>
 				  <div style="clear:both;"> &nbsp;</div>
-					<div class="footer">
+					<div class="footer bg-color">
 
 							<table width="100%">
-							<tr>
-								<td colspan="3">
-										<hr  style="border-top:1px solid #000;"/>
-								 </td>
-							 </tr>
-								<tr style="border-bottom:1px solid #000;">
+							
+								<tr style="border-bottom:1px solid #efefef;">
 									<td width="33%"><h2>Bank Details</h2></td>
 										<td width="33%"><h2>Company Details</h2></td>
 										<td width="33%"><h2>Contact Information</h2></td>
@@ -397,10 +410,10 @@ class UserorderController extends Controller {
 				<table width="100%">
 				 <tr>
 					<td colspan="2" align="right">
-						<hr  style="border-top:1px solid #000; width:100%"/>
+						<hr  style="border-top:1px solid #efefef; width:100%"/>
 					</td>
 				 </tr>
-					<tr style="border-top:1px solid #000;">
+					<tr style="border-top:1px solid #efefef;">
 						<td width="50%">';
 							$html .= 'Tel: '.$invoice_phone_num->content . ' email: ' .$invoice_email_id->content;
 				$html .= '</td>
@@ -415,7 +428,7 @@ class UserorderController extends Controller {
 				$html .= '
 				<div class="Mrgtop20 font13">
 				
-				<table width="100%" border="0px">
+				<table width="100%" style="margin-right: 30px;">
 				 <tr>
 					<td colspan="2" align="right"  height="60px;">&nbsp;</td>
 				 </tr>
@@ -480,7 +493,7 @@ class UserorderController extends Controller {
 				 <tr>
 					<td colspan="4" align="right"  height="25px;">&nbsp;</td>
 				 </tr>
-				<tr style="background:#eeeeee;"><th width="10%">No.</th><th width="50%" >Item </th><th width="20%" class="algCnt">Quantity </th><th width="20%" class="algRgt">Price(Excl.VAT) </th></tr>';
+				<tr style="background:#efefef;"><th width="10%" class="th-details">No.</th><th width="50%" class="th-details">Item </th><th width="20%" class="algCnt th-details">Quantity </th><th width="20%" class="algRgt th-details">Price(Excl.VAT) </th></tr>';
 				$qtyPr = 1;
 				$Totprice = 0;
 				$qty=1;
@@ -537,18 +550,25 @@ class UserorderController extends Controller {
 					$qtyPr = $pacpric * $qty;
 					$Totprice = $Totprice + $qtyPr;
 				}
-				$html .= '<tr><td colspan="3" style="text-align:right;"><b>Total(Excl.VAT)<b></td><td class="algRgt font13"><b>'.$currency->content .' '.($Totprice -(($Totprice*$this->data['vatsettings']->content)/100)).'<b></td></tr>';
-				$html .= '<tr><td colspan="3" style="text-align:right;"><b>VAT('. $this->data['vatsettings']->content .'%)<b></td><td class="algRgt font13"><b>'.$currency->content .' '.(($Totprice*$this->data['vatsettings']->content)/100).'<b></td></tr>';
+				$html .= '<tr><td colspan="3" style="text-align:right;"><b>Total (Excl.VAT)<b></td><td class="algRgt font13"><b>'.$currency->content .' '.($Totprice -(($Totprice*$this->data['vatsettings']->content)/100)).'<b></td></tr>';
+				$html .= '<tr><td colspan="3" style="text-align:right;">'.$invoice_total_footer_message->content.'&nbsp;<b>VAT of ('. $this->data['vatsettings']->content .'%)<b></td><td class="algRgt font13"><b>'.$currency->content .' '.(($Totprice*$this->data['vatsettings']->content)/100).'<b></td></tr>';
 
-				$html .= '<tr><td colspan="4"><hr  style="border-top:1px solid #000; width:100%"/></td>';
+				$html .= '<tr><td colspan="4"><hr  style="border-top:1px solid #efefef; width:100%"/></td>';
 
 				$html .= '<tr><td colspan="3" class="algRgt font13"><b>Total<b></td><td class="algRgt font13"><b>'.$currency->content .' '.number_format($Totprice, 2, '.', ',').'<b></td></tr>';
-				$html .= '<tr><td colspan="4"><hr  style="border-top:1px solid #000; width:100%"/></td>';
+				$html .= '<tr><td colspan="4"><hr  style="border-top:1px solid #efefef; width:100%"/></td>';
 				$html .= '</table></div>';
-			
-				$pdf = \App::make('dompdf.wrapper');
-				$pdf->loadHTML($html);
-				return $pdf->download($downFileName);
+                
+                $html .= '<div style="clear:both;"></div><div class="Mrgtop20 font13"><table width="100%">
+				 <tr>
+					<td>'.nl2br($invoice_footer_message->content).'</td>
+                 </tr>   
+                 </table>';
+                
+                //echo $html; die;
+				@$pdf = \App::make('dompdf.wrapper');
+				@$pdf->loadHTML($html);
+				return @$pdf->download($downFileName);
 			}
 			else{
 				return 'error';

@@ -129,6 +129,20 @@
 				<input name="invoice_address" type="text" id="invoice_address" class="form-control input-sm" value="{{ $invoice_address->content }}" />  
 			 </div> 
 		  </div>
+          
+           <div class="form-group">
+			<label for="ipt" class=" control-label col-md-4"> Totals Footer Message </label>
+			<div class="col-md-8">
+				<input name="invoice_total_footer_message" type="text" id="invoice_total_footer_message" class="form-control input-sm" value="{{ $invoice_total_footer_message->content }}" />  
+			 </div> 
+		  </div>
+          
+          <div class="form-group">
+			<label for="ipt" class=" control-label col-md-4"> Footer Message </label>
+			<div class="col-md-8">
+                <textarea rows="6" name="invoice_footer_message" class="form-control input-sm markItUp">{{ $invoice_footer_message->content }}</textarea> 
+			 </div> 
+		  </div>
 		  
   	</fieldset>
 	</div> 

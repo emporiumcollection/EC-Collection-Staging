@@ -3131,7 +3131,7 @@ function property_images_wetransfer(Request $request) {
     }
     
     function contract_upload(Request $request) {
-        
+        $form_wizard = (int) $request->input('form_wizard');
         if (!is_null(Input::file('signedcontract')) || !is_null(Input::file('signedcontract')))
         {
             $propId = (int) $request->input('propId');
@@ -3547,7 +3547,8 @@ function property_images_wetransfer(Request $request) {
                                     $getfilejson['files'][0]['type'] = $getupfile->file_type;
                                     $getfilejson['files'][0]['url'] = (new ContainerController)->getThumbpath($getupfile->folder_id) . $getupfile->file_name;
                                 }                                   
-                            }                            
+                            } 
+                            \DB::table('tb_users')->where('id', \Auth::user()->id)->update(array('form_wizard'=>$form_wizard));                           
                             $return_array['status'] = 'success';
                             $return_array['message'] = 'Contract uploaded successfully';     
                         }else{
@@ -3561,6 +3562,7 @@ function property_images_wetransfer(Request $request) {
                 }  
             }
         }else{
+            \DB::table('tb_users')->where('id', \Auth::user()->id)->update(array('form_wizard'=>$form_wizard));
             $return_array['status'] = 'success';
             $return_array['message'] = 'Move ahead without upload contract';
         }

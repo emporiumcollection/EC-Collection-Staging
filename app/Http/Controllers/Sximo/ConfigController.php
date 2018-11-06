@@ -502,6 +502,9 @@ class ConfigController extends Controller {
 		$this->data['invoice_phone_num'] = \DB::table('tb_settings')->where('key_value', 'invoice_phone_num')->first();
 		$this->data['invoice_email_id'] = \DB::table('tb_settings')->where('key_value', 'invoice_email_id')->first();
 		$this->data['invoice_address'] = \DB::table('tb_settings')->where('key_value', 'invoice_address')->first();
+        
+        $this->data['invoice_total_footer_message'] = \DB::table('tb_settings')->where('key_value', 'invoice_total_footer_message')->first();
+		$this->data['invoice_footer_message'] = \DB::table('tb_settings')->where('key_value', 'invoice_footer_message')->first();
 		
 		return view('sximo.config.invoice',$this->data);	
 	}	
@@ -530,6 +533,9 @@ class ConfigController extends Controller {
 			\DB::table('tb_settings')->where('key_value', 'invoice_phone_num')->update(['content' => Input::get('invoice_phone_num')]);
 			\DB::table('tb_settings')->where('key_value', 'invoice_email_id')->update(['content' => Input::get('invoice_email_id')]);
 			\DB::table('tb_settings')->where('key_value', 'invoice_address')->update(['content' => Input::get('invoice_address')]);
+            
+            \DB::table('tb_settings')->where('key_value', 'invoice_total_footer_message')->update(['content' => Input::get('invoice_total_footer_message')]);
+			\DB::table('tb_settings')->where('key_value', 'invoice_footer_message')->update(['content' => Input::get('invoice_footer_message')]);
 			
 			return Redirect::to('sximo/config/invoice')->with('messagetext', 'Invoice settings Has Been Updated')->with('msgstatus','success');	
 			

@@ -63,9 +63,10 @@
                                             <?php echo $user->mobile_number; ?>
                                         </div>
                                     </div>
-                                    <div class="row m--align-center">
+                                    <div class="row m--align-center" style="margin-right: 25px;">
                                         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 pref-top-pad">Thank you for submitting your information.</div> 
                                         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 pref-top-pad"><a href="{{ URL::to('userorder_downloadinvoicepdf/'.$order_id)}}" class="tips btn btn-xs btn-primary"><i class="fa  icon-file-pdf "></i>Download Your Invoice</a></div>
+                                        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 pref-top-pad"><a href="#" class="tips btn btn-xs btn-primary"><i class="fa  icon-file-pdf "></i>Download Property Requirements Sheet</a></div>
                                     </div>
                                 </div>
                             </div>
