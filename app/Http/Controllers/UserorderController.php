@@ -302,6 +302,11 @@ class UserorderController extends Controller {
                 }else{
                         $cont_logo =  \URL::to('sximo/assets/images/logo-design_1.png');
                 }  
+                $company_postal_code = '';
+                if($companydet->company_postal_code > 0){
+                    $company_postal_code = $companydet->company_postal_code;
+                }
+                
                 
 				$html = '<style> 
 						.main { margin:2px; width:100%; font-family: arial, sans-serif; color: #252525; } 
@@ -448,7 +453,7 @@ class UserorderController extends Controller {
 
 										<br/>'.$companydet->company_city .'<br/>
 
-										'. ($companydet->company_postal_code > 0) ? $companydet->company_postal_code : '' .'  '.$companydet->company_country .'
+										'. $company_postal_code.'  '.$companydet->company_country .'
 										</p>
 
 										</td>
