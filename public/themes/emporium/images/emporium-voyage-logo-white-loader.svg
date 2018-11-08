@@ -2,11 +2,16 @@
 <style type="text/css">
 	.st0{fill:#fff;stroke:#fff;stroke-width:.6px;stroke-miterlimit:10;}
 
-	svg {
-        max-width: 600px;
-	    margin: 0 auto;
-        background: transparent;
-	}
+    svg {
+
+        background: #000;
+    }
+
+    .feat {
+
+        transform-origin: 900px 360px;
+        transform: scale(.5);
+    }
 
     @keyframes flash {
 
