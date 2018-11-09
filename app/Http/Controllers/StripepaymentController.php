@@ -792,7 +792,9 @@ public function generateInvoice($ordid)
             $token = $_POST['stripeToken'];
 
            try {
-
+                        $group_id = \Session::get('gid');
+                        $default_package = \DB::table('tb_packages')->where('allow_user_groups', $group_id)->where('package_status', 1)->where('package_for', 2)->first();
+                        $pkg_id = '';
                         
                         $orddta['status'] = 'Pending'; 
                         $orddta['comments'] = $request->input('order_comments'); 
@@ -819,6 +821,32 @@ public function generateInvoice($ordid)
                                 $orditemdta['deduct_first_booking'] = $deduct_first_booking;
                                 $packgeDataDetalis = DB::table('tb_packages')->where('id',$cartValue['package']['id'])->get();
                                 $orditemdta['package_data'] = json_encode($packgeDataDetalis);
+                                
+                                if(!empty($default_package)){
+                                    $pkg_id = $default_package->id;
+                                    $pkg_duration_type = '';
+                                    $start_date=date('Y-m-d h:i:s');
+                                    if($default_package->package_duration_type=='Year'){
+                                        $pkg_duration_type = strtolower($default_package->package_duration_type)."s";
+                                    }else{
+                                        $pkg_duration_type = strtolower($default_package->package_duration_type);
+                                    }
+                                    $pkg_duration = (int) $default_package->package_duration;
+                                    if($cartValue['package']['id'] == $pkg_id){
+                                        
+                                        $end_date = date('Y-m-d h:i:s', strtotime('+'.$pkg_duration.' '.$pkg_duration_type, strtotime($start_date)));
+                                        
+                                        $usermemdata = array(
+                                            'user_id'=>\Session::get('uid'),
+                                            'start_date'=>$start_date,
+                                            'end_date'=> $end_date,
+                                            'created'=> date('Y-m-d h:i:s'),
+                                        );
+                                        //print_r($usermemdata); die;
+                                        \DB::table('tb_users_membership')->insertGetId($usermemdata);
+                                    }
+                                }
+                                
                             }
                             if($cartValue['package']['type']=='advert'){
                                  $orditemdta['package_type'] = $cartValue['package']['type']; 
@@ -861,7 +889,7 @@ public function generateInvoice($ordid)
 						$orddta['invoice_num'] = $exp_num; 
                         \DB::table('tb_orders')->where('id',$ord_id)->update($orddta);
 						
-						\DB::table('tb_settings')->where('key_value', 'default_invoice_num')->update(['content' => ++$exp_num]);
+						\DB::table('tb_settings')->where('key_value', 'default_invoice_num')->update(['content' => ++$exp_num]);                        
                         
                         if(count($package_idsarr) > 0){
                             $usersContracts = \DB::table('tb_users_contracts')->select('tb_users_contracts.id','tb_users_contracts.contract_id','tb_users_contracts.title','tb_users_contracts.description')->where('tb_users_contracts.contract_type','packages')->orderBy('tb_users_contracts.contract_id','DESC')->where('tb_users_contracts.status',1)->where('tb_users_contracts.is_expried',0)->where('tb_users_contracts.deleted',0)->get();
