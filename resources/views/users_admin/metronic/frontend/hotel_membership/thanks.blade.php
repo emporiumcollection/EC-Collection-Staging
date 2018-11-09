@@ -88,7 +88,7 @@
                                         </div>
                                         <div class="setting-box-hotel">
                                             <a href="#">
-                                                <i class="grid_icon icon-calendar"></i>																	
+                                                <i class="grid_icon fa fa-calendar"></i>																	
                                     			<span class="grid_link-text">
                                     				Reservation &amp; Distribution
                                     			</span>
