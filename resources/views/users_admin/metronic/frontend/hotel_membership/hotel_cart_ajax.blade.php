@@ -12,20 +12,24 @@
         </tr>
     </thead>
     <tbody>
-    	{{--*/ $subTotal = 0; $orderTotal = 0; $package_for = array(1, 2); /*--}}
+    	{{--*/ $subTotal = 0; $orderTotal = 0; $package_for = array(2); /*--}}
     	@foreach($packages as $package)
 		{{--*/ $subTotal += $package->package_price; /*--}}
         <tr>
             <td class="overview-td">
+            @if($package->package_image!='')
                 <img class="product-image-cart" src="{{asset('uploads/packages')}}/{{$package->package_image}}" alt="" width="100"/>
-                
+            @endif    
             </td>
             <td>
           		<div class="product-title-and-remove-option">
                 	<span class="product-title">{{$package->package_title}}</span>
-                    <?php if(!in_array($package->package_for, $package_for)){ ?>
+                    <?php if(!in_array($package->package_for, $package_for)){ 
+                            if($user->own_hotel_setup==0){    
+                    ?>
+                        
                         <a href="javascript:voic(0);" onclick="javascript:removeItemFromCart({{$package->id}},{{ $package->package_price }});"><i class="fa fa-trash"></i></a>
-                    <?php } ?>
+                    <?php } } ?>
                 </div>
                 <div>
                 @if($package->package_modules !="" && $package->package_modules!="NULL")

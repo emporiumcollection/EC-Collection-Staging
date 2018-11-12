@@ -655,7 +655,7 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center margin-top">
                                                             <h2 class="black-heading-big">Our membership Packages</h2>
                                                         </div> 
-                                                        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
+                                                        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 margin-top">
                                                             The emporium-Voyage packages opens a world of opportunity to further market your Brand. To start your Reservation-Distribition & mMrketing journey, please pay and conform your bi-anually subscription. Your invoice will be visible from your accounts section.
                                                             We offer an array of packages to further promote and market your hotel to our high-net-worth members network. You can view additional packages at your leisure from the membership section.
                                                         </div> 
@@ -714,7 +714,9 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                             								<div class="m-accordion__item-content">
                                                                                             <div class="row">
                                                             									<div class="col-sm-6 col-md-6 col-lg-6 pull-left">
+                                                                                                @if($package->package_image!='')
                                                                                                     <img class="img-responsive object-fit-size" src="{{URL::to('uploads/packages/'.$package->package_image)}}" alt="{{$package->package_image}}" style="width: 100%;" >
+                                                                                                @endif
                                                                                                 </div>
                                                                                                 <div  class="col-sm-6 col-md-6 col-lg-6 pull-right">
                                                                                                     <div class="row">
@@ -766,10 +768,11 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                         							</div>
                                                                                                     @endif
                                                                                                 </div>
-                                                                                                @if($package->package_for==0)                                                                                                
+                                                                                                @if($package->package_for==0 || $package->package_for==1)                                                                                                           @if($user->own_hotel_setup==0)  
                                                                                                 <div class="col-xl-4 col-sm-4 col-md-4 col-lg-4 m--align-right">
                                                                                                     <a href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->package_price }});" class="btn btn-success">Add to cart</a>
                                                                                                 </div>
+                                                                                                  @endif
                                                                                                 @endif
                                                                                             </div> 
                                                                                                
@@ -803,7 +806,9 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                             								<div class="m-accordion__item-content">
                                                                                                 <div class="row">
                                                             									<div class="col-sm-6 col-md-6 col-lg-6 pull-left">
+                                                                                                @if($package->package_image!='')
                                                                                                     <img class="img-responsive object-fit-size" src="{{URL::to('uploads/packages/'.$package->package_image)}}" alt="{{$package->package_image}}" style="width: 100%;" >
+                                                                                                @endif
                                                                                                 </div>
                                                                                                 <div  class="col-sm-6 col-md-6 col-lg-6 pull-right">
                                                                                                     <div class="row">
@@ -878,10 +883,11 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                             							</div>
                                                                                                         @endif */ ?>
                                                                                                     </div>
-                                                                                                    @if($package->package_for==0)                                                                                                    
+                                                                                                    @if($package->package_for==0 || $package->package_for==1)                                                                                                           @if($user->own_hotel_setup==0)  
                                                                                                     <div class="col-xl-4 col-sm-4 col-md-4 col-lg-4 m--align-right">
                                                                                                         <a href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->package_price }});" class="btn btn-success">Add to cart</a>
                                                                                                     </div>
+                                                                                                       @endif 
                                                                                                     @endif
                                                                                                 </div>
                                                                                                 
@@ -919,7 +925,9 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                             								<div class="m-accordion__item-content">
                                                                                             <div class="row">
                                                             									<div class="col-sm-6 col-md-6 col-lg-6 pull-left">
+                                                                                                @if($package->package_image!='')
                                                                                                     <img class="img-responsive object-fit-size" src="{{URL::to('uploads/packages/'.$package->package_image)}}" alt="{{$package->package_image}}" style="width: 100%;" >
+                                                                                                @endif
                                                                                                 </div>
                                                                                                 <div  class="col-sm-6 col-md-6 col-lg-6 pull-right">
                                                                                                     <div class="row">

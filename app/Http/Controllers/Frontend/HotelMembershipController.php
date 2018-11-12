@@ -763,7 +763,7 @@ class HotelMembershipController extends Controller {
 				}
 			}
         }
-        
+        $this->data['user'] = $obj_user;
         $this->data['subtract_at_booking_amt'] = $subtract_at_booking_amt;
                 
         $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
