@@ -373,16 +373,24 @@
                                     						</div>
                                                         </div>
                                                     </div>
-                                                    
-                                                    <div class="form-group m-form__group row" id="dv_vat_no">
-    													<label class="col-xl-3 col-lg-3 col-form-label">
-    														Vat Number
-    													</label>
-    													<div class="col-xl-9 col-lg-9">
-    														<input name="hotelinfo_vat_no" required="required" type="text" id="hotelinfo_vat_no" class="form-control m-input" value="{{$company_details->company_tax_number}}" />  
-    													</div>
-    												</div>
-                                                    
+                                                    <div id="dv_vat_no">
+                                                        <div class="form-group m-form__group row" >
+                                                            <label class="col-xl-3 col-lg-3 col-form-label">
+        														
+        													</label>
+        													<div class="col-xl-9 col-lg-9">
+        														Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare diam at convallis lacinia. Duis a sapien et erat finibus molestie eu id nisi. Integer nibh elit, blandit ac volutpat eget, tempus eget enim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas mollis dictum risus. Vivamus aliquam at elit non dictum. Integer nisi ante, interdum at purus vitae, rhoncus bibendum dui. Praesent pharetra augue at ultrices facilisis. Vestibulum erat urna, iaculis et purus in, fermentum varius nibh.  
+        													</div>
+        												</div>
+                                                        <div class="form-group m-form__group row">
+        													<label class="col-xl-3 col-lg-3 col-form-label">
+        														Vat Number
+        													</label>
+        													<div class="col-xl-9 col-lg-9">
+        														<input name="hotelinfo_vat_no" required="required" type="text" id="hotelinfo_vat_no" class="form-control m-input" value="{{$company_details->company_tax_number}}" />  
+        													</div>
+        												</div>
+                                                    </div>
                                                     <div class="form-group m-form__group row">
                                                         <div class="col-12 m-form__group-sub">     					                                
                                 							<div class="m-checkbox-inline">
@@ -417,12 +425,12 @@ Select the Commission Terms you wish to agree with.                             
                                                             <?php if(!empty($commision_contractdata)){  ?>
                                                             <div class="m-radio-list">
                                     							<label class="m-radio">
-                                    							     <input type="radio" name="roomavailability" value="full" <?php echo isset($commision_contractdata->commission_type) ? ($commision_contractdata->commission_type=="full" ? 'checked="checked"' : '') : 'checked="checked"'; ?> />
+                                    							     <input type="radio" name="roomavailability" value="full" <?php echo isset($commision_contractdata->commission_type) ? ($commision_contractdata->commission_type=="full" ? 'checked="checked"' : '') : ''; ?> />
                                                                         Rack Rate (<?php echo (float) $commision_contractdata->full_availability_commission;?>%)
                                                                      <span></span>
                                     							</label>
                                                                 <label class="m-radio">
-                                    							     <input type="radio" name="roomavailability" value="partial" <?php echo isset($commision_contractdata->commission_type) ? ($commision_contractdata->commission_type=="partial" ? 'checked="checked"' : '') : ''; ?> />
+                                    							     <input type="radio" name="roomavailability" value="partial" <?php echo isset($commision_contractdata->commission_type) ? ($commision_contractdata->commission_type=="partial" ? 'checked="checked"' : '') : 'checked="checked"'; ?> />
                                                                         Standard Tour Operator (STO <?php echo (float) $commision_contractdata->partial_availability_commission;?>%)
                                                                      <span></span>
                                     							</label>
@@ -451,7 +459,7 @@ Select the Commission Terms you wish to agree with.                             
                                                             Welcome to the Contract section. To streamline the signup & start our Business-to-Business relationship we have made it easy to complete the contract steps. View all sections, approve the section to continue and upon accpetance the contract betweeen your Property and Emporium-Voyage begins.The contract will be visibel in your documents ection and will be send to your by mail and post for your convenience. 
                                                             
                                                         </div> 
-                                                        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
+                                                        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 margin-top">
                                                             
                                                             <div class="form-group m-form__group row">
                                                             
@@ -481,7 +489,7 @@ Select the Commission Terms you wish to agree with.                             
                                                                             {{--*/ $alreadyAccepted = (bool) $row->already_done; $is_agree = (bool) ((isset($row->is_agree))?$row->is_agree:false);  /*--}}
                         {{--*/ if($alreadyAccepted !== true){ $new_contract_ava = true; } /*--}}
                                             	                             <div class="m-accordion__item">
-                                            	                                <div class="m-accordion__item-head collapsed" role="tab" id="m_accordion_1_item_<?php echo $sn; ?>_head" data-toggle="collapse" href="#m_accordion_1_item_<?php echo $sn; ?>_body" aria-expanded="false">
+                                            	                                <div class="m-accordion__item-head <?php echo ($sn==0) ? '' : 'collapsed' ?>" role="tab" id="m_accordion_1_item_<?php echo $sn; ?>_head" data-toggle="collapse" href="#m_accordion_1_item_<?php echo $sn; ?>_body" aria-expanded="false">
                                                                                 
                                                                                     <span class="m-accordion__item-icon">
                                                                                         <span class="m-switch m-switch--sm {{(($alreadyAccepted === true)?'m-switch--outline m-switch--icon m-switch--success':'m-switch--icon m-switch--info')}}">
@@ -496,7 +504,7 @@ Select the Commission Terms you wish to agree with.                             
                                                                                     </span>
                                                                                     <span class="m-accordion__item-mode"></span>                          
                                             	                                </div>
-                                                                                <div class="m-accordion__item-body collapse" id="m_accordion_1_item_<?php echo $sn; ?>_body" role="tabpanel" aria-labelledby="m_accordion_1_item_<?php echo $sn; ?>_head" data-parent="#m_accordion_1">
+                                                                                <div class="m-accordion__item-body <?php echo ($sn==0) ? 'show' : 'collapse' ?>" id="m_accordion_1_item_<?php echo $sn; ?>_body" role="tabpanel" aria-labelledby="m_accordion_1_item_<?php echo $sn; ?>_head" data-parent="#m_accordion_1">
                                                                                      <div class="m-accordion__item-content">
                                                                                       <p>
                                                                                        <?php 
@@ -537,10 +545,21 @@ Select the Commission Terms you wish to agree with.                             
                                                                </div>
                                 						
                                 					       </div>
+                                                           <div class="m-form__group form-group row">
+                                                                <div class="col-1">
+                                                                    <span class="m-switch m-switch--sm m-switch--info">
+                                                                        <label>
+                                                                            <input type="checkbox" name="accepted_all" value="all" class="rad_accept_all" />
+                                                                            <span></span>
+                                                                        </label>
+                                                                    </span> 
+                                                                </div>   
+                                                                <label class="col-2 col-form-label">Accept All</label>
+                                                           </div>
                                                             
                                                         </div>                                                
                                                         
-                                                        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12" id="dv_contract_view_download" @if($new_contract_ava) style="display: none;" @else style="display: '';" @endif >
+                                                        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 margin-top" id="dv_contract_view_download" @if($new_contract_ava) style="display: none;" @else style="display: '';" @endif >
                                                             <div class="form-group m-form__group row">
                                                                 <label class="col-xl-2 col-lg-2 col-form-label">
                                                                     Contracts
@@ -640,9 +659,9 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                             The emporium-Voyage packages opens a world of opportunity to further market your Brand. To start your Reservation-Distribition & mMrketing journey, please pay and conform your bi-anually subscription. Your invoice will be visible from your accounts section.
                                                             We offer an array of packages to further promote and market your hotel to our high-net-worth members network. You can view additional packages at your leisure from the membership section.
                                                         </div> 
-                                                        <div class="col-xl-12 col-lg-12 m--align-right">
+                                                        <?php /* <div class="col-xl-12 col-lg-12 m--align-right">
             											     <a href="#" class="btn btn-default" id="package-skip">Skip</a>
-						                                </div>
+						                                </div> */ ?>
                                                         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 margin-top" id="dv_pkg">
                                                             
                                                             <div class="form-group m-form__group row">
@@ -687,7 +706,7 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                             									<i class="fa flaticon-user-ok"></i>
                                                             								</span>
                                                             								<span class="m-accordion__item-title">
-                                                            									{{$package->package_title}} Price: {!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($package->package_price,2) }}
+                                                            									{{$package->package_title}} Price: {!! isset($currency->content)?$currency->content:'&euro;' !!} {{ number_format($package->package_price,2) }}
                                                             								</span>
                                                             								<span class="m-accordion__item-mode"></span>
                                                             							</div>
@@ -712,7 +731,7 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                                                             {{--*/ $str_module = implode(', ', $mod_arr); echo $str_module; /*--}}
                                                                                                             <div class="row">
                                                                                                                 <div class="col-sm-12 col-md-12 col-lg-12 top-margin-20">
-                                                                                                                    <h6>{!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($package->package_price,2) }} </h6>
+                                                                                                                    <h6>{!! isset($currency->content)?$currency->content:'&euro;' !!} {{ number_format($package->package_price,2) }} </h6>
                                                                                                                 </div>
                                                                                                             </div>
                                                                                                         </div>
@@ -720,10 +739,11 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                                                       
                                                                                                 </div>
                                                                                             </div>
-                                                                                            @if(CNF_SUBTRACT_FEE)
+                                                                                            
                                                                                             <div class="row" style="margin-top: 10px;">
                                                                                                 
                                                                                                 <div class="col-xl-8 col-sm-8 col-md-8 col-lg-8">
+                                                                                                    @if(CNF_SUBTRACT_FEE)
                                                                                                     <div class="m-checkbox-inline">
                                                                         								<label class="m-checkbox m-checkbox--solid m-checkbox--brand">
                                                                                                         <?php $arr_index = $package->id."_hotel";
@@ -744,6 +764,7 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                                                             <span></span>
                                                                         								</label>
                                                                         							</div>
+                                                                                                    @endif
                                                                                                 </div>
                                                                                                 @if($package->package_for==0)                                                                                                
                                                                                                 <div class="col-xl-4 col-sm-4 col-md-4 col-lg-4 m--align-right">
@@ -751,7 +772,7 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                                                 </div>
                                                                                                 @endif
                                                                                             </div> 
-                                                                                            @endif   
+                                                                                               
                                                             								</div>
                                                             							</div>
                                                             						</div>
@@ -774,7 +795,7 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                             									<i class="fa flaticon-user-ok"></i>
                                                             								</span>
                                                             								<span class="m-accordion__item-title">
-                                                            									{{$package->package_title}} Price: {!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($package->package_price,2) }}
+                                                            									{{$package->package_title}} Price: {!! isset($currency->content)?$currency->content:'&euro;' !!} {{ number_format($package->package_price,2) }}
                                                             								</span>
                                                             								<span class="m-accordion__item-mode"></span>
                                                             							</div>
@@ -799,7 +820,7 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                                                             {{--*/ $str_module = implode(', ', $mod_arr); echo $str_module; /*--}}
                                                                                                             <div class="row">
                                                                                                                 <div class="col-sm-12 col-md-12 col-lg-12 top-margin-20">
-                                                                                                                    <h6>{!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($package->package_price,2) }} </h6>
+                                                                                                                    <h6>{!! isset($currency->content)?$currency->content:'&euro;' !!} {{ number_format($package->package_price,2) }} </h6>
                                                                                                                 </div>
                                                                                                             </div>
                                                                                                         </div>
@@ -830,10 +851,11 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                                                       
                                                                                                 </div>
                                                                                                 </div>
-                                                                                                @if(CNF_SUBTRACT_FEE)
+                                                                                                
                                                                                                 <div class="row">
                                                                                                 
                                                                                                     <div class="col-xl-8 col-sm-8 col-md-8 col-lg-8">
+                                                                                                        <?php /* @if(CNF_SUBTRACT_FEE)
                                                                                                         <div class="m-checkbox-inline">
                                                                             								<label class="m-checkbox m-checkbox--solid m-checkbox--brand">
                                                                                                             <?php $arr_index = $package->id."_hotel";
@@ -854,6 +876,7 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                                                                 <span></span>
                                                                             								</label>
                                                                             							</div>
+                                                                                                        @endif */ ?>
                                                                                                     </div>
                                                                                                     @if($package->package_for==0)                                                                                                    
                                                                                                     <div class="col-xl-4 col-sm-4 col-md-4 col-lg-4 m--align-right">
@@ -861,7 +884,7 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                                                     </div>
                                                                                                     @endif
                                                                                                 </div>
-                                                                                                @endif
+                                                                                                
                                                             								</div>
                                                             							</div>
                                                             						</div>
@@ -888,7 +911,7 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                             									<i class="fa flaticon-user-ok"></i>
                                                             								</span>
                                                             								<span class="m-accordion__item-title">
-                                                            									{{$package->package_title}} Price: {!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($package->package_price,2) }}
+                                                            									{{$package->package_title}} Price: {!! isset($currency->content)?$currency->content:'&euro;' !!} {{ number_format($package->package_price,2) }}
                                                             								</span>
                                                             								<span class="m-accordion__item-mode"></span>
                                                             							</div>
@@ -913,7 +936,7 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                                                             {{--*/ $str_module = implode(', ', $mod_arr); echo $str_module; /*--}}
                                                                                                             <div class="row">
                                                                                                                 <div class="col-sm-12 col-md-12 col-lg-12 top-margin-20">
-                                                                                                                    <h6>{!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($package->package_price,2) }} </h6>
+                                                                                                                    <h6>{!! isset($currency->content)?$currency->content:'&euro;' !!} {{ number_format($package->package_price,2) }} </h6>
                                                                                                                 </div>
                                                                                                             </div>
                                                                                                         </div>
@@ -922,10 +945,11 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                                                     
                                                                                                 </div>
                                                                                                 </div>
-                                                                                                @if(CNF_SUBTRACT_FEE)
+                                                                                                
                                                                                                 <div class="row" style="margin-top: 10px;">
                                                                                                 
                                                                                                     <div class="col-xl-8 col-sm-8 col-md-8 col-lg-8">
+                                                                                                        <?php /* @if(CNF_SUBTRACT_FEE)
                                                                                                         <div class="m-checkbox-inline">
                                                                             								<label class="m-checkbox m-checkbox--solid m-checkbox--brand">
                                                                                                             <?php $arr_index = $package->id."_hotel";
@@ -946,6 +970,7 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                                                                 <span></span>
                                                                             								</label>
                                                                             							</div>
+                                                                                                        @endif */ ?>
                                                                                                     </div>
                                                                                                     @if($package->package_for==0)                                                                                                    
                                                                                                     <div class="col-xl-4 col-sm-4 col-md-4 col-lg-4 m--align-right">
@@ -953,7 +978,7 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                                                     </div>
                                                                                                     @endif
                                                                                                 </div>
-                                                                                                @endif
+                                                                                                
                                                             								</div>
                                                             							</div>
                                                             						</div>
@@ -1059,6 +1084,12 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
     			<div class="modal-body">
                     <div class="m-portlet m-portlet--full-height">                        
                         <div class="m-portlet__body">
+                            <div class="row">
+                                <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="b2c-banner-text">Commission</div>
+                					<img src="{{URL::to('images/hotel_commission_profile.jpg')}}" style="width: 100%;" />
+                                </div> 
+                            </div>
                             <div class="m-accordion m-accordion--default m-accordion--solid" id="commission_accordion" role="tablist">
                                 {{--*/ $new_contract_ava = false; /*--}}
                                 <?php
@@ -1453,7 +1484,19 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
 					});
 				}
              });*/
-                         
+            
+            
+            $(".rad_accept_all").click(function(){
+               if($(".rad_accept_all").is(":checked")){                    
+                    $(".rad_contracts").each(function() {
+                        this.checked=true;
+                    });
+               }else{
+                    $(".rad_contracts").each(function() {
+                        this.checked=false;
+                    });
+               } 
+            });             
                                                 
             base_url = $("#base_url").val();
             $('#Carousel').carousel({
@@ -1671,9 +1714,9 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
             if (this.readyState == 4 && this.status == 200) {
                 
                 $.ajax({
-                    url:base_url+'/hotel/get_checkout', 
+                    url:base_url+'/hotel/get_cart', 
                     type:'get',
-                    success:function(response){ console.log(response);
+                    success:function(response){ 
                         $("#cart_row").html('');
                         $("#dv_pkg").css('display', 'none');
                         $("#cart_row").html(response);   

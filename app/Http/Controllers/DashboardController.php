@@ -46,7 +46,27 @@ class DashboardController extends Controller {
                /*if($this->data['logged_user']->new_user == 1){
                     return Redirect::to('whoiam');
                }*/ 
+               //echo $gp_id; die;
                $this->data['pageslider'] = \DB::table('tb_pages_sliders')->join('tb_pages_content', 'tb_pages_sliders.slider_page_id', '=' , 'tb_pages_content.pageID')->select( 'slider_title', 'slider_description', 'slider_img', 'slider_link', 'slider_video', 'slide_type')->where('tb_pages_content.alias', 'hotel-dashboard')->where('slider_status', 1)->get();
+               
+               $obj_modules = array();
+               $module_id = array();
+               $obj_mem = \DB::table('tb_users_membership')->where('user_id', $u_id)->first();
+               if(!empty($obj_mem)){
+                    $start_date =  $obj_mem->start_date;
+                    $obj_modules = \DB::table('tb_orders')->join('tb_order_items', 'tb_order_items.order_id', '=', 'tb_orders.id')->join('tb_packages',  'tb_packages.id', '=', 'tb_order_items.package_id')->where('tb_orders.user_id', $u_id)->where('tb_orders.created', '>=', $start_date)->get();
+               }
+               if(!empty($obj_modules)){
+                    foreach($obj_modules as $si_module){
+                        $arr_modules = explode(',', $si_module->package_modules);
+                        if(!empty($arr_modules)){
+                            $module_id = array_merge($module_id, $arr_modules);
+                        }
+                    } 
+               }
+               $this->data['module_id'] = (array_unique($module_id)); 
+               $module_pur = \DB::table('tb_module')->wherein('module_id', $module_id)->get();
+               //print_r($module_pur); die;                         
             }
         }
 		return view($file_name,$this->data);

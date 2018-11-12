@@ -340,6 +340,7 @@ class UserorderController extends Controller {
 						.valin{ vertical-align:top;} 
 						.valinbt{ vertical-align:bottom; text-align:right;}
                         .bg-color{ background-color: #efefef; }
+                        .footer-font-size{ font-size:9px; }
 						.page {
 						  background: white;
 						  display: block;
@@ -389,26 +390,26 @@ class UserorderController extends Controller {
 							<table width="100%">
 							
 								<tr style="border-bottom:1px solid #efefef;">
-									<td width="33%"><h2>Bank Details</h2></td>
-										<td width="33%"><h2>Company Details</h2></td>
-										<td width="33%"><h2>Contact Information</h2></td>
+									<td width="40%"><h2>Bank Details</h2></td>
+									<td width="30%"><h2>Company Details</h2></td>
+									<td width="30%"><h2>Contact Information</h2></td>
 								</tr>
-							   <tr><td class="valin">';
+							   <tr><td class="valin footer-font-size">';
 				if(!empty($bankdetails))
 				{
 					$html .= nl2br($bankdetails->content);
 				}
-				$html .= '</td><td class="valin">';
+				$html .= '</td><td class="valin footer-font-size">';
 				if(!empty($regdetail))
 				{
 					$html .= nl2br($regdetail->content);
 				}
-				$html .= '</td><td class="valin">';
+				$html .= '</td><td class="valin footer-font-size"><div style="width:100%; float:right;">';
 				if(!empty($contactdetail))
 				{
 					$html .= nl2br($contactdetail->content);
 				}
-				$html .= '</td></tr></table></div>';
+				$html .= '</div></td></tr></table></div>';
 				
 				$html .= '
 				<div>
@@ -583,4 +584,24 @@ class UserorderController extends Controller {
 			return 'error';
 		}
 	}
+    public function downloadrequirementsheet(Request $request, $filename){
+        if($filename != ''){
+            $file = 'download/'.$filename;
+            if (file_exists($file)) {
+                header('Content-Description: File Transfer');
+                header('Content-Type: application/octet-stream');
+                header("Content-Type: application/force-download");
+                header('Content-Disposition: attachment; filename=' . urlencode(basename($file)));
+                // header('Content-Transfer-Encoding: binary');
+                header('Expires: 0');
+                header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+                header('Pragma: public');
+                header('Content-Length: ' . filesize($file));
+                ob_clean();
+                flush();
+                readfile($file);
+                exit;
+            }
+        }
+    }   
 }

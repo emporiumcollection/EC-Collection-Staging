@@ -69,7 +69,8 @@
                                             Thank you for submitting your information.                                            
                                         </div> 
                                         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 padding-30"><a href="{{ URL::to('userorder_downloadinvoicepdf/'.$order_id)}}" class="tips btn btn-xs btn-primary"><i class="fa  icon-file-pdf "></i>Download Your Invoice</a></div>
-                                        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 padding-30"><a href="#" class="tips btn btn-xs btn-primary"><i class="fa  icon-file-pdf "></i>Download Property Requirements Sheet</a></div>
+                                        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 padding-30"><a href="{{ URL::to('downloadrequirementsheet/Emporium-Voyage-Hotel-Implementation.pdf')}}" class="tips btn btn-xs btn-primary"><i class="fa  icon-file-pdf "></i>Download Hotel Requirements Sheet</a></div>
+                                        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 padding-30"><a href="{{ URL::to('downloadrequirementsheet/Emporium-Voyage-Property Information.pdf')}}" class="tips btn btn-xs btn-primary"><i class="fa  icon-file-pdf "></i>Download Property Requirements Sheet</a></div>
                                     </div>
                                 </div>
                             </div>

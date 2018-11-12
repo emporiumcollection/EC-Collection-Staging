@@ -35,10 +35,9 @@
                         </div>
                     </td>
                
-                    <td class="overview-td">1
-                    </td>
-                         <td class="overview-td">{!! isset($currency->content)?$currency->content:'$' !!}  {{number_format($package->package_price,2)}}</td>
-                    <td class="overview-td">{!! isset($currency->content)?$currency->content:'$' !!}  {{number_format($package->package_price,2)}}</td>
+                    <td class="overview-td">1</td>
+                    <td class="overview-td"><span class="m--pull-right">{!! isset($currency->content)?$currency->content:'&euro;' !!}  {{number_format($package->package_price,2)}}</span></td>
+                    <td class="overview-td"><span class="m--pull-right">{!! isset($currency->content)?$currency->content:'&euro;' !!}  {{number_format($package->package_price,2)}}</span></td>
                 </tr>
                 @endforeach
     			@foreach($adspackages as $package)
@@ -49,7 +48,7 @@
                         </div>
                     </td>
                     <td class="overview-td">
-    					{!! isset($currency->content)?$currency->content:'$' !!}
+    					{!! isset($currency->content)?$currency->content:'&euro;' !!}
     					@if(\session()->get('hotel_cart')['advert_advert']['package']['content']['ads_pacakge_type']=='cpc')
     						{{ number_format($package->space_cpc_price,2,'.','') . '/' . $package->space_cpc_num_clicks .' Click' }}
     					@elseif(\session()->get('hotel_cart')['advert_advert']['package']['content']['ads_pacakge_type']=='cpm')
@@ -68,7 +67,7 @@
     					@elseif(\session()->get('hotel_cart')['advert_advert']['package']['content']['ads_pacakge_type']=='cpd')
     						 {{--*/ $prc = CommonHelper::calc_price($package->space_cpd_price,$package->space_cpm_num_days,\session()->get('hotel_cart')['advert_advert']['package']['content']['ads_days']) /*--}} 
     					@endif
-    					{!! isset($currency->content)?$currency->content:'$' !!} {{$prc}}
+    					{!! isset($currency->content)?$currency->content:'&euro;' !!} {{$prc}}
     				</td>
                 </tr>
     			{{--*/ $subTotal += $prc; /*--}}
@@ -81,14 +80,14 @@
 <div class="m--clearfix"></div>
 <div class="m-section" style="width: 100%;">
     <div class="m-section__content">
-        <div class="col-md-4 col-sm-12 m--pull-right">
+        <div class="col-md-6 col-sm-12 m--pull-right">
             <table class="table">
                 <tr>
                     <td>
                         <label>Total (excl. VAT) </label> 
                     </td>
                     <td>
-                        <label>{!! isset($currency->content)?$currency->content:'$' !!} {{ number_format($orderTotal,2,'.','')-(($orderTotal*$data["vatsettings"]->content)/100)}}</label>                            
+                        <label class="m--pull-right">{!! isset($currency->content)?$currency->content:'&euro;' !!} {{ number_format(number_format($orderTotal,2,'.','')-(($orderTotal*$data["vatsettings"]->content)/100), 2)}}</label>                            
                     </td>
                 </tr>
                                        
@@ -97,8 +96,10 @@
                         Vat {{ $data["vatsettings"]->content}}% 
                     </td>
                     <td>
-                        {!! isset($currency->content)?$currency->content:'$' !!} 
-                        {{  ($orderTotal*$data["vatsettings"]->content)/100 }}                                
+                        <label class="m--pull-right">
+                        {!! isset($currency->content)?$currency->content:'&euro;' !!} 
+                        {{  number_format(($orderTotal*$data["vatsettings"]->content)/100,2,'.','') }}
+                        </label>                              
                     </td> 
                 </tr>
                 <?php 
@@ -111,7 +112,7 @@
                         <label>Order Total</label> 
                     </td>
                     <td>
-                        {!! isset($currency->content)?$currency->content:'$' !!}  {{number_format($orderTotal,2,'.','')}}
+                        <label class="m--pull-right">{!! isset($currency->content)?$currency->content:'&euro;' !!}  {{number_format($orderTotal,2,'.','')}}</label>
                     </td> 
                 </tr>
                 
@@ -121,7 +122,7 @@
                     <label>Subtract this fee from my first booking commission.</label> 
                     </td>
                     <td>
-                    <label >{!! isset($currency->content)?$currency->content:'$' !!}  {{number_format($subtract_at_booking_amt,2,'.','')}}</label>
+                    <label class="m--pull-right">{!! isset($currency->content)?$currency->content:'&euro;' !!}  {{number_format($subtract_at_booking_amt,2,'.','')}}</label>
                     </td> 
                 </tr>
                 {{--*/ $orderTotal = $orderTotal - $subtract_at_booking_amt; /*--}}
