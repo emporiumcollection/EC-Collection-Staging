@@ -49,8 +49,8 @@
             </td>
             
             <td class="overview-td">1</td>
-            <td class="overview-td"><span class="m--pull-right">{!! isset($currency->content)?$currency->content:'&euro;' !!}  {{number_format($package->package_price,2)}}</span></td>
-            <td class="overview-td"><span class="m--pull-right">{!! isset($currency->content)?$currency->content:'&euro;' !!}  {{number_format($package->package_price,2)}}</span></td>
+            <td class="overview-td"><span class="m--pull-right">{!! isset($currency->content)?$currency->content:'&euro;' !!}{{number_format($package->package_price,2)}}</span></td>
+            <td class="overview-td"><span class="m--pull-right">{!! isset($currency->content)?$currency->content:'&euro;' !!}{{number_format($package->package_price,2)}}</span></td>
         </tr>
         @endforeach
 		
@@ -68,7 +68,7 @@
         <label>Total (excl. VAT) </label> 
         </td>
         <td>
-        <label class="m--pull-right">{!! isset($currency->content)?$currency->content:'&euro;' !!} {{ number_format(number_format($orderTotal,2,'.','')-(($orderTotal*$data["vatsettings"]->content)/100), 2, '.', '')}}
+        <label class="m--pull-right">{!! isset($currency->content)?$currency->content:'&euro;' !!}{{ number_format(number_format($orderTotal,2,'.','')-(($orderTotal*$data["vatsettings"]->content)/100), 2, '.', '')}}
         </label>
         </td>
     </tr>
@@ -78,7 +78,7 @@
         <label>Vat {{ $data["vatsettings"]->content}}%</label> 
         </td>
         <td>
-        <label class="m--pull-right">{!! isset($currency->content)?$currency->content:'&euro;' !!} {{number_format(($orderTotal*$data["vatsettings"]->content)/100 , 2, '.', '')}}</label>
+        <label class="m--pull-right">{!! isset($currency->content)?$currency->content:'&euro;' !!}{{number_format(($orderTotal*$data["vatsettings"]->content)/100 , 2, '.', '')}}</label>
         </td> 
     </tr>
     <?php 
@@ -90,7 +90,7 @@
         <label>Order Total</label> 
         </td>
         <td>
-        <label class="m--pull-right">{!! isset($currency->content)?$currency->content:'&euro;' !!}  {{number_format($orderTotal,2,'.','')}}</label>
+        <label class="m--pull-right">{!! isset($currency->content)?$currency->content:'&euro;' !!}{{number_format($orderTotal,2,'.','')}}</label>
         </td> 
     </tr>
     @if($subtract_at_booking_amt > 0)
@@ -99,7 +99,7 @@
         <label>Subtract this fee from my first booking commission.</label> 
         </td>
         <td>
-        <label class="m--pull-right">{!! isset($currency->content)?$currency->content:'&euro;' !!}  {{number_format($subtract_at_booking_amt,2,'.','')}}</label>
+        <label class="m--pull-right">{!! isset($currency->content)?$currency->content:'&euro;' !!}{{number_format($subtract_at_booking_amt,2,'.','')}}</label>
         </td> 
     </tr>
     @endif

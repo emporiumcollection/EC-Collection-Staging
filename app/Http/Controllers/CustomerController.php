@@ -1229,7 +1229,7 @@ return Redirect::to('customer/profile')->with('message', \SiteHelpers::alert('er
         
         $is_demo6 = trim(\CommonHelper::isHotelDashBoard($user->group_id));
         $t_f = 'whoiam';
-        if(isset($extra->approved)){ if(!((bool) $extra->approved)){ $t_f = 'approval_pending'; }}
+        //if(isset($extra->approved)){ if(!((bool) $extra->approved)){ $t_f = 'approval_pending'; }}
         $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.customer.'.$t_f:'customer.whoiam';      
         return view($file_name, $this->data);
     }

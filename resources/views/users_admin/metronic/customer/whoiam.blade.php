@@ -395,7 +395,7 @@
                                                         <div class="col-12 m-form__group-sub">     					                                
                                 							<div class="m-checkbox-inline">
                                 								<label class="m-checkbox m-checkbox--solid m-checkbox--brand">
-                                									<input type="checkbox" id="newsLetter" name="newsLetter">      								
+                                									<input type="checkbox" id="newsLetter" name="newsLetter" <?php echo ($user->subscribe_notification==1) ? 'checked="checked"' : '' ?> />      								
                                 									Subscribe to our notifications and news, latest industry updates and features. 
                                                                     <span></span>
                                 								</label>

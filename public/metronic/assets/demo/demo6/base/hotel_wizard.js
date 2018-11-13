@@ -270,6 +270,12 @@ function wizard_step_2(){
     fdata.append("european", $("input[name=european]:checked").val());
     fdata.append("hotelinfo_vat_no", $("input[name=hotelinfo_vat_no]").val());
     
+    var newsLetter = 0;
+    if($("input[name=newsLetter]").is(":checked")){
+         newsLetter = 1;
+    }
+    fdata.append("subscribe_notification", newsLetter);
+        
     if($("input[type=file]")[0].files.length>0){
        fdata.append("avatar",$("input[type=file]")[0].files[0]) 
     }

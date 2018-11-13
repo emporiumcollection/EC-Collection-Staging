@@ -496,6 +496,9 @@ public function generateInvoice($ordid)
 				$invoice_address = \DB::table('tb_settings')->where('key_value', 'invoice_address')->first();
 				$invoice_num = \DB::table('tb_settings')->where('key_value', 'default_invoice_num')->first();
 				
+                $invoice_total_footer_message = \DB::table('tb_settings')->where('key_value', 'invoice_total_footer_message')->first();
+                $invoice_footer_message = \DB::table('tb_settings')->where('key_value', 'invoice_footer_message')->first();
+                
 				$userInfo = \DB::table('tb_users')->where('id', $order_item[0]->user_id)->first();
 				$companydet = \DB::table('tb_user_company_details')->where('user_id', $order_item[0]->user_id )->first();
 				
@@ -699,12 +702,17 @@ public function generateInvoice($ordid)
                 $Totprice = 0;
                 $qty=1;
                 $nos = 1;
+                $subtract_text = '';
                 foreach($order_item as $oitem)
                 {
                     if($oitem->package_type=='hotel')
                     {
                         $title = '';
                         $pacpric = 0;
+                        if($oitem->deduct_first_booking)
+                        {
+                            $subtract_text = '(Subtract membership fee from my first booking commission)';
+                        } 
                         $pchkdet = \DB::table('tb_packages')->select('package_title','package_price')->where('id', $oitem->package_id)->first();
                         if(!empty($pchkdet))
                         {
@@ -751,14 +759,36 @@ public function generateInvoice($ordid)
                     $Totprice = $Totprice + $qtyPr;
                 }
                 $html .= '<tr><td colspan="3" style="text-align:right;"><b>Total(Excl.VAT)<b></td><td class="algRgt font13"><b>'.$currency->content .' '.($Totprice -(($Totprice*$this->data['data']['vatsettings']->content)/100)).'<b></td></tr>';
-                $html .= '<tr><td colspan="3" style="text-align:right;"><b>VAT('. $this->data['data']['vatsettings']->content .'%)<b></td><td class="algRgt font13"><b>'.$currency->content .' '.(($Totprice*$this->data['data']['vatsettings']->content)/100).'<b></td></tr>';
+                
+                
+                if(!$userInfo->european){
+                    
+                    $html .= '<tr><td colspan="3" style="text-align:right;">'.$invoice_total_footer_message->content.'&nbsp;<b>VAT('. $this->data['data']['vatsettings']->content .'%)<b></td><td class="algRgt font13"><b>'.$currency->content .' '.(($Totprice*$this->data['data']['vatsettings']->content)/100).'<b></td></tr>';
 
-                $html .= '<tr><td colspan="4"><hr  style="border-top:1px solid #000; width:100%"/></td>';
+                    $html .= '<tr><td colspan="4"><hr  style="border-top:1px solid #000; width:100%"/></td>';
+                    
+                    $html .= '<tr><td colspan="3" class="algRgt font13"><b>Total<b></td><td class="algRgt font13"><b>'.$currency->content .' '.number_format($Totprice -(($Totprice*$this->data['data']['vatsettings']->content)/100)).'<b></td></tr>';
+                }else{
+                    
+                    $html .= '<tr><td colspan="3" style="text-align:right;">'.$invoice_total_footer_message->content.'&nbsp;('.$companydet->company_tax_number.')&nbsp;<b>VAT('. $this->data['data']['vatsettings']->content .'%)<b></td><td class="algRgt font13"><b>'.$currency->content .' '.(($Totprice*$this->data['data']['vatsettings']->content)/100).'<b></td></tr>';
 
-                $html .= '<tr><td colspan="3" class="algRgt font13"><b>Total<b></td><td class="algRgt font13"><b>'.$currency->content .' '.number_format($Totprice, 2, '.', ',').'<b></td></tr>';
+                    $html .= '<tr><td colspan="4"><hr  style="border-top:1px solid #000; width:100%"/></td>';
+                    
+                    $html .= '<tr><td colspan="3" class="algRgt font13"><b>Total<b></td><td class="algRgt font13"><b>'.$currency->content .' '.number_format($Totprice, 2, '.', ',').'<b></td></tr>';
+                }
                 $html .= '<tr><td colspan="4"><hr  style="border-top:1px solid #000; width:100%"/></td>';
+                                
+                if($subtract_text != ''){
+                    $html .= '<tr><td colspan="4" class="algRgt font13">'.$subtract_text.'</td></tr>';
+                }
+                
                 $html .= '</table></div>';
-            
+                
+                $html .= '<div style="clear:both;"></div><div class="Mrgtop20 font13"><table width="100%">
+				 <tr>
+					<td>'.nl2br($invoice_footer_message->content).'</td>
+                 </tr>   
+                 </table>';
 			
 				$savePdfpath = public_path() . '/uploads/invoice_pdfs/';
                 $pdf = \App::make('dompdf.wrapper');                
@@ -956,6 +986,10 @@ public function generateInvoice($ordid)
                             $this->data['data'] = CommonHelper::getInfo();
                             $this->data['pageslider'] = "";
                             $this->data['currency'] = \DB::table('tb_settings')->select('content')->where('key_value', 'default_currency')->first();
+                            
+                            if(!$userinfom->own_hotel_setup){
+                                return Redirect::to('properties');
+                            }
                             
                             $group_id = \Session::get('gid');
                             $is_demo6 = trim(\CommonHelper::isHotelDashBoard($group_id));

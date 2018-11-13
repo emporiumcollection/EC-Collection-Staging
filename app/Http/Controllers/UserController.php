@@ -1189,6 +1189,7 @@ class UserController extends Controller {
             $user->form_wizard = $request->input('form_wizard');
             $user->contracts = $request->input('contractSignCheck');
             $user->european = $request->input('european');
+            $user->subscribe_notification = $request->input('subscribe_notification');
 
             if (isset($data['avatar']))
                 $user->avatar = $newfilename;
@@ -1236,12 +1237,14 @@ class UserController extends Controller {
                 }
                 //\DB::table('tb_properties')->where('id', $obj_prop->id)->update(array('assigned_user_id'=>$user->id));
                 $prop_id =  $obj_prop->id;
+                \DB::table('tb_properties')->where('id', $prop_id)->update(array('user_id'=>$user->id));
             }else{
                 $hotel_data = array(
                     'property_name' => trim($request->input('hotelinfo_name')),
                     'city' => $request->input('hotelinfo_city'),
                     'country' => $request->input('hotelinfo_country'),
                     'website' => $request->input('hotelinfo_website'),
+                    'user_id' => $user->id,
                     //'assigned_user_id' => $user->id,
                 ); 
                 $prop_id = \DB::table('tb_properties')->insertGetId($hotel_data);    

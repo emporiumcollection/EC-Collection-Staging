@@ -288,7 +288,7 @@ class UserorderController extends Controller {
                 $invoice_total_footer_message = \DB::table('tb_settings')->where('key_value', 'invoice_total_footer_message')->first();
                 $invoice_footer_message = \DB::table('tb_settings')->where('key_value', 'invoice_footer_message')->first();
 				
-				$userInfo = \DB::table('tb_users')->where('id', $order_item[0]->user_id)->first();
+				$userInfo = \DB::table('tb_users')->where('tb_users.id', $order_item[0]->user_id)->first();
 				$companydet = \DB::table('tb_user_company_details')->where('user_id', $order_item[0]->user_id )->first();
 				
                 $cont_logo = '';  
@@ -504,6 +504,7 @@ class UserorderController extends Controller {
 				$Totprice = 0;
 				$qty=1;
 				$nos = 1;
+                $subtract_text = '';
 				foreach($order_item as $oitem)
 				{
 				    $title = '';
@@ -511,6 +512,10 @@ class UserorderController extends Controller {
 					if($oitem->package_type=='hotel')
 					{
 						
+                        if($oitem->deduct_first_booking)
+                        {
+                            $subtract_text = 'Subtract membership fee from my first booking commission';
+                        } 
 						$pchkdet = \DB::table('tb_packages')->select('package_title','package_price')->where('id', $oitem->package_id)->first();
 						if(!empty($pchkdet))
 						{
@@ -557,12 +562,30 @@ class UserorderController extends Controller {
 					$Totprice = $Totprice + $qtyPr;
 				}
 				$html .= '<tr><td colspan="3" style="text-align:right;"><b>Total (Excl.VAT)<b></td><td class="algRgt font13"><b>'.$currency->content .' '.($Totprice -(($Totprice*$this->data['vatsettings']->content)/100)).'<b></td></tr>';
-				$html .= '<tr><td colspan="3" style="text-align:right;">'.$invoice_total_footer_message->content.'&nbsp;<b>VAT of ('. $this->data['vatsettings']->content .'%)<b></td><td class="algRgt font13"><b>'.$currency->content .' '.(($Totprice*$this->data['vatsettings']->content)/100).'<b></td></tr>';
-
+                
+				
+                
+                if(!$userInfo->european){
+                    
+                    $html .= '<tr><td colspan="3" style="text-align:right;">'.$invoice_total_footer_message->content.'&nbsp;<b>VAT of ('. $this->data['vatsettings']->content .'%)<b></td><td class="algRgt font13"><b>'.$currency->content .' '.(($Totprice*$this->data['vatsettings']->content)/100).'<b></td></tr>';
+                
+				    $html .= '<tr><td colspan="4"><hr  style="border-top:1px solid #efefef; width:100%"/></td>';
+                    
+                    $html .= '<tr><td colspan="3" class="algRgt font13"><b>Total<b></td><td class="algRgt font13"><b>'.$currency->content .' '.number_format($Totprice -(($Totprice*$this->data['vatsettings']->content)/100)).'<b></td></tr>';
+                }else{
+                    
+                    $html .= '<tr><td colspan="3" style="text-align:right;">'.$invoice_total_footer_message->content.'&nbsp;('.$companydet->company_tax_number.')&nbsp;<b>VAT of ('. $this->data['vatsettings']->content .'%)<b></td><td class="algRgt font13"><b>'.$currency->content .' '.(($Totprice*$this->data['vatsettings']->content)/100).'<b></td></tr>';
+                
+				    $html .= '<tr><td colspan="4"><hr  style="border-top:1px solid #efefef; width:100%"/></td>';
+                
+				    $html .= '<tr><td colspan="3" class="algRgt font13"><b>Total<b></td><td class="algRgt font13"><b>'.$currency->content .' '.number_format($Totprice, 2, '.', ',').'<b></td></tr>';
+                }
 				$html .= '<tr><td colspan="4"><hr  style="border-top:1px solid #efefef; width:100%"/></td>';
-
-				$html .= '<tr><td colspan="3" class="algRgt font13"><b>Total<b></td><td class="algRgt font13"><b>'.$currency->content .' '.number_format($Totprice, 2, '.', ',').'<b></td></tr>';
-				$html .= '<tr><td colspan="4"><hr  style="border-top:1px solid #efefef; width:100%"/></td>';
+                
+                if($subtract_text != ''){
+                    $html .= '<tr><td colspan="4" class="algRgt font13">'.$subtract_text.'</td></tr>';
+                }
+                
 				$html .= '</table></div>';
                 
                 $html .= '<div style="clear:both;"></div><div class="Mrgtop20 font13"><table width="100%">
