@@ -782,11 +782,11 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                         							</div>
                                                                                                     @endif
                                                                                                 </div>
-                                                                                                @if($package->package_for==0 || $package->package_for==1)                                                                                                           @if($user->own_hotel_setup==0)  
+                                                                                                @if($package->package_for==0 || $package->package_for==1)                                                                                                          
                                                                                                 <div class="col-xl-4 col-sm-4 col-md-4 col-lg-4 m--align-right">
-                                                                                                    <a href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->package_price }});" class="btn btn-success">Add to cart</a>
+                                                                                                    <a href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->package_price }});" class="btn btn-success" id="add_to_{{$package->id}}">Add to cart</a>
                                                                                                 </div>
-                                                                                                  @endif
+                                                                                                  
                                                                                                 @endif
                                                                                             </div> 
                                                                                                
@@ -892,11 +892,11 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                             							</div>
                                                                                                         @endif */ ?>
                                                                                                     </div>
-                                                                                                    @if($package->package_for==0 || $package->package_for==1)                                                                                                           @if($user->own_hotel_setup==0)  
+                                                                                                    @if($package->package_for==0 || $package->package_for==1)                                                                                                           
                                                                                                     <div class="col-xl-4 col-sm-4 col-md-4 col-lg-4 m--align-right">
-                                                                                                        <a href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->package_price }});" class="btn btn-success">Add to cart</a>
+                                                                                                        <a href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->package_price }});" class="btn btn-success" id="add_to_{{$package->id}}">Add to cart</a>
                                                                                                     </div>
-                                                                                                       @endif 
+                                                                                                    
                                                                                                     @endif
                                                                                                 </div>
                                                                                                 
@@ -1513,6 +1513,28 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                     });
                } 
             });
+            
+            check_setup('{{$user->own_hotel_setup}}');
+            
+            $("input[name=accountsetup]").click(function(){
+                var _val = $("input[name=accountsetup]:checked").val();                
+                check_setup(_val);
+            });
+            
+            function check_setup(_val){
+                $.ajax({
+                    url:base_url+'/get_setup', 
+                    type:'get',    
+                    dataType:'json',
+                    success:function(response){                        
+                        if(_val=='1'){ 
+                            $("#add_to_"+response.id).css('display', 'none');
+                        }else{  
+                            $("#add_to_"+response.id).css('display', '');
+                        }
+                    }
+                });
+            }
             
             base_url = $("#base_url").val();
             /*$('#Carousel').carousel({

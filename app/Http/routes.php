@@ -365,6 +365,8 @@ Route::group(['middleware' => 'auth'], function()
     
     Route::get('addhotel', 'PropertiesController@addhotel');
     
+    Route::get('get_setup', 'PackagesController@get_setup');
+    
 });
 
 Route::post('hotel_membership', 'Frontend\HotelMembershipController@hotelMembershipSignupSave');
