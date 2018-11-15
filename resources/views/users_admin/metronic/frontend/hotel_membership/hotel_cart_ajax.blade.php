@@ -15,6 +15,7 @@
     	{{--*/ $subTotal = 0; $orderTotal = 0; $package_for = array(2); /*--}}
     	@foreach($packages as $package)
 		{{--*/ $subTotal += $package->package_price; /*--}}
+        
         <tr>
             <td class="overview-td">
             @if($package->package_image!='')
@@ -23,27 +24,20 @@
             </td>
             <td>
           		<div class="product-title-and-remove-option">
-                	<span class="product-title">{{$package->package_title}}</span>
+                	<span class="product-title"><b>{{$package->package_title}}</b></span>
                     <?php if(!in_array($package->package_for, $package_for)){ 
                             if($user->own_hotel_setup==0){    
                     ?>
                         
                         <a href="javascript:voic(0);" onclick="javascript:removeItemFromCart({{$package->id}},{{ $package->package_price }});"><i class="fa fa-trash"></i></a>
+                    <?php }elseif(($user->own_hotel_setup==1) && ($package->package_for !=1) ){ ?>
+                        <a href="javascript:voic(0);" onclick="javascript:removeItemFromCart({{$package->id}},{{ $package->package_price }});"><i class="fa fa-trash"></i></a>
                     <?php } } ?>
                 </div>
                 <div>
-                @if($package->package_modules !="" && $package->package_modules!="NULL")
-              
-                  <h4>Module Offered in this packages are:</h4>
-                  {{--*/  $modulesOffered = DB::table('tb_module')->whereIn('module_id', explode(',',$package->package_modules))->get();/*--}}
-                  @foreach ($modulesOffered as $moduleRow)
+                
+                    <p>{!! nl2br($package->package_description) !!}</p>
                   
-                    <p><h5>Module Name: {{ $moduleRow->module_name}}</h5></p>
-                    <p>Module Note: {{ $moduleRow->module_note}}</p>
-                    <p>Module Description: {!! nl2br($moduleRow->module_desc) !!}</p>
-                   @endforeach
-                   <a href="#" onclick="javascript: return false;" data-toggle="modal" data-target="#contract_model_{{$package->id}}">View contracts</a>
-                @endif
                 
                 </div>
             </td>
@@ -75,7 +69,7 @@
                            
     <tr>
         <td>
-        <label>Vat {{ $data["vatsettings"]->content}}%</label> 
+        <label>Vat {{(\Auth::user()->european) ? 'Inclusive' : 'Exclusive'}} {{ $data["vatsettings"]->content}}%</label> 
         </td>
         <td>
         <label class="m--pull-right">{!! isset($currency->content)?$currency->content:'&euro;' !!}{{number_format(($orderTotal*$data["vatsettings"]->content)/100 , 2, '.', '')}}</label>

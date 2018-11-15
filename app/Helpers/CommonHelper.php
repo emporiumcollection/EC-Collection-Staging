@@ -1096,6 +1096,7 @@ $allowedCurrenciesinProject=array("OMR","BHD","KWD","USD","CHF","EUR","KYD","GIP
 						h2{padding-bottom:0px; margin-bottom:0px;} 
 						.valin{ vertical-align:top;} 
 						.valinbt{ vertical-align:bottom; text-align:right;}
+                        .footer-font-size{ font-size:9px; }
 						.page {
 						  background: white;
 						  display: block;
@@ -1149,7 +1150,7 @@ $allowedCurrenciesinProject=array("OMR","BHD","KWD","USD","CHF","EUR","KYD","GIP
                             position: relative;
                             *overflow: hidden;
                         }                                                      
-                        br {
+                        .center_content br {
                             content: "";
                             margin: 2em;
                             display: block;
@@ -1190,22 +1191,22 @@ $allowedCurrenciesinProject=array("OMR","BHD","KWD","USD","CHF","EUR","KYD","GIP
                 </div>  
                 
                 <div style="clear:both;"> &nbsp;</div>
-                
+                <div class="center_content">
                 '.nl2br($center_content).'
-                
+                </div>
                 <div style="clear:both;"> &nbsp;</div>
                 <div class="footer"> 
                     <table width="100%" class="Mrgtop40">  
                                           
                         <tr class="tr_vertical_align">  
-    						<td width="33%" >    						    
-    						  '.$contract_block1->content.'	   				 	 
+    						<td width="40%" class="footer-font-size">    						    
+    						  '.nl2br($contract_block1->content).'	   				 	 
     						</td>
-                            <td width="33%">    						    
-    						  '.$contract_block2->content.'	   				 	 
+                            <td width="30%" class="footer-font-size">    						    
+    						  '.nl2br($contract_block2->content).'	   				 	 
     						</td>
-                            <td width="33%">    						    
-    						  '.$contract_block3->content.'	   				 	 
+                            <td width="30%" class="footer-font-size">    						    
+    						  '.nl2br($contract_block3->content).'	   				 	 
     						</td>
     					 </tr>                                                                                        
                     </table> 

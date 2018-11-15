@@ -363,6 +363,8 @@ Route::group(['middleware' => 'auth'], function()
     
     Route::get('downloadrequirementsheet/{filename}', 'UserorderController@downloadrequirementsheet');
     
+    Route::get('addhotel', 'PropertiesController@addhotel');
+    
 });
 
 Route::post('hotel_membership', 'Frontend\HotelMembershipController@hotelMembershipSignupSave');

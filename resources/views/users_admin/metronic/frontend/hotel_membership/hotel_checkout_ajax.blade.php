@@ -17,21 +17,10 @@
                 <tr>                    
                     <td>
                     	<div class="product-title-and-remove-option">
-                        	<span class="product-title">{{$package->package_title}}</span>
+                        	<span class="product-title"><b>{{$package->package_title}}</b></span>
                         </div>
                         <div>
-                            @if($package->package_modules !="" && $package->package_modules!="NULL")
-                            
-                              <h4>Module Offered in this packages are:</h4>
-                              {{--*/  $modulesOffered = DB::table('tb_module')->whereIn('module_id', explode(',',$package->package_modules))->get();/*--}}
-                              @foreach ($modulesOffered as $moduleRow)
-                              
-                                <p><h5>Module Name: {{ $moduleRow->module_name}}</h5></p>
-                                <p>Module Note: {{ $moduleRow->module_note}}</p>
-                                <p>Module Description: {!! nl2br($moduleRow->module_desc) !!}</p>
-                               @endforeach
-                               <a href="#" onclick="javascript: return false;" data-toggle="modal" data-target="#contract_model_{{$package->id}}">View contracts</a>
-                            @endif
+                            <p>{!! nl2br($package->package_description) !!}</p>
                         </div>
                     </td>
                
@@ -93,7 +82,7 @@
                                        
                 <tr>
                     <td>
-                        Vat {{ $data["vatsettings"]->content}}% 
+                        Vat {{(\Auth::user()->european) ? 'Inclusive' : 'Exclusive'}} {{ $data["vatsettings"]->content}}% 
                     </td>
                     <td>
                         <label class="m--pull-right">

@@ -238,6 +238,19 @@
                                     							</label>
                                     						</div>
                                                         </div>
+                                                        
+                                                    </div>
+                                                    <div class="row" id="dv_sel_no_option">
+                                                        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
+                                                            <hr />
+                                                        </div>
+                                                        <div class="col-xl-4 col-sm-4 col-md-4 col-lg-4" style="margin-top: 4px;">
+                                                            <a href="#" title="Download Setup Guide" class="m-btn btn btn-primary" target="_blank"><i class="la la-file-pdf-o"></i>Download Setup Guide</a>
+                                                        </div>
+                                                        <div class="col-xl-8 col-sm-8 col-md-8 col-lg-8">
+                                                            Need Help?<br />
+                                                            Download Our setup guide
+                                                        </div>
                                                     </div>
     											</div>
                                             </div>
@@ -269,7 +282,7 @@
     														Username:
     													</label>
     													<div class="col-xl-9 col-lg-9">
-    														<input name="username" type="text" id="username" class="form-control m-input" required=""  value="{{ $user->username }}" />  
+    														<input name="username" type="text" id="username" class="form-control m-input m-input--solid" required=""  value="{{ $user->username }}" />  
     													</div>
     												</div>
     												<div class="form-group m-form__group row">
@@ -277,7 +290,7 @@
     														 First Name 
     													</label>
     													<div class="col-xl-9 col-lg-9">
-    														<input type="text" name="first_name" id="first_name" class="form-control dash-input-style" placeholder="John" required="" value="{{ $user->first_name }}">
+    														<input type="text" name="first_name" id="first_name" class="form-control m-input m-input--solid" placeholder="John" required="" value="{{ $user->first_name }}">
     													</div>
     												</div>
                                                     <div class="form-group m-form__group row">
@@ -285,7 +298,7 @@
     														Last Name
     													</label>
     													<div class="col-xl-9 col-lg-9">
-    														<input type="text" name="last_name" id ="last_name"  class="form-control dash-input-style" placeholder="Doe" value="{{ $user->last_name }}" required="">
+    														<input type="text" name="last_name" id ="last_name"  class="form-control m-input m-input--solid" placeholder="Doe" value="{{ $user->last_name }}" required="">
     													</div>
     												</div>                                                    
                                                     
@@ -294,7 +307,12 @@
     														Avatar
     													</label>
     													<div class="col-xl-9 col-lg-9">
-                                                            <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                            <input type="file" name="avatar" class="form-control m-input m-input--solid" />
+                                                    		Image Dimension 80 x 80 px <br />
+                                                            @if(!empty($user->avatar))
+    		                                                {!! SiteHelpers::showUploadedFile($user->avatar,'/uploads/users/',80,80) !!}
+                                                            @endif
+                                                            <?php /* <div class="fileinput fileinput-new" data-provides="fileinput">
                                                                 <span class="btn btn-primary btn-file">
                                                                     <span class="fileinput-new">Upload Avatar Image</span>
                                                                     @if(!empty($user->avatar))
@@ -307,7 +325,7 @@
                                                                 <br />
                                                     			Image Dimension 80 x 80 px <br />
     		                                                    {!! SiteHelpers::showUploadedFile($user->avatar,'/uploads/users/',80,80) !!}
-                                                            </div>
+                                                            </div> */ ?>
     													</div>
     												</div>
                                                     
@@ -316,7 +334,7 @@
     														Hotel Name:
     													</label>
     													<div class="col-xl-9 col-lg-9">
-    														<input name="hotelinfo_name" type="text" id="hotelinfo_name" class="form-control m-input" required=""  value="<?php echo isset($property_assigned->property_name) ? $property_assigned->property_name : '' ?>" />  
+    														<input name="hotelinfo_name" type="text" id="hotelinfo_name" class="form-control m-input m-input--solid" required=""  value="<?php echo isset($property_assigned->property_name) ? $property_assigned->property_name : '' ?>" />  
     													</div>
     												</div>
                                                     
@@ -325,7 +343,7 @@
     														Hotel City:
     													</label>
     													<div class="col-xl-9 col-lg-9">
-    														<input name="hotelinfo_city" type="text" id="hotelinfo_city" class="form-control m-input" required=""  value="<?php echo isset($property_assigned->city) ? $property_assigned->city : '' ?>" />  
+    														<input name="hotelinfo_city" type="text" id="hotelinfo_city" class="form-control m-input m-input--solid" required=""  value="<?php echo isset($property_assigned->city) ? $property_assigned->city : '' ?>" />  
     													</div>
     												</div>
                                                     
@@ -334,7 +352,7 @@
     														Hotel Country:
     													</label>
     													<div class="col-xl-9 col-lg-9">
-    														<input name="hotelinfo_country" type="text" id="hotelinfo_country" class="form-control m-input" required=""  value="<?php echo isset($property_assigned->country) ? $property_assigned->country : '' ?>" />  
+    														<input name="hotelinfo_country" type="text" id="hotelinfo_country" class="form-control m-input m-input--solid" required=""  value="<?php echo isset($property_assigned->country) ? $property_assigned->country : '' ?>" />  
     													</div>
     												</div>                                                    
                                                     
@@ -343,7 +361,7 @@
     														Hotel Website:
     													</label>
     													<div class="col-xl-9 col-lg-9">
-    														<input name="hotelinfo_website" type="text" id="hotelinfo_website" class="form-control m-input" value="<?php echo isset($property_assigned->website) ? $property_assigned->website : '' ?>" />  
+    														<input name="hotelinfo_website" type="text" id="hotelinfo_website" class="form-control m-input m-input--solid" value="<?php echo isset($property_assigned->website) ? $property_assigned->website : '' ?>" />  
     													</div>
     												</div>
                                                    
@@ -387,7 +405,7 @@
         														Vat Number
         													</label>
         													<div class="col-xl-9 col-lg-9">
-        														<input name="hotelinfo_vat_no" required="required" type="text" id="hotelinfo_vat_no" class="form-control m-input" value="{{$company_details->company_tax_number}}" />  
+        														<input name="hotelinfo_vat_no" required="required" type="text" id="hotelinfo_vat_no" class="form-control m-input m-input--solid" value="{{$company_details->company_tax_number}}" />  
         													</div>
         												</div>
                                                     </div>
@@ -607,8 +625,10 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                              <div class="form-group m-form__group row">
             													<label class="col-xl-3 col-lg-3 col-form-label">
             														Upload STO Contract
-            													</label>                                                      
-                                                        		<input type="file" name="signed_contract">
+            													</label>
+                                                                <div class="col-xl-9 col-lg-9">                                                       
+                                                        		  <input type="file" name="signed_contract" class="form-control m-input m-input--solid" />
+                                                                </div>
             												 </div>                                                                                                                      
                                                         </div>   
                                                         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12"><br />             
@@ -616,8 +636,10 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                              <div class="form-group m-form__group row">
             													<label class="col-xl-3 col-lg-3 col-form-label">
             														Upload Hotel Brochure
-            													</label>                                                      
-                                                        		<input type="file" name="hotel_brochure" />
+            													</label>
+                                                                <div class="col-xl-9 col-lg-9">                                                      
+                                                        		  <input type="file" name="hotel_brochure" class="form-control m-input m-input--solid" />
+                                                                </div>
             												 </div>                                                                                                                      
                                                         </div>                                                     
                                                         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
@@ -686,7 +708,7 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                         </li>			
                                                     				</ul>
                                                     				<div class="tab-content">
-                                                    					    <div class="tab-pane  active" id="reservation_distribution">
+                                                    					    <div class="tab-pane active" id="reservation_distribution">
                                                                                 <!--begin::Section-->
                                                             					<div class="m-accordion m-accordion--default m-accordion--solid" id="m_accordion_3_reservation_distribution" role="tablist">
                                                             						<!--begin::Item-->
@@ -700,8 +722,9 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                                     {{--*/ $k=1; $tottyp = count($packages); /*--}}
                                                                                     @foreach($packages as $key=>$package)
                                                                                     @if($package->package_category=="Reservation_Distribution")
+                                                                                    {{--*/ $sn=0; /*--}}
                                                             						<div class="m-accordion__item">
-                                                            							<div class="m-accordion__item-head collapsed"  role="tab" id="m_accordion_3_item_reservation_distribution_{{ $k }}_head" data-toggle="collapse" href="#m_accordion_3_item_reservation_distribution_{{ $k }}_body" aria-expanded="    false">
+                                                            							<div class="m-accordion__item-head <?php echo ($sn==0) ? '' : 'collapsed' ?>"  role="tab" id="m_accordion_3_item_reservation_distribution_{{ $k }}_head" data-toggle="collapse" href="#m_accordion_3_item_reservation_distribution_{{ $k }}_body" aria-expanded="    false">
                                                             								<span class="m-accordion__item-icon">
                                                             									<i class="fa flaticon-user-ok"></i>
                                                             								</span>
@@ -710,7 +733,7 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                             								</span>
                                                             								<span class="m-accordion__item-mode"></span>
                                                             							</div>
-                                                            							<div class="m-accordion__item-body collapse" id="m_accordion_3_item_reservation_distribution_{{ $k }}_body" class=" " role="tabpanel" aria-labelledby="m_accordion_3_item_reservation_distribution_{{ $k }}_head" data-parent="#m_accordion_3_reservation_distribution">
+                                                            							<div class="m-accordion__item-body <?php echo ($sn==0) ? 'show' : 'collapse' ?>" id="m_accordion_3_item_reservation_distribution_{{ $k }}_body" class=" " role="tabpanel" aria-labelledby="m_accordion_3_item_reservation_distribution_{{ $k }}_head" data-parent="#m_accordion_3_reservation_distribution">
                                                             								<div class="m-accordion__item-content">
                                                                                             <div class="row">
                                                             									<div class="col-sm-6 col-md-6 col-lg-6 pull-left">
@@ -721,16 +744,7 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                                                 <div  class="col-sm-6 col-md-6 col-lg-6 pull-right">
                                                                                                     <div class="row">
                                                                                                         <div  class="col-sm-12 col-md-12 col-lg-12 border-2px">
-                                                                                                            <p>Package Duration :: {{$package->package_duration}} {{$package->package_duration_type}}</p>  
-                                                                                                            <p>Package Details: {!! nl2br($package->package_description) !!}</p>
-                                                                                                            <h4>Package Modules Include:</h4>
-                                                                                                            {{--*/  $modulesOffered = DB::table('tb_module')->whereIn('module_id', explode(',',$package->package_modules))->get();/*--}}
-                                                                                                            {{--*/ $mod_arr = array(); /*--}}  
-                                                                                                            @foreach ($modulesOffered as $moduleRow)
-                                                                                                                {{--*/ $mod_arr[] = $moduleRow->module_name; /*--}}                                 
-                                                                                                                
-                                                                                                            @endforeach  
-                                                                                                            {{--*/ $str_module = implode(', ', $mod_arr); echo $str_module; /*--}}
+                                                                                                            <p>{!! nl2br($package->package_description) !!}</p>
                                                                                                             <div class="row">
                                                                                                                 <div class="col-sm-12 col-md-12 col-lg-12 top-margin-20">
                                                                                                                     <h6>{!! isset($currency->content)?$currency->content:'&euro;' !!} {{ number_format($package->package_price,2) }} </h6>
@@ -779,8 +793,9 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                             								</div>
                                                             							</div>
                                                             						</div>
+                                                                                        {{--*/ $sn++;  /*--}}
                                                                                     @endif
-                                                                                    {{--*/ $k++; /*--}}
+                                                                                    {{--*/ $k++;  /*--}}
                                                                                     @endforeach
                                                             						<!--end::Item-->     
                                                                                 </div>
@@ -789,11 +804,12 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                                 <!--begin::Section-->
                                                             					<div class="m-accordion m-accordion--default m-accordion--solid" id="m_accordion_3_sales_marketing" role="tablist">
                                                             						<!--begin::Item-->
-                                                                                    {{--*/ $k=1; $tottyp = count($packages); /*--}}                                    
+                                                                                    {{--*/ $k=1; $tottyp = count($packages); /*--}}                                                                                                                   {{--*/ $kn=0; /*--}}
                                                                                     @foreach($packages as $key=>$package)
                                                                                     @if($package->package_category=="Sales_Marketing")
+                                                                                    
                                                             						<div class="m-accordion__item">
-                                                            							<div class="m-accordion__item-head collapsed"  role="tab" id="m_accordion_3_item_sales_marketing_{{ $k }}_head" data-toggle="collapse" href="#m_accordion_3_item_sales_marketing_{{ $k }}_body" aria-expanded="    false">
+                                                            							<div class="m-accordion__item-head <?php echo $kn==0 ? '' : 'collapsed' ?> "  role="tab" id="m_accordion_3_item_sales_marketing_{{ $k }}_head" data-toggle="collapse" href="#m_accordion_3_item_sales_marketing_{{ $k }}_body" aria-expanded="    false">
                                                             								<span class="m-accordion__item-icon">
                                                             									<i class="fa flaticon-user-ok"></i>
                                                             								</span>
@@ -802,7 +818,7 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                             								</span>
                                                             								<span class="m-accordion__item-mode"></span>
                                                             							</div>
-                                                            							<div class="m-accordion__item-body collapse" id="m_accordion_3_item_sales_marketing_{{ $k }}_body" class=" " role="tabpanel" aria-labelledby="m_accordion_3_item_sales_marketing_{{ $k }}_head" data-parent="#m_accordion_3_sales_marketing">
+                                                            							<div class="m-accordion__item-body <?php echo $kn==0 ? 'show' : 'collapse' ?>" id="m_accordion_3_item_sales_marketing_{{ $k }}_body" class=" " role="tabpanel" aria-labelledby="m_accordion_3_item_sales_marketing_{{ $k }}_head" data-parent="#m_accordion_3_sales_marketing">
                                                             								<div class="m-accordion__item-content">
                                                                                                 <div class="row">
                                                             									<div class="col-sm-6 col-md-6 col-lg-6 pull-left">
@@ -813,16 +829,9 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                                                 <div  class="col-sm-6 col-md-6 col-lg-6 pull-right">
                                                                                                     <div class="row">
                                                                                                         <div  class="col-sm-12 col-md-12 col-lg-12 border-2px">
-                                                                                                            <p>Package Duration :: {{$package->package_duration}} {{$package->package_duration_type}}</p>  
-                                                                                                            <p>Package Details: {!! nl2br($package->package_description) !!}</p>
-                                                                                                            <h4>Package Modules Include:</h4>
-                                                                                                            {{--*/  $modulesOffered = DB::table('tb_module')->whereIn('module_id', explode(',',$package->package_modules))->get();/*--}}
-                                                                                                            {{--*/ $mod_arr = array(); /*--}}  
-                                                                                                            @foreach ($modulesOffered as $moduleRow)
-                                                                                                                {{--*/ $mod_arr[] = $moduleRow->module_name; /*--}}                                 
-                                                                                                                
-                                                                                                            @endforeach  
-                                                                                                            {{--*/ $str_module = implode(', ', $mod_arr); echo $str_module; /*--}}
+                                                                                                            
+                                                                                                            <p>{!! nl2br($package->package_description) !!}</p>
+                                                                                                            
                                                                                                             <div class="row">
                                                                                                                 <div class="col-sm-12 col-md-12 col-lg-12 top-margin-20">
                                                                                                                     <h6>{!! isset($currency->content)?$currency->content:'&euro;' !!} {{ number_format($package->package_price,2) }} </h6>
@@ -857,7 +866,7 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                                                 </div>
                                                                                                 </div>
                                                                                                 
-                                                                                                <div class="row">
+                                                                                                <div class="row margin-top">
                                                                                                 
                                                                                                     <div class="col-xl-8 col-sm-8 col-md-8 col-lg-8">
                                                                                                         <?php /* @if(CNF_SUBTRACT_FEE)
@@ -894,6 +903,7 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                             								</div>
                                                             							</div>
                                                             						</div>
+                                                                                    {{--*/ $kn++; /*--}}
                                                                                     @endif
                                                                                     {{--*/ $k++; /*--}}
                                                                                     @endforeach
@@ -909,10 +919,12 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                             					<div class="m-accordion m-accordion--default m-accordion--solid" id="m_accordion_3_advertising" role="tablist">
                                                             						<!--begin::Item-->
                                                                                     {{--*/ $k=1; $tottyp = count($packages); /*--}}
+                                                                                    {{--*/ $yn=0; /*--}}
                                                                                     @foreach($packages as $key=>$package)
                                                                                     @if($package->package_category=="Advertising")
+                                                                                    
                                                             						<div class="m-accordion__item">
-                                                            							<div class="m-accordion__item-head collapsed"  role="tab" id="m_accordion_3_item_advertising_{{ $k }}_head" data-toggle="collapse" href="#m_accordion_3_item_advertising_{{ $k }}_body" aria-expanded="    false">
+                                                            							<div class="m-accordion__item-head <?php echo ($yn==0) ? '' : 'collapsed' ?>"  role="tab" id="m_accordion_3_item_advertising_{{ $k }}_head" data-toggle="collapse" href="#m_accordion_3_item_advertising_{{ $k }}_body" aria-expanded="    false">
                                                             								<span class="m-accordion__item-icon">
                                                             									<i class="fa flaticon-user-ok"></i>
                                                             								</span>
@@ -921,7 +933,7 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                             								</span>
                                                             								<span class="m-accordion__item-mode"></span>
                                                             							</div>
-                                                            							<div class="m-accordion__item-body collapse" id="m_accordion_3_item_advertising_{{ $k }}_body" class=" " role="tabpanel" aria-labelledby="m_accordion_3_item_advertising_{{ $k }}_head" data-parent="#m_accordion_3_advertising">
+                                                            							<div class="m-accordion__item-body  <?php echo ($yn==0) ? 'show' : 'collapse' ?>" id="m_accordion_3_item_advertising_{{ $k }}_body" class=" " role="tabpanel" aria-labelledby="m_accordion_3_item_advertising_{{ $k }}_head" data-parent="#m_accordion_3_advertising">
                                                             								<div class="m-accordion__item-content">
                                                                                             <div class="row">
                                                             									<div class="col-sm-6 col-md-6 col-lg-6 pull-left">
@@ -932,16 +944,9 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                                                 <div  class="col-sm-6 col-md-6 col-lg-6 pull-right">
                                                                                                     <div class="row">
                                                                                                         <div  class="col-sm-12 col-md-12 col-lg-12 border-2px">
-                                                                                                            <p>Package Duration :: {{$package->package_duration}} {{$package->package_duration_type}}</p>  
-                                                                                                            <p>Package Details: {!! nl2br($package->package_description) !!}</p>
-                                                                                                            <h4>Package Modules Include:</h4>
-                                                                                                            {{--*/  $modulesOffered = DB::table('tb_module')->whereIn('module_id', explode(',',$package->package_modules))->get();/*--}}
-                                                                                                            {{--*/ $mod_arr = array(); /*--}}  
-                                                                                                            @foreach ($modulesOffered as $moduleRow)
-                                                                                                                {{--*/ $mod_arr[] = $moduleRow->module_name; /*--}}                                 
-                                                                                                                
-                                                                                                            @endforeach  
-                                                                                                            {{--*/ $str_module = implode(', ', $mod_arr); echo $str_module; /*--}}
+                                                                                                            
+                                                                                                            <p>{!! nl2br($package->package_description) !!}</p>
+                                                                                                            
                                                                                                             <div class="row">
                                                                                                                 <div class="col-sm-12 col-md-12 col-lg-12 top-margin-20">
                                                                                                                     <h6>{!! isset($currency->content)?$currency->content:'&euro;' !!} {{ number_format($package->package_price,2) }} </h6>
@@ -990,6 +995,7 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                             								</div>
                                                             							</div>
                                                             						</div>
+                                                                                    {{--*/ $yn++; /*--}}
                                                                                     @endif
                                                                                     {{--*/ $k++; /*--}}
                                                                                     @endforeach
@@ -1159,12 +1165,14 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
     
     .carousel-inner {
       position: relative;
+      height:400px;
       width: 100%;
       overflow: hidden;
     }
     
     .carousel-inner > .item {
-      position: relative;
+      position: absolute;
+      height:400px;
       display: none;
       -webkit-transition: 0.6s ease-in-out left;
               transition: 0.6s ease-in-out left;
@@ -1504,12 +1512,74 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                         this.checked=false;
                     });
                } 
-            });             
-                                                
+            });
+            
             base_url = $("#base_url").val();
+            /*$('#Carousel').carousel({
             $('#Carousel').carousel({
                 interval: 5000
+            });*/
+            var current_fs, next_fs, previous_fs;
+            
+            
+            
+            
+            // settings
+              var $slider = $('.carousel-inner'); // class or id of carousel slider
+              var $slide = '.item'; // could also use 'img' if you're not using a ul
+              var $transition_time = 1000; // 1 second
+              var $time_between_slides = 4000; // 4 seconds
+            
+              function slides(){
+                return $slider.find($slide);
+              }
+            
+              slides().fadeOut();
+            
+              // set active classes
+              slides().first().addClass('active');
+              slides().first().fadeIn($transition_time);
+            
+              // auto scroll 
+              $interval = setInterval( 
+                function(){
+                if(slides().length > 1){
+                  var $i = $slider.find($slide + '.active').index();
+                                      
+                  slides().eq($i).removeClass('active');
+                  slides().eq($i).fadeOut($transition_time);
+            
+                  if (slides().length == $i + 1) $i = -1; // loop to start
+            
+                  slides().eq($i + 1).fadeIn($transition_time);
+                  slides().eq($i + 1).addClass('active');
+                  }
+                }
+                , $transition_time +  $time_between_slides 
+              );
+            
+            
+            $(".left").click(function(){
+                var $i = $slider.find($slide + '.active').index();
+                if($i - 1 >= 0){ 
+                  slides().eq($i).removeClass('active');
+                  slides().eq($i).fadeOut($transition_time);                  
+                  slides().eq($i - 1).fadeIn($transition_time);
+                  slides().eq($i - 1).addClass('active');
+                }
             });
+            
+            $(".right").click(function(){
+                var $i = $slider.find($slide + '.active').index();
+                if($i + 1 < slides().length){ 
+                  slides().eq($i).removeClass('active');
+                  slides().eq($i).fadeOut($transition_time);
+                  slides().eq($i + 1).fadeIn($transition_time);
+                  slides().eq($i + 1).addClass('active');
+                }
+            });
+            
+            
             $("#contractSignCheck").click(function(){
                 if($("#contractSignCheck").is(':checked')){
                     $("#contractSignCheckFinal").prop("checked", true);

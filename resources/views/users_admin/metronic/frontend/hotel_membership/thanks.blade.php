@@ -35,47 +35,39 @@
                                 </div> 
                                 <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
                                        
-                                </div>                                                                                                                                       
+                                </div>  
                                 <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 pref-top-pad">
-                                    <div class="row">                                
-                                        <div class="col-xs-2 col-sm-2 m--align-right">
-                                            First Name:
+                                    Thank you for submitting your information.                                            
+                                </div>
+                                <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
+                                    <hr />        
+                                </div>  
+                                <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 padding-30 m--align-center"><h2>Order Summary</h2></div>                                                                                                                            
+                                <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="row padding-30">                                
+                                        <div class="col-xs-3 col-sm-3 m--align-center">
+                                            First Name: <?php echo $user->first_name; ?>
                                         </div>
-                                        <div class="col-xs-4 col-sm-4">
-                                            <?php echo $user->first_name; ?>
+                                        <div class="col-xs-3 col-sm-3 m--align-center">
+                                            Last Name: <?php echo $user->last_name; ?>
                                         </div>
-                                        <div class="col-xs-2 col-sm-2 m--align-right">
-                                            Last Name:
+                                        <div class="col-xs-3 col-sm-3 m--align-center">
+                                            E-mail: <?php echo $user->email; ?>
                                         </div>
-                                        <div class="col-xs-4 col-sm-4">
-                                            <?php echo $user->last_name; ?>
-                                        </div>
-                                        <div class="col-xs-2 col-sm-2 m--align-right">
-                                            E-mail:
-                                        </div>
-                                        <div class="col-xs-4 col-sm-4">
-                                            <?php echo $user->email; ?>
-                                        </div>
-                                        <div class="col-xs-2 col-sm-2 m--align-right">
-                                            Mobile No:
-                                        </div>
-                                        <div class="col-xs-4 col-sm-4">
-                                            <?php echo $user->mobile_number; ?>
+                                        <div class="col-xs-3 col-sm-3 m--align-center">
+                                            Mobile No: <?php echo $user->mobile_number; ?>
                                         </div>
                                     </div>
-                                    <div class="row m--align-center" style="margin-right: 25px;">
-                                        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 pref-top-pad">
-                                            <hr />
-                                            Thank you for submitting your information.                                            
-                                        </div> 
-                                        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 padding-30"><a href="{{ URL::to('userorder_downloadinvoicepdf/'.$order_id)}}" class="tips btn btn-xs btn-primary"><i class="fa  icon-file-pdf "></i>Download Your Invoice</a></div>
-                                        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 padding-30"><a href="{{ URL::to('downloadrequirementsheet/Emporium-Voyage-Hotel-Implementation.pdf')}}" class="tips btn btn-xs btn-primary"><i class="fa  icon-file-pdf "></i>Download Hotel Requirements Sheet</a></div>
-                                        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 padding-30"><a href="{{ URL::to('downloadrequirementsheet/Emporium-Voyage-Property Information.pdf')}}" class="tips btn btn-xs btn-primary"><i class="fa  icon-file-pdf "></i>Download Property Requirements Sheet</a></div>
+                                    <div class="row padding-30 m--align-center" style="margin-right: 25px;">                                        
+                                        <div class="col-xl-4 col-sm-4 col-md-4 col-lg-4"><a href="{{ URL::to('userorder_downloadinvoicepdf/'.$order_id)}}" class="tips btn btn-xs btn-primary"><i class="fa  icon-file-pdf "></i>Download Your Invoice</a></div>
+                                        <div class="col-xl-4 col-sm-4 col-md-4 col-lg-4"><a href="{{ URL::to('downloadrequirementsheet/Emporium-Voyage-Hotel-Implementation.pdf')}}" class="tips btn btn-xs btn-primary"><i class="fa  icon-file-pdf "></i>Download Hotel Requirements Sheet</a></div>
+                                        <div class="col-xl-4 col-sm-4 col-md-4 col-lg-4"><a href="{{ URL::to('downloadrequirementsheet/Emporium-Voyage-Property Information.pdf')}}" class="tips btn btn-xs btn-primary"><i class="fa  icon-file-pdf "></i>Download Property Requirements Sheet</a></div>
                                     </div>
                                 </div>
                             </div>
                             
                             <div class="row">
+                                <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 padding-30 m--align-center"><h2>Dashboard</h2></div> 
                         		<div class="col-sm-12 col-md-12 col-xl-12">
                                     
                                     <div class="row">
