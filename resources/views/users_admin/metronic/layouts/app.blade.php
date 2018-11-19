@@ -24,6 +24,8 @@
         <link href="{{ asset('metronic/assets/css/fonts/awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('metronic/assets/css/icons.min.css') }}" rel="stylesheet" /> 
         <link href="{{ asset('metronic/assets/demo/demo6/base/custom.css') }}" rel="stylesheet" type="text/css" />
+        
+        <link href="{{ asset('sximo/js/plugins/select2/select2.css')}}" rel="stylesheet">
 		<!--end::Base Styles -->
 		
         <!-- Favicon Start -->
@@ -47,7 +49,8 @@
         <!-- Favicon END -->
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        
+        		<script type="text/javascript" src="{{ asset('sximo/js/plugins/select2/select2.min.js') }}"></script>
+                
         @yield('style')
 	</head>
 	<!-- end::Head -->
@@ -861,6 +864,7 @@
     	<!--begin::Base Scripts -->
 		<script src="{{ asset('metronic/assets/vendors/base/vendors.bundle.js') }}" type="text/javascript"></script>
 		<script src="{{ asset('metronic/assets/demo/demo6/base/scripts.bundle.js') }}" type="text/javascript"></script>
+        <script type="text/javascript" src="{{ asset('sximo/js/plugins/jquery.jCombo.min.js') }}"></script>
 		<!--end::Base Scripts -->  
         
         @yield('script')

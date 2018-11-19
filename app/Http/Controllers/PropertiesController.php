@@ -284,7 +284,7 @@ class PropertiesController extends Controller {
         $this->data['fields'] = \SiteHelpers::fieldLang($this->info['config']['forms']);
 
         $this->data['id'] = $id;
-        $fetch_cat = \DB::table('tb_categories')->get();
+        $fetch_cat = \DB::table('tb_categories')->orderBy('category_name', 'asc')->get();
         $parent_cat = array();
         if (!empty($fetch_cat)) {
             foreach ($fetch_cat as $cat) {
@@ -294,7 +294,7 @@ class PropertiesController extends Controller {
 
         $this->data['categories'] = $parent_cat;
 
-        $this->data['amenties'] = \DB::table('tb_amenities')->where('amenity_status', '1')->get();
+        $this->data['amenties'] = \DB::table('tb_amenities')->where('amenity_status', '1')->orderBy('amenity_title', 'asc')->get();
         $this->data['designers'] = \DB::table('tb_designers')->where('designer_status', '1')->get();
 		if(\Session::get('gid')!=1 && \Session::get('gid')!=2){
 			$uid = \Auth::user()->id;
@@ -336,6 +336,8 @@ class PropertiesController extends Controller {
         foreach($prop_user_rel as $si_user){ $rest_user_arr[] = $si_user->user_id; }
         $this->data['property_user'] = implode(',',$rest_user_arr);
         /** get property and user relations end **/
+        
+        $this->data['active_tab']=0;
         
         $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
         $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.form':'properties.form'; 
@@ -3846,5 +3848,367 @@ function property_images_wetransfer(Request $request) {
 			return Redirect::to($return)->with('messagetext','Contract has not uploaded yet.')->with('msgstatus','error');
 		}
     }
+    
+    public function addhotel(Request $request){
+        
+        if ($this->access['is_view'] == 0)
+            return Redirect::to('dashboard')
+                            ->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus', 'error');
+
+        
+        $is_demo6 = trim(\CommonHelper::isHotelDashBoard());
+        $file_name = (strlen($is_demo6) > 0)?$is_demo6.'.properties.addhotel':'properties.addhotel'; 
+        
+        return view($file_name, $this->data);    
+    }
+    
+    public function saveHotelInfo(Request $request){
+        $uid = \Auth::user()->id;
+        $id = $request->input('id');
+        
+        $rules['property_name'] = 'required';
+        $rules['property_short_name'] = 'required';
+        $rules['property_type'] = 'required';
+        $rules['booking_type'] = 'required';
+        $rules['assigned_user_id'] = 'required';
+        
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->passes()) {
+            //$data = $this->validatePost('tb_properties');
+            $alias = \SiteHelpers::seoUrl(Input::get('property_short_name'));
+            
+            $exha = false;
+            for ($f = 1; $exha != true; $f++) {
+                if ($request->input('id') == '') {
+                    $check_alias = \DB::table('tb_properties')->where('property_slug', $alias)->count();
+                } else {
+                    $check_alias = \DB::table('tb_properties')->where('property_slug', $alias)->where('id', '!=', $id)->count();
+                }
+                if ($check_alias > 0) {
+                    $alias = $alias . '-' . $f;
+                } else {
+                    $alias = $alias;
+                    $exha = true;
+                }
+            }
+            $data['user_id'] = $uid;
+            $data['property_slug'] = $alias;
+
+            if ($request->input('id') == '') {
+                $data['created'] = date('Y-m-d h:i:s');
+            } else {
+                $data['updated'] = date('Y-m-d h:i:s');
+            }
+            
+            $property_packages = array();            
+
+            //$data['commission'] = $request->input('commission');
+            $data['property_short_name'] = $request->input('property_short_name');
+            $data['about_property'] = $request->input('about_property');
+            $data['property_usp'] = $request->input('property_usp');
+            
+            $assigned_users = array();
+            //print_r($request->input('assigned_user_id'));
+            $assigned_ids = $request->input('assigned_user_id');
+            if(strlen(trim($assigned_ids))>0){                
+                //if (is_array($request->input('assigned_user_id'))) {
+                    $assigned_users = explode(',', $assigned_ids);
+                //}
+            }
+            //print_r($assigned_users);
+            //die;
+            $data['detail_section1_title'] = $request->input('detail_section1_title');
+            $data['detail_section1_description_box1'] = $request->input('detail_section1_description_box1');
+            $data['detail_section1_description_box2'] = $request->input('detail_section1_description_box2');
+            $data['detail_section2_title'] = $request->input('detail_section2_title');
+            $data['detail_section2_description_box1'] = $request->input('detail_section2_description_box1');
+            $data['detail_section2_description_box2'] = $request->input('detail_section2_description_box2');
+            $data['assign_detail_city'] = $request->input('assign_detail_city');            
+
+            if (!empty($request->input('assigned_amenities'))) {
+                $data['assign_amenities'] = implode(',', $request->input('assigned_amenities'));
+            } else {
+                $data['assign_amenities'] = '';
+            }
+
+            if (!is_null($request->input('copy_amenities_rooms'))) {
+                $data['copy_amenities_rooms'] = $request->input('copy_amenities_rooms');
+            } else {
+                $data['copy_amenities_rooms'] = 0;
+            }
+
+            if (!is_null($request->input('default_seasons'))) {
+                $data['default_seasons'] = $request->input('default_seasons');
+            } else {
+                $data['default_seasons'] = 0;
+            }
+
+            if (!empty($request->input('destinations'))) {
+                $data['property_category_id'] = implode(',', $request->input('destinations'));
+            } else {
+                $data['property_category_id'] = '';
+            }			
+			
+            // Yachts info tab
+            if ($request->input('property_type') == 'Yachts') {
+                $yacht_category = $request->input('yacht_category');
+                $data['yacht_category'] = implode(', ', $yacht_category);
+                $data['yacht_build_year'] = $request->input('yacht_build_year');
+                $data['yachts_guest'] = $request->input('yachts_guest');
+                $data['yacht_length'] = $request->input('yacht_length');
+                if (!empty($request->input('yacht_builder'))) {
+                    $data['yacht_builder'] = implode(',', $request->input('yacht_builder'));
+                }
+                $data['yacht_beam'] = $request->input('yacht_beam');
+                $data['yacht_draft'] = $request->input('yacht_draft');
+                $data['yacht_grt'] = $request->input('yacht_grt');
+                $data['yacht_cabins'] = $request->input('yacht_cabins');
+                $data['yacht_crew'] = $request->input('yacht_crew');
+                $data['yacht_for_sale'] = $request->input('yacht_for_sale');
+                $data['yacht_for_charter'] = $request->input('yacht_for_charter');
+            }
+
+            //print_r($assigned_users); die;
+            //$id = $this->model->insertRow($data, $request->input('id'));
+            
+            \DB::table('tb_properties')->where('id', $id)->update($data);
+            
+            if (!is_null($request->input('copy_amenities_rooms')) && !empty($request->input('assigned_amenities'))) {
+                $check_pcats = \DB::table('tb_properties_category_types')->where('property_id', $id)->get();
+                if (!empty($check_pcats)) {
+                    foreach ($check_pcats as $pcats) {
+                        $check_pcats_exist = \DB::table('tb_properties_category_amenities')->where('property_id', $id)->where('cat_id', $pcats->id)->first();
+                        $Amdata['property_id'] = $id;
+                        $Amdata['cat_id'] = $pcats->id;
+                        $Amdata['user_id'] = $uid;
+                        $Amdata['amenity_ids'] = implode(',', $request->input('assigned_amenities'));
+                        if (!empty($check_pcats_exist)) {
+                            $Amdata['updated'] = date('Y-m-d h:i:s');
+                            \DB::table('tb_properties_category_amenities')->where('id', $check_pcats_exist->id)->update($Amdata);
+                        } else {
+                            $Amdata['created'] = date('Y-m-d h:i:s');
+                            \DB::table('tb_properties_category_amenities')->insertGetId($Amdata);
+                        }
+                    }
+                }
+            }
+            
+            /** insert property packages relation start **/
+            $finproperty_package_relation = array();
+            $upproperty_package_relation = array();
+            $prop_package_rel = \DB::table('tb_properties_category_package')->where('property_id', $id)->get();
+            $rest_arr = array();
+            foreach($prop_package_rel as $si_prop){ $rest_arr[$si_prop->package_id] = $si_prop; }
+            $prop_package_rel = $rest_arr;
+            \DB::table('tb_properties_category_package')->where('property_id', $id)->delete();
+            if((count($property_packages) > 0)){                
+                foreach($property_packages as $si_prop){ 
+                    if(isset($prop_package_rel[$si_prop])){ $finproperty_package_relation[] = array("property_id"=>$id,"package_id"=>$si_prop,"id"=>$prop_package_rel[$si_prop]->id); }
+                    else{ $finproperty_package_relation[] = array("property_id"=>$id,"package_id"=>$si_prop,"id"=>NULL); }
+                }
+            }
+            
+            if(count($finproperty_package_relation)){ \DB::table('tb_properties_category_package')->insert($finproperty_package_relation); }
+            /** insert property packages relation end **/
+            
+            
+            /** insert property packages relation start **/
+            $final_assigned_users = array();            
+            \DB::table('tb_properties_users')->where('property_id', $id)->delete();            
+            if((count($assigned_users) > 0)){                
+                foreach($assigned_users as $si_user){ 
+                    $final_assigned_users[] = array("property_id"=>$id,"user_id"=>$si_user); 
+                }
+            }            
+            if(count($final_assigned_users)){ \DB::table('tb_properties_users')->insert($final_assigned_users); }
+            /** insert property packages relation end **/
+            
+            
+            if (!is_null($request->input('apply'))) {
+                $return = 'properties/update/' . $id . '?return=' . self::returnUrl();
+            } else {
+                $return = 'properties?return=' . self::returnUrl();
+            }
+
+            // Insert logs into database
+            if ($request->input('id') == '') {
+                \SiteHelpers::auditTrail($request, 'New Data with ID ' . $id . ' Has been Inserted !');
+            } else {
+                \SiteHelpers::auditTrail($request, 'Data with ID ' . $id . ' Has been Updated !');
+            }
+
+            $return_array['status'] = 'success';
+            $return_array['message'] = 'Property has been saved!';
+            
+        } else {
+
+            $return_array['status'] = 'error';
+            $return_array['message'] = 'Property not saved errors occurred!';
+        }
+        echo json_encode($return_array);
+        exit;
+    }
+    
+    public function saveHotelArchitectInfo(Request $request){
+        $uid = \Auth::user()->id;
+        $id = $request->input('id');
+        
+        if ($id > 0) {
+            
+            $destinationPath = public_path() . '/uploads/properties_subtab_imgs/';
+            // Architechure 
+            $data['architecture_title'] = $request->input('architecture_title');
+            $data['architecture_desciription'] = $request->input('architecture_desciription');
+            if ($request->input('architecture_video_type') != '') {
+                $data['architecture_video_type'] = $request->input('architecture_video_type');
+            }
+            if ($request->input('architecture_video_link_type') != '') {
+                $data['architecture_video_link_type'] = $request->input('architecture_video_link_type');
+            }
+            $data['architecture_video_link'] = $request->input('architecture_video_link');
+            if (!empty($request->input('assigned_architecture_designer'))) {
+                $data['assigned_architecture_designer'] = implode(',', $request->input('assigned_architecture_designer'));
+            }
+            if (!is_null($request->file('architecture_image'))) {
+                $architecture_file = $request->file('architecture_image');
+                $architecture_filename = $architecture_file->getClientOriginalName();
+                $architecture_extension = $architecture_file->getClientOriginalExtension(); //if you need extension of the file
+                $architecture_filename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $architecture_extension;
+                $architecture_uploadSuccess = $architecture_file->move($destinationPath, $architecture_filename);
+                if ($architecture_uploadSuccess) {
+                    $data['architecture_image'] = $architecture_filename;
+                }
+            }
+            
+            if (!is_null($request->file('architecture_video'))) {
+                $architecture_vfile = $request->file('architecture_video');
+                $architecture_vfilename = $architecture_vfile->getClientOriginalName();
+                $architecture_vextension = $architecture_vfile->getClientOriginalExtension(); //if you need extension of the file
+                $architecture_videofilename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $architecture_vextension;
+                $architecture_vuploadSuccess = $architecture_vfile->move($destinationPath, $architecture_videofilename);
+                if ($architecture_vuploadSuccess) {
+                    $data['architecture_video'] = $architecture_videofilename;
+                }
+            }
+            
+            // Design 
+            $data['architecture_design_title'] = $request->input('architecture_design_title');
+            $data['architecture_design_desciription'] = $request->input('architecture_design_desciription');
+            $data['architecture_design_url'] = $request->input('architecture_design_url');
+            if ($request->input('architecture_design_video_type') != '') {
+                $data['architecture_design_video_type'] = $request->input('architecture_design_video_type');
+            }
+            if ($request->input('architecture_design_video_link_type') != '') {
+                $data['architecture_design_video_link_type'] = $request->input('architecture_design_video_link_type');
+            }
+            $data['architecture_design_video_link'] = $request->input('architecture_design_video_link');
+            if (!is_null($request->file('architecture_design_image'))) {
+                $architecture_design_file = $request->file('architecture_design_image');
+                $architecture_design_filename = $architecture_design_file->getClientOriginalName();
+                $architecture_design_extension = $architecture_design_file->getClientOriginalExtension(); //if you need extension of the file
+                $architecture_design_filename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $architecture_design_extension;
+                $architecture_design_uploadSuccess = $architecture_design_file->move($destinationPath, $architecture_design_filename);
+                if ($architecture_design_uploadSuccess) {
+                    $data['architecture_design_image'] = $architecture_design_filename;
+                }
+            }
+            
+            if (!is_null($request->file('architecture_design_video'))) {
+                $architecture_design_vfile = $request->file('architecture_design_video');
+                $architecture_design_vfilename = $architecture_design_vfile->getClientOriginalName();
+                $architecture_design_vextension = $architecture_design_vfile->getClientOriginalExtension(); //if you need extension of the file
+                $architecture_design_videofilename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $architecture_design_vextension;
+                $architecture_design_vuploadSuccess = $architecture_design_vfile->move($destinationPath, $architecture_design_videofilename);
+                if ($architecture_design_vuploadSuccess) {
+                    $data['architecture_design_video'] = $architecture_design_videofilename;
+                }
+            }
+            
+            // Designer
+            $data['architecture_designer_title'] = $request->input('architecture_designer_title');
+            $data['architecture_designer_desciription'] = $request->input('architecture_designer_desciription');
+            $data['architecture_designer_url'] = $request->input('architecture_designer_url');
+            if (!empty($request->input('architecture_designer_designer'))) {
+                $data['architecture_designer_designer'] = implode(',', $request->input('architecture_designer_designer'));
+            }
+            if ($request->input('architecture_designer_video_type') != '') {
+                $data['architecture_designer_video_type'] = $request->input('architecture_designer_video_type');
+            }
+            if ($request->input('architecture_designer_video_link_type') != '') {
+                $data['architecture_designer_video_link_type'] = $request->input('architecture_designer_video_link_type');
+            }
+            $data['architecture_designer_video_link'] = $request->input('architecture_designer_video_link');
+            
+            if (!is_null($request->file('architecture_designer_image'))) {
+                $architecture_designer_file = $request->file('architecture_designer_image');
+                $architecture_designer_filename = $architecture_designer_file->getClientOriginalName();
+                $architecture_designer_extension = $architecture_designer_file->getClientOriginalExtension(); //if you need extension of the file
+                $architecture_designer_filename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $architecture_designer_extension;
+                $architecture_designer_uploadSuccess = $architecture_designer_file->move($destinationPath, $architecture_designer_filename);
+                if ($architecture_designer_uploadSuccess) {
+                    $data['architecture_designer_image'] = $architecture_designer_filename;
+                }
+            }
+            
+            if (!is_null($request->file('architecture_designer_video'))) {
+                $architecture_designer_vfile = $request->file('architecture_designer_video');
+                $architecture_designer_vfilename = $architecture_designer_vfile->getClientOriginalName();
+                $architecture_designer_vextension = $architecture_designer_vfile->getClientOriginalExtension(); //if you need extension of the file
+                $architecture_designer_videofilename = rand(11111111, 99999999) . '-' . rand(11111111, 99999999) . '.' . $architecture_designer_vextension;
+                $architecture_designer_vuploadSuccess = $architecture_designer_vfile->move($destinationPath, $architecture_designer_videofilename);
+                if ($architecture_designer_vuploadSuccess) {
+                    $data['architecture_designer_video'] = $architecture_designer_videofilename;
+                }
+            }
+            
+            //print_r($data); die;
+            
+            \DB::table('tb_properties')->where('id', $id)->update($data);
+            
+            $return_array['status'] = 'success';
+            $return_array['message'] = 'Property has been saved!';
+            
+        } else {
+
+            $return_array['status'] = 'error';
+            $return_array['message'] = 'Property not saved errors occurred!';
+        }
+        echo json_encode($return_array);
+        exit;
+    }
+    
+    public function saveHotelSocialInfo(Request $request){
+        $uid = \Auth::user()->id;
+        $id = $request->input('id');
+        
+        if ($id > 0) {
+            
+            $data['social_status'] = $request->input('social_status');
+            $data['social_facebook'] = $request->input('social_facebook');
+            $data['social_twitter'] = $request->input('social_twitter');
+            $data['social_google'] = $request->input('social_google');
+            $data['social_youtube'] = $request->input('social_youtube');
+            $data['social_pinterest'] = $request->input('social_pinterest');
+            $data['social_vimeo'] = $request->input('social_vimeo');
+            $data['social_instagram'] = $request->input('social_instagram');
+            
+            //print_r($data); die;
+            
+            \DB::table('tb_properties')->where('id', $id)->update($data);
+            
+            $return_array['status'] = 'success';
+            $return_array['message'] = 'Property has been saved!';
+            
+            \DB::table('tb_users')->where('id', $uid)->update(array('property_info_setup'=>1));
+            
+        } else {
+
+            $return_array['status'] = 'error';
+            $return_array['message'] = 'Property not saved errors occurred!';
+        }
+        echo json_encode($return_array);
+        exit;
+    }
+    
     
 }

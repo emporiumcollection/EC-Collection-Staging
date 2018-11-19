@@ -367,6 +367,10 @@ Route::group(['middleware' => 'auth'], function()
     
     Route::get('get_setup', 'PackagesController@get_setup');
     
+    Route::post('save_hotel_info', 'PropertiesController@saveHotelInfo');
+    Route::post('save_hotel_architect_info', 'PropertiesController@saveHotelArchitectInfo');
+    Route::post('save_hotel_social_info', 'PropertiesController@saveHotelSocialInfo');
+    Route::post('check_hotel_setup', 'PropertiesController@checkHotelSetup');
 });
 
 Route::post('hotel_membership', 'Frontend\HotelMembershipController@hotelMembershipSignupSave');

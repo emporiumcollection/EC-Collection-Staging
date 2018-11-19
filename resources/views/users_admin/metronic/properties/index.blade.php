@@ -28,7 +28,43 @@
 @section('content')
   
 <div class="row">
-        
+    <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
+        @if(!empty($pageslider))
+        <div id="Carousel" class="carousel slide">
+             
+            <ol class="carousel-indicators">
+                @foreach($pageslider as $key => $slider_row)
+                <li data-target="#Carousel" data-slide-to="{{$key}}" class="{{($key == 0)? 'active' : ''}}"></li>
+                @endforeach
+            </ol>
+             
+            <!-- Carousel items -->
+            <div class="carousel-inner">
+            @foreach($pageslider as $key => $slider_row)    
+            <div class="item {{($key == 0)? 'active' : ''}}">
+            	<div class="row">
+            	  <div class="col-md-12">
+                    <a href="{{$slider_row->slider_link}}" class="thumbnail">                            
+                        <div class="b2c-banner-text">{{$slider_row->slider_title}}</div>
+                        <img src="{{url('uploads/slider_images/'.$slider_row->slider_img)}}" alt="{{$slider_row->slider_title}}" style="max-width:100%;" />
+                    </a>
+                  </div>                	  
+            	</div><!--.row-->
+            </div><!--.item-->
+            @endforeach 
+             
+            </div><!--.carousel-inner-->
+            <a data-slide="prev" href="#Carousel" class="left carousel-control"><</a>
+            <a data-slide="next" href="#Carousel" class="right carousel-control">></a>
+        </div><!--.Carousel-->
+        @endif
+    </div> 
+    <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 m--align-center padding-30">
+        Welcome yo Your Hotel PMS
+    </div> 
+    <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare diam at convallis lacinia. Duis a sapien et erat finibus molestie eu id nisi. Integer nibh elit, blandit ac volutpat eget, tempus eget enim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas mollis dictum risus. Vivamus aliquam at elit non dictum. Integer nisi ante, interdum at purus vitae, rhoncus bibendum dui. Praesent pharetra augue at ultrices facilisis. Vestibulum erat urna, iaculis et purus in, fermentum varius nibh.
+    </div>
         {{--*/ $is_commission_popup = false; $hotelWiseContracts = array(); /*--}}
         @foreach ($rowData as $row)
             {{--*/
@@ -67,6 +103,10 @@
             </div>
             <!--end:: hotel contracts alert -->
             @endif
+            
+            <div class="col-md-12 col-xs-12 m--align-center"> 
+                <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 padding-30"><a href="#" class="tips btn btn-xs btn-primary"><i class="fa  icon-file-pdf "></i>Download Setup Documentation</a></div>
+            </div>
             
             <div class="col-md-12 col-xs-12">                    
                     @if((count($comcontract) > 0) && (!isset($commission_contracts[$row->id])))
@@ -275,6 +315,8 @@
                                         				Hotel/Property
                                         			</span>
                                         		</a>
+                                                 <br />
+                                                <div style="margin-top: 20px; font-size: 15px;">Start here</div>
 											</span>
 											
 										</div>

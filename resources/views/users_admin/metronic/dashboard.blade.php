@@ -2799,7 +2799,40 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
     	</div>
     </div>    
  <!--end: modal pop up-->
-    
+ <!--Start: First Time on Dashboard modal pop up-->
+    <div class="modal fade" id="confirm_model" tabindex="-1" role="dialog" aria-labelledby="agreeModalLabel" aria-hidden="true" style="display: none;">
+    	<div class="modal-dialog modal-lg" role="document">
+    		<div class="modal-content">
+    			<div class="modal-header">
+    				<h5 class="modal-title" id="contractModalLabel">
+    					Confirm
+    				</h5>    				
+    			</div>
+    			<div class="modal-body">
+                    <div class="m-portlet m-portlet--full-height" style="padding: 0px; margin-bottom: 0px;">
+                        
+                        <form class="m-form">
+                        <div class="m-portlet__body" style="padding: 0px;">
+                            <div class="form-group m--align-center">
+                                You Have not completee the hotel setup yet.
+                            </div>
+                            <div class="form-group m--align-center">
+                                Are you want to continue?
+                             </div>            
+							 
+                        </div>
+                        </form>
+                        
+                    </div>                				
+    			</div>
+    			<div class="modal-footer">    				
+                    <button type="button" class="btn btn-primary" id="yeshotelsetupbtn">Yes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+    			</div>
+    		</div>
+    	</div>
+    </div>    
+ <!--end: modal pop up-->   
 @stop
 {{-- For custom style  --}}
 @section('style')
@@ -2866,7 +2899,19 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
                     $("#agree_model").modal({backdrop: 'static', keyboard: false}, 'show');
             <?php }else if($logged_user->new_user == 1){ ?>
                     window.location.href = "{{URL::to('whoiam')}}";
+            <?php }else if($logged_user->hotel_setup_complete == 0){ ?>
+                    $("#confirm_model").modal({backdrop: 'static', keyboard: false}, 'show');
             <?php } ?>
+            
+            $("#yeshotelsetupbtn").click(function(){
+                <?php if($logged_user->property_info_setup == 0){ if($pid > 0){ ?>
+                        
+                        window.location.href = "{{URL::to('properties/update/'.$pid)}}";
+                        
+                <?php } }else{ ?>
+                        window.location.href = "{{URL::to('properties_settings/'.$pid.'/types')}}";
+                <?php } ?>
+            });
             
             $("#contractacceptbtn").click(function(){
                 var error = true;
@@ -2899,7 +2944,7 @@ Note: You may revoke your consent at any time by e-mail to info@emporium-voyage.
                 }
                 
                 
-                if(error){ console.log("error");
+                if(error){ 
                     
                 }else{
                     var fdata = new FormData();                

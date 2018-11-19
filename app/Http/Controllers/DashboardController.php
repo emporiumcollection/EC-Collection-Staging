@@ -47,8 +47,19 @@ class DashboardController extends Controller {
                     return Redirect::to('whoiam');
                }*/ 
                //echo $gp_id; die;
+               //\CommonHelper::checkb2buser();
+               //$this->checkb2buser();
+              
                $this->data['pageslider'] = \DB::table('tb_pages_sliders')->join('tb_pages_content', 'tb_pages_sliders.slider_page_id', '=' , 'tb_pages_content.pageID')->select( 'slider_title', 'slider_description', 'slider_img', 'slider_link', 'slider_video', 'slide_type')->where('tb_pages_content.alias', 'hotel-dashboard')->where('slider_status', 1)->get();
                
+               $this->data['setupslider'] = \DB::table('tb_pages_sliders')->join('tb_pages_content', 'tb_pages_sliders.slider_page_id', '=' , 'tb_pages_content.pageID')->select( 'slider_title', 'slider_description', 'slider_img', 'slider_link', 'slider_video', 'slide_type')->where('tb_pages_content.alias', 'hotel-dashboard')->where('slider_status', 1)->get();
+               
+               $prop_id = 0;
+               $obj_property = \DB::table('tb_properties')->where('user_id', $u_id)->first();
+               if(!empty($obj_property)){
+                    $prop_id = $obj_property->id;
+               }
+               $this->data['pid'] = $prop_id;
                /*$obj_modules = array();
                $module_id = array();
                $obj_mem = \DB::table('tb_users_membership')->where('user_id', $u_id)->first();
