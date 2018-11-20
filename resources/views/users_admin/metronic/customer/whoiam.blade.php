@@ -270,9 +270,8 @@
     													</h3>
     												</div>
                                                     <div class="col-sm-12 col-md-12">
-    													Emporium-Voyage has dedicated considerable resources to developing and maintaining a strong corporate identity. As a result, The Emporium-Voyage brand has emerged as a globally recognized brand, representing the finest in luxury hotels. 
-                                                        Please enter your hotel brand details to ensure accuracy. By actively engaging in an effort to promote your hotel’s membership in our organization, you become a true brand ambassadors for Emporium-Voyage, which benefits all members globally. 
-                                                        Please complete all required details. 
+    													The Emporium-Voyage Sales department solicits travel agents, corporations, group/meeting planners and other business-producing entities to develop new and repeat business for our discerning member hotels.
+                                                        Please complete all required fields. 
                                                         <hr />
     												</div>
                                                     <div class="form-group m-form__group row">
