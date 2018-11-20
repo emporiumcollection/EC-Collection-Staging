@@ -967,7 +967,7 @@ public function generateInvoice($ordid)
                             $pathToFile['path'] = $this->generateInvoice($ord_id);
                             //echo $pathToFile; die;
                             $pathToFile['name'] = 'invoice-'.$userinfom->id.'-'.date('d-m-Y-h:i:s').'.pdf';
-                            //$pathToFile['useremail'] = $userinfom->email;
+                            $pathToFile['useremail'] = $userinfom->email;
                             $attched_files[] = $pathToFile;
                             $pathToFile2['path'] = $this->attach_contract();
                             //echo $pathToFile; die;
