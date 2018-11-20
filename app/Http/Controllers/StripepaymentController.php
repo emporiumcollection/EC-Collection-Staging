@@ -974,15 +974,18 @@ public function generateInvoice($ordid)
                             $pathToFile2['name'] = 'contract-signup-'.$userinfom->id.'-'.date('d-m-Y').'.pdf';
                             
                             $attched_files[] = $pathToFile2;
+                            
+                            $email_data = array('email'=>$useremail, 'attched_files'=>$attched_files);
                             //print_r($attched_files); die;
                             if($pathToFile)
                             {
                                 $data = array();
-                                \Mail::send('user.emails.invoice', $data, function($message) use ($pathToFile)
+                                \Mail::send('user.emails.invoice', $data, function($message) use ($email_data)
                                 {
                                     $message->from(CNF_EMAIL, CNF_APPNAME);
                                     $message->subject("Your Order Invoice");
-                                    $message->to($useremail);
+                                    $message->to($email_data['email']);
+                                    $attched_files = $email_data['attched_files'];
                                     foreach($attched_files as $pathToFile){
                                         $message->attach($pathToFile['path'], ['as' => $pathToFile['name'], 'mime' => 'pdf']);
                                     }
