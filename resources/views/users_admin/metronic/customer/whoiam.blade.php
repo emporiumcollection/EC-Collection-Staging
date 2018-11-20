@@ -217,11 +217,9 @@
                                                             <h2 class="black-heading-big">Welcome to emporium-voyage</h2>
                                                         </div> 
                                                         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
-                                                            Welcome to the emporium Voyage Members Club. Our vision is to become the largest and most comprehensive brand of curated luxury expereinces in the world, offoffering your guest true End-to-End Luxury concierge services. 
-                                                            Our organizations primary objective is to drive business to our member hotels. We focus on  High-net worth independent-minded travelers and tell your unique, special, distinctive stories providing the ultimate guest experience. 
-                                                            Please complte all the needed steps to ensure we capture the essence of your Brand Experience for ditribution in our strategic marketing campaigns. Your Property concierge is ready to answer all questions you may have. 
-                                                            We look forward to establishing a long Term relationship with your Brand. If you would like emporium voyage to set up your account for you,We are glad to help. After completing the wizard steps on the packages page simply select the setup package and our account managers we will gladly connect to get your Hotel setup, sales ready.
-                                                            Access is restricted to member hotels and employees only.
+                                                            Emporium-Voyage exclusively markets a selection of the luxury network’s extraordinary Hotels & Luxury Partners, utilising a sophisticated mix of online and offline media to position properties for maximum exposure in an elite market. 
+                                                            Members are recognised for their agility, expertise and superior competence in both local and global markets.
+                                                            Once listed on Emporium-Voyage or its niche site network, your property will reach 40% corporate as well as 60% leisure travellers with direct payment of the customer at your hotel.
                                                             <hr />
                                                         </div> 
                                                         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
@@ -272,9 +270,9 @@
     													</h3>
     												</div>
                                                     <div class="col-sm-12 col-md-12">
-    													Emporium-Voyage has dedicated considerable resources to developing and maintaining a strong corporate identity. As a result, The Emporium-Voyage brand has emerged as a globally recognized mark, representing the finest in luxuryhotels. 
-                                                        Please enter your Brand details to ensure accuracy. By actively engaging in an effort to promote your hotel’s membership in our organization, you become true brand ambassadors for Emporium-Voyage, which benefits all members globally. 
-                                                        Full details must be added in your companany profile from your Property dashboard.
+    													Emporium-Voyage has dedicated considerable resources to developing and maintaining a strong corporate identity. As a result, The Emporium-Voyage brand has emerged as a globally recognized brand, representing the finest in luxury hotels. 
+                                                        Please enter your hotel brand details to ensure accuracy. By actively engaging in an effort to promote your hotel’s membership in our organization, you become a true brand ambassadors for Emporium-Voyage, which benefits all members globally. 
+                                                        Please complete all required details. 
                                                         <hr />
     												</div>
                                                     <div class="form-group m-form__group row">
@@ -369,12 +367,12 @@
                                                 <div class="m-form__section">
                                                    <div class="m-form__heading margin-top">
     													<h3 class="m-form__heading-title">
-    														Company Registration
+    														Company Registration for Tax purposes.
     													</h3>
 									               </div>                                                                                                                                                     
                                                    <div class="form-group m-form__group row">
     													<label class="col-xl-3 col-lg-3 col-form-label">
-    														European
+    														Registered European Company
     													</label>
     													<div class="col-xl-9 col-lg-9">
                                                             <div class="m-radio-inline">
@@ -397,7 +395,7 @@
         														
         													</label>
         													<div class="col-xl-9 col-lg-9">
-        														Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare diam at convallis lacinia. Duis a sapien et erat finibus molestie eu id nisi. Integer nibh elit, blandit ac volutpat eget, tempus eget enim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas mollis dictum risus. Vivamus aliquam at elit non dictum. Integer nisi ante, interdum at purus vitae, rhoncus bibendum dui. Praesent pharetra augue at ultrices facilisis. Vestibulum erat urna, iaculis et purus in, fermentum varius nibh.  
+        														Under article 44 EU VAT Directive 2006/112/EC that deals with the place of supply of services, electronic services are deemed to be taxable where the Business customer belongs. Under article 196 EU VAT Directive, the VAT will be levied from the customer, based on the reverse charge mechanism. Emporium-Voyage will request a valid VAT number in one of the EU member states in order not to invoice the VAT to the Business customer. If such VAT number is not provided or is invalid, Emporium-Voyage will invoice the VAT of the country where the Business customer belongs.  
         													</div>
         												</div>
                                                         <div class="form-group m-form__group row">
@@ -414,7 +412,7 @@
                                 							<div class="m-checkbox-inline">
                                 								<label class="m-checkbox m-checkbox--solid m-checkbox--brand">
                                 									<input type="checkbox" id="newsLetter" name="newsLetter" <?php echo ($user->subscribe_notification==1) ? 'checked="checked"' : '' ?> />      								
-                                									Subscribe to our notifications and news, latest industry updates and features. 
+                                									Emporium-Voyage would like to send you news, updates and annual reports. 
                                                                     <span></span>
                                 								</label>
                                 							</div>
@@ -678,7 +676,7 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                             <h2 class="black-heading-big">Our membership Packages</h2>
                                                         </div> 
                                                         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 margin-top">
-                                                            The emporium-Voyage packages opens a world of opportunity to further market your Brand. To start your Reservation-Distribition & mMrketing journey, please pay and conform your bi-anually subscription. Your invoice will be visible from your accounts section.
+                                                            The emporium-Voyage packages opens a world of opportunity to further market your Brand. To start your Reservation-Distribition & Marketing journey, please pay and confirm your bi-anually subscription. Your invoice will be visible from your accounts section.
                                                             We offer an array of packages to further promote and market your hotel to our high-net-worth members network. You can view additional packages at your leisure from the membership section.
                                                         </div> 
                                                         <?php /* <div class="col-xl-12 col-lg-12 m--align-right">
