@@ -59,7 +59,9 @@ abstract class Controller extends BaseController {
 		$data = array(
 				'last_activity'=> strtotime(Carbon::now())
 			);
-		\DB::table('tb_users')->where('id',\Session::get('uid'))->update($data);   
+		\DB::table('tb_users')->where('id',\Session::get('uid'))->update($data);  
+        
+        $this->checkb2buser(); 
 	}
     
     function getPackagesIdsAccordingMembership(){
@@ -638,6 +640,21 @@ abstract class Controller extends BaseController {
 
 		
 	}
+    public function checkb2buser(){
+        $user_info = \DB::table('tb_users')->where('id',\Session::get('uid'))->first();
+        if(\Auth::check()){ 
+            $uid = \Auth::user()->id;
+            
+            if( \Auth::user()->i_agree == 0 ||  \Auth::user()->privacy_policy == 0 ||  \Auth::user()->cookie_policy == 0){
+                  
+            }elseif( \Auth::user()->new_user == 1){ 
+                return Redirect::to('whoiam');
+            }elseif( \Auth::user()->hotel_setup == 0){ 
+                return Redirect::to('properties');
+            }
+            
+        }
+    }
 
 }
 

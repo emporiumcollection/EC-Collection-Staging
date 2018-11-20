@@ -245,12 +245,12 @@
                                                         </div>                                                         
                                                     </div> 
                     
-                                                    <div class="form-group m-form__group row">
+                                                    <div class="form-group m-form__group row" style="display: none;">
                                                         <label class="col-xl-3 col-lg-3 col-form-label"> Assign User <span class="asterix"> * </span></label>
                                                         <div class="col-xl-9 col-lg-9">
                                                             <select name='assigned_user_id' rows='5' id='assigned_user_id' class='form-control m-input m-input--solid select2' multiple="multiple"></select>
                                                             <span class="m-form__help">
-    															Please select user
+    															
     														</span> 
                                                         </div>                                                        
                                                     </div> 
@@ -266,7 +266,7 @@
                                                                 @endif
                                                             </select>
                                                             <span class="m-form__help">
-    															Please select assign amenties
+    															Please select assign amenties, Type in the white box to search/select
     														</span> 
                                                         </div>
                                                     </div> 
@@ -293,7 +293,7 @@
                                                                 @endforeach						
                                                             </select> 
                                                             <span class="m-form__help">
-    															Please select destination
+    															Please select destination, Type in the white box to search/select.
     														</span>
                                                         </div>
                                                     </div>

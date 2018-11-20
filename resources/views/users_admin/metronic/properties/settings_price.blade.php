@@ -337,6 +337,7 @@
 					});
 					html +='</ul>';
 					$('.page-content-wrapper #formerrors').html(html);
+                    toastr.error("Error occured while inserting.");
 					window.scrollTo(0, 0);
 				}
 				else
@@ -345,6 +346,7 @@
 					html +='<button data-dismiss="alert" class="close" type="button">×</button>';
 					html +='<i class="icon-checkmark-circle"></i> Record Updated Successfully </div>';
 					$('.page-content-wrapper #formerrors').html(html);
+                    toastr.success("Price Added Successfully");
 					window.scrollTo(0, 0);
 				}
 			  }

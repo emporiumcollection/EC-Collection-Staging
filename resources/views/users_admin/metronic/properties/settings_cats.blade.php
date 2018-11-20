@@ -59,7 +59,10 @@
             @if(!empty($property_data)) {{$property_data->property_name}} @endif 
         </div>
         <div class="col-sm-8 col-md-8 col-lg-8">
+            
             <a href="{{URL::to('properties/update/'.$pid)}}" class="tips btn btn-xs btn-primary pull-right" title="" data-original-title="Property Management"><i class="fa fa-edit"></i>&nbsp;Property Management</a>
+            
+            <a href="#" class="tips btn btn-xs btn-primary pull-right" title="" data-original-title="Property Management" style="margin-right: 10px;"><i class="fa fa-edit"></i>&nbsp;View Documentation</a>
         </div>
         
         <!--begin::Portlet-->
@@ -360,7 +363,7 @@ $(document).ready(function () {
              return false; // required to block normal submit since you used ajax
          }
      });*/
-	$(document).on('click', '.btn', function (){ console.log($(this).parents('form.add_property_type_setup').attr('id'));
+	$(document).on('click', '.btn', function (){
 		 var frmid = $(this).parents('form.add_property_type_setup').attr('id');
 		  $('#'+frmid).validate({
 			submitHandler: function (form) {
@@ -393,12 +396,14 @@ $(document).ready(function () {
 				}
 				else
 				{
+				    
 					if(data.type=='update')
 					{
 						html +='<div class="alert alert-success fade in block-inner">';
 						html +='<button data-dismiss="alert" class="close" type="button">×</button>';
 						html +='<i class="icon-checkmark-circle"></i> Record Updated Successfully </div>';
 						$('.page-content-wrapper #formerrors').html(html);
+                        toastr.success('Record Updated Successfully');
 						window.scrollTo(0, 0);
 					}
 					else
@@ -533,6 +538,7 @@ $(document).ready(function () {
 							html +='<button data-dismiss="alert" class="close" type="button">×</button>';
 							html +='<i class="icon-checkmark-circle"></i> Record Not Found </div>';
 							$('.page-content-wrapper #formerrors').html(html);
+                            toastr.error("Record Not Found");
 							window.scrollTo(0, 0);
 					  }
 					  else{
@@ -541,6 +547,7 @@ $(document).ready(function () {
 							html +='<button data-dismiss="alert" class="close" type="button">×</button>';
 							html +='<i class="icon-checkmark-circle"></i> Record Deleted Successfully </div>';
 							$('.page-content-wrapper #formerrors').html(html);
+                            toastr.success("Record Deleted Successfully");
 							window.scrollTo(0, 0);
 					  }
 				  }

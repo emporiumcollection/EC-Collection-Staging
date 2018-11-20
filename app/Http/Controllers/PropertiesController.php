@@ -1272,7 +1272,7 @@ class PropertiesController extends Controller {
         $this->data['active'] = $active;
         $this->data['pid'] = $property_id;
         $this->data['property_data'] = \DB::table('tb_properties')->where('id', $property_id)->first();
-        $tabs = \DB::table('tb_properties_config_tabs')->where('tab_status', 1)->orderBy('id', 'asc')->get();
+        $tabs = \DB::table('tb_properties_config_tabs')->where('tab_status', 1)->where('tab_slug', '<>', 'calendar')->orderBy('id', 'asc')->get();
         if (!empty($tabs)) {
             foreach ($tabs as $tab) {
                 $tabdata[$tab->tab_slug] = $tab;
@@ -1288,7 +1288,7 @@ class PropertiesController extends Controller {
             return view($file_name, $this->data);
         } elseif ($active == 'rooms') {
             $this->data['cat_types'] = $this->find_categories_room($property_id);
-            $this->data['amenties'] = \DB::table('tb_amenities')->where('amenity_status', '1')->get();
+            $this->data['amenties'] = \DB::table('tb_amenities')->where('amenity_status', '1')->orderBy('amenity_title', 'asc')->get();
             $this->data['room_amenties_desc'] = array();
             $room_amenties_desc = \DB::table('tb_properties_category_types')->select('id', 'room_desc')->where('property_id', $property_id)->get();
             if (!empty($room_amenties_desc)) {
@@ -3870,7 +3870,7 @@ function property_images_wetransfer(Request $request) {
         $rules['property_short_name'] = 'required';
         $rules['property_type'] = 'required';
         $rules['booking_type'] = 'required';
-        $rules['assigned_user_id'] = 'required';
+        /*$rules['assigned_user_id'] = 'required';*/
         
         $validator = Validator::make($request->all(), $rules);
         if ($validator->passes()) {
@@ -3909,12 +3909,12 @@ function property_images_wetransfer(Request $request) {
             
             $assigned_users = array();
             //print_r($request->input('assigned_user_id'));
-            $assigned_ids = $request->input('assigned_user_id');
+            /*$assigned_ids = $request->input('assigned_user_id');
             if(strlen(trim($assigned_ids))>0){                
                 //if (is_array($request->input('assigned_user_id'))) {
                     $assigned_users = explode(',', $assigned_ids);
                 //}
-            }
+            }*/
             //print_r($assigned_users);
             //die;
             $data['detail_section1_title'] = $request->input('detail_section1_title');
@@ -4013,14 +4013,14 @@ function property_images_wetransfer(Request $request) {
             
             
             /** insert property packages relation start **/
-            $final_assigned_users = array();            
+            /*$final_assigned_users = array();            
             \DB::table('tb_properties_users')->where('property_id', $id)->delete();            
             if((count($assigned_users) > 0)){                
                 foreach($assigned_users as $si_user){ 
                     $final_assigned_users[] = array("property_id"=>$id,"user_id"=>$si_user); 
                 }
             }            
-            if(count($final_assigned_users)){ \DB::table('tb_properties_users')->insert($final_assigned_users); }
+            if(count($final_assigned_users)){ \DB::table('tb_properties_users')->insert($final_assigned_users); }*/
             /** insert property packages relation end **/
             
             

@@ -331,7 +331,7 @@
 																		<i class="glyphicon glyphicon-ban-circle"></i>
 																		<span>Cancel upload</span>
 																	</button>
-																	<a class="btn btn-success" @if(array_key_exists('imgs', $cat)) href="{{URL::to('folders/'.$cat['imgs'][0]->folder_id.'?show=thumb')}}" @else href="#" @endif>
+																	<a class="btn btn-success" title="Re-oder your images from the container after room setup has been completed" @if(array_key_exists('imgs', $cat)) href="{{URL::to('folders/'.$cat['imgs'][0]->folder_id.'?show=thumb')}}" @else href="#" @endif>
 																		<span>Re-Order</span>
 																	</a>
 																	<button type="button" class="btn btn-danger" onclick="delete_selected_imgs('ff{{$cat['data']->id}}');" >
@@ -426,15 +426,20 @@
 															<div class="row margin-top-10">
 																<div class="col-lg-8">
 																	<div class="row">
-																		<div class="form-group col-lg-12">
+																		<div class="form-group" style="width:100%;">
+                                                                            <div class="col-lg-12" style="width:100%;">
 																			<label for="room_name">Amenities </label>
-																			<select name='assigned_amenities[]' rows='5' id='assigned_amenities' class='form-control select2 ' multiple="multiple" required="required">
+																			<select name='assigned_amenities[]' rows='5' id='assigned_amenities' class='form-control m-input m-input--solid select2' multiple="multiple" required="required" style="width:100%;">
 																			  @if(!empty($amenties))
 																					@foreach($amenties as $amenty)
 																						<option value="{{$amenty->id}}" {{(array_key_exists('amenty', $cat) && in_array($amenty->id,explode(',',$cat['amenties']))) ? " selected='selected' " : '' }}>{{$amenty->amenity_title}}</option>
 																					@endforeach
 																				@endif
-																		  </select>
+																		    </select>
+                                                                            <span class="m-form__help">
+                    															Please select assign amenties, Type in the white box to search/select
+                    														</span> 
+                                                                            </div>
 																		</div>
 																	</div>
 																	<div class="row">
@@ -554,7 +559,7 @@
 <script>
 
 $(document).ready(function () {
-
+    $(".select2").select2();
      /*$(".add_property_type_setup").validate({
 		 errorPlacement: function(error, element) {
 			// Append error within linked label

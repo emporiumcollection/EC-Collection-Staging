@@ -55,9 +55,9 @@ var WizardDemo = function () {
                 booking_type: {
                     required: true
                 },
-                assigned_user_id: {
+                /*assigned_user_id: {
                     required: true
-                }
+                }*/
             },
 
             //== Validation messages
@@ -74,9 +74,9 @@ var WizardDemo = function () {
                 booking_type: {
                     required: "Booking type field is required"
                 },
-                assigned_user_id: {
+                /*assigned_user_id: {
                     required: "Assigned user field is required"
-                }
+                }*/
             },
             
             //== Display error  

@@ -691,8 +691,13 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                        
                                                                 <div class="m-portlet__body" style="width:100%;">
                                                                     <ul class="nav nav-tabs" role="tablist">
+                                                                        <li class="nav-item"> 
+                                                                            <a class="nav-link active" href="#membership" data-toggle="tab"> 
+                                                                                Membership 
+                                                                            </a>
+                                                                        </li>
                                                     					<li class="nav-item"> 
-                                                                            <a class="nav-link active" href="#reservation_distribution" data-toggle="tab"> 
+                                                                            <a class="nav-link" href="#reservation_distribution" data-toggle="tab"> 
                                                                                 Reservation & Distribution 
                                                                             </a>
                                                                         </li>
@@ -708,7 +713,102 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                         </li>			
                                                     				</ul>
                                                     				<div class="tab-content">
-                                                    					    <div class="tab-pane active" id="reservation_distribution">
+                                                                            <div class="tab-pane active" id="membership">
+                                                                                <!--begin::Section-->
+                                                            					<div class="m-accordion m-accordion--default m-accordion--solid" id="m_accordion_3_membership" role="tablist">
+                                                            						<!--begin::Item-->
+                                                                                    <?php 
+                                                                                        $cart_session_arr = array();
+                                                                                        $cart_session = (\Session::get('hotel_cart'));
+                                                                                        if(!empty($cart_session)){
+                                                                                            $cart_session_arr = $cart_session;
+                                                                                        } 
+                                                                                    ?>
+                                                                                    {{--*/ $k=1; $tottyp = count($packages); /*--}}
+                                                                                    {{--*/ $m=0; /*--}}
+                                                                                    @foreach($packages as $key=>$package)
+                                                                                    @if($package->package_category=="Membership")
+                                                                                    
+                                                            						<div class="m-accordion__item">
+                                                            							<div class="m-accordion__item-head <?php echo ($m==0) ? '' : 'collapsed' ?>"  role="tab" id="m_accordion_3_item_membership_{{ $k }}_head" data-toggle="collapse" href="#m_accordion_3_item_membership_{{ $k }}_body" aria-expanded="    false">
+                                                            								<span class="m-accordion__item-icon">
+                                                            									<i class="fa flaticon-user-ok"></i>
+                                                            								</span>
+                                                            								<span class="m-accordion__item-title">
+                                                            									{{$package->package_title}} Price: {!! isset($currency->content)?$currency->content:'&euro;' !!} {{ number_format($package->package_price,2) }}
+                                                            								</span>
+                                                            								<span class="m-accordion__item-mode"></span>
+                                                            							</div>
+                                                            							<div class="m-accordion__item-body <?php echo ($m==0) ? 'show' : 'collapse' ?>" id="m_accordion_3_item_membership_{{ $k }}_body" class=" " role="tabpanel" aria-labelledby="m_accordion_3_item_membership_{{ $k }}_head" data-parent="#m_accordion_3_membership">
+                                                            								<div class="m-accordion__item-content">
+                                                                                            <div class="row">
+                                                            									<div class="col-sm-6 col-md-6 col-lg-6 pull-left">
+                                                                                                @if($package->package_image!='')
+                                                                                                    <img class="img-responsive object-fit-size" src="{{URL::to('uploads/packages/'.$package->package_image)}}" alt="{{$package->package_image}}" style="width: 100%;" >
+                                                                                                @endif
+                                                                                                </div>
+                                                                                                <div  class="col-sm-6 col-md-6 col-lg-6 pull-right">
+                                                                                                    <div class="row">
+                                                                                                        <div  class="col-sm-12 col-md-12 col-lg-12 border-2px">
+                                                                                                            <p>{!! nl2br($package->package_description) !!}</p>
+                                                                                                            <div class="row">
+                                                                                                                <div class="col-sm-12 col-md-12 col-lg-12 top-margin-20">
+                                                                                                                    <h6>{!! isset($currency->content)?$currency->content:'&euro;' !!} {{ number_format($package->package_price,2) }} </h6>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>                
+                                                                                                      
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            
+                                                                                            <div class="row" style="margin-top: 10px;">
+                                                                                                
+                                                                                                <div class="col-xl-8 col-sm-8 col-md-8 col-lg-8">
+                                                                                                    @if(CNF_SUBTRACT_FEE)
+                                                                                                    @if($package->package_for==2)
+                                                                                                    <div class="m-checkbox-inline">
+                                                                        								<label class="m-checkbox m-checkbox--solid m-checkbox--brand">
+                                                                                                        <?php $arr_index = $package->id."_hotel";
+                                                                                                            $checked = '';
+                                                                                                            //print_r($cart_session_arr);
+                                                                                                            if(array_key_exists($arr_index, $cart_session_arr)){
+                                                                                                                $ind_arr = $cart_session_arr[$arr_index];
+                                                                                                                //print_r($ind_arr);
+                                                                                                                if(!empty($ind_arr)){
+                                                                                                                     if($ind_arr['package']['fee']=='yes'){
+                                                                                                                        $checked = 'checked="checked"';
+                                                                                                                     }   
+                                                                                                                }
+                                                                                                            }
+                                                                                                        ?>
+                                                                        									<input type="checkbox" id="fee_subtract_on_booking_{{$package->id}}" name="fee_subtract_on_booking_{{$package->id}}" value="yes" data-id="{{$package->id}}" class="subtract_checkbox" {{$checked}}>      								
+                                                                        									Subtract this fee from my first booking commission. 
+                                                                                                            <span></span>
+                                                                        								</label>
+                                                                        							</div>
+                                                                                                    @endif
+                                                                                                    @endif
+                                                                                                </div>
+                                                                                                @if($package->package_for==0 || $package->package_for==1)                                                                                                          
+                                                                                                <div class="col-xl-4 col-sm-4 col-md-4 col-lg-4 m--align-right">
+                                                                                                    <a href="javascript:void(0);" onclick="javaScript:addToCartHotel({{$package->id}},{{ $package->package_price }});" class="btn btn-success" id="add_to_{{$package->id}}">Add to cart</a>
+                                                                                                </div>
+                                                                                                  
+                                                                                                @endif
+                                                                                            </div> 
+                                                                                               
+                                                            								</div>
+                                                            							</div>
+                                                            						</div>
+                                                                                        {{--*/ $m++;  /*--}}
+                                                                                    @endif
+                                                                                    {{--*/ $k++;  /*--}}
+                                                                                    @endforeach
+                                                            						<!--end::Item-->     
+                                                                                </div>
+                                                                            </div>
+                                                    					    <div class="tab-pane" id="reservation_distribution">
                                                                                 <!--begin::Section-->
                                                             					<div class="m-accordion m-accordion--default m-accordion--solid" id="m_accordion_3_reservation_distribution" role="tablist">
                                                             						<!--begin::Item-->
@@ -759,7 +859,7 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                                             <div class="row" style="margin-top: 10px;">
                                                                                                 
                                                                                                 <div class="col-xl-8 col-sm-8 col-md-8 col-lg-8">
-                                                                                                    @if(CNF_SUBTRACT_FEE)
+                                                                                                    <?php /* @if(CNF_SUBTRACT_FEE)
                                                                                                     <div class="m-checkbox-inline">
                                                                         								<label class="m-checkbox m-checkbox--solid m-checkbox--brand">
                                                                                                         <?php $arr_index = $package->id."_hotel";
@@ -780,7 +880,7 @@ This section allows you to upload your Hotels STO contract & Terms. Your contrac
                                                                                                             <span></span>
                                                                         								</label>
                                                                         							</div>
-                                                                                                    @endif
+                                                                                                    @endif */ ?>
                                                                                                 </div>
                                                                                                 @if($package->package_for==0 || $package->package_for==1)                                                                                                          
                                                                                                 <div class="col-xl-4 col-sm-4 col-md-4 col-lg-4 m--align-right">

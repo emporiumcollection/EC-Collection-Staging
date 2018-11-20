@@ -942,5 +942,130 @@ class ContractController extends Controller {
 			return Redirect::to($ret_url)->with('messagetext','No record found')->with('msgstatus','error');
 		}
 	}
-
+    public function attach_contract(){ 
+        //$viewPDF = (($isview == 'view')?true:false);
+        $group_id = \Session::get('gid');
+        $default_package = \DB::table('tb_packages')->where('allow_user_groups', $group_id)->where('package_status', 1)->where('package_for', 2)->first();
+        $downFileName = 'contract-signup-'.date('d-m-Y').'.pdf';
+        
+        $obj_properties = \DB::table("tb_properties_users")->join('tb_properties', 'tb_properties_users.property_id', '=', 'tb_properties.id')->where('tb_properties_users.user_id', \Auth::user()->id)->first();
+        $property_name = '';
+        if(!empty($obj_properties)){
+            $property_name = $obj_properties->property_name;
+        }
+        
+        $selectFields = array('tb_users_contracts.*','tb_users.first_name','tb_users.last_name','tb_users_contracts.contract_type','tb_users_contracts.commission_type','tb_users_contracts.partial_availability_commission','tb_users_contracts.full_availability_commission');
+        $usersContracts = \DB::table('tb_users_contracts')
+                            ->select($selectFields)
+                            ->join('tb_users', 'tb_users_contracts.accepted_by', '=', 'tb_users.id')
+                            ->where('tb_users_contracts.contract_type','sign-up')->where('tb_users_contracts.accepted_by', \Auth::user()->id)->where('tb_users_contracts.status',1)->where('tb_users_contracts.is_expried',0)->where('tb_users_contracts.deleted',0)
+                            ->orderBy('tb_users_contracts.sort_num','DESC')->get();
+                            
+        $CommissionContracts = \DB::table('tb_users_contracts')
+                            ->select($selectFields)
+                            ->join('tb_users', 'tb_users_contracts.accepted_by', '=', 'tb_users.id')
+                            ->where('tb_users_contracts.contract_type','commission')->where('tb_users_contracts.accepted_by', \Auth::user()->id)->where('tb_users_contracts.status',1)->where('tb_users_contracts.is_expried',0)->where('tb_users_contracts.deleted',0)
+                            ->orderBy('tb_users_contracts.sort_num','ASC')->first();
+        if(isset($CommissionContracts->contract_type)){ $usersContracts[] = $CommissionContracts; }
+        
+        usort($usersContracts, function($a, $b) {
+						return $a->sort_num - $b->sort_num; 
+					});
+        $usersContracts = array_reverse($usersContracts);
+        
+        //$package_price = \DB::table('tb_orders')->where('user_id', \Auth::user()->id)->orderBy('tb_orders.id', 'DESC')->first();
+        
+        $center_content = '';
+        $i = 1;
+        $date_signed = '';
+        $username = '';
+        foreach($usersContracts as $si_contract){
+            $username = trim(ucfirst($si_contract->first_name).' '.ucfirst($si_contract->last_name));
+            $created_on = date_create($si_contract->created_on);
+            $date_signed = date_format($created_on,"d:m:Y");
+            $date_signed2 = date_format($created_on,"Y/m/d");
+            if($i==1){
+                $center_content .= '<div class="Mrgtop200 font13">';
+            }else{
+                $center_content .= '<div class="Mrgtop80 font13">';
+            }
+            
+                $center_content .= '<h3>'.$i++.'. '.$si_contract->title.'</h3>';
+                if((!empty($si_contract->commission_type)) && ($si_contract->contract_type == 'commission')){
+                    $center_content .= '<p> <span class="strong">Availability: </span><span class="font14">'.ucfirst($si_contract->commission_type).'</p>';
+                    $center_content .= '<p> <span class="strong">Commission (%): </span><span class="font14">';
+                
+                    if($si_contract->commission_type == 'partial'){
+                        $center_content .= $si_contract->partial_availability_commission;
+                    }
+                    if($si_contract->commission_type == 'full'){
+                        $center_content .= $si_contract->full_availability_commission;
+                    }
+                    $center_content .= '</span></p>';
+                } 
+                $str_desc = $si_contract->description;
+                $valid_until = date('jS F Y', strtotime('+2 years', strtotime($date_signed2)));
+                $valid_until_year = date('Y', strtotime($valid_until));
+                $date_signedf = date('jS F Y', strtotime($date_signed2));
+                $string_array_replace = array(                    
+                    '{signed_date}'=>$date_signedf,
+                    '{valid_until}'=>$valid_until,
+                    '{valid_until_year}'=>$valid_until_year,
+                    '{annual_fee}'=>(!empty($default_package) ? $default_package->package_price : '2700'),
+                );
+                foreach($string_array_replace as $key => $value){                    
+                    $str_replaced = str_replace($key, $value, $str_desc);
+                    $str_desc = $str_replaced;
+                }                
+                $center_content .= '<p></span><span class="font14">'.$str_desc.'</span></p>';         
+            $center_content .= '</div>';
+        }
+        
+        $contract_first_name = \DB::table('tb_settings')->where('key_value', 'contract_first_name')->first();
+		$contract_last_name = \DB::table('tb_settings')->where('key_value', 'contract_last_name')->first();
+        $contract_company = \DB::table('tb_settings')->where('key_value', 'contract_company')->first();
+        
+        $contract_full_name = '';
+        if(!empty($contract_first_name->content)){
+            $contract_full_name = $contract_first_name->content." ".$contract_last_name->content;
+        }
+        
+        if((strlen($username) > 0) && (strlen($date_signed) > 0)){
+            $center_content .= '<div class="Mrgtop40 font13 tb_page_break">';
+				$center_content .= '<p class="font13">I hereby agree to supply the above for entry into Emporium-Voyage</p>';
+                $center_content .= '<p class="font13">General terms & conditions apply.</p>';
+                $center_content .= '<table class="tablewc">';
+                    $center_content .= '<tr><td class="strong">Signed by: </td> <td class="underline">'.$username.'</td></tr>';    
+                    $center_content .= '<tr><td class="strong">Print name: </td> <td class="underline">'.$username.'</td></tr>';
+                    $center_content .= '<tr><td class="strong">For and on behalf of: </td> <td class="underline">'.$property_name.'</td></tr>';
+                    $center_content .= '<tr><td class="strong">Date signed: </td> <td class="underline">'.$date_signed.'</td></tr>';
+                    $center_content .= '<tr><td></td><td><img src="'. \URL::to('sximo/assets/images/checked-box.png').'" width="20px;" height="20px;"><label style="display:inline-block;text-align:left;">I agreed to the Terms stipulated in this contract</label></td></tr>';
+                    $center_content .= '<tr><td class="strong">Signed by: </td> <td class="underline">'.$contract_full_name.'</td></tr>';    
+                    $center_content .= '<tr><td class="strong">Print name: </td> <td class="underline">'.$contract_full_name.'</td></tr>';
+                    $center_content .= '<tr><td class="strong">For and on behalf of: </td> <td class="underline">'.$contract_company->content.'</td></tr>';
+                    $center_content .= '<tr><td class="strong">Date signed: </td> <td class="underline">'.$date_signed.'</td></tr>';
+                $center_content .= '</table>';
+			$center_content .= '</div>';
+        }
+        
+        $pdfHeader = \CommonHelper::getcontractPDFHeader($center_content);
+        /*$pdf = \App::make('dompdf.wrapper');
+        @$pdf->setPaper('A4');
+        @$pdf->loadHTML($pdfHeader);
+        @$pdf->output();
+        @$dom_pdf = $pdf->getDomPDF();*/
+        
+        $savePdfpath = public_path() . '/uploads/invoice_pdfs/';
+        $pdf = \App::make('dompdf.wrapper');                
+        $pdf->loadHTML($pdfHeader);
+        $pdf->save($savePdfpath . $downFileName);
+        return $savePdfpath . $downFileName;
+        
+        //$canvas = @$dom_pdf ->get_canvas();
+        //$y = $canvas->get_height() - 50;
+        //$canvas->page_text(30, $y, 'Page {PAGE_NUM} of {PAGE_COUNT} - Accepted', null, 10, array(0, 0, 0));
+        //return $pdf->stream();
+        //if($viewPDF === true){ return @$pdf->stream(); }else{ return @$pdf->download($downFileName); }        
+        //echo "<pre>".$pdfHeader;
+    }
 }

@@ -265,7 +265,7 @@ $(document).ready(function () {
 	$('.datepic').datepicker({
 			numberOfMonths: 2,
 			showButtonPanel: true,
-			dateFormat: 'yy-mm-dd'
+			format: 'yyyy-mm-dd'
 	});
 
     $(document).on('click', '.addseason', function (){
@@ -318,6 +318,7 @@ function save_addseason_data(formid)
 					html +='<button data-dismiss="alert" class="close" type="button">×</button>';
 					html +='<i class="icon-checkmark-circle"></i> Record Updated Successfully </div>';
 					$('.page-content-wrapper #formerrors').html(html);
+                    toastr.success("Record Updated Successfully");
 					window.scrollTo(0, 0);
 				}
 				else
@@ -463,7 +464,7 @@ function delete_season_data(seasonId)
 						$('.page-content-wrapper #formerrors').html(html);
 						window.scrollTo(0, 0);
                         
-                        toastr.success("Record Inserted Successfully");
+                        toastr.error("Record Not Found");
                         window.location.reload();
 				  }
 				  else{
@@ -503,6 +504,7 @@ function delete_season_dates_data(dateId)
 						html +='<button data-dismiss="alert" class="close" type="button">×</button>';
 						html +='<i class="icon-checkmark-circle"></i> Record Not Found </div>';
 						$('.page-content-wrapper #formerrors').html(html);
+                        toastr.error("Record Not Found");
 						window.scrollTo(0, 0);
 				  }
 				  else{
@@ -511,6 +513,7 @@ function delete_season_dates_data(dateId)
 						html +='<button data-dismiss="alert" class="close" type="button">×</button>';
 						html +='<i class="icon-checkmark-circle"></i> Record Deleted Successfully </div>';
 						$('.page-content-wrapper #formerrors').html(html);
+                        toastr.success("Record Deleted Successfully");
 						window.scrollTo(0, 0);
 				  }
 			  }
