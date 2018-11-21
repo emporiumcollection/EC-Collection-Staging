@@ -264,8 +264,7 @@ $(document).ready(function () {
 	
 	$('.datepic').datepicker({
 			numberOfMonths: 2,
-			showButtonPanel: true,
-			format: 'yyyy-mm-dd'
+			showButtonPanel: true
 	});
 
     $(document).on('click', '.addseason', function (){
